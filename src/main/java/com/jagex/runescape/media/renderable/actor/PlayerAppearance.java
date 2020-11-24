@@ -1,5 +1,6 @@
-package com.jagex.runescape;
+package com.jagex.runescape.media.renderable.actor;
 
+import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
@@ -8,10 +9,9 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
-import com.jagex.runescape.media.renderable.actor.Actor;
-import com.jagex.runescape.net.PacketBuffer;
 
-public class Class30 {
+public class PlayerAppearance {
+
     public static int[] anIntArray680 = new int[50];
     public static int anInt681;
     public static int[] anIntArray684 = new int[50];
@@ -27,10 +27,13 @@ public class Class30 {
     public static ProducingGraphicsBuffer tabPieveLowerRight;
     public static int[] anIntArray715 = new int[50];
     public static Class64 aClass64_717;
+    public static int identityKitLength;
+
+    public final int[] appearanceIndices = {8, 11, 4, 6, 9, 7, 10};
 
     public boolean gender;
     public int[] appearance;
-    public int anInt696;
+    public int transformationNpcId;
     public int[] appearanceColors;
     public long appearanceHash;
     public long cachedModel;
@@ -38,7 +41,8 @@ public class Class30 {
 
 
     public static void method381(Actor arg1) {
-        if(Node.pulseCycle == arg1.anInt3107 || arg1.playingAnimation == -1 || arg1.playingAnimationDelay != 0 || arg1.anInt3115 + 1 > ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2).animationLengths[arg1.anInt3104]) {
+        if(Node.pulseCycle == arg1.anInt3107 || arg1.playingAnimation == -1 || arg1.playingAnimationDelay != 0 ||
+                arg1.anInt3115 + 1 > ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2).animationLengths[arg1.anInt3104]) {
             int i = -arg1.anInt3112 + arg1.anInt3107;
             int i_16_ = -arg1.anInt3112 + Node.pulseCycle;
             int i_17_ = arg1.anInt3125 * 128 + 64 * arg1.anInt3096;
@@ -63,15 +67,15 @@ public class Class30 {
     public int method374(int arg0) {
         if(arg0 != -20874)
             return 109;
-        if(anInt696 != -1)
-            return ActorDefinition.getDefinition(anInt696).id + 305419896;
+        if(transformationNpcId != -1)
+            return ActorDefinition.getDefinition(transformationNpcId).id + 305419896;
         return appearance[1] + (appearance[11] << 5) + (appearanceColors[4] << 20) + (appearanceColors[0] << 25) + (appearance[0] << 15) + (appearance[8] << 10);
     }
 
     public void method375(int arg0, Buffer arg1) {
         arg1.putByte(gender ? 1 : 0);
         for(int i = arg0; i < 7; i++) {
-            int i_0_ = appearance[Class40_Sub5_Sub15.anIntArray2777[i]];
+            int i_0_ = appearance[appearanceIndices[i]];
             if(i_0_ != 0)
                 arg1.putByte(-256 + i_0_);
             else
@@ -81,9 +85,9 @@ public class Class30 {
             arg1.putByte(appearanceColors[i]);
     }
 
-    public Model getAnimatedModel(AnimationSequence arg0, AnimationSequence arg1, int arg2, int arg3, byte arg4) {
-        if(anInt696 != -1)
-            return ActorDefinition.getDefinition(anInt696).getChildModel(arg0, arg1, arg2, arg3);
+    public Model getAnimatedModel(AnimationSequence arg0, AnimationSequence arg1, int arg2, int arg3) {
+        if(transformationNpcId != -1)
+            return ActorDefinition.getDefinition(transformationNpcId).getChildModel(arg0, arg1, arg2, arg3);
         long hash = appearanceHash;
         int[] appearance = this.appearance;
         if(arg0 != null && (arg0.shieldModel >= 0 || arg0.weaponModel >= 0)) {
@@ -91,19 +95,17 @@ public class Class30 {
             for(int i = 0; i < 12; i++)
                 appearance[i] = this.appearance[i];
             if(arg0.shieldModel >= 0) {
-                hash += (long) (arg0.shieldModel - this.appearance[5] << 8);
+                hash += (arg0.shieldModel - this.appearance[5] << 8);
                 appearance[5] = arg0.shieldModel;
             }
             if(arg0.weaponModel >= 0) {
-                hash += (long) (arg0.weaponModel - this.appearance[3] << 16);
+                hash += (arg0.weaponModel - this.appearance[3] << 16);
                 appearance[3] = arg0.weaponModel;
             }
         }
-        if(arg4 >= -84)
-            return null;
 
-        Model model = (Model) CacheIndex.modelCache.get(hash, (byte) 66);
-        if(model == null) {
+        Model cachedModel = (Model) CacheIndex.modelCache.get(hash, (byte) 66);
+        if(cachedModel == null) {
             boolean invalid = false;
             for(int bodyPart = 0; bodyPart < 12; bodyPart++) {
                 int appearanceModel = appearance[bodyPart];
@@ -113,12 +115,12 @@ public class Class30 {
                     invalid = true;
             }
             if(invalid) {
-                if(cachedModel != -1L)
-                    model = (Model) CacheIndex.modelCache.get(cachedModel, (byte) 123);
-                if(model == null)
+                if(this.cachedModel != -1L)
+                    cachedModel = (Model) CacheIndex.modelCache.get(this.cachedModel, (byte) 123);
+                if(cachedModel == null)
                     return null;
             }
-            if(model == null) {
+            if(cachedModel == null) {
                 Model[] models = new Model[12];
                 int count = 0;
                 for(int index = 0; index < 12; index++) {
@@ -135,36 +137,36 @@ public class Class30 {
                     }
                 }
 
-                model = new Model(models, count);
+                cachedModel = new Model(models, count);
                 for(int part = 0; part < 5; part++) {
                     if(appearanceColors[part] != 0) {
-                        model.replaceColor(Class40_Sub5_Sub17_Sub6.playerColours[part][0], Class40_Sub5_Sub17_Sub6.playerColours[part][appearanceColors[part]]);
+                        cachedModel.replaceColor(Class40_Sub5_Sub17_Sub6.playerColours[part][0], Class40_Sub5_Sub17_Sub6.playerColours[part][appearanceColors[part]]);
                         if(part == 1)
-                            model.replaceColor(Class35.SKIN_COLOURS[0], Class35.SKIN_COLOURS[appearanceColors[part]]);
+                            cachedModel.replaceColor(Class35.SKIN_COLOURS[0], Class35.SKIN_COLOURS[appearanceColors[part]]);
                     }
                 }
-                model.createBones();
-                model.applyLighting(64, 850, -30, -50, -30, true);
-                CacheIndex.modelCache.put(hash, model);
-                cachedModel = hash;
+                cachedModel.createBones();
+                cachedModel.applyLighting(64, 850, -30, -50, -30, true);
+                CacheIndex.modelCache.put(hash, cachedModel);
+                this.cachedModel = hash;
             }
         }
-        Model class40_sub5_sub17_sub5_7_;
+        Model finalModel;
         if(arg0 != null || arg1 != null) {
             if(arg0 == null || arg1 == null) {
                 if(arg0 == null)
-                    class40_sub5_sub17_sub5_7_ = arg1.method599(arg2, model, false);
+                    finalModel = arg1.method599(arg2, cachedModel, false);
                 else
-                    class40_sub5_sub17_sub5_7_ = arg0.method599(arg3, model, false);
+                    finalModel = arg0.method599(arg3, cachedModel, false);
             } else
-                class40_sub5_sub17_sub5_7_ = arg0.method590(model, arg1, arg3, arg2, (byte) 63);
+                finalModel = arg0.method590(cachedModel, arg1, arg3, arg2, (byte) 63);
         } else
-            return model;
-        return class40_sub5_sub17_sub5_7_;
+            return cachedModel;
+        return finalModel;
 
     }
 
-    public void method378(int arg0) {
+    public void updateAppearanceCache() {
         int i = appearance[9];
         int i_8_ = appearance[5];
         long l = appearanceHash;
@@ -174,20 +176,18 @@ public class Class30 {
         for(int i_9_ = 0; i_9_ < 12; i_9_++) {
             appearanceHash <<= 4;
             if(appearance[i_9_] >= 256)
-                appearanceHash += (long) (appearance[i_9_] + -256);
+                appearanceHash += (appearance[i_9_] + -256);
         }
         if(appearance[0] >= 256)
-            appearanceHash += (long) (-256 + appearance[0] >> 4);
+            appearanceHash += (-256 + appearance[0] >> 4);
         if(appearance[1] >= 256)
-            appearanceHash += (long) (-256 + appearance[1] >> 8);
+            appearanceHash += (-256 + appearance[1] >> 8);
         for(int i_10_ = 0; i_10_ < 5; i_10_++) {
             appearanceHash <<= 3;
-            appearanceHash += (long) appearanceColors[i_10_];
+            appearanceHash += appearanceColors[i_10_];
         }
-        if(arg0 <= 94)
-            method375(70, null);
         appearanceHash <<= 1;
-        Class30 class30 = this;
+        PlayerAppearance class30 = this;
         class30.appearanceHash = class30.appearanceHash + (long) (gender ? 1 : 0);
         appearance[5] = i_8_;
         appearance[9] = i;
@@ -196,8 +196,8 @@ public class Class30 {
     }
 
     public Model method379(int arg0) {
-        if(anInt696 != -1)
-            return ActorDefinition.getDefinition(anInt696).getHeadModel();
+        if(transformationNpcId != -1)
+            return ActorDefinition.getDefinition(transformationNpcId).getHeadModel();
         boolean bool = false;
         for(int i = 0; i < 12; i++) {
             int i_11_ = appearance[i];
@@ -237,30 +237,31 @@ public class Class30 {
 
     }
 
-    public void method380(int[] arg0, boolean isFemale, int arg2, int[] arg3, int arg4) {
-        if(arg0 == null) {
-            arg0 = new int[12];
-            for(int i = 0; i < 7; i++) {
-                for(int i_15_ = 0; PacketBuffer.anInt2257 > i_15_; i_15_++) {
-                    IdentityKit identityKit = IdentityKit.cache(i_15_);
-                    if(identityKit != null && !identityKit.nonSelectable && identityKit.bodyPartId == i + (!isFemale ? 0 : 7)) {
-                        arg0[Class40_Sub5_Sub15.anIntArray2777[i]] = i_15_ + 256;
+    public void setPlayerAppearance(int[] appearance, boolean gender, int[] appearanceColors, int transformationNpcId) {
+        if(appearance == null) {
+            appearance = new int[12];
+            for(int appearanceIndex = 0; appearanceIndex < 7; appearanceIndex++) {
+                for(int identityKitIndex = 0; identityKitLength > identityKitIndex; identityKitIndex++) {
+                    IdentityKit identityKit = IdentityKit.cache(identityKitIndex);
+                    if(!identityKit.nonSelectable && identityKit.bodyPartId == appearanceIndex + (!gender ? 0 : 7)) {
+                        appearance[appearanceIndices[appearanceIndex]] = identityKitIndex + 256;
                         break;
                     }
                 }
             }
         }
-        anInt696 = arg4;
-        gender = isFemale;
-        appearance = arg0;
-        appearanceColors = arg3;
-        if(arg2 == 7)
-            method378(97);
+
+        this.transformationNpcId = transformationNpcId;
+        this.gender = gender;
+        this.appearance = appearance;
+        this.appearanceColors = appearanceColors;
+
+        updateAppearanceCache();
     }
 
     public void method382(int arg0, boolean arg1, int arg2) {
         if(arg0 != 1 || !gender) {
-            int i = appearance[Class40_Sub5_Sub15.anIntArray2777[arg0]];
+            int i = appearance[appearanceIndices[arg0]];
             if(i != 0) {
                 i -= 256;
                 if(arg2 > 3) {
@@ -268,14 +269,14 @@ public class Class30 {
                     do {
                         if(arg1) {
                             i++;
-                            if(i >= PacketBuffer.anInt2257)
+                            if(i >= identityKitLength)
                                 i = 0;
                         } else if(--i < 0)
-                            i = -1 + PacketBuffer.anInt2257;
+                            i = -1 + identityKitLength;
                         identityKit = IdentityKit.cache(i);
                     } while(identityKit == null || identityKit.nonSelectable || identityKit.bodyPartId != arg0 + (!gender ? 0 : 7));
-                    appearance[Class40_Sub5_Sub15.anIntArray2777[arg0]] = i + 256;
-                    method378(117);
+                    appearance[appearanceIndices[arg0]] = i + 256;
+                    updateAppearanceCache();
                 }
             }
         }
@@ -285,7 +286,7 @@ public class Class30 {
         if(!gender != !arg0) {
             if(arg1 != -110)
                 method382(57, false, 67);
-            method380(null, arg0, 7, appearanceColors, -1);
+            setPlayerAppearance(null, arg0, appearanceColors, -1);
         }
     }
 
@@ -297,6 +298,6 @@ public class Class30 {
         } else if(Class40_Sub5_Sub17_Sub6.playerColours[arg2].length <= ++i_21_)
             i_21_ = 0;
         appearanceColors[arg2] = i_21_;
-        method378(119);
+        updateAppearanceCache();
     }
 }

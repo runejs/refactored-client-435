@@ -16,6 +16,7 @@ import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.tile.WallDecoration;
+import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
 
@@ -35,11 +36,12 @@ public class Player extends Actor {
     public static int[] trackedPlayerIndices = new int[2048];
     public static int npcCount = 0;
     public static int localPlayerCount;
+    public static boolean inTutorialIsland = false;
     public int skillLevel;
     public int anInt3258;
     public int combatLevel = 0;
     public int anInt3262;
-    public Model aClass40_Sub5_Sub17_Sub5_3265;
+    public Model playerModel;
     public int teamId = 0;
     public int isSkulled;
     public int anInt3271;
@@ -49,7 +51,7 @@ public class Player extends Actor {
     public int anInt3276;
     public String playerName;
     public int anInt3281;
-    public Class30 aClass30_3282;
+    public PlayerAppearance playerAppearance;
     public int anInt3283;
     public boolean aBoolean3287;
     public int anInt3289;
@@ -135,7 +137,7 @@ public class Player extends Actor {
             int playerRights = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             int messageLength = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             int i_5_ = IncomingPackets.incomingPacketBuffer.currentPosition;
-            if(player.playerName != null && player.aClass30_3282 != null) {
+            if(player.playerName != null && player.playerAppearance != null) {
                 long l = RSString.nameToLong(player.playerName);
                 boolean bool = false;
                 if(playerRights <= 1) {
@@ -146,7 +148,7 @@ public class Player extends Actor {
                         }
                     }
                 }
-                if(!bool && !Class4.inTutorialIsland) {
+                if(!bool && !inTutorialIsland) {
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
                     IncomingPackets.incomingPacketBuffer.getBytes(0, messageLength, Class59.aClass40_Sub1_1385.buffer);
                     Class59.aClass40_Sub1_1385.currentPosition = 0;
@@ -326,74 +328,95 @@ public class Player extends Actor {
     }
 
     public static void setTutorialIslandFlag() {
-        Class4.inTutorialIsland = false;
+        inTutorialIsland = false;
         int xPos = (localPlayer.worldX >> 7) + SpotAnimDefinition.baseX;
         int yPos = Class26.baseY + (localPlayer.worldY >> 7);
         if(xPos >= 3053 && xPos <= 3156 && yPos >= 3056 && yPos <= 3136)
-            Class4.inTutorialIsland = true;
+            inTutorialIsland = true;
         if(xPos >= 3072 && xPos <= 3118 && yPos >= 9492 && yPos <= 9535)
-            Class4.inTutorialIsland = true;
-        if(Class4.inTutorialIsland  && xPos >= 3139 && xPos <= 3199 && yPos >= 3008 && yPos <= 3062)
-            Class4.inTutorialIsland = false;
+            inTutorialIsland = true;
+        if(inTutorialIsland  && xPos >= 3139 && xPos <= 3199 && yPos >= 3008 && yPos <= 3062)
+            inTutorialIsland = false;
+    }
+
+    public static RSString longToUsername(long arg1) {
+        if(arg1 <= 0L || arg1 >= 6582952005840035281L)
+            return null;
+        if(arg1 % 37L == 0)
+            return null;
+        long l = arg1;
+        int i = 0;
+        while(l != 0) {
+            l /= 37L;
+            i++;
+        }
+        byte[] is = new byte[i];
+        while(arg1 != 0) {
+            long l_10_ = arg1;
+            arg1 /= 37L;
+            is[--i] = CollisionMap.aByteArray169[(int) (-(arg1 * 37L) + l_10_)];
+        }
+        RSString class1 = new RSString();
+        class1.chars = is;
+        class1.length = is.length;
+        return class1;
     }
 
     public Model getRotatedModel() {
-        if(aClass30_3282 == null)
+        if(playerAppearance == null)
             return null;
         AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, 2);
         AnimationSequence animationSequence_0_ = anInt3077 != -1 && !aBoolean3287 && (idleAnimation != anInt3077 || animationSequence == null) ? ProducingGraphicsBuffer_Sub1.method1050(anInt3077, 2) : null;
-        Model class40_sub5_sub17_sub5 = aClass30_3282.getAnimatedModel(animationSequence, animationSequence_0_, anInt3116, anInt3104, (byte) -128);
-        if(class40_sub5_sub17_sub5 == null)
+        Model animatedModel = playerAppearance.getAnimatedModel(animationSequence, animationSequence_0_, anInt3116, anInt3104);
+        if(animatedModel == null)
             return null;
-        class40_sub5_sub17_sub5.method799();
-        anInt3117 = class40_sub5_sub17_sub5.modelHeight;
+        animatedModel.method799();
+        anInt3117 = animatedModel.modelHeight;
         if(!aBoolean3287 && anInt3091 != -1 && anInt3140 != -1) {
-            Model class40_sub5_sub17_sub5_1_ = SpotAnimDefinition.forId(anInt3091, 13).method549(anInt3140, 2);
-            if(class40_sub5_sub17_sub5_1_ != null) {
-                class40_sub5_sub17_sub5_1_.translate(0, -anInt3110, 0);
-                Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_1_};
-                class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 2, true);
+            Model model = SpotAnimDefinition.forId(anInt3091, 13).method549(anInt3140, 2);
+            if(model != null) {
+                model.translate(0, -anInt3110, 0);
+                Model[] models = {animatedModel, model};
+                animatedModel = new Model(models, 2, true);
             }
         }
-        if(!aBoolean3287 && aClass40_Sub5_Sub17_Sub5_3265 != null) {
+        if(!aBoolean3287 && playerModel != null) {
             if(anInt3274 <= Node.pulseCycle)
-                aClass40_Sub5_Sub17_Sub5_3265 = null;
+                playerModel = null;
             if(anInt3283 <= Node.pulseCycle && Node.pulseCycle < anInt3274) {
-                Model class40_sub5_sub17_sub5_2_ = aClass40_Sub5_Sub17_Sub5_3265;
-                class40_sub5_sub17_sub5_2_.translate(-worldX + anInt3271, -anInt3276 + anInt3272, anInt3291 + -worldY);
+                Model model = playerModel;
+                model.translate(-worldX + anInt3271, -anInt3276 + anInt3272, anInt3291 + -worldY);
                 if(anInt3080 == 512) {
-                    class40_sub5_sub17_sub5_2_.method813();
-                    class40_sub5_sub17_sub5_2_.method813();
-                    class40_sub5_sub17_sub5_2_.method813();
+                    model.method813();
+                    model.method813();
+                    model.method813();
                 } else if(anInt3080 == 1024) {
-                    class40_sub5_sub17_sub5_2_.method813();
-                    class40_sub5_sub17_sub5_2_.method813();
+                    model.method813();
+                    model.method813();
                 } else if(anInt3080 == 1536)
-                    class40_sub5_sub17_sub5_2_.method813();
-                Model[] class40_sub5_sub17_sub5s = {class40_sub5_sub17_sub5, class40_sub5_sub17_sub5_2_};
-                class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, 2, true);
+                    model.method813();
+                Model[] models = {animatedModel, model};
+                animatedModel = new Model(models, 2, true);
                 if(anInt3080 != 512) {
                     if(anInt3080 == 1024) {
-                        class40_sub5_sub17_sub5_2_.method813();
-                        class40_sub5_sub17_sub5_2_.method813();
+                        model.method813();
+                        model.method813();
                     } else if(anInt3080 == 1536) {
-                        class40_sub5_sub17_sub5_2_.method813();
-                        class40_sub5_sub17_sub5_2_.method813();
-                        class40_sub5_sub17_sub5_2_.method813();
+                        model.method813();
+                        model.method813();
+                        model.method813();
                     }
                 } else
-                    class40_sub5_sub17_sub5_2_.method813();
-                class40_sub5_sub17_sub5_2_.translate(-anInt3271 + worldX, -anInt3272 + anInt3276, worldY - anInt3291);
+                    model.method813();
+                model.translate(-anInt3271 + worldX, -anInt3272 + anInt3276, worldY - anInt3291);
             }
         }
-        class40_sub5_sub17_sub5.singleTile = true;
-        return class40_sub5_sub17_sub5;
+        animatedModel.singleTile = true;
+        return animatedModel;
     }
 
     public boolean isVisible(int arg0) {
-        if(arg0 != 1)
-            drawGameScreenGraphics(-71);
-        return aClass30_3282 != null;
+        return playerAppearance != null;
     }
 
     public void parsePlayerAppearanceData(Buffer buffer) {
@@ -451,11 +474,13 @@ public class Player extends Actor {
         runAnimationId = buffer.getUnsignedShortBE();
         if(runAnimationId == 65535)
             runAnimationId = -1;
-        playerName = Class60.method991(-127, buffer.getLongBE()).method85().toString();
+        playerName = longToUsername(buffer.getLongBE()).method85().toString();
         combatLevel = buffer.getUnsignedByte();
         skillLevel = buffer.getUnsignedShortBE();
-        if(aClass30_3282 == null)
-            aClass30_3282 = new Class30();
-        aClass30_3282.method380(appearance, i == 1, 7, appearanceColors, npcDefId);
+
+        if(playerAppearance == null)
+            playerAppearance = new PlayerAppearance();
+
+        playerAppearance.setPlayerAppearance(appearance, i == 1, appearanceColors, npcDefId);
     }
 }

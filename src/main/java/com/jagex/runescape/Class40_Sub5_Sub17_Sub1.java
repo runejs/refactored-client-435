@@ -24,6 +24,7 @@ import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.Scene;
@@ -128,7 +129,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             }
             if(actor.facingActorIndex >= 32768) {
                 int i = -32768 + actor.facingActorIndex;
-                if(i == Class30.anInt708)
+                if(i == PlayerAppearance.anInt708)
                     i = 2047;
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
@@ -224,7 +225,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             Class61.tabPieceUpperRight = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = HuffmanEncoding.method1028(arg2, Native.aClass1_196, (byte) 21, Native.aClass1_305);
-            Class30.tabPieveLowerRight = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            PlayerAppearance.tabPieveLowerRight = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = HuffmanEncoding.method1028(arg2, Native.aClass1_304, (byte) 21, Native.aClass1_305);
             Class17.chatboxTop = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);

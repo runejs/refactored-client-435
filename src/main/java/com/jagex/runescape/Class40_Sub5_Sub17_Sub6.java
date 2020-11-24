@@ -87,7 +87,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                 if((VertexNormal.lowMemory && Player.localPlayerCount > 50 || Player.localPlayerCount > 200) && !arg1 && player.anInt3077 == player.idleAnimation)
                     player.aBoolean3287 = true;
                 if(i_2_ >= 0 && i_2_ < 104 && i_3_ >= 0 && i_3_ < 104) {
-                    if(player.aClass40_Sub5_Sub17_Sub5_3265 != null && player.anInt3283 <= Node.pulseCycle && Node.pulseCycle < player.anInt3274) {
+                    if(player.playerModel != null && player.anInt3283 <= Node.pulseCycle && Node.pulseCycle < player.anInt3274) {
                         player.aBoolean3287 = false;
                         player.anInt3276 = Class37.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
                         Npc.currentScene.method112(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.anInt3258, player.anInt3281, player.anInt3262, player.anInt3289);

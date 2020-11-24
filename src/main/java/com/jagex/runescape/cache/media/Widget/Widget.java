@@ -16,6 +16,7 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
@@ -853,7 +854,7 @@ public class Widget extends SubNode {
                                                 i_1_ -= 2;
                                                 String class1 = Class40_Sub11.aClass1Array2153[i_1_];
                                                 String class1_82_ = Class40_Sub11.aClass1Array2153[i_1_ + 1];
-                                                if (Player.localPlayer.aClass30_3282 == null || !Player.localPlayer.aClass30_3282.gender) {
+                                                if (Player.localPlayer.playerAppearance == null || !Player.localPlayer.playerAppearance.gender) {
                                                     Class40_Sub11.aClass1Array2153[i_1_++] = class1;
                                                 } else {
                                                     Class40_Sub11.aClass1Array2153[i_1_++] = class1_82_;
@@ -1022,7 +1023,7 @@ public class Widget extends SubNode {
                         widget.modelId = Class67.anIntArray1588[--i];
                     } else if (i_3_ == 1202) {
                         widget.modelType = WidgetModelType.LOCAL_PLAYER_CHATHEAD;
-                        widget.modelId = Player.localPlayer.aClass30_3282.method374(-20874);
+                        widget.modelId = Player.localPlayer.playerAppearance.method374(-20874);
                     } else {
                         if (i_3_ != 1203) {
                             break;
@@ -1551,7 +1552,7 @@ public class Widget extends SubNode {
         }
     }
 
-    public Model method646(byte arg0, AnimationSequence arg1, int arg2, boolean arg3, Class30 arg4) {
+    public Model method646(byte arg0, AnimationSequence arg1, int arg2, boolean arg3, PlayerAppearance arg4) {
         FramemapDefinition.aBoolean2177 = false;
         WidgetModelType modelType;
         int i_11_;

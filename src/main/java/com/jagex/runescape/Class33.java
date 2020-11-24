@@ -12,6 +12,7 @@ import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
@@ -100,14 +101,14 @@ public class Class33 {
                     if(actor.forcedChatMessage != null && (i >= Player.localPlayerCount || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 3 || ChatBox.publicChatMode == 1 && Class40_Sub2.hasFriend(((Player) actor).playerName))) {
                         FloorDecoration.method342(actor.anInt3117, actor);
                         if(ISAAC.anInt522 > -1 && 50 > SceneCluster.anInt770) {
-                            Class30.anIntArray680[SceneCluster.anInt770] = Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(actor.forcedChatMessage) / 2;
-                            Class30.anIntArray688[SceneCluster.anInt770] = Class40_Sub5_Sub17_Sub6.fontBold.characterDefaultHeight;
-                            Class30.anIntArray715[SceneCluster.anInt770] = ISAAC.anInt522;
-                            Class30.anIntArray685[SceneCluster.anInt770] = Class44.anInt1048;
-                            Class30.anIntArray712[SceneCluster.anInt770] = actor.chatcolor;
-                            Class30.anIntArray695[SceneCluster.anInt770] = actor.chatEffects;
-                            Class30.anIntArray684[SceneCluster.anInt770] = actor.anInt3078;
-                            Class30.aClass1Array697[SceneCluster.anInt770] = actor.forcedChatMessage;
+                            PlayerAppearance.anIntArray680[SceneCluster.anInt770] = Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(actor.forcedChatMessage) / 2;
+                            PlayerAppearance.anIntArray688[SceneCluster.anInt770] = Class40_Sub5_Sub17_Sub6.fontBold.characterDefaultHeight;
+                            PlayerAppearance.anIntArray715[SceneCluster.anInt770] = ISAAC.anInt522;
+                            PlayerAppearance.anIntArray685[SceneCluster.anInt770] = Class44.anInt1048;
+                            PlayerAppearance.anIntArray712[SceneCluster.anInt770] = actor.chatcolor;
+                            PlayerAppearance.anIntArray695[SceneCluster.anInt770] = actor.chatEffects;
+                            PlayerAppearance.anIntArray684[SceneCluster.anInt770] = actor.anInt3078;
+                            PlayerAppearance.aClass1Array697[SceneCluster.anInt770] = actor.forcedChatMessage;
                             SceneCluster.anInt770++;
                         }
                     }
@@ -144,35 +145,35 @@ public class Class33 {
                 }
             }
             for(int i = 0; SceneCluster.anInt770 > i; i++) {
-                int i_3_ = Class30.anIntArray715[i];
-                int i_4_ = Class30.anIntArray685[i];
-                int i_5_ = Class30.anIntArray680[i];
-                int i_6_ = Class30.anIntArray688[i];
+                int i_3_ = PlayerAppearance.anIntArray715[i];
+                int i_4_ = PlayerAppearance.anIntArray685[i];
+                int i_5_ = PlayerAppearance.anIntArray680[i];
+                int i_6_ = PlayerAppearance.anIntArray688[i];
                 boolean bool = true;
                 while(bool) {
                     bool = false;
                     for(int i_7_ = 0; i > i_7_; i_7_++) {
-                        if(-Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_] < i_4_ + 2 && -i_6_ + i_4_ < 2 + Class30.anIntArray685[i_7_] && Class30.anIntArray715[i_7_] + Class30.anIntArray680[i_7_] > -i_5_ + i_3_ && i_5_ + i_3_ > -Class30.anIntArray680[i_7_] + Class30.anIntArray715[i_7_] && -Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_] < i_4_) {
+                        if(-PlayerAppearance.anIntArray688[i_7_] + PlayerAppearance.anIntArray685[i_7_] < i_4_ + 2 && -i_6_ + i_4_ < 2 + PlayerAppearance.anIntArray685[i_7_] && PlayerAppearance.anIntArray715[i_7_] + PlayerAppearance.anIntArray680[i_7_] > -i_5_ + i_3_ && i_5_ + i_3_ > -PlayerAppearance.anIntArray680[i_7_] + PlayerAppearance.anIntArray715[i_7_] && -PlayerAppearance.anIntArray688[i_7_] + PlayerAppearance.anIntArray685[i_7_] < i_4_) {
                             bool = true;
-                            i_4_ = -Class30.anIntArray688[i_7_] + Class30.anIntArray685[i_7_];
+                            i_4_ = -PlayerAppearance.anIntArray688[i_7_] + PlayerAppearance.anIntArray685[i_7_];
                         }
                     }
                 }
-                ISAAC.anInt522 = Class30.anIntArray715[i];
-                Class44.anInt1048 = Class30.anIntArray685[i] = i_4_;
-                String class1 = Class30.aClass1Array697[i];
+                ISAAC.anInt522 = PlayerAppearance.anIntArray715[i];
+                Class44.anInt1048 = PlayerAppearance.anIntArray685[i] = i_4_;
+                String class1 = PlayerAppearance.aClass1Array697[i];
                 if(Class40_Sub5_Sub1.anInt2280 == 0) {
                     int i_8_ = 16776960;
-                    if(Class30.anIntArray712[i] < 6)
-                        i_8_ = Class40_Sub6.anIntArray2106[Class30.anIntArray712[i]];
-                    if(Class30.anIntArray712[i] == 6)
+                    if(PlayerAppearance.anIntArray712[i] < 6)
+                        i_8_ = Class40_Sub6.anIntArray2106[PlayerAppearance.anIntArray712[i]];
+                    if(PlayerAppearance.anIntArray712[i] == 6)
                         i_8_ = Class40_Sub5_Sub11.anInt2628 % 20 >= 10 ? 16776960 : 16711680;
-                    if(Class30.anIntArray712[i] == 7)
+                    if(PlayerAppearance.anIntArray712[i] == 7)
                         i_8_ = Class40_Sub5_Sub11.anInt2628 % 20 < 10 ? 255 : 65535;
-                    if(Class30.anIntArray712[i] == 8)
+                    if(PlayerAppearance.anIntArray712[i] == 8)
                         i_8_ = Class40_Sub5_Sub11.anInt2628 % 20 >= 10 ? 8454016 : 45056;
-                    if(Class30.anIntArray712[i] == 9) {
-                        int i_9_ = 150 - Class30.anIntArray684[i];
+                    if(PlayerAppearance.anIntArray712[i] == 9) {
+                        int i_9_ = 150 - PlayerAppearance.anIntArray684[i];
                         if(i_9_ >= 50) {
                             if(i_9_ < 100)
                                 i_8_ = -((-50 + i_9_) * 327680) + 16776960;
@@ -181,8 +182,8 @@ public class Class33 {
                         } else
                             i_8_ = 16711680 + 1280 * i_9_;
                     }
-                    if(Class30.anIntArray712[i] == 10) {
-                        int i_10_ = 150 + -Class30.anIntArray684[i];
+                    if(PlayerAppearance.anIntArray712[i] == 10) {
+                        int i_10_ = 150 + -PlayerAppearance.anIntArray684[i];
                         if(i_10_ >= 50) {
                             if(i_10_ >= 100) {
                                 if(i_10_ < 150)
@@ -192,8 +193,8 @@ public class Class33 {
                         } else
                             i_8_ = 5 * i_10_ + 16711680;
                     }
-                    if(Class30.anIntArray712[i] == 11) {
-                        int i_11_ = -Class30.anIntArray684[i] + 150;
+                    if(PlayerAppearance.anIntArray712[i] == 11) {
+                        int i_11_ = -PlayerAppearance.anIntArray684[i] + 150;
                         if(i_11_ >= 50) {
                             if(i_11_ < 100)
                                 i_8_ = 327685 * (i_11_ - 50) + 65280;
@@ -202,33 +203,33 @@ public class Class33 {
                         } else
                             i_8_ = -(327685 * i_11_) + 16777215;
                     }
-                    if(Class30.anIntArray695[i] == 0) {
+                    if(PlayerAppearance.anIntArray695[i] == 0) {
                         Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
                         Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048, i_8_);
                     }
-                    if(Class30.anIntArray695[i] == 1) {
+                    if(PlayerAppearance.anIntArray695[i] == 1) {
                         Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628);
                         Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
                     }
-                    if(Class30.anIntArray695[i] == 2) {
+                    if(PlayerAppearance.anIntArray695[i] == 2) {
                         Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, 1 + Class44.anInt1048, 0, Class40_Sub5_Sub11.anInt2628);
                         Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
                     }
-                    if(Class30.anIntArray695[i] == 3) {
-                        Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628, -Class30.anIntArray684[i] + 150);
-                        Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628, -Class30.anIntArray684[i] + 150);
+                    if(PlayerAppearance.anIntArray695[i] == 3) {
+                        Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
+                        Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
                     }
-                    if(Class30.anIntArray695[i] == 4) {
+                    if(PlayerAppearance.anIntArray695[i] == 4) {
                         int i_12_ = Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(class1);
-                        int i_13_ = (i_12_ + 100) * (150 + -Class30.anIntArray684[i]) / 150;
+                        int i_13_ = (i_12_ + 100) * (150 + -PlayerAppearance.anIntArray684[i]) / 150;
                         Rasterizer.setBounds(ISAAC.anInt522 + -50, 0, 334, 50 + ISAAC.anInt522);
                         Class40_Sub5_Sub17_Sub6.fontBold.drawString(class1, -i_13_ + ISAAC.anInt522 + 50, Class44.anInt1048 + 1, 0);
                         Class40_Sub5_Sub17_Sub6.fontBold.drawString(class1, 50 + ISAAC.anInt522 + -i_13_, Class44.anInt1048, i_8_);
                         Rasterizer.resetBounds();
                     }
-                    if(Class30.anIntArray695[i] == 5) {
+                    if(PlayerAppearance.anIntArray695[i] == 5) {
                         int i_14_ = 0;
-                        int i_15_ = 150 + -Class30.anIntArray684[i];
+                        int i_15_ = 150 + -PlayerAppearance.anIntArray684[i];
                         Rasterizer.setBounds(0, -1 + -Class40_Sub5_Sub17_Sub6.fontBold.characterDefaultHeight + Class44.anInt1048, 5 + Class44.anInt1048, 512);
                         if(i_15_ >= 25) {
                             if(i_15_ > 125)

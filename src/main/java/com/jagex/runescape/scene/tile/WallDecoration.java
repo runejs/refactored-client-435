@@ -17,6 +17,7 @@ import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.InteractiveObject;
@@ -178,7 +179,7 @@ public class WallDecoration {
                     int i_55_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
                     int i_56_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
                     Player class40_sub5_sub17_sub4_sub1;
-                    if (i_43_ != Class30.anInt708)
+                    if (i_43_ != PlayerAppearance.anInt708)
                         class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_43_];
                     else
                         class40_sub5_sub17_sub4_sub1 = Player.localPlayer;
@@ -203,7 +204,7 @@ public class WallDecoration {
                             GameObjectDefinition.method609(-1, i_52_, 0, 1 + i_56_, Player.worldLevel, i_51_, i_49_, 0, 1 + i_53_);
                             class40_sub5_sub17_sub4_sub1.anInt3274 = i_56_ + Node.pulseCycle;
                             int i_63_ = gameObjectDefinition.sizeX;
-                            class40_sub5_sub17_sub4_sub1.aClass40_Sub5_Sub17_Sub5_3265 = class40_sub5_sub17_sub5;
+                            class40_sub5_sub17_sub4_sub1.playerModel = class40_sub5_sub17_sub5;
                             class40_sub5_sub17_sub4_sub1.anInt3283 = i_53_ + Node.pulseCycle;
                             int i_64_ = gameObjectDefinition.sizeY;
                             if (i_47_ == 1 || i_47_ == 3) {
@@ -270,7 +271,7 @@ public class WallDecoration {
                         int i_82_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                         int i_83_ = ((0x71 & i_82_) >> 4) + Class40_Sub6.placementX;
                         int i_84_ = (0x7 & i_82_) + OverlayDefinition.placementY;
-                        if (i_83_ >= 0 && i_84_ >= 0 && i_83_ < 104 && i_84_ < 104 && Class30.anInt708 != i_80_) {
+                        if (i_83_ >= 0 && i_84_ >= 0 && i_83_ < 104 && i_84_ < 104 && PlayerAppearance.anInt708 != i_80_) {
                             Item item = new Item();
                             item.itemId = i_81_;
                             item.itemCount = i;

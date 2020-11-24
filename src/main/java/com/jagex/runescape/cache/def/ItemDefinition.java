@@ -15,6 +15,7 @@ import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -114,7 +115,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
                 Class40_Sub5_Sub17_Sub6.framePieceTop.drawGraphics(0, 0, graphics);
                 Class40_Sub7.mapBackRight.drawGraphics(516, 4, graphics);
                 Class61.tabPieceUpperRight.drawGraphics(516, 205, graphics);
-                Class30.tabPieveLowerRight.drawGraphics(496, 357, graphics);
+                PlayerAppearance.tabPieveLowerRight.drawGraphics(496, 357, graphics);
                 Class17.chatboxTop.drawGraphics(0, 338, graphics);
             }
         } catch(Exception exception) {

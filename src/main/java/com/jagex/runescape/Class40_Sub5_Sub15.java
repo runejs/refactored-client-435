@@ -12,7 +12,6 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 public class Class40_Sub5_Sub15 extends SubNode {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2775;
     public static IndexedImage[] tabIcons;
-    public static int[] anIntArray2777 = {8, 11, 4, 6, 9, 7, 10};
     public static int arbitraryDestination = 0;
     public static CacheIndex aCacheIndex_2779;
     public static int systemUpdateTime = 0;

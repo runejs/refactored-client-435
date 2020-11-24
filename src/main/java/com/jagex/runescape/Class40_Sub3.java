@@ -18,8 +18,8 @@ import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
-import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
@@ -327,7 +327,7 @@ public class Class40_Sub3 extends Node {
         Class27.aCacheIndex_654 = arg2;
         if (arg0 == 3) {
             Class49.aCacheIndex_1150 = arg1;
-            PacketBuffer.anInt2257 = Class49.aCacheIndex_1150.method190(3);
+            PlayerAppearance.identityKitLength = Class49.aCacheIndex_1150.method190(3);
         }
     }
 

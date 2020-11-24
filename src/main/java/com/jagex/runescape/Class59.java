@@ -7,6 +7,7 @@ import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
@@ -34,7 +35,7 @@ public class Class59 {
             Class48.logout(-7225);
         else {
             OverlayDefinition.method559(40);
-            Class30.aClass64_717 = Class40_Sub6.gameConnection;
+            PlayerAppearance.aClass64_717 = Class40_Sub6.gameConnection;
             Class40_Sub6.gameConnection = null;
         }
     }
@@ -66,7 +67,7 @@ public class Class59 {
                         else {
                             Class5.aClass22_189.method301(PacketBuffer.anInt2258, arg0);
                             MouseHandler.anInt1450 = PacketBuffer.anInt2258;
-                            Class5.aClass22_189.method300(Player.aByteArray3270, Class30.aBoolean687, -15910, PacketBuffer.anInt2258);
+                            Class5.aClass22_189.method300(Player.aByteArray3270, PlayerAppearance.aBoolean687, -15910, PacketBuffer.anInt2258);
                             Player.aByteArray3270 = null;
                         }
                         Class39.anInt909 = 0;

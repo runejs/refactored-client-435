@@ -119,14 +119,14 @@ public class IncomingPackets {
                 long l = incomingPacketBuffer.getLongBE();
                 String class1 = RSString.formatChatString(KeyFocusListener.method956(82, incomingPacketBuffer));
 
-                Class44.addChatMessage(Class60.method991(-42, l).method85().toString(), class1, 6);
+                Class44.addChatMessage(Player.longToUsername(l).method85().toString(), class1, 6);
                 incomingPacket = -1;
                 return true;
             }
             if(incomingPacket == 156) { // friend logged in
                 long l = incomingPacketBuffer.getLongBE();
                 int i_1_ = incomingPacketBuffer.getUnsignedShortBE();
-                String string = Class60.method991(-64, l).method85(). toString();
+                String string = Player.longToUsername(l).method85(). toString();
                 for(int i_2_ = 0; i_2_ < Item.friendsCount; i_2_++) {
                     if(l == Class59.friends[i_2_]) {
                         if(i_1_ != Class40_Sub7.friendWorlds[i_2_]) {
@@ -311,7 +311,7 @@ public class IncomingPackets {
                             break;
                         }
                     }
-                    if(!bool && !Class4.inTutorialIsland)
+                    if(!bool && !Player.inTutorialIsland)
                         Class44.addChatMessage(class1_32_, "wishes to trade with you.", 4);
                 } else if(message.endsWith(Native.requestcmd_duelreq)) {
                     String class1_30_ = message.substring(0, message.indexOf(Native.char_colon));
@@ -323,7 +323,7 @@ public class IncomingPackets {
                             break;
                         }
                     }
-                    if(!bool && !Class4.inTutorialIsland)
+                    if(!bool && !Player.inTutorialIsland)
                         Class44.addChatMessage(class1_30_, English.suffixWishesToDuelWithYou, 8);
                 } else if(message.endsWith(Native.requestcmd_chalreq)) {
                     String class1_27_ = message.substring(0, message.indexOf(Native.char_colon));
@@ -335,7 +335,7 @@ public class IncomingPackets {
                             break;
                         }
                     }
-                    if(!bool && !Class4.inTutorialIsland) {
+                    if(!bool && !Player.inTutorialIsland) {
                         String class1_29_ = message.substring(1 + message.indexOf(Native.char_colon), -9 + message.length());
                         Class44.addChatMessage(class1_27_, class1_29_, 8);
                     }
@@ -932,7 +932,7 @@ public class IncomingPackets {
                 int widgetData = incomingPacketBuffer.getIntLE();
                 Widget widget = Widget.forId(widgetData);
                 widget.modelType = WidgetModelType.LOCAL_PLAYER_CHATHEAD;
-                widget.modelId = Player.localPlayer.aClass30_3282.method374(-20874);
+                widget.modelId = Player.localPlayer.playerAppearance.method374(-20874);
                 incomingPacket = -1;
                 return true;
             }
@@ -999,7 +999,7 @@ public class IncomingPackets {
                         }
                     }
                 }
-                if(!bool && !Class4.inTutorialIsland) {
+                if(!bool && !Player.inTutorialIsland) {
                     Class40_Sub5_Sub13.aLongArray2757[Class40_Sub3.anInt2021] = chatId;
                     Class40_Sub3.anInt2021 = (1 + Class40_Sub3.anInt2021) % 100;
                     String class1 = RSString.formatChatString(KeyFocusListener.method956(67, incomingPacketBuffer));

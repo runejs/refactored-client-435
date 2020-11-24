@@ -15,7 +15,6 @@ public class Class4 {
     public static int anInt175 = 0;
     public static int[] anIntArray178;
     public static GameShell anApplet_Sub1_179 = null;
-    public static boolean inTutorialIsland = false;
     public static int anInt188;
 
     public static int method160(int arg0, int arg1, int arg2, int arg3) {

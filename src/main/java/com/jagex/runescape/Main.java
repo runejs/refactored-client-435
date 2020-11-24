@@ -23,6 +23,7 @@ import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.net.PacketBuffer;
@@ -164,7 +165,7 @@ public class Main extends GameShell {
                                                         widget_16_.scrollPosition += i_18_;
                                                     }
                                                 }
-                                            } else if (Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 0 || GenericTile.anInt1233 != i_7_ || widget.id != Class30.anInt704)
+                                            } else if (Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 0 || GenericTile.anInt1233 != i_7_ || widget.id != PlayerAppearance.anInt704)
                                                 imageRGB.drawImage(i_10_, i_11_);
                                             else
                                                 imageRGB.method728(i_10_, i_11_, 128);
@@ -330,19 +331,19 @@ public class Main extends GameShell {
                         Model model;
                         if (widget.modelType != WidgetModelType.PLAYER) {
                             if (i_36_ == -1) {
-                                model = widget.method646((byte) 46, null, -1, bool_35_, Player.localPlayer.aClass30_3282);
+                                model = widget.method646((byte) 46, null, -1, bool_35_, Player.localPlayer.playerAppearance);
                                 if (model == null && FramemapDefinition.aBoolean2177)
                                     bool = false;
                             } else {
                                 AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(i_36_, 2);
-                                model = widget.method646((byte) 76, animationSequence, widget.anInt2654, bool_35_, Player.localPlayer.aClass30_3282);
+                                model = widget.method646((byte) 76, animationSequence, widget.anInt2654, bool_35_, Player.localPlayer.playerAppearance);
                                 if (model == null && FramemapDefinition.aBoolean2177)
                                     bool = false;
                             }
                         } else if (widget.modelId != 0)
                             model = Player.localPlayer.getRotatedModel();
                         else
-                            model = LinkedList.aClass30_1082.getAnimatedModel(null, null, -1, -1, (byte) -88);
+                            model = LinkedList.aClass30_1082.getAnimatedModel(null, null, -1, -1);
                         int i_37_ = widget.rotationX;
                         int i_38_ = widget.rotationY;
                         int i_39_ = widget.offsetY2d;
@@ -702,7 +703,7 @@ public class Main extends GameShell {
         Class51.anInt1205 = -1;
         Class40_Sub6.anInt2118 = 0;
         Class5.currentTabId = 3;
-        LinkedList.aClass30_1082.method380(null, false, 7, new int[5], -1);
+        LinkedList.aClass30_1082.setPlayerAppearance(null, false, new int[5], -1);
         for (int i = 0; i < 5; i++) {
             playerActions[i] = null;
             Class13.playerArray[i] = false;
@@ -916,9 +917,9 @@ public class Main extends GameShell {
                             Class40_Sub5_Sub6.aClass67Array2436[i].method1036(0x322a1068);
                     }
                 }
-                if (Class30.aClass67_693 == null)
+                if (PlayerAppearance.aClass67_693 == null)
                     break;
-                Class30.aClass67_693.method1036(841617512);
+                PlayerAppearance.aClass67_693.method1036(841617512);
             } catch (java.io.IOException ioexception) {
                 break;
             }
@@ -942,8 +943,8 @@ public class Main extends GameShell {
                 SpotAnimDefinition.aClass67_2298 = new Class67(ISAAC.aClass31_521.cacheData, 5200, 0);
                 for (int i = 0; i < 13; i++)
                     Class40_Sub5_Sub6.aClass67Array2436[i] = new Class67(ISAAC.aClass31_521.cacheIndex[i], 6000, 0);
-                Class30.aClass67_693 = new Class67(ISAAC.aClass31_521.aClass47_728, 6000, 0);
-                VarbitDefinition.aClass56_2356 = new Class56(255, SpotAnimDefinition.aClass67_2298, Class30.aClass67_693, 500000);
+                PlayerAppearance.aClass67_693 = new Class67(ISAAC.aClass31_521.aClass47_728, 6000, 0);
+                VarbitDefinition.aClass56_2356 = new Class56(255, SpotAnimDefinition.aClass67_2298, PlayerAppearance.aClass67_693, 500000);
                 ISAAC.aClass31_521.cacheIndex = null;
                 ISAAC.aClass31_521.aClass47_728 = null;
                 ISAAC.aClass31_521.cacheData = null;
@@ -951,7 +952,7 @@ public class Main extends GameShell {
         } catch (java.io.IOException ioexception) {
             VarbitDefinition.aClass56_2356 = null;
             SpotAnimDefinition.aClass67_2298 = null;
-            Class30.aClass67_693 = null;
+            PlayerAppearance.aClass67_693 = null;
         }
         if (Class44.modewhere != 0)
             InteractiveObject.showFps = true;

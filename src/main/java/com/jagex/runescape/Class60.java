@@ -178,29 +178,6 @@ public class Class60 {
 //        }
     }
 
-    public static RSString method991(int arg0, long arg1) {
-        if(arg1 <= 0L || arg1 >= 6582952005840035281L)
-            return null;
-        if(arg1 % 37L == 0)
-            return null;
-        long l = arg1;
-        int i = 0;
-        while(l != 0) {
-            l /= 37L;
-            i++;
-        }
-        byte[] is = new byte[i];
-        while(arg1 != 0) {
-            long l_10_ = arg1;
-            arg1 /= 37L;
-            is[--i] = CollisionMap.aByteArray169[(int) (-(arg1 * 37L) + l_10_)];
-        }
-        RSString class1 = new RSString();
-        class1.chars = is;
-        class1.length = is.length;
-        return class1;
-    }
-
     public static void method992() {
         SceneCluster.aTimer_768.start();
         for(int i = 0; i < 32; i++)

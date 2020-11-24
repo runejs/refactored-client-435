@@ -10,6 +10,7 @@ import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.Wall;
 
@@ -47,7 +48,7 @@ public class Class13 {
         else if(arg0.anInt3107 < Node.pulseCycle)
             Class44.method898(255, arg0);
         else
-            Class30.method381(arg0);
+            PlayerAppearance.method381(arg0);
         Class40_Sub5_Sub17_Sub1.method762(arg0);
         Class40_Sub5_Sub15.method736(true, arg0);
         if(arg2 != 107)

@@ -5,7 +5,6 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -13,6 +12,7 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.InteractiveObject;
@@ -205,9 +205,9 @@ public class SpotAnimDefinition extends SubNode {
 
                     InteractiveObject.playerRights = Class40_Sub6.gameConnection.read();
                     Class22.accountFlagged = Class40_Sub6.gameConnection.read() == 1;
-                    Class30.anInt708 = Class40_Sub6.gameConnection.read();
-                    Class30.anInt708 <<= 8;
-                    Class30.anInt708 += Class40_Sub6.gameConnection.read();
+                    PlayerAppearance.anInt708 = Class40_Sub6.gameConnection.read();
+                    PlayerAppearance.anInt708 <<= 8;
+                    PlayerAppearance.anInt708 += Class40_Sub6.gameConnection.read();
                     Class44.anInt1049 = Class40_Sub6.gameConnection.read();
                     Class40_Sub6.gameConnection.method1008(0, 1, -127, IncomingPackets.incomingPacketBuffer.buffer);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;

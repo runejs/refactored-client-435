@@ -10,6 +10,7 @@ import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
@@ -74,9 +75,9 @@ public class OverlayDefinition extends SubNode {
                 anInt2321 = 0;
                 Class40_Sub3.anInt2032 = 0;
             }
-            if (arg0 != 20 && arg0 != 40 && Class30.aClass64_717 != null) {
-                Class30.aClass64_717.method1009();
-                Class30.aClass64_717 = null;
+            if (arg0 != 20 && arg0 != 40 && PlayerAppearance.aClass64_717 != null) {
+                PlayerAppearance.aClass64_717.method1009();
+                PlayerAppearance.aClass64_717 = null;
             }
             if (Class51.anInt1197 == 25 || Class51.anInt1197 == 40) {
                 Class65.method1018();
