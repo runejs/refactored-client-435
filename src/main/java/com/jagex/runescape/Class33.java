@@ -115,7 +115,7 @@ public class Class33 {
                     if(Node.pulseCycle < actor.anInt3139) {
                         FloorDecoration.method342(actor.anInt3117 + 15, actor);
                         if(ISAAC.anInt522 > -1) {
-                            int i_1_ = 30 * actor.anInt3130 / actor.anInt3101;
+                            int i_1_ = 30 * actor.remainingHitpoints / actor.maximumHitpoints;
                             if(i_1_ > 30)
                                 i_1_ = 30;
                             Rasterizer.drawFilledRectangle(-15 + ISAAC.anInt522, Class44.anInt1048 + -3, i_1_, 5, 65280);

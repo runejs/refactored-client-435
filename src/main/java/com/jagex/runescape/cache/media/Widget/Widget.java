@@ -878,7 +878,7 @@ public class Widget extends SubNode {
                                             break;
                                         }
                                         i -= 2;
-                                        ActorDefinition.method570(Class67.anIntArray1588[i], Class67.anIntArray1588[i + 1], Player.localPlayer);
+                                        ActorDefinition.playAnimation(Class67.anIntArray1588[i], Class67.anIntArray1588[i + 1], Player.localPlayer);
                                     }
                                 }
                             } else {
@@ -1023,7 +1023,7 @@ public class Widget extends SubNode {
                         widget.modelId = Class67.anIntArray1588[--i];
                     } else if (i_3_ == 1202) {
                         widget.modelType = WidgetModelType.LOCAL_PLAYER_CHATHEAD;
-                        widget.modelId = Player.localPlayer.playerAppearance.method374(-20874);
+                        widget.modelId = Player.localPlayer.playerAppearance.getHeadModelId();
                     } else {
                         if (i_3_ != 1203) {
                             break;
@@ -1396,7 +1396,7 @@ public class Widget extends SubNode {
             return null;
         }
         int i_9_ = 124 % ((-15 - arg0) / 34);
-        ImageRGB class40_sub5_sub14_sub4 = (ImageRGB) Cache.aClass9_326.get((long) i, (byte) 121);
+        ImageRGB class40_sub5_sub14_sub4 = (ImageRGB) Cache.aClass9_326.get((long) i);
         if (class40_sub5_sub14_sub4 != null) {
             return class40_sub5_sub14_sub4;
         }
@@ -1438,7 +1438,7 @@ public class Widget extends SubNode {
         if (i == -1) {
             return null;
         }
-        ImageRGB class40_sub5_sub14_sub4 = (ImageRGB) Cache.aClass9_326.get((long) i, (byte) 103);
+        ImageRGB class40_sub5_sub14_sub4 = (ImageRGB) Cache.aClass9_326.get((long) i);
         if (arg0 != 127) {
             isIf3 = false;
         }
@@ -1572,7 +1572,7 @@ public class Widget extends SubNode {
         if (arg0 <= 25) {
             aBoolean2688 = true;
         }
-        Model class40_sub5_sub17_sub5 = (Model) WallDecoration.aClass9_1264.get((long) ((modelType.ordinal() << 16) + i_11_), (byte) 59);
+        Model class40_sub5_sub17_sub5 = (Model) WallDecoration.aClass9_1264.get((long) ((modelType.ordinal() << 16) + i_11_));
         if (class40_sub5_sub17_sub5 == null) {
             if (modelType == WidgetModelType.MODEL) {
                 class40_sub5_sub17_sub5 = Model.getModel(Cache.aCacheIndex_329, i_11_, 0);
@@ -1596,7 +1596,7 @@ public class Widget extends SubNode {
                 if (arg4 == null) {
                     return null;
                 }
-                class40_sub5_sub17_sub5 = arg4.method379(30);
+                class40_sub5_sub17_sub5 = arg4.getStaticModel();
                 if (class40_sub5_sub17_sub5 == null) {
                     FramemapDefinition.aBoolean2177 = true;
                     return null;
@@ -1631,7 +1631,7 @@ public class Widget extends SubNode {
         if (fontId == 65535) {
             return null;
         }
-        TypeFace class40_sub5_sub14_sub1 = (TypeFace) Class67.aClass9_1582.get((long) fontId, (byte) 67);
+        TypeFace class40_sub5_sub14_sub1 = (TypeFace) Class67.aClass9_1582.get((long) fontId);
         if (arg0 != 34) {
             return null;
         }

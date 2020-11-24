@@ -74,25 +74,25 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
         Class57.anIntArray1347 = null;
     }
 
-    public static void method570(int arg0, int arg1, Player player) {
-        if(player.playingAnimation == arg0 && arg0 != -1) {
-            int i = ProducingGraphicsBuffer_Sub1.method1050(arg0, 2).anInt2483;
+    public static void playAnimation(int animationId, int animationDelay, Player player) {
+        if(player.playingAnimation == animationId && animationId != -1) {
+            int i = ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).anInt2483;
             if(i == 1) {
                 player.anInt3104 = 0;
                 player.anInt3095 = 0;
-                player.playingAnimationDelay = arg1;
+                player.playingAnimationDelay = animationDelay;
                 player.anInt3115 = 0;
             }
             if(i == 2) {
                 player.anInt3095 = 0;
             }
-        } else if(arg0 == -1 || player.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.method1050(arg0, 2).anInt2494 >= ProducingGraphicsBuffer_Sub1.method1050(player.playingAnimation, 2).anInt2494) {
+        } else if(animationId == -1 || player.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).anInt2494 >= ProducingGraphicsBuffer_Sub1.method1050(player.playingAnimation, 2).anInt2494) {
             player.anInt3094 = player.anInt3109;
             player.anInt3104 = 0;
             player.anInt3115 = 0;
             player.anInt3095 = 0;
-            player.playingAnimationDelay = arg1;
-            player.playingAnimation = arg0;
+            player.playingAnimationDelay = animationDelay;
+            player.playingAnimation = animationId;
         }
     }
 
@@ -195,7 +195,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
 
 
     public static ActorDefinition getDefinition(int id) {
-        ActorDefinition definition = (ActorDefinition) ISAAC.aClass9_510.get(id, (byte) 119);
+        ActorDefinition definition = (ActorDefinition) ISAAC.aClass9_510.get(id);
         if(definition != null)
             return definition;
         byte[] data = GroundItemTile.aCacheIndex_1375.getFile(id, 9);
@@ -207,15 +207,15 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
         return definition;
     }
 
-    public Model getChildModel(AnimationSequence arg1, AnimationSequence arg2, int arg3, int arg4) {
+    public Model getChildModel(AnimationSequence animation1, AnimationSequence animation2, int arg3, int arg4) {
         if(childrenIds != null) {
-            ActorDefinition class40_sub5_sub5 = getChildDefinition(-1);
-            if(class40_sub5_sub5 == null) {
+            ActorDefinition actorDefinition = getChildDefinition(-1);
+            if(actorDefinition == null) {
                 return null;
             }
-            return class40_sub5_sub5.getChildModel(arg1, arg2, arg3, arg4);
+            return actorDefinition.getChildModel(animation1, animation2, arg3, arg4);
         }
-        Model class40_sub5_sub17_sub5 = (Model) Class67.aClass9_1611.get(id, (byte) 75);
+        Model class40_sub5_sub17_sub5 = (Model) Class67.aClass9_1611.get(id);
         if(class40_sub5_sub17_sub5 == null) {
             boolean bool = false;
             for(int model : models) {
@@ -247,14 +247,14 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
             Class67.aClass9_1611.put(id, class40_sub5_sub17_sub5);
         }
         Model class40_sub5_sub17_sub5_0_;
-        if(arg1 != null && arg2 != null) {
-            class40_sub5_sub17_sub5_0_ = arg1.method590(class40_sub5_sub17_sub5, arg2, arg4, arg3, (byte) 63);
-        } else if(arg1 != null) {
-            class40_sub5_sub17_sub5_0_ = arg1.method599(arg4, class40_sub5_sub17_sub5, false);
-        } else if(arg2 == null) {
+        if(animation1 != null && animation2 != null) {
+            class40_sub5_sub17_sub5_0_ = animation1.method590(class40_sub5_sub17_sub5, animation2, arg4, arg3, (byte) 63);
+        } else if(animation1 != null) {
+            class40_sub5_sub17_sub5_0_ = animation1.method599(arg4, class40_sub5_sub17_sub5, false);
+        } else if(animation2 == null) {
             class40_sub5_sub17_sub5_0_ = class40_sub5_sub17_sub5.method817(true);
         } else {
-            class40_sub5_sub17_sub5_0_ = arg2.method599(arg3, class40_sub5_sub17_sub5, false);
+            class40_sub5_sub17_sub5_0_ = animation2.method599(arg3, class40_sub5_sub17_sub5, false);
         }
         if(resizeX != 128 || resizeY != 128) {
             class40_sub5_sub17_sub5_0_.scaleT(resizeX, resizeY, resizeX);

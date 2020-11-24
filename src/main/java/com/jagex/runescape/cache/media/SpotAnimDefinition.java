@@ -261,7 +261,7 @@ public class SpotAnimDefinition extends SubNode {
     public static SpotAnimDefinition forId(int arg0, int arg1) {
         if (arg1 != 13)
             Class37.method436(-34);
-        SpotAnimDefinition spotAnimDefinition = (SpotAnimDefinition) Class43.aClass9_1014.get((long) arg0, (byte) 59);
+        SpotAnimDefinition spotAnimDefinition = (SpotAnimDefinition) Class43.aClass9_1014.get((long) arg0);
         if (spotAnimDefinition != null)
             return spotAnimDefinition;
         byte[] is = InteractiveObject.aCacheIndex_488.getFile(arg0, 13);
@@ -299,7 +299,7 @@ public class SpotAnimDefinition extends SubNode {
     }
 
     public Model method549(int arg0, int arg1) {
-        Model class40_sub5_sub17_sub5 = (Model) Class34.aClass9_851.get((long) id, (byte) 50);
+        Model class40_sub5_sub17_sub5 = (Model) Class34.aClass9_851.get((long) id);
         if (class40_sub5_sub17_sub5 == null) {
             class40_sub5_sub17_sub5 = Model.getModel(UnderlayDefinition.aCacheIndex_2582, modelId, 0);
             if (class40_sub5_sub17_sub5 == null) {

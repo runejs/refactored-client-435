@@ -162,7 +162,7 @@ public class Class40_Sub3 extends Node {
                 method980(28987, UnderlayDefinition.aClass6_Sub1_2571, VertexNormal.lowMemory, IdentityKit.aClass6_Sub1_2609);
                 Class27.method357(UnderlayDefinition.aClass6_Sub1_2571, arg0 ^ ~0x2a85, IdentityKit.aClass6_Sub1_2609);
                 Class42.method885(IdentityKit.aClass6_Sub1_2609, Class22.membersWorld, UnderlayDefinition.aClass6_Sub1_2571);
-                Cache.method236(false, Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000, IdentityKit.aClass6_Sub1_2609, FloorDecoration.aClass6_Sub1_605);
+                Cache.method236(Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000, IdentityKit.aClass6_Sub1_2609, FloorDecoration.aClass6_Sub1_605);
                 Class55.method966(arg0 ^ 0x38, UnderlayDefinition.aClass6_Sub1_2571, IdentityKit.aClass6_Sub1_2609);
                 Landscape.method936(IdentityKit.aClass6_Sub1_2609);
                 Main.method43(IdentityKit.aClass6_Sub1_2609);
@@ -309,7 +309,7 @@ public class Class40_Sub3 extends Node {
     }
 
     public static UnderlayDefinition method531(byte arg0, int arg1) {
-        UnderlayDefinition underlayDefinition = (UnderlayDefinition) WallDecoration.aClass9_1247.get((long) arg1, (byte) 43);
+        UnderlayDefinition underlayDefinition = (UnderlayDefinition) WallDecoration.aClass9_1247.get((long) arg1);
         if (underlayDefinition != null)
             return underlayDefinition;
         byte[] is = Actor.aCacheIndex_3150.getFile(arg1, 1);

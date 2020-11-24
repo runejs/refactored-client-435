@@ -143,7 +143,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
     }
 
     public static GameObjectDefinition getDefinition(int arg0) {
-        GameObjectDefinition gameObjectDefinition = (GameObjectDefinition) GroundItemTile.aClass9_1364.get(arg0, (byte) 61);
+        GameObjectDefinition gameObjectDefinition = (GameObjectDefinition) GroundItemTile.aClass9_1364.get(arg0);
         if(gameObjectDefinition != null) {
             return gameObjectDefinition;
         }
@@ -179,7 +179,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         } else {
             l = arg2 + (id << 10) + (arg4 << 3);
         }
-        Model model = (Model) InteractiveObject.aClass9_470.get(l, (byte) 87);
+        Model model = (Model) InteractiveObject.aClass9_470.get(l);
         if(model == null) {
             model = method606(!nonFlatShading, false, arg2, arg4);
             if(model == null) {
@@ -263,7 +263,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
                 if(bool) {
                     i_8_ += 65536;
                 }
-                class40_sub5_sub17_sub5 = (Model) VertexNormal.aClass9_1102.get(i_8_, (byte) 122);
+                class40_sub5_sub17_sub5 = (Model) VertexNormal.aClass9_1102.get(i_8_);
                 if(class40_sub5_sub17_sub5 == null) {
                     class40_sub5_sub17_sub5 = Model.getModel(RSString.aCacheIndex_1705, i_8_ & 0xffff, 0);
                     if(class40_sub5_sub17_sub5 == null) {
@@ -297,7 +297,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
             if(bool) {
                 i_10_ += 65536;
             }
-            class40_sub5_sub17_sub5 = (Model) VertexNormal.aClass9_1102.get(i_10_, (byte) 48);
+            class40_sub5_sub17_sub5 = (Model) VertexNormal.aClass9_1102.get(i_10_);
             if(class40_sub5_sub17_sub5 == null) {
                 class40_sub5_sub17_sub5 = Model.getModel(RSString.aCacheIndex_1705, 0xffff & i_10_, 0);
                 if(class40_sub5_sub17_sub5 == null) {
@@ -347,7 +347,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         } else {
             l = arg5 + (id << 10) + (arg4 << 3);
         }
-        Model model = (Model) Class49.aClass9_1145.get(l, (byte) 70);
+        Model model = (Model) Class49.aClass9_1145.get(l);
         if(model == null) {
             model = method606(true, true, arg5, arg4);
             if(model == null) {

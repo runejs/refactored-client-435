@@ -3,7 +3,6 @@ package com.jagex.runescape.cache;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.language.English;
 
 public class Cache {
     public static volatile int mouseButtonPressed = 0;
@@ -35,14 +34,12 @@ public class Cache {
     public static void method233(boolean arg0) {
         Class33.aClass9_778.method235();
         if(!arg0)
-            method236(true, null, null, null);
+            method236(null, null, null);
     }
 
 
-    public static void method236(boolean arg0, CacheIndex arg1, CacheIndex arg2, CacheIndex arg3) {
+    public static void method236(CacheIndex arg1, CacheIndex arg2, CacheIndex arg3) {
         Class40_Sub11.aCacheIndex_2162 = arg1;
-        if(arg0)
-            anInt324 = -101;
         VarbitDefinition.aCacheIndex_2364 = arg3;
         AnimationSequence.aCacheIndex_2484 = arg2;
     }
@@ -63,18 +60,14 @@ public class Cache {
         aClass27_319.method352(102, arg2);
     }
 
-    public SubNode get(long arg0, byte arg1) {
+    public SubNode get(long arg0) {
         SubNode class40_sub5 = (SubNode) aClass23_318.method331(arg0, 6120);
-        if(arg1 < 39)
-            English.classic = null;
         if(class40_sub5 != null)
             aClass27_319.method352(114, class40_sub5);
         return class40_sub5;
     }
 
-    public void removeAll(long arg0, int arg1) {
-        if(arg1 <= 94)
-            get(30L, (byte) 20);
+    public void removeAll(long arg0) {
         SubNode class40_sub5 = (SubNode) aClass23_318.method331(arg0, 6120);
         if(class40_sub5 == null)
             return;

@@ -932,7 +932,7 @@ public class IncomingPackets {
                 int widgetData = incomingPacketBuffer.getIntLE();
                 Widget widget = Widget.forId(widgetData);
                 widget.modelType = WidgetModelType.LOCAL_PLAYER_CHATHEAD;
-                widget.modelId = Player.localPlayer.playerAppearance.method374(-20874);
+                widget.modelId = Player.localPlayer.playerAppearance.getHeadModelId();
                 incomingPacket = -1;
                 return true;
             }

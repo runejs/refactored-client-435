@@ -19,6 +19,7 @@ import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.Signlink;
 
 public abstract class Actor extends Renderable {
+
     public static int[] anIntArray3111;
     public static volatile int eventMouseButtonPressed = 0;
     public static CacheIndex aCacheIndex_3144;
@@ -45,8 +46,8 @@ public abstract class Actor extends Renderable {
     public int[] pathY;
     public int worldY;
     public String forcedChatMessage;
-    public int anInt3091;
-    public int anInt3093;
+    public int graphicId;
+    public int graphicDelay;
     public int anInt3094;
     public int anInt3095 = 0;
     public int anInt3096;
@@ -54,13 +55,13 @@ public abstract class Actor extends Renderable {
     public int worldX;
     public int anInt3099;
     public int facePositionY;
-    public int anInt3101;
+    public int maximumHitpoints;
     public int chatcolor;
     public int anInt3104;
     public boolean aBoolean3105;
     public int anInt3107;
     public int anInt3109;
-    public int anInt3110;
+    public int graphicHeight;
     public int anInt3112;
     public int anInt3113;
     public int anInt3115;
@@ -74,7 +75,7 @@ public abstract class Actor extends Renderable {
     public int idleAnimation;
     public int anInt3127;
     public int anInt3129;
-    public int anInt3130;
+    public int remainingHitpoints;
     public int walkAnimationId;
     public int turnLeftAnimationId;
     public int anInt3134;
@@ -102,7 +103,7 @@ public abstract class Actor extends Renderable {
         anInt3094 = 0;
         chatcolor = 0;
         anInt3104 = 0;
-        anInt3091 = -1;
+        graphicId = -1;
         anInt3117 = 200;
         anInt3078 = 100;
         anInt3120 = 0;
@@ -407,7 +408,7 @@ public abstract class Actor extends Renderable {
         return false;
     }
 
-    public void method785(int arg0, int arg1, int arg2, int arg3) {
+    public void method785(int arg0, int arg1, int arg2) {
         for(int i = 0; i < 4; i++) {
             if(arg1 >= anIntArray3136[i]) {
                 anIntArray3087[i] = arg2;
@@ -416,8 +417,6 @@ public abstract class Actor extends Renderable {
                 return;
             }
         }
-        if(arg3 >= -110)
-            anInt3080 = -75;
     }
 
     public void method787(int arg0, int arg1, boolean arg2, int arg3) {
@@ -443,7 +442,7 @@ public abstract class Actor extends Renderable {
         anInt3109 = 0;
         anInt3074 = 0;
         if(arg1 != -7717)
-            method785(-19, 10, -70, -9);
+            method785(-19, 10, -70);
         anInt3094 = 0;
         pathY[0] = arg3;
         pathX[0] = arg0;

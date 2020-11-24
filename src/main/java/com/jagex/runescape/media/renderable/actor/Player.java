@@ -21,6 +21,7 @@ import com.jagex.runescape.scene.util.CollisionMap;
 import java.awt.*;
 
 public class Player extends Actor {
+
     public static int anInt3264 = 0;
     public static int worldLevel;
     public static byte[] aByteArray3270;
@@ -37,6 +38,7 @@ public class Player extends Actor {
     public static int npcCount = 0;
     public static int localPlayerCount;
     public static boolean inTutorialIsland = false;
+    public static Buffer chatBuffer = new Buffer(new byte[5000]);
     public int skillLevel;
     public int anInt3258;
     public int combatLevel = 0;
@@ -90,39 +92,39 @@ public class Player extends Actor {
 
 
     public static void parsePlayerUpdateMasks(Player player, int mask, int playerIndex) {
-        if((0x100 & mask) != 0) {
-            int i = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            int i_0_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            player.method785(i_0_, pulseCycle, i, -122);
+        if((0x100 & mask) != 0) { // damage/hitsplat 1
+            int damageType1 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            int damageType2 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            player.method785(damageType2, pulseCycle, damageType1);
             player.anInt3139 = 300 + pulseCycle;
-            player.anInt3130 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            player.anInt3101 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            player.remainingHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            player.maximumHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
         }
         if((mask & 0x10) != 0) { // face position
             player.facePositionX = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
             player.facePositionY = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
         }
         if((mask & 0x1) != 0) { // animation
-            int i = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
-            if(i == 65535)
-                i = -1;
-            int i_1_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            ActorDefinition.method570(i, i_1_, player);
+            int animationId = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
+            if(animationId == 65535)
+                animationId = -1;
+            int animationDelay = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            ActorDefinition.playAnimation(animationId, animationDelay, player);
         }
         if((mask & 0x4) != 0) { // face actor
             player.facingActorIndex = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
             if(player.facingActorIndex == 65535)
                 player.facingActorIndex = -1;
         }
-        if((0x40 & mask) != 0) {
-            int i = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            int i_2_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            player.method785(i_2_, pulseCycle, i, -123);
+        if((0x40 & mask) != 0) { // damage/hitsplat 2
+            int damageType1 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            int damageType2 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            player.method785(damageType2, pulseCycle, damageType1);
             player.anInt3139 = 300 + pulseCycle;
-            player.anInt3130 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            player.anInt3101 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            player.remainingHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            player.maximumHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
         }
-        if((mask & 0x400) != 0) {
+        if((mask & 0x400) != 0) { // Forced movement?
             player.anInt3125 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             player.anInt3081 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             player.anInt3099 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
@@ -136,22 +138,22 @@ public class Player extends Actor {
             int chatEffectsAndColors = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
             int playerRights = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             int messageLength = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            int i_5_ = IncomingPackets.incomingPacketBuffer.currentPosition;
+            int bufferPosition = IncomingPackets.incomingPacketBuffer.currentPosition;
             if(player.playerName != null && player.playerAppearance != null) {
                 long l = RSString.nameToLong(player.playerName);
                 boolean bool = false;
                 if(playerRights <= 1) {
-                    for(int i_6_ = 0; i_6_ < Class42.anInt1008; i_6_++) {
-                        if(l == WallDecoration.ignores[i_6_]) {
+                    for(int i = 0; i < Class42.anInt1008; i++) {
+                        if(l == WallDecoration.ignores[i]) {
                             bool = true;
                             break;
                         }
                     }
                 }
                 if(!bool && !inTutorialIsland) {
-                    Class59.aClass40_Sub1_1385.currentPosition = 0;
-                    IncomingPackets.incomingPacketBuffer.getBytes(0, messageLength, Class59.aClass40_Sub1_1385.buffer);
-                    Class59.aClass40_Sub1_1385.currentPosition = 0;
+                    chatBuffer.currentPosition = 0;
+                    IncomingPackets.incomingPacketBuffer.getBytes(0, messageLength, chatBuffer.buffer);
+                    chatBuffer.currentPosition = 0;
                     String incomming = KeyFocusListener.method956(124, IncomingPackets.incomingPacketBuffer);
                     String class1 = RSString.formatChatString(incomming);
                     player.forcedChatMessage = class1.trim();
@@ -161,12 +163,12 @@ public class Player extends Actor {
                     if(playerRights == 2 || playerRights == 3)
                         Class44.addChatMessage(Native.goldCrown + player.playerName, class1, 1);
                     else if(playerRights == 1)
-                        Class44.addChatMessage(Native.whiteCrown+ player.playerName, class1, 1);
+                        Class44.addChatMessage(Native.whiteCrown + player.playerName, class1, 1);
                     else
                         Class44.addChatMessage(player.playerName, class1, 2);
                 }
             }
-            IncomingPackets.incomingPacketBuffer.currentPosition = messageLength + i_5_;
+            IncomingPackets.incomingPacketBuffer.currentPosition = messageLength + bufferPosition;
         }
         if((0x20 & mask) != 0) { // appearance
             int appearanceUpdateLength = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
@@ -176,16 +178,16 @@ public class Player extends Actor {
             trackedPlayerAppearanceCache[playerIndex] = buffer;
             player.parsePlayerAppearanceData(buffer);
         }
-        if((mask & 0x200) != 0) { // graphics?
-            player.anInt3091 = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
-            int i = IncomingPackets.incomingPacketBuffer.getIntBE();
+        if((mask & 0x200) != 0) { // graphics
+            player.graphicId = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
+            int graphicData = IncomingPackets.incomingPacketBuffer.getIntBE();
             player.anInt3129 = 0;
-            player.anInt3093 = pulseCycle + (i & 0xffff);
-            if(player.anInt3091 == 65535)
-                player.anInt3091 = -1;
+            player.graphicDelay = pulseCycle + (graphicData & 0xffff);
+            if(player.graphicId == 65535)
+                player.graphicId = -1;
             player.anInt3140 = 0;
-            player.anInt3110 = i >> 16;
-            if(player.anInt3093 > pulseCycle)
+            player.graphicHeight = graphicData >> 16;
+            if(player.graphicDelay > pulseCycle)
                 player.anInt3140 = -1;
         }
         if((0x80 & mask) != 0) { // forced chat
@@ -372,10 +374,10 @@ public class Player extends Actor {
             return null;
         animatedModel.method799();
         anInt3117 = animatedModel.modelHeight;
-        if(!aBoolean3287 && anInt3091 != -1 && anInt3140 != -1) {
-            Model model = SpotAnimDefinition.forId(anInt3091, 13).method549(anInt3140, 2);
+        if(!aBoolean3287 && graphicId != -1 && anInt3140 != -1) {
+            Model model = SpotAnimDefinition.forId(graphicId, 13).method549(anInt3140, 2);
             if(model != null) {
-                model.translate(0, -anInt3110, 0);
+                model.translate(0, -graphicHeight, 0);
                 Model[] models = {animatedModel, model};
                 animatedModel = new Model(models, 2, true);
             }
@@ -448,7 +450,7 @@ public class Player extends Actor {
         int[] appearanceColors = new int[5];
         for(int l = 0; l < 5; l++) {
             int j1 = buffer.getUnsignedByte();
-            if(j1 < 0 || Class40_Sub5_Sub17_Sub6.playerColours[l].length <= j1)
+            if(j1 < 0 || PlayerAppearance.playerColours[l].length <= j1)
                 j1 = 0;
             appearanceColors[l] = j1;
         }

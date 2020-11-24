@@ -28,6 +28,8 @@ public class PlayerAppearance {
     public static int[] anIntArray715 = new int[50];
     public static Class64 aClass64_717;
     public static int identityKitLength;
+    public static int[][] playerColours = {{6798, 107, 10283, 16, 4797, 7744, 5799, 4634, 33697, 22433, 2983, 54193}, {8741, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003, 25239}, {25238, 8742, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003}, {4626, 11146, 6439, 12, 4758, 10270}, {4550, 4537, 5681, 5673, 5790, 6806, 8076, 4574}};
+    public static int[] playerSkinColors = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
 
     public final int[] appearanceIndices = {8, 11, 4, 6, 9, 7, 10};
 
@@ -64,47 +66,49 @@ public class PlayerAppearance {
         arg1.anInt3118 = arg1.anInt3080;
     }
 
-    public int method374(int arg0) {
-        if(arg0 != -20874)
-            return 109;
+
+
+    public int getHeadModelId() {
         if(transformationNpcId != -1)
             return ActorDefinition.getDefinition(transformationNpcId).id + 305419896;
         return appearance[1] + (appearance[11] << 5) + (appearanceColors[4] << 20) + (appearanceColors[0] << 25) + (appearance[0] << 15) + (appearance[8] << 10);
     }
 
-    public void method375(int arg0, Buffer arg1) {
-        arg1.putByte(gender ? 1 : 0);
+    public void sendAppearanceData(int arg0, Buffer buffer) {
+        buffer.putByte(gender ? 1 : 0);
         for(int i = arg0; i < 7; i++) {
             int i_0_ = appearance[appearanceIndices[i]];
             if(i_0_ != 0)
-                arg1.putByte(-256 + i_0_);
+                buffer.putByte(-256 + i_0_);
             else
-                arg1.putByte(-1);
+                buffer.putByte(-1);
         }
         for(int i = 0; i < 5; i++)
-            arg1.putByte(appearanceColors[i]);
+            buffer.putByte(appearanceColors[i]);
     }
 
-    public Model getAnimatedModel(AnimationSequence arg0, AnimationSequence arg1, int arg2, int arg3) {
-        if(transformationNpcId != -1)
-            return ActorDefinition.getDefinition(transformationNpcId).getChildModel(arg0, arg1, arg2, arg3);
+    public Model getAnimatedModel(AnimationSequence animation1, AnimationSequence animation2, int unknown1, int unknown2) {
+        if(transformationNpcId != -1) {
+            return ActorDefinition.getDefinition(transformationNpcId).getChildModel(animation1, animation2, unknown1, unknown2);
+        }
+
         long hash = appearanceHash;
         int[] appearance = this.appearance;
-        if(arg0 != null && (arg0.shieldModel >= 0 || arg0.weaponModel >= 0)) {
+        if(animation1 != null && (animation1.shieldModel >= 0 || animation1.weaponModel >= 0)) {
             appearance = new int[12];
             for(int i = 0; i < 12; i++)
                 appearance[i] = this.appearance[i];
-            if(arg0.shieldModel >= 0) {
-                hash += (arg0.shieldModel - this.appearance[5] << 8);
-                appearance[5] = arg0.shieldModel;
+            if(animation1.shieldModel >= 0) {
+                hash += (animation1.shieldModel - this.appearance[5] << 8);
+                appearance[5] = animation1.shieldModel;
             }
-            if(arg0.weaponModel >= 0) {
-                hash += (arg0.weaponModel - this.appearance[3] << 16);
-                appearance[3] = arg0.weaponModel;
+            if(animation1.weaponModel >= 0) {
+                hash += (animation1.weaponModel - this.appearance[3] << 16);
+                appearance[3] = animation1.weaponModel;
             }
         }
 
-        Model cachedModel = (Model) CacheIndex.modelCache.get(hash, (byte) 66);
+        Model cachedModel = (Model) CacheIndex.modelCache.get(hash);
         if(cachedModel == null) {
             boolean invalid = false;
             for(int bodyPart = 0; bodyPart < 12; bodyPart++) {
@@ -116,7 +120,7 @@ public class PlayerAppearance {
             }
             if(invalid) {
                 if(this.cachedModel != -1L)
-                    cachedModel = (Model) CacheIndex.modelCache.get(this.cachedModel, (byte) 123);
+                    cachedModel = (Model) CacheIndex.modelCache.get(this.cachedModel);
                 if(cachedModel == null)
                     return null;
             }
@@ -140,9 +144,9 @@ public class PlayerAppearance {
                 cachedModel = new Model(models, count);
                 for(int part = 0; part < 5; part++) {
                     if(appearanceColors[part] != 0) {
-                        cachedModel.replaceColor(Class40_Sub5_Sub17_Sub6.playerColours[part][0], Class40_Sub5_Sub17_Sub6.playerColours[part][appearanceColors[part]]);
+                        cachedModel.replaceColor(playerColours[part][0], playerColours[part][appearanceColors[part]]);
                         if(part == 1)
-                            cachedModel.replaceColor(Class35.SKIN_COLOURS[0], Class35.SKIN_COLOURS[appearanceColors[part]]);
+                            cachedModel.replaceColor(playerSkinColors[0], playerSkinColors[appearanceColors[part]]);
                     }
                 }
                 cachedModel.createBones();
@@ -152,14 +156,14 @@ public class PlayerAppearance {
             }
         }
         Model finalModel;
-        if(arg0 != null || arg1 != null) {
-            if(arg0 == null || arg1 == null) {
-                if(arg0 == null)
-                    finalModel = arg1.method599(arg2, cachedModel, false);
+        if(animation1 != null || animation2 != null) {
+            if(animation1 == null || animation2 == null) {
+                if(animation1 == null)
+                    finalModel = animation2.method599(unknown1, cachedModel, false);
                 else
-                    finalModel = arg0.method599(arg3, cachedModel, false);
+                    finalModel = animation1.method599(unknown2, cachedModel, false);
             } else
-                finalModel = arg0.method590(cachedModel, arg1, arg3, arg2, (byte) 63);
+                finalModel = animation1.method590(cachedModel, animation2, unknown2, unknown1, (byte) 63);
         } else
             return cachedModel;
         return finalModel;
@@ -191,50 +195,57 @@ public class PlayerAppearance {
         class30.appearanceHash = class30.appearanceHash + (long) (gender ? 1 : 0);
         appearance[5] = i_8_;
         appearance[9] = i;
-        if(l != 0L && l != appearanceHash)
-            CacheIndex.modelCache.removeAll(l, 108);
+
+        if(l != 0L && l != appearanceHash) {
+            CacheIndex.modelCache.removeAll(l);
+        }
     }
 
-    public Model method379(int arg0) {
-        if(transformationNpcId != -1)
+    public Model getStaticModel() {
+        if(transformationNpcId != -1) {
             return ActorDefinition.getDefinition(transformationNpcId).getHeadModel();
+        }
+
         boolean bool = false;
         for(int i = 0; i < 12; i++) {
-            int i_11_ = appearance[i];
-            if(i_11_ >= 256 && i_11_ < 512 && !IdentityKit.cache(i_11_ - 256).method624())
+            int appearanceId = appearance[i];
+            if(appearanceId >= 256 && appearanceId < 512 && !IdentityKit.cache(appearanceId - 256).method624())
                 bool = true;
-            if(i_11_ >= 512 && !ItemDefinition.forId(-512 + i_11_, 10).headPieceReady(gender))
+            if(appearanceId >= 512 && !ItemDefinition.forId(-512 + appearanceId, 10).headPieceReady(gender))
                 bool = true;
         }
-        if(arg0 <= 20)
-            anInt681 = 106;
-        if(bool)
-            return null;
-        Model[] class40_sub5_sub17_sub5s = new Model[12];
-        int i = 0;
-        for(int i_12_ = 0; i_12_ < 12; i_12_++) {
-            int i_13_ = appearance[i_12_];
-            if(i_13_ >= 256 && i_13_ < 512) {
-                Model class40_sub5_sub17_sub5 = IdentityKit.cache(-256 + i_13_).method629();
-                if(class40_sub5_sub17_sub5 != null)
-                    class40_sub5_sub17_sub5s[i++] = class40_sub5_sub17_sub5;
-            }
-            if(i_13_ >= 512) {
-                Model class40_sub5_sub17_sub5 = ItemDefinition.forId(i_13_ - 512, 10).asHeadPiece(gender);
-                if(class40_sub5_sub17_sub5 != null)
-                    class40_sub5_sub17_sub5s[i++] = class40_sub5_sub17_sub5;
-            }
-        }
-        Model class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, i);
-        for(int i_14_ = 0; i_14_ < 5; i_14_++) {
-            if(appearanceColors[i_14_] != 0) {
-                class40_sub5_sub17_sub5.replaceColor(Class40_Sub5_Sub17_Sub6.playerColours[i_14_][0], Class40_Sub5_Sub17_Sub6.playerColours[i_14_][appearanceColors[i_14_]]);
-                if(i_14_ == 1)
-                    class40_sub5_sub17_sub5.replaceColor(Class35.SKIN_COLOURS[0], Class35.SKIN_COLOURS[appearanceColors[i_14_]]);
-            }
-        }
-        return class40_sub5_sub17_sub5;
 
+        if(bool) {
+            return null;
+        }
+
+        Model[] models = new Model[12];
+        int i = 0;
+
+        for(int equipmentSlot = 0; equipmentSlot < 12; equipmentSlot++) {
+            int slotAppearance = appearance[equipmentSlot];
+            if(slotAppearance >= 256 && slotAppearance < 512) {
+                Model model = IdentityKit.cache(-256 + slotAppearance).method629();
+                if(model != null)
+                    models[i++] = model;
+            }
+            if(slotAppearance >= 512) {
+                Model model = ItemDefinition.forId(slotAppearance - 512, 10).asHeadPiece(gender);
+                if(model != null)
+                    models[i++] = model;
+            }
+        }
+
+        Model finalModel = new Model(models, i);
+        for(int colorIndex = 0; colorIndex < 5; colorIndex++) {
+            if(appearanceColors[colorIndex] != 0) {
+                finalModel.replaceColor(playerColours[colorIndex][0], playerColours[colorIndex][appearanceColors[colorIndex]]);
+                if(colorIndex == 1)
+                    finalModel.replaceColor(playerSkinColors[0], playerSkinColors[appearanceColors[colorIndex]]);
+            }
+        }
+
+        return finalModel;
     }
 
     public void setPlayerAppearance(int[] appearance, boolean gender, int[] appearanceColors, int transformationNpcId) {
@@ -259,45 +270,41 @@ public class PlayerAppearance {
         updateAppearanceCache();
     }
 
-    public void method382(int arg0, boolean arg1, int arg2) {
-        if(arg0 != 1 || !gender) {
-            int i = appearance[appearanceIndices[arg0]];
+    public void loadCachedAppearance(int unknown1, boolean unknown2) {
+        if(unknown1 != 1 || !gender) {
+            int i = appearance[appearanceIndices[unknown1]];
             if(i != 0) {
                 i -= 256;
-                if(arg2 > 3) {
-                    IdentityKit identityKit;
-                    do {
-                        if(arg1) {
-                            i++;
-                            if(i >= identityKitLength)
-                                i = 0;
-                        } else if(--i < 0)
-                            i = -1 + identityKitLength;
-                        identityKit = IdentityKit.cache(i);
-                    } while(identityKit == null || identityKit.nonSelectable || identityKit.bodyPartId != arg0 + (!gender ? 0 : 7));
-                    appearance[appearanceIndices[arg0]] = i + 256;
-                    updateAppearanceCache();
-                }
+                IdentityKit identityKit;
+                do {
+                    if(unknown2) {
+                        i++;
+                        if(i >= identityKitLength)
+                            i = 0;
+                    } else if(--i < 0)
+                        i = -1 + identityKitLength;
+                    identityKit = IdentityKit.cache(i);
+                } while(identityKit == null || identityKit.nonSelectable || identityKit.bodyPartId != unknown1 + (!gender ? 0 : 7));
+                appearance[appearanceIndices[unknown1]] = i + 256;
+                updateAppearanceCache();
             }
         }
     }
 
-    public void method383(boolean arg0, byte arg1) {
-        if(!gender != !arg0) {
-            if(arg1 != -110)
-                method382(57, false, 67);
-            setPlayerAppearance(null, arg0, appearanceColors, -1);
+    public void setGender(boolean gender) {
+        if(this.gender == !gender) {
+            setPlayerAppearance(null, gender, appearanceColors, -1);
         }
     }
 
-    public void method384(boolean arg1, int arg2) {
-        int i_21_ = appearanceColors[arg2];
-        if(!arg1) {
-            if(--i_21_ < 0)
-                i_21_ = -1 + Class40_Sub5_Sub17_Sub6.playerColours[arg2].length;
-        } else if(Class40_Sub5_Sub17_Sub6.playerColours[arg2].length <= ++i_21_)
-            i_21_ = 0;
-        appearanceColors[arg2] = i_21_;
+    public void updateAppearanceColors(boolean reset, int appearanceIndex) {
+        int appearanceColor = appearanceColors[appearanceIndex];
+        if(!reset) {
+            if(--appearanceColor < 0)
+                appearanceColor = -1 + playerColours[appearanceIndex].length;
+        } else if(playerColours[appearanceIndex].length <= ++appearanceColor)
+            appearanceColor = 0;
+        appearanceColors[appearanceIndex] = appearanceColor;
         updateAppearanceCache();
     }
 }

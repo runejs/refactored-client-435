@@ -14,7 +14,6 @@ import com.jagex.runescape.scene.SceneCluster;
 
 public class Class59 {
     public static int anInt1383;
-    public static Buffer aClass40_Sub1_1385 = new Buffer(new byte[5000]);
     public static int anInt1386;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1387;
     public static int anInt1388;

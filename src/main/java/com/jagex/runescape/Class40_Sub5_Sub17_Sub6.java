@@ -10,10 +10,10 @@ import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 
 public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public static TypeFace fontSmall;
-    public static int[][] playerColours = {{6798, 107, 10283, 16, 4797, 7744, 5799, 4634, 33697, 22433, 2983, 54193}, {8741, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003, 25239}, {25238, 8742, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003}, {4626, 11146, 6439, 12, 4758, 10270}, {4550, 4537, 5681, 5673, 5790, 6806, 8076, 4574}};
     public static ProducingGraphicsBuffer framePieceTop;
     public static TypeFace fontBold;
     public static int[] anIntArray3248;
@@ -54,7 +54,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
         if(arg0 == -1)
             return 12345678;
         if(arg2 != 73)
-            playerColours = null;
+            PlayerAppearance.playerColours = null;
         arg1 = (0x7f & arg0) * arg1 / 128;
         if(arg1 < 2)
             arg1 = 2;

@@ -29,13 +29,13 @@ public class Class13 {
             arg0.playingAnimation = -1;
             arg0.anInt3112 = 0;
             arg0.anInt3107 = 0;
-            arg0.anInt3091 = -1;
+            arg0.graphicId = -1;
             arg0.worldX = arg0.anInt3096 * 64 + 128 * arg0.pathY[0];
             arg0.worldY = arg0.pathX[0] * 128 + 64 * arg0.anInt3096;
             arg0.method790(0);
         }
         if(arg0 == Player.localPlayer && (arg0.worldX < 1536 || arg0.worldY < 1536 || arg0.worldX >= 11776 || arg0.worldY >= 11776)) {
-            arg0.anInt3091 = -1;
+            arg0.graphicId = -1;
             arg0.anInt3107 = 0;
             arg0.anInt3112 = 0;
             arg0.playingAnimation = -1;

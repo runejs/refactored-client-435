@@ -31,7 +31,7 @@ public class IdentityKit extends SubNode {
 
     public static Class40_Sub5_Sub1 method626(int arg0, int arg1) {
         long l = arg0 + (arg1 << 16);
-        Class40_Sub5_Sub1 class40_sub5_sub1 = (Class40_Sub5_Sub1) Class17.aClass9_449.get(l, (byte) 72);
+        Class40_Sub5_Sub1 class40_sub5_sub1 = (Class40_Sub5_Sub1) Class17.aClass9_449.get(l);
         if(class40_sub5_sub1 != null) {
             return class40_sub5_sub1;
         }
@@ -66,7 +66,7 @@ public class IdentityKit extends SubNode {
 
     // ???
     public static IdentityKit cache(int arg1) {
-        IdentityKit identityKit = (IdentityKit) ProducingGraphicsBuffer.aClass9_1615.get(arg1, (byte) 107);
+        IdentityKit identityKit = (IdentityKit) ProducingGraphicsBuffer.aClass9_1615.get(arg1);
         if(identityKit != null) {
             return identityKit;
         }

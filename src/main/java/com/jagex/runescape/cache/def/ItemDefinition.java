@@ -192,7 +192,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
     }
 
     public static ItemDefinition forId(int id, int arg1) {
-        ItemDefinition definition = (ItemDefinition) ISAAC.aClass9_516.get(id, (byte) 100);
+        ItemDefinition definition = (ItemDefinition) ISAAC.aClass9_516.get(id);
         if(definition != null) {
             return definition;
         }
@@ -217,7 +217,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
 
     public static ImageRGB sprite(int stackSize, int id, int backColour) {
         if(backColour == 0) {
-            ImageRGB sprite = (ImageRGB) Buffer.rgbImageCache.get((long) id, (byte) 56);
+            ImageRGB sprite = (ImageRGB) Buffer.rgbImageCache.get((long) id);
             if(sprite != null && sprite.maxHeight != stackSize && sprite.maxHeight != -1) {
                 sprite.remove(-1);
                 sprite = null;
@@ -594,7 +594,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
                 return forId(id, 10).asGroundStack(arg0, 1);
             }
         }
-        Model model = (Model) MouseHandler.modelCache.get(id, (byte) 87);
+        Model model = (Model) MouseHandler.modelCache.get(id);
         if(model != null) {
             return model;
         }
