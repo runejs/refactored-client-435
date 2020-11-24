@@ -17,15 +17,15 @@ public class Class40_Sub5_Sub11 extends SubNode {
         int i = arg0.anInt3125 * 128 + 64 * arg0.anInt3096;
         int i_0_ = arg0.anInt3112 + -Node.pulseCycle;
         if(arg0.anInt3073 == 0)
-            arg0.anInt3080 = 1024;
+            arg0.initialFaceDirection = 1024;
         if(arg0.anInt3073 == 1)
-            arg0.anInt3080 = 1536;
+            arg0.initialFaceDirection = 1536;
         if(arg0.anInt3073 == 2)
-            arg0.anInt3080 = 0;
+            arg0.initialFaceDirection = 0;
         int i_1_ = arg0.anInt3096 * 64 + 128 * arg0.anInt3081;
         arg0.worldX += (i - arg0.worldX) / i_0_;
         if(arg0.anInt3073 == 3)
-            arg0.anInt3080 = 512;
+            arg0.initialFaceDirection = 512;
         arg0.anInt3074 = 0;
         arg0.worldY += (-arg0.worldY + i_1_) / i_0_;
     }

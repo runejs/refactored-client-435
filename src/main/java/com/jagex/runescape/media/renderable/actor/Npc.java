@@ -555,21 +555,26 @@ public class Npc extends Actor {
     }
 
     public static void registerNewNpcs() {
-        while(IncomingPackets.incomingPacketBuffer.method510(IncomingPackets.incomingPacketSize) >= 27) {
+        while(IncomingPackets.incomingPacketBuffer.getRemainingBits(IncomingPackets.incomingPacketSize) >= 27) {
             int i = IncomingPackets.incomingPacketBuffer.getBits(15);
-            if(i == 32767)
+            if(i == 32767) {
                 break;
-            boolean bool = false;
+            }
+
+            boolean initializing = false;
             if(Player.npcs[i] == null) {
                 Player.npcs[i] = new Npc();
-                bool = true;
+                initializing = true;
             }
+
             Npc npc = Player.npcs[i];
             Player.npcIds[Player.npcCount++] = i;
             npc.anInt3134 = pulseCycle;
             int initialFaceDirection = Class40_Sub5_Sub17_Sub1.directions[IncomingPackets.incomingPacketBuffer.getBits(3)];
-            if(bool)
-                npc.anInt3080 = initialFaceDirection;
+            if(initializing) {
+                npc.initialFaceDirection = initialFaceDirection;
+            }
+
             int offsetX = IncomingPackets.incomingPacketBuffer.getBits(5);
             if(offsetX > 15)
                 offsetX -= 32;

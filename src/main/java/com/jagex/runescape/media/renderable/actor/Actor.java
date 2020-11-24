@@ -37,7 +37,7 @@ public abstract class Actor extends Renderable {
     public int anInt3077;
     public int anInt3078;
     public int turnAroundAnimationId;
-    public int anInt3080;
+    public int initialFaceDirection;
     public int anInt3081;
     public int runAnimationId;
     public int anInt3083;

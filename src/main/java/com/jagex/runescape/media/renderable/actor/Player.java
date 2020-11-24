@@ -295,7 +295,7 @@ public class Player extends Actor {
     }
 
     public static void registerNewPlayers() {
-        while(IncomingPackets.incomingPacketBuffer.method510(IncomingPackets.incomingPacketSize) >= 11) {
+        while(IncomingPackets.incomingPacketBuffer.getRemainingBits(IncomingPackets.incomingPacketSize) >= 11) {
             int newPlayerIndex = IncomingPackets.incomingPacketBuffer.getBits(11);
             if(newPlayerIndex == 2047)
                 break;
@@ -318,7 +318,7 @@ public class Player extends Actor {
             int initialFaceDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
             int faceDirection = Class40_Sub5_Sub17_Sub1.directions[initialFaceDirection];
             if(bool)
-                player.anInt3080 = faceDirection;
+                player.initialFaceDirection = faceDirection;
             int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
             int discardWalkingQueue = IncomingPackets.incomingPacketBuffer.getBits(1);
             if(discardWalkingQueue == 1)
@@ -388,22 +388,22 @@ public class Player extends Actor {
             if(anInt3283 <= Node.pulseCycle && Node.pulseCycle < anInt3274) {
                 Model model = playerModel;
                 model.translate(-worldX + anInt3271, -anInt3276 + anInt3272, anInt3291 + -worldY);
-                if(anInt3080 == 512) {
+                if(initialFaceDirection == 512) {
                     model.method813();
                     model.method813();
                     model.method813();
-                } else if(anInt3080 == 1024) {
+                } else if(initialFaceDirection == 1024) {
                     model.method813();
                     model.method813();
-                } else if(anInt3080 == 1536)
+                } else if(initialFaceDirection == 1536)
                     model.method813();
                 Model[] models = {animatedModel, model};
                 animatedModel = new Model(models, 2, true);
-                if(anInt3080 != 512) {
-                    if(anInt3080 == 1024) {
+                if(initialFaceDirection != 512) {
+                    if(initialFaceDirection == 1024) {
                         model.method813();
                         model.method813();
-                    } else if(anInt3080 == 1536) {
+                    } else if(initialFaceDirection == 1536) {
                         model.method813();
                         model.method813();
                         model.method813();

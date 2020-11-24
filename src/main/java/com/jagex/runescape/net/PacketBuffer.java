@@ -114,8 +114,8 @@ public class PacketBuffer extends Buffer {
         return class1;
     }
 
-    public int method510(int arg1) {
-        return 8 * arg1 - bitoffset;
+    public int getRemainingBits(int packetSize) {
+        return 8 * packetSize - bitoffset;
     }
 
     public void finishBitAccess() {

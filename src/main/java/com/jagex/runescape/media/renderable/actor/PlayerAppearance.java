@@ -56,15 +56,15 @@ public class PlayerAppearance {
             arg1.worldY = (i_18_ * (i + -i_16_) + i_16_ * i_20_) / i;
         }
         if(arg1.anInt3073 == 0)
-            arg1.anInt3080 = 1024;
+            arg1.initialFaceDirection = 1024;
         arg1.anInt3074 = 0;
         if(arg1.anInt3073 == 1)
-            arg1.anInt3080 = 1536;
+            arg1.initialFaceDirection = 1536;
         if(arg1.anInt3073 == 2)
-            arg1.anInt3080 = 0;
+            arg1.initialFaceDirection = 0;
         if(arg1.anInt3073 == 3)
-            arg1.anInt3080 = 512;
-        arg1.anInt3118 = arg1.anInt3080;
+            arg1.initialFaceDirection = 512;
+        arg1.anInt3118 = arg1.initialFaceDirection;
     }
 
 
