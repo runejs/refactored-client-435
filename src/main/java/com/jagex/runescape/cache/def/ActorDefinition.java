@@ -22,6 +22,7 @@ import com.jagex.runescape.util.SignlinkNode;
 import java.awt.*;
 
 public class ActorDefinition extends SubNode implements EntityDefinition {
+
     public static CacheIndex_Sub1 aClass6_Sub1_2377;
     public static int[] sidebarOffsets;
     public static int menuActionRow = 0;
@@ -195,7 +196,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
 
 
     public static ActorDefinition getDefinition(int id) {
-        ActorDefinition definition = (ActorDefinition) ISAAC.aClass9_510.get(id);
+        ActorDefinition definition = (ActorDefinition) ISAAC.cachedActorDefinitions.get(id);
         if(definition != null)
             return definition;
         byte[] data = GroundItemTile.aCacheIndex_1375.getFile(id, 9);
@@ -203,7 +204,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
         definition.id = id;
         if(data != null)
             definition.readValues(new Buffer(data));
-        ISAAC.aClass9_510.put(id, definition);
+        ISAAC.cachedActorDefinitions.put(id, definition);
         return definition;
     }
 
@@ -215,8 +216,8 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
             }
             return actorDefinition.getChildModel(animation1, animation2, arg3, arg4);
         }
-        Model class40_sub5_sub17_sub5 = (Model) Class67.aClass9_1611.get(id);
-        if(class40_sub5_sub17_sub5 == null) {
+        Model model1 = (Model) Class67.aClass9_1611.get(id);
+        if(model1 == null) {
             boolean bool = false;
             for(int model : models) {
                 if(!Class67.aCacheIndex_1577.loaded(model, 0)) {
@@ -231,30 +232,30 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
                 class40_sub5_sub17_sub5s[i] = Model.getModel(Class67.aCacheIndex_1577, models[i], 0);
             }
             if(class40_sub5_sub17_sub5s.length == 1) {
-                class40_sub5_sub17_sub5 = class40_sub5_sub17_sub5s[0];
+                model1 = class40_sub5_sub17_sub5s[0];
             } else {
-                class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, class40_sub5_sub17_sub5s.length);
+                model1 = new Model(class40_sub5_sub17_sub5s, class40_sub5_sub17_sub5s.length);
             }
             if(modifiedModelColors != null) {
                 for(int i = 0; i < modifiedModelColors.length; i++) {
-                    assert class40_sub5_sub17_sub5 != null;
-                    class40_sub5_sub17_sub5.replaceColor(modifiedModelColors[i], originalModelColors[i]);
+                    assert model1 != null;
+                    model1.replaceColor(modifiedModelColors[i], originalModelColors[i]);
                 }
             }
-            assert class40_sub5_sub17_sub5 != null;
-            class40_sub5_sub17_sub5.createBones();
-            class40_sub5_sub17_sub5.applyLighting(ambient + 64, 850 + contrast, -30, -50, -30, true);
-            Class67.aClass9_1611.put(id, class40_sub5_sub17_sub5);
+            assert model1 != null;
+            model1.createBones();
+            model1.applyLighting(ambient + 64, 850 + contrast, -30, -50, -30, true);
+            Class67.aClass9_1611.put(id, model1);
         }
         Model class40_sub5_sub17_sub5_0_;
         if(animation1 != null && animation2 != null) {
-            class40_sub5_sub17_sub5_0_ = animation1.method590(class40_sub5_sub17_sub5, animation2, arg4, arg3, (byte) 63);
+            class40_sub5_sub17_sub5_0_ = animation1.method590(model1, animation2, arg4, arg3, (byte) 63);
         } else if(animation1 != null) {
-            class40_sub5_sub17_sub5_0_ = animation1.method599(arg4, class40_sub5_sub17_sub5, false);
+            class40_sub5_sub17_sub5_0_ = animation1.method599(arg4, model1, false);
         } else if(animation2 == null) {
-            class40_sub5_sub17_sub5_0_ = class40_sub5_sub17_sub5.method817(true);
+            class40_sub5_sub17_sub5_0_ = model1.method817(true);
         } else {
-            class40_sub5_sub17_sub5_0_ = animation2.method599(arg3, class40_sub5_sub17_sub5, false);
+            class40_sub5_sub17_sub5_0_ = animation2.method599(arg3, model1, false);
         }
         if(resizeX != 128 || resizeY != 128) {
             class40_sub5_sub17_sub5_0_.scaleT(resizeX, resizeY, resizeX);

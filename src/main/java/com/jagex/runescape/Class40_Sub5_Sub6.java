@@ -168,7 +168,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
     }
 
     public static void method586(int arg0) {
-        ISAAC.aClass9_510.method235();
+        ISAAC.cachedActorDefinitions.method235();
         Class67.aClass9_1611.method235();
         if (arg0 <= 63)
             English.errorConnectingToServer = null;

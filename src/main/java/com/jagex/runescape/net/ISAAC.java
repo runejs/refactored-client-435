@@ -27,7 +27,7 @@ public class ISAAC {
 
     public static boolean redrawTabArea = false;
     public static int anInt509 = 0;
-    public static Cache aClass9_510 = new Cache(64);
+    public static Cache cachedActorDefinitions = new Cache(64);
     public static boolean aBoolean512;
     public static Cache aClass9_516 = new Cache(64);
     public static boolean aBoolean519 = true;
