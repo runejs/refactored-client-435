@@ -27,6 +27,7 @@ public class PlayerAppearance {
     public static ProducingGraphicsBuffer tabPieveLowerRight;
     public static int[] anIntArray715 = new int[50];
     public static Class64 aClass64_717;
+
     public static int identityKitLength;
     public static int[][] playerColours = {{6798, 107, 10283, 16, 4797, 7744, 5799, 4634, 33697, 22433, 2983, 54193}, {8741, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003, 25239}, {25238, 8742, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003}, {4626, 11146, 6439, 12, 4758, 10270}, {4550, 4537, 5681, 5673, 5790, 6806, 8076, 4574}};
     public static int[] playerSkinColors = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
@@ -74,9 +75,9 @@ public class PlayerAppearance {
         return appearance[1] + (appearance[11] << 5) + (appearanceColors[4] << 20) + (appearanceColors[0] << 25) + (appearance[0] << 15) + (appearance[8] << 10);
     }
 
-    public void sendAppearanceData(int arg0, Buffer buffer) {
+    public void sendAppearanceData(int startIndex, Buffer buffer) {
         buffer.putByte(gender ? 1 : 0);
-        for(int i = arg0; i < 7; i++) {
+        for(int i = startIndex; i < 7; i++) {
             int i_0_ = appearance[appearanceIndices[i]];
             if(i_0_ != 0)
                 buffer.putByte(-256 + i_0_);
@@ -171,33 +172,39 @@ public class PlayerAppearance {
     }
 
     public void updateAppearanceCache() {
-        int i = appearance[9];
-        int i_8_ = appearance[5];
-        long l = appearanceHash;
-        appearance[5] = i;
-        appearance[9] = i_8_;
+        int appearance9 = appearance[9];
+        int appearance5 = appearance[5];
+        long originalAppearanceHash = appearanceHash;
+        appearance[5] = appearance9;
+        appearance[9] = appearance5;
         appearanceHash = 0L;
-        for(int i_9_ = 0; i_9_ < 12; i_9_++) {
-            appearanceHash <<= 4;
-            if(appearance[i_9_] >= 256)
-                appearanceHash += (appearance[i_9_] + -256);
-        }
-        if(appearance[0] >= 256)
-            appearanceHash += (-256 + appearance[0] >> 4);
-        if(appearance[1] >= 256)
-            appearanceHash += (-256 + appearance[1] >> 8);
-        for(int i_10_ = 0; i_10_ < 5; i_10_++) {
-            appearanceHash <<= 3;
-            appearanceHash += appearanceColors[i_10_];
-        }
-        appearanceHash <<= 1;
-        PlayerAppearance class30 = this;
-        class30.appearanceHash = class30.appearanceHash + (long) (gender ? 1 : 0);
-        appearance[5] = i_8_;
-        appearance[9] = i;
 
-        if(l != 0L && l != appearanceHash) {
-            CacheIndex.modelCache.removeAll(l);
+        for(int appearanceIndex = 0; appearanceIndex < 12; appearanceIndex++) {
+            appearanceHash <<= 4;
+            if(appearance[appearanceIndex] >= 256)
+                appearanceHash += (appearance[appearanceIndex] + -256);
+        }
+
+        if(appearance[0] >= 256) {
+            appearanceHash += (-256 + appearance[0] >> 4);
+        }
+
+        if(appearance[1] >= 256) {
+            appearanceHash += (-256 + appearance[1] >> 8);
+        }
+
+        for(int colorIndex = 0; colorIndex < 5; colorIndex++) {
+            appearanceHash <<= 3;
+            appearanceHash += appearanceColors[colorIndex];
+        }
+
+        appearanceHash <<= 1;
+        this.appearanceHash = this.appearanceHash + (gender ? 1 : 0);
+        appearance[5] = appearance5;
+        appearance[9] = appearance9;
+
+        if(originalAppearanceHash != 0L && originalAppearanceHash != appearanceHash) {
+            CacheIndex.modelCache.removeAll(originalAppearanceHash);
         }
     }
 
@@ -209,10 +216,12 @@ public class PlayerAppearance {
         boolean bool = false;
         for(int i = 0; i < 12; i++) {
             int appearanceId = appearance[i];
-            if(appearanceId >= 256 && appearanceId < 512 && !IdentityKit.cache(appearanceId - 256).method624())
+            if(appearanceId >= 256 && appearanceId < 512 && !IdentityKit.cache(appearanceId - 256).method624()) {
                 bool = true;
-            if(appearanceId >= 512 && !ItemDefinition.forId(-512 + appearanceId, 10).headPieceReady(gender))
+            }
+            if(appearanceId >= 512 && !ItemDefinition.forId(-512 + appearanceId, 10).headPieceReady(gender)) {
                 bool = true;
+            }
         }
 
         if(bool) {
