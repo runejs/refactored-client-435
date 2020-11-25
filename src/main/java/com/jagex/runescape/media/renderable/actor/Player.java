@@ -39,6 +39,7 @@ public class Player extends Actor {
     public static int localPlayerCount;
     public static boolean inTutorialIsland = false;
     public static Buffer chatBuffer = new Buffer(new byte[5000]);
+    public static boolean cutsceneActive = false;
     public int skillLevel;
     public int anInt3258;
     public int combatLevel = 0;

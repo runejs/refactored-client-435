@@ -6,7 +6,6 @@ import com.jagex.runescape.util.Signlink;
 
 public class Class39 implements Runnable {
     public static int anInt901;
-    public static boolean aBoolean906 = false;
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_907;
     public static ProducingGraphicsBuffer mapbackLeft;
     public static int anInt909 = 0;

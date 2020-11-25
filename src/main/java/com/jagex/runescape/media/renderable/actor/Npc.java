@@ -333,7 +333,7 @@ public class Npc extends Actor {
                         } else if(WallDecoration.anInt1257 > 0)
                             WallDecoration.anInt1257--;
                         Item.calculateCameraPosition();
-                        if(Class39.aBoolean906)
+                        if(Player.cutsceneActive)
                             Class5.method165(35);
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
                             Class22_Sub1.anIntArray1846[i_19_]++;

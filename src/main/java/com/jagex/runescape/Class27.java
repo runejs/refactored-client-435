@@ -59,7 +59,7 @@ public class Class27 {
         ItemDefinition.method749(false);
         HashTable.method335((byte) 61);
         Class61.method1000(true);
-        if(!Class39.aBoolean906) {
+        if(!Player.cutsceneActive) {
             int i = Class65.cameraVertical;
             if(Class40_Sub6.secondaryCameraVertical / 256 > i) {
                 i = Class40_Sub6.secondaryCameraVertical / 256;
@@ -71,7 +71,7 @@ public class Class27 {
             Class49.setCameraPosition(i, Class40_Sub5_Sub6.currentCameraPositionH, -50 + Class37.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY), i_0_, Class34.currentCameraPositionV, -1, 3 * i + 600);
         }
         int i;
-        if(!Class39.aBoolean906) {
+        if(!Player.cutsceneActive) {
             i = Class40_Sub5_Sub17_Sub1.method764((byte) -107);
         } else {
             i = Class40_Sub5_Sub1.method546(256);
