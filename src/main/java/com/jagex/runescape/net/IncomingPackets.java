@@ -176,7 +176,7 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 7) {
-                Class39.aBoolean906 = false;
+                Player.cutsceneActive = false;
                 for(int i_7_ = 0; i_7_ < 5; i_7_++)
                     Class40_Sub5_Sub17_Sub1.aBooleanArray2975[i_7_] = false;
                 incomingPacket = -1;
@@ -554,7 +554,7 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 253) {
-                Class39.aBoolean906 = true;
+                Player.cutsceneActive = true;
                 Class22.anInt545 = incomingPacketBuffer.getUnsignedByte();
                 SceneCluster.anInt767 = incomingPacketBuffer.getUnsignedByte();
                 Class5.anInt194 = incomingPacketBuffer.getUnsignedShortBE();
@@ -802,7 +802,7 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 234) {
-                Class39.aBoolean906 = true;
+                Player.cutsceneActive = true;
                 HashTable.anInt564 = incomingPacketBuffer.getUnsignedByte();
                 UnderlayDefinition.anInt2576 = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.anInt892 = incomingPacketBuffer.getUnsignedShortBE();
@@ -1141,14 +1141,14 @@ public class IncomingPackets {
                 widget.textColor = (i_116_ << 11) + (i_115_ << 19) + (i_117_ << 3);
                 return true;
             }
-            if(incomingPacket == 211) {
+            if(incomingPacket == 211) { // update ignore list
                 Class42.anInt1008 = incomingPacketSize / 8;
                 for(int i_118_ = 0; Class42.anInt1008 > i_118_; i_118_++)
                     WallDecoration.ignores[i_118_] = incomingPacketBuffer.getLongBE();
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == 124) {
+            if(incomingPacket == 124) { // close chatbox widget
                 if(ChatBox.openChatboxWidgetId != -1) {
                     Class55.method958(ChatBox.openChatboxWidgetId);
                     ChatBox.openChatboxWidgetId = -1;

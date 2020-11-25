@@ -4,6 +4,7 @@ import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.SceneCluster;
 
 public class Class49 {
@@ -19,7 +20,10 @@ public class Class49 {
         int yawDifference = 0x7ff & -yaw + 2048;
         int zOffset = 0;
         int pitchDifference = 2048 - pitch & 0x7ff;
-        int yOffset = MouseHandler.cameraZoom + pitch * 3;
+        int yOffset = arg6;
+        if(!Player.cutsceneActive) {
+            yOffset = MouseHandler.cameraZoom + pitch * 3;
+        }
         if(pitchDifference != 0) {
             int cosine = Model.COSINE[pitchDifference];
             int sine = Model.SINE[pitchDifference];

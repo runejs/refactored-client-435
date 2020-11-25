@@ -354,7 +354,7 @@ public abstract class Actor extends Renderable {
                 VarbitDefinition.destinationX -= i_34_;
                 Class55.destinationY -= i_35_;
             }
-            Class39.aBoolean906 = false;
+            Player.cutsceneActive = false;
             PacketBuffer.currentSound = 0;
             Class57.aLinkedList_1332.method906(0);
             Class43.aLinkedList_1022.method906(0);
