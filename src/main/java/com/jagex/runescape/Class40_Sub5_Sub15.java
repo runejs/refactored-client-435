@@ -12,7 +12,6 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 public class Class40_Sub5_Sub15 extends SubNode {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2775;
     public static IndexedImage[] tabIcons;
-    public static int[] anIntArray2777 = {8, 11, 4, 6, 9, 7, 10};
     public static int arbitraryDestination = 0;
     public static CacheIndex aCacheIndex_2779;
     public static int systemUpdateTime = 0;
@@ -80,16 +79,16 @@ public class Class40_Sub5_Sub15 extends SubNode {
                 }
             }
         }
-        if(arg1.anInt3091 != -1 && Node.pulseCycle >= arg1.anInt3093) {
+        if(arg1.graphicId != -1 && Node.pulseCycle >= arg1.graphicDelay) {
             if(arg1.anInt3140 < 0)
                 arg1.anInt3140 = 0;
-            int i = SpotAnimDefinition.forId(arg1.anInt3091, 13).animationId;
+            int i = SpotAnimDefinition.forId(arg1.graphicId, 13).animationId;
             if(i == -1)
-                arg1.anInt3091 = -1;
+                arg1.graphicId = -1;
             else {
                 AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(i, 2);
                 if(animationSequence == null || animationSequence.anIntArray2485 == null)
-                    arg1.anInt3091 = -1;
+                    arg1.graphicId = -1;
                 else {
                     arg1.anInt3129++;
                     if(animationSequence.anIntArray2485.length > arg1.anInt3140 && arg1.anInt3129 > animationSequence.animationLengths[arg1.anInt3140]) {
@@ -97,7 +96,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
                         arg1.anInt3140++;
                     }
                     if(animationSequence.anIntArray2485.length <= arg1.anInt3140 && (arg1.anInt3140 < 0 || animationSequence.anIntArray2485.length <= arg1.anInt3140))
-                        arg1.anInt3091 = -1;
+                        arg1.graphicId = -1;
                 }
             }
         }

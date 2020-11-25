@@ -10,10 +10,10 @@ import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 
 public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public static TypeFace fontSmall;
-    public static int[][] playerColours = {{6798, 107, 10283, 16, 4797, 7744, 5799, 4634, 33697, 22433, 2983, 54193}, {8741, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003, 25239}, {25238, 8742, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003}, {4626, 11146, 6439, 12, 4758, 10270}, {4550, 4537, 5681, 5673, 5790, 6806, 8076, 4574}};
     public static ProducingGraphicsBuffer framePieceTop;
     public static TypeFace fontBold;
     public static int[] anIntArray3248;
@@ -54,7 +54,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
         if(arg0 == -1)
             return 12345678;
         if(arg2 != 73)
-            playerColours = null;
+            PlayerAppearance.playerColours = null;
         arg1 = (0x7f & arg0) * arg1 / 128;
         if(arg1 < 2)
             arg1 = 2;
@@ -87,7 +87,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                 if((VertexNormal.lowMemory && Player.localPlayerCount > 50 || Player.localPlayerCount > 200) && !arg1 && player.anInt3077 == player.idleAnimation)
                     player.aBoolean3287 = true;
                 if(i_2_ >= 0 && i_2_ < 104 && i_3_ >= 0 && i_3_ < 104) {
-                    if(player.aClass40_Sub5_Sub17_Sub5_3265 != null && player.anInt3283 <= Node.pulseCycle && Node.pulseCycle < player.anInt3274) {
+                    if(player.playerModel != null && player.anInt3283 <= Node.pulseCycle && Node.pulseCycle < player.anInt3274) {
                         player.aBoolean3287 = false;
                         player.anInt3276 = Class37.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
                         Npc.currentScene.method112(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.anInt3258, player.anInt3281, player.anInt3262, player.anInt3289);

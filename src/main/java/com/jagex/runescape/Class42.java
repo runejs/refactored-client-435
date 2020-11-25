@@ -8,6 +8,7 @@ import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.PacketBuffer;
 
 public class Class42 {
@@ -72,7 +73,7 @@ public class Class42 {
                 if(RSCanvas.anInt54 != 0) {
                     PacketBuffer.anInt2258 = arg1;
                     Player.aByteArray3270 = arg3;
-                    Class30.aBoolean687 = arg2;
+                    PlayerAppearance.aBoolean687 = arg2;
                 } else
                     RSString.method56(arg2, arg3, arg1);
             } else {
@@ -87,7 +88,7 @@ public class Class42 {
                     RSCanvas.anInt54 = 1;
                 PacketBuffer.anInt2258 = arg1;
                 Player.aByteArray3270 = arg3;
-                Class30.aBoolean687 = arg2;
+                PlayerAppearance.aBoolean687 = arg2;
             }
         }
     }

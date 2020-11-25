@@ -65,32 +65,32 @@ public class Class44 implements Runnable {
             } else {
                 if(i < i_0_) {
                     if(i_1_ < i_2_)
-                        arg1.anInt3080 = 1280;
+                        arg1.initialFaceDirection = 1280;
                     else if(i_2_ < i_1_)
-                        arg1.anInt3080 = 1792;
+                        arg1.initialFaceDirection = 1792;
                     else
-                        arg1.anInt3080 = 1536;
+                        arg1.initialFaceDirection = 1536;
                 } else if(i <= i_0_) {
                     if(i_2_ <= i_1_) {
                         if(i_2_ < i_1_)
-                            arg1.anInt3080 = 0;
+                            arg1.initialFaceDirection = 0;
                     } else
-                        arg1.anInt3080 = 1024;
+                        arg1.initialFaceDirection = 1024;
                 } else if(i_1_ < i_2_)
-                    arg1.anInt3080 = 768;
+                    arg1.initialFaceDirection = 768;
                 else if(i_2_ < i_1_)
-                    arg1.anInt3080 = 256;
+                    arg1.initialFaceDirection = 256;
                 else
-                    arg1.anInt3080 = 512;
+                    arg1.initialFaceDirection = 512;
                 int i_3_ = arg1.turnAroundAnimationId;
                 int i_4_ = 4;
-                if(arg1.anInt3080 != arg1.anInt3118 && arg1.facingActorIndex == -1 && arg1.anInt3113 != 0)
+                if(arg1.initialFaceDirection != arg1.anInt3118 && arg1.facingActorIndex == -1 && arg1.anInt3113 != 0)
                     i_4_ = 2;
                 if(arg1.anInt3109 > 2)
                     i_4_ = 6;
                 if(arg1.anInt3109 > 3)
                     i_4_ = 8;
-                int i_5_ = 0x7ff & -arg1.anInt3118 + arg1.anInt3080;
+                int i_5_ = 0x7ff & -arg1.anInt3118 + arg1.initialFaceDirection;
                 if(i_5_ > 1024)
                     i_5_ -= 2048;
                 if((i_5_ ^ 0xffffffff) > arg0 || i_5_ > 256) {

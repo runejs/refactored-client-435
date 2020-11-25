@@ -14,6 +14,7 @@ import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.SceneCluster;
@@ -367,13 +368,13 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public void method26(byte arg0) {
         if (arg0 == 88) {
             long l = System.currentTimeMillis();
-            long l_11_ = aLongArray4[Class30.anInt681];
-            aLongArray4[Class30.anInt681] = l;
+            long l_11_ = aLongArray4[PlayerAppearance.anInt681];
+            aLongArray4[PlayerAppearance.anInt681] = l;
             if (l_11_ != 0 && l > l_11_) {
                 int i = (int) (-l_11_ + l);
                 GenericTile.fps = ((i >> 1) + 32000) / i;
             }
-            Class30.anInt681 = Class30.anInt681 + 1 & 0x1f;
+            PlayerAppearance.anInt681 = PlayerAppearance.anInt681 + 1 & 0x1f;
             if (Node.anInt938++ > 50) {
                 Node.anInt938 -= 50;
                 Class40_Sub5_Sub11.clearScreen = true;

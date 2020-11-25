@@ -66,7 +66,7 @@ public class Class55 {
     }
 
     public static Class40_Sub5_Sub15 method960(int arg1) {
-        Class40_Sub5_Sub15 class40_sub5_sub15 = (Class40_Sub5_Sub15) Class42.aClass9_998.get((long) arg1, (byte) 101);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = (Class40_Sub5_Sub15) Class42.aClass9_998.get((long) arg1);
         if(class40_sub5_sub15 != null)
             return class40_sub5_sub15;
         class40_sub5_sub15 = Class35.method421(VarbitDefinition.aCacheIndex_2364, (byte) 79, arg1, Class40_Sub11.aCacheIndex_2162, false);

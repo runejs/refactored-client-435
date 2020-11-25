@@ -205,20 +205,20 @@ public class Class5 {
         if(i >= 300 && i <= 313) {
             int i_13_ = (-300 + i) / 2;
             int i_14_ = 0x1 & i;
-            LinkedList.aClass30_1082.method382(i_13_, i_14_ == 1, 14);
+            LinkedList.aClass30_1082.loadCachedAppearance(i_13_, i_14_ == 1);
         }
         if(i >= 314 && i <= 323) {
             int i_15_ = (i + -314) / 2;
             int i_16_ = i & 0x1;
-            LinkedList.aClass30_1082.method384(i_16_ == 1, i_15_);
+            LinkedList.aClass30_1082.updateAppearanceColors(i_16_ == 1, i_15_);
         }
         if(i == 324)
-            LinkedList.aClass30_1082.method383(false, (byte) -110);
+            LinkedList.aClass30_1082.setGender(false);
         if(i == 325)
-            LinkedList.aClass30_1082.method383(true, (byte) -110);
+            LinkedList.aClass30_1082.setGender(true);
         if(i == 326) {
             SceneCluster.packetBuffer.putPacket(231);
-            LinkedList.aClass30_1082.method375(arg0 ^ 0x58, SceneCluster.packetBuffer);
+            LinkedList.aClass30_1082.sendAppearanceData(arg0 ^ 0x58, SceneCluster.packetBuffer);
             return true;
         }
         if(i == 620)

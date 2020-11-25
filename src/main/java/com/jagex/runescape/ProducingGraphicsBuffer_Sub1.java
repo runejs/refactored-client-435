@@ -35,7 +35,7 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
 
 
     public static AnimationSequence method1050(int arg0, int arg1) {
-        AnimationSequence animationSequence = (AnimationSequence) Class40_Sub5_Sub6.aClass9_2439.get((long) arg0, (byte) 47);
+        AnimationSequence animationSequence = (AnimationSequence) Class40_Sub5_Sub6.aClass9_2439.get((long) arg0);
         if(arg1 != 2)
             anInt2211 = -106;
         if(animationSequence != null)

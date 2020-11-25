@@ -26,6 +26,7 @@ import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.GroundItemTile;
@@ -186,7 +187,7 @@ public class Class27 {
                 if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16) {
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                 }
-                Class30.anInt704 = i_10_;
+                PlayerAppearance.anInt704 = i_10_;
                 if(i_10_ >> 16 == ChatBox.openChatboxWidgetId) {
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                 }
@@ -266,7 +267,7 @@ public class Class27 {
                 SceneCluster.packetBuffer.putShortBE(i);
                 SceneCluster.packetBuffer.putIntLE(i_10_);
                 SceneCluster.packetBuffer.putShortBE(i_12_);
-                Class30.anInt704 = i_10_;
+                PlayerAppearance.anInt704 = i_10_;
                 RSRuntimeException.anInt1651 = 0;
                 GenericTile.anInt1233 = i;
                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
@@ -285,7 +286,7 @@ public class Class27 {
                 GenericTile.anInt1233 = i;
                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                 RSRuntimeException.anInt1651 = 0;
-                Class30.anInt704 = i_10_;
+                PlayerAppearance.anInt704 = i_10_;
                 if(i_10_ >> 16 == HuffmanEncoding.openScreenWidgetId) {
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                 }
@@ -313,7 +314,7 @@ public class Class27 {
                 SceneCluster.packetBuffer.putShortLE(i_12_);
                 SceneCluster.packetBuffer.putIntME2(i_10_);
                 GenericTile.anInt1233 = i;
-                Class30.anInt704 = i_10_;
+                PlayerAppearance.anInt704 = i_10_;
                 RSRuntimeException.anInt1651 = 0;
                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                 if(i_10_ >> 16 == HuffmanEncoding.openScreenWidgetId) {
@@ -425,7 +426,7 @@ public class Class27 {
                     SceneCluster.packetBuffer.putIntLE(i_10_);
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                     GenericTile.anInt1233 = i;
-                    Class30.anInt704 = i_10_;
+                    PlayerAppearance.anInt704 = i_10_;
                     if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16) {
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                     }
@@ -535,7 +536,7 @@ public class Class27 {
                     SceneCluster.packetBuffer.putIntLE(ISAAC.anInt525);
                     SceneCluster.packetBuffer.putShortLE(Class49.anInt1154);
                     SceneCluster.packetBuffer.putShortBE(LinkedList.anInt1061);
-                    Class30.anInt704 = i_10_;
+                    PlayerAppearance.anInt704 = i_10_;
                     RSRuntimeException.anInt1651 = 0;
                     GenericTile.anInt1233 = i;
                     Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
@@ -591,7 +592,7 @@ public class Class27 {
                         SceneCluster.packetBuffer.putIntBE(i_10_);
                         GenericTile.anInt1233 = i;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
-                        Class30.anInt704 = i_10_;
+                        PlayerAppearance.anInt704 = i_10_;
                         RSRuntimeException.anInt1651 = 0;
                         if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16) {
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
@@ -704,7 +705,7 @@ public class Class27 {
                         }
                         GenericTile.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
-                        Class30.anInt704 = i_10_;
+                        PlayerAppearance.anInt704 = i_10_;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                         if(i_10_ >> 16 == HuffmanEncoding.openScreenWidgetId) {
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
@@ -748,7 +749,7 @@ public class Class27 {
                         if(i_10_ >> 16 == ChatBox.openChatboxWidgetId) {
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                         }
-                        Class30.anInt704 = i_10_;
+                        PlayerAppearance.anInt704 = i_10_;
                         GenericTile.anInt1233 = i;
                     }
                     if(action == 11) {
@@ -757,7 +758,7 @@ public class Class27 {
                         SceneCluster.packetBuffer.putShortBE(i);
                         SceneCluster.packetBuffer.putShortLE(i_12_);
                         GenericTile.anInt1233 = i;
-                        Class30.anInt704 = i_10_;
+                        PlayerAppearance.anInt704 = i_10_;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
                         if(HuffmanEncoding.openScreenWidgetId == i_10_ >> 16) {
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
@@ -827,7 +828,7 @@ public class Class27 {
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                         }
                         GenericTile.anInt1233 = i;
-                        Class30.anInt704 = i_10_;
+                        PlayerAppearance.anInt704 = i_10_;
                         if(i_10_ >> 16 == ChatBox.openChatboxWidgetId) {
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
                         }
@@ -863,7 +864,7 @@ public class Class27 {
                         SceneCluster.packetBuffer.putShortBE(i);
                         SceneCluster.packetBuffer.putIntLE(i_10_);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
-                        Class30.anInt704 = i_10_;
+                        PlayerAppearance.anInt704 = i_10_;
                         RSRuntimeException.anInt1651 = 0;
                         GenericTile.anInt1233 = i;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
@@ -918,7 +919,7 @@ public class Class27 {
                         GenericTile.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
                         Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
-                        Class30.anInt704 = i_10_;
+                        PlayerAppearance.anInt704 = i_10_;
                         if(i_10_ >> 16 == HuffmanEncoding.openScreenWidgetId) {
                             Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
                         }

@@ -94,7 +94,7 @@ public class Class34 {
     public static VarbitDefinition method417(int arg0, int arg1) {
         if(arg0 != 0)
             return null;
-        VarbitDefinition varbitDefinition = (VarbitDefinition) Class57.aClass9_1331.get((long) arg1, (byte) 111);
+        VarbitDefinition varbitDefinition = (VarbitDefinition) Class57.aClass9_1331.get((long) arg1);
         if(varbitDefinition != null)
             return varbitDefinition;
         byte[] is = RSCanvas.aCacheIndex_61.getFile(arg1, 14);

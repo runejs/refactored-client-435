@@ -24,6 +24,7 @@ import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.Scene;
@@ -123,30 +124,30 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     int i = -class40_sub5_sub17_sub4_sub2.worldY + actor.worldY;
                     int i_10_ = -class40_sub5_sub17_sub4_sub2.worldX + actor.worldX;
                     if(i_10_ != 0 || i != 0)
-                        actor.anInt3080 = 0x7ff & (int) (325.949 * Math.atan2((double) i_10_, (double) i));
+                        actor.initialFaceDirection = 0x7ff & (int) (325.949 * Math.atan2((double) i_10_, (double) i));
                 }
             }
             if(actor.facingActorIndex >= 32768) {
                 int i = -32768 + actor.facingActorIndex;
-                if(i == Class30.anInt708)
+                if(i == PlayerAppearance.anInt708)
                     i = 2047;
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     int i_11_ = actor.worldX - class40_sub5_sub17_sub4_sub1.worldX;
                     int i_12_ = -class40_sub5_sub17_sub4_sub1.worldY + actor.worldY;
                     if(i_11_ != 0 || i_12_ != 0)
-                        actor.anInt3080 = (int) (Math.atan2((double) i_11_, (double) i_12_) * 325.949) & 0x7ff;
+                        actor.initialFaceDirection = (int) (Math.atan2((double) i_11_, (double) i_12_) * 325.949) & 0x7ff;
                 }
             }
             if((actor.facePositionX != 0 || actor.facePositionY != 0) && (actor.anInt3109 == 0 || actor.anInt3074 > 0)) {
                 int i = actor.worldY - 64 * (actor.facePositionY - Class26.baseY - Class26.baseY);
                 int i_13_ = -((-SpotAnimDefinition.baseX + actor.facePositionX + -SpotAnimDefinition.baseX) * 64) + actor.worldX;
                 if(i_13_ != 0 || i != 0)
-                    actor.anInt3080 = 0x7ff & (int) (325.949 * Math.atan2((double) i_13_, (double) i));
+                    actor.initialFaceDirection = 0x7ff & (int) (325.949 * Math.atan2((double) i_13_, (double) i));
                 actor.facePositionY = 0;
                 actor.facePositionX = 0;
             }
-            int i = 0x7ff & actor.anInt3080 + -actor.anInt3118;
+            int i = 0x7ff & actor.initialFaceDirection + -actor.anInt3118;
             if(i != 0) {
                 actor.anInt3097++;
                 if(i > 1024) {
@@ -154,7 +155,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     boolean bool = true;
                     if(actor.anInt3113 > i || 2048 + -actor.anInt3113 < i) {
                         bool = false;
-                        actor.anInt3118 = actor.anInt3080;
+                        actor.anInt3118 = actor.initialFaceDirection;
                     }
                     if(actor.idleAnimation == actor.anInt3077 && (actor.anInt3097 > 25 || bool)) {
                         if(actor.standTurnAnimationId != -1)
@@ -166,7 +167,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     actor.anInt3118 += actor.anInt3113;
                     boolean bool = true;
                     if(i < actor.anInt3113 || i > -actor.anInt3113 + 2048) {
-                        actor.anInt3118 = actor.anInt3080;
+                        actor.anInt3118 = actor.initialFaceDirection;
                         bool = false;
                     }
                     if(actor.anInt3077 == actor.idleAnimation && (actor.anInt3097 > 25 || bool)) {
@@ -224,7 +225,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             Class61.tabPieceUpperRight = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = HuffmanEncoding.method1028(arg2, Native.aClass1_196, (byte) 21, Native.aClass1_305);
-            Class30.tabPieveLowerRight = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            PlayerAppearance.tabPieveLowerRight = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = HuffmanEncoding.method1028(arg2, Native.aClass1_304, (byte) 21, Native.aClass1_305);
             Class17.chatboxTop = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);

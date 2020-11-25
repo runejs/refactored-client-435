@@ -37,7 +37,7 @@ public class Npc extends Actor {
     public ActorDefinition actorDefinition;
 
     public static Class40_Sub5_Sub11 method795(byte arg0, int arg1) {
-        Class40_Sub5_Sub11 class40_sub5_sub11 = (Class40_Sub5_Sub11) Class13.aClass9_406.get((long) arg1, (byte) 98);
+        Class40_Sub5_Sub11 class40_sub5_sub11 = (Class40_Sub5_Sub11) Class13.aClass9_406.get((long) arg1);
         if(arg0 >= -66)
             Native.aClass1_3295 = null;
         if(class40_sub5_sub11 != null)
@@ -410,7 +410,7 @@ public class Npc extends Actor {
 
 
     public static OverlayDefinition loadFloor(int arg0, int arg1) {
-        OverlayDefinition overlayDefinition = (OverlayDefinition) Class33.aClass9_778.get((long) arg0, (byte) 63);
+        OverlayDefinition overlayDefinition = (OverlayDefinition) Class33.aClass9_778.get((long) arg0);
         if(overlayDefinition != null)
             return overlayDefinition;
         byte[] is = Actor.aCacheIndex_3144.getFile(arg0, arg1);
@@ -430,22 +430,22 @@ public class Npc extends Actor {
             if((0x1 & mask) != 0) {
                 int i_3_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                 int i_4_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-                npc.method785(i_4_, pulseCycle, i_3_, -121);
+                npc.method785(i_4_, pulseCycle, i_3_);
                 npc.anInt3139 = pulseCycle + 300;
-                npc.anInt3130 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-                npc.anInt3101 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+                npc.remainingHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+                npc.maximumHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             }
             if((0x20 & mask) != 0) {
-                npc.anInt3091 = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
+                npc.graphicId = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
                 int i_5_ = IncomingPackets.incomingPacketBuffer.getIntBE();
                 npc.anInt3129 = 0;
-                npc.anInt3093 = pulseCycle + (0xffff & i_5_);
-                npc.anInt3110 = i_5_ >> 16;
+                npc.graphicDelay = pulseCycle + (0xffff & i_5_);
+                npc.graphicHeight = i_5_ >> 16;
                 npc.anInt3140 = 0;
-                if(npc.anInt3093 > pulseCycle)
+                if(npc.graphicDelay > pulseCycle)
                     npc.anInt3140 = -1;
-                if(npc.anInt3091 == 65535)
-                    npc.anInt3091 = -1;
+                if(npc.graphicId == 65535)
+                    npc.graphicId = -1;
             }
             if((mask & 0x4) != 0) {
                 npc.facingActorIndex = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
@@ -455,10 +455,10 @@ public class Npc extends Actor {
             if((0x2 & mask) != 0) {
                 int i_6_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                 int i_7_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-                npc.method785(i_7_, pulseCycle, i_6_, -119);
+                npc.method785(i_7_, pulseCycle, i_6_);
                 npc.anInt3139 = pulseCycle + 300;
-                npc.anInt3130 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-                npc.anInt3101 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+                npc.remainingHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+                npc.maximumHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             }
             if((0x40 & mask) != 0) {
                 npc.forcedChatMessage = IncomingPackets.incomingPacketBuffer.getString();
@@ -555,21 +555,26 @@ public class Npc extends Actor {
     }
 
     public static void registerNewNpcs() {
-        while(IncomingPackets.incomingPacketBuffer.method510(IncomingPackets.incomingPacketSize) >= 27) {
+        while(IncomingPackets.incomingPacketBuffer.getRemainingBits(IncomingPackets.incomingPacketSize) >= 27) {
             int i = IncomingPackets.incomingPacketBuffer.getBits(15);
-            if(i == 32767)
+            if(i == 32767) {
                 break;
-            boolean bool = false;
+            }
+
+            boolean initializing = false;
             if(Player.npcs[i] == null) {
                 Player.npcs[i] = new Npc();
-                bool = true;
+                initializing = true;
             }
+
             Npc npc = Player.npcs[i];
             Player.npcIds[Player.npcCount++] = i;
             npc.anInt3134 = pulseCycle;
             int initialFaceDirection = Class40_Sub5_Sub17_Sub1.directions[IncomingPackets.incomingPacketBuffer.getBits(3)];
-            if(bool)
-                npc.anInt3080 = initialFaceDirection;
+            if(initializing) {
+                npc.initialFaceDirection = initialFaceDirection;
+            }
+
             int offsetX = IncomingPackets.incomingPacketBuffer.getBits(5);
             if(offsetX > 15)
                 offsetX -= 32;
@@ -615,10 +620,10 @@ public class Npc extends Actor {
             return null;
         model.method799();
         anInt3117 = model.modelHeight;
-        if(anInt3091 != -1 && anInt3140 != -1) {
-            Model model1 = SpotAnimDefinition.forId(anInt3091, 13).method549(anInt3140, 2);
+        if(graphicId != -1 && anInt3140 != -1) {
+            Model model1 = SpotAnimDefinition.forId(graphicId, 13).method549(anInt3140, 2);
             if(model1 != null) {
-                model1.translate(0, -anInt3110, 0);
+                model1.translate(0, -graphicHeight, 0);
                 Model[] models = {model, model1};
                 model = new Model(models, 2, true);
             }

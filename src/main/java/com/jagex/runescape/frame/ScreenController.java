@@ -14,6 +14,7 @@ import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.GroundItemTile;
@@ -135,7 +136,7 @@ public class ScreenController {
         // width 234
         drawFramePiece(GameObject.tabPieceLeft, x + 212, y + 39);
         drawFramePieceCutout(Class61.tabPieceUpperRight, x, y + 39, Class61.tabPieceUpperRight.width - 15, Class61.tabPieceUpperRight.height, 15, 0);
-        drawFramePieceCutout(Class30.tabPieveLowerRight, x, y + 191, Class30.tabPieveLowerRight.width - 35, Class30.tabPieveLowerRight.height, 35, 0);
+        drawFramePieceCutout(PlayerAppearance.tabPieveLowerRight, x, y + 191, PlayerAppearance.tabPieveLowerRight.width - 35, PlayerAppearance.tabPieveLowerRight.height, 35, 0);
         drawFramePieceCutout(Class17.chatboxTop, x, y + 172, Class17.chatboxTop.width - 531, Class17.chatboxTop.height, 531, 0);
         drawFramePieceCutout(RSCanvas.tabBottom, x, y + 300, RSCanvas.tabBottom.width - 35, RSCanvas.tabBottom.height, 35, 0);
         drawFramePieceCutout(InteractiveObject.tabTop, x, y, InteractiveObject.tabTop.width - 15, InteractiveObject.tabTop.height - 6, 15, 6);
@@ -154,7 +155,7 @@ public class ScreenController {
         drawFramePieceCutout(Class17.chatboxTop, x, y, Class17.chatboxTop.width - 37, Class17.chatboxTop.height - 3, 0, 3);
         //        System.out.println(Class40_Sub5_Sub1.chatboxRight.height + (Class17.chatboxTop.height-3) + HuffmanEncoding.aProducingGraphicsBuffer_1541.height);
 
-        drawFramePieceCutout(Class30.tabPieveLowerRight, x + 496, y + 16, 20, Class30.tabPieveLowerRight.height, 0, 0);
+        drawFramePieceCutout(PlayerAppearance.tabPieveLowerRight, x + 496, y + 16, 20, PlayerAppearance.tabPieveLowerRight.height, 0, 0);
 
 
     }

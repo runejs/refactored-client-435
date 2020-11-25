@@ -13,6 +13,7 @@ import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.net.PacketBuffer;
@@ -185,7 +186,7 @@ public class FloorDecoration {
                 HashTable.aClass40_Sub5_Sub14_Sub2_549 = null;
                 Renderable.aClass40_Sub5_Sub14_Sub2_2860 = null;
                 Class24.fullScreenTextureArray = null;
-                Class30.tabPieveLowerRight = null;
+                PlayerAppearance.tabPieveLowerRight = null;
                 Class40_Sub5_Sub17_Sub6.framePieceTop = null;
                 Class44.chatboxBackgroundImage = null;
             }

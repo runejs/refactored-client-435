@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.PacketBuffer;
 
 public class VarbitDefinition extends SubNode {
@@ -53,12 +54,12 @@ public class VarbitDefinition extends SubNode {
                 }
                 Player.aByteArray3270 = arg3;
                 PacketBuffer.anInt2258 = arg0;
-                Class30.aBoolean687 = arg1;
+                PlayerAppearance.aBoolean687 = arg1;
             } else if(RSCanvas.anInt54 == 0)
                 RSString.method56(arg1, arg3, arg0);
             else {
                 PacketBuffer.anInt2258 = arg0;
-                Class30.aBoolean687 = arg1;
+                PlayerAppearance.aBoolean687 = arg1;
                 Player.aByteArray3270 = arg3;
             }
         }

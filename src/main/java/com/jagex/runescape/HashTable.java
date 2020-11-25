@@ -7,6 +7,7 @@ import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.InteractiveObject;
@@ -101,7 +102,7 @@ public class HashTable {
                         if(class40_sub5_sub17_sub1.anInt2961 < 0) {
                             int i = -1 + -class40_sub5_sub17_sub1.anInt2961;
                             Player class40_sub5_sub17_sub4_sub1;
-                            if(i != Class30.anInt708)
+                            if(i != PlayerAppearance.anInt708)
                                 class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i];
                             else
                                 class40_sub5_sub17_sub4_sub1 = Player.localPlayer;

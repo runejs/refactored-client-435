@@ -5,7 +5,6 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -13,6 +12,7 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.InteractiveObject;
@@ -205,9 +205,9 @@ public class SpotAnimDefinition extends SubNode {
 
                     InteractiveObject.playerRights = Class40_Sub6.gameConnection.read();
                     Class22.accountFlagged = Class40_Sub6.gameConnection.read() == 1;
-                    Class30.anInt708 = Class40_Sub6.gameConnection.read();
-                    Class30.anInt708 <<= 8;
-                    Class30.anInt708 += Class40_Sub6.gameConnection.read();
+                    PlayerAppearance.anInt708 = Class40_Sub6.gameConnection.read();
+                    PlayerAppearance.anInt708 <<= 8;
+                    PlayerAppearance.anInt708 += Class40_Sub6.gameConnection.read();
                     Class44.anInt1049 = Class40_Sub6.gameConnection.read();
                     Class40_Sub6.gameConnection.method1008(0, 1, -127, IncomingPackets.incomingPacketBuffer.buffer);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
@@ -261,7 +261,7 @@ public class SpotAnimDefinition extends SubNode {
     public static SpotAnimDefinition forId(int arg0, int arg1) {
         if (arg1 != 13)
             Class37.method436(-34);
-        SpotAnimDefinition spotAnimDefinition = (SpotAnimDefinition) Class43.aClass9_1014.get((long) arg0, (byte) 59);
+        SpotAnimDefinition spotAnimDefinition = (SpotAnimDefinition) Class43.aClass9_1014.get((long) arg0);
         if (spotAnimDefinition != null)
             return spotAnimDefinition;
         byte[] is = InteractiveObject.aCacheIndex_488.getFile(arg0, 13);
@@ -299,7 +299,7 @@ public class SpotAnimDefinition extends SubNode {
     }
 
     public Model method549(int arg0, int arg1) {
-        Model class40_sub5_sub17_sub5 = (Model) Class34.aClass9_851.get((long) id, (byte) 50);
+        Model class40_sub5_sub17_sub5 = (Model) Class34.aClass9_851.get((long) id);
         if (class40_sub5_sub17_sub5 == null) {
             class40_sub5_sub17_sub5 = Model.getModel(UnderlayDefinition.aCacheIndex_2582, modelId, 0);
             if (class40_sub5_sub17_sub5 == null) {

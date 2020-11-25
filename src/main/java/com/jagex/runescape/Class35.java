@@ -13,7 +13,6 @@ public class Class35 implements Interface3 {
     public static int songTimeout = 0;
     public static boolean aBoolean1734 = false;
     public static boolean aBoolean1735 = true;
-    public static int[] SKIN_COLOURS = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1744;
     public static byte[][][] tile_overlay_rotation;
 

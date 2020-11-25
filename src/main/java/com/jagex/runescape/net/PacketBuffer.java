@@ -20,7 +20,6 @@ public class PacketBuffer extends Buffer {
     public static Class40_Sub5_Sub13 aClass40_Sub5_Sub13_2250;
     public static boolean aBoolean2255 = false;
     public static int lastClickX = 0;
-    public static int anInt2257;
     public static int anInt2258;
 
     public ISAAC inCipher;
@@ -115,8 +114,8 @@ public class PacketBuffer extends Buffer {
         return class1;
     }
 
-    public int method510(int arg1) {
-        return 8 * arg1 - bitoffset;
+    public int getRemainingBits(int packetSize) {
+        return 8 * packetSize - bitoffset;
     }
 
     public void finishBitAccess() {
