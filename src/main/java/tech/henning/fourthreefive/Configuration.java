@@ -15,7 +15,8 @@ public class Configuration {
     public static void read() {
         try {
             final Yaml yaml = new Yaml();
-            final FileInputStream inputStream = new FileInputStream(new File("./config/client-config.yaml"));
+            final String packagedPath = System.getProperty("user.home") + File.separator + "runejs-client.yaml";
+            final FileInputStream inputStream = new FileInputStream(new File(packagedPath));
             final Map<String, Object> obj = yaml.load(inputStream);
 
             final Map<String, Object> net = (Map<String, Object>) obj.get("net");
@@ -26,11 +27,7 @@ public class Configuration {
 
             SERVER_ADDRESS = (String) net.get("address");
             GAME_PORT = (int) net.get("game_port");
-            JAGGRAB_PORT = (int) net.get("jaggrab_port");
-            ONDEMAND_PORT = (int) net.get("ondemand_port");
-            HTTP_PORT = (int) net.get("http_port");
             CACHE_NAME = (String) cache.get("cacheDir");
-            JAGGRAB_ENABLED = (boolean) cache.get("jaggrabEnabled");
             RSA_PUBLIC_KEY = new BigInteger(String.valueOf((int) rsa.get("rsaPub")));
             RSA_MODULUS = (BigInteger) rsa.get("rsaModulus");
             USE_STATIC_DETAILS = (boolean) login.get("useStaticCredentials");
@@ -49,7 +46,7 @@ public class Configuration {
             }
 
         } catch (Exception e) {
-            System.out.println("Unable to load client-config.yaml. Please use EXAMPLE-client-config.yaml to create one.");
+            System.out.println("Unable to load client config - using defaults.");
         }
     }
 
@@ -61,7 +58,7 @@ public class Configuration {
     /**
      * Name of the cache folder located in the users home directory.
      */
-    public static String CACHE_NAME = ".435cache";
+    public static String CACHE_NAME = ".runejs";
 
     /**
      * Port for establishing a connection to the game server.

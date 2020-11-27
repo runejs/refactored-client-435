@@ -20,7 +20,6 @@ data/models/
 
 # Package Files #
 *.war
-*.jar
 *.nar
 *.ear
 *.zip
@@ -34,5 +33,6 @@ hs_err_pid*
 # Gradle
 .gradle
 build/
+artifacts/
 
 .DS_Store
