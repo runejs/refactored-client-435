@@ -1,13 +1,12 @@
-[![RuneJS Discord Server](https://img.shields.io/discord/678751302297059336?label=RuneJS%20Discord&logo=discord)](https://discord.gg/5P74nSh)
+# RuneScape Java Client #435
 
-
-# RuneJS Java Client #435
-
-A RuneScape game client from October of 2006 - the client has been modified specifically for use with RuneJS, a RuneScape game server emulator written in ES6 and TypeScript.
+A RuneScape game client from October of 2006 - the client has been modified specifically for use with RuneJS, a RuneScape game server emulator written in ES6 and TypeScript. **This client is not for OldSchool RuneScape** - it actually pre-dates the very first OSRS client by quite some time. 
 
 The game client is written in Java, as the original was in 2006. As RuneJS is meant to be a learning experience for game content development, there are no plans to create a JavaScript based RuneJS client at this time.
 
 The purpose of this project being open source is to better understand how the game works under the hood, allowing for a better RuneJS game server. Obfuscation cleanup is always welcome! :)
+
+We've no interest in OSRS client hacking, this client exists solely to log into RuneJS and has been modified accordingly.
 
 ## Usage
 
