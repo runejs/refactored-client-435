@@ -1,10 +1,10 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
+import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.language.Native;
@@ -18,7 +18,7 @@ import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 
 public class Class33 {
-    public static Cache aClass9_778 = new Cache(64);
+    public static MemoryCache aClass9_778 = new MemoryCache(64);
     public static int anInt784 = 0;
     public static int[] selectedMenuActions = new int[500];
 
@@ -38,7 +38,7 @@ public class Class33 {
             Class40_Sub5_Sub17_Sub1.anInt3004 = arg5;
             Class26.aBoolean618 = arg1;
             Class22_Sub1.aCacheIndex_1855 = arg4;
-            CacheIndex_Sub1.anInt1806 = -1;
+            CacheIndex.anInt1806 = -1;
             OverlayDefinition.anInt2342 = arg0;
             Class40_Sub6.anInt2110 = arg6;
             Class8.anInt289 = arg3;
@@ -101,8 +101,8 @@ public class Class33 {
                     if(actor.forcedChatMessage != null && (i >= Player.localPlayerCount || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 3 || ChatBox.publicChatMode == 1 && Class40_Sub2.hasFriend(((Player) actor).playerName))) {
                         FloorDecoration.method342(actor.anInt3117, actor);
                         if(ISAAC.anInt522 > -1 && 50 > SceneCluster.anInt770) {
-                            PlayerAppearance.anIntArray680[SceneCluster.anInt770] = Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(actor.forcedChatMessage) / 2;
-                            PlayerAppearance.anIntArray688[SceneCluster.anInt770] = Class40_Sub5_Sub17_Sub6.fontBold.characterDefaultHeight;
+                            PlayerAppearance.anIntArray680[SceneCluster.anInt770] = TypeFace.fontBold.getStringWidth(actor.forcedChatMessage) / 2;
+                            PlayerAppearance.anIntArray688[SceneCluster.anInt770] = TypeFace.fontBold.characterDefaultHeight;
                             PlayerAppearance.anIntArray715[SceneCluster.anInt770] = ISAAC.anInt522;
                             PlayerAppearance.anIntArray685[SceneCluster.anInt770] = Class44.anInt1048;
                             PlayerAppearance.anIntArray712[SceneCluster.anInt770] = actor.chatcolor;
@@ -137,8 +137,8 @@ public class Class33 {
                                     Class44.anInt1048 -= 10;
                                 }
                                 AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474[actor.anIntArray3086[i_2_]].drawImage(ISAAC.anInt522 + -12, -12 + Class44.anInt1048);
-                                Class40_Sub5_Sub17_Sub6.fontSmall.drawStringLeft(Integer.toString(actor.anIntArray3087[i_2_]), ISAAC.anInt522, 4 + Class44.anInt1048, 0);
-                                Class40_Sub5_Sub17_Sub6.fontSmall.drawStringLeft(Integer.toString(actor.anIntArray3087[i_2_]), ISAAC.anInt522 - 1, Class44.anInt1048 + 3, 16777215);
+                                TypeFace.fontSmall.drawStringLeft(Integer.toString(actor.anIntArray3087[i_2_]), ISAAC.anInt522, 4 + Class44.anInt1048, 0);
+                                TypeFace.fontSmall.drawStringLeft(Integer.toString(actor.anIntArray3087[i_2_]), ISAAC.anInt522 - 1, Class44.anInt1048 + 3, 16777215);
                             }
                         }
                     }
@@ -204,45 +204,45 @@ public class Class33 {
                             i_8_ = -(327685 * i_11_) + 16777215;
                     }
                     if(PlayerAppearance.anIntArray695[i] == 0) {
-                        Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
-                        Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048, i_8_);
+                        TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
+                        TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048, i_8_);
                     }
                     if(PlayerAppearance.anIntArray695[i] == 1) {
-                        Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628);
-                        Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
+                        TypeFace.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628);
+                        TypeFace.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
                     }
                     if(PlayerAppearance.anIntArray695[i] == 2) {
-                        Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, 1 + Class44.anInt1048, 0, Class40_Sub5_Sub11.anInt2628);
-                        Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
+                        TypeFace.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, 1 + Class44.anInt1048, 0, Class40_Sub5_Sub11.anInt2628);
+                        TypeFace.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
                     }
                     if(PlayerAppearance.anIntArray695[i] == 3) {
-                        Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
-                        Class40_Sub5_Sub17_Sub6.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
+                        TypeFace.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
+                        TypeFace.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
                     }
                     if(PlayerAppearance.anIntArray695[i] == 4) {
-                        int i_12_ = Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(class1);
+                        int i_12_ = TypeFace.fontBold.getStringWidth(class1);
                         int i_13_ = (i_12_ + 100) * (150 + -PlayerAppearance.anIntArray684[i]) / 150;
                         Rasterizer.setBounds(ISAAC.anInt522 + -50, 0, 334, 50 + ISAAC.anInt522);
-                        Class40_Sub5_Sub17_Sub6.fontBold.drawString(class1, -i_13_ + ISAAC.anInt522 + 50, Class44.anInt1048 + 1, 0);
-                        Class40_Sub5_Sub17_Sub6.fontBold.drawString(class1, 50 + ISAAC.anInt522 + -i_13_, Class44.anInt1048, i_8_);
+                        TypeFace.fontBold.drawString(class1, -i_13_ + ISAAC.anInt522 + 50, Class44.anInt1048 + 1, 0);
+                        TypeFace.fontBold.drawString(class1, 50 + ISAAC.anInt522 + -i_13_, Class44.anInt1048, i_8_);
                         Rasterizer.resetBounds();
                     }
                     if(PlayerAppearance.anIntArray695[i] == 5) {
                         int i_14_ = 0;
                         int i_15_ = 150 + -PlayerAppearance.anIntArray684[i];
-                        Rasterizer.setBounds(0, -1 + -Class40_Sub5_Sub17_Sub6.fontBold.characterDefaultHeight + Class44.anInt1048, 5 + Class44.anInt1048, 512);
+                        Rasterizer.setBounds(0, -1 + -TypeFace.fontBold.characterDefaultHeight + Class44.anInt1048, 5 + Class44.anInt1048, 512);
                         if(i_15_ >= 25) {
                             if(i_15_ > 125)
                                 i_14_ = i_15_ + -125;
                         } else
                             i_14_ = i_15_ + -25;
-                        Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(class1, ISAAC.anInt522, i_14_ + Class44.anInt1048 + 1, 0);
-                        Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(class1, ISAAC.anInt522, i_14_ + Class44.anInt1048, i_8_);
+                        TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, i_14_ + Class44.anInt1048 + 1, 0);
+                        TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, i_14_ + Class44.anInt1048, i_8_);
                         Rasterizer.resetBounds();
                     }
                 } else {
-                    Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
-                    Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048, 16776960);
+                    TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
+                    TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048, 16776960);
                 }
             }
         }
@@ -367,10 +367,10 @@ public class Class33 {
                 byte[] is = RSString.method74(Class40_Sub5_Sub17_Sub1.anInt3004, Class22_Sub1.aCacheIndex_1855, Class8.anInt289, Class40_Sub6.anInt2110);
                 if(is != null) {
                     if(CacheIndex.anInt255 < 0) {
-                        if(CacheIndex_Sub1.anInt1806 < 0)
+                        if(CacheIndex.anInt1806 < 0)
                             RSString.method56(Main.aBoolean1790, is, OverlayDefinition.anInt2342);
                         else
-                            VarbitDefinition.method566(OverlayDefinition.anInt2342, Main.aBoolean1790, CacheIndex_Sub1.anInt1806, is);
+                            VarbitDefinition.method566(OverlayDefinition.anInt2342, Main.aBoolean1790, CacheIndex.anInt1806, is);
                     } else
                         Class42.method886(0, OverlayDefinition.anInt2342, Main.aBoolean1790, is, CacheIndex.anInt255);
                     Class26.aBoolean618 = false;
@@ -386,7 +386,7 @@ public class Class33 {
     public static synchronized void method414(boolean arg0, int arg1, int songid, int arg3, int arg4, CacheIndex arg5) {
         if(Class24.method340()) {
             Class26.aBoolean618 = true;
-            CacheIndex_Sub1.anInt1806 = -1;
+            CacheIndex.anInt1806 = -1;
             CacheIndex.anInt255 = -1;
             OverlayDefinition.anInt2342 = arg3;
             Class40_Sub5_Sub17_Sub1.anInt3004 = arg4;

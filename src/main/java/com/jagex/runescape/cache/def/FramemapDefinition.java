@@ -2,7 +2,7 @@ package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.Widget.GameInterface;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Item;
@@ -37,18 +37,18 @@ public class FramemapDefinition extends Node {
 
     }
 
-    public static Widget method878(Widget arg1) {
+    public static GameInterface method878(GameInterface arg1) {
         int i;
         if(arg1.id < 0)
             i = arg1.parentId >> 16;
         else
             i = arg1.id >> 16;
-        if(!ProducingGraphicsBuffer.method1043(i))
+        if(!GameInterface.decodeGameInterface(i))
             return null;
         if(arg1.anInt2738 >= 0)
-            return Widget.interfaces[i][0xffff & arg1.anInt2738];
-        Widget widget = Widget.interfaces[i][(0x7fff99d9 & arg1.anInt2738) >> 15];
-        return widget.aWidgetArray2713[arg1.anInt2738 & 0x7fff];
+            return GameInterface.interfaces[i][0xffff & arg1.anInt2738];
+        GameInterface gameInterface = GameInterface.interfaces[i][(0x7fff99d9 & arg1.anInt2738) >> 15];
+        return gameInterface.aGameInterfaceArray2713[arg1.anInt2738 & 0x7fff];
     }
 
     public static void method879(IndexedImage arg1) {

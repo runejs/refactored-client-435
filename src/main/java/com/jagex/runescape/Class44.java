@@ -4,6 +4,7 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.cache.media.Widget.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
@@ -22,7 +23,7 @@ public class Class44 implements Runnable {
     public static int anInt1049 = 0;
 
     public static void addChatMessage(String name, String message, int type) {
-        if(ChatBox.openChatboxWidgetId == -1)
+        if(GameInterface.chatboxInterfaceId == -1)
             ChatBox.redrawChatbox = true;
         if(type == 0 && ChatBox.dialogueId != -1) {
             MouseHandler.clickType = 0;
@@ -46,11 +47,11 @@ public class Class44 implements Runnable {
         else {
             if(arg1.playingAnimation != -1 && arg1.playingAnimationDelay == 0) {
                 AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2);
-                if(arg1.anInt3094 > 0 && animationSequence.anInt2470 == 0) {
+                if(arg1.anInt3094 > 0 && animationSequence.precedenceAnimating == 0) {
                     arg1.anInt3074++;
                     return;
                 }
-                if(arg1.anInt3094 <= 0 && animationSequence.anInt2476 == 0) {
+                if(arg1.anInt3094 <= 0 && animationSequence.priority == 0) {
                     arg1.anInt3074++;
                     return;
                 }

@@ -1,16 +1,12 @@
 package com.jagex.runescape.frame.console.Commands;
 
-import com.jagex.runescape.ProducingGraphicsBuffer;
-import com.jagex.runescape.RSString;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.EntityDefinition;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.Widget.GameInterface;
 import com.jagex.runescape.frame.console.Command;
 import com.jagex.runescape.frame.console.Console;
-
-import java.util.List;
 
 public class SearchCommand extends Command {
     private static final int maxResults = 50;
@@ -65,12 +61,12 @@ public class SearchCommand extends Command {
             case "widgets":
             case "w":
                 for (int qq = 0; qq < 469; qq++) {
-                    if (ProducingGraphicsBuffer.method1043(qq)) {
-                        Widget[] widgets = Widget.interfaces[qq];
-                        for (int y = 0; widgets.length > y; y++) {
-                            Widget widget = widgets[y];
-                            if (widget.disabledText != null) {
-                                String text = widget.disabledText.toString().toLowerCase();
+                    if (GameInterface.decodeGameInterface(qq)) {
+                        GameInterface[] gameInterfaces = GameInterface.interfaces[qq];
+                        for (int y = 0; gameInterfaces.length > y; y++) {
+                            GameInterface gameInterface = gameInterfaces[y];
+                            if (gameInterface.disabledText != null) {
+                                String text = gameInterface.disabledText.toString().toLowerCase();
                                 for(int indx = 2; indx < cmdInput.length; indx++) {
                                     if(text.contains(cmdInput[indx].toLowerCase())) {
                                         console.log("<col=FFFF00>" + text + " - " + qq + "</col>");

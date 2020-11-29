@@ -1,9 +1,10 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
+import com.jagex.runescape.cache.media.Widget.GameInterface;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.console.Console;
@@ -15,13 +16,11 @@ import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
-import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.Scene;
-import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -49,7 +48,7 @@ public class Class40_Sub3 extends Node {
     public int anInt2039;
 
 
-    public static void method530(int arg0) {
+    public static void startup(int arg0) {
         if (Class40_Sub5_Sub6.anInt2451 == 0) {
             Npc.currentScene = new Scene(Class40_Sub6.tile_height);
             for (int i = 0; i < 4; i++)
@@ -72,37 +71,37 @@ public class Class40_Sub3 extends Node {
             Native.currentLoadingText = English.preparedVisibilityMap;
             Class40_Sub5_Sub6.anInt2451 = 30;
         } else if (Class40_Sub5_Sub6.anInt2451 == 30) {
-            FloorDecoration.aClass6_Sub1_605 = KeyFocusListener.method957(0, true, false, (byte) 127, true);
-            Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000 = KeyFocusListener.method957(1, true, false, (byte) 125, true);
-            IdentityKit.aClass6_Sub1_2609 = KeyFocusListener.method957(2, true, true, (byte) 119, false);
-            Class65.aClass6_Sub1_1533 = KeyFocusListener.method957(3, true, false, (byte) 119, true);
-            Actor.aClass6_Sub1_3157 = KeyFocusListener.method957(4, true, false, (byte) 119, true);
-            Renderable.aClass6_Sub1_2857 = KeyFocusListener.method957(5, true, true, (byte) 123, true);
-            Class55.aClass6_Sub1_1286 = KeyFocusListener.method957(6, false, true, (byte) 117, true);
-            UnderlayDefinition.aClass6_Sub1_2571 = KeyFocusListener.method957(7, true, false, (byte) 124, true);
-            ActorDefinition.aClass6_Sub1_2377 = KeyFocusListener.method957(8, true, false, (byte) 127, true);
-            SceneCluster.aClass6_Sub1_773 = KeyFocusListener.method957(9, true, false, (byte) 127, true);
-            RSCanvas.aClass6_Sub1_48 = KeyFocusListener.method957(10, true, false, (byte) 125, true);
-            VertexNormal.aClass6_Sub1_1104 = KeyFocusListener.method957(11, true, false, (byte) 120, true);
-            Class56.aClass6_Sub1_1323 = KeyFocusListener.method957(12, true, false, (byte) 118, true);
+            MemoryCache.skeletonCacheIndex = CacheIndex.loadCacheIndex(0, true, false, true);
+            MemoryCache.skinDefinitionCacheIndex = CacheIndex.loadCacheIndex(1, true, false, true);
+            MemoryCache.gameDefinitionsCacheIndex = CacheIndex.loadCacheIndex(2, true, true, false);
+            MemoryCache.gameInterfaceCacheIndex = CacheIndex.loadCacheIndex(3, true, false, true);
+            MemoryCache.soundEffectCacheIndex = CacheIndex.loadCacheIndex(4, true, false, true);
+            MemoryCache.gameWorldMapCacheIndex = CacheIndex.loadCacheIndex(5, true, true, true);
+            MemoryCache.musicCacheIndex = CacheIndex.loadCacheIndex(6, false, true, true);
+            MemoryCache.modelCacheIndex = CacheIndex.loadCacheIndex(7, true, false, true);
+            MemoryCache.gameImageCacheIndex = CacheIndex.loadCacheIndex(8, true, false, true);
+            MemoryCache.gameTextureCacheIndex = CacheIndex.loadCacheIndex(9, true, false, true);
+            MemoryCache.huffmanCacheIndex = CacheIndex.loadCacheIndex(10, true, false, true);
+            MemoryCache.jingleCacheIndex = CacheIndex.loadCacheIndex(11, true, false, true);
+            MemoryCache.cs2CacheIndex = CacheIndex.loadCacheIndex(12, true, false, true);
             Class40_Sub5_Sub6.anInt2451 = 40;
             Native.currentLoadingText = English.connectingToUpdateServer;
             Class67.anInt1607 = 20;
         } else if (Class40_Sub5_Sub6.anInt2451 == 40) {
             int i = 0;
-            i += FloorDecoration.aClass6_Sub1_605.method197(100) * 5 / 100;
-            i += 5 * Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000.method197(100) / 100;
-            i += 5 * IdentityKit.aClass6_Sub1_2609.method197(100) / 100;
-            i += 5 * Class65.aClass6_Sub1_1533.method197(100) / 100;
-            i += 5 * Actor.aClass6_Sub1_3157.method197(100) / 100;
-            i += 5 * Renderable.aClass6_Sub1_2857.method197(arg0) / 100;
-            i += Class55.aClass6_Sub1_1286.method197(100) * 5 / 100;
-            i += 40 * UnderlayDefinition.aClass6_Sub1_2571.method197(100) / 100;
-            i += ActorDefinition.aClass6_Sub1_2377.method197(100) * 5 / 100;
-            i += SceneCluster.aClass6_Sub1_773.method197(arg0) * 5 / 100;
-            i += 5 * RSCanvas.aClass6_Sub1_48.method197(100) / 100;
-            i += 5 * VertexNormal.aClass6_Sub1_1104.method197(100) / 100;
-            i += 5 * Class56.aClass6_Sub1_1323.method197(100) / 100;
+            i += MemoryCache.skeletonCacheIndex.getPercentLoaded() * 5 / 100;
+            i += 5 * MemoryCache.skinDefinitionCacheIndex.getPercentLoaded() / 100;
+            i += 5 * MemoryCache.gameDefinitionsCacheIndex.getPercentLoaded() / 100;
+            i += 5 * MemoryCache.gameInterfaceCacheIndex.getPercentLoaded() / 100;
+            i += 5 * MemoryCache.soundEffectCacheIndex.getPercentLoaded() / 100;
+            i += 5 * MemoryCache.gameWorldMapCacheIndex.getPercentLoaded() / 100;
+            i += MemoryCache.musicCacheIndex.getPercentLoaded() * 5 / 100;
+            i += 40 * MemoryCache.modelCacheIndex.getPercentLoaded() / 100;
+            i += MemoryCache.gameImageCacheIndex.getPercentLoaded() * 5 / 100;
+            i += MemoryCache.gameTextureCacheIndex.getPercentLoaded() * 5 / 100;
+            i += 5 * MemoryCache.huffmanCacheIndex.getPercentLoaded() / 100;
+            i += 5 * MemoryCache.jingleCacheIndex.getPercentLoaded() / 100;
+            i += 5 * MemoryCache.cs2CacheIndex.getPercentLoaded() / 100;
             if (i == 100) {
                 Class40_Sub5_Sub6.anInt2451 = 45;
                 Native.currentLoadingText = English.loadedUpdateList;
@@ -121,18 +120,18 @@ public class Class40_Sub3 extends Node {
             Class67.anInt1607 = 35;
         } else if (Class40_Sub5_Sub6.anInt2451 == 50) {
             int i = 0;
-            if (Class40_Sub5_Sub17_Sub6.fontSmall != null)
+            if (TypeFace.fontSmall != null)
                 i++;
             else
-                Class40_Sub5_Sub17_Sub6.fontSmall = TypeFace.loadTypeFace(ActorDefinition.aClass6_Sub1_2377, "", Native.aClass1_2101);
+                TypeFace.fontSmall = TypeFace.loadTypeFace(MemoryCache.gameImageCacheIndex, "", Native.aClass1_2101);
             if (WallDecoration.fontNormal != null)
                 i++;
             else
-                WallDecoration.fontNormal = TypeFace.loadTypeFace(ActorDefinition.aClass6_Sub1_2377, "", Native.aClass1_1580);
-            if (Class40_Sub5_Sub17_Sub6.fontBold != null)
+                WallDecoration.fontNormal = TypeFace.loadTypeFace(MemoryCache.gameImageCacheIndex, "", Native.aClass1_1580);
+            if (TypeFace.fontBold != null)
                 i++;
             else
-                Class40_Sub5_Sub17_Sub6.fontBold = TypeFace.loadTypeFace(ActorDefinition.aClass6_Sub1_2377, "", Native.aClass1_1921);
+                TypeFace.fontBold = TypeFace.loadTypeFace(MemoryCache.gameImageCacheIndex, "", Native.aClass1_1921);
             if (i < 3) {
                 Native.currentLoadingText = English.loadingFonts + (i * 100 / 3) + Native.aClass1_1041;
                 Class67.anInt1607 = 40;
@@ -142,7 +141,7 @@ public class Class40_Sub3 extends Node {
                 Native.currentLoadingText = English.loadedFonts;
             }
         } else if (Class40_Sub5_Sub6.anInt2451 == 60) {
-            int i = Class60.method988(RSCanvas.aClass6_Sub1_48, ActorDefinition.aClass6_Sub1_2377);
+            int i = Class60.method988(MemoryCache.huffmanCacheIndex, MemoryCache.gameImageCacheIndex);
             int i_3_ = ISAAC.method288((byte) 119);
             if (i < i_3_) {
                 Native.currentLoadingText = English.loadingTitleScreen + (100 * i / i_3_) + Native.aClass1_1041;
@@ -155,23 +154,23 @@ public class Class40_Sub3 extends Node {
                 Class40_Sub5_Sub6.anInt2451 = 70;
             }
         } else if (Class40_Sub5_Sub6.anInt2451 == 70) {
-            if (IdentityKit.aClass6_Sub1_2609.method185((byte) 98)) {
-                MovedStatics.method441(IdentityKit.aClass6_Sub1_2609);
-                UnderlayDefinition.method616(IdentityKit.aClass6_Sub1_2609);
-                method977(3, IdentityKit.aClass6_Sub1_2609, UnderlayDefinition.aClass6_Sub1_2571);
-                method980(28987, UnderlayDefinition.aClass6_Sub1_2571, VertexNormal.lowMemory, IdentityKit.aClass6_Sub1_2609);
-                Class27.method357(UnderlayDefinition.aClass6_Sub1_2571, arg0 ^ ~0x2a85, IdentityKit.aClass6_Sub1_2609);
-                Class42.method885(IdentityKit.aClass6_Sub1_2609, Class22.membersWorld, UnderlayDefinition.aClass6_Sub1_2571);
-                Cache.method236(Class40_Sub5_Sub17_Sub1.aClass6_Sub1_3000, IdentityKit.aClass6_Sub1_2609, FloorDecoration.aClass6_Sub1_605);
-                Class55.method966(arg0 ^ 0x38, UnderlayDefinition.aClass6_Sub1_2571, IdentityKit.aClass6_Sub1_2609);
-                Landscape.method936(IdentityKit.aClass6_Sub1_2609);
-                Main.method43(IdentityKit.aClass6_Sub1_2609);
-                Class40_Sub5_Sub17_Sub1.method758(Class65.aClass6_Sub1_1533, ActorDefinition.aClass6_Sub1_2377, UnderlayDefinition.aClass6_Sub1_2571, (byte) 90);
+            if (MemoryCache.gameDefinitionsCacheIndex.method185((byte) 98)) {
+                MovedStatics.method441(MemoryCache.gameDefinitionsCacheIndex);
+                UnderlayDefinition.method616(MemoryCache.gameDefinitionsCacheIndex);
+                method977(3, MemoryCache.gameDefinitionsCacheIndex, MemoryCache.modelCacheIndex);
+                method980(28987, MemoryCache.modelCacheIndex, VertexNormal.lowMemory, MemoryCache.gameDefinitionsCacheIndex);
+                Class27.method357(MemoryCache.modelCacheIndex, arg0 ^ ~0x2a85, MemoryCache.gameDefinitionsCacheIndex);
+                Class42.method885(MemoryCache.gameDefinitionsCacheIndex, Class22.membersWorld, MemoryCache.modelCacheIndex);
+                MemoryCache.method236(MemoryCache.skinDefinitionCacheIndex, MemoryCache.gameDefinitionsCacheIndex, MemoryCache.skeletonCacheIndex);
+                Class55.method966(arg0 ^ 0x38, MemoryCache.modelCacheIndex, MemoryCache.gameDefinitionsCacheIndex);
+                Landscape.method936(MemoryCache.gameDefinitionsCacheIndex);
+                Main.method43(MemoryCache.gameDefinitionsCacheIndex);
+                GameInterface.createInterfaceMemoryBuffers();
                 Class40_Sub5_Sub6.anInt2451 = 80;
                 Class67.anInt1607 = 60;
                 Native.currentLoadingText = English.loadedConfig;
             } else {
-                Native.currentLoadingText = English.loadingConfig + IdentityKit.aClass6_Sub1_2609.method202() + Native.aClass1_1041;
+                Native.currentLoadingText = English.loadingConfig + MemoryCache.gameDefinitionsCacheIndex.method202() + Native.aClass1_1041;
                 Class67.anInt1607 = 60;
             }
         } else if (Class40_Sub5_Sub6.anInt2451 == 80) {
@@ -179,59 +178,59 @@ public class Class40_Sub3 extends Node {
             if (AnimationSequence.minimapCompass != null)
                 i++;
             else
-                AnimationSequence.minimapCompass = HuffmanEncoding.method1028(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_1284, (byte) 21, "");
+                AnimationSequence.minimapCompass = HuffmanEncoding.method1028(MemoryCache.gameImageCacheIndex, Native.aClass1_1284, (byte) 21, "");
             if (SpotAnimDefinition.minimapEdge == null)
-                SpotAnimDefinition.minimapEdge = HuffmanEncoding.method1028(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_1427, (byte) 21, "");
+                SpotAnimDefinition.minimapEdge = HuffmanEncoding.method1028(MemoryCache.gameImageCacheIndex, Native.aClass1_1427, (byte) 21, "");
             else
                 i++;
             if (SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301 != null)
                 i++;
             else
-                SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301 = IndexedImage.getMultipleIndexedImages(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_671, "");
+                SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301 = IndexedImage.getMultipleIndexedImages(MemoryCache.gameImageCacheIndex, Native.aClass1_671, "");
             if (Class8.aClass40_Sub5_Sub14_Sub4Array296 == null)
-                Class8.aClass40_Sub5_Sub14_Sub4Array296 = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_3047, "");
+                Class8.aClass40_Sub5_Sub14_Sub4Array296 = Class40_Sub2.method526(MemoryCache.gameImageCacheIndex, Native.aClass1_3047, "");
             else
                 i++;
             if (AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 != null)
                 i++;
             else
-                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_2114, "");
+                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = Class40_Sub2.method526(MemoryCache.gameImageCacheIndex, Native.aClass1_2114, "");
             if (FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 == null)
-                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_2161, "");
+                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = Class40_Sub2.method526(MemoryCache.gameImageCacheIndex, Native.aClass1_2161, "");
             else
                 i++;
             if (ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 != null)
                 i++;
             else
-                ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Native.headiconsPrayer, "");
+                ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = Class40_Sub2.method526(MemoryCache.gameImageCacheIndex, Native.headiconsPrayer, "");
             if (UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 == null)
-                UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_1230, "");
+                UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 = Class40_Sub2.method526(MemoryCache.gameImageCacheIndex, Native.aClass1_1230, "");
             else
                 i++;
             if (LinkedList.aClass40_Sub5_Sub14_Sub4_1057 == null)
-                LinkedList.aClass40_Sub5_Sub14_Sub4_1057 = HuffmanEncoding.method1028(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_2109, (byte) 21, "");
+                LinkedList.aClass40_Sub5_Sub14_Sub4_1057 = HuffmanEncoding.method1028(MemoryCache.gameImageCacheIndex, Native.aClass1_2109, (byte) 21, "");
             else
                 i++;
             if (aClass40_Sub5_Sub14_Sub4Array2019 == null)
-                aClass40_Sub5_Sub14_Sub4Array2019 = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_203, "");
+                aClass40_Sub5_Sub14_Sub4Array2019 = Class40_Sub2.method526(MemoryCache.gameImageCacheIndex, Native.aClass1_203, "");
             else
                 i++;
             if (Class37.cursorCross != null)
                 i++;
             else
-                Class37.cursorCross = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_2179, "");
+                Class37.cursorCross = Class40_Sub2.method526(MemoryCache.gameImageCacheIndex, Native.aClass1_2179, "");
             if (Class27.mapDots == null)
-                Class27.mapDots = Class40_Sub2.method526(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_183, "");
+                Class27.mapDots = Class40_Sub2.method526(MemoryCache.gameImageCacheIndex, Native.aClass1_183, "");
             else
                 i++;
             if (CacheIndex.aClass40_Sub5_Sub14_Sub2Array215 == null)
-                CacheIndex.aClass40_Sub5_Sub14_Sub2Array215 = IndexedImage.getMultipleIndexedImages(ActorDefinition.aClass6_Sub1_2377, Native.scrollbar, "");
+                CacheIndex.aClass40_Sub5_Sub14_Sub2Array215 = IndexedImage.getMultipleIndexedImages(MemoryCache.gameImageCacheIndex, Native.scrollbar, "");
             else
                 i++;
             if (Class40_Sub5_Sub13.moderatorIcon != null)
                 i++;
             else
-                Class40_Sub5_Sub13.moderatorIcon = IndexedImage.getMultipleIndexedImages(ActorDefinition.aClass6_Sub1_2377, Native.aClass1_881, "");
+                Class40_Sub5_Sub13.moderatorIcon = IndexedImage.getMultipleIndexedImages(MemoryCache.gameImageCacheIndex, Native.aClass1_881, "");
             if (i < 14) {
                 Native.currentLoadingText = English.loadingSprites + (100 * i / 14) + Native.aClass1_1041;
                 Class67.anInt1607 = 70;
@@ -249,7 +248,7 @@ public class Class40_Sub3 extends Node {
                 Class40_Sub5_Sub6.anInt2451 = 85;
             }
         } else if (Class40_Sub5_Sub6.anInt2451 == 85) {
-            int i = KeyFocusListener.method955(ActorDefinition.aClass6_Sub1_2377);
+            int i = KeyFocusListener.method955(MemoryCache.gameImageCacheIndex);
             int i_9_ = ActorDefinition.method576();
             if (i < i_9_) {
                 Native.currentLoadingText = English.loadingGameScreen + (i * 100 / i_9_) + Native.aClass1_1041;
@@ -260,15 +259,15 @@ public class Class40_Sub3 extends Node {
                 Class67.anInt1607 = 80;
             }
         } else if (Class40_Sub5_Sub6.anInt2451 == 90) {
-            if (SceneCluster.aClass6_Sub1_773.method185((byte) 62)) {
-                Class35 class35 = new Class35(SceneCluster.aClass6_Sub1_773, ActorDefinition.aClass6_Sub1_2377, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
+            if (MemoryCache.gameTextureCacheIndex.method185((byte) 62)) {
+                Class35 class35 = new Class35(MemoryCache.gameTextureCacheIndex, MemoryCache.gameImageCacheIndex, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
                 Rasterizer3D.method703(class35);
                 Rasterizer3D.method711(0.8);
                 Class40_Sub5_Sub6.anInt2451 = 110;
                 Class67.anInt1607 = 90;
                 Native.currentLoadingText = English.loadedTextures;
             } else {
-                Native.currentLoadingText = English.loadingTextures + SceneCluster.aClass6_Sub1_773.method202() + Native.aClass1_1041;
+                Native.currentLoadingText = English.loadingTextures + MemoryCache.gameTextureCacheIndex.method202() + Native.aClass1_1041;
                 Class67.anInt1607 = 90;
             }
         } else if (Class40_Sub5_Sub6.anInt2451 == 110) {
@@ -278,8 +277,8 @@ public class Class40_Sub3 extends Node {
             Class40_Sub5_Sub6.anInt2451 = 120;
             Class67.anInt1607 = 94;
         } else if (Class40_Sub5_Sub6.anInt2451 == 120) {
-            if (RSCanvas.aClass6_Sub1_48.method194(Native.aClass1_615, "")) {
-                HuffmanEncoding huffmanEncoding = new HuffmanEncoding(RSCanvas.aClass6_Sub1_48.method170("", Native.aClass1_615, arg0 + -99));
+            if (MemoryCache.huffmanCacheIndex.method194(Native.aClass1_615, "")) {
+                HuffmanEncoding huffmanEncoding = new HuffmanEncoding(MemoryCache.huffmanCacheIndex.method170("", Native.aClass1_615, arg0 + -99));
                 Item.method778(huffmanEncoding);
                 Class40_Sub5_Sub6.anInt2451 = 130;
                 Native.currentLoadingText = English.loadedWordpack;
@@ -289,15 +288,15 @@ public class Class40_Sub3 extends Node {
                 Class67.anInt1607 = 96;
             }
         } else if (Class40_Sub5_Sub6.anInt2451 == 130) {
-            if (!Class65.aClass6_Sub1_1533.method185((byte) 66)) {
-                Native.currentLoadingText = English.loadingInterfaces + (4 * Class65.aClass6_Sub1_1533.method202() / 5) + Native.aClass1_1041;
+            if (!MemoryCache.gameInterfaceCacheIndex.method185((byte) 66)) {
+                Native.currentLoadingText = English.loadingInterfaces + (4 * MemoryCache.gameInterfaceCacheIndex.method202() / 5) + Native.aClass1_1041;
                 Class67.anInt1607 = 100;
-            } else if (Class56.aClass6_Sub1_1323.method185((byte) 69)) {
+            } else if (MemoryCache.cs2CacheIndex.method185((byte) 69)) {
                 Native.currentLoadingText = English.loadedInterfaces;
                 Class40_Sub5_Sub6.anInt2451 = 140;
                 Class67.anInt1607 = 100;
             } else {
-                Native.currentLoadingText = English.loadingInterfaces + (80 + Class56.aClass6_Sub1_1323.method202() / 5) + Native.aClass1_1041;
+                Native.currentLoadingText = English.loadingInterfaces + (80 + MemoryCache.cs2CacheIndex.method202() / 5) + Native.aClass1_1041;
                 Class67.anInt1607 = 100;
             }
         } else {

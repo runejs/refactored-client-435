@@ -1,14 +1,20 @@
 package com.jagex.runescape.cache;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.Signlink;
 import com.jagex.runescape.util.SignlinkNode;
@@ -16,13 +22,16 @@ import com.jagex.runescape.util.SignlinkNode;
 import java.io.DataInputStream;
 import java.net.URL;
 
-public abstract class CacheIndex {
+public class CacheIndex {
+
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array215;
     public static long aLong219 = 0L;
-    public static Cache modelCache = new Cache(260);
+    public static MemoryCache modelCache = new MemoryCache(260);
     public static int anInt255;
     public static boolean aBoolean260 = false;
     public static int[][][] anIntArrayArrayArray262;
+    public static int anInt1806;
+    public static int anInt1819 = -1;
 
     public byte[][] aByteArrayArray212;
     public int anInt216;
@@ -35,14 +44,32 @@ public abstract class CacheIndex {
     public int[][] anIntArrayArray236;
     public int[] anIntArray239;
     public int[][] anIntArrayArray243;
-    public byte[][][] aByteArrayArrayArray249;
+    public byte[][][] inMemoryCacheBuffer;
     public int[] anIntArray252;
     public Class42 aClass42_254;
     public int[] anIntArray261;
+    public volatile boolean[] aBooleanArray1796;
+    public int anInt1797 = -1;
+    public volatile boolean aBoolean1800 = false;
+    public Class56 aClass56_1802;
+    public int anInt1807;
+    public int anInt1810;
+    public boolean aBoolean1811 = false;
+    public Class56 aClass56_1812;
 
-    public CacheIndex(boolean arg0, boolean arg1) {
-        aBoolean220 = arg1;
-        aBoolean233 = arg0;
+    static {
+        Player.npcs = new Npc[32768];
+    }
+
+    public CacheIndex(Class56 arg0, Class56 arg1, int arg2, boolean arg3, boolean arg4, boolean arg5) {
+        aBoolean220 = arg4;
+        aBoolean233 = arg3;
+        aClass56_1812 = arg0;
+        aBoolean1811 = arg5;
+        aClass56_1802 = arg1;
+        anInt1807 = arg2;
+        Main.method37(this, anInt1807);
+
     }
 
     public static void method169(String arg0, byte arg1, Throwable arg2) {
@@ -138,6 +165,173 @@ public abstract class CacheIndex {
         WallDecoration.aClass9_1247.method235();
     }
 
+    public static void method399(int arg0, int arg2) {
+        long l = (arg0 << 16) + arg2;
+        Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120);
+        if(class40_sub5_sub13 != null) {
+            InteractiveObject.aClass27_485.method367(true, class40_sub5_sub13);
+        }
+    }
+
+    public static String method204(int arg0) {
+        return (0xff & arg0 >> 24) + Native.aClass1_975 + ((arg0 & 0xffca88) >> 16) + Native.aClass1_975 + ((0xfff8 & arg0) >> 8) + Native.aClass1_975 + (0xff & arg0);
+    }
+
+    public static CacheIndex loadCacheIndex(int cacheIndexId, boolean arg1, boolean arg2, boolean arg4) {
+        Class56 class56 = null;
+        if (SpotAnimDefinition.aClass67_2298 != null) {
+            class56 = new Class56(cacheIndexId, SpotAnimDefinition.aClass67_2298, Class40_Sub5_Sub6.aClass67Array2436[cacheIndexId], 1000000);
+        }
+        return new CacheIndex(class56, VarbitDefinition.aClass56_2356, cacheIndexId, arg2, arg4, arg1);
+    }
+
+    public void method196(boolean arg0, int arg2, boolean arg3, byte[] arg4) {
+        if(arg0) {
+            if(aBoolean1800)
+                throw new RuntimeException();
+            if(aClass56_1802 != null)
+                RSRuntimeException.method1055(arg4, aClass56_1802, anInt1807);
+            this.method178(arg4);
+            method199();
+        } else {
+            arg4[arg4.length - 2] = (byte) (anIntArray224[arg2] >> 8);
+            arg4[arg4.length + -1] = (byte) anIntArray224[arg2];
+            if(aClass56_1812 != null) {
+                RSRuntimeException.method1055(arg4, aClass56_1812, arg2);
+                aBooleanArray1796[arg2] = true;
+            }
+            if(arg3)
+                aByteArrayArray212[arg2] = arg4;
+        }
+    }
+
+    public int getPercentLoaded() {
+        if(aBoolean1800)
+            return 100;
+        if(aByteArrayArray212 != null)
+            return 99;
+        int i = Class34.calculateDataLoaded(255, anInt1807);
+        if(i >= 100)
+            i = 99;
+        return i;
+
+    }
+
+    public void method198(byte arg0, boolean arg1, byte[] arg2, int arg3, Class56 arg4) {
+        do {
+            if(aClass56_1802 == arg4) {
+                if(aBoolean1800)
+                    throw new RuntimeException();
+                if(arg2 == null) {
+                    com.jagex.runescape.HashTable.method327(true, this, 255, anInt1807, (byte) 0,
+                            anInt1810, (byte) 85);
+                    break;
+                }
+                com.jagex.runescape.Class65.aCRC32_1531.reset();
+                com.jagex.runescape.Class65.aCRC32_1531.update(arg2, 0, arg2.length);
+                int i = (int) com.jagex.runescape.Class65.aCRC32_1531.getValue();
+                if(i != anInt1810) {
+                    com.jagex.runescape.HashTable.method327(true, this, 255, anInt1807, (byte) 0,
+                            anInt1810, (byte) -121);
+                    break;
+                }
+                this.method178(arg2);
+                method199();
+            } else {
+                if(!arg1 && anInt1797 == arg3)
+                    aBoolean1800 = true;
+                if(arg2 == null || arg2.length <= 2) {
+                    aBooleanArray1796[arg3] = false;
+                    if(aBoolean1811 || arg1)
+                        HashTable.method327(arg1, this, anInt1807, arg3, (byte) 2, anIntArray252[arg3], (byte) -117);
+                    break;
+                }
+                Class65.aCRC32_1531.reset();
+                Class65.aCRC32_1531.update(arg2, 0, arg2.length - 2);
+                int i = (int) Class65.aCRC32_1531.getValue();
+                int i_0_ = ((arg2[-2 + arg2.length] & 0xff) << 8) + (0xff & arg2[arg2.length + -1]);
+                if(i != anIntArray252[arg3] || i_0_ != anIntArray224[arg3]) {
+                    aBooleanArray1796[arg3] = false;
+                    if(aBoolean1811 || arg1)
+                        HashTable.method327(arg1, this, anInt1807, arg3, (byte) 2, anIntArray252[arg3], (byte) -78);
+                    break;
+                }
+                aBooleanArray1796[arg3] = true;
+                if(arg1)
+                    aByteArrayArray212[arg3] = arg2;
+            }
+            if(arg0 == -115)
+                break;
+            getPercentLoaded();
+
+            break;
+        } while(false);
+    }
+
+    public void method177(int arg0, int arg1) {
+        if(aClass56_1812 != null && aBooleanArray1796 != null && aBooleanArray1796[arg1])
+            GameObjectDefinition.method602(this, arg1, aClass56_1812);
+        else
+            HashTable.method327(true, this, anInt1807, arg1, (byte) 2, anIntArray252[arg1], (byte) -127);
+        if(arg0 <= 1)
+            aBoolean1811 = true;
+    }
+
+    public void method174(int arg0) {
+        method399(anInt1807, arg0);
+    }
+
+    public void method199() {
+        aBooleanArray1796 = new boolean[aByteArrayArray212.length];
+        for(int i_1_ = 0; i_1_ < aBooleanArray1796.length; i_1_++)
+            aBooleanArray1796[i_1_] = false;
+        if(aClass56_1812 == null)
+            aBoolean1800 = true;
+        else {
+            anInt1797 = -1;
+            for(int i_2_ = 0; aBooleanArray1796.length > i_2_; i_2_++) {
+                if(anIntArray261[i_2_] > 0) {
+                    PacketBuffer.method513(i_2_, this, aClass56_1812, (byte) -28);
+                    anInt1797 = i_2_;
+                }
+            }
+            if(anInt1797 == -1)
+                aBoolean1800 = true;
+        }
+    }
+
+    public void method200(int arg0, int arg1) {
+        if(arg1 >= 41) {
+            anInt1810 = arg0;
+            if(aClass56_1802 == null)
+                HashTable.method327(true, this, 255, anInt1807, (byte) 0, anInt1810, (byte) -118);
+            else
+                GameObjectDefinition.method602(this, anInt1807, aClass56_1802);
+        }
+    }
+
+    public int method201(int arg0) {
+        if(aByteArrayArray212[arg0] != null)
+            return 100;
+        if(aBooleanArray1796[arg0])
+            return 100;
+        return Class34.calculateDataLoaded(anInt1807, arg0);
+    }
+
+    public int method202() {
+        int i = 0;
+        int i_3_ = 0;
+        for(int i_4_ = 0; i_4_ < aByteArrayArray212.length; i_4_++) {
+            if(anIntArray261[i_4_] > 0) {
+                i += 100;
+                i_3_ += method201(i_4_);
+            }
+        }
+        if(i == 0)
+            return 100;
+        return i_3_ * 100 / i;
+    }
+
     public byte[] method170(String arg0, String arg1, int arg2) {
         if(arg2 != 1)
             method186(-26, 53);
@@ -149,24 +343,29 @@ public abstract class CacheIndex {
         return getFile(i_0_, i);
     }
 
-    public void method171(int arg0, int arg1) {
+    /**
+     * Unloads a cache file to free up it's memory
+     * @param arg0
+     * @param arg1
+     */
+    public void unloadFile(int arg0, int arg1) {
         int i = 0;
         if(arg0 == 1) {
-            for(/**/; i < aByteArrayArrayArray249[arg1].length; i++)
-                aByteArrayArrayArray249[arg1][i] = null;
+            for(/**/; i < inMemoryCacheBuffer[arg1].length; i++)
+                inMemoryCacheBuffer[arg1][i] = null;
         }
     }
 
     public byte[] getFile(int arg0, int arg2) {
-        //if(this instanceof CacheIndex_Sub1)
+        //if(this instanceof CacheIndex)
         //    System.out.printf("Request cache arch: %d index: %d, file: %d\n", this.anInt1807, arg0, arg2);
         return method176(arg2, arg0, null);
     }
 
     public boolean loaded(int arg0, int arg2) {
-        if(arg0 < 0 || arg0 >= aByteArrayArrayArray249.length || aByteArrayArrayArray249[arg0] == null || arg2 < 0 || arg2 >= aByteArrayArrayArray249[arg0].length)
+        if(arg0 < 0 || arg0 >= inMemoryCacheBuffer.length || inMemoryCacheBuffer[arg0] == null || arg2 < 0 || arg2 >= inMemoryCacheBuffer[arg0].length)
             return false;
-        if(aByteArrayArrayArray249[arg0][arg2] != null)
+        if(inMemoryCacheBuffer[arg0][arg2] != null)
             return true;
         if(aByteArrayArray212[arg0] != null)
             return true;
@@ -174,19 +373,14 @@ public abstract class CacheIndex {
         return aByteArrayArray212[arg0] != null;
     }
 
-    public void method174(int arg0, byte arg1) {
-    }
-
-    public int method175(int arg0) {
-        if(arg0 > -7)
-            aBoolean260 = true;
-        return aByteArrayArrayArray249.length;
+    public int getLength() {
+        return inMemoryCacheBuffer.length;
     }
 
     public byte[] method176(int arg0, int arg1, int[] arg2) {
-        if(arg0 < 0 || arg0 >= aByteArrayArrayArray249.length || aByteArrayArrayArray249[arg0] == null || arg1 < 0 || arg1 >= aByteArrayArrayArray249[arg0].length)
+        if(arg0 < 0 || arg0 >= inMemoryCacheBuffer.length || inMemoryCacheBuffer[arg0] == null || arg1 < 0 || arg1 >= inMemoryCacheBuffer[arg0].length)
             return null;
-        if(aByteArrayArrayArray249[arg0][arg1] == null) {
+        if(inMemoryCacheBuffer[arg0][arg1] == null) {
             boolean bool = method181(arg0, arg2);
             if(!bool) {
                 method177(33, arg0);
@@ -195,18 +389,13 @@ public abstract class CacheIndex {
                     return null;
             }
         }
-        byte[] is = aByteArrayArrayArray249[arg0][arg1];
+        byte[] is = inMemoryCacheBuffer[arg0][arg1];
         if(aBoolean220)
-            aByteArrayArrayArray249[arg0][arg1] = null;
+            inMemoryCacheBuffer[arg0][arg1] = null;
         return is;
     }
 
-    public void method177(int arg0, int arg1) {
-        if(arg0 < 1)
-            method181(22, null);
-    }
-
-    // @TODO Identity kit????? unsure face, needs more renaming and research
+    // @TODO something with unpacking the game cache
     public void method178(byte[] arg1) {
         anInt216 = Class40_Sub2.method525(arg1, arg1.length, (byte) -68);
         Buffer class40_sub1 = new Buffer(Landscape.method931(arg1));
@@ -225,7 +414,7 @@ public abstract class CacheIndex {
             anIntArrayArray243 = new int[i_3_ + 1][];
             anIntArray224 = new int[1 + i_3_];
             anIntArray252 = new int[i_3_ + 1];
-            aByteArrayArrayArray249 = new byte[1 + i_3_][][];
+            inMemoryCacheBuffer = new byte[1 + i_3_][][];
             anIntArray261 = new int[1 + i_3_];
             aByteArrayArray212 = new byte[i_3_ + 1][];
             if(i_2_ != 0) {
@@ -251,7 +440,7 @@ public abstract class CacheIndex {
                     if(i_14_ > i_11_)
                         i_11_ = i_14_;
                 }
-                aByteArrayArrayArray249[i_10_] = new byte[i_11_ + 1][];
+                inMemoryCacheBuffer[i_10_] = new byte[i_11_ + 1][];
             }
             if(i_2_ != 0) {
                 aClass42Array217 = new Class42[i_3_ + 1];
@@ -259,7 +448,7 @@ public abstract class CacheIndex {
                 for(int i_15_ = 0; anInt221 > i_15_; i_15_++) {
                     int i_16_ = anIntArray227[i_15_];
                     int i_17_ = anIntArray261[i_16_];
-                    anIntArrayArray236[i_16_] = new int[aByteArrayArrayArray249[i_16_].length];
+                    anIntArrayArray236[i_16_] = new int[inMemoryCacheBuffer[i_16_].length];
                     for(int i_18_ = 0; i_17_ > i_18_; i_18_++)
                         anIntArrayArray236[i_16_][anIntArrayArray243[i_16_][i_18_]] = class40_sub1.getIntBE();
                     aClass42Array217[i_16_] = new Class42(anIntArrayArray236[i_16_]);
@@ -277,7 +466,7 @@ public abstract class CacheIndex {
         if(aByteArrayArray212[arg0] == null)
             return false;
         int i = anIntArray261[arg0];
-        byte[][] is = aByteArrayArrayArray249[arg0];
+        byte[][] is = inMemoryCacheBuffer[arg0];
         int[] is_19_ = anIntArrayArray243[arg0];
         boolean bool = true;
         for(int i_20_ = 0; i_20_ < i; i_20_++) {
@@ -337,9 +526,9 @@ public abstract class CacheIndex {
     }
 
     public byte[] method182(int arg0, int arg2) {
-        if(arg2 < 0 || arg2 >= aByteArrayArrayArray249.length || aByteArrayArrayArray249[arg2] == null || arg0 < 0 || aByteArrayArrayArray249[arg2].length <= arg0)
+        if(arg2 < 0 || arg2 >= inMemoryCacheBuffer.length || inMemoryCacheBuffer[arg2] == null || arg0 < 0 || inMemoryCacheBuffer[arg2].length <= arg0)
             return null;
-        if(aByteArrayArrayArray249[arg2][arg0] == null) {
+        if(inMemoryCacheBuffer[arg2][arg0] == null) {
             boolean bool = method181(arg2, null);
             if(!bool) {
                 method177(45, arg2);
@@ -348,7 +537,7 @@ public abstract class CacheIndex {
                     return null;
             }
         }
-        byte[] is = aByteArrayArrayArray249[arg2][arg0];
+        byte[] is = inMemoryCacheBuffer[arg2][arg0];
         return is;
     }
 
@@ -384,22 +573,22 @@ public abstract class CacheIndex {
     }
 
     public byte[] method187(int arg0) {
-        if(aByteArrayArrayArray249.length == 1)
+        if(inMemoryCacheBuffer.length == 1)
             return getFile(arg0, 0);
-        if(aByteArrayArrayArray249[arg0].length == 1)
+        if(inMemoryCacheBuffer[arg0].length == 1)
             return getFile(0, arg0);
         throw new RuntimeException();
     }
 
     public int method190(int arg0) {
-        return aByteArrayArrayArray249[arg0].length;
+        return inMemoryCacheBuffer[arg0].length;
     }
 
     public void method191(int arg0) {
-        for(int i = 0; i < aByteArrayArrayArray249.length; i++) {
-            if(aByteArrayArrayArray249[i] != null) {
-                for(int i_48_ = 0; i_48_ < aByteArrayArrayArray249[i].length; i_48_++)
-                    aByteArrayArrayArray249[i][i_48_] = null;
+        for(int i = 0; i < inMemoryCacheBuffer.length; i++) {
+            if(inMemoryCacheBuffer[i] != null) {
+                for(int i_48_ = 0; i_48_ < inMemoryCacheBuffer[i].length; i_48_++)
+                    inMemoryCacheBuffer[i][i_48_] = null;
             }
         }
         if(arg0 != 1120)
@@ -413,9 +602,9 @@ public abstract class CacheIndex {
     }
 
     public byte[] method193(int arg1) {
-        if(aByteArrayArrayArray249.length == 1)
+        if(inMemoryCacheBuffer.length == 1)
             return method182(arg1, 0);
-        if(aByteArrayArrayArray249[arg1].length == 1)
+        if(inMemoryCacheBuffer[arg1].length == 1)
             return method182(0, arg1);
         throw new RuntimeException();
     }
@@ -432,6 +621,6 @@ public abstract class CacheIndex {
         arg1 = arg1.toLowerCase();
         int i = aClass42_254.method882(RSString.stringHash(arg1));
         if(arg0 == 0 && i >= 0)
-            method174(i, (byte) 2);
+            method174(i);
     }
 }

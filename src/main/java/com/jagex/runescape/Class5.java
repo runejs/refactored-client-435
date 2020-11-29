@@ -1,8 +1,7 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.Widget.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
@@ -54,16 +53,16 @@ public class Class5 {
     }
 
     public static void method164() {
-        Renderable.handleSequences(ActorDefinition.openFullScreenWidgetId);
-        if(UnderlayDefinition.openSecondaryWidgetId != -1)
-            Renderable.handleSequences(UnderlayDefinition.openSecondaryWidgetId);
+        Renderable.handleSequences(GameInterface.fullscreenInterfaceId);
+        if(GameInterface.fullscreenSiblingInterfaceId != -1)
+            Renderable.handleSequences(GameInterface.fullscreenSiblingInterfaceId);
         anInt199 = 0;
         ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.prepareRasterizer();
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(Player.viewportOffsets);
         Rasterizer.resetPixels();
-        Class40_Sub5_Sub6.drawInterface(0, ActorDefinition.openFullScreenWidgetId, 503, (byte) -5, 0, 0, 765);
-        if(UnderlayDefinition.openSecondaryWidgetId != -1)
-            Class40_Sub5_Sub6.drawInterface(0, UnderlayDefinition.openSecondaryWidgetId, 503, (byte) -5, 0, 0, 765);
+        Class40_Sub5_Sub6.drawInterface(0, GameInterface.fullscreenInterfaceId, 503, (byte) -5, 0, 0, 765);
+        if(GameInterface.fullscreenSiblingInterfaceId != -1)
+            Class40_Sub5_Sub6.drawInterface(0, GameInterface.fullscreenSiblingInterfaceId, 503, (byte) -5, 0, 0, 765);
         if(!Class4.menuOpen) {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
@@ -162,7 +161,7 @@ public class Class5 {
         }
     }
 
-    public static boolean method166(byte arg0, Widget arg1) {
+    public static boolean method166(byte arg0, GameInterface arg1) {
         int i = arg1.contentType;
         if(Class12.friendListStatus == 2) {
             if(i == 201) {
@@ -241,7 +240,7 @@ public class Class5 {
         Class13.aClass9_406.method235();
     }
 
-    public static void scrollInterface(int arg0, int arg1, int arg2, int arg3, Widget arg5, int arg6, int arg7, int arg8) {
+    public static void scrollInterface(int arg0, int arg1, int arg2, int arg3, GameInterface arg5, int arg6, int arg7, int arg8) {
         if(Class61.aBoolean1444)
             Landscape.anInt1171 = 32;
         else

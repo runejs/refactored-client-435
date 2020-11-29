@@ -2,7 +2,7 @@ package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.Widget.GameInterface;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
@@ -132,7 +132,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
     }
 
 
-    public static boolean method746(Widget arg1) {
+    public static boolean method746(GameInterface arg1) {
         if(arg1.alternateOperators == null) {
             return false;
         }

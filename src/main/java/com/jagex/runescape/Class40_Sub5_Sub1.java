@@ -1,18 +1,14 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.frame.ChatBox;
-import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.SceneTile;

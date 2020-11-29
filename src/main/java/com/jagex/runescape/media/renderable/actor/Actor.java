@@ -1,9 +1,8 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
@@ -28,7 +27,6 @@ public abstract class Actor extends Renderable {
     public static int anInt3151 = -16 + (int) (Math.random() * 33.0);
     public static Signlink aClass31_3152;
     public static int actorUpdatingIndex = 0;
-    public static CacheIndex_Sub1 aClass6_Sub1_3157;
 
     public boolean[] aBooleanArray3072;
     public int anInt3073;
@@ -265,7 +263,7 @@ public abstract class Actor extends Renderable {
     }
 
     public static void method783() {
-        Cache.aClass9_326.method235();
+        MemoryCache.aClass9_326.method235();
         WallDecoration.aClass9_1264.method235();
         Class67.aClass9_1582.method235();
     }
@@ -368,7 +366,7 @@ public abstract class Actor extends Renderable {
             i_19_++;
             i--;
         }
-        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, arg1 ^ -94).anInt2476 == 1)
+        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, arg1 ^ -94).priority == 1)
             playingAnimation = -1;
         if(anInt3109 < 9)
             anInt3109++;
@@ -420,7 +418,7 @@ public abstract class Actor extends Renderable {
     }
 
     public void method787(int arg0, int arg1, boolean arg2, int arg3) {
-        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, 2).anInt2476 == 1)
+        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, 2).priority == 1)
             playingAnimation = -1;
         if(!arg2) {
             int i = -pathY[0] + arg3;

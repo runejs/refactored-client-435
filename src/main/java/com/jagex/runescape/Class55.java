@@ -1,7 +1,6 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -11,17 +10,12 @@ import java.awt.*;
 import java.io.*;
 
 public class Class55 {
-    public static CacheIndex_Sub1 aClass6_Sub1_1286;
     public static int mouseInvInterfaceIndex = 0;
     public static Class48 aClass48_1289;
     public static volatile int eventClickX = 0;
     public static int anInt1296 = -1;
     public static int anInt1299 = 2301979;
     public static int destinationY = 0;
-
-    public static void method958(int arg0) {
-        Class61.method995((byte) 85, arg0);
-    }
 
     public static String method959(int arg0, Throwable arg1) throws IOException {
         String string;

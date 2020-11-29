@@ -49,8 +49,8 @@ public class GameObject extends Renderable {
             animationFrame = 0;
             animationCycleDelay = -1 + Node.pulseCycle;
             if(arg8 && animationSequence.frameStep != -1) {
-                animationFrame = (int) ((double) animationSequence.anIntArray2485.length * Math.random());
-                animationCycleDelay -= (int) (Math.random() * (double) animationSequence.animationLengths[animationFrame]);
+                animationFrame = (int) ((double) animationSequence.frameIds.length * Math.random());
+                animationCycleDelay -= (int) (Math.random() * (double) animationSequence.frameLengths[animationFrame]);
             }
         }
     }
@@ -154,12 +154,12 @@ public class GameObject extends Renderable {
             int step = -animationCycleDelay + Node.pulseCycle;
             if(step > 100 && animationSequence.frameStep > 0)
                 step = 100;
-            while(animationSequence.animationLengths[animationFrame] < step) {
-                step -= animationSequence.animationLengths[animationFrame];
+            while(animationSequence.frameLengths[animationFrame] < step) {
+                step -= animationSequence.frameLengths[animationFrame];
                 animationFrame++;
-                if(animationSequence.anIntArray2485.length <= animationFrame) {
+                if(animationSequence.frameIds.length <= animationFrame) {
                     animationFrame -= animationSequence.frameStep;
-                    if(animationFrame < 0 || animationSequence.anIntArray2485.length <= animationFrame) {
+                    if(animationFrame < 0 || animationSequence.frameIds.length <= animationFrame) {
                         animationSequence = null;
                         break;
                     }

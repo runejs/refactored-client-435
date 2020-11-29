@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
@@ -15,7 +15,7 @@ public class Class34 {
     public static HashTable aClass23_841 = new HashTable(4096);
     public static int anInt848 = 0;
     public static int currentCameraPositionV;
-    public static Cache aClass9_851 = new Cache(30);
+    public static MemoryCache aClass9_851 = new MemoryCache(30);
     public static int[] anIntArray852;
     public static long aLong853;
     public static int anInt854 = -1;
@@ -71,7 +71,7 @@ public class Class34 {
         aByteArray839 = new byte[18002];
     }
 
-    public static int method415(int arg1, int arg2) {
+    public static int calculateDataLoaded(int arg1, int arg2) {
         long l = (long) ((arg1 << 16) + arg2);
         if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null || PacketBuffer.aClass40_Sub5_Sub13_2250.key != l)
             return 0;
@@ -117,7 +117,7 @@ public class Class34 {
             return arg1;
         }
         if(!arg2)
-            method415(-124, -88);
+            calculateDataLoaded(-124, -88);
         arg1 = arg1 * (arg0 & 0x7f) / 128;
         if(arg1 < 2)
             arg1 = 2;

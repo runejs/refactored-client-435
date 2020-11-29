@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -64,7 +64,7 @@ public class Class37 {
         IncomingPackets.incomingPacketSize = 0;
         SceneCluster.packetBuffer.currentPosition = 0;
         RSString.anInt1690 = -1;
-        Cache.anInt324 = -1;
+        MemoryCache.anInt324 = -1;
         Class35.anInt1728 = 0;
         Class49.anInt1151 = -1;
         VarbitDefinition.destinationX = 0;

@@ -3,8 +3,8 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.*;
-import com.jagex.runescape.cache.media.Widget.Widget;
-import com.jagex.runescape.cache.media.Widget.WidgetType;
+import com.jagex.runescape.cache.media.Widget.GameInterface;
+import com.jagex.runescape.cache.media.Widget.GameInterfaceType;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
@@ -65,79 +65,79 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
 
     }
 
-    public static void method20(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, Widget[] arg7, int arg8, int arg9) {
+    public static void method20(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, GameInterface[] arg7, int arg8, int arg9) {
 
         if (arg6 != 1)
             providesignlink(null);
         for (int i = 0; i < arg7.length; i++) {
-            Widget widget = arg7[i];
-            if (widget != null && (widget.type == WidgetType.LAYER || widget.aBoolean2688) && widget != null && arg5 == widget.parentId && (!widget.isHidden || PacketBuffer.hiddenButtonTest)) {
-                int i_1_ = arg4 + widget.currentX;
-                int i_2_ = arg0 + widget.currentY;
-                if (!widget.aBoolean2694)
+            GameInterface gameInterface = arg7[i];
+            if (gameInterface != null && (gameInterface.type == GameInterfaceType.LAYER || gameInterface.aBoolean2688) && gameInterface != null && arg5 == gameInterface.parentId && (!gameInterface.isHidden || PacketBuffer.hiddenButtonTest)) {
+                int i_1_ = arg4 + gameInterface.currentX;
+                int i_2_ = arg0 + gameInterface.currentY;
+                if (!gameInterface.aBoolean2694)
                     i_2_ -= arg9;
-                int i_3_ = i_2_ + widget.originalHeight;
+                int i_3_ = i_2_ + gameInterface.originalHeight;
                 int i_4_ = arg0 >= i_2_ ? arg0 : i_2_;
-                if (!widget.aBoolean2694)
+                if (!gameInterface.aBoolean2694)
                     i_1_ -= arg2;
-                int i_5_ = i_1_ + widget.originalWidth;
+                int i_5_ = i_1_ + gameInterface.originalWidth;
                 int i_6_ = arg4 < i_1_ ? i_1_ : arg4;
                 int i_7_ = arg1 > i_3_ ? i_3_ : arg1;
                 int i_8_ = i_5_ < arg8 ? i_5_ : arg8;
-                if (widget.type == WidgetType.LAYER) {
-                    method20(i_4_, i_7_, widget.anInt2746, arg3, i_6_, i, 1, arg7, i_8_, widget.scrollPosition);
-                    if (widget.aWidgetArray2713 != null)
-                        method20(i_4_, i_7_, widget.anInt2746, arg3, i_6_, widget.id, 1, widget.aWidgetArray2713, i_8_, widget.scrollPosition);
+                if (gameInterface.type == GameInterfaceType.LAYER) {
+                    method20(i_4_, i_7_, gameInterface.anInt2746, arg3, i_6_, i, 1, arg7, i_8_, gameInterface.scrollPosition);
+                    if (gameInterface.aGameInterfaceArray2713 != null)
+                        method20(i_4_, i_7_, gameInterface.anInt2746, arg3, i_6_, gameInterface.id, 1, gameInterface.aGameInterfaceArray2713, i_8_, gameInterface.scrollPosition);
                 }
-                if (widget.aBoolean2688) {
+                if (gameInterface.aBoolean2688) {
                     boolean bool;
                     bool = Class13.mouseX >= i_6_ && i_4_ <= Landscape.mouseY && i_8_ > Class13.mouseX && i_7_ > Landscape.mouseY;
                     boolean bool_9_ = false;
                     if (SpotAnimDefinition.mouseButtonPressed == 1 && bool)
                         bool_9_ = true;
                     boolean bool_10_ = false;
-                    if (widget.anInt2738 != -1 && bool_9_ && Wall.aWidget_353 == null) {
+                    if (gameInterface.anInt2738 != -1 && bool_9_ && Wall.aGameInterface_353 == null) {
                         Class40_Sub2.anInt1996 = Class13.mouseX;
-                        Wall.aWidget_353 = widget;
+                        Wall.aGameInterface_353 = gameInterface;
                         Class40_Sub5_Sub11.anInt2621 = Landscape.mouseY;
                     }
                     if (MouseHandler.clickType == 1 && i_6_ <= Class57.clickX && RSString.clickY >= i_4_ && Class57.clickX < i_8_ && RSString.clickY < i_7_)
                         bool_10_ = true;
-                    if (Wall.aWidget_353 != null) {
+                    if (Wall.aGameInterface_353 != null) {
                         bool_9_ = false;
                         bool = false;
                         bool_10_ = false;
                     }
-                    if (!widget.aBoolean2730 && bool_10_ && (0x1 & arg3) != 0) {
-                        widget.aBoolean2730 = true;
-                        if (widget.anObjectArray2681 != null)
-                            Widget.method891(widget.anObjectArray2681, 0, RSString.clickY + -i_2_, widget, Class57.clickX - i_1_, false);
+                    if (!gameInterface.aBoolean2730 && bool_10_ && (0x1 & arg3) != 0) {
+                        gameInterface.aBoolean2730 = true;
+                        if (gameInterface.anObjectArray2681 != null)
+                            GameInterface.method891(gameInterface.anObjectArray2681, 0, RSString.clickY + -i_2_, gameInterface, Class57.clickX - i_1_, false);
                     }
-                    if (widget.aBoolean2730 && bool_9_ && (arg3 & 0x4) != 0 && widget.anObjectArray2747 != null)
-                        Widget.method891(widget.anObjectArray2747, 0, -i_2_ + Landscape.mouseY, widget, -i_1_ + Class13.mouseX, false);
-                    if (widget.aBoolean2730 && !bool_9_ && (0x2 & arg3) != 0) {
-                        widget.aBoolean2730 = false;
-                        if (widget.anObjectArray2707 != null)
-                            Widget.method891(widget.anObjectArray2707, 0, Landscape.mouseY - i_2_, widget, Class13.mouseX - i_1_, false);
+                    if (gameInterface.aBoolean2730 && bool_9_ && (arg3 & 0x4) != 0 && gameInterface.anObjectArray2747 != null)
+                        GameInterface.method891(gameInterface.anObjectArray2747, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX, false);
+                    if (gameInterface.aBoolean2730 && !bool_9_ && (0x2 & arg3) != 0) {
+                        gameInterface.aBoolean2730 = false;
+                        if (gameInterface.anObjectArray2707 != null)
+                            GameInterface.method891(gameInterface.anObjectArray2707, 0, Landscape.mouseY - i_2_, gameInterface, Class13.mouseX - i_1_, false);
                     }
-                    if (bool_9_ && (arg3 & 0x8) != 0 && widget.anObjectArray2644 != null)
-                        Widget.method891(widget.anObjectArray2644, 0, -i_2_ + Landscape.mouseY, widget, -i_1_ + Class13.mouseX, false);
-                    if (!widget.aBoolean2682 && bool && (0x10 & arg3) != 0) {
-                        widget.aBoolean2682 = true;
-                        if (widget.anObjectArray2658 != null)
-                            Widget.method891(widget.anObjectArray2658, 0, Landscape.mouseY - i_2_, widget, Class13.mouseX - i_1_, false);
+                    if (bool_9_ && (arg3 & 0x8) != 0 && gameInterface.anObjectArray2644 != null)
+                        GameInterface.method891(gameInterface.anObjectArray2644, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX, false);
+                    if (!gameInterface.aBoolean2682 && bool && (0x10 & arg3) != 0) {
+                        gameInterface.aBoolean2682 = true;
+                        if (gameInterface.anObjectArray2658 != null)
+                            GameInterface.method891(gameInterface.anObjectArray2658, 0, Landscape.mouseY - i_2_, gameInterface, Class13.mouseX - i_1_, false);
                     }
-                    if (widget.aBoolean2682 && bool && (0x40 & arg3) != 0 && widget.anObjectArray2680 != null)
-                        Widget.method891(widget.anObjectArray2680, 0, -i_2_ + Landscape.mouseY, widget, -i_1_ + Class13.mouseX, false);
-                    if (widget.aBoolean2682 && !bool && (arg3 & 0x20) != 0) {
-                        widget.aBoolean2682 = false;
-                        if (widget.anObjectArray2672 != null)
-                            Widget.method891(widget.anObjectArray2672, 0, -i_2_ + Landscape.mouseY, widget, -i_1_ + Class13.mouseX, false);
+                    if (gameInterface.aBoolean2682 && bool && (0x40 & arg3) != 0 && gameInterface.anObjectArray2680 != null)
+                        GameInterface.method891(gameInterface.anObjectArray2680, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX, false);
+                    if (gameInterface.aBoolean2682 && !bool && (arg3 & 0x20) != 0) {
+                        gameInterface.aBoolean2682 = false;
+                        if (gameInterface.anObjectArray2672 != null)
+                            GameInterface.method891(gameInterface.anObjectArray2672, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX, false);
                     }
-                    if (widget.anObjectArray2712 != null && (arg3 & 0x80) != 0)
-                        Widget.method891(widget.anObjectArray2712, 0, 0, widget, 0, false);
-                    if (AnimationSequence.anInt2480 == Node.pulseCycle && widget.anObjectArray2650 != null && (arg3 & 0x100) != 0)
-                        Widget.method891(widget.anObjectArray2650, 0, 0, widget, 0, false);
+                    if (gameInterface.anObjectArray2712 != null && (arg3 & 0x80) != 0)
+                        GameInterface.method891(gameInterface.anObjectArray2712, 0, 0, gameInterface, 0, false);
+                    if (AnimationSequence.anInt2480 == Node.pulseCycle && gameInterface.anObjectArray2650 != null && (arg3 & 0x100) != 0)
+                        GameInterface.method891(gameInterface.anObjectArray2650, 0, 0, gameInterface, 0, false);
                 }
             }
         }

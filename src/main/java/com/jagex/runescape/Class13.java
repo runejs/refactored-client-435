@@ -1,10 +1,10 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.Widget.GameInterface;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -17,7 +17,7 @@ import com.jagex.runescape.scene.tile.Wall;
 public class Class13 {
     public static int worldid = 1;
     public static int[] anIntArray403 = new int[25];
-    public static Cache aClass9_406 = new Cache(64);
+    public static MemoryCache aClass9_406 = new MemoryCache(64);
     public static boolean[] playerArray = new boolean[5];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_418;
     public static int anInt419 = 2;
@@ -70,8 +70,8 @@ public class Class13 {
     }
 
     public static void method243(byte arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
-        if(ProducingGraphicsBuffer.method1043(arg4)) {
-            Class48.method925(arg3, Widget.interfaces[arg4], arg5, 0, arg7, 0, -1, arg8, arg6, arg1, 0, arg2);
+        if(GameInterface.decodeGameInterface(arg4)) {
+            Class48.method925(arg3, GameInterface.interfaces[arg4], arg5, 0, arg7, 0, -1, arg8, arg6, arg1, 0, arg2);
             if(arg0 != 89)
                 English.loadingFriendList = null;
         }
@@ -108,7 +108,7 @@ public class Class13 {
         return new byte[arg1];
     }
 
-    public static int[] method247(Widget arg0, byte arg1) {
+    public static int[] method247(GameInterface arg0, byte arg1) {
         if(arg1 <= 74)
             anInt419 = -37;
         int i;
@@ -116,20 +116,20 @@ public class Class13 {
             i = arg0.parentId >> 16;
         else
             i = arg0.id >> 16;
-        if(!ProducingGraphicsBuffer.method1043(i))
+        if(!GameInterface.decodeGameInterface(i))
             return null;
         int i_11_ = arg0.currentX;
         int i_12_ = arg0.currentY;
         int i_13_ = arg0.parentId;
         while(i_13_ != -1) {
-            Widget widget = Widget.interfaces[i][i_13_ & 0xffff];
-            i_11_ += widget.currentX;
+            GameInterface gameInterface = GameInterface.interfaces[i][i_13_ & 0xffff];
+            i_11_ += gameInterface.currentX;
             if(!arg0.aBoolean2694)
-                i_11_ -= widget.anInt2746;
-            i_12_ += widget.currentY;
-            i_13_ = widget.parentId;
+                i_11_ -= gameInterface.anInt2746;
+            i_12_ += gameInterface.currentY;
+            i_13_ = gameInterface.parentId;
             if(!arg0.aBoolean2694)
-                i_12_ -= widget.scrollPosition;
+                i_12_ -= gameInterface.scrollPosition;
         }
         int[] is = new int[2];
         is[0] = i_11_;

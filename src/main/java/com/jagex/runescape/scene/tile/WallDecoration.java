@@ -1,7 +1,7 @@
 package com.jagex.runescape.scene.tile;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.TypeFace;
@@ -25,9 +25,9 @@ import com.jagex.runescape.scene.InteractiveObject;
 import java.awt.*;
 
 public class WallDecoration {
-    public static Cache aClass9_1247 = new Cache(64);
+    public static MemoryCache aClass9_1247 = new MemoryCache(64);
     public static int anInt1257 = 0;
-    public static Cache aClass9_1264 = new Cache(50);
+    public static MemoryCache aClass9_1264 = new MemoryCache(50);
     public static long[] ignores = new long[100];
     public static TypeFace fontNormal;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1270;

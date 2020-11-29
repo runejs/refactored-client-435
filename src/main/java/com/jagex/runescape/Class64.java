@@ -1,12 +1,12 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.Widget.GameInterface;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -58,14 +58,14 @@ public class Class64 implements Runnable {
 
 
     public static void method1012(int arg0, int arg1) {
-        if (ProducingGraphicsBuffer.method1043(arg0)) {
-            Widget[] widgets = Widget.interfaces[arg0];
+        if (GameInterface.decodeGameInterface(arg0)) {
+            GameInterface[] gameInterfaces = GameInterface.interfaces[arg0];
             if (arg1 != 2)
                 method1013();
-            for (int i = 0; widgets.length > i; i++) {
-                Widget widget = widgets[i];
-                if (widget.anObjectArray2677 != null)
-                    Widget.method891(widget.anObjectArray2677, 0, 0, widget, 0, false);
+            for (int i = 0; gameInterfaces.length > i; i++) {
+                GameInterface gameInterface = gameInterfaces[i];
+                if (gameInterface.anObjectArray2677 != null)
+                    GameInterface.method891(gameInterface.anObjectArray2677, 0, 0, gameInterface, 0, false);
             }
         }
     }
@@ -221,9 +221,9 @@ public class Class64 implements Runnable {
 
     public static void method1015() {
         synchronized (GameObject.frame) {
-            SpotAnimDefinition.mouseButtonPressed = Cache.mouseButtonPressed;
+            SpotAnimDefinition.mouseButtonPressed = MemoryCache.mouseButtonPressed;
             Class13.mouseX = Class12.eventMouseX;
-            Landscape.mouseY = Cache.eventMouseY;
+            Landscape.mouseY = MemoryCache.eventMouseY;
             MouseHandler.clickType = Actor.eventMouseButtonPressed;
             Class57.clickX = Class55.eventClickX;
             RSString.clickY = Class40_Sub5_Sub11.eventClickY;

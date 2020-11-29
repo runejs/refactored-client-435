@@ -1,10 +1,9 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -13,7 +12,7 @@ import com.jagex.runescape.net.PacketBuffer;
 
 public class Class42 {
     public static byte[][][] tile_underlayids;
-    public static Cache aClass9_998 = new Cache(100);
+    public static MemoryCache aClass9_998 = new MemoryCache(100);
     public static int anInt1006 = 0;
     public static int anInt1008 = 0;
     public static int anInt1010 = 2;
@@ -38,19 +37,6 @@ public class Class42 {
             anIntArray996[1 + i_10_ + i_10_] = i_9_;
         }
 
-    }
-
-    public static void method883(int arg1) {
-        if(ProducingGraphicsBuffer.method1043(arg1)) {
-            Widget[] widgets = Widget.interfaces[arg1];
-            for(int i = 0; widgets.length > i; i++) {
-                Widget widget = widgets[i];
-                if(widget != null) {
-                    widget.anInt2660 = 0;
-                    widget.anInt2654 = 0;
-                }
-            }
-        }
     }
 
     public static int method884(int arg0, int arg1) {

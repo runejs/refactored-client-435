@@ -1,10 +1,10 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex_Sub1;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.FramemapDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.Widget.GameInterface;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.SceneCluster;
@@ -18,13 +18,13 @@ public class Class40_Sub6 extends Node {
     public static int secondaryCameraVertical = 0;
     public static int anInt2110;
     public static int[] anIntArray2113 = new int[128];
-    public static Widget aWidget_2116;
+    public static GameInterface aGameInterface_2116;
     public static int anInt2118 = 0;
     public static int placementX;
     public static int onBuildTimePlane = 0;
 
     public byte[] aByteArray2102;
-    public CacheIndex_Sub1 aClass6_Sub1_2104;
+    public CacheIndex aClass6_Sub1_2104;
     public int anInt2112;
     public Class56 aClass56_2117;
 

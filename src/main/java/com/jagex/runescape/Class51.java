@@ -1,8 +1,10 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.media.Widget.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.Rasterizer;
@@ -41,7 +43,7 @@ public class Class51 {
             Class55.drawTabGraphics();
             ActorDefinition.drawMapBack();
             GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
-            Class40_Sub2.method527(Class5.currentTabId, arg0 + 4, Class40_Sub5_Sub11.tabWidgetIds, Class29.tabAreaOverlayWidgetId == -1, -1);
+            Class40_Sub2.method527(Class5.currentTabId, arg0 + 4, Class40_Sub5_Sub11.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
             MovedStatics.aBoolean893 = true;
             Class40_Sub3.aBoolean2026 = true;
             CacheIndex.aBoolean260 = true;
@@ -71,7 +73,7 @@ public class Class51 {
         if(arg1 == -1 && Class35.songTimeout == 0)
             Class33.method402(false);
         else if(arg1 != -1 && arg1 != MouseHandler.anInt1457 && RSCanvas.anInt60 != 0 && Class35.songTimeout == 0)
-            Class33.method403(RSCanvas.anInt60, true, 10, arg1, Class55.aClass6_Sub1_1286, 0, 0, false);
+            Class33.method403(RSCanvas.anInt60, true, 10, arg1, MemoryCache.musicCacheIndex, 0, 0, false);
         MouseHandler.anInt1457 = arg1;
     }
 }

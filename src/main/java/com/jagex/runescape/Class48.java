@@ -1,13 +1,12 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.Widget.Widget;
-import com.jagex.runescape.cache.media.Widget.WidgetType;
+import com.jagex.runescape.cache.media.Widget.GameInterface;
+import com.jagex.runescape.cache.media.Widget.GameInterfaceType;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
@@ -109,83 +108,83 @@ public class Class48 {
         }
     }
 
-    public static void method925(int arg0, Widget[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
+    public static void method925(int arg0, GameInterface[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
         if(arg2 <= arg8 && arg4 >= arg9 && arg11 > arg8 && arg0 > arg4) {
             for(int i = arg5; arg1.length > i; i++) {
-                Widget widget = arg1[i];
-                if(widget != null && arg6 == widget.parentId) {
-                    int i_1_ = widget.currentY - (-arg9 + arg3);
-                    int i_2_ = -arg10 + widget.currentX + arg2;
-                    if(widget.type == WidgetType.IF1_TOOLTIP && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + widget.originalWidth && arg4 < widget.originalHeight + i_1_)
+                GameInterface gameInterface = arg1[i];
+                if(gameInterface != null && arg6 == gameInterface.parentId) {
+                    int i_1_ = gameInterface.currentY - (-arg9 + arg3);
+                    int i_2_ = -arg10 + gameInterface.currentX + arg2;
+                    if(gameInterface.type == GameInterfaceType.IF1_TOOLTIP && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + gameInterface.originalWidth && arg4 < gameInterface.originalHeight + i_1_)
                         Item.anInt3065 = i;
-                    if((widget.hoveredSiblingId >= 0 || widget.hoveredTextColor != 0) && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + widget.originalWidth && arg4 < widget.originalHeight + i_1_) {
-                        if(widget.hoveredSiblingId >= 0)
-                            OverlayDefinition.anInt2328 = widget.hoveredSiblingId;
+                    if((gameInterface.hoveredSiblingId >= 0 || gameInterface.hoveredTextColor != 0) && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + gameInterface.originalWidth && arg4 < gameInterface.originalHeight + i_1_) {
+                        if(gameInterface.hoveredSiblingId >= 0)
+                            OverlayDefinition.anInt2328 = gameInterface.hoveredSiblingId;
                         else
                             OverlayDefinition.anInt2328 = i;
                     }
-                    if(widget.type == WidgetType.LAYER) {
-                        if(!widget.isHidden || Class29.method371(8247, arg7, i) || PacketBuffer.hiddenButtonTest) {
-                            method925(i_1_ + widget.originalHeight, arg1, i_2_, widget.scrollPosition, arg4, arg5, i, arg7, arg8, i_1_, widget.anInt2746, i_2_ + widget.originalWidth);
-                            if(widget.aWidgetArray2713 != null)
-                                method925(i_1_ + widget.originalHeight, widget.aWidgetArray2713, i_2_, widget.scrollPosition, arg4, 0, widget.id, arg7, arg8, i_1_, widget.anInt2746, widget.originalWidth + i_2_);
-                            if(widget.originalHeight < widget.scrollHeight)
-                                Class5.scrollInterface(widget.originalHeight, arg4, arg8, widget.scrollHeight, widget, widget.originalWidth + i_2_, arg7, i_1_);
+                    if(gameInterface.type == GameInterfaceType.LAYER) {
+                        if(!gameInterface.isHidden || Class29.method371(8247, arg7, i) || PacketBuffer.hiddenButtonTest) {
+                            method925(i_1_ + gameInterface.originalHeight, arg1, i_2_, gameInterface.scrollPosition, arg4, arg5, i, arg7, arg8, i_1_, gameInterface.anInt2746, i_2_ + gameInterface.originalWidth);
+                            if(gameInterface.aGameInterfaceArray2713 != null)
+                                method925(i_1_ + gameInterface.originalHeight, gameInterface.aGameInterfaceArray2713, i_2_, gameInterface.scrollPosition, arg4, 0, gameInterface.id, arg7, arg8, i_1_, gameInterface.anInt2746, gameInterface.originalWidth + i_2_);
+                            if(gameInterface.originalHeight < gameInterface.scrollHeight)
+                                Class5.scrollInterface(gameInterface.originalHeight, arg4, arg8, gameInterface.scrollHeight, gameInterface, gameInterface.originalWidth + i_2_, arg7, i_1_);
                         }
                     } else {
-                        if(widget.actionType == 1 && i_2_ <= arg8 && i_1_ <= arg4 && widget.originalWidth + i_2_ > arg8 && widget.originalHeight + i_1_ > arg4) {
+                        if(gameInterface.actionType == 1 && i_2_ <= arg8 && i_1_ <= arg4 && gameInterface.originalWidth + i_2_ > arg8 && gameInterface.originalHeight + i_1_ > arg4) {
                             boolean bool = false;
-                            if(widget.contentType != 0)
-                                bool = ProducingGraphicsBuffer_Sub1.method1051(300, widget);
+                            if(gameInterface.contentType != 0)
+                                bool = ProducingGraphicsBuffer_Sub1.method1051(300, gameInterface);
                             if(!bool) {
-                                OverlayDefinition.addActionRow(widget.tooltip, 0, 0, widget.id, 42, "");
+                                OverlayDefinition.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 42, "");
                             }
                         }
-                        if(widget.actionType == 2 && Main.widgetSelected == 0 && arg8 >= i_2_ && arg4 >= i_1_ && arg8 < widget.originalWidth + i_2_ && arg4 < i_1_ + widget.originalHeight) {
-                            OverlayDefinition.addActionRow(widget.targetVerb, 0, 0, widget.id, 33, Native.aClass1_1162+widget.spellName);
+                        if(gameInterface.actionType == 2 && Main.widgetSelected == 0 && arg8 >= i_2_ && arg4 >= i_1_ && arg8 < gameInterface.originalWidth + i_2_ && arg4 < i_1_ + gameInterface.originalHeight) {
+                            OverlayDefinition.addActionRow(gameInterface.targetVerb, 0, 0, gameInterface.id, 33, Native.aClass1_1162+ gameInterface.spellName);
                         }
-                        if(widget.actionType == 3 && arg8 >= i_2_ && arg4 >= i_1_ && i_2_ + widget.originalWidth > arg8 && arg4 < i_1_ + widget.originalHeight) {
+                        if(gameInterface.actionType == 3 && arg8 >= i_2_ && arg4 >= i_1_ && i_2_ + gameInterface.originalWidth > arg8 && arg4 < i_1_ + gameInterface.originalHeight) {
                             int i_3_;
                             if(arg7 != 3)
                                 i_3_ = 9;
                             else
                                 i_3_ = 40;
-                            OverlayDefinition.addActionRow(English.close, 0, 0, widget.id, i_3_, "");
+                            OverlayDefinition.addActionRow(English.close, 0, 0, gameInterface.id, i_3_, "");
                         }
-                        if(widget.actionType == 4 && arg8 >= i_2_ && i_1_ <= arg4 && arg8 < widget.originalWidth + i_2_ && widget.originalHeight + i_1_ > arg4) {
-                            OverlayDefinition.addActionRow(widget.tooltip, 0, 0, widget.id, 23, "");
+                        if(gameInterface.actionType == 4 && arg8 >= i_2_ && i_1_ <= arg4 && arg8 < gameInterface.originalWidth + i_2_ && gameInterface.originalHeight + i_1_ > arg4) {
+                            OverlayDefinition.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 23, "");
                         }
-                        if(widget.actionType == 5 && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + widget.originalWidth && i_1_ + widget.originalHeight > arg4) {
-                            OverlayDefinition.addActionRow(widget.tooltip, 0, 0, widget.id, 57, "");
+                        if(gameInterface.actionType == 5 && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + gameInterface.originalWidth && i_1_ + gameInterface.originalHeight > arg4) {
+                            OverlayDefinition.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 57, "");
                         }
-                        if(widget.actionType == 6 && CacheIndex_Sub1.anInt1819 == -1 && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + widget.originalWidth && arg4 < widget.originalHeight + i_1_) {
-                            OverlayDefinition.addActionRow(widget.tooltip, 0, 0, widget.id, 54, "");
+                        if(gameInterface.actionType == 6 && CacheIndex.anInt1819 == -1 && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + gameInterface.originalWidth && arg4 < gameInterface.originalHeight + i_1_) {
+                            OverlayDefinition.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 54, "");
                         }
-                        if(widget.type == WidgetType.INVENTORY) {
+                        if(gameInterface.type == GameInterfaceType.INVENTORY) {
                             int i_4_ = 0;
-                            for(int i_5_ = 0; i_5_ < widget.originalHeight; i_5_++) {
-                                for(int i_6_ = 0; i_6_ < widget.originalWidth; i_6_++) {
-                                    int i_7_ = i_6_ * (widget.itemSpritePadsX + 32) + i_2_;
-                                    int i_8_ = i_1_ + (32 + widget.itemSpritePadsY) * i_5_;
+                            for(int i_5_ = 0; i_5_ < gameInterface.originalHeight; i_5_++) {
+                                for(int i_6_ = 0; i_6_ < gameInterface.originalWidth; i_6_++) {
+                                    int i_7_ = i_6_ * (gameInterface.itemSpritePadsX + 32) + i_2_;
+                                    int i_8_ = i_1_ + (32 + gameInterface.itemSpritePadsY) * i_5_;
                                     if(i_4_ < 20) {
-                                        i_7_ += widget.images[i_4_];
-                                        i_8_ += widget.imageX[i_4_];
+                                        i_7_ += gameInterface.images[i_4_];
+                                        i_8_ += gameInterface.imageX[i_4_];
                                     }
                                     if(arg8 >= i_7_ && i_8_ <= arg4 && i_7_ + 32 > arg8 && arg4 < 32 + i_8_) {
-                                        RSRuntimeException.lastActiveInvInterface = widget.id;
+                                        RSRuntimeException.lastActiveInvInterface = gameInterface.id;
                                         Class55.mouseInvInterfaceIndex = i_4_;
-                                        if(widget.items[i_4_] > 0) {
-                                            ItemDefinition itemDefinition = ItemDefinition.forId(-1 + widget.items[i_4_], 10);
-                                            if(Class8.itemSelected != 1 || !widget.isInventory) {
-                                                if(Main.widgetSelected == 1 && widget.isInventory) {
+                                        if(gameInterface.items[i_4_] > 0) {
+                                            ItemDefinition itemDefinition = ItemDefinition.forId(-1 + gameInterface.items[i_4_], 10);
+                                            if(Class8.itemSelected != 1 || !gameInterface.isInventory) {
+                                                if(Main.widgetSelected == 1 && gameInterface.isInventory) {
                                                     if((ItemDefinition.selectedMask & 0x10) == 16) {
-                                                        OverlayDefinition.addActionRow(Native.aClass1_1918, itemDefinition.id, i_4_, widget.id, 37, Native.aClass1_611 + Native.aClass1_206 + itemDefinition.name);
+                                                        OverlayDefinition.addActionRow(Native.aClass1_1918, itemDefinition.id, i_4_, gameInterface.id, 37, Native.aClass1_611 + Native.aClass1_206 + itemDefinition.name);
                                                     }
                                                 } else {
                                                     String[] class1s = itemDefinition.interfaceOptions;
                                                     if(Class60.aBoolean1402)
                                                         class1s = Class56.method968(class1s);
-                                                    if(widget.isInventory) {
+                                                    if(gameInterface.isInventory) {
                                                         for(int i_9_ = 4; i_9_ >= 3; i_9_--) {
                                                             if(class1s != null && class1s[i_9_] != null) {
                                                                 int i_10_;
@@ -193,16 +192,16 @@ public class Class48 {
                                                                     i_10_ = 11;
                                                                 else
                                                                     i_10_ = 43;
-                                                                OverlayDefinition.addActionRow(class1s[i_9_], itemDefinition.id, i_4_, widget.id, i_10_, Native.aClass1_1114 + itemDefinition.name);
+                                                                OverlayDefinition.addActionRow(class1s[i_9_], itemDefinition.id, i_4_, gameInterface.id, i_10_, Native.aClass1_1114 + itemDefinition.name);
                                                             } else if(i_9_ == 4) {
-                                                                OverlayDefinition.addActionRow(English.drop, itemDefinition.id, i_4_, widget.id, 11, Native.aClass1_1114 + itemDefinition.name);
+                                                                OverlayDefinition.addActionRow(English.drop, itemDefinition.id, i_4_, gameInterface.id, 11, Native.aClass1_1114 + itemDefinition.name);
                                                             }
                                                         }
                                                     }
-                                                    if(widget.itemUsable) {
-                                                        OverlayDefinition.addActionRow(English.use, itemDefinition.id, i_4_, widget.id, 19, Native.aClass1_1114 + itemDefinition.name);
+                                                    if(gameInterface.itemUsable) {
+                                                        OverlayDefinition.addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, 19, Native.aClass1_1114 + itemDefinition.name);
                                                     }
-                                                    if(widget.isInventory && class1s != null) {
+                                                    if(gameInterface.isInventory && class1s != null) {
                                                         for(int i_11_ = 2; i_11_ >= 0; i_11_--) {
                                                             if(class1s[i_11_] != null) {
                                                                 int i_12_ = 0;
@@ -212,11 +211,11 @@ public class Class48 {
                                                                     i_12_ = 6;
                                                                 if(i_11_ == 2)
                                                                     i_12_ = 31;
-                                                                OverlayDefinition.addActionRow(class1s[i_11_], itemDefinition.id, i_4_, widget.id, i_12_, Native.aClass1_1114 + itemDefinition.name);
+                                                                OverlayDefinition.addActionRow(class1s[i_11_], itemDefinition.id, i_4_, gameInterface.id, i_12_, Native.aClass1_1114 + itemDefinition.name);
                                                             }
                                                         }
                                                     }
-                                                    class1s = widget.configActions;
+                                                    class1s = gameInterface.configActions;
                                                     if(Class60.aBoolean1402)
                                                         class1s = Class56.method968(class1s);
                                                     if(class1s != null) {
@@ -233,7 +232,7 @@ public class Class48 {
                                                                     i_14_ = 48;
                                                                 if(i_13_ == 4)
                                                                     i_14_ = 24;
-                                                                OverlayDefinition.addActionRow(class1s[i_13_], itemDefinition.id, i_4_, widget.id, i_14_, Native.aClass1_1114 + itemDefinition.name);
+                                                                OverlayDefinition.addActionRow(class1s[i_13_], itemDefinition.id, i_4_, gameInterface.id, i_14_, Native.aClass1_1114 + itemDefinition.name);
                                                             }
                                                         }
                                                     }
@@ -248,10 +247,10 @@ public class Class48 {
                                                         );
                                                         examineText.append("<col=00ff00>)</col>");
                                                     }
-                                                    OverlayDefinition.addActionRow(English.examine, itemDefinition.id, i_4_, widget.id, 1006, examineText.toString());
+                                                    OverlayDefinition.addActionRow(English.examine, itemDefinition.id, i_4_, gameInterface.id, 1006, examineText.toString());
                                                 }
-                                            } else if(ISAAC.anInt525 != widget.id || i_4_ != LinkedList.anInt1061) {
-                                                OverlayDefinition.addActionRow(English.use, itemDefinition.id, i_4_, widget.id, 56, Native.aClass1_3295+ Native.aClass1_206+ itemDefinition.name);
+                                            } else if(ISAAC.anInt525 != gameInterface.id || i_4_ != LinkedList.anInt1061) {
+                                                OverlayDefinition.addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, 56, Native.aClass1_3295+ Native.aClass1_206+ itemDefinition.name);
                                             }
                                         }
                                     }
@@ -259,42 +258,42 @@ public class Class48 {
                                 }
                             }
                         }
-                        if(widget.isIf3 && widget.itemId != -1 && arg8 >= i_2_ && arg4 >= i_1_ && arg8 < widget.originalWidth + i_2_ && arg4 < i_1_ + widget.originalHeight) {
-                            ItemDefinition itemDefinition = ItemDefinition.forId(widget.itemId, 10);
-                            if(widget.isInventory) {
+                        if(gameInterface.isIf3 && gameInterface.itemId != -1 && arg8 >= i_2_ && arg4 >= i_1_ && arg8 < gameInterface.originalWidth + i_2_ && arg4 < i_1_ + gameInterface.originalHeight) {
+                            ItemDefinition itemDefinition = ItemDefinition.forId(gameInterface.itemId, 10);
+                            if(gameInterface.isInventory) {
                                 String[] class1s = itemDefinition.interfaceOptions;
                                 if(Class60.aBoolean1402)
                                     class1s = Class56.method968(class1s);
                                 if(class1s == null || class1s[4] == null)
-                                    OverlayDefinition.addActionRow(English.drop, itemDefinition.id, -1 + widget.anInt2736, widget.id, 11, Native.aClass1_1114+itemDefinition.name);
+                                    OverlayDefinition.addActionRow(English.drop, itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 11, Native.aClass1_1114+itemDefinition.name);
                                 else
-                                    OverlayDefinition.addActionRow(class1s[4], itemDefinition.id, widget.anInt2736 + -1, widget.id, 11, Native.aClass1_1114+ itemDefinition.name);
+                                    OverlayDefinition.addActionRow(class1s[4], itemDefinition.id, gameInterface.anInt2736 + -1, gameInterface.id, 11, Native.aClass1_1114+ itemDefinition.name);
                                 if(class1s != null && class1s[3] != null)
-                                    OverlayDefinition.addActionRow(class1s[3], itemDefinition.id, -1 + widget.anInt2736, widget.id, 43, Native.aClass1_1114+ itemDefinition.name);
+                                    OverlayDefinition.addActionRow(class1s[3], itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 43, Native.aClass1_1114+ itemDefinition.name);
                                 if(class1s != null && class1s[2] != null)
-                                    OverlayDefinition.addActionRow(class1s[2], itemDefinition.id, widget.anInt2736 - 1, widget.id, 31, Native.aClass1_1114+ itemDefinition.name);
+                                    OverlayDefinition.addActionRow(class1s[2], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, 31, Native.aClass1_1114+ itemDefinition.name);
                                 if(class1s != null && class1s[1] != null)
-                                    OverlayDefinition.addActionRow(class1s[1], itemDefinition.id, -1 + widget.anInt2736, widget.id, 6, Native.aClass1_1114+ itemDefinition.name);
+                                    OverlayDefinition.addActionRow(class1s[1], itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 6, Native.aClass1_1114+ itemDefinition.name);
                                 if(class1s != null && class1s[0] != null)
-                                    OverlayDefinition.addActionRow(class1s[0], itemDefinition.id, -1 + widget.anInt2736, widget.id, 52, Native.aClass1_1114+ itemDefinition.name);
+                                    OverlayDefinition.addActionRow(class1s[0], itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 52, Native.aClass1_1114+ itemDefinition.name);
                             }
-                            if(widget.id >= 0)
-                                OverlayDefinition.addActionRow(English.examine, itemDefinition.id, -1, widget.id, 1007, Native.aClass1_1114+ itemDefinition.name);
+                            if(gameInterface.id >= 0)
+                                OverlayDefinition.addActionRow(English.examine, itemDefinition.id, -1, gameInterface.id, 1007, Native.aClass1_1114+ itemDefinition.name);
                             else
-                                OverlayDefinition.addActionRow(English.examine, itemDefinition.id, widget.id & 0x7fff, widget.parentId, 1007, Native.aClass1_1114+ itemDefinition.name);
+                                OverlayDefinition.addActionRow(English.examine, itemDefinition.id, gameInterface.id & 0x7fff, gameInterface.parentId, 1007, Native.aClass1_1114+ itemDefinition.name);
                         }
-                        if(widget.aBoolean2688 && widget.aClass1Array2661 != null && i_2_ <= arg8 && i_1_ <= arg4 && widget.originalWidth + i_2_ > arg8 && arg4 < i_1_ + widget.originalHeight) {
+                        if(gameInterface.aBoolean2688 && gameInterface.aClass1Array2661 != null && i_2_ <= arg8 && i_1_ <= arg4 && gameInterface.originalWidth + i_2_ > arg8 && arg4 < i_1_ + gameInterface.originalHeight) {
                             String class1 = "";
-                            if(widget.itemId != -1) {
-                                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(widget.itemId, arg5 ^ 0xa);
+                            if(gameInterface.itemId != -1) {
+                                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(gameInterface.itemId, arg5 ^ 0xa);
                                 class1 = Native.aClass1_1114 + class40_sub5_sub16.name;
                             }
-                            for(int i_15_ = widget.aClass1Array2661.length - 1; i_15_ >= 0; i_15_--) {
-                                if(widget.aClass1Array2661[i_15_] != null) {
-                                    if(widget.id < 0)
-                                        OverlayDefinition.addActionRow(widget.aClass1Array2661[i_15_], i_15_ + 1, 0x7fff & widget.id, widget.parentId, 50, class1);
+                            for(int i_15_ = gameInterface.aClass1Array2661.length - 1; i_15_ >= 0; i_15_--) {
+                                if(gameInterface.aClass1Array2661[i_15_] != null) {
+                                    if(gameInterface.id < 0)
+                                        OverlayDefinition.addActionRow(gameInterface.aClass1Array2661[i_15_], i_15_ + 1, 0x7fff & gameInterface.id, gameInterface.parentId, 50, class1);
                                     else
-                                        OverlayDefinition.addActionRow(widget.aClass1Array2661[i_15_], i_15_ + 1, 0, widget.id, 50, class1);
+                                        OverlayDefinition.addActionRow(gameInterface.aClass1Array2661[i_15_], i_15_ + 1, 0, gameInterface.id, 50, class1);
                                 }
                             }
                         }

@@ -1,9 +1,9 @@
 package com.jagex.runescape.frame.console;
 
-import com.jagex.runescape.Class40_Sub5_Sub17_Sub6;
 import com.jagex.runescape.Class59;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.TypeFace;
+import com.jagex.runescape.cache.media.Widget.GameInterface;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.console.Commands.*;
@@ -80,7 +80,7 @@ public class Console {
         if (consoleOpen) {
             int scrollpos = getMaxScroll() - currentScroll - 310;
             if (messageCount > 17) {
-                Widget.drawScrollBar(width - 18, 0, height-21, scrollpos, getMaxScroll(), 0);
+                GameInterface.drawScrollBar(width - 18, 0, height-21, scrollpos, getMaxScroll(), 0);
             }
             if (alpha) {
                 Rasterizer.drawFilledRectangleAlpha(0, 0, width, height, 0x513092, 97);
@@ -88,17 +88,17 @@ public class Console {
                 Rasterizer.drawFilledRectangle(0, 0, width, height, 0x513092);
             }
             Rasterizer.drawHorizontalLine(1, height-19, width, 0xffffff);
-            Class40_Sub5_Sub17_Sub6.fontBold.setEffects(0xffffff, -1);
-            Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(">", 11, height-4);
+            TypeFace.fontBold.setEffects(0xffffff, -1);
+            TypeFace.fontBold.drawBasicString(">", 11, height-4);
             if (this.versionWidth == -1) {
-                this.versionWidth = Class40_Sub5_Sub17_Sub6.fontSmall.getStringWidth(CONSOLE_VERSION);
+                this.versionWidth = TypeFace.fontSmall.getStringWidth(CONSOLE_VERSION);
             }
-            Class40_Sub5_Sub17_Sub6.fontSmall.drawBasicString(CONSOLE_VERSION, (width-25) - this.versionWidth, height-22);
+            TypeFace.fontSmall.drawBasicString(CONSOLE_VERSION, (width-25) - this.versionWidth, height-22);
 
             if (Node.pulseCycle % 20 < 10) {
-                Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "|" + consoleInput.substring(currentChatIndex), 22, height-4);
+                TypeFace.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "|" + consoleInput.substring(currentChatIndex), 22, height-4);
             } else {
-                Class40_Sub5_Sub17_Sub6.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "<trans=0>|</trans>" + consoleInput.substring(currentChatIndex), 22, height-4);
+                TypeFace.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "<trans=0>|</trans>" + consoleInput.substring(currentChatIndex), 22, height-4);
             }
         }
     }
@@ -125,7 +125,7 @@ public class Console {
     }
 
     public void log(String s, boolean userInput) {
-        if (ChatBox.openChatboxWidgetId == -1)
+        if (GameInterface.chatboxInterfaceId == -1)
             ChatBox.redrawChatbox = true;
         String[] strings = s.split("\n");
         boolean first = true;

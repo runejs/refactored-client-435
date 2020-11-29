@@ -1,7 +1,7 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -99,7 +99,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         modelSizeY = 128;
     }
 
-    public static void method602(CacheIndex_Sub1 arg0, int arg1, Class56 arg2) {
+    public static void method602(CacheIndex arg0, int arg1, Class56 arg2) {
         byte[] is = null;
         synchronized(RSCanvas.aLinkedList_53) {
             for(Class40_Sub6 class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method902((byte) -90); class40_sub6 != null; class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method909(-4)) {

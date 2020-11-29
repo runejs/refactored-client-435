@@ -13,7 +13,6 @@ public class Class40_Sub5_Sub15 extends SubNode {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2775;
     public static IndexedImage[] tabIcons;
     public static int arbitraryDestination = 0;
-    public static CacheIndex aCacheIndex_2779;
     public static int systemUpdateTime = 0;
     public static boolean lastItemDragged = false;
     public static int[] anIntArray2788 = new int[]{16, 32, 64, 128};
@@ -65,15 +64,15 @@ public class Class40_Sub5_Sub15 extends SubNode {
         arg1.aBoolean3105 = false;
         if(arg1.anInt3077 != -1) {
             AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(arg1.anInt3077, 2);
-            if(animationSequence == null || animationSequence.anIntArray2485 == null)
+            if(animationSequence == null || animationSequence.frameIds == null)
                 arg1.anInt3077 = -1;
             else {
                 arg1.anInt3120++;
-                if(arg1.anInt3116 < animationSequence.anIntArray2485.length && animationSequence.animationLengths[arg1.anInt3116] < arg1.anInt3120) {
+                if(arg1.anInt3116 < animationSequence.frameIds.length && animationSequence.frameLengths[arg1.anInt3116] < arg1.anInt3120) {
                     arg1.anInt3116++;
                     arg1.anInt3120 = 1;
                 }
-                if(animationSequence.anIntArray2485.length <= arg1.anInt3116) {
+                if(animationSequence.frameIds.length <= arg1.anInt3116) {
                     arg1.anInt3116 = 0;
                     arg1.anInt3120 = 0;
                 }
@@ -87,15 +86,15 @@ public class Class40_Sub5_Sub15 extends SubNode {
                 arg1.graphicId = -1;
             else {
                 AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(i, 2);
-                if(animationSequence == null || animationSequence.anIntArray2485 == null)
+                if(animationSequence == null || animationSequence.frameIds == null)
                     arg1.graphicId = -1;
                 else {
                     arg1.anInt3129++;
-                    if(animationSequence.anIntArray2485.length > arg1.anInt3140 && arg1.anInt3129 > animationSequence.animationLengths[arg1.anInt3140]) {
+                    if(animationSequence.frameIds.length > arg1.anInt3140 && arg1.anInt3129 > animationSequence.frameLengths[arg1.anInt3140]) {
                         arg1.anInt3129 = 1;
                         arg1.anInt3140++;
                     }
-                    if(animationSequence.anIntArray2485.length <= arg1.anInt3140 && (arg1.anInt3140 < 0 || animationSequence.anIntArray2485.length <= arg1.anInt3140))
+                    if(animationSequence.frameIds.length <= arg1.anInt3140 && (arg1.anInt3140 < 0 || animationSequence.frameIds.length <= arg1.anInt3140))
                         arg1.graphicId = -1;
                 }
             }
@@ -103,28 +102,28 @@ public class Class40_Sub5_Sub15 extends SubNode {
         if(arg0) {
             if(arg1.playingAnimation != -1 && arg1.playingAnimationDelay <= 1) {
                 AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2);
-                if(animationSequence.anInt2470 == 1 && arg1.anInt3094 > 0 && arg1.anInt3112 <= Node.pulseCycle && Node.pulseCycle > arg1.anInt3107) {
+                if(animationSequence.precedenceAnimating == 1 && arg1.anInt3094 > 0 && arg1.anInt3112 <= Node.pulseCycle && Node.pulseCycle > arg1.anInt3107) {
                     arg1.playingAnimationDelay = 1;
                     return;
                 }
             }
             if(arg1.playingAnimation != -1 && arg1.playingAnimationDelay == 0) {
                 AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2);
-                if(animationSequence != null && animationSequence.anIntArray2485 != null) {
+                if(animationSequence != null && animationSequence.frameIds != null) {
                     arg1.anInt3115++;
-                    if(animationSequence.anIntArray2485.length > arg1.anInt3104 && animationSequence.animationLengths[arg1.anInt3104] < arg1.anInt3115) {
+                    if(animationSequence.frameIds.length > arg1.anInt3104 && animationSequence.frameLengths[arg1.anInt3104] < arg1.anInt3115) {
                         arg1.anInt3104++;
                         arg1.anInt3115 = 1;
                     }
-                    if(animationSequence.anIntArray2485.length <= arg1.anInt3104) {
+                    if(animationSequence.frameIds.length <= arg1.anInt3104) {
                         arg1.anInt3104 -= animationSequence.frameStep;
                         arg1.anInt3095++;
-                        if(animationSequence.anInt2495 <= arg1.anInt3095)
+                        if(animationSequence.maxLoops <= arg1.anInt3095)
                             arg1.playingAnimation = -1;
-                        if(arg1.anInt3104 < 0 || arg1.anInt3104 >= animationSequence.anIntArray2485.length)
+                        if(arg1.anInt3104 < 0 || arg1.anInt3104 >= animationSequence.frameIds.length)
                             arg1.playingAnimation = -1;
                     }
-                    arg1.aBoolean3105 = animationSequence.aBoolean2496;
+                    arg1.aBoolean3105 = animationSequence.stretches;
                 } else
                     arg1.playingAnimation = -1;
             }

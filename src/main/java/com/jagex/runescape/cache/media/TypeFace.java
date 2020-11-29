@@ -21,6 +21,8 @@ import static com.jagex.runescape.Class40_Sub5_Sub13.moderatorIcon;
 
 public class TypeFace extends Rasterizer {
 
+    public static TypeFace fontBold;
+    public static TypeFace fontSmall;
     private static String greaterThan = "gt";
     private static String lessThan = "lt";
     private static String euroSymbol = "euro";

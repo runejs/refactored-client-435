@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -17,7 +17,7 @@ import java.awt.*;
 
 public class Class17 {
     public static int regionY;
-    public static Cache aClass9_449 = new Cache(128);
+    public static MemoryCache aClass9_449 = new MemoryCache(128);
     public static int[] anIntArray456;
     public static int deregisterActorCount = 0;
     public static Font helveticaBold;

@@ -45,7 +45,7 @@ public class PlayerAppearance {
 
     public static void method381(Actor arg1) {
         if(Node.pulseCycle == arg1.anInt3107 || arg1.playingAnimation == -1 || arg1.playingAnimationDelay != 0 ||
-                arg1.anInt3115 + 1 > ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2).animationLengths[arg1.anInt3104]) {
+                arg1.anInt3115 + 1 > ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2).frameLengths[arg1.anInt3104]) {
             int i = -arg1.anInt3112 + arg1.anInt3107;
             int i_16_ = -arg1.anInt3112 + Node.pulseCycle;
             int i_17_ = arg1.anInt3125 * 128 + 64 * arg1.anInt3096;
@@ -95,17 +95,17 @@ public class PlayerAppearance {
 
         long hash = appearanceHash;
         int[] appearance = this.appearance;
-        if(animation1 != null && (animation1.shieldModel >= 0 || animation1.weaponModel >= 0)) {
+        if(animation1 != null && (animation1.offHandModel >= 0 || animation1.mainHandModel >= 0)) {
             appearance = new int[12];
             for(int i = 0; i < 12; i++)
                 appearance[i] = this.appearance[i];
-            if(animation1.shieldModel >= 0) {
-                hash += (animation1.shieldModel - this.appearance[5] << 8);
-                appearance[5] = animation1.shieldModel;
+            if(animation1.offHandModel >= 0) {
+                hash += (animation1.offHandModel - this.appearance[5] << 8);
+                appearance[5] = animation1.offHandModel;
             }
-            if(animation1.weaponModel >= 0) {
-                hash += (animation1.weaponModel - this.appearance[3] << 16);
-                appearance[3] = animation1.weaponModel;
+            if(animation1.mainHandModel >= 0) {
+                hash += (animation1.mainHandModel - this.appearance[3] << 16);
+                appearance[3] = animation1.mainHandModel;
             }
         }
 

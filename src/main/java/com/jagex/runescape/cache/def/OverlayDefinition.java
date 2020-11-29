@@ -1,6 +1,7 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.input.MouseHandler;
@@ -99,12 +100,12 @@ public class OverlayDefinition extends SubNode {
             if (arg0 == 5 || arg0 == 10 || arg0 == 20) {
                 ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
                 FloorDecoration.method344(-69);
-                Item.method779(MouseHandler.aCanvas1469, true, RSCanvas.aClass6_Sub1_48, ActorDefinition.aClass6_Sub1_2377);
+                Item.method779(MouseHandler.aCanvas1469, true, MemoryCache.huffmanCacheIndex, MemoryCache.gameImageCacheIndex);
             }
             if (arg0 == 25 || arg0 == 30 || arg0 == 40) {
                 ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
                 MovedStatics.method440((byte) -98);
-                Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, ActorDefinition.aClass6_Sub1_2377);
+                Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, MemoryCache.gameImageCacheIndex);
             }
             Class51.anInt1197 = arg0;
             Class40_Sub5_Sub11.clearScreen = true;

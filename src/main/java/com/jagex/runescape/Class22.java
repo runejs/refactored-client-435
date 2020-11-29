@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -164,7 +165,7 @@ public abstract class Class22 {
                             } else
                                 Node.method456(i_22_);
                         } else {
-                            Class33.method414(false, 0, MouseHandler.anInt1457, i_22_, 0, Class55.aClass6_Sub1_1286);
+                            Class33.method414(false, 0, MouseHandler.anInt1457, i_22_, 0, MemoryCache.musicCacheIndex);
                             Class35.songTimeout = 0;
                         }
                         RSCanvas.anInt60 = i_22_;

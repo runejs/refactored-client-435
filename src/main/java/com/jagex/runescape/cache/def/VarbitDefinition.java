@@ -9,7 +9,6 @@ import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.PacketBuffer;
 
 public class VarbitDefinition extends SubNode {
-    public static CacheIndex aCacheIndex_2349;
     public static ProducingGraphicsBuffer gameScreenImageProducer;
     public static Class56 aClass56_2356;
     public static int anInt2359 = 0;

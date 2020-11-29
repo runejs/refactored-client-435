@@ -1,7 +1,5 @@
 package com.jagex.runescape.scene;
 
-import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.util.Timer;
 
@@ -13,7 +11,6 @@ public class SceneCluster {
     public static int cameraZ;
     public static int anInt770 = 0;
     public static int idleLogout = 0;
-    public static CacheIndex_Sub1 aClass6_Sub1_773;
 
     public int worldDistanceFromCameraStartX;
     public int worldDistanceFromCameraEndY;

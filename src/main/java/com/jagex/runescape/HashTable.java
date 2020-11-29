@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex_Sub1;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.collection.Node;
@@ -39,7 +39,7 @@ public class HashTable {
 
     }
 
-    public static void method327(boolean arg0, CacheIndex_Sub1 arg1, int arg2, int arg3, byte arg4, int arg5, byte arg6) {
+    public static void method327(boolean arg0, CacheIndex arg1, int arg2, int arg3, byte arg4, int arg5, byte arg6) {
         int i = 14 % ((arg6 - 5) / 62);
         long l = (long) (arg3 + (arg2 << 16));
         Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class51.aClass23_1194.method331(l, 6120);

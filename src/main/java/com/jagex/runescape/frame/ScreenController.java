@@ -1,11 +1,12 @@
 package com.jagex.runescape.frame;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.cache.media.Widget.GameInterface;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -223,14 +224,14 @@ public class ScreenController {
     public static void handleTabClick(int x, int y) {
         if(frameMode == ScreenMode.FIXED) {
 
-            if(Class29.tabAreaOverlayWidgetId != -1)
-                Class13.method243((byte) 89, 205, 743, 466, Class29.tabAreaOverlayWidgetId, 553, x, y, 1);
+            if(GameInterface.tabAreaInterfaceId != -1)
+                Class13.method243((byte) 89, 205, 743, 466, GameInterface.tabAreaInterfaceId, 553, x, y, 1);
             else if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] != -1) {
                 Class13.method243((byte) 89, 205, 743, 466, Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId], 553, x, y, 1);
             }
         } else {
-            if(Class29.tabAreaOverlayWidgetId != -1)
-                Class13.method243((byte) 89, frameHeight - 359 + 39, frameWidth - GameObject.tabPieceLeft.width, frameHeight - RSCanvas.tabBottom.height, Class29.tabAreaOverlayWidgetId, frameWidth - 234 + 22, x, y, 1);
+            if(GameInterface.tabAreaInterfaceId != -1)
+                Class13.method243((byte) 89, frameHeight - 359 + 39, frameWidth - GameObject.tabPieceLeft.width, frameHeight - RSCanvas.tabBottom.height, GameInterface.tabAreaInterfaceId, frameWidth - 234 + 22, x, y, 1);
             else if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] != -1) {
                 Class13.method243((byte) 89, frameHeight - 359 + 39, frameWidth - GameObject.tabPieceLeft.width, frameHeight - RSCanvas.tabBottom.height, Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId], frameWidth - 234 + 22, x, y, 1);
             }
@@ -240,23 +241,23 @@ public class ScreenController {
     public static void handleChatClick(int x, int y) {
         if(frameMode == ScreenMode.FIXED) {
 
-            if(ChatBox.openChatboxWidgetId == -1) {
+            if(GameInterface.chatboxInterfaceId == -1) {
                 if(ChatBox.dialogueId == -1) {
                     if(y < 434 && x < 426)
                         Class40_Sub11.method873(y  -357, 45);
                 } else
                     Class13.method243((byte) 89, 357, 496, 453, ChatBox.dialogueId, 17, x, y, 3);
             } else
-                Class13.method243((byte) 89, 357, 496, 453, ChatBox.openChatboxWidgetId, 17, x, y, 2);
+                Class13.method243((byte) 89, 357, 496, 453, GameInterface.chatboxInterfaceId, 17, x, y, 2);
         } else {
-            if(ChatBox.openChatboxWidgetId == -1) {
+            if(GameInterface.chatboxInterfaceId == -1) {
                 if(ChatBox.dialogueId == -1) {
                     if(y < frameHeight - (112) && x < 426)
                         Class40_Sub11.method873(y  -(frameHeight - 162), 45);
                 } else
                     Class13.method243((byte) 89, (frameHeight - 162), frameWidth - 496, frameHeight - 54, ChatBox.dialogueId, 17, x, y, 3);
             } else
-                Class13.method243((byte) 89, (frameHeight - 162), frameWidth - 496, frameHeight - 54, ChatBox.openChatboxWidgetId, 17, x, y, 2);
+                Class13.method243((byte) 89, (frameHeight - 162), frameWidth - 496, frameHeight - 54, GameInterface.chatboxInterfaceId, 17, x, y, 2);
         }
 
     }
@@ -333,7 +334,7 @@ public class ScreenController {
         }
         if(MouseHandler.clickType == 1) {
             if(x >= 0 && x <= 100 && y >= 0 && y <= 32) {
-                Cache.redrawChatbox = true;
+                MemoryCache.redrawChatbox = true;
                 ChatBox.publicChatMode = (1 + ChatBox.publicChatMode) % 4;
                 ChatBox.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
@@ -344,7 +345,7 @@ public class ScreenController {
             if(x >= 129 && x <= 229 && y >= 0 && y <= 32) {
                 ChatBox.redrawChatbox = true;
                 ChatBox.privateChatMode = (ChatBox.privateChatMode + 1) % 3;
-                Cache.redrawChatbox = true;
+                MemoryCache.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
                 SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
                 SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
@@ -352,7 +353,7 @@ public class ScreenController {
             }
             if(x >= 267 && x <= 367 && y >= 0 && y <= 32) {
                 ChatBox.tradeMode = (ChatBox.tradeMode + 1) % 3;
-                Cache.redrawChatbox = true;
+                MemoryCache.redrawChatbox = true;
                 ChatBox.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
                 SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
@@ -360,11 +361,11 @@ public class ScreenController {
                 SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
             }
             if(x >= 406 && x <= 506 && y >= 0 && y <= 32) {
-                if(HuffmanEncoding.openScreenWidgetId == -1) {
+                if(GameInterface.gameScreenInterfaceId == -1) {
                     PacketBuffer.method516();
                     if(Class34.anInt854 != -1) {
                         Class67.reportMutePlayer = false;
-                        HuffmanEncoding.reportAbuseInterfaceID = HuffmanEncoding.openScreenWidgetId = Class34.anInt854;
+                        HuffmanEncoding.reportAbuseInterfaceID = GameInterface.gameScreenInterfaceId = Class34.anInt854;
                         Native.reportedName = "";
                     }
                 } else

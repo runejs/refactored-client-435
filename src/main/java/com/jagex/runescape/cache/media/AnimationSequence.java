@@ -17,27 +17,27 @@ public class AnimationSequence extends SubNode {
     public static CacheIndex aCacheIndex_2484;
     public static int[][] anIntArrayArray2490;
 
-    public int[] animationLengths;
-    public int anInt2470 = -1;
-    public int[] anIntArray2473;
-    public int anInt2476 = -1;
-    public int shieldModel;
-    public int[] anIntArray2479;
-    public int anInt2483 = 2;
-    public int[] anIntArray2485;
-    public int weaponModel;
-    public int anInt2494;
-    public int anInt2495;
-    public boolean aBoolean2496;
+    public int[] frameLengths;
+    public int precedenceAnimating = -1;
+    public int[] interleaveLeave;
+    public int priority = -1;
+    public int offHandModel;
+    public int[] unknownArray1;
+    public int replyMode = 2;
+    public int[] frameIds;
+    public int mainHandModel;
+    public int forcedPriority;
+    public int maxLoops;
+    public boolean stretches;
     public int frameStep;
 
     public AnimationSequence() {
-        shieldModel = -1;
-        weaponModel = -1;
-        anInt2494 = 5;
-        anInt2495 = 99;
+        offHandModel = -1;
+        mainHandModel = -1;
+        forcedPriority = 5;
+        maxLoops = 99;
         frameStep = -1;
-        aBoolean2496 = false;
+        stretches = false;
     }
 
     public static void loadTerrainBlock(CollisionMap[] arg0, int arg1, byte[] arg2, int arg3, int arg4, int arg5, int arg6) {
@@ -94,132 +94,134 @@ public class AnimationSequence extends SubNode {
         return true;
     }
 
-    public Model method590(Model arg0, AnimationSequence arg1, int arg2, int arg3, byte arg4) {
-        arg2 = anIntArray2485[arg2];
+    public Model method590(Model arg0, AnimationSequence animationSequence, int arg2, int arg3, byte arg4) {
+        arg2 = frameIds[arg2];
         Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960(arg2 >> 16);
         arg2 &= 0xffff;
         if(class40_sub5_sub15 == null)
-            return arg1.method599(arg3, arg0, false);
-        arg3 = arg1.anIntArray2485[arg3];
+            return animationSequence.method599(arg3, arg0, false);
+        arg3 = animationSequence.frameIds[arg3];
         Class40_Sub5_Sub15 class40_sub5_sub15_0_ = Class55.method960(arg3 >> 16);
         arg3 &= 0xffff;
         if(class40_sub5_sub15_0_ == null) {
-            Model class40_sub5_sub17_sub5 = arg0.method817(!class40_sub5_sub15.method737(arg2));
-            class40_sub5_sub17_sub5.method825(class40_sub5_sub15, arg2);
-            return class40_sub5_sub17_sub5;
+            Model model = arg0.method817(!class40_sub5_sub15.method737(arg2));
+            model.method825(class40_sub5_sub15, arg2);
+            return model;
         }
         if(arg4 != 63)
             return null;
         Model model = arg0.method817(!class40_sub5_sub15.method737(arg2) & !class40_sub5_sub15_0_.method737(arg3));
-        model.method809(class40_sub5_sub15, arg2, class40_sub5_sub15_0_, arg3, anIntArray2473);
+        model.method809(class40_sub5_sub15, arg2, class40_sub5_sub15_0_, arg3, interleaveLeave);
         return model;
     }
 
     public void method591() {
-        if(anInt2476 == -1) {
-            if(anIntArray2473 == null)
-                anInt2476 = 0;
+        if(priority == -1) {
+            if(interleaveLeave == null)
+                priority = 0;
             else
-                anInt2476 = 2;
+                priority = 2;
         }
-        if(anInt2470 == -1) {
-            if(anIntArray2473 == null)
-                anInt2470 = 0;
+        if(precedenceAnimating == -1) {
+            if(interleaveLeave == null)
+                precedenceAnimating = 0;
             else
-                anInt2470 = 2;
+                precedenceAnimating = 2;
         }
     }
 
-    public Model method593(int arg0, boolean arg1, Model arg2, int arg3) {
-        arg0 = anIntArray2485[arg0];
+    public Model method593(int arg0, boolean arg1, Model model, int arg3) {
+        arg0 = frameIds[arg0];
         Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960(arg0 >> 16);
         if(arg1)
-            anIntArray2479 = null;
+            unknownArray1 = null;
         arg0 &= 0xffff;
         if(class40_sub5_sub15 == null)
-            return arg2.method817(true);
+            return model.method817(true);
         arg3 &= 0x3;
-        Model class40_sub5_sub17_sub5 = arg2.method817(!class40_sub5_sub15.method737(arg0));
+        Model newModel = model.method817(!class40_sub5_sub15.method737(arg0));
         if(arg3 == 1)
-            class40_sub5_sub17_sub5.method824();
+            newModel.method824();
         else if(arg3 == 2)
-            class40_sub5_sub17_sub5.method819();
+            newModel.method819();
         else if(arg3 == 3)
-            class40_sub5_sub17_sub5.method813();
-        class40_sub5_sub17_sub5.method825(class40_sub5_sub15, arg0);
+            newModel.method813();
+        newModel.method825(class40_sub5_sub15, arg0);
         if(arg3 != 1) {
             if(arg3 != 2) {
                 if(arg3 == 3)
-                    class40_sub5_sub17_sub5.method824();
+                    newModel.method824();
             } else
-                class40_sub5_sub17_sub5.method819();
+                newModel.method819();
         } else
-            class40_sub5_sub17_sub5.method813();
-        return class40_sub5_sub17_sub5;
+            newModel.method813();
+        return newModel;
     }
 
-    public void method594(int arg0, Buffer arg1) {
+    public void decodeAllAnimationSequences(Buffer buffer) {
         for(; ; ) {
-            int i = arg1.getUnsignedByte();
-            if(i == 0)
+            int i = buffer.getUnsignedByte();
+            if(i == 0) {
                 break;
-            method595(i, arg1);
+            }
+            decodeAnimationSequence(i, buffer);
         }
-        if(arg0 != -1)
-            anInt2470 = -80;
     }
 
-    public void method595(int arg1, Buffer arg2) {
-        if(arg1 == 1) {
-            int i_5_ = arg2.getUnsignedByte();
-            animationLengths = new int[i_5_];
-            for(int i_6_ = 0; i_5_ > i_6_; i_6_++)
-                animationLengths[i_6_] = arg2.getUnsignedShortBE();
-            anIntArray2485 = new int[i_5_];
-            for(int i_7_ = 0; i_5_ > i_7_; i_7_++)
-                anIntArray2485[i_7_] = arg2.getUnsignedShortBE();
-            for(int i_8_ = 0; i_8_ < i_5_; i_8_++)
-                anIntArray2485[i_8_] = (arg2.getUnsignedShortBE() << 16) + anIntArray2485[i_8_];
-        } else if(arg1 == 2)
-            frameStep = arg2.getUnsignedShortBE();
-        else if(arg1 == 3) {
-            int i_12_ = arg2.getUnsignedByte();
-            anIntArray2473 = new int[1 + i_12_];
-            for(int i_13_ = 0; i_12_ > i_13_; i_13_++)
-                anIntArray2473[i_13_] = arg2.getUnsignedByte();
-            anIntArray2473[i_12_] = 9999999;
-        } else if(arg1 != 4) {
-            if(arg1 == 5)
-                anInt2494 = arg2.getUnsignedByte();
-            else if(arg1 != 6) {
-                if(arg1 != 7) {
-                    if(arg1 == 8)
-                        anInt2495 = arg2.getUnsignedByte();
-                    else if(arg1 == 9)
-                        anInt2470 = arg2.getUnsignedByte();
-                    else if(arg1 != 10) {
-                        if(arg1 == 11)
-                            anInt2483 = arg2.getUnsignedByte();
-                        else if(arg1 == 12) {
-                            int i_9_ = arg2.getUnsignedByte();
-                            anIntArray2479 = new int[i_9_];
-                            for(int i_10_ = 0; i_10_ < i_9_; i_10_++)
-                                anIntArray2479[i_10_] = arg2.getUnsignedShortBE();
-                            for(int i_11_ = 0; i_9_ > i_11_; i_11_++)
-                                anIntArray2479[i_11_] = (arg2.getUnsignedShortBE() << 16) + anIntArray2479[i_11_];
-                        }
-                    } else
-                        anInt2476 = arg2.getUnsignedByte();
-                } else
-                    weaponModel = arg2.getUnsignedShortBE();
-            } else
-                shieldModel = arg2.getUnsignedShortBE();
-        } else
-            aBoolean2496 = true;
+    public void decodeAnimationSequence(int opcode, Buffer buffer) {
+        if(opcode == 1) {
+            int frameCount = buffer.getUnsignedByte();
+            frameLengths = new int[frameCount];
+            for(int i = 0; frameCount > i; i++) {
+                frameLengths[i] = buffer.getUnsignedShortBE();
+            }
+
+            frameIds = new int[frameCount];
+            for(int i = 0; frameCount > i; i++) {
+                frameIds[i] = buffer.getUnsignedShortBE();
+            }
+            for(int i = 0; i < frameCount; i++) {
+                frameIds[i] = (buffer.getUnsignedShortBE() << 16) + frameIds[i];
+            }
+        } else if(opcode == 2) {
+            frameStep = buffer.getUnsignedShortBE();
+        } else if(opcode == 3) {
+            int interleaveCount = buffer.getUnsignedByte();
+            interleaveLeave = new int[1 + interleaveCount];
+            for(int i = 0; interleaveCount > i; i++) {
+                interleaveLeave[i] = buffer.getUnsignedByte();
+            }
+            interleaveLeave[interleaveCount] = 9999999;
+        } else if(opcode == 4) {
+            stretches = true;
+        } else if(opcode == 5) {
+            forcedPriority = buffer.getUnsignedByte();
+        } else if(opcode == 6) {
+            offHandModel = buffer.getUnsignedShortBE();
+        } else if(opcode == 7) {
+            mainHandModel = buffer.getUnsignedShortBE();
+        } else if(opcode == 8) {
+            maxLoops = buffer.getUnsignedByte();
+        } else if(opcode == 9) {
+            precedenceAnimating = buffer.getUnsignedByte();
+        } else if(opcode == 10) {
+            priority = buffer.getUnsignedByte();
+        } else if(opcode == 11) {
+            replyMode = buffer.getUnsignedByte();
+        } else if(opcode == 12) {
+            int unknownArray1Count = buffer.getUnsignedByte();
+            unknownArray1 = new int[unknownArray1Count];
+            for(int i = 0; i < unknownArray1Count; i++) {
+                unknownArray1[i] = buffer.getUnsignedShortBE();
+            }
+            for(int i = 0; unknownArray1Count > i; i++) {
+                unknownArray1[i] = (buffer.getUnsignedShortBE() << 16) + unknownArray1[i];
+            }
+        }
     }
 
     public Model method597(byte arg0, Model arg1, int arg2) {
-        arg2 = anIntArray2485[arg2];
+        arg2 = frameIds[arg2];
         Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960(arg2 >> 16);
         arg2 &= 0xffff;
         if(class40_sub5_sub15 == null)
@@ -232,17 +234,17 @@ public class AnimationSequence extends SubNode {
     }
 
     public Model method598(int arg0, Model arg1, boolean arg2) {
-        int i = anIntArray2485[arg0];
+        int i = frameIds[arg0];
         Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960(i >> 16);
         i &= 0xffff;
         if(class40_sub5_sub15 == null)
             return arg1.method817(true);
         if(!arg2)
-            method594(98, null);
+            decodeAllAnimationSequences(null);
         Class40_Sub5_Sub15 class40_sub5_sub15_20_ = null;
         int i_21_ = 0;
-        if(anIntArray2479 != null && arg0 < anIntArray2479.length) {
-            i_21_ = anIntArray2479[arg0];
+        if(unknownArray1 != null && arg0 < unknownArray1.length) {
+            i_21_ = unknownArray1[arg0];
             class40_sub5_sub15_20_ = Class55.method960(i_21_ >> 16);
             i_21_ &= 0xffff;
         }
@@ -260,7 +262,7 @@ public class AnimationSequence extends SubNode {
     public Model method599(int arg0, Model arg1, boolean arg2) {
         if(arg2)
             method591();
-        arg0 = anIntArray2485[arg0];
+        arg0 = frameIds[arg0];
         Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960(arg0 >> 16);
         arg0 &= 0xffff;
         if(class40_sub5_sub15 == null)
