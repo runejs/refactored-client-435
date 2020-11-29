@@ -1,9 +1,8 @@
 package com.jagex.runescape.cache.media.Widget;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
@@ -32,8 +31,14 @@ import java.lang.reflect.Method;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Widget extends SubNode {
-    public static Widget[][] interfaces;
+public class GameInterface extends SubNode {
+    public static GameInterface[][] interfaces;
+    public static int gameScreenInterfaceId = -1;
+    public static int tabAreaInterfaceId = -1;
+    public static int chatboxInterfaceId = -1;
+    public static int fullscreenInterfaceId = -1;
+    public static int fullscreenSiblingInterfaceId = -1;
+    public static boolean[] loadedInterfaces;
 
     public boolean isIf3 = false;
     public int contentType;
@@ -49,13 +54,13 @@ public class Widget extends SubNode {
     public Object[] anObjectArray2650;
     public WidgetModelType alternateModelType = WidgetModelType.MODEL;
     public int alternateAnimation;
-    public int anInt2654;
+    public int animationFrame;
     public boolean itemUsable;
     public int currentX;
     public int rotationZ;
     public Object[] anObjectArray2658;
     public int animation;
-    public int anInt2660;
+    public int remainingAnimationTime;
     public String[] aClass1Array2661;
     public int alternateHoveredTextColor;
     public String targetVerb;
@@ -72,7 +77,7 @@ public class Widget extends SubNode {
     public Object[] anObjectArray2680;
     public Object[] anObjectArray2681;
     public boolean aBoolean2682;
-    public WidgetType type;
+    public GameInterfaceType type;
     public int[] items;
     public WidgetModelType modelType;
     public boolean aBoolean2688;
@@ -95,7 +100,7 @@ public class Widget extends SubNode {
     public int[] itemAmounts;
     public int alternateModelId;
     public Object[] anObjectArray2712;
-    public Widget[] aWidgetArray2713;
+    public GameInterface[] aGameInterfaceArray2713;
     public int actionType;
     public int yTextAlignment;
     public int itemId;
@@ -127,16 +132,16 @@ public class Widget extends SubNode {
     public boolean isHidden;
     public int anInt2751;
 
-    public Widget() {
+    public GameInterface() {
         contentType = 0;
         rotationZ = 0;
         textShadowed = false;
         aBoolean2641 = false;
         targetVerb = "";
-        anInt2654 = 0;
+        animationFrame = 0;
         tooltip = English.ok;
         itemSpritePadsY = 0;
-        anInt2660 = 0;
+        remainingAnimationTime = 0;
         modelType = WidgetModelType.MODEL;
         alternateAnimation = -1;
         textColor = 0;
@@ -258,7 +263,7 @@ public class Widget extends SubNode {
         return coins / 0xf4240 + "M";
     }
 
-    public static void method891(Object[] arg0, int arg1, int arg2, Widget arg3, int arg4, boolean arg5) {
+    public static void method891(Object[] arg0, int arg1, int arg2, GameInterface arg3, int arg4, boolean arg5) {
         int i = 0;
         Class40_Sub5_Sub1 class40_sub5_sub1 = IdentityKit.method626(((Integer) arg0[0]).intValue(), 76);
         int[] is = class40_sub5_sub1.anIntArray2262;
@@ -462,121 +467,121 @@ public class Widget extends SubNode {
                         int i_18_ = Class67.anIntArray1588[i];
                         int i_19_ = Class67.anIntArray1588[i + 1];
                         int i_20_ = Class67.anIntArray1588[i + 2];
-                        Widget widget = forId(i_18_);
-                        if (widget.aWidgetArray2713 == null) {
-                            widget.aWidgetArray2713 = new Widget[1 + i_20_];
+                        GameInterface gameInterface = forId(i_18_);
+                        if (gameInterface.aGameInterfaceArray2713 == null) {
+                            gameInterface.aGameInterfaceArray2713 = new GameInterface[1 + i_20_];
                         }
-                        if (widget.aWidgetArray2713.length <= i_20_) {
-                            Widget[] widgets = new Widget[1 + i_20_];
-                            for (int i_21_ = 0; widget.aWidgetArray2713.length > i_21_; i_21_++) {
-                                widgets[i_21_] = widget.aWidgetArray2713[i_21_];
+                        if (gameInterface.aGameInterfaceArray2713.length <= i_20_) {
+                            GameInterface[] gameInterfaces = new GameInterface[1 + i_20_];
+                            for (int i_21_ = 0; gameInterface.aGameInterfaceArray2713.length > i_21_; i_21_++) {
+                                gameInterfaces[i_21_] = gameInterface.aGameInterfaceArray2713[i_21_];
                             }
-                            widget.aWidgetArray2713 = widgets;
+                            gameInterface.aGameInterfaceArray2713 = gameInterfaces;
                         }
-                        Widget widget_22_ = new Widget();
-                        widget_22_.parentId = widget.id;
-                        widget_22_.type = WidgetType.get(i_19_);
-                        widget_22_.id = ((0xffff & widget.id) << 15) + -2147483648 + i_20_;
-                        widget.aWidgetArray2713[i_20_] = widget_22_;
+                        GameInterface gameInterface_22_ = new GameInterface();
+                        gameInterface_22_.parentId = gameInterface.id;
+                        gameInterface_22_.type = GameInterfaceType.get(i_19_);
+                        gameInterface_22_.id = ((0xffff & gameInterface.id) << 15) + -2147483648 + i_20_;
+                        gameInterface.aGameInterfaceArray2713[i_20_] = gameInterface_22_;
                         if (bool) {
-                            Class40_Sub6.aWidget_2116 = widget_22_;
+                            Class40_Sub6.aGameInterface_2116 = gameInterface_22_;
                         } else {
-                            Class22_Sub2.aWidget_1887 = widget_22_;
+                            Class22_Sub2.aGameInterface_1887 = gameInterface_22_;
                         }
                     } else if (i_3_ == 101) {
-                        Widget widget = !bool ? Class22_Sub2.aWidget_1887 : Class40_Sub6.aWidget_2116;
-                        Widget widget_23_ = forId(widget.parentId);
-                        widget_23_.aWidgetArray2713[HuffmanEncoding.method1021(widget.id, 32767)] = null;
+                        GameInterface gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : Class40_Sub6.aGameInterface_2116;
+                        GameInterface gameInterface_23_ = forId(gameInterface.parentId);
+                        gameInterface_23_.aGameInterfaceArray2713[HuffmanEncoding.method1021(gameInterface.id, 32767)] = null;
                     } else {
                         if (i_3_ != 102) {
                             break;
                         }
-                        Widget widget = forId(Class67.anIntArray1588[--i]);
-                        widget.aWidgetArray2713 = null;
+                        GameInterface gameInterface = forId(Class67.anIntArray1588[--i]);
+                        gameInterface.aGameInterfaceArray2713 = null;
                     }
                 } else if (i_3_ >= 1000 && i_3_ < 1100 || i_3_ >= 2000 && i_3_ < 2100) {
-                    Widget widget;
+                    GameInterface gameInterface;
                     if (i_3_ >= 2000) {
-                        widget = forId(Class67.anIntArray1588[--i]);
+                        gameInterface = forId(Class67.anIntArray1588[--i]);
                         i_3_ -= 1000;
                     } else {
-                        widget = bool ? Class40_Sub6.aWidget_2116 : Class22_Sub2.aWidget_1887;
+                        gameInterface = bool ? Class40_Sub6.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
                     }
                     if (i_3_ == 1000) {
                         i -= 2;
-                        widget.currentX = Class67.anIntArray1588[i];
-                        widget.currentY = Class67.anIntArray1588[i + 1];
+                        gameInterface.currentX = Class67.anIntArray1588[i];
+                        gameInterface.currentY = Class67.anIntArray1588[i + 1];
                     } else if (i_3_ == 1001) {
                         i -= 2;
-                        widget.originalWidth = Class67.anIntArray1588[i];
-                        widget.originalHeight = Class67.anIntArray1588[1 + i];
+                        gameInterface.originalWidth = Class67.anIntArray1588[i];
+                        gameInterface.originalHeight = Class67.anIntArray1588[1 + i];
                     } else if (i_3_ == 1003) {
-                        widget.isHidden = Class67.anIntArray1588[--i] == 1;
+                        gameInterface.isHidden = Class67.anIntArray1588[--i] == 1;
                     } else {
                         if (i_3_ != 1004) {
                             break;
                         }
-                        widget.aBoolean2688 = Class67.anIntArray1588[--i] == 1;
+                        gameInterface.aBoolean2688 = Class67.anIntArray1588[--i] == 1;
                     }
                 } else if (i_3_ >= 1100 && i_3_ < 1200 || i_3_ >= 2100 && i_3_ < 2200) {
-                    Widget widget;
+                    GameInterface gameInterface;
                     if (i_3_ < 2000) {
-                        widget = !bool ? Class22_Sub2.aWidget_1887 : Class40_Sub6.aWidget_2116;
+                        gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : Class40_Sub6.aGameInterface_2116;
                     } else {
-                        widget = forId(Class67.anIntArray1588[--i]);
+                        gameInterface = forId(Class67.anIntArray1588[--i]);
                         i_3_ -= 1000;
                     }
                     if (i_3_ == 1100) {
                         i -= 2;
-                        widget.anInt2746 = Class67.anIntArray1588[i];
-                        widget.scrollPosition = Class67.anIntArray1588[1 + i];
+                        gameInterface.anInt2746 = Class67.anIntArray1588[i];
+                        gameInterface.scrollPosition = Class67.anIntArray1588[1 + i];
                     } else if (i_3_ == 1101) {
                         int i_24_ = Class67.anIntArray1588[--i];
                         int i_25_ = (0x7e0b & i_24_) >> 10;
                         int i_26_ = i_24_ & 0x1f;
                         int i_27_ = i_24_ >> 5 & 0x1f;
-                        widget.textColor = (i_27_ << 11) + (i_25_ << 19) + (i_26_ << 3);
+                        gameInterface.textColor = (i_27_ << 11) + (i_25_ << 19) + (i_26_ << 3);
                     } else if (i_3_ == 1102) {
-                        widget.filled = Class67.anIntArray1588[--i] == 1;
+                        gameInterface.filled = Class67.anIntArray1588[--i] == 1;
                     } else if (i_3_ == 1103) {
-                        widget.opacity = Class67.anIntArray1588[--i];
+                        gameInterface.opacity = Class67.anIntArray1588[--i];
                     } else if (i_3_ == 1104) {
                         i--;
                     } else if (i_3_ == 1105) {
-                        widget.spriteId = Class67.anIntArray1588[--i];
+                        gameInterface.spriteId = Class67.anIntArray1588[--i];
                     } else if (i_3_ == 1106) {
-                        widget.anInt2751 = Class67.anIntArray1588[--i];
+                        gameInterface.anInt2751 = Class67.anIntArray1588[--i];
                     } else if (i_3_ == 1107) {
-                        widget.aBoolean2641 = Class67.anIntArray1588[--i] == 1;
+                        gameInterface.aBoolean2641 = Class67.anIntArray1588[--i] == 1;
                     } else if (i_3_ == 1108) {
-                        widget.modelType = WidgetModelType.MODEL;
-                        widget.modelId = Class67.anIntArray1588[--i];
+                        gameInterface.modelType = WidgetModelType.MODEL;
+                        gameInterface.modelId = Class67.anIntArray1588[--i];
                     } else if (i_3_ == 1109) {
                         i -= 6;
-                        widget.offsetX2d = Class67.anIntArray1588[i];
-                        widget.offsetY2d = Class67.anIntArray1588[1 + i];
-                        widget.rotationX = Class67.anIntArray1588[i + 2];
-                        widget.rotationZ = Class67.anIntArray1588[3 + i];
-                        widget.rotationY = Class67.anIntArray1588[4 + i];
-                        widget.modelZoom = Class67.anIntArray1588[5 + i];
+                        gameInterface.offsetX2d = Class67.anIntArray1588[i];
+                        gameInterface.offsetY2d = Class67.anIntArray1588[1 + i];
+                        gameInterface.rotationX = Class67.anIntArray1588[i + 2];
+                        gameInterface.rotationZ = Class67.anIntArray1588[3 + i];
+                        gameInterface.rotationY = Class67.anIntArray1588[4 + i];
+                        gameInterface.modelZoom = Class67.anIntArray1588[5 + i];
                     } else if (i_3_ == 1110) {
-                        widget.animation = Class67.anIntArray1588[--i];
+                        gameInterface.animation = Class67.anIntArray1588[--i];
                     } else if (i_3_ == 1111) {
-                        widget.orthogonal = Class67.anIntArray1588[--i] == 1;
+                        gameInterface.orthogonal = Class67.anIntArray1588[--i] == 1;
                     } else if (i_3_ == 1112) {
-                        widget.disabledText = Class40_Sub11.aClass1Array2153[--i_1_];
+                        gameInterface.disabledText = Class40_Sub11.aClass1Array2153[--i_1_];
                     } else if (i_3_ == 1113) {
-                        widget.fontId = Class67.anIntArray1588[--i];
+                        gameInterface.fontId = Class67.anIntArray1588[--i];
                     } else if (i_3_ == 1114) {
                         i -= 3;
-                        widget.xTextAlignment = Class67.anIntArray1588[i];
-                        widget.yTextAlignment = Class67.anIntArray1588[i + 1];
-                        widget.lineHeight = Class67.anIntArray1588[i + 2];
+                        gameInterface.xTextAlignment = Class67.anIntArray1588[i];
+                        gameInterface.yTextAlignment = Class67.anIntArray1588[i + 1];
+                        gameInterface.lineHeight = Class67.anIntArray1588[i + 2];
                     } else {
                         if (i_3_ != 1115) {
                             break;
                         }
-                        widget.textShadowed = Class67.anIntArray1588[--i] == 1;
+                        gameInterface.textShadowed = Class67.anIntArray1588[--i] == 1;
                     }
                 } else if ((i_3_ < 1200 || i_3_ >= 1300) && (i_3_ < 2200 || i_3_ >= 2300)) {
                     if ((i_3_ < 1300 || i_3_ >= 1400) && (i_3_ < 2300 || i_3_ >= 2400)) {
@@ -585,15 +590,15 @@ public class Widget extends SubNode {
                                 i -= 2;
                                 int i_28_ = Class67.anIntArray1588[i + 1];
                                 int i_29_ = Class67.anIntArray1588[i];
-                                Widget widget = forId(i_29_);
-                                if (widget.aWidgetArray2713 == null || widget.aWidgetArray2713.length <= i_28_ || widget.aWidgetArray2713[i_28_] == null) {
+                                GameInterface gameInterface = forId(i_29_);
+                                if (gameInterface.aGameInterfaceArray2713 == null || gameInterface.aGameInterfaceArray2713.length <= i_28_ || gameInterface.aGameInterfaceArray2713[i_28_] == null) {
                                     Class67.anIntArray1588[i++] = 0;
                                 } else {
                                     Class67.anIntArray1588[i++] = 1;
                                     if (bool) {
-                                        Class40_Sub6.aWidget_2116 = widget.aWidgetArray2713[i_28_];
+                                        Class40_Sub6.aGameInterface_2116 = gameInterface.aGameInterfaceArray2713[i_28_];
                                     } else {
-                                        Class22_Sub2.aWidget_1887 = widget.aWidgetArray2713[i_28_];
+                                        Class22_Sub2.aGameInterface_1887 = gameInterface.aGameInterfaceArray2713[i_28_];
                                     }
                                 }
                             } else if (i_3_ == 1401) {
@@ -601,15 +606,15 @@ public class Widget extends SubNode {
                                 int i_30_ = Class67.anIntArray1588[i];
                                 int i_31_ = Class67.anIntArray1588[2 + i];
                                 int i_32_ = Class67.anIntArray1588[i + 1];
-                                Widget widget = Class27.method361(interfaces[i_30_], i_31_, true, 0, -1, 0, i_32_, 398);
-                                if (widget == null) {
+                                GameInterface gameInterface = Class27.method361(interfaces[i_30_], i_31_, true, 0, -1, 0, i_32_, 398);
+                                if (gameInterface == null) {
                                     Class67.anIntArray1588[i++] = 0;
                                 } else {
                                     Class67.anIntArray1588[i++] = 1;
                                     if (bool) {
-                                        Class40_Sub6.aWidget_2116 = widget;
+                                        Class40_Sub6.aGameInterface_2116 = gameInterface;
                                     } else {
-                                        Class22_Sub2.aWidget_1887 = widget;
+                                        Class22_Sub2.aGameInterface_1887 = gameInterface;
                                     }
                                 }
                             } else {
@@ -617,38 +622,38 @@ public class Widget extends SubNode {
                                     break;
                                 }
                                 i -= 3;
-                                Widget widget = forId(Class67.anIntArray1588[i]);
+                                GameInterface gameInterface = forId(Class67.anIntArray1588[i]);
                                 int i_33_ = Class67.anIntArray1588[2 + i];
                                 int i_34_ = Class67.anIntArray1588[i + 1];
-                                Widget widget_35_ = Class27.method361(widget.aWidgetArray2713, i_33_, true, widget.scrollPosition, widget.id, widget.anInt2746, i_34_, 398);
-                                if (widget_35_ == null) {
+                                GameInterface gameInterface_35_ = Class27.method361(gameInterface.aGameInterfaceArray2713, i_33_, true, gameInterface.scrollPosition, gameInterface.id, gameInterface.anInt2746, i_34_, 398);
+                                if (gameInterface_35_ == null) {
                                     Class67.anIntArray1588[i++] = 0;
                                 } else {
                                     Class67.anIntArray1588[i++] = 1;
                                     if (bool) {
-                                        Class40_Sub6.aWidget_2116 = widget_35_;
+                                        Class40_Sub6.aGameInterface_2116 = gameInterface_35_;
                                     } else {
-                                        Class22_Sub2.aWidget_1887 = widget_35_;
+                                        Class22_Sub2.aGameInterface_1887 = gameInterface_35_;
                                     }
                                 }
                             }
                         } else if (i_3_ < 1600) {
-                            Widget widget = bool ? Class40_Sub6.aWidget_2116 : Class22_Sub2.aWidget_1887;
+                            GameInterface gameInterface = bool ? Class40_Sub6.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
                             if (i_3_ == 1500) {
-                                Class67.anIntArray1588[i++] = widget.currentX;
+                                Class67.anIntArray1588[i++] = gameInterface.currentX;
                             } else if (i_3_ == 1501) {
-                                Class67.anIntArray1588[i++] = widget.currentY;
+                                Class67.anIntArray1588[i++] = gameInterface.currentY;
                             } else if (i_3_ == 1502) {
-                                Class67.anIntArray1588[i++] = widget.originalWidth;
+                                Class67.anIntArray1588[i++] = gameInterface.originalWidth;
                             } else if (i_3_ == 1503) {
-                                Class67.anIntArray1588[i++] = widget.originalHeight;
+                                Class67.anIntArray1588[i++] = gameInterface.originalHeight;
                             } else if (i_3_ == 1504) {
-                                Class67.anIntArray1588[i++] = !widget.isHidden ? 0 : 1;
+                                Class67.anIntArray1588[i++] = !gameInterface.isHidden ? 0 : 1;
                             } else {
                                 if (i_3_ != 1505) {
                                     break;
                                 }
-                                Class67.anIntArray1588[i++] = widget.parentId;
+                                Class67.anIntArray1588[i++] = gameInterface.parentId;
                             }
                         } else if (i_3_ >= 1700) {
                             if (i_3_ < 2500) {
@@ -657,37 +662,37 @@ public class Widget extends SubNode {
                                     int i_36_ = Class67.anIntArray1588[1 + i];
                                     int i_37_ = Class67.anIntArray1588[i];
                                     int i_38_ = Class67.anIntArray1588[i + 2];
-                                    Widget widget = Class27.method361(interfaces[i_37_], i_38_, false, 0, -1, 0, i_36_, 398);
-                                    if (widget == null) {
+                                    GameInterface gameInterface = Class27.method361(interfaces[i_37_], i_38_, false, 0, -1, 0, i_36_, 398);
+                                    if (gameInterface == null) {
                                         Class67.anIntArray1588[i++] = -1;
                                     } else {
-                                        Class67.anIntArray1588[i++] = widget.id;
+                                        Class67.anIntArray1588[i++] = gameInterface.id;
                                     }
                                 } else {
                                     if (i_3_ != 2402) {
                                         break;
                                     }
                                     i -= 3;
-                                    Widget widget = forId(Class67.anIntArray1588[i]);
+                                    GameInterface gameInterface = forId(Class67.anIntArray1588[i]);
                                     int i_39_ = Class67.anIntArray1588[1 + i];
                                     int i_40_ = Class67.anIntArray1588[i + 2];
-                                    Widget widget_41_ = Class27.method361(interfaces[widget.id >> 16], i_40_, false, widget.scrollPosition, 0xffff & widget.id, widget.anInt2746, i_39_, 398);
-                                    if (widget_41_ == null) {
+                                    GameInterface gameInterface_41_ = Class27.method361(interfaces[gameInterface.id >> 16], i_40_, false, gameInterface.scrollPosition, 0xffff & gameInterface.id, gameInterface.anInt2746, i_39_, 398);
+                                    if (gameInterface_41_ == null) {
                                         Class67.anIntArray1588[i++] = -1;
                                     } else {
-                                        Class67.anIntArray1588[i++] = widget_41_.id;
+                                        Class67.anIntArray1588[i++] = gameInterface_41_.id;
                                     }
                                 }
                             } else if (i_3_ >= 2600) {
                                 if (i_3_ < 2700) {
-                                    Widget widget = forId(Class67.anIntArray1588[--i]);
+                                    GameInterface gameInterface = forId(Class67.anIntArray1588[--i]);
                                     if (i_3_ == 2600) {
-                                        Class67.anIntArray1588[i++] = widget.anInt2746;
+                                        Class67.anIntArray1588[i++] = gameInterface.anInt2746;
                                     } else {
                                         if (i_3_ != 2601) {
                                             break;
                                         }
-                                        Class67.anIntArray1588[i++] = widget.scrollPosition;
+                                        Class67.anIntArray1588[i++] = gameInterface.scrollPosition;
                                     }
                                 } else {
                                     if (i_3_ < 2800) {
@@ -696,9 +701,9 @@ public class Widget extends SubNode {
                                     if (i_3_ < 3100) {
                                         if (i_3_ == 3000) {
                                             int i_42_ = Class67.anIntArray1588[--i];
-                                            if (CacheIndex_Sub1.anInt1819 == -1) {
+                                            if (CacheIndex.anInt1819 == -1) {
                                                 PacketBuffer.method517(0, i_42_);
-                                                CacheIndex_Sub1.anInt1819 = i_42_;
+                                                CacheIndex.anInt1819 = i_42_;
                                             }
                                         } else if (i_3_ == 3001 || i_3_ == 3003) {
                                             i -= 2;
@@ -706,18 +711,18 @@ public class Widget extends SubNode {
                                             int i_44_ = Class67.anIntArray1588[i + 1];
                                             Class33.method406(0, i_44_, i_43_, -128);
                                         } else if (i_3_ == 3002) {
-                                            Widget widget = !bool ? Class22_Sub2.aWidget_1887 : Class40_Sub6.aWidget_2116;
-                                            if (CacheIndex_Sub1.anInt1819 == -1) {
-                                                PacketBuffer.method517(widget.id & 0x7fff, widget.parentId);
-                                                CacheIndex_Sub1.anInt1819 = widget.id;
+                                            GameInterface gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : Class40_Sub6.aGameInterface_2116;
+                                            if (CacheIndex.anInt1819 == -1) {
+                                                PacketBuffer.method517(gameInterface.id & 0x7fff, gameInterface.parentId);
+                                                CacheIndex.anInt1819 = gameInterface.id;
                                             }
                                         } else {
                                             if (i_3_ != 3003) {
                                                 break;
                                             }
-                                            Widget widget = bool ? Class40_Sub6.aWidget_2116 : Class22_Sub2.aWidget_1887;
+                                            GameInterface gameInterface = bool ? Class40_Sub6.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
                                             int i_45_ = Class67.anIntArray1588[--i];
-                                            Class33.method406(0x7fff & widget.id, i_45_, widget.parentId, -121);
+                                            Class33.method406(0x7fff & gameInterface.id, i_45_, gameInterface.parentId, -121);
                                         }
                                     } else if (i_3_ >= 3200) {
                                         if (i_3_ < 3300) {
@@ -882,42 +887,42 @@ public class Widget extends SubNode {
                                     }
                                 }
                             } else {
-                                Widget widget = forId(Class67.anIntArray1588[--i]);
+                                GameInterface gameInterface = forId(Class67.anIntArray1588[--i]);
                                 if (i_3_ == 2500) {
-                                    Class67.anIntArray1588[i++] = widget.currentX;
+                                    Class67.anIntArray1588[i++] = gameInterface.currentX;
                                 } else if (i_3_ == 2501) {
-                                    Class67.anIntArray1588[i++] = widget.currentY;
+                                    Class67.anIntArray1588[i++] = gameInterface.currentY;
                                 } else if (i_3_ == 2502) {
-                                    Class67.anIntArray1588[i++] = widget.originalWidth;
+                                    Class67.anIntArray1588[i++] = gameInterface.originalWidth;
                                 } else if (i_3_ == 2503) {
-                                    Class67.anIntArray1588[i++] = widget.originalHeight;
+                                    Class67.anIntArray1588[i++] = gameInterface.originalHeight;
                                 } else if (i_3_ == 2504) {
-                                    Class67.anIntArray1588[i++] = widget.isHidden ? 1 : 0;
+                                    Class67.anIntArray1588[i++] = gameInterface.isHidden ? 1 : 0;
                                 } else {
                                     if (i_3_ != 2505) {
                                         break;
                                     }
-                                    Class67.anIntArray1588[i++] = widget.parentId;
+                                    Class67.anIntArray1588[i++] = gameInterface.parentId;
                                 }
                             }
                         } else {
-                            Widget widget = bool ? Class40_Sub6.aWidget_2116 : Class22_Sub2.aWidget_1887;
+                            GameInterface gameInterface = bool ? Class40_Sub6.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
                             if (i_3_ == 1600) {
-                                Class67.anIntArray1588[i++] = widget.anInt2746;
+                                Class67.anIntArray1588[i++] = gameInterface.anInt2746;
                             } else {
                                 if (i_3_ != 1601) {
                                     break;
                                 }
-                                Class67.anIntArray1588[i++] = widget.scrollPosition;
+                                Class67.anIntArray1588[i++] = gameInterface.scrollPosition;
                             }
                         }
                     } else {
-                        Widget widget;
+                        GameInterface gameInterface;
                         if (i_3_ >= 2000) {
-                            widget = forId(Class67.anIntArray1588[--i]);
+                            gameInterface = forId(Class67.anIntArray1588[--i]);
                             i_3_ -= 1000;
                         } else {
-                            widget = !bool ? Class22_Sub2.aWidget_1887 : Class40_Sub6.aWidget_2116;
+                            gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : Class40_Sub6.aGameInterface_2116;
                         }
                         if (i_3_ >= 1300 && i_3_ <= 1309 || i_3_ >= 1314 && i_3_ <= 1317) {
                             String class1 = Class40_Sub11.aClass1Array2153[--i_1_];
@@ -931,61 +936,61 @@ public class Widget extends SubNode {
                             }
                             objects[0] = new Integer(Class67.anIntArray1588[--i]);
                             if (i_3_ == 1303) {
-                                widget.anObjectArray2707 = objects;
+                                gameInterface.anObjectArray2707 = objects;
                             }
                             if (i_3_ == 1317) {
-                                widget.anObjectArray2680 = objects;
+                                gameInterface.anObjectArray2680 = objects;
                             }
                             if (i_3_ == 1304) {
-                                widget.anObjectArray2658 = objects;
+                                gameInterface.anObjectArray2658 = objects;
                             }
                             if (i_3_ == 1302) {
-                                widget.anObjectArray2644 = objects;
+                                gameInterface.anObjectArray2644 = objects;
                             }
                             if (i_3_ == 1316) {
-                                widget.anObjectArray2747 = objects;
+                                gameInterface.anObjectArray2747 = objects;
                             }
                             if (i_3_ == 1301) {
-                                widget.anObjectArray2681 = objects;
+                                gameInterface.anObjectArray2681 = objects;
                             }
                             if (i_3_ == 1300) {
-                                widget.anObjectArray2677 = objects;
+                                gameInterface.anObjectArray2677 = objects;
                             }
                             if (i_3_ == 1315) {
-                                widget.anObjectArray2695 = objects;
+                                gameInterface.anObjectArray2695 = objects;
                             }
                             if (i_3_ == 1306) {
-                                widget.anObjectArray2669 = objects;
+                                gameInterface.anObjectArray2669 = objects;
                             }
                             if (i_3_ == 1305) {
-                                widget.anObjectArray2672 = objects;
+                                gameInterface.anObjectArray2672 = objects;
                             }
                             if (i_3_ == 1309) {
-                                widget.anObjectArray2712 = objects;
+                                gameInterface.anObjectArray2712 = objects;
                             }
                             if (i_3_ == 1308) {
-                                widget.anObjectArray2650 = objects;
+                                gameInterface.anObjectArray2650 = objects;
                             }
                         } else if (i_3_ == 1310) {
                             int i_85_ = -1 + Class67.anIntArray1588[--i];
                             if (i_85_ >= 0 && i_85_ <= 9) {
-                                if (widget.aClass1Array2661 == null || widget.aClass1Array2661.length <= i_85_) {
+                                if (gameInterface.aClass1Array2661 == null || gameInterface.aClass1Array2661.length <= i_85_) {
                                     String[] class1s = new String[1 + i_85_];
-                                    if (widget.aClass1Array2661 != null) {
-                                        for (int i_86_ = 0; widget.aClass1Array2661.length > i_86_; i_86_++) {
-                                            class1s[i_86_] = widget.aClass1Array2661[i_86_];
+                                    if (gameInterface.aClass1Array2661 != null) {
+                                        for (int i_86_ = 0; gameInterface.aClass1Array2661.length > i_86_; i_86_++) {
+                                            class1s[i_86_] = gameInterface.aClass1Array2661[i_86_];
                                         }
                                     }
-                                    widget.aClass1Array2661 = class1s;
+                                    gameInterface.aClass1Array2661 = class1s;
                                 }
-                                widget.aClass1Array2661[i_85_] = Class40_Sub11.aClass1Array2153[--i_1_];
+                                gameInterface.aClass1Array2661[i_85_] = Class40_Sub11.aClass1Array2153[--i_1_];
                             } else {
                                 i_1_--;
                             }
                         } else if (i_3_ == 1311) {
-                            widget.anInt2738 = Class67.anIntArray1588[--i];
+                            gameInterface.anInt2738 = Class67.anIntArray1588[--i];
                         } else if (i_3_ == 1312) {
-                            widget.aBoolean2694 = Class67.anIntArray1588[--i] == 1;
+                            gameInterface.aBoolean2694 = Class67.anIntArray1588[--i] == 1;
                         } else {
                             if (i_3_ != 1313) {
                                 break;
@@ -994,11 +999,11 @@ public class Widget extends SubNode {
                         }
                     }
                 } else {
-                    Widget widget;
+                    GameInterface gameInterface;
                     if (i_3_ < 2000) {
-                        widget = !bool ? Class22_Sub2.aWidget_1887 : Class40_Sub6.aWidget_2116;
+                        gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : Class40_Sub6.aGameInterface_2116;
                     } else {
-                        widget = forId(Class67.anIntArray1588[--i]);
+                        gameInterface = forId(Class67.anIntArray1588[--i]);
                         i_3_ -= 1000;
                     }
                     if (i_3_ == 1200) {
@@ -1006,30 +1011,30 @@ public class Widget extends SubNode {
                         int i_87_ = Class67.anIntArray1588[i];
                         int i_88_ = Class67.anIntArray1588[i + 2];
                         if (i_87_ == -1) {
-                            widget.modelType = WidgetModelType.NULL;
+                            gameInterface.modelType = WidgetModelType.NULL;
                         } else {
                             ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_87_, 10);
-                            widget.modelType = WidgetModelType.ITEM;
-                            widget.rotationX = class40_sub5_sub16.xan2d;
-                            widget.rotationY = class40_sub5_sub16.zan2d;
-                            widget.modelZoom = 100 * class40_sub5_sub16.zoom2d / i_88_;
-                            widget.rotationZ = class40_sub5_sub16.yan2d;
-                            widget.offsetY2d = class40_sub5_sub16.yOffset2d;
-                            widget.offsetX2d = class40_sub5_sub16.xOffset2d;
-                            widget.modelId = i_87_;
+                            gameInterface.modelType = WidgetModelType.ITEM;
+                            gameInterface.rotationX = class40_sub5_sub16.xan2d;
+                            gameInterface.rotationY = class40_sub5_sub16.zan2d;
+                            gameInterface.modelZoom = 100 * class40_sub5_sub16.zoom2d / i_88_;
+                            gameInterface.rotationZ = class40_sub5_sub16.yan2d;
+                            gameInterface.offsetY2d = class40_sub5_sub16.yOffset2d;
+                            gameInterface.offsetX2d = class40_sub5_sub16.xOffset2d;
+                            gameInterface.modelId = i_87_;
                         }
                     } else if (i_3_ == 1201) {
-                        widget.modelType = WidgetModelType.NPC_CHATHEAD;
-                        widget.modelId = Class67.anIntArray1588[--i];
+                        gameInterface.modelType = WidgetModelType.NPC_CHATHEAD;
+                        gameInterface.modelId = Class67.anIntArray1588[--i];
                     } else if (i_3_ == 1202) {
-                        widget.modelType = WidgetModelType.LOCAL_PLAYER_CHATHEAD;
-                        widget.modelId = Player.localPlayer.playerAppearance.getHeadModelId();
+                        gameInterface.modelType = WidgetModelType.LOCAL_PLAYER_CHATHEAD;
+                        gameInterface.modelId = Player.localPlayer.playerAppearance.getHeadModelId();
                     } else {
                         if (i_3_ != 1203) {
                             break;
                         }
-                        Widget widget_89_ = !bool ? Class40_Sub6.aWidget_2116 : Class22_Sub2.aWidget_1887;
-                        widget.anInt2738 = widget_89_.id;
+                        GameInterface gameInterface_89_ = !bool ? Class40_Sub6.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
+                        gameInterface.anInt2738 = gameInterface_89_.id;
                     }
                 }
             }
@@ -1039,11 +1044,11 @@ public class Widget extends SubNode {
 
     }
 
-    public static Widget forId(int arg0) {
+    public static GameInterface forId(int arg0) {
         int i = arg0 >> 16;
         int i_8_ = 0xffff & arg0;
         if (interfaces[i] == null || interfaces[i][i_8_] == null) {
-            boolean bool = ProducingGraphicsBuffer.method1043(i);
+            boolean bool = decodeGameInterface(i);
             if (!bool)
                 return null;
         }
@@ -1051,18 +1056,18 @@ public class Widget extends SubNode {
 
     }
 
-    public static void updateWidget(Widget widget) {
-        int type = widget.contentType;
+    public static void updateGameInterface(GameInterface gameInterface) {
+        int type = gameInterface.contentType;
         if (type >= 1 && type <= 100 || type >= 701 && type <= 800) {
             if (type == 1 && Class12.friendListStatus == 0) {
-                widget.disabledText = English.loadingFriendList;
-                widget.actionType = 0;
+                gameInterface.disabledText = English.loadingFriendList;
+                gameInterface.actionType = 0;
             } else if (type == 1 && Class12.friendListStatus == 1) {
-                widget.disabledText = English.connectingToFriendserver;
-                widget.actionType = 0;
+                gameInterface.disabledText = English.connectingToFriendserver;
+                gameInterface.actionType = 0;
             } else if (type == 2 && Class12.friendListStatus != 2) {
-                widget.actionType = 0;
-                widget.disabledText = PacketBuffer.str_Please_Wait;
+                gameInterface.actionType = 0;
+                gameInterface.disabledText = PacketBuffer.str_Please_Wait;
             } else {
                 int fCount = Item.friendsCount;
                 if (type > 700)
@@ -1072,11 +1077,11 @@ public class Widget extends SubNode {
                 if (Class12.friendListStatus != 2)
                     fCount = 0;
                 if (fCount <= type) {
-                    widget.disabledText = "";
-                    widget.actionType = 0;
+                    gameInterface.disabledText = "";
+                    gameInterface.actionType = 0;
                 } else {
-                    widget.disabledText = Class40_Sub11.friendUsernames[type];
-                    widget.actionType = 1;
+                    gameInterface.disabledText = Class40_Sub11.friendUsernames[type];
+                    gameInterface.actionType = 1;
                 }
             }
         } else if (type >= 101 && type <= 200 || type >= 801 && type <= 900) {
@@ -1088,96 +1093,96 @@ public class Widget extends SubNode {
             if (Class12.friendListStatus != 2)
                 count = 0;
             if (type >= count) {
-                widget.disabledText = "";
-                widget.actionType = 0;
+                gameInterface.disabledText = "";
+                gameInterface.actionType = 0;
             } else {
                 if (Class40_Sub7.friendWorlds[type] == 0) {
-                    widget.disabledText = Native.aClass1_610 + English.offline;
+                    gameInterface.disabledText = Native.aClass1_610 + English.offline;
                 } else if (Class40_Sub7.friendWorlds[type] < 5000) {
                     if (Class40_Sub7.friendWorlds[type] == Class13.worldid) {
-                        widget.disabledText = Native.aClass1_1162 + English.world + Class40_Sub7.friendWorlds[type];
+                        gameInterface.disabledText = Native.aClass1_1162 + English.world + Class40_Sub7.friendWorlds[type];
                     } else {
-                        widget.disabledText = Native.aClass1_1283 + English.world + Class40_Sub7.friendWorlds[type];
+                        gameInterface.disabledText = Native.aClass1_1283 + English.world + Class40_Sub7.friendWorlds[type];
                     }
                 } else if (Class13.worldid == Class40_Sub7.friendWorlds[type]) {
-                    widget.disabledText = Native.aClass1_1162 + English.classic + (-5000 + Class40_Sub7.friendWorlds[type]);
+                    gameInterface.disabledText = Native.aClass1_1162 + English.classic + (-5000 + Class40_Sub7.friendWorlds[type]);
                 } else {
-                    widget.disabledText = Native.aClass1_1283 + English.classic + (Class40_Sub7.friendWorlds[type] + -5000);
+                    gameInterface.disabledText = Native.aClass1_1283 + English.classic + (Class40_Sub7.friendWorlds[type] + -5000);
                 }
-                widget.actionType = 1;
+                gameInterface.actionType = 1;
             }
         } else if (type == 203) {
             int count = Item.friendsCount;
             if (Class12.friendListStatus != 2)
                 count = 0;
-            widget.scrollHeight = 20 + 15 * count;
-            if (widget.originalHeight >= widget.scrollHeight)
-                widget.scrollHeight = 1 + widget.originalHeight;
+            gameInterface.scrollHeight = 20 + 15 * count;
+            if (gameInterface.originalHeight >= gameInterface.scrollHeight)
+                gameInterface.scrollHeight = 1 + gameInterface.originalHeight;
         } else if (type >= 401 && type <= 500) {
             type -= 401;
             if (type == 0 && Class12.friendListStatus == 0) {
-                widget.disabledText = English.loadingIgnoreList;
-                widget.actionType = 0;
+                gameInterface.disabledText = English.loadingIgnoreList;
+                gameInterface.actionType = 0;
             } else if (type == 1 && Class12.friendListStatus == 0) {
-                widget.disabledText = PacketBuffer.str_Please_Wait;
-                widget.actionType = 0;
+                gameInterface.disabledText = PacketBuffer.str_Please_Wait;
+                gameInterface.actionType = 0;
             } else {
                 int i_4_ = Class42.anInt1008;
                 if (Class12.friendListStatus == 0)
                     i_4_ = 0;
                 if (i_4_ <= type) {
-                    widget.actionType = 0;
-                    widget.disabledText = "";
+                    gameInterface.actionType = 0;
+                    gameInterface.disabledText = "";
                 } else {
-                    widget.disabledText = TextUtils.formatName(TextUtils.longToName(WallDecoration.ignores[type]));
-                    widget.actionType = 1;
+                    gameInterface.disabledText = TextUtils.formatName(TextUtils.longToName(WallDecoration.ignores[type]));
+                    gameInterface.actionType = 1;
                 }
             }
         } else if (type == 503) {
-            widget.scrollHeight = 15 * Class42.anInt1008 + 20;
-            if (widget.scrollHeight <= widget.originalHeight)
-                widget.scrollHeight = widget.originalHeight + 1;
+            gameInterface.scrollHeight = 15 * Class42.anInt1008 + 20;
+            if (gameInterface.scrollHeight <= gameInterface.originalHeight)
+                gameInterface.scrollHeight = gameInterface.originalHeight + 1;
         } else if (type == 324) {
             if (Class64.anInt1511 == -1) {
-                Class64.anInt1511 = widget.spriteId;
-                Main.anInt1769 = widget.alternateSpriteId;
+                Class64.anInt1511 = gameInterface.spriteId;
+                Main.anInt1769 = gameInterface.alternateSpriteId;
             }
             if (!LinkedList.aClass30_1082.gender)
-                widget.spriteId = Main.anInt1769;
+                gameInterface.spriteId = Main.anInt1769;
             else
-                widget.spriteId = Class64.anInt1511;
+                gameInterface.spriteId = Class64.anInt1511;
         } else if (type == 325) {
             if (Class64.anInt1511 == -1) {
-                Main.anInt1769 = widget.alternateSpriteId;
-                Class64.anInt1511 = widget.spriteId;
+                Main.anInt1769 = gameInterface.alternateSpriteId;
+                Class64.anInt1511 = gameInterface.spriteId;
             }
             if (LinkedList.aClass30_1082.gender)
-                widget.spriteId = Main.anInt1769;
+                gameInterface.spriteId = Main.anInt1769;
             else
-                widget.spriteId = Class64.anInt1511;
+                gameInterface.spriteId = Class64.anInt1511;
         } else if (type == 327) {
-            widget.rotationX = 150;
-            widget.rotationZ = 0x7ff & (int) (256.0 * Math.sin((double) pulseCycle / 40.0));
-            widget.modelId = 0;
-            widget.modelType = WidgetModelType.PLAYER;
+            gameInterface.rotationX = 150;
+            gameInterface.rotationZ = 0x7ff & (int) (256.0 * Math.sin((double) pulseCycle / 40.0));
+            gameInterface.modelId = 0;
+            gameInterface.modelType = WidgetModelType.PLAYER;
         } else if (type == 328) {
-            widget.rotationX = 150;
-            widget.rotationZ = 0x7ff & (int) (256.0 * Math.sin((double) pulseCycle / 40.0));
-            widget.modelId = 1;
-            widget.modelType = WidgetModelType.PLAYER;
+            gameInterface.rotationX = 150;
+            gameInterface.rotationZ = 0x7ff & (int) (256.0 * Math.sin((double) pulseCycle / 40.0));
+            gameInterface.modelId = 1;
+            gameInterface.modelType = WidgetModelType.PLAYER;
         } else if (type == 600)
-            widget.disabledText = Native.reportedName + Native.prefixYellowBar;
+            gameInterface.disabledText = Native.reportedName + Native.prefixYellowBar;
         else if (type == 620) {
             if (InteractiveObject.playerRights >= 1) {
                 if (Class67.reportMutePlayer) {
-                    widget.textColor = 0xff0000;
-                    widget.disabledText = English.moderatorOptionMutePlayerFor48HoursON;
+                    gameInterface.textColor = 0xff0000;
+                    gameInterface.disabledText = English.moderatorOptionMutePlayerFor48HoursON;
                 } else {
-                    widget.textColor = 0xffffff;
-                    widget.disabledText = English.moderatorOptionMutePlayerFor48HoursOFF;
+                    gameInterface.textColor = 0xffffff;
+                    gameInterface.disabledText = English.moderatorOptionMutePlayerFor48HoursOFF;
                 }
             } else
-                widget.disabledText = "";
+                gameInterface.disabledText = "";
         }
     }
 
@@ -1189,7 +1194,7 @@ public class Widget extends SubNode {
         if (length < 8)
             length = 8;
         int scrollCurrent = (-32 + height - length) * scrollPosition / (-height + scrollMaximum);
-        Rasterizer.drawFilledRectangle(x, 16 + y + scrollCurrent, 16, length, Cache.anInt321);
+        Rasterizer.drawFilledRectangle(x, 16 + y + scrollCurrent, 16, length, MemoryCache.anInt321);
         Rasterizer.drawVerticalLine(x, 16 + y + scrollCurrent, length, HuffmanEncoding.anInt1559);
         Rasterizer.drawVerticalLine(1 + x, scrollCurrent + y + 16, length, HuffmanEncoding.anInt1559);
         Rasterizer.drawHorizontalLine(x, scrollCurrent + y + 16, 16, HuffmanEncoding.anInt1559);
@@ -1198,6 +1203,83 @@ public class Widget extends SubNode {
         Rasterizer.drawVerticalLine(x + 14, scrollCurrent + 17 + y, length - 1, Class56.anInt1318);
         Rasterizer.drawHorizontalLine(x, length + scrollCurrent + 15 + y, 16, Class56.anInt1318);
         Rasterizer.drawHorizontalLine(x + 1, 14 + y + scrollCurrent + length, 15, Class56.anInt1318);
+    }
+
+    public static boolean decodeGameInterface(int interfaceId) {
+        if (loadedInterfaces[interfaceId])
+            return true;
+        if (!MemoryCache.gameInterfaceCacheIndex.method186(123, interfaceId))
+            return false;
+        int i_4_ = MemoryCache.gameInterfaceCacheIndex.method190(interfaceId);
+        if (i_4_ == 0) {
+            loadedInterfaces[interfaceId] = true;
+            return true;
+        }
+        if (interfaces[interfaceId] == null)
+            interfaces[interfaceId] = new GameInterface[i_4_];
+        for (int i = 0; i < i_4_; i++) {
+            if (interfaces[interfaceId][i] == null) {
+                byte[] is = MemoryCache.gameInterfaceCacheIndex.getFile(i, interfaceId);
+                if (is != null) {
+                    interfaces[interfaceId][i] = new GameInterface();
+                    interfaces[interfaceId][i].id = (interfaceId << 16) + i;
+                    if (is[0] == -1)
+                        interfaces[interfaceId][i].decodeIf3(new Buffer(is));
+                    else
+                        interfaces[interfaceId][i].decodeIf1(new Buffer(is));
+                }
+            }
+        }
+        loadedInterfaces[interfaceId] = true;
+        return true;
+
+    }
+
+    public static void resetInterfaceAnimations(int interfaceId) {
+        if(decodeGameInterface(interfaceId)) {
+            GameInterface[] interfaceChildren = interfaces[interfaceId];
+            for(int i = 0; interfaceChildren.length > i; i++) {
+                GameInterface interfaceChild = interfaceChildren[i];
+                if(interfaceChild != null) {
+                    interfaceChild.remainingAnimationTime = 0;
+                    interfaceChild.animationFrame = 0;
+                }
+            }
+        }
+    }
+
+    public static void resetInterface(int interfaceId) {
+        if(interfaceId == -1 || !loadedInterfaces[interfaceId]) {
+            return;
+        }
+
+        MemoryCache.gameInterfaceCacheIndex.unloadFile(1, interfaceId);
+
+        if(interfaces[interfaceId] != null) {
+            boolean deleteFromCache = true;
+
+            for(int i = 0; interfaces[interfaceId].length > i; i++) {
+                if(interfaces[interfaceId][i] != null) {
+                    if(interfaces[interfaceId][i].type != GameInterfaceType.INVENTORY)
+                        interfaces[interfaceId][i] = null;
+                    else
+                        deleteFromCache = false;
+                }
+            }
+
+            if(deleteFromCache) {
+                interfaces[interfaceId] = null;
+            }
+
+            loadedInterfaces[interfaceId] = false;
+        }
+    }
+
+    public static void createInterfaceMemoryBuffers() {
+        interfaces = new GameInterface
+                [MemoryCache.gameInterfaceCacheIndex.getLength()][];
+        loadedInterfaces = new boolean
+                [MemoryCache.gameInterfaceCacheIndex.getLength()];
     }
 
     public void swapItems(int arg0, boolean arg1, int arg2) {
@@ -1214,7 +1296,7 @@ public class Widget extends SubNode {
 
     public void decodeIf1(Buffer buffer) {
         isIf3 = false;
-        type = WidgetType.get(buffer.getUnsignedByte());
+        type = GameInterfaceType.get(buffer.getUnsignedByte());
         actionType = buffer.getUnsignedByte();
         contentType = buffer.getUnsignedShortBE();
         originalX = currentX = buffer.getShortBE(); // originalX
@@ -1254,15 +1336,15 @@ public class Widget extends SubNode {
                 }
             }
         }
-        if (type == WidgetType.LAYER) {
+        if (type == GameInterfaceType.LAYER) {
             scrollHeight = buffer.getUnsignedShortBE();
             isHidden = buffer.getUnsignedByte() == 1;
         }
-        if (type == WidgetType.UNKNOWN) {
+        if (type == GameInterfaceType.UNKNOWN) {
             buffer.getUnsignedShortBE();
             buffer.getUnsignedByte();
         }
-        if (type == WidgetType.INVENTORY) {
+        if (type == GameInterfaceType.INVENTORY) {
             items = new int[originalHeight * originalWidth];
             itemAmounts = new int[originalHeight * originalWidth];
             itemSwapable = buffer.getUnsignedByte() == 1;
@@ -1292,33 +1374,33 @@ public class Widget extends SubNode {
                 }
             }
         }
-        if (type == WidgetType.RECTANGLE) {
+        if (type == GameInterfaceType.RECTANGLE) {
             filled = buffer.getUnsignedByte() == 1;
         }
-        if (type == WidgetType.TEXT || type == WidgetType.UNKNOWN) {
+        if (type == GameInterfaceType.TEXT || type == GameInterfaceType.UNKNOWN) {
             xTextAlignment = buffer.getUnsignedByte();
             yTextAlignment = buffer.getUnsignedByte();
             lineHeight = buffer.getUnsignedByte();
             fontId = buffer.getUnsignedShortBE();
             textShadowed = buffer.getUnsignedByte() == 1;
         }
-        if (type == WidgetType.TEXT) {
+        if (type == GameInterfaceType.TEXT) {
             disabledText = buffer.getString();
             alternateText = buffer.getString();
         }
-        if (type == WidgetType.UNKNOWN || type == WidgetType.RECTANGLE || type == WidgetType.TEXT) {
+        if (type == GameInterfaceType.UNKNOWN || type == GameInterfaceType.RECTANGLE || type == GameInterfaceType.TEXT) {
             textColor = buffer.getIntBE();
         }
-        if (type == WidgetType.RECTANGLE || type == WidgetType.TEXT) {
+        if (type == GameInterfaceType.RECTANGLE || type == GameInterfaceType.TEXT) {
             alternateTextColor = buffer.getIntBE();
             hoveredTextColor = buffer.getIntBE();
             alternateHoveredTextColor = buffer.getIntBE();
         }
-        if (type == WidgetType.GRAPHIC) {
+        if (type == GameInterfaceType.GRAPHIC) {
             spriteId = buffer.getIntBE();
             alternateSpriteId = buffer.getIntBE();
         }
-        if (type == WidgetType.MODEL) {
+        if (type == GameInterfaceType.MODEL) {
             modelType = WidgetModelType.MODEL;
             modelId = buffer.getUnsignedShortBE();
             if (modelId == 0xFFFF) {
@@ -1341,7 +1423,7 @@ public class Widget extends SubNode {
             rotationX = buffer.getUnsignedShortBE();
             rotationZ = buffer.getUnsignedShortBE();
         }
-        if (type == WidgetType.TEXT_INVENTORY) {
+        if (type == GameInterfaceType.TEXT_INVENTORY) {
             items = new int[originalWidth * originalHeight];
             itemAmounts = new int[originalWidth * originalHeight];
             xTextAlignment = buffer.getUnsignedByte();
@@ -1359,10 +1441,10 @@ public class Widget extends SubNode {
                 }
             }
         }
-        if (type == WidgetType.IF1_TOOLTIP) {
+        if (type == GameInterfaceType.IF1_TOOLTIP) {
             disabledText = buffer.getString();
         }
-        if (actionType == 2 || type == WidgetType.INVENTORY) {
+        if (actionType == 2 || type == GameInterfaceType.INVENTORY) {
             targetVerb = buffer.getString();
             spellName = buffer.getString();
             clickMask = buffer.getUnsignedShortBE();
@@ -1396,15 +1478,15 @@ public class Widget extends SubNode {
             return null;
         }
         int i_9_ = 124 % ((-15 - arg0) / 34);
-        ImageRGB class40_sub5_sub14_sub4 = (ImageRGB) Cache.aClass9_326.get((long) i);
+        ImageRGB class40_sub5_sub14_sub4 = (ImageRGB) MemoryCache.aClass9_326.get((long) i);
         if (class40_sub5_sub14_sub4 != null) {
             return class40_sub5_sub14_sub4;
         }
-        class40_sub5_sub14_sub4 = Class48.method927(0, Class40_Sub5_Sub15.aCacheIndex_2779, true, i);
+        class40_sub5_sub14_sub4 = Class48.method927(0, MemoryCache.gameImageCacheIndex, true, i);
         if (class40_sub5_sub14_sub4 == null) {
             FramemapDefinition.aBoolean2177 = true;
         } else {
-            Cache.aClass9_326.put((long) i, class40_sub5_sub14_sub4);
+            MemoryCache.aClass9_326.put((long) i, class40_sub5_sub14_sub4);
         }
         return class40_sub5_sub14_sub4;
     }
@@ -1438,18 +1520,18 @@ public class Widget extends SubNode {
         if (i == -1) {
             return null;
         }
-        ImageRGB class40_sub5_sub14_sub4 = (ImageRGB) Cache.aClass9_326.get((long) i);
+        ImageRGB class40_sub5_sub14_sub4 = (ImageRGB) MemoryCache.aClass9_326.get((long) i);
         if (arg0 != 127) {
             isIf3 = false;
         }
         if (class40_sub5_sub14_sub4 != null) {
             return class40_sub5_sub14_sub4;
         }
-        class40_sub5_sub14_sub4 = Class48.method927(0, Class40_Sub5_Sub15.aCacheIndex_2779, true, i);
+        class40_sub5_sub14_sub4 = Class48.method927(0, MemoryCache.gameImageCacheIndex, true, i);
         if (class40_sub5_sub14_sub4 == null) {
             FramemapDefinition.aBoolean2177 = true;
         } else {
-            Cache.aClass9_326.put((long) i, class40_sub5_sub14_sub4);
+            MemoryCache.aClass9_326.put((long) i, class40_sub5_sub14_sub4);
         }
         return class40_sub5_sub14_sub4;
     }
@@ -1457,12 +1539,12 @@ public class Widget extends SubNode {
     public void decodeIf3(Buffer buffer) {
         buffer.getUnsignedByte();
         isIf3 = true;
-        type = WidgetType.get(buffer.getUnsignedByte());
+        type = GameInterfaceType.get(buffer.getUnsignedByte());
         contentType = buffer.getUnsignedShortBE();
         originalX = currentX = buffer.getShortBE();
         originalY = currentY = buffer.getShortBE();
         originalWidth = buffer.getUnsignedShortBE();
-        if (type == WidgetType.LINE) {
+        if (type == GameInterfaceType.LINE) {
             originalHeight = buffer.getShortBE();
         } else {
             originalHeight = buffer.getUnsignedShortBE();
@@ -1473,17 +1555,17 @@ public class Widget extends SubNode {
         }
         isHidden = buffer.getUnsignedByte() == 1;
         aBoolean2688 = buffer.getUnsignedByte() == 1;
-        if (type == WidgetType.LAYER) {
+        if (type == GameInterfaceType.LAYER) {
             anInt2746 = buffer.getUnsignedShortBE();
             scrollPosition = buffer.getUnsignedShortBE();
         }
-        if (type == WidgetType.GRAPHIC) {
+        if (type == GameInterfaceType.GRAPHIC) {
             spriteId = buffer.getIntBE();
             anInt2751 = buffer.getUnsignedShortBE();
             aBoolean2641 = buffer.getUnsignedByte() == 1;
             opacity = buffer.getUnsignedByte();
         }
-        if (type == WidgetType.MODEL) {
+        if (type == GameInterfaceType.MODEL) {
             modelType = WidgetModelType.MODEL;
             modelId = buffer.getUnsignedShortBE();
             if (modelId == 65535) {
@@ -1501,7 +1583,7 @@ public class Widget extends SubNode {
             }
             orthogonal = buffer.getUnsignedByte() == 1;
         }
-        if (type == WidgetType.TEXT) {
+        if (type == GameInterfaceType.TEXT) {
             fontId = buffer.getUnsignedShortBE();
             disabledText = buffer.getString();
             lineHeight = buffer.getUnsignedByte();
@@ -1510,12 +1592,12 @@ public class Widget extends SubNode {
             textShadowed = buffer.getUnsignedByte() == 1;
             textColor = buffer.getIntBE();
         }
-        if (type == WidgetType.RECTANGLE) {
+        if (type == GameInterfaceType.RECTANGLE) {
             textColor = buffer.getIntBE();
             filled = buffer.getUnsignedByte() == 1;
             opacity = buffer.getUnsignedByte();
         }
-        if (type == WidgetType.LINE) {
+        if (type == GameInterfaceType.LINE) {
             buffer.getUnsignedByte();
             textColor = buffer.getIntBE();
         }
@@ -1575,7 +1657,7 @@ public class Widget extends SubNode {
         Model class40_sub5_sub17_sub5 = (Model) WallDecoration.aClass9_1264.get((long) ((modelType.ordinal() << 16) + i_11_));
         if (class40_sub5_sub17_sub5 == null) {
             if (modelType == WidgetModelType.MODEL) {
-                class40_sub5_sub17_sub5 = Model.getModel(Cache.aCacheIndex_329, i_11_, 0);
+                class40_sub5_sub17_sub5 = Model.getModel(MemoryCache.modelCacheIndex, i_11_, 0);
                 if (class40_sub5_sub17_sub5 == null) {
                     FramemapDefinition.aBoolean2177 = true;
                     return null;
@@ -1638,7 +1720,7 @@ public class Widget extends SubNode {
         if (class40_sub5_sub14_sub1 != null) {
             return class40_sub5_sub14_sub1;
         }
-        class40_sub5_sub14_sub1 = TypeFace.getFont(Class40_Sub5_Sub15.aCacheIndex_2779, 0, fontId);
+        class40_sub5_sub14_sub1 = TypeFace.getFont(MemoryCache.gameImageCacheIndex, 0, fontId);
         if (class40_sub5_sub14_sub1 == null) {
             FramemapDefinition.aBoolean2177 = true;
         } else {

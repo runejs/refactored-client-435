@@ -1,6 +1,6 @@
 package com.jagex.runescape.cache.media.Widget;
 
-public enum WidgetType {
+public enum GameInterfaceType {
     LAYER,
     UNKNOWN,
     INVENTORY,
@@ -11,7 +11,7 @@ public enum WidgetType {
     TEXT_INVENTORY,
     IF1_TOOLTIP,
     LINE;
-    public static WidgetType get(int ordinal) {
-        return WidgetType.values()[ordinal];
+    public static GameInterfaceType get(int ordinal) {
+        return GameInterfaceType.values()[ordinal];
     }
 }
