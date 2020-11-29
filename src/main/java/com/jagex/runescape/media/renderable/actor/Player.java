@@ -3,6 +3,7 @@ package com.jagex.runescape.media.renderable.actor;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
@@ -12,9 +13,11 @@ import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.net.IncomingPackets;
+import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -363,6 +366,59 @@ public class Player extends Actor {
         class1.chars = is;
         class1.length = is.length;
         return class1;
+    }
+
+    public static void processPlayerMenuOptions(Player player, int x, int y, int index) {
+        if (localPlayer != player && ActorDefinition.menuActionRow < 400) {
+            String rsString;
+            if (player.skillLevel == 0)
+                rsString = player.playerName + SceneTile.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.aClass1_569 + English.prefixLevel + player.combatLevel + Native.aClass1_1199;
+            else
+                rsString = player.playerName + Native.aClass1_569 + English.prefixSkill + player.skillLevel + Native.aClass1_1199;
+            if (Class8.itemSelected == 1) {
+                OverlayDefinition.addActionRow(English.use, index, x, y, 22, Native.aClass1_3295 + Native.aClass1_3068 + rsString);
+            } else if (Main.widgetSelected == 1) {
+                if ((ItemDefinition.selectedMask & 0x8) == 8) {
+                    OverlayDefinition.addActionRow(Native.aClass1_1918, index, x, y, 1, Native.aClass1_611 + Native.aClass1_3068 + rsString);
+                }
+            } else {
+                for (int i = 4; i >= 0; i--) {
+                    if (Main.playerActions[i] != null) {
+                        int i_16_ = 0;
+                        int i_17_ = 0;
+                        if (Main.playerActions[i].equalsIgnoreCase(English.attack)) {
+                            if (localPlayer.combatLevel < player.combatLevel)
+                                i_17_ = 2000;
+                            if (localPlayer.teamId != 0 && player.teamId != 0) {
+                                if (localPlayer.teamId != player.teamId)
+                                    i_17_ = 0;
+                                else
+                                    i_17_ = 2000;
+                            }
+                        } else if (Class13.playerArray[i])
+                            i_17_ = 2000;
+                        if (i == 0)
+                            i_16_ = 10 + i_17_;
+                        if (i == 1)
+                            i_16_ = 39 + i_17_;
+                        if (i == 2)
+                            i_16_ = i_17_ + 44;
+                        if (i == 3)
+                            i_16_ = i_17_ + 14;
+                        if (i == 4)
+                            i_16_ = 41 + i_17_;
+                        OverlayDefinition.addActionRow(Main.playerActions[i], index, x, y, i_16_, Native.aClass1_620 + rsString);
+                    }
+                }
+            }
+            for (int i = 0; i < ActorDefinition.menuActionRow; i++) {
+                if (MovedStatics.menuActionTypes[i] == 7) {
+                    Landscape.menuActionTexts[i] = English.walkHere + Native.aClass1_1117 + Native.aClass1_620 + rsString;
+                    break;
+                }
+            }
+        }
+
     }
 
     public Model getRotatedModel() {
