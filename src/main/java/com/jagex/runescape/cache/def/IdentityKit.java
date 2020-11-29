@@ -9,7 +9,6 @@ import com.jagex.runescape.media.renderable.Model;
 public class IdentityKit extends SubNode {
     public static HuffmanEncoding aHuffmanEncoding_2590;
     public static int anInt2591 = 0;
-    public static boolean drawTabIcons = false;
     public static int anInt2598 = 0;
     public static int[] sound = new int[50];
     public static LinkedList aLinkedList_2604 = new LinkedList();

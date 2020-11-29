@@ -303,7 +303,7 @@ public class Class27 {
                     if(gameInterface.alternateRhs[0] != GroundItemTile.varbitmasks[i_16_]) {
                         GroundItemTile.varbitmasks[i_16_] = gameInterface.alternateRhs[0];
                         Class22.method309(-1, i_16_);
-                        ISAAC.redrawTabArea = true;
+                        GameInterface.redrawTabArea = true;
                     }
                 }
             }
@@ -389,7 +389,7 @@ public class Class27 {
                 if(Native.aClass1_3295 == null) {
                     Native.aClass1_3295 = "null";
                 }
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
             } else {
                 if(action == 15) {
                     boolean bool = MovedStatics.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
@@ -415,7 +415,7 @@ public class Class27 {
                         int i_17_ = gameInterface.clientScripts[0][1];
                         GroundItemTile.varbitmasks[i_17_] = -GroundItemTile.varbitmasks[i_17_] + 1;
                         Class22.method309(-1, i_17_);
-                        ISAAC.redrawTabArea = true;
+                        GameInterface.redrawTabArea = true;
                     }
                 }
                 if(action == 48) {
@@ -548,7 +548,7 @@ public class Class27 {
                 }
                 if(action == 33) {
                     GameInterface gameInterface = GameInterface.forId(i_10_);
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                     Main.widgetSelected = 1;
                     Native.aClass1_1918 = gameInterface.targetVerb;
                     ItemDefinition.selectedMask = gameInterface.clickMask;
@@ -556,9 +556,9 @@ public class Class27 {
                     Class60.anInt1417 = i_10_;
                     Native.aClass1_611 = Native.aClass1_1162 + gameInterface.spellName + Native.aClass1_620;
                     if(ItemDefinition.selectedMask == 16) {
-                        IdentityKit.drawTabIcons = true;
+                        GameInterface.drawTabIcons = true;
                         Class5.currentTabId = 3;
-                        ISAAC.redrawTabArea = true;
+                        GameInterface.redrawTabArea = true;
                     }
                 } else {
                     if(action == 1007) {
@@ -940,10 +940,10 @@ public class Class27 {
                     }
                     if(Class8.itemSelected != 0) {
                         Class8.itemSelected = 0;
-                        ISAAC.redrawTabArea = true;
+                        GameInterface.redrawTabArea = true;
                     }
                     if(Main.widgetSelected != 0) {
-                        ISAAC.redrawTabArea = true;
+                        GameInterface.redrawTabArea = true;
                         Main.widgetSelected = 0;
                     }
                 }
@@ -1063,9 +1063,9 @@ public class Class27 {
         if(Class40_Sub5_Sub11.clearScreen) {
             Class40_Sub5_Sub11.clearScreen = false;
             ItemDefinition.drawWelcomeScreenGraphics();
-            IdentityKit.drawTabIcons = true;
+            GameInterface.drawTabIcons = true;
             ChatBox.redrawChatbox = true;
-            ISAAC.redrawTabArea = true;
+            GameInterface.redrawTabArea = true;
             MemoryCache.redrawChatbox = true;
             drawCount++;
         } else if(drawCount != 0) {
@@ -1109,21 +1109,21 @@ public class Class27 {
         if(ScreenController.frameMode == ScreenMode.FIXED) {
 
             if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
             }
             if(GameInterface.tabAreaInterfaceId != -1) {
                 boolean bool = Renderable.handleSequences(GameInterface.tabAreaInterfaceId);
                 if(bool) {
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                 }
             }
             method353((byte) -114);
 
             if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == -3) {
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
             }
             if(SceneTile.activeInterfaceType == 2) {
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
             }
             Class43.drawTabArea(-29);
 
@@ -1155,15 +1155,15 @@ public class Class27 {
 
 
             if(Class51.anInt1205 != -1) {
-                IdentityKit.drawTabIcons = true;
+                GameInterface.drawTabIcons = true;
             }
-            if(IdentityKit.drawTabIcons) {
+            if(GameInterface.drawTabIcons) {
                 if(Class51.anInt1205 != -1 && Class51.anInt1205 == Class5.currentTabId) {
                     Class51.anInt1205 = -1;
                     SceneCluster.packetBuffer.putPacket(44);
                     SceneCluster.packetBuffer.putByte(Class5.currentTabId);
                 }
-                IdentityKit.drawTabIcons = false;
+                GameInterface.drawTabIcons = false;
                 Class40_Sub3.aBoolean2026 = true;
                 Class40_Sub2.method527(Class5.currentTabId, 4, Class40_Sub5_Sub11.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, Node.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
             }
@@ -1195,15 +1195,15 @@ public class Class27 {
 
 
             if(Class51.anInt1205 != -1) {
-                IdentityKit.drawTabIcons = true;
+                GameInterface.drawTabIcons = true;
             }
-            if(IdentityKit.drawTabIcons) {
+            if(GameInterface.drawTabIcons) {
                 if(Class51.anInt1205 != -1 && Class51.anInt1205 == Class5.currentTabId) {
                     Class51.anInt1205 = -1;
                     SceneCluster.packetBuffer.putPacket(44);
                     SceneCluster.packetBuffer.putByte(Class5.currentTabId);
                 }
-                IdentityKit.drawTabIcons = false;
+                GameInterface.drawTabIcons = false;
                 Class40_Sub3.aBoolean2026 = true;
                 Class40_Sub2.method527(Class5.currentTabId, 4, Class40_Sub5_Sub11.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, Node.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
             }

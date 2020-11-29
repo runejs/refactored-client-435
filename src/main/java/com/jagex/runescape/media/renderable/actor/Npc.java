@@ -207,7 +207,7 @@ public class Npc extends Actor {
                             RSRuntimeException.anInt1651++;
                             if(RSRuntimeException.anInt1651 >= 15) {
                                 if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 2)
-                                    ISAAC.redrawTabArea = true;
+                                    GameInterface.redrawTabArea = true;
                                 if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 3)
                                     ChatBox.redrawChatbox = true;
                                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 0;
@@ -222,7 +222,7 @@ public class Npc extends Actor {
                                 if(SceneTile.activeInterfaceType == 3)
                                     ChatBox.redrawChatbox = true;
                                 if(SceneTile.activeInterfaceType == 2)
-                                    ISAAC.redrawTabArea = true;
+                                    GameInterface.redrawTabArea = true;
                                 SceneTile.activeInterfaceType = 0;
                                 if(Class40_Sub5_Sub15.lastItemDragged && Buffer.lastItemDragTime >= 5) {
                                     RSRuntimeException.lastActiveInvInterface = -1;
@@ -327,7 +327,7 @@ public class Npc extends Actor {
                                     if(Class67.anInt1586 != -1)
                                         ChatBox.redrawChatbox = true;
                                     if(FloorDecoration.anInt614 != -1)
-                                        ISAAC.redrawTabArea = true;
+                                        GameInterface.redrawTabArea = true;
                                 }
                             }
                         } else if(WallDecoration.anInt1257 > 0)

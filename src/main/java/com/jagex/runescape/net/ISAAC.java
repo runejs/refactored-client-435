@@ -25,7 +25,6 @@ public class ISAAC {
      */
     private static final int GOLDEN_RATIO = 0x9e3779b9;
 
-    public static boolean redrawTabArea = false;
     public static int anInt509 = 0;
     public static MemoryCache cachedActorDefinitions = new MemoryCache(64);
     public static boolean aBoolean512;

@@ -427,7 +427,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
         int offsetY =  (-yOffSet) +Main.menuOffsetY;
         int colour = 0x5d5447;
         ChatBox.redrawChatbox = true;
-        ISAAC.redrawTabArea = true;
+        GameInterface.redrawTabArea = true;
         Rasterizer.drawFilledRectangleAlpha(offsetX, offsetY, width, height, colour, 120);
         Rasterizer.drawFilledRectangle(1 + offsetX, 1 + offsetY, -2 + width, 16, 0);
         Rasterizer.drawUnfilledRectangle(offsetX + 1, 18 + offsetY, -2 + width, -19 + height, 0);

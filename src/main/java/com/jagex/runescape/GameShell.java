@@ -158,7 +158,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             for (/**/; Item.friendsCount > i; i++) {
                 if (Class59.friends[i] == arg0) {
                     Item.friendsCount--;
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                     for (int i_13_ = i; i_13_ < Item.friendsCount; i_13_++) {
                         Class40_Sub11.friendUsernames[i_13_] = Class40_Sub11.friendUsernames[1 + i_13_];
                         Class40_Sub7.friendWorlds[i_13_] = Class40_Sub7.friendWorlds[i_13_ + 1];

@@ -14,7 +14,6 @@ import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.SceneTile;
@@ -249,7 +248,7 @@ public class Class5 {
         if(arg2 >= arg6 && arg2 < arg6 + 16 && arg1 >= arg8 && 16 + arg8 > arg1) {
             arg5.scrollPosition -= Npc.anInt3294 * 4;
             if(arg7 == 1)
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
             if(arg7 == 2 || arg7 == 3)
                 ChatBox.redrawChatbox = true;
         } else if(arg6 > arg2 || arg6 + 16 <= arg2 || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
@@ -259,7 +258,7 @@ public class Class5 {
                 if(arg7 == 2 || arg7 == 3)
                     ChatBox.redrawChatbox = true;
                 if(arg7 == 1)
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                 if(i < 8)
                     i = 8;
                 int i_17_ = -i + arg0 + -32;
@@ -271,7 +270,7 @@ public class Class5 {
             if(arg7 == 2 || arg7 == 3)
                 ChatBox.redrawChatbox = true;
             if(arg7 == 1)
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
         }
     }
 }

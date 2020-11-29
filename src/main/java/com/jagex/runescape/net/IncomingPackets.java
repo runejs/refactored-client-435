@@ -130,7 +130,7 @@ public class IncomingPackets {
                     if(l == Class59.friends[i_2_]) {
                         if(i_1_ != Class40_Sub7.friendWorlds[i_2_]) {
                             Class40_Sub7.friendWorlds[i_2_] = i_1_;
-                            ISAAC.redrawTabArea = true;
+                            GameInterface.redrawTabArea = true;
                             if(i_1_ > 0)
                                 Class44.addChatMessage("", string + English.suffixHasLoggedIn, 5);
                             if(i_1_ == 0)
@@ -146,7 +146,7 @@ public class IncomingPackets {
                     Class40_Sub11.friendUsernames[Item.friendsCount] = string;
                     Class40_Sub7.friendWorlds[Item.friendsCount] = i_1_;
                     Item.friendsCount++;
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                 }
                 while(!bool) {
                     bool = true;
@@ -162,7 +162,7 @@ public class IncomingPackets {
                             long l_6_ = Class59.friends[i_3_];
                             Class59.friends[i_3_] = Class59.friends[i_3_ + 1];
                             Class59.friends[1 + i_3_] = l_6_;
-                            ISAAC.redrawTabArea = true;
+                            GameInterface.redrawTabArea = true;
                         }
                     }
                 }
@@ -193,7 +193,7 @@ public class IncomingPackets {
                 if(GroundItemTile.varbitmasks[i_9_] != i_8_) {
                     GroundItemTile.varbitmasks[i_9_] = i_8_;
                     Class22.method309(-1, i_9_);
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                     if(ChatBox.dialogueId != -1)
                         ChatBox.redrawChatbox = true;
                 }
@@ -209,7 +209,7 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == UPDATE_ALL_WIDGET_ITEMS) {
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
                 final int packed = incomingPacketBuffer.getIntBE();
                 final GameInterface gameInterface = GameInterface.forId(packed);
 
@@ -473,8 +473,8 @@ public class IncomingPackets {
                     ChatBox.redrawChatbox = true;
                     ChatBox.inputType = 0;
                 }
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
                 incomingPacket = -1;
                 return true;
             }
@@ -514,9 +514,9 @@ public class IncomingPackets {
                 GameInterface.resetInterfaceAnimations(i_55_);
                 if(GameInterface.tabAreaInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
-                    IdentityKit.drawTabIcons = true;
+                    GameInterface.drawTabIcons = true;
                     GameInterface.tabAreaInterfaceId = -1;
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                 }
                 if(GameInterface.chatboxInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
@@ -547,7 +547,7 @@ public class IncomingPackets {
             }
             if(incomingPacket == UPDATE_RUN_ENERGY) {
                 if(Class5.currentTabId == 12)
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                 Class40_Sub11.runEnergy = incomingPacketBuffer.getUnsignedByte();
                 incomingPacket = -1;
                 return true;
@@ -614,8 +614,8 @@ public class IncomingPackets {
             if(incomingPacket == CLOSE_ALL_WIDGETS) {
                 if(GameInterface.tabAreaInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
-                    ISAAC.redrawTabArea = true;
-                    IdentityKit.drawTabIcons = true;
+                    GameInterface.redrawTabArea = true;
+                    GameInterface.drawTabIcons = true;
                     GameInterface.tabAreaInterfaceId = -1;
                 }
                 if(GameInterface.chatboxInterfaceId != -1) {
@@ -649,9 +649,9 @@ public class IncomingPackets {
                 GameInterface.resetInterfaceAnimations(widgetId);
                 if(GameInterface.tabAreaInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
-                    IdentityKit.drawTabIcons = true;
+                    GameInterface.drawTabIcons = true;
                     GameInterface.tabAreaInterfaceId = -1;
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                 }
                 if(GameInterface.fullscreenInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
@@ -706,7 +706,7 @@ public class IncomingPackets {
                         Class5.currentTabId = 3;
                     else
                         Class5.currentTabId = 1;
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                 }
                 incomingPacket = -1;
                 return true;
@@ -749,7 +749,7 @@ public class IncomingPackets {
                     Class22.method309(-1, configId);
                     if(ChatBox.dialogueId != -1)
                         ChatBox.redrawChatbox = true;
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                 }
                 incomingPacket = -1;
                 return true;
@@ -792,14 +792,14 @@ public class IncomingPackets {
                     GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
                     GameInterface.tabAreaInterfaceId = i_68_;
                 }
-                IdentityKit.drawTabIcons = true;
+                GameInterface.drawTabIcons = true;
                 if(ChatBox.inputType != 0) {
                     ChatBox.redrawChatbox = true;
                     ChatBox.inputType = 0;
                 }
                 CacheIndex.anInt1819 = -1;
                 incomingPacket = -1;
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
                 return true;
             }
             if(incomingPacket == 234) {
@@ -841,14 +841,14 @@ public class IncomingPackets {
             }
             if(incomingPacket == 6) {
                 Class5.currentTabId = incomingPacketBuffer.getUnsignedByte();
-                IdentityKit.drawTabIcons = true;
-                ISAAC.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
                 incomingPacket = -1;
                 return true;
             }
             if(incomingPacket == UPDATE_CARRY_WEIGHT) { // update carry weight
                 if(Class5.currentTabId == 12)
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                 GenericTile.anInt1222 = incomingPacketBuffer.getShortBE();
                 incomingPacket = -1;
                 return true;
@@ -869,7 +869,7 @@ public class IncomingPackets {
                 }
                 if(ChatBox.dialogueId != -1)
                     ChatBox.redrawChatbox = true;
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
                 incomingPacket = -1;
                 return true;
             }
@@ -943,13 +943,13 @@ public class IncomingPackets {
                 GameInterface gameInterface = GameInterface.forId(widgetData);
                 gameInterface.disabledText = class1;
                 if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] == widgetData >> 16)
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                 incomingPacket = -1;
                 return true;
             }
             if(incomingPacket == 70) {
                 Class12.friendListStatus = incomingPacketBuffer.getUnsignedByte();
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
                 incomingPacket = -1;
                 return true;
             }
@@ -1035,13 +1035,13 @@ public class IncomingPackets {
                     GameInterface.resetInterface(Class40_Sub5_Sub11.tabWidgetIds[i_97_]);
                     Class40_Sub5_Sub11.tabWidgetIds[i_97_] = i_96_;
                 }
-                IdentityKit.drawTabIcons = true;
+                GameInterface.drawTabIcons = true;
                 incomingPacket = -1;
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
                 return true;
             }
             if(incomingPacket == UPDATE_SKILL) {
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
                 int i_98_ = incomingPacketBuffer.getUnsignedByte();
                 int i_99_ = incomingPacketBuffer.getUnsignedByte();
                 int i_100_ = incomingPacketBuffer.getIntLE();
@@ -1070,7 +1070,7 @@ public class IncomingPackets {
                     if(Buffer.anIntArray1984[i_105_] != GroundItemTile.varbitmasks[i_105_]) {
                         GroundItemTile.varbitmasks[i_105_] = Buffer.anIntArray1984[i_105_];
                         Class22.method309(-1, i_105_);
-                        ISAAC.redrawTabArea = true;
+                        GameInterface.redrawTabArea = true;
                     }
                 }
                 incomingPacket = -1;
@@ -1088,7 +1088,7 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == UPDATE_SPECIFIC_WIDGET_ITEMS) {
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
                 int widgetData = incomingPacketBuffer.getIntBE();
                 GameInterface gameInterface = GameInterface.forId(widgetData);
                 while(incomingPacketSize > incomingPacketBuffer.currentPosition) {

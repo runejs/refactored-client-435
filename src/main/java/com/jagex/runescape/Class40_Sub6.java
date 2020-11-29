@@ -6,7 +6,6 @@ import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.Widget.GameInterface;
 import com.jagex.runescape.collection.Node;
-import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.WallDecoration;
 
@@ -82,7 +81,7 @@ public class Class40_Sub6 extends Node {
         if(arg1 != 0) {
             for(int i = arg0; i < Class42.anInt1008; i++) {
                 if(WallDecoration.ignores[i] == arg1) {
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                     Class42.anInt1008--;
                     for(int i_16_ = i; Class42.anInt1008 > i_16_; i_16_++)
                         WallDecoration.ignores[i_16_] = WallDecoration.ignores[1 + i_16_];

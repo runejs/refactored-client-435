@@ -3,12 +3,12 @@ package com.jagex.runescape.cache.def;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.cache.media.Widget.GameInterface;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.TextUtils;
@@ -57,7 +57,7 @@ public class UnderlayDefinition extends SubNode {
                     Class59.friends[Item.friendsCount] = name;
                     Class40_Sub7.friendWorlds[Item.friendsCount] = 0;
                     Item.friendsCount++;
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                     SceneCluster.packetBuffer.putPacket(114);
                     SceneCluster.packetBuffer.putLongBE(name);
                 }

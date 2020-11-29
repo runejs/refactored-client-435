@@ -39,6 +39,8 @@ public class GameInterface extends SubNode {
     public static int fullscreenInterfaceId = -1;
     public static int fullscreenSiblingInterfaceId = -1;
     public static boolean[] loadedInterfaces;
+    public static boolean drawTabIcons = false;
+    public static boolean redrawTabArea = false;
 
     public boolean isIf3 = false;
     public int contentType;

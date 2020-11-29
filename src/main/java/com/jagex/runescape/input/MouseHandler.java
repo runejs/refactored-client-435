@@ -16,7 +16,6 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
-import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.SceneTile;
@@ -68,7 +67,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 }
                 if(-10 + InteractiveObject.menuOffsetX > x || 10 + VertexNormal.menuWidth + InteractiveObject.menuOffsetX < x || y < Main.menuOffsetY + -10 || y > Main.menuOffsetY + CollisionMap.menuHeight + 10) {
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
-                        ISAAC.redrawTabArea = true;
+                        GameInterface.redrawTabArea = true;
                     Class4.menuOpen = false;
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
                         ChatBox.redrawChatbox = true;
@@ -102,7 +101,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 if(id != -1)
                     Class27.processMenuActions(109, id);
                 if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                 Class4.menuOpen = false;
                 if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
                     ChatBox.redrawChatbox = true;
@@ -304,7 +303,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
                     GameInterface.interfaces[tabInterfaceID][childID].scrollPosition += rotation * 30;
                     //				client.tabAreaAltered = true;
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                     return true;
                 }
             }

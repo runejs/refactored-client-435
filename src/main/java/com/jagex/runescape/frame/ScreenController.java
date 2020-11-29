@@ -16,7 +16,6 @@ import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
-import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
@@ -386,74 +385,74 @@ public class ScreenController {
         }
         if(MouseHandler.clickType == 1) {
             if(x >= 0 && x <= 34 && y >= 1 && y < 37 && Class40_Sub5_Sub11.tabWidgetIds[0] != -1) {
-                IdentityKit.drawTabIcons = true;
-                ISAAC.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
                 Class5.currentTabId = 0;
             }
             if(x >= 30 && x <= 60 && y >= 0 && y < 37 && Class40_Sub5_Sub11.tabWidgetIds[1] != -1) {
                 Class5.currentTabId = 1;
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
             }
             if(x >= 58 && x <= 88 && y >= 0 && y < 37 && Class40_Sub5_Sub11.tabWidgetIds[2] != -1) {
-                IdentityKit.drawTabIcons = true;
+                GameInterface.drawTabIcons = true;
                 Class5.currentTabId = 2;
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
             }
             if(x >= 86 && x <= 130 && y >= 0 && y < 35 && Class40_Sub5_Sub11.tabWidgetIds[3] != -1) {
-                IdentityKit.drawTabIcons = true;
-                ISAAC.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
                 Class5.currentTabId = 3;
             }
             if(x >= 127 && x <= 157 && y >= 0 && y < 37 && Class40_Sub5_Sub11.tabWidgetIds[4] != -1) {
                 Class5.currentTabId = 4;
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
             }
             if(x >= 155 && x <= 185 && y >= 0 && y < 37 && Class40_Sub5_Sub11.tabWidgetIds[5] != -1) {
-                IdentityKit.drawTabIcons = true;
-                ISAAC.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
                 Class5.currentTabId = 5;
             }
             if(x >= 183 && x <= 217 && y >= 1 && y < 37 && Class40_Sub5_Sub11.tabWidgetIds[6] != -1) {
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
                 Class5.currentTabId = 6;
-                IdentityKit.drawTabIcons = true;
+                GameInterface.drawTabIcons = true;
             }
             if(x >= 1 && x <= 35 && y >= 298 && y < 334 && Class40_Sub5_Sub11.tabWidgetIds[7] != -1) {
                 Class5.currentTabId = 7;
-                IdentityKit.drawTabIcons = true;
-                ISAAC.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
             }
             if(x >= 33 && x <= 63 && y >= 298 && y < 335 && Class40_Sub5_Sub11.tabWidgetIds[8] != -1) {
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
                 Class5.currentTabId = 8;
             }
             if(x >= 60 && x <= 90 && y >= 298 && y < 335 && Class40_Sub5_Sub11.tabWidgetIds[9] != -1) {
-                IdentityKit.drawTabIcons = true;
+                GameInterface.drawTabIcons = true;
                 Class5.currentTabId = 9;
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
             }
             if(x >= 88 && x <= 132 && y >= 299 && y < 334 && Class40_Sub5_Sub11.tabWidgetIds[10] != -1) {
                 Class5.currentTabId = 10;
-                IdentityKit.drawTabIcons = true;
-                ISAAC.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
             }
             if(x >= 130 && x <= 160 && y >= 298 && y < 335 && Class40_Sub5_Sub11.tabWidgetIds[11] != -1) {
                 Class5.currentTabId = 11;
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
             }
             if(x >= 157 && x <= 187 && y >= 298 && y < 335 && Class40_Sub5_Sub11.tabWidgetIds[12] != -1) {
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
                 Class5.currentTabId = 12;
             }
             if(x >= 185 && x <= 219 && y >= 298 && y < 334 && Class40_Sub5_Sub11.tabWidgetIds[13] != -1) {
                 Class5.currentTabId = 13;
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
             }
         }
     }

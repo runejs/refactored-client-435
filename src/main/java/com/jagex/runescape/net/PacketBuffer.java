@@ -49,8 +49,8 @@ public class PacketBuffer extends Buffer {
         if(GameInterface.tabAreaInterfaceId != -1) {
             GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
             CacheIndex.anInt1819 = -1;
-            IdentityKit.drawTabIcons = true;
-            ISAAC.redrawTabArea = true;
+            GameInterface.drawTabIcons = true;
+            GameInterface.redrawTabArea = true;
             GameInterface.tabAreaInterfaceId = -1;
         }
         if(GameInterface.chatboxInterfaceId != -1) {

@@ -42,11 +42,11 @@ public class Class43 {
         if(GameInterface.tabAreaInterfaceId != -1) {
             boolean bool = Class40_Sub5_Sub6.drawInterface(0, GameInterface.tabAreaInterfaceId, 261, (byte) -5, 0, 1, 190);
             if(!bool)
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
         } else if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] != -1) {
             boolean bool = Class40_Sub5_Sub6.drawInterface(0, Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId], 261, (byte) -5, 0, 1, 190);
             if(!bool)
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
         }
         if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
             if(Class34.anInt848 == 1)
@@ -91,13 +91,13 @@ public class Class43 {
                     ScreenController.handleTabClick(Class13.mouseX ,Landscape.mouseY);
                 }
                 if(OverlayDefinition.anInt2328 != CollisionMap.anInt163) {
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                     CollisionMap.anInt163 = OverlayDefinition.anInt2328;
                 }
                 OverlayDefinition.anInt2328 = -1;
                 if(Item.anInt3065 != FloorDecoration.anInt614) {
                     FloorDecoration.anInt614 = Item.anInt3065;
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                 }
                 Item.anInt3065 = -1;
                 // right click chatbox
