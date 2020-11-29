@@ -2,7 +2,6 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.def.ClientScript;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -142,7 +141,7 @@ public class Class64 implements Runnable {
                         for (int i_11_ = 0; i_11_ < Player.localPlayerCount; i_11_++) {
                             Player player = Player.trackedPlayers[Player.trackedPlayerIndices[i_11_]];
                             if (player != null && npc.worldX == player.worldX && player.worldY == npc.worldY)
-                                ClientScript.processPlayerMenuOptions(player, x, y, Player.trackedPlayerIndices[i_11_]);
+                                Player.processPlayerMenuOptions(player, x, y, Player.trackedPlayerIndices[i_11_]);
                         }
                     }
                     HuffmanEncoding.processNpcMenuOptions(npc.actorDefinition, x, y, index);
@@ -158,10 +157,10 @@ public class Class64 implements Runnable {
                         for (int i_13_ = 0; i_13_ < Player.localPlayerCount; i_13_++) {
                             Player player = Player.trackedPlayers[Player.trackedPlayerIndices[i_13_]];
                             if (player != null && player != player1 && player1.worldX == player.worldX && player1.worldY == player.worldY)
-                                ClientScript.processPlayerMenuOptions(player, x, y, Player.trackedPlayerIndices[i_13_]);
+                                Player.processPlayerMenuOptions(player, x, y, Player.trackedPlayerIndices[i_13_]);
                         }
                     }
-                    ClientScript.processPlayerMenuOptions(player1, x, y, index);
+                    Player.processPlayerMenuOptions(player1, x, y, index);
                 }
                 if (type == 3) {
                     LinkedList itemList = Wall.groundItems[Player.worldLevel][x][y];
