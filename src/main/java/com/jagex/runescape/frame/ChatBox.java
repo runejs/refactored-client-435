@@ -4,7 +4,7 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
@@ -21,7 +21,6 @@ public class ChatBox {
     public static int itemSearchScroll = 0;
     private static String[] itemSearchResultNames = new String[100];
     public static int inputType = 0;
-    public static int openChatboxWidgetId = -1;
     public static int dialogueId = -1;
     public static String[] chatMessages = new String[100];
     public static int[] chatTypes = new int[100];
@@ -43,14 +42,14 @@ public class ChatBox {
         CacheIndex.aBoolean260 = true;
         Class22.method305();
         if(messagePromptRaised) {
-            Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(Native.aClass1_1563, 239, 40, 0);
-            Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(chatMessage + "*", 239, 60, 128);
+            TypeFace.fontBold.drawStringLeft(Native.aClass1_1563, 239, 40, 0);
+            TypeFace.fontBold.drawStringLeft(chatMessage + "*", 239, 60, 128);
         } else if(inputType == 1) {
-            Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(English.enterAmount, 239, 40, 0);
-            Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(inputMessage + "*", 239, 60, 128);
+            TypeFace.fontBold.drawStringLeft(English.enterAmount, 239, 40, 0);
+            TypeFace.fontBold.drawStringLeft(inputMessage + "*", 239, 60, 128);
         } else if(inputType == 2) {
-            Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(English.enterName, 239, 40, 0);
-            Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(inputMessage + "*", 239, 60, 128);
+            TypeFace.fontBold.drawStringLeft(English.enterName, 239, 40, 0);
+            TypeFace.fontBold.drawStringLeft(inputMessage + "*", 239, 60, 128);
         } else if(inputType == 3) {
             if(!inputMessage.equals(lastItemSearchInput)) {
                 itemSearch(inputMessage);
@@ -65,19 +64,19 @@ public class ChatBox {
             }
             Rasterizer.resetBounds();
             if(itemSearchResultCount > 5)
-                Widget.drawScrollBar(463, 0, 77, itemSearchScroll, 7 + 14 * itemSearchResultCount, 0);
+                GameInterface.drawScrollBar(463, 0, 77, itemSearchScroll, 7 + 14 * itemSearchResultCount, 0);
             if(inputMessage.length() != 0) {
                 if(itemSearchResultCount == 0)
-                    Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(English.noMatchingObjectsFound, 239, 40, 0);
+                    TypeFace.fontBold.drawStringLeft(English.noMatchingObjectsFound, 239, 40, 0);
             } else
-                Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(English.enterObjectName, 239, 40, 255);
+                TypeFace.fontBold.drawStringLeft(English.enterObjectName, 239, 40, 255);
             font.drawStringLeft(inputMessage + "*", 239, 90, 0);
             Rasterizer.drawHorizontalLine(0, 77, 479, 0);
         } else if(Native.clickToContinueString != null) {
-            Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(Native.clickToContinueString, 239, 40, 0);
-            Class40_Sub5_Sub17_Sub6.fontBold.drawStringLeft(English.clickToContinue, 239, 60, 128);
-        } else if(openChatboxWidgetId != -1) {
-            redrawChatbox = !Class40_Sub5_Sub6.drawInterface(0, openChatboxWidgetId, 96, (byte) -5, 0, 2, 479);
+            TypeFace.fontBold.drawStringLeft(Native.clickToContinueString, 239, 40, 0);
+            TypeFace.fontBold.drawStringLeft(English.clickToContinue, 239, 60, 128);
+        } else if(GameInterface.chatboxInterfaceId != -1) {
+            redrawChatbox = !Class40_Sub5_Sub6.drawInterface(0, GameInterface.chatboxInterfaceId, 96, (byte) -5, 0, 2, 479);
         } else if(dialogueId == -1) {
             int line = 0;
             TypeFace typeFace = WallDecoration.fontNormal;
@@ -166,7 +165,7 @@ public class ChatBox {
             chatboxScrollMax = line * 14 + 7;
             if(chatboxScrollMax < 78)
                 chatboxScrollMax = 78;
-            Widget.drawScrollBar(463, 0, 77, chatboxScrollMax - chatboxScroll - 77, chatboxScrollMax, 0);
+            GameInterface.drawScrollBar(463, 0, 77, chatboxScrollMax - chatboxScroll - 77, chatboxScrollMax, 0);
             String name;
             if(Player.localPlayer != null && Player.localPlayer.playerName != null)
                 name = Player.localPlayer.playerName;

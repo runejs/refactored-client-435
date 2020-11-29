@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
@@ -132,7 +132,7 @@ public class MovedStatics {
 	    if(!Class39.method452(arg0, arg2))
 	        return false;
 	    if(arg1 > 0)
-	        RSString.aClass9_1684 = new Cache(arg1);
+	        RSString.aClass9_1684 = new MemoryCache(arg1);
 	    return true;
 	}
 

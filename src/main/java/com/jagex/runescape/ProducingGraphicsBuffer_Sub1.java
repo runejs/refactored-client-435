@@ -4,7 +4,7 @@ import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -43,13 +43,13 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
         byte[] is = AnimationSequence.aCacheIndex_2484.getFile(arg0, 12);
         animationSequence = new AnimationSequence();
         if(is != null)
-            animationSequence.method594(-1, new Buffer(is));
+            animationSequence.decodeAllAnimationSequences(new Buffer(is));
         animationSequence.method591();
         Class40_Sub5_Sub6.aClass9_2439.put((long) arg0, animationSequence);
         return animationSequence;
     }
 
-    public static boolean method1051(int arg0, Widget arg1) {
+    public static boolean method1051(int arg0, GameInterface arg1) {
         if(arg0 != 300)
             return false;
         int i = arg1.contentType;

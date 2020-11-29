@@ -94,7 +94,7 @@ public class Native {
     public static String aClass1_1563 = "";
     public static String aClass1_1077 = "%2";
     public static String aClass1_1085 = "m";
-    public static String aClass1_2084 = ",";
+    public static String comma = ",";
     public static String aClass1_2090 = "%5";
     public static String aClass1_2093 = "redstone1";
     public static String aClass1_2526 = "%dns";
@@ -108,7 +108,7 @@ public class Native {
     public static String aClass1_1113 = "mapback";
     public static String aClass1_1114 = "@lre@";
     public static String aClass1_1117 = " ";
-    public static String aClass1_3044 = "";
+    public static String emptyString = "";
     public static String aClass1_3047 = "mapfunction";
     public static String aClass1_2862 ="@cya@";
     public static String aClass1_3295 = null;

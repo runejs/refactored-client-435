@@ -1,11 +1,13 @@
 package com.jagex.runescape.frame;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.ClientScript;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -15,7 +17,6 @@ import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
-import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
@@ -151,7 +152,7 @@ public class ScreenController {
         drawFramePiece(RSCanvas.chatboxProducingGraphicsBuffer, x + 17, y + 16);
         drawFramePiece(HuffmanEncoding.aProducingGraphicsBuffer_1541, x, y + 112);
         drawFramePieceCutout(RSCanvas.tabBottom, x + 496, y + 125, 20, RSCanvas.tabBottom.height, 0, 0);
-        drawFramePiece(Class40_Sub5_Sub1.chatboxRight, x, y + 16);
+        drawFramePiece(ClientScript.chatboxRight, x, y + 16);
         drawFramePieceCutout(Class17.chatboxTop, x, y, Class17.chatboxTop.width - 37, Class17.chatboxTop.height - 3, 0, 3);
         //        System.out.println(Class40_Sub5_Sub1.chatboxRight.height + (Class17.chatboxTop.height-3) + HuffmanEncoding.aProducingGraphicsBuffer_1541.height);
 
@@ -223,14 +224,14 @@ public class ScreenController {
     public static void handleTabClick(int x, int y) {
         if(frameMode == ScreenMode.FIXED) {
 
-            if(Class29.tabAreaOverlayWidgetId != -1)
-                Class13.method243((byte) 89, 205, 743, 466, Class29.tabAreaOverlayWidgetId, 553, x, y, 1);
+            if(GameInterface.tabAreaInterfaceId != -1)
+                Class13.method243((byte) 89, 205, 743, 466, GameInterface.tabAreaInterfaceId, 553, x, y, 1);
             else if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] != -1) {
                 Class13.method243((byte) 89, 205, 743, 466, Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId], 553, x, y, 1);
             }
         } else {
-            if(Class29.tabAreaOverlayWidgetId != -1)
-                Class13.method243((byte) 89, frameHeight - 359 + 39, frameWidth - GameObject.tabPieceLeft.width, frameHeight - RSCanvas.tabBottom.height, Class29.tabAreaOverlayWidgetId, frameWidth - 234 + 22, x, y, 1);
+            if(GameInterface.tabAreaInterfaceId != -1)
+                Class13.method243((byte) 89, frameHeight - 359 + 39, frameWidth - GameObject.tabPieceLeft.width, frameHeight - RSCanvas.tabBottom.height, GameInterface.tabAreaInterfaceId, frameWidth - 234 + 22, x, y, 1);
             else if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] != -1) {
                 Class13.method243((byte) 89, frameHeight - 359 + 39, frameWidth - GameObject.tabPieceLeft.width, frameHeight - RSCanvas.tabBottom.height, Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId], frameWidth - 234 + 22, x, y, 1);
             }
@@ -240,23 +241,23 @@ public class ScreenController {
     public static void handleChatClick(int x, int y) {
         if(frameMode == ScreenMode.FIXED) {
 
-            if(ChatBox.openChatboxWidgetId == -1) {
+            if(GameInterface.chatboxInterfaceId == -1) {
                 if(ChatBox.dialogueId == -1) {
                     if(y < 434 && x < 426)
                         Class40_Sub11.method873(y  -357, 45);
                 } else
                     Class13.method243((byte) 89, 357, 496, 453, ChatBox.dialogueId, 17, x, y, 3);
             } else
-                Class13.method243((byte) 89, 357, 496, 453, ChatBox.openChatboxWidgetId, 17, x, y, 2);
+                Class13.method243((byte) 89, 357, 496, 453, GameInterface.chatboxInterfaceId, 17, x, y, 2);
         } else {
-            if(ChatBox.openChatboxWidgetId == -1) {
+            if(GameInterface.chatboxInterfaceId == -1) {
                 if(ChatBox.dialogueId == -1) {
                     if(y < frameHeight - (112) && x < 426)
                         Class40_Sub11.method873(y  -(frameHeight - 162), 45);
                 } else
                     Class13.method243((byte) 89, (frameHeight - 162), frameWidth - 496, frameHeight - 54, ChatBox.dialogueId, 17, x, y, 3);
             } else
-                Class13.method243((byte) 89, (frameHeight - 162), frameWidth - 496, frameHeight - 54, ChatBox.openChatboxWidgetId, 17, x, y, 2);
+                Class13.method243((byte) 89, (frameHeight - 162), frameWidth - 496, frameHeight - 54, GameInterface.chatboxInterfaceId, 17, x, y, 2);
         }
 
     }
@@ -333,7 +334,7 @@ public class ScreenController {
         }
         if(MouseHandler.clickType == 1) {
             if(x >= 0 && x <= 100 && y >= 0 && y <= 32) {
-                Cache.redrawChatbox = true;
+                MemoryCache.redrawChatbox = true;
                 ChatBox.publicChatMode = (1 + ChatBox.publicChatMode) % 4;
                 ChatBox.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
@@ -344,7 +345,7 @@ public class ScreenController {
             if(x >= 129 && x <= 229 && y >= 0 && y <= 32) {
                 ChatBox.redrawChatbox = true;
                 ChatBox.privateChatMode = (ChatBox.privateChatMode + 1) % 3;
-                Cache.redrawChatbox = true;
+                MemoryCache.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
                 SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
                 SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
@@ -352,7 +353,7 @@ public class ScreenController {
             }
             if(x >= 267 && x <= 367 && y >= 0 && y <= 32) {
                 ChatBox.tradeMode = (ChatBox.tradeMode + 1) % 3;
-                Cache.redrawChatbox = true;
+                MemoryCache.redrawChatbox = true;
                 ChatBox.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
                 SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
@@ -360,11 +361,11 @@ public class ScreenController {
                 SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
             }
             if(x >= 406 && x <= 506 && y >= 0 && y <= 32) {
-                if(HuffmanEncoding.openScreenWidgetId == -1) {
+                if(GameInterface.gameScreenInterfaceId == -1) {
                     PacketBuffer.method516();
                     if(Class34.anInt854 != -1) {
                         Class67.reportMutePlayer = false;
-                        HuffmanEncoding.reportAbuseInterfaceID = HuffmanEncoding.openScreenWidgetId = Class34.anInt854;
+                        HuffmanEncoding.reportAbuseInterfaceID = GameInterface.gameScreenInterfaceId = Class34.anInt854;
                         Native.reportedName = "";
                     }
                 } else
@@ -385,74 +386,74 @@ public class ScreenController {
         }
         if(MouseHandler.clickType == 1) {
             if(x >= 0 && x <= 34 && y >= 1 && y < 37 && Class40_Sub5_Sub11.tabWidgetIds[0] != -1) {
-                IdentityKit.drawTabIcons = true;
-                ISAAC.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
                 Class5.currentTabId = 0;
             }
             if(x >= 30 && x <= 60 && y >= 0 && y < 37 && Class40_Sub5_Sub11.tabWidgetIds[1] != -1) {
                 Class5.currentTabId = 1;
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
             }
             if(x >= 58 && x <= 88 && y >= 0 && y < 37 && Class40_Sub5_Sub11.tabWidgetIds[2] != -1) {
-                IdentityKit.drawTabIcons = true;
+                GameInterface.drawTabIcons = true;
                 Class5.currentTabId = 2;
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
             }
             if(x >= 86 && x <= 130 && y >= 0 && y < 35 && Class40_Sub5_Sub11.tabWidgetIds[3] != -1) {
-                IdentityKit.drawTabIcons = true;
-                ISAAC.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
                 Class5.currentTabId = 3;
             }
             if(x >= 127 && x <= 157 && y >= 0 && y < 37 && Class40_Sub5_Sub11.tabWidgetIds[4] != -1) {
                 Class5.currentTabId = 4;
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
             }
             if(x >= 155 && x <= 185 && y >= 0 && y < 37 && Class40_Sub5_Sub11.tabWidgetIds[5] != -1) {
-                IdentityKit.drawTabIcons = true;
-                ISAAC.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
                 Class5.currentTabId = 5;
             }
             if(x >= 183 && x <= 217 && y >= 1 && y < 37 && Class40_Sub5_Sub11.tabWidgetIds[6] != -1) {
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
                 Class5.currentTabId = 6;
-                IdentityKit.drawTabIcons = true;
+                GameInterface.drawTabIcons = true;
             }
             if(x >= 1 && x <= 35 && y >= 298 && y < 334 && Class40_Sub5_Sub11.tabWidgetIds[7] != -1) {
                 Class5.currentTabId = 7;
-                IdentityKit.drawTabIcons = true;
-                ISAAC.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
             }
             if(x >= 33 && x <= 63 && y >= 298 && y < 335 && Class40_Sub5_Sub11.tabWidgetIds[8] != -1) {
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
                 Class5.currentTabId = 8;
             }
             if(x >= 60 && x <= 90 && y >= 298 && y < 335 && Class40_Sub5_Sub11.tabWidgetIds[9] != -1) {
-                IdentityKit.drawTabIcons = true;
+                GameInterface.drawTabIcons = true;
                 Class5.currentTabId = 9;
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
             }
             if(x >= 88 && x <= 132 && y >= 299 && y < 334 && Class40_Sub5_Sub11.tabWidgetIds[10] != -1) {
                 Class5.currentTabId = 10;
-                IdentityKit.drawTabIcons = true;
-                ISAAC.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
             }
             if(x >= 130 && x <= 160 && y >= 298 && y < 335 && Class40_Sub5_Sub11.tabWidgetIds[11] != -1) {
                 Class5.currentTabId = 11;
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
             }
             if(x >= 157 && x <= 187 && y >= 298 && y < 335 && Class40_Sub5_Sub11.tabWidgetIds[12] != -1) {
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
                 Class5.currentTabId = 12;
             }
             if(x >= 185 && x <= 219 && y >= 298 && y < 334 && Class40_Sub5_Sub11.tabWidgetIds[13] != -1) {
                 Class5.currentTabId = 13;
-                ISAAC.redrawTabArea = true;
-                IdentityKit.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
             }
         }
     }

@@ -1,10 +1,11 @@
 package com.jagex.runescape.scene.tile;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.TypeFace;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -51,7 +52,7 @@ public class SceneTile extends Node {
 
     }
 
-    public static String method532(byte arg0, Widget arg1, String arg2) {
+    public static String method532(byte arg0, GameInterface arg1, String arg2) {
         if (arg2.contains(Native.aClass1_1041)) {
             for (; ; ) {
                 int i = arg2.indexOf(Native.aClass1_890);
@@ -89,7 +90,7 @@ public class SceneTile extends Node {
                     break;
                 String class1 = "";
                 if (Class12.aSignlinkNode_394 != null) {
-                    class1 = CacheIndex_Sub1.method204(Class12.aSignlinkNode_394.integerData);
+                    class1 = CacheIndex.method204(Class12.aSignlinkNode_394.integerData);
                     if (Class12.aSignlinkNode_394.value != null) {
                         byte[] is = ((String) Class12.aSignlinkNode_394.value).getBytes(StandardCharsets.ISO_8859_1);
                         class1 = InteractiveObject.method279(is, true, 0, is.length).toString();
@@ -155,7 +156,7 @@ public class SceneTile extends Node {
             if (ActorDefinition.menuActionRow > 2)
                 class1 = class1 + Native.aClass1_1243 + (ActorDefinition.menuActionRow + -2) + English.suffixMoreOptions;
             if (arg0 == 4)
-                Class40_Sub5_Sub17_Sub6.fontBold.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, Node.pulseCycle / 1000);
+                TypeFace.fontBold.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, Node.pulseCycle / 1000);
         }
     }
 }

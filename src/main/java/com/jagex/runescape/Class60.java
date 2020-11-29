@@ -4,6 +4,7 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
@@ -50,9 +51,9 @@ public class Class60 {
     }
 
     public static void determineMenuSize() {
-        int width = Class40_Sub5_Sub17_Sub6.fontBold.getStringWidth(English.chooseOption);
+        int width = TypeFace.fontBold.getStringWidth(English.chooseOption);
         for(int i = 0; i < ActorDefinition.menuActionRow; i++) {
-            int rowWidth = Class40_Sub5_Sub17_Sub6.fontBold.getTextDisplayedWidth(Landscape.menuActionTexts[i]);
+            int rowWidth = TypeFace.fontBold.getTextDisplayedWidth(Landscape.menuActionTexts[i]);
             if(width < rowWidth)
                 width = rowWidth;
         }

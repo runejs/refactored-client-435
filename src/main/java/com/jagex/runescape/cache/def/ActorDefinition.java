@@ -1,7 +1,6 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.frame.ScreenController;
@@ -23,12 +22,10 @@ import java.awt.*;
 
 public class ActorDefinition extends SubNode implements EntityDefinition {
 
-    public static CacheIndex_Sub1 aClass6_Sub1_2377;
     public static int[] sidebarOffsets;
     public static int menuActionRow = 0;
     public static int anInt2404 = 0;
     public static byte[] aByteArray2416 = new byte[520];
-    public static int openFullScreenWidgetId = -1;
     public static int count;
 
     public boolean isClickable = true;
@@ -77,7 +74,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
 
     public static void playAnimation(int animationId, int animationDelay, Player player) {
         if(player.playingAnimation == animationId && animationId != -1) {
-            int i = ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).anInt2483;
+            int i = ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).replyMode;
             if(i == 1) {
                 player.anInt3104 = 0;
                 player.anInt3095 = 0;
@@ -87,7 +84,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
             if(i == 2) {
                 player.anInt3095 = 0;
             }
-        } else if(animationId == -1 || player.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).anInt2494 >= ProducingGraphicsBuffer_Sub1.method1050(player.playingAnimation, 2).anInt2494) {
+        } else if(animationId == -1 || player.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).forcedPriority >= ProducingGraphicsBuffer_Sub1.method1050(player.playingAnimation, 2).forcedPriority) {
             player.anInt3094 = player.anInt3109;
             player.anInt3104 = 0;
             player.anInt3115 = 0;

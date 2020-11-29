@@ -2,7 +2,7 @@ package com.jagex.runescape.scene.tile;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.media.TypeFace;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -13,7 +13,7 @@ public class Wall {
     public static int cameraVelocityHorizontal = 0;
     public static int anInt350;
     public static int[] walkingQueueY = new int[4000];
-    public static Widget aWidget_353 = null;
+    public static GameInterface aGameInterface_353 = null;
     public static int[] anIntArray354 = new int[25];
     public static int anInt356 = 0;
     public static LinkedList[][][] groundItems = new LinkedList[4][104][104];

@@ -1,8 +1,10 @@
 package com.jagex.runescape.scene.tile;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
+import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.ClientScript;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
@@ -28,7 +30,6 @@ public class FloorDecoration {
     public static CRC32 aCRC32_590 = new CRC32();
     public static IndexedImage inventoryBackgroundImage;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
-    public static CacheIndex_Sub1 aClass6_Sub1_605;
     public static SignlinkNode aSignlinkNode_607;
     public static Class40_Sub9 aClass40_Sub9_608;
     public static int[] anIntArray612;
@@ -96,8 +97,8 @@ public class FloorDecoration {
                                 ISAAC.mapCoordinates[i_8_] = i_17_;
                                 int i_19_ = i_17_ & 0xff;
                                 int i_20_ = (0xffbe & i_17_) >> 8;
-                                LinkedList.anIntArray1071[i_8_] = Renderable.aClass6_Sub1_2857.getHash(Native.aClass1_1085+i_20_+ Native.aClass1_303+i_19_);
-                                Class13.anIntArray421[i_8_] = Renderable.aClass6_Sub1_2857.getHash(Native.aClass1_553+i_20_+ Native.aClass1_303+i_19_);
+                                LinkedList.anIntArray1071[i_8_] = MemoryCache.gameWorldMapCacheIndex.getHash(Native.aClass1_1085+i_20_+ Native.aClass1_303+i_19_);
+                                Class13.anIntArray421[i_8_] = MemoryCache.gameWorldMapCacheIndex.getHash(Native.aClass1_553+i_20_+ Native.aClass1_303+i_19_);
                                 i_8_++;
                             }
                         }
@@ -133,8 +134,8 @@ public class FloorDecoration {
                     int i_30_ = i_29_ + (i_28_ << 8);
                     if(!bool || i_29_ != 49 && i_29_ != 149 && i_29_ != 147 && i_28_ != 50 && (i_28_ != 49 || i_29_ != 47)) {
                         ISAAC.mapCoordinates[i_25_] = i_30_;
-                        LinkedList.anIntArray1071[i_25_] = Renderable.aClass6_Sub1_2857.getHash(Native.aClass1_1085 + i_28_ + Native.aClass1_303 + i_29_);
-                        Class13.anIntArray421[i_25_] = Renderable.aClass6_Sub1_2857.getHash(Native.aClass1_553 + i_28_ + Native.aClass1_303 + i_29_);
+                        LinkedList.anIntArray1071[i_25_] = MemoryCache.gameWorldMapCacheIndex.getHash(Native.aClass1_1085 + i_28_ + Native.aClass1_303 + i_29_);
+                        Class13.anIntArray421[i_25_] = MemoryCache.gameWorldMapCacheIndex.getHash(Native.aClass1_553 + i_28_ + Native.aClass1_303 + i_29_);
                         i_25_++;
                     }
                 }
@@ -180,7 +181,7 @@ public class FloorDecoration {
             Class40_Sub7.mapBackRight = null;
             InteractiveObject.tabTop = null;
             if(arg0 < -28) {
-                Class40_Sub5_Sub1.chatboxRight = null;
+                ClientScript.chatboxRight = null;
                 Class61.tabPieceUpperRight = null;
                 Class35.aClass40_Sub5_Sub14_Sub2_1744 = null;
                 HashTable.aClass40_Sub5_Sub14_Sub2_549 = null;
@@ -191,23 +192,6 @@ public class FloorDecoration {
                 Class44.chatboxBackgroundImage = null;
             }
         }
-    }
-
-    public static Object[] method345(byte arg0, Buffer arg1) {
-        int i = arg1.getUnsignedByte();
-        if(i == 0)
-            return null;
-        Object[] objects = new Object[i];
-        for(int i_31_ = 0; i_31_ < i; i_31_++) {
-            int i_32_ = arg1.getUnsignedByte();
-            if(i_32_ == 0)
-                objects[i_31_] = new Integer(arg1.getIntBE());
-            else if(i_32_ == 1)
-                objects[i_31_] = arg1.getRSString();
-        }
-        if(arg0 != 89)
-            aClass40_Sub9_608 = null;
-        return objects;
     }
 
     public static boolean method346(byte arg0) {
@@ -277,7 +261,7 @@ public class FloorDecoration {
                         if(PacketBuffer.aClass40_Sub5_Sub13_2250.key == 16711935) {
                             Class48.aClass40_Sub1_1132 = Class40_Sub5_Sub13.aClass40_Sub1_2752;
                             for(int i_40_ = 0; i_40_ < 256; i_40_++) {
-                                CacheIndex_Sub1 class6_sub1 = Class24.aClass6_Sub1Array580[i_40_];
+                                CacheIndex class6_sub1 = Class24.aClass6_Sub1Array580[i_40_];
                                 if(class6_sub1 != null) {
                                     Class48.aClass40_Sub1_1132.currentPosition = 4 * i_40_ + 5;
                                     int i_41_ = Class48.aClass40_Sub1_1132.getIntBE();
@@ -305,7 +289,7 @@ public class FloorDecoration {
                                 com.jagex.runescape.Class34.anInt813++;
                                 return false;
                             }
-                            Class40_Sub5_Sub1.anInt2278 = 0;
+                            ClientScript.anInt2278 = 0;
                             Class34.anInt813 = 0;
                             PacketBuffer.aClass40_Sub5_Sub13_2250.aClass6_Sub1_2754.method196((PacketBuffer.aClass40_Sub5_Sub13_2250.key & 0xff0000L) == 16711680L, (int) (PacketBuffer.aClass40_Sub5_Sub13_2250.key & 0xffffL), Npc.aBoolean3298, Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer);
                         }
@@ -374,7 +358,7 @@ public class FloorDecoration {
                 exception.printStackTrace();
                 /* empty */
             }
-            Class40_Sub5_Sub1.anInt2278++;
+            ClientScript.anInt2278++;
             Class57.aClass64_1345 = null;
             return false;
         }

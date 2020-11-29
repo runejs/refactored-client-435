@@ -2,13 +2,12 @@ package com.jagex.runescape.net;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.audio.Effect;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.scene.SceneCluster;
-
-import java.math.BigInteger;
 
 public class PacketBuffer extends Buffer {
     public static int anInt2231 = 1;
@@ -30,7 +29,7 @@ public class PacketBuffer extends Buffer {
         super(arg0);
     }
 
-    public static void method513(int arg0, CacheIndex_Sub1 arg1, Class56 arg2, byte arg3) {
+    public static void method513(int arg0, CacheIndex arg1, Class56 arg2, byte arg3) {
         Class40_Sub6 class40_sub6 = new Class40_Sub6();
         class40_sub6.anInt2112 = 1;
         class40_sub6.key = (long) arg0;
@@ -47,32 +46,32 @@ public class PacketBuffer extends Buffer {
 
     public static void method516() {
         SceneCluster.packetBuffer.putPacket(176);
-        if(Class29.tabAreaOverlayWidgetId != -1) {
-            Class55.method958(Class29.tabAreaOverlayWidgetId);
-            CacheIndex_Sub1.anInt1819 = -1;
-            IdentityKit.drawTabIcons = true;
-            ISAAC.redrawTabArea = true;
-            Class29.tabAreaOverlayWidgetId = -1;
+        if(GameInterface.tabAreaInterfaceId != -1) {
+            GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
+            CacheIndex.anInt1819 = -1;
+            GameInterface.drawTabIcons = true;
+            GameInterface.redrawTabArea = true;
+            GameInterface.tabAreaInterfaceId = -1;
         }
-        if(ChatBox.openChatboxWidgetId != -1) {
-            Class55.method958(ChatBox.openChatboxWidgetId);
-            CacheIndex_Sub1.anInt1819 = -1;
+        if(GameInterface.chatboxInterfaceId != -1) {
+            GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
+            CacheIndex.anInt1819 = -1;
             ChatBox.redrawChatbox = true;
-            ChatBox.openChatboxWidgetId = -1;
+            GameInterface.chatboxInterfaceId = -1;
         }
-        if(ActorDefinition.openFullScreenWidgetId != -1) {
-            Class55.method958(ActorDefinition.openFullScreenWidgetId);
-            ActorDefinition.openFullScreenWidgetId = -1;
+        if(GameInterface.fullscreenInterfaceId != -1) {
+            GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
+            GameInterface.fullscreenInterfaceId = -1;
             OverlayDefinition.method559(30);
         }
-        if(UnderlayDefinition.openSecondaryWidgetId != -1) {
-            Class55.method958(UnderlayDefinition.openSecondaryWidgetId);
-            UnderlayDefinition.openSecondaryWidgetId = -1;
+        if(GameInterface.fullscreenSiblingInterfaceId != -1) {
+            GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
+            GameInterface.fullscreenSiblingInterfaceId = -1;
         }
-        if(HuffmanEncoding.openScreenWidgetId != -1) {
-            Class55.method958(HuffmanEncoding.openScreenWidgetId);
-            HuffmanEncoding.openScreenWidgetId = -1;
-            CacheIndex_Sub1.anInt1819 = -1;
+        if(GameInterface.gameScreenInterfaceId != -1) {
+            GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
+            GameInterface.gameScreenInterfaceId = -1;
+            CacheIndex.anInt1819 = -1;
         }
     }
 

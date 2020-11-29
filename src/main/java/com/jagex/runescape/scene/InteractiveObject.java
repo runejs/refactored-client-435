@@ -3,13 +3,13 @@ package com.jagex.runescape.scene;
 import com.jagex.runescape.Class27;
 import com.jagex.runescape.ProducingGraphicsBuffer;
 import com.jagex.runescape.RSString;
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.Renderable;
 
 public class InteractiveObject {
-    public static Cache aClass9_470 = new Cache(10);
+    public static MemoryCache aClass9_470 = new MemoryCache(10);
     public static int menuOffsetX;
     public static ProducingGraphicsBuffer tabTop;
     public static int[] firstMenuOperand = new int[500];

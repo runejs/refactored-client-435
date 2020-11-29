@@ -1,7 +1,5 @@
 package com.jagex.runescape.frame.console.Commands;
 
-import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.frame.console.Command;
 import com.jagex.runescape.frame.console.Console;
 

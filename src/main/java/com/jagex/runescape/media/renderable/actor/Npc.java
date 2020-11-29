@@ -1,13 +1,10 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
@@ -207,7 +204,7 @@ public class Npc extends Actor {
                             RSRuntimeException.anInt1651++;
                             if(RSRuntimeException.anInt1651 >= 15) {
                                 if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 2)
-                                    ISAAC.redrawTabArea = true;
+                                    GameInterface.redrawTabArea = true;
                                 if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 3)
                                     ChatBox.redrawChatbox = true;
                                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 0;
@@ -222,13 +219,13 @@ public class Npc extends Actor {
                                 if(SceneTile.activeInterfaceType == 3)
                                     ChatBox.redrawChatbox = true;
                                 if(SceneTile.activeInterfaceType == 2)
-                                    ISAAC.redrawTabArea = true;
+                                    GameInterface.redrawTabArea = true;
                                 SceneTile.activeInterfaceType = 0;
                                 if(Class40_Sub5_Sub15.lastItemDragged && Buffer.lastItemDragTime >= 5) {
                                     RSRuntimeException.lastActiveInvInterface = -1;
                                     Class43.processRightClick();
                                     if(RSRuntimeException.lastActiveInvInterface == Class48.modifiedWidgetId && Class55.mouseInvInterfaceIndex != GroundItemTile.selectedInventorySlot) {
-                                        Widget childInterface = Widget.forId(Class48.modifiedWidgetId);
+                                        GameInterface childInterface = GameInterface.getChildInterface(Class48.modifiedWidgetId);
                                         int moveItemInsertionMode = 0;
                                         if(Class43.bankInsertMode == 1 && childInterface.contentType == 206)
                                             moveItemInsertionMode = 1;
@@ -278,7 +275,7 @@ public class Npc extends Actor {
                             int i_18_ = Scene.clickedTileY;
                             boolean bool = MovedStatics.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, true, 0, 0, Player.localPlayer.pathX[0], i_18_, 0);
                             if(bool) {
-                                Class40_Sub5_Sub1.crossY = RSString.clickY;
+                                ClientScript.crossY = RSString.clickY;
                                 OverlayDefinition.crossIndex = 0;
                                 Class40_Sub11.crossX = Class57.clickX;
                                 LinkedList.crossType = 1;
@@ -291,7 +288,7 @@ public class Npc extends Actor {
                             Native.clickToContinueString = null;
                         }
                         MouseHandler.processMenuClick();
-                        if(ActorDefinition.openFullScreenWidgetId == -1) {
+                        if(GameInterface.fullscreenInterfaceId == -1) {
                             ScreenController.handleMinimapMouse();
                             ScreenController.handleTabClick();
                             ScreenController.handleChatButtonsClick();
@@ -299,25 +296,25 @@ public class Npc extends Actor {
                         if(SpotAnimDefinition.mouseButtonPressed == 1 || MouseHandler.clickType == 1)
                             anInt3294++;
                         int i = 34;
-                        if(HuffmanEncoding.openScreenWidgetId != -1)
-                            Class27.method360((byte) 125, 516, i, 338, HuffmanEncoding.openScreenWidgetId, 4, 4);
-                        if(Class29.tabAreaOverlayWidgetId == -1) {
+                        if(GameInterface.gameScreenInterfaceId != -1)
+                            Class27.method360((byte) 125, 516, i, 338, GameInterface.gameScreenInterfaceId, 4, 4);
+                        if(GameInterface.tabAreaInterfaceId == -1) {
                             if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] != -1)
                                 Class27.method360((byte) 125, 743, i, 466, Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId], 205, 553);
                         } else
-                            Class27.method360((byte) 125, 743, i, 466, Class29.tabAreaOverlayWidgetId, 205, 553);
-                        if(ChatBox.openChatboxWidgetId != -1)
-                            Class27.method360((byte) 125, 496, i, 453, ChatBox.openChatboxWidgetId, 357, 17);
+                            Class27.method360((byte) 125, 743, i, 466, GameInterface.tabAreaInterfaceId, 205, 553);
+                        if(GameInterface.chatboxInterfaceId != -1)
+                            Class27.method360((byte) 125, 496, i, 453, GameInterface.chatboxInterfaceId, 357, 17);
                         else if(ChatBox.dialogueId != -1)
                             Class27.method360((byte) 125, 496, i, 453, ChatBox.dialogueId, 357, 17);
-                        if(HuffmanEncoding.openScreenWidgetId != -1)
-                            Class27.method360((byte) 125, 516, i ^ 0xffffffff, 338, HuffmanEncoding.openScreenWidgetId, 4, 4);
-                        if(Class29.tabAreaOverlayWidgetId != -1)
-                            Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, Class29.tabAreaOverlayWidgetId, 205, 553);
+                        if(GameInterface.gameScreenInterfaceId != -1)
+                            Class27.method360((byte) 125, 516, i ^ 0xffffffff, 338, GameInterface.gameScreenInterfaceId, 4, 4);
+                        if(GameInterface.tabAreaInterfaceId != -1)
+                            Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, GameInterface.tabAreaInterfaceId, 205, 553);
                         else if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] != -1)
                             Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId], 205, 553);
-                        if(ChatBox.openChatboxWidgetId != -1)
-                            Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, ChatBox.openChatboxWidgetId, 357, 17);
+                        if(GameInterface.chatboxInterfaceId != -1)
+                            Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, GameInterface.chatboxInterfaceId, 357, 17);
                         else if(ChatBox.dialogueId != -1)
                             Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, ChatBox.dialogueId, 357, 17);
                         if(Class67.anInt1586 != -1 || FloorDecoration.anInt614 != -1 || HashTable.anInt573 != -1) {
@@ -327,7 +324,7 @@ public class Npc extends Actor {
                                     if(Class67.anInt1586 != -1)
                                         ChatBox.redrawChatbox = true;
                                     if(FloorDecoration.anInt614 != -1)
-                                        ISAAC.redrawTabArea = true;
+                                        GameInterface.redrawTabArea = true;
                                 }
                             }
                         } else if(WallDecoration.anInt1257 > 0)
@@ -486,7 +483,7 @@ public class Npc extends Actor {
                     animationId = -1;
                 int animationDelay = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                 if(animationId == npc.playingAnimation && animationId != -1) {
-                    int i_10_ = ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).anInt2483;
+                    int i_10_ = ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).replyMode;
                     if(i_10_ == 1) {
                         npc.anInt3115 = 0;
                         npc.anInt3095 = 0;
@@ -495,7 +492,7 @@ public class Npc extends Actor {
                     }
                     if(i_10_ == 2)
                         npc.anInt3095 = 0;
-                } else if(animationId == -1 || npc.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).anInt2494 >= ProducingGraphicsBuffer_Sub1.method1050(npc.playingAnimation, 2).anInt2494) {
+                } else if(animationId == -1 || npc.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).forcedPriority >= ProducingGraphicsBuffer_Sub1.method1050(npc.playingAnimation, 2).forcedPriority) {
                     npc.playingAnimation = animationId;
                     npc.anInt3115 = 0;
                     npc.playingAnimationDelay = animationDelay;

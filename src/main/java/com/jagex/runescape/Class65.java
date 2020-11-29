@@ -1,7 +1,6 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
@@ -15,7 +14,6 @@ import java.util.zip.CRC32;
 
 public class Class65 {
     public static CRC32 aCRC32_1531 = new CRC32();
-    public static CacheIndex_Sub1 aClass6_Sub1_1533;
     public static int cameraVertical;
 
     static {

@@ -1,12 +1,12 @@
 package com.jagex.runescape.input;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
@@ -16,7 +16,6 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
-import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.SceneTile;
@@ -29,7 +28,7 @@ import java.awt.event.*;
 
 public class MouseHandler implements MouseListener, MouseMotionListener, FocusListener, MouseWheelListener {
     public static int anInt1450 = -1;
-    public static Cache modelCache = new Cache(50);
+    public static MemoryCache modelCache = new MemoryCache(50);
     public static int anInt1457 = -1;
     public static ImageRGB[] minimapHint = new ImageRGB[1000];
     public static int anInt1468;
@@ -68,7 +67,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 }
                 if(-10 + InteractiveObject.menuOffsetX > x || 10 + VertexNormal.menuWidth + InteractiveObject.menuOffsetX < x || y < Main.menuOffsetY + -10 || y > Main.menuOffsetY + CollisionMap.menuHeight + 10) {
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
-                        ISAAC.redrawTabArea = true;
+                        GameInterface.redrawTabArea = true;
                     Class4.menuOpen = false;
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
                         ChatBox.redrawChatbox = true;
@@ -102,7 +101,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 if(id != -1)
                     Class27.processMenuActions(109, id);
                 if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                 Class4.menuOpen = false;
                 if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
                     ChatBox.redrawChatbox = true;
@@ -113,17 +112,17 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 if(action == 53 || action == 25 || action == 55 || action == 48 || action == 24 || action == 52 || action == 6 || action == 31 || action == 43 || action == 11 || action == 19 || action == 1006) {
                     int item = InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow - 1];
                     int id = Class59.secondMenuOperand[-1 + ActorDefinition.menuActionRow];
-                    Widget widget = Widget.forId(id);
-                    if(widget.itemSwapable || widget.itemDeletesDraged) {
+                    GameInterface gameInterface = GameInterface.getChildInterface(id);
+                    if(gameInterface.itemSwapable || gameInterface.itemDeletesDraged) {
                         Renderable.anInt2869 = Class57.clickX;
                         Class40_Sub5_Sub15.lastItemDragged = false;
                         SceneTile.activeInterfaceType = 2;
                         Class48.modifiedWidgetId = id;
                         ItemDefinition.anInt2798 = RSString.clickY;
                         GroundItemTile.selectedInventorySlot = item;
-                        if(id >> 16 == HuffmanEncoding.openScreenWidgetId)
+                        if(id >> 16 == GameInterface.gameScreenInterfaceId)
                             SceneTile.activeInterfaceType = 1;
-                        if(ChatBox.openChatboxWidgetId == id >> 16)
+                        if(GameInterface.chatboxInterfaceId == id >> 16)
                             SceneTile.activeInterfaceType = 3;
                         Buffer.lastItemDragTime = 0;
                         return;
@@ -154,7 +153,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         if(GameObject.frame != null) {
             LinkedList.anInt1073 = 0;
             Class12.eventMouseX = arg0.getX();
-            Cache.eventMouseY = arg0.getY();
+            MemoryCache.eventMouseY = arg0.getY();
         }
     }
 
@@ -162,13 +161,13 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         if(GameObject.frame != null) {
             LinkedList.anInt1073 = 0;
             Class12.eventMouseX = -1;
-            Cache.eventMouseY = -1;
+            MemoryCache.eventMouseY = -1;
         }
     }
 
     public synchronized void focusLost(FocusEvent arg0) {
         if(GameObject.frame != null)
-            Cache.mouseButtonPressed = 0;
+            MemoryCache.mouseButtonPressed = 0;
     }
 
     public synchronized void mouseDragged(MouseEvent mouseEvent) {
@@ -186,7 +185,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             return;
         }
         Class12.eventMouseX = mouseX;
-        Cache.eventMouseY = mouseY;
+        MemoryCache.eventMouseY = mouseY;
     }
 
     private void mouseWheelDragged(int i, int j) {
@@ -218,10 +217,10 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             }
             if(event.isMetaDown() || event.getButton() == MouseEvent.BUTTON3) {
                 Actor.eventMouseButtonPressed = 2;
-                Cache.mouseButtonPressed = 2;
+                MemoryCache.mouseButtonPressed = 2;
             } else {
                 Actor.eventMouseButtonPressed = 1;
-                Cache.mouseButtonPressed = 1;
+                MemoryCache.mouseButtonPressed = 1;
             }
         }
         if(event.isPopupTrigger())
@@ -249,8 +248,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public boolean handleInterfaceScrolling(MouseWheelEvent event) {
         int rotation = event.getWheelRotation();
         int mouseX = Class12.eventMouseX;
-        int mouseY = Cache.eventMouseY;
-        if(ScreenController.isCoordinatesInExtendedChatArea(mouseX, mouseY) && ChatBox.openChatboxWidgetId == -1) {
+        int mouseY = MemoryCache.eventMouseY;
+        if(ScreenController.isCoordinatesInExtendedChatArea(mouseX, mouseY) && GameInterface.chatboxInterfaceId == -1) {
             if(rotation < 0) {
                 if(Class12.chatboxInterface.scrollPosition >= 1) {
 
@@ -291,40 +290,40 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     offsetX= ScreenController.frameWidth - 218;
                     offsetY = ScreenController.frameHeight - 298;
                 }
-                for(int index = 0; index < Widget.interfaces[tabInterfaceID].length; index++) {
-                    if(Widget.interfaces[tabInterfaceID][index].scrollHeight > 0) {
+                for(int index = 0; index < GameInterface.cachedInterfaces[tabInterfaceID].length; index++) {
+                    if(GameInterface.cachedInterfaces[tabInterfaceID][index].scrollHeight > 0) {
                         childID = index;
-                        positionX = Widget.interfaces[tabInterfaceID][index].currentX;
-                        positionY = Widget.interfaces[tabInterfaceID][index].currentY;
-                        width = Widget.interfaces[tabInterfaceID][index].originalWidth;
-                        height = Widget.interfaces[tabInterfaceID][index].originalHeight;
+                        positionX = GameInterface.cachedInterfaces[tabInterfaceID][index].currentX;
+                        positionY = GameInterface.cachedInterfaces[tabInterfaceID][index].currentY;
+                        width = GameInterface.cachedInterfaces[tabInterfaceID][index].originalWidth;
+                        height = GameInterface.cachedInterfaces[tabInterfaceID][index].originalHeight;
                         break;
                     }
                 }
                 if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
-                    Widget.interfaces[tabInterfaceID][childID].scrollPosition += rotation * 30;
+                    GameInterface.cachedInterfaces[tabInterfaceID][childID].scrollPosition += rotation * 30;
                     //				client.tabAreaAltered = true;
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                     return true;
                 }
             }
             /* Main interface scrolling */
-            if(HuffmanEncoding.openScreenWidgetId != -1) {
+            if(GameInterface.gameScreenInterfaceId != -1) {
                 offsetX = 4;
                 offsetY = 4;
-                int widgetid = HuffmanEncoding.openScreenWidgetId;
-                for(int index = 0; index < Widget.interfaces[widgetid].length; index++) {
-                    if(Widget.interfaces[widgetid][index].scrollHeight > 0) {
+                int widgetid = GameInterface.gameScreenInterfaceId;
+                for(int index = 0; index < GameInterface.cachedInterfaces[widgetid].length; index++) {
+                    if(GameInterface.cachedInterfaces[widgetid][index].scrollHeight > 0) {
                         childID = index;
-                        positionX = Widget.interfaces[widgetid][index].currentX;
-                        positionY = Widget.interfaces[widgetid][index].currentY;
-                        width = Widget.interfaces[widgetid][index].originalWidth;
-                        height = Widget.interfaces[widgetid][index].originalHeight;
+                        positionX = GameInterface.cachedInterfaces[widgetid][index].currentX;
+                        positionY = GameInterface.cachedInterfaces[widgetid][index].currentY;
+                        width = GameInterface.cachedInterfaces[widgetid][index].originalWidth;
+                        height = GameInterface.cachedInterfaces[widgetid][index].originalHeight;
                         break;
                     }
                 }
                 if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
-                    Widget.interfaces[widgetid][childID].scrollPosition += rotation * 30;
+                    GameInterface.cachedInterfaces[widgetid][childID].scrollPosition += rotation * 30;
                     return true;
                 }
 
@@ -349,14 +348,14 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         if(GameObject.frame != null) {
             LinkedList.anInt1073 = 0;
             Class12.eventMouseX = arg0.getX();
-            Cache.eventMouseY = arg0.getY();
+            MemoryCache.eventMouseY = arg0.getY();
         }
     }
 
     public synchronized void mouseReleased(MouseEvent arg0) {
         if(GameObject.frame != null) {
             LinkedList.anInt1073 = 0;
-            Cache.mouseButtonPressed = 0;
+            MemoryCache.mouseButtonPressed = 0;
             mouseWheelDown = false;
         }
         if(arg0.isPopupTrigger())

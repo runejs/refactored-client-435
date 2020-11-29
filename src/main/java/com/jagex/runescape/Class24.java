@@ -1,21 +1,18 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class24 {
     public static int[] fullScreenTextureArray;
-    public static CacheIndex_Sub1[] aClass6_Sub1Array580 = new CacheIndex_Sub1[256];
+    public static CacheIndex[] aClass6_Sub1Array580 = new CacheIndex[256];
     public static int[] walkingQueueX = new int[4000];
 
     public static IndexedImage[] method337(CacheIndex arg1, int arg2, int arg3) {

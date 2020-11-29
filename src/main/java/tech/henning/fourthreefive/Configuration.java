@@ -110,8 +110,8 @@ public class Configuration {
      * Static username and password
      */
 
-    public static String USERNAME = "Promises";
-    public static String PASSWORD = "Testing";
+    public static String USERNAME = "a";
+    public static String PASSWORD = "aaaaa";
 
     /**
      * Do you want to render roofs

@@ -1,10 +1,9 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -13,7 +12,7 @@ import com.jagex.runescape.net.PacketBuffer;
 
 public class Class42 {
     public static byte[][][] tile_underlayids;
-    public static Cache aClass9_998 = new Cache(100);
+    public static MemoryCache aClass9_998 = new MemoryCache(100);
     public static int anInt1006 = 0;
     public static int anInt1008 = 0;
     public static int anInt1010 = 2;
@@ -40,19 +39,6 @@ public class Class42 {
 
     }
 
-    public static void method883(int arg1) {
-        if(ProducingGraphicsBuffer.method1043(arg1)) {
-            Widget[] widgets = Widget.interfaces[arg1];
-            for(int i = 0; widgets.length > i; i++) {
-                Widget widget = widgets[i];
-                if(widget != null) {
-                    widget.anInt2660 = 0;
-                    widget.anInt2654 = 0;
-                }
-            }
-        }
-    }
-
     public static int method884(int arg0, int arg1) {
         int i = 57 * arg1 + arg0;
         i ^= i << 13;
@@ -64,7 +50,7 @@ public class Class42 {
         IdentityKit.membersServer = arg1;
         Class8.aCacheIndex_284 = arg2;
         Class26.aCacheIndex_632 = arg0;
-        ItemDefinition.count = Class26.aCacheIndex_632.method190(10);
+        ItemDefinition.count = Class26.aCacheIndex_632.fileLength(10);
     }
 
     public static void method886(int arg0, int arg1, boolean arg2, byte[] arg3, int arg4) {

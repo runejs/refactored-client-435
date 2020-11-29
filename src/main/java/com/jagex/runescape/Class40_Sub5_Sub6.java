@@ -1,8 +1,9 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.*;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.TypeFace;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
@@ -27,7 +28,7 @@ import java.lang.reflect.Method;
 public class Class40_Sub5_Sub6 extends SubNode {
     public static Class67[] aClass67Array2436 = new Class67[13];
     public static int currentCameraPositionH;
-    public static Cache aClass9_2439 = new Cache(64);
+    public static MemoryCache aClass9_2439 = new MemoryCache(64);
     public static int cameraY;
     public static int anInt2451 = 0;
     public static int anInt2452 = 0;
@@ -42,11 +43,11 @@ public class Class40_Sub5_Sub6 extends SubNode {
     }
 
     public static boolean drawInterface(int arg0, int widgetId, int arg2, byte arg3, int arg4, int arg5, int arg6) {
-        if (!ProducingGraphicsBuffer.method1043(widgetId))
+        if (!GameInterface.decodeGameInterface(widgetId))
             return false;
         if (arg3 != -5)
             return true;
-        return Main.method36(arg5, arg0, arg4, 0, -1, arg2, arg6, 0, Widget.interfaces[widgetId], true);
+        return Main.method36(arg5, arg0, arg4, 0, -1, arg2, arg6, 0, GameInterface.cachedInterfaces[widgetId], true);
     }
 
     public static void putHackCheckPacket(int arg0, int arg1, PacketBuffer arg2) {
@@ -183,7 +184,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                 Console.console.handleInput();
                 break;
             }
-            if (HuffmanEncoding.openScreenWidgetId != -1 && HuffmanEncoding.reportAbuseInterfaceID == HuffmanEncoding.openScreenWidgetId) {
+            if (GameInterface.gameScreenInterfaceId != -1 && HuffmanEncoding.reportAbuseInterfaceID == GameInterface.gameScreenInterfaceId) {
                 if (ItemDefinition.anInt2854 == 85 && Native.reportedName.length() > 0)
                     Native.reportedName = Native.reportedName.substring(0, -1 + Native.reportedName.length());
                 if ((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && Native.reportedName.length() < 12)
@@ -218,7 +219,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         SceneCluster.packetBuffer.finishVarByte(-i + SceneCluster.packetBuffer.currentPosition);
                         if (ChatBox.privateChatMode == 2) {
                             ChatBox.privateChatMode = 1;
-                            Cache.redrawChatbox = true;
+                            MemoryCache.redrawChatbox = true;
                             SceneCluster.packetBuffer.putPacket(32);
                             SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
                             SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
@@ -283,7 +284,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                     ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
-            } else if (ChatBox.openChatboxWidgetId == -1 && ActorDefinition.openFullScreenWidgetId == -1) {
+            } else if (GameInterface.chatboxInterfaceId == -1 && GameInterface.fullscreenInterfaceId == -1) {
                 if (ItemDefinition.anInt2854 == 85 && ChatBox.chatboxInput.length() > 0) {
                     ChatBox.chatboxInput = ChatBox.chatboxInput.substring(0, ChatBox.chatboxInput.length() - 1);
                     ChatBox.redrawChatbox = true;
@@ -302,13 +303,13 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         }
                         if (ChatBox.chatboxInput.startsWith("::region")) {
                             for (int qq = 0; qq < 469; qq++) {
-                                if (ProducingGraphicsBuffer.method1043(qq)) {
-                                    Widget[] widgets = Widget.interfaces[qq];
-                                    for (int y = 0; widgets.length > y; y++) {
-                                        Widget widget = widgets[y];
-                                        if (widget.disabledText != null) {
-                                            String text = widget.disabledText.toString().toLowerCase();
-                                            if (widget.disabledText.toString().toLowerCase().contains("bank")) {
+                                if (GameInterface.decodeGameInterface(qq)) {
+                                    GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[qq];
+                                    for (int y = 0; gameInterfaces.length > y; y++) {
+                                        GameInterface gameInterface = gameInterfaces[y];
+                                        if (gameInterface.disabledText != null) {
+                                            String text = gameInterface.disabledText.toString().toLowerCase();
+                                            if (gameInterface.disabledText.toString().toLowerCase().contains("bank")) {
                                                 System.out.println(qq + " contains " + text);
                                             }
                                         }
@@ -403,7 +404,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         ProducingGraphicsBuffer_Sub1.method1052(ChatBox.chatboxInput, SceneCluster.packetBuffer);
                         SceneCluster.packetBuffer.finishVarByte(SceneCluster.packetBuffer.currentPosition + -i_12_);
                         if (ChatBox.publicChatMode == 2) {
-                            Cache.redrawChatbox = true;
+                            MemoryCache.redrawChatbox = true;
                             ChatBox.publicChatMode = 3;
                             SceneCluster.packetBuffer.putPacket(32);
                             SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
@@ -426,11 +427,11 @@ public class Class40_Sub5_Sub6 extends SubNode {
         int offsetY =  (-yOffSet) +Main.menuOffsetY;
         int colour = 0x5d5447;
         ChatBox.redrawChatbox = true;
-        ISAAC.redrawTabArea = true;
+        GameInterface.redrawTabArea = true;
         Rasterizer.drawFilledRectangleAlpha(offsetX, offsetY, width, height, colour, 120);
         Rasterizer.drawFilledRectangle(1 + offsetX, 1 + offsetY, -2 + width, 16, 0);
         Rasterizer.drawUnfilledRectangle(offsetX + 1, 18 + offsetY, -2 + width, -19 + height, 0);
-        Class40_Sub5_Sub17_Sub6.fontBold.drawString(English.chooseOption, offsetX + 3, 14 + offsetY, colour);
+        TypeFace.fontBold.drawString(English.chooseOption, offsetX + 3, 14 + offsetY, colour);
         int x = Class13.mouseX  - (xOffSet);
         int y = (-yOffSet) + Landscape.mouseY;
         if (Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
@@ -450,7 +451,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
             int actionColour = 16777215;
             if (x > offsetX && offsetX + width > x && y > -13 + actionY && actionY + 3 > y)
                 actionColour = 16776960;
-            Class40_Sub5_Sub17_Sub6.fontBold.drawShadowedString(Landscape.menuActionTexts[action], offsetX + 3, actionY, true, actionColour);
+            TypeFace.fontBold.drawShadowedString(Landscape.menuActionTexts[action], offsetX + 3, actionY, true, actionColour);
         }
     }
 }

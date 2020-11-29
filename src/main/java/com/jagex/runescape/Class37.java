@@ -1,10 +1,7 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.VarbitDefinition;
+import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
@@ -64,7 +61,7 @@ public class Class37 {
         IncomingPackets.incomingPacketSize = 0;
         SceneCluster.packetBuffer.currentPosition = 0;
         RSString.anInt1690 = -1;
-        Cache.anInt324 = -1;
+        MemoryCache.anInt324 = -1;
         Class35.anInt1728 = 0;
         Class49.anInt1151 = -1;
         VarbitDefinition.destinationX = 0;
@@ -196,7 +193,7 @@ public class Class37 {
     public static void method436(int arg0) {
         if(arg0 < 95)
             method436(25);
-        for(Class40_Sub2 class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aLinkedList_2268.method909(-4)) {
+        for(Class40_Sub2 class40_sub2 = (Class40_Sub2) ClientScript.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) ClientScript.aLinkedList_2268.method909(-4)) {
             if(class40_sub2.aClass40_Sub9_Sub2_2001 != null) {
                 Class49.aClass40_Sub9_Sub1_1152.method853(class40_sub2.aClass40_Sub9_Sub2_2001);
                 class40_sub2.aClass40_Sub9_Sub2_2001 = null;
@@ -206,7 +203,7 @@ public class Class37 {
                 class40_sub2.aClass40_Sub9_Sub2_2010 = null;
             }
         }
-        Class40_Sub5_Sub1.aLinkedList_2268.method906(0);
+        ClientScript.aLinkedList_2268.method906(0);
     }
 
     public static void method437(int arg0, boolean arg1, int arg2, int arg3, int arg4, GameObjectDefinition arg5) {
@@ -233,7 +230,7 @@ public class Class37 {
             class40_sub2.aGameObjectDefinition_2011 = arg5;
             class40_sub2.method528();
         }
-        Class40_Sub5_Sub1.aLinkedList_2268.pushBack(class40_sub2, -126);
+        ClientScript.aLinkedList_2268.pushBack(class40_sub2, -126);
         if(class40_sub2.anIntArray2005 != null)
             class40_sub2.anInt2014 = (int) ((double) (class40_sub2.anInt2002 - class40_sub2.anInt2012) * Math.random()) + class40_sub2.anInt2012;
     }

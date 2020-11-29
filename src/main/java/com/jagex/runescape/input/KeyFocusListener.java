@@ -2,9 +2,8 @@ package com.jagex.runescape.input;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.frame.console.Console;
@@ -48,18 +47,18 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     public static void draw3dScreen() {
         Wall.renderSplitPrivateMessages();
         if (LinkedList.crossType == 1) {
-            Class37.cursorCross[OverlayDefinition.crossIndex / 100].drawImage(Class40_Sub11.crossX - 8 - 4, Class40_Sub5_Sub1.crossY - 8 - 4);
+            Class37.cursorCross[OverlayDefinition.crossIndex / 100].drawImage(Class40_Sub11.crossX - 8 - 4, ClientScript.crossY - 8 - 4);
         }
         if (LinkedList.crossType == 2) {
-            Class37.cursorCross[4 + OverlayDefinition.crossIndex / 100].drawImage(Class40_Sub11.crossX - 8 - 4, Class40_Sub5_Sub1.crossY - 8 - 4);
+            Class37.cursorCross[4 + OverlayDefinition.crossIndex / 100].drawImage(Class40_Sub11.crossX - 8 - 4, ClientScript.crossY - 8 - 4);
         }
         if (GroundItemTile.walkableWidgetId != -1) {
             Renderable.handleSequences(GroundItemTile.walkableWidgetId);
             Class40_Sub5_Sub6.drawInterface(0, GroundItemTile.walkableWidgetId, 334, (byte) -5, 0, 4, 512);
         }
-        if (HuffmanEncoding.openScreenWidgetId != -1) {
-            Renderable.handleSequences(HuffmanEncoding.openScreenWidgetId);
-            Class40_Sub5_Sub6.drawInterface(0, HuffmanEncoding.openScreenWidgetId, 334, (byte) -5, 0, 0, 512);
+        if (GameInterface.gameScreenInterfaceId != -1) {
+            Renderable.handleSequences(GameInterface.gameScreenInterfaceId);
+            Class40_Sub5_Sub6.drawInterface(0, GameInterface.gameScreenInterfaceId, 334, (byte) -5, 0, 0, 512);
         }
         Class65.method1018();
         Player.setTutorialIslandFlag();
@@ -197,17 +196,6 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             aLinkedList_1278 = null;
         }
         return Class22.method307(arg1, -1, 32767);
-    }
-
-    public static CacheIndex_Sub1 method957(int arg0, boolean arg1, boolean arg2, byte arg3, boolean arg4) {
-        Class56 class56 = null;
-        if (SpotAnimDefinition.aClass67_2298 != null) {
-            class56 = new Class56(arg0, SpotAnimDefinition.aClass67_2298, Class40_Sub5_Sub6.aClass67Array2436[arg0], 1000000);
-        }
-        if (arg3 < 116) {
-            method955(null);
-        }
-        return new CacheIndex_Sub1(class56, VarbitDefinition.aClass56_2356, arg0, arg2, arg4, arg1);
     }
 
     public void keyTyped(KeyEvent arg0) {

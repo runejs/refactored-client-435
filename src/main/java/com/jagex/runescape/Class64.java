@@ -1,12 +1,12 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.def.ClientScript;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -56,19 +56,6 @@ public class Class64 implements Runnable {
         anOutputStream1528 = aSocket1508.getOutputStream();
     }
 
-
-    public static void method1012(int arg0, int arg1) {
-        if (ProducingGraphicsBuffer.method1043(arg0)) {
-            Widget[] widgets = Widget.interfaces[arg0];
-            if (arg1 != 2)
-                method1013();
-            for (int i = 0; widgets.length > i; i++) {
-                Widget widget = widgets[i];
-                if (widget.anObjectArray2677 != null)
-                    Widget.method891(widget.anObjectArray2677, 0, 0, widget, 0, false);
-            }
-        }
-    }
 
     public static void method1013() {
         int lasthash = -1;
@@ -155,7 +142,7 @@ public class Class64 implements Runnable {
                         for (int i_11_ = 0; i_11_ < Player.localPlayerCount; i_11_++) {
                             Player player = Player.trackedPlayers[Player.trackedPlayerIndices[i_11_]];
                             if (player != null && npc.worldX == player.worldX && player.worldY == npc.worldY)
-                                Class40_Sub5_Sub1.processPlayerMenuOptions(player, x, y, Player.trackedPlayerIndices[i_11_]);
+                                ClientScript.processPlayerMenuOptions(player, x, y, Player.trackedPlayerIndices[i_11_]);
                         }
                     }
                     HuffmanEncoding.processNpcMenuOptions(npc.actorDefinition, x, y, index);
@@ -171,10 +158,10 @@ public class Class64 implements Runnable {
                         for (int i_13_ = 0; i_13_ < Player.localPlayerCount; i_13_++) {
                             Player player = Player.trackedPlayers[Player.trackedPlayerIndices[i_13_]];
                             if (player != null && player != player1 && player1.worldX == player.worldX && player1.worldY == player.worldY)
-                                Class40_Sub5_Sub1.processPlayerMenuOptions(player, x, y, Player.trackedPlayerIndices[i_13_]);
+                                ClientScript.processPlayerMenuOptions(player, x, y, Player.trackedPlayerIndices[i_13_]);
                         }
                     }
-                    Class40_Sub5_Sub1.processPlayerMenuOptions(player1, x, y, index);
+                    ClientScript.processPlayerMenuOptions(player1, x, y, index);
                 }
                 if (type == 3) {
                     LinkedList itemList = Wall.groundItems[Player.worldLevel][x][y];
@@ -221,9 +208,9 @@ public class Class64 implements Runnable {
 
     public static void method1015() {
         synchronized (GameObject.frame) {
-            SpotAnimDefinition.mouseButtonPressed = Cache.mouseButtonPressed;
+            SpotAnimDefinition.mouseButtonPressed = MemoryCache.mouseButtonPressed;
             Class13.mouseX = Class12.eventMouseX;
-            Landscape.mouseY = Cache.eventMouseY;
+            Landscape.mouseY = MemoryCache.eventMouseY;
             MouseHandler.clickType = Actor.eventMouseButtonPressed;
             Class57.clickX = Class55.eventClickX;
             RSString.clickY = Class40_Sub5_Sub11.eventClickY;

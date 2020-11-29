@@ -2,7 +2,7 @@ package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
@@ -109,7 +109,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
                 Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
 
                 Landscape.framePieceRight.drawGraphics(0, 4, graphics);
-                Class40_Sub5_Sub1.chatboxRight.drawGraphics(0, 357, graphics);
+                ClientScript.chatboxRight.drawGraphics(0, 357, graphics);
                 Class39.mapbackLeft.drawGraphics(722, 4, graphics);
                 GameObject.tabPieceLeft.drawGraphics(743, 205, graphics);
                 Class40_Sub5_Sub17_Sub6.framePieceTop.drawGraphics(0, 0, graphics);
@@ -132,7 +132,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
     }
 
 
-    public static boolean method746(Widget arg1) {
+    public static boolean method746(GameInterface arg1) {
         if(arg1.alternateOperators == null) {
             return false;
         }

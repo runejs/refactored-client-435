@@ -5,7 +5,7 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -13,7 +13,7 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.scene.GroundItemTile;
 
 public abstract class Class22_Sub2 extends Class22 {
-    public static Widget aWidget_1887;
+    public static GameInterface aGameInterface_1887;
     public static int duplicateClickCount = 0;
     public static int[] anIntArray774 = new int[]{12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800, 12800};
 

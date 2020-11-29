@@ -3,11 +3,12 @@ package com.jagex.runescape.cache.media;
 import com.jagex.runescape.Class17;
 import com.jagex.runescape.RSString;
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.media.TextUtils.TextColourNode;
-import com.jagex.runescape.cache.media.TextUtils.TextColourQueue;
-import com.jagex.runescape.cache.media.TextUtils.TextTagNode;
-import com.jagex.runescape.cache.media.TextUtils.TextTagQueue;
+import com.jagex.runescape.cache.media.textUtils.TextColourNode;
+import com.jagex.runescape.cache.media.textUtils.TextColourQueue;
+import com.jagex.runescape.cache.media.textUtils.TextTagNode;
+import com.jagex.runescape.cache.media.textUtils.TextTagQueue;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -21,6 +22,9 @@ import static com.jagex.runescape.Class40_Sub5_Sub13.moderatorIcon;
 
 public class TypeFace extends Rasterizer {
 
+    public static TypeFace fontBold;
+    public static TypeFace fontSmall;
+    public static MemoryCache typeFaceCache = new MemoryCache(20);
     private static String greaterThan = "gt";
     private static String lessThan = "lt";
     private static String euroSymbol = "euro";
@@ -105,8 +109,8 @@ public class TypeFace extends Rasterizer {
         return class40_sub5_sub14_sub1;
     }
 
-    public static TypeFace getFont(CacheIndex arg2, int arg0, int arg3) {
-        if (!ImageRGB.spriteExists(arg0, arg3, arg2))
+    public static TypeFace getFont(CacheIndex cacheIndex, int arg0, int fontId) {
+        if (!ImageRGB.spriteExists(arg0, fontId, cacheIndex))
             return null;
         return constructFont();
     }

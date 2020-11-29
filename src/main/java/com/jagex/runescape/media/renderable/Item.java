@@ -2,6 +2,7 @@ package com.jagex.runescape.media.renderable;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
@@ -110,7 +111,7 @@ public class Item extends Renderable {
             Rasterizer.resetPixels();
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631 = Class40_Sub5_Sub13.createGraphicsBuffer(75, 94, arg0);
             Rasterizer.resetPixels();
-            byte[] is = arg2.method170("", Native.titleImage, 1);
+            byte[] is = arg2.method170("", Native.titleImage);
             ImageRGB class40_sub5_sub14_sub4 = new ImageRGB(is, arg0);
             Class8.flameLeftBackground.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(0, 0);
@@ -206,7 +207,7 @@ public class Item extends Renderable {
             Class4.anIntArray178 = new int[32768];
             Class26.loginScreenState = 0;
             if (RSCanvas.anInt60 != 0 && !VertexNormal.lowMemory)
-                Class33.method412(false, Class55.aClass6_Sub1_1286, 0, (byte) 66, Native.titleSong, 10, "", RSCanvas.anInt60);
+                Class33.method412(false, MemoryCache.musicCacheIndex, 0, (byte) 66, Native.titleSong, 10, "", RSCanvas.anInt60);
             else
                 Class33.method405(16969, 10);
             GameShell.method19(false, 24041);

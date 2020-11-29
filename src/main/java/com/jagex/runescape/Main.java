@@ -1,13 +1,12 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
+import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
-import com.jagex.runescape.cache.media.Widget.Widget;
-import com.jagex.runescape.cache.media.Widget.WidgetModelType;
-import com.jagex.runescape.cache.media.Widget.WidgetType;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.InterfaceModelType;
+import com.jagex.runescape.cache.media.gameInterface.GameInterfaceType;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
@@ -48,72 +47,72 @@ public class Main extends GameShell {
     public static String[] playerActions = new String[5];
     public static boolean aBoolean1790;
 
-    public static boolean method36(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, Widget[] arg8, boolean arg9) {
+    public static boolean method36(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, GameInterface[] arg8, boolean arg9) {
         Rasterizer.setBounds(arg2, arg1, arg5, arg6);
         boolean bool = arg9;
         for (int i = 0; arg8.length > i; i++) {
-            Widget widget = arg8[i];
-            if (widget != null && widget.parentId == arg4) {
-                if (widget.contentType > 0)
-                    Widget.updateWidget(widget);
-                int i_0_ = arg2 + widget.currentX;
-                if (!widget.aBoolean2694)
+            GameInterface gameInterface = arg8[i];
+            if (gameInterface != null && gameInterface.parentId == arg4) {
+                if (gameInterface.contentType > 0)
+                    GameInterface.updateGameInterface(gameInterface);
+                int i_0_ = arg2 + gameInterface.currentX;
+                if (!gameInterface.aBoolean2694)
                     i_0_ -= arg3;
-                int i_1_ = arg1 + widget.currentY;
-                if (!widget.aBoolean2694)
+                int i_1_ = arg1 + gameInterface.currentY;
+                if (!gameInterface.aBoolean2694)
                     i_1_ -= arg7;
-                int i_2_ = widget.opacity;
-                if (widget == Wall.aWidget_353) {
+                int i_2_ = gameInterface.opacity;
+                if (gameInterface == Wall.aGameInterface_353) {
                     i_2_ = 128;
-                    Widget widget_3_ = FramemapDefinition.method878(widget);
-                    int[] is = Class13.method247(widget_3_, (byte) 117);
-                    int[] is_4_ = Class13.method247(widget, (byte) 97);
+                    GameInterface gameInterface_3_ = FramemapDefinition.method878(gameInterface);
+                    int[] is = Class13.method247(gameInterface_3_, (byte) 117);
+                    int[] is_4_ = Class13.method247(gameInterface, (byte) 97);
                     int i_5_ = Landscape.mouseY + -Class40_Sub5_Sub11.anInt2621 + is_4_[1] - is[1];
                     if (i_5_ < 0)
                         i_5_ = 0;
-                    if (i_5_ + widget.originalHeight > widget_3_.originalHeight)
-                        i_5_ = widget_3_.originalHeight + -widget.originalHeight;
+                    if (i_5_ + gameInterface.originalHeight > gameInterface_3_.originalHeight)
+                        i_5_ = gameInterface_3_.originalHeight + -gameInterface.originalHeight;
                     i_1_ = i_5_ + is[1];
                     int i_6_ = Class13.mouseX + -Class40_Sub2.anInt1996 + -is[0] + is_4_[0];
                     if (i_6_ < 0)
                         i_6_ = 0;
-                    if (i_6_ + widget.originalWidth > widget_3_.originalWidth)
-                        i_6_ = -widget.originalWidth + widget_3_.originalWidth;
+                    if (i_6_ + gameInterface.originalWidth > gameInterface_3_.originalWidth)
+                        i_6_ = -gameInterface.originalWidth + gameInterface_3_.originalWidth;
                     i_0_ = is[0] + i_6_;
                 }
-                if (!widget.isIf3 || Rasterizer.viewportRight >= i_0_ && Rasterizer.viewportBottom >= i_1_ && Rasterizer.viewportLeft <= i_0_ + widget.originalWidth && i_1_ + widget.originalHeight >= Rasterizer.viewportTop) {
-                    if (widget.type == WidgetType.LAYER) {
-                        if (widget.isHidden && !Class29.method371(8247, arg0, i))
+                if (!gameInterface.isIf3 || Rasterizer.viewportRight >= i_0_ && Rasterizer.viewportBottom >= i_1_ && Rasterizer.viewportLeft <= i_0_ + gameInterface.originalWidth && i_1_ + gameInterface.originalHeight >= Rasterizer.viewportTop) {
+                    if (gameInterface.type == GameInterfaceType.LAYER) {
+                        if (gameInterface.isHidden && !Class29.method371(8247, arg0, i))
                             continue;
-                        if (!widget.isIf3) {
-                            if (-widget.originalHeight + widget.scrollHeight < widget.scrollPosition)
-                                widget.scrollPosition = -widget.originalHeight + widget.scrollHeight;
-                            if (widget.scrollPosition < 0)
-                                widget.scrollPosition = 0;
+                        if (!gameInterface.isIf3) {
+                            if (-gameInterface.originalHeight + gameInterface.scrollHeight < gameInterface.scrollPosition)
+                                gameInterface.scrollPosition = -gameInterface.originalHeight + gameInterface.scrollHeight;
+                            if (gameInterface.scrollPosition < 0)
+                                gameInterface.scrollPosition = 0;
                         }
-                        bool &= method36(arg0, i_1_, i_0_, widget.anInt2746, i, widget.originalHeight + i_1_, widget.originalWidth + i_0_, widget.scrollPosition, arg8, arg9);
-                        if (widget.aWidgetArray2713 != null)
-                            bool &= method36(arg0, i_1_, i_0_, widget.anInt2746, widget.id, i_1_ + widget.originalHeight, widget.originalWidth + i_0_, widget.scrollPosition, widget.aWidgetArray2713, true);
+                        bool &= method36(arg0, i_1_, i_0_, gameInterface.anInt2746, i, gameInterface.originalHeight + i_1_, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, arg8, arg9);
+                        if (gameInterface.aGameInterfaceArray2713 != null)
+                            bool &= method36(arg0, i_1_, i_0_, gameInterface.anInt2746, gameInterface.id, i_1_ + gameInterface.originalHeight, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, gameInterface.aGameInterfaceArray2713, true);
                         Rasterizer.setBounds(arg2, arg1, arg5, arg6);
-                        if (widget.originalHeight < widget.scrollHeight)
-                            Widget.drawScrollBar(i_0_ + widget.originalWidth, i_1_, widget.originalHeight, widget.scrollPosition, widget.scrollHeight, 0);
+                        if (gameInterface.originalHeight < gameInterface.scrollHeight)
+                            GameInterface.drawScrollBar(i_0_ + gameInterface.originalWidth, i_1_, gameInterface.originalHeight, gameInterface.scrollPosition, gameInterface.scrollHeight, 0);
                     }
-                    if (widget.type == WidgetType.UNKNOWN) {
+                    if (gameInterface.type == GameInterfaceType.UNKNOWN) {
                         continue;
                     }
-                    if (widget.type == WidgetType.INVENTORY) {
+                    if (gameInterface.type == GameInterfaceType.INVENTORY) {
                         int i_7_ = 0;
-                        for (int i_8_ = 0; i_8_ < widget.originalHeight; i_8_++) {
-                            for (int i_9_ = 0; widget.originalWidth > i_9_; i_9_++) {
-                                int i_10_ = (widget.itemSpritePadsX + 32) * i_9_ + i_0_;
-                                int i_11_ = (32 + widget.itemSpritePadsY) * i_8_ + i_1_;
+                        for (int i_8_ = 0; i_8_ < gameInterface.originalHeight; i_8_++) {
+                            for (int i_9_ = 0; gameInterface.originalWidth > i_9_; i_9_++) {
+                                int i_10_ = (gameInterface.itemSpritePadsX + 32) * i_9_ + i_0_;
+                                int i_11_ = (32 + gameInterface.itemSpritePadsY) * i_8_ + i_1_;
                                 if (i_7_ < 20) {
-                                    i_10_ += widget.images[i_7_];
-                                    i_11_ += widget.imageX[i_7_];
+                                    i_10_ += gameInterface.images[i_7_];
+                                    i_11_ += gameInterface.imageX[i_7_];
                                 }
-                                if (widget.items[i_7_] <= 0) {
-                                    if (widget.imageY != null && i_7_ < 20) {
-                                        ImageRGB imageRGB = widget.method638((byte) 78, i_7_);
+                                if (gameInterface.items[i_7_] <= 0) {
+                                    if (gameInterface.imageY != null && i_7_ < 20) {
+                                        ImageRGB imageRGB = gameInterface.method638((byte) 78, i_7_);
                                         if (imageRGB == null) {
                                             if (FramemapDefinition.aBoolean2177)
                                                 bool = false;
@@ -122,17 +121,17 @@ public class Main extends GameShell {
                                     }
                                 } else {
                                     int i_12_ = 0;
-                                    int i_13_ = -1 + widget.items[i_7_];
+                                    int i_13_ = -1 + gameInterface.items[i_7_];
                                     int i_14_ = 0;
                                     if (-32 + Rasterizer.viewportLeft < i_10_ && Rasterizer.viewportRight > i_10_ && Rasterizer.viewportTop + -32 < i_11_ && Rasterizer.viewportBottom > i_11_ || SceneTile.activeInterfaceType != 0 && GroundItemTile.selectedInventorySlot == i_7_) {
                                         int i_15_ = 0;
-                                        if (Class8.itemSelected == 1 && i_7_ == LinkedList.anInt1061 && widget.id == ISAAC.anInt525)
+                                        if (Class8.itemSelected == 1 && i_7_ == LinkedList.anInt1061 && gameInterface.id == ISAAC.anInt525)
                                             i_15_ = 16777215;
-                                        ImageRGB imageRGB = ItemDefinition.sprite(widget.itemAmounts[i_7_], i_13_, i_15_);
+                                        ImageRGB imageRGB = ItemDefinition.sprite(gameInterface.itemAmounts[i_7_], i_13_, i_15_);
                                         if (imageRGB == null)
                                             bool = false;
                                         else {
-                                            if (SceneTile.activeInterfaceType != 0 && GroundItemTile.selectedInventorySlot == i_7_ && widget.id == Class48.modifiedWidgetId) {
+                                            if (SceneTile.activeInterfaceType != 0 && GroundItemTile.selectedInventorySlot == i_7_ && gameInterface.id == Class48.modifiedWidgetId) {
                                                 i_14_ = Landscape.mouseY + -ItemDefinition.anInt2798;
                                                 i_12_ = Class13.mouseX + -Renderable.anInt2869;
                                                 if (i_12_ < 5 && i_12_ > -5)
@@ -145,34 +144,34 @@ public class Main extends GameShell {
                                                 }
                                                 imageRGB.method728(i_12_ + i_10_, i_11_ + i_14_, 128);
                                                 if (arg4 != -1) {
-                                                    Widget widget_16_ = arg8[arg4];
-                                                    if (Rasterizer.viewportTop > i_14_ + i_11_ && widget_16_.scrollPosition > 0) {
+                                                    GameInterface gameInterface_16_ = arg8[arg4];
+                                                    if (Rasterizer.viewportTop > i_14_ + i_11_ && gameInterface_16_.scrollPosition > 0) {
                                                         int i_17_ = Class5.anInt199 * (Rasterizer.viewportTop + -i_11_ - i_14_) / 3;
                                                         if (10 * Class5.anInt199 < i_17_)
                                                             i_17_ = 10 * Class5.anInt199;
-                                                        if (widget_16_.scrollPosition < i_17_)
-                                                            i_17_ = widget_16_.scrollPosition;
-                                                        widget_16_.scrollPosition -= i_17_;
+                                                        if (gameInterface_16_.scrollPosition < i_17_)
+                                                            i_17_ = gameInterface_16_.scrollPosition;
+                                                        gameInterface_16_.scrollPosition -= i_17_;
                                                         ItemDefinition.anInt2798 += i_17_;
                                                     }
-                                                    if (32 + i_11_ + i_14_ > Rasterizer.viewportBottom && -widget_16_.originalHeight + widget_16_.scrollHeight > widget_16_.scrollPosition) {
+                                                    if (32 + i_11_ + i_14_ > Rasterizer.viewportBottom && -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight > gameInterface_16_.scrollPosition) {
                                                         int i_18_ = Class5.anInt199 * (-Rasterizer.viewportBottom + 32 + i_11_ + i_14_) / 3;
                                                         if (Class5.anInt199 * 10 < i_18_)
                                                             i_18_ = 10 * Class5.anInt199;
-                                                        if (-widget_16_.scrollPosition + widget_16_.scrollHeight + -widget_16_.originalHeight < i_18_)
-                                                            i_18_ = -widget_16_.originalHeight + widget_16_.scrollHeight + -widget_16_.scrollPosition;
+                                                        if (-gameInterface_16_.scrollPosition + gameInterface_16_.scrollHeight + -gameInterface_16_.originalHeight < i_18_)
+                                                            i_18_ = -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight + -gameInterface_16_.scrollPosition;
                                                         ItemDefinition.anInt2798 -= i_18_;
-                                                        widget_16_.scrollPosition += i_18_;
+                                                        gameInterface_16_.scrollPosition += i_18_;
                                                     }
                                                 }
-                                            } else if (Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 0 || GenericTile.anInt1233 != i_7_ || widget.id != PlayerAppearance.anInt704)
+                                            } else if (Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 0 || GenericTile.anInt1233 != i_7_ || gameInterface.id != PlayerAppearance.anInt704)
                                                 imageRGB.drawImage(i_10_, i_11_);
                                             else
                                                 imageRGB.method728(i_10_, i_11_, 128);
-                                            if (imageRGB.maxWidth == 33 || widget.itemAmounts[i_7_] != 1) {
-                                                int i_19_ = widget.itemAmounts[i_7_];
-                                                Class40_Sub5_Sub17_Sub6.fontSmall.drawString(Widget.getShortenedAmountText(i_19_), i_12_ + 1 + i_10_, i_11_ + 10 + i_14_, 0);
-                                                Class40_Sub5_Sub17_Sub6.fontSmall.drawString(Widget.getShortenedAmountText(i_19_), i_10_ + i_12_, i_14_ + i_11_ + 9, 16776960);
+                                            if (imageRGB.maxWidth == 33 || gameInterface.itemAmounts[i_7_] != 1) {
+                                                int i_19_ = gameInterface.itemAmounts[i_7_];
+                                                TypeFace.fontSmall.drawString(GameInterface.getShortenedAmountText(i_19_), i_12_ + 1 + i_10_, i_11_ + 10 + i_14_, 0);
+                                                TypeFace.fontSmall.drawString(GameInterface.getShortenedAmountText(i_19_), i_10_ + i_12_, i_14_ + i_11_ + 9, 16776960);
                                             }
                                         }
                                     }
@@ -180,55 +179,55 @@ public class Main extends GameShell {
                                 i_7_++;
                             }
                         }
-                    } else if (widget.type == WidgetType.RECTANGLE) {
+                    } else if (gameInterface.type == GameInterfaceType.RECTANGLE) {
                         int i_20_;
-                        if (ItemDefinition.method746(widget)) {
-                            i_20_ = widget.alternateTextColor;
-                            if (Class29.method371(8247, arg0, i) && widget.alternateHoveredTextColor != 0)
-                                i_20_ = widget.alternateHoveredTextColor;
+                        if (ItemDefinition.method746(gameInterface)) {
+                            i_20_ = gameInterface.alternateTextColor;
+                            if (Class29.method371(8247, arg0, i) && gameInterface.alternateHoveredTextColor != 0)
+                                i_20_ = gameInterface.alternateHoveredTextColor;
                         } else {
-                            i_20_ = widget.textColor;
-                            if (Class29.method371(8247, arg0, i) && widget.hoveredTextColor != 0)
-                                i_20_ = widget.hoveredTextColor;
+                            i_20_ = gameInterface.textColor;
+                            if (Class29.method371(8247, arg0, i) && gameInterface.hoveredTextColor != 0)
+                                i_20_ = gameInterface.hoveredTextColor;
                         }
                         if (i_2_ == 0) {
-                            if (!widget.filled)
-                                Rasterizer.drawUnfilledRectangle(i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_20_);
+                            if (!gameInterface.filled)
+                                Rasterizer.drawUnfilledRectangle(i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight, i_20_);
                             else
-                                Rasterizer.drawFilledRectangle(i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_20_);
-                        } else if (!widget.filled)
-                            Rasterizer.drawUnfilledRectangleAlpha(i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_20_, -(0xff & i_2_) + 256);
+                                Rasterizer.drawFilledRectangle(i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight, i_20_);
+                        } else if (!gameInterface.filled)
+                            Rasterizer.drawUnfilledRectangleAlpha(i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight, i_20_, -(0xff & i_2_) + 256);
                         else
-                            Rasterizer.drawFilledRectangleAlpha(i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_20_, -(0xff & i_2_) + 256);
-                    } else if (widget.type == WidgetType.TEXT) {
-                        TypeFace class40_sub5_sub14_sub1 = widget.method647((byte) 34);
+                            Rasterizer.drawFilledRectangleAlpha(i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight, i_20_, -(0xff & i_2_) + 256);
+                    } else if (gameInterface.type == GameInterfaceType.TEXT) {
+                        TypeFace class40_sub5_sub14_sub1 = gameInterface.getTypeFace();
                         if (class40_sub5_sub14_sub1 == null) {
                             if (FramemapDefinition.aBoolean2177)
                                 bool = false;
                         } else {
-                            String class1 = widget.disabledText;
+                            String class1 = gameInterface.disabledText;
                             int i_21_;
-                            if (ItemDefinition.method746(widget)) {
-                                i_21_ = widget.alternateTextColor;
-                                if (Class29.method371(8247, arg0, i) && widget.alternateHoveredTextColor != 0)
-                                    i_21_ = widget.alternateHoveredTextColor;
-                                if (widget.alternateText.length() > 0)
-                                    class1 = widget.alternateText;
+                            if (ItemDefinition.method746(gameInterface)) {
+                                i_21_ = gameInterface.alternateTextColor;
+                                if (Class29.method371(8247, arg0, i) && gameInterface.alternateHoveredTextColor != 0)
+                                    i_21_ = gameInterface.alternateHoveredTextColor;
+                                if (gameInterface.alternateText.length() > 0)
+                                    class1 = gameInterface.alternateText;
                             } else {
-                                i_21_ = widget.textColor;
-                                if (Class29.method371(8247, arg0, i) && widget.hoveredTextColor != 0)
-                                    i_21_ = widget.hoveredTextColor;
+                                i_21_ = gameInterface.textColor;
+                                if (Class29.method371(8247, arg0, i) && gameInterface.hoveredTextColor != 0)
+                                    i_21_ = gameInterface.hoveredTextColor;
                             }
-                            if (widget.isIf3 && widget.itemId != -1) {
-                                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(widget.itemId, 10);
+                            if (gameInterface.isIf3 && gameInterface.itemId != -1) {
+                                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(gameInterface.itemId, 10);
                                 class1 = class40_sub5_sub16.name;
                                 if (class1 == null)
                                     class1 = "null";
-                                if (class40_sub5_sub16.stackable == 1 || widget.itemAmount != 1)
-                                    class1 = class1 + Native.aClass1_674 + LinkedList.method903(widget.itemAmount, (byte) -109);
+                                if (class40_sub5_sub16.stackable == 1 || gameInterface.itemAmount != 1)
+                                    class1 = class1 + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmount, (byte) -109);
                             }
-                            if (widget.actionType == 6 && CacheIndex_Sub1.anInt1819 == widget.id) {
-                                i_21_ = widget.textColor;
+                            if (gameInterface.actionType == 6 && CacheIndex.anInt1819 == gameInterface.id) {
+                                i_21_ = gameInterface.textColor;
                                 class1 = PacketBuffer.str_Please_Wait;
                             }
                             if (Rasterizer.destinationWidth == 479) {
@@ -238,19 +237,19 @@ public class Main extends GameShell {
                                     i_21_ = 16777215;
                             }
 //                            System.out.println(class1);
-                            class1 = SceneTile.method532((byte) 20, widget, class1);
+                            class1 = SceneTile.method532((byte) 20, gameInterface, class1);
 //                            System.out.println(class1);
-                            class40_sub5_sub14_sub1.drawText(class1, i_0_, i_1_, widget.originalWidth, widget.originalHeight, i_21_, widget.textShadowed, widget.xTextAlignment, widget.yTextAlignment, widget.lineHeight);
+                            class40_sub5_sub14_sub1.drawText(class1, i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight, i_21_, gameInterface.textShadowed, gameInterface.xTextAlignment, gameInterface.yTextAlignment, gameInterface.lineHeight);
                         }
-                    } else if (widget.type == WidgetType.GRAPHIC) {
-                        if (widget.isIf3) {
+                    } else if (gameInterface.type == GameInterfaceType.GRAPHIC) {
+                        if (gameInterface.isIf3) {
                             int i_22_ = 0;
                             int i_23_ = 0;
                             ImageRGB class40_sub5_sub14_sub4;
-                            if (widget.itemId == -1)
-                                class40_sub5_sub14_sub4 = widget.method643(127, false);
+                            if (gameInterface.itemId == -1)
+                                class40_sub5_sub14_sub4 = gameInterface.getImageRgb(false);
                             else {
-                                class40_sub5_sub14_sub4 = ItemDefinition.sprite(widget.itemAmount, widget.itemId, 0);
+                                class40_sub5_sub14_sub4 = ItemDefinition.sprite(gameInterface.itemAmount, gameInterface.itemId, 0);
                                 i_22_ = class40_sub5_sub14_sub4.maxWidth;
                                 i_23_ = class40_sub5_sub14_sub4.maxHeight;
                                 class40_sub5_sub14_sub4.maxHeight = 32;
@@ -259,7 +258,7 @@ public class Main extends GameShell {
                             if (class40_sub5_sub14_sub4 != null) {
                                 int i_24_ = class40_sub5_sub14_sub4.imageHeight;
                                 int i_25_ = class40_sub5_sub14_sub4.imageWidth;
-                                if (widget.aBoolean2641) {
+                                if (gameInterface.aBoolean2641) {
                                     int[] is = new int[4];
                                     Rasterizer.method661(is);
                                     int i_27_ = i_0_;
@@ -268,92 +267,92 @@ public class Main extends GameShell {
                                     int i_28_ = i_1_;
                                     if (is[1] > i_28_)
                                         i_28_ = is[1];
-                                    int i_29_ = widget.originalWidth + i_0_;
+                                    int i_29_ = gameInterface.originalWidth + i_0_;
                                     if (is[2] < i_29_)
                                         i_29_ = is[2];
-                                    int i_30_ = widget.originalHeight + i_1_;
+                                    int i_30_ = gameInterface.originalHeight + i_1_;
                                     if (i_30_ > is[3])
                                         i_30_ = is[3];
                                     Rasterizer.setBounds(i_27_, i_28_, i_30_, i_29_);
-                                    int i_31_ = (widget.originalWidth - (1 + -i_25_)) / i_25_;
-                                    int i_32_ = (widget.originalHeight - (1 + -i_24_)) / i_24_;
+                                    int i_31_ = (gameInterface.originalWidth - (1 + -i_25_)) / i_25_;
+                                    int i_32_ = (gameInterface.originalHeight - (1 + -i_24_)) / i_24_;
                                     for (int i_33_ = 0; i_31_ > i_33_; i_33_++) {
                                         for (int i_34_ = 0; i_32_ > i_34_; i_34_++) {
-                                            if (widget.anInt2751 == 0) {
+                                            if (gameInterface.anInt2751 == 0) {
                                                 if (i_2_ == 0)
                                                     class40_sub5_sub14_sub4.drawImage(i_33_ * i_25_ + i_0_, i_34_ * i_24_ + i_1_);
                                                 else
                                                     class40_sub5_sub14_sub4.method728(i_0_ + i_33_ * i_25_, i_1_ + i_24_ * i_34_, -(i_2_ & 0xff) + 256);
                                             } else
-                                                class40_sub5_sub14_sub4.method720(i_25_ / 2 + i_33_ * i_25_ + i_0_, i_24_ / 2 + i_1_ + i_24_ * i_34_, widget.anInt2751, 4096);
+                                                class40_sub5_sub14_sub4.method720(i_25_ / 2 + i_33_ * i_25_ + i_0_, i_24_ / 2 + i_1_ + i_24_ * i_34_, gameInterface.anInt2751, 4096);
                                         }
                                     }
                                     Rasterizer.method657(is);
                                 } else {
-                                    int i_26_ = 4096 * widget.originalWidth / i_25_;
-                                    if (widget.anInt2751 == 0) {
+                                    int i_26_ = 4096 * gameInterface.originalWidth / i_25_;
+                                    if (gameInterface.anInt2751 == 0) {
                                         if (i_2_ == 0) {
-                                            if (widget.originalWidth == i_25_ && widget.originalHeight == i_24_)
+                                            if (gameInterface.originalWidth == i_25_ && gameInterface.originalHeight == i_24_)
                                                 class40_sub5_sub14_sub4.drawImage(i_0_, i_1_);
                                             else
-                                                class40_sub5_sub14_sub4.method732(i_0_, i_1_, widget.originalWidth, widget.originalHeight);
+                                                class40_sub5_sub14_sub4.method732(i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight);
                                         } else
-                                            class40_sub5_sub14_sub4.method716(i_0_, i_1_, widget.originalWidth, widget.originalHeight, 256 + -(0xff & i_2_));
+                                            class40_sub5_sub14_sub4.method716(i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight, 256 + -(0xff & i_2_));
                                     } else
-                                        class40_sub5_sub14_sub4.method720(widget.originalWidth / 2 + i_0_, widget.originalHeight / 2 + i_1_, widget.anInt2751, i_26_);
+                                        class40_sub5_sub14_sub4.method720(gameInterface.originalWidth / 2 + i_0_, gameInterface.originalHeight / 2 + i_1_, gameInterface.anInt2751, i_26_);
                                 }
                             } else if (FramemapDefinition.aBoolean2177)
                                 bool = false;
-                            if (widget.itemId != -1) {
-                                if (widget.itemAmount != 1 || i_22_ == 33) {
-                                    Class40_Sub5_Sub17_Sub6.fontSmall.drawString(Integer.toString(widget.itemAmount), i_0_ + 1, i_1_ + 10, 0);
-                                    Class40_Sub5_Sub17_Sub6.fontSmall.drawString(Integer.toString(widget.itemAmount), i_0_, 9 + i_1_, 16776960);
+                            if (gameInterface.itemId != -1) {
+                                if (gameInterface.itemAmount != 1 || i_22_ == 33) {
+                                    TypeFace.fontSmall.drawString(Integer.toString(gameInterface.itemAmount), i_0_ + 1, i_1_ + 10, 0);
+                                    TypeFace.fontSmall.drawString(Integer.toString(gameInterface.itemAmount), i_0_, 9 + i_1_, 16776960);
                                 }
                                 class40_sub5_sub14_sub4.maxWidth = i_22_;
                                 class40_sub5_sub14_sub4.maxHeight = i_23_;
                             }
                         } else {
-                            ImageRGB imageRGB = widget.method643(127, ItemDefinition.method746(widget));
+                            ImageRGB imageRGB = gameInterface.getImageRgb(ItemDefinition.method746(gameInterface));
                             if (imageRGB != null)
                                 imageRGB.drawImage(i_0_, i_1_);
                             else if (FramemapDefinition.aBoolean2177)
                                 bool = false;
                         }
-                    } else if (widget.type == WidgetType.MODEL) {
-                        boolean bool_35_ = ItemDefinition.method746(widget);
+                    } else if (gameInterface.type == GameInterfaceType.MODEL) {
+                        boolean bool_35_ = ItemDefinition.method746(gameInterface);
                         Object object = null;
                         int i_36_;
                         if (!bool_35_)
-                            i_36_ = widget.animation;
+                            i_36_ = gameInterface.animation;
                         else
-                            i_36_ = widget.alternateAnimation;
+                            i_36_ = gameInterface.alternateAnimation;
 
                         Model model;
-                        if (widget.modelType != WidgetModelType.PLAYER) {
+                        if (gameInterface.modelType != InterfaceModelType.PLAYER) {
                             if (i_36_ == -1) {
-                                model = widget.method646((byte) 46, null, -1, bool_35_, Player.localPlayer.playerAppearance);
+                                model = gameInterface.method646((byte) 46, null, -1, bool_35_, Player.localPlayer.playerAppearance);
                                 if (model == null && FramemapDefinition.aBoolean2177)
                                     bool = false;
                             } else {
                                 AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(i_36_, 2);
-                                model = widget.method646((byte) 76, animationSequence, widget.anInt2654, bool_35_, Player.localPlayer.playerAppearance);
+                                model = gameInterface.method646((byte) 76, animationSequence, gameInterface.animationFrame, bool_35_, Player.localPlayer.playerAppearance);
                                 if (model == null && FramemapDefinition.aBoolean2177)
                                     bool = false;
                             }
-                        } else if (widget.modelId != 0)
+                        } else if (gameInterface.modelId != 0)
                             model = Player.localPlayer.getRotatedModel();
                         else
                             model = LinkedList.aClass30_1082.getAnimatedModel(null, null, -1, -1);
-                        int i_37_ = widget.rotationX;
-                        int i_38_ = widget.rotationY;
-                        int i_39_ = widget.offsetY2d;
-                        int i_40_ = widget.rotationZ;
-                        int i_41_ = widget.offsetX2d;
-                        int i_42_ = widget.modelZoom;
-                        if (widget.itemId != -1) {
-                            ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(widget.itemId, 10);
+                        int i_37_ = gameInterface.rotationX;
+                        int i_38_ = gameInterface.rotationY;
+                        int i_39_ = gameInterface.offsetY2d;
+                        int i_40_ = gameInterface.rotationZ;
+                        int i_41_ = gameInterface.offsetX2d;
+                        int i_42_ = gameInterface.modelZoom;
+                        if (gameInterface.itemId != -1) {
+                            ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(gameInterface.itemId, 10);
                             if (class40_sub5_sub16 != null) {
-                                class40_sub5_sub16 = class40_sub5_sub16.method743(widget.itemAmount);
+                                class40_sub5_sub16 = class40_sub5_sub16.method743(gameInterface.itemAmount);
                                 model = class40_sub5_sub16.asGroundStack(true, 1);
                                 i_38_ = class40_sub5_sub16.zan2d;
                                 i_39_ = class40_sub5_sub16.yOffset2d;
@@ -361,18 +360,18 @@ public class Main extends GameShell {
                                 i_37_ = class40_sub5_sub16.xan2d;
                                 i_42_ = class40_sub5_sub16.zoom2d;
                                 i_40_ = class40_sub5_sub16.yan2d;
-                                if (widget.originalWidth > 0)
-                                    i_42_ = 32 * i_42_ / widget.originalWidth;
+                                if (gameInterface.originalWidth > 0)
+                                    i_42_ = 32 * i_42_ / gameInterface.originalWidth;
                             }
                         }
-                        Rasterizer3D.setBounds(i_0_ + widget.originalWidth / 2, widget.originalHeight / 2 + i_1_);
+                        Rasterizer3D.setBounds(i_0_ + gameInterface.originalWidth / 2, gameInterface.originalHeight / 2 + i_1_);
 
                         int i_43_ = i_42_ * Rasterizer3D.sinetable[i_37_] >> 16;
                         int i_44_ = i_42_ * Rasterizer3D.cosinetable[i_37_] >> 16;
                         if (model != null) {
-                            if (widget.isIf3) {
+                            if (gameInterface.isIf3) {
                                 model.method799();
-                                if (widget.orthogonal)
+                                if (gameInterface.orthogonal)
                                     model.method801(0, i_40_, i_38_, i_37_, i_41_, i_39_ + i_43_ + model.modelHeight / 2, i_44_ + i_39_, i_42_);
                                 else
                                     model.method812(0, i_40_, i_38_, i_37_, i_41_, i_39_ + model.modelHeight / 2 + i_43_, i_44_ + i_39_);
@@ -381,42 +380,42 @@ public class Main extends GameShell {
                         }
                         Rasterizer3D.method702();
                     } else {
-                        if (widget.type == WidgetType.TEXT_INVENTORY) {
-                            TypeFace class40_sub5_sub14_sub1 = widget.method647((byte) 34);
+                        if (gameInterface.type == GameInterfaceType.TEXT_INVENTORY) {
+                            TypeFace class40_sub5_sub14_sub1 = gameInterface.getTypeFace();
                             if (class40_sub5_sub14_sub1 == null) {
                                 if (FramemapDefinition.aBoolean2177)
                                     bool = false;
                                 continue;
                             }
                             int i_45_ = 0;
-                            for (int i_46_ = 0; i_46_ < widget.originalHeight; i_46_++) {
-                                for (int i_47_ = 0; i_47_ < widget.originalWidth; i_47_++) {
-                                    if (widget.items[i_45_] > 0) {
-                                        ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(-1 + widget.items[i_45_], 10);
+                            for (int i_46_ = 0; i_46_ < gameInterface.originalHeight; i_46_++) {
+                                for (int i_47_ = 0; i_47_ < gameInterface.originalWidth; i_47_++) {
+                                    if (gameInterface.items[i_45_] > 0) {
+                                        ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(-1 + gameInterface.items[i_45_], 10);
                                         String class1 = class40_sub5_sub16.name;
                                         if (class1 == null)
                                             class1 = "null";
-                                        if (class40_sub5_sub16.stackable == 1 || widget.itemAmounts[i_45_] != 1)
-                                            class1 = class1 + Native.aClass1_674 + LinkedList.method903(widget.itemAmounts[i_45_], (byte) -105);
-                                        int i_48_ = i_47_ * (widget.itemSpritePadsX + 115) + i_0_;
-                                        int i_49_ = i_46_ * (widget.itemSpritePadsY + 12) + i_1_;
-                                        if (widget.xTextAlignment == 0)
-                                            class40_sub5_sub14_sub1.drawShadowedString(class1, i_48_, i_49_, widget.textShadowed, widget.textColor);
-                                        else if (widget.xTextAlignment == 1)
-                                            class40_sub5_sub14_sub1.drawShadowedStringCenter(class1, i_48_ + widget.originalWidth / 2, i_49_, widget.textColor, widget.textShadowed);
+                                        if (class40_sub5_sub16.stackable == 1 || gameInterface.itemAmounts[i_45_] != 1)
+                                            class1 = class1 + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmounts[i_45_], (byte) -105);
+                                        int i_48_ = i_47_ * (gameInterface.itemSpritePadsX + 115) + i_0_;
+                                        int i_49_ = i_46_ * (gameInterface.itemSpritePadsY + 12) + i_1_;
+                                        if (gameInterface.xTextAlignment == 0)
+                                            class40_sub5_sub14_sub1.drawShadowedString(class1, i_48_, i_49_, gameInterface.textShadowed, gameInterface.textColor);
+                                        else if (gameInterface.xTextAlignment == 1)
+                                            class40_sub5_sub14_sub1.drawShadowedStringCenter(class1, i_48_ + gameInterface.originalWidth / 2, i_49_, gameInterface.textColor, gameInterface.textShadowed);
                                         else
-                                            class40_sub5_sub14_sub1.drawShadowedStringRight(class1, -1 + widget.originalWidth + i_48_, i_49_, widget.textColor, widget.textShadowed);
+                                            class40_sub5_sub14_sub1.drawShadowedStringRight(class1, -1 + gameInterface.originalWidth + i_48_, i_49_, gameInterface.textColor, gameInterface.textShadowed);
                                     }
                                     i_45_++;
                                 }
                             }
                         }
-                        if (widget.type == WidgetType.IF1_TOOLTIP && Class37.method438(arg0, i) && RSString.anInt1711 == WallDecoration.anInt1257) {
+                        if (gameInterface.type == GameInterfaceType.IF1_TOOLTIP && Class37.method438(arg0, i) && RSString.anInt1711 == WallDecoration.anInt1257) {
                             int i_50_ = 0;
                             int i_51_ = 0;
                             TypeFace class40_sub5_sub14_sub1 = WallDecoration.fontNormal;
-                            String class1 = widget.disabledText;
-                            class1 = SceneTile.method532((byte) 20, widget, class1);
+                            String class1 = gameInterface.disabledText;
+                            class1 = SceneTile.method532((byte) 20, gameInterface, class1);
                             while (class1.length() > 0) {
                                 int i_52_ = class1.indexOf(Native.lineBreak);
                                 String class1_53_;
@@ -433,20 +432,20 @@ public class Main extends GameShell {
                                     i_50_ = i_54_;
                             }
                             i_51_ += 7;
-                            int i_55_ = 5 + widget.originalHeight + i_1_;
+                            int i_55_ = 5 + gameInterface.originalHeight + i_1_;
                             if (i_55_ + i_51_ > arg5)
                                 i_55_ = arg5 + -i_51_;
                             i_50_ += 6;
-                            int i_56_ = -5 + widget.originalWidth + i_0_ - i_50_;
+                            int i_56_ = -5 + gameInterface.originalWidth + i_0_ - i_50_;
                             if (i_56_ < 5 + i_0_)
                                 i_56_ = 5 + i_0_;
                             if (i_50_ + i_56_ > arg6)
                                 i_56_ = -i_50_ + arg6;
                             Rasterizer.drawFilledRectangle(i_56_, i_55_, i_50_, i_51_, 16777120);
                             Rasterizer.drawUnfilledRectangle(i_56_, i_55_, i_50_, i_51_, 0);
-                            class1 = widget.disabledText;
+                            class1 = gameInterface.disabledText;
                             int i_57_ = 2 + i_55_ + class40_sub5_sub14_sub1.characterDefaultHeight;
-                            class1 = SceneTile.method532((byte) 20, widget, class1);
+                            class1 = SceneTile.method532((byte) 20, gameInterface, class1);
                             while (class1.length() > 0) {
                                 int i_58_ = class1.indexOf(Native.lineBreak);
                                 String class1_59_;
@@ -461,8 +460,8 @@ public class Main extends GameShell {
                                 i_57_ += 1 + class40_sub5_sub14_sub1.characterDefaultHeight;
                             }
                         }
-                        if (widget.type == WidgetType.LINE)
-                            Rasterizer.drawDiagonalLine(i_0_, i_1_, widget.originalWidth + i_0_, widget.originalHeight + i_1_, widget.textColor);
+                        if (gameInterface.type == GameInterfaceType.LINE)
+                            Rasterizer.drawDiagonalLine(i_0_, i_1_, gameInterface.originalWidth + i_0_, gameInterface.originalHeight + i_1_, gameInterface.textColor);
                     }
                 }
             }
@@ -470,7 +469,7 @@ public class Main extends GameShell {
         return bool;
     }
 
-    public static void method37(CacheIndex_Sub1 arg0, int arg2) {
+    public static void method37(CacheIndex arg0, int arg2) {
         if (Class48.aClass40_Sub1_1132 == null) {
             HashTable.method327(true, null, 255, 255, (byte) 0, 0, (byte) 90);
             Class24.aClass6_Sub1Array580[arg2] = arg0;
@@ -623,7 +622,7 @@ public class Main extends GameShell {
 
     public static void method43(CacheIndex arg0) {
         Class64.aCacheIndex_1521 = arg0;
-        Class59.anInt1383 = Class64.aCacheIndex_1521.method190(16);
+        Class59.anInt1383 = Class64.aCacheIndex_1521.fileLength(16);
     }
 
     public static void method44() {
@@ -633,7 +632,7 @@ public class Main extends GameShell {
         Class35.aBoolean1735 = true;
         HashTable.aBoolean571 = true;
         SubNode.method540();
-        Cache.anInt324 = -1;
+        MemoryCache.anInt324 = -1;
         Class4.menuOpen = false;
         RSString.anInt1690 = -1;
         IncomingPackets.incomingPacket = -1;
@@ -681,25 +680,25 @@ public class Main extends GameShell {
         LinkedList.aLinkedList_1064 = new LinkedList();
         Item.friendsCount = 0;
         Class12.friendListStatus = 0;
-        Class55.method958(ChatBox.dialogueId);
+        GameInterface.resetInterface(ChatBox.dialogueId);
         ChatBox.dialogueId = -1;
-        Class55.method958(ChatBox.openChatboxWidgetId);
-        ChatBox.openChatboxWidgetId = -1;
-        Class55.method958(HuffmanEncoding.openScreenWidgetId);
-        HuffmanEncoding.openScreenWidgetId = -1;
-        Class55.method958(ActorDefinition.openFullScreenWidgetId);
-        ActorDefinition.openFullScreenWidgetId = -1;
-        Class55.method958(UnderlayDefinition.openSecondaryWidgetId);
-        UnderlayDefinition.openSecondaryWidgetId = -1;
-        Class55.method958(Class29.tabAreaOverlayWidgetId);
-        Class29.tabAreaOverlayWidgetId = -1;
-        Class55.method958(GroundItemTile.walkableWidgetId);
+        GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
+        GameInterface.chatboxInterfaceId = -1;
+        GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
+        GameInterface.gameScreenInterfaceId = -1;
+        GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
+        GameInterface.fullscreenInterfaceId = -1;
+        GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
+        GameInterface.fullscreenSiblingInterfaceId = -1;
+        GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
+        GameInterface.tabAreaInterfaceId = -1;
+        GameInterface.resetInterface(GroundItemTile.walkableWidgetId);
         ChatBox.inputType = 0;
         ChatBox.messagePromptRaised = false;
         Class4.menuOpen = false;
         GroundItemTile.walkableWidgetId = -1;
         Native.clickToContinueString = null;
-        CacheIndex_Sub1.anInt1819 = -1;
+        CacheIndex.anInt1819 = -1;
         Class51.anInt1205 = -1;
         Class40_Sub6.anInt2118 = 0;
         Class5.currentTabId = 3;
@@ -747,14 +746,14 @@ public class Main extends GameShell {
         Class13.method242((byte) -91);
         Class33.method413((byte) -116);
         RSRuntimeException.method1054((byte) 125);
-        Widget.method639(122);
+        GameInterface.method639(122);
         Class64.method1015();
 
         if (Class51.anInt1197 == 0) {
-            Class40_Sub3.method530(100);
+            Class40_Sub3.startup(100);
             Class60.method992();
         } else if (Class51.anInt1197 == 5) {
-            Class40_Sub3.method530(100);
+            Class40_Sub3.startup(100);
             Class60.method992();
         } else if (Class51.anInt1197 == 10) {
             Class60.updateLogin();
@@ -787,17 +786,17 @@ public class Main extends GameShell {
             Class22_Sub1.method311(MouseHandler.aCanvas1469);
             Class55.method965(32, MouseHandler.aCanvas1469);
             this.setCanvas((byte) 86);
-            Widget.method642(MouseHandler.aCanvas1469, -10);
+            GameInterface.method642(MouseHandler.aCanvas1469, -10);
             RSRuntimeException.method1056(MouseHandler.aCanvas1469, (byte) 33);
         }
         if (Class51.anInt1197 == 0)
             GameObject.drawLoadingText(Class67.anInt1607, null, Native.currentLoadingText);
         else if (Class51.anInt1197 == 5) {
-            WallDecoration.method951(-19010, Class40_Sub5_Sub17_Sub6.fontBold, Class40_Sub5_Sub17_Sub6.fontSmall);
+            WallDecoration.method951(-19010, TypeFace.fontBold, TypeFace.fontSmall);
         } else if (Class51.anInt1197 == 10) {
-            WallDecoration.method951(-19010, Class40_Sub5_Sub17_Sub6.fontBold, Class40_Sub5_Sub17_Sub6.fontSmall);
+            WallDecoration.method951(-19010, TypeFace.fontBold, TypeFace.fontSmall);
         } else if (Class51.anInt1197 == 20) {
-            WallDecoration.method951(-19010, Class40_Sub5_Sub17_Sub6.fontBold, Class40_Sub5_Sub17_Sub6.fontSmall);
+            WallDecoration.method951(-19010, TypeFace.fontBold, TypeFace.fontSmall);
         } else if (Class51.anInt1197 == 25) {
             if (ProducingGraphicsBuffer.anInt1634 == 1) {
                 if (Class37.anInt874 > PacketBuffer.anInt2231)
@@ -826,9 +825,9 @@ public class Main extends GameShell {
             this.openErrorPage((byte) 120, "js5crc");
             Class51.anInt1197 = 1000;
         } else {
-            if (Class40_Sub5_Sub1.anInt2278 >= 4) {
+            if (ClientScript.anInt2278 >= 4) {
                 if (Class51.anInt1197 > 5) {
-                    Class40_Sub5_Sub1.anInt2278 = 3;
+                    ClientScript.anInt2278 = 3;
                     ISAAC.anInt509 = 3000;
                 } else {
                     this.openErrorPage((byte) 58, "js5io");
@@ -935,7 +934,7 @@ public class Main extends GameShell {
             aBoolean1790 = true;
         Wall.anInt350 = OverlayDefinition.anInt2340;
         Class61.method997(47);
-        Widget.method642(MouseHandler.aCanvas1469, -10);
+        GameInterface.method642(MouseHandler.aCanvas1469, -10);
         RSRuntimeException.method1056(MouseHandler.aCanvas1469, (byte) 70);
         RSCanvas.anInt57 = Signlink.anInt737;
         try {
@@ -956,6 +955,6 @@ public class Main extends GameShell {
         }
         if (Class44.modewhere != 0)
             InteractiveObject.showFps = true;
-        Class12.chatboxInterface = new Widget();
+        Class12.chatboxInterface = new GameInterface();
     }
 }

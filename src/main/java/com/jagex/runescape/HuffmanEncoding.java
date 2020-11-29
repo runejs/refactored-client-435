@@ -1,13 +1,10 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -27,7 +24,6 @@ public class HuffmanEncoding {
     public static int anInt1545 = 0;
     public static int reportAbuseInterfaceID = -1;
     public static int anInt1559 = 7759444;
-    public static int openScreenWidgetId = -1;
     public static int[] anIntArray1564 = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, 85, 80, 84, -1, 91, -1, -1, -1, 81, 82, 86, -1, -1, -1, -1, -1, -1, -1, -1, 0, -1, -1, -1, -1, 83, 104, 105, 103, 102, 96, 98, 97, 99, -1, -1, -1, -1, -1, -1, -1, 25, 16, 17, 18, 19, 20, 21, 22, 23, 24, -1, -1, -1, -1, -1, -1, -1, 48, 68, 66, 50, 34, 51, 52, 53, 39, 54, 55, 56, 70, 69, 40, 41, 32, 35, 49, 36, 38, 67, 33, 65, 37, 64, -1, -1, -1, -1, -1, 228, 231, 227, 233, 224, 219, 225, 230, 226, 232, 89, 87, -1, 88, 229, 90, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, -1, -1, -1, 101, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
 
     public int[] chatDecryptKeys;
@@ -227,7 +223,7 @@ public class HuffmanEncoding {
     }
 
     // parse client scripts
-    public static int parseClientScripts(int arg0, boolean arg1, Widget arg2) {
+    public static int parseClientScripts(int arg0, boolean arg1, GameInterface arg2) {
         if (arg2.clientScripts == null || arg0 >= arg2.clientScripts.length) {
             return -2;
         }
@@ -267,12 +263,12 @@ public class HuffmanEncoding {
                 if (i_18_ == 4) {
                     int i_19_ = is[i_14_++] << 16;
                     i_19_ += is[i_14_++];
-                    Widget widget = Widget.forId(i_19_);
+                    GameInterface gameInterface = GameInterface.getChildInterface(i_19_);
                     int i_20_ = is[i_14_++];
                     if (i_20_ != -1 && (!ItemDefinition.forId(i_20_, 10).members || Class22.membersWorld)) {
-                        for (int i_21_ = 0; i_21_ < widget.items.length; i_21_++) {
-                            if (1 + i_20_ == widget.items[i_21_]) {
-                                i_16_ += widget.itemAmounts[i_21_];
+                        for (int i_21_ = 0; i_21_ < gameInterface.items.length; i_21_++) {
+                            if (1 + i_20_ == gameInterface.items[i_21_]) {
+                                i_16_ += gameInterface.itemAmounts[i_21_];
                             }
                         }
                     }
@@ -301,11 +297,11 @@ public class HuffmanEncoding {
                 if (i_18_ == 10) {
                     int i_23_ = is[i_14_++] << 16;
                     i_23_ += is[i_14_++];
-                    Widget widget = Widget.forId(i_23_);
+                    GameInterface gameInterface = GameInterface.getChildInterface(i_23_);
                     int i_24_ = is[i_14_++];
                     if (i_24_ != -1 && (!ItemDefinition.forId(i_24_, 10).members || Class22.membersWorld)) {
-                        for (int i_25_ = 0; widget.items.length > i_25_; i_25_++) {
-                            if (i_24_ + 1 == widget.items[i_25_]) {
+                        for (int i_25_ = 0; gameInterface.items.length > i_25_; i_25_++) {
+                            if (i_24_ + 1 == gameInterface.items[i_25_]) {
                                 i_16_ = 999999999;
                                 break;
                             }
@@ -363,7 +359,7 @@ public class HuffmanEncoding {
         if (arg0 < 123) {
             method1030((byte) -24);
         }
-        for (Class40_Sub2 class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aLinkedList_2268.method909(-4)) {
+        for (Class40_Sub2 class40_sub2 = (Class40_Sub2) ClientScript.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) ClientScript.aLinkedList_2268.method909(-4)) {
             if (class40_sub2.aGameObjectDefinition_2011 != null) {
                 class40_sub2.method528();
             }

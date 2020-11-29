@@ -13,9 +13,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 
 public class Class40_Sub5_Sub17_Sub6 extends Renderable {
-    public static TypeFace fontSmall;
     public static ProducingGraphicsBuffer framePieceTop;
-    public static TypeFace fontBold;
     public static int[] anIntArray3248;
     public static int[] anIntArray3250;
     public static int[] anIntArray3253;
@@ -124,10 +122,10 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
             method834(106, 6);
         if(!aBoolean3237) {
             anInt3233 += arg1;
-            while(anInt3233 > aAnimationSequence_3242.animationLengths[anInt3240]) {
-                anInt3233 -= aAnimationSequence_3242.animationLengths[anInt3240];
+            while(anInt3233 > aAnimationSequence_3242.frameLengths[anInt3240]) {
+                anInt3233 -= aAnimationSequence_3242.frameLengths[anInt3240];
                 anInt3240++;
-                if(aAnimationSequence_3242.anIntArray2485.length <= anInt3240) {
+                if(aAnimationSequence_3242.frameIds.length <= anInt3240) {
                     aBoolean3237 = true;
                     break;
                 }

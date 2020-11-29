@@ -1,15 +1,13 @@
 package com.jagex.runescape.media.renderable;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.Widget.Widget;
-import com.jagex.runescape.cache.media.Widget.WidgetType;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterfaceType;
 
 public abstract class Renderable extends SubNode {
-    public static CacheIndex_Sub1 aClass6_Sub1_2857;
     public static long aLong2858 = 0L;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2860;
     public static int[] anIntArray2865;
@@ -23,43 +21,43 @@ public abstract class Renderable extends SubNode {
     public int modelHeight = 1000;
 
     public static boolean handleSequences(int arg1) {
-        if(!ProducingGraphicsBuffer.method1043(arg1))
+        if(!GameInterface.decodeGameInterface(arg1))
             return false;
-        Widget[] widgets = Widget.interfaces[arg1];
+        GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[arg1];
         boolean bool = false;
-        for(int i = 0; widgets.length > i; i++) {
-            Widget widget = widgets[i];
-            if(widget != null && widget.type == WidgetType.MODEL) {
-                if(widget.animation != -1 || widget.alternateAnimation != -1) {
-                    boolean bool_0_ = ItemDefinition.method746(widget);
+        for(int i = 0; gameInterfaces.length > i; i++) {
+            GameInterface gameInterface = gameInterfaces[i];
+            if(gameInterface != null && gameInterface.type == GameInterfaceType.MODEL) {
+                if(gameInterface.animation != -1 || gameInterface.alternateAnimation != -1) {
+                    boolean bool_0_ = ItemDefinition.method746(gameInterface);
                     int i_1_;
                     if(bool_0_)
-                        i_1_ = widget.alternateAnimation;
+                        i_1_ = gameInterface.alternateAnimation;
                     else
-                        i_1_ = widget.animation;
+                        i_1_ = gameInterface.animation;
                     if(i_1_ != -1) {
                         AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(i_1_, 2);
-                        widget.anInt2660 += Class5.anInt199;
-                        while(animationSequence.animationLengths[widget.anInt2654] < widget.anInt2660) {
+                        gameInterface.remainingAnimationTime += Class5.anInt199;
+                        while(animationSequence.frameLengths[gameInterface.animationFrame] < gameInterface.remainingAnimationTime) {
                             bool = true;
-                            widget.anInt2660 -= animationSequence.animationLengths[widget.anInt2654];
-                            widget.anInt2654++;
-                            if(widget.anInt2654 >= animationSequence.anIntArray2485.length) {
-                                widget.anInt2654 -= animationSequence.frameStep;
-                                if(widget.anInt2654 < 0 || animationSequence.anIntArray2485.length <= widget.anInt2654)
-                                    widget.anInt2654 = 0;
+                            gameInterface.remainingAnimationTime -= animationSequence.frameLengths[gameInterface.animationFrame];
+                            gameInterface.animationFrame++;
+                            if(gameInterface.animationFrame >= animationSequence.frameIds.length) {
+                                gameInterface.animationFrame -= animationSequence.frameStep;
+                                if(gameInterface.animationFrame < 0 || animationSequence.frameIds.length <= gameInterface.animationFrame)
+                                    gameInterface.animationFrame = 0;
                             }
                         }
                     }
                 }
-                if(widget.anInt2722 != 0) {
+                if(gameInterface.anInt2722 != 0) {
                     bool = true;
-                    int i_2_ = widget.anInt2722 >> 16;
-                    int i_3_ = widget.anInt2722 << 16 >> 16;
+                    int i_2_ = gameInterface.anInt2722 >> 16;
+                    int i_3_ = gameInterface.anInt2722 << 16 >> 16;
                     i_2_ *= Class5.anInt199;
-                    widget.rotationX = 0x7ff & i_2_ + widget.rotationX;
+                    gameInterface.rotationX = 0x7ff & i_2_ + gameInterface.rotationX;
                     i_3_ *= Class5.anInt199;
-                    widget.rotationZ = 0x7ff & widget.rotationZ + i_3_;
+                    gameInterface.rotationZ = 0x7ff & gameInterface.rotationZ + i_3_;
                 }
             }
         }

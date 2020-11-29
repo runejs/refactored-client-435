@@ -1,9 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.VarbitDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
-import com.jagex.runescape.cache.media.Widget.WidgetType;
+import com.jagex.runescape.cache.def.ClientScript;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.Rasterizer3D;
@@ -21,32 +19,10 @@ public class Class61 {
     public static boolean aBoolean1444 = false;
     public static int[] anIntArray1445;
 
-    public Class40_Sub5_Sub1 aClass40_Sub5_Sub1_1419;
+    public ClientScript aClientScript_1419;
     public int[] anIntArray1420;
     public String[] aClass1Array1430;
     public int anInt1433 = -1;
-
-    public static void method995(byte arg0, int arg1) {
-        if(arg1 != -1 && ProducingGraphicsBuffer.aBooleanArray1629[arg1]) {
-            VarbitDefinition.aCacheIndex_2349.method171(1, arg1);
-            if(arg0 < 31)
-                English.suffixWishesToDuelWithYou = null;
-            if(Widget.interfaces[arg1] != null) {
-                boolean bool = true;
-                for(int i = 0; Widget.interfaces[arg1].length > i; i++) {
-                    if(Widget.interfaces[arg1][i] != null) {
-                        if(Widget.interfaces[arg1][i].type != WidgetType.INVENTORY)
-                            Widget.interfaces[arg1][i] = null;
-                        else
-                            bool = false;
-                    }
-                }
-                if(bool)
-                    Widget.interfaces[arg1] = null;
-                ProducingGraphicsBuffer.aBooleanArray1629[arg1] = false;
-            }
-        }
-    }
 
     public static void method996(int arg0) {
         if(arg0 != 19655)

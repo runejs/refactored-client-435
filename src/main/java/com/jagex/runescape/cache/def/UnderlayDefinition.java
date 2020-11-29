@@ -2,22 +2,19 @@ package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
 import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.TextUtils;
 
 public class UnderlayDefinition extends SubNode {
-    public static int openSecondaryWidgetId = -1;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
-    public static CacheIndex_Sub1 aClass6_Sub1_2571;
     public static int anInt2576;
     public static int anInt2581;
     public static CacheIndex aCacheIndex_2582;
@@ -60,7 +57,7 @@ public class UnderlayDefinition extends SubNode {
                     Class59.friends[Item.friendsCount] = name;
                     Class40_Sub7.friendWorlds[Item.friendsCount] = 0;
                     Item.friendsCount++;
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                     SceneCluster.packetBuffer.putPacket(114);
                     SceneCluster.packetBuffer.putLongBE(name);
                 }

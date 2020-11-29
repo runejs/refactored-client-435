@@ -1,17 +1,12 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.Cache;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.CacheIndex_Sub1;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
-import com.jagex.runescape.cache.def.VarbitDefinition;
+import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.io.Buffer;
@@ -45,7 +40,6 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     public static int[] directions = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
 
     public static int atInventoryInterfaceType = 0;
-    public static CacheIndex_Sub1 aClass6_Sub1_3000;
     public static int anInt3004;
 
 
@@ -96,23 +90,6 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         else
             aAnimationSequence_3006 = null;
 
-    }
-
-    public static void method758(CacheIndex arg0, CacheIndex arg1, CacheIndex arg2, byte arg3) {
-        do {
-            Cache.aCacheIndex_329 = arg2;
-            VarbitDefinition.aCacheIndex_2349 = arg0;
-            Class40_Sub5_Sub15.aCacheIndex_2779 = arg1;
-            Widget.interfaces = new Widget
-                    [VarbitDefinition.aCacheIndex_2349.method175(-82)][];
-            ProducingGraphicsBuffer.aBooleanArray1629 = new boolean
-                    [VarbitDefinition.aCacheIndex_2349.method175(-116)];
-            if(arg3 == 90)
-                break;
-            aClass6_Sub1_3000 = null;
-
-            break;
-        } while(false);
     }
 
 
@@ -207,7 +184,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             Landscape.framePieceRight = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = HuffmanEncoding.method1028(arg2, Native.aClass1_1024, (byte) 21, Native.aClass1_305);
-            Class40_Sub5_Sub1.chatboxRight = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            ClientScript.chatboxRight = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = HuffmanEncoding.method1028(arg2, Native.aClass1_281, (byte) 21, Native.aClass1_305);
             Class39.mapbackLeft = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
@@ -375,7 +352,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             }
         }
         if(arg0 > -101)
-            aClass6_Sub1_3000 = null;
+            MemoryCache.skinDefinitionCacheIndex = null;
         if((OverlayDefinition.tile_flags[Player.worldLevel][Player.localPlayer.worldX >> 7][Player.localPlayer.worldY >> 7] & 0x4) != 0)
             i = Player.worldLevel;
         return i;
@@ -669,10 +646,10 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             anInt2976 = 0x7ff & (int) (325.949 * Math.atan2(aDouble2972, aDouble2995));
             if(aAnimationSequence_3006 != null) {
                 anInt2973 += arg1;
-                while(aAnimationSequence_3006.animationLengths[anInt2982] < anInt2973) {
-                    anInt2973 -= aAnimationSequence_3006.animationLengths[anInt2982];
+                while(aAnimationSequence_3006.frameLengths[anInt2982] < anInt2973) {
+                    anInt2973 -= aAnimationSequence_3006.frameLengths[anInt2982];
                     anInt2982++;
-                    if(aAnimationSequence_3006.anIntArray2485.length <= anInt2982)
+                    if(aAnimationSequence_3006.frameIds.length <= anInt2982)
                         anInt2982 = 0;
                 }
             }

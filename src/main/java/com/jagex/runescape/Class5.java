@@ -1,8 +1,7 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
-import com.jagex.runescape.cache.media.Widget.Widget;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
@@ -15,7 +14,6 @@ import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.SceneTile;
@@ -54,16 +52,16 @@ public class Class5 {
     }
 
     public static void method164() {
-        Renderable.handleSequences(ActorDefinition.openFullScreenWidgetId);
-        if(UnderlayDefinition.openSecondaryWidgetId != -1)
-            Renderable.handleSequences(UnderlayDefinition.openSecondaryWidgetId);
+        Renderable.handleSequences(GameInterface.fullscreenInterfaceId);
+        if(GameInterface.fullscreenSiblingInterfaceId != -1)
+            Renderable.handleSequences(GameInterface.fullscreenSiblingInterfaceId);
         anInt199 = 0;
         ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.prepareRasterizer();
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(Player.viewportOffsets);
         Rasterizer.resetPixels();
-        Class40_Sub5_Sub6.drawInterface(0, ActorDefinition.openFullScreenWidgetId, 503, (byte) -5, 0, 0, 765);
-        if(UnderlayDefinition.openSecondaryWidgetId != -1)
-            Class40_Sub5_Sub6.drawInterface(0, UnderlayDefinition.openSecondaryWidgetId, 503, (byte) -5, 0, 0, 765);
+        Class40_Sub5_Sub6.drawInterface(0, GameInterface.fullscreenInterfaceId, 503, (byte) -5, 0, 0, 765);
+        if(GameInterface.fullscreenSiblingInterfaceId != -1)
+            Class40_Sub5_Sub6.drawInterface(0, GameInterface.fullscreenSiblingInterfaceId, 503, (byte) -5, 0, 0, 765);
         if(!Class4.menuOpen) {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
@@ -162,7 +160,7 @@ public class Class5 {
         }
     }
 
-    public static boolean method166(byte arg0, Widget arg1) {
+    public static boolean method166(byte arg0, GameInterface arg1) {
         int i = arg1.contentType;
         if(Class12.friendListStatus == 2) {
             if(i == 201) {
@@ -241,7 +239,7 @@ public class Class5 {
         Class13.aClass9_406.method235();
     }
 
-    public static void scrollInterface(int arg0, int arg1, int arg2, int arg3, Widget arg5, int arg6, int arg7, int arg8) {
+    public static void scrollInterface(int arg0, int arg1, int arg2, int arg3, GameInterface arg5, int arg6, int arg7, int arg8) {
         if(Class61.aBoolean1444)
             Landscape.anInt1171 = 32;
         else
@@ -250,7 +248,7 @@ public class Class5 {
         if(arg2 >= arg6 && arg2 < arg6 + 16 && arg1 >= arg8 && 16 + arg8 > arg1) {
             arg5.scrollPosition -= Npc.anInt3294 * 4;
             if(arg7 == 1)
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
             if(arg7 == 2 || arg7 == 3)
                 ChatBox.redrawChatbox = true;
         } else if(arg6 > arg2 || arg6 + 16 <= arg2 || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
@@ -260,7 +258,7 @@ public class Class5 {
                 if(arg7 == 2 || arg7 == 3)
                     ChatBox.redrawChatbox = true;
                 if(arg7 == 1)
-                    ISAAC.redrawTabArea = true;
+                    GameInterface.redrawTabArea = true;
                 if(i < 8)
                     i = 8;
                 int i_17_ = -i + arg0 + -32;
@@ -272,7 +270,7 @@ public class Class5 {
             if(arg7 == 2 || arg7 == 3)
                 ChatBox.redrawChatbox = true;
             if(arg7 == 1)
-                ISAAC.redrawTabArea = true;
+                GameInterface.redrawTabArea = true;
         }
     }
 }
