@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.ClientScript;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.Rasterizer3D;
@@ -18,7 +19,7 @@ public class Class61 {
     public static boolean aBoolean1444 = false;
     public static int[] anIntArray1445;
 
-    public Class40_Sub5_Sub1 aClass40_Sub5_Sub1_1419;
+    public ClientScript aClientScript_1419;
     public int[] anIntArray1420;
     public String[] aClass1Array1430;
     public int anInt1433 = -1;

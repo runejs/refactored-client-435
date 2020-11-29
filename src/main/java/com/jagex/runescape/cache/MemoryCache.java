@@ -9,7 +9,6 @@ public class MemoryCache {
     public static int anInt321 = 5063219;
     public static volatile int eventMouseY = -1;
     public static int anInt324 = 0;
-    public static MemoryCache aClass9_326 = new MemoryCache(200);
     public static boolean redrawChatbox = false;
     public static CacheIndex gameInterfaceCacheIndex;
     public static CacheIndex gameDefinitionsCacheIndex;
@@ -23,7 +22,7 @@ public class MemoryCache {
     public static CacheIndex gameTextureCacheIndex;
     public static CacheIndex huffmanCacheIndex;
     public static CacheIndex jingleCacheIndex;
-    public static CacheIndex cs2CacheIndex;
+    public static CacheIndex clientScriptCacheIndex;
 
     public SubNode subNode = new SubNode();
     public int unknownInt1;

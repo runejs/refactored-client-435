@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.UnderlayDefinition;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;

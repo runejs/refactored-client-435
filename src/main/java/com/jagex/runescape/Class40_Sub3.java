@@ -4,7 +4,7 @@ import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.console.Console;
@@ -83,7 +83,7 @@ public class Class40_Sub3 extends Node {
             MemoryCache.gameTextureCacheIndex = CacheIndex.loadCacheIndex(9, true, false, true);
             MemoryCache.huffmanCacheIndex = CacheIndex.loadCacheIndex(10, true, false, true);
             MemoryCache.jingleCacheIndex = CacheIndex.loadCacheIndex(11, true, false, true);
-            MemoryCache.cs2CacheIndex = CacheIndex.loadCacheIndex(12, true, false, true);
+            MemoryCache.clientScriptCacheIndex = CacheIndex.loadCacheIndex(12, true, false, true);
             Class40_Sub5_Sub6.anInt2451 = 40;
             Native.currentLoadingText = English.connectingToUpdateServer;
             Class67.anInt1607 = 20;
@@ -101,7 +101,7 @@ public class Class40_Sub3 extends Node {
             i += MemoryCache.gameTextureCacheIndex.getPercentLoaded() * 5 / 100;
             i += 5 * MemoryCache.huffmanCacheIndex.getPercentLoaded() / 100;
             i += 5 * MemoryCache.jingleCacheIndex.getPercentLoaded() / 100;
-            i += 5 * MemoryCache.cs2CacheIndex.getPercentLoaded() / 100;
+            i += 5 * MemoryCache.clientScriptCacheIndex.getPercentLoaded() / 100;
             if (i == 100) {
                 Class40_Sub5_Sub6.anInt2451 = 45;
                 Native.currentLoadingText = English.loadedUpdateList;
@@ -278,7 +278,7 @@ public class Class40_Sub3 extends Node {
             Class67.anInt1607 = 94;
         } else if (Class40_Sub5_Sub6.anInt2451 == 120) {
             if (MemoryCache.huffmanCacheIndex.method194(Native.aClass1_615, "")) {
-                HuffmanEncoding huffmanEncoding = new HuffmanEncoding(MemoryCache.huffmanCacheIndex.method170("", Native.aClass1_615, arg0 + -99));
+                HuffmanEncoding huffmanEncoding = new HuffmanEncoding(MemoryCache.huffmanCacheIndex.method170("", Native.aClass1_615));
                 Item.method778(huffmanEncoding);
                 Class40_Sub5_Sub6.anInt2451 = 130;
                 Native.currentLoadingText = English.loadedWordpack;
@@ -291,12 +291,12 @@ public class Class40_Sub3 extends Node {
             if (!MemoryCache.gameInterfaceCacheIndex.method185((byte) 66)) {
                 Native.currentLoadingText = English.loadingInterfaces + (4 * MemoryCache.gameInterfaceCacheIndex.method202() / 5) + Native.aClass1_1041;
                 Class67.anInt1607 = 100;
-            } else if (MemoryCache.cs2CacheIndex.method185((byte) 69)) {
+            } else if (MemoryCache.clientScriptCacheIndex.method185((byte) 69)) {
                 Native.currentLoadingText = English.loadedInterfaces;
                 Class40_Sub5_Sub6.anInt2451 = 140;
                 Class67.anInt1607 = 100;
             } else {
-                Native.currentLoadingText = English.loadingInterfaces + (80 + MemoryCache.cs2CacheIndex.method202() / 5) + Native.aClass1_1041;
+                Native.currentLoadingText = English.loadingInterfaces + (80 + MemoryCache.clientScriptCacheIndex.method202() / 5) + Native.aClass1_1041;
                 Class67.anInt1607 = 100;
             }
         } else {
@@ -326,13 +326,13 @@ public class Class40_Sub3 extends Node {
         Class27.aCacheIndex_654 = arg2;
         if (arg0 == 3) {
             Class49.aCacheIndex_1150 = arg1;
-            PlayerAppearance.identityKitLength = Class49.aCacheIndex_1150.method190(3);
+            PlayerAppearance.identityKitLength = Class49.aCacheIndex_1150.fileLength(3);
         }
     }
 
     public static void method980(int arg0, CacheIndex arg1, boolean arg2, CacheIndex arg3) {
         aCacheIndex_2037 = arg3;
-        GameObjectDefinition.count = aCacheIndex_2037.method190(6);
+        GameObjectDefinition.count = aCacheIndex_2037.fileLength(6);
 
         Class35.aBoolean1734 = arg2;
         if (arg0 == 28987)

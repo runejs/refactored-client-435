@@ -268,13 +268,11 @@ public class CacheIndex {
         } while(false);
     }
 
-    public void method177(int arg0, int arg1) {
+    public void method177(int arg1) {
         if(aClass56_1812 != null && aBooleanArray1796 != null && aBooleanArray1796[arg1])
             GameObjectDefinition.method602(this, arg1, aClass56_1812);
         else
             HashTable.method327(true, this, anInt1807, arg1, (byte) 2, anIntArray252[arg1], (byte) -127);
-        if(arg0 <= 1)
-            aBoolean1811 = true;
     }
 
     public void method174(int arg0) {
@@ -332,9 +330,7 @@ public class CacheIndex {
         return i_3_ * 100 / i;
     }
 
-    public byte[] method170(String arg0, String arg1, int arg2) {
-        if(arg2 != 1)
-            method186(-26, 53);
+    public byte[] method170(String arg0, String arg1) {
         arg1 = arg1.toLowerCase();
         arg0 = arg0.toLowerCase();
         int i = aClass42_254.method882(RSString.stringHash(arg1));
@@ -369,7 +365,7 @@ public class CacheIndex {
             return true;
         if(aByteArrayArray212[arg0] != null)
             return true;
-        method177(122, arg0);
+        method177(arg0);
         return aByteArrayArray212[arg0] != null;
     }
 
@@ -383,7 +379,7 @@ public class CacheIndex {
         if(inMemoryCacheBuffer[arg0][arg1] == null) {
             boolean bool = method181(arg0, arg2);
             if(!bool) {
-                method177(33, arg0);
+                method177(arg0);
                 bool = method181(arg0, arg2);
                 if(!bool)
                     return null;
@@ -531,7 +527,7 @@ public class CacheIndex {
         if(inMemoryCacheBuffer[arg2][arg0] == null) {
             boolean bool = method181(arg2, null);
             if(!bool) {
-                method177(45, arg2);
+                method177(arg2);
                 bool = method181(arg2, null);
                 if(!bool)
                     return null;
@@ -553,7 +549,7 @@ public class CacheIndex {
         for(int i = 0; i < anIntArray227.length; i++) {
             int i_47_ = anIntArray227[i];
             if(aByteArrayArray212[i_47_] == null) {
-                method177(59, i_47_);
+                method177(i_47_);
                 if(aByteArrayArray212[i_47_] == null)
                     bool = false;
             }
@@ -561,14 +557,12 @@ public class CacheIndex {
         return bool;
     }
 
-    public boolean method186(int arg0, int arg1) {
+    public boolean fileExists(int arg1) {
         if(aByteArrayArray212[arg1] != null)
             return true;
-        method177(74, arg1);
+        method177(arg1);
         if(aByteArrayArray212[arg1] != null)
             return true;
-        if(arg0 < 102)
-            aLong219 = 119L;
         return false;
     }
 
@@ -580,8 +574,8 @@ public class CacheIndex {
         throw new RuntimeException();
     }
 
-    public int method190(int arg0) {
-        return inMemoryCacheBuffer[arg0].length;
+    public int fileLength(int fileId) {
+        return inMemoryCacheBuffer[fileId].length;
     }
 
     public void method191(int arg0) {
@@ -592,7 +586,7 @@ public class CacheIndex {
             }
         }
         if(arg0 != 1120)
-            method186(-112, 82);
+            fileExists(82);
     }
 
     public int[] method192(int arg0, boolean arg1) {

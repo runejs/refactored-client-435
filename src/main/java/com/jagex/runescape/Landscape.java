@@ -4,12 +4,13 @@ import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.FileOperations;
 import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.cache.def.ClientScript;
 import com.jagex.runescape.cache.def.FramemapDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -280,7 +281,7 @@ public class Landscape {
     }
 
     public static void method934(int arg0, int arg2, int arg3, int arg4) {
-        for(Class40_Sub2 class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aLinkedList_2268.method909(-4)) {
+        for(Class40_Sub2 class40_sub2 = (Class40_Sub2) ClientScript.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) ClientScript.aLinkedList_2268.method909(-4)) {
             if(class40_sub2.anInt1997 != -1 || class40_sub2.anIntArray2005 != null) {
                 int i_48_ = 0;
                 if(arg0 <= class40_sub2.anInt2013) {

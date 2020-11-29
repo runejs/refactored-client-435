@@ -3,10 +3,11 @@ package com.jagex.runescape.frame;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.ClientScript;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -151,7 +152,7 @@ public class ScreenController {
         drawFramePiece(RSCanvas.chatboxProducingGraphicsBuffer, x + 17, y + 16);
         drawFramePiece(HuffmanEncoding.aProducingGraphicsBuffer_1541, x, y + 112);
         drawFramePieceCutout(RSCanvas.tabBottom, x + 496, y + 125, 20, RSCanvas.tabBottom.height, 0, 0);
-        drawFramePiece(Class40_Sub5_Sub1.chatboxRight, x, y + 16);
+        drawFramePiece(ClientScript.chatboxRight, x, y + 16);
         drawFramePieceCutout(Class17.chatboxTop, x, y, Class17.chatboxTop.width - 37, Class17.chatboxTop.height - 3, 0, 3);
         //        System.out.println(Class40_Sub5_Sub1.chatboxRight.height + (Class17.chatboxTop.height-3) + HuffmanEncoding.aProducingGraphicsBuffer_1541.height);
 

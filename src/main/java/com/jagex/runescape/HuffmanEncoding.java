@@ -1,13 +1,10 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -266,7 +263,7 @@ public class HuffmanEncoding {
                 if (i_18_ == 4) {
                     int i_19_ = is[i_14_++] << 16;
                     i_19_ += is[i_14_++];
-                    GameInterface gameInterface = GameInterface.forId(i_19_);
+                    GameInterface gameInterface = GameInterface.getChildInterface(i_19_);
                     int i_20_ = is[i_14_++];
                     if (i_20_ != -1 && (!ItemDefinition.forId(i_20_, 10).members || Class22.membersWorld)) {
                         for (int i_21_ = 0; i_21_ < gameInterface.items.length; i_21_++) {
@@ -300,7 +297,7 @@ public class HuffmanEncoding {
                 if (i_18_ == 10) {
                     int i_23_ = is[i_14_++] << 16;
                     i_23_ += is[i_14_++];
-                    GameInterface gameInterface = GameInterface.forId(i_23_);
+                    GameInterface gameInterface = GameInterface.getChildInterface(i_23_);
                     int i_24_ = is[i_14_++];
                     if (i_24_ != -1 && (!ItemDefinition.forId(i_24_, 10).members || Class22.membersWorld)) {
                         for (int i_25_ = 0; gameInterface.items.length > i_25_; i_25_++) {
@@ -362,7 +359,7 @@ public class HuffmanEncoding {
         if (arg0 < 123) {
             method1030((byte) -24);
         }
-        for (Class40_Sub2 class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) Class40_Sub5_Sub1.aLinkedList_2268.method909(-4)) {
+        for (Class40_Sub2 class40_sub2 = (Class40_Sub2) ClientScript.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) ClientScript.aLinkedList_2268.method909(-4)) {
             if (class40_sub2.aGameObjectDefinition_2011 != null) {
                 class40_sub2.method528();
             }

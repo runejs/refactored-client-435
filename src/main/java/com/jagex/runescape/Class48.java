@@ -5,8 +5,8 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
-import com.jagex.runescape.cache.media.Widget.GameInterfaceType;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterfaceType;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
@@ -282,7 +282,7 @@ public class Class48 {
                             else
                                 OverlayDefinition.addActionRow(English.examine, itemDefinition.id, gameInterface.id & 0x7fff, gameInterface.parentId, 1007, Native.aClass1_1114+ itemDefinition.name);
                         }
-                        if(gameInterface.aBoolean2688 && gameInterface.aClass1Array2661 != null && i_2_ <= arg8 && i_1_ <= arg4 && gameInterface.originalWidth + i_2_ > arg8 && arg4 < i_1_ + gameInterface.originalHeight) {
+                        if(gameInterface.hasListeners && gameInterface.aClass1Array2661 != null && i_2_ <= arg8 && i_1_ <= arg4 && gameInterface.originalWidth + i_2_ > arg8 && arg4 < i_1_ + gameInterface.originalHeight) {
                             String class1 = "";
                             if(gameInterface.itemId != -1) {
                                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(gameInterface.itemId, arg5 ^ 0xa);

@@ -4,8 +4,8 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
-import com.jagex.runescape.cache.media.Widget.GameInterfaceType;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterfaceType;
 
 public abstract class Renderable extends SubNode {
     public static long aLong2858 = 0L;
@@ -23,7 +23,7 @@ public abstract class Renderable extends SubNode {
     public static boolean handleSequences(int arg1) {
         if(!GameInterface.decodeGameInterface(arg1))
             return false;
-        GameInterface[] gameInterfaces = GameInterface.interfaces[arg1];
+        GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[arg1];
         boolean bool = false;
         for(int i = 0; gameInterfaces.length > i; i++) {
             GameInterface gameInterface = gameInterfaces[i];

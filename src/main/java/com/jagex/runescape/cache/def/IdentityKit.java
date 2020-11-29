@@ -27,41 +27,6 @@ public class IdentityKit extends SubNode {
         recolorToReplace = new int[6];
     }
 
-    public static Class40_Sub5_Sub1 method626(int arg0, int arg1) {
-        long l = arg0 + (arg1 << 16);
-        Class40_Sub5_Sub1 class40_sub5_sub1 = (Class40_Sub5_Sub1) Class17.aClass9_449.get(l);
-        if(class40_sub5_sub1 != null) {
-            return class40_sub5_sub1;
-        }
-        byte[] is = MemoryCache.cs2CacheIndex.method170(Native.aClass1_3044, arg1 + Native.aClass1_2084 + arg0, 1);
-        Buffer class40_sub1 = new Buffer(is);
-        class40_sub5_sub1 = new Class40_Sub5_Sub1();
-        class40_sub1.currentPosition = class40_sub1.buffer.length + -12;
-        int i = class40_sub1.getIntBE();
-        int i_0_ = 0;
-        class40_sub5_sub1.anInt2271 = class40_sub1.getUnsignedShortBE();
-        class40_sub5_sub1.anInt2267 = class40_sub1.getUnsignedShortBE();
-        class40_sub5_sub1.anInt2263 = class40_sub1.getUnsignedShortBE();
-        class40_sub5_sub1.anInt2266 = class40_sub1.getUnsignedShortBE();
-        class40_sub5_sub1.aClass1Array2270 = new String[i];
-        class40_sub5_sub1.anIntArray2262 = new int[i];
-        class40_sub1.currentPosition = 0;
-        class40_sub5_sub1.anIntArray2272 = new int[i];
-        while(class40_sub1.currentPosition < -12 + class40_sub1.buffer.length) {
-            int i_1_ = class40_sub1.getUnsignedShortBE();
-            if(i_1_ == 3) {
-                class40_sub5_sub1.aClass1Array2270[i_0_] = class40_sub1.getString();
-            } else if(i_1_ >= 100 || i_1_ == 21 || i_1_ == 38 || i_1_ == 39) {
-                class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.getUnsignedByte();
-            } else {
-                class40_sub5_sub1.anIntArray2262[i_0_] = class40_sub1.getIntBE();
-            }
-            class40_sub5_sub1.anIntArray2272[i_0_++] = i_1_;
-        }
-        Class17.aClass9_449.put(l, class40_sub5_sub1);
-        return class40_sub5_sub1;
-    }
-
     // ???
     public static IdentityKit cache(int arg1) {
         IdentityKit identityKit = (IdentityKit) ProducingGraphicsBuffer.aClass9_1615.get(arg1);

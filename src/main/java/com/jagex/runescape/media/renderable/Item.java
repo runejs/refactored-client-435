@@ -111,7 +111,7 @@ public class Item extends Renderable {
             Rasterizer.resetPixels();
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631 = Class40_Sub5_Sub13.createGraphicsBuffer(75, 94, arg0);
             Rasterizer.resetPixels();
-            byte[] is = arg2.method170("", Native.titleImage, 1);
+            byte[] is = arg2.method170("", Native.titleImage);
             ImageRGB class40_sub5_sub14_sub4 = new ImageRGB(is, arg0);
             Class8.flameLeftBackground.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(0, 0);

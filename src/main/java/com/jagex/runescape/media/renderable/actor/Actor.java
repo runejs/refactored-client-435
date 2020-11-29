@@ -1,13 +1,14 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
+import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
@@ -263,9 +264,9 @@ public abstract class Actor extends Renderable {
     }
 
     public static void method783() {
-        MemoryCache.aClass9_326.method235();
+        ImageRGB.imageRgbCache.method235();
         WallDecoration.aClass9_1264.method235();
-        Class67.aClass9_1582.method235();
+        TypeFace.typeFaceCache.method235();
     }
 
 

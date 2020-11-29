@@ -4,7 +4,7 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.EntityDefinition;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.console.Command;
 import com.jagex.runescape.frame.console.Console;
 
@@ -62,7 +62,7 @@ public class SearchCommand extends Command {
             case "w":
                 for (int qq = 0; qq < 469; qq++) {
                     if (GameInterface.decodeGameInterface(qq)) {
-                        GameInterface[] gameInterfaces = GameInterface.interfaces[qq];
+                        GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[qq];
                         for (int y = 0; gameInterfaces.length > y; y++) {
                             GameInterface gameInterface = gameInterfaces[y];
                             if (gameInterface.disabledText != null) {

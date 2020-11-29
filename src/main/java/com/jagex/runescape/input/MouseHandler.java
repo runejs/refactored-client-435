@@ -6,7 +6,7 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
@@ -112,7 +112,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 if(action == 53 || action == 25 || action == 55 || action == 48 || action == 24 || action == 52 || action == 6 || action == 31 || action == 43 || action == 11 || action == 19 || action == 1006) {
                     int item = InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow - 1];
                     int id = Class59.secondMenuOperand[-1 + ActorDefinition.menuActionRow];
-                    GameInterface gameInterface = GameInterface.forId(id);
+                    GameInterface gameInterface = GameInterface.getChildInterface(id);
                     if(gameInterface.itemSwapable || gameInterface.itemDeletesDraged) {
                         Renderable.anInt2869 = Class57.clickX;
                         Class40_Sub5_Sub15.lastItemDragged = false;
@@ -290,18 +290,18 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     offsetX= ScreenController.frameWidth - 218;
                     offsetY = ScreenController.frameHeight - 298;
                 }
-                for(int index = 0; index < GameInterface.interfaces[tabInterfaceID].length; index++) {
-                    if(GameInterface.interfaces[tabInterfaceID][index].scrollHeight > 0) {
+                for(int index = 0; index < GameInterface.cachedInterfaces[tabInterfaceID].length; index++) {
+                    if(GameInterface.cachedInterfaces[tabInterfaceID][index].scrollHeight > 0) {
                         childID = index;
-                        positionX = GameInterface.interfaces[tabInterfaceID][index].currentX;
-                        positionY = GameInterface.interfaces[tabInterfaceID][index].currentY;
-                        width = GameInterface.interfaces[tabInterfaceID][index].originalWidth;
-                        height = GameInterface.interfaces[tabInterfaceID][index].originalHeight;
+                        positionX = GameInterface.cachedInterfaces[tabInterfaceID][index].currentX;
+                        positionY = GameInterface.cachedInterfaces[tabInterfaceID][index].currentY;
+                        width = GameInterface.cachedInterfaces[tabInterfaceID][index].originalWidth;
+                        height = GameInterface.cachedInterfaces[tabInterfaceID][index].originalHeight;
                         break;
                     }
                 }
                 if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
-                    GameInterface.interfaces[tabInterfaceID][childID].scrollPosition += rotation * 30;
+                    GameInterface.cachedInterfaces[tabInterfaceID][childID].scrollPosition += rotation * 30;
                     //				client.tabAreaAltered = true;
                     GameInterface.redrawTabArea = true;
                     return true;
@@ -312,18 +312,18 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 offsetX = 4;
                 offsetY = 4;
                 int widgetid = GameInterface.gameScreenInterfaceId;
-                for(int index = 0; index < GameInterface.interfaces[widgetid].length; index++) {
-                    if(GameInterface.interfaces[widgetid][index].scrollHeight > 0) {
+                for(int index = 0; index < GameInterface.cachedInterfaces[widgetid].length; index++) {
+                    if(GameInterface.cachedInterfaces[widgetid][index].scrollHeight > 0) {
                         childID = index;
-                        positionX = GameInterface.interfaces[widgetid][index].currentX;
-                        positionY = GameInterface.interfaces[widgetid][index].currentY;
-                        width = GameInterface.interfaces[widgetid][index].originalWidth;
-                        height = GameInterface.interfaces[widgetid][index].originalHeight;
+                        positionX = GameInterface.cachedInterfaces[widgetid][index].currentX;
+                        positionY = GameInterface.cachedInterfaces[widgetid][index].currentY;
+                        width = GameInterface.cachedInterfaces[widgetid][index].originalWidth;
+                        height = GameInterface.cachedInterfaces[widgetid][index].originalHeight;
                         break;
                     }
                 }
                 if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
-                    GameInterface.interfaces[widgetid][childID].scrollPosition += rotation * 30;
+                    GameInterface.cachedInterfaces[widgetid][childID].scrollPosition += rotation * 30;
                     return true;
                 }
 

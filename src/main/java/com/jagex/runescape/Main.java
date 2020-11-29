@@ -4,9 +4,9 @@ import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
-import com.jagex.runescape.cache.media.Widget.WidgetModelType;
-import com.jagex.runescape.cache.media.Widget.GameInterfaceType;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.InterfaceModelType;
+import com.jagex.runescape.cache.media.gameInterface.GameInterfaceType;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
@@ -200,7 +200,7 @@ public class Main extends GameShell {
                         else
                             Rasterizer.drawFilledRectangleAlpha(i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight, i_20_, -(0xff & i_2_) + 256);
                     } else if (gameInterface.type == GameInterfaceType.TEXT) {
-                        TypeFace class40_sub5_sub14_sub1 = gameInterface.method647((byte) 34);
+                        TypeFace class40_sub5_sub14_sub1 = gameInterface.getTypeFace();
                         if (class40_sub5_sub14_sub1 == null) {
                             if (FramemapDefinition.aBoolean2177)
                                 bool = false;
@@ -247,7 +247,7 @@ public class Main extends GameShell {
                             int i_23_ = 0;
                             ImageRGB class40_sub5_sub14_sub4;
                             if (gameInterface.itemId == -1)
-                                class40_sub5_sub14_sub4 = gameInterface.method643(127, false);
+                                class40_sub5_sub14_sub4 = gameInterface.getImageRgb(false);
                             else {
                                 class40_sub5_sub14_sub4 = ItemDefinition.sprite(gameInterface.itemAmount, gameInterface.itemId, 0);
                                 i_22_ = class40_sub5_sub14_sub4.maxWidth;
@@ -312,7 +312,7 @@ public class Main extends GameShell {
                                 class40_sub5_sub14_sub4.maxHeight = i_23_;
                             }
                         } else {
-                            ImageRGB imageRGB = gameInterface.method643(127, ItemDefinition.method746(gameInterface));
+                            ImageRGB imageRGB = gameInterface.getImageRgb(ItemDefinition.method746(gameInterface));
                             if (imageRGB != null)
                                 imageRGB.drawImage(i_0_, i_1_);
                             else if (FramemapDefinition.aBoolean2177)
@@ -328,7 +328,7 @@ public class Main extends GameShell {
                             i_36_ = gameInterface.alternateAnimation;
 
                         Model model;
-                        if (gameInterface.modelType != WidgetModelType.PLAYER) {
+                        if (gameInterface.modelType != InterfaceModelType.PLAYER) {
                             if (i_36_ == -1) {
                                 model = gameInterface.method646((byte) 46, null, -1, bool_35_, Player.localPlayer.playerAppearance);
                                 if (model == null && FramemapDefinition.aBoolean2177)
@@ -381,7 +381,7 @@ public class Main extends GameShell {
                         Rasterizer3D.method702();
                     } else {
                         if (gameInterface.type == GameInterfaceType.TEXT_INVENTORY) {
-                            TypeFace class40_sub5_sub14_sub1 = gameInterface.method647((byte) 34);
+                            TypeFace class40_sub5_sub14_sub1 = gameInterface.getTypeFace();
                             if (class40_sub5_sub14_sub1 == null) {
                                 if (FramemapDefinition.aBoolean2177)
                                     bool = false;
@@ -622,7 +622,7 @@ public class Main extends GameShell {
 
     public static void method43(CacheIndex arg0) {
         Class64.aCacheIndex_1521 = arg0;
-        Class59.anInt1383 = Class64.aCacheIndex_1521.method190(16);
+        Class59.anInt1383 = Class64.aCacheIndex_1521.fileLength(16);
     }
 
     public static void method44() {
@@ -825,9 +825,9 @@ public class Main extends GameShell {
             this.openErrorPage((byte) 120, "js5crc");
             Class51.anInt1197 = 1000;
         } else {
-            if (Class40_Sub5_Sub1.anInt2278 >= 4) {
+            if (ClientScript.anInt2278 >= 4) {
                 if (Class51.anInt1197 > 5) {
-                    Class40_Sub5_Sub1.anInt2278 = 3;
+                    ClientScript.anInt2278 = 3;
                     ISAAC.anInt509 = 3000;
                 } else {
                     this.openErrorPage((byte) 58, "js5io");

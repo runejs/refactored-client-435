@@ -4,7 +4,7 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.scene.SceneCluster;

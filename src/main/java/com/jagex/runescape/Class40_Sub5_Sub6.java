@@ -3,7 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.TypeFace;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
@@ -47,7 +47,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
             return false;
         if (arg3 != -5)
             return true;
-        return Main.method36(arg5, arg0, arg4, 0, -1, arg2, arg6, 0, GameInterface.interfaces[widgetId], true);
+        return Main.method36(arg5, arg0, arg4, 0, -1, arg2, arg6, 0, GameInterface.cachedInterfaces[widgetId], true);
     }
 
     public static void putHackCheckPacket(int arg0, int arg1, PacketBuffer arg2) {
@@ -304,7 +304,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         if (ChatBox.chatboxInput.startsWith("::region")) {
                             for (int qq = 0; qq < 469; qq++) {
                                 if (GameInterface.decodeGameInterface(qq)) {
-                                    GameInterface[] gameInterfaces = GameInterface.interfaces[qq];
+                                    GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[qq];
                                     for (int y = 0; gameInterfaces.length > y; y++) {
                                         GameInterface gameInterface = gameInterfaces[y];
                                         if (gameInterface.disabledText != null) {

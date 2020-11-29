@@ -162,7 +162,7 @@ public class Class33 {
                 ISAAC.anInt522 = PlayerAppearance.anIntArray715[i];
                 Class44.anInt1048 = PlayerAppearance.anIntArray685[i] = i_4_;
                 String class1 = PlayerAppearance.aClass1Array697[i];
-                if(Class40_Sub5_Sub1.anInt2280 == 0) {
+                if(ClientScript.anInt2280 == 0) {
                     int i_8_ = 16776960;
                     if(PlayerAppearance.anIntArray712[i] < 6)
                         i_8_ = Class40_Sub6.anIntArray2106[PlayerAppearance.anIntArray712[i]];

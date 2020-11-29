@@ -5,9 +5,9 @@ import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
-import com.jagex.runescape.cache.media.Widget.WidgetModelType;
-import com.jagex.runescape.cache.media.Widget.GameInterfaceType;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.InterfaceModelType;
+import com.jagex.runescape.cache.media.gameInterface.GameInterfaceType;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.console.Console;
@@ -203,7 +203,7 @@ public class IncomingPackets {
             if(incomingPacket == 115) { // set widget hidden state
                 boolean bool = incomingPacketBuffer.getUnsignedByte() == 1;
                 int i_10_ = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.forId(i_10_);
+                GameInterface gameInterface = GameInterface.getChildInterface(i_10_);
                 gameInterface.isHidden = bool;
                 incomingPacket = -1;
                 return true;
@@ -211,10 +211,10 @@ public class IncomingPackets {
             if(incomingPacket == UPDATE_ALL_WIDGET_ITEMS) {
                 GameInterface.redrawTabArea = true;
                 final int packed = incomingPacketBuffer.getIntBE();
-                final GameInterface gameInterface = GameInterface.forId(packed);
+                final GameInterface gameInterface = GameInterface.getChildInterface(packed);
 
                 if (gameInterface.isIf3) {
-                    final GameInterface[] gameInterfaces = GameInterface.interfaces[packed >> 16];
+                    final GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[packed >> 16];
                     for (GameInterface child : gameInterfaces) {
                         if ((0xffff & gameInterface.id) == (0xffff & child.parentId) && child.anInt2736 > 0) {
                             child.itemAmount = 0;
@@ -248,7 +248,7 @@ public class IncomingPackets {
                         final int idx = index + offset;
 
                         if (gameInterface.isIf3) {
-                            GameInterface gameInterfaces[] = GameInterface.interfaces[packed >> 16];
+                            GameInterface gameInterfaces[] = GameInterface.cachedInterfaces[packed >> 16];
                             for (GameInterface child : gameInterfaces) {
                                 if ((gameInterface.id & 0xffff) == (child.parentId & 0xffff) && 1 + idx == child.anInt2736) {
                                     child.itemAmount = amount;
@@ -267,9 +267,9 @@ public class IncomingPackets {
             if(incomingPacket == 250) { // widget model type 1
                 int modelId = incomingPacketBuffer.getUnsignedShortLE();
                 int widgetData = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.forId(widgetData);
+                GameInterface gameInterface = GameInterface.getChildInterface(widgetData);
                 gameInterface.modelId = modelId;
-                gameInterface.modelType = WidgetModelType.MODEL;
+                gameInterface.modelType = InterfaceModelType.MODEL;
                 incomingPacket = -1;
                 return true;
             }
@@ -360,7 +360,7 @@ public class IncomingPackets {
             if(incomingPacket == 182) { // set widget scroll position
                 int i_34_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_35_ = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.forId(i_35_);
+                GameInterface gameInterface = GameInterface.getChildInterface(i_35_);
                 incomingPacket = -1;
                 if(gameInterface != null && gameInterface.type == GameInterfaceType.LAYER) {
                     if(i_34_ < 0)
@@ -373,9 +373,9 @@ public class IncomingPackets {
             }
             if(incomingPacket == 174) { // clear widget item container?
                 int i_36_ = incomingPacketBuffer.getIntME1();
-                GameInterface gameInterface = GameInterface.forId(i_36_);
+                GameInterface gameInterface = GameInterface.getChildInterface(i_36_);
                 if(gameInterface.isIf3) {
-                    GameInterface[] gameInterfaces = GameInterface.interfaces[i_36_ >> 16];
+                    GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[i_36_ >> 16];
                     for(int i_37_ = 0; i_37_ < gameInterfaces.length; i_37_++) {
                         GameInterface gameInterface_38_ = gameInterfaces[i_37_];
                         if((0xffff & gameInterface.id) == (gameInterface_38_.parentId & 0xffff) && gameInterface_38_.anInt2736 > 0) {
@@ -414,7 +414,7 @@ public class IncomingPackets {
             if(incomingPacket == PLAY_WIDGET_ANIMATION) {
                 int animationId = incomingPacketBuffer.getShortBE();
                 int widgetData = incomingPacketBuffer.getIntBE();
-                GameInterface gameInterface = GameInterface.forId(widgetData);
+                GameInterface gameInterface = GameInterface.getChildInterface(widgetData);
                 if(animationId != gameInterface.animation || animationId == -1) {
                     gameInterface.remainingAnimationTime = 0;
                     gameInterface.animationFrame = 0;
@@ -438,7 +438,7 @@ public class IncomingPackets {
                 int i_46_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_47_ = incomingPacketBuffer.getUnsignedShortLE();
                 int i_48_ = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.forId(i_48_);
+                GameInterface gameInterface = GameInterface.getChildInterface(i_48_);
                 incomingPacket = -1;
                 gameInterface.anInt2722 = i_47_ + (i_46_ << 16);
                 return true;
@@ -541,7 +541,7 @@ public class IncomingPackets {
                     ChatBox.redrawChatbox = true;
                     ChatBox.inputType = 0;
                 }
-                Class64.method1012(GameInterface.gameScreenInterfaceId, 2);
+                GameInterface.callOnLoadListeners(GameInterface.gameScreenInterfaceId);
                 incomingPacket = -1;
                 return true;
             }
@@ -832,7 +832,7 @@ public class IncomingPackets {
                 int i_77_ = incomingPacketBuffer.getUnsignedShortLE();
                 int i_78_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_79_ = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.forId(i_79_);
+                GameInterface gameInterface = GameInterface.getChildInterface(i_79_);
                 incomingPacket = -1;
                 gameInterface.rotationZ = i_76_;
                 gameInterface.modelZoom = i_77_;
@@ -876,8 +876,8 @@ public class IncomingPackets {
             if(incomingPacket == SET_WIDGET_NPC_HEAD) {
                 int npcId = incomingPacketBuffer.getUnsignedShortLE();
                 int widgetData = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.forId(widgetData);
-                gameInterface.modelType = WidgetModelType.NPC_CHATHEAD;
+                GameInterface gameInterface = GameInterface.getChildInterface(widgetData);
+                gameInterface.modelType = InterfaceModelType.NPC_CHATHEAD;
                 incomingPacket = -1;
                 gameInterface.modelId = npcId;
                 return true;
@@ -931,8 +931,8 @@ public class IncomingPackets {
             }
             if(incomingPacket == SET_WIDGET_PLAYER_HEAD) {
                 int widgetData = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.forId(widgetData);
-                gameInterface.modelType = WidgetModelType.LOCAL_PLAYER_CHATHEAD;
+                GameInterface gameInterface = GameInterface.getChildInterface(widgetData);
+                gameInterface.modelType = InterfaceModelType.LOCAL_PLAYER_CHATHEAD;
                 gameInterface.modelId = Player.localPlayer.playerAppearance.getHeadModelId();
                 incomingPacket = -1;
                 return true;
@@ -940,7 +940,7 @@ public class IncomingPackets {
             if(incomingPacket == UPDATE_WIDGET_TEXT) {
                 int widgetData = incomingPacketBuffer.getIntLE();
                 String class1 = incomingPacketBuffer.getString();
-                GameInterface gameInterface = GameInterface.forId(widgetData);
+                GameInterface gameInterface = GameInterface.getChildInterface(widgetData);
                 gameInterface.disabledText = class1;
                 if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] == widgetData >> 16)
                     GameInterface.redrawTabArea = true;
@@ -959,20 +959,20 @@ public class IncomingPackets {
                 int widgetData = incomingPacketBuffer.getIntLE();
                 if(itemId == 65535)
                     itemId = -1;
-                GameInterface gameInterface = GameInterface.forId(widgetData);
+                GameInterface gameInterface = GameInterface.getChildInterface(widgetData);
                 if(gameInterface.isIf3) {
                     gameInterface.itemAmount = 1;
                     gameInterface.itemId = itemId;
                 } else {
                     if(itemId == -1) {
                         incomingPacket = -1;
-                        gameInterface.modelType = WidgetModelType.NULL;
+                        gameInterface.modelType = InterfaceModelType.NULL;
                         return true;
                     }
                     ItemDefinition itemDefinition = ItemDefinition.forId(itemId, 10);
                     gameInterface.rotationX = itemDefinition.xan2d;
                     gameInterface.modelId = itemId;
-                    gameInterface.modelType =  WidgetModelType.ITEM;
+                    gameInterface.modelType =  InterfaceModelType.ITEM;
                     gameInterface.modelZoom = 100 * itemDefinition.zoom2d / zoom;
                     gameInterface.rotationZ = itemDefinition.yan2d;
                 }
@@ -1059,7 +1059,7 @@ public class IncomingPackets {
                 int i_102_ = incomingPacketBuffer.getIntBE();
                 int i_103_ = incomingPacketBuffer.getShortLE();
                 int i_104_ = incomingPacketBuffer.getShortLE();
-                GameInterface gameInterface = GameInterface.forId(i_102_);
+                GameInterface gameInterface = GameInterface.getChildInterface(i_102_);
                 gameInterface.currentX = gameInterface.originalX + i_104_;
                 incomingPacket = -1;
                 gameInterface.currentY = gameInterface.originalY + i_103_;
@@ -1090,7 +1090,7 @@ public class IncomingPackets {
             if(incomingPacket == UPDATE_SPECIFIC_WIDGET_ITEMS) {
                 GameInterface.redrawTabArea = true;
                 int widgetData = incomingPacketBuffer.getIntBE();
-                GameInterface gameInterface = GameInterface.forId(widgetData);
+                GameInterface gameInterface = GameInterface.getChildInterface(widgetData);
                 while(incomingPacketSize > incomingPacketBuffer.currentPosition) {
                     int itemSlot = incomingPacketBuffer.getSmart();
                     int i_109_ = incomingPacketBuffer.getUnsignedShortBE();
@@ -1101,7 +1101,7 @@ public class IncomingPackets {
                             i_110_ = incomingPacketBuffer.getIntBE();
                     }
                     if(gameInterface.isIf3) {
-                        GameInterface[] gameInterfaces = GameInterface.interfaces[widgetData >> 16];
+                        GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[widgetData >> 16];
                         for(int i_111_ = 0; i_111_ < gameInterfaces.length; i_111_++) {
                             GameInterface gameInterface_112_ = gameInterfaces[i_111_];
                             if((gameInterface.id & 0xffff) == (gameInterface_112_.parentId & 0xffff) && 1 + itemSlot == gameInterface_112_.anInt2736) {
@@ -1115,7 +1115,7 @@ public class IncomingPackets {
                     }
                 }
                 if(GameInterface.decodeGameInterface(307)) {
-                    GameInterface[] gameInterfaces = GameInterface.interfaces[307];
+                    GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[307];
                     for(int y = 0; gameInterfaces.length > y; y++) {
                         GameInterface gameInterface2 = gameInterfaces[y];
                         if(gameInterface2 != null && gameInterface2.items != null) {
@@ -1136,7 +1136,7 @@ public class IncomingPackets {
                 int i_114_ = incomingPacketBuffer.getIntLE();
                 int i_115_ = i_113_ >> 10 & 0x1f;
                 int i_116_ = 0x1f & i_113_ >> 5;
-                GameInterface gameInterface = GameInterface.forId(i_114_);
+                GameInterface gameInterface = GameInterface.getChildInterface(i_114_);
                 incomingPacket = -1;
                 int i_117_ = i_113_ & 0x1f;
                 gameInterface.textColor = (i_116_ << 11) + (i_115_ << 19) + (i_117_ << 3);

@@ -153,7 +153,7 @@ public class SpotAnimDefinition extends SubNode {
                 Class61.packetBuffer.putIntBE(MemoryCache.gameTextureCacheIndex.anInt216);
                 Class61.packetBuffer.putIntBE(MemoryCache.huffmanCacheIndex.anInt216);
                 Class61.packetBuffer.putIntBE(MemoryCache.jingleCacheIndex.anInt216);
-                Class61.packetBuffer.putIntBE(MemoryCache.cs2CacheIndex.anInt216);
+                Class61.packetBuffer.putIntBE(MemoryCache.clientScriptCacheIndex.anInt216);
                 Class61.packetBuffer.putBytes(0, SceneCluster.packetBuffer.currentPosition, SceneCluster.packetBuffer.buffer);
                 Class40_Sub6.gameConnection.method1010(Class61.packetBuffer.currentPosition, (byte) -19, 0, Class61.packetBuffer.buffer);
                 SceneCluster.packetBuffer.initOutCipher(seeds);

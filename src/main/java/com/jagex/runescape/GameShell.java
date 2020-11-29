@@ -1,10 +1,11 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.def.ClientScript;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.*;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
-import com.jagex.runescape.cache.media.Widget.GameInterfaceType;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterfaceType;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
@@ -59,7 +60,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                     /* empty */
                 }
                 Class57.aClass64_1345 = null;
-                Class40_Sub5_Sub1.anInt2278++;
+                ClientScript.anInt2278++;
             }
         }
 
@@ -71,7 +72,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             providesignlink(null);
         for (int i = 0; i < arg7.length; i++) {
             GameInterface gameInterface = arg7[i];
-            if (gameInterface != null && (gameInterface.type == GameInterfaceType.LAYER || gameInterface.aBoolean2688) && gameInterface != null && arg5 == gameInterface.parentId && (!gameInterface.isHidden || PacketBuffer.hiddenButtonTest)) {
+            if (gameInterface != null && (gameInterface.type == GameInterfaceType.LAYER || gameInterface.hasListeners) && gameInterface != null && arg5 == gameInterface.parentId && (!gameInterface.isHidden || PacketBuffer.hiddenButtonTest)) {
                 int i_1_ = arg4 + gameInterface.currentX;
                 int i_2_ = arg0 + gameInterface.currentY;
                 if (!gameInterface.aBoolean2694)
@@ -89,7 +90,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                     if (gameInterface.aGameInterfaceArray2713 != null)
                         method20(i_4_, i_7_, gameInterface.anInt2746, arg3, i_6_, gameInterface.id, 1, gameInterface.aGameInterfaceArray2713, i_8_, gameInterface.scrollPosition);
                 }
-                if (gameInterface.aBoolean2688) {
+                if (gameInterface.hasListeners) {
                     boolean bool;
                     bool = Class13.mouseX >= i_6_ && i_4_ <= Landscape.mouseY && i_8_ > Class13.mouseX && i_7_ > Landscape.mouseY;
                     boolean bool_9_ = false;
@@ -111,33 +112,33 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                     if (!gameInterface.aBoolean2730 && bool_10_ && (0x1 & arg3) != 0) {
                         gameInterface.aBoolean2730 = true;
                         if (gameInterface.anObjectArray2681 != null)
-                            GameInterface.method891(gameInterface.anObjectArray2681, 0, RSString.clickY + -i_2_, gameInterface, Class57.clickX - i_1_, false);
+                            GameInterface.runClientScripts(gameInterface.anObjectArray2681, 0, RSString.clickY + -i_2_, gameInterface, Class57.clickX - i_1_, false);
                     }
                     if (gameInterface.aBoolean2730 && bool_9_ && (arg3 & 0x4) != 0 && gameInterface.anObjectArray2747 != null)
-                        GameInterface.method891(gameInterface.anObjectArray2747, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX, false);
+                        GameInterface.runClientScripts(gameInterface.anObjectArray2747, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX, false);
                     if (gameInterface.aBoolean2730 && !bool_9_ && (0x2 & arg3) != 0) {
                         gameInterface.aBoolean2730 = false;
                         if (gameInterface.anObjectArray2707 != null)
-                            GameInterface.method891(gameInterface.anObjectArray2707, 0, Landscape.mouseY - i_2_, gameInterface, Class13.mouseX - i_1_, false);
+                            GameInterface.runClientScripts(gameInterface.anObjectArray2707, 0, Landscape.mouseY - i_2_, gameInterface, Class13.mouseX - i_1_, false);
                     }
                     if (bool_9_ && (arg3 & 0x8) != 0 && gameInterface.anObjectArray2644 != null)
-                        GameInterface.method891(gameInterface.anObjectArray2644, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX, false);
+                        GameInterface.runClientScripts(gameInterface.anObjectArray2644, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX, false);
                     if (!gameInterface.aBoolean2682 && bool && (0x10 & arg3) != 0) {
                         gameInterface.aBoolean2682 = true;
                         if (gameInterface.anObjectArray2658 != null)
-                            GameInterface.method891(gameInterface.anObjectArray2658, 0, Landscape.mouseY - i_2_, gameInterface, Class13.mouseX - i_1_, false);
+                            GameInterface.runClientScripts(gameInterface.anObjectArray2658, 0, Landscape.mouseY - i_2_, gameInterface, Class13.mouseX - i_1_, false);
                     }
                     if (gameInterface.aBoolean2682 && bool && (0x40 & arg3) != 0 && gameInterface.anObjectArray2680 != null)
-                        GameInterface.method891(gameInterface.anObjectArray2680, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX, false);
+                        GameInterface.runClientScripts(gameInterface.anObjectArray2680, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX, false);
                     if (gameInterface.aBoolean2682 && !bool && (arg3 & 0x20) != 0) {
                         gameInterface.aBoolean2682 = false;
                         if (gameInterface.anObjectArray2672 != null)
-                            GameInterface.method891(gameInterface.anObjectArray2672, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX, false);
+                            GameInterface.runClientScripts(gameInterface.anObjectArray2672, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX, false);
                     }
                     if (gameInterface.anObjectArray2712 != null && (arg3 & 0x80) != 0)
-                        GameInterface.method891(gameInterface.anObjectArray2712, 0, 0, gameInterface, 0, false);
+                        GameInterface.runClientScripts(gameInterface.anObjectArray2712, 0, 0, gameInterface, 0, false);
                     if (AnimationSequence.anInt2480 == Node.pulseCycle && gameInterface.anObjectArray2650 != null && (arg3 & 0x100) != 0)
-                        GameInterface.method891(gameInterface.anObjectArray2650, 0, 0, gameInterface, 0, false);
+                        GameInterface.runClientScripts(gameInterface.anObjectArray2650, 0, 0, gameInterface, 0, false);
                 }
             }
         }

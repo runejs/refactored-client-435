@@ -1,13 +1,10 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
@@ -228,7 +225,7 @@ public class Npc extends Actor {
                                     RSRuntimeException.lastActiveInvInterface = -1;
                                     Class43.processRightClick();
                                     if(RSRuntimeException.lastActiveInvInterface == Class48.modifiedWidgetId && Class55.mouseInvInterfaceIndex != GroundItemTile.selectedInventorySlot) {
-                                        GameInterface childInterface = GameInterface.forId(Class48.modifiedWidgetId);
+                                        GameInterface childInterface = GameInterface.getChildInterface(Class48.modifiedWidgetId);
                                         int moveItemInsertionMode = 0;
                                         if(Class43.bankInsertMode == 1 && childInterface.contentType == 206)
                                             moveItemInsertionMode = 1;
@@ -278,7 +275,7 @@ public class Npc extends Actor {
                             int i_18_ = Scene.clickedTileY;
                             boolean bool = MovedStatics.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, true, 0, 0, Player.localPlayer.pathX[0], i_18_, 0);
                             if(bool) {
-                                Class40_Sub5_Sub1.crossY = RSString.clickY;
+                                ClientScript.crossY = RSString.clickY;
                                 OverlayDefinition.crossIndex = 0;
                                 Class40_Sub11.crossX = Class57.clickX;
                                 LinkedList.crossType = 1;

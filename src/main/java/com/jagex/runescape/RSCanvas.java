@@ -2,7 +2,8 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
+import com.jagex.runescape.cache.def.ClientScript;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.actor.Actor;
 
@@ -50,7 +51,7 @@ public class RSCanvas extends Canvas {
         Class51.method941();
         Actor.method783();
         ((Class35) Rasterizer3D.anInterface3_2939).method422(arg0);
-        Class17.aClass9_449.method235();
+        ClientScript.clientScriptCache.method235();
         MemoryCache.skeletonCacheIndex.method191(1120);
         MemoryCache.skinDefinitionCacheIndex.method191(1120);
         MemoryCache.gameInterfaceCacheIndex.method191(arg0 + 1120);
@@ -62,7 +63,7 @@ public class RSCanvas extends Canvas {
         MemoryCache.gameTextureCacheIndex.method191(1120);
         MemoryCache.huffmanCacheIndex.method191(arg0 + 1120);
         MemoryCache.jingleCacheIndex.method191(1120);
-        MemoryCache.cs2CacheIndex.method191(1120);
+        MemoryCache.clientScriptCacheIndex.method191(1120);
     }
 
     public void paint(Graphics arg0) {

@@ -22,7 +22,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
 
     public Class40_Sub5_Sub15(CacheIndex arg0, CacheIndex arg1, int arg2, boolean arg3) {
         LinkedList linkedList = new LinkedList();
-        int i = arg0.method190(arg2);
+        int i = arg0.fileLength(arg2);
         aFrameDefinitionArray2794 = new FrameDefinition[i];
         int[] is = arg0.method192(arg2, true);
         for(int i_0_ = 0; is.length > i_0_; i_0_++) {

@@ -4,7 +4,7 @@ import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.Widget.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -71,7 +71,7 @@ public class Class13 {
 
     public static void method243(byte arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
         if(GameInterface.decodeGameInterface(arg4)) {
-            Class48.method925(arg3, GameInterface.interfaces[arg4], arg5, 0, arg7, 0, -1, arg8, arg6, arg1, 0, arg2);
+            Class48.method925(arg3, GameInterface.cachedInterfaces[arg4], arg5, 0, arg7, 0, -1, arg8, arg6, arg1, 0, arg2);
             if(arg0 != 89)
                 English.loadingFriendList = null;
         }
@@ -122,7 +122,7 @@ public class Class13 {
         int i_12_ = arg0.currentY;
         int i_13_ = arg0.parentId;
         while(i_13_ != -1) {
-            GameInterface gameInterface = GameInterface.interfaces[i][i_13_ & 0xffff];
+            GameInterface gameInterface = GameInterface.cachedInterfaces[i][i_13_ & 0xffff];
             i_11_ += gameInterface.currentX;
             if(!arg0.aBoolean2694)
                 i_11_ -= gameInterface.anInt2746;

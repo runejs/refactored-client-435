@@ -2,6 +2,7 @@ package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.def.ClientScript;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.io.Buffer;
@@ -89,7 +90,7 @@ public class AnimationSequence extends SubNode {
         }
         Class40_Sub11.crossX = Class57.clickX;
         LinkedList.crossType = 2;
-        Class40_Sub5_Sub1.crossY = RSString.clickY;
+        ClientScript.crossY = RSString.clickY;
         OverlayDefinition.crossIndex = 0;
         return true;
     }

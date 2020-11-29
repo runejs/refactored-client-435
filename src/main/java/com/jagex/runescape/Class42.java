@@ -50,7 +50,7 @@ public class Class42 {
         IdentityKit.membersServer = arg1;
         Class8.aCacheIndex_284 = arg2;
         Class26.aCacheIndex_632 = arg0;
-        ItemDefinition.count = Class26.aCacheIndex_632.method190(10);
+        ItemDefinition.count = Class26.aCacheIndex_632.fileLength(10);
     }
 
     public static void method886(int arg0, int arg1, boolean arg2, byte[] arg3, int arg4) {

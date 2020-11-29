@@ -1,4 +1,4 @@
-package com.jagex.runescape.cache.media.TextUtils;
+package com.jagex.runescape.cache.media.textUtils;
 
 public class TextTagNode {
     private TextTagNode previous = null;

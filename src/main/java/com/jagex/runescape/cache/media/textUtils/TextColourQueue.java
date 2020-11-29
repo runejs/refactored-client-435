@@ -1,7 +1,5 @@
-package com.jagex.runescape.cache.media.TextUtils;
+package com.jagex.runescape.cache.media.textUtils;
 
-
-import com.jagex.runescape.RSString;
 
 public class TextColourQueue {
     private final int defaultColour;
