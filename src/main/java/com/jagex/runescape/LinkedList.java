@@ -109,14 +109,14 @@ public class LinkedList {
         return class40;
     }
 
-    public void pushBack(Node arg0, int arg1) {
-        if(arg0.aClass40_968 != null)
-            arg0.remove(-1);
-        arg0.aClass40_968 = aClass40_1056.aClass40_968;
+    public void pushBack(Node node, int arg1) {
+        if(node.aClass40_968 != null)
+            node.remove(-1);
+        node.aClass40_968 = aClass40_1056.aClass40_968;
         int i = 106 % ((-7 - arg1) / 59);
-        arg0.aClass40_950 = aClass40_1056;
-        arg0.aClass40_968.aClass40_950 = arg0;
-        arg0.aClass40_950.aClass40_968 = arg0;
+        node.aClass40_950 = aClass40_1056;
+        node.aClass40_968.aClass40_950 = node;
+        node.aClass40_950.aClass40_968 = node;
     }
 
     public void method905(int arg0, Node arg1) {

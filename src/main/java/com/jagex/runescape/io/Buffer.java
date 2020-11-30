@@ -69,7 +69,7 @@ public class Buffer extends Node {
         while(buffer[currentPosition++] != 0) {
             /* empty */
         }
-        return InteractiveObject.method279(buffer, true, i, -1 + currentPosition + -i);
+        return InteractiveObject.method279(buffer, i, -1 + currentPosition + -i);
     }
 
     public String getString() {

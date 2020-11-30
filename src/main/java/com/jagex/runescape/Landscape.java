@@ -4,7 +4,6 @@ import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.FileOperations;
 import com.jagex.runescape.cache.MemoryCache;
-import com.jagex.runescape.cache.media.gameInterface.ClientScript;
 import com.jagex.runescape.cache.def.FramemapDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -148,7 +147,7 @@ public class Landscape {
                         int offsetY = -Class26.baseY + 64 * (ISAAC.mapCoordinates[pointer] & 0xff);
                         byte[] data = RSString.terrainData[pointer];
                         if(data == null && Class17.regionY < 800)
-                            Class61.initiateVertexHeights(offsetY, (byte) 103, 64, 64, offsetX);
+                            MovedStatics.initiateVertexHeights(offsetY, (byte) 103, 64, 64, offsetX);
                     }
                     Class27.method364((byte) -34, true);
                     for(int region = 0; dataLength > region; region++) {
@@ -204,7 +203,7 @@ public class Landscape {
                         for(int y = 0; y < 13; y++) {
                             int displayMap = OverlayDefinition.constructMapTiles[0][x][y];
                             if(displayMap == -1)
-                                Class61.initiateVertexHeights(y * 8, (byte) 120, 8, 8, 8 * x);
+                                MovedStatics.initiateVertexHeights(y * 8, (byte) 120, 8, 8, 8 * x);
                         }
                     }
                     Class27.method364((byte) -34, true);
@@ -281,7 +280,7 @@ public class Landscape {
     }
 
     public static void method934(int arg0, int arg2, int arg3, int arg4) {
-        for(Class40_Sub2 class40_sub2 = (Class40_Sub2) ClientScript.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) ClientScript.aLinkedList_2268.method909(-4)) {
+        for(Class40_Sub2 class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method909(-4)) {
             if(class40_sub2.anInt1997 != -1 || class40_sub2.anIntArray2005 != null) {
                 int i_48_ = 0;
                 if(arg0 <= class40_sub2.anInt2013) {

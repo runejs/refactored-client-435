@@ -21,6 +21,7 @@ import com.jagex.runescape.util.SignlinkNode;
 
 import java.io.DataInputStream;
 import java.net.URL;
+import java.util.zip.CRC32;
 
 public class CacheIndex {
 
@@ -32,6 +33,7 @@ public class CacheIndex {
     public static int[][][] anIntArrayArrayArray262;
     public static int anInt1806;
     public static int anInt1819 = -1;
+    public static CRC32 crc32 = new CRC32();
 
     public byte[][] aByteArrayArray212;
     public int anInt216;
@@ -106,49 +108,51 @@ public class CacheIndex {
     }
 
 
-    public static void method184(byte[] arg0, int arg1) {
-        Buffer class40_sub1 = new Buffer(arg0);
-        class40_sub1.currentPosition = -2 + arg0.length;
-        UnderlayDefinition.anInt2581 = class40_sub1.getUnsignedShortBE();
+    public static void method184(byte[] data, int arg1) {
+        Buffer buffer = new Buffer(data);
+        buffer.currentPosition = -2 + data.length;
+        UnderlayDefinition.anInt2581 = buffer.getUnsignedShortBE();
         Actor.anIntArray3111 = new int[UnderlayDefinition.anInt2581];
         GroundItemTile.aByteArrayArray1370 = new byte[UnderlayDefinition.anInt2581][];
         Class17.anIntArray456 = new int[UnderlayDefinition.anInt2581];
         Npc.anIntArray3312 = new int[UnderlayDefinition.anInt2581];
         Class57.anIntArray1347 = new int[UnderlayDefinition.anInt2581];
-        class40_sub1.currentPosition = arg0.length + -7 + -(UnderlayDefinition.anInt2581 * 8);
-        ItemDefinition.anInt2846 = class40_sub1.getUnsignedShortBE();
-        GameShell.anInt31 = class40_sub1.getUnsignedShortBE();
-        int i = 1 + (class40_sub1.getUnsignedByte() & 0xff);
+
+        buffer.currentPosition = data.length + -7 + -(UnderlayDefinition.anInt2581 * 8);
+        ItemDefinition.anInt2846 = buffer.getUnsignedShortBE();
+        GameShell.anInt31 = buffer.getUnsignedShortBE();
+        int i = 1 + (buffer.getUnsignedByte() & 0xff);
         for(int i_34_ = 0; i_34_ < UnderlayDefinition.anInt2581; i_34_++)
-            Class57.anIntArray1347[i_34_] = class40_sub1.getUnsignedShortBE();
+            Class57.anIntArray1347[i_34_] = buffer.getUnsignedShortBE();
         for(int i_35_ = arg1; i_35_ < UnderlayDefinition.anInt2581; i_35_++)
-            Actor.anIntArray3111[i_35_] = class40_sub1.getUnsignedShortBE();
+            Actor.anIntArray3111[i_35_] = buffer.getUnsignedShortBE();
         for(int i_36_ = 0; i_36_ < UnderlayDefinition.anInt2581; i_36_++)
-            Class17.anIntArray456[i_36_] = class40_sub1.getUnsignedShortBE();
+            Class17.anIntArray456[i_36_] = buffer.getUnsignedShortBE();
         for(int i_37_ = 0; UnderlayDefinition.anInt2581 > i_37_; i_37_++)
-            Npc.anIntArray3312[i_37_] = class40_sub1.getUnsignedShortBE();
-        class40_sub1.currentPosition = arg0.length - (7 + UnderlayDefinition.anInt2581 * 8 + -3 + i * 3);
+            Npc.anIntArray3312[i_37_] = buffer.getUnsignedShortBE();
+
+        buffer.currentPosition = data.length - (7 + UnderlayDefinition.anInt2581 * 8 + -3 + i * 3);
         Buffer.anIntArray1972 = new int[i];
         for(int i_38_ = 1; i > i_38_; i_38_++) {
-            Buffer.anIntArray1972[i_38_] = class40_sub1.getMediumBE();
+            Buffer.anIntArray1972[i_38_] = buffer.getMediumBE();
             if(Buffer.anIntArray1972[i_38_] == 0)
                 Buffer.anIntArray1972[i_38_] = 1;
         }
-        class40_sub1.currentPosition = 0;
+        buffer.currentPosition = 0;
         for(int i_39_ = 0; UnderlayDefinition.anInt2581 > i_39_; i_39_++) {
             int i_40_ = Npc.anIntArray3312[i_39_];
             int i_41_ = Class17.anIntArray456[i_39_];
             int i_42_ = i_40_ * i_41_;
             byte[] is = new byte[i_42_];
             GroundItemTile.aByteArrayArray1370[i_39_] = is;
-            int i_43_ = class40_sub1.getUnsignedByte();
+            int i_43_ = buffer.getUnsignedByte();
             if(i_43_ == 0) {
                 for(int i_46_ = 0; i_42_ > i_46_; i_46_++)
-                    is[i_46_] = class40_sub1.getByte();
+                    is[i_46_] = buffer.getByte();
             } else if(i_43_ == 1) {
                 for(int i_44_ = 0; i_41_ > i_44_; i_44_++) {
                     for(int i_45_ = 0; i_40_ > i_45_; i_45_++)
-                        is[i_41_ * i_45_ + i_44_] = class40_sub1.getByte();
+                        is[i_41_ * i_45_ + i_44_] = buffer.getByte();
                 }
             }
         }
@@ -174,7 +178,7 @@ public class CacheIndex {
     }
 
     public static String method204(int arg0) {
-        return (0xff & arg0 >> 24) + Native.aClass1_975 + ((arg0 & 0xffca88) >> 16) + Native.aClass1_975 + ((0xfff8 & arg0) >> 8) + Native.aClass1_975 + (0xff & arg0);
+        return (0xff & arg0 >> 24) + Native.period + ((arg0 & 0xffca88) >> 16) + Native.period + ((0xfff8 & arg0) >> 8) + Native.period + (0xff & arg0);
     }
 
     public static CacheIndex loadCacheIndex(int cacheIndexId, boolean arg1, boolean arg2, boolean arg4) {
@@ -217,55 +221,48 @@ public class CacheIndex {
 
     }
 
-    public void method198(byte arg0, boolean arg1, byte[] arg2, int arg3, Class56 arg4) {
-        do {
-            if(aClass56_1802 == arg4) {
-                if(aBoolean1800)
-                    throw new RuntimeException();
-                if(arg2 == null) {
-                    com.jagex.runescape.HashTable.method327(true, this, 255, anInt1807, (byte) 0,
-                            anInt1810, (byte) 85);
-                    break;
-                }
-                com.jagex.runescape.Class65.aCRC32_1531.reset();
-                com.jagex.runescape.Class65.aCRC32_1531.update(arg2, 0, arg2.length);
-                int i = (int) com.jagex.runescape.Class65.aCRC32_1531.getValue();
-                if(i != anInt1810) {
-                    com.jagex.runescape.HashTable.method327(true, this, 255, anInt1807, (byte) 0,
-                            anInt1810, (byte) -121);
-                    break;
-                }
-                this.method178(arg2);
-                method199();
-            } else {
-                if(!arg1 && anInt1797 == arg3)
-                    aBoolean1800 = true;
-                if(arg2 == null || arg2.length <= 2) {
-                    aBooleanArray1796[arg3] = false;
-                    if(aBoolean1811 || arg1)
-                        HashTable.method327(arg1, this, anInt1807, arg3, (byte) 2, anIntArray252[arg3], (byte) -117);
-                    break;
-                }
-                Class65.aCRC32_1531.reset();
-                Class65.aCRC32_1531.update(arg2, 0, arg2.length - 2);
-                int i = (int) Class65.aCRC32_1531.getValue();
-                int i_0_ = ((arg2[-2 + arg2.length] & 0xff) << 8) + (0xff & arg2[arg2.length + -1]);
-                if(i != anIntArray252[arg3] || i_0_ != anIntArray224[arg3]) {
-                    aBooleanArray1796[arg3] = false;
-                    if(aBoolean1811 || arg1)
-                        HashTable.method327(arg1, this, anInt1807, arg3, (byte) 2, anIntArray252[arg3], (byte) -78);
-                    break;
-                }
-                aBooleanArray1796[arg3] = true;
-                if(arg1)
-                    aByteArrayArray212[arg3] = arg2;
+    public void method198(boolean arg1, byte[] arg2, int arg3, Class56 arg4) {
+        if(aClass56_1802 == arg4) {
+            if(aBoolean1800)
+                throw new RuntimeException();
+            if(arg2 == null) {
+                com.jagex.runescape.HashTable.method327(true, this, 255, anInt1807, (byte) 0,
+                        anInt1810, (byte) 85);
+                return;
             }
-            if(arg0 == -115)
-                break;
-            getPercentLoaded();
-
-            break;
-        } while(false);
+            crc32.reset();
+            crc32.update(arg2, 0, arg2.length);
+            int i = (int) crc32.getValue();
+            if(i != anInt1810) {
+                com.jagex.runescape.HashTable.method327(true, this, 255, anInt1807, (byte) 0,
+                        anInt1810, (byte) -121);
+                return;
+            }
+            this.method178(arg2);
+            method199();
+        } else {
+            if(!arg1 && anInt1797 == arg3)
+                aBoolean1800 = true;
+            if(arg2 == null || arg2.length <= 2) {
+                aBooleanArray1796[arg3] = false;
+                if(aBoolean1811 || arg1)
+                    HashTable.method327(arg1, this, anInt1807, arg3, (byte) 2, anIntArray252[arg3], (byte) -117);
+                return;
+            }
+            crc32.reset();
+            crc32.update(arg2, 0, arg2.length - 2);
+            int i = (int) crc32.getValue();
+            int i_0_ = ((arg2[-2 + arg2.length] & 0xff) << 8) + (0xff & arg2[arg2.length + -1]);
+            if(i != anIntArray252[arg3] || i_0_ != anIntArray224[arg3]) {
+                aBooleanArray1796[arg3] = false;
+                if(aBoolean1811 || arg1)
+                    HashTable.method327(arg1, this, anInt1807, arg3, (byte) 2, anIntArray252[arg3], (byte) -78);
+                return;
+            }
+            aBooleanArray1796[arg3] = true;
+            if(arg1)
+                aByteArrayArray212[arg3] = arg2;
+        }
     }
 
     public void method177(int arg1) {

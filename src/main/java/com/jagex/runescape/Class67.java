@@ -12,7 +12,6 @@ public class Class67 {
     public static CacheIndex aCacheIndex_1577;
     public static int[] anIntArray1579;
     public static int anInt1586 = -1;
-    public static int[] anIntArray1588 = new int[1000];
     public static boolean reportMutePlayer = false;
     public static int anInt1607 = 10;
     public static MemoryCache aClass9_1611 = new MemoryCache(50);

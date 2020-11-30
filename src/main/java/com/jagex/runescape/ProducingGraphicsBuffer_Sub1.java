@@ -62,8 +62,8 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
                 i--;
             else
                 i -= 101;
-            OverlayDefinition.addActionRow(English.remove, 0, 0, 0, 13, Native.aClass1_620+Class40_Sub11.friendUsernames[i]);
-            OverlayDefinition.addActionRow(English.message, 0, 0, 0, 18, Native.aClass1_620+ Class40_Sub11.friendUsernames[i]);
+            OverlayDefinition.addActionRow(English.remove, 0, 0, 0, 13, Native.aClass1_620+ ClientScriptRunner.friendUsernames[i]);
+            OverlayDefinition.addActionRow(English.message, 0, 0, 0, 18, Native.aClass1_620+ ClientScriptRunner.friendUsernames[i]);
             return true;
         }
         if(i >= 401 && i <= 500) {

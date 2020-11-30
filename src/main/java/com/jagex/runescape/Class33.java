@@ -5,7 +5,6 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.TypeFace;
-import com.jagex.runescape.cache.media.gameInterface.ClientScript;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.language.Native;
@@ -163,7 +162,7 @@ public class Class33 {
                 ISAAC.anInt522 = PlayerAppearance.anIntArray715[i];
                 Class44.anInt1048 = PlayerAppearance.anIntArray685[i] = i_4_;
                 String class1 = PlayerAppearance.aClass1Array697[i];
-                if(ClientScript.anInt2280 == 0) {
+                if(MovedStatics.anInt2280 == 0) {
                     int i_8_ = 16776960;
                     if(PlayerAppearance.anIntArray712[i] < 6)
                         i_8_ = Class40_Sub6.anIntArray2106[PlayerAppearance.anIntArray712[i]];

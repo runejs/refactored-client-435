@@ -1,6 +1,5 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.media.gameInterface.ClientScript;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.io.Buffer;
@@ -74,7 +73,7 @@ public class Class17 {
                     /* empty */
                 }
                 Class57.aClass64_1345 = null;
-                ClientScript.anInt2278++;
+                MovedStatics.anInt2278++;
             }
         }
         if(arg1 < 102)

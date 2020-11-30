@@ -4,7 +4,6 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.media.gameInterface.ClientScript;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
@@ -181,8 +180,8 @@ public class FloorDecoration {
             Class40_Sub7.mapBackRight = null;
             InteractiveObject.tabTop = null;
             if(arg0 < -28) {
-                ClientScript.chatboxRight = null;
-                Class61.tabPieceUpperRight = null;
+                MovedStatics.chatboxRight = null;
+                MovedStatics.tabPieceUpperRight = null;
                 Class35.aClass40_Sub5_Sub14_Sub2_1744 = null;
                 HashTable.aClass40_Sub5_Sub14_Sub2_549 = null;
                 Renderable.aClass40_Sub5_Sub14_Sub2_2860 = null;
@@ -289,7 +288,7 @@ public class FloorDecoration {
                                 com.jagex.runescape.Class34.anInt813++;
                                 return false;
                             }
-                            ClientScript.anInt2278 = 0;
+                            MovedStatics.anInt2278 = 0;
                             Class34.anInt813 = 0;
                             PacketBuffer.aClass40_Sub5_Sub13_2250.aClass6_Sub1_2754.method196((PacketBuffer.aClass40_Sub5_Sub13_2250.key & 0xff0000L) == 16711680L, (int) (PacketBuffer.aClass40_Sub5_Sub13_2250.key & 0xffffL), Npc.aBoolean3298, Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer);
                         }
@@ -358,7 +357,7 @@ public class FloorDecoration {
                 exception.printStackTrace();
                 /* empty */
             }
-            ClientScript.anInt2278++;
+            MovedStatics.anInt2278++;
             Class57.aClass64_1345 = null;
             return false;
         }

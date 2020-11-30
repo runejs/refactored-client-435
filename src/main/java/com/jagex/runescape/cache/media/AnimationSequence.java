@@ -2,7 +2,6 @@ package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.media.gameInterface.ClientScript;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.io.Buffer;
@@ -88,9 +87,9 @@ public class AnimationSequence extends SubNode {
             }
             MovedStatics.doWalkTo(i_18_, i_17_, Player.localPlayer.pathY[0], arg0, 0, true, 0, i_19_, Player.localPlayer.pathX[0], arg3, 2);
         }
-        Class40_Sub11.crossX = Class57.clickX;
+        ClientScriptRunner.crossX = Class57.clickX;
         LinkedList.crossType = 2;
-        ClientScript.crossY = RSString.clickY;
+        MovedStatics.crossY = RSString.clickY;
         OverlayDefinition.crossIndex = 0;
         return true;
     }

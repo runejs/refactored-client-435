@@ -50,7 +50,7 @@ public class MemoryCache {
 
 
     public static void method236(CacheIndex arg1, CacheIndex arg2, CacheIndex arg3) {
-        Class40_Sub11.aCacheIndex_2162 = arg1;
+        ClientScriptRunner.aCacheIndex_2162 = arg1;
         VarbitDefinition.aCacheIndex_2364 = arg3;
         AnimationSequence.aCacheIndex_2484 = arg2;
     }

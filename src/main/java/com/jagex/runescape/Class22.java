@@ -1,7 +1,6 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.MemoryCache;
-import com.jagex.runescape.cache.media.gameInterface.ClientScript;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -203,7 +202,7 @@ public abstract class Class22 {
                         Class5.anInt200 = 0;
                 }
                 if(i == 6)
-                    ClientScript.anInt2280 = i_21_;
+                    MovedStatics.anInt2280 = i_21_;
                 if(arg0 != -1)
                     method309(74, -85);
                 if(i != 5)

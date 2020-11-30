@@ -1,7 +1,6 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.media.gameInterface.ClientScript;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -60,7 +59,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                     /* empty */
                 }
                 Class57.aClass64_1345 = null;
-                ClientScript.anInt2278++;
+                MovedStatics.anInt2278++;
             }
         }
 
@@ -87,8 +86,8 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                 int i_8_ = i_5_ < arg8 ? i_5_ : arg8;
                 if (gameInterface.type == GameInterfaceType.LAYER) {
                     method20(i_4_, i_7_, gameInterface.anInt2746, arg3, i_6_, i, 1, arg7, i_8_, gameInterface.scrollPosition);
-                    if (gameInterface.aGameInterfaceArray2713 != null)
-                        method20(i_4_, i_7_, gameInterface.anInt2746, arg3, i_6_, gameInterface.id, 1, gameInterface.aGameInterfaceArray2713, i_8_, gameInterface.scrollPosition);
+                    if (gameInterface.children != null)
+                        method20(i_4_, i_7_, gameInterface.anInt2746, arg3, i_6_, gameInterface.id, 1, gameInterface.children, i_8_, gameInterface.scrollPosition);
                 }
                 if (gameInterface.hasListeners) {
                     boolean bool;
@@ -112,33 +111,33 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                     if (!gameInterface.aBoolean2730 && bool_10_ && (0x1 & arg3) != 0) {
                         gameInterface.aBoolean2730 = true;
                         if (gameInterface.anObjectArray2681 != null)
-                            GameInterface.runClientScripts(gameInterface.anObjectArray2681, 0, RSString.clickY + -i_2_, gameInterface, Class57.clickX - i_1_, false);
+                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2681, 0, RSString.clickY + -i_2_, gameInterface, Class57.clickX - i_1_);
                     }
                     if (gameInterface.aBoolean2730 && bool_9_ && (arg3 & 0x4) != 0 && gameInterface.anObjectArray2747 != null)
-                        GameInterface.runClientScripts(gameInterface.anObjectArray2747, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX, false);
+                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2747, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX);
                     if (gameInterface.aBoolean2730 && !bool_9_ && (0x2 & arg3) != 0) {
                         gameInterface.aBoolean2730 = false;
                         if (gameInterface.anObjectArray2707 != null)
-                            GameInterface.runClientScripts(gameInterface.anObjectArray2707, 0, Landscape.mouseY - i_2_, gameInterface, Class13.mouseX - i_1_, false);
+                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2707, 0, Landscape.mouseY - i_2_, gameInterface, Class13.mouseX - i_1_);
                     }
                     if (bool_9_ && (arg3 & 0x8) != 0 && gameInterface.anObjectArray2644 != null)
-                        GameInterface.runClientScripts(gameInterface.anObjectArray2644, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX, false);
+                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2644, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX);
                     if (!gameInterface.aBoolean2682 && bool && (0x10 & arg3) != 0) {
                         gameInterface.aBoolean2682 = true;
                         if (gameInterface.anObjectArray2658 != null)
-                            GameInterface.runClientScripts(gameInterface.anObjectArray2658, 0, Landscape.mouseY - i_2_, gameInterface, Class13.mouseX - i_1_, false);
+                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2658, 0, Landscape.mouseY - i_2_, gameInterface, Class13.mouseX - i_1_);
                     }
                     if (gameInterface.aBoolean2682 && bool && (0x40 & arg3) != 0 && gameInterface.anObjectArray2680 != null)
-                        GameInterface.runClientScripts(gameInterface.anObjectArray2680, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX, false);
+                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2680, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX);
                     if (gameInterface.aBoolean2682 && !bool && (arg3 & 0x20) != 0) {
                         gameInterface.aBoolean2682 = false;
                         if (gameInterface.anObjectArray2672 != null)
-                            GameInterface.runClientScripts(gameInterface.anObjectArray2672, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX, false);
+                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2672, 0, -i_2_ + Landscape.mouseY, gameInterface, -i_1_ + Class13.mouseX);
                     }
                     if (gameInterface.anObjectArray2712 != null && (arg3 & 0x80) != 0)
-                        GameInterface.runClientScripts(gameInterface.anObjectArray2712, 0, 0, gameInterface, 0, false);
+                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2712, 0, 0, gameInterface, 0);
                     if (AnimationSequence.anInt2480 == Node.pulseCycle && gameInterface.anObjectArray2650 != null && (arg3 & 0x100) != 0)
-                        GameInterface.runClientScripts(gameInterface.anObjectArray2650, 0, 0, gameInterface, 0, false);
+                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2650, 0, 0, gameInterface, 0);
                 }
             }
         }
@@ -161,7 +160,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                     Item.friendsCount--;
                     GameInterface.redrawTabArea = true;
                     for (int i_13_ = i; i_13_ < Item.friendsCount; i_13_++) {
-                        Class40_Sub11.friendUsernames[i_13_] = Class40_Sub11.friendUsernames[1 + i_13_];
+                        ClientScriptRunner.friendUsernames[i_13_] = ClientScriptRunner.friendUsernames[1 + i_13_];
                         Class40_Sub7.friendWorlds[i_13_] = Class40_Sub7.friendWorlds[i_13_ + 1];
                         Class59.friends[i_13_] = Class59.friends[1 + i_13_];
                     }

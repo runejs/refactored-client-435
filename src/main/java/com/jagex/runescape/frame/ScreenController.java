@@ -3,7 +3,6 @@ package com.jagex.runescape.frame;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.media.gameInterface.ClientScript;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
@@ -136,7 +135,7 @@ public class ScreenController {
         // height 337
         // width 234
         drawFramePiece(GameObject.tabPieceLeft, x + 212, y + 39);
-        drawFramePieceCutout(Class61.tabPieceUpperRight, x, y + 39, Class61.tabPieceUpperRight.width - 15, Class61.tabPieceUpperRight.height, 15, 0);
+        drawFramePieceCutout(MovedStatics.tabPieceUpperRight, x, y + 39, MovedStatics.tabPieceUpperRight.width - 15, MovedStatics.tabPieceUpperRight.height, 15, 0);
         drawFramePieceCutout(PlayerAppearance.tabPieveLowerRight, x, y + 191, PlayerAppearance.tabPieveLowerRight.width - 35, PlayerAppearance.tabPieveLowerRight.height, 35, 0);
         drawFramePieceCutout(Class17.chatboxTop, x, y + 172, Class17.chatboxTop.width - 531, Class17.chatboxTop.height, 531, 0);
         drawFramePieceCutout(RSCanvas.tabBottom, x, y + 300, RSCanvas.tabBottom.width - 35, RSCanvas.tabBottom.height, 35, 0);
@@ -152,7 +151,7 @@ public class ScreenController {
         drawFramePiece(RSCanvas.chatboxProducingGraphicsBuffer, x + 17, y + 16);
         drawFramePiece(HuffmanEncoding.aProducingGraphicsBuffer_1541, x, y + 112);
         drawFramePieceCutout(RSCanvas.tabBottom, x + 496, y + 125, 20, RSCanvas.tabBottom.height, 0, 0);
-        drawFramePiece(ClientScript.chatboxRight, x, y + 16);
+        drawFramePiece(MovedStatics.chatboxRight, x, y + 16);
         drawFramePieceCutout(Class17.chatboxTop, x, y, Class17.chatboxTop.width - 37, Class17.chatboxTop.height - 3, 0, 3);
         //        System.out.println(Class40_Sub5_Sub1.chatboxRight.height + (Class17.chatboxTop.height-3) + HuffmanEncoding.aProducingGraphicsBuffer_1541.height);
 
@@ -244,7 +243,7 @@ public class ScreenController {
             if(GameInterface.chatboxInterfaceId == -1) {
                 if(ChatBox.dialogueId == -1) {
                     if(y < 434 && x < 426)
-                        Class40_Sub11.method873(y  -357, 45);
+                        ClientScriptRunner.method873(y  -357, 45);
                 } else
                     Class13.method243((byte) 89, 357, 496, 453, ChatBox.dialogueId, 17, x, y, 3);
             } else
@@ -253,7 +252,7 @@ public class ScreenController {
             if(GameInterface.chatboxInterfaceId == -1) {
                 if(ChatBox.dialogueId == -1) {
                     if(y < frameHeight - (112) && x < 426)
-                        Class40_Sub11.method873(y  -(frameHeight - 162), 45);
+                        ClientScriptRunner.method873(y  -(frameHeight - 162), 45);
                 } else
                     Class13.method243((byte) 89, (frameHeight - 162), frameWidth - 496, frameHeight - 54, ChatBox.dialogueId, 17, x, y, 3);
             } else

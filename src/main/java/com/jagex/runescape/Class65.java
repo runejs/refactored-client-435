@@ -13,7 +13,6 @@ import com.jagex.runescape.scene.tile.SceneTile;
 import java.util.zip.CRC32;
 
 public class Class65 {
-    public static CRC32 aCRC32_1531 = new CRC32();
     public static int cameraVertical;
 
     static {

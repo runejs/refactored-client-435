@@ -48,7 +48,7 @@ public class FramemapDefinition extends Node {
         if(arg1.anInt2738 >= 0)
             return GameInterface.cachedInterfaces[i][0xffff & arg1.anInt2738];
         GameInterface gameInterface = GameInterface.cachedInterfaces[i][(0x7fff99d9 & arg1.anInt2738) >> 15];
-        return gameInterface.aGameInterfaceArray2713[arg1.anInt2738 & 0x7fff];
+        return gameInterface.children[arg1.anInt2738 & 0x7fff];
     }
 
     public static void method879(IndexedImage arg1) {
@@ -64,12 +64,12 @@ public class FramemapDefinition extends Node {
             for(int i_23_ = 1; -1 + i_19_ > i_23_; i_23_++) {
                 for(int i_24_ = 1; i_24_ < 127; i_24_++) {
                     int i_25_ = (i_23_ << 7) + i_24_;
-                    Class61.anIntArray1445[i_25_] = (Landscape.anIntArray1168[i_25_ - 128] + Landscape.anIntArray1168[i_25_ + -1] + Landscape.anIntArray1168[i_25_ + 1] + Landscape.anIntArray1168[128 + i_25_]) / 4;
+                    MovedStatics.anIntArray1445[i_25_] = (Landscape.anIntArray1168[i_25_ - 128] + Landscape.anIntArray1168[i_25_ + -1] + Landscape.anIntArray1168[i_25_ + 1] + Landscape.anIntArray1168[128 + i_25_]) / 4;
                 }
             }
             int[] is = Landscape.anIntArray1168;
-            Landscape.anIntArray1168 = Class61.anIntArray1445;
-            Class61.anIntArray1445 = is;
+            Landscape.anIntArray1168 = MovedStatics.anIntArray1445;
+            MovedStatics.anIntArray1445 = is;
         }
         if(arg1 != null) {
             int i_26_ = 0;

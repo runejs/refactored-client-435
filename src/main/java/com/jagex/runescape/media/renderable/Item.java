@@ -198,7 +198,7 @@ public class Item extends Renderable {
             for (int i = 0; i < 64; i++)
                 Class40_Sub5_Sub17_Sub6.anIntArray3248[192 + i] = 16777215;
             Class42.anIntArray1013 = new int[256];
-            Class61.anIntArray1445 = new int[32768];
+            MovedStatics.anIntArray1445 = new int[32768];
             Landscape.anIntArray1168 = new int[32768];
             FramemapDefinition.method879(null);
             Class40_Sub5_Sub17_Sub6.anIntArray3255 = new int[32768];

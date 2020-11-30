@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.cache.cs.InvokedScript;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.scene.InteractiveObject;
@@ -14,7 +15,6 @@ import com.jagex.runescape.scene.tile.SceneTile;
 public class Class56 {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1315;
     public static int anInt1318 = 3353893;
-    public static Class61[] aClass61Array1320 = new Class61[50];
     public static IndexedImage tabBottomBack;
 
     public Class67 aClass67_1309;

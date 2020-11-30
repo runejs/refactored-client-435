@@ -65,7 +65,7 @@ public class Class13 {
             }
             if(class40_sub6 == null)
                 break;
-            class40_sub6.aClass6_Sub1_2104.method198((byte) -115, false, class40_sub6.aByteArray2102, (int) class40_sub6.key, class40_sub6.aClass56_2117);
+            class40_sub6.aClass6_Sub1_2104.method198(false, class40_sub6.aByteArray2102, (int) class40_sub6.key, class40_sub6.aClass56_2117);
         }
     }
 

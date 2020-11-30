@@ -126,8 +126,8 @@ public class Class48 {
                     if(gameInterface.type == GameInterfaceType.LAYER) {
                         if(!gameInterface.isHidden || Class29.method371(8247, arg7, i) || PacketBuffer.hiddenButtonTest) {
                             method925(i_1_ + gameInterface.originalHeight, arg1, i_2_, gameInterface.scrollPosition, arg4, arg5, i, arg7, arg8, i_1_, gameInterface.anInt2746, i_2_ + gameInterface.originalWidth);
-                            if(gameInterface.aGameInterfaceArray2713 != null)
-                                method925(i_1_ + gameInterface.originalHeight, gameInterface.aGameInterfaceArray2713, i_2_, gameInterface.scrollPosition, arg4, 0, gameInterface.id, arg7, arg8, i_1_, gameInterface.anInt2746, gameInterface.originalWidth + i_2_);
+                            if(gameInterface.children != null)
+                                method925(i_1_ + gameInterface.originalHeight, gameInterface.children, i_2_, gameInterface.scrollPosition, arg4, 0, gameInterface.id, arg7, arg8, i_1_, gameInterface.anInt2746, gameInterface.originalWidth + i_2_);
                             if(gameInterface.originalHeight < gameInterface.scrollHeight)
                                 Class5.scrollInterface(gameInterface.originalHeight, arg4, arg8, gameInterface.scrollHeight, gameInterface, gameInterface.originalWidth + i_2_, arg7, i_1_);
                         }

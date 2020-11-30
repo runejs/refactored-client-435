@@ -2,7 +2,7 @@ package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.gameInterface.ClientScript;
+import com.jagex.runescape.cache.cs.ClientScript;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
@@ -110,12 +110,12 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
                 Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
 
                 Landscape.framePieceRight.drawGraphics(0, 4, graphics);
-                ClientScript.chatboxRight.drawGraphics(0, 357, graphics);
+                MovedStatics.chatboxRight.drawGraphics(0, 357, graphics);
                 Class39.mapbackLeft.drawGraphics(722, 4, graphics);
                 GameObject.tabPieceLeft.drawGraphics(743, 205, graphics);
                 Class40_Sub5_Sub17_Sub6.framePieceTop.drawGraphics(0, 0, graphics);
                 Class40_Sub7.mapBackRight.drawGraphics(516, 4, graphics);
-                Class61.tabPieceUpperRight.drawGraphics(516, 205, graphics);
+                MovedStatics.tabPieceUpperRight.drawGraphics(516, 205, graphics);
                 PlayerAppearance.tabPieveLowerRight.drawGraphics(496, 357, graphics);
                 Class17.chatboxTop.drawGraphics(0, 338, graphics);
             }
@@ -133,22 +133,22 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
     }
 
 
-    public static boolean method746(GameInterface arg1) {
-        if(arg1.alternateOperators == null) {
+    public static boolean method746(GameInterface gameInterface) {
+        if(gameInterface.alternateOperators == null) {
             return false;
         }
-        for(int i = 0; arg1.alternateOperators.length > i; i++) {
-            int i_10_ = HuffmanEncoding.parseClientScripts(i, false, arg1);
-            int i_11_ = arg1.alternateRhs[i];
-            if(arg1.alternateOperators[i] == 2) {
+        for(int i = 0; gameInterface.alternateOperators.length > i; i++) {
+            int i_10_ = ClientScript.parseClientScripts(i, false, gameInterface);
+            int i_11_ = gameInterface.alternateRhs[i];
+            if(gameInterface.alternateOperators[i] == 2) {
                 if(i_11_ <= i_10_) {
                     return false;
                 }
-            } else if(arg1.alternateOperators[i] == 3) {
+            } else if(gameInterface.alternateOperators[i] == 3) {
                 if(i_11_ >= i_10_) {
                     return false;
                 }
-            } else if(arg1.alternateOperators[i] == 4) {
+            } else if(gameInterface.alternateOperators[i] == 4) {
                 if(i_11_ == i_10_) {
                     return false;
                 }
@@ -178,10 +178,10 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
                 int i_17_ = npc.worldY >> 7;
                 if(i_16_ >= 0 && i_16_ < 104 && i_17_ >= 0 && i_17_ < 104) {
                     if(npc.anInt3096 == 1 && (npc.worldX & 0x7f) == 64 && (npc.worldY & 0x7f) == 64) {
-                        if(Class61.anIntArrayArray1435[i_16_][i_17_] == Class40_Sub5_Sub11.anInt2628) {
+                        if(MovedStatics.anIntArrayArray1435[i_16_][i_17_] == Class40_Sub5_Sub11.anInt2628) {
                             continue;
                         }
-                        Class61.anIntArrayArray1435[i_16_][i_17_] = Class40_Sub5_Sub11.anInt2628;
+                        MovedStatics.anIntArrayArray1435[i_16_][i_17_] = Class40_Sub5_Sub11.anInt2628;
                     }
                     if(!npc.actorDefinition.isClickable) {
                         i_15_ += -2147483648;

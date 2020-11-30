@@ -125,7 +125,7 @@ public class IncomingPackets {
             if(incomingPacket == 156) { // friend logged in
                 long l = incomingPacketBuffer.getLongBE();
                 int i_1_ = incomingPacketBuffer.getUnsignedShortBE();
-                String string = Player.longToUsername(l).method85(). toString();
+                String string = Player.longToUsername(l).method85().toString();
                 for(int i_2_ = 0; i_2_ < Item.friendsCount; i_2_++) {
                     if(l == Class59.friends[i_2_]) {
                         if(i_1_ != Class40_Sub7.friendWorlds[i_2_]) {
@@ -143,7 +143,7 @@ public class IncomingPackets {
                 boolean bool = false;
                 if(string != null && Item.friendsCount < 200) {
                     Class59.friends[Item.friendsCount] = l;
-                    Class40_Sub11.friendUsernames[Item.friendsCount] = string;
+                    ClientScriptRunner.friendUsernames[Item.friendsCount] = string;
                     Class40_Sub7.friendWorlds[Item.friendsCount] = i_1_;
                     Item.friendsCount++;
                     GameInterface.redrawTabArea = true;
@@ -156,9 +156,9 @@ public class IncomingPackets {
                             int i_4_ = Class40_Sub7.friendWorlds[i_3_];
                             Class40_Sub7.friendWorlds[i_3_] = Class40_Sub7.friendWorlds[i_3_ + 1];
                             Class40_Sub7.friendWorlds[1 + i_3_] = i_4_;
-                            String class1_5_ = Class40_Sub11.friendUsernames[i_3_];
-                            Class40_Sub11.friendUsernames[i_3_] = Class40_Sub11.friendUsernames[1 + i_3_];
-                            Class40_Sub11.friendUsernames[1 + i_3_] = class1_5_;
+                            String class1_5_ = ClientScriptRunner.friendUsernames[i_3_];
+                            ClientScriptRunner.friendUsernames[i_3_] = ClientScriptRunner.friendUsernames[1 + i_3_];
+                            ClientScriptRunner.friendUsernames[1 + i_3_] = class1_5_;
                             long l_6_ = Class59.friends[i_3_];
                             Class59.friends[i_3_] = Class59.friends[i_3_ + 1];
                             Class59.friends[1 + i_3_] = l_6_;
@@ -169,12 +169,12 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == 233) {
+            if(incomingPacket == 233) { // clear destination X
                 incomingPacket = -1;
                 VarbitDefinition.destinationX = 0;
                 return true;
             }
-            if(incomingPacket == 7) {
+            if(incomingPacket == 7) { // close cutscene
                 Player.cutsceneActive = false;
                 for(int i_7_ = 0; i_7_ < 5; i_7_++)
                     Class40_Sub5_Sub17_Sub1.aBooleanArray2975[i_7_] = false;
@@ -213,16 +213,16 @@ public class IncomingPackets {
                 final int packed = incomingPacketBuffer.getIntBE();
                 final GameInterface gameInterface = GameInterface.getChildInterface(packed);
 
-                if (gameInterface.isIf3) {
+                if(gameInterface.isIf3) {
                     final GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[packed >> 16];
-                    for (GameInterface child : gameInterfaces) {
-                        if ((0xffff & gameInterface.id) == (0xffff & child.parentId) && child.anInt2736 > 0) {
+                    for(GameInterface child : gameInterfaces) {
+                        if((0xffff & gameInterface.id) == (0xffff & child.parentId) && child.anInt2736 > 0) {
                             child.itemAmount = 0;
                             child.itemId = -1;
                         }
                     }
                 } else {
-                    for (int index = 0; index < gameInterface.items.length; index++) {
+                    for(int index = 0; index < gameInterface.items.length; index++) {
                         gameInterface.items[index] = 0;
                         gameInterface.itemAmounts[index] = 0;
                     }
@@ -230,14 +230,14 @@ public class IncomingPackets {
 
                 final int size = incomingPacketBuffer.getUnsignedShortBE();
 
-                for (int index = 0; index < size; index += 8) {
+                for(int index = 0; index < size; index += 8) {
                     final int bitset = incomingPacketBuffer.getByte();
 
-                    for (int offset = 0; offset < 8; offset++) {
+                    for(int offset = 0; offset < 8; offset++) {
                         final boolean empty = (bitset & 1 << offset) == 0;
                         final int id, amount;
 
-                        if (empty) {
+                        if(empty) {
                             id = amount = 0;
                         } else {
                             final int peek = incomingPacketBuffer.getUnsignedByte();
@@ -247,15 +247,15 @@ public class IncomingPackets {
 
                         final int idx = index + offset;
 
-                        if (gameInterface.isIf3) {
+                        if(gameInterface.isIf3) {
                             GameInterface gameInterfaces[] = GameInterface.cachedInterfaces[packed >> 16];
-                            for (GameInterface child : gameInterfaces) {
-                                if ((gameInterface.id & 0xffff) == (child.parentId & 0xffff) && 1 + idx == child.anInt2736) {
+                            for(GameInterface child : gameInterfaces) {
+                                if((gameInterface.id & 0xffff) == (child.parentId & 0xffff) && 1 + idx == child.anInt2736) {
                                     child.itemAmount = amount;
                                     child.itemId = -1 + id;
                                 }
                             }
-                        } else if (idx < gameInterface.items.length) {
+                        } else if(idx < gameInterface.items.length) {
                             gameInterface.items[idx] = id;
                             gameInterface.itemAmounts[idx] = amount;
                         }
@@ -273,7 +273,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == 255) {
+            if(incomingPacket == 255) { // camera shake?
                 int i_23_ = incomingPacketBuffer.getUnsignedByte();
                 int i_24_ = incomingPacketBuffer.getUnsignedByte();
                 int i_25_ = incomingPacketBuffer.getUnsignedByte();
@@ -293,7 +293,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == 48) {
+            if(incomingPacket == 48) { // multi combat zone
                 Class40_Sub6.anInt2118 = incomingPacketBuffer.getUnsignedByte();
                 incomingPacket = -1;
                 return true;
@@ -353,7 +353,7 @@ public class IncomingPackets {
             if(incomingPacket == 85) { // console auto-completion
                 String command = incomingPacketBuffer.getString();
                 String help = incomingPacketBuffer.getString();
-                Console.console.addCommand(command,help);
+                Console.console.addCommand(command, help);
                 incomingPacket = -1;
                 return true;
             }
@@ -548,7 +548,7 @@ public class IncomingPackets {
             if(incomingPacket == UPDATE_RUN_ENERGY) {
                 if(Class5.currentTabId == 12)
                     GameInterface.redrawTabArea = true;
-                Class40_Sub11.runEnergy = incomingPacketBuffer.getUnsignedByte();
+                ClientScriptRunner.runEnergy = incomingPacketBuffer.getUnsignedByte();
                 incomingPacket = -1;
                 return true;
             }
@@ -567,11 +567,11 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == 185) {
-                int i_56_ = incomingPacketBuffer.getShortBE();
-                if(ChatBox.dialogueId != i_56_) {
+            if(incomingPacket == 185) { // open chatbox interface (multi)
+                int chatboxInterfaceId = incomingPacketBuffer.getShortBE();
+                if(ChatBox.dialogueId != chatboxInterfaceId) {
                     GameInterface.resetInterface(ChatBox.dialogueId);
-                    ChatBox.dialogueId = i_56_;
+                    ChatBox.dialogueId = chatboxInterfaceId;
                 }
                 incomingPacket = -1;
                 ChatBox.redrawChatbox = true;
@@ -828,18 +828,18 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 142) {
-                int i_76_ = incomingPacketBuffer.getUnsignedShortBE();
-                int i_77_ = incomingPacketBuffer.getUnsignedShortLE();
-                int i_78_ = incomingPacketBuffer.getUnsignedShortBE();
-                int i_79_ = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.getChildInterface(i_79_);
+                int rotationZ = incomingPacketBuffer.getUnsignedShortBE();
+                int modelZoom = incomingPacketBuffer.getUnsignedShortLE();
+                int rotationX = incomingPacketBuffer.getUnsignedShortBE();
+                int interfaceData = incomingPacketBuffer.getIntLE();
+                GameInterface childInterface = GameInterface.getChildInterface(interfaceData);
                 incomingPacket = -1;
-                gameInterface.rotationZ = i_76_;
-                gameInterface.modelZoom = i_77_;
-                gameInterface.rotationX = i_78_;
+                childInterface.rotationZ = rotationZ;
+                childInterface.modelZoom = modelZoom;
+                childInterface.rotationX = rotationX;
                 return true;
             }
-            if(incomingPacket == 6) {
+            if(incomingPacket == 6) { // open tab
                 Class5.currentTabId = incomingPacketBuffer.getUnsignedByte();
                 GameInterface.drawTabIcons = true;
                 GameInterface.redrawTabArea = true;
@@ -972,7 +972,7 @@ public class IncomingPackets {
                     ItemDefinition itemDefinition = ItemDefinition.forId(itemId, 10);
                     gameInterface.rotationX = itemDefinition.xan2d;
                     gameInterface.modelId = itemId;
-                    gameInterface.modelType =  InterfaceModelType.ITEM;
+                    gameInterface.modelType = InterfaceModelType.ITEM;
                     gameInterface.modelZoom = 100 * itemDefinition.zoom2d / zoom;
                     gameInterface.rotationZ = itemDefinition.yan2d;
                 }
@@ -1007,7 +1007,7 @@ public class IncomingPackets {
                     if(fromPlayerRights == 2 || fromPlayerRights == 3)
                         Class44.addChatMessage(Native.goldCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), class1.toString(), 7);
                     else if(fromPlayerRights == 1)
-                        Class44.addChatMessage(Native.whiteCrown +TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), class1.toString(), 7);
+                        Class44.addChatMessage(Native.whiteCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), class1.toString(), 7);
                     else
                         Class44.addChatMessage(TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), class1.toString(), 3);
                 }
@@ -1077,13 +1077,13 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 240) {
-                ActorDefinition.method580(ISAAC.aClass31_521, incomingPacketBuffer);
+                ClientScriptRunner.parseClientScriptPacket(ISAAC.aClass31_521, incomingPacketBuffer);
                 incomingPacket = -1;
                 return true;
             }
             if(incomingPacket == 58) {
                 int i_106_ = incomingPacketBuffer.getIntME2();
-                Class12.aSignlinkNode_394 = ISAAC.aClass31_521.method393(11545, i_106_);
+                Class12.aSignlinkNode_394 = ISAAC.aClass31_521.method393(i_106_);
                 incomingPacket = -1;
                 return true;
             }
@@ -1112,15 +1112,6 @@ public class IncomingPackets {
                     } else if(itemSlot >= 0 && gameInterface.items.length > itemSlot) {
                         gameInterface.items[itemSlot] = i_109_;
                         gameInterface.itemAmounts[itemSlot] = i_110_;
-                    }
-                }
-                if(GameInterface.decodeGameInterface(307)) {
-                    GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[307];
-                    for(int y = 0; gameInterfaces.length > y; y++) {
-                        GameInterface gameInterface2 = gameInterfaces[y];
-                        if(gameInterface2 != null && gameInterface2.items != null) {
-                            System.out.println("Container ID: " + y);
-                        }
                     }
                 }
                 incomingPacket = -1;
