@@ -12,24 +12,24 @@ public class Class26 {
     public static CacheIndex aCacheIndex_632;
     public static int baseY;
 
-    public static Class method349(String arg1) throws ClassNotFoundException {
-        if(arg1.equals("B"))
+    public static Class stringToType(String typeCode) throws ClassNotFoundException {
+        if(typeCode.equals("B"))
             return Byte.TYPE;
-        if(arg1.equals("I"))
+        if(typeCode.equals("I"))
             return Integer.TYPE;
-        if(arg1.equals("S"))
+        if(typeCode.equals("S"))
             return Short.TYPE;
-        if(arg1.equals("J"))
+        if(typeCode.equals("J"))
             return Long.TYPE;
-        if(arg1.equals("Z"))
+        if(typeCode.equals("Z"))
             return Boolean.TYPE;
-        if(arg1.equals("F"))
+        if(typeCode.equals("F"))
             return Float.TYPE;
-        if(arg1.equals("D"))
+        if(typeCode.equals("D"))
             return Double.TYPE;
-        if(arg1.equals("C"))
+        if(typeCode.equals("C"))
             return Character.TYPE;
-        return Class.forName(arg1);
+        return Class.forName(typeCode);
     }
 
 }

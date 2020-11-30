@@ -19,10 +19,10 @@ public class Class61 {
     public static boolean aBoolean1444 = false;
     public static int[] anIntArray1445;
 
-    public ClientScript aClientScript_1419;
-    public int[] anIntArray1420;
-    public String[] aClass1Array1430;
-    public int anInt1433 = -1;
+    public ClientScript clientScript;
+    public int[] localInts;
+    public String[] localStrings;
+    public int scriptIndex = -1;
 
     public static void method996(int arg0) {
         if(arg0 != 19655)

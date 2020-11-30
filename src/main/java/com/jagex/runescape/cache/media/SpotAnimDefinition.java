@@ -132,30 +132,30 @@ public class SpotAnimDefinition extends SubNode {
                 if (Configuration.RSA_ENABLED) {
                     SceneCluster.packetBuffer.applyRSA(Configuration.RSA_MODULUS, Configuration.RSA_PUBLIC_KEY);
                 }
-                Class61.packetBuffer.currentPosition = 0;
+                MovedStatics.packetBuffer.currentPosition = 0;
                 if (Class51.anInt1197 == 40) {
-                    Class61.packetBuffer.putByte(18);
+                    MovedStatics.packetBuffer.putByte(18);
                 } else {
-                    Class61.packetBuffer.putByte(16);
+                    MovedStatics.packetBuffer.putByte(16);
                 }
-                Class61.packetBuffer.putByte(57 + SceneCluster.packetBuffer.currentPosition);
-                Class61.packetBuffer.putIntBE(435);
-                Class61.packetBuffer.putByte(VertexNormal.lowMemory ? 1 : 0);
-                Class61.packetBuffer.putIntBE(MemoryCache.skeletonCacheIndex.anInt216);
-                Class61.packetBuffer.putIntBE(MemoryCache.skinDefinitionCacheIndex.anInt216);
-                Class61.packetBuffer.putIntBE(MemoryCache.gameDefinitionsCacheIndex.anInt216);
-                Class61.packetBuffer.putIntBE(MemoryCache.gameInterfaceCacheIndex.anInt216);
-                Class61.packetBuffer.putIntBE(MemoryCache.soundEffectCacheIndex.anInt216);
-                Class61.packetBuffer.putIntBE(MemoryCache.gameWorldMapCacheIndex.anInt216);
-                Class61.packetBuffer.putIntBE(MemoryCache.musicCacheIndex.anInt216);
-                Class61.packetBuffer.putIntBE(MemoryCache.modelCacheIndex.anInt216);
-                Class61.packetBuffer.putIntBE(MemoryCache.gameImageCacheIndex.anInt216);
-                Class61.packetBuffer.putIntBE(MemoryCache.gameTextureCacheIndex.anInt216);
-                Class61.packetBuffer.putIntBE(MemoryCache.huffmanCacheIndex.anInt216);
-                Class61.packetBuffer.putIntBE(MemoryCache.jingleCacheIndex.anInt216);
-                Class61.packetBuffer.putIntBE(MemoryCache.clientScriptCacheIndex.anInt216);
-                Class61.packetBuffer.putBytes(0, SceneCluster.packetBuffer.currentPosition, SceneCluster.packetBuffer.buffer);
-                Class40_Sub6.gameConnection.method1010(Class61.packetBuffer.currentPosition, (byte) -19, 0, Class61.packetBuffer.buffer);
+                MovedStatics.packetBuffer.putByte(57 + SceneCluster.packetBuffer.currentPosition);
+                MovedStatics.packetBuffer.putIntBE(435);
+                MovedStatics.packetBuffer.putByte(VertexNormal.lowMemory ? 1 : 0);
+                MovedStatics.packetBuffer.putIntBE(MemoryCache.skeletonCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(MemoryCache.skinDefinitionCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(MemoryCache.gameDefinitionsCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(MemoryCache.gameInterfaceCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(MemoryCache.soundEffectCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(MemoryCache.gameWorldMapCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(MemoryCache.musicCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(MemoryCache.modelCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(MemoryCache.gameImageCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(MemoryCache.gameTextureCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(MemoryCache.huffmanCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(MemoryCache.jingleCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(MemoryCache.clientScriptCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putBytes(0, SceneCluster.packetBuffer.currentPosition, SceneCluster.packetBuffer.buffer);
+                Class40_Sub6.gameConnection.method1010(MovedStatics.packetBuffer.currentPosition, (byte) -19, 0, MovedStatics.packetBuffer.buffer);
                 SceneCluster.packetBuffer.initOutCipher(seeds);
                 for (int i = 0; i < 4; i++) {
                     seeds[i] += 50;

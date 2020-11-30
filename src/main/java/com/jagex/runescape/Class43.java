@@ -38,7 +38,7 @@ public class Class43 {
 
     public static void drawTabArea(int arg0) {
         MovedStatics.aBoolean893 = true;
-        Class61.method996(19655);
+        MovedStatics.method996(19655);
         if(GameInterface.tabAreaInterfaceId != -1) {
             boolean bool = Class40_Sub5_Sub6.drawInterface(0, GameInterface.tabAreaInterfaceId, 261, (byte) -5, 0, 1, 190);
             if(!bool)

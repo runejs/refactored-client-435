@@ -55,7 +55,7 @@ public class Class40_Sub2 extends Node {
         if(arg0 == null)
             return false;
         for(int i = 0; i < Item.friendsCount; i++) {
-            if(arg0.equalsIgnoreCase(Class40_Sub11.friendUsernames[i]))
+            if(arg0.equalsIgnoreCase(ClientScriptRunner.friendUsernames[i]))
                 return true;
         }
         return arg0.equalsIgnoreCase(Player.localPlayer.playerName);

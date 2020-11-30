@@ -4,18 +4,12 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.gameInterface.ClientScript;
-import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
-import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
-import com.jagex.runescape.scene.GroundItemTile;
-import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.SceneTile;
-import com.jagex.runescape.scene.tile.Wall;
 import tech.henning.fourthreefive.Configuration;
 
 import java.text.MessageFormat;
@@ -223,144 +217,11 @@ public class HuffmanEncoding {
         return Class48.method927(i_13_, arg0, true, i);
     }
 
-    // parse client scripts
-    public static int parseClientScripts(int arg0, boolean arg1, GameInterface arg2) {
-        if (arg2.clientScripts == null || arg0 >= arg2.clientScripts.length) {
-            return -2;
-        }
-        try {
-            int[] is = arg2.clientScripts[arg0];
-            int i = 0;
-            int i_14_ = 0;
-            if (arg1) {
-                anInt1559 = -63;
-            }
-            int i_15_ = 0;
-            for (; ; ) {
-                int i_16_ = 0;
-                int i_17_ = 0;
-                int i_18_ = is[i_14_++];
-                if (i_18_ == 0) {
-                    return i;
-                }
-                if (i_18_ == 15) {
-                    i_17_ = 1;
-                }
-                if (i_18_ == 16) {
-                    i_17_ = 2;
-                }
-                if (i_18_ == 1) {
-                    i_16_ = Class13.anIntArray403[is[i_14_++]];
-                }
-                if (i_18_ == 2) {
-                    i_16_ = Wall.anIntArray354[is[i_14_++]];
-                }
-                if (i_18_ == 3) {
-                    i_16_ = Item.anIntArray3051[is[i_14_++]];
-                }
-                if (i_18_ == 17) {
-                    i_17_ = 3;
-                }
-                if (i_18_ == 4) {
-                    int i_19_ = is[i_14_++] << 16;
-                    i_19_ += is[i_14_++];
-                    GameInterface gameInterface = GameInterface.getChildInterface(i_19_);
-                    int i_20_ = is[i_14_++];
-                    if (i_20_ != -1 && (!ItemDefinition.forId(i_20_, 10).members || Class22.membersWorld)) {
-                        for (int i_21_ = 0; i_21_ < gameInterface.items.length; i_21_++) {
-                            if (1 + i_20_ == gameInterface.items[i_21_]) {
-                                i_16_ += gameInterface.itemAmounts[i_21_];
-                            }
-                        }
-                    }
-                }
-                if (i_18_ == 5) {
-                    int temp = is[i_14_++];
-                    i_16_ = GroundItemTile.varbitmasks[temp];
-                }
-                if (i_18_ == 6) {
-                    i_16_ = MovedStatics.anIntArray1909[-1 + Wall.anIntArray354[is[i_14_++]]];
-                }
-                if (i_18_ == 7) {
-                    int temp = is[i_14_++];
-                    i_16_ = 100 * GroundItemTile.varbitmasks[temp] / 46875;
-                }
-                if (i_18_ == 8) {
-                    i_16_ = Player.localPlayer.combatLevel;
-                }
-                if (i_18_ == 9) {
-                    for (int i_22_ = 0; i_22_ < 25; i_22_++) {
-                        if (Class22.aBooleanArray548[i_22_]) {
-                            i_16_ += Wall.anIntArray354[i_22_];
-                        }
-                    }
-                }
-                if (i_18_ == 10) {
-                    int i_23_ = is[i_14_++] << 16;
-                    i_23_ += is[i_14_++];
-                    GameInterface gameInterface = GameInterface.getChildInterface(i_23_);
-                    int i_24_ = is[i_14_++];
-                    if (i_24_ != -1 && (!ItemDefinition.forId(i_24_, 10).members || Class22.membersWorld)) {
-                        for (int i_25_ = 0; gameInterface.items.length > i_25_; i_25_++) {
-                            if (i_24_ + 1 == gameInterface.items[i_25_]) {
-                                i_16_ = 999999999;
-                                break;
-                            }
-                        }
-                    }
-                }
-                if (i_18_ == 11) {
-                    i_16_ = Class40_Sub11.runEnergy;
-                }
-                if (i_18_ == 12) {
-                    i_16_ = GenericTile.anInt1222;
-                }
-                if (i_18_ == 13) {
-                    int i_26_ = GroundItemTile.varbitmasks[is[i_14_++]];
-                    int i_27_ = is[i_14_++];
-                    i_16_ = (1 << i_27_ & i_26_) != 0 ? 1 : 0;
-                }
-                if (i_18_ == 14) {
-                    int i_28_ = is[i_14_++];
-                    i_16_ = Class40_Sub5_Sub6.method585(i_28_, 1369);
-                }
-                if (i_18_ == 18) {
-                    i_16_ = (Player.localPlayer.worldX >> 7) + SpotAnimDefinition.baseX;
-                }
-                if (i_18_ == 19) {
-                    i_16_ = (Player.localPlayer.worldY >> 7) + Class26.baseY;
-                }
-                if (i_18_ == 20) {
-                    i_16_ = is[i_14_++];
-                }
-                if (i_17_ == 0) {
-                    if (i_15_ == 0) {
-                        i += i_16_;
-                    }
-                    if (i_15_ == 1) {
-                        i -= i_16_;
-                    }
-                    if (i_15_ == 2 && i_16_ != 0) {
-                        i /= i_16_;
-                    }
-                    if (i_15_ == 3) {
-                        i *= i_16_;
-                    }
-                    i_15_ = 0;
-                } else {
-                    i_15_ = i_17_;
-                }
-            }
-        } catch (Exception exception) {
-            return -1;
-        }
-    }
-
     public static void method1030(byte arg0) {
         if (arg0 < 123) {
             method1030((byte) -24);
         }
-        for (Class40_Sub2 class40_sub2 = (Class40_Sub2) ClientScript.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) ClientScript.aLinkedList_2268.method909(-4)) {
+        for (Class40_Sub2 class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method909(-4)) {
             if (class40_sub2.aGameObjectDefinition_2011 != null) {
                 class40_sub2.method528();
             }

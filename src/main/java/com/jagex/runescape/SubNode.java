@@ -13,7 +13,6 @@ import com.jagex.runescape.scene.GroundItemTile;
 public class SubNode extends Node {
     public static int anInt2081;
     public static boolean aBoolean2083 = false;
-    public static int[] anIntArray2086;
     public static ProducingGraphicsBuffer tabImageProducer;
 
     public SubNode aClass40_Sub5_2082;

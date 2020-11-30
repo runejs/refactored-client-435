@@ -4,7 +4,6 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.gameInterface.ClientScript;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
@@ -74,7 +73,7 @@ public class Npc extends Actor {
                     for(int i = 0; i < Item.obfuscatedKeyStatus.length; i++)
                         Item.obfuscatedKeyStatus[i] = false;
                 }
-                Class40_Sub5_Sub6.putHackCheckPacket(-12, 205, SceneCluster.packetBuffer);
+                ClientScriptRunner.createClientScriptCheckPacket(205, SceneCluster.packetBuffer);
                 synchronized(Class12.mouseCapturer.objectLock) {
                     if(Class22.accountFlagged) {
                         if(MouseHandler.clickType != 0 || Class12.mouseCapturer.coord >= 40) {
@@ -276,9 +275,9 @@ public class Npc extends Actor {
                             int i_18_ = Scene.clickedTileY;
                             boolean bool = MovedStatics.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, true, 0, 0, Player.localPlayer.pathX[0], i_18_, 0);
                             if(bool) {
-                                ClientScript.crossY = RSString.clickY;
+                                MovedStatics.crossY = RSString.clickY;
                                 OverlayDefinition.crossIndex = 0;
-                                Class40_Sub11.crossX = Class57.clickX;
+                                ClientScriptRunner.crossX = Class57.clickX;
                                 LinkedList.crossType = 1;
                             }
                             Scene.clickedTileX = -1;

@@ -5,7 +5,6 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class29 {
     public static Class64 aClass64_676;
-    public static int anInt678 = 0;
 
     public static boolean method371(int arg0, int arg1, int arg2) {
         if(arg1 == 0 && ItemDefinition.anInt2850 == arg2)

@@ -3,7 +3,6 @@ package com.jagex.runescape.input;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
-import com.jagex.runescape.cache.media.gameInterface.ClientScript;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
@@ -48,10 +47,10 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     public static void draw3dScreen() {
         Wall.renderSplitPrivateMessages();
         if (LinkedList.crossType == 1) {
-            Class37.cursorCross[OverlayDefinition.crossIndex / 100].drawImage(Class40_Sub11.crossX - 8 - 4, ClientScript.crossY - 8 - 4);
+            Class37.cursorCross[OverlayDefinition.crossIndex / 100].drawImage(ClientScriptRunner.crossX - 8 - 4, MovedStatics.crossY - 8 - 4);
         }
         if (LinkedList.crossType == 2) {
-            Class37.cursorCross[4 + OverlayDefinition.crossIndex / 100].drawImage(Class40_Sub11.crossX - 8 - 4, ClientScript.crossY - 8 - 4);
+            Class37.cursorCross[4 + OverlayDefinition.crossIndex / 100].drawImage(ClientScriptRunner.crossX - 8 - 4, MovedStatics.crossY - 8 - 4);
         }
         if (GroundItemTile.walkableWidgetId != -1) {
             Renderable.handleSequences(GroundItemTile.walkableWidgetId);

@@ -111,9 +111,9 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         }
         if(is == null) {
             byte[] is_6_ = arg2.method969(arg1);
-            arg0.method198((byte) -115, true, is_6_, arg1, arg2);
+            arg0.method198(true, is_6_, arg1, arg2);
         } else {
-            arg0.method198((byte) -115, true, is, arg1, arg2);
+            arg0.method198(true, is, arg1, arg2);
         }
     }
 

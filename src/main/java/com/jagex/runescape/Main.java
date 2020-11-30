@@ -4,10 +4,7 @@ import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
-import com.jagex.runescape.cache.media.gameInterface.ClientScript;
-import com.jagex.runescape.cache.media.gameInterface.GameInterface;
-import com.jagex.runescape.cache.media.gameInterface.InterfaceModelType;
-import com.jagex.runescape.cache.media.gameInterface.GameInterfaceType;
+import com.jagex.runescape.cache.media.gameInterface.*;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
@@ -92,8 +89,8 @@ public class Main extends GameShell {
                                 gameInterface.scrollPosition = 0;
                         }
                         bool &= method36(arg0, i_1_, i_0_, gameInterface.anInt2746, i, gameInterface.originalHeight + i_1_, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, arg8, arg9);
-                        if (gameInterface.aGameInterfaceArray2713 != null)
-                            bool &= method36(arg0, i_1_, i_0_, gameInterface.anInt2746, gameInterface.id, i_1_ + gameInterface.originalHeight, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, gameInterface.aGameInterfaceArray2713, true);
+                        if (gameInterface.children != null)
+                            bool &= method36(arg0, i_1_, i_0_, gameInterface.anInt2746, gameInterface.id, i_1_ + gameInterface.originalHeight, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, gameInterface.children, true);
                         Rasterizer.setBounds(arg2, arg1, arg5, arg6);
                         if (gameInterface.originalHeight < gameInterface.scrollHeight)
                             GameInterface.drawScrollBar(i_0_ + gameInterface.originalWidth, i_1_, gameInterface.originalHeight, gameInterface.scrollPosition, gameInterface.scrollHeight, 0);
@@ -470,14 +467,14 @@ public class Main extends GameShell {
         return bool;
     }
 
-    public static void method37(CacheIndex arg0, int arg2) {
+    public static void method37(CacheIndex cacheIndex, int arg2) {
         if (Class48.aClass40_Sub1_1132 == null) {
             HashTable.method327(true, null, 255, 255, (byte) 0, 0, (byte) 90);
-            Class24.aClass6_Sub1Array580[arg2] = arg0;
+            Class24.aClass6_Sub1Array580[arg2] = cacheIndex;
         } else {
             Class48.aClass40_Sub1_1132.currentPosition = 5 + arg2 * 4;
             int i = Class48.aClass40_Sub1_1132.getIntBE();
-            arg0.method200(i, 99);
+            cacheIndex.method200(i, 99);
         }
     }
 
@@ -826,9 +823,9 @@ public class Main extends GameShell {
             this.openErrorPage((byte) 120, "js5crc");
             Class51.anInt1197 = 1000;
         } else {
-            if (ClientScript.anInt2278 >= 4) {
+            if (MovedStatics.anInt2278 >= 4) {
                 if (Class51.anInt1197 > 5) {
-                    ClientScript.anInt2278 = 3;
+                    MovedStatics.anInt2278 = 3;
                     ISAAC.anInt509 = 3000;
                 } else {
                     this.openErrorPage((byte) 58, "js5io");
@@ -934,7 +931,7 @@ public class Main extends GameShell {
         if (!arg0)
             aBoolean1790 = true;
         Wall.anInt350 = OverlayDefinition.anInt2340;
-        Class61.method997(47);
+        MovedStatics.method997(47);
         GameInterface.method642(MouseHandler.aCanvas1469, -10);
         RSRuntimeException.method1056(MouseHandler.aCanvas1469, (byte) 70);
         RSCanvas.anInt57 = Signlink.anInt737;

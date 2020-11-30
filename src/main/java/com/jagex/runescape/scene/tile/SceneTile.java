@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
+import com.jagex.runescape.cache.cs.ClientScript;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.language.English;
@@ -52,51 +53,52 @@ public class SceneTile extends Node {
 
     }
 
-    public static String method532(byte arg0, GameInterface arg1, String arg2) {
-        if (arg2.contains(Native.aClass1_1041)) {
+    public static String method532(byte arg0, GameInterface gameInterface, String arg2) {
+        if (arg2.contains(Native.percent)) {
             for (; ; ) {
-                int i = arg2.indexOf(Native.aClass1_890);
+                int i = arg2.indexOf(Native.percentOne);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + Class40_Sub11.method872(999999999, HuffmanEncoding.parseClientScripts(0, false, arg1)) + arg2.substring(2 + i);
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(0, false, gameInterface)) + arg2.substring(2 + i);
             }
             for (; ; ) {
-                int i = arg2.indexOf(Native.aClass1_1077);
+                int i = arg2.indexOf(Native.percentTwo);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + Class40_Sub11.method872(999999999, HuffmanEncoding.parseClientScripts(1, false, arg1)) + arg2.substring(i + 2);
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(1, false, gameInterface)) + arg2.substring(i + 2);
             }
             for (; ; ) {
-                int i = arg2.indexOf(Native.aClass1_1610);
+                int i = arg2.indexOf(Native.percentThree);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + Class40_Sub11.method872(999999999, HuffmanEncoding.parseClientScripts(2, false, arg1)) + arg2.substring(2 + i);
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(2, false, gameInterface)) + arg2.substring(2 + i);
             }
             for (; ; ) {
-                int i = arg2.indexOf(Native.aClass1_1300);
+                int i = arg2.indexOf(Native.percentFour);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + Class40_Sub11.method872(arg0 ^ 0x3b9ac9eb, HuffmanEncoding.parseClientScripts(3, false, arg1)) + arg2.substring(i + 2);
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(arg0 ^ 0x3b9ac9eb, ClientScript.parseClientScripts(3, false, gameInterface)) + arg2.substring(i + 2);
             }
             for (; ; ) {
-                int i = arg2.indexOf(Native.aClass1_2090);
+                int i = arg2.indexOf(Native.percentFive);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + Class40_Sub11.method872(999999999, HuffmanEncoding.parseClientScripts(4, false, arg1)) + arg2.substring(i + 2);
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(4, false, gameInterface)) + arg2.substring(i + 2);
             }
             for (; ; ) {
-                int i = arg2.indexOf(Native.aClass1_2526);
+                // check client script results for value
+                int i = arg2.indexOf(Native.percentDns);
                 if (i == -1)
                     break;
-                String class1 = "";
+                String str = "";
                 if (Class12.aSignlinkNode_394 != null) {
-                    class1 = CacheIndex.method204(Class12.aSignlinkNode_394.integerData);
+                    str = CacheIndex.method204(Class12.aSignlinkNode_394.integerData);
                     if (Class12.aSignlinkNode_394.value != null) {
                         byte[] is = ((String) Class12.aSignlinkNode_394.value).getBytes(StandardCharsets.ISO_8859_1);
-                        class1 = InteractiveObject.method279(is, true, 0, is.length).toString();
+                        str = InteractiveObject.method279(is, 0, is.length).toString();
                     }
                 }
-                arg2 = arg2.substring(0, i) + class1 + arg2.substring(i + 4);
+                arg2 = arg2.substring(0, i) + str + arg2.substring(i + 4);
             }
         }
         return arg2;

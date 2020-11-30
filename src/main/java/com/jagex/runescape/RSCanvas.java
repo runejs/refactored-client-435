@@ -2,7 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.media.gameInterface.ClientScript;
+import com.jagex.runescape.cache.cs.ClientScript;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.actor.Actor;

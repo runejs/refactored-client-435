@@ -53,7 +53,7 @@ public class UnderlayDefinition extends SubNode {
                     }
                 }
                 if(!username.equals(Player.localPlayer.playerName)) {
-                    Class40_Sub11.friendUsernames[Item.friendsCount] = username;
+                    ClientScriptRunner.friendUsernames[Item.friendsCount] = username;
                     Class59.friends[Item.friendsCount] = name;
                     Class40_Sub7.friendWorlds[Item.friendsCount] = 0;
                     Item.friendsCount++;

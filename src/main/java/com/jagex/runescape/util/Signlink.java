@@ -124,10 +124,8 @@ public class Signlink implements Runnable {
         }
     }
 
-    public SignlinkNode method386(Class[] arg0, String arg1, Class arg2, byte arg3) {
-        if(arg3 > -5)
-            putNode(-109, 81, null);
-        return putNode(0, 9, new Object[]{arg2, arg1, arg0});
+    public SignlinkNode method386(Class[] argumentTypes, String functionName, Class functionType) {
+        return putNode(0, 9, new Object[]{functionType, functionName, argumentTypes});
 
     }
 
@@ -140,19 +138,16 @@ public class Signlink implements Runnable {
     }
 
     public SignlinkNode method388(boolean arg0, URL arg1) {
-
         if(arg0)
             method397(-42);
         return putNode(0, 4, arg1);
-
     }
 
-    public SignlinkNode putNode(int arg1, int arg2, Object arg4) {
-
+    public SignlinkNode putNode(int integerData, int type, Object objectData) {
         SignlinkNode signlinkNode = new SignlinkNode();
-        signlinkNode.objectData = arg4;
-        signlinkNode.integerData = arg1;
-        signlinkNode.type = arg2;
+        signlinkNode.objectData = objectData;
+        signlinkNode.integerData = integerData;
+        signlinkNode.type = type;
         synchronized(this) {
             if(next == null)
                 next = current = signlinkNode;
@@ -163,7 +158,6 @@ public class Signlink implements Runnable {
             this.notify();
         }
         return signlinkNode;
-
     }
 
     public void method390(int arg0) {
@@ -248,15 +242,11 @@ public class Signlink implements Runnable {
 
     }
 
-    public SignlinkNode method392(Class arg0, String arg1, boolean arg2) {
-
-        if(!arg2)
-            aString735 = null;
-        return putNode(0, 10, new Object[]{arg0, arg1});
-
+    public SignlinkNode method392(Class variableType, String variableName) {
+        return putNode(0, 10, new Object[]{variableType, variableName});
     }
 
-    public SignlinkNode method393(int arg0, int arg1) {
+    public SignlinkNode method393(int arg1) {
         return putNode(arg1, 3, null);
 
     }
@@ -264,7 +254,7 @@ public class Signlink implements Runnable {
     public SignlinkNode method394(int arg0, int arg1, Runnable arg2) {
 
         if(arg1 != 0)
-            method392(null, null, false);
+            method392(null, null);
         return putNode(arg0, 2, arg2);
 
     }
@@ -291,7 +281,7 @@ public class Signlink implements Runnable {
             homeDirectory = "~/";
         String[] cacheLocations = {"c:/rsrcache/", "/rsrcache/", "c:/windows/", "c:/winnt/", "d:/windows/", "d:/winnt/", "e:/windows/", "e:/winnt/", "f:/windows/", "f:/winnt/", "c:/", homeDirectory, "/tmp/", ""};
         if(arg0 != -3849)
-            method392(null, null, false); // TODO: Does this even ever run?
+            method392(null, null); // TODO: Does this even ever run?
         for(String cacheLocation : cacheLocations) {
             try {
                 if(cacheLocation.length() > 0) {

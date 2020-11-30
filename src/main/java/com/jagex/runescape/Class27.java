@@ -7,7 +7,6 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.gameInterface.ClientScript;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.cache.media.gameInterface.GameInterfaceType;
 import com.jagex.runescape.collection.Node;
@@ -58,7 +57,7 @@ public class Class27 {
         Class40_Sub5_Sub17_Sub6.method833(0, false);
         ItemDefinition.method749(false);
         HashTable.method335((byte) 61);
-        Class61.method1000(true);
+        MovedStatics.method1000(true);
         if(!Player.cutsceneActive) {
             int i = Class65.cameraVertical;
             if(Class40_Sub6.secondaryCameraVertical / 256 > i) {
@@ -74,7 +73,7 @@ public class Class27 {
         if(!Player.cutsceneActive) {
             i = Class40_Sub5_Sub17_Sub1.method764((byte) -107);
         } else {
-            i = ClientScript.method546(256);
+            i = MovedStatics.method546(256);
         }
         int i_1_ = Class12.cameraX;
         int i_2_ = ProducingGraphicsBuffer_Sub1.anInt2210;
@@ -198,8 +197,8 @@ public class Class27 {
                     bool = MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
                 }
                 OverlayDefinition.crossIndex = 0;
-                ClientScript.crossY = RSString.clickY;
-                Class40_Sub11.crossX = Class57.clickX;
+                MovedStatics.crossY = RSString.clickY;
+                ClientScriptRunner.crossX = Class57.clickX;
                 LinkedList.crossType = 2;
                 SceneCluster.packetBuffer.putPacket(190);
                 SceneCluster.packetBuffer.putShortLE(i + SpotAnimDefinition.baseX);
@@ -207,8 +206,8 @@ public class Class27 {
                 SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
             }
             if(action == 1004) {
-                ClientScript.crossY = RSString.clickY;
-                Class40_Sub11.crossX = Class57.clickX;
+                MovedStatics.crossY = RSString.clickY;
+                ClientScriptRunner.crossX = Class57.clickX;
                 LinkedList.crossType = 2;
                 OverlayDefinition.crossIndex = 0;
                 SceneCluster.packetBuffer.putPacket(148);
@@ -225,10 +224,10 @@ public class Class27 {
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
-                    Class40_Sub11.crossX = Class57.clickX;
+                    ClientScriptRunner.crossX = Class57.clickX;
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
-                    ClientScript.crossY = RSString.clickY;
+                    MovedStatics.crossY = RSString.clickY;
                     SceneCluster.packetBuffer.putPacket(221);
                     SceneCluster.packetBuffer.putIntME1(Class60.anInt1417);
                     SceneCluster.packetBuffer.putShortLE(i_12_);
@@ -328,9 +327,9 @@ public class Class27 {
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
-                    Class40_Sub11.crossX = Class57.clickX;
+                    ClientScriptRunner.crossX = Class57.clickX;
                     LinkedList.crossType = 2;
-                    ClientScript.crossY = RSString.clickY;
+                    MovedStatics.crossY = RSString.clickY;
                     OverlayDefinition.crossIndex = 0;
                     SceneCluster.packetBuffer.putPacket(68);
                     SceneCluster.packetBuffer.putShortLE(i_12_);
@@ -342,16 +341,16 @@ public class Class27 {
                     MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
-                    ClientScript.crossY = RSString.clickY;
-                    Class40_Sub11.crossX = Class57.clickX;
+                    MovedStatics.crossY = RSString.clickY;
+                    ClientScriptRunner.crossX = Class57.clickX;
                     SceneCluster.packetBuffer.putPacket(96);
                     SceneCluster.packetBuffer.putShortBE(i_12_);
                 }
             }
             if(action == 1001) {
-                Class40_Sub11.crossX = Class57.clickX;
+                ClientScriptRunner.crossX = Class57.clickX;
                 LinkedList.crossType = 2;
-                ClientScript.crossY = RSString.clickY;
+                MovedStatics.crossY = RSString.clickY;
                 OverlayDefinition.crossIndex = 0;
                 Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                 if(class40_sub5_sub17_sub4_sub2 != null) {
@@ -369,9 +368,9 @@ public class Class27 {
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
-                    Class40_Sub11.crossX = Class57.clickX;
+                    ClientScriptRunner.crossX = Class57.clickX;
                     LinkedList.crossType = 2;
-                    ClientScript.crossY = RSString.clickY;
+                    MovedStatics.crossY = RSString.clickY;
                     OverlayDefinition.crossIndex = 0;
                     SceneCluster.packetBuffer.putPacket(110);
                     SceneCluster.packetBuffer.putShortLE(i_12_);
@@ -399,8 +398,8 @@ public class Class27 {
                     }
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
-                    ClientScript.crossY = RSString.clickY;
-                    Class40_Sub11.crossX = Class57.clickX;
+                    MovedStatics.crossY = RSString.clickY;
+                    ClientScriptRunner.crossX = Class57.clickX;
                     SceneCluster.packetBuffer.putPacket(168);
                     SceneCluster.packetBuffer.putShortLE(i_12_);
                     SceneCluster.packetBuffer.putShortBE(SpotAnimDefinition.baseX + i);
@@ -454,15 +453,15 @@ public class Class27 {
                             ChatBox.chatMessage = "";
                             ChatBox.messagePromptRaised = true;
                             PacketBuffer.aLong2241 = Class59.friends[i_19_];
-                            Native.aClass1_1563 = English.prefixEnterMessageToSendTo + Class40_Sub11.friendUsernames[i_19_];
+                            Native.aClass1_1563 = English.prefixEnterMessageToSendTo + ClientScriptRunner.friendUsernames[i_19_];
                         }
                     }
                 }
                 if(action == 1003) {
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
-                    ClientScript.crossY = RSString.clickY;
-                    Class40_Sub11.crossX = Class57.clickX;
+                    MovedStatics.crossY = RSString.clickY;
+                    ClientScriptRunner.crossX = Class57.clickX;
                     SceneCluster.packetBuffer.putPacket(151);
                     SceneCluster.packetBuffer.putShortLE(i_12_);
                 }
@@ -478,8 +477,8 @@ public class Class27 {
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
                         OverlayDefinition.crossIndex = 0;
-                        Class40_Sub11.crossX = Class57.clickX;
-                        ClientScript.crossY = RSString.clickY;
+                        ClientScriptRunner.crossX = Class57.clickX;
+                        MovedStatics.crossY = RSString.clickY;
                         LinkedList.crossType = 2;
                         SceneCluster.packetBuffer.putPacket(57);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
@@ -489,8 +488,8 @@ public class Class27 {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
-                        Class40_Sub11.crossX = Class57.clickX;
-                        ClientScript.crossY = RSString.clickY;
+                        ClientScriptRunner.crossX = Class57.clickX;
+                        MovedStatics.crossY = RSString.clickY;
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
                         SceneCluster.packetBuffer.putPacket(208);
@@ -522,8 +521,8 @@ public class Class27 {
                         MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
-                        Class40_Sub11.crossX = Class57.clickX;
-                        ClientScript.crossY = RSString.clickY;
+                        ClientScriptRunner.crossX = Class57.clickX;
+                        MovedStatics.crossY = RSString.clickY;
                         SceneCluster.packetBuffer.putPacket(0);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
                     }
@@ -564,8 +563,8 @@ public class Class27 {
                 } else {
                     if(action == 1007) {
                         GameInterface gameInterface = GameInterface.getChildInterface(i_10_);
-                        if(gameInterface != null && gameInterface.aGameInterfaceArray2713 != null && i != -1) {
-                            gameInterface = gameInterface.aGameInterfaceArray2713[i];
+                        if(gameInterface != null && gameInterface.children != null && i != -1) {
+                            gameInterface = gameInterface.children[i];
                         }
                         if(gameInterface == null || gameInterface.itemAmount < 100000) {
                             SceneCluster.packetBuffer.putPacket(151);
@@ -605,8 +604,8 @@ public class Class27 {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
-                            Class40_Sub11.crossX = Class57.clickX;
-                            ClientScript.crossY = RSString.clickY;
+                            ClientScriptRunner.crossX = Class57.clickX;
+                            MovedStatics.crossY = RSString.clickY;
                             OverlayDefinition.crossIndex = 0;
                             LinkedList.crossType = 2;
                             SceneCluster.packetBuffer.putPacket(63);
@@ -620,8 +619,8 @@ public class Class27 {
                         }
                         LinkedList.crossType = 2;
                         OverlayDefinition.crossIndex = 0;
-                        Class40_Sub11.crossX = Class57.clickX;
-                        ClientScript.crossY = RSString.clickY;
+                        ClientScriptRunner.crossX = Class57.clickX;
+                        MovedStatics.crossY = RSString.clickY;
                         SceneCluster.packetBuffer.putPacket(244);
                         SceneCluster.packetBuffer.putShortLE(i + SpotAnimDefinition.baseX);
                         SceneCluster.packetBuffer.putShortBE(Class26.baseY + i_10_);
@@ -633,9 +632,9 @@ public class Class27 {
                             bool = MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
                         }
                         OverlayDefinition.crossIndex = 0;
-                        Class40_Sub11.crossX = Class57.clickX;
+                        ClientScriptRunner.crossX = Class57.clickX;
                         LinkedList.crossType = 2;
-                        ClientScript.crossY = RSString.clickY;
+                        MovedStatics.crossY = RSString.clickY;
                         SceneCluster.packetBuffer.putPacket(85);
                         SceneCluster.packetBuffer.putShortBE(Class26.baseY + i_10_);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
@@ -645,8 +644,8 @@ public class Class27 {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
-                            Class40_Sub11.crossX = Class57.clickX;
-                            ClientScript.crossY = RSString.clickY;
+                            ClientScriptRunner.crossX = Class57.clickX;
+                            MovedStatics.crossY = RSString.clickY;
                             OverlayDefinition.crossIndex = 0;
                             LinkedList.crossType = 2;
                             SceneCluster.packetBuffer.putPacket(253);
@@ -679,8 +678,8 @@ public class Class27 {
                             MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
                             LinkedList.crossType = 2;
                             OverlayDefinition.crossIndex = 0;
-                            Class40_Sub11.crossX = Class57.clickX;
-                            ClientScript.crossY = RSString.clickY;
+                            ClientScriptRunner.crossX = Class57.clickX;
+                            MovedStatics.crossY = RSString.clickY;
                             SceneCluster.packetBuffer.putPacket(220);
                             SceneCluster.packetBuffer.putShortBE(i_12_);
                         }
@@ -773,8 +772,8 @@ public class Class27 {
                         if(class40_sub5_sub17_sub4_sub1 != null) {
                             MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
                             LinkedList.crossType = 2;
-                            ClientScript.crossY = RSString.clickY;
-                            Class40_Sub11.crossX = Class57.clickX;
+                            MovedStatics.crossY = RSString.clickY;
+                            ClientScriptRunner.crossX = Class57.clickX;
                             OverlayDefinition.crossIndex = 0;
                             SceneCluster.packetBuffer.putPacket(187);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
@@ -801,10 +800,10 @@ public class Class27 {
                         if(!bool) {
                             bool = MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
                         }
-                        Class40_Sub11.crossX = Class57.clickX;
+                        ClientScriptRunner.crossX = Class57.clickX;
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
-                        ClientScript.crossY = RSString.clickY;
+                        MovedStatics.crossY = RSString.clickY;
                         SceneCluster.packetBuffer.putPacket(65);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
                         SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
@@ -838,10 +837,10 @@ public class Class27 {
                         if(!bool) {
                             bool = MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
                         }
-                        ClientScript.crossY = RSString.clickY;
+                        MovedStatics.crossY = RSString.clickY;
                         LinkedList.crossType = 2;
                         OverlayDefinition.crossIndex = 0;
-                        Class40_Sub11.crossX = Class57.clickX;
+                        ClientScriptRunner.crossX = Class57.clickX;
                         SceneCluster.packetBuffer.putPacket(27);
                         SceneCluster.packetBuffer.putShortBE(SpotAnimDefinition.baseX + i);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
@@ -852,9 +851,9 @@ public class Class27 {
                         if(class40_sub5_sub17_sub4_sub1 != null) {
                             MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
                             OverlayDefinition.crossIndex = 0;
-                            Class40_Sub11.crossX = Class57.clickX;
+                            ClientScriptRunner.crossX = Class57.clickX;
                             LinkedList.crossType = 2;
-                            ClientScript.crossY = RSString.clickY;
+                            MovedStatics.crossY = RSString.clickY;
                             SceneCluster.packetBuffer.putPacket(211);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         }
@@ -887,8 +886,8 @@ public class Class27 {
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
                             LinkedList.crossType = 2;
-                            Class40_Sub11.crossX = Class57.clickX;
-                            ClientScript.crossY = RSString.clickY;
+                            ClientScriptRunner.crossX = Class57.clickX;
+                            MovedStatics.crossY = RSString.clickY;
                             OverlayDefinition.crossIndex = 0;
                             SceneCluster.packetBuffer.putPacket(153);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
@@ -899,8 +898,8 @@ public class Class27 {
                         if(!bool) {
                             bool = MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
                         }
-                        Class40_Sub11.crossX = Class57.clickX;
-                        ClientScript.crossY = RSString.clickY;
+                        ClientScriptRunner.crossX = Class57.clickX;
+                        MovedStatics.crossY = RSString.clickY;
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
                         SceneCluster.packetBuffer.putPacket(172);
@@ -932,9 +931,9 @@ public class Class27 {
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             MovedStatics.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
                             LinkedList.crossType = 2;
-                            Class40_Sub11.crossX = Class57.clickX;
+                            ClientScriptRunner.crossX = Class57.clickX;
                             OverlayDefinition.crossIndex = 0;
-                            ClientScript.crossY = RSString.clickY;
+                            MovedStatics.crossY = RSString.clickY;
                             SceneCluster.packetBuffer.putPacket(116);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         }
@@ -985,11 +984,11 @@ public class Class27 {
                         i_26_ = gameInterface_24_.originalWidth - gameInterface.originalWidth;
                     }
                     if(Wall.aGameInterface_353.anObjectArray2669 != null && (arg2 & 0x200) != 0) {
-                        GameInterface.runClientScripts(gameInterface.anObjectArray2669, 0, i, gameInterface, i_26_, false);
+                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2669, 0, i, gameInterface, i_26_);
                     }
                     if(SpotAnimDefinition.mouseButtonPressed == 0 && (arg2 & 0x400) != 0) {
                         if(Wall.aGameInterface_353.anObjectArray2695 != null) {
-                            GameInterface.runClientScripts(gameInterface.anObjectArray2695, 0, i, gameInterface, i_26_, false);
+                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2695, 0, i, gameInterface, i_26_);
                         }
                         Wall.aGameInterface_353 = null;
                     }
@@ -1017,8 +1016,8 @@ public class Class27 {
                         if(gameInterface_30_ != null) {
                             gameInterface = gameInterface_30_;
                         }
-                        if(arg2 && gameInterface_27_.aGameInterfaceArray2713 != null) {
-                            GameInterface gameInterface_31_ = method361(gameInterface_27_.aGameInterfaceArray2713, arg1, arg2, gameInterface_27_.currentY + -gameInterface_27_.scrollPosition, gameInterface_27_.id, gameInterface_27_.currentX - gameInterface_27_.anInt2746, arg6, 398);
+                        if(arg2 && gameInterface_27_.children != null) {
+                            GameInterface gameInterface_31_ = method361(gameInterface_27_.children, arg1, arg2, gameInterface_27_.currentY + -gameInterface_27_.scrollPosition, gameInterface_27_.id, gameInterface_27_.currentX - gameInterface_27_.anInt2746, arg6, 398);
                             if(gameInterface_31_ != null) {
                                 gameInterface = gameInterface_31_;
                             }
