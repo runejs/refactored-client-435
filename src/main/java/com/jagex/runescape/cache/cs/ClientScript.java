@@ -1,34 +1,23 @@
-package com.jagex.runescape.cache.media.gameInterface;
+package com.jagex.runescape.cache.cs;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.MemoryCache;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
-import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
-import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
-import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.GenericTile;
-import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
-import com.jagex.runescape.scene.util.CollisionMap;
 import tech.henning.fourthreefive.Configuration;
 
 public class ClientScript extends SubNode {
-    public static LinkedList aLinkedList_2268 = new LinkedList();
-    public static ProducingGraphicsBuffer chatboxRight;
-    public static int crossY = 0;
-    public static int anInt2278 = 0;
-    public static int anInt2280 = 0;
+
     public static MemoryCache clientScriptCache = new MemoryCache(128);
 
     public int[] intOperands;
@@ -40,16 +29,16 @@ public class ClientScript extends SubNode {
     public int[] opcodes;
 
 
-    public static int method546(int arg0) {
-        if(!Configuration.ROOFS_ENABLED) {
-            return Player.worldLevel;
+    public static void clientScriptDebugger() {
+        int len = MemoryCache.clientScriptCacheIndex.getLength();
+        for(int ll = 0; ll < len; ll++) {
+            if(MemoryCache.clientScriptCacheIndex.loaded(ll, 0)) {
+                byte[] data = MemoryCache.clientScriptCacheIndex.getFile(ll, 0);
+                System.out.println(data.length);
+            } else {
+                System.out.println(ll + " not loaded");
+            }
         }
-        if (arg0 != 256)
-            anInt2280 = 44;
-        int i = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, Class40_Sub5_Sub6.cameraY);
-        if (i + -SceneCluster.cameraZ < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][Class12.cameraX >> 7][Class40_Sub5_Sub6.cameraY >> 7] & 0x4) != 0)
-            return Player.worldLevel;
-        return 3;
     }
 
     public static ClientScript decodeClientScript(int arg0, int arg1) {
@@ -83,11 +72,11 @@ public class ClientScript extends SubNode {
             }
             clientScript.opcodes[operandIndex++] = opcode;
         }
+        System.out.println("Caching script " + scriptId);
         clientScriptCache.put(scriptId, clientScript);
         return clientScript;
     }
 
-    // parse client scripts
     public static int parseClientScripts(int scriptIndex, boolean arg1, GameInterface gameInterface1) {
         if (gameInterface1.clientScripts == null || scriptIndex >= gameInterface1.clientScripts.length) {
             return -2;

@@ -1,4 +1,4 @@
-package com.jagex.runescape.cache.media.gameInterface;
+package com.jagex.runescape.cache.cs;
 
 /*
  * Copyright (c) 2017, Adam <Adam@sigterm.info>
