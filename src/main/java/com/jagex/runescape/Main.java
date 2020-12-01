@@ -15,7 +15,6 @@ import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.GameObject;
-import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -78,11 +77,11 @@ public class Main extends GameShell {
                         i_6_ = -gameInterface.originalWidth + gameInterface_3_.originalWidth;
                     i_0_ = is[0] + i_6_;
                 }
-                if (!gameInterface.isIf3 || Rasterizer.viewportRight >= i_0_ && Rasterizer.viewportBottom >= i_1_ && Rasterizer.viewportLeft <= i_0_ + gameInterface.originalWidth && i_1_ + gameInterface.originalHeight >= Rasterizer.viewportTop) {
+                if (!gameInterface.isNewInterfaceFormat || Rasterizer.viewportRight >= i_0_ && Rasterizer.viewportBottom >= i_1_ && Rasterizer.viewportLeft <= i_0_ + gameInterface.originalWidth && i_1_ + gameInterface.originalHeight >= Rasterizer.viewportTop) {
                     if (gameInterface.type == GameInterfaceType.LAYER) {
                         if (gameInterface.isHidden && !Class29.method371(8247, arg0, i))
                             continue;
-                        if (!gameInterface.isIf3) {
+                        if (!gameInterface.isNewInterfaceFormat) {
                             if (-gameInterface.originalHeight + gameInterface.scrollHeight < gameInterface.scrollPosition)
                                 gameInterface.scrollPosition = -gameInterface.originalHeight + gameInterface.scrollHeight;
                             if (gameInterface.scrollPosition < 0)
@@ -216,7 +215,7 @@ public class Main extends GameShell {
                                 if (Class29.method371(8247, arg0, i) && gameInterface.hoveredTextColor != 0)
                                     i_21_ = gameInterface.hoveredTextColor;
                             }
-                            if (gameInterface.isIf3 && gameInterface.itemId != -1) {
+                            if (gameInterface.isNewInterfaceFormat && gameInterface.itemId != -1) {
                                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(gameInterface.itemId, 10);
                                 class1 = class40_sub5_sub16.name;
                                 if (class1 == null)
@@ -240,7 +239,7 @@ public class Main extends GameShell {
                             class40_sub5_sub14_sub1.drawText(class1, i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight, i_21_, gameInterface.textShadowed, gameInterface.xTextAlignment, gameInterface.yTextAlignment, gameInterface.lineHeight);
                         }
                     } else if (gameInterface.type == GameInterfaceType.GRAPHIC) {
-                        if (gameInterface.isIf3) {
+                        if (gameInterface.isNewInterfaceFormat) {
                             int i_22_ = 0;
                             int i_23_ = 0;
                             ImageRGB class40_sub5_sub14_sub4;
@@ -340,7 +339,7 @@ public class Main extends GameShell {
                         } else if (gameInterface.modelId != 0)
                             model = Player.localPlayer.getRotatedModel();
                         else
-                            model = LinkedList.aClass30_1082.getAnimatedModel(null, null, -1, -1);
+                            model = Player.activePlayerAppearance.getAnimatedModel(null, null, -1, -1);
                         int i_37_ = gameInterface.rotationX;
                         int i_38_ = gameInterface.rotationY;
                         int i_39_ = gameInterface.offsetY2d;
@@ -367,7 +366,7 @@ public class Main extends GameShell {
                         int i_43_ = i_42_ * Rasterizer3D.sinetable[i_37_] >> 16;
                         int i_44_ = i_42_ * Rasterizer3D.cosinetable[i_37_] >> 16;
                         if (model != null) {
-                            if (gameInterface.isIf3) {
+                            if (gameInterface.isNewInterfaceFormat) {
                                 model.method799();
                                 if (gameInterface.orthogonal)
                                     model.method801(0, i_40_, i_38_, i_37_, i_41_, i_39_ + i_43_ + model.modelHeight / 2, i_44_ + i_39_, i_42_);
@@ -561,7 +560,7 @@ public class Main extends GameShell {
         try {
             if (params.length != 5)
                 Class37.method432();
-            Class13.worldid = Integer.parseInt(params[0]);
+            Player.worldId = Integer.parseInt(params[0]);
             if (!params[1].equals("live")) {
                 if (params[1].equals("office"))
                     Class44.modewhere = 1;
@@ -676,8 +675,8 @@ public class Main extends GameShell {
             }
         }
         LinkedList.aLinkedList_1064 = new LinkedList();
-        Item.friendsCount = 0;
-        Class12.friendListStatus = 0;
+        Player.friendsCount = 0;
+        Player.friendListStatus = 0;
         GameInterface.resetInterface(ChatBox.dialogueId);
         ChatBox.dialogueId = -1;
         GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
@@ -699,8 +698,8 @@ public class Main extends GameShell {
         CacheIndex.anInt1819 = -1;
         Class51.anInt1205 = -1;
         Class40_Sub6.anInt2118 = 0;
-        Class5.currentTabId = 3;
-        LinkedList.aClass30_1082.setPlayerAppearance(null, false, new int[5], -1);
+        Player.currentTabId = 3;
+        Player.activePlayerAppearance.setPlayerAppearance(null, false, new int[5], -1);
         for (int i = 0; i < 5; i++) {
             playerActions[i] = null;
             Class13.playerArray[i] = false;
@@ -926,8 +925,8 @@ public class Main extends GameShell {
 
 
     public void method31(boolean arg0) {
-        CollisionMap.anInt172 = Class44.modewhere == 0 ? 443 : 50000 + Class13.worldid;
-        OverlayDefinition.anInt2340 = Class44.modewhere != 0 ? Class13.worldid + 40000 : Configuration.GAME_PORT;
+        CollisionMap.anInt172 = Class44.modewhere == 0 ? 443 : 50000 + Player.worldId;
+        OverlayDefinition.anInt2340 = Class44.modewhere != 0 ? Player.worldId + 40000 : Configuration.GAME_PORT;
         if (!arg0)
             aBoolean1790 = true;
         Wall.anInt350 = OverlayDefinition.anInt2340;

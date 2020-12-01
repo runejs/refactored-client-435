@@ -6,12 +6,10 @@ import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.console.Console;
-import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
-import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
@@ -19,11 +17,6 @@ import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.util.CollisionMap;
-
-import java.io.ByteArrayInputStream;
-import java.io.ObjectInputStream;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 public class Class40_Sub5_Sub6 extends SubNode {
     public static Class67[] aClass67Array2436 = new Class67[13];
@@ -58,7 +51,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
         int i_6_ = varbitDefinition.index;
         int i_7_ = varbitDefinition.leastSignificantBit;
         int i_8_ = ProducingGraphicsBuffer_Sub1.anIntArray2199[i - i_7_];
-        return GroundItemTile.varbitmasks[i_6_] >> i_7_ & i_8_;
+        return GroundItemTile.varbitMasks[i_6_] >> i_7_ & i_8_;
     }
 
     public static void method586(int arg0) {
@@ -98,7 +91,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         long l = RSString.nameToLong(ChatBox.chatMessage);
                         UnderlayDefinition.addFriend(l);
                     }
-                    if(Class37.anInt876 == 2 && Item.friendsCount > 0) {
+                    if(Class37.anInt876 == 2 && Player.friendsCount > 0) {
                         long l = RSString.nameToLong(ChatBox.chatMessage);
                         GameShell.method28(l);
                     }

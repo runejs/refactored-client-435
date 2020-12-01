@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
+import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
@@ -239,5 +240,22 @@ public class ChatBox {
 //            }
 //        }
 //        chatboxInput = result.toString();
+    }
+
+    public static void addChatMessage(String name, String message, int type) {
+        if(GameInterface.chatboxInterfaceId == -1)
+            redrawChatbox = true;
+        if(type == 0 && dialogueId != -1) {
+            MouseHandler.clickType = 0;
+            Native.clickToContinueString = message;
+        }
+        for(int i = 99; i > 0; i--) {
+            chatTypes[i] = chatTypes[i + -1];
+            chatPlayerNames[i] = chatPlayerNames[-1 + i];
+            chatMessages[i] = chatMessages[-1 + i];
+        }
+        chatTypes[0] = type;
+        chatPlayerNames[0] = name;
+        chatMessages[0] = message;
     }
 }

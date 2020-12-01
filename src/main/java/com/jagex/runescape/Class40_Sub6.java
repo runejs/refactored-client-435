@@ -6,8 +6,8 @@ import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.SceneCluster;
-import com.jagex.runescape.scene.tile.WallDecoration;
 
 public class Class40_Sub6 extends Node {
     public static Class64 gameConnection;
@@ -80,11 +80,11 @@ public class Class40_Sub6 extends Node {
     public static void method838(int arg0, long arg1) {
         if(arg1 != 0) {
             for(int i = arg0; i < Class42.anInt1008; i++) {
-                if(WallDecoration.ignores[i] == arg1) {
+                if(Player.ignores[i] == arg1) {
                     GameInterface.redrawTabArea = true;
                     Class42.anInt1008--;
                     for(int i_16_ = i; Class42.anInt1008 > i_16_; i_16_++)
-                        WallDecoration.ignores[i_16_] = WallDecoration.ignores[1 + i_16_];
+                        Player.ignores[i_16_] = Player.ignores[1 + i_16_];
                     SceneCluster.packetBuffer.putPacket(28);
                     SceneCluster.packetBuffer.putLongBE(arg1);
                     break;

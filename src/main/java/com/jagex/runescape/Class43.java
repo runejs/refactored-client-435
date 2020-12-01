@@ -14,6 +14,7 @@ import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
+import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
@@ -43,8 +44,8 @@ public class Class43 {
             boolean bool = Class40_Sub5_Sub6.drawInterface(0, GameInterface.tabAreaInterfaceId, 261, (byte) -5, 0, 1, 190);
             if(!bool)
                 GameInterface.redrawTabArea = true;
-        } else if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] != -1) {
-            boolean bool = Class40_Sub5_Sub6.drawInterface(0, Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId], 261, (byte) -5, 0, 1, 190);
+        } else if(Player.tabWidgetIds[Player.currentTabId] != -1) {
+            boolean bool = Class40_Sub5_Sub6.drawInterface(0, Player.tabWidgetIds[Player.currentTabId], 261, (byte) -5, 0, 1, 190);
             if(!bool)
                 GameInterface.redrawTabArea = true;
         }

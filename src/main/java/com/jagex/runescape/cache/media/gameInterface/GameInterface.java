@@ -14,6 +14,7 @@ import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.GroundItemTile;
@@ -38,7 +39,7 @@ public class GameInterface extends SubNode {
     public static boolean drawTabIcons = false;
     public static boolean redrawTabArea = false;
 
-    public boolean isIf3 = false;
+    public boolean isNewInterfaceFormat = false;
     public int contentType;
     public String alternateText;
     public boolean aBoolean2641;
@@ -261,9 +262,9 @@ public class GameInterface extends SubNode {
         return coins / 0xf4240 + "M";
     }
 
-    public static GameInterface getChildInterface(int childInterfaceData) {
-        int parentInterfaceId = childInterfaceData >> 16;
-        int childInterfaceId = 0xffff & childInterfaceData;
+    public static GameInterface getInterface(int interfaceData) {
+        int parentInterfaceId = interfaceData >> 16;
+        int childInterfaceId = 0xffff & interfaceData;
         if(cachedInterfaces[parentInterfaceId] == null || cachedInterfaces[parentInterfaceId][childInterfaceId] == null) {
             if(!decodeGameInterface(parentInterfaceId)) {
                 return null;
@@ -276,22 +277,22 @@ public class GameInterface extends SubNode {
     public static void updateGameInterface(GameInterface gameInterface) {
         int type = gameInterface.contentType;
         if(type >= 1 && type <= 100 || type >= 701 && type <= 800) {
-            if(type == 1 && Class12.friendListStatus == 0) {
+            if(type == 1 && Player.friendListStatus == 0) {
                 gameInterface.disabledText = English.loadingFriendList;
                 gameInterface.actionType = 0;
-            } else if(type == 1 && Class12.friendListStatus == 1) {
+            } else if(type == 1 && Player.friendListStatus == 1) {
                 gameInterface.disabledText = English.connectingToFriendserver;
                 gameInterface.actionType = 0;
-            } else if(type == 2 && Class12.friendListStatus != 2) {
+            } else if(type == 2 && Player.friendListStatus != 2) {
                 gameInterface.actionType = 0;
                 gameInterface.disabledText = PacketBuffer.str_Please_Wait;
             } else {
-                int fCount = Item.friendsCount;
+                int fCount = Player.friendsCount;
                 if(type > 700)
                     type -= 601;
                 else
                     type--;
-                if(Class12.friendListStatus != 2)
+                if(Player.friendListStatus != 2)
                     fCount = 0;
                 if(fCount <= type) {
                     gameInterface.disabledText = "";
@@ -306,52 +307,52 @@ public class GameInterface extends SubNode {
                 type -= 101;
             else
                 type -= 701;
-            int count = Item.friendsCount;
-            if(Class12.friendListStatus != 2)
+            int count = Player.friendsCount;
+            if(Player.friendListStatus != 2)
                 count = 0;
             if(type >= count) {
                 gameInterface.disabledText = "";
                 gameInterface.actionType = 0;
             } else {
-                if(Class40_Sub7.friendWorlds[type] == 0) {
+                if(Player.friendWorlds[type] == 0) {
                     gameInterface.disabledText = Native.aClass1_610 + English.offline;
-                } else if(Class40_Sub7.friendWorlds[type] < 5000) {
-                    if(Class40_Sub7.friendWorlds[type] == Class13.worldid) {
-                        gameInterface.disabledText = Native.aClass1_1162 + English.world + Class40_Sub7.friendWorlds[type];
+                } else if(Player.friendWorlds[type] < 5000) {
+                    if(Player.friendWorlds[type] == Player.worldId) {
+                        gameInterface.disabledText = Native.green + English.world + Player.friendWorlds[type];
                     } else {
-                        gameInterface.disabledText = Native.aClass1_1283 + English.world + Class40_Sub7.friendWorlds[type];
+                        gameInterface.disabledText = Native.yellow + English.world + Player.friendWorlds[type];
                     }
-                } else if(Class13.worldid == Class40_Sub7.friendWorlds[type]) {
-                    gameInterface.disabledText = Native.aClass1_1162 + English.classic + (-5000 + Class40_Sub7.friendWorlds[type]);
+                } else if(Player.worldId == Player.friendWorlds[type]) {
+                    gameInterface.disabledText = Native.green + English.classic + (-5000 + Player.friendWorlds[type]);
                 } else {
-                    gameInterface.disabledText = Native.aClass1_1283 + English.classic + (Class40_Sub7.friendWorlds[type] + -5000);
+                    gameInterface.disabledText = Native.yellow + English.classic + (Player.friendWorlds[type] + -5000);
                 }
                 gameInterface.actionType = 1;
             }
         } else if(type == 203) {
-            int count = Item.friendsCount;
-            if(Class12.friendListStatus != 2)
+            int count = Player.friendsCount;
+            if(Player.friendListStatus != 2)
                 count = 0;
             gameInterface.scrollHeight = 20 + 15 * count;
             if(gameInterface.originalHeight >= gameInterface.scrollHeight)
                 gameInterface.scrollHeight = 1 + gameInterface.originalHeight;
         } else if(type >= 401 && type <= 500) {
             type -= 401;
-            if(type == 0 && Class12.friendListStatus == 0) {
+            if(type == 0 && Player.friendListStatus == 0) {
                 gameInterface.disabledText = English.loadingIgnoreList;
                 gameInterface.actionType = 0;
-            } else if(type == 1 && Class12.friendListStatus == 0) {
+            } else if(type == 1 && Player.friendListStatus == 0) {
                 gameInterface.disabledText = PacketBuffer.str_Please_Wait;
                 gameInterface.actionType = 0;
             } else {
                 int i_4_ = Class42.anInt1008;
-                if(Class12.friendListStatus == 0)
+                if(Player.friendListStatus == 0)
                     i_4_ = 0;
                 if(i_4_ <= type) {
                     gameInterface.actionType = 0;
                     gameInterface.disabledText = "";
                 } else {
-                    gameInterface.disabledText = TextUtils.formatName(TextUtils.longToName(WallDecoration.ignores[type]));
+                    gameInterface.disabledText = TextUtils.formatName(TextUtils.longToName(Player.ignores[type]));
                     gameInterface.actionType = 1;
                 }
             }
@@ -364,7 +365,7 @@ public class GameInterface extends SubNode {
                 Class64.anInt1511 = gameInterface.spriteId;
                 Main.anInt1769 = gameInterface.alternateSpriteId;
             }
-            if(!LinkedList.aClass30_1082.gender)
+            if(!Player.activePlayerAppearance.gender)
                 gameInterface.spriteId = Main.anInt1769;
             else
                 gameInterface.spriteId = Class64.anInt1511;
@@ -373,7 +374,7 @@ public class GameInterface extends SubNode {
                 Main.anInt1769 = gameInterface.alternateSpriteId;
                 Class64.anInt1511 = gameInterface.spriteId;
             }
-            if(LinkedList.aClass30_1082.gender)
+            if(Player.activePlayerAppearance.gender)
                 gameInterface.spriteId = Main.anInt1769;
             else
                 gameInterface.spriteId = Class64.anInt1511;
@@ -547,7 +548,7 @@ public class GameInterface extends SubNode {
     }
 
     public void decodeIf1(Buffer buffer) {
-        isIf3 = false;
+        isNewInterfaceFormat = false;
         type = GameInterfaceType.get(buffer.getUnsignedByte());
         actionType = buffer.getUnsignedByte();
         contentType = buffer.getUnsignedShortBE();
@@ -788,7 +789,7 @@ public class GameInterface extends SubNode {
 
     public void decodeIf3(Buffer buffer) {
         buffer.getUnsignedByte();
-        isIf3 = true;
+        isNewInterfaceFormat = true;
         type = GameInterfaceType.get(buffer.getUnsignedByte());
         contentType = buffer.getUnsignedShortBE();
         originalX = currentX = buffer.getShortBE();

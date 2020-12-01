@@ -4,13 +4,12 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
-import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.SceneCluster;
-import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.TextUtils;
 
 public class UnderlayDefinition extends SubNode {
@@ -36,27 +35,27 @@ public class UnderlayDefinition extends SubNode {
 
     public static void addFriend(long name) {
         if(name != 0L) {
-            if(Item.friendsCount >= 100 && Class44.anInt1049 != 1 || Item.friendsCount >= 200) {
-                Class44.addChatMessage("", English.friendsListIsFull, 0);
+            if(Player.friendsCount >= 100 && Class44.anInt1049 != 1 || Player.friendsCount >= 200) {
+                ChatBox.addChatMessage("", English.friendsListIsFull, 0);
             } else {
                 String username = TextUtils.formatName(TextUtils.longToName(name));
-                for(int i = 0; Item.friendsCount > i; i++) {
+                for(int i = 0; Player.friendsCount > i; i++) {
                     if(Class59.friends[i] == name) {
-                        Class44.addChatMessage("", username + English.isAlreadyOnYourFriendList, 0);
+                        ChatBox.addChatMessage("", username + English.isAlreadyOnYourFriendList, 0);
                         return;
                     }
                 }
                 for(int i = 0; Class42.anInt1008 > i; i++) {
-                    if(WallDecoration.ignores[i] == name) {
-                        Class44.addChatMessage("", English.pleaseRemove + username + English.suffixFromYourIgnoreListFirst, 0);
+                    if(Player.ignores[i] == name) {
+                        ChatBox.addChatMessage("", English.pleaseRemove + username + English.suffixFromYourIgnoreListFirst, 0);
                         return;
                     }
                 }
                 if(!username.equals(Player.localPlayer.playerName)) {
-                    ClientScriptRunner.friendUsernames[Item.friendsCount] = username;
-                    Class59.friends[Item.friendsCount] = name;
-                    Class40_Sub7.friendWorlds[Item.friendsCount] = 0;
-                    Item.friendsCount++;
+                    ClientScriptRunner.friendUsernames[Player.friendsCount] = username;
+                    Class59.friends[Player.friendsCount] = name;
+                    Player.friendWorlds[Player.friendsCount] = 0;
+                    Player.friendsCount++;
                     GameInterface.redrawTabArea = true;
                     SceneCluster.packetBuffer.putPacket(114);
                     SceneCluster.packetBuffer.putLongBE(name);

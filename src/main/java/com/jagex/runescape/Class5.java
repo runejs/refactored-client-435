@@ -29,7 +29,6 @@ public class Class5 {
     public static int[] chatboxLineOffsets;
     public static int anInt199 = 0;
     public static int anInt200 = 127;
-    public static int currentTabId = 3;
 
     public static void loadTerrainSubblock(int arg0, int arg2, int arg3, int arg4, int x, int arg6, int arg7, byte[] arg8, CollisionMap[] arg9) {
         for(int i = 0; i < 8; i++) {
@@ -162,7 +161,7 @@ public class Class5 {
 
     public static boolean method166(byte arg0, GameInterface arg1) {
         int i = arg1.contentType;
-        if(Class12.friendListStatus == 2) {
+        if(Player.friendListStatus == 2) {
             if(i == 201) {
                 Class37.anInt876 = 1;
                 Native.aClass1_1563 = English.enterNameOfFriendToAddToList;
@@ -203,20 +202,20 @@ public class Class5 {
         if(i >= 300 && i <= 313) {
             int i_13_ = (-300 + i) / 2;
             int i_14_ = 0x1 & i;
-            LinkedList.aClass30_1082.loadCachedAppearance(i_13_, i_14_ == 1);
+            Player.activePlayerAppearance.loadCachedAppearance(i_13_, i_14_ == 1);
         }
         if(i >= 314 && i <= 323) {
             int i_15_ = (i + -314) / 2;
             int i_16_ = i & 0x1;
-            LinkedList.aClass30_1082.updateAppearanceColors(i_16_ == 1, i_15_);
+            Player.activePlayerAppearance.updateAppearanceColors(i_16_ == 1, i_15_);
         }
         if(i == 324)
-            LinkedList.aClass30_1082.setGender(false);
+            Player.activePlayerAppearance.setGender(false);
         if(i == 325)
-            LinkedList.aClass30_1082.setGender(true);
+            Player.activePlayerAppearance.setGender(true);
         if(i == 326) {
             SceneCluster.packetBuffer.putPacket(231);
-            LinkedList.aClass30_1082.sendAppearanceData(arg0 ^ 0x58, SceneCluster.packetBuffer);
+            Player.activePlayerAppearance.sendAppearanceData(arg0 ^ 0x58, SceneCluster.packetBuffer);
             return true;
         }
         if(i == 620)

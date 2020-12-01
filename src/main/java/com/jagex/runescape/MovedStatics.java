@@ -35,8 +35,7 @@ import tech.henning.fourthreefive.Configuration;
 
 public class MovedStatics {
 
-	public static int[] anIntArray1909 = new int[99];
-    public static PacketBuffer packetBuffer = new PacketBuffer(5000);
+	public static PacketBuffer packetBuffer = new PacketBuffer(5000);
     public static int[][] anIntArrayArray1435 = new int[104][104];
     public static ProducingGraphicsBuffer tabPieceUpperRight;
     public static boolean aBoolean1444 = false;
@@ -46,16 +45,6 @@ public class MovedStatics {
     public static int crossY = 0;
     public static int anInt2278 = 0;
     public static int anInt2280 = 0;
-
-    static {
-        int i = 0;
-        for(int i_27_ = 0; i_27_ < 99; i_27_++) {
-            int i_28_ = i_27_ + 1;
-            int i_29_ = (int) ((double) i_28_ + 300.0 * Math.pow(2.0, (double) i_28_ / 7.0));
-            i += i_29_;
-            MovedStatics.anIntArray1909[i_27_] = i / 4;
-        }
-    }
 
 	public static void method440(byte arg0) {
 	    if(ISAAC.aBoolean512) {

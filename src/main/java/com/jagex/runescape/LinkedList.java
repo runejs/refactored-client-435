@@ -22,7 +22,6 @@ public class LinkedList {
     public static volatile int anInt1073 = 0;
     public static int crossType = 0;
     public static Buffer aClass40_Sub1_1081 = new Buffer(8);
-    public static PlayerAppearance aClass30_1082 = new PlayerAppearance();
     public static int[] minimapHintY = new int[1000];
     public Node aClass40_1056 = new Node();
     public Node aClass40_1068;
@@ -43,7 +42,7 @@ public class LinkedList {
         for(int i = -3 + class1.length(); i > 0; i -= 3)
             class1 = class1.substring(0, i) + Native.aClass1_795 + class1.substring(i);
         if(class1.length() > 8)
-            class1 = Native.aClass1_1162 + class1.substring(0, -8 + class1.length()) + English.suffixMillion + Native.aClass1_1213 + class1 + Native.aClass1_1199;
+            class1 = Native.green + class1.substring(0, -8 + class1.length()) + English.suffixMillion + Native.aClass1_1213 + class1 + Native.aClass1_1199;
         else if(class1.length() > 4)
             class1 = Native.aClass1_2862 + class1.substring(0, class1.length() + -4) + Native.aClass1_2593 + Native.aClass1_1213 + class1 + Native.aClass1_1199;
         return Native.aClass1_1123 + class1;

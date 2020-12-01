@@ -147,7 +147,7 @@ public class HuffmanEncoding {
                                 if (i == 4) {
                                     i_3_ = 20;
                                 }
-                                OverlayDefinition.addActionRow(class1s[i], index, x, y, i_3_, Native.aClass1_1283 + class1);
+                                OverlayDefinition.addActionRow(class1s[i], index, x, y, i_3_, Native.yellow + class1);
                             }
                         }
                     }
@@ -174,7 +174,7 @@ public class HuffmanEncoding {
                                 if (i == 4) {
                                     i_5_ = 20 + i_4_;
                                 }
-                                OverlayDefinition.addActionRow(class1s[i], index, x, y, i_5_, Native.aClass1_1283 +class1);
+                                OverlayDefinition.addActionRow(class1s[i], index, x, y, i_5_, Native.yellow +class1);
                             }
                         }
                     }

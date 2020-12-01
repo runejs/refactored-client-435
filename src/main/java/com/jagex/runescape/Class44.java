@@ -22,23 +22,6 @@ public class Class44 implements Runnable {
     public static int anInt1048 = -1;
     public static int anInt1049 = 0;
 
-    public static void addChatMessage(String name, String message, int type) {
-        if(GameInterface.chatboxInterfaceId == -1)
-            ChatBox.redrawChatbox = true;
-        if(type == 0 && ChatBox.dialogueId != -1) {
-            MouseHandler.clickType = 0;
-            Native.clickToContinueString = message;
-        }
-        for(int i = 99; i > 0; i--) {
-            ChatBox.chatTypes[i] = ChatBox.chatTypes[i + -1];
-            ChatBox.chatPlayerNames[i] = ChatBox.chatPlayerNames[-1 + i];
-            ChatBox.chatMessages[i] = ChatBox.chatMessages[-1 + i];
-        }
-        ChatBox.chatTypes[0] = type;
-        ChatBox.chatPlayerNames[0] = name;
-        ChatBox.chatMessages[0] = message;
-    }
-
 
     public static void method898(int arg0, Actor arg1) {
         arg1.anInt3077 = arg1.idleAnimation;

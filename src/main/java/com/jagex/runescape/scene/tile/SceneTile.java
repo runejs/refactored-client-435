@@ -136,14 +136,14 @@ public class SceneTile extends Node {
         if (diff < 0)
             return Native.aClass1_327;
         if (diff > 9)
-            return Native.aClass1_1162;
+            return Native.green;
         if (diff > 6)
             return Native.aClass1_494;
         if (diff > 3)
             return Native.aClass1_932;
         if (diff > 0)
             return Native.aClass1_877;
-        return Native.aClass1_1283;
+        return Native.yellow;
     }
 
     public static void drawMenuTooltip(int arg0) {

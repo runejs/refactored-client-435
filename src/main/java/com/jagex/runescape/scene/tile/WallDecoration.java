@@ -28,7 +28,6 @@ public class WallDecoration {
     public static MemoryCache aClass9_1247 = new MemoryCache(64);
     public static int anInt1257 = 0;
     public static MemoryCache aClass9_1264 = new MemoryCache(50);
-    public static long[] ignores = new long[100];
     public static TypeFace fontNormal;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1270;
 

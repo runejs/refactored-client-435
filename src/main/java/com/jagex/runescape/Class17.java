@@ -2,14 +2,13 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
-import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
-import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.TextUtils;
 
 import java.awt.*;
@@ -91,23 +90,23 @@ public class Class17 {
     public static void method275(long arg1) {
         if(arg1 != 0L) {
             if(Class42.anInt1008 >= 100)
-                Class44.addChatMessage("", English.yourIgnoreListIsFull.toString(), 0);
+                ChatBox.addChatMessage("", English.yourIgnoreListIsFull.toString(), 0);
             else {
                 String class1 = TextUtils.formatName(TextUtils.longToName(arg1));
                 for(int i = 0; i < Class42.anInt1008; i++) {
-                    if(arg1 == WallDecoration.ignores[i]) {
-                        Class44.addChatMessage("", class1 + English.suffixIsAlreadyOnYourIgnoreList, 0);
+                    if(arg1 == Player.ignores[i]) {
+                        ChatBox.addChatMessage("", class1 + English.suffixIsAlreadyOnYourIgnoreList, 0);
                         return;
                     }
                 }
-                for(int i = 0; Item.friendsCount > i; i++) {
+                for(int i = 0; Player.friendsCount > i; i++) {
                     if(Class59.friends[i] == arg1) {
-                        Class44.addChatMessage("", English.pleaseRemove + class1 + English.fromYourFriendListFirst, 0);
+                        ChatBox.addChatMessage("", English.pleaseRemove + class1 + English.fromYourFriendListFirst, 0);
                         return;
                     }
                 }
                 if(!class1.equals(Player.localPlayer.playerName)) {
-                    WallDecoration.ignores[Class42.anInt1008++] = arg1;
+                    Player.ignores[Class42.anInt1008++] = arg1;
                     GameInterface.redrawTabArea = true;
                     SceneCluster.packetBuffer.putPacket(251);
                     SceneCluster.packetBuffer.putLongBE(arg1);

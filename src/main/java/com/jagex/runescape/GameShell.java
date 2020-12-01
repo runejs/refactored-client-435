@@ -12,8 +12,8 @@ import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer3D;
-import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
@@ -155,13 +155,13 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public static void method28(long arg0) {
         if (arg0 != 0) {
             int i = 0;
-            for (/**/; Item.friendsCount > i; i++) {
+            for (/**/; Player.friendsCount > i; i++) {
                 if (Class59.friends[i] == arg0) {
-                    Item.friendsCount--;
+                    Player.friendsCount--;
                     GameInterface.redrawTabArea = true;
-                    for (int i_13_ = i; i_13_ < Item.friendsCount; i_13_++) {
+                    for (int i_13_ = i; i_13_ < Player.friendsCount; i_13_++) {
                         ClientScriptRunner.friendUsernames[i_13_] = ClientScriptRunner.friendUsernames[1 + i_13_];
-                        Class40_Sub7.friendWorlds[i_13_] = Class40_Sub7.friendWorlds[i_13_ + 1];
+                        Player.friendWorlds[i_13_] = Player.friendWorlds[i_13_ + 1];
                         Class59.friends[i_13_] = Class59.friends[1 + i_13_];
                     }
                     SceneCluster.packetBuffer.putPacket(255);

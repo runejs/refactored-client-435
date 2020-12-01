@@ -16,6 +16,7 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.SceneTile;
@@ -112,7 +113,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 if(action == 53 || action == 25 || action == 55 || action == 48 || action == 24 || action == 52 || action == 6 || action == 31 || action == 43 || action == 11 || action == 19 || action == 1006) {
                     int item = InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow - 1];
                     int id = Class59.secondMenuOperand[-1 + ActorDefinition.menuActionRow];
-                    GameInterface gameInterface = GameInterface.getChildInterface(id);
+                    GameInterface gameInterface = GameInterface.getInterface(id);
                     if(gameInterface.itemSwapable || gameInterface.itemDeletesDraged) {
                         Renderable.anInt2869 = Class57.clickX;
                         Class40_Sub5_Sub15.lastItemDragged = false;
@@ -281,7 +282,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             int offsetY = 0;
             int childID = 0;
             /* Tab interface scrolling */
-            int tabInterfaceID = Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId];
+            int tabInterfaceID = Player.tabWidgetIds[Player.currentTabId];
             if(tabInterfaceID != -1) {
                 if(ScreenController.frameMode == ScreenMode.FIXED) {
                     offsetX = 765 - 218;

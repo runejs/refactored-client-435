@@ -7,7 +7,6 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 public class Class40_Sub5_Sub11 extends SubNode {
     public static int anInt2621 = 0;
     public static volatile int eventClickY = 0;
-    public static int[] tabWidgetIds = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     public static int anInt2628 = 0;
     public static volatile boolean clearScreen = true;
 
