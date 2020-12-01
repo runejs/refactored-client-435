@@ -29,7 +29,6 @@ import com.jagex.runescape.scene.util.CollisionMap;
 public class Class40_Sub3 extends Node {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2019;
     public static int anInt2020;
-    public static int anInt2021 = 0;
     public static int[] soundDelay = new int[50];
     public static int anInt2024 = 1;
     public static boolean aBoolean2026 = false;

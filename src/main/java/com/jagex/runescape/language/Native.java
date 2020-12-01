@@ -85,7 +85,7 @@ public class Native {
     public static String aClass1_2423 = "(100%)";
     public static String logo = "logo";
     public static String aClass1_1788 = "backtop1";
-    public static String aClass1_1162 = "@gre@";
+    public static String green = "@gre@";
     public static String aClass1_338 = "backhmid1";
     public static String runes = "runes";
     public static String titleBox = "titlebox";
@@ -103,7 +103,7 @@ public class Native {
     public static String aClass1_932 = "@gr2@";
     public static String requestcmd_chalreq = ":chalreq:";
     public static String period = ".";
-    public static String aClass1_1283 = "@yel@";
+    public static String yellow = "@yel@";
     public static String aClass1_1284 = "compass";
     public static String aClass1_1113 = "mapback";
     public static String aClass1_1114 = "@lre@";

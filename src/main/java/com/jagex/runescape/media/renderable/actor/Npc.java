@@ -225,7 +225,7 @@ public class Npc extends Actor {
                                     RSRuntimeException.lastActiveInvInterface = -1;
                                     Class43.processRightClick();
                                     if(RSRuntimeException.lastActiveInvInterface == Class48.modifiedWidgetId && Class55.mouseInvInterfaceIndex != GroundItemTile.selectedInventorySlot) {
-                                        GameInterface childInterface = GameInterface.getChildInterface(Class48.modifiedWidgetId);
+                                        GameInterface childInterface = GameInterface.getInterface(Class48.modifiedWidgetId);
                                         int moveItemInsertionMode = 0;
                                         if(Class43.bankInsertMode == 1 && childInterface.contentType == 206)
                                             moveItemInsertionMode = 1;
@@ -299,8 +299,8 @@ public class Npc extends Actor {
                         if(GameInterface.gameScreenInterfaceId != -1)
                             Class27.method360((byte) 125, 516, i, 338, GameInterface.gameScreenInterfaceId, 4, 4);
                         if(GameInterface.tabAreaInterfaceId == -1) {
-                            if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] != -1)
-                                Class27.method360((byte) 125, 743, i, 466, Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId], 205, 553);
+                            if(Player.tabWidgetIds[Player.currentTabId] != -1)
+                                Class27.method360((byte) 125, 743, i, 466, Player.tabWidgetIds[Player.currentTabId], 205, 553);
                         } else
                             Class27.method360((byte) 125, 743, i, 466, GameInterface.tabAreaInterfaceId, 205, 553);
                         if(GameInterface.chatboxInterfaceId != -1)
@@ -311,8 +311,8 @@ public class Npc extends Actor {
                             Class27.method360((byte) 125, 516, i ^ 0xffffffff, 338, GameInterface.gameScreenInterfaceId, 4, 4);
                         if(GameInterface.tabAreaInterfaceId != -1)
                             Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, GameInterface.tabAreaInterfaceId, 205, 553);
-                        else if(Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId] != -1)
-                            Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, Class40_Sub5_Sub11.tabWidgetIds[Class5.currentTabId], 205, 553);
+                        else if(Player.tabWidgetIds[Player.currentTabId] != -1)
+                            Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, Player.tabWidgetIds[Player.currentTabId], 205, 553);
                         if(GameInterface.chatboxInterfaceId != -1)
                             Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, GameInterface.chatboxInterfaceId, 357, 17);
                         else if(ChatBox.dialogueId != -1)

@@ -3,18 +3,13 @@ package com.jagex.runescape.cache.cs;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
-import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
-import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.GenericTile;
-import com.jagex.runescape.scene.tile.Wall;
-import tech.henning.fourthreefive.Configuration;
 
 public class ClientScript extends SubNode {
 
@@ -103,13 +98,13 @@ public class ClientScript extends SubNode {
                     i_17_ = 2;
                 }
                 if (opcode == 1) {
-                    i_16_ = Class13.anIntArray403[opcodes[scriptDataIndex++]];
+                    i_16_ = Player.playerLevels[opcodes[scriptDataIndex++]];
                 }
                 if (opcode == 2) {
-                    i_16_ = Wall.anIntArray354[opcodes[scriptDataIndex++]];
+                    i_16_ = Player.nextLevels[opcodes[scriptDataIndex++]];
                 }
                 if (opcode == 3) {
-                    i_16_ = Item.anIntArray3051[opcodes[scriptDataIndex++]];
+                    i_16_ = Player.playerExperience[opcodes[scriptDataIndex++]];
                 }
                 if (opcode == 17) {
                     i_17_ = 3;
@@ -117,7 +112,7 @@ public class ClientScript extends SubNode {
                 if (opcode == 4) {
                     int i_19_ = opcodes[scriptDataIndex++] << 16;
                     i_19_ += opcodes[scriptDataIndex++];
-                    GameInterface gameInterface = GameInterface.getChildInterface(i_19_);
+                    GameInterface gameInterface = GameInterface.getInterface(i_19_);
                     int i_20_ = opcodes[scriptDataIndex++];
                     if (i_20_ != -1 && (!ItemDefinition.forId(i_20_, 10).members || Class22.membersWorld)) {
                         for (int i_21_ = 0; i_21_ < gameInterface.items.length; i_21_++) {
@@ -129,14 +124,14 @@ public class ClientScript extends SubNode {
                 }
                 if (opcode == 5) {
                     int temp = opcodes[scriptDataIndex++];
-                    i_16_ = GroundItemTile.varbitmasks[temp];
+                    i_16_ = GroundItemTile.varbitMasks[temp];
                 }
                 if (opcode == 6) {
-                    i_16_ = MovedStatics.anIntArray1909[-1 + Wall.anIntArray354[opcodes[scriptDataIndex++]]];
+                    i_16_ = Player.experienceForLevels[-1 + Player.nextLevels[opcodes[scriptDataIndex++]]];
                 }
                 if (opcode == 7) {
                     int temp = opcodes[scriptDataIndex++];
-                    i_16_ = 100 * GroundItemTile.varbitmasks[temp] / 46875;
+                    i_16_ = 100 * GroundItemTile.varbitMasks[temp] / 46875;
                 }
                 if (opcode == 8) {
                     i_16_ = Player.localPlayer.combatLevel;
@@ -144,14 +139,14 @@ public class ClientScript extends SubNode {
                 if (opcode == 9) {
                     for (int i_22_ = 0; i_22_ < 25; i_22_++) {
                         if (Class22.aBooleanArray548[i_22_]) {
-                            i_16_ += Wall.anIntArray354[i_22_];
+                            i_16_ += Player.nextLevels[i_22_];
                         }
                     }
                 }
                 if (opcode == 10) {
                     int i_23_ = opcodes[scriptDataIndex++] << 16;
                     i_23_ += opcodes[scriptDataIndex++];
-                    GameInterface gameInterface = GameInterface.getChildInterface(i_23_);
+                    GameInterface gameInterface = GameInterface.getInterface(i_23_);
                     int i_24_ = opcodes[scriptDataIndex++];
                     if (i_24_ != -1 && (!ItemDefinition.forId(i_24_, 10).members || Class22.membersWorld)) {
                         for (int i_25_ = 0; gameInterface.items.length > i_25_; i_25_++) {
@@ -169,7 +164,7 @@ public class ClientScript extends SubNode {
                     i_16_ = GenericTile.anInt1222;
                 }
                 if (opcode == 13) {
-                    int i_26_ = GroundItemTile.varbitmasks[opcodes[scriptDataIndex++]];
+                    int i_26_ = GroundItemTile.varbitMasks[opcodes[scriptDataIndex++]];
                     int i_27_ = opcodes[scriptDataIndex++];
                     i_16_ = (1 << i_27_ & i_26_) != 0 ? 1 : 0;
                 }

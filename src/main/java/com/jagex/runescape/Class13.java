@@ -15,8 +15,6 @@ import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.Wall;
 
 public class Class13 {
-    public static int worldid = 1;
-    public static int[] anIntArray403 = new int[25];
     public static MemoryCache aClass9_406 = new MemoryCache(64);
     public static boolean[] playerArray = new boolean[5];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_418;

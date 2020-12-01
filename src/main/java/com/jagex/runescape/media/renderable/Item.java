@@ -22,9 +22,7 @@ import tech.henning.fourthreefive.Configuration;
 import java.awt.*;
 
 public class Item extends Renderable {
-    public static int[] anIntArray3051 = new int[25];
     public static boolean[] obfuscatedKeyStatus = new boolean[112];
-    public static int friendsCount = 0;
     public static int anInt3065 = -1;
 
     public int itemCount;

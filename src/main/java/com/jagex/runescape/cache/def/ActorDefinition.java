@@ -5,7 +5,6 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
-import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -15,8 +14,6 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.GroundItemTile;
-import com.jagex.runescape.util.Signlink;
-import com.jagex.runescape.util.SignlinkNode;
 
 import java.awt.*;
 
@@ -204,7 +201,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
         if(varBitId != -1) {
             i = Class40_Sub5_Sub6.method585(varBitId, 1369);
         } else if(varpIndex != -1) {
-            i = GroundItemTile.varbitmasks[varpIndex];
+            i = GroundItemTile.varbitMasks[varpIndex];
         }
         return i >= 0 && childrenIds.length > i && childrenIds[i] != -1;
     }
@@ -346,7 +343,7 @@ public class ActorDefinition extends SubNode implements EntityDefinition {
         if(varBitId != -1) {
             childId = Class40_Sub5_Sub6.method585(varBitId, 1369);
         } else if(varpIndex != -1) {
-            childId = GroundItemTile.varbitmasks[varpIndex];
+            childId = GroundItemTile.varbitMasks[varpIndex];
         }
         if(childId < 0 || childId >= childrenIds.length || childrenIds[childId] == -1) {
             return null;

@@ -537,7 +537,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         }
         if(varpID == -1) {
             if(configId != -1) {
-                i = GroundItemTile.varbitmasks[configId];
+                i = GroundItemTile.varbitMasks[configId];
             }
         } else {
             i = Class40_Sub5_Sub6.method585(varpID, 1369);

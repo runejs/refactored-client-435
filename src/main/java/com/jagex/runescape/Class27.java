@@ -20,7 +20,6 @@ import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.Rasterizer3D;
-import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -257,7 +256,7 @@ public class Class27 {
                         }
                     }
                     if(!bool) {
-                        Class44.addChatMessage("", English.unableToFind + username, 0);
+                        ChatBox.addChatMessage("", English.unableToFind + username, 0);
                     }
                 }
             }
@@ -297,11 +296,11 @@ public class Class27 {
                 System.out.println("action 57");
                 SceneCluster.packetBuffer.putPacket(64);
                 SceneCluster.packetBuffer.putIntBE(i_10_);
-                GameInterface gameInterface = GameInterface.getChildInterface(i_10_);
+                GameInterface gameInterface = GameInterface.getInterface(i_10_);
                 if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
                     int i_16_ = gameInterface.clientScripts[0][1];
-                    if(gameInterface.alternateRhs[0] != GroundItemTile.varbitmasks[i_16_]) {
-                        GroundItemTile.varbitmasks[i_16_] = gameInterface.alternateRhs[0];
+                    if(gameInterface.alternateRhs[0] != GroundItemTile.varbitMasks[i_16_]) {
+                        GroundItemTile.varbitMasks[i_16_] = gameInterface.alternateRhs[0];
                         Class22.method309(-1, i_16_);
                         GameInterface.redrawTabArea = true;
                     }
@@ -410,10 +409,10 @@ public class Class27 {
                     SceneCluster.packetBuffer.putPacket(64);
                     SceneCluster.packetBuffer.putIntBE(i_10_);
 
-                    GameInterface gameInterface = GameInterface.getChildInterface(i_10_);
+                    GameInterface gameInterface = GameInterface.getInterface(i_10_);
                     if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
                         int i_17_ = gameInterface.clientScripts[0][1];
-                        GroundItemTile.varbitmasks[i_17_] = -GroundItemTile.varbitmasks[i_17_] + 1;
+                        GroundItemTile.varbitMasks[i_17_] = -GroundItemTile.varbitMasks[i_17_] + 1;
                         Class22.method309(-1, i_17_);
                         GameInterface.redrawTabArea = true;
                     }
@@ -440,13 +439,13 @@ public class Class27 {
                     if(i_18_ != -1) {
                         long l = TextUtils.nameToLong(class1.substring(i_18_ + 5).trim());
                         int i_19_ = -1;
-                        for(int i_20_ = 0; i_20_ < Item.friendsCount; i_20_++) {
+                        for(int i_20_ = 0; i_20_ < Player.friendsCount; i_20_++) {
                             if(Class59.friends[i_20_] == l) {
                                 i_19_ = i_20_;
                                 break;
                             }
                         }
-                        if(i_19_ != -1 && Class40_Sub7.friendWorlds[i_19_] > 0) {
+                        if(i_19_ != -1 && Player.friendWorlds[i_19_] > 0) {
                             Class37.anInt876 = 3;
                             ChatBox.redrawChatbox = true;
                             ChatBox.inputType = 0;
@@ -547,22 +546,22 @@ public class Class27 {
                     }
                 }
                 if(action == 33) {
-                    GameInterface gameInterface = GameInterface.getChildInterface(i_10_);
+                    GameInterface gameInterface = GameInterface.getInterface(i_10_);
                     GameInterface.redrawTabArea = true;
                     Main.widgetSelected = 1;
                     Native.aClass1_1918 = gameInterface.targetVerb;
                     ItemDefinition.selectedMask = gameInterface.clickMask;
                     Class8.itemSelected = 0;
                     Class60.anInt1417 = i_10_;
-                    Native.aClass1_611 = Native.aClass1_1162 + gameInterface.spellName + Native.aClass1_620;
+                    Native.aClass1_611 = Native.green + gameInterface.spellName + Native.aClass1_620;
                     if(ItemDefinition.selectedMask == 16) {
                         GameInterface.drawTabIcons = true;
-                        Class5.currentTabId = 3;
+                        Player.currentTabId = 3;
                         GameInterface.redrawTabArea = true;
                     }
                 } else {
                     if(action == 1007) {
-                        GameInterface gameInterface = GameInterface.getChildInterface(i_10_);
+                        GameInterface gameInterface = GameInterface.getInterface(i_10_);
                         if(gameInterface != null && gameInterface.children != null && i != -1) {
                             gameInterface = gameInterface.children[i];
                         }
@@ -570,11 +569,11 @@ public class Class27 {
                             SceneCluster.packetBuffer.putPacket(151);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         } else {
-                            Class44.addChatMessage("", gameInterface.itemAmount + Native.aClass1_1536 + ItemDefinition.forId(i_12_, 10).name, 0);
+                            ChatBox.addChatMessage("", gameInterface.itemAmount + Native.aClass1_1536 + ItemDefinition.forId(i_12_, 10).name, 0);
                         }
                     }
                     if(action == 42) {
-                        GameInterface gameInterface = GameInterface.getChildInterface(i_10_);
+                        GameInterface gameInterface = GameInterface.getInterface(i_10_);
                         boolean bool = true;
                         if(gameInterface.contentType > 0) {
                             bool = Class5.method166((byte) 88, gameInterface);
@@ -695,12 +694,12 @@ public class Class27 {
                         }
                     }
                     if(action == 1006) {
-                        GameInterface gameInterface = GameInterface.getChildInterface(i_10_);
+                        GameInterface gameInterface = GameInterface.getInterface(i_10_);
                         if(gameInterface == null || gameInterface.itemAmounts[i] < 100000) {
                             SceneCluster.packetBuffer.putPacket(151);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         } else {
-                            Class44.addChatMessage("", gameInterface.itemAmounts[i] + Native.aClass1_1536 + ItemDefinition.forId(i_12_, 10).name, 0);
+                            ChatBox.addChatMessage("", gameInterface.itemAmounts[i] + Native.aClass1_1536 + ItemDefinition.forId(i_12_, 10).name, 0);
                         }
                         GenericTile.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
@@ -791,7 +790,7 @@ public class Class27 {
                                     Class67.reportMutePlayer = false;
                                 }
                             } else {
-                                Class44.addChatMessage("", English.pleaseCloseInterfaceBeforeReportAbuse, 0);
+                                ChatBox.addChatMessage("", English.pleaseCloseInterfaceBeforeReportAbuse, 0);
                             }
                         }
                     }
@@ -1158,14 +1157,14 @@ public class Class27 {
                 GameInterface.drawTabIcons = true;
             }
             if(GameInterface.drawTabIcons) {
-                if(Class51.anInt1205 != -1 && Class51.anInt1205 == Class5.currentTabId) {
+                if(Class51.anInt1205 != -1 && Class51.anInt1205 == Player.currentTabId) {
                     Class51.anInt1205 = -1;
                     SceneCluster.packetBuffer.putPacket(44);
-                    SceneCluster.packetBuffer.putByte(Class5.currentTabId);
+                    SceneCluster.packetBuffer.putByte(Player.currentTabId);
                 }
                 GameInterface.drawTabIcons = false;
                 Class40_Sub3.aBoolean2026 = true;
-                Class40_Sub2.method527(Class5.currentTabId, 4, Class40_Sub5_Sub11.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, Node.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
+                Class40_Sub2.method527(Player.currentTabId, 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, Node.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
             }
             if(MemoryCache.redrawChatbox) {
                 Class40_Sub3.aBoolean2026 = true;
@@ -1198,14 +1197,14 @@ public class Class27 {
                 GameInterface.drawTabIcons = true;
             }
             if(GameInterface.drawTabIcons) {
-                if(Class51.anInt1205 != -1 && Class51.anInt1205 == Class5.currentTabId) {
+                if(Class51.anInt1205 != -1 && Class51.anInt1205 == Player.currentTabId) {
                     Class51.anInt1205 = -1;
                     SceneCluster.packetBuffer.putPacket(44);
-                    SceneCluster.packetBuffer.putByte(Class5.currentTabId);
+                    SceneCluster.packetBuffer.putByte(Player.currentTabId);
                 }
                 GameInterface.drawTabIcons = false;
                 Class40_Sub3.aBoolean2026 = true;
-                Class40_Sub2.method527(Class5.currentTabId, 4, Class40_Sub5_Sub11.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, Node.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
+                Class40_Sub2.method527(Player.currentTabId, 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, Node.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
             }
             if(MemoryCache.redrawChatbox) {
                 Class40_Sub3.aBoolean2026 = true;

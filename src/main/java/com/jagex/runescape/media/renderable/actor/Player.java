@@ -8,6 +8,7 @@ import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.KeyFocusListener;
@@ -18,7 +19,6 @@ import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.scene.tile.SceneTile;
-import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
@@ -43,6 +43,20 @@ public class Player extends Actor {
     public static boolean inTutorialIsland = false;
     public static Buffer chatBuffer = new Buffer(new byte[5000]);
     public static boolean cutsceneActive = false;
+    public static int[] playerExperience = new int[25];
+    public static int[] playerLevels = new int[25];
+    public static int[] nextLevels = new int[25];
+    public static int[] experienceForLevels = new int[99];
+    public static long[] privateMessageIds = new long[100];
+    public static long[] ignores = new long[100];
+    public static int privateMessageIndex = 0;
+    public static int[] friendWorlds = new int[200];
+    public static int friendListStatus = 0;
+    public static int worldId = 1;
+    public static int friendsCount = 0;
+    public static PlayerAppearance activePlayerAppearance = new PlayerAppearance();
+    public static int[] tabWidgetIds = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+    public static int currentTabId = 3;
     public int skillLevel;
     public int anInt3258;
     public int combatLevel = 0;
@@ -62,6 +76,16 @@ public class Player extends Actor {
     public boolean aBoolean3287;
     public int anInt3289;
     public int anInt3291;
+
+    static {
+        int i = 0;
+        for(int idx = 0; idx < 99; idx++) {
+            int skillLevel = idx + 1;
+            int experienceForLevel = (int) ((double) skillLevel + 300.0 * Math.pow(2.0, (double) skillLevel / 7.0));
+            i += experienceForLevel;
+            Player.experienceForLevels[idx] = i / 4;
+        }
+    }
 
     public Player() {
         skillLevel = 0;
@@ -148,7 +172,7 @@ public class Player extends Actor {
                 boolean bool = false;
                 if(playerRights <= 1) {
                     for(int i = 0; i < Class42.anInt1008; i++) {
-                        if(l == WallDecoration.ignores[i]) {
+                        if(l == ignores[i]) {
                             bool = true;
                             break;
                         }
@@ -165,11 +189,11 @@ public class Player extends Actor {
                     player.chatEffects = chatEffectsAndColors & 0xff;
                     player.chatcolor = chatEffectsAndColors >> 8;
                     if(playerRights == 2 || playerRights == 3)
-                        Class44.addChatMessage(Native.goldCrown + player.playerName, class1, 1);
+                        ChatBox.addChatMessage(Native.goldCrown + player.playerName, class1, 1);
                     else if(playerRights == 1)
-                        Class44.addChatMessage(Native.whiteCrown + player.playerName, class1, 1);
+                        ChatBox.addChatMessage(Native.whiteCrown + player.playerName, class1, 1);
                     else
-                        Class44.addChatMessage(player.playerName, class1, 2);
+                        ChatBox.addChatMessage(player.playerName, class1, 2);
                 }
             }
             IncomingPackets.incomingPacketBuffer.currentPosition = messageLength + bufferPosition;
@@ -198,9 +222,9 @@ public class Player extends Actor {
             player.forcedChatMessage = IncomingPackets.incomingPacketBuffer.getString();
             if(player.forcedChatMessage.charAt(0) == 126) {
                 player.forcedChatMessage = player.forcedChatMessage.substring(1);
-                Class44.addChatMessage(player.playerName, player.forcedChatMessage, 2);
+                ChatBox.addChatMessage(player.playerName, player.forcedChatMessage, 2);
             } else if(player == localPlayer)
-                Class44.addChatMessage(player.playerName, player.forcedChatMessage, 2);
+                ChatBox.addChatMessage(player.playerName, player.forcedChatMessage, 2);
             player.anInt3078 = 150;
             player.chatcolor = 0;
             player.chatEffects = 0;

@@ -4,7 +4,6 @@ import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.util.SignlinkNode;
 
 public class Class12 {
-    public static int friendListStatus = 0;
     public static GameInterface chatboxInterface;
     public static Class39 mouseCapturer;
     public static int cameraX;

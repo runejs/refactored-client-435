@@ -10,7 +10,6 @@ import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
@@ -48,13 +47,13 @@ public class Class40_Sub2 extends Node {
         if(arg0 < 0 || i_3_ < arg0)
             arg0 = 0;
         i_3_ <<= i;
-        GroundItemTile.varbitmasks[i_0_] = UnderlayDefinition.bitWiseOR(HuffmanEncoding.method1021(GroundItemTile.varbitmasks[i_0_], i_3_ ^ 0xffffffff), HuffmanEncoding.method1021(i_3_, arg0 << i));
+        GroundItemTile.varbitMasks[i_0_] = UnderlayDefinition.bitWiseOR(HuffmanEncoding.method1021(GroundItemTile.varbitMasks[i_0_], i_3_ ^ 0xffffffff), HuffmanEncoding.method1021(i_3_, arg0 << i));
     }
 
     public static boolean hasFriend(String arg0) {
         if(arg0 == null)
             return false;
-        for(int i = 0; i < Item.friendsCount; i++) {
+        for(int i = 0; i < Player.friendsCount; i++) {
             if(arg0.equalsIgnoreCase(ClientScriptRunner.friendUsernames[i]))
                 return true;
         }

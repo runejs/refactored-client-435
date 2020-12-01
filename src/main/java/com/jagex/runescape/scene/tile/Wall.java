@@ -14,7 +14,6 @@ public class Wall {
     public static int anInt350;
     public static int[] walkingQueueY = new int[4000];
     public static GameInterface aGameInterface_353 = null;
-    public static int[] anIntArray354 = new int[25];
     public static int anInt356 = 0;
     public static LinkedList[][][] groundItems = new LinkedList[4][104][104];
 

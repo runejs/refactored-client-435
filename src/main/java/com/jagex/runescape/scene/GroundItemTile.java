@@ -14,7 +14,7 @@ public class GroundItemTile {
     public static CacheIndex aCacheIndex_1375;
     public static int walkableWidgetId = -1;
     public static byte[][] aByteArrayArray1377 = new byte[1000][];
-    public static int[] varbitmasks = new int[2000];
+    public static int[] varbitMasks = new int[2000];
 
     public Renderable firstGroundItem;
     public int y;

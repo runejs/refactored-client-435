@@ -124,7 +124,7 @@ public abstract class Class22 {
             HuffmanEncoding.method1030((byte) 127);
             int i = Npc.method795((byte) -70, arg1).anInt2633;
             if(i != 0) {
-                int i_21_ = GroundItemTile.varbitmasks[arg1];
+                int i_21_ = GroundItemTile.varbitMasks[arg1];
                 if(i == 1) {
                     if(i_21_ == 1) {
                         Rasterizer3D.method711(0.9);

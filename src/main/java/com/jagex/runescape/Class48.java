@@ -141,7 +141,7 @@ public class Class48 {
                             }
                         }
                         if(gameInterface.actionType == 2 && Main.widgetSelected == 0 && arg8 >= i_2_ && arg4 >= i_1_ && arg8 < gameInterface.originalWidth + i_2_ && arg4 < i_1_ + gameInterface.originalHeight) {
-                            OverlayDefinition.addActionRow(gameInterface.targetVerb, 0, 0, gameInterface.id, 33, Native.aClass1_1162+ gameInterface.spellName);
+                            OverlayDefinition.addActionRow(gameInterface.targetVerb, 0, 0, gameInterface.id, 33, Native.green + gameInterface.spellName);
                         }
                         if(gameInterface.actionType == 3 && arg8 >= i_2_ && arg4 >= i_1_ && i_2_ + gameInterface.originalWidth > arg8 && arg4 < i_1_ + gameInterface.originalHeight) {
                             int i_3_;
@@ -258,7 +258,7 @@ public class Class48 {
                                 }
                             }
                         }
-                        if(gameInterface.isIf3 && gameInterface.itemId != -1 && arg8 >= i_2_ && arg4 >= i_1_ && arg8 < gameInterface.originalWidth + i_2_ && arg4 < i_1_ + gameInterface.originalHeight) {
+                        if(gameInterface.isNewInterfaceFormat && gameInterface.itemId != -1 && arg8 >= i_2_ && arg4 >= i_1_ && arg8 < gameInterface.originalWidth + i_2_ && arg4 < i_1_ + gameInterface.originalHeight) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(gameInterface.itemId, 10);
                             if(gameInterface.isInventory) {
                                 String[] class1s = itemDefinition.interfaceOptions;

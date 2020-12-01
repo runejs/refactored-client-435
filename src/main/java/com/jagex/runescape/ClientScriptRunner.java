@@ -112,6 +112,8 @@ public class ClientScriptRunner extends Node {
         }
     }
 
+    // @TODO figure this out - it works entirely different from even 459... Why?
+    //  Should we just rip the 459 version as it's most likely better anyhow?
     public static void parseClientScriptPacket(Signlink signlink, Buffer buffer) {
         ClientScriptRunner clientScriptRunner = new ClientScriptRunner();
 
@@ -125,6 +127,10 @@ public class ClientScriptRunner extends Node {
         clientScriptRunner.functionNodes = new SignlinkNode[clientScriptRunner.scriptCount];
         clientScriptRunner.errorCodes = new int[clientScriptRunner.scriptCount];
 
+        // lol wut...
+        // I see why this was replaced by 459
+        // this must be the CS2 beta since we only have 1 CS2 script in our game cache - and it's a test script :)
+        // final version appears to have been changed a good bit - rip the final 459 system maybe?
         for(int i = 0; i < clientScriptRunner.scriptCount; i++) {
             try {
                 int opcode = buffer.getUnsignedByte();
@@ -337,12 +343,12 @@ public class ClientScriptRunner extends Node {
                     }
                     if(scriptOpcode == 1) {
                         int operand = intOperands[scriptIndex];
-                        scriptIntValues[intValueIndex++] = GroundItemTile.varbitmasks[operand];
+                        scriptIntValues[intValueIndex++] = GroundItemTile.varbitMasks[operand];
                         continue;
                     }
                     if(scriptOpcode == 2) {
                         int operand = intOperands[scriptIndex];
-                        GroundItemTile.varbitmasks[operand] = scriptIntValues[--intValueIndex];
+                        GroundItemTile.varbitMasks[operand] = scriptIntValues[--intValueIndex];
                         continue;
                     }
                     if(scriptOpcode == 3) {
@@ -495,7 +501,7 @@ public class ClientScriptRunner extends Node {
                         int interfaceData = scriptIntValues[intValueIndex];
                         int interfaceType = scriptIntValues[intValueIndex + 1];
                         int childCount = scriptIntValues[intValueIndex + 2];
-                        GameInterface gameInterface = GameInterface.getChildInterface(interfaceData);
+                        GameInterface gameInterface = GameInterface.getInterface(interfaceData);
                         if(gameInterface.children == null) {
                             gameInterface.children = new GameInterface[1 + childCount];
                         }
@@ -518,19 +524,19 @@ public class ClientScriptRunner extends Node {
                         }
                     } else if(scriptOpcode == 101) {
                         GameInterface gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : Class40_Sub6.aGameInterface_2116;
-                        GameInterface childInterface = GameInterface.getChildInterface(gameInterface.parentId);
+                        GameInterface childInterface = GameInterface.getInterface(gameInterface.parentId);
                         childInterface.children[HuffmanEncoding.method1021(gameInterface.id, 32767)] = null;
                     } else {
                         if(scriptOpcode != 102) {
                             break;
                         }
-                        GameInterface gameInterface = GameInterface.getChildInterface(scriptIntValues[--intValueIndex]);
+                        GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                         gameInterface.children = null;
                     }
                 } else if(scriptOpcode >= 1000 && scriptOpcode < 1100 || scriptOpcode >= 2000 && scriptOpcode < 2100) {
                     GameInterface gameInterface;
                     if(scriptOpcode >= 2000) {
-                        gameInterface = GameInterface.getChildInterface(scriptIntValues[--intValueIndex]);
+                        gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                         scriptOpcode -= 1000;
                     } else {
                         gameInterface = bool ? Class40_Sub6.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
@@ -556,7 +562,7 @@ public class ClientScriptRunner extends Node {
                     if(scriptOpcode < 2000) {
                         gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : Class40_Sub6.aGameInterface_2116;
                     } else {
-                        gameInterface = GameInterface.getChildInterface(scriptIntValues[--intValueIndex]);
+                        gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                         scriptOpcode -= 1000;
                     }
                     if(scriptOpcode == 1100) {
@@ -618,7 +624,7 @@ public class ClientScriptRunner extends Node {
                                 intValueIndex -= 2;
                                 int i_28_ = scriptIntValues[intValueIndex + 1];
                                 int i_29_ = scriptIntValues[intValueIndex];
-                                GameInterface gameInterface = GameInterface.getChildInterface(i_29_);
+                                GameInterface gameInterface = GameInterface.getInterface(i_29_);
                                 if(gameInterface.children == null || gameInterface.children.length <= i_28_ || gameInterface.children[i_28_] == null) {
                                     scriptIntValues[intValueIndex++] = 0;
                                 } else {
@@ -650,7 +656,7 @@ public class ClientScriptRunner extends Node {
                                     break;
                                 }
                                 intValueIndex -= 3;
-                                GameInterface gameInterface = GameInterface.getChildInterface(scriptIntValues[intValueIndex]);
+                                GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[intValueIndex]);
                                 int i_33_ = scriptIntValues[2 + intValueIndex];
                                 int i_34_ = scriptIntValues[intValueIndex + 1];
                                 GameInterface gameInterface_35_ = Class27.method361(gameInterface.children, i_33_, true, gameInterface.scrollPosition, gameInterface.id, gameInterface.anInt2746, i_34_, 398);
@@ -701,7 +707,7 @@ public class ClientScriptRunner extends Node {
                                         break;
                                     }
                                     intValueIndex -= 3;
-                                    GameInterface gameInterface = GameInterface.getChildInterface(scriptIntValues[intValueIndex]);
+                                    GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[intValueIndex]);
                                     int i_39_ = scriptIntValues[1 + intValueIndex];
                                     int i_40_ = scriptIntValues[intValueIndex + 2];
                                     GameInterface gameInterface_41_ = Class27.method361(GameInterface.cachedInterfaces[gameInterface.id >> 16], i_40_, false, gameInterface.scrollPosition, 0xffff & gameInterface.id, gameInterface.anInt2746, i_39_, 398);
@@ -713,7 +719,7 @@ public class ClientScriptRunner extends Node {
                                 }
                             } else if(scriptOpcode >= 2600) {
                                 if(scriptOpcode < 2700) {
-                                    GameInterface gameInterface = GameInterface.getChildInterface(scriptIntValues[--intValueIndex]);
+                                    GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                                     if(scriptOpcode == 2600) {
                                         scriptIntValues[intValueIndex++] = gameInterface.anInt2746;
                                     } else {
@@ -905,7 +911,7 @@ public class ClientScriptRunner extends Node {
                                         }
                                     } else if(scriptOpcode == 3100) {
                                         String str = scriptStringValues[--stringValueIndex];
-                                        Class44.addChatMessage("", str, 0);
+                                        ChatBox.addChatMessage("", str, 0);
                                     } else {
                                         if(scriptOpcode != 3101) {
                                             break;
@@ -915,7 +921,7 @@ public class ClientScriptRunner extends Node {
                                     }
                                 }
                             } else {
-                                GameInterface gameInterface = GameInterface.getChildInterface(scriptIntValues[--intValueIndex]);
+                                GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                                 if(scriptOpcode == 2500) {
                                     scriptIntValues[intValueIndex++] = gameInterface.currentX;
                                 } else if(scriptOpcode == 2501) {
@@ -947,7 +953,7 @@ public class ClientScriptRunner extends Node {
                     } else {
                         GameInterface gameInterface;
                         if(scriptOpcode >= 2000) {
-                            gameInterface = GameInterface.getChildInterface(scriptIntValues[--intValueIndex]);
+                            gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                             scriptOpcode -= 1000;
                         } else {
                             gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : Class40_Sub6.aGameInterface_2116;
@@ -1031,7 +1037,7 @@ public class ClientScriptRunner extends Node {
                     if(scriptOpcode < 2000) {
                         gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : Class40_Sub6.aGameInterface_2116;
                     } else {
-                        gameInterface = GameInterface.getChildInterface(scriptIntValues[--intValueIndex]);
+                        gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                         scriptOpcode -= 1000;
                     }
                     if(scriptOpcode == 1200) {

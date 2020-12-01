@@ -11,7 +11,6 @@ import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.GameObject;
-import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -134,8 +133,8 @@ public class Class37 {
                 int playerY = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
                 boolean isFriend = false;
                 long name = RSString.nameToLong(player.playerName);
-                for(int friend = 0; Item.friendsCount > friend; friend++) {
-                    if(name == Class59.friends[friend] && Class40_Sub7.friendWorlds[friend] != 0) {
+                for(int friend = 0; Player.friendsCount > friend; friend++) {
+                    if(name == Class59.friends[friend] && Player.friendWorlds[friend] != 0) {
                         isFriend = true;
                         break;
                     }
