@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
@@ -9,7 +9,7 @@ import com.jagex.runescape.util.SignlinkNode;
 import java.awt.*;
 
 public abstract class ProducingGraphicsBuffer {
-    public static MemoryCache aClass9_1615 = new MemoryCache(64);
+    public static NodeCache aClass9_1615 = new NodeCache(64);
     public static int anInt1618 = 0;
     public static int anInt1623 = 0;
     public static int oneMouseButton = 0;

@@ -5,7 +5,7 @@ import com.jagex.runescape.cache.def.FramemapDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
-import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.node.Node;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.SceneCluster;
 
@@ -63,7 +63,7 @@ public class Class40_Sub6 extends Node {
         }
         for(int i_14_ = 0; i_14_ < i + -1; i_14_++)
             Class17.anIntArray466[i_14_] = Class17.anIntArray466[i_14_ + 1];
-        Class17.anIntArray466[i - arg0] = (int) (16.0 * Math.sin((double) Node.pulseCycle / 14.0) + 14.0 * Math.sin((double) Node.pulseCycle / 15.0) + 12.0 * Math.sin((double) Node.pulseCycle / 16.0));
+        Class17.anIntArray466[i - arg0] = (int) (16.0 * Math.sin((double) MovedStatics.pulseCycle / 14.0) + 14.0 * Math.sin((double) MovedStatics.pulseCycle / 15.0) + 12.0 * Math.sin((double) MovedStatics.pulseCycle / 16.0));
         if(Class40_Sub5_Sub6.anInt2452 > 0)
             Class40_Sub5_Sub6.anInt2452 -= 4;
         if(IdentityKit.anInt2613 > 0)

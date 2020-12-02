@@ -8,9 +8,10 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.scene.util.CollisionMap;
 
-public class AnimationSequence extends SubNode {
+public class AnimationSequence extends CachedNode {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
     public static int anInt2480 = 0;
     public static ImageRGB minimapCompass;

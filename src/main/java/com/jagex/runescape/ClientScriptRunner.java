@@ -8,7 +8,7 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.gameInterface.*;
-import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.node.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
@@ -31,7 +31,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class ClientScriptRunner extends Node {
-    public static String[] friendUsernames = new String[200];
     public static String[] scriptStringValues = new String[1000];
     public static int runEnergy = 0;
     public static CacheIndex aCacheIndex_2162;
@@ -77,10 +76,10 @@ public class ClientScriptRunner extends Node {
                 if((i_1_ == 1 || i_1_ == 2) && (i_1_ == 1 || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 1 && Class40_Sub2.hasFriend(class1))) {
                     if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !class1.equals(Player.localPlayer.playerName)) {
                         if(InteractiveObject.playerRights >= 1) {
-                            OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.aClass1_620+ class1);
+                            OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.white + class1);
                         }
-                        OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 51, Native.aClass1_620+ class1);
-                        OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 45, Native.aClass1_620+ class1);
+                        OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 51, Native.white + class1);
+                        OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 45, Native.white + class1);
                     }
                     i++;
                 }
@@ -88,15 +87,15 @@ public class ClientScriptRunner extends Node {
                     i++;
                     if(arg1 > -14 + i_2_ && arg1 <= i_2_) {
                         if(InteractiveObject.playerRights >= 1) {
-                            OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.aClass1_620+ class1);
+                            OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.white + class1);
                         }
-                        OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 51, Native.aClass1_620+ class1);
-                        OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 45, Native.aClass1_620+ class1);
+                        OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 51, Native.white + class1);
+                        OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 45, Native.white + class1);
                     }
                 }
                 if(i_1_ == 4 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Class40_Sub2.hasFriend(class1))) {
                     if(arg1 > -14 + i_2_ && arg1 <= i_2_) {
-                        OverlayDefinition.addActionRow(English.acceptTrade, 0, 0, 0, 26, Native.aClass1_620+ class1);
+                        OverlayDefinition.addActionRow(English.acceptTrade, 0, 0, 0, 26, Native.white + class1);
                     }
                     i++;
                 }
@@ -104,7 +103,7 @@ public class ClientScriptRunner extends Node {
                     i++;
                 if(i_1_ == 8 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Class40_Sub2.hasFriend(class1))) {
                     if(i_2_ + -14 < arg1 && arg1 <= i_2_) {
-                        OverlayDefinition.addActionRow(English.acceptChallenge, 0, 0, 0, 46, Native.aClass1_620 + class1);
+                        OverlayDefinition.addActionRow(English.acceptChallenge, 0, 0, 0, 46, Native.white + class1);
                     }
                     i++;
                 }
@@ -294,7 +293,7 @@ public class ClientScriptRunner extends Node {
 
             buffer.method473(bufferPos);
             buffer.finishVarByte(-bufferPos + buffer.currentPosition);
-            clientScriptRunner.remove(-1);
+            clientScriptRunner.remove();
         }
     }
 
@@ -640,7 +639,7 @@ public class ClientScriptRunner extends Node {
                                 int i_30_ = scriptIntValues[intValueIndex];
                                 int i_31_ = scriptIntValues[2 + intValueIndex];
                                 int i_32_ = scriptIntValues[intValueIndex + 1];
-                                GameInterface gameInterface = Class27.method361(GameInterface.cachedInterfaces[i_30_], i_31_, true, 0, -1, 0, i_32_, 398);
+                                GameInterface gameInterface = GameInterface.method361(GameInterface.cachedInterfaces[i_30_], i_31_, true, 0, -1, 0, i_32_, 398);
                                 if(gameInterface == null) {
                                     scriptIntValues[intValueIndex++] = 0;
                                 } else {
@@ -659,7 +658,7 @@ public class ClientScriptRunner extends Node {
                                 GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[intValueIndex]);
                                 int i_33_ = scriptIntValues[2 + intValueIndex];
                                 int i_34_ = scriptIntValues[intValueIndex + 1];
-                                GameInterface gameInterface_35_ = Class27.method361(gameInterface.children, i_33_, true, gameInterface.scrollPosition, gameInterface.id, gameInterface.anInt2746, i_34_, 398);
+                                GameInterface gameInterface_35_ = GameInterface.method361(gameInterface.children, i_33_, true, gameInterface.scrollPosition, gameInterface.id, gameInterface.anInt2746, i_34_, 398);
                                 if(gameInterface_35_ == null) {
                                     scriptIntValues[intValueIndex++] = 0;
                                 } else {
@@ -696,7 +695,7 @@ public class ClientScriptRunner extends Node {
                                     int i_36_ = scriptIntValues[1 + intValueIndex];
                                     int i_37_ = scriptIntValues[intValueIndex];
                                     int i_38_ = scriptIntValues[intValueIndex + 2];
-                                    GameInterface gameInterface = Class27.method361(GameInterface.cachedInterfaces[i_37_], i_38_, false, 0, -1, 0, i_36_, 398);
+                                    GameInterface gameInterface = GameInterface.method361(GameInterface.cachedInterfaces[i_37_], i_38_, false, 0, -1, 0, i_36_, 398);
                                     if(gameInterface == null) {
                                         scriptIntValues[intValueIndex++] = -1;
                                     } else {
@@ -710,7 +709,7 @@ public class ClientScriptRunner extends Node {
                                     GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[intValueIndex]);
                                     int i_39_ = scriptIntValues[1 + intValueIndex];
                                     int i_40_ = scriptIntValues[intValueIndex + 2];
-                                    GameInterface gameInterface_41_ = Class27.method361(GameInterface.cachedInterfaces[gameInterface.id >> 16], i_40_, false, gameInterface.scrollPosition, 0xffff & gameInterface.id, gameInterface.anInt2746, i_39_, 398);
+                                    GameInterface gameInterface_41_ = GameInterface.method361(GameInterface.cachedInterfaces[gameInterface.id >> 16], i_40_, false, gameInterface.scrollPosition, 0xffff & gameInterface.id, gameInterface.anInt2746, i_39_, 398);
                                     if(gameInterface_41_ == null) {
                                         scriptIntValues[intValueIndex++] = -1;
                                     } else {
@@ -776,7 +775,7 @@ public class ClientScriptRunner extends Node {
                                             if(scriptOpcode != 3300) {
                                                 break;
                                             }
-                                            scriptIntValues[intValueIndex++] = pulseCycle;
+                                            scriptIntValues[intValueIndex++] = MovedStatics.pulseCycle;
                                         } else if(scriptOpcode < 4100) {
                                             if(scriptOpcode == 4000) {
                                                 intValueIndex -= 2;

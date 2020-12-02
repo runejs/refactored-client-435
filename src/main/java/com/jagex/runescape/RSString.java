@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.node.HashTable;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -11,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 public class RSString {
     public static ProducingGraphicsBuffer mapbackProducingGraphicsBuffer;
     public static int clickY = 0;
-    public static MemoryCache aClass9_1684;
+    public static NodeCache aClass9_1684;
     public static int anInt1690 = 0;
     public static CacheIndex aCacheIndex_1705;
     public static int[] keyCodes = new int[128];
@@ -266,7 +267,7 @@ public class RSString {
             Class40_Sub7 class40_sub7 = new Class40_Sub7();
             aBoolean1675 = false;
             class40_sub7.aClass1_2124 = this;
-            Class34.aClass23_805.put(class40_sub7, (byte) -117, l);
+            Class34.aClass23_805.put(l, class40_sub7);
         }
         return this;
     }

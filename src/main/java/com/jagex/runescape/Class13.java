@@ -1,11 +1,10 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -15,7 +14,7 @@ import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.Wall;
 
 public class Class13 {
-    public static MemoryCache aClass9_406 = new MemoryCache(64);
+    public static NodeCache aClass9_406 = new NodeCache(64);
     public static boolean[] playerArray = new boolean[5];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_418;
     public static int anInt419 = 2;
@@ -41,9 +40,9 @@ public class Class13 {
             arg0.worldY = 64 * arg0.anInt3096 + arg0.pathX[0] * 128;
             arg0.method790(0);
         }
-        if(arg0.anInt3112 > Node.pulseCycle)
+        if(arg0.anInt3112 > MovedStatics.pulseCycle)
             Class40_Sub5_Sub11.method631(arg0);
-        else if(arg0.anInt3107 < Node.pulseCycle)
+        else if(arg0.anInt3107 < MovedStatics.pulseCycle)
             Class44.method898(255, arg0);
         else
             PlayerAppearance.method381(arg0);

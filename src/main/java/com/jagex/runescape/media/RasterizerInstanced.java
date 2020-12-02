@@ -1,10 +1,10 @@
 package com.jagex.runescape.media;
 
 import com.jagex.runescape.ProducingGraphicsBuffer;
-import com.jagex.runescape.SubNode;
+import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.media.renderable.Model;
 
-public class RasterizerInstanced extends SubNode {
+public class RasterizerInstanced extends CachedNode {
     public int[] destinationPixels;
     public int viewportTop = 0;
     public int destinationWidth;

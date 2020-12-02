@@ -1,7 +1,7 @@
 package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.io.Buffer;
@@ -13,6 +13,7 @@ import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.IncomingPackets;
+import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
@@ -23,7 +24,7 @@ import tech.henning.fourthreefive.Configuration;
 import java.io.IOException;
 import java.net.Socket;
 
-public class SpotAnimDefinition extends SubNode {
+public class SpotAnimDefinition extends CachedNode {
     public static ImageRGB minimapEdge;
     public static Class67 aClass67_2298;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2301;
@@ -91,7 +92,7 @@ public class SpotAnimDefinition extends SubNode {
             if (Class40_Sub3.anInt2032 == 3) {
                 int i = Class40_Sub6.gameConnection.read();
                 if (i != 0) {
-                    Class27.displayMessageForResponseCode(i);
+                    Main.displayMessageForResponseCode(i);
                     return;
                 }
                 IncomingPackets.incomingPacketBuffer.currentPosition = 0;
@@ -141,19 +142,19 @@ public class SpotAnimDefinition extends SubNode {
                 MovedStatics.packetBuffer.putByte(57 + SceneCluster.packetBuffer.currentPosition);
                 MovedStatics.packetBuffer.putIntBE(435);
                 MovedStatics.packetBuffer.putByte(VertexNormal.lowMemory ? 1 : 0);
-                MovedStatics.packetBuffer.putIntBE(MemoryCache.skeletonCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(MemoryCache.skinDefinitionCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(MemoryCache.gameDefinitionsCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(MemoryCache.gameInterfaceCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(MemoryCache.soundEffectCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(MemoryCache.gameWorldMapCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(MemoryCache.musicCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(MemoryCache.modelCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(MemoryCache.gameImageCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(MemoryCache.gameTextureCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(MemoryCache.huffmanCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(MemoryCache.jingleCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(MemoryCache.clientScriptCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheIndex.skeletonCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheIndex.skinDefinitionCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheIndex.gameDefinitionsCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheIndex.gameInterfaceCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheIndex.soundEffectCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheIndex.gameWorldMapCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheIndex.musicCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheIndex.modelCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheIndex.gameImageCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheIndex.gameTextureCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheIndex.huffmanCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheIndex.jingleCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheIndex.clientScriptCacheIndex.anInt216);
                 MovedStatics.packetBuffer.putBytes(0, SceneCluster.packetBuffer.currentPosition, SceneCluster.packetBuffer.buffer);
                 Class40_Sub6.gameConnection.method1010(MovedStatics.packetBuffer.currentPosition, (byte) -19, 0, MovedStatics.packetBuffer.buffer);
                 SceneCluster.packetBuffer.initOutCipher(seeds);
@@ -180,7 +181,7 @@ public class SpotAnimDefinition extends SubNode {
                             OverlayDefinition.anInt2321++;
                             Class40_Sub3.anInt2032 = 0;
                         } else {
-                            Class27.displayMessageForResponseCode(i);
+                            Main.displayMessageForResponseCode(i);
                             return;
                         }
                     }
@@ -236,7 +237,7 @@ public class SpotAnimDefinition extends SubNode {
                             }
                             Class40_Sub3.anInt2032 = 0;
                         } else {
-                            Class27.displayMessageForResponseCode(-3);
+                            Main.displayMessageForResponseCode(-3);
                         }
                     }
                 }
@@ -251,7 +252,7 @@ public class SpotAnimDefinition extends SubNode {
                 OverlayDefinition.anInt2321++;
                 Class40_Sub3.anInt2032 = 0;
             } else {
-                Class27.displayMessageForResponseCode(-2);
+                Main.displayMessageForResponseCode(-2);
             }
         }
     }

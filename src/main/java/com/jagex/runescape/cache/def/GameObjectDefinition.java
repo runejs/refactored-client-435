@@ -2,24 +2,30 @@ package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.node.HashTable;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
-import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.scene.GroundItemTile;
-import com.jagex.runescape.scene.InteractiveObject;
 import tech.henning.fourthreefive.OldEngine.ObjectDecompressor;
 
 import java.io.IOException;
 
-public class GameObjectDefinition extends SubNode implements EntityDefinition {
+public class GameObjectDefinition extends CachedNode implements EntityDefinition {
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2524;
     public static int anInt2543 = 0;
     public static HashTable aClass23_2545 = new HashTable(4096);
     public static int lastClickY = 0;
     public static long aLong2561 = 0L;
     public static int count;
+    public static NodeCache objectDefinitionCache = new NodeCache(64);
+    public static NodeCache objectModelCache = new NodeCache(500);
+    public static Model[] objectModelHolder = new Model[4];
+    public static NodeCache terrainObjectModelCache = new NodeCache(10);
+    public static NodeCache animatedObjectModelCache = new NodeCache(30);
 
     public int anInt2499;
     public int offsetX;
@@ -142,17 +148,17 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         class40_sub3.anInt2030 = arg8;
     }
 
-    public static GameObjectDefinition getDefinition(int arg0) {
-        GameObjectDefinition gameObjectDefinition = (GameObjectDefinition) GroundItemTile.aClass9_1364.get(arg0);
+    public static GameObjectDefinition getDefinition(int objectId) {
+        GameObjectDefinition gameObjectDefinition = (GameObjectDefinition) objectDefinitionCache.get(objectId);
         if(gameObjectDefinition != null) {
             return gameObjectDefinition;
         }
-        byte[] is = Class40_Sub3.aCacheIndex_2037.getFile(arg0, 6);
+        byte[] is = CacheIndex.definitionCache.getFile(objectId, 6);
         gameObjectDefinition = new GameObjectDefinition();
-        gameObjectDefinition.id = arg0;
+        gameObjectDefinition.id = objectId;
         if(is == null) {
             try {
-                Buffer buffer = ObjectDecompressor.grabObjectDef(arg0);
+                Buffer buffer = ObjectDecompressor.grabObjectDef(objectId);
                 if(buffer != null) {
 
                     gameObjectDefinition.readValues(buffer);
@@ -168,24 +174,31 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
             gameObjectDefinition.solid = false;
             gameObjectDefinition.walkable = false;
         }
-        GroundItemTile.aClass9_1364.put(arg0, gameObjectDefinition);
+        objectDefinitionCache.put(objectId, gameObjectDefinition);
         return gameObjectDefinition;
     }
 
-    public Model getGameObjectModel(int arg0, int arg1, int arg2, int arg3, int arg4, int arg6) {
+    public static void clearGameObjectModelCache() {
+        objectDefinitionCache.clear();
+        objectModelCache.clear();
+        terrainObjectModelCache.clear();
+        animatedObjectModelCache.clear();
+    }
+
+    public Model createTerrainObjectModel(int arg0, int arg1, int arg2, int arg3, int arg4, int arg6) {
         long l;
         if(objectTypes == null) {
             l = (id << 10) + arg2;
         } else {
             l = arg2 + (id << 10) + (arg4 << 3);
         }
-        Model model = (Model) InteractiveObject.aClass9_470.get(l);
+        Model model = (Model) terrainObjectModelCache.get(l);
         if(model == null) {
-            model = method606(!nonFlatShading, false, arg2, arg4);
+            model = createObjectModel(!nonFlatShading, false, arg2, arg4);
             if(model == null) {
                 return null;
             }
-            InteractiveObject.aClass9_470.put(l, model);
+            terrainObjectModelCache.put(l, model);
         }
         if(adjustToTerrain || nonFlatShading) {
             model = new Model(adjustToTerrain, nonFlatShading, model);
@@ -247,113 +260,113 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
         }
     }
 
-    public Model method606(boolean arg0, boolean hasBones, int arg3, int arg4) {
-        Model class40_sub5_sub17_sub5 = null;
+    public Model createObjectModel(boolean shaded, boolean hasBones, int orientation, int objectType) {
+        Model model = null;
         if(objectTypes == null) {
-            if(arg4 != 10) {
+            if(objectType != 10) {
                 return null;
             }
             if(objectModels == null) {
                 return null;
             }
-            boolean bool = arg3 > 3 ^ rotated;
-            int i = objectModels.length;
-            for(int i_7_ = 0; i > i_7_; i_7_++) {
-                int i_8_ = objectModels[i_7_];
+            boolean bool = orientation > 3 ^ rotated;
+            int modelCount = objectModels.length;
+            for(int modelIndex = 0; modelCount > modelIndex; modelIndex++) {
+                int modelId = objectModels[modelIndex];
                 if(bool) {
-                    i_8_ += 65536;
+                    modelId += 65536;
                 }
-                class40_sub5_sub17_sub5 = (Model) VertexNormal.aClass9_1102.get(i_8_);
-                if(class40_sub5_sub17_sub5 == null) {
-                    class40_sub5_sub17_sub5 = Model.getModel(RSString.aCacheIndex_1705, i_8_ & 0xffff, 0);
-                    if(class40_sub5_sub17_sub5 == null) {
+                model = (Model) objectModelCache.get(modelId);
+                if(model == null) {
+                    model = Model.getModel(RSString.aCacheIndex_1705, modelId & 0xffff, 0);
+                    if(model == null) {
                         return null;
                     }
                     if(bool) {
-                        class40_sub5_sub17_sub5.method818();
+                        model.method818();
                     }
-                    VertexNormal.aClass9_1102.put(i_8_, class40_sub5_sub17_sub5);
+                    objectModelCache.put(modelId, model);
                 }
-                if(i > 1) {
-                    Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub5Array2762[i_7_] = class40_sub5_sub17_sub5;
+                if(modelCount > 1) {
+                    objectModelHolder[modelIndex] = model;
                 }
             }
-            if(i > 1) {
-                class40_sub5_sub17_sub5 = new Model(Class40_Sub5_Sub13.aClass40_Sub5_Sub17_Sub5Array2762, i);
+            if(modelCount > 1) {
+                model = new Model(objectModelHolder, modelCount);
             }
         } else {
-            int i = -1;
-            for(int i_9_ = 0; objectTypes.length > i_9_; i_9_++) {
-                if(arg4 == objectTypes[i_9_]) {
-                    i = i_9_;
+            int objectTypeIndex = -1;
+            for(int typeIndex = 0; objectTypes.length > typeIndex; typeIndex++) {
+                if(objectType == objectTypes[typeIndex]) {
+                    objectTypeIndex = typeIndex;
                     break;
                 }
             }
-            if(i == -1) {
+            if(objectTypeIndex == -1) {
                 return null;
             }
-            int i_10_ = objectModels[i];
-            boolean bool = rotated ^ arg3 > 3;
+            int modelId = objectModels[objectTypeIndex];
+            boolean bool = rotated ^ orientation > 3;
             if(bool) {
-                i_10_ += 65536;
+                modelId += 65536;
             }
-            class40_sub5_sub17_sub5 = (Model) VertexNormal.aClass9_1102.get(i_10_);
-            if(class40_sub5_sub17_sub5 == null) {
-                class40_sub5_sub17_sub5 = Model.getModel(RSString.aCacheIndex_1705, 0xffff & i_10_, 0);
-                if(class40_sub5_sub17_sub5 == null) {
+            model = (Model) objectModelCache.get(modelId);
+            if(model == null) {
+                model = Model.getModel(RSString.aCacheIndex_1705, 0xffff & modelId, 0);
+                if(model == null) {
                     return null;
                 }
                 if(bool) {
-                    class40_sub5_sub17_sub5.method818();
+                    model.method818();
                 }
-                VertexNormal.aClass9_1102.put(i_10_, class40_sub5_sub17_sub5);
+                objectModelCache.put(modelId, model);
             }
         }
         boolean bool;
         bool = modelSizeX != 128 || modelSizeHeight != 128 || modelSizeY != 128;
         boolean bool_11_;
         bool_11_ = offsetX != 0 || offsetHeight != 0 || offsetY != 0;
-        Model class40_sub5_sub17_sub5_12_ = new Model(class40_sub5_sub17_sub5, arg3 == 0 && !bool && !bool_11_, recolorToFind == null, true);
-        arg3 &= 0x3;
-        if(arg3 == 1) {
-            class40_sub5_sub17_sub5_12_.method813();
-        } else if(arg3 == 2) {
-            class40_sub5_sub17_sub5_12_.method819();
-        } else if(arg3 == 3) {
-            class40_sub5_sub17_sub5_12_.method824();
+        Model finalModel = new Model(model, orientation == 0 && !bool && !bool_11_, recolorToFind == null, true);
+        orientation &= 0x3;
+        if(orientation == 1) {
+            finalModel.method813();
+        } else if(orientation == 2) {
+            finalModel.method819();
+        } else if(orientation == 3) {
+            finalModel.method824();
         }
         if(recolorToFind != null) {
             for(int i = 0; i < recolorToFind.length; i++) {
-                class40_sub5_sub17_sub5_12_.replaceColor(recolorToFind[i], recolorToReplace[i]);
+                finalModel.replaceColor(recolorToFind[i], recolorToReplace[i]);
             }
         }
         if(bool) {
-            class40_sub5_sub17_sub5_12_.scaleT(modelSizeX, modelSizeHeight, modelSizeY);
+            finalModel.scaleT(modelSizeX, modelSizeHeight, modelSizeY);
         }
         if(bool_11_) {
-            class40_sub5_sub17_sub5_12_.translate(offsetX, offsetHeight, offsetY);
+            finalModel.translate(offsetX, offsetHeight, offsetY);
         }
         if(hasBones) {
-            class40_sub5_sub17_sub5_12_.createBones();
+            finalModel.createBones();
         }
-        class40_sub5_sub17_sub5_12_.applyLighting(ambient + 64, 768 + contrast * 5, -50, -10, -50, arg0);
-        return class40_sub5_sub17_sub5_12_;
+        finalModel.applyLighting(ambient + 64, 768 + contrast * 5, -50, -10, -50, shaded);
+        return finalModel;
     }
 
-    public Model getGameObjectModel(int vertexHeight, int vertexHeightRight, int arg3, int arg4, int arg5, AnimationSequence animationSequence, int vertexHeightTop, int vertexHeightTopRight) {
+    public Model createAnimatedObjectModel(int vertexHeight, int vertexHeightRight, int arg3, int arg4, int arg5, AnimationSequence animationSequence, int vertexHeightTop, int vertexHeightTopRight) {
         long l;
         if(objectTypes == null) {
             l = arg5 + (id << 10);
         } else {
             l = arg5 + (id << 10) + (arg4 << 3);
         }
-        Model model = (Model) Class49.aClass9_1145.get(l);
+        Model model = (Model) animatedObjectModelCache.get(l);
         if(model == null) {
-            model = method606(true, true, arg5, arg4);
+            model = createObjectModel(true, true, arg5, arg4);
             if(model == null) {
                 return null;
             }
-            Class49.aClass9_1145.put(l, model);
+            animatedObjectModelCache.put(l, model);
         }
         if(animationSequence == null && !adjustToTerrain) {
             return model;
@@ -533,7 +546,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
     public GameObjectDefinition getChildDefinition(int arg0) {
         int i = -1;
         if(arg0 != -20) {
-            method606(true, false, 40, -55);
+            createObjectModel(true, false, 40, -55);
         }
         if(varpID == -1) {
             if(configId != -1) {

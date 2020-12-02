@@ -1,14 +1,14 @@
 package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.media.Rasterizer;
 
 import java.awt.*;
 import java.awt.image.PixelGrabber;
 
 public class ImageRGB extends Rasterizer {
-    public static MemoryCache imageRgbCache = new MemoryCache(200);
+    public static NodeCache imageRgbCache = new NodeCache(200);
     public int offsetY;
     public int imageHeight;
     public int imageWidth;

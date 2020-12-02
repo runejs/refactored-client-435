@@ -6,10 +6,10 @@ import com.jagex.runescape.cache.def.FramemapDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.node.CachedNode;
 
-public class Class40_Sub5_Sub15 extends SubNode {
+public class Class40_Sub5_Sub15 extends CachedNode {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2775;
     public static IndexedImage[] tabIcons;
     public static int arbitraryDestination = 0;
@@ -78,7 +78,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
                 }
             }
         }
-        if(arg1.graphicId != -1 && Node.pulseCycle >= arg1.graphicDelay) {
+        if(arg1.graphicId != -1 && MovedStatics.pulseCycle >= arg1.graphicDelay) {
             if(arg1.anInt3140 < 0)
                 arg1.anInt3140 = 0;
             int i = SpotAnimDefinition.forId(arg1.graphicId, 13).animationId;
@@ -102,7 +102,7 @@ public class Class40_Sub5_Sub15 extends SubNode {
         if(arg0) {
             if(arg1.playingAnimation != -1 && arg1.playingAnimationDelay <= 1) {
                 AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2);
-                if(animationSequence.precedenceAnimating == 1 && arg1.anInt3094 > 0 && arg1.anInt3112 <= Node.pulseCycle && Node.pulseCycle > arg1.anInt3107) {
+                if(animationSequence.precedenceAnimating == 1 && arg1.anInt3094 > 0 && arg1.anInt3112 <= MovedStatics.pulseCycle && MovedStatics.pulseCycle > arg1.anInt3107) {
                     arg1.playingAnimationDelay = 1;
                     return;
                 }

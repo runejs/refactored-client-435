@@ -3,10 +3,9 @@ package com.jagex.runescape.language;
 import com.jagex.runescape.RSString;
 
 public class Native {
+
     public static String aClass1_1123 = " ";
     public static String aClass1_569 = " (";
-    public static String aClass1_2277 = " -> @cya@";
-    public static String aClass1_206 = " -> @lre@";
     public static String aClass1_894 = " ->";
     public static String aClass1_1536 =" x ";
     public static RSString password = RSString.CreateString("");
@@ -23,23 +22,14 @@ public class Native {
     public static String percentOne = "%1";
     public static String percentThree = "%3";
     public static String percentFour = "%4";
-    public static String aClass1_1199 = ")";
+    public static String rightParenthasis = ")";
     public static String aClass1_795 = ",";
     public static String aClass1_1348 = "0%";
     public static String prefixColon = ":  ";
     public static String prefixColonZero = ":0";
     public static String cmd_prefix = "::";
     public static String cmd_fpsoff = "::fpsoff";
-    public static String cmd_hiddenbuttontest = "::hiddenbuttontest";
-    public static String requestcmd_duelreq = ":duelreq:";
     public static String aClass1_1918 = null;
-    public static String whiteCrown = "@cr1@";
-    public static String aClass1_877 = "@gr1@";
-    public static String aClass1_1639 = "@or2@";
-    public static String aClass1_670 = "@or3@";
-    public static String aClass1_620 = "@whi@";
-    public static String prefixYellowBar = "@yel@|";
-    public static String aClass1_2447 = "@yel@|";
     public static String lineBreak = "\\n";
     public static String aClass1_303 = "_";
     public static RSString supportedCharacters = RSString.CreateString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y-_=)0[*U]*W;:(W@(S*X,<.>)4?*6*V ");
@@ -85,7 +75,6 @@ public class Native {
     public static String aClass1_2423 = "(100%)";
     public static String logo = "logo";
     public static String aClass1_1788 = "backtop1";
-    public static String green = "@gre@";
     public static String aClass1_338 = "backhmid1";
     public static String runes = "runes";
     public static String titleBox = "titlebox";
@@ -98,30 +87,45 @@ public class Native {
     public static String percentFive = "%5";
     public static String aClass1_2093 = "redstone1";
     public static String percentDns = "%dns";
-    public static String aClass1_2306 = " -> @yel@";
-    public static String goldCrown = "@cr2@";
-    public static String aClass1_932 = "@gr2@";
-    public static String requestcmd_chalreq = ":chalreq:";
     public static String period = ".";
-    public static String yellow = "@yel@";
-    public static String aClass1_1284 = "compass";
-    public static String aClass1_1113 = "mapback";
-    public static String aClass1_1114 = "@lre@";
-    public static String aClass1_1117 = " ";
+    public static String compass = "compass";
+    public static String mapBack = "mapback";
+    public static String whitespace = " ";
     public static String emptyString = "";
-    public static String aClass1_3047 = "mapfunction";
-    public static String aClass1_2862 ="@cya@";
+    public static String mapFunction = "mapfunction";
     public static String aClass1_3295 = null;
     public static String aClass1_1374 = "backvmid1";
     public static String aClass1_478 = "*";
-    public static String aClass1_494 = "@gr3@";
-    public static String aClass1_610 = "@red@";
     public static String aClass1_611 = null;
-    public static String aClass1_615 = "huffman";
-    public static String aClass1_1243 = "@whi@ / ";
-    public static String aClass1_1266 = "backright2";
-    public static String aClass1_170 = "(";
-    public static String char_colon =":";
+    public static String huffman = "huffman";
+    public static String backright2 = "backright2";
     public static String clickToContinueString = null;
-    public static String requestcmd_tradereq = ":tradereq:";
+    public static String cmd_hiddenbuttontest = "::hiddenbuttontest";
+
+    public static String duelRequest = ":duelreq:";
+    public static String tradeRequest = ":tradereq:";
+    public static String challengeRequest = ":chalreq:";
+
+    public static String whiteSlash = "@whi@ / ";
+    public static String toYellow = " -> @yel@";
+    public static String toCyan = " -> @cya@";
+    public static String toLightRed = " -> @lre@";
+    public static String red = "@red@";
+    public static String lightRed = "@lre@";
+    public static String cyan ="@cya@";
+    public static String yellow = "@yel@";
+    public static String goldCrown = "@cr2@";
+    public static String green = "@gre@";
+    public static String green1 = "@gr1@"; // gray or green?
+    public static String green2 = "@gr2@";
+    public static String green3 = "@gr3@";
+    public static String whiteCrown = "@cr1@";
+    public static String orange2 = "@or2@";
+    public static String orange3 = "@or3@";
+    public static String white = "@whi@";
+    public static String yellowBar = "@yel@|";
+    public static String justAnotherYellowBar = "@yel@|";
+
+    public static String leftParenthasis = "(";
+    public static String colon =":";
 }

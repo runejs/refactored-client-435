@@ -107,7 +107,7 @@ public class Class5 {
             if(i_4_ > SceneCluster.cameraZ)
                 SceneCluster.cameraZ = i_4_;
         }
-        i_3_ = 64 + HashTable.anInt564 * 128;
+        i_3_ = 64 + MovedStatics.anInt564 * 128;
         if(Class40_Sub5_Sub6.cameraY > i) {
             Class40_Sub5_Sub6.cameraY -= Class4.anInt188 + Class59.anInt1386 * (Class40_Sub5_Sub6.cameraY - i) / 1000;
             if(Class40_Sub5_Sub6.cameraY < i)
@@ -235,7 +235,7 @@ public class Class5 {
     public static void method167(int arg0) {
         if(arg0 != 1023)
             method164();
-        Class13.aClass9_406.method235();
+        Class13.aClass9_406.clear();
     }
 
     public static void scrollInterface(int arg0, int arg1, int arg2, int arg3, GameInterface arg5, int arg6, int arg7, int arg8) {

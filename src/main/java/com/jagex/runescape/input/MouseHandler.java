@@ -1,7 +1,7 @@
 package com.jagex.runescape.input;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -29,7 +29,7 @@ import java.awt.event.*;
 
 public class MouseHandler implements MouseListener, MouseMotionListener, FocusListener, MouseWheelListener {
     public static int anInt1450 = -1;
-    public static MemoryCache modelCache = new MemoryCache(50);
+    public static NodeCache modelCache = new NodeCache(50);
     public static int anInt1457 = -1;
     public static ImageRGB[] minimapHint = new ImageRGB[1000];
     public static int anInt1468;
@@ -100,7 +100,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                         id = row;
                 }
                 if(id != -1)
-                    Class27.processMenuActions(109, id);
+                    GameInterface.processMenuActions(109, id);
                 if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
                     GameInterface.redrawTabArea = true;
                 Class4.menuOpen = false;
@@ -133,7 +133,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             if(meta == 1 && (ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend((byte) 46, -1 + ActorDefinition.menuActionRow)) && ActorDefinition.menuActionRow > 2)
                 meta = 2;
             if(meta == 1 && ActorDefinition.menuActionRow > 0)
-                Class27.processMenuActions(59, ActorDefinition.menuActionRow + -1);
+                GameInterface.processMenuActions(59, ActorDefinition.menuActionRow + -1);
             if(meta == 2 && ActorDefinition.menuActionRow > 0)
                 Class60.determineMenuSize();
         }
@@ -154,7 +154,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         if(GameObject.frame != null) {
             LinkedList.anInt1073 = 0;
             Class12.eventMouseX = arg0.getX();
-            MemoryCache.eventMouseY = arg0.getY();
+            MovedStatics.eventMouseY = arg0.getY();
         }
     }
 
@@ -162,13 +162,13 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         if(GameObject.frame != null) {
             LinkedList.anInt1073 = 0;
             Class12.eventMouseX = -1;
-            MemoryCache.eventMouseY = -1;
+            MovedStatics.eventMouseY = -1;
         }
     }
 
     public synchronized void focusLost(FocusEvent arg0) {
         if(GameObject.frame != null)
-            MemoryCache.mouseButtonPressed = 0;
+            MovedStatics.mouseButtonPressed = 0;
     }
 
     public synchronized void mouseDragged(MouseEvent mouseEvent) {
@@ -186,7 +186,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             return;
         }
         Class12.eventMouseX = mouseX;
-        MemoryCache.eventMouseY = mouseY;
+        MovedStatics.eventMouseY = mouseY;
     }
 
     private void mouseWheelDragged(int i, int j) {
@@ -218,10 +218,10 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             }
             if(event.isMetaDown() || event.getButton() == MouseEvent.BUTTON3) {
                 Actor.eventMouseButtonPressed = 2;
-                MemoryCache.mouseButtonPressed = 2;
+                MovedStatics.mouseButtonPressed = 2;
             } else {
                 Actor.eventMouseButtonPressed = 1;
-                MemoryCache.mouseButtonPressed = 1;
+                MovedStatics.mouseButtonPressed = 1;
             }
         }
         if(event.isPopupTrigger())
@@ -249,7 +249,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public boolean handleInterfaceScrolling(MouseWheelEvent event) {
         int rotation = event.getWheelRotation();
         int mouseX = Class12.eventMouseX;
-        int mouseY = MemoryCache.eventMouseY;
+        int mouseY = MovedStatics.eventMouseY;
         if(ScreenController.isCoordinatesInExtendedChatArea(mouseX, mouseY) && GameInterface.chatboxInterfaceId == -1) {
             if(rotation < 0) {
                 if(Class12.chatboxInterface.scrollPosition >= 1) {
@@ -349,14 +349,14 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         if(GameObject.frame != null) {
             LinkedList.anInt1073 = 0;
             Class12.eventMouseX = arg0.getX();
-            MemoryCache.eventMouseY = arg0.getY();
+            MovedStatics.eventMouseY = arg0.getY();
         }
     }
 
     public synchronized void mouseReleased(MouseEvent arg0) {
         if(GameObject.frame != null) {
             LinkedList.anInt1073 = 0;
-            MemoryCache.mouseButtonPressed = 0;
+            MovedStatics.mouseButtonPressed = 0;
             mouseWheelDown = false;
         }
         if(arg0.isPopupTrigger())

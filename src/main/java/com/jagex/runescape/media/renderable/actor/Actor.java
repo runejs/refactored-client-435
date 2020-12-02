@@ -264,9 +264,9 @@ public abstract class Actor extends Renderable {
     }
 
     public static void method783() {
-        ImageRGB.imageRgbCache.method235();
-        WallDecoration.aClass9_1264.method235();
-        TypeFace.typeFaceCache.method235();
+        ImageRGB.imageRgbCache.clear();
+        WallDecoration.aClass9_1264.clear();
+        TypeFace.typeFaceCache.clear();
     }
 
 
@@ -346,7 +346,7 @@ public abstract class Actor extends Renderable {
                 class40_sub3.anInt2038 -= i_35_;
                 class40_sub3.anInt2039 -= i_34_;
                 if(class40_sub3.anInt2039 < 0 || class40_sub3.anInt2038 < 0 || class40_sub3.anInt2039 >= 104 || class40_sub3.anInt2038 >= 104)
-                    class40_sub3.remove(-1);
+                    class40_sub3.remove();
             }
             Buffer.anInt1985 = -1;
             if(VarbitDefinition.destinationX != 0) {

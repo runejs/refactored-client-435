@@ -1,12 +1,11 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.node.CachedNode;
 
-public class IdentityKit extends SubNode {
+public class IdentityKit extends CachedNode {
     public static HuffmanEncoding aHuffmanEncoding_2590;
     public static int anInt2591 = 0;
     public static int anInt2598 = 0;
@@ -58,7 +57,7 @@ public class IdentityKit extends SubNode {
         }
         boolean isCached = true;
         for(int i = 0; modelId.length > i; i++) {
-            if(!Class27.aCacheIndex_654.loaded(modelId[i], 0)) {
+            if(!MovedStatics.aCacheIndex_654.loaded(modelId[i], 0)) {
                 isCached = false;
             }
         }
@@ -69,7 +68,7 @@ public class IdentityKit extends SubNode {
         boolean bool = true;
         int i = 0;
         for(/**/; i < 5; i++) {
-            if(models[i] != -1 && !Class27.aCacheIndex_654.loaded(models[i], 0)) {
+            if(models[i] != -1 && !MovedStatics.aCacheIndex_654.loaded(models[i], 0)) {
                 bool = false;
             }
         }
@@ -101,7 +100,7 @@ public class IdentityKit extends SubNode {
         int i = 0;
         for(int i_7_ = 0; i_7_ < 5; i_7_++) {
             if(models[i_7_] != -1) {
-                class40_sub5_sub17_sub5s[i++] = Model.getModel(Class27.aCacheIndex_654, models[i_7_], 0);
+                class40_sub5_sub17_sub5s[i++] = Model.getModel(MovedStatics.aCacheIndex_654, models[i_7_], 0);
             }
         }
         Model class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, i);
@@ -120,7 +119,7 @@ public class IdentityKit extends SubNode {
         }
         Model[] models = new Model[modelId.length];
         for(int i = 0; i < modelId.length; i++) {
-            models[i] = Model.getModel(Class27.aCacheIndex_654, modelId[i], 0);
+            models[i] = Model.getModel(MovedStatics.aCacheIndex_654, modelId[i], 0);
         }
         Model model;
         if(models.length == 1) {

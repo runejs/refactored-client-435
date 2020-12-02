@@ -1,10 +1,10 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.node.CachedNode;
 
-public class Class40_Sub5_Sub11 extends SubNode {
+public class Class40_Sub5_Sub11 extends CachedNode {
     public static int anInt2621 = 0;
     public static volatile int eventClickY = 0;
     public static int anInt2628 = 0;
@@ -14,7 +14,7 @@ public class Class40_Sub5_Sub11 extends SubNode {
 
     public static void method631(Actor arg0) {
         int i = arg0.anInt3125 * 128 + 64 * arg0.anInt3096;
-        int i_0_ = arg0.anInt3112 + -Node.pulseCycle;
+        int i_0_ = arg0.anInt3112 + -MovedStatics.pulseCycle;
         if(arg0.anInt3073 == 0)
             arg0.initialFaceDirection = 1024;
         if(arg0.anInt3073 == 1)

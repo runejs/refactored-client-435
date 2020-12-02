@@ -1,7 +1,7 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.input.MouseHandler;
@@ -13,13 +13,14 @@ import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.PacketBuffer;
+import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
-public class OverlayDefinition extends SubNode {
+public class OverlayDefinition extends CachedNode {
     public static int placementY;
     public static int crossIndex = 0;
     public static int anInt2321 = 0;
@@ -58,7 +59,7 @@ public class OverlayDefinition extends SubNode {
             if (arg6.length() <= 0)
                 Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string;
             else
-                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string + Native.aClass1_1117 + arg6;
+                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string + Native.whitespace + arg6;
             MovedStatics.menuActionTypes[ActorDefinition.menuActionRow] = actionType;
             Class33.selectedMenuActions[ActorDefinition.menuActionRow] = menuAction;
             InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow] = firstMenuOperand;
@@ -100,12 +101,12 @@ public class OverlayDefinition extends SubNode {
             if (arg0 == 5 || arg0 == 10 || arg0 == 20) {
                 ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
                 FloorDecoration.method344(-69);
-                Item.method779(MouseHandler.aCanvas1469, true, MemoryCache.huffmanCacheIndex, MemoryCache.gameImageCacheIndex);
+                Item.method779(MouseHandler.aCanvas1469, true, CacheIndex.huffmanCacheIndex, CacheIndex.gameImageCacheIndex);
             }
             if (arg0 == 25 || arg0 == 30 || arg0 == 40) {
                 ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
                 MovedStatics.method440((byte) -98);
-                Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, MemoryCache.gameImageCacheIndex);
+                Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, CacheIndex.gameImageCacheIndex);
             }
             Class51.anInt1197 = arg0;
             Class40_Sub5_Sub11.clearScreen = true;

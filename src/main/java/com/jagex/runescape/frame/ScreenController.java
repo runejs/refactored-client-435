@@ -1,7 +1,6 @@
 package com.jagex.runescape.frame;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.VarbitDefinition;
@@ -140,7 +139,7 @@ public class ScreenController {
         drawFramePieceCutout(Class17.chatboxTop, x, y + 172, Class17.chatboxTop.width - 531, Class17.chatboxTop.height, 531, 0);
         drawFramePieceCutout(RSCanvas.tabBottom, x, y + 300, RSCanvas.tabBottom.width - 35, RSCanvas.tabBottom.height, 35, 0);
         drawFramePieceCutout(InteractiveObject.tabTop, x, y, InteractiveObject.tabTop.width - 15, InteractiveObject.tabTop.height - 6, 15, 6);
-        drawFramePiece(SubNode.tabImageProducer, x + 22, y + 39);
+        drawFramePiece(MovedStatics.tabImageProducer, x + 22, y + 39);
 
 
     }
@@ -263,7 +262,7 @@ public class ScreenController {
 
 
     public static void handleMinimapMouse() {
-        if(Class27.minimapState != 0) {
+        if(MovedStatics.minimapState != 0) {
             return;
         }
         if(MouseHandler.clickType == 1) {
@@ -333,7 +332,7 @@ public class ScreenController {
         }
         if(MouseHandler.clickType == 1) {
             if(x >= 0 && x <= 100 && y >= 0 && y <= 32) {
-                MemoryCache.redrawChatbox = true;
+                MovedStatics.redrawChatbox = true;
                 ChatBox.publicChatMode = (1 + ChatBox.publicChatMode) % 4;
                 ChatBox.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
@@ -344,7 +343,7 @@ public class ScreenController {
             if(x >= 129 && x <= 229 && y >= 0 && y <= 32) {
                 ChatBox.redrawChatbox = true;
                 ChatBox.privateChatMode = (ChatBox.privateChatMode + 1) % 3;
-                MemoryCache.redrawChatbox = true;
+                MovedStatics.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
                 SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
                 SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
@@ -352,7 +351,7 @@ public class ScreenController {
             }
             if(x >= 267 && x <= 367 && y >= 0 && y <= 32) {
                 ChatBox.tradeMode = (ChatBox.tradeMode + 1) % 3;
-                MemoryCache.redrawChatbox = true;
+                MovedStatics.redrawChatbox = true;
                 ChatBox.redrawChatbox = true;
                 SceneCluster.packetBuffer.putPacket(32);
                 SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);

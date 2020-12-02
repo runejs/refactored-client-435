@@ -7,8 +7,9 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.PacketBuffer;
+import com.jagex.runescape.node.CachedNode;
 
-public class VarbitDefinition extends SubNode {
+public class VarbitDefinition extends CachedNode {
     public static ProducingGraphicsBuffer gameScreenImageProducer;
     public static Class56 aClass56_2356;
     public static int anInt2359 = 0;

@@ -1,16 +1,16 @@
 package com.jagex.runescape.io;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.node.Node;
 import com.jagex.runescape.scene.InteractiveObject;
 
 import java.math.BigInteger;
 
 public class Buffer extends Node {
-    public static MemoryCache rgbImageCache = new MemoryCache(100);
+    public static NodeCache rgbImageCache = new NodeCache(100);
     public static IndexedImage tabTopBack;
     public static int[] anIntArray1972;
     public static int cameraOffsetX = 0;

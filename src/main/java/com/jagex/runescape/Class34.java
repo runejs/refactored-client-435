@@ -1,6 +1,7 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.node.HashTable;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
@@ -15,7 +16,7 @@ public class Class34 {
     public static HashTable aClass23_841 = new HashTable(4096);
     public static int anInt848 = 0;
     public static int currentCameraPositionV;
-    public static MemoryCache aClass9_851 = new MemoryCache(30);
+    public static NodeCache aClass9_851 = new NodeCache(30);
     public static int[] anIntArray852;
     public static long aLong853;
     public static int anInt854 = -1;

@@ -3,14 +3,13 @@ package com.jagex.runescape;
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.FileOperations;
-import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.FramemapDefinition;
+import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -76,19 +75,19 @@ public class Landscape {
     }
 
     public static void loadRegion() {
-        Class27.method364((byte) -34, false);
+        Main.method364((byte) -34, false);
         Class37.anInt874 = 0;
         boolean bool = true;
         for(int i = 0; i < RSString.terrainData.length; i++) {
             if(LinkedList.anIntArray1071[i] != -1 && RSString.terrainData[i] == null) {
-                RSString.terrainData[i] = MemoryCache.gameWorldMapCacheIndex.getFile(0, LinkedList.anIntArray1071[i]);
+                RSString.terrainData[i] = CacheIndex.gameWorldMapCacheIndex.getFile(0, LinkedList.anIntArray1071[i]);
                 if(RSString.terrainData[i] == null) {
                     Class37.anInt874++;
                     bool = false;
                 }
             }
             if(Class13.anIntArray421[i] != -1 && GenericTile.objectData[i] == null) {
-                GenericTile.objectData[i] = MemoryCache.gameWorldMapCacheIndex.method176(Class13.anIntArray421[i], 0, Class44.anIntArrayArray1030[i]);
+                GenericTile.objectData[i] = CacheIndex.gameWorldMapCacheIndex.method176(Class13.anIntArray421[i], 0, Class44.anIntArrayArray1030[i]);
                 if(GenericTile.objectData[i] == null) {
                     Class37.anInt874++;
                     bool = false;
@@ -127,7 +126,7 @@ public class Landscape {
                 Class65.method1020();
                 int dataLength = RSString.terrainData.length;
                 Class37.method436(118);
-                Class27.method364((byte) -34, true);
+                Main.method364((byte) -34, true);
                 if(!GroundItemTile.loadGeneratedMap) {
                     for(int pointer = 0; dataLength > pointer; pointer++) {
                         int offsetY = -Class26.baseY + (0xff & ISAAC.mapCoordinates[pointer]) * 64;
@@ -149,7 +148,7 @@ public class Landscape {
                         if(data == null && Class17.regionY < 800)
                             MovedStatics.initiateVertexHeights(offsetY, (byte) 103, 64, 64, offsetX);
                     }
-                    Class27.method364((byte) -34, true);
+                    Main.method364((byte) -34, true);
                     for(int region = 0; dataLength > region; region++) {
                         //                        System.out.println("Requesting map: "+Class13.anIntArray421[i_12_]);
                         // load maps in here
@@ -195,7 +194,7 @@ public class Landscape {
                                     }
                                 }
                                 if(!bool_19_)
-                                    Node.method455(8 * y, z, x * 8);
+                                    MovedStatics.method455(8 * y, z, x * 8);
                             }
                         }
                     }
@@ -206,7 +205,7 @@ public class Landscape {
                                 MovedStatics.initiateVertexHeights(y * 8, (byte) 120, 8, 8, 8 * x);
                         }
                     }
-                    Class27.method364((byte) -34, true);
+                    Main.method364((byte) -34, true);
                     for(int z = 0; z < 4; z++) {
                         for(int x = 0; x < 13; x++) {
                             for(int y = 0; y < 13; y++) {
@@ -228,10 +227,10 @@ public class Landscape {
                         }
                     }
                 }
-                Class27.method364((byte) -34, true);
+                Main.method364((byte) -34, true);
                 RSCanvas.method46(0);
                 ISAAC.method281(Npc.currentScene, 27324, currentCollisionMap);
-                Class27.method364((byte) -34, true);
+                Main.method364((byte) -34, true);
                 int z = Class64.lowestPlane;
                 if(Player.worldLevel < z)
                     z = Player.worldLevel;
@@ -246,7 +245,7 @@ public class Landscape {
                         FramemapDefinition.spawnGroundItem(y, x);
                 }
                 ISAAC.method285((byte) 118);
-                VertexNormal.aClass9_1102.method235();
+                GameObjectDefinition.objectModelCache.clear();
                 if(Class35.aFrame1732 != null) {
                     SceneCluster.packetBuffer.putPacket(121);
                     SceneCluster.packetBuffer.putIntBE(1057001181);
@@ -259,8 +258,8 @@ public class Landscape {
                     for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
                         for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {
                             if(i_42_ > i_46_ || i_46_ > i_45_ || i_47_ < i_43_ || i_47_ > i_44_) {
-                                MemoryCache.gameWorldMapCacheIndex.method195(0, Native.aClass1_1085+i_46_+ Native.aClass1_303+i_47_);
-                                MemoryCache.gameWorldMapCacheIndex.method195(0, Native.aClass1_553+i_46_+ Native.aClass1_303+i_47_);
+                                CacheIndex.gameWorldMapCacheIndex.method195(0, Native.aClass1_1085+i_46_+ Native.aClass1_303+i_47_);
+                                CacheIndex.gameWorldMapCacheIndex.method195(0, Native.aClass1_553+i_46_+ Native.aClass1_303+i_47_);
                             }
                         }
                     }
@@ -308,7 +307,7 @@ public class Landscape {
                     int i_49_ = (-i_48_ + class40_sub2.anInt2000) * RSCanvas.anInt65 / class40_sub2.anInt2000;
                     if(class40_sub2.aClass40_Sub9_Sub2_2001 == null) {
                         if(class40_sub2.anInt1997 >= 0) {
-                            Effect effect = Effect.method429(MemoryCache.soundEffectCacheIndex, class40_sub2.anInt1997, 0);
+                            Effect effect = Effect.method429(CacheIndex.soundEffectCacheIndex, class40_sub2.anInt1997, 0);
                             if(effect != null) {
                                 Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aClass48_1289);
                                 Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_49_);
@@ -322,7 +321,7 @@ public class Landscape {
                     if(class40_sub2.aClass40_Sub9_Sub2_2010 == null) {
                         if(class40_sub2.anIntArray2005 != null && (class40_sub2.anInt2014 -= arg3) <= 0) {
                             int i_50_ = (int) ((double) class40_sub2.anIntArray2005.length * Math.random());
-                            Effect effect = Effect.method429(MemoryCache.soundEffectCacheIndex, class40_sub2.anIntArray2005[i_50_], 0);
+                            Effect effect = Effect.method429(CacheIndex.soundEffectCacheIndex, class40_sub2.anIntArray2005[i_50_], 0);
                             if(effect != null) {
                                 Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aClass48_1289);
                                 Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_49_);

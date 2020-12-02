@@ -1,19 +1,21 @@
 package com.jagex.runescape.cache.cs;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.GenericTile;
 
-public class ClientScript extends SubNode {
+public class ClientScript extends CachedNode {
 
-    public static MemoryCache clientScriptCache = new MemoryCache(128);
+    public static NodeCache clientScriptCache = new NodeCache(128);
 
     public int[] intOperands;
     public int intStackCount;
@@ -25,10 +27,10 @@ public class ClientScript extends SubNode {
 
 
     public static void clientScriptDebugger() {
-        int len = MemoryCache.clientScriptCacheIndex.getLength();
+        int len = CacheIndex.clientScriptCacheIndex.getLength();
         for(int ll = 0; ll < len; ll++) {
-            if(MemoryCache.clientScriptCacheIndex.loaded(ll, 0)) {
-                byte[] data = MemoryCache.clientScriptCacheIndex.getFile(ll, 0);
+            if(CacheIndex.clientScriptCacheIndex.loaded(ll, 0)) {
+                byte[] data = CacheIndex.clientScriptCacheIndex.getFile(ll, 0);
                 System.out.println(data.length);
             } else {
                 System.out.println(ll + " not loaded");
@@ -43,7 +45,7 @@ public class ClientScript extends SubNode {
             return clientScript;
         }
 
-        Buffer buffer = new Buffer(MemoryCache.clientScriptCacheIndex.method170(Native.emptyString, arg1 + Native.comma + arg0));
+        Buffer buffer = new Buffer(CacheIndex.clientScriptCacheIndex.method170(Native.emptyString, arg1 + Native.comma + arg0));
         clientScript = new ClientScript();
         buffer.currentPosition = buffer.buffer.length - 12;
         int opcodeCount = buffer.getIntBE();

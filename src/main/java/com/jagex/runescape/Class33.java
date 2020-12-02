@@ -1,11 +1,10 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.TypeFace;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
@@ -18,7 +17,7 @@ import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 
 public class Class33 {
-    public static MemoryCache aClass9_778 = new MemoryCache(64);
+    public static NodeCache aClass9_778 = new NodeCache(64);
     public static int anInt784 = 0;
     public static int[] selectedMenuActions = new int[500];
 
@@ -71,7 +70,7 @@ public class Class33 {
                             if(ISAAC.anInt522 > -1)
                                 ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204[class40_sub5_sub5.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -30);
                         }
-                        if(Player.headIconDrawType == 1 && HuffmanEncoding.anInt1545 == Player.npcIds[-Player.localPlayerCount + i] && Node.pulseCycle % 20 < 10) {
+                        if(Player.headIconDrawType == 1 && HuffmanEncoding.anInt1545 == Player.npcIds[-Player.localPlayerCount + i] && MovedStatics.pulseCycle % 20 < 10) {
                             FloorDecoration.method342(15 + actor.anInt3117, actor);
                             if(ISAAC.anInt522 > -1)
                                 UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, Class44.anInt1048 + -28);
@@ -112,7 +111,7 @@ public class Class33 {
                             SceneCluster.anInt770++;
                         }
                     }
-                    if(Node.pulseCycle < actor.anInt3139) {
+                    if(MovedStatics.pulseCycle < actor.anInt3139) {
                         FloorDecoration.method342(actor.anInt3117 + 15, actor);
                         if(ISAAC.anInt522 > -1) {
                             int i_1_ = 30 * actor.remainingHitpoints / actor.maximumHitpoints;
@@ -123,7 +122,7 @@ public class Class33 {
                         }
                     }
                     for(int i_2_ = 0; i_2_ < 4; i_2_++) {
-                        if(Node.pulseCycle < actor.anIntArray3136[i_2_]) {
+                        if(MovedStatics.pulseCycle < actor.anIntArray3136[i_2_]) {
                             FloorDecoration.method342(actor.anInt3117 / 2, actor);
                             if(ISAAC.anInt522 > -1) {
                                 if(i_2_ == 1)
