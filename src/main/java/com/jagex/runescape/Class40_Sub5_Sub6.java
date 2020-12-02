@@ -35,12 +35,12 @@ public class Class40_Sub5_Sub6 extends SubNode {
         aByteArray2441 = arg0;
     }
 
-    public static boolean drawInterface(int arg0, int widgetId, int arg2, byte arg3, int arg4, int arg5, int arg6) {
+    public static boolean drawInterface(int minY, int widgetId, int maxX, byte arg3, int minX, int arg5, int maxY) {
         if(!GameInterface.decodeGameInterface(widgetId))
             return false;
         if(arg3 != -5)
             return true;
-        return Main.method36(arg5, arg0, arg4, 0, -1, arg2, arg6, 0, GameInterface.cachedInterfaces[widgetId], true);
+        return Main.method36(arg5, minY, minX, 0, -1, maxX, maxY, 0, GameInterface.cachedInterfaces[widgetId], true);
     }
 
     public static int method585(int arg0, int arg1) {

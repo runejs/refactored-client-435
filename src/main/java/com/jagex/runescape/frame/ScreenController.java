@@ -122,9 +122,9 @@ public class ScreenController {
         }
         minimap.drawResizableMiniMapArea(frameWidth - 210, 0);
         Insets insets = Class35.aFrame1732.getInsets();
-
-        RenderTabArea(frameWidth - 234, frameHeight - (359 + insets.top/4));
-        RenderChatArea(0, frameHeight - (184 + insets.top/4));
+        System.out.println(insets.bottom);
+        RenderTabArea(frameWidth - 234, frameHeight - (359));
+        RenderChatArea(0, frameHeight - (184 + (insets.top - insets.bottom)/2));
 
         if(Class4.menuOpen) {
             Class40_Sub5_Sub6.drawMenu(0, 0);

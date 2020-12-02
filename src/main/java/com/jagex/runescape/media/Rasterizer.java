@@ -36,19 +36,19 @@ public class Rasterizer extends SubNode {
         viewportCenterY = viewportBottom / 2;
     }
 
-    public static void setBounds(int x0, int y0, int y1, int x1) {
-        if(x0 < 0)
-            x0 = 0;
-        if(y0 < 0)
-            y0 = 0;
-        if(x1 > Rasterizer.destinationWidth)
-            x1 = Rasterizer.destinationWidth;
-        if(y1 > Rasterizer.destinationHeight)
-            y1 = Rasterizer.destinationHeight;
-        viewportLeft = x0;
-        viewportTop = y0;
-        viewportRight = x1;
-        viewportBottom = y1;
+    public static void setBounds(int minX, int minY, int maxY, int maxX) {
+        if(minX < 0)
+            minX = 0;
+        if(minY < 0)
+            minY = 0;
+        if(maxX > Rasterizer.destinationWidth)
+            maxX = Rasterizer.destinationWidth;
+        if(maxY > Rasterizer.destinationHeight)
+            maxY = Rasterizer.destinationHeight;
+        viewportLeft = minX;
+        viewportTop = minY;
+        viewportRight = maxX;
+        viewportBottom = maxY;
         viewportRightX = viewportRight - 1;
         viewportCenterX = viewportRight / 2;
         viewportCenterY = viewportBottom / 2;

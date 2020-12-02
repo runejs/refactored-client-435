@@ -44,18 +44,18 @@ public class Main extends GameShell {
     public static String[] playerActions = new String[5];
     public static boolean aBoolean1790;
 
-    public static boolean method36(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, GameInterface[] arg8, boolean arg9) {
-        Rasterizer.setBounds(arg2, arg1, arg5, arg6);
+    public static boolean method36(int arg0, int minY, int minX, int arg3, int arg4, int maxX, int maxY, int arg7, GameInterface[] arg8, boolean arg9) {
+        Rasterizer.setBounds(minX, minY, maxX, maxY);
         boolean bool = arg9;
         for (int i = 0; arg8.length > i; i++) {
             GameInterface gameInterface = arg8[i];
             if (gameInterface != null && gameInterface.parentId == arg4) {
                 if (gameInterface.contentType > 0)
                     GameInterface.updateGameInterface(gameInterface);
-                int i_0_ = arg2 + gameInterface.currentX;
+                int i_0_ = minX + gameInterface.currentX;
                 if (!gameInterface.aBoolean2694)
                     i_0_ -= arg3;
-                int i_1_ = arg1 + gameInterface.currentY;
+                int i_1_ = minY + gameInterface.currentY;
                 if (!gameInterface.aBoolean2694)
                     i_1_ -= arg7;
                 int i_2_ = gameInterface.opacity;
@@ -90,7 +90,7 @@ public class Main extends GameShell {
                         bool &= method36(arg0, i_1_, i_0_, gameInterface.anInt2746, i, gameInterface.originalHeight + i_1_, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, arg8, arg9);
                         if (gameInterface.children != null)
                             bool &= method36(arg0, i_1_, i_0_, gameInterface.anInt2746, gameInterface.id, i_1_ + gameInterface.originalHeight, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, gameInterface.children, true);
-                        Rasterizer.setBounds(arg2, arg1, arg5, arg6);
+                        Rasterizer.setBounds(minX, minY, maxX, maxY);
                         if (gameInterface.originalHeight < gameInterface.scrollHeight)
                             GameInterface.drawScrollBar(i_0_ + gameInterface.originalWidth, i_1_, gameInterface.originalHeight, gameInterface.scrollPosition, gameInterface.scrollHeight, 0);
                     }
@@ -430,14 +430,14 @@ public class Main extends GameShell {
                             }
                             i_51_ += 7;
                             int i_55_ = 5 + gameInterface.originalHeight + i_1_;
-                            if (i_55_ + i_51_ > arg5)
-                                i_55_ = arg5 + -i_51_;
+                            if (i_55_ + i_51_ > maxX)
+                                i_55_ = maxX + -i_51_;
                             i_50_ += 6;
                             int i_56_ = -5 + gameInterface.originalWidth + i_0_ - i_50_;
                             if (i_56_ < 5 + i_0_)
                                 i_56_ = 5 + i_0_;
-                            if (i_50_ + i_56_ > arg6)
-                                i_56_ = -i_50_ + arg6;
+                            if (i_50_ + i_56_ > maxY)
+                                i_56_ = -i_50_ + maxY;
                             Rasterizer.drawFilledRectangle(i_56_, i_55_, i_50_, i_51_, 16777120);
                             Rasterizer.drawUnfilledRectangle(i_56_, i_55_, i_50_, i_51_, 0);
                             class1 = gameInterface.disabledText;
