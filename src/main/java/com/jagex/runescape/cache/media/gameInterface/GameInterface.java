@@ -12,7 +12,6 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
-import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Npc;
@@ -249,13 +248,6 @@ public class GameInterface extends CachedNode {
         }
         arg0.addKeyListener(Class59.keyFocusListener);
         arg0.addFocusListener(Class59.keyFocusListener);
-    }
-
-    public static void method645() {
-        GameObjectDefinition.gameObjectCache.clear();
-        VertexNormal.aClass9_1102.clear();
-        InteractiveObject.aClass9_470.clear();
-        Class49.aClass9_1145.clear();
     }
 
     public static String getShortenedAmountText(int coins) {

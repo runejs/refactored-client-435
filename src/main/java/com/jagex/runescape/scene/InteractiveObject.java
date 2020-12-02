@@ -8,7 +8,6 @@ import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.media.renderable.Renderable;
 
 public class InteractiveObject {
-    public static NodeCache aClass9_470 = new NodeCache(10);
     public static int menuOffsetX;
     public static ProducingGraphicsBuffer tabTop;
     public static int[] firstMenuOperand = new int[500];

@@ -16,7 +16,6 @@ import java.awt.*;
 public class Class40_Sub5_Sub13 extends CachedNode {
     public static Buffer aClass40_Sub1_2752;
     public static IndexedImage[] moderatorIcon;
-    public static Model[] aClass40_Sub5_Sub17_Sub5Array2762 = new Model[4];
     public static int[] anIntArray2764 = new int[128];
     public static ImageRGB minimapImage;
     public CacheIndex aClass6_Sub1_2754;

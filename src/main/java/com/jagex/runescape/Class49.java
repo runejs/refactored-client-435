@@ -8,7 +8,6 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.SceneCluster;
 
 public class Class49 {
-    public static NodeCache aClass9_1145 = new NodeCache(30);
     public static volatile int anInt1147 = 0;
     public static CacheIndex aCacheIndex_1150;
     public static int anInt1151 = 0;

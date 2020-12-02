@@ -187,7 +187,7 @@ public class WallDecoration {
                         int i_58_ = Class40_Sub6.tile_height[Player.worldLevel][i_52_][1 + i_51_];
                         int i_59_ = Class40_Sub6.tile_height[Player.worldLevel][1 + i_52_][1 + i_51_];
                         int i_60_ = Class40_Sub6.tile_height[Player.worldLevel][i_52_ + 1][i_51_];
-                        Model class40_sub5_sub17_sub5 = gameObjectDefinition.getGameObjectModel(i_59_, i_58_, i_47_, i_57_, i_48_, i_60_);
+                        Model class40_sub5_sub17_sub5 = gameObjectDefinition.createTerrainObjectModel(i_59_, i_58_, i_47_, i_57_, i_48_, i_60_);
                         if (class40_sub5_sub17_sub5 != null) {
                             if (i < i_54_) {
                                 int i_61_ = i_54_;

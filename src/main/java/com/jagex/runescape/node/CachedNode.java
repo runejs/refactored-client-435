@@ -1,16 +1,16 @@
 package com.jagex.runescape.node;
 
-public class SubNode extends Node {
+public class CachedNode extends Node {
 
-    public SubNode node1;
-    public SubNode node2;
+    public CachedNode nextCachedNode;
+    public CachedNode previousCachedNode;
 
-    public void method539() {
-        if(node2 != null) {
-            node2.node1 = node1;
-            node1.node2 = node2;
-            node2 = null;
-            node1 = null;
+    public void clear() {
+        if(previousCachedNode != null) {
+            previousCachedNode.nextCachedNode = nextCachedNode;
+            nextCachedNode.previousCachedNode = previousCachedNode;
+            previousCachedNode = null;
+            nextCachedNode = null;
         }
     }
 

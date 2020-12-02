@@ -2,6 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.cs.ClientScript;
+import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -40,7 +41,7 @@ public class RSCanvas extends Canvas {
         MovedStatics.method233(true);
         CacheIndex.method189(false);
         GameInterface.method640();
-        GameInterface.method645();
+        GameObjectDefinition.clearGameObjectModelCache();
         Class40_Sub5_Sub6.method586(64);
         Class8.method211();
         CacheIndex.method188();

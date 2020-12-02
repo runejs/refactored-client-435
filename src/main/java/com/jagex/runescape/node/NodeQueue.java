@@ -1,49 +1,49 @@
 package com.jagex.runescape.node;
 
 
-public class Class27 {
+public class NodeQueue {
 
-    public CachedNode cachedNode = new CachedNode();
+    public CachedNode head = new CachedNode();
 
-    public Class27() {
-        cachedNode.previousCachedNode = cachedNode;
-        cachedNode.nextCachedNode = cachedNode;
+    public NodeQueue() {
+        head.previousCachedNode = head;
+        head.nextCachedNode = head;
     }
 
-    public CachedNode method351() {
-        CachedNode cachedNode = this.cachedNode.nextCachedNode;
-        if(cachedNode == this.cachedNode) {
+    public CachedNode pop() {
+        CachedNode nextNode = this.head.nextCachedNode;
+        if(nextNode == this.head) {
             return null;
         }
-        cachedNode.clear();
-        return cachedNode;
+        nextNode.clear();
+        return nextNode;
     }
 
-    public void method352(CachedNode arg1) {
-        if(arg1.previousCachedNode != null) {
-            arg1.clear();
+    public void push(CachedNode cachedNode) {
+        if(cachedNode.previousCachedNode != null) {
+            cachedNode.clear();
         }
-        arg1.nextCachedNode = cachedNode;
-        arg1.previousCachedNode = cachedNode.previousCachedNode;
-        arg1.previousCachedNode.nextCachedNode = arg1;
-        arg1.nextCachedNode.previousCachedNode = arg1;
+        cachedNode.nextCachedNode = head;
+        cachedNode.previousCachedNode = head.previousCachedNode;
+        cachedNode.previousCachedNode.nextCachedNode = cachedNode;
+        cachedNode.nextCachedNode.previousCachedNode = cachedNode;
     }
 
-    public CachedNode method362() {
-        CachedNode class40_sub5 = cachedNode.nextCachedNode;
-        if(class40_sub5 == cachedNode) {
+    public CachedNode next() {
+        CachedNode nextNode = head.nextCachedNode;
+        if(nextNode == head) {
             return null;
         }
-        return class40_sub5;
+        return nextNode;
     }
 
-    public void method367(CachedNode arg1) {
-        if(arg1.previousCachedNode != null) {
-            arg1.clear();
+    public void unshift(CachedNode cachedNode) {
+        if(cachedNode.previousCachedNode != null) {
+            cachedNode.clear();
         }
-        arg1.nextCachedNode = cachedNode.nextCachedNode;
-        arg1.previousCachedNode = cachedNode;
-        arg1.previousCachedNode.nextCachedNode = arg1;
-        arg1.nextCachedNode.previousCachedNode = arg1;
+        cachedNode.nextCachedNode = head.nextCachedNode;
+        cachedNode.previousCachedNode = head;
+        cachedNode.previousCachedNode.nextCachedNode = cachedNode;
+        cachedNode.nextCachedNode.previousCachedNode = cachedNode;
     }
 }

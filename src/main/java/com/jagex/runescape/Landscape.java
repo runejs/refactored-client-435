@@ -4,6 +4,7 @@ import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.FileOperations;
 import com.jagex.runescape.cache.def.FramemapDefinition;
+import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
@@ -244,7 +245,7 @@ public class Landscape {
                         FramemapDefinition.spawnGroundItem(y, x);
                 }
                 ISAAC.method285((byte) 118);
-                VertexNormal.aClass9_1102.clear();
+                GameObjectDefinition.objectModelCache.clear();
                 if(Class35.aFrame1732 != null) {
                     SceneCluster.packetBuffer.putPacket(121);
                     SceneCluster.packetBuffer.putIntBE(1057001181);
