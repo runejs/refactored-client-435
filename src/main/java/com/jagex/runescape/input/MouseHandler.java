@@ -203,12 +203,11 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
     public synchronized void mousePressed(MouseEvent event) {
         if(GameObject.frame != null) {
-
             int mouseX = event.getX();
             int mouseY = event.getY();
             LinkedList.anInt1073 = 0;
-            Class55.eventClickX = event.getX();
-            Class40_Sub5_Sub11.eventClickY = event.getY();
+            Class55.eventClickX = mouseX;
+            Class40_Sub5_Sub11.eventClickY = mouseY;
             OverlayDefinition.lastClick = System.currentTimeMillis();
             if(event.getButton() == MouseEvent.BUTTON2) {
                 mouseWheelDown = true;
