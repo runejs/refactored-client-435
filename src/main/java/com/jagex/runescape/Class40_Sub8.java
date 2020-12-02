@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.node.Node;
 
 public abstract class Class40_Sub8 extends Node {
     public int anInt2133;

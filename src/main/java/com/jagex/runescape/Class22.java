@@ -1,12 +1,11 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
@@ -120,7 +119,7 @@ public abstract class Class22 {
 
     public static void method309(int arg0, int arg1) {
         do {
-            AnimationSequence.anInt2480 = Node.pulseCycle;
+            AnimationSequence.anInt2480 = MovedStatics.pulseCycle;
             HuffmanEncoding.method1030((byte) 127);
             int i = Npc.method795((byte) -70, arg1).anInt2633;
             if(i != 0) {
@@ -163,9 +162,9 @@ public abstract class Class22 {
                                 Class33.method402(false);
                                 Class35.songTimeout = 0;
                             } else
-                                Node.method456(i_22_);
+                                MovedStatics.method456(i_22_);
                         } else {
-                            Class33.method414(false, 0, MouseHandler.anInt1457, i_22_, 0, MemoryCache.musicCacheIndex);
+                            Class33.method414(false, 0, MouseHandler.anInt1457, i_22_, 0, CacheIndex.musicCacheIndex);
                             Class35.songTimeout = 0;
                         }
                         RSCanvas.anInt60 = i_22_;

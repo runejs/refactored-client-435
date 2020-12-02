@@ -13,11 +13,12 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
+import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.scene.GroundItemTile;
 
 import java.awt.*;
 
-public class ActorDefinition extends SubNode implements EntityDefinition {
+public class ActorDefinition extends CachedNode implements EntityDefinition {
 
     public static int[] sidebarOffsets;
     public static int menuActionRow = 0;

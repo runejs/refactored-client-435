@@ -230,7 +230,7 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
             if(anInt2881 != 0)
                 return arg1;
             if(anInt2883 == -2147483648) {
-                this.remove(-1);
+                this.remove();
                 return arg3;
             }
             anInt2885 = anInt2883;
@@ -352,13 +352,13 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
             method854(arg0, i_3_, 0, arg2, 0);
             if(anInt2888 < 0) {
                 anInt2888 = 0;
-                this.remove(-1);
+                this.remove();
             }
         } else {
             method866(arg0, i_3_, i_1_, arg2, 0);
             if(anInt2888 >= i_1_) {
                 anInt2888 = i_1_ - 1;
-                this.remove(-1);
+                this.remove();
             }
         }
         return 1;
@@ -386,14 +386,14 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
     }
 
     public boolean method863() {
-        return this.method454();
+        return this.hasPrevious();
     }
 
     public synchronized void method843(int arg0) {
         if(anInt2881 > 0) {
             if(arg0 >= anInt2881) {
                 if(anInt2883 == -2147483648) {
-                    this.remove(-1);
+                    this.remove();
                     arg0 = anInt2881;
                 } else
                     anInt2885 = anInt2883;
@@ -486,11 +486,11 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
             if(anInt2882 < 0) {
                 if(anInt2888 < 0) {
                     anInt2888 = 0;
-                    this.remove(-1);
+                    this.remove();
                 }
             } else if(anInt2888 >= i_7_) {
                 anInt2888 = i_7_ - 1;
-                this.remove(-1);
+                this.remove();
             }
         }
     }
@@ -509,7 +509,7 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
             if(anInt2881 != 0)
                 return arg1;
             if(anInt2883 == -2147483648) {
-                this.remove(-1);
+                this.remove();
                 return arg3;
             }
             anInt2885 = anInt2883;

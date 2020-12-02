@@ -6,8 +6,9 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.cache.media.gameInterface.GameInterfaceType;
+import com.jagex.runescape.node.CachedNode;
 
-public abstract class Renderable extends SubNode {
+public abstract class Renderable extends CachedNode {
     public static long aLong2858 = 0L;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2860;
     public static int[] anIntArray2865;

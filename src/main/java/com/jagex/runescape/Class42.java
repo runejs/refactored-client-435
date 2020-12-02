@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.ItemDefinition;
@@ -12,7 +12,7 @@ import com.jagex.runescape.net.PacketBuffer;
 
 public class Class42 {
     public static byte[][][] tile_underlayids;
-    public static MemoryCache aClass9_998 = new MemoryCache(100);
+    public static NodeCache aClass9_998 = new NodeCache(100);
     public static int anInt1006 = 0;
     public static int anInt1008 = 0;
     public static int anInt1010 = 2;

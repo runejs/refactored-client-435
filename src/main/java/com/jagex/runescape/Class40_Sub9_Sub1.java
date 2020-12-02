@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.node.Node;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class40_Sub9_Sub1 extends Class40_Sub9 {
@@ -49,18 +49,18 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
                     method850(class40_sub8);
                 } else {
                     class40_sub8.anInt2133 = i_0_;
-                    method847(class40_sub8.aClass40_950, class40_sub8);
+                    method847(class40_sub8.next, class40_sub8);
                 }
             }
         } while(arg0 != 0);
     }
 
     public void method847(Node arg0, Class40_Sub8 arg1) {
-        for(/**/; arg0 != aLinkedList_2874.aClass40_1056 && ((Class40_Sub8) arg0).anInt2133 <= arg1.anInt2133; arg0 = arg0.aClass40_950) {
+        for(/**/; arg0 != aLinkedList_2874.aClass40_1056 && ((Class40_Sub8) arg0).anInt2133 <= arg1.anInt2133; arg0 = arg0.next) {
             /* empty */
         }
         aLinkedList_2874.method911(-31793, arg0, arg1);
-        anInt2876 = ((Class40_Sub8) aLinkedList_2874.aClass40_1056.aClass40_950).anInt2133;
+        anInt2876 = ((Class40_Sub8) aLinkedList_2874.aClass40_1056.next).anInt2133;
     }
 
     public int method848(int[] arg0, int arg1, int arg2) {
@@ -128,9 +128,9 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
     }
 
     public void method850(Class40_Sub8 arg0) {
-        arg0.remove(-1);
+        arg0.remove();
         arg0.method841();
-        Node class40 = aLinkedList_2874.aClass40_1056.aClass40_950;
+        Node class40 = aLinkedList_2874.aClass40_1056.next;
         if(class40 == aLinkedList_2874.aClass40_1056)
             anInt2876 = -1;
         else
@@ -179,7 +179,7 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
                     method850(class40_sub8);
                 } else {
                     class40_sub8.anInt2133 = i_9_;
-                    method847(class40_sub8.aClass40_950, class40_sub8);
+                    method847(class40_sub8.next, class40_sub8);
                 }
             }
             if(arg2 == 0)
@@ -188,6 +188,6 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
     }
 
     public synchronized void method853(Class40_Sub9 arg0) {
-        arg0.remove(-1);
+        arg0.remove();
     }
 }

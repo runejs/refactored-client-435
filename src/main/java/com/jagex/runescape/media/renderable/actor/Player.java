@@ -7,7 +7,6 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
@@ -57,6 +56,7 @@ public class Player extends Actor {
     public static PlayerAppearance activePlayerAppearance = new PlayerAppearance();
     public static int[] tabWidgetIds = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     public static int currentTabId = 3;
+    public static String[] friendUsernames = new String[200];
     public int skillLevel;
     public int anInt3258;
     public int combatLevel = 0;
@@ -123,8 +123,8 @@ public class Player extends Actor {
         if((0x100 & mask) != 0) { // damage/hitsplat 1
             int damageType1 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             int damageType2 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            player.method785(damageType2, pulseCycle, damageType1);
-            player.anInt3139 = 300 + pulseCycle;
+            player.method785(damageType2, MovedStatics.pulseCycle, damageType1);
+            player.anInt3139 = 300 + MovedStatics.pulseCycle;
             player.remainingHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             player.maximumHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
         }
@@ -147,8 +147,8 @@ public class Player extends Actor {
         if((0x40 & mask) != 0) { // damage/hitsplat 2
             int damageType1 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             int damageType2 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            player.method785(damageType2, pulseCycle, damageType1);
-            player.anInt3139 = 300 + pulseCycle;
+            player.method785(damageType2, MovedStatics.pulseCycle, damageType1);
+            player.anInt3139 = 300 + MovedStatics.pulseCycle;
             player.remainingHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             player.maximumHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
         }
@@ -157,8 +157,8 @@ public class Player extends Actor {
             player.anInt3081 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             player.anInt3099 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             player.anInt3127 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            player.anInt3112 = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE() + pulseCycle;
-            player.anInt3107 = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE() + pulseCycle;
+            player.anInt3112 = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE() + MovedStatics.pulseCycle;
+            player.anInt3107 = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE() + MovedStatics.pulseCycle;
             player.anInt3073 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             player.method790(0);
         }
@@ -210,12 +210,12 @@ public class Player extends Actor {
             player.graphicId = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
             int graphicData = IncomingPackets.incomingPacketBuffer.getIntBE();
             player.anInt3129 = 0;
-            player.graphicDelay = pulseCycle + (graphicData & 0xffff);
+            player.graphicDelay = MovedStatics.pulseCycle + (graphicData & 0xffff);
             if(player.graphicId == 65535)
                 player.graphicId = -1;
             player.anInt3140 = 0;
             player.graphicHeight = graphicData >> 16;
-            if(player.graphicDelay > pulseCycle)
+            if(player.graphicDelay > MovedStatics.pulseCycle)
                 player.anInt3140 = -1;
         }
         if((0x80 & mask) != 0) { // forced chat
@@ -291,16 +291,16 @@ public class Player extends Actor {
             int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
             if(updateRequired == 0) {
                 trackedPlayerIndices[localPlayerCount++] = trackedPlayerIndex;
-                player.anInt3134 = pulseCycle;
+                player.anInt3134 = MovedStatics.pulseCycle;
             } else {
                 int movementType = IncomingPackets.incomingPacketBuffer.getBits(2);
                 if(movementType == 0) { // No movement
                     trackedPlayerIndices[localPlayerCount++] = trackedPlayerIndex;
-                    player.anInt3134 = pulseCycle;
+                    player.anInt3134 = MovedStatics.pulseCycle;
                     actorUpdatingIndices[actorUpdatingIndex++] = trackedPlayerIndex;
                 } else if(movementType == 1) { // Walking
                     trackedPlayerIndices[localPlayerCount++] = trackedPlayerIndex;
-                    player.anInt3134 = pulseCycle;
+                    player.anInt3134 = MovedStatics.pulseCycle;
                     int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
                     player.method782(walkDirection, (byte) -96, false);
                     int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
@@ -308,7 +308,7 @@ public class Player extends Actor {
                         actorUpdatingIndices[actorUpdatingIndex++] = trackedPlayerIndex;
                 } else if(movementType == 2) { // Running
                     trackedPlayerIndices[localPlayerCount++] = trackedPlayerIndex;
-                    player.anInt3134 = pulseCycle;
+                    player.anInt3134 = MovedStatics.pulseCycle;
                     int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
                     player.method782(walkDirection, (byte) -96, true);
                     int runDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
@@ -336,7 +336,7 @@ public class Player extends Actor {
             }
             trackedPlayerIndices[localPlayerCount++] = newPlayerIndex;
             Player player = trackedPlayers[newPlayerIndex];
-            player.anInt3134 = pulseCycle;
+            player.anInt3134 = MovedStatics.pulseCycle;
             int offsetX = IncomingPackets.incomingPacketBuffer.getBits(5);
             int offsetY = IncomingPackets.incomingPacketBuffer.getBits(5);
             if(offsetX > 15)
@@ -396,9 +396,9 @@ public class Player extends Actor {
         if (localPlayer != player && ActorDefinition.menuActionRow < 400) {
             String rsString;
             if (player.skillLevel == 0)
-                rsString = player.playerName + SceneTile.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.aClass1_569 + English.prefixLevel + player.combatLevel + Native.aClass1_1199;
+                rsString = player.playerName + SceneTile.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.aClass1_569 + English.prefixLevel + player.combatLevel + Native.rightParenthasis;
             else
-                rsString = player.playerName + Native.aClass1_569 + English.prefixSkill + player.skillLevel + Native.aClass1_1199;
+                rsString = player.playerName + Native.aClass1_569 + English.prefixSkill + player.skillLevel + Native.rightParenthasis;
             if (Class8.itemSelected == 1) {
                 OverlayDefinition.addActionRow(English.use, index, x, y, 22, Native.aClass1_3295 + Native.aClass1_3068 + rsString);
             } else if (Main.widgetSelected == 1) {
@@ -431,13 +431,13 @@ public class Player extends Actor {
                             i_16_ = i_17_ + 14;
                         if (i == 4)
                             i_16_ = 41 + i_17_;
-                        OverlayDefinition.addActionRow(Main.playerActions[i], index, x, y, i_16_, Native.aClass1_620 + rsString);
+                        OverlayDefinition.addActionRow(Main.playerActions[i], index, x, y, i_16_, Native.white + rsString);
                     }
                 }
             }
             for (int i = 0; i < ActorDefinition.menuActionRow; i++) {
                 if (MovedStatics.menuActionTypes[i] == 7) {
-                    Landscape.menuActionTexts[i] = English.walkHere + Native.aClass1_1117 + Native.aClass1_620 + rsString;
+                    Landscape.menuActionTexts[i] = English.walkHere + Native.whitespace + Native.white + rsString;
                     break;
                 }
             }
@@ -464,9 +464,9 @@ public class Player extends Actor {
             }
         }
         if(!aBoolean3287 && playerModel != null) {
-            if(anInt3274 <= Node.pulseCycle)
+            if(anInt3274 <= MovedStatics.pulseCycle)
                 playerModel = null;
-            if(anInt3283 <= Node.pulseCycle && Node.pulseCycle < anInt3274) {
+            if(anInt3283 <= MovedStatics.pulseCycle && MovedStatics.pulseCycle < anInt3274) {
                 Model model = playerModel;
                 model.translate(-worldX + anInt3271, -anInt3276 + anInt3272, anInt3291 + -worldY);
                 if(initialFaceDirection == 512) {

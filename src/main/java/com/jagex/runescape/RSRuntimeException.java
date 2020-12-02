@@ -31,12 +31,12 @@ public class RSRuntimeException extends RuntimeException {
                 synchronized(aClass1654 != null ? aClass1654 : (aClass1654 = method1058("com.jagex.runescape.Class8"))) {
                     if(arg0 <= 81)
                         method1054((byte) -96);
-                    SubNode.anInt2081 += CollisionMap.anInt141 * i;
-                    int i_0_ = (-(2000 * CollisionMap.anInt141) + SubNode.anInt2081) / 1000;
+                    MovedStatics.anInt2081 += CollisionMap.anInt141 * i;
+                    int i_0_ = (-(2000 * CollisionMap.anInt141) + MovedStatics.anInt2081) / 1000;
                     if(i_0_ > 0) {
                         if(FloorDecoration.aClass40_Sub9_608 != null)
                             FloorDecoration.aClass40_Sub9_608.method843(i_0_);
-                        SubNode.anInt2081 -= i_0_ * 1000;
+                        MovedStatics.anInt2081 -= i_0_ * 1000;
                     }
                 }
             }
@@ -52,7 +52,7 @@ public class RSRuntimeException extends RuntimeException {
         synchronized(RSCanvas.aLinkedList_53) {
             RSCanvas.aLinkedList_53.pushBack(class40_sub6, -82);
         }
-        HashTable.method332(600);
+        MovedStatics.method332(600);
     }
 
     public static void method1056(Component arg0, byte arg1) {

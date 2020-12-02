@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Effect;
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.input.MouseHandler;
@@ -47,7 +47,7 @@ public class Class4 {
             } else {
                 Effect effect = PacketBuffer.effects[index];
                 if(effect == null) {
-                    effect = Effect.method429(MemoryCache.soundEffectCacheIndex, IdentityKit.sound[index], 0);
+                    effect = Effect.method429(CacheIndex.soundEffectCacheIndex, IdentityKit.sound[index], 0);
                     if(effect == null)
                         continue;
                     Class40_Sub3.soundDelay[index] += effect.delay();
@@ -88,7 +88,7 @@ public class Class4 {
             if(Class35.songTimeout < 0)
                 Class35.songTimeout = 0;
             if(Class35.songTimeout == 0 && RSCanvas.anInt60 != 0 && MouseHandler.anInt1457 != -1)
-                Class33.method414(false, 0, MouseHandler.anInt1457, RSCanvas.anInt60, 0, MemoryCache.musicCacheIndex);
+                Class33.method414(false, 0, MouseHandler.anInt1457, RSCanvas.anInt60, 0, CacheIndex.musicCacheIndex);
         }
     }
 }

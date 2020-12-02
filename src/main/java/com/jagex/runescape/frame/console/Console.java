@@ -1,10 +1,10 @@
 package com.jagex.runescape.frame.console;
 
 import com.jagex.runescape.Class59;
+import com.jagex.runescape.MovedStatics;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.console.Commands.*;
 import com.jagex.runescape.media.Rasterizer;
@@ -95,7 +95,7 @@ public class Console {
             }
             TypeFace.fontSmall.drawBasicString(CONSOLE_VERSION, (width-25) - this.versionWidth, height-22);
 
-            if (Node.pulseCycle % 20 < 10) {
+            if (MovedStatics.pulseCycle % 20 < 10) {
                 TypeFace.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "|" + consoleInput.substring(currentChatIndex), 22, height-4);
             } else {
                 TypeFace.fontBold.drawBasicString(consoleInput.substring(0, currentChatIndex) + "<trans=0>|</trans>" + consoleInput.substring(currentChatIndex), 22, height-4);

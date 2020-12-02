@@ -1,15 +1,14 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
-import com.jagex.runescape.cache.def.VarbitDefinition;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.language.English;
@@ -23,6 +22,7 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
+import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
@@ -45,6 +45,27 @@ public class MovedStatics {
     public static int crossY = 0;
     public static int anInt2278 = 0;
     public static int anInt2280 = 0;
+	public static volatile int mouseButtonPressed = 0;
+	public static int anInt321 = 5063219;
+	public static volatile int eventMouseY = -1;
+	public static int anInt324 = 0;
+	public static boolean redrawChatbox = false;
+	public static ImageRGB[] mapDots;
+	public static CacheIndex aCacheIndex_654;
+	public static int minimapState = 0;
+	public static int[] anIntArray666 = new int[]{1, 0, -1, 0};
+	public static int pulseCycle = 0;
+	public static int anInt938 = 500;
+	public static int loginScreenFocus = 0;
+	public static int anInt2081;
+	public static boolean aBoolean2083 = false;
+	public static ProducingGraphicsBuffer tabImageProducer;
+	public static IndexedImage aClass40_Sub5_Sub14_Sub2_549;
+	public static int anInt554 = 0;
+	public static int anInt564;
+	public static boolean aBoolean565 = false;
+	public static boolean aBoolean571;
+	public static int anInt573 = -1;
 
 	public static void method440(byte arg0) {
 	    if(ISAAC.aBoolean512) {
@@ -112,10 +133,10 @@ public class MovedStatics {
 	                            i_4_ = 450;
 	                        if(Class13.mouseX < 4 + i_4_) {
 	                            if(InteractiveObject.playerRights >= 1) {
-	                                OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 2028, Native.aClass1_620+ class1);
+	                                OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 2028, Native.white + class1);
 	                            }
-	                            OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 2051, Native.aClass1_620+ class1);
-	                            OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 2045, Native.aClass1_620+ class1);
+	                            OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 2051, Native.white + class1);
+	                            OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 2045, Native.white + class1);
 	                        }
 	                    }
 	                    if(i >= 5)
@@ -136,7 +157,7 @@ public class MovedStatics {
 	    if(!Class39.method452(arg0, arg2))
 	        return false;
 	    if(arg1 > 0)
-	        RSString.aClass9_1684 = new MemoryCache(arg1);
+	        RSString.aClass9_1684 = new NodeCache(arg1);
 	    return true;
 	}
 
@@ -337,7 +358,7 @@ public class MovedStatics {
 	        if(arg0 >= -28)
 	            method445(-128);
 	        Class22_Sub1.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + Class4.anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -SpotAnimDefinition.baseX << 7) + Landscape.anInt1170, 4976905);
-	        if(ISAAC.anInt522 > -1 && Node.pulseCycle % 20 < 10)
+	        if(ISAAC.anInt522 > -1 && pulseCycle % 20 < 10)
 	            UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
 	    }
 	}
@@ -345,7 +366,7 @@ public class MovedStatics {
     public static void method996(int arg0) {
         if(arg0 != 19655)
             English.systemUpdateIn = null;
-        SubNode.tabImageProducer.prepareRasterizer();
+        tabImageProducer.prepareRasterizer();
         FloorDecoration.inventoryBackgroundImage.drawImage(0, 0);
         ActorDefinition.sidebarOffsets = Rasterizer3D.setLineOffsets(ActorDefinition.sidebarOffsets);
     }
@@ -411,15 +432,15 @@ public class MovedStatics {
         if(arg0) {
             for(Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.method902((byte) -90); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.method909(-4)) {
                 if(Player.worldLevel == class40_sub5_sub17_sub6.anInt3239 && !class40_sub5_sub17_sub6.aBoolean3237) {
-                    if(Node.pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
+                    if(pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
                         class40_sub5_sub17_sub6.method834(8076, Class5.anInt199);
                         if(class40_sub5_sub17_sub6.aBoolean3237)
-                            class40_sub5_sub17_sub6.remove(-1);
+                            class40_sub5_sub17_sub6.remove();
                         else
                             Npc.currentScene.method134(class40_sub5_sub17_sub6.anInt3239, class40_sub5_sub17_sub6.anInt3244, class40_sub5_sub17_sub6.anInt3235, class40_sub5_sub17_sub6.anInt3231, 60, class40_sub5_sub17_sub6, 0, -1, false);
                     }
                 } else
-                    class40_sub5_sub17_sub6.remove(-1);
+                    class40_sub5_sub17_sub6.remove();
             }
         }
     }
@@ -435,4 +456,167 @@ public class MovedStatics {
             return Player.worldLevel;
         return 3;
     }
+
+	public static void method233(boolean arg0) {
+		Class33.aClass9_778.clear();
+		if(!arg0)
+			method236(null, null, null);
+	}
+
+	public static void method236(CacheIndex arg1, CacheIndex arg2, CacheIndex arg3) {
+		ClientScriptRunner.aCacheIndex_2162 = arg1;
+		VarbitDefinition.aCacheIndex_2364 = arg3;
+		AnimationSequence.aCacheIndex_2484 = arg2;
+	}
+
+	public static int method368(byte arg0, boolean arg1, boolean arg2) {
+		int i = 0;
+		if(arg2) {
+			i += Class17.anInt464 + ProducingGraphicsBuffer.anInt1618;
+		}
+		if(arg0 != -41) {
+			mapDots = null;
+		}
+		if(arg1) {
+			i += Class42.anInt1006 + anInt554;
+		}
+		return i;
+	}
+
+	public static void method455(int arg0, int arg1, int arg3) {
+		for(int i = 0; i < 8; i++) {
+			for(int i_0_ = 0; i_0_ < 8; i_0_++)
+				Class40_Sub6.tile_height[arg1][arg3 + i][arg0 + i_0_] = 0;
+		}
+		if(arg3 > 0) {
+			for(int i = 1; i < 8; i++)
+				Class40_Sub6.tile_height[arg1][arg3][arg0 + i] = Class40_Sub6.tile_height[arg1][-1 + arg3][i + arg0];
+		}
+		if(arg0 > 0) {
+			for(int i = 1; i < 8; i++)
+				Class40_Sub6.tile_height[arg1][i + arg3][arg0] = Class40_Sub6.tile_height[arg1][i + arg3][-1 + arg0];
+		}
+		if(arg3 > 0 && Class40_Sub6.tile_height[arg1][-1 + arg3][arg0] != 0)
+			Class40_Sub6.tile_height[arg1][arg3][arg0] = Class40_Sub6.tile_height[arg1][arg3 - 1][arg0];
+		else if(arg0 > 0 && Class40_Sub6.tile_height[arg1][arg3][arg0 - 1] != 0)
+			Class40_Sub6.tile_height[arg1][arg3][arg0] = Class40_Sub6.tile_height[arg1][arg3][-1 + arg0];
+		else if(arg3 > 0 && arg0 > 0 && Class40_Sub6.tile_height[arg1][arg3 + -1][-1 + arg0] != 0)
+			Class40_Sub6.tile_height[arg1][arg3][arg0] = Class40_Sub6.tile_height[arg1][-1 + arg3][arg0 - 1];
+	}
+
+	public static void method456(int arg0) {
+		if(Class24.method340()) {
+			if(Class26.aBoolean618)
+				OverlayDefinition.anInt2342 = arg0;
+			else
+				Class40_Sub5_Sub13.method651(22741, arg0);
+		}
+	}
+
+	public static boolean method459(int arg0, int arg1, byte arg2) {
+		if(arg0 == 11)
+			arg0 = 10;
+		if(arg2 < 83)
+			method459(125, 22, (byte) 101);
+		GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
+		if(arg0 >= 5 && arg0 <= 8)
+			arg0 = 4;
+		return gameObjectDefinition.method610(arg0, 7533);
+	}
+
+	public static IndexedImage method538(int arg0) {
+		IndexedImage class40_sub5_sub14_sub2 = new IndexedImage();
+		class40_sub5_sub14_sub2.maxWidth = ItemDefinition.anInt2846;
+		class40_sub5_sub14_sub2.maxHeight = GameShell.anInt31;
+		class40_sub5_sub14_sub2.xDrawOffset = Class57.anIntArray1347[0];
+		class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[0];
+		class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[0];
+		class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[0];
+		class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
+		class40_sub5_sub14_sub2.imgPixels = GroundItemTile.aByteArrayArray1370[arg0];
+		ActorDefinition.method569();
+		return class40_sub5_sub14_sub2;
+	}
+
+	public static void method540() {
+		KeyFocusListener.aLinkedList_1278 = new LinkedList();
+	}
+
+	public static void method327(boolean arg0, CacheIndex arg1, int arg2, int arg3, byte arg4, int arg5, byte arg6) {
+		int i = 14 % ((arg6 - 5) / 62);
+		long l = (long) (arg3 + (arg2 << 16));
+		Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class51.aClass23_1194.method331(l, 6120);
+		if(class40_sub5_sub13 == null) {
+			class40_sub5_sub13 = (Class40_Sub5_Sub13) Class37.aClass23_869.method331(l, 6120);
+			if(class40_sub5_sub13 == null) {
+				class40_sub5_sub13 = (Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120);
+				if(class40_sub5_sub13 == null) {
+					if(!arg0) {
+						class40_sub5_sub13 = (Class40_Sub5_Sub13) Class34.aClass23_841.method331(l, 6120);
+						if(class40_sub5_sub13 != null)
+							return;
+					}
+					class40_sub5_sub13 = new Class40_Sub5_Sub13();
+					class40_sub5_sub13.anInt2763 = arg5;
+					class40_sub5_sub13.aByte2758 = arg4;
+					class40_sub5_sub13.aClass6_Sub1_2754 = arg1;
+					if(arg0) {
+						Class51.aClass23_1194.put(l, class40_sub5_sub13);
+						ProducingGraphicsBuffer.anInt1618++;
+					} else {
+						InteractiveObject.aNodeQueue_485.push(class40_sub5_sub13);
+						GameObjectDefinition.aClass23_2545.put(l, class40_sub5_sub13);
+						anInt554++;
+					}
+				} else if(arg0) {
+					class40_sub5_sub13.clear();
+					Class51.aClass23_1194.put(l, class40_sub5_sub13);
+					anInt554--;
+					ProducingGraphicsBuffer.anInt1618++;
+				}
+			}
+		}
+	}
+
+	public static void method332(int arg0) {
+		synchronized(CollisionMap.anObject162) {
+			if(Buffer.anInt1987 == 0)
+				ISAAC.aClass31_521.method394(5, 0, new Class44());
+			Buffer.anInt1987 = arg0;
+		}
+	}
+
+	public static RSString intToStr(int arg0) {
+		return PacketBuffer.method521(false, 10, arg0);
+	}
+
+	public static void method335(byte arg0) {
+		Class40_Sub5_Sub17_Sub1 class40_sub5_sub17_sub1 = (Class40_Sub5_Sub17_Sub1) Class43.aLinkedList_1022.method902((byte) -90);
+		if(arg0 == 61) {
+			for(/**/; class40_sub5_sub17_sub1 != null; class40_sub5_sub17_sub1 = (Class40_Sub5_Sub17_Sub1) Class43.aLinkedList_1022.method909(arg0 + -65)) {
+				if(Player.worldLevel == class40_sub5_sub17_sub1.anInt2981 && pulseCycle <= class40_sub5_sub17_sub1.anInt2971) {
+					if(class40_sub5_sub17_sub1.anInt2974 <= pulseCycle) {
+						if(class40_sub5_sub17_sub1.anInt2961 > 0) {
+							Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[-1 + class40_sub5_sub17_sub1.anInt2961];
+							if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.worldX >= 0 && class40_sub5_sub17_sub4_sub2.worldX < 13312 && class40_sub5_sub17_sub4_sub2.worldY >= 0 && class40_sub5_sub17_sub4_sub2.worldY < 13312)
+								class40_sub5_sub17_sub1.method766(pulseCycle, arg0 + -61, class40_sub5_sub17_sub4_sub2.worldY, Class37.getFloorDrawHeight(class40_sub5_sub17_sub1.anInt2981, class40_sub5_sub17_sub4_sub2.worldX, class40_sub5_sub17_sub4_sub2.worldY) - class40_sub5_sub17_sub1.anInt2960, class40_sub5_sub17_sub4_sub2.worldX);
+						}
+						if(class40_sub5_sub17_sub1.anInt2961 < 0) {
+							int i = -1 + -class40_sub5_sub17_sub1.anInt2961;
+							Player class40_sub5_sub17_sub4_sub1;
+							if(i != PlayerAppearance.anInt708)
+								class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i];
+							else
+								class40_sub5_sub17_sub4_sub1 = Player.localPlayer;
+							if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.worldX >= 0 && class40_sub5_sub17_sub4_sub1.worldX < 13312 && class40_sub5_sub17_sub4_sub1.worldY >= 0 && class40_sub5_sub17_sub4_sub1.worldY < 13312)
+								class40_sub5_sub17_sub1.method766(pulseCycle, 0, class40_sub5_sub17_sub4_sub1.worldY, Class37.getFloorDrawHeight(class40_sub5_sub17_sub1.anInt2981, class40_sub5_sub17_sub4_sub1.worldX, class40_sub5_sub17_sub4_sub1.worldY) - class40_sub5_sub17_sub1.anInt2960, class40_sub5_sub17_sub4_sub1.worldX);
+						}
+						class40_sub5_sub17_sub1.method765(51, Class5.anInt199);
+						Npc.currentScene.method134(Player.worldLevel, (int) class40_sub5_sub17_sub1.aDouble2980, (int) class40_sub5_sub17_sub1.aDouble2993, (int) class40_sub5_sub17_sub1.aDouble2992, 60, class40_sub5_sub17_sub1, class40_sub5_sub17_sub1.anInt3013, -1, false);
+					}
+				} else
+					class40_sub5_sub17_sub1.remove();
+			}
+		}
+	}
 }

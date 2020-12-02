@@ -5,7 +5,7 @@ import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.node.Node;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
@@ -54,7 +54,7 @@ public class Class40_Sub2 extends Node {
         if(arg0 == null)
             return false;
         for(int i = 0; i < Player.friendsCount; i++) {
-            if(arg0.equalsIgnoreCase(ClientScriptRunner.friendUsernames[i]))
+            if(arg0.equalsIgnoreCase(Player.friendUsernames[i]))
                 return true;
         }
         return arg0.equalsIgnoreCase(Player.localPlayer.playerName);
@@ -117,9 +117,9 @@ public class Class40_Sub2 extends Node {
                 if(currentTabId == 7)
                     Renderable.aClass40_Sub5_Sub14_Sub2_2860.drawImage(42, 0);
                 if(currentTabId == 8)
-                    HashTable.aClass40_Sub5_Sub14_Sub2_549.drawImage(74, 0);
+                    MovedStatics.aClass40_Sub5_Sub14_Sub2_549.drawImage(74, 0);
                 if(currentTabId == 9)
-                    HashTable.aClass40_Sub5_Sub14_Sub2_549.drawImage(102, 0);
+                    MovedStatics.aClass40_Sub5_Sub14_Sub2_549.drawImage(102, 0);
                 if(currentTabId == 10)
                     MovedStatics.aClass40_Sub5_Sub14_Sub2_1919.drawImage(130, 1);
                 if(currentTabId == 11)

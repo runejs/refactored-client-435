@@ -115,13 +115,13 @@ public class HuffmanEncoding {
             if (actorDefinition != null && actorDefinition.isClickable) {
                 String class1 = actorDefinition.name;
                 if (actorDefinition.combatLevel != 0) {
-                    class1 = class1 + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.aClass1_569 + English.prefixLevel + actorDefinition.combatLevel + Native.aClass1_1199;
+                    class1 = class1 + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.aClass1_569 + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthasis;
                 }
                 if (Class8.itemSelected == 1) {
-                    OverlayDefinition.addActionRow(English.use, index, x, y, 49, Native.aClass1_3295 + Native.aClass1_2306 + class1);
+                    OverlayDefinition.addActionRow(English.use, index, x, y, 49, Native.aClass1_3295 + Native.toYellow + class1);
                 } else if (Main.widgetSelected == 1) {
                     if ((0x2 & ItemDefinition.selectedMask) == 2) {
-                        OverlayDefinition.addActionRow(Native.aClass1_1918, index, x, y, 21, Native.aClass1_611 + Native.aClass1_2306 + class1);
+                        OverlayDefinition.addActionRow(Native.aClass1_1918, index, x, y, 21, Native.aClass1_611 + Native.toYellow + class1);
                     }
                 } else {
                     String[] class1s = actorDefinition.options;

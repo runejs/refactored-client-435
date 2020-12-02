@@ -37,8 +37,8 @@ public abstract class Class22_Sub2 extends Class22 {
 
     public static void method316(int arg0) {
         do {
-            Class43.aClass9_1014.method235();
-            Class34.aClass9_851.method235();
+            Class43.aClass9_1014.clear();
+            Class34.aClass9_851.clear();
             if(arg0 == -11965)
                 break;
             method323(-25);

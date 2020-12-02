@@ -13,6 +13,7 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.WallDecoration;
@@ -27,13 +28,27 @@ public class CacheIndex {
 
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array215;
     public static long aLong219 = 0L;
-    public static MemoryCache modelCache = new MemoryCache(260);
+    public static NodeCache modelCache = new NodeCache(260);
     public static int anInt255;
     public static boolean aBoolean260 = false;
     public static int[][][] anIntArrayArrayArray262;
     public static int anInt1806;
     public static int anInt1819 = -1;
     public static CRC32 crc32 = new CRC32();
+    public static CacheIndex gameInterfaceCacheIndex;
+    public static CacheIndex gameDefinitionsCacheIndex;
+    public static CacheIndex skeletonCacheIndex;
+    public static CacheIndex skinDefinitionCacheIndex;
+    public static CacheIndex soundEffectCacheIndex;
+    public static CacheIndex gameWorldMapCacheIndex;
+    public static CacheIndex musicCacheIndex;
+    public static CacheIndex modelCacheIndex;
+    public static CacheIndex gameImageCacheIndex;
+    public static CacheIndex gameTextureCacheIndex;
+    public static CacheIndex huffmanCacheIndex;
+    public static CacheIndex jingleCacheIndex;
+    public static CacheIndex clientScriptCacheIndex;
+    public static CacheIndex definitionCache;
 
     public byte[][] aByteArrayArray212;
     public int anInt216;
@@ -159,21 +174,21 @@ public class CacheIndex {
     }
 
     public static void method188() {
-        Class40_Sub5_Sub6.aClass9_2439.method235();
-        Class42.aClass9_998.method235();
+        Class40_Sub5_Sub6.aClass9_2439.clear();
+        Class42.aClass9_998.clear();
     }
 
     public static void method189(boolean arg0) {
         if(arg0)
             Player.deregisterActorIndices = null;
-        WallDecoration.aClass9_1247.method235();
+        WallDecoration.aClass9_1247.clear();
     }
 
     public static void method399(int arg0, int arg2) {
         long l = (arg0 << 16) + arg2;
         Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120);
         if(class40_sub5_sub13 != null) {
-            InteractiveObject.aClass27_485.method367(true, class40_sub5_sub13);
+            InteractiveObject.aNodeQueue_485.unshift(class40_sub5_sub13);
         }
     }
 
@@ -226,7 +241,7 @@ public class CacheIndex {
             if(aBoolean1800)
                 throw new RuntimeException();
             if(arg2 == null) {
-                com.jagex.runescape.HashTable.method327(true, this, 255, anInt1807, (byte) 0,
+                MovedStatics.method327(true, this, 255, anInt1807, (byte) 0,
                         anInt1810, (byte) 85);
                 return;
             }
@@ -234,7 +249,7 @@ public class CacheIndex {
             crc32.update(arg2, 0, arg2.length);
             int i = (int) crc32.getValue();
             if(i != anInt1810) {
-                com.jagex.runescape.HashTable.method327(true, this, 255, anInt1807, (byte) 0,
+                MovedStatics.method327(true, this, 255, anInt1807, (byte) 0,
                         anInt1810, (byte) -121);
                 return;
             }
@@ -246,7 +261,7 @@ public class CacheIndex {
             if(arg2 == null || arg2.length <= 2) {
                 aBooleanArray1796[arg3] = false;
                 if(aBoolean1811 || arg1)
-                    HashTable.method327(arg1, this, anInt1807, arg3, (byte) 2, anIntArray252[arg3], (byte) -117);
+                    MovedStatics.method327(arg1, this, anInt1807, arg3, (byte) 2, anIntArray252[arg3], (byte) -117);
                 return;
             }
             crc32.reset();
@@ -256,7 +271,7 @@ public class CacheIndex {
             if(i != anIntArray252[arg3] || i_0_ != anIntArray224[arg3]) {
                 aBooleanArray1796[arg3] = false;
                 if(aBoolean1811 || arg1)
-                    HashTable.method327(arg1, this, anInt1807, arg3, (byte) 2, anIntArray252[arg3], (byte) -78);
+                    MovedStatics.method327(arg1, this, anInt1807, arg3, (byte) 2, anIntArray252[arg3], (byte) -78);
                 return;
             }
             aBooleanArray1796[arg3] = true;
@@ -269,7 +284,7 @@ public class CacheIndex {
         if(aClass56_1812 != null && aBooleanArray1796 != null && aBooleanArray1796[arg1])
             GameObjectDefinition.method602(this, arg1, aClass56_1812);
         else
-            HashTable.method327(true, this, anInt1807, arg1, (byte) 2, anIntArray252[arg1], (byte) -127);
+            MovedStatics.method327(true, this, anInt1807, arg1, (byte) 2, anIntArray252[arg1], (byte) -127);
     }
 
     public void method174(int arg0) {
@@ -299,7 +314,7 @@ public class CacheIndex {
         if(arg1 >= 41) {
             anInt1810 = arg0;
             if(aClass56_1802 == null)
-                HashTable.method327(true, this, 255, anInt1807, (byte) 0, anInt1810, (byte) -118);
+                MovedStatics.method327(true, this, 255, anInt1807, (byte) 0, anInt1810, (byte) -118);
             else
                 GameObjectDefinition.method602(this, anInt1807, aClass56_1802);
         }

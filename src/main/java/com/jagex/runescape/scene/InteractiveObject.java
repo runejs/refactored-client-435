@@ -1,18 +1,17 @@
 package com.jagex.runescape.scene;
 
-import com.jagex.runescape.Class27;
+import com.jagex.runescape.node.NodeQueue;
 import com.jagex.runescape.ProducingGraphicsBuffer;
 import com.jagex.runescape.RSString;
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.media.renderable.Renderable;
 
 public class InteractiveObject {
-    public static MemoryCache aClass9_470 = new MemoryCache(10);
     public static int menuOffsetX;
     public static ProducingGraphicsBuffer tabTop;
     public static int[] firstMenuOperand = new int[500];
-    public static Class27 aClass27_485 = new Class27();
+    public static NodeQueue aNodeQueue_485 = new NodeQueue();
     public static int anInt487 = 0;
     public static CacheIndex aCacheIndex_488;
     public static byte[][][] aByteArrayArrayArray492;

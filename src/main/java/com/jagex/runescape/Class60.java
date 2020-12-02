@@ -5,7 +5,6 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
@@ -198,13 +197,13 @@ public class Class60 {
                 int i_14_ = 100;
                 int i_15_ = 120;
                 if(clickType == 1 && i >= i_14_ - 75 && i_14_ + 75 >= i && clickY >= -20 + i_15_ && i_15_ + 20 >= clickY) {
-                    Node.loginScreenFocus = 0;
+                    MovedStatics.loginScreenFocus = 0;
                     Class26.loginScreenState = 3;
                 }
                 i_14_ = 260;
                 if(clickType == 1 && i >= -75 + i_14_ && i <= 75 + i_14_ && clickY >= -20 + i_15_ && 20 + i_15_ >= clickY) {
                     Class26.loginScreenState = 2;
-                    Node.loginScreenFocus = 0;
+                    MovedStatics.loginScreenFocus = 0;
                     Native.loginScreenMessageLineOne = "";
                     Native.loginScreenMessageLineTwo = English.enterYourUsernameAndPassword;
                     Native.loginScreenMessageLineThree = "";
@@ -214,11 +213,11 @@ public class Class60 {
                 int clickX = 100;
                 y += 30;
                 if(clickType == 1 && -15 + y <= clickY && clickY < y)
-                    Node.loginScreenFocus = 0;
+                    MovedStatics.loginScreenFocus = 0;
                 int i_18_ = 150;
                 y += 15;
                 if(clickType == 1 && -15 + y <= clickY && y > clickY)
-                    Node.loginScreenFocus = 1;
+                    MovedStatics.loginScreenFocus = 1;
                 y += 15;
                 if(clickType == 1 && clickX + -75 <= i && i <= clickX + 75 && clickY >= i_18_ + -20 && clickY <= i_18_ + 20) {
                     Native.username = Native.username.method62().method85();
@@ -239,18 +238,18 @@ public class Class60 {
                                 break;
                             }
                         }
-                        if(Node.loginScreenFocus == 0) {
+                        if(MovedStatics.loginScreenFocus == 0) {
                             if(ItemDefinition.anInt2854 == 85 && Native.username.length() > 0)
                                 Native.username = Native.username.substring(0, -1 + Native.username.length());
                             if(ItemDefinition.anInt2854 == 84 || ItemDefinition.anInt2854 == 80)
-                                Node.loginScreenFocus = 1;
+                                MovedStatics.loginScreenFocus = 1;
                             if(bool && Native.username.length() < 12)
                                 Native.username = Native.username.addChar(Class59.anInt1388);
-                        } else if(Node.loginScreenFocus == 1) {
+                        } else if(MovedStatics.loginScreenFocus == 1) {
                             if(ItemDefinition.anInt2854 == 85 && Native.password.length() > 0)
                                 Native.password = Native.password.substring(0, Native.password.length() + -1);
                             if(ItemDefinition.anInt2854 == 80)
-                                Node.loginScreenFocus = 0;
+                                MovedStatics.loginScreenFocus = 0;
                             if(ItemDefinition.anInt2854 == 84) {
                                 Native.username = Native.username.method62().method85();
                                 Class33.setLoginScreenMessage("", English.connectingToServer, "");

@@ -18,11 +18,12 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
+import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 import java.awt.*;
 
-public class ItemDefinition extends SubNode implements EntityDefinition {
+public class ItemDefinition extends CachedNode implements EntityDefinition {
     public static int anInt2798 = 0;
     public static int[] soundVolume = new int[50];
     public static int selectedMask;
@@ -161,11 +162,11 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
 
     public static void method748(int arg1) {
         for(Renderable.anInt2866 += arg1; Renderable.anInt2866 >= CollisionMap.anInt141; Renderable.anInt2866 -= CollisionMap.anInt141) {
-            SubNode.anInt2081 -= SubNode.anInt2081 >> 2;
+            MovedStatics.anInt2081 -= MovedStatics.anInt2081 >> 2;
         }
-        SubNode.anInt2081 -= 1000 * arg1;
-        if(SubNode.anInt2081 < 0) {
-            SubNode.anInt2081 = 0;
+        MovedStatics.anInt2081 -= 1000 * arg1;
+        if(MovedStatics.anInt2081 < 0) {
+            MovedStatics.anInt2081 = 0;
         }
     }
 
@@ -220,7 +221,7 @@ public class ItemDefinition extends SubNode implements EntityDefinition {
         if(backColour == 0) {
             ImageRGB sprite = (ImageRGB) Buffer.rgbImageCache.get((long) id);
             if(sprite != null && sprite.maxHeight != stackSize && sprite.maxHeight != -1) {
-                sprite.remove(-1);
+                sprite.remove();
                 sprite = null;
             }
             if(sprite != null)

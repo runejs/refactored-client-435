@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -22,7 +22,7 @@ import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class43 {
-    public static MemoryCache aClass9_1014 = new MemoryCache(64);
+    public static NodeCache aClass9_1014 = new NodeCache(64);
     public static int cameraYawOffset = 0;
     public static LinkedList aLinkedList_1022 = new LinkedList();
     public static int bankInsertMode = 0;
@@ -83,7 +83,7 @@ public class Class43 {
                     }
                 }
 
-                HashTable.anInt573 = Item.anInt3065;
+                MovedStatics.anInt573 = Item.anInt3065;
                 ItemDefinition.anInt2850 = OverlayDefinition.anInt2328;
                 Item.anInt3065 = -1;
                 OverlayDefinition.anInt2328 = -1;
@@ -141,7 +141,7 @@ public class Class43 {
                 OverlayDefinition.anInt2328 = -1;
                 Class13.method243((byte) 89, 0, 765, 503, GameInterface.fullscreenInterfaceId, 0, Class13.mouseX, Landscape.mouseY, 0);
                 ItemDefinition.anInt2850 = OverlayDefinition.anInt2328;
-                HashTable.anInt573 = Item.anInt3065;
+                MovedStatics.anInt573 = Item.anInt3065;
             }
         }
     }
@@ -149,8 +149,8 @@ public class Class43 {
     public static void method398(int arg0) {
         String class1 = null;
         for(int i = 0; ActorDefinition.menuActionRow > i; i++) {
-            if(Landscape.menuActionTexts[i].contains(Native.aClass1_1114)) {
-                class1 = Landscape.menuActionTexts[i].substring(Landscape.menuActionTexts[i].indexOf(Native.aClass1_1114));
+            if(Landscape.menuActionTexts[i].contains(Native.lightRed)) {
+                class1 = Landscape.menuActionTexts[i].substring(Landscape.menuActionTexts[i].indexOf(Native.lightRed));
                 break;
             }
         }
@@ -190,8 +190,8 @@ public class Class43 {
                 int i_9_ = 16777215;
                 if(class1_8_.endsWith(class1)) {
                     class1_8_ = class1_8_.substring(0, class1_8_.length() - class1.length());
-                    if(class1_8_.endsWith(Native.aClass1_1117))
-                        class1_8_ = class1_8_.substring(0, class1_8_.length() + -Native.aClass1_1117.length());
+                    if(class1_8_.endsWith(Native.whitespace))
+                        class1_8_ = class1_8_.substring(0, class1_8_.length() + -Native.whitespace.length());
                 }
                 if(i_0_ < i_4_ && i_4_ < i_0_ + i && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)
                     i_9_ = 16776960;

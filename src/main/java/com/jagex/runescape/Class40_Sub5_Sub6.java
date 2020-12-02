@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -13,15 +13,16 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
+import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.util.CollisionMap;
 
-public class Class40_Sub5_Sub6 extends SubNode {
+public class Class40_Sub5_Sub6 extends CachedNode {
     public static Class67[] aClass67Array2436 = new Class67[13];
     public static int currentCameraPositionH;
-    public static MemoryCache aClass9_2439 = new MemoryCache(64);
+    public static NodeCache aClass9_2439 = new NodeCache(64);
     public static int cameraY;
     public static int anInt2451 = 0;
     public static int anInt2452 = 0;
@@ -55,8 +56,8 @@ public class Class40_Sub5_Sub6 extends SubNode {
     }
 
     public static void method586(int arg0) {
-        ISAAC.cachedActorDefinitions.method235();
-        Class67.aClass9_1611.method235();
+        ISAAC.cachedActorDefinitions.clear();
+        Class67.aClass9_1611.clear();
         if(arg0 <= 63)
             English.errorConnectingToServer = null;
     }
@@ -105,7 +106,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         SceneCluster.packetBuffer.finishVarByte(-i + SceneCluster.packetBuffer.currentPosition);
                         if(ChatBox.privateChatMode == 2) {
                             ChatBox.privateChatMode = 1;
-                            MemoryCache.redrawChatbox = true;
+                            MovedStatics.redrawChatbox = true;
                             SceneCluster.packetBuffer.putPacket(32);
                             SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
                             SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
@@ -290,7 +291,7 @@ public class Class40_Sub5_Sub6 extends SubNode {
                         ProducingGraphicsBuffer_Sub1.method1052(ChatBox.chatboxInput, SceneCluster.packetBuffer);
                         SceneCluster.packetBuffer.finishVarByte(SceneCluster.packetBuffer.currentPosition + -i_12_);
                         if(ChatBox.publicChatMode == 2) {
-                            MemoryCache.redrawChatbox = true;
+                            MovedStatics.redrawChatbox = true;
                             ChatBox.publicChatMode = 3;
                             SceneCluster.packetBuffer.putPacket(32);
                             SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);

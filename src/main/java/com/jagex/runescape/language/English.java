@@ -175,4 +175,5 @@ public class English {
     public static String commandFpson = "::fpson";
     public static String cancel = "Cancel";
     public static String select = "Select";
+    public static String pleaseWait = "Please wait...";
 }

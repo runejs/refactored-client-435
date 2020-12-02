@@ -6,7 +6,6 @@ import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.Rasterizer3D;
@@ -66,7 +65,7 @@ public class Minimap extends FramePieceRenderer {
                 resizableCompasOffsets1[y1] = -i_16_ + i_15_;
             }
         }
-        if(Class27.minimapState == 2) {
+        if(MovedStatics.minimapState == 2) {
             resizableMiniMapimage.prepareRasterizer();
             resizableMinimapLineOffsets = Rasterizer3D.setLineOffsets(resizableMinimapLineOffsets);
             byte[] mmBackgroundPixels = Class34.minimapBackgroundImage.imgPixels;
@@ -130,7 +129,7 @@ public class Minimap extends FramePieceRenderer {
                 if(linkedList != null) {
                     int itemY = -(Player.localPlayer.worldY / 32) + 2 + y * 4;
                     int itemX = -(Player.localPlayer.worldX / 32) + 2 + x * 4;
-                    drawOnResizableMinimap(itemX, itemY, Class27.mapDots[0]);
+                    drawOnResizableMinimap(itemX, itemY, MovedStatics.mapDots[0]);
                 }
             }
         }
@@ -143,7 +142,7 @@ public class Minimap extends FramePieceRenderer {
                 if(definition != null && definition.renderOnMinimap && definition.isClickable) {
                     int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
                     int npcY = npc.worldY / 32 + -(Player.localPlayer.worldY / 32);
-                    drawOnResizableMinimap(npcX, npcY, Class27.mapDots[1]);
+                    drawOnResizableMinimap(npcX, npcY, MovedStatics.mapDots[1]);
                 }
             }
         }
@@ -164,14 +163,14 @@ public class Minimap extends FramePieceRenderer {
                 if(Player.localPlayer.teamId != 0 && player.teamId != 0 && player.teamId == Player.localPlayer.teamId)
                     isTeammate = true;
                 if(isFriend)
-                    drawOnResizableMinimap(playerX, playerY, Class27.mapDots[3]);
+                    drawOnResizableMinimap(playerX, playerY, MovedStatics.mapDots[3]);
                 else if(isTeammate)
-                    drawOnResizableMinimap(playerX, playerY, Class27.mapDots[4]);
+                    drawOnResizableMinimap(playerX, playerY, MovedStatics.mapDots[4]);
                 else
-                    drawOnResizableMinimap(playerX, playerY, Class27.mapDots[2]);
+                    drawOnResizableMinimap(playerX, playerY, MovedStatics.mapDots[2]);
             }
         }
-        if(Player.headIconDrawType != 0 && Node.pulseCycle % 20 < 10) {
+        if(Player.headIconDrawType != 0 && MovedStatics.pulseCycle % 20 < 10) {
             if(Player.headIconDrawType == 1 && HuffmanEncoding.anInt1545 >= 0 && Player.npcs.length > HuffmanEncoding.anInt1545) {
                 Npc npc = Player.npcs[HuffmanEncoding.anInt1545];
                 if(npc != null) {

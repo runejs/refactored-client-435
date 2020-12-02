@@ -7,7 +7,7 @@ import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.cache.cs.ClientScript;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
-import com.jagex.runescape.collection.Node;
+import com.jagex.runescape.node.Node;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Model;
@@ -128,21 +128,21 @@ public class SceneTile extends Node {
     public static String getCombatLevelColour(int arg0, int arg1) {
         int diff = -arg1 + arg0;
         if (diff < -9)
-            return Native.aClass1_610;
+            return Native.red;
         if (diff < -6)
-            return Native.aClass1_670;
+            return Native.orange3;
         if (diff < -3)
-            return Native.aClass1_1639;
+            return Native.orange2;
         if (diff < 0)
             return Native.aClass1_327;
         if (diff > 9)
             return Native.green;
         if (diff > 6)
-            return Native.aClass1_494;
+            return Native.green3;
         if (diff > 3)
-            return Native.aClass1_932;
+            return Native.green2;
         if (diff > 0)
-            return Native.aClass1_877;
+            return Native.green1;
         return Native.yellow;
     }
 
@@ -150,15 +150,15 @@ public class SceneTile extends Node {
         if (ActorDefinition.menuActionRow >= 2 || Class8.itemSelected != 0 || Main.widgetSelected != 0) {
             String class1;
             if (Class8.itemSelected == 1 && ActorDefinition.menuActionRow < 2)
-                class1 = English.use + Native.aClass1_1117 + Native.aClass1_3295 + Native.aClass1_894;
+                class1 = English.use + Native.whitespace + Native.aClass1_3295 + Native.aClass1_894;
             else if (Main.widgetSelected != 1 || ActorDefinition.menuActionRow >= 2)
                 class1 = Landscape.menuActionTexts[-1 + ActorDefinition.menuActionRow];
             else
-                class1 = Native.aClass1_1918 + Native.aClass1_1117 + Native.aClass1_611 + Native.aClass1_894;
+                class1 = Native.aClass1_1918 + Native.whitespace + Native.aClass1_611 + Native.aClass1_894;
             if (ActorDefinition.menuActionRow > 2)
-                class1 = class1 + Native.aClass1_1243 + (ActorDefinition.menuActionRow + -2) + English.suffixMoreOptions;
+                class1 = class1 + Native.whiteSlash + (ActorDefinition.menuActionRow + -2) + English.suffixMoreOptions;
             if (arg0 == 4)
-                TypeFace.fontBold.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, Node.pulseCycle / 1000);
+                TypeFace.fontBold.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, MovedStatics.pulseCycle / 1000);
         }
     }
 }

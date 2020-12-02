@@ -3,7 +3,7 @@ package com.jagex.runescape.cache.media;
 import com.jagex.runescape.Class17;
 import com.jagex.runescape.RSString;
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.textUtils.TextColourNode;
 import com.jagex.runescape.cache.media.textUtils.TextColourQueue;
@@ -24,7 +24,7 @@ public class TypeFace extends Rasterizer {
 
     public static TypeFace fontBold;
     public static TypeFace fontSmall;
-    public static MemoryCache typeFaceCache = new MemoryCache(20);
+    public static NodeCache typeFaceCache = new NodeCache(20);
     private static String greaterThan = "gt";
     private static String lessThan = "lt";
     private static String euroSymbol = "euro";

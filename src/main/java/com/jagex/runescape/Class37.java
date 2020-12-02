@@ -1,11 +1,9 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
@@ -15,6 +13,7 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.IncomingPackets;
+import com.jagex.runescape.node.HashTable;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
@@ -60,11 +59,11 @@ public class Class37 {
         IncomingPackets.incomingPacketSize = 0;
         SceneCluster.packetBuffer.currentPosition = 0;
         RSString.anInt1690 = -1;
-        MemoryCache.anInt324 = -1;
+        MovedStatics.anInt324 = -1;
         Class35.anInt1728 = 0;
         Class49.anInt1151 = -1;
         VarbitDefinition.destinationX = 0;
-        Class27.minimapState = 0;
+        MovedStatics.minimapState = 0;
         Class40_Sub5_Sub15.systemUpdateTime = 0;
         IncomingPackets.incomingPacketBuffer.currentPosition = arg0;
         for(int i = 0; Player.trackedPlayers.length > i; i++) {
@@ -81,7 +80,7 @@ public class Class37 {
     public static void renderMinimap() {
         RSCanvas.createMinimapRaster();
 
-        if(Class27.minimapState == 2) {
+        if(MovedStatics.minimapState == 2) {
             byte[] mmBackgroundPixels = Class34.minimapBackgroundImage.imgPixels;
             int[] rasterPixels = Rasterizer.destinationPixels;
             int pixelCount = mmBackgroundPixels.length;
@@ -109,7 +108,7 @@ public class Class37 {
                 if(linkedList != null) {
                     int itemX = -(Player.localPlayer.worldY / 32) + 2 + y * 4;
                     int itemY = -(Player.localPlayer.worldX / 32) + 2 + x * 4;
-                    SceneTile.drawOnMinimap(itemX, itemY, Class27.mapDots[0]);
+                    SceneTile.drawOnMinimap(itemX, itemY, MovedStatics.mapDots[0]);
                 }
             }
         }
@@ -122,7 +121,7 @@ public class Class37 {
                 if(definition != null && definition.renderOnMinimap && definition.isClickable) {
                     int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
                     int npcY = npc.worldY / 32 + -(Player.localPlayer.worldY / 32);
-                    SceneTile.drawOnMinimap(npcY, npcX, Class27.mapDots[1]);
+                    SceneTile.drawOnMinimap(npcY, npcX, MovedStatics.mapDots[1]);
                 }
             }
         }
@@ -143,14 +142,14 @@ public class Class37 {
                 if(Player.localPlayer.teamId != 0 && player.teamId != 0 && player.teamId == Player.localPlayer.teamId)
                     isTeammate = true;
                 if(isFriend)
-                    SceneTile.drawOnMinimap(playerY, playerX, Class27.mapDots[3]);
+                    SceneTile.drawOnMinimap(playerY, playerX, MovedStatics.mapDots[3]);
                 else if(isTeammate)
-                    SceneTile.drawOnMinimap(playerY, playerX, Class27.mapDots[4]);
+                    SceneTile.drawOnMinimap(playerY, playerX, MovedStatics.mapDots[4]);
                 else
-                    SceneTile.drawOnMinimap(playerY, playerX, Class27.mapDots[2]);
+                    SceneTile.drawOnMinimap(playerY, playerX, MovedStatics.mapDots[2]);
             }
         }
-        if(Player.headIconDrawType != 0 && Node.pulseCycle % 20 < 10) {
+        if(Player.headIconDrawType != 0 && MovedStatics.pulseCycle % 20 < 10) {
             if(Player.headIconDrawType == 1 && HuffmanEncoding.anInt1545 >= 0 && Player.npcs.length > HuffmanEncoding.anInt1545) {
                 Npc npc = Player.npcs[HuffmanEncoding.anInt1545];
                 if(npc != null) {
@@ -235,7 +234,7 @@ public class Class37 {
     }
 
     public static boolean method438(int arg0, int arg1) {
-        if(arg0 == 0 && arg1 == HashTable.anInt573)
+        if(arg0 == 0 && arg1 == MovedStatics.anInt573)
             return true;
         if(arg0 == 1 && FloorDecoration.anInt614 == arg1)
             return true;

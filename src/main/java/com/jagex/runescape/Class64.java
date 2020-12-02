@@ -1,6 +1,5 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
@@ -82,7 +81,7 @@ public class Class64 implements Runnable {
                     if (gameObjectDefinition == null)
                         continue;
                     if (Class8.itemSelected == 1) {
-                        OverlayDefinition.addActionRow(English.use, hash, x, y, 5, Native.aClass1_3295 + Native.aClass1_2277 + gameObjectDefinition.name);
+                        OverlayDefinition.addActionRow(English.use, hash, x, y, 5, Native.aClass1_3295 + Native.toCyan + gameObjectDefinition.name);
                     } else if (Main.widgetSelected != 1) {
                         String[] options = gameObjectDefinition.actions;
                         if (Class60.aBoolean1402)
@@ -101,7 +100,7 @@ public class Class64 implements Runnable {
                                         actionType = 27;
                                     if (i_7_ == 4)
                                         actionType = 1002;
-                                    OverlayDefinition.addActionRow(options[i_7_], hash, x, y, actionType, Native.aClass1_2862 + gameObjectDefinition.name);
+                                    OverlayDefinition.addActionRow(options[i_7_], hash, x, y, actionType, Native.cyan + gameObjectDefinition.name);
                                 }
                             }
                         }
@@ -127,7 +126,7 @@ public class Class64 implements Runnable {
                         }
                         OverlayDefinition.addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, 1004, examineText.toString());
                     } else if ((ItemDefinition.selectedMask & 0x4) == 4) {
-                        OverlayDefinition.addActionRow(Native.aClass1_1918, hash, x, y, 32, Native.aClass1_611 + Native.aClass1_2277 + gameObjectDefinition.name);
+                        OverlayDefinition.addActionRow(Native.aClass1_1918, hash, x, y, 32, Native.aClass1_611 + Native.toCyan + gameObjectDefinition.name);
                     }
                 }
                 if (type == 1) {
@@ -168,7 +167,7 @@ public class Class64 implements Runnable {
                         for (Item item = (Item) itemList.last((byte) -95); item != null; item = (Item) itemList.previous(4)) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
                             if (Class8.itemSelected == 1) {
-                                OverlayDefinition.addActionRow(English.use, item.itemId, x, y, 47, Native.aClass1_3295 + Native.aClass1_206 + itemDefinition.name);
+                                OverlayDefinition.addActionRow(English.use, item.itemId, x, y, 47, Native.aClass1_3295 + Native.toLightRed + itemDefinition.name);
                             } else if (Main.widgetSelected != 1) {
                                 String[] class1s = itemDefinition.groundOptions;
                                 if (Class60.aBoolean1402)
@@ -176,7 +175,7 @@ public class Class64 implements Runnable {
                                 for (int i_15_ = 4; i_15_ >= 0; i_15_--) {
                                     if (class1s == null || class1s[i_15_] == null) {
                                         if (i_15_ == 2) {
-                                            OverlayDefinition.addActionRow(English.take, item.itemId, x, y, 3, Native.aClass1_1114 + itemDefinition.name);
+                                            OverlayDefinition.addActionRow(English.take, item.itemId, x, y, 3, Native.lightRed + itemDefinition.name);
                                         }
                                     } else {
                                         int i_16_ = 0;
@@ -190,12 +189,12 @@ public class Class64 implements Runnable {
                                             i_16_ = 8;
                                         if (i_15_ == 4)
                                             i_16_ = 36;
-                                        OverlayDefinition.addActionRow(class1s[i_15_], item.itemId, x, y, i_16_, Native.aClass1_1114 +  itemDefinition.name);
+                                        OverlayDefinition.addActionRow(class1s[i_15_], item.itemId, x, y, i_16_, Native.lightRed +  itemDefinition.name);
                                     }
                                 }
-                                OverlayDefinition.addActionRow(English.examine, item.itemId, x, y, 1003, Native.aClass1_1114 + itemDefinition.name);
+                                OverlayDefinition.addActionRow(English.examine, item.itemId, x, y, 1003, Native.lightRed + itemDefinition.name);
                             } else if ((0x1 & ItemDefinition.selectedMask) == 1) {
-                                OverlayDefinition.addActionRow(Native.aClass1_1918, item.itemId, x, y, 15, Native.aClass1_611 + Native.aClass1_206 + itemDefinition.name);
+                                OverlayDefinition.addActionRow(Native.aClass1_1918, item.itemId, x, y, 15, Native.aClass1_611 + Native.toLightRed + itemDefinition.name);
                             }
                         }
                     }
@@ -207,9 +206,9 @@ public class Class64 implements Runnable {
 
     public static void method1015() {
         synchronized (GameObject.frame) {
-            SpotAnimDefinition.mouseButtonPressed = MemoryCache.mouseButtonPressed;
+            SpotAnimDefinition.mouseButtonPressed = MovedStatics.mouseButtonPressed;
             Class13.mouseX = Class12.eventMouseX;
-            Landscape.mouseY = MemoryCache.eventMouseY;
+            Landscape.mouseY = MovedStatics.eventMouseY;
             MouseHandler.clickType = Actor.eventMouseButtonPressed;
             Class57.clickX = Class55.eventClickX;
             RSString.clickY = Class40_Sub5_Sub11.eventClickY;
