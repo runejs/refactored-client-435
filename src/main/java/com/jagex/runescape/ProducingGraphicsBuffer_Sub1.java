@@ -9,6 +9,7 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
+import com.jagex.runescape.media.renderable.actor.Player;
 
 import java.awt.*;
 import java.awt.image.*;
@@ -62,12 +63,12 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
                 i--;
             else
                 i -= 101;
-            OverlayDefinition.addActionRow(English.remove, 0, 0, 0, 13, Native.aClass1_620+ ClientScriptRunner.friendUsernames[i]);
-            OverlayDefinition.addActionRow(English.message, 0, 0, 0, 18, Native.aClass1_620+ ClientScriptRunner.friendUsernames[i]);
+            OverlayDefinition.addActionRow(English.remove, 0, 0, 0, 13, Native.white + Player.friendUsernames[i]);
+            OverlayDefinition.addActionRow(English.message, 0, 0, 0, 18, Native.white + Player.friendUsernames[i]);
             return true;
         }
         if(i >= 401 && i <= 500) {
-            OverlayDefinition.addActionRow(English.remove, 0, 0, 0, 35, Native.aClass1_620+ arg1.disabledText);
+            OverlayDefinition.addActionRow(English.remove, 0, 0, 0, 35, Native.white + arg1.disabledText);
             return true;
         }
         return false;

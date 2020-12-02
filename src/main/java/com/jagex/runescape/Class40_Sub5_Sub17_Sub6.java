@@ -3,7 +3,6 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -84,7 +83,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                 if((VertexNormal.lowMemory && Player.localPlayerCount > 50 || Player.localPlayerCount > 200) && !arg1 && player.anInt3077 == player.idleAnimation)
                     player.aBoolean3287 = true;
                 if(i_2_ >= 0 && i_2_ < 104 && i_3_ >= 0 && i_3_ < 104) {
-                    if(player.playerModel != null && player.anInt3283 <= Node.pulseCycle && Node.pulseCycle < player.anInt3274) {
+                    if(player.playerModel != null && player.anInt3283 <= MovedStatics.pulseCycle && MovedStatics.pulseCycle < player.anInt3274) {
                         player.aBoolean3287 = false;
                         player.anInt3276 = Class37.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
                         Npc.currentScene.method112(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.anInt3258, player.anInt3281, player.anInt3262, player.anInt3289);

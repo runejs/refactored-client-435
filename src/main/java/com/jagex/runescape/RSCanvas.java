@@ -1,6 +1,5 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.cs.ClientScript;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -38,7 +37,7 @@ public class RSCanvas extends Canvas {
     }
 
     public static void method46(int arg0) {
-        MemoryCache.method233(true);
+        MovedStatics.method233(true);
         CacheIndex.method189(false);
         GameInterface.method640();
         GameInterface.method645();
@@ -51,19 +50,19 @@ public class RSCanvas extends Canvas {
         Class51.method941();
         Actor.method783();
         ((Class35) Rasterizer3D.anInterface3_2939).method422(arg0);
-        ClientScript.clientScriptCache.method235();
-        MemoryCache.skeletonCacheIndex.method191(1120);
-        MemoryCache.skinDefinitionCacheIndex.method191(1120);
-        MemoryCache.gameInterfaceCacheIndex.method191(arg0 + 1120);
-        MemoryCache.soundEffectCacheIndex.method191(1120);
-        MemoryCache.gameWorldMapCacheIndex.method191(1120);
-        MemoryCache.musicCacheIndex.method191(1120);
-        MemoryCache.modelCacheIndex.method191(1120);
-        MemoryCache.gameImageCacheIndex.method191(arg0 ^ 0x460);
-        MemoryCache.gameTextureCacheIndex.method191(1120);
-        MemoryCache.huffmanCacheIndex.method191(arg0 + 1120);
-        MemoryCache.jingleCacheIndex.method191(1120);
-        MemoryCache.clientScriptCacheIndex.method191(1120);
+        ClientScript.clientScriptCache.clear();
+        CacheIndex.skeletonCacheIndex.method191(1120);
+        CacheIndex.skinDefinitionCacheIndex.method191(1120);
+        CacheIndex.gameInterfaceCacheIndex.method191(arg0 + 1120);
+        CacheIndex.soundEffectCacheIndex.method191(1120);
+        CacheIndex.gameWorldMapCacheIndex.method191(1120);
+        CacheIndex.musicCacheIndex.method191(1120);
+        CacheIndex.modelCacheIndex.method191(1120);
+        CacheIndex.gameImageCacheIndex.method191(arg0 ^ 0x460);
+        CacheIndex.gameTextureCacheIndex.method191(1120);
+        CacheIndex.huffmanCacheIndex.method191(arg0 + 1120);
+        CacheIndex.jingleCacheIndex.method191(1120);
+        CacheIndex.clientScriptCacheIndex.method191(1120);
     }
 
     public void paint(Graphics arg0) {

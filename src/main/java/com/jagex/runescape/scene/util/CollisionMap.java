@@ -199,7 +199,7 @@ public class CollisionMap {
                     renderable = gameObjectDefinition.getGameObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
                 else
                     renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
-                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, Class27.anIntArray666[arg7] * i_14_, ProducingGraphicsBuffer_Sub1.anIntArray2207[arg7] * i_14_, 512 * arg7, i_5_, renderable, i_4_, SceneCluster.anIntArray761[arg7]);
+                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, MovedStatics.anIntArray666[arg7] * i_14_, ProducingGraphicsBuffer_Sub1.anIntArray2207[arg7] * i_14_, 512 * arg7, i_5_, renderable, i_4_, SceneCluster.anIntArray761[arg7]);
             } else if (arg6 == -22078) {
                 if (arg4 == 6) {
                     Renderable renderable;

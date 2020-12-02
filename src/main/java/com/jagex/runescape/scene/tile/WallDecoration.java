@@ -1,11 +1,10 @@
 package com.jagex.runescape.scene.tile;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.TypeFace;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
@@ -25,9 +24,9 @@ import com.jagex.runescape.scene.InteractiveObject;
 import java.awt.*;
 
 public class WallDecoration {
-    public static MemoryCache aClass9_1247 = new MemoryCache(64);
+    public static NodeCache aClass9_1247 = new NodeCache(64);
     public static int anInt1257 = 0;
-    public static MemoryCache aClass9_1264 = new MemoryCache(50);
+    public static NodeCache aClass9_1264 = new NodeCache(50);
     public static TypeFace fontNormal;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1270;
 
@@ -128,7 +127,7 @@ public class WallDecoration {
                 if (i_27_ >= 0 && i_28_ >= 0 && i_27_ < 104 && i_28_ < 104) {
                     i_28_ = 128 * i_28_ + 64;
                     i_27_ = i_27_ * 128 + 64;
-                    Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = new Class40_Sub5_Sub17_Sub6(i_29_, Player.worldLevel, i_27_, i_28_, -i_30_ + Class37.getFloorDrawHeight(Player.worldLevel, i_27_, i_28_), i_31_, Node.pulseCycle);
+                    Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = new Class40_Sub5_Sub17_Sub6(i_29_, Player.worldLevel, i_27_, i_28_, -i_30_ + Class37.getFloorDrawHeight(Player.worldLevel, i_27_, i_28_), i_31_, MovedStatics.pulseCycle);
                     Class57.aLinkedList_1332.pushBack(class40_sub5_sub17_sub6, -111);
                 }
             } else if (IncomingPackets.incomingPacket == 99) {
@@ -201,10 +200,10 @@ public class WallDecoration {
                                 i_44_ = i_62_;
                             }
                             GameObjectDefinition.method609(-1, i_52_, 0, 1 + i_56_, Player.worldLevel, i_51_, i_49_, 0, 1 + i_53_);
-                            class40_sub5_sub17_sub4_sub1.anInt3274 = i_56_ + Node.pulseCycle;
+                            class40_sub5_sub17_sub4_sub1.anInt3274 = i_56_ + MovedStatics.pulseCycle;
                             int i_63_ = gameObjectDefinition.sizeX;
                             class40_sub5_sub17_sub4_sub1.playerModel = class40_sub5_sub17_sub5;
-                            class40_sub5_sub17_sub4_sub1.anInt3283 = i_53_ + Node.pulseCycle;
+                            class40_sub5_sub17_sub4_sub1.anInt3283 = i_53_ + MovedStatics.pulseCycle;
                             int i_64_ = gameObjectDefinition.sizeY;
                             if (i_47_ == 1 || i_47_ == 3) {
                                 i_64_ = gameObjectDefinition.sizeX;
@@ -230,7 +229,7 @@ public class WallDecoration {
                         if (linkedList != null) {
                             for (Item item = (Item) linkedList.method902((byte) -90); item != null; item = (Item) linkedList.method909(-4)) {
                                 if ((0x7fff & i_67_) == item.itemId) {
-                                    item.remove(-1);
+                                    item.remove();
                                     break;
                                 }
                             }
@@ -257,9 +256,9 @@ public class WallDecoration {
                         i_70_ = 64 + 128 * i_70_;
                         i_69_ = 64 + 128 * i_69_;
                         i_68_ = i_68_ * 128 + 64;
-                        Class40_Sub5_Sub17_Sub1 class40_sub5_sub17_sub1 = new Class40_Sub5_Sub17_Sub1(i_73_, Player.worldLevel, i_69_, i_68_, Class37.getFloorDrawHeight(Player.worldLevel, i_69_, i_68_) + -i_74_, i_76_ + Node.pulseCycle, i_77_ + Node.pulseCycle, i_78_, i_79_, i_72_, i_75_);
+                        Class40_Sub5_Sub17_Sub1 class40_sub5_sub17_sub1 = new Class40_Sub5_Sub17_Sub1(i_73_, Player.worldLevel, i_69_, i_68_, Class37.getFloorDrawHeight(Player.worldLevel, i_69_, i_68_) + -i_74_, i_76_ + MovedStatics.pulseCycle, i_77_ + MovedStatics.pulseCycle, i_78_, i_79_, i_72_, i_75_);
                         i_71_ = 128 * i_71_ + 64;
-                        class40_sub5_sub17_sub1.method766(i_76_ + Node.pulseCycle, 0, i_71_, -i_75_ + Class37.getFloorDrawHeight(Player.worldLevel, i_70_, i_71_), i_70_);
+                        class40_sub5_sub17_sub1.method766(i_76_ + MovedStatics.pulseCycle, 0, i_71_, -i_75_ + Class37.getFloorDrawHeight(Player.worldLevel, i_70_, i_71_), i_70_);
                         Class43.aLinkedList_1022.pushBack(class40_sub5_sub17_sub1, -73);
                     }
                 } else {
@@ -364,9 +363,9 @@ public class WallDecoration {
                     arg1.drawShadowedStringCenter(Native.loginScreenMessageLineThree, 180, i, 16776960, true);
                     i += 15;
                     i += 10;
-                    arg1.drawShadowedString(English.username + Native.username + (Node.pulseCycle % 40 < 20 & Node.loginScreenFocus == 0 ? Native.aClass1_2447 : ""), 90, i, true, 16777215);
+                    arg1.drawShadowedString(English.username + Native.username + (MovedStatics.pulseCycle % 40 < 20 & MovedStatics.loginScreenFocus == 0 ? Native.justAnotherYellowBar : ""), 90, i, true, 16777215);
                     i += 15;
-                    arg1.drawShadowedString(English.password + Native.password.method61() + (Node.pulseCycle % 40 < 20 & Node.loginScreenFocus == 1 ? Native.aClass1_2447 : ""), 92, i, true, 16777215);
+                    arg1.drawShadowedString(English.password + Native.password.method61() + (MovedStatics.pulseCycle % 40 < 20 & MovedStatics.loginScreenFocus == 1 ? Native.justAnotherYellowBar : ""), 92, i, true, 16777215);
                     Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
                     i += 15;
                     arg1.drawShadowedStringCenter(English.login, i_90_, i_91_ + 5, 16777215, true);

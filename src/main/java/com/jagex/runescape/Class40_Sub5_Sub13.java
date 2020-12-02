@@ -3,17 +3,17 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
+import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.scene.tile.GenericTile;
 
 import java.awt.*;
 
-public class Class40_Sub5_Sub13 extends SubNode {
+public class Class40_Sub5_Sub13 extends CachedNode {
     public static Buffer aClass40_Sub1_2752;
     public static IndexedImage[] moderatorIcon;
     public static Model[] aClass40_Sub5_Sub17_Sub5Array2762 = new Model[4];
@@ -58,20 +58,20 @@ public class Class40_Sub5_Sub13 extends SubNode {
             if(class40_sub3.anInt2031 > 0)
                 class40_sub3.anInt2031--;
             if(class40_sub3.anInt2031 == 0) {
-                if(class40_sub3.anInt2028 < 0 || Node.method459(class40_sub3.anInt2036, class40_sub3.anInt2028, (byte) 103)) {
+                if(class40_sub3.anInt2028 < 0 || MovedStatics.method459(class40_sub3.anInt2036, class40_sub3.anInt2028, (byte) 103)) {
                     GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039, class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
-                    class40_sub3.remove(-1);
+                    class40_sub3.remove();
                 }
             } else {
                 if(class40_sub3.anInt2033 > 0)
                     class40_sub3.anInt2033--;
-                if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 && class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 && (class40_sub3.anInt2017 < 0 || Node.method459(class40_sub3.anInt2030, class40_sub3.anInt2017, (byte) 106))) {
+                if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 && class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 && (class40_sub3.anInt2017 < 0 || MovedStatics.method459(class40_sub3.anInt2030, class40_sub3.anInt2017, (byte) 106))) {
                     GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
                     class40_sub3.anInt2033 = -1;
                     if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2028 == -1)
-                        class40_sub3.remove(-1);
+                        class40_sub3.remove();
                     else if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2025 == class40_sub3.anInt2035 && class40_sub3.anInt2030 == class40_sub3.anInt2036)
-                        class40_sub3.remove(-1);
+                        class40_sub3.remove();
                 }
             }
         }

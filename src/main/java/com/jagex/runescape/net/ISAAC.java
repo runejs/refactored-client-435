@@ -1,7 +1,7 @@
 package com.jagex.runescape.net;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
@@ -26,9 +26,9 @@ public class ISAAC {
     private static final int GOLDEN_RATIO = 0x9e3779b9;
 
     public static int anInt509 = 0;
-    public static MemoryCache cachedActorDefinitions = new MemoryCache(64);
+    public static NodeCache cachedActorDefinitions = new NodeCache(64);
     public static boolean aBoolean512;
-    public static MemoryCache aClass9_516 = new MemoryCache(64);
+    public static NodeCache aClass9_516 = new NodeCache(64);
     public static boolean aBoolean519 = true;
     public static Signlink aClass31_521;
     public static int anInt522 = -1;
@@ -403,7 +403,7 @@ public class ISAAC {
                 class40_sub3.anInt2033 = 0;
                 Class39.method451(class40_sub3, 19813);
             } else
-                class40_sub3.remove(arg0 ^ ~0x76);
+                class40_sub3.remove();
         }
     }
 

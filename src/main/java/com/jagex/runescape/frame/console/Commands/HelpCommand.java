@@ -1,9 +1,5 @@
 package com.jagex.runescape.frame.console.Commands;
 
-import com.jagex.runescape.Class27;
-import com.jagex.runescape.Class34;
-import com.jagex.runescape.Landscape;
-import com.jagex.runescape.RSString;
 import com.jagex.runescape.frame.console.Command;
 import com.jagex.runescape.frame.console.Console;
 

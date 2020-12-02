@@ -112,7 +112,7 @@ public class ChatBox {
                                 Class40_Sub5_Sub13.moderatorIcon[1].drawImage(x, y - 12);
                                 x += 14;
                             }
-                            typeFace.drawString(name+ Native.char_colon, x, y, 0);
+                            typeFace.drawString(name+ Native.colon, x, y, 0);
                             x += 8 + typeFace.getStringWidth(name);
                             typeFace.drawString(chatMessages[i], x, y, 255);
                         }
@@ -133,7 +133,7 @@ public class ChatBox {
                                 Class40_Sub5_Sub13.moderatorIcon[1].drawImage(i_13_, y - 12);
                                 i_13_ += 14;
                             }
-                            typeFace.drawString(name + Native.char_colon, i_13_, y, 0);
+                            typeFace.drawString(name + Native.colon, i_13_, y, 0);
                             i_13_ += 8 + typeFace.getStringWidth(name);
                             typeFace.drawString(chatMessages[i], i_13_, y, 8388608);
                         }
@@ -150,7 +150,7 @@ public class ChatBox {
                     }
                     if(type == 6 && CollisionMap.anInt165 == 0 && privateChatMode < 2) {
                         if(y > 0 && y < 110) {
-                            typeFace.drawString(English.to + Native.aClass1_1123 + name + Native.char_colon, 4, y, 0);
+                            typeFace.drawString(English.to + Native.aClass1_1123 + name + Native.colon, 4, y, 0);
                             typeFace.drawString(chatMessages[i], typeFace.getStringWidth(English.to + Native.aClass1_1123 + name) + 12, y, 8388608);
                         }
                         line++;
@@ -172,7 +172,7 @@ public class ChatBox {
                 name = Player.localPlayer.playerName;
             else
                 name = Native.username.toString();
-            typeFace.drawString(name + Native.char_colon, 4, 90, 0);
+            typeFace.drawString(name + Native.colon, 4, 90, 0);
             typeFace.drawBasicStringLegacy("@blu@" + chatboxInput + Native.aClass1_478, typeFace.getStringWidth(name + Native.aClass1_515) + 6, 90);
             Rasterizer.drawHorizontalLine(0, 77, 479, 0);
         } else {

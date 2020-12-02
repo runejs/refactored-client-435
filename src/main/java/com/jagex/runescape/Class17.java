@@ -40,21 +40,21 @@ public class Class17 {
         Landscape.anInt1157 = 0;
         PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
         for(; ; ) {
-            Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class37.aClass23_869.method329(false);
+            Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class37.aClass23_869.method329();
             if(class40_sub5_sub13 == null)
                 break;
-            Class51.aClass23_1194.put(class40_sub5_sub13, (byte) 126, class40_sub5_sub13.key);
+            Class51.aClass23_1194.put(class40_sub5_sub13.key, class40_sub5_sub13);
             anInt464--;
             ProducingGraphicsBuffer.anInt1618++;
         }
         for(; ; ) {
-            Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class34.aClass23_841.method329(false);
+            Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class34.aClass23_841.method329();
             if(class40_sub5_sub13 == null)
                 break;
-            InteractiveObject.aClass27_485.method367(true, class40_sub5_sub13);
-            GameObjectDefinition.aClass23_2545.put(class40_sub5_sub13, (byte) -121, class40_sub5_sub13.key);
+            InteractiveObject.aNodeQueue_485.unshift(class40_sub5_sub13);
+            GameObjectDefinition.aClass23_2545.put(class40_sub5_sub13.key, class40_sub5_sub13);
             Class42.anInt1006--;
-            HashTable.anInt554++;
+            MovedStatics.anInt554++;
         }
         if(Class8.aByte302 != 0) {
             try {

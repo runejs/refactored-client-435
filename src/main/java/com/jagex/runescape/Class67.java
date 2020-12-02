@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.MemoryCache;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.input.KeyFocusListener;
 
@@ -14,7 +14,7 @@ public class Class67 {
     public static int anInt1586 = -1;
     public static boolean reportMutePlayer = false;
     public static int anInt1607 = 10;
-    public static MemoryCache aClass9_1611 = new MemoryCache(50);
+    public static NodeCache aClass9_1611 = new NodeCache(50);
     public static long[] aLongArray1614 = new long[32];
 
     public long aLong1578;

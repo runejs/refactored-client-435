@@ -1,6 +1,5 @@
 package com.jagex.runescape.scene;
 
-import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.media.renderable.Renderable;
 
@@ -8,7 +7,6 @@ public class GroundItemTile {
     public static boolean loadGeneratedMap = false;
     public static int selectedInventorySlot = 0;
     public static int[] anIntArray1358 = new int[5];
-    public static MemoryCache aClass9_1364 = new MemoryCache(64);
     public static byte[][] aByteArrayArray1370;
     public static int cameraHorizontal = 0;
     public static CacheIndex aCacheIndex_1375;

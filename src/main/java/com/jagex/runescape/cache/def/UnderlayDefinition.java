@@ -9,10 +9,11 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.util.TextUtils;
 
-public class UnderlayDefinition extends SubNode {
+public class UnderlayDefinition extends CachedNode {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
     public static int anInt2576;
     public static int anInt2581;
@@ -52,7 +53,7 @@ public class UnderlayDefinition extends SubNode {
                     }
                 }
                 if(!username.equals(Player.localPlayer.playerName)) {
-                    ClientScriptRunner.friendUsernames[Player.friendsCount] = username;
+                    Player.friendUsernames[Player.friendsCount] = username;
                     Class59.friends[Player.friendsCount] = name;
                     Player.friendWorlds[Player.friendsCount] = 0;
                     Player.friendsCount++;

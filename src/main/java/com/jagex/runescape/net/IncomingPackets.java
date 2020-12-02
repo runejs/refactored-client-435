@@ -1,14 +1,12 @@
 package com.jagex.runescape.net;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.cache.media.gameInterface.InterfaceModelType;
 import com.jagex.runescape.cache.media.gameInterface.GameInterfaceType;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
@@ -109,9 +107,9 @@ public class IncomingPackets {
                 return false;
             incomingPacketBuffer.currentPosition = 0;
             Class40_Sub6.gameConnection.method1008(0, incomingPacketSize, -128, incomingPacketBuffer.buffer);
-            Class49.anInt1151 = MemoryCache.anInt324;
+            Class49.anInt1151 = MovedStatics.anInt324;
             Class35.anInt1728 = 0;
-            MemoryCache.anInt324 = RSString.anInt1690;
+            MovedStatics.anInt324 = RSString.anInt1690;
             RSString.anInt1690 = incomingPacket;
             if(incomingPacket == 71) {
                 long l = incomingPacketBuffer.getLongBE();
@@ -142,7 +140,7 @@ public class IncomingPackets {
                 boolean bool = false;
                 if(string != null && Player.friendsCount < 200) {
                     Class59.friends[Player.friendsCount] = l;
-                    ClientScriptRunner.friendUsernames[Player.friendsCount] = string;
+                    Player.friendUsernames[Player.friendsCount] = string;
                     Player.friendWorlds[Player.friendsCount] = i_1_;
                     Player.friendsCount++;
                     GameInterface.redrawTabArea = true;
@@ -155,9 +153,9 @@ public class IncomingPackets {
                             int i_4_ = Player.friendWorlds[i_3_];
                             Player.friendWorlds[i_3_] = Player.friendWorlds[i_3_ + 1];
                             Player.friendWorlds[1 + i_3_] = i_4_;
-                            String class1_5_ = ClientScriptRunner.friendUsernames[i_3_];
-                            ClientScriptRunner.friendUsernames[i_3_] = ClientScriptRunner.friendUsernames[1 + i_3_];
-                            ClientScriptRunner.friendUsernames[1 + i_3_] = class1_5_;
+                            String class1_5_ = Player.friendUsernames[i_3_];
+                            Player.friendUsernames[i_3_] = Player.friendUsernames[1 + i_3_];
+                            Player.friendUsernames[1 + i_3_] = class1_5_;
                             long l_6_ = Class59.friends[i_3_];
                             Class59.friends[i_3_] = Class59.friends[i_3_ + 1];
                             Class59.friends[1 + i_3_] = l_6_;
@@ -288,7 +286,7 @@ public class IncomingPackets {
             if(arg0)
                 CollisionMap.anInt172 = -96;
             if(incomingPacket == 235) {
-                Class27.minimapState = incomingPacketBuffer.getUnsignedByte();
+                MovedStatics.minimapState = incomingPacketBuffer.getUnsignedByte();
                 incomingPacket = -1;
                 return true;
             }
@@ -299,8 +297,8 @@ public class IncomingPackets {
             }
             if(incomingPacket == 82) {
                 String message = incomingPacketBuffer.getString();
-                if(message.endsWith(Native.requestcmd_tradereq)) {
-                    String class1_32_ = message.substring(0, message.indexOf(Native.char_colon));
+                if(message.endsWith(Native.tradeRequest)) {
+                    String class1_32_ = message.substring(0, message.indexOf(Native.colon));
                     long l = RSString.nameToLong(class1_32_);
                     boolean bool = false;
                     for(int i_33_ = 0; i_33_ < Class42.anInt1008; i_33_++) {
@@ -311,8 +309,8 @@ public class IncomingPackets {
                     }
                     if(!bool && !Player.inTutorialIsland)
                         ChatBox.addChatMessage(class1_32_, "wishes to trade with you.", 4);
-                } else if(message.endsWith(Native.requestcmd_duelreq)) {
-                    String class1_30_ = message.substring(0, message.indexOf(Native.char_colon));
+                } else if(message.endsWith(Native.duelRequest)) {
+                    String class1_30_ = message.substring(0, message.indexOf(Native.colon));
                     long l = RSString.nameToLong(class1_30_);
                     boolean bool = false;
                     for(int i_31_ = 0; Class42.anInt1008 > i_31_; i_31_++) {
@@ -323,8 +321,8 @@ public class IncomingPackets {
                     }
                     if(!bool && !Player.inTutorialIsland)
                         ChatBox.addChatMessage(class1_30_, English.suffixWishesToDuelWithYou, 8);
-                } else if(message.endsWith(Native.requestcmd_chalreq)) {
-                    String class1_27_ = message.substring(0, message.indexOf(Native.char_colon));
+                } else if(message.endsWith(Native.challengeRequest)) {
+                    String class1_27_ = message.substring(0, message.indexOf(Native.colon));
                     long l = RSString.nameToLong(class1_27_);
                     boolean bool = false;
                     for(int i_28_ = 0; i_28_ < Class42.anInt1008; i_28_++) {
@@ -334,7 +332,7 @@ public class IncomingPackets {
                         }
                     }
                     if(!bool && !Player.inTutorialIsland) {
-                        String class1_29_ = message.substring(1 + message.indexOf(Native.char_colon), -9 + message.length());
+                        String class1_29_ = message.substring(1 + message.indexOf(Native.colon), -9 + message.length());
                         ChatBox.addChatMessage(class1_27_, class1_29_, 8);
                     }
                 } else {
@@ -725,7 +723,7 @@ public class IncomingPackets {
                 ChatBox.privateChatMode = incomingPacketBuffer.getUnsignedByte();
                 ChatBox.tradeMode = incomingPacketBuffer.getUnsignedByte();
                 ChatBox.redrawChatbox = true;
-                MemoryCache.redrawChatbox = true;
+                MovedStatics.redrawChatbox = true;
                 incomingPacket = -1;
                 return true;
             }
@@ -803,13 +801,13 @@ public class IncomingPackets {
             }
             if(incomingPacket == 234) {
                 Player.cutsceneActive = true;
-                HashTable.anInt564 = incomingPacketBuffer.getUnsignedByte();
+                MovedStatics.anInt564 = incomingPacketBuffer.getUnsignedByte();
                 UnderlayDefinition.anInt2576 = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.anInt892 = incomingPacketBuffer.getUnsignedShortBE();
                 Class60.anInt1413 = incomingPacketBuffer.getUnsignedByte();
                 Class22_Sub1.anInt1856 = incomingPacketBuffer.getUnsignedByte();
                 if(Class22_Sub1.anInt1856 >= 100) {
-                    int i_69_ = 128 * HashTable.anInt564 + 64;
+                    int i_69_ = 128 * MovedStatics.anInt564 + 64;
                     int i_70_ = 128 * UnderlayDefinition.anInt2576 + 64;
                     int i_71_ = Class37.getFloorDrawHeight(Player.worldLevel, i_69_, i_70_) - MovedStatics.anInt892;
                     int i_72_ = i_69_ + -Class12.cameraX;
@@ -1155,12 +1153,12 @@ public class IncomingPackets {
                 ChatBox.messagePromptRaised = false;
                 return true;
             }
-            CacheIndex.method169("T1 - " + incomingPacket + "," + MemoryCache.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize, (byte) -121, null);
+            CacheIndex.method169("T1 - " + incomingPacket + "," + MovedStatics.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize, (byte) -121, null);
             Class48.logout(-7225);
         } catch(java.io.IOException ioexception) {
             Class59.dropClient();
         } catch(Exception exception) {
-            String string = "T2 - " + incomingPacket + "," + MemoryCache.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize + "," + (SpotAnimDefinition.baseX + Player.localPlayer.pathY[0]) + "," + (Player.localPlayer.pathX[0] + Class26.baseY) + " - ";
+            String string = "T2 - " + incomingPacket + "," + MovedStatics.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize + "," + (SpotAnimDefinition.baseX + Player.localPlayer.pathY[0]) + "," + (Player.localPlayer.pathX[0] + Class26.baseY) + " - ";
             for(int i = 0; incomingPacketSize > i && i < 50; i++)
                 string += incomingPacketBuffer.buffer[i] + ",";
             CacheIndex.method169(string, (byte) -120, exception);
@@ -1179,7 +1177,7 @@ public class IncomingPackets {
         Npc.parseNpcUpdateMasks();
         for(int i = 0; i < Class17.deregisterActorCount; i++) {
             int trackedNpcIndex = Player.deregisterActorIndices[i];
-            if(Node.pulseCycle != Player.npcs[trackedNpcIndex].anInt3134) {
+            if(MovedStatics.pulseCycle != Player.npcs[trackedNpcIndex].anInt3134) {
                 Player.npcs[trackedNpcIndex].actorDefinition = null;
                 Player.npcs[trackedNpcIndex] = null;
             }
@@ -1201,7 +1199,7 @@ public class IncomingPackets {
         Player.parseTrackedPlayerUpdateMasks();
         for(int i = 0; Class17.deregisterActorCount > i; i++) {
             int trackedPlayerIndex = Player.deregisterActorIndices[i];
-            if(Node.pulseCycle != Player.trackedPlayers[trackedPlayerIndex].anInt3134)
+            if(MovedStatics.pulseCycle != Player.trackedPlayers[trackedPlayerIndex].anInt3134)
                 Player.trackedPlayers[trackedPlayerIndex] = null;
         }
         if(incomingPacketSize != incomingPacketBuffer.currentPosition)

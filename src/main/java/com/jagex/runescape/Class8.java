@@ -53,9 +53,9 @@ public class Class8 {
     }
 
     public static void method211() {
-        ISAAC.aClass9_516.method235();
-        MouseHandler.modelCache.method235();
-        Buffer.rgbImageCache.method235();
+        ISAAC.aClass9_516.clear();
+        MouseHandler.modelCache.clear();
+        Buffer.rgbImageCache.clear();
 
     }
 

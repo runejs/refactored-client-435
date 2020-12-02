@@ -1,7 +1,6 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.cache.MemoryCache;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -9,6 +8,7 @@ import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.node.HashTable;
 import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.WallDecoration;
 
@@ -65,14 +65,14 @@ public class Class51 {
     }
 
     public static void method941() {
-        CacheIndex.modelCache.method235();
+        CacheIndex.modelCache.clear();
     }
 
     public static void method942(int arg1) {
         if(arg1 == -1 && Class35.songTimeout == 0)
             Class33.method402(false);
         else if(arg1 != -1 && arg1 != MouseHandler.anInt1457 && RSCanvas.anInt60 != 0 && Class35.songTimeout == 0)
-            Class33.method403(RSCanvas.anInt60, true, 10, arg1, MemoryCache.musicCacheIndex, 0, 0, false);
+            Class33.method403(RSCanvas.anInt60, true, 10, arg1, CacheIndex.musicCacheIndex, 0, 0, false);
         MouseHandler.anInt1457 = arg1;
     }
 }

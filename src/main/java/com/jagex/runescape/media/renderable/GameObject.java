@@ -7,7 +7,6 @@ import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
@@ -47,7 +46,7 @@ public class GameObject extends Renderable {
         if(arg7 != -1) {
             animationSequence = ProducingGraphicsBuffer_Sub1.method1050(arg7, 2);
             animationFrame = 0;
-            animationCycleDelay = -1 + Node.pulseCycle;
+            animationCycleDelay = -1 + MovedStatics.pulseCycle;
             if(arg8 && animationSequence.frameStep != -1) {
                 animationFrame = (int) ((double) animationSequence.frameIds.length * Math.random());
                 animationCycleDelay -= (int) (Math.random() * (double) animationSequence.frameLengths[animationFrame]);
@@ -58,7 +57,7 @@ public class GameObject extends Renderable {
     public static IndexedImage method769(int arg0, CacheIndex arg1, int arg2) {
         if(!Buffer.method472(arg1, arg2))
             return null;
-        return SubNode.method538(0);
+        return MovedStatics.method538(0);
     }
 
 
@@ -144,14 +143,14 @@ public class GameObject extends Renderable {
     }
 
     public static void method774(byte arg0) {
-        Buffer.rgbImageCache.method235();
+        Buffer.rgbImageCache.clear();
         if(arg0 != -96)
-            Native.aClass1_3047 = null;
+            Native.mapFunction = null;
     }
 
     public Model getRotatedModel() {
         if(animationSequence != null) {
-            int step = -animationCycleDelay + Node.pulseCycle;
+            int step = -animationCycleDelay + MovedStatics.pulseCycle;
             if(step > 100 && animationSequence.frameStep > 0)
                 step = 100;
             while(animationSequence.frameLengths[animationFrame] < step) {
@@ -165,7 +164,7 @@ public class GameObject extends Renderable {
                     }
                 }
             }
-            animationCycleDelay = Node.pulseCycle - step;
+            animationCycleDelay = MovedStatics.pulseCycle - step;
         }
         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(id);
         if(gameObjectDefinition.configChangeDest != null)

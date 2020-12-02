@@ -2,24 +2,28 @@ package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.node.HashTable;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import tech.henning.fourthreefive.OldEngine.ObjectDecompressor;
 
 import java.io.IOException;
 
-public class GameObjectDefinition extends SubNode implements EntityDefinition {
+public class GameObjectDefinition extends CachedNode implements EntityDefinition {
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2524;
     public static int anInt2543 = 0;
     public static HashTable aClass23_2545 = new HashTable(4096);
     public static int lastClickY = 0;
     public static long aLong2561 = 0L;
     public static int count;
+    public static NodeCache gameObjectCache = new NodeCache(64);
 
     public int anInt2499;
     public int offsetX;
@@ -143,11 +147,11 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
     }
 
     public static GameObjectDefinition getDefinition(int arg0) {
-        GameObjectDefinition gameObjectDefinition = (GameObjectDefinition) GroundItemTile.aClass9_1364.get(arg0);
+        GameObjectDefinition gameObjectDefinition = (GameObjectDefinition) gameObjectCache.get(arg0);
         if(gameObjectDefinition != null) {
             return gameObjectDefinition;
         }
-        byte[] is = Class40_Sub3.aCacheIndex_2037.getFile(arg0, 6);
+        byte[] is = CacheIndex.definitionCache.getFile(arg0, 6);
         gameObjectDefinition = new GameObjectDefinition();
         gameObjectDefinition.id = arg0;
         if(is == null) {
@@ -168,7 +172,7 @@ public class GameObjectDefinition extends SubNode implements EntityDefinition {
             gameObjectDefinition.solid = false;
             gameObjectDefinition.walkable = false;
         }
-        GroundItemTile.aClass9_1364.put(arg0, gameObjectDefinition);
+        gameObjectCache.put(arg0, gameObjectDefinition);
         return gameObjectDefinition;
     }
 

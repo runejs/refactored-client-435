@@ -5,7 +5,6 @@ import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.input.MouseHandler;
@@ -166,20 +165,20 @@ public class Npc extends Actor {
                 if(InteractiveObject.anInt487 > 0)
                     InteractiveObject.anInt487--;
                 if(Item.obfuscatedKeyStatus[96] || Item.obfuscatedKeyStatus[97] || Item.obfuscatedKeyStatus[98] || Item.obfuscatedKeyStatus[99])
-                    HashTable.aBoolean565 = true;
-                if(HashTable.aBoolean565 && InteractiveObject.anInt487 <= 0) {
+                    MovedStatics.aBoolean565 = true;
+                if(MovedStatics.aBoolean565 && InteractiveObject.anInt487 <= 0) {
                     InteractiveObject.anInt487 = 20;
-                    HashTable.aBoolean565 = false;
+                    MovedStatics.aBoolean565 = false;
                     SceneCluster.packetBuffer.putPacket(58);
                     SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
                     SceneCluster.packetBuffer.putShortBE(Class65.cameraVertical);
                 }
-                if(HashTable.aBoolean571 && !Class35.aBoolean1735) {
+                if(MovedStatics.aBoolean571 && !Class35.aBoolean1735) {
                     Class35.aBoolean1735 = true;
                     SceneCluster.packetBuffer.putPacket(160);
                     SceneCluster.packetBuffer.putByte(1);
                 }
-                if(!HashTable.aBoolean571 && Class35.aBoolean1735) {
+                if(!MovedStatics.aBoolean571 && Class35.aBoolean1735) {
                     Class35.aBoolean1735 = false;
                     SceneCluster.packetBuffer.putPacket(160);
                     SceneCluster.packetBuffer.putByte(0);
@@ -264,7 +263,7 @@ public class Npc extends Actor {
                                     if((ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend((byte) 63, ActorDefinition.menuActionRow - 1)) && ActorDefinition.menuActionRow > 2)
                                         Class60.determineMenuSize();
                                     else if(ActorDefinition.menuActionRow > 0)
-                                        Class27.processMenuActions(123, -1 + ActorDefinition.menuActionRow);
+                                        GameInterface.processMenuActions(123, -1 + ActorDefinition.menuActionRow);
                                 }
                                 RSRuntimeException.anInt1651 = 10;
                                 MouseHandler.clickType = 0;
@@ -297,27 +296,27 @@ public class Npc extends Actor {
                             anInt3294++;
                         int i = 34;
                         if(GameInterface.gameScreenInterfaceId != -1)
-                            Class27.method360((byte) 125, 516, i, 338, GameInterface.gameScreenInterfaceId, 4, 4);
+                            GameInterface.method360((byte) 125, 516, i, 338, GameInterface.gameScreenInterfaceId, 4, 4);
                         if(GameInterface.tabAreaInterfaceId == -1) {
                             if(Player.tabWidgetIds[Player.currentTabId] != -1)
-                                Class27.method360((byte) 125, 743, i, 466, Player.tabWidgetIds[Player.currentTabId], 205, 553);
+                                GameInterface.method360((byte) 125, 743, i, 466, Player.tabWidgetIds[Player.currentTabId], 205, 553);
                         } else
-                            Class27.method360((byte) 125, 743, i, 466, GameInterface.tabAreaInterfaceId, 205, 553);
+                            GameInterface.method360((byte) 125, 743, i, 466, GameInterface.tabAreaInterfaceId, 205, 553);
                         if(GameInterface.chatboxInterfaceId != -1)
-                            Class27.method360((byte) 125, 496, i, 453, GameInterface.chatboxInterfaceId, 357, 17);
+                            GameInterface.method360((byte) 125, 496, i, 453, GameInterface.chatboxInterfaceId, 357, 17);
                         else if(ChatBox.dialogueId != -1)
-                            Class27.method360((byte) 125, 496, i, 453, ChatBox.dialogueId, 357, 17);
+                            GameInterface.method360((byte) 125, 496, i, 453, ChatBox.dialogueId, 357, 17);
                         if(GameInterface.gameScreenInterfaceId != -1)
-                            Class27.method360((byte) 125, 516, i ^ 0xffffffff, 338, GameInterface.gameScreenInterfaceId, 4, 4);
+                            GameInterface.method360((byte) 125, 516, i ^ 0xffffffff, 338, GameInterface.gameScreenInterfaceId, 4, 4);
                         if(GameInterface.tabAreaInterfaceId != -1)
-                            Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, GameInterface.tabAreaInterfaceId, 205, 553);
+                            GameInterface.method360((byte) 125, 743, i ^ 0xffffffff, 466, GameInterface.tabAreaInterfaceId, 205, 553);
                         else if(Player.tabWidgetIds[Player.currentTabId] != -1)
-                            Class27.method360((byte) 125, 743, i ^ 0xffffffff, 466, Player.tabWidgetIds[Player.currentTabId], 205, 553);
+                            GameInterface.method360((byte) 125, 743, i ^ 0xffffffff, 466, Player.tabWidgetIds[Player.currentTabId], 205, 553);
                         if(GameInterface.chatboxInterfaceId != -1)
-                            Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, GameInterface.chatboxInterfaceId, 357, 17);
+                            GameInterface.method360((byte) 125, 496, i ^ 0xffffffff, 453, GameInterface.chatboxInterfaceId, 357, 17);
                         else if(ChatBox.dialogueId != -1)
-                            Class27.method360((byte) 125, 496, i ^ 0xffffffff, 453, ChatBox.dialogueId, 357, 17);
-                        if(Class67.anInt1586 != -1 || FloorDecoration.anInt614 != -1 || HashTable.anInt573 != -1) {
+                            GameInterface.method360((byte) 125, 496, i ^ 0xffffffff, 453, ChatBox.dialogueId, 357, 17);
+                        if(Class67.anInt1586 != -1 || FloorDecoration.anInt614 != -1 || MovedStatics.anInt573 != -1) {
                             if(RSString.anInt1711 > WallDecoration.anInt1257) {
                                 WallDecoration.anInt1257++;
                                 if(RSString.anInt1711 == WallDecoration.anInt1257) {
@@ -427,8 +426,8 @@ public class Npc extends Actor {
             if((0x1 & mask) != 0) {
                 int i_3_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                 int i_4_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-                npc.method785(i_4_, pulseCycle, i_3_);
-                npc.anInt3139 = pulseCycle + 300;
+                npc.method785(i_4_, MovedStatics.pulseCycle, i_3_);
+                npc.anInt3139 = MovedStatics.pulseCycle + 300;
                 npc.remainingHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                 npc.maximumHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             }
@@ -436,10 +435,10 @@ public class Npc extends Actor {
                 npc.graphicId = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
                 int i_5_ = IncomingPackets.incomingPacketBuffer.getIntBE();
                 npc.anInt3129 = 0;
-                npc.graphicDelay = pulseCycle + (0xffff & i_5_);
+                npc.graphicDelay = MovedStatics.pulseCycle + (0xffff & i_5_);
                 npc.graphicHeight = i_5_ >> 16;
                 npc.anInt3140 = 0;
-                if(npc.graphicDelay > pulseCycle)
+                if(npc.graphicDelay > MovedStatics.pulseCycle)
                     npc.anInt3140 = -1;
                 if(npc.graphicId == 65535)
                     npc.graphicId = -1;
@@ -452,8 +451,8 @@ public class Npc extends Actor {
             if((0x2 & mask) != 0) {
                 int i_6_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                 int i_7_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-                npc.method785(i_7_, pulseCycle, i_6_);
-                npc.anInt3139 = pulseCycle + 300;
+                npc.method785(i_7_, MovedStatics.pulseCycle, i_6_);
+                npc.anInt3139 = MovedStatics.pulseCycle + 300;
                 npc.remainingHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                 npc.maximumHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             }
@@ -520,16 +519,16 @@ public class Npc extends Actor {
             int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
             if(updateRequired == 0) {
                 Player.npcIds[Player.npcCount++] = trackedNpcIndex;
-                npc.anInt3134 = Node.pulseCycle;
+                npc.anInt3134 = MovedStatics.pulseCycle;
             } else {
                 int movementType = IncomingPackets.incomingPacketBuffer.getBits(2);
                 if(movementType == 0) { // No movement
                     Player.npcIds[Player.npcCount++] = trackedNpcIndex;
-                    npc.anInt3134 = Node.pulseCycle;
+                    npc.anInt3134 = MovedStatics.pulseCycle;
                     Player.actorUpdatingIndices[actorUpdatingIndex++] = trackedNpcIndex;
                 } else if(movementType == 1) { // Walking
                     Player.npcIds[Player.npcCount++] = trackedNpcIndex;
-                    npc.anInt3134 = Node.pulseCycle;
+                    npc.anInt3134 = MovedStatics.pulseCycle;
                     int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
                     npc.method782(walkDirection, (byte) -96, false);
                     int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
@@ -537,7 +536,7 @@ public class Npc extends Actor {
                         Player.actorUpdatingIndices[actorUpdatingIndex++] = trackedNpcIndex;
                 } else if(movementType == 2) { // Running
                     Player.npcIds[Player.npcCount++] = trackedNpcIndex;
-                    npc.anInt3134 = Node.pulseCycle;
+                    npc.anInt3134 = MovedStatics.pulseCycle;
                     int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
                     npc.method782(walkDirection, (byte) -96, true);
                     int runDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
@@ -566,7 +565,7 @@ public class Npc extends Actor {
 
             Npc npc = Player.npcs[i];
             Player.npcIds[Player.npcCount++] = i;
-            npc.anInt3134 = pulseCycle;
+            npc.anInt3134 = MovedStatics.pulseCycle;
             int initialFaceDirection = Class40_Sub5_Sub17_Sub1.directions[IncomingPackets.incomingPacketBuffer.getBits(3)];
             if(initializing) {
                 npc.initialFaceDirection = initialFaceDirection;

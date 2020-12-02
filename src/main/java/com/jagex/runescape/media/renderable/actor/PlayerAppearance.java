@@ -6,7 +6,6 @@ import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 
@@ -44,10 +43,10 @@ public class PlayerAppearance {
 
 
     public static void method381(Actor arg1) {
-        if(Node.pulseCycle == arg1.anInt3107 || arg1.playingAnimation == -1 || arg1.playingAnimationDelay != 0 ||
+        if(MovedStatics.pulseCycle == arg1.anInt3107 || arg1.playingAnimation == -1 || arg1.playingAnimationDelay != 0 ||
                 arg1.anInt3115 + 1 > ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2).frameLengths[arg1.anInt3104]) {
             int i = -arg1.anInt3112 + arg1.anInt3107;
-            int i_16_ = -arg1.anInt3112 + Node.pulseCycle;
+            int i_16_ = -arg1.anInt3112 + MovedStatics.pulseCycle;
             int i_17_ = arg1.anInt3125 * 128 + 64 * arg1.anInt3096;
             int i_18_ = arg1.anInt3096 * 64 + 128 * arg1.anInt3081;
             int i_19_ = arg1.anInt3096 * 64 + 128 * arg1.anInt3099;
@@ -204,7 +203,7 @@ public class PlayerAppearance {
         appearance[9] = appearance9;
 
         if(originalAppearanceHash != 0L && originalAppearanceHash != appearanceHash) {
-            CacheIndex.modelCache.removeAll(originalAppearanceHash);
+            CacheIndex.modelCache.remove(originalAppearanceHash);
         }
     }
 

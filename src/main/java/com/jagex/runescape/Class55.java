@@ -89,7 +89,7 @@ public class Class55 {
     public static void drawTabGraphics() {
         try {
             Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
-            SubNode.tabImageProducer.drawGraphics(553, 205, graphics);
+            MovedStatics.tabImageProducer.drawGraphics(553, 205, graphics);
         } catch(Exception exception) {
             MouseHandler.aCanvas1469.repaint();
         }

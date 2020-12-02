@@ -5,7 +5,6 @@ import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.cache.media.gameInterface.GameInterfaceType;
-import com.jagex.runescape.collection.Node;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
@@ -136,7 +135,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                     }
                     if (gameInterface.anObjectArray2712 != null && (arg3 & 0x80) != 0)
                         ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2712, 0, 0, gameInterface, 0);
-                    if (AnimationSequence.anInt2480 == Node.pulseCycle && gameInterface.anObjectArray2650 != null && (arg3 & 0x100) != 0)
+                    if (AnimationSequence.anInt2480 == MovedStatics.pulseCycle && gameInterface.anObjectArray2650 != null && (arg3 & 0x100) != 0)
                         ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2650, 0, 0, gameInterface, 0);
                 }
             }
@@ -160,7 +159,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                     Player.friendsCount--;
                     GameInterface.redrawTabArea = true;
                     for (int i_13_ = i; i_13_ < Player.friendsCount; i_13_++) {
-                        ClientScriptRunner.friendUsernames[i_13_] = ClientScriptRunner.friendUsernames[1 + i_13_];
+                        Player.friendUsernames[i_13_] = Player.friendUsernames[1 + i_13_];
                         Player.friendWorlds[i_13_] = Player.friendWorlds[i_13_ + 1];
                         Class59.friends[i_13_] = Class59.friends[1 + i_13_];
                     }
@@ -375,8 +374,8 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                 GenericTile.fps = ((i >> 1) + 32000) / i;
             }
             PlayerAppearance.anInt681 = PlayerAppearance.anInt681 + 1 & 0x1f;
-            if (Node.anInt938++ > 50) {
-                Node.anInt938 -= 50;
+            if (MovedStatics.anInt938++ > 50) {
+                MovedStatics.anInt938 -= 50;
                 Class40_Sub5_Sub11.clearScreen = true;
                 MouseHandler.aCanvas1469.setSize(Class12.width, IdentityKit.height);
                 MouseHandler.aCanvas1469.setVisible(true);
@@ -409,7 +408,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         Class67.aLongArray1614[MouseHandler.anInt1468] = l;
         MouseHandler.anInt1468 = 0x1f & MouseHandler.anInt1468 + 1;
         synchronized (this) {
-            HashTable.aBoolean571 = GenericTile.aBoolean1215;
+            MovedStatics.aBoolean571 = GenericTile.aBoolean1215;
         }
         processGameLoop();
         if (arg0)
