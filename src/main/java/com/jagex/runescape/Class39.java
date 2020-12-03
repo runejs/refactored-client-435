@@ -53,16 +53,16 @@ public class Class39 implements Runnable {
     public static boolean method452(Signlink arg0, boolean arg2) {
         RSCanvas.anInt54 = 20;
         try {
-            Class5.aClass22_189 = new Class22_Sub2_Sub1(); // Java Midi Based
+            MovedStatics.aClass22_189 = new Class22_Sub2_Sub1(); // Java Midi Based
             return true;
         } catch(Throwable throwable) {
             Runnable_Impl1 runnable_impl1 = arg0.method391(1048576);
             if(runnable_impl1 != null) {
-                Class5.aClass22_189 = new Class22_Sub2_Sub2(arg0, runnable_impl1); // ???
+                MovedStatics.aClass22_189 = new Class22_Sub2_Sub2(arg0, runnable_impl1); // ???
                 return true;
             }
             if(arg2) {
-                Class5.aClass22_189 = new Class22_Sub1(arg0); // JS based
+                MovedStatics.aClass22_189 = new Class22_Sub1(arg0); // JS based
                 return true;
             }
             return false;

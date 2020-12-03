@@ -1,11 +1,10 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.node.CachedNode;
@@ -18,7 +17,7 @@ public class Class40_Sub5_Sub13 extends CachedNode {
     public static IndexedImage[] moderatorIcon;
     public static int[] anIntArray2764 = new int[128];
     public static ImageRGB minimapImage;
-    public CacheIndex aClass6_Sub1_2754;
+    public CacheArchive aClass6_Sub1_2754;
     public byte aByte2758;
     public int anInt2763;
 
@@ -39,13 +38,13 @@ public class Class40_Sub5_Sub13 extends CachedNode {
     }
 
     public static void method651(int arg0, int arg1) {
-        if(Class5.aClass22_189 != null) {
+        if(MovedStatics.aClass22_189 != null) {
             if(RSCanvas.anInt54 != 0) {
                 if(Player.aByteArray3270 != null)
                     PacketBuffer.anInt2258 = arg1;
             } else if(MouseHandler.anInt1450 >= 0) {
                 MouseHandler.anInt1450 = arg1;
-                Class5.aClass22_189.method304((byte) -111, arg1, 0);
+                MovedStatics.aClass22_189.method304((byte) -111, arg1, 0);
             }
             if(arg0 != 22741)
                 method652();

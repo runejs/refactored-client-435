@@ -1,7 +1,7 @@
 package com.jagex.runescape.audio;
 
 import com.jagex.runescape.Class40_Sub12_Sub1;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.io.Buffer;
 
 public class Effect {
@@ -27,7 +27,7 @@ public class Effect {
         instruments = new Instrument[10];
     }
 
-    public static Effect method429(CacheIndex arg0, int arg1, int arg2) {
+    public static Effect method429(CacheArchive arg0, int arg1, int arg2) {
         byte[] is = arg0.getFile(arg2, arg1);
         if(is == null)
             return null;

@@ -50,7 +50,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         int meta = clickType;
         if(Main.widgetSelected == 1 && Class57.clickX >= 516 && RSString.clickY >= 160 && Class57.clickX <= 765 && RSString.clickY <= 205)
             meta = 0;
-        if(Class4.menuOpen) {
+        if(MovedStatics.menuOpen) {
             if(meta != 1) {
                 int x = Class13.mouseX;
                 int y = Landscape.mouseY;
@@ -69,7 +69,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 if(-10 + InteractiveObject.menuOffsetX > x || 10 + VertexNormal.menuWidth + InteractiveObject.menuOffsetX < x || y < Main.menuOffsetY + -10 || y > Main.menuOffsetY + CollisionMap.menuHeight + 10) {
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
                         GameInterface.redrawTabArea = true;
-                    Class4.menuOpen = false;
+                    MovedStatics.menuOpen = false;
                     if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
                         ChatBox.redrawChatbox = true;
                 }
@@ -103,7 +103,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     GameInterface.processMenuActions(109, id);
                 if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
                     GameInterface.redrawTabArea = true;
-                Class4.menuOpen = false;
+                MovedStatics.menuOpen = false;
                 if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
                     ChatBox.redrawChatbox = true;
             }

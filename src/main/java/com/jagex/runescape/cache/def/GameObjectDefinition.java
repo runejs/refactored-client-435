@@ -2,6 +2,7 @@ package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.node.HashTable;
 import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.media.AnimationSequence;
@@ -105,18 +106,18 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         modelSizeY = 128;
     }
 
-    public static void method602(CacheIndex arg0, int arg1, Class56 arg2) {
+    public static void method602(CacheArchive arg0, int arg1, CacheIndex arg2) {
         byte[] is = null;
         synchronized(RSCanvas.aLinkedList_53) {
             for(Class40_Sub6 class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method902((byte) -90); class40_sub6 != null; class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method909(-4)) {
-                if((long) arg1 == class40_sub6.key && arg2 == class40_sub6.aClass56_2117 && class40_sub6.anInt2112 == 0) {
+                if((long) arg1 == class40_sub6.key && arg2 == class40_sub6.aCache_2117 && class40_sub6.anInt2112 == 0) {
                     is = class40_sub6.aByteArray2102;
                     break;
                 }
             }
         }
         if(is == null) {
-            byte[] is_6_ = arg2.method969(arg1);
+            byte[] is_6_ = arg2.get(arg1);
             arg0.method198(true, is_6_, arg1, arg2);
         } else {
             arg0.method198(true, is, arg1, arg2);
@@ -153,7 +154,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         if(gameObjectDefinition != null) {
             return gameObjectDefinition;
         }
-        byte[] is = CacheIndex.definitionCache.getFile(objectId, 6);
+        byte[] is = CacheArchive.definitionCache.getFile(objectId, 6);
         gameObjectDefinition = new GameObjectDefinition();
         gameObjectDefinition.id = objectId;
         if(is == null) {
@@ -278,7 +279,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
                 }
                 model = (Model) objectModelCache.get(modelId);
                 if(model == null) {
-                    model = Model.getModel(RSString.aCacheIndex_1705, modelId & 0xffff, 0);
+                    model = Model.getModel(RSString.aCacheArchive_1705, modelId & 0xffff, 0);
                     if(model == null) {
                         return null;
                     }
@@ -312,7 +313,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
             }
             model = (Model) objectModelCache.get(modelId);
             if(model == null) {
-                model = Model.getModel(RSString.aCacheIndex_1705, 0xffff & modelId, 0);
+                model = Model.getModel(RSString.aCacheArchive_1705, 0xffff & modelId, 0);
                 if(model == null) {
                     return null;
                 }
@@ -525,7 +526,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         if(objectTypes != null) {
             for(int i = 0; objectTypes.length > i; i++) {
                 if(objectTypes[i] == arg0) {
-                    return RSString.aCacheIndex_1705.loaded(objectModels[i] & 0xffff, 0);
+                    return RSString.aCacheArchive_1705.loaded(objectModels[i] & 0xffff, 0);
                 }
             }
             return true;
@@ -538,7 +539,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= RSString.aCacheIndex_1705.loaded(0xffff & objectModels[i], 0);
+            bool &= RSString.aCacheArchive_1705.loaded(0xffff & objectModels[i], 0);
         }
         return bool;
     }
@@ -567,7 +568,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= RSString.aCacheIndex_1705.loaded(0xffff & objectModels[i], 0);
+            bool &= RSString.aCacheArchive_1705.loaded(0xffff & objectModels[i], 0);
         }
         return bool;
     }

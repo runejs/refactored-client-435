@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -45,7 +45,7 @@ public class Class51 {
             Class40_Sub2.method527(Player.currentTabId, arg0 + 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
             MovedStatics.aBoolean893 = true;
             Class40_Sub3.aBoolean2026 = true;
-            CacheIndex.aBoolean260 = true;
+            MovedStatics.aBoolean260 = true;
         }
         int i = 151;
         Class65.method1018();
@@ -65,14 +65,14 @@ public class Class51 {
     }
 
     public static void method941() {
-        CacheIndex.modelCache.clear();
+        MovedStatics.modelCache.clear();
     }
 
     public static void method942(int arg1) {
         if(arg1 == -1 && Class35.songTimeout == 0)
             Class33.method402(false);
         else if(arg1 != -1 && arg1 != MouseHandler.anInt1457 && RSCanvas.anInt60 != 0 && Class35.songTimeout == 0)
-            Class33.method403(RSCanvas.anInt60, true, 10, arg1, CacheIndex.musicCacheIndex, 0, 0, false);
+            Class33.method403(RSCanvas.anInt60, true, 10, arg1, CacheArchive.musicCacheArchive, 0, 0, false);
         MouseHandler.anInt1457 = arg1;
     }
 }

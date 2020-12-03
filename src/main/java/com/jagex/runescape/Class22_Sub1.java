@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.language.English;
@@ -19,7 +19,7 @@ public class Class22_Sub1 extends Class22 {
     public static long aLong1841;
     public static int[] anIntArray1846 = new int[5];
     public static int[] anIntArray1847 = new int[2000];
-    public static CacheIndex aCacheIndex_1855;
+    public static CacheArchive aCacheArchive_1855;
     public static int anInt1856;
 
     public boolean aBoolean1835;
@@ -119,19 +119,19 @@ public class Class22_Sub1 extends Class22 {
     public void method302(int arg0) {
         if(aSignlinkNode_1836 != null && aSignlinkNode_1836.anInt434 != 0) {
             if(aSignlinkNode_1836.anInt434 == 1) {
-                Class47 class47 = (Class47) aSignlinkNode_1836.value;
+                SizedAccessFile sizedAccessFile = (SizedAccessFile) aSignlinkNode_1836.value;
                 try {
-                    class47.method918(aByteArray1866, 0, aByteArray1866.length, false);
-                    class47.method917(1);
+                    sizedAccessFile.write(aByteArray1866, 0, aByteArray1866.length);
+                    sizedAccessFile.close();
                     try {
-//                        Class28.method369(aClass31_1872.anApplet740, ("midibox.loop=" + (!aBoolean1852 ? "0" : "\"infinite\"") + "; midibox.src=\"" + class47.method915(false).getPath().replace('\\', '/') + "\"; midibox.volume=" + anInt1860 + ";"), -28497);
+//                        Class28.method369(aClass31_1872.anApplet740, ("midibox.loop=" + (!aBoolean1852 ? "0" : "\"infinite\"") + "; midibox.src=\"" + class47.method915().getPath().replace('\\', '/') + "\"; midibox.volume=" + anInt1860 + ";"), -28497);
                         aBoolean1835 = true;
                     } catch(Throwable throwable) {
                         /* empty */
                     }
                 } catch(Exception exception) {
                     try {
-                        class47.method917(1);
+                        sizedAccessFile.close();
                     } catch(Exception exception_0_) {
                         /* empty */
                     }
@@ -139,7 +139,7 @@ public class Class22_Sub1 extends Class22 {
             }
             aSignlinkNode_1836 = null;
             if(arg0 != 0)
-                aCacheIndex_1855 = null;
+                aCacheArchive_1855 = null;
         }
     }
 

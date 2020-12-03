@@ -1,7 +1,6 @@
 package com.jagex.runescape.net;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -465,7 +464,7 @@ public class IncomingPackets {
                     GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
                     GameInterface.tabAreaInterfaceId = i_49_;
                 }
-                CacheIndex.anInt1819 = -1;
+                MovedStatics.anInt1819 = -1;
                 if(ChatBox.inputType != 0) {
                     ChatBox.redrawChatbox = true;
                     ChatBox.inputType = 0;
@@ -533,7 +532,7 @@ public class IncomingPackets {
                     GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
                     GameInterface.gameScreenInterfaceId = i_55_;
                 }
-                CacheIndex.anInt1819 = -1;
+                MovedStatics.anInt1819 = -1;
                 if(ChatBox.inputType != 0) {
                     ChatBox.redrawChatbox = true;
                     ChatBox.inputType = 0;
@@ -553,13 +552,13 @@ public class IncomingPackets {
                 Player.cutsceneActive = true;
                 Class22.anInt545 = incomingPacketBuffer.getUnsignedByte();
                 SceneCluster.anInt767 = incomingPacketBuffer.getUnsignedByte();
-                Class5.anInt194 = incomingPacketBuffer.getUnsignedShortBE();
-                Class4.anInt188 = incomingPacketBuffer.getUnsignedByte();
+                MovedStatics.anInt194 = incomingPacketBuffer.getUnsignedShortBE();
+                MovedStatics.anInt188 = incomingPacketBuffer.getUnsignedByte();
                 Class59.anInt1386 = incomingPacketBuffer.getUnsignedByte();
                 if(Class59.anInt1386 >= 100) {
                     Class40_Sub5_Sub6.cameraY = 64 + SceneCluster.anInt767 * 128;
                     Class12.cameraX = Class22.anInt545 * 128 + 64;
-                    SceneCluster.cameraZ = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, Class40_Sub5_Sub6.cameraY) - Class5.anInt194;
+                    SceneCluster.cameraZ = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, Class40_Sub5_Sub6.cameraY) - MovedStatics.anInt194;
                 }
                 incomingPacket = -1;
                 return true;
@@ -603,7 +602,7 @@ public class IncomingPackets {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
                     GameInterface.fullscreenSiblingInterfaceId = siblingInterfaceId;
                 }
-                CacheIndex.anInt1819 = -1;
+                MovedStatics.anInt1819 = -1;
                 ChatBox.inputType = 0;
                 incomingPacket = -1;
                 return true;
@@ -634,7 +633,7 @@ public class IncomingPackets {
                     GameInterface.gameScreenInterfaceId = -1;
                 }
                 incomingPacket = -1;
-                CacheIndex.anInt1819 = -1;
+                MovedStatics.anInt1819 = -1;
                 if(ChatBox.inputType != 0) {
                     ChatBox.redrawChatbox = true;
                     ChatBox.inputType = 0;
@@ -670,7 +669,7 @@ public class IncomingPackets {
 
                 ChatBox.redrawChatbox = true;
                 incomingPacket = -1;
-                CacheIndex.anInt1819 = -1;
+                MovedStatics.anInt1819 = -1;
                 return true;
             }
             if(incomingPacket == PLAY_SONG) {
@@ -794,7 +793,7 @@ public class IncomingPackets {
                     ChatBox.redrawChatbox = true;
                     ChatBox.inputType = 0;
                 }
-                CacheIndex.anInt1819 = -1;
+                MovedStatics.anInt1819 = -1;
                 incomingPacket = -1;
                 GameInterface.redrawTabArea = true;
                 return true;
@@ -918,7 +917,7 @@ public class IncomingPackets {
                     }
                     Player.headIconDrawType = 2;
                     ProducingGraphicsBuffer.anInt1637 = incomingPacketBuffer.getUnsignedShortBE();
-                    Class4.anInt175 = incomingPacketBuffer.getUnsignedShortBE();
+                    MovedStatics.anInt175 = incomingPacketBuffer.getUnsignedShortBE();
                     ActorDefinition.anInt2404 = incomingPacketBuffer.getUnsignedByte();
                 }
                 if(Player.headIconDrawType == 10)
@@ -1078,13 +1077,13 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 240) {
-                ClientScriptRunner.parseClientScriptPacket(ISAAC.aClass31_521, incomingPacketBuffer);
+                ClientScriptRunner.parseClientScriptPacket(Main.signlink, incomingPacketBuffer);
                 incomingPacket = -1;
                 return true;
             }
             if(incomingPacket == 58) {
                 int i_106_ = incomingPacketBuffer.getIntME2();
-                Class12.aSignlinkNode_394 = ISAAC.aClass31_521.method393(i_106_); // this just ends up throwing an exception? wot
+                Class12.aSignlinkNode_394 = Main.signlink.method393(i_106_); // this just ends up throwing an exception? wot
                 incomingPacket = -1;
                 return true;
             }
@@ -1153,7 +1152,7 @@ public class IncomingPackets {
                 ChatBox.messagePromptRaised = false;
                 return true;
             }
-            CacheIndex.method169("T1 - " + incomingPacket + "," + MovedStatics.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize, (byte) -121, null);
+            MovedStatics.method169("T1 - " + incomingPacket + "," + MovedStatics.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize, (byte) -121, null);
             Class48.logout(-7225);
         } catch(java.io.IOException ioexception) {
             Class59.dropClient();
@@ -1161,7 +1160,7 @@ public class IncomingPackets {
             String string = "T2 - " + incomingPacket + "," + MovedStatics.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize + "," + (SpotAnimDefinition.baseX + Player.localPlayer.pathY[0]) + "," + (Player.localPlayer.pathX[0] + Class26.baseY) + " - ";
             for(int i = 0; incomingPacketSize > i && i < 50; i++)
                 string += incomingPacketBuffer.buffer[i] + ",";
-            CacheIndex.method169(string, (byte) -120, exception);
+            MovedStatics.method169(string, (byte) -120, exception);
             Class48.logout(-7225);
             exception.printStackTrace();
         }

@@ -1,7 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.node.NodeCache;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -9,7 +8,7 @@ import com.jagex.runescape.scene.SceneCluster;
 
 public class Class49 {
     public static volatile int anInt1147 = 0;
-    public static CacheIndex aCacheIndex_1150;
+    public static CacheArchive aCacheArchive_1150;
     public static int anInt1151 = 0;
     public static Class40_Sub9_Sub1 aClass40_Sub9_Sub1_1152;
     public static int anInt1154;

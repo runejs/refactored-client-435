@@ -1,12 +1,13 @@
 package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Pathfinding;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -15,7 +16,7 @@ public class AnimationSequence extends CachedNode {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
     public static int anInt2480 = 0;
     public static ImageRGB minimapCompass;
-    public static CacheIndex aCacheIndex_2484;
+    public static CacheArchive aCacheArchive_2484;
     public static int[][] anIntArrayArray2490;
 
     public int[] frameLengths;
@@ -71,7 +72,7 @@ public class AnimationSequence extends CachedNode {
         int i_15_ = 0x3 & i_14_ >> 6;
         int i_16_ = 0x1f & i_14_;
         if(i_16_ != 10 && i_16_ != 11 && i_16_ != 22)
-            MovedStatics.doWalkTo(0, 0, Player.localPlayer.pathY[0], arg0, 1 + i_16_, true, i_15_, 0, Player.localPlayer.pathX[0], arg3, 2);
+            Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], arg0, 1 + i_16_, true, i_15_, 0, Player.localPlayer.pathX[0], arg3, 2);
         else {
             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
             int i_17_ = gameObjectDefinition.blockingMask;
@@ -86,7 +87,7 @@ public class AnimationSequence extends CachedNode {
                 i_18_ = gameObjectDefinition.sizeY;
                 i_19_ = gameObjectDefinition.sizeX;
             }
-            MovedStatics.doWalkTo(i_18_, i_17_, Player.localPlayer.pathY[0], arg0, 0, true, 0, i_19_, Player.localPlayer.pathX[0], arg3, 2);
+            Pathfinding.doWalkTo(i_18_, i_17_, Player.localPlayer.pathY[0], arg0, 0, true, 0, i_19_, Player.localPlayer.pathX[0], arg3, 2);
         }
         ClientScriptRunner.crossX = Class57.clickX;
         LinkedList.crossType = 2;

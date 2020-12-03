@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.node.Node;
 import com.jagex.runescape.io.Buffer;
@@ -103,7 +103,7 @@ public class EntryTable extends Node {
         }
     }
 
-    public boolean method869(double arg0, int arg1, CacheIndex arg2) {
+    public boolean method869(double arg0, int arg1, CacheArchive arg2) {
         for(int i = 0; i < anIntArray2144.length; i++) {
             if(arg2.method193(anIntArray2144[i]) == null)
                 return false;

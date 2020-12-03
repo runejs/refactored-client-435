@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -63,7 +63,7 @@ public class Class55 {
         Class40_Sub5_Sub15 class40_sub5_sub15 = (Class40_Sub5_Sub15) Class42.aClass9_998.get((long) arg1);
         if(class40_sub5_sub15 != null)
             return class40_sub5_sub15;
-        class40_sub5_sub15 = Class35.method421(VarbitDefinition.aCacheIndex_2364, (byte) 79, arg1, ClientScriptRunner.aCacheIndex_2162, false);
+        class40_sub5_sub15 = Class35.method421(VarbitDefinition.aCacheArchive_2364, (byte) 79, arg1, ClientScriptRunner.aCacheArchive_2162, false);
         if(class40_sub5_sub15 != null)
             Class42.aClass9_998.put((long) arg1, class40_sub5_sub15);
         return class40_sub5_sub15;
@@ -103,9 +103,9 @@ public class Class55 {
         }
     }
 
-    public static void method966(int arg0, CacheIndex arg1, CacheIndex arg2) {
-        UnderlayDefinition.aCacheIndex_2582 = arg1;
+    public static void method966(int arg0, CacheArchive arg1, CacheArchive arg2) {
+        UnderlayDefinition.aCacheArchive_2582 = arg1;
         int i = -87 / ((-20 - arg0) / 56);
-        InteractiveObject.aCacheIndex_488 = arg2;
+        InteractiveObject.aCacheArchive_488 = arg2;
     }
 }

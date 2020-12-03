@@ -3,6 +3,7 @@ package com.jagex.runescape.net;
 import com.jagex.runescape.*;
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
@@ -28,11 +29,11 @@ public class PacketBuffer extends Buffer {
         super(arg0);
     }
 
-    public static void method513(int arg0, CacheIndex arg1, Class56 arg2, byte arg3) {
+    public static void method513(int arg0, CacheArchive arg1, CacheIndex arg2, byte arg3) {
         Class40_Sub6 class40_sub6 = new Class40_Sub6();
         class40_sub6.anInt2112 = 1;
         class40_sub6.key = (long) arg0;
-        class40_sub6.aClass56_2117 = arg2;
+        class40_sub6.aCache_2117 = arg2;
         class40_sub6.aClass6_Sub1_2104 = arg1;
         synchronized(RSCanvas.aLinkedList_53) {
             if(arg3 != -28)
@@ -47,14 +48,14 @@ public class PacketBuffer extends Buffer {
         SceneCluster.packetBuffer.putPacket(176);
         if(GameInterface.tabAreaInterfaceId != -1) {
             GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
-            CacheIndex.anInt1819 = -1;
+            MovedStatics.anInt1819 = -1;
             GameInterface.drawTabIcons = true;
             GameInterface.redrawTabArea = true;
             GameInterface.tabAreaInterfaceId = -1;
         }
         if(GameInterface.chatboxInterfaceId != -1) {
             GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
-            CacheIndex.anInt1819 = -1;
+            MovedStatics.anInt1819 = -1;
             ChatBox.redrawChatbox = true;
             GameInterface.chatboxInterfaceId = -1;
         }
@@ -70,7 +71,7 @@ public class PacketBuffer extends Buffer {
         if(GameInterface.gameScreenInterfaceId != -1) {
             GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
             GameInterface.gameScreenInterfaceId = -1;
-            CacheIndex.anInt1819 = -1;
+            MovedStatics.anInt1819 = -1;
         }
     }
 

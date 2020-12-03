@@ -1,7 +1,7 @@
 package com.jagex.runescape.cache.cs;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
@@ -27,10 +27,10 @@ public class ClientScript extends CachedNode {
 
 
     public static void clientScriptDebugger() {
-        int len = CacheIndex.clientScriptCacheIndex.getLength();
+        int len = CacheArchive.clientScriptCacheArchive.getLength();
         for(int ll = 0; ll < len; ll++) {
-            if(CacheIndex.clientScriptCacheIndex.loaded(ll, 0)) {
-                byte[] data = CacheIndex.clientScriptCacheIndex.getFile(ll, 0);
+            if(CacheArchive.clientScriptCacheArchive.loaded(ll, 0)) {
+                byte[] data = CacheArchive.clientScriptCacheArchive.getFile(ll, 0);
                 System.out.println(data.length);
             } else {
                 System.out.println(ll + " not loaded");
@@ -45,7 +45,7 @@ public class ClientScript extends CachedNode {
             return clientScript;
         }
 
-        Buffer buffer = new Buffer(CacheIndex.clientScriptCacheIndex.method170(Native.emptyString, arg1 + Native.comma + arg0));
+        Buffer buffer = new Buffer(CacheArchive.clientScriptCacheArchive.method170(Native.emptyString, arg1 + Native.comma + arg0));
         clientScript = new ClientScript();
         buffer.currentPosition = buffer.buffer.length - 12;
         int opcodeCount = buffer.getIntBE();

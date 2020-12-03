@@ -1,6 +1,5 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
@@ -138,12 +137,12 @@ public class Class44 implements Runnable {
                     }
                 } else {
                     if(class40_sub6.anInt2112 == 0) {
-                        class40_sub6.aClass56_2117.method971(class40_sub6.aByteArray2102, 1862596560, class40_sub6.aByteArray2102.length, (int) class40_sub6.key);
+                        class40_sub6.aCache_2117.put(class40_sub6.aByteArray2102, class40_sub6.aByteArray2102.length, (int) class40_sub6.key);
                         synchronized(RSCanvas.aLinkedList_53) {
                             class40_sub6.remove();
                         }
                     } else if(class40_sub6.anInt2112 == 1) {
-                        class40_sub6.aByteArray2102 = class40_sub6.aClass56_2117.method969((int) class40_sub6.key);
+                        class40_sub6.aByteArray2102 = class40_sub6.aCache_2117.get((int) class40_sub6.key);
                         synchronized(RSCanvas.aLinkedList_53) {
                             IdentityKit.aLinkedList_2604.pushBack(class40_sub6, 115);
                         }
@@ -159,7 +158,7 @@ public class Class44 implements Runnable {
                 }
             }
         } catch(Exception exception) {
-            CacheIndex.method169(null, (byte) -127, exception);
+            MovedStatics.method169(null, (byte) -127, exception);
         }
     }
 }

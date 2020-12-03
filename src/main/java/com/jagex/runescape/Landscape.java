@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.audio.Effect;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.FileOperations;
 import com.jagex.runescape.cache.def.FramemapDefinition;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
@@ -80,14 +80,14 @@ public class Landscape {
         boolean bool = true;
         for(int i = 0; i < RSString.terrainData.length; i++) {
             if(LinkedList.anIntArray1071[i] != -1 && RSString.terrainData[i] == null) {
-                RSString.terrainData[i] = CacheIndex.gameWorldMapCacheIndex.getFile(0, LinkedList.anIntArray1071[i]);
+                RSString.terrainData[i] = CacheArchive.gameWorldMapCacheArchive.getFile(0, LinkedList.anIntArray1071[i]);
                 if(RSString.terrainData[i] == null) {
                     Class37.anInt874++;
                     bool = false;
                 }
             }
             if(Class13.anIntArray421[i] != -1 && GenericTile.objectData[i] == null) {
-                GenericTile.objectData[i] = CacheIndex.gameWorldMapCacheIndex.method176(Class13.anIntArray421[i], 0, Class44.anIntArrayArray1030[i]);
+                GenericTile.objectData[i] = CacheArchive.gameWorldMapCacheArchive.method176(Class13.anIntArray421[i], 0, Class44.anIntArrayArray1030[i]);
                 if(GenericTile.objectData[i] == null) {
                     Class37.anInt874++;
                     bool = false;
@@ -187,7 +187,7 @@ public class Landscape {
                                     int tileCoordinates = (tileX / 8 << 8) + tileY / 8;
                                     for(int pointer = 0; pointer < ISAAC.mapCoordinates.length; pointer++) {
                                         if(ISAAC.mapCoordinates[pointer] == tileCoordinates && RSString.terrainData[pointer] != null) {
-                                            Class5.loadTerrainSubblock(y * 8, 8 * (tileX & 0x7), tileZ, z, x * 8, (0x7 & tileY) * 8, tileRotation, RSString.terrainData[pointer], currentCollisionMap);
+                                            loadTerrainSubblock(y * 8, 8 * (tileX & 0x7), tileZ, z, x * 8, (0x7 & tileY) * 8, tileRotation, RSString.terrainData[pointer], currentCollisionMap);
                                             bool_19_ = true;
                                             break;
                                         }
@@ -258,8 +258,8 @@ public class Landscape {
                     for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
                         for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {
                             if(i_42_ > i_46_ || i_46_ > i_45_ || i_47_ < i_43_ || i_47_ > i_44_) {
-                                CacheIndex.gameWorldMapCacheIndex.method195(0, Native.aClass1_1085+i_46_+ Native.aClass1_303+i_47_);
-                                CacheIndex.gameWorldMapCacheIndex.method195(0, Native.aClass1_553+i_46_+ Native.aClass1_303+i_47_);
+                                CacheArchive.gameWorldMapCacheArchive.method195(0, Native.aClass1_1085+i_46_+ Native.aClass1_303+i_47_);
+                                CacheArchive.gameWorldMapCacheArchive.method195(0, Native.aClass1_553+i_46_+ Native.aClass1_303+i_47_);
                             }
                         }
                     }
@@ -268,7 +268,7 @@ public class Landscape {
                     OverlayDefinition.method559(35);
                 else
                     OverlayDefinition.method559(30);
-                Class56.method973();
+                MovedStatics.method973();
                 SceneCluster.packetBuffer.putPacket(178);
                 RSRuntimeException.method1057(126);
             } else
@@ -307,7 +307,7 @@ public class Landscape {
                     int i_49_ = (-i_48_ + class40_sub2.anInt2000) * RSCanvas.anInt65 / class40_sub2.anInt2000;
                     if(class40_sub2.aClass40_Sub9_Sub2_2001 == null) {
                         if(class40_sub2.anInt1997 >= 0) {
-                            Effect effect = Effect.method429(CacheIndex.soundEffectCacheIndex, class40_sub2.anInt1997, 0);
+                            Effect effect = Effect.method429(CacheArchive.soundEffectCacheArchive, class40_sub2.anInt1997, 0);
                             if(effect != null) {
                                 Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aClass48_1289);
                                 Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_49_);
@@ -321,7 +321,7 @@ public class Landscape {
                     if(class40_sub2.aClass40_Sub9_Sub2_2010 == null) {
                         if(class40_sub2.anIntArray2005 != null && (class40_sub2.anInt2014 -= arg3) <= 0) {
                             int i_50_ = (int) ((double) class40_sub2.anIntArray2005.length * Math.random());
-                            Effect effect = Effect.method429(CacheIndex.soundEffectCacheIndex, class40_sub2.anIntArray2005[i_50_], 0);
+                            Effect effect = Effect.method429(CacheArchive.soundEffectCacheArchive, class40_sub2.anIntArray2005[i_50_], 0);
                             if(effect != null) {
                                 Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aClass48_1289);
                                 Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_49_);
@@ -342,8 +342,28 @@ public class Landscape {
     }
 
 
-    public static void method936(CacheIndex arg1) {
-        RSCanvas.aCacheIndex_61 = arg1;
+    public static void method936(CacheArchive arg1) {
+        RSCanvas.aCacheArchive_61 = arg1;
 
+    }
+
+    public static void loadTerrainSubblock(int arg0, int arg2, int arg3, int arg4, int x, int arg6, int arg7, byte[] arg8, CollisionMap[] arg9) {
+        for(int i = 0; i < 8; i++) {
+            for(int y = 0; y < 8; y++) {
+                if(x + i > 0 && i + x < 103 && arg0 + y > 0 && y + arg0 < 103)
+                    arg9[arg4].clippingData[x + i][y + arg0] = HuffmanEncoding.method1021(arg9[arg4].clippingData[x + i][y + arg0], -16777217);
+            }
+        }
+        Buffer class40_sub1 = new Buffer(arg8);
+        for(int i = 0; i < 4; i++) {
+            for(int i_1_ = 0; i_1_ < 64; i_1_++) {
+                for(int i_2_ = 0; i_2_ < 64; i_2_++) {
+                    if(i == arg3 && i_1_ >= arg2 && 8 + arg2 > i_1_ && i_2_ >= arg6 && 8 + arg6 > i_2_)
+                        Class48.method922(x + Class24.method338(arg7, false, i_1_ & 0x7, i_2_ & 0x7), arg7, class40_sub1, arg0 + Class33.method410(i_1_ & 0x7, 0x7 & i_2_, arg7, false), 0, 0, arg4);
+                    else
+                        Class48.method922(-1, 0, class40_sub1, -1, 0, 0, 0);
+                }
+            }
+        }
     }
 }
