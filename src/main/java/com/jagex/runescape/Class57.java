@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.media.IndexedImage;
 
@@ -16,7 +16,7 @@ public class Class57 {
 
     public static void method975(int songTimeout, int songId) {
         if(RSCanvas.anInt60 != 0 && songId != -1) {
-            Class33.method414(false, 1, songId, RSCanvas.anInt60, 0, CacheIndex.jingleCacheIndex);
+            Class33.method414(false, 1, songId, RSCanvas.anInt60, 0, CacheArchive.jingleCacheArchive);
             Class35.songTimeout = songTimeout;
         }
     }

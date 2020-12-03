@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
@@ -64,10 +64,10 @@ public class Class40_Sub2 extends Node {
     public static int method525(byte[] arg0, int arg1, byte arg2) {
         if(arg2 != -68)
             return -56;
-        return Class67.method1034(true, 0, arg1, arg0);
+        return MovedStatics.method1034(true, 0, arg1, arg0);
     }
 
-    public static ImageRGB[] method526(CacheIndex arg0, String arg2, String arg3) {
+    public static ImageRGB[] method526(CacheArchive arg0, String arg2, String arg3) {
         int i = arg0.getHash(arg2);
         int i_4_ = arg0.method179(i, arg3);
         return GenericTile.method944((byte) -3, i, arg0, i_4_);
@@ -79,7 +79,7 @@ public class Class40_Sub2 extends Node {
         if(arg3) {
             if(tabWidgetIds[currentTabId] != -1) {
                 if(currentTabId == 0)
-                    Class56.aClass40_Sub5_Sub14_Sub2_1315.drawImage(22, 10);
+                    MovedStatics.aClass40_Sub5_Sub14_Sub2_1315.drawImage(22, 10);
                 if(currentTabId == 1)
                     GameShell.aClass40_Sub5_Sub14_Sub2_1.drawImage(54, 8);
                 if(currentTabId == 2)
@@ -109,7 +109,7 @@ public class Class40_Sub2 extends Node {
                 Class40_Sub5_Sub15.tabIcons[6].drawImage(208, 13);
         }
         RSCanvas.tabBottom.prepareRasterizer();
-        Class56.tabBottomBack.drawImage(0, 0);
+        MovedStatics.tabBottomBack.drawImage(0, 0);
         if(arg1 != 4)
             hasFriend(null);
         if(arg3) {

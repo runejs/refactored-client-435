@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.input.MouseHandler;
@@ -18,7 +18,7 @@ import java.util.Calendar;
 
 public class Class8 {
     public static Calendar aCalendar279 = Calendar.getInstance();
-    public static CacheIndex aCacheIndex_284;
+    public static CacheArchive aCacheArchive_284;
     public static long aLong288;
     public static int anInt289;
     public static int anInt290 = 0;

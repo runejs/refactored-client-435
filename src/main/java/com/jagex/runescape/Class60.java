@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -27,7 +27,7 @@ public class Class60 {
         Player.localPlayerCount = 0;
     }
 
-    public static int method988(CacheIndex arg0, CacheIndex arg1) {
+    public static int method988(CacheArchive arg0, CacheArchive arg1) {
         int i = 0;
         if(arg0.method194(Native.titleImage, ""))
             i++;
@@ -62,7 +62,7 @@ public class Class60 {
             if(Class57.clickX > 4 && RSString.clickY > 4 && Class57.clickX < 516 && RSString.clickY < 338) {
                 Class40_Sub5_Sub17_Sub1.menuScreenArea = 0;
                 CollisionMap.menuHeight = ActorDefinition.menuActionRow * 15 + 22;
-                Class4.menuOpen = true;
+                MovedStatics.menuOpen = true;
                 int x = -(width / 2) + -4 + Class57.clickX;
                 VertexNormal.menuWidth = width;
                 if(width + x > 512)
@@ -86,7 +86,7 @@ public class Class60 {
                     x = 0;
                 else if(width + x > 190)
                     x = 190 - width;
-                Class4.menuOpen = true;
+                MovedStatics.menuOpen = true;
                 InteractiveObject.menuOffsetX = x;
                 if(y >= 0) {
                     if(height + y > 261)
@@ -107,7 +107,7 @@ public class Class60 {
                 } else
                     y = 0;
                 int x = -(width / 2) + -17 + Class57.clickX;
-                Class4.menuOpen = true;
+                MovedStatics.menuOpen = true;
                 Main.menuOffsetY = y;
                 if(x < 0)
                     x = 0;
@@ -132,7 +132,7 @@ public class Class60 {
                 y = 0;
             if(width + x > ScreenController.frameWidth)
                 x = ScreenController.frameWidth - width;
-            Class4.menuOpen = true;
+            MovedStatics.menuOpen = true;
             InteractiveObject.menuOffsetX = x;
             Main.menuOffsetY = y;
             VertexNormal.menuWidth = width;
@@ -183,7 +183,7 @@ public class Class60 {
         for(int i = 0; i < 32; i++)
             GameShell.aLongArray4[i] = 0L;
         for(int i = 0; i < 32; i++)
-            Class67.aLongArray1614[i] = 0L;
+            MovedStatics.aLongArray1614[i] = 0L;
         Class40_Sub3.anInt2020 = 0;
     }
 

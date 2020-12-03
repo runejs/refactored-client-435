@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.node.NodeCache;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.input.MouseHandler;
@@ -46,15 +46,15 @@ public class Class42 {
         return i_2_ >> 19 & 0xff;
     }
 
-    public static void method885(CacheIndex arg0, boolean arg1, CacheIndex arg2) {
+    public static void method885(CacheArchive arg0, boolean arg1, CacheArchive arg2) {
         IdentityKit.membersServer = arg1;
-        Class8.aCacheIndex_284 = arg2;
-        Class26.aCacheIndex_632 = arg0;
-        ItemDefinition.count = Class26.aCacheIndex_632.fileLength(10);
+        Class8.aCacheArchive_284 = arg2;
+        Class26.aCacheArchive_632 = arg0;
+        ItemDefinition.count = Class26.aCacheArchive_632.fileLength(10);
     }
 
     public static void method886(int arg0, int arg1, boolean arg2, byte[] arg3, int arg4) {
-        if(arg0 == 0 && Class5.aClass22_189 != null) {
+        if(arg0 == 0 && MovedStatics.aClass22_189 != null) {
             if(MouseHandler.anInt1450 < 0) {
                 if(RSCanvas.anInt54 != 0) {
                     PacketBuffer.anInt2258 = arg1;
@@ -81,7 +81,7 @@ public class Class42 {
 
 
     public static int method888(int arg0, byte arg1, int arg2) {
-        int i = -128 + Class4.method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(Class4.method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> 1) + -(-128 + Class4.method160(arg0, 15177, 1, arg2) >> 2));
+        int i = -128 + MovedStatics.method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(MovedStatics.method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> 1) + -(-128 + MovedStatics.method160(arg0, 15177, 1, arg2) >> 2));
         i = 35 + (int) (0.3 * (double) i);
         if(arg1 != -45)
             return -24;

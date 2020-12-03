@@ -13,6 +13,7 @@ import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
+import com.jagex.runescape.media.renderable.actor.Pathfinding;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.PacketBuffer;
@@ -81,7 +82,7 @@ public class ScreenController {
         Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 512 : frameWidth, frameMode == ScreenMode.FIXED ? 334 : frameHeight);
         Class24.fullScreenTextureArray = Rasterizer3D.setLineOffsets(null);
         Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 479 : frameWidth, frameMode == ScreenMode.FIXED ? 96 : frameHeight);
-        Class5.chatboxLineOffsets = Rasterizer3D.setLineOffsets(null);
+        MovedStatics.chatboxLineOffsets = Rasterizer3D.setLineOffsets(null);
         Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 190 : frameWidth, frameMode == ScreenMode.FIXED ? 261 : frameHeight);
         ActorDefinition.sidebarOffsets = Rasterizer3D.setLineOffsets(null);
         Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 765 : frameWidth, frameMode == ScreenMode.FIXED ? 503 : frameHeight);
@@ -125,7 +126,7 @@ public class ScreenController {
         RenderTabArea(frameWidth - 234, frameHeight - (359 + insets.top/4));
         RenderChatArea(0, frameHeight - (184 + insets.top/4));
 
-        if(Class4.menuOpen) {
+        if(MovedStatics.menuOpen) {
             Class40_Sub5_Sub6.drawMenu(0, 0);
         }
 
@@ -302,7 +303,7 @@ public class ScreenController {
                 SceneCluster.packetBuffer.putPacket(246);
                 SceneCluster.packetBuffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + SpotAnimDefinition.baseX), Integer.toString(destY + Class26.baseY)));
             } else {
-                boolean bool = MovedStatics.doWalkTo(0, 0, Player.localPlayer.pathY[0], destX, 0, true, 0, 0, Player.localPlayer.pathX[0], destY, 1);
+                boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], destX, 0, true, 0, 0, Player.localPlayer.pathX[0], destY, 1);
                 if(bool) {
                     SceneCluster.packetBuffer.putByte(x);
                     SceneCluster.packetBuffer.putByte(y);
@@ -362,7 +363,7 @@ public class ScreenController {
                 if(GameInterface.gameScreenInterfaceId == -1) {
                     PacketBuffer.method516();
                     if(Class34.anInt854 != -1) {
-                        Class67.reportMutePlayer = false;
+                        MovedStatics.reportMutePlayer = false;
                         HuffmanEncoding.reportAbuseInterfaceID = GameInterface.gameScreenInterfaceId = Class34.anInt854;
                         Native.reportedName = "";
                     }

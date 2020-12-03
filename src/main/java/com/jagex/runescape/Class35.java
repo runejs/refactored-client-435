@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 
@@ -19,16 +19,16 @@ public class Class35 implements Interface3 {
     public LinkedList aLinkedList_1727 = new LinkedList();
     public EntryTable[] aClass40_Sub10Array1740;
     public int anInt1748;
-    public CacheIndex aCacheIndex_1749;
+    public CacheArchive aCacheArchive_1749;
     public double aDouble1750 = 1.0;
     public int anInt1752;
     public int anInt1753;
 
-    public Class35(CacheIndex arg0, CacheIndex arg1, int arg2, double arg3, int arg4) {
+    public Class35(CacheArchive arg0, CacheArchive arg1, int arg2, double arg3, int arg4) {
         anInt1748 = 128;
         anInt1753 = 0;
         anInt1752 = arg2;
-        aCacheIndex_1749 = arg1;
+        aCacheArchive_1749 = arg1;
         aDouble1750 = arg3;
         anInt1748 = arg4;
         anInt1753 = anInt1752;
@@ -42,7 +42,7 @@ public class Class35 implements Interface3 {
 
     }
 
-    public static Class40_Sub5_Sub15 method421(CacheIndex arg0, byte arg1, int arg2, CacheIndex arg3, boolean arg4) {
+    public static Class40_Sub5_Sub15 method421(CacheArchive arg0, byte arg1, int arg2, CacheArchive arg3, boolean arg4) {
         if(arg1 < 40)
             return null;
         boolean bool = true;
@@ -89,7 +89,7 @@ public class Class35 implements Interface3 {
                 class40_sub10.aBoolean2146 = true;
                 return class40_sub10.anIntArray2139;
             }
-            boolean bool = class40_sub10.method869(aDouble1750, anInt1748, aCacheIndex_1749);
+            boolean bool = class40_sub10.method869(aDouble1750, anInt1748, aCacheArchive_1749);
             if(bool) {
                 if(anInt1753 == 0) {
                     EntryTable class40_sub10_3_ = (EntryTable) aLinkedList_1727.method899((byte) 87);

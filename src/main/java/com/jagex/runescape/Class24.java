@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
@@ -12,10 +12,10 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class24 {
     public static int[] fullScreenTextureArray;
-    public static CacheIndex[] aClass6_Sub1Array580 = new CacheIndex[256];
+    public static CacheArchive[] aClass6_Sub1Array580 = new CacheArchive[256];
     public static int[] walkingQueueX = new int[4000];
 
-    public static IndexedImage[] method337(CacheIndex arg1, int arg2, int arg3) {
+    public static IndexedImage[] method337(CacheArchive arg1, int arg2, int arg3) {
         if(!ImageRGB.spriteExists(arg2, arg3, arg1))
             return null;
         return Class22_Sub2.method315();
@@ -36,7 +36,7 @@ public class Class24 {
 
 
     public static boolean method340() {
-        return Class5.aClass22_189 != null;
+        return MovedStatics.aClass22_189 != null;
 
     }
 

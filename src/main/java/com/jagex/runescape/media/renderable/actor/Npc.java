@@ -23,6 +23,7 @@ import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.WallDecoration;
+import com.jagex.runescape.sound.MusicSystem;
 
 public class Npc extends Actor {
     public static int anInt3294 = 0;
@@ -38,10 +39,10 @@ public class Npc extends Actor {
             Native.aClass1_3295 = null;
         if(class40_sub5_sub11 != null)
             return class40_sub5_sub11;
-        if(Class64.aCacheIndex_1521 == null) {
+        if(Class64.aCacheArchive_1521 == null) {
             System.out.println("ISA NULL");
         }
-        byte[] is = Class64.aCacheIndex_1521.getFile(arg1, 16);
+        byte[] is = Class64.aCacheArchive_1521.getFile(arg1, 16);
         class40_sub5_sub11 = new Class40_Sub5_Sub11();
         if(is != null)
             class40_sub5_sub11.method634(new Buffer(is));
@@ -186,7 +187,7 @@ public class Npc extends Actor {
                 LinkedList.method910(-32322);
                 if(Class51.anInt1197 == 30 || Class51.anInt1197 == 35) {
                     Class40_Sub5_Sub13.method652();
-                    Class4.processAudio();
+                    MusicSystem.processAudio();
                     Class35.anInt1728++;
                     if(Class35.anInt1728 > 750)
                         Class59.dropClient();
@@ -209,7 +210,7 @@ public class Npc extends Actor {
                                 Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 0;
                             }
                         }
-                        Class5.anInt199++;
+                        MovedStatics.anInt199++;
                         if(SceneTile.activeInterfaceType != 0) {
                             Buffer.lastItemDragTime++;
                             if(Class13.mouseX > Renderable.anInt2869 + 5 || Renderable.anInt2869 + -5 > Class13.mouseX || ItemDefinition.anInt2798 + 5 < Landscape.mouseY || ItemDefinition.anInt2798 - 5 > Landscape.mouseY)
@@ -272,7 +273,7 @@ public class Npc extends Actor {
                         if(Scene.clickedTileX != -1) {
                             int i = Scene.clickedTileX;
                             int i_18_ = Scene.clickedTileY;
-                            boolean bool = MovedStatics.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, true, 0, 0, Player.localPlayer.pathX[0], i_18_, 0);
+                            boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, true, 0, 0, Player.localPlayer.pathX[0], i_18_, 0);
                             if(bool) {
                                 MovedStatics.crossY = RSString.clickY;
                                 OverlayDefinition.crossIndex = 0;
@@ -316,11 +317,11 @@ public class Npc extends Actor {
                             GameInterface.method360((byte) 125, 496, i ^ 0xffffffff, 453, GameInterface.chatboxInterfaceId, 357, 17);
                         else if(ChatBox.dialogueId != -1)
                             GameInterface.method360((byte) 125, 496, i ^ 0xffffffff, 453, ChatBox.dialogueId, 357, 17);
-                        if(Class67.anInt1586 != -1 || FloorDecoration.anInt614 != -1 || MovedStatics.anInt573 != -1) {
+                        if(MovedStatics.anInt1586 != -1 || FloorDecoration.anInt614 != -1 || MovedStatics.anInt573 != -1) {
                             if(RSString.anInt1711 > WallDecoration.anInt1257) {
                                 WallDecoration.anInt1257++;
                                 if(RSString.anInt1711 == WallDecoration.anInt1257) {
-                                    if(Class67.anInt1586 != -1)
+                                    if(MovedStatics.anInt1586 != -1)
                                         ChatBox.redrawChatbox = true;
                                     if(FloorDecoration.anInt614 != -1)
                                         GameInterface.redrawTabArea = true;
@@ -330,7 +331,7 @@ public class Npc extends Actor {
                             WallDecoration.anInt1257--;
                         Item.calculateCameraPosition();
                         if(Player.cutsceneActive)
-                            Class5.method165(35);
+                            Main.method165(35);
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
                             Class22_Sub1.anIntArray1846[i_19_]++;
                         Class40_Sub5_Sub6.manageTextInputs();
@@ -351,7 +352,7 @@ public class Npc extends Actor {
                                 Buffer.cameraOffsetX += Class42.anInt1010;
                             MovedStatics.anInt1923 = 0;
                             if((0x4 & i_22_) == 4)
-                                Class57.anInt1342 += Class5.anInt195;
+                                Class57.anInt1342 += MovedStatics.anInt195;
                         }
                         if(Class48.cameraOffsetY < -55)
                             ProducingGraphicsBuffer_Sub1.anInt2211 = 2;
@@ -375,9 +376,9 @@ public class Npc extends Actor {
                         if(Class43.cameraYawOffset > 60)
                             Class13.anInt419 = -2;
                         if(Class57.anInt1342 < -40)
-                            Class5.anInt195 = 1;
+                            MovedStatics.anInt195 = 1;
                         if(Class57.anInt1342 > 40)
-                            Class5.anInt195 = -1;
+                            MovedStatics.anInt195 = -1;
                         if(Class51.mapZoomOffset < -20)
                             Main.anInt1766 = 1;
                         if(Class51.mapZoomOffset > 10)
@@ -409,7 +410,7 @@ public class Npc extends Actor {
         OverlayDefinition overlayDefinition = (OverlayDefinition) Class33.aClass9_778.get((long) arg0);
         if(overlayDefinition != null)
             return overlayDefinition;
-        byte[] is = Actor.aCacheIndex_3144.getFile(arg0, arg1);
+        byte[] is = Actor.aCacheArchive_3144.getFile(arg0, arg1);
         overlayDefinition = new OverlayDefinition();
         if(is != null)
             overlayDefinition.method553(new Buffer(is));

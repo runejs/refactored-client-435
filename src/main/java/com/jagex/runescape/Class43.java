@@ -49,7 +49,7 @@ public class Class43 {
             if(!bool)
                 GameInterface.redrawTabArea = true;
         }
-        if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+        if(MovedStatics.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
             if(Class34.anInt848 == 1)
                 method398(-2);
             else if(ScreenController.frameMode == ScreenMode.FIXED)
@@ -109,9 +109,9 @@ public class Class43 {
                     ChatBox.redrawChatbox = true;
                     Class55.anInt1296 = OverlayDefinition.anInt2328;
                 }
-                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && Item.anInt3065 != Class67.anInt1586) {
+                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && Item.anInt3065 != MovedStatics.anInt1586) {
                     ChatBox.redrawChatbox = true;
-                    Class67.anInt1586 = Item.anInt3065;
+                    MovedStatics.anInt1586 = Item.anInt3065;
                 }
                 while(!bool) {
                     bool = true;

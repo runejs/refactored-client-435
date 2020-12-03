@@ -53,7 +53,7 @@ public class Class37 {
 
 
     public static void method434(int arg0) {
-        Class4.menuOpen = false;
+        MovedStatics.menuOpen = false;
         IncomingPackets.incomingPacket = -1;
         ActorDefinition.menuActionRow = 0;
         IncomingPackets.incomingPacketSize = 0;
@@ -159,7 +159,7 @@ public class Class37 {
                 }
             }
             if(Player.headIconDrawType == 2) {
-                int hintX = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + Class4.anInt175);
+                int hintX = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + MovedStatics.anInt175);
                 int hintY = 4 * (ProducingGraphicsBuffer.anInt1637 - SpotAnimDefinition.baseX) - (-2 + Player.localPlayer.worldX / 32);
                 OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], hintY, hintX);
             }
@@ -181,7 +181,7 @@ public class Class37 {
         AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
         Class34.minimapBackgroundImage.drawImage(0, 0);
 
-        if(Class4.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+        if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
             Class40_Sub5_Sub6.drawMenu(550, 4);
         }
         ActorDefinition.drawMapBack();
@@ -238,7 +238,7 @@ public class Class37 {
             return true;
         if(arg0 == 1 && FloorDecoration.anInt614 == arg1)
             return true;
-        if((arg0 == 2 || arg0 == 3) && Class67.anInt1586 == arg1)
+        if((arg0 == 2 || arg0 == 3) && MovedStatics.anInt1586 == arg1)
             return true;
         return false;
     }

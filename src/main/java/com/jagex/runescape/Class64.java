@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -29,7 +29,7 @@ import java.text.MessageFormat;
 
 public class Class64 implements Runnable {
     public static int anInt1511 = -1;
-    public static CacheIndex aCacheIndex_1521;
+    public static CacheArchive aCacheArchive_1521;
     public static int lowestPlane = 99;
 
     public InputStream anInputStream1503;
@@ -85,7 +85,7 @@ public class Class64 implements Runnable {
                     } else if (Main.widgetSelected != 1) {
                         String[] options = gameObjectDefinition.actions;
                         if (Class60.aBoolean1402)
-                            options = Class56.method968(options);
+                            options = MovedStatics.method968(options);
                         if (options != null) {
                             for (int i_7_ = 4; i_7_ >= 0; i_7_--) {
                                 if (options[i_7_] != null) {
@@ -171,7 +171,7 @@ public class Class64 implements Runnable {
                             } else if (Main.widgetSelected != 1) {
                                 String[] class1s = itemDefinition.groundOptions;
                                 if (Class60.aBoolean1402)
-                                    class1s = Class56.method968(class1s);
+                                    class1s = MovedStatics.method968(class1s);
                                 for (int i_15_ = 4; i_15_ >= 0; i_15_--) {
                                     if (class1s == null || class1s[i_15_] == null) {
                                         if (i_15_ == 2) {
@@ -331,7 +331,7 @@ public class Class64 implements Runnable {
             }
             aByteArray1504 = null;
         } catch (Exception exception) {
-            CacheIndex.method169(null, (byte) -122, exception);
+            MovedStatics.method169(null, (byte) -122, exception);
         }
     }
 

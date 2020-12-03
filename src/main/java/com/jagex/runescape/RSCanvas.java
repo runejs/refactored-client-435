@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.cs.ClientScript;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -16,7 +16,7 @@ public class RSCanvas extends Canvas {
     public static int anInt57;
     public static ProducingGraphicsBuffer tabBottom;
     public static int anInt60 = 255;
-    public static CacheIndex aCacheIndex_61;
+    public static CacheArchive aCacheArchive_61;
     public static int[] anIntArray62;
     public static ProducingGraphicsBuffer chatboxProducingGraphicsBuffer;
     public static int anInt65 = 127;
@@ -39,31 +39,31 @@ public class RSCanvas extends Canvas {
 
     public static void method46(int arg0) {
         MovedStatics.method233(true);
-        CacheIndex.method189(false);
+        MovedStatics.method189(false);
         GameInterface.method640();
         GameObjectDefinition.clearGameObjectModelCache();
         Class40_Sub5_Sub6.method586(64);
         Class8.method211();
-        CacheIndex.method188();
+        MovedStatics.method188();
         Class22_Sub2.method316(-11965);
         LinkedList.method907(-99);
-        Class5.method167(1023);
+        MovedStatics.method167(1023);
         Class51.method941();
         Actor.method783();
         ((Class35) Rasterizer3D.anInterface3_2939).method422(arg0);
         ClientScript.clientScriptCache.clear();
-        CacheIndex.skeletonCacheIndex.method191(1120);
-        CacheIndex.skinDefinitionCacheIndex.method191(1120);
-        CacheIndex.gameInterfaceCacheIndex.method191(arg0 + 1120);
-        CacheIndex.soundEffectCacheIndex.method191(1120);
-        CacheIndex.gameWorldMapCacheIndex.method191(1120);
-        CacheIndex.musicCacheIndex.method191(1120);
-        CacheIndex.modelCacheIndex.method191(1120);
-        CacheIndex.gameImageCacheIndex.method191(arg0 ^ 0x460);
-        CacheIndex.gameTextureCacheIndex.method191(1120);
-        CacheIndex.huffmanCacheIndex.method191(arg0 + 1120);
-        CacheIndex.jingleCacheIndex.method191(1120);
-        CacheIndex.clientScriptCacheIndex.method191(1120);
+        CacheArchive.skeletonCacheArchive.method191(1120);
+        CacheArchive.skinDefinitionCacheArchive.method191(1120);
+        CacheArchive.gameInterfaceCacheArchive.method191(arg0 + 1120);
+        CacheArchive.soundEffectCacheArchive.method191(1120);
+        CacheArchive.gameWorldMapCacheArchive.method191(1120);
+        CacheArchive.musicCacheArchive.method191(1120);
+        CacheArchive.modelCacheArchive.method191(1120);
+        CacheArchive.gameImageCacheArchive.method191(arg0 ^ 0x460);
+        CacheArchive.gameTextureCacheArchive.method191(1120);
+        CacheArchive.huffmanCacheArchive.method191(arg0 + 1120);
+        CacheArchive.jingleCacheArchive.method191(1120);
+        CacheArchive.clientScriptCacheArchive.method191(1120);
     }
 
     public void paint(Graphics arg0) {

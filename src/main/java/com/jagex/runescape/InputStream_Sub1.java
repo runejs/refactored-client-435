@@ -1,7 +1,5 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
-
 import java.io.InputStream;
 
 public class InputStream_Sub1 extends InputStream {
@@ -60,7 +58,7 @@ public class InputStream_Sub1 extends InputStream {
             return arg2;
         } catch(Exception exception) {
             aBoolean72 = true;
-            CacheIndex.method169(null, (byte) -125, exception);
+            MovedStatics.method169(null, (byte) -125, exception);
             return -1;
         }
     }

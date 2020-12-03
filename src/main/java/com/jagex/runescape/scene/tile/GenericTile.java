@@ -1,7 +1,7 @@
 package com.jagex.runescape.scene.tile;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
@@ -81,7 +81,7 @@ public class GenericTile {
         }
     }
 
-    public static ImageRGB[] method944(byte arg0, int arg1, CacheIndex arg2, int arg3) {
+    public static ImageRGB[] method944(byte arg0, int arg1, CacheArchive arg2, int arg3) {
         if(!ImageRGB.spriteExists(arg3, arg1, arg2))
             return null;
         int i = -59 % ((-60 - arg0) / 34);

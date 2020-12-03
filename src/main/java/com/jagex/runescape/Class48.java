@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -129,7 +129,7 @@ public class Class48 {
                             if(gameInterface.children != null)
                                 method925(i_1_ + gameInterface.originalHeight, gameInterface.children, i_2_, gameInterface.scrollPosition, arg4, 0, gameInterface.id, arg7, arg8, i_1_, gameInterface.anInt2746, gameInterface.originalWidth + i_2_);
                             if(gameInterface.originalHeight < gameInterface.scrollHeight)
-                                Class5.scrollInterface(gameInterface.originalHeight, arg4, arg8, gameInterface.scrollHeight, gameInterface, gameInterface.originalWidth + i_2_, arg7, i_1_);
+                                GameInterface.scrollInterface(gameInterface.originalHeight, arg4, arg8, gameInterface.scrollHeight, gameInterface, gameInterface.originalWidth + i_2_, arg7, i_1_);
                         }
                     } else {
                         if(gameInterface.actionType == 1 && i_2_ <= arg8 && i_1_ <= arg4 && gameInterface.originalWidth + i_2_ > arg8 && gameInterface.originalHeight + i_1_ > arg4) {
@@ -157,7 +157,7 @@ public class Class48 {
                         if(gameInterface.actionType == 5 && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + gameInterface.originalWidth && i_1_ + gameInterface.originalHeight > arg4) {
                             OverlayDefinition.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 57, "");
                         }
-                        if(gameInterface.actionType == 6 && CacheIndex.anInt1819 == -1 && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + gameInterface.originalWidth && arg4 < gameInterface.originalHeight + i_1_) {
+                        if(gameInterface.actionType == 6 && MovedStatics.anInt1819 == -1 && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + gameInterface.originalWidth && arg4 < gameInterface.originalHeight + i_1_) {
                             OverlayDefinition.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 54, "");
                         }
                         if(gameInterface.type == GameInterfaceType.INVENTORY) {
@@ -183,7 +183,7 @@ public class Class48 {
                                                 } else {
                                                     String[] class1s = itemDefinition.interfaceOptions;
                                                     if(Class60.aBoolean1402)
-                                                        class1s = Class56.method968(class1s);
+                                                        class1s = MovedStatics.method968(class1s);
                                                     if(gameInterface.isInventory) {
                                                         for(int i_9_ = 4; i_9_ >= 3; i_9_--) {
                                                             if(class1s != null && class1s[i_9_] != null) {
@@ -217,7 +217,7 @@ public class Class48 {
                                                     }
                                                     class1s = gameInterface.configActions;
                                                     if(Class60.aBoolean1402)
-                                                        class1s = Class56.method968(class1s);
+                                                        class1s = MovedStatics.method968(class1s);
                                                     if(class1s != null) {
                                                         for(int i_13_ = 4; i_13_ >= 0; i_13_--) {
                                                             if(class1s[i_13_] != null) {
@@ -263,7 +263,7 @@ public class Class48 {
                             if(gameInterface.isInventory) {
                                 String[] class1s = itemDefinition.interfaceOptions;
                                 if(Class60.aBoolean1402)
-                                    class1s = Class56.method968(class1s);
+                                    class1s = MovedStatics.method968(class1s);
                                 if(class1s == null || class1s[4] == null)
                                     OverlayDefinition.addActionRow(English.drop, itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 11, Native.lightRed +itemDefinition.name);
                                 else
@@ -304,7 +304,7 @@ public class Class48 {
 
     }
 
-    public static ImageRGB method927(int arg0, CacheIndex arg1, boolean arg2, int arg3) {
+    public static ImageRGB method927(int arg0, CacheArchive arg1, boolean arg2, int arg3) {
         if(!ImageRGB.spriteExists(arg0, arg3, arg1))
             return null;
         if(!arg2)

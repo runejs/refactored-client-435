@@ -1,21 +1,13 @@
-package com.jagex.runescape;
+package com.jagex.runescape.cache;
 
-import com.jagex.runescape.node.NodeCache;
-import com.jagex.runescape.cache.CacheIndex;
-import com.jagex.runescape.input.KeyFocusListener;
+import com.jagex.runescape.Class18;
+import com.jagex.runescape.MovedStatics;
+import com.jagex.runescape.SizedAccessFile;
 
 import java.io.EOFException;
 import java.io.IOException;
 
-public class Class67 {
-    public static volatile boolean aBoolean1575 = false;
-    public static CacheIndex aCacheIndex_1577;
-    public static int[] anIntArray1579;
-    public static int anInt1586 = -1;
-    public static boolean reportMutePlayer = false;
-    public static int anInt1607 = 10;
-    public static NodeCache aClass9_1611 = new NodeCache(50);
-    public static long[] aLongArray1614 = new long[32];
+public class CacheChannel {
 
     public long aLong1578;
     public byte[] aByteArray1583;
@@ -26,29 +18,19 @@ public class Class67 {
     public long aLong1596;
     public long aLong1600;
     public long aLong1602;
-    public Class47 aClass47_1603;
+    public SizedAccessFile accessFile;
     public long aLong1604;
 
-    public Class67(Class47 arg0, int arg1, int arg2) throws IOException {
+    // Cache something something
+    public CacheChannel(SizedAccessFile arg0, int arg1) throws IOException {
         aLong1593 = -1L;
         aLong1596 = -1L;
-        aClass47_1603 = arg0;
-        aLong1602 = aLong1604 = arg0.method919(87);
-        aByteArray1592 = new byte[arg2];
+        accessFile = arg0;
+        aLong1602 = aLong1604 = arg0.length();
+        aByteArray1592 = new byte[0];
         aByteArray1583 = new byte[arg1];
         aLong1578 = 0L;
     }
-
-    public static int method1034(boolean arg0, int arg1, int arg2, byte[] arg3) {
-        int i = -1;
-        if(!arg0)
-            return 39;
-        for(int i_1_ = arg1; i_1_ < arg2; i_1_++)
-            i = KeyFocusListener.anIntArray1282[0xff & (i ^ arg3[i_1_])] ^ i >>> 8;
-        i ^= 0xffffffff;
-        return i;
-    }
-
 
 
     public void method1031(int arg0, long arg1) {
@@ -65,7 +47,7 @@ public class Class67 {
     public void method1033(int arg0, int arg1, int arg2, byte[] arg3) throws IOException {
         try {
             if(arg1 != -16777216)
-                method1034(false, 109, -94, null);
+                MovedStatics.method1034(false, 109, -94, null);
             if(aLong1602 < (long) arg2 + aLong1578)
                 aLong1602 = (long) arg2 + aLong1578;
             if(aLong1593 != -1 && (aLong1578 < aLong1593 || aLong1593 + (long) anInt1595 < aLong1578))
@@ -81,10 +63,10 @@ public class Class67 {
             }
             if(arg2 > aByteArray1592.length) {
                 if(aLong1600 != aLong1578) {
-                    aClass47_1603.method916(true, aLong1578);
+                    accessFile.seek(aLong1578);
                     aLong1600 = aLong1578;
                 }
-                aClass47_1603.method918(arg3, arg0, arg2, false);
+                accessFile.write(arg3, arg0, arg2);
                 aLong1600 += (long) arg2;
                 if(aLong1600 > aLong1604)
                     aLong1604 = aLong1600;
@@ -150,11 +132,11 @@ public class Class67 {
                     arg2 -= i_4_;
                 }
             } else {
-                aClass47_1603.method916(true, aLong1578);
+                accessFile.seek(aLong1578);
                 aLong1600 = aLong1578;
                 int i_5_;
                 for(/**/; arg2 > 0; arg2 -= i_5_) {
-                    i_5_ = aClass47_1603.method920(arg0, arg2, arg3, -120);
+                    i_5_ = accessFile.read(arg3, arg2, arg0);
                     if(i_5_ == -1)
                         break;
                     aLong1578 += (long) i_5_;
@@ -206,7 +188,7 @@ public class Class67 {
     public void method1036(int arg0) throws IOException {
         if(arg0 == 841617512) {
             method1039(arg0 ^ ~0x322a1068);
-            aClass47_1603.method917(arg0 + -841617511);
+            accessFile.close();
         }
     }
 
@@ -214,13 +196,13 @@ public class Class67 {
         if(arg0 == 50) {
             anInt1589 = 0;
             if(aLong1578 != aLong1600) {
-                aClass47_1603.method916(true, aLong1578);
+                accessFile.seek(aLong1578);
                 aLong1600 = aLong1578;
             }
             aLong1596 = aLong1578;
             int i;
             for(/**/; anInt1589 < aByteArray1583.length; anInt1589 += i) {
-                i = aClass47_1603.method920(anInt1589, aByteArray1583.length - anInt1589, aByteArray1583, -110);
+                i = accessFile.read(aByteArray1583, aByteArray1583.length - anInt1589, anInt1589);
                 if(i == -1)
                     break;
                 aLong1600 += (long) i;
@@ -232,10 +214,10 @@ public class Class67 {
         if(arg0 == -1) {
             if(aLong1593 != -1) {
                 if(aLong1593 != aLong1600) {
-                    aClass47_1603.method916(true, aLong1593);
+                    accessFile.seek(aLong1593);
                     aLong1600 = aLong1593;
                 }
-                aClass47_1603.method918(aByteArray1592, 0, anInt1595, false);
+                accessFile.write(aByteArray1592, 0, anInt1595);
                 aLong1600 += (long) anInt1595;
                 if(aLong1600 > aLong1604)
                     aLong1604 = aLong1600;

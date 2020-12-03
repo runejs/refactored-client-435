@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
@@ -43,12 +44,12 @@ public class RSRuntimeException extends RuntimeException {
         }
     }
 
-    public static void method1055(byte[] arg0, Class56 arg2, int arg3) {
+    public static void method1055(byte[] arg0, CacheIndex arg2, int arg3) {
         Class40_Sub6 class40_sub6 = new Class40_Sub6();
         class40_sub6.key = (long) arg3;
         class40_sub6.aByteArray2102 = arg0;
         class40_sub6.anInt2112 = 0;
-        class40_sub6.aClass56_2117 = arg2;
+        class40_sub6.aCache_2117 = arg2;
         synchronized(RSCanvas.aLinkedList_53) {
             RSCanvas.aLinkedList_53.pushBack(class40_sub6, -82);
         }
@@ -68,7 +69,7 @@ public class RSRuntimeException extends RuntimeException {
         for(int i = 0; i < 32; i++)
             GameShell.aLongArray4[i] = 0L;
         for(int i = 0; i < 32; i++)
-            Class67.aLongArray1614[i] = 0L;
+            MovedStatics.aLongArray1614[i] = 0L;
         if(arg0 <= 67)
             lastActiveInvInterface = -3;
         Class40_Sub3.anInt2020 = 0;

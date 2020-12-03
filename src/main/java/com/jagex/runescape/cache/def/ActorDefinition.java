@@ -23,7 +23,6 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     public static int[] sidebarOffsets;
     public static int menuActionRow = 0;
     public static int anInt2404 = 0;
-    public static byte[] aByteArray2416 = new byte[520];
     public static int count;
 
     public boolean isClickable = true;
@@ -129,7 +128,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         ActorDefinition definition = (ActorDefinition) ISAAC.cachedActorDefinitions.get(id);
         if(definition != null)
             return definition;
-        byte[] data = GroundItemTile.aCacheIndex_1375.getFile(id, 9);
+        byte[] data = GroundItemTile.aCacheArchive_1375.getFile(id, 9);
         definition = new ActorDefinition();
         definition.id = id;
         if(data != null)
@@ -146,11 +145,11 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
             }
             return actorDefinition.getChildModel(animation1, animation2, arg3, arg4);
         }
-        Model model1 = (Model) Class67.aClass9_1611.get(id);
+        Model model1 = (Model) MovedStatics.aClass9_1611.get(id);
         if(model1 == null) {
             boolean bool = false;
             for(int model : models) {
-                if(!Class67.aCacheIndex_1577.loaded(model, 0)) {
+                if(!MovedStatics.aCacheArchive_1577.loaded(model, 0)) {
                     bool = true;
                 }
             }
@@ -159,7 +158,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
             }
             Model[] class40_sub5_sub17_sub5s = new Model[models.length];
             for(int i = 0; models.length > i; i++) {
-                class40_sub5_sub17_sub5s[i] = Model.getModel(Class67.aCacheIndex_1577, models[i], 0);
+                class40_sub5_sub17_sub5s[i] = Model.getModel(MovedStatics.aCacheArchive_1577, models[i], 0);
             }
             if(class40_sub5_sub17_sub5s.length == 1) {
                 model1 = class40_sub5_sub17_sub5s[0];
@@ -175,7 +174,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
             assert model1 != null;
             model1.createBones();
             model1.applyLighting(ambient + 64, 850 + contrast, -30, -50, -30, true);
-            Class67.aClass9_1611.put(id, model1);
+            MovedStatics.aClass9_1611.put(id, model1);
         }
         Model class40_sub5_sub17_sub5_0_;
         if(animation1 != null && animation2 != null) {
@@ -313,7 +312,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         }
         boolean cached = false;
         for(int headModelIndex : headModelIndexes) {
-            if(!Class67.aCacheIndex_1577.loaded(headModelIndex, 0)) {
+            if(!MovedStatics.aCacheArchive_1577.loaded(headModelIndex, 0)) {
                 cached = true;
             }
         }
@@ -322,7 +321,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         }
         Model[] models = new Model[headModelIndexes.length];
         for(int i = 0; i < headModelIndexes.length; i++) {
-            models[i] = Model.getModel(Class67.aCacheIndex_1577, headModelIndexes[i], 0);
+            models[i] = Model.getModel(MovedStatics.aCacheArchive_1577, headModelIndexes[i], 0);
         }
         Model headModel;
         if(models.length == 1) {

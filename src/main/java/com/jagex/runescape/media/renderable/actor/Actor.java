@@ -1,7 +1,7 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
@@ -22,9 +22,9 @@ public abstract class Actor extends Renderable {
 
     public static int[] anIntArray3111;
     public static volatile int eventMouseButtonPressed = 0;
-    public static CacheIndex aCacheIndex_3144;
+    public static CacheArchive aCacheArchive_3144;
     public static int[] minimapHintX = new int[1000];
-    public static CacheIndex aCacheIndex_3150;
+    public static CacheArchive aCacheArchive_3150;
     public static int anInt3151 = -16 + (int) (Math.random() * 33.0);
     public static Signlink aClass31_3152;
     public static int actorUpdatingIndex = 0;

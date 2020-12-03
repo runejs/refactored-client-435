@@ -1,7 +1,6 @@
 package com.jagex.runescape.frame;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -40,7 +39,7 @@ public class ChatBox {
             '9', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243',
             '$', '%', '"', '[', ']', '_', '{', '}', '/', '|'};
     public static void renderChatbox() {
-        CacheIndex.aBoolean260 = true;
+        MovedStatics.aBoolean260 = true;
         Class22.method305();
         if(messagePromptRaised) {
             TypeFace.fontBold.drawStringLeft(Native.aClass1_1563, 239, 40, 0);
@@ -180,7 +179,7 @@ public class ChatBox {
             if(!bool)
                 redrawChatbox = true;
         }
-        if(Class4.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
+        if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
             Class40_Sub5_Sub6.drawMenu(0, 0);
         if(ScreenController.frameMode == ScreenMode.FIXED) {
             LinkedList.drawChatBoxGraphics();

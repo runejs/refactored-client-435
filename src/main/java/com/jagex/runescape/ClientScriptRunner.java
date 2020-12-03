@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.cs.InvokedScript;
 import com.jagex.runescape.cache.cs.ClientScript;
 import com.jagex.runescape.cache.def.ActorDefinition;
@@ -33,7 +33,7 @@ import java.util.Date;
 public class ClientScriptRunner extends Node {
     public static String[] scriptStringValues = new String[1000];
     public static int runEnergy = 0;
-    public static CacheIndex aCacheIndex_2162;
+    public static CacheArchive aCacheArchive_2162;
     public static int crossX = 0;
     public static String[] localStrings;
     public static int[] localInts;
@@ -734,9 +734,9 @@ public class ClientScriptRunner extends Node {
                                     if(scriptOpcode < 3100) {
                                         if(scriptOpcode == 3000) {
                                             int i_42_ = scriptIntValues[--intValueIndex];
-                                            if(CacheIndex.anInt1819 == -1) {
+                                            if(MovedStatics.anInt1819 == -1) {
                                                 PacketBuffer.method517(0, i_42_);
-                                                CacheIndex.anInt1819 = i_42_;
+                                                MovedStatics.anInt1819 = i_42_;
                                             }
                                         } else if(scriptOpcode == 3001 || scriptOpcode == 3003) {
                                             intValueIndex -= 2;
@@ -745,9 +745,9 @@ public class ClientScriptRunner extends Node {
                                             Class33.method406(0, i_44_, i_43_, -128);
                                         } else if(scriptOpcode == 3002) {
                                             GameInterface gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : Class40_Sub6.aGameInterface_2116;
-                                            if(CacheIndex.anInt1819 == -1) {
+                                            if(MovedStatics.anInt1819 == -1) {
                                                 PacketBuffer.method517(gameInterface.id & 0x7fff, gameInterface.parentId);
-                                                CacheIndex.anInt1819 = gameInterface.id;
+                                                MovedStatics.anInt1819 = gameInterface.id;
                                             }
                                         } else {
                                             if(scriptOpcode != 3003) {

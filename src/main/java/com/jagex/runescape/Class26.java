@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 
 import java.awt.*;
 
@@ -9,7 +9,7 @@ public class Class26 {
     public static int loginScreenState = 0;
     public static Image anImage624;
     public static int anInt627;
-    public static CacheIndex aCacheIndex_632;
+    public static CacheArchive aCacheArchive_632;
     public static int baseY;
 
     public static Class stringToType(String typeCode) throws ClassNotFoundException {

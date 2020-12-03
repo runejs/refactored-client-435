@@ -198,7 +198,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(definition != null) {
             return definition;
         }
-        byte[] is = Class26.aCacheIndex_632.getFile(id, arg1);
+        byte[] is = Class26.aCacheArchive_632.getFile(id, arg1);
         definition = new ItemDefinition();
         definition.id = id;
         if(is != null) {
@@ -349,10 +349,10 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
             return true;
         }
         boolean ready = true;
-        if(!Class8.aCacheIndex_284.loaded(primaryId, 0)) {
+        if(!Class8.aCacheArchive_284.loaded(primaryId, 0)) {
             ready = false;
         }
-        if(secondaryId != -1 && !Class8.aCacheIndex_284.loaded(secondaryId, 0)) {
+        if(secondaryId != -1 && !Class8.aCacheArchive_284.loaded(secondaryId, 0)) {
             ready = false;
         }
         return ready;
@@ -371,13 +371,13 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
             return true;
         }
         boolean bool = true;
-        if(!Class8.aCacheIndex_284.loaded(i, 0)) {
+        if(!Class8.aCacheArchive_284.loaded(i, 0)) {
             bool = false;
         }
-        if(i_1_ != -1 && !Class8.aCacheIndex_284.loaded(i_1_, 0)) {
+        if(i_1_ != -1 && !Class8.aCacheArchive_284.loaded(i_1_, 0)) {
             bool = false;
         }
-        if(i_2_ != -1 && !Class8.aCacheIndex_284.loaded(i_2_, 0)) {
+        if(i_2_ != -1 && !Class8.aCacheArchive_284.loaded(i_2_, 0)) {
             bool = false;
         }
         return bool;
@@ -395,14 +395,14 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(primaryId == -1) {
             return null;
         }
-        Model primary = Model.getModel(Class8.aCacheIndex_284, primaryId, 0);
+        Model primary = Model.getModel(Class8.aCacheArchive_284, primaryId, 0);
         if(secondaryId != -1) {
-            Model secondary = Model.getModel(Class8.aCacheIndex_284, secondaryId, 0);
+            Model secondary = Model.getModel(Class8.aCacheArchive_284, secondaryId, 0);
             if(tertiaryId == -1) {
                 Model[] tertiary = {primary, secondary};
                 primary = new Model(tertiary, 2);
             } else {
-                Model model3 = Model.getModel(Class8.aCacheIndex_284, tertiaryId, 0);
+                Model model3 = Model.getModel(Class8.aCacheArchive_284, tertiaryId, 0);
                 Model[] models = {primary, secondary, model3};
                 primary = new Model(models, 3);
             }
@@ -449,9 +449,9 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(primaryId == -1) {
             return null;
         }
-        Model primary = Model.getModel(Class8.aCacheIndex_284, primaryId, 0);
+        Model primary = Model.getModel(Class8.aCacheArchive_284, primaryId, 0);
         if(secondaryId != -1) {
-            Model secondary = Model.getModel(Class8.aCacheIndex_284, secondaryId, 0);
+            Model secondary = Model.getModel(Class8.aCacheArchive_284, secondaryId, 0);
             Model[] models = {primary, secondary};
             primary = new Model(models, 2);
         }
@@ -600,7 +600,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(model != null) {
             return model;
         }
-        model = Model.getModel(Class8.aCacheIndex_284, inventoryModelId, 0);
+        model = Model.getModel(Class8.aCacheArchive_284, inventoryModelId, 0);
         if(model == null) {
             return null;
         }

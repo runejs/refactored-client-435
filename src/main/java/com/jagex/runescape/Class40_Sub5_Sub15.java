@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.FrameDefinition;
 import com.jagex.runescape.cache.def.FramemapDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
@@ -20,7 +20,7 @@ public class Class40_Sub5_Sub15 extends CachedNode {
 
     public FrameDefinition[] aFrameDefinitionArray2794;
 
-    public Class40_Sub5_Sub15(CacheIndex arg0, CacheIndex arg1, int arg2, boolean arg3) {
+    public Class40_Sub5_Sub15(CacheArchive arg0, CacheArchive arg1, int arg2, boolean arg3) {
         LinkedList linkedList = new LinkedList();
         int i = arg0.fileLength(arg2);
         aFrameDefinitionArray2794 = new FrameDefinition[i];

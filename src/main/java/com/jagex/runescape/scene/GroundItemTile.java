@@ -1,6 +1,6 @@
 package com.jagex.runescape.scene;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.media.renderable.Renderable;
 
 public class GroundItemTile {
@@ -9,7 +9,7 @@ public class GroundItemTile {
     public static int[] anIntArray1358 = new int[5];
     public static byte[][] aByteArrayArray1370;
     public static int cameraHorizontal = 0;
-    public static CacheIndex aCacheIndex_1375;
+    public static CacheArchive aCacheArchive_1375;
     public static int walkableWidgetId = -1;
     public static byte[][] aByteArrayArray1377 = new byte[1000][];
     public static int[] varbitMasks = new int[2000];
