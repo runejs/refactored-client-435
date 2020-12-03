@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
@@ -126,7 +126,7 @@ public class HuffmanEncoding {
                 } else {
                     String[] class1s = actorDefinition.options;
                     if (Class60.aBoolean1402) {
-                        class1s = Class56.method968(class1s);
+                        class1s = MovedStatics.method968(class1s);
                     }
                     if (class1s != null) {
                         for (int i = 4; i >= 0; i--) {
@@ -208,7 +208,7 @@ public class HuffmanEncoding {
         return arg0 >= 48 && arg0 <= 57;
     }
 
-    public static ImageRGB method1028(CacheIndex arg0, String arg1, byte arg2, String arg3) {
+    public static ImageRGB method1028(CacheArchive arg0, String arg1, byte arg2, String arg3) {
         int i = arg0.getHash(arg1);
         int i_13_ = arg0.method179(i, arg3);
         if (arg2 != 21) {

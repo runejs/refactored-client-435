@@ -2,7 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.node.HashTable;
 import com.jagex.runescape.node.NodeCache;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.renderable.actor.Player;
 
@@ -14,7 +14,7 @@ public class RSString {
     public static int clickY = 0;
     public static NodeCache aClass9_1684;
     public static int anInt1690 = 0;
-    public static CacheIndex aCacheIndex_1705;
+    public static CacheArchive aCacheArchive_1705;
     public static int[] keyCodes = new int[128];
     public static int anInt1711 = 50;
     public static byte[][] terrainData;
@@ -25,9 +25,9 @@ public class RSString {
     public int anInt1696;
 
     public static void method56(boolean arg1, byte[] arg2, int arg3) {
-        if(Class5.aClass22_189 != null) {
+        if(MovedStatics.aClass22_189 != null) {
             if(MouseHandler.anInt1450 >= 0) {
-                Class5.aClass22_189.method303((byte) -96);
+                MovedStatics.aClass22_189.method303((byte) -96);
                 Class39.anInt909 = 0;
                 Player.aByteArray3270 = null;
                 RSCanvas.anInt54 = 20;
@@ -35,16 +35,16 @@ public class RSString {
             }
             if(arg2 != null) {
                 if(RSCanvas.anInt54 > 0) {
-                    Class5.aClass22_189.method301(arg3, 0);
+                    MovedStatics.aClass22_189.method301(arg3, 0);
                     RSCanvas.anInt54 = 0;
                 }
                 MouseHandler.anInt1450 = arg3;
-                Class5.aClass22_189.method300(arg2, arg1, -15910, arg3);
+                MovedStatics.aClass22_189.method300(arg2, arg1, -15910, arg3);
             }
         }
     }
 
-    public static byte[] method74(int arg0, CacheIndex arg1, int arg2, int arg4) {
+    public static byte[] method74(int arg0, CacheArchive arg1, int arg2, int arg4) {
         long l = (long) (arg0 + 37 * arg2 & 0xffff) + ((long) arg4 << 32) + (long) (arg2 << 16);
         if(aClass9_1684 != null) {
             Class40_Sub5_Sub6 class40_sub5_sub6 = (Class40_Sub5_Sub6) aClass9_1684.get(l);

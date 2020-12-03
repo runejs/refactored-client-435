@@ -41,7 +41,7 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
             anInt2211 = -106;
         if(animationSequence != null)
             return animationSequence;
-        byte[] is = AnimationSequence.aCacheIndex_2484.getFile(arg0, 12);
+        byte[] is = AnimationSequence.aCacheArchive_2484.getFile(arg0, 12);
         animationSequence = new AnimationSequence();
         if(is != null)
             animationSequence.decodeAllAnimationSequences(new Buffer(is));

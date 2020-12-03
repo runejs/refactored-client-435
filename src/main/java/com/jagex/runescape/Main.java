@@ -1,6 +1,8 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
+import com.jagex.runescape.cache.CacheFileChannel;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.cache.media.gameInterface.*;
@@ -32,6 +34,7 @@ import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.Signlink;
 import tech.henning.fourthreefive.Configuration;
 
+import java.awt.*;
 import java.net.InetAddress;
 import java.net.Socket;
 
@@ -44,6 +47,11 @@ public class Main extends GameShell {
     public static int widgetSelected = 0;
     public static String[] playerActions = new String[5];
     public static boolean aBoolean1790;
+    public static Signlink signlink;
+    public static CacheIndex gameCache;
+    public static CacheFileChannel dataChannel;
+    public static CacheFileChannel metaChannel;
+    public static CacheFileChannel[] indexChannels = new CacheFileChannel[13];
     private static int drawCount = 0;
 
     public static boolean method36(int arg0, int minY, int minX, int arg3, int arg4, int maxX, int maxY, int arg7, GameInterface[] arg8, boolean arg9) {
@@ -145,18 +153,18 @@ public class Main extends GameShell {
                                                 if (arg4 != -1) {
                                                     GameInterface gameInterface_16_ = arg8[arg4];
                                                     if (Rasterizer.viewportTop > i_14_ + i_11_ && gameInterface_16_.scrollPosition > 0) {
-                                                        int i_17_ = Class5.anInt199 * (Rasterizer.viewportTop + -i_11_ - i_14_) / 3;
-                                                        if (10 * Class5.anInt199 < i_17_)
-                                                            i_17_ = 10 * Class5.anInt199;
+                                                        int i_17_ = MovedStatics.anInt199 * (Rasterizer.viewportTop + -i_11_ - i_14_) / 3;
+                                                        if (10 * MovedStatics.anInt199 < i_17_)
+                                                            i_17_ = 10 * MovedStatics.anInt199;
                                                         if (gameInterface_16_.scrollPosition < i_17_)
                                                             i_17_ = gameInterface_16_.scrollPosition;
                                                         gameInterface_16_.scrollPosition -= i_17_;
                                                         ItemDefinition.anInt2798 += i_17_;
                                                     }
                                                     if (32 + i_11_ + i_14_ > Rasterizer.viewportBottom && -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight > gameInterface_16_.scrollPosition) {
-                                                        int i_18_ = Class5.anInt199 * (-Rasterizer.viewportBottom + 32 + i_11_ + i_14_) / 3;
-                                                        if (Class5.anInt199 * 10 < i_18_)
-                                                            i_18_ = 10 * Class5.anInt199;
+                                                        int i_18_ = MovedStatics.anInt199 * (-Rasterizer.viewportBottom + 32 + i_11_ + i_14_) / 3;
+                                                        if (MovedStatics.anInt199 * 10 < i_18_)
+                                                            i_18_ = 10 * MovedStatics.anInt199;
                                                         if (-gameInterface_16_.scrollPosition + gameInterface_16_.scrollHeight + -gameInterface_16_.originalHeight < i_18_)
                                                             i_18_ = -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight + -gameInterface_16_.scrollPosition;
                                                         ItemDefinition.anInt2798 -= i_18_;
@@ -225,7 +233,7 @@ public class Main extends GameShell {
                                 if (class40_sub5_sub16.stackable == 1 || gameInterface.itemAmount != 1)
                                     class1 = class1 + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmount, (byte) -109);
                             }
-                            if (gameInterface.actionType == 6 && CacheIndex.anInt1819 == gameInterface.id) {
+                            if (gameInterface.actionType == 6 && MovedStatics.anInt1819 == gameInterface.id) {
                                 i_21_ = gameInterface.textColor;
                                 class1 = English.pleaseWait;
                             }
@@ -468,14 +476,14 @@ public class Main extends GameShell {
         return bool;
     }
 
-    public static void method37(CacheIndex cacheIndex, int arg2) {
+    public static void method37(CacheArchive cacheArchive, int arg2) {
         if (Class48.aClass40_Sub1_1132 == null) {
             MovedStatics.method327(true, null, 255, 255, (byte) 0, 0, (byte) 90);
-            Class24.aClass6_Sub1Array580[arg2] = cacheIndex;
+            Class24.aClass6_Sub1Array580[arg2] = cacheArchive;
         } else {
             Class48.aClass40_Sub1_1132.currentPosition = 5 + arg2 * 4;
             int i = Class48.aClass40_Sub1_1132.getIntBE();
-            cacheIndex.method200(i, 99);
+            cacheArchive.method200(i, 99);
         }
     }
 
@@ -515,7 +523,7 @@ public class Main extends GameShell {
                 i_65_ = 0;
             i_61_ += i_65_;
             for (int i_66_ = i_65_; i_66_ < 128; i_66_++) {
-                int i_67_ = Class4.anIntArray178[i_61_++];
+                int i_67_ = MovedStatics.anIntArray178[i_61_++];
                 if (i_67_ != 0) {
                     int i_68_ = -i_67_ + 256;
                     int i_69_ = i_67_;
@@ -536,7 +544,7 @@ public class Main extends GameShell {
             int i_74_ = 103 + -i_73_;
             i_62_ += i_73_;
             for (int i_75_ = 0; i_75_ < i_74_; i_75_++) {
-                int i_76_ = Class4.anIntArray178[i_61_++];
+                int i_76_ = MovedStatics.anIntArray178[i_61_++];
                 if (i_76_ != 0) {
                     int i_77_ = i_76_;
                     int i_78_ = GameObject.flameRightBackground.pixels[i_62_];
@@ -619,9 +627,9 @@ public class Main extends GameShell {
         return 7 + -arg6 + 1 + -arg4;
     }
 
-    public static void method43(CacheIndex arg0) {
-        Class64.aCacheIndex_1521 = arg0;
-        Class59.anInt1383 = Class64.aCacheIndex_1521.fileLength(16);
+    public static void method43(CacheArchive arg0) {
+        Class64.aCacheArchive_1521 = arg0;
+        Class59.anInt1383 = Class64.aCacheArchive_1521.fileLength(16);
     }
 
     public static void method44() {
@@ -632,7 +640,7 @@ public class Main extends GameShell {
         MovedStatics.aBoolean571 = true;
         MovedStatics.method540();
         MovedStatics.anInt324 = -1;
-        Class4.menuOpen = false;
+        MovedStatics.menuOpen = false;
         RSString.anInt1690 = -1;
         IncomingPackets.incomingPacket = -1;
         Class40_Sub5_Sub15.systemUpdateTime = 0;
@@ -694,10 +702,10 @@ public class Main extends GameShell {
         GameInterface.resetInterface(GroundItemTile.walkableWidgetId);
         ChatBox.inputType = 0;
         ChatBox.messagePromptRaised = false;
-        Class4.menuOpen = false;
+        MovedStatics.menuOpen = false;
         GroundItemTile.walkableWidgetId = -1;
         Native.clickToContinueString = null;
-        CacheIndex.anInt1819 = -1;
+        MovedStatics.anInt1819 = -1;
         Class51.anInt1205 = -1;
         Class40_Sub6.anInt2118 = 0;
         Player.currentTabId = 3;
@@ -775,7 +783,7 @@ public class Main extends GameShell {
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404((byte) -28);
         MovedStatics.method450((byte) -67);
-        ((Class35) Rasterizer3D.anInterface3_2939).method425((byte) 6, Class5.anInt199);
+        ((Class35) Rasterizer3D.anInterface3_2939).method425((byte) 6, MovedStatics.anInt199);
         KeyFocusListener.draw3dScreen();
 
         if(ScreenController.frameMode == ScreenMode.FIXED) {
@@ -808,11 +816,11 @@ public class Main extends GameShell {
         }
     }
 
-    public static void method357(CacheIndex arg0, int arg1, CacheIndex arg2) {
-        GroundItemTile.aCacheIndex_1375 = arg2;
-        ActorDefinition.count = GroundItemTile.aCacheIndex_1375.fileLength(9);
+    public static void method357(CacheArchive arg0, int arg1, CacheArchive arg2) {
+        GroundItemTile.aCacheArchive_1375 = arg2;
+        ActorDefinition.count = GroundItemTile.aCacheArchive_1375.fileLength(9);
 
-        Class67.aCacheIndex_1577 = arg0;
+        MovedStatics.aCacheArchive_1577 = arg0;
         if(arg1 == -10978) {
             return;
         }
@@ -820,13 +828,13 @@ public class Main extends GameShell {
 
     }
 
-    public static IndexedImage method359(String arg0, String arg1, CacheIndex arg2) {
+    public static IndexedImage method359(String arg0, String arg1, CacheArchive arg2) {
         int i = arg2.getHash(arg0);
         int i_23_ = arg2.method179(i, arg1);
         return method363(arg2, (byte) -42, i_23_, i);
     }
 
-    public static IndexedImage method363(CacheIndex arg0, byte arg1, int arg2, int arg3) {
+    public static IndexedImage method363(CacheArchive arg0, byte arg1, int arg2, int arg3) {
         if(!ImageRGB.spriteExists(arg2, arg3, arg0)) {
             return null;
         }
@@ -863,12 +871,12 @@ public class Main extends GameShell {
             MovedStatics.redrawChatbox = true;
             drawCount++;
         } else if(drawCount != 0) {
-            Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, CacheIndex.gameImageCacheIndex);
+            Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, CacheArchive.gameImageCacheArchive);
         }
         if(GameInterface.chatboxInterfaceId == -1) {
             Class12.chatboxInterface.scrollPosition = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
             if(Class13.mouseX > 448 && Class13.mouseX < 560 && Landscape.mouseY > 332) {
-                Class5.scrollInterface(77, Landscape.mouseY + -357, -17 + Class13.mouseX, ChatBox.chatboxScrollMax, Class12.chatboxInterface, 463, -1, 0);
+                GameInterface.scrollInterface(77, Landscape.mouseY + -357, -17 + Class13.mouseX, ChatBox.chatboxScrollMax, Class12.chatboxInterface, 463, -1, 0);
             }
             int currentScroll = ChatBox.chatboxScrollMax - 77 - Class12.chatboxInterface.scrollPosition;
             if(currentScroll < 0) {
@@ -886,7 +894,7 @@ public class Main extends GameShell {
             Class12.chatboxInterface.scrollPosition = ChatBox.itemSearchScroll;
             int scrollMax = 14 * ChatBox.itemSearchResultCount + 7;
             if(Class13.mouseX > 448 && Class13.mouseX < 560 && Landscape.mouseY > 332) {
-                Class5.scrollInterface(77, Landscape.mouseY - 357, -17 + Class13.mouseX, scrollMax, Class12.chatboxInterface, 463, -1, 0);
+                GameInterface.scrollInterface(77, Landscape.mouseY - 357, -17 + Class13.mouseX, scrollMax, Class12.chatboxInterface, 463, -1, 0);
             }
             int currentScroll = Class12.chatboxInterface.scrollPosition;
             if(currentScroll < 0) {
@@ -902,7 +910,7 @@ public class Main extends GameShell {
         }
         if(ScreenController.frameMode == ScreenMode.FIXED) {
 
-            if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+            if(MovedStatics.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
                 GameInterface.redrawTabArea = true;
             }
             if(GameInterface.tabAreaInterfaceId != -1) {
@@ -936,7 +944,7 @@ public class Main extends GameShell {
             if(Native.clickToContinueString != null) {
                 ChatBox.redrawChatbox = true;
             }
-            if(Class4.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
+            if(MovedStatics.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
                 ChatBox.redrawChatbox = true;
             }
             if(ChatBox.redrawChatbox) {
@@ -967,8 +975,8 @@ public class Main extends GameShell {
                 GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             }
 
-            Landscape.method934(Player.localPlayer.worldX, Player.worldLevel, Class5.anInt199, Player.localPlayer.worldY);
-            Class5.anInt199 = 0;
+            Landscape.method934(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
+            MovedStatics.anInt199 = 0;
 
         } else {
 
@@ -1007,8 +1015,8 @@ public class Main extends GameShell {
                 GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             }
 
-            Landscape.method934(Player.localPlayer.worldX, Player.worldLevel, Class5.anInt199, Player.localPlayer.worldY);
-            Class5.anInt199 = 0;
+            Landscape.method934(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
+            MovedStatics.anInt199 = 0;
         }
 
     }
@@ -1068,6 +1076,115 @@ public class Main extends GameShell {
             Class33.setLoginScreenMessage(English.unexpectedServerResponse, English.pleaseTryUsingDifferentWorld, "");
         }
         OverlayDefinition.method559(10);
+    }
+
+    public static void method164() {
+        Renderable.handleSequences(GameInterface.fullscreenInterfaceId);
+        if(GameInterface.fullscreenSiblingInterfaceId != -1)
+            Renderable.handleSequences(GameInterface.fullscreenSiblingInterfaceId);
+        MovedStatics.anInt199 = 0;
+        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.prepareRasterizer();
+        Player.viewportOffsets = Rasterizer3D.setLineOffsets(Player.viewportOffsets);
+        Rasterizer.resetPixels();
+        Class40_Sub5_Sub6.drawInterface(0, GameInterface.fullscreenInterfaceId, 503, (byte) -5, 0, 0, 765);
+        if(GameInterface.fullscreenSiblingInterfaceId != -1)
+            Class40_Sub5_Sub6.drawInterface(0, GameInterface.fullscreenSiblingInterfaceId, 503, (byte) -5, 0, 0, 765);
+        if(!MovedStatics.menuOpen) {
+            Class43.processRightClick();
+            SceneTile.drawMenuTooltip(4);
+        } else
+            if(ScreenController.frameMode == ScreenMode.FIXED && Class40_Sub5_Sub17_Sub1.menuScreenArea == 0){
+                Class40_Sub5_Sub6.drawMenu(4,4); // might be 0,0
+            }
+        try {
+            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+            ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.drawGraphics(0, 0, graphics);
+        } catch(Exception exception) {
+            MouseHandler.aCanvas1469.repaint();
+        }
+    }
+
+    public static void method165(int arg0) {
+        int i = 64 + SceneCluster.anInt767 * 128;
+        int i_3_ = 64 + 128 * Class22.anInt545;
+        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) + -MovedStatics.anInt194;
+        if(i_3_ > Class12.cameraX) {
+            Class12.cameraX += Class59.anInt1386 * (i_3_ + -Class12.cameraX) / 1000 + MovedStatics.anInt188;
+            if(Class12.cameraX > i_3_) {
+                Class12.cameraX = i_3_;
+            }
+        }
+        if(i_4_ > SceneCluster.cameraZ) {
+            SceneCluster.cameraZ += Class59.anInt1386 * (i_4_ - SceneCluster.cameraZ) / 1000 + MovedStatics.anInt188;
+            if(i_4_ < SceneCluster.cameraZ)
+                SceneCluster.cameraZ = i_4_;
+        }
+        if(Class12.cameraX > i_3_) {
+            Class12.cameraX -= MovedStatics.anInt188 + Class59.anInt1386 * (Class12.cameraX + -i_3_) / 1000;
+            if(i_3_ > Class12.cameraX) {
+                Class12.cameraX = i_3_;
+            }
+        }
+        if(Class40_Sub5_Sub6.cameraY < i) {
+            Class40_Sub5_Sub6.cameraY += MovedStatics.anInt188 + Class59.anInt1386 * (-Class40_Sub5_Sub6.cameraY + i) / 1000;
+            if(Class40_Sub5_Sub6.cameraY > i)
+                Class40_Sub5_Sub6.cameraY = i;
+        }
+        if(SceneCluster.cameraZ > i_4_) {
+            SceneCluster.cameraZ -= (SceneCluster.cameraZ + -i_4_) * Class59.anInt1386 / 1000 + MovedStatics.anInt188;
+            if(i_4_ > SceneCluster.cameraZ)
+                SceneCluster.cameraZ = i_4_;
+        }
+        i_3_ = 64 + MovedStatics.anInt564 * 128;
+        if(Class40_Sub5_Sub6.cameraY > i) {
+            Class40_Sub5_Sub6.cameraY -= MovedStatics.anInt188 + Class59.anInt1386 * (Class40_Sub5_Sub6.cameraY - i) / 1000;
+            if(Class40_Sub5_Sub6.cameraY < i)
+                Class40_Sub5_Sub6.cameraY = i;
+        }
+        i = UnderlayDefinition.anInt2576 * 128 + 64;
+        i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) - MovedStatics.anInt892;
+        int i_5_ = -SceneCluster.cameraZ + i_4_;
+        int i_6_ = i - Class40_Sub5_Sub6.cameraY;
+        int i_7_ = i_3_ - Class12.cameraX;
+        int i_8_ = (int) Math.sqrt((double) (i_7_ * i_7_ + i_6_ * i_6_));
+        int i_9_ = 0x7ff & (int) (Math.atan2((double) i_5_, (double) i_8_) * 325.949);
+        if(i_9_ < 128)
+            i_9_ = 128;
+        int i_10_ = 0x7ff & (int) (-325.949 * Math.atan2((double) i_7_, (double) i_6_));
+        if(i_9_ > 383)
+            i_9_ = 383;
+        int i_11_ = -ProducingGraphicsBuffer_Sub1.anInt2210 + i_10_;
+        if(i_11_ > 1024)
+            i_11_ -= 2048;
+        if(i_11_ < -1024)
+            i_11_ += 2048;
+        if(i_11_ > 0) {
+            ProducingGraphicsBuffer_Sub1.anInt2210 += Class22_Sub1.anInt1856 * i_11_ / 1000 + Class60.anInt1413;
+            ProducingGraphicsBuffer_Sub1.anInt2210 &= 0x7ff;
+        }
+        if(arg0 > 0) {
+            if(i_11_ < 0) {
+                ProducingGraphicsBuffer_Sub1.anInt2210 -= Class60.anInt1413 + Class22_Sub1.anInt1856 * -i_11_ / 1000;
+                ProducingGraphicsBuffer_Sub1.anInt2210 &= 0x7ff;
+            }
+            if(i_9_ > Class26.anInt627) {
+                Class26.anInt627 += Class60.anInt1413 + Class22_Sub1.anInt1856 * (i_9_ - Class26.anInt627) / 1000;
+                if(Class26.anInt627 > i_9_)
+                    Class26.anInt627 = i_9_;
+            }
+            if(Class26.anInt627 > i_9_) {
+                Class26.anInt627 -= Class22_Sub1.anInt1856 * (Class26.anInt627 + -i_9_) / 1000 + Class60.anInt1413;
+                if(Class26.anInt627 < i_9_)
+                    Class26.anInt627 = i_9_;
+            }
+            int i_12_ = i_10_ + -ProducingGraphicsBuffer_Sub1.anInt2210;
+            if(i_12_ > 1024)
+                i_12_ -= 2048;
+            if(i_12_ < -1024)
+                i_12_ += 2048;
+            if(i_12_ < 0 && i_11_ > 0 || i_12_ > 0 && i_11_ < 0)
+                ProducingGraphicsBuffer_Sub1.anInt2210 = i_10_;
+        }
     }
 
     public void method35(int arg1) {
@@ -1142,7 +1259,7 @@ public class Main extends GameShell {
     }
 
     public void method34(int arg0) { // TODO: Might be Startup
-        if (Class67.aBoolean1575) {
+        if (MovedStatics.aBoolean1575) {
             Class22_Sub1.method311(MouseHandler.aCanvas1469);
             Class55.method965(32, MouseHandler.aCanvas1469);
             this.setCanvas((byte) 86);
@@ -1150,7 +1267,7 @@ public class Main extends GameShell {
             RSRuntimeException.method1056(MouseHandler.aCanvas1469, (byte) 33);
         }
         if (Class51.anInt1197 == 0)
-            GameObject.drawLoadingText(Class67.anInt1607, null, Native.currentLoadingText);
+            GameObject.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
         else if (Class51.anInt1197 == 5) {
             WallDecoration.method951(-19010, TypeFace.fontBold, TypeFace.fontSmall);
         } else if (Class51.anInt1197 == 10) {
@@ -1174,7 +1291,7 @@ public class Main extends GameShell {
             drawGameScreen();
 
         } else if (Class51.anInt1197 == 35) {
-            Class5.method164();
+            method164();
         } else if (Class51.anInt1197 == 40)
             Class51.method940(0, English.connectionLost, false, English.pleaseWaitAttemptingToReestablish);
         Npc.anInt3294 = 0;
@@ -1199,7 +1316,7 @@ public class Main extends GameShell {
                 do {
                     try {
                         if (Class8.anInt290 == 0) {
-                            ProducingGraphicsBuffer.aSignlinkNode_1632 = ISAAC.aClass31_521.method395(5 ^ 0x6, Wall.anInt350);
+                            ProducingGraphicsBuffer.aSignlinkNode_1632 = signlink.method395(5 ^ 0x6, Wall.anInt350);
                             Class8.anInt290++;
                         }
                         if (Class8.anInt290 == 1) {
@@ -1211,7 +1328,7 @@ public class Main extends GameShell {
                                 Class8.anInt290++;
                         }
                         if (Class8.anInt290 == 2) {
-                            Class29.aClass64_676 = new Class64((Socket) ProducingGraphicsBuffer.aSignlinkNode_1632.value, ISAAC.aClass31_521);
+                            Class29.aClass64_676 = new Class64((Socket) ProducingGraphicsBuffer.aSignlinkNode_1632.value, signlink);
                             Buffer class40_sub1 = new Buffer(5);
                             class40_sub1.putByte(15);
                             class40_sub1.putIntBE(435);
@@ -1268,17 +1385,17 @@ public class Main extends GameShell {
         GenericTile.method947(-1);
         do {
             try {
-                if (SpotAnimDefinition.aClass67_2298 != null)
-                    SpotAnimDefinition.aClass67_2298.method1036(841617512);
-                if (Class40_Sub5_Sub6.aClass67Array2436 != null) {
-                    for (int i = 0; i < Class40_Sub5_Sub6.aClass67Array2436.length; i++) {
-                        if (Class40_Sub5_Sub6.aClass67Array2436[i] != null)
-                            Class40_Sub5_Sub6.aClass67Array2436[i].method1036(0x322a1068);
+                if (dataChannel != null)
+                    dataChannel.close();
+                if (indexChannels != null) {
+                    for (int i = 0; i < indexChannels.length; i++) {
+                        if (indexChannels[i] != null)
+                            indexChannels[i].close();
                     }
                 }
-                if (PlayerAppearance.aClass67_693 == null)
+                if (metaChannel == null)
                     break;
-                PlayerAppearance.aClass67_693.method1036(841617512);
+                metaChannel.close();
             } catch (java.io.IOException ioexception) {
                 break;
             }
@@ -1287,7 +1404,7 @@ public class Main extends GameShell {
     }
 
 
-    public void method31(boolean arg0) {
+    public void startup(boolean arg0) {
         CollisionMap.anInt172 = Class44.modewhere == 0 ? 443 : 50000 + Player.worldId;
         OverlayDefinition.anInt2340 = Class44.modewhere != 0 ? Player.worldId + 40000 : Configuration.GAME_PORT;
         if (!arg0)
@@ -1298,20 +1415,20 @@ public class Main extends GameShell {
         RSRuntimeException.method1056(MouseHandler.aCanvas1469, (byte) 70);
         RSCanvas.anInt57 = Signlink.anInt737;
         try {
-            if (ISAAC.aClass31_521.cacheData != null) {
-                SpotAnimDefinition.aClass67_2298 = new Class67(ISAAC.aClass31_521.cacheData, 5200, 0);
+            if (signlink.cacheDataAccessFile != null) {
+                dataChannel = new CacheFileChannel(signlink.cacheDataAccessFile, 5200);
                 for (int i = 0; i < 13; i++)
-                    Class40_Sub5_Sub6.aClass67Array2436[i] = new Class67(ISAAC.aClass31_521.cacheIndex[i], 6000, 0);
-                PlayerAppearance.aClass67_693 = new Class67(ISAAC.aClass31_521.aClass47_728, 6000, 0);
-                VarbitDefinition.aClass56_2356 = new Class56(255, SpotAnimDefinition.aClass67_2298, PlayerAppearance.aClass67_693, 500000);
-                ISAAC.aClass31_521.cacheIndex = null;
-                ISAAC.aClass31_521.aClass47_728 = null;
-                ISAAC.aClass31_521.cacheData = null;
+                    indexChannels[i] = new CacheFileChannel(signlink.dataIndexAccessFiles[i], 6000);
+                metaChannel = new CacheFileChannel(signlink.metaIndexAccessFile, 6000);
+                gameCache = new CacheIndex(255, dataChannel, metaChannel, 500000);
+                signlink.dataIndexAccessFiles = null;
+                signlink.metaIndexAccessFile = null;
+                signlink.cacheDataAccessFile = null;
             }
         } catch (java.io.IOException ioexception) {
-            VarbitDefinition.aClass56_2356 = null;
-            SpotAnimDefinition.aClass67_2298 = null;
-            PlayerAppearance.aClass67_693 = null;
+            gameCache = null;
+            dataChannel = null;
+            metaChannel = null;
         }
         if (Class44.modewhere != 0)
             InteractiveObject.showFps = true;

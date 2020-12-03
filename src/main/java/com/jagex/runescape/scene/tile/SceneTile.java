@@ -1,7 +1,6 @@
 package com.jagex.runescape.scene.tile;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
@@ -92,7 +91,7 @@ public class SceneTile extends Node {
                     break;
                 String str = "";
                 if (Class12.aSignlinkNode_394 != null) {
-                    str = CacheIndex.method204(Class12.aSignlinkNode_394.integerData);
+                    str = MovedStatics.method204(Class12.aSignlinkNode_394.integerData);
                     if (Class12.aSignlinkNode_394.value != null) {
                         byte[] is = ((String) Class12.aSignlinkNode_394.value).getBytes(StandardCharsets.ISO_8859_1);
                         str = InteractiveObject.method279(is, 0, is.length).toString();

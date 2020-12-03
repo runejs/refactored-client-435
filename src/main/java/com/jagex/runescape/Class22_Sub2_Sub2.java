@@ -1,7 +1,6 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.audio.MidiFileReader;
-import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.util.Signlink;
 
@@ -112,7 +111,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
                 Class43.sleep(100L);
             }
         } catch(Exception exception) {
-            CacheIndex.method169(null, (byte) -127, exception);
+            MovedStatics.method169(null, (byte) -127, exception);
         }
 
     }

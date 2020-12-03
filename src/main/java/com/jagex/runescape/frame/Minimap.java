@@ -180,7 +180,7 @@ public class Minimap extends FramePieceRenderer {
                 }
             }
             if(Player.headIconDrawType == 2) {
-                int hintY = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + Class4.anInt175);
+                int hintY = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + MovedStatics.anInt175);
                 int hintX = 4 * (ProducingGraphicsBuffer.anInt1637 - SpotAnimDefinition.baseX) - (-2 + Player.localPlayer.worldX / 32);
                 drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], hintX, hintY);
             }

@@ -1,7 +1,7 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -11,10 +11,9 @@ import com.jagex.runescape.node.CachedNode;
 
 public class VarbitDefinition extends CachedNode {
     public static ProducingGraphicsBuffer gameScreenImageProducer;
-    public static Class56 aClass56_2356;
     public static int anInt2359 = 0;
     public static int[] anIntArray2361 = new int[]{0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, 2147483647, -1};
-    public static CacheIndex aCacheIndex_2364;
+    public static CacheArchive aCacheArchive_2364;
     public static int destinationX = 0;
 
     public int index;
@@ -39,7 +38,7 @@ public class VarbitDefinition extends CachedNode {
 
 
     public static void method566(int arg0, boolean arg1, int arg2, byte[] arg3) {
-        if(Class5.aClass22_189 != null) {
+        if(MovedStatics.aClass22_189 != null) {
             if(MouseHandler.anInt1450 >= 0) {
                 arg2 -= 20;
                 if(arg2 < 1)

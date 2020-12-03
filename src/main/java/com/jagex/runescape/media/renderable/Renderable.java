@@ -38,7 +38,7 @@ public abstract class Renderable extends CachedNode {
                         i_1_ = gameInterface.animation;
                     if(i_1_ != -1) {
                         AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(i_1_, 2);
-                        gameInterface.remainingAnimationTime += Class5.anInt199;
+                        gameInterface.remainingAnimationTime += MovedStatics.anInt199;
                         while(animationSequence.frameLengths[gameInterface.animationFrame] < gameInterface.remainingAnimationTime) {
                             bool = true;
                             gameInterface.remainingAnimationTime -= animationSequence.frameLengths[gameInterface.animationFrame];
@@ -55,9 +55,9 @@ public abstract class Renderable extends CachedNode {
                     bool = true;
                     int i_2_ = gameInterface.anInt2722 >> 16;
                     int i_3_ = gameInterface.anInt2722 << 16 >> 16;
-                    i_2_ *= Class5.anInt199;
+                    i_2_ *= MovedStatics.anInt199;
                     gameInterface.rotationX = 0x7ff & i_2_ + gameInterface.rotationX;
-                    i_3_ *= Class5.anInt199;
+                    i_3_ *= MovedStatics.anInt199;
                     gameInterface.rotationZ = 0x7ff & gameInterface.rotationZ + i_3_;
                 }
             }

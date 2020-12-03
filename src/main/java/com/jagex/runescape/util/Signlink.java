@@ -1,6 +1,6 @@
 package com.jagex.runescape.util;
 
-import com.jagex.runescape.Class47;
+import com.jagex.runescape.SizedAccessFile;
 import com.jagex.runescape.Interface2;
 import com.jagex.runescape.GameShell;
 import com.jagex.runescape.Runnable_Impl1;
@@ -21,21 +21,21 @@ public class Signlink implements Runnable {
     public static String aString739;
     public boolean aBoolean721;
     public int uid = 0;
-    public Class47[] cacheIndex;
+    public SizedAccessFile[] dataIndexAccessFiles;
     public SignlinkNode current = null;
     public Runnable_Impl1 aRunnable_Impl1_727;
-    public Class47 aClass47_728;
+    public SizedAccessFile metaIndexAccessFile;
     public InetAddress anInetAddress730;
     public SignlinkNode next = null;
     public Interface2 anInterface2_732;
     public Thread aThread733;
     public String aString734 = null;
-    public Class47 cacheData;
+    public SizedAccessFile cacheDataAccessFile;
     public GameShell anApplet740;
 
     public Signlink(boolean arg0, GameShell arg1, InetAddress inetAddress, int fileStoreId, String cacheFolder, int cacheIndexes) throws IOException {
-        aClass47_728 = null;
-        cacheData = null;
+        metaIndexAccessFile = null;
+        cacheDataAccessFile = null;
         anApplet740 = null;
         anApplet740 = arg1;
         anInetAddress730 = inetAddress;
@@ -68,11 +68,11 @@ public class Signlink implements Runnable {
         }
         if(arg0) {
             method397(-3849);
-            cacheData = new Class47(new File(aString734 + "main_file_cache.dat2"), "rw", 52428800L);
-            cacheIndex = new Class47[cacheIndexes];
+            cacheDataAccessFile = new SizedAccessFile(new File(aString734 + "main_file_cache.dat2"), "rw", 52428800L);
+            dataIndexAccessFiles = new SizedAccessFile[cacheIndexes];
             for(int i = 0; i < cacheIndexes; i++)
-                cacheIndex[i] = new Class47(new File(aString734 + "main_file_cache.idx" + i), "rw", 1048576L);
-            aClass47_728 = new Class47(new File(aString734 + "main_file_cache.idx255"), "rw", 1048576L);
+                dataIndexAccessFiles[i] = new SizedAccessFile(new File(aString734 + "main_file_cache.idx" + i), "rw", 1048576L);
+            metaIndexAccessFile = new SizedAccessFile(new File(aString734 + "main_file_cache.idx255"), "rw", 1048576L);
             method390(6);
         }
         aBoolean721 = false;
@@ -97,25 +97,25 @@ public class Signlink implements Runnable {
         }
         if(aRunnable_Impl1_727 != null)
             aRunnable_Impl1_727.method1((byte) -102);
-        if(cacheData != null) {
+        if(cacheDataAccessFile != null) {
             try {
-                cacheData.method917(1);
+                cacheDataAccessFile.close();
             } catch(IOException ioexception) {
                 /* empty */
             }
         }
-        if(aClass47_728 != null) {
+        if(metaIndexAccessFile != null) {
             try {
-                aClass47_728.method917(arg0 ^ 0x1);
+                metaIndexAccessFile.close();
             } catch(IOException ioexception) {
                 /* empty */
             }
         }
-        if(cacheIndex != null) {
-            for(int i = 0; i < cacheIndex.length; i++) {
-                if(cacheIndex[i] != null) {
+        if(dataIndexAccessFiles != null) {
+            for(int i = 0; i < dataIndexAccessFiles.length; i++) {
+                if(dataIndexAccessFiles[i] != null) {
                     try {
-                        cacheIndex[i].method917(arg0 ^ 0x1);
+                        dataIndexAccessFiles[i].close();
                     } catch(IOException ioexception) {
                         /* empty */
                     }

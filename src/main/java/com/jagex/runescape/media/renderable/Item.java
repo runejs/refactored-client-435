@@ -1,7 +1,7 @@
 package com.jagex.runescape.media.renderable;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
@@ -88,7 +88,7 @@ public class Item extends Renderable {
         IdentityKit.aHuffmanEncoding_2590 = arg1;
     }
 
-    public static void method779(Component arg0, boolean arg1, CacheIndex arg2, CacheIndex arg3) {
+    public static void method779(Component arg0, boolean arg1, CacheArchive arg2, CacheArchive arg3) {
         if (!ISAAC.aBoolean512) {
             Class8.flameLeftBackground = Class40_Sub5_Sub13.createGraphicsBuffer(128, 265, arg0);
             Rasterizer.resetPixels();
@@ -201,10 +201,10 @@ public class Item extends Renderable {
             Class40_Sub5_Sub17_Sub6.anIntArray3255 = new int[32768];
             Native.username = Configuration.getUsername();
             Native.password = Configuration.getPassword();
-            Class4.anIntArray178 = new int[32768];
+            MovedStatics.anIntArray178 = new int[32768];
             Class26.loginScreenState = 0;
             if (RSCanvas.anInt60 != 0 && !VertexNormal.lowMemory)
-                Class33.method412(false, CacheIndex.musicCacheIndex, 0, (byte) 66, Native.titleSong, 10, "", RSCanvas.anInt60);
+                Class33.method412(false, CacheArchive.musicCacheArchive, 0, (byte) 66, Native.titleSong, 10, "", RSCanvas.anInt60);
             else
                 Class33.method405(16969, 10);
             GameShell.method19(false, 24041);

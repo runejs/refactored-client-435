@@ -1,7 +1,7 @@
 package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.io.Buffer;
@@ -11,7 +11,6 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
-import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.scene.InteractiveObject;
@@ -26,7 +25,6 @@ import java.net.Socket;
 
 public class SpotAnimDefinition extends CachedNode {
     public static ImageRGB minimapEdge;
-    public static Class67 aClass67_2298;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2301;
     public static int mouseButtonPressed = 0;
     public static int baseX;
@@ -65,13 +63,13 @@ public class SpotAnimDefinition extends CachedNode {
             }
             if (Class40_Sub3.anInt2032 == 1) {
                 if (FloorDecoration.aSignlinkNode_607 == null) {
-                    FloorDecoration.aSignlinkNode_607 = ISAAC.aClass31_521.method395(3, Wall.anInt350);
+                    FloorDecoration.aSignlinkNode_607 = Main.signlink.method395(3, Wall.anInt350);
                 }
                 if (FloorDecoration.aSignlinkNode_607.anInt434 == 2) {
                     throw new IOException();
                 }
                 if (FloorDecoration.aSignlinkNode_607.anInt434 == 1) {
-                    Class40_Sub6.gameConnection = new Class64((Socket) FloorDecoration.aSignlinkNode_607.value, ISAAC.aClass31_521);
+                    Class40_Sub6.gameConnection = new Class64((Socket) FloorDecoration.aSignlinkNode_607.value, Main.signlink);
                     Class40_Sub3.anInt2032 = 2;
                     FloorDecoration.aSignlinkNode_607 = null;
                 }
@@ -127,7 +125,7 @@ public class SpotAnimDefinition extends CachedNode {
                 SceneCluster.packetBuffer.putIntBE(seeds[1]);
                 SceneCluster.packetBuffer.putIntBE(seeds[2]);
                 SceneCluster.packetBuffer.putIntBE(seeds[3]);
-                SceneCluster.packetBuffer.putIntBE(ISAAC.aClass31_521.uid);
+                SceneCluster.packetBuffer.putIntBE(Main.signlink.uid);
                 SceneCluster.packetBuffer.putLongBE(RSString.nameToLong(Native.username.toString()));
                 SceneCluster.packetBuffer.method505(Native.password);
                 if (Configuration.RSA_ENABLED) {
@@ -142,19 +140,19 @@ public class SpotAnimDefinition extends CachedNode {
                 MovedStatics.packetBuffer.putByte(57 + SceneCluster.packetBuffer.currentPosition);
                 MovedStatics.packetBuffer.putIntBE(435);
                 MovedStatics.packetBuffer.putByte(VertexNormal.lowMemory ? 1 : 0);
-                MovedStatics.packetBuffer.putIntBE(CacheIndex.skeletonCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheIndex.skinDefinitionCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheIndex.gameDefinitionsCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheIndex.gameInterfaceCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheIndex.soundEffectCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheIndex.gameWorldMapCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheIndex.musicCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheIndex.modelCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheIndex.gameImageCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheIndex.gameTextureCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheIndex.huffmanCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheIndex.jingleCacheIndex.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheIndex.clientScriptCacheIndex.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.skeletonCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.skinDefinitionCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameDefinitionsCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameInterfaceCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.soundEffectCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameWorldMapCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.musicCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.modelCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameImageCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameTextureCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.huffmanCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.jingleCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.clientScriptCacheArchive.anInt216);
                 MovedStatics.packetBuffer.putBytes(0, SceneCluster.packetBuffer.currentPosition, SceneCluster.packetBuffer.buffer);
                 Class40_Sub6.gameConnection.method1010(MovedStatics.packetBuffer.currentPosition, (byte) -19, 0, MovedStatics.packetBuffer.buffer);
                 SceneCluster.packetBuffer.initOutCipher(seeds);
@@ -263,7 +261,7 @@ public class SpotAnimDefinition extends CachedNode {
         SpotAnimDefinition spotAnimDefinition = (SpotAnimDefinition) Class43.aClass9_1014.get((long) arg0);
         if (spotAnimDefinition != null)
             return spotAnimDefinition;
-        byte[] is = InteractiveObject.aCacheIndex_488.getFile(arg0, 13);
+        byte[] is = InteractiveObject.aCacheArchive_488.getFile(arg0, 13);
         spotAnimDefinition = new SpotAnimDefinition();
         spotAnimDefinition.id = arg0;
         if (is != null)
@@ -300,7 +298,7 @@ public class SpotAnimDefinition extends CachedNode {
     public Model method549(int arg0, int arg1) {
         Model class40_sub5_sub17_sub5 = (Model) Class34.aClass9_851.get((long) id);
         if (class40_sub5_sub17_sub5 == null) {
-            class40_sub5_sub17_sub5 = Model.getModel(UnderlayDefinition.aCacheIndex_2582, modelId, 0);
+            class40_sub5_sub17_sub5 = Model.getModel(UnderlayDefinition.aCacheArchive_2582, modelId, 0);
             if (class40_sub5_sub17_sub5 == null) {
                 return null;
             }

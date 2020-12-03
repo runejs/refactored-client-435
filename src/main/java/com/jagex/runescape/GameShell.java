@@ -1,6 +1,5 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -14,7 +13,6 @@ import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
-import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.GenericTile;
@@ -144,7 +142,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     }
 
     public static void providesignlink(Signlink arg0) {
-        Actor.aClass31_3152 = ISAAC.aClass31_521 = arg0;
+        Actor.aClass31_3152 = Main.signlink = arg0;
     }
 
     public static int method27(int arg0, int arg1) {
@@ -195,21 +193,21 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                 Class40_Sub3.anInt2024 = 5;
             }
         }
-        if (ISAAC.aClass31_521.anApplet740 != null) {
+        if (Main.signlink.anApplet740 != null) {
             Method method = Signlink.aMethod724;
             if (method != null) {
                 try {
-                    method.invoke(ISAAC.aClass31_521.anApplet740, Boolean.TRUE);
+                    method.invoke(Main.signlink.anApplet740, Boolean.TRUE);
                 } catch (Throwable throwable) {
                 }
             }
         }
         setCanvas((byte) 121);
         ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(Class12.width, IdentityKit.height, MouseHandler.aCanvas1469);
-        method31(true);
+        startup(true);
         SceneCluster.aTimer_768 = Timer.create();
         SceneCluster.aTimer_768.start();
-        while (CacheIndex.aLong219 == 0L || System.currentTimeMillis() < CacheIndex.aLong219) {
+        while (MovedStatics.aLong219 == 0L || System.currentTimeMillis() < MovedStatics.aLong219) {
             Class40_Sub3.anInt2020 = SceneCluster.aTimer_768.sleep(Class39.anInt912, Class40_Sub3.anInt2024);
             for (int i = 0; i < Class40_Sub3.anInt2020; i++)
                 method29(true);
@@ -241,9 +239,9 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                     /* empty */
                 }
             }
-            if (ISAAC.aClass31_521 != null) {
+            if (Main.signlink != null) {
                 try {
-                    ISAAC.aClass31_521.method385(0);
+                    Main.signlink.method385(0);
                 } catch (Exception exception) {
                     /* empty */
                 }
@@ -252,8 +250,8 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     }
 
     public void stop() {
-        if (this == Class4.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255)
-            CacheIndex.aLong219 = System.currentTimeMillis() + 4000L;
+        if (this == MovedStatics.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255)
+            MovedStatics.aLong219 = System.currentTimeMillis() + 4000L;
     }
 
     public boolean verifyHost(int arg0) {
@@ -292,8 +290,8 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     }
 
     public void start() {
-        if (this == Class4.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255)
-            CacheIndex.aLong219 = 0L;
+        if (this == MovedStatics.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255)
+            MovedStatics.aLong219 = 0L;
     }
 
     public abstract void processGameLoop();
@@ -305,19 +303,19 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public abstract void method24();
 
     public synchronized void paint(Graphics arg0) {
-        if (this == Class4.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255) {
+        if (this == MovedStatics.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255) {
             Class40_Sub5_Sub11.clearScreen = true;
-            if (Signlink.aString739 == null || !Signlink.aString739.startsWith("1.5") || -Class4.aLong174 + System.currentTimeMillis() <= 1000L)
+            if (Signlink.aString739 == null || !Signlink.aString739.startsWith("1.5") || -MovedStatics.aLong174 + System.currentTimeMillis() <= 1000L)
                 return;
             Rectangle rectangle = arg0.getClipBounds();
             if (rectangle == null || rectangle.width >= Class12.width && rectangle.height >= IdentityKit.height)
-                Class67.aBoolean1575 = true;
+                MovedStatics.aBoolean1575 = true;
         }
     }
 
     public void destroy() {
-        if (Class4.anApplet_Sub1_179 == this && !PacketBuffer.aBoolean2255) {
-            CacheIndex.aLong219 = System.currentTimeMillis();
+        if (MovedStatics.anApplet_Sub1_179 == this && !PacketBuffer.aBoolean2255) {
+            MovedStatics.aLong219 = System.currentTimeMillis();
             Class43.sleep(5000L);
             Actor.aClass31_3152 = null;
             method17();
@@ -339,22 +337,22 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     }
 
     public void displayClientFrame(byte arg0, int clientVersion, int width, int height, int fileStoreId) {
-        if (Class4.anApplet_Sub1_179 != null) {
+        if (MovedStatics.anApplet_Sub1_179 != null) {
             openErrorPage((byte) 74, "alreadyloaded");
             return;
         }
         Class12.width = height;
         Class39.anInt901 = clientVersion;
         IdentityKit.height = width;
-        Class4.anApplet_Sub1_179 = this;
-        if (ISAAC.aClass31_521 == null) {
+        MovedStatics.anApplet_Sub1_179 = this;
+        if (Main.signlink == null) {
             try {
-                Actor.aClass31_3152 = ISAAC.aClass31_521 = new Signlink(false, this, InetAddress.getByName(getCodeBase().getHost()), fileStoreId, null, 0);
+                Actor.aClass31_3152 = Main.signlink = new Signlink(false, this, InetAddress.getByName(getCodeBase().getHost()), fileStoreId, null, 0);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        ISAAC.aClass31_521.method394(1, 0, this);
+        Main.signlink.method394(1, 0, this);
 
         if (arg0 == 120)
             return;
@@ -401,11 +399,11 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
 
     public void method29(boolean arg0) {
         long l = System.currentTimeMillis();
-        long l_14_ = Class67.aLongArray1614[MouseHandler.anInt1468];
+        long l_14_ = MovedStatics.aLongArray1614[MouseHandler.anInt1468];
         if (l_14_ != 0L && l > l_14_) {
             /* empty */
         }
-        Class67.aLongArray1614[MouseHandler.anInt1468] = l;
+        MovedStatics.aLongArray1614[MouseHandler.anInt1468] = l;
         MouseHandler.anInt1468 = 0x1f & MouseHandler.anInt1468 + 1;
         synchronized (this) {
             MovedStatics.aBoolean571 = GenericTile.aBoolean1215;
@@ -423,7 +421,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             Class39.anInt901 = clientVersion;
             Class12.width = width;
             IdentityKit.height = height;
-            Class4.anApplet_Sub1_179 = this;
+            MovedStatics.anApplet_Sub1_179 = this;
             Class35.aFrame1732 = new Frame();
             Class35.aFrame1732.setTitle("Jagex");
 //            Class35.aFrame1732.setResizable(false);
@@ -436,10 +434,10 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             Insets insets = Class35.aFrame1732.getInsets();
             Class35.aFrame1732.setSize(insets.right + width + insets.left, insets.bottom + insets.top + height);
 //            Class35.aFrame1732.setLocationRelativeTo(null);
-            Actor.aClass31_3152 = ISAAC.aClass31_521 = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
-            ISAAC.aClass31_521.method394(1, 0, this);
+            Actor.aClass31_3152 = Main.signlink = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
+            Main.signlink.method394(1, 0, this);
         } catch (Exception exception) {
-            CacheIndex.method169(null, (byte) -127, exception);
+            MovedStatics.method169(null, (byte) -127, exception);
         }
     }
 
@@ -447,7 +445,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         return this.getDocumentBase();
     }
 
-    public abstract void method31(boolean bool);
+    public abstract void startup(boolean bool);
 
     public void update(Graphics graphics) {
         paint(graphics);
@@ -491,8 +489,8 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             run();
         MouseHandler.aCanvas1469.requestFocus();
         Class40_Sub5_Sub11.clearScreen = true;
-        Class67.aBoolean1575 = false;
-        Class4.aLong174 = System.currentTimeMillis();
+        MovedStatics.aBoolean1575 = false;
+        MovedStatics.aLong174 = System.currentTimeMillis();
     }
 
     public abstract void method34(int i);

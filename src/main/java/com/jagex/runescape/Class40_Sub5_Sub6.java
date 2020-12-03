@@ -20,7 +20,6 @@ import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class40_Sub5_Sub6 extends CachedNode {
-    public static Class67[] aClass67Array2436 = new Class67[13];
     public static int currentCameraPositionH;
     public static NodeCache aClass9_2439 = new NodeCache(64);
     public static int cameraY;
@@ -57,7 +56,7 @@ public class Class40_Sub5_Sub6 extends CachedNode {
 
     public static void method586(int arg0) {
         ISAAC.cachedActorDefinitions.clear();
-        Class67.aClass9_1611.clear();
+        MovedStatics.aClass9_1611.clear();
         if(arg0 <= 63)
             English.errorConnectingToServer = null;
     }

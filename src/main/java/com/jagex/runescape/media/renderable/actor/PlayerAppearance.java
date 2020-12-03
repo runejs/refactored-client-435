@@ -1,7 +1,6 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.ItemDefinition;
@@ -17,7 +16,6 @@ public class PlayerAppearance {
     public static int[] anIntArray685 = new int[50];
     public static boolean aBoolean687;
     public static int[] anIntArray688 = new int[50];
-    public static Class67 aClass67_693;
     public static int[] anIntArray695 = new int[50];
     public static String[] aClass1Array697 = new String[50];
     public static int anInt704 = 0;
@@ -108,7 +106,7 @@ public class PlayerAppearance {
             }
         }
 
-        Model cachedModel = (Model) CacheIndex.modelCache.get(hash);
+        Model cachedModel = (Model) MovedStatics.modelCache.get(hash);
         if(cachedModel == null) {
             boolean invalid = false;
             for(int bodyPart = 0; bodyPart < 12; bodyPart++) {
@@ -120,7 +118,7 @@ public class PlayerAppearance {
             }
             if(invalid) {
                 if(this.cachedModel != -1L)
-                    cachedModel = (Model) CacheIndex.modelCache.get(this.cachedModel);
+                    cachedModel = (Model) MovedStatics.modelCache.get(this.cachedModel);
                 if(cachedModel == null)
                     return null;
             }
@@ -151,7 +149,7 @@ public class PlayerAppearance {
                 }
                 cachedModel.createBones();
                 cachedModel.applyLighting(64, 850, -30, -50, -30, true);
-                CacheIndex.modelCache.put(hash, cachedModel);
+                MovedStatics.modelCache.put(hash, cachedModel);
                 this.cachedModel = hash;
             }
         }
@@ -203,7 +201,7 @@ public class PlayerAppearance {
         appearance[9] = appearance9;
 
         if(originalAppearanceHash != 0L && originalAppearanceHash != appearanceHash) {
-            CacheIndex.modelCache.remove(originalAppearanceHash);
+            MovedStatics.modelCache.remove(originalAppearanceHash);
         }
     }
 

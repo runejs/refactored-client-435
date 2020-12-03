@@ -2,7 +2,7 @@ package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.Class17;
 import com.jagex.runescape.RSString;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.textUtils.TextColourNode;
@@ -109,13 +109,13 @@ public class TypeFace extends Rasterizer {
         return class40_sub5_sub14_sub1;
     }
 
-    public static TypeFace getFont(CacheIndex cacheIndex, int arg0, int fontId) {
-        if (!ImageRGB.spriteExists(arg0, fontId, cacheIndex))
+    public static TypeFace getFont(CacheArchive cacheArchive, int arg0, int fontId) {
+        if (!ImageRGB.spriteExists(arg0, fontId, cacheArchive))
             return null;
         return constructFont();
     }
 
-    public static TypeFace loadTypeFace(CacheIndex arg0, String arg2, String arg3) {
+    public static TypeFace loadTypeFace(CacheArchive arg0, String arg2, String arg3) {
         int i = arg0.getHash(arg3);
         int i_50_ = arg0.method179(i, arg2);
         return getFont(arg0, i_50_, i);

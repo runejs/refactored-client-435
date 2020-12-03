@@ -1,7 +1,7 @@
 package com.jagex.runescape.media.renderable;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -54,7 +54,7 @@ public class GameObject extends Renderable {
         }
     }
 
-    public static IndexedImage method769(int arg0, CacheIndex arg1, int arg2) {
+    public static IndexedImage method769(int arg0, CacheArchive arg1, int arg2) {
         if(!Buffer.method472(arg1, arg2))
             return null;
         return MovedStatics.method538(0);

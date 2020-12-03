@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
@@ -159,13 +159,13 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         }
     }
 
-    public static void method763(Component arg0, CacheIndex arg2) {
+    public static void method763(Component arg0, CacheArchive arg2) {
         if(!MovedStatics.aBoolean2083) {
             FloorDecoration.inventoryBackgroundImage = Main.method359(Native.aClass1_638, Native.aClass1_305, arg2);
             Class44.chatboxBackgroundImage = Main.method359(Native.chatback, Native.aClass1_305, arg2);
             Class34.minimapBackgroundImage = Main.method359(Native.mapBack, Native.aClass1_305, arg2);
             Class57.bottomChatBack = Main.method359(Native.aClass1_1395, Native.aClass1_305, arg2);
-            Class56.tabBottomBack = Main.method359(Native.aClass1_256, Native.aClass1_305, arg2);
+            MovedStatics.tabBottomBack = Main.method359(Native.aClass1_256, Native.aClass1_305, arg2);
             Buffer.tabTopBack = Main.method359(Native.aClass1_338, Native.aClass1_305, arg2);
             RSCanvas.chatboxProducingGraphicsBuffer = Class40_Sub5_Sub13.createGraphicsBuffer(479, 96, arg0);
             Class44.chatboxBackgroundImage.drawImage(0, 0);
@@ -206,20 +206,20 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             image = HuffmanEncoding.method1028(arg2, Native.aClass1_304, (byte) 21, Native.aClass1_305);
             Class17.chatboxTop = Class40_Sub5_Sub13.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
-            Class56.aClass40_Sub5_Sub14_Sub2_1315 = Main.method359(Native.aClass1_2093, Native.aClass1_305, arg2);
+            MovedStatics.aClass40_Sub5_Sub14_Sub2_1315 = Main.method359(Native.aClass1_2093, Native.aClass1_305, arg2);
             GameShell.aClass40_Sub5_Sub14_Sub2_1 = Main.method359(Native.aClass1_3254, Native.aClass1_305, arg2);
             Class35.aClass40_Sub5_Sub14_Sub2_1744 = Main.method359(Native.aClass1_1517, Native.aClass1_305, arg2);
-            Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105 = Class56.aClass40_Sub5_Sub14_Sub2_1315.method691();
+            Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105 = MovedStatics.aClass40_Sub5_Sub14_Sub2_1315.method691();
             Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105.flipHorizontal();
             WallDecoration.aClass40_Sub5_Sub14_Sub2_1270 = GameShell.aClass40_Sub5_Sub14_Sub2_1.method691();
             WallDecoration.aClass40_Sub5_Sub14_Sub2_1270.flipHorizontal();
-            Renderable.aClass40_Sub5_Sub14_Sub2_2860 = Class56.aClass40_Sub5_Sub14_Sub2_1315.method691();
+            Renderable.aClass40_Sub5_Sub14_Sub2_2860 = MovedStatics.aClass40_Sub5_Sub14_Sub2_1315.method691();
             Renderable.aClass40_Sub5_Sub14_Sub2_2860.flipVertical();
             MovedStatics.aClass40_Sub5_Sub14_Sub2_549 = GameShell.aClass40_Sub5_Sub14_Sub2_1.method691();
             MovedStatics.aClass40_Sub5_Sub14_Sub2_549.flipVertical();
             MovedStatics.aClass40_Sub5_Sub14_Sub2_1919 = Class35.aClass40_Sub5_Sub14_Sub2_1744.method691();
             MovedStatics.aClass40_Sub5_Sub14_Sub2_1919.flipVertical();
-            ISAAC.aClass40_Sub5_Sub14_Sub2_524 = Class56.aClass40_Sub5_Sub14_Sub2_1315.method691();
+            ISAAC.aClass40_Sub5_Sub14_Sub2_524 = MovedStatics.aClass40_Sub5_Sub14_Sub2_1315.method691();
             ISAAC.aClass40_Sub5_Sub14_Sub2_524.flipHorizontal();
             ISAAC.aClass40_Sub5_Sub14_Sub2_524.flipVertical();
             Class13.aClass40_Sub5_Sub14_Sub2_418 = GameShell.aClass40_Sub5_Sub14_Sub2_1.method691();
@@ -351,7 +351,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             }
         }
         if(arg0 > -101)
-            CacheIndex.skinDefinitionCacheIndex = null;
+            CacheArchive.skinDefinitionCacheArchive = null;
         if((OverlayDefinition.tile_flags[Player.worldLevel][Player.localPlayer.worldX >> 7][Player.localPlayer.worldY >> 7] & 0x4) != 0)
             i = Player.worldLevel;
         return i;
@@ -435,7 +435,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, vertexHeightRight);
                 scene.addEntityB(localX, localY, plane, vertexMix, 0, 1, 1, hash, renderable, objectConfig);
                 if(type >= 12 && type <= 17 && type != 13 && plane > 0)
-                    CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(CacheIndex.anIntArrayArrayArray262[plane][localX][localY], 2340);
+                    MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 2340);
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.unmarkSolidOccupant(localX, localY, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, face, gameObjectDefinition.walkable);
             } else if(type == 0) {
@@ -451,28 +451,28 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         InteractiveObject.aByteArrayArrayArray492[plane][localX][localY + 1] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
-                        CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(CacheIndex.anIntArrayArrayArray262[plane][localX][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 585);
                 } else if(face == 1) {
                     if(gameObjectDefinition.castsShadow) {
                         InteractiveObject.aByteArrayArrayArray492[plane][localX][localY + 1] = (byte) 50;
                         InteractiveObject.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
-                        CacheIndex.anIntArrayArrayArray262[plane][localX][localY + 1] = UnderlayDefinition.bitWiseOR(CacheIndex.anIntArrayArrayArray262[plane][localX][localY + 1], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1], 1170);
                 } else if(face == 2) {
                     if(gameObjectDefinition.castsShadow) {
                         InteractiveObject.aByteArrayArrayArray492[plane][1 + localX][localY] = (byte) 50;
                         InteractiveObject.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
-                        CacheIndex.anIntArrayArrayArray262[plane][localX + 1][localY] = UnderlayDefinition.bitWiseOR(CacheIndex.anIntArrayArrayArray262[plane][localX + 1][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY], 585);
                 } else if(face == 3) {
                     if(gameObjectDefinition.castsShadow) {
                         InteractiveObject.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
                         InteractiveObject.aByteArrayArrayArray492[plane][localX + 1][localY] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
-                        CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(CacheIndex.anIntArrayArrayArray262[plane][localX][localY], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 1170);
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
@@ -511,17 +511,17 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 scene.addWall(localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face], SceneCluster.anIntArray761[i_46_], hash, renderable, renderable_47_, objectConfig);
                 if(gameObjectDefinition.wall) {
                     if(face == 0) {
-                        CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(CacheIndex.anIntArrayArrayArray262[plane][localX][localY], 585);
-                        CacheIndex.anIntArrayArrayArray262[plane][localX][localY + 1] = UnderlayDefinition.bitWiseOR(CacheIndex.anIntArrayArrayArray262[plane][localX][localY + 1], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1], 1170);
                     } else if(face == 1) {
-                        CacheIndex.anIntArrayArrayArray262[plane][localX][1 + localY] = UnderlayDefinition.bitWiseOR(CacheIndex.anIntArrayArrayArray262[plane][localX][1 + localY], 1170);
-                        CacheIndex.anIntArrayArrayArray262[plane][1 + localX][localY] = UnderlayDefinition.bitWiseOR(CacheIndex.anIntArrayArrayArray262[plane][1 + localX][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][1 + localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][1 + localY], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][1 + localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][1 + localX][localY], 585);
                     } else if(face == 2) {
-                        CacheIndex.anIntArrayArrayArray262[plane][localX + 1][localY] = UnderlayDefinition.bitWiseOR(CacheIndex.anIntArrayArrayArray262[plane][localX + 1][localY], 585);
-                        CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(CacheIndex.anIntArrayArrayArray262[plane][localX][localY], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 1170);
                     } else if(face == 3) {
-                        CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(CacheIndex.anIntArrayArrayArray262[plane][localX][localY], 1170);
-                        CacheIndex.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(CacheIndex.anIntArrayArrayArray262[plane][localX][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 585);
                     }
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)

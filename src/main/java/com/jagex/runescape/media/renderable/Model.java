@@ -1,7 +1,7 @@
 package com.jagex.runescape.media.renderable;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.FrameDefinition;
 import com.jagex.runescape.cache.def.FramemapDefinition;
 import com.jagex.runescape.io.Buffer;
@@ -684,7 +684,7 @@ public class Model extends Renderable {
         return (arg0 & 0xff80) + arg1;
     }
 
-    public static Model getModel(CacheIndex arg0, int arg1, int arg2) {
+    public static Model getModel(CacheArchive arg0, int arg1, int arg2) {
         try {
             if(ModelLoader.models == null) {
                 new ModelLoader();

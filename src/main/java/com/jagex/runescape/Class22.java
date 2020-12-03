@@ -1,6 +1,6 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -95,7 +95,7 @@ public abstract class Class22 {
             RSCanvas.chatboxProducingGraphicsBuffer.prepareRasterizer();
 //        }
         Class44.chatboxBackgroundImage.drawImage(0, 0);
-        Class5.chatboxLineOffsets = Rasterizer3D.setLineOffsets(Class5.chatboxLineOffsets);
+        MovedStatics.chatboxLineOffsets = Rasterizer3D.setLineOffsets(MovedStatics.chatboxLineOffsets);
     }
 
     public static String method307(Buffer arg0, int arg1, int arg2) {
@@ -164,7 +164,7 @@ public abstract class Class22 {
                             } else
                                 MovedStatics.method456(i_22_);
                         } else {
-                            Class33.method414(false, 0, MouseHandler.anInt1457, i_22_, 0, CacheIndex.musicCacheIndex);
+                            Class33.method414(false, 0, MouseHandler.anInt1457, i_22_, 0, CacheArchive.musicCacheArchive);
                             Class35.songTimeout = 0;
                         }
                         RSCanvas.anInt60 = i_22_;
@@ -190,15 +190,15 @@ public abstract class Class22 {
                 }
                 if(i == 4) {
                     if(i_21_ == 0)
-                        Class5.anInt200 = 127;
+                        MovedStatics.anInt200 = 127;
                     if(i_21_ == 1)
-                        Class5.anInt200 = 96;
+                        MovedStatics.anInt200 = 96;
                     if(i_21_ == 2)
-                        Class5.anInt200 = 64;
+                        MovedStatics.anInt200 = 64;
                     if(i_21_ == 3)
-                        Class5.anInt200 = 32;
+                        MovedStatics.anInt200 = 32;
                     if(i_21_ == 4)
-                        Class5.anInt200 = 0;
+                        MovedStatics.anInt200 = 0;
                 }
                 if(i == 6)
                     MovedStatics.anInt2280 = i_21_;

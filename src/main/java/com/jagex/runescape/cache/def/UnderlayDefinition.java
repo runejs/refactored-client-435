@@ -1,7 +1,7 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
@@ -17,7 +17,7 @@ public class UnderlayDefinition extends CachedNode {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
     public static int anInt2576;
     public static int anInt2581;
-    public static CacheIndex aCacheIndex_2582;
+    public static CacheArchive aCacheArchive_2582;
 
     public int saturation;
     public int anInt2565;
@@ -30,8 +30,8 @@ public class UnderlayDefinition extends CachedNode {
         return (arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) + (~0xff00ff & (0xff00ff & arg1) * i_7_ + arg3 * (0xff00ff & arg2)) >> 8;
     }
 
-    public static void method616(CacheIndex arg0) {
-        Actor.aCacheIndex_3150 = arg0;
+    public static void method616(CacheArchive arg0) {
+        Actor.aCacheArchive_3150 = arg0;
     }
 
     public static void addFriend(long name) {

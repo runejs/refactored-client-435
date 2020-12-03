@@ -1,6 +1,7 @@
 package com.jagex.runescape.cache.media;
 
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.MovedStatics;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.media.Rasterizer;
 
@@ -233,11 +234,11 @@ public class ImageRGB extends Rasterizer {
         }
     }
 
-    public static boolean spriteExists(int arg0, int arg1, CacheIndex cacheIndex) {
-        byte[] is = cacheIndex.getFile(arg0, arg1);
+    public static boolean spriteExists(int arg0, int arg1, CacheArchive cacheArchive) {
+        byte[] is = cacheArchive.getFile(arg0, arg1);
         if(is == null)
             return false;
-        CacheIndex.method184(is, 0);
+        MovedStatics.method184(is, 0);
         return true;
     }
 

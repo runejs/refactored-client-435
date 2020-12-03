@@ -1,7 +1,7 @@
 package com.jagex.runescape.input;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ScreenController;
@@ -62,7 +62,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         }
         Class65.method1018();
         Player.setTutorialIslandFlag();
-        if (!Class4.menuOpen) {
+        if (!MovedStatics.menuOpen) {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
         } else  {
@@ -105,10 +105,10 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 y += 15;
                 MovedStatics.aBoolean893 = false;
             }
-            if (CacheIndex.aBoolean260) {
+            if (MovedStatics.aBoolean260) {
                 WallDecoration.fontNormal.drawStringRight(English.chatPanelRedrawn, x, y, 16711680);
                 y += 15;
-                CacheIndex.aBoolean260 = false;
+                MovedStatics.aBoolean260 = false;
             }
             if (Class40_Sub3.aBoolean2026) {
                 WallDecoration.fontNormal.drawStringRight(English.iconsRedrawn, x, y, 16711680);
@@ -128,7 +128,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         }
     }
 
-    public static int method955(CacheIndex arg0) {
+    public static int method955(CacheArchive arg0) {
         int i = 0;
         if (arg0.method194(Native.aClass1_638, Native.aClass1_305)) {
             i++;

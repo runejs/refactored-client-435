@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.node.NodeCache;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.TypeFace;
@@ -26,18 +26,18 @@ public class Class33 {
         if(Class24.method340()) {
             Class22.method308();
             Class26.aBoolean618 = arg0;
-            Class22_Sub1.aCacheIndex_1855 = null;
+            Class22_Sub1.aCacheArchive_1855 = null;
         }
     }
 
-    public static synchronized void method403(int arg0, boolean arg1, int arg2, int arg3, CacheIndex arg4, int arg5, int arg6, boolean arg7) {
+    public static synchronized void method403(int arg0, boolean arg1, int arg2, int arg3, CacheArchive arg4, int arg5, int arg6, boolean arg7) {
         if(Class24.method340()) {
             Main.aBoolean1790 = arg7;
-            CacheIndex.anInt255 = arg2;
+            MovedStatics.anInt255 = arg2;
             Class40_Sub5_Sub17_Sub1.anInt3004 = arg5;
             Class26.aBoolean618 = arg1;
-            Class22_Sub1.aCacheIndex_1855 = arg4;
-            CacheIndex.anInt1806 = -1;
+            Class22_Sub1.aCacheArchive_1855 = arg4;
+            MovedStatics.anInt1806 = -1;
             OverlayDefinition.anInt2342 = arg0;
             Class40_Sub6.anInt2110 = arg6;
             Class8.anInt289 = arg3;
@@ -250,7 +250,7 @@ public class Class33 {
     public static synchronized void method405(int arg0, int arg1) {
         if(Class24.method340()) {
             OverlayDefinition.method557(arg1);
-            Class22_Sub1.aCacheIndex_1855 = null;
+            Class22_Sub1.aCacheArchive_1855 = null;
             Class26.aBoolean618 = false;
             if(arg0 != 16969)
                 method414(false, -11, -36, -55, 122, null);
@@ -350,7 +350,7 @@ public class Class33 {
         Native.loginScreenMessageLineThree = line3;
     }
 
-    public static synchronized void method412(boolean arg0, CacheIndex arg1, int arg2, byte arg3, String arg4, int arg5, String arg6, int arg7) {
+    public static synchronized void method412(boolean arg0, CacheArchive arg1, int arg2, byte arg3, String arg4, int arg5, String arg6, int arg7) {
         if(Class24.method340()) {
             if(arg3 != 66)
                 method412(false, null, 120, (byte) -44, null, 71, null, -13);
@@ -363,17 +363,17 @@ public class Class33 {
     public static synchronized void method413(byte arg0) {
         if(Class24.method340()) {
             if(Class26.aBoolean618) {
-                byte[] is = RSString.method74(Class40_Sub5_Sub17_Sub1.anInt3004, Class22_Sub1.aCacheIndex_1855, Class8.anInt289, Class40_Sub6.anInt2110);
+                byte[] is = RSString.method74(Class40_Sub5_Sub17_Sub1.anInt3004, Class22_Sub1.aCacheArchive_1855, Class8.anInt289, Class40_Sub6.anInt2110);
                 if(is != null) {
-                    if(CacheIndex.anInt255 < 0) {
-                        if(CacheIndex.anInt1806 < 0)
+                    if(MovedStatics.anInt255 < 0) {
+                        if(MovedStatics.anInt1806 < 0)
                             RSString.method56(Main.aBoolean1790, is, OverlayDefinition.anInt2342);
                         else
-                            VarbitDefinition.method566(OverlayDefinition.anInt2342, Main.aBoolean1790, CacheIndex.anInt1806, is);
+                            VarbitDefinition.method566(OverlayDefinition.anInt2342, Main.aBoolean1790, MovedStatics.anInt1806, is);
                     } else
-                        Class42.method886(0, OverlayDefinition.anInt2342, Main.aBoolean1790, is, CacheIndex.anInt255);
+                        Class42.method886(0, OverlayDefinition.anInt2342, Main.aBoolean1790, is, MovedStatics.anInt255);
                     Class26.aBoolean618 = false;
-                    Class22_Sub1.aCacheIndex_1855 = null;
+                    Class22_Sub1.aCacheArchive_1855 = null;
                 }
             }
             Class59.method984(0);
@@ -382,16 +382,16 @@ public class Class33 {
         }
     }
 
-    public static synchronized void method414(boolean arg0, int arg1, int songid, int arg3, int arg4, CacheIndex arg5) {
+    public static synchronized void method414(boolean arg0, int arg1, int songid, int arg3, int arg4, CacheArchive arg5) {
         if(Class24.method340()) {
             Class26.aBoolean618 = true;
-            CacheIndex.anInt1806 = -1;
-            CacheIndex.anInt255 = -1;
+            MovedStatics.anInt1806 = -1;
+            MovedStatics.anInt255 = -1;
             OverlayDefinition.anInt2342 = arg3;
             Class40_Sub5_Sub17_Sub1.anInt3004 = arg4;
             Main.aBoolean1790 = arg0;
             Class40_Sub6.anInt2110 = arg1;
-            Class22_Sub1.aCacheIndex_1855 = arg5;
+            Class22_Sub1.aCacheArchive_1855 = arg5;
             Class8.anInt289 = songid;
         }
     }

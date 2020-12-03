@@ -2,7 +2,7 @@ package com.jagex.runescape.io;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.node.NodeCache;
-import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.node.Node;
 import com.jagex.runescape.scene.InteractiveObject;
@@ -36,12 +36,12 @@ public class Buffer extends Node {
     }
 
     // ???
-    public static boolean method472(CacheIndex arg1, int arg2) {
+    public static boolean method472(CacheArchive arg1, int arg2) {
         byte[] is = arg1.method187(arg2);
         if(is == null) {
             return false;
         }
-        CacheIndex.method184(is, 0);
+        MovedStatics.method184(is, 0);
         return true;
 
     }
@@ -132,7 +132,7 @@ public class Buffer extends Node {
 
     // ???
     public int method473(int value) {
-        int i = Class67.method1034(true, value, currentPosition, buffer);
+        int i = MovedStatics.method1034(true, value, currentPosition, buffer);
         putIntBE(i);
         return i;
     }
