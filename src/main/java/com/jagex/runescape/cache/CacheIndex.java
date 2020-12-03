@@ -1,145 +1,170 @@
 package com.jagex.runescape.cache;
 
-import com.jagex.runescape.cache.def.ActorDefinition;
+import java.io.IOException;
 
-public class Cache {
+public class CacheIndex {
 
-    public CacheFileChannel dataChannel;
-    public CacheFileChannel metaChannel = null;
+    public static byte[] buffer = new byte[520];
+    public final CacheFileChannel dataChannel;
+    public final CacheFileChannel metaChannel;
     public int maxLength;
-    public int indexFileId;
+    public int id;
 
-    public Cache(int indexFileId, CacheFileChannel dataChannel, CacheFileChannel metaChannel, int maxLength) {
+    public CacheIndex(int id, CacheFileChannel dataChannel, CacheFileChannel metaChannel, int maxLength) {
         this.maxLength = maxLength;
         this.metaChannel = metaChannel;
         this.dataChannel = dataChannel;
-        this.indexFileId = indexFileId;
+        this.id = id;
     }
-
 
     public String toString() {
-        return "com.jagex.runescape.cache.Cache:" + indexFileId;
+        return "com.jagex.runescape.cache.CacheIndex:" + id;
     }
 
-    public byte[] method969(int arg0) {
+    public byte[] get(int index) {
         synchronized(dataChannel) {
             try {
-                if(metaChannel.getSize() < (long) (6 + arg0 * 6))
+                if(metaChannel.getSize() < (long) (6 + index * 6)) {
                     return null;
-                metaChannel.setReadIndex((long) (6 * arg0));
-                metaChannel.method1035(ActorDefinition.aByteArray2416, 6, 0);
-                int i_0_ = (0xff00 & ActorDefinition.aByteArray2416[4] << 8) + ((0xff & ActorDefinition.aByteArray2416[3]) << 16) + (0xff & ActorDefinition.aByteArray2416[5]);
-                int i_1_ = (0xff & ActorDefinition.aByteArray2416[2]) + ((ActorDefinition.aByteArray2416[0] & 0xff) << 16) + ((0xff & ActorDefinition.aByteArray2416[1]) << 8);
-                if(i_1_ < 0 || i_1_ > maxLength)
-                    return null;
-                if(i_0_ <= 0 || dataChannel.getSize() / 520L < (long) i_0_)
-                    return null;
-                int i_2_ = 0;
-                int i_3_ = 0;
-                byte[] is = new byte[i_1_];
-                while(i_1_ > i_2_) {
-                    if(i_0_ == 0)
-                        return null;
-                    dataChannel.setReadIndex((long) (i_0_ * 520));
-                    int i_4_ = -i_2_ + i_1_;
-                    if(i_4_ > 512)
-                        i_4_ = 512;
-                    dataChannel.method1035(ActorDefinition.aByteArray2416, 8 + i_4_, 0);
-                    int i_5_ = (0xff00 & ActorDefinition.aByteArray2416[0] << 8) + (0xff & ActorDefinition.aByteArray2416[1]);
-                    int i_6_ = (ActorDefinition.aByteArray2416[6] & 0xff) + ((0xff & ActorDefinition.aByteArray2416[5]) << 8) + ((0xff & ActorDefinition.aByteArray2416[4]) << 16);
-                    int i_7_ = (0xff00 & ActorDefinition.aByteArray2416[2] << 8) + (0xff & ActorDefinition.aByteArray2416[3]);
-                    int i_8_ = 0xff & ActorDefinition.aByteArray2416[7];
-                    if(arg0 != i_5_ || i_3_ != i_7_ || indexFileId != i_8_)
-                        return null;
-                    if(i_6_ < 0 || dataChannel.getSize() / 520L < (long) i_6_)
-                        return null;
-                    i_3_++;
-                    for(int i_9_ = 0; i_9_ < i_4_; i_9_++)
-                        is[i_2_++] = ActorDefinition.aByteArray2416[8 + i_9_];
-                    i_0_ = i_6_;
                 }
+
+                metaChannel.setReadIndex(6 * index);
+                metaChannel.method1035(buffer, 6, 0);
+                int fileBlock = (0xff00 & buffer[4] << 8) + ((0xff & buffer[3]) << 16) + (0xff & buffer[5]);
+                int fileSize = (0xff & buffer[2]) + ((buffer[0] & 0xff) << 16) + ((0xff & buffer[1]) << 8);
+                if(fileSize < 0 || fileSize > maxLength) {
+                    return null;
+                }
+
+                if(fileBlock <= 0 || dataChannel.getSize() / 520L < (long) fileBlock) {
+                    return null;
+                }
+
+                int read = 0;
+                int i_3_ = 0;
+                byte[] is = new byte[fileSize];
+
+                while(fileSize > read) {
+                    if(fileBlock == 0) {
+                        return null;
+                    }
+
+                    dataChannel.setReadIndex(fileBlock * 520);
+                    int remaining = -read + fileSize;
+                    if(remaining > 512) {
+                        remaining = 512;
+                    }
+
+                    dataChannel.method1035(buffer, 8 + remaining, 0);
+                    int i_5_ = (0xff00 & buffer[0] << 8) + (0xff & buffer[1]);
+                    int i_6_ = (buffer[6] & 0xff) + ((0xff & buffer[5]) << 8) + ((0xff & buffer[4]) << 16);
+                    int i_7_ = (0xff00 & buffer[2] << 8) + (0xff & buffer[3]);
+                    int i_8_ = 0xff & buffer[7];
+
+                    if(index != i_5_ || i_3_ != i_7_ || id != i_8_) {
+                        return null;
+                    }
+
+                    if(i_6_ < 0 || dataChannel.getSize() / 520L < (long) i_6_) {
+                        return null;
+                    }
+
+                    i_3_++;
+                    for(int i_9_ = 0; i_9_ < remaining; i_9_++) {
+                        is[read++] = buffer[8 + i_9_];
+                    }
+
+                    fileBlock = i_6_;
+                }
+
                 return is;
-            } catch(java.io.IOException ioexception) {
+            } catch(IOException ioexception) {
                 return null;
             }
         }
     }
 
-    public boolean method970(byte[] arg0, int arg1, boolean arg2, int arg3, byte arg4) {
+    public boolean put(byte[] buffer, int index, boolean overwrite, int length) {
         synchronized(dataChannel) {
             try {
-                if(arg4 >= -80)
-                    method969(91);
-                int i;
-                if(arg2) {
-                    if(metaChannel.getSize() < (long) (6 + 6 * arg3))
+                int sector;
+                if(overwrite) {
+                    if(metaChannel.getSize() < (long) (6 + 6 * index)) {
                         return false;
-                    metaChannel.setReadIndex((long) (arg3 * 6));
-                    metaChannel.method1035(ActorDefinition.aByteArray2416, 6, 0);
-                    i = (ActorDefinition.aByteArray2416[5] & 0xff) + ((ActorDefinition.aByteArray2416[3] & 0xff) << 16) + ((ActorDefinition.aByteArray2416[4] & 0xff) << 8);
-                    if(i <= 0 || dataChannel.getSize() / 520L < (long) i)
+                    }
+
+                    metaChannel.setReadIndex((long) (index * 6));
+                    metaChannel.method1035(CacheIndex.buffer, 6, 0);
+                    sector = (CacheIndex.buffer[5] & 0xff) + ((CacheIndex.buffer[3] & 0xff) << 16) + ((CacheIndex.buffer[4] & 0xff) << 8);
+
+                    if(sector <= 0 || dataChannel.getSize() / 520L < (long) sector) {
                         return false;
+                    }
                 } else {
-                    i = (int) ((519L + dataChannel.getSize()) / 520L);
-                    if(i == 0)
-                        i = 1;
+                    sector = (int) ((519L + dataChannel.getSize()) / 520L);
+                    if(sector == 0) {
+                        sector = 1;
+                    }
                 }
-                ActorDefinition.aByteArray2416[0] = (byte) (arg1 >> 16);
-                ActorDefinition.aByteArray2416[1] = (byte) (arg1 >> 8);
-                ActorDefinition.aByteArray2416[2] = (byte) arg1;
+
+                CacheIndex.buffer[0] = (byte) (length >> 16);
+                CacheIndex.buffer[1] = (byte) (length >> 8);
+                CacheIndex.buffer[2] = (byte) length;
+                CacheIndex.buffer[3] = (byte) (sector >> 16);
+                CacheIndex.buffer[4] = (byte) (sector >> 8);
+                CacheIndex.buffer[5] = (byte) sector;
+                metaChannel.setReadIndex(index * 6);
+                metaChannel.method1033(0, 6, CacheIndex.buffer);
+
                 int i_10_ = 0;
-                ActorDefinition.aByteArray2416[3] = (byte) (i >> 16);
                 int i_11_ = 0;
-                ActorDefinition.aByteArray2416[4] = (byte) (i >> 8);
-                ActorDefinition.aByteArray2416[5] = (byte) i;
-                metaChannel.setReadIndex((long) (arg3 * 6));
-                metaChannel.method1033(0, 6, ActorDefinition.aByteArray2416);
                 int i_12_;
-                for(/**/; i_10_ < arg1; i_10_ += i_12_) {
+                for(/**/; i_10_ < length; i_10_ += i_12_) {
                     int i_13_ = 0;
-                    if(arg2) {
-                        dataChannel.setReadIndex((long) (520 * i));
+                    if(overwrite) {
+                        dataChannel.setReadIndex((long) (520 * sector));
                         try {
-                            dataChannel.method1035(ActorDefinition.aByteArray2416, 8, 0);
+                            dataChannel.method1035(CacheIndex.buffer, 8, 0);
                         } catch(java.io.EOFException eofexception) {
                             break;
                         }
-                        i_13_ = (ActorDefinition.aByteArray2416[6] & 0xff) + (ActorDefinition.aByteArray2416[4] << 16 & 0xff0000) + (0xff00 & ActorDefinition.aByteArray2416[5] << 8);
-                        i_12_ = (ActorDefinition.aByteArray2416[1] & 0xff) + (ActorDefinition.aByteArray2416[0] << 8 & 0xff00);
-                        int i_14_ = ActorDefinition.aByteArray2416[7] & 0xff;
-                        int i_15_ = (ActorDefinition.aByteArray2416[3] & 0xff) + ((0xff & ActorDefinition.aByteArray2416[2]) << 8);
-                        if(arg3 != i_12_ || i_11_ != i_15_ || indexFileId != i_14_)
+                        i_13_ = (CacheIndex.buffer[6] & 0xff) + (CacheIndex.buffer[4] << 16 & 0xff0000) + (0xff00 & CacheIndex.buffer[5] << 8);
+                        i_12_ = (CacheIndex.buffer[1] & 0xff) + (CacheIndex.buffer[0] << 8 & 0xff00);
+                        int i_14_ = CacheIndex.buffer[7] & 0xff;
+                        int i_15_ = (CacheIndex.buffer[3] & 0xff) + ((0xff & CacheIndex.buffer[2]) << 8);
+                        if(index != i_12_ || i_11_ != i_15_ || id != i_14_)
                             return false;
                         if(i_13_ < 0 || dataChannel.getSize() / 520L < (long) i_13_)
                             return false;
                     }
                     if(i_13_ == 0) {
-                        arg2 = false;
+                        overwrite = false;
                         i_13_ = (int) ((519L + dataChannel.getSize()) / 520L);
                         if(i_13_ == 0)
                             i_13_++;
-                        if(i == i_13_)
+                        if(sector == i_13_)
                             i_13_++;
                     }
-                    ActorDefinition.aByteArray2416[0] = (byte) (arg3 >> 8);
-                    if(-i_10_ + arg1 <= 512)
+                    CacheIndex.buffer[0] = (byte) (index >> 8);
+                    if(-i_10_ + length <= 512)
                         i_13_ = 0;
-                    ActorDefinition.aByteArray2416[1] = (byte) arg3;
-                    i_12_ = -i_10_ + arg1;
+                    CacheIndex.buffer[1] = (byte) index;
+                    i_12_ = -i_10_ + length;
                     if(i_12_ > 512)
                         i_12_ = 512;
-                    ActorDefinition.aByteArray2416[2] = (byte) (i_11_ >> 8);
-                    ActorDefinition.aByteArray2416[3] = (byte) i_11_;
-                    ActorDefinition.aByteArray2416[4] = (byte) (i_13_ >> 16);
-                    ActorDefinition.aByteArray2416[5] = (byte) (i_13_ >> 8);
+                    CacheIndex.buffer[2] = (byte) (i_11_ >> 8);
+                    CacheIndex.buffer[3] = (byte) i_11_;
+                    CacheIndex.buffer[4] = (byte) (i_13_ >> 16);
+                    CacheIndex.buffer[5] = (byte) (i_13_ >> 8);
                     i_11_++;
-                    ActorDefinition.aByteArray2416[6] = (byte) i_13_;
-                    ActorDefinition.aByteArray2416[7] = (byte) indexFileId;
-                    dataChannel.setReadIndex((long) (520 * i));
-                    dataChannel.method1033(0, 8, ActorDefinition.aByteArray2416);
-                    i = i_13_;
-                    dataChannel.method1033(i_10_, i_12_, arg0);
+                    CacheIndex.buffer[6] = (byte) i_13_;
+                    CacheIndex.buffer[7] = (byte) id;
+                    dataChannel.setReadIndex((long) (520 * sector));
+                    dataChannel.method1033(0, 8, CacheIndex.buffer);
+                    sector = i_13_;
+                    dataChannel.method1033(i_10_, i_12_, buffer);
                 }
+
                 return true;
             } catch(java.io.IOException ioexception) {
                 return false;
@@ -147,15 +172,17 @@ public class Cache {
         }
     }
 
-    public boolean method971(byte[] arg0, int arg1, int arg2, int arg3) {
+    public boolean put(byte[] arg0, int arg2, int arg3) {
         synchronized(dataChannel) {
-            if(arg2 < 0 || arg2 > maxLength)
+            if(arg2 < 0 || arg2 > maxLength) {
                 throw new IllegalArgumentException();
-            if(arg1 != 1862596560)
-                method971(null, 96, -29, 88);
-            boolean bool = method970(arg0, arg2, true, arg3, (byte) -120);
-            if(!bool)
-                bool = method970(arg0, arg2, false, arg3, (byte) -114);
+            }
+
+            boolean bool = put(arg0, arg3, true, arg2);
+            if(!bool) {
+                bool = put(arg0, arg3, false, arg2);
+            }
+
             return bool;
         }
     }

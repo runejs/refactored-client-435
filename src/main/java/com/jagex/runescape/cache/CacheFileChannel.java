@@ -1,158 +1,157 @@
 package com.jagex.runescape.cache;
 
 import com.jagex.runescape.Class18;
-import com.jagex.runescape.MovedStatics;
 import com.jagex.runescape.SizedAccessFile;
 
 import java.io.EOFException;
 import java.io.IOException;
 
-public class CacheChannel {
+public class CacheFileChannel {
 
-    public long aLong1578;
+    public long readIndex;
+    public long writeIndex;
     public byte[] aByteArray1583;
     public int anInt1589;
     public byte[] aByteArray1592;
     public long aLong1593;
     public int anInt1595 = 0;
     public long aLong1596;
-    public long aLong1600;
-    public long aLong1602;
+    public long dataRead;
+    public long size;
     public SizedAccessFile accessFile;
-    public long aLong1604;
 
-    // Cache something something
-    public CacheChannel(SizedAccessFile arg0, int arg1) throws IOException {
+    public CacheFileChannel(SizedAccessFile accessFile, int bufferSize) throws IOException {
         aLong1593 = -1L;
         aLong1596 = -1L;
-        accessFile = arg0;
-        aLong1602 = aLong1604 = arg0.length();
+        this.accessFile = accessFile;
+        size = writeIndex = accessFile.length();
         aByteArray1592 = new byte[0];
-        aByteArray1583 = new byte[arg1];
-        aLong1578 = 0L;
+        aByteArray1583 = new byte[bufferSize];
+        readIndex = 0L;
     }
 
-
-    public void method1031(int arg0, long arg1) {
-        if(arg0 == 0 && arg1 >= 0)
-            aLong1578 = arg1;
+    public void setReadIndex(long index) {
+        if(index >= 0) {
+            readIndex = index;
+        }
     }
 
-    public long method1032(int arg0) {
-        if(arg0 != 0)
-            return -105L;
-        return aLong1602;
+    public long getSize() {
+        return size;
     }
 
-    public void method1033(int arg0, int arg1, int arg2, byte[] arg3) throws IOException {
+    public void method1033(int arg0, int arg2, byte[] arg3) throws IOException {
         try {
-            if(arg1 != -16777216)
-                MovedStatics.method1034(false, 109, -94, null);
-            if(aLong1602 < (long) arg2 + aLong1578)
-                aLong1602 = (long) arg2 + aLong1578;
-            if(aLong1593 != -1 && (aLong1578 < aLong1593 || aLong1593 + (long) anInt1595 < aLong1578))
-                method1039(-1);
-            if(aLong1593 != -1L && aLong1593 + (long) aByteArray1592.length < (long) arg2 + aLong1578) {
-                int i = (int) (aLong1593 - (aLong1578 - (long) aByteArray1592.length));
+            if(size < (long) arg2 + readIndex) {
+                size = (long) arg2 + readIndex;
+            }
+
+            if(aLong1593 != -1 && (readIndex < aLong1593 || aLong1593 + (long) anInt1595 < readIndex)) {
+                save();
+            }
+
+            if(aLong1593 != -1L && aLong1593 + (long) aByteArray1592.length < (long) arg2 + readIndex) {
+                int i = (int) (aLong1593 - (readIndex - (long) aByteArray1592.length));
                 arg2 -= i;
-                Class18.method278(arg3, arg0, aByteArray1592, (int) (-aLong1593 + aLong1578), i);
-                aLong1578 += (long) i;
+                Class18.method278(arg3, arg0, aByteArray1592, (int) (-aLong1593 + readIndex), i);
+                readIndex += (long) i;
                 anInt1595 = aByteArray1592.length;
                 arg0 += i;
-                method1039(-1);
+                save();
             }
+
             if(arg2 > aByteArray1592.length) {
-                if(aLong1600 != aLong1578) {
-                    accessFile.seek(aLong1578);
-                    aLong1600 = aLong1578;
+                if(dataRead != readIndex) {
+                    accessFile.seek(readIndex);
+                    dataRead = readIndex;
                 }
                 accessFile.write(arg3, arg0, arg2);
-                aLong1600 += (long) arg2;
-                if(aLong1600 > aLong1604)
-                    aLong1604 = aLong1600;
+                dataRead += (long) arg2;
+                if(dataRead > writeIndex)
+                    writeIndex = dataRead;
                 long l = -1L;
                 long l_0_ = -1L;
-                if(aLong1578 >= aLong1596 && aLong1578 < (long) anInt1589 + aLong1596)
-                    l_0_ = aLong1578;
-                else if(aLong1578 <= aLong1596 && aLong1596 < aLong1578 + (long) arg2)
+                if(readIndex >= aLong1596 && readIndex < (long) anInt1589 + aLong1596)
+                    l_0_ = readIndex;
+                else if(readIndex <= aLong1596 && aLong1596 < readIndex + (long) arg2)
                     l_0_ = aLong1596;
-                if(aLong1596 < aLong1578 + (long) arg2 && aLong1596 + (long) anInt1589 >= (long) arg2 + aLong1578)
-                    l = (long) arg2 + aLong1578;
-                else if(aLong1596 + (long) anInt1589 > aLong1578 && (long) arg2 + aLong1578 >= (long) anInt1589 + aLong1596)
+                if(aLong1596 < readIndex + (long) arg2 && aLong1596 + (long) anInt1589 >= (long) arg2 + readIndex)
+                    l = (long) arg2 + readIndex;
+                else if(aLong1596 + (long) anInt1589 > readIndex && (long) arg2 + readIndex >= (long) anInt1589 + aLong1596)
                     l = (long) anInt1589 + aLong1596;
                 if(l_0_ > -1 && l_0_ < l) {
                     int i = (int) (l - l_0_);
-                    Class18.method278(arg3, (int) ((long) arg0 + l_0_ - aLong1578), aByteArray1583, (int) (l_0_ + -aLong1596), i);
+                    Class18.method278(arg3, (int) ((long) arg0 + l_0_ - readIndex), aByteArray1583, (int) (l_0_ + -aLong1596), i);
                 }
-                aLong1578 += (long) arg2;
+                readIndex += (long) arg2;
             } else if(arg2 > 0) {
                 if(aLong1593 == -1)
-                    aLong1593 = aLong1578;
-                Class18.method278(arg3, arg0, aByteArray1592, (int) (aLong1578 + -aLong1593), arg2);
-                aLong1578 += (long) arg2;
-                if((long) anInt1595 < -aLong1593 + aLong1578)
-                    anInt1595 = (int) (-aLong1593 + aLong1578);
+                    aLong1593 = readIndex;
+                Class18.method278(arg3, arg0, aByteArray1592, (int) (readIndex + -aLong1593), arg2);
+                readIndex += (long) arg2;
+                if((long) anInt1595 < -aLong1593 + readIndex)
+                    anInt1595 = (int) (-aLong1593 + readIndex);
             }
         } catch(IOException ioexception) {
-            aLong1600 = -1L;
+            dataRead = -1L;
             throw ioexception;
         }
     }
 
-    public void method1035(int arg0, byte arg1, int arg2, byte[] arg3) throws IOException {
+    public void method1035(byte[] b, int length, int offset) throws IOException {
         try {
-            if(arg0 + arg2 > arg3.length)
-                throw new ArrayIndexOutOfBoundsException(arg2 + arg0 - arg3.length);
-            if(aLong1593 != -1 && aLong1593 <= aLong1578 && (long) arg2 + aLong1578 <= (long) anInt1595 + aLong1593) {
-                Class18.method278(aByteArray1592, (int) (aLong1578 - aLong1593), arg3, arg0, arg2);
-                aLong1578 += (long) arg2;
+            if(offset + length > b.length)
+                throw new ArrayIndexOutOfBoundsException(length + offset - b.length);
+            if(aLong1593 != -1 && aLong1593 <= readIndex && (long) length + readIndex <= (long) anInt1595 + aLong1593) {
+                Class18.method278(aByteArray1592, (int) (readIndex - aLong1593), b, offset, length);
+                readIndex += (long) length;
                 return;
             }
-            int i = arg2;
-            long l = aLong1578;
-            int i_2_ = arg0;
-            if(aLong1578 >= aLong1596 && (long) anInt1589 + aLong1596 > aLong1578) {
-                int i_3_ = (int) ((long) anInt1589 + -aLong1578 + aLong1596);
-                if(i_3_ > arg2)
-                    i_3_ = arg2;
-                Class18.method278(aByteArray1583, (int) (-aLong1596 + aLong1578), arg3, arg0, i_3_);
-                arg0 += i_3_;
-                aLong1578 += (long) i_3_;
-                arg2 -= i_3_;
+            int i = length;
+            long l = readIndex;
+            int i_2_ = offset;
+            if(readIndex >= aLong1596 && (long) anInt1589 + aLong1596 > readIndex) {
+                int i_3_ = (int) ((long) anInt1589 + -readIndex + aLong1596);
+                if(i_3_ > length)
+                    i_3_ = length;
+                Class18.method278(aByteArray1583, (int) (-aLong1596 + readIndex), b, offset, i_3_);
+                offset += i_3_;
+                readIndex += (long) i_3_;
+                length -= i_3_;
             }
-            if(arg2 <= aByteArray1583.length) {
-                if(arg2 > 0) {
-                    int i_4_ = arg2;
-                    method1038((byte) 50);
+            if(length <= aByteArray1583.length) {
+                if(length > 0) {
+                    int i_4_ = length;
+                    readRemaining();
                     if(i_4_ > anInt1589)
                         i_4_ = anInt1589;
-                    Class18.method278(aByteArray1583, 0, arg3, arg0, i_4_);
-                    aLong1578 += (long) i_4_;
-                    arg0 += i_4_;
-                    arg2 -= i_4_;
+                    Class18.method278(aByteArray1583, 0, b, offset, i_4_);
+                    readIndex += (long) i_4_;
+                    offset += i_4_;
+                    length -= i_4_;
                 }
             } else {
-                accessFile.seek(aLong1578);
-                aLong1600 = aLong1578;
+                accessFile.seek(readIndex);
+                dataRead = readIndex;
                 int i_5_;
-                for(/**/; arg2 > 0; arg2 -= i_5_) {
-                    i_5_ = accessFile.read(arg3, arg2, arg0);
+                for(/**/; length > 0; length -= i_5_) {
+                    i_5_ = accessFile.read(b, length, offset);
                     if(i_5_ == -1)
                         break;
-                    aLong1578 += (long) i_5_;
-                    aLong1600 += (long) i_5_;
-                    arg0 += i_5_;
+                    readIndex += (long) i_5_;
+                    dataRead += (long) i_5_;
+                    offset += i_5_;
                 }
             }
             if(aLong1593 != -1L) {
-                if(aLong1593 > aLong1578 && arg2 > 0) {
-                    int i_6_ = (int) (-aLong1578 + aLong1593) + arg0;
-                    if(i_6_ > arg0 + arg2)
-                        i_6_ = arg0 + arg2;
-                    while(arg0 < i_6_) {
-                        arg2--;
-                        arg3[arg0++] = (byte) 0;
-                        aLong1578++;
+                if(aLong1593 > readIndex && length > 0) {
+                    int i_6_ = (int) (-readIndex + aLong1593) + offset;
+                    if(i_6_ > offset + length)
+                        i_6_ = offset + length;
+                    while(offset < i_6_) {
+                        length--;
+                        b[offset++] = (byte) 0;
+                        readIndex++;
                     }
                 }
                 long l_7_ = -1L;
@@ -168,78 +167,84 @@ public class CacheChannel {
                     l_8_ = aLong1593;
                 if(l_8_ > -1L && l_7_ > l_8_) {
                     int i_9_ = (int) (-l_8_ + l_7_);
-                    Class18.method278(aByteArray1592, (int) (l_8_ - aLong1593), arg3, (int) (-l + l_8_) + i_2_, i_9_);
-                    if(aLong1578 < l_7_) {
-                        arg2 -= l_7_ - aLong1578;
-                        aLong1578 = l_7_;
+                    Class18.method278(aByteArray1592, (int) (l_8_ - aLong1593), b, (int) (-l + l_8_) + i_2_, i_9_);
+                    if(readIndex < l_7_) {
+                        length -= l_7_ - readIndex;
+                        readIndex = l_7_;
                     }
                 }
             }
-            if(arg1 >= -8)
-                method1032(34);
         } catch(IOException ioexception) {
-            aLong1600 = -1L;
+            dataRead = -1L;
             throw ioexception;
         }
-        if(arg2 > 0)
+
+        if(length > 0) {
             throw new EOFException();
-    }
-
-    public void method1036(int arg0) throws IOException {
-        if(arg0 == 841617512) {
-            method1039(arg0 ^ ~0x322a1068);
-            accessFile.close();
         }
     }
 
-    public void method1038(byte arg0) throws IOException {
-        if(arg0 == 50) {
-            anInt1589 = 0;
-            if(aLong1578 != aLong1600) {
-                accessFile.seek(aLong1578);
-                aLong1600 = aLong1578;
-            }
-            aLong1596 = aLong1578;
-            int i;
-            for(/**/; anInt1589 < aByteArray1583.length; anInt1589 += i) {
-                i = accessFile.read(aByteArray1583, aByteArray1583.length - anInt1589, anInt1589);
-                if(i == -1)
-                    break;
-                aLong1600 += (long) i;
-            }
+    public void close() throws IOException {
+        save();
+        accessFile.close();
+    }
+
+    public void readRemaining() throws IOException {
+        anInt1589 = 0;
+        if(readIndex != dataRead) {
+            accessFile.seek(readIndex);
+            dataRead = readIndex;
+        }
+        aLong1596 = readIndex;
+        int read;
+        for(/**/; anInt1589 < aByteArray1583.length; anInt1589 += read) {
+            read = accessFile.read(aByteArray1583, aByteArray1583.length - anInt1589, anInt1589);
+            if(read == -1)
+                break;
+            dataRead += read;
         }
     }
 
-    public void method1039(int arg0) throws IOException {
-        if(arg0 == -1) {
-            if(aLong1593 != -1) {
-                if(aLong1593 != aLong1600) {
-                    accessFile.seek(aLong1593);
-                    aLong1600 = aLong1593;
-                }
-                accessFile.write(aByteArray1592, 0, anInt1595);
-                aLong1600 += (long) anInt1595;
-                if(aLong1600 > aLong1604)
-                    aLong1604 = aLong1600;
-                long l = -1L;
-                if(aLong1596 > aLong1593 || aLong1596 + (long) anInt1589 <= aLong1593) {
-                    if(aLong1593 <= aLong1596 && aLong1593 + (long) anInt1595 > aLong1596)
-                        l = aLong1596;
-                } else
-                    l = aLong1593;
-                long l_10_ = -1L;
-                if((long) anInt1595 + aLong1593 <= aLong1596 || (long) anInt1589 + aLong1596 < aLong1593 + (long) anInt1595) {
-                    if(aLong1593 < (long) anInt1589 + aLong1596 && aLong1596 + (long) anInt1589 <= (long) anInt1595 + aLong1593)
-                        l_10_ = (long) anInt1589 + aLong1596;
-                } else
-                    l_10_ = aLong1593 + (long) anInt1595;
-                if(l > -1L && l < l_10_) {
-                    int i = (int) (-l + l_10_);
-                    Class18.method278(aByteArray1592, (int) (-aLong1593 + l), aByteArray1583, (int) (l - aLong1596), i);
-                }
-                anInt1595 = 0;
-                aLong1593 = -1L;
+    public void save() throws IOException {
+        if(aLong1593 != -1) {
+            if(aLong1593 != dataRead) {
+                accessFile.seek(aLong1593);
+                dataRead = aLong1593;
             }
+
+            accessFile.write(aByteArray1592, 0, anInt1595);
+            dataRead += anInt1595;
+
+            if(dataRead > writeIndex) {
+                writeIndex = dataRead;
+            }
+
+            long l = -1L;
+
+            if(aLong1596 > aLong1593 || aLong1596 + (long) anInt1589 <= aLong1593) {
+                if(aLong1593 <= aLong1596 && aLong1593 + (long) anInt1595 > aLong1596)
+                    l = aLong1596;
+            } else {
+                l = aLong1593;
+            }
+
+            long l_10_ = -1L;
+
+            if((long) anInt1595 + aLong1593 <= aLong1596 || (long) anInt1589 + aLong1596 < aLong1593 + (long) anInt1595) {
+                if(aLong1593 < (long) anInt1589 + aLong1596 && aLong1596 + (long) anInt1589 <= (long) anInt1595 + aLong1593) {
+                    l_10_ = (long) anInt1589 + aLong1596;
+                }
+            } else {
+                l_10_ = aLong1593 + (long) anInt1595;
+            }
+
+            if(l > -1L && l < l_10_) {
+                int i = (int) (-l + l_10_);
+                Class18.method278(aByteArray1592, (int) (-aLong1593 + l), aByteArray1583, (int) (l - aLong1596), i);
+            }
+
+            anInt1595 = 0;
+            aLong1593 = -1L;
         }
     }
 }

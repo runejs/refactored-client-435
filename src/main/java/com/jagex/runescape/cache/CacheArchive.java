@@ -9,23 +9,23 @@ import com.jagex.runescape.net.PacketBuffer;
 
 import java.util.zip.CRC32;
 
-public class CacheIndex {
+public class CacheArchive {
 
     public static CRC32 crc32 = new CRC32();
-    public static CacheIndex gameInterfaceCacheIndex;
-    public static CacheIndex gameDefinitionsCacheIndex;
-    public static CacheIndex skeletonCacheIndex;
-    public static CacheIndex skinDefinitionCacheIndex;
-    public static CacheIndex soundEffectCacheIndex;
-    public static CacheIndex gameWorldMapCacheIndex;
-    public static CacheIndex musicCacheIndex;
-    public static CacheIndex modelCacheIndex;
-    public static CacheIndex gameImageCacheIndex;
-    public static CacheIndex gameTextureCacheIndex;
-    public static CacheIndex huffmanCacheIndex;
-    public static CacheIndex jingleCacheIndex;
-    public static CacheIndex clientScriptCacheIndex;
-    public static CacheIndex definitionCache;
+    public static CacheArchive gameInterfaceCacheArchive;
+    public static CacheArchive gameDefinitionsCacheArchive;
+    public static CacheArchive skeletonCacheArchive;
+    public static CacheArchive skinDefinitionCacheArchive;
+    public static CacheArchive soundEffectCacheArchive;
+    public static CacheArchive gameWorldMapCacheArchive;
+    public static CacheArchive musicCacheArchive;
+    public static CacheArchive modelCacheArchive;
+    public static CacheArchive gameImageCacheArchive;
+    public static CacheArchive gameTextureCacheArchive;
+    public static CacheArchive huffmanCacheArchive;
+    public static CacheArchive jingleCacheArchive;
+    public static CacheArchive clientScriptCacheArchive;
+    public static CacheArchive definitionCache;
 
     public byte[][] aByteArrayArray212;
     public int anInt216;
@@ -45,17 +45,17 @@ public class CacheIndex {
     public volatile boolean[] aBooleanArray1796;
     public int anInt1797 = -1;
     public volatile boolean aBoolean1800 = false;
-    public Cache originalCache;
+    public CacheIndex originalCache;
     public int anInt1807;
     public int anInt1810;
     public boolean aBoolean1811 = false;
-    public Cache cache;
+    public CacheIndex cache;
 
     static {
         Player.npcs = new Npc[32768];
     }
 
-    public CacheIndex(Cache cache, Cache originalCache, int arg2, boolean arg3, boolean arg4, boolean arg5) {
+    public CacheArchive(CacheIndex cache, CacheIndex originalCache, int arg2, boolean arg3, boolean arg4, boolean arg5) {
         aBoolean220 = arg4;
         aBoolean233 = arg3;
         this.cache = cache;
@@ -63,15 +63,14 @@ public class CacheIndex {
         this.originalCache = originalCache;
         anInt1807 = arg2;
         Main.method37(this, anInt1807);
-
     }
 
-    public static CacheIndex loadCacheIndex(int cacheIndexId, boolean arg1, boolean arg2, boolean arg4) {
-        Cache cache = null;
-        if (Main.dataChannel != null) {
-            cache = new Cache(cacheIndexId, Main.dataChannel, Main.indexChannels[cacheIndexId], 1000000);
+    public static CacheArchive loadCacheIndex(int cacheIndexId, boolean arg1, boolean arg2, boolean arg4) {
+        CacheIndex cache = null;
+        if(Main.dataChannel != null) {
+            cache = new CacheIndex(cacheIndexId, Main.dataChannel, Main.indexChannels[cacheIndexId], 1000000);
         }
-        return new CacheIndex(cache, Main.gameCache, cacheIndexId, arg2, arg4, arg1);
+        return new CacheArchive(cache, Main.gameCache, cacheIndexId, arg2, arg4, arg1);
     }
 
     public void method196(boolean arg0, int arg2, boolean arg3, byte[] arg4) {
@@ -106,7 +105,7 @@ public class CacheIndex {
 
     }
 
-    public void method198(boolean arg1, byte[] arg2, int arg3, Cache arg4) {
+    public void method198(boolean arg1, byte[] arg2, int arg3, CacheIndex arg4) {
         if(originalCache == arg4) {
             if(aBoolean1800)
                 throw new RuntimeException();
