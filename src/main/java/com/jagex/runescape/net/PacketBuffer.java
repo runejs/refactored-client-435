@@ -8,6 +8,7 @@ import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.node.Class40_Sub6;
 import com.jagex.runescape.scene.SceneCluster;
 
 public class PacketBuffer extends Buffer {
@@ -33,8 +34,8 @@ public class PacketBuffer extends Buffer {
         Class40_Sub6 class40_sub6 = new Class40_Sub6();
         class40_sub6.anInt2112 = 1;
         class40_sub6.key = (long) arg0;
-        class40_sub6.aCache_2117 = arg2;
-        class40_sub6.aClass6_Sub1_2104 = arg1;
+        class40_sub6.cacheIndex = arg2;
+        class40_sub6.cacheArchive = arg1;
         synchronized(RSCanvas.aLinkedList_53) {
             if(arg3 != -28)
                 method521(false, -84, -120);

@@ -119,7 +119,7 @@ public class SceneTile extends Node {
         int i_3_ = cosine * y + x * sine >> 16;
         int i_4_ = -(y * sine) + cosine * x >> 16;
         if (l > 2500)
-            sprite.drawTo(Class34.minimapBackgroundImage, 98 + i_3_ + -(sprite.maxWidth / 2), -(sprite.maxHeight / 2) + -i_4_ + 79);
+            sprite.drawTo(MovedStatics.minimapBackgroundImage, 98 + i_3_ + -(sprite.maxWidth / 2), -(sprite.maxHeight / 2) + -i_4_ + 79);
         else
             sprite.drawImage(4 + -(sprite.maxWidth / 2) + i_3_ + 94, -4 + -i_4_ + 83 + -(sprite.maxHeight / 2));
     }

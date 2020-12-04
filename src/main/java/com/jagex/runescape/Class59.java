@@ -34,8 +34,8 @@ public class Class59 {
             Class48.logout(-7225);
         else {
             OverlayDefinition.method559(40);
-            PlayerAppearance.aClass64_717 = Class40_Sub6.gameConnection;
-            Class40_Sub6.gameConnection = null;
+            PlayerAppearance.aClass64_717 = MovedStatics.gameConnection;
+            MovedStatics.gameConnection = null;
         }
     }
 

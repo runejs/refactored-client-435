@@ -69,9 +69,9 @@ public class Class48 {
                 int i = arg2.getUnsignedByte();
                 if(i == 0) {
                     if(arg7 == 0)
-                        Class40_Sub6.tile_height[0][arg0][arg4] = -Class42.method888(arg6 + arg0 + 932731, (byte) -45, arg5 + 556238 + arg4) * 8;
+                        MovedStatics.tile_height[0][arg0][arg4] = -Class42.method888(arg6 + arg0 + 932731, (byte) -45, arg5 + 556238 + arg4) * 8;
                     else
-                        Class40_Sub6.tile_height[arg7][arg0][arg4] = -240 + Class40_Sub6.tile_height[arg7 + -1][arg0][arg4];
+                        MovedStatics.tile_height[arg7][arg0][arg4] = -240 + MovedStatics.tile_height[arg7 + -1][arg0][arg4];
                     break;
                 }
                 if(i == 1) {
@@ -79,9 +79,9 @@ public class Class48 {
                     if(i_0_ == 1)
                         i_0_ = 0;
                     if(arg7 != 0)
-                        Class40_Sub6.tile_height[arg7][arg0][arg4] = Class40_Sub6.tile_height[-1 + arg7][arg0][arg4] + -(8 * i_0_);
+                        MovedStatics.tile_height[arg7][arg0][arg4] = MovedStatics.tile_height[-1 + arg7][arg0][arg4] + -(8 * i_0_);
                     else
-                        Class40_Sub6.tile_height[0][arg0][arg4] = 8 * -i_0_;
+                        MovedStatics.tile_height[0][arg0][arg4] = 8 * -i_0_;
                     break;
                 }
                 if(i <= 49) {
@@ -313,9 +313,9 @@ public class Class48 {
     }
 
     public static void logout(int arg0) {
-        if(Class40_Sub6.gameConnection != null) {
-            Class40_Sub6.gameConnection.method1009();
-            Class40_Sub6.gameConnection = null;
+        if(MovedStatics.gameConnection != null) {
+            MovedStatics.gameConnection.method1009();
+            MovedStatics.gameConnection = null;
         }
         RSCanvas.method46(0);
         Npc.currentScene.initToNull();

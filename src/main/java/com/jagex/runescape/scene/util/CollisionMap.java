@@ -56,10 +56,10 @@ public class CollisionMap {
     }
 
     public static void method543(CollisionMap arg0, int arg1, int arg2, int arg3, int arg4, Scene arg5, int arg6, int arg7, int arg8, int arg9) {
-        int i = Class40_Sub6.tile_height[arg2][arg9][arg8];
-        int i_0_ = Class40_Sub6.tile_height[arg2][1 + arg9][arg8];
-        int i_1_ = Class40_Sub6.tile_height[arg2][arg9][1 + arg8];
-        int i_2_ = Class40_Sub6.tile_height[arg2][arg9 + 1][arg8 + 1];
+        int i = MovedStatics.tile_height[arg2][arg9][arg8];
+        int i_0_ = MovedStatics.tile_height[arg2][1 + arg9][arg8];
+        int i_1_ = MovedStatics.tile_height[arg2][arg9][1 + arg8];
+        int i_2_ = MovedStatics.tile_height[arg2][arg9 + 1][arg8 + 1];
         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
         int i_3_ = i_2_ + i_0_ + i + i_1_ >> 2;
         int i_4_ = (arg7 << 6) + arg4;

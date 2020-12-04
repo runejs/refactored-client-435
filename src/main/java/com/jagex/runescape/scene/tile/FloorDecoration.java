@@ -149,7 +149,7 @@ public class FloorDecoration {
             MovedStatics.chatboxLineOffsets = null;
             MovedStatics.aBoolean2083 = false;
             RSCanvas.anIntArray66 = null;
-            Class34.minimapBackgroundImage = null;
+            MovedStatics.minimapBackgroundImage = null;
             Landscape.anIntArray1186 = null;
             Class17.chatboxTop = null;
             RSCanvas.tabBottom = null;
@@ -167,8 +167,8 @@ public class FloorDecoration {
             MovedStatics.tabBottomBack = null;
             Landscape.framePieceRight = null;
             GameShell.aClass40_Sub5_Sub14_Sub2_1 = null;
-            Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105 = null;
-            Class34.anIntArray852 = null;
+            MovedStatics.aClass40_Sub5_Sub14_Sub2_2105 = null;
+            MovedStatics.anIntArray852 = null;
             HuffmanEncoding.aProducingGraphicsBuffer_1541 = null;
             Buffer.tabTopBack = null;
             MovedStatics.tabImageProducer = null;
@@ -226,7 +226,7 @@ public class FloorDecoration {
                 class40_sub1.putMediumBE((int) class40_sub5_sub13.key);
                 Class57.aClass64_1345.method1010(4, (byte) -19, 0, class40_sub1.buffer);
                 class40_sub5_sub13.clear();
-                Class34.aClass23_841.put(class40_sub5_sub13.key, class40_sub5_sub13);
+                MovedStatics.aClass23_841.put(class40_sub5_sub13.key, class40_sub5_sub13);
                 Class42.anInt1006++;
             }
             for(int i_33_ = 0; i_33_ < 100; i_33_++) {
@@ -284,11 +284,11 @@ public class FloorDecoration {
                                         = (byte) (int) (Math.random() * 255.0
                                         + 1.0);
                                 com.jagex.runescape.Class57.aClass64_1345 = null;
-                                com.jagex.runescape.Class34.anInt813++;
+                                MovedStatics.anInt813++;
                                 return false;
                             }
                             MovedStatics.anInt2278 = 0;
-                            Class34.anInt813 = 0;
+                            MovedStatics.anInt813 = 0;
                             PacketBuffer.aClass40_Sub5_Sub13_2250.aClass6_Sub1_2754.method196((PacketBuffer.aClass40_Sub5_Sub13_2250.key & 0xff0000L) == 16711680L, (int) (PacketBuffer.aClass40_Sub5_Sub13_2250.key & 0xffffL), Npc.aBoolean3298, Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer);
                         }
                         PacketBuffer.aClass40_Sub5_Sub13_2250.remove();
@@ -326,7 +326,7 @@ public class FloorDecoration {
                         Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class37.aClass23_869.method331(l_48_, 6120);
                         Npc.aBoolean3298 = true;
                         if(class40_sub5_sub13 == null) {
-                            class40_sub5_sub13 = (Class40_Sub5_Sub13) Class34.aClass23_841.method331(l_48_, 6120);
+                            class40_sub5_sub13 = (Class40_Sub5_Sub13) MovedStatics.aClass23_841.method331(l_48_, 6120);
                             Npc.aBoolean3298 = false;
                         }
                         if(class40_sub5_sub13 == null)

@@ -78,8 +78,8 @@ public class ISAAC {
             int i_4_ = i_3_ * 768 >> 8;
             for(int i_5_ = 1; i_5_ < 103; i_5_++) {
                 for(int i_6_ = 1; i_6_ < 103; i_6_++) {
-                    int i_7_ = -Class40_Sub6.tile_height[i][i_6_ - 1][i_5_] + Class40_Sub6.tile_height[i][1 + i_6_][i_5_];
-                    int i_8_ = Class40_Sub6.tile_height[i][i_6_][i_5_ + 1] + -Class40_Sub6.tile_height[i][i_6_][i_5_ + -1];
+                    int i_7_ = -MovedStatics.tile_height[i][i_6_ - 1][i_5_] + MovedStatics.tile_height[i][1 + i_6_][i_5_];
+                    int i_8_ = MovedStatics.tile_height[i][i_6_][i_5_ + 1] + -MovedStatics.tile_height[i][i_6_][i_5_ + -1];
                     int i_9_ = (int) Math.sqrt(i_8_ * i_8_ + i_7_ * i_7_ + 65536);
                     int i_10_ = 65536 / i_9_;
                     int i_11_ = (is[i_6_][i_5_] >> 1) + (is[i_6_][-1 + i_5_] >> 2) + (is[1 + i_6_][i_5_] >> 3) + (is[i_6_ - 1][i_5_] >> 2) + (is[i_6_][1 + i_5_] >> 3);
@@ -146,16 +146,16 @@ public class ISAAC {
                             i_26_ -= MovedStatics.anIntArray1579[i_29_];
                             i_22_ -= Class40_Sub5_Sub17_Sub6.anIntArray3250[i_29_];
                         }
-                        if(i_27_ >= 1 && i_27_ < 103 && (!VertexNormal.lowMemory || (0x2 & OverlayDefinition.tile_flags[0][i_16_][i_27_]) != 0 || (0x10 & OverlayDefinition.tile_flags[i][i_16_][i_27_]) == 0 && Class40_Sub6.onBuildTimePlane == Class59.getVisibilityPlaneFor(i, i_27_, 0, i_16_))) {
+                        if(i_27_ >= 1 && i_27_ < 103 && (!VertexNormal.lowMemory || (0x2 & OverlayDefinition.tile_flags[0][i_16_][i_27_]) != 0 || (0x10 & OverlayDefinition.tile_flags[i][i_16_][i_27_]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(i, i_27_, 0, i_16_))) {
                             if(Class64.lowestPlane > i)
                                 Class64.lowestPlane = i;
                             int i_30_ = Class42.tile_underlayids[i][i_16_][i_27_] & 0xff;
                             int i_31_ = MouseHandler.tile_overlayids[i][i_16_][i_27_] & 0xff;
                             if(i_30_ > 0 || i_31_ > 0) {
-                                int i_32_ = Class40_Sub6.tile_height[i][i_16_][i_27_];
-                                int i_33_ = Class40_Sub6.tile_height[i][i_16_ + 1][i_27_];
-                                int i_34_ = Class40_Sub6.tile_height[i][i_16_ + 1][1 + i_27_];
-                                int i_35_ = Class40_Sub6.tile_height[i][i_16_][i_27_ + 1];
+                                int i_32_ = MovedStatics.tile_height[i][i_16_][i_27_];
+                                int i_33_ = MovedStatics.tile_height[i][i_16_ + 1][i_27_];
+                                int i_34_ = MovedStatics.tile_height[i][i_16_ + 1][1 + i_27_];
+                                int i_35_ = MovedStatics.tile_height[i][i_16_][i_27_ + 1];
                                 int i_36_ = AnimationSequence.anIntArrayArray2490[i_16_][i_27_];
                                 int i_37_ = AnimationSequence.anIntArrayArray2490[i_16_ + 1][i_27_];
                                 int i_38_ = AnimationSequence.anIntArrayArray2490[i_16_ + 1][i_27_ + 1];
@@ -214,7 +214,7 @@ public class ISAAC {
                                     }
                                     int i_53_ = 0;
                                     if(i_50_ != -2)
-                                        i_53_ = Rasterizer3D.hsl2rgb[Class34.method420(i_50_, 96, true)];
+                                        i_53_ = Rasterizer3D.hsl2rgb[MovedStatics.method420(i_50_, 96, true)];
                                     if(class40_sub5_sub3.anInt2336 != -1) {
                                         int i_54_ = 0xff & Class40_Sub5_Sub15.anInt2791 + class40_sub5_sub3.anInt2334;
                                         int i_55_ = class40_sub5_sub3.anInt2330 + Actor.anInt3151;
@@ -224,9 +224,9 @@ public class ISAAC {
                                         } else
                                             i_55_ = 0;
                                         i_50_ = Class13.method244(class40_sub5_sub3.anInt2346, i_55_, i_54_);
-                                        i_53_ = Rasterizer3D.hsl2rgb[Class34.method420(i_50_, 96, true)];
+                                        i_53_ = Rasterizer3D.hsl2rgb[MovedStatics.method420(i_50_, 96, true)];
                                     }
-                                    arg0.addTile(i, i_16_, i_27_, i_46_, i_47_, i_48_, i_32_, i_33_, i_34_, i_35_, Class40_Sub5_Sub17_Sub6.method831(i_39_, i_36_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_37_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_38_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_40_, (byte) 73), Class34.method420(i_49_, i_36_, true), Class34.method420(i_49_, i_37_, true), Class34.method420(i_49_, i_38_, true), Class34.method420(i_49_, i_40_, true), i_45_, i_53_);
+                                    arg0.addTile(i, i_16_, i_27_, i_46_, i_47_, i_48_, i_32_, i_33_, i_34_, i_35_, Class40_Sub5_Sub17_Sub6.method831(i_39_, i_36_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_37_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_38_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_40_, (byte) 73), MovedStatics.method420(i_49_, i_36_, true), MovedStatics.method420(i_49_, i_37_, true), MovedStatics.method420(i_49_, i_38_, true), MovedStatics.method420(i_49_, i_40_, true), i_45_, i_53_);
                                 } else
                                     arg0.addTile(i, i_16_, i_27_, 0, 0, -1, i_32_, i_33_, i_34_, i_35_, Class40_Sub5_Sub17_Sub6.method831(i_39_, i_36_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_37_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_38_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_40_, (byte) 73), 0, 0, 0, 0, i_45_, 0);
                             }
@@ -293,8 +293,8 @@ public class ISAAC {
                             int i_71_ = (-i_65_ + i_66_ + 1) * (-i_67_ + i_68_ + 1);
                             if(i_71_ >= 8) {
                                 int i_72_ = 240;
-                                int i_73_ = -i_72_ + Class40_Sub6.tile_height[i_68_][i_64_][i_65_];
-                                int i_74_ = Class40_Sub6.tile_height[i_67_][i_64_][i_65_];
+                                int i_73_ = -i_72_ + MovedStatics.tile_height[i_68_][i_64_][i_65_];
+                                int i_74_ = MovedStatics.tile_height[i_67_][i_64_][i_65_];
                                 Scene.method116(i_61_, 1, 128 * i_64_, 128 * i_64_, 128 * i_65_, 128 + 128 * i_66_, i_73_, i_74_);
                                 for(int i_75_ = i_67_; i_75_ <= i_68_; i_75_++) {
                                     for(int i_76_ = i_65_; i_76_ <= i_66_; i_76_++)
@@ -330,9 +330,9 @@ public class ISAAC {
                             }
                             int i_83_ = (i_79_ - i_77_ + 1) * (-i_80_ + 1 + i_78_);
                             if(i_83_ >= 8) {
-                                int i_84_ = Class40_Sub6.tile_height[i_80_][i_77_][i_63_];
+                                int i_84_ = MovedStatics.tile_height[i_80_][i_77_][i_63_];
                                 int i_85_ = 240;
-                                int i_86_ = Class40_Sub6.tile_height[i_78_][i_77_][i_63_] - i_85_;
+                                int i_86_ = MovedStatics.tile_height[i_78_][i_77_][i_63_] - i_85_;
                                 Scene.method116(i_61_, 2, 128 * i_77_, 128 * i_79_ + 128, 128 * i_63_, i_63_ * 128, i_86_, i_84_);
                                 for(int i_87_ = i_80_; i_78_ >= i_87_; i_87_++) {
                                     for(int i_88_ = i_77_; i_88_ <= i_79_; i_88_++)
@@ -368,7 +368,7 @@ public class ISAAC {
                                 }
                             }
                             if((-i_89_ + i_90_ + 1) * (1 + i_92_ - i_91_) >= 4) {
-                                int i_95_ = Class40_Sub6.tile_height[i_62_][i_89_][i_91_];
+                                int i_95_ = MovedStatics.tile_height[i_62_][i_89_][i_91_];
                                 Scene.method116(i_61_, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_, i_92_ * 128 + 128, i_95_, i_95_);
                                 for(int i_96_ = i_89_; i_96_ <= i_90_; i_96_++) {
                                     for(int i_97_ = i_91_; i_92_ >= i_97_; i_97_++)

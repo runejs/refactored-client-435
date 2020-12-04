@@ -3,6 +3,7 @@ package com.jagex.runescape.cache.def;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheArchive;
+import com.jagex.runescape.node.Class40_Sub6;
 import com.jagex.runescape.node.HashTable;
 import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.media.AnimationSequence;
@@ -110,7 +111,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         byte[] is = null;
         synchronized(RSCanvas.aLinkedList_53) {
             for(Class40_Sub6 class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method902((byte) -90); class40_sub6 != null; class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method909(-4)) {
-                if((long) arg1 == class40_sub6.key && arg2 == class40_sub6.aCache_2117 && class40_sub6.anInt2112 == 0) {
+                if((long) arg1 == class40_sub6.key && arg2 == class40_sub6.cacheIndex && class40_sub6.anInt2112 == 0) {
                     is = class40_sub6.aByteArray2102;
                     break;
                 }
@@ -544,11 +545,8 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         return bool;
     }
 
-    public GameObjectDefinition getChildDefinition(int arg0) {
+    public GameObjectDefinition getChildDefinition() {
         int i = -1;
-        if(arg0 != -20) {
-            createObjectModel(true, false, 40, -55);
-        }
         if(varpID == -1) {
             if(configId != -1) {
                 i = GroundItemTile.varbitMasks[configId];

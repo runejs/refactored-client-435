@@ -163,7 +163,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         if(!MovedStatics.aBoolean2083) {
             FloorDecoration.inventoryBackgroundImage = Main.method359(Native.aClass1_638, Native.aClass1_305, arg2);
             Class44.chatboxBackgroundImage = Main.method359(Native.chatback, Native.aClass1_305, arg2);
-            Class34.minimapBackgroundImage = Main.method359(Native.mapBack, Native.aClass1_305, arg2);
+            MovedStatics.minimapBackgroundImage = Main.method359(Native.mapBack, Native.aClass1_305, arg2);
             Class57.bottomChatBack = Main.method359(Native.aClass1_1395, Native.aClass1_305, arg2);
             MovedStatics.tabBottomBack = Main.method359(Native.aClass1_256, Native.aClass1_305, arg2);
             Buffer.tabTopBack = Main.method359(Native.aClass1_338, Native.aClass1_305, arg2);
@@ -171,7 +171,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             Class44.chatboxBackgroundImage.drawImage(0, 0);
             RSString.mapbackProducingGraphicsBuffer = Class40_Sub5_Sub13.createGraphicsBuffer(172, 156, arg0);
             Rasterizer.resetPixels();
-            Class34.minimapBackgroundImage.drawImage(0, 0);
+            MovedStatics.minimapBackgroundImage.drawImage(0, 0);
             MovedStatics.tabImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(190, 261, arg0);
             FloorDecoration.inventoryBackgroundImage.drawImage(0, 0);
             VarbitDefinition.gameScreenImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.frameWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.frameHeight, arg0);
@@ -209,8 +209,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             MovedStatics.aClass40_Sub5_Sub14_Sub2_1315 = Main.method359(Native.aClass1_2093, Native.aClass1_305, arg2);
             GameShell.aClass40_Sub5_Sub14_Sub2_1 = Main.method359(Native.aClass1_3254, Native.aClass1_305, arg2);
             Class35.aClass40_Sub5_Sub14_Sub2_1744 = Main.method359(Native.aClass1_1517, Native.aClass1_305, arg2);
-            Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105 = MovedStatics.aClass40_Sub5_Sub14_Sub2_1315.method691();
-            Class40_Sub6.aClass40_Sub5_Sub14_Sub2_2105.flipHorizontal();
+            MovedStatics.aClass40_Sub5_Sub14_Sub2_2105 = MovedStatics.aClass40_Sub5_Sub14_Sub2_1315.method691();
+            MovedStatics.aClass40_Sub5_Sub14_Sub2_2105.flipHorizontal();
             WallDecoration.aClass40_Sub5_Sub14_Sub2_1270 = GameShell.aClass40_Sub5_Sub14_Sub2_1.method691();
             WallDecoration.aClass40_Sub5_Sub14_Sub2_1270.flipHorizontal();
             Renderable.aClass40_Sub5_Sub14_Sub2_2860 = MovedStatics.aClass40_Sub5_Sub14_Sub2_1315.method691();
@@ -227,14 +227,14 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             Class13.aClass40_Sub5_Sub14_Sub2_418.flipVertical();
             Class40_Sub5_Sub15.tabIcons = IndexedImage.getMultipleIndexedImages(arg2, Native.aClass1_2787, Native.aClass1_305);
             Landscape.anIntArray1186 = new int[151];
-            Class34.anIntArray852 = new int[151];
+            MovedStatics.anIntArray852 = new int[151];
             RSCanvas.anIntArray66 = new int[33];
             RSCanvas.anIntArray62 = new int[33];
             for(int y = 0; y < 33; y++) {
                 int i_15_ = 0;
                 int i_16_ = 999;
                 for(int x = 0; x < 34; x++) {
-                    if(Class34.minimapBackgroundImage.imgPixels[Class34.minimapBackgroundImage.imgWidth * y + x] == 0) {
+                    if(MovedStatics.minimapBackgroundImage.imgPixels[MovedStatics.minimapBackgroundImage.imgWidth * y + x] == 0) {
                         if(i_16_ == 999)
                             i_16_ = x;
                     } else if(i_16_ != 999) {
@@ -249,7 +249,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 int maxWidth = 0;
                 int minWidth = 999;
                 for(int x = 25; x < 172; x++) {
-                    if(Class34.minimapBackgroundImage.imgPixels[x + Class34.minimapBackgroundImage.imgWidth * y] != 0 || x <= 34 && y <= 34) {
+                    if(MovedStatics.minimapBackgroundImage.imgPixels[x + MovedStatics.minimapBackgroundImage.imgWidth * y] != 0 || x <= 34 && y <= 34) {
                         if(minWidth != 999) {
                             maxWidth = x;
                             break;
@@ -258,7 +258,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         minWidth = x;
                 }
                 Landscape.anIntArray1186[-5 + y] = minWidth - 25;
-                Class34.anIntArray852[-5 + y] = maxWidth + -minWidth;
+                MovedStatics.anIntArray852[-5 + y] = maxWidth + -minWidth;
             }
             MovedStatics.aBoolean2083 = true;
         }
@@ -359,13 +359,13 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     }
 
     public static void addObject(int objectId, int localX, int localY, int plane, int face, int type, Scene scene, CollisionMap collisionMap) {
-        if(!VertexNormal.lowMemory || (0x2 & OverlayDefinition.tile_flags[0][localX][localY]) != 0 || (0x10 & OverlayDefinition.tile_flags[plane][localX][localY]) == 0 && Class40_Sub6.onBuildTimePlane == Class59.getVisibilityPlaneFor(plane, localY, 0, localX)) {
+        if(!VertexNormal.lowMemory || (0x2 & OverlayDefinition.tile_flags[0][localX][localY]) != 0 || (0x10 & OverlayDefinition.tile_flags[plane][localX][localY]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(plane, localY, 0, localX)) {
             if(Class64.lowestPlane > plane)
                 Class64.lowestPlane = plane;
-            int vertexHeight = Class40_Sub6.tile_height[plane][localX][localY];
-            int vertexHeightRight = Class40_Sub6.tile_height[plane][localX + 1][localY];
-            int vertexHeightTopRight = Class40_Sub6.tile_height[plane][localX + 1][localY + 1];
-            int vertexHeightTop = Class40_Sub6.tile_height[plane][localX][localY + 1];
+            int vertexHeight = MovedStatics.tile_height[plane][localX][localY];
+            int vertexHeightRight = MovedStatics.tile_height[plane][localX + 1][localY];
+            int vertexHeightTopRight = MovedStatics.tile_height[plane][localX + 1][localY + 1];
+            int vertexHeightTop = MovedStatics.tile_height[plane][localX][localY + 1];
             int vertexMix = vertexHeight + vertexHeightRight + vertexHeightTopRight + vertexHeightTop >> 2;
             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(objectId);
             int hash = localX + (localY << 7) + (objectId << 14) + 1073741824;

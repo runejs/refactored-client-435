@@ -43,17 +43,17 @@ public class WallDecoration {
         if (IncomingPackets.incomingPacket == 49) {
             int i = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             int i_0_ = OverlayDefinition.placementY + (i & 0x7);
-            int i_1_ = ((0x7b & i) >> 4) + Class40_Sub6.placementX;
+            int i_1_ = ((0x7b & i) >> 4) + MovedStatics.placementX;
             int i_2_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             int i_3_ = i_2_ >> 2;
             int i_4_ = 0x3 & i_2_;
             int i_5_ = Npc.anIntArray3304[i_3_];
             int i_6_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
             if (i_1_ >= 0 && i_0_ >= 0 && i_1_ < 103 && i_0_ < 103) {
-                int i_7_ = Class40_Sub6.tile_height[Player.worldLevel][i_1_][i_0_];
-                int i_8_ = Class40_Sub6.tile_height[Player.worldLevel][i_1_ + 1][i_0_];
-                int i_9_ = Class40_Sub6.tile_height[Player.worldLevel][1 + i_1_][1 + i_0_];
-                int i_10_ = Class40_Sub6.tile_height[Player.worldLevel][i_1_][i_0_ + 1];
+                int i_7_ = MovedStatics.tile_height[Player.worldLevel][i_1_][i_0_];
+                int i_8_ = MovedStatics.tile_height[Player.worldLevel][i_1_ + 1][i_0_];
+                int i_9_ = MovedStatics.tile_height[Player.worldLevel][1 + i_1_][1 + i_0_];
+                int i_10_ = MovedStatics.tile_height[Player.worldLevel][i_1_][i_0_ + 1];
                 if (i_5_ == 0) {
                     Wall wall = Npc.currentScene.method126(Player.worldLevel, i_1_, i_0_);
                     if (wall != null) {
@@ -91,14 +91,14 @@ public class WallDecoration {
             int i_15_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
             int i_16_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             int i_17_ = (0x7 & i_16_) + OverlayDefinition.placementY;
-            int i_18_ = Class40_Sub6.placementX + ((i_16_ & 0x75) >> 4);
+            int i_18_ = MovedStatics.placementX + ((i_16_ & 0x75) >> 4);
             if (i_18_ >= 0 && i_17_ >= 0 && i_18_ < 104 && i_17_ < 104)
                 GameObjectDefinition.method609(i_15_, i_18_, i_12_, -1, Player.worldLevel, i_17_, i_14_, i_13_, 0);
         } else {
             if (IncomingPackets.incomingPacket == 9) {
                 int offset = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                 int localX = (offset & 0x7) + OverlayDefinition.placementY;
-                int localY = (0x7 & offset >> 4) + Class40_Sub6.placementX;
+                int localY = (0x7 & offset >> 4) + MovedStatics.placementX;
                 int soundId = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
 
                 int soundData = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
@@ -119,7 +119,7 @@ public class WallDecoration {
             }
             if (IncomingPackets.incomingPacket == 202) {
                 int i = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-                int i_27_ = ((0x78 & i) >> 4) + Class40_Sub6.placementX;
+                int i_27_ = ((0x78 & i) >> 4) + MovedStatics.placementX;
                 int i_28_ = OverlayDefinition.placementY + (0x7 & i);
                 int i_29_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                 int i_30_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
@@ -132,7 +132,7 @@ public class WallDecoration {
                 }
             } else if (IncomingPackets.incomingPacket == 99) {
                 int i = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-                int i_32_ = Class40_Sub6.placementX + ((0x75 & i) >> 4);
+                int i_32_ = MovedStatics.placementX + ((0x75 & i) >> 4);
                 int i_33_ = (i & 0x7) + OverlayDefinition.placementY;
                 int i_34_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                 int i_35_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
@@ -152,7 +152,7 @@ public class WallDecoration {
             } else if (IncomingPackets.incomingPacket == 143) { // remove landscape object
                 int offset = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                 int positionY = OverlayDefinition.placementY + (0x7 & offset);
-                int positionX = Class40_Sub6.placementX + (offset >> 4 & 0x7);
+                int positionX = MovedStatics.placementX + (offset >> 4 & 0x7);
                 int objectInfo = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                 int orientation = objectInfo & 0x3;
                 int typeIndex = objectInfo >> 2;
@@ -171,7 +171,7 @@ public class WallDecoration {
                     int i_49_ = Npc.anIntArray3304[i_48_];
                     int i_50_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                     int i_51_ = (i_50_ & 0x7) + OverlayDefinition.placementY;
-                    int i_52_ = Class40_Sub6.placementX + (i_50_ >> 4 & 0x7);
+                    int i_52_ = MovedStatics.placementX + (i_50_ >> 4 & 0x7);
                     int i_53_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                     int i_54_ = IncomingPackets.incomingPacketBuffer.getByte();
                     int i_55_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
@@ -183,10 +183,10 @@ public class WallDecoration {
                         class40_sub5_sub17_sub4_sub1 = Player.localPlayer;
                     if (class40_sub5_sub17_sub4_sub1 != null) {
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_55_);
-                        int i_57_ = Class40_Sub6.tile_height[Player.worldLevel][i_52_][i_51_];
-                        int i_58_ = Class40_Sub6.tile_height[Player.worldLevel][i_52_][1 + i_51_];
-                        int i_59_ = Class40_Sub6.tile_height[Player.worldLevel][1 + i_52_][1 + i_51_];
-                        int i_60_ = Class40_Sub6.tile_height[Player.worldLevel][i_52_ + 1][i_51_];
+                        int i_57_ = MovedStatics.tile_height[Player.worldLevel][i_52_][i_51_];
+                        int i_58_ = MovedStatics.tile_height[Player.worldLevel][i_52_][1 + i_51_];
+                        int i_59_ = MovedStatics.tile_height[Player.worldLevel][1 + i_52_][1 + i_51_];
+                        int i_60_ = MovedStatics.tile_height[Player.worldLevel][i_52_ + 1][i_51_];
                         Model class40_sub5_sub17_sub5 = gameObjectDefinition.createTerrainObjectModel(i_59_, i_58_, i_47_, i_57_, i_48_, i_60_);
                         if (class40_sub5_sub17_sub5 != null) {
                             if (i < i_54_) {
@@ -221,7 +221,7 @@ public class WallDecoration {
                 }
                 if (IncomingPackets.incomingPacket == 74) { // remove world item
                     int i = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-                    int i_65_ = Class40_Sub6.placementX + (i >> 4 & 0x7);
+                    int i_65_ = MovedStatics.placementX + (i >> 4 & 0x7);
                     int i_66_ = (i & 0x7) + OverlayDefinition.placementY;
                     int i_67_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                     if (i_65_ >= 0 && i_66_ >= 0 && i_65_ < 104 && i_66_ < 104) {
@@ -241,7 +241,7 @@ public class WallDecoration {
                 } else if (IncomingPackets.incomingPacket == 1) {
                     int i = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                     int i_68_ = (i & 0x7) + OverlayDefinition.placementY;
-                    int i_69_ = Class40_Sub6.placementX + (0x7 & i >> 4);
+                    int i_69_ = MovedStatics.placementX + (0x7 & i >> 4);
                     int i_70_ = i_69_ + IncomingPackets.incomingPacketBuffer.getByte();
                     int i_71_ = i_68_ + IncomingPackets.incomingPacketBuffer.getByte();
                     int i_72_ = IncomingPackets.incomingPacketBuffer.getShortBE();
@@ -267,7 +267,7 @@ public class WallDecoration {
                         int i_80_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
                         int i_81_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                         int i_82_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-                        int i_83_ = ((0x71 & i_82_) >> 4) + Class40_Sub6.placementX;
+                        int i_83_ = ((0x71 & i_82_) >> 4) + MovedStatics.placementX;
                         int i_84_ = (0x7 & i_82_) + OverlayDefinition.placementY;
                         if (i_83_ >= 0 && i_84_ >= 0 && i_83_ < 104 && i_84_ < 104 && PlayerAppearance.anInt708 != i_80_) {
                             Item item = new Item();
@@ -283,7 +283,7 @@ public class WallDecoration {
                         int i_85_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                         int i_86_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                         int i_87_ = OverlayDefinition.placementY + (i_86_ & 0x7);
-                        int i_88_ = Class40_Sub6.placementX + ((0x7a & i_86_) >> 4);
+                        int i_88_ = MovedStatics.placementX + ((0x7a & i_86_) >> 4);
                         if (i_88_ >= 0 && i_87_ >= 0 && i_88_ < 104 && i_87_ < 104) {
                             Item item = new Item();
                             item.itemCount = i_85_;

@@ -30,14 +30,14 @@ public class Item extends Renderable {
     public static void calculateCameraPosition() {
         int sceneX = Buffer.cameraOffsetX + Player.localPlayer.worldX;
         int sceneY = Player.localPlayer.worldY + Class48.cameraOffsetY;
-        if (Class40_Sub5_Sub6.currentCameraPositionH - sceneX < -500 || -sceneX + Class40_Sub5_Sub6.currentCameraPositionH > 500 || Class34.currentCameraPositionV + -sceneY < -500 || -sceneY + Class34.currentCameraPositionV > 500) {
-            Class34.currentCameraPositionV = sceneY;
+        if (Class40_Sub5_Sub6.currentCameraPositionH - sceneX < -500 || -sceneX + Class40_Sub5_Sub6.currentCameraPositionH > 500 || MovedStatics.currentCameraPositionV + -sceneY < -500 || -sceneY + MovedStatics.currentCameraPositionV > 500) {
+            MovedStatics.currentCameraPositionV = sceneY;
             Class40_Sub5_Sub6.currentCameraPositionH = sceneX;
         }
         if (Class40_Sub5_Sub6.currentCameraPositionH != sceneX)
             Class40_Sub5_Sub6.currentCameraPositionH += (-Class40_Sub5_Sub6.currentCameraPositionH + sceneX) / 16;
-        if (Class34.currentCameraPositionV != sceneY)
-            Class34.currentCameraPositionV += (-Class34.currentCameraPositionV + sceneY) / 16;
+        if (MovedStatics.currentCameraPositionV != sceneY)
+            MovedStatics.currentCameraPositionV += (-MovedStatics.currentCameraPositionV + sceneY) / 16;
 
         if (obfuscatedKeyStatus[96] && !Console.console.consoleOpen)
             Wall.cameraVelocityHorizontal += (-24 - Wall.cameraVelocityHorizontal) / 2;
@@ -51,7 +51,7 @@ public class Item extends Renderable {
             Class60.cameraVelocityVertical += (-12 - Class60.cameraVelocityVertical) / 2;
         else
             Class60.cameraVelocityVertical /= 2;
-        int i_1_ = Class34.currentCameraPositionV >> 7;
+        int i_1_ = MovedStatics.currentCameraPositionV >> 7;
         GroundItemTile.cameraHorizontal = Wall.cameraVelocityHorizontal / 2 + GroundItemTile.cameraHorizontal & 0x7ff;
         int i_2_ = Class40_Sub5_Sub6.currentCameraPositionH >> 7;
         Class65.cameraVertical += Class60.cameraVelocityVertical / 2;
@@ -60,14 +60,14 @@ public class Item extends Renderable {
             Class65.cameraVertical = 128;
         if (Class65.cameraVertical > 383)
             Class65.cameraVertical = 383;
-        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, Class40_Sub5_Sub6.currentCameraPositionH, Class34.currentCameraPositionV);
+        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, Class40_Sub5_Sub6.currentCameraPositionH, MovedStatics.currentCameraPositionV);
         if (i_2_ > 3 && i_1_ > 3 && i_2_ < 100 && i_1_ < 100) {
             for (int i_5_ = -4 + i_2_; i_5_ <= 4 + i_2_; i_5_++) {
                 for (int i_6_ = -4 + i_1_; 4 + i_1_ >= i_6_; i_6_++) {
                     int i_7_ = Player.worldLevel;
                     if (i_7_ < 3 && (0x2 & OverlayDefinition.tile_flags[1][i_5_][i_6_]) == 2)
                         i_7_++;
-                    int i_8_ = i_4_ + -Class40_Sub6.tile_height[i_7_][i_5_][i_6_];
+                    int i_8_ = i_4_ + -MovedStatics.tile_height[i_7_][i_5_][i_6_];
                     if (i_8_ > i_3_)
                         i_3_ = i_8_;
                 }
@@ -78,10 +78,10 @@ public class Item extends Renderable {
             i_9_ = 98048;
         if (i_9_ < 32768)
             i_9_ = 32768;
-        if (Class40_Sub6.secondaryCameraVertical < i_9_) {
-            Class40_Sub6.secondaryCameraVertical += (-Class40_Sub6.secondaryCameraVertical + i_9_) / 24;
-        } else if (Class40_Sub6.secondaryCameraVertical > i_9_)
-            Class40_Sub6.secondaryCameraVertical += (-Class40_Sub6.secondaryCameraVertical + i_9_) / 80;
+        if (MovedStatics.secondaryCameraVertical < i_9_) {
+            MovedStatics.secondaryCameraVertical += (-MovedStatics.secondaryCameraVertical + i_9_) / 24;
+        } else if (MovedStatics.secondaryCameraVertical > i_9_)
+            MovedStatics.secondaryCameraVertical += (-MovedStatics.secondaryCameraVertical + i_9_) / 80;
     }
 
     public static void method778(HuffmanEncoding arg1) {

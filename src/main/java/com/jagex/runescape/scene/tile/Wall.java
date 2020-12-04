@@ -7,6 +7,7 @@ import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Wall {
@@ -52,7 +53,7 @@ public class Wall {
                         class1 = class1.substring(5);
                         i_1_ = 2;
                     }
-                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Class40_Sub2.hasFriend(class1))) {
+                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(class1))) {
                         int i_3_ = 329 - 13 * i;
                         int i_4_ = 4;
                         i++;

@@ -1041,7 +1041,7 @@ public class GameInterface extends CachedNode {
                                 GameShell.method28(l);
                             }
                             if(action == 35) {
-                                Class40_Sub6.method838(0, l);
+                                MovedStatics.method838(0, l);
                             }
                         }
                     }
@@ -1158,9 +1158,9 @@ public class GameInterface extends CachedNode {
                         if(i_22_ != -1) {
                             if(gameScreenInterfaceId == -1) {
                                 PacketBuffer.method516();
-                                if(Class34.anInt854 != -1) {
+                                if(MovedStatics.anInt854 != -1) {
                                     Native.reportedName = class1.substring(i_22_ + 5).trim();
-                                    HuffmanEncoding.reportAbuseInterfaceID = gameScreenInterfaceId = Class34.anInt854;
+                                    HuffmanEncoding.reportAbuseInterfaceID = gameScreenInterfaceId = MovedStatics.anInt854;
                                     MovedStatics.reportMutePlayer = false;
                                 }
                             } else {
@@ -1337,7 +1337,7 @@ public class GameInterface extends CachedNode {
                     int[] is = Class13.method247(gameInterface_24_, (byte) 97);
                     int[] is_25_ = Class13.method247(gameInterface, (byte) 110);
                     int i = is_25_[1] - is[1] + -Class40_Sub5_Sub11.anInt2621 + Landscape.mouseY;
-                    int i_26_ = -is[0] + is_25_[0] + Class13.mouseX + -Class40_Sub2.anInt1996;
+                    int i_26_ = -is[0] + is_25_[0] + Class13.mouseX + -MovedStatics.anInt1996;
                     if(i < 0) {
                         i = 0;
                     }

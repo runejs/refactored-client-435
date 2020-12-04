@@ -53,7 +53,7 @@ public class Minimap extends FramePieceRenderer {
                 int i_15_ = 0;
                 int i_16_ = 999;
                 for(int x1 = 0; x1 < 34; x1++) {
-                    if(Class34.minimapBackgroundImage.imgPixels[Class34.minimapBackgroundImage.imgWidth * y1 + x1] == 0) {
+                    if(MovedStatics.minimapBackgroundImage.imgPixels[MovedStatics.minimapBackgroundImage.imgWidth * y1 + x1] == 0) {
                         if(i_16_ == 999)
                             i_16_ = x1;
                     } else if(i_16_ != 999) {
@@ -68,7 +68,7 @@ public class Minimap extends FramePieceRenderer {
         if(MovedStatics.minimapState == 2) {
             resizableMiniMapimage.prepareRasterizer();
             resizableMinimapLineOffsets = Rasterizer3D.setLineOffsets(resizableMinimapLineOffsets);
-            byte[] mmBackgroundPixels = Class34.minimapBackgroundImage.imgPixels;
+            byte[] mmBackgroundPixels = MovedStatics.minimapBackgroundImage.imgPixels;
             int[] rasterPixels = Rasterizer.destinationPixels;
             int pixelCount = mmBackgroundPixels.length;
             for(int i = 0; i < pixelCount; i++) {

@@ -100,7 +100,7 @@ public class ChatBox {
                         if(y > 0 && y < 110)
                             typeFace.drawString(chatMessages[i], 4, y, 0);
                     }
-                    if((type == 1 || type == 2) && (type == 1 || publicChatMode == 0 || publicChatMode == 1 && Class40_Sub2.hasFriend(name))) {
+                    if((type == 1 || type == 2) && (type == 1 || publicChatMode == 0 || publicChatMode == 1 && Player.hasFriend(name))) {
                         if(y > 0 && y < 110) {
                             int x = 4;
                             if(privelege == 1) {
@@ -117,7 +117,7 @@ public class ChatBox {
                         }
                         line++;
                     }
-                    if((type == 3 || type == 7) && CollisionMap.anInt165 == 0 && (type == 7 || privateChatMode == 0 || privateChatMode == 1 && Class40_Sub2.hasFriend(name))) {
+                    if((type == 3 || type == 7) && CollisionMap.anInt165 == 0 && (type == 7 || privateChatMode == 0 || privateChatMode == 1 && Player.hasFriend(name))) {
                         line++;
                         if(y > 0 && y < 110) {
                             int i_13_ = 4;
@@ -137,7 +137,7 @@ public class ChatBox {
                             typeFace.drawString(chatMessages[i], i_13_, y, 8388608);
                         }
                     }
-                    if(type == 4 && (tradeMode == 0 || tradeMode == 1 && Class40_Sub2.hasFriend(name))) {
+                    if(type == 4 && (tradeMode == 0 || tradeMode == 1 && Player.hasFriend(name))) {
                         line++;
                         if(y > 0 && y < 110)
                             typeFace.drawString(name + " " + chatMessages[i], 4, y, 8388736);
@@ -154,7 +154,7 @@ public class ChatBox {
                         }
                         line++;
                     }
-                    if(type == 8 && (tradeMode == 0 || tradeMode == 1 && Class40_Sub2.hasFriend(name))) {
+                    if(type == 8 && (tradeMode == 0 || tradeMode == 1 && Player.hasFriend(name))) {
                         line++;
                         if(y > 0 && y < 110)
                             typeFace.drawString(name + Native.aClass1_1123 + chatMessages[i], 4, y, 8270336);

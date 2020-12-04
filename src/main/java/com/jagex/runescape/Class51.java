@@ -42,7 +42,7 @@ public class Class51 {
             Class55.drawTabGraphics();
             ActorDefinition.drawMapBack();
             GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
-            Class40_Sub2.method527(Player.currentTabId, arg0 + 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
+            MovedStatics.method527(Player.currentTabId, arg0 + 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
             MovedStatics.aBoolean893 = true;
             Class40_Sub3.aBoolean2026 = true;
             MovedStatics.aBoolean260 = true;

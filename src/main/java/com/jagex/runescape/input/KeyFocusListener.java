@@ -70,7 +70,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 Class40_Sub5_Sub6.drawMenu(4,4);
             }
         }
-        if (Class40_Sub6.anInt2118 == 1) {
+        if (MovedStatics.anInt2118 == 1) {
             LinkedList.aClass40_Sub5_Sub14_Sub4_1057.drawImage(472, 296);
         }
         if (InteractiveObject.showFps) {
@@ -247,7 +247,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             if (obfuscatedKeyCode >= 0 || keyChar >= 0) {
                 int i_5_ = 0x7f & 1 + IdentityKit.anInt2598;
                 if (Class59.anInt1389 != i_5_) {
-                    Class40_Sub6.anIntArray2113[IdentityKit.anInt2598] = obfuscatedKeyCode;
+                    MovedStatics.anIntArray2113[IdentityKit.anInt2598] = obfuscatedKeyCode;
                     Class40_Sub5_Sub13.anIntArray2764[IdentityKit.anInt2598] = keyChar;
                     IdentityKit.anInt2598 = i_5_;
                 }

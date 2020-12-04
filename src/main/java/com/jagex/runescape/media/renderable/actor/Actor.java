@@ -272,11 +272,11 @@ public abstract class Actor extends Renderable {
 
 
     public static void method789(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        if(arg3 != Class51.regionX || arg2 != Class17.regionY || Class40_Sub6.onBuildTimePlane != arg5 && VertexNormal.lowMemory) {
-            Class40_Sub6.onBuildTimePlane = arg5;
+        if(arg3 != Class51.regionX || arg2 != Class17.regionY || MovedStatics.onBuildTimePlane != arg5 && VertexNormal.lowMemory) {
+            MovedStatics.onBuildTimePlane = arg5;
             Class51.regionX = arg3;
             if(!VertexNormal.lowMemory)
-                Class40_Sub6.onBuildTimePlane = 0;
+                MovedStatics.onBuildTimePlane = 0;
             Class17.regionY = arg2;
             OverlayDefinition.method559(25);
             Class51.method940(0, English.loadingPleaseWait, false, null);
