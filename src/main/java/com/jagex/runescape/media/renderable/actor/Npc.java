@@ -67,7 +67,7 @@ public class Npc extends Actor {
                 if(ISAAC.aBoolean519 && Class51.anInt1197 == 30) {
                     SpotAnimDefinition.mouseButtonPressed = 0;
                     MouseHandler.clickType = 0;
-                    while(Class34.method416((byte) -104)) {
+                    while(MovedStatics.method416((byte) -104)) {
                         /* empty */
                     }
                     for(int i = 0; i < Item.obfuscatedKeyStatus.length; i++)
@@ -388,9 +388,9 @@ public class Npc extends Actor {
                         }
                         do {
                             try {
-                                if(Class40_Sub6.gameConnection == null || SceneCluster.packetBuffer.currentPosition <= 0)
+                                if(MovedStatics.gameConnection == null || SceneCluster.packetBuffer.currentPosition <= 0)
                                     break;
-                                Class40_Sub6.gameConnection.method1010(SceneCluster.packetBuffer.currentPosition, (byte) -19, 0, SceneCluster.packetBuffer.buffer);
+                                MovedStatics.gameConnection.method1010(SceneCluster.packetBuffer.currentPosition, (byte) -19, 0, SceneCluster.packetBuffer.buffer);
                                 Class22.anInt537 = 0;
                                 SceneCluster.packetBuffer.currentPosition = 0;
                             } catch(java.io.IOException ioexception) {

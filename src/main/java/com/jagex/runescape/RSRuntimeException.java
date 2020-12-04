@@ -44,18 +44,6 @@ public class RSRuntimeException extends RuntimeException {
         }
     }
 
-    public static void method1055(byte[] arg0, CacheIndex arg2, int arg3) {
-        Class40_Sub6 class40_sub6 = new Class40_Sub6();
-        class40_sub6.key = (long) arg3;
-        class40_sub6.aByteArray2102 = arg0;
-        class40_sub6.anInt2112 = 0;
-        class40_sub6.aCache_2117 = arg2;
-        synchronized(RSCanvas.aLinkedList_53) {
-            RSCanvas.aLinkedList_53.pushBack(class40_sub6, -82);
-        }
-        MovedStatics.method332(600);
-    }
-
     public static void method1056(Component arg0, byte arg1) {
         arg0.addMouseListener(GameObject.frame);
         int i = -23 / ((-32 - arg1) / 47);

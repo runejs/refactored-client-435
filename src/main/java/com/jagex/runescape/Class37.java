@@ -41,8 +41,8 @@ public class Class37 {
             groundZ++;
         int _x = 0x7f & x;
         int _y = y & 0x7f;
-        int i2 = (-_x + 128) * Class40_Sub6.tile_height[groundZ][groundX][groundY] + _x * Class40_Sub6.tile_height[groundZ][groundX + 1][groundY] >> 7;
-        int j2 = _x * Class40_Sub6.tile_height[groundZ][1 + groundX][1 + groundY] + Class40_Sub6.tile_height[groundZ][groundX][1 + groundY] * (128 + -_x) >> 7;
+        int i2 = (-_x + 128) * MovedStatics.tile_height[groundZ][groundX][groundY] + _x * MovedStatics.tile_height[groundZ][groundX + 1][groundY] >> 7;
+        int j2 = _x * MovedStatics.tile_height[groundZ][1 + groundX][1 + groundY] + MovedStatics.tile_height[groundZ][groundX][1 + groundY] * (128 + -_x) >> 7;
         return (128 + -_y) * i2 + j2 * _y >> 7;
     }
 
@@ -81,7 +81,7 @@ public class Class37 {
         RSCanvas.createMinimapRaster();
 
         if(MovedStatics.minimapState == 2) {
-            byte[] mmBackgroundPixels = Class34.minimapBackgroundImage.imgPixels;
+            byte[] mmBackgroundPixels = MovedStatics.minimapBackgroundImage.imgPixels;
             int[] rasterPixels = Rasterizer.destinationPixels;
             int pixelCount = mmBackgroundPixels.length;
             for(int i = 0; i < pixelCount; i++) {
@@ -96,7 +96,7 @@ public class Class37 {
         int centerX = 48 + Player.localPlayer.worldX / 32;
         int centerY = 464 + -(Player.localPlayer.worldY / 32);
         int angle = GroundItemTile.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
-        Class40_Sub5_Sub13.minimapImage.shapeImageToPixels(25, 5, 146, 151, centerX, centerY, angle, Class51.mapZoomOffset + 256, Landscape.anIntArray1186, Class34.anIntArray852);
+        Class40_Sub5_Sub13.minimapImage.shapeImageToPixels(25, 5, 146, 151, centerX, centerY, angle, Class51.mapZoomOffset + 256, Landscape.anIntArray1186, MovedStatics.anIntArray852);
         for(int i = 0; GameObject.minimapHintCount > i; i++) {
             int hintX = 2 + 4 * Actor.minimapHintX[i] + -(Player.localPlayer.worldX / 32);
             int hintY = 2 + 4 * LinkedList.minimapHintY[i] - Player.localPlayer.worldY / 32;
@@ -179,7 +179,7 @@ public class Class37 {
         }
         Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
         AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
-        Class34.minimapBackgroundImage.drawImage(0, 0);
+        MovedStatics.minimapBackgroundImage.drawImage(0, 0);
 
         if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
             Class40_Sub5_Sub6.drawMenu(550, 4);
@@ -225,7 +225,7 @@ public class Class37 {
         class40_sub2.anInt2013 = (arg4 + i) * 128;
         class40_sub2.anInt1997 = arg5.ambientSoundId;
         if(arg5.configChangeDest != null) {
-            class40_sub2.aGameObjectDefinition_2011 = arg5;
+            class40_sub2.gameObjectDefinition = arg5;
             class40_sub2.method528();
         }
         MovedStatics.aLinkedList_2268.pushBack(class40_sub2, -126);

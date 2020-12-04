@@ -94,7 +94,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                         bool_9_ = true;
                     boolean bool_10_ = false;
                     if (gameInterface.anInt2738 != -1 && bool_9_ && Wall.aGameInterface_353 == null) {
-                        Class40_Sub2.anInt1996 = Class13.mouseX;
+                        MovedStatics.anInt1996 = Class13.mouseX;
                         Wall.aGameInterface_353 = gameInterface;
                         Class40_Sub5_Sub11.anInt2621 = Landscape.mouseY;
                     }

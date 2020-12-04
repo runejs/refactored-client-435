@@ -72,14 +72,14 @@ public class IncomingPackets {
             6, 0, 0, 6, 2, 4};
 
     public static boolean parseIncomingPackets(boolean arg0) {
-        if(Class40_Sub6.gameConnection == null)
+        if(MovedStatics.gameConnection == null)
             return false;
         try {
-            int i = Class40_Sub6.gameConnection.method1014(-122);
+            int i = MovedStatics.gameConnection.method1014(-122);
             if(i == 0)
                 return false;
             if(incomingPacket == -1) {
-                Class40_Sub6.gameConnection.method1008(0, 1, -127, incomingPacketBuffer.buffer);
+                MovedStatics.gameConnection.method1008(0, 1, -127, incomingPacketBuffer.buffer);
                 incomingPacketBuffer.currentPosition = 0;
                 i--;
                 incomingPacket = incomingPacketBuffer.getPacket();
@@ -88,7 +88,7 @@ public class IncomingPackets {
             //System.out.println("packet received: " + Class57.incomingPacket);
             if(incomingPacketSize == -1) {
                 if(i > 0) {
-                    Class40_Sub6.gameConnection.method1008(0, 1, -127, incomingPacketBuffer.buffer);
+                    MovedStatics.gameConnection.method1008(0, 1, -127, incomingPacketBuffer.buffer);
                     incomingPacketSize = incomingPacketBuffer.buffer[0] & 0xff;
                     i--;
                 } else
@@ -98,14 +98,14 @@ public class IncomingPackets {
                 if(i <= 1)
                     return false;
                 i -= 2;
-                Class40_Sub6.gameConnection.method1008(0, 2, -127, incomingPacketBuffer.buffer);
+                MovedStatics.gameConnection.method1008(0, 2, -127, incomingPacketBuffer.buffer);
                 incomingPacketBuffer.currentPosition = 0;
                 incomingPacketSize = incomingPacketBuffer.getUnsignedShortBE();
             }
             if(incomingPacketSize > i)
                 return false;
             incomingPacketBuffer.currentPosition = 0;
-            Class40_Sub6.gameConnection.method1008(0, incomingPacketSize, -128, incomingPacketBuffer.buffer);
+            MovedStatics.gameConnection.method1008(0, incomingPacketSize, -128, incomingPacketBuffer.buffer);
             Class49.anInt1151 = MovedStatics.anInt324;
             Class35.anInt1728 = 0;
             MovedStatics.anInt324 = RSString.anInt1690;
@@ -290,7 +290,7 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 48) { // multi combat zone
-                Class40_Sub6.anInt2118 = incomingPacketBuffer.getUnsignedByte();
+                MovedStatics.anInt2118 = incomingPacketBuffer.getUnsignedByte();
                 incomingPacket = -1;
                 return true;
             }
@@ -389,7 +389,7 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 130) {
-                Class34.anInt854 = incomingPacketBuffer.getUnsignedShortLE();
+                MovedStatics.anInt854 = incomingPacketBuffer.getUnsignedShortLE();
                 incomingPacket = -1;
                 return true;
             }
@@ -476,8 +476,8 @@ public class IncomingPackets {
             }
             if(incomingPacket == CLEAR_MAP_CHUNK) {
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
-                Class40_Sub6.placementX = incomingPacketBuffer.getUnsignedByte();
-                for(int i_51_ = Class40_Sub6.placementX; i_51_ < 8 + Class40_Sub6.placementX; i_51_++) {
+                MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
+                for(int i_51_ = MovedStatics.placementX; i_51_ < 8 + MovedStatics.placementX; i_51_++) {
                     for(int i_52_ = OverlayDefinition.placementY; 8 + OverlayDefinition.placementY > i_52_; i_52_++) {
                         if(Wall.groundItems[Player.worldLevel][i_51_][i_52_] != null) {
                             Wall.groundItems[Player.worldLevel][i_51_][i_52_] = null;
@@ -486,7 +486,7 @@ public class IncomingPackets {
                     }
                 }
                 for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
-                    if(class40_sub3.anInt2039 >= Class40_Sub6.placementX && Class40_Sub6.placementX + 8 > class40_sub3.anInt2039 && class40_sub3.anInt2038 >= OverlayDefinition.placementY && OverlayDefinition.placementY + 8 > class40_sub3.anInt2038 && Player.worldLevel == class40_sub3.anInt2018)
+                    if(class40_sub3.anInt2039 >= MovedStatics.placementX && MovedStatics.placementX + 8 > class40_sub3.anInt2039 && class40_sub3.anInt2038 >= OverlayDefinition.placementY && OverlayDefinition.placementY + 8 > class40_sub3.anInt2038 && Player.worldLevel == class40_sub3.anInt2018)
                         class40_sub3.anInt2031 = 0;
                 }
                 incomingPacket = -1;
@@ -691,7 +691,7 @@ public class IncomingPackets {
             }
             if(incomingPacket == UPDATE_REFERENCE_POSITION) {
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
-                Class40_Sub6.placementX = incomingPacketBuffer.getUnsignedByte();
+                MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
                 incomingPacket = -1;
                 return true;
             }
@@ -708,7 +708,7 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 63) { // mass object/ground item update packet
-                Class40_Sub6.placementX = incomingPacketBuffer.getUnsignedByte();
+                MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
                 while(incomingPacketBuffer.currentPosition < incomingPacketSize) {
                     incomingPacket = incomingPacketBuffer.getUnsignedByte();

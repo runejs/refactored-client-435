@@ -2,9 +2,13 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.*;
+import com.jagex.runescape.node.HashTable;
 import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.media.AnimationSequence;
@@ -23,6 +27,7 @@ import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
+import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -30,6 +35,7 @@ import com.jagex.runescape.util.Signlink;
 import com.jagex.runescape.util.SignlinkNode;
 import tech.henning.fourthreefive.Configuration;
 
+import java.awt.*;
 import java.io.DataInputStream;
 import java.net.URL;
 
@@ -97,6 +103,28 @@ public class MovedStatics {
     public static int[][][] anIntArrayArrayArray262;
     public static int anInt1806;
     public static int anInt1819 = -1;
+    public static Class64 gameConnection;
+    public static int[][][] tile_height = new int[4][105][105];
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_2105;
+    public static int[] anIntArray2106 = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
+    public static int secondaryCameraVertical = 0;
+    public static int anInt2110;
+    public static int[] anIntArray2113 = new int[128];
+    public static GameInterface aGameInterface_2116;
+    public static int anInt2118 = 0;
+    public static int placementX;
+    public static int onBuildTimePlane = 0;
+	public static int anInt1996 = 0;
+    public static HashTable aClass23_805;
+    public static int anInt813 = 0;
+    public static HashTable aClass23_841 = new HashTable(4096);
+    public static int anInt848 = 0;
+    public static int currentCameraPositionV;
+    public static NodeCache aClass9_851 = new NodeCache(30);
+    public static int[] anIntArray852;
+    public static long aLong853;
+    public static int anInt854 = -1;
+    public static IndexedImage minimapBackgroundImage;
 
     public static void method440(byte arg0) {
 	    if(ISAAC.aBoolean512) {
@@ -155,7 +183,7 @@ public class MovedStatics {
 	                    class1 = class1.substring(5);
 	                if(class1 != null && class1.startsWith(Native.goldCrown))
 	                    class1 = class1.substring(5);
-	                if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Class40_Sub2.hasFriend(class1))) {
+	                if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(class1))) {
 	                    int i_3_ = 329 + -(13 * i);
 	                    i++;
 	                    if(Class13.mouseX > 4 && i_3_ + -10 < Landscape.mouseY + -4 && -4 + Landscape.mouseY <= i_3_ + 3) {
@@ -255,13 +283,13 @@ public class MovedStatics {
                 if(i_1_ >= 0 && i_1_ < 104 && i_0_ >= 0 && i_0_ < 104) {
                     InteractiveObject.aByteArrayArrayArray492[0][i_1_][i_0_] = (byte) 127;
                     if(arg4 == i_1_ && i_1_ > 0)
-                        Class40_Sub6.tile_height[0][i_1_][i_0_] = Class40_Sub6.tile_height[0][-1 + i_1_][i_0_];
+                        tile_height[0][i_1_][i_0_] = tile_height[0][-1 + i_1_][i_0_];
                     if(arg4 + arg3 == i_1_ && i_1_ < 103)
-                        Class40_Sub6.tile_height[0][i_1_][i_0_] = Class40_Sub6.tile_height[0][i_1_ + 1][i_0_];
+                        tile_height[0][i_1_][i_0_] = tile_height[0][i_1_ + 1][i_0_];
                     if(i_0_ == arg0 && i_0_ > 0)
-                        Class40_Sub6.tile_height[0][i_1_][i_0_] = Class40_Sub6.tile_height[0][i_1_][i_0_ + -1];
+                        tile_height[0][i_1_][i_0_] = tile_height[0][i_1_][i_0_ + -1];
                     if(i_0_ == arg0 + arg2 && i_0_ < 103)
-                        Class40_Sub6.tile_height[0][i_1_][i_0_] = Class40_Sub6.tile_height[0][i_1_][1 + i_0_];
+                        tile_height[0][i_1_][i_0_] = tile_height[0][i_1_][1 + i_0_];
                 }
             }
         }
@@ -325,22 +353,22 @@ public class MovedStatics {
 	public static void method455(int arg0, int arg1, int arg3) {
 		for(int i = 0; i < 8; i++) {
 			for(int i_0_ = 0; i_0_ < 8; i_0_++)
-				Class40_Sub6.tile_height[arg1][arg3 + i][arg0 + i_0_] = 0;
+				tile_height[arg1][arg3 + i][arg0 + i_0_] = 0;
 		}
 		if(arg3 > 0) {
 			for(int i = 1; i < 8; i++)
-				Class40_Sub6.tile_height[arg1][arg3][arg0 + i] = Class40_Sub6.tile_height[arg1][-1 + arg3][i + arg0];
+				tile_height[arg1][arg3][arg0 + i] = tile_height[arg1][-1 + arg3][i + arg0];
 		}
 		if(arg0 > 0) {
 			for(int i = 1; i < 8; i++)
-				Class40_Sub6.tile_height[arg1][i + arg3][arg0] = Class40_Sub6.tile_height[arg1][i + arg3][-1 + arg0];
+				tile_height[arg1][i + arg3][arg0] = tile_height[arg1][i + arg3][-1 + arg0];
 		}
-		if(arg3 > 0 && Class40_Sub6.tile_height[arg1][-1 + arg3][arg0] != 0)
-			Class40_Sub6.tile_height[arg1][arg3][arg0] = Class40_Sub6.tile_height[arg1][arg3 - 1][arg0];
-		else if(arg0 > 0 && Class40_Sub6.tile_height[arg1][arg3][arg0 - 1] != 0)
-			Class40_Sub6.tile_height[arg1][arg3][arg0] = Class40_Sub6.tile_height[arg1][arg3][-1 + arg0];
-		else if(arg3 > 0 && arg0 > 0 && Class40_Sub6.tile_height[arg1][arg3 + -1][-1 + arg0] != 0)
-			Class40_Sub6.tile_height[arg1][arg3][arg0] = Class40_Sub6.tile_height[arg1][-1 + arg3][arg0 - 1];
+		if(arg3 > 0 && tile_height[arg1][-1 + arg3][arg0] != 0)
+			tile_height[arg1][arg3][arg0] = tile_height[arg1][arg3 - 1][arg0];
+		else if(arg0 > 0 && tile_height[arg1][arg3][arg0 - 1] != 0)
+			tile_height[arg1][arg3][arg0] = tile_height[arg1][arg3][-1 + arg0];
+		else if(arg3 > 0 && arg0 > 0 && tile_height[arg1][arg3 + -1][-1 + arg0] != 0)
+			tile_height[arg1][arg3][arg0] = tile_height[arg1][-1 + arg3][arg0 - 1];
 	}
 
 	public static void method456(int arg0) {
@@ -391,7 +419,7 @@ public class MovedStatics {
 				class40_sub5_sub13 = (Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120);
 				if(class40_sub5_sub13 == null) {
 					if(!arg0) {
-						class40_sub5_sub13 = (Class40_Sub5_Sub13) Class34.aClass23_841.method331(l, 6120);
+						class40_sub5_sub13 = (Class40_Sub5_Sub13) aClass23_841.method331(l, 6120);
 						if(class40_sub5_sub13 != null)
 							return;
 					}
@@ -530,7 +558,7 @@ public class MovedStatics {
                     method189(true);
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
-                SignlinkNode signlinkNode = Actor.aClass31_3152.method388(false, new URL(Actor.aClass31_3152.anApplet740.getCodeBase(), "clienterror.ws?c=" + Class39.anInt901 + "&u=" + Class34.aLong853 + "&v1=" + Signlink.aString735 + "&v2=" + Signlink.aString739 + "&e=" + string));
+                SignlinkNode signlinkNode = Actor.aClass31_3152.method388(false, new URL(Actor.aClass31_3152.anApplet740.getCodeBase(), "clienterror.ws?c=" + Class39.anInt901 + "&u=" + aLong853 + "&v1=" + Signlink.aString735 + "&v2=" + Signlink.aString739 + "&e=" + string));
                 while(signlinkNode.anInt434 == 0)
                     Class43.sleep(1L);
                 if(signlinkNode.anInt434 != 1)
@@ -616,5 +644,230 @@ public class MovedStatics {
 
     public static String method204(int arg0) {
         return (0xff & arg0 >> 24) + Native.period + ((arg0 & 0xffca88) >> 16) + Native.period + ((0xfff8 & arg0) >> 8) + Native.period + (0xff & arg0);
+    }
+
+    public static void method836(int arg0) {
+        int i = 256;
+        for(int i_0_ = 10; i_0_ < 117; i_0_++) {
+            int i_1_ = (int) (Math.random() * 100.0);
+            if(i_1_ < 50)
+                anIntArray178[(i - 2 << 7) + i_0_] = 255;
+        }
+        for(int i_2_ = 0; i_2_ < 100; i_2_++) {
+            int i_3_ = (int) (Math.random() * 124.0) + 2;
+            int i_4_ = 128 + (int) (Math.random() * 128.0);
+            int i_5_ = i_3_ + (i_4_ << 7);
+            anIntArray178[i_5_] = 192;
+        }
+        for(int i_6_ = 1; i_6_ < i - 1; i_6_++) {
+            for(int i_7_ = 1; i_7_ < 127; i_7_++) {
+                int i_8_ = i_7_ + (i_6_ << 7);
+                Class40_Sub5_Sub17_Sub6.anIntArray3255[i_8_] = (anIntArray178[i_8_ + 1] + anIntArray178[i_8_ - 1] - (-anIntArray178[-128 + i_8_] - anIntArray178[128 + i_8_])) / 4;
+            }
+        }
+        RSRuntimeException.anInt1641 += 128;
+        if(RSRuntimeException.anInt1641 > Landscape.anIntArray1168.length) {
+            RSRuntimeException.anInt1641 -= Landscape.anIntArray1168.length;
+            int i_9_ = (int) (12.0 * Math.random());
+            FramemapDefinition.method879(Class22.aClass40_Sub5_Sub14_Sub2Array535[i_9_]);
+        }
+        for(int i_10_ = 1; i_10_ < -1 + i; i_10_++) {
+            for(int i_11_ = 1; i_11_ < 127; i_11_++) {
+                int i_12_ = i_11_ + (i_10_ << 7);
+                int i_13_ = -(Landscape.anIntArray1168[i_12_ + RSRuntimeException.anInt1641 & -1 + Landscape.anIntArray1168.length] / 5) + Class40_Sub5_Sub17_Sub6.anIntArray3255[i_12_ + 128];
+                if(i_13_ < 0)
+                    i_13_ = 0;
+                anIntArray178[i_12_] = i_13_;
+            }
+        }
+        for(int i_14_ = 0; i_14_ < i + -1; i_14_++)
+            Class17.anIntArray466[i_14_] = Class17.anIntArray466[i_14_ + 1];
+        Class17.anIntArray466[i - arg0] = (int) (16.0 * Math.sin((double) pulseCycle / 14.0) + 14.0 * Math.sin((double) pulseCycle / 15.0) + 12.0 * Math.sin((double) pulseCycle / 16.0));
+        if(Class40_Sub5_Sub6.anInt2452 > 0)
+            Class40_Sub5_Sub6.anInt2452 -= 4;
+        if(IdentityKit.anInt2613 > 0)
+            IdentityKit.anInt2613 -= 4;
+        if(Class40_Sub5_Sub6.anInt2452 == 0 && IdentityKit.anInt2613 == 0) {
+            int i_15_ = (int) (2000.0 * Math.random());
+            if(i_15_ == 0)
+                Class40_Sub5_Sub6.anInt2452 = 1024;
+            if(i_15_ == 1)
+                IdentityKit.anInt2613 = 1024;
+        }
+    }
+
+    public static void method838(int arg0, long arg1) {
+        if(arg1 != 0) {
+            for(int i = arg0; i < Class42.anInt1008; i++) {
+                if(Player.ignores[i] == arg1) {
+                    GameInterface.redrawTabArea = true;
+                    Class42.anInt1008--;
+                    for(int i_16_ = i; Class42.anInt1008 > i_16_; i_16_++)
+                        Player.ignores[i_16_] = Player.ignores[1 + i_16_];
+                    SceneCluster.packetBuffer.putPacket(28);
+                    SceneCluster.packetBuffer.putLongBE(arg1);
+                    break;
+                }
+            }
+        }
+    }
+
+    public static void method522(int arg0, int arg1) {
+        VarbitDefinition varbitDefinition = method417(0, arg1);
+        int i = varbitDefinition.leastSignificantBit;
+        int i_0_ = varbitDefinition.index;
+        int i_1_ = varbitDefinition.mostSignificantBit;
+        int i_3_ = ProducingGraphicsBuffer_Sub1.anIntArray2199[i_1_ + -i];
+        if(arg0 < 0 || i_3_ < arg0)
+            arg0 = 0;
+        i_3_ <<= i;
+        GroundItemTile.varbitMasks[i_0_] = UnderlayDefinition.bitWiseOR(HuffmanEncoding.method1021(GroundItemTile.varbitMasks[i_0_], i_3_ ^ 0xffffffff), HuffmanEncoding.method1021(i_3_, arg0 << i));
+    }
+
+	public static int method525(byte[] arg0, int arg1, byte arg2) {
+		if(arg2 != -68)
+			return -56;
+		return method1034(true, 0, arg1, arg0);
+	}
+
+	public static ImageRGB[] method526(CacheArchive arg0, String arg2, String arg3) {
+		int i = arg0.getHash(arg2);
+		int i_4_ = arg0.method179(i, arg3);
+		return GenericTile.method944((byte) -3, i, arg0, i_4_);
+	}
+
+	public static void method527(int currentTabId, int arg1, int[] tabWidgetIds, boolean arg3, int arg4) {
+		InteractiveObject.tabTop.prepareRasterizer();
+		Buffer.tabTopBack.drawImage(0, 0);
+		if(arg3) {
+			if(tabWidgetIds[currentTabId] != -1) {
+				if(currentTabId == 0)
+					aClass40_Sub5_Sub14_Sub2_1315.drawImage(22, 10);
+				if(currentTabId == 1)
+					GameShell.aClass40_Sub5_Sub14_Sub2_1.drawImage(54, 8);
+				if(currentTabId == 2)
+					GameShell.aClass40_Sub5_Sub14_Sub2_1.drawImage(82, 8);
+				if(currentTabId == 3)
+					Class35.aClass40_Sub5_Sub14_Sub2_1744.drawImage(110, 8);
+				if(currentTabId == 4)
+					WallDecoration.aClass40_Sub5_Sub14_Sub2_1270.drawImage(153, 8);
+				if(currentTabId == 5)
+					WallDecoration.aClass40_Sub5_Sub14_Sub2_1270.drawImage(181, 8);
+				if(currentTabId == 6)
+					aClass40_Sub5_Sub14_Sub2_2105.drawImage(209, 9);
+			}
+			if(tabWidgetIds[0] != -1 && arg4 != 0)
+				Class40_Sub5_Sub15.tabIcons[0].drawImage(29, 13);
+			if(tabWidgetIds[1] != -1 && arg4 != 1)
+				Class40_Sub5_Sub15.tabIcons[1].drawImage(53, 11);
+			if(tabWidgetIds[2] != -1 && arg4 != 2)
+				Class40_Sub5_Sub15.tabIcons[2].drawImage(82, 11);
+			if(tabWidgetIds[3] != -1 && arg4 != 3)
+				Class40_Sub5_Sub15.tabIcons[3].drawImage(115, 12);
+			if(tabWidgetIds[4] != -1 && arg4 != 4)
+				Class40_Sub5_Sub15.tabIcons[4].drawImage(153, 13);
+			if(tabWidgetIds[5] != -1 && arg4 != 5)
+				Class40_Sub5_Sub15.tabIcons[5].drawImage(180, 11);
+			if(tabWidgetIds[6] != -1 && arg4 != 6)
+				Class40_Sub5_Sub15.tabIcons[6].drawImage(208, 13);
+		}
+		RSCanvas.tabBottom.prepareRasterizer();
+		tabBottomBack.drawImage(0, 0);
+		if(arg1 != 4)
+			Player.hasFriend(null);
+		if(arg3) {
+			if(tabWidgetIds[currentTabId] != -1) {
+				if(currentTabId == 7)
+					Renderable.aClass40_Sub5_Sub14_Sub2_2860.drawImage(42, 0);
+				if(currentTabId == 8)
+					aClass40_Sub5_Sub14_Sub2_549.drawImage(74, 0);
+				if(currentTabId == 9)
+					aClass40_Sub5_Sub14_Sub2_549.drawImage(102, 0);
+				if(currentTabId == 10)
+					aClass40_Sub5_Sub14_Sub2_1919.drawImage(130, 1);
+				if(currentTabId == 11)
+					Class13.aClass40_Sub5_Sub14_Sub2_418.drawImage(173, 0);
+				if(currentTabId == 12)
+					Class13.aClass40_Sub5_Sub14_Sub2_418.drawImage(201, 0);
+				if(currentTabId == 13)
+					ISAAC.aClass40_Sub5_Sub14_Sub2_524.drawImage(229, 0);
+			}
+			if(tabWidgetIds[8] != -1 && arg4 != 8)
+				Class40_Sub5_Sub15.tabIcons[7].drawImage(74, 2);
+			if(tabWidgetIds[9] != -1 && arg4 != 9)
+				Class40_Sub5_Sub15.tabIcons[8].drawImage(102, 3);
+			if(tabWidgetIds[10] != -1 && arg4 != 10)
+				Class40_Sub5_Sub15.tabIcons[9].drawImage(137, 4);
+			if(tabWidgetIds[11] != -1 && arg4 != 11)
+				Class40_Sub5_Sub15.tabIcons[10].drawImage(174, 2);
+			if(tabWidgetIds[12] != -1 && arg4 != 12)
+				Class40_Sub5_Sub15.tabIcons[11].drawImage(201, 2);
+			if(tabWidgetIds[13] != -1 && arg4 != 13)
+				Class40_Sub5_Sub15.tabIcons[12].drawImage(226, 2);
+		}
+		try {
+			Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+			if(ScreenController.frameMode == ScreenMode.FIXED) {
+				InteractiveObject.tabTop.drawGraphics(516, 160, graphics);
+				RSCanvas.tabBottom.drawGraphics(496, 466, graphics);
+			}
+		} catch(Exception exception) {
+			MouseHandler.aCanvas1469.repaint();
+		}
+	}
+
+    public static int calculateDataLoaded(int arg1, int arg2) {
+        long l = (long) ((arg1 << 16) + arg2);
+        if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null || PacketBuffer.aClass40_Sub5_Sub13_2250.key != l)
+            return 0;
+        return 1 + Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition * 99 / (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer.length + -PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758);
+    }
+
+    public static boolean method416(byte arg0) {
+        synchronized(Class59.keyFocusListener) {
+            if(Class59.anInt1389 == GenericTile.anInt1214)
+                return false;
+            ItemDefinition.anInt2854 = anIntArray2113[Class59.anInt1389];
+            Class59.anInt1388 = Class40_Sub5_Sub13.anIntArray2764[Class59.anInt1389];
+            if(arg0 > -21)
+                English.clickToContinue = null;
+            Class59.anInt1389 = Class59.anInt1389 + 1 & 0x7f;
+            return true;
+        }
+    }
+
+    public static VarbitDefinition method417(int arg0, int arg1) {
+        if(arg0 != 0)
+            return null;
+        VarbitDefinition varbitDefinition = (VarbitDefinition) Class57.aClass9_1331.get((long) arg1);
+        if(varbitDefinition != null)
+            return varbitDefinition;
+        byte[] is = RSCanvas.aCacheArchive_61.getFile(arg1, 14);
+        varbitDefinition = new VarbitDefinition();
+        if(is != null)
+            varbitDefinition.method562(new Buffer(is));
+        Class57.aClass9_1331.put((long) arg1, varbitDefinition);
+        return varbitDefinition;
+    }
+
+    public static int method420(int arg0, int arg1, boolean arg2) {
+        if(arg0 == -2)
+            return 12345678;
+        if(arg0 == -1) {
+            if(arg1 < 0)
+                arg1 = 0;
+            else if(arg1 > 127)
+                arg1 = 127;
+            arg1 = -arg1 + 127;
+            return arg1;
+        }
+        if(!arg2)
+            calculateDataLoaded(-124, -88);
+        arg1 = arg1 * (arg0 & 0x7f) / 128;
+        if(arg1 < 2)
+            arg1 = 2;
+        else if(arg1 > 126)
+            arg1 = 126;
+        return (0xff80 & arg0) + arg1;
     }
 }

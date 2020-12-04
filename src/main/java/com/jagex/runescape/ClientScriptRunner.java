@@ -73,7 +73,7 @@ public class ClientScriptRunner extends Node {
                     class1 = class1.substring(5);
                 if(class1 != null && class1.startsWith(Native.goldCrown))
                     class1 = class1.substring(5);
-                if((i_1_ == 1 || i_1_ == 2) && (i_1_ == 1 || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 1 && Class40_Sub2.hasFriend(class1))) {
+                if((i_1_ == 1 || i_1_ == 2) && (i_1_ == 1 || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 1 && Player.hasFriend(class1))) {
                     if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !class1.equals(Player.localPlayer.playerName)) {
                         if(InteractiveObject.playerRights >= 1) {
                             OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.white + class1);
@@ -83,7 +83,7 @@ public class ClientScriptRunner extends Node {
                     }
                     i++;
                 }
-                if((i_1_ == 3 || i_1_ == 7) && CollisionMap.anInt165 == 0 && (i_1_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Class40_Sub2.hasFriend(class1))) {
+                if((i_1_ == 3 || i_1_ == 7) && CollisionMap.anInt165 == 0 && (i_1_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(class1))) {
                     i++;
                     if(arg1 > -14 + i_2_ && arg1 <= i_2_) {
                         if(InteractiveObject.playerRights >= 1) {
@@ -93,7 +93,7 @@ public class ClientScriptRunner extends Node {
                         OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 45, Native.white + class1);
                     }
                 }
-                if(i_1_ == 4 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Class40_Sub2.hasFriend(class1))) {
+                if(i_1_ == 4 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Player.hasFriend(class1))) {
                     if(arg1 > -14 + i_2_ && arg1 <= i_2_) {
                         OverlayDefinition.addActionRow(English.acceptTrade, 0, 0, 0, 26, Native.white + class1);
                     }
@@ -101,7 +101,7 @@ public class ClientScriptRunner extends Node {
                 }
                 if((i_1_ == 5 || i_1_ == 6) && CollisionMap.anInt165 == 0 && ChatBox.privateChatMode < 2)
                     i++;
-                if(i_1_ == 8 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Class40_Sub2.hasFriend(class1))) {
+                if(i_1_ == 8 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Player.hasFriend(class1))) {
                     if(i_2_ + -14 < arg1 && arg1 <= i_2_) {
                         OverlayDefinition.addActionRow(English.acceptChallenge, 0, 0, 0, 46, Native.white + class1);
                     }
@@ -406,7 +406,7 @@ public class ClientScriptRunner extends Node {
                     }
                     if(scriptOpcode == 27) {
                         int operand = intOperands[scriptIndex];
-                        Class40_Sub2.method522(scriptIntValues[--intValueIndex], operand);
+                        MovedStatics.method522(scriptIntValues[--intValueIndex], operand);
                         continue;
                     }
                     if(scriptOpcode == 31) {
@@ -517,12 +517,12 @@ public class ClientScriptRunner extends Node {
                         childInterface.id = ((0xffff & gameInterface.id) << 15) + -2147483648 + childCount;
                         gameInterface.children[childCount] = childInterface;
                         if(bool) {
-                            Class40_Sub6.aGameInterface_2116 = childInterface;
+                            MovedStatics.aGameInterface_2116 = childInterface;
                         } else {
                             Class22_Sub2.aGameInterface_1887 = childInterface;
                         }
                     } else if(scriptOpcode == 101) {
-                        GameInterface gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : Class40_Sub6.aGameInterface_2116;
+                        GameInterface gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                         GameInterface childInterface = GameInterface.getInterface(gameInterface.parentId);
                         childInterface.children[HuffmanEncoding.method1021(gameInterface.id, 32767)] = null;
                     } else {
@@ -538,7 +538,7 @@ public class ClientScriptRunner extends Node {
                         gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                         scriptOpcode -= 1000;
                     } else {
-                        gameInterface = bool ? Class40_Sub6.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
+                        gameInterface = bool ? MovedStatics.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
                     }
                     if(scriptOpcode == 1000) {
                         intValueIndex -= 2;
@@ -559,7 +559,7 @@ public class ClientScriptRunner extends Node {
                 } else if(scriptOpcode >= 1100 && scriptOpcode < 1200 || scriptOpcode >= 2100 && scriptOpcode < 2200) {
                     GameInterface gameInterface;
                     if(scriptOpcode < 2000) {
-                        gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : Class40_Sub6.aGameInterface_2116;
+                        gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                     } else {
                         gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                         scriptOpcode -= 1000;
@@ -629,7 +629,7 @@ public class ClientScriptRunner extends Node {
                                 } else {
                                     scriptIntValues[intValueIndex++] = 1;
                                     if(bool) {
-                                        Class40_Sub6.aGameInterface_2116 = gameInterface.children[i_28_];
+                                        MovedStatics.aGameInterface_2116 = gameInterface.children[i_28_];
                                     } else {
                                         Class22_Sub2.aGameInterface_1887 = gameInterface.children[i_28_];
                                     }
@@ -645,7 +645,7 @@ public class ClientScriptRunner extends Node {
                                 } else {
                                     scriptIntValues[intValueIndex++] = 1;
                                     if(bool) {
-                                        Class40_Sub6.aGameInterface_2116 = gameInterface;
+                                        MovedStatics.aGameInterface_2116 = gameInterface;
                                     } else {
                                         Class22_Sub2.aGameInterface_1887 = gameInterface;
                                     }
@@ -664,14 +664,14 @@ public class ClientScriptRunner extends Node {
                                 } else {
                                     scriptIntValues[intValueIndex++] = 1;
                                     if(bool) {
-                                        Class40_Sub6.aGameInterface_2116 = gameInterface_35_;
+                                        MovedStatics.aGameInterface_2116 = gameInterface_35_;
                                     } else {
                                         Class22_Sub2.aGameInterface_1887 = gameInterface_35_;
                                     }
                                 }
                             }
                         } else if(scriptOpcode < 1600) {
-                            GameInterface gameInterface = bool ? Class40_Sub6.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
+                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
                             if(scriptOpcode == 1500) {
                                 scriptIntValues[intValueIndex++] = gameInterface.currentX;
                             } else if(scriptOpcode == 1501) {
@@ -744,7 +744,7 @@ public class ClientScriptRunner extends Node {
                                             int i_44_ = scriptIntValues[intValueIndex + 1];
                                             Class33.method406(0, i_44_, i_43_, -128);
                                         } else if(scriptOpcode == 3002) {
-                                            GameInterface gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : Class40_Sub6.aGameInterface_2116;
+                                            GameInterface gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                                             if(MovedStatics.anInt1819 == -1) {
                                                 PacketBuffer.method517(gameInterface.id & 0x7fff, gameInterface.parentId);
                                                 MovedStatics.anInt1819 = gameInterface.id;
@@ -753,7 +753,7 @@ public class ClientScriptRunner extends Node {
                                             if(scriptOpcode != 3003) {
                                                 break;
                                             }
-                                            GameInterface gameInterface = bool ? Class40_Sub6.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
+                                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
                                             int i_45_ = scriptIntValues[--intValueIndex];
                                             Class33.method406(0x7fff & gameInterface.id, i_45_, gameInterface.parentId, -121);
                                         }
@@ -939,7 +939,7 @@ public class ClientScriptRunner extends Node {
                                 }
                             }
                         } else {
-                            GameInterface gameInterface = bool ? Class40_Sub6.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
+                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
                             if(scriptOpcode == 1600) {
                                 scriptIntValues[intValueIndex++] = gameInterface.anInt2746;
                             } else {
@@ -955,7 +955,7 @@ public class ClientScriptRunner extends Node {
                             gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                             scriptOpcode -= 1000;
                         } else {
-                            gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : Class40_Sub6.aGameInterface_2116;
+                            gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                         }
                         if(scriptOpcode >= 1300 && scriptOpcode <= 1309 || scriptOpcode >= 1314 && scriptOpcode <= 1317) {
                             String class1 = scriptStringValues[--stringValueIndex];
@@ -1034,7 +1034,7 @@ public class ClientScriptRunner extends Node {
                 } else {
                     GameInterface gameInterface;
                     if(scriptOpcode < 2000) {
-                        gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : Class40_Sub6.aGameInterface_2116;
+                        gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                     } else {
                         gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                         scriptOpcode -= 1000;
@@ -1066,7 +1066,7 @@ public class ClientScriptRunner extends Node {
                         if(scriptOpcode != 1203) {
                             break;
                         }
-                        GameInterface desiredInterface = !bool ? Class40_Sub6.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
+                        GameInterface desiredInterface = !bool ? MovedStatics.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
                         gameInterface.anInt2738 = desiredInterface.id;
                     }
                 }

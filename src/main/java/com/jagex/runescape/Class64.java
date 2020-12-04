@@ -77,7 +77,7 @@ public class Class64 implements Runnable {
                 if (type == 2 && Npc.currentScene.getArrangement(Player.worldLevel, x, y, hash) >= 0) {
                     GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(index);
                     if (gameObjectDefinition.configChangeDest != null)
-                        gameObjectDefinition = gameObjectDefinition.getChildDefinition(-20);
+                        gameObjectDefinition = gameObjectDefinition.getChildDefinition();
                     if (gameObjectDefinition == null)
                         continue;
                     if (Class8.itemSelected == 1) {

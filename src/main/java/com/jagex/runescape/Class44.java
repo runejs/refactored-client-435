@@ -5,6 +5,7 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Actor;
+import com.jagex.runescape.node.Class40_Sub6;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class44 implements Runnable {
@@ -137,12 +138,12 @@ public class Class44 implements Runnable {
                     }
                 } else {
                     if(class40_sub6.anInt2112 == 0) {
-                        class40_sub6.aCache_2117.put(class40_sub6.aByteArray2102, class40_sub6.aByteArray2102.length, (int) class40_sub6.key);
+                        class40_sub6.cacheIndex.put(class40_sub6.aByteArray2102, class40_sub6.aByteArray2102.length, (int) class40_sub6.key);
                         synchronized(RSCanvas.aLinkedList_53) {
                             class40_sub6.remove();
                         }
                     } else if(class40_sub6.anInt2112 == 1) {
-                        class40_sub6.aByteArray2102 = class40_sub6.aCache_2117.get((int) class40_sub6.key);
+                        class40_sub6.aByteArray2102 = class40_sub6.cacheIndex.get((int) class40_sub6.key);
                         synchronized(RSCanvas.aLinkedList_53) {
                             IdentityKit.aLinkedList_2604.pushBack(class40_sub6, 115);
                         }
