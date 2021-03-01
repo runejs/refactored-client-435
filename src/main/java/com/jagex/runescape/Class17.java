@@ -48,7 +48,7 @@ public class Class17 {
             ProducingGraphicsBuffer.anInt1618++;
         }
         for(; ; ) {
-            Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class34.aClass23_841.method329();
+            Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) MovedStatics.aClass23_841.method329();
             if(class40_sub5_sub13 == null)
                 break;
             InteractiveObject.aNodeQueue_485.unshift(class40_sub5_sub13);

@@ -44,7 +44,7 @@ public class Class40_Sub5_Sub6 extends CachedNode {
     }
 
     public static int method585(int arg0, int arg1) {
-        VarbitDefinition varbitDefinition = Class34.method417(0, arg0);
+        VarbitDefinition varbitDefinition = MovedStatics.method417(0, arg0);
         if(arg1 != 1369)
             return 27;
         int i = varbitDefinition.mostSignificantBit;
@@ -62,7 +62,7 @@ public class Class40_Sub5_Sub6 extends CachedNode {
     }
 
     public static void manageTextInputs() {
-        while(Class34.method416((byte) -125)) {
+        while(MovedStatics.method416((byte) -125)) {
             if(ItemDefinition.anInt2854 == 28) {
                 break;
             }
@@ -118,7 +118,7 @@ public class Class40_Sub5_Sub6 extends CachedNode {
                     }
                     if(Class37.anInt876 == 5 && Class42.anInt1008 > 0) {
                         long l = RSString.nameToLong(ChatBox.chatMessage);
-                        Class40_Sub6.method838(0, l);
+                        MovedStatics.method838(0, l);
                     }
                 }
             } else if(ChatBox.inputType == 1) {

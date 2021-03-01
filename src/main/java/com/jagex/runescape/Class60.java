@@ -188,7 +188,7 @@ public class Class60 {
     }
 
     public static void updateLogin() {
-        Class40_Sub6.method836(1);
+        MovedStatics.method836(1);
         if(Class51.anInt1197 == 10) {
             int i = Class57.clickX + -202;
             int clickType = MouseHandler.clickType;
@@ -230,7 +230,7 @@ public class Class60 {
                         Native.password = Configuration.getPassword();
                         Class26.loginScreenState = 0;
                     }
-                    while(Class34.method416((byte) -104)) {
+                    while(MovedStatics.method416((byte) -104)) {
                         boolean bool = false;
                         for(int i_19_ = 0; Native.supportedCharacters.length() > i_19_; i_19_++) {
                             if(Native.supportedCharacters.charAt(i_19_) == Class59.anInt1388) {

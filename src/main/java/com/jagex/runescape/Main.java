@@ -48,7 +48,7 @@ public class Main extends GameShell {
     public static String[] playerActions = new String[5];
     public static boolean aBoolean1790;
     public static Signlink signlink;
-    public static CacheIndex gameCache;
+    public static CacheIndex metaIndex;
     public static CacheFileChannel dataChannel;
     public static CacheFileChannel metaChannel;
     public static CacheFileChannel[] indexChannels = new CacheFileChannel[13];
@@ -80,7 +80,7 @@ public class Main extends GameShell {
                     if (i_5_ + gameInterface.originalHeight > gameInterface_3_.originalHeight)
                         i_5_ = gameInterface_3_.originalHeight + -gameInterface.originalHeight;
                     i_1_ = i_5_ + is[1];
-                    int i_6_ = Class13.mouseX + -Class40_Sub2.anInt1996 + -is[0] + is_4_[0];
+                    int i_6_ = Class13.mouseX + -MovedStatics.anInt1996 + -is[0] + is_4_[0];
                     if (i_6_ < 0)
                         i_6_ = 0;
                     if (i_6_ + gameInterface.originalWidth > gameInterface_3_.originalWidth)
@@ -707,7 +707,7 @@ public class Main extends GameShell {
         Native.clickToContinueString = null;
         MovedStatics.anInt1819 = -1;
         Class51.anInt1205 = -1;
-        Class40_Sub6.anInt2118 = 0;
+        MovedStatics.anInt2118 = 0;
         Player.currentTabId = 3;
         Player.activePlayerAppearance.setPlayerAppearance(null, false, new int[5], -1);
         for (int i = 0; i < 5; i++) {
@@ -727,14 +727,14 @@ public class Main extends GameShell {
         MovedStatics.method1000(true);
         if(!Player.cutsceneActive) {
             int i = Class65.cameraVertical;
-            if(Class40_Sub6.secondaryCameraVertical / 256 > i) {
-                i = Class40_Sub6.secondaryCameraVertical / 256;
+            if(MovedStatics.secondaryCameraVertical / 256 > i) {
+                i = MovedStatics.secondaryCameraVertical / 256;
             }
             int i_0_ = 0x7ff & GroundItemTile.cameraHorizontal + Class57.anInt1342;
             if(Class40_Sub5_Sub17_Sub1.aBooleanArray2975[4] && 128 + anIntArray2[4] > i) {
                 i = 128 + anIntArray2[4];
             }
-            Class49.setCameraPosition(i, Class40_Sub5_Sub6.currentCameraPositionH, -50 + Class37.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY), i_0_, Class34.currentCameraPositionV, -1, 3 * i + 600);
+            Class49.setCameraPosition(i, Class40_Sub5_Sub6.currentCameraPositionH, -50 + Class37.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY), i_0_, MovedStatics.currentCameraPositionV, -1, 3 * i + 600);
         }
         int i;
         if(!Player.cutsceneActive) {
@@ -849,10 +849,10 @@ public class Main extends GameShell {
         Class22.anInt537++;
         if(Class22.anInt537 >= 50 || arg1) {
             Class22.anInt537 = 0;
-            if(!Class37.aBoolean871 && Class40_Sub6.gameConnection != null) {
+            if(!Class37.aBoolean871 && MovedStatics.gameConnection != null) {
                 SceneCluster.packetBuffer.putPacket(13);
                 try {
-                    Class40_Sub6.gameConnection.method1010(SceneCluster.packetBuffer.currentPosition, (byte) -19, 0, SceneCluster.packetBuffer.buffer);
+                    MovedStatics.gameConnection.method1010(SceneCluster.packetBuffer.currentPosition, (byte) -19, 0, SceneCluster.packetBuffer.buffer);
                     SceneCluster.packetBuffer.currentPosition = 0;
                 } catch(java.io.IOException ioexception) {
                     Class37.aBoolean871 = true;
@@ -967,7 +967,7 @@ public class Main extends GameShell {
                 }
                 GameInterface.drawTabIcons = false;
                 Class40_Sub3.aBoolean2026 = true;
-                Class40_Sub2.method527(Player.currentTabId, 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
+                MovedStatics.method527(Player.currentTabId, 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
             }
             if(MovedStatics.redrawChatbox) {
                 Class40_Sub3.aBoolean2026 = true;
@@ -1007,7 +1007,7 @@ public class Main extends GameShell {
                 }
                 GameInterface.drawTabIcons = false;
                 Class40_Sub3.aBoolean2026 = true;
-                Class40_Sub2.method527(Player.currentTabId, 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
+                MovedStatics.method527(Player.currentTabId, 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
             }
             if(MovedStatics.redrawChatbox) {
                 Class40_Sub3.aBoolean2026 = true;
@@ -1298,7 +1298,7 @@ public class Main extends GameShell {
     }
 
     public void method40() {
-        if (Class34.anInt813 >= 4) {
+        if (MovedStatics.anInt813 >= 4) {
             this.openErrorPage((byte) 120, "js5crc");
             Class51.anInt1197 = 1000;
         } else {
@@ -1373,9 +1373,9 @@ public class Main extends GameShell {
         if (Class12.mouseCapturer != null)
             Class12.mouseCapturer.aBoolean913 = false;
         Class12.mouseCapturer = null;
-        if (Class40_Sub6.gameConnection != null) {
-            Class40_Sub6.gameConnection.method1009();
-            Class40_Sub6.gameConnection = null;
+        if (MovedStatics.gameConnection != null) {
+            MovedStatics.gameConnection.method1009();
+            MovedStatics.gameConnection = null;
         }
         ItemDefinition.method744();
         Class13.method249(true);
@@ -1420,13 +1420,13 @@ public class Main extends GameShell {
                 for (int i = 0; i < 13; i++)
                     indexChannels[i] = new CacheFileChannel(signlink.dataIndexAccessFiles[i], 6000);
                 metaChannel = new CacheFileChannel(signlink.metaIndexAccessFile, 6000);
-                gameCache = new CacheIndex(255, dataChannel, metaChannel, 500000);
+                metaIndex = new CacheIndex(255, dataChannel, metaChannel, 500000);
                 signlink.dataIndexAccessFiles = null;
                 signlink.metaIndexAccessFile = null;
                 signlink.cacheDataAccessFile = null;
             }
         } catch (java.io.IOException ioexception) {
-            gameCache = null;
+            metaIndex = null;
             dataChannel = null;
             metaChannel = null;
         }

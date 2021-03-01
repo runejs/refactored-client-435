@@ -41,39 +41,6 @@ public class Landscape {
     public static ProducingGraphicsBuffer framePieceRight;
     public static int[] anIntArray1186;
 
-    public static byte[] method931(byte[] arg0) {
-        Buffer class40_sub1 = new Buffer(arg0);
-        int i = class40_sub1.getUnsignedByte();
-        int i_0_ = class40_sub1.getIntBE();
-        if(i_0_ < 0 || Class51.anInt1195 != 0 && Class51.anInt1195 < i_0_)
-            throw new RuntimeException();
-        if(i != 0) {
-            int i_1_ = class40_sub1.getIntBE();
-            if(i_1_ < 0 || Class51.anInt1195 != 0 && i_1_ > Class51.anInt1195) {
-                return new byte[100];
-                //throw new RuntimeException();
-            }
-            if(i_1_ >= 2000000) {
-                return new byte[100];
-            }
-            byte[] is = new byte[i_1_];
-            if(i != 1) {
-                try {
-                    DataInputStream datainputstream = new DataInputStream(new GZIPInputStream(new ByteArrayInputStream(arg0, 9, i_0_)));
-                    datainputstream.readFully(is);
-                    datainputstream.close();
-                } catch(java.io.IOException ioexception) {
-                    /* empty */
-                }
-            } else
-                Class21.method297(is, i_1_, arg0, 9);
-            return is;
-        }
-        byte[] is = new byte[i_0_];
-        class40_sub1.getBytes(i_0_, 0, is);
-        return is;
-    }
-
     public static void loadRegion() {
         Main.method364((byte) -34, false);
         Class37.anInt874 = 0;

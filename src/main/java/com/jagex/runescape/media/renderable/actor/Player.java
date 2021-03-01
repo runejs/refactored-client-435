@@ -445,6 +445,16 @@ public class Player extends Actor {
 
     }
 
+    public static boolean hasFriend(String arg0) {
+        if(arg0 == null)
+            return false;
+        for(int i = 0; i < friendsCount; i++) {
+            if(arg0.equalsIgnoreCase(friendUsernames[i]))
+                return true;
+        }
+        return arg0.equalsIgnoreCase(localPlayer.playerName);
+    }
+
     public Model getRotatedModel() {
         if(playerAppearance == null)
             return null;

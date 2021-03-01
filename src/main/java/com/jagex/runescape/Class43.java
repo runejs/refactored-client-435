@@ -50,7 +50,7 @@ public class Class43 {
                 GameInterface.redrawTabArea = true;
         }
         if(MovedStatics.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
-            if(Class34.anInt848 == 1)
+            if(MovedStatics.anInt848 == 1)
                 method398(-2);
             else if(ScreenController.frameMode == ScreenMode.FIXED)
                 Class40_Sub5_Sub6.drawMenu(0,0);

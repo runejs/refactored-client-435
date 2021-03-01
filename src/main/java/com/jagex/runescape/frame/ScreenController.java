@@ -362,9 +362,9 @@ public class ScreenController {
             if(x >= 406 && x <= 506 && y >= 0 && y <= 32) {
                 if(GameInterface.gameScreenInterfaceId == -1) {
                     PacketBuffer.method516();
-                    if(Class34.anInt854 != -1) {
+                    if(MovedStatics.anInt854 != -1) {
                         MovedStatics.reportMutePlayer = false;
-                        HuffmanEncoding.reportAbuseInterfaceID = GameInterface.gameScreenInterfaceId = Class34.anInt854;
+                        HuffmanEncoding.reportAbuseInterfaceID = GameInterface.gameScreenInterfaceId = MovedStatics.anInt854;
                         Native.reportedName = "";
                     }
                 } else

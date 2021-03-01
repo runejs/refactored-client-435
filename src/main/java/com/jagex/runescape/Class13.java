@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.node.Class40_Sub6;
 import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.VarbitDefinition;
@@ -62,7 +63,7 @@ public class Class13 {
             }
             if(class40_sub6 == null)
                 break;
-            class40_sub6.aClass6_Sub1_2104.method198(false, class40_sub6.aByteArray2102, (int) class40_sub6.key, class40_sub6.aCache_2117);
+            class40_sub6.cacheArchive.method198(false, class40_sub6.aByteArray2102, (int) class40_sub6.key, class40_sub6.cacheIndex);
         }
     }
 
