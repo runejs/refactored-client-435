@@ -322,6 +322,14 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                         break;
                     }
                 }
+                if(ScreenController.frameMode != ScreenMode.FIXED) {
+                    int yScreenOffset = (ScreenController.frameHeight /2) - (334/2) - (184/2);
+                    int xScreenOffset = (ScreenController.frameWidth /2) - (512/2) - (234/3);
+                    positionX += xScreenOffset;
+                    positionY += yScreenOffset;
+                    width+= xScreenOffset;
+                    height+= yScreenOffset;
+                }
                 if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
                     GameInterface.cachedInterfaces[widgetid][childID].scrollPosition += rotation * 30;
                     return true;

@@ -52,13 +52,17 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (LinkedList.crossType == 2) {
             Class37.cursorCross[4 + OverlayDefinition.crossIndex / 100].drawImage(ClientScriptRunner.crossX - 8 - 4, MovedStatics.crossY - 8 - 4);
         }
-        if (GroundItemTile.walkableWidgetId != -1) {
-            Renderable.handleSequences(GroundItemTile.walkableWidgetId);
-            Class40_Sub5_Sub6.drawInterface(0, GroundItemTile.walkableWidgetId, 334, (byte) -5, 0, 4, 512);
-        }
-        if (GameInterface.gameScreenInterfaceId != -1) {
-            Renderable.handleSequences(GameInterface.gameScreenInterfaceId);
-            Class40_Sub5_Sub6.drawInterface(0, GameInterface.gameScreenInterfaceId, 334, (byte) -5, 0, 0, 512);
+        if (GameInterface.gameScreenInterfaceId != -1 || GroundItemTile.walkableWidgetId != -1) {
+                int var5= GameInterface.gameScreenInterfaceId != -1 ? 0 : 4;
+                int id = GameInterface.gameScreenInterfaceId != -1 ? GameInterface.gameScreenInterfaceId : GroundItemTile.walkableWidgetId;
+                Renderable.handleSequences(GameInterface.gameScreenInterfaceId);
+                int yOffset = (ScreenController.frameHeight /2) - (334/2) - (184/2);
+                int xOffset = (ScreenController.frameWidth /2) - (512/2) - (234/3);
+                if(ScreenController.frameMode == ScreenMode.FIXED) {
+                    yOffset = 0;
+                    xOffset = 0;
+                }
+                Class40_Sub5_Sub6.drawInterface( yOffset, id, 334 + yOffset, (byte) -5, xOffset, var5, 512+ xOffset);
         }
         Class65.method1018();
         Player.setTutorialIslandFlag();

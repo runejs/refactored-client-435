@@ -79,7 +79,13 @@ public class Class43 {
                     if(GameInterface.gameScreenInterfaceId == -1) {
                         Class64.method1013();
                     } else {
-                        Class13.method243((byte) 89, 4, 516, 338, GameInterface.gameScreenInterfaceId, 4, Class13.mouseX, Landscape.mouseY, 0);
+                        int yOffset = (ScreenController.frameHeight /2) - (334/2) - (184/2);
+                        int xOffset = (ScreenController.frameWidth /2) - (512/2) - (234/3);
+                        if(ScreenController.frameMode == ScreenMode.FIXED) {
+                            yOffset = 0;
+                            xOffset = 0;
+                        }
+                        Class13.method243((byte) 89, 4, 516, 338, GameInterface.gameScreenInterfaceId, 4, Class13.mouseX - xOffset, Landscape.mouseY - yOffset, 0);
                     }
                 }
 

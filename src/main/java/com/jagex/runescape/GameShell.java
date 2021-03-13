@@ -69,6 +69,8 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         for (int i = 0; i < arg7.length; i++) {
             GameInterface gameInterface = arg7[i];
             if (gameInterface != null && (gameInterface.type == GameInterfaceType.LAYER || gameInterface.hasListeners) && gameInterface != null && arg5 == gameInterface.parentId && (!gameInterface.isHidden || PacketBuffer.hiddenButtonTest)) {
+
+
                 int i_1_ = arg4 + gameInterface.currentX;
                 int i_2_ = arg0 + gameInterface.currentY;
                 if (!gameInterface.aBoolean2694)
