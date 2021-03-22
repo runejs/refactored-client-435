@@ -59,6 +59,7 @@ public class Console {
         commands.add(new AlphaCommand());
         commands.add(new ClearCommand());
         commands.add(new DebugCommand());
+        commands.add(new DebugViewCommand());
         commands.add(new EchoCommand());
         commands.add(new PlayerRightsCommand());
         commands.add(new IpCommand());

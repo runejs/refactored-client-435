@@ -92,7 +92,7 @@ public abstract class Class22 {
     public static void method305() {
 //        if(ScreenController.frameMode == ScreenMode.FIXED){
 
-            RSCanvas.chatboxProducingGraphicsBuffer.prepareRasterizer();
+            RSCanvas.chatBoxImageProducer.prepareRasterizer();
 //        }
         Class44.chatboxBackgroundImage.drawImage(0, 0);
         MovedStatics.chatboxLineOffsets = Rasterizer3D.setLineOffsets(MovedStatics.chatboxLineOffsets);

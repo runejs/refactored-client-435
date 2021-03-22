@@ -167,14 +167,14 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             Class57.bottomChatBack = Main.method359(Native.aClass1_1395, Native.aClass1_305, arg2);
             MovedStatics.tabBottomBack = Main.method359(Native.aClass1_256, Native.aClass1_305, arg2);
             Buffer.tabTopBack = Main.method359(Native.aClass1_338, Native.aClass1_305, arg2);
-            RSCanvas.chatboxProducingGraphicsBuffer = Class40_Sub5_Sub13.createGraphicsBuffer(479, 96, arg0);
+            RSCanvas.chatBoxImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(479, 96, arg0);
             Class44.chatboxBackgroundImage.drawImage(0, 0);
             RSString.mapbackProducingGraphicsBuffer = Class40_Sub5_Sub13.createGraphicsBuffer(172, 156, arg0);
             Rasterizer.resetPixels();
             MovedStatics.minimapBackgroundImage.drawImage(0, 0);
             MovedStatics.tabImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(190, 261, arg0);
             FloorDecoration.inventoryBackgroundImage.drawImage(0, 0);
-            VarbitDefinition.gameScreenImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.frameWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.frameHeight, arg0);
+            VarbitDefinition.gameScreenImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, arg0);
             Rasterizer.resetPixels();
             HuffmanEncoding.aProducingGraphicsBuffer_1541 = Class40_Sub5_Sub13.createGraphicsBuffer(496, 50, arg0);
             RSCanvas.tabBottom = Class40_Sub5_Sub13.createGraphicsBuffer(269, 37, arg0);

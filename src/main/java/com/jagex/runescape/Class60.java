@@ -117,7 +117,7 @@ public class Class60 {
             }
 
         } else if(Class57.clickX > 0 && RSString.clickY > 0 && Class57.clickX < Class35.aFrame1732.getWidth() && RSString.clickY < Class35.aFrame1732.getHeight()) {
-            //            Class40_Sub5_Sub17_Sub1.menuScreenArea = 0;
+                        Class40_Sub5_Sub17_Sub1.menuScreenArea = 0;
             int x = -(width / 2) + -4 + Class57.clickX;
             if(width + x > Class35.aFrame1732.getWidth() - 4)
                 x = Class35.aFrame1732.getWidth() - 4;
@@ -130,8 +130,8 @@ public class Class60 {
                 y = ScreenController.frameHeight-22 - height;
             if(y < 0)
                 y = 0;
-            if(width + x > ScreenController.frameWidth)
-                x = ScreenController.frameWidth - width;
+            if(width + x > ScreenController.drawWidth)
+                x = ScreenController.drawWidth - width;
             MovedStatics.menuOpen = true;
             InteractiveObject.menuOffsetX = x;
             Main.menuOffsetY = y;

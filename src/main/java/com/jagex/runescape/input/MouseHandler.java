@@ -75,7 +75,6 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 }
             }
             if(meta == 1) {
-
                 int menuX = InteractiveObject.menuOffsetX;
                 int menuY = Main.menuOffsetY;
                 int dx = VertexNormal.menuWidth;
@@ -287,8 +286,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     offsetX = 765 - 218;
                     offsetY = 503 - 298;
                 } else {
-                    offsetX= ScreenController.frameWidth - 218;
-                    offsetY = ScreenController.frameHeight - 298;
+                    offsetX= ScreenController.drawWidth - 218;
+                    offsetY = ScreenController.drawHeight - 298;
                 }
                 for(int index = 0; index < GameInterface.cachedInterfaces[tabInterfaceID].length; index++) {
                     if(GameInterface.cachedInterfaces[tabInterfaceID][index].scrollHeight > 0) {
@@ -323,8 +322,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     }
                 }
                 if(ScreenController.frameMode != ScreenMode.FIXED) {
-                    int yScreenOffset = (ScreenController.frameHeight /2) - (334/2) - (184/2);
-                    int xScreenOffset = (ScreenController.frameWidth /2) - (512/2) - (234/3);
+                    int yScreenOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);
+                    int xScreenOffset = (ScreenController.drawWidth /2) - (512/2) - (234/3);
                     positionX += xScreenOffset;
                     positionY += yScreenOffset;
                     width+= xScreenOffset;

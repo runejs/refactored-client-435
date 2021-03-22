@@ -67,8 +67,8 @@ public class Class22_Sub1 extends Class22 {
                     ISAAC.anInt522 = 256 + (arg2 << 9) / arg1;
                     Class44.anInt1048 = (i << 9) / arg1 + 167;
                 } else {
-                    ISAAC.anInt522 = ScreenController.frameWidth/2 + (arg2 << 9) / arg1;
-                    Class44.anInt1048 = (i << 9) / arg1 +  ScreenController.frameHeight/2;
+                    ISAAC.anInt522 = ScreenController.drawWidth/2 + (arg2 << 9) / arg1;
+                    Class44.anInt1048 = (i << 9) / arg1 +  ScreenController.drawHeight/2;
                 }
 
             }

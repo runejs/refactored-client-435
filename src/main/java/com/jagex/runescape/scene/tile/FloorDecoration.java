@@ -45,22 +45,24 @@ public class FloorDecoration {
     }
 
     public static void method343(boolean arg0, int arg1) {
+
         GroundItemTile.loadGeneratedMap = arg0;
         if(GroundItemTile.loadGeneratedMap) {
-            int i = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            int chunkY = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
             int i_0_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
-            int i_1_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            int chunkX = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
             int i_2_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            int i_3_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            int currentPlane = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
             IncomingPackets.incomingPacketBuffer.initBitAccess();
             for(int i_4_ = 0; i_4_ < 4; i_4_++) {
                 for(int i_5_ = 0; i_5_ < 13; i_5_++) {
                     for(int i_6_ = 0; i_6_ < 13; i_6_++) {
                         int i_7_ = IncomingPackets.incomingPacketBuffer.getBits(1);
-                        if(i_7_ != 1)
+                        if(i_7_ != 1) {
                             OverlayDefinition.constructMapTiles[i_4_][i_5_][i_6_] = -1;
-                        else
+                        } else {
                             OverlayDefinition.constructMapTiles[i_4_][i_5_][i_6_] = IncomingPackets.incomingPacketBuffer.getBits(26);
+                        }
                     }
                 }
             }
@@ -68,8 +70,11 @@ public class FloorDecoration {
             int i_8_ = (-IncomingPackets.incomingPacketBuffer.currentPosition + IncomingPackets.incomingPacketSize) / 16;
             Class44.anIntArrayArray1030 = new int[i_8_][4];
             for(int i_9_ = 0; i_8_ > i_9_; i_9_++) {
-                for(int i_10_ = 0; i_10_ < 4; i_10_++)
+                for(int i_10_ = 0; i_10_ < 4; i_10_++) {
                     Class44.anIntArrayArray1030[i_9_][i_10_] = IncomingPackets.incomingPacketBuffer.getIntBE();
+
+                }
+
             }
             LinkedList.anIntArray1071 = new int[i_8_];
             RSString.terrainData = new byte[i_8_][];
@@ -103,7 +108,7 @@ public class FloorDecoration {
                     }
                 }
             }
-            Actor.method789(i_0_, arg1 + -6688, i_3_, i_1_, i, i_2_);
+            Actor.method789(i_0_, arg1 + -6688, currentPlane, chunkX, chunkY, i_2_);
         } else {
             int i = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
             int chunkX = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
@@ -113,18 +118,21 @@ public class FloorDecoration {
             int i_25_ = (IncomingPackets.incomingPacketSize - IncomingPackets.incomingPacketBuffer.currentPosition) / 16;
             Class44.anIntArrayArray1030 = new int[i_25_][4];
             for(int i_26_ = 0; i_25_ > i_26_; i_26_++) {
-                for(int i_27_ = 0; i_27_ < 4; i_27_++)
+                for(int i_27_ = 0; i_27_ < 4; i_27_++) {
                     Class44.anIntArrayArray1030[i_26_][i_27_] = IncomingPackets.incomingPacketBuffer.getIntBE();
+                }
             }
             ISAAC.mapCoordinates = new int[i_25_];
             RSString.terrainData = new byte[i_25_][];
             boolean bool = false;
             GenericTile.objectData = new byte[i_25_][];
-            if((chunkX / 8 == 48 || chunkX / 8 == 49) && chunkY / 8 == 48)
+            if((chunkX / 8 == 48 || chunkX / 8 == 49) && chunkY / 8 == 48) {
                 bool = true;
+            }
             LinkedList.anIntArray1071 = new int[i_25_];
-            if(chunkX / 8 == 48 && chunkY / 8 == 148)
+            if(chunkX / 8 == 48 && chunkY / 8 == 148) {
                 bool = true;
+            }
             Class13.anIntArray421 = new int[i_25_];
             i_25_ = 0;
             for(int i_28_ = (-6 + chunkX) / 8; i_28_ <= (6 + chunkX) / 8; i_28_++) {
@@ -140,8 +148,9 @@ public class FloorDecoration {
             }
             Actor.method789(i_22_, -1000, chunkY, chunkX, i, i_24_);
         }
-        if(arg1 != 5688)
+        if(arg1 != 5688) {
             aClass40_Sub5_Sub14_Sub4Array603 = null;
+        }
     }
 
     public static void method344(int arg0) {
@@ -175,7 +184,7 @@ public class FloorDecoration {
             MovedStatics.aClass40_Sub5_Sub14_Sub2_1315 = null;
             VarbitDefinition.gameScreenImageProducer = null;
             ISAAC.aClass40_Sub5_Sub14_Sub2_524 = null;
-            RSCanvas.chatboxProducingGraphicsBuffer = null;
+            RSCanvas.chatBoxImageProducer = null;
             Class40_Sub7.mapBackRight = null;
             InteractiveObject.tabTop = null;
             if(arg0 < -28) {
@@ -196,21 +205,27 @@ public class FloorDecoration {
         long l = System.currentTimeMillis();
         int i = (int) (l - LinkedList.aLong1051);
         LinkedList.aLong1051 = l;
-        if(i > 200)
+        if(i > 200) {
             i = 200;
-        if(arg0 != 48)
+        }
+        if(arg0 != 48) {
             return false;
+        }
         Class22.anInt547 += i;
-        if(Class42.anInt1006 == 0 && Class17.anInt464 == 0 && MovedStatics.anInt554 == 0 && ProducingGraphicsBuffer.anInt1618 == 0)
+        if(Class42.anInt1006 == 0 && Class17.anInt464 == 0 && MovedStatics.anInt554 == 0 && ProducingGraphicsBuffer.anInt1618 == 0) {
             return true;
-        if(Class57.aClass64_1345 == null)
+        }
+        if(Class57.aClass64_1345 == null) {
             return false;
+        }
         try {
-            if(Class22.anInt547 > 30000)
+            if(Class22.anInt547 > 30000) {
                 throw new IOException();
+            }
             for(/**/; Class17.anInt464 < 20; Class17.anInt464++) {
-                if(ProducingGraphicsBuffer.anInt1618 <= 0)
+                if(ProducingGraphicsBuffer.anInt1618 <= 0) {
                     break;
+                }
                 Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class51.aClass23_1194.method329();
                 Buffer class40_sub1 = new Buffer(4);
                 class40_sub1.putByte(1);
@@ -231,27 +246,33 @@ public class FloorDecoration {
             }
             for(int i_33_ = 0; i_33_ < 100; i_33_++) {
                 int i_34_ = Class57.aClass64_1345.method1014(-122);
-                if(i_34_ < 0)
+                if(i_34_ < 0) {
                     throw new IOException();
-                if(i_34_ == 0)
+                }
+                if(i_34_ == 0) {
                     break;
+                }
                 Class22.anInt547 = 0;
                 int i_35_ = 0;
-                if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null)
+                if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null) {
                     i_35_ = 8;
-                else if(Landscape.anInt1157 == 0)
+                } else if(Landscape.anInt1157 == 0) {
                     i_35_ = 1;
+                }
                 if(i_35_ <= 0) {
                     int i_36_ = Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer.length + -PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758;
                     int i_37_ = -Landscape.anInt1157 + 512;
-                    if(-Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_36_ < i_37_)
+                    if(-Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_36_ < i_37_) {
                         i_37_ = i_36_ - Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition;
-                    if(i_37_ > i_34_)
+                    }
+                    if(i_37_ > i_34_) {
                         i_37_ = i_34_;
+                    }
                     Class57.aClass64_1345.method1008(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition, i_37_, -127, Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer);
                     if(Class8.aByte302 != 0) {
-                        for(int i_38_ = 0; i_37_ > i_38_; i_38_++)
+                        for(int i_38_ = 0; i_37_ > i_38_; i_38_++) {
                             Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_38_] = (byte) GameShell.method27(Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_38_], Class8.aByte302);
+                        }
                     }
                     Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition += i_37_;
                     Landscape.anInt1157 += i_37_;
@@ -295,27 +316,32 @@ public class FloorDecoration {
                         PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
                         Class40_Sub5_Sub13.aClass40_Sub1_2752 = null;
                         Landscape.anInt1157 = 0;
-                        if(!Npc.aBoolean3298)
+                        if(!Npc.aBoolean3298) {
                             Class42.anInt1006--;
-                        else
+                        } else {
                             Class17.anInt464--;
+                        }
                     } else {
-                        if(Landscape.anInt1157 != 512)
+                        if(Landscape.anInt1157 != 512) {
                             break;
+                        }
                         Landscape.anInt1157 = 0;
                     }
                 } else {
                     int i_42_ = -LinkedList.aClass40_Sub1_1081.currentPosition + i_35_;
-                    if(i_42_ > i_34_)
+                    if(i_42_ > i_34_) {
                         i_42_ = i_34_;
+                    }
                     Class57.aClass64_1345.method1008(LinkedList.aClass40_Sub1_1081.currentPosition, i_42_, -128, LinkedList.aClass40_Sub1_1081.buffer);
                     if(Class8.aByte302 != 0) {
-                        for(int i_43_ = 0; i_42_ > i_43_; i_43_++)
+                        for(int i_43_ = 0; i_42_ > i_43_; i_43_++) {
                             LinkedList.aClass40_Sub1_1081.buffer[LinkedList.aClass40_Sub1_1081.currentPosition + i_43_] = (byte) GameShell.method27(LinkedList.aClass40_Sub1_1081.buffer[LinkedList.aClass40_Sub1_1081.currentPosition + i_43_], Class8.aByte302);
+                        }
                     }
                     LinkedList.aClass40_Sub1_1081.currentPosition += i_42_;
-                    if(i_35_ > LinkedList.aClass40_Sub1_1081.currentPosition)
+                    if(i_35_ > LinkedList.aClass40_Sub1_1081.currentPosition) {
                         break;
+                    }
                     if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null) {
                         LinkedList.aClass40_Sub1_1081.currentPosition = 0;
                         int i_44_ = LinkedList.aClass40_Sub1_1081.getUnsignedByte();
@@ -329,8 +355,9 @@ public class FloorDecoration {
                             class40_sub5_sub13 = (Class40_Sub5_Sub13) MovedStatics.aClass23_841.method331(l_48_, 6120);
                             Npc.aBoolean3298 = false;
                         }
-                        if(class40_sub5_sub13 == null)
+                        if(class40_sub5_sub13 == null) {
                             throw new IOException();
+                        }
                         PacketBuffer.aClass40_Sub5_Sub13_2250 = class40_sub5_sub13;
                         int i_49_ = i_46_ == 0 ? 5 : 9;
                         Class40_Sub5_Sub13.aClass40_Sub1_2752 = new Buffer(PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758 + i_49_ + i_47_);
@@ -342,8 +369,9 @@ public class FloorDecoration {
                         if(LinkedList.aClass40_Sub1_1081.buffer[0] == -1) {
                             LinkedList.aClass40_Sub1_1081.currentPosition = 0;
                             Landscape.anInt1157 = 1;
-                        } else
+                        } else {
                             PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
+                        }
                     }
                 }
             }

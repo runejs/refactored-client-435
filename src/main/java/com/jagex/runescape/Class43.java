@@ -79,8 +79,8 @@ public class Class43 {
                     if(GameInterface.gameScreenInterfaceId == -1) {
                         Class64.method1013();
                     } else {
-                        int yOffset = (ScreenController.frameHeight /2) - (334/2) - (184/2);
-                        int xOffset = (ScreenController.frameWidth /2) - (512/2) - (234/3);
+                        int yOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);
+                        int xOffset = (ScreenController.drawWidth /2) - (512/2) - (234/3);
                         if(ScreenController.frameMode == ScreenMode.FIXED) {
                             yOffset = 0;
                             xOffset = 0;

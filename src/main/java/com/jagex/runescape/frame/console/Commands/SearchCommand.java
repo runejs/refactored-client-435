@@ -9,7 +9,7 @@ import com.jagex.runescape.frame.console.Command;
 import com.jagex.runescape.frame.console.Console;
 
 public class SearchCommand extends Command {
-    private static final int maxResults = 50;
+    private static final int maxResults = 300;
     private int results;
     public SearchCommand() {
         super("search", "Returns list of results");
@@ -17,6 +17,12 @@ public class SearchCommand extends Command {
 
     @Override
     public void execute(Console console, String[] cmdInput) {
+        if(cmdInput[1].equalsIgnoreCase("size")) {
+            console.log("<col=FFFF00>Items loaded: "+ ItemDefinition.count +"</col>");
+            console.log("<col=FFFF00>Npcs loaded: "+ ActorDefinition.count +"</col>");
+            console.log("<col=FFFF00>Objects loaded: "+ GameObjectDefinition.count +"</col>");
+
+        }
         if(cmdInput.length <= 2) {
             console.log("<col=FFA500>Usage: search [item|npc|object|widget] [name]</col>");
             return;

@@ -56,8 +56,8 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 int var5= GameInterface.gameScreenInterfaceId != -1 ? 0 : 4;
                 int id = GameInterface.gameScreenInterfaceId != -1 ? GameInterface.gameScreenInterfaceId : GroundItemTile.walkableWidgetId;
                 Renderable.handleSequences(GameInterface.gameScreenInterfaceId);
-                int yOffset = (ScreenController.frameHeight /2) - (334/2) - (184/2);
-                int xOffset = (ScreenController.frameWidth /2) - (512/2) - (234/3);
+                int yOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);
+                int xOffset = (ScreenController.drawWidth /2) - (512/2) - (234/3);
                 if(ScreenController.frameMode == ScreenMode.FIXED) {
                     yOffset = 0;
                     xOffset = 0;
@@ -81,7 +81,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             int y = 20;
             int x = 507;
             if(ScreenController.frameMode != ScreenMode.FIXED) {
-                x = ScreenController.frameWidth - 220;
+                x = ScreenController.drawWidth - 220;
             }
 
                 int colour = 0xffff00;
@@ -103,6 +103,17 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 colour = 0xff0000;
             }
             WallDecoration.fontNormal.drawStringRight("Mem: " + memoryUsed + "k", x, y, colour);
+            y += 15;
+
+            WallDecoration.fontNormal.drawStringRight("MouseX: " + Class13.mouseX, x, y ,0xffff00);
+            y += 15;
+
+            WallDecoration.fontNormal.drawStringRight("MouseY: " + Landscape.mouseY, x, y ,0xffff00);
+            y += 15;
+            WallDecoration.fontNormal.drawStringRight("ClickX: " + Class57.clickX, x, y ,0xffff00);
+            y += 15;
+
+            WallDecoration.fontNormal.drawStringRight("ClickY: " + RSString.clickY, x, y ,0xffff00);
             y += 15;
             if (MovedStatics.aBoolean893) {
                 WallDecoration.fontNormal.drawStringRight(English.sidePanelRedrawn, x, y, 16711680);

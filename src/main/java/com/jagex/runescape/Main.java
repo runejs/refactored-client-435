@@ -791,8 +791,8 @@ public class Main extends GameShell {
             Console.console.drawConsoleArea(512, 334);
         } else {
             ScreenController.RenderResizableUI();
-            Console.console.drawConsole(ScreenController.frameWidth, 334);
-            Console.console.drawConsoleArea(ScreenController.frameWidth, 334);
+            Console.console.drawConsole(ScreenController.drawWidth, 334);
+            Console.console.drawConsoleArea(ScreenController.drawWidth, 334);
         }
 
 
