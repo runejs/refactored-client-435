@@ -137,8 +137,13 @@ public class Rasterizer extends CachedNode {
         int pixelOffset = Rasterizer.destinationWidth - width;
         int pixel = paintX + paintY * Rasterizer.destinationWidth;
         for(int heightCounter = -height; heightCounter < 0; heightCounter++) {
-            for(int widthCounter = -width; widthCounter < 0; widthCounter++)
-                destinationPixels[pixel++] = pixels[sourcePixel++];
+            for(int widthCounter = -width; widthCounter < 0; widthCounter++) {
+                if(pixels[sourcePixel] != Integer.MAX_VALUE) {
+                    destinationPixels[pixel] = pixels[sourcePixel];
+                }
+                pixel++;
+                sourcePixel++;
+            }
             pixel += pixelOffset;
         }
     }
