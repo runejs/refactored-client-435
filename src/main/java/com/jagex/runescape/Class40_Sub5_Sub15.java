@@ -10,7 +10,7 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.node.CachedNode;
 
 public class Class40_Sub5_Sub15 extends CachedNode {
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_2775;
+    public static IndexedImage loginScreenBox;
     public static IndexedImage[] tabIcons;
     public static int arbitraryDestination = 0;
     public static int systemUpdateTime = 0;

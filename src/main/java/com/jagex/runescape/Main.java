@@ -487,7 +487,7 @@ public class Main extends GameShell {
         }
     }
 
-    public static void renderFlames(int arg0) {
+    public static void renderFlames() {
         if (Class40_Sub5_Sub6.anInt2452 <= 0) {
             if (IdentityKit.anInt2613 > 0) {
                 for (int i = 0; i < 256; i++) {
@@ -536,7 +536,7 @@ public class Main extends GameShell {
             i_62_ += i_65_;
         }
         i_62_ = 1176;
-        i_61_ = arg0;
+        i_61_ = 0;
         for (int i_71_ = 0; i_71_ < 33920; i_71_++)
             GameObject.flameRightBackground.pixels[i_71_] = SceneTile.aClass40_Sub5_Sub14_Sub4_2043.pixels[i_71_];
         for (int i_72_ = 1; i_72_ < -1 + i; i_72_++) {
@@ -1269,11 +1269,11 @@ public class Main extends GameShell {
         if (Class51.anInt1197 == 0)
             GameObject.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
         else if (Class51.anInt1197 == 5) {
-            WallDecoration.method951(-19010, TypeFace.fontBold, TypeFace.fontSmall);
+            WallDecoration.drawLoadingScreen(-19010, TypeFace.fontBold, TypeFace.fontSmall);
         } else if (Class51.anInt1197 == 10) {
-            WallDecoration.method951(-19010, TypeFace.fontBold, TypeFace.fontSmall);
+            WallDecoration.drawLoadingScreen(-19010, TypeFace.fontBold, TypeFace.fontSmall);
         } else if (Class51.anInt1197 == 20) {
-            WallDecoration.method951(-19010, TypeFace.fontBold, TypeFace.fontSmall);
+            WallDecoration.drawLoadingScreen(-19010, TypeFace.fontBold, TypeFace.fontSmall);
         } else if (Class51.anInt1197 == 25) {
             if (ProducingGraphicsBuffer.anInt1634 == 1) {
                 if (Class37.anInt874 > PacketBuffer.anInt2231)

@@ -326,8 +326,8 @@ public class TypeFace extends Rasterizer {
         return this.getStringWidth(string.toString());
     }
 
-    public void drawShadowedStringCenter(String arg0, int arg1, int arg2, int arg3, boolean arg4) {
-        drawShadowedString(arg0, arg1 - getStringWidth(arg0) / 2, arg2, arg4, arg3);
+    public void drawShadowedStringCenter(String str, int drawX, int drawY, int colour, boolean shadowed) {
+        drawShadowedString(str, drawX - getStringWidth(str) / 2, drawY, shadowed, colour);
     }
 
     public int method689(int arg0) {

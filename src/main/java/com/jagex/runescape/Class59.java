@@ -15,7 +15,7 @@ import com.jagex.runescape.scene.SceneCluster;
 public class Class59 {
     public static int anInt1383;
     public static int anInt1386;
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1387;
+    public static IndexedImage imgLoginScreenButton;
     public static int anInt1388;
     public static int anInt1389 = 0;
     public static KeyFocusListener keyFocusListener;

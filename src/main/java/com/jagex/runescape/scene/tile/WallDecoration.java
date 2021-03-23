@@ -310,86 +310,84 @@ public class WallDecoration {
         }
     }
 
-    public static void method951(int arg0, TypeFace arg1, TypeFace arg2) {
+    public static void drawLoadingScreen(int arg0, TypeFace fontBold, TypeFace fontSmall) {
         do {
             MovedStatics.loginBoxGraphics.prepareRasterizer();
 //            Rasterizer.drawFilledRectangle(0,0, ScreenController.frameWidth, ScreenController.frameHeight, 0);
             if (Class51.anInt1197 == 0 || Class51.anInt1197 == 5) {
                 int i = 20;
-                arg1.drawStringLeft(English.runeScapeIsLoadingPleaseWait, 180, 74 + -i, 16777215);
+                fontBold.drawStringLeft(English.runeScapeIsLoadingPleaseWait, 180, 74 + -i, 16777215);
                 int i_89_ = -i + 82;
                 Rasterizer.drawUnfilledRectangle(28, i_89_, 304, 34, 9179409);
                 Rasterizer.drawUnfilledRectangle(29, 1 + i_89_, 302, 32, 0);
                 Rasterizer.drawFilledRectangle(30, 2 + i_89_, MovedStatics.anInt1607 * 3, 30, 9179409);
                 Rasterizer.drawFilledRectangle(3 * MovedStatics.anInt1607 + 30, i_89_ + 2, -(MovedStatics.anInt1607 * 3) + 300, 30, 0);
-                arg1.drawStringLeft(Native.currentLoadingText, 180, -i + 105, 16777215);
+                fontBold.drawStringLeft(Native.currentLoadingText, 180, -i + 105, 16777215);
             }
             if (Class51.anInt1197 == 20) {
-                int i = 40;
-                Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775.drawImage(0, 0);
-                arg1.drawShadowedStringCenter(Native.loginScreenMessageLineOne, 180, i, 16776960, true);
-                i += 15;
-                arg1.drawShadowedStringCenter(Native.loginScreenMessageLineTwo, 180, i, 16776960, true);
-                i += 15;
-                arg1.drawShadowedStringCenter(Native.loginScreenMessageLineThree, 180, i, 16776960, true);
-                i += 15;
-                i += 10;
-                arg1.drawShadowedString(English.username + Native.username, 90, i, true, 16777215);
-                i += 15;
-                arg1.drawShadowedString(English.password + Native.password.method61(), 92, i, true, 16777215);
-                i += 15;
+                int drawY = 40;
+                Class40_Sub5_Sub15.loginScreenBox.drawImage(0, 0);
+                fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineOne, 180, drawY, 16776960, true);
+                drawY += 15;
+                fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineTwo, 180, drawY, 16776960, true);
+                drawY += 15;
+                fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineThree, 180, drawY, 16776960, true);
+                drawY += 15;
+                drawY += 10;
+                fontBold.drawShadowedString(English.username + Native.username, 90, drawY, true, 16777215);
+                drawY += 15;
+                fontBold.drawShadowedString(English.password + Native.password.method61(), 92, drawY, true, 16777215);
+                drawY += 15;
             }
             if (Class51.anInt1197 == 10) {
-                Class40_Sub5_Sub15.aClass40_Sub5_Sub14_Sub2_2775.drawImage(0, 0);
+                Class40_Sub5_Sub15.loginScreenBox.drawImage(0, 0);
                 if (Class26.loginScreenState == 0) {
-                    int i = 80;
-                    int i_94_ = 100;
-                    arg1.drawShadowedStringCenter(English.welcomeToRunescape, 180, i, 16776960, true);
-                    i += 30;
-                    int i_95_ = 120;
-                    Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(i_94_ - 73, i_95_ - 20);
-                    arg1.drawText(English.newUser, i_94_ + -73, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
-                    i_94_ = 260;
-                    Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(i_94_ - 73, i_95_ + -20);
-                    arg1.drawText(English.existingUser, -73 + i_94_, -20 + i_95_, 144, 40, 16777215, true, 1, 1, 0);
+                    fontBold.drawShadowedStringCenter(English.welcomeToRunescape, 180, 80, 16776960, true);
+                    int drawX = 100;
+                    int drawY = 120;
+                    Class59.imgLoginScreenButton.drawImage(drawX - 73, drawY - 20);
+                    fontBold.drawText(English.newUser, drawX + -73, -20 + drawY, 144, 40, 16777215, true, 1, 1, 0);
+                    drawX = 260;
+                    Class59.imgLoginScreenButton.drawImage(drawX - 73, drawY + -20);
+                    fontBold.drawText(English.existingUser, drawX - 73, -20 + drawY, 144, 40, 16777215, true, 1, 1, 0);
                 } else if (Class26.loginScreenState == 2) {
-                    int i = 40;
-                    int i_90_ = 100;
-                    arg1.drawShadowedStringCenter(Native.loginScreenMessageLineOne, 180, i, 16776960, true);
-                    i += 15;
-                    int i_91_ = 150;
-                    arg1.drawShadowedStringCenter(Native.loginScreenMessageLineTwo, 180, i, 16776960, true);
-                    i += 15;
-                    arg1.drawShadowedStringCenter(Native.loginScreenMessageLineThree, 180, i, 16776960, true);
-                    i += 15;
-                    i += 10;
-                    arg1.drawShadowedString(English.username + Native.username + (MovedStatics.pulseCycle % 40 < 20 & MovedStatics.loginScreenFocus == 0 ? Native.justAnotherYellowBar : ""), 90, i, true, 16777215);
-                    i += 15;
-                    arg1.drawShadowedString(English.password + Native.password.method61() + (MovedStatics.pulseCycle % 40 < 20 & MovedStatics.loginScreenFocus == 1 ? Native.justAnotherYellowBar : ""), 92, i, true, 16777215);
-                    Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
-                    i += 15;
-                    arg1.drawShadowedStringCenter(English.login, i_90_, i_91_ + 5, 16777215, true);
-                    i_90_ = 260;
-                    Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i_90_, i_91_ + -20);
-                    arg1.drawShadowedStringCenter(English.cancel, i_90_, 5 + i_91_, 16777215, true);
+                    int y1 = 40;
+                    int drawX = 100;
+                    fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineOne, 180, y1, 16776960, true);
+                    y1 += 15;
+                    int y2 = 150;
+                    fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineTwo, 180, y1, 16776960, true);
+                    y1 += 15;
+                    fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineThree, 180, y1, 16776960, true);
+                    y1 += 15;
+                    y1 += 10;
+                    fontBold.drawShadowedString(English.username + Native.username + (MovedStatics.pulseCycle % 40 < 20 & MovedStatics.loginScreenFocus == 0 ? Native.justAnotherYellowBar : ""), 90, y1, true, 16777215);
+                    y1 += 15;
+                    fontBold.drawShadowedString(English.password + Native.password.method61() + (MovedStatics.pulseCycle % 40 < 20 & MovedStatics.loginScreenFocus == 1 ? Native.justAnotherYellowBar : ""), 92, y1, true, 16777215);
+                    Class59.imgLoginScreenButton.drawImage(-73 + drawX, y2 + -20);
+                    y1 += 15;
+                    fontBold.drawShadowedStringCenter(English.login, drawX, y2 + 5, 16777215, true);
+                    drawX = 260;
+                    Class59.imgLoginScreenButton.drawImage(-73 + drawX, y2 + -20);
+                    fontBold.drawShadowedStringCenter(English.cancel, drawX, 5 + y2, 16777215, true);
                 } else if (Class26.loginScreenState == 3) {
-                    arg1.drawShadowedStringCenter(English.createAFreeAccount, 180, 40, 16776960, true);
+                    fontBold.drawShadowedStringCenter(English.createAFreeAccount, 180, 40, 16776960, true);
                     int i = 180;
                     int i_92_ = 150;
                     int i_93_ = 65;
-                    arg1.drawShadowedStringCenter(English.toCreateANewAccountYouNeedTo, 180, i_93_, 16777215, true);
+                    fontBold.drawShadowedStringCenter(English.toCreateANewAccountYouNeedTo, 180, i_93_, 16777215, true);
                     i_93_ += 15;
-                    arg1.drawShadowedStringCenter(English.goBackToTheMainRunescapeWebPage, 180, i_93_, 16777215, true);
+                    fontBold.drawShadowedStringCenter(English.goBackToTheMainRunescapeWebPage, 180, i_93_, 16777215, true);
                     i_93_ += 15;
-                    arg1.drawShadowedStringCenter(English.andChooseTheCreateAccount, 180, i_93_, 16777215, true);
+                    fontBold.drawShadowedStringCenter(English.andChooseTheCreateAccount, 180, i_93_, 16777215, true);
                     i_93_ += 15;
-                    arg1.drawShadowedStringCenter(English.suffixButtonNearTheTopOfThatPage, 180, i_93_, 16777215, true);
-                    Class59.aClass40_Sub5_Sub14_Sub2_1387.drawImage(-73 + i, i_92_ - 20);
-                    arg1.drawShadowedStringCenter(English.cancel, i, 5 + i_92_, 16777215, true);
+                    fontBold.drawShadowedStringCenter(English.suffixButtonNearTheTopOfThatPage, 180, i_93_, 16777215, true);
+                    Class59.imgLoginScreenButton.drawImage(-73 + i, i_92_ - 20);
+                    fontBold.drawShadowedStringCenter(English.cancel, i, 5 + i_92_, 16777215, true);
                     i_93_ += 15;
                 }
             }
-            Main.renderFlames(0);
+            Main.renderFlames();
             try {
                 Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
 

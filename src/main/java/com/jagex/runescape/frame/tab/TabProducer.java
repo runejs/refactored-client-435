@@ -195,6 +195,9 @@ public class TabProducer extends FramePieceRenderer {
         };
     }
     private void drawMiddlePiece(int baseX, int baseY, int width, int height) {
+        if(MovedStatics.tabImageProducer == null) {
+            return;
+        }
         rasterizerInstanced.copyPixels(
                 MovedStatics.tabImageProducer.pixels,
                 MovedStatics.tabImageProducer.width,
