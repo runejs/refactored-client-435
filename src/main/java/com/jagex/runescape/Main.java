@@ -1201,7 +1201,7 @@ public class Main extends GameShell {
                 if (Class8.anInt292 >= 4) {
                     if (Class51.anInt1197 <= 5) {
                         this.openErrorPage((byte) 104, "js5connect");
-                        Class51.anInt1197 = 1000;
+                        ISAAC.anInt509 = 3000;
                     } else
                         ISAAC.anInt509 = 3000;
                 }
