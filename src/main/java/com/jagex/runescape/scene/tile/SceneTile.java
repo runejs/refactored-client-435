@@ -23,15 +23,15 @@ public class SceneTile extends Node {
     public SceneTile aSceneTile_2058;
     public int wallCullOppositeDirection;
     public GroundItemTile groundItemTile;
-    public int anInt2061;
+    public int x;
     public boolean drawEntities;
     public int anInt2063;
     public int anInt2064;
     public InteractiveObject[] interactiveObjects = new InteractiveObject[5];
-    public int anInt2066;
+    public int plane;
     public int wallCullDirection;
     public ComplexTile shapedTile;
-    public int anInt2069;
+    public int renderLevel;
     public GenericTile plainTile;
     public boolean draw;
     public Wall wall;
@@ -40,15 +40,15 @@ public class SceneTile extends Node {
     public FloorDecoration floorDecoration;
     public int wallUncullDirection;
     public boolean visible;
-    public int anInt2078;
+    public int y;
     public WallDecoration wallDecoration;
     public int entityCount;
 
-    public SceneTile(int arg0, int arg1, int arg2) {
+    public SceneTile(int plane, int x, int y) {
         interactiveObjectsSizeOR = 0;
-        anInt2061 = arg1;
-        anInt2069 = anInt2066 = arg0;
-        anInt2078 = arg2;
+        this.x = x;
+        renderLevel = this.plane = plane;
+        this.y = y;
 
     }
 

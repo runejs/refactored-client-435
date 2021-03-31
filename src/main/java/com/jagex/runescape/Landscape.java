@@ -10,6 +10,8 @@ import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.gpu.GpuPlugin;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -243,6 +245,9 @@ public class Landscape {
         } else
             ProducingGraphicsBuffer.anInt1634 = 1;
 
+        if (GpuPlugin.process()) {
+            ScreenController.gpu.onGameStateChanged();
+        }
     }
 
     public static void method934(int arg0, int arg2, int arg3, int arg4) {

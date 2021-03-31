@@ -7,6 +7,8 @@ import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.tab.TabProducer;
+import com.jagex.runescape.gpu.GpuPlugin;
+import com.jagex.runescape.gpu.SkyboxPlugin;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -39,6 +41,8 @@ public class ScreenController {
     private static Thread drawingThread;
     private static FrameRenderer renderer;
     public static boolean DebugView = false;
+    public static GpuPlugin gpu;
+    public static SkyboxPlugin skybox;
 
 
     public static void frameMode(ScreenMode screenMode) {
@@ -127,6 +131,13 @@ public class ScreenController {
                 MouseHandler.aCanvas1469.setLocation(insets.left, insets.top);
             }//            Class38.loginBoxGraphics = Class40_Sub5_Sub13.createGraphicsBuffer(frameWidth, frameHeight, Class35.aFrame1732);
         }
+    }
+
+    public static int gamescreenCenterX() {
+        return (ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth) / 2;
+    }
+    public static int gamescreenCenterY() {
+        return (ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight) / 2;
     }
 
     public static void RenderResizableUI() {

@@ -13,6 +13,7 @@ public class Rasterizer3D extends Rasterizer {
     public static boolean opaque = false;
     public static int center_x;
     public static int[] lineOffsets;
+    // TODO: IS THIS ANIMATED TEXTURES?
     public static Interface3 anInterface3_2939;
     public static int[] shadowDecay = new int[512];
     public static int anInt2941;
