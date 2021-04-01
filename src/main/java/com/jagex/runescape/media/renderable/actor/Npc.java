@@ -270,6 +270,7 @@ public class Npc extends Actor {
                                 MouseHandler.clickType = 0;
                             }
                         }
+
                         if(Scene.clickedTileX != -1) {
                             int i = Scene.clickedTileX;
                             int i_18_ = Scene.clickedTileY;
@@ -282,53 +283,65 @@ public class Npc extends Actor {
                             }
                             Scene.clickedTileX = -1;
                         }
+
                         if(MouseHandler.clickType == 1 && Native.clickToContinueString != null) {
                             MouseHandler.clickType = 0;
                             ChatBox.redrawChatbox = true;
                             Native.clickToContinueString = null;
                         }
+
                         MouseHandler.processMenuClick();
                         if(GameInterface.fullscreenInterfaceId == -1) {
                             ScreenController.handleMinimapMouse();
                             ScreenController.handleTabClick();
                             ScreenController.handleChatButtonsClick();
                         }
+
                         if(SpotAnimDefinition.mouseButtonPressed == 1 || MouseHandler.clickType == 1)
                             anInt3294++;
+
                         int i = 34;
                         if(GameInterface.gameScreenInterfaceId != -1)
                             GameInterface.method360((byte) 125, 516, i, 338, GameInterface.gameScreenInterfaceId, 4, 4);
+
                         if(GameInterface.tabAreaInterfaceId == -1) {
                             if(Player.tabWidgetIds[Player.currentTabId] != -1)
                                 GameInterface.method360((byte) 125, 743, i, 466, Player.tabWidgetIds[Player.currentTabId], 205, 553);
                         } else
                             GameInterface.method360((byte) 125, 743, i, 466, GameInterface.tabAreaInterfaceId, 205, 553);
+
                         if(GameInterface.chatboxInterfaceId != -1)
                             GameInterface.method360((byte) 125, 496, i, 453, GameInterface.chatboxInterfaceId, 357, 17);
                         else if(ChatBox.dialogueId != -1)
                             GameInterface.method360((byte) 125, 496, i, 453, ChatBox.dialogueId, 357, 17);
+
                         if(GameInterface.gameScreenInterfaceId != -1)
                             GameInterface.method360((byte) 125, 516, i ^ 0xffffffff, 338, GameInterface.gameScreenInterfaceId, 4, 4);
+
                         if(GameInterface.tabAreaInterfaceId != -1)
                             GameInterface.method360((byte) 125, 743, i ^ 0xffffffff, 466, GameInterface.tabAreaInterfaceId, 205, 553);
+
                         else if(Player.tabWidgetIds[Player.currentTabId] != -1)
                             GameInterface.method360((byte) 125, 743, i ^ 0xffffffff, 466, Player.tabWidgetIds[Player.currentTabId], 205, 553);
+
                         if(GameInterface.chatboxInterfaceId != -1)
                             GameInterface.method360((byte) 125, 496, i ^ 0xffffffff, 453, GameInterface.chatboxInterfaceId, 357, 17);
                         else if(ChatBox.dialogueId != -1)
                             GameInterface.method360((byte) 125, 496, i ^ 0xffffffff, 453, ChatBox.dialogueId, 357, 17);
+
+                        // If hovering over a widget
                         if(MovedStatics.anInt1586 != -1 || FloorDecoration.anInt614 != -1 || MovedStatics.anInt573 != -1) {
-                            if(RSString.anInt1711 > WallDecoration.anInt1257) {
-                                WallDecoration.anInt1257++;
-                                if(RSString.anInt1711 == WallDecoration.anInt1257) {
+                            if(RSString.tooltipDelay > WallDecoration.durationHoveredOverWidget) {
+                                WallDecoration.durationHoveredOverWidget++;
+                                if(RSString.tooltipDelay == WallDecoration.durationHoveredOverWidget) {
                                     if(MovedStatics.anInt1586 != -1)
                                         ChatBox.redrawChatbox = true;
                                     if(FloorDecoration.anInt614 != -1)
                                         GameInterface.redrawTabArea = true;
                                 }
                             }
-                        } else if(WallDecoration.anInt1257 > 0)
-                            WallDecoration.anInt1257--;
+                        } else if(WallDecoration.durationHoveredOverWidget > 0)
+                            WallDecoration.durationHoveredOverWidget--;
                         Item.calculateCameraPosition();
                         if(Player.cutsceneActive)
                             Main.method165(35);

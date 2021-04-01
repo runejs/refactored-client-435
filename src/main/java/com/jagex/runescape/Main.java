@@ -54,11 +54,16 @@ public class Main extends GameShell {
     public static CacheFileChannel[] indexChannels = new CacheFileChannel[13];
     private static int drawCount = 0;
 
-    public static boolean drawInterface(int arg0, int minY, int minX, int arg3, int arg4, int maxX, int maxY, int arg7, GameInterface[] arg8, boolean arg9) {
+    // Area IDs:
+    // 0 = Game area (the area that renders in 3D)
+    // 1 = Tab area (the widgets that display within the tab area)
+    // 2 = Chat area (the chat itself, as well as all sorts of dialogues and anything that renders over the chat)
+    public static boolean drawInterface(int areaId, int minY, int minX, int arg3, int arg4, int maxX, int maxY, int arg7, GameInterface[] interfaceCollection, boolean initialResult) {
         Rasterizer.setBounds(minX, minY, maxX, maxY);
-        boolean bool = arg9;
-        for (int i = 0; arg8.length > i; i++) {
-            GameInterface gameInterface = arg8[i];
+
+        boolean result = initialResult;
+        for (int i = 0; interfaceCollection.length > i; i++) {
+            GameInterface gameInterface = interfaceCollection[i];
             if (gameInterface != null && gameInterface.parentId == arg4) {
                 if (gameInterface.contentType > 0)
                     GameInterface.updateGameInterface(gameInterface);
@@ -89,7 +94,7 @@ public class Main extends GameShell {
                 }
                 if (!gameInterface.isNewInterfaceFormat || Rasterizer.viewportRight >= i_0_ && Rasterizer.viewportBottom >= i_1_ && Rasterizer.viewportLeft <= i_0_ + gameInterface.originalWidth && i_1_ + gameInterface.originalHeight >= Rasterizer.viewportTop) {
                     if (gameInterface.type == GameInterfaceType.LAYER) {
-                        if (gameInterface.isHidden && !Class29.method371(8247, arg0, i))
+                        if (gameInterface.isHidden && !Class29.isHovering(areaId, i))
                             continue;
                         if (!gameInterface.isNewInterfaceFormat) {
                             if (-gameInterface.originalHeight + gameInterface.scrollHeight < gameInterface.scrollPosition)
@@ -97,9 +102,9 @@ public class Main extends GameShell {
                             if (gameInterface.scrollPosition < 0)
                                 gameInterface.scrollPosition = 0;
                         }
-                        bool &= drawInterface(arg0, i_1_, i_0_, gameInterface.anInt2746, i, gameInterface.originalHeight + i_1_, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, arg8, arg9);
+                        result &= drawInterface(areaId, i_1_, i_0_, gameInterface.anInt2746, i, gameInterface.originalHeight + i_1_, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, interfaceCollection, initialResult);
                         if (gameInterface.children != null)
-                            bool &= drawInterface(arg0, i_1_, i_0_, gameInterface.anInt2746, gameInterface.id, i_1_ + gameInterface.originalHeight, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, gameInterface.children, true);
+                            result &= drawInterface(areaId, i_1_, i_0_, gameInterface.anInt2746, gameInterface.id, i_1_ + gameInterface.originalHeight, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, gameInterface.children, true);
                         Rasterizer.setBounds(minX, minY, maxX, maxY);
                         if (gameInterface.originalHeight < gameInterface.scrollHeight)
                             GameInterface.drawScrollBar(i_0_ + gameInterface.originalWidth, i_1_, gameInterface.originalHeight, gameInterface.scrollPosition, gameInterface.scrollHeight, 0);
@@ -122,7 +127,7 @@ public class Main extends GameShell {
                                         ImageRGB imageRGB = gameInterface.method638((byte) 78, i_7_);
                                         if (imageRGB == null) {
                                             if (FramemapDefinition.aBoolean2177)
-                                                bool = false;
+                                                result = false;
                                         } else
                                             imageRGB.drawImage(i_10_, i_11_);
                                     }
@@ -136,7 +141,7 @@ public class Main extends GameShell {
                                             i_15_ = 16777215;
                                         ImageRGB imageRGB = ItemDefinition.sprite(gameInterface.itemAmounts[i_7_], i_13_, i_15_);
                                         if (imageRGB == null)
-                                            bool = false;
+                                            result = false;
                                         else {
                                             if (SceneTile.activeInterfaceType != 0 && GroundItemTile.selectedInventorySlot == i_7_ && gameInterface.id == Class48.modifiedWidgetId) {
                                                 i_14_ = Landscape.mouseY + -ItemDefinition.anInt2798;
@@ -151,7 +156,7 @@ public class Main extends GameShell {
                                                 }
                                                 imageRGB.method728(i_12_ + i_10_, i_11_ + i_14_, 128);
                                                 if (arg4 != -1) {
-                                                    GameInterface gameInterface_16_ = arg8[arg4];
+                                                    GameInterface gameInterface_16_ = interfaceCollection[arg4];
                                                     if (Rasterizer.viewportTop > i_14_ + i_11_ && gameInterface_16_.scrollPosition > 0) {
                                                         int i_17_ = MovedStatics.anInt199 * (Rasterizer.viewportTop + -i_11_ - i_14_) / 3;
                                                         if (10 * MovedStatics.anInt199 < i_17_)
@@ -190,11 +195,11 @@ public class Main extends GameShell {
                         int i_20_;
                         if (ItemDefinition.method746(gameInterface)) {
                             i_20_ = gameInterface.alternateTextColor;
-                            if (Class29.method371(8247, arg0, i) && gameInterface.alternateHoveredTextColor != 0)
+                            if (Class29.isHovering(areaId, i) && gameInterface.alternateHoveredTextColor != 0)
                                 i_20_ = gameInterface.alternateHoveredTextColor;
                         } else {
                             i_20_ = gameInterface.textColor;
-                            if (Class29.method371(8247, arg0, i) && gameInterface.hoveredTextColor != 0)
+                            if (Class29.isHovering(areaId, i) && gameInterface.hoveredTextColor != 0)
                                 i_20_ = gameInterface.hoveredTextColor;
                         }
                         if (i_2_ == 0) {
@@ -210,20 +215,20 @@ public class Main extends GameShell {
                         TypeFace class40_sub5_sub14_sub1 = gameInterface.getTypeFace();
                         if (class40_sub5_sub14_sub1 == null) {
                             if (FramemapDefinition.aBoolean2177)
-                                bool = false;
+                                result = false;
                         } else {
                             String class1 = gameInterface.disabledText;
-                            int i_21_;
+                            int textColor;
                             if (ItemDefinition.method746(gameInterface)) {
-                                i_21_ = gameInterface.alternateTextColor;
-                                if (Class29.method371(8247, arg0, i) && gameInterface.alternateHoveredTextColor != 0)
-                                    i_21_ = gameInterface.alternateHoveredTextColor;
+                                textColor = gameInterface.alternateTextColor;
+                                if (Class29.isHovering(areaId, i) && gameInterface.alternateHoveredTextColor != 0)
+                                    textColor = gameInterface.alternateHoveredTextColor;
                                 if (gameInterface.alternateText.length() > 0)
                                     class1 = gameInterface.alternateText;
                             } else {
-                                i_21_ = gameInterface.textColor;
-                                if (Class29.method371(8247, arg0, i) && gameInterface.hoveredTextColor != 0)
-                                    i_21_ = gameInterface.hoveredTextColor;
+                                textColor = gameInterface.textColor;
+                                if (Class29.isHovering(areaId, i) && gameInterface.hoveredTextColor != 0)
+                                    textColor = gameInterface.hoveredTextColor;
                             }
                             if (gameInterface.isNewInterfaceFormat && gameInterface.itemId != -1) {
                                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(gameInterface.itemId, 10);
@@ -234,19 +239,19 @@ public class Main extends GameShell {
                                     class1 = class1 + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmount, (byte) -109);
                             }
                             if (gameInterface.actionType == 6 && MovedStatics.anInt1819 == gameInterface.id) {
-                                i_21_ = gameInterface.textColor;
+                                textColor = gameInterface.textColor;
                                 class1 = English.pleaseWait;
                             }
                             if (Rasterizer.destinationWidth == 479) {
-                                if (i_21_ == 16776960)
-                                    i_21_ = 255;
-                                if (i_21_ == 49152)
-                                    i_21_ = 16777215;
+                                if (textColor == 16776960)
+                                    textColor = 255;
+                                if (textColor == 49152)
+                                    textColor = 16777215;
                             }
 //                            System.out.println(class1);
                             class1 = SceneTile.method532((byte) 20, gameInterface, class1);
 //                            System.out.println(class1);
-                            class40_sub5_sub14_sub1.drawText(class1, i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight, i_21_, gameInterface.textShadowed, gameInterface.xTextAlignment, gameInterface.yTextAlignment, gameInterface.lineHeight);
+                            class40_sub5_sub14_sub1.drawText(class1, i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight, textColor, gameInterface.textShadowed, gameInterface.xTextAlignment, gameInterface.yTextAlignment, gameInterface.lineHeight);
                         }
                     } else if (gameInterface.type == GameInterfaceType.GRAPHIC) {
                         if (gameInterface.isNewInterfaceFormat) {
@@ -309,7 +314,7 @@ public class Main extends GameShell {
                                         class40_sub5_sub14_sub4.method720(gameInterface.originalWidth / 2 + i_0_, gameInterface.originalHeight / 2 + i_1_, gameInterface.anInt2751, i_26_);
                                 }
                             } else if (FramemapDefinition.aBoolean2177)
-                                bool = false;
+                                result = false;
                             if (gameInterface.itemId != -1) {
                                 if (gameInterface.itemAmount != 1 || i_22_ == 33) {
                                     TypeFace.fontSmall.drawString(Integer.toString(gameInterface.itemAmount), i_0_ + 1, i_1_ + 10, 0);
@@ -323,7 +328,7 @@ public class Main extends GameShell {
                             if (imageRGB != null)
                                 imageRGB.drawImage(i_0_, i_1_);
                             else if (FramemapDefinition.aBoolean2177)
-                                bool = false;
+                                result = false;
                         }
                     } else if (gameInterface.type == GameInterfaceType.MODEL) {
                         boolean bool_35_ = ItemDefinition.method746(gameInterface);
@@ -339,12 +344,12 @@ public class Main extends GameShell {
                             if (i_36_ == -1) {
                                 model = gameInterface.method646((byte) 46, null, -1, bool_35_, Player.localPlayer.playerAppearance);
                                 if (model == null && FramemapDefinition.aBoolean2177)
-                                    bool = false;
+                                    result = false;
                             } else {
                                 AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(i_36_, 2);
                                 model = gameInterface.method646((byte) 76, animationSequence, gameInterface.animationFrame, bool_35_, Player.localPlayer.playerAppearance);
                                 if (model == null && FramemapDefinition.aBoolean2177)
-                                    bool = false;
+                                    result = false;
                             }
                         } else if (gameInterface.modelId != 0)
                             model = Player.localPlayer.getRotatedModel();
@@ -391,7 +396,7 @@ public class Main extends GameShell {
                             TypeFace class40_sub5_sub14_sub1 = gameInterface.getTypeFace();
                             if (class40_sub5_sub14_sub1 == null) {
                                 if (FramemapDefinition.aBoolean2177)
-                                    bool = false;
+                                    result = false;
                                 continue;
                             }
                             int i_45_ = 0;
@@ -417,7 +422,7 @@ public class Main extends GameShell {
                                 }
                             }
                         }
-                        if (gameInterface.type == GameInterfaceType.IF1_TOOLTIP && Class37.method438(arg0, i) && RSString.anInt1711 == WallDecoration.anInt1257) {
+                        if (gameInterface.type == GameInterfaceType.IF1_TOOLTIP && Class37.method438(areaId, i) && RSString.tooltipDelay == WallDecoration.durationHoveredOverWidget) {
                             int i_50_ = 0;
                             int i_51_ = 0;
                             TypeFace class40_sub5_sub14_sub1 = WallDecoration.fontNormal;
@@ -473,7 +478,7 @@ public class Main extends GameShell {
                 }
             }
         }
-        return bool;
+        return result;
     }
 
     public static void method37(CacheArchive cacheArchive, int arg2) {

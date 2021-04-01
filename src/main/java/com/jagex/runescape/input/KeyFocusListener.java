@@ -53,7 +53,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             Class37.cursorCross[4 + OverlayDefinition.crossIndex / 100].drawImage(ClientScriptRunner.crossX - 8 - 4, MovedStatics.crossY - 8 - 4);
         }
         if (GameInterface.gameScreenInterfaceId != -1 || GroundItemTile.walkableWidgetId != -1) {
-                int var5= GameInterface.gameScreenInterfaceId != -1 ? 0 : 4;
+                int var5 = GameInterface.gameScreenInterfaceId != -1 ? 0 : 4;
                 int id = GameInterface.gameScreenInterfaceId != -1 ? GameInterface.gameScreenInterfaceId : GroundItemTile.walkableWidgetId;
                 Renderable.handleSequences(GameInterface.gameScreenInterfaceId);
                 int yOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);

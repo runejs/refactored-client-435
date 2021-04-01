@@ -25,7 +25,7 @@ import java.awt.*;
 
 public class WallDecoration {
     public static NodeCache aClass9_1247 = new NodeCache(64);
-    public static int anInt1257 = 0;
+    public static int durationHoveredOverWidget = 0;
     public static NodeCache aClass9_1264 = new NodeCache(50);
     public static TypeFace fontNormal;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1270;

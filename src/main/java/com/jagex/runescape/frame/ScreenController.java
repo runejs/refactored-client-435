@@ -297,21 +297,20 @@ public class ScreenController {
         }
     }
 
-    public static void handleTabClick(int x, int y) {
+    public static void handleTabClick(int mouseX, int mouseY) {
         if (frameMode == ScreenMode.FIXED) {
-
             if (GameInterface.tabAreaInterfaceId != -1)
-                Class13.method243((byte) 89, 205, 743, 466, GameInterface.tabAreaInterfaceId, 553, x, y, 1);
+                Class13.handleInterfaceActions(mouseX, mouseY, 553, 205, 743, 466, GameInterface.tabAreaInterfaceId, 1);
             else if (Player.tabWidgetIds[Player.currentTabId] != -1) {
-                Class13.method243((byte) 89, 205, 743, 466, Player.tabWidgetIds[Player.currentTabId], 553, x, y, 1);
+                Class13.handleInterfaceActions(mouseX, mouseY, 553, 205, 743, 466, Player.tabWidgetIds[Player.currentTabId], 1);
             }
         } else {
             int[] tabInterFaceCoords= tabProducer.getTabInterfaceCoordSize(drawWidth - 241, drawHeight - (334));
 
             if (GameInterface.tabAreaInterfaceId != -1)
-                Class13.method243((byte) 89, tabInterFaceCoords[1], tabInterFaceCoords[0]+tabInterFaceCoords[2],tabInterFaceCoords[1]+tabInterFaceCoords[3], GameInterface.tabAreaInterfaceId, tabInterFaceCoords[0], x, y, 1);
+                Class13.handleInterfaceActions(mouseX, mouseY, tabInterFaceCoords[0], tabInterFaceCoords[1], tabInterFaceCoords[0]+tabInterFaceCoords[2],tabInterFaceCoords[1]+tabInterFaceCoords[3], GameInterface.tabAreaInterfaceId, 1);
             else if (Player.tabWidgetIds[Player.currentTabId] != -1) {
-                Class13.method243((byte) 89, tabInterFaceCoords[1], tabInterFaceCoords[0]+tabInterFaceCoords[2],tabInterFaceCoords[1]+tabInterFaceCoords[3], Player.tabWidgetIds[Player.currentTabId], tabInterFaceCoords[0], x, y, 1);
+                Class13.handleInterfaceActions(mouseX, mouseY, tabInterFaceCoords[0], tabInterFaceCoords[1], tabInterFaceCoords[0]+tabInterFaceCoords[2],tabInterFaceCoords[1]+tabInterFaceCoords[3], Player.tabWidgetIds[Player.currentTabId], 1);
             }
         }
     }
@@ -323,18 +322,18 @@ public class ScreenController {
                     if (y < 434 && x < 426)
                         ClientScriptRunner.method873(y - 357, 45);
                 } else
-                    Class13.method243((byte) 89, 357, 496, 453, ChatBox.dialogueId, 17, x, y, 3);
+                    Class13.handleInterfaceActions(x, y, 17, 357, 496, 453, ChatBox.dialogueId, 3);
             } else
-                Class13.method243((byte) 89, 357, 496, 453, GameInterface.chatboxInterfaceId, 17, x, y, 2);
+                Class13.handleInterfaceActions(x, y, 17, 357, 496, 453, GameInterface.chatboxInterfaceId, 2);
         } else {
             if (GameInterface.chatboxInterfaceId == -1) {
                 if (ChatBox.dialogueId == -1) {
                     if (y < frameHeight - (112) && x < 426)
                         ClientScriptRunner.method873(y - (frameHeight - 162), 45);
                 } else
-                    Class13.method243((byte) 89, (frameHeight - 162), frameWidth - 496, frameHeight - 54, ChatBox.dialogueId, 17, x, y, 3);
+                    Class13.handleInterfaceActions(x, y, 17, (frameHeight - 162), frameWidth - 496, frameHeight - 54, ChatBox.dialogueId, 3);
             } else
-                Class13.method243((byte) 89, (frameHeight - 162), frameWidth - 496, frameHeight - 54, GameInterface.chatboxInterfaceId, 17, x, y, 2);
+                Class13.handleInterfaceActions(x, y, 17, (frameHeight - 162), frameWidth - 496, frameHeight - 54, GameInterface.chatboxInterfaceId, 2);
         }
 
     }

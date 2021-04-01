@@ -108,31 +108,32 @@ public class Class48 {
         }
     }
 
-    public static void method925(int arg0, GameInterface[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
-        if(arg2 <= arg8 && arg4 >= arg9 && arg11 > arg8 && arg0 > arg4) {
-            for(int i = arg5; arg1.length > i; i++) {
-                GameInterface gameInterface = arg1[i];
-                if(gameInterface != null && arg6 == gameInterface.parentId) {
-                    int i_1_ = gameInterface.currentY - (-arg9 + arg3);
-                    int i_2_ = -arg10 + gameInterface.currentX + arg2;
-                    if(gameInterface.type == GameInterfaceType.IF1_TOOLTIP && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + gameInterface.originalWidth && arg4 < gameInterface.originalHeight + i_1_)
+    public static void handleInterfaceActions(int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, GameInterface[] gameInterfaces, int parentId, int arg3, int arg5, int arg7, int arg10) {
+        // Only try to handle actions if mouse is within this widget's boundaries
+        if(minX <= mouseX && mouseY >= minY && maxX > mouseX && maxY > mouseY) {
+            for(int i = arg5; gameInterfaces.length > i; i++) {
+                GameInterface gameInterface = gameInterfaces[i];
+                if(gameInterface != null && parentId == gameInterface.parentId) {
+                    int i_1_ = gameInterface.currentY - (-minY + arg3);
+                    int i_2_ = -arg10 + gameInterface.currentX + minX;
+                    if(gameInterface.type == GameInterfaceType.IF1_TOOLTIP && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_)
                         Item.anInt3065 = i;
-                    if((gameInterface.hoveredSiblingId >= 0 || gameInterface.hoveredTextColor != 0) && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + gameInterface.originalWidth && arg4 < gameInterface.originalHeight + i_1_) {
+                    if((gameInterface.hoveredSiblingId >= 0 || gameInterface.hoveredTextColor != 0) && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_) {
                         if(gameInterface.hoveredSiblingId >= 0)
                             OverlayDefinition.anInt2328 = gameInterface.hoveredSiblingId;
                         else
                             OverlayDefinition.anInt2328 = i;
                     }
                     if(gameInterface.type == GameInterfaceType.LAYER) {
-                        if(!gameInterface.isHidden || Class29.method371(8247, arg7, i) || PacketBuffer.hiddenButtonTest) {
-                            method925(i_1_ + gameInterface.originalHeight, arg1, i_2_, gameInterface.scrollPosition, arg4, arg5, i, arg7, arg8, i_1_, gameInterface.anInt2746, i_2_ + gameInterface.originalWidth);
+                        if(!gameInterface.isHidden || Class29.isHovering(arg7, i) || PacketBuffer.hiddenButtonTest) {
+                            handleInterfaceActions(mouseX, mouseY, i_2_, i_1_, i_2_ + gameInterface.originalWidth, i_1_ + gameInterface.originalHeight, gameInterfaces, i, gameInterface.scrollPosition, arg5, arg7, gameInterface.anInt2746);
                             if(gameInterface.children != null)
-                                method925(i_1_ + gameInterface.originalHeight, gameInterface.children, i_2_, gameInterface.scrollPosition, arg4, 0, gameInterface.id, arg7, arg8, i_1_, gameInterface.anInt2746, gameInterface.originalWidth + i_2_);
+                                handleInterfaceActions(mouseX, mouseY, i_2_, i_1_, gameInterface.originalWidth + i_2_, i_1_ + gameInterface.originalHeight, gameInterface.children, gameInterface.id, gameInterface.scrollPosition, 0, arg7, gameInterface.anInt2746);
                             if(gameInterface.originalHeight < gameInterface.scrollHeight)
-                                GameInterface.scrollInterface(gameInterface.originalHeight, arg4, arg8, gameInterface.scrollHeight, gameInterface, gameInterface.originalWidth + i_2_, arg7, i_1_);
+                                GameInterface.scrollInterface(gameInterface.originalHeight, mouseY, mouseX, gameInterface.scrollHeight, gameInterface, gameInterface.originalWidth + i_2_, arg7, i_1_);
                         }
                     } else {
-                        if(gameInterface.actionType == 1 && i_2_ <= arg8 && i_1_ <= arg4 && gameInterface.originalWidth + i_2_ > arg8 && gameInterface.originalHeight + i_1_ > arg4) {
+                        if(gameInterface.actionType == 1 && i_2_ <= mouseX && i_1_ <= mouseY && gameInterface.originalWidth + i_2_ > mouseX && gameInterface.originalHeight + i_1_ > mouseY) {
                             boolean bool = false;
                             if(gameInterface.contentType != 0)
                                 bool = ProducingGraphicsBuffer_Sub1.method1051(300, gameInterface);
@@ -140,10 +141,10 @@ public class Class48 {
                                 OverlayDefinition.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 42, "");
                             }
                         }
-                        if(gameInterface.actionType == 2 && Main.widgetSelected == 0 && arg8 >= i_2_ && arg4 >= i_1_ && arg8 < gameInterface.originalWidth + i_2_ && arg4 < i_1_ + gameInterface.originalHeight) {
+                        if(gameInterface.actionType == 2 && Main.widgetSelected == 0 && mouseX >= i_2_ && mouseY >= i_1_ && mouseX < gameInterface.originalWidth + i_2_ && mouseY < i_1_ + gameInterface.originalHeight) {
                             OverlayDefinition.addActionRow(gameInterface.targetVerb, 0, 0, gameInterface.id, 33, Native.green + gameInterface.spellName);
                         }
-                        if(gameInterface.actionType == 3 && arg8 >= i_2_ && arg4 >= i_1_ && i_2_ + gameInterface.originalWidth > arg8 && arg4 < i_1_ + gameInterface.originalHeight) {
+                        if(gameInterface.actionType == 3 && mouseX >= i_2_ && mouseY >= i_1_ && i_2_ + gameInterface.originalWidth > mouseX && mouseY < i_1_ + gameInterface.originalHeight) {
                             int i_3_;
                             if(arg7 != 3)
                                 i_3_ = 9;
@@ -151,13 +152,13 @@ public class Class48 {
                                 i_3_ = 40;
                             OverlayDefinition.addActionRow(English.close, 0, 0, gameInterface.id, i_3_, "");
                         }
-                        if(gameInterface.actionType == 4 && arg8 >= i_2_ && i_1_ <= arg4 && arg8 < gameInterface.originalWidth + i_2_ && gameInterface.originalHeight + i_1_ > arg4) {
+                        if(gameInterface.actionType == 4 && mouseX >= i_2_ && i_1_ <= mouseY && mouseX < gameInterface.originalWidth + i_2_ && gameInterface.originalHeight + i_1_ > mouseY) {
                             OverlayDefinition.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 23, "");
                         }
-                        if(gameInterface.actionType == 5 && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + gameInterface.originalWidth && i_1_ + gameInterface.originalHeight > arg4) {
+                        if(gameInterface.actionType == 5 && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && i_1_ + gameInterface.originalHeight > mouseY) {
                             OverlayDefinition.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 57, "");
                         }
-                        if(gameInterface.actionType == 6 && MovedStatics.anInt1819 == -1 && i_2_ <= arg8 && i_1_ <= arg4 && arg8 < i_2_ + gameInterface.originalWidth && arg4 < gameInterface.originalHeight + i_1_) {
+                        if(gameInterface.actionType == 6 && MovedStatics.anInt1819 == -1 && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_) {
                             OverlayDefinition.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 54, "");
                         }
                         if(gameInterface.type == GameInterfaceType.INVENTORY) {
@@ -170,7 +171,7 @@ public class Class48 {
                                         i_7_ += gameInterface.images[i_4_];
                                         i_8_ += gameInterface.imageX[i_4_];
                                     }
-                                    if(arg8 >= i_7_ && i_8_ <= arg4 && i_7_ + 32 > arg8 && arg4 < 32 + i_8_) {
+                                    if(mouseX >= i_7_ && i_8_ <= mouseY && i_7_ + 32 > mouseX && mouseY < 32 + i_8_) {
                                         RSRuntimeException.lastActiveInvInterface = gameInterface.id;
                                         Class55.mouseInvInterfaceIndex = i_4_;
                                         if(gameInterface.items[i_4_] > 0) {
@@ -258,7 +259,7 @@ public class Class48 {
                                 }
                             }
                         }
-                        if(gameInterface.isNewInterfaceFormat && gameInterface.itemId != -1 && arg8 >= i_2_ && arg4 >= i_1_ && arg8 < gameInterface.originalWidth + i_2_ && arg4 < i_1_ + gameInterface.originalHeight) {
+                        if(gameInterface.isNewInterfaceFormat && gameInterface.itemId != -1 && mouseX >= i_2_ && mouseY >= i_1_ && mouseX < gameInterface.originalWidth + i_2_ && mouseY < i_1_ + gameInterface.originalHeight) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(gameInterface.itemId, 10);
                             if(gameInterface.isInventory) {
                                 String[] class1s = itemDefinition.interfaceOptions;
@@ -282,7 +283,7 @@ public class Class48 {
                             else
                                 OverlayDefinition.addActionRow(English.examine, itemDefinition.id, gameInterface.id & 0x7fff, gameInterface.parentId, 1007, Native.lightRed + itemDefinition.name);
                         }
-                        if(gameInterface.hasListeners && gameInterface.aClass1Array2661 != null && i_2_ <= arg8 && i_1_ <= arg4 && gameInterface.originalWidth + i_2_ > arg8 && arg4 < i_1_ + gameInterface.originalHeight) {
+                        if(gameInterface.hasListeners && gameInterface.aClass1Array2661 != null && i_2_ <= mouseX && i_1_ <= mouseY && gameInterface.originalWidth + i_2_ > mouseX && mouseY < i_1_ + gameInterface.originalHeight) {
                             String class1 = "";
                             if(gameInterface.itemId != -1) {
                                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(gameInterface.itemId, arg5 ^ 0xa);

@@ -16,7 +16,7 @@ public class RSString {
     public static int anInt1690 = 0;
     public static CacheArchive aCacheArchive_1705;
     public static int[] keyCodes = new int[128];
-    public static int anInt1711 = 50;
+    public static int tooltipDelay = 50;
     public static byte[][] terrainData;
     /*synthetic*/ public static Class aClass1718;
     public boolean aBoolean1675 = true;

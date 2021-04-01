@@ -85,7 +85,7 @@ public class Class43 {
                             yOffset = 0;
                             xOffset = 0;
                         }
-                        Class13.method243((byte) 89, 4, 516, 338, GameInterface.gameScreenInterfaceId, 4, Class13.mouseX - xOffset, Landscape.mouseY - yOffset, 0);
+                        Class13.handleInterfaceActions(Class13.mouseX - xOffset, Landscape.mouseY - yOffset, 4, 4, 516, 338, GameInterface.gameScreenInterfaceId, 0);
                     }
                 }
 
@@ -94,8 +94,8 @@ public class Class43 {
                 Item.anInt3065 = -1;
                 OverlayDefinition.anInt2328 = -1;
                 // Right click tab
-                if(ScreenController.isCoordinatesInTabArea(Class13.mouseX ,Landscape.mouseY)) {
-                    ScreenController.handleTabClick(Class13.mouseX ,Landscape.mouseY);
+                if(ScreenController.isCoordinatesInTabArea(Class13.mouseX, Landscape.mouseY)) {
+                    ScreenController.handleTabClick(Class13.mouseX, Landscape.mouseY);
                 }
                 if(OverlayDefinition.anInt2328 != CollisionMap.anInt163) {
                     GameInterface.redrawTabArea = true;
@@ -145,7 +145,7 @@ public class Class43 {
             } else {
                 Item.anInt3065 = -1;
                 OverlayDefinition.anInt2328 = -1;
-                Class13.method243((byte) 89, 0, 765, 503, GameInterface.fullscreenInterfaceId, 0, Class13.mouseX, Landscape.mouseY, 0);
+                Class13.handleInterfaceActions(Class13.mouseX, Landscape.mouseY, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId, 0);
                 ItemDefinition.anInt2850 = OverlayDefinition.anInt2328;
                 MovedStatics.anInt573 = Item.anInt3065;
             }

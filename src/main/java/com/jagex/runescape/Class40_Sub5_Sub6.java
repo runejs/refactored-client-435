@@ -35,11 +35,11 @@ public class Class40_Sub5_Sub6 extends CachedNode {
         aByteArray2441 = arg0;
     }
 
-    public static boolean drawInterface(int minY, int widgetId, int maxX, int minX, int arg5, int maxY) {
+    public static boolean drawInterface(int minY, int widgetId, int maxX, int minX, int areaId, int maxY) {
         if(!GameInterface.decodeGameInterface(widgetId))
             return false;
 
-        return Main.drawInterface(arg5, minY, minX, 0, -1, maxX, maxY, 0, GameInterface.cachedInterfaces[widgetId], true);
+        return Main.drawInterface(areaId, minY, minX, 0, -1, maxX, maxY, 0, GameInterface.cachedInterfaces[widgetId], true);
     }
 
     public static int method585(int arg0, int arg1) {
