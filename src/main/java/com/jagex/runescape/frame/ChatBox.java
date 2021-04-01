@@ -76,7 +76,7 @@ public class ChatBox {
             TypeFace.fontBold.drawStringLeft(Native.clickToContinueString, 239, 40, 0);
             TypeFace.fontBold.drawStringLeft(English.clickToContinue, 239, 60, 128);
         } else if(GameInterface.chatboxInterfaceId != -1) {
-            redrawChatbox = !Class40_Sub5_Sub6.drawInterface(0, GameInterface.chatboxInterfaceId, 96, (byte) -5, 0, 2, 479);
+            redrawChatbox = !Class40_Sub5_Sub6.drawInterface(0, GameInterface.chatboxInterfaceId, 96, 0, 2, 479);
         } else if(dialogueId == -1) {
             int line = 0;
             TypeFace typeFace = WallDecoration.fontNormal;
@@ -175,7 +175,7 @@ public class ChatBox {
             typeFace.drawBasicStringLegacy("@blu@" + chatboxInput + Native.aClass1_478, typeFace.getStringWidth(name + Native.aClass1_515) + 6, 90);
             Rasterizer.drawHorizontalLine(0, 77, 479, 0);
         } else {
-            boolean bool = Class40_Sub5_Sub6.drawInterface(0, dialogueId, 96, (byte) -5, 0, 3, 479);
+            boolean bool = Class40_Sub5_Sub6.drawInterface(0, dialogueId, 96, 0, 3, 479);
             if(!bool)
                 redrawChatbox = true;
         }

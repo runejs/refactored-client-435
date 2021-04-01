@@ -329,7 +329,7 @@ public class Class48 {
         Class35.songTimeout = 0;
         MouseHandler.anInt1457 = -1;
         Class37.method436(arg0 + 7352);
-        OverlayDefinition.method559(10);
+        OverlayDefinition.updateOverlay(10);
         ScreenController.frameMode(ScreenMode.FIXED);
     }
 

@@ -41,11 +41,11 @@ public class Class43 {
         MovedStatics.aBoolean893 = true;
         MovedStatics.method996(19655);
         if(GameInterface.tabAreaInterfaceId != -1) {
-            boolean bool = Class40_Sub5_Sub6.drawInterface(0, GameInterface.tabAreaInterfaceId, 261, (byte) -5, 0, 1, 190);
+            boolean bool = Class40_Sub5_Sub6.drawInterface(0, GameInterface.tabAreaInterfaceId, 261, 0, 1, 190);
             if(!bool)
                 GameInterface.redrawTabArea = true;
         } else if(Player.tabWidgetIds[Player.currentTabId] != -1) {
-            boolean bool = Class40_Sub5_Sub6.drawInterface(0, Player.tabWidgetIds[Player.currentTabId], 261, (byte) -5, 0, 1, 190);
+            boolean bool = Class40_Sub5_Sub6.drawInterface(0, Player.tabWidgetIds[Player.currentTabId], 261, 0, 1, 190);
             if(!bool)
                 GameInterface.redrawTabArea = true;
         }

@@ -205,7 +205,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             }
         }
         setCanvas((byte) 121);
-        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(Class12.width, IdentityKit.height, MouseHandler.aCanvas1469);
+        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(Class12.width, IdentityKit.height, MouseHandler.gameCanvas);
         startup(true);
         SceneCluster.aTimer_768 = Timer.create();
         SceneCluster.aTimer_768.start();
@@ -225,7 +225,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         if (!PacketBuffer.aBoolean2255) {
             PacketBuffer.aBoolean2255 = true;
             try {
-                MouseHandler.aCanvas1469.removeFocusListener(this);
+                MouseHandler.gameCanvas.removeFocusListener(this);
             } catch (Exception exception) {
                 /* empty */
             }
@@ -377,14 +377,14 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             if (MovedStatics.anInt938++ > 50) {
                 MovedStatics.anInt938 -= 50;
                 Class40_Sub5_Sub11.clearScreen = true;
-                MouseHandler.aCanvas1469.setSize(Class12.width, IdentityKit.height);
-                MouseHandler.aCanvas1469.setVisible(true);
-                MouseHandler.aCanvas1469.setBackground(Color.BLACK);
+                MouseHandler.gameCanvas.setSize(Class12.width, IdentityKit.height);
+                MouseHandler.gameCanvas.setVisible(true);
+                MouseHandler.gameCanvas.setBackground(Color.BLACK);
                 if (Class35.aFrame1732 == null)
-                    MouseHandler.aCanvas1469.setLocation(0, 0);
+                    MouseHandler.gameCanvas.setLocation(0, 0);
                 else {
                     Insets insets = Class35.aFrame1732.getInsets();
-                    MouseHandler.aCanvas1469.setLocation(insets.left, insets.top);
+                    MouseHandler.gameCanvas.setLocation(insets.left, insets.top);
                 }
             }
             method34(arg0 + -210);
@@ -473,23 +473,23 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         Container container = Class35.aFrame1732;
 //        else
 //            container = ISAAC.aClass31_521.anApplet740;
-        if (MouseHandler.aCanvas1469 != null) {
-            MouseHandler.aCanvas1469.removeFocusListener(this);
-            container.remove(MouseHandler.aCanvas1469);
+        if (MouseHandler.gameCanvas != null) {
+            MouseHandler.gameCanvas.removeFocusListener(this);
+            container.remove(MouseHandler.gameCanvas);
         }
-        MouseHandler.aCanvas1469 = new RSCanvas(this);
-        container.add(MouseHandler.aCanvas1469);
-        MouseHandler.aCanvas1469.setSize(Class12.width, IdentityKit.height);
-        MouseHandler.aCanvas1469.setVisible(true);
+        MouseHandler.gameCanvas = new RSCanvas(this);
+        container.add(MouseHandler.gameCanvas);
+        MouseHandler.gameCanvas.setSize(Class12.width, IdentityKit.height);
+        MouseHandler.gameCanvas.setVisible(true);
         if (Class35.aFrame1732 != null) {
             Insets insets = Class35.aFrame1732.getInsets();
-            MouseHandler.aCanvas1469.setLocation(insets.left, insets.top);
+            MouseHandler.gameCanvas.setLocation(insets.left, insets.top);
         } else
-            MouseHandler.aCanvas1469.setLocation(0, 0);
-        MouseHandler.aCanvas1469.addFocusListener(this);
+            MouseHandler.gameCanvas.setLocation(0, 0);
+        MouseHandler.gameCanvas.addFocusListener(this);
         if (arg0 < 85)
             run();
-        MouseHandler.aCanvas1469.requestFocus();
+        MouseHandler.gameCanvas.requestFocus();
         Class40_Sub5_Sub11.clearScreen = true;
         MovedStatics.aBoolean1575 = false;
         MovedStatics.aLong174 = System.currentTimeMillis();

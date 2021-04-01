@@ -100,10 +100,10 @@ public class Player extends Actor {
         try {
             if(arg0 < 106)
                 return;
-            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
             VarbitDefinition.gameScreenImageProducer.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
         } catch(Exception exception) {
-            MouseHandler.aCanvas1469.repaint();
+            MouseHandler.gameCanvas.repaint();
         }
     }
 

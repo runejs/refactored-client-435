@@ -278,7 +278,7 @@ public abstract class Actor extends Renderable {
             if(!VertexNormal.lowMemory)
                 MovedStatics.onBuildTimePlane = 0;
             Class17.regionY = arg2;
-            OverlayDefinition.method559(25);
+            OverlayDefinition.updateOverlay(25);
             Class51.method940(0, English.loadingPleaseWait, false, null);
             int i = Class26.baseY;
             int i_33_ = SpotAnimDefinition.baseX;

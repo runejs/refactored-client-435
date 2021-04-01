@@ -94,11 +94,11 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     public static void drawMapBack() {
         try {
             if(ScreenController.frameMode == ScreenMode.FIXED) {
-                Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+                Graphics graphics = MouseHandler.gameCanvas.getGraphics();
                 RSString.mapbackProducingGraphicsBuffer.drawGraphics(550, 4, graphics);
             }
         } catch(Exception exception) {
-            MouseHandler.aCanvas1469.repaint();
+            MouseHandler.gameCanvas.repaint();
         }
     }
 

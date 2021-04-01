@@ -74,7 +74,7 @@ public class Class37 {
             if(Player.npcs[i] != null)
                 Player.npcs[i].facingActorIndex = -1;
         }
-        OverlayDefinition.method559(30);
+        OverlayDefinition.updateOverlay(30);
     }
 
     public static void renderMinimap() {

@@ -108,7 +108,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
     public static void drawWelcomeScreenGraphics() {
         try {
             if(ScreenController.frameMode == ScreenMode.FIXED) {
-                Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+                Graphics graphics = MouseHandler.gameCanvas.getGraphics();
 
                 Landscape.framePieceRight.drawGraphics(0, 4, graphics);
                 MovedStatics.chatboxRight.drawGraphics(0, 357, graphics);
@@ -121,7 +121,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
                 Class17.chatboxTop.drawGraphics(0, 338, graphics);
             }
         } catch(Exception exception) {
-            MouseHandler.aCanvas1469.repaint();
+            MouseHandler.gameCanvas.repaint();
         }
     }
 

@@ -63,8 +63,8 @@ public class Npc extends Actor {
                 if(!IncomingPackets.parseIncomingPackets(false))
                     break;
             }
-            if(Class51.anInt1197 == 30 || Class51.anInt1197 == 35) {
-                if(ISAAC.aBoolean519 && Class51.anInt1197 == 30) {
+            if(Class51.currentAction == 30 || Class51.currentAction == 35) {
+                if(ISAAC.aBoolean519 && Class51.currentAction == 30) {
                     SpotAnimDefinition.mouseButtonPressed = 0;
                     MouseHandler.clickType = 0;
                     while(MovedStatics.method416((byte) -104)) {
@@ -185,7 +185,7 @@ public class Npc extends Actor {
                     SceneCluster.packetBuffer.putByte(0);
                 }
                 LinkedList.method910(-32322);
-                if(Class51.anInt1197 == 30 || Class51.anInt1197 == 35) {
+                if(Class51.currentAction == 30 || Class51.currentAction == 35) {
                     Class40_Sub5_Sub13.method652();
                     MusicSystem.processAudio();
                     Class35.anInt1728++;

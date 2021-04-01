@@ -54,7 +54,7 @@ public class Main extends GameShell {
     public static CacheFileChannel[] indexChannels = new CacheFileChannel[13];
     private static int drawCount = 0;
 
-    public static boolean method36(int arg0, int minY, int minX, int arg3, int arg4, int maxX, int maxY, int arg7, GameInterface[] arg8, boolean arg9) {
+    public static boolean drawInterface(int arg0, int minY, int minX, int arg3, int arg4, int maxX, int maxY, int arg7, GameInterface[] arg8, boolean arg9) {
         Rasterizer.setBounds(minX, minY, maxX, maxY);
         boolean bool = arg9;
         for (int i = 0; arg8.length > i; i++) {
@@ -97,9 +97,9 @@ public class Main extends GameShell {
                             if (gameInterface.scrollPosition < 0)
                                 gameInterface.scrollPosition = 0;
                         }
-                        bool &= method36(arg0, i_1_, i_0_, gameInterface.anInt2746, i, gameInterface.originalHeight + i_1_, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, arg8, arg9);
+                        bool &= drawInterface(arg0, i_1_, i_0_, gameInterface.anInt2746, i, gameInterface.originalHeight + i_1_, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, arg8, arg9);
                         if (gameInterface.children != null)
-                            bool &= method36(arg0, i_1_, i_0_, gameInterface.anInt2746, gameInterface.id, i_1_ + gameInterface.originalHeight, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, gameInterface.children, true);
+                            bool &= drawInterface(arg0, i_1_, i_0_, gameInterface.anInt2746, gameInterface.id, i_1_ + gameInterface.originalHeight, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, gameInterface.children, true);
                         Rasterizer.setBounds(minX, minY, maxX, maxY);
                         if (gameInterface.originalHeight < gameInterface.scrollHeight)
                             GameInterface.drawScrollBar(i_0_ + gameInterface.originalWidth, i_1_, gameInterface.originalHeight, gameInterface.scrollPosition, gameInterface.scrollHeight, 0);
@@ -871,7 +871,7 @@ public class Main extends GameShell {
             MovedStatics.redrawChatbox = true;
             drawCount++;
         } else if(drawCount != 0) {
-            Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, CacheArchive.gameImageCacheArchive);
+            Class40_Sub5_Sub17_Sub1.method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
         }
         if(GameInterface.chatboxInterfaceId == -1) {
             Class12.chatboxInterface.scrollPosition = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
@@ -1075,7 +1075,7 @@ public class Main extends GameShell {
         } else {
             Class33.setLoginScreenMessage(English.unexpectedServerResponse, English.pleaseTryUsingDifferentWorld, "");
         }
-        OverlayDefinition.method559(10);
+        OverlayDefinition.updateOverlay(10);
     }
 
     public static void method164() {
@@ -1086,9 +1086,9 @@ public class Main extends GameShell {
         ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.prepareRasterizer();
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(Player.viewportOffsets);
         Rasterizer.resetPixels();
-        Class40_Sub5_Sub6.drawInterface(0, GameInterface.fullscreenInterfaceId, 503, (byte) -5, 0, 0, 765);
+        Class40_Sub5_Sub6.drawInterface(0, GameInterface.fullscreenInterfaceId, 503, 0, 0, 765);
         if(GameInterface.fullscreenSiblingInterfaceId != -1)
-            Class40_Sub5_Sub6.drawInterface(0, GameInterface.fullscreenSiblingInterfaceId, 503, (byte) -5, 0, 0, 765);
+            Class40_Sub5_Sub6.drawInterface(0, GameInterface.fullscreenSiblingInterfaceId, 503, 0, 0, 765);
         if(!MovedStatics.menuOpen) {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
@@ -1097,10 +1097,10 @@ public class Main extends GameShell {
                 Class40_Sub5_Sub6.drawMenu(4,4); // might be 0,0
             }
         try {
-            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
             ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.drawGraphics(0, 0, graphics);
         } catch(Exception exception) {
-            MouseHandler.aCanvas1469.repaint();
+            MouseHandler.gameCanvas.repaint();
         }
     }
 
@@ -1199,7 +1199,7 @@ public class Main extends GameShell {
         if (Class8.anInt292 < 2 || arg1 != 7 && arg1 != 9) {
             if (Class8.anInt292 < 2 || arg1 != 6) {
                 if (Class8.anInt292 >= 4) {
-                    if (Class51.anInt1197 <= 5) {
+                    if (Class51.currentAction <= 5) {
                         this.openErrorPage((byte) 104, "js5connect");
                         ISAAC.anInt509 = 3000;
                     } else
@@ -1207,13 +1207,13 @@ public class Main extends GameShell {
                 }
             } else {
                 this.openErrorPage((byte) 86, "js5connect_outofdate");
-                Class51.anInt1197 = 1000;
+                Class51.currentAction = 1000;
             }
-        } else if (Class51.anInt1197 > 5)
+        } else if (Class51.currentAction > 5)
             ISAAC.anInt509 = 3000;
         else {
             this.openErrorPage((byte) 122, "js5connect_full");
-            Class51.anInt1197 = 1000;
+            Class51.currentAction = 1000;
         }
     }
 
@@ -1226,32 +1226,32 @@ public class Main extends GameShell {
         GameInterface.method639(122);
         Class64.method1015();
 
-        if (Class51.anInt1197 == 0) {
+        if (Class51.currentAction == 0) {
             Class40_Sub3.startup(100);
             Class60.method992();
-        } else if (Class51.anInt1197 == 5) {
+        } else if (Class51.currentAction == 5) {
             Class40_Sub3.startup(100);
             Class60.method992();
-        } else if (Class51.anInt1197 == 10) {
+        } else if (Class51.currentAction == 10) {
             Class60.updateLogin();
-        } else if (Class51.anInt1197 == 20) {
+        } else if (Class51.currentAction == 20) {
             Class60.updateLogin();
             SpotAnimDefinition.method552(true);
-        } else if (Class51.anInt1197 == 25)
+        } else if (Class51.currentAction == 25)
             Landscape.loadRegion();
-        if (Class51.anInt1197 == 30) {
+        if (Class51.currentAction == 30) {
             ScreenController.refreshFrameSize();
             Npc.updateGame();
-        } else if (Class51.anInt1197 == 35) {
+        } else if (Class51.currentAction == 35) {
             ScreenController.refreshFrameSize();
             Npc.updateGame();
-        } else if (Class51.anInt1197 == 40) {
+        } else if (Class51.currentAction == 40) {
             SpotAnimDefinition.method552(true);
         }
     }
 
     public void method39() {
-        if (1000 != Class51.anInt1197) {
+        if (1000 != Class51.currentAction) {
             boolean bool = FloorDecoration.method346((byte) 48);
             if (!bool)
                 method40();
@@ -1260,21 +1260,21 @@ public class Main extends GameShell {
 
     public void method34(int arg0) { // TODO: Might be Startup
         if (MovedStatics.aBoolean1575) {
-            Class22_Sub1.method311(MouseHandler.aCanvas1469);
-            Class55.method965(32, MouseHandler.aCanvas1469);
+            Class22_Sub1.method311(MouseHandler.gameCanvas);
+            Class55.method965(32, MouseHandler.gameCanvas);
             this.setCanvas((byte) 86);
-            GameInterface.method642(MouseHandler.aCanvas1469, -10);
-            RSRuntimeException.method1056(MouseHandler.aCanvas1469, (byte) 33);
+            GameInterface.method642(MouseHandler.gameCanvas, -10);
+            RSRuntimeException.method1056(MouseHandler.gameCanvas, (byte) 33);
         }
-        if (Class51.anInt1197 == 0)
+        if (Class51.currentAction == 0)
             GameObject.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
-        else if (Class51.anInt1197 == 5) {
+        else if (Class51.currentAction == 5) {
             WallDecoration.drawLoadingScreen(-19010, TypeFace.fontBold, TypeFace.fontSmall);
-        } else if (Class51.anInt1197 == 10) {
+        } else if (Class51.currentAction == 10) {
             WallDecoration.drawLoadingScreen(-19010, TypeFace.fontBold, TypeFace.fontSmall);
-        } else if (Class51.anInt1197 == 20) {
+        } else if (Class51.currentAction == 20) {
             WallDecoration.drawLoadingScreen(-19010, TypeFace.fontBold, TypeFace.fontSmall);
-        } else if (Class51.anInt1197 == 25) {
+        } else if (Class51.currentAction == 25) {
             if (ProducingGraphicsBuffer.anInt1634 == 1) {
                 if (Class37.anInt874 > PacketBuffer.anInt2231)
                     PacketBuffer.anInt2231 = Class37.anInt874;
@@ -1287,12 +1287,12 @@ public class Main extends GameShell {
                 Class51.method940(0, English.loadingPleaseWait, true, Native.leftParenthasis + i + Native.aClass1_698);
             } else
                 Class51.method940(0, English.loadingPleaseWait, false, null);
-        } else if (Class51.anInt1197 == 30) {
+        } else if (Class51.currentAction == 30) {
             drawGameScreen();
 
-        } else if (Class51.anInt1197 == 35) {
+        } else if (Class51.currentAction == 35) {
             method164();
-        } else if (Class51.anInt1197 == 40)
+        } else if (Class51.currentAction == 40)
             Class51.method940(0, English.connectionLost, false, English.pleaseWaitAttemptingToReestablish);
         Npc.anInt3294 = 0;
     }
@@ -1300,15 +1300,15 @@ public class Main extends GameShell {
     public void method40() {
         if (MovedStatics.anInt813 >= 4) {
             this.openErrorPage((byte) 120, "js5crc");
-            Class51.anInt1197 = 1000;
+            Class51.currentAction = 1000;
         } else {
             if (MovedStatics.anInt2278 >= 4) {
-                if (Class51.anInt1197 > 5) {
+                if (Class51.currentAction > 5) {
                     MovedStatics.anInt2278 = 3;
                     ISAAC.anInt509 = 3000;
                 } else {
                     this.openErrorPage((byte) 58, "js5io");
-                    Class51.anInt1197 = 1000;
+                    Class51.currentAction = 1000;
                     return;
                 }
             }
@@ -1337,7 +1337,7 @@ public class Main extends GameShell {
                             Class22_Sub1.aLong1841 = System.currentTimeMillis();
                         }
                         if (Class8.anInt290 == 3) {
-                            if (Class51.anInt1197 > 5 && Class29.aClass64_676.method1014(5 + -131) <= 0) {
+                            if (Class51.currentAction > 5 && Class29.aClass64_676.method1014(5 + -131) <= 0) {
                                 if (System.currentTimeMillis() + -Class22_Sub1.aLong1841 > 30000L) {
                                     method35(-2);
                                     break;
@@ -1353,7 +1353,7 @@ public class Main extends GameShell {
                         }
                         if (Class8.anInt290 != 4)
                             break;
-                        Class17.method273(Class29.aClass64_676, 105, Class51.anInt1197 > 20);
+                        Class17.method273(Class29.aClass64_676, 105, Class51.currentAction > 20);
                         ProducingGraphicsBuffer.aSignlinkNode_1632 = null;
                         Class8.anInt290 = 0;
                         Class29.aClass64_676 = null;
@@ -1411,8 +1411,8 @@ public class Main extends GameShell {
             aBoolean1790 = true;
         Wall.anInt350 = OverlayDefinition.anInt2340;
         MovedStatics.method997(47);
-        GameInterface.method642(MouseHandler.aCanvas1469, -10);
-        RSRuntimeException.method1056(MouseHandler.aCanvas1469, (byte) 70);
+        GameInterface.method642(MouseHandler.gameCanvas, -10);
+        RSRuntimeException.method1056(MouseHandler.gameCanvas, (byte) 70);
         RSCanvas.anInt57 = Signlink.anInt737;
         try {
             if (signlink.cacheDataAccessFile != null) {

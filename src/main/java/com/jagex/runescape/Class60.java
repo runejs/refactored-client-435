@@ -189,7 +189,7 @@ public class Class60 {
 
     public static void updateLogin() {
         MovedStatics.method836(1);
-        if(Class51.anInt1197 == 10) {
+        if(Class51.currentAction == 10) {
             int i = Class57.clickX + -202;
             int clickType = MouseHandler.clickType;
             int clickY = -171 + RSString.clickY;
@@ -222,7 +222,7 @@ public class Class60 {
                 if(clickType == 1 && clickX + -75 <= i && i <= clickX + 75 && clickY >= i_18_ + -20 && clickY <= i_18_ + 20) {
                     Native.username = Native.username.method62().method85();
                     Class33.setLoginScreenMessage("", English.connectingToServer, "");
-                    OverlayDefinition.method559(20);
+                    OverlayDefinition.updateOverlay(20);
                 } else {
                     clickX = 260;
                     if(clickType == 1 && i >= -75 + clickX && clickX + 75 >= i && clickY >= -20 + i_18_ && clickY <= i_18_ + 20) {
@@ -253,7 +253,7 @@ public class Class60 {
                             if(ItemDefinition.anInt2854 == 84) {
                                 Native.username = Native.username.method62().method85();
                                 Class33.setLoginScreenMessage("", English.connectingToServer, "");
-                                OverlayDefinition.method559(20);
+                                OverlayDefinition.updateOverlay(20);
                             }
                             if(bool && Native.password.length() < 20)
                                 Native.password = Native.password.addChar(Class59.anInt1388);
