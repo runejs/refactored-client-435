@@ -221,7 +221,7 @@ public class Class33 {
                     if(PlayerAppearance.anIntArray695[i] == 4) {
                         int i_12_ = TypeFace.fontBold.getStringWidth(class1);
                         int i_13_ = (i_12_ + 100) * (150 + -PlayerAppearance.anIntArray684[i]) / 150;
-                        Rasterizer.setBounds(ISAAC.anInt522 + -50, 0, 334, 50 + ISAAC.anInt522);
+                        Rasterizer.setBounds(ISAAC.anInt522 + -50, 0, 50 + ISAAC.anInt522, 334);
                         TypeFace.fontBold.drawString(class1, -i_13_ + ISAAC.anInt522 + 50, Class44.anInt1048 + 1, 0);
                         TypeFace.fontBold.drawString(class1, 50 + ISAAC.anInt522 + -i_13_, Class44.anInt1048, i_8_);
                         Rasterizer.resetBounds();
@@ -229,7 +229,7 @@ public class Class33 {
                     if(PlayerAppearance.anIntArray695[i] == 5) {
                         int i_14_ = 0;
                         int i_15_ = 150 + -PlayerAppearance.anIntArray684[i];
-                        Rasterizer.setBounds(0, -1 + -TypeFace.fontBold.characterDefaultHeight + Class44.anInt1048, 5 + Class44.anInt1048, 512);
+                        Rasterizer.setBounds(0, -1 + -TypeFace.fontBold.characterDefaultHeight + Class44.anInt1048, 512, 5 + Class44.anInt1048);
                         if(i_15_ >= 25) {
                             if(i_15_ > 125)
                                 i_14_ = i_15_ + -125;

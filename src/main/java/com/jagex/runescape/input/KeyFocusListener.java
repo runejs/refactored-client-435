@@ -62,7 +62,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                     yOffset = 0;
                     xOffset = 0;
                 }
-                Class40_Sub5_Sub6.drawInterface( yOffset, id, 334 + yOffset, xOffset, var5, 512+ xOffset);
+                Main.drawParentInterface(var5, xOffset, yOffset, 512+ xOffset, 334 + yOffset, id);
         }
         Class65.method1018();
         Player.setTutorialIslandFlag();

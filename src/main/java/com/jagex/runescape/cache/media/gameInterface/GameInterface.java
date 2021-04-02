@@ -48,7 +48,7 @@ public class GameInterface extends CachedNode {
     public boolean isNewInterfaceFormat = false;
     public int contentType;
     public String alternateText;
-    public boolean aBoolean2641;
+    public boolean tiled;
     public int fontId;
     public int originalHeight;
     public Object[] anObjectArray2644;
@@ -90,7 +90,7 @@ public class GameInterface extends CachedNode {
     public int rotationX;
     public int originalWidth;
     public int[] alternateRhs;
-    public boolean aBoolean2694;
+    public boolean lockScroll;
     public Object[] anObjectArray2695;
     public int currentY;
     public String[] configActions;
@@ -130,18 +130,18 @@ public class GameInterface extends CachedNode {
     public int originalY;
     public int spriteId;
     public int opacity;
-    public int anInt2746;
+    public int scrollWidth;
     public Object[] anObjectArray2747;
     public int[][] clientScripts;
     public int itemSpritePadsX;
     public boolean isHidden;
-    public int anInt2751;
+    public int textureId;
 
     public GameInterface() {
         contentType = 0;
         rotationZ = 0;
         textShadowed = false;
-        aBoolean2641 = false;
+        tiled = false;
         targetVerb = "";
         animationFrame = 0;
         tooltip = English.ok;
@@ -154,7 +154,7 @@ public class GameInterface extends CachedNode {
         modelId = -1;
         rotationX = 0;
         clickMask = 0;
-        aBoolean2694 = false;
+        lockScroll = false;
         parentId = -1;
         alternateHoveredTextColor = 0;
         hasListeners = false;
@@ -191,7 +191,7 @@ public class GameInterface extends CachedNode {
         opacity = 0;
         originalY = 0;
         rotationY = 0;
-        anInt2746 = 0;
+        scrollWidth = 0;
         offsetX2d = 0;
         isHidden = false;
         alternateTextColor = 0;
@@ -201,7 +201,7 @@ public class GameInterface extends CachedNode {
         itemId = -1;
         itemSpritePadsX = 0;
         actionType = 0;
-        anInt2751 = 0;
+        textureId = 0;
     }
 
     public static void method639(int arg0) {
@@ -1379,12 +1379,12 @@ public class GameInterface extends CachedNode {
                         gameInterface = gameInterface_27_;
                     }
                     if(gameInterface_27_.type == GameInterfaceType.LAYER) {
-                        GameInterface gameInterface_30_ = method361(arg0, arg1, arg2, -gameInterface_27_.scrollPosition + gameInterface_27_.currentY, i, gameInterface_27_.currentX - gameInterface_27_.anInt2746, arg6, 398);
+                        GameInterface gameInterface_30_ = method361(arg0, arg1, arg2, -gameInterface_27_.scrollPosition + gameInterface_27_.currentY, i, gameInterface_27_.currentX - gameInterface_27_.scrollWidth, arg6, 398);
                         if(gameInterface_30_ != null) {
                             gameInterface = gameInterface_30_;
                         }
                         if(arg2 && gameInterface_27_.children != null) {
-                            GameInterface gameInterface_31_ = method361(gameInterface_27_.children, arg1, arg2, gameInterface_27_.currentY + -gameInterface_27_.scrollPosition, gameInterface_27_.id, gameInterface_27_.currentX - gameInterface_27_.anInt2746, arg6, 398);
+                            GameInterface gameInterface_31_ = method361(gameInterface_27_.children, arg1, arg2, gameInterface_27_.currentY + -gameInterface_27_.scrollPosition, gameInterface_27_.id, gameInterface_27_.currentX - gameInterface_27_.scrollWidth, arg6, 398);
                             if(gameInterface_31_ != null) {
                                 gameInterface = gameInterface_31_;
                             }
@@ -1779,13 +1779,13 @@ public class GameInterface extends CachedNode {
         isHidden = buffer.getUnsignedByte() == 1;
         hasListeners = buffer.getUnsignedByte() == 1;
         if(type == GameInterfaceType.LAYER) {
-            anInt2746 = buffer.getUnsignedShortBE();
+            scrollWidth = buffer.getUnsignedShortBE();
             scrollPosition = buffer.getUnsignedShortBE();
         }
         if(type == GameInterfaceType.GRAPHIC) {
             spriteId = buffer.getIntBE();
-            anInt2751 = buffer.getUnsignedShortBE();
-            aBoolean2641 = buffer.getUnsignedByte() == 1;
+            textureId = buffer.getUnsignedShortBE();
+            tiled = buffer.getUnsignedByte() == 1;
             opacity = buffer.getUnsignedByte();
         }
         if(type == GameInterfaceType.MODEL) {
@@ -1842,7 +1842,7 @@ public class GameInterface extends CachedNode {
             anObjectArray2680 = decodeListener(buffer);
             isInventory = buffer.getUnsignedByte() == 1;
             anInt2736 = buffer.getUnsignedShortBE();
-            aBoolean2694 = buffer.getUnsignedByte() == 1;
+            lockScroll = buffer.getUnsignedByte() == 1;
             buffer.getUnsignedByte();
             int i = buffer.getUnsignedByte();
             if(i > 0) {

@@ -73,20 +73,20 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
 
                 int i_1_ = arg4 + gameInterface.currentX;
                 int i_2_ = arg0 + gameInterface.currentY;
-                if (!gameInterface.aBoolean2694)
+                if (!gameInterface.lockScroll)
                     i_2_ -= arg9;
                 int i_3_ = i_2_ + gameInterface.originalHeight;
                 int i_4_ = arg0 >= i_2_ ? arg0 : i_2_;
-                if (!gameInterface.aBoolean2694)
+                if (!gameInterface.lockScroll)
                     i_1_ -= arg2;
                 int i_5_ = i_1_ + gameInterface.originalWidth;
                 int i_6_ = arg4 < i_1_ ? i_1_ : arg4;
                 int i_7_ = arg1 > i_3_ ? i_3_ : arg1;
                 int i_8_ = i_5_ < arg8 ? i_5_ : arg8;
                 if (gameInterface.type == GameInterfaceType.LAYER) {
-                    method20(i_4_, i_7_, gameInterface.anInt2746, arg3, i_6_, i, 1, arg7, i_8_, gameInterface.scrollPosition);
+                    method20(i_4_, i_7_, gameInterface.scrollWidth, arg3, i_6_, i, 1, arg7, i_8_, gameInterface.scrollPosition);
                     if (gameInterface.children != null)
-                        method20(i_4_, i_7_, gameInterface.anInt2746, arg3, i_6_, gameInterface.id, 1, gameInterface.children, i_8_, gameInterface.scrollPosition);
+                        method20(i_4_, i_7_, gameInterface.scrollWidth, arg3, i_6_, gameInterface.id, 1, gameInterface.children, i_8_, gameInterface.scrollPosition);
                 }
                 if (gameInterface.hasListeners) {
                     boolean bool;

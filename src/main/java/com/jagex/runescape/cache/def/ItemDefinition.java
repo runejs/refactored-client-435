@@ -138,18 +138,18 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(gameInterface.alternateOperators == null) {
             return false;
         }
-        for(int i = 0; gameInterface.alternateOperators.length > i; i++) {
-            int i_10_ = ClientScript.parseClientScripts(i, false, gameInterface);
-            int i_11_ = gameInterface.alternateRhs[i];
-            if(gameInterface.alternateOperators[i] == 2) {
+        for(int scriptIndex = 0; gameInterface.alternateOperators.length > scriptIndex; scriptIndex++) {
+            int i_10_ = ClientScript.parseClientScripts(scriptIndex, false, gameInterface);
+            int i_11_ = gameInterface.alternateRhs[scriptIndex];
+            if(gameInterface.alternateOperators[scriptIndex] == 2) {
                 if(i_11_ <= i_10_) {
                     return false;
                 }
-            } else if(gameInterface.alternateOperators[i] == 3) {
+            } else if(gameInterface.alternateOperators[scriptIndex] == 3) {
                 if(i_11_ >= i_10_) {
                     return false;
                 }
-            } else if(gameInterface.alternateOperators[i] == 4) {
+            } else if(gameInterface.alternateOperators[scriptIndex] == 4) {
                 if(i_11_ == i_10_) {
                     return false;
                 }
@@ -323,7 +323,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(backColour == 0)
             Buffer.rgbImageCache.put((long) id, rendered);
         Rasterizer.prepare(pixels, i_1_, i);
-        Rasterizer.setBounds(i_2_, i_5_, i_6_, i_4_);
+        Rasterizer.setBounds(i_2_, i_5_, i_4_, i_6_);
         Rasterizer3D.setLineOffsets(lineOffsets);
         Rasterizer3D.bottomY = i_8_;
         Rasterizer3D.viewportRx = i_9_;

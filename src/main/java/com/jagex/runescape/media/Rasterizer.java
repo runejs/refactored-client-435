@@ -23,7 +23,7 @@ public class Rasterizer extends CachedNode {
         Rasterizer.destinationPixels = pixels;
         Rasterizer.destinationWidth = width;
         Rasterizer.destinationHeight = height;
-        setBounds(0, 0, height, width);
+        setBounds(0, 0, width, height);
     }
 
     public static void resetBounds() {
@@ -36,7 +36,7 @@ public class Rasterizer extends CachedNode {
         viewportCenterY = viewportBottom / 2;
     }
 
-    public static void setBounds(int minX, int minY, int maxY, int maxX) {
+    public static void setBounds(int minX, int minY, int maxX, int maxY) {
         if(minX < 0)
             minX = 0;
         if(minY < 0)
@@ -112,7 +112,7 @@ public class Rasterizer extends CachedNode {
         }
     }
 
-    public static void method657(int[] arg0) {
+    public static void setViewportDimensions(int[] arg0) {
         viewportLeft = arg0[0];
         viewportTop = arg0[1];
         viewportRight = arg0[2];
@@ -350,7 +350,7 @@ public class Rasterizer extends CachedNode {
         }
     }
 
-    public static void method661(int[] arg0) {
+    public static void getViewportDimensions(int[] arg0) {
         arg0[0] = viewportLeft;
         arg0[1] = viewportTop;
         arg0[2] = viewportRight;

@@ -41,11 +41,11 @@ public class Class43 {
         MovedStatics.aBoolean893 = true;
         MovedStatics.method996(19655);
         if(GameInterface.tabAreaInterfaceId != -1) {
-            boolean bool = Class40_Sub5_Sub6.drawInterface(0, GameInterface.tabAreaInterfaceId, 261, 0, 1, 190);
+            boolean bool = Main.drawParentInterface(1, 0, 0, 190, 261, GameInterface.tabAreaInterfaceId);
             if(!bool)
                 GameInterface.redrawTabArea = true;
         } else if(Player.tabWidgetIds[Player.currentTabId] != -1) {
-            boolean bool = Class40_Sub5_Sub6.drawInterface(0, Player.tabWidgetIds[Player.currentTabId], 261, 0, 1, 190);
+            boolean bool = Main.drawParentInterface(1, 0, 0, 190, 261, Player.tabWidgetIds[Player.currentTabId]);
             if(!bool)
                 GameInterface.redrawTabArea = true;
         }
@@ -85,7 +85,7 @@ public class Class43 {
                             yOffset = 0;
                             xOffset = 0;
                         }
-                        Class13.handleInterfaceActions(Class13.mouseX - xOffset, Landscape.mouseY - yOffset, 4, 4, 516, 338, GameInterface.gameScreenInterfaceId, 0);
+                        Class13.handleInterfaceActions(0, Class13.mouseX - xOffset, Landscape.mouseY - yOffset, 4, 4, 516, 338, GameInterface.gameScreenInterfaceId);
                     }
                 }
 
@@ -145,7 +145,7 @@ public class Class43 {
             } else {
                 Item.anInt3065 = -1;
                 OverlayDefinition.anInt2328 = -1;
-                Class13.handleInterfaceActions(Class13.mouseX, Landscape.mouseY, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId, 0);
+                Class13.handleInterfaceActions(0, Class13.mouseX, Landscape.mouseY, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
                 ItemDefinition.anInt2850 = OverlayDefinition.anInt2328;
                 MovedStatics.anInt573 = Item.anInt3065;
             }

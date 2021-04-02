@@ -35,13 +35,6 @@ public class Class40_Sub5_Sub6 extends CachedNode {
         aByteArray2441 = arg0;
     }
 
-    public static boolean drawInterface(int minY, int widgetId, int maxX, int minX, int areaId, int maxY) {
-        if(!GameInterface.decodeGameInterface(widgetId))
-            return false;
-
-        return Main.drawInterface(areaId, minY, minX, 0, -1, maxX, maxY, 0, GameInterface.cachedInterfaces[widgetId], true);
-    }
-
     public static int method585(int arg0, int arg1) {
         VarbitDefinition varbitDefinition = MovedStatics.method417(0, arg0);
         if(arg1 != 1369)
