@@ -231,7 +231,7 @@ public class Main extends GameShell {
                         }
                     } else if (gameInterface.type == GameInterfaceType.RECTANGLE) {
                         int rectangleColor;
-                        if (ItemDefinition.method746(gameInterface)) {
+                        if (ItemDefinition.checkForAlternateAction(gameInterface)) {
                             rectangleColor = gameInterface.alternateTextColor;
                             if (Class29.isHovering(areaId, i) && gameInterface.alternateHoveredTextColor != 0)
                                 rectangleColor = gameInterface.alternateHoveredTextColor;
@@ -257,7 +257,7 @@ public class Main extends GameShell {
                         } else {
                             String text = gameInterface.disabledText;
                             int textColor;
-                            if (ItemDefinition.method746(gameInterface)) {
+                            if (ItemDefinition.checkForAlternateAction(gameInterface)) {
                                 textColor = gameInterface.alternateTextColor;
                                 if (Class29.isHovering(areaId, i) && gameInterface.alternateHoveredTextColor != 0)
                                     textColor = gameInterface.alternateHoveredTextColor;
@@ -370,16 +370,16 @@ public class Main extends GameShell {
                                 spriteRgb.maxHeight = maxHeight;
                             }
                         } else {
-                            ImageRGB imageRGB = gameInterface.getImageRgb(ItemDefinition.method746(gameInterface));
+                            ImageRGB imageRGB = gameInterface.getImageRgb(ItemDefinition.checkForAlternateAction(gameInterface));
                             if (imageRGB != null)
                                 imageRGB.drawImage(absoluteX, absoluteY);
                             else if (FramemapDefinition.aBoolean2177)
                                 result = false;
                         }
                     } else if (gameInterface.type == GameInterfaceType.MODEL) {
-                        boolean bool_35_ = ItemDefinition.method746(gameInterface);
+                        boolean applyAlternateAction = ItemDefinition.checkForAlternateAction(gameInterface);
                         int animationId;
-                        if (!bool_35_)
+                        if (!applyAlternateAction)
                             animationId = gameInterface.animation;
                         else
                             animationId = gameInterface.alternateAnimation;
@@ -387,19 +387,20 @@ public class Main extends GameShell {
                         Model model;
                         if (gameInterface.modelType != InterfaceModelType.PLAYER) {
                             if (animationId == -1) {
-                                model = gameInterface.method646((byte) 46, null, -1, bool_35_, Player.localPlayer.playerAppearance);
-                                if (model == null && FramemapDefinition.aBoolean2177)
-                                    result = false;
+                                model = gameInterface.getModelForInterface(null, -1, applyAlternateAction, Player.localPlayer.playerAppearance);
                             } else {
-                                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(animationId, 2);
-                                model = gameInterface.method646((byte) 76, animationSequence, gameInterface.animationFrame, bool_35_, Player.localPlayer.playerAppearance);
-                                if (model == null && FramemapDefinition.aBoolean2177)
-                                    result = false;
+                                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId);
+                                model = gameInterface.getModelForInterface(animationSequence, gameInterface.animationFrame, applyAlternateAction, Player.localPlayer.playerAppearance);
                             }
-                        } else if (gameInterface.modelId != 0)
+                            // TODO FramemapDefinition.aBoolean2177 might be object/model/sprite doesnt exist
+                            if (model == null && FramemapDefinition.aBoolean2177)
+                                result = false;
+                        } else if (gameInterface.modelId != 0) {
                             model = Player.localPlayer.getRotatedModel();
-                        else
+                        } else {
                             model = Player.activePlayerAppearance.getAnimatedModel(null, null, -1, -1);
+                        }
+
                         int rotationX = gameInterface.rotationX;
                         int rotationY = gameInterface.rotationY;
                         int offsetY2d = gameInterface.offsetY2d;
@@ -427,13 +428,14 @@ public class Main extends GameShell {
                             if (gameInterface.isNewInterfaceFormat) {
                                 model.method799();
                                 if (gameInterface.orthogonal)
-                                    model.method801(0, rotationZ, rotationY, rotationX, offsetX2d, offsetY2d + modelSin + model.modelHeight / 2, modelCos + offsetY2d, modelZoom);
+                                    model.drawOrthogonalModel(0, rotationZ, rotationY, rotationX, offsetX2d, offsetY2d + modelSin + model.modelHeight / 2, modelCos + offsetY2d, modelZoom);
                                 else
-                                    model.method812(0, rotationZ, rotationY, rotationX, offsetX2d, offsetY2d + model.modelHeight / 2 + modelSin, modelCos + offsetY2d);
-                            } else
-                                model.method812(0, rotationZ, 0, rotationX, 0, modelSin, modelCos);
+                                    model.drawModel(0, rotationZ, rotationY, rotationX, offsetX2d, offsetY2d + model.modelHeight / 2 + modelSin, modelCos + offsetY2d);
+                            } else {
+                                model.drawModel(0, rotationZ, 0, rotationX, 0, modelSin, modelCos);
+                            }
                         }
-                        Rasterizer3D.method702();
+                        Rasterizer3D.resetBoundsTo3dViewport();
                     } else {
                         if (gameInterface.type == GameInterfaceType.TEXT_INVENTORY) {
                             TypeFace font = gameInterface.getTypeFace();

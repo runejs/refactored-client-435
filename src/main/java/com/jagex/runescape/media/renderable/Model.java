@@ -847,7 +847,7 @@ public class Model extends Renderable {
         }
     }
 
-    public void method801(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public void drawOrthogonalModel(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
         if(anInt3169 != 2 && anInt3169 != 1)
             method827();
         int i = Rasterizer3D.center_x;
@@ -1268,25 +1268,25 @@ public class Model extends Renderable {
         }
     }
 
-    public void method812(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
+    public void drawModel(int arg0, int rotationZ, int rotationY, int rotationX, int arg4, int sin, int cos) {
         if(anInt3169 != 2 && anInt3169 != 1)
             method827();
         int i = Rasterizer3D.center_x;
         int i_129_ = Rasterizer3D.center_y;
         int i_130_ = SINE[arg0];
         int i_131_ = COSINE[arg0];
-        int i_132_ = SINE[arg1];
-        int i_133_ = COSINE[arg1];
-        int i_134_ = SINE[arg2];
-        int i_135_ = COSINE[arg2];
-        int i_136_ = SINE[arg3];
-        int i_137_ = COSINE[arg3];
-        int i_138_ = arg5 * i_136_ + arg6 * i_137_ >> 16;
+        int i_132_ = SINE[rotationZ];
+        int i_133_ = COSINE[rotationZ];
+        int i_134_ = SINE[rotationY];
+        int i_135_ = COSINE[rotationY];
+        int i_136_ = SINE[rotationX];
+        int i_137_ = COSINE[rotationX];
+        int i_138_ = sin * i_136_ + cos * i_137_ >> 16;
         for(int i_139_ = 0; i_139_ < vertexCount; i_139_++) {
             int i_140_ = verticesX[i_139_];
             int i_141_ = verticesY[i_139_];
             int i_142_ = verticesZ[i_139_];
-            if(arg2 != 0) {
+            if(rotationY != 0) {
                 int i_143_ = i_141_ * i_134_ + i_140_ * i_135_ >> 16;
                 i_141_ = i_141_ * i_135_ - i_140_ * i_134_ >> 16;
                 i_140_ = i_143_;
@@ -1296,14 +1296,14 @@ public class Model extends Renderable {
                 i_142_ = i_141_ * i_130_ + i_142_ * i_131_ >> 16;
                 i_141_ = i_144_;
             }
-            if(arg1 != 0) {
+            if(rotationZ != 0) {
                 int i_145_ = i_142_ * i_132_ + i_140_ * i_133_ >> 16;
                 i_142_ = i_142_ * i_133_ - i_140_ * i_132_ >> 16;
                 i_140_ = i_145_;
             }
             i_140_ += arg4;
-            i_141_ += arg5;
-            i_142_ += arg6;
+            i_141_ += sin;
+            i_142_ += cos;
             int i_146_ = i_141_ * i_137_ - i_142_ * i_136_ >> 16;
             i_142_ = i_141_ * i_136_ + i_142_ * i_137_ >> 16;
             i_141_ = i_146_;

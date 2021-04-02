@@ -85,7 +85,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         anInt2997 = arg7;
         int i = SpotAnimDefinition.forId(anInt2962, 13).animationId;
         if(i != -1)
-            aAnimationSequence_3006 = ProducingGraphicsBuffer_Sub1.method1050(i, 2);
+            aAnimationSequence_3006 = ProducingGraphicsBuffer_Sub1.getAnimationSequence(i);
         else
             aAnimationSequence_3006 = null;
 

@@ -1858,30 +1858,28 @@ public class GameInterface extends CachedNode {
         }
     }
 
-    public Model method646(byte arg0, AnimationSequence arg1, int arg2, boolean arg3, PlayerAppearance arg4) {
+    public Model getModelForInterface(AnimationSequence animationSequence, int animationFrame, boolean applyAlternateAction, PlayerAppearance playerAppearance) {
         FramemapDefinition.aBoolean2177 = false;
         InterfaceModelType modelType;
-        int i_11_;
-        if(arg3) {
-            i_11_ = alternateModelId;
+        int modelId;
+        if(applyAlternateAction) {
+            modelId = alternateModelId;
             modelType = alternateModelType;
         } else {
             modelType = this.modelType;
-            i_11_ = modelId;
+            modelId = this.modelId;
         }
         if(modelType == InterfaceModelType.NULL) {
             return null;
         }
-        if(modelType == InterfaceModelType.MODEL && i_11_ == -1) {
+        if(modelType == InterfaceModelType.MODEL && modelId == -1) {
             return null;
         }
-        if(arg0 <= 25) {
-            hasListeners = true;
-        }
-        Model model = (Model) WallDecoration.aClass9_1264.get((long) ((modelType.ordinal() << 16) + i_11_));
+
+        Model model = (Model) WallDecoration.aClass9_1264.get((long) ((modelType.ordinal() << 16) + modelId));
         if(model == null) {
             if(modelType == InterfaceModelType.MODEL) {
-                model = Model.getModel(CacheArchive.modelCacheArchive, i_11_, 0);
+                model = Model.getModel(CacheArchive.modelCacheArchive, modelId, 0);
                 if(model == null) {
                     FramemapDefinition.aBoolean2177 = true;
                     return null;
@@ -1890,7 +1888,7 @@ public class GameInterface extends CachedNode {
                 model.applyLighting(64, 768, -50, -10, -50, true);
             }
             if(modelType == InterfaceModelType.NPC_CHATHEAD) {
-                model = ActorDefinition.getDefinition(i_11_).getHeadModel();
+                model = ActorDefinition.getDefinition(modelId).getHeadModel();
                 if(model == null) {
                     FramemapDefinition.aBoolean2177 = true;
                     return null;
@@ -1899,10 +1897,10 @@ public class GameInterface extends CachedNode {
                 model.applyLighting(64, 768, -50, -10, -50, true);
             }
             if(modelType == InterfaceModelType.LOCAL_PLAYER_CHATHEAD) {
-                if(arg4 == null) {
+                if(playerAppearance == null) {
                     return null;
                 }
-                model = arg4.getStaticModel();
+                model = playerAppearance.getStaticModel();
                 if(model == null) {
                     FramemapDefinition.aBoolean2177 = true;
                     return null;
@@ -1911,7 +1909,7 @@ public class GameInterface extends CachedNode {
                 model.applyLighting(64, 768, -50, -10, -50, true);
             }
             if(modelType == InterfaceModelType.ITEM) {
-                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_11_, 10);
+                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(modelId, 10);
                 model = class40_sub5_sub16.asGroundStack(false, 10);
                 if(model == null) {
                     FramemapDefinition.aBoolean2177 = true;
@@ -1925,10 +1923,10 @@ public class GameInterface extends CachedNode {
                     e.printStackTrace();
                 }
             }
-            WallDecoration.aClass9_1264.put((long) ((modelType.ordinal() << 16) + i_11_), model);
+            WallDecoration.aClass9_1264.put((long) ((modelType.ordinal() << 16) + modelId), model);
         }
-        if(arg1 != null) {
-            model = arg1.method598(arg2, model, true);
+        if(animationSequence != null) {
+            model = animationSequence.method598(animationFrame, model, true);
         }
         return model;
     }

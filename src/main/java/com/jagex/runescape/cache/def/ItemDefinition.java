@@ -134,26 +134,26 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
     }
 
 
-    public static boolean method746(GameInterface gameInterface) {
+    public static boolean checkForAlternateAction(GameInterface gameInterface) {
         if(gameInterface.alternateOperators == null) {
             return false;
         }
         for(int scriptIndex = 0; gameInterface.alternateOperators.length > scriptIndex; scriptIndex++) {
             int i_10_ = ClientScript.parseClientScripts(scriptIndex, false, gameInterface);
-            int i_11_ = gameInterface.alternateRhs[scriptIndex];
+            int rhsValue = gameInterface.alternateRhs[scriptIndex];
             if(gameInterface.alternateOperators[scriptIndex] == 2) {
-                if(i_11_ <= i_10_) {
+                if(rhsValue <= i_10_) {
                     return false;
                 }
             } else if(gameInterface.alternateOperators[scriptIndex] == 3) {
-                if(i_11_ >= i_10_) {
+                if(rhsValue >= i_10_) {
                     return false;
                 }
             } else if(gameInterface.alternateOperators[scriptIndex] == 4) {
-                if(i_11_ == i_10_) {
+                if(rhsValue == i_10_) {
                     return false;
                 }
-            } else if(i_10_ != i_11_) {
+            } else if(i_10_ != rhsValue) {
                 return false;
             }
         }
@@ -271,7 +271,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         int i_12_ = Rasterizer3D.sinetable[definition.xan2d] * i_11_ >> 16;
         int i_13_ = i_11_ * Rasterizer3D.cosinetable[definition.xan2d] >> 16;
         model.method799();
-        model.method812(0, definition.yan2d, definition.zan2d, definition.xan2d, definition.xOffset2d, definition.yOffset2d + model.modelHeight / 2 + i_12_, i_13_ + definition.yOffset2d);
+        model.drawModel(0, definition.yan2d, definition.zan2d, definition.xan2d, definition.xOffset2d, definition.yOffset2d + model.modelHeight / 2 + i_12_, i_13_ + definition.yOffset2d);
         for(int i_14_ = 31; i_14_ >= 0; i_14_--) {
             for(i_13_ = 31; i_13_ >= 0; i_13_--) {
                 if(rendered.pixels[i_14_ + 32 * i_13_] == 0) {
@@ -327,7 +327,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         Rasterizer3D.setLineOffsets(lineOffsets);
         Rasterizer3D.bottomY = i_8_;
         Rasterizer3D.viewportRx = i_9_;
-        Rasterizer3D.method702();
+        Rasterizer3D.resetBoundsTo3dViewport();
         Rasterizer3D.notTextured = true;
         if(definition.stackable == 1)
             rendered.maxWidth = 33;

@@ -614,7 +614,7 @@ public class Rasterizer3D extends Rasterizer {
         } else {
             Rasterizer3D.lineOffsets = lineOffsets;
         }
-        method702();
+        resetBoundsTo3dViewport();
         return Rasterizer3D.lineOffsets;
     }
 
@@ -984,13 +984,13 @@ public class Rasterizer3D extends Rasterizer {
         }
     }
 
-    public static void method702() {
+    public static void resetBoundsTo3dViewport() {
         center_x = viewportRx / 2;
         center_y = bottomY / 2;
         anInt2942 = -center_x;
-        anInt2934 = viewportRx - center_x;
+        anInt2934 = center_x;
         anInt2935 = -center_y;
-        anInt2941 = bottomY - center_y;
+        anInt2941 = center_y;
     }
 
     public static void method703(Interface3 arg0) {

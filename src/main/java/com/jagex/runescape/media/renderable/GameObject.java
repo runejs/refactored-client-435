@@ -44,7 +44,7 @@ public class GameObject extends Renderable {
         vertexHeightTopRight = arg5;
         anInt3021 = arg1;
         if(arg7 != -1) {
-            animationSequence = ProducingGraphicsBuffer_Sub1.method1050(arg7, 2);
+            animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(arg7);
             animationFrame = 0;
             animationCycleDelay = -1 + MovedStatics.pulseCycle;
             if(arg8 && animationSequence.frameStep != -1) {

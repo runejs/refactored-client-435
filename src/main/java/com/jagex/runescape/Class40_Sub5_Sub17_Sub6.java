@@ -40,7 +40,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
         int i = SpotAnimDefinition.forId(anInt3249, 13).animationId;
         if(i != -1) {
             aBoolean3237 = false;
-            aAnimationSequence_3242 = ProducingGraphicsBuffer_Sub1.method1050(i, 2);
+            aAnimationSequence_3242 = ProducingGraphicsBuffer_Sub1.getAnimationSequence(i);
         } else
             aBoolean3237 = true;
 

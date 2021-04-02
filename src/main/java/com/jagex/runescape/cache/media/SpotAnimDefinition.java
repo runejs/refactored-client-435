@@ -315,7 +315,7 @@ public class SpotAnimDefinition extends CachedNode {
         if (animationId == -1 || arg0 == -1) {
             class40_sub5_sub17_sub5_0_ = class40_sub5_sub17_sub5.method806(true);
         } else {
-            class40_sub5_sub17_sub5_0_ = ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).method597((byte) -87, class40_sub5_sub17_sub5, arg0);
+            class40_sub5_sub17_sub5_0_ = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).method597((byte) -87, class40_sub5_sub17_sub5, arg0);
         }
         if (arg1 != 2) {
             return null;

@@ -496,7 +496,7 @@ public class Npc extends Actor {
                     animationId = -1;
                 int animationDelay = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                 if(animationId == npc.playingAnimation && animationId != -1) {
-                    int i_10_ = ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).replyMode;
+                    int i_10_ = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).replyMode;
                     if(i_10_ == 1) {
                         npc.anInt3115 = 0;
                         npc.anInt3095 = 0;
@@ -505,7 +505,7 @@ public class Npc extends Actor {
                     }
                     if(i_10_ == 2)
                         npc.anInt3095 = 0;
-                } else if(animationId == -1 || npc.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).forcedPriority >= ProducingGraphicsBuffer_Sub1.method1050(npc.playingAnimation, 2).forcedPriority) {
+                } else if(animationId == -1 || npc.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).forcedPriority >= ProducingGraphicsBuffer_Sub1.getAnimationSequence(npc.playingAnimation).forcedPriority) {
                     npc.playingAnimation = animationId;
                     npc.anInt3115 = 0;
                     npc.playingAnimationDelay = animationDelay;
@@ -544,7 +544,7 @@ public class Npc extends Actor {
                     Player.npcIds[Player.npcCount++] = trackedNpcIndex;
                     npc.anInt3134 = MovedStatics.pulseCycle;
                     int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                    npc.method782(walkDirection, (byte) -96, false);
+                    npc.move(walkDirection, false);
                     int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
                     if(runUpdateBlock == 1)
                         Player.actorUpdatingIndices[actorUpdatingIndex++] = trackedNpcIndex;
@@ -552,9 +552,9 @@ public class Npc extends Actor {
                     Player.npcIds[Player.npcCount++] = trackedNpcIndex;
                     npc.anInt3134 = MovedStatics.pulseCycle;
                     int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                    npc.method782(walkDirection, (byte) -96, true);
+                    npc.move(walkDirection, true);
                     int runDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                    npc.method782(runDirection, (byte) -96, true);
+                    npc.move(runDirection, true);
                     int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
                     if(runUpdateBlock == 1)
                         Player.actorUpdatingIndices[actorUpdatingIndex++] = trackedNpcIndex;
@@ -623,8 +623,8 @@ public class Npc extends Actor {
     public Model getRotatedModel() {
         if(actorDefinition == null)
             return null;
-        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, 2);
-        AnimationSequence animationSequence_0_ = anInt3077 != -1 && (anInt3077 != idleAnimation || animationSequence == null) ? ProducingGraphicsBuffer_Sub1.method1050(anInt3077, 2) : null;
+        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation);
+        AnimationSequence animationSequence_0_ = anInt3077 != -1 && (anInt3077 != idleAnimation || animationSequence == null) ? ProducingGraphicsBuffer_Sub1.getAnimationSequence(anInt3077) : null;
         Model model = actorDefinition.getChildModel(animationSequence, animationSequence_0_, anInt3116, anInt3104);
         if(model == null)
             return null;
