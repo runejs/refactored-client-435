@@ -422,17 +422,18 @@ public class Main extends GameShell {
                         }
                         Rasterizer3D.setBounds(absoluteX + gameInterface.originalWidth / 2, gameInterface.originalHeight / 2 + absoluteY);
 
-                        int modelSin = modelZoom * Rasterizer3D.sinetable[rotationX] >> 16;
-                        int modelCos = modelZoom * Rasterizer3D.cosinetable[rotationX] >> 16;
+                        int camHeight = modelZoom * Rasterizer3D.sinetable[rotationX] >> 16;
+                        int camDistance = modelZoom * Rasterizer3D.cosinetable[rotationX] >> 16;
                         if (model != null) {
                             if (gameInterface.isNewInterfaceFormat) {
                                 model.method799();
+                                // For some reason, drawOrthogonalModel does the same thing as drawModel
                                 if (gameInterface.orthogonal)
-                                    model.drawOrthogonalModel(0, rotationZ, rotationY, rotationX, offsetX2d, offsetY2d + modelSin + model.modelHeight / 2, modelCos + offsetY2d, modelZoom);
+                                    model.drawOrthogonalModel(0, rotationZ, rotationY, rotationX, offsetX2d, offsetY2d + camHeight + model.modelHeight / 2, camDistance + offsetY2d, modelZoom);
                                 else
-                                    model.drawModel(0, rotationZ, rotationY, rotationX, offsetX2d, offsetY2d + model.modelHeight / 2 + modelSin, modelCos + offsetY2d);
+                                    model.drawModel(0, rotationZ, rotationY, rotationX, offsetX2d, offsetY2d + model.modelHeight / 2 + camHeight, camDistance + offsetY2d);
                             } else {
-                                model.drawModel(0, rotationZ, 0, rotationX, 0, modelSin, modelCos);
+                                model.drawModel(0, rotationZ, 0, rotationX, 0, camHeight, camDistance);
                             }
                         }
                         Rasterizer3D.resetBoundsTo3dViewport();

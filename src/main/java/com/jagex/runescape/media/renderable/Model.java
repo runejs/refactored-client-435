@@ -27,7 +27,7 @@ public class Model extends Renderable {
     public static int[] vertexScreenX;
     public static int[][] anIntArrayArray3210;
     public static int[] hoveredHash;
-    public static int[] anIntArray3212;
+    public static int[] vertexScreenZ;
     public static int anInt3213;
     public static int[] anIntArray3214;
     public static int[] SINE;
@@ -56,7 +56,7 @@ public class Model extends Renderable {
         vertexScreenY = new int[4096];
         anIntArrayArray3210 = new int[1600][512];
         aBooleanArray3201 = new boolean[4096];
-        anIntArray3212 = new int[4096];
+        vertexScreenZ = new int[4096];
         anIntArray3214 = new int[1];
         gameScreenClickable = false;
         anIntArray3216 = new int[2000];
@@ -826,7 +826,7 @@ public class Model extends Renderable {
             i_31_ = i_28_ * arg2 - i_29_ * arg1 >> 16;
             i_29_ = i_28_ * arg1 + i_29_ * arg2 >> 16;
             i_28_ = i_31_;
-            anIntArray3212[i_26_] = i_29_ - i_4_;
+            vertexScreenZ[i_26_] = i_29_ - i_4_;
             if(i_29_ >= 50) {
                 vertexScreenX[i_26_] = i_22_ + (i_27_ << 9) / i_29_;
                 vertexScreenY[i_26_] = i_23_ + (i_28_ << 9) / i_29_;
@@ -886,7 +886,7 @@ public class Model extends Renderable {
             int i_49_ = i_44_ * i_40_ - i_45_ * i_39_ >> 16;
             i_45_ = i_44_ * i_39_ + i_45_ * i_40_ >> 16;
             i_44_ = i_49_;
-            anIntArray3212[i_42_] = i_45_ - i_41_;
+            vertexScreenZ[i_42_] = i_45_ - i_41_;
             vertexScreenX[i_42_] = i + (i_43_ << 9) / arg7;
             vertexScreenY[i_42_] = i_32_ + (i_44_ << 9) / arg7;
             if(texturedTriangleCount > 0) {
@@ -1268,52 +1268,59 @@ public class Model extends Renderable {
         }
     }
 
-    public void drawModel(int arg0, int rotationZ, int rotationY, int rotationX, int arg4, int sin, int cos) {
+    public void drawModel(int rotationX, int rotationZ, int rotationY, int cameraPitch, int cameraX, int cameraHeight, int cameraDistance) {
         if(anInt3169 != 2 && anInt3169 != 1)
             method827();
-        int i = Rasterizer3D.center_x;
-        int i_129_ = Rasterizer3D.center_y;
-        int i_130_ = SINE[arg0];
-        int i_131_ = COSINE[arg0];
-        int i_132_ = SINE[rotationZ];
-        int i_133_ = COSINE[rotationZ];
-        int i_134_ = SINE[rotationY];
-        int i_135_ = COSINE[rotationY];
-        int i_136_ = SINE[rotationX];
-        int i_137_ = COSINE[rotationX];
-        int i_138_ = sin * i_136_ + cos * i_137_ >> 16;
-        for(int i_139_ = 0; i_139_ < vertexCount; i_139_++) {
-            int i_140_ = verticesX[i_139_];
-            int i_141_ = verticesY[i_139_];
-            int i_142_ = verticesZ[i_139_];
+        int centerX = Rasterizer3D.center_x;
+        int centerY = Rasterizer3D.center_y;
+        int rotationX_sin = SINE[rotationX];
+        int rotationX_cos = COSINE[rotationX];
+        int rotationZ_sin = SINE[rotationZ];
+        int rotationZ_cos = COSINE[rotationZ];
+        int rotationY_sin = SINE[rotationY];
+        int rotationY_cos = COSINE[rotationY];
+        int cameraPitch_sin = SINE[cameraPitch];
+        int cameraPitch_cos = COSINE[cameraPitch];
+        // TODO not sure about this one
+        int renderDistance = cameraHeight * cameraPitch_sin + cameraDistance * cameraPitch_cos >> 16;
+        for(int currentVertex = 0; currentVertex < vertexCount; currentVertex++) {
+            int currentVertexX = verticesX[currentVertex];
+            int currentVertexY = verticesY[currentVertex];
+            int currentVertexZ = verticesZ[currentVertex];
+
             if(rotationY != 0) {
-                int i_143_ = i_141_ * i_134_ + i_140_ * i_135_ >> 16;
-                i_141_ = i_141_ * i_135_ - i_140_ * i_134_ >> 16;
-                i_140_ = i_143_;
+                int nextX = currentVertexY * rotationY_sin + currentVertexX * rotationY_cos >> 16;
+                currentVertexY = currentVertexY * rotationY_cos - currentVertexX * rotationY_sin >> 16;
+                currentVertexX = nextX;
             }
-            if(arg0 != 0) {
-                int i_144_ = i_141_ * i_131_ - i_142_ * i_130_ >> 16;
-                i_142_ = i_141_ * i_130_ + i_142_ * i_131_ >> 16;
-                i_141_ = i_144_;
+
+            if(rotationX != 0) {
+                int nextY = currentVertexY * rotationX_cos - currentVertexZ * rotationX_sin >> 16;
+                currentVertexZ = currentVertexY * rotationX_sin + currentVertexZ * rotationX_cos >> 16;
+                currentVertexY = nextY;
             }
+
             if(rotationZ != 0) {
-                int i_145_ = i_142_ * i_132_ + i_140_ * i_133_ >> 16;
-                i_142_ = i_142_ * i_133_ - i_140_ * i_132_ >> 16;
-                i_140_ = i_145_;
+                int nextX = currentVertexZ * rotationZ_sin + currentVertexX * rotationZ_cos >> 16;
+                currentVertexZ = currentVertexZ * rotationZ_cos - currentVertexX * rotationZ_sin >> 16;
+                currentVertexX = nextX;
             }
-            i_140_ += arg4;
-            i_141_ += sin;
-            i_142_ += cos;
-            int i_146_ = i_141_ * i_137_ - i_142_ * i_136_ >> 16;
-            i_142_ = i_141_ * i_136_ + i_142_ * i_137_ >> 16;
-            i_141_ = i_146_;
-            anIntArray3212[i_139_] = i_142_ - i_138_;
-            vertexScreenX[i_139_] = i + (i_140_ << 9) / i_142_;
-            vertexScreenY[i_139_] = i_129_ + (i_141_ << 9) / i_142_;
+
+            currentVertexX += cameraX;
+            currentVertexY += cameraHeight;
+            currentVertexZ += cameraDistance;
+            int nextYAfterCameraRotationApplied = currentVertexY * cameraPitch_cos - currentVertexZ * cameraPitch_sin >> 16;
+            currentVertexZ = currentVertexY * cameraPitch_sin + currentVertexZ * cameraPitch_cos >> 16;
+            currentVertexY = nextYAfterCameraRotationApplied;
+            vertexScreenZ[currentVertex] = currentVertexZ - renderDistance;
+            vertexScreenX[currentVertex] = centerX + (currentVertexX << 9) / currentVertexZ;
+            vertexScreenY[currentVertex] = centerY + (currentVertexY << 9) / currentVertexZ;
+
+            // TODO figure these out
             if(texturedTriangleCount > 0) {
-                anIntArray3225[i_139_] = i_140_;
-                anIntArray3203[i_139_] = i_141_;
-                anIntArray3223[i_139_] = i_142_;
+                anIntArray3225[currentVertex] = currentVertexX;
+                anIntArray3203[currentVertex] = currentVertexY;
+                anIntArray3223[currentVertex] = currentVertexZ;
             }
         }
         try {
@@ -1509,7 +1516,7 @@ public class Model extends Renderable {
                         int i_213_ = i_202_ * i_207_ - i_205_ * i_204_;
                         if(i_203_ * i_211_ + i_206_ * i_212_ + i_209_ * i_213_ > 0) {
                             aBooleanArray3224[i] = true;
-                            int i_214_ = (anIntArray3212[i_196_] + anIntArray3212[i_197_] + anIntArray3212[i_198_]) / 3 + anInt3189;
+                            int i_214_ = (vertexScreenZ[i_196_] + vertexScreenZ[i_197_] + vertexScreenZ[i_198_]) / 3 + anInt3189;
                             anIntArrayArray3210[i_214_][anIntArray3200[i_214_]++] = i;
                         }
                     } else {
@@ -1520,7 +1527,7 @@ public class Model extends Renderable {
                         if((i_199_ - i_200_) * (vertexScreenY[i_198_] - vertexScreenY[i_197_]) - (vertexScreenY[i_196_] - vertexScreenY[i_197_]) * (i_201_ - i_200_) > 0) {
                             aBooleanArray3224[i] = false;
                             aBooleanArray3201[i] = i_199_ < 0 || i_200_ < 0 || i_201_ < 0 || i_199_ > Rasterizer3D.viewportRx || i_200_ > Rasterizer3D.viewportRx || i_201_ > Rasterizer3D.viewportRx;
-                            int i_215_ = (anIntArray3212[i_196_] + anIntArray3212[i_197_] + anIntArray3212[i_198_]) / 3 + anInt3189;
+                            int i_215_ = (vertexScreenZ[i_196_] + vertexScreenZ[i_197_] + vertexScreenZ[i_198_]) / 3 + anInt3189;
                             anIntArrayArray3210[i_215_][anIntArray3200[i_215_]++] = i;
                         }
                     }
