@@ -48,7 +48,7 @@ public class GameInterface extends CachedNode {
     public boolean isNewInterfaceFormat = false;
     public int contentType;
     public String alternateText;
-    public boolean aBoolean2641;
+    public boolean tiled;
     public int fontId;
     public int originalHeight;
     public Object[] anObjectArray2644;
@@ -90,7 +90,7 @@ public class GameInterface extends CachedNode {
     public int rotationX;
     public int originalWidth;
     public int[] alternateRhs;
-    public boolean aBoolean2694;
+    public boolean lockScroll;
     public Object[] anObjectArray2695;
     public int currentY;
     public String[] configActions;
@@ -130,18 +130,18 @@ public class GameInterface extends CachedNode {
     public int originalY;
     public int spriteId;
     public int opacity;
-    public int anInt2746;
+    public int scrollWidth;
     public Object[] anObjectArray2747;
     public int[][] clientScripts;
     public int itemSpritePadsX;
     public boolean isHidden;
-    public int anInt2751;
+    public int textureId;
 
     public GameInterface() {
         contentType = 0;
         rotationZ = 0;
         textShadowed = false;
-        aBoolean2641 = false;
+        tiled = false;
         targetVerb = "";
         animationFrame = 0;
         tooltip = English.ok;
@@ -154,7 +154,7 @@ public class GameInterface extends CachedNode {
         modelId = -1;
         rotationX = 0;
         clickMask = 0;
-        aBoolean2694 = false;
+        lockScroll = false;
         parentId = -1;
         alternateHoveredTextColor = 0;
         hasListeners = false;
@@ -191,7 +191,7 @@ public class GameInterface extends CachedNode {
         opacity = 0;
         originalY = 0;
         rotationY = 0;
-        anInt2746 = 0;
+        scrollWidth = 0;
         offsetX2d = 0;
         isHidden = false;
         alternateTextColor = 0;
@@ -201,7 +201,7 @@ public class GameInterface extends CachedNode {
         itemId = -1;
         itemSpritePadsX = 0;
         actionType = 0;
-        anInt2751 = 0;
+        textureId = 0;
     }
 
     public static void method639(int arg0) {
@@ -1379,12 +1379,12 @@ public class GameInterface extends CachedNode {
                         gameInterface = gameInterface_27_;
                     }
                     if(gameInterface_27_.type == GameInterfaceType.LAYER) {
-                        GameInterface gameInterface_30_ = method361(arg0, arg1, arg2, -gameInterface_27_.scrollPosition + gameInterface_27_.currentY, i, gameInterface_27_.currentX - gameInterface_27_.anInt2746, arg6, 398);
+                        GameInterface gameInterface_30_ = method361(arg0, arg1, arg2, -gameInterface_27_.scrollPosition + gameInterface_27_.currentY, i, gameInterface_27_.currentX - gameInterface_27_.scrollWidth, arg6, 398);
                         if(gameInterface_30_ != null) {
                             gameInterface = gameInterface_30_;
                         }
                         if(arg2 && gameInterface_27_.children != null) {
-                            GameInterface gameInterface_31_ = method361(gameInterface_27_.children, arg1, arg2, gameInterface_27_.currentY + -gameInterface_27_.scrollPosition, gameInterface_27_.id, gameInterface_27_.currentX - gameInterface_27_.anInt2746, arg6, 398);
+                            GameInterface gameInterface_31_ = method361(gameInterface_27_.children, arg1, arg2, gameInterface_27_.currentY + -gameInterface_27_.scrollPosition, gameInterface_27_.id, gameInterface_27_.currentX - gameInterface_27_.scrollWidth, arg6, 398);
                             if(gameInterface_31_ != null) {
                                 gameInterface = gameInterface_31_;
                             }
@@ -1779,13 +1779,13 @@ public class GameInterface extends CachedNode {
         isHidden = buffer.getUnsignedByte() == 1;
         hasListeners = buffer.getUnsignedByte() == 1;
         if(type == GameInterfaceType.LAYER) {
-            anInt2746 = buffer.getUnsignedShortBE();
+            scrollWidth = buffer.getUnsignedShortBE();
             scrollPosition = buffer.getUnsignedShortBE();
         }
         if(type == GameInterfaceType.GRAPHIC) {
             spriteId = buffer.getIntBE();
-            anInt2751 = buffer.getUnsignedShortBE();
-            aBoolean2641 = buffer.getUnsignedByte() == 1;
+            textureId = buffer.getUnsignedShortBE();
+            tiled = buffer.getUnsignedByte() == 1;
             opacity = buffer.getUnsignedByte();
         }
         if(type == GameInterfaceType.MODEL) {
@@ -1842,7 +1842,7 @@ public class GameInterface extends CachedNode {
             anObjectArray2680 = decodeListener(buffer);
             isInventory = buffer.getUnsignedByte() == 1;
             anInt2736 = buffer.getUnsignedShortBE();
-            aBoolean2694 = buffer.getUnsignedByte() == 1;
+            lockScroll = buffer.getUnsignedByte() == 1;
             buffer.getUnsignedByte();
             int i = buffer.getUnsignedByte();
             if(i > 0) {
@@ -1858,30 +1858,28 @@ public class GameInterface extends CachedNode {
         }
     }
 
-    public Model method646(byte arg0, AnimationSequence arg1, int arg2, boolean arg3, PlayerAppearance arg4) {
+    public Model getModelForInterface(AnimationSequence animationSequence, int animationFrame, boolean applyAlternateAction, PlayerAppearance playerAppearance) {
         FramemapDefinition.aBoolean2177 = false;
         InterfaceModelType modelType;
-        int i_11_;
-        if(arg3) {
-            i_11_ = alternateModelId;
+        int modelId;
+        if(applyAlternateAction) {
+            modelId = alternateModelId;
             modelType = alternateModelType;
         } else {
             modelType = this.modelType;
-            i_11_ = modelId;
+            modelId = this.modelId;
         }
         if(modelType == InterfaceModelType.NULL) {
             return null;
         }
-        if(modelType == InterfaceModelType.MODEL && i_11_ == -1) {
+        if(modelType == InterfaceModelType.MODEL && modelId == -1) {
             return null;
         }
-        if(arg0 <= 25) {
-            hasListeners = true;
-        }
-        Model model = (Model) WallDecoration.aClass9_1264.get((long) ((modelType.ordinal() << 16) + i_11_));
+
+        Model model = (Model) WallDecoration.aClass9_1264.get((long) ((modelType.ordinal() << 16) + modelId));
         if(model == null) {
             if(modelType == InterfaceModelType.MODEL) {
-                model = Model.getModel(CacheArchive.modelCacheArchive, i_11_, 0);
+                model = Model.getModel(CacheArchive.modelCacheArchive, modelId, 0);
                 if(model == null) {
                     FramemapDefinition.aBoolean2177 = true;
                     return null;
@@ -1890,7 +1888,7 @@ public class GameInterface extends CachedNode {
                 model.applyLighting(64, 768, -50, -10, -50, true);
             }
             if(modelType == InterfaceModelType.NPC_CHATHEAD) {
-                model = ActorDefinition.getDefinition(i_11_).getHeadModel();
+                model = ActorDefinition.getDefinition(modelId).getHeadModel();
                 if(model == null) {
                     FramemapDefinition.aBoolean2177 = true;
                     return null;
@@ -1899,10 +1897,10 @@ public class GameInterface extends CachedNode {
                 model.applyLighting(64, 768, -50, -10, -50, true);
             }
             if(modelType == InterfaceModelType.LOCAL_PLAYER_CHATHEAD) {
-                if(arg4 == null) {
+                if(playerAppearance == null) {
                     return null;
                 }
-                model = arg4.getStaticModel();
+                model = playerAppearance.getStaticModel();
                 if(model == null) {
                     FramemapDefinition.aBoolean2177 = true;
                     return null;
@@ -1911,7 +1909,7 @@ public class GameInterface extends CachedNode {
                 model.applyLighting(64, 768, -50, -10, -50, true);
             }
             if(modelType == InterfaceModelType.ITEM) {
-                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_11_, 10);
+                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(modelId, 10);
                 model = class40_sub5_sub16.asGroundStack(false, 10);
                 if(model == null) {
                     FramemapDefinition.aBoolean2177 = true;
@@ -1925,10 +1923,10 @@ public class GameInterface extends CachedNode {
                     e.printStackTrace();
                 }
             }
-            WallDecoration.aClass9_1264.put((long) ((modelType.ordinal() << 16) + i_11_), model);
+            WallDecoration.aClass9_1264.put((long) ((modelType.ordinal() << 16) + modelId), model);
         }
-        if(arg1 != null) {
-            model = arg1.method598(arg2, model, true);
+        if(animationSequence != null) {
+            model = animationSequence.method598(animationFrame, model, true);
         }
         return model;
     }

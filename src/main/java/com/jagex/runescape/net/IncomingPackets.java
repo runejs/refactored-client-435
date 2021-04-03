@@ -450,7 +450,7 @@ public class IncomingPackets {
                 if(GameInterface.fullscreenInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = -1;
-                    OverlayDefinition.method559(30);
+                    OverlayDefinition.updateOverlay(30);
                 }
                 if(GameInterface.fullscreenSiblingInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -522,7 +522,7 @@ public class IncomingPackets {
                 if(GameInterface.fullscreenInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = -1;
-                    OverlayDefinition.method559(30);
+                    OverlayDefinition.updateOverlay(30);
                 }
                 if(GameInterface.fullscreenSiblingInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -596,7 +596,7 @@ public class IncomingPackets {
                 if(interfaceId != GameInterface.fullscreenInterfaceId) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = interfaceId;
-                    OverlayDefinition.method559(35);
+                    OverlayDefinition.updateOverlay(35);
                 }
                 if(interfaceId != GameInterface.fullscreenSiblingInterfaceId) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -622,7 +622,7 @@ public class IncomingPackets {
                 if(GameInterface.fullscreenInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = -1;
-                    OverlayDefinition.method559(30);
+                    OverlayDefinition.updateOverlay(30);
                 }
                 if(GameInterface.fullscreenSiblingInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -652,7 +652,7 @@ public class IncomingPackets {
                 if(GameInterface.fullscreenInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = -1;
-                    OverlayDefinition.method559(30);
+                    OverlayDefinition.updateOverlay(30);
                 }
                 if(GameInterface.fullscreenSiblingInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -774,7 +774,7 @@ public class IncomingPackets {
                 if(GameInterface.fullscreenInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = -1;
-                    OverlayDefinition.method559(30);
+                    OverlayDefinition.updateOverlay(30);
                 }
                 if(GameInterface.fullscreenSiblingInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);

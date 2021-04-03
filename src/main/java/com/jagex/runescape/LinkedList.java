@@ -55,11 +55,11 @@ public class LinkedList {
 
     public static void drawChatBoxGraphics() {
         try {
-            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
             RSCanvas.chatBoxImageProducer.drawGraphics(17, 357, graphics);
 
         } catch(Exception exception) {
-            MouseHandler.aCanvas1469.repaint();
+            MouseHandler.gameCanvas.repaint();
         }
     }
 

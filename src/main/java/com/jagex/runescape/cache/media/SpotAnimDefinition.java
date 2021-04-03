@@ -132,7 +132,7 @@ public class SpotAnimDefinition extends CachedNode {
                     SceneCluster.packetBuffer.applyRSA(Configuration.RSA_MODULUS, Configuration.RSA_PUBLIC_KEY);
                 }
                 MovedStatics.packetBuffer.currentPosition = 0;
-                if (Class51.anInt1197 == 40) {
+                if (Class51.currentAction == 40) {
                     MovedStatics.packetBuffer.putByte(18);
                 } else {
                     MovedStatics.packetBuffer.putByte(16);
@@ -167,11 +167,11 @@ public class SpotAnimDefinition extends CachedNode {
 
             if (Class40_Sub3.anInt2032 == 6 && MovedStatics.gameConnection.method1014(-126) > 0) {
                 int i = MovedStatics.gameConnection.read();
-                if (i != 21 || Class51.anInt1197 != 20) {
+                if (i != 21 || Class51.currentAction != 20) {
                     if (i == 2) {
                         Class40_Sub3.anInt2032 = 9;
                     } else {
-                        if (i == 15 && Class51.anInt1197 == 40) {
+                        if (i == 15 && Class51.currentAction == 40) {
                             Class37.method434(0);
                             return;
                         }
@@ -315,7 +315,7 @@ public class SpotAnimDefinition extends CachedNode {
         if (animationId == -1 || arg0 == -1) {
             class40_sub5_sub17_sub5_0_ = class40_sub5_sub17_sub5.method806(true);
         } else {
-            class40_sub5_sub17_sub5_0_ = ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).method597((byte) -87, class40_sub5_sub17_sub5, arg0);
+            class40_sub5_sub17_sub5_0_ = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).method597((byte) -87, class40_sub5_sub17_sub5, arg0);
         }
         if (arg1 != 2) {
             return null;

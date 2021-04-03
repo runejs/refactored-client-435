@@ -6,7 +6,6 @@ import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
-import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -67,11 +66,9 @@ public class Class13 {
         }
     }
 
-    public static void method243(byte arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
-        if(GameInterface.decodeGameInterface(arg4)) {
-            Class48.method925(arg3, GameInterface.cachedInterfaces[arg4], arg5, 0, arg7, 0, -1, arg8, arg6, arg1, 0, arg2);
-            if(arg0 != 89)
-                English.loadingFriendList = null;
+    public static void handleInterfaceActions(int areaId, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, int widgetId) {
+        if(GameInterface.decodeGameInterface(widgetId)) {
+            Class48.handleInterfaceActions(areaId, mouseX, mouseY, minX, minY, maxX, maxY, GameInterface.cachedInterfaces[widgetId], -1, 0, 0);
         }
     }
 
@@ -122,11 +119,11 @@ public class Class13 {
         while(i_13_ != -1) {
             GameInterface gameInterface = GameInterface.cachedInterfaces[i][i_13_ & 0xffff];
             i_11_ += gameInterface.currentX;
-            if(!arg0.aBoolean2694)
-                i_11_ -= gameInterface.anInt2746;
+            if(!arg0.lockScroll)
+                i_11_ -= gameInterface.scrollWidth;
             i_12_ += gameInterface.currentY;
             i_13_ = gameInterface.parentId;
-            if(!arg0.aBoolean2694)
+            if(!arg0.lockScroll)
                 i_12_ -= gameInterface.scrollPosition;
         }
         int[] is = new int[2];

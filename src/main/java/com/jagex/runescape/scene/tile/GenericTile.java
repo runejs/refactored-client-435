@@ -72,12 +72,12 @@ public class GenericTile {
             arg2.drawShadowedStringCenter(English.off, 324, 41, 16711680, true);
         arg2.drawText(English.reportAbuse, 417, 17, 85, 25, 16777215, true, 1, 1, 0);
         try {
-            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
             if(ScreenController.frameMode == ScreenMode.FIXED) {
                 HuffmanEncoding.aProducingGraphicsBuffer_1541.drawGraphics(0, 453, graphics);
             }
         } catch(Exception exception) {
-            MouseHandler.aCanvas1469.repaint();
+            MouseHandler.gameCanvas.repaint();
         }
     }
 

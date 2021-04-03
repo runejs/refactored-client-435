@@ -56,7 +56,7 @@ public class ChatBox {
                 lastItemSearchInput = inputMessage;
             }
             TypeFace font = WallDecoration.fontNormal;
-            Rasterizer.setBounds(0, 0, 77, 463);
+            Rasterizer.setBounds(0, 0, 463, 77);
             for(int index = 0; index < itemSearchResultCount; index++) {
                 int y = index * 14 + 18 - itemSearchScroll;
                 if(y > 0 && y < 110)
@@ -76,11 +76,11 @@ public class ChatBox {
             TypeFace.fontBold.drawStringLeft(Native.clickToContinueString, 239, 40, 0);
             TypeFace.fontBold.drawStringLeft(English.clickToContinue, 239, 60, 128);
         } else if(GameInterface.chatboxInterfaceId != -1) {
-            redrawChatbox = !Class40_Sub5_Sub6.drawInterface(0, GameInterface.chatboxInterfaceId, 96, (byte) -5, 0, 2, 479);
+            redrawChatbox = !Main.drawParentInterface(2, 0, 0, 479, 96, GameInterface.chatboxInterfaceId);
         } else if(dialogueId == -1) {
             int line = 0;
             TypeFace typeFace = WallDecoration.fontNormal;
-            Rasterizer.setBounds(0, 0, 77, 463);
+            Rasterizer.setBounds(0, 0, 463, 77);
             for(int i = 0; i < 100; i++) {
                 if(chatMessages[i] != null) {
                     int type = chatTypes[i];
@@ -175,7 +175,7 @@ public class ChatBox {
             typeFace.drawBasicStringLegacy("@blu@" + chatboxInput + Native.aClass1_478, typeFace.getStringWidth(name + Native.aClass1_515) + 6, 90);
             Rasterizer.drawHorizontalLine(0, 77, 479, 0);
         } else {
-            boolean bool = Class40_Sub5_Sub6.drawInterface(0, dialogueId, 96, (byte) -5, 0, 3, 479);
+            boolean bool = Main.drawParentInterface(3, 0, 0, 479, 96, dialogueId);
             if(!bool)
                 redrawChatbox = true;
         }

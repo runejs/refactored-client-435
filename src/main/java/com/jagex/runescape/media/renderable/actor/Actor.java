@@ -278,7 +278,7 @@ public abstract class Actor extends Renderable {
             if(!VertexNormal.lowMemory)
                 MovedStatics.onBuildTimePlane = 0;
             Class17.regionY = arg2;
-            OverlayDefinition.method559(25);
+            OverlayDefinition.updateOverlay(25);
             Class51.method940(0, English.loadingPleaseWait, false, null);
             int i = Class26.baseY;
             int i_33_ = SpotAnimDefinition.baseX;
@@ -360,14 +360,11 @@ public abstract class Actor extends Renderable {
         }
     }
 
-    public void method782(int arg0, byte arg1, boolean arg2) {
+    public void move(int moveDirection, boolean isRunning) {
         int i = pathY[0];
         int i_19_ = pathX[0];
-        if(arg0 == 0) {
-            i_19_++;
-            i--;
-        }
-        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, arg1 ^ -94).priority == 1)
+
+        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation).priority == 1)
             playingAnimation = -1;
         if(anInt3109 < 9)
             anInt3109++;
@@ -376,31 +373,50 @@ public abstract class Actor extends Renderable {
             pathX[i_20_] = pathX[i_20_ - 1];
             aBooleanArray3072[i_20_] = aBooleanArray3072[-1 + i_20_];
         }
-        if(arg0 == 1)
+
+        // North-west
+        if(moveDirection == 0) {
             i_19_++;
-        if(arg1 != -96)
-            method783();
-        if(arg0 == 2) {
+            i--;
+        }
+
+        // North
+        if(moveDirection == 1)
+            i_19_++;
+
+        // North-east
+        if(moveDirection == 2) {
             i_19_++;
             i++;
         }
-        if(arg0 == 3)
-            i--;
-        if(arg0 == 4)
+
+        // East
+        if(moveDirection == 4)
             i++;
-        if(arg0 == 5) {
+
+        // West
+        if(moveDirection == 3)
+            i--;
+
+        // South-west
+        if(moveDirection == 5) {
             i--;
             i_19_--;
         }
-        if(arg0 == 6)
+
+        // South
+        if(moveDirection == 6)
             i_19_--;
-        if(arg0 == 7) {
+
+        // South-east
+        if(moveDirection == 7) {
             i++;
             i_19_--;
         }
+
         pathY[0] = i;
         pathX[0] = i_19_;
-        aBooleanArray3072[0] = arg2;
+        aBooleanArray3072[0] = isRunning;
     }
 
     public boolean isVisible(int arg0) {
@@ -419,7 +435,7 @@ public abstract class Actor extends Renderable {
     }
 
     public void method787(int arg0, int arg1, boolean arg2, int arg3) {
-        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, 2).priority == 1)
+        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation).priority == 1)
             playingAnimation = -1;
         if(!arg2) {
             int i = -pathY[0] + arg3;

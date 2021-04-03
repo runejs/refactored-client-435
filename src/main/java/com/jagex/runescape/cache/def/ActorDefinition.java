@@ -71,7 +71,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
 
     public static void playAnimation(int animationId, int animationDelay, Player player) {
         if(player.playingAnimation == animationId && animationId != -1) {
-            int i = ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).replyMode;
+            int i = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).replyMode;
             if(i == 1) {
                 player.anInt3104 = 0;
                 player.anInt3095 = 0;
@@ -81,7 +81,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
             if(i == 2) {
                 player.anInt3095 = 0;
             }
-        } else if(animationId == -1 || player.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).forcedPriority >= ProducingGraphicsBuffer_Sub1.method1050(player.playingAnimation, 2).forcedPriority) {
+        } else if(animationId == -1 || player.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).forcedPriority >= ProducingGraphicsBuffer_Sub1.getAnimationSequence(player.playingAnimation).forcedPriority) {
             player.anInt3094 = player.anInt3109;
             player.anInt3104 = 0;
             player.anInt3115 = 0;
@@ -94,11 +94,11 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     public static void drawMapBack() {
         try {
             if(ScreenController.frameMode == ScreenMode.FIXED) {
-                Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+                Graphics graphics = MouseHandler.gameCanvas.getGraphics();
                 RSString.mapbackProducingGraphicsBuffer.drawGraphics(550, 4, graphics);
             }
         } catch(Exception exception) {
-            MouseHandler.aCanvas1469.repaint();
+            MouseHandler.gameCanvas.repaint();
         }
     }
 

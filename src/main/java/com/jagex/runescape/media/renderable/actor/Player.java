@@ -100,10 +100,10 @@ public class Player extends Actor {
         try {
             if(arg0 < 106)
                 return;
-            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
             VarbitDefinition.gameScreenImageProducer.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
         } catch(Exception exception) {
-            MouseHandler.aCanvas1469.repaint();
+            MouseHandler.gameCanvas.repaint();
         }
     }
 
@@ -251,15 +251,15 @@ public class Player extends Actor {
                 actorUpdatingIndices[actorUpdatingIndex++] = 2047;
             else if(movementType == 1) { // Walking
                 int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                localPlayer.method782(walkDirection, (byte) -96, false);
+                localPlayer.move(walkDirection, false);
                 int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
                 if(runUpdateBlock == 1)
                     actorUpdatingIndices[actorUpdatingIndex++] = 2047;
             } else if(movementType == 2) { // Running
                 int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                localPlayer.method782(walkDirection, (byte) -96, true);
+                localPlayer.move(walkDirection, true);
                 int runDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                localPlayer.method782(runDirection, (byte) -96, true);
+                localPlayer.move(runDirection, true);
                 int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
                 if(runUpdateBlock == 1)
                     actorUpdatingIndices[actorUpdatingIndex++] = 2047;
@@ -302,7 +302,7 @@ public class Player extends Actor {
                     trackedPlayerIndices[localPlayerCount++] = trackedPlayerIndex;
                     player.anInt3134 = MovedStatics.pulseCycle;
                     int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                    player.method782(walkDirection, (byte) -96, false);
+                    player.move(walkDirection, false);
                     int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
                     if(runUpdateBlock == 1)
                         actorUpdatingIndices[actorUpdatingIndex++] = trackedPlayerIndex;
@@ -310,9 +310,9 @@ public class Player extends Actor {
                     trackedPlayerIndices[localPlayerCount++] = trackedPlayerIndex;
                     player.anInt3134 = MovedStatics.pulseCycle;
                     int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                    player.method782(walkDirection, (byte) -96, true);
+                    player.move(walkDirection, true);
                     int runDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                    player.method782(runDirection, (byte) -96, true);
+                    player.move(runDirection, true);
                     int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
                     if(runUpdateBlock == 1)
                         actorUpdatingIndices[actorUpdatingIndex++] = trackedPlayerIndex;
@@ -458,8 +458,8 @@ public class Player extends Actor {
     public Model getRotatedModel() {
         if(playerAppearance == null)
             return null;
-        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, 2);
-        AnimationSequence animationSequence_0_ = anInt3077 != -1 && !aBoolean3287 && (idleAnimation != anInt3077 || animationSequence == null) ? ProducingGraphicsBuffer_Sub1.method1050(anInt3077, 2) : null;
+        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation);
+        AnimationSequence animationSequence_0_ = anInt3077 != -1 && !aBoolean3287 && (idleAnimation != anInt3077 || animationSequence == null) ? ProducingGraphicsBuffer_Sub1.getAnimationSequence(anInt3077) : null;
         Model animatedModel = playerAppearance.getAnimatedModel(animationSequence, animationSequence_0_, anInt3116, anInt3104);
         if(animatedModel == null)
             return null;

@@ -54,23 +54,66 @@ public class Main extends GameShell {
     public static CacheFileChannel[] indexChannels = new CacheFileChannel[13];
     private static int drawCount = 0;
 
-    public static boolean method36(int arg0, int minY, int minX, int arg3, int arg4, int maxX, int maxY, int arg7, GameInterface[] arg8, boolean arg9) {
+    /**
+     * This method is used to draw interfaces on the client. It uses the parent of -1,
+     * which means it will render the widget on the top most level. It takes in a widget ID
+     * and finds its children within the cached interfaces.
+     *
+     * @param areaId Mostly used for logical checks
+     *   0 = Game area (the area that renders in 3D),
+     *   1 = Tab area (the widgets that display within the tab area),
+     *   2 = Chat area (the chat itself, as well as all sorts of dialogues and anything that renders over the chat)
+     *   3 = TODO unknown, might be permanent chat widgets
+     * @param minX The top right X of this widget's boundaries
+     * @param minY The top right Y of this widget's boundaries
+     * @param maxX The bottom right Y of this widget's boundaries
+     * @param maxY The bottom right X of this widget's boundaries
+     * @param widgetId The widget ID
+     * @return The status of the drawing cycle, true for success and false for failure
+     */
+    public static boolean drawParentInterface(int areaId, int minX, int minY, int maxX, int maxY, int widgetId) {
+        if(!GameInterface.decodeGameInterface(widgetId))
+            return false;
+
+        return drawInterface(areaId, minX, minY, maxX, maxY, 0, 0, GameInterface.cachedInterfaces[widgetId], -1, true);
+    }
+
+    /**
+     * Recursive function that draws all the widgets within a GameInterface array.
+     * @param areaId Mostly used for logical checks
+     *   0 = Game area (the area that renders in 3D),
+     *   1 = Tab area (the widgets that display within the tab area),
+     *   2 = Chat area (the chat itself, as well as all sorts of dialogues and anything that renders over the chat)
+     *   3 = TODO unknown, might be permanent chat widgets
+     * @param minX The top right X of this widget's boundaries
+     * @param minY The top right Y of this widget's boundaries
+     * @param maxX The bottom right X of this widget's boundaries
+     * @param maxY The bottom right Y of this widget's boundaries
+     * @param scrollPosition The current scroll position within this widget
+     * @param scrollWidth The current scroll width within this widget (unused)
+     * @param interfaceCollection The GameInterface collection to draw
+     * @param parentId The parent ID, this will offset the widget's coordinates within its parent
+     * @param drawSuccess The status of the drawing cycle, true for success and false for failure
+     * @return The status of the drawing cycle, true for success and false for failure
+     */
+    public static boolean drawInterface(int areaId, int minX, int minY, int maxX, int maxY, int scrollPosition, int scrollWidth, GameInterface[] interfaceCollection, int parentId, boolean drawSuccess) {
         Rasterizer.setBounds(minX, minY, maxX, maxY);
-        boolean bool = arg9;
-        for (int i = 0; arg8.length > i; i++) {
-            GameInterface gameInterface = arg8[i];
-            if (gameInterface != null && gameInterface.parentId == arg4) {
+
+        boolean result = drawSuccess;
+        for (int i = 0; interfaceCollection.length > i; i++) {
+            GameInterface gameInterface = interfaceCollection[i];
+            if (gameInterface != null && gameInterface.parentId == parentId) {
                 if (gameInterface.contentType > 0)
                     GameInterface.updateGameInterface(gameInterface);
-                int i_0_ = minX + gameInterface.currentX;
-                if (!gameInterface.aBoolean2694)
-                    i_0_ -= arg3;
-                int i_1_ = minY + gameInterface.currentY;
-                if (!gameInterface.aBoolean2694)
-                    i_1_ -= arg7;
-                int i_2_ = gameInterface.opacity;
+                int absoluteX = minX + gameInterface.currentX;
+                if (!gameInterface.lockScroll)
+                    absoluteX -= scrollWidth;
+                int absoluteY = minY + gameInterface.currentY;
+                if (!gameInterface.lockScroll)
+                    absoluteY -= scrollPosition;
+                int opacity = gameInterface.opacity;
                 if (gameInterface == Wall.aGameInterface_353) {
-                    i_2_ = 128;
+                    opacity = 128;
                     GameInterface gameInterface_3_ = FramemapDefinition.method878(gameInterface);
                     int[] is = Class13.method247(gameInterface_3_, (byte) 117);
                     int[] is_4_ = Class13.method247(gameInterface, (byte) 97);
@@ -79,17 +122,17 @@ public class Main extends GameShell {
                         i_5_ = 0;
                     if (i_5_ + gameInterface.originalHeight > gameInterface_3_.originalHeight)
                         i_5_ = gameInterface_3_.originalHeight + -gameInterface.originalHeight;
-                    i_1_ = i_5_ + is[1];
+                    absoluteY = i_5_ + is[1];
                     int i_6_ = Class13.mouseX + -MovedStatics.anInt1996 + -is[0] + is_4_[0];
                     if (i_6_ < 0)
                         i_6_ = 0;
                     if (i_6_ + gameInterface.originalWidth > gameInterface_3_.originalWidth)
                         i_6_ = -gameInterface.originalWidth + gameInterface_3_.originalWidth;
-                    i_0_ = is[0] + i_6_;
+                    absoluteX = is[0] + i_6_;
                 }
-                if (!gameInterface.isNewInterfaceFormat || Rasterizer.viewportRight >= i_0_ && Rasterizer.viewportBottom >= i_1_ && Rasterizer.viewportLeft <= i_0_ + gameInterface.originalWidth && i_1_ + gameInterface.originalHeight >= Rasterizer.viewportTop) {
+                if (!gameInterface.isNewInterfaceFormat || Rasterizer.viewportRight >= absoluteX && Rasterizer.viewportBottom >= absoluteY && Rasterizer.viewportLeft <= absoluteX + gameInterface.originalWidth && absoluteY + gameInterface.originalHeight >= Rasterizer.viewportTop) {
                     if (gameInterface.type == GameInterfaceType.LAYER) {
-                        if (gameInterface.isHidden && !Class29.method371(8247, arg0, i))
+                        if (gameInterface.isHidden && !Class29.isHovering(areaId, i))
                             continue;
                         if (!gameInterface.isNewInterfaceFormat) {
                             if (-gameInterface.originalHeight + gameInterface.scrollHeight < gameInterface.scrollPosition)
@@ -97,12 +140,12 @@ public class Main extends GameShell {
                             if (gameInterface.scrollPosition < 0)
                                 gameInterface.scrollPosition = 0;
                         }
-                        bool &= method36(arg0, i_1_, i_0_, gameInterface.anInt2746, i, gameInterface.originalHeight + i_1_, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, arg8, arg9);
+                        result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, gameInterface.originalHeight + absoluteY, gameInterface.scrollPosition, gameInterface.scrollWidth, interfaceCollection, i, drawSuccess);
                         if (gameInterface.children != null)
-                            bool &= method36(arg0, i_1_, i_0_, gameInterface.anInt2746, gameInterface.id, i_1_ + gameInterface.originalHeight, gameInterface.originalWidth + i_0_, gameInterface.scrollPosition, gameInterface.children, true);
+                            result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, absoluteY + gameInterface.originalHeight, gameInterface.scrollPosition, gameInterface.scrollWidth, gameInterface.children, gameInterface.id, true);
                         Rasterizer.setBounds(minX, minY, maxX, maxY);
                         if (gameInterface.originalHeight < gameInterface.scrollHeight)
-                            GameInterface.drawScrollBar(i_0_ + gameInterface.originalWidth, i_1_, gameInterface.originalHeight, gameInterface.scrollPosition, gameInterface.scrollHeight, 0);
+                            GameInterface.drawScrollBar(absoluteX + gameInterface.originalWidth, absoluteY, gameInterface.originalHeight, gameInterface.scrollPosition, gameInterface.scrollHeight, 0);
                     }
                     if (gameInterface.type == GameInterfaceType.UNKNOWN) {
                         continue;
@@ -111,8 +154,8 @@ public class Main extends GameShell {
                         int i_7_ = 0;
                         for (int i_8_ = 0; i_8_ < gameInterface.originalHeight; i_8_++) {
                             for (int i_9_ = 0; gameInterface.originalWidth > i_9_; i_9_++) {
-                                int i_10_ = (gameInterface.itemSpritePadsX + 32) * i_9_ + i_0_;
-                                int i_11_ = (32 + gameInterface.itemSpritePadsY) * i_8_ + i_1_;
+                                int i_10_ = (gameInterface.itemSpritePadsX + 32) * i_9_ + absoluteX;
+                                int i_11_ = (32 + gameInterface.itemSpritePadsY) * i_8_ + absoluteY;
                                 if (i_7_ < 20) {
                                     i_10_ += gameInterface.images[i_7_];
                                     i_11_ += gameInterface.imageX[i_7_];
@@ -122,7 +165,7 @@ public class Main extends GameShell {
                                         ImageRGB imageRGB = gameInterface.method638((byte) 78, i_7_);
                                         if (imageRGB == null) {
                                             if (FramemapDefinition.aBoolean2177)
-                                                bool = false;
+                                                result = false;
                                         } else
                                             imageRGB.drawImage(i_10_, i_11_);
                                     }
@@ -136,7 +179,7 @@ public class Main extends GameShell {
                                             i_15_ = 16777215;
                                         ImageRGB imageRGB = ItemDefinition.sprite(gameInterface.itemAmounts[i_7_], i_13_, i_15_);
                                         if (imageRGB == null)
-                                            bool = false;
+                                            result = false;
                                         else {
                                             if (SceneTile.activeInterfaceType != 0 && GroundItemTile.selectedInventorySlot == i_7_ && gameInterface.id == Class48.modifiedWidgetId) {
                                                 i_14_ = Landscape.mouseY + -ItemDefinition.anInt2798;
@@ -149,9 +192,9 @@ public class Main extends GameShell {
                                                     i_14_ = 0;
                                                     i_12_ = 0;
                                                 }
-                                                imageRGB.method728(i_12_ + i_10_, i_11_ + i_14_, 128);
-                                                if (arg4 != -1) {
-                                                    GameInterface gameInterface_16_ = arg8[arg4];
+                                                imageRGB.drawImageWithOpacity(i_12_ + i_10_, i_11_ + i_14_, 128);
+                                                if (parentId != -1) {
+                                                    GameInterface gameInterface_16_ = interfaceCollection[parentId];
                                                     if (Rasterizer.viewportTop > i_14_ + i_11_ && gameInterface_16_.scrollPosition > 0) {
                                                         int i_17_ = MovedStatics.anInt199 * (Rasterizer.viewportTop + -i_11_ - i_14_) / 3;
                                                         if (10 * MovedStatics.anInt199 < i_17_)
@@ -174,7 +217,7 @@ public class Main extends GameShell {
                                             } else if (Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 0 || GenericTile.anInt1233 != i_7_ || gameInterface.id != PlayerAppearance.anInt704)
                                                 imageRGB.drawImage(i_10_, i_11_);
                                             else
-                                                imageRGB.method728(i_10_, i_11_, 128);
+                                                imageRGB.drawImageWithOpacity(i_10_, i_11_, 128);
                                             if (imageRGB.maxWidth == 33 || gameInterface.itemAmounts[i_7_] != 1) {
                                                 int i_19_ = gameInterface.itemAmounts[i_7_];
                                                 TypeFace.fontSmall.drawString(GameInterface.getShortenedAmountText(i_19_), i_12_ + 1 + i_10_, i_11_ + 10 + i_14_, 0);
@@ -187,293 +230,303 @@ public class Main extends GameShell {
                             }
                         }
                     } else if (gameInterface.type == GameInterfaceType.RECTANGLE) {
-                        int i_20_;
-                        if (ItemDefinition.method746(gameInterface)) {
-                            i_20_ = gameInterface.alternateTextColor;
-                            if (Class29.method371(8247, arg0, i) && gameInterface.alternateHoveredTextColor != 0)
-                                i_20_ = gameInterface.alternateHoveredTextColor;
+                        int rectangleColor;
+                        if (ItemDefinition.checkForAlternateAction(gameInterface)) {
+                            rectangleColor = gameInterface.alternateTextColor;
+                            if (Class29.isHovering(areaId, i) && gameInterface.alternateHoveredTextColor != 0)
+                                rectangleColor = gameInterface.alternateHoveredTextColor;
                         } else {
-                            i_20_ = gameInterface.textColor;
-                            if (Class29.method371(8247, arg0, i) && gameInterface.hoveredTextColor != 0)
-                                i_20_ = gameInterface.hoveredTextColor;
+                            rectangleColor = gameInterface.textColor;
+                            if (Class29.isHovering(areaId, i) && gameInterface.hoveredTextColor != 0)
+                                rectangleColor = gameInterface.hoveredTextColor;
                         }
-                        if (i_2_ == 0) {
+                        if (opacity == 0) {
                             if (!gameInterface.filled)
-                                Rasterizer.drawUnfilledRectangle(i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight, i_20_);
+                                Rasterizer.drawUnfilledRectangle(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, rectangleColor);
                             else
-                                Rasterizer.drawFilledRectangle(i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight, i_20_);
+                                Rasterizer.drawFilledRectangle(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, rectangleColor);
                         } else if (!gameInterface.filled)
-                            Rasterizer.drawUnfilledRectangleAlpha(i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight, i_20_, -(0xff & i_2_) + 256);
+                            Rasterizer.drawUnfilledRectangleAlpha(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, rectangleColor, -(0xff & opacity) + 256);
                         else
-                            Rasterizer.drawFilledRectangleAlpha(i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight, i_20_, -(0xff & i_2_) + 256);
+                            Rasterizer.drawFilledRectangleAlpha(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, rectangleColor, -(0xff & opacity) + 256);
                     } else if (gameInterface.type == GameInterfaceType.TEXT) {
-                        TypeFace class40_sub5_sub14_sub1 = gameInterface.getTypeFace();
-                        if (class40_sub5_sub14_sub1 == null) {
+                        TypeFace font = gameInterface.getTypeFace();
+                        if (font == null) {
                             if (FramemapDefinition.aBoolean2177)
-                                bool = false;
+                                result = false;
                         } else {
-                            String class1 = gameInterface.disabledText;
-                            int i_21_;
-                            if (ItemDefinition.method746(gameInterface)) {
-                                i_21_ = gameInterface.alternateTextColor;
-                                if (Class29.method371(8247, arg0, i) && gameInterface.alternateHoveredTextColor != 0)
-                                    i_21_ = gameInterface.alternateHoveredTextColor;
+                            String text = gameInterface.disabledText;
+                            int textColor;
+                            if (ItemDefinition.checkForAlternateAction(gameInterface)) {
+                                textColor = gameInterface.alternateTextColor;
+                                if (Class29.isHovering(areaId, i) && gameInterface.alternateHoveredTextColor != 0)
+                                    textColor = gameInterface.alternateHoveredTextColor;
                                 if (gameInterface.alternateText.length() > 0)
-                                    class1 = gameInterface.alternateText;
+                                    text = gameInterface.alternateText;
                             } else {
-                                i_21_ = gameInterface.textColor;
-                                if (Class29.method371(8247, arg0, i) && gameInterface.hoveredTextColor != 0)
-                                    i_21_ = gameInterface.hoveredTextColor;
+                                textColor = gameInterface.textColor;
+                                if (Class29.isHovering(areaId, i) && gameInterface.hoveredTextColor != 0)
+                                    textColor = gameInterface.hoveredTextColor;
                             }
                             if (gameInterface.isNewInterfaceFormat && gameInterface.itemId != -1) {
-                                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(gameInterface.itemId, 10);
-                                class1 = class40_sub5_sub16.name;
-                                if (class1 == null)
-                                    class1 = "null";
-                                if (class40_sub5_sub16.stackable == 1 || gameInterface.itemAmount != 1)
-                                    class1 = class1 + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmount, (byte) -109);
+                                ItemDefinition itemDefinition = ItemDefinition.forId(gameInterface.itemId, 10);
+                                text = itemDefinition.name;
+                                if (text == null)
+                                    text = "null";
+                                if (itemDefinition.stackable == 1 || gameInterface.itemAmount != 1)
+                                    text = text + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmount, (byte) -109);
                             }
                             if (gameInterface.actionType == 6 && MovedStatics.anInt1819 == gameInterface.id) {
-                                i_21_ = gameInterface.textColor;
-                                class1 = English.pleaseWait;
+                                textColor = gameInterface.textColor;
+                                text = English.pleaseWait;
                             }
                             if (Rasterizer.destinationWidth == 479) {
-                                if (i_21_ == 16776960)
-                                    i_21_ = 255;
-                                if (i_21_ == 49152)
-                                    i_21_ = 16777215;
+                                if (textColor == 16776960)
+                                    textColor = 255;
+                                if (textColor == 49152)
+                                    textColor = 16777215;
                             }
-//                            System.out.println(class1);
-                            class1 = SceneTile.method532((byte) 20, gameInterface, class1);
-//                            System.out.println(class1);
-                            class40_sub5_sub14_sub1.drawText(class1, i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight, i_21_, gameInterface.textShadowed, gameInterface.xTextAlignment, gameInterface.yTextAlignment, gameInterface.lineHeight);
+
+                            text = SceneTile.method532((byte) 20, gameInterface, text);
+                            font.drawText(text, absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, textColor, gameInterface.textShadowed, gameInterface.xTextAlignment, gameInterface.yTextAlignment, gameInterface.lineHeight);
                         }
                     } else if (gameInterface.type == GameInterfaceType.GRAPHIC) {
                         if (gameInterface.isNewInterfaceFormat) {
-                            int i_22_ = 0;
-                            int i_23_ = 0;
-                            ImageRGB class40_sub5_sub14_sub4;
+                            int maxWidth = 0;
+                            int maxHeight = 0;
+                            ImageRGB spriteRgb;
+
                             if (gameInterface.itemId == -1)
-                                class40_sub5_sub14_sub4 = gameInterface.getImageRgb(false);
+                                spriteRgb = gameInterface.getImageRgb(false);
                             else {
-                                class40_sub5_sub14_sub4 = ItemDefinition.sprite(gameInterface.itemAmount, gameInterface.itemId, 0);
-                                i_22_ = class40_sub5_sub14_sub4.maxWidth;
-                                i_23_ = class40_sub5_sub14_sub4.maxHeight;
-                                class40_sub5_sub14_sub4.maxHeight = 32;
-                                class40_sub5_sub14_sub4.maxWidth = 32;
+                                spriteRgb = ItemDefinition.sprite(gameInterface.itemAmount, gameInterface.itemId, 0);
+                                maxWidth = spriteRgb.maxWidth;
+                                maxHeight = spriteRgb.maxHeight;
+
+                                // TODO find out why this is done
+                                spriteRgb.maxHeight = 32;
+                                spriteRgb.maxWidth = 32;
                             }
-                            if (class40_sub5_sub14_sub4 != null) {
-                                int i_24_ = class40_sub5_sub14_sub4.imageHeight;
-                                int i_25_ = class40_sub5_sub14_sub4.imageWidth;
-                                if (gameInterface.aBoolean2641) {
-                                    int[] is = new int[4];
-                                    Rasterizer.method661(is);
-                                    int i_27_ = i_0_;
-                                    if (is[0] > i_27_)
-                                        i_27_ = is[0];
-                                    int i_28_ = i_1_;
-                                    if (is[1] > i_28_)
-                                        i_28_ = is[1];
-                                    int i_29_ = gameInterface.originalWidth + i_0_;
-                                    if (is[2] < i_29_)
-                                        i_29_ = is[2];
-                                    int i_30_ = gameInterface.originalHeight + i_1_;
-                                    if (i_30_ > is[3])
-                                        i_30_ = is[3];
-                                    Rasterizer.setBounds(i_27_, i_28_, i_30_, i_29_);
-                                    int i_31_ = (gameInterface.originalWidth - (1 + -i_25_)) / i_25_;
-                                    int i_32_ = (gameInterface.originalHeight - (1 + -i_24_)) / i_24_;
-                                    for (int i_33_ = 0; i_31_ > i_33_; i_33_++) {
-                                        for (int i_34_ = 0; i_32_ > i_34_; i_34_++) {
-                                            if (gameInterface.anInt2751 == 0) {
-                                                if (i_2_ == 0)
-                                                    class40_sub5_sub14_sub4.drawImage(i_33_ * i_25_ + i_0_, i_34_ * i_24_ + i_1_);
+
+                            if (spriteRgb != null) {
+                                int spriteHeight = spriteRgb.imageHeight;
+                                int spriteWidth = spriteRgb.imageWidth;
+
+                                if (gameInterface.tiled) {
+                                    int[] viewportDimensions = new int[4];
+                                    Rasterizer.getViewportDimensions(viewportDimensions);
+
+                                    // Cap sprite to viewport dimensions
+                                    int spriteTopX = absoluteX;
+                                    if (viewportDimensions[0] > spriteTopX)
+                                        spriteTopX = viewportDimensions[0];
+                                    int spriteTopY = absoluteY;
+                                    if (viewportDimensions[1] > spriteTopY)
+                                        spriteTopY = viewportDimensions[1];
+                                    int spriteBottomX = gameInterface.originalWidth + absoluteX;
+                                    if (viewportDimensions[2] < spriteBottomX)
+                                        spriteBottomX = viewportDimensions[2];
+                                    int spriteBottomY = gameInterface.originalHeight + absoluteY;
+                                    if (spriteBottomY > viewportDimensions[3])
+                                        spriteBottomY = viewportDimensions[3];
+
+                                    Rasterizer.setBounds(spriteTopX, spriteTopY, spriteBottomX, spriteBottomY);
+                                    int i_31_ = (gameInterface.originalWidth - (1 + -spriteWidth)) / spriteWidth;
+                                    int i_32_ = (gameInterface.originalHeight - (1 + -spriteHeight)) / spriteHeight;
+                                    for (int row = 0; i_31_ > row; row++) {
+                                        for (int col = 0; i_32_ > col; col++) {
+                                            if (gameInterface.textureId == 0) {
+                                                if (opacity == 0)
+                                                    spriteRgb.drawImage(row * spriteWidth + absoluteX, col * spriteHeight + absoluteY);
                                                 else
-                                                    class40_sub5_sub14_sub4.method728(i_0_ + i_33_ * i_25_, i_1_ + i_24_ * i_34_, -(i_2_ & 0xff) + 256);
+                                                    spriteRgb.drawImageWithOpacity(absoluteX + row * spriteWidth, absoluteY + spriteHeight * col, -(opacity & 0xff) + 256);
                                             } else
-                                                class40_sub5_sub14_sub4.method720(i_25_ / 2 + i_33_ * i_25_ + i_0_, i_24_ / 2 + i_1_ + i_24_ * i_34_, gameInterface.anInt2751, 4096);
+                                                spriteRgb.drawImageWithTexture(spriteWidth / 2 + row * spriteWidth + absoluteX, spriteHeight / 2 + absoluteY + spriteHeight * col, gameInterface.textureId, 4096);
                                         }
                                     }
-                                    Rasterizer.method657(is);
+                                    Rasterizer.setViewportDimensions(viewportDimensions);
                                 } else {
-                                    int i_26_ = 4096 * gameInterface.originalWidth / i_25_;
-                                    if (gameInterface.anInt2751 == 0) {
-                                        if (i_2_ == 0) {
-                                            if (gameInterface.originalWidth == i_25_ && gameInterface.originalHeight == i_24_)
-                                                class40_sub5_sub14_sub4.drawImage(i_0_, i_1_);
+                                    int i_26_ = 4096 * gameInterface.originalWidth / spriteWidth;
+                                    if (gameInterface.textureId == 0) {
+                                        if (opacity == 0) {
+                                            if (gameInterface.originalWidth == spriteWidth && gameInterface.originalHeight == spriteHeight)
+                                                spriteRgb.drawImage(absoluteX, absoluteY);
                                             else
-                                                class40_sub5_sub14_sub4.method732(i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight);
+                                                spriteRgb.method732(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight);
                                         } else
-                                            class40_sub5_sub14_sub4.method716(i_0_, i_1_, gameInterface.originalWidth, gameInterface.originalHeight, 256 + -(0xff & i_2_));
+                                            spriteRgb.method716(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, 256 + -(0xff & opacity));
                                     } else
-                                        class40_sub5_sub14_sub4.method720(gameInterface.originalWidth / 2 + i_0_, gameInterface.originalHeight / 2 + i_1_, gameInterface.anInt2751, i_26_);
+                                        spriteRgb.drawImageWithTexture(gameInterface.originalWidth / 2 + absoluteX, gameInterface.originalHeight / 2 + absoluteY, gameInterface.textureId, i_26_);
                                 }
                             } else if (FramemapDefinition.aBoolean2177)
-                                bool = false;
+                                result = false;
                             if (gameInterface.itemId != -1) {
-                                if (gameInterface.itemAmount != 1 || i_22_ == 33) {
-                                    TypeFace.fontSmall.drawString(Integer.toString(gameInterface.itemAmount), i_0_ + 1, i_1_ + 10, 0);
-                                    TypeFace.fontSmall.drawString(Integer.toString(gameInterface.itemAmount), i_0_, 9 + i_1_, 16776960);
+                                // TODO find out why this renders when maxWidth == 33
+                                if (gameInterface.itemAmount != 1 || maxWidth == 33) {
+                                    TypeFace.fontSmall.drawString(Integer.toString(gameInterface.itemAmount), absoluteX + 1, absoluteY + 10, 0);
+                                    TypeFace.fontSmall.drawString(Integer.toString(gameInterface.itemAmount), absoluteX, 9 + absoluteY, 16776960);
                                 }
-                                class40_sub5_sub14_sub4.maxWidth = i_22_;
-                                class40_sub5_sub14_sub4.maxHeight = i_23_;
+                                spriteRgb.maxWidth = maxWidth;
+                                spriteRgb.maxHeight = maxHeight;
                             }
                         } else {
-                            ImageRGB imageRGB = gameInterface.getImageRgb(ItemDefinition.method746(gameInterface));
+                            ImageRGB imageRGB = gameInterface.getImageRgb(ItemDefinition.checkForAlternateAction(gameInterface));
                             if (imageRGB != null)
-                                imageRGB.drawImage(i_0_, i_1_);
+                                imageRGB.drawImage(absoluteX, absoluteY);
                             else if (FramemapDefinition.aBoolean2177)
-                                bool = false;
+                                result = false;
                         }
                     } else if (gameInterface.type == GameInterfaceType.MODEL) {
-                        boolean bool_35_ = ItemDefinition.method746(gameInterface);
-                        Object object = null;
-                        int i_36_;
-                        if (!bool_35_)
-                            i_36_ = gameInterface.animation;
+                        boolean applyAlternateAction = ItemDefinition.checkForAlternateAction(gameInterface);
+                        int animationId;
+                        if (!applyAlternateAction)
+                            animationId = gameInterface.animation;
                         else
-                            i_36_ = gameInterface.alternateAnimation;
+                            animationId = gameInterface.alternateAnimation;
 
                         Model model;
                         if (gameInterface.modelType != InterfaceModelType.PLAYER) {
-                            if (i_36_ == -1) {
-                                model = gameInterface.method646((byte) 46, null, -1, bool_35_, Player.localPlayer.playerAppearance);
-                                if (model == null && FramemapDefinition.aBoolean2177)
-                                    bool = false;
+                            if (animationId == -1) {
+                                model = gameInterface.getModelForInterface(null, -1, applyAlternateAction, Player.localPlayer.playerAppearance);
                             } else {
-                                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(i_36_, 2);
-                                model = gameInterface.method646((byte) 76, animationSequence, gameInterface.animationFrame, bool_35_, Player.localPlayer.playerAppearance);
-                                if (model == null && FramemapDefinition.aBoolean2177)
-                                    bool = false;
+                                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId);
+                                model = gameInterface.getModelForInterface(animationSequence, gameInterface.animationFrame, applyAlternateAction, Player.localPlayer.playerAppearance);
                             }
-                        } else if (gameInterface.modelId != 0)
+                            // TODO FramemapDefinition.aBoolean2177 might be object/model/sprite doesnt exist
+                            if (model == null && FramemapDefinition.aBoolean2177)
+                                result = false;
+                        } else if (gameInterface.modelId != 0) {
                             model = Player.localPlayer.getRotatedModel();
-                        else
+                        } else {
                             model = Player.activePlayerAppearance.getAnimatedModel(null, null, -1, -1);
-                        int i_37_ = gameInterface.rotationX;
-                        int i_38_ = gameInterface.rotationY;
-                        int i_39_ = gameInterface.offsetY2d;
-                        int i_40_ = gameInterface.rotationZ;
-                        int i_41_ = gameInterface.offsetX2d;
-                        int i_42_ = gameInterface.modelZoom;
-                        if (gameInterface.itemId != -1) {
-                            ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(gameInterface.itemId, 10);
-                            if (class40_sub5_sub16 != null) {
-                                class40_sub5_sub16 = class40_sub5_sub16.method743(gameInterface.itemAmount);
-                                model = class40_sub5_sub16.asGroundStack(true, 1);
-                                i_38_ = class40_sub5_sub16.zan2d;
-                                i_39_ = class40_sub5_sub16.yOffset2d;
-                                i_41_ = class40_sub5_sub16.xOffset2d;
-                                i_37_ = class40_sub5_sub16.xan2d;
-                                i_42_ = class40_sub5_sub16.zoom2d;
-                                i_40_ = class40_sub5_sub16.yan2d;
-                                if (gameInterface.originalWidth > 0)
-                                    i_42_ = 32 * i_42_ / gameInterface.originalWidth;
-                            }
                         }
-                        Rasterizer3D.setBounds(i_0_ + gameInterface.originalWidth / 2, gameInterface.originalHeight / 2 + i_1_);
 
-                        int i_43_ = i_42_ * Rasterizer3D.sinetable[i_37_] >> 16;
-                        int i_44_ = i_42_ * Rasterizer3D.cosinetable[i_37_] >> 16;
+                        int rotationX = gameInterface.rotationX;
+                        int rotationY = gameInterface.rotationY;
+                        int offsetY2d = gameInterface.offsetY2d;
+                        int rotationZ = gameInterface.rotationZ;
+                        int offsetX2d = gameInterface.offsetX2d;
+                        int modelZoom = gameInterface.modelZoom;
+                        if (gameInterface.itemId != -1) {
+                            ItemDefinition itemDefinition = ItemDefinition.forId(gameInterface.itemId, 10);
+                            itemDefinition = itemDefinition.method743(gameInterface.itemAmount);
+                            model = itemDefinition.asGroundStack(true, 1);
+                            rotationY = itemDefinition.zan2d;
+                            offsetY2d = itemDefinition.yOffset2d;
+                            offsetX2d = itemDefinition.xOffset2d;
+                            rotationX = itemDefinition.xan2d;
+                            modelZoom = itemDefinition.zoom2d;
+                            rotationZ = itemDefinition.yan2d;
+                            if (gameInterface.originalWidth > 0)
+                                modelZoom = 32 * modelZoom / gameInterface.originalWidth;
+                        }
+                        Rasterizer3D.setBounds(absoluteX + gameInterface.originalWidth / 2, gameInterface.originalHeight / 2 + absoluteY);
+
+                        int camHeight = modelZoom * Rasterizer3D.sinetable[rotationX] >> 16;
+                        int camDistance = modelZoom * Rasterizer3D.cosinetable[rotationX] >> 16;
                         if (model != null) {
                             if (gameInterface.isNewInterfaceFormat) {
                                 model.method799();
+                                // For some reason, drawOrthogonalModel does the same thing as drawModel
                                 if (gameInterface.orthogonal)
-                                    model.method801(0, i_40_, i_38_, i_37_, i_41_, i_39_ + i_43_ + model.modelHeight / 2, i_44_ + i_39_, i_42_);
+                                    model.drawOrthogonalModel(0, rotationZ, rotationY, rotationX, offsetX2d, offsetY2d + camHeight + model.modelHeight / 2, camDistance + offsetY2d, modelZoom);
                                 else
-                                    model.method812(0, i_40_, i_38_, i_37_, i_41_, i_39_ + model.modelHeight / 2 + i_43_, i_44_ + i_39_);
-                            } else
-                                model.method812(0, i_40_, 0, i_37_, 0, i_43_, i_44_);
+                                    model.drawModel(0, rotationZ, rotationY, rotationX, offsetX2d, offsetY2d + model.modelHeight / 2 + camHeight, camDistance + offsetY2d);
+                            } else {
+                                model.drawModel(0, rotationZ, 0, rotationX, 0, camHeight, camDistance);
+                            }
                         }
-                        Rasterizer3D.method702();
+                        Rasterizer3D.resetBoundsTo3dViewport();
                     } else {
                         if (gameInterface.type == GameInterfaceType.TEXT_INVENTORY) {
-                            TypeFace class40_sub5_sub14_sub1 = gameInterface.getTypeFace();
-                            if (class40_sub5_sub14_sub1 == null) {
+                            TypeFace font = gameInterface.getTypeFace();
+                            if (font == null) {
                                 if (FramemapDefinition.aBoolean2177)
-                                    bool = false;
+                                    result = false;
                                 continue;
                             }
-                            int i_45_ = 0;
-                            for (int i_46_ = 0; i_46_ < gameInterface.originalHeight; i_46_++) {
-                                for (int i_47_ = 0; i_47_ < gameInterface.originalWidth; i_47_++) {
-                                    if (gameInterface.items[i_45_] > 0) {
-                                        ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(-1 + gameInterface.items[i_45_], 10);
-                                        String class1 = class40_sub5_sub16.name;
-                                        if (class1 == null)
-                                            class1 = "null";
-                                        if (class40_sub5_sub16.stackable == 1 || gameInterface.itemAmounts[i_45_] != 1)
-                                            class1 = class1 + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmounts[i_45_], (byte) -105);
-                                        int i_48_ = i_47_ * (gameInterface.itemSpritePadsX + 115) + i_0_;
-                                        int i_49_ = i_46_ * (gameInterface.itemSpritePadsY + 12) + i_1_;
+                            int itemSlot = 0;
+                            for (int row = 0; row < gameInterface.originalHeight; row++) {
+                                for (int col = 0; col < gameInterface.originalWidth; col++) {
+                                    if (gameInterface.items[itemSlot] > 0) {
+                                        ItemDefinition itemDefinition = ItemDefinition.forId(-1 + gameInterface.items[itemSlot], 10);
+                                        String itemName = itemDefinition.name;
+                                        if (itemName == null)
+                                            itemName = "null";
+                                        if (itemDefinition.stackable == 1 || gameInterface.itemAmounts[itemSlot] != 1)
+                                            itemName = itemName + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmounts[itemSlot], (byte) -105);
+                                        int itemX = col * (gameInterface.itemSpritePadsX + 115) + absoluteX;
+                                        int itemY = row * (gameInterface.itemSpritePadsY + 12) + absoluteY;
                                         if (gameInterface.xTextAlignment == 0)
-                                            class40_sub5_sub14_sub1.drawShadowedString(class1, i_48_, i_49_, gameInterface.textShadowed, gameInterface.textColor);
+                                            font.drawShadowedString(itemName, itemX, itemY, gameInterface.textShadowed, gameInterface.textColor);
                                         else if (gameInterface.xTextAlignment == 1)
-                                            class40_sub5_sub14_sub1.drawShadowedStringCenter(class1, i_48_ + gameInterface.originalWidth / 2, i_49_, gameInterface.textColor, gameInterface.textShadowed);
+                                            font.drawShadowedStringCenter(itemName, itemX + gameInterface.originalWidth / 2, itemY, gameInterface.textColor, gameInterface.textShadowed);
                                         else
-                                            class40_sub5_sub14_sub1.drawShadowedStringRight(class1, -1 + gameInterface.originalWidth + i_48_, i_49_, gameInterface.textColor, gameInterface.textShadowed);
+                                            font.drawShadowedStringRight(itemName, -1 + gameInterface.originalWidth + itemX, itemY, gameInterface.textColor, gameInterface.textShadowed);
                                     }
-                                    i_45_++;
+                                    itemSlot++;
                                 }
                             }
                         }
-                        if (gameInterface.type == GameInterfaceType.IF1_TOOLTIP && Class37.method438(arg0, i) && RSString.anInt1711 == WallDecoration.anInt1257) {
-                            int i_50_ = 0;
-                            int i_51_ = 0;
+                        if (gameInterface.type == GameInterfaceType.IF1_TOOLTIP && Class37.method438(areaId, i) && RSString.tooltipDelay == WallDecoration.durationHoveredOverWidget) {
+                            int textWidth = 0;
+                            int textHeight = 0;
                             TypeFace class40_sub5_sub14_sub1 = WallDecoration.fontNormal;
-                            String class1 = gameInterface.disabledText;
-                            class1 = SceneTile.method532((byte) 20, gameInterface, class1);
-                            while (class1.length() > 0) {
-                                int i_52_ = class1.indexOf(Native.lineBreak);
-                                String class1_53_;
-                                if (i_52_ == -1) {
-                                    class1_53_ = class1;
-                                    class1 = "";
+                            String text = gameInterface.disabledText;
+                            text = SceneTile.method532((byte) 20, gameInterface, text);
+                            while (text.length() > 0) {
+                                int lineBreakCharacter = text.indexOf(Native.lineBreak);
+                                String textLine;
+                                if (lineBreakCharacter == -1) {
+                                    // Not a multiline text
+                                    textLine = text;
+                                    text = "";
                                 } else {
-                                    class1_53_ = class1.substring(0, i_52_);
-                                    class1 = class1.substring(2 + i_52_);
+                                    // Multiline text
+                                    textLine = text.substring(0, lineBreakCharacter);
+                                    text = text.substring(2 + lineBreakCharacter);
                                 }
-                                int i_54_ = class40_sub5_sub14_sub1.getTextDisplayedWidth(class1_53_);
-                                i_51_ += class40_sub5_sub14_sub1.characterDefaultHeight + 1;
-                                if (i_50_ < i_54_)
-                                    i_50_ = i_54_;
+                                int lineWidth = class40_sub5_sub14_sub1.getTextDisplayedWidth(textLine);
+                                textHeight += class40_sub5_sub14_sub1.characterDefaultHeight + 1;
+                                if (textWidth < lineWidth)
+                                    textWidth = lineWidth;
                             }
-                            i_51_ += 7;
-                            int i_55_ = 5 + gameInterface.originalHeight + i_1_;
-                            if (i_55_ + i_51_ > maxX)
-                                i_55_ = maxX + -i_51_;
-                            i_50_ += 6;
-                            int i_56_ = -5 + gameInterface.originalWidth + i_0_ - i_50_;
-                            if (i_56_ < 5 + i_0_)
-                                i_56_ = 5 + i_0_;
-                            if (i_50_ + i_56_ > maxY)
-                                i_56_ = -i_50_ + maxY;
-                            Rasterizer.drawFilledRectangle(i_56_, i_55_, i_50_, i_51_, 16777120);
-                            Rasterizer.drawUnfilledRectangle(i_56_, i_55_, i_50_, i_51_, 0);
-                            class1 = gameInterface.disabledText;
-                            int i_57_ = 2 + i_55_ + class40_sub5_sub14_sub1.characterDefaultHeight;
-                            class1 = SceneTile.method532((byte) 20, gameInterface, class1);
-                            while (class1.length() > 0) {
-                                int i_58_ = class1.indexOf(Native.lineBreak);
-                                String class1_59_;
-                                if (i_58_ == -1) {
-                                    class1_59_ = class1;
-                                    class1 = "";
+                            textHeight += 7;
+                            int tooltipY = 5 + gameInterface.originalHeight + absoluteY;
+                            if (tooltipY + textHeight > maxY)
+                                tooltipY = maxY + -textHeight;
+                            textWidth += 6;
+                            int tooltipX = -5 + gameInterface.originalWidth + absoluteX - textWidth;
+                            if (tooltipX < 5 + absoluteX)
+                                tooltipX = 5 + absoluteX;
+                            if (textWidth + tooltipX > maxX)
+                                tooltipX = -textWidth + maxX;
+                            Rasterizer.drawFilledRectangle(tooltipX, tooltipY, textWidth, textHeight, 16777120);
+                            Rasterizer.drawUnfilledRectangle(tooltipX, tooltipY, textWidth, textHeight, 0);
+                            text = gameInterface.disabledText;
+                            int tooltipTitleY = 2 + tooltipY + class40_sub5_sub14_sub1.characterDefaultHeight;
+                            text = SceneTile.method532((byte) 20, gameInterface, text);
+                            while (text.length() > 0) {
+                                int lineBreakCharacter = text.indexOf(Native.lineBreak);
+                                String textLine;
+                                if (lineBreakCharacter == -1) {
+                                    textLine = text;
+                                    text = "";
                                 } else {
-                                    class1_59_ = class1.substring(0, i_58_);
-                                    class1 = class1.substring(i_58_ + 2);
+                                    textLine = text.substring(0, lineBreakCharacter);
+                                    text = text.substring(lineBreakCharacter + 2);
                                 }
-                                class40_sub5_sub14_sub1.drawShadowedString(class1_59_, i_56_ + 3, i_57_, false, 0);
-                                i_57_ += 1 + class40_sub5_sub14_sub1.characterDefaultHeight;
+                                class40_sub5_sub14_sub1.drawShadowedString(textLine, tooltipX + 3, tooltipTitleY, false, 0);
+                                tooltipTitleY += 1 + class40_sub5_sub14_sub1.characterDefaultHeight;
                             }
                         }
                         if (gameInterface.type == GameInterfaceType.LINE)
-                            Rasterizer.drawDiagonalLine(i_0_, i_1_, gameInterface.originalWidth + i_0_, gameInterface.originalHeight + i_1_, gameInterface.textColor);
+                            Rasterizer.drawDiagonalLine(absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, gameInterface.originalHeight + absoluteY, gameInterface.textColor);
                     }
                 }
             }
         }
-        return bool;
+        return result;
     }
 
     public static void method37(CacheArchive cacheArchive, int arg2) {
@@ -871,7 +924,7 @@ public class Main extends GameShell {
             MovedStatics.redrawChatbox = true;
             drawCount++;
         } else if(drawCount != 0) {
-            Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, CacheArchive.gameImageCacheArchive);
+            Class40_Sub5_Sub17_Sub1.method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
         }
         if(GameInterface.chatboxInterfaceId == -1) {
             Class12.chatboxInterface.scrollPosition = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
@@ -1075,7 +1128,7 @@ public class Main extends GameShell {
         } else {
             Class33.setLoginScreenMessage(English.unexpectedServerResponse, English.pleaseTryUsingDifferentWorld, "");
         }
-        OverlayDefinition.method559(10);
+        OverlayDefinition.updateOverlay(10);
     }
 
     public static void method164() {
@@ -1086,9 +1139,9 @@ public class Main extends GameShell {
         ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.prepareRasterizer();
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(Player.viewportOffsets);
         Rasterizer.resetPixels();
-        Class40_Sub5_Sub6.drawInterface(0, GameInterface.fullscreenInterfaceId, 503, (byte) -5, 0, 0, 765);
+        drawParentInterface(0, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
         if(GameInterface.fullscreenSiblingInterfaceId != -1)
-            Class40_Sub5_Sub6.drawInterface(0, GameInterface.fullscreenSiblingInterfaceId, 503, (byte) -5, 0, 0, 765);
+            drawParentInterface(0, 0, 0, 765, 503, GameInterface.fullscreenSiblingInterfaceId);
         if(!MovedStatics.menuOpen) {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
@@ -1097,10 +1150,10 @@ public class Main extends GameShell {
                 Class40_Sub5_Sub6.drawMenu(4,4); // might be 0,0
             }
         try {
-            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
             ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.drawGraphics(0, 0, graphics);
         } catch(Exception exception) {
-            MouseHandler.aCanvas1469.repaint();
+            MouseHandler.gameCanvas.repaint();
         }
     }
 
@@ -1199,7 +1252,7 @@ public class Main extends GameShell {
         if (Class8.anInt292 < 2 || arg1 != 7 && arg1 != 9) {
             if (Class8.anInt292 < 2 || arg1 != 6) {
                 if (Class8.anInt292 >= 4) {
-                    if (Class51.anInt1197 <= 5) {
+                    if (Class51.currentAction <= 5) {
                         this.openErrorPage((byte) 104, "js5connect");
                         ISAAC.anInt509 = 3000;
                     } else
@@ -1207,13 +1260,13 @@ public class Main extends GameShell {
                 }
             } else {
                 this.openErrorPage((byte) 86, "js5connect_outofdate");
-                Class51.anInt1197 = 1000;
+                Class51.currentAction = 1000;
             }
-        } else if (Class51.anInt1197 > 5)
+        } else if (Class51.currentAction > 5)
             ISAAC.anInt509 = 3000;
         else {
             this.openErrorPage((byte) 122, "js5connect_full");
-            Class51.anInt1197 = 1000;
+            Class51.currentAction = 1000;
         }
     }
 
@@ -1226,32 +1279,32 @@ public class Main extends GameShell {
         GameInterface.method639(122);
         Class64.method1015();
 
-        if (Class51.anInt1197 == 0) {
+        if (Class51.currentAction == 0) {
             Class40_Sub3.startup(100);
             Class60.method992();
-        } else if (Class51.anInt1197 == 5) {
+        } else if (Class51.currentAction == 5) {
             Class40_Sub3.startup(100);
             Class60.method992();
-        } else if (Class51.anInt1197 == 10) {
+        } else if (Class51.currentAction == 10) {
             Class60.updateLogin();
-        } else if (Class51.anInt1197 == 20) {
+        } else if (Class51.currentAction == 20) {
             Class60.updateLogin();
             SpotAnimDefinition.method552(true);
-        } else if (Class51.anInt1197 == 25)
+        } else if (Class51.currentAction == 25)
             Landscape.loadRegion();
-        if (Class51.anInt1197 == 30) {
+        if (Class51.currentAction == 30) {
             ScreenController.refreshFrameSize();
             Npc.updateGame();
-        } else if (Class51.anInt1197 == 35) {
+        } else if (Class51.currentAction == 35) {
             ScreenController.refreshFrameSize();
             Npc.updateGame();
-        } else if (Class51.anInt1197 == 40) {
+        } else if (Class51.currentAction == 40) {
             SpotAnimDefinition.method552(true);
         }
     }
 
     public void method39() {
-        if (1000 != Class51.anInt1197) {
+        if (1000 != Class51.currentAction) {
             boolean bool = FloorDecoration.method346((byte) 48);
             if (!bool)
                 method40();
@@ -1260,21 +1313,21 @@ public class Main extends GameShell {
 
     public void method34(int arg0) { // TODO: Might be Startup
         if (MovedStatics.aBoolean1575) {
-            Class22_Sub1.method311(MouseHandler.aCanvas1469);
-            Class55.method965(32, MouseHandler.aCanvas1469);
+            Class22_Sub1.method311(MouseHandler.gameCanvas);
+            Class55.method965(32, MouseHandler.gameCanvas);
             this.setCanvas((byte) 86);
-            GameInterface.method642(MouseHandler.aCanvas1469, -10);
-            RSRuntimeException.method1056(MouseHandler.aCanvas1469, (byte) 33);
+            GameInterface.method642(MouseHandler.gameCanvas, -10);
+            RSRuntimeException.method1056(MouseHandler.gameCanvas, (byte) 33);
         }
-        if (Class51.anInt1197 == 0)
+        if (Class51.currentAction == 0)
             GameObject.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
-        else if (Class51.anInt1197 == 5) {
+        else if (Class51.currentAction == 5) {
             WallDecoration.drawLoadingScreen(-19010, TypeFace.fontBold, TypeFace.fontSmall);
-        } else if (Class51.anInt1197 == 10) {
+        } else if (Class51.currentAction == 10) {
             WallDecoration.drawLoadingScreen(-19010, TypeFace.fontBold, TypeFace.fontSmall);
-        } else if (Class51.anInt1197 == 20) {
+        } else if (Class51.currentAction == 20) {
             WallDecoration.drawLoadingScreen(-19010, TypeFace.fontBold, TypeFace.fontSmall);
-        } else if (Class51.anInt1197 == 25) {
+        } else if (Class51.currentAction == 25) {
             if (ProducingGraphicsBuffer.anInt1634 == 1) {
                 if (Class37.anInt874 > PacketBuffer.anInt2231)
                     PacketBuffer.anInt2231 = Class37.anInt874;
@@ -1287,12 +1340,12 @@ public class Main extends GameShell {
                 Class51.method940(0, English.loadingPleaseWait, true, Native.leftParenthasis + i + Native.aClass1_698);
             } else
                 Class51.method940(0, English.loadingPleaseWait, false, null);
-        } else if (Class51.anInt1197 == 30) {
+        } else if (Class51.currentAction == 30) {
             drawGameScreen();
 
-        } else if (Class51.anInt1197 == 35) {
+        } else if (Class51.currentAction == 35) {
             method164();
-        } else if (Class51.anInt1197 == 40)
+        } else if (Class51.currentAction == 40)
             Class51.method940(0, English.connectionLost, false, English.pleaseWaitAttemptingToReestablish);
         Npc.anInt3294 = 0;
     }
@@ -1300,15 +1353,15 @@ public class Main extends GameShell {
     public void method40() {
         if (MovedStatics.anInt813 >= 4) {
             this.openErrorPage((byte) 120, "js5crc");
-            Class51.anInt1197 = 1000;
+            Class51.currentAction = 1000;
         } else {
             if (MovedStatics.anInt2278 >= 4) {
-                if (Class51.anInt1197 > 5) {
+                if (Class51.currentAction > 5) {
                     MovedStatics.anInt2278 = 3;
                     ISAAC.anInt509 = 3000;
                 } else {
                     this.openErrorPage((byte) 58, "js5io");
-                    Class51.anInt1197 = 1000;
+                    Class51.currentAction = 1000;
                     return;
                 }
             }
@@ -1337,7 +1390,7 @@ public class Main extends GameShell {
                             Class22_Sub1.aLong1841 = System.currentTimeMillis();
                         }
                         if (Class8.anInt290 == 3) {
-                            if (Class51.anInt1197 > 5 && Class29.aClass64_676.method1014(5 + -131) <= 0) {
+                            if (Class51.currentAction > 5 && Class29.aClass64_676.method1014(5 + -131) <= 0) {
                                 if (System.currentTimeMillis() + -Class22_Sub1.aLong1841 > 30000L) {
                                     method35(-2);
                                     break;
@@ -1353,7 +1406,7 @@ public class Main extends GameShell {
                         }
                         if (Class8.anInt290 != 4)
                             break;
-                        Class17.method273(Class29.aClass64_676, 105, Class51.anInt1197 > 20);
+                        Class17.method273(Class29.aClass64_676, 105, Class51.currentAction > 20);
                         ProducingGraphicsBuffer.aSignlinkNode_1632 = null;
                         Class8.anInt290 = 0;
                         Class29.aClass64_676 = null;
@@ -1411,8 +1464,8 @@ public class Main extends GameShell {
             aBoolean1790 = true;
         Wall.anInt350 = OverlayDefinition.anInt2340;
         MovedStatics.method997(47);
-        GameInterface.method642(MouseHandler.aCanvas1469, -10);
-        RSRuntimeException.method1056(MouseHandler.aCanvas1469, (byte) 70);
+        GameInterface.method642(MouseHandler.gameCanvas, -10);
+        RSRuntimeException.method1056(MouseHandler.gameCanvas, (byte) 70);
         RSCanvas.anInt57 = Signlink.anInt737;
         try {
             if (signlink.cacheDataAccessFile != null) {

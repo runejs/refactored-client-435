@@ -6,14 +6,17 @@ import com.jagex.runescape.scene.util.CollisionMap;
 public class Class29 {
     public static Class64 aClass64_676;
 
-    public static boolean method371(int arg0, int arg1, int arg2) {
-        if(arg1 == 0 && ItemDefinition.anInt2850 == arg2)
+    public static boolean isHovering(int areaId, int arg2) {
+        if(areaId == 0 && ItemDefinition.anInt2850 == arg2)
             return true;
-        if(arg1 == 1 && arg2 == CollisionMap.anInt163)
+
+        if(areaId == 1 && arg2 == CollisionMap.anInt163)
             return true;
-        if((arg1 == 2 || arg1 == 3) && Class55.anInt1296 == arg2)
+
+        if((areaId == 2 || areaId == 3) && Class55.anInt1296 == arg2)
             return true;
-        return arg0 != 8247;
+
+        return false;
     }
 
     public static int method372(int arg0, int arg1) {

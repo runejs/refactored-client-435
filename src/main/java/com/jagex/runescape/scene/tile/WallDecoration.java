@@ -25,7 +25,7 @@ import java.awt.*;
 
 public class WallDecoration {
     public static NodeCache aClass9_1247 = new NodeCache(64);
-    public static int anInt1257 = 0;
+    public static int durationHoveredOverWidget = 0;
     public static NodeCache aClass9_1264 = new NodeCache(50);
     public static TypeFace fontNormal;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1270;
@@ -314,7 +314,7 @@ public class WallDecoration {
         do {
             MovedStatics.loginBoxGraphics.prepareRasterizer();
 //            Rasterizer.drawFilledRectangle(0,0, ScreenController.frameWidth, ScreenController.frameHeight, 0);
-            if (Class51.anInt1197 == 0 || Class51.anInt1197 == 5) {
+            if (Class51.currentAction == 0 || Class51.currentAction == 5) {
                 int i = 20;
                 fontBold.drawStringLeft(English.runeScapeIsLoadingPleaseWait, 180, 74 + -i, 16777215);
                 int i_89_ = -i + 82;
@@ -324,7 +324,7 @@ public class WallDecoration {
                 Rasterizer.drawFilledRectangle(3 * MovedStatics.anInt1607 + 30, i_89_ + 2, -(MovedStatics.anInt1607 * 3) + 300, 30, 0);
                 fontBold.drawStringLeft(Native.currentLoadingText, 180, -i + 105, 16777215);
             }
-            if (Class51.anInt1197 == 20) {
+            if (Class51.currentAction == 20) {
                 int drawY = 40;
                 Class40_Sub5_Sub15.loginScreenBox.drawImage(0, 0);
                 fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineOne, 180, drawY, 16776960, true);
@@ -339,7 +339,7 @@ public class WallDecoration {
                 fontBold.drawShadowedString(English.password + Native.password.method61(), 92, drawY, true, 16777215);
                 drawY += 15;
             }
-            if (Class51.anInt1197 == 10) {
+            if (Class51.currentAction == 10) {
                 Class40_Sub5_Sub15.loginScreenBox.drawImage(0, 0);
                 if (Class26.loginScreenState == 0) {
                     fontBold.drawShadowedStringCenter(English.welcomeToRunescape, 180, 80, 16776960, true);
@@ -389,7 +389,7 @@ public class WallDecoration {
             }
             Main.renderFlames();
             try {
-                Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+                Graphics graphics = MouseHandler.gameCanvas.getGraphics();
 
                 MovedStatics.loginBoxGraphics.drawGraphics(202, 171, graphics);
                 if (arg0 != -19010)
@@ -406,7 +406,7 @@ public class WallDecoration {
                 GameObjectDefinition.aProducingGraphicsBuffer_2524.drawGraphics(128, 171, graphics);
                 ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.drawGraphics(562, 171, graphics);
             } catch (Exception exception) {
-                MouseHandler.aCanvas1469.repaint();
+                MouseHandler.gameCanvas.repaint();
             }
             break;
 

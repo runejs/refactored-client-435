@@ -74,7 +74,7 @@ public class Class37 {
             if(Player.npcs[i] != null)
                 Player.npcs[i].facingActorIndex = -1;
         }
-        OverlayDefinition.method559(30);
+        OverlayDefinition.updateOverlay(30);
     }
 
     public static void renderMinimap() {
@@ -233,12 +233,12 @@ public class Class37 {
             class40_sub2.anInt2014 = (int) ((double) (class40_sub2.anInt2002 - class40_sub2.anInt2012) * Math.random()) + class40_sub2.anInt2012;
     }
 
-    public static boolean method438(int arg0, int arg1) {
-        if(arg0 == 0 && arg1 == MovedStatics.anInt573)
+    public static boolean method438(int areaId, int arg1) {
+        if(areaId == 0 && arg1 == MovedStatics.anInt573)
             return true;
-        if(arg0 == 1 && FloorDecoration.anInt614 == arg1)
+        if(areaId == 1 && FloorDecoration.anInt614 == arg1)
             return true;
-        if((arg0 == 2 || arg0 == 3) && MovedStatics.anInt1586 == arg1)
+        if((areaId == 2 || areaId == 3) && MovedStatics.anInt1586 == arg1)
             return true;
         return false;
     }

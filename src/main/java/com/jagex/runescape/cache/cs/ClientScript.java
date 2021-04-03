@@ -74,6 +74,8 @@ public class ClientScript extends CachedNode {
         return clientScript;
     }
 
+
+    // TODO remove arg1 after checking its safe
     public static int parseClientScripts(int scriptIndex, boolean arg1, GameInterface gameInterface1) {
         if (gameInterface1.clientScripts == null || scriptIndex >= gameInterface1.clientScripts.length) {
             return -2;
@@ -86,7 +88,7 @@ public class ClientScript extends CachedNode {
                 HuffmanEncoding.anInt1559 = -63;
             }
             int i_15_ = 0;
-            for (; ; ) {
+            while (true) {
                 int i_16_ = 0;
                 int i_17_ = 0;
                 int opcode = opcodes[scriptDataIndex++];

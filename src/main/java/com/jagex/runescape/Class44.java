@@ -25,7 +25,7 @@ public class Class44 implements Runnable {
             arg1.anInt3074 = 0;
         else {
             if(arg1.playingAnimation != -1 && arg1.playingAnimationDelay == 0) {
-                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2);
+                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(arg1.playingAnimation);
                 if(arg1.anInt3094 > 0 && animationSequence.precedenceAnimating == 0) {
                     arg1.anInt3074++;
                     return;

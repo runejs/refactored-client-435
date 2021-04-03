@@ -28,7 +28,7 @@ public class Minimap extends FramePieceRenderer {
     private static int[] resizableMinimapLineOffsets;
 
     public Minimap() {
-        this.tempResizableMiniMapimage = Class40_Sub5_Sub13.createGraphicsBuffer(210, 210, MouseHandler.aCanvas1469);
+        this.tempResizableMiniMapimage = Class40_Sub5_Sub13.createGraphicsBuffer(210, 210, MouseHandler.gameCanvas);
         resizableMinimapOffsets1 = new int[200];
         resizableMinimapOffsets2 = new int[200];
         for(int i = 0; i < resizableMinimapOffsets2.length; i++) {
@@ -36,7 +36,7 @@ public class Minimap extends FramePieceRenderer {
             resizableMinimapOffsets2[i] = 0;
         }
 
-        resizableMiniMapimage = Class40_Sub5_Sub13.createGraphicsBuffer(210, 210, MouseHandler.aCanvas1469);
+        resizableMiniMapimage = Class40_Sub5_Sub13.createGraphicsBuffer(210, 210, MouseHandler.gameCanvas);
         rasterizerInstanced = new RasterizerInstanced(this.tempResizableMiniMapimage);
 
     }

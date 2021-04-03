@@ -67,47 +67,50 @@ public class OverlayDefinition extends CachedNode {
         }
     }
 
-    public static void method559(int arg0) {
-        if (arg0 != Class51.anInt1197) {
-            if (Class51.anInt1197 == 0)
+    // Action IDs I've found:
+    // 5 = Render login background, 10 = Render login box, 20 = Render empty login box,
+    // 25 = Render game overlay, 30 = Render 3D game area, 1000 = Render client error
+    public static void updateOverlay(int actionId) {
+        if (actionId != Class51.currentAction) {
+            if (Class51.currentAction == 0)
                 CollisionMap.method144(12433);
-            if (arg0 == 20 || arg0 == 40) {
+            if (actionId == 20 || actionId == 40) {
                 Main.anInt1756 = 0;
                 anInt2321 = 0;
                 Class40_Sub3.anInt2032 = 0;
             }
-            if (arg0 != 20 && arg0 != 40 && PlayerAppearance.aClass64_717 != null) {
+            if (actionId != 20 && actionId != 40 && PlayerAppearance.aClass64_717 != null) {
                 PlayerAppearance.aClass64_717.method1009();
                 PlayerAppearance.aClass64_717 = null;
             }
-            if (Class51.anInt1197 == 25 || Class51.anInt1197 == 40) {
+            if (Class51.currentAction == 25 || Class51.currentAction == 40) {
                 Class65.method1018();
                 Rasterizer.resetPixels();
             }
-            if (Class51.anInt1197 == 25) {
+            if (Class51.currentAction == 25) {
                 Class37.anInt874 = 0;
                 PacketBuffer.anInt2231 = 1;
                 IdentityKit.anInt2591 = 0;
                 GameObject.anInt3048 = 1;
                 ProducingGraphicsBuffer.anInt1634 = 0;
             }
-            if (arg0 == 0 || arg0 == 35) {
+            if (actionId == 0 || actionId == 35) {
                 FloorDecoration.method344(-40);
                 MovedStatics.method440((byte) -73);
                 if (ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 == null)
-                    ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(765, 503, MouseHandler.aCanvas1469);
+                    ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(765, 503, MouseHandler.gameCanvas);
             }
-            if (arg0 == 5 || arg0 == 10 || arg0 == 20) {
+            if (actionId == 5 || actionId == 10 || actionId == 20) {
                 ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
                 FloorDecoration.method344(-69);
-                Item.method779(MouseHandler.aCanvas1469, true, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
+                Item.method779(MouseHandler.gameCanvas, true, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
             }
-            if (arg0 == 25 || arg0 == 30 || arg0 == 40) {
+            if (actionId == 25 || actionId == 30 || actionId == 40) {
                 ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
                 MovedStatics.method440((byte) -98);
-                Class40_Sub5_Sub17_Sub1.method763(MouseHandler.aCanvas1469, CacheArchive.gameImageCacheArchive);
+                Class40_Sub5_Sub17_Sub1.method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
             }
-            Class51.anInt1197 = arg0;
+            Class51.currentAction = actionId;
             Class40_Sub5_Sub11.clearScreen = true;
         }
     }
