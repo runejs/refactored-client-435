@@ -690,10 +690,6 @@ public class Model extends Renderable {
                 new ModelLoader();
             }
 
-            if (modelId == 3328) {
-                System.out.println("3328");
-            }
-
             byte[] modelData = cache.getFile(modelId, 0);
             if(modelData == null) {
                 for(int modelStored : ModelLoader.models) {
