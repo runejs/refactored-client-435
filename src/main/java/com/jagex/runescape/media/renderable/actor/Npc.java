@@ -42,7 +42,7 @@ public class Npc extends Actor {
         if(Class64.aCacheArchive_1521 == null) {
             System.out.println("ISA NULL");
         }
-        byte[] is = Class64.aCacheArchive_1521.getFile(arg1, 16);
+        byte[] is = Class64.aCacheArchive_1521.getFile(16, arg1);
         class40_sub5_sub11 = new Class40_Sub5_Sub11();
         if(is != null)
             class40_sub5_sub11.method634(new Buffer(is));
@@ -423,7 +423,7 @@ public class Npc extends Actor {
         OverlayDefinition overlayDefinition = (OverlayDefinition) Class33.aClass9_778.get((long) arg0);
         if(overlayDefinition != null)
             return overlayDefinition;
-        byte[] is = Actor.aCacheArchive_3144.getFile(arg0, arg1);
+        byte[] is = Actor.aCacheArchive_3144.getFile(arg1, arg0);
         overlayDefinition = new OverlayDefinition();
         if(is != null)
             overlayDefinition.method553(new Buffer(is));

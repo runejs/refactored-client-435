@@ -44,6 +44,9 @@ public class Rasterizer3D extends Rasterizer {
             // The original value can be restored by dividing x by (2^scalingFactor) or just bit-shifting x right by the scaling factor
             // Note that when bit-shifting, you lose all the decimals, and only get the whole number. This is the most common
             // practice wherever the sin and cos tables are used in the client
+            //
+            // Also, don't forget your basic maths: sin(x) = the length of the opposite side, cos(x) = the length of the adjacent side
+            // sin(x) + cos(x) = r
             sinetable[i] = (int) (65536.0 * Math.sin((double) i * 0.0030679615));
             cosinetable[i] = (int) (65536.0 * Math.cos((double) i * 0.0030679615));
         }

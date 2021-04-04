@@ -26,7 +26,7 @@ public class Class40_Sub5_Sub15 extends CachedNode {
         aFrameDefinitionArray2794 = new FrameDefinition[i];
         int[] is = arg0.method192(arg2, true);
         for(int i_0_ = 0; is.length > i_0_; i_0_++) {
-            byte[] is_1_ = arg0.getFile(is[i_0_], arg2);
+            byte[] is_1_ = arg0.getFile(arg2, is[i_0_]);
             FramemapDefinition framemapDefinition = null;
             int i_2_ = is_1_[1] & 0xff | is_1_[0] << 8 & 0xff00;
             for(FramemapDefinition framemapDefinition_3_ = (FramemapDefinition) linkedList.method902((byte) -90); framemapDefinition_3_ != null; framemapDefinition_3_ = (FramemapDefinition) linkedList.method909(-4)) {
