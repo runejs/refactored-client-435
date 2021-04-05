@@ -51,7 +51,7 @@ public class RSString {
             if(class40_sub5_sub6 != null)
                 return class40_sub5_sub6.aByteArray2441;
         }
-        byte[] is = arg1.getFile(arg0, arg2);
+        byte[] is = arg1.getFile(arg2, arg0);
         if(is == null)
             return null;
         if(aClass9_1684 != null)

@@ -270,7 +270,7 @@ public class CacheArchive {
         int i = aClass42_254.method882(RSString.stringHash(arg1));
         int i_0_ = aClass42Array217[i].method882(RSString.stringHash(arg0));
 
-        return getFile(i_0_, i);
+        return getFile(i, i_0_);
     }
 
     /**
@@ -286,10 +286,10 @@ public class CacheArchive {
         }
     }
 
-    public byte[] getFile(int arg0, int arg2) {
+    public byte[] getFile(int fileId, int childId) {
         //if(this instanceof CacheIndex)
         //    System.out.printf("Request cache arch: %d index: %d, file: %d\n", this.anInt1807, arg0, arg2);
-        return method176(arg2, arg0, null);
+        return method176(fileId, childId, null);
     }
 
     public boolean loaded(int arg0, int arg2) {
@@ -501,9 +501,9 @@ public class CacheArchive {
 
     public byte[] method187(int arg0) {
         if(inMemoryCacheBuffer.length == 1)
-            return getFile(arg0, 0);
-        if(inMemoryCacheBuffer[arg0].length == 1)
             return getFile(0, arg0);
+        if(inMemoryCacheBuffer[arg0].length == 1)
+            return getFile(arg0, 0);
         throw new RuntimeException();
     }
 

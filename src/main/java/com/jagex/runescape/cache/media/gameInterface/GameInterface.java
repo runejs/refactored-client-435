@@ -443,7 +443,7 @@ public class GameInterface extends CachedNode {
 
         for(int i = 0; i < gameInterfaceCount; i++) {
             if(cachedInterfaces[interfaceId][i] == null) {
-                byte[] interfaceFileData = CacheArchive.gameInterfaceCacheArchive.getFile(i, interfaceId);
+                byte[] interfaceFileData = CacheArchive.gameInterfaceCacheArchive.getFile(interfaceId, i);
 
                 if(interfaceFileData != null) {
                     cachedInterfaces[interfaceId][i] = new GameInterface();
@@ -1879,7 +1879,7 @@ public class GameInterface extends CachedNode {
         Model model = (Model) WallDecoration.aClass9_1264.get((long) ((modelType.ordinal() << 16) + modelId));
         if(model == null) {
             if(modelType == InterfaceModelType.MODEL) {
-                model = Model.getModel(CacheArchive.modelCacheArchive, modelId, 0);
+                model = Model.getModel(CacheArchive.modelCacheArchive, modelId);
                 if(model == null) {
                     FramemapDefinition.aBoolean2177 = true;
                     return null;

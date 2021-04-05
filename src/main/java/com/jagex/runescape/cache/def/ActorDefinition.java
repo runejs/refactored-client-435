@@ -128,7 +128,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         ActorDefinition definition = (ActorDefinition) ISAAC.cachedActorDefinitions.get(id);
         if(definition != null)
             return definition;
-        byte[] data = GroundItemTile.aCacheArchive_1375.getFile(id, 9);
+        byte[] data = GroundItemTile.aCacheArchive_1375.getFile(9, id);
         definition = new ActorDefinition();
         definition.id = id;
         if(data != null)
@@ -158,7 +158,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
             }
             Model[] class40_sub5_sub17_sub5s = new Model[models.length];
             for(int i = 0; models.length > i; i++) {
-                class40_sub5_sub17_sub5s[i] = Model.getModel(MovedStatics.aCacheArchive_1577, models[i], 0);
+                class40_sub5_sub17_sub5s[i] = Model.getModel(MovedStatics.aCacheArchive_1577, models[i]);
             }
             if(class40_sub5_sub17_sub5s.length == 1) {
                 model1 = class40_sub5_sub17_sub5s[0];
@@ -321,7 +321,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         }
         Model[] models = new Model[headModelIndexes.length];
         for(int i = 0; i < headModelIndexes.length; i++) {
-            models[i] = Model.getModel(MovedStatics.aCacheArchive_1577, headModelIndexes[i], 0);
+            models[i] = Model.getModel(MovedStatics.aCacheArchive_1577, headModelIndexes[i]);
         }
         Model headModel;
         if(models.length == 1) {

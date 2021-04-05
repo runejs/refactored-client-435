@@ -261,7 +261,7 @@ public class SpotAnimDefinition extends CachedNode {
         SpotAnimDefinition spotAnimDefinition = (SpotAnimDefinition) Class43.aClass9_1014.get((long) arg0);
         if (spotAnimDefinition != null)
             return spotAnimDefinition;
-        byte[] is = InteractiveObject.aCacheArchive_488.getFile(arg0, 13);
+        byte[] is = InteractiveObject.aCacheArchive_488.getFile(13, arg0);
         spotAnimDefinition = new SpotAnimDefinition();
         spotAnimDefinition.id = arg0;
         if (is != null)
@@ -298,7 +298,7 @@ public class SpotAnimDefinition extends CachedNode {
     public Model method549(int arg0, int arg1) {
         Model class40_sub5_sub17_sub5 = (Model) MovedStatics.aClass9_851.get((long) id);
         if (class40_sub5_sub17_sub5 == null) {
-            class40_sub5_sub17_sub5 = Model.getModel(UnderlayDefinition.aCacheArchive_2582, modelId, 0);
+            class40_sub5_sub17_sub5 = Model.getModel(UnderlayDefinition.aCacheArchive_2582, modelId);
             if (class40_sub5_sub17_sub5 == null) {
                 return null;
             }

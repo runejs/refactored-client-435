@@ -30,7 +30,7 @@ public class ClientScript extends CachedNode {
         int len = CacheArchive.clientScriptCacheArchive.getLength();
         for(int ll = 0; ll < len; ll++) {
             if(CacheArchive.clientScriptCacheArchive.loaded(ll, 0)) {
-                byte[] data = CacheArchive.clientScriptCacheArchive.getFile(ll, 0);
+                byte[] data = CacheArchive.clientScriptCacheArchive.getFile(0, ll);
                 System.out.println(data.length);
             } else {
                 System.out.println(ll + " not loaded");

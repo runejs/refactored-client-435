@@ -32,7 +32,7 @@ public class IdentityKit extends CachedNode {
         if(identityKit != null) {
             return identityKit;
         }
-        byte[] is = Class49.aCacheArchive_1150.getFile(arg1, 3);
+        byte[] is = Class49.aCacheArchive_1150.getFile(3, arg1);
         identityKit = new IdentityKit();
         if(is != null) {
             identityKit.readValues(new Buffer(is));
@@ -100,7 +100,7 @@ public class IdentityKit extends CachedNode {
         int i = 0;
         for(int i_7_ = 0; i_7_ < 5; i_7_++) {
             if(models[i_7_] != -1) {
-                class40_sub5_sub17_sub5s[i++] = Model.getModel(MovedStatics.aCacheArchive_654, models[i_7_], 0);
+                class40_sub5_sub17_sub5s[i++] = Model.getModel(MovedStatics.aCacheArchive_654, models[i_7_]);
             }
         }
         Model class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, i);
@@ -119,7 +119,7 @@ public class IdentityKit extends CachedNode {
         }
         Model[] models = new Model[modelId.length];
         for(int i = 0; i < modelId.length; i++) {
-            models[i] = Model.getModel(MovedStatics.aCacheArchive_654, modelId[i], 0);
+            models[i] = Model.getModel(MovedStatics.aCacheArchive_654, modelId[i]);
         }
         Model model;
         if(models.length == 1) {

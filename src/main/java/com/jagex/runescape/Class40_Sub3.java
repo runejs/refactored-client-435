@@ -308,7 +308,7 @@ public class Class40_Sub3 extends Node {
         UnderlayDefinition underlayDefinition = (UnderlayDefinition) WallDecoration.aClass9_1247.get((long) arg1);
         if (underlayDefinition != null)
             return underlayDefinition;
-        byte[] is = Actor.aCacheArchive_3150.getFile(arg1, 1);
+        byte[] is = Actor.aCacheArchive_3150.getFile(1, arg1);
         underlayDefinition = new UnderlayDefinition();
         if (is != null)
             underlayDefinition.readValues(new Buffer(is));

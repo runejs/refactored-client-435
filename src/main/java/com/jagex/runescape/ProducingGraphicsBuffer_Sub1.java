@@ -40,7 +40,7 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
 
         if(animationSequence != null)
             return animationSequence;
-        byte[] is = AnimationSequence.aCacheArchive_2484.getFile(animationId, 12);
+        byte[] is = AnimationSequence.aCacheArchive_2484.getFile(12, animationId);
         animationSequence = new AnimationSequence();
         if(is != null)
             animationSequence.decodeAllAnimationSequences(new Buffer(is));

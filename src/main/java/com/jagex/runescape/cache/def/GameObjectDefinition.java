@@ -155,7 +155,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         if(gameObjectDefinition != null) {
             return gameObjectDefinition;
         }
-        byte[] is = CacheArchive.definitionCache.getFile(objectId, 6);
+        byte[] is = CacheArchive.definitionCache.getFile(6, objectId);
         gameObjectDefinition = new GameObjectDefinition();
         gameObjectDefinition.id = objectId;
         if(is == null) {
@@ -280,7 +280,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
                 }
                 model = (Model) objectModelCache.get(modelId);
                 if(model == null) {
-                    model = Model.getModel(RSString.aCacheArchive_1705, modelId & 0xffff, 0);
+                    model = Model.getModel(RSString.aCacheArchive_1705, modelId & 0xffff);
                     if(model == null) {
                         return null;
                     }
@@ -314,7 +314,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
             }
             model = (Model) objectModelCache.get(modelId);
             if(model == null) {
-                model = Model.getModel(RSString.aCacheArchive_1705, 0xffff & modelId, 0);
+                model = Model.getModel(RSString.aCacheArchive_1705, 0xffff & modelId);
                 if(model == null) {
                     return null;
                 }
