@@ -235,7 +235,7 @@ public class ImageRGB extends Rasterizer {
     }
 
     public static boolean spriteExists(int arg0, int arg1, CacheArchive cacheArchive) {
-        byte[] is = cacheArchive.getFile(arg0, arg1);
+        byte[] is = cacheArchive.getFile(arg1, arg0);
         if(is == null)
             return false;
         MovedStatics.method184(is, 0);
@@ -319,8 +319,8 @@ public class ImageRGB extends Rasterizer {
         }
     }
 
-    public void method720(int arg0, int arg1, int arg2, int arg3) {
-        method722(maxWidth << 3, maxHeight << 3, arg0 << 4, arg1 << 4, arg2, arg3);
+    public void drawImageWithTexture(int x, int y, int textureId, int arg3) {
+        method722(maxWidth << 3, maxHeight << 3, x << 4, y << 4, textureId, arg3);
     }
 
     public void drawImage(int x, int y) {
@@ -880,41 +880,41 @@ public class ImageRGB extends Rasterizer {
             copyPixels(Rasterizer.destinationPixels, pixels, pixel, rasterizerPixel, newWidth, newHeight, rasterizerPixelOffset, pixelOffset);
     }
 
-    public void method728(int arg0, int arg1, int arg2) {
-        arg0 += offsetX;
-        arg1 += offsetY;
-        int i = arg0 + arg1 * Rasterizer.destinationWidth;
+    public void drawImageWithOpacity(int x, int y, int opacity) {
+        x += offsetX;
+        y += offsetY;
+        int i = x + y * Rasterizer.destinationWidth;
         int i_149_ = 0;
         int i_150_ = imageHeight;
         int i_151_ = imageWidth;
         int i_152_ = Rasterizer.destinationWidth - i_151_;
         int i_153_ = 0;
-        if(arg1 < Rasterizer.viewportTop) {
-            int i_154_ = Rasterizer.viewportTop - arg1;
+        if(y < Rasterizer.viewportTop) {
+            int i_154_ = Rasterizer.viewportTop - y;
             i_150_ -= i_154_;
-            arg1 = Rasterizer.viewportTop;
+            y = Rasterizer.viewportTop;
             i_149_ += i_154_ * i_151_;
             i += i_154_ * Rasterizer.destinationWidth;
         }
-        if(arg1 + i_150_ > Rasterizer.viewportBottom)
-            i_150_ -= arg1 + i_150_ - Rasterizer.viewportBottom;
-        if(arg0 < Rasterizer.viewportLeft) {
-            int i_155_ = Rasterizer.viewportLeft - arg0;
+        if(y + i_150_ > Rasterizer.viewportBottom)
+            i_150_ -= y + i_150_ - Rasterizer.viewportBottom;
+        if(x < Rasterizer.viewportLeft) {
+            int i_155_ = Rasterizer.viewportLeft - x;
             i_151_ -= i_155_;
-            arg0 = Rasterizer.viewportLeft;
+            x = Rasterizer.viewportLeft;
             i_149_ += i_155_;
             i += i_155_;
             i_153_ += i_155_;
             i_152_ += i_155_;
         }
-        if(arg0 + i_151_ > Rasterizer.viewportRight) {
-            int i_156_ = arg0 + i_151_ - Rasterizer.viewportRight;
+        if(x + i_151_ > Rasterizer.viewportRight) {
+            int i_156_ = x + i_151_ - Rasterizer.viewportRight;
             i_151_ -= i_156_;
             i_153_ += i_156_;
             i_152_ += i_156_;
         }
         if(i_151_ > 0 && i_150_ > 0)
-            method730(Rasterizer.destinationPixels, pixels, 0, i_149_, i, i_151_, i_150_, i_152_, i_153_, arg2);
+            method730(Rasterizer.destinationPixels, pixels, 0, i_149_, i, i_151_, i_150_, i_152_, i_153_, opacity);
     }
 
     public void drawRotated(int x, int y, int pivotX, int pivotY, int width, int height, int zoom, double angle) {

@@ -36,7 +36,7 @@ public class Class35 implements Interface3 {
         int i = is.length;
         aClass40_Sub10Array1740 = new EntryTable[arg0.fileLength(0)];
         for(int i_4_ = 0; i > i_4_; i_4_++) {
-            Buffer class40_sub1 = new Buffer(arg0.getFile(is[i_4_], 0));
+            Buffer class40_sub1 = new Buffer(arg0.getFile(0, is[i_4_]));
             aClass40_Sub10Array1740[is[i_4_]] = new EntryTable(class40_sub1);
         }
 

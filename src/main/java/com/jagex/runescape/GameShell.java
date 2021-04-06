@@ -73,20 +73,20 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
 
                 int i_1_ = arg4 + gameInterface.currentX;
                 int i_2_ = arg0 + gameInterface.currentY;
-                if (!gameInterface.aBoolean2694)
+                if (!gameInterface.lockScroll)
                     i_2_ -= arg9;
                 int i_3_ = i_2_ + gameInterface.originalHeight;
                 int i_4_ = arg0 >= i_2_ ? arg0 : i_2_;
-                if (!gameInterface.aBoolean2694)
+                if (!gameInterface.lockScroll)
                     i_1_ -= arg2;
                 int i_5_ = i_1_ + gameInterface.originalWidth;
                 int i_6_ = arg4 < i_1_ ? i_1_ : arg4;
                 int i_7_ = arg1 > i_3_ ? i_3_ : arg1;
                 int i_8_ = i_5_ < arg8 ? i_5_ : arg8;
                 if (gameInterface.type == GameInterfaceType.LAYER) {
-                    method20(i_4_, i_7_, gameInterface.anInt2746, arg3, i_6_, i, 1, arg7, i_8_, gameInterface.scrollPosition);
+                    method20(i_4_, i_7_, gameInterface.scrollWidth, arg3, i_6_, i, 1, arg7, i_8_, gameInterface.scrollPosition);
                     if (gameInterface.children != null)
-                        method20(i_4_, i_7_, gameInterface.anInt2746, arg3, i_6_, gameInterface.id, 1, gameInterface.children, i_8_, gameInterface.scrollPosition);
+                        method20(i_4_, i_7_, gameInterface.scrollWidth, arg3, i_6_, gameInterface.id, 1, gameInterface.children, i_8_, gameInterface.scrollPosition);
                 }
                 if (gameInterface.hasListeners) {
                     boolean bool;
@@ -205,7 +205,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             }
         }
         setCanvas((byte) 121);
-        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(Class12.width, IdentityKit.height, MouseHandler.aCanvas1469);
+        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(Class12.width, IdentityKit.height, MouseHandler.gameCanvas);
         startup(true);
         SceneCluster.aTimer_768 = Timer.create();
         SceneCluster.aTimer_768.start();
@@ -225,7 +225,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         if (!PacketBuffer.aBoolean2255) {
             PacketBuffer.aBoolean2255 = true;
             try {
-                MouseHandler.aCanvas1469.removeFocusListener(this);
+                MouseHandler.gameCanvas.removeFocusListener(this);
             } catch (Exception exception) {
                 /* empty */
             }
@@ -377,14 +377,14 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             if (MovedStatics.anInt938++ > 50) {
                 MovedStatics.anInt938 -= 50;
                 Class40_Sub5_Sub11.clearScreen = true;
-                MouseHandler.aCanvas1469.setSize(Class12.width, IdentityKit.height);
-                MouseHandler.aCanvas1469.setVisible(true);
-                MouseHandler.aCanvas1469.setBackground(Color.BLACK);
+                MouseHandler.gameCanvas.setSize(Class12.width, IdentityKit.height);
+                MouseHandler.gameCanvas.setVisible(true);
+                MouseHandler.gameCanvas.setBackground(Color.BLACK);
                 if (Class35.aFrame1732 == null)
-                    MouseHandler.aCanvas1469.setLocation(0, 0);
+                    MouseHandler.gameCanvas.setLocation(0, 0);
                 else {
                     Insets insets = Class35.aFrame1732.getInsets();
-                    MouseHandler.aCanvas1469.setLocation(insets.left, insets.top);
+                    MouseHandler.gameCanvas.setLocation(insets.left, insets.top);
                 }
             }
             method34(arg0 + -210);
@@ -473,23 +473,23 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         Container container = Class35.aFrame1732;
 //        else
 //            container = ISAAC.aClass31_521.anApplet740;
-        if (MouseHandler.aCanvas1469 != null) {
-            MouseHandler.aCanvas1469.removeFocusListener(this);
-            container.remove(MouseHandler.aCanvas1469);
+        if (MouseHandler.gameCanvas != null) {
+            MouseHandler.gameCanvas.removeFocusListener(this);
+            container.remove(MouseHandler.gameCanvas);
         }
-        MouseHandler.aCanvas1469 = new RSCanvas(this);
-        container.add(MouseHandler.aCanvas1469);
-        MouseHandler.aCanvas1469.setSize(Class12.width, IdentityKit.height);
-        MouseHandler.aCanvas1469.setVisible(true);
+        MouseHandler.gameCanvas = new RSCanvas(this);
+        container.add(MouseHandler.gameCanvas);
+        MouseHandler.gameCanvas.setSize(Class12.width, IdentityKit.height);
+        MouseHandler.gameCanvas.setVisible(true);
         if (Class35.aFrame1732 != null) {
             Insets insets = Class35.aFrame1732.getInsets();
-            MouseHandler.aCanvas1469.setLocation(insets.left, insets.top);
+            MouseHandler.gameCanvas.setLocation(insets.left, insets.top);
         } else
-            MouseHandler.aCanvas1469.setLocation(0, 0);
-        MouseHandler.aCanvas1469.addFocusListener(this);
+            MouseHandler.gameCanvas.setLocation(0, 0);
+        MouseHandler.gameCanvas.addFocusListener(this);
         if (arg0 < 85)
             run();
-        MouseHandler.aCanvas1469.requestFocus();
+        MouseHandler.gameCanvas.requestFocus();
         Class40_Sub5_Sub11.clearScreen = true;
         MovedStatics.aBoolean1575 = false;
         MovedStatics.aLong174 = System.currentTimeMillis();

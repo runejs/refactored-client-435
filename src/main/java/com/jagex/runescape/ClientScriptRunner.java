@@ -566,7 +566,7 @@ public class ClientScriptRunner extends Node {
                     }
                     if(scriptOpcode == 1100) {
                         intValueIndex -= 2;
-                        gameInterface.anInt2746 = scriptIntValues[intValueIndex];
+                        gameInterface.scrollWidth = scriptIntValues[intValueIndex];
                         gameInterface.scrollPosition = scriptIntValues[1 + intValueIndex];
                     } else if(scriptOpcode == 1101) {
                         int i_24_ = scriptIntValues[--intValueIndex];
@@ -583,9 +583,9 @@ public class ClientScriptRunner extends Node {
                     } else if(scriptOpcode == 1105) {
                         gameInterface.spriteId = scriptIntValues[--intValueIndex];
                     } else if(scriptOpcode == 1106) {
-                        gameInterface.anInt2751 = scriptIntValues[--intValueIndex];
+                        gameInterface.textureId = scriptIntValues[--intValueIndex];
                     } else if(scriptOpcode == 1107) {
-                        gameInterface.aBoolean2641 = scriptIntValues[--intValueIndex] == 1;
+                        gameInterface.tiled = scriptIntValues[--intValueIndex] == 1;
                     } else if(scriptOpcode == 1108) {
                         gameInterface.modelType = InterfaceModelType.MODEL;
                         gameInterface.modelId = scriptIntValues[--intValueIndex];
@@ -658,7 +658,7 @@ public class ClientScriptRunner extends Node {
                                 GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[intValueIndex]);
                                 int i_33_ = scriptIntValues[2 + intValueIndex];
                                 int i_34_ = scriptIntValues[intValueIndex + 1];
-                                GameInterface gameInterface_35_ = GameInterface.method361(gameInterface.children, i_33_, true, gameInterface.scrollPosition, gameInterface.id, gameInterface.anInt2746, i_34_, 398);
+                                GameInterface gameInterface_35_ = GameInterface.method361(gameInterface.children, i_33_, true, gameInterface.scrollPosition, gameInterface.id, gameInterface.scrollWidth, i_34_, 398);
                                 if(gameInterface_35_ == null) {
                                     scriptIntValues[intValueIndex++] = 0;
                                 } else {
@@ -709,7 +709,7 @@ public class ClientScriptRunner extends Node {
                                     GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[intValueIndex]);
                                     int i_39_ = scriptIntValues[1 + intValueIndex];
                                     int i_40_ = scriptIntValues[intValueIndex + 2];
-                                    GameInterface gameInterface_41_ = GameInterface.method361(GameInterface.cachedInterfaces[gameInterface.id >> 16], i_40_, false, gameInterface.scrollPosition, 0xffff & gameInterface.id, gameInterface.anInt2746, i_39_, 398);
+                                    GameInterface gameInterface_41_ = GameInterface.method361(GameInterface.cachedInterfaces[gameInterface.id >> 16], i_40_, false, gameInterface.scrollPosition, 0xffff & gameInterface.id, gameInterface.scrollWidth, i_39_, 398);
                                     if(gameInterface_41_ == null) {
                                         scriptIntValues[intValueIndex++] = -1;
                                     } else {
@@ -720,7 +720,7 @@ public class ClientScriptRunner extends Node {
                                 if(scriptOpcode < 2700) {
                                     GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                                     if(scriptOpcode == 2600) {
-                                        scriptIntValues[intValueIndex++] = gameInterface.anInt2746;
+                                        scriptIntValues[intValueIndex++] = gameInterface.scrollWidth;
                                     } else {
                                         if(scriptOpcode != 2601) {
                                             break;
@@ -941,7 +941,7 @@ public class ClientScriptRunner extends Node {
                         } else {
                             GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
                             if(scriptOpcode == 1600) {
-                                scriptIntValues[intValueIndex++] = gameInterface.anInt2746;
+                                scriptIntValues[intValueIndex++] = gameInterface.scrollWidth;
                             } else {
                                 if(scriptOpcode != 1601) {
                                     break;
@@ -1023,7 +1023,7 @@ public class ClientScriptRunner extends Node {
                         } else if(scriptOpcode == 1311) {
                             gameInterface.anInt2738 = scriptIntValues[--intValueIndex];
                         } else if(scriptOpcode == 1312) {
-                            gameInterface.aBoolean2694 = scriptIntValues[--intValueIndex] == 1;
+                            gameInterface.lockScroll = scriptIntValues[--intValueIndex] == 1;
                         } else {
                             if(scriptOpcode != 1313) {
                                 break;

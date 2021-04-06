@@ -108,7 +108,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
     public static void drawWelcomeScreenGraphics() {
         try {
             if(ScreenController.frameMode == ScreenMode.FIXED) {
-                Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+                Graphics graphics = MouseHandler.gameCanvas.getGraphics();
 
                 Landscape.framePieceRight.drawGraphics(0, 4, graphics);
                 MovedStatics.chatboxRight.drawGraphics(0, 357, graphics);
@@ -121,7 +121,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
                 Class17.chatboxTop.drawGraphics(0, 338, graphics);
             }
         } catch(Exception exception) {
-            MouseHandler.aCanvas1469.repaint();
+            MouseHandler.gameCanvas.repaint();
         }
     }
 
@@ -134,26 +134,26 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
     }
 
 
-    public static boolean method746(GameInterface gameInterface) {
+    public static boolean checkForAlternateAction(GameInterface gameInterface) {
         if(gameInterface.alternateOperators == null) {
             return false;
         }
-        for(int i = 0; gameInterface.alternateOperators.length > i; i++) {
-            int i_10_ = ClientScript.parseClientScripts(i, false, gameInterface);
-            int i_11_ = gameInterface.alternateRhs[i];
-            if(gameInterface.alternateOperators[i] == 2) {
-                if(i_11_ <= i_10_) {
+        for(int scriptIndex = 0; gameInterface.alternateOperators.length > scriptIndex; scriptIndex++) {
+            int i_10_ = ClientScript.parseClientScripts(scriptIndex, false, gameInterface);
+            int rhsValue = gameInterface.alternateRhs[scriptIndex];
+            if(gameInterface.alternateOperators[scriptIndex] == 2) {
+                if(rhsValue <= i_10_) {
                     return false;
                 }
-            } else if(gameInterface.alternateOperators[i] == 3) {
-                if(i_11_ >= i_10_) {
+            } else if(gameInterface.alternateOperators[scriptIndex] == 3) {
+                if(rhsValue >= i_10_) {
                     return false;
                 }
-            } else if(gameInterface.alternateOperators[i] == 4) {
-                if(i_11_ == i_10_) {
+            } else if(gameInterface.alternateOperators[scriptIndex] == 4) {
+                if(rhsValue == i_10_) {
                     return false;
                 }
-            } else if(i_10_ != i_11_) {
+            } else if(i_10_ != rhsValue) {
                 return false;
             }
         }
@@ -198,7 +198,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(definition != null) {
             return definition;
         }
-        byte[] is = Class26.aCacheArchive_632.getFile(id, arg1);
+        byte[] is = Class26.aCacheArchive_632.getFile(arg1, id);
         definition = new ItemDefinition();
         definition.id = id;
         if(is != null) {
@@ -271,7 +271,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         int i_12_ = Rasterizer3D.sinetable[definition.xan2d] * i_11_ >> 16;
         int i_13_ = i_11_ * Rasterizer3D.cosinetable[definition.xan2d] >> 16;
         model.method799();
-        model.method812(0, definition.yan2d, definition.zan2d, definition.xan2d, definition.xOffset2d, definition.yOffset2d + model.modelHeight / 2 + i_12_, i_13_ + definition.yOffset2d);
+        model.drawModel(0, definition.yan2d, definition.zan2d, definition.xan2d, definition.xOffset2d, definition.yOffset2d + model.modelHeight / 2 + i_12_, i_13_ + definition.yOffset2d);
         for(int i_14_ = 31; i_14_ >= 0; i_14_--) {
             for(i_13_ = 31; i_13_ >= 0; i_13_--) {
                 if(rendered.pixels[i_14_ + 32 * i_13_] == 0) {
@@ -323,11 +323,11 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(backColour == 0)
             Buffer.rgbImageCache.put((long) id, rendered);
         Rasterizer.prepare(pixels, i_1_, i);
-        Rasterizer.setBounds(i_2_, i_5_, i_6_, i_4_);
+        Rasterizer.setBounds(i_2_, i_5_, i_4_, i_6_);
         Rasterizer3D.setLineOffsets(lineOffsets);
         Rasterizer3D.bottomY = i_8_;
         Rasterizer3D.viewportRx = i_9_;
-        Rasterizer3D.method702();
+        Rasterizer3D.resetBoundsTo3dViewport();
         Rasterizer3D.notTextured = true;
         if(definition.stackable == 1)
             rendered.maxWidth = 33;
@@ -395,14 +395,14 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(primaryId == -1) {
             return null;
         }
-        Model primary = Model.getModel(Class8.aCacheArchive_284, primaryId, 0);
+        Model primary = Model.getModel(Class8.aCacheArchive_284, primaryId);
         if(secondaryId != -1) {
-            Model secondary = Model.getModel(Class8.aCacheArchive_284, secondaryId, 0);
+            Model secondary = Model.getModel(Class8.aCacheArchive_284, secondaryId);
             if(tertiaryId == -1) {
                 Model[] tertiary = {primary, secondary};
                 primary = new Model(tertiary, 2);
             } else {
-                Model model3 = Model.getModel(Class8.aCacheArchive_284, tertiaryId, 0);
+                Model model3 = Model.getModel(Class8.aCacheArchive_284, tertiaryId);
                 Model[] models = {primary, secondary, model3};
                 primary = new Model(models, 3);
             }
@@ -449,9 +449,9 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(primaryId == -1) {
             return null;
         }
-        Model primary = Model.getModel(Class8.aCacheArchive_284, primaryId, 0);
+        Model primary = Model.getModel(Class8.aCacheArchive_284, primaryId);
         if(secondaryId != -1) {
-            Model secondary = Model.getModel(Class8.aCacheArchive_284, secondaryId, 0);
+            Model secondary = Model.getModel(Class8.aCacheArchive_284, secondaryId);
             Model[] models = {primary, secondary};
             primary = new Model(models, 2);
         }
@@ -600,7 +600,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(model != null) {
             return model;
         }
-        model = Model.getModel(Class8.aCacheArchive_284, inventoryModelId, 0);
+        model = Model.getModel(Class8.aCacheArchive_284, inventoryModelId);
         if(model == null) {
             return null;
         }

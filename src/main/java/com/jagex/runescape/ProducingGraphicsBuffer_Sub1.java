@@ -35,18 +35,17 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
     public ImageConsumer imageConsumer;
 
 
-    public static AnimationSequence method1050(int arg0, int arg1) {
-        AnimationSequence animationSequence = (AnimationSequence) Class40_Sub5_Sub6.aClass9_2439.get((long) arg0);
-        if(arg1 != 2)
-            anInt2211 = -106;
+    public static AnimationSequence getAnimationSequence(int animationId) {
+        AnimationSequence animationSequence = (AnimationSequence) Class40_Sub5_Sub6.aClass9_2439.get((long) animationId);
+
         if(animationSequence != null)
             return animationSequence;
-        byte[] is = AnimationSequence.aCacheArchive_2484.getFile(arg0, 12);
+        byte[] is = AnimationSequence.aCacheArchive_2484.getFile(12, animationId);
         animationSequence = new AnimationSequence();
         if(is != null)
             animationSequence.decodeAllAnimationSequences(new Buffer(is));
         animationSequence.method591();
-        Class40_Sub5_Sub6.aClass9_2439.put((long) arg0, animationSequence);
+        Class40_Sub5_Sub6.aClass9_2439.put((long) animationId, animationSequence);
         return animationSequence;
     }
 

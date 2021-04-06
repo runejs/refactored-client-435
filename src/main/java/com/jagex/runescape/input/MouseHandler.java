@@ -33,7 +33,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public static int anInt1457 = -1;
     public static ImageRGB[] minimapHint = new ImageRGB[1000];
     public static int anInt1468;
-    public static Canvas aCanvas1469;
+    public static Canvas gameCanvas;
     public static int clickType = 0;
     public static byte[][][] tile_overlayids;
     public static int cameraZoom = 600;

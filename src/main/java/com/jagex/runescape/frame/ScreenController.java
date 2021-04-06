@@ -88,7 +88,7 @@ public class ScreenController {
     }
 
     public static void setBounds() {
-        if (MouseHandler.aCanvas1469 == null) {
+        if (MouseHandler.gameCanvas == null) {
             return;
         }
         Dimension innerSize = getInnerSize(Class35.aFrame1732);
@@ -113,18 +113,18 @@ public class ScreenController {
 
 
         Scene.method95(500, 800, frameMode == ScreenMode.FIXED ? 512 : drawWidth, frameMode == ScreenMode.FIXED ? 334 : drawHeight, is);
-        MouseHandler.aCanvas1469.setSize(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight);
+        MouseHandler.gameCanvas.setSize(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight);
 
-        if (Class51.anInt1197 <= 35 && Class51.anInt1197 >= 30) {
+        if (Class51.currentAction <= 35 && Class51.currentAction >= 30) {
             VarbitDefinition.gameScreenImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, Class35.aFrame1732);
         } else {
-            MouseHandler.aCanvas1469.setSize(Class12.width, IdentityKit.height);
-            MouseHandler.aCanvas1469.setVisible(true);
+            MouseHandler.gameCanvas.setSize(Class12.width, IdentityKit.height);
+            MouseHandler.gameCanvas.setVisible(true);
             if (Class35.aFrame1732 == null)
-                MouseHandler.aCanvas1469.setLocation(0, 0);
+                MouseHandler.gameCanvas.setLocation(0, 0);
             else {
                 Insets insets = Class35.aFrame1732.getInsets();
-                MouseHandler.aCanvas1469.setLocation(insets.left, insets.top);
+                MouseHandler.gameCanvas.setLocation(insets.left, insets.top);
             }//            Class38.loginBoxGraphics = Class40_Sub5_Sub13.createGraphicsBuffer(frameWidth, frameHeight, Class35.aFrame1732);
         }
     }
@@ -297,21 +297,20 @@ public class ScreenController {
         }
     }
 
-    public static void handleTabClick(int x, int y) {
+    public static void handleTabClick(int mouseX, int mouseY) {
         if (frameMode == ScreenMode.FIXED) {
-
             if (GameInterface.tabAreaInterfaceId != -1)
-                Class13.method243((byte) 89, 205, 743, 466, GameInterface.tabAreaInterfaceId, 553, x, y, 1);
+                Class13.handleInterfaceActions(1, mouseX, mouseY, 553, 205, 743, 466, GameInterface.tabAreaInterfaceId);
             else if (Player.tabWidgetIds[Player.currentTabId] != -1) {
-                Class13.method243((byte) 89, 205, 743, 466, Player.tabWidgetIds[Player.currentTabId], 553, x, y, 1);
+                Class13.handleInterfaceActions(1, mouseX, mouseY, 553, 205, 743, 466, Player.tabWidgetIds[Player.currentTabId]);
             }
         } else {
             int[] tabInterFaceCoords= tabProducer.getTabInterfaceCoordSize(drawWidth - 241, drawHeight - (334));
 
             if (GameInterface.tabAreaInterfaceId != -1)
-                Class13.method243((byte) 89, tabInterFaceCoords[1], tabInterFaceCoords[0]+tabInterFaceCoords[2],tabInterFaceCoords[1]+tabInterFaceCoords[3], GameInterface.tabAreaInterfaceId, tabInterFaceCoords[0], x, y, 1);
+                Class13.handleInterfaceActions(1, mouseX, mouseY, tabInterFaceCoords[0], tabInterFaceCoords[1], tabInterFaceCoords[0]+tabInterFaceCoords[2],tabInterFaceCoords[1]+tabInterFaceCoords[3], GameInterface.tabAreaInterfaceId);
             else if (Player.tabWidgetIds[Player.currentTabId] != -1) {
-                Class13.method243((byte) 89, tabInterFaceCoords[1], tabInterFaceCoords[0]+tabInterFaceCoords[2],tabInterFaceCoords[1]+tabInterFaceCoords[3], Player.tabWidgetIds[Player.currentTabId], tabInterFaceCoords[0], x, y, 1);
+                Class13.handleInterfaceActions(1, mouseX, mouseY, tabInterFaceCoords[0], tabInterFaceCoords[1], tabInterFaceCoords[0]+tabInterFaceCoords[2],tabInterFaceCoords[1]+tabInterFaceCoords[3], Player.tabWidgetIds[Player.currentTabId]);
             }
         }
     }
@@ -323,18 +322,18 @@ public class ScreenController {
                     if (y < 434 && x < 426)
                         ClientScriptRunner.method873(y - 357, 45);
                 } else
-                    Class13.method243((byte) 89, 357, 496, 453, ChatBox.dialogueId, 17, x, y, 3);
+                    Class13.handleInterfaceActions(3, x, y, 17, 357, 496, 453, ChatBox.dialogueId);
             } else
-                Class13.method243((byte) 89, 357, 496, 453, GameInterface.chatboxInterfaceId, 17, x, y, 2);
+                Class13.handleInterfaceActions(2, x, y, 17, 357, 496, 453, GameInterface.chatboxInterfaceId);
         } else {
             if (GameInterface.chatboxInterfaceId == -1) {
                 if (ChatBox.dialogueId == -1) {
                     if (y < frameHeight - (112) && x < 426)
                         ClientScriptRunner.method873(y - (frameHeight - 162), 45);
                 } else
-                    Class13.method243((byte) 89, (frameHeight - 162), frameWidth - 496, frameHeight - 54, ChatBox.dialogueId, 17, x, y, 3);
+                    Class13.handleInterfaceActions(3, x, y, 17, (frameHeight - 162), frameWidth - 496, frameHeight - 54, ChatBox.dialogueId);
             } else
-                Class13.method243((byte) 89, (frameHeight - 162), frameWidth - 496, frameHeight - 54, GameInterface.chatboxInterfaceId, 17, x, y, 2);
+                Class13.handleInterfaceActions(2, x, y, 17, (frameHeight - 162), frameWidth - 496, frameHeight - 54, GameInterface.chatboxInterfaceId);
         }
 
     }

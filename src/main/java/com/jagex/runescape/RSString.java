@@ -16,7 +16,7 @@ public class RSString {
     public static int anInt1690 = 0;
     public static CacheArchive aCacheArchive_1705;
     public static int[] keyCodes = new int[128];
-    public static int anInt1711 = 50;
+    public static int tooltipDelay = 50;
     public static byte[][] terrainData;
     /*synthetic*/ public static Class aClass1718;
     public boolean aBoolean1675 = true;
@@ -51,7 +51,7 @@ public class RSString {
             if(class40_sub5_sub6 != null)
                 return class40_sub5_sub6.aByteArray2441;
         }
-        byte[] is = arg1.getFile(arg0, arg2);
+        byte[] is = arg1.getFile(arg2, arg0);
         if(is == null)
             return null;
         if(aClass9_1684 != null)

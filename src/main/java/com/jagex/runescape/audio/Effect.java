@@ -28,7 +28,7 @@ public class Effect {
     }
 
     public static Effect method429(CacheArchive arg0, int arg1, int arg2) {
-        byte[] is = arg0.getFile(arg2, arg1);
+        byte[] is = arg0.getFile(arg1, arg2);
         if(is == null)
             return null;
         return new Effect(new Buffer(is));

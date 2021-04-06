@@ -24,10 +24,7 @@ import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 import tech.henning.fourthreefive.OldEngine.MapDecompressor;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
 import java.io.IOException;
-import java.util.zip.GZIPInputStream;
 
 public class Landscape {
     public static int anInt1157 = 0;
@@ -47,7 +44,7 @@ public class Landscape {
         boolean bool = true;
         for(int i = 0; i < RSString.terrainData.length; i++) {
             if(LinkedList.anIntArray1071[i] != -1 && RSString.terrainData[i] == null) {
-                RSString.terrainData[i] = CacheArchive.gameWorldMapCacheArchive.getFile(0, LinkedList.anIntArray1071[i]);
+                RSString.terrainData[i] = CacheArchive.gameWorldMapCacheArchive.getFile(LinkedList.anIntArray1071[i], 0);
                 if(RSString.terrainData[i] == null) {
                     Class37.anInt874++;
                     bool = false;
@@ -232,9 +229,9 @@ public class Landscape {
                     }
                 }
                 if(GameInterface.fullscreenInterfaceId != -1)
-                    OverlayDefinition.method559(35);
+                    OverlayDefinition.updateOverlay(35);
                 else
-                    OverlayDefinition.method559(30);
+                    OverlayDefinition.updateOverlay(30);
                 MovedStatics.method973();
                 SceneCluster.packetBuffer.putPacket(178);
                 RSRuntimeException.method1057(126);

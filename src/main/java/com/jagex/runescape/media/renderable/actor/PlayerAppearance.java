@@ -42,7 +42,7 @@ public class PlayerAppearance {
 
     public static void method381(Actor arg1) {
         if(MovedStatics.pulseCycle == arg1.anInt3107 || arg1.playingAnimation == -1 || arg1.playingAnimationDelay != 0 ||
-                arg1.anInt3115 + 1 > ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2).frameLengths[arg1.anInt3104]) {
+                arg1.anInt3115 + 1 > ProducingGraphicsBuffer_Sub1.getAnimationSequence(arg1.playingAnimation).frameLengths[arg1.anInt3104]) {
             int i = -arg1.anInt3112 + arg1.anInt3107;
             int i_16_ = -arg1.anInt3112 + MovedStatics.pulseCycle;
             int i_17_ = arg1.anInt3125 * 128 + 64 * arg1.anInt3096;

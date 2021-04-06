@@ -44,8 +44,8 @@ public class TabProducer extends FramePieceRenderer {
 
 
     public TabProducer() {
-        this.tempResizableSideBar = Class40_Sub5_Sub13.createGraphicsBuffer(241, 334, MouseHandler.aCanvas1469);
-        resizableSideBarImage = Class40_Sub5_Sub13.createGraphicsBuffer(241, 334, MouseHandler.aCanvas1469);
+        this.tempResizableSideBar = Class40_Sub5_Sub13.createGraphicsBuffer(241, 334, MouseHandler.gameCanvas);
+        resizableSideBarImage = Class40_Sub5_Sub13.createGraphicsBuffer(241, 334, MouseHandler.gameCanvas);
         rasterizerInstanced = new RasterizerInstanced(this.tempResizableSideBar);
         rasterizerInstanced.drawFilledRectangle(0, 0, 241, 334, Integer.MAX_VALUE);
     }

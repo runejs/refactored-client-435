@@ -825,13 +825,13 @@ public class MovedStatics {
                 Class40_Sub5_Sub15.tabIcons[12].drawImage(226, 2);
         }
         try {
-            Graphics graphics = MouseHandler.aCanvas1469.getGraphics();
+            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
             if (ScreenController.frameMode == ScreenMode.FIXED) {
                 InteractiveObject.tabTop.drawGraphics(516, 160, graphics);
                 RSCanvas.tabBottom.drawGraphics(496, 466, graphics);
             }
         } catch (Exception exception) {
-            MouseHandler.aCanvas1469.repaint();
+            MouseHandler.gameCanvas.repaint();
         }
     }
 
@@ -861,7 +861,7 @@ public class MovedStatics {
         VarbitDefinition varbitDefinition = (VarbitDefinition) Class57.aClass9_1331.get((long) arg1);
         if (varbitDefinition != null)
             return varbitDefinition;
-        byte[] is = RSCanvas.aCacheArchive_61.getFile(arg1, 14);
+        byte[] is = RSCanvas.aCacheArchive_61.getFile(14, arg1);
         varbitDefinition = new VarbitDefinition();
         if (is != null)
             varbitDefinition.method562(new Buffer(is));

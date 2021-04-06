@@ -26,7 +26,7 @@ public class Class40_Sub5_Sub15 extends CachedNode {
         aFrameDefinitionArray2794 = new FrameDefinition[i];
         int[] is = arg0.method192(arg2, true);
         for(int i_0_ = 0; is.length > i_0_; i_0_++) {
-            byte[] is_1_ = arg0.getFile(is[i_0_], arg2);
+            byte[] is_1_ = arg0.getFile(arg2, is[i_0_]);
             FramemapDefinition framemapDefinition = null;
             int i_2_ = is_1_[1] & 0xff | is_1_[0] << 8 & 0xff00;
             for(FramemapDefinition framemapDefinition_3_ = (FramemapDefinition) linkedList.method902((byte) -90); framemapDefinition_3_ != null; framemapDefinition_3_ = (FramemapDefinition) linkedList.method909(-4)) {
@@ -63,7 +63,7 @@ public class Class40_Sub5_Sub15 extends CachedNode {
     public static void method736(boolean arg0, Actor arg1) {
         arg1.aBoolean3105 = false;
         if(arg1.anInt3077 != -1) {
-            AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(arg1.anInt3077, 2);
+            AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(arg1.anInt3077);
             if(animationSequence == null || animationSequence.frameIds == null)
                 arg1.anInt3077 = -1;
             else {
@@ -85,7 +85,7 @@ public class Class40_Sub5_Sub15 extends CachedNode {
             if(i == -1)
                 arg1.graphicId = -1;
             else {
-                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(i, 2);
+                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(i);
                 if(animationSequence == null || animationSequence.frameIds == null)
                     arg1.graphicId = -1;
                 else {
@@ -101,14 +101,14 @@ public class Class40_Sub5_Sub15 extends CachedNode {
         }
         if(arg0) {
             if(arg1.playingAnimation != -1 && arg1.playingAnimationDelay <= 1) {
-                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2);
+                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(arg1.playingAnimation);
                 if(animationSequence.precedenceAnimating == 1 && arg1.anInt3094 > 0 && arg1.anInt3112 <= MovedStatics.pulseCycle && MovedStatics.pulseCycle > arg1.anInt3107) {
                     arg1.playingAnimationDelay = 1;
                     return;
                 }
             }
             if(arg1.playingAnimation != -1 && arg1.playingAnimationDelay == 0) {
-                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(arg1.playingAnimation, 2);
+                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(arg1.playingAnimation);
                 if(animationSequence != null && animationSequence.frameIds != null) {
                     arg1.anInt3115++;
                     if(animationSequence.frameIds.length > arg1.anInt3104 && animationSequence.frameLengths[arg1.anInt3104] < arg1.anInt3115) {

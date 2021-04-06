@@ -30,14 +30,14 @@ public abstract class Renderable extends CachedNode {
             GameInterface gameInterface = gameInterfaces[i];
             if(gameInterface != null && gameInterface.type == GameInterfaceType.MODEL) {
                 if(gameInterface.animation != -1 || gameInterface.alternateAnimation != -1) {
-                    boolean bool_0_ = ItemDefinition.method746(gameInterface);
+                    boolean bool_0_ = ItemDefinition.checkForAlternateAction(gameInterface);
                     int i_1_;
                     if(bool_0_)
                         i_1_ = gameInterface.alternateAnimation;
                     else
                         i_1_ = gameInterface.animation;
                     if(i_1_ != -1) {
-                        AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.method1050(i_1_, 2);
+                        AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(i_1_);
                         gameInterface.remainingAnimationTime += MovedStatics.anInt199;
                         while(animationSequence.frameLengths[gameInterface.animationFrame] < gameInterface.remainingAnimationTime) {
                             bool = true;

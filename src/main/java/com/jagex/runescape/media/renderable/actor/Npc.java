@@ -42,7 +42,7 @@ public class Npc extends Actor {
         if(Class64.aCacheArchive_1521 == null) {
             System.out.println("ISA NULL");
         }
-        byte[] is = Class64.aCacheArchive_1521.getFile(arg1, 16);
+        byte[] is = Class64.aCacheArchive_1521.getFile(16, arg1);
         class40_sub5_sub11 = new Class40_Sub5_Sub11();
         if(is != null)
             class40_sub5_sub11.method634(new Buffer(is));
@@ -63,8 +63,8 @@ public class Npc extends Actor {
                 if(!IncomingPackets.parseIncomingPackets(false))
                     break;
             }
-            if(Class51.anInt1197 == 30 || Class51.anInt1197 == 35) {
-                if(ISAAC.aBoolean519 && Class51.anInt1197 == 30) {
+            if(Class51.currentAction == 30 || Class51.currentAction == 35) {
+                if(ISAAC.aBoolean519 && Class51.currentAction == 30) {
                     SpotAnimDefinition.mouseButtonPressed = 0;
                     MouseHandler.clickType = 0;
                     while(MovedStatics.method416((byte) -104)) {
@@ -185,7 +185,7 @@ public class Npc extends Actor {
                     SceneCluster.packetBuffer.putByte(0);
                 }
                 LinkedList.method910(-32322);
-                if(Class51.anInt1197 == 30 || Class51.anInt1197 == 35) {
+                if(Class51.currentAction == 30 || Class51.currentAction == 35) {
                     Class40_Sub5_Sub13.method652();
                     MusicSystem.processAudio();
                     Class35.anInt1728++;
@@ -270,6 +270,7 @@ public class Npc extends Actor {
                                 MouseHandler.clickType = 0;
                             }
                         }
+
                         if(Scene.clickedTileX != -1) {
                             int i = Scene.clickedTileX;
                             int i_18_ = Scene.clickedTileY;
@@ -282,53 +283,65 @@ public class Npc extends Actor {
                             }
                             Scene.clickedTileX = -1;
                         }
+
                         if(MouseHandler.clickType == 1 && Native.clickToContinueString != null) {
                             MouseHandler.clickType = 0;
                             ChatBox.redrawChatbox = true;
                             Native.clickToContinueString = null;
                         }
+
                         MouseHandler.processMenuClick();
                         if(GameInterface.fullscreenInterfaceId == -1) {
                             ScreenController.handleMinimapMouse();
                             ScreenController.handleTabClick();
                             ScreenController.handleChatButtonsClick();
                         }
+
                         if(SpotAnimDefinition.mouseButtonPressed == 1 || MouseHandler.clickType == 1)
                             anInt3294++;
+
                         int i = 34;
                         if(GameInterface.gameScreenInterfaceId != -1)
                             GameInterface.method360((byte) 125, 516, i, 338, GameInterface.gameScreenInterfaceId, 4, 4);
+
                         if(GameInterface.tabAreaInterfaceId == -1) {
                             if(Player.tabWidgetIds[Player.currentTabId] != -1)
                                 GameInterface.method360((byte) 125, 743, i, 466, Player.tabWidgetIds[Player.currentTabId], 205, 553);
                         } else
                             GameInterface.method360((byte) 125, 743, i, 466, GameInterface.tabAreaInterfaceId, 205, 553);
+
                         if(GameInterface.chatboxInterfaceId != -1)
                             GameInterface.method360((byte) 125, 496, i, 453, GameInterface.chatboxInterfaceId, 357, 17);
                         else if(ChatBox.dialogueId != -1)
                             GameInterface.method360((byte) 125, 496, i, 453, ChatBox.dialogueId, 357, 17);
+
                         if(GameInterface.gameScreenInterfaceId != -1)
                             GameInterface.method360((byte) 125, 516, i ^ 0xffffffff, 338, GameInterface.gameScreenInterfaceId, 4, 4);
+
                         if(GameInterface.tabAreaInterfaceId != -1)
                             GameInterface.method360((byte) 125, 743, i ^ 0xffffffff, 466, GameInterface.tabAreaInterfaceId, 205, 553);
+
                         else if(Player.tabWidgetIds[Player.currentTabId] != -1)
                             GameInterface.method360((byte) 125, 743, i ^ 0xffffffff, 466, Player.tabWidgetIds[Player.currentTabId], 205, 553);
+
                         if(GameInterface.chatboxInterfaceId != -1)
                             GameInterface.method360((byte) 125, 496, i ^ 0xffffffff, 453, GameInterface.chatboxInterfaceId, 357, 17);
                         else if(ChatBox.dialogueId != -1)
                             GameInterface.method360((byte) 125, 496, i ^ 0xffffffff, 453, ChatBox.dialogueId, 357, 17);
+
+                        // If hovering over a widget
                         if(MovedStatics.anInt1586 != -1 || FloorDecoration.anInt614 != -1 || MovedStatics.anInt573 != -1) {
-                            if(RSString.anInt1711 > WallDecoration.anInt1257) {
-                                WallDecoration.anInt1257++;
-                                if(RSString.anInt1711 == WallDecoration.anInt1257) {
+                            if(RSString.tooltipDelay > WallDecoration.durationHoveredOverWidget) {
+                                WallDecoration.durationHoveredOverWidget++;
+                                if(RSString.tooltipDelay == WallDecoration.durationHoveredOverWidget) {
                                     if(MovedStatics.anInt1586 != -1)
                                         ChatBox.redrawChatbox = true;
                                     if(FloorDecoration.anInt614 != -1)
                                         GameInterface.redrawTabArea = true;
                                 }
                             }
-                        } else if(WallDecoration.anInt1257 > 0)
-                            WallDecoration.anInt1257--;
+                        } else if(WallDecoration.durationHoveredOverWidget > 0)
+                            WallDecoration.durationHoveredOverWidget--;
                         Item.calculateCameraPosition();
                         if(Player.cutsceneActive)
                             Main.method165(35);
@@ -410,7 +423,7 @@ public class Npc extends Actor {
         OverlayDefinition overlayDefinition = (OverlayDefinition) Class33.aClass9_778.get((long) arg0);
         if(overlayDefinition != null)
             return overlayDefinition;
-        byte[] is = Actor.aCacheArchive_3144.getFile(arg0, arg1);
+        byte[] is = Actor.aCacheArchive_3144.getFile(arg1, arg0);
         overlayDefinition = new OverlayDefinition();
         if(is != null)
             overlayDefinition.method553(new Buffer(is));
@@ -483,7 +496,7 @@ public class Npc extends Actor {
                     animationId = -1;
                 int animationDelay = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
                 if(animationId == npc.playingAnimation && animationId != -1) {
-                    int i_10_ = ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).replyMode;
+                    int i_10_ = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).replyMode;
                     if(i_10_ == 1) {
                         npc.anInt3115 = 0;
                         npc.anInt3095 = 0;
@@ -492,7 +505,7 @@ public class Npc extends Actor {
                     }
                     if(i_10_ == 2)
                         npc.anInt3095 = 0;
-                } else if(animationId == -1 || npc.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.method1050(animationId, 2).forcedPriority >= ProducingGraphicsBuffer_Sub1.method1050(npc.playingAnimation, 2).forcedPriority) {
+                } else if(animationId == -1 || npc.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).forcedPriority >= ProducingGraphicsBuffer_Sub1.getAnimationSequence(npc.playingAnimation).forcedPriority) {
                     npc.playingAnimation = animationId;
                     npc.anInt3115 = 0;
                     npc.playingAnimationDelay = animationDelay;
@@ -531,7 +544,7 @@ public class Npc extends Actor {
                     Player.npcIds[Player.npcCount++] = trackedNpcIndex;
                     npc.anInt3134 = MovedStatics.pulseCycle;
                     int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                    npc.method782(walkDirection, (byte) -96, false);
+                    npc.move(walkDirection, false);
                     int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
                     if(runUpdateBlock == 1)
                         Player.actorUpdatingIndices[actorUpdatingIndex++] = trackedNpcIndex;
@@ -539,9 +552,9 @@ public class Npc extends Actor {
                     Player.npcIds[Player.npcCount++] = trackedNpcIndex;
                     npc.anInt3134 = MovedStatics.pulseCycle;
                     int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                    npc.method782(walkDirection, (byte) -96, true);
+                    npc.move(walkDirection, true);
                     int runDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                    npc.method782(runDirection, (byte) -96, true);
+                    npc.move(runDirection, true);
                     int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
                     if(runUpdateBlock == 1)
                         Player.actorUpdatingIndices[actorUpdatingIndex++] = trackedNpcIndex;
@@ -610,8 +623,8 @@ public class Npc extends Actor {
     public Model getRotatedModel() {
         if(actorDefinition == null)
             return null;
-        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : ProducingGraphicsBuffer_Sub1.method1050(playingAnimation, 2);
-        AnimationSequence animationSequence_0_ = anInt3077 != -1 && (anInt3077 != idleAnimation || animationSequence == null) ? ProducingGraphicsBuffer_Sub1.method1050(anInt3077, 2) : null;
+        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation);
+        AnimationSequence animationSequence_0_ = anInt3077 != -1 && (anInt3077 != idleAnimation || animationSequence == null) ? ProducingGraphicsBuffer_Sub1.getAnimationSequence(anInt3077) : null;
         Model model = actorDefinition.getChildModel(animationSequence, animationSequence_0_, anInt3116, anInt3104);
         if(model == null)
             return null;
