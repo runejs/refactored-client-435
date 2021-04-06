@@ -253,12 +253,12 @@ public class GameInterface extends CachedNode {
 
     public static String getShortenedAmountText(int coins) {
         if(coins < 100000) {
-            return String.valueOf(coins);
+            return "<col=ffff00>" + coins + "</col>";
         }
         if(coins < 10000000) {
-            return coins / 1000 + "K";
+            return "<col=ffffff>" + coins / 1000 + "K" + "</col>";
         }
-        return coins / 0xf4240 + "M";
+        return "<col=00ff80>" + coins / 1000000 + "M" + "</col>";
     }
 
     public static GameInterface getInterface(int interfaceData) {
