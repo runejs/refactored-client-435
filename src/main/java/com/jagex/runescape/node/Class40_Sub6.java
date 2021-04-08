@@ -2,8 +2,8 @@ package com.jagex.runescape.node;
 
 import com.jagex.runescape.MovedStatics;
 import com.jagex.runescape.RSCanvas;
-import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheArchive;
+import com.jagex.runescape.cache.CacheIndex;
 
 public class Class40_Sub6 extends Node {
 
@@ -19,7 +19,7 @@ public class Class40_Sub6 extends Node {
         class40_sub6.anInt2112 = 0;
         class40_sub6.cacheIndex = cacheIndex;
         synchronized(RSCanvas.aLinkedList_53) {
-            RSCanvas.aLinkedList_53.pushBack(class40_sub6, -82);
+            RSCanvas.aLinkedList_53.pushBack(class40_sub6);
         }
         MovedStatics.method332(600);
     }

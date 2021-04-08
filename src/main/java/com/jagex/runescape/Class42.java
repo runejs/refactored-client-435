@@ -1,6 +1,5 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.ItemDefinition;
@@ -9,6 +8,7 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.PacketBuffer;
+import com.jagex.runescape.node.NodeCache;
 
 public class Class42 {
     public static byte[][][] tile_underlayids;
@@ -26,8 +26,9 @@ public class Class42 {
             /* empty */
         }
         anIntArray996 = new int[i + i];
-        for(int i_8_ = 0; i + i > i_8_; i_8_++)
+        for(int i_8_ = 0; i + i > i_8_; i_8_++) {
             anIntArray996[i_8_] = -1;
+        }
         for(int i_9_ = 0; arg0.length > i_9_; i_9_++) {
             int i_10_;
             for(i_10_ = arg0[i_9_] & i - 1; anIntArray996[i_10_ + i_10_ + 1] != -1; i_10_ = i_10_ + 1 & -1 + i) {
@@ -53,25 +54,28 @@ public class Class42 {
         ItemDefinition.count = Class26.aCacheArchive_632.fileLength(10);
     }
 
-    public static void method886(int arg0, int arg1, boolean arg2, byte[] arg3, int arg4) {
-        if(arg0 == 0 && MovedStatics.aClass22_189 != null) {
+    public static void method886(int arg1, boolean arg2, byte[] arg3, int arg4) {
+        if(MovedStatics.aClass22_189 != null) {
             if(MouseHandler.anInt1450 < 0) {
                 if(RSCanvas.anInt54 != 0) {
                     PacketBuffer.anInt2258 = arg1;
                     Player.aByteArray3270 = arg3;
                     PlayerAppearance.aBoolean687 = arg2;
-                } else
+                } else {
                     RSString.method56(arg2, arg3, arg1);
+                }
             } else {
                 Buffer.anInt1982 = arg4;
                 if(MouseHandler.anInt1450 != 0) {
-                    int i = Class29.method372(arg0 ^ 0x60, MouseHandler.anInt1450);
+                    int i = Class29.method372(MouseHandler.anInt1450);
                     i -= Class39.anInt909;
                     RSCanvas.anInt54 = (i + 3600) / arg4;
-                    if(RSCanvas.anInt54 < 1)
+                    if(RSCanvas.anInt54 < 1) {
                         RSCanvas.anInt54 = 1;
-                } else
+                    }
+                } else {
                     RSCanvas.anInt54 = 1;
+                }
                 PacketBuffer.anInt2258 = arg1;
                 Player.aByteArray3270 = arg3;
                 PlayerAppearance.aBoolean687 = arg2;
@@ -81,27 +85,34 @@ public class Class42 {
 
 
     public static int method888(int arg0, byte arg1, int arg2) {
-        int i = -128 + MovedStatics.method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(MovedStatics.method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> 1) + -(-128 + MovedStatics.method160(arg0, 15177, 1, arg2) >> 2));
+        int i = -128 + MovedStatics.method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(MovedStatics.method160(
+                arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> 1) + -(-128 + MovedStatics.method160(
+                arg0, 15177, 1, arg2) >> 2));
         i = 35 + (int) (0.3 * (double) i);
-        if(arg1 != -45)
+        if(arg1 != -45) {
             return -24;
+        }
         if(i >= 10) {
-            if(i > 60)
+            if(i > 60) {
                 i = 60;
-        } else
+            }
+        } else {
             i = 10;
+        }
         return i;
     }
 
     public int method882(int arg0) {
         int i = -2 + anIntArray996.length;
         int i_0_ = arg0 << 1 & i;
-        for(; ; ) {
+        while(true) {
             int i_1_ = anIntArray996[i_0_];
-            if(i_1_ == arg0)
+            if(i_1_ == arg0) {
                 return anIntArray996[i_0_ + 1];
-            if(i_1_ == -1)
+            }
+            if(i_1_ == -1) {
                 return -1;
+            }
             i_0_ = i_0_ + 2 & i;
         }
     }

@@ -1,10 +1,10 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.node.HashTable;
-import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.node.HashTable;
+import com.jagex.runescape.node.NodeCache;
 
 import java.awt.*;
 import java.nio.charset.StandardCharsets;
@@ -48,17 +48,19 @@ public class RSString {
         long l = (long) (arg0 + 37 * arg2 & 0xffff) + ((long) arg4 << 32) + (long) (arg2 << 16);
         if(aClass9_1684 != null) {
             Class40_Sub5_Sub6 class40_sub5_sub6 = (Class40_Sub5_Sub6) aClass9_1684.get(l);
-            if(class40_sub5_sub6 != null)
+            if(class40_sub5_sub6 != null) {
                 return class40_sub5_sub6.aByteArray2441;
+            }
         }
         byte[] is = arg1.getFile(arg0, arg2);
-        if(is == null)
+        if(is == null) {
             return null;
-        if(aClass9_1684 != null)
+        }
+        if(aClass9_1684 != null) {
             aClass9_1684.put(l, new Class40_Sub5_Sub6(is));
+        }
         return is;
     }
-
 
 
     /*synthetic*/
@@ -79,12 +81,14 @@ public class RSString {
         while(length > index) {
             int character = 0xff & charBytes[index++];
             if(character <= 45 && character >= 40) {
-                if(index >= length)
+                if(index >= length) {
                     break;
+                }
                 int next = 0xff & charBytes[index++];
                 class1.chars[class1.length++] = (byte) (next + -48 + 43 * (-40 + character));
-            } else if(character != 0)
+            } else if(character != 0) {
                 class1.chars[class1.length++] = (byte) character;
+            }
         }
         class1.method77();
         return class1.method66();
@@ -97,6 +101,78 @@ public class RSString {
         return string;
     }
 
+    public static String formatChatString(String str) {
+        char[] chars = str.toCharArray();
+        boolean shouldUppercaseNext = true;
+        for(int i = 0; i < chars.length; i++) {
+            char currentChar = chars[i];
+            if(currentChar >= 'a' && currentChar <= 'z') {
+                if(shouldUppercaseNext) {
+                    currentChar = Character.toUpperCase(currentChar);
+                }
+                shouldUppercaseNext = false;
+            } else if(currentChar >= 'A' && currentChar <= 'Z') {
+                if(!shouldUppercaseNext) {
+                    currentChar = Character.toLowerCase(currentChar);
+                }
+                shouldUppercaseNext = false;
+            }
+            chars[i] = currentChar;
+            if(currentChar == '.' || currentChar == '!' || currentChar == '?') {
+                shouldUppercaseNext = true;
+            }
+        }
+        return new String(chars);
+    }
+
+    public static long nameToLong(String arg0) {
+        long l = 0L;
+        for(int i = 0; i < arg0.length(); i++) {
+            if(i >= 12) {
+                break;
+            }
+            l *= 37L;
+            int i_1_ = arg0.charAt(i);
+            if(i_1_ >= 65 && i_1_ <= 90) {
+                l += i_1_ + 1 + -65;
+            } else if(i_1_ >= 97 && i_1_ <= 122) {
+                l += 1 + i_1_ + -97;
+            } else if(i_1_ >= 48 && i_1_ <= 57) {
+                l += 27 - (-i_1_ + 48);
+            }
+        }
+        for(/**/; l % 37L == 0 && l != 0; l /= 37L) {
+            /* empty */
+        }
+        return l;
+    }
+
+    public static String prepend(String source, String arg0, int arg2) {
+        byte[] sourceba = source.getBytes();
+        byte[] arg0ba = arg0.getBytes();
+        if(arg2 > source.length()) {
+            throw new IllegalArgumentException();
+        }
+        if(arg0.length() + arg2 > sourceba.length) {
+            int i;
+            for(i = 1; i < arg0.length() + arg2; i += i) {
+                /* empty */
+            }
+            byte[] is = new byte[i];
+            Class18.method278(sourceba, 0, is, 0, arg0.length());
+            sourceba = is;
+        }
+        Class18.method278(arg0ba, 0, sourceba, arg2, arg0.length());
+        return new String(sourceba);
+    }
+
+    public static int stringHash(String str) {
+        int i = 0;
+        for(int i_12_ = 0; str.length() > i_12_; i_12_++) {
+            i = (0xff & str.charAt(i_12_)) + -i + (i << 5);
+        }
+        return i;
+    }
 
     public RSString substring(int arg1) {
         return substring(arg1, length);
@@ -107,50 +183,34 @@ public class RSString {
         return -arg0 + arg1;
     }
 
-
-    public static String formatChatString(String str) {
-        char[] chars = str.toCharArray();
-        boolean shouldUppercaseNext = true;
-        for(int i = 0; i < chars.length; i++) {
-            char currentChar = chars[i];
-            if(currentChar >= 'a' && currentChar <= 'z') {
-                if(shouldUppercaseNext)
-                    currentChar = Character.toUpperCase(currentChar);
-                shouldUppercaseNext = false;
-            } else if(currentChar >= 'A' && currentChar <= 'Z') {
-                if(!shouldUppercaseNext)
-                    currentChar = Character.toLowerCase(currentChar);
-                shouldUppercaseNext = false;
-            }
-            chars[i] = currentChar;
-            if(currentChar == '.' || currentChar == '!' || currentChar == '?')
-                shouldUppercaseNext = true;
-        }
-        return new String(chars);
-    }
-
     public boolean equals(RSString str) {
-        if(str == null)
+        if(str == null) {
             return false;
-        if(str.length != length)
+        }
+        if(str.length != length) {
             return false;
+        }
         if(!aBoolean1675 || !str.aBoolean1675) {
             if(anInt1696 == 0) {
                 anInt1696 = stringHash();
-                if(anInt1696 == 0)
+                if(anInt1696 == 0) {
                     anInt1696 = 1;
+                }
             }
             if(str.anInt1696 == 0) {
                 str.anInt1696 = str.stringHash();
-                if(str.anInt1696 == 0)
+                if(str.anInt1696 == 0) {
                     str.anInt1696 = 1;
+                }
             }
-            if(str.anInt1696 != anInt1696)
+            if(str.anInt1696 != anInt1696) {
                 return false;
+            }
         }
         for(int i = 0; length > i; i++) {
-            if(chars[i] != str.chars[i])
+            if(chars[i] != str.chars[i]) {
                 return false;
+            }
         }
         return true;
     }
@@ -161,26 +221,6 @@ public class RSString {
 
     public int indexOf(int arg1) {
         return method64(0, arg1);
-    }
-
-    public static long nameToLong(String arg0) {
-        long l = 0L;
-        for(int i = 0; i < arg0.length(); i++) {
-            if(i >= 12)
-                break;
-            l *= 37L;
-            int i_1_ = arg0.charAt(i);
-            if(i_1_ >= 65 && i_1_ <= 90)
-                l += (long) (i_1_ + 1 + -65);
-            else if(i_1_ >= 97 && i_1_ <= 122)
-                l += (long) (1 + i_1_ + -97);
-            else if(i_1_ >= 48 && i_1_ <= 57)
-                l += (long) (27 - (-i_1_ + 48));
-        }
-        for(/**/; l % 37L == 0 && l != 0; l /= 37L) {
-            /* empty */
-        }
-        return l;
     }
 
     public int length() {
@@ -196,8 +236,9 @@ public class RSString {
         class1.length = length;
         class1.chars = new byte[length];
         int i = 0;
-        for(/**/; i < length; i++)
+        for(/**/; i < length; i++) {
             class1.chars[i] = (byte) 42;
+        }
         return class1;
     }
 
@@ -213,28 +254,35 @@ public class RSString {
             } else if(chars[i_2_] >= 97 && chars[i_2_] <= 122 || chars[i_2_] >= 48 && chars[i_2_] <= 57) {
                 class1.chars[i++] = chars[i_2_];
                 class1.length = i;
-            } else if(i > 0)
+            } else if(i > 0) {
                 class1.chars[i++] = (byte) 95;
-            if(i == 12)
+            }
+            if(i == 12) {
                 break;
+            }
         }
         return class1;
     }
 
     public boolean equalsIgnoreCase(RSString arg0) {
-        if(arg0 == null)
+        if(arg0 == null) {
             return false;
-        if(arg0.length != length)
+        }
+        if(arg0.length != length) {
             return false;
+        }
         for(int i = 0; length > i; i++) {
             byte i_3_ = arg0.chars[i];
             byte i_4_ = chars[i];
-            if(i_3_ >= 65 && i_3_ <= 90 || i_3_ >= -64 && i_3_ <= -34 && i_3_ != -41)
+            if(i_3_ >= 65 && i_3_ <= 90 || i_3_ >= -64 && i_3_ <= -34 && i_3_ != -41) {
                 i_3_ += 32;
-            if(i_4_ >= 65 && i_4_ <= 90 || i_4_ >= -64 && i_4_ <= -34 && i_4_ != -41)
+            }
+            if(i_4_ >= 65 && i_4_ <= 90 || i_4_ >= -64 && i_4_ <= -34 && i_4_ != -41) {
                 i_4_ += 32;
-            if(i_4_ != i_3_)
+            }
+            if(i_4_ != i_3_) {
                 return false;
+            }
         }
         return true;
     }
@@ -242,8 +290,9 @@ public class RSString {
     public int method64(int arg0, int arg1) {
         byte i = (byte) arg1;
         for(int i_5_ = arg0; i_5_ < length; i_5_++) {
-            if(chars[i_5_] == i)
+            if(chars[i_5_] == i) {
                 return i_5_;
+            }
         }
         return -1;
     }
@@ -258,12 +307,17 @@ public class RSString {
         long l = method86();
         synchronized(aClass1718 != null ? aClass1718 : (aClass1718 = method90("com.jagex.runescape.RSString"))) {
             if(MovedStatics.aClass23_805 != null) {
-                for(Class40_Sub7 class40_sub7 = (Class40_Sub7) MovedStatics.aClass23_805.method331(l, 6120); class40_sub7 != null; class40_sub7 = (Class40_Sub7) MovedStatics.aClass23_805.method333()) {
-                    if(equals(class40_sub7.aClass1_2124))
+                for(
+                        Class40_Sub7 class40_sub7 = (Class40_Sub7) MovedStatics.aClass23_805.method331(l);
+                        class40_sub7 != null; class40_sub7 = (Class40_Sub7) MovedStatics.aClass23_805.method333()
+                ) {
+                    if(equals(class40_sub7.aClass1_2124)) {
                         return class40_sub7.aClass1_2124;
+                    }
                 }
-            } else
+            } else {
                 MovedStatics.aClass23_805 = new HashTable(4096);
+            }
             Class40_Sub7 class40_sub7 = new Class40_Sub7();
             aBoolean1675 = false;
             class40_sub7.aClass1_2124 = this;
@@ -277,8 +331,9 @@ public class RSString {
     }
 
     public boolean method67(int arg1) {
-        if(arg1 < 1 || arg1 > 36)
+        if(arg1 < 1 || arg1 > 36) {
             arg1 = 10;
+        }
         boolean bool = false;
         boolean bool_6_ = false;
         int i = 0;
@@ -289,26 +344,32 @@ public class RSString {
                     bool = true;
                     continue;
                 }
-                if(i_8_ == 43)
+                if(i_8_ == 43) {
                     continue;
+                }
             }
             if(i_8_ < 48 || i_8_ > 57) {
-                if(i_8_ >= 65 && i_8_ <= 90)
+                if(i_8_ >= 65 && i_8_ <= 90) {
                     i_8_ -= 55;
-                else {
-                    if(i_8_ < 97 || i_8_ > 122)
+                } else {
+                    if(i_8_ < 97 || i_8_ > 122) {
                         return false;
+                    }
                     i_8_ -= 87;
                 }
-            } else
+            } else {
                 i_8_ -= 48;
-            if(arg1 <= i_8_)
+            }
+            if(arg1 <= i_8_) {
                 return false;
-            if(bool)
+            }
+            if(bool) {
                 i_8_ = -i_8_;
+            }
             int i_9_ = i_8_ + arg1 * i;
-            if(i_9_ / arg1 != i)
+            if(i_9_ / arg1 != i) {
                 return false;
+            }
             i = i_9_;
             bool_6_ = true;
         }
@@ -324,10 +385,12 @@ public class RSString {
     }
 
     public RSString prepend(RSString arg0, int arg2) {
-        if(!aBoolean1675)
+        if(!aBoolean1675) {
             throw new IllegalArgumentException();
-        if(arg2 > length)
+        }
+        if(arg2 > length) {
             throw new IllegalArgumentException();
+        }
         anInt1696 = 0;
         if(arg0.length + arg2 > chars.length) {
             int i;
@@ -339,32 +402,16 @@ public class RSString {
             chars = is;
         }
         Class18.method278(arg0.chars, 0, chars, arg2, arg0.length);
-        if(length < arg2 + arg0.length)
+        if(length < arg2 + arg0.length) {
             length = arg0.length + arg2;
+        }
         return this;
     }
 
-    public static String prepend(String source, String arg0, int arg2) {
-        byte[] sourceba= source.getBytes();
-        byte[] arg0ba= arg0.getBytes();
-        if(arg2 > source.length())
-            throw new IllegalArgumentException();
-        if(arg0.length() + arg2 > sourceba.length) {
-            int i;
-            for(i = 1; i < arg0.length() + arg2; i += i) {
-                /* empty */
-            }
-            byte[] is = new byte[i];
-            Class18.method278(sourceba, 0, is, 0, arg0.length());
-            sourceba = is;
-        }
-        Class18.method278(arg0ba, 0, sourceba, arg2, arg0.length());
-        return new String(sourceba);
-    }
-
     public RSString addChar(int arg0) {
-        if(arg0 > 255)
+        if(arg0 > 255) {
             throw new IllegalArgumentException("invalid char");
+        }
         RSString class1 = new RSString();
         class1.chars = new byte[length + 1];
         class1.length = length + 1;
@@ -374,8 +421,9 @@ public class RSString {
     }
 
     public RSString add(RSString arg0) {
-        if(!aBoolean1675)
+        if(!aBoolean1675) {
             throw new IllegalArgumentException();
+        }
         anInt1696 = 0;
         if(length + arg0.length > chars.length) {
             int i;
@@ -399,11 +447,13 @@ public class RSString {
     }
 
     public boolean startsWith(RSString string) {
-        if(string.length > length)
+        if(string.length > length) {
             return false;
+        }
         for(int i = 0; string.length > i; i++) {
-            if(chars[i] != string.chars[i])
+            if(chars[i] != string.chars[i]) {
                 return false;
+            }
         }
         return true;
     }
@@ -414,21 +464,16 @@ public class RSString {
 
     public int stringHash() {
         int i = 0;
-        for(int i_12_ = 0; length > i_12_; i_12_++)
+        for(int i_12_ = 0; length > i_12_; i_12_++) {
             i = (0xff & chars[i_12_]) + -i + (i << 5);
-        return i;
-    }
-
-    public static int stringHash(String str) {
-        int i = 0;
-        for(int i_12_ = 0; str.length() > i_12_; i_12_++)
-            i = (0xff & str.charAt(i_12_)) + -i + (i << 5);
+        }
         return i;
     }
 
     public RSString method77() {
-        if(!aBoolean1675)
+        if(!aBoolean1675) {
             throw new IllegalArgumentException();
+        }
         anInt1696 = 0;
         if(length != chars.length) {
             byte[] is = new byte[length];
@@ -439,10 +484,12 @@ public class RSString {
     }
 
     public RSString appendChar(int arg1) {
-        if(arg1 <= 0 || arg1 > 255)
+        if(arg1 <= 0 || arg1 > 255) {
             throw new IllegalArgumentException("invalid char");
-        if(!aBoolean1675)
+        }
+        if(!aBoolean1675) {
             throw new IllegalArgumentException();
+        }
         anInt1696 = 0;
         if(length == chars.length) {
             int i;
@@ -463,8 +510,9 @@ public class RSString {
         class1.chars = new byte[length];
         for(int i = 0; length > i; i++) {
             byte i_13_ = chars[i];
-            if(i_13_ >= 65 && i_13_ <= 90 || i_13_ >= -64 && i_13_ <= -34 && i_13_ != -41)
+            if(i_13_ >= 65 && i_13_ <= 90 || i_13_ >= -64 && i_13_ <= -34 && i_13_ != -41) {
                 i_13_ += 32;
+            }
             class1.chars[i] = i_13_;
         }
         return class1;
@@ -480,8 +528,9 @@ public class RSString {
         int[] is = new int[arg0.length];
         int[] is_14_ = new int[arg0.length];
         int[] is_15_ = new int[256];
-        for(int i = 0; i < is_15_.length; i++)
+        for(int i = 0; i < is_15_.length; i++) {
             is_15_[i] = arg0.length;
+        }
         for(int i = 1; i <= arg0.length; i++) {
             is[-1 + i] = (arg0.length << 1) - i;
             is_15_[HuffmanEncoding.method1021(arg0.chars[-1 + i], 255)] = arg0.length - i;
@@ -490,8 +539,9 @@ public class RSString {
         for(int i_16_ = arg0.length; i_16_ > 0; i_16_--) {
             is_14_[i_16_ - 1] = i;
             for(/**/; i <= arg0.length && arg0.chars[i - 1] != arg0.chars[-1 + i_16_]; i = is_14_[-1 + i]) {
-                if(-i_16_ + arg0.length <= is[i - 1])
+                if(-i_16_ + arg0.length <= is[i - 1]) {
                     is[i - 1] = -i_16_ + arg0.length;
+                }
             }
             i--;
         }
@@ -508,19 +558,25 @@ public class RSString {
         }
         while(i_17_ < arg0.length) {
             for(int i_21_ = i_18_; i_17_ >= i_21_; i_21_++) {
-                if(-i_21_ + i_17_ + arg0.length <= is[i_21_ + -1])
+                if(-i_21_ + i_17_ + arg0.length <= is[i_21_ + -1]) {
                     is[i_21_ + -1] = -i_21_ + arg0.length + i_17_;
+                }
             }
             i_18_ = 1 + i_17_;
             i_17_ = -is_14_[-1 + i] + i + i_17_;
             i = is_14_[i - 1];
         }
         int i_22_;
-        for(int i_23_ = -1 + arg1 + arg0.length; i_23_ < length; i_23_ += Math.max(is_15_[chars[i_23_] & 0xff], is[i_22_])) {
-            for(i_22_ = arg0.length + -1; i_22_ >= 0 && chars[i_23_] == arg0.chars[i_22_]; i_22_--)
+        for(
+                int i_23_ = -1 + arg1 + arg0.length; i_23_ < length; i_23_ += Math.max(
+                is_15_[chars[i_23_] & 0xff], is[i_22_])
+        ) {
+            for(i_22_ = arg0.length + -1; i_22_ >= 0 && chars[i_23_] == arg0.chars[i_22_]; i_22_--) {
                 i_23_--;
-            if(i_22_ == -1)
+            }
+            if(i_22_ == -1) {
                 return 1 + i_23_;
+            }
         }
         return -1;
     }
@@ -529,7 +585,6 @@ public class RSString {
     public String toString() {
         return new String(this.chars);
     }
-
 
 
     public RSString method85() {
@@ -555,16 +610,17 @@ public class RSString {
 
     public long method86() {
         long l = 0L;
-        for(int i = 0; length > i; i++)
+        for(int i = 0; length > i; i++) {
             l = -l + (l << 5) + (long) (0xff & chars[i]);
+        }
         return l;
     }
 
 
-
     public int method88(boolean arg0, int arg1) {
-        if(arg1 < 1 || arg1 > 36)
+        if(arg1 < 1 || arg1 > 36) {
             arg1 = 10;
+        }
         boolean bool = false;
         boolean bool_27_ = arg0;
         int i = 0;
@@ -575,30 +631,36 @@ public class RSString {
                     bool_27_ = true;
                     continue;
                 }
-                if(i_29_ == 43)
+                if(i_29_ == 43) {
                     continue;
+                }
             }
-            if(i_29_ >= 48 && i_29_ <= 57)
+            if(i_29_ >= 48 && i_29_ <= 57) {
                 i_29_ -= 48;
-            else if(i_29_ >= 65 && i_29_ <= 90)
+            } else if(i_29_ >= 65 && i_29_ <= 90) {
                 i_29_ -= 55;
-            else {
-                if(i_29_ < 97 || i_29_ > 122)
+            } else {
+                if(i_29_ < 97 || i_29_ > 122) {
                     throw new NumberFormatException();
+                }
                 i_29_ -= 87;
             }
-            if(arg1 <= i_29_)
+            if(arg1 <= i_29_) {
                 throw new NumberFormatException();
-            if(bool_27_)
+            }
+            if(bool_27_) {
                 i_29_ = -i_29_;
+            }
             int i_30_ = i_29_ + i * arg1;
-            if(i != i_30_ / arg1)
+            if(i != i_30_ / arg1) {
                 throw new NumberFormatException();
+            }
             i = i_30_;
             bool = true;
         }
-        if(!bool)
+        if(!bool) {
             throw new NumberFormatException();
+        }
         return i;
     }
 
@@ -611,13 +673,15 @@ public class RSString {
         while(i_31_ > i && (chars[i_31_ + -1] >= 0 && chars[-1 + i_31_] <= 32 || (chars[i_31_ + -1] & 0xff) == 160)) {
             i_31_--;
         }
-        if(i == 0 && length == i_31_)
+        if(i == 0 && length == i_31_) {
             return this;
+        }
         RSString class1 = new RSString();
         class1.length = i_31_ + -i;
         class1.chars = new byte[class1.length];
-        for(int i_32_ = 0; class1.length > i_32_; i_32_++)
+        for(int i_32_ = 0; class1.length > i_32_; i_32_++) {
             class1.chars[i_32_] = chars[i + i_32_];
+        }
         return class1;
     }
 }

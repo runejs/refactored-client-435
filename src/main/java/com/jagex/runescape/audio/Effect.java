@@ -29,19 +29,22 @@ public class Effect {
 
     public static Effect method429(CacheArchive arg0, int arg1, int arg2) {
         byte[] is = arg0.getFile(arg2, arg1);
-        if(is == null)
+        if(is == null) {
             return null;
+        }
         return new Effect(new Buffer(is));
     }
 
     public byte[] method426() {
         int i = 0;
         for(int i_2_ = 0; i_2_ < 10; i_2_++) {
-            if(instruments[i_2_] != null && instruments[i_2_].duration + instruments[i_2_].begin > i)
+            if(instruments[i_2_] != null && instruments[i_2_].duration + instruments[i_2_].begin > i) {
                 i = instruments[i_2_].duration + instruments[i_2_].begin;
+            }
         }
-        if(i == 0)
+        if(i == 0) {
             return new byte[0];
+        }
         int i_3_ = 22050 * i / 1000;
         byte[] is = new byte[i_3_];
         for(int i_4_ = 0; i_4_ < 10; i_4_++) {
@@ -51,8 +54,9 @@ public class Effect {
                 int[] is_7_ = instruments[i_4_].synthesize(i_5_, instruments[i_4_].duration);
                 for(int i_8_ = 0; i_8_ < i_5_; i_8_++) {
                     int i_9_ = is[i_8_ + i_6_] + (is_7_[i_8_] >> 8);
-                    if((i_9_ + 128 & ~0xff) != 0)
+                    if((i_9_ + 128 & ~0xff) != 0) {
                         i_9_ = i_9_ >> 31 ^ 0x7f;
+                    }
                     is[i_8_ + i_6_] = (byte) i_9_;
                 }
             }
@@ -63,16 +67,20 @@ public class Effect {
     public int delay() {
         int offset = 0x98967f;
         for(int k = 0; k < 10; k++) {
-            if(instruments[k] != null && instruments[k].begin / 20 < offset)
+            if(instruments[k] != null && instruments[k].begin / 20 < offset) {
                 offset = instruments[k].begin / 20;
+            }
         }
-        if(loop_begin < loop_end && loop_begin / 20 < offset)
+        if(loop_begin < loop_end && loop_begin / 20 < offset) {
             offset = loop_begin / 20;
-        if(offset == 0x98967f || offset == 0)
+        }
+        if(offset == 0x98967f || offset == 0) {
             return 0;
+        }
         for(int l = 0; l < 10; l++) {
-            if(instruments[l] != null)
+            if(instruments[l] != null) {
                 instruments[l].begin -= offset * 20;
+            }
         }
         if(loop_begin < loop_end) {
             loop_begin -= offset * 20;

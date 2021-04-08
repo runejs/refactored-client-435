@@ -16,11 +16,13 @@ public class Instrument {
 
     static {
         Random random = new Random(0L);
-        for(int i = 0; i < 32768; i++)
+        for(int i = 0; i < 32768; i++) {
             noise[i] = (random.nextInt() & 0x2) - 1;
+        }
         sine = new int[32768];
-        for(int i = 0; i < 32768; i++)
+        for(int i = 0; i < 32768; i++) {
             sine[i] = (int) (Math.sin(i / 5215.1903) * 16384.0);
+        }
         output = new int[220500];
     }
 
@@ -60,6 +62,24 @@ public class Instrument {
         vol_step = null;
         pitch_step = null;
         pitch_base_step = null;
+    }
+
+    public static void method776(int[] arg0, int arg1, int arg2) {
+        arg2 = arg1 + arg2 - 7;
+        while(arg1 < arg2) {
+            arg0[arg1++] = 0;
+            arg0[arg1++] = 0;
+            arg0[arg1++] = 0;
+            arg0[arg1++] = 0;
+            arg0[arg1++] = 0;
+            arg0[arg1++] = 0;
+            arg0[arg1++] = 0;
+            arg0[arg1++] = 0;
+        }
+        arg2 += 7;
+        while(arg1 < arg2) {
+            arg0[arg1++] = 0;
+        }
     }
 
     public void decode(Buffer buffer) {
@@ -128,23 +148,6 @@ public class Instrument {
         return 0;
     }
 
-    public static void method776(int[] arg0, int arg1, int arg2) {
-        arg2 = arg1 + arg2 - 7;
-        while(arg1 < arg2) {
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-        }
-        arg2 += 7;
-        while(arg1 < arg2)
-            arg0[arg1++] = 0;
-    }
-
     public int[] synthesize(int n_s, int dt) {
         method776(output, 0, n_s);
         if(dt < 10) {
@@ -176,7 +179,8 @@ public class Instrument {
                 phases[j2] = 0;
                 delays[j2] = (int) (oscill_delay[j2] * f_s);
                 vol_step[j2] = (oscill_vol[j2] << 14) / 100;
-                pitch_step[j2] = (int) ((pitch_env.end - pitch_env.start) * 32.768 * Math.pow(1.0057929410678534, oscill_pitch_delta[j2]) / f_s);
+                pitch_step[j2] = (int) ((pitch_env.end - pitch_env.start) * 32.768 * Math.pow(
+                        1.0057929410678534, oscill_pitch_delta[j2]) / f_s);
                 pitch_base_step[j2] = (int) (pitch_env.start * 32.768 / f_s);
             }
         }
@@ -216,9 +220,11 @@ public class Instrument {
                 int off_step = gating_attack_env.step(n_s);
                 int threshold;
                 if(muted) {
-                    threshold = gating_release_env.start + ((gating_release_env.end - gating_release_env.start) * on_step >> 8);
+                    threshold = gating_release_env.start +
+                            ((gating_release_env.end - gating_release_env.start) * on_step >> 8);
                 } else {
-                    threshold = gating_release_env.start + ((gating_release_env.end - gating_release_env.start) * off_step >> 8);
+                    threshold = gating_release_env.start +
+                            ((gating_release_env.end - gating_release_env.start) * off_step >> 8);
                 }
                 counter += 256;
                 if(counter >= threshold) {
@@ -261,7 +267,7 @@ public class Instrument {
                     t = filter_env.step(n_s + 1);
                 }
                 delay = 128;
-                for(; ; ) {
+                while(true) {
                     if(delay > n_s - M) {
                         delay = n_s - M;
                     }

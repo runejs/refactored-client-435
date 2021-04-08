@@ -4,7 +4,6 @@ import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.frame.console.Command;
 import com.jagex.runescape.frame.console.Console;
-import tech.henning.fourthreefive.Configuration;
 
 public class ResizableCommand extends Command {
     public ResizableCommand() {

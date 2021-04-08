@@ -81,7 +81,9 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
             if(i == 2) {
                 player.anInt3095 = 0;
             }
-        } else if(animationId == -1 || player.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).forcedPriority >= ProducingGraphicsBuffer_Sub1.getAnimationSequence(player.playingAnimation).forcedPriority) {
+        } else if(animationId == -1 || player.playingAnimation == -1 ||
+                ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).forcedPriority >=
+                        ProducingGraphicsBuffer_Sub1.getAnimationSequence(player.playingAnimation).forcedPriority) {
             player.anInt3094 = player.anInt3109;
             player.anInt3104 = 0;
             player.anInt3115 = 0;
@@ -126,13 +128,15 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
 
     public static ActorDefinition getDefinition(int id) {
         ActorDefinition definition = (ActorDefinition) ISAAC.cachedActorDefinitions.get(id);
-        if(definition != null)
+        if(definition != null) {
             return definition;
+        }
         byte[] data = GroundItemTile.aCacheArchive_1375.getFile(id, 9);
         definition = new ActorDefinition();
         definition.id = id;
-        if(data != null)
+        if(data != null) {
             definition.readValues(new Buffer(data));
+        }
         ISAAC.cachedActorDefinitions.put(id, definition);
         return definition;
     }

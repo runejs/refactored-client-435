@@ -10,9 +10,9 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class44 implements Runnable {
     public static int[][] anIntArrayArray1030;
-    public static int modewhat = 0;
     public static byte[][] aByteArrayArray1039 = new byte[250][];
     public static int anInt1040 = 256;
+    public static int modewhat = 0;
     public static int modewhere = 0;
     public static IndexedImage chatboxBackgroundImage;
     public static int anInt1048 = -1;
@@ -21,11 +21,12 @@ public class Class44 implements Runnable {
 
     public static void method898(int arg0, Actor arg1) {
         arg1.anInt3077 = arg1.idleAnimation;
-        if(arg1.anInt3109 == 0)
+        if(arg1.anInt3109 == 0) {
             arg1.anInt3074 = 0;
-        else {
+        } else {
             if(arg1.playingAnimation != -1 && arg1.playingAnimationDelay == 0) {
-                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(arg1.playingAnimation);
+                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(
+                        arg1.playingAnimation);
                 if(arg1.anInt3094 > 0 && animationSequence.precedenceAnimating == 0) {
                     arg1.anInt3074++;
                     return;
@@ -44,75 +45,94 @@ public class Class44 implements Runnable {
                 arg1.worldY = i_2_;
             } else {
                 if(i < i_0_) {
-                    if(i_1_ < i_2_)
+                    if(i_1_ < i_2_) {
                         arg1.initialFaceDirection = 1280;
-                    else if(i_2_ < i_1_)
+                    } else if(i_2_ < i_1_) {
                         arg1.initialFaceDirection = 1792;
-                    else
+                    } else {
                         arg1.initialFaceDirection = 1536;
+                    }
                 } else if(i <= i_0_) {
                     if(i_2_ <= i_1_) {
-                        if(i_2_ < i_1_)
+                        if(i_2_ < i_1_) {
                             arg1.initialFaceDirection = 0;
-                    } else
+                        }
+                    } else {
                         arg1.initialFaceDirection = 1024;
-                } else if(i_1_ < i_2_)
+                    }
+                } else if(i_1_ < i_2_) {
                     arg1.initialFaceDirection = 768;
-                else if(i_2_ < i_1_)
+                } else if(i_2_ < i_1_) {
                     arg1.initialFaceDirection = 256;
-                else
+                } else {
                     arg1.initialFaceDirection = 512;
+                }
                 int i_3_ = arg1.turnAroundAnimationId;
                 int i_4_ = 4;
-                if(arg1.initialFaceDirection != arg1.anInt3118 && arg1.facingActorIndex == -1 && arg1.anInt3113 != 0)
+                if(arg1.initialFaceDirection != arg1.anInt3118 && arg1.facingActorIndex == -1 && arg1.anInt3113 != 0) {
                     i_4_ = 2;
-                if(arg1.anInt3109 > 2)
+                }
+                if(arg1.anInt3109 > 2) {
                     i_4_ = 6;
-                if(arg1.anInt3109 > 3)
+                }
+                if(arg1.anInt3109 > 3) {
                     i_4_ = 8;
+                }
                 int i_5_ = 0x7ff & -arg1.anInt3118 + arg1.initialFaceDirection;
-                if(i_5_ > 1024)
+                if(i_5_ > 1024) {
                     i_5_ -= 2048;
+                }
                 if((i_5_ ^ 0xffffffff) > arg0 || i_5_ > 256) {
                     if(i_5_ < 256 || i_5_ >= 768) {
-                        if(i_5_ >= -768 && i_5_ <= -256)
+                        if(i_5_ >= -768 && i_5_ <= -256) {
                             i_3_ = arg1.turnRightAnimationId;
-                    } else
+                        }
+                    } else {
                         i_3_ = arg1.turnLeftAnimationId;
-                } else
+                    }
+                } else {
                     i_3_ = arg1.walkAnimationId;
-                if(i_3_ == -1)
+                }
+                if(i_3_ == -1) {
                     i_3_ = arg1.walkAnimationId;
+                }
                 arg1.anInt3077 = i_3_;
                 if(arg1.anInt3074 > 0 && arg1.anInt3109 > 1) {
                     arg1.anInt3074--;
                     i_4_ = 8;
                 }
-                if(arg1.aBooleanArray3072[-1 + arg1.anInt3109])
+                if(arg1.aBooleanArray3072[-1 + arg1.anInt3109]) {
                     i_4_ <<= 1;
+                }
                 if(i_1_ < i_2_) {
                     arg1.worldY += i_4_;
-                    if(arg1.worldY > i_2_)
+                    if(arg1.worldY > i_2_) {
                         arg1.worldY = i_2_;
+                    }
                 } else if(i_1_ > i_2_) {
                     arg1.worldY -= i_4_;
-                    if(arg1.worldY < i_2_)
+                    if(arg1.worldY < i_2_) {
                         arg1.worldY = i_2_;
+                    }
                 }
-                if(i_4_ >= 8 && arg1.anInt3077 == arg1.walkAnimationId && arg1.runAnimationId != -1)
+                if(i_4_ >= 8 && arg1.anInt3077 == arg1.walkAnimationId && arg1.runAnimationId != -1) {
                     arg1.anInt3077 = arg1.runAnimationId;
+                }
                 if(i < i_0_) {
                     arg1.worldX += i_4_;
-                    if(i_0_ < arg1.worldX)
+                    if(i_0_ < arg1.worldX) {
                         arg1.worldX = i_0_;
+                    }
                 } else if(i_0_ < i) {
                     arg1.worldX -= i_4_;
-                    if(i_0_ > arg1.worldX)
+                    if(i_0_ > arg1.worldX) {
                         arg1.worldX = i_0_;
+                    }
                 }
                 if(arg1.worldX == i_0_ && i_2_ == arg1.worldY) {
-                    if(arg1.anInt3094 > 0)
+                    if(arg1.anInt3094 > 0) {
                         arg1.anInt3094--;
+                    }
                     arg1.anInt3109--;
                 }
             }
@@ -121,10 +141,10 @@ public class Class44 implements Runnable {
 
     public void run() {
         try {
-            for(; ; ) {
+            while(true) {
                 Class40_Sub6 class40_sub6;
                 synchronized(RSCanvas.aLinkedList_53) {
-                    class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method902((byte) -90);
+                    class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method902();
                 }
                 if(class40_sub6 == null) {
                     Class43.sleep(100L);
@@ -138,14 +158,16 @@ public class Class44 implements Runnable {
                     }
                 } else {
                     if(class40_sub6.anInt2112 == 0) {
-                        class40_sub6.cacheIndex.put(class40_sub6.aByteArray2102, class40_sub6.aByteArray2102.length, (int) class40_sub6.key);
+                        class40_sub6.cacheIndex.put(class40_sub6.aByteArray2102, class40_sub6.aByteArray2102.length,
+                                (int) class40_sub6.key
+                        );
                         synchronized(RSCanvas.aLinkedList_53) {
                             class40_sub6.remove();
                         }
                     } else if(class40_sub6.anInt2112 == 1) {
                         class40_sub6.aByteArray2102 = class40_sub6.cacheIndex.get((int) class40_sub6.key);
                         synchronized(RSCanvas.aLinkedList_53) {
-                            IdentityKit.aLinkedList_2604.pushBack(class40_sub6, 115);
+                            IdentityKit.aLinkedList_2604.pushBack(class40_sub6);
                         }
                     }
                     synchronized(CollisionMap.anObject162) {

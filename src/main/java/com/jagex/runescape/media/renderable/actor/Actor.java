@@ -26,7 +26,7 @@ public abstract class Actor extends Renderable {
     public static int[] minimapHintX = new int[1000];
     public static CacheArchive aCacheArchive_3150;
     public static int anInt3151 = -16 + (int) (Math.random() * 33.0);
-    public static Signlink aClass31_3152;
+    public static Signlink signlink;
     public static int actorUpdatingIndex = 0;
 
     public boolean[] aBooleanArray3072;
@@ -132,132 +132,142 @@ public abstract class Actor extends Renderable {
     }
 
     public static void method781(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        if(arg0 == 1850) {
-            int i = Npc.currentScene.method122(arg1, arg2, arg5);
-            if(i != 0) {
-                int i_0_ = Npc.currentScene.getArrangement(arg1, arg2, arg5, i);
-                int i_1_ = 0x1f & i_0_;
-                int i_2_ = 0x3 & i_0_ >> 6;
-                int i_3_ = arg3;
-                if(i > 0)
-                    i_3_ = arg4;
-                int i_4_ = 4 * (-arg5 + 103) * 512 + 24624 + 4 * arg2;
-                int i_5_ = i >> 14 & 0x7fff;
-                int[] is = Class40_Sub5_Sub13.minimapImage.pixels;
-                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_5_);
-                if(gameObjectDefinition.mapSceneID == -1) {
-                    if(i_1_ == 0 || i_1_ == 2) {
-                        if(i_2_ == 0) {
-                            is[i_4_] = i_3_;
-                            is[512 + i_4_] = i_3_;
-                            is[1024 + i_4_] = i_3_;
-                            is[1536 + i_4_] = i_3_;
-                        } else if(i_2_ == 1) {
-                            is[i_4_] = i_3_;
-                            is[i_4_ + 1] = i_3_;
-                            is[2 + i_4_] = i_3_;
-                            is[i_4_ + 3] = i_3_;
-                        } else if(i_2_ == 2) {
-                            is[3 + i_4_] = i_3_;
-                            is[3 + i_4_ + 512] = i_3_;
-                            is[1024 + i_4_ + 3] = i_3_;
-                            is[i_4_ + 1539] = i_3_;
-                        } else if(i_2_ == 3) {
-                            is[i_4_ + 1536] = i_3_;
-                            is[1536 + i_4_ + 1] = i_3_;
-                            is[1536 + i_4_ + 2] = i_3_;
-                            is[3 + i_4_ + 1536] = i_3_;
-                        }
-                    }
-                    if(i_1_ == 3) {
-                        if(i_2_ != 0) {
-                            if(i_2_ != 1) {
-                                if(i_2_ != 2) {
-                                    if(i_2_ == 3)
-                                        is[i_4_ + 1536] = i_3_;
-                                } else
-                                    is[3 + i_4_ + 1536] = i_3_;
-                            } else
-                                is[i_4_ + 3] = i_3_;
-                        } else
-                            is[i_4_] = i_3_;
-                    }
-                    if(i_1_ == 2) {
-                        if(i_2_ == 3) {
-                            is[i_4_] = i_3_;
-                            is[512 + i_4_] = i_3_;
-                            is[i_4_ + 1024] = i_3_;
-                            is[1536 + i_4_] = i_3_;
-                        } else if(i_2_ == 0) {
-                            is[i_4_] = i_3_;
-                            is[1 + i_4_] = i_3_;
-                            is[i_4_ + 2] = i_3_;
-                            is[3 + i_4_] = i_3_;
-                        } else if(i_2_ == 1) {
-                            is[i_4_ + 3] = i_3_;
-                            is[512 + 3 + i_4_] = i_3_;
-                            is[i_4_ + 1027] = i_3_;
-                            is[1536 + 3 + i_4_] = i_3_;
-                        } else if(i_2_ == 2) {
-                            is[1536 + i_4_] = i_3_;
-                            is[1537 + i_4_] = i_3_;
-                            is[i_4_ + 1538] = i_3_;
-                            is[1536 + i_4_ + 3] = i_3_;
-                        }
-                    }
-                } else {
-                    IndexedImage class40_sub5_sub14_sub2 = SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
-                    if(class40_sub5_sub14_sub2 != null) {
-                        int i_6_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
-                        int i_7_ = (gameObjectDefinition.sizeY * 4 + -class40_sub5_sub14_sub2.imgHeight) / 2;
-                        class40_sub5_sub14_sub2.drawImage(48 + 4 * arg2 + i_6_, i_7_ + 48 + (104 + -arg5 - gameObjectDefinition.sizeY) * 4);
+        int i = Npc.currentScene.method122(arg1, arg2, arg5);
+        if(i != 0) {
+            int i_0_ = Npc.currentScene.getArrangement(arg1, arg2, arg5, i);
+            int i_1_ = 0x1f & i_0_;
+            int i_2_ = 0x3 & i_0_ >> 6;
+            int i_3_ = arg3;
+            if(i > 0) {
+                i_3_ = arg4;
+            }
+            int i_4_ = 4 * (-arg5 + 103) * 512 + 24624 + 4 * arg2;
+            int i_5_ = i >> 14 & 0x7fff;
+            int[] is = Class40_Sub5_Sub13.minimapImage.pixels;
+            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_5_);
+            if(gameObjectDefinition.mapSceneID == -1) {
+                if(i_1_ == 0 || i_1_ == 2) {
+                    if(i_2_ == 0) {
+                        is[i_4_] = i_3_;
+                        is[512 + i_4_] = i_3_;
+                        is[1024 + i_4_] = i_3_;
+                        is[1536 + i_4_] = i_3_;
+                    } else if(i_2_ == 1) {
+                        is[i_4_] = i_3_;
+                        is[i_4_ + 1] = i_3_;
+                        is[2 + i_4_] = i_3_;
+                        is[i_4_ + 3] = i_3_;
+                    } else if(i_2_ == 2) {
+                        is[3 + i_4_] = i_3_;
+                        is[3 + i_4_ + 512] = i_3_;
+                        is[1024 + i_4_ + 3] = i_3_;
+                        is[i_4_ + 1539] = i_3_;
+                    } else if(i_2_ == 3) {
+                        is[i_4_ + 1536] = i_3_;
+                        is[1536 + i_4_ + 1] = i_3_;
+                        is[1536 + i_4_ + 2] = i_3_;
+                        is[3 + i_4_ + 1536] = i_3_;
                     }
                 }
-            }
-            i = Npc.currentScene.getLocationHash(arg1, arg2, arg5);
-            if(i != 0) {
-                int i_8_ = Npc.currentScene.getArrangement(arg1, arg2, arg5, i);
-                int i_9_ = 0x7fff & i >> 14;
-                int i_10_ = (i_8_ & 0xf4) >> 6;
-                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
-                int i_11_ = i_8_ & 0x1f;
-                if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
-                    if(class40_sub5_sub14_sub2 != null) {
-                        int i_12_ = (-class40_sub5_sub14_sub2.imgHeight + gameObjectDefinition.sizeY * 4) / 2;
-                        int i_13_ = (gameObjectDefinition.sizeX * 4 + -class40_sub5_sub14_sub2.imgWidth) / 2;
-                        class40_sub5_sub14_sub2.drawImage(i_13_ + arg2 * 4 + 48, 48 - (-(4 * (-arg5 + 104 + -gameObjectDefinition.sizeY)) + -i_12_));
-                    }
-                } else if(i_11_ == 9) {
-                    int[] is = Class40_Sub5_Sub13.minimapImage.pixels;
-                    int i_14_ = 15658734;
-                    if(i > 0)
-                        i_14_ = 15597568;
-                    int i_15_ = (-(arg5 * 512) + 52736) * 4 + arg2 * 4 + 24624;
-                    if(i_10_ == 0 || i_10_ == 2) {
-                        is[1536 + i_15_] = i_14_;
-                        is[1024 + i_15_ + 1] = i_14_;
-                        is[514 + i_15_] = i_14_;
-                        is[3 + i_15_] = i_14_;
+                if(i_1_ == 3) {
+                    if(i_2_ != 0) {
+                        if(i_2_ != 1) {
+                            if(i_2_ != 2) {
+                                if(i_2_ == 3) {
+                                    is[i_4_ + 1536] = i_3_;
+                                }
+                            } else {
+                                is[3 + i_4_ + 1536] = i_3_;
+                            }
+                        } else {
+                            is[i_4_ + 3] = i_3_;
+                        }
                     } else {
-                        is[i_15_] = i_14_;
-                        is[513 + i_15_] = i_14_;
-                        is[2 + i_15_ + 1024] = i_14_;
-                        is[1536 + i_15_ + 3] = i_14_;
+                        is[i_4_] = i_3_;
                     }
                 }
-            }
-            i = Npc.currentScene.getFloorDecorationHash(arg1, arg2, arg5);
-            if(i != 0) {
-                int i_16_ = (i & 0x1fffd9fb) >> 14;
-                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);
-                if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
-                    if(class40_sub5_sub14_sub2 != null) {
-                        int i_17_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
-                        int i_18_ = (-class40_sub5_sub14_sub2.imgHeight + 4 * gameObjectDefinition.sizeY) / 2;
-                        class40_sub5_sub14_sub2.drawImage(4 * arg2 + 48 + i_17_, i_18_ + (104 - (arg5 + gameObjectDefinition.sizeY)) * 4 + 48);
+                if(i_1_ == 2) {
+                    if(i_2_ == 3) {
+                        is[i_4_] = i_3_;
+                        is[512 + i_4_] = i_3_;
+                        is[i_4_ + 1024] = i_3_;
+                        is[1536 + i_4_] = i_3_;
+                    } else if(i_2_ == 0) {
+                        is[i_4_] = i_3_;
+                        is[1 + i_4_] = i_3_;
+                        is[i_4_ + 2] = i_3_;
+                        is[3 + i_4_] = i_3_;
+                    } else if(i_2_ == 1) {
+                        is[i_4_ + 3] = i_3_;
+                        is[512 + 3 + i_4_] = i_3_;
+                        is[i_4_ + 1027] = i_3_;
+                        is[1536 + 3 + i_4_] = i_3_;
+                    } else if(i_2_ == 2) {
+                        is[1536 + i_4_] = i_3_;
+                        is[1537 + i_4_] = i_3_;
+                        is[i_4_ + 1538] = i_3_;
+                        is[1536 + i_4_ + 3] = i_3_;
                     }
+                }
+            } else {
+                IndexedImage class40_sub5_sub14_sub2 = SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
+                if(class40_sub5_sub14_sub2 != null) {
+                    int i_6_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
+                    int i_7_ = (gameObjectDefinition.sizeY * 4 + -class40_sub5_sub14_sub2.imgHeight) / 2;
+                    class40_sub5_sub14_sub2.drawImage(48 + 4 * arg2 + i_6_,
+                            i_7_ + 48 + (104 + -arg5 - gameObjectDefinition.sizeY) * 4
+                    );
+                }
+            }
+        }
+        i = Npc.currentScene.getLocationHash(arg1, arg2, arg5);
+        if(i != 0) {
+            int i_8_ = Npc.currentScene.getArrangement(arg1, arg2, arg5, i);
+            int i_9_ = 0x7fff & i >> 14;
+            int i_10_ = (i_8_ & 0xf4) >> 6;
+            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
+            int i_11_ = i_8_ & 0x1f;
+            if(gameObjectDefinition.mapSceneID != -1) {
+                IndexedImage class40_sub5_sub14_sub2 = SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
+                if(class40_sub5_sub14_sub2 != null) {
+                    int i_12_ = (-class40_sub5_sub14_sub2.imgHeight + gameObjectDefinition.sizeY * 4) / 2;
+                    int i_13_ = (gameObjectDefinition.sizeX * 4 + -class40_sub5_sub14_sub2.imgWidth) / 2;
+                    class40_sub5_sub14_sub2.drawImage(i_13_ + arg2 * 4 + 48,
+                            48 - (-(4 * (-arg5 + 104 + -gameObjectDefinition.sizeY)) + -i_12_)
+                    );
+                }
+            } else if(i_11_ == 9) {
+                int[] is = Class40_Sub5_Sub13.minimapImage.pixels;
+                int i_14_ = 15658734;
+                if(i > 0) {
+                    i_14_ = 15597568;
+                }
+                int i_15_ = (-(arg5 * 512) + 52736) * 4 + arg2 * 4 + 24624;
+                if(i_10_ == 0 || i_10_ == 2) {
+                    is[1536 + i_15_] = i_14_;
+                    is[1024 + i_15_ + 1] = i_14_;
+                    is[514 + i_15_] = i_14_;
+                    is[3 + i_15_] = i_14_;
+                } else {
+                    is[i_15_] = i_14_;
+                    is[513 + i_15_] = i_14_;
+                    is[2 + i_15_ + 1024] = i_14_;
+                    is[1536 + i_15_ + 3] = i_14_;
+                }
+            }
+        }
+        i = Npc.currentScene.getFloorDecorationHash(arg1, arg2, arg5);
+        if(i != 0) {
+            int i_16_ = (i & 0x1fffd9fb) >> 14;
+            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);
+            if(gameObjectDefinition.mapSceneID != -1) {
+                IndexedImage class40_sub5_sub14_sub2 = SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
+                if(class40_sub5_sub14_sub2 != null) {
+                    int i_17_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
+                    int i_18_ = (-class40_sub5_sub14_sub2.imgHeight + 4 * gameObjectDefinition.sizeY) / 2;
+                    class40_sub5_sub14_sub2.drawImage(4 * arg2 + 48 + i_17_,
+                            i_18_ + (104 - (arg5 + gameObjectDefinition.sizeY)) * 4 + 48
+                    );
                 }
             }
         }
@@ -270,13 +280,14 @@ public abstract class Actor extends Renderable {
     }
 
 
-
-    public static void method789(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        if(arg3 != Class51.regionX || arg2 != Class17.regionY || MovedStatics.onBuildTimePlane != arg5 && VertexNormal.lowMemory) {
+    public static void method789(int arg0, int arg2, int arg3, int arg4, int arg5) {
+        if(arg3 != Class51.regionX || arg2 != Class17.regionY ||
+                MovedStatics.onBuildTimePlane != arg5 && VertexNormal.lowMemory) {
             MovedStatics.onBuildTimePlane = arg5;
             Class51.regionX = arg3;
-            if(!VertexNormal.lowMemory)
+            if(!VertexNormal.lowMemory) {
                 MovedStatics.onBuildTimePlane = 0;
+            }
             Class17.regionY = arg2;
             OverlayDefinition.updateOverlay(25);
             Class51.method940(0, English.loadingPleaseWait, false, null);
@@ -284,8 +295,6 @@ public abstract class Actor extends Renderable {
             int i_33_ = SpotAnimDefinition.baseX;
             SpotAnimDefinition.baseX = (arg3 - 6) * 8;
             int i_34_ = SpotAnimDefinition.baseX + -i_33_;
-            if(arg1 != -1000)
-                method781(14, 98, 96, -85, -118, 89);
             i_33_ = SpotAnimDefinition.baseX;
             Class26.baseY = (-6 + arg2) * 8;
             int i_35_ = Class26.baseY + -i;
@@ -335,18 +344,24 @@ public abstract class Actor extends Renderable {
                     int i_48_ = i_34_ + i_46_;
                     int i_49_ = i_35_ + i_47_;
                     for(int i_50_ = 0; i_50_ < 4; i_50_++) {
-                        if(i_48_ < 0 || i_49_ < 0 || i_48_ >= 104 || i_49_ >= 104)
+                        if(i_48_ < 0 || i_49_ < 0 || i_48_ >= 104 || i_49_ >= 104) {
                             Wall.groundItems[i_50_][i_46_][i_47_] = null;
-                        else
+                        } else {
                             Wall.groundItems[i_50_][i_46_][i_47_] = Wall.groundItems[i_50_][i_48_][i_49_];
+                        }
                     }
                 }
             }
-            for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
+            for(
+                    Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method902();
+                    class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909()
+            ) {
                 class40_sub3.anInt2038 -= i_35_;
                 class40_sub3.anInt2039 -= i_34_;
-                if(class40_sub3.anInt2039 < 0 || class40_sub3.anInt2038 < 0 || class40_sub3.anInt2039 >= 104 || class40_sub3.anInt2038 >= 104)
+                if(class40_sub3.anInt2039 < 0 || class40_sub3.anInt2038 < 0 || class40_sub3.anInt2039 >= 104 ||
+                        class40_sub3.anInt2038 >= 104) {
                     class40_sub3.remove();
+                }
             }
             Buffer.anInt1985 = -1;
             if(VarbitDefinition.destinationX != 0) {
@@ -355,8 +370,8 @@ public abstract class Actor extends Renderable {
             }
             Player.cutsceneActive = false;
             PacketBuffer.currentSound = 0;
-            Class57.aLinkedList_1332.method906(0);
-            Class43.aLinkedList_1022.method906(0);
+            Class57.aLinkedList_1332.method906();
+            Class43.aLinkedList_1022.method906();
         }
     }
 
@@ -364,10 +379,13 @@ public abstract class Actor extends Renderable {
         int i = pathY[0];
         int i_19_ = pathX[0];
 
-        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation).priority == 1)
+        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation).priority ==
+                1) {
             playingAnimation = -1;
-        if(anInt3109 < 9)
+        }
+        if(anInt3109 < 9) {
             anInt3109++;
+        }
         for(int i_20_ = anInt3109; i_20_ > 0; i_20_--) {
             pathY[i_20_] = pathY[i_20_ + -1];
             pathX[i_20_] = pathX[i_20_ - 1];
@@ -381,8 +399,9 @@ public abstract class Actor extends Renderable {
         }
 
         // North
-        if(moveDirection == 1)
+        if(moveDirection == 1) {
             i_19_++;
+        }
 
         // North-east
         if(moveDirection == 2) {
@@ -391,12 +410,14 @@ public abstract class Actor extends Renderable {
         }
 
         // East
-        if(moveDirection == 4)
+        if(moveDirection == 4) {
             i++;
+        }
 
         // West
-        if(moveDirection == 3)
+        if(moveDirection == 3) {
             i--;
+        }
 
         // South-west
         if(moveDirection == 5) {
@@ -405,8 +426,9 @@ public abstract class Actor extends Renderable {
         }
 
         // South
-        if(moveDirection == 6)
+        if(moveDirection == 6) {
             i_19_--;
+        }
 
         // South-east
         if(moveDirection == 7) {
@@ -419,7 +441,7 @@ public abstract class Actor extends Renderable {
         aBooleanArray3072[0] = isRunning;
     }
 
-    public boolean isVisible(int arg0) {
+    public boolean isVisible() {
         return false;
     }
 
@@ -435,14 +457,17 @@ public abstract class Actor extends Renderable {
     }
 
     public void method787(int arg0, int arg1, boolean arg2, int arg3) {
-        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation).priority == 1)
+        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation).priority ==
+                1) {
             playingAnimation = -1;
+        }
         if(!arg2) {
             int i = -pathY[0] + arg3;
             int i_31_ = -pathX[0] + arg0;
             if(i >= -8 && i <= 8 && i_31_ >= -8 && i_31_ <= 8) {
-                if(anInt3109 < 9)
+                if(anInt3109 < 9) {
                     anInt3109++;
+                }
                 for(int i_32_ = anInt3109; i_32_ > 0; i_32_--) {
                     pathY[i_32_] = pathY[-1 + i_32_];
                     pathX[i_32_] = pathX[-1 + i_32_];
@@ -456,8 +481,9 @@ public abstract class Actor extends Renderable {
         }
         anInt3109 = 0;
         anInt3074 = 0;
-        if(arg1 != -7717)
+        if(arg1 != -7717) {
             method785(-19, 10, -70);
+        }
         anInt3094 = 0;
         pathY[0] = arg3;
         pathX[0] = arg0;

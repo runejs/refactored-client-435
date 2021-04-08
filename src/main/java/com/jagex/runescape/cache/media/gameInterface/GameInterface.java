@@ -264,7 +264,8 @@ public class GameInterface extends CachedNode {
     public static GameInterface getInterface(int interfaceData) {
         int parentInterfaceId = interfaceData >> 16;
         int childInterfaceId = 0xffff & interfaceData;
-        if(cachedInterfaces[parentInterfaceId] == null || cachedInterfaces[parentInterfaceId][childInterfaceId] == null) {
+        if(cachedInterfaces[parentInterfaceId] == null ||
+                cachedInterfaces[parentInterfaceId][childInterfaceId] == null) {
             if(!decodeGameInterface(parentInterfaceId)) {
                 return null;
             }
@@ -287,12 +288,14 @@ public class GameInterface extends CachedNode {
                 gameInterface.disabledText = English.pleaseWait;
             } else {
                 int fCount = Player.friendsCount;
-                if(type > 700)
+                if(type > 700) {
                     type -= 601;
-                else
+                } else {
                     type--;
-                if(Player.friendListStatus != 2)
+                }
+                if(Player.friendListStatus != 2) {
                     fCount = 0;
+                }
                 if(fCount <= type) {
                     gameInterface.disabledText = "";
                     gameInterface.actionType = 0;
@@ -302,13 +305,15 @@ public class GameInterface extends CachedNode {
                 }
             }
         } else if(type >= 101 && type <= 200 || type >= 801 && type <= 900) {
-            if(type <= 800)
+            if(type <= 800) {
                 type -= 101;
-            else
+            } else {
                 type -= 701;
+            }
             int count = Player.friendsCount;
-            if(Player.friendListStatus != 2)
+            if(Player.friendListStatus != 2) {
                 count = 0;
+            }
             if(type >= count) {
                 gameInterface.disabledText = "";
                 gameInterface.actionType = 0;
@@ -330,11 +335,13 @@ public class GameInterface extends CachedNode {
             }
         } else if(type == 203) {
             int count = Player.friendsCount;
-            if(Player.friendListStatus != 2)
+            if(Player.friendListStatus != 2) {
                 count = 0;
+            }
             gameInterface.scrollHeight = 20 + 15 * count;
-            if(gameInterface.originalHeight >= gameInterface.scrollHeight)
+            if(gameInterface.originalHeight >= gameInterface.scrollHeight) {
                 gameInterface.scrollHeight = 1 + gameInterface.originalHeight;
+            }
         } else if(type >= 401 && type <= 500) {
             type -= 401;
             if(type == 0 && Player.friendListStatus == 0) {
@@ -345,8 +352,9 @@ public class GameInterface extends CachedNode {
                 gameInterface.actionType = 0;
             } else {
                 int i_4_ = Class42.anInt1008;
-                if(Player.friendListStatus == 0)
+                if(Player.friendListStatus == 0) {
                     i_4_ = 0;
+                }
                 if(i_4_ <= type) {
                     gameInterface.actionType = 0;
                     gameInterface.disabledText = "";
@@ -357,26 +365,29 @@ public class GameInterface extends CachedNode {
             }
         } else if(type == 503) {
             gameInterface.scrollHeight = 15 * Class42.anInt1008 + 20;
-            if(gameInterface.scrollHeight <= gameInterface.originalHeight)
+            if(gameInterface.scrollHeight <= gameInterface.originalHeight) {
                 gameInterface.scrollHeight = gameInterface.originalHeight + 1;
+            }
         } else if(type == 324) {
             if(Class64.anInt1511 == -1) {
                 Class64.anInt1511 = gameInterface.spriteId;
                 Main.anInt1769 = gameInterface.alternateSpriteId;
             }
-            if(!Player.activePlayerAppearance.gender)
+            if(!Player.activePlayerAppearance.gender) {
                 gameInterface.spriteId = Main.anInt1769;
-            else
+            } else {
                 gameInterface.spriteId = Class64.anInt1511;
+            }
         } else if(type == 325) {
             if(Class64.anInt1511 == -1) {
                 Main.anInt1769 = gameInterface.alternateSpriteId;
                 Class64.anInt1511 = gameInterface.spriteId;
             }
-            if(Player.activePlayerAppearance.gender)
+            if(Player.activePlayerAppearance.gender) {
                 gameInterface.spriteId = Main.anInt1769;
-            else
+            } else {
                 gameInterface.spriteId = Class64.anInt1511;
+            }
         } else if(type == 327) {
             gameInterface.rotationX = 150;
             gameInterface.rotationZ = 0x7ff & (int) (256.0 * Math.sin((double) MovedStatics.pulseCycle / 40.0));
@@ -387,9 +398,9 @@ public class GameInterface extends CachedNode {
             gameInterface.rotationZ = 0x7ff & (int) (256.0 * Math.sin((double) MovedStatics.pulseCycle / 40.0));
             gameInterface.modelId = 1;
             gameInterface.modelType = InterfaceModelType.PLAYER;
-        } else if(type == 600)
+        } else if(type == 600) {
             gameInterface.disabledText = Native.reportedName + Native.yellowBar;
-        else if(type == 620) {
+        } else if(type == 620) {
             if(InteractiveObject.playerRights >= 1) {
                 if(MovedStatics.reportMutePlayer) {
                     gameInterface.textColor = 0xff0000;
@@ -398,18 +409,22 @@ public class GameInterface extends CachedNode {
                     gameInterface.textColor = 0xffffff;
                     gameInterface.disabledText = English.moderatorOptionMutePlayerFor48HoursOFF;
                 }
-            } else
+            } else {
                 gameInterface.disabledText = "";
+            }
         }
     }
 
-    public static void drawScrollBar(int x, int y, int height, int scrollPosition, int scrollMaximum, int unknownArrayIndex) {
+    public static void drawScrollBar(
+            int x, int y, int height, int scrollPosition, int scrollMaximum, int unknownArrayIndex
+    ) {
         int length = (-32 + height) * height / scrollMaximum;
         MovedStatics.aClass40_Sub5_Sub14_Sub2Array215[unknownArrayIndex].drawImage(x, y);
         MovedStatics.aClass40_Sub5_Sub14_Sub2Array215[1].drawImage(x, y - (-height + 16));
         Rasterizer.drawFilledRectangle(x, y + 16, 16, height + -32, Class55.anInt1299);
-        if(length < 8)
+        if(length < 8) {
             length = 8;
+        }
         int scrollCurrent = (-32 + height - length) * scrollPosition / (-height + scrollMaximum);
         Rasterizer.drawFilledRectangle(x, 16 + y + scrollCurrent, 16, length, MovedStatics.anInt321);
         Rasterizer.drawVerticalLine(x, 16 + y + scrollCurrent, length, HuffmanEncoding.anInt1559);
@@ -485,10 +500,11 @@ public class GameInterface extends CachedNode {
 
             for(int i = 0; cachedInterfaces[interfaceId].length > i; i++) {
                 if(cachedInterfaces[interfaceId][i] != null) {
-                    if(cachedInterfaces[interfaceId][i].type != GameInterfaceType.INVENTORY)
+                    if(cachedInterfaces[interfaceId][i].type != GameInterfaceType.INVENTORY) {
                         cachedInterfaces[interfaceId][i] = null;
-                    else
+                    } else {
                         deleteFromCache = false;
+                    }
                 }
             }
 
@@ -526,10 +542,11 @@ public class GameInterface extends CachedNode {
         Object[] objects = new Object[length];
         for(int i = 0; i < length; i++) {
             int opcode = buffer.getUnsignedByte();
-            if(opcode == 0)
+            if(opcode == 0) {
                 objects[i] = new Integer(buffer.getIntBE());
-            else if(opcode == 1)
+            } else if(opcode == 1) {
                 objects[i] = buffer.getRSString();
+            }
         }
         return objects;
     }
@@ -565,9 +582,13 @@ public class GameInterface extends CachedNode {
                 }
             }
             if(action == 38) {
-                boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
+                boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0,
+                        Player.localPlayer.pathX[0], i_10_, 2
+                );
                 if(!bool) {
-                    bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
+                    bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1,
+                            Player.localPlayer.pathX[0], i_10_, 2
+                    );
                 }
                 OverlayDefinition.crossIndex = 0;
                 MovedStatics.crossY = RSString.clickY;
@@ -596,7 +617,9 @@ public class GameInterface extends CachedNode {
             if(action == 1) {
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
-                    Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+                    Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0,
+                            false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2
+                    );
                     ClientScriptRunner.crossX = Class57.clickX;
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
@@ -615,9 +638,13 @@ public class GameInterface extends CachedNode {
                     boolean bool = false;
                     for(int i_15_ = 0; i_15_ < Player.localPlayerCount; i_15_++) {
                         Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[Player.trackedPlayerIndices[i_15_]];
-                        if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.playerName != null && class40_sub5_sub17_sub4_sub1.playerName.equalsIgnoreCase(username)) {
+                        if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.playerName != null &&
+                                class40_sub5_sub17_sub4_sub1.playerName.equalsIgnoreCase(username)) {
                             bool = true;
-                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0],
+                                    class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0],
+                                    class40_sub5_sub17_sub4_sub1.pathX[0], 2
+                            );
                             if(action == 26) {
                                 SceneCluster.packetBuffer.putPacket(96);
                                 SceneCluster.packetBuffer.putShortBE(Player.trackedPlayerIndices[i_15_]);
@@ -675,7 +702,7 @@ public class GameInterface extends CachedNode {
                     int i_16_ = gameInterface.clientScripts[0][1];
                     if(gameInterface.alternateRhs[0] != GroundItemTile.varbitMasks[i_16_]) {
                         GroundItemTile.varbitMasks[i_16_] = gameInterface.alternateRhs[0];
-                        Class22.method309(-1, i_16_);
+                        Class22.method309(i_16_);
                         redrawTabArea = true;
                     }
                 }
@@ -699,7 +726,9 @@ public class GameInterface extends CachedNode {
             if(action == 10) {
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
-                    Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+                    Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0,
+                            false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2
+                    );
                     ClientScriptRunner.crossX = Class57.clickX;
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
@@ -711,7 +740,9 @@ public class GameInterface extends CachedNode {
             if(action == 14) {
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
-                    Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+                    Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0,
+                            false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2
+                    );
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
@@ -740,7 +771,9 @@ public class GameInterface extends CachedNode {
             if(action == 22) {
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
-                    Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+                    Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0,
+                            false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2
+                    );
                     ClientScriptRunner.crossX = Class57.clickX;
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
@@ -765,9 +798,13 @@ public class GameInterface extends CachedNode {
                 redrawTabArea = true;
             } else {
                 if(action == 15) {
-                    boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
+                    boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0,
+                            Player.localPlayer.pathX[0], i_10_, 2
+                    );
                     if(!bool) {
-                        bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
+                        bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1,
+                                Player.localPlayer.pathX[0], i_10_, 2
+                        );
                     }
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
@@ -787,7 +824,7 @@ public class GameInterface extends CachedNode {
                     if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
                         int i_17_ = gameInterface.clientScripts[0][1];
                         GroundItemTile.varbitMasks[i_17_] = -GroundItemTile.varbitMasks[i_17_] + 1;
-                        Class22.method309(-1, i_17_);
+                        Class22.method309(i_17_);
                         redrawTabArea = true;
                     }
                 }
@@ -848,7 +885,9 @@ public class GameInterface extends CachedNode {
                 if(action == 30) {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
-                        Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
+                        Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0],
+                                0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2
+                        );
                         OverlayDefinition.crossIndex = 0;
                         ClientScriptRunner.crossX = Class57.clickX;
                         MovedStatics.crossY = RSString.clickY;
@@ -860,7 +899,9 @@ public class GameInterface extends CachedNode {
                 if(action == 49) {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
-                        Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
+                        Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0],
+                                0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2
+                        );
                         ClientScriptRunner.crossX = Class57.clickX;
                         MovedStatics.crossY = RSString.clickY;
                         OverlayDefinition.crossIndex = 0;
@@ -891,7 +932,9 @@ public class GameInterface extends CachedNode {
                 if(action == 34) {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
-                        Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
+                        Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0],
+                                0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2
+                        );
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
                         ClientScriptRunner.crossX = Class57.clickX;
@@ -943,7 +986,9 @@ public class GameInterface extends CachedNode {
                             SceneCluster.packetBuffer.putPacket(151);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         } else {
-                            ChatBox.addChatMessage("", gameInterface.itemAmount + Native.aClass1_1536 + ItemDefinition.forId(i_12_, 10).name, 0);
+                            ChatBox.addChatMessage(
+                                    "", gameInterface.itemAmount + Native.aClass1_1536 +
+                                            ItemDefinition.forId(i_12_, 10).name, 0);
                         }
                     }
                     if(action == 42) {
@@ -976,7 +1021,10 @@ public class GameInterface extends CachedNode {
                     if(action == 12) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
-                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
+                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0],
+                                    class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0],
+                                    class40_sub5_sub17_sub4_sub2.pathX[0], 2
+                            );
                             ClientScriptRunner.crossX = Class57.clickX;
                             MovedStatics.crossY = RSString.clickY;
                             OverlayDefinition.crossIndex = 0;
@@ -986,9 +1034,13 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == 2) {
-                        boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
+                        boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0,
+                                Player.localPlayer.pathX[0], i_10_, 2
+                        );
                         if(!bool) {
-                            bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
+                            bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1,
+                                    Player.localPlayer.pathX[0], i_10_, 2
+                            );
                         }
                         LinkedList.crossType = 2;
                         OverlayDefinition.crossIndex = 0;
@@ -1000,9 +1052,13 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortBE(i_12_);
                     }
                     if(action == 3) {
-                        boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
+                        boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0,
+                                Player.localPlayer.pathX[0], i_10_, 2
+                        );
                         if(!bool) {
-                            bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
+                            bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1,
+                                    Player.localPlayer.pathX[0], i_10_, 2
+                            );
                         }
                         OverlayDefinition.crossIndex = 0;
                         ClientScriptRunner.crossX = Class57.clickX;
@@ -1016,7 +1072,10 @@ public class GameInterface extends CachedNode {
                     if(action == 21) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
-                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
+                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0],
+                                    class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0],
+                                    class40_sub5_sub17_sub4_sub2.pathX[0], 2
+                            );
                             ClientScriptRunner.crossX = Class57.clickX;
                             MovedStatics.crossY = RSString.clickY;
                             OverlayDefinition.crossIndex = 0;
@@ -1048,7 +1107,10 @@ public class GameInterface extends CachedNode {
                     if(action == 44) {
                         Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                         if(class40_sub5_sub17_sub4_sub1 != null) {
-                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0],
+                                    class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0],
+                                    class40_sub5_sub17_sub4_sub1.pathX[0], 2
+                            );
                             LinkedList.crossType = 2;
                             OverlayDefinition.crossIndex = 0;
                             ClientScriptRunner.crossX = Class57.clickX;
@@ -1062,9 +1124,9 @@ public class GameInterface extends CachedNode {
                     }
                     if(action == 7) {
                         if(MovedStatics.menuOpen) {
-                            Npc.currentScene.method120(-4 + i, -4 + i_10_);
+                            Npc.currentScene.click(-4 + i, -4 + i_10_);
                         } else {
-                            Npc.currentScene.method120(Class57.clickX - 4, -4 + RSString.clickY);
+                            Npc.currentScene.click(Class57.clickX - 4, -4 + RSString.clickY);
                         }
                     }
                     if(action == 1006) {
@@ -1073,7 +1135,9 @@ public class GameInterface extends CachedNode {
                             SceneCluster.packetBuffer.putPacket(151);
                             SceneCluster.packetBuffer.putShortLE(i_12_);
                         } else {
-                            ChatBox.addChatMessage("", gameInterface.itemAmounts[i] + Native.aClass1_1536 + ItemDefinition.forId(i_12_, 10).name, 0);
+                            ChatBox.addChatMessage(
+                                    "", gameInterface.itemAmounts[i] + Native.aClass1_1536 +
+                                            ItemDefinition.forId(i_12_, 10).name, 0);
                         }
                         GenericTile.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
@@ -1143,7 +1207,10 @@ public class GameInterface extends CachedNode {
                     if(action == 41) {
                         Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                         if(class40_sub5_sub17_sub4_sub1 != null) {
-                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0],
+                                    class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0],
+                                    class40_sub5_sub17_sub4_sub1.pathX[0], 2
+                            );
                             LinkedList.crossType = 2;
                             MovedStatics.crossY = RSString.clickY;
                             ClientScriptRunner.crossX = Class57.clickX;
@@ -1169,9 +1236,13 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == 8) {
-                        boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
+                        boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0,
+                                Player.localPlayer.pathX[0], i_10_, 2
+                        );
                         if(!bool) {
-                            bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
+                            bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1,
+                                    Player.localPlayer.pathX[0], i_10_, 2
+                            );
                         }
                         ClientScriptRunner.crossX = Class57.clickX;
                         OverlayDefinition.crossIndex = 0;
@@ -1206,9 +1277,13 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == 36) {
-                        boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
+                        boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0,
+                                Player.localPlayer.pathX[0], i_10_, 2
+                        );
                         if(!bool) {
-                            bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
+                            bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1,
+                                    Player.localPlayer.pathX[0], i_10_, 2
+                            );
                         }
                         MovedStatics.crossY = RSString.clickY;
                         LinkedList.crossType = 2;
@@ -1222,7 +1297,10 @@ public class GameInterface extends CachedNode {
                     if(action == 39) {
                         Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_12_];
                         if(class40_sub5_sub17_sub4_sub1 != null) {
-                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0],
+                                    class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0],
+                                    class40_sub5_sub17_sub4_sub1.pathX[0], 2
+                            );
                             OverlayDefinition.crossIndex = 0;
                             ClientScriptRunner.crossX = Class57.clickX;
                             LinkedList.crossType = 2;
@@ -1257,7 +1335,10 @@ public class GameInterface extends CachedNode {
                     if(action == 20) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
-                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
+                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0],
+                                    class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0],
+                                    class40_sub5_sub17_sub4_sub2.pathX[0], 2
+                            );
                             LinkedList.crossType = 2;
                             ClientScriptRunner.crossX = Class57.clickX;
                             MovedStatics.crossY = RSString.clickY;
@@ -1267,9 +1348,13 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == 47) {
-                        boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
+                        boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0,
+                                Player.localPlayer.pathX[0], i_10_, 2
+                        );
                         if(!bool) {
-                            bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
+                            bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1,
+                                    Player.localPlayer.pathX[0], i_10_, 2
+                            );
                         }
                         ClientScriptRunner.crossX = Class57.clickX;
                         MovedStatics.crossY = RSString.clickY;
@@ -1302,7 +1387,10 @@ public class GameInterface extends CachedNode {
                     if(action == 4) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
-                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
+                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0],
+                                    class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0],
+                                    class40_sub5_sub17_sub4_sub2.pathX[0], 2
+                            );
                             LinkedList.crossType = 2;
                             ClientScriptRunner.crossX = Class57.clickX;
                             OverlayDefinition.crossIndex = 0;
@@ -1334,8 +1422,8 @@ public class GameInterface extends CachedNode {
                 GameInterface gameInterface = Wall.aGameInterface_353;
                 GameInterface gameInterface_24_ = FramemapDefinition.method878(gameInterface);
                 if(gameInterface_24_ != null) {
-                    int[] is = Class13.method247(gameInterface_24_, (byte) 97);
-                    int[] is_25_ = Class13.method247(gameInterface, (byte) 110);
+                    int[] is = Class13.method247(gameInterface_24_);
+                    int[] is_25_ = Class13.method247(gameInterface);
                     int i = is_25_[1] - is[1] + -Class40_Sub5_Sub11.anInt2621 + Landscape.mouseY;
                     int i_26_ = -is[0] + is_25_[0] + Class13.mouseX + -MovedStatics.anInt1996;
                     if(i < 0) {
@@ -1351,11 +1439,13 @@ public class GameInterface extends CachedNode {
                         i_26_ = gameInterface_24_.originalWidth - gameInterface.originalWidth;
                     }
                     if(Wall.aGameInterface_353.anObjectArray2669 != null && (arg2 & 0x200) != 0) {
-                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2669, 0, i, gameInterface, i_26_);
+                        ClientScriptRunner.runClientScripts(
+                                gameInterface.anObjectArray2669, 0, i, gameInterface, i_26_);
                     }
                     if(SpotAnimDefinition.mouseButtonPressed == 0 && (arg2 & 0x400) != 0) {
                         if(Wall.aGameInterface_353.anObjectArray2695 != null) {
-                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2695, 0, i, gameInterface, i_26_);
+                            ClientScriptRunner.runClientScripts(
+                                    gameInterface.anObjectArray2695, 0, i, gameInterface, i_26_);
                         }
                         Wall.aGameInterface_353 = null;
                     }
@@ -1364,7 +1454,9 @@ public class GameInterface extends CachedNode {
         }
     }
 
-    public static GameInterface method361(GameInterface[] arg0, int arg1, boolean arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public static GameInterface method361(
+            GameInterface[] arg0, int arg1, boolean arg2, int arg3, int arg4, int arg5, int arg6, int arg7
+    ) {
         if(arg0 == null) {
             return null;
         }
@@ -1374,17 +1466,25 @@ public class GameInterface extends CachedNode {
             if(gameInterface_27_ != null && gameInterface_27_.parentId == arg4) {
                 int i_28_ = arg3 + gameInterface_27_.currentY;
                 int i_29_ = arg5 + gameInterface_27_.currentX;
-                if(i_29_ <= arg6 && i_28_ <= arg1 && i_29_ + gameInterface_27_.originalWidth > arg6 && arg1 < i_28_ + gameInterface_27_.originalHeight && !gameInterface_27_.isHidden) {
+                if(i_29_ <= arg6 && i_28_ <= arg1 && i_29_ + gameInterface_27_.originalWidth > arg6 &&
+                        arg1 < i_28_ + gameInterface_27_.originalHeight && !gameInterface_27_.isHidden) {
                     if(gameInterface_27_.id < 0 && arg2 || gameInterface_27_.id >= 0 && !arg2) {
                         gameInterface = gameInterface_27_;
                     }
                     if(gameInterface_27_.type == GameInterfaceType.LAYER) {
-                        GameInterface gameInterface_30_ = method361(arg0, arg1, arg2, -gameInterface_27_.scrollPosition + gameInterface_27_.currentY, i, gameInterface_27_.currentX - gameInterface_27_.scrollWidth, arg6, 398);
+                        GameInterface gameInterface_30_ = method361(arg0, arg1, arg2,
+                                -gameInterface_27_.scrollPosition + gameInterface_27_.currentY, i,
+                                gameInterface_27_.currentX - gameInterface_27_.scrollWidth, arg6, 398
+                        );
                         if(gameInterface_30_ != null) {
                             gameInterface = gameInterface_30_;
                         }
                         if(arg2 && gameInterface_27_.children != null) {
-                            GameInterface gameInterface_31_ = method361(gameInterface_27_.children, arg1, arg2, gameInterface_27_.currentY + -gameInterface_27_.scrollPosition, gameInterface_27_.id, gameInterface_27_.currentX - gameInterface_27_.scrollWidth, arg6, 398);
+                            GameInterface gameInterface_31_ = method361(gameInterface_27_.children, arg1, arg2,
+                                    gameInterface_27_.currentY + -gameInterface_27_.scrollPosition,
+                                    gameInterface_27_.id, gameInterface_27_.currentX - gameInterface_27_.scrollWidth,
+                                    arg6, 398
+                            );
                             if(gameInterface_31_ != null) {
                                 gameInterface = gameInterface_31_;
                             }
@@ -1399,38 +1499,49 @@ public class GameInterface extends CachedNode {
         return gameInterface;
     }
 
-    public static void scrollInterface(int arg0, int arg1, int arg2, int arg3, GameInterface arg5, int arg6, int arg7, int arg8) {
-        if(MovedStatics.aBoolean1444)
+    public static void scrollInterface(
+            int arg0, int arg1, int arg2, int arg3, GameInterface arg5, int arg6, int arg7, int arg8
+    ) {
+        if(MovedStatics.aBoolean1444) {
             Landscape.anInt1171 = 32;
-        else
+        } else {
             Landscape.anInt1171 = 0;
+        }
         MovedStatics.aBoolean1444 = false;
         if(arg2 >= arg6 && arg2 < arg6 + 16 && arg1 >= arg8 && 16 + arg8 > arg1) {
             arg5.scrollPosition -= Npc.anInt3294 * 4;
-            if(arg7 == 1)
+            if(arg7 == 1) {
                 redrawTabArea = true;
-            if(arg7 == 2 || arg7 == 3)
+            }
+            if(arg7 == 2 || arg7 == 3) {
                 ChatBox.redrawChatbox = true;
+            }
         } else if(arg6 > arg2 || arg6 + 16 <= arg2 || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
-            if(-Landscape.anInt1171 + arg6 <= arg2 && 16 + arg6 + Landscape.anInt1171 > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
+            if(-Landscape.anInt1171 + arg6 <= arg2 && 16 + arg6 + Landscape.anInt1171 > arg2 && arg8 + 16 <= arg1 &&
+                    arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
                 MovedStatics.aBoolean1444 = true;
                 int i = (-32 + arg0) * arg0 / arg3;
-                if(arg7 == 2 || arg7 == 3)
+                if(arg7 == 2 || arg7 == 3) {
                     ChatBox.redrawChatbox = true;
-                if(arg7 == 1)
+                }
+                if(arg7 == 1) {
                     redrawTabArea = true;
-                if(i < 8)
+                }
+                if(i < 8) {
                     i = 8;
+                }
                 int i_17_ = -i + arg0 + -32;
                 int i_18_ = -(i / 2) + -arg8 + arg1 + -16;
                 arg5.scrollPosition = (arg3 + -arg0) * i_18_ / i_17_;
             }
         } else {
             arg5.scrollPosition += 4 * Npc.anInt3294;
-            if(arg7 == 2 || arg7 == 3)
+            if(arg7 == 2 || arg7 == 3) {
                 ChatBox.redrawChatbox = true;
-            if(arg7 == 1)
+            }
+            if(arg7 == 1) {
                 redrawTabArea = true;
+            }
         }
     }
 
@@ -1484,17 +1595,20 @@ public class GameInterface extends CachedNode {
             int i_16_ = i & 0x1;
             Player.activePlayerAppearance.updateAppearanceColors(i_16_ == 1, i_15_);
         }
-        if(i == 324)
+        if(i == 324) {
             Player.activePlayerAppearance.setGender(false);
-        if(i == 325)
+        }
+        if(i == 325) {
             Player.activePlayerAppearance.setGender(true);
+        }
         if(i == 326) {
             SceneCluster.packetBuffer.putPacket(231);
             Player.activePlayerAppearance.sendAppearanceData(arg0 ^ 0x58, SceneCluster.packetBuffer);
             return true;
         }
-        if(i == 620)
+        if(i == 620) {
             MovedStatics.reportMutePlayer = !MovedStatics.reportMutePlayer;
+        }
         if(i >= 601 && i <= 613) {
             PacketBuffer.method516();
             if(Native.reportedName.length() > 0) {
@@ -1703,7 +1817,7 @@ public class GameInterface extends CachedNode {
             return null;
         }
         int i_9_ = 124 % ((-15 - arg0) / 34);
-        ImageRGB class40_sub5_sub14_sub4 = (ImageRGB) ImageRGB.imageRgbCache.get((long) i);
+        ImageRGB class40_sub5_sub14_sub4 = (ImageRGB) ImageRGB.imageRgbCache.get(i);
         if(class40_sub5_sub14_sub4 != null) {
             return class40_sub5_sub14_sub4;
         }
@@ -1711,7 +1825,7 @@ public class GameInterface extends CachedNode {
         if(class40_sub5_sub14_sub4 == null) {
             FramemapDefinition.aBoolean2177 = true;
         } else {
-            ImageRGB.imageRgbCache.put((long) i, class40_sub5_sub14_sub4);
+            ImageRGB.imageRgbCache.put(i, class40_sub5_sub14_sub4);
         }
         return class40_sub5_sub14_sub4;
     }
@@ -1745,7 +1859,7 @@ public class GameInterface extends CachedNode {
         if(i == -1) {
             return null;
         }
-        ImageRGB imageRGB = (ImageRGB) ImageRGB.imageRgbCache.get((long) i);
+        ImageRGB imageRGB = (ImageRGB) ImageRGB.imageRgbCache.get(i);
 
         if(imageRGB != null) {
             return imageRGB;
@@ -1754,7 +1868,7 @@ public class GameInterface extends CachedNode {
         if(imageRGB == null) {
             FramemapDefinition.aBoolean2177 = true;
         } else {
-            ImageRGB.imageRgbCache.put((long) i, imageRGB);
+            ImageRGB.imageRgbCache.put(i, imageRGB);
         }
         return imageRGB;
     }
@@ -1858,7 +1972,10 @@ public class GameInterface extends CachedNode {
         }
     }
 
-    public Model getModelForInterface(AnimationSequence animationSequence, int animationFrame, boolean applyAlternateAction, PlayerAppearance playerAppearance) {
+    public Model getModelForInterface(
+            AnimationSequence animationSequence, int animationFrame, boolean applyAlternateAction,
+            PlayerAppearance playerAppearance
+    ) {
         FramemapDefinition.aBoolean2177 = false;
         InterfaceModelType modelType;
         int modelId;
@@ -1876,7 +1993,7 @@ public class GameInterface extends CachedNode {
             return null;
         }
 
-        Model model = (Model) WallDecoration.aClass9_1264.get((long) ((modelType.ordinal() << 16) + modelId));
+        Model model = (Model) WallDecoration.aClass9_1264.get((modelType.ordinal() << 16) + modelId);
         if(model == null) {
             if(modelType == InterfaceModelType.MODEL) {
                 model = Model.getModel(CacheArchive.modelCacheArchive, modelId, 0);
@@ -1918,12 +2035,13 @@ public class GameInterface extends CachedNode {
                 model.createBones();
                 // TODO: Theres a bug with smelting bars and stacked items in inventory, please figure this out
                 try {
-                    model.applyLighting(64 + class40_sub5_sub16.ambient, 768 + class40_sub5_sub16.contrast, -50, -10, -50, true);
+                    model.applyLighting(
+                            64 + class40_sub5_sub16.ambient, 768 + class40_sub5_sub16.contrast, -50, -10, -50, true);
                 } catch(Exception e) {
                     e.printStackTrace();
                 }
             }
-            WallDecoration.aClass9_1264.put((long) ((modelType.ordinal() << 16) + modelId), model);
+            WallDecoration.aClass9_1264.put((modelType.ordinal() << 16) + modelId, model);
         }
         if(animationSequence != null) {
             model = animationSequence.method598(animationFrame, model, true);

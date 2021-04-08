@@ -43,10 +43,12 @@ public class Filter {
                     }
                 }
             }
-            if(i_0_ != 0 || unity[1] != unity[0])
+            if(i_0_ != 0 || unity[1] != unity[0]) {
                 envelope.decode_shape(buffer);
-        } else
+            }
+        } else {
             unity[0] = unity[1] = 0;
+        }
     }
 
     public float adapt_mag(int dir, int k, float t) {
@@ -62,8 +64,9 @@ public class Filter {
             _inv_unity = (float) Math.pow(0.1, _a0 / 20.0F);
             inv_unity = (int) (_inv_unity * 65536.0F);
         }
-        if(num_pairs[dir] == 0)
+        if(num_pairs[dir] == 0) {
             return 0;
+        }
         float f = adapt_mag(dir, 0, arg1);
         _coef[dir][0] = -2.0F * f * (float) Math.cos(adapt_phase(dir, 0, arg1));
         _coef[dir][1] = f * f;
@@ -73,17 +76,20 @@ public class Filter {
             float f_1_ = f * f;
             _coef[dir][i * 2 + 1] = _coef[dir][i * 2 - 1] * f_1_;
             _coef[dir][i * 2] = _coef[dir][i * 2 - 1] * f_0_ + _coef[dir][i * 2 - 2] * f_1_;
-            for(int i_2_ = i * 2 - 1; i_2_ >= 2; i_2_--)
+            for(int i_2_ = i * 2 - 1; i_2_ >= 2; i_2_--) {
                 _coef[dir][i_2_] += _coef[dir][i_2_ - 1] * f_0_ + _coef[dir][i_2_ - 2] * f_1_;
+            }
             _coef[dir][1] += _coef[dir][0] * f_0_ + f_1_;
             _coef[dir][0] += f_0_;
         }
         if(dir == 0) {
-            for(int i = 0; i < num_pairs[0] * 2; i++)
+            for(int i = 0; i < num_pairs[0] * 2; i++) {
                 _coef[0][i] *= _inv_unity;
+            }
         }
-        for(int i = 0; i < num_pairs[dir] * 2; i++)
+        for(int i = 0; i < num_pairs[dir] * 2; i++) {
             coef[dir][i] = (int) (_coef[dir][i] * 65536.0F);
+        }
         return num_pairs[dir] * 2;
     }
 

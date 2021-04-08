@@ -6,7 +6,10 @@ import com.jagex.runescape.media.RasterizerInstanced;
 public class FramePieceRenderer {
     public RasterizerInstanced rasterizerInstanced;
 
-    public void shapeImageToPixels(ImageRGB image, int x, int y, int width, int height, int arg4, int arg5, int k1, int zoom, int[] arg8, int[] arg9) {
+    public void shapeImageToPixels(
+            ImageRGB image, int x, int y, int width, int height, int arg4, int arg5, int k1, int zoom, int[] arg8,
+            int[] arg9
+    ) {
         try {
             int centerX = -width / 2;
             int centerY = -height / 2;
@@ -26,7 +29,7 @@ public class FramePieceRenderer {
                 for(x = -arg9[y]; x < 0; x++) {
                     int pixelToGet = (i_130_ >> 16) + (i_131_ >> 16) * image.imageWidth;
                     int colour = 0;
-                    if(!(image.pixels.length < pixelToGet || pixelToGet < 0)){
+                    if(!(image.pixels.length < pixelToGet || pixelToGet < 0)) {
                         colour = image.pixels[pixelToGet];
                     }
                     rasterizerInstanced.destinationPixels[i_129_++] = colour;
@@ -59,8 +62,9 @@ public class FramePieceRenderer {
             source_offset += clip_height * line_width;
             dest_offset += clip_height * rasterizerInstanced.destinationWidth;
         }
-        if(y + line_count > rasterizerInstanced.viewportBottom)
+        if(y + line_count > rasterizerInstanced.viewportBottom) {
             line_count -= y + line_count - rasterizerInstanced.viewportBottom;
+        }
         if(x < rasterizerInstanced.viewportLeft) {
             int clip_width = rasterizerInstanced.viewportLeft - x;
             line_width -= clip_width;
@@ -76,11 +80,16 @@ public class FramePieceRenderer {
             line_offset_source += clip_width;
             line_offset_dest += clip_width;
         }
-        if(line_width > 0 && line_count > 0)
-            ImageRGB.blockCopyTrans(rasterizerInstanced.destinationPixels, image.pixels, 0, source_offset, dest_offset, line_width, line_count, line_offset_dest, line_offset_source);
+        if(line_width > 0 && line_count > 0) {
+            ImageRGB.blockCopyTrans(rasterizerInstanced.destinationPixels, image.pixels, 0, source_offset, dest_offset,
+                    line_width, line_count, line_offset_dest, line_offset_source
+            );
+        }
     }
 
-    public void drawRotated(ImageRGB image, int x, int y, int pivotX, int pivotY, int width, int height, int zoom, double angle) {
+    public void drawRotated(
+            ImageRGB image, int x, int y, int pivotX, int pivotY, int width, int height, int zoom, double angle
+    ) {
         try {
             int centerX = -width / 2;
             int centerY = -height / 2;
@@ -97,10 +106,11 @@ public class FramePieceRenderer {
                 int offsetY = sourceoffsetY;
                 for(x = -width; x < 0; x++) {
                     int i_166_ = image.pixels[(offsetX >> 16) + (offsetY >> 16) * image.imageWidth];
-                    if(i_166_ != 0)
+                    if(i_166_ != 0) {
                         rasterizerInstanced.destinationPixels[i++] = i_166_;
-                    else
+                    } else {
                         i++;
+                    }
                     offsetX += cosine;
                     offsetY -= sine;
                 }

@@ -24,9 +24,13 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
         anInt2888 = 0;
     }
 
-    public static int method855(int arg0, int arg1, byte[] arg2, int[] arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, Class40_Sub9_Sub2 arg12, int arg13, int arg14) {
-        if(arg13 == 0 || (arg9 = arg5 + (arg11 - arg4 + arg13 - 257) / arg13) > arg10)
+    public static int method855(
+            int arg0, int arg1, byte[] arg2, int[] arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9,
+            int arg10, int arg11, Class40_Sub9_Sub2 arg12, int arg13, int arg14
+    ) {
+        if(arg13 == 0 || (arg9 = arg5 + (arg11 - arg4 + arg13 - 257) / arg13) > arg10) {
             arg9 = arg10;
+        }
         while(arg5 < arg9) {
             arg1 = arg4 >> 8;
             arg0 = arg2[arg1];
@@ -34,8 +38,9 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
             arg6 += arg8;
             arg4 += arg13;
         }
-        if(arg13 == 0 || (arg9 = arg5 + (arg11 - arg4 + arg13 - 1) / arg13) > arg10)
+        if(arg13 == 0 || (arg9 = arg5 + (arg11 - arg4 + arg13 - 1) / arg13) > arg10) {
             arg9 = arg10;
+        }
         arg1 = arg14;
         while(arg5 < arg9) {
             arg0 = arg2[arg4 >> 8];
@@ -48,9 +53,13 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
         return arg5;
     }
 
-    public static int method856(int arg0, int arg1, byte[] arg2, int[] arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, Class40_Sub9_Sub2 arg12, int arg13, int arg14) {
-        if(arg13 == 0 || (arg9 = arg5 + (arg11 + 256 - arg4 + arg13) / arg13) > arg10)
+    public static int method856(
+            int arg0, int arg1, byte[] arg2, int[] arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9,
+            int arg10, int arg11, Class40_Sub9_Sub2 arg12, int arg13, int arg14
+    ) {
+        if(arg13 == 0 || (arg9 = arg5 + (arg11 + 256 - arg4 + arg13) / arg13) > arg10) {
             arg9 = arg10;
+        }
         while(arg5 < arg9) {
             arg1 = arg4 >> 8;
             arg0 = arg2[arg1 - 1];
@@ -58,8 +67,9 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
             arg6 += arg8;
             arg4 += arg13;
         }
-        if(arg13 == 0 || (arg9 = arg5 + (arg11 - arg4 + arg13) / arg13) > arg10)
+        if(arg13 == 0 || (arg9 = arg5 + (arg11 - arg4 + arg13) / arg13) > arg10) {
             arg9 = arg10;
+        }
         arg0 = arg14;
         arg1 = arg13;
         while(arg5 < arg9) {
@@ -72,17 +82,22 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
         return arg5;
     }
 
-    public static int method858(int arg0, int arg1, byte[] arg2, int[] arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, Class40_Sub9_Sub2 arg10, int arg11, int arg12) {
-        if(arg11 == 0 || (arg7 = arg5 + (arg9 + 256 - arg4 + arg11) / arg11) > arg8)
+    public static int method858(
+            int arg0, int arg1, byte[] arg2, int[] arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9,
+            Class40_Sub9_Sub2 arg10, int arg11, int arg12
+    ) {
+        if(arg11 == 0 || (arg7 = arg5 + (arg9 + 256 - arg4 + arg11) / arg11) > arg8) {
             arg7 = arg8;
+        }
         while(arg5 < arg7) {
             arg1 = arg4 >> 8;
             arg0 = arg2[arg1 - 1];
             arg3[arg5++] += ((arg0 << 8) + (arg2[arg1] - arg0) * (arg4 & 0xff)) * arg6;
             arg4 += arg11;
         }
-        if(arg11 == 0 || (arg7 = arg5 + (arg9 - arg4 + arg11) / arg11) > arg8)
+        if(arg11 == 0 || (arg7 = arg5 + (arg9 - arg4 + arg11) / arg11) > arg8) {
             arg7 = arg8;
+        }
         arg0 = arg12;
         arg1 = arg11;
         while(arg5 < arg7) {
@@ -93,13 +108,17 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
         return arg5;
     }
 
-    public static int method859(byte[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, Class40_Sub9_Sub2 arg10) {
+    public static int method859(
+            byte[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9,
+            Class40_Sub9_Sub2 arg10
+    ) {
         arg2 >>= 8;
         arg9 >>= 8;
         arg4 <<= 8;
         arg6 <<= 8;
-        if((arg7 = arg3 + arg2 - (arg9 - 1)) > arg8)
+        if((arg7 = arg3 + arg2 - (arg9 - 1)) > arg8) {
             arg7 = arg8;
+        }
         arg7 -= 3;
         while(arg3 < arg7) {
             arg1[arg3++] += arg0[arg2--] * arg4 >> arg5;
@@ -121,12 +140,15 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
         return arg3;
     }
 
-    public static int method861(byte[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, Class40_Sub9_Sub2 arg8) {
+    public static int method861(
+            byte[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, Class40_Sub9_Sub2 arg8
+    ) {
         arg2 >>= 8;
         arg7 >>= 8;
         arg4 <<= 8;
-        if((arg5 = arg3 + arg2 - (arg7 - 1)) > arg6)
+        if((arg5 = arg3 + arg2 - (arg7 - 1)) > arg6) {
             arg5 = arg6;
+        }
         arg5 -= 3;
         while(arg3 < arg5) {
             arg1[arg3++] += arg0[arg2--] * arg4;
@@ -135,19 +157,24 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
             arg1[arg3++] += arg0[arg2--] * arg4;
         }
         arg5 += 3;
-        while(arg3 < arg5)
+        while(arg3 < arg5) {
             arg1[arg3++] += arg0[arg2--] * arg4;
+        }
         arg8.anInt2888 = arg2 << 8;
         return arg3;
     }
 
-    public static int method862(byte[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, Class40_Sub9_Sub2 arg10) {
+    public static int method862(
+            byte[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9,
+            Class40_Sub9_Sub2 arg10
+    ) {
         arg2 >>= 8;
         arg9 >>= 8;
         arg4 <<= 8;
         arg6 <<= 8;
-        if((arg7 = arg3 + arg9 - arg2) > arg8)
+        if((arg7 = arg3 + arg9 - arg2) > arg8) {
             arg7 = arg8;
+        }
         arg7 -= 3;
         while(arg3 < arg7) {
             arg1[arg3++] += arg0[arg2++] * arg4 >> arg5;
@@ -170,22 +197,29 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
     }
 
     public static Class40_Sub9_Sub2 method864(Class40_Sub12_Sub1 arg0, int arg1, int arg2) {
-        if(arg0.aByteArray2889 == null || arg0.aByteArray2889.length == 0)
+        if(arg0.aByteArray2889 == null || arg0.aByteArray2889.length == 0) {
             return null;
-        return new Class40_Sub9_Sub2(arg0, (int) ((long) arg0.anInt2892 * 256L * (long) arg1 / (long) (100 * CollisionMap.anInt141)), arg2);
+        }
+        return new Class40_Sub9_Sub2(
+                arg0, (int) ((long) arg0.anInt2892 * 256L * (long) arg1 / (long) (100 * CollisionMap.anInt141)), arg2);
     }
 
-    public static int method865(int arg0, int arg1, byte[] arg2, int[] arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, Class40_Sub9_Sub2 arg10, int arg11, int arg12) {
-        if(arg11 == 0 || (arg7 = arg5 + (arg9 - arg4 + arg11 - 257) / arg11) > arg8)
+    public static int method865(
+            int arg0, int arg1, byte[] arg2, int[] arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9,
+            Class40_Sub9_Sub2 arg10, int arg11, int arg12
+    ) {
+        if(arg11 == 0 || (arg7 = arg5 + (arg9 - arg4 + arg11 - 257) / arg11) > arg8) {
             arg7 = arg8;
+        }
         while(arg5 < arg7) {
             arg1 = arg4 >> 8;
             arg0 = arg2[arg1];
             arg3[arg5++] += ((arg0 << 8) + (arg2[arg1 + 1] - arg0) * (arg4 & 0xff)) * arg6;
             arg4 += arg11;
         }
-        if(arg11 == 0 || (arg7 = arg5 + (arg9 - arg4 + arg11 - 1) / arg11) > arg8)
+        if(arg11 == 0 || (arg7 = arg5 + (arg9 - arg4 + arg11 - 1) / arg11) > arg8) {
             arg7 = arg8;
+        }
         arg1 = arg12;
         while(arg5 < arg7) {
             arg0 = arg2[arg4 >> 8];
@@ -196,12 +230,15 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
         return arg5;
     }
 
-    public static int method867(byte[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, Class40_Sub9_Sub2 arg8) {
+    public static int method867(
+            byte[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, Class40_Sub9_Sub2 arg8
+    ) {
         arg2 >>= 8;
         arg7 >>= 8;
         arg4 <<= 8;
-        if((arg5 = arg3 + arg7 - arg2) > arg6)
+        if((arg5 = arg3 + arg7 - arg2) > arg6) {
             arg5 = arg6;
+        }
         arg5 -= 3;
         while(arg3 < arg5) {
             arg1[arg3++] += arg0[arg2++] * arg4;
@@ -210,8 +247,9 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
             arg1[arg3++] += arg0[arg2++] * arg4;
         }
         arg5 += 3;
-        while(arg3 < arg5)
+        while(arg3 < arg5) {
             arg1[arg3++] += arg0[arg2++] * arg4;
+        }
         arg8.anInt2888 = arg2 << 8;
         return arg3;
     }
@@ -219,25 +257,37 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
     public int method854(int[] arg0, int arg1, int arg2, int arg3, int arg4) {
         if(anInt2881 > 0) {
             int i = arg1 + anInt2881;
-            if(i > arg3)
+            if(i > arg3) {
                 i = arg3;
+            }
             anInt2881 += arg1;
-            if(anInt2882 == -256 && (anInt2888 & 0xff) == 0)
-                arg1 = method859(((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1, anInt2885, anInt2878, anInt2879, 0, i, arg2, this);
-            else
-                arg1 = method856(0, 0, ((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1, anInt2885, anInt2878, anInt2879, 0, i, arg2, this, anInt2882, arg4);
+            if(anInt2882 == -256 && (anInt2888 & 0xff) == 0) {
+                arg1 = method859(((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1,
+                        anInt2885, anInt2878, anInt2879, 0, i, arg2, this
+                );
+            } else {
+                arg1 = method856(0, 0, ((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1,
+                        anInt2885, anInt2878, anInt2879, 0, i, arg2, this, anInt2882, arg4
+                );
+            }
             anInt2881 -= arg1;
-            if(anInt2881 != 0)
+            if(anInt2881 != 0) {
                 return arg1;
+            }
             if(anInt2883 == -2147483648) {
                 this.remove();
                 return arg3;
             }
             anInt2885 = anInt2883;
         }
-        if(anInt2882 == -256 && (anInt2888 & 0xff) == 0)
-            return method861(((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1, anInt2885, 0, arg3, arg2, this);
-        return method858(0, 0, ((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1, anInt2885, 0, arg3, arg2, this, anInt2882, arg4);
+        if(anInt2882 == -256 && (anInt2888 & 0xff) == 0) {
+            return method861(((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1,
+                    anInt2885, 0, arg3, arg2, this
+            );
+        }
+        return method858(0, 0, ((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1,
+                anInt2885, 0, arg3, arg2, this, anInt2882, arg4
+        );
     }
 
     public synchronized int method844(int[] arg0, int arg1, int arg2) {
@@ -250,44 +300,50 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
         int i_0_ = anInt2886 << 8;
         int i_1_ = class40_sub12_sub1.aByteArray2889.length << 8;
         int i_2_ = i_0_ - i;
-        if(i_2_ <= 0)
+        if(i_2_ <= 0) {
             anInt2884 = 0;
+        }
         int i_3_ = arg1;
         arg2 += arg1;
         if(anInt2884 < 0) {
             if(aBoolean2887) {
                 if(anInt2882 < 0) {
                     i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.aByteArray2889[anInt2880]);
-                    if(anInt2888 >= i)
+                    if(anInt2888 >= i) {
                         return 1;
+                    }
                     anInt2888 = i + i - 1 - anInt2888;
                     anInt2882 = -anInt2882;
                 }
-                for(; ; ) {
+                while(true) {
                     i_3_ = method866(arg0, i_3_, i_0_, arg2, class40_sub12_sub1.aByteArray2889[anInt2886 - 1]);
-                    if(anInt2888 < i_0_)
+                    if(anInt2888 < i_0_) {
                         return 1;
+                    }
                     anInt2888 = i_0_ + i_0_ - 1 - anInt2888;
                     anInt2882 = -anInt2882;
                     i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.aByteArray2889[anInt2880]);
-                    if(anInt2888 >= i)
+                    if(anInt2888 >= i) {
                         return 1;
+                    }
                     anInt2888 = i + i - 1 - anInt2888;
                     anInt2882 = -anInt2882;
                 }
             }
             if(anInt2882 < 0) {
-                for(; ; ) {
+                while(true) {
                     i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.aByteArray2889[anInt2886 - 1]);
-                    if(anInt2888 >= i)
+                    if(anInt2888 >= i) {
                         return 1;
+                    }
                     anInt2888 = i_0_ - 1 - (i_0_ - 1 - anInt2888) % i_2_;
                 }
             }
-            for(; ; ) {
+            while(true) {
                 i_3_ = method866(arg0, i_3_, i_0_, arg2, class40_sub12_sub1.aByteArray2889[anInt2880]);
-                if(anInt2888 < i_0_)
+                if(anInt2888 < i_0_) {
                     return 1;
+                }
                 anInt2888 = i + (anInt2888 - i) % i_2_;
             }
         }
@@ -296,32 +352,38 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
                 if(aBoolean2887) {
                     if(anInt2882 < 0) {
                         i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.aByteArray2889[anInt2880]);
-                        if(anInt2888 >= i)
+                        if(anInt2888 >= i) {
                             return 1;
+                        }
                         anInt2888 = i + i - 1 - anInt2888;
                         anInt2882 = -anInt2882;
-                        if(--anInt2884 == 0)
+                        if(--anInt2884 == 0) {
                             break;
+                        }
                     }
                     do {
                         i_3_ = method866(arg0, i_3_, i_0_, arg2, class40_sub12_sub1.aByteArray2889[anInt2886 - 1]);
-                        if(anInt2888 < i_0_)
+                        if(anInt2888 < i_0_) {
                             return 1;
+                        }
                         anInt2888 = i_0_ + i_0_ - 1 - anInt2888;
                         anInt2882 = -anInt2882;
-                        if(--anInt2884 == 0)
+                        if(--anInt2884 == 0) {
                             break;
+                        }
                         i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.aByteArray2889[anInt2880]);
-                        if(anInt2888 >= i)
+                        if(anInt2888 >= i) {
                             return 1;
+                        }
                         anInt2888 = i + i - 1 - anInt2888;
                         anInt2882 = -anInt2882;
                     } while(--anInt2884 != 0);
                 } else if(anInt2882 < 0) {
-                    for(; ; ) {
+                    while(true) {
                         i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.aByteArray2889[anInt2886 - 1]);
-                        if(anInt2888 >= i)
+                        if(anInt2888 >= i) {
                             return 1;
+                        }
                         int i_4_ = (i_0_ - 1 - anInt2888) / i_2_;
                         if(i_4_ >= anInt2884) {
                             anInt2888 += i_2_ * anInt2884;
@@ -332,10 +394,11 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
                         anInt2884 -= i_4_;
                     }
                 } else {
-                    for(; ; ) {
+                    while(true) {
                         i_3_ = method866(arg0, i_3_, i_0_, arg2, class40_sub12_sub1.aByteArray2889[anInt2880]);
-                        if(anInt2888 < i_0_)
+                        if(anInt2888 < i_0_) {
                             return 1;
+                        }
                         int i_5_ = (anInt2888 - i) / i_2_;
                         if(i_5_ >= anInt2884) {
                             anInt2888 -= i_2_ * anInt2884;
@@ -376,12 +439,14 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
     public int method845() {
         int i = anInt2885 * 3;
         i = (i ^ i >> 31) + (i >>> 31);
-        if(anInt2884 == 0)
+        if(anInt2884 == 0) {
             i -= i * anInt2888 / (((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889.length << 8);
-        else if(anInt2884 >= 0)
+        } else if(anInt2884 >= 0) {
             i -= i * anInt2880 / ((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889.length;
-        if(i > 255)
+        }
+        if(i > 255) {
             return 255;
+        }
         return i;
     }
 
@@ -395,8 +460,9 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
                 if(anInt2883 == -2147483648) {
                     this.remove();
                     arg0 = anInt2881;
-                } else
+                } else {
                     anInt2885 = anInt2883;
+                }
                 anInt2881 = 0;
             } else {
                 anInt2885 += anInt2879 * arg0;
@@ -409,56 +475,67 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
         int i_6_ = anInt2886 << 8;
         int i_7_ = class40_sub12_sub1.aByteArray2889.length << 8;
         int i_8_ = i_6_ - i;
-        if(i_8_ <= 0)
+        if(i_8_ <= 0) {
             anInt2884 = 0;
+        }
         if(anInt2884 < 0) {
             if(aBoolean2887) {
                 if(anInt2882 < 0) {
-                    if(anInt2888 >= i)
+                    if(anInt2888 >= i) {
                         return;
+                    }
                     anInt2888 = i + i - 1 - anInt2888;
                     anInt2882 = -anInt2882;
                 }
                 while(anInt2888 >= i_6_) {
                     anInt2888 = i_6_ + i_6_ - 1 - anInt2888;
                     anInt2882 = -anInt2882;
-                    if(anInt2888 >= i)
+                    if(anInt2888 >= i) {
                         break;
+                    }
                     anInt2888 = i + i - 1 - anInt2888;
                     anInt2882 = -anInt2882;
                 }
             } else if(anInt2882 < 0) {
-                if(anInt2888 < i)
+                if(anInt2888 < i) {
                     anInt2888 = i_6_ - 1 - (i_6_ - 1 - anInt2888) % i_8_;
-            } else if(anInt2888 >= i_6_)
+                }
+            } else if(anInt2888 >= i_6_) {
                 anInt2888 = i + (anInt2888 - i) % i_8_;
+            }
         } else {
             do {
                 if(anInt2884 > 0) {
                     if(aBoolean2887) {
                         if(anInt2882 < 0) {
-                            if(anInt2888 >= i)
+                            if(anInt2888 >= i) {
                                 return;
+                            }
                             anInt2888 = i + i - 1 - anInt2888;
                             anInt2882 = -anInt2882;
-                            if(--anInt2884 == 0)
+                            if(--anInt2884 == 0) {
                                 break;
+                            }
                         }
                         do {
-                            if(anInt2888 < i_6_)
+                            if(anInt2888 < i_6_) {
                                 return;
+                            }
                             anInt2888 = i_6_ + i_6_ - 1 - anInt2888;
                             anInt2882 = -anInt2882;
-                            if(--anInt2884 == 0)
+                            if(--anInt2884 == 0) {
                                 break;
-                            if(anInt2888 >= i)
+                            }
+                            if(anInt2888 >= i) {
                                 return;
+                            }
                             anInt2888 = i + i - 1 - anInt2888;
                             anInt2882 = -anInt2882;
                         } while(--anInt2884 != 0);
                     } else if(anInt2882 < 0) {
-                        if(anInt2888 >= i)
+                        if(anInt2888 >= i) {
                             return;
+                        }
                         int i_9_ = (i_6_ - 1 - anInt2888) / i_8_;
                         if(i_9_ >= anInt2884) {
                             anInt2888 += i_8_ * anInt2884;
@@ -469,8 +546,9 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
                             return;
                         }
                     } else {
-                        if(anInt2888 < i_6_)
+                        if(anInt2888 < i_6_) {
                             return;
+                        }
                         int i_10_ = (anInt2888 - i) / i_8_;
                         if(i_10_ >= anInt2884) {
                             anInt2888 -= i_8_ * anInt2884;
@@ -498,24 +576,36 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
     public int method866(int[] arg0, int arg1, int arg2, int arg3, int arg4) {
         if(anInt2881 > 0) {
             int i = arg1 + anInt2881;
-            if(i > arg3)
+            if(i > arg3) {
                 i = arg3;
+            }
             anInt2881 += arg1;
-            if(anInt2882 == 256 && (anInt2888 & 0xff) == 0)
-                arg1 = method862(((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1, anInt2885, anInt2878, anInt2879, 0, i, arg2, this);
-            else
-                arg1 = method855(0, 0, ((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1, anInt2885, anInt2878, anInt2879, 0, i, arg2, this, anInt2882, arg4);
+            if(anInt2882 == 256 && (anInt2888 & 0xff) == 0) {
+                arg1 = method862(((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1,
+                        anInt2885, anInt2878, anInt2879, 0, i, arg2, this
+                );
+            } else {
+                arg1 = method855(0, 0, ((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1,
+                        anInt2885, anInt2878, anInt2879, 0, i, arg2, this, anInt2882, arg4
+                );
+            }
             anInt2881 -= arg1;
-            if(anInt2881 != 0)
+            if(anInt2881 != 0) {
                 return arg1;
+            }
             if(anInt2883 == -2147483648) {
                 this.remove();
                 return arg3;
             }
             anInt2885 = anInt2883;
         }
-        if(anInt2882 == 256 && (anInt2888 & 0xff) == 0)
-            return method867(((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1, anInt2885, 0, arg3, arg2, this);
-        return method865(0, 0, ((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1, anInt2885, 0, arg3, arg2, this, anInt2882, arg4);
+        if(anInt2882 == 256 && (anInt2888 & 0xff) == 0) {
+            return method867(((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1,
+                    anInt2885, 0, arg3, arg2, this
+            );
+        }
+        return method865(0, 0, ((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1,
+                anInt2885, 0, arg3, arg2, this, anInt2882, arg4
+        );
     }
 }

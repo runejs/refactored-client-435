@@ -1,9 +1,9 @@
 package com.jagex.runescape.cache.media.textUtils;
 
 public class TextColourNode {
+    private final int colour;
     private TextColourNode previous = null;
     private TextColourNode next = null;
-    private int colour;
 
     public TextColourNode(int colour) {
         this.colour = colour;
@@ -13,12 +13,12 @@ public class TextColourNode {
         return colour;
     }
 
-    public void setNext(TextColourNode node) {
-        this.next = node;
-    }
-
     public TextColourNode getNext() {
         return this.next;
+    }
+
+    public void setNext(TextColourNode node) {
+        this.next = node;
     }
 
     public TextColourNode getPrevious() {

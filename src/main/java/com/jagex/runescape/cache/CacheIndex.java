@@ -93,9 +93,10 @@ public class CacheIndex {
                         return false;
                     }
 
-                    metaChannel.setReadIndex((long) (index * 6));
+                    metaChannel.setReadIndex(index * 6);
                     metaChannel.method1035(CacheIndex.buffer, 6, 0);
-                    sector = (CacheIndex.buffer[5] & 0xff) + ((CacheIndex.buffer[3] & 0xff) << 16) + ((CacheIndex.buffer[4] & 0xff) << 8);
+                    sector = (CacheIndex.buffer[5] & 0xff) + ((CacheIndex.buffer[3] & 0xff) << 16) +
+                            ((CacheIndex.buffer[4] & 0xff) << 8);
 
                     if(sector <= 0 || dataChannel.getSize() / 520L < (long) sector) {
                         return false;
@@ -122,36 +123,43 @@ public class CacheIndex {
                 for(/**/; i_10_ < length; i_10_ += i_12_) {
                     int i_13_ = 0;
                     if(overwrite) {
-                        dataChannel.setReadIndex((long) (520 * sector));
+                        dataChannel.setReadIndex(520 * sector);
                         try {
                             dataChannel.method1035(CacheIndex.buffer, 8, 0);
                         } catch(java.io.EOFException eofexception) {
                             break;
                         }
-                        i_13_ = (CacheIndex.buffer[6] & 0xff) + (CacheIndex.buffer[4] << 16 & 0xff0000) + (0xff00 & CacheIndex.buffer[5] << 8);
+                        i_13_ = (CacheIndex.buffer[6] & 0xff) + (CacheIndex.buffer[4] << 16 & 0xff0000) +
+                                (0xff00 & CacheIndex.buffer[5] << 8);
                         i_12_ = (CacheIndex.buffer[1] & 0xff) + (CacheIndex.buffer[0] << 8 & 0xff00);
                         int i_14_ = CacheIndex.buffer[7] & 0xff;
                         int i_15_ = (CacheIndex.buffer[3] & 0xff) + ((0xff & CacheIndex.buffer[2]) << 8);
-                        if(index != i_12_ || i_11_ != i_15_ || id != i_14_)
+                        if(index != i_12_ || i_11_ != i_15_ || id != i_14_) {
                             return false;
-                        if(i_13_ < 0 || dataChannel.getSize() / 520L < (long) i_13_)
+                        }
+                        if(i_13_ < 0 || dataChannel.getSize() / 520L < (long) i_13_) {
                             return false;
+                        }
                     }
                     if(i_13_ == 0) {
                         overwrite = false;
                         i_13_ = (int) ((519L + dataChannel.getSize()) / 520L);
-                        if(i_13_ == 0)
+                        if(i_13_ == 0) {
                             i_13_++;
-                        if(sector == i_13_)
+                        }
+                        if(sector == i_13_) {
                             i_13_++;
+                        }
                     }
                     CacheIndex.buffer[0] = (byte) (index >> 8);
-                    if(-i_10_ + length <= 512)
+                    if(-i_10_ + length <= 512) {
                         i_13_ = 0;
+                    }
                     CacheIndex.buffer[1] = (byte) index;
                     i_12_ = -i_10_ + length;
-                    if(i_12_ > 512)
+                    if(i_12_ > 512) {
                         i_12_ = 512;
+                    }
                     CacheIndex.buffer[2] = (byte) (i_11_ >> 8);
                     CacheIndex.buffer[3] = (byte) i_11_;
                     CacheIndex.buffer[4] = (byte) (i_13_ >> 16);
@@ -159,7 +167,7 @@ public class CacheIndex {
                     i_11_++;
                     CacheIndex.buffer[6] = (byte) i_13_;
                     CacheIndex.buffer[7] = (byte) id;
-                    dataChannel.setReadIndex((long) (520 * sector));
+                    dataChannel.setReadIndex(520 * sector);
                     dataChannel.method1033(0, 8, CacheIndex.buffer);
                     sector = i_13_;
                     dataChannel.method1033(i_10_, i_12_, buffer);

@@ -1,8 +1,8 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.cs.ClientScript;
+import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
@@ -161,7 +161,10 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
     }
 
     public static void method748(int arg1) {
-        for(Renderable.anInt2866 += arg1; Renderable.anInt2866 >= CollisionMap.anInt141; Renderable.anInt2866 -= CollisionMap.anInt141) {
+        for(
+                Renderable.anInt2866 += arg1; Renderable.anInt2866 >= CollisionMap.anInt141;
+                Renderable.anInt2866 -= CollisionMap.anInt141
+        ) {
             MovedStatics.anInt2081 -= MovedStatics.anInt2081 >> 2;
         }
         MovedStatics.anInt2081 -= 1000 * arg1;
@@ -174,7 +177,8 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         for(int i = 0; Player.npcCount > i; i++) {
             Npc npc = Player.npcs[Player.npcIds[i]];
             int i_15_ = 536870912 + (Player.npcIds[i] << 14);
-            if(npc != null && npc.isVisible(1) && arg0 == npc.actorDefinition.hasRenderPriority && npc.actorDefinition.method571(-1)) {
+            if(npc != null && npc.isVisible() && arg0 == npc.actorDefinition.hasRenderPriority &&
+                    npc.actorDefinition.method571(-1)) {
                 int i_16_ = npc.worldX >> 7;
                 int i_17_ = npc.worldY >> 7;
                 if(i_16_ >= 0 && i_16_ < 104 && i_17_ >= 0 && i_17_ < 104) {
@@ -187,7 +191,11 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
                     if(!npc.actorDefinition.isClickable) {
                         i_15_ += -2147483648;
                     }
-                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, Class37.getFloorDrawHeight(Player.worldLevel, npc.worldX + (-1 + npc.anInt3096) * 64, npc.anInt3096 * 64 + -64 + npc.worldY), -64 + npc.anInt3096 * 64 + 60, npc, npc.anInt3118, i_15_, npc.aBoolean3105);
+                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY,
+                            Class37.getFloorDrawHeight(Player.worldLevel, npc.worldX + (-1 + npc.anInt3096) * 64,
+                                    npc.anInt3096 * 64 + -64 + npc.worldY
+                            ), -64 + npc.anInt3096 * 64 + 60, npc, npc.anInt3118, i_15_, npc.aBoolean3105
+                    );
                 }
             }
         }
@@ -219,34 +227,40 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
 
     public static ImageRGB sprite(int stackSize, int id, int backColour) {
         if(backColour == 0) {
-            ImageRGB sprite = (ImageRGB) Buffer.rgbImageCache.get((long) id);
+            ImageRGB sprite = (ImageRGB) Buffer.rgbImageCache.get(id);
             if(sprite != null && sprite.maxHeight != stackSize && sprite.maxHeight != -1) {
                 sprite.remove();
                 sprite = null;
             }
-            if(sprite != null)
+            if(sprite != null) {
                 return sprite;
+            }
         }
         ItemDefinition definition = forId(id, 10);
-        if(definition.stackIds == null)
+        if(definition.stackIds == null) {
             stackSize = -1;
+        }
         if(stackSize > 1) {
             int stackId = -1;
             for(int i = 0; i < 10; i++) {
-                if(stackSize >= definition.stackableAmounts[i] && definition.stackableAmounts[i] != 0)
+                if(stackSize >= definition.stackableAmounts[i] && definition.stackableAmounts[i] != 0) {
                     stackId = definition.stackIds[i];
+                }
             }
-            if(stackId != -1)
+            if(stackId != -1) {
                 definition = forId(stackId, 10);
+            }
         }
         Model model = definition.asGroundStack(true, 1);
-        if(model == null)
+        if(model == null) {
             return null;
+        }
         ImageRGB notedSprite = null;
         if(definition.noteTemplateId != -1) {
             notedSprite = sprite(10, definition.notedId, -1);
-            if(notedSprite == null)
+            if(notedSprite == null) {
                 return null;
+            }
         }
         int[] pixels = Rasterizer.destinationPixels;
         int i = Rasterizer.destinationHeight;
@@ -263,26 +277,31 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         Class40_Sub5_Sub17_Sub6.anIntArray3253 = Rasterizer3D.setLineOffsets(Class40_Sub5_Sub17_Sub6.anIntArray3253);
         Rasterizer.drawFilledRectangle(0, 0, 32, 32, 0);
         int i_11_ = definition.zoom2d;
-        if(backColour == -1)
+        if(backColour == -1) {
             i_11_ *= 1.5;
-        if(backColour > 0)
+        }
+        if(backColour > 0) {
             i_11_ *= 1.04;
+        }
         Rasterizer3D.notTextured = false;
         int i_12_ = Rasterizer3D.sinetable[definition.xan2d] * i_11_ >> 16;
         int i_13_ = i_11_ * Rasterizer3D.cosinetable[definition.xan2d] >> 16;
         model.method799();
-        model.drawModel(0, definition.yan2d, definition.zan2d, definition.xan2d, definition.xOffset2d, definition.yOffset2d + model.modelHeight / 2 + i_12_, i_13_ + definition.yOffset2d);
+        model.drawModel(0, definition.yan2d, definition.zan2d, definition.xan2d, definition.xOffset2d,
+                definition.yOffset2d + model.modelHeight / 2 + i_12_, i_13_ + definition.yOffset2d
+        );
         for(int i_14_ = 31; i_14_ >= 0; i_14_--) {
             for(i_13_ = 31; i_13_ >= 0; i_13_--) {
                 if(rendered.pixels[i_14_ + 32 * i_13_] == 0) {
-                    if(i_14_ > 0 && rendered.pixels[i_13_ * 32 + -1 + i_14_] > 1)
+                    if(i_14_ > 0 && rendered.pixels[i_13_ * 32 + -1 + i_14_] > 1) {
                         rendered.pixels[i_13_ * 32 + i_14_] = 1;
-                    else if(i_13_ > 0 && rendered.pixels[i_14_ + (i_13_ + -1) * 32] > 1)
+                    } else if(i_13_ > 0 && rendered.pixels[i_14_ + (i_13_ + -1) * 32] > 1) {
                         rendered.pixels[i_13_ * 32 + i_14_] = 1;
-                    else if(i_14_ < 31 && rendered.pixels[i_13_ * 32 + i_14_ + 1] > 1)
+                    } else if(i_14_ < 31 && rendered.pixels[i_13_ * 32 + i_14_ + 1] > 1) {
                         rendered.pixels[i_14_ + i_13_ * 32] = 1;
-                    else if(i_13_ < 31 && rendered.pixels[(i_13_ + 1) * 32 + i_14_] > 1)
+                    } else if(i_13_ < 31 && rendered.pixels[(i_13_ + 1) * 32 + i_14_] > 1) {
                         rendered.pixels[i_14_ + 32 * i_13_] = 1;
+                    }
                 }
             }
         }
@@ -290,24 +309,29 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
             for(int i_15_ = 31; i_15_ >= 0; i_15_--) {
                 for(i_13_ = 31; i_13_ >= 0; i_13_--) {
                     if(rendered.pixels[i_15_ + i_13_ * 32] == 0) {
-                        if(i_15_ > 0 && rendered.pixels[32 * i_13_ + -1 + i_15_] == 1)
+                        if(i_15_ > 0 && rendered.pixels[32 * i_13_ + -1 + i_15_] == 1) {
                             rendered.pixels[i_15_ + i_13_ * 32] = backColour;
-                        else if(i_13_ <= 0 || rendered.pixels[i_15_ + (i_13_ + -1) * 32] != 1) {
+                        } else if(i_13_ <= 0 || rendered.pixels[i_15_ + (i_13_ + -1) * 32] != 1) {
                             if(i_15_ >= 31 || rendered.pixels[1 + i_15_ + i_13_ * 32] != 1) {
-                                if(i_13_ < 31 && rendered.pixels[i_15_ + 32 + 32 * i_13_] == 1)
+                                if(i_13_ < 31 && rendered.pixels[i_15_ + 32 + 32 * i_13_] == 1) {
                                     rendered.pixels[i_13_ * 32 + i_15_] = backColour;
-                            } else
+                                }
+                            } else {
                                 rendered.pixels[i_15_ + i_13_ * 32] = backColour;
-                        } else
+                            }
+                        } else {
                             rendered.pixels[i_15_ + i_13_ * 32] = backColour;
+                        }
                     }
                 }
             }
         } else if(backColour == 0) {
             for(int i_16_ = 31; i_16_ >= 0; i_16_--) {
                 for(i_13_ = 31; i_13_ >= 0; i_13_--) {
-                    if(rendered.pixels[i_13_ * 32 + i_16_] == 0 && i_16_ > 0 && i_13_ > 0 && rendered.pixels[i_16_ - (1 + -((-1 + i_13_) * 32))] > 0)
+                    if(rendered.pixels[i_13_ * 32 + i_16_] == 0 && i_16_ > 0 && i_13_ > 0 &&
+                            rendered.pixels[i_16_ - (1 + -((-1 + i_13_) * 32))] > 0) {
                         rendered.pixels[i_16_ + 32 * i_13_] = 3153952;
+                    }
                 }
             }
         }
@@ -320,8 +344,9 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
             notedSprite.maxWidth = i_18_;
             notedSprite.maxHeight = i_17_;
         }
-        if(backColour == 0)
-            Buffer.rgbImageCache.put((long) id, rendered);
+        if(backColour == 0) {
+            Buffer.rgbImageCache.put(id, rendered);
+        }
         Rasterizer.prepare(pixels, i_1_, i);
         Rasterizer.setBounds(i_2_, i_5_, i_4_, i_6_);
         Rasterizer3D.setLineOffsets(lineOffsets);
@@ -329,10 +354,11 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         Rasterizer3D.viewportRx = i_9_;
         Rasterizer3D.resetBoundsTo3dViewport();
         Rasterizer3D.notTextured = true;
-        if(definition.stackable == 1)
+        if(definition.stackable == 1) {
             rendered.maxWidth = 33;
-        else
+        } else {
             rendered.maxWidth = 32;
+        }
         rendered.maxHeight = stackSize;
         return rendered;
 

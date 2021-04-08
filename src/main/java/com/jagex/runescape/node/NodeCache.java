@@ -41,26 +41,29 @@ public class NodeCache {
     }
 
     public CachedNode get(long key) {
-        CachedNode cachedNode = (CachedNode) hashTable.method331(key, 6120);
-        if(cachedNode != null)
+        CachedNode cachedNode = (CachedNode) hashTable.method331(key);
+        if(cachedNode != null) {
             nodeQueue.push(cachedNode);
+        }
         return cachedNode;
     }
 
     public void remove(long key) {
-        CachedNode cachedNode = (CachedNode) hashTable.method331(key, 6120);
-        if(cachedNode == null)
+        CachedNode cachedNode = (CachedNode) hashTable.method331(key);
+        if(cachedNode == null) {
             return;
+        }
         cachedNode.remove();
         cachedNode.clear();
         remaining++;
     }
 
     public void clear() {
-        for(; ; ) {
+        while(true) {
             CachedNode cachedNode = nodeQueue.pop();
-            if(cachedNode == null)
+            if(cachedNode == null) {
                 break;
+            }
             cachedNode.remove();
             cachedNode.clear();
         }

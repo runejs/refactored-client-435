@@ -51,8 +51,8 @@ public class SpotAnimDefinition extends CachedNode {
 
     public static void method552(boolean arg0) {
         try {
-            if (Class40_Sub3.anInt2032 == 0) {
-                if (MovedStatics.gameConnection != null) {
+            if(Class40_Sub3.anInt2032 == 0) {
+                if(MovedStatics.gameConnection != null) {
                     MovedStatics.gameConnection.method1009();
                     MovedStatics.gameConnection = null;
                 }
@@ -61,59 +61,62 @@ public class SpotAnimDefinition extends CachedNode {
                 Main.anInt1756 = 0;
                 FloorDecoration.aSignlinkNode_607 = null;
             }
-            if (Class40_Sub3.anInt2032 == 1) {
-                if (FloorDecoration.aSignlinkNode_607 == null) {
-                    FloorDecoration.aSignlinkNode_607 = Main.signlink.method395(3, Wall.anInt350);
+            if(Class40_Sub3.anInt2032 == 1) {
+                if(FloorDecoration.aSignlinkNode_607 == null) {
+                    FloorDecoration.aSignlinkNode_607 = Main.signlink.method395(Wall.anInt350);
                 }
-                if (FloorDecoration.aSignlinkNode_607.anInt434 == 2) {
+                if(FloorDecoration.aSignlinkNode_607.anInt434 == 2) {
                     throw new IOException();
                 }
-                if (FloorDecoration.aSignlinkNode_607.anInt434 == 1) {
-                    MovedStatics.gameConnection = new Class64((Socket) FloorDecoration.aSignlinkNode_607.value, Main.signlink);
+                if(FloorDecoration.aSignlinkNode_607.anInt434 == 1) {
+                    MovedStatics.gameConnection = new Class64(
+                            (Socket) FloorDecoration.aSignlinkNode_607.value, Main.signlink);
                     Class40_Sub3.anInt2032 = 2;
                     FloorDecoration.aSignlinkNode_607 = null;
                 }
             }
-            if (!arg0) {
+            if(!arg0) {
                 English.loadedInputHandler = null;
             }
-            if (Class40_Sub3.anInt2032 == 2) {
+            if(Class40_Sub3.anInt2032 == 2) {
                 long l = MovedStatics.aLong853 = RSString.nameToLong(Native.username.toString());
                 SceneCluster.packetBuffer.currentPosition = 0;
                 SceneCluster.packetBuffer.putByte(14);
                 int i = (int) (0x1fL & l >> 16);
                 SceneCluster.packetBuffer.putByte(i);
-                MovedStatics.gameConnection.method1010(2, (byte) -19, 0, SceneCluster.packetBuffer.buffer);
+                MovedStatics.gameConnection.method1010(2, 0, SceneCluster.packetBuffer.buffer);
                 Class40_Sub3.anInt2032 = 3;
                 IncomingPackets.incomingPacketBuffer.currentPosition = 0;
             }
-            if (Class40_Sub3.anInt2032 == 3) {
+            if(Class40_Sub3.anInt2032 == 3) {
                 int i = MovedStatics.gameConnection.read();
-                if (i != 0) {
+                if(i != 0) {
                     Main.displayMessageForResponseCode(i);
                     return;
                 }
                 IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                 Class40_Sub3.anInt2032 = 4;
             }
-            if (Class40_Sub3.anInt2032 == 4) {
-                if (IncomingPackets.incomingPacketBuffer.currentPosition < 8) {
-                    int i = MovedStatics.gameConnection.method1014(-127);
-                    if (i > -IncomingPackets.incomingPacketBuffer.currentPosition + 8) {
+            if(Class40_Sub3.anInt2032 == 4) {
+                if(IncomingPackets.incomingPacketBuffer.currentPosition < 8) {
+                    int i = MovedStatics.gameConnection.method1014();
+                    if(i > -IncomingPackets.incomingPacketBuffer.currentPosition + 8) {
                         i = -IncomingPackets.incomingPacketBuffer.currentPosition + 8;
                     }
-                    if (i > 0) {
-                        MovedStatics.gameConnection.method1008(IncomingPackets.incomingPacketBuffer.currentPosition, i, -128, IncomingPackets.incomingPacketBuffer.buffer);
+                    if(i > 0) {
+                        MovedStatics.gameConnection.method1008(IncomingPackets.incomingPacketBuffer.currentPosition, i,
+                                -128, IncomingPackets.incomingPacketBuffer.buffer
+                        );
                         IncomingPackets.incomingPacketBuffer.currentPosition += i;
                     }
                 }
-                if (IncomingPackets.incomingPacketBuffer.currentPosition == 8) {
+                if(IncomingPackets.incomingPacketBuffer.currentPosition == 8) {
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                     Renderable.aLong2858 = IncomingPackets.incomingPacketBuffer.getLongBE();
                     Class40_Sub3.anInt2032 = 5;
                 }
             }
-            if (Class40_Sub3.anInt2032 == 5) {
+            if(Class40_Sub3.anInt2032 == 5) {
                 int[] seeds = new int[4];
                 seeds[0] = (int) (Math.random() * 9.9999999E7);
                 seeds[1] = (int) (Math.random() * 9.9999999E7);
@@ -125,14 +128,14 @@ public class SpotAnimDefinition extends CachedNode {
                 SceneCluster.packetBuffer.putIntBE(seeds[1]);
                 SceneCluster.packetBuffer.putIntBE(seeds[2]);
                 SceneCluster.packetBuffer.putIntBE(seeds[3]);
-                SceneCluster.packetBuffer.putIntBE(Main.signlink.uid);
+                SceneCluster.packetBuffer.putIntBE(Main.signlink.UID);
                 SceneCluster.packetBuffer.putLongBE(RSString.nameToLong(Native.username.toString()));
                 SceneCluster.packetBuffer.method505(Native.password);
-                if (Configuration.RSA_ENABLED) {
+                if(Configuration.RSA_ENABLED) {
                     SceneCluster.packetBuffer.applyRSA(Configuration.RSA_MODULUS, Configuration.RSA_PUBLIC_KEY);
                 }
                 MovedStatics.packetBuffer.currentPosition = 0;
-                if (Class51.currentAction == 40) {
+                if(Class51.currentAction == 40) {
                     MovedStatics.packetBuffer.putByte(18);
                 } else {
                     MovedStatics.packetBuffer.putByte(16);
@@ -153,10 +156,13 @@ public class SpotAnimDefinition extends CachedNode {
                 MovedStatics.packetBuffer.putIntBE(CacheArchive.huffmanCacheArchive.anInt216);
                 MovedStatics.packetBuffer.putIntBE(CacheArchive.jingleCacheArchive.anInt216);
                 MovedStatics.packetBuffer.putIntBE(CacheArchive.clientScriptCacheArchive.anInt216);
-                MovedStatics.packetBuffer.putBytes(0, SceneCluster.packetBuffer.currentPosition, SceneCluster.packetBuffer.buffer);
-                MovedStatics.gameConnection.method1010(MovedStatics.packetBuffer.currentPosition, (byte) -19, 0, MovedStatics.packetBuffer.buffer);
+                MovedStatics.packetBuffer.putBytes(
+                        0, SceneCluster.packetBuffer.currentPosition, SceneCluster.packetBuffer.buffer);
+                MovedStatics.gameConnection.method1010(MovedStatics.packetBuffer.currentPosition, 0,
+                        MovedStatics.packetBuffer.buffer
+                );
                 SceneCluster.packetBuffer.initOutCipher(seeds);
-                for (int i = 0; i < 4; i++) {
+                for(int i = 0; i < 4; i++) {
                     seeds[i] += 50;
                 }
                 IncomingPackets.incomingPacketBuffer.initInCipher(seeds);
@@ -164,18 +170,17 @@ public class SpotAnimDefinition extends CachedNode {
             }
 
 
-
-            if (Class40_Sub3.anInt2032 == 6 && MovedStatics.gameConnection.method1014(-126) > 0) {
+            if(Class40_Sub3.anInt2032 == 6 && MovedStatics.gameConnection.method1014() > 0) {
                 int i = MovedStatics.gameConnection.read();
-                if (i != 21 || Class51.currentAction != 20) {
-                    if (i == 2) {
+                if(i != 21 || Class51.currentAction != 20) {
+                    if(i == 2) {
                         Class40_Sub3.anInt2032 = 9;
                     } else {
-                        if (i == 15 && Class51.currentAction == 40) {
+                        if(i == 15 && Class51.currentAction == 40) {
                             Class37.method434(0);
                             return;
                         }
-                        if (i == 23 && OverlayDefinition.anInt2321 < 1) {
+                        if(i == 23 && OverlayDefinition.anInt2321 < 1) {
                             OverlayDefinition.anInt2321++;
                             Class40_Sub3.anInt2032 = 0;
                         } else {
@@ -187,18 +192,20 @@ public class SpotAnimDefinition extends CachedNode {
                     Class40_Sub3.anInt2032 = 7;
                 }
             }
-            if (Class40_Sub3.anInt2032 == 7 && MovedStatics.gameConnection.method1014(-128) > 0) {
+            if(Class40_Sub3.anInt2032 == 7 && MovedStatics.gameConnection.method1014() > 0) {
                 Class33.anInt784 = 180 + MovedStatics.gameConnection.read() * 60;
                 Class40_Sub3.anInt2032 = 8;
             }
-            if (Class40_Sub3.anInt2032 == 8) {
+            if(Class40_Sub3.anInt2032 == 8) {
                 Main.anInt1756 = 0;
-                Class33.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld, English.yourProfileWillBeTransferredIn, (Class33.anInt784 / 60) + English.suffixSeconds);
-                if (--Class33.anInt784 <= 0) {
+                Class33.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld,
+                        English.yourProfileWillBeTransferredIn, (Class33.anInt784 / 60) + English.suffixSeconds
+                );
+                if(--Class33.anInt784 <= 0) {
                     Class40_Sub3.anInt2032 = 0;
                 }
             } else {
-                if (Class40_Sub3.anInt2032 == 9 && MovedStatics.gameConnection.method1014(-121) >= 8) {
+                if(Class40_Sub3.anInt2032 == 9 && MovedStatics.gameConnection.method1014() >= 8) {
 
                     InteractiveObject.playerRights = MovedStatics.gameConnection.read();
                     Class22.accountFlagged = MovedStatics.gameConnection.read() == 1;
@@ -214,10 +221,12 @@ public class SpotAnimDefinition extends CachedNode {
                     IncomingPackets.incomingPacketSize = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                     Class40_Sub3.anInt2032 = 10;
                 }
-                if (Class40_Sub3.anInt2032 == 10) {
-                    if (MovedStatics.gameConnection.method1014(-124) >= IncomingPackets.incomingPacketSize) {
+                if(Class40_Sub3.anInt2032 == 10) {
+                    if(MovedStatics.gameConnection.method1014() >= IncomingPackets.incomingPacketSize) {
                         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                        MovedStatics.gameConnection.method1008(0, IncomingPackets.incomingPacketSize, -128, IncomingPackets.incomingPacketBuffer.buffer);
+                        MovedStatics.gameConnection.method1008(0, IncomingPackets.incomingPacketSize, -128,
+                                IncomingPackets.incomingPacketBuffer.buffer
+                        );
                         Main.method44();
                         Class51.regionX = -1;
                         FloorDecoration.method343(false, 5688);
@@ -225,10 +234,10 @@ public class SpotAnimDefinition extends CachedNode {
                     }
                 } else {
                     Main.anInt1756++;
-                    if (Main.anInt1756 > 2000) {
-                        if (OverlayDefinition.anInt2321 < 1) {
+                    if(Main.anInt1756 > 2000) {
+                        if(OverlayDefinition.anInt2321 < 1) {
                             OverlayDefinition.anInt2321++;
-                            if (OverlayDefinition.anInt2340 == Wall.anInt350) {
+                            if(OverlayDefinition.anInt2340 == Wall.anInt350) {
                                 Wall.anInt350 = CollisionMap.anInt172;
                             } else {
                                 Wall.anInt350 = OverlayDefinition.anInt2340;
@@ -240,9 +249,9 @@ public class SpotAnimDefinition extends CachedNode {
                     }
                 }
             }
-        } catch (IOException ioexception) {
-            if (OverlayDefinition.anInt2321 < 1) {
-                if (Wall.anInt350 == OverlayDefinition.anInt2340) {
+        } catch(IOException ioexception) {
+            if(OverlayDefinition.anInt2321 < 1) {
+                if(Wall.anInt350 == OverlayDefinition.anInt2340) {
                     Wall.anInt350 = CollisionMap.anInt172;
                 } else {
                     Wall.anInt350 = OverlayDefinition.anInt2340;
@@ -255,83 +264,84 @@ public class SpotAnimDefinition extends CachedNode {
         }
     }
 
-    public static SpotAnimDefinition forId(int arg0, int arg1) {
-        if (arg1 != 13)
-            Class37.method436(-34);
-        SpotAnimDefinition spotAnimDefinition = (SpotAnimDefinition) Class43.aClass9_1014.get((long) arg0);
-        if (spotAnimDefinition != null)
+    public static SpotAnimDefinition forId(int arg0) {
+        SpotAnimDefinition spotAnimDefinition = (SpotAnimDefinition) Class43.aClass9_1014.get(arg0);
+        if(spotAnimDefinition != null) {
             return spotAnimDefinition;
+        }
         byte[] is = InteractiveObject.aCacheArchive_488.getFile(arg0, 13);
         spotAnimDefinition = new SpotAnimDefinition();
         spotAnimDefinition.id = arg0;
-        if (is != null)
+        if(is != null) {
             spotAnimDefinition.readValues(new Buffer(is));
-        Class43.aClass9_1014.put((long) arg0, spotAnimDefinition);
+        }
+        Class43.aClass9_1014.put(arg0, spotAnimDefinition);
         return spotAnimDefinition;
     }
 
     public void readValue(int opcode, byte arg1, Buffer buffer) {
-        if (arg1 > -100) {
+        if(arg1 > -100) {
             rotaton = -55;
         }
-        if (opcode == 1) {
+        if(opcode == 1) {
             modelId = buffer.getUnsignedShortBE();
-        } else if (opcode == 2) {
+        } else if(opcode == 2) {
             animationId = buffer.getUnsignedShortBE();
-        } else if (opcode == 4) {
+        } else if(opcode == 4) {
             resizeX = buffer.getUnsignedShortBE();
-        } else if (opcode == 5) {
+        } else if(opcode == 5) {
             resizeY = buffer.getUnsignedShortBE();
-        } else if (opcode == 6) {
+        } else if(opcode == 6) {
             rotaton = buffer.getUnsignedShortBE();
-        } else if (opcode == 7) {
+        } else if(opcode == 7) {
             ambient = buffer.getUnsignedByte();
-        } else if (opcode == 8) {
+        } else if(opcode == 8) {
             contrast = buffer.getUnsignedByte();
-        } else if (opcode >= 40 && opcode < 50) {
+        } else if(opcode >= 40 && opcode < 50) {
             recolorToFind[-40 + opcode] = buffer.getUnsignedShortBE();
-        } else if (opcode >= 50 && opcode < 60) {
+        } else if(opcode >= 50 && opcode < 60) {
             recolorToReplace[-50 + opcode] = buffer.getUnsignedShortBE();
         }
     }
 
     public Model method549(int arg0, int arg1) {
-        Model class40_sub5_sub17_sub5 = (Model) MovedStatics.aClass9_851.get((long) id);
-        if (class40_sub5_sub17_sub5 == null) {
+        Model class40_sub5_sub17_sub5 = (Model) MovedStatics.aClass9_851.get(id);
+        if(class40_sub5_sub17_sub5 == null) {
             class40_sub5_sub17_sub5 = Model.getModel(UnderlayDefinition.aCacheArchive_2582, modelId, 0);
-            if (class40_sub5_sub17_sub5 == null) {
+            if(class40_sub5_sub17_sub5 == null) {
                 return null;
             }
-            for (int i = 0; i < 6; i++) {
-                if (recolorToFind[0] != 0) {
+            for(int i = 0; i < 6; i++) {
+                if(recolorToFind[0] != 0) {
                     class40_sub5_sub17_sub5.replaceColor(recolorToFind[i], recolorToReplace[i]);
                 }
             }
             class40_sub5_sub17_sub5.createBones();
             class40_sub5_sub17_sub5.applyLighting(64 + ambient, contrast + 850, -30, -50, -30, true);
-            MovedStatics.aClass9_851.put((long) id, class40_sub5_sub17_sub5);
+            MovedStatics.aClass9_851.put(id, class40_sub5_sub17_sub5);
         }
         Model class40_sub5_sub17_sub5_0_;
-        if (animationId == -1 || arg0 == -1) {
+        if(animationId == -1 || arg0 == -1) {
             class40_sub5_sub17_sub5_0_ = class40_sub5_sub17_sub5.method806(true);
         } else {
-            class40_sub5_sub17_sub5_0_ = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).method597((byte) -87, class40_sub5_sub17_sub5, arg0);
+            class40_sub5_sub17_sub5_0_ = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).method597(
+                    (byte) -87, class40_sub5_sub17_sub5, arg0);
         }
-        if (arg1 != 2) {
+        if(arg1 != 2) {
             return null;
         }
-        if (resizeX != 128 || resizeY != 128) {
+        if(resizeX != 128 || resizeY != 128) {
             class40_sub5_sub17_sub5_0_.scaleT(resizeX, resizeY, resizeX);
         }
-        if (rotaton != 0) {
-            if (rotaton == 90) {
+        if(rotaton != 0) {
+            if(rotaton == 90) {
                 class40_sub5_sub17_sub5_0_.method813();
             }
-            if (rotaton == 180) {
+            if(rotaton == 180) {
                 class40_sub5_sub17_sub5_0_.method813();
                 class40_sub5_sub17_sub5_0_.method813();
             }
-            if (rotaton == 270) {
+            if(rotaton == 270) {
                 class40_sub5_sub17_sub5_0_.method813();
                 class40_sub5_sub17_sub5_0_.method813();
                 class40_sub5_sub17_sub5_0_.method813();
@@ -342,9 +352,9 @@ public class SpotAnimDefinition extends CachedNode {
     }
 
     public void readValues(Buffer buffer) {
-        for (; ; ) {
+        while(true) {
             int i = buffer.getUnsignedByte();
-            if (i == 0) {
+            if(i == 0) {
                 break;
             }
             readValue(i, (byte) -107, buffer);

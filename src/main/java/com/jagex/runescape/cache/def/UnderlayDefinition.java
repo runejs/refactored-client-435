@@ -1,6 +1,8 @@
 package com.jagex.runescape.cache.def;
 
-import com.jagex.runescape.*;
+import com.jagex.runescape.Class42;
+import com.jagex.runescape.Class44;
+import com.jagex.runescape.Class59;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -27,7 +29,8 @@ public class UnderlayDefinition extends CachedNode {
 
     public static int method614(int arg1, int arg2, int arg3) {
         int i_7_ = 256 + -arg3;
-        return (arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) + (~0xff00ff & (0xff00ff & arg1) * i_7_ + arg3 * (0xff00ff & arg2)) >> 8;
+        return (arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) +
+                (~0xff00ff & (0xff00ff & arg1) * i_7_ + arg3 * (0xff00ff & arg2)) >> 8;
     }
 
     public static void method616(CacheArchive arg0) {
@@ -48,7 +51,8 @@ public class UnderlayDefinition extends CachedNode {
                 }
                 for(int i = 0; Class42.anInt1008 > i; i++) {
                     if(Player.ignores[i] == name) {
-                        ChatBox.addChatMessage("", English.pleaseRemove + username + English.suffixFromYourIgnoreListFirst, 0);
+                        ChatBox.addChatMessage(
+                                "", English.pleaseRemove + username + English.suffixFromYourIgnoreListFirst, 0);
                         return;
                     }
                 }
@@ -68,7 +72,6 @@ public class UnderlayDefinition extends CachedNode {
     public static int bitWiseOR(int arg0, int arg1) {
         return arg0 | arg1;
     }
-
 
 
     public void calculateHsl() {

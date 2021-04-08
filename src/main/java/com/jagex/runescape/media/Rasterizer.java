@@ -1,9 +1,12 @@
 package com.jagex.runescape.media;
 
-import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.node.CachedNode;
 
 public class Rasterizer extends CachedNode {
+    // used for drawing circles
+    private static final int[] tmpX = new int[64];
+    private static final int[] tmpY = new int[64];
     public static int[] destinationPixels;
     public static int viewportTop = 0;
     public static int destinationWidth;
@@ -14,10 +17,6 @@ public class Rasterizer extends CachedNode {
     public static int viewportRightX = 0;
     public static int viewportCenterX = 0;
     public static int viewportCenterY = 0;
-
-    // used for drawing circles
-    private static final int[] tmpX = new int[64];
-    private static final int[] tmpY = new int[64];
 
     public static void prepare(int[] pixels, int width, int height) {
         Rasterizer.destinationPixels = pixels;
@@ -37,14 +36,18 @@ public class Rasterizer extends CachedNode {
     }
 
     public static void setBounds(int minX, int minY, int maxX, int maxY) {
-        if(minX < 0)
+        if(minX < 0) {
             minX = 0;
-        if(minY < 0)
+        }
+        if(minY < 0) {
             minY = 0;
-        if(maxX > Rasterizer.destinationWidth)
+        }
+        if(maxX > Rasterizer.destinationWidth) {
             maxX = Rasterizer.destinationWidth;
-        if(maxY > Rasterizer.destinationHeight)
+        }
+        if(maxY > Rasterizer.destinationHeight) {
             maxY = Rasterizer.destinationHeight;
+        }
         viewportLeft = minX;
         viewportTop = minY;
         viewportRight = maxX;
@@ -56,22 +59,23 @@ public class Rasterizer extends CachedNode {
 
     public static void resetPixels() {
         int pixelCount = destinationWidth * destinationHeight;
-        for (int pixel = 0; pixel < pixelCount; pixel++)
+        for(int pixel = 0; pixel < pixelCount; pixel++) {
             destinationPixels[pixel] = 0;
+        }
     }
 
     public static void fillOval(int x, int y, int w, int h, int rgb, int segments) {
         int cx = x + w / 2;
         int cy = y + h / 2;
 
-        for (int i = 0; i < segments; i++) {
+        for(int i = 0; i < segments; i++) {
             int angle = (i << 11) / segments;
 
             tmpX[i] = x + (w * Model.COSINE[angle] >> 16);
             tmpY[i] = y + (h * Model.SINE[angle] >> 16);
         }
 
-        for (int i = 1; i < segments; i++) {
+        for(int i = 1; i < segments; i++) {
             x = tmpX[i - 1];
             y = tmpY[i - 1];
             int x1 = tmpX[i];
@@ -99,15 +103,18 @@ public class Rasterizer extends CachedNode {
             height -= viewportTop - y;
             y = viewportTop;
         }
-        if(x + width > viewportRight)
+        if(x + width > viewportRight) {
             width = viewportRight - x;
-        if(y + height > viewportBottom)
+        }
+        if(y + height > viewportBottom) {
             height = viewportBottom - y;
+        }
         int pixelOffset = Rasterizer.destinationWidth - width;
         int pixel = x + y * Rasterizer.destinationWidth;
         for(int heightCounter = -height; heightCounter < 0; heightCounter++) {
-            for(int widthCounter = -width; widthCounter < 0; widthCounter++)
+            for(int widthCounter = -width; widthCounter < 0; widthCounter++) {
                 destinationPixels[pixel++] = colour;
+            }
             pixel += pixelOffset;
         }
     }
@@ -130,10 +137,12 @@ public class Rasterizer extends CachedNode {
             height -= viewportTop - paintY;
             paintY = viewportTop;
         }
-        if(paintX + width > viewportRight)
+        if(paintX + width > viewportRight) {
             width = viewportRight - paintX;
-        if(paintY + height > viewportBottom)
+        }
+        if(paintY + height > viewportBottom) {
             height = viewportBottom - paintY;
+        }
         int pixelOffset = Rasterizer.destinationWidth - width;
         int pixel = paintX + paintY * Rasterizer.destinationWidth;
         for(int heightCounter = -height; heightCounter < 0; heightCounter++) {
@@ -148,7 +157,10 @@ public class Rasterizer extends CachedNode {
         }
     }
 
-    public static void copyPixelsCutOff(int[] pixels, int srcWidth, int srcHeight, int paintX, int paintY, int drawWidth, int drawHeight, int offsetX, int offsetY) {
+    public static void copyPixelsCutOff(
+            int[] pixels, int srcWidth, int srcHeight, int paintX, int paintY, int drawWidth, int drawHeight,
+            int offsetX, int offsetY
+    ) {
         int sourcePixel = offsetX + offsetY * srcWidth;
         if(paintX < viewportLeft) {
             drawWidth -= viewportLeft - paintX;
@@ -158,41 +170,44 @@ public class Rasterizer extends CachedNode {
             drawHeight -= viewportTop - paintY;
             paintY = viewportTop;
         }
-        if(paintX + drawWidth > viewportRight)
+        if(paintX + drawWidth > viewportRight) {
             drawWidth = viewportRight - paintX;
-        if(paintY + drawHeight > viewportBottom)
+        }
+        if(paintY + drawHeight > viewportBottom) {
             drawHeight = viewportBottom - paintY;
+        }
         int pixelOffset = Rasterizer.destinationWidth - (drawWidth);
         int pixel = paintX + paintY * Rasterizer.destinationWidth;
         for(int heightCounter = -(drawHeight); heightCounter < 0; heightCounter++) {
-            for(int widthCounter = -(drawWidth); widthCounter < 0; widthCounter++)
+            for(int widthCounter = -(drawWidth); widthCounter < 0; widthCounter++) {
                 destinationPixels[pixel++] = pixels[sourcePixel++];
+            }
             pixel += pixelOffset;
-            sourcePixel += srcWidth-drawWidth;
+            sourcePixel += srcWidth - drawWidth;
         }
     }
 
 
     private static void drawPixel(int x, int y, int color) {
-        if (x >= viewportLeft && y >= viewportTop && x < viewportRight && y < viewportBottom) {
+        if(x >= viewportLeft && y >= viewportTop && x < viewportRight && y < viewportBottom) {
             destinationPixels[x + y * destinationWidth] = color;
         }
     }
 
 
     public static void drawCircle(int x, int y, int radius, int color) {
-        if (radius == 0) {
+        if(radius == 0) {
             drawPixel(x, y, color);
         } else {
-            if (radius < 0) {
+            if(radius < 0) {
                 radius = -radius;
             }
             int var4 = y - radius;
-            if (var4 < viewportTop) {
+            if(var4 < viewportTop) {
                 var4 = viewportTop;
             }
             int var5 = y + radius + 1;
-            if (var5 > viewportBottom) {
+            if(var5 > viewportBottom) {
                 var5 = viewportBottom;
             }
             int var6 = var4;
@@ -201,28 +216,28 @@ public class Rasterizer extends CachedNode {
             int var9 = y - var4;
             int var10 = var9 * var9;
             int var11 = var10 - var9;
-            if (y > var5) {
+            if(y > var5) {
                 y = var5;
             }
             int var12;
             int var13;
             int var14;
             int var15;
-            while (var6 < y) {
-                while (var11 <= var7 || var10 <= var7) {
+            while(var6 < y) {
+                while(var11 <= var7 || var10 <= var7) {
                     var10 += var8 + var8;
                     var11 += var8++ + var8;
                 }
                 var12 = x - var8 + 1;
-                if (var12 < viewportLeft) {
+                if(var12 < viewportLeft) {
                     var12 = viewportLeft;
                 }
                 var13 = x + var8;
-                if (var13 > viewportRight) {
+                if(var13 > viewportRight) {
                     var13 = viewportRight;
                 }
                 var14 = var12 + var6 * destinationWidth;
-                for (var15 = var12; var15 < var13; ++var15) {
+                for(var15 = var12; var15 < var13; ++var15) {
                     destinationPixels[var14++] = color;
                 }
                 ++var6;
@@ -233,21 +248,21 @@ public class Rasterizer extends CachedNode {
             var9 = var6 - y;
             var11 = var9 * var9 + var7;
             var10 = var11 - radius;
-            for (var11 -= var9; var6 < var5; var10 += var9++ + var9) {
-                while (var11 > var7 && var10 > var7) {
+            for(var11 -= var9; var6 < var5; var10 += var9++ + var9) {
+                while(var11 > var7 && var10 > var7) {
                     var11 -= var8-- + var8;
                     var10 -= var8 + var8;
                 }
                 var12 = x - var8;
-                if (var12 < viewportLeft) {
+                if(var12 < viewportLeft) {
                     var12 = viewportLeft;
                 }
                 var13 = x + var8;
-                if (var13 > viewportRight - 1) {
+                if(var13 > viewportRight - 1) {
                     var13 = viewportRight - 1;
                 }
                 var14 = var12 + var6 * destinationWidth;
-                for (var15 = var12; var15 <= var13; ++var15) {
+                for(var15 = var12; var15 <= var13; ++var15) {
                     destinationPixels[var14++] = color;
                 }
                 ++var6;
@@ -257,11 +272,11 @@ public class Rasterizer extends CachedNode {
     }
 
     public static void drawCircleAlpha(int x, int y, int radius, int color, int alpha) {
-        if (alpha != 0) {
-            if (alpha == 256) {
+        if(alpha != 0) {
+            if(alpha == 256) {
                 drawCircle(x, y, radius, color);
             } else {
-                if (radius < 0) {
+                if(radius < 0) {
                     radius = -radius;
                 }
                 int a = 256 - alpha;
@@ -269,11 +284,11 @@ public class Rasterizer extends CachedNode {
                 int g = (color >> 8 & 255) * alpha;
                 int b = (color & 255) * alpha;
                 int topY = y - radius;
-                if (topY < Rasterizer.viewportTop) {
+                if(topY < Rasterizer.viewportTop) {
                     topY = Rasterizer.viewportTop;
                 }
                 int bottomY = y + radius + 1;
-                if (bottomY > Rasterizer.viewportBottom) {
+                if(bottomY > Rasterizer.viewportBottom) {
                     bottomY = Rasterizer.viewportBottom;
                 }
                 int var14 = topY;
@@ -282,7 +297,7 @@ public class Rasterizer extends CachedNode {
                 int var17 = y - topY;
                 int var18 = var17 * var17;
                 int var19 = var18 - var17;
-                if (y > bottomY) {
+                if(y > bottomY) {
                     y = bottomY;
                 }
                 int var9;
@@ -293,21 +308,21 @@ public class Rasterizer extends CachedNode {
                 int var23;
                 int var22;
                 int var24;
-                while (var14 < y) {
-                    while (var19 <= var15 || var18 <= var15) {
+                while(var14 < y) {
+                    while(var19 <= var15 || var18 <= var15) {
                         var18 += var16 + var16;
                         var19 += var16++ + var16;
                     }
                     var20 = x - var16 + 1;
-                    if (var20 < viewportLeft) {
+                    if(var20 < viewportLeft) {
                         var20 = viewportLeft;
                     }
                     var21 = x + var16;
-                    if (var21 > viewportRight) {
+                    if(var21 > viewportRight) {
                         var21 = viewportRight;
                     }
                     var22 = var20 + var14 * Rasterizer.destinationWidth;
-                    for (var23 = var20; var23 < var21; ++var23) {
+                    for(var23 = var20; var23 < var21; ++var23) {
                         var9 = (destinationPixels[var22] >> 16 & 255) * a;
                         var10 = (destinationPixels[var22] >> 8 & 255) * a;
                         var11 = (destinationPixels[var22] & 255) * a;
@@ -322,21 +337,21 @@ public class Rasterizer extends CachedNode {
                 var17 = -var17;
                 var19 = var17 * var17 + var15;
                 var18 = var19 - radius;
-                for (var19 -= var17; var14 < bottomY; var18 += var17++ + var17) {
-                    while (var19 > var15 && var18 > var15) {
+                for(var19 -= var17; var14 < bottomY; var18 += var17++ + var17) {
+                    while(var19 > var15 && var18 > var15) {
                         var19 -= var16-- + var16;
                         var18 -= var16 + var16;
                     }
                     var20 = x - var16;
-                    if (var20 < viewportLeft) {
+                    if(var20 < viewportLeft) {
                         var20 = viewportLeft;
                     }
                     var21 = x + var16;
-                    if (var21 > viewportRight - 1) {
+                    if(var21 > viewportRight - 1) {
                         var21 = viewportRight - 1;
                     }
                     var22 = var20 + var14 * Rasterizer.destinationWidth;
-                    for (var23 = var20; var23 <= var21; ++var23) {
+                    for(var23 = var20; var23 <= var21; ++var23) {
                         var9 = (destinationPixels[var22] >> 16 & 255) * a;
                         var10 = (destinationPixels[var22] >> 8 & 255) * a;
                         var11 = (destinationPixels[var22] & 255) * a;
@@ -366,8 +381,9 @@ public class Rasterizer extends CachedNode {
             length -= viewportLeft - x;
             x = viewportLeft;
         }
-        if(x + length > viewportRight)
+        if(x + length > viewportRight) {
             length = viewportRight - x;
+        }
         int a = 256 - alpha;
         int r = (arg3 >> 16 & 0xff) * alpha;
         int g = (arg3 >> 8 & 0xff) * alpha;
@@ -390,11 +406,13 @@ public class Rasterizer extends CachedNode {
             length -= viewportLeft - x;
             x = viewportLeft;
         }
-        if(x + length > viewportRight)
+        if(x + length > viewportRight) {
             length = viewportRight - x;
+        }
         int pixelOffset = x + y * destinationWidth;
-        for(int pixel = 0; pixel < length; pixel++)
+        for(int pixel = 0; pixel < length; pixel++) {
             destinationPixels[pixelOffset + pixel] = colour;
+        }
     }
 
     public static void drawVerticalLineAlpha(int x, int y, int length, int colour, int alpha) {
@@ -405,8 +423,9 @@ public class Rasterizer extends CachedNode {
             length -= viewportTop - y;
             y = viewportTop;
         }
-        if(y + length > viewportBottom)
+        if(y + length > viewportBottom) {
             length = viewportBottom - y;
+        }
         int a = 256 - alpha;
         int r = (colour >> 16 & 0xff) * alpha;
         int g = (colour >> 8 & 0xff) * alpha;
@@ -423,9 +442,6 @@ public class Rasterizer extends CachedNode {
     }
 
 
-
-
-
     public static void drawFilledRectangleAlpha(int x, int y, int width, int height, int colour, int alpha) {
         if(x < viewportLeft) {
             width -= viewportLeft - x;
@@ -435,10 +451,12 @@ public class Rasterizer extends CachedNode {
             height -= viewportTop - y;
             y = viewportTop;
         }
-        if(x + width > viewportRight)
+        if(x + width > viewportRight) {
             width = viewportRight - x;
-        if(y + height > viewportBottom)
+        }
+        if(y + height > viewportBottom) {
             height = viewportBottom - y;
+        }
         int a = 256 - alpha;
         int r = (colour >> 16 & 0xff) * alpha;
         int g = (colour >> 8 & 0xff) * alpha;
@@ -468,15 +486,17 @@ public class Rasterizer extends CachedNode {
         destX -= x;
         destY -= y;
         if(destY == 0) {
-            if(destX >= 0)
+            if(destX >= 0) {
                 drawHorizontalLine(x, y, destX + 1, colour);
-            else
+            } else {
                 drawHorizontalLine(x + destX, y, -destX + 1, colour);
+            }
         } else if(destX == 0) {
-            if(destY >= 0)
+            if(destY >= 0) {
                 drawVerticalLine(x, y, destY + 1, colour);
-            else
+            } else {
                 drawVerticalLine(x, y + destY, -destY + 1, colour);
+            }
         } else {
             if(destX + destY < 0) {
                 x += destX;
@@ -494,12 +514,14 @@ public class Rasterizer extends CachedNode {
                     y += i * (viewportLeft - x);
                     x = viewportLeft;
                 }
-                if(destX >= viewportRight)
+                if(destX >= viewportRight) {
                     destX = viewportRight - 1;
+                }
                 for(/**/; x <= destX; x++) {
                     int i_34_ = y >> 16;
-                    if(i_34_ >= viewportTop && i_34_ < viewportBottom)
+                    if(i_34_ >= viewportTop && i_34_ < viewportBottom) {
                         destinationPixels[x + i_34_ * destinationWidth] = colour;
+                    }
                     y += i;
                 }
             } else {
@@ -512,12 +534,14 @@ public class Rasterizer extends CachedNode {
                     x += i * (viewportTop - y);
                     y = viewportTop;
                 }
-                if(destY >= viewportBottom)
+                if(destY >= viewportBottom) {
                     destY = viewportBottom - 1;
+                }
                 for(/**/; y <= destY; y++) {
                     int i_35_ = x >> 16;
-                    if(i_35_ >= viewportLeft && i_35_ < viewportRight)
+                    if(i_35_ >= viewportLeft && i_35_ < viewportRight) {
                         destinationPixels[i_35_ + y * destinationWidth] = colour;
+                    }
                     x += i;
                 }
             }
@@ -533,11 +557,13 @@ public class Rasterizer extends CachedNode {
             length -= viewportTop - y;
             y = viewportTop;
         }
-        if(y + length > viewportBottom)
+        if(y + length > viewportBottom) {
             length = viewportBottom - y;
+        }
         int pixelOffset = x + y * destinationWidth;
-        for(int pixel = 0; pixel < length; pixel++)
+        for(int pixel = 0; pixel < length; pixel++) {
             destinationPixels[pixelOffset + pixel * destinationWidth] = colour;
+        }
     }
 
 

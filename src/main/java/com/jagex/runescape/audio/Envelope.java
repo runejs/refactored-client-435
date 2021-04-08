@@ -52,11 +52,13 @@ public class Envelope {
     public int step(int period) {
         if(ticks >= critical) {
             amp = phase_peak[phase_idx++] << 15;
-            if(phase_idx >= num_phases)
+            if(phase_idx >= num_phases) {
                 phase_idx = num_phases - 1;
+            }
             critical = (int) (phase_dur[phase_idx] / 65536.0 * period);
-            if(critical > ticks)
+            if(critical > ticks) {
                 step = ((phase_peak[phase_idx] << 15) - amp) / (critical - ticks);
+            }
         }
         amp += step;
         ticks++;

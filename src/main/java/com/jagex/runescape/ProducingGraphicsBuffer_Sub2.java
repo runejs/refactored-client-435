@@ -10,6 +10,7 @@ public class ProducingGraphicsBuffer_Sub2 extends ProducingGraphicsBuffer {
     public void drawGraphics(int arg1, int arg3, Graphics arg2) {
         arg2.drawImage(image, arg1, arg3, aComponent2214);
     }
+
     public void paintComponent(int arg1, int arg3, Graphics arg2) {
         arg2.drawImage(image, arg1, arg3, aComponent2214);
     }
@@ -21,7 +22,8 @@ public class ProducingGraphicsBuffer_Sub2 extends ProducingGraphicsBuffer {
             height = arg3;
             DataBufferInt databufferint = new DataBufferInt(pixels, pixels.length);
             DirectColorModel directcolormodel = new DirectColorModel(32, 16711680, 65280, 255);
-            WritableRaster writableraster = Raster.createWritableRaster(directcolormodel.createCompatibleSampleModel(width, height), databufferint, null);
+            WritableRaster writableraster = Raster.createWritableRaster(
+                    directcolormodel.createCompatibleSampleModel(width, height), databufferint, null);
             image = new BufferedImage(directcolormodel, writableraster, false, new Hashtable());
             aComponent2214 = arg2;
             prepareRasterizer();

@@ -1,7 +1,9 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.node.NodeCache;
-import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
@@ -14,31 +16,34 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.node.CachedNode;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class40_Sub5_Sub6 extends CachedNode {
+    private static final char[] VALID_CHARACTERS = {
+            ' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w', 'c', 'y', 'f', 'g', 'p', 'b',
+            'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '!', '?', '.', ',',
+            ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243', '$', '%', '"', '[', ']'
+    };
     public static int currentCameraPositionH;
     public static NodeCache aClass9_2439 = new NodeCache(64);
     public static int cameraY;
     public static int loadingPercent = 0;
     public static int anInt2452 = 0;
     public byte[] aByteArray2441;
-    private static char VALID_CHARACTERS[] = {' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w',
-            'c', 'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8',
-            '9', ' ', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243',
-            '$', '%', '"', '[', ']'};
 
     public Class40_Sub5_Sub6(byte[] arg0) {
         aByteArray2441 = arg0;
     }
 
     public static int method585(int arg0, int arg1) {
-        VarbitDefinition varbitDefinition = MovedStatics.method417(0, arg0);
-        if(arg1 != 1369)
+        VarbitDefinition varbitDefinition = MovedStatics.method417(arg0);
+        if(arg1 != 1369) {
             return 27;
+        }
         int i = varbitDefinition.mostSignificantBit;
         int i_6_ = varbitDefinition.index;
         int i_7_ = varbitDefinition.leastSignificantBit;
@@ -49,8 +54,9 @@ public class Class40_Sub5_Sub6 extends CachedNode {
     public static void method586(int arg0) {
         ISAAC.cachedActorDefinitions.clear();
         MovedStatics.aClass9_1611.clear();
-        if(arg0 <= 63)
+        if(arg0 <= 63) {
             English.errorConnectingToServer = null;
+        }
     }
 
     public static void manageTextInputs() {
@@ -62,11 +68,15 @@ public class Class40_Sub5_Sub6 extends CachedNode {
                 Console.console.handleInput();
                 break;
             }
-            if(GameInterface.gameScreenInterfaceId != -1 && HuffmanEncoding.reportAbuseInterfaceID == GameInterface.gameScreenInterfaceId) {
-                if(ItemDefinition.anInt2854 == 85 && Native.reportedName.length() > 0)
+            if(GameInterface.gameScreenInterfaceId != -1 &&
+                    HuffmanEncoding.reportAbuseInterfaceID == GameInterface.gameScreenInterfaceId) {
+                if(ItemDefinition.anInt2854 == 85 && Native.reportedName.length() > 0) {
                     Native.reportedName = Native.reportedName.substring(0, -1 + Native.reportedName.length());
-                if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && Native.reportedName.length() < 12)
+                }
+                if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) &&
+                        Native.reportedName.length() < 12) {
                     Native.reportedName = Native.reportedName + (char) Class59.anInt1388;
+                }
             } else if(ChatBox.messagePromptRaised) {
                 if(ItemDefinition.anInt2854 == 85 && ChatBox.chatMessage.length() > 0) {
                     ChatBox.chatMessage = ChatBox.chatMessage.substring(0, -1 + ChatBox.chatMessage.length());
@@ -141,7 +151,8 @@ public class Class40_Sub5_Sub6 extends CachedNode {
                     ChatBox.inputMessage = ChatBox.inputMessage.substring(0, -1 + ChatBox.inputMessage.length());
                     ChatBox.redrawChatbox = true;
                 }
-                if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && ChatBox.inputMessage.length() < 12) {
+                if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) &&
+                        ChatBox.inputMessage.length() < 12) {
                     ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
@@ -173,8 +184,9 @@ public class Class40_Sub5_Sub6 extends CachedNode {
                 }
                 if(ItemDefinition.anInt2854 == 84 && ChatBox.chatboxInput.length() > 0) {
                     if(InteractiveObject.playerRights > 1) {
-                        if(ChatBox.chatboxInput.equals(English.commandClientDrop))
+                        if(ChatBox.chatboxInput.equals(English.commandClientDrop)) {
                             Class59.dropClient();
+                        }
                         if(ChatBox.chatboxInput.equals(English.commandFpson)) {
                             InteractiveObject.showFps = true;
                             ChatBox.inputType = 3;
@@ -186,8 +198,8 @@ public class Class40_Sub5_Sub6 extends CachedNode {
                                     for(int y = 0; gameInterfaces.length > y; y++) {
                                         GameInterface gameInterface = gameInterfaces[y];
                                         if(gameInterface.disabledText != null) {
-                                            String text = gameInterface.disabledText.toString().toLowerCase();
-                                            if(gameInterface.disabledText.toString().toLowerCase().contains("bank")) {
+                                            String text = gameInterface.disabledText.toLowerCase();
+                                            if(gameInterface.disabledText.toLowerCase().contains("bank")) {
                                                 System.out.println(qq + " contains " + text);
                                             }
                                         }
@@ -196,20 +208,24 @@ public class Class40_Sub5_Sub6 extends CachedNode {
                             }
                         }
 
-                        if(ChatBox.chatboxInput.equals(Native.cmd_fpsoff))
+                        if(ChatBox.chatboxInput.equals(Native.cmd_fpsoff)) {
                             InteractiveObject.showFps = false;
+                        }
                         if(ChatBox.chatboxInput.equals(English.commandNoclip)) {
                             for(int i = 0; i < 4; i++) {
                                 for(int i_9_ = 1; i_9_ < 103; i_9_++) {
-                                    for(int i_10_ = 1; i_10_ < 103; i_10_++)
+                                    for(int i_10_ = 1; i_10_ < 103; i_10_++) {
                                         Landscape.currentCollisionMap[i].clippingData[i_9_][i_10_] = 0;
+                                    }
                                 }
                             }
                         }
-                        if(ChatBox.chatboxInput.equals(English.commandErrorTest) && Class44.modewhere == 2)
+                        if(ChatBox.chatboxInput.equals(English.commandErrorTest) && Class44.modewhere == 2) {
                             throw new RuntimeException();
-                        if(ChatBox.chatboxInput.equals(Native.cmd_hiddenbuttontest))
+                        }
+                        if(ChatBox.chatboxInput.equals(Native.cmd_hiddenbuttontest)) {
                             PacketBuffer.hiddenButtonTest = true;
+                        }
                     }
                     if(ChatBox.chatboxInput.startsWith(Native.cmd_prefix)) {
                         SceneCluster.packetBuffer.putPacket(248);
@@ -327,9 +343,11 @@ public class Class40_Sub5_Sub6 extends CachedNode {
         for(int action = 0; action < ActorDefinition.menuActionRow; action++) {
             int actionY = 15 * (-action + ActorDefinition.menuActionRow + -1) + offsetY + 31;
             int actionColour = 16777215;
-            if(x > offsetX && offsetX + width > x && y > -13 + actionY && actionY + 3 > y)
+            if(x > offsetX && offsetX + width > x && y > -13 + actionY && actionY + 3 > y) {
                 actionColour = 16776960;
-            TypeFace.fontBold.drawShadowedString(Landscape.menuActionTexts[action], offsetX + 3, actionY, true, actionColour);
+            }
+            TypeFace.fontBold.drawShadowedString(
+                    Landscape.menuActionTexts[action], offsetX + 3, actionY, true, actionColour);
         }
     }
 }

@@ -5,7 +5,7 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.util.Signlink;
 
 public class Class39 implements Runnable {
-    public static int anInt901;
+    public static int clientVersion;
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_907;
     public static ProducingGraphicsBuffer mapbackLeft;
     public static int anInt909 = 0;
@@ -28,15 +28,19 @@ public class Class39 implements Runnable {
         int i = 0;
         int i_0_ = -1;
         int i_1_ = 0;
-        if(arg0.anInt2027 == 0)
+        if(arg0.anInt2027 == 0) {
             i = Npc.currentScene.method122(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
+        }
         int i_2_ = 0;
-        if(arg0.anInt2027 == 1)
+        if(arg0.anInt2027 == 1) {
             i = Npc.currentScene.method91(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
-        if(arg0.anInt2027 == 2)
+        }
+        if(arg0.anInt2027 == 2) {
             i = Npc.currentScene.getLocationHash(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
-        if(arg0.anInt2027 == 3)
+        }
+        if(arg0.anInt2027 == 3) {
             i = Npc.currentScene.getFloorDecorationHash(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
+        }
         if(arg1 == 19813) {
             if(i != 0) {
                 int i_3_ = Npc.currentScene.getArrangement(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i);
@@ -56,18 +60,13 @@ public class Class39 implements Runnable {
             MovedStatics.aClass22_189 = new Class22_Sub2_Sub1(); // Java Midi Based
             return true;
         } catch(Throwable throwable) {
-            Runnable_Impl1 runnable_impl1 = arg0.method391(1048576);
-            if(runnable_impl1 != null) {
-                MovedStatics.aClass22_189 = new Class22_Sub2_Sub2(arg0, runnable_impl1); // ???
-                return true;
-            }
             if(arg2) {
                 MovedStatics.aClass22_189 = new Class22_Sub1(arg0); // JS based
                 return true;
             }
             return false;
         }
-//        return false;
+        //        return false;
     }
 
 

@@ -11,6 +11,7 @@ import com.jagex.runescape.frame.console.Console;
 public class SearchCommand extends Command {
     private static final int maxResults = 300;
     private int results;
+
     public SearchCommand() {
         super("search", "Returns list of results");
     }
@@ -18,9 +19,9 @@ public class SearchCommand extends Command {
     @Override
     public void execute(Console console, String[] cmdInput) {
         if(cmdInput[1].equalsIgnoreCase("size")) {
-            console.log("<col=FFFF00>Items loaded: "+ ItemDefinition.count +"</col>");
-            console.log("<col=FFFF00>Npcs loaded: "+ ActorDefinition.count +"</col>");
-            console.log("<col=FFFF00>Objects loaded: "+ GameObjectDefinition.count +"</col>");
+            console.log("<col=FFFF00>Items loaded: " + ItemDefinition.count + "</col>");
+            console.log("<col=FFFF00>Npcs loaded: " + ActorDefinition.count + "</col>");
+            console.log("<col=FFFF00>Objects loaded: " + GameObjectDefinition.count + "</col>");
 
         }
         if(cmdInput.length <= 2) {
@@ -38,8 +39,9 @@ public class SearchCommand extends Command {
                     ItemDefinition definition = ItemDefinition.forId(itemId, 10);
                     if(definition.noteTemplateId == -1) {
                         filterAndAddDefinition(itemId, definition, cmdInput, console);
-                        if(results >= maxResults)
+                        if(results >= maxResults) {
                             break;
+                        }
                     }
                 }
                 break;
@@ -49,8 +51,9 @@ public class SearchCommand extends Command {
                 for(int npcId = 0; ActorDefinition.count > npcId; npcId++) {
                     ActorDefinition definition = ActorDefinition.getDefinition(npcId);
                     filterAndAddDefinition(npcId, definition, cmdInput, console);
-                    if(results >= maxResults)
+                    if(results >= maxResults) {
                         break;
+                    }
                 }
                 break;
             case "object":
@@ -59,23 +62,24 @@ public class SearchCommand extends Command {
                 for(int objectId = 0; GameObjectDefinition.count > objectId; objectId++) {
                     GameObjectDefinition definition = GameObjectDefinition.getDefinition(objectId);
                     filterAndAddDefinition(objectId, definition, cmdInput, console);
-                    if(results >= maxResults)
+                    if(results >= maxResults) {
                         break;
+                    }
                 }
                 break;
             case "widget":
             case "widgets":
             case "w":
-                for (int qq = 0; qq < 469; qq++) {
-                    if (GameInterface.decodeGameInterface(qq)) {
+                for(int qq = 0; qq < 469; qq++) {
+                    if(GameInterface.decodeGameInterface(qq)) {
                         GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[qq];
-                        for (int y = 0; gameInterfaces.length > y; y++) {
+                        for(int y = 0; gameInterfaces.length > y; y++) {
                             GameInterface gameInterface = gameInterfaces[y];
-                            if (gameInterface.disabledText != null) {
-                                String text = gameInterface.disabledText.toString().toLowerCase();
+                            if(gameInterface.disabledText != null) {
+                                String text = gameInterface.disabledText.toLowerCase();
                                 for(int indx = 2; indx < cmdInput.length; indx++) {
                                     if(text.contains(cmdInput[indx].toLowerCase())) {
-                                        console.log("<col=FFFF00>" + text + " - " + qq + ":"+y+"</col>");
+                                        console.log("<col=FFFF00>" + text + " - " + qq + ":" + y + "</col>");
                                         break;
                                     }
                                 }
@@ -91,8 +95,9 @@ public class SearchCommand extends Command {
         if(def.getName() != null) {
             String itemNameString = def.getName().toLowerCase();
             for(int indx = 2; indx < searchTerms.length; indx++) {
-                if(!itemNameString.contains(searchTerms[indx].toLowerCase()))
+                if(!itemNameString.contains(searchTerms[indx].toLowerCase())) {
                     return;
+                }
             }
             console.log("<col=FFFF00>" + def.getName() + " - " + id + "</col>");
             results++;

@@ -4,7 +4,9 @@ package tech.henning.fourthreefive.OldEngine;/*
  * @ Author: Zee best
  */
 
-import com.jagex.runescape.*;
+import com.jagex.runescape.Class26;
+import com.jagex.runescape.Class40_Sub5_Sub17_Sub1;
+import com.jagex.runescape.Landscape;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.io.Buffer;
@@ -19,17 +21,17 @@ import java.util.zip.GZIPInputStream;
 
 public class ObjectDecompressor {
 
+    private static final boolean loaded = false;
     public static List<Integer> mapIndices = null;
     public static Map<Integer, byte[]> mapBuffer = new HashMap<Integer, byte[]>();
     public static File f_cache;
     public static File f_index;
     public static int definitionCount;
-    private static int[] bufferOffsets;
-    private static boolean loaded = false;
     public static Buffer buffer;
+    private static int[] bufferOffsets;
 
     public static Buffer grabObjectDef(int id) throws IOException {
-        if(!loaded){
+        if(!loaded) {
             f_cache = new File("./data/loc.dat");
             f_index = new File("./data/loc.idx");
             byte[] bytesArray = new byte[(int) f_cache.length()];
@@ -48,12 +50,12 @@ public class ObjectDecompressor {
             definitionCount = buffer.getUnsignedShortBE();
             bufferOffsets = new int[definitionCount];
             int offset = 2;
-            for (int index = 0; index < definitionCount; index++) {
+            for(int index = 0; index < definitionCount; index++) {
                 bufferOffsets[index] = offset;
                 offset += buffer.getUnsignedShortBE();
             }
         }
-        if(id > definitionCount){
+        if(id > definitionCount) {
             return null;
         }
         buffer.currentPosition = bufferOffsets[id];

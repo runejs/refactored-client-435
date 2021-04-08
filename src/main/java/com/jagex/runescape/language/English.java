@@ -2,9 +2,9 @@ package com.jagex.runescape.language;
 
 
 public class English {
-    public static String suffixFromYourIgnoreListFirst = " from your ignore list first";
     public static String suffixHasLoggedIn = " has logged in.";
     public static String suffixHasLoggedOut = " has logged out.";
+    public static String suffixFromYourIgnoreListFirst = " from your ignore list first";
     public static String suffixIsAlreadyOnYourIgnoreList = " is already on your ignore list";
     public static String suffixMoreOptions = " more options";
     public static String suffixSeconds = " seconds.";
@@ -30,10 +30,8 @@ public class English {
     public static String errorLoadingYourProfile = "Error loading your profile.";
     public static String examine = "Examine";
     public static String existingUser = "Existing user";
-    public static String effectFlash3 = "flash3:";
     public static String friends = "Friends";
     public static String from = "From";
-    public static String effectGlow3 = "glow3:";
     public static String hidden = "Hidden";
     public static String hide = "Hide";
     public static String iconsRedrawn = "Icons redrawn";
@@ -71,15 +69,12 @@ public class English {
     public static String pressChangeYourPasswordOnFrontPage = "Press 'change your password' on front page.";
     public static String pressRecoverLockedAccountOnFrontPage = "Press 'recover a locked account' on front page.";
     public static String privateChat = "Private chat";
-    public static String effectPurple = "purple:";
-    public static String effectRed = "red:";
     public static String remove = "Remove";
     public static String reportAbuse = "Report abuse";
     public static String runeScapeHasBeenUpdated = "RuneScape has been updated!";
     public static String runeScapeIsLoadingPleaseWait = "RuneScape is loading - please wait...";
     public static String sidePanelRedrawn = "Side panel redrawn";
     public static String prefixSkill = "skill-";
-    public static String effectSlide = "slide:";
     public static String systemUpdateIn = "System update in: ";
     public static String take = "Take";
     public static String thisComputersAddressHasBeenBlocked = "This computers address has been blocked";
@@ -98,7 +93,7 @@ public class English {
     public static String suffixWishesToDuelWithYou = "wishes to duel with you.";
     public static String world = "World";
     public static String youHaveJustLeftAnotherWorld = "You have only just left another world.";
-    public static String yourAccountHasBeenDisabled ="Your account has been disabled.";
+    public static String yourAccountHasBeenDisabled = "Your account has been disabled.";
     public static String yourAccountIsAlreadyLoggedIn = "Your account is already logged in.";
     public static String friendsListIsFull = "Your friendlist is full. Max of 100 for free users, and 200 for members";
     public static String loadedTextures = "Loaded textures";
@@ -129,41 +124,28 @@ public class English {
     public static String enterAmount = "Enter amount:";
     public static String youAreStandingInMembersOnlyArea = "You are standing in a members-only area.";
     public static String yourIgnoreListIsFull = "Your ignore list is full. Max of 100 hit";
-    public static String effectGlow1 = "glow1:";
     public static String tooManyIncorrectLoginsFromYourAddress = "Too many incorrect logins from your address.";
     public static String theServerIsBeingUpdated = "The server is being updated.";
-    public static String effectGreen = "green:";
     public static String tryAgainIn60Secs = "Try again in 60 secs...";
-    public static String effectYellow = "yellow:";
-    public static String effectCyan = "cyan:";
-    public static String effectShake = "shake:";
     public static String preparedVisibilityMap = "Prepared visibility map";
     public static String yourProfileWillBeTransferredIn = "Your profile will be transferred in:";
-    public static String effectFlash2 ="flash2:";
     public static String suffixMillion = " million";
     public static String prefixLevel = "level-";
-    public static String commandNoclip = "::noclip";
     public static String loadingTextures = "Loading textures - ";
     public static String loadedInputHandler = "Loaded input handler";
-    public static String effectGlow2 = "glow2:";
     public static String startingGameEngine = "Starting game engine...";
     public static String chooseOption = "Choose Option";
-    public static String commandErrorTest = "::errortest";
     public static String enterNameOfFriendToAddToList = "Enter name of friend to add to list";
-    public static String effectWhite = "white:";
     public static String isAlreadyOnYourFriendList = " is already on your friend list";
-    public static String effectWave2 = "wave2:";
     public static String close = "Close";
-    public static String effectWave = "wave:";
     public static String loadingFonts = "Loading fonts - ";
     public static String preparedSoundEngine = "Prepared sound engine";
     public static String loadedGamescreen = "Loaded gamescreen";
     public static String acceptChallenge = "Accept challenge";
-    public static String fromYourFriendListFirst =" from your friend list first";
+    public static String fromYourFriendListFirst = " from your friend list first";
     public static String connectionLost = "Connection lost";
     public static String on = "On";
     public static String message = "Message";
-    public static String commandClientDrop = "::clientdrop";
     public static String chatPanelRedrawn = "Chat panel redrawn";
     public static String publicChat = "Public chat";
     public static String connectingToUpdateServer = "Connecting to update server";
@@ -172,8 +154,30 @@ public class English {
     public static String goBackToTheMainRunescapeWebPage = "go back to the main RuneScape webpage";
     public static String sContinue = "Continue";
     public static String ok = "Ok";
-    public static String commandFpson = "::fpson";
     public static String cancel = "Cancel";
     public static String select = "Select";
     public static String pleaseWait = "Please wait...";
+
+    // text effects
+    public static String effectRed = "red:";
+    public static String effectGreen = "green:";
+    public static String effectPurple = "purple:";
+    public static String effectYellow = "yellow:";
+    public static String effectWhite = "white:";
+    public static String effectCyan = "cyan:";
+    public static String effectShake = "shake:";
+    public static String effectGlow1 = "glow1:";
+    public static String effectGlow2 = "glow2:";
+    public static String effectGlow3 = "glow3:";
+    public static String effectFlash2 = "flash2:";
+    public static String effectFlash3 = "flash3:";
+    public static String effectWave = "wave:";
+    public static String effectWave2 = "wave2:";
+    public static String effectSlide = "slide:";
+
+    // commands
+    public static String commandNoclip = "::noclip";
+    public static String commandErrorTest = "::errortest";
+    public static String commandClientDrop = "::clientdrop";
+    public static String commandFpson = "::fpson";
 }

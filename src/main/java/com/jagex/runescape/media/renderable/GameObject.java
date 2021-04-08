@@ -55,25 +55,30 @@ public class GameObject extends Renderable {
     }
 
     public static IndexedImage method769(int arg0, CacheArchive arg1, int arg2) {
-        if(!Buffer.method472(arg1, arg2))
+        if(!Buffer.method472(arg1, arg2)) {
             return null;
+        }
         return MovedStatics.method538(0);
     }
 
 
-    public static void loadObjectBlock(int block_x, Scene scene, CollisionMap[] collisionMaps, byte[] block_data, int block_z) {
+    public static void loadObjectBlock(
+            int block_x, Scene scene, CollisionMap[] collisionMaps, byte[] block_data, int block_z
+    ) {
         Buffer buffer = new Buffer(block_data);
         int object_id = -1;
-        for(; ; ) {
+        while(true) {
             int delta_id = buffer.getSmart();
-            if(delta_id == 0)
+            if(delta_id == 0) {
                 break;
+            }
             int pos = 0;
             object_id += delta_id;
-            for(; ; ) {
+            while(true) {
                 int delta_pos = buffer.getSmart();
-                if(delta_pos == 0)
+                if(delta_pos == 0) {
                     break;
+                }
                 pos += -1 + delta_pos;
                 int tile_z = pos & 0x3f;
                 int tile_x = pos >> 6 & 0x3f;
@@ -86,11 +91,15 @@ public class GameObject extends Renderable {
                 if(object_x > 0 && object_z > 0 && object_x < 103 && object_z < 103) {
                     CollisionMap collisionMap = null;
                     int logic_y = tile_y;
-                    if((OverlayDefinition.tile_flags[1][object_x][object_z] & 2) == 2)
+                    if((OverlayDefinition.tile_flags[1][object_x][object_z] & 2) == 2) {
                         logic_y--;
-                    if(logic_y >= 0)
+                    }
+                    if(logic_y >= 0) {
                         collisionMap = collisionMaps[logic_y];
-                    Class40_Sub5_Sub17_Sub1.addObject(object_id, object_x, object_z, tile_y, object_orientation, object_type, scene, collisionMap);
+                    }
+                    Class40_Sub5_Sub17_Sub1.addObject(object_id, object_x, object_z, tile_y, object_orientation,
+                            object_type, scene, collisionMap
+                    );
                 }
             }
         }
@@ -108,11 +117,13 @@ public class GameObject extends Renderable {
                 graphics.setColor(Color.black);
                 graphics.fillRect(0, 0, Class12.width, IdentityKit.height);
             }
-            if(color == null)
+            if(color == null) {
                 color = new Color(140, 17, 17);
+            }
             try {
-                if(Class26.loadingBoxImage == null)
+                if(Class26.loadingBoxImage == null) {
                     Class26.loadingBoxImage = MouseHandler.gameCanvas.createImage(304, 34);
+                }
                 Graphics loadingBoxGraphics = Class26.loadingBoxImage.getGraphics();
                 loadingBoxGraphics.setColor(color);
                 loadingBoxGraphics.drawRect(0, 0, 303, 33);
@@ -135,7 +146,8 @@ public class GameObject extends Renderable {
                 graphics.fillRect(percent * 3 + 2 + centerWidth, 2 + centerHeight, 300 + -(3 * percent), 30);
                 graphics.setFont(Class17.helveticaBold);
                 graphics.setColor(Color.white);
-                graphics.drawString(desc, (304 - (Class8.fontMetrics.stringWidth(desc))) / 2+ centerWidth, 22 + centerHeight);
+                graphics.drawString(
+                        desc, (304 - (Class8.fontMetrics.stringWidth(desc))) / 2 + centerWidth, 22 + centerHeight);
             }
         } catch(Exception exception) {
             MouseHandler.gameCanvas.repaint();
@@ -144,15 +156,17 @@ public class GameObject extends Renderable {
 
     public static void method774(byte arg0) {
         Buffer.rgbImageCache.clear();
-        if(arg0 != -96)
+        if(arg0 != -96) {
             Native.mapFunction = null;
+        }
     }
 
     public Model getRotatedModel() {
         if(animationSequence != null) {
             int step = -animationCycleDelay + MovedStatics.pulseCycle;
-            if(step > 100 && animationSequence.frameStep > 0)
+            if(step > 100 && animationSequence.frameStep > 0) {
                 step = 100;
+            }
             while(animationSequence.frameLengths[animationFrame] < step) {
                 step -= animationSequence.frameLengths[animationFrame];
                 animationFrame++;
@@ -167,10 +181,14 @@ public class GameObject extends Renderable {
             animationCycleDelay = MovedStatics.pulseCycle - step;
         }
         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(id);
-        if(gameObjectDefinition.configChangeDest != null)
+        if(gameObjectDefinition.configChangeDest != null) {
             gameObjectDefinition = gameObjectDefinition.getChildDefinition();
-        if(gameObjectDefinition == null)
+        }
+        if(gameObjectDefinition == null) {
             return null;
-        return gameObjectDefinition.createAnimatedObjectModel(vertexHeight, vertexHeightRight, animationFrame, anInt3021, anInt3018, animationSequence, vertexHeightTop, vertexHeightTopRight);
+        }
+        return gameObjectDefinition.createAnimatedObjectModel(vertexHeight, vertexHeightRight, animationFrame,
+                anInt3021, anInt3018, animationSequence, vertexHeightTop, vertexHeightTopRight
+        );
     }
 }

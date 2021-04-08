@@ -40,8 +40,9 @@ public class Class8 {
         for(int i = 0; i < Player.npcCount; i++) {
             int i_0_ = Player.npcIds[i];
             Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_0_];
-            if(class40_sub5_sub17_sub4_sub2 != null)
-                Class13.method241(class40_sub5_sub17_sub4_sub2, (byte) 107);
+            if(class40_sub5_sub17_sub4_sub2 != null) {
+                Class13.method241(class40_sub5_sub17_sub4_sub2);
+            }
         }
 
     }
@@ -74,17 +75,20 @@ public class Class8 {
             arg0[i++] = 0;
         }
         arg1 += 7;
-        while(i < arg1)
+        while(i < arg1) {
             arg0[i++] = 0;
-        if(FloorDecoration.aClass40_Sub9_608 != null)
+        }
+        if(FloorDecoration.aClass40_Sub9_608 != null) {
             FloorDecoration.aClass40_Sub9_608.method844(arg0, 0, arg1);
+        }
         ItemDefinition.method748(arg1);
     }
 
 
     public static synchronized void method217(int arg0) {
-        if(FloorDecoration.aClass40_Sub9_608 != null)
+        if(FloorDecoration.aClass40_Sub9_608 != null) {
             FloorDecoration.aClass40_Sub9_608.method843(arg0);
+        }
         ItemDefinition.method748(arg0);
     }
 

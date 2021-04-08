@@ -78,7 +78,7 @@ public final class MusicSystem implements Runnable {
      */
     public MusicSystem() throws MidiUnavailableException {
         this.running = true;
-//        this.soundStream = stream;
+        //        this.soundStream = stream;
         this.player = new MidiPlayer();
         this.setDefault();
 
@@ -105,8 +105,9 @@ public final class MusicSystem implements Runnable {
                 Effect effect = PacketBuffer.effects[index];
                 if(effect == null) {
                     effect = Effect.method429(CacheArchive.soundEffectCacheArchive, IdentityKit.sound[index], 0);
-                    if(effect == null)
+                    if(effect == null) {
                         continue;
+                    }
                     Class40_Sub3.soundDelay[index] += effect.delay();
                     PacketBuffer.effects[index] = effect;
                 }
@@ -118,20 +119,24 @@ public final class MusicSystem implements Runnable {
                         int i_13_ = (MovedStatics.anIntArray1916[index] & 0xffb8) >> 8;
                         int i_14_ = i_13_ * 128 + 64 + -Player.localPlayer.worldY;
                         int i_15_ = i_12_ * 128 + 64 - Player.localPlayer.worldX;
-                        if(i_15_ < 0)
+                        if(i_15_ < 0) {
                             i_15_ = -i_15_;
-                        if(i_14_ < 0)
+                        }
+                        if(i_14_ < 0) {
                             i_14_ = -i_14_;
+                        }
                         int i_16_ = -128 + i_15_ + i_14_;
                         if(i_16_ > i_11_) {
                             Class40_Sub3.soundDelay[index] = -100;
                             continue;
                         }
-                        if(i_16_ < 0)
+                        if(i_16_ < 0) {
                             i_16_ = 0;
+                        }
                         i_10_ = (i_11_ + -i_16_) * RSCanvas.anInt65 / i_11_;
-                    } else
+                    } else {
                         i_10_ = MovedStatics.anInt200;
+                    }
                     Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aClass48_1289);
                     Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_10_);
                     class40_sub9_sub2.method860(-1 + ItemDefinition.soundVolume[index]);
@@ -142,10 +147,13 @@ public final class MusicSystem implements Runnable {
         }
         if(Class35.songTimeout > 0) {
             Class35.songTimeout -= 20;
-            if(Class35.songTimeout < 0)
+            if(Class35.songTimeout < 0) {
                 Class35.songTimeout = 0;
-            if(Class35.songTimeout == 0 && RSCanvas.anInt60 != 0 && MouseHandler.anInt1457 != -1)
-                Class33.method414(false, 0, MouseHandler.anInt1457, RSCanvas.anInt60, 0, CacheArchive.musicCacheArchive);
+            }
+            if(Class35.songTimeout == 0 && RSCanvas.anInt60 != 0 && MouseHandler.anInt1457 != -1) {
+                Class33.method414(
+                        false, 0, MouseHandler.anInt1457, RSCanvas.anInt60, 0, CacheArchive.musicCacheArchive);
+            }
         }
     }
 
@@ -182,20 +190,11 @@ public final class MusicSystem implements Runnable {
      * @param jingle play as a jingle?
      */
     public void play(String midi, boolean jingle) {
-        if (jingle) {
+        if(jingle) {
             MusicSystem.jingle = midi;
         } else {
             MusicSystem.song = midi;
         }
-    }
-
-    /**
-     * Sets the volume.
-     *
-     * @param volume the volume (integer value from 0..256)
-     */
-    public void setVolume(int volume) {
-        this.volume = volume;
     }
 
     /**
@@ -208,23 +207,32 @@ public final class MusicSystem implements Runnable {
     }
 
     /**
+     * Sets the volume.
+     *
+     * @param volume the volume (integer value from 0..256)
+     */
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    /**
      * The main loop for the {@link MusicSystem}. Contains logic for transitioning between songs.
      *
      * @throws InvalidMidiDataException
      * @throws IOException
      */
     private void update() throws InvalidMidiDataException, IOException {
-        if (jingle != null) {
+        if(jingle != null) {
             // fade out or switch to jingle
-            if (!current.equals(jingle)) {
+            if(!current.equals(jingle)) {
                 current = jingle;
                 playing = jingle;
 
                 // no fade in, immediate
                 player.setVolume(this.volume);
 
-                    player.play(this.soundStream, false);
-            } else if (player.isDone()) {
+                player.play(this.soundStream, false);
+            } else if(player.isDone()) {
                 current = "";
                 playing = "";
                 jingle = null;
@@ -233,8 +241,8 @@ public final class MusicSystem implements Runnable {
         }
 
         // no music or jingles playing
-        if (song == null) {
-            if (player.isMuted()) {
+        if(song == null) {
+            if(player.isMuted()) {
                 playing = "none";
             } else {
                 player.adjustVolume(-1);
@@ -244,10 +252,10 @@ public final class MusicSystem implements Runnable {
 
         boolean songChanging = !current.equals(song);
 
-        if (songChanging) {
+        if(songChanging) {
             current = song;
 
-            if (current.equals("replay")) {
+            if(current.equals("replay")) {
                 current = last;
             }
 
@@ -256,19 +264,19 @@ public final class MusicSystem implements Runnable {
 
         boolean fadeOut = !playing.equals(current);
 
-        if (fadeOut) {
-            if (!player.isMuted()) {
+        if(fadeOut) {
+            if(!player.isMuted()) {
                 player.adjustVolume(-2);
                 return;
             }
 
             playing = current;
 
-            if (playing == null || playing.equals("none")) {
+            if(playing == null || playing.equals("none")) {
                 return;
             }
 
-            if ("shutdown".equals(playing)) {
+            if("shutdown".equals(playing)) {
                 song = null;
                 running = false;
                 current = "none";
@@ -283,9 +291,9 @@ public final class MusicSystem implements Runnable {
             // fade in
             int volume = player.getVolume();
 
-            if (volume < this.volume) {
+            if(volume < this.volume) {
                 player.adjustVolume(4);
-            } else if (volume > this.volume) {
+            } else if(volume > this.volume) {
                 player.adjustVolume(-4);
             }
         }
@@ -293,24 +301,24 @@ public final class MusicSystem implements Runnable {
 
     @Override
     public void run() {
-        while (running) {
+        while(running) {
             try {
                 Thread.sleep(20);
-            } catch (Exception e) {
+            } catch(Exception e) {
                 e.printStackTrace();
             }
 
             try {
                 update();
-            } catch (Exception e) {
+            } catch(Exception e) {
                 e.printStackTrace();
             }
         }
 
-        if (player != null) {
+        if(player != null) {
             try {
                 player.stop();
-            } catch (InvalidMidiDataException e) {
+            } catch(InvalidMidiDataException e) {
                 e.printStackTrace();
             }
         }

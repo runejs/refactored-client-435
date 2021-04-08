@@ -32,10 +32,11 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
 
     public void method219(long arg0) throws Exception {
         method226(anInt1831);
-        for(; ; ) {
+        while(true) {
             int i = method224();
-            if(i < anInt1827)
+            if(i < anInt1827) {
                 break;
+            }
             method223();
         }
         anInt1823 = 0;
@@ -46,10 +47,12 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
 
     public void method221(long arg0) {
         if(aLong1821 != 0L) {
-            for(/**/; aLong1832 < arg0; aLong1832 += (long) (256000 / CollisionMap.anInt141))
+            for(/**/; aLong1832 < arg0; aLong1832 += 256000 / CollisionMap.anInt141) {
                 Class8.method217(256);
-            if(arg0 < aLong1821)
+            }
+            if(arg0 < aLong1821) {
                 return;
+            }
             try {
                 method219(arg0);
             } catch(Exception exception) {
@@ -60,7 +63,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
             aLong1821 = 0L;
         }
         while(aLong1832 < arg0) {
-            aLong1832 += (long) (250880 / CollisionMap.anInt141);
+            aLong1832 += 250880 / CollisionMap.anInt141;
             int i;
             try {
                 i = method224();
@@ -71,13 +74,15 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
             }
             method227(i);
             int i_0_ = anInt1828 * 3 / 512 - anInt1822 * 2;
-            if(i_0_ < 0)
+            if(i_0_ < 0) {
                 i_0_ = 0;
-            else if(i_0_ > anInt1824)
+            } else if(i_0_ > anInt1824) {
                 i_0_ = anInt1824;
+            }
             anInt1827 = anInt1831 - 256 - i_0_;
-            if(anInt1827 < 256)
+            if(anInt1827 < 256) {
                 anInt1827 = 256;
+            }
             if(anInt1831 < 16384) {
                 if(i >= anInt1831) {
                     anInt1823 += 5;
@@ -87,12 +92,14 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
                         aLong1821 = arg0;
                         return;
                     }
-                } else if(i != anInt1830 && anInt1823 > 0)
+                } else if(i != anInt1830 && anInt1823 > 0) {
                     anInt1823--;
+                }
             }
             anInt1830 = i;
-            if(i < anInt1827)
+            if(i < anInt1827) {
                 break;
+            }
             Class8.method215(anIntArray1829, 256);
             try {
                 method223();
@@ -107,8 +114,9 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
         if(arg0 >= aLong1826 + 5000L) {
             method225();
             aLong1821 = arg0;
-            for(int i = 0; i < 512; i++)
+            for(int i = 0; i < 512; i++) {
                 anIntArray1833[i] = 0;
+            }
             anInt1822 = anInt1824 = anInt1828 = 0;
         }
     }
@@ -116,17 +124,18 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
     public void method222(Signlink arg0, int arg1) throws Exception {
         anInt1831 = arg1;
         method219(System.currentTimeMillis());
-        arg0.method394(10, 0, this);
+        arg0.method394(10, this);
     }
 
     public void method213() {
         synchronized(this) {
             aBoolean1820 = true;
         }
-        for(; ; ) {
+        while(true) {
             synchronized(this) {
-                if(!aBoolean1820)
+                if(!aBoolean1820) {
                     break;
+                }
             }
             Class43.sleep(50L);
         }
@@ -136,11 +145,12 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
 
     public void run() {
 
-        for(; ; ) {
+        while(true) {
             synchronized(this) {
                 if(aBoolean1820) {
-                    if(aLong1821 == 0L)
+                    if(aLong1821 == 0L) {
                         method225();
+                    }
                     aBoolean1820 = false;
                     break;
                 }
@@ -158,8 +168,9 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
 
     public synchronized void method212(long arg0) {
         method221(arg0);
-        if(aLong1832 < arg0)
+        if(aLong1832 < arg0) {
             aLong1832 = arg0;
+        }
     }
 
     public void method227(int arg0) {
@@ -168,16 +179,19 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
         anIntArray1833[anInt1825] = i;
         anInt1828 += i - i_1_;
         int i_2_ = anInt1825 + 1 & 0x1ff;
-        if(i > anInt1824)
+        if(i > anInt1824) {
             anInt1824 = i;
-        if(i < anInt1822)
+        }
+        if(i < anInt1822) {
             anInt1822 = i;
+        }
         if(i_1_ == anInt1824) {
             int i_3_ = i;
             for(int i_4_ = i_2_; i_4_ != anInt1825 && i_3_ < anInt1824; i_4_ = i_4_ + 1 & 0x1ff) {
                 int i_5_ = anIntArray1833[i_4_];
-                if(i_5_ > i_3_)
+                if(i_5_ > i_3_) {
                     i_3_ = i_5_;
+                }
             }
             anInt1824 = i_3_;
         }
@@ -185,8 +199,9 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
             int i_6_ = i;
             for(int i_7_ = i_2_; i_7_ != anInt1825 && i_6_ > anInt1822; i_7_ = i_7_ + 1 & 0x1ff) {
                 int i_8_ = anIntArray1833[i_7_];
-                if(i_8_ < i_6_)
+                if(i_8_ < i_6_) {
                     i_6_ = i_8_;
+                }
             }
             anInt1822 = i_6_;
         }

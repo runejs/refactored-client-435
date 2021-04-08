@@ -1,9 +1,9 @@
 package com.jagex.runescape.cache.media.textUtils;
 
 public class TextTagNode {
+    public String tag;
     private TextTagNode previous = null;
     private TextTagNode next = null;
-    public String tag;
 
     public TextTagNode(String tag) {
         this.tag = tag;
@@ -13,12 +13,12 @@ public class TextTagNode {
         return tag + string;
     }
 
-    public void setNext(TextTagNode node) {
-        this.next = node;
-    }
-
     public TextTagNode getNext() {
         return this.next;
+    }
+
+    public void setNext(TextTagNode node) {
+        this.next = node;
     }
 
     public TextTagNode getPrevious() {

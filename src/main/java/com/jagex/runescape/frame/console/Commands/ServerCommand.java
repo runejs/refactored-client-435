@@ -2,7 +2,6 @@ package com.jagex.runescape.frame.console.Commands;
 
 import com.jagex.runescape.frame.console.Command;
 import com.jagex.runescape.frame.console.Console;
-import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 
 public class ServerCommand extends Command {

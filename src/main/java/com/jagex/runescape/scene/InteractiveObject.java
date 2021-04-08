@@ -1,10 +1,10 @@
 package com.jagex.runescape.scene;
 
-import com.jagex.runescape.node.NodeQueue;
 import com.jagex.runescape.ProducingGraphicsBuffer;
 import com.jagex.runescape.RSString;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.node.NodeQueue;
 
 public class InteractiveObject {
     public static int menuOffsetX;
@@ -20,13 +20,13 @@ public class InteractiveObject {
     public int z;
     public int hash;
     public int config = 0;
-    public int worldY;
-    public int tileLeft;
     public Renderable renderable;
     public int worldX;
-    public int tileBottom;
+    public int worldY;
     public int worldZ;
     public int rotation;
+    public int tileBottom;
+    public int tileLeft;
     public int tileTop;
     public int tileRight;
     public int cycle;
@@ -36,15 +36,16 @@ public class InteractiveObject {
         hash = 0;
     }
 
-    public static RSString method279(byte[] arg0, int arg2, int arg3) {
-        RSString class1 = new RSString();
-        class1.length = 0;
-        class1.chars = new byte[arg3];
-        for(int i = arg2; arg3 + arg2 > i; i++) {
-            if(arg0[i] != 0)
-                class1.chars[class1.length++] = arg0[i];
+    public static RSString readBytesToRSString(byte[] stream, int offset, int length) {
+        RSString rsString = new RSString();
+        rsString.length = 0;
+        rsString.chars = new byte[length];
+        for(int i = offset; length + offset > i; i++) {
+            if(stream[i] != 0) {
+                rsString.chars[rsString.length++] = stream[i];
+            }
         }
-        return class1;
+        return rsString;
     }
 
 

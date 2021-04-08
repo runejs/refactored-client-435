@@ -1,8 +1,7 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.node.NodeCache;
-import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -16,6 +15,7 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
@@ -30,33 +30,38 @@ public class Class43 {
     public static void sleep(long arg0) {
         if(arg0 > 0L) {
             if(arg0 % 10L == 0L) {
-                ISAAC.method283(-1L + arg0, -110);
-                ISAAC.method283(1L, -110);
-            } else
-                ISAAC.method283(arg0, -103);
+                ISAAC.method283(-1L + arg0);
+                ISAAC.method283(1L);
+            } else {
+                ISAAC.method283(arg0);
+            }
         }
     }
 
     public static void drawTabArea(int arg0) {
         MovedStatics.aBoolean893 = true;
-        MovedStatics.method996(19655);
+        MovedStatics.method996();
         if(GameInterface.tabAreaInterfaceId != -1) {
             boolean bool = Main.drawParentInterface(1, 0, 0, 190, 261, GameInterface.tabAreaInterfaceId);
-            if(!bool)
+            if(!bool) {
                 GameInterface.redrawTabArea = true;
+            }
         } else if(Player.tabWidgetIds[Player.currentTabId] != -1) {
             boolean bool = Main.drawParentInterface(1, 0, 0, 190, 261, Player.tabWidgetIds[Player.currentTabId]);
-            if(!bool)
+            if(!bool) {
                 GameInterface.redrawTabArea = true;
+            }
         }
         if(MovedStatics.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
-            if(MovedStatics.anInt848 == 1)
+            if(MovedStatics.anInt848 == 1) {
                 method398(-2);
-            else if(ScreenController.frameMode == ScreenMode.FIXED)
-                Class40_Sub5_Sub6.drawMenu(0,0);
+            } else if(ScreenController.frameMode == ScreenMode.FIXED) {
+                Class40_Sub5_Sub6.drawMenu(0, 0);
+            }
         }
-        if(arg0 >= -22)
+        if(arg0 >= -22) {
             cameraYawOffset = 80;
+        }
 
         if(ScreenController.frameMode == ScreenMode.FIXED) {
             Class55.drawTabGraphics();
@@ -70,22 +75,24 @@ public class Class43 {
             MovedStatics.menuActionTypes[0] = 1005;
             ActorDefinition.menuActionRow = 1;
             if(GameInterface.fullscreenInterfaceId == -1) {
-                MovedStatics.method445(9767);
+                MovedStatics.method445();
                 Item.anInt3065 = -1;
                 OverlayDefinition.anInt2328 = -1;
                 boolean bool = false;
                 // Right game screen
-                if(ScreenController.isCoordinatesIn3dScreen(Class13.mouseX ,Landscape.mouseY )) {
+                if(ScreenController.isCoordinatesIn3dScreen(Class13.mouseX, Landscape.mouseY)) {
                     if(GameInterface.gameScreenInterfaceId == -1) {
                         Class64.method1013();
                     } else {
-                        int yOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);
-                        int xOffset = (ScreenController.drawWidth /2) - (512/2) - (234/3);
+                        int yOffset = (ScreenController.drawHeight / 2) - (334 / 2) - (184 / 2);
+                        int xOffset = (ScreenController.drawWidth / 2) - (512 / 2) - (234 / 3);
                         if(ScreenController.frameMode == ScreenMode.FIXED) {
                             yOffset = 0;
                             xOffset = 0;
                         }
-                        Class13.handleInterfaceActions(0, Class13.mouseX - xOffset, Landscape.mouseY - yOffset, 4, 4, 516, 338, GameInterface.gameScreenInterfaceId);
+                        Class13.handleInterfaceActions(0, Class13.mouseX - xOffset, Landscape.mouseY - yOffset, 4, 4,
+                                516, 338, GameInterface.gameScreenInterfaceId
+                        );
                     }
                 }
 
@@ -108,14 +115,16 @@ public class Class43 {
                 }
                 Item.anInt3065 = -1;
                 // right click chatbox
-                if(ScreenController.isCoordinatesInChatArea(Class13.mouseX ,Landscape.mouseY)) {
-                    ScreenController.handleChatClick(Class13.mouseX ,Landscape.mouseY);
+                if(ScreenController.isCoordinatesInChatArea(Class13.mouseX, Landscape.mouseY)) {
+                    ScreenController.handleChatClick(Class13.mouseX, Landscape.mouseY);
                 }
-                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && Class55.anInt1296 != OverlayDefinition.anInt2328) {
+                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) &&
+                        Class55.anInt1296 != OverlayDefinition.anInt2328) {
                     ChatBox.redrawChatbox = true;
                     Class55.anInt1296 = OverlayDefinition.anInt2328;
                 }
-                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && Item.anInt3065 != MovedStatics.anInt1586) {
+                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) &&
+                        Item.anInt3065 != MovedStatics.anInt1586) {
                     ChatBox.redrawChatbox = true;
                     MovedStatics.anInt1586 = Item.anInt3065;
                 }
@@ -145,7 +154,8 @@ public class Class43 {
             } else {
                 Item.anInt3065 = -1;
                 OverlayDefinition.anInt2328 = -1;
-                Class13.handleInterfaceActions(0, Class13.mouseX, Landscape.mouseY, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
+                Class13.handleInterfaceActions(
+                        0, Class13.mouseX, Landscape.mouseY, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
                 ItemDefinition.anInt2850 = OverlayDefinition.anInt2328;
                 MovedStatics.anInt573 = Item.anInt3065;
             }
@@ -160,17 +170,19 @@ public class Class43 {
                 break;
             }
         }
-        if(class1 == null)
-            Class40_Sub5_Sub6.drawMenu(0,0);
-        else {
+        if(class1 == null) {
+            Class40_Sub5_Sub6.drawMenu(0, 0);
+        } else {
             int i = VertexNormal.menuWidth;
             int i_0_ = InteractiveObject.menuOffsetX;
-            if(i > 190)
+            if(i > 190) {
                 i = 190;
+            }
             int i_1_ = CollisionMap.menuHeight;
             int i_2_ = Main.menuOffsetY;
-            if(i_0_ < 0)
+            if(i_0_ < 0) {
                 i_0_ = 0;
+            }
             int i_3_ = 6116423;
             Rasterizer.drawFilledRectangle(i_0_, i_2_, i, i_1_, i_3_);
             Rasterizer.drawFilledRectangle(i_0_ + 1, i_2_ + 1, arg0 + i, 16, 0);
@@ -196,11 +208,13 @@ public class Class43 {
                 int i_9_ = 16777215;
                 if(class1_8_.endsWith(class1)) {
                     class1_8_ = class1_8_.substring(0, class1_8_.length() - class1.length());
-                    if(class1_8_.endsWith(Native.whitespace))
+                    if(class1_8_.endsWith(Native.whitespace)) {
                         class1_8_ = class1_8_.substring(0, class1_8_.length() + -Native.whitespace.length());
+                    }
                 }
-                if(i_0_ < i_4_ && i_4_ < i_0_ + i && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)
+                if(i_0_ < i_4_ && i_4_ < i_0_ + i && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_) {
                     i_9_ = 16776960;
+                }
                 TypeFace.fontBold.drawShadowedString(class1_8_, 3 + i_0_, i_7_, true, i_9_);
             }
         }

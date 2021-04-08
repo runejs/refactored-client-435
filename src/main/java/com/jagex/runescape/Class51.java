@@ -1,8 +1,8 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.MouseHandler;
@@ -25,14 +25,13 @@ public class Class51 {
     public static int anInt1205 = -1;
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1206;
 
-    public static int getKeyChar(KeyEvent arg1) {
-        int keyChar = arg1.getKeyChar();
-        if(keyChar <= 0 || keyChar >= 256)
+    public static int getKeyChar(KeyEvent event) {
+        int keyChar = event.getKeyChar();
+        if(keyChar <= 0 || keyChar >= 256) {
             keyChar = -1;
+        }
         return keyChar;
     }
-
-
 
     public static void method940(int arg0, String arg1, boolean arg2, String arg3) {
         if(Class40_Sub5_Sub11.clearScreen) {
@@ -41,8 +40,12 @@ public class Class51 {
             LinkedList.drawChatBoxGraphics();
             Class55.drawTabGraphics();
             ActorDefinition.drawMapBack();
-            GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
-            MovedStatics.method527(Player.currentTabId, arg0 + 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
+            GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode,
+                    ChatBox.publicChatMode
+            );
+            MovedStatics.method527(Player.currentTabId, arg0 + 4, Player.tabWidgetIds,
+                    GameInterface.tabAreaInterfaceId == -1, -1
+            );
             MovedStatics.aBoolean893 = true;
             Class40_Sub3.aBoolean2026 = true;
             MovedStatics.aBoolean260 = true;
@@ -69,10 +72,11 @@ public class Class51 {
     }
 
     public static void method942(int arg1) {
-        if(arg1 == -1 && Class35.songTimeout == 0)
+        if(arg1 == -1 && Class35.songTimeout == 0) {
             Class33.method402(false);
-        else if(arg1 != -1 && arg1 != MouseHandler.anInt1457 && RSCanvas.anInt60 != 0 && Class35.songTimeout == 0)
+        } else if(arg1 != -1 && arg1 != MouseHandler.anInt1457 && RSCanvas.anInt60 != 0 && Class35.songTimeout == 0) {
             Class33.method403(RSCanvas.anInt60, true, 10, arg1, CacheArchive.musicCacheArchive, 0, 0, false);
+        }
         MouseHandler.anInt1457 = arg1;
     }
 }

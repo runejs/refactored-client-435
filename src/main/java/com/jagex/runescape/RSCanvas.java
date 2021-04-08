@@ -28,11 +28,6 @@ public class RSCanvas extends Canvas {
         aComponent49 = arg0;
     }
 
-    @Override
-    public void repaint() {
-//        super.repaint();
-    }
-
     public static void createMinimapRaster() {
         RSString.mapbackProducingGraphicsBuffer.prepareRasterizer();
     }
@@ -46,7 +41,7 @@ public class RSCanvas extends Canvas {
         Class8.method211();
         MovedStatics.method188();
         Class22_Sub2.method316(-11965);
-        LinkedList.method907(-99);
+        LinkedList.method907();
         MovedStatics.method167(1023);
         Class51.method941();
         Actor.method783();
@@ -64,6 +59,11 @@ public class RSCanvas extends Canvas {
         CacheArchive.huffmanCacheArchive.method191(arg0 + 1120);
         CacheArchive.jingleCacheArchive.method191(1120);
         CacheArchive.clientScriptCacheArchive.method191(1120);
+    }
+
+    @Override
+    public void repaint() {
+        //        super.repaint();
     }
 
     public void paint(Graphics arg0) {
