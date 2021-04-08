@@ -78,6 +78,7 @@ public class SpotAnimDefinition extends CachedNode {
                 English.loadedInputHandler = null;
             }
             if (Class40_Sub3.anInt2032 == 2) {
+
                 long l = MovedStatics.aLong853 = RSString.nameToLong(Native.username.toString());
                 SceneCluster.packetBuffer.currentPosition = 0;
                 SceneCluster.packetBuffer.putByte(14);
@@ -97,6 +98,7 @@ public class SpotAnimDefinition extends CachedNode {
                 Class40_Sub3.anInt2032 = 4;
             }
             if (Class40_Sub3.anInt2032 == 4) {
+
                 if (IncomingPackets.incomingPacketBuffer.currentPosition < 8) {
                     int i = MovedStatics.gameConnection.method1014(-127);
                     if (i > -IncomingPackets.incomingPacketBuffer.currentPosition + 8) {
@@ -190,6 +192,7 @@ public class SpotAnimDefinition extends CachedNode {
             if (Class40_Sub3.anInt2032 == 7 && MovedStatics.gameConnection.method1014(-128) > 0) {
                 Class33.anInt784 = 180 + MovedStatics.gameConnection.read() * 60;
                 Class40_Sub3.anInt2032 = 8;
+
             }
             if (Class40_Sub3.anInt2032 == 8) {
                 Main.anInt1756 = 0;
@@ -198,8 +201,10 @@ public class SpotAnimDefinition extends CachedNode {
                     Class40_Sub3.anInt2032 = 0;
                 }
             } else {
-                if (Class40_Sub3.anInt2032 == 9 && MovedStatics.gameConnection.method1014(-121) >= 8) {
 
+                if (Class40_Sub3.anInt2032 == 9 && MovedStatics.gameConnection.method1014(-121) >= 8) {
+                    Configuration.USERNAME = Native.username.toString();
+                    Configuration.PASSWORD = Native.password.toString();
                     InteractiveObject.playerRights = MovedStatics.gameConnection.read();
                     Class22.accountFlagged = MovedStatics.gameConnection.read() == 1;
                     PlayerAppearance.anInt708 = MovedStatics.gameConnection.read();

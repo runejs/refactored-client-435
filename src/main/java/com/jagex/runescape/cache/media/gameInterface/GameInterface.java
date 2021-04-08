@@ -251,14 +251,14 @@ public class GameInterface extends CachedNode {
         arg0.addFocusListener(Class59.keyFocusListener);
     }
 
-    public static String getShortenedAmountText(int coins) {
-        if(coins < 100000) {
-            return "<col=ffff00>" + coins + "</col>";
+    public static String getShortenedAmountText(int amount) {
+        if(amount < 100000) {
+            return "<col=ffff00>" + amount + "</col>";
         }
-        if(coins < 10000000) {
-            return "<col=ffffff>" + coins / 1000 + "K" + "</col>";
+        if(amount < 10000000) {
+            return "<col=ffffff>" + amount / 1000 + "K" + "</col>";
         }
-        return "<col=00ff80>" + coins / 1000000 + "M" + "</col>";
+        return "<col=00ff80>" + amount / 1000000 + "M" + "</col>";
     }
 
     public static GameInterface getInterface(int interfaceData) {
