@@ -99,8 +99,6 @@ public class Landscape {
                         if(FileOperations.FileExists("./data/maps/" + LinkedList.anIntArray1071[pointer] + ".dat")) {
                             System.out.println("reading file: " + "./data/maps/" + LinkedList.anIntArray1071[pointer] + ".dat");
                             is = FileOperations.ReadFile("./data/maps/" + LinkedList.anIntArray1071[pointer] + ".dat");
-                        } else {
-                            System.out.println("MISSING GROUND: " + LinkedList.anIntArray1071[pointer] + " " + pointer);
                         }
                         if(is != null)
                             AnimationSequence.loadTerrainBlock(currentCollisionMap, (Class51.regionX - 6) * 8, is, -6, offsetX, offsetY, 8 * (-6 + Class17.regionY));
