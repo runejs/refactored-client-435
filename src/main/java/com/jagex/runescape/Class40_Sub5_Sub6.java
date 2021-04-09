@@ -1,7 +1,9 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.node.NodeCache;
-import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
@@ -14,6 +16,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.node.CachedNode;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;

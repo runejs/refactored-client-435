@@ -1,11 +1,13 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.CacheFileChannel;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.*;
-import com.jagex.runescape.cache.media.gameInterface.*;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterfaceType;
+import com.jagex.runescape.cache.media.gameInterface.InterfaceModelType;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
@@ -160,8 +162,7 @@ public class Main extends GameShell {
                                 gameInterface.scrollPosition = 0;
                             }
                         }
-                        result &= drawInterface(
-                                areaId, absoluteX, absoluteY, gameInterface.originalWidth + absoluteX,
+                        result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.originalWidth + absoluteX,
                                 gameInterface.originalHeight + absoluteY, gameInterface.scrollPosition,
                                 gameInterface.scrollWidth, interfaceCollection, i, drawSuccess
                         );
@@ -374,8 +375,7 @@ public class Main extends GameShell {
                             }
 
                             text = SceneTile.method532((byte) 20, gameInterface, text);
-                            font.drawText(
-                                    text, absoluteX, absoluteY, gameInterface.originalWidth,
+                            font.drawText(text, absoluteX, absoluteY, gameInterface.originalWidth,
                                     gameInterface.originalHeight, textColor, gameInterface.textShadowed,
                                     gameInterface.xTextAlignment, gameInterface.yTextAlignment, gameInterface.lineHeight
                             );
@@ -479,13 +479,11 @@ public class Main extends GameShell {
                             if(gameInterface.itemId != -1) {
                                 // TODO find out why this renders when maxWidth == 33
                                 if(gameInterface.itemAmount != 1 || maxWidth == 33) {
-                                    TypeFace.fontSmall.drawString(
-                                            Integer.toString(gameInterface.itemAmount), absoluteX + 1, absoluteY + 10,
-                                            0
+                                    TypeFace.fontSmall.drawString(Integer.toString(gameInterface.itemAmount),
+                                            absoluteX + 1, absoluteY + 10, 0
                                     );
-                                    TypeFace.fontSmall.drawString(
-                                            Integer.toString(gameInterface.itemAmount), absoluteX, 9 + absoluteY,
-                                            16776960
+                                    TypeFace.fontSmall.drawString(Integer.toString(gameInterface.itemAmount), absoluteX,
+                                            9 + absoluteY, 16776960
                                     );
                                 }
                                 spriteRgb.maxWidth = maxWidth;
@@ -517,8 +515,8 @@ public class Main extends GameShell {
                             } else {
                                 AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(
                                         animationId);
-                                model = gameInterface.getModelForInterface(
-                                        animationSequence, gameInterface.animationFrame, applyAlternateAction,
+                                model = gameInterface.getModelForInterface(animationSequence,
+                                        gameInterface.animationFrame, applyAlternateAction,
                                         Player.localPlayer.playerAppearance
                                 );
                             }
@@ -552,8 +550,7 @@ public class Main extends GameShell {
                                 modelZoom = 32 * modelZoom / gameInterface.originalWidth;
                             }
                         }
-                        Rasterizer3D.setBounds(
-                                absoluteX + gameInterface.originalWidth / 2,
+                        Rasterizer3D.setBounds(absoluteX + gameInterface.originalWidth / 2,
                                 gameInterface.originalHeight / 2 + absoluteY
                         );
 
@@ -1041,8 +1038,7 @@ public class Main extends GameShell {
         Model.cursorX = Class13.mouseX - 4;
         Model.resourceCount = 0;
         Rasterizer.resetPixels();
-        Npc.currentScene.render(
-                Class12.cameraX, SceneCluster.cameraZ, Class40_Sub5_Sub6.cameraY, Class26.anInt627,
+        Npc.currentScene.render(Class12.cameraX, SceneCluster.cameraZ, Class40_Sub5_Sub6.cameraY, Class26.anInt627,
                 ProducingGraphicsBuffer_Sub1.anInt2210, i
         );
         Npc.currentScene.clearInteractiveObjectCache();
@@ -1142,9 +1138,8 @@ public class Main extends GameShell {
         if(GameInterface.chatboxInterfaceId == -1) {
             Class12.chatboxInterface.scrollPosition = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
             if(Class13.mouseX > 448 && Class13.mouseX < 560 && Landscape.mouseY > 332) {
-                GameInterface.scrollInterface(
-                        77, Landscape.mouseY + -357, -17 + Class13.mouseX, ChatBox.chatboxScrollMax,
-                        Class12.chatboxInterface, 463, -1, 0
+                GameInterface.scrollInterface(77, Landscape.mouseY + -357, -17 + Class13.mouseX,
+                        ChatBox.chatboxScrollMax, Class12.chatboxInterface, 463, -1, 0
                 );
             }
             int currentScroll = ChatBox.chatboxScrollMax - 77 - Class12.chatboxInterface.scrollPosition;
@@ -1163,9 +1158,8 @@ public class Main extends GameShell {
             Class12.chatboxInterface.scrollPosition = ChatBox.itemSearchScroll;
             int scrollMax = 14 * ChatBox.itemSearchResultCount + 7;
             if(Class13.mouseX > 448 && Class13.mouseX < 560 && Landscape.mouseY > 332) {
-                GameInterface.scrollInterface(
-                        77, Landscape.mouseY - 357, -17 + Class13.mouseX, scrollMax, Class12.chatboxInterface, 463, -1,
-                        0
+                GameInterface.scrollInterface(77, Landscape.mouseY - 357, -17 + Class13.mouseX, scrollMax,
+                        Class12.chatboxInterface, 463, -1, 0
                 );
             }
             int currentScroll = Class12.chatboxInterface.scrollPosition;
@@ -1239,8 +1233,8 @@ public class Main extends GameShell {
                 }
                 GameInterface.drawTabIcons = false;
                 Class40_Sub3.aBoolean2026 = true;
-                MovedStatics.method527(
-                        Player.currentTabId, 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1,
+                MovedStatics.method527(Player.currentTabId, 4, Player.tabWidgetIds,
+                        GameInterface.tabAreaInterfaceId == -1,
                         MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1
                 );
             }
@@ -1284,8 +1278,8 @@ public class Main extends GameShell {
                 }
                 GameInterface.drawTabIcons = false;
                 Class40_Sub3.aBoolean2026 = true;
-                MovedStatics.method527(
-                        Player.currentTabId, 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1,
+                MovedStatics.method527(Player.currentTabId, 4, Player.tabWidgetIds,
+                        GameInterface.tabAreaInterfaceId == -1,
                         MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1
                 );
             }

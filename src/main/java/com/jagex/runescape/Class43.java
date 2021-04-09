@@ -1,8 +1,7 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.node.NodeCache;
-import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -16,6 +15,7 @@ import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
@@ -90,9 +90,8 @@ public class Class43 {
                             yOffset = 0;
                             xOffset = 0;
                         }
-                        Class13.handleInterfaceActions(
-                                0, Class13.mouseX - xOffset, Landscape.mouseY - yOffset, 4, 4, 516, 338,
-                                GameInterface.gameScreenInterfaceId
+                        Class13.handleInterfaceActions(0, Class13.mouseX - xOffset, Landscape.mouseY - yOffset, 4, 4,
+                                516, 338, GameInterface.gameScreenInterfaceId
                         );
                     }
                 }

@@ -1,7 +1,5 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.node.Class40_Sub6;
-import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
@@ -10,6 +8,8 @@ import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
+import com.jagex.runescape.node.Class40_Sub6;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.Wall;
 

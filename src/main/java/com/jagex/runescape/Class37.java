@@ -1,6 +1,9 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
@@ -95,9 +98,8 @@ public class Class37 {
                     rasterPixels[i] = 0;
                 }
             }
-            AnimationSequence.minimapCompass.shapeImageToPixels(
-                    0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62,
-                    RSCanvas.anIntArray66
+            AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal,
+                    256, RSCanvas.anIntArray62, RSCanvas.anIntArray66
             );
             ActorDefinition.drawMapBack();
             return;
@@ -106,9 +108,8 @@ public class Class37 {
         int centerX = 48 + Player.localPlayer.worldX / 32;
         int centerY = 464 + -(Player.localPlayer.worldY / 32);
         int angle = GroundItemTile.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
-        Class40_Sub5_Sub13.minimapImage.shapeImageToPixels(
-                25, 5, 146, 151, centerX, centerY, angle, Class51.mapZoomOffset + 256, Landscape.anIntArray1186,
-                MovedStatics.anIntArray852
+        Class40_Sub5_Sub13.minimapImage.shapeImageToPixels(25, 5, 146, 151, centerX, centerY, angle,
+                Class51.mapZoomOffset + 256, Landscape.anIntArray1186, MovedStatics.anIntArray852
         );
         for(int i = 0; GameObject.minimapHintCount > i; i++) {
             int hintX = 2 + 4 * Actor.minimapHintX[i] + -(Player.localPlayer.worldX / 32);
@@ -198,9 +199,8 @@ public class Class37 {
             SceneTile.drawOnMinimap(flagY, flagX, Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]);
         }
         Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
-        AnimationSequence.minimapCompass.shapeImageToPixels(
-                0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62,
-                RSCanvas.anIntArray66
+        AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256,
+                RSCanvas.anIntArray62, RSCanvas.anIntArray66
         );
         MovedStatics.minimapBackgroundImage.drawImage(0, 0);
 

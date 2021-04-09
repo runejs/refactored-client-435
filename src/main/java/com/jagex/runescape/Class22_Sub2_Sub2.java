@@ -71,8 +71,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
                             if(aBoolean2228) {
                                 aMidiFileReader_2225.reset(l_1_);
                             } else {
-                                this.method321(
-                                        (byte) 110,
+                                this.method321((byte) 110,
                                         (long) (int) (l_1_ / (long) (aMidiFileReader_2225.division * 1000))
                                 );
                                 aMidiFileReader_2225.clear();

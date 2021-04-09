@@ -1,7 +1,10 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.ItemDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -490,8 +493,8 @@ public class Npc extends Actor {
                                         SceneCluster.packetBuffer.currentPosition <= 0) {
                                     break;
                                 }
-                                MovedStatics.gameConnection.method1010(SceneCluster.packetBuffer.currentPosition, (byte) -19, 0,
-                                        SceneCluster.packetBuffer.buffer
+                                MovedStatics.gameConnection.method1010(SceneCluster.packetBuffer.currentPosition,
+                                        (byte) -19, 0, SceneCluster.packetBuffer.buffer
                                 );
                                 Class22.anInt537 = 0;
                                 SceneCluster.packetBuffer.currentPosition = 0;
@@ -719,8 +722,7 @@ public class Npc extends Actor {
                 npc.anInt3118 = 0;
             }
             npc.turnRightAnimationId = npc.actorDefinition.rotate90RightAnimation;
-            npc.method787(
-                    Player.localPlayer.pathX[0] + offsetY, -7717, discardWalkingQueue == 1,
+            npc.method787(Player.localPlayer.pathX[0] + offsetY, -7717, discardWalkingQueue == 1,
                     Player.localPlayer.pathY[0] + offsetX
             );
         }

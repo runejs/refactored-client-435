@@ -2,8 +2,8 @@ package com.jagex.runescape.node;
 
 import com.jagex.runescape.MovedStatics;
 import com.jagex.runescape.RSCanvas;
-import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheArchive;
+import com.jagex.runescape.cache.CacheIndex;
 
 public class Class40_Sub6 extends Node {
 

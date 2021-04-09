@@ -180,9 +180,8 @@ public class Rasterizer3D extends Rasterizer {
                         y_b -= y_a;
                         y_a = lineOffsets[y_a];
                         while(--y_b >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_a, x_c >> 16, x_a >> 16, grad_c >> 8,
-                                    grad_a >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_a, x_c >> 16, x_a >> 16,
+                                    grad_c >> 8, grad_a >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_c += x_c_off;
                             x_a += x_a_off;
@@ -194,9 +193,8 @@ public class Rasterizer3D extends Rasterizer {
                             Oc += Vc;
                         }
                         while(--y_c >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_a, x_c >> 16, x_b >> 16, grad_c >> 8,
-                                    grad_b >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_a, x_c >> 16, x_b >> 16,
+                                    grad_c >> 8, grad_b >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_c += x_c_off;
                             x_b += x_b_off;
@@ -212,9 +210,8 @@ public class Rasterizer3D extends Rasterizer {
                         y_b -= y_a;
                         y_a = lineOffsets[y_a];
                         while(--y_b >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_a, x_a >> 16, x_c >> 16, grad_a >> 8,
-                                    grad_c >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_a, x_a >> 16, x_c >> 16,
+                                    grad_a >> 8, grad_c >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_c += x_c_off;
                             x_a += x_a_off;
@@ -226,9 +223,8 @@ public class Rasterizer3D extends Rasterizer {
                             Oc += Vc;
                         }
                         while(--y_c >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_a, x_b >> 16, x_c >> 16, grad_b >> 8,
-                                    grad_c >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_a, x_b >> 16, x_c >> 16,
+                                    grad_b >> 8, grad_c >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_c += x_c_off;
                             x_b += x_b_off;
@@ -266,9 +262,8 @@ public class Rasterizer3D extends Rasterizer {
                         y_c -= y_a;
                         y_a = lineOffsets[y_a];
                         while(--y_c >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_a, x_b >> 16, x_a >> 16, grad_b >> 8,
-                                    grad_a >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_a, x_b >> 16, x_a >> 16,
+                                    grad_b >> 8, grad_a >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_b += x_c_off;
                             x_a += x_a_off;
@@ -280,9 +275,8 @@ public class Rasterizer3D extends Rasterizer {
                             Oc += Vc;
                         }
                         while(--y_b >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_a, x_c >> 16, x_a >> 16, grad_c >> 8,
-                                    grad_a >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_a, x_c >> 16, x_a >> 16,
+                                    grad_c >> 8, grad_a >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_c += x_b_off;
                             x_a += x_a_off;
@@ -298,9 +292,8 @@ public class Rasterizer3D extends Rasterizer {
                         y_c -= y_a;
                         y_a = lineOffsets[y_a];
                         while(--y_c >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_a, x_a >> 16, x_b >> 16, grad_a >> 8,
-                                    grad_b >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_a, x_a >> 16, x_b >> 16,
+                                    grad_a >> 8, grad_b >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_b += x_c_off;
                             x_a += x_a_off;
@@ -312,9 +305,8 @@ public class Rasterizer3D extends Rasterizer {
                             Oc += Vc;
                         }
                         while(--y_b >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_a, x_a >> 16, x_c >> 16, grad_a >> 8,
-                                    grad_c >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_a, x_a >> 16, x_c >> 16,
+                                    grad_a >> 8, grad_c >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_c += x_b_off;
                             x_a += x_a_off;
@@ -363,9 +355,8 @@ public class Rasterizer3D extends Rasterizer {
                         y_c -= y_b;
                         y_b = lineOffsets[y_b];
                         while(--y_c >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_b, x_a >> 16, x_b >> 16, grad_a >> 8,
-                                    grad_b >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_b, x_a >> 16, x_b >> 16,
+                                    grad_a >> 8, grad_b >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_a += x_a_off;
                             x_b += x_b_off;
@@ -377,9 +368,8 @@ public class Rasterizer3D extends Rasterizer {
                             Oc += Vc;
                         }
                         while(--y_a >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_b, x_a >> 16, x_c >> 16, grad_a >> 8,
-                                    grad_c >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_b, x_a >> 16, x_c >> 16,
+                                    grad_a >> 8, grad_c >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_a += x_a_off;
                             x_c += x_c_off;
@@ -395,9 +385,8 @@ public class Rasterizer3D extends Rasterizer {
                         y_c -= y_b;
                         y_b = lineOffsets[y_b];
                         while(--y_c >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_b, x_b >> 16, x_a >> 16, grad_b >> 8,
-                                    grad_a >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_b, x_b >> 16, x_a >> 16,
+                                    grad_b >> 8, grad_a >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_a += x_a_off;
                             x_b += x_b_off;
@@ -409,9 +398,8 @@ public class Rasterizer3D extends Rasterizer {
                             Oc += Vc;
                         }
                         while(--y_a >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_b, x_c >> 16, x_a >> 16, grad_c >> 8,
-                                    grad_a >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_b, x_c >> 16, x_a >> 16,
+                                    grad_c >> 8, grad_a >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_a += x_a_off;
                             x_c += x_c_off;
@@ -449,9 +437,8 @@ public class Rasterizer3D extends Rasterizer {
                         y_a -= y_b;
                         y_b = lineOffsets[y_b];
                         while(--y_a >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_b, x_c >> 16, x_b >> 16, grad_c >> 8,
-                                    grad_b >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_b, x_c >> 16, x_b >> 16,
+                                    grad_c >> 8, grad_b >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_c += x_a_off;
                             x_b += x_b_off;
@@ -463,9 +450,8 @@ public class Rasterizer3D extends Rasterizer {
                             Oc += Vc;
                         }
                         while(--y_c >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_b, x_a >> 16, x_b >> 16, grad_a >> 8,
-                                    grad_b >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_b, x_a >> 16, x_b >> 16,
+                                    grad_a >> 8, grad_b >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_a += x_c_off;
                             x_b += x_b_off;
@@ -481,9 +467,8 @@ public class Rasterizer3D extends Rasterizer {
                         y_a -= y_b;
                         y_b = lineOffsets[y_b];
                         while(--y_a >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_b, x_b >> 16, x_c >> 16, grad_b >> 8,
-                                    grad_c >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_b, x_b >> 16, x_c >> 16,
+                                    grad_b >> 8, grad_c >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_c += x_a_off;
                             x_b += x_b_off;
@@ -495,9 +480,8 @@ public class Rasterizer3D extends Rasterizer {
                             Oc += Vc;
                         }
                         while(--y_c >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_b, x_b >> 16, x_a >> 16, grad_b >> 8,
-                                    grad_a >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_b, x_b >> 16, x_a >> 16,
+                                    grad_b >> 8, grad_a >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_a += x_c_off;
                             x_b += x_b_off;
@@ -543,9 +527,8 @@ public class Rasterizer3D extends Rasterizer {
                         y_a -= y_c;
                         y_c = lineOffsets[y_c];
                         while(--y_a >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_c, x_b >> 16, x_c >> 16, grad_b >> 8,
-                                    grad_c >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_c, x_b >> 16, x_c >> 16,
+                                    grad_b >> 8, grad_c >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_b += x_b_off;
                             x_c += x_c_off;
@@ -557,9 +540,8 @@ public class Rasterizer3D extends Rasterizer {
                             Oc += Vc;
                         }
                         while(--y_b >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_c, x_b >> 16, x_a >> 16, grad_b >> 8,
-                                    grad_a >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_c, x_b >> 16, x_a >> 16,
+                                    grad_b >> 8, grad_a >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_b += x_b_off;
                             x_a += x_a_off;
@@ -575,9 +557,8 @@ public class Rasterizer3D extends Rasterizer {
                         y_a -= y_c;
                         y_c = lineOffsets[y_c];
                         while(--y_a >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_c, x_c >> 16, x_b >> 16, grad_c >> 8,
-                                    grad_b >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_c, x_c >> 16, x_b >> 16,
+                                    grad_c >> 8, grad_b >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_b += x_b_off;
                             x_c += x_c_off;
@@ -589,9 +570,8 @@ public class Rasterizer3D extends Rasterizer {
                             Oc += Vc;
                         }
                         while(--y_b >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_c, x_a >> 16, x_b >> 16, grad_a >> 8,
-                                    grad_b >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_c, x_a >> 16, x_b >> 16,
+                                    grad_a >> 8, grad_b >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_b += x_b_off;
                             x_a += x_a_off;
@@ -629,9 +609,8 @@ public class Rasterizer3D extends Rasterizer {
                         y_b -= y_c;
                         y_c = lineOffsets[y_c];
                         while(--y_b >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_c, x_a >> 16, x_c >> 16, grad_a >> 8,
-                                    grad_c >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_c, x_a >> 16, x_c >> 16,
+                                    grad_a >> 8, grad_c >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_a += x_b_off;
                             x_c += x_c_off;
@@ -643,9 +622,8 @@ public class Rasterizer3D extends Rasterizer {
                             Oc += Vc;
                         }
                         while(--y_a >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_c, x_b >> 16, x_c >> 16, grad_b >> 8,
-                                    grad_c >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_c, x_b >> 16, x_c >> 16,
+                                    grad_b >> 8, grad_c >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_b += x_a_off;
                             x_c += x_c_off;
@@ -661,9 +639,8 @@ public class Rasterizer3D extends Rasterizer {
                         y_b -= y_c;
                         y_c = lineOffsets[y_c];
                         while(--y_b >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_c, x_c >> 16, x_a >> 16, grad_c >> 8,
-                                    grad_a >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_c, x_c >> 16, x_a >> 16,
+                                    grad_c >> 8, grad_a >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_a += x_b_off;
                             x_c += x_c_off;
@@ -675,9 +652,8 @@ public class Rasterizer3D extends Rasterizer {
                             Oc += Vc;
                         }
                         while(--y_a >= 0) {
-                            drawTexturedLine(
-                                    Rasterizer.destinationPixels, texture, y_c, x_c >> 16, x_b >> 16, grad_c >> 8,
-                                    grad_b >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
+                            drawTexturedLine(Rasterizer.destinationPixels, texture, y_c, x_c >> 16, x_b >> 16,
+                                    grad_c >> 8, grad_b >> 8, 0, 0, Oa, Ob, Oc, i_1_, i_4_, i_7_
                             );
                             x_b += x_a_off;
                             x_c += x_c_off;
@@ -1744,9 +1720,8 @@ public class Rasterizer3D extends Rasterizer {
     }
 
     public static int[] setLineOffsets(int[] arg0) {
-        return method700(
-                Rasterizer.viewportLeft, Rasterizer.viewportTop, Rasterizer.viewportRight, Rasterizer.viewportBottom,
-                arg0
+        return method700(Rasterizer.viewportLeft, Rasterizer.viewportTop, Rasterizer.viewportRight,
+                Rasterizer.viewportBottom, arg0
         );
     }
 

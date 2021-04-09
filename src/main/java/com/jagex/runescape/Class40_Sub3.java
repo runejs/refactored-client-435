@@ -1,10 +1,12 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.*;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
-import com.jagex.runescape.node.Node;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
@@ -19,6 +21,7 @@ import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
+import com.jagex.runescape.node.Node;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.WallDecoration;
@@ -162,17 +165,15 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.method441(CacheArchive.gameDefinitionsCacheArchive);
                 UnderlayDefinition.method616(CacheArchive.gameDefinitionsCacheArchive);
                 method977(3, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
-                method980(
-                        28987, CacheArchive.modelCacheArchive, VertexNormal.lowMemory,
+                method980(28987, CacheArchive.modelCacheArchive, VertexNormal.lowMemory,
                         CacheArchive.gameDefinitionsCacheArchive
                 );
                 Main.method357(
                         CacheArchive.modelCacheArchive, arg0 ^ ~0x2a85, CacheArchive.gameDefinitionsCacheArchive);
                 Class42.method885(
                         CacheArchive.gameDefinitionsCacheArchive, Class22.membersWorld, CacheArchive.modelCacheArchive);
-                MovedStatics.method236(
-                        CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive,
-                        CacheArchive.skeletonCacheArchive
+                MovedStatics.method236(CacheArchive.skinDefinitionCacheArchive,
+                        CacheArchive.gameDefinitionsCacheArchive, CacheArchive.skeletonCacheArchive
                 );
                 Class55.method966(
                         arg0 ^ 0x38, CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
@@ -304,9 +305,8 @@ public class Class40_Sub3 extends Node {
             }
         } else if(Class40_Sub5_Sub6.loadingPercent == 90) {
             if(CacheArchive.gameTextureCacheArchive.method185((byte) 62)) {
-                Class35 class35 = new Class35(
-                        CacheArchive.gameTextureCacheArchive, CacheArchive.gameImageCacheArchive, 20, 0.8,
-                        !VertexNormal.lowMemory ? 128 : 64
+                Class35 class35 = new Class35(CacheArchive.gameTextureCacheArchive, CacheArchive.gameImageCacheArchive,
+                        20, 0.8, !VertexNormal.lowMemory ? 128 : 64
                 );
                 Rasterizer3D.method703(class35);
                 Rasterizer3D.method711(0.8);

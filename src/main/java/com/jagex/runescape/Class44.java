@@ -158,8 +158,7 @@ public class Class44 implements Runnable {
                     }
                 } else {
                     if(class40_sub6.anInt2112 == 0) {
-                        class40_sub6.cacheIndex.put(
-                                class40_sub6.aByteArray2102, class40_sub6.aByteArray2102.length,
+                        class40_sub6.cacheIndex.put(class40_sub6.aByteArray2102, class40_sub6.aByteArray2102.length,
                                 (int) class40_sub6.key
                         );
                         synchronized(RSCanvas.aLinkedList_53) {

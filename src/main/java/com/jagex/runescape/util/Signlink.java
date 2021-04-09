@@ -1,9 +1,9 @@
 package com.jagex.runescape.util;
 
-import com.jagex.runescape.SizedAccessFile;
-import com.jagex.runescape.Interface2;
 import com.jagex.runescape.GameShell;
+import com.jagex.runescape.Interface2;
 import com.jagex.runescape.Runnable_Impl1;
+import com.jagex.runescape.SizedAccessFile;
 import tech.henning.fourthreefive.Configuration;
 
 import java.io.*;

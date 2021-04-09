@@ -125,8 +125,7 @@ public class IndexedImage extends Rasterizer {
             rasterizerPixelOffset += xOffset;
         }
         if(newWidth > 0 && newHeight > 0) {
-            copyPixelsAlpha(
-                    destinationPixels, Rasterizer.destinationPixels, pixel, rasterizerPixel, pixelOffset,
+            copyPixelsAlpha(destinationPixels, Rasterizer.destinationPixels, pixel, rasterizerPixel, pixelOffset,
                     rasterizerPixelOffset, newWidth, newHeight, 0, alpha
             );
         }

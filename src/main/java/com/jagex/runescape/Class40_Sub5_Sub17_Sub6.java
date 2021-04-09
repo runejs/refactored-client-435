@@ -96,10 +96,9 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                             MovedStatics.pulseCycle < player.anInt3274) {
                         player.aBoolean3287 = false;
                         player.anInt3276 = Class37.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
-                        Npc.currentScene.method112(
-                                Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player,
-                                player.anInt3118, i_1_, player.anInt3258, player.anInt3281, player.anInt3262,
-                                player.anInt3289
+                        Npc.currentScene.method112(Player.worldLevel, player.worldX, player.worldY, player.anInt3276,
+                                60, player, player.anInt3118, i_1_, player.anInt3258, player.anInt3281,
+                                player.anInt3262, player.anInt3289
                         );
                     } else {
                         if((0x7f & player.worldX) == 64 && (player.worldY & 0x7f) == 64) {
@@ -109,9 +108,8 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                             MovedStatics.anIntArrayArray1435[i_2_][i_3_] = Class40_Sub5_Sub11.anInt2628;
                         }
                         player.anInt3276 = Class37.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
-                        Npc.currentScene.method134(
-                                Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player,
-                                player.anInt3118, i_1_, player.aBoolean3105
+                        Npc.currentScene.method134(Player.worldLevel, player.worldX, player.worldY, player.anInt3276,
+                                60, player, player.anInt3118, i_1_, player.aBoolean3105
                         );
                     }
                 }

@@ -1,8 +1,8 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.node.NodeCache;
 
 public class Class57 {
     public static NodeCache aClass9_1331 = new NodeCache(64);

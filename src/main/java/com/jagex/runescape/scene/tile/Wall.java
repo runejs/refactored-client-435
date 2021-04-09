@@ -1,6 +1,8 @@
 package com.jagex.runescape.scene.tile;
 
-import com.jagex.runescape.*;
+import com.jagex.runescape.Class40_Sub5_Sub13;
+import com.jagex.runescape.Class40_Sub5_Sub15;
+import com.jagex.runescape.LinkedList;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;

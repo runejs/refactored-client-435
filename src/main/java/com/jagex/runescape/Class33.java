@@ -1,8 +1,10 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.def.ActorDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.frame.ChatBox;
@@ -13,6 +15,7 @@ import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 
@@ -163,13 +166,11 @@ public class Class33 {
                                 }
                                 AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474[actor.anIntArray3086[i_2_]]
                                         .drawImage(ISAAC.anInt522 + -12, -12 + Class44.anInt1048);
-                                TypeFace.fontSmall.drawStringLeft(
-                                        Integer.toString(actor.anIntArray3087[i_2_]), ISAAC.anInt522,
-                                        4 + Class44.anInt1048, 0
+                                TypeFace.fontSmall.drawStringLeft(Integer.toString(actor.anIntArray3087[i_2_]),
+                                        ISAAC.anInt522, 4 + Class44.anInt1048, 0
                                 );
-                                TypeFace.fontSmall.drawStringLeft(
-                                        Integer.toString(actor.anIntArray3087[i_2_]), ISAAC.anInt522 - 1,
-                                        Class44.anInt1048 + 3, 16777215
+                                TypeFace.fontSmall.drawStringLeft(Integer.toString(actor.anIntArray3087[i_2_]),
+                                        ISAAC.anInt522 - 1, Class44.anInt1048 + 3, 16777215
                                 );
                             }
                         }
@@ -268,13 +269,11 @@ public class Class33 {
                                 class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628);
                     }
                     if(PlayerAppearance.anIntArray695[i] == 3) {
-                        TypeFace.fontBold.drawCenteredStringWaveXYMove(
-                                class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, Class40_Sub5_Sub11.anInt2628,
-                                -PlayerAppearance.anIntArray684[i] + 150
+                        TypeFace.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0,
+                                Class40_Sub5_Sub11.anInt2628, -PlayerAppearance.anIntArray684[i] + 150
                         );
-                        TypeFace.fontBold.drawCenteredStringWaveXYMove(
-                                class1, ISAAC.anInt522, Class44.anInt1048, i_8_, Class40_Sub5_Sub11.anInt2628,
-                                -PlayerAppearance.anIntArray684[i] + 150
+                        TypeFace.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048, i_8_,
+                                Class40_Sub5_Sub11.anInt2628, -PlayerAppearance.anIntArray684[i] + 150
                         );
                     }
                     if(PlayerAppearance.anIntArray695[i] == 4) {
@@ -288,8 +287,7 @@ public class Class33 {
                     if(PlayerAppearance.anIntArray695[i] == 5) {
                         int i_14_ = 0;
                         int i_15_ = 150 + -PlayerAppearance.anIntArray684[i];
-                        Rasterizer.setBounds(
-                                0, -1 + -TypeFace.fontBold.characterDefaultHeight + Class44.anInt1048, 512,
+                        Rasterizer.setBounds(0, -1 + -TypeFace.fontBold.characterDefaultHeight + Class44.anInt1048, 512,
                                 5 + Class44.anInt1048
                         );
                         if(i_15_ >= 25) {
@@ -440,9 +438,8 @@ public class Class33 {
     public static synchronized void method413(byte arg0) {
         if(Class24.method340()) {
             if(Class26.aBoolean618) {
-                byte[] is = RSString.method74(
-                        Class40_Sub5_Sub17_Sub1.anInt3004, Class22_Sub1.aCacheArchive_1855, Class8.anInt289,
-                        MovedStatics.anInt2110
+                byte[] is = RSString.method74(Class40_Sub5_Sub17_Sub1.anInt3004, Class22_Sub1.aCacheArchive_1855,
+                        Class8.anInt289, MovedStatics.anInt2110
                 );
                 if(is != null) {
                     if(MovedStatics.anInt255 < 0) {

@@ -86,9 +86,8 @@ public class Minimap extends FramePieceRenderer {
             Rasterizer.drawFilledRectangle(0, 0, 42, 20, 0x242017);
 
             Rasterizer.drawCircle(21, 21, 20, 0x242017);
-            AnimationSequence.minimapCompass.shapeImageToPixels(
-                    5, 5, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, resizableCompasOffsets2,
-                    resizableCompasOffsets1
+            AnimationSequence.minimapCompass.shapeImageToPixels(5, 5, 33, 33, 25, 25, GroundItemTile.cameraHorizontal,
+                    256, resizableCompasOffsets2, resizableCompasOffsets1
             );
 
 
@@ -101,8 +100,7 @@ public class Minimap extends FramePieceRenderer {
         int i = 48 + Player.localPlayer.worldX / 32;
         int i_8_ = 464 + -(Player.localPlayer.worldY / 32);
         int i_9_ = GroundItemTile.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
-        shapeImageToPixels(
-                Class40_Sub5_Sub13.minimapImage, 5, 5, 200, 200, i, i_8_, i_9_, Class51.mapZoomOffset + 256,
+        shapeImageToPixels(Class40_Sub5_Sub13.minimapImage, 5, 5, 200, 200, i, i_8_, i_9_, Class51.mapZoomOffset + 256,
                 resizableMinimapOffsets2, resizableMinimapOffsets1
         );
         drawResizableMinimapDots();
@@ -117,13 +115,11 @@ public class Minimap extends FramePieceRenderer {
         rasterizerInstanced.drawFilledRectangle(0, 0, 42, 20, 0x242017);
 
         rasterizerInstanced.drawCircle(21, 21, 20, 0x242017);
-        shapeImageToPixels(
-                AnimationSequence.minimapCompass, 5, 5, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256,
+        shapeImageToPixels(AnimationSequence.minimapCompass, 5, 5, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256,
                 resizableCompasOffsets2, resizableCompasOffsets1
         );
 
-        System.arraycopy(
-                tempResizableMiniMapimage.pixels, 0, resizableMiniMapimage.pixels, 0,
+        System.arraycopy(tempResizableMiniMapimage.pixels, 0, resizableMiniMapimage.pixels, 0,
                 resizableMiniMapimage.pixels.length
         );
         //        Class65.method1018();

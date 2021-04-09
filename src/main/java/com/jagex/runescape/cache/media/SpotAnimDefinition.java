@@ -106,9 +106,8 @@ public class SpotAnimDefinition extends CachedNode {
                         i = -IncomingPackets.incomingPacketBuffer.currentPosition + 8;
                     }
                     if(i > 0) {
-                        MovedStatics.gameConnection.method1008(
-                                IncomingPackets.incomingPacketBuffer.currentPosition, i, -128,
-                                IncomingPackets.incomingPacketBuffer.buffer
+                        MovedStatics.gameConnection.method1008(IncomingPackets.incomingPacketBuffer.currentPosition, i,
+                                -128, IncomingPackets.incomingPacketBuffer.buffer
                         );
                         IncomingPackets.incomingPacketBuffer.currentPosition += i;
                     }
@@ -201,9 +200,8 @@ public class SpotAnimDefinition extends CachedNode {
             }
             if(Class40_Sub3.anInt2032 == 8) {
                 Main.anInt1756 = 0;
-                Class33.setLoginScreenMessage(
-                        English.youHaveJustLeftAnotherWorld, English.yourProfileWillBeTransferredIn,
-                        (Class33.anInt784 / 60) + English.suffixSeconds
+                Class33.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld,
+                        English.yourProfileWillBeTransferredIn, (Class33.anInt784 / 60) + English.suffixSeconds
                 );
                 if(--Class33.anInt784 <= 0) {
                     Class40_Sub3.anInt2032 = 0;
@@ -230,8 +228,7 @@ public class SpotAnimDefinition extends CachedNode {
                 if(Class40_Sub3.anInt2032 == 10) {
                     if(MovedStatics.gameConnection.method1014(-124) >= IncomingPackets.incomingPacketSize) {
                         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                        MovedStatics.gameConnection.method1008(
-                                0, IncomingPackets.incomingPacketSize, -128,
+                        MovedStatics.gameConnection.method1008(0, IncomingPackets.incomingPacketSize, -128,
                                 IncomingPackets.incomingPacketBuffer.buffer
                         );
                         Main.method44();

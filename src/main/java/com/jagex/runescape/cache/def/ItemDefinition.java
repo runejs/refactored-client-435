@@ -1,8 +1,8 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.cs.ClientScript;
+import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
@@ -191,8 +191,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
                     if(!npc.actorDefinition.isClickable) {
                         i_15_ += -2147483648;
                     }
-                    Npc.currentScene.method134(
-                            Player.worldLevel, npc.worldX, npc.worldY,
+                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY,
                             Class37.getFloorDrawHeight(Player.worldLevel, npc.worldX + (-1 + npc.anInt3096) * 64,
                                     npc.anInt3096 * 64 + -64 + npc.worldY
                             ), -64 + npc.anInt3096 * 64 + 60, npc, npc.anInt3118, i_15_, npc.aBoolean3105
@@ -288,8 +287,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         int i_12_ = Rasterizer3D.sinetable[definition.xan2d] * i_11_ >> 16;
         int i_13_ = i_11_ * Rasterizer3D.cosinetable[definition.xan2d] >> 16;
         model.method799();
-        model.drawModel(
-                0, definition.yan2d, definition.zan2d, definition.xan2d, definition.xOffset2d,
+        model.drawModel(0, definition.yan2d, definition.zan2d, definition.xan2d, definition.xOffset2d,
                 definition.yOffset2d + model.modelHeight / 2 + i_12_, i_13_ + definition.yOffset2d
         );
         for(int i_14_ = 31; i_14_ >= 0; i_14_--) {

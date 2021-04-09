@@ -2,8 +2,8 @@ package com.jagex.runescape.cache.media;
 
 import com.jagex.runescape.MovedStatics;
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.media.Rasterizer;
+import com.jagex.runescape.node.NodeCache;
 
 import java.awt.*;
 import java.awt.image.PixelGrabber;
@@ -1099,9 +1099,8 @@ public class ImageRGB extends Rasterizer {
                 i_172_ += i_176_ * i_184_;
                 i_181_ += i_184_;
             }
-            method715(
-                    Rasterizer.destinationPixels, pixels, 0, i_172_, i_173_, i_180_, i_181_, arg2, arg3, i_176_, i_177_,
-                    i
+            method715(Rasterizer.destinationPixels, pixels, 0, i_172_, i_173_, i_180_, i_181_, arg2, arg3, i_176_,
+                    i_177_, i
             );
         }
     }

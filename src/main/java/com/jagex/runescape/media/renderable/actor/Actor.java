@@ -232,8 +232,7 @@ public abstract class Actor extends Renderable {
                     if(class40_sub5_sub14_sub2 != null) {
                         int i_12_ = (-class40_sub5_sub14_sub2.imgHeight + gameObjectDefinition.sizeY * 4) / 2;
                         int i_13_ = (gameObjectDefinition.sizeX * 4 + -class40_sub5_sub14_sub2.imgWidth) / 2;
-                        class40_sub5_sub14_sub2.drawImage(
-                                i_13_ + arg2 * 4 + 48,
+                        class40_sub5_sub14_sub2.drawImage(i_13_ + arg2 * 4 + 48,
                                 48 - (-(4 * (-arg5 + 104 + -gameObjectDefinition.sizeY)) + -i_12_)
                         );
                     }

@@ -4,8 +4,6 @@ import com.jagex.runescape.RSString;
 import com.jagex.runescape.frame.console.Command;
 import com.jagex.runescape.frame.console.Console;
 
-import java.util.List;
-
 public class EchoCommand extends Command {
 
     public EchoCommand() {

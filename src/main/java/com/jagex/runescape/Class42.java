@@ -1,6 +1,5 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.ItemDefinition;
@@ -9,6 +8,7 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.PacketBuffer;
+import com.jagex.runescape.node.NodeCache;
 
 public class Class42 {
     public static byte[][][] tile_underlayids;

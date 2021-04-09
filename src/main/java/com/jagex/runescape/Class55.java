@@ -1,7 +1,8 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.scene.InteractiveObject;

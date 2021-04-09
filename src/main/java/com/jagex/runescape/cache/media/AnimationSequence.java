@@ -97,8 +97,8 @@ public class AnimationSequence extends CachedNode {
                 i_18_ = gameObjectDefinition.sizeY;
                 i_19_ = gameObjectDefinition.sizeX;
             }
-            Pathfinding.doWalkTo(i_18_, i_17_, Player.localPlayer.pathY[0], arg0, 0, true, 0, i_19_, Player.localPlayer.pathX[0],
-                    arg3, 2
+            Pathfinding.doWalkTo(i_18_, i_17_, Player.localPlayer.pathY[0], arg0, 0, true, 0, i_19_,
+                    Player.localPlayer.pathX[0], arg3, 2
             );
         }
         ClientScriptRunner.crossX = Class57.clickX;

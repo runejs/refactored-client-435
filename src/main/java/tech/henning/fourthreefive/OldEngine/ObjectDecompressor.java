@@ -4,7 +4,9 @@ package tech.henning.fourthreefive.OldEngine;/*
  * @ Author: Zee best
  */
 
-import com.jagex.runescape.*;
+import com.jagex.runescape.Class26;
+import com.jagex.runescape.Class40_Sub5_Sub17_Sub1;
+import com.jagex.runescape.Landscape;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.io.Buffer;

@@ -1,6 +1,9 @@
 package com.jagex.runescape.scene.tile;
 
-import com.jagex.runescape.*;
+import com.jagex.runescape.Class22_Sub2;
+import com.jagex.runescape.Class57;
+import com.jagex.runescape.HuffmanEncoding;
+import com.jagex.runescape.Landscape;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -164,9 +167,8 @@ public class GenericTile {
                     if(i_5_ < 3 && (OverlayDefinition.tile_flags[1][arg2][arg0] & 0x2) == 2) {
                         i_5_++;
                     }
-                    CollisionMap.method543(
-                            Landscape.currentCollisionMap[arg7], arg1, i_5_, arg7, arg3, Npc.currentScene, -22078, arg4,
-                            arg0, arg2
+                    CollisionMap.method543(Landscape.currentCollisionMap[arg7], arg1, i_5_, arg7, arg3,
+                            Npc.currentScene, -22078, arg4, arg0, arg2
                     );
                 }
             }

@@ -2,7 +2,6 @@ package com.jagex.runescape.cache.cs;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -10,6 +9,7 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.node.CachedNode;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.GenericTile;
 

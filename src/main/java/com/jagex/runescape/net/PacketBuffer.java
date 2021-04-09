@@ -1,10 +1,14 @@
 package com.jagex.runescape.net;
 
-import com.jagex.runescape.*;
+import com.jagex.runescape.Class40_Sub5_Sub13;
+import com.jagex.runescape.MovedStatics;
+import com.jagex.runescape.RSCanvas;
+import com.jagex.runescape.RSString;
 import com.jagex.runescape.audio.Effect;
-import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.CacheIndex;
+import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.io.Buffer;

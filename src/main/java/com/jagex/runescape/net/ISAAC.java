@@ -1,7 +1,6 @@
 package com.jagex.runescape.net;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
@@ -11,6 +10,7 @@ import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.tile.FloorDecoration;
@@ -226,8 +226,8 @@ public class ISAAC {
                                         i_48_ = -1;
                                         i_50_ = -2;
                                     } else {
-                                        i_49_ = Class13.method244(class40_sub5_sub3.lightness, class40_sub5_sub3.saturation,
-                                                class40_sub5_sub3.hue
+                                        i_49_ = Class13.method244(class40_sub5_sub3.lightness,
+                                                class40_sub5_sub3.saturation, class40_sub5_sub3.hue
                                         );
                                         int i_51_ = Class40_Sub5_Sub15.anInt2791 + class40_sub5_sub3.hue & 0xff;
                                         int i_52_ = Actor.anInt3151 + class40_sub5_sub3.saturation;
@@ -351,9 +351,8 @@ public class ISAAC {
                                 int i_72_ = 240;
                                 int i_73_ = -i_72_ + MovedStatics.tile_height[i_68_][i_64_][i_65_];
                                 int i_74_ = MovedStatics.tile_height[i_67_][i_64_][i_65_];
-                                Scene.method116(
-                                        i_61_, 1, 128 * i_64_, 128 * i_64_, 128 * i_65_, 128 + 128 * i_66_, i_73_,
-                                        i_74_
+                                Scene.method116(i_61_, 1, 128 * i_64_, 128 * i_64_, 128 * i_65_, 128 + 128 * i_66_,
+                                        i_73_, i_74_
                                 );
                                 for(int i_75_ = i_67_; i_75_ <= i_68_; i_75_++) {
                                     for(int i_76_ = i_65_; i_76_ <= i_66_; i_76_++) {
@@ -403,9 +402,8 @@ public class ISAAC {
                                 int i_84_ = MovedStatics.tile_height[i_80_][i_77_][i_63_];
                                 int i_85_ = 240;
                                 int i_86_ = MovedStatics.tile_height[i_78_][i_77_][i_63_] - i_85_;
-                                Scene.method116(
-                                        i_61_, 2, 128 * i_77_, 128 * i_79_ + 128, 128 * i_63_, i_63_ * 128, i_86_,
-                                        i_84_
+                                Scene.method116(i_61_, 2, 128 * i_77_, 128 * i_79_ + 128, 128 * i_63_, i_63_ * 128,
+                                        i_86_, i_84_
                                 );
                                 for(int i_87_ = i_80_; i_78_ >= i_87_; i_87_++) {
                                     for(int i_88_ = i_77_; i_88_ <= i_79_; i_88_++) {
@@ -450,9 +448,8 @@ public class ISAAC {
                             }
                             if((-i_89_ + i_90_ + 1) * (1 + i_92_ - i_91_) >= 4) {
                                 int i_95_ = MovedStatics.tile_height[i_62_][i_89_][i_91_];
-                                Scene.method116(
-                                        i_61_, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_, i_92_ * 128 + 128, i_95_,
-                                        i_95_
+                                Scene.method116(i_61_, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_,
+                                        i_92_ * 128 + 128, i_95_, i_95_
                                 );
                                 for(int i_96_ = i_89_; i_96_ <= i_90_; i_96_++) {
                                     for(int i_97_ = i_91_; i_92_ >= i_97_; i_97_++) {

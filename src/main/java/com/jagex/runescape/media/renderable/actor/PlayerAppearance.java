@@ -1,6 +1,9 @@
 package com.jagex.runescape.media.renderable.actor;
 
-import com.jagex.runescape.*;
+import com.jagex.runescape.Class64;
+import com.jagex.runescape.MovedStatics;
+import com.jagex.runescape.ProducingGraphicsBuffer;
+import com.jagex.runescape.ProducingGraphicsBuffer_Sub1;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.ItemDefinition;

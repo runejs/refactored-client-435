@@ -285,9 +285,8 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
                     anInt2885, 0, arg3, arg2, this
             );
         }
-        return method858(
-                0, 0, ((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1, anInt2885, 0,
-                arg3, arg2, this, anInt2882, arg4
+        return method858(0, 0, ((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1,
+                anInt2885, 0, arg3, arg2, this, anInt2882, arg4
         );
     }
 
@@ -605,9 +604,8 @@ public class Class40_Sub9_Sub2 extends Class40_Sub9 {
                     anInt2885, 0, arg3, arg2, this
             );
         }
-        return method865(
-                0, 0, ((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1, anInt2885, 0,
-                arg3, arg2, this, anInt2882, arg4
+        return method865(0, 0, ((Class40_Sub12_Sub1) aClass40_Sub12_2135).aByteArray2889, arg0, anInt2888, arg1,
+                anInt2885, 0, arg3, arg2, this, anInt2882, arg4
         );
     }
 }

@@ -66,8 +66,8 @@ public class Class59 {
                         } else {
                             MovedStatics.aClass22_189.method301(PacketBuffer.anInt2258, arg0);
                             MouseHandler.anInt1450 = PacketBuffer.anInt2258;
-                            MovedStatics.aClass22_189.method300(Player.aByteArray3270, PlayerAppearance.aBoolean687, -15910,
-                                    PacketBuffer.anInt2258
+                            MovedStatics.aClass22_189.method300(Player.aByteArray3270, PlayerAppearance.aBoolean687,
+                                    -15910, PacketBuffer.anInt2258
                             );
                             Player.aByteArray3270 = null;
                         }

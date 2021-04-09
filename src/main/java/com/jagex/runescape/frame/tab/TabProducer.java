@@ -1,6 +1,8 @@
 package com.jagex.runescape.frame.tab;
 
-import com.jagex.runescape.*;
+import com.jagex.runescape.Class40_Sub5_Sub13;
+import com.jagex.runescape.MovedStatics;
+import com.jagex.runescape.ProducingGraphicsBuffer;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.FramePieceRenderer;

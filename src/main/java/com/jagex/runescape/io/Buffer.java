@@ -1,10 +1,12 @@
 package com.jagex.runescape.io;
 
-import com.jagex.runescape.*;
-import com.jagex.runescape.node.NodeCache;
+import com.jagex.runescape.Class13;
+import com.jagex.runescape.MovedStatics;
+import com.jagex.runescape.RSString;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.node.Node;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.scene.InteractiveObject;
 
 import java.math.BigInteger;

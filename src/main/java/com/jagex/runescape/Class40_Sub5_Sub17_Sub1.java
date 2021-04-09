@@ -1,7 +1,10 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
@@ -534,9 +537,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                             vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true
                     );
                 }
-                scene.addWall(
-                        localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face], 0, hash, renderable, null,
-                        objectConfig
+                scene.addWall(localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face], 0, hash, renderable,
+                        null, objectConfig
                 );
                 if(face == 0) {
                     if(gameObjectDefinition.castsShadow) {
@@ -591,9 +593,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                             vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true
                     );
                 }
-                scene.addWall(
-                        localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, renderable,
-                        null, objectConfig
+                scene.addWall(localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash,
+                        renderable, null, objectConfig
                 );
                 if(gameObjectDefinition.castsShadow) {
                     if(face == 0) {
@@ -619,17 +620,14 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     renderable_47_ = gameObjectDefinition.createTerrainObjectModel(
                             vertexHeightTopRight, vertexHeightTop, i_46_, vertexHeight, 2, vertexHeightRight);
                 } else {
-                    renderable = new GameObject(
-                            objectId, 2, 4 + face, vertexHeight, vertexHeightRight, vertexHeightTopRight,
-                            vertexHeightTop, gameObjectDefinition.animationId, true
+                    renderable = new GameObject(objectId, 2, 4 + face, vertexHeight, vertexHeightRight,
+                            vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true
                     );
-                    renderable_47_ = new GameObject(
-                            objectId, 2, i_46_, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop,
-                            gameObjectDefinition.animationId, true
+                    renderable_47_ = new GameObject(objectId, 2, i_46_, vertexHeight, vertexHeightRight,
+                            vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true
                     );
                 }
-                scene.addWall(
-                        localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face],
+                scene.addWall(localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face],
                         SceneCluster.anIntArray761[i_46_], hash, renderable, renderable_47_, objectConfig
                 );
                 if(gameObjectDefinition.wall) {
@@ -671,9 +669,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     renderable = gameObjectDefinition.createTerrainObjectModel(
                             vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 3, vertexHeightRight);
                 }
-                scene.addWall(
-                        localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, renderable,
-                        null, objectConfig
+                scene.addWall(localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash,
+                        renderable, null, objectConfig
                 );
                 if(gameObjectDefinition.castsShadow) {
                     if(face != 0) {
@@ -740,9 +737,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                                 vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true
                         );
                     }
-                    scene.addWallDecoration(
-                            localX, localY, plane, vertexMix, 0, 0, 512 * face, hash, renderable, objectConfig,
-                            SceneCluster.anIntArray761[face]
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, 512 * face, hash, renderable,
+                            objectConfig, SceneCluster.anIntArray761[face]
                     );
                 } else if(type == 5) {
                     int i_51_ = scene.method122(plane, localX, localY);
@@ -759,8 +755,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                                 vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true
                         );
                     }
-                    scene.addWallDecoration(
-                            localX, localY, plane, vertexMix, i_52_ * MovedStatics.anIntArray666[face],
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, i_52_ * MovedStatics.anIntArray666[face],
                             ProducingGraphicsBuffer_Sub1.anIntArray2207[face] * i_52_, face * 512, hash, renderable,
                             objectConfig, SceneCluster.anIntArray761[face]
                     );

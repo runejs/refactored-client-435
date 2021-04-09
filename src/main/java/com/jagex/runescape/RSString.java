@@ -1,10 +1,10 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.node.HashTable;
-import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.node.HashTable;
+import com.jagex.runescape.node.NodeCache;
 
 import java.awt.*;
 import java.nio.charset.StandardCharsets;

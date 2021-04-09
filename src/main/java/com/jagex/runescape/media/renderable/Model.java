@@ -1,6 +1,6 @@
 package com.jagex.runescape.media.renderable;
 
-import com.jagex.runescape.*;
+import com.jagex.runescape.Class40_Sub5_Sub15;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.FrameDefinition;
 import com.jagex.runescape.cache.def.FramemapDefinition;
@@ -1544,7 +1544,8 @@ public class Model extends Renderable {
                 Rasterizer3D.drawTexturedTriangle(i_174_, i_175_, i_176_, i_171_, i_172_, i_173_, anIntArray3222[0],
                         anIntArray3222[1], anIntArray3222[2], anIntArray3225[i_179_], anIntArray3225[i_180_],
                         anIntArray3225[i_181_], anIntArray3203[i_179_], anIntArray3203[i_180_], anIntArray3203[i_181_],
-                        anIntArray3223[i_179_], anIntArray3223[i_180_], anIntArray3223[i_181_], triangleColorValues[arg0]
+                        anIntArray3223[i_179_], anIntArray3223[i_180_], anIntArray3223[i_181_],
+                        triangleColorValues[arg0]
                 );
             } else if(i_177_ == 3) {
                 int i_182_ = triangleDrawType[arg0] >> 2;
@@ -1554,7 +1555,8 @@ public class Model extends Renderable {
                 Rasterizer3D.drawTexturedTriangle(i_174_, i_175_, i_176_, i_171_, i_172_, i_173_, triangleHSLA[arg0],
                         triangleHSLA[arg0], triangleHSLA[arg0], anIntArray3225[i_183_], anIntArray3225[i_184_],
                         anIntArray3225[i_185_], anIntArray3203[i_183_], anIntArray3203[i_184_], anIntArray3203[i_185_],
-                        anIntArray3223[i_183_], anIntArray3223[i_184_], anIntArray3223[i_185_], triangleColorValues[arg0]
+                        anIntArray3223[i_183_], anIntArray3223[i_184_], anIntArray3223[i_185_],
+                        triangleColorValues[arg0]
                 );
             }
         }
@@ -1571,13 +1573,11 @@ public class Model extends Renderable {
                 i_186_ = triangleDrawType[arg0] & 0x3;
             }
             if(i_186_ == 0) {
-                Rasterizer3D.drawShadedTriangle(
-                        i_174_, i_175_, i_176_, i_171_, i_172_, i_173_, anIntArray3222[0], anIntArray3222[1],
-                        anIntArray3222[2]
+                Rasterizer3D.drawShadedTriangle(i_174_, i_175_, i_176_, i_171_, i_172_, i_173_, anIntArray3222[0],
+                        anIntArray3222[1], anIntArray3222[2]
                 );
-                Rasterizer3D.drawShadedTriangle(
-                        i_174_, i_176_, anIntArray3205[3], i_171_, i_173_, anIntArray3227[3], anIntArray3222[0],
-                        anIntArray3222[2], anIntArray3222[3]
+                Rasterizer3D.drawShadedTriangle(i_174_, i_176_, anIntArray3205[3], i_171_, i_173_, anIntArray3227[3],
+                        anIntArray3222[0], anIntArray3222[2], anIntArray3222[3]
                 );
             } else if(i_186_ == 1) {
                 int i_187_ = anIntArray3202[triangleHSLA[arg0]];
@@ -1589,17 +1589,16 @@ public class Model extends Renderable {
                 int i_189_ = texturedTrianglePointsX[i_188_];
                 int i_190_ = texturedTrianglePointsY[i_188_];
                 int i_191_ = texturedTrianglePointsZ[i_188_];
-                Rasterizer3D.drawTexturedTriangle(
-                        i_174_, i_175_, i_176_, i_171_, i_172_, i_173_, anIntArray3222[0], anIntArray3222[1],
-                        anIntArray3222[2], anIntArray3225[i_189_], anIntArray3225[i_190_], anIntArray3225[i_191_],
-                        anIntArray3203[i_189_], anIntArray3203[i_190_], anIntArray3203[i_191_], anIntArray3223[i_189_],
-                        anIntArray3223[i_190_], anIntArray3223[i_191_], triangleColorValues[arg0]
-                );
-                Rasterizer3D.drawTexturedTriangle(
-                        i_174_, i_176_, anIntArray3205[3], i_171_, i_173_, anIntArray3227[3], anIntArray3222[0],
-                        anIntArray3222[2], anIntArray3222[3], anIntArray3225[i_189_], anIntArray3225[i_190_],
+                Rasterizer3D.drawTexturedTriangle(i_174_, i_175_, i_176_, i_171_, i_172_, i_173_, anIntArray3222[0],
+                        anIntArray3222[1], anIntArray3222[2], anIntArray3225[i_189_], anIntArray3225[i_190_],
                         anIntArray3225[i_191_], anIntArray3203[i_189_], anIntArray3203[i_190_], anIntArray3203[i_191_],
                         anIntArray3223[i_189_], anIntArray3223[i_190_], anIntArray3223[i_191_],
+                        triangleColorValues[arg0]
+                );
+                Rasterizer3D.drawTexturedTriangle(i_174_, i_176_, anIntArray3205[3], i_171_, i_173_, anIntArray3227[3],
+                        anIntArray3222[0], anIntArray3222[2], anIntArray3222[3], anIntArray3225[i_189_],
+                        anIntArray3225[i_190_], anIntArray3225[i_191_], anIntArray3203[i_189_], anIntArray3203[i_190_],
+                        anIntArray3203[i_191_], anIntArray3223[i_189_], anIntArray3223[i_190_], anIntArray3223[i_191_],
                         triangleColorValues[arg0]
                 );
             } else if(i_186_ == 3) {
@@ -1607,17 +1606,16 @@ public class Model extends Renderable {
                 int i_193_ = texturedTrianglePointsX[i_192_];
                 int i_194_ = texturedTrianglePointsY[i_192_];
                 int i_195_ = texturedTrianglePointsZ[i_192_];
-                Rasterizer3D.drawTexturedTriangle(
-                        i_174_, i_175_, i_176_, i_171_, i_172_, i_173_, triangleHSLA[arg0], triangleHSLA[arg0],
-                        triangleHSLA[arg0], anIntArray3225[i_193_], anIntArray3225[i_194_], anIntArray3225[i_195_],
-                        anIntArray3203[i_193_], anIntArray3203[i_194_], anIntArray3203[i_195_], anIntArray3223[i_193_],
-                        anIntArray3223[i_194_], anIntArray3223[i_195_], triangleColorValues[arg0]
-                );
-                Rasterizer3D.drawTexturedTriangle(
-                        i_174_, i_176_, anIntArray3205[3], i_171_, i_173_, anIntArray3227[3], triangleHSLA[arg0],
+                Rasterizer3D.drawTexturedTriangle(i_174_, i_175_, i_176_, i_171_, i_172_, i_173_, triangleHSLA[arg0],
                         triangleHSLA[arg0], triangleHSLA[arg0], anIntArray3225[i_193_], anIntArray3225[i_194_],
                         anIntArray3225[i_195_], anIntArray3203[i_193_], anIntArray3203[i_194_], anIntArray3203[i_195_],
                         anIntArray3223[i_193_], anIntArray3223[i_194_], anIntArray3223[i_195_],
+                        triangleColorValues[arg0]
+                );
+                Rasterizer3D.drawTexturedTriangle(i_174_, i_176_, anIntArray3205[3], i_171_, i_173_, anIntArray3227[3],
+                        triangleHSLA[arg0], triangleHSLA[arg0], triangleHSLA[arg0], anIntArray3225[i_193_],
+                        anIntArray3225[i_194_], anIntArray3225[i_195_], anIntArray3203[i_193_], anIntArray3203[i_194_],
+                        anIntArray3203[i_195_], anIntArray3223[i_193_], anIntArray3223[i_194_], anIntArray3223[i_195_],
                         triangleColorValues[arg0]
                 );
             }
@@ -1663,9 +1661,8 @@ public class Model extends Renderable {
                             anIntArrayArray3210[i_214_][anIntArray3200[i_214_]++] = i;
                         }
                     } else {
-                        if(arg1 && method807(
-                                cursorX, cursorY, vertexScreenY[i_196_], vertexScreenY[i_197_], vertexScreenY[i_198_],
-                                i_199_, i_200_, i_201_
+                        if(arg1 && method807(cursorX, cursorY, vertexScreenY[i_196_], vertexScreenY[i_197_],
+                                vertexScreenY[i_198_], i_199_, i_200_, i_201_
                         )) {
                             hoveredHash[resourceCount++] = arg2;
                             arg1 = false;
@@ -1975,10 +1972,11 @@ public class Model extends Renderable {
                 int i_242_ = texturedTrianglePointsY[i_240_];
                 int i_243_ = texturedTrianglePointsZ[i_240_];
                 Rasterizer3D.drawTexturedTriangle(vertexScreenY[i], vertexScreenY[i_237_], vertexScreenY[i_238_],
-                        vertexScreenX[i], vertexScreenX[i_237_], vertexScreenX[i_238_], triangleHSLA[arg0], triangleHSLB[arg0],
-                        triangleHSLC[arg0], anIntArray3225[i_241_], anIntArray3225[i_242_], anIntArray3225[i_243_],
-                        anIntArray3203[i_241_], anIntArray3203[i_242_], anIntArray3203[i_243_], anIntArray3223[i_241_],
-                        anIntArray3223[i_242_], anIntArray3223[i_243_], triangleColorValues[arg0]
+                        vertexScreenX[i], vertexScreenX[i_237_], vertexScreenX[i_238_], triangleHSLA[arg0],
+                        triangleHSLB[arg0], triangleHSLC[arg0], anIntArray3225[i_241_], anIntArray3225[i_242_],
+                        anIntArray3225[i_243_], anIntArray3203[i_241_], anIntArray3203[i_242_], anIntArray3203[i_243_],
+                        anIntArray3223[i_241_], anIntArray3223[i_242_], anIntArray3223[i_243_],
+                        triangleColorValues[arg0]
                 );
             } else if(i_239_ == 3) {
                 int i_244_ = triangleDrawType[arg0] >> 2;
@@ -1986,10 +1984,11 @@ public class Model extends Renderable {
                 int i_246_ = texturedTrianglePointsY[i_244_];
                 int i_247_ = texturedTrianglePointsZ[i_244_];
                 Rasterizer3D.drawTexturedTriangle(vertexScreenY[i], vertexScreenY[i_237_], vertexScreenY[i_238_],
-                        vertexScreenX[i], vertexScreenX[i_237_], vertexScreenX[i_238_], triangleHSLA[arg0], triangleHSLA[arg0],
-                        triangleHSLA[arg0], anIntArray3225[i_245_], anIntArray3225[i_246_], anIntArray3225[i_247_],
-                        anIntArray3203[i_245_], anIntArray3203[i_246_], anIntArray3203[i_247_], anIntArray3223[i_245_],
-                        anIntArray3223[i_246_], anIntArray3223[i_247_], triangleColorValues[arg0]
+                        vertexScreenX[i], vertexScreenX[i_237_], vertexScreenX[i_238_], triangleHSLA[arg0],
+                        triangleHSLA[arg0], triangleHSLA[arg0], anIntArray3225[i_245_], anIntArray3225[i_246_],
+                        anIntArray3225[i_247_], anIntArray3203[i_245_], anIntArray3203[i_246_], anIntArray3203[i_247_],
+                        anIntArray3223[i_245_], anIntArray3223[i_246_], anIntArray3223[i_247_],
+                        triangleColorValues[arg0]
                 );
             }
         }
@@ -2016,8 +2015,7 @@ public class Model extends Renderable {
             anInt3206 = 0;
             for(int i = 0; i < frameDefinition.translatorCount; i++) {
                 int i_249_ = frameDefinition.index_frame_ids[i];
-                method811(
-                        framemapDefinition.types[i_249_], framemapDefinition.frameMaps[i_249_],
+                method811(framemapDefinition.types[i_249_], framemapDefinition.frameMaps[i_249_],
                         frameDefinition.translator_x[i], frameDefinition.translator_y[i],
                         frameDefinition.translator_z[i]
                 );

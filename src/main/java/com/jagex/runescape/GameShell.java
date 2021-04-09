@@ -1,7 +1,9 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.cache.media.*;
+import com.jagex.runescape.cache.media.AnimationSequence;
+import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.cache.media.gameInterface.GameInterfaceType;
 import com.jagex.runescape.frame.ScreenController;
@@ -19,11 +21,13 @@ import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.util.Signlink;
 import com.jagex.runescape.util.Timer;
-
 import tech.henning.fourthreefive.Configuration;
 
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
@@ -93,8 +97,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                 int i_7_ = arg1 > i_3_ ? i_3_ : arg1;
                 int i_8_ = i_5_ < arg8 ? i_5_ : arg8;
                 if(gameInterface.type == GameInterfaceType.LAYER) {
-                    method20(
-                            i_4_, i_7_, gameInterface.scrollWidth, arg3, i_6_, i, 1, arg7, i_8_,
+                    method20(i_4_, i_7_, gameInterface.scrollWidth, arg3, i_6_, i, 1, arg7, i_8_,
                             gameInterface.scrollPosition
                     );
                     if(gameInterface.children != null) {

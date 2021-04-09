@@ -64,8 +64,7 @@ public class Class40_Sub5_Sub13 extends CachedNode {
             if(class40_sub3.anInt2031 == 0) {
                 if(class40_sub3.anInt2028 < 0 || MovedStatics.method459(
                         class40_sub3.anInt2036, class40_sub3.anInt2028, (byte) 103)) {
-                    GenericTile.method945(
-                            class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039,
+                    GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039,
                             class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027,
                             class40_sub3.anInt2018
                     );
@@ -79,8 +78,7 @@ public class Class40_Sub5_Sub13 extends CachedNode {
                         class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 &&
                         (class40_sub3.anInt2017 < 0 || MovedStatics.method459(
                                 class40_sub3.anInt2030, class40_sub3.anInt2017, (byte) 106))) {
-                    GenericTile.method945(
-                            class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039,
+                    GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039,
                             class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027,
                             class40_sub3.anInt2018
                     );

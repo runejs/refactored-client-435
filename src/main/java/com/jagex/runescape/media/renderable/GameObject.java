@@ -97,9 +97,8 @@ public class GameObject extends Renderable {
                     if(logic_y >= 0) {
                         collisionMap = collisionMaps[logic_y];
                     }
-                    Class40_Sub5_Sub17_Sub1.addObject(
-                            object_id, object_x, object_z, tile_y, object_orientation, object_type, scene,
-                            collisionMap
+                    Class40_Sub5_Sub17_Sub1.addObject(object_id, object_x, object_z, tile_y, object_orientation,
+                            object_type, scene, collisionMap
                     );
                 }
             }
@@ -188,9 +187,8 @@ public class GameObject extends Renderable {
         if(gameObjectDefinition == null) {
             return null;
         }
-        return gameObjectDefinition.createAnimatedObjectModel(
-                vertexHeight, vertexHeightRight, animationFrame, anInt3021, anInt3018, animationSequence,
-                vertexHeightTop, vertexHeightTopRight
+        return gameObjectDefinition.createAnimatedObjectModel(vertexHeight, vertexHeightRight, animationFrame,
+                anInt3021, anInt3018, animationSequence, vertexHeightTop, vertexHeightTopRight
         );
     }
 }

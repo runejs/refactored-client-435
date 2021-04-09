@@ -1,10 +1,10 @@
 package com.jagex.runescape.scene;
 
-import com.jagex.runescape.node.NodeQueue;
 import com.jagex.runescape.ProducingGraphicsBuffer;
 import com.jagex.runescape.RSString;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.node.NodeQueue;
 
 public class InteractiveObject {
     public static int menuOffsetX;

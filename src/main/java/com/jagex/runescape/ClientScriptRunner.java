@@ -1,14 +1,15 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.cache.cs.InvokedScript;
 import com.jagex.runescape.cache.cs.ClientScript;
+import com.jagex.runescape.cache.cs.InvokedScript;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.def.UnderlayDefinition;
-import com.jagex.runescape.cache.media.gameInterface.*;
-import com.jagex.runescape.node.Node;
+import com.jagex.runescape.cache.media.gameInterface.GameInterface;
+import com.jagex.runescape.cache.media.gameInterface.GameInterfaceType;
+import com.jagex.runescape.cache.media.gameInterface.InterfaceModelType;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
@@ -16,6 +17,7 @@ import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
+import com.jagex.runescape.node.Node;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.WallDecoration;
@@ -687,9 +689,9 @@ public class ClientScriptRunner extends Node {
                                         scriptIntValues[intValueIndex]);
                                 int i_33_ = scriptIntValues[2 + intValueIndex];
                                 int i_34_ = scriptIntValues[intValueIndex + 1];
-                                GameInterface gameInterface_35_ = GameInterface.method361(
-                                        gameInterface.children, i_33_, true, gameInterface.scrollPosition,
-                                        gameInterface.id, gameInterface.scrollWidth, i_34_, 398
+                                GameInterface gameInterface_35_ = GameInterface.method361(gameInterface.children, i_33_,
+                                        true, gameInterface.scrollPosition, gameInterface.id, gameInterface.scrollWidth,
+                                        i_34_, 398
                                 );
                                 if(gameInterface_35_ == null) {
                                     scriptIntValues[intValueIndex++] = 0;
@@ -808,8 +810,7 @@ public class ClientScriptRunner extends Node {
                                         if(scriptOpcode < 3300) {
                                             if(scriptOpcode == 3200) {
                                                 intValueIndex -= 3;
-                                                WallDecoration.method950(
-                                                        scriptIntValues[intValueIndex],
+                                                WallDecoration.method950(scriptIntValues[intValueIndex],
                                                         scriptIntValues[intValueIndex + 1],
                                                         scriptIntValues[2 + intValueIndex]
                                                 );
@@ -820,8 +821,7 @@ public class ClientScriptRunner extends Node {
                                                     break;
                                                 }
                                                 intValueIndex -= 2;
-                                                Class57.method975(
-                                                        scriptIntValues[intValueIndex + 1],
+                                                Class57.method975(scriptIntValues[intValueIndex + 1],
                                                         scriptIntValues[intValueIndex]
                                                 );
                                             }
@@ -984,9 +984,8 @@ public class ClientScriptRunner extends Node {
                                             break;
                                         }
                                         intValueIndex -= 2;
-                                        ActorDefinition.playAnimation(
-                                                scriptIntValues[intValueIndex], scriptIntValues[intValueIndex + 1],
-                                                Player.localPlayer
+                                        ActorDefinition.playAnimation(scriptIntValues[intValueIndex],
+                                                scriptIntValues[intValueIndex + 1], Player.localPlayer
                                         );
                                     }
                                 }

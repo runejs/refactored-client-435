@@ -1,15 +1,15 @@
 package com.jagex.runescape.scene.tile;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.cs.ClientScript;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.TypeFace;
-import com.jagex.runescape.cache.cs.ClientScript;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
-import com.jagex.runescape.node.Node;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.Model;
+import com.jagex.runescape.node.Node;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 

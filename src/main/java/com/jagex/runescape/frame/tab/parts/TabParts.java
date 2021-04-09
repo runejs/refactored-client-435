@@ -1,9 +1,9 @@
 package com.jagex.runescape.frame.tab.parts;
 
-import java.util.Base64;
-
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.input.MouseHandler;
+
+import java.util.Base64;
 
 public class TabParts {
     private static ImageRGB combat;

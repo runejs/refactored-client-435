@@ -1,7 +1,5 @@
 package com.jagex.runescape.util;
 
-import com.jagex.runescape.io.Buffer;
-
 public class TextUtils {
 
     private static char[] message = new char[100];

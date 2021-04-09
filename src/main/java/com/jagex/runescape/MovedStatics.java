@@ -1,29 +1,29 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
+import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.frame.tab.parts.TabParts;
+import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.renderable.actor.*;
-import com.jagex.runescape.node.HashTable;
-import com.jagex.runescape.node.NodeCache;
-import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.frame.ChatBox;
-import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
+import com.jagex.runescape.media.renderable.actor.*;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
+import com.jagex.runescape.node.HashTable;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
@@ -241,8 +241,7 @@ public class MovedStatics {
             if(arg0 >= -28) {
                 method445(-128);
             }
-            Class22_Sub1.method312(
-                    2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + anInt175 << 7),
+            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + anInt175 << 7),
                     (ProducingGraphicsBuffer.anInt1637 + -SpotAnimDefinition.baseX << 7) + Landscape.anInt1170, 4976905
             );
             if(ISAAC.anInt522 > -1 && pulseCycle % 20 < 10) {
@@ -659,11 +658,12 @@ public class MovedStatics {
                 }
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
-                SignlinkNode signlinkNode = Actor.aClass31_3152.method388(
-                        false, new URL(Actor.aClass31_3152.anApplet740.getCodeBase(),
+                SignlinkNode signlinkNode = Actor.aClass31_3152.method388(false,
+                        new URL(Actor.aClass31_3152.anApplet740.getCodeBase(),
                                 "clienterror.ws?c=" + Class39.anInt901 + "&u=" + aLong853 + "&v1=" +
                                         Signlink.aString735 + "&v2=" + Signlink.aString739 + "&e=" + string
-                        ));
+                        )
+                );
                 while(signlinkNode.anInt434 == 0) {
                     Class43.sleep(1L);
                 }

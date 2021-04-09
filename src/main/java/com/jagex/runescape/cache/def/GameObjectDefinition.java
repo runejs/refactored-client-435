@@ -1,16 +1,16 @@
 package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.node.Class40_Sub6;
-import com.jagex.runescape.node.HashTable;
-import com.jagex.runescape.node.NodeCache;
+import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.node.CachedNode;
+import com.jagex.runescape.node.Class40_Sub6;
+import com.jagex.runescape.node.HashTable;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.scene.GroundItemTile;
 import tech.henning.fourthreefive.OldEngine.ObjectDecompressor;
 

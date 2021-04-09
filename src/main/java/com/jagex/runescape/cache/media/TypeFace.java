@@ -3,7 +3,6 @@ package com.jagex.runescape.cache.media;
 import com.jagex.runescape.Class17;
 import com.jagex.runescape.RSString;
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.media.textUtils.TextColourNode;
 import com.jagex.runescape.cache.media.textUtils.TextColourQueue;
@@ -13,6 +12,7 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.scene.GroundItemTile;
 
 import java.awt.*;
@@ -108,9 +108,8 @@ public class TypeFace extends Rasterizer {
     }
 
     public static TypeFace constructFont() {
-        TypeFace class40_sub5_sub14_sub1 = new TypeFace(
-                Actor.anIntArray3111, Class17.anIntArray456, Npc.anIntArray3312, Buffer.anIntArray1972,
-                GroundItemTile.aByteArrayArray1370
+        TypeFace class40_sub5_sub14_sub1 = new TypeFace(Actor.anIntArray3111, Class17.anIntArray456, Npc.anIntArray3312,
+                Buffer.anIntArray1972, GroundItemTile.aByteArrayArray1370
         );
         ActorDefinition.method569();
         return class40_sub5_sub14_sub1;
@@ -694,9 +693,8 @@ public class TypeFace extends Rasterizer {
             rasterizerPixelOffset += endOffsetX;
         }
         if(width > 0 && height > 0) {
-            drawCharacterPixels(
-                    characterPixels[character], Rasterizer.destinationPixels, characterPixel, rasterizerPixel,
-                    characterPixelOffset, rasterizerPixelOffset, width, height, colour
+            drawCharacterPixels(characterPixels[character], Rasterizer.destinationPixels, characterPixel,
+                    rasterizerPixel, characterPixelOffset, rasterizerPixelOffset, width, height, colour
             );
 
         }
@@ -733,9 +731,8 @@ public class TypeFace extends Rasterizer {
             rasterizerPixelOffset += endOffsetX;
         }
         if(width > 0 && height > 0) {
-            drawCharacterPixelsItalic(
-                    characterPixels[character], Rasterizer.destinationPixels, characterPixel, rasterizerPixel,
-                    characterPixelOffset, rasterizerPixelOffset, width, height, colour
+            drawCharacterPixelsItalic(characterPixels[character], Rasterizer.destinationPixels, characterPixel,
+                    rasterizerPixel, characterPixelOffset, rasterizerPixelOffset, width, height, colour
             );
         }
     }
@@ -772,9 +769,8 @@ public class TypeFace extends Rasterizer {
             remainingWidth += endOffsetX;
         }
         if(width > 0 && height > 0) {
-            drawCharacterPixels(
-                    pixels, Rasterizer.destinationPixels, characterPixel, rasterizerPixel, characterPixelOffset,
-                    remainingWidth, width, height, colour
+            drawCharacterPixels(pixels, Rasterizer.destinationPixels, characterPixel, rasterizerPixel,
+                    characterPixelOffset, remainingWidth, width, height, colour
             );
         }
     }
@@ -1000,9 +996,8 @@ public class TypeFace extends Rasterizer {
                                         image.drawImage(
                                                 drawX + xOff, drawY + characterDefaultHeight - imageHeight + yOffset);
                                     } else {
-                                        image.drawImageAlpha(
-                                                drawX + xOff, drawY + characterDefaultHeight - imageHeight + yOffset,
-                                                opacity
+                                        image.drawImageAlpha(drawX + xOff,
+                                                drawY + characterDefaultHeight - imageHeight + yOffset, opacity
                                         );
                                     }
 
@@ -1047,29 +1042,27 @@ public class TypeFace extends Rasterizer {
                     if(character != 32) {
                         if(opacity == 256) {
                             if(shadowColor != -1) {
-                                drawCharacter(
-                                        character, drawX + 1 + yOffset,
+                                drawCharacter(character, drawX + 1 + yOffset,
                                         drawY + characterYOffsets[character] + 1 + symbolWidth, cWidth, xOff,
                                         shadowColor
                                 );
                             }
 
-                            drawCharacter(
-                                    character, drawX + yOffset, drawY + characterYOffsets[character] + symbolWidth,
-                                    cWidth, xOff, this.textcolour.getColour()
+                            drawCharacter(character, drawX + yOffset,
+                                    drawY + characterYOffsets[character] + symbolWidth, cWidth, xOff,
+                                    this.textcolour.getColour()
                             );
                         } else {
                             if(shadowColor != -1) {
-                                drawCharacterAlpha(
-                                        character, drawX + 1 + yOffset,
+                                drawCharacterAlpha(character, drawX + 1 + yOffset,
                                         drawY + characterYOffsets[character] + 1 + symbolWidth, cWidth, xOff,
                                         shadowColor, opacity
                                 );
                             }
 
-                            drawCharacterAlpha(
-                                    character, drawX + yOffset, drawY + characterYOffsets[character] + symbolWidth,
-                                    cWidth, xOff, this.textcolour.getColour(), opacity
+                            drawCharacterAlpha(character, drawX + yOffset,
+                                    drawY + characterYOffsets[character] + symbolWidth, cWidth, xOff,
+                                    this.textcolour.getColour(), opacity
                             );
                         }
                     }
@@ -1077,13 +1070,12 @@ public class TypeFace extends Rasterizer {
                     int charWidth = characterScreenWidths[character];
                     if(strikethroughColor != -1) {
                         if(opacity > 255) {
-                            Rasterizer.drawHorizontalLine(
-                                    drawX, drawY + (int) ((double) characterDefaultHeight * 0.7D), charWidth,
-                                    strikethroughColor
+                            Rasterizer.drawHorizontalLine(drawX, drawY + (int) ((double) characterDefaultHeight * 0.7D),
+                                    charWidth, strikethroughColor
                             );
                         } else {
-                            Rasterizer.drawHorizontalLineAlpha(
-                                    drawX, drawY + (int) ((double) characterDefaultHeight * 0.7D), charWidth,
+                            Rasterizer.drawHorizontalLineAlpha(drawX,
+                                    drawY + (int) ((double) characterDefaultHeight * 0.7D), charWidth,
                                     strikethroughColor, opacity
                             );
 
@@ -1284,26 +1276,22 @@ public class TypeFace extends Rasterizer {
 
                             if(shadowColor != -1) {
                                 if(italics) {
-                                    drawCharacterAlphaItalics(
-                                            c, x + 1, y + characterYOffsets[c] + 1, width, height, shadowColor,
-                                            opacity
+                                    drawCharacterAlphaItalics(c, x + 1, y + characterYOffsets[c] + 1, width, height,
+                                            shadowColor, opacity
                                     );
                                 } else {
-                                    drawCharacterAlpha(
-                                            c, x + 1, y + characterYOffsets[c] + 1, width, height, shadowColor,
-                                            opacity
+                                    drawCharacterAlpha(c, x + 1, y + characterYOffsets[c] + 1, width, height,
+                                            shadowColor, opacity
                                     );
                                 }
                             }
                             if(italics) {
-                                drawCharacterAlphaItalics(
-                                        c, x, y + characterYOffsets[c], width, height, this.textcolour.getColour(),
-                                        opacity
+                                drawCharacterAlphaItalics(c, x, y + characterYOffsets[c], width, height,
+                                        this.textcolour.getColour(), opacity
                                 );
                             } else {
-                                drawCharacterAlpha(
-                                        c, x, y + characterYOffsets[c], width, height, this.textcolour.getColour(),
-                                        opacity
+                                drawCharacterAlpha(c, x, y + characterYOffsets[c], width, height,
+                                        this.textcolour.getColour(), opacity
                                 );
                             }
                         }
@@ -1450,9 +1438,8 @@ public class TypeFace extends Rasterizer {
             rasterizerPixelOffset += widthoffset;
         }
         if(width > 0 && height > 0) {
-            drawCharacterPixelsAlpha(
-                    characterPixel, rasterizerPixelOffset, characterPixelOffset, rasterizerPixel, alpha,
-                    Rasterizer.destinationPixels, colour, height, width, characterPixels
+            drawCharacterPixelsAlpha(characterPixel, rasterizerPixelOffset, characterPixelOffset, rasterizerPixel,
+                    alpha, Rasterizer.destinationPixels, colour, height, width, characterPixels
             );
         }
     }
@@ -1490,9 +1477,8 @@ public class TypeFace extends Rasterizer {
             rasterizerPixelOffset += widthoffset;
         }
         if(width > 0 && height > 0) {
-            drawCharacterPixelsAlphaItalics(
-                    characterPixel, rasterizerPixelOffset, characterPixelOffset, rasterizerPixel, alpha,
-                    Rasterizer.destinationPixels, colour, height, width, characterPixels
+            drawCharacterPixelsAlphaItalics(characterPixel, rasterizerPixelOffset, characterPixelOffset,
+                    rasterizerPixel, alpha, Rasterizer.destinationPixels, colour, height, width, characterPixels
             );
         }
     }

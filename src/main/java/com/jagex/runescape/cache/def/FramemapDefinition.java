@@ -1,13 +1,16 @@
 package com.jagex.runescape.cache.def;
 
-import com.jagex.runescape.*;
+import com.jagex.runescape.Class37;
+import com.jagex.runescape.Landscape;
+import com.jagex.runescape.LinkedList;
+import com.jagex.runescape.MovedStatics;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
-import com.jagex.runescape.node.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.node.Node;
 import com.jagex.runescape.scene.tile.Wall;
 
 public class FramemapDefinition extends Node {

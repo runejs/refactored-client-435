@@ -2,10 +2,10 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.node.Node;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.node.Node;
 
 public class EntryTable extends Node {
     public static int[] anIntArray2141;

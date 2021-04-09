@@ -1,6 +1,8 @@
 package com.jagex.runescape.cache.def;
 
-import com.jagex.runescape.*;
+import com.jagex.runescape.Class42;
+import com.jagex.runescape.Class44;
+import com.jagex.runescape.Class59;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;

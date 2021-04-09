@@ -109,8 +109,7 @@ public class OverlayDefinition extends CachedNode {
             if(actionId == 5 || actionId == 10 || actionId == 20) {
                 ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
                 FloorDecoration.method344(-69);
-                Item.method779(
-                        MouseHandler.gameCanvas, true, CacheArchive.huffmanCacheArchive,
+                Item.method779(MouseHandler.gameCanvas, true, CacheArchive.huffmanCacheArchive,
                         CacheArchive.gameImageCacheArchive
                 );
             }

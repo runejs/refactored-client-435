@@ -278,8 +278,7 @@ public class FloorDecoration {
                     if(i_37_ > i_34_) {
                         i_37_ = i_34_;
                     }
-                    Class57.aClass64_1345.method1008(
-                            Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition, i_37_, -127,
+                    Class57.aClass64_1345.method1008(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition, i_37_, -127,
                             Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer
                     );
                     if(Class8.aByte302 != 0) {
@@ -348,8 +347,7 @@ public class FloorDecoration {
                     if(i_42_ > i_34_) {
                         i_42_ = i_34_;
                     }
-                    Class57.aClass64_1345.method1008(
-                            LinkedList.aClass40_Sub1_1081.currentPosition, i_42_, -128,
+                    Class57.aClass64_1345.method1008(LinkedList.aClass40_Sub1_1081.currentPosition, i_42_, -128,
                             LinkedList.aClass40_Sub1_1081.buffer
                     );
                     if(Class8.aByte302 != 0) {

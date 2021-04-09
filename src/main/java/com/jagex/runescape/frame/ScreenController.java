@@ -98,21 +98,18 @@ public class ScreenController {
         Dimension innerSize = getInnerSize(Class35.aFrame1732);
         drawHeight = innerSize.height;
         drawWidth = innerSize.width;
-        Rasterizer3D.prepare(
-                null, frameMode == ScreenMode.FIXED ? 512 : drawWidth,
+        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 512 : drawWidth,
                 frameMode == ScreenMode.FIXED ? 334 : drawHeight
         );
         Class24.fullScreenTextureArray = Rasterizer3D.setLineOffsets(null);
         Rasterizer3D.prepare(
                 null, frameMode == ScreenMode.FIXED ? 479 : drawWidth, frameMode == ScreenMode.FIXED ? 96 : drawHeight);
         MovedStatics.chatboxLineOffsets = Rasterizer3D.setLineOffsets(null);
-        Rasterizer3D.prepare(
-                null, frameMode == ScreenMode.FIXED ? 190 : drawWidth,
+        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 190 : drawWidth,
                 frameMode == ScreenMode.FIXED ? 261 : drawHeight
         );
         ActorDefinition.sidebarOffsets = Rasterizer3D.setLineOffsets(null);
-        Rasterizer3D.prepare(
-                null, frameMode == ScreenMode.FIXED ? 765 : drawWidth,
+        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 765 : drawWidth,
                 frameMode == ScreenMode.FIXED ? 503 : drawHeight
         );
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(null);
@@ -126,8 +123,7 @@ public class ScreenController {
         }
 
 
-        Scene.method95(
-                500, 800, frameMode == ScreenMode.FIXED ? 512 : drawWidth,
+        Scene.method95(500, 800, frameMode == ScreenMode.FIXED ? 512 : drawWidth,
                 frameMode == ScreenMode.FIXED ? 334 : drawHeight, is
         );
         MouseHandler.gameCanvas.setSize(
@@ -180,27 +176,23 @@ public class ScreenController {
             if(isCoordinatesInExtendedTabArea(mX, mY) && !isCoordinatesInTabArea(mX, mY)) {
                 Rasterizer.drawFilledRectangleAlpha(
                         tabInterFaceTop[0], tabInterFaceTop[1], tabInterFaceTop[2], tabInterFaceTop[3], 0x00FF00, 90);
-                Rasterizer.drawFilledRectangleAlpha(
-                        tabInterFaceBottom[0], tabInterFaceBottom[1], tabInterFaceBottom[2], tabInterFaceBottom[3],
-                        0x00FF00, 90
+                Rasterizer.drawFilledRectangleAlpha(tabInterFaceBottom[0], tabInterFaceBottom[1], tabInterFaceBottom[2],
+                        tabInterFaceBottom[3], 0x00FF00, 90
                 );
             } else {
                 Rasterizer.drawFilledRectangleAlpha(
                         tabInterFaceTop[0], tabInterFaceTop[1], tabInterFaceTop[2], tabInterFaceTop[3], 0x0000FF, 90);
-                Rasterizer.drawFilledRectangleAlpha(
-                        tabInterFaceBottom[0], tabInterFaceBottom[1], tabInterFaceBottom[2], tabInterFaceBottom[3],
-                        0x0000FF, 90
+                Rasterizer.drawFilledRectangleAlpha(tabInterFaceBottom[0], tabInterFaceBottom[1], tabInterFaceBottom[2],
+                        tabInterFaceBottom[3], 0x0000FF, 90
                 );
             }
             if(isCoordinatesInTabArea(mX, mY)) {
-                Rasterizer.drawFilledRectangleAlpha(
-                        tabInterFaceCoords[0], tabInterFaceCoords[1], MovedStatics.tabImageProducer.width,
-                        MovedStatics.tabImageProducer.height, 0x00FF00, 90
+                Rasterizer.drawFilledRectangleAlpha(tabInterFaceCoords[0], tabInterFaceCoords[1],
+                        MovedStatics.tabImageProducer.width, MovedStatics.tabImageProducer.height, 0x00FF00, 90
                 );
             } else {
-                Rasterizer.drawFilledRectangleAlpha(
-                        tabInterFaceCoords[0], tabInterFaceCoords[1], MovedStatics.tabImageProducer.width,
-                        MovedStatics.tabImageProducer.height, 0x0000FF, 90
+                Rasterizer.drawFilledRectangleAlpha(tabInterFaceCoords[0], tabInterFaceCoords[1],
+                        MovedStatics.tabImageProducer.width, MovedStatics.tabImageProducer.height, 0x0000FF, 90
                 );
             }
             if(isCoordinatesInExtendedChatArea(mX, mY) && !isCoordinatesInChatArea(mX, mY)) {
@@ -209,13 +201,11 @@ public class ScreenController {
                 Rasterizer.drawFilledRectangleAlpha(0, drawHeight - (162), 516, drawHeight, 0x0000FF, 90);
             }
             if(isCoordinatesInChatArea(mX, mY)) {
-                Rasterizer.drawFilledRectangleAlpha(
-                        17, drawHeight - (162) + 16, RSCanvas.chatBoxImageProducer.width,
+                Rasterizer.drawFilledRectangleAlpha(17, drawHeight - (162) + 16, RSCanvas.chatBoxImageProducer.width,
                         RSCanvas.chatBoxImageProducer.height, 0x00FF00, 90
                 );
             } else {
-                Rasterizer.drawFilledRectangleAlpha(
-                        17, drawHeight - (162) + 16, RSCanvas.chatBoxImageProducer.width,
+                Rasterizer.drawFilledRectangleAlpha(17, drawHeight - (162) + 16, RSCanvas.chatBoxImageProducer.width,
                         RSCanvas.chatBoxImageProducer.height, 0x0000FF, 90
                 );
             }
@@ -250,20 +240,17 @@ public class ScreenController {
         // height 337
         // width 234
         drawFramePiece(GameObject.tabPieceLeft, x + 212, y + 39);
-        drawFramePieceCutout(
-                MovedStatics.tabPieceUpperRight, x, y + 39, MovedStatics.tabPieceUpperRight.width - 15,
+        drawFramePieceCutout(MovedStatics.tabPieceUpperRight, x, y + 39, MovedStatics.tabPieceUpperRight.width - 15,
                 MovedStatics.tabPieceUpperRight.height, 15, 0
         );
-        drawFramePieceCutout(
-                PlayerAppearance.tabPieveLowerRight, x, y + 191, PlayerAppearance.tabPieveLowerRight.width - 35,
-                PlayerAppearance.tabPieveLowerRight.height, 35, 0
+        drawFramePieceCutout(PlayerAppearance.tabPieveLowerRight, x, y + 191,
+                PlayerAppearance.tabPieveLowerRight.width - 35, PlayerAppearance.tabPieveLowerRight.height, 35, 0
         );
         drawFramePieceCutout(
                 Class17.chatboxTop, x, y + 172, Class17.chatboxTop.width - 531, Class17.chatboxTop.height, 531, 0);
         drawFramePieceCutout(
                 RSCanvas.tabBottom, x, y + 300, RSCanvas.tabBottom.width - 35, RSCanvas.tabBottom.height, 35, 0);
-        drawFramePieceCutout(
-                InteractiveObject.tabTop, x, y, InteractiveObject.tabTop.width - 15,
+        drawFramePieceCutout(InteractiveObject.tabTop, x, y, InteractiveObject.tabTop.width - 15,
                 InteractiveObject.tabTop.height - 6, 15, 6
         );
         drawFramePiece(MovedStatics.tabImageProducer, x + 22, y + 39);
@@ -282,9 +269,8 @@ public class ScreenController {
                 Class17.chatboxTop, x, y, Class17.chatboxTop.width - 37, Class17.chatboxTop.height - 3, 0, 3);
         //        System.out.println(Class40_Sub5_Sub1.chatboxRight.height + (Class17.chatboxTop.height-3) + HuffmanEncoding.aProducingGraphicsBuffer_1541.height);
 
-        drawFramePieceCutout(
-                PlayerAppearance.tabPieveLowerRight, x + 496, y + 16, 20, PlayerAppearance.tabPieveLowerRight.height, 0,
-                0
+        drawFramePieceCutout(PlayerAppearance.tabPieveLowerRight, x + 496, y + 16, 20,
+                PlayerAppearance.tabPieveLowerRight.height, 0, 0
         );
 
 
