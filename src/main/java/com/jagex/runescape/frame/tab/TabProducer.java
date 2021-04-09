@@ -15,6 +15,8 @@ import com.jagex.runescape.media.renderable.actor.Player;
 // TODO: DONT RUN NORMAL TAB RENDERER WHEN THIS IS RUNNING
 public class TabProducer extends FramePieceRenderer {
     private static ProducingGraphicsBuffer resizableSideBarImage;
+    private static int workingWidth = 232;
+    private static int workingHeight = 334;
     private ProducingGraphicsBuffer tempResizableSideBar;
     private ImageRGB edgeLeft;
     private ImageRGB edgeRight;
@@ -41,15 +43,28 @@ public class TabProducer extends FramePieceRenderer {
     private ImageRGB stone_top_right_selected;
     private boolean loaded = false;
 
-    private static int workingWidth = 232;
-    private static int workingHeight = 334;
-
 
     public TabProducer() {
         this.tempResizableSideBar = Class40_Sub5_Sub13.createGraphicsBuffer(241, 334, MouseHandler.gameCanvas);
         resizableSideBarImage = Class40_Sub5_Sub13.createGraphicsBuffer(241, 334, MouseHandler.gameCanvas);
         rasterizerInstanced = new RasterizerInstanced(this.tempResizableSideBar);
         rasterizerInstanced.drawFilledRectangle(0, 0, 241, 334, Integer.MAX_VALUE);
+    }
+
+    private static void RenderCustomTabArea(int baseX, int baseY) {
+        int colourBorder = 0x242017;
+        int colourInnerBorder = 0x776c38;
+        int colourInnerPrimary = 0x4d4427;
+        int colourInnerSecondary = 0xa3984a;
+        int width = 232;
+        int height = 334;
+        // height 337
+        // width 234
+        //        Rasterizer.drawFilledRectangle(baseX, baseY, width, height, colourBorder);
+        //        Rasterizer.drawFilledRectangle(baseX + 2, baseY + 2, width - 4, height - 4, colourInnerBorder);
+        //        Rasterizer.drawFilledRectangle(baseX + 4, baseY + 4, width - 8, height - 8, colourInnerBorder);
+        //        Rasterizer.drawFilledRectangle(baseX + 5, baseY + 2, 3, 40, 0xa3984a);
+
     }
 
     private void drawActiveTab(int currentTabId, int currentY) {
@@ -155,7 +170,6 @@ public class TabProducer extends FramePieceRenderer {
         }
         return new int[]{start[0], start[1], end[0], start[1] + topbar[3]};
     }
-
 
     public void drawResizableSideBarArea(int x, int y) {
         ScreenController.drawFramePiece(resizableSideBarImage, x, y);
@@ -273,7 +287,6 @@ public class TabProducer extends FramePieceRenderer {
         drawImage(music, currentX, currentY);
     }
 
-
     private void drawTopRow(int x, int y, int workingWidth, int workingHeight) {
         drawImage(topRow, x - 4, y);
         if(Player.currentTabId < 7) {
@@ -293,22 +306,6 @@ public class TabProducer extends FramePieceRenderer {
         drawImage(prayer, currentX, y);
         currentX += stats.imageWidth;
         drawImage(magic, currentX, y);
-    }
-
-    private static void RenderCustomTabArea(int baseX, int baseY) {
-        int colourBorder = 0x242017;
-        int colourInnerBorder = 0x776c38;
-        int colourInnerPrimary = 0x4d4427;
-        int colourInnerSecondary = 0xa3984a;
-        int width = 232;
-        int height = 334;
-        // height 337
-        // width 234
-        //        Rasterizer.drawFilledRectangle(baseX, baseY, width, height, colourBorder);
-        //        Rasterizer.drawFilledRectangle(baseX + 2, baseY + 2, width - 4, height - 4, colourInnerBorder);
-        //        Rasterizer.drawFilledRectangle(baseX + 4, baseY + 4, width - 8, height - 8, colourInnerBorder);
-        //        Rasterizer.drawFilledRectangle(baseX + 5, baseY + 2, 3, 40, 0xa3984a);
-
     }
 
     public void clickTabButton(int x, int y, int baseX, int baseY) {

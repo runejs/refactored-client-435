@@ -12,6 +12,7 @@ import com.jagex.runescape.scene.tile.*;
 import java.util.Arrays;
 
 public class Scene {
+    private static final int TILE_DRAW_DISTANCE = 75;
     public static int cameraPosX;
     public static int clickY = 0;
     public static int clickedTileX = -1;
@@ -58,7 +59,6 @@ public class Scene {
     public static int[] anIntArray130 = new int[]{76, 8, 137, 4, 0, 1, 38, 2, 19};
     public static int[] anIntArray131 = new int[]{1, 1, 0, 0, 0, 8, 0, 0, 8};
     public static int[] anIntArray132 = new int[]{0, 4, 4, 8, 0, 0, 8, 0, 0};
-    private static final int TILE_DRAW_DISTANCE = 75;
     public static boolean[][] TILE_VISIBILITY_MAP;
     public static boolean[][][][] TILE_VISIBILITY_MAPS = new boolean[8][32][(TILE_DRAW_DISTANCE * 2) + 1][
             (TILE_DRAW_DISTANCE * 2) + 1];

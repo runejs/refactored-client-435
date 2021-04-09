@@ -15,11 +15,9 @@ import com.jagex.runescape.scene.util.CollisionMap;
 public class ChatBox {
     public static boolean redrawChatbox = false;
     public static boolean messagePromptRaised = false;
-    private static String lastItemSearchInput = "";
     public static String inputMessage = "";
     public static int itemSearchResultCount = 0;
     public static int itemSearchScroll = 0;
-    private static String[] itemSearchResultNames = new String[100];
     public static int inputType = 0;
     public static int dialogueId = -1;
     public static String[] chatMessages = new String[100];
@@ -30,10 +28,11 @@ public class ChatBox {
     public static int tradeMode = 0;
     public static int chatboxScrollMax = 78;
     public static int chatboxScroll = 0;
-    private static int[] itemSearchResultIds = new int[100];
     public static String chatboxInput = "";
     public static String chatMessage = "";
-
+    private static String lastItemSearchInput = "";
+    private static String[] itemSearchResultNames = new String[100];
+    private static int[] itemSearchResultIds = new int[100];
     private static char[] VALID_CHARACTERS = {
             ' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w', 'c', 'y', 'f', 'g', 'p', 'b',
             'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '?', '.', ',', ':',

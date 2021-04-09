@@ -126,6 +126,14 @@ public class MovedStatics {
     public static long aLong853;
     public static int anInt854 = -1;
     public static IndexedImage minimapBackgroundImage;
+    public static int[] menuActionTypes = new int[500];
+    public static ProducingGraphicsBuffer loginBoxGraphics;
+    public static int[] anIntArray889 = new int[128];
+    public static int anInt892;
+    public static boolean aBoolean893 = false;
+    public static int[] anIntArray1916 = new int[50];
+    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1919;
+    public static int anInt1923 = 0;
 
     public static void method440(byte arg0) {
         if(ISAAC.aBoolean512) {
@@ -162,15 +170,6 @@ public class MovedStatics {
     public static void method441(CacheArchive arg0) {
         Actor.aCacheArchive_3144 = arg0;
     }
-
-    public static int[] menuActionTypes = new int[500];
-    public static ProducingGraphicsBuffer loginBoxGraphics;
-    public static int[] anIntArray889 = new int[128];
-    public static int anInt892;
-    public static boolean aBoolean893 = false;
-    public static int[] anIntArray1916 = new int[50];
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1919;
-    public static int anInt1923 = 0;
 
     public static void method445(int arg0) {
         if(CollisionMap.anInt165 != 0) {

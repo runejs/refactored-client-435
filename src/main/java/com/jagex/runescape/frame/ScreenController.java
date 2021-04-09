@@ -36,10 +36,9 @@ public class ScreenController {
     public static int drawHeight = 540;
     public static Minimap minimap = new Minimap();
     public static TabProducer tabProducer = new TabProducer();
+    public static boolean DebugView = false;
     private static Thread drawingThread;
     private static FrameRenderer renderer;
-    public static boolean DebugView = false;
-
 
     public static void frameMode(ScreenMode screenMode) {
         if(frameMode != screenMode) {

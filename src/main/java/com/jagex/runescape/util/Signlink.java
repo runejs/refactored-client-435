@@ -14,11 +14,11 @@ import java.net.URL;
 
 public class Signlink implements Runnable {
     public static Method aMethod724;
-    private static String homeDirectory;
     public static Method aMethod729;
     public static String aString735;
     public static int anInt737 = 3;
     public static String aString739;
+    private static String homeDirectory;
     public boolean aBoolean721;
     public int uid = 0;
     public SizedAccessFile[] dataIndexAccessFiles;

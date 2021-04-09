@@ -198,21 +198,21 @@ public final class MusicSystem implements Runnable {
     }
 
     /**
-     * Sets the volume.
-     *
-     * @param volume the volume (integer value from 0..256)
-     */
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    /**
      * Gets the volume.
      *
      * @return the volume
      */
     public int getVolume() {
         return volume;
+    }
+
+    /**
+     * Sets the volume.
+     *
+     * @param volume the volume (integer value from 0..256)
+     */
+    public void setVolume(int volume) {
+        this.volume = volume;
     }
 
     /**

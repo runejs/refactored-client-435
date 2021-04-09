@@ -79,6 +79,20 @@ class MidiPlayer implements Receiver {
     }
 
     /**
+     * Adds the <code>adjustment</code> to the volume.
+     *
+     * @param adjustment the adjustment
+     * @throws InvalidMidiDataException
+     */
+    public void adjustVolume(int adjustment) throws InvalidMidiDataException {
+        setVolume(volume + adjustment);
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    /**
      * Sets the volume.
      *
      * @param volume the volume
@@ -104,20 +118,6 @@ class MidiPlayer implements Receiver {
                 send(c + ShortMessage.CONTROL_CHANGE, LSB_CHANNEL_VOLUME, data & 0x7F);
             }
         }
-    }
-
-    /**
-     * Adds the <code>adjustment</code> to the volume.
-     *
-     * @param adjustment the adjustment
-     * @throws InvalidMidiDataException
-     */
-    public void adjustVolume(int adjustment) throws InvalidMidiDataException {
-        setVolume(volume + adjustment);
-    }
-
-    public int getVolume() {
-        return volume;
     }
 
     private int getChannelVolume(int channel) {

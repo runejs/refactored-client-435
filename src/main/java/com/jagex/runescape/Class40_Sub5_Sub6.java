@@ -28,12 +28,12 @@ public class Class40_Sub5_Sub6 extends CachedNode {
     public static int cameraY;
     public static int loadingPercent = 0;
     public static int anInt2452 = 0;
-    public byte[] aByteArray2441;
     private static char VALID_CHARACTERS[] = {
             ' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w', 'c', 'y', 'f', 'g', 'p', 'b',
             'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '!', '?', '.', ',',
             ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243', '$', '%', '"', '[', ']'
     };
+    public byte[] aByteArray2441;
 
     public Class40_Sub5_Sub6(byte[] arg0) {
         aByteArray2441 = arg0;

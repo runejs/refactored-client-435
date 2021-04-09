@@ -4,6 +4,9 @@ import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.node.CachedNode;
 
 public class Rasterizer extends CachedNode {
+    // used for drawing circles
+    private static final int[] tmpX = new int[64];
+    private static final int[] tmpY = new int[64];
     public static int[] destinationPixels;
     public static int viewportTop = 0;
     public static int destinationWidth;
@@ -14,10 +17,6 @@ public class Rasterizer extends CachedNode {
     public static int viewportRightX = 0;
     public static int viewportCenterX = 0;
     public static int viewportCenterY = 0;
-
-    // used for drawing circles
-    private static final int[] tmpX = new int[64];
-    private static final int[] tmpY = new int[64];
 
     public static void prepare(int[] pixels, int width, int height) {
         Rasterizer.destinationPixels = pixels;

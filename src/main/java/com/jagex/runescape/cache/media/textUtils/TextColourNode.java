@@ -13,12 +13,12 @@ public class TextColourNode {
         return colour;
     }
 
-    public void setNext(TextColourNode node) {
-        this.next = node;
-    }
-
     public TextColourNode getNext() {
         return this.next;
+    }
+
+    public void setNext(TextColourNode node) {
+        this.next = node;
     }
 
     public TextColourNode getPrevious() {

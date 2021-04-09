@@ -28,11 +28,6 @@ public class RSCanvas extends Canvas {
         aComponent49 = arg0;
     }
 
-    @Override
-    public void repaint() {
-        //        super.repaint();
-    }
-
     public static void createMinimapRaster() {
         RSString.mapbackProducingGraphicsBuffer.prepareRasterizer();
     }
@@ -64,6 +59,11 @@ public class RSCanvas extends Canvas {
         CacheArchive.huffmanCacheArchive.method191(arg0 + 1120);
         CacheArchive.jingleCacheArchive.method191(1120);
         CacheArchive.clientScriptCacheArchive.method191(1120);
+    }
+
+    @Override
+    public void repaint() {
+        //        super.repaint();
     }
 
     public void paint(Graphics arg0) {

@@ -57,6 +57,17 @@ public class Player extends Actor {
     public static int[] tabWidgetIds = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     public static int currentTabId = 3;
     public static String[] friendUsernames = new String[200];
+
+    static {
+        int i = 0;
+        for(int idx = 0; idx < 99; idx++) {
+            int skillLevel = idx + 1;
+            int experienceForLevel = (int) ((double) skillLevel + 300.0 * Math.pow(2.0, (double) skillLevel / 7.0));
+            i += experienceForLevel;
+            Player.experienceForLevels[idx] = i / 4;
+        }
+    }
+
     public int skillLevel;
     public int anInt3258;
     public int combatLevel = 0;
@@ -76,16 +87,6 @@ public class Player extends Actor {
     public boolean aBoolean3287;
     public int anInt3289;
     public int anInt3291;
-
-    static {
-        int i = 0;
-        for(int idx = 0; idx < 99; idx++) {
-            int skillLevel = idx + 1;
-            int experienceForLevel = (int) ((double) skillLevel + 300.0 * Math.pow(2.0, (double) skillLevel / 7.0));
-            i += experienceForLevel;
-            Player.experienceForLevels[idx] = i / 4;
-        }
-    }
 
     public Player() {
         skillLevel = 0;

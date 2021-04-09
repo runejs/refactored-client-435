@@ -26,9 +26,9 @@ public class ObjectDecompressor {
     public static File f_cache;
     public static File f_index;
     public static int definitionCount;
+    public static Buffer buffer;
     private static int[] bufferOffsets;
     private static boolean loaded = false;
-    public static Buffer buffer;
 
     public static Buffer grabObjectDef(int id) throws IOException {
         if(!loaded) {

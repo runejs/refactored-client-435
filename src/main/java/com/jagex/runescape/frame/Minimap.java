@@ -22,10 +22,10 @@ public class Minimap extends FramePieceRenderer {
     private static int[] resizableMinimapOffsets1;
     private static int[] resizableMinimapOffsets2;
     private static ProducingGraphicsBuffer resizableMiniMapimage;
+    private static int[] resizableMinimapLineOffsets;
     private int[] resizableCompasOffsets1;
     private int[] resizableCompasOffsets2;
     private ProducingGraphicsBuffer tempResizableMiniMapimage;
-    private static int[] resizableMinimapLineOffsets;
 
     public Minimap() {
         this.tempResizableMiniMapimage = Class40_Sub5_Sub13.createGraphicsBuffer(210, 210, MouseHandler.gameCanvas);

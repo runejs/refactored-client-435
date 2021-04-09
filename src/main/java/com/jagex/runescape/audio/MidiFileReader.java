@@ -9,14 +9,14 @@ public class MidiFileReader {
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
             2, 2, 2, 2, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
+    public int[] trackLengths;
+    public int division;
     private Buffer buffer = new Buffer(null);
     private long aLong424;
     private int[] trackPositions;
     private int[] trackStarts;
-    public int[] trackLengths;
     private int[] anIntArray428;
     private int anInt430;
-    public int division;
 
     public int getPrioritizedTrack() {
         int i = trackPositions.length;

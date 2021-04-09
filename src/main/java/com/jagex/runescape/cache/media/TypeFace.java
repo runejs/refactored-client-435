@@ -60,11 +60,10 @@ public class TypeFace extends Rasterizer {
     private static int shadowColor = -1;
     private static int textColor = 0xff00ff;
     private static int whiteSpace = 0;
-
+    public int characterDefaultHeight;
     private String[] aClass1Array2897 = new String[100];
     private Random random;
     private int[] characterScreenWidths;
-    public int characterDefaultHeight;
     private int[] characterYOffsets;
     private byte[][] characterPixels;
     private int[] characterHeights;

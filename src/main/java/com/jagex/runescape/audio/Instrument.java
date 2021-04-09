@@ -64,6 +64,24 @@ public class Instrument {
         pitch_base_step = null;
     }
 
+    public static void method776(int[] arg0, int arg1, int arg2) {
+        arg2 = arg1 + arg2 - 7;
+        while(arg1 < arg2) {
+            arg0[arg1++] = 0;
+            arg0[arg1++] = 0;
+            arg0[arg1++] = 0;
+            arg0[arg1++] = 0;
+            arg0[arg1++] = 0;
+            arg0[arg1++] = 0;
+            arg0[arg1++] = 0;
+            arg0[arg1++] = 0;
+        }
+        arg2 += 7;
+        while(arg1 < arg2) {
+            arg0[arg1++] = 0;
+        }
+    }
+
     public void decode(Buffer buffer) {
         pitch_env = new Envelope();
         pitch_env.decode(buffer);
@@ -128,24 +146,6 @@ public class Instrument {
             return noise[phase / 2607 & 0x7fff] * amplitude;
         }
         return 0;
-    }
-
-    public static void method776(int[] arg0, int arg1, int arg2) {
-        arg2 = arg1 + arg2 - 7;
-        while(arg1 < arg2) {
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-        }
-        arg2 += 7;
-        while(arg1 < arg2) {
-            arg0[arg1++] = 0;
-        }
     }
 
     public int[] synthesize(int n_s, int dt) {

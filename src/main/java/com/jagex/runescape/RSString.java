@@ -101,17 +101,6 @@ public class RSString {
         return string;
     }
 
-
-    public RSString substring(int arg1) {
-        return substring(arg1, length);
-    }
-
-    public int method51(int arg0, int arg1, byte[] arg2, int arg3) {
-        Class18.method278(chars, arg0, arg2, arg3, arg1 - arg0);
-        return -arg0 + arg1;
-    }
-
-
     public static String formatChatString(String str) {
         char[] chars = str.toCharArray();
         boolean shouldUppercaseNext = true;
@@ -134,6 +123,64 @@ public class RSString {
             }
         }
         return new String(chars);
+    }
+
+    public static long nameToLong(String arg0) {
+        long l = 0L;
+        for(int i = 0; i < arg0.length(); i++) {
+            if(i >= 12) {
+                break;
+            }
+            l *= 37L;
+            int i_1_ = arg0.charAt(i);
+            if(i_1_ >= 65 && i_1_ <= 90) {
+                l += (long) (i_1_ + 1 + -65);
+            } else if(i_1_ >= 97 && i_1_ <= 122) {
+                l += (long) (1 + i_1_ + -97);
+            } else if(i_1_ >= 48 && i_1_ <= 57) {
+                l += (long) (27 - (-i_1_ + 48));
+            }
+        }
+        for(/**/; l % 37L == 0 && l != 0; l /= 37L) {
+            /* empty */
+        }
+        return l;
+    }
+
+    public static String prepend(String source, String arg0, int arg2) {
+        byte[] sourceba = source.getBytes();
+        byte[] arg0ba = arg0.getBytes();
+        if(arg2 > source.length()) {
+            throw new IllegalArgumentException();
+        }
+        if(arg0.length() + arg2 > sourceba.length) {
+            int i;
+            for(i = 1; i < arg0.length() + arg2; i += i) {
+                /* empty */
+            }
+            byte[] is = new byte[i];
+            Class18.method278(sourceba, 0, is, 0, arg0.length());
+            sourceba = is;
+        }
+        Class18.method278(arg0ba, 0, sourceba, arg2, arg0.length());
+        return new String(sourceba);
+    }
+
+    public static int stringHash(String str) {
+        int i = 0;
+        for(int i_12_ = 0; str.length() > i_12_; i_12_++) {
+            i = (0xff & str.charAt(i_12_)) + -i + (i << 5);
+        }
+        return i;
+    }
+
+    public RSString substring(int arg1) {
+        return substring(arg1, length);
+    }
+
+    public int method51(int arg0, int arg1, byte[] arg2, int arg3) {
+        Class18.method278(chars, arg0, arg2, arg3, arg1 - arg0);
+        return -arg0 + arg1;
     }
 
     public boolean equals(RSString str) {
@@ -174,28 +221,6 @@ public class RSString {
 
     public int indexOf(int arg1) {
         return method64(0, arg1);
-    }
-
-    public static long nameToLong(String arg0) {
-        long l = 0L;
-        for(int i = 0; i < arg0.length(); i++) {
-            if(i >= 12) {
-                break;
-            }
-            l *= 37L;
-            int i_1_ = arg0.charAt(i);
-            if(i_1_ >= 65 && i_1_ <= 90) {
-                l += (long) (i_1_ + 1 + -65);
-            } else if(i_1_ >= 97 && i_1_ <= 122) {
-                l += (long) (1 + i_1_ + -97);
-            } else if(i_1_ >= 48 && i_1_ <= 57) {
-                l += (long) (27 - (-i_1_ + 48));
-            }
-        }
-        for(/**/; l % 37L == 0 && l != 0; l /= 37L) {
-            /* empty */
-        }
-        return l;
     }
 
     public int length() {
@@ -383,25 +408,6 @@ public class RSString {
         return this;
     }
 
-    public static String prepend(String source, String arg0, int arg2) {
-        byte[] sourceba = source.getBytes();
-        byte[] arg0ba = arg0.getBytes();
-        if(arg2 > source.length()) {
-            throw new IllegalArgumentException();
-        }
-        if(arg0.length() + arg2 > sourceba.length) {
-            int i;
-            for(i = 1; i < arg0.length() + arg2; i += i) {
-                /* empty */
-            }
-            byte[] is = new byte[i];
-            Class18.method278(sourceba, 0, is, 0, arg0.length());
-            sourceba = is;
-        }
-        Class18.method278(arg0ba, 0, sourceba, arg2, arg0.length());
-        return new String(sourceba);
-    }
-
     public RSString addChar(int arg0) {
         if(arg0 > 255) {
             throw new IllegalArgumentException("invalid char");
@@ -460,14 +466,6 @@ public class RSString {
         int i = 0;
         for(int i_12_ = 0; length > i_12_; i_12_++) {
             i = (0xff & chars[i_12_]) + -i + (i << 5);
-        }
-        return i;
-    }
-
-    public static int stringHash(String str) {
-        int i = 0;
-        for(int i_12_ = 0; str.length() > i_12_; i_12_++) {
-            i = (0xff & str.charAt(i_12_)) + -i + (i << 5);
         }
         return i;
     }

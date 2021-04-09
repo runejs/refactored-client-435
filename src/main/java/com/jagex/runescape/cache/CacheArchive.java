@@ -33,6 +33,10 @@ public class CacheArchive {
     public static CacheArchive clientScriptCacheArchive;
     public static CacheArchive definitionCache;
 
+    static {
+        Player.npcs = new Npc[32768];
+    }
+
     public byte[][] aByteArrayArray212;
     public int anInt216;
     public Class42[] aClass42Array217;
@@ -56,10 +60,6 @@ public class CacheArchive {
     public int anInt1810;
     public boolean aBoolean1811;
     public CacheIndex dataIndex;
-
-    static {
-        Player.npcs = new Npc[32768];
-    }
 
     public CacheArchive(
             CacheIndex dataIndex, CacheIndex metaIndex, int cacheIndexId, boolean arg3, boolean arg4, boolean arg5
