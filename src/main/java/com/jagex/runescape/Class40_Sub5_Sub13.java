@@ -40,36 +40,58 @@ public class Class40_Sub5_Sub13 extends CachedNode {
     public static void method651(int arg0, int arg1) {
         if(MovedStatics.aClass22_189 != null) {
             if(RSCanvas.anInt54 != 0) {
-                if(Player.aByteArray3270 != null)
+                if(Player.aByteArray3270 != null) {
                     PacketBuffer.anInt2258 = arg1;
+                }
             } else if(MouseHandler.anInt1450 >= 0) {
                 MouseHandler.anInt1450 = arg1;
                 MovedStatics.aClass22_189.method304((byte) -111, arg1, 0);
             }
-            if(arg0 != 22741)
+            if(arg0 != 22741) {
                 method652();
+            }
         }
     }
 
     public static void method652() {
-        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
-            if(class40_sub3.anInt2031 > 0)
+        for(
+                Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90);
+                class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)
+        ) {
+            if(class40_sub3.anInt2031 > 0) {
                 class40_sub3.anInt2031--;
+            }
             if(class40_sub3.anInt2031 == 0) {
-                if(class40_sub3.anInt2028 < 0 || MovedStatics.method459(class40_sub3.anInt2036, class40_sub3.anInt2028, (byte) 103)) {
-                    GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039, class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
+                if(class40_sub3.anInt2028 < 0 || MovedStatics.method459(
+                        class40_sub3.anInt2036, class40_sub3.anInt2028, (byte) 103)) {
+                    GenericTile.method945(
+                            class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039,
+                            class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027,
+                            class40_sub3.anInt2018
+                    );
                     class40_sub3.remove();
                 }
             } else {
-                if(class40_sub3.anInt2033 > 0)
+                if(class40_sub3.anInt2033 > 0) {
                     class40_sub3.anInt2033--;
-                if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 && class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 && (class40_sub3.anInt2017 < 0 || MovedStatics.method459(class40_sub3.anInt2030, class40_sub3.anInt2017, (byte) 106))) {
-                    GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
+                }
+                if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 &&
+                        class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 &&
+                        (class40_sub3.anInt2017 < 0 || MovedStatics.method459(
+                                class40_sub3.anInt2030, class40_sub3.anInt2017, (byte) 106))) {
+                    GenericTile.method945(
+                            class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039,
+                            class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027,
+                            class40_sub3.anInt2018
+                    );
                     class40_sub3.anInt2033 = -1;
-                    if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2028 == -1)
+                    if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2028 == -1) {
                         class40_sub3.remove();
-                    else if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2025 == class40_sub3.anInt2035 && class40_sub3.anInt2030 == class40_sub3.anInt2036)
+                    } else if(class40_sub3.anInt2028 == class40_sub3.anInt2017 &&
+                            class40_sub3.anInt2025 == class40_sub3.anInt2035 &&
+                            class40_sub3.anInt2030 == class40_sub3.anInt2036) {
                         class40_sub3.remove();
+                    }
                 }
             }
         }

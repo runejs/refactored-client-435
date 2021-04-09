@@ -37,8 +37,9 @@ public class PacketBuffer extends Buffer {
         class40_sub6.cacheIndex = arg2;
         class40_sub6.cacheArchive = arg1;
         synchronized(RSCanvas.aLinkedList_53) {
-            if(arg3 != -28)
+            if(arg3 != -28) {
                 method521(false, -84, -120);
+            }
             RSCanvas.aLinkedList_53.pushBack(class40_sub6, -72);
         }
         MovedStatics.method332(600);
@@ -83,8 +84,9 @@ public class PacketBuffer extends Buffer {
     }
 
     public static RSString method521(boolean arg0, int arg2, int arg3) {
-        if(arg2 < 1 || arg2 > 36)
+        if(arg2 < 1 || arg2 > 36) {
             arg2 = 10;
+        }
         int i = 1;
         int i_2_ = arg3 / arg2;
         while(i_2_ != 0) {
@@ -92,20 +94,24 @@ public class PacketBuffer extends Buffer {
             i++;
         }
         int i_3_ = i;
-        if(arg3 < 0 || arg0)
+        if(arg3 < 0 || arg0) {
             i_3_++;
+        }
         byte[] is = new byte[i_3_];
-        if(arg3 < 0)
+        if(arg3 < 0) {
             is[0] = (byte) 45;
-        else if(arg0)
+        } else if(arg0) {
             is[0] = (byte) 43;
+        }
         for(int i_4_ = 0; i > i_4_; i_4_++) {
             int i_5_ = arg3 % arg2;
             arg3 /= arg2;
-            if(i_5_ < 0)
+            if(i_5_ < 0) {
                 i_5_ = -i_5_;
-            if(i_5_ > 9)
+            }
+            if(i_5_ > 9) {
                 i_5_ += 39;
+            }
             is[-1 + i_3_ - i_4_] = (byte) (48 + i_5_);
         }
         RSString class1 = new RSString();
@@ -135,10 +141,11 @@ public class PacketBuffer extends Buffer {
             i_0_ += (VarbitDefinition.anIntArray2361[i_1_] & buffer[i++]) << -i_1_ + arg0;
             arg0 -= i_1_;
         }
-        if(arg0 != i_1_)
+        if(arg0 != i_1_) {
             i_0_ += VarbitDefinition.anIntArray2361[arg0] & buffer[i] >> -arg0 + i_1_;
-        else
+        } else {
             i_0_ += buffer[i] & VarbitDefinition.anIntArray2361[i_1_];
+        }
         return i_0_;
     }
 

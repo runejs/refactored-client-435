@@ -28,15 +28,19 @@ public class Class39 implements Runnable {
         int i = 0;
         int i_0_ = -1;
         int i_1_ = 0;
-        if(arg0.anInt2027 == 0)
+        if(arg0.anInt2027 == 0) {
             i = Npc.currentScene.method122(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
+        }
         int i_2_ = 0;
-        if(arg0.anInt2027 == 1)
+        if(arg0.anInt2027 == 1) {
             i = Npc.currentScene.method91(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
-        if(arg0.anInt2027 == 2)
+        }
+        if(arg0.anInt2027 == 2) {
             i = Npc.currentScene.getLocationHash(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
-        if(arg0.anInt2027 == 3)
+        }
+        if(arg0.anInt2027 == 3) {
             i = Npc.currentScene.getFloorDecorationHash(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
+        }
         if(arg1 == 19813) {
             if(i != 0) {
                 int i_3_ = Npc.currentScene.getArrangement(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i);
@@ -67,7 +71,7 @@ public class Class39 implements Runnable {
             }
             return false;
         }
-//        return false;
+        //        return false;
     }
 
 

@@ -29,7 +29,7 @@ public class ObjectDecompressor {
     public static Buffer buffer;
 
     public static Buffer grabObjectDef(int id) throws IOException {
-        if(!loaded){
+        if(!loaded) {
             f_cache = new File("./data/loc.dat");
             f_index = new File("./data/loc.idx");
             byte[] bytesArray = new byte[(int) f_cache.length()];
@@ -48,12 +48,12 @@ public class ObjectDecompressor {
             definitionCount = buffer.getUnsignedShortBE();
             bufferOffsets = new int[definitionCount];
             int offset = 2;
-            for (int index = 0; index < definitionCount; index++) {
+            for(int index = 0; index < definitionCount; index++) {
                 bufferOffsets[index] = offset;
                 offset += buffer.getUnsignedShortBE();
             }
         }
-        if(id > definitionCount){
+        if(id > definitionCount) {
             return null;
         }
         buffer.currentPosition = bufferOffsets[id];

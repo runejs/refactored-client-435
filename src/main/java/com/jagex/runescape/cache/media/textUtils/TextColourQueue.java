@@ -27,11 +27,11 @@ public class TextColourQueue {
             this.tail.setNext(node);
             node.setPrevious(this.tail);
         }
-       this.tail = node;
+        this.tail = node;
     }
 
     public int getColour() {
-        if(this.tail != null){
+        if(this.tail != null) {
             return this.tail.getColour();
         }
         return this.defaultColour;
@@ -40,7 +40,7 @@ public class TextColourQueue {
     public TextColourNode pop() {
         TextColourNode currentTail = this.tail;
         TextColourNode nextTail = this.tail.getPrevious();
-        if(nextTail == null){
+        if(nextTail == null) {
             this.head = nextTail;
         }
         this.tail = nextTail;

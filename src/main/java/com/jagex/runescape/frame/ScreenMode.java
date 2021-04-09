@@ -10,7 +10,5 @@ import com.jagex.runescape.util.Timer;
 import java.awt.*;
 
 public enum ScreenMode {
-    FIXED,
-    RESIZABLE,
-    FULLSCREEN;
+    FIXED, RESIZABLE, FULLSCREEN;
 }

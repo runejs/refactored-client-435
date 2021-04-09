@@ -10,10 +10,8 @@ public final class JSObject {
         }
     }
 
-    @SuppressWarnings("unused")
-    private int internal;
-    @SuppressWarnings("unused")
-    private long long_internal;
+    @SuppressWarnings("unused") private int internal;
+    @SuppressWarnings("unused") private long long_internal;
 
     private JSObject(int jsobj_addr) {
         internal = jsobj_addr;

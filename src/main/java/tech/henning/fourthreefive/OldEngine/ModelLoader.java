@@ -31,8 +31,10 @@ public class ModelLoader {
         if(m == null || m.length < 1) {
             return;
         }
-        for(File model : m)
-            if(model.getName().contains(".dat"))
+        for(File model : m) {
+            if(model.getName().contains(".dat")) {
                 models.add(Integer.parseInt(model.getName().substring(0, model.getName().indexOf(".dat"))));
+            }
+        }
     }
 }

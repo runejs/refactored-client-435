@@ -25,7 +25,10 @@ class MidiPlayer implements Receiver {
      *
      * @see <a href="https://www.midi.org/specifications-old/category/reference-tables">MIDI Specifications</a>
      */
-    private final int[] volumes = new int[]{0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200};
+    private final int[] volumes = new int[]{
+            0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200,
+            0x3200, 0x3200, 0x3200
+    };
 
     /**
      * The tracked volume
@@ -64,7 +67,7 @@ class MidiPlayer implements Receiver {
      * @throws IOException
      */
     public Sequence play(InputStream in, boolean loop) throws InvalidMidiDataException, IOException {
-        if (sequencer == null) {
+        if(sequencer == null) {
             return null;
         }
         reset();
@@ -82,20 +85,20 @@ class MidiPlayer implements Receiver {
      * @throws InvalidMidiDataException
      */
     public void setVolume(int volume) throws InvalidMidiDataException {
-        if (sequencer == null) {
+        if(sequencer == null) {
             return;
         }
 
-        if (volume < 0) {
+        if(volume < 0) {
             volume = 0;
-        } else if (volume > 256) {
+        } else if(volume > 256) {
             volume = 256;
         }
 
-        if (this.volume != volume) {
+        if(this.volume != volume) {
             this.volume = volume;
 
-            for (int c = 0; c < 16; c++) {
+            for(int c = 0; c < 16; c++) {
                 int data = getChannelVolume(c);
                 send(c + ShortMessage.CONTROL_CHANGE, MSB_CHANNEL_VOLUME, data >> 7);
                 send(c + ShortMessage.CONTROL_CHANGE, LSB_CHANNEL_VOLUME, data & 0x7F);
@@ -132,7 +135,7 @@ class MidiPlayer implements Receiver {
     }
 
     public void stop() throws InvalidMidiDataException {
-        if (sequencer != null) {
+        if(sequencer != null) {
             sequencer.stop();
             sequencer.close();
             reset();
@@ -140,27 +143,27 @@ class MidiPlayer implements Receiver {
     }
 
     private void reset() throws InvalidMidiDataException {
-        for (int c = 0; c < 16; c++) {
+        for(int c = 0; c < 16; c++) {
             send(c + ShortMessage.CONTROL_CHANGE, ALL_NOTES_OFF, 0);
         }
 
-        for (int c = 0; c < 16; c++) {
+        for(int c = 0; c < 16; c++) {
             send(c + ShortMessage.CONTROL_CHANGE, ALL_SOUND_OFF, 0);
         }
 
-        for (int c = 0; c < 16; c++) {
+        for(int c = 0; c < 16; c++) {
             send(c + ShortMessage.CONTROL_CHANGE, RESET_ALL_CONTROLLERS, 0);
         }
 
-        for (int c = 0; c < 16; c++) {
+        for(int c = 0; c < 16; c++) {
             send(c + ShortMessage.CONTROL_CHANGE, MSB_BANK_SELECT, 0);
         }
 
-        for (int c = 0; c < 16; c++) {
+        for(int c = 0; c < 16; c++) {
             send(c + ShortMessage.CONTROL_CHANGE, LSB_BANK_SELECT, 0);
         }
 
-        for (int c = 0; c < 16; c++) {
+        for(int c = 0; c < 16; c++) {
             send(c + ShortMessage.PROGRAM_CHANGE, PROGRAM_0, 0);
         }
     }
@@ -170,10 +173,10 @@ class MidiPlayer implements Receiver {
         byte[] data = m.getMessage();
 
         try {
-            if (data.length < 3 || !send0(data[0], data[1], data[2])) {
+            if(data.length < 3 || !send0(data[0], data[1], data[2])) {
                 receiver.send(m, timeStamp);
             }
-        } catch (InvalidMidiDataException e) {
+        } catch(InvalidMidiDataException e) {
             e.printStackTrace();
         }
     }
@@ -188,8 +191,8 @@ class MidiPlayer implements Receiver {
      * @throws InvalidMidiDataException
      */
     private boolean send0(int status, int data1, int data2) throws InvalidMidiDataException {
-        if ((status & 0xF0) == ShortMessage.CONTROL_CHANGE) {
-            if (data1 == RESET_ALL_CONTROLLERS) {
+        if((status & 0xF0) == ShortMessage.CONTROL_CHANGE) {
+            if(data1 == RESET_ALL_CONTROLLERS) {
                 send(status, data1, data2);
 
                 int channel = status & 0xF;
@@ -201,10 +204,10 @@ class MidiPlayer implements Receiver {
                 return true;
             }
 
-            if (data1 == MSB_CHANNEL_VOLUME || data1 == LSB_CHANNEL_VOLUME) {
+            if(data1 == MSB_CHANNEL_VOLUME || data1 == LSB_CHANNEL_VOLUME) {
                 int channel = status & 0xF;
 
-                if (data1 == MSB_CHANNEL_VOLUME) {
+                if(data1 == MSB_CHANNEL_VOLUME) {
                     volumes[channel] = (volumes[channel] & 0x7F) + (data2 << 7);
                 } else {
                     volumes[channel] = (volumes[channel] & 0x3F80) + data2;
@@ -233,12 +236,12 @@ class MidiPlayer implements Receiver {
 
     @Override
     public void close() {
-        if (sequencer != null) {
+        if(sequencer != null) {
             sequencer.close();
             sequencer = null;
         }
 
-        if (receiver != null) {
+        if(receiver != null) {
             receiver.close();
             receiver = null;
         }

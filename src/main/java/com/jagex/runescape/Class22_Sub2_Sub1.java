@@ -27,8 +27,9 @@ public class Class22_Sub2_Sub1 extends Class22_Sub2 implements Receiver {
     public synchronized void method304(byte arg0, int arg1, int arg2) {
         if(aSequencer2220 != null) {
             method317(arg1, arg2, -1L, 0);
-            if(arg0 > -82)
+            if(arg0 > -82) {
                 aSequencer2220 = null;
+            }
         }
     }
 
@@ -41,14 +42,16 @@ public class Class22_Sub2_Sub1 extends Class22_Sub2 implements Receiver {
             aReceiver2222.close();
             aReceiver2222 = null;
         }
-        if(arg0 < 100)
+        if(arg0 < 100) {
             method301(-16, -43);
+        }
     }
 
     public void method301(int arg0, int arg1) {
         if(null != aSequencer2220) {
-            if(arg1 != 0)
+            if(arg1 != 0) {
                 method301(114, 102);
+            }
             method318(-100, -1L, arg0);
         }
     }
@@ -62,8 +65,9 @@ public class Class22_Sub2_Sub1 extends Class22_Sub2 implements Receiver {
             aBoolean2221 = false;
             aSequencer2220.stop();
             method321((byte) 106, -1L);
-            if(arg0 != -96)
+            if(arg0 != -96) {
                 method314(-102, -74, -81, 35L);
+            }
         }
     }
 
@@ -80,8 +84,9 @@ public class Class22_Sub2_Sub1 extends Class22_Sub2 implements Receiver {
     public void method300(byte[] arg0, boolean arg1, int arg2, int arg3) {
         if(aSequencer2220 != null) {
             try {
-                if(arg2 != -15910)
+                if(arg2 != -15910) {
                     aSequencer2220 = null;
+                }
                 Sequence sequence = MidiSystem.getSequence(new ByteArrayInputStream(arg0));
                 aSequencer2220.setSequence(sequence);
                 aSequencer2220.setLoopCount(!arg1 ? 0 : -1);
@@ -97,13 +102,15 @@ public class Class22_Sub2_Sub1 extends Class22_Sub2 implements Receiver {
     public synchronized void send(MidiMessage arg0, long arg1) {
         if(aBoolean2221) {
             byte[] is = arg0.getMessage();
-            if(!method322(is[0] & 0xff, is[1], is.length >= 3 ? is[2] : 0, arg1))
+            if(!method322(is[0] & 0xff, is[1], is.length >= 3 ? is[2] : 0, arg1)) {
                 aReceiver2222.send(arg0, arg1);
+            }
         }
     }
 
     public void method302(int arg0) {
-        if(arg0 != 0)
+        if(arg0 != 0) {
             method303((byte) -23);
+        }
     }
 }

@@ -98,7 +98,7 @@ public class English {
     public static String suffixWishesToDuelWithYou = "wishes to duel with you.";
     public static String world = "World";
     public static String youHaveJustLeftAnotherWorld = "You have only just left another world.";
-    public static String yourAccountHasBeenDisabled ="Your account has been disabled.";
+    public static String yourAccountHasBeenDisabled = "Your account has been disabled.";
     public static String yourAccountIsAlreadyLoggedIn = "Your account is already logged in.";
     public static String friendsListIsFull = "Your friendlist is full. Max of 100 for free users, and 200 for members";
     public static String loadedTextures = "Loaded textures";
@@ -139,7 +139,7 @@ public class English {
     public static String effectShake = "shake:";
     public static String preparedVisibilityMap = "Prepared visibility map";
     public static String yourProfileWillBeTransferredIn = "Your profile will be transferred in:";
-    public static String effectFlash2 ="flash2:";
+    public static String effectFlash2 = "flash2:";
     public static String suffixMillion = " million";
     public static String prefixLevel = "level-";
     public static String commandNoclip = "::noclip";
@@ -159,7 +159,7 @@ public class English {
     public static String preparedSoundEngine = "Prepared sound engine";
     public static String loadedGamescreen = "Loaded gamescreen";
     public static String acceptChallenge = "Accept challenge";
-    public static String fromYourFriendListFirst =" from your friend list first";
+    public static String fromYourFriendListFirst = " from your friend list first";
     public static String connectionLost = "Connection lost";
     public static String on = "On";
     public static String message = "Message";

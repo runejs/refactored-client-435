@@ -23,21 +23,24 @@ public class Class55 {
             RSRuntimeException runtimeexception_sub1 = (RSRuntimeException) arg1;
             string = runtimeexception_sub1.aString1653 + " | ";
             arg1 = runtimeexception_sub1.aThrowable1652;
-        } else
+        } else {
             string = "";
+        }
         StringWriter stringwriter = new StringWriter();
         PrintWriter printwriter = new PrintWriter(stringwriter);
         arg1.printStackTrace(printwriter);
         printwriter.close();
         String string_0_ = stringwriter.toString();
         BufferedReader bufferedreader = new BufferedReader(new StringReader(string_0_));
-        if(arg0 != 0)
+        if(arg0 != 0) {
             return null;
+        }
         String string_1_ = bufferedreader.readLine();
         for(; ; ) {
             String string_2_ = bufferedreader.readLine();
-            if(string_2_ == null)
+            if(string_2_ == null) {
                 break;
+            }
             int i = string_2_.indexOf('(');
             int i_3_ = string_2_.indexOf(')', i + 1);
             if(i >= 0 && i_3_ >= 0) {
@@ -61,11 +64,14 @@ public class Class55 {
 
     public static Class40_Sub5_Sub15 method960(int arg1) {
         Class40_Sub5_Sub15 class40_sub5_sub15 = (Class40_Sub5_Sub15) Class42.aClass9_998.get((long) arg1);
-        if(class40_sub5_sub15 != null)
+        if(class40_sub5_sub15 != null) {
             return class40_sub5_sub15;
-        class40_sub5_sub15 = Class35.method421(VarbitDefinition.aCacheArchive_2364, (byte) 79, arg1, ClientScriptRunner.aCacheArchive_2162, false);
-        if(class40_sub5_sub15 != null)
+        }
+        class40_sub5_sub15 = Class35.method421(
+                VarbitDefinition.aCacheArchive_2364, (byte) 79, arg1, ClientScriptRunner.aCacheArchive_2162, false);
+        if(class40_sub5_sub15 != null) {
             Class42.aClass9_998.put((long) arg1, class40_sub5_sub15);
+        }
         return class40_sub5_sub15;
     }
 
@@ -76,8 +82,9 @@ public class Class55 {
             arg2 = arg0;
             arg0 = i;
         }
-        if(arg1 != -62)
+        if(arg1 != -62) {
             aClass48_1289 = null;
+        }
         int i;
         for(/**/; arg0 != 0; arg0 = i) {
             i = arg2 % arg0;

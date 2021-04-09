@@ -37,15 +37,15 @@ public class Configuration {
             FREE_TELEPORTS = (boolean) game.get("freeTeleports");
             DEBUG_CONTEXT = (boolean) game.get("debugContextMenu");
 
-            if (USERNAME == null) {
+            if(USERNAME == null) {
                 USERNAME = "";
             }
 
-            if (PASSWORD == null) {
+            if(PASSWORD == null) {
                 PASSWORD = "";
             }
 
-        } catch (Exception e) {
+        } catch(Exception e) {
             System.out.println("Unable to load client config - using defaults.");
         }
     }
@@ -99,7 +99,8 @@ public class Configuration {
     /**
      * Modulus to be used in the RSA network encryption.
      */
-    public static BigInteger RSA_MODULUS = new BigInteger("119568088839203297999728368933573315070738693395974011872885408638642676871679245723887367232256427712869170521351089799352546294030059890127723509653145359924771433131004387212857375068629466435244653901851504845054452735390701003613803443469723435116497545687393297329052988014281948392136928774011011998343");
+    public static BigInteger RSA_MODULUS = new BigInteger(
+            "119568088839203297999728368933573315070738693395974011872885408638642676871679245723887367232256427712869170521351089799352546294030059890127723509653145359924771433131004387212857375068629466435244653901851504845054452735390701003613803443469723435116497545687393297329052988014281948392136928774011011998343");
 
     /**
      * Use static username/password pair.
@@ -132,7 +133,7 @@ public class Configuration {
     public static RSString getUsername() {
         if(USE_STATIC_DETAILS) {
             return RSString.CreateString(USERNAME);
-        } else{
+        } else {
             return Native.string_blank;
         }
     }
@@ -141,7 +142,7 @@ public class Configuration {
     public static RSString getPassword() {
         if(USE_STATIC_DETAILS) {
             return RSString.CreateString(PASSWORD);
-        } else{
+        } else {
             return Native.string_blank;
         }
     }

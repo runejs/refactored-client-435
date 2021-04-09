@@ -33,7 +33,9 @@ public class Signlink implements Runnable {
     public SizedAccessFile cacheDataAccessFile;
     public GameShell anApplet740;
 
-    public Signlink(boolean arg0, GameShell arg1, InetAddress inetAddress, int fileStoreId, String cacheFolder, int cacheIndexes) throws IOException {
+    public Signlink(
+            boolean arg0, GameShell arg1, InetAddress inetAddress, int fileStoreId, String cacheFolder, int cacheIndexes
+    ) throws IOException {
         metaIndexAccessFile = null;
         cacheDataAccessFile = null;
         anApplet740 = null;
@@ -45,24 +47,28 @@ public class Signlink implements Runnable {
             aString735 = System.getProperty("java.vendor");
             aString739 = System.getProperty("java.version");
             homeDirectory = System.getProperty("user.home");
-            if(homeDirectory != null)
+            if(homeDirectory != null) {
                 homeDirectory += "/";
+            }
         } catch(Exception exception) {
             /* empty */
         }
         try {
-            if(arg1 == null)
-                aMethod729 = Class.forName("java.awt.Component").getDeclaredMethod("setFocusTraversalKeysEnabled", Boolean.TYPE);
-            else
+            if(arg1 == null) {
+                aMethod729 = Class.forName("java.awt.Component").getDeclaredMethod(
+                        "setFocusTraversalKeysEnabled", Boolean.TYPE);
+            } else {
                 aMethod729 = arg1.getClass().getMethod("setFocusTraversalKeysEnabled", Boolean.TYPE);
+            }
         } catch(Exception exception) {
             /* empty */
         }
         try {
-            if(arg1 != null)
+            if(arg1 != null) {
                 aMethod724 = arg1.getClass().getMethod("setFocusCycleRoot", Boolean.TYPE);
-            else
+            } else {
                 aMethod724 = Class.forName("java.awt.Container").getDeclaredMethod("setFocusCycleRoot", Boolean.TYPE);
+            }
         } catch(Exception exception) {
             /* empty */
         }
@@ -70,8 +76,10 @@ public class Signlink implements Runnable {
             method397(-3849);
             cacheDataAccessFile = new SizedAccessFile(new File(aString734 + "main_file_cache.dat2"), "rw", 52428800L);
             dataIndexAccessFiles = new SizedAccessFile[cacheIndexes];
-            for(int i = 0; i < cacheIndexes; i++)
-                dataIndexAccessFiles[i] = new SizedAccessFile(new File(aString734 + "main_file_cache.idx" + i), "rw", 1048576L);
+            for(int i = 0; i < cacheIndexes; i++) {
+                dataIndexAccessFiles[i] = new SizedAccessFile(
+                        new File(aString734 + "main_file_cache.idx" + i), "rw", 1048576L);
+            }
             metaIndexAccessFile = new SizedAccessFile(new File(aString734 + "main_file_cache.idx255"), "rw", 1048576L);
             method390(6);
         }
@@ -90,13 +98,15 @@ public class Signlink implements Runnable {
         }
         try {
             aThread733.join();
-            if(arg0 != 0)
+            if(arg0 != 0) {
                 method396(-55);
+            }
         } catch(InterruptedException interruptedexception) {
             /* empty */
         }
-        if(aRunnable_Impl1_727 != null)
+        if(aRunnable_Impl1_727 != null) {
             aRunnable_Impl1_727.method1((byte) -102);
+        }
         if(cacheDataAccessFile != null) {
             try {
                 cacheDataAccessFile.close();
@@ -131,15 +141,17 @@ public class Signlink implements Runnable {
 
     public Interface2 method387(int arg0) {
 
-        if(arg0 != -25100)
+        if(arg0 != -25100) {
             return null;
+        }
         return anInterface2_732;
 
     }
 
     public SignlinkNode method388(boolean arg0, URL arg1) {
-        if(arg0)
+        if(arg0) {
             method397(-42);
+        }
         return putNode(0, 4, arg1);
     }
 
@@ -149,9 +161,9 @@ public class Signlink implements Runnable {
         signlinkNode.integerData = integerData;
         signlinkNode.type = type;
         synchronized(this) {
-            if(next == null)
+            if(next == null) {
                 next = current = signlinkNode;
-            else {
+            } else {
                 next.prev = signlinkNode;
                 next = signlinkNode;
             }
@@ -172,8 +184,9 @@ public class Signlink implements Runnable {
         } catch(Exception exception) {
             /* empty */
         }
-        if(arg0 != 6)
+        if(arg0 != 6) {
             uid = 116;
+        }
         try {
             DataInputStream datainputstream = new DataInputStream(new FileInputStream(aString734 + "uid.dat"));
             uid = 1 + datainputstream.readInt();
@@ -186,8 +199,9 @@ public class Signlink implements Runnable {
 
     public Runnable_Impl1 method391(int arg0) {
 
-        if(arg0 != 1048576)
+        if(arg0 != 1048576) {
             method396(-47);
+        }
         return aRunnable_Impl1_727;
 
     }
@@ -198,13 +212,15 @@ public class Signlink implements Runnable {
             SignlinkNode currentNode;
             synchronized(this) {
                 for(; ; ) {
-                    if(aBoolean721)
+                    if(aBoolean721) {
                         return;
+                    }
                     if(current != null) {
                         currentNode = current;
                         current = current.prev;
-                        if(current == null)
+                        if(current == null) {
                             next = null;
+                        }
                         break;
                     }
                     try {
@@ -216,24 +232,26 @@ public class Signlink implements Runnable {
             }
             try {
                 int type = currentNode.type;
-                if(type == 1)
+                if(type == 1) {
                     currentNode.value = new Socket(anInetAddress730, currentNode.integerData);
-                else if(type == 2) {
+                } else if(type == 2) {
                     Thread thread = new Thread((Runnable) currentNode.objectData);
                     thread.setDaemon(true);
                     thread.start();
                     thread.setPriority(currentNode.integerData);
                     currentNode.value = thread;
-                } else if(type == 4)
+                } else if(type == 4) {
                     currentNode.value = new DataInputStream(((URL) currentNode.objectData).openStream());
-                else if(type == 9) {
+                } else if(type == 9) {
                     Object[] objects = (Object[]) currentNode.objectData;
-                    currentNode.value = ((Class) objects[0]).getDeclaredMethod((String) objects[1], (Class[]) objects[2]);
+                    currentNode.value = ((Class) objects[0]).getDeclaredMethod(
+                            (String) objects[1], (Class[]) objects[2]);
                 } else if(type == 10) {
                     Object[] objects = (Object[]) currentNode.objectData;
                     currentNode.value = ((Class) objects[0]).getDeclaredField((String) objects[1]);
-                } else
+                } else {
                     throw new Exception();
+                }
                 currentNode.anInt434 = 1;
             } catch(Exception exception) {
                 currentNode.anInt434 = 2;
@@ -253,41 +271,50 @@ public class Signlink implements Runnable {
 
     public SignlinkNode method394(int arg0, int arg1, Runnable arg2) {
 
-        if(arg1 != 0)
+        if(arg1 != 0) {
             method392(null, null);
+        }
         return putNode(arg0, 2, arg2);
 
     }
 
     public SignlinkNode method395(int arg0, int arg1) {
 
-        if(arg0 != 3)
+        if(arg0 != 3) {
             method397(-29);
+        }
         return putNode(arg1, 1, null);
 
     }
 
     public SignlinkNode method396(int arg0) {
 
-        if(arg0 < 81)
+        if(arg0 < 81) {
             return null;
+        }
         return null;
 
     }
 
     public void method397(int arg0) {
 
-        if(homeDirectory == null)
+        if(homeDirectory == null) {
             homeDirectory = "~/";
-        String[] cacheLocations = {"c:/rsrcache/", "/rsrcache/", "c:/windows/", "c:/winnt/", "d:/windows/", "d:/winnt/", "e:/windows/", "e:/winnt/", "f:/windows/", "f:/winnt/", "c:/", homeDirectory, "/tmp/", ""};
-        if(arg0 != -3849)
+        }
+        String[] cacheLocations = {
+                "c:/rsrcache/", "/rsrcache/", "c:/windows/", "c:/winnt/", "d:/windows/", "d:/winnt/", "e:/windows/",
+                "e:/winnt/", "f:/windows/", "f:/winnt/", "c:/", homeDirectory, "/tmp/", ""
+        };
+        if(arg0 != -3849) {
             method392(null, null); // TODO: Does this even ever run?
+        }
         for(String cacheLocation : cacheLocations) {
             try {
                 if(cacheLocation.length() > 0) {
                     File file = new File(cacheLocation);
-                    if(!file.exists())
+                    if(!file.exists()) {
                         continue;
+                    }
                 }
                 File file = new File(cacheLocation + Configuration.CACHE_NAME);
                 if(file.exists() || file.mkdir()) {

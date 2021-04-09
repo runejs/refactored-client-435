@@ -27,11 +27,11 @@ public class Class51 {
 
     public static int getKeyChar(KeyEvent arg1) {
         int keyChar = arg1.getKeyChar();
-        if(keyChar <= 0 || keyChar >= 256)
+        if(keyChar <= 0 || keyChar >= 256) {
             keyChar = -1;
+        }
         return keyChar;
     }
-
 
 
     public static void method940(int arg0, String arg1, boolean arg2, String arg3) {
@@ -41,8 +41,10 @@ public class Class51 {
             LinkedList.drawChatBoxGraphics();
             Class55.drawTabGraphics();
             ActorDefinition.drawMapBack();
-            GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
-            MovedStatics.method527(Player.currentTabId, arg0 + 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
+            GenericTile.method943(
+                    ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
+            MovedStatics.method527(
+                    Player.currentTabId, arg0 + 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
             MovedStatics.aBoolean893 = true;
             Class40_Sub3.aBoolean2026 = true;
             MovedStatics.aBoolean260 = true;
@@ -69,10 +71,11 @@ public class Class51 {
     }
 
     public static void method942(int arg1) {
-        if(arg1 == -1 && Class35.songTimeout == 0)
+        if(arg1 == -1 && Class35.songTimeout == 0) {
             Class33.method402(false);
-        else if(arg1 != -1 && arg1 != MouseHandler.anInt1457 && RSCanvas.anInt60 != 0 && Class35.songTimeout == 0)
+        } else if(arg1 != -1 && arg1 != MouseHandler.anInt1457 && RSCanvas.anInt60 != 0 && Class35.songTimeout == 0) {
             Class33.method403(RSCanvas.anInt60, true, 10, arg1, CacheArchive.musicCacheArchive, 0, 0, false);
+        }
         MouseHandler.anInt1457 = arg1;
     }
 }

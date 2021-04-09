@@ -49,16 +49,20 @@ public class ImageRGB extends Rasterizer {
         }
     }
 
-    public static void method715(int[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
+    public static void method715(
+            int[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9,
+            int arg10, int arg11
+    ) {
         int i = arg3;
         for(int i_0_ = -arg8; i_0_ < 0; i_0_++) {
             int i_1_ = (arg4 >> 16) * arg11;
             for(int i_2_ = -arg7; i_2_ < 0; i_2_++) {
                 arg2 = arg1[(arg3 >> 16) + i_1_];
-                if(arg2 != 0)
+                if(arg2 != 0) {
                     arg0[arg5++] = arg2;
-                else
+                } else {
                     arg5++;
+                }
                 arg3 += arg9;
             }
             arg4 += arg10;
@@ -67,99 +71,120 @@ public class ImageRGB extends Rasterizer {
         }
     }
 
-    public static void blockCopyMask(int[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, byte[] arg9) {
+    public static void blockCopyMask(
+            int[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, byte[] arg9
+    ) {
         int i = -(arg5 >> 2);
         arg5 = -(arg5 & 0x3);
         for(int i_21_ = -arg6; i_21_ < 0; i_21_++) {
             for(int i_22_ = i; i_22_ < 0; i_22_++) {
                 arg2 = arg1[arg3++];
-                if(arg2 != 0 && arg9[arg4] == 0)
+                if(arg2 != 0 && arg9[arg4] == 0) {
                     arg0[arg4++] = arg2;
-                else
+                } else {
                     arg4++;
+                }
                 arg2 = arg1[arg3++];
-                if(arg2 != 0 && arg9[arg4] == 0)
+                if(arg2 != 0 && arg9[arg4] == 0) {
                     arg0[arg4++] = arg2;
-                else
+                } else {
                     arg4++;
+                }
                 arg2 = arg1[arg3++];
-                if(arg2 != 0 && arg9[arg4] == 0)
+                if(arg2 != 0 && arg9[arg4] == 0) {
                     arg0[arg4++] = arg2;
-                else
+                } else {
                     arg4++;
+                }
                 arg2 = arg1[arg3++];
-                if(arg2 != 0 && arg9[arg4] == 0)
+                if(arg2 != 0 && arg9[arg4] == 0) {
                     arg0[arg4++] = arg2;
-                else
+                } else {
                     arg4++;
+                }
             }
             for(int i_23_ = arg5; i_23_ < 0; i_23_++) {
                 arg2 = arg1[arg3++];
-                if(arg2 != 0 && arg9[arg4] == 0)
+                if(arg2 != 0 && arg9[arg4] == 0) {
                     arg0[arg4++] = arg2;
-                else
+                } else {
                     arg4++;
+                }
             }
             arg4 += arg7;
             arg3 += arg8;
         }
     }
 
-    public static void blockCopyTrans(int[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public static void blockCopyTrans(
+            int[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8
+    ) {
         int i = -(arg5 >> 2);
         arg5 = -(arg5 & 0x3);
         for(int i_24_ = -arg6; i_24_ < 0; i_24_++) {
             for(int i_25_ = i; i_25_ < 0; i_25_++) {
                 arg2 = arg1[arg3++];
-                if(arg2 != 0)
+                if(arg2 != 0) {
                     arg0[arg4++] = arg2;
-                else
+                } else {
                     arg4++;
+                }
                 arg2 = arg1[arg3++];
-                if(arg2 != 0)
+                if(arg2 != 0) {
                     arg0[arg4++] = arg2;
-                else
+                } else {
                     arg4++;
+                }
                 arg2 = arg1[arg3++];
-                if(arg2 != 0)
+                if(arg2 != 0) {
                     arg0[arg4++] = arg2;
-                else
+                } else {
                     arg4++;
+                }
                 arg2 = arg1[arg3++];
-                if(arg2 != 0)
+                if(arg2 != 0) {
                     arg0[arg4++] = arg2;
-                else
+                } else {
                     arg4++;
+                }
             }
             for(int i_26_ = arg5; i_26_ < 0; i_26_++) {
                 arg2 = arg1[arg3++];
-                if(arg2 != 0)
+                if(arg2 != 0) {
                     arg0[arg4++] = arg2;
-                else
+                } else {
                     arg4++;
+                }
             }
             arg4 += arg7;
             arg3 += arg8;
         }
     }
 
-    public static void method730(int[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
+    public static void method730(
+            int[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9
+    ) {
         int i = 256 - arg9;
         for(int i_167_ = -arg6; i_167_ < 0; i_167_++) {
             for(int i_168_ = -arg5; i_168_ < 0; i_168_++) {
                 arg2 = arg1[arg3++];
                 if(arg2 != 0) {
                     int i_169_ = arg0[arg4];
-                    arg0[arg4++] = ((arg2 & 0xff00ff) * arg9 + (i_169_ & 0xff00ff) * i & ~0xff00ff) + ((arg2 & 0xff00) * arg9 + (i_169_ & 0xff00) * i & 0xff0000) >> 8;
-                } else
+                    arg0[arg4++] = ((arg2 & 0xff00ff) * arg9 + (i_169_ & 0xff00ff) * i & ~0xff00ff) +
+                            ((arg2 & 0xff00) * arg9 + (i_169_ & 0xff00) * i & 0xff0000) >> 8;
+                } else {
                     arg4++;
+                }
             }
             arg4 += arg7;
             arg3 += arg8;
         }
     }
 
-    public static void copyPixels(int[] rasterizerPixels, int[] pixels, int pixel, int rasterizerPixel, int width, int height, int rasterizerPixelOffset, int pixelOffset) {
+    public static void copyPixels(
+            int[] rasterizerPixels, int[] pixels, int pixel, int rasterizerPixel, int width, int height,
+            int rasterizerPixelOffset, int pixelOffset
+    ) {
         for(int i = -height; i < 0; i++) {
             int shiftedWidth = rasterizerPixel + width - 3;
             while(rasterizerPixel < shiftedWidth) {
@@ -169,14 +194,18 @@ public class ImageRGB extends Rasterizer {
                 rasterizerPixels[rasterizerPixel++] = pixels[pixel++];
             }
             shiftedWidth += 3;
-            while(rasterizerPixel < shiftedWidth)
+            while(rasterizerPixel < shiftedWidth) {
                 rasterizerPixels[rasterizerPixel++] = pixels[pixel++];
+            }
             rasterizerPixel += rasterizerPixelOffset;
             pixel += pixelOffset;
         }
     }
 
-    public static void method733(int[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12) {
+    public static void method733(
+            int[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9,
+            int arg10, int arg11, int arg12
+    ) {
         int i = 256 - arg12;
         int i_185_ = arg3;
         for(int i_186_ = -arg8; i_186_ < 0; i_186_++) {
@@ -185,9 +214,11 @@ public class ImageRGB extends Rasterizer {
                 arg2 = arg1[(arg3 >> 16) + i_187_];
                 if(arg2 != 0) {
                     int i_189_ = arg0[arg5];
-                    arg0[arg5++] = ((arg2 & 0xff00ff) * arg12 + (i_189_ & 0xff00ff) * i & ~0xff00ff) + ((arg2 & 0xff00) * arg12 + (i_189_ & 0xff00) * i & 0xff0000) >> 8;
-                } else
+                    arg0[arg5++] = ((arg2 & 0xff00ff) * arg12 + (i_189_ & 0xff00ff) * i & ~0xff00ff) +
+                            ((arg2 & 0xff00) * arg12 + (i_189_ & 0xff00) * i & 0xff0000) >> 8;
+                } else {
                     arg5++;
+                }
                 arg3 += arg9;
             }
             arg4 += arg10;
@@ -196,38 +227,46 @@ public class ImageRGB extends Rasterizer {
         }
     }
 
-    public static void shapeImageToPixels(byte[] pixels, int[] rasterizerPixels, int pixel, int rasterizerPixel, int width, int height, int rasterizerPixelOffset, int pixelOffset, int[] palette) {
+    public static void shapeImageToPixels(
+            byte[] pixels, int[] rasterizerPixels, int pixel, int rasterizerPixel, int width, int height,
+            int rasterizerPixelOffset, int pixelOffset, int[] palette
+    ) {
         int shiftedWidth = -(width >> 2);
         width = -(width & 0x3);
         for(int heightCounter = -height; heightCounter < 0; heightCounter++) {
             for(int widthCounter = shiftedWidth; widthCounter < 0; widthCounter++) {
                 int pixelColor = pixels[pixel++];
-                if(pixelColor != 0)
+                if(pixelColor != 0) {
                     rasterizerPixels[rasterizerPixel++] = palette[pixelColor & 0xff];
-                else
+                } else {
                     rasterizerPixel++;
+                }
                 pixelColor = pixels[pixel++];
-                if(pixelColor != 0)
+                if(pixelColor != 0) {
                     rasterizerPixels[rasterizerPixel++] = palette[pixelColor & 0xff];
-                else
+                } else {
                     rasterizerPixel++;
+                }
                 pixelColor = pixels[pixel++];
-                if(pixelColor != 0)
+                if(pixelColor != 0) {
                     rasterizerPixels[rasterizerPixel++] = palette[pixelColor & 0xff];
-                else
+                } else {
                     rasterizerPixel++;
+                }
                 pixelColor = pixels[pixel++];
-                if(pixelColor != 0)
+                if(pixelColor != 0) {
                     rasterizerPixels[rasterizerPixel++] = palette[pixelColor & 0xff];
-                else
+                } else {
                     rasterizerPixel++;
+                }
             }
             for(int widthCounter = width; widthCounter < 0; widthCounter++) {
                 int pixelColor = pixels[pixel++];
-                if(pixelColor != 0)
+                if(pixelColor != 0) {
                     rasterizerPixels[rasterizerPixel++] = palette[pixelColor & 0xff];
-                else
+                } else {
                     rasterizerPixel++;
+                }
             }
             rasterizerPixel += rasterizerPixelOffset;
             pixel += pixelOffset;
@@ -236,8 +275,9 @@ public class ImageRGB extends Rasterizer {
 
     public static boolean spriteExists(int arg0, int arg1, CacheArchive cacheArchive) {
         byte[] is = cacheArchive.getFile(arg1, arg0);
-        if(is == null)
+        if(is == null) {
             return false;
+        }
         MovedStatics.method184(is, 0);
         return true;
     }
@@ -262,14 +302,17 @@ public class ImageRGB extends Rasterizer {
                 arg1 += i_11_;
                 i_5_ += i_11_ * i_9_ - (offsetY << 16);
             }
-            if(i < i_6_)
+            if(i < i_6_) {
                 arg2 = ((i << 16) - i_4_ + i_8_ - 1) / i_8_;
-            if(i_3_ < i_7_)
+            }
+            if(i_3_ < i_7_) {
                 arg3 = ((i_3_ << 16) - i_5_ + i_9_ - 1) / i_9_;
+            }
             int i_12_ = arg0 + arg1 * Rasterizer.destinationWidth;
             int i_13_ = Rasterizer.destinationWidth - arg2;
-            if(arg1 + arg3 > Rasterizer.viewportBottom)
+            if(arg1 + arg3 > Rasterizer.viewportBottom) {
                 arg3 -= arg1 + arg3 - Rasterizer.viewportBottom;
+            }
             if(arg1 < Rasterizer.viewportTop) {
                 int i_14_ = Rasterizer.viewportTop - arg1;
                 arg3 -= i_14_;
@@ -288,7 +331,8 @@ public class ImageRGB extends Rasterizer {
                 i_4_ += i_8_ * i_16_;
                 i_13_ += i_16_;
             }
-            method733(Rasterizer.destinationPixels, pixels, 0, i_4_, i_5_, i_12_, i_13_, arg2, arg3, i_8_, i_9_, i, arg4);
+            method733(
+                    Rasterizer.destinationPixels, pixels, 0, i_4_, i_5_, i_12_, i_13_, arg2, arg3, i_8_, i_9_, i, arg4);
         }
     }
 
@@ -298,22 +342,25 @@ public class ImageRGB extends Rasterizer {
             if(i_17_ != 0) {
                 int i_18_ = i_17_ >> 16 & 0xff;
                 i_18_ += arg0;
-                if(i_18_ < 1)
+                if(i_18_ < 1) {
                     i_18_ = 1;
-                else if(i_18_ > 255)
+                } else if(i_18_ > 255) {
                     i_18_ = 255;
+                }
                 int i_19_ = i_17_ >> 8 & 0xff;
                 i_19_ += arg1;
-                if(i_19_ < 1)
+                if(i_19_ < 1) {
                     i_19_ = 1;
-                else if(i_19_ > 255)
+                } else if(i_19_ > 255) {
                     i_19_ = 255;
+                }
                 int i_20_ = i_17_ & 0xff;
                 i_20_ += arg2;
-                if(i_20_ < 1)
+                if(i_20_ < 1) {
                     i_20_ = 1;
-                else if(i_20_ > 255)
+                } else if(i_20_ > 255) {
                     i_20_ = 255;
+                }
                 pixels[i] = (i_18_ << 16) + (i_19_ << 8) + i_20_;
             }
         }
@@ -339,8 +386,9 @@ public class ImageRGB extends Rasterizer {
             source_offset += clip_height * line_width;
             dest_offset += clip_height * Rasterizer.destinationWidth;
         }
-        if(y + line_count > Rasterizer.viewportBottom)
+        if(y + line_count > Rasterizer.viewportBottom) {
             line_count -= y + line_count - Rasterizer.viewportBottom;
+        }
         if(x < Rasterizer.viewportLeft) {
             int clip_width = Rasterizer.viewportLeft - x;
             line_width -= clip_width;
@@ -356,8 +404,11 @@ public class ImageRGB extends Rasterizer {
             line_offset_source += clip_width;
             line_offset_dest += clip_width;
         }
-        if(line_width > 0 && line_count > 0)
-            blockCopyTrans(Rasterizer.destinationPixels, pixels, 0, source_offset, dest_offset, line_width, line_count, line_offset_dest, line_offset_source);
+        if(line_width > 0 && line_count > 0) {
+            blockCopyTrans(Rasterizer.destinationPixels, pixels, 0, source_offset, dest_offset, line_width, line_count,
+                    line_offset_dest, line_offset_source
+            );
+        }
     }
 
     public void method722(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
@@ -384,14 +435,18 @@ public class ImageRGB extends Rasterizer {
                 i_44_ = i_38_;
                 i_45_ = i_36_;
             }
-            if(i_40_ < i_44_)
+            if(i_40_ < i_44_) {
                 i_44_ = i_40_;
-            if(i_42_ < i_44_)
+            }
+            if(i_42_ < i_44_) {
                 i_44_ = i_42_;
-            if(i_40_ > i_45_)
+            }
+            if(i_40_ > i_45_) {
                 i_45_ = i_40_;
-            if(i_42_ > i_45_)
+            }
+            if(i_42_ > i_45_) {
                 i_45_ = i_42_;
+            }
             int i_46_;
             int i_47_;
             if(i_37_ < i_39_) {
@@ -401,14 +456,18 @@ public class ImageRGB extends Rasterizer {
                 i_46_ = i_39_;
                 i_47_ = i_37_;
             }
-            if(i_41_ < i_46_)
+            if(i_41_ < i_46_) {
                 i_46_ = i_41_;
-            if(i_43_ < i_46_)
+            }
+            if(i_43_ < i_46_) {
                 i_46_ = i_43_;
-            if(i_41_ > i_47_)
+            }
+            if(i_41_ > i_47_) {
                 i_47_ = i_41_;
-            if(i_43_ > i_47_)
+            }
+            if(i_43_ > i_47_) {
                 i_47_ = i_43_;
+            }
             i_44_ >>= 12;
             i_45_ = i_45_ + 4095 >> 12;
             i_46_ >>= 12;
@@ -421,14 +480,18 @@ public class ImageRGB extends Rasterizer {
             i_45_ = i_45_ + 15 >> 4;
             i_46_ >>= 4;
             i_47_ = i_47_ + 15 >> 4;
-            if(i_44_ < Rasterizer.viewportLeft)
+            if(i_44_ < Rasterizer.viewportLeft) {
                 i_44_ = Rasterizer.viewportLeft;
-            if(i_45_ > Rasterizer.viewportRight)
+            }
+            if(i_45_ > Rasterizer.viewportRight) {
                 i_45_ = Rasterizer.viewportRight;
-            if(i_46_ < Rasterizer.viewportTop)
+            }
+            if(i_46_ < Rasterizer.viewportTop) {
                 i_46_ = Rasterizer.viewportTop;
-            if(i_47_ > Rasterizer.viewportBottom)
+            }
+            if(i_47_ > Rasterizer.viewportBottom) {
                 i_47_ = Rasterizer.viewportBottom;
+            }
             i_45_ = i_44_ - i_45_;
             if(i_45_ < 0) {
                 i_47_ = i_46_ - i_47_;
@@ -449,13 +512,15 @@ public class ImageRGB extends Rasterizer {
                                 int i_58_ = i_54_;
                                 int i_59_ = i_55_;
                                 int i_60_ = i_45_;
-                                if(i_58_ >= 0 && i_59_ >= 0 && i_58_ - (imageWidth << 12) < 0 && i_59_ - (imageHeight << 12) < 0) {
+                                if(i_58_ >= 0 && i_59_ >= 0 && i_58_ - (imageWidth << 12) < 0 &&
+                                        i_59_ - (imageHeight << 12) < 0) {
                                     for(/**/; i_60_ < 0; i_60_++) {
                                         int i_61_ = pixels[(i_59_ >> 12) * imageWidth + (i_58_ >> 12)];
-                                        if(i_61_ != 0)
+                                        if(i_61_ != 0) {
                                             Rasterizer.destinationPixels[i_57_++] = i_61_;
-                                        else
+                                        } else {
                                             i_57_++;
+                                        }
                                     }
                                 }
                                 i_56_++;
@@ -476,14 +541,16 @@ public class ImageRGB extends Rasterizer {
                                         i_65_ += i_50_ * i_67_;
                                         i_63_ += i_67_;
                                     }
-                                    if((i_67_ = (i_65_ - i_50_) / i_50_) > i_66_)
+                                    if((i_67_ = (i_65_ - i_50_) / i_50_) > i_66_) {
                                         i_66_ = i_67_;
+                                    }
                                     for(/**/; i_66_ < 0; i_66_++) {
                                         int i_68_ = pixels[(i_65_ >> 12) * imageWidth + (i_64_ >> 12)];
-                                        if(i_68_ != 0)
+                                        if(i_68_ != 0) {
                                             Rasterizer.destinationPixels[i_63_++] = i_68_;
-                                        else
+                                        } else {
                                             i_63_++;
+                                        }
                                         i_65_ += i_50_;
                                     }
                                 }
@@ -506,14 +573,16 @@ public class ImageRGB extends Rasterizer {
                                         i_70_ += i_74_;
                                     }
                                     int i_75_;
-                                    if((i_75_ = (1 + i_72_ - (imageHeight << 12) - i_50_) / i_50_) > i_73_)
+                                    if((i_75_ = (1 + i_72_ - (imageHeight << 12) - i_50_) / i_50_) > i_73_) {
                                         i_73_ = i_75_;
+                                    }
                                     for(/**/; i_73_ < 0; i_73_++) {
                                         int i_76_ = pixels[(i_72_ >> 12) * imageWidth + (i_71_ >> 12)];
-                                        if(i_76_ != 0)
+                                        if(i_76_ != 0) {
                                             Rasterizer.destinationPixels[i_70_++] = i_76_;
-                                        else
+                                        } else {
                                             i_70_++;
+                                        }
                                         i_72_ += i_50_;
                                     }
                                 }
@@ -538,14 +607,16 @@ public class ImageRGB extends Rasterizer {
                                         i_79_ += i_51_ * i_82_;
                                         i_78_ += i_82_;
                                     }
-                                    if((i_82_ = (i_79_ - i_51_) / i_51_) > i_81_)
+                                    if((i_82_ = (i_79_ - i_51_) / i_51_) > i_81_) {
                                         i_81_ = i_82_;
+                                    }
                                     for(/**/; i_81_ < 0; i_81_++) {
                                         int i_83_ = pixels[(i_80_ >> 12) * imageWidth + (i_79_ >> 12)];
-                                        if(i_83_ != 0)
+                                        if(i_83_ != 0) {
                                             Rasterizer.destinationPixels[i_78_++] = i_83_;
-                                        else
+                                        } else {
                                             i_78_++;
+                                        }
                                         i_79_ += i_51_;
                                     }
                                 }
@@ -568,8 +639,9 @@ public class ImageRGB extends Rasterizer {
                                     i_87_ += i_50_ * i_89_;
                                     i_85_ += i_89_;
                                 }
-                                if((i_89_ = (i_86_ - i_51_) / i_51_) > i_88_)
+                                if((i_89_ = (i_86_ - i_51_) / i_51_) > i_88_) {
                                     i_88_ = i_89_;
+                                }
                                 if((i_89_ = i_87_ - (imageHeight << 12)) >= 0) {
                                     i_89_ = (i_50_ - i_89_) / i_50_;
                                     i_88_ += i_89_;
@@ -577,14 +649,16 @@ public class ImageRGB extends Rasterizer {
                                     i_87_ += i_50_ * i_89_;
                                     i_85_ += i_89_;
                                 }
-                                if((i_89_ = (i_87_ - i_50_) / i_50_) > i_88_)
+                                if((i_89_ = (i_87_ - i_50_) / i_50_) > i_88_) {
                                     i_88_ = i_89_;
+                                }
                                 for(/**/; i_88_ < 0; i_88_++) {
                                     int i_90_ = pixels[(i_87_ >> 12) * imageWidth + (i_86_ >> 12)];
-                                    if(i_90_ != 0)
+                                    if(i_90_ != 0) {
                                         Rasterizer.destinationPixels[i_85_++] = i_90_;
-                                    else
+                                    } else {
                                         i_85_++;
+                                    }
                                     i_86_ += i_51_;
                                     i_87_ += i_50_;
                                 }
@@ -608,8 +682,9 @@ public class ImageRGB extends Rasterizer {
                                     i_94_ += i_50_ * i_96_;
                                     i_92_ += i_96_;
                                 }
-                                if((i_96_ = (i_93_ - i_51_) / i_51_) > i_95_)
+                                if((i_96_ = (i_93_ - i_51_) / i_51_) > i_95_) {
                                     i_95_ = i_96_;
+                                }
                                 if(i_94_ < 0) {
                                     i_96_ = (i_50_ - 1 - i_94_) / i_50_;
                                     i_95_ += i_96_;
@@ -617,14 +692,16 @@ public class ImageRGB extends Rasterizer {
                                     i_94_ += i_50_ * i_96_;
                                     i_92_ += i_96_;
                                 }
-                                if((i_96_ = (1 + i_94_ - (imageHeight << 12) - i_50_) / i_50_) > i_95_)
+                                if((i_96_ = (1 + i_94_ - (imageHeight << 12) - i_50_) / i_50_) > i_95_) {
                                     i_95_ = i_96_;
+                                }
                                 for(/**/; i_95_ < 0; i_95_++) {
                                     int i_97_ = pixels[(i_94_ >> 12) * imageWidth + (i_93_ >> 12)];
-                                    if(i_97_ != 0)
+                                    if(i_97_ != 0) {
                                         Rasterizer.destinationPixels[i_92_++] = i_97_;
-                                    else
+                                    } else {
                                         i_92_++;
+                                    }
                                     i_93_ += i_51_;
                                     i_94_ += i_50_;
                                 }
@@ -649,14 +726,16 @@ public class ImageRGB extends Rasterizer {
                                     i_99_ += i_103_;
                                 }
                                 int i_104_;
-                                if((i_104_ = (1 + i_100_ - (imageWidth << 12) - i_51_) / i_51_) > i_102_)
+                                if((i_104_ = (1 + i_100_ - (imageWidth << 12) - i_51_) / i_51_) > i_102_) {
                                     i_102_ = i_104_;
+                                }
                                 for(/**/; i_102_ < 0; i_102_++) {
                                     int i_105_ = pixels[(i_101_ >> 12) * imageWidth + (i_100_ >> 12)];
-                                    if(i_105_ != 0)
+                                    if(i_105_ != 0) {
                                         Rasterizer.destinationPixels[i_99_++] = i_105_;
-                                    else
+                                    } else {
                                         i_99_++;
+                                    }
                                     i_100_ += i_51_;
                                 }
                             }
@@ -679,8 +758,9 @@ public class ImageRGB extends Rasterizer {
                                 i_107_ += i_111_;
                             }
                             int i_112_;
-                            if((i_112_ = (1 + i_108_ - (imageWidth << 12) - i_51_) / i_51_) > i_110_)
+                            if((i_112_ = (1 + i_108_ - (imageWidth << 12) - i_51_) / i_51_) > i_110_) {
                                 i_110_ = i_112_;
+                            }
                             if((i_112_ = i_109_ - (imageHeight << 12)) >= 0) {
                                 i_112_ = (i_50_ - i_112_) / i_50_;
                                 i_110_ += i_112_;
@@ -688,14 +768,16 @@ public class ImageRGB extends Rasterizer {
                                 i_109_ += i_50_ * i_112_;
                                 i_107_ += i_112_;
                             }
-                            if((i_112_ = (i_109_ - i_50_) / i_50_) > i_110_)
+                            if((i_112_ = (i_109_ - i_50_) / i_50_) > i_110_) {
                                 i_110_ = i_112_;
+                            }
                             for(/**/; i_110_ < 0; i_110_++) {
                                 int i_113_ = pixels[(i_109_ >> 12) * imageWidth + (i_108_ >> 12)];
-                                if(i_113_ != 0)
+                                if(i_113_ != 0) {
                                     Rasterizer.destinationPixels[i_107_++] = i_113_;
-                                else
+                                } else {
                                     i_107_++;
+                                }
                                 i_108_ += i_51_;
                                 i_109_ += i_50_;
                             }
@@ -719,8 +801,9 @@ public class ImageRGB extends Rasterizer {
                                 i_115_ += i_119_;
                             }
                             int i_120_;
-                            if((i_120_ = (1 + i_116_ - (imageWidth << 12) - i_51_) / i_51_) > i_118_)
+                            if((i_120_ = (1 + i_116_ - (imageWidth << 12) - i_51_) / i_51_) > i_118_) {
                                 i_118_ = i_120_;
+                            }
                             if(i_117_ < 0) {
                                 i_120_ = (i_50_ - 1 - i_117_) / i_50_;
                                 i_118_ += i_120_;
@@ -728,14 +811,16 @@ public class ImageRGB extends Rasterizer {
                                 i_117_ += i_50_ * i_120_;
                                 i_115_ += i_120_;
                             }
-                            if((i_120_ = (1 + i_117_ - (imageHeight << 12) - i_50_) / i_50_) > i_118_)
+                            if((i_120_ = (1 + i_117_ - (imageHeight << 12) - i_50_) / i_50_) > i_118_) {
                                 i_118_ = i_120_;
+                            }
                             for(/**/; i_118_ < 0; i_118_++) {
                                 int i_121_ = pixels[(i_117_ >> 12) * imageWidth + (i_116_ >> 12)];
-                                if(i_121_ != 0)
+                                if(i_121_ != 0) {
                                     Rasterizer.destinationPixels[i_115_++] = i_121_;
-                                else
+                                } else {
                                     i_115_++;
+                                }
                                 i_116_ += i_51_;
                                 i_117_ += i_50_;
                             }
@@ -754,7 +839,9 @@ public class ImageRGB extends Rasterizer {
         Rasterizer.prepare(pixels, imageWidth, imageHeight);
     }
 
-    public void shapeImageToPixels(int x, int y, int width, int height, int arg4, int arg5, int k1, int zoom, int[] arg8, int[] arg9) {
+    public void shapeImageToPixels(
+            int x, int y, int width, int height, int arg4, int arg5, int k1, int zoom, int[] arg8, int[] arg9
+    ) {
         try {
             int centerX = -width / 2;
             int centerY = -height / 2;
@@ -774,7 +861,7 @@ public class ImageRGB extends Rasterizer {
                 for(x = -arg9[y]; x < 0; x++) {
                     int pixelToGet = (i_130_ >> 16) + (i_131_ >> 16) * imageWidth;
                     int colour = 0;
-                    if(!(pixels.length < pixelToGet || pixelToGet < 0)){
+                    if(!(pixels.length < pixelToGet || pixelToGet < 0)) {
                         colour = pixels[pixelToGet];
                     }
                     Rasterizer.destinationPixels[i_129_++] = colour;
@@ -807,8 +894,9 @@ public class ImageRGB extends Rasterizer {
             source_ptr += clip_height * line_width;
             dest_ptr += clip_height * Rasterizer.destinationWidth;
         }
-        if(y + line_count > Rasterizer.viewportBottom)
+        if(y + line_count > Rasterizer.viewportBottom) {
             line_count -= y + line_count - Rasterizer.viewportBottom;
+        }
         if(x < Rasterizer.viewportLeft) {
             int clip_width = Rasterizer.viewportLeft - x;
             line_width -= clip_width;
@@ -824,16 +912,20 @@ public class ImageRGB extends Rasterizer {
             line_offset_src += clip_width;
             line_offset_dest += clip_width;
         }
-        if(line_width > 0 && line_count > 0)
-            blockCopyMask(Rasterizer.destinationPixels, pixels, 0, source_ptr, dest_ptr, line_width, line_count, line_offset_dest, line_offset_src, indexedImage.imgPixels);
+        if(line_width > 0 && line_count > 0) {
+            blockCopyMask(Rasterizer.destinationPixels, pixels, 0, source_ptr, dest_ptr, line_width, line_count,
+                    line_offset_dest, line_offset_src, indexedImage.imgPixels
+            );
+        }
     }
 
     public void trim() {
         if(imageWidth != maxWidth || imageHeight != maxHeight) {
             int[] newPixels = new int[maxWidth * maxHeight];
             for(int y = 0; y < imageHeight; y++) {
-                for(int x = 0; x < imageWidth; x++)
+                for(int x = 0; x < imageWidth; x++) {
                     newPixels[(y + offsetY) * maxWidth + x + offsetX] = pixels[y * imageWidth + x];
+                }
             }
             pixels = newPixels;
             imageWidth = maxWidth;
@@ -859,8 +951,9 @@ public class ImageRGB extends Rasterizer {
             pixel += yOffset * newWidth;
             rasterizerPixel += yOffset * Rasterizer.destinationWidth;
         }
-        if(y + newHeight > Rasterizer.viewportBottom)
+        if(y + newHeight > Rasterizer.viewportBottom) {
             newHeight -= y + newHeight - Rasterizer.viewportBottom;
+        }
         if(x < Rasterizer.viewportLeft) {
             int xOffset = Rasterizer.viewportLeft - x;
             newWidth -= xOffset;
@@ -876,8 +969,11 @@ public class ImageRGB extends Rasterizer {
             pixelOffset += widthOffset;
             rasterizerPixelOffset += widthOffset;
         }
-        if(newWidth > 0 && newHeight > 0)
-            copyPixels(Rasterizer.destinationPixels, pixels, pixel, rasterizerPixel, newWidth, newHeight, rasterizerPixelOffset, pixelOffset);
+        if(newWidth > 0 && newHeight > 0) {
+            copyPixels(Rasterizer.destinationPixels, pixels, pixel, rasterizerPixel, newWidth, newHeight,
+                    rasterizerPixelOffset, pixelOffset
+            );
+        }
     }
 
     public void drawImageWithOpacity(int x, int y, int opacity) {
@@ -896,8 +992,9 @@ public class ImageRGB extends Rasterizer {
             i_149_ += i_154_ * i_151_;
             i += i_154_ * Rasterizer.destinationWidth;
         }
-        if(y + i_150_ > Rasterizer.viewportBottom)
+        if(y + i_150_ > Rasterizer.viewportBottom) {
             i_150_ -= y + i_150_ - Rasterizer.viewportBottom;
+        }
         if(x < Rasterizer.viewportLeft) {
             int i_155_ = Rasterizer.viewportLeft - x;
             i_151_ -= i_155_;
@@ -913,8 +1010,9 @@ public class ImageRGB extends Rasterizer {
             i_153_ += i_156_;
             i_152_ += i_156_;
         }
-        if(i_151_ > 0 && i_150_ > 0)
+        if(i_151_ > 0 && i_150_ > 0) {
             method730(Rasterizer.destinationPixels, pixels, 0, i_149_, i, i_151_, i_150_, i_152_, i_153_, opacity);
+        }
     }
 
     public void drawRotated(int x, int y, int pivotX, int pivotY, int width, int height, int zoom, double angle) {
@@ -934,10 +1032,11 @@ public class ImageRGB extends Rasterizer {
                 int offsetY = sourceoffsetY;
                 for(x = -width; x < 0; x++) {
                     int i_166_ = pixels[(offsetX >> 16) + (offsetY >> 16) * imageWidth];
-                    if(i_166_ != 0)
+                    if(i_166_ != 0) {
                         Rasterizer.destinationPixels[i++] = i_166_;
-                    else
+                    } else {
                         i++;
+                    }
                     offsetX += cosine;
                     offsetY -= sine;
                 }
@@ -971,14 +1070,17 @@ public class ImageRGB extends Rasterizer {
                 arg1 += i_179_;
                 i_173_ += i_179_ * i_177_ - (offsetY << 16);
             }
-            if(i < i_174_)
+            if(i < i_174_) {
                 arg2 = ((i << 16) - i_172_ + i_176_ - 1) / i_176_;
-            if(i_171_ < i_175_)
+            }
+            if(i_171_ < i_175_) {
                 arg3 = ((i_171_ << 16) - i_173_ + i_177_ - 1) / i_177_;
+            }
             int i_180_ = arg0 + arg1 * Rasterizer.destinationWidth;
             int i_181_ = Rasterizer.destinationWidth - arg2;
-            if(arg1 + arg3 > Rasterizer.viewportBottom)
+            if(arg1 + arg3 > Rasterizer.viewportBottom) {
                 arg3 -= arg1 + arg3 - Rasterizer.viewportBottom;
+            }
             if(arg1 < Rasterizer.viewportTop) {
                 int i_182_ = Rasterizer.viewportTop - arg1;
                 arg3 -= i_182_;
@@ -997,7 +1099,10 @@ public class ImageRGB extends Rasterizer {
                 i_172_ += i_176_ * i_184_;
                 i_181_ += i_184_;
             }
-            method715(Rasterizer.destinationPixels, pixels, 0, i_172_, i_173_, i_180_, i_181_, arg2, arg3, i_176_, i_177_, i);
+            method715(
+                    Rasterizer.destinationPixels, pixels, 0, i_172_, i_173_, i_180_, i_181_, arg2, arg3, i_176_, i_177_,
+                    i
+            );
         }
     }
 }

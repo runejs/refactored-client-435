@@ -42,14 +42,15 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public int mouseWheelY;
 
 
-
     public static void processMenuClick() {
         if(SceneTile.activeInterfaceType != 0) {
             return;
         }
         int meta = clickType;
-        if(Main.widgetSelected == 1 && Class57.clickX >= 516 && RSString.clickY >= 160 && Class57.clickX <= 765 && RSString.clickY <= 205)
+        if(Main.widgetSelected == 1 && Class57.clickX >= 516 && RSString.clickY >= 160 && Class57.clickX <= 765 &&
+                RSString.clickY <= 205) {
             meta = 0;
+        }
         if(MovedStatics.menuOpen) {
             if(meta != 1) {
                 int x = Class13.mouseX;
@@ -66,12 +67,16 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     y -= 357;
                     x -= 17;
                 }
-                if(-10 + InteractiveObject.menuOffsetX > x || 10 + VertexNormal.menuWidth + InteractiveObject.menuOffsetX < x || y < Main.menuOffsetY + -10 || y > Main.menuOffsetY + CollisionMap.menuHeight + 10) {
-                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
+                if(-10 + InteractiveObject.menuOffsetX > x ||
+                        10 + VertexNormal.menuWidth + InteractiveObject.menuOffsetX < x || y < Main.menuOffsetY + -10 ||
+                        y > Main.menuOffsetY + CollisionMap.menuHeight + 10) {
+                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
                         GameInterface.redrawTabArea = true;
+                    }
                     MovedStatics.menuOpen = false;
-                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
+                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
                         ChatBox.redrawChatbox = true;
+                    }
                 }
             }
             if(meta == 1) {
@@ -95,21 +100,26 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 int id = -1;
                 for(int row = 0; row < ActorDefinition.menuActionRow; row++) {
                     int k3 = 31 + menuY + 15 * (ActorDefinition.menuActionRow + -1 - row);
-                    if(x > menuX && x < dx + menuX && y > -13 + k3 && y < 3 + k3)
+                    if(x > menuX && x < dx + menuX && y > -13 + k3 && y < 3 + k3) {
                         id = row;
+                    }
                 }
-                if(id != -1)
+                if(id != -1) {
                     GameInterface.processMenuActions(109, id);
-                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
+                }
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
                     GameInterface.redrawTabArea = true;
+                }
                 MovedStatics.menuOpen = false;
-                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
+                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
                     ChatBox.redrawChatbox = true;
+                }
             }
         } else {
             if(meta == 1 && ActorDefinition.menuActionRow > 0) {
                 int action = MovedStatics.menuActionTypes[ActorDefinition.menuActionRow - 1];
-                if(action == 53 || action == 25 || action == 55 || action == 48 || action == 24 || action == 52 || action == 6 || action == 31 || action == 43 || action == 11 || action == 19 || action == 1006) {
+                if(action == 53 || action == 25 || action == 55 || action == 48 || action == 24 || action == 52 ||
+                        action == 6 || action == 31 || action == 43 || action == 11 || action == 19 || action == 1006) {
                     int item = InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow - 1];
                     int id = Class59.secondMenuOperand[-1 + ActorDefinition.menuActionRow];
                     GameInterface gameInterface = GameInterface.getInterface(id);
@@ -120,28 +130,35 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                         Class48.modifiedWidgetId = id;
                         ItemDefinition.anInt2798 = RSString.clickY;
                         GroundItemTile.selectedInventorySlot = item;
-                        if(id >> 16 == GameInterface.gameScreenInterfaceId)
+                        if(id >> 16 == GameInterface.gameScreenInterfaceId) {
                             SceneTile.activeInterfaceType = 1;
-                        if(GameInterface.chatboxInterfaceId == id >> 16)
+                        }
+                        if(GameInterface.chatboxInterfaceId == id >> 16) {
                             SceneTile.activeInterfaceType = 3;
+                        }
                         Buffer.lastItemDragTime = 0;
                         return;
                     }
                 }
             }
-            if(meta == 1 && (ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend((byte) 46, -1 + ActorDefinition.menuActionRow)) && ActorDefinition.menuActionRow > 2)
+            if(meta == 1 && (ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend(
+                    (byte) 46, -1 + ActorDefinition.menuActionRow)) && ActorDefinition.menuActionRow > 2) {
                 meta = 2;
-            if(meta == 1 && ActorDefinition.menuActionRow > 0)
+            }
+            if(meta == 1 && ActorDefinition.menuActionRow > 0) {
                 GameInterface.processMenuActions(59, ActorDefinition.menuActionRow + -1);
-            if(meta == 2 && ActorDefinition.menuActionRow > 0)
+            }
+            if(meta == 2 && ActorDefinition.menuActionRow > 0) {
                 Class60.determineMenuSize();
+            }
         }
     }
 
     public static Class40_Sub9_Sub1 method1003(Signlink arg0, Component arg1, int arg2) {
 
-        if(arg2 != 29914)
+        if(arg2 != 29914) {
             tile_overlayids = null;
+        }
         ProducingGraphicsBuffer.method1040(arg1, 0, arg0);
         Class40_Sub9_Sub1 class40_sub9_sub1 = new Class40_Sub9_Sub1();
         Class8.method218(class40_sub9_sub1);
@@ -166,8 +183,9 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     }
 
     public synchronized void focusLost(FocusEvent arg0) {
-        if(GameObject.frame != null)
+        if(GameObject.frame != null) {
             MovedStatics.mouseButtonPressed = 0;
+        }
     }
 
     public synchronized void mouseDragged(MouseEvent mouseEvent) {
@@ -191,8 +209,9 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     private void mouseWheelDragged(int i, int j) {
         LinkedList.anInt1073 = 0;
 
-        if(!mouseWheelDown)
+        if(!mouseWheelDown) {
             return;
+        }
         Wall.cameraVelocityHorizontal += i * 3;
         Class60.cameraVelocityVertical += j << 1;
     }
@@ -222,8 +241,9 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 MovedStatics.mouseButtonPressed = 1;
             }
         }
-        if(event.isPopupTrigger())
+        if(event.isPopupTrigger()) {
             event.consume();
+        }
     }
 
     public void mouseWheelMoved(MouseWheelEvent event) {
@@ -240,8 +260,9 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     }
 
     public void mouseClicked(MouseEvent arg0) {
-        if(arg0.isPopupTrigger())
+        if(arg0.isPopupTrigger()) {
             arg0.consume();
+        }
     }
 
     public boolean handleInterfaceScrolling(MouseWheelEvent event) {
@@ -286,7 +307,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     offsetX = 765 - 218;
                     offsetY = 503 - 298;
                 } else {
-                    offsetX= ScreenController.drawWidth - 218;
+                    offsetX = ScreenController.drawWidth - 218;
                     offsetY = ScreenController.drawHeight - 298;
                 }
                 for(int index = 0; index < GameInterface.cachedInterfaces[tabInterfaceID].length; index++) {
@@ -299,7 +320,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                         break;
                     }
                 }
-                if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
+                if(mouseX > offsetX + positionX && mouseY > offsetY + positionY &&
+                        mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
                     GameInterface.cachedInterfaces[tabInterfaceID][childID].scrollPosition += rotation * 30;
                     //				client.tabAreaAltered = true;
                     GameInterface.redrawTabArea = true;
@@ -322,14 +344,15 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     }
                 }
                 if(ScreenController.frameMode != ScreenMode.FIXED) {
-                    int yScreenOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);
-                    int xScreenOffset = (ScreenController.drawWidth /2) - (512/2) - (234/3);
+                    int yScreenOffset = (ScreenController.drawHeight / 2) - (334 / 2) - (184 / 2);
+                    int xScreenOffset = (ScreenController.drawWidth / 2) - (512 / 2) - (234 / 3);
                     positionX += xScreenOffset;
                     positionY += yScreenOffset;
-                    width+= xScreenOffset;
-                    height+= yScreenOffset;
+                    width += xScreenOffset;
+                    height += yScreenOffset;
                 }
-                if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
+                if(mouseX > offsetX + positionX && mouseY > offsetY + positionY &&
+                        mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
                     GameInterface.cachedInterfaces[widgetid][childID].scrollPosition += rotation * 30;
                     return true;
                 }
@@ -365,7 +388,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             MovedStatics.mouseButtonPressed = 0;
             mouseWheelDown = false;
         }
-        if(arg0.isPopupTrigger())
+        if(arg0.isPopupTrigger()) {
             arg0.consume();
+        }
     }
 }

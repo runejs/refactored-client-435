@@ -36,32 +36,37 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
 
 
     public static AnimationSequence getAnimationSequence(int animationId) {
-        AnimationSequence animationSequence = (AnimationSequence) Class40_Sub5_Sub6.aClass9_2439.get((long) animationId);
+        AnimationSequence animationSequence = (AnimationSequence) Class40_Sub5_Sub6.aClass9_2439.get(
+                (long) animationId);
 
-        if(animationSequence != null)
+        if(animationSequence != null) {
             return animationSequence;
+        }
         byte[] is = AnimationSequence.aCacheArchive_2484.getFile(12, animationId);
         animationSequence = new AnimationSequence();
-        if(is != null)
+        if(is != null) {
             animationSequence.decodeAllAnimationSequences(new Buffer(is));
+        }
         animationSequence.method591();
         Class40_Sub5_Sub6.aClass9_2439.put((long) animationId, animationSequence);
         return animationSequence;
     }
 
     public static boolean method1051(int arg0, GameInterface arg1) {
-        if(arg0 != 300)
+        if(arg0 != 300) {
             return false;
+        }
         int i = arg1.contentType;
         if(i >= 1 && i <= 200 || i >= 701 && i <= 900) {
-            if(i >= 801)
+            if(i >= 801) {
                 i -= 701;
-            else if(i >= 701)
+            } else if(i >= 701) {
                 i -= 601;
-            else if(i < 101)
+            } else if(i < 101) {
                 i--;
-            else
+            } else {
                 i -= 101;
+            }
             OverlayDefinition.addActionRow(English.remove, 0, 0, 0, 13, Native.white + Player.friendUsernames[i]);
             OverlayDefinition.addActionRow(English.message, 0, 0, 0, 18, Native.white + Player.friendUsernames[i]);
             return true;
@@ -77,7 +82,8 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
         int i = arg2.currentPosition;
         byte[] strBytes = arg1.getBytes(StandardCharsets.UTF_8);
         arg2.putSmart(strBytes.length);
-        arg2.currentPosition += IdentityKit.aHuffmanEncoding_2590.encrypt(0, arg2.currentPosition, strBytes.length, strBytes, arg2.buffer);
+        arg2.currentPosition += IdentityKit.aHuffmanEncoding_2590.encrypt(
+                0, arg2.currentPosition, strBytes.length, strBytes, arg2.buffer);
         return -i + arg2.currentPosition;
 
     }
@@ -106,8 +112,9 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
     }
 
     public synchronized void removeConsumer(ImageConsumer arg0) {
-        if(arg0 == imageConsumer)
+        if(arg0 == imageConsumer) {
             imageConsumer = null;
+        }
     }
 
 
@@ -131,8 +138,9 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
         image = arg2.createImage(this);
         drawPixels();
         arg2.prepareImage(image, this);
-        if(arg0 < 4)
+        if(arg0 < 4) {
             drawPixels();
+        }
         drawPixels();
         arg2.prepareImage(image, this);
         drawPixels();

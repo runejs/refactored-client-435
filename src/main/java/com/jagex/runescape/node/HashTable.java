@@ -40,8 +40,9 @@ public class HashTable {
 
     public Node method331(long key, int arg1) {
         aLong550 = key;
-        if(arg1 != 6120)
+        if(arg1 != 6120) {
             return null;
+        }
         Node class40 = nodes[(int) ((long) (size + -1) & key)];
         for(aClass40_566 = class40.next; class40 != aClass40_566; aClass40_566 = aClass40_566.next) {
             if(aClass40_566.key == key) {
@@ -55,9 +56,13 @@ public class HashTable {
     }
 
     public Node method333() {
-        if(aClass40_566 == null)
+        if(aClass40_566 == null) {
             return null;
-        for(Node node = nodes[(int) (aLong550 & (long) (-1 + size))]; node != aClass40_566; aClass40_566 = aClass40_566.next) {
+        }
+        for(
+                Node node = nodes[(int) (aLong550 & (long) (-1 + size))]; node != aClass40_566;
+                aClass40_566 = aClass40_566.next
+        ) {
             if(aLong550 == aClass40_566.key) {
                 Node class40_1_ = aClass40_566;
                 aClass40_566 = aClass40_566.next;

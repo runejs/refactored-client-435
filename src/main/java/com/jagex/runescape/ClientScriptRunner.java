@@ -51,29 +51,37 @@ public class ClientScriptRunner extends Node {
     public int scriptId;
 
     public static String method872(int arg0, int arg1) {
-        if(arg0 > arg1)
+        if(arg0 > arg1) {
             return Integer.toString(arg1);
+        }
         return Native.aClass1_478;
     }
 
     public static void method873(int arg1, int arg2) {
-        if(arg2 != 45)
+        if(arg2 != 45) {
             runEnergy = 53;
+        }
         int i = 0;
         for(int i_0_ = 0; i_0_ < 100; i_0_++) {
             if(ChatBox.chatMessages[i_0_] != null) {
                 int i_1_ = ChatBox.chatTypes[i_0_];
                 int i_2_ = 4 + ChatBox.chatboxScroll + -(i * 14) + 70;
-                if(i_2_ < -20)
+                if(i_2_ < -20) {
                     break;
-                if(i_1_ == 0)
+                }
+                if(i_1_ == 0) {
                     i++;
+                }
                 String class1 = ChatBox.chatPlayerNames[i_0_];
-                if(class1 != null && class1.startsWith(Native.whiteCrown))
+                if(class1 != null && class1.startsWith(Native.whiteCrown)) {
                     class1 = class1.substring(5);
-                if(class1 != null && class1.startsWith(Native.goldCrown))
+                }
+                if(class1 != null && class1.startsWith(Native.goldCrown)) {
                     class1 = class1.substring(5);
-                if((i_1_ == 1 || i_1_ == 2) && (i_1_ == 1 || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 1 && Player.hasFriend(class1))) {
+                }
+                if((i_1_ == 1 || i_1_ == 2) &&
+                        (i_1_ == 1 || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 1 && Player.hasFriend(
+                                class1))) {
                     if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !class1.equals(Player.localPlayer.playerName)) {
                         if(InteractiveObject.playerRights >= 1) {
                             OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.white + class1);
@@ -83,7 +91,9 @@ public class ClientScriptRunner extends Node {
                     }
                     i++;
                 }
-                if((i_1_ == 3 || i_1_ == 7) && CollisionMap.anInt165 == 0 && (i_1_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(class1))) {
+                if((i_1_ == 3 || i_1_ == 7) && CollisionMap.anInt165 == 0 &&
+                        (i_1_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(
+                                class1))) {
                     i++;
                     if(arg1 > -14 + i_2_ && arg1 <= i_2_) {
                         if(InteractiveObject.playerRights >= 1) {
@@ -99,8 +109,9 @@ public class ClientScriptRunner extends Node {
                     }
                     i++;
                 }
-                if((i_1_ == 5 || i_1_ == 6) && CollisionMap.anInt165 == 0 && ChatBox.privateChatMode < 2)
+                if((i_1_ == 5 || i_1_ == 6) && CollisionMap.anInt165 == 0 && ChatBox.privateChatMode < 2) {
                     i++;
+                }
                 if(i_1_ == 8 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Player.hasFriend(class1))) {
                     if(i_2_ + -14 < arg1 && arg1 <= i_2_) {
                         OverlayDefinition.addActionRow(English.acceptChallenge, 0, 0, 0, 46, Native.white + class1);
@@ -165,7 +176,8 @@ public class ClientScriptRunner extends Node {
                         argTypes[j] = Class26.stringToType(argNames[j]);
                     }
 
-                    clientScriptRunner.functionNodes[i] = signlink.method386(argTypes, functionName, Class26.stringToType(typeString));
+                    clientScriptRunner.functionNodes[i] = signlink.method386(
+                            argTypes, functionName, Class26.stringToType(typeString));
                     clientScriptRunner.argumentValues[i] = argValueData;
                 }
             } catch(ClassNotFoundException classnotfoundexception) {
@@ -186,7 +198,8 @@ public class ClientScriptRunner extends Node {
 
     public static void createClientScriptCheckPacket(int packetId, PacketBuffer buffer) {
         for(; ; ) {
-            ClientScriptRunner clientScriptRunner = (ClientScriptRunner) KeyFocusListener.aLinkedList_1278.method902((byte) -90);
+            ClientScriptRunner clientScriptRunner = (ClientScriptRunner) KeyFocusListener.aLinkedList_1278.method902(
+                    (byte) -90);
             if(clientScriptRunner == null) {
                 break;
             }
@@ -195,16 +208,20 @@ public class ClientScriptRunner extends Node {
 
             for(int i = 0; clientScriptRunner.scriptCount > i; i++) {
                 if(clientScriptRunner.valueNodes[i] != null) {
-                    if(clientScriptRunner.valueNodes[i].anInt434 == 2)
+                    if(clientScriptRunner.valueNodes[i].anInt434 == 2) {
                         clientScriptRunner.errorCodes[i] = -5;
-                    if(clientScriptRunner.valueNodes[i].anInt434 == 0)
+                    }
+                    if(clientScriptRunner.valueNodes[i].anInt434 == 0) {
                         bool = true;
+                    }
                 }
                 if(clientScriptRunner.functionNodes[i] != null) {
-                    if(clientScriptRunner.functionNodes[i].anInt434 == 2)
+                    if(clientScriptRunner.functionNodes[i].anInt434 == 2) {
                         clientScriptRunner.errorCodes[i] = -6;
-                    if(clientScriptRunner.functionNodes[i].anInt434 == 0)
+                    }
+                    if(clientScriptRunner.functionNodes[i].anInt434 == 0) {
                         bool = true;
+                    }
                 }
             }
 
@@ -241,20 +258,22 @@ public class ClientScriptRunner extends Node {
                             byte[][] argumentValueData = clientScriptRunner.argumentValues[i];
                             Object[] objects = new Object[argumentValueData.length];
                             for(int valueIndex = 0; argumentValueData.length > valueIndex; valueIndex++) {
-                                ObjectInputStream objectinputstream = new ObjectInputStream(new ByteArrayInputStream(argumentValueData[valueIndex]));
+                                ObjectInputStream objectinputstream = new ObjectInputStream(
+                                        new ByteArrayInputStream(argumentValueData[valueIndex]));
                                 objects[valueIndex] = objectinputstream.readObject();
                             }
                             Object object = method.invoke(null, objects);
-                            if(object == null)
+                            if(object == null) {
                                 buffer.putByte(0);
-                            else if(object instanceof Number) {
+                            } else if(object instanceof Number) {
                                 buffer.putByte(1);
                                 buffer.putLongBE(((Number) object).longValue());
                             } else if(object instanceof RSString) {
                                 buffer.putByte(2);
                                 buffer.method505((RSString) object);
-                            } else
+                            } else {
                                 buffer.putByte(4);
+                            }
                         } else if(opcode == 4) {
                             Method method = (Method) clientScriptRunner.functionNodes[i].value;
                             int methodModifiers = method.getModifiers();
@@ -297,7 +316,9 @@ public class ClientScriptRunner extends Node {
         }
     }
 
-    public static void runClientScripts(Object[] listeners, int arg1, int arg2, GameInterface gameInterface1, int arg4) {
+    public static void runClientScripts(
+            Object[] listeners, int arg1, int arg2, GameInterface gameInterface1, int arg4
+    ) {
         ClientScript clientScript = ClientScript.decodeClientScript(((Integer) listeners[0]).intValue(), 76);
         int[] intOperands = clientScript.intOperands;
         int[] scriptOpcodes = clientScript.opcodes;
@@ -444,8 +465,8 @@ public class ClientScriptRunner extends Node {
                         stringValueIndex -= operand;
                         System.out.println("THIS DOES SOMETHING, GO FIX!");
                         // TODO: Figure out what this actually does
-//                        RSString class1 = (RSString.method627(operand, stringValueIndex, Class40_Sub11.aClass1Array2153));
-//                        Class40_Sub11.aClass1Array2153[stringValueIndex++] = class1;
+                        //                        RSString class1 = (RSString.method627(operand, stringValueIndex, Class40_Sub11.aClass1Array2153));
+                        //                        Class40_Sub11.aClass1Array2153[stringValueIndex++] = class1;
                         continue;
                     }
                     if(scriptOpcode == 38) {
@@ -462,10 +483,12 @@ public class ClientScriptRunner extends Node {
                         int[] invokeScriptInts = new int[invokeScript.localIntCount];
                         String[] invokeScriptStrings = new String[invokeScript.localStringCount];
                         for(int intIndex = 0; invokeScript.intStackCount > intIndex; intIndex++) {
-                            invokeScriptInts[intIndex] = scriptIntValues[intValueIndex - (invokeScript.intStackCount + -intIndex)];
+                            invokeScriptInts[intIndex] = scriptIntValues[intValueIndex -
+                                    (invokeScript.intStackCount + -intIndex)];
                         }
                         for(int strIndex = 0; invokeScript.stringStackCount > strIndex; strIndex++) {
-                            invokeScriptStrings[strIndex] = scriptStringValues[stringValueIndex - invokeScript.stringStackCount + strIndex];
+                            invokeScriptStrings[strIndex] = scriptStringValues[
+                                    stringValueIndex - invokeScript.stringStackCount + strIndex];
                         }
                         stringValueIndex -= invokeScript.stringStackCount;
                         intValueIndex -= invokeScript.intStackCount;
@@ -522,7 +545,9 @@ public class ClientScriptRunner extends Node {
                             Class22_Sub2.aGameInterface_1887 = childInterface;
                         }
                     } else if(scriptOpcode == 101) {
-                        GameInterface gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
+                        GameInterface gameInterface = !bool
+                                ? Class22_Sub2.aGameInterface_1887
+                                : MovedStatics.aGameInterface_2116;
                         GameInterface childInterface = GameInterface.getInterface(gameInterface.parentId);
                         childInterface.children[HuffmanEncoding.method1021(gameInterface.id, 32767)] = null;
                     } else {
@@ -616,7 +641,8 @@ public class ClientScriptRunner extends Node {
                         }
                         gameInterface.textShadowed = scriptIntValues[--intValueIndex] == 1;
                     }
-                } else if((scriptOpcode < 1200 || scriptOpcode >= 1300) && (scriptOpcode < 2200 || scriptOpcode >= 2300)) {
+                } else if((scriptOpcode < 1200 || scriptOpcode >= 1300) &&
+                        (scriptOpcode < 2200 || scriptOpcode >= 2300)) {
                     if((scriptOpcode < 1300 || scriptOpcode >= 1400) && (scriptOpcode < 2300 || scriptOpcode >= 2400)) {
                         if(scriptOpcode < 1500) {
                             if(scriptOpcode == 1400) {
@@ -624,7 +650,8 @@ public class ClientScriptRunner extends Node {
                                 int i_28_ = scriptIntValues[intValueIndex + 1];
                                 int i_29_ = scriptIntValues[intValueIndex];
                                 GameInterface gameInterface = GameInterface.getInterface(i_29_);
-                                if(gameInterface.children == null || gameInterface.children.length <= i_28_ || gameInterface.children[i_28_] == null) {
+                                if(gameInterface.children == null || gameInterface.children.length <= i_28_ ||
+                                        gameInterface.children[i_28_] == null) {
                                     scriptIntValues[intValueIndex++] = 0;
                                 } else {
                                     scriptIntValues[intValueIndex++] = 1;
@@ -639,7 +666,8 @@ public class ClientScriptRunner extends Node {
                                 int i_30_ = scriptIntValues[intValueIndex];
                                 int i_31_ = scriptIntValues[2 + intValueIndex];
                                 int i_32_ = scriptIntValues[intValueIndex + 1];
-                                GameInterface gameInterface = GameInterface.method361(GameInterface.cachedInterfaces[i_30_], i_31_, true, 0, -1, 0, i_32_, 398);
+                                GameInterface gameInterface = GameInterface.method361(
+                                        GameInterface.cachedInterfaces[i_30_], i_31_, true, 0, -1, 0, i_32_, 398);
                                 if(gameInterface == null) {
                                     scriptIntValues[intValueIndex++] = 0;
                                 } else {
@@ -655,10 +683,14 @@ public class ClientScriptRunner extends Node {
                                     break;
                                 }
                                 intValueIndex -= 3;
-                                GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[intValueIndex]);
+                                GameInterface gameInterface = GameInterface.getInterface(
+                                        scriptIntValues[intValueIndex]);
                                 int i_33_ = scriptIntValues[2 + intValueIndex];
                                 int i_34_ = scriptIntValues[intValueIndex + 1];
-                                GameInterface gameInterface_35_ = GameInterface.method361(gameInterface.children, i_33_, true, gameInterface.scrollPosition, gameInterface.id, gameInterface.scrollWidth, i_34_, 398);
+                                GameInterface gameInterface_35_ = GameInterface.method361(
+                                        gameInterface.children, i_33_, true, gameInterface.scrollPosition,
+                                        gameInterface.id, gameInterface.scrollWidth, i_34_, 398
+                                );
                                 if(gameInterface_35_ == null) {
                                     scriptIntValues[intValueIndex++] = 0;
                                 } else {
@@ -671,7 +703,9 @@ public class ClientScriptRunner extends Node {
                                 }
                             }
                         } else if(scriptOpcode < 1600) {
-                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
+                            GameInterface gameInterface = bool
+                                    ? MovedStatics.aGameInterface_2116
+                                    : Class22_Sub2.aGameInterface_1887;
                             if(scriptOpcode == 1500) {
                                 scriptIntValues[intValueIndex++] = gameInterface.currentX;
                             } else if(scriptOpcode == 1501) {
@@ -695,7 +729,8 @@ public class ClientScriptRunner extends Node {
                                     int i_36_ = scriptIntValues[1 + intValueIndex];
                                     int i_37_ = scriptIntValues[intValueIndex];
                                     int i_38_ = scriptIntValues[intValueIndex + 2];
-                                    GameInterface gameInterface = GameInterface.method361(GameInterface.cachedInterfaces[i_37_], i_38_, false, 0, -1, 0, i_36_, 398);
+                                    GameInterface gameInterface = GameInterface.method361(
+                                            GameInterface.cachedInterfaces[i_37_], i_38_, false, 0, -1, 0, i_36_, 398);
                                     if(gameInterface == null) {
                                         scriptIntValues[intValueIndex++] = -1;
                                     } else {
@@ -706,10 +741,15 @@ public class ClientScriptRunner extends Node {
                                         break;
                                     }
                                     intValueIndex -= 3;
-                                    GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[intValueIndex]);
+                                    GameInterface gameInterface = GameInterface.getInterface(
+                                            scriptIntValues[intValueIndex]);
                                     int i_39_ = scriptIntValues[1 + intValueIndex];
                                     int i_40_ = scriptIntValues[intValueIndex + 2];
-                                    GameInterface gameInterface_41_ = GameInterface.method361(GameInterface.cachedInterfaces[gameInterface.id >> 16], i_40_, false, gameInterface.scrollPosition, 0xffff & gameInterface.id, gameInterface.scrollWidth, i_39_, 398);
+                                    GameInterface gameInterface_41_ = GameInterface.method361(
+                                            GameInterface.cachedInterfaces[gameInterface.id >> 16], i_40_, false,
+                                            gameInterface.scrollPosition, 0xffff & gameInterface.id,
+                                            gameInterface.scrollWidth, i_39_, 398
+                                    );
                                     if(gameInterface_41_ == null) {
                                         scriptIntValues[intValueIndex++] = -1;
                                     } else {
@@ -718,7 +758,8 @@ public class ClientScriptRunner extends Node {
                                 }
                             } else if(scriptOpcode >= 2600) {
                                 if(scriptOpcode < 2700) {
-                                    GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
+                                    GameInterface gameInterface = GameInterface.getInterface(
+                                            scriptIntValues[--intValueIndex]);
                                     if(scriptOpcode == 2600) {
                                         scriptIntValues[intValueIndex++] = gameInterface.scrollWidth;
                                     } else {
@@ -744,24 +785,34 @@ public class ClientScriptRunner extends Node {
                                             int i_44_ = scriptIntValues[intValueIndex + 1];
                                             Class33.method406(0, i_44_, i_43_, -128);
                                         } else if(scriptOpcode == 3002) {
-                                            GameInterface gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
+                                            GameInterface gameInterface = !bool
+                                                    ? Class22_Sub2.aGameInterface_1887
+                                                    : MovedStatics.aGameInterface_2116;
                                             if(MovedStatics.anInt1819 == -1) {
-                                                PacketBuffer.method517(gameInterface.id & 0x7fff, gameInterface.parentId);
+                                                PacketBuffer.method517(
+                                                        gameInterface.id & 0x7fff, gameInterface.parentId);
                                                 MovedStatics.anInt1819 = gameInterface.id;
                                             }
                                         } else {
                                             if(scriptOpcode != 3003) {
                                                 break;
                                             }
-                                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
+                                            GameInterface gameInterface = bool
+                                                    ? MovedStatics.aGameInterface_2116
+                                                    : Class22_Sub2.aGameInterface_1887;
                                             int i_45_ = scriptIntValues[--intValueIndex];
-                                            Class33.method406(0x7fff & gameInterface.id, i_45_, gameInterface.parentId, -121);
+                                            Class33.method406(
+                                                    0x7fff & gameInterface.id, i_45_, gameInterface.parentId, -121);
                                         }
                                     } else if(scriptOpcode >= 3200) {
                                         if(scriptOpcode < 3300) {
                                             if(scriptOpcode == 3200) {
                                                 intValueIndex -= 3;
-                                                WallDecoration.method950(scriptIntValues[intValueIndex], scriptIntValues[intValueIndex + 1], scriptIntValues[2 + intValueIndex]);
+                                                WallDecoration.method950(
+                                                        scriptIntValues[intValueIndex],
+                                                        scriptIntValues[intValueIndex + 1],
+                                                        scriptIntValues[2 + intValueIndex]
+                                                );
                                             } else if(scriptOpcode == 3201) {
                                                 Class51.method942(scriptIntValues[--intValueIndex]);
                                             } else {
@@ -769,7 +820,10 @@ public class ClientScriptRunner extends Node {
                                                     break;
                                                 }
                                                 intValueIndex -= 2;
-                                                Class57.method975(scriptIntValues[intValueIndex + 1], scriptIntValues[intValueIndex]);
+                                                Class57.method975(
+                                                        scriptIntValues[intValueIndex + 1],
+                                                        scriptIntValues[intValueIndex]
+                                                );
                                             }
                                         } else if(scriptOpcode < 3400) {
                                             if(scriptOpcode != 3300) {
@@ -799,10 +853,12 @@ public class ClientScriptRunner extends Node {
                                                 scriptIntValues[intValueIndex++] = i_52_ / i_53_;
                                             } else if(scriptOpcode == 4004) {
                                                 int i_54_ = scriptIntValues[--intValueIndex];
-                                                scriptIntValues[intValueIndex++] = (int) (Math.random() * (double) i_54_);
+                                                scriptIntValues[intValueIndex++] = (int) (Math.random() *
+                                                        (double) i_54_);
                                             } else if(scriptOpcode == 4005) {
                                                 int i_55_ = scriptIntValues[--intValueIndex];
-                                                scriptIntValues[intValueIndex++] = (int) ((double) (1 + i_55_) * Math.random());
+                                                scriptIntValues[intValueIndex++] = (int) ((double) (1 + i_55_) *
+                                                        Math.random());
                                             } else if(scriptOpcode == 4006) {
                                                 intValueIndex -= 5;
                                                 int i_56_ = scriptIntValues[1 + intValueIndex];
@@ -810,7 +866,8 @@ public class ClientScriptRunner extends Node {
                                                 int i_58_ = scriptIntValues[intValueIndex + 3];
                                                 int i_59_ = scriptIntValues[intValueIndex + 4];
                                                 int i_60_ = scriptIntValues[2 + intValueIndex];
-                                                scriptIntValues[intValueIndex++] = i_57_ + (i_59_ + -i_60_) * (-i_57_ + i_56_) / (i_58_ - i_60_);
+                                                scriptIntValues[intValueIndex++] =
+                                                        i_57_ + (i_59_ + -i_60_) * (-i_57_ + i_56_) / (i_58_ - i_60_);
                                             } else if(scriptOpcode == 4007) {
                                                 intValueIndex -= 2;
                                                 int i_61_ = scriptIntValues[intValueIndex];
@@ -820,17 +877,20 @@ public class ClientScriptRunner extends Node {
                                                 intValueIndex -= 2;
                                                 int i_63_ = scriptIntValues[intValueIndex];
                                                 int i_64_ = scriptIntValues[intValueIndex + 1];
-                                                scriptIntValues[intValueIndex++] = UnderlayDefinition.bitWiseOR(1 << i_64_, i_63_);
+                                                scriptIntValues[intValueIndex++] = UnderlayDefinition.bitWiseOR(
+                                                        1 << i_64_, i_63_);
                                             } else if(scriptOpcode == 4009) {
                                                 intValueIndex -= 2;
                                                 int i_65_ = scriptIntValues[intValueIndex];
                                                 int i_66_ = scriptIntValues[1 + intValueIndex];
-                                                scriptIntValues[intValueIndex++] = HuffmanEncoding.method1021(i_65_, -1 + -(1 << i_66_));
+                                                scriptIntValues[intValueIndex++] = HuffmanEncoding.method1021(
+                                                        i_65_, -1 + -(1 << i_66_));
                                             } else if(scriptOpcode == 4010) {
                                                 intValueIndex -= 2;
                                                 int i_67_ = scriptIntValues[intValueIndex];
                                                 int i_68_ = scriptIntValues[1 + intValueIndex];
-                                                scriptIntValues[intValueIndex++] = HuffmanEncoding.method1021(1 << i_68_, i_67_) != 0 ? 1 : 0;
+                                                scriptIntValues[intValueIndex++] = HuffmanEncoding.method1021(
+                                                        1 << i_68_, i_67_) != 0 ? 1 : 0;
                                             } else if(scriptOpcode == 4011) {
                                                 intValueIndex -= 2;
                                                 int i_69_ = scriptIntValues[intValueIndex + 1];
@@ -843,7 +903,8 @@ public class ClientScriptRunner extends Node {
                                                 if(i_71_ == 0) {
                                                     scriptIntValues[intValueIndex++] = 0;
                                                 } else {
-                                                    scriptIntValues[intValueIndex++] = (int) Math.pow((double) i_71_, (double) i_72_);
+                                                    scriptIntValues[intValueIndex++] = (int) Math.pow(
+                                                            (double) i_71_, (double) i_72_);
                                                 }
                                             } else {
                                                 if(scriptOpcode != 4013) {
@@ -857,7 +918,8 @@ public class ClientScriptRunner extends Node {
                                                 } else if(i_74_ == 0) {
                                                     scriptIntValues[intValueIndex++] = Integer.MAX_VALUE;
                                                 } else {
-                                                    scriptIntValues[intValueIndex++] = (int) Math.pow((double) i_73_, 1.0 / (double) i_74_);
+                                                    scriptIntValues[intValueIndex++] = (int) Math.pow(
+                                                            (double) i_73_, 1.0 / (double) i_74_);
                                                 }
                                             }
                                         } else {
@@ -876,7 +938,8 @@ public class ClientScriptRunner extends Node {
                                             } else if(scriptOpcode == 4102) {
                                                 String class1 = scriptStringValues[--stringValueIndex];
                                                 int i_77_ = scriptIntValues[--intValueIndex];
-                                                scriptStringValues[stringValueIndex++] = class1 + HuffmanEncoding.method1024(true, (byte) -85, i_77_);
+                                                scriptStringValues[stringValueIndex++] =
+                                                        class1 + HuffmanEncoding.method1024(true, (byte) -85, i_77_);
                                             } else if(scriptOpcode == 4103) {
                                                 String class1 = scriptStringValues[--stringValueIndex];
                                                 scriptStringValues[stringValueIndex++] = class1.toLowerCase();
@@ -887,25 +950,30 @@ public class ClientScriptRunner extends Node {
                                                 int i_79_ = Class8.aCalendar279.get(Calendar.DATE);
                                                 int i_80_ = Class8.aCalendar279.get(Calendar.MONTH);
                                                 int i_81_ = Class8.aCalendar279.get(Calendar.YEAR);
-                                                scriptStringValues[stringValueIndex++] = i_79_ + "-" + Class40_Sub5_Sub17_Sub1.aClass1Array2964[i_80_] + "-" + i_81_;
+                                                scriptStringValues[stringValueIndex++] =
+                                                        i_79_ + "-" + Class40_Sub5_Sub17_Sub1.aClass1Array2964[i_80_] +
+                                                                "-" + i_81_;
                                             } else if(scriptOpcode == 4105) {
                                                 stringValueIndex -= 2;
                                                 String class1 = scriptStringValues[stringValueIndex];
                                                 String class1_82_ = scriptStringValues[stringValueIndex + 1];
-                                                if(Player.localPlayer.playerAppearance == null || !Player.localPlayer.playerAppearance.gender) {
+                                                if(Player.localPlayer.playerAppearance == null ||
+                                                        !Player.localPlayer.playerAppearance.gender) {
                                                     scriptStringValues[stringValueIndex++] = class1;
                                                 } else {
                                                     scriptStringValues[stringValueIndex++] = class1_82_;
                                                 }
                                             } else if(scriptOpcode == 4106) {
                                                 int i_83_ = scriptIntValues[--intValueIndex];
-                                                scriptStringValues[stringValueIndex++] = Integer.toString(i_83_).toString();
+                                                scriptStringValues[stringValueIndex++] = Integer.toString(i_83_)
+                                                        .toString();
                                             } else {
                                                 if(scriptOpcode != 4107) {
                                                     break;
                                                 }
                                                 stringValueIndex -= 2;
-                                                scriptIntValues[intValueIndex++] = scriptStringValues[stringValueIndex].compareTo(scriptStringValues[stringValueIndex + 1]);
+                                                scriptIntValues[intValueIndex++] = scriptStringValues[stringValueIndex]
+                                                        .compareTo(scriptStringValues[stringValueIndex + 1]);
                                             }
                                         }
                                     } else if(scriptOpcode == 3100) {
@@ -916,11 +984,15 @@ public class ClientScriptRunner extends Node {
                                             break;
                                         }
                                         intValueIndex -= 2;
-                                        ActorDefinition.playAnimation(scriptIntValues[intValueIndex], scriptIntValues[intValueIndex + 1], Player.localPlayer);
+                                        ActorDefinition.playAnimation(
+                                                scriptIntValues[intValueIndex], scriptIntValues[intValueIndex + 1],
+                                                Player.localPlayer
+                                        );
                                     }
                                 }
                             } else {
-                                GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
+                                GameInterface gameInterface = GameInterface.getInterface(
+                                        scriptIntValues[--intValueIndex]);
                                 if(scriptOpcode == 2500) {
                                     scriptIntValues[intValueIndex++] = gameInterface.currentX;
                                 } else if(scriptOpcode == 2501) {
@@ -939,7 +1011,9 @@ public class ClientScriptRunner extends Node {
                                 }
                             }
                         } else {
-                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
+                            GameInterface gameInterface = bool
+                                    ? MovedStatics.aGameInterface_2116
+                                    : Class22_Sub2.aGameInterface_1887;
                             if(scriptOpcode == 1600) {
                                 scriptIntValues[intValueIndex++] = gameInterface.scrollWidth;
                             } else {
@@ -957,7 +1031,8 @@ public class ClientScriptRunner extends Node {
                         } else {
                             gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                         }
-                        if(scriptOpcode >= 1300 && scriptOpcode <= 1309 || scriptOpcode >= 1314 && scriptOpcode <= 1317) {
+                        if(scriptOpcode >= 1300 && scriptOpcode <= 1309 ||
+                                scriptOpcode >= 1314 && scriptOpcode <= 1317) {
                             String class1 = scriptStringValues[--stringValueIndex];
                             Object[] objects = new Object[class1.length() + 1];
                             for(int i_84_ = objects.length - 1; i_84_ >= 1; i_84_--) {
@@ -1007,7 +1082,8 @@ public class ClientScriptRunner extends Node {
                         } else if(scriptOpcode == 1310) {
                             int i_85_ = -1 + scriptIntValues[--intValueIndex];
                             if(i_85_ >= 0 && i_85_ <= 9) {
-                                if(gameInterface.aClass1Array2661 == null || gameInterface.aClass1Array2661.length <= i_85_) {
+                                if(gameInterface.aClass1Array2661 == null ||
+                                        gameInterface.aClass1Array2661.length <= i_85_) {
                                     String[] class1s = new String[1 + i_85_];
                                     if(gameInterface.aClass1Array2661 != null) {
                                         for(int i_86_ = 0; gameInterface.aClass1Array2661.length > i_86_; i_86_++) {
@@ -1066,7 +1142,9 @@ public class ClientScriptRunner extends Node {
                         if(scriptOpcode != 1203) {
                             break;
                         }
-                        GameInterface desiredInterface = !bool ? MovedStatics.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
+                        GameInterface desiredInterface = !bool
+                                ? MovedStatics.aGameInterface_2116
+                                : Class22_Sub2.aGameInterface_1887;
                         gameInterface.anInt2738 = desiredInterface.id;
                     }
                 }

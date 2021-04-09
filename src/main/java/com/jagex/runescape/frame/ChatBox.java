@@ -24,7 +24,7 @@ public class ChatBox {
     public static int dialogueId = -1;
     public static String[] chatMessages = new String[100];
     public static int[] chatTypes = new int[100];
-    public static String[] chatPlayerNames  = new String[100];
+    public static String[] chatPlayerNames = new String[100];
     public static int publicChatMode = 0;
     public static int privateChatMode = 0;
     public static int tradeMode = 0;
@@ -34,10 +34,13 @@ public class ChatBox {
     public static String chatboxInput = "";
     public static String chatMessage = "";
 
-    private static char[] VALID_CHARACTERS = {' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w',
-            'c', 'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8',
-            '9', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243',
-            '$', '%', '"', '[', ']', '_', '{', '}', '/', '|'};
+    private static char[] VALID_CHARACTERS = {
+            ' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w', 'c', 'y', 'f', 'g', 'p', 'b',
+            'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '?', '.', ',', ':',
+            ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243', '$', '%', '"', '[', ']', '_', '{',
+            '}', '/', '|'
+    };
+
     public static void renderChatbox() {
         MovedStatics.aBoolean260 = true;
         Class22.method305();
@@ -59,17 +62,21 @@ public class ChatBox {
             Rasterizer.setBounds(0, 0, 463, 77);
             for(int index = 0; index < itemSearchResultCount; index++) {
                 int y = index * 14 + 18 - itemSearchScroll;
-                if(y > 0 && y < 110)
+                if(y > 0 && y < 110) {
                     font.drawStringLeft(itemSearchResultNames[index], 239, y, 0);
+                }
             }
             Rasterizer.resetBounds();
-            if(itemSearchResultCount > 5)
+            if(itemSearchResultCount > 5) {
                 GameInterface.drawScrollBar(463, 0, 77, itemSearchScroll, 7 + 14 * itemSearchResultCount, 0);
+            }
             if(inputMessage.length() != 0) {
-                if(itemSearchResultCount == 0)
+                if(itemSearchResultCount == 0) {
                     TypeFace.fontBold.drawStringLeft(English.noMatchingObjectsFound, 239, 40, 0);
-            } else
+                }
+            } else {
                 TypeFace.fontBold.drawStringLeft(English.enterObjectName, 239, 40, 255);
+            }
             font.drawStringLeft(inputMessage + "*", 239, 90, 0);
             Rasterizer.drawHorizontalLine(0, 77, 479, 0);
         } else if(Native.clickToContinueString != null) {
@@ -97,10 +104,12 @@ public class ChatBox {
                     }
                     if(type == 0) {
                         line++;
-                        if(y > 0 && y < 110)
+                        if(y > 0 && y < 110) {
                             typeFace.drawString(chatMessages[i], 4, y, 0);
+                        }
                     }
-                    if((type == 1 || type == 2) && (type == 1 || publicChatMode == 0 || publicChatMode == 1 && Player.hasFriend(name))) {
+                    if((type == 1 || type == 2) &&
+                            (type == 1 || publicChatMode == 0 || publicChatMode == 1 && Player.hasFriend(name))) {
                         if(y > 0 && y < 110) {
                             int x = 4;
                             if(privelege == 1) {
@@ -111,13 +120,14 @@ public class ChatBox {
                                 Class40_Sub5_Sub13.moderatorIcon[1].drawImage(x, y - 12);
                                 x += 14;
                             }
-                            typeFace.drawString(name+ Native.colon, x, y, 0);
+                            typeFace.drawString(name + Native.colon, x, y, 0);
                             x += 8 + typeFace.getStringWidth(name);
                             typeFace.drawString(chatMessages[i], x, y, 255);
                         }
                         line++;
                     }
-                    if((type == 3 || type == 7) && CollisionMap.anInt165 == 0 && (type == 7 || privateChatMode == 0 || privateChatMode == 1 && Player.hasFriend(name))) {
+                    if((type == 3 || type == 7) && CollisionMap.anInt165 == 0 &&
+                            (type == 7 || privateChatMode == 0 || privateChatMode == 1 && Player.hasFriend(name))) {
                         line++;
                         if(y > 0 && y < 110) {
                             int i_13_ = 4;
@@ -139,48 +149,62 @@ public class ChatBox {
                     }
                     if(type == 4 && (tradeMode == 0 || tradeMode == 1 && Player.hasFriend(name))) {
                         line++;
-                        if(y > 0 && y < 110)
+                        if(y > 0 && y < 110) {
                             typeFace.drawString(name + " " + chatMessages[i], 4, y, 8388736);
+                        }
                     }
                     if(type == 5 && CollisionMap.anInt165 == 0 && privateChatMode < 2) {
-                        if(y > 0 && y < 110)
+                        if(y > 0 && y < 110) {
                             typeFace.drawString(chatMessages[i], 4, y, 8388608);
+                        }
                         line++;
                     }
                     if(type == 6 && CollisionMap.anInt165 == 0 && privateChatMode < 2) {
                         if(y > 0 && y < 110) {
                             typeFace.drawString(English.to + Native.aClass1_1123 + name + Native.colon, 4, y, 0);
-                            typeFace.drawString(chatMessages[i], typeFace.getStringWidth(English.to + Native.aClass1_1123 + name) + 12, y, 8388608);
+                            typeFace.drawString(
+                                    chatMessages[i],
+                                    typeFace.getStringWidth(English.to + Native.aClass1_1123 + name) + 12, y, 8388608
+                            );
                         }
                         line++;
                     }
                     if(type == 8 && (tradeMode == 0 || tradeMode == 1 && Player.hasFriend(name))) {
                         line++;
-                        if(y > 0 && y < 110)
+                        if(y > 0 && y < 110) {
                             typeFace.drawString(name + Native.aClass1_1123 + chatMessages[i], 4, y, 8270336);
+                        }
                     }
                 }
             }
             Rasterizer.resetBounds();
             chatboxScrollMax = line * 14 + 7;
-            if(chatboxScrollMax < 78)
+            if(chatboxScrollMax < 78) {
                 chatboxScrollMax = 78;
+            }
             GameInterface.drawScrollBar(463, 0, 77, chatboxScrollMax - chatboxScroll - 77, chatboxScrollMax, 0);
             String name;
-            if(Player.localPlayer != null && Player.localPlayer.playerName != null)
+            if(Player.localPlayer != null && Player.localPlayer.playerName != null) {
                 name = Player.localPlayer.playerName;
-            else
+            } else {
                 name = Native.username.toString();
+            }
             typeFace.drawString(name + Native.colon, 4, 90, 0);
-            typeFace.drawBasicStringLegacy("@blu@" + chatboxInput + Native.aClass1_478, typeFace.getStringWidth(name + Native.aClass1_515) + 6, 90);
+            typeFace.drawBasicStringLegacy(
+                    "@blu@" + chatboxInput + Native.aClass1_478, typeFace.getStringWidth(name + Native.aClass1_515) + 6,
+                    90
+            );
             Rasterizer.drawHorizontalLine(0, 77, 479, 0);
         } else {
             boolean bool = Main.drawParentInterface(3, 0, 0, 479, 96, dialogueId);
-            if(!bool)
+            if(!bool) {
                 redrawChatbox = true;
+            }
         }
-        if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
+        if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED &&
+                Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
             Class40_Sub5_Sub6.drawMenu(0, 0);
+        }
         if(ScreenController.frameMode == ScreenMode.FIXED) {
             LinkedList.drawChatBoxGraphics();
         }
@@ -188,9 +212,9 @@ public class ChatBox {
     }
 
     public static void itemSearch(String input) {
-        if(input == null || input.length() == 0)
+        if(input == null || input.length() == 0) {
             itemSearchResultCount = 0;
-        else {
+        } else {
             String searchTerm = input;
             String[] splitString = new String[100];
             int i = 0;
@@ -198,13 +222,15 @@ public class ChatBox {
                 int spaceIndex = searchTerm.indexOf(' ');
                 if(spaceIndex == -1) {
                     searchTerm = searchTerm.trim();
-                    if(searchTerm.length() > 0)
+                    if(searchTerm.length() > 0) {
                         splitString[i++] = searchTerm.toLowerCase();
+                    }
                     break;
                 }
                 String first = searchTerm.substring(0, spaceIndex).trim();
-                if(first.length() > 0)
+                if(first.length() > 0) {
                     splitString[i++] = first.toLowerCase();
+                }
                 searchTerm = searchTerm.substring(1 + spaceIndex);
             }
             itemSearchResultCount = 0;
@@ -214,36 +240,39 @@ public class ChatBox {
                 if(definition.noteTemplateId == -1 && definition.name != null) {
                     String itemName = definition.name.toLowerCase();
                     for(int indx = 0; indx < i; indx++) {
-                        if(!itemName.contains(splitString[indx]))
+                        if(!itemName.contains(splitString[indx])) {
                             continue while_12_;
+                        }
                     }
                     itemSearchResultNames[itemSearchResultCount] = itemName;
                     itemSearchResultIds[itemSearchResultCount] = itemId;
                     itemSearchResultCount++;
-                    if(itemSearchResultCount >= itemSearchResultNames.length)
+                    if(itemSearchResultCount >= itemSearchResultNames.length) {
                         break;
+                    }
                 }
             }
         }
     }
 
     public static void filterInput() {
-//        StringBuilder result = new StringBuilder();
-//        chatboxInput = chatboxInput.toLowerCase();
-//        for (int i = 0; i < chatboxInput.length(); i++) {
-//            for (char validCharacter : VALID_CHARACTERS) {
-//                if (chatboxInput.charAt(i) != validCharacter)
-//                    continue;
-//
-//                result.append(chatboxInput.charAt(i));
-//            }
-//        }
-//        chatboxInput = result.toString();
+        //        StringBuilder result = new StringBuilder();
+        //        chatboxInput = chatboxInput.toLowerCase();
+        //        for (int i = 0; i < chatboxInput.length(); i++) {
+        //            for (char validCharacter : VALID_CHARACTERS) {
+        //                if (chatboxInput.charAt(i) != validCharacter)
+        //                    continue;
+        //
+        //                result.append(chatboxInput.charAt(i));
+        //            }
+        //        }
+        //        chatboxInput = result.toString();
     }
 
     public static void addChatMessage(String name, String message, int type) {
-        if(GameInterface.chatboxInterfaceId == -1)
+        if(GameInterface.chatboxInterfaceId == -1) {
             redrawChatbox = true;
+        }
         if(type == 0 && dialogueId != -1) {
             MouseHandler.clickType = 0;
             Native.clickToContinueString = message;

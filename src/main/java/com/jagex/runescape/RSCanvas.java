@@ -30,7 +30,7 @@ public class RSCanvas extends Canvas {
 
     @Override
     public void repaint() {
-//        super.repaint();
+        //        super.repaint();
     }
 
     public static void createMinimapRaster() {

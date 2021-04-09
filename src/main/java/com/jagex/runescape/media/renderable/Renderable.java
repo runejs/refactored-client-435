@@ -22,8 +22,9 @@ public abstract class Renderable extends CachedNode {
     public int modelHeight = 1000;
 
     public static boolean handleSequences(int arg1) {
-        if(!GameInterface.decodeGameInterface(arg1))
+        if(!GameInterface.decodeGameInterface(arg1)) {
             return false;
+        }
         GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[arg1];
         boolean bool = false;
         for(int i = 0; gameInterfaces.length > i; i++) {
@@ -32,21 +33,25 @@ public abstract class Renderable extends CachedNode {
                 if(gameInterface.animation != -1 || gameInterface.alternateAnimation != -1) {
                     boolean bool_0_ = ItemDefinition.checkForAlternateAction(gameInterface);
                     int i_1_;
-                    if(bool_0_)
+                    if(bool_0_) {
                         i_1_ = gameInterface.alternateAnimation;
-                    else
+                    } else {
                         i_1_ = gameInterface.animation;
+                    }
                     if(i_1_ != -1) {
                         AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(i_1_);
                         gameInterface.remainingAnimationTime += MovedStatics.anInt199;
-                        while(animationSequence.frameLengths[gameInterface.animationFrame] < gameInterface.remainingAnimationTime) {
+                        while(animationSequence.frameLengths[gameInterface.animationFrame] <
+                                gameInterface.remainingAnimationTime) {
                             bool = true;
                             gameInterface.remainingAnimationTime -= animationSequence.frameLengths[gameInterface.animationFrame];
                             gameInterface.animationFrame++;
                             if(gameInterface.animationFrame >= animationSequence.frameIds.length) {
                                 gameInterface.animationFrame -= animationSequence.frameStep;
-                                if(gameInterface.animationFrame < 0 || animationSequence.frameIds.length <= gameInterface.animationFrame)
+                                if(gameInterface.animationFrame < 0 ||
+                                        animationSequence.frameIds.length <= gameInterface.animationFrame) {
                                     gameInterface.animationFrame = 0;
+                                }
                             }
                         }
                     }
@@ -65,7 +70,9 @@ public abstract class Renderable extends CachedNode {
         return bool;
     }
 
-    public void renderAtPoint(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public void renderAtPoint(
+            int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8
+    ) {
         Model class40_sub5_sub17_sub5 = getRotatedModel();
         if(class40_sub5_sub17_sub5 != null) {
             modelHeight = class40_sub5_sub17_sub5.modelHeight;

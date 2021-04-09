@@ -16,25 +16,29 @@ public class Class40_Sub7 extends Node {
         boolean bool = true;
         Buffer class40_sub1 = new Buffer(arg1);
         int i = -1;
-        if(arg0 > -40)
+        if(arg0 > -40) {
             return false;
+        }
         for(; ; ) {
             int i_0_ = class40_sub1.getSmart();
-            if(i_0_ == 0)
+            if(i_0_ == 0) {
                 break;
+            }
             i += i_0_;
             int i_1_ = 0;
             boolean bool_2_ = false;
             for(; ; ) {
                 if(bool_2_) {
                     int i_3_ = class40_sub1.getSmart();
-                    if(i_3_ == 0)
+                    if(i_3_ == 0) {
                         break;
+                    }
                     class40_sub1.getUnsignedByte();
                 } else {
                     int i_4_ = class40_sub1.getSmart();
-                    if(i_4_ == 0)
+                    if(i_4_ == 0) {
                         break;
+                    }
                     i_1_ += i_4_ + -1;
                     int i_5_ = i_1_ & 0x3f;
                     int i_6_ = class40_sub1.getUnsignedByte() >> 2;
@@ -43,7 +47,8 @@ public class Class40_Sub7 extends Node {
                     int i_9_ = i_5_ + arg3;
                     if(i_8_ > 0 && i_9_ > 0 && i_8_ < 103 && i_9_ < 103) {
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
-                        if(i_6_ != 22 || !VertexNormal.lowMemory || gameObjectDefinition.hasActions != 0 || gameObjectDefinition.obstructsGround) {
+                        if(i_6_ != 22 || !VertexNormal.lowMemory || gameObjectDefinition.hasActions != 0 ||
+                                gameObjectDefinition.obstructsGround) {
                             bool_2_ = true;
                             if(!gameObjectDefinition.method612()) {
                                 bool = false;

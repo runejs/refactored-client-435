@@ -44,27 +44,33 @@ public class FrameDefinition {
             }
             indexFrameIds[index] = i;
             int var11 = 0;
-            if(this.framemap.types[i] == 3)
+            if(this.framemap.types[i] == 3) {
                 var11 = 128;
-            if((var9 & 0x1) != 0)
+            }
+            if((var9 & 0x1) != 0) {
                 scratchTranslatorX[index] = data.getUnsignedSmart();
-            else
+            } else {
                 scratchTranslatorX[index] = var11;
-            if((var9 & 0x2) != 0)
+            }
+            if((var9 & 0x2) != 0) {
                 scratchTranslatorY[index] = data.getUnsignedSmart();
-            else
+            } else {
                 scratchTranslatorY[index] = var11;
-            if((var9 & 0x4) != 0)
+            }
+            if((var9 & 0x4) != 0) {
                 scratchTranslatorZ[index] = data.getUnsignedSmart();
-            else
+            } else {
                 scratchTranslatorZ[index] = var11;
+            }
             lasIndex = i;
             index++;
-            if(this.framemap.types[i] == 5)
+            if(this.framemap.types[i] == 5) {
                 aBoolean985 = true;
+            }
         }
-        if(data.currentPosition != b.length)
+        if(data.currentPosition != b.length) {
             throw new RuntimeException();
+        }
         translatorCount = index;
         index_frame_ids = new int[index];
         translator_x = new int[index];

@@ -7,7 +7,7 @@ public class Native {
     public static String aClass1_1123 = " ";
     public static String aClass1_569 = " (";
     public static String aClass1_894 = " ->";
-    public static String aClass1_1536 =" x ";
+    public static String aClass1_1536 = " x ";
     public static RSString password = RSString.CreateString("");
     public static RSString username = RSString.CreateString("");
     public static String aClass1_674 = " x";
@@ -32,7 +32,8 @@ public class Native {
     public static String aClass1_1918 = null;
     public static String lineBreak = "\\n";
     public static String aClass1_303 = "_";
-    public static RSString supportedCharacters = RSString.CreateString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y-_=)0[*U]*W;:(W@(S*X,<.>)4?*6*V ");
+    public static RSString supportedCharacters = RSString.CreateString(
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y-_=)0[*U]*W;:(W@(S*X,<.>)4?*6*V ");
     public static String aClass1_1921 = "b12_full";
     public static String aClass1_1395 = "backbase1";
     public static String aClass1_304 = "backhmid2";
@@ -43,14 +44,14 @@ public class Native {
     public static String chatback = "chatback";
     public static String aClass1_1019 = "flash1:";
     public static String aClass1_2161 = "headicons_pk";
-    public static String headiconsPrayer ="headicons_prayer";
+    public static String headiconsPrayer = "headicons_prayer";
     public static String aClass1_2114 = "hitmarks";
     public static String aClass1_638 = "invback";
     public static String aClass1_553 = "l";
     public static String aClass1_183 = "mapdots";
     public static String aClass1_1427 = "mapedge";
     public static String aClass1_203 = "mapmarker";
-    public static String aClass1_671 ="mapscene";
+    public static String aClass1_671 = "mapscene";
     public static String aClass1_881 = "mod_icons";
     public static String aClass1_28 = "null";
     public static String aClass1_2109 = "overlay_multiway";
@@ -112,7 +113,7 @@ public class Native {
     public static String toLightRed = " -> @lre@";
     public static String red = "@red@";
     public static String lightRed = "@lre@";
-    public static String cyan ="@cya@";
+    public static String cyan = "@cya@";
     public static String yellow = "@yel@";
     public static String goldCrown = "@cr2@";
     public static String green = "@gre@";
@@ -127,5 +128,5 @@ public class Native {
     public static String justAnotherYellowBar = "@yel@|";
 
     public static String leftParenthasis = "(";
-    public static String colon =":";
+    public static String colon = ":";
 }

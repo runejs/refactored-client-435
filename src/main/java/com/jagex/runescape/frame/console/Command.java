@@ -74,7 +74,7 @@ public abstract class Command {
 
     public abstract void execute(Console console, String[] cmdInput);
 
-    public String getCommand(){
+    public String getCommand() {
         if(!hasMultiple) {
             return this.command;
         }

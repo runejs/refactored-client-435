@@ -7,11 +7,11 @@ public abstract class Timer {
 
     public abstract void reset();
 
-	public static Timer create() {
-	    try {
-	        return (Timer) Class.forName("com.jagex.runescape.util.NanoTimer").newInstance();
-	    } catch(Throwable throwable) {
-	        return new MillisTimer();
-	    }
-	}
+    public static Timer create() {
+        try {
+            return (Timer) Class.forName("com.jagex.runescape.util.NanoTimer").newInstance();
+        } catch(Throwable throwable) {
+            return new MillisTimer();
+        }
+    }
 }

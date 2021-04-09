@@ -41,16 +41,18 @@ public class Class17 {
         PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
         for(; ; ) {
             Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class37.aClass23_869.method329();
-            if(class40_sub5_sub13 == null)
+            if(class40_sub5_sub13 == null) {
                 break;
+            }
             Class51.aClass23_1194.put(class40_sub5_sub13.key, class40_sub5_sub13);
             anInt464--;
             ProducingGraphicsBuffer.anInt1618++;
         }
         for(; ; ) {
             Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) MovedStatics.aClass23_841.method329();
-            if(class40_sub5_sub13 == null)
+            if(class40_sub5_sub13 == null) {
                 break;
+            }
             InteractiveObject.aNodeQueue_485.unshift(class40_sub5_sub13);
             GameObjectDefinition.aClass23_2545.put(class40_sub5_sub13.key, class40_sub5_sub13);
             Class42.anInt1006--;
@@ -75,23 +77,25 @@ public class Class17 {
                 MovedStatics.anInt2278++;
             }
         }
-        if(arg1 < 102)
+        if(arg1 < 102) {
             method273(null, 92, true);
+        }
         Class22.anInt547 = 0;
         LinkedList.aLong1051 = System.currentTimeMillis();
     }
 
     public static int method274(boolean arg0) {
-        if(!arg0)
+        if(!arg0) {
             aProducingGraphicsBuffer_463 = null;
+        }
         return Class49.anInt1147++;
     }
 
     public static void method275(long arg1) {
         if(arg1 != 0L) {
-            if(Class42.anInt1008 >= 100)
+            if(Class42.anInt1008 >= 100) {
                 ChatBox.addChatMessage("", English.yourIgnoreListIsFull.toString(), 0);
-            else {
+            } else {
                 String class1 = TextUtils.formatName(TextUtils.longToName(arg1));
                 for(int i = 0; i < Class42.anInt1008; i++) {
                     if(arg1 == Player.ignores[i]) {
@@ -118,13 +122,15 @@ public class Class17 {
     public static void method276(int arg0) {
         for(int i = arg0; Player.localPlayerCount > i; i++) {
             int i_0_;
-            if(i == -1)
+            if(i == -1) {
                 i_0_ = 2047;
-            else
+            } else {
                 i_0_ = Player.trackedPlayerIndices[i];
+            }
             Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_0_];
-            if(class40_sub5_sub17_sub4_sub1 != null)
+            if(class40_sub5_sub17_sub4_sub1 != null) {
                 Class13.method241(class40_sub5_sub17_sub4_sub1, (byte) 107);
+            }
         }
     }
 

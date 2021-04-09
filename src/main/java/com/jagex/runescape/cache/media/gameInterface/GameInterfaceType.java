@@ -11,6 +11,7 @@ public enum GameInterfaceType {
     TEXT_INVENTORY,  // 7
     IF1_TOOLTIP, // 8
     LINE; // 9
+
     public static GameInterfaceType get(int ordinal) {
         return GameInterfaceType.values()[ordinal];
     }

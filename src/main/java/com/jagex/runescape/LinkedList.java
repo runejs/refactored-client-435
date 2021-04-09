@@ -33,24 +33,29 @@ public class LinkedList {
     }
 
 
-
     public static String method903(int arg0, byte arg1) {
-        if(arg1 >= -13)
+        if(arg1 >= -13) {
             return null;
+        }
         String class1 = Integer.toString(arg0);
-        for(int i = -3 + class1.length(); i > 0; i -= 3)
+        for(int i = -3 + class1.length(); i > 0; i -= 3) {
             class1 = class1.substring(0, i) + Native.aClass1_795 + class1.substring(i);
-        if(class1.length() > 8)
-            class1 = Native.green + class1.substring(0, -8 + class1.length()) + English.suffixMillion + Native.aClass1_1213 + class1 + Native.rightParenthasis;
-        else if(class1.length() > 4)
-            class1 = Native.cyan + class1.substring(0, class1.length() + -4) + Native.aClass1_2593 + Native.aClass1_1213 + class1 + Native.rightParenthasis;
+        }
+        if(class1.length() > 8) {
+            class1 = Native.green + class1.substring(0, -8 + class1.length()) + English.suffixMillion +
+                    Native.aClass1_1213 + class1 + Native.rightParenthasis;
+        } else if(class1.length() > 4) {
+            class1 = Native.cyan + class1.substring(0, class1.length() + -4) + Native.aClass1_2593 +
+                    Native.aClass1_1213 + class1 + Native.rightParenthasis;
+        }
         return Native.aClass1_1123 + class1;
     }
 
     public static void method907(int arg0) {
         Class57.aClass9_1331.clear();
-        if(arg0 >= -36)
+        if(arg0 >= -36) {
             aLinkedList_1064 = null;
+        }
     }
 
     public static void drawChatBoxGraphics() {
@@ -65,9 +70,11 @@ public class LinkedList {
 
     public static void method910(int arg0) {
         if(arg0 == -32322) {
-            if(VertexNormal.lowMemory && MovedStatics.onBuildTimePlane != Player.worldLevel)
-                Actor.method789(Player.localPlayer.pathY[0], -1000, Class17.regionY, Class51.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
-            else if(Buffer.anInt1985 != Player.worldLevel) {
+            if(VertexNormal.lowMemory && MovedStatics.onBuildTimePlane != Player.worldLevel) {
+                Actor.method789(Player.localPlayer.pathY[0], -1000, Class17.regionY, Class51.regionX,
+                        Player.localPlayer.pathX[0], Player.worldLevel
+                );
+            } else if(Buffer.anInt1985 != Player.worldLevel) {
                 Buffer.anInt1985 = Player.worldLevel;
                 Class22.method299((byte) 53, Player.worldLevel);
             }
@@ -77,8 +84,9 @@ public class LinkedList {
     public Node method899(byte arg0) {
         int i = -68 / ((28 - arg0) / 50);
         Node class40 = aClass40_1056.previous;
-        if(class40 == aClass40_1056)
+        if(class40 == aClass40_1056) {
             return null;
+        }
         class40.remove();
         return class40;
     }
@@ -90,14 +98,16 @@ public class LinkedList {
             return null;
         }
         aClass40_1068 = class40.previous;
-        if(arg0 > -53)
+        if(arg0 > -53) {
             return null;
+        }
         return class40;
     }
 
     public Node method902(byte arg0) {
-        if(arg0 != -90)
+        if(arg0 != -90) {
             last((byte) 0);
+        }
         Node class40 = aClass40_1056.next;
         if(aClass40_1056 == class40) {
             aClass40_1068 = null;
@@ -108,8 +118,9 @@ public class LinkedList {
     }
 
     public void pushBack(Node node, int arg1) {
-        if(node.previous != null)
+        if(node.previous != null) {
             node.remove();
+        }
         node.previous = aClass40_1056.previous;
         int i = 106 % ((-7 - arg1) / 59);
         node.next = aClass40_1056;
@@ -118,10 +129,12 @@ public class LinkedList {
     }
 
     public void method905(int arg0, Node arg1) {
-        if(arg1.previous != null)
+        if(arg1.previous != null) {
             arg1.remove();
-        if(arg0 != 0)
+        }
+        if(arg0 != 0) {
             method911(-96, null, null);
+        }
         arg1.next = aClass40_1056.next;
         arg1.previous = aClass40_1056;
         arg1.previous.next = arg1;
@@ -129,12 +142,14 @@ public class LinkedList {
     }
 
     public void method906(int arg0) {
-        if(arg0 != 0)
+        if(arg0 != 0) {
             method903(-33, (byte) -75);
+        }
         for(; ; ) {
             Node class40 = aClass40_1056.next;
-            if(class40 == aClass40_1056)
+            if(class40 == aClass40_1056) {
                 break;
+            }
             class40.remove();
         }
     }
@@ -145,15 +160,17 @@ public class LinkedList {
             aClass40_1068 = null;
             return null;
         }
-        if(arg0 != -4)
+        if(arg0 != -4) {
             method910(109);
+        }
         aClass40_1068 = class40.next;
         return class40;
     }
 
     public void method911(int arg0, Node arg1, Node arg2) {
-        if(arg2.previous != null)
+        if(arg2.previous != null) {
             arg2.remove();
+        }
         if(arg0 == -31793) {
             arg2.next = arg1;
             arg2.previous = arg1.previous;
@@ -163,8 +180,9 @@ public class LinkedList {
     }
 
     public Node previous(int arg0) {
-        if(arg0 != 4)
+        if(arg0 != 4) {
             return null;
+        }
         Node class40 = aClass40_1068;
         if(class40 == aClass40_1056) {
             aClass40_1068 = null;
@@ -175,11 +193,13 @@ public class LinkedList {
     }
 
     public Node method913(int arg0) {
-        if(arg0 != 25447)
+        if(arg0 != 25447) {
             method902((byte) -115);
+        }
         Node class40 = aClass40_1056.next;
-        if(aClass40_1056 == class40)
+        if(aClass40_1056 == class40) {
             return null;
+        }
         class40.remove();
         return class40;
     }

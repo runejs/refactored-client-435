@@ -110,7 +110,10 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     public static void method602(CacheArchive arg0, int arg1, CacheIndex arg2) {
         byte[] is = null;
         synchronized(RSCanvas.aLinkedList_53) {
-            for(Class40_Sub6 class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method902((byte) -90); class40_sub6 != null; class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method909(-4)) {
+            for(
+                    Class40_Sub6 class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method902((byte) -90);
+                    class40_sub6 != null; class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method909(-4)
+            ) {
                 if((long) arg1 == class40_sub6.key && arg2 == class40_sub6.cacheIndex && class40_sub6.anInt2112 == 0) {
                     is = class40_sub6.aByteArray2102;
                     break;
@@ -126,10 +129,16 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     }
 
 
-    public static void method609(int arg0, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
+    public static void method609(
+            int arg0, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9
+    ) {
         Class40_Sub3 class40_sub3 = null;
-        for(Class40_Sub3 class40_sub3_24_ = (Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90); class40_sub3_24_ != null; class40_sub3_24_ = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
-            if(class40_sub3_24_.anInt2018 == arg5 && arg2 == class40_sub3_24_.anInt2039 && class40_sub3_24_.anInt2038 == arg6 && class40_sub3_24_.anInt2027 == arg7) {
+        for(
+                Class40_Sub3 class40_sub3_24_ = (Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90);
+                class40_sub3_24_ != null; class40_sub3_24_ = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)
+        ) {
+            if(class40_sub3_24_.anInt2018 == arg5 && arg2 == class40_sub3_24_.anInt2039 &&
+                    class40_sub3_24_.anInt2038 == arg6 && class40_sub3_24_.anInt2027 == arg7) {
                 class40_sub3 = class40_sub3_24_;
                 break;
             }
@@ -355,7 +364,10 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         return finalModel;
     }
 
-    public Model createAnimatedObjectModel(int vertexHeight, int vertexHeightRight, int arg3, int arg4, int arg5, AnimationSequence animationSequence, int vertexHeightTop, int vertexHeightTopRight) {
+    public Model createAnimatedObjectModel(
+            int vertexHeight, int vertexHeightRight, int arg3, int arg4, int arg5, AnimationSequence animationSequence,
+            int vertexHeightTop, int vertexHeightTopRight
+    ) {
         long l;
         if(objectTypes == null) {
             l = arg5 + (id << 10);

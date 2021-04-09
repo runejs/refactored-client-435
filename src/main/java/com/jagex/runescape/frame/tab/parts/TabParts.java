@@ -70,10 +70,10 @@ public class TabParts {
     private static boolean setup = false;
 
     public static ImageRGB GetPart(String part) {
-        if (!TabParts.setup) {
+        if(!TabParts.setup) {
             TabParts.CreateParts();
         }
-        switch (part) {
+        switch(part) {
             case "combat":
                 return combat;
             case "emotes":
@@ -271,59 +271,96 @@ public class TabParts {
         TabParts.ignores = new ImageRGB(Base64.getDecoder().decode(ignores), MouseHandler.gameCanvas);
         TabParts.inventory = new ImageRGB(Base64.getDecoder().decode(inventory), MouseHandler.gameCanvas);
         TabParts.large_left_right = new ImageRGB(Base64.getDecoder().decode(large_left_right), MouseHandler.gameCanvas);
-        TabParts.large_left_right_hovered = new ImageRGB(Base64.getDecoder().decode(large_left_right_hovered), MouseHandler.gameCanvas);
-        TabParts.large_left_right_selected = new ImageRGB(Base64.getDecoder().decode(large_left_right_selected), MouseHandler.gameCanvas);
+        TabParts.large_left_right_hovered = new ImageRGB(
+                Base64.getDecoder().decode(large_left_right_hovered), MouseHandler.gameCanvas);
+        TabParts.large_left_right_selected = new ImageRGB(
+                Base64.getDecoder().decode(large_left_right_selected), MouseHandler.gameCanvas);
         TabParts.large_middle = new ImageRGB(Base64.getDecoder().decode(large_middle), MouseHandler.gameCanvas);
-        TabParts.large_middle_hovered = new ImageRGB(Base64.getDecoder().decode(large_middle_hovered), MouseHandler.gameCanvas);
-        TabParts.large_middle_selected = new ImageRGB(Base64.getDecoder().decode(large_middle_selected), MouseHandler.gameCanvas);
+        TabParts.large_middle_hovered = new ImageRGB(
+                Base64.getDecoder().decode(large_middle_hovered), MouseHandler.gameCanvas);
+        TabParts.large_middle_selected = new ImageRGB(
+                Base64.getDecoder().decode(large_middle_selected), MouseHandler.gameCanvas);
         TabParts.logout = new ImageRGB(Base64.getDecoder().decode(logout), MouseHandler.gameCanvas);
         TabParts.logout_small = new ImageRGB(Base64.getDecoder().decode(logout_small), MouseHandler.gameCanvas);
         TabParts.magic = new ImageRGB(Base64.getDecoder().decode(magic), MouseHandler.gameCanvas);
-        TabParts.medium_left_right = new ImageRGB(Base64.getDecoder().decode(medium_left_right), MouseHandler.gameCanvas);
-        TabParts.medium_left_right_hovered = new ImageRGB(Base64.getDecoder().decode(medium_left_right_hovered), MouseHandler.gameCanvas);
-        TabParts.medium_left_right_selected = new ImageRGB(Base64.getDecoder().decode(medium_left_right_selected), MouseHandler.gameCanvas);
+        TabParts.medium_left_right = new ImageRGB(
+                Base64.getDecoder().decode(medium_left_right), MouseHandler.gameCanvas);
+        TabParts.medium_left_right_hovered = new ImageRGB(
+                Base64.getDecoder().decode(medium_left_right_hovered), MouseHandler.gameCanvas);
+        TabParts.medium_left_right_selected = new ImageRGB(
+                Base64.getDecoder().decode(medium_left_right_selected), MouseHandler.gameCanvas);
         TabParts.medium_middle = new ImageRGB(Base64.getDecoder().decode(medium_middle), MouseHandler.gameCanvas);
-        TabParts.medium_middle_hovered = new ImageRGB(Base64.getDecoder().decode(medium_middle_hovered), MouseHandler.gameCanvas);
-        TabParts.medium_middle_selected = new ImageRGB(Base64.getDecoder().decode(medium_middle_selected), MouseHandler.gameCanvas);
+        TabParts.medium_middle_hovered = new ImageRGB(
+                Base64.getDecoder().decode(medium_middle_hovered), MouseHandler.gameCanvas);
+        TabParts.medium_middle_selected = new ImageRGB(
+                Base64.getDecoder().decode(medium_middle_selected), MouseHandler.gameCanvas);
         TabParts.music = new ImageRGB(Base64.getDecoder().decode(music), MouseHandler.gameCanvas);
         TabParts.options = new ImageRGB(Base64.getDecoder().decode(options), MouseHandler.gameCanvas);
         TabParts.prayer = new ImageRGB(Base64.getDecoder().decode(prayer), MouseHandler.gameCanvas);
         TabParts.quests = new ImageRGB(Base64.getDecoder().decode(quests), MouseHandler.gameCanvas);
-        TabParts.side_border_bottom = new ImageRGB(Base64.getDecoder().decode(side_border_bottom), MouseHandler.gameCanvas);
-        TabParts.side_border_bottom_selected = new ImageRGB(Base64.getDecoder().decode(side_border_bottom_selected), MouseHandler.gameCanvas);
-        TabParts.side_border_edge_bottom_left = new ImageRGB(Base64.getDecoder().decode(side_border_edge_bottom_left), MouseHandler.gameCanvas);
-        TabParts.side_border_edge_bottom_left_selected = new ImageRGB(Base64.getDecoder().decode(side_border_edge_bottom_left_selected), MouseHandler.gameCanvas);
-        TabParts.side_border_edge_bottom_right = new ImageRGB(Base64.getDecoder().decode(side_border_edge_bottom_right), MouseHandler.gameCanvas);
-        TabParts.side_border_edge_bottom_right_selected = new ImageRGB(Base64.getDecoder().decode(side_border_edge_bottom_right_selected), MouseHandler.gameCanvas);
-        TabParts.side_border_edge_top_left = new ImageRGB(Base64.getDecoder().decode(side_border_edge_top_left), MouseHandler.gameCanvas);
-        TabParts.side_border_edge_top_left_selected = new ImageRGB(Base64.getDecoder().decode(side_border_edge_top_left_selected), MouseHandler.gameCanvas);
-        TabParts.side_border_edge_top_right = new ImageRGB(Base64.getDecoder().decode(side_border_edge_top_right), MouseHandler.gameCanvas);
-        TabParts.side_border_edge_top_right_selected = new ImageRGB(Base64.getDecoder().decode(side_border_edge_top_right_selected), MouseHandler.gameCanvas);
+        TabParts.side_border_bottom = new ImageRGB(
+                Base64.getDecoder().decode(side_border_bottom), MouseHandler.gameCanvas);
+        TabParts.side_border_bottom_selected = new ImageRGB(
+                Base64.getDecoder().decode(side_border_bottom_selected), MouseHandler.gameCanvas);
+        TabParts.side_border_edge_bottom_left = new ImageRGB(
+                Base64.getDecoder().decode(side_border_edge_bottom_left), MouseHandler.gameCanvas);
+        TabParts.side_border_edge_bottom_left_selected = new ImageRGB(
+                Base64.getDecoder().decode(side_border_edge_bottom_left_selected), MouseHandler.gameCanvas);
+        TabParts.side_border_edge_bottom_right = new ImageRGB(
+                Base64.getDecoder().decode(side_border_edge_bottom_right), MouseHandler.gameCanvas);
+        TabParts.side_border_edge_bottom_right_selected = new ImageRGB(
+                Base64.getDecoder().decode(side_border_edge_bottom_right_selected), MouseHandler.gameCanvas);
+        TabParts.side_border_edge_top_left = new ImageRGB(
+                Base64.getDecoder().decode(side_border_edge_top_left), MouseHandler.gameCanvas);
+        TabParts.side_border_edge_top_left_selected = new ImageRGB(
+                Base64.getDecoder().decode(side_border_edge_top_left_selected), MouseHandler.gameCanvas);
+        TabParts.side_border_edge_top_right = new ImageRGB(
+                Base64.getDecoder().decode(side_border_edge_top_right), MouseHandler.gameCanvas);
+        TabParts.side_border_edge_top_right_selected = new ImageRGB(
+                Base64.getDecoder().decode(side_border_edge_top_right_selected), MouseHandler.gameCanvas);
         TabParts.side_border_left = new ImageRGB(Base64.getDecoder().decode(side_border_left), MouseHandler.gameCanvas);
-        TabParts.side_border_left_selected = new ImageRGB(Base64.getDecoder().decode(side_border_left_selected), MouseHandler.gameCanvas);
-        TabParts.side_border_middle = new ImageRGB(Base64.getDecoder().decode(side_border_middle), MouseHandler.gameCanvas);
-        TabParts.side_border_right = new ImageRGB(Base64.getDecoder().decode(side_border_right), MouseHandler.gameCanvas);
-        TabParts.side_border_right_selected = new ImageRGB(Base64.getDecoder().decode(side_border_right_selected), MouseHandler.gameCanvas);
+        TabParts.side_border_left_selected = new ImageRGB(
+                Base64.getDecoder().decode(side_border_left_selected), MouseHandler.gameCanvas);
+        TabParts.side_border_middle = new ImageRGB(
+                Base64.getDecoder().decode(side_border_middle), MouseHandler.gameCanvas);
+        TabParts.side_border_right = new ImageRGB(
+                Base64.getDecoder().decode(side_border_right), MouseHandler.gameCanvas);
+        TabParts.side_border_right_selected = new ImageRGB(
+                Base64.getDecoder().decode(side_border_right_selected), MouseHandler.gameCanvas);
         TabParts.side_border_top = new ImageRGB(Base64.getDecoder().decode(side_border_top), MouseHandler.gameCanvas);
-        TabParts.side_border_top_selected = new ImageRGB(Base64.getDecoder().decode(side_border_top_selected), MouseHandler.gameCanvas);
+        TabParts.side_border_top_selected = new ImageRGB(
+                Base64.getDecoder().decode(side_border_top_selected), MouseHandler.gameCanvas);
         TabParts.small_left_right = new ImageRGB(Base64.getDecoder().decode(small_left_right), MouseHandler.gameCanvas);
-        TabParts.small_left_right_hovered = new ImageRGB(Base64.getDecoder().decode(small_left_right_hovered), MouseHandler.gameCanvas);
-        TabParts.small_left_right_selected = new ImageRGB(Base64.getDecoder().decode(small_left_right_selected), MouseHandler.gameCanvas);
+        TabParts.small_left_right_hovered = new ImageRGB(
+                Base64.getDecoder().decode(small_left_right_hovered), MouseHandler.gameCanvas);
+        TabParts.small_left_right_selected = new ImageRGB(
+                Base64.getDecoder().decode(small_left_right_selected), MouseHandler.gameCanvas);
         TabParts.small_middle = new ImageRGB(Base64.getDecoder().decode(small_middle), MouseHandler.gameCanvas);
-        TabParts.small_middle_hovered = new ImageRGB(Base64.getDecoder().decode(small_middle_hovered), MouseHandler.gameCanvas);
-        TabParts.small_middle_selected = new ImageRGB(Base64.getDecoder().decode(small_middle_selected), MouseHandler.gameCanvas);
+        TabParts.small_middle_hovered = new ImageRGB(
+                Base64.getDecoder().decode(small_middle_hovered), MouseHandler.gameCanvas);
+        TabParts.small_middle_selected = new ImageRGB(
+                Base64.getDecoder().decode(small_middle_selected), MouseHandler.gameCanvas);
         TabParts.stats = new ImageRGB(Base64.getDecoder().decode(stats), MouseHandler.gameCanvas);
-        TabParts.stone_bottom_left_selected = new ImageRGB(Base64.getDecoder().decode(stone_bottom_left_selected), MouseHandler.gameCanvas);
-        TabParts.stone_bottom_right_selected = new ImageRGB(Base64.getDecoder().decode(stone_bottom_right_selected), MouseHandler.gameCanvas);
-        TabParts.stone_middle_selected = new ImageRGB(Base64.getDecoder().decode(stone_middle_selected), MouseHandler.gameCanvas);
-        TabParts.stone_top_left_selected = new ImageRGB(Base64.getDecoder().decode(stone_top_left_selected), MouseHandler.gameCanvas);
-        TabParts.stone_top_right_selected = new ImageRGB(Base64.getDecoder().decode(stone_top_right_selected), MouseHandler.gameCanvas);
-        TabParts.side_panel_background = new ImageRGB(Base64.getDecoder().decode(side_panel_background), MouseHandler.gameCanvas);
-        TabParts.side_panel_edge_left = new ImageRGB(Base64.getDecoder().decode(side_panel_edge_left), MouseHandler.gameCanvas);
-        TabParts.side_panel_edge_right = new ImageRGB(Base64.getDecoder().decode(side_panel_edge_right), MouseHandler.gameCanvas);
+        TabParts.stone_bottom_left_selected = new ImageRGB(
+                Base64.getDecoder().decode(stone_bottom_left_selected), MouseHandler.gameCanvas);
+        TabParts.stone_bottom_right_selected = new ImageRGB(
+                Base64.getDecoder().decode(stone_bottom_right_selected), MouseHandler.gameCanvas);
+        TabParts.stone_middle_selected = new ImageRGB(
+                Base64.getDecoder().decode(stone_middle_selected), MouseHandler.gameCanvas);
+        TabParts.stone_top_left_selected = new ImageRGB(
+                Base64.getDecoder().decode(stone_top_left_selected), MouseHandler.gameCanvas);
+        TabParts.stone_top_right_selected = new ImageRGB(
+                Base64.getDecoder().decode(stone_top_right_selected), MouseHandler.gameCanvas);
+        TabParts.side_panel_background = new ImageRGB(
+                Base64.getDecoder().decode(side_panel_background), MouseHandler.gameCanvas);
+        TabParts.side_panel_edge_left = new ImageRGB(
+                Base64.getDecoder().decode(side_panel_edge_left), MouseHandler.gameCanvas);
+        TabParts.side_panel_edge_right = new ImageRGB(
+                Base64.getDecoder().decode(side_panel_edge_right), MouseHandler.gameCanvas);
         TabParts.tabs_bottom_row = new ImageRGB(Base64.getDecoder().decode(tabs_bottom_row), MouseHandler.gameCanvas);
         TabParts.tab_stone_middle = new ImageRGB(Base64.getDecoder().decode(tab_stone_middle), MouseHandler.gameCanvas);
-        TabParts.tab_stone_middle_selected = new ImageRGB(Base64.getDecoder().decode(tab_stone_middle_selected), MouseHandler.gameCanvas);
+        TabParts.tab_stone_middle_selected = new ImageRGB(
+                Base64.getDecoder().decode(tab_stone_middle_selected), MouseHandler.gameCanvas);
         TabParts.tabs_top_row = new ImageRGB(Base64.getDecoder().decode(tabs_top_row), MouseHandler.gameCanvas);
         TabParts.setup = true;
 

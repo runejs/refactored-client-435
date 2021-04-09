@@ -41,8 +41,9 @@ public class InteractiveObject {
         class1.length = 0;
         class1.chars = new byte[arg3];
         for(int i = arg2; arg3 + arg2 > i; i++) {
-            if(arg0[i] != 0)
+            if(arg0[i] != 0) {
                 class1.chars[class1.length++] = arg0[i];
+            }
         }
         return class1;
     }

@@ -3,7 +3,12 @@ package com.jagex.runescape.audio;
 import com.jagex.runescape.io.Buffer;
 
 public class MidiFileReader {
-    private static byte[] aByteArray429 = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    private static byte[] aByteArray429 = {
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            2, 2, 2, 2, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    };
     private Buffer buffer = new Buffer(null);
     private long aLong424;
     private int[] trackPositions;
@@ -104,13 +109,15 @@ public class MidiFileReader {
             i &= 0xff;
             anIntArray428[arg0] = i;
             buffer.currentPosition++;
-        } else
+        } else {
             i = anIntArray428[arg0];
+        }
         if(i == 240 || i == 247) {
             int i_7_ = buffer.getIntVar();
             if(i == 247 && i_7_ > 0) {
                 int i_8_ = buffer.buffer[buffer.currentPosition] & 0xff;
-                if(i_8_ >= 241 && i_8_ <= 243 || i_8_ == 246 || i_8_ == 248 || i_8_ >= 250 && i_8_ <= 252 || i_8_ == 254) {
+                if(i_8_ >= 241 && i_8_ <= 243 || i_8_ == 246 || i_8_ == 248 || i_8_ >= 250 && i_8_ <= 252 ||
+                        i_8_ == 254) {
                     buffer.currentPosition++;
                     anIntArray428[arg0] = i_8_;
                     return method262(arg0, i_8_);
@@ -144,18 +151,21 @@ public class MidiFileReader {
         }
         byte i = aByteArray429[arg1 - 128];
         int i_12_ = arg1;
-        if(i >= 1)
+        if(i >= 1) {
             i_12_ |= buffer.getUnsignedByte() << 8;
-        if(i >= 2)
+        }
+        if(i >= 2) {
             i_12_ |= buffer.getUnsignedByte() << 16;
+        }
         return i_12_;
     }
 
     public boolean isDone() {
         int i = trackPositions.length;
         for(int i_13_ = 0; i_13_ < i; i_13_++) {
-            if(trackPositions[i_13_] >= 0)
+            if(trackPositions[i_13_] >= 0) {
                 return false;
+            }
         }
         return true;
     }

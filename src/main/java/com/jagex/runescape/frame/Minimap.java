@@ -53,9 +53,11 @@ public class Minimap extends FramePieceRenderer {
                 int i_15_ = 0;
                 int i_16_ = 999;
                 for(int x1 = 0; x1 < 34; x1++) {
-                    if(MovedStatics.minimapBackgroundImage.imgPixels[MovedStatics.minimapBackgroundImage.imgWidth * y1 + x1] == 0) {
-                        if(i_16_ == 999)
+                    if(MovedStatics.minimapBackgroundImage.imgPixels[MovedStatics.minimapBackgroundImage.imgWidth * y1 +
+                            x1] == 0) {
+                        if(i_16_ == 999) {
                             i_16_ = x1;
+                        }
                     } else if(i_16_ != 999) {
                         i_15_ = x1;
                         break;
@@ -72,8 +74,9 @@ public class Minimap extends FramePieceRenderer {
             int[] rasterPixels = Rasterizer.destinationPixels;
             int pixelCount = mmBackgroundPixels.length;
             for(int i = 0; i < pixelCount; i++) {
-                if(mmBackgroundPixels[i] == 0)
+                if(mmBackgroundPixels[i] == 0) {
                     rasterPixels[i] = 0;
+                }
             }
             Rasterizer.drawFilledRectangle(0, 0, 210, 210, 0x242017);
             Rasterizer.drawFilledRectangle(5, 5, 200, 200, 0x000000);
@@ -83,7 +86,10 @@ public class Minimap extends FramePieceRenderer {
             Rasterizer.drawFilledRectangle(0, 0, 42, 20, 0x242017);
 
             Rasterizer.drawCircle(21, 21, 20, 0x242017);
-            AnimationSequence.minimapCompass.shapeImageToPixels(5, 5, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, resizableCompasOffsets2, resizableCompasOffsets1);
+            AnimationSequence.minimapCompass.shapeImageToPixels(
+                    5, 5, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, resizableCompasOffsets2,
+                    resizableCompasOffsets1
+            );
 
 
             Class65.method1018();
@@ -95,7 +101,10 @@ public class Minimap extends FramePieceRenderer {
         int i = 48 + Player.localPlayer.worldX / 32;
         int i_8_ = 464 + -(Player.localPlayer.worldY / 32);
         int i_9_ = GroundItemTile.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
-        shapeImageToPixels(Class40_Sub5_Sub13.minimapImage,5, 5, 200, 200, i, i_8_, i_9_, Class51.mapZoomOffset + 256, resizableMinimapOffsets2, resizableMinimapOffsets1);
+        shapeImageToPixels(
+                Class40_Sub5_Sub13.minimapImage, 5, 5, 200, 200, i, i_8_, i_9_, Class51.mapZoomOffset + 256,
+                resizableMinimapOffsets2, resizableMinimapOffsets1
+        );
         drawResizableMinimapDots();
         rasterizerInstanced.drawFilledRectangle(105, 105, 3, 3, 16777215);
         rasterizerInstanced.drawFilledRectangle(0, 0, 210, 5, 0x242017);
@@ -108,10 +117,16 @@ public class Minimap extends FramePieceRenderer {
         rasterizerInstanced.drawFilledRectangle(0, 0, 42, 20, 0x242017);
 
         rasterizerInstanced.drawCircle(21, 21, 20, 0x242017);
-        shapeImageToPixels(AnimationSequence.minimapCompass, 5, 5, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, resizableCompasOffsets2, resizableCompasOffsets1);
+        shapeImageToPixels(
+                AnimationSequence.minimapCompass, 5, 5, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256,
+                resizableCompasOffsets2, resizableCompasOffsets1
+        );
 
-        System.arraycopy(tempResizableMiniMapimage.pixels, 0, resizableMiniMapimage.pixels,0, resizableMiniMapimage.pixels.length);
-//        Class65.method1018();
+        System.arraycopy(
+                tempResizableMiniMapimage.pixels, 0, resizableMiniMapimage.pixels, 0,
+                resizableMiniMapimage.pixels.length
+        );
+        //        Class65.method1018();
 
         //        ScreenController.drawFramePiece(resizableMiniMapimage, x, y);
 
@@ -137,8 +152,9 @@ public class Minimap extends FramePieceRenderer {
             Npc npc = Player.npcs[Player.npcIds[i]];
             if(npc != null && npc.isVisible(1)) {
                 ActorDefinition definition = npc.actorDefinition;
-                if(definition.childrenIds != null)
+                if(definition.childrenIds != null) {
                     definition = definition.getChildDefinition(-1);
+                }
                 if(definition != null && definition.renderOnMinimap && definition.isClickable) {
                     int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
                     int npcY = npc.worldY / 32 + -(Player.localPlayer.worldY / 32);
@@ -160,18 +176,21 @@ public class Minimap extends FramePieceRenderer {
                     }
                 }
                 boolean isTeammate = false;
-                if(Player.localPlayer.teamId != 0 && player.teamId != 0 && player.teamId == Player.localPlayer.teamId)
+                if(Player.localPlayer.teamId != 0 && player.teamId != 0 && player.teamId == Player.localPlayer.teamId) {
                     isTeammate = true;
-                if(isFriend)
+                }
+                if(isFriend) {
                     drawOnResizableMinimap(playerX, playerY, MovedStatics.mapDots[3]);
-                else if(isTeammate)
+                } else if(isTeammate) {
                     drawOnResizableMinimap(playerX, playerY, MovedStatics.mapDots[4]);
-                else
+                } else {
                     drawOnResizableMinimap(playerX, playerY, MovedStatics.mapDots[2]);
+                }
             }
         }
         if(Player.headIconDrawType != 0 && MovedStatics.pulseCycle % 20 < 10) {
-            if(Player.headIconDrawType == 1 && HuffmanEncoding.anInt1545 >= 0 && Player.npcs.length > HuffmanEncoding.anInt1545) {
+            if(Player.headIconDrawType == 1 && HuffmanEncoding.anInt1545 >= 0 &&
+                    Player.npcs.length > HuffmanEncoding.anInt1545) {
                 Npc npc = Player.npcs[HuffmanEncoding.anInt1545];
                 if(npc != null) {
                     int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
@@ -181,10 +200,12 @@ public class Minimap extends FramePieceRenderer {
             }
             if(Player.headIconDrawType == 2) {
                 int hintY = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + MovedStatics.anInt175);
-                int hintX = 4 * (ProducingGraphicsBuffer.anInt1637 - SpotAnimDefinition.baseX) - (-2 + Player.localPlayer.worldX / 32);
+                int hintX = 4 * (ProducingGraphicsBuffer.anInt1637 - SpotAnimDefinition.baseX) -
+                        (-2 + Player.localPlayer.worldX / 32);
                 drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], hintX, hintY);
             }
-            if(Player.headIconDrawType == 10 && ProducingGraphicsBuffer.anInt1623 >= 0 && Player.trackedPlayers.length > ProducingGraphicsBuffer.anInt1623) {
+            if(Player.headIconDrawType == 10 && ProducingGraphicsBuffer.anInt1623 >= 0 &&
+                    Player.trackedPlayers.length > ProducingGraphicsBuffer.anInt1623) {
                 Player player = Player.trackedPlayers[ProducingGraphicsBuffer.anInt1623];
                 if(player != null) {
                     int playerY = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
@@ -220,7 +241,7 @@ public class Minimap extends FramePieceRenderer {
 
     public void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
         int len = mapX * mapX + mapY * mapY;
-        if (len > 4225 && len < 90000) {
+        if(len > 4225 && len < 90000) {
             int theta = 0x7ff & GroundItemTile.cameraHorizontal + Class43.cameraYawOffset;
             int sine = Model.SINE[theta];
             int cosine = Model.COSINE[theta];

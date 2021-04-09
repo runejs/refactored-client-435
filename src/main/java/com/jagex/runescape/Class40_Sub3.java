@@ -46,28 +46,29 @@ public class Class40_Sub3 extends Node {
 
 
     public static void startup(int arg0) {
-        if (Class40_Sub5_Sub6.loadingPercent == 0) {
+        if(Class40_Sub5_Sub6.loadingPercent == 0) {
             Npc.currentScene = new Scene(MovedStatics.tile_height);
-            for (int i = 0; i < 4; i++)
+            for(int i = 0; i < 4; i++) {
                 Landscape.currentCollisionMap[i] = new CollisionMap(104, 104);
+            }
             Class40_Sub5_Sub13.minimapImage = new ImageRGB(512, 512);
             MovedStatics.anInt1607 = 5;
             Class40_Sub5_Sub6.loadingPercent = 20;
             Native.currentLoadingText = English.startingGameEngine;
-        } else if (Class40_Sub5_Sub6.loadingPercent == 20) {
-//            int[] is = new int[9];
-//            for (int i = 0; i < 9; i++) {
-//                int i_0_ = 15 + 32 * i + 128;
-//                int i_1_ = 3 * i_0_ + 600;
-//                int i_2_ = Rasterizer3D.sinetable[i_0_];
-//                is[i] = i_2_ * i_1_ >> 16;
-//            }
-//            Scene.method95(500, 800, 512, 334, is);
+        } else if(Class40_Sub5_Sub6.loadingPercent == 20) {
+            //            int[] is = new int[9];
+            //            for (int i = 0; i < 9; i++) {
+            //                int i_0_ = 15 + 32 * i + 128;
+            //                int i_1_ = 3 * i_0_ + 600;
+            //                int i_2_ = Rasterizer3D.sinetable[i_0_];
+            //                is[i] = i_2_ * i_1_ >> 16;
+            //            }
+            //            Scene.method95(500, 800, 512, 334, is);
             ScreenController.setBounds();
             MovedStatics.anInt1607 = 10;
             Native.currentLoadingText = English.preparedVisibilityMap;
             Class40_Sub5_Sub6.loadingPercent = 30;
-        } else if (Class40_Sub5_Sub6.loadingPercent == 30) {
+        } else if(Class40_Sub5_Sub6.loadingPercent == 30) {
             CacheArchive.skeletonCacheArchive = CacheArchive.loadArchive(0, true, false, true);
             CacheArchive.skinDefinitionCacheArchive = CacheArchive.loadArchive(1, true, false, true);
             CacheArchive.gameDefinitionsCacheArchive = CacheArchive.loadArchive(2, true, true, false);
@@ -84,7 +85,7 @@ public class Class40_Sub3 extends Node {
             Class40_Sub5_Sub6.loadingPercent = 40;
             Native.currentLoadingText = English.connectingToUpdateServer;
             MovedStatics.anInt1607 = 20;
-        } else if (Class40_Sub5_Sub6.loadingPercent == 40) {
+        } else if(Class40_Sub5_Sub6.loadingPercent == 40) {
             int i = 0;
             i += CacheArchive.skeletonCacheArchive.getPercentLoaded() * 5 / 100;
             i += 5 * CacheArchive.skinDefinitionCacheArchive.getPercentLoaded() / 100;
@@ -99,37 +100,43 @@ public class Class40_Sub3 extends Node {
             i += 5 * CacheArchive.huffmanCacheArchive.getPercentLoaded() / 100;
             i += 5 * CacheArchive.jingleCacheArchive.getPercentLoaded() / 100;
             i += 5 * CacheArchive.clientScriptCacheArchive.getPercentLoaded() / 100;
-            if (i == 100) {
+            if(i == 100) {
                 Class40_Sub5_Sub6.loadingPercent = 45;
                 Native.currentLoadingText = English.loadedUpdateList;
                 MovedStatics.anInt1607 = 30;
             } else {
-                if (i != 0)
+                if(i != 0) {
                     Native.currentLoadingText = English.checkingForUpdates + i + Native.percent;
+                }
                 MovedStatics.anInt1607 = 30;
             }
-        } else if (Class40_Sub5_Sub6.loadingPercent == 45) {
+        } else if(Class40_Sub5_Sub6.loadingPercent == 45) {
             MovedStatics.method446(Main.signlink, 0, !VertexNormal.lowMemory, (byte) 30);
-            Class49.aClass40_Sub9_Sub1_1152 = MouseHandler.method1003(Main.signlink, MouseHandler.gameCanvas, arg0 ^ 0x74be);
+            Class49.aClass40_Sub9_Sub1_1152 = MouseHandler.method1003(
+                    Main.signlink, MouseHandler.gameCanvas, arg0 ^ 0x74be);
             Class55.aClass48_1289 = new Class48(22050, CollisionMap.anInt141);
             Class40_Sub5_Sub6.loadingPercent = 50;
             Native.currentLoadingText = English.preparedSoundEngine;
             MovedStatics.anInt1607 = 35;
-        } else if (Class40_Sub5_Sub6.loadingPercent == 50) {
+        } else if(Class40_Sub5_Sub6.loadingPercent == 50) {
             int i = 0;
-            if (TypeFace.fontSmall != null)
+            if(TypeFace.fontSmall != null) {
                 i++;
-            else
+            } else {
                 TypeFace.fontSmall = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.aClass1_2101);
-            if (WallDecoration.fontNormal != null)
+            }
+            if(WallDecoration.fontNormal != null) {
                 i++;
-            else
-                WallDecoration.fontNormal = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.aClass1_1580);
-            if (TypeFace.fontBold != null)
+            } else {
+                WallDecoration.fontNormal = TypeFace.loadTypeFace(
+                        CacheArchive.gameImageCacheArchive, "", Native.aClass1_1580);
+            }
+            if(TypeFace.fontBold != null) {
                 i++;
-            else
+            } else {
                 TypeFace.fontBold = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.aClass1_1921);
-            if (i < 3) {
+            }
+            if(i < 3) {
                 Native.currentLoadingText = English.loadingFonts + (i * 100 / 3) + Native.percent;
                 MovedStatics.anInt1607 = 40;
             } else {
@@ -137,10 +144,10 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.anInt1607 = 40;
                 Native.currentLoadingText = English.loadedFonts;
             }
-        } else if (Class40_Sub5_Sub6.loadingPercent == 60) {
+        } else if(Class40_Sub5_Sub6.loadingPercent == 60) {
             int i = Class60.method988(CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
             int i_3_ = ISAAC.method288((byte) 119);
-            if (i < i_3_) {
+            if(i < i_3_) {
                 Native.currentLoadingText = English.loadingTitleScreen + (100 * i / i_3_) + Native.percent;
                 MovedStatics.anInt1607 = 50;
             } else {
@@ -150,16 +157,25 @@ public class Class40_Sub3 extends Node {
                 OverlayDefinition.updateOverlay(5);
                 Class40_Sub5_Sub6.loadingPercent = 70;
             }
-        } else if (Class40_Sub5_Sub6.loadingPercent == 70) {
-            if (CacheArchive.gameDefinitionsCacheArchive.method185((byte) 98)) {
+        } else if(Class40_Sub5_Sub6.loadingPercent == 70) {
+            if(CacheArchive.gameDefinitionsCacheArchive.method185((byte) 98)) {
                 MovedStatics.method441(CacheArchive.gameDefinitionsCacheArchive);
                 UnderlayDefinition.method616(CacheArchive.gameDefinitionsCacheArchive);
                 method977(3, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
-                method980(28987, CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
-                Main.method357(CacheArchive.modelCacheArchive, arg0 ^ ~0x2a85, CacheArchive.gameDefinitionsCacheArchive);
-                Class42.method885(CacheArchive.gameDefinitionsCacheArchive, Class22.membersWorld, CacheArchive.modelCacheArchive);
-                MovedStatics.method236(CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.skeletonCacheArchive);
-                Class55.method966(arg0 ^ 0x38, CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
+                method980(
+                        28987, CacheArchive.modelCacheArchive, VertexNormal.lowMemory,
+                        CacheArchive.gameDefinitionsCacheArchive
+                );
+                Main.method357(
+                        CacheArchive.modelCacheArchive, arg0 ^ ~0x2a85, CacheArchive.gameDefinitionsCacheArchive);
+                Class42.method885(
+                        CacheArchive.gameDefinitionsCacheArchive, Class22.membersWorld, CacheArchive.modelCacheArchive);
+                MovedStatics.method236(
+                        CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive,
+                        CacheArchive.skeletonCacheArchive
+                );
+                Class55.method966(
+                        arg0 ^ 0x38, CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
                 Landscape.method936(CacheArchive.gameDefinitionsCacheArchive);
                 Main.method43(CacheArchive.gameDefinitionsCacheArchive);
                 GameInterface.createInterfaceMemoryBuffers();
@@ -167,68 +183,97 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.anInt1607 = 60;
                 Native.currentLoadingText = English.loadedConfig;
             } else {
-                Native.currentLoadingText = English.loadingConfig + CacheArchive.gameDefinitionsCacheArchive.method202() + Native.percent;
+                Native.currentLoadingText =
+                        English.loadingConfig + CacheArchive.gameDefinitionsCacheArchive.method202() + Native.percent;
                 MovedStatics.anInt1607 = 60;
             }
-        } else if (Class40_Sub5_Sub6.loadingPercent == 80) {
+        } else if(Class40_Sub5_Sub6.loadingPercent == 80) {
             int i = 0;
-            if (AnimationSequence.minimapCompass != null)
+            if(AnimationSequence.minimapCompass != null) {
                 i++;
-            else
-                AnimationSequence.minimapCompass = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.compass, (byte) 21, "");
-            if (SpotAnimDefinition.minimapEdge == null)
-                SpotAnimDefinition.minimapEdge = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.aClass1_1427, (byte) 21, "");
-            else
+            } else {
+                AnimationSequence.minimapCompass = HuffmanEncoding.method1028(
+                        CacheArchive.gameImageCacheArchive, Native.compass, (byte) 21, "");
+            }
+            if(SpotAnimDefinition.minimapEdge == null) {
+                SpotAnimDefinition.minimapEdge = HuffmanEncoding.method1028(
+                        CacheArchive.gameImageCacheArchive, Native.aClass1_1427, (byte) 21, "");
+            } else {
                 i++;
-            if (SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301 != null)
+            }
+            if(SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301 != null) {
                 i++;
-            else
-                SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301 = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.aClass1_671, "");
-            if (Class8.aClass40_Sub5_Sub14_Sub4Array296 == null)
-                Class8.aClass40_Sub5_Sub14_Sub4Array296 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
-            else
+            } else {
+                SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301 = IndexedImage.getMultipleIndexedImages(
+                        CacheArchive.gameImageCacheArchive, Native.aClass1_671, "");
+            }
+            if(Class8.aClass40_Sub5_Sub14_Sub4Array296 == null) {
+                Class8.aClass40_Sub5_Sub14_Sub4Array296 = MovedStatics.method526(
+                        CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
+            } else {
                 i++;
-            if (AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 != null)
+            }
+            if(AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 != null) {
                 i++;
-            else
-                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_2114, "");
-            if (FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 == null)
-                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_2161, "");
-            else
+            } else {
+                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = MovedStatics.method526(
+                        CacheArchive.gameImageCacheArchive, Native.aClass1_2114, "");
+            }
+            if(FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 == null) {
+                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = MovedStatics.method526(
+                        CacheArchive.gameImageCacheArchive, Native.aClass1_2161, "");
+            } else {
                 i++;
-            if (ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 != null)
+            }
+            if(ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 != null) {
                 i++;
-            else
-                ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
-            if (UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 == null)
-                UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_1230, "");
-            else
+            } else {
+                ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = MovedStatics.method526(
+                        CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
+            }
+            if(UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 == null) {
+                UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 = MovedStatics.method526(
+                        CacheArchive.gameImageCacheArchive, Native.aClass1_1230, "");
+            } else {
                 i++;
-            if (LinkedList.aClass40_Sub5_Sub14_Sub4_1057 == null)
-                LinkedList.aClass40_Sub5_Sub14_Sub4_1057 = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.aClass1_2109, (byte) 21, "");
-            else
+            }
+            if(LinkedList.aClass40_Sub5_Sub14_Sub4_1057 == null) {
+                LinkedList.aClass40_Sub5_Sub14_Sub4_1057 = HuffmanEncoding.method1028(
+                        CacheArchive.gameImageCacheArchive, Native.aClass1_2109, (byte) 21, "");
+            } else {
                 i++;
-            if (aClass40_Sub5_Sub14_Sub4Array2019 == null)
-                aClass40_Sub5_Sub14_Sub4Array2019 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_203, "");
-            else
+            }
+            if(aClass40_Sub5_Sub14_Sub4Array2019 == null) {
+                aClass40_Sub5_Sub14_Sub4Array2019 = MovedStatics.method526(
+                        CacheArchive.gameImageCacheArchive, Native.aClass1_203, "");
+            } else {
                 i++;
-            if (Class37.cursorCross != null)
+            }
+            if(Class37.cursorCross != null) {
                 i++;
-            else
-                Class37.cursorCross = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_2179, "");
-            if (MovedStatics.mapDots == null)
-                MovedStatics.mapDots = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_183, "");
-            else
+            } else {
+                Class37.cursorCross = MovedStatics.method526(
+                        CacheArchive.gameImageCacheArchive, Native.aClass1_2179, "");
+            }
+            if(MovedStatics.mapDots == null) {
+                MovedStatics.mapDots = MovedStatics.method526(
+                        CacheArchive.gameImageCacheArchive, Native.aClass1_183, "");
+            } else {
                 i++;
-            if (MovedStatics.aClass40_Sub5_Sub14_Sub2Array215 == null)
-                MovedStatics.aClass40_Sub5_Sub14_Sub2Array215 = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.scrollbar, "");
-            else
+            }
+            if(MovedStatics.aClass40_Sub5_Sub14_Sub2Array215 == null) {
+                MovedStatics.aClass40_Sub5_Sub14_Sub2Array215 = IndexedImage.getMultipleIndexedImages(
+                        CacheArchive.gameImageCacheArchive, Native.scrollbar, "");
+            } else {
                 i++;
-            if (Class40_Sub5_Sub13.moderatorIcon != null)
+            }
+            if(Class40_Sub5_Sub13.moderatorIcon != null) {
                 i++;
-            else
-                Class40_Sub5_Sub13.moderatorIcon = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.aClass1_881, "");
-            if (i < 14) {
+            } else {
+                Class40_Sub5_Sub13.moderatorIcon = IndexedImage.getMultipleIndexedImages(
+                        CacheArchive.gameImageCacheArchive, Native.aClass1_881, "");
+            }
+            if(i < 14) {
                 Native.currentLoadingText = English.loadingSprites + (100 * i / 14) + Native.percent;
                 MovedStatics.anInt1607 = 70;
             } else {
@@ -237,17 +282,19 @@ public class Class40_Sub3 extends Node {
                 int i_5_ = (int) (21.0 * Math.random()) - 10;
                 int i_6_ = (int) (41.0 * Math.random()) - 20;
                 int i_7_ = -10 + (int) (21.0 * Math.random());
-                for (int i_8_ = 0; Class8.aClass40_Sub5_Sub14_Sub4Array296.length > i_8_; i_8_++)
+                for(int i_8_ = 0; Class8.aClass40_Sub5_Sub14_Sub4Array296.length > i_8_; i_8_++) {
                     Class8.aClass40_Sub5_Sub14_Sub4Array296[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
-                SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[0].mixPalette(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
+                }
+                SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[0].mixPalette(
+                        i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
                 Native.currentLoadingText = English.loadedSprites;
                 MovedStatics.anInt1607 = 70;
                 Class40_Sub5_Sub6.loadingPercent = 85;
             }
-        } else if (Class40_Sub5_Sub6.loadingPercent == 85) {
+        } else if(Class40_Sub5_Sub6.loadingPercent == 85) {
             int i = KeyFocusListener.method955(CacheArchive.gameImageCacheArchive);
             int i_9_ = ActorDefinition.method576();
-            if (i < i_9_) {
+            if(i < i_9_) {
                 Native.currentLoadingText = English.loadingGameScreen + (i * 100 / i_9_) + Native.percent;
                 MovedStatics.anInt1607 = 80;
             } else {
@@ -255,27 +302,32 @@ public class Class40_Sub3 extends Node {
                 Class40_Sub5_Sub6.loadingPercent = 90;
                 MovedStatics.anInt1607 = 80;
             }
-        } else if (Class40_Sub5_Sub6.loadingPercent == 90) {
-            if (CacheArchive.gameTextureCacheArchive.method185((byte) 62)) {
-                Class35 class35 = new Class35(CacheArchive.gameTextureCacheArchive, CacheArchive.gameImageCacheArchive, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
+        } else if(Class40_Sub5_Sub6.loadingPercent == 90) {
+            if(CacheArchive.gameTextureCacheArchive.method185((byte) 62)) {
+                Class35 class35 = new Class35(
+                        CacheArchive.gameTextureCacheArchive, CacheArchive.gameImageCacheArchive, 20, 0.8,
+                        !VertexNormal.lowMemory ? 128 : 64
+                );
                 Rasterizer3D.method703(class35);
                 Rasterizer3D.method711(0.8);
                 Class40_Sub5_Sub6.loadingPercent = 110;
                 MovedStatics.anInt1607 = 90;
                 Native.currentLoadingText = English.loadedTextures;
             } else {
-                Native.currentLoadingText = English.loadingTextures + CacheArchive.gameTextureCacheArchive.method202() + Native.percent;
+                Native.currentLoadingText =
+                        English.loadingTextures + CacheArchive.gameTextureCacheArchive.method202() + Native.percent;
                 MovedStatics.anInt1607 = 90;
             }
-        } else if (Class40_Sub5_Sub6.loadingPercent == 110) {
+        } else if(Class40_Sub5_Sub6.loadingPercent == 110) {
             Class12.mouseCapturer = new Class39();
             Main.signlink.method394(10, 0, Class12.mouseCapturer);
             Native.currentLoadingText = English.loadedInputHandler;
             Class40_Sub5_Sub6.loadingPercent = 120;
             MovedStatics.anInt1607 = 94;
-        } else if (Class40_Sub5_Sub6.loadingPercent == 120) {
-            if (CacheArchive.huffmanCacheArchive.method194(Native.huffman, "")) {
-                HuffmanEncoding huffmanEncoding = new HuffmanEncoding(CacheArchive.huffmanCacheArchive.method170("", Native.huffman));
+        } else if(Class40_Sub5_Sub6.loadingPercent == 120) {
+            if(CacheArchive.huffmanCacheArchive.method194(Native.huffman, "")) {
+                HuffmanEncoding huffmanEncoding = new HuffmanEncoding(
+                        CacheArchive.huffmanCacheArchive.method170("", Native.huffman));
                 Item.method778(huffmanEncoding);
                 Class40_Sub5_Sub6.loadingPercent = 130;
                 Native.currentLoadingText = English.loadedWordpack;
@@ -284,44 +336,53 @@ public class Class40_Sub3 extends Node {
                 Native.currentLoadingText = English.loadingWordPack + Native.aClass1_1348;
                 MovedStatics.anInt1607 = 96;
             }
-        } else if (Class40_Sub5_Sub6.loadingPercent == 130) {
-            if (!CacheArchive.gameInterfaceCacheArchive.method185((byte) 66)) {
-                Native.currentLoadingText = English.loadingInterfaces + (4 * CacheArchive.gameInterfaceCacheArchive.method202() / 5) + Native.percent;
+        } else if(Class40_Sub5_Sub6.loadingPercent == 130) {
+            if(!CacheArchive.gameInterfaceCacheArchive.method185((byte) 66)) {
+                Native.currentLoadingText =
+                        English.loadingInterfaces + (4 * CacheArchive.gameInterfaceCacheArchive.method202() / 5) +
+                                Native.percent;
                 MovedStatics.anInt1607 = 100;
-            } else if (CacheArchive.clientScriptCacheArchive.method185((byte) 69)) {
+            } else if(CacheArchive.clientScriptCacheArchive.method185((byte) 69)) {
                 Native.currentLoadingText = English.loadedInterfaces;
                 Class40_Sub5_Sub6.loadingPercent = 140;
                 MovedStatics.anInt1607 = 100;
             } else {
-                Native.currentLoadingText = English.loadingInterfaces + (80 + CacheArchive.clientScriptCacheArchive.method202() / 5) + Native.percent;
+                Native.currentLoadingText =
+                        English.loadingInterfaces + (80 + CacheArchive.clientScriptCacheArchive.method202() / 5) +
+                                Native.percent;
                 MovedStatics.anInt1607 = 100;
             }
         } else {
-            if (arg0 != 100)
+            if(arg0 != 100) {
                 aClass40_Sub5_Sub14_Sub4Array2019 = null;
-            if (Class40_Sub5_Sub6.loadingPercent == 140)
+            }
+            if(Class40_Sub5_Sub6.loadingPercent == 140) {
                 OverlayDefinition.updateOverlay(10);
+            }
         }
     }
 
     public static UnderlayDefinition method531(byte arg0, int arg1) {
         UnderlayDefinition underlayDefinition = (UnderlayDefinition) WallDecoration.aClass9_1247.get((long) arg1);
-        if (underlayDefinition != null)
+        if(underlayDefinition != null) {
             return underlayDefinition;
+        }
         byte[] is = Actor.aCacheArchive_3150.getFile(1, arg1);
         underlayDefinition = new UnderlayDefinition();
-        if (is != null)
+        if(is != null) {
             underlayDefinition.readValues(new Buffer(is));
+        }
         underlayDefinition.calculateHsl();
-        if (arg0 >= -39)
+        if(arg0 >= -39) {
             English.commandFpson = null;
+        }
         WallDecoration.aClass9_1247.put((long) arg1, underlayDefinition);
         return underlayDefinition;
     }
 
     public static void method977(int arg0, CacheArchive arg1, CacheArchive arg2) {
         MovedStatics.aCacheArchive_654 = arg2;
-        if (arg0 == 3) {
+        if(arg0 == 3) {
             Class49.aCacheArchive_1150 = arg1;
             PlayerAppearance.identityKitLength = Class49.aCacheArchive_1150.fileLength(3);
         }
@@ -332,7 +393,8 @@ public class Class40_Sub3 extends Node {
         GameObjectDefinition.count = CacheArchive.definitionCache.fileLength(6);
 
         Class35.aBoolean1734 = arg2;
-        if (arg0 == 28987)
+        if(arg0 == 28987) {
             RSString.aCacheArchive_1705 = arg1;
+        }
     }
 }

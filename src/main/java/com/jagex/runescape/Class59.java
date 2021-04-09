@@ -30,9 +30,9 @@ public class Class59 {
     }
 
     public static void dropClient() {
-        if(SceneCluster.idleLogout > 0)
+        if(SceneCluster.idleLogout > 0) {
             Class48.logout(-7225);
-        else {
+        } else {
             OverlayDefinition.updateOverlay(40);
             PlayerAppearance.aClass64_717 = MovedStatics.gameConnection;
             MovedStatics.gameConnection = null;
@@ -61,12 +61,14 @@ public class Class59 {
                 } else if(RSCanvas.anInt54 > 0) {
                     RSCanvas.anInt54--;
                     if(RSCanvas.anInt54 == 0) {
-                        if(Player.aByteArray3270 == null)
+                        if(Player.aByteArray3270 == null) {
                             MovedStatics.aClass22_189.method301(256, 0);
-                        else {
+                        } else {
                             MovedStatics.aClass22_189.method301(PacketBuffer.anInt2258, arg0);
                             MouseHandler.anInt1450 = PacketBuffer.anInt2258;
-                            MovedStatics.aClass22_189.method300(Player.aByteArray3270, PlayerAppearance.aBoolean687, -15910, PacketBuffer.anInt2258);
+                            MovedStatics.aClass22_189.method300(Player.aByteArray3270, PlayerAppearance.aBoolean687, -15910,
+                                    PacketBuffer.anInt2258
+                            );
                             Player.aByteArray3270 = null;
                         }
                         Class39.anInt909 = 0;
@@ -79,12 +81,15 @@ public class Class59 {
 
 
     public static int getVisibilityPlaneFor(int arg0, int arg1, int arg2, int arg3) {
-        if(arg2 != 0)
+        if(arg2 != 0) {
             getVisibilityPlaneFor(-73, 123, 115, 98);
-        if((OverlayDefinition.tile_flags[arg0][arg3][arg1] & 0x8) != 0)
+        }
+        if((OverlayDefinition.tile_flags[arg0][arg3][arg1] & 0x8) != 0) {
             return 0;
-        if(arg0 > 0 && (OverlayDefinition.tile_flags[1][arg3][arg1] & 0x2) != 0)
+        }
+        if(arg0 > 0 && (OverlayDefinition.tile_flags[1][arg3][arg1] & 0x2) != 0) {
             return -1 + arg0;
+        }
         return arg0;
     }
 }

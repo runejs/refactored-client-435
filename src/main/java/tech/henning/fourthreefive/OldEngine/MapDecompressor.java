@@ -23,14 +23,16 @@ public class MapDecompressor {
     public static Map<Integer, byte[]> mapBuffer = new HashMap<Integer, byte[]>();
 
     public static byte[] grabMap(int id) throws IOException {
-        if(mapIndices == null)
+        if(mapIndices == null) {
             loadIndex2();
+        }
         if(mapBuffer.get(id) == null) {
             RandomAccessFile raf_cache = new RandomAccessFile("./data/maps/MAP_CACHE.dat", "rw");
             RandomAccessFile raf_index = new RandomAccessFile("./data/maps/MAP_CACHE.idx", "rw");
             int pos = getIndexPosition(id);
-            if(pos == -1)
+            if(pos == -1) {
                 return null;
+            }
             raf_index.seek(pos * 12);
             raf_cache.seek(raf_index.readInt());
             byte[] b = new byte[raf_index.readInt()];
@@ -45,15 +47,19 @@ public class MapDecompressor {
     public static void loadIndex2() throws IOException {
         mapIndices = new ArrayList<Integer>();
         DataInputStream dis = new DataInputStream(new FileInputStream("./data/maps/MAP_CACHE.idx2"));
-        for(int i = 0; i < (int) new File("./data/maps/MAP_CACHE.idx2").length() / 2; i++)
+        for(int i = 0; i < (int) new File("./data/maps/MAP_CACHE.idx2").length() / 2; i++) {
             mapIndices.add((int) dis.readShort());
+        }
     }
 
     public static int getIndexPosition(int id) throws IOException {
-        if(mapIndices.contains(id))
-            for(int i = 0; i < mapIndices.size(); i++)
-                if(mapIndices.get(i) == id)
+        if(mapIndices.contains(id)) {
+            for(int i = 0; i < mapIndices.size(); i++) {
+                if(mapIndices.get(i) == id) {
                     return i;
+                }
+            }
+        }
         return -1;
     }
 
