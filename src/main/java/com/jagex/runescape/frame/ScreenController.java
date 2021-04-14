@@ -438,7 +438,7 @@ public class ScreenController {
             }
             if (x >= 406 && x <= 506 && y >= 0 && y <= 32) {
                 if (GameInterface.gameScreenInterfaceId == -1) {
-                    PacketBuffer.method516();
+                    PacketBuffer.closeAllWidgets();
                     if (MovedStatics.anInt854 != -1) {
                         MovedStatics.reportMutePlayer = false;
                         HuffmanEncoding.reportAbuseInterfaceID = GameInterface.gameScreenInterfaceId = MovedStatics.anInt854;
