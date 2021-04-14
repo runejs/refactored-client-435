@@ -540,7 +540,6 @@ public class GameInterface extends CachedNode {
         List<Integer> whitelistedActionsDuringAnimation = new ArrayList();
 
         // TODO add more actions that should work during a cutscene
-        whitelistedActionsDuringAnimation.add(19); // Use item
         whitelistedActionsDuringAnimation.add(54); // Click here to continue
         whitelistedActionsDuringAnimation.add(1005); // Cancel
 
