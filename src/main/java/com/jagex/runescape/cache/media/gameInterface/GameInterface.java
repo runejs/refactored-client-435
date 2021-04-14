@@ -1185,9 +1185,9 @@ public class GameInterface extends CachedNode {
                     if(action == 9) {
                         PacketBuffer.closeAllWidgets();
                     }
-                    if(action == 54 && MovedStatics.lastContinueTextWidget == -1) { // Click to continue
+                    if(action == 54 && MovedStatics.lastContinueTextWidgetId == -1) { // Click to continue
                         PacketBuffer.method517(0, i_10_);
-                        MovedStatics.lastContinueTextWidget = i_10_;
+                        MovedStatics.lastContinueTextWidgetId = i_10_;
                     }
                     if(action == 43) {
                         SceneCluster.packetBuffer.putPacket(98);

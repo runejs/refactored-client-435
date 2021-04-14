@@ -276,7 +276,7 @@ public class Main extends GameShell {
                                 if (itemDefinition.stackable == 1 || gameInterface.itemAmount != 1)
                                     text = text + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmount, (byte) -109);
                             }
-                            if (gameInterface.actionType == 6 && MovedStatics.lastContinueTextWidget == gameInterface.id) {
+                            if (gameInterface.actionType == 6 && MovedStatics.lastContinueTextWidgetId == gameInterface.id) {
                                 textColor = gameInterface.textColor;
                                 text = English.pleaseWait;
                             }
@@ -758,7 +758,7 @@ public class Main extends GameShell {
         MovedStatics.menuOpen = false;
         GroundItemTile.walkableWidgetId = -1;
         Native.clickToContinueString = null;
-        MovedStatics.lastContinueTextWidget = -1;
+        MovedStatics.lastContinueTextWidgetId = -1;
         Class51.anInt1205 = -1;
         MovedStatics.anInt2118 = 0;
         Player.currentTabId = 3;
