@@ -33,6 +33,8 @@ import tech.henning.fourthreefive.Configuration;
 
 import java.awt.*;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameInterface extends CachedNode {
     public static GameInterface[][] cachedInterfaces;
@@ -534,6 +536,16 @@ public class GameInterface extends CachedNode {
         return objects;
     }
 
+    public static boolean isActionWhitelisted(int action) {
+        List<Integer> whitelistedActionsDuringAnimation = new ArrayList();
+
+        // TODO add more actions that should work during a cutscene
+        whitelistedActionsDuringAnimation.add(54); // Click here to continue
+        whitelistedActionsDuringAnimation.add(1005); // Cancel
+
+        return whitelistedActionsDuringAnimation.contains(action);
+    }
+
     public static void processMenuActions(int arg0, int arg1) {
         if(arg1 >= 0) {
             int i = InteractiveObject.firstMenuOperand[arg1];
@@ -542,6 +554,11 @@ public class GameInterface extends CachedNode {
             if(action >= 2000) {
                 action -= 2000;
             }
+
+            if (Player.cutsceneActive && !GameInterface.isActionWhitelisted(action)) {
+                return;
+            }
+
             int i_12_ = Class33.selectedMenuActions[arg1];
             if(ChatBox.inputType != 0 && action != 1005) {
                 ChatBox.inputType = 0;
