@@ -67,7 +67,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     public int contrast;
     public int hasActions;
     public boolean obstructsGround;
-    public int varpID;
+    public int varbitId;
     public String name;
     public boolean rotated;
 
@@ -101,7 +101,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         contrast = 0;
         configId = -1;
         rotated = false;
-        varpID = -1;
+        varbitId = -1;
         hasActions = -1;
         ambient = 0;
         modelSizeY = 128;
@@ -126,7 +126,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     }
 
 
-    public static void method609(int arg0, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
+    public static void method609(int objectId, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
         Class40_Sub3 class40_sub3 = null;
         for(Class40_Sub3 class40_sub3_24_ = (Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90); class40_sub3_24_ != null; class40_sub3_24_ = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
             if(class40_sub3_24_.anInt2018 == arg5 && arg2 == class40_sub3_24_.anInt2039 && class40_sub3_24_.anInt2038 == arg6 && class40_sub3_24_.anInt2027 == arg7) {
@@ -143,7 +143,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
             Class39.method451(class40_sub3, 19813);
             LinkedList.aLinkedList_1064.pushBack(class40_sub3, 97);
         }
-        class40_sub3.anInt2017 = arg0;
+        class40_sub3.anInt2017 = objectId;
         class40_sub3.anInt2031 = arg4;
         class40_sub3.anInt2033 = arg9;
         class40_sub3.anInt2035 = arg3;
@@ -492,9 +492,9 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         } else if(opcode == 75) {
             supportsItems = buffer.getUnsignedByte();
         } else if(opcode == 77) {
-            varpID = buffer.getUnsignedShortBE();
-            if(varpID == 0xffff) {
-                varpID = -1;
+            varbitId = buffer.getUnsignedShortBE();
+            if(varbitId == 0xffff) {
+                varbitId = -1;
             }
             configId = buffer.getUnsignedShortBE();
             if(configId == 0xFFFF) {
@@ -547,12 +547,13 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
 
     public GameObjectDefinition getChildDefinition() {
         int i = -1;
-        if(varpID == -1) {
+        if(varbitId == -1) {
             if(configId != -1) {
                 i = GroundItemTile.varbitMasks[configId];
             }
         } else {
-            i = Class40_Sub5_Sub6.method585(varpID, 1369);
+            i = VarbitDefinition.getVarbitObjectMorphIndex(varbitId);
+
         }
         if(i < 0 || configChangeDest.length <= i || configChangeDest[i] == -1) {
             return null;

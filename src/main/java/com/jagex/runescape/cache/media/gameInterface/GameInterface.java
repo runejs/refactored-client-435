@@ -578,7 +578,7 @@ public class GameInterface extends CachedNode {
                 SceneCluster.packetBuffer.putShortBE(i_12_);
                 SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
             }
-            if(action == 1004) {
+            if(action == 1004) { // examine object
                 MovedStatics.crossY = RSString.clickY;
                 ClientScriptRunner.crossX = Class57.clickX;
                 LinkedList.crossType = 2;

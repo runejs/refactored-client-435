@@ -2,6 +2,7 @@ package com.jagex.runescape.cache.cs;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheArchive;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
@@ -174,7 +175,7 @@ public class ClientScript extends CachedNode {
                 }
                 if (opcode == 14) {
                     int i_28_ = opcodes[scriptDataIndex++];
-                    i_16_ = Class40_Sub5_Sub6.method585(i_28_, 1369);
+                    i_16_ = VarbitDefinition.getVarbitObjectMorphIndex(i_28_);
                 }
                 if (opcode == 18) {
                     i_16_ = (Player.localPlayer.worldX >> 7) + SpotAnimDefinition.baseX;

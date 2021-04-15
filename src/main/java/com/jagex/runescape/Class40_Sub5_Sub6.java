@@ -35,17 +35,6 @@ public class Class40_Sub5_Sub6 extends CachedNode {
         aByteArray2441 = arg0;
     }
 
-    public static int method585(int arg0, int arg1) {
-        VarbitDefinition varbitDefinition = MovedStatics.method417(0, arg0);
-        if(arg1 != 1369)
-            return 27;
-        int i = varbitDefinition.mostSignificantBit;
-        int i_6_ = varbitDefinition.index;
-        int i_7_ = varbitDefinition.leastSignificantBit;
-        int i_8_ = ProducingGraphicsBuffer_Sub1.anIntArray2199[i - i_7_];
-        return GroundItemTile.varbitMasks[i_6_] >> i_7_ & i_8_;
-    }
-
     public static void method586(int arg0) {
         ISAAC.cachedActorDefinitions.clear();
         MovedStatics.aClass9_1611.clear();

@@ -5,7 +5,7 @@ import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.media.IndexedImage;
 
 public class Class57 {
-    public static NodeCache aClass9_1331 = new NodeCache(64);
+    public static NodeCache varbitDefinitionCache = new NodeCache(64);
     public static LinkedList aLinkedList_1332 = new LinkedList();
     public static int[][] wayPoints = new int[104][104];
     public static int clickX = 0;

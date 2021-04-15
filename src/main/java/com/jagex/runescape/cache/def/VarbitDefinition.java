@@ -8,6 +8,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.node.CachedNode;
+import com.jagex.runescape.scene.GroundItemTile;
 
 public class VarbitDefinition extends CachedNode {
     public static ProducingGraphicsBuffer gameScreenImageProducer;
@@ -19,6 +20,40 @@ public class VarbitDefinition extends CachedNode {
     public int index;
     public int leastSignificantBit;
     public int mostSignificantBit;
+
+    public static VarbitDefinition getDefinition(int varbitId) {
+        VarbitDefinition varbitDefinition = (VarbitDefinition) Class57.varbitDefinitionCache.get(varbitId);
+        if (varbitDefinition != null)
+            return varbitDefinition;
+        byte[] is = RSCanvas.aCacheArchive_61.getFile(14, varbitId);
+        varbitDefinition = new VarbitDefinition();
+        if (is != null)
+            varbitDefinition.readValues(new Buffer(is));
+        Class57.varbitDefinitionCache.put(varbitId, varbitDefinition);
+        return varbitDefinition;
+    }
+
+    public static int getVarbitObjectMorphIndex(int varbitId) {
+        VarbitDefinition varbitDefinition = getDefinition(varbitId);
+        int mostSignificantBit = varbitDefinition.mostSignificantBit;
+        int configId = varbitDefinition.index;
+        int leastSignificantBit = varbitDefinition.leastSignificantBit;
+        int i_8_ = ProducingGraphicsBuffer_Sub1.anIntArray2199[mostSignificantBit - leastSignificantBit];
+        return GroundItemTile.varbitMasks[configId] >> leastSignificantBit & i_8_;
+    }
+
+    public void readValues(Buffer buffer) {
+        while(true) {
+            int opCode = buffer.getUnsignedByte();
+            if(opCode == 0)
+                break;
+            if(opCode == 1) {
+                index = buffer.getUnsignedShortBE();
+                leastSignificantBit = buffer.getUnsignedByte();
+                mostSignificantBit = buffer.getUnsignedByte();
+            }
+        }
+    }
 
     public static int method564(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         arg4 &= 0x3;
@@ -64,20 +99,5 @@ public class VarbitDefinition extends CachedNode {
         }
     }
 
-    public void method562(Buffer arg1) {
-        while(true) {
-            int i = arg1.getUnsignedByte();
-            if(i == 0)
-                break;
-            readValues(arg1, i);
-        }
-    }
 
-    public void readValues(Buffer buffer, int arg2) {
-        if(arg2 == 1) {
-            index = buffer.getUnsignedShortBE();
-            leastSignificantBit = buffer.getUnsignedByte();
-            mostSignificantBit = buffer.getUnsignedByte();
-        }
-    }
 }

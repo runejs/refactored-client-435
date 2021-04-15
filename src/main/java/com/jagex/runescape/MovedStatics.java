@@ -732,7 +732,7 @@ public class MovedStatics {
     }
 
     public static void method522(int arg0, int arg1) {
-        VarbitDefinition varbitDefinition = method417(0, arg1);
+        VarbitDefinition varbitDefinition = VarbitDefinition.getDefinition(arg1);
         int i = varbitDefinition.leastSignificantBit;
         int i_0_ = varbitDefinition.index;
         int i_1_ = varbitDefinition.mostSignificantBit;
@@ -853,20 +853,6 @@ public class MovedStatics {
             Class59.anInt1389 = Class59.anInt1389 + 1 & 0x7f;
             return true;
         }
-    }
-
-    public static VarbitDefinition method417(int arg0, int arg1) {
-        if (arg0 != 0)
-            return null;
-        VarbitDefinition varbitDefinition = (VarbitDefinition) Class57.aClass9_1331.get((long) arg1);
-        if (varbitDefinition != null)
-            return varbitDefinition;
-        byte[] is = RSCanvas.aCacheArchive_61.getFile(14, arg1);
-        varbitDefinition = new VarbitDefinition();
-        if (is != null)
-            varbitDefinition.method562(new Buffer(is));
-        Class57.aClass9_1331.put((long) arg1, varbitDefinition);
-        return varbitDefinition;
     }
 
     public static int method420(int arg0, int arg1, boolean arg2) {

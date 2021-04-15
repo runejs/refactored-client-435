@@ -3,10 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.cs.InvokedScript;
 import com.jagex.runescape.cache.cs.ClientScript;
-import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.gameInterface.*;
 import com.jagex.runescape.node.Node;
 import com.jagex.runescape.frame.ChatBox;
@@ -401,7 +398,7 @@ public class ClientScriptRunner extends Node {
                     }
                     if(scriptOpcode == 25) {
                         int operand = intOperands[scriptIndex];
-                        scriptIntValues[intValueIndex++] = Class40_Sub5_Sub6.method585(operand, 1369);
+                        scriptIntValues[intValueIndex++] = VarbitDefinition.getVarbitObjectMorphIndex(operand);
                         continue;
                     }
                     if(scriptOpcode == 27) {

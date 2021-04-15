@@ -48,7 +48,7 @@ public class LinkedList {
     }
 
     public static void method907(int arg0) {
-        Class57.aClass9_1331.clear();
+        Class57.varbitDefinitionCache.clear();
         if(arg0 >= -36)
             aLinkedList_1064 = null;
     }

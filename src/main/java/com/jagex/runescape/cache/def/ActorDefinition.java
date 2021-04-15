@@ -199,7 +199,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         }
         int i = arg0;
         if(varBitId != -1) {
-            i = Class40_Sub5_Sub6.method585(varBitId, 1369);
+            i = VarbitDefinition.getVarbitObjectMorphIndex(varBitId);
         } else if(varpIndex != -1) {
             i = GroundItemTile.varbitMasks[varpIndex];
         }
@@ -341,7 +341,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     public ActorDefinition getChildDefinition(int arg0) {
         int childId = arg0;
         if(varBitId != -1) {
-            childId = Class40_Sub5_Sub6.method585(varBitId, 1369);
+            childId = VarbitDefinition.getVarbitObjectMorphIndex(varBitId);
         } else if(varpIndex != -1) {
             childId = GroundItemTile.varbitMasks[varpIndex];
         }

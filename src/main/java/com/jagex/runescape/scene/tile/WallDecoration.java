@@ -88,12 +88,12 @@ public class WallDecoration {
             int i_12_ = i & 0x3;
             int i_13_ = i >> 2;
             int i_14_ = Npc.anIntArray3304[i_13_];
-            int i_15_ = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            int objectId = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
             int i_16_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             int i_17_ = (0x7 & i_16_) + OverlayDefinition.placementY;
             int i_18_ = MovedStatics.placementX + ((i_16_ & 0x75) >> 4);
             if (i_18_ >= 0 && i_17_ >= 0 && i_18_ < 104 && i_17_ < 104)
-                GameObjectDefinition.method609(i_15_, i_18_, i_12_, -1, Player.worldLevel, i_17_, i_14_, i_13_, 0);
+                GameObjectDefinition.method609(objectId, i_18_, i_12_, -1, Player.worldLevel, i_17_, i_14_, i_13_, 0);
         } else {
             if (IncomingPackets.incomingPacket == 9) {
                 int offset = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
