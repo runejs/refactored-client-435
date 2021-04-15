@@ -45,18 +45,18 @@ public class PacketBuffer extends Buffer {
     }
 
 
-    public static void method516() {
+    public static void closeAllWidgets() {
         SceneCluster.packetBuffer.putPacket(176);
         if(GameInterface.tabAreaInterfaceId != -1) {
             GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
-            MovedStatics.anInt1819 = -1;
+            MovedStatics.lastContinueTextWidgetId = -1;
             GameInterface.drawTabIcons = true;
             GameInterface.redrawTabArea = true;
             GameInterface.tabAreaInterfaceId = -1;
         }
         if(GameInterface.chatboxInterfaceId != -1) {
             GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
-            MovedStatics.anInt1819 = -1;
+            MovedStatics.lastContinueTextWidgetId = -1;
             ChatBox.redrawChatbox = true;
             GameInterface.chatboxInterfaceId = -1;
         }
@@ -72,7 +72,7 @@ public class PacketBuffer extends Buffer {
         if(GameInterface.gameScreenInterfaceId != -1) {
             GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
             GameInterface.gameScreenInterfaceId = -1;
-            MovedStatics.anInt1819 = -1;
+            MovedStatics.lastContinueTextWidgetId = -1;
         }
     }
 

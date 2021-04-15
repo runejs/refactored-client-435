@@ -1174,7 +1174,7 @@ public class GameInterface extends CachedNode {
                         int i_22_ = class1.indexOf(Native.white);
                         if(i_22_ != -1) {
                             if(gameScreenInterfaceId == -1) {
-                                PacketBuffer.method516();
+                                PacketBuffer.closeAllWidgets();
                                 if(MovedStatics.anInt854 != -1) {
                                     Native.reportedName = class1.substring(i_22_ + 5).trim();
                                     HuffmanEncoding.reportAbuseInterfaceID = gameScreenInterfaceId = MovedStatics.anInt854;
@@ -1200,11 +1200,11 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortLE(SpotAnimDefinition.baseX + i);
                     }
                     if(action == 9) {
-                        PacketBuffer.method516();
+                        PacketBuffer.closeAllWidgets();
                     }
-                    if(action == 54 && MovedStatics.anInt1819 == -1) {
+                    if(action == 54 && MovedStatics.lastContinueTextWidgetId == -1) { // Click to continue
                         PacketBuffer.method517(0, i_10_);
-                        MovedStatics.anInt1819 = i_10_;
+                        MovedStatics.lastContinueTextWidgetId = i_10_;
                     }
                     if(action == 43) {
                         SceneCluster.packetBuffer.putPacket(98);
@@ -1513,7 +1513,7 @@ public class GameInterface extends CachedNode {
         if(i == 620)
             MovedStatics.reportMutePlayer = !MovedStatics.reportMutePlayer;
         if(i >= 601 && i <= 613) {
-            PacketBuffer.method516();
+            PacketBuffer.closeAllWidgets();
             if(Native.reportedName.length() > 0) {
                 SceneCluster.packetBuffer.putPacket(202);
                 SceneCluster.packetBuffer.putLongBE(TextUtils.nameToLong(Native.reportedName));
