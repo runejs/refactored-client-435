@@ -175,7 +175,7 @@ public class ClientScript extends CachedNode {
                 }
                 if (opcode == 14) {
                     int i_28_ = opcodes[scriptDataIndex++];
-                    i_16_ = VarbitDefinition.getVarbitObjectMorphIndex(i_28_);
+                    i_16_ = VarbitDefinition.getVarbitMorphIndex(i_28_);
                 }
                 if (opcode == 18) {
                     i_16_ = (Player.localPlayer.worldX >> 7) + SpotAnimDefinition.baseX;

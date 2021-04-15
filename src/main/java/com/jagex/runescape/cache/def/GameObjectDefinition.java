@@ -552,7 +552,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
                 i = GroundItemTile.varbitMasks[configId];
             }
         } else {
-            i = VarbitDefinition.getVarbitObjectMorphIndex(varbitId);
+            i = VarbitDefinition.getVarbitMorphIndex(varbitId);
 
         }
         if(i < 0 || configChangeDest.length <= i || configChangeDest[i] == -1) {

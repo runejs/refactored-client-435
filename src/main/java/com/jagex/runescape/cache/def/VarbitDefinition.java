@@ -33,11 +33,17 @@ public class VarbitDefinition extends CachedNode {
         return varbitDefinition;
     }
 
-    public static int getVarbitObjectMorphIndex(int varbitId) {
+    /**
+     * Returns the index to morph actor/object into, based on set config
+     * @param varbitId
+     * @return index to morph into
+     */
+    public static int getVarbitMorphIndex(int varbitId) {
         VarbitDefinition varbitDefinition = getDefinition(varbitId);
         int mostSignificantBit = varbitDefinition.mostSignificantBit;
         int configId = varbitDefinition.index;
         int leastSignificantBit = varbitDefinition.leastSignificantBit;
+        // TODO: Unknown
         int i_8_ = ProducingGraphicsBuffer_Sub1.anIntArray2199[mostSignificantBit - leastSignificantBit];
         return GroundItemTile.varbitMasks[configId] >> leastSignificantBit & i_8_;
     }

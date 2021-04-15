@@ -398,7 +398,7 @@ public class ClientScriptRunner extends Node {
                     }
                     if(scriptOpcode == 25) {
                         int operand = intOperands[scriptIndex];
-                        scriptIntValues[intValueIndex++] = VarbitDefinition.getVarbitObjectMorphIndex(operand);
+                        scriptIntValues[intValueIndex++] = VarbitDefinition.getVarbitMorphIndex(operand);
                         continue;
                     }
                     if(scriptOpcode == 27) {
