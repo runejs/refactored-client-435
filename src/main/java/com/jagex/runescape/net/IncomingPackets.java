@@ -464,7 +464,7 @@ public class IncomingPackets {
                     GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
                     GameInterface.tabAreaInterfaceId = i_49_;
                 }
-                MovedStatics.anInt1819 = -1;
+                MovedStatics.lastContinueTextWidgetId = -1;
                 if(ChatBox.inputType != 0) {
                     ChatBox.redrawChatbox = true;
                     ChatBox.inputType = 0;
@@ -532,7 +532,7 @@ public class IncomingPackets {
                     GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
                     GameInterface.gameScreenInterfaceId = i_55_;
                 }
-                MovedStatics.anInt1819 = -1;
+                MovedStatics.lastContinueTextWidgetId = -1;
                 if(ChatBox.inputType != 0) {
                     ChatBox.redrawChatbox = true;
                     ChatBox.inputType = 0;
@@ -563,7 +563,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == 185) { // open chatbox interface (multi)
+            if(incomingPacket == 185) { // open permanent dialogue interface
                 int chatboxInterfaceId = incomingPacketBuffer.getShortBE();
                 if(ChatBox.dialogueId != chatboxInterfaceId) {
                     GameInterface.resetInterface(ChatBox.dialogueId);
@@ -571,6 +571,7 @@ public class IncomingPackets {
                 }
                 incomingPacket = -1;
                 ChatBox.redrawChatbox = true;
+                MovedStatics.lastContinueTextWidgetId = -1;
                 return true;
             }
             if(incomingPacket == SHOW_FULLSCREEN_INTERFACE) {
@@ -602,7 +603,7 @@ public class IncomingPackets {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
                     GameInterface.fullscreenSiblingInterfaceId = siblingInterfaceId;
                 }
-                MovedStatics.anInt1819 = -1;
+                MovedStatics.lastContinueTextWidgetId = -1;
                 ChatBox.inputType = 0;
                 incomingPacket = -1;
                 return true;
@@ -633,7 +634,7 @@ public class IncomingPackets {
                     GameInterface.gameScreenInterfaceId = -1;
                 }
                 incomingPacket = -1;
-                MovedStatics.anInt1819 = -1;
+                MovedStatics.lastContinueTextWidgetId = -1;
                 if(ChatBox.inputType != 0) {
                     ChatBox.redrawChatbox = true;
                     ChatBox.inputType = 0;
@@ -669,7 +670,7 @@ public class IncomingPackets {
 
                 ChatBox.redrawChatbox = true;
                 incomingPacket = -1;
-                MovedStatics.anInt1819 = -1;
+                MovedStatics.lastContinueTextWidgetId = -1;
                 return true;
             }
             if(incomingPacket == PLAY_SONG) {
@@ -793,7 +794,7 @@ public class IncomingPackets {
                     ChatBox.redrawChatbox = true;
                     ChatBox.inputType = 0;
                 }
-                MovedStatics.anInt1819 = -1;
+                MovedStatics.lastContinueTextWidgetId = -1;
                 incomingPacket = -1;
                 GameInterface.redrawTabArea = true;
                 return true;

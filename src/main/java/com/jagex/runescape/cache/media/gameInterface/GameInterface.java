@@ -33,6 +33,8 @@ import tech.henning.fourthreefive.Configuration;
 
 import java.awt.*;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameInterface extends CachedNode {
     public static GameInterface[][] cachedInterfaces;
@@ -534,6 +536,16 @@ public class GameInterface extends CachedNode {
         return objects;
     }
 
+    public static boolean isActionWhitelisted(int action) {
+        List<Integer> whitelistedActionsDuringAnimation = new ArrayList();
+
+        // TODO add more actions that should work during a cutscene
+        whitelistedActionsDuringAnimation.add(54); // Click here to continue
+        whitelistedActionsDuringAnimation.add(1005); // Cancel
+
+        return whitelistedActionsDuringAnimation.contains(action);
+    }
+
     public static void processMenuActions(int arg0, int arg1) {
         if(arg1 >= 0) {
             int i = InteractiveObject.firstMenuOperand[arg1];
@@ -542,6 +554,11 @@ public class GameInterface extends CachedNode {
             if(action >= 2000) {
                 action -= 2000;
             }
+
+            if (Player.cutsceneActive && !GameInterface.isActionWhitelisted(action)) {
+                return;
+            }
+
             int i_12_ = Class33.selectedMenuActions[arg1];
             if(ChatBox.inputType != 0 && action != 1005) {
                 ChatBox.inputType = 0;
@@ -1157,7 +1174,7 @@ public class GameInterface extends CachedNode {
                         int i_22_ = class1.indexOf(Native.white);
                         if(i_22_ != -1) {
                             if(gameScreenInterfaceId == -1) {
-                                PacketBuffer.method516();
+                                PacketBuffer.closeAllWidgets();
                                 if(MovedStatics.anInt854 != -1) {
                                     Native.reportedName = class1.substring(i_22_ + 5).trim();
                                     HuffmanEncoding.reportAbuseInterfaceID = gameScreenInterfaceId = MovedStatics.anInt854;
@@ -1183,11 +1200,11 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortLE(SpotAnimDefinition.baseX + i);
                     }
                     if(action == 9) {
-                        PacketBuffer.method516();
+                        PacketBuffer.closeAllWidgets();
                     }
-                    if(action == 54 && MovedStatics.anInt1819 == -1) {
+                    if(action == 54 && MovedStatics.lastContinueTextWidgetId == -1) { // Click to continue
                         PacketBuffer.method517(0, i_10_);
-                        MovedStatics.anInt1819 = i_10_;
+                        MovedStatics.lastContinueTextWidgetId = i_10_;
                     }
                     if(action == 43) {
                         SceneCluster.packetBuffer.putPacket(98);
@@ -1496,7 +1513,7 @@ public class GameInterface extends CachedNode {
         if(i == 620)
             MovedStatics.reportMutePlayer = !MovedStatics.reportMutePlayer;
         if(i >= 601 && i <= 613) {
-            PacketBuffer.method516();
+            PacketBuffer.closeAllWidgets();
             if(Native.reportedName.length() > 0) {
                 SceneCluster.packetBuffer.putPacket(202);
                 SceneCluster.packetBuffer.putLongBE(TextUtils.nameToLong(Native.reportedName));

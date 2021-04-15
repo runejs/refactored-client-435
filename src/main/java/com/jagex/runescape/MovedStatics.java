@@ -103,7 +103,7 @@ public class MovedStatics {
     public static boolean aBoolean260 = false;
     public static int[][][] anIntArrayArrayArray262;
     public static int anInt1806;
-    public static int anInt1819 = -1;
+    public static int lastContinueTextWidgetId = -1;
     public static Class64 gameConnection;
     public static int[][][] tile_height = new int[4][105][105];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2105;

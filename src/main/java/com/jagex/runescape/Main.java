@@ -276,7 +276,7 @@ public class Main extends GameShell {
                                 if (itemDefinition.stackable == 1 || gameInterface.itemAmount != 1)
                                     text = text + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmount, (byte) -109);
                             }
-                            if (gameInterface.actionType == 6 && MovedStatics.anInt1819 == gameInterface.id) {
+                            if (gameInterface.actionType == 6 && MovedStatics.lastContinueTextWidgetId == gameInterface.id) {
                                 textColor = gameInterface.textColor;
                                 text = English.pleaseWait;
                             }
@@ -758,7 +758,7 @@ public class Main extends GameShell {
         MovedStatics.menuOpen = false;
         GroundItemTile.walkableWidgetId = -1;
         Native.clickToContinueString = null;
-        MovedStatics.anInt1819 = -1;
+        MovedStatics.lastContinueTextWidgetId = -1;
         Class51.anInt1205 = -1;
         MovedStatics.anInt2118 = 0;
         Player.currentTabId = 3;
@@ -988,6 +988,12 @@ public class Main extends GameShell {
                     ChatBox.redrawChatbox = true;
                 }
             }
+            if(ChatBox.dialogueId != -1) {
+                boolean bool = Renderable.handleSequences(ChatBox.dialogueId);
+                if(bool) {
+                    ChatBox.redrawChatbox = true;
+                }
+            }
             if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 3) {
                 ChatBox.redrawChatbox = true;
             }
@@ -1039,7 +1045,11 @@ public class Main extends GameShell {
             }
 
             if(GameInterface.chatboxInterfaceId != -1) {
-                boolean bool = Renderable.handleSequences(GameInterface.chatboxInterfaceId);
+                Renderable.handleSequences(GameInterface.chatboxInterfaceId);
+            }
+
+            if(ChatBox.dialogueId != -1) {
+                Renderable.handleSequences(ChatBox.dialogueId);
             }
             method353((byte) -114);
             ChatBox.renderChatbox();
