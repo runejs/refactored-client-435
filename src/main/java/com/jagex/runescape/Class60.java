@@ -243,7 +243,7 @@ public class Class60 {
                                 Native.username = Native.username.substring(0, -1 + Native.username.length());
                             if(ItemDefinition.anInt2854 == 84 || ItemDefinition.anInt2854 == 80)
                                 MovedStatics.loginScreenFocus = 1;
-                            if(bool && Native.username.length() < 12)
+                            if(bool && Native.username.length() < 18)
                                 Native.username = Native.username.addChar(Class59.anInt1388);
                         } else if(MovedStatics.loginScreenFocus == 1) {
                             if(ItemDefinition.anInt2854 == 85 && Native.password.length() > 0)
