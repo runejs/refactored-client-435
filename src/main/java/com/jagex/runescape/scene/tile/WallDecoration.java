@@ -361,9 +361,22 @@ public class WallDecoration {
                     fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineThree, 180, y1, 16776960, true);
                     y1 += 15;
                     y1 += 10;
-                    fontBold.drawShadowedString(English.username + Native.username + (MovedStatics.pulseCycle % 40 < 20 & MovedStatics.loginScreenFocus == 0 ? Native.justAnotherYellowBar : ""), 90, y1, true, 16777215);
+                    int width = fontBold.getStringWidth(English.username + Native.username + Native.justAnotherYellowBar);
+                    int offset = 0;
+                    while (width > 250) {
+                        offset++;
+                        width = fontBold.getStringWidth(English.username + Native.username.substring(offset) + Native.justAnotherYellowBar);
+                    }
+                    fontBold.drawShadowedString(English.username + Native.username.substring(offset) + (MovedStatics.pulseCycle % 40 < 20 & MovedStatics.loginScreenFocus == 0 ? Native.justAnotherYellowBar : ""), 90, y1, true, 16777215);
                     y1 += 15;
-                    fontBold.drawShadowedString(English.password + Native.password.method61() + (MovedStatics.pulseCycle % 40 < 20 & MovedStatics.loginScreenFocus == 1 ? Native.justAnotherYellowBar : ""), 92, y1, true, 16777215);
+                    String starredPassword = Native.password.method61().toString();
+                    width = fontBold.getStringWidth(English.password + starredPassword + Native.justAnotherYellowBar);
+                    offset = 0;
+                    while (width > 250) {
+                        offset++;
+                        width = fontBold.getStringWidth(English.password + starredPassword.substring(offset) + Native.justAnotherYellowBar);
+                    }
+                    fontBold.drawShadowedString(English.password + starredPassword.substring(offset) + (MovedStatics.pulseCycle % 40 < 20 & MovedStatics.loginScreenFocus == 1 ? Native.justAnotherYellowBar : ""), 92, y1, true, 16777215);
                     Class59.imgLoginScreenButton.drawImage(-73 + drawX, y2 + -20);
                     y1 += 15;
                     fontBold.drawShadowedStringCenter(English.login, drawX, y2 + 5, 16777215, true);
