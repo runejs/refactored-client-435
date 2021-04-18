@@ -536,16 +536,6 @@ public class GameInterface extends CachedNode {
         return objects;
     }
 
-    public static boolean isActionWhitelisted(int action) {
-        List<Integer> whitelistedActionsDuringAnimation = new ArrayList();
-
-        // TODO add more actions that should work during a cutscene
-        whitelistedActionsDuringAnimation.add(54); // Click here to continue
-        whitelistedActionsDuringAnimation.add(1005); // Cancel
-
-        return whitelistedActionsDuringAnimation.contains(action);
-    }
-
     public static void processMenuActions(int arg0, int arg1) {
         if(arg1 >= 0) {
             int i = InteractiveObject.firstMenuOperand[arg1];
@@ -553,10 +543,6 @@ public class GameInterface extends CachedNode {
             int action = MovedStatics.menuActionTypes[arg1];
             if(action >= 2000) {
                 action -= 2000;
-            }
-
-            if (Player.cutsceneActive && !GameInterface.isActionWhitelisted(action)) {
-                return;
             }
 
             int i_12_ = Class33.selectedMenuActions[arg1];
