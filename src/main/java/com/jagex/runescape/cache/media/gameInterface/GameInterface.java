@@ -33,8 +33,6 @@ import tech.henning.fourthreefive.Configuration;
 
 import java.awt.*;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameInterface extends CachedNode {
     public static GameInterface[][] cachedInterfaces;
