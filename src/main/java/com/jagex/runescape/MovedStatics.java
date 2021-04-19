@@ -736,11 +736,11 @@ public class MovedStatics {
         int i = varbitDefinition.leastSignificantBit;
         int i_0_ = varbitDefinition.index;
         int i_1_ = varbitDefinition.mostSignificantBit;
-        int i_3_ = ProducingGraphicsBuffer_Sub1.anIntArray2199[i_1_ + -i];
+        int i_3_ = VarbitDefinition.varbitMasks[i_1_ + -i];
         if (arg0 < 0 || i_3_ < arg0)
             arg0 = 0;
         i_3_ <<= i;
-        GroundItemTile.varbitMasks[i_0_] = UnderlayDefinition.bitWiseOR(HuffmanEncoding.method1021(GroundItemTile.varbitMasks[i_0_], i_3_ ^ 0xffffffff), HuffmanEncoding.method1021(i_3_, arg0 << i));
+        GroundItemTile.varPlayers[i_0_] = UnderlayDefinition.bitWiseOR(HuffmanEncoding.method1021(GroundItemTile.varPlayers[i_0_], i_3_ ^ 0xffffffff), HuffmanEncoding.method1021(i_3_, arg0 << i));
     }
 
     public static int method525(byte[] arg0, int arg1, byte arg2) {

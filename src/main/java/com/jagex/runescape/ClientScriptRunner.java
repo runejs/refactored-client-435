@@ -339,12 +339,12 @@ public class ClientScriptRunner extends Node {
                     }
                     if(scriptOpcode == 1) {
                         int operand = intOperands[scriptIndex];
-                        scriptIntValues[intValueIndex++] = GroundItemTile.varbitMasks[operand];
+                        scriptIntValues[intValueIndex++] = GroundItemTile.varPlayers[operand];
                         continue;
                     }
                     if(scriptOpcode == 2) {
                         int operand = intOperands[scriptIndex];
-                        GroundItemTile.varbitMasks[operand] = scriptIntValues[--intValueIndex];
+                        GroundItemTile.varPlayers[operand] = scriptIntValues[--intValueIndex];
                         continue;
                     }
                     if(scriptOpcode == 3) {
@@ -398,7 +398,7 @@ public class ClientScriptRunner extends Node {
                     }
                     if(scriptOpcode == 25) {
                         int operand = intOperands[scriptIndex];
-                        scriptIntValues[intValueIndex++] = VarbitDefinition.getVarbitMorphIndex(operand);
+                        scriptIntValues[intValueIndex++] = VarbitDefinition.getVarbitValue(operand);
                         continue;
                     }
                     if(scriptOpcode == 27) {

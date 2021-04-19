@@ -676,8 +676,8 @@ public class GameInterface extends CachedNode {
                 GameInterface gameInterface = getInterface(i_10_);
                 if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
                     int i_16_ = gameInterface.clientScripts[0][1];
-                    if(gameInterface.alternateRhs[0] != GroundItemTile.varbitMasks[i_16_]) {
-                        GroundItemTile.varbitMasks[i_16_] = gameInterface.alternateRhs[0];
+                    if(gameInterface.alternateRhs[0] != GroundItemTile.varPlayers[i_16_]) {
+                        GroundItemTile.varPlayers[i_16_] = gameInterface.alternateRhs[0];
                         Class22.method309(-1, i_16_);
                         redrawTabArea = true;
                     }
@@ -789,7 +789,7 @@ public class GameInterface extends CachedNode {
                     GameInterface gameInterface = getInterface(i_10_);
                     if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
                         int i_17_ = gameInterface.clientScripts[0][1];
-                        GroundItemTile.varbitMasks[i_17_] = -GroundItemTile.varbitMasks[i_17_] + 1;
+                        GroundItemTile.varPlayers[i_17_] = -GroundItemTile.varPlayers[i_17_] + 1;
                         Class22.method309(-1, i_17_);
                         redrawTabArea = true;
                     }

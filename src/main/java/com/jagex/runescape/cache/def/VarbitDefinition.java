@@ -16,6 +16,15 @@ public class VarbitDefinition extends CachedNode {
     public static int[] anIntArray2361 = new int[]{0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, 2147483647, -1};
     public static CacheArchive aCacheArchive_2364;
     public static int destinationX = 0;
+    public static int[] varbitMasks = new int[32];
+
+    static {
+        int i = 2;
+        for(int i_7_ = 0; i_7_ < 32; i_7_++) {
+            varbitMasks[i_7_] = -1 + i;
+            i += i;
+        }
+    }
 
     public int index;
     public int leastSignificantBit;
@@ -34,18 +43,17 @@ public class VarbitDefinition extends CachedNode {
     }
 
     /**
-     * Returns the index to morph actor/object into, based on set config
-     * @param varbitId
-     * @return index to morph into
+     * Returns the varbit value from a varPlayer, respecting the varbit MSB and LSB
+     * @param varbitId The varbit ID to fetch the value for
+     * @return the varbit value as currently stored in the client
      */
-    public static int getVarbitMorphIndex(int varbitId) {
+    public static int getVarbitValue(int varbitId) {
         VarbitDefinition varbitDefinition = getDefinition(varbitId);
+        int varPlayerIndex = varbitDefinition.index;
         int mostSignificantBit = varbitDefinition.mostSignificantBit;
-        int configId = varbitDefinition.index;
         int leastSignificantBit = varbitDefinition.leastSignificantBit;
-        // TODO: Unknown
-        int i_8_ = ProducingGraphicsBuffer_Sub1.anIntArray2199[mostSignificantBit - leastSignificantBit];
-        return GroundItemTile.varbitMasks[configId] >> leastSignificantBit & i_8_;
+        int mask = varbitMasks[mostSignificantBit - leastSignificantBit];
+        return GroundItemTile.varPlayers[varPlayerIndex] >> leastSignificantBit & mask;
     }
 
     public void readValues(Buffer buffer) {
