@@ -142,7 +142,7 @@ public abstract class Class22 {
                         ((Class35) Rasterizer3D.anInterface3_2939).method424(0.6);
                     }
                     GameObject.clearImageCache();
-                    VarPlayerConfig.clearScreen = true;
+                    MovedStatics.clearScreen = true;
                 }
                 if(varPlayerType == 3) {
                     int i_22_ = 0;

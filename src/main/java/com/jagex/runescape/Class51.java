@@ -35,8 +35,8 @@ public class Class51 {
 
 
     public static void method940(int arg0, String arg1, boolean arg2, String arg3) {
-        if(VarPlayerConfig.clearScreen) {
-            VarPlayerConfig.clearScreen = false;
+        if(MovedStatics.clearScreen) {
+            MovedStatics.clearScreen = false;
             ItemDefinition.drawWelcomeScreenGraphics();
             LinkedList.drawChatBoxGraphics();
             Class55.drawTabGraphics();

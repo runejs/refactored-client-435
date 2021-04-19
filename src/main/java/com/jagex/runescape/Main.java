@@ -117,7 +117,7 @@ public class Main extends GameShell {
                     GameInterface gameInterface_3_ = FramemapDefinition.method878(gameInterface);
                     int[] is = Class13.method247(gameInterface_3_, (byte) 117);
                     int[] is_4_ = Class13.method247(gameInterface, (byte) 97);
-                    int i_5_ = Landscape.mouseY + -VarPlayerConfig.anInt2621 + is_4_[1] - is[1];
+                    int i_5_ = Landscape.mouseY + -MovedStatics.anInt2621 + is_4_[1] - is[1];
                     if (i_5_ < 0)
                         i_5_ = 0;
                     if (i_5_ + gameInterface.originalHeight > gameInterface_3_.originalHeight)
@@ -771,7 +771,7 @@ public class Main extends GameShell {
     }
 
     public static void method353(byte arg0) {
-        VarPlayerConfig.anInt2628++;
+        MovedStatics.anInt2628++;
         Class40_Sub5_Sub17_Sub6.method833(0, true);
         ItemDefinition.method749(true);
         Class40_Sub5_Sub17_Sub6.method833(0, false);
@@ -915,8 +915,8 @@ public class Main extends GameShell {
     }
 
     public static void drawGameScreen() {
-        if(VarPlayerConfig.clearScreen) {
-            VarPlayerConfig.clearScreen = false;
+        if(MovedStatics.clearScreen) {
+            MovedStatics.clearScreen = false;
             ItemDefinition.drawWelcomeScreenGraphics();
             GameInterface.drawTabIcons = true;
             ChatBox.redrawChatbox = true;

@@ -1337,7 +1337,7 @@ public class GameInterface extends CachedNode {
                 if(gameInterface_24_ != null) {
                     int[] is = Class13.method247(gameInterface_24_, (byte) 97);
                     int[] is_25_ = Class13.method247(gameInterface, (byte) 110);
-                    int i = is_25_[1] - is[1] + -VarPlayerConfig.anInt2621 + Landscape.mouseY;
+                    int i = is_25_[1] - is[1] + -MovedStatics.anInt2621 + Landscape.mouseY;
                     int i_26_ = -is[0] + is_25_[0] + Class13.mouseX + -MovedStatics.anInt1996;
                     if(i < 0) {
                         i = 0;

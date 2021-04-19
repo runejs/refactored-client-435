@@ -126,6 +126,10 @@ public class MovedStatics {
     public static long aLong853;
     public static int anInt854 = -1;
     public static IndexedImage minimapBackgroundImage;
+    public static int anInt2621 = 0;
+    public static volatile int eventClickY = 0;
+    public static int anInt2628 = 0;
+    public static volatile boolean clearScreen = true;
 
     public static void method440(byte arg0) {
         if (ISAAC.aBoolean512) {

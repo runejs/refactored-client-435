@@ -98,7 +98,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                     if (gameInterface.anInt2738 != -1 && bool_9_ && Wall.aGameInterface_353 == null) {
                         MovedStatics.anInt1996 = Class13.mouseX;
                         Wall.aGameInterface_353 = gameInterface;
-                        VarPlayerConfig.anInt2621 = Landscape.mouseY;
+                        MovedStatics.anInt2621 = Landscape.mouseY;
                     }
                     if (MouseHandler.clickType == 1 && i_6_ <= Class57.clickX && RSString.clickY >= i_4_ && Class57.clickX < i_8_ && RSString.clickY < i_7_)
                         bool_10_ = true;
@@ -306,7 +306,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
 
     public synchronized void paint(Graphics arg0) {
         if (this == MovedStatics.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255) {
-            VarPlayerConfig.clearScreen = true;
+            MovedStatics.clearScreen = true;
             if (Signlink.aString739 == null || !Signlink.aString739.startsWith("1.5") || -MovedStatics.aLong174 + System.currentTimeMillis() <= 1000L)
                 return;
             Rectangle rectangle = arg0.getClipBounds();
@@ -326,7 +326,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
 
     public void focusGained(FocusEvent arg0) {
         GenericTile.aBoolean1215 = true;
-        VarPlayerConfig.clearScreen = true;
+        MovedStatics.clearScreen = true;
     }
 
     public URL getDocumentBase() {
@@ -376,7 +376,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             PlayerAppearance.anInt681 = PlayerAppearance.anInt681 + 1 & 0x1f;
             if (MovedStatics.anInt938++ > 50) {
                 MovedStatics.anInt938 -= 50;
-                VarPlayerConfig.clearScreen = true;
+                MovedStatics.clearScreen = true;
                 MouseHandler.gameCanvas.setSize(Class12.width, IdentityKit.height);
                 MouseHandler.gameCanvas.setVisible(true);
                 MouseHandler.gameCanvas.setBackground(Color.BLACK);
@@ -490,7 +490,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         if (arg0 < 85)
             run();
         MouseHandler.gameCanvas.requestFocus();
-        VarPlayerConfig.clearScreen = true;
+        MovedStatics.clearScreen = true;
         MovedStatics.aBoolean1575 = false;
         MovedStatics.aLong174 = System.currentTimeMillis();
     }

@@ -102,8 +102,8 @@ public class GameObject extends Renderable {
                 Class17.helveticaBold = new Font("Helvetica", Font.BOLD, 13);
                 Class8.fontMetrics = MouseHandler.gameCanvas.getFontMetrics(Class17.helveticaBold);
             }
-            if(VarPlayerConfig.clearScreen) {
-                VarPlayerConfig.clearScreen = false;
+            if(MovedStatics.clearScreen) {
+                MovedStatics.clearScreen = false;
                 graphics.setColor(Color.black);
                 graphics.fillRect(0, 0, Class12.width, IdentityKit.height);
             }

@@ -89,9 +89,9 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                         Npc.currentScene.method112(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.anInt3258, player.anInt3281, player.anInt3262, player.anInt3289);
                     } else {
                         if((0x7f & player.worldX) == 64 && (player.worldY & 0x7f) == 64) {
-                            if(VarPlayerConfig.anInt2628 == MovedStatics.anIntArrayArray1435[i_2_][i_3_])
+                            if(MovedStatics.anInt2628 == MovedStatics.anIntArrayArray1435[i_2_][i_3_])
                                 continue;
-                            MovedStatics.anIntArrayArray1435[i_2_][i_3_] = VarPlayerConfig.anInt2628;
+                            MovedStatics.anIntArrayArray1435[i_2_][i_3_] = MovedStatics.anInt2628;
                         }
                         player.anInt3276 = Class37.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
                         Npc.currentScene.method134(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.aBoolean3105);

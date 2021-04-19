@@ -165,11 +165,11 @@ public class Class33 {
                 if(PlayerAppearance.anIntArray712[i] < 6)
                     i_8_ = MovedStatics.anIntArray2106[PlayerAppearance.anIntArray712[i]];
                 if(PlayerAppearance.anIntArray712[i] == 6)
-                    i_8_ = VarPlayerConfig.anInt2628 % 20 >= 10 ? 16776960 : 16711680;
+                    i_8_ = MovedStatics.anInt2628 % 20 >= 10 ? 16776960 : 16711680;
                 if(PlayerAppearance.anIntArray712[i] == 7)
-                    i_8_ = VarPlayerConfig.anInt2628 % 20 < 10 ? 255 : 65535;
+                    i_8_ = MovedStatics.anInt2628 % 20 < 10 ? 255 : 65535;
                 if(PlayerAppearance.anIntArray712[i] == 8)
-                    i_8_ = VarPlayerConfig.anInt2628 % 20 >= 10 ? 8454016 : 45056;
+                    i_8_ = MovedStatics.anInt2628 % 20 >= 10 ? 8454016 : 45056;
                 if(PlayerAppearance.anIntArray712[i] == 9) {
                     int i_9_ = 150 - PlayerAppearance.anIntArray684[i];
                     if(i_9_ >= 50) {
@@ -206,16 +206,16 @@ public class Class33 {
                     TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048, i_8_);
                 }
                 if(PlayerAppearance.anIntArray695[i] == 1) {
-                    TypeFace.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, VarPlayerConfig.anInt2628);
-                    TypeFace.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, VarPlayerConfig.anInt2628);
+                    TypeFace.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, MovedStatics.anInt2628);
+                    TypeFace.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, MovedStatics.anInt2628);
                 }
                 if(PlayerAppearance.anIntArray695[i] == 2) {
-                    TypeFace.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, 1 + Class44.anInt1048, 0, VarPlayerConfig.anInt2628);
-                    TypeFace.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, VarPlayerConfig.anInt2628);
+                    TypeFace.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, 1 + Class44.anInt1048, 0, MovedStatics.anInt2628);
+                    TypeFace.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, MovedStatics.anInt2628);
                 }
                 if(PlayerAppearance.anIntArray695[i] == 3) {
-                    TypeFace.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, VarPlayerConfig.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
-                    TypeFace.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, VarPlayerConfig.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
+                    TypeFace.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
+                    TypeFace.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
                 }
                 if(PlayerAppearance.anIntArray695[i] == 4) {
                     int i_12_ = TypeFace.fontBold.getStringWidth(class1);

@@ -208,7 +208,7 @@ public class Item extends Renderable {
             else
                 Class33.method405(16969, 10);
             GameShell.method19(false, 24041);
-            VarPlayerConfig.clearScreen = true;
+            MovedStatics.clearScreen = true;
             ISAAC.aBoolean512 = true;
         }
     }

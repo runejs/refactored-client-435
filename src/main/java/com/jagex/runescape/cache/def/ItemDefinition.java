@@ -179,10 +179,10 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
                 int i_17_ = npc.worldY >> 7;
                 if(i_16_ >= 0 && i_16_ < 104 && i_17_ >= 0 && i_17_ < 104) {
                     if(npc.anInt3096 == 1 && (npc.worldX & 0x7f) == 64 && (npc.worldY & 0x7f) == 64) {
-                        if(MovedStatics.anIntArrayArray1435[i_16_][i_17_] == VarPlayerConfig.anInt2628) {
+                        if(MovedStatics.anIntArrayArray1435[i_16_][i_17_] == MovedStatics.anInt2628) {
                             continue;
                         }
-                        MovedStatics.anIntArrayArray1435[i_16_][i_17_] = VarPlayerConfig.anInt2628;
+                        MovedStatics.anIntArrayArray1435[i_16_][i_17_] = MovedStatics.anInt2628;
                     }
                     if(!npc.actorDefinition.isClickable) {
                         i_15_ += -2147483648;

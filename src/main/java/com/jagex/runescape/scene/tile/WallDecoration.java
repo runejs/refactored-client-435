@@ -409,9 +409,9 @@ public class WallDecoration {
                     method949();
                 Class8.flameLeftBackground.drawGraphics(0, 0, graphics);
                 GameObject.flameRightBackground.drawGraphics(637, 0, graphics);
-                if (!VarPlayerConfig.clearScreen)
+                if (!MovedStatics.clearScreen)
                     break;
-                VarPlayerConfig.clearScreen = false;
+                MovedStatics.clearScreen = false;
                 Class39.aProducingGraphicsBuffer_907.drawGraphics(128, 0, graphics);
                 Class51.aProducingGraphicsBuffer_1206.drawGraphics(202, 371, graphics);
                 Class17.aProducingGraphicsBuffer_463.drawGraphics(0, 265, graphics);
