@@ -322,7 +322,7 @@ public class Class48 {
             MovedStatics.gameConnection.method1009();
             MovedStatics.gameConnection = null;
         }
-        RSCanvas.method46(0);
+        RSCanvas.clearCaches();
         Npc.currentScene.initToNull();
         int i = 0;
         if(arg0 != -7225)

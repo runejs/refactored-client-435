@@ -37,7 +37,7 @@ public class RSCanvas extends Canvas {
         RSString.mapbackProducingGraphicsBuffer.prepareRasterizer();
     }
 
-    public static void method46(int arg0) {
+    public static void clearCaches() {
         MovedStatics.method233(true);
         MovedStatics.method189(false);
         GameInterface.method640();
@@ -45,25 +45,25 @@ public class RSCanvas extends Canvas {
         Class40_Sub5_Sub6.method586(64);
         Class8.method211();
         MovedStatics.method188();
-        Class22_Sub2.method316(-11965);
-        LinkedList.method907(-99);
-        MovedStatics.method167(1023);
-        Class51.method941();
-        Actor.method783();
-        ((Class35) Rasterizer3D.anInterface3_2939).method422(arg0);
+        Class22_Sub2.method316();
+        LinkedList.clearVarbitDefinitionCache();
+        MovedStatics.clearVarPlayerConfigCache();
+        Class51.clearModelCache();
+        Actor.clearCaches();
+        ((Class35) Rasterizer3D.anInterface3_2939).method422();
         ClientScript.clientScriptCache.clear();
-        CacheArchive.skeletonCacheArchive.method191(1120);
-        CacheArchive.skinDefinitionCacheArchive.method191(1120);
-        CacheArchive.gameInterfaceCacheArchive.method191(arg0 + 1120);
-        CacheArchive.soundEffectCacheArchive.method191(1120);
-        CacheArchive.gameWorldMapCacheArchive.method191(1120);
-        CacheArchive.musicCacheArchive.method191(1120);
-        CacheArchive.modelCacheArchive.method191(1120);
-        CacheArchive.gameImageCacheArchive.method191(arg0 ^ 0x460);
-        CacheArchive.gameTextureCacheArchive.method191(1120);
-        CacheArchive.huffmanCacheArchive.method191(arg0 + 1120);
-        CacheArchive.jingleCacheArchive.method191(1120);
-        CacheArchive.clientScriptCacheArchive.method191(1120);
+        CacheArchive.skeletonCacheArchive.clearCache();
+        CacheArchive.skinDefinitionCacheArchive.clearCache();
+        CacheArchive.gameInterfaceCacheArchive.clearCache();
+        CacheArchive.soundEffectCacheArchive.clearCache();
+        CacheArchive.gameWorldMapCacheArchive.clearCache();
+        CacheArchive.musicCacheArchive.clearCache();
+        CacheArchive.modelCacheArchive.clearCache();
+        CacheArchive.gameImageCacheArchive.clearCache();
+        CacheArchive.gameTextureCacheArchive.clearCache();
+        CacheArchive.huffmanCacheArchive.clearCache();
+        CacheArchive.jingleCacheArchive.clearCache();
+        CacheArchive.clientScriptCacheArchive.clearCache();
     }
 
     public void paint(Graphics arg0) {

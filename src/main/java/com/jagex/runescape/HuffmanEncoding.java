@@ -109,8 +109,8 @@ public class HuffmanEncoding {
 
     public static void processNpcMenuOptions(ActorDefinition actorDefinition, int x, int y, int index) {
         if (ActorDefinition.menuActionRow < 400) {
-            if (actorDefinition.childrenIds != null) {
-                actorDefinition = actorDefinition.getChildDefinition(-1);
+            if (actorDefinition.childIds != null) {
+                actorDefinition = actorDefinition.getChildDefinition();
             }
             if (actorDefinition != null && actorDefinition.isClickable) {
                 String class1 = actorDefinition.name;

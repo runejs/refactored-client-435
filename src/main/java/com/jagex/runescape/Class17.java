@@ -115,16 +115,16 @@ public class Class17 {
         }
     }
 
-    public static void method276(int arg0) {
-        for(int i = arg0; Player.localPlayerCount > i; i++) {
-            int i_0_;
-            if(i == -1)
-                i_0_ = 2047;
+    public static void animatePlayers(int playerIndex) {
+        for(int currentPlayerIndex = playerIndex; Player.localPlayerCount > currentPlayerIndex; currentPlayerIndex++) {
+            int actualIndex;
+            if(currentPlayerIndex == -1)
+                actualIndex = 2047;
             else
-                i_0_ = Player.trackedPlayerIndices[i];
-            Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_0_];
-            if(class40_sub5_sub17_sub4_sub1 != null)
-                Class13.method241(class40_sub5_sub17_sub4_sub1, (byte) 107);
+                actualIndex = Player.trackedPlayerIndices[currentPlayerIndex];
+            Player player = Player.trackedPlayers[actualIndex];
+            if(player != null)
+                Class13.handleActorAnimation(player);
         }
     }
 

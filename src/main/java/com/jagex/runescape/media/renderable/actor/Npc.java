@@ -33,21 +33,18 @@ public class Npc extends Actor {
     public static int[] anIntArray3312;
     public ActorDefinition actorDefinition;
 
-    public static Class40_Sub5_Sub11 method795(byte arg0, int arg1) {
-        Class40_Sub5_Sub11 class40_sub5_sub11 = (Class40_Sub5_Sub11) Class13.aClass9_406.get((long) arg1);
-        if(arg0 >= -66)
-            Native.aClass1_3295 = null;
-        if(class40_sub5_sub11 != null)
-            return class40_sub5_sub11;
-        if(Class64.aCacheArchive_1521 == null) {
-            System.out.println("ISA NULL");
+    public static VarPlayerConfig getVarPlayerConfig(int varPlayerIndex) {
+        VarPlayerConfig varPlayerConfig = (VarPlayerConfig) Class13.varPlayerConfigCache.get(varPlayerIndex);
+        if (varPlayerConfig != null) {
+            return varPlayerConfig;
         }
-        byte[] is = Class64.aCacheArchive_1521.getFile(16, arg1);
-        class40_sub5_sub11 = new Class40_Sub5_Sub11();
-        if(is != null)
-            class40_sub5_sub11.method634(new Buffer(is));
-        Class13.aClass9_406.put((long) arg1, class40_sub5_sub11);
-        return class40_sub5_sub11;
+        byte[] cacheData = Class64.gameDefinitionsCacheArchive.getFile(16, varPlayerIndex);
+        varPlayerConfig = new VarPlayerConfig();
+        if(cacheData != null) {
+            varPlayerConfig.decodeVarPlayerConfig(new Buffer(cacheData));
+        }
+        Class13.varPlayerConfigCache.put(varPlayerIndex, varPlayerConfig);
+        return varPlayerConfig;
     }
 
     public static void updateGame() {
@@ -192,8 +189,8 @@ public class Npc extends Actor {
                     if(Class35.anInt1728 > 750)
                         Class59.dropClient();
                     else {
-                        Class17.method276(-1);
-                        Class8.method209();
+                        Class17.animatePlayers(-1);
+                        Class8.animateNpcs();
                         Class22_Sub1.method313();
                         if(LinkedList.crossType != 0) {
                             OverlayDefinition.crossIndex += 20;
@@ -643,10 +640,7 @@ public class Npc extends Actor {
         return model;
     }
 
-    public boolean isVisible(int arg0) {
-        if(actorDefinition == null)
-            return false;
-        return arg0 == 1;
-
+    public boolean isInitialized() {
+        return actorDefinition != null;
     }
 }

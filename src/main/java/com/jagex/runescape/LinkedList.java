@@ -47,10 +47,8 @@ public class LinkedList {
         return Native.aClass1_1123 + class1;
     }
 
-    public static void method907(int arg0) {
+    public static void clearVarbitDefinitionCache() {
         Class57.varbitDefinitionCache.clear();
-        if(arg0 >= -36)
-            aLinkedList_1064 = null;
     }
 
     public static void drawChatBoxGraphics() {

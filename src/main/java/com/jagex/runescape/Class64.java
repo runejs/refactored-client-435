@@ -29,7 +29,7 @@ import java.text.MessageFormat;
 
 public class Class64 implements Runnable {
     public static int anInt1511 = -1;
-    public static CacheArchive aCacheArchive_1521;
+    public static CacheArchive gameDefinitionsCacheArchive;
     public static int lowestPlane = 99;
 
     public InputStream anInputStream1503;
@@ -76,7 +76,7 @@ public class Class64 implements Runnable {
                 lasthash = hash;
                 if (type == 2 && Npc.currentScene.getArrangement(Player.worldLevel, x, y, hash) >= 0) {
                     GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(index);
-                    if (gameObjectDefinition.configChangeDest != null)
+                    if (gameObjectDefinition.childIds != null)
                         gameObjectDefinition = gameObjectDefinition.getChildDefinition();
                     if (gameObjectDefinition == null)
                         continue;
@@ -211,7 +211,7 @@ public class Class64 implements Runnable {
             Landscape.mouseY = MovedStatics.eventMouseY;
             MouseHandler.clickType = Actor.eventMouseButtonPressed;
             Class57.clickX = Class55.eventClickX;
-            RSString.clickY = Class40_Sub5_Sub11.eventClickY;
+            RSString.clickY = VarPlayerConfig.eventClickY;
             GameObjectDefinition.aLong2561 = OverlayDefinition.lastClick;
             Actor.eventMouseButtonPressed = 0;
         }

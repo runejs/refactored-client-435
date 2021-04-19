@@ -13,7 +13,7 @@ import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
 
 public class Class59 {
-    public static int anInt1383;
+    public static int varPlayerConfigSize;
     public static int anInt1386;
     public static IndexedImage imgLoginScreenButton;
     public static int anInt1388;

@@ -33,8 +33,6 @@ import tech.henning.fourthreefive.Configuration;
 
 import java.awt.*;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameInterface extends CachedNode {
     public static GameInterface[][] cachedInterfaces;
@@ -678,7 +676,7 @@ public class GameInterface extends CachedNode {
                     int i_16_ = gameInterface.clientScripts[0][1];
                     if(gameInterface.alternateRhs[0] != GroundItemTile.varPlayers[i_16_]) {
                         GroundItemTile.varPlayers[i_16_] = gameInterface.alternateRhs[0];
-                        Class22.method309(-1, i_16_);
+                        Class22.method309(i_16_);
                         redrawTabArea = true;
                     }
                 }
@@ -731,8 +729,8 @@ public class GameInterface extends CachedNode {
                 Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
                 if(class40_sub5_sub17_sub4_sub2 != null) {
                     ActorDefinition class40_sub5_sub5 = class40_sub5_sub17_sub4_sub2.actorDefinition;
-                    if(class40_sub5_sub5.childrenIds != null) {
-                        class40_sub5_sub5 = class40_sub5_sub5.getChildDefinition(-1);
+                    if(class40_sub5_sub5.childIds != null) {
+                        class40_sub5_sub5 = class40_sub5_sub5.getChildDefinition();
                     }
                     if(class40_sub5_sub5 != null) {
                         SceneCluster.packetBuffer.putPacket(247);
@@ -790,7 +788,7 @@ public class GameInterface extends CachedNode {
                     if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
                         int i_17_ = gameInterface.clientScripts[0][1];
                         GroundItemTile.varPlayers[i_17_] = -GroundItemTile.varPlayers[i_17_] + 1;
-                        Class22.method309(-1, i_17_);
+                        Class22.method309(i_17_);
                         redrawTabArea = true;
                     }
                 }
@@ -1339,7 +1337,7 @@ public class GameInterface extends CachedNode {
                 if(gameInterface_24_ != null) {
                     int[] is = Class13.method247(gameInterface_24_, (byte) 97);
                     int[] is_25_ = Class13.method247(gameInterface, (byte) 110);
-                    int i = is_25_[1] - is[1] + -Class40_Sub5_Sub11.anInt2621 + Landscape.mouseY;
+                    int i = is_25_[1] - is[1] + -VarPlayerConfig.anInt2621 + Landscape.mouseY;
                     int i_26_ = -is[0] + is_25_[0] + Class13.mouseX + -MovedStatics.anInt1996;
                     if(i < 0) {
                         i = 0;
@@ -1879,7 +1877,7 @@ public class GameInterface extends CachedNode {
             return null;
         }
 
-        Model model = (Model) WallDecoration.aClass9_1264.get((long) ((modelType.ordinal() << 16) + modelId));
+        Model model = (Model) WallDecoration.modelCache.get((long) ((modelType.ordinal() << 16) + modelId));
         if(model == null) {
             if(modelType == InterfaceModelType.MODEL) {
                 model = Model.getModel(CacheArchive.modelCacheArchive, modelId);
@@ -1926,7 +1924,7 @@ public class GameInterface extends CachedNode {
                     e.printStackTrace();
                 }
             }
-            WallDecoration.aClass9_1264.put((long) ((modelType.ordinal() << 16) + modelId), model);
+            WallDecoration.modelCache.put((long) ((modelType.ordinal() << 16) + modelId), model);
         }
         if(animationSequence != null) {
             model = animationSequence.method598(animationFrame, model, true);

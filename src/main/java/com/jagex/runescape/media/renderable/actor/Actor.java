@@ -263,9 +263,9 @@ public abstract class Actor extends Renderable {
         }
     }
 
-    public static void method783() {
+    public static void clearCaches() {
         ImageRGB.imageRgbCache.clear();
-        WallDecoration.aClass9_1264.clear();
+        WallDecoration.modelCache.clear();
         TypeFace.typeFaceCache.clear();
     }
 
@@ -419,7 +419,7 @@ public abstract class Actor extends Renderable {
         aBooleanArray3072[0] = isRunning;
     }
 
-    public boolean isVisible(int arg0) {
+    public boolean isInitialized() {
         return false;
     }
 

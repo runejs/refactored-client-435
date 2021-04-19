@@ -57,7 +57,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     public boolean walkable;
     public boolean adjustToTerrain;
     public int supportsItems;
-    public int[] configChangeDest;
+    public int[] childIds;
     public int configId;
     public int mapSceneID;
     public int id;
@@ -220,12 +220,12 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     }
 
     public boolean method601() {
-        if(configChangeDest == null) {
+        if(childIds == null) {
             return ambientSoundId != -1 || anIntArray2523 != null;
         }
-        for(int i = 0; i < configChangeDest.length; i++) {
-            if(configChangeDest[i] != -1) {
-                GameObjectDefinition gameObjectDefinition = getDefinition(configChangeDest[i]);
+        for(int i = 0; i < childIds.length; i++) {
+            if(childIds[i] != -1) {
+                GameObjectDefinition gameObjectDefinition = getDefinition(childIds[i]);
                 if(gameObjectDefinition.ambientSoundId != -1 || gameObjectDefinition.anIntArray2523 != null) {
                     return true;
                 }
@@ -355,16 +355,16 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         return finalModel;
     }
 
-    public Model createAnimatedObjectModel(int vertexHeight, int vertexHeightRight, int arg3, int arg4, int arg5, AnimationSequence animationSequence, int vertexHeightTop, int vertexHeightTopRight) {
+    public Model createAnimatedObjectModel(int vertexHeight, int vertexHeightRight, int arg3, int objectType, int orientation, AnimationSequence animationSequence, int vertexHeightTop, int vertexHeightTopRight) {
         long l;
         if(objectTypes == null) {
-            l = arg5 + (id << 10);
+            l = orientation + (id << 10);
         } else {
-            l = arg5 + (id << 10) + (arg4 << 3);
+            l = orientation + (id << 10) + (objectType << 3);
         }
         Model model = (Model) animatedObjectModelCache.get(l);
         if(model == null) {
-            model = createObjectModel(true, true, arg5, arg4);
+            model = createObjectModel(true, true, orientation, objectType);
             if(model == null) {
                 return null;
             }
@@ -376,7 +376,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         if(animationSequence == null) {
             model = model.method817(true);
         } else {
-            model = animationSequence.method593(arg3, false, model, arg5);
+            model = animationSequence.method593(arg3, false, model, orientation);
         }
         if(adjustToTerrain) {
             int i = (vertexHeightRight + vertexHeight - (-vertexHeightTopRight + -vertexHeightTop)) / 4;
@@ -501,11 +501,11 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
                 configId = -1;
             }
             int length = buffer.getUnsignedByte();
-            configChangeDest = new int[1 + length];
+            childIds = new int[1 + length];
             for(int index = 0; index <= length; ++index) {
-                configChangeDest[index] = buffer.getUnsignedShortBE();
-                if(0xFFFF == configChangeDest[index]) {
-                    configChangeDest[index] = -1;
+                childIds[index] = buffer.getUnsignedShortBE();
+                if(0xFFFF == childIds[index]) {
+                    childIds[index] = -1;
                 }
             }
         } else if(opcode == 78) {
@@ -546,19 +546,19 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     }
 
     public GameObjectDefinition getChildDefinition() {
-        int i = -1;
+        int index = -1;
         if(varbitId == -1) {
             if(configId != -1) {
-                i = GroundItemTile.varPlayers[configId];
+                index = GroundItemTile.varPlayers[configId];
             }
         } else {
-            i = VarbitDefinition.getVarbitValue(varbitId);
+            index = VarbitDefinition.getVarbitValue(varbitId);
 
         }
-        if(i < 0 || configChangeDest.length <= i || configChangeDest[i] == -1) {
+        if(index < 0 || childIds.length <= index || childIds[index] == -1) {
             return null;
         }
-        return getDefinition(configChangeDest[i]);
+        return getDefinition(childIds[index]);
     }
 
     public boolean method612() {

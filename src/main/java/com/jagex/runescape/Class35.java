@@ -72,8 +72,8 @@ public class Class35 implements Interface3 {
     }
 
 
-    public void method422(int arg0) {
-        for(int i = arg0; aClass40_Sub10Array1740.length > i; i++) {
+    public void method422() {
+        for(int i = 0; aClass40_Sub10Array1740.length > i; i++) {
             if(aClass40_Sub10Array1740[i] != null)
                 aClass40_Sub10Array1740[i].method870();
         }
@@ -120,7 +120,7 @@ public class Class35 implements Interface3 {
 
     public void method424(double arg1) {
         aDouble1750 = arg1;
-        method422(0);
+        method422();
     }
 
     public void method425(byte arg0, int arg1) {

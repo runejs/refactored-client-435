@@ -76,7 +76,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                 i_1_ = Player.trackedPlayerIndices[i_0_] << 14;
                 player = Player.trackedPlayers[Player.trackedPlayerIndices[i_0_]];
             }
-            if(player != null && player.isVisible(1)) {
+            if(player != null && player.isInitialized()) {
                 player.aBoolean3287 = false;
                 int i_2_ = player.worldX >> 7;
                 int i_3_ = player.worldY >> 7;
@@ -89,9 +89,9 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
                         Npc.currentScene.method112(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.anInt3258, player.anInt3281, player.anInt3262, player.anInt3289);
                     } else {
                         if((0x7f & player.worldX) == 64 && (player.worldY & 0x7f) == 64) {
-                            if(Class40_Sub5_Sub11.anInt2628 == MovedStatics.anIntArrayArray1435[i_2_][i_3_])
+                            if(VarPlayerConfig.anInt2628 == MovedStatics.anIntArrayArray1435[i_2_][i_3_])
                                 continue;
-                            MovedStatics.anIntArrayArray1435[i_2_][i_3_] = Class40_Sub5_Sub11.anInt2628;
+                            MovedStatics.anIntArrayArray1435[i_2_][i_3_] = VarPlayerConfig.anInt2628;
                         }
                         player.anInt3276 = Class37.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
                         Npc.currentScene.method134(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.aBoolean3105);

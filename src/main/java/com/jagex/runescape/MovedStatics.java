@@ -520,8 +520,8 @@ public class MovedStatics {
         return GameShell.method32(i_7_, arg2, i_8_, true, i_1_);
     }
 
-    public static void method167(int arg0) {
-        Class13.aClass9_406.clear();
+    public static void clearVarPlayerConfigCache() {
+        Class13.varPlayerConfigCache.clear();
     }
 
     public static int method1034(boolean arg0, int arg1, int arg2, byte[] arg3) {

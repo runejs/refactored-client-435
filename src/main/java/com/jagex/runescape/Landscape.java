@@ -76,7 +76,7 @@ public class Landscape {
             if(bool) {
                 if(ProducingGraphicsBuffer.anInt1634 != 0)
                     Class51.method940(0, English.loadingPleaseWait, true, Native.aClass1_2423);
-                RSCanvas.method46(0);
+                RSCanvas.clearCaches();
                 Npc.currentScene.initToNull();
                 System.gc();
                 for(int z = 0; z < 4; z++)
@@ -190,7 +190,7 @@ public class Landscape {
                     }
                 }
                 Main.method364((byte) -34, true);
-                RSCanvas.method46(0);
+                RSCanvas.clearCaches();
                 ISAAC.method281(Npc.currentScene, 27324, currentCollisionMap);
                 Main.method364((byte) -34, true);
                 int z = Class64.lowestPlane;

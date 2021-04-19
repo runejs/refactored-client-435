@@ -183,12 +183,12 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 222) {
-                int i_8_ = incomingPacketBuffer.getByte();
-                int i_9_ = incomingPacketBuffer.getUnsignedShortBE();
-                Buffer.anIntArray1984[i_9_] = i_8_;
-                if(GroundItemTile.varPlayers[i_9_] != i_8_) {
-                    GroundItemTile.varPlayers[i_9_] = i_8_;
-                    Class22.method309(-1, i_9_);
+                int varPlayerValue = incomingPacketBuffer.getByte();
+                int varPlayerIndex = incomingPacketBuffer.getUnsignedShortBE();
+                Buffer.anIntArray1984[varPlayerIndex] = varPlayerValue;
+                if(GroundItemTile.varPlayers[varPlayerIndex] != varPlayerValue) {
+                    GroundItemTile.varPlayers[varPlayerIndex] = varPlayerValue;
+                    Class22.method309(varPlayerIndex);
                     GameInterface.redrawTabArea = true;
                     if(ChatBox.dialogueId != -1)
                         ChatBox.redrawChatbox = true;
@@ -738,12 +738,12 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 2) {
-                int configValue = incomingPacketBuffer.getIntBE();
-                int configId = incomingPacketBuffer.getUnsignedShortBE();
-                Buffer.anIntArray1984[configId] = configValue;
-                if(configValue != GroundItemTile.varPlayers[configId]) {
-                    GroundItemTile.varPlayers[configId] = configValue;
-                    Class22.method309(-1, configId);
+                int varPlayerValue = incomingPacketBuffer.getIntBE();
+                int varPlayerIndex = incomingPacketBuffer.getUnsignedShortBE();
+                Buffer.anIntArray1984[varPlayerIndex] = varPlayerValue;
+                if(varPlayerValue != GroundItemTile.varPlayers[varPlayerIndex]) {
+                    GroundItemTile.varPlayers[varPlayerIndex] = varPlayerValue;
+                    Class22.method309(varPlayerIndex);
                     if(ChatBox.dialogueId != -1)
                         ChatBox.redrawChatbox = true;
                     GameInterface.redrawTabArea = true;
@@ -857,11 +857,11 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 14) { // reset client configs?
-                for(int i_80_ = 0; Class59.anInt1383 > i_80_; i_80_++) {
-                    Class40_Sub5_Sub11 class40_sub5_sub11 = Npc.method795((byte) -114, i_80_);
-                    if(class40_sub5_sub11 != null && class40_sub5_sub11.anInt2633 == 0) {
-                        Buffer.anIntArray1984[i_80_] = 0;
-                        GroundItemTile.varPlayers[i_80_] = 0;
+                for(int varPlayerIndex = 0; Class59.varPlayerConfigSize > varPlayerIndex; varPlayerIndex++) {
+                    VarPlayerConfig varPlayerConfig = Npc.getVarPlayerConfig(varPlayerIndex);
+                    if(varPlayerConfig.type == 0) {
+                        Buffer.anIntArray1984[varPlayerIndex] = 0;
+                        GroundItemTile.varPlayers[varPlayerIndex] = 0;
                     }
                 }
                 if(ChatBox.dialogueId != -1)
@@ -1067,10 +1067,10 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 72) { // reset varbits?
-                for(int maskIndex = 0; maskIndex < GroundItemTile.varPlayers.length; maskIndex++) {
-                    if(Buffer.anIntArray1984[maskIndex] != GroundItemTile.varPlayers[maskIndex]) {
-                        GroundItemTile.varPlayers[maskIndex] = Buffer.anIntArray1984[maskIndex];
-                        Class22.method309(-1, maskIndex);
+                for(int varPlayerIndex = 0; varPlayerIndex < GroundItemTile.varPlayers.length; varPlayerIndex++) {
+                    if(Buffer.anIntArray1984[varPlayerIndex] != GroundItemTile.varPlayers[varPlayerIndex]) {
+                        GroundItemTile.varPlayers[varPlayerIndex] = Buffer.anIntArray1984[varPlayerIndex];
+                        Class22.method309(varPlayerIndex);
                         GameInterface.redrawTabArea = true;
                     }
                 }

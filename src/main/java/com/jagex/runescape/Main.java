@@ -117,7 +117,7 @@ public class Main extends GameShell {
                     GameInterface gameInterface_3_ = FramemapDefinition.method878(gameInterface);
                     int[] is = Class13.method247(gameInterface_3_, (byte) 117);
                     int[] is_4_ = Class13.method247(gameInterface, (byte) 97);
-                    int i_5_ = Landscape.mouseY + -Class40_Sub5_Sub11.anInt2621 + is_4_[1] - is[1];
+                    int i_5_ = Landscape.mouseY + -VarPlayerConfig.anInt2621 + is_4_[1] - is[1];
                     if (i_5_ < 0)
                         i_5_ = 0;
                     if (i_5_ + gameInterface.originalHeight > gameInterface_3_.originalHeight)
@@ -680,9 +680,9 @@ public class Main extends GameShell {
         return 7 + -arg6 + 1 + -arg4;
     }
 
-    public static void method43(CacheArchive arg0) {
-        Class64.aCacheArchive_1521 = arg0;
-        Class59.anInt1383 = Class64.aCacheArchive_1521.fileLength(16);
+    public static void method43(CacheArchive gameDefinitionsCacheArchive) {
+        Class64.gameDefinitionsCacheArchive = gameDefinitionsCacheArchive;
+        Class59.varPlayerConfigSize = Class64.gameDefinitionsCacheArchive.fileLength(16);
     }
 
     public static void method44() {
@@ -771,7 +771,7 @@ public class Main extends GameShell {
     }
 
     public static void method353(byte arg0) {
-        Class40_Sub5_Sub11.anInt2628++;
+        VarPlayerConfig.anInt2628++;
         Class40_Sub5_Sub17_Sub6.method833(0, true);
         ItemDefinition.method749(true);
         Class40_Sub5_Sub17_Sub6.method833(0, false);
@@ -834,7 +834,7 @@ public class Main extends GameShell {
         Rasterizer.resetPixels();
         Npc.currentScene.render(Class12.cameraX, SceneCluster.cameraZ, Class40_Sub5_Sub6.cameraY, Class26.anInt627, ProducingGraphicsBuffer_Sub1.anInt2210, i);
         Npc.currentScene.clearInteractiveObjectCache();
-        Class33.method404((byte) -28);
+        Class33.method404();
         MovedStatics.method450((byte) -67);
         ((Class35) Rasterizer3D.anInterface3_2939).method425((byte) 6, MovedStatics.anInt199);
         KeyFocusListener.draw3dScreen();
@@ -915,8 +915,8 @@ public class Main extends GameShell {
     }
 
     public static void drawGameScreen() {
-        if(Class40_Sub5_Sub11.clearScreen) {
-            Class40_Sub5_Sub11.clearScreen = false;
+        if(VarPlayerConfig.clearScreen) {
+            VarPlayerConfig.clearScreen = false;
             ItemDefinition.drawWelcomeScreenGraphics();
             GameInterface.drawTabIcons = true;
             ChatBox.redrawChatbox = true;

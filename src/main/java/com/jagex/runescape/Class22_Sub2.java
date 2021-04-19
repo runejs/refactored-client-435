@@ -35,16 +35,9 @@ public abstract class Class22_Sub2 extends Class22 {
         return class40_sub5_sub14_sub2s;
     }
 
-    public static void method316(int arg0) {
-        do {
-            Class43.aClass9_1014.clear();
-            MovedStatics.aClass9_851.clear();
-            if(arg0 == -11965)
-                break;
-            method323(-25);
-
-            break;
-        } while(false);
+    public static void method316() {
+        Class43.aClass9_1014.clear();
+        MovedStatics.aClass9_851.clear();
     }
 
     public static ImageRGB[] method319(byte arg0) {

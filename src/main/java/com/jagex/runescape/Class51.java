@@ -35,8 +35,8 @@ public class Class51 {
 
 
     public static void method940(int arg0, String arg1, boolean arg2, String arg3) {
-        if(Class40_Sub5_Sub11.clearScreen) {
-            Class40_Sub5_Sub11.clearScreen = false;
+        if(VarPlayerConfig.clearScreen) {
+            VarPlayerConfig.clearScreen = false;
             ItemDefinition.drawWelcomeScreenGraphics();
             LinkedList.drawChatBoxGraphics();
             Class55.drawTabGraphics();
@@ -64,7 +64,7 @@ public class Class51 {
         Player.drawGameScreenGraphics(arg0 + 107);
     }
 
-    public static void method941() {
+    public static void clearModelCache() {
         MovedStatics.modelCache.clear();
     }
 

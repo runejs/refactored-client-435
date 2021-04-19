@@ -508,7 +508,7 @@ public class Player extends Actor {
         return animatedModel;
     }
 
-    public boolean isVisible(int arg0) {
+    public boolean isInitialized() {
         return playerAppearance != null;
     }
 

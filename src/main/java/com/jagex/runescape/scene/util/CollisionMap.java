@@ -70,7 +70,7 @@ public class CollisionMap {
             i_4_ += 256;
         if (arg4 == 22) {
             Renderable renderable;
-            if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
+            if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
                 renderable = new GameObject(arg1, 22, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             else
                 renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, arg7, i, 22, i_0_);
@@ -79,7 +79,7 @@ public class CollisionMap {
                 arg0.markBlocked(arg8, arg9);
         } else if (arg4 == 10 || arg4 == 11) {
             Renderable renderable;
-            if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
+            if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
                 renderable = new GameObject(arg1, 10, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             else
                 renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, arg7, i, 10, i_0_);
@@ -102,7 +102,7 @@ public class CollisionMap {
                 arg0.unmarkSolidOccupant(arg9, arg8, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, arg7, gameObjectDefinition.walkable);
         } else if (arg4 >= 12) {
             Renderable renderable;
-            if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
+            if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
                 renderable = new GameObject(arg1, arg4, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             else
                 renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, arg7, i, arg4, i_0_);
@@ -111,7 +111,7 @@ public class CollisionMap {
                 arg0.unmarkSolidOccupant(arg9, arg8, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, arg7, gameObjectDefinition.walkable);
         } else if (arg4 == 0) {
             Renderable renderable;
-            if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
+            if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
                 renderable = new GameObject(arg1, 0, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             else
                 renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, arg7, i, 0, i_0_);
@@ -120,7 +120,7 @@ public class CollisionMap {
                 arg0.unmarkWall(arg9, arg8, arg4, arg7, gameObjectDefinition.walkable);
         } else if (arg4 == 1) {
             Renderable renderable;
-            if (gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
+            if (gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
                 renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, arg7, i, 1, i_0_);
             else
                 renderable = new GameObject(arg1, 1, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
@@ -131,7 +131,7 @@ public class CollisionMap {
             int i_9_ = arg7 + 1 & 0x3;
             Renderable renderable;
             Renderable renderable_10_;
-            if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null) {
+            if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null) {
                 renderable = new GameObject(arg1, 2, 4 + arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
                 renderable_10_ = new GameObject(arg1, 2, i_9_, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             } else {
@@ -143,7 +143,7 @@ public class CollisionMap {
                 arg0.unmarkWall(arg9, arg8, arg4, arg7, gameObjectDefinition.walkable);
         } else if (arg4 == 3) {
             Renderable renderable;
-            if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
+            if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
                 renderable = new GameObject(arg1, 3, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             else
                 renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, arg7, i, 3, i_0_);
@@ -152,7 +152,7 @@ public class CollisionMap {
                 arg0.unmarkWall(arg9, arg8, arg4, arg7, gameObjectDefinition.walkable);
         } else if (arg4 == 9) {
             Renderable renderable;
-            if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
+            if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
                 renderable = new GameObject(arg1, arg4, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             else
                 renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, arg7, i, arg4, i_0_);
@@ -184,7 +184,7 @@ public class CollisionMap {
             }
             if (arg4 == 4) {
                 Renderable renderable;
-                if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
+                if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
                     renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
                 else
                     renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
@@ -195,7 +195,7 @@ public class CollisionMap {
                 if (i_15_ > 0)
                     i_14_ = GameObjectDefinition.getDefinition(i_15_ >> 14 & 0x7fff).setDecorDisplacement;
                 Renderable renderable;
-                if (gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
+                if (gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
                     renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
                 else
                     renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
@@ -203,21 +203,21 @@ public class CollisionMap {
             } else if (arg6 == -22078) {
                 if (arg4 == 6) {
                     Renderable renderable;
-                    if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
+                    if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
                         renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
                     else
                         renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
                     arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 256);
                 } else if (arg4 == 7) {
                     Renderable renderable;
-                    if (gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
+                    if (gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
                         renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
                     else
                         renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
                     arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 512);
                 } else if (arg4 == 8) {
                     Renderable renderable;
-                    if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
+                    if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
                         renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
                     else
                         renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
