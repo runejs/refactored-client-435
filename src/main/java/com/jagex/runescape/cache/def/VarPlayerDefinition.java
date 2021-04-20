@@ -1,4 +1,4 @@
-package com.jagex.runescape;
+package com.jagex.runescape.cache.def;
 
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.io.Buffer;

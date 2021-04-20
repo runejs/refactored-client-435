@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.cs.ClientScript;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.VarPlayerDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.media.Rasterizer3D;
