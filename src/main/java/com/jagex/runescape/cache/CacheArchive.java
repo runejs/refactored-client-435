@@ -511,15 +511,13 @@ public class CacheArchive {
         return inMemoryCacheBuffer[fileId].length;
     }
 
-    public void method191(int arg0) {
+    public void clearCache() {
         for(int i = 0; i < inMemoryCacheBuffer.length; i++) {
             if(inMemoryCacheBuffer[i] != null) {
                 for(int i_48_ = 0; i_48_ < inMemoryCacheBuffer[i].length; i_48_++)
                     inMemoryCacheBuffer[i][i_48_] = null;
             }
         }
-        if(arg0 != 1120)
-            fileExists(82);
     }
 
     public int[] method192(int arg0, boolean arg1) {

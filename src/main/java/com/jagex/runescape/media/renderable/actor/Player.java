@@ -4,7 +4,6 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.frame.ChatBox;
@@ -101,7 +100,7 @@ public class Player extends Actor {
             if(arg0 < 106)
                 return;
             Graphics graphics = MouseHandler.gameCanvas.getGraphics();
-            VarbitDefinition.gameScreenImageProducer.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
+            MovedStatics.gameScreenImageProducer.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
         } catch(Exception exception) {
             MouseHandler.gameCanvas.repaint();
         }
@@ -508,7 +507,7 @@ public class Player extends Actor {
         return animatedModel;
     }
 
-    public boolean isVisible(int arg0) {
+    public boolean isInitialized() {
         return playerAppearance != null;
     }
 

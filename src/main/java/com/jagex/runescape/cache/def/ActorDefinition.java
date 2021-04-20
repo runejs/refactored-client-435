@@ -15,6 +15,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.util.BitUtils;
 
 import java.awt.*;
 
@@ -31,7 +32,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     public String[] options = new String[5];
     public int headIcon = -1;
     public int stanceAnimation = -1;
-    public int varpIndex = -1;
+    public int varPlayerIndex = -1;
     public int ambient = 0;
     public int rotateRightAnimation = -1;
     public int degreesToTurn = 32;
@@ -43,13 +44,13 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     public int rotate180Animation = -1;
     public int resizeX = 128;
     public int contrast = 0;
-    public int varBitId = -1;
+    public int varbitId = -1;
     public int rotate90LeftAnimation = -1;
     public int resizeY = 128;
     public int rotate90RightAnimation = -1;
     public int rotateLeftAnimation = -1;
     public int walkAnimation = -1;
-    public int[] childrenIds;
+    public int[] childIds;
     public int id;
     public int[] modifiedModelColors;
     public boolean renderOnMinimap = true;
@@ -118,7 +119,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         int i = class40_sub5_sub14_sub4.imageWidth * class40_sub5_sub14_sub4.imageHeight;
         class40_sub5_sub14_sub4.pixels = new int[i];
         for(int i_5_ = 0; i_5_ < i; i_5_++) {
-            class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[HuffmanEncoding.method1021(255, is[i_5_])];
+            class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
         }
         method569();
         return class40_sub5_sub14_sub4;
@@ -138,8 +139,8 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     }
 
     public Model getChildModel(AnimationSequence animation1, AnimationSequence animation2, int arg3, int arg4) {
-        if(childrenIds != null) {
-            ActorDefinition actorDefinition = getChildDefinition(-1);
+        if(childIds != null) {
+            ActorDefinition actorDefinition = getChildDefinition();
             if(actorDefinition == null) {
                 return null;
             }
@@ -193,17 +194,17 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
 
     }
 
-    public boolean method571(int arg0) {
-        if(childrenIds == null) {
+    public boolean isVisible() {
+        if(childIds == null) {
             return true;
         }
-        int i = arg0;
-        if(varBitId != -1) {
-            i = VarbitDefinition.getVarbitMorphIndex(varBitId);
-        } else if(varpIndex != -1) {
-            i = GroundItemTile.varbitMasks[varpIndex];
+        int index = -1;
+        if(varbitId != -1) {
+            index = VarbitDefinition.getVarbitValue(varbitId);
+        } else if(varPlayerIndex != -1) {
+            index = VarPlayerDefinition.varPlayers[varPlayerIndex];
         }
-        return i >= 0 && childrenIds.length > i && childrenIds[i] != -1;
+        return index >= 0 && childIds.length > index && childIds[index] != -1;
     }
 
     public void readValue(Buffer buffer, int opcode) {
@@ -268,20 +269,20 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         } else if(opcode == 103) {
             degreesToTurn = buffer.getUnsignedShortBE();
         } else if(opcode == 106) {
-            varBitId = buffer.getUnsignedShortBE();
-            if(varBitId == 65535) {
-                varBitId = -1;
+            varbitId = buffer.getUnsignedShortBE();
+            if(varbitId == 65535) {
+                varbitId = -1;
             }
-            varpIndex = buffer.getUnsignedShortBE();
-            if(varpIndex == 65535) {
-                varpIndex = -1;
+            varPlayerIndex = buffer.getUnsignedShortBE();
+            if(varPlayerIndex == 65535) {
+                varPlayerIndex = -1;
             }
             int childrenCount = buffer.getUnsignedByte();
-            childrenIds = new int[childrenCount + 1];
+            childIds = new int[childrenCount + 1];
             for(int idx = 0; childrenCount >= idx; idx++) {
-                childrenIds[idx] = buffer.getUnsignedShortBE();
-                if(childrenIds[idx] == 0xFFFF) {
-                    childrenIds[idx] = -1;
+                childIds[idx] = buffer.getUnsignedShortBE();
+                if(childIds[idx] == 0xFFFF) {
+                    childIds[idx] = -1;
                 }
             }
         } else if(opcode == 107) {
@@ -300,8 +301,8 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     }
 
     public Model getHeadModel() {
-        if(childrenIds != null) {
-            ActorDefinition definition = getChildDefinition(-1);
+        if(childIds != null) {
+            ActorDefinition definition = getChildDefinition();
             if(definition == null) {
                 return null;
             }
@@ -338,17 +339,17 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         return headModel;
     }
 
-    public ActorDefinition getChildDefinition(int arg0) {
-        int childId = arg0;
-        if(varBitId != -1) {
-            childId = VarbitDefinition.getVarbitMorphIndex(varBitId);
-        } else if(varpIndex != -1) {
-            childId = GroundItemTile.varbitMasks[varpIndex];
+    public ActorDefinition getChildDefinition() {
+        int childId = -1;
+        if(varbitId != -1) {
+            childId = VarbitDefinition.getVarbitValue(varbitId);
+        } else if(varPlayerIndex != -1) {
+            childId = VarPlayerDefinition.varPlayers[varPlayerIndex];
         }
-        if(childId < 0 || childId >= childrenIds.length || childrenIds[childId] == -1) {
+        if(childId < 0 || childId >= childIds.length || childIds[childId] == -1) {
             return null;
         }
-        return getDefinition(childrenIds[childId]);
+        return getDefinition(childIds[childId]);
     }
 
     @Override

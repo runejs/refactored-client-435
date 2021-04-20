@@ -65,11 +65,6 @@ public class UnderlayDefinition extends CachedNode {
         }
     }
 
-    public static int bitWiseOR(int arg0, int arg1) {
-        return arg0 | arg1;
-    }
-
-
 
     public void calculateHsl() {
         double r = (double) (color >> 16 & 0xff) / 256.0;

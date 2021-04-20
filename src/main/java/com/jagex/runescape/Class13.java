@@ -1,9 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.node.Class40_Sub6;
-import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -14,42 +12,39 @@ import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.Wall;
 
 public class Class13 {
-    public static NodeCache aClass9_406 = new NodeCache(64);
     public static boolean[] playerArray = new boolean[5];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_418;
     public static int anInt419 = 2;
     public static int mouseX = 0;
     public static int[] anIntArray421;
 
-    public static void method241(Actor arg0, byte arg2) {
-        if(arg0.worldX < 128 || arg0.worldY < 128 || arg0.worldX >= 13184 || arg0.worldY >= 13184) {
-            arg0.playingAnimation = -1;
-            arg0.anInt3112 = 0;
-            arg0.anInt3107 = 0;
-            arg0.graphicId = -1;
-            arg0.worldX = arg0.anInt3096 * 64 + 128 * arg0.pathY[0];
-            arg0.worldY = arg0.pathX[0] * 128 + 64 * arg0.anInt3096;
-            arg0.method790(0);
+    public static void handleActorAnimation(Actor actor) {
+        if(actor.worldX < 128 || actor.worldY < 128 || actor.worldX >= 13184 || actor.worldY >= 13184) {
+            actor.playingAnimation = -1;
+            actor.anInt3112 = 0;
+            actor.anInt3107 = 0;
+            actor.graphicId = -1;
+            actor.worldX = actor.anInt3096 * 64 + 128 * actor.pathY[0];
+            actor.worldY = actor.pathX[0] * 128 + 64 * actor.anInt3096;
+            actor.method790(0);
         }
-        if(arg0 == Player.localPlayer && (arg0.worldX < 1536 || arg0.worldY < 1536 || arg0.worldX >= 11776 || arg0.worldY >= 11776)) {
-            arg0.graphicId = -1;
-            arg0.anInt3107 = 0;
-            arg0.anInt3112 = 0;
-            arg0.playingAnimation = -1;
-            arg0.worldX = arg0.pathY[0] * 128 + arg0.anInt3096 * 64;
-            arg0.worldY = 64 * arg0.anInt3096 + arg0.pathX[0] * 128;
-            arg0.method790(0);
+        if(actor == Player.localPlayer && (actor.worldX < 1536 || actor.worldY < 1536 || actor.worldX >= 11776 || actor.worldY >= 11776)) {
+            actor.graphicId = -1;
+            actor.anInt3107 = 0;
+            actor.anInt3112 = 0;
+            actor.playingAnimation = -1;
+            actor.worldX = actor.pathY[0] * 128 + actor.anInt3096 * 64;
+            actor.worldY = 64 * actor.anInt3096 + actor.pathX[0] * 128;
+            actor.method790(0);
         }
-        if(arg0.anInt3112 > MovedStatics.pulseCycle)
-            Class40_Sub5_Sub11.method631(arg0);
-        else if(arg0.anInt3107 < MovedStatics.pulseCycle)
-            Class44.method898(255, arg0);
+        if(actor.anInt3112 > MovedStatics.pulseCycle)
+            method631(actor);
+        else if(actor.anInt3107 < MovedStatics.pulseCycle)
+            Class44.method898(255, actor);
         else
-            PlayerAppearance.method381(arg0);
-        Class40_Sub5_Sub17_Sub1.method762(arg0);
-        Class40_Sub5_Sub15.method736(true, arg0);
-        if(arg2 != 107)
-            method249(false);
+            PlayerAppearance.method381(actor);
+        Class40_Sub5_Sub17_Sub1.method762(actor);
+        Class40_Sub5_Sub15.method736(true, actor);
     }
 
     public static void method242(byte arg0) {
@@ -95,9 +90,9 @@ public class Class13 {
             Class44.aByteArrayArray1039[Main.anInt1764] = null;
             return is;
         }
-        if(arg1 == 30000 && VarbitDefinition.anInt2359 > 0) {
-            byte[] is = RSCanvas.aByteArrayArray47[--VarbitDefinition.anInt2359];
-            RSCanvas.aByteArrayArray47[VarbitDefinition.anInt2359] = null;
+        if(arg1 == 30000 && MovedStatics.anInt2359 > 0) {
+            byte[] is = RSCanvas.aByteArrayArray47[--MovedStatics.anInt2359];
+            RSCanvas.aByteArrayArray47[MovedStatics.anInt2359] = null;
             return is;
         }
         return new byte[arg1];
@@ -140,5 +135,22 @@ public class Class13 {
                 GameObject.frame = null;
             }
         }
+    }
+
+    public static void method631(Actor actor) {
+        int i = actor.anInt3125 * 128 + 64 * actor.anInt3096;
+        int i_0_ = actor.anInt3112 + -MovedStatics.pulseCycle;
+        if(actor.anInt3073 == 0)
+            actor.initialFaceDirection = 1024;
+        if(actor.anInt3073 == 1)
+            actor.initialFaceDirection = 1536;
+        if(actor.anInt3073 == 2)
+            actor.initialFaceDirection = 0;
+        int i_1_ = actor.anInt3096 * 64 + 128 * actor.anInt3081;
+        actor.worldX += (i - actor.worldX) / i_0_;
+        if(actor.anInt3073 == 3)
+            actor.initialFaceDirection = 512;
+        actor.anInt3074 = 0;
+        actor.worldY += (-actor.worldY + i_1_) / i_0_;
     }
 }

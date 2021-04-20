@@ -1,51 +1,81 @@
 package com.jagex.runescape.cache.def;
 
-import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
-import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.node.CachedNode;
-import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.node.NodeCache;
+import com.jagex.runescape.util.BitUtils;
 
 public class VarbitDefinition extends CachedNode {
-    public static ProducingGraphicsBuffer gameScreenImageProducer;
-    public static int anInt2359 = 0;
-    public static int[] anIntArray2361 = new int[]{0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, 2147483647, -1};
-    public static CacheArchive aCacheArchive_2364;
-    public static int destinationX = 0;
+    public static NodeCache varbitDefinitionCache = new NodeCache(64);
+    public static CacheArchive gameDefinitionsCacheArchive;
+
+    /**
+     * Contains information on the bit mask to use per specified bits.
+     * Example:
+     *      We want to have a mask of 6 bits, which would look like this: 00111111 (decimal: 63)
+     *      Since this array starts from index 0, the 6th index is varbitMasks[5].
+     *      So varbitMasks[5] == 63 == 00111111
+     *      The mask can then be used together with "varPlayerValue >> LSB" to find the actual varbit value.
+     */
+    public static int[] varbitMasks = new int[32];
+    static {
+        int currentBitAsDecimal = 2;
+        for(int currentBitPosition = 0; currentBitPosition < 32; currentBitPosition++) {
+            varbitMasks[currentBitPosition] = currentBitAsDecimal - 1;
+            currentBitAsDecimal += currentBitAsDecimal;
+        }
+    }
 
     public int index;
     public int leastSignificantBit;
     public int mostSignificantBit;
 
     public static VarbitDefinition getDefinition(int varbitId) {
-        VarbitDefinition varbitDefinition = (VarbitDefinition) Class57.varbitDefinitionCache.get(varbitId);
+        VarbitDefinition varbitDefinition = (VarbitDefinition) varbitDefinitionCache.get(varbitId);
         if (varbitDefinition != null)
             return varbitDefinition;
-        byte[] is = RSCanvas.aCacheArchive_61.getFile(14, varbitId);
+        byte[] cacheData = gameDefinitionsCacheArchive.getFile(14, varbitId);
         varbitDefinition = new VarbitDefinition();
-        if (is != null)
-            varbitDefinition.readValues(new Buffer(is));
-        Class57.varbitDefinitionCache.put(varbitId, varbitDefinition);
+        if (cacheData != null)
+            varbitDefinition.readValues(new Buffer(cacheData));
+        varbitDefinitionCache.put(varbitId, varbitDefinition);
         return varbitDefinition;
     }
 
     /**
-     * Returns the index to morph actor/object into, based on set config
-     * @param varbitId
-     * @return index to morph into
+     * Returns the varbit value from a varp, respecting the varbit MSB and LSB
+     * @param varbitId The varbit ID to fetch the value for
+     * @return the varbit value as currently stored in the client
      */
-    public static int getVarbitMorphIndex(int varbitId) {
+    public static int getVarbitValue(int varbitId) {
         VarbitDefinition varbitDefinition = getDefinition(varbitId);
+        int varPlayerIndex = varbitDefinition.index;
         int mostSignificantBit = varbitDefinition.mostSignificantBit;
-        int configId = varbitDefinition.index;
         int leastSignificantBit = varbitDefinition.leastSignificantBit;
-        // TODO: Unknown
-        int i_8_ = ProducingGraphicsBuffer_Sub1.anIntArray2199[mostSignificantBit - leastSignificantBit];
-        return GroundItemTile.varbitMasks[configId] >> leastSignificantBit & i_8_;
+        int mask = varbitMasks[mostSignificantBit - leastSignificantBit];
+        return VarPlayerDefinition.varPlayers[varPlayerIndex] >> leastSignificantBit & mask;
+    }
+
+    public static void setVarbitValue(int value, int varbitId) {
+        VarbitDefinition varbitDefinition = getDefinition(varbitId);
+        int index = varbitDefinition.index;
+        int leastSignificantBit = varbitDefinition.leastSignificantBit;
+        int mostSignificantBit = varbitDefinition.mostSignificantBit;
+        int mask = varbitMasks[mostSignificantBit + -leastSignificantBit];
+        if (value < 0 || mask < value)
+            value = 0;
+        mask <<= leastSignificantBit;
+        VarPlayerDefinition.varPlayers[index] = BitUtils.bitWiseOR(BitUtils.bitWiseAND(VarPlayerDefinition.varPlayers[index], mask ^ 0xffffffff), BitUtils.bitWiseAND(mask, value << leastSignificantBit));
+    }
+
+    public static void initializeVarbitDefinitionCache(CacheArchive cacheArchive) {
+        gameDefinitionsCacheArchive = cacheArchive;
+
+    }
+
+    public static void clearVarbitDefinitionCache() {
+        varbitDefinitionCache.clear();
     }
 
     public void readValues(Buffer buffer) {
@@ -57,50 +87,6 @@ public class VarbitDefinition extends CachedNode {
                 index = buffer.getUnsignedShortBE();
                 leastSignificantBit = buffer.getUnsignedByte();
                 mostSignificantBit = buffer.getUnsignedByte();
-            }
-        }
-    }
-
-    public static int method564(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        arg4 &= 0x3;
-        if((arg5 & 0x1) == 1) {
-            int i = arg3;
-            arg3 = arg1;
-            arg1 = i;
-        }
-        if(arg4 == 0)
-            return arg0;
-        if(arg4 == 1)
-            return 1 + -arg3 + 7 - arg2;
-        if(arg4 == 2)
-            return -arg1 + 1 + -arg0 + 7;
-        return arg2;
-    }
-
-
-    public static void method566(int arg0, boolean arg1, int arg2, byte[] arg3) {
-        if(MovedStatics.aClass22_189 != null) {
-            if(MouseHandler.anInt1450 >= 0) {
-                arg2 -= 20;
-                if(arg2 < 1)
-                    arg2 = 1;
-                RSCanvas.anInt54 = arg2;
-                if(MouseHandler.anInt1450 == 0)
-                    Buffer.anInt1982 = 0;
-                else {
-                    int i = Class29.method372(113, MouseHandler.anInt1450);
-                    i -= Class39.anInt909;
-                    Buffer.anInt1982 = (-1 + arg2 + 3600 + i) / arg2;
-                }
-                Player.aByteArray3270 = arg3;
-                PacketBuffer.anInt2258 = arg0;
-                PlayerAppearance.aBoolean687 = arg1;
-            } else if(RSCanvas.anInt54 == 0)
-                RSString.method56(arg1, arg3, arg0);
-            else {
-                PacketBuffer.anInt2258 = arg0;
-                PlayerAppearance.aBoolean687 = arg1;
-                Player.aByteArray3270 = arg3;
             }
         }
     }

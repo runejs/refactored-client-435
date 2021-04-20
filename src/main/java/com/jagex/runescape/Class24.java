@@ -3,7 +3,6 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
@@ -64,7 +63,7 @@ public class Class24 {
                     if(i_3_ == arg5 && arg0 <= i_4_ && i_4_ < 8 + arg0 && arg9 <= i_7_ && arg9 + 8 > i_7_) {
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         int i_9_ = Main.method42(arg2 ^ 0x1, i_8_, gameObjectDefinition.sizeX, i_4_ & 0x7, gameObjectDefinition.sizeY, arg4, 0x7 & i_7_) + arg10;
-                        int i_10_ = VarbitDefinition.method564(i_7_ & 0x7, gameObjectDefinition.sizeY, i_4_ & 0x7, gameObjectDefinition.sizeX, arg4, i_8_) + arg7;
+                        int i_10_ = method564(i_7_ & 0x7, gameObjectDefinition.sizeY, i_4_ & 0x7, gameObjectDefinition.sizeX, arg4, i_8_) + arg7;
                         if(i_9_ > 0 && i_10_ > 0 && i_9_ < 103 && i_10_ < 103) {
                             CollisionMap collisionMap = null;
                             int i_11_ = arg3;
@@ -83,5 +82,21 @@ public class Class24 {
 
             break;
         } while(false);
+    }
+
+    public static int method564(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+        arg4 &= 0x3;
+        if((arg5 & 0x1) == 1) {
+            int i = arg3;
+            arg3 = arg1;
+            arg1 = i;
+        }
+        if(arg4 == 0)
+            return arg0;
+        if(arg4 == 1)
+            return 1 + -arg3 + 7 - arg2;
+        if(arg4 == 2)
+            return -arg1 + 1 + -arg0 + 7;
+        return arg2;
     }
 }

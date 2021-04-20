@@ -9,7 +9,6 @@ import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.language.Native;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -24,8 +23,8 @@ public class GameObject extends Renderable {
 
 
     public int vertexHeightTopRight;
-    public int anInt3018;
-    public int anInt3021;
+    public int orientation;
+    public int objectType;
     public int animationCycleDelay;
     public int animationFrame;
     public int vertexHeightTop;
@@ -35,16 +34,16 @@ public class GameObject extends Renderable {
     public int id;
 
 
-    public GameObject(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, boolean arg8) {
+    public GameObject(int objectId, int objectType, int orientation, int arg3, int arg4, int arg5, int arg6, int animationId, boolean arg8) {
         vertexHeight = arg3;
-        id = arg0;
+        id = objectId;
         vertexHeightTop = arg6;
-        anInt3018 = arg2;
+        this.orientation = orientation;
         vertexHeightRight = arg4;
         vertexHeightTopRight = arg5;
-        anInt3021 = arg1;
-        if(arg7 != -1) {
-            animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(arg7);
+        this.objectType = objectType;
+        if(animationId != -1) {
+            animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId);
             animationFrame = 0;
             animationCycleDelay = -1 + MovedStatics.pulseCycle;
             if(arg8 && animationSequence.frameStep != -1) {
@@ -103,8 +102,8 @@ public class GameObject extends Renderable {
                 Class17.helveticaBold = new Font("Helvetica", Font.BOLD, 13);
                 Class8.fontMetrics = MouseHandler.gameCanvas.getFontMetrics(Class17.helveticaBold);
             }
-            if(Class40_Sub5_Sub11.clearScreen) {
-                Class40_Sub5_Sub11.clearScreen = false;
+            if(MovedStatics.clearScreen) {
+                MovedStatics.clearScreen = false;
                 graphics.setColor(Color.black);
                 graphics.fillRect(0, 0, Class12.width, IdentityKit.height);
             }
@@ -142,10 +141,8 @@ public class GameObject extends Renderable {
         }
     }
 
-    public static void method774(byte arg0) {
+    public static void clearImageCache() {
         Buffer.rgbImageCache.clear();
-        if(arg0 != -96)
-            Native.mapFunction = null;
     }
 
     public Model getRotatedModel() {
@@ -167,10 +164,10 @@ public class GameObject extends Renderable {
             animationCycleDelay = MovedStatics.pulseCycle - step;
         }
         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(id);
-        if(gameObjectDefinition.configChangeDest != null)
+        if(gameObjectDefinition.childIds != null)
             gameObjectDefinition = gameObjectDefinition.getChildDefinition();
         if(gameObjectDefinition == null)
             return null;
-        return gameObjectDefinition.createAnimatedObjectModel(vertexHeight, vertexHeightRight, animationFrame, anInt3021, anInt3018, animationSequence, vertexHeightTop, vertexHeightTopRight);
+        return gameObjectDefinition.createAnimatedObjectModel(vertexHeight, vertexHeightRight, animationFrame, objectType, orientation, animationSequence, vertexHeightTop, vertexHeightTopRight);
     }
 }

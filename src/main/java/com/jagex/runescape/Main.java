@@ -31,6 +31,7 @@ import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.*;
 import com.jagex.runescape.scene.util.CollisionMap;
+import com.jagex.runescape.util.BitUtils;
 import com.jagex.runescape.util.Signlink;
 import tech.henning.fourthreefive.Configuration;
 
@@ -63,7 +64,7 @@ public class Main extends GameShell {
      *   0 = Game area (the area that renders in 3D),
      *   1 = Tab area (the widgets that display within the tab area),
      *   2 = Chat area (the chat itself, as well as all sorts of dialogues and anything that renders over the chat)
-     *   3 = TODO unknown, might be permanent chat widgets
+     *   3 = Permanent chat widget area (walkable chat widgets that replace the actual chat itself)
      * @param minX The top right X of this widget's boundaries
      * @param minY The top right Y of this widget's boundaries
      * @param maxX The bottom right Y of this widget's boundaries
@@ -117,7 +118,7 @@ public class Main extends GameShell {
                     GameInterface gameInterface_3_ = FramemapDefinition.method878(gameInterface);
                     int[] is = Class13.method247(gameInterface_3_, (byte) 117);
                     int[] is_4_ = Class13.method247(gameInterface, (byte) 97);
-                    int i_5_ = Landscape.mouseY + -Class40_Sub5_Sub11.anInt2621 + is_4_[1] - is[1];
+                    int i_5_ = Landscape.mouseY + -MovedStatics.anInt2621 + is_4_[1] - is[1];
                     if (i_5_ < 0)
                         i_5_ = 0;
                     if (i_5_ + gameInterface.originalHeight > gameInterface_3_.originalHeight)
@@ -582,7 +583,7 @@ public class Main extends GameShell {
                     int i_69_ = i_67_;
                     i_67_ = Class42.anIntArray1013[i_67_];
                     int i_70_ = Class8.flameLeftBackground.pixels[i_62_];
-                    Class8.flameLeftBackground.pixels[i_62_++] = HuffmanEncoding.method1021(-16711936, HuffmanEncoding.method1021(i_67_, 16711935) * i_69_ + i_68_ * HuffmanEncoding.method1021(i_70_, 16711935)) + HuffmanEncoding.method1021(HuffmanEncoding.method1021(65280, i_70_) * i_68_ + i_69_ * HuffmanEncoding.method1021(65280, i_67_), 16711680) >> 8;
+                    Class8.flameLeftBackground.pixels[i_62_++] = BitUtils.bitWiseAND(-16711936, BitUtils.bitWiseAND(i_67_, 16711935) * i_69_ + i_68_ * BitUtils.bitWiseAND(i_70_, 16711935)) + BitUtils.bitWiseAND(BitUtils.bitWiseAND(65280, i_70_) * i_68_ + i_69_ * BitUtils.bitWiseAND(65280, i_67_), 16711680) >> 8;
                 } else
                     i_62_++;
             }
@@ -603,7 +604,7 @@ public class Main extends GameShell {
                     int i_78_ = GameObject.flameRightBackground.pixels[i_62_];
                     int i_79_ = 256 + -i_76_;
                     i_76_ = Class42.anIntArray1013[i_76_];
-                    GameObject.flameRightBackground.pixels[i_62_++] = HuffmanEncoding.method1021(i_77_ * HuffmanEncoding.method1021(65280, i_76_) + i_79_ * HuffmanEncoding.method1021(65280, i_78_), 16711680) + HuffmanEncoding.method1021(i_79_ * HuffmanEncoding.method1021(16711935, i_78_) + HuffmanEncoding.method1021(16711935, i_76_) * i_77_, -16711936) >> 8;
+                    GameObject.flameRightBackground.pixels[i_62_++] = BitUtils.bitWiseAND(i_77_ * BitUtils.bitWiseAND(65280, i_76_) + i_79_ * BitUtils.bitWiseAND(65280, i_78_), 16711680) + BitUtils.bitWiseAND(i_79_ * BitUtils.bitWiseAND(16711935, i_78_) + BitUtils.bitWiseAND(16711935, i_76_) * i_77_, -16711936) >> 8;
                 } else
                     i_62_++;
             }
@@ -680,11 +681,6 @@ public class Main extends GameShell {
         return 7 + -arg6 + 1 + -arg4;
     }
 
-    public static void method43(CacheArchive arg0) {
-        Class64.aCacheArchive_1521 = arg0;
-        Class59.anInt1383 = Class64.aCacheArchive_1521.fileLength(16);
-    }
-
     public static void method44() {
         Class51.aLong1203 = 0L;
         Class12.mouseCapturer.coord = 0;
@@ -710,7 +706,7 @@ public class Main extends GameShell {
         Class8.itemSelected = 0;
         Class57.anInt1342 = -40 + (int) (80.0 * Math.random());
         Class48.cameraOffsetY = -55 + (int) (Math.random() * 110.0);
-        VarbitDefinition.destinationX = 0;
+        MovedStatics.destinationX = 0;
         Class43.cameraYawOffset = (int) (Math.random() * 120.0) + -60;
         Buffer.anInt1985 = -1;
         Player.npcCount = 0;
@@ -771,7 +767,7 @@ public class Main extends GameShell {
     }
 
     public static void method353(byte arg0) {
-        Class40_Sub5_Sub11.anInt2628++;
+        MovedStatics.anInt2628++;
         Class40_Sub5_Sub17_Sub6.method833(0, true);
         ItemDefinition.method749(true);
         Class40_Sub5_Sub17_Sub6.method833(0, false);
@@ -834,7 +830,7 @@ public class Main extends GameShell {
         Rasterizer.resetPixels();
         Npc.currentScene.render(Class12.cameraX, SceneCluster.cameraZ, Class40_Sub5_Sub6.cameraY, Class26.anInt627, ProducingGraphicsBuffer_Sub1.anInt2210, i);
         Npc.currentScene.clearInteractiveObjectCache();
-        Class33.method404((byte) -28);
+        Class33.method404();
         MovedStatics.method450((byte) -67);
         ((Class35) Rasterizer3D.anInterface3_2939).method425((byte) 6, MovedStatics.anInt199);
         KeyFocusListener.draw3dScreen();
@@ -915,8 +911,8 @@ public class Main extends GameShell {
     }
 
     public static void drawGameScreen() {
-        if(Class40_Sub5_Sub11.clearScreen) {
-            Class40_Sub5_Sub11.clearScreen = false;
+        if(MovedStatics.clearScreen) {
+            MovedStatics.clearScreen = false;
             ItemDefinition.drawWelcomeScreenGraphics();
             GameInterface.drawTabIcons = true;
             ChatBox.redrawChatbox = true;

@@ -16,6 +16,7 @@ import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
+import com.jagex.runescape.util.BitUtils;
 
 public class ISAAC {
     /**
@@ -183,7 +184,7 @@ public class ISAAC {
                                     if(i_31_ > 0 && !Npc.loadFloor(-1 + i_31_, arg1 + -27320).aBoolean2338)
                                         bool = false;
                                     if(bool && i_32_ == i_33_ && i_34_ == i_32_ && i_32_ == i_35_)
-                                        MovedStatics.anIntArrayArrayArray262[i][i_16_][i_27_] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[i][i_16_][i_27_], 2340);
+                                        MovedStatics.anIntArrayArrayArray262[i][i_16_][i_27_] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[i][i_16_][i_27_], 2340);
                                 }
                                 int i_45_ = 0;
                                 if(i_41_ != -1)
@@ -298,7 +299,7 @@ public class ISAAC {
                                 Scene.method116(i_61_, 1, 128 * i_64_, 128 * i_64_, 128 * i_65_, 128 + 128 * i_66_, i_73_, i_74_);
                                 for(int i_75_ = i_67_; i_75_ <= i_68_; i_75_++) {
                                     for(int i_76_ = i_65_; i_76_ <= i_66_; i_76_++)
-                                        MovedStatics.anIntArrayArrayArray262[i_75_][i_64_][i_76_] = HuffmanEncoding.method1021(MovedStatics.anIntArrayArrayArray262[i_75_][i_64_][i_76_], i ^ 0xffffffff);
+                                        MovedStatics.anIntArrayArrayArray262[i_75_][i_64_][i_76_] = BitUtils.bitWiseAND(MovedStatics.anIntArrayArrayArray262[i_75_][i_64_][i_76_], i ^ 0xffffffff);
                                 }
                             }
                         }
@@ -336,7 +337,7 @@ public class ISAAC {
                                 Scene.method116(i_61_, 2, 128 * i_77_, 128 * i_79_ + 128, 128 * i_63_, i_63_ * 128, i_86_, i_84_);
                                 for(int i_87_ = i_80_; i_78_ >= i_87_; i_87_++) {
                                     for(int i_88_ = i_77_; i_88_ <= i_79_; i_88_++)
-                                        MovedStatics.anIntArrayArrayArray262[i_87_][i_88_][i_63_] = HuffmanEncoding.method1021(MovedStatics.anIntArrayArrayArray262[i_87_][i_88_][i_63_], i_59_ ^ 0xffffffff);
+                                        MovedStatics.anIntArrayArrayArray262[i_87_][i_88_][i_63_] = BitUtils.bitWiseAND(MovedStatics.anIntArrayArrayArray262[i_87_][i_88_][i_63_], i_59_ ^ 0xffffffff);
                                 }
                             }
                         }
@@ -372,7 +373,7 @@ public class ISAAC {
                                 Scene.method116(i_61_, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_, i_92_ * 128 + 128, i_95_, i_95_);
                                 for(int i_96_ = i_89_; i_96_ <= i_90_; i_96_++) {
                                     for(int i_97_ = i_91_; i_92_ >= i_97_; i_97_++)
-                                        MovedStatics.anIntArrayArrayArray262[i_62_][i_96_][i_97_] = HuffmanEncoding.method1021(MovedStatics.anIntArrayArrayArray262[i_62_][i_96_][i_97_], i_60_ ^ 0xffffffff);
+                                        MovedStatics.anIntArrayArrayArray262[i_62_][i_96_][i_97_] = BitUtils.bitWiseAND(MovedStatics.anIntArrayArrayArray262[i_62_][i_96_][i_97_], i_60_ ^ 0xffffffff);
                                 }
                             }
                         }
@@ -425,8 +426,8 @@ public class ISAAC {
                 accumulator ^= accumulator << 2;
             accumulator += mem[0xff & 128 + i];
             int y;
-            mem[i] = y = mem[HuffmanEncoding.method1021(x, 1020) >> 2] + accumulator + result;
-            rsl[i] = result = x + mem[HuffmanEncoding.method1021(y >> -488567000 >> -1522276318, 255)];
+            mem[i] = y = mem[BitUtils.bitWiseAND(x, 1020) >> 2] + accumulator + result;
+            rsl[i] = result = x + mem[BitUtils.bitWiseAND(y >> -488567000 >> -1522276318, 255)];
         }
     }
 

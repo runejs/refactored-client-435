@@ -23,7 +23,7 @@ public class GenericTile {
     public static volatile boolean aBoolean1215 = true;
     public static byte[][] objectData;
     public static int fps = 0;
-    public static int anInt1222 = 0;
+    public static int carryWeight = 0;
     public static int anInt1233 = 0;
 
     public int texture;

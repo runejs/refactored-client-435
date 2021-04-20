@@ -132,13 +132,13 @@ public class PacketBuffer extends Buffer {
         int i_1_ = 8 - (0x7 & bitoffset);
         bitoffset += arg0;
         for(/**/; i_1_ < arg0; i_1_ = 8) {
-            i_0_ += (VarbitDefinition.anIntArray2361[i_1_] & buffer[i++]) << -i_1_ + arg0;
+            i_0_ += (MovedStatics.anIntArray2361[i_1_] & buffer[i++]) << -i_1_ + arg0;
             arg0 -= i_1_;
         }
         if(arg0 != i_1_)
-            i_0_ += VarbitDefinition.anIntArray2361[arg0] & buffer[i] >> -arg0 + i_1_;
+            i_0_ += MovedStatics.anIntArray2361[arg0] & buffer[i] >> -arg0 + i_1_;
         else
-            i_0_ += buffer[i] & VarbitDefinition.anIntArray2361[i_1_];
+            i_0_ += buffer[i] & MovedStatics.anIntArray2361[i_1_];
         return i_0_;
     }
 

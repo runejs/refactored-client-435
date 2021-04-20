@@ -5,6 +5,7 @@ import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.util.BitUtils;
 
 import java.awt.*;
 import java.nio.charset.StandardCharsets;
@@ -484,7 +485,7 @@ public class RSString {
             is_15_[i] = arg0.length;
         for(int i = 1; i <= arg0.length; i++) {
             is[-1 + i] = (arg0.length << 1) - i;
-            is_15_[HuffmanEncoding.method1021(arg0.chars[-1 + i], 255)] = arg0.length - i;
+            is_15_[BitUtils.bitWiseAND(arg0.chars[-1 + i], 255)] = arg0.length - i;
         }
         int i = 1 + arg0.length;
         for(int i_16_ = arg0.length; i_16_ > 0; i_16_--) {

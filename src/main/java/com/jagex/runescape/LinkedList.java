@@ -1,5 +1,6 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.node.Node;
 import com.jagex.runescape.input.MouseHandler;
@@ -45,12 +46,6 @@ public class LinkedList {
         else if(class1.length() > 4)
             class1 = Native.cyan + class1.substring(0, class1.length() + -4) + Native.aClass1_2593 + Native.aClass1_1213 + class1 + Native.rightParenthasis;
         return Native.aClass1_1123 + class1;
-    }
-
-    public static void method907(int arg0) {
-        Class57.varbitDefinitionCache.clear();
-        if(arg0 >= -36)
-            aLinkedList_1064 = null;
     }
 
     public static void drawChatBoxGraphics() {

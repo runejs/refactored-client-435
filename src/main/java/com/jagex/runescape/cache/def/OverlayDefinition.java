@@ -111,7 +111,7 @@ public class OverlayDefinition extends CachedNode {
                 Class40_Sub5_Sub17_Sub1.method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
             }
             Class51.currentAction = actionId;
-            Class40_Sub5_Sub11.clearScreen = true;
+            MovedStatics.clearScreen = true;
         }
     }
 

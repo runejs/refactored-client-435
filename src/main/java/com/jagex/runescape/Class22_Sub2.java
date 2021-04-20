@@ -11,6 +11,7 @@ import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.util.BitUtils;
 
 public abstract class Class22_Sub2 extends Class22 {
     public static GameInterface aGameInterface_1887;
@@ -35,16 +36,9 @@ public abstract class Class22_Sub2 extends Class22 {
         return class40_sub5_sub14_sub2s;
     }
 
-    public static void method316(int arg0) {
-        do {
-            Class43.aClass9_1014.clear();
-            MovedStatics.aClass9_851.clear();
-            if(arg0 == -11965)
-                break;
-            method323(-25);
-
-            break;
-        } while(false);
+    public static void method316() {
+        Class43.aClass9_1014.clear();
+        MovedStatics.aClass9_851.clear();
     }
 
     public static ImageRGB[] method319(byte arg0) {
@@ -63,7 +57,7 @@ public abstract class Class22_Sub2 extends Class22 {
             int i_4_ = class40_sub5_sub14_sub4.imageHeight * class40_sub5_sub14_sub4.imageWidth;
             class40_sub5_sub14_sub4.pixels = new int[i_4_];
             for(int i_5_ = 0; i_5_ < i_4_; i_5_++)
-                class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[HuffmanEncoding.method1021(255, is[i_5_])];
+                class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
         }
         ActorDefinition.method569();
         return class40_sub5_sub14_sub4s;

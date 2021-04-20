@@ -3,10 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.FileOperations;
-import com.jagex.runescape.cache.def.FramemapDefinition;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -22,6 +19,7 @@ import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.util.CollisionMap;
+import com.jagex.runescape.util.BitUtils;
 import tech.henning.fourthreefive.OldEngine.MapDecompressor;
 
 import java.io.IOException;
@@ -76,7 +74,7 @@ public class Landscape {
             if(bool) {
                 if(ProducingGraphicsBuffer.anInt1634 != 0)
                     Class51.method940(0, English.loadingPleaseWait, true, Native.aClass1_2423);
-                RSCanvas.method46(0);
+                RSCanvas.clearCaches();
                 Npc.currentScene.initToNull();
                 System.gc();
                 for(int z = 0; z < 4; z++)
@@ -190,7 +188,7 @@ public class Landscape {
                     }
                 }
                 Main.method364((byte) -34, true);
-                RSCanvas.method46(0);
+                RSCanvas.clearCaches();
                 ISAAC.method281(Npc.currentScene, 27324, currentCollisionMap);
                 Main.method364((byte) -34, true);
                 int z = Class64.lowestPlane;
@@ -304,16 +302,11 @@ public class Landscape {
     }
 
 
-    public static void method936(CacheArchive arg1) {
-        RSCanvas.aCacheArchive_61 = arg1;
-
-    }
-
     public static void loadTerrainSubblock(int arg0, int arg2, int arg3, int arg4, int x, int arg6, int arg7, byte[] arg8, CollisionMap[] arg9) {
         for(int i = 0; i < 8; i++) {
             for(int y = 0; y < 8; y++) {
                 if(x + i > 0 && i + x < 103 && arg0 + y > 0 && y + arg0 < 103)
-                    arg9[arg4].clippingData[x + i][y + arg0] = HuffmanEncoding.method1021(arg9[arg4].clippingData[x + i][y + arg0], -16777217);
+                    arg9[arg4].clippingData[x + i][y + arg0] = BitUtils.bitWiseAND(arg9[arg4].clippingData[x + i][y + arg0], -16777217);
             }
         }
         Buffer class40_sub1 = new Buffer(arg8);

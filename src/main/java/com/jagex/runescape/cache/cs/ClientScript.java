@@ -2,6 +2,7 @@ package com.jagex.runescape.cache.cs;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheArchive;
+import com.jagex.runescape.cache.def.VarPlayerDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.ItemDefinition;
@@ -11,7 +12,6 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.node.CachedNode;
-import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.GenericTile;
 
 public class ClientScript extends CachedNode {
@@ -88,31 +88,31 @@ public class ClientScript extends CachedNode {
             if (arg1) {
                 HuffmanEncoding.anInt1559 = -63;
             }
-            int i_15_ = 0;
+            int operator = 0;
             while (true) {
-                int i_16_ = 0;
-                int i_17_ = 0;
+                int operand = 0;
+                int nextOperator = 0;
                 int opcode = opcodes[scriptDataIndex++];
                 if (opcode == 0) {
                     return i;
                 }
                 if (opcode == 15) {
-                    i_17_ = 1;
+                    nextOperator = 1;
                 }
                 if (opcode == 16) {
-                    i_17_ = 2;
+                    nextOperator = 2;
                 }
                 if (opcode == 1) {
-                    i_16_ = Player.playerLevels[opcodes[scriptDataIndex++]];
+                    operand = Player.playerLevels[opcodes[scriptDataIndex++]];
                 }
                 if (opcode == 2) {
-                    i_16_ = Player.nextLevels[opcodes[scriptDataIndex++]];
+                    operand = Player.nextLevels[opcodes[scriptDataIndex++]];
                 }
                 if (opcode == 3) {
-                    i_16_ = Player.playerExperience[opcodes[scriptDataIndex++]];
+                    operand = Player.playerExperience[opcodes[scriptDataIndex++]];
                 }
                 if (opcode == 17) {
-                    i_17_ = 3;
+                    nextOperator = 3;
                 }
                 if (opcode == 4) {
                     int i_19_ = opcodes[scriptDataIndex++] << 16;
@@ -122,29 +122,29 @@ public class ClientScript extends CachedNode {
                     if (i_20_ != -1 && (!ItemDefinition.forId(i_20_, 10).members || Class22.membersWorld)) {
                         for (int i_21_ = 0; i_21_ < gameInterface.items.length; i_21_++) {
                             if (1 + i_20_ == gameInterface.items[i_21_]) {
-                                i_16_ += gameInterface.itemAmounts[i_21_];
+                                operand += gameInterface.itemAmounts[i_21_];
                             }
                         }
                     }
                 }
                 if (opcode == 5) {
                     int temp = opcodes[scriptDataIndex++];
-                    i_16_ = GroundItemTile.varbitMasks[temp];
+                    operand = VarPlayerDefinition.varPlayers[temp];
                 }
                 if (opcode == 6) {
-                    i_16_ = Player.experienceForLevels[-1 + Player.nextLevels[opcodes[scriptDataIndex++]]];
+                    operand = Player.experienceForLevels[-1 + Player.nextLevels[opcodes[scriptDataIndex++]]];
                 }
                 if (opcode == 7) {
-                    int temp = opcodes[scriptDataIndex++];
-                    i_16_ = 100 * GroundItemTile.varbitMasks[temp] / 46875;
+                    int varPlayerIndex = opcodes[scriptDataIndex++];
+                    operand = 100 * VarPlayerDefinition.varPlayers[varPlayerIndex] / 46875;
                 }
                 if (opcode == 8) {
-                    i_16_ = Player.localPlayer.combatLevel;
+                    operand = Player.localPlayer.combatLevel;
                 }
                 if (opcode == 9) {
                     for (int i_22_ = 0; i_22_ < 25; i_22_++) {
                         if (Class22.aBooleanArray548[i_22_]) {
-                            i_16_ += Player.nextLevels[i_22_];
+                            operand += Player.nextLevels[i_22_];
                         }
                     }
                 }
@@ -156,52 +156,52 @@ public class ClientScript extends CachedNode {
                     if (i_24_ != -1 && (!ItemDefinition.forId(i_24_, 10).members || Class22.membersWorld)) {
                         for (int i_25_ = 0; gameInterface.items.length > i_25_; i_25_++) {
                             if (i_24_ + 1 == gameInterface.items[i_25_]) {
-                                i_16_ = 999999999;
+                                operand = 999999999;
                                 break;
                             }
                         }
                     }
                 }
                 if (opcode == 11) {
-                    i_16_ = ClientScriptRunner.runEnergy;
+                    operand = ClientScriptRunner.runEnergy;
                 }
                 if (opcode == 12) {
-                    i_16_ = GenericTile.anInt1222;
+                    operand = GenericTile.carryWeight;
                 }
                 if (opcode == 13) {
-                    int i_26_ = GroundItemTile.varbitMasks[opcodes[scriptDataIndex++]];
-                    int i_27_ = opcodes[scriptDataIndex++];
-                    i_16_ = (1 << i_27_ & i_26_) != 0 ? 1 : 0;
+                    int varPlayerValue = VarPlayerDefinition.varPlayers[opcodes[scriptDataIndex++]];
+                    int leastSignificantBit = opcodes[scriptDataIndex++];
+                    operand = (1 << leastSignificantBit & varPlayerValue) != 0 ? 1 : 0;
                 }
                 if (opcode == 14) {
-                    int i_28_ = opcodes[scriptDataIndex++];
-                    i_16_ = VarbitDefinition.getVarbitMorphIndex(i_28_);
+                    int varbitId = opcodes[scriptDataIndex++];
+                    operand = VarbitDefinition.getVarbitValue(varbitId);
                 }
                 if (opcode == 18) {
-                    i_16_ = (Player.localPlayer.worldX >> 7) + SpotAnimDefinition.baseX;
+                    operand = (Player.localPlayer.worldX >> 7) + SpotAnimDefinition.baseX;
                 }
                 if (opcode == 19) {
-                    i_16_ = (Player.localPlayer.worldY >> 7) + Class26.baseY;
+                    operand = (Player.localPlayer.worldY >> 7) + Class26.baseY;
                 }
                 if (opcode == 20) {
-                    i_16_ = opcodes[scriptDataIndex++];
+                    operand = opcodes[scriptDataIndex++];
                 }
-                if (i_17_ == 0) {
-                    if (i_15_ == 0) {
-                        i += i_16_;
+                if (nextOperator == 0) {
+                    if (operator == 0) {
+                        i += operand;
                     }
-                    if (i_15_ == 1) {
-                        i -= i_16_;
+                    if (operator == 1) {
+                        i -= operand;
                     }
-                    if (i_15_ == 2 && i_16_ != 0) {
-                        i /= i_16_;
+                    if (operator == 2 && operand != 0) {
+                        i /= operand;
                     }
-                    if (i_15_ == 3) {
-                        i *= i_16_;
+                    if (operator == 3) {
+                        i *= operand;
                     }
-                    i_15_ = 0;
+                    operator = 0;
                 } else {
-                    i_15_ = i_17_;
+                    operator = nextOperator;
                 }
             }
         } catch (Exception exception) {

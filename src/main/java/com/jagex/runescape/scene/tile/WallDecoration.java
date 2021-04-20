@@ -26,7 +26,7 @@ import java.awt.*;
 public class WallDecoration {
     public static NodeCache aClass9_1247 = new NodeCache(64);
     public static int durationHoveredOverWidget = 0;
-    public static NodeCache aClass9_1264 = new NodeCache(50);
+    public static NodeCache modelCache = new NodeCache(50);
     public static TypeFace fontNormal;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1270;
 
@@ -409,9 +409,9 @@ public class WallDecoration {
                     method949();
                 Class8.flameLeftBackground.drawGraphics(0, 0, graphics);
                 GameObject.flameRightBackground.drawGraphics(637, 0, graphics);
-                if (!Class40_Sub5_Sub11.clearScreen)
+                if (!MovedStatics.clearScreen)
                     break;
-                Class40_Sub5_Sub11.clearScreen = false;
+                MovedStatics.clearScreen = false;
                 Class39.aProducingGraphicsBuffer_907.drawGraphics(128, 0, graphics);
                 Class51.aProducingGraphicsBuffer_1206.drawGraphics(202, 371, graphics);
                 Class17.aProducingGraphicsBuffer_463.drawGraphics(0, 265, graphics);

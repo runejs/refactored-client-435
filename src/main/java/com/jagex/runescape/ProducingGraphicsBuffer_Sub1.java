@@ -16,20 +16,11 @@ import java.awt.image.*;
 import java.nio.charset.StandardCharsets;
 
 public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implements ImageProducer, ImageObserver {
-    public static int[] anIntArray2199 = new int[32];
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2204;
     public static int[] anIntArray2207 = {0, -1, 0, 1};
     public static int anInt2210;
     public static int anInt2211 = 2;
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2213;
-
-    static {
-        int i = 2;
-        for(int i_7_ = 0; i_7_ < 32; i_7_++) {
-            anIntArray2199[i_7_] = -1 + i;
-            i += i;
-        }
-    }
 
     public ColorModel colorModel;
     public ImageConsumer imageConsumer;

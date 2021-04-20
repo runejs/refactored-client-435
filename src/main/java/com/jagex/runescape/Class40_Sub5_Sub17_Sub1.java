@@ -26,6 +26,7 @@ import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
+import com.jagex.runescape.util.BitUtils;
 import tech.henning.fourthreefive.Configuration;
 
 import java.awt.*;
@@ -174,7 +175,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             MovedStatics.minimapBackgroundImage.drawImage(0, 0);
             MovedStatics.tabImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(190, 261, arg0);
             FloorDecoration.inventoryBackgroundImage.drawImage(0, 0);
-            VarbitDefinition.gameScreenImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, arg0);
+            MovedStatics.gameScreenImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, arg0);
             Rasterizer.resetPixels();
             HuffmanEncoding.aProducingGraphicsBuffer_1541 = Class40_Sub5_Sub13.createGraphicsBuffer(496, 50, arg0);
             RSCanvas.tabBottom = Class40_Sub5_Sub13.createGraphicsBuffer(269, 37, arg0);
@@ -379,7 +380,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             if(type == 22) {
                 if(!VertexNormal.lowMemory || gameObjectDefinition.hasActions != 0 || gameObjectDefinition.obstructsGround) {
                     Renderable renderable;
-                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
                         renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 22, vertexHeightRight);
                     else
                         renderable = new GameObject(objectId, 22, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
@@ -389,7 +390,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 }
             } else if(type == 10 || type == 11) {
                 Renderable renderable;
-                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
+                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
                     renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 10, vertexHeightRight);
                 else
                     renderable = new GameObject(objectId, 10, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
@@ -429,18 +430,18 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     collisionMap.unmarkSolidOccupant(localX, localY, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, face, gameObjectDefinition.walkable);
             } else if(type >= 12) {
                 Renderable renderable;
-                if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
+                if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
                     renderable = new GameObject(objectId, type, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
                 else
                     renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, vertexHeightRight);
                 scene.addEntityB(localX, localY, plane, vertexMix, 0, 1, 1, hash, renderable, objectConfig);
                 if(type >= 12 && type <= 17 && type != 13 && plane > 0)
-                    MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 2340);
+                    MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 2340);
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.unmarkSolidOccupant(localX, localY, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, face, gameObjectDefinition.walkable);
             } else if(type == 0) {
                 Renderable renderable;
-                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
+                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
                     renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 0, vertexHeightRight);
                 else
                     renderable = new GameObject(objectId, 0, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
@@ -451,28 +452,28 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         InteractiveObject.aByteArrayArrayArray492[plane][localX][localY + 1] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 585);
                 } else if(face == 1) {
                     if(gameObjectDefinition.castsShadow) {
                         InteractiveObject.aByteArrayArrayArray492[plane][localX][localY + 1] = (byte) 50;
                         InteractiveObject.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1], 1170);
                 } else if(face == 2) {
                     if(gameObjectDefinition.castsShadow) {
                         InteractiveObject.aByteArrayArrayArray492[plane][1 + localX][localY] = (byte) 50;
                         InteractiveObject.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
-                        MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY], 585);
                 } else if(face == 3) {
                     if(gameObjectDefinition.castsShadow) {
                         InteractiveObject.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
                         InteractiveObject.aByteArrayArrayArray492[plane][localX + 1][localY] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 1170);
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
@@ -480,7 +481,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     scene.method115(plane, localX, localY, gameObjectDefinition.setDecorDisplacement);
             } else if(type == 1) {
                 Renderable renderable;
-                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
+                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
                     renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 1, vertexHeightRight);
                 else
                     renderable = new GameObject(objectId, 1, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
@@ -501,7 +502,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 int i_46_ = 0x3 & face + 1;
                 Renderable renderable;
                 Renderable renderable_47_;
-                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null) {
+                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null) {
                     renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face + 4, vertexHeight, 2, vertexHeightRight);
                     renderable_47_ = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, i_46_, vertexHeight, 2, vertexHeightRight);
                 } else {
@@ -511,17 +512,17 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 scene.addWall(localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face], SceneCluster.anIntArray761[i_46_], hash, renderable, renderable_47_, objectConfig);
                 if(gameObjectDefinition.wall) {
                     if(face == 0) {
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 585);
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1], 1170);
                     } else if(face == 1) {
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][1 + localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][1 + localY], 1170);
-                        MovedStatics.anIntArrayArrayArray262[plane][1 + localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][1 + localX][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][1 + localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][1 + localY], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][1 + localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][1 + localX][localY], 585);
                     } else if(face == 2) {
-                        MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY], 585);
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 1170);
                     } else if(face == 3) {
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 1170);
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 585);
                     }
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
@@ -530,7 +531,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     scene.method115(plane, localX, localY, gameObjectDefinition.setDecorDisplacement);
             } else if(type == 3) {
                 Renderable renderable;
-                if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.configChangeDest != null)
+                if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
                     renderable = new GameObject(objectId, 3, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
                 else
                     renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 3, vertexHeightRight);
@@ -550,7 +551,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
             } else if(type == 9) {
                 Renderable renderable;
-                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
+                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
                     renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, vertexHeightRight);
                 else
                     renderable = new GameObject(objectId, type, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
@@ -582,7 +583,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 }
                 if(type == 4) {
                     Renderable renderable;
-                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
                         renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
                     else
                         renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
@@ -593,28 +594,28 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     if(i_51_ > 0)
                         i_52_ = GameObjectDefinition.getDefinition((0x1fffedf2 & i_51_) >> 14).setDecorDisplacement;
                     Renderable renderable;
-                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
                         renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
                     else
                         renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
                     scene.addWallDecoration(localX, localY, plane, vertexMix, i_52_ * MovedStatics.anIntArray666[face], ProducingGraphicsBuffer_Sub1.anIntArray2207[face] * i_52_, face * 512, hash, renderable, objectConfig, SceneCluster.anIntArray761[face]);
                 } else if(type == 6) {
                     Renderable renderable;
-                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
                         renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
                     else
                         renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
                     scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, face, hash, renderable, objectConfig, 256);
                 } else if(type == 7) {
                     Renderable renderable;
-                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
                         renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
                     else
                         renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
                     scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, face, hash, renderable, objectConfig, 512);
                 } else if(type == 8) {
                     Renderable renderable;
-                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.configChangeDest == null)
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
                         renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
                     else
                         renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);

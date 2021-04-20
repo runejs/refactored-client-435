@@ -10,6 +10,7 @@ import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.tile.SceneTile;
+import com.jagex.runescape.util.BitUtils;
 import tech.henning.fourthreefive.Configuration;
 
 import java.text.MessageFormat;
@@ -48,7 +49,7 @@ public class HuffmanEncoding {
                         }
                         int i_37_ = 1 << -i_35_ + 32;
                         if ((i_36_ & i_37_) == 0) {
-                            is[i_35_] = UnderlayDefinition.bitWiseOR(i_36_, i_37_);
+                            is[i_35_] = BitUtils.bitWiseOR(i_36_, i_37_);
                         } else {
                             is[i_35_] = is[-1 + i_35_];
                             break;
@@ -93,12 +94,6 @@ public class HuffmanEncoding {
 
     }
 
-    public static int method1021(int arg0, int arg1) {
-
-        return arg0 & arg1;
-
-    }
-
 
     public static RSString method1024(boolean arg0, byte arg1, int arg2) {
         if (arg1 > -30) {
@@ -109,8 +104,8 @@ public class HuffmanEncoding {
 
     public static void processNpcMenuOptions(ActorDefinition actorDefinition, int x, int y, int index) {
         if (ActorDefinition.menuActionRow < 400) {
-            if (actorDefinition.childrenIds != null) {
-                actorDefinition = actorDefinition.getChildDefinition(-1);
+            if (actorDefinition.childIds != null) {
+                actorDefinition = actorDefinition.getChildDefinition();
             }
             if (actorDefinition != null && actorDefinition.isClickable) {
                 String class1 = actorDefinition.name;
@@ -357,7 +352,7 @@ public class HuffmanEncoding {
             i &= -bitOffset >> 31;
             int i_12_ = bitOffset2 + (size + bitOffset - 1 >> 3);
             bitOffset += 24;
-            dest[bitOffset2] = (byte) (i = UnderlayDefinition.bitWiseOR(i, mask >>> bitOffset));
+            dest[bitOffset2] = (byte) (i = BitUtils.bitWiseOR(i, mask >>> bitOffset));
             if (bitOffset2 < i_12_) {
                 bitOffset2++;
                 bitOffset -= 8;

@@ -4,6 +4,7 @@ import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
 import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.VarPlayerDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.frame.ChatBox;
@@ -15,7 +16,6 @@ import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public abstract class Class22 {
@@ -117,44 +117,44 @@ public abstract class Class22 {
         RSString.method56(false, null, 0);
     }
 
-    public static void method309(int arg0, int arg1) {
+    public static void method309(int varPlayerIndex) {
         do {
             AnimationSequence.anInt2480 = MovedStatics.pulseCycle;
             HuffmanEncoding.method1030((byte) 127);
-            int i = Npc.method795((byte) -70, arg1).anInt2633;
-            if(i != 0) {
-                int i_21_ = GroundItemTile.varbitMasks[arg1];
-                if(i == 1) {
-                    if(i_21_ == 1) {
+            int varPlayerType = VarPlayerDefinition.getDefinition(varPlayerIndex).type;
+            if(varPlayerType != 0) {
+                int varPlayerValue = VarPlayerDefinition.varPlayers[varPlayerIndex];
+                if(varPlayerType == 1) {
+                    if(varPlayerValue == 1) {
                         Rasterizer3D.method711(0.9);
                         ((Class35) Rasterizer3D.anInterface3_2939).method424(0.9);
                     }
-                    if(i_21_ == 2) {
+                    if(varPlayerValue == 2) {
                         Rasterizer3D.method711(0.8);
                         ((Class35) Rasterizer3D.anInterface3_2939).method424(0.8);
                     }
-                    if(i_21_ == 3) {
+                    if(varPlayerValue == 3) {
                         Rasterizer3D.method711(0.7);
                         ((Class35) Rasterizer3D.anInterface3_2939).method424(0.7);
                     }
-                    if(i_21_ == 4) {
+                    if(varPlayerValue == 4) {
                         Rasterizer3D.method711(0.6);
                         ((Class35) Rasterizer3D.anInterface3_2939).method424(0.6);
                     }
-                    GameObject.method774((byte) -96);
-                    Class40_Sub5_Sub11.clearScreen = true;
+                    GameObject.clearImageCache();
+                    MovedStatics.clearScreen = true;
                 }
-                if(i == 3) {
+                if(varPlayerType == 3) {
                     int i_22_ = 0;
-                    if(i_21_ == 0)
+                    if(varPlayerValue == 0)
                         i_22_ = 255;
-                    if(i_21_ == 1)
+                    if(varPlayerValue == 1)
                         i_22_ = 192;
-                    if(i_21_ == 2)
+                    if(varPlayerValue == 2)
                         i_22_ = 128;
-                    if(i_21_ == 3)
+                    if(varPlayerValue == 3)
                         i_22_ = 64;
-                    if(i_21_ == 4)
+                    if(varPlayerValue == 4)
                         i_22_ = 0;
                     if(i_22_ != RSCanvas.anInt60) {
                         if(RSCanvas.anInt60 != 0 || MouseHandler.anInt1457 == -1) {
@@ -170,43 +170,41 @@ public abstract class Class22 {
                         RSCanvas.anInt60 = i_22_;
                     }
                 }
-                if(i == 9)
-                    Class43.bankInsertMode = i_21_;
-                if(i == 10) {
-                    if(i_21_ == 0)
+                if(varPlayerType == 9)
+                    Class43.bankInsertMode = varPlayerValue;
+                if(varPlayerType == 10) {
+                    if(varPlayerValue == 0)
                         RSCanvas.anInt65 = 127;
-                    if(i_21_ == 1)
+                    if(varPlayerValue == 1)
                         RSCanvas.anInt65 = 96;
-                    if(i_21_ == 2)
+                    if(varPlayerValue == 2)
                         RSCanvas.anInt65 = 64;
-                    if(i_21_ == 3)
+                    if(varPlayerValue == 3)
                         RSCanvas.anInt65 = 32;
-                    if(i_21_ == 4)
+                    if(varPlayerValue == 4)
                         RSCanvas.anInt65 = 0;
                 }
-                if(i == 8) {
+                if(varPlayerType == 8) {
                     ChatBox.redrawChatbox = true;
-                    CollisionMap.anInt165 = i_21_;
+                    CollisionMap.anInt165 = varPlayerValue;
                 }
-                if(i == 4) {
-                    if(i_21_ == 0)
+                if(varPlayerType == 4) {
+                    if(varPlayerValue == 0)
                         MovedStatics.anInt200 = 127;
-                    if(i_21_ == 1)
+                    if(varPlayerValue == 1)
                         MovedStatics.anInt200 = 96;
-                    if(i_21_ == 2)
+                    if(varPlayerValue == 2)
                         MovedStatics.anInt200 = 64;
-                    if(i_21_ == 3)
+                    if(varPlayerValue == 3)
                         MovedStatics.anInt200 = 32;
-                    if(i_21_ == 4)
+                    if(varPlayerValue == 4)
                         MovedStatics.anInt200 = 0;
                 }
-                if(i == 6)
-                    MovedStatics.anInt2280 = i_21_;
-                if(arg0 != -1)
-                    method309(74, -85);
-                if(i != 5)
+                if(varPlayerType == 6)
+                    MovedStatics.anInt2280 = varPlayerValue;
+                if(varPlayerType != 5)
                     break;
-                ProducingGraphicsBuffer.oneMouseButton = i_21_;
+                ProducingGraphicsBuffer.oneMouseButton = varPlayerValue;
             }
 
             break;
