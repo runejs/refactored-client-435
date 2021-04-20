@@ -7,16 +7,23 @@ import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.util.BitUtils;
 
 public class VarbitDefinition extends CachedNode {
-    public static int[] varbitMasks = new int[32];
     public static NodeCache varbitDefinitionCache = new NodeCache(64);
     public static CacheArchive gameDefinitionsCacheArchive;
 
-    // Pre-calculate varbit masks
+    /**
+     * Contains information on the bit mask to use per specified bits.
+     * Example:
+     *      We want to have a mask of 6 bits, which would look like this: 00111111 (decimal: 63)
+     *      Since this array starts from index 0, the 6th index is varbitMasks[5].
+     *      So varbitMasks[5] == 63 == 00111111
+     *      The mask can then be used together with "varPlayerValue >> LSB" to find the actual varbit value.
+     */
+    public static int[] varbitMasks = new int[32];
     static {
-        int i = 2;
-        for(int i_7_ = 0; i_7_ < 32; i_7_++) {
-            varbitMasks[i_7_] = -1 + i;
-            i += i;
+        int currentBit = 2;
+        for(int index = 0; index < 32; index++) {
+            varbitMasks[index] = currentBit - 1;
+            currentBit += currentBit;
         }
     }
 
