@@ -23,7 +23,6 @@ public abstract class Actor extends Renderable {
     public static volatile int eventMouseButtonPressed = 0;
     public static CacheArchive aCacheArchive_3144;
     public static int[] minimapHintX = new int[1000];
-    public static CacheArchive aCacheArchive_3150;
     public static int anInt3151 = -16 + (int) (Math.random() * 33.0);
     public static Signlink aClass31_3152;
     public static int actorUpdatingIndex = 0;

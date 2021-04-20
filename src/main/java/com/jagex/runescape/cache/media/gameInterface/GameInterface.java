@@ -359,23 +359,23 @@ public class GameInterface extends CachedNode {
             if(gameInterface.scrollHeight <= gameInterface.originalHeight)
                 gameInterface.scrollHeight = gameInterface.originalHeight + 1;
         } else if(type == 324) {
-            if(Class64.anInt1511 == -1) {
-                Class64.anInt1511 = gameInterface.spriteId;
+            if(MovedStatics.anInt1511 == -1) {
+                MovedStatics.anInt1511 = gameInterface.spriteId;
                 Main.anInt1769 = gameInterface.alternateSpriteId;
             }
             if(!Player.activePlayerAppearance.gender)
                 gameInterface.spriteId = Main.anInt1769;
             else
-                gameInterface.spriteId = Class64.anInt1511;
+                gameInterface.spriteId = MovedStatics.anInt1511;
         } else if(type == 325) {
-            if(Class64.anInt1511 == -1) {
+            if(MovedStatics.anInt1511 == -1) {
                 Main.anInt1769 = gameInterface.alternateSpriteId;
-                Class64.anInt1511 = gameInterface.spriteId;
+                MovedStatics.anInt1511 = gameInterface.spriteId;
             }
             if(Player.activePlayerAppearance.gender)
                 gameInterface.spriteId = Main.anInt1769;
             else
-                gameInterface.spriteId = Class64.anInt1511;
+                gameInterface.spriteId = MovedStatics.anInt1511;
         } else if(type == 327) {
             gameInterface.rotationX = 150;
             gameInterface.rotationZ = 0x7ff & (int) (256.0 * Math.sin((double) MovedStatics.pulseCycle / 40.0));
@@ -1032,7 +1032,7 @@ public class GameInterface extends CachedNode {
                         if(l1 != -1) {
                             long l = TextUtils.nameToLong(s.substring(l1 + 5).trim());
                             if(action == 45) {
-                                UnderlayDefinition.addFriend(l);
+                                MovedStatics.addFriend(l);
                             }
                             if(action == 51) {
                                 Class17.method275(l);

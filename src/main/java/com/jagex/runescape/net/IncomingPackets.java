@@ -72,14 +72,14 @@ public class IncomingPackets {
             6, 0, 0, 6, 2, 4};
 
     public static boolean parseIncomingPackets(boolean arg0) {
-        if(MovedStatics.gameConnection == null)
+        if(MovedStatics.gameSocket == null)
             return false;
         try {
-            int i = MovedStatics.gameConnection.method1014(-122);
+            int i = MovedStatics.gameSocket.method1014(-122);
             if(i == 0)
                 return false;
             if(incomingPacket == -1) {
-                MovedStatics.gameConnection.method1008(0, 1, -127, incomingPacketBuffer.buffer);
+                MovedStatics.gameSocket.method1008(0, 1, -127, incomingPacketBuffer.buffer);
                 incomingPacketBuffer.currentPosition = 0;
                 i--;
                 incomingPacket = incomingPacketBuffer.getPacket();
@@ -88,7 +88,7 @@ public class IncomingPackets {
             //System.out.println("packet received: " + Class57.incomingPacket);
             if(incomingPacketSize == -1) {
                 if(i > 0) {
-                    MovedStatics.gameConnection.method1008(0, 1, -127, incomingPacketBuffer.buffer);
+                    MovedStatics.gameSocket.method1008(0, 1, -127, incomingPacketBuffer.buffer);
                     incomingPacketSize = incomingPacketBuffer.buffer[0] & 0xff;
                     i--;
                 } else
@@ -98,14 +98,14 @@ public class IncomingPackets {
                 if(i <= 1)
                     return false;
                 i -= 2;
-                MovedStatics.gameConnection.method1008(0, 2, -127, incomingPacketBuffer.buffer);
+                MovedStatics.gameSocket.method1008(0, 2, -127, incomingPacketBuffer.buffer);
                 incomingPacketBuffer.currentPosition = 0;
                 incomingPacketSize = incomingPacketBuffer.getUnsignedShortBE();
             }
             if(incomingPacketSize > i)
                 return false;
             incomingPacketBuffer.currentPosition = 0;
-            MovedStatics.gameConnection.method1008(0, incomingPacketSize, -128, incomingPacketBuffer.buffer);
+            MovedStatics.gameSocket.method1008(0, incomingPacketSize, -128, incomingPacketBuffer.buffer);
             Class49.anInt1151 = MovedStatics.anInt324;
             Class35.anInt1728 = 0;
             MovedStatics.anInt324 = RSString.anInt1690;
@@ -1153,7 +1153,7 @@ public class IncomingPackets {
                 ChatBox.messagePromptRaised = false;
                 return true;
             }
-            MovedStatics.method169("T1 - " + incomingPacket + "," + MovedStatics.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize, (byte) -121, null);
+            MovedStatics.printException("T1 - " + incomingPacket + "," + MovedStatics.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize, null);
             Class48.logout(-7225);
         } catch(java.io.IOException ioexception) {
             Class59.dropClient();
@@ -1161,7 +1161,7 @@ public class IncomingPackets {
             String string = "T2 - " + incomingPacket + "," + MovedStatics.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize + "," + (SpotAnimDefinition.baseX + Player.localPlayer.pathY[0]) + "," + (Player.localPlayer.pathX[0] + Class26.baseY) + " - ";
             for(int i = 0; incomingPacketSize > i && i < 50; i++)
                 string += incomingPacketBuffer.buffer[i] + ",";
-            MovedStatics.method169(string, (byte) -120, exception);
+            MovedStatics.printException(string, exception);
             Class48.logout(-7225);
             exception.printStackTrace();
         }

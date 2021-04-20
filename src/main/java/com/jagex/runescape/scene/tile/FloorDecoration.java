@@ -200,21 +200,18 @@ public class FloorDecoration {
         }
     }
 
-    public static boolean method346(byte arg0) {
+    public static boolean method346() {
         long l = System.currentTimeMillis();
         int i = (int) (l - LinkedList.aLong1051);
         LinkedList.aLong1051 = l;
         if(i > 200) {
             i = 200;
         }
-        if(arg0 != 48) {
-            return false;
-        }
         Class22.anInt547 += i;
         if(Class42.anInt1006 == 0 && Class17.anInt464 == 0 && MovedStatics.anInt554 == 0 && ProducingGraphicsBuffer.anInt1618 == 0) {
             return true;
         }
-        if(Class57.aClass64_1345 == null) {
+        if(Class57.gameSocket == null) {
             return false;
         }
         try {
@@ -229,7 +226,7 @@ public class FloorDecoration {
                 Buffer class40_sub1 = new Buffer(4);
                 class40_sub1.putByte(1);
                 class40_sub1.putMediumBE((int) class40_sub5_sub13.key);
-                Class57.aClass64_1345.method1010(4, (byte) -19, 0, class40_sub1.buffer);
+                Class57.gameSocket.method1010(4, 0, class40_sub1.buffer);
                 Class37.aClass23_869.put(class40_sub5_sub13.key, class40_sub5_sub13);
                 ProducingGraphicsBuffer.anInt1618--;
             }
@@ -238,13 +235,13 @@ public class FloorDecoration {
                 Buffer class40_sub1 = new Buffer(4);
                 class40_sub1.putByte(0);
                 class40_sub1.putMediumBE((int) class40_sub5_sub13.key);
-                Class57.aClass64_1345.method1010(4, (byte) -19, 0, class40_sub1.buffer);
+                Class57.gameSocket.method1010(4, 0, class40_sub1.buffer);
                 class40_sub5_sub13.clear();
                 MovedStatics.aClass23_841.put(class40_sub5_sub13.key, class40_sub5_sub13);
                 Class42.anInt1006++;
             }
             for(int i_33_ = 0; i_33_ < 100; i_33_++) {
-                int i_34_ = Class57.aClass64_1345.method1014(-122);
+                int i_34_ = Class57.gameSocket.method1014(-122);
                 if(i_34_ < 0) {
                     throw new IOException();
                 }
@@ -267,7 +264,7 @@ public class FloorDecoration {
                     if(i_37_ > i_34_) {
                         i_37_ = i_34_;
                     }
-                    Class57.aClass64_1345.method1008(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition, i_37_, -127, Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer);
+                    Class57.gameSocket.method1008(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition, i_37_, -127, Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer);
                     if(Class8.aByte302 != 0) {
                         for(int i_38_ = 0; i_37_ > i_38_; i_38_++) {
                             Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_38_] = (byte) GameShell.method27(Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_38_], Class8.aByte302);
@@ -297,13 +294,13 @@ public class FloorDecoration {
                                     .aClass40_Sub5_Sub13_2250.anInt2763
                                     != ~i_39_) {
                                 try {
-                                    com.jagex.runescape.Class57.aClass64_1345.method1009();
+                                    com.jagex.runescape.Class57.gameSocket.method1009();
                                 } catch(Exception exception) {
                                 }
                                 com.jagex.runescape.Class8.aByte302
                                         = (byte) (int) (Math.random() * 255.0
                                         + 1.0);
-                                com.jagex.runescape.Class57.aClass64_1345 = null;
+                                com.jagex.runescape.Class57.gameSocket = null;
                                 MovedStatics.anInt813++;
                                 return false;
                             }
@@ -331,7 +328,7 @@ public class FloorDecoration {
                     if(i_42_ > i_34_) {
                         i_42_ = i_34_;
                     }
-                    Class57.aClass64_1345.method1008(LinkedList.aClass40_Sub1_1081.currentPosition, i_42_, -128, LinkedList.aClass40_Sub1_1081.buffer);
+                    Class57.gameSocket.method1008(LinkedList.aClass40_Sub1_1081.currentPosition, i_42_, -128, LinkedList.aClass40_Sub1_1081.buffer);
                     if(Class8.aByte302 != 0) {
                         for(int i_43_ = 0; i_42_ > i_43_; i_43_++) {
                             LinkedList.aClass40_Sub1_1081.buffer[LinkedList.aClass40_Sub1_1081.currentPosition + i_43_] = (byte) GameShell.method27(LinkedList.aClass40_Sub1_1081.buffer[LinkedList.aClass40_Sub1_1081.currentPosition + i_43_], Class8.aByte302);
@@ -378,13 +375,13 @@ public class FloorDecoration {
         } catch(IOException ioexception) {
             ioexception.printStackTrace();
             try {
-                Class57.aClass64_1345.method1009();
+                Class57.gameSocket.method1009();
             } catch(Exception exception) {
                 exception.printStackTrace();
                 /* empty */
             }
             MovedStatics.anInt2278++;
-            Class57.aClass64_1345 = null;
+            Class57.gameSocket = null;
             return false;
         }
     }

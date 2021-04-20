@@ -34,28 +34,28 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public static int[] anIntArray2 = new int[5];
     public static long[] aLongArray4 = new long[32];
     public static int anInt31;
-    public boolean aBoolean43 = false;
+    public boolean gameShellError = false;
 
 
     public static void method19(boolean arg0, int arg1) {
 
         if (arg1 != 24041)
             Native.aClass1_28 = null;
-        if (Class57.aClass64_1345 != null) {
+        if (Class57.gameSocket != null) {
             try {
                 Buffer class40_sub1 = new Buffer(4);
                 class40_sub1.putByte(arg0 ? 2 : 3);
                 class40_sub1.putMediumBE(0);
-                Class57.aClass64_1345.method1010(4, (byte) -19, 0, class40_sub1.buffer);
+                Class57.gameSocket.method1010(4, 0, class40_sub1.buffer);
             } catch (java.io.IOException ioexception) {
                 ioexception.printStackTrace();
                 try {
-                    Class57.aClass64_1345.method1009();
+                    Class57.gameSocket.method1009();
                 } catch (Exception exception) {
                     exception.printStackTrace();
                     /* empty */
                 }
-                Class57.aClass64_1345 = null;
+                Class57.gameSocket = null;
                 MovedStatics.anInt2278++;
             }
         }
@@ -179,17 +179,17 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     }
 
     public void run() {
-        if (Signlink.aString735 != null) {
-            String string = Signlink.aString735.toLowerCase();
+        if (Signlink.javaVendor != null) {
+            String string = Signlink.javaVendor.toLowerCase();
             if (string.indexOf("sun") == -1 && string.indexOf("apple") == -1) {
-                if (string.indexOf("ibm") != -1 && (Signlink.aString739 == null || Signlink.aString739.equals("1.4.2"))) {
-                    openErrorPage((byte) 27, "wrongjava");
+                if (string.indexOf("ibm") != -1 && (Signlink.javaVersion == null || Signlink.javaVersion.equals("1.4.2"))) {
+                    openErrorPage("wrongjava");
                     return;
                 }
             } else {
-                String string_0_ = Signlink.aString739;
+                String string_0_ = Signlink.javaVersion;
                 if (string_0_.equals("1.1") || string_0_.startsWith("1.1.") || string_0_.equals("1.2") || string_0_.startsWith("1.2.")) {
-                    openErrorPage((byte) 114, "wrongjava");
+                    openErrorPage("wrongjava");
                     return;
                 }
                 Class40_Sub3.anInt2024 = 5;
@@ -204,7 +204,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                 }
             }
         }
-        setCanvas((byte) 121);
+        setCanvas();
         ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(Class12.width, IdentityKit.height, MouseHandler.gameCanvas);
         startup(true);
         SceneCluster.aTimer_768 = Timer.create();
@@ -269,24 +269,21 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         }
         if (string.endsWith("192.168.1."))
             return true;
-        openErrorPage((byte) 113, "invalidhost");
+        openErrorPage("invalidhost");
         return false;
     }
 
     public void windowOpened(WindowEvent arg0) {
     }
 
-    public void openErrorPage(byte arg0, String gameError) {
-        if (!aBoolean43) {
-            aBoolean43 = true;
+    public void openErrorPage(String gameError) {
+        if (!gameShellError) {
+            gameShellError = true;
             System.out.println("error_game_" + gameError);
             try {
 //                getAppletContext().showDocument(new URL(getCodeBase(), ("error_game_" + gameError + ".ws")));
             } catch (Exception exception) {
             }
-            if (arg0 > 26)
-                return;
-            displayClientFrame((byte) 96, 68, 28, 85, -56);
         }
 
     }
@@ -307,7 +304,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public synchronized void paint(Graphics arg0) {
         if (this == MovedStatics.anApplet_Sub1_179 && !PacketBuffer.aBoolean2255) {
             MovedStatics.clearScreen = true;
-            if (Signlink.aString739 == null || !Signlink.aString739.startsWith("1.5") || -MovedStatics.aLong174 + System.currentTimeMillis() <= 1000L)
+            if (Signlink.javaVersion == null || !Signlink.javaVersion.startsWith("1.5") || -MovedStatics.aLong174 + System.currentTimeMillis() <= 1000L)
                 return;
             Rectangle rectangle = arg0.getClipBounds();
             if (rectangle == null || rectangle.width >= Class12.width && rectangle.height >= IdentityKit.height)
@@ -338,9 +335,9 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         return null;
     }
 
-    public void displayClientFrame(byte arg0, int clientVersion, int width, int height, int fileStoreId) {
+    public void displayClientFrame(int clientVersion, int width, int height, int fileStoreId) {
         if (MovedStatics.anApplet_Sub1_179 != null) {
-            openErrorPage((byte) 74, "alreadyloaded");
+            openErrorPage("alreadyloaded");
             return;
         }
         Class12.width = height;
@@ -354,10 +351,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                 e.printStackTrace();
             }
         }
-        Main.signlink.method394(1, 0, this);
-
-        if (arg0 == 120)
-            return;
+        Main.signlink.createCanvasNode(1, this);
         windowActivated(null);
     }
 
@@ -437,9 +431,9 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             Class35.aFrame1732.setSize(insets.right + width + insets.left, insets.bottom + insets.top + height);
 //            Class35.aFrame1732.setLocationRelativeTo(null);
             Actor.aClass31_3152 = Main.signlink = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
-            Main.signlink.method394(1, 0, this);
+            Main.signlink.createCanvasNode(1, this);
         } catch (Exception exception) {
-            MovedStatics.method169(null, (byte) -127, exception);
+            MovedStatics.printException(null, exception);
         }
     }
 
@@ -469,7 +463,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public void windowDeactivated(WindowEvent windowEvent) {
     }
 
-    public synchronized void setCanvas(byte arg0) {
+    public synchronized void setCanvas() {
         Container container = Class35.aFrame1732;
 //        else
 //            container = ISAAC.aClass31_521.anApplet740;
@@ -487,8 +481,6 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         } else
             MouseHandler.gameCanvas.setLocation(0, 0);
         MouseHandler.gameCanvas.addFocusListener(this);
-        if (arg0 < 85)
-            run();
         MouseHandler.gameCanvas.requestFocus();
         MovedStatics.clearScreen = true;
         MovedStatics.aBoolean1575 = false;

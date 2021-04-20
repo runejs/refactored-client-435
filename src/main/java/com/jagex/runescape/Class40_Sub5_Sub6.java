@@ -14,7 +14,6 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.node.CachedNode;
-import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.util.CollisionMap;
@@ -70,7 +69,7 @@ public class Class40_Sub5_Sub6 extends CachedNode {
                     ChatBox.redrawChatbox = true;
                     if(Class37.anInt876 == 1) {
                         long l = RSString.nameToLong(ChatBox.chatMessage);
-                        UnderlayDefinition.addFriend(l);
+                        MovedStatics.addFriend(l);
                     }
                     if(Class37.anInt876 == 2 && Player.friendsCount > 0) {
                         long l = RSString.nameToLong(ChatBox.chatMessage);

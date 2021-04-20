@@ -1,7 +1,6 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.media.IndexedImage;
 
 public class Class57 {
@@ -9,7 +8,7 @@ public class Class57 {
     public static int[][] wayPoints = new int[104][104];
     public static int clickX = 0;
     public static int anInt1342 = 0;
-    public static Class64 aClass64_1345;
+    public static GameSocket gameSocket;
     public static IndexedImage bottomChatBack;
     public static int[] anIntArray1347;
 

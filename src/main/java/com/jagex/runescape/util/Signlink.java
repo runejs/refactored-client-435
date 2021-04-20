@@ -16,9 +16,9 @@ public class Signlink implements Runnable {
     public static Method aMethod724;
     private static String homeDirectory;
     public static Method aMethod729;
-    public static String aString735;
+    public static String javaVendor;
     public static int anInt737 = 3;
-    public static String aString739;
+    public static String javaVersion;
     public boolean aBoolean721;
     public int uid = 0;
     public SizedAccessFile[] dataIndexAccessFiles;
@@ -39,11 +39,11 @@ public class Signlink implements Runnable {
         anApplet740 = null;
         anApplet740 = arg1;
         anInetAddress730 = inetAddress;
-        aString739 = "1.1";
-        aString735 = "Unknown";
+        javaVersion = "1.1";
+        javaVendor = "Unknown";
         try {
-            aString735 = System.getProperty("java.vendor");
-            aString739 = System.getProperty("java.version");
+            javaVendor = System.getProperty("java.vendor");
+            javaVersion = System.getProperty("java.version");
             homeDirectory = System.getProperty("user.home");
             if(homeDirectory != null)
                 homeDirectory += "/";
@@ -184,16 +184,11 @@ public class Signlink implements Runnable {
 
     }
 
-    public Runnable_Impl1 method391(int arg0) {
-
-        if(arg0 != 1048576)
-            method396(-47);
+    public Runnable_Impl1 method391() {
         return aRunnable_Impl1_727;
-
     }
 
     public void run() {
-
         for(; ; ) {
             SignlinkNode currentNode;
             synchronized(this) {
@@ -251,20 +246,15 @@ public class Signlink implements Runnable {
 
     }
 
-    public SignlinkNode method394(int arg0, int arg1, Runnable arg2) {
-
-        if(arg1 != 0)
-            method392(null, null);
-        return putNode(arg0, 2, arg2);
-
+    public SignlinkNode createCanvasNode(int nodeId, Runnable gameCanvas) {
+        method392(null, null);
+        return putNode(nodeId, 2, gameCanvas);
     }
 
     public SignlinkNode method395(int arg0, int arg1) {
-
         if(arg0 != 3)
             method397(-29);
         return putNode(arg1, 1, null);
-
     }
 
     public SignlinkNode method396(int arg0) {

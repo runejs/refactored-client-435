@@ -9,13 +9,11 @@ import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.input.MouseHandler;
-import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
-import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
@@ -153,7 +151,7 @@ public class Class40_Sub3 extends Node {
         } else if (Class40_Sub5_Sub6.loadingPercent == 70) {
             if (CacheArchive.gameDefinitionsCacheArchive.method185((byte) 98)) {
                 MovedStatics.method441(CacheArchive.gameDefinitionsCacheArchive);
-                UnderlayDefinition.method616(CacheArchive.gameDefinitionsCacheArchive);
+                UnderlayDefinition.initializeUnderlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 method977(3, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
                 method980(28987, CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
                 Main.method357(CacheArchive.modelCacheArchive, arg0 ^ ~0x2a85, CacheArchive.gameDefinitionsCacheArchive);
@@ -269,7 +267,7 @@ public class Class40_Sub3 extends Node {
             }
         } else if (Class40_Sub5_Sub6.loadingPercent == 110) {
             Class12.mouseCapturer = new Class39();
-            Main.signlink.method394(10, 0, Class12.mouseCapturer);
+            Main.signlink.createCanvasNode(10, Class12.mouseCapturer);
             Native.currentLoadingText = English.loadedInputHandler;
             Class40_Sub5_Sub6.loadingPercent = 120;
             MovedStatics.anInt1607 = 94;
@@ -302,21 +300,6 @@ public class Class40_Sub3 extends Node {
             if (Class40_Sub5_Sub6.loadingPercent == 140)
                 OverlayDefinition.updateOverlay(10);
         }
-    }
-
-    public static UnderlayDefinition method531(byte arg0, int arg1) {
-        UnderlayDefinition underlayDefinition = (UnderlayDefinition) WallDecoration.aClass9_1247.get((long) arg1);
-        if (underlayDefinition != null)
-            return underlayDefinition;
-        byte[] is = Actor.aCacheArchive_3150.getFile(1, arg1);
-        underlayDefinition = new UnderlayDefinition();
-        if (is != null)
-            underlayDefinition.readValues(new Buffer(is));
-        underlayDefinition.calculateHsl();
-        if (arg0 >= -39)
-            English.commandFpson = null;
-        WallDecoration.aClass9_1247.put((long) arg1, underlayDefinition);
-        return underlayDefinition;
     }
 
     public static void method977(int arg0, CacheArchive arg1, CacheArchive arg2) {

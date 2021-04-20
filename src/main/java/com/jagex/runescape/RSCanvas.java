@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.cs.ClientScript;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.cache.def.VarPlayerDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -40,7 +41,7 @@ public class RSCanvas extends Canvas {
 
     public static void clearCaches() {
         MovedStatics.method233(true);
-        MovedStatics.method189(false);
+        UnderlayDefinition.clearUnderlayDefinitionCache();
         GameInterface.method640();
         GameObjectDefinition.clearGameObjectModelCache();
         Class40_Sub5_Sub6.method586(64);

@@ -14,14 +14,13 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
     public static int anInt2229;
 
     public Class22_Sub2_Sub2(Signlink arg0, Runnable_Impl1 arg1) {
-
         aRunnable_Impl1_2223 = arg1;
         aRunnable_Impl1_2223.method3(25832);
         aRunnable_Impl1_2223.method6(116);
         this.method321((byte) 109, (long) anInt2226);
         aRunnable_Impl1_2223.method2(anIntArray2227, anInt2229);
         anInt2229 = 0;
-        arg0.method394(10, 0, this);
+        arg0.createCanvasNode(10, this);
     }
 
     public static void method325() {
@@ -111,7 +110,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
                 Class43.sleep(100L);
             }
         } catch(Exception exception) {
-            MovedStatics.method169(null, (byte) -127, exception);
+            MovedStatics.printException(null, exception);
         }
 
     }

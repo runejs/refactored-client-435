@@ -17,22 +17,20 @@ public class Class55 {
     public static int anInt1299 = 2301979;
     public static int destinationY = 0;
 
-    public static String method959(int arg0, Throwable arg1) throws IOException {
+    public static String parseException(Throwable exception) throws IOException {
         String string;
-        if(arg1 instanceof RSRuntimeException) {
-            RSRuntimeException runtimeexception_sub1 = (RSRuntimeException) arg1;
+        if(exception instanceof RSRuntimeException) {
+            RSRuntimeException runtimeexception_sub1 = (RSRuntimeException) exception;
             string = runtimeexception_sub1.aString1653 + " | ";
-            arg1 = runtimeexception_sub1.aThrowable1652;
+            exception = runtimeexception_sub1.aThrowable1652;
         } else
             string = "";
         StringWriter stringwriter = new StringWriter();
         PrintWriter printwriter = new PrintWriter(stringwriter);
-        arg1.printStackTrace(printwriter);
+        exception.printStackTrace(printwriter);
         printwriter.close();
         String string_0_ = stringwriter.toString();
         BufferedReader bufferedreader = new BufferedReader(new StringReader(string_0_));
-        if(arg0 != 0)
-            return null;
         String string_1_ = bufferedreader.readLine();
         for(; ; ) {
             String string_2_ = bufferedreader.readLine();

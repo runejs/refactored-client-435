@@ -159,7 +159,7 @@ public class Class44 implements Runnable {
                 }
             }
         } catch(Exception exception) {
-            MovedStatics.method169(null, (byte) -127, exception);
+            MovedStatics.printException(null, exception);
         }
     }
 }

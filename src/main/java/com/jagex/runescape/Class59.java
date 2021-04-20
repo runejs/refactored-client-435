@@ -32,9 +32,10 @@ public class Class59 {
         if(SceneCluster.idleLogout > 0)
             Class48.logout(-7225);
         else {
+            // Connection lost
             OverlayDefinition.updateOverlay(40);
-            PlayerAppearance.aClass64_717 = MovedStatics.gameConnection;
-            MovedStatics.gameConnection = null;
+            PlayerAppearance.gameSocket = MovedStatics.gameSocket;
+            MovedStatics.gameSocket = null;
         }
     }
 

@@ -56,8 +56,8 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     public boolean renderOnMinimap = true;
 
     public static void method567() {
-        if(Class57.aClass64_1345 != null) {
-            Class57.aClass64_1345.method1009();
+        if(Class57.gameSocket != null) {
+            Class57.gameSocket.method1009();
         }
     }
 

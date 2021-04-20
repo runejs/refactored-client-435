@@ -15,7 +15,6 @@ import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.SceneTile;
@@ -27,13 +26,15 @@ public class Class43 {
     public static LinkedList aLinkedList_1022 = new LinkedList();
     public static int bankInsertMode = 0;
 
-    public static void sleep(long arg0) {
-        if(arg0 > 0L) {
-            if(arg0 % 10L == 0L) {
-                ISAAC.method283(-1L + arg0, -110);
-                ISAAC.method283(1L, -110);
-            } else
-                ISAAC.method283(arg0, -103);
+    public static void sleep(long ms) {
+        if (ms <= 0L) {
+            return;
+        }
+
+        try {
+            Thread.sleep(ms);
+        } catch(InterruptedException interruptedexception) {
+            /* empty */
         }
     }
 
@@ -77,7 +78,7 @@ public class Class43 {
                 // Right game screen
                 if(ScreenController.isCoordinatesIn3dScreen(Class13.mouseX ,Landscape.mouseY )) {
                     if(GameInterface.gameScreenInterfaceId == -1) {
-                        Class64.method1013();
+                        MovedStatics.method1013();
                     } else {
                         int yOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);
                         int xOffset = (ScreenController.drawWidth /2) - (512/2) - (234/3);

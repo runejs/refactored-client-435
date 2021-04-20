@@ -103,7 +103,7 @@ public class ISAAC {
                     if(i_18_ >= 0 && i_18_ < 104) {
                         int i_19_ = 0xff & Class42.tile_underlayids[i][i_18_][i_17_];
                         if(i_19_ > 0) {
-                            UnderlayDefinition underlayDefinition = Class40_Sub3.method531((byte) -66, i_19_ - 1);
+                            UnderlayDefinition underlayDefinition = UnderlayDefinition.getDefinition(i_19_ - 1);
                             Class40_Sub5_Sub17_Sub6.anIntArray3250[i_17_] += underlayDefinition.anInt2565;
                             Class59.anIntArray1398[i_17_] += underlayDefinition.hue;
                             SceneTile.anIntArray2048[i_17_] += underlayDefinition.saturation;
@@ -115,7 +115,7 @@ public class ISAAC {
                     if(i_20_ >= 0 && i_20_ < 104) {
                         int i_21_ = 0xff & Class42.tile_underlayids[i][i_20_][i_17_];
                         if(i_21_ > 0) {
-                            UnderlayDefinition underlayDefinition = Class40_Sub3.method531((byte) -95, -1 + i_21_);
+                            UnderlayDefinition underlayDefinition = UnderlayDefinition.getDefinition(-1 + i_21_);
                             Class40_Sub5_Sub17_Sub6.anIntArray3250[i_17_] -= underlayDefinition.anInt2565;
                             Class59.anIntArray1398[i_17_] -= underlayDefinition.hue;
                             SceneTile.anIntArray2048[i_17_] -= underlayDefinition.saturation;
@@ -148,8 +148,8 @@ public class ISAAC {
                             i_22_ -= Class40_Sub5_Sub17_Sub6.anIntArray3250[i_29_];
                         }
                         if(i_27_ >= 1 && i_27_ < 103 && (!VertexNormal.lowMemory || (0x2 & OverlayDefinition.tile_flags[0][i_16_][i_27_]) != 0 || (0x10 & OverlayDefinition.tile_flags[i][i_16_][i_27_]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(i, i_27_, 0, i_16_))) {
-                            if(Class64.lowestPlane > i)
-                                Class64.lowestPlane = i;
+                            if(MovedStatics.lowestPlane > i)
+                                MovedStatics.lowestPlane = i;
                             int i_30_ = Class42.tile_underlayids[i][i_16_][i_27_] & 0xff;
                             int i_31_ = MouseHandler.tile_overlayids[i][i_16_][i_27_] & 0xff;
                             if(i_30_ > 0 || i_31_ > 0) {
@@ -382,15 +382,6 @@ public class ISAAC {
             }
         }
 
-    }
-
-    public static void method283(long arg0, int arg1) {
-        try {
-            int i = -93 / ((-50 - arg1) / 45);
-            Thread.sleep(arg0);
-        } catch(InterruptedException interruptedexception) {
-            /* empty */
-        }
     }
 
     public static void method285(byte arg0) {
