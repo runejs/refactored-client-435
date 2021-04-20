@@ -3,6 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.cs.ClientScript;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
+import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -16,7 +17,6 @@ public class RSCanvas extends Canvas {
     public static int anInt57;
     public static ProducingGraphicsBuffer tabBottom;
     public static int anInt60 = 255;
-    public static CacheArchive aCacheArchive_61;
     public static int[] anIntArray62;
     public static ProducingGraphicsBuffer chatBoxImageProducer;
     public static int anInt65 = 127;
@@ -46,8 +46,8 @@ public class RSCanvas extends Canvas {
         Class8.method211();
         MovedStatics.method188();
         Class22_Sub2.method316();
-        LinkedList.clearVarbitDefinitionCache();
-        MovedStatics.clearVarPlayerConfigCache();
+        VarbitDefinition.clearVarbitDefinitionCache();
+        VarPlayerDefinition.clearVarPlayerDefinitionCache();
         Class51.clearModelCache();
         Actor.clearCaches();
         ((Class35) Rasterizer3D.anInterface3_2939).method422();

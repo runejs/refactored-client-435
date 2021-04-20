@@ -235,7 +235,7 @@ public class CollisionMap {
     public void unmarkConcealed(int x, int y) {
         x -= insetX;
         y -= insetY;
-        clippingData[x][y] = HuffmanEncoding.method1021(clippingData[x][y], 0xdfffff);
+        clippingData[x][y] = HuffmanEncoding.bitWiseAND(clippingData[x][y], 0xdfffff);
     }
 
     public void reset() {
@@ -647,7 +647,7 @@ public class CollisionMap {
     }
 
     public void orClipTable(int x, int y, int flag) {
-        clippingData[x][y] = HuffmanEncoding.method1021(clippingData[x][y], -flag + 16777215);
+        clippingData[x][y] = HuffmanEncoding.bitWiseAND(clippingData[x][y], -flag + 16777215);
     }
 
     public boolean reachedWallDecoration(int currentX, int currentY, int goalX, int goalY, int goalPosition, int goalOrientation) {

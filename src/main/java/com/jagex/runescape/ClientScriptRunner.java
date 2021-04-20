@@ -403,7 +403,7 @@ public class ClientScriptRunner extends Node {
                     }
                     if(scriptOpcode == 27) {
                         int operand = intOperands[scriptIndex];
-                        MovedStatics.method522(scriptIntValues[--intValueIndex], operand);
+                        VarbitDefinition.setVarbitValue(scriptIntValues[--intValueIndex], operand);
                         continue;
                     }
                     if(scriptOpcode == 31) {
@@ -521,7 +521,7 @@ public class ClientScriptRunner extends Node {
                     } else if(scriptOpcode == 101) {
                         GameInterface gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                         GameInterface childInterface = GameInterface.getInterface(gameInterface.parentId);
-                        childInterface.children[HuffmanEncoding.method1021(gameInterface.id, 32767)] = null;
+                        childInterface.children[HuffmanEncoding.bitWiseAND(gameInterface.id, 32767)] = null;
                     } else {
                         if(scriptOpcode != 102) {
                             break;
@@ -822,12 +822,12 @@ public class ClientScriptRunner extends Node {
                                                 intValueIndex -= 2;
                                                 int i_65_ = scriptIntValues[intValueIndex];
                                                 int i_66_ = scriptIntValues[1 + intValueIndex];
-                                                scriptIntValues[intValueIndex++] = HuffmanEncoding.method1021(i_65_, -1 + -(1 << i_66_));
+                                                scriptIntValues[intValueIndex++] = HuffmanEncoding.bitWiseAND(i_65_, -1 + -(1 << i_66_));
                                             } else if(scriptOpcode == 4010) {
                                                 intValueIndex -= 2;
                                                 int i_67_ = scriptIntValues[intValueIndex];
                                                 int i_68_ = scriptIntValues[1 + intValueIndex];
-                                                scriptIntValues[intValueIndex++] = HuffmanEncoding.method1021(1 << i_68_, i_67_) != 0 ? 1 : 0;
+                                                scriptIntValues[intValueIndex++] = HuffmanEncoding.bitWiseAND(1 << i_68_, i_67_) != 0 ? 1 : 0;
                                             } else if(scriptOpcode == 4011) {
                                                 intValueIndex -= 2;
                                                 int i_69_ = scriptIntValues[intValueIndex + 1];

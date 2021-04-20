@@ -121,7 +121,7 @@ public abstract class Class22 {
         do {
             AnimationSequence.anInt2480 = MovedStatics.pulseCycle;
             HuffmanEncoding.method1030((byte) 127);
-            int varPlayerType = Npc.getVarPlayerConfig(varPlayerIndex).type;
+            int varPlayerType = VarPlayerDefinition.getDefinition(varPlayerIndex).type;
             if(varPlayerType != 0) {
                 int varPlayerValue = GroundItemTile.varPlayers[varPlayerIndex];
                 if(varPlayerType == 1) {

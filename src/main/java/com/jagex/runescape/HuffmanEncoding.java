@@ -93,10 +93,8 @@ public class HuffmanEncoding {
 
     }
 
-    public static int method1021(int arg0, int arg1) {
-
+    public static int bitWiseAND(int arg0, int arg1) {
         return arg0 & arg1;
-
     }
 
 

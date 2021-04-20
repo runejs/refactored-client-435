@@ -1,5 +1,8 @@
 package com.jagex.runescape;
 
+import com.jagex.runescape.input.MouseHandler;
+import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.*;
@@ -367,7 +370,7 @@ public class Class33 {
                         if(MovedStatics.anInt1806 < 0)
                             RSString.method56(Main.aBoolean1790, is, OverlayDefinition.anInt2342);
                         else
-                            VarbitDefinition.method566(OverlayDefinition.anInt2342, Main.aBoolean1790, MovedStatics.anInt1806, is);
+                            method566(OverlayDefinition.anInt2342, Main.aBoolean1790, MovedStatics.anInt1806, is);
                     } else
                         Class42.method886(0, OverlayDefinition.anInt2342, Main.aBoolean1790, is, MovedStatics.anInt255);
                     Class26.aBoolean618 = false;
@@ -391,6 +394,33 @@ public class Class33 {
             MovedStatics.anInt2110 = arg1;
             Class22_Sub1.aCacheArchive_1855 = arg5;
             Class8.anInt289 = songid;
+        }
+    }
+
+    public static void method566(int arg0, boolean arg1, int arg2, byte[] arg3) {
+        if(MovedStatics.aClass22_189 != null) {
+            if(MouseHandler.anInt1450 >= 0) {
+                arg2 -= 20;
+                if(arg2 < 1)
+                    arg2 = 1;
+                RSCanvas.anInt54 = arg2;
+                if(MouseHandler.anInt1450 == 0)
+                    Buffer.anInt1982 = 0;
+                else {
+                    int i = Class29.method372(113, MouseHandler.anInt1450);
+                    i -= Class39.anInt909;
+                    Buffer.anInt1982 = (-1 + arg2 + 3600 + i) / arg2;
+                }
+                Player.aByteArray3270 = arg3;
+                PacketBuffer.anInt2258 = arg0;
+                PlayerAppearance.aBoolean687 = arg1;
+            } else if(RSCanvas.anInt54 == 0)
+                RSString.method56(arg1, arg3, arg0);
+            else {
+                PacketBuffer.anInt2258 = arg0;
+                PlayerAppearance.aBoolean687 = arg1;
+                Player.aByteArray3270 = arg3;
+            }
         }
     }
 }

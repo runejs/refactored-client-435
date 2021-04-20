@@ -1,7 +1,6 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.Rasterizer3D;
@@ -18,7 +17,7 @@ public class Class65 {
 
 
     public static void method1018() {
-        VarbitDefinition.gameScreenImageProducer.prepareRasterizer();
+        MovedStatics.gameScreenImageProducer.prepareRasterizer();
         Class24.fullScreenTextureArray = Rasterizer3D.setLineOffsets(Class24.fullScreenTextureArray);
     }
 

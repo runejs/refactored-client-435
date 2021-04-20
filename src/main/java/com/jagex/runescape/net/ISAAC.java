@@ -298,7 +298,7 @@ public class ISAAC {
                                 Scene.method116(i_61_, 1, 128 * i_64_, 128 * i_64_, 128 * i_65_, 128 + 128 * i_66_, i_73_, i_74_);
                                 for(int i_75_ = i_67_; i_75_ <= i_68_; i_75_++) {
                                     for(int i_76_ = i_65_; i_76_ <= i_66_; i_76_++)
-                                        MovedStatics.anIntArrayArrayArray262[i_75_][i_64_][i_76_] = HuffmanEncoding.method1021(MovedStatics.anIntArrayArrayArray262[i_75_][i_64_][i_76_], i ^ 0xffffffff);
+                                        MovedStatics.anIntArrayArrayArray262[i_75_][i_64_][i_76_] = HuffmanEncoding.bitWiseAND(MovedStatics.anIntArrayArrayArray262[i_75_][i_64_][i_76_], i ^ 0xffffffff);
                                 }
                             }
                         }
@@ -336,7 +336,7 @@ public class ISAAC {
                                 Scene.method116(i_61_, 2, 128 * i_77_, 128 * i_79_ + 128, 128 * i_63_, i_63_ * 128, i_86_, i_84_);
                                 for(int i_87_ = i_80_; i_78_ >= i_87_; i_87_++) {
                                     for(int i_88_ = i_77_; i_88_ <= i_79_; i_88_++)
-                                        MovedStatics.anIntArrayArrayArray262[i_87_][i_88_][i_63_] = HuffmanEncoding.method1021(MovedStatics.anIntArrayArrayArray262[i_87_][i_88_][i_63_], i_59_ ^ 0xffffffff);
+                                        MovedStatics.anIntArrayArrayArray262[i_87_][i_88_][i_63_] = HuffmanEncoding.bitWiseAND(MovedStatics.anIntArrayArrayArray262[i_87_][i_88_][i_63_], i_59_ ^ 0xffffffff);
                                 }
                             }
                         }
@@ -372,7 +372,7 @@ public class ISAAC {
                                 Scene.method116(i_61_, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_, i_92_ * 128 + 128, i_95_, i_95_);
                                 for(int i_96_ = i_89_; i_96_ <= i_90_; i_96_++) {
                                     for(int i_97_ = i_91_; i_92_ >= i_97_; i_97_++)
-                                        MovedStatics.anIntArrayArrayArray262[i_62_][i_96_][i_97_] = HuffmanEncoding.method1021(MovedStatics.anIntArrayArrayArray262[i_62_][i_96_][i_97_], i_60_ ^ 0xffffffff);
+                                        MovedStatics.anIntArrayArrayArray262[i_62_][i_96_][i_97_] = HuffmanEncoding.bitWiseAND(MovedStatics.anIntArrayArrayArray262[i_62_][i_96_][i_97_], i_60_ ^ 0xffffffff);
                                 }
                             }
                         }
@@ -425,8 +425,8 @@ public class ISAAC {
                 accumulator ^= accumulator << 2;
             accumulator += mem[0xff & 128 + i];
             int y;
-            mem[i] = y = mem[HuffmanEncoding.method1021(x, 1020) >> 2] + accumulator + result;
-            rsl[i] = result = x + mem[HuffmanEncoding.method1021(y >> -488567000 >> -1522276318, 255)];
+            mem[i] = y = mem[HuffmanEncoding.bitWiseAND(x, 1020) >> 2] + accumulator + result;
+            rsl[i] = result = x + mem[HuffmanEncoding.bitWiseAND(y >> -488567000 >> -1522276318, 255)];
         }
     }
 

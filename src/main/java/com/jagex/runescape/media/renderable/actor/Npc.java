@@ -33,20 +33,6 @@ public class Npc extends Actor {
     public static int[] anIntArray3312;
     public ActorDefinition actorDefinition;
 
-    public static VarPlayerConfig getVarPlayerConfig(int varPlayerIndex) {
-        VarPlayerConfig varPlayerConfig = (VarPlayerConfig) Class13.varPlayerConfigCache.get(varPlayerIndex);
-        if (varPlayerConfig != null) {
-            return varPlayerConfig;
-        }
-        byte[] cacheData = Class64.gameDefinitionsCacheArchive.getFile(16, varPlayerIndex);
-        varPlayerConfig = new VarPlayerConfig();
-        if(cacheData != null) {
-            varPlayerConfig.decodeVarPlayerConfig(new Buffer(cacheData));
-        }
-        Class13.varPlayerConfigCache.put(varPlayerIndex, varPlayerConfig);
-        return varPlayerConfig;
-    }
-
     public static void updateGame() {
         if(Class40_Sub5_Sub15.systemUpdateTime > 1)
             Class40_Sub5_Sub15.systemUpdateTime--;

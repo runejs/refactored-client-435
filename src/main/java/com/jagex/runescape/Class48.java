@@ -87,7 +87,7 @@ public class Class48 {
                 if(i <= 49) {
                     MouseHandler.tile_overlayids[arg7][arg0][arg4] = arg2.getByte();
                     OverlayDefinition.tile_underlay_path[arg7][arg0][arg4] = (byte) ((i + -2) / 4);
-                    Class35.tile_overlay_rotation[arg7][arg0][arg4] = (byte) HuffmanEncoding.method1021(arg1 + -2 + i, 3);
+                    Class35.tile_overlay_rotation[arg7][arg0][arg4] = (byte) HuffmanEncoding.bitWiseAND(arg1 + -2 + i, 3);
                 } else if(i <= 81)
                     OverlayDefinition.tile_flags[arg7][arg0][arg4] = (byte) (-49 + i);
                 else

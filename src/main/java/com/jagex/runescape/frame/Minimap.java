@@ -2,7 +2,6 @@ package com.jagex.runescape.frame;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.ActorDefinition;
-import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
@@ -193,8 +192,8 @@ public class Minimap extends FramePieceRenderer {
                 }
             }
         }
-        if(VarbitDefinition.destinationX != 0) {
-            int flagX = 2 + VarbitDefinition.destinationX * 4 + -(Player.localPlayer.worldX / 32);
+        if(MovedStatics.destinationX != 0) {
+            int flagX = 2 + MovedStatics.destinationX * 4 + -(Player.localPlayer.worldX / 32);
             int flagY = 2 + 4 * Class55.destinationY + -(Player.localPlayer.worldY / 32);
             drawOnResizableMinimap(flagX, flagY, Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]);
         }

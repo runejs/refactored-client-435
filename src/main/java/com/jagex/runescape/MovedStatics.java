@@ -130,6 +130,11 @@ public class MovedStatics {
     public static volatile int eventClickY = 0;
     public static int anInt2628 = 0;
     public static volatile boolean clearScreen = true;
+    public static ProducingGraphicsBuffer gameScreenImageProducer;
+    public static int anInt2359 = 0;
+    public static int[] anIntArray2361 = new int[]{0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, 2147483647, -1};
+    public static CacheArchive aCacheArchive_2364;
+    public static int destinationX = 0;
 
     public static void method440(byte arg0) {
         if (ISAAC.aBoolean512) {
@@ -355,7 +360,7 @@ public class MovedStatics {
 
     public static void method236(CacheArchive arg1, CacheArchive arg2, CacheArchive arg3) {
         ClientScriptRunner.aCacheArchive_2162 = arg1;
-        VarbitDefinition.aCacheArchive_2364 = arg3;
+        aCacheArchive_2364 = arg3;
         AnimationSequence.aCacheArchive_2484 = arg2;
     }
 
@@ -522,10 +527,6 @@ public class MovedStatics {
         int i_7_ = GameShell.method32(i_3_, arg2, i_4_, true, i);
         int i_8_ = GameShell.method32(i_5_, arg2, i_6_, true, i);
         return GameShell.method32(i_7_, arg2, i_8_, true, i_1_);
-    }
-
-    public static void clearVarPlayerConfigCache() {
-        Class13.varPlayerConfigCache.clear();
     }
 
     public static int method1034(boolean arg0, int arg1, int arg2, byte[] arg3) {
@@ -733,18 +734,6 @@ public class MovedStatics {
                 }
             }
         }
-    }
-
-    public static void method522(int arg0, int arg1) {
-        VarbitDefinition varbitDefinition = VarbitDefinition.getDefinition(arg1);
-        int i = varbitDefinition.leastSignificantBit;
-        int i_0_ = varbitDefinition.index;
-        int i_1_ = varbitDefinition.mostSignificantBit;
-        int i_3_ = VarbitDefinition.varbitMasks[i_1_ + -i];
-        if (arg0 < 0 || i_3_ < arg0)
-            arg0 = 0;
-        i_3_ <<= i;
-        GroundItemTile.varPlayers[i_0_] = UnderlayDefinition.bitWiseOR(HuffmanEncoding.method1021(GroundItemTile.varPlayers[i_0_], i_3_ ^ 0xffffffff), HuffmanEncoding.method1021(i_3_, arg0 << i));
     }
 
     public static int method525(byte[] arg0, int arg1, byte arg2) {

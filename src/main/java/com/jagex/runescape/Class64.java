@@ -29,7 +29,6 @@ import java.text.MessageFormat;
 
 public class Class64 implements Runnable {
     public static int anInt1511 = -1;
-    public static CacheArchive gameDefinitionsCacheArchive;
     public static int lowestPlane = 99;
 
     public InputStream anInputStream1503;

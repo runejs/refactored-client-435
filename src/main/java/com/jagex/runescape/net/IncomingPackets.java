@@ -858,8 +858,8 @@ public class IncomingPackets {
             }
             if(incomingPacket == 14) { // reset client configs?
                 for(int varPlayerIndex = 0; Class59.varPlayerConfigSize > varPlayerIndex; varPlayerIndex++) {
-                    VarPlayerConfig varPlayerConfig = Npc.getVarPlayerConfig(varPlayerIndex);
-                    if(varPlayerConfig.type == 0) {
+                    VarPlayerDefinition varPlayerDefinition = VarPlayerDefinition.getVarPlayerConfig(varPlayerIndex);
+                    if(varPlayerDefinition.type == 0) {
                         Buffer.anIntArray1984[varPlayerIndex] = 0;
                         GroundItemTile.varPlayers[varPlayerIndex] = 0;
                     }

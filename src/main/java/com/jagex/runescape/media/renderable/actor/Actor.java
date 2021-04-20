@@ -4,7 +4,6 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
@@ -349,8 +348,8 @@ public abstract class Actor extends Renderable {
                     class40_sub3.remove();
             }
             Buffer.anInt1985 = -1;
-            if(VarbitDefinition.destinationX != 0) {
-                VarbitDefinition.destinationX -= i_34_;
+            if(MovedStatics.destinationX != 0) {
+                MovedStatics.destinationX -= i_34_;
                 Class55.destinationY -= i_35_;
             }
             Player.cutsceneActive = false;

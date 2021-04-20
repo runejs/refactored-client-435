@@ -62,7 +62,7 @@ public class Class37 {
         MovedStatics.anInt324 = -1;
         Class35.anInt1728 = 0;
         Class49.anInt1151 = -1;
-        VarbitDefinition.destinationX = 0;
+        MovedStatics.destinationX = 0;
         MovedStatics.minimapState = 0;
         Class40_Sub5_Sub15.systemUpdateTime = 0;
         IncomingPackets.incomingPacketBuffer.currentPosition = arg0;
@@ -172,8 +172,8 @@ public class Class37 {
                 }
             }
         }
-        if(VarbitDefinition.destinationX != 0) {
-            int flagX = 2 + VarbitDefinition.destinationX * 4 + -(Player.localPlayer.worldX / 32);
+        if(MovedStatics.destinationX != 0) {
+            int flagX = 2 + MovedStatics.destinationX * 4 + -(Player.localPlayer.worldX / 32);
             int flagY = 2 + 4 * Class55.destinationY + -(Player.localPlayer.worldY / 32);
             SceneTile.drawOnMinimap(flagY, flagX, Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]);
         }

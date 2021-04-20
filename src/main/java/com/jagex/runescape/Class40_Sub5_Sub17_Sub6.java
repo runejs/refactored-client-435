@@ -1,6 +1,5 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.media.VertexNormal;
@@ -60,8 +59,8 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     }
 
     public static void method833(int arg0, boolean arg1) {
-        if(Player.localPlayer.worldX >> 7 == VarbitDefinition.destinationX && Player.localPlayer.worldY >> 7 == Class55.destinationY)
-            VarbitDefinition.destinationX = 0;
+        if(Player.localPlayer.worldX >> 7 == MovedStatics.destinationX && Player.localPlayer.worldY >> 7 == Class55.destinationY)
+            MovedStatics.destinationX = 0;
         int i = Player.localPlayerCount;
         if(arg1)
             i = 1;

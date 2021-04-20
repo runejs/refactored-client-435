@@ -47,7 +47,7 @@ public class AnimationSequence extends CachedNode {
             for(int i_1_ = 0; i_1_ < 64; i_1_++) {
                 for(int i_2_ = 0; i_2_ < 64; i_2_++) {
                     if(arg4 + i_1_ > 0 && i_1_ + arg4 < 103 && arg5 + i_2_ > 0 && i_2_ + arg5 < 103)
-                        arg0[i].clippingData[i_1_ + arg4][i_2_ + arg5] = HuffmanEncoding.method1021(arg0[i].clippingData[i_1_ + arg4][i_2_ + arg5], -16777217);
+                        arg0[i].clippingData[i_1_ + arg4][i_2_ + arg5] = HuffmanEncoding.bitWiseAND(arg0[i].clippingData[i_1_ + arg4][i_2_ + arg5], -16777217);
                 }
             }
         }

@@ -4,7 +4,6 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.io.Buffer;
@@ -182,7 +181,7 @@ public class FloorDecoration {
             Buffer.tabTopBack = null;
             MovedStatics.tabImageProducer = null;
             MovedStatics.aClass40_Sub5_Sub14_Sub2_1315 = null;
-            VarbitDefinition.gameScreenImageProducer = null;
+            MovedStatics.gameScreenImageProducer = null;
             ISAAC.aClass40_Sub5_Sub14_Sub2_524 = null;
             RSCanvas.chatBoxImageProducer = null;
             Class40_Sub7.mapBackRight = null;

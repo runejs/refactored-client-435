@@ -582,7 +582,7 @@ public class Main extends GameShell {
                     int i_69_ = i_67_;
                     i_67_ = Class42.anIntArray1013[i_67_];
                     int i_70_ = Class8.flameLeftBackground.pixels[i_62_];
-                    Class8.flameLeftBackground.pixels[i_62_++] = HuffmanEncoding.method1021(-16711936, HuffmanEncoding.method1021(i_67_, 16711935) * i_69_ + i_68_ * HuffmanEncoding.method1021(i_70_, 16711935)) + HuffmanEncoding.method1021(HuffmanEncoding.method1021(65280, i_70_) * i_68_ + i_69_ * HuffmanEncoding.method1021(65280, i_67_), 16711680) >> 8;
+                    Class8.flameLeftBackground.pixels[i_62_++] = HuffmanEncoding.bitWiseAND(-16711936, HuffmanEncoding.bitWiseAND(i_67_, 16711935) * i_69_ + i_68_ * HuffmanEncoding.bitWiseAND(i_70_, 16711935)) + HuffmanEncoding.bitWiseAND(HuffmanEncoding.bitWiseAND(65280, i_70_) * i_68_ + i_69_ * HuffmanEncoding.bitWiseAND(65280, i_67_), 16711680) >> 8;
                 } else
                     i_62_++;
             }
@@ -603,7 +603,7 @@ public class Main extends GameShell {
                     int i_78_ = GameObject.flameRightBackground.pixels[i_62_];
                     int i_79_ = 256 + -i_76_;
                     i_76_ = Class42.anIntArray1013[i_76_];
-                    GameObject.flameRightBackground.pixels[i_62_++] = HuffmanEncoding.method1021(i_77_ * HuffmanEncoding.method1021(65280, i_76_) + i_79_ * HuffmanEncoding.method1021(65280, i_78_), 16711680) + HuffmanEncoding.method1021(i_79_ * HuffmanEncoding.method1021(16711935, i_78_) + HuffmanEncoding.method1021(16711935, i_76_) * i_77_, -16711936) >> 8;
+                    GameObject.flameRightBackground.pixels[i_62_++] = HuffmanEncoding.bitWiseAND(i_77_ * HuffmanEncoding.bitWiseAND(65280, i_76_) + i_79_ * HuffmanEncoding.bitWiseAND(65280, i_78_), 16711680) + HuffmanEncoding.bitWiseAND(i_79_ * HuffmanEncoding.bitWiseAND(16711935, i_78_) + HuffmanEncoding.bitWiseAND(16711935, i_76_) * i_77_, -16711936) >> 8;
                 } else
                     i_62_++;
             }
@@ -680,11 +680,6 @@ public class Main extends GameShell {
         return 7 + -arg6 + 1 + -arg4;
     }
 
-    public static void method43(CacheArchive gameDefinitionsCacheArchive) {
-        Class64.gameDefinitionsCacheArchive = gameDefinitionsCacheArchive;
-        Class59.varPlayerConfigSize = Class64.gameDefinitionsCacheArchive.fileLength(16);
-    }
-
     public static void method44() {
         Class51.aLong1203 = 0L;
         Class12.mouseCapturer.coord = 0;
@@ -710,7 +705,7 @@ public class Main extends GameShell {
         Class8.itemSelected = 0;
         Class57.anInt1342 = -40 + (int) (80.0 * Math.random());
         Class48.cameraOffsetY = -55 + (int) (Math.random() * 110.0);
-        VarbitDefinition.destinationX = 0;
+        MovedStatics.destinationX = 0;
         Class43.cameraYawOffset = (int) (Math.random() * 120.0) + -60;
         Buffer.anInt1985 = -1;
         Player.npcCount = 0;

@@ -3,10 +3,7 @@ package com.jagex.runescape;
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.FileOperations;
-import com.jagex.runescape.cache.def.FramemapDefinition;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.cache.def.OverlayDefinition;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -304,16 +301,11 @@ public class Landscape {
     }
 
 
-    public static void method936(CacheArchive arg1) {
-        RSCanvas.aCacheArchive_61 = arg1;
-
-    }
-
     public static void loadTerrainSubblock(int arg0, int arg2, int arg3, int arg4, int x, int arg6, int arg7, byte[] arg8, CollisionMap[] arg9) {
         for(int i = 0; i < 8; i++) {
             for(int y = 0; y < 8; y++) {
                 if(x + i > 0 && i + x < 103 && arg0 + y > 0 && y + arg0 < 103)
-                    arg9[arg4].clippingData[x + i][y + arg0] = HuffmanEncoding.method1021(arg9[arg4].clippingData[x + i][y + arg0], -16777217);
+                    arg9[arg4].clippingData[x + i][y + arg0] = HuffmanEncoding.bitWiseAND(arg9[arg4].clippingData[x + i][y + arg0], -16777217);
             }
         }
         Buffer class40_sub1 = new Buffer(arg8);

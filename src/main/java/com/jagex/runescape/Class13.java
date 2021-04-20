@@ -1,9 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.node.Class40_Sub6;
-import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.media.renderable.GameObject;
@@ -14,7 +12,6 @@ import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.Wall;
 
 public class Class13 {
-    public static NodeCache varPlayerConfigCache = new NodeCache(64);
     public static boolean[] playerArray = new boolean[5];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_418;
     public static int anInt419 = 2;
@@ -93,9 +90,9 @@ public class Class13 {
             Class44.aByteArrayArray1039[Main.anInt1764] = null;
             return is;
         }
-        if(arg1 == 30000 && VarbitDefinition.anInt2359 > 0) {
-            byte[] is = RSCanvas.aByteArrayArray47[--VarbitDefinition.anInt2359];
-            RSCanvas.aByteArrayArray47[VarbitDefinition.anInt2359] = null;
+        if(arg1 == 30000 && MovedStatics.anInt2359 > 0) {
+            byte[] is = RSCanvas.aByteArrayArray47[--MovedStatics.anInt2359];
+            RSCanvas.aByteArrayArray47[MovedStatics.anInt2359] = null;
             return is;
         }
         return new byte[arg1];

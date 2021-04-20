@@ -160,8 +160,8 @@ public class Class40_Sub3 extends Node {
                 Class42.method885(CacheArchive.gameDefinitionsCacheArchive, Class22.membersWorld, CacheArchive.modelCacheArchive);
                 MovedStatics.method236(CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.skeletonCacheArchive);
                 Class55.method966(arg0 ^ 0x38, CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
-                Landscape.method936(CacheArchive.gameDefinitionsCacheArchive);
-                Main.method43(CacheArchive.gameDefinitionsCacheArchive);
+                VarbitDefinition.initializeVarbitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
+                VarPlayerDefinition.initializeVarPlayerDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 GameInterface.createInterfaceMemoryBuffers();
                 Class40_Sub5_Sub6.loadingPercent = 80;
                 MovedStatics.anInt1607 = 60;
