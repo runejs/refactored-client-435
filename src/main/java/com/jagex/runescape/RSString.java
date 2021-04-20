@@ -259,7 +259,7 @@ public class RSString {
         long l = method86();
         synchronized(aClass1718 != null ? aClass1718 : (aClass1718 = method90("com.jagex.runescape.RSString"))) {
             if(MovedStatics.aClass23_805 != null) {
-                for(Class40_Sub7 class40_sub7 = (Class40_Sub7) MovedStatics.aClass23_805.method331(l, 6120); class40_sub7 != null; class40_sub7 = (Class40_Sub7) MovedStatics.aClass23_805.method333()) {
+                for(Class40_Sub7 class40_sub7 = (Class40_Sub7) MovedStatics.aClass23_805.getNode(l); class40_sub7 != null; class40_sub7 = (Class40_Sub7) MovedStatics.aClass23_805.getLastFetchedNode()) {
                     if(equals(class40_sub7.aClass1_2124))
                         return class40_sub7.aClass1_2124;
                 }

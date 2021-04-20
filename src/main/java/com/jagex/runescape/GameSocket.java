@@ -19,11 +19,11 @@ public class GameSocket implements Runnable {
 
     public int anInt1509 = 0;
     public int anInt1520 = 0;
-    public boolean socketInitialized;
+    public boolean socketDisconnected;
     public byte[] aByteArray1504;
 
     public GameSocket(Socket socket, Signlink signLink) throws IOException {
-        socketInitialized = false;
+        socketDisconnected = false;
         socketError = false;
         this.signLink = signLink;
         this.socket = socket;
@@ -35,7 +35,7 @@ public class GameSocket implements Runnable {
 
 
     public void method1008(int arg0, int arg1, int arg2, byte[] arg3) throws IOException {
-        if (!socketInitialized && arg2 < -126) {
+        if (!socketDisconnected && arg2 < -126) {
             while (arg1 > 0) {
                 int i = socketInputStream.read(arg3, arg0, arg1);
                 if (i <= 0)
@@ -47,9 +47,9 @@ public class GameSocket implements Runnable {
     }
 
     public void method1009() {
-        if (!socketInitialized) {
+        if (!socketDisconnected) {
             synchronized (this) {
-                socketInitialized = true;
+                socketDisconnected = true;
                 this.notifyAll();
             }
             if (signLinkNode != null) {
@@ -69,7 +69,7 @@ public class GameSocket implements Runnable {
     }
 
     public void method1010(int arg0, int arg2, byte[] arg3) throws IOException {
-        if (!socketInitialized) {
+        if (!socketDisconnected) {
             if (socketError) {
                 socketError = false;
                 throw new IOException();
@@ -101,7 +101,7 @@ public class GameSocket implements Runnable {
                 int i_0_;
                 synchronized (this) {
                     if (anInt1509 == anInt1520) {
-                        if (socketInitialized) {
+                        if (socketDisconnected) {
                             break;
                         }
                         try {
@@ -150,16 +150,14 @@ public class GameSocket implements Runnable {
         }
     }
 
-    public int method1014(int arg0) throws IOException {
-        if (arg0 >= -120)
-            signLink = null;
-        if (socketInitialized)
+    public int inputStreamAvailable() throws IOException {
+        if (socketDisconnected)
             return 0;
         return socketInputStream.available();
     }
 
     public int read() throws IOException {
-        if (socketInitialized)
+        if (socketDisconnected)
             return 0;
         return socketInputStream.read();
     }

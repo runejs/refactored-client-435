@@ -25,7 +25,7 @@ public class Signlink implements Runnable {
     public SignlinkNode current = null;
     public Runnable_Impl1 aRunnable_Impl1_727;
     public SizedAccessFile metaIndexAccessFile;
-    public InetAddress anInetAddress730;
+    public InetAddress netAddress;
     public SignlinkNode next = null;
     public Interface2 anInterface2_732;
     public Thread aThread733;
@@ -33,12 +33,12 @@ public class Signlink implements Runnable {
     public SizedAccessFile cacheDataAccessFile;
     public GameShell anApplet740;
 
-    public Signlink(boolean arg0, GameShell arg1, InetAddress inetAddress, int fileStoreId, String cacheFolder, int cacheIndexes) throws IOException {
+    public Signlink(boolean arg0, GameShell arg1, InetAddress netAddress, int fileStoreId, String cacheFolder, int cacheIndexes) throws IOException {
         metaIndexAccessFile = null;
         cacheDataAccessFile = null;
         anApplet740 = null;
         anApplet740 = arg1;
-        anInetAddress730 = inetAddress;
+        this.netAddress = netAddress;
         javaVersion = "1.1";
         javaVendor = "Unknown";
         try {
@@ -211,9 +211,11 @@ public class Signlink implements Runnable {
             }
             try {
                 int type = currentNode.type;
-                if(type == 1)
-                    currentNode.value = new Socket(anInetAddress730, currentNode.integerData);
-                else if(type == 2) {
+                if (type == 1) {
+                    // Create connection
+                    currentNode.value = new Socket(netAddress, currentNode.integerData);
+                } else if(type == 2) {
+                    // Start thread
                     Thread thread = new Thread((Runnable) currentNode.objectData);
                     thread.setDaemon(true);
                     thread.start();

@@ -24,7 +24,7 @@ public abstract class Class22 {
     public static boolean membersWorld = false;
     public static boolean accountFlagged = false;
     public static int anInt545;
-    public static int anInt547 = 0;
+    public static int msSinceLastUpdate = 0;
     public static boolean[] aBooleanArray548 = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, false, false};
 
     public static void method299(byte arg0, int arg1) {

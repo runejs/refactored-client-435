@@ -41,14 +41,14 @@ public class NodeCache {
     }
 
     public CachedNode get(long key) {
-        CachedNode cachedNode = (CachedNode) hashTable.method331(key, 6120);
+        CachedNode cachedNode = (CachedNode) hashTable.getNode(key);
         if(cachedNode != null)
             nodeQueue.push(cachedNode);
         return cachedNode;
     }
 
     public void remove(long key) {
-        CachedNode cachedNode = (CachedNode) hashTable.method331(key, 6120);
+        CachedNode cachedNode = (CachedNode) hashTable.getNode(key);
         if(cachedNode == null)
             return;
         cachedNode.remove();

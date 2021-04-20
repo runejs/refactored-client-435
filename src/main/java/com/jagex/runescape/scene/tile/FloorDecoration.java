@@ -200,14 +200,15 @@ public class FloorDecoration {
         }
     }
 
+    // TODO Some sort of update
     public static boolean method346() {
         long l = System.currentTimeMillis();
-        int i = (int) (l - LinkedList.aLong1051);
-        LinkedList.aLong1051 = l;
-        if(i > 200) {
-            i = 200;
+        int currentMsSinceLastUpdate = (int) (l - LinkedList.lastUpdateInMillis);
+        LinkedList.lastUpdateInMillis = l;
+        if(currentMsSinceLastUpdate > 200) {
+            currentMsSinceLastUpdate = 200;
         }
-        Class22.anInt547 += i;
+        Class22.msSinceLastUpdate += currentMsSinceLastUpdate;
         if(Class42.anInt1006 == 0 && Class17.anInt464 == 0 && MovedStatics.anInt554 == 0 && ProducingGraphicsBuffer.anInt1618 == 0) {
             return true;
         }
@@ -215,7 +216,7 @@ public class FloorDecoration {
             return false;
         }
         try {
-            if(Class22.anInt547 > 30000) {
+            if(Class22.msSinceLastUpdate > 30000) {
                 throw new IOException();
             }
             for(/**/; Class17.anInt464 < 20; Class17.anInt464++) {
@@ -241,14 +242,14 @@ public class FloorDecoration {
                 Class42.anInt1006++;
             }
             for(int i_33_ = 0; i_33_ < 100; i_33_++) {
-                int i_34_ = Class57.gameSocket.method1014(-122);
+                int i_34_ = Class57.gameSocket.inputStreamAvailable();
                 if(i_34_ < 0) {
                     throw new IOException();
                 }
                 if(i_34_ == 0) {
                     break;
                 }
-                Class22.anInt547 = 0;
+                Class22.msSinceLastUpdate = 0;
                 int i_35_ = 0;
                 if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null) {
                     i_35_ = 8;
@@ -345,10 +346,10 @@ public class FloorDecoration {
                         int i_46_ = LinkedList.aClass40_Sub1_1081.getUnsignedByte();
                         int i_47_ = LinkedList.aClass40_Sub1_1081.getIntBE();
                         long l_48_ = (long) ((i_44_ << 16) + i_45_);
-                        Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class37.aClass23_869.method331(l_48_, 6120);
+                        Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class37.aClass23_869.getNode(l_48_);
                         Npc.aBoolean3298 = true;
                         if(class40_sub5_sub13 == null) {
-                            class40_sub5_sub13 = (Class40_Sub5_Sub13) MovedStatics.aClass23_841.method331(l_48_, 6120);
+                            class40_sub5_sub13 = (Class40_Sub5_Sub13) MovedStatics.aClass23_841.getNode(l_48_);
                             Npc.aBoolean3298 = false;
                         }
                         if(class40_sub5_sub13 == null) {

@@ -87,9 +87,9 @@ public class OverlayDefinition extends CachedNode {
                 anInt2321 = 0;
                 Class40_Sub3.anInt2032 = 0;
             }
-            if (actionId != 20 && actionId != 40 && PlayerAppearance.gameSocket != null) {
-                PlayerAppearance.gameSocket.method1009();
-                PlayerAppearance.gameSocket = null;
+            if (actionId != 20 && actionId != 40 && PlayerAppearance.lostConnectionSocket != null) {
+                PlayerAppearance.lostConnectionSocket.method1009();
+                PlayerAppearance.lostConnectionSocket = null;
             }
             if (Class51.currentAction == 25 || Class51.currentAction == 40) {
                 Class65.method1018();

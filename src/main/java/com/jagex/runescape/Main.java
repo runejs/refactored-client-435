@@ -1260,7 +1260,7 @@ public class Main extends GameShell {
             Class59.dropClient();
         } else {
             for(int i = 0; i < 100; i++) {
-                if(!IncomingPackets.parseIncomingPackets(false))
+                if(!IncomingPackets.parseIncomingPackets())
                     break;
             }
             if(Class51.currentAction == 30 || Class51.currentAction == 35) {
@@ -1502,32 +1502,32 @@ public class Main extends GameShell {
 
                         int i = 34;
                         if(GameInterface.gameScreenInterfaceId != -1)
-                            GameInterface.method360((byte) 125, 516, i, 338, GameInterface.gameScreenInterfaceId, 4, 4);
+                            GameInterface.runClientScriptsForParentInterface(516, i, 338, GameInterface.gameScreenInterfaceId, 4, 4);
 
                         if(GameInterface.tabAreaInterfaceId == -1) {
                             if(Player.tabWidgetIds[Player.currentTabId] != -1)
-                                GameInterface.method360((byte) 125, 743, i, 466, Player.tabWidgetIds[Player.currentTabId], 205, 553);
+                                GameInterface.runClientScriptsForParentInterface(743, i, 466, Player.tabWidgetIds[Player.currentTabId], 205, 553);
                         } else
-                            GameInterface.method360((byte) 125, 743, i, 466, GameInterface.tabAreaInterfaceId, 205, 553);
+                            GameInterface.runClientScriptsForParentInterface(743, i, 466, GameInterface.tabAreaInterfaceId, 205, 553);
 
                         if(GameInterface.chatboxInterfaceId != -1)
-                            GameInterface.method360((byte) 125, 496, i, 453, GameInterface.chatboxInterfaceId, 357, 17);
+                            GameInterface.runClientScriptsForParentInterface(496, i, 453, GameInterface.chatboxInterfaceId, 357, 17);
                         else if(ChatBox.dialogueId != -1)
-                            GameInterface.method360((byte) 125, 496, i, 453, ChatBox.dialogueId, 357, 17);
+                            GameInterface.runClientScriptsForParentInterface(496, i, 453, ChatBox.dialogueId, 357, 17);
 
                         if(GameInterface.gameScreenInterfaceId != -1)
-                            GameInterface.method360((byte) 125, 516, i ^ 0xffffffff, 338, GameInterface.gameScreenInterfaceId, 4, 4);
+                            GameInterface.runClientScriptsForParentInterface(516, i ^ 0xffffffff, 338, GameInterface.gameScreenInterfaceId, 4, 4);
 
                         if(GameInterface.tabAreaInterfaceId != -1)
-                            GameInterface.method360((byte) 125, 743, i ^ 0xffffffff, 466, GameInterface.tabAreaInterfaceId, 205, 553);
+                            GameInterface.runClientScriptsForParentInterface(743, i ^ 0xffffffff, 466, GameInterface.tabAreaInterfaceId, 205, 553);
 
                         else if(Player.tabWidgetIds[Player.currentTabId] != -1)
-                            GameInterface.method360((byte) 125, 743, i ^ 0xffffffff, 466, Player.tabWidgetIds[Player.currentTabId], 205, 553);
+                            GameInterface.runClientScriptsForParentInterface(743, i ^ 0xffffffff, 466, Player.tabWidgetIds[Player.currentTabId], 205, 553);
 
                         if(GameInterface.chatboxInterfaceId != -1)
-                            GameInterface.method360((byte) 125, 496, i ^ 0xffffffff, 453, GameInterface.chatboxInterfaceId, 357, 17);
+                            GameInterface.runClientScriptsForParentInterface(496, i ^ 0xffffffff, 453, GameInterface.chatboxInterfaceId, 357, 17);
                         else if(ChatBox.dialogueId != -1)
-                            GameInterface.method360((byte) 125, 496, i ^ 0xffffffff, 453, ChatBox.dialogueId, 357, 17);
+                            GameInterface.runClientScriptsForParentInterface(496, i ^ 0xffffffff, 453, ChatBox.dialogueId, 357, 17);
 
                         // If hovering over a widget
                         if(MovedStatics.anInt1586 != -1 || FloorDecoration.anInt614 != -1 || MovedStatics.anInt573 != -1) {
@@ -1677,6 +1677,7 @@ public class Main extends GameShell {
             ScreenController.refreshFrameSize();
             updateGame();
         } else if (Class51.currentAction == 40) {
+            // Connection lost
             SpotAnimDefinition.method552(true);
         }
     }
@@ -1760,15 +1761,15 @@ public class Main extends GameShell {
                         }
                         if (Class8.anInt290 == 2) {
                             Class29.gameSocket = new GameSocket((Socket) ProducingGraphicsBuffer.aSignlinkNode_1632.value, signlink);
-                            Buffer class40_sub1 = new Buffer(5);
-                            class40_sub1.putByte(15);
-                            class40_sub1.putIntBE(435);
-                            Class29.gameSocket.method1010(5, 0, class40_sub1.buffer);
+                            Buffer buffer = new Buffer(5);
+                            buffer.putByte(15);
+                            buffer.putIntBE(435);
+                            Class29.gameSocket.method1010(5, 0, buffer.buffer);
                             Class8.anInt290++;
                             Class22_Sub1.aLong1841 = System.currentTimeMillis();
                         }
                         if (Class8.anInt290 == 3) {
-                            if (Class51.currentAction > 5 && Class29.gameSocket.method1014(5 + -131) <= 0) {
+                            if (Class51.currentAction > 5 && Class29.gameSocket.inputStreamAvailable() <= 0) {
                                 if (System.currentTimeMillis() + -Class22_Sub1.aLong1841 > 30000L) {
                                     method35(-2);
                                     break;

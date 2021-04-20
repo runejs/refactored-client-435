@@ -71,11 +71,11 @@ public class IncomingPackets {
             -2, 4, 0, 0, 0, 0, 0, 0, 0, 0,  // 240
             6, 0, 0, 6, 2, 4};
 
-    public static boolean parseIncomingPackets(boolean arg0) {
+    public static boolean parseIncomingPackets() {
         if(MovedStatics.gameSocket == null)
             return false;
         try {
-            int i = MovedStatics.gameSocket.method1014(-122);
+            int i = MovedStatics.gameSocket.inputStreamAvailable();
             if(i == 0)
                 return false;
             if(incomingPacket == -1) {
@@ -282,8 +282,6 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(arg0)
-                CollisionMap.anInt172 = -96;
             if(incomingPacket == 235) {
                 MovedStatics.minimapState = incomingPacketBuffer.getUnsignedByte();
                 incomingPacket = -1;

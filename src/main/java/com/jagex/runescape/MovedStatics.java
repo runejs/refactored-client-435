@@ -444,14 +444,14 @@ public class MovedStatics {
     public static void method327(boolean arg0, CacheArchive arg1, int arg2, int arg3, byte arg4, int arg5, byte arg6) {
         int i = 14 % ((arg6 - 5) / 62);
         long l = (long) (arg3 + (arg2 << 16));
-        Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class51.aClass23_1194.method331(l, 6120);
+        Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class51.aClass23_1194.getNode(l);
         if (class40_sub5_sub13 == null) {
-            class40_sub5_sub13 = (Class40_Sub5_Sub13) Class37.aClass23_869.method331(l, 6120);
+            class40_sub5_sub13 = (Class40_Sub5_Sub13) Class37.aClass23_869.getNode(l);
             if (class40_sub5_sub13 == null) {
-                class40_sub5_sub13 = (Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120);
+                class40_sub5_sub13 = (Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.getNode(l);
                 if (class40_sub5_sub13 == null) {
                     if (!arg0) {
-                        class40_sub5_sub13 = (Class40_Sub5_Sub13) aClass23_841.method331(l, 6120);
+                        class40_sub5_sub13 = (Class40_Sub5_Sub13) aClass23_841.getNode(l);
                         if (class40_sub5_sub13 != null)
                             return;
                     }
@@ -583,7 +583,7 @@ public class MovedStatics {
                 string = string.replace('@', '_');
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
-                SignlinkNode signlinkNode = Actor.aClass31_3152.method388(false, new URL(Actor.aClass31_3152.anApplet740.getCodeBase(), "clienterror.ws?c=" + Class39.anInt901 + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
+                SignlinkNode signlinkNode = Actor.signlink.method388(false, new URL(Actor.signlink.anApplet740.getCodeBase(), "clienterror.ws?c=" + Class39.anInt901 + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
                 while (signlinkNode.anInt434 == 0)
                     Class43.sleep(1L);
                 if (signlinkNode.anInt434 != 1)
@@ -651,7 +651,7 @@ public class MovedStatics {
 
     public static void method399(int arg0, int arg2) {
         long l = (arg0 << 16) + arg2;
-        Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.method331(l, 6120);
+        Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.getNode(l);
         if (class40_sub5_sub13 != null) {
             InteractiveObject.aNodeQueue_485.unshift(class40_sub5_sub13);
         }

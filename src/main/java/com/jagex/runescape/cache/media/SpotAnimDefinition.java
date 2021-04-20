@@ -100,7 +100,7 @@ public class SpotAnimDefinition extends CachedNode {
             if (Class40_Sub3.anInt2032 == 4) {
 
                 if (IncomingPackets.incomingPacketBuffer.currentPosition < 8) {
-                    int i = MovedStatics.gameSocket.method1014(-127);
+                    int i = MovedStatics.gameSocket.inputStreamAvailable();
                     if (i > -IncomingPackets.incomingPacketBuffer.currentPosition + 8) {
                         i = -IncomingPackets.incomingPacketBuffer.currentPosition + 8;
                     }
@@ -167,7 +167,7 @@ public class SpotAnimDefinition extends CachedNode {
 
 
 
-            if (Class40_Sub3.anInt2032 == 6 && MovedStatics.gameSocket.method1014(-126) > 0) {
+            if (Class40_Sub3.anInt2032 == 6 && MovedStatics.gameSocket.inputStreamAvailable() > 0) {
                 int i = MovedStatics.gameSocket.read();
                 if (i != 21 || Class51.currentAction != 20) {
                     if (i == 2) {
@@ -189,7 +189,7 @@ public class SpotAnimDefinition extends CachedNode {
                     Class40_Sub3.anInt2032 = 7;
                 }
             }
-            if (Class40_Sub3.anInt2032 == 7 && MovedStatics.gameSocket.method1014(-128) > 0) {
+            if (Class40_Sub3.anInt2032 == 7 && MovedStatics.gameSocket.inputStreamAvailable() > 0) {
                 Class33.anInt784 = 180 + MovedStatics.gameSocket.read() * 60;
                 Class40_Sub3.anInt2032 = 8;
 
@@ -202,7 +202,7 @@ public class SpotAnimDefinition extends CachedNode {
                 }
             } else {
 
-                if (Class40_Sub3.anInt2032 == 9 && MovedStatics.gameSocket.method1014(-121) >= 8) {
+                if (Class40_Sub3.anInt2032 == 9 && MovedStatics.gameSocket.inputStreamAvailable() >= 8) {
                     Configuration.USERNAME = Native.username.toString();
                     Configuration.PASSWORD = Native.password.toString();
                     InteractiveObject.playerRights = MovedStatics.gameSocket.read();
@@ -220,7 +220,7 @@ public class SpotAnimDefinition extends CachedNode {
                     Class40_Sub3.anInt2032 = 10;
                 }
                 if (Class40_Sub3.anInt2032 == 10) {
-                    if (MovedStatics.gameSocket.method1014(-124) >= IncomingPackets.incomingPacketSize) {
+                    if (MovedStatics.gameSocket.inputStreamAvailable() >= IncomingPackets.incomingPacketSize) {
                         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                         MovedStatics.gameSocket.method1008(0, IncomingPackets.incomingPacketSize, -128, IncomingPackets.incomingPacketBuffer.buffer);
                         Main.method44();

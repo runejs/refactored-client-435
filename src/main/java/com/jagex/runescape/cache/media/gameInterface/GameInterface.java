@@ -1324,41 +1324,41 @@ public class GameInterface extends CachedNode {
         }
     }
 
-    public static void method360(byte arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
-        if(decodeGameInterface(arg4)) {
-            if(arg0 != 125) {
-                drawScrollBar(-118, 12, 65, -60, 59, -24);
-            }
-            GameShell.method20(arg5, arg3, 0, arg2, arg6, -1, 1, cachedInterfaces[arg4], arg1, 0);
-            if(Wall.aGameInterface_353 != null) {
-                GameInterface gameInterface = Wall.aGameInterface_353;
-                GameInterface gameInterface_24_ = FramemapDefinition.method878(gameInterface);
-                if(gameInterface_24_ != null) {
-                    int[] is = Class13.method247(gameInterface_24_, (byte) 97);
-                    int[] is_25_ = Class13.method247(gameInterface, (byte) 110);
-                    int i = is_25_[1] - is[1] + -MovedStatics.anInt2621 + Landscape.mouseY;
-                    int i_26_ = -is[0] + is_25_[0] + Class13.mouseX + -MovedStatics.anInt1996;
-                    if(i < 0) {
-                        i = 0;
+    public static void runClientScriptsForParentInterface(int arg1, int arg2, int arg3, int widgetId, int arg5, int arg6) {
+        if (!decodeGameInterface(widgetId)) {
+            return;
+        }
+
+        GameShell.runClientScriptsForInterface(arg5, arg3, 0, arg2, arg6, -1, cachedInterfaces[widgetId], arg1, 0);
+
+        if(Wall.aGameInterface_353 != null) {
+            GameInterface gameInterface = Wall.aGameInterface_353;
+            GameInterface gameInterface_24_ = FramemapDefinition.method878(gameInterface);
+            if(gameInterface_24_ != null) {
+                int[] is = Class13.method247(gameInterface_24_, (byte) 97);
+                int[] is_25_ = Class13.method247(gameInterface, (byte) 110);
+                int i = is_25_[1] - is[1] + -MovedStatics.anInt2621 + Landscape.mouseY;
+                int i_26_ = -is[0] + is_25_[0] + Class13.mouseX + -MovedStatics.anInt1996;
+                if(i < 0) {
+                    i = 0;
+                }
+                if(gameInterface_24_.originalHeight < i + gameInterface.originalHeight) {
+                    i = -gameInterface.originalHeight + gameInterface_24_.originalHeight;
+                }
+                if(i_26_ < 0) {
+                    i_26_ = 0;
+                }
+                if(gameInterface_24_.originalWidth < gameInterface.originalWidth + i_26_) {
+                    i_26_ = gameInterface_24_.originalWidth - gameInterface.originalWidth;
+                }
+                if(Wall.aGameInterface_353.anObjectArray2669 != null && (arg2 & 0x200) != 0) {
+                    ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2669, 0, i, gameInterface, i_26_);
+                }
+                if(SpotAnimDefinition.mouseButtonPressed == 0 && (arg2 & 0x400) != 0) {
+                    if(Wall.aGameInterface_353.anObjectArray2695 != null) {
+                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2695, 0, i, gameInterface, i_26_);
                     }
-                    if(gameInterface_24_.originalHeight < i + gameInterface.originalHeight) {
-                        i = -gameInterface.originalHeight + gameInterface_24_.originalHeight;
-                    }
-                    if(i_26_ < 0) {
-                        i_26_ = 0;
-                    }
-                    if(gameInterface_24_.originalWidth < gameInterface.originalWidth + i_26_) {
-                        i_26_ = gameInterface_24_.originalWidth - gameInterface.originalWidth;
-                    }
-                    if(Wall.aGameInterface_353.anObjectArray2669 != null && (arg2 & 0x200) != 0) {
-                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2669, 0, i, gameInterface, i_26_);
-                    }
-                    if(SpotAnimDefinition.mouseButtonPressed == 0 && (arg2 & 0x400) != 0) {
-                        if(Wall.aGameInterface_353.anObjectArray2695 != null) {
-                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2695, 0, i, gameInterface, i_26_);
-                        }
-                        Wall.aGameInterface_353 = null;
-                    }
+                    Wall.aGameInterface_353 = null;
                 }
             }
         }

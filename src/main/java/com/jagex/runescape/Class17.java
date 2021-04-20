@@ -75,8 +75,8 @@ public class Class17 {
                 MovedStatics.anInt2278++;
             }
         }
-        Class22.anInt547 = 0;
-        LinkedList.aLong1051 = System.currentTimeMillis();
+        Class22.msSinceLastUpdate = 0;
+        LinkedList.lastUpdateInMillis = System.currentTimeMillis();
     }
 
     public static int method274(boolean arg0) {

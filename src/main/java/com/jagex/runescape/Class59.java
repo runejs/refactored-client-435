@@ -34,7 +34,7 @@ public class Class59 {
         else {
             // Connection lost
             OverlayDefinition.updateOverlay(40);
-            PlayerAppearance.gameSocket = MovedStatics.gameSocket;
+            PlayerAppearance.lostConnectionSocket = MovedStatics.gameSocket;
             MovedStatics.gameSocket = null;
         }
     }
