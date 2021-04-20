@@ -425,7 +425,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             IdentityKit.height = height;
             MovedStatics.anApplet_Sub1_179 = this;
             Class35.aFrame1732 = new Frame();
-            Class35.aFrame1732.setTitle("Jagex");
+            Class35.aFrame1732.setTitle(Configuration.SERVER_DISPLAY_NAME);
 //            Class35.aFrame1732.setResizable(false);
             ScreenController.frameMode(ScreenMode.FIXED);
             Class35.aFrame1732.setPreferredSize(new Dimension(width, height));
