@@ -20,10 +20,10 @@ public class VarbitDefinition extends CachedNode {
      */
     public static int[] varbitMasks = new int[32];
     static {
-        int currentBit = 2;
-        for(int index = 0; index < 32; index++) {
-            varbitMasks[index] = currentBit - 1;
-            currentBit += currentBit;
+        int currentBitAsDecimal = 2;
+        for(int currentBitPosition = 0; currentBitPosition < 32; currentBitPosition++) {
+            varbitMasks[currentBitPosition] = currentBitAsDecimal - 1;
+            currentBitAsDecimal += currentBitAsDecimal;
         }
     }
 
