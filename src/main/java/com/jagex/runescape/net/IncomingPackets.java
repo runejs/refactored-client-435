@@ -167,7 +167,7 @@ public class IncomingPackets {
             }
             if(incomingPacket == 233) { // clear destination X
                 incomingPacket = -1;
-                VarbitDefinition.destinationX = 0;
+                MovedStatics.destinationX = 0;
                 return true;
             }
             if(incomingPacket == 7) { // close cutscene
@@ -857,8 +857,8 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 14) { // reset client configs?
-                for(int varPlayerIndex = 0; Class59.varPlayerConfigSize > varPlayerIndex; varPlayerIndex++) {
-                    VarPlayerDefinition varPlayerDefinition = VarPlayerDefinition.getVarPlayerConfig(varPlayerIndex);
+                for(int varPlayerIndex = 0; VarPlayerDefinition.varPlayerDefinitionsSize > varPlayerIndex; varPlayerIndex++) {
+                    VarPlayerDefinition varPlayerDefinition = VarPlayerDefinition.getDefinition(varPlayerIndex);
                     if(varPlayerDefinition.type == 0) {
                         Buffer.anIntArray1984[varPlayerIndex] = 0;
                         GroundItemTile.varPlayers[varPlayerIndex] = 0;
