@@ -2,11 +2,11 @@ package com.jagex.runescape.scene.util;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
+import com.jagex.runescape.util.BitUtils;
 
 public class CollisionMap {
     public static int anInt141;
@@ -229,13 +229,13 @@ public class CollisionMap {
     }
 
     public void unset(int x, int y, int i) {
-        clippingData[x][y] = UnderlayDefinition.bitWiseOR(clippingData[x][y], i);
+        clippingData[x][y] = BitUtils.bitWiseOR(clippingData[x][y], i);
     }
 
     public void unmarkConcealed(int x, int y) {
         x -= insetX;
         y -= insetY;
-        clippingData[x][y] = HuffmanEncoding.bitWiseAND(clippingData[x][y], 0xdfffff);
+        clippingData[x][y] = BitUtils.bitWiseAND(clippingData[x][y], 0xdfffff);
     }
 
     public void reset() {
@@ -519,7 +519,7 @@ public class CollisionMap {
     public void markBlocked(int y, int x) {
         x -= insetX;
         y -= insetY;
-        clippingData[x][y] = UnderlayDefinition.bitWiseOR(clippingData[x][y], 2097152);
+        clippingData[x][y] = BitUtils.bitWiseOR(clippingData[x][y], 2097152);
     }
 
     public boolean reachedFacingObject(int currentX, int currentY, int goalX, int goalY, int goalDX, int goalDY, int surroundings) {
@@ -647,7 +647,7 @@ public class CollisionMap {
     }
 
     public void orClipTable(int x, int y, int flag) {
-        clippingData[x][y] = HuffmanEncoding.bitWiseAND(clippingData[x][y], -flag + 16777215);
+        clippingData[x][y] = BitUtils.bitWiseAND(clippingData[x][y], -flag + 16777215);
     }
 
     public boolean reachedWallDecoration(int currentX, int currentY, int goalX, int goalY, int goalPosition, int goalOrientation) {

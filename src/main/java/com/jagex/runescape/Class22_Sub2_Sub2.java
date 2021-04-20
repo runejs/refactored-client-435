@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.audio.MidiFileReader;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.util.BitUtils;
 import com.jagex.runescape.util.Signlink;
 
 public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
@@ -41,7 +41,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
         }
         anIntArray2227[anInt2229++] = -anInt2226 + arg3;
         anInt2226 = arg3;
-        anIntArray2227[anInt2229++] = UnderlayDefinition.bitWiseOR(UnderlayDefinition.bitWiseOR(arg4, arg0 << 8), arg2 << 16);
+        anIntArray2227[anInt2229++] = BitUtils.bitWiseOR(BitUtils.bitWiseOR(arg4, arg0 << 8), arg2 << 16);
 
     }
 

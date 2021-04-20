@@ -11,6 +11,7 @@ import com.jagex.runescape.media.renderable.actor.Pathfinding;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.scene.util.CollisionMap;
+import com.jagex.runescape.util.BitUtils;
 
 public class AnimationSequence extends CachedNode {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
@@ -47,7 +48,7 @@ public class AnimationSequence extends CachedNode {
             for(int i_1_ = 0; i_1_ < 64; i_1_++) {
                 for(int i_2_ = 0; i_2_ < 64; i_2_++) {
                     if(arg4 + i_1_ > 0 && i_1_ + arg4 < 103 && arg5 + i_2_ > 0 && i_2_ + arg5 < 103)
-                        arg0[i].clippingData[i_1_ + arg4][i_2_ + arg5] = HuffmanEncoding.bitWiseAND(arg0[i].clippingData[i_1_ + arg4][i_2_ + arg5], -16777217);
+                        arg0[i].clippingData[i_1_ + arg4][i_2_ + arg5] = BitUtils.bitWiseAND(arg0[i].clippingData[i_1_ + arg4][i_2_ + arg5], -16777217);
                 }
             }
         }

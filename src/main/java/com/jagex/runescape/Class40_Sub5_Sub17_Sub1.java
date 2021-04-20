@@ -26,6 +26,7 @@ import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
+import com.jagex.runescape.util.BitUtils;
 import tech.henning.fourthreefive.Configuration;
 
 import java.awt.*;
@@ -435,7 +436,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                     renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, vertexHeightRight);
                 scene.addEntityB(localX, localY, plane, vertexMix, 0, 1, 1, hash, renderable, objectConfig);
                 if(type >= 12 && type <= 17 && type != 13 && plane > 0)
-                    MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 2340);
+                    MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 2340);
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.unmarkSolidOccupant(localX, localY, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, face, gameObjectDefinition.walkable);
             } else if(type == 0) {
@@ -451,28 +452,28 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                         InteractiveObject.aByteArrayArrayArray492[plane][localX][localY + 1] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 585);
                 } else if(face == 1) {
                     if(gameObjectDefinition.castsShadow) {
                         InteractiveObject.aByteArrayArrayArray492[plane][localX][localY + 1] = (byte) 50;
                         InteractiveObject.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1], 1170);
                 } else if(face == 2) {
                     if(gameObjectDefinition.castsShadow) {
                         InteractiveObject.aByteArrayArrayArray492[plane][1 + localX][localY] = (byte) 50;
                         InteractiveObject.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
-                        MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY], 585);
                 } else if(face == 3) {
                     if(gameObjectDefinition.castsShadow) {
                         InteractiveObject.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
                         InteractiveObject.aByteArrayArrayArray492[plane][localX + 1][localY] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 1170);
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
@@ -511,17 +512,17 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
                 scene.addWall(localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face], SceneCluster.anIntArray761[i_46_], hash, renderable, renderable_47_, objectConfig);
                 if(gameObjectDefinition.wall) {
                     if(face == 0) {
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 585);
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1], 1170);
                     } else if(face == 1) {
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][1 + localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][1 + localY], 1170);
-                        MovedStatics.anIntArrayArrayArray262[plane][1 + localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][1 + localX][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][1 + localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][1 + localY], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][1 + localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][1 + localX][localY], 585);
                     } else if(face == 2) {
-                        MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY], 585);
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 1170);
                     } else if(face == 3) {
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 1170);
-                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = UnderlayDefinition.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 585);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 1170);
+                        MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 585);
                     }
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)

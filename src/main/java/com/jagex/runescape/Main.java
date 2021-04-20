@@ -31,6 +31,7 @@ import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.*;
 import com.jagex.runescape.scene.util.CollisionMap;
+import com.jagex.runescape.util.BitUtils;
 import com.jagex.runescape.util.Signlink;
 import tech.henning.fourthreefive.Configuration;
 
@@ -63,7 +64,7 @@ public class Main extends GameShell {
      *   0 = Game area (the area that renders in 3D),
      *   1 = Tab area (the widgets that display within the tab area),
      *   2 = Chat area (the chat itself, as well as all sorts of dialogues and anything that renders over the chat)
-     *   3 = TODO unknown, might be permanent chat widgets
+     *   3 = Permanent chat widget area (walkable chat widgets that replace the actual chat itself)
      * @param minX The top right X of this widget's boundaries
      * @param minY The top right Y of this widget's boundaries
      * @param maxX The bottom right Y of this widget's boundaries
@@ -582,7 +583,7 @@ public class Main extends GameShell {
                     int i_69_ = i_67_;
                     i_67_ = Class42.anIntArray1013[i_67_];
                     int i_70_ = Class8.flameLeftBackground.pixels[i_62_];
-                    Class8.flameLeftBackground.pixels[i_62_++] = HuffmanEncoding.bitWiseAND(-16711936, HuffmanEncoding.bitWiseAND(i_67_, 16711935) * i_69_ + i_68_ * HuffmanEncoding.bitWiseAND(i_70_, 16711935)) + HuffmanEncoding.bitWiseAND(HuffmanEncoding.bitWiseAND(65280, i_70_) * i_68_ + i_69_ * HuffmanEncoding.bitWiseAND(65280, i_67_), 16711680) >> 8;
+                    Class8.flameLeftBackground.pixels[i_62_++] = BitUtils.bitWiseAND(-16711936, BitUtils.bitWiseAND(i_67_, 16711935) * i_69_ + i_68_ * BitUtils.bitWiseAND(i_70_, 16711935)) + BitUtils.bitWiseAND(BitUtils.bitWiseAND(65280, i_70_) * i_68_ + i_69_ * BitUtils.bitWiseAND(65280, i_67_), 16711680) >> 8;
                 } else
                     i_62_++;
             }
@@ -603,7 +604,7 @@ public class Main extends GameShell {
                     int i_78_ = GameObject.flameRightBackground.pixels[i_62_];
                     int i_79_ = 256 + -i_76_;
                     i_76_ = Class42.anIntArray1013[i_76_];
-                    GameObject.flameRightBackground.pixels[i_62_++] = HuffmanEncoding.bitWiseAND(i_77_ * HuffmanEncoding.bitWiseAND(65280, i_76_) + i_79_ * HuffmanEncoding.bitWiseAND(65280, i_78_), 16711680) + HuffmanEncoding.bitWiseAND(i_79_ * HuffmanEncoding.bitWiseAND(16711935, i_78_) + HuffmanEncoding.bitWiseAND(16711935, i_76_) * i_77_, -16711936) >> 8;
+                    GameObject.flameRightBackground.pixels[i_62_++] = BitUtils.bitWiseAND(i_77_ * BitUtils.bitWiseAND(65280, i_76_) + i_79_ * BitUtils.bitWiseAND(65280, i_78_), 16711680) + BitUtils.bitWiseAND(i_79_ * BitUtils.bitWiseAND(16711935, i_78_) + BitUtils.bitWiseAND(16711935, i_76_) * i_77_, -16711936) >> 8;
                 } else
                     i_62_++;
             }

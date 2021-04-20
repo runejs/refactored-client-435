@@ -2,6 +2,7 @@ package com.jagex.runescape.cache.cs;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheArchive;
+import com.jagex.runescape.cache.def.VarPlayerDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.ItemDefinition;
@@ -11,7 +12,6 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.node.CachedNode;
-import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.GenericTile;
 
 public class ClientScript extends CachedNode {
@@ -129,14 +129,14 @@ public class ClientScript extends CachedNode {
                 }
                 if (opcode == 5) {
                     int temp = opcodes[scriptDataIndex++];
-                    operand = GroundItemTile.varPlayers[temp];
+                    operand = VarPlayerDefinition.varPlayers[temp];
                 }
                 if (opcode == 6) {
                     operand = Player.experienceForLevels[-1 + Player.nextLevels[opcodes[scriptDataIndex++]]];
                 }
                 if (opcode == 7) {
                     int varPlayerIndex = opcodes[scriptDataIndex++];
-                    operand = 100 * GroundItemTile.varPlayers[varPlayerIndex] / 46875;
+                    operand = 100 * VarPlayerDefinition.varPlayers[varPlayerIndex] / 46875;
                 }
                 if (opcode == 8) {
                     operand = Player.localPlayer.combatLevel;
@@ -169,7 +169,7 @@ public class ClientScript extends CachedNode {
                     operand = GenericTile.carryWeight;
                 }
                 if (opcode == 13) {
-                    int varPlayerValue = GroundItemTile.varPlayers[opcodes[scriptDataIndex++]];
+                    int varPlayerValue = VarPlayerDefinition.varPlayers[opcodes[scriptDataIndex++]];
                     int leastSignificantBit = opcodes[scriptDataIndex++];
                     operand = (1 << leastSignificantBit & varPlayerValue) != 0 ? 1 : 0;
                 }

@@ -11,7 +11,6 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.node.CachedNode;
-import com.jagex.runescape.scene.GroundItemTile;
 import tech.henning.fourthreefive.OldEngine.ObjectDecompressor;
 
 import java.io.IOException;
@@ -549,7 +548,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         int index = -1;
         if(varbitId == -1) {
             if(configId != -1) {
-                index = GroundItemTile.varPlayers[configId];
+                index = VarPlayerDefinition.varPlayers[configId];
             }
         } else {
             index = VarbitDefinition.getVarbitValue(varbitId);

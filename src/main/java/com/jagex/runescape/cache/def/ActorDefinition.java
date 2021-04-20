@@ -15,6 +15,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.util.BitUtils;
 
 import java.awt.*;
 
@@ -118,7 +119,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         int i = class40_sub5_sub14_sub4.imageWidth * class40_sub5_sub14_sub4.imageHeight;
         class40_sub5_sub14_sub4.pixels = new int[i];
         for(int i_5_ = 0; i_5_ < i; i_5_++) {
-            class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[HuffmanEncoding.bitWiseAND(255, is[i_5_])];
+            class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
         }
         method569();
         return class40_sub5_sub14_sub4;
@@ -201,7 +202,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         if(varbitId != -1) {
             index = VarbitDefinition.getVarbitValue(varbitId);
         } else if(varPlayerIndex != -1) {
-            index = GroundItemTile.varPlayers[varPlayerIndex];
+            index = VarPlayerDefinition.varPlayers[varPlayerIndex];
         }
         return index >= 0 && childIds.length > index && childIds[index] != -1;
     }
@@ -343,7 +344,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         if(varbitId != -1) {
             childId = VarbitDefinition.getVarbitValue(varbitId);
         } else if(varPlayerIndex != -1) {
-            childId = GroundItemTile.varPlayers[varPlayerIndex];
+            childId = VarPlayerDefinition.varPlayers[varPlayerIndex];
         }
         if(childId < 0 || childId >= childIds.length || childIds[childId] == -1) {
             return null;

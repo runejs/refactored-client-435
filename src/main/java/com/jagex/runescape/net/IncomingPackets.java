@@ -186,8 +186,8 @@ public class IncomingPackets {
                 int varPlayerValue = incomingPacketBuffer.getByte();
                 int varPlayerIndex = incomingPacketBuffer.getUnsignedShortBE();
                 Buffer.anIntArray1984[varPlayerIndex] = varPlayerValue;
-                if(GroundItemTile.varPlayers[varPlayerIndex] != varPlayerValue) {
-                    GroundItemTile.varPlayers[varPlayerIndex] = varPlayerValue;
+                if(VarPlayerDefinition.varPlayers[varPlayerIndex] != varPlayerValue) {
+                    VarPlayerDefinition.varPlayers[varPlayerIndex] = varPlayerValue;
                     Class22.method309(varPlayerIndex);
                     GameInterface.redrawTabArea = true;
                     if(ChatBox.dialogueId != -1)
@@ -741,8 +741,8 @@ public class IncomingPackets {
                 int varPlayerValue = incomingPacketBuffer.getIntBE();
                 int varPlayerIndex = incomingPacketBuffer.getUnsignedShortBE();
                 Buffer.anIntArray1984[varPlayerIndex] = varPlayerValue;
-                if(varPlayerValue != GroundItemTile.varPlayers[varPlayerIndex]) {
-                    GroundItemTile.varPlayers[varPlayerIndex] = varPlayerValue;
+                if(varPlayerValue != VarPlayerDefinition.varPlayers[varPlayerIndex]) {
+                    VarPlayerDefinition.varPlayers[varPlayerIndex] = varPlayerValue;
                     Class22.method309(varPlayerIndex);
                     if(ChatBox.dialogueId != -1)
                         ChatBox.redrawChatbox = true;
@@ -861,7 +861,7 @@ public class IncomingPackets {
                     VarPlayerDefinition varPlayerDefinition = VarPlayerDefinition.getDefinition(varPlayerIndex);
                     if(varPlayerDefinition.type == 0) {
                         Buffer.anIntArray1984[varPlayerIndex] = 0;
-                        GroundItemTile.varPlayers[varPlayerIndex] = 0;
+                        VarPlayerDefinition.varPlayers[varPlayerIndex] = 0;
                     }
                 }
                 if(ChatBox.dialogueId != -1)
@@ -1067,9 +1067,9 @@ public class IncomingPackets {
                 return true;
             }
             if(incomingPacket == 72) { // reset varbits?
-                for(int varPlayerIndex = 0; varPlayerIndex < GroundItemTile.varPlayers.length; varPlayerIndex++) {
-                    if(Buffer.anIntArray1984[varPlayerIndex] != GroundItemTile.varPlayers[varPlayerIndex]) {
-                        GroundItemTile.varPlayers[varPlayerIndex] = Buffer.anIntArray1984[varPlayerIndex];
+                for(int varPlayerIndex = 0; varPlayerIndex < VarPlayerDefinition.varPlayers.length; varPlayerIndex++) {
+                    if(Buffer.anIntArray1984[varPlayerIndex] != VarPlayerDefinition.varPlayers[varPlayerIndex]) {
+                        VarPlayerDefinition.varPlayers[varPlayerIndex] = Buffer.anIntArray1984[varPlayerIndex];
                         Class22.method309(varPlayerIndex);
                         GameInterface.redrawTabArea = true;
                     }

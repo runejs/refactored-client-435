@@ -16,7 +16,6 @@ import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
-import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public abstract class Class22 {
@@ -124,7 +123,7 @@ public abstract class Class22 {
             HuffmanEncoding.method1030((byte) 127);
             int varPlayerType = VarPlayerDefinition.getDefinition(varPlayerIndex).type;
             if(varPlayerType != 0) {
-                int varPlayerValue = GroundItemTile.varPlayers[varPlayerIndex];
+                int varPlayerValue = VarPlayerDefinition.varPlayers[varPlayerIndex];
                 if(varPlayerType == 1) {
                     if(varPlayerValue == 1) {
                         Rasterizer3D.method711(0.9);

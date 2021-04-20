@@ -10,6 +10,7 @@ import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.tile.SceneTile;
+import com.jagex.runescape.util.BitUtils;
 import tech.henning.fourthreefive.Configuration;
 
 import java.text.MessageFormat;
@@ -48,7 +49,7 @@ public class HuffmanEncoding {
                         }
                         int i_37_ = 1 << -i_35_ + 32;
                         if ((i_36_ & i_37_) == 0) {
-                            is[i_35_] = UnderlayDefinition.bitWiseOR(i_36_, i_37_);
+                            is[i_35_] = BitUtils.bitWiseOR(i_36_, i_37_);
                         } else {
                             is[i_35_] = is[-1 + i_35_];
                             break;
@@ -91,10 +92,6 @@ public class HuffmanEncoding {
             }
         }
 
-    }
-
-    public static int bitWiseAND(int arg0, int arg1) {
-        return arg0 & arg1;
     }
 
 
@@ -355,7 +352,7 @@ public class HuffmanEncoding {
             i &= -bitOffset >> 31;
             int i_12_ = bitOffset2 + (size + bitOffset - 1 >> 3);
             bitOffset += 24;
-            dest[bitOffset2] = (byte) (i = UnderlayDefinition.bitWiseOR(i, mask >>> bitOffset));
+            dest[bitOffset2] = (byte) (i = BitUtils.bitWiseOR(i, mask >>> bitOffset));
             if (bitOffset2 < i_12_) {
                 bitOffset2++;
                 bitOffset -= 8;

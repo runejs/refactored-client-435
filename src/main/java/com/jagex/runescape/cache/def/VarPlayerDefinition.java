@@ -11,6 +11,12 @@ public class VarPlayerDefinition extends CachedNode {
     public static int varPlayerDefinitionsSize;
     public int type = 0;
 
+    /**
+     * An array of varPlayers. You can fetch a varp with a varpId to get the current value, i.e. varpValue = varPlayers[varpId]
+     * @implNote If you want to fetch a varbit from this array, use VarbitDefinition.getVarbitValue().
+     */
+    public static int[] varPlayers = new int[2000]; // TODO find a better place for this, as it does not belong in the definition
+
     public static VarPlayerDefinition getDefinition(int varPlayerIndex) {
         VarPlayerDefinition definition = (VarPlayerDefinition) varPlayerDefinitionCache.get(varPlayerIndex);
         if (definition != null) {

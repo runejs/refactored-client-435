@@ -12,7 +12,6 @@ public class GroundItemTile {
     public static CacheArchive aCacheArchive_1375;
     public static int walkableWidgetId = -1;
     public static byte[][] aByteArrayArray1377 = new byte[1000][];
-    public static int[] varPlayers = new int[2000];
 
     public Renderable firstGroundItem;
     public int y;

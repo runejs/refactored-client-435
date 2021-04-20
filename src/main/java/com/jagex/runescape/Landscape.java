@@ -19,6 +19,7 @@ import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.util.CollisionMap;
+import com.jagex.runescape.util.BitUtils;
 import tech.henning.fourthreefive.OldEngine.MapDecompressor;
 
 import java.io.IOException;
@@ -305,7 +306,7 @@ public class Landscape {
         for(int i = 0; i < 8; i++) {
             for(int y = 0; y < 8; y++) {
                 if(x + i > 0 && i + x < 103 && arg0 + y > 0 && y + arg0 < 103)
-                    arg9[arg4].clippingData[x + i][y + arg0] = HuffmanEncoding.bitWiseAND(arg9[arg4].clippingData[x + i][y + arg0], -16777217);
+                    arg9[arg4].clippingData[x + i][y + arg0] = BitUtils.bitWiseAND(arg9[arg4].clippingData[x + i][y + arg0], -16777217);
             }
         }
         Buffer class40_sub1 = new Buffer(arg8);

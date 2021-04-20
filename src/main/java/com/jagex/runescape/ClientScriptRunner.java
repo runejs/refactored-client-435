@@ -13,10 +13,10 @@ import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.net.PacketBuffer;
-import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.scene.util.CollisionMap;
+import com.jagex.runescape.util.BitUtils;
 import com.jagex.runescape.util.Signlink;
 import com.jagex.runescape.util.SignlinkNode;
 
@@ -339,12 +339,12 @@ public class ClientScriptRunner extends Node {
                     }
                     if(scriptOpcode == 1) {
                         int operand = intOperands[scriptIndex];
-                        scriptIntValues[intValueIndex++] = GroundItemTile.varPlayers[operand];
+                        scriptIntValues[intValueIndex++] = VarPlayerDefinition.varPlayers[operand];
                         continue;
                     }
                     if(scriptOpcode == 2) {
                         int operand = intOperands[scriptIndex];
-                        GroundItemTile.varPlayers[operand] = scriptIntValues[--intValueIndex];
+                        VarPlayerDefinition.varPlayers[operand] = scriptIntValues[--intValueIndex];
                         continue;
                     }
                     if(scriptOpcode == 3) {
@@ -521,7 +521,7 @@ public class ClientScriptRunner extends Node {
                     } else if(scriptOpcode == 101) {
                         GameInterface gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                         GameInterface childInterface = GameInterface.getInterface(gameInterface.parentId);
-                        childInterface.children[HuffmanEncoding.bitWiseAND(gameInterface.id, 32767)] = null;
+                        childInterface.children[BitUtils.bitWiseAND(gameInterface.id, 32767)] = null;
                     } else {
                         if(scriptOpcode != 102) {
                             break;
@@ -817,17 +817,17 @@ public class ClientScriptRunner extends Node {
                                                 intValueIndex -= 2;
                                                 int i_63_ = scriptIntValues[intValueIndex];
                                                 int i_64_ = scriptIntValues[intValueIndex + 1];
-                                                scriptIntValues[intValueIndex++] = UnderlayDefinition.bitWiseOR(1 << i_64_, i_63_);
+                                                scriptIntValues[intValueIndex++] = BitUtils.bitWiseOR(1 << i_64_, i_63_);
                                             } else if(scriptOpcode == 4009) {
                                                 intValueIndex -= 2;
                                                 int i_65_ = scriptIntValues[intValueIndex];
                                                 int i_66_ = scriptIntValues[1 + intValueIndex];
-                                                scriptIntValues[intValueIndex++] = HuffmanEncoding.bitWiseAND(i_65_, -1 + -(1 << i_66_));
+                                                scriptIntValues[intValueIndex++] = BitUtils.bitWiseAND(i_65_, -1 + -(1 << i_66_));
                                             } else if(scriptOpcode == 4010) {
                                                 intValueIndex -= 2;
                                                 int i_67_ = scriptIntValues[intValueIndex];
                                                 int i_68_ = scriptIntValues[1 + intValueIndex];
-                                                scriptIntValues[intValueIndex++] = HuffmanEncoding.bitWiseAND(1 << i_68_, i_67_) != 0 ? 1 : 0;
+                                                scriptIntValues[intValueIndex++] = BitUtils.bitWiseAND(1 << i_68_, i_67_) != 0 ? 1 : 0;
                                             } else if(scriptOpcode == 4011) {
                                                 intValueIndex -= 2;
                                                 int i_69_ = scriptIntValues[intValueIndex + 1];

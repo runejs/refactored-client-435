@@ -21,7 +21,6 @@ import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.node.CachedNode;
-import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.GenericTile;
@@ -674,8 +673,8 @@ public class GameInterface extends CachedNode {
                 GameInterface gameInterface = getInterface(i_10_);
                 if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
                     int i_16_ = gameInterface.clientScripts[0][1];
-                    if(gameInterface.alternateRhs[0] != GroundItemTile.varPlayers[i_16_]) {
-                        GroundItemTile.varPlayers[i_16_] = gameInterface.alternateRhs[0];
+                    if(gameInterface.alternateRhs[0] != VarPlayerDefinition.varPlayers[i_16_]) {
+                        VarPlayerDefinition.varPlayers[i_16_] = gameInterface.alternateRhs[0];
                         Class22.method309(i_16_);
                         redrawTabArea = true;
                     }
@@ -787,7 +786,7 @@ public class GameInterface extends CachedNode {
                     GameInterface gameInterface = getInterface(i_10_);
                     if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
                         int i_17_ = gameInterface.clientScripts[0][1];
-                        GroundItemTile.varPlayers[i_17_] = -GroundItemTile.varPlayers[i_17_] + 1;
+                        VarPlayerDefinition.varPlayers[i_17_] = -VarPlayerDefinition.varPlayers[i_17_] + 1;
                         Class22.method309(i_17_);
                         redrawTabArea = true;
                     }

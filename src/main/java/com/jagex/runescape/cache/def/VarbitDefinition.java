@@ -1,11 +1,10 @@
 package com.jagex.runescape.cache.def;
 
-import com.jagex.runescape.HuffmanEncoding;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.node.NodeCache;
-import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.util.BitUtils;
 
 public class VarbitDefinition extends CachedNode {
     public static int[] varbitMasks = new int[32];
@@ -38,7 +37,7 @@ public class VarbitDefinition extends CachedNode {
     }
 
     /**
-     * Returns the varbit value from a varPlayer, respecting the varbit MSB and LSB
+     * Returns the varbit value from a varp, respecting the varbit MSB and LSB
      * @param varbitId The varbit ID to fetch the value for
      * @return the varbit value as currently stored in the client
      */
@@ -48,7 +47,7 @@ public class VarbitDefinition extends CachedNode {
         int mostSignificantBit = varbitDefinition.mostSignificantBit;
         int leastSignificantBit = varbitDefinition.leastSignificantBit;
         int mask = varbitMasks[mostSignificantBit - leastSignificantBit];
-        return GroundItemTile.varPlayers[varPlayerIndex] >> leastSignificantBit & mask;
+        return VarPlayerDefinition.varPlayers[varPlayerIndex] >> leastSignificantBit & mask;
     }
 
     public static void setVarbitValue(int value, int varbitId) {
@@ -60,7 +59,7 @@ public class VarbitDefinition extends CachedNode {
         if (value < 0 || mask < value)
             value = 0;
         mask <<= leastSignificantBit;
-        GroundItemTile.varPlayers[index] = UnderlayDefinition.bitWiseOR(HuffmanEncoding.bitWiseAND(GroundItemTile.varPlayers[index], mask ^ 0xffffffff), HuffmanEncoding.bitWiseAND(mask, value << leastSignificantBit));
+        VarPlayerDefinition.varPlayers[index] = BitUtils.bitWiseOR(BitUtils.bitWiseAND(VarPlayerDefinition.varPlayers[index], mask ^ 0xffffffff), BitUtils.bitWiseAND(mask, value << leastSignificantBit));
     }
 
     public static void initializeVarbitDefinitionCache(CacheArchive cacheArchive) {
