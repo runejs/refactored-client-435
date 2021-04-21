@@ -57,7 +57,7 @@ public class MillisTimer extends Timer {
         }
         if(sleep < arg1)
             sleep = arg1;
-        Class43.sleep((long) sleep);
+        Class43.sleep(sleep);
         int i_7_ = 0;
         for(/**/; anInt1903 < 256; anInt1903 += anInt1915)
             i_7_++;

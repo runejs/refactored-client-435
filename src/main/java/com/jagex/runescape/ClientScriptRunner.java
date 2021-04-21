@@ -295,7 +295,7 @@ public class ClientScriptRunner extends Node {
     }
 
     public static void runClientScripts(Object[] listeners, int arg1, int arg2, GameInterface gameInterface1, int arg4) {
-        ClientScript clientScript = ClientScript.decodeClientScript(((Integer) listeners[0]).intValue(), 76);
+        ClientScript clientScript = ClientScript.decodeClientScript((Integer) listeners[0], 76);
         int[] intOperands = clientScript.intOperands;
         int[] scriptOpcodes = clientScript.opcodes;
         int intValueIndex = 0;

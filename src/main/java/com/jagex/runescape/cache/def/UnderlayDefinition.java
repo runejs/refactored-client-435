@@ -1,23 +1,18 @@
 package com.jagex.runescape.cache.def;
 
-import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.gameInterface.GameInterface;
-import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.language.English;
-import com.jagex.runescape.media.renderable.actor.Actor;
-import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.node.CachedNode;
-import com.jagex.runescape.scene.SceneCluster;
-import com.jagex.runescape.util.TextUtils;
+import com.jagex.runescape.node.NodeCache;
 
 public class UnderlayDefinition extends CachedNode {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
     public static int anInt2576;
     public static int anInt2581;
     public static CacheArchive aCacheArchive_2582;
+    public static NodeCache underlayDefinitionCache = new NodeCache(64);
+    public static CacheArchive gameDefinitionsCacheArchive;
 
     public int saturation;
     public int anInt2565;
@@ -30,39 +25,25 @@ public class UnderlayDefinition extends CachedNode {
         return (arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) + (~0xff00ff & (0xff00ff & arg1) * i_7_ + arg3 * (0xff00ff & arg2)) >> 8;
     }
 
-    public static void method616(CacheArchive arg0) {
-        Actor.aCacheArchive_3150 = arg0;
+    public static void initializeUnderlayDefinitionCache(CacheArchive cacheArchive) {
+        gameDefinitionsCacheArchive = cacheArchive;
     }
 
-    public static void addFriend(long name) {
-        if(name != 0L) {
-            if(Player.friendsCount >= 100 && Class44.anInt1049 != 1 || Player.friendsCount >= 200) {
-                ChatBox.addChatMessage("", English.friendsListIsFull, 0);
-            } else {
-                String username = TextUtils.formatName(TextUtils.longToName(name));
-                for(int i = 0; Player.friendsCount > i; i++) {
-                    if(Class59.friends[i] == name) {
-                        ChatBox.addChatMessage("", username + English.isAlreadyOnYourFriendList, 0);
-                        return;
-                    }
-                }
-                for(int i = 0; Class42.anInt1008 > i; i++) {
-                    if(Player.ignores[i] == name) {
-                        ChatBox.addChatMessage("", English.pleaseRemove + username + English.suffixFromYourIgnoreListFirst, 0);
-                        return;
-                    }
-                }
-                if(!username.equals(Player.localPlayer.playerName)) {
-                    Player.friendUsernames[Player.friendsCount] = username;
-                    Class59.friends[Player.friendsCount] = name;
-                    Player.friendWorlds[Player.friendsCount] = 0;
-                    Player.friendsCount++;
-                    GameInterface.redrawTabArea = true;
-                    SceneCluster.packetBuffer.putPacket(114);
-                    SceneCluster.packetBuffer.putLongBE(name);
-                }
-            }
-        }
+    public static UnderlayDefinition getDefinition(int underlayId) {
+        UnderlayDefinition underlayDefinition = (UnderlayDefinition) underlayDefinitionCache.get(underlayId);
+        if (underlayDefinition != null)
+            return underlayDefinition;
+        byte[] is = gameDefinitionsCacheArchive.getFile(1, underlayId);
+        underlayDefinition = new UnderlayDefinition();
+        if (is != null)
+            underlayDefinition.readValues(new Buffer(is));
+        underlayDefinition.calculateHsl();
+        underlayDefinitionCache.put(underlayId, underlayDefinition);
+        return underlayDefinition;
+    }
+
+    public static void clearUnderlayDefinitionCache() {
+        underlayDefinitionCache.clear();
     }
 
 

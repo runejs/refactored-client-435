@@ -14,7 +14,7 @@ import com.jagex.runescape.media.renderable.actor.Player;
 import java.awt.*;
 
 public class LinkedList {
-    public static long aLong1051;
+    public static long lastUpdateInMillis;
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_1057;
     public static int anInt1061;
     public static LinkedList aLinkedList_1064 = new LinkedList();

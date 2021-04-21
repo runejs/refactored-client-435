@@ -2,10 +2,9 @@ package com.jagex.runescape.node;
 
 
 public class HashTable {
-
-    public long aLong550;
+    public long lastFetchedNodeKey;
     public int size;
-    public Node aClass40_566;
+    public Node lastFetchedNode;
     public Node aClass40_574;
     public Node[] nodes;
     public int anInt572 = 0;
@@ -38,33 +37,31 @@ public class HashTable {
         node.next.previous = node;
     }
 
-    public Node method331(long key, int arg1) {
-        aLong550 = key;
-        if(arg1 != 6120)
-            return null;
-        Node class40 = nodes[(int) ((long) (size + -1) & key)];
-        for(aClass40_566 = class40.next; class40 != aClass40_566; aClass40_566 = aClass40_566.next) {
-            if(aClass40_566.key == key) {
-                Node class40_0_ = aClass40_566;
-                aClass40_566 = aClass40_566.next;
-                return class40_0_;
+    public Node getNode(long key) {
+        lastFetchedNodeKey = key;
+        Node node = nodes[(int) ((long) (size + -1) & key)];
+        for(lastFetchedNode = node.next; node != lastFetchedNode; lastFetchedNode = lastFetchedNode.next) {
+            if(lastFetchedNode.key == key) {
+                Node foundNode = lastFetchedNode;
+                lastFetchedNode = lastFetchedNode.next;
+                return foundNode;
             }
         }
-        aClass40_566 = null;
+        lastFetchedNode = null;
         return null;
     }
 
-    public Node method333() {
-        if(aClass40_566 == null)
+    public Node getLastFetchedNode() {
+        if(lastFetchedNode == null)
             return null;
-        for(Node node = nodes[(int) (aLong550 & (long) (-1 + size))]; node != aClass40_566; aClass40_566 = aClass40_566.next) {
-            if(aLong550 == aClass40_566.key) {
-                Node class40_1_ = aClass40_566;
-                aClass40_566 = aClass40_566.next;
-                return class40_1_;
+        for(Node node = nodes[(int) (lastFetchedNodeKey & (long) (-1 + size))]; node != lastFetchedNode; lastFetchedNode = lastFetchedNode.next) {
+            if(lastFetchedNodeKey == lastFetchedNode.key) {
+                Node foundNode = lastFetchedNode;
+                lastFetchedNode = lastFetchedNode.next;
+                return foundNode;
             }
         }
-        aClass40_566 = null;
+        lastFetchedNode = null;
         return null;
     }
 

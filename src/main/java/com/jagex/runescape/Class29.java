@@ -4,7 +4,7 @@ import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class29 {
-    public static Class64 aClass64_676;
+    public static GameSocket gameSocket;
 
     public static boolean isHovering(int areaId, int arg2) {
         if(areaId == 0 && ItemDefinition.anInt2850 == arg2)

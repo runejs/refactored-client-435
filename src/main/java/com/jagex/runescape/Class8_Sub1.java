@@ -116,7 +116,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
     public void method222(Signlink arg0, int arg1) throws Exception {
         anInt1831 = arg1;
         method219(System.currentTimeMillis());
-        arg0.method394(10, 0, this);
+        arg0.createCanvasNode(10, this);
     }
 
     public void method213() {

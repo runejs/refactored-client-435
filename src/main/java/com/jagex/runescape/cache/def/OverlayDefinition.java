@@ -67,9 +67,17 @@ public class OverlayDefinition extends CachedNode {
         }
     }
 
-    // Action IDs I've found:
-    // 5 = Render login background, 10 = Render login box, 20 = Render empty login box,
-    // 25 = Render game overlay, 30 = Render 3D game area, 1000 = Render client error
+    /**
+     * Updates the overlay depending on the provided actionId
+     * @param actionId Can be one of these values:
+     *                 5 = Render login background
+     *                 10 = Render login box
+     *                 20 = Render empty login box
+     *                 25 = Render game overlay
+     *                 30 = Render 3D game area
+     *                 40 = Render connection lost, attempting to re-establish
+     *                 1000 = Render client fatal error
+     */
     public static void updateOverlay(int actionId) {
         if (actionId != Class51.currentAction) {
             if (Class51.currentAction == 0)
@@ -79,9 +87,9 @@ public class OverlayDefinition extends CachedNode {
                 anInt2321 = 0;
                 Class40_Sub3.anInt2032 = 0;
             }
-            if (actionId != 20 && actionId != 40 && PlayerAppearance.aClass64_717 != null) {
-                PlayerAppearance.aClass64_717.method1009();
-                PlayerAppearance.aClass64_717 = null;
+            if (actionId != 20 && actionId != 40 && PlayerAppearance.lostConnectionSocket != null) {
+                PlayerAppearance.lostConnectionSocket.method1009();
+                PlayerAppearance.lostConnectionSocket = null;
             }
             if (Class51.currentAction == 25 || Class51.currentAction == 40) {
                 Class65.method1018();

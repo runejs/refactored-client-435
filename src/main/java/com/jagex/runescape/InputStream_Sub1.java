@@ -58,7 +58,7 @@ public class InputStream_Sub1 extends InputStream {
             return arg2;
         } catch(Exception exception) {
             aBoolean72 = true;
-            MovedStatics.method169(null, (byte) -125, exception);
+            MovedStatics.printException(null, exception);
             return -1;
         }
     }

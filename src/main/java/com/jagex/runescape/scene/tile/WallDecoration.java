@@ -24,7 +24,6 @@ import com.jagex.runescape.scene.InteractiveObject;
 import java.awt.*;
 
 public class WallDecoration {
-    public static NodeCache aClass9_1247 = new NodeCache(64);
     public static int durationHoveredOverWidget = 0;
     public static NodeCache modelCache = new NodeCache(50);
     public static TypeFace fontNormal;

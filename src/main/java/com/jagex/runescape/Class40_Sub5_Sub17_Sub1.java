@@ -361,8 +361,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
 
     public static void addObject(int objectId, int localX, int localY, int plane, int face, int type, Scene scene, CollisionMap collisionMap) {
         if(!VertexNormal.lowMemory || (0x2 & OverlayDefinition.tile_flags[0][localX][localY]) != 0 || (0x10 & OverlayDefinition.tile_flags[plane][localX][localY]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(plane, localY, 0, localX)) {
-            if(Class64.lowestPlane > plane)
-                Class64.lowestPlane = plane;
+            if(MovedStatics.lowestPlane > plane)
+                MovedStatics.lowestPlane = plane;
             int vertexHeight = MovedStatics.tile_height[plane][localX][localY];
             int vertexHeightRight = MovedStatics.tile_height[plane][localX + 1][localY];
             int vertexHeightTopRight = MovedStatics.tile_height[plane][localX + 1][localY + 1];

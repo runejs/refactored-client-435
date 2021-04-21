@@ -18,9 +18,11 @@ import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
 import com.jagex.runescape.media.renderable.actor.Npc;
+import com.jagex.runescape.media.renderable.actor.Pathfinding;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.ISAAC;
@@ -28,9 +30,11 @@ import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
+import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.*;
 import com.jagex.runescape.scene.util.CollisionMap;
+import com.jagex.runescape.sound.MusicSystem;
 import com.jagex.runescape.util.BitUtils;
 import com.jagex.runescape.util.Signlink;
 import tech.henning.fourthreefive.Configuration;
@@ -898,10 +902,10 @@ public class Main extends GameShell {
         Class22.anInt537++;
         if(Class22.anInt537 >= 50 || arg1) {
             Class22.anInt537 = 0;
-            if(!Class37.aBoolean871 && MovedStatics.gameConnection != null) {
+            if(!Class37.aBoolean871 && MovedStatics.gameSocket != null) {
                 SceneCluster.packetBuffer.putPacket(13);
                 try {
-                    MovedStatics.gameConnection.method1010(SceneCluster.packetBuffer.currentPosition, (byte) -19, 0, SceneCluster.packetBuffer.buffer);
+                    MovedStatics.gameSocket.method1010(SceneCluster.packetBuffer.currentPosition, 0, SceneCluster.packetBuffer.buffer);
                     SceneCluster.packetBuffer.currentPosition = 0;
                 } catch(java.io.IOException ioexception) {
                     Class37.aBoolean871 = true;
@@ -1246,12 +1250,380 @@ public class Main extends GameShell {
         }
     }
 
+    public static void updateGame() {
+        if(Class40_Sub5_Sub15.systemUpdateTime > 1)
+            Class40_Sub5_Sub15.systemUpdateTime--;
+        if(SceneCluster.idleLogout > 0)
+            SceneCluster.idleLogout--;
+        if(Class37.aBoolean871) {
+            Class37.aBoolean871 = false;
+            Class59.dropClient();
+        } else {
+            for(int i = 0; i < 100; i++) {
+                if(!IncomingPackets.parseIncomingPackets())
+                    break;
+            }
+            if(Class51.currentAction == 30 || Class51.currentAction == 35) {
+                if(ISAAC.aBoolean519 && Class51.currentAction == 30) {
+                    SpotAnimDefinition.mouseButtonPressed = 0;
+                    MouseHandler.clickType = 0;
+                    while(MovedStatics.method416((byte) -104)) {
+                        /* empty */
+                    }
+                    for(int i = 0; i < Item.obfuscatedKeyStatus.length; i++)
+                        Item.obfuscatedKeyStatus[i] = false;
+                }
+                ClientScriptRunner.createClientScriptCheckPacket(205, SceneCluster.packetBuffer);
+                synchronized(Class12.mouseCapturer.objectLock) {
+                    if(Class22.accountFlagged) {
+                        if(MouseHandler.clickType != 0 || Class12.mouseCapturer.coord >= 40) {
+                            int coordinateCount = 0;
+                            SceneCluster.packetBuffer.putPacket(210);
+                            SceneCluster.packetBuffer.putByte(0);
+                            int originalOffset = SceneCluster.packetBuffer.currentPosition;
+                            for(int c = 0; c < Class12.mouseCapturer.coord; c++) {
+                                if(-originalOffset + SceneCluster.packetBuffer.currentPosition >= 240)
+                                    break;
+                                coordinateCount++;
+                                int pixelOffset = Class12.mouseCapturer.coordsY[c];
+                                if(pixelOffset >= 0) {
+                                    if(pixelOffset > 502)
+                                        pixelOffset = 502;
+                                } else
+                                    pixelOffset = 0;
+                                int x = Class12.mouseCapturer.coordsX[c];
+                                if(x < 0)
+                                    x = 0;
+                                else if(x > 764)
+                                    x = 764;
+                                int y = pixelOffset * 765 + x;
+                                if(Class12.mouseCapturer.coordsY[c] == -1 && Class12.mouseCapturer.coordsX[c] == -1) {
+                                    x = -1;
+                                    y = -1;
+                                    pixelOffset = 0x7ffff;
+                                }
+                                if(x == PacketBuffer.lastClickX && y == GameObjectDefinition.lastClickY) {
+                                    if(Class22_Sub2.duplicateClickCount < 2047)
+                                        Class22_Sub2.duplicateClickCount++;
+                                } else {
+                                    int differenceX = x - PacketBuffer.lastClickX;
+                                    PacketBuffer.lastClickX = x;
+                                    int differenceY = pixelOffset - GameObjectDefinition.lastClickY;
+                                    GameObjectDefinition.lastClickY = pixelOffset;
+                                    if(Class22_Sub2.duplicateClickCount < 8 && differenceX >= -32 && differenceX <= 31 && differenceY >= -32 && differenceY <= 31) {
+                                        differenceX += 32;
+                                        differenceY += 32;
+                                        SceneCluster.packetBuffer.putShortBE(differenceY + (differenceX << 6) + (Class22_Sub2.duplicateClickCount << 12));
+                                        Class22_Sub2.duplicateClickCount = 0;
+                                    } else if(Class22_Sub2.duplicateClickCount < 8) {
+                                        SceneCluster.packetBuffer.putMediumBE(y + 8388608 + (Class22_Sub2.duplicateClickCount << 19));
+                                        Class22_Sub2.duplicateClickCount = 0;
+                                    } else {
+                                        SceneCluster.packetBuffer.putIntBE((Class22_Sub2.duplicateClickCount << 19) + -1073741824 + y);
+                                        Class22_Sub2.duplicateClickCount = 0;
+                                    }
+                                }
+                            }
+                            SceneCluster.packetBuffer.finishVarByte(SceneCluster.packetBuffer.currentPosition + -originalOffset);
+                            if(coordinateCount < Class12.mouseCapturer.coord) {
+                                Class12.mouseCapturer.coord -= coordinateCount;
+                                for(int i_9_ = 0; Class12.mouseCapturer.coord > i_9_; i_9_++) {
+                                    Class12.mouseCapturer.coordsX[i_9_] = Class12.mouseCapturer.coordsX[coordinateCount + i_9_];
+                                    Class12.mouseCapturer.coordsY[i_9_] = Class12.mouseCapturer.coordsY[i_9_ + coordinateCount];
+                                }
+                            } else
+                                Class12.mouseCapturer.coord = 0;
+                        }
+                    } else {
+                        Class12.mouseCapturer.coord = 0;
+                    }
+                }
+                if(MouseHandler.clickType != 0) {
+                    long l = (GameObjectDefinition.aLong2561 - Class51.aLong1203) / 50L;
+                    int i = Class57.clickX;
+                    int i_10_ = RSString.clickY;
+                    Class51.aLong1203 = GameObjectDefinition.aLong2561;
+                    if(i >= 0) {
+                        if(i > 764)
+                            i = 764;
+                    } else
+                        i = 0;
+                    if(i_10_ >= 0) {
+                        if(i_10_ > 502)
+                            i_10_ = 502;
+                    } else
+                        i_10_ = 0;
+                    int i_11_ = 0;
+                    if(MouseHandler.clickType == 2)
+                        i_11_ = 1;
+                    if(l > 4095)
+                        l = 4095L;
+                    int i_12_ = (int) l;
+                    SceneCluster.packetBuffer.putPacket(234);
+                    int i_13_ = i_10_ * 765 + i;
+                    SceneCluster.packetBuffer.putIntLE((i_11_ << 19) + (i_12_ << 20) + i_13_);
+                }
+                if(InteractiveObject.anInt487 > 0)
+                    InteractiveObject.anInt487--;
+                if(Item.obfuscatedKeyStatus[96] || Item.obfuscatedKeyStatus[97] || Item.obfuscatedKeyStatus[98] || Item.obfuscatedKeyStatus[99])
+                    MovedStatics.aBoolean565 = true;
+                if(MovedStatics.aBoolean565 && InteractiveObject.anInt487 <= 0) {
+                    InteractiveObject.anInt487 = 20;
+                    MovedStatics.aBoolean565 = false;
+                    SceneCluster.packetBuffer.putPacket(58);
+                    SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
+                    SceneCluster.packetBuffer.putShortBE(Class65.cameraVertical);
+                }
+                if(MovedStatics.aBoolean571 && !Class35.aBoolean1735) {
+                    Class35.aBoolean1735 = true;
+                    SceneCluster.packetBuffer.putPacket(160);
+                    SceneCluster.packetBuffer.putByte(1);
+                }
+                if(!MovedStatics.aBoolean571 && Class35.aBoolean1735) {
+                    Class35.aBoolean1735 = false;
+                    SceneCluster.packetBuffer.putPacket(160);
+                    SceneCluster.packetBuffer.putByte(0);
+                }
+                LinkedList.method910(-32322);
+                if(Class51.currentAction == 30 || Class51.currentAction == 35) {
+                    Class40_Sub5_Sub13.method652();
+                    MusicSystem.processAudio();
+                    Class35.anInt1728++;
+                    if(Class35.anInt1728 > 750)
+                        Class59.dropClient();
+                    else {
+                        Class17.animatePlayers(-1);
+                        Class8.animateNpcs();
+                        Class22_Sub1.method313();
+                        if(LinkedList.crossType != 0) {
+                            OverlayDefinition.crossIndex += 20;
+                            if(OverlayDefinition.crossIndex >= 400)
+                                LinkedList.crossType = 0;
+                        }
+                        if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType != 0) {
+                            RSRuntimeException.anInt1651++;
+                            if(RSRuntimeException.anInt1651 >= 15) {
+                                if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 2)
+                                    GameInterface.redrawTabArea = true;
+                                if(Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType == 3)
+                                    ChatBox.redrawChatbox = true;
+                                Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 0;
+                            }
+                        }
+                        MovedStatics.anInt199++;
+                        if(SceneTile.activeInterfaceType != 0) {
+                            Buffer.lastItemDragTime++;
+                            if(Class13.mouseX > Renderable.anInt2869 + 5 || Renderable.anInt2869 + -5 > Class13.mouseX || ItemDefinition.anInt2798 + 5 < Landscape.mouseY || ItemDefinition.anInt2798 - 5 > Landscape.mouseY)
+                                Class40_Sub5_Sub15.lastItemDragged = true;
+                            if(SpotAnimDefinition.mouseButtonPressed == 0) {
+                                if(SceneTile.activeInterfaceType == 3)
+                                    ChatBox.redrawChatbox = true;
+                                if(SceneTile.activeInterfaceType == 2)
+                                    GameInterface.redrawTabArea = true;
+                                SceneTile.activeInterfaceType = 0;
+                                if(Class40_Sub5_Sub15.lastItemDragged && Buffer.lastItemDragTime >= 5) {
+                                    RSRuntimeException.lastActiveInvInterface = -1;
+                                    Class43.processRightClick();
+                                    if(RSRuntimeException.lastActiveInvInterface == Class48.modifiedWidgetId && Class55.mouseInvInterfaceIndex != GroundItemTile.selectedInventorySlot) {
+                                        GameInterface childInterface = GameInterface.getInterface(Class48.modifiedWidgetId);
+                                        int moveItemInsertionMode = 0;
+                                        if(Class43.bankInsertMode == 1 && childInterface.contentType == 206)
+                                            moveItemInsertionMode = 1;
+                                        if(childInterface.items[Class55.mouseInvInterfaceIndex] <= 0)
+                                            moveItemInsertionMode = 0;
+                                        if(childInterface.itemDeletesDraged) {
+                                            int i_16_ = Class55.mouseInvInterfaceIndex;
+                                            int i_17_ = GroundItemTile.selectedInventorySlot;
+                                            childInterface.items[i_16_] = childInterface.items[i_17_];
+                                            childInterface.itemAmounts[i_16_] = childInterface.itemAmounts[i_17_];
+                                            childInterface.items[i_17_] = -1;
+                                            childInterface.itemAmounts[i_17_] = 0;
+                                        } else if(moveItemInsertionMode == 1) {
+                                            int slotStart = GroundItemTile.selectedInventorySlot;
+                                            int slotEnd = Class55.mouseInvInterfaceIndex;
+                                            while(slotEnd != slotStart) {
+                                                if(slotStart <= slotEnd) {
+                                                    if(slotStart < slotEnd) {
+                                                        childInterface.swapItems(1 + slotStart, false, slotStart);
+                                                        slotStart++;
+                                                    }
+                                                } else {
+                                                    childInterface.swapItems(-1 + slotStart, false, slotStart);
+                                                    slotStart--;
+                                                }
+                                            }
+                                        } else
+                                            childInterface.swapItems(Class55.mouseInvInterfaceIndex, false, GroundItemTile.selectedInventorySlot);
+                                        SceneCluster.packetBuffer.putPacket(83);
+                                        SceneCluster.packetBuffer.putByte(moveItemInsertionMode);
+                                        SceneCluster.packetBuffer.putShortBE(GroundItemTile.selectedInventorySlot);
+                                        SceneCluster.packetBuffer.putShortLE(Class55.mouseInvInterfaceIndex);
+                                        SceneCluster.packetBuffer.putIntME2(Class48.modifiedWidgetId);
+                                    }
+                                } else {
+                                    if((ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend((byte) 63, ActorDefinition.menuActionRow - 1)) && ActorDefinition.menuActionRow > 2)
+                                        Class60.determineMenuSize();
+                                    else if(ActorDefinition.menuActionRow > 0)
+                                        GameInterface.processMenuActions(123, -1 + ActorDefinition.menuActionRow);
+                                }
+                                RSRuntimeException.anInt1651 = 10;
+                                MouseHandler.clickType = 0;
+                            }
+                        }
+
+                        if(Scene.clickedTileX != -1) {
+                            int i = Scene.clickedTileX;
+                            int i_18_ = Scene.clickedTileY;
+                            boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, true, 0, 0, Player.localPlayer.pathX[0], i_18_, 0);
+                            if(bool) {
+                                MovedStatics.crossY = RSString.clickY;
+                                OverlayDefinition.crossIndex = 0;
+                                ClientScriptRunner.crossX = Class57.clickX;
+                                LinkedList.crossType = 1;
+                            }
+                            Scene.clickedTileX = -1;
+                        }
+
+                        if(MouseHandler.clickType == 1 && Native.clickToContinueString != null) {
+                            MouseHandler.clickType = 0;
+                            ChatBox.redrawChatbox = true;
+                            Native.clickToContinueString = null;
+                        }
+
+                        MouseHandler.processMenuClick();
+                        if(GameInterface.fullscreenInterfaceId == -1) {
+                            ScreenController.handleMinimapMouse();
+                            ScreenController.handleTabClick();
+                            ScreenController.handleChatButtonsClick();
+                        }
+
+                        if(SpotAnimDefinition.mouseButtonPressed == 1 || MouseHandler.clickType == 1)
+                            Npc.anInt3294++;
+
+                        int i = 34;
+                        if(GameInterface.gameScreenInterfaceId != -1)
+                            GameInterface.runClientScriptsForParentInterface(516, i, 338, GameInterface.gameScreenInterfaceId, 4, 4);
+
+                        if(GameInterface.tabAreaInterfaceId == -1) {
+                            if(Player.tabWidgetIds[Player.currentTabId] != -1)
+                                GameInterface.runClientScriptsForParentInterface(743, i, 466, Player.tabWidgetIds[Player.currentTabId], 205, 553);
+                        } else
+                            GameInterface.runClientScriptsForParentInterface(743, i, 466, GameInterface.tabAreaInterfaceId, 205, 553);
+
+                        if(GameInterface.chatboxInterfaceId != -1)
+                            GameInterface.runClientScriptsForParentInterface(496, i, 453, GameInterface.chatboxInterfaceId, 357, 17);
+                        else if(ChatBox.dialogueId != -1)
+                            GameInterface.runClientScriptsForParentInterface(496, i, 453, ChatBox.dialogueId, 357, 17);
+
+                        if(GameInterface.gameScreenInterfaceId != -1)
+                            GameInterface.runClientScriptsForParentInterface(516, i ^ 0xffffffff, 338, GameInterface.gameScreenInterfaceId, 4, 4);
+
+                        if(GameInterface.tabAreaInterfaceId != -1)
+                            GameInterface.runClientScriptsForParentInterface(743, i ^ 0xffffffff, 466, GameInterface.tabAreaInterfaceId, 205, 553);
+
+                        else if(Player.tabWidgetIds[Player.currentTabId] != -1)
+                            GameInterface.runClientScriptsForParentInterface(743, i ^ 0xffffffff, 466, Player.tabWidgetIds[Player.currentTabId], 205, 553);
+
+                        if(GameInterface.chatboxInterfaceId != -1)
+                            GameInterface.runClientScriptsForParentInterface(496, i ^ 0xffffffff, 453, GameInterface.chatboxInterfaceId, 357, 17);
+                        else if(ChatBox.dialogueId != -1)
+                            GameInterface.runClientScriptsForParentInterface(496, i ^ 0xffffffff, 453, ChatBox.dialogueId, 357, 17);
+
+                        // If hovering over a widget
+                        if(MovedStatics.anInt1586 != -1 || FloorDecoration.anInt614 != -1 || MovedStatics.anInt573 != -1) {
+                            if(RSString.tooltipDelay > WallDecoration.durationHoveredOverWidget) {
+                                WallDecoration.durationHoveredOverWidget++;
+                                if(RSString.tooltipDelay == WallDecoration.durationHoveredOverWidget) {
+                                    if(MovedStatics.anInt1586 != -1)
+                                        ChatBox.redrawChatbox = true;
+                                    if(FloorDecoration.anInt614 != -1)
+                                        GameInterface.redrawTabArea = true;
+                                }
+                            }
+                        } else if(WallDecoration.durationHoveredOverWidget > 0)
+                            WallDecoration.durationHoveredOverWidget--;
+                        Item.calculateCameraPosition();
+                        if(Player.cutsceneActive)
+                            method165(35);
+                        for(int i_19_ = 0; i_19_ < 5; i_19_++)
+                            Class22_Sub1.anIntArray1846[i_19_]++;
+                        Class40_Sub5_Sub6.manageTextInputs();
+                        int i_20_ = Npc.method400(-1);
+                        int i_21_ = Class17.method274(true);
+                        if(i_20_ > 4500 && i_21_ > 4500) {
+                            SceneCluster.idleLogout = 250;
+                            Class40_Sub5_Sub13.method650(4000);
+                            SceneCluster.packetBuffer.putPacket(216);
+                        }
+                        Player.anInt3264++;
+                        MovedStatics.anInt1923++;
+                        if(MovedStatics.anInt1923 > 500) {
+                            int i_22_ = (int) (8.0 * Math.random());
+                            if((0x2 & i_22_) == 2)
+                                Class48.cameraOffsetY += ProducingGraphicsBuffer_Sub1.anInt2211;
+                            if((i_22_ & 0x1) == 1)
+                                Buffer.cameraOffsetX += Class42.anInt1010;
+                            MovedStatics.anInt1923 = 0;
+                            if((0x4 & i_22_) == 4)
+                                Class57.anInt1342 += MovedStatics.anInt195;
+                        }
+                        if(Class48.cameraOffsetY < -55)
+                            ProducingGraphicsBuffer_Sub1.anInt2211 = 2;
+                        if(Player.anInt3264 > 500) {
+                            int i_23_ = (int) (Math.random() * 8.0);
+                            if((0x1 & i_23_) == 1)
+                                Class43.cameraYawOffset += Class13.anInt419;
+                            if((0x2 & i_23_) == 2)
+                                Class51.mapZoomOffset += anInt1766;
+                            Player.anInt3264 = 0;
+                        }
+                        if(Class48.cameraOffsetY > 55)
+                            ProducingGraphicsBuffer_Sub1.anInt2211 = -2;
+                        if(Buffer.cameraOffsetX < -50)
+                            Class42.anInt1010 = 2;
+                        if(Class43.cameraYawOffset < -60)
+                            Class13.anInt419 = 2;
+                        Class22.anInt537++;
+                        if(Buffer.cameraOffsetX > 50)
+                            Class42.anInt1010 = -2;
+                        if(Class43.cameraYawOffset > 60)
+                            Class13.anInt419 = -2;
+                        if(Class57.anInt1342 < -40)
+                            MovedStatics.anInt195 = 1;
+                        if(Class57.anInt1342 > 40)
+                            MovedStatics.anInt195 = -1;
+                        if(Class51.mapZoomOffset < -20)
+                            anInt1766 = 1;
+                        if(Class51.mapZoomOffset > 10)
+                            anInt1766 = -1;
+                        if(Class22.anInt537 > 50) {
+                            SceneCluster.packetBuffer.putPacket(13);
+                        }
+                        do {
+                            try {
+                                if(MovedStatics.gameSocket == null || SceneCluster.packetBuffer.currentPosition <= 0)
+                                    break;
+                                MovedStatics.gameSocket.method1010(SceneCluster.packetBuffer.currentPosition, 0, SceneCluster.packetBuffer.buffer);
+                                Class22.anInt537 = 0;
+                                SceneCluster.packetBuffer.currentPosition = 0;
+                            } catch(java.io.IOException ioexception) {
+                                Class59.dropClient();
+                                break;
+                            }
+                            break;
+                        } while(false);
+                    }
+                }
+            }
+        }
+    }
+
     public void method35(int arg1) {
         if (Wall.anInt350 != OverlayDefinition.anInt2340)
             Wall.anInt350 = OverlayDefinition.anInt2340;
         else
             Wall.anInt350 = CollisionMap.anInt172;
-        Class29.aClass64_676 = null;
+        Class29.gameSocket = null;
         ProducingGraphicsBuffer.aSignlinkNode_1632 = null;
         Class8.anInt292++;
         Class8.anInt290 = 0;
@@ -1259,19 +1631,19 @@ public class Main extends GameShell {
             if (Class8.anInt292 < 2 || arg1 != 6) {
                 if (Class8.anInt292 >= 4) {
                     if (Class51.currentAction <= 5) {
-                        this.openErrorPage((byte) 104, "js5connect");
+                        this.openErrorPage("js5connect");
                         ISAAC.anInt509 = 3000;
                     } else
                         ISAAC.anInt509 = 3000;
                 }
             } else {
-                this.openErrorPage((byte) 86, "js5connect_outofdate");
+                this.openErrorPage("js5connect_outofdate");
                 Class51.currentAction = 1000;
             }
         } else if (Class51.currentAction > 5)
             ISAAC.anInt509 = 3000;
         else {
-            this.openErrorPage((byte) 122, "js5connect_full");
+            this.openErrorPage("js5connect_full");
             Class51.currentAction = 1000;
         }
     }
@@ -1283,7 +1655,7 @@ public class Main extends GameShell {
         Class33.method413((byte) -116);
         RSRuntimeException.method1054((byte) 125);
         GameInterface.method639(122);
-        Class64.method1015();
+        MovedStatics.method1015();
 
         if (Class51.currentAction == 0) {
             Class40_Sub3.startup(100);
@@ -1300,18 +1672,19 @@ public class Main extends GameShell {
             Landscape.loadRegion();
         if (Class51.currentAction == 30) {
             ScreenController.refreshFrameSize();
-            Npc.updateGame();
+            updateGame();
         } else if (Class51.currentAction == 35) {
             ScreenController.refreshFrameSize();
-            Npc.updateGame();
+            updateGame();
         } else if (Class51.currentAction == 40) {
+            // Connection lost
             SpotAnimDefinition.method552(true);
         }
     }
 
     public void method39() {
-        if (1000 != Class51.currentAction) {
-            boolean bool = FloorDecoration.method346((byte) 48);
+        if (Class51.currentAction != 1000) {
+            boolean bool = FloorDecoration.method346();
             if (!bool)
                 method40();
         }
@@ -1321,7 +1694,7 @@ public class Main extends GameShell {
         if (MovedStatics.aBoolean1575) {
             Class22_Sub1.method311(MouseHandler.gameCanvas);
             Class55.method965(32, MouseHandler.gameCanvas);
-            this.setCanvas((byte) 86);
+            this.setCanvas();
             GameInterface.method642(MouseHandler.gameCanvas, -10);
             RSRuntimeException.method1056(MouseHandler.gameCanvas, (byte) 33);
         }
@@ -1358,7 +1731,7 @@ public class Main extends GameShell {
 
     public void method40() {
         if (MovedStatics.anInt813 >= 4) {
-            this.openErrorPage((byte) 120, "js5crc");
+            this.openErrorPage("js5crc");
             Class51.currentAction = 1000;
         } else {
             if (MovedStatics.anInt2278 >= 4) {
@@ -1366,7 +1739,7 @@ public class Main extends GameShell {
                     MovedStatics.anInt2278 = 3;
                     ISAAC.anInt509 = 3000;
                 } else {
-                    this.openErrorPage((byte) 58, "js5io");
+                    this.openErrorPage("js5io");
                     Class51.currentAction = 1000;
                     return;
                 }
@@ -1387,22 +1760,22 @@ public class Main extends GameShell {
                                 Class8.anInt290++;
                         }
                         if (Class8.anInt290 == 2) {
-                            Class29.aClass64_676 = new Class64((Socket) ProducingGraphicsBuffer.aSignlinkNode_1632.value, signlink);
-                            Buffer class40_sub1 = new Buffer(5);
-                            class40_sub1.putByte(15);
-                            class40_sub1.putIntBE(435);
-                            Class29.aClass64_676.method1010(5, (byte) -19, 0, class40_sub1.buffer);
+                            Class29.gameSocket = new GameSocket((Socket) ProducingGraphicsBuffer.aSignlinkNode_1632.value, signlink);
+                            Buffer buffer = new Buffer(5);
+                            buffer.putByte(15);
+                            buffer.putIntBE(435);
+                            Class29.gameSocket.method1010(5, 0, buffer.buffer);
                             Class8.anInt290++;
                             Class22_Sub1.aLong1841 = System.currentTimeMillis();
                         }
                         if (Class8.anInt290 == 3) {
-                            if (Class51.currentAction > 5 && Class29.aClass64_676.method1014(5 + -131) <= 0) {
+                            if (Class51.currentAction > 5 && Class29.gameSocket.inputStreamAvailable() <= 0) {
                                 if (System.currentTimeMillis() + -Class22_Sub1.aLong1841 > 30000L) {
                                     method35(-2);
                                     break;
                                 }
                             } else {
-                                int i = Class29.aClass64_676.read();
+                                int i = Class29.gameSocket.read();
                                 if (i != 0) {
                                     method35(i);
                                     break;
@@ -1412,10 +1785,10 @@ public class Main extends GameShell {
                         }
                         if (Class8.anInt290 != 4)
                             break;
-                        Class17.method273(Class29.aClass64_676, 105, Class51.currentAction > 20);
+                        Class17.method273(Class29.gameSocket, Class51.currentAction > 20);
                         ProducingGraphicsBuffer.aSignlinkNode_1632 = null;
                         Class8.anInt290 = 0;
-                        Class29.aClass64_676 = null;
+                        Class29.gameSocket = null;
                         Class8.anInt292 = 0;
                     } catch (java.io.IOException ioexception) {
                         ioexception.printStackTrace();
@@ -1432,9 +1805,9 @@ public class Main extends GameShell {
         if (Class12.mouseCapturer != null)
             Class12.mouseCapturer.aBoolean913 = false;
         Class12.mouseCapturer = null;
-        if (MovedStatics.gameConnection != null) {
-            MovedStatics.gameConnection.method1009();
-            MovedStatics.gameConnection = null;
+        if (MovedStatics.gameSocket != null) {
+            MovedStatics.gameSocket.method1009();
+            MovedStatics.gameSocket = null;
         }
         ItemDefinition.method744();
         Class13.method249(true);

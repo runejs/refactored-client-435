@@ -39,7 +39,7 @@ public class Class65 {
         Class59.anIntArray1398 = new int[104];
         OverlayDefinition.tile_underlay_path = new byte[4][104][104];
         MovedStatics.anIntArrayArrayArray262 = new int[4][105][105];
-        Class64.lowestPlane = 99;
+        MovedStatics.lowestPlane = 99;
         InteractiveObject.aByteArrayArrayArray492 = new byte[4][105][105];
         FloorDecoration.anIntArray612 = new int[104];
         MovedStatics.anIntArray1579 = new int[104];

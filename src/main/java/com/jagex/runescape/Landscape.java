@@ -191,7 +191,7 @@ public class Landscape {
                 RSCanvas.clearCaches();
                 ISAAC.method281(Npc.currentScene, 27324, currentCollisionMap);
                 Main.method364((byte) -34, true);
-                int z = Class64.lowestPlane;
+                int z = MovedStatics.lowestPlane;
                 if(Player.worldLevel < z)
                     z = Player.worldLevel;
                 if(z < -1 + Player.worldLevel)
@@ -199,7 +199,7 @@ public class Landscape {
                 if(!VertexNormal.lowMemory)
                     Npc.currentScene.setHeightLevel(0);
                 else
-                    Npc.currentScene.setHeightLevel(Class64.lowestPlane);
+                    Npc.currentScene.setHeightLevel(MovedStatics.lowestPlane);
                 for(int x = 0; x < 104; x++) {
                     for(int y = 0; y < 104; y++)
                         FramemapDefinition.spawnGroundItem(y, x);
