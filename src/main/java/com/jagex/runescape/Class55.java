@@ -1,7 +1,6 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.scene.InteractiveObject;
@@ -102,7 +101,7 @@ public class Class55 {
     }
 
     public static void method966(int arg0, CacheArchive arg1, CacheArchive arg2) {
-        UnderlayDefinition.aCacheArchive_2582 = arg1;
+        MovedStatics.aCacheArchive_2582 = arg1;
         int i = -87 / ((-20 - arg0) / 56);
         InteractiveObject.aCacheArchive_488 = arg2;
     }

@@ -206,7 +206,7 @@ public class Item extends Renderable {
             if (RSCanvas.anInt60 != 0 && !VertexNormal.lowMemory)
                 Class33.method412(false, CacheArchive.musicCacheArchive, 0, (byte) 66, Native.titleSong, 10, "", RSCanvas.anInt60);
             else
-                Class33.method405(16969, 10);
+                MovedStatics.method405(16969, 10);
             GameShell.method19(false, 24041);
             MovedStatics.clearScreen = true;
             ISAAC.aBoolean512 = true;

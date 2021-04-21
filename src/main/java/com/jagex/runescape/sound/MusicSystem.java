@@ -144,8 +144,8 @@ public final class MusicSystem implements Runnable {
             Class35.songTimeout -= 20;
             if(Class35.songTimeout < 0)
                 Class35.songTimeout = 0;
-            if(Class35.songTimeout == 0 && RSCanvas.anInt60 != 0 && MouseHandler.anInt1457 != -1)
-                Class33.method414(false, 0, MouseHandler.anInt1457, RSCanvas.anInt60, 0, CacheArchive.musicCacheArchive);
+            if(Class35.songTimeout == 0 && RSCanvas.anInt60 != 0 && MouseHandler.currentSongId != -1)
+                Class33.method414(false, 0, MouseHandler.currentSongId, RSCanvas.anInt60, 0, CacheArchive.musicCacheArchive);
         }
     }
 

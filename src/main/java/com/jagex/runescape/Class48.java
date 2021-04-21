@@ -143,11 +143,11 @@ public class Class48 {
                             if(gameInterface.contentType != 0)
                                 bool = ProducingGraphicsBuffer_Sub1.method1051(300, gameInterface);
                             if(!bool) {
-                                OverlayDefinition.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 42, "");
+                                MovedStatics.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 42, "");
                             }
                         }
                         if(gameInterface.actionType == 2 && Main.widgetSelected == 0 && mouseX >= i_2_ && mouseY >= i_1_ && mouseX < gameInterface.originalWidth + i_2_ && mouseY < i_1_ + gameInterface.originalHeight) {
-                            OverlayDefinition.addActionRow(gameInterface.targetVerb, 0, 0, gameInterface.id, 33, Native.green + gameInterface.spellName);
+                            MovedStatics.addActionRow(gameInterface.targetVerb, 0, 0, gameInterface.id, 33, Native.green + gameInterface.spellName);
                         }
                         if(gameInterface.actionType == 3 && mouseX >= i_2_ && mouseY >= i_1_ && i_2_ + gameInterface.originalWidth > mouseX && mouseY < i_1_ + gameInterface.originalHeight) {
                             int i_3_;
@@ -155,16 +155,16 @@ public class Class48 {
                                 i_3_ = 9;
                             else
                                 i_3_ = 40;
-                            OverlayDefinition.addActionRow(English.close, 0, 0, gameInterface.id, i_3_, "");
+                            MovedStatics.addActionRow(English.close, 0, 0, gameInterface.id, i_3_, "");
                         }
                         if(gameInterface.actionType == 4 && mouseX >= i_2_ && i_1_ <= mouseY && mouseX < gameInterface.originalWidth + i_2_ && gameInterface.originalHeight + i_1_ > mouseY) {
-                            OverlayDefinition.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 23, "");
+                            MovedStatics.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 23, "");
                         }
                         if(gameInterface.actionType == 5 && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && i_1_ + gameInterface.originalHeight > mouseY) {
-                            OverlayDefinition.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 57, "");
+                            MovedStatics.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 57, "");
                         }
                         if(gameInterface.actionType == 6 && MovedStatics.lastContinueTextWidgetId == -1 && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_) {
-                            OverlayDefinition.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 54, "");
+                            MovedStatics.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 54, "");
                         }
                         if(gameInterface.type == GameInterfaceType.INVENTORY) {
                             int i_4_ = 0;
@@ -184,7 +184,7 @@ public class Class48 {
                                             if(Class8.itemSelected != 1 || !gameInterface.isInventory) {
                                                 if(Main.widgetSelected == 1 && gameInterface.isInventory) {
                                                     if((ItemDefinition.selectedMask & 0x10) == 16) {
-                                                        OverlayDefinition.addActionRow(Native.aClass1_1918, itemDefinition.id, i_4_, gameInterface.id, 37, Native.aClass1_611 + Native.toLightRed + itemDefinition.name);
+                                                        MovedStatics.addActionRow(Native.aClass1_1918, itemDefinition.id, i_4_, gameInterface.id, 37, Native.aClass1_611 + Native.toLightRed + itemDefinition.name);
                                                     }
                                                 } else {
                                                     String[] class1s = itemDefinition.interfaceOptions;
@@ -198,14 +198,14 @@ public class Class48 {
                                                                     i_10_ = 11;
                                                                 else
                                                                     i_10_ = 43;
-                                                                OverlayDefinition.addActionRow(class1s[i_9_], itemDefinition.id, i_4_, gameInterface.id, i_10_, Native.lightRed + itemDefinition.name);
+                                                                MovedStatics.addActionRow(class1s[i_9_], itemDefinition.id, i_4_, gameInterface.id, i_10_, Native.lightRed + itemDefinition.name);
                                                             } else if(i_9_ == 4) {
-                                                                OverlayDefinition.addActionRow(English.drop, itemDefinition.id, i_4_, gameInterface.id, 11, Native.lightRed + itemDefinition.name);
+                                                                MovedStatics.addActionRow(English.drop, itemDefinition.id, i_4_, gameInterface.id, 11, Native.lightRed + itemDefinition.name);
                                                             }
                                                         }
                                                     }
                                                     if(gameInterface.itemUsable) {
-                                                        OverlayDefinition.addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, 19, Native.lightRed + itemDefinition.name);
+                                                        MovedStatics.addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, 19, Native.lightRed + itemDefinition.name);
                                                     }
                                                     if(gameInterface.isInventory && class1s != null) {
                                                         for(int i_11_ = 2; i_11_ >= 0; i_11_--) {
@@ -217,7 +217,7 @@ public class Class48 {
                                                                     i_12_ = 6;
                                                                 if(i_11_ == 2)
                                                                     i_12_ = 31;
-                                                                OverlayDefinition.addActionRow(class1s[i_11_], itemDefinition.id, i_4_, gameInterface.id, i_12_, Native.lightRed + itemDefinition.name);
+                                                                MovedStatics.addActionRow(class1s[i_11_], itemDefinition.id, i_4_, gameInterface.id, i_12_, Native.lightRed + itemDefinition.name);
                                                             }
                                                         }
                                                     }
@@ -238,7 +238,7 @@ public class Class48 {
                                                                     i_14_ = 48;
                                                                 if(i_13_ == 4)
                                                                     i_14_ = 24;
-                                                                OverlayDefinition.addActionRow(class1s[i_13_], itemDefinition.id, i_4_, gameInterface.id, i_14_, Native.lightRed + itemDefinition.name);
+                                                                MovedStatics.addActionRow(class1s[i_13_], itemDefinition.id, i_4_, gameInterface.id, i_14_, Native.lightRed + itemDefinition.name);
                                                             }
                                                         }
                                                     }
@@ -253,10 +253,10 @@ public class Class48 {
                                                         );
                                                         examineText.append("<col=00ff00>)</col>");
                                                     }
-                                                    OverlayDefinition.addActionRow(English.examine, itemDefinition.id, i_4_, gameInterface.id, 1006, examineText.toString());
+                                                    MovedStatics.addActionRow(English.examine, itemDefinition.id, i_4_, gameInterface.id, 1006, examineText.toString());
                                                 }
                                             } else if(ISAAC.anInt525 != gameInterface.id || i_4_ != LinkedList.anInt1061) {
-                                                OverlayDefinition.addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, 56, Native.aClass1_3295+ Native.toLightRed + itemDefinition.name);
+                                                MovedStatics.addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, 56, Native.aClass1_3295+ Native.toLightRed + itemDefinition.name);
                                             }
                                         }
                                     }
@@ -271,22 +271,22 @@ public class Class48 {
                                 if(Class60.aBoolean1402)
                                     class1s = MovedStatics.method968(class1s);
                                 if(class1s == null || class1s[4] == null)
-                                    OverlayDefinition.addActionRow(English.drop, itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 11, Native.lightRed +itemDefinition.name);
+                                    MovedStatics.addActionRow(English.drop, itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 11, Native.lightRed +itemDefinition.name);
                                 else
-                                    OverlayDefinition.addActionRow(class1s[4], itemDefinition.id, gameInterface.anInt2736 + -1, gameInterface.id, 11, Native.lightRed + itemDefinition.name);
+                                    MovedStatics.addActionRow(class1s[4], itemDefinition.id, gameInterface.anInt2736 + -1, gameInterface.id, 11, Native.lightRed + itemDefinition.name);
                                 if(class1s != null && class1s[3] != null)
-                                    OverlayDefinition.addActionRow(class1s[3], itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 43, Native.lightRed + itemDefinition.name);
+                                    MovedStatics.addActionRow(class1s[3], itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 43, Native.lightRed + itemDefinition.name);
                                 if(class1s != null && class1s[2] != null)
-                                    OverlayDefinition.addActionRow(class1s[2], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, 31, Native.lightRed + itemDefinition.name);
+                                    MovedStatics.addActionRow(class1s[2], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, 31, Native.lightRed + itemDefinition.name);
                                 if(class1s != null && class1s[1] != null)
-                                    OverlayDefinition.addActionRow(class1s[1], itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 6, Native.lightRed + itemDefinition.name);
+                                    MovedStatics.addActionRow(class1s[1], itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 6, Native.lightRed + itemDefinition.name);
                                 if(class1s != null && class1s[0] != null)
-                                    OverlayDefinition.addActionRow(class1s[0], itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 52, Native.lightRed + itemDefinition.name);
+                                    MovedStatics.addActionRow(class1s[0], itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 52, Native.lightRed + itemDefinition.name);
                             }
                             if(gameInterface.id >= 0)
-                                OverlayDefinition.addActionRow(English.examine, itemDefinition.id, -1, gameInterface.id, 1007, Native.lightRed + itemDefinition.name);
+                                MovedStatics.addActionRow(English.examine, itemDefinition.id, -1, gameInterface.id, 1007, Native.lightRed + itemDefinition.name);
                             else
-                                OverlayDefinition.addActionRow(English.examine, itemDefinition.id, gameInterface.id & 0x7fff, gameInterface.parentId, 1007, Native.lightRed + itemDefinition.name);
+                                MovedStatics.addActionRow(English.examine, itemDefinition.id, gameInterface.id & 0x7fff, gameInterface.parentId, 1007, Native.lightRed + itemDefinition.name);
                         }
                         if(gameInterface.hasListeners && gameInterface.aClass1Array2661 != null && i_2_ <= mouseX && i_1_ <= mouseY && gameInterface.originalWidth + i_2_ > mouseX && mouseY < i_1_ + gameInterface.originalHeight) {
                             String class1 = "";
@@ -297,9 +297,9 @@ public class Class48 {
                             for(int i_15_ = gameInterface.aClass1Array2661.length - 1; i_15_ >= 0; i_15_--) {
                                 if(gameInterface.aClass1Array2661[i_15_] != null) {
                                     if(gameInterface.id < 0)
-                                        OverlayDefinition.addActionRow(gameInterface.aClass1Array2661[i_15_], i_15_ + 1, 0x7fff & gameInterface.id, gameInterface.parentId, 50, class1);
+                                        MovedStatics.addActionRow(gameInterface.aClass1Array2661[i_15_], i_15_ + 1, 0x7fff & gameInterface.id, gameInterface.parentId, 50, class1);
                                     else
-                                        OverlayDefinition.addActionRow(gameInterface.aClass1Array2661[i_15_], i_15_ + 1, 0, gameInterface.id, 50, class1);
+                                        MovedStatics.addActionRow(gameInterface.aClass1Array2661[i_15_], i_15_ + 1, 0, gameInterface.id, 50, class1);
                                 }
                             }
                         }
@@ -331,11 +331,11 @@ public class Class48 {
         for(/**/; i < 4; i++)
             Landscape.currentCollisionMap[i].reset();
         System.gc();
-        Class33.method405(arg0 ^ ~0x5e71, 10);
+        MovedStatics.method405(arg0 ^ ~0x5e71, 10);
         Class35.songTimeout = 0;
-        MouseHandler.anInt1457 = -1;
+        MouseHandler.currentSongId = -1;
         Class37.method436(arg0 + 7352);
-        OverlayDefinition.updateOverlay(10);
+        MovedStatics.updateOverlay(10);
         ScreenController.frameMode(ScreenMode.FIXED);
     }
 

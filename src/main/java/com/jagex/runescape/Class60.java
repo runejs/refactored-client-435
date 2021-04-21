@@ -3,7 +3,6 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
@@ -222,7 +221,7 @@ public class Class60 {
                 if(clickType == 1 && clickX + -75 <= i && i <= clickX + 75 && clickY >= i_18_ + -20 && clickY <= i_18_ + 20) {
                     Native.username = Native.username.method62().method85();
                     Class33.setLoginScreenMessage("", English.connectingToServer, "");
-                    OverlayDefinition.updateOverlay(20);
+                    MovedStatics.updateOverlay(20);
                 } else {
                     clickX = 260;
                     if(clickType == 1 && i >= -75 + clickX && clickX + 75 >= i && clickY >= -20 + i_18_ && clickY <= i_18_ + 20) {
@@ -253,7 +252,7 @@ public class Class60 {
                             if(ItemDefinition.anInt2854 == 84) {
                                 Native.username = Native.username.method62().method85();
                                 Class33.setLoginScreenMessage("", English.connectingToServer, "");
-                                OverlayDefinition.updateOverlay(20);
+                                MovedStatics.updateOverlay(20);
                             }
                             if(bool && Native.password.length() < 20)
                                 Native.password = Native.password.addChar(Class59.anInt1388);

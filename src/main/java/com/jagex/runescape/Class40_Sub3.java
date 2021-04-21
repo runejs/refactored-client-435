@@ -145,12 +145,12 @@ public class Class40_Sub3 extends Node {
                 Console.console = new Console();
                 Native.currentLoadingText = English.loadedTitleScreen;
                 MovedStatics.anInt1607 = 50;
-                OverlayDefinition.updateOverlay(5);
+                MovedStatics.updateOverlay(5);
                 Class40_Sub5_Sub6.loadingPercent = 70;
             }
         } else if (Class40_Sub5_Sub6.loadingPercent == 70) {
             if (CacheArchive.gameDefinitionsCacheArchive.method185((byte) 98)) {
-                MovedStatics.method441(CacheArchive.gameDefinitionsCacheArchive);
+                OverlayDefinition.initializeOverlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 UnderlayDefinition.initializeUnderlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 method977(3, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
                 method980(28987, CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
@@ -198,8 +198,8 @@ public class Class40_Sub3 extends Node {
                 i++;
             else
                 ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
-            if (UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 == null)
-                UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_1230, "");
+            if (MovedStatics.aClass40_Sub5_Sub14_Sub4Array2567 == null)
+                MovedStatics.aClass40_Sub5_Sub14_Sub4Array2567 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_1230, "");
             else
                 i++;
             if (LinkedList.aClass40_Sub5_Sub14_Sub4_1057 == null)
@@ -298,7 +298,7 @@ public class Class40_Sub3 extends Node {
             if (arg0 != 100)
                 aClass40_Sub5_Sub14_Sub4Array2019 = null;
             if (Class40_Sub5_Sub6.loadingPercent == 140)
-                OverlayDefinition.updateOverlay(10);
+                MovedStatics.updateOverlay(10);
         }
     }
 

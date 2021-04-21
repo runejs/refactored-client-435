@@ -68,11 +68,11 @@ public class Class51 {
         MovedStatics.modelCache.clear();
     }
 
-    public static void method942(int arg1) {
-        if(arg1 == -1 && Class35.songTimeout == 0)
+    public static void playSong(int songId) {
+        if(songId == -1 && Class35.songTimeout == 0)
             Class33.method402(false);
-        else if(arg1 != -1 && arg1 != MouseHandler.anInt1457 && RSCanvas.anInt60 != 0 && Class35.songTimeout == 0)
-            Class33.method403(RSCanvas.anInt60, true, 10, arg1, CacheArchive.musicCacheArchive, 0, 0, false);
-        MouseHandler.anInt1457 = arg1;
+        else if(songId != -1 && songId != MouseHandler.currentSongId && RSCanvas.anInt60 != 0 && Class35.songTimeout == 0)
+            Class33.method403(RSCanvas.anInt60, true, 10, songId, CacheArchive.musicCacheArchive, 0, 0, false);
+        MouseHandler.currentSongId = songId;
     }
 }

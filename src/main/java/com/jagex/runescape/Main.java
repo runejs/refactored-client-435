@@ -550,11 +550,11 @@ public class Main extends GameShell {
             if (IdentityKit.anInt2613 > 0) {
                 for (int i = 0; i < 256; i++) {
                     if (IdentityKit.anInt2613 > 768)
-                        Class42.anIntArray1013[i] = UnderlayDefinition.method614(Class51.anIntArray1198[i], Class40_Sub5_Sub17_Sub6.anIntArray3248[i], -IdentityKit.anInt2613 + 1024);
+                        Class42.anIntArray1013[i] = MovedStatics.method614(Class51.anIntArray1198[i], Class40_Sub5_Sub17_Sub6.anIntArray3248[i], -IdentityKit.anInt2613 + 1024);
                     else if (IdentityKit.anInt2613 > 256)
                         Class42.anIntArray1013[i] = Class40_Sub5_Sub17_Sub6.anIntArray3248[i];
                     else
-                        Class42.anIntArray1013[i] = UnderlayDefinition.method614(Class40_Sub5_Sub17_Sub6.anIntArray3248[i], Class51.anIntArray1198[i], -IdentityKit.anInt2613 + 256);
+                        Class42.anIntArray1013[i] = MovedStatics.method614(Class40_Sub5_Sub17_Sub6.anIntArray3248[i], Class51.anIntArray1198[i], -IdentityKit.anInt2613 + 256);
                 }
             } else {
                 System.arraycopy(Class51.anIntArray1198, 0, Class42.anIntArray1013, 0, 256);
@@ -565,9 +565,9 @@ public class Main extends GameShell {
                     if (Class40_Sub5_Sub6.anInt2452 > 256)
                         Class42.anIntArray1013[i] = Renderable.anIntArray2865[i];
                     else
-                        Class42.anIntArray1013[i] = UnderlayDefinition.method614(Renderable.anIntArray2865[i], Class51.anIntArray1198[i], -Class40_Sub5_Sub6.anInt2452 + 256);
+                        Class42.anIntArray1013[i] = MovedStatics.method614(Renderable.anIntArray2865[i], Class51.anIntArray1198[i], -Class40_Sub5_Sub6.anInt2452 + 256);
                 } else
-                    Class42.anIntArray1013[i] = UnderlayDefinition.method614(Class51.anIntArray1198[i], Renderable.anIntArray2865[i], -Class40_Sub5_Sub6.anInt2452 + 1024);
+                    Class42.anIntArray1013[i] = MovedStatics.method614(Class51.anIntArray1198[i], Renderable.anIntArray2865[i], -Class40_Sub5_Sub6.anInt2452 + 1024);
             }
         }
         int i = 256;
@@ -1138,7 +1138,7 @@ public class Main extends GameShell {
         } else {
             Class33.setLoginScreenMessage(English.unexpectedServerResponse, English.pleaseTryUsingDifferentWorld, "");
         }
-        OverlayDefinition.updateOverlay(10);
+        MovedStatics.updateOverlay(10);
     }
 
     public static void method164() {
@@ -1204,7 +1204,7 @@ public class Main extends GameShell {
             if(Class40_Sub5_Sub6.cameraY < i)
                 Class40_Sub5_Sub6.cameraY = i;
         }
-        i = UnderlayDefinition.anInt2576 * 128 + 64;
+        i = MovedStatics.anInt2576 * 128 + 64;
         i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) - MovedStatics.anInt892;
         int i_5_ = -SceneCluster.cameraZ + i_4_;
         int i_6_ = i - Class40_Sub5_Sub6.cameraY;

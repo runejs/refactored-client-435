@@ -4,7 +4,6 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.io.Buffer;
@@ -63,7 +62,7 @@ public class PacketBuffer extends Buffer {
         if(GameInterface.fullscreenInterfaceId != -1) {
             GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
             GameInterface.fullscreenInterfaceId = -1;
-            OverlayDefinition.updateOverlay(30);
+            MovedStatics.updateOverlay(30);
         }
         if(GameInterface.fullscreenSiblingInterfaceId != -1) {
             GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);

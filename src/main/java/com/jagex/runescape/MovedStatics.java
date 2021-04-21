@@ -8,6 +8,7 @@ import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.frame.tab.parts.TabParts;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.*;
@@ -139,6 +140,10 @@ public class MovedStatics {
     public static int destinationX = 0;
     public static int anInt1511 = -1;
     public static int lowestPlane = 99;
+    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
+    public static int anInt2576;
+    public static int anInt2581;
+    public static CacheArchive aCacheArchive_2582;
 
     public static void method440(byte arg0) {
         if (ISAAC.aBoolean512) {
@@ -165,15 +170,11 @@ public class MovedStatics {
             if (arg0 <= -65) {
                 Class17.aProducingGraphicsBuffer_463 = null;
                 Class42.anIntArray1013 = null;
-                Class33.method405(16969, 10);
+                method405(16969, 10);
                 GameShell.method19(true, 24041);
                 ISAAC.aBoolean512 = false;
             }
         }
-    }
-
-    public static void method441(CacheArchive arg0) {
-        Actor.aCacheArchive_3144 = arg0;
     }
 
     public static int[] menuActionTypes = new int[500];
@@ -207,10 +208,10 @@ public class MovedStatics {
                                 i_4_ = 450;
                             if (Class13.mouseX < 4 + i_4_) {
                                 if (InteractiveObject.playerRights >= 1) {
-                                    OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 2028, Native.white + class1);
+                                    addActionRow(English.reportAbuse, 0, 0, 0, 2028, Native.white + class1);
                                 }
-                                OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 2051, Native.white + class1);
-                                OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 2045, Native.white + class1);
+                                addActionRow(English.addIgnore, 0, 0, 0, 2051, Native.white + class1);
+                                addActionRow(English.addFriend, 0, 0, 0, 2045, Native.white + class1);
                             }
                         }
                         if (i >= 5)
@@ -241,7 +242,7 @@ public class MovedStatics {
                 method445(-128);
             Class22_Sub1.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -SpotAnimDefinition.baseX << 7) + Landscape.anInt1170, 4976905);
             if (ISAAC.anInt522 > -1 && pulseCycle % 20 < 10)
-                UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
+                aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
         }
     }
 
@@ -357,7 +358,7 @@ public class MovedStatics {
     }
 
     public static void method233(boolean arg0) {
-        Class33.aClass9_778.clear();
+        OverlayDefinition.overlayDefinitionCache.clear();
         if (!arg0)
             method236(null, null, null);
     }
@@ -597,27 +598,27 @@ public class MovedStatics {
     public static void method184(byte[] data, int arg1) {
         Buffer buffer = new Buffer(data);
         buffer.currentPosition = -2 + data.length;
-        UnderlayDefinition.anInt2581 = buffer.getUnsignedShortBE();
-        Actor.anIntArray3111 = new int[UnderlayDefinition.anInt2581];
-        GroundItemTile.aByteArrayArray1370 = new byte[UnderlayDefinition.anInt2581][];
-        Class17.anIntArray456 = new int[UnderlayDefinition.anInt2581];
-        Npc.anIntArray3312 = new int[UnderlayDefinition.anInt2581];
-        Class57.anIntArray1347 = new int[UnderlayDefinition.anInt2581];
+        anInt2581 = buffer.getUnsignedShortBE();
+        Actor.anIntArray3111 = new int[anInt2581];
+        GroundItemTile.aByteArrayArray1370 = new byte[anInt2581][];
+        Class17.anIntArray456 = new int[anInt2581];
+        Npc.anIntArray3312 = new int[anInt2581];
+        Class57.anIntArray1347 = new int[anInt2581];
 
-        buffer.currentPosition = data.length + -7 + -(UnderlayDefinition.anInt2581 * 8);
+        buffer.currentPosition = data.length + -7 + -(anInt2581 * 8);
         ItemDefinition.anInt2846 = buffer.getUnsignedShortBE();
         GameShell.anInt31 = buffer.getUnsignedShortBE();
         int i = 1 + (buffer.getUnsignedByte() & 0xff);
-        for (int i_34_ = 0; i_34_ < UnderlayDefinition.anInt2581; i_34_++)
+        for (int i_34_ = 0; i_34_ < anInt2581; i_34_++)
             Class57.anIntArray1347[i_34_] = buffer.getUnsignedShortBE();
-        for (int i_35_ = arg1; i_35_ < UnderlayDefinition.anInt2581; i_35_++)
+        for (int i_35_ = arg1; i_35_ < anInt2581; i_35_++)
             Actor.anIntArray3111[i_35_] = buffer.getUnsignedShortBE();
-        for (int i_36_ = 0; i_36_ < UnderlayDefinition.anInt2581; i_36_++)
+        for (int i_36_ = 0; i_36_ < anInt2581; i_36_++)
             Class17.anIntArray456[i_36_] = buffer.getUnsignedShortBE();
-        for (int i_37_ = 0; UnderlayDefinition.anInt2581 > i_37_; i_37_++)
+        for (int i_37_ = 0; anInt2581 > i_37_; i_37_++)
             Npc.anIntArray3312[i_37_] = buffer.getUnsignedShortBE();
 
-        buffer.currentPosition = data.length - (7 + UnderlayDefinition.anInt2581 * 8 + -3 + i * 3);
+        buffer.currentPosition = data.length - (7 + anInt2581 * 8 + -3 + i * 3);
         Buffer.anIntArray1972 = new int[i];
         for (int i_38_ = 1; i > i_38_; i_38_++) {
             Buffer.anIntArray1972[i_38_] = buffer.getMediumBE();
@@ -625,7 +626,7 @@ public class MovedStatics {
                 Buffer.anIntArray1972[i_38_] = 1;
         }
         buffer.currentPosition = 0;
-        for (int i_39_ = 0; UnderlayDefinition.anInt2581 > i_39_; i_39_++) {
+        for (int i_39_ = 0; anInt2581 > i_39_; i_39_++) {
             int i_40_ = Npc.anIntArray3312[i_39_];
             int i_41_ = Class17.anIntArray456[i_39_];
             int i_42_ = i_40_ * i_41_;
@@ -899,7 +900,7 @@ public class MovedStatics {
                 tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + SpotAnimDefinition.baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
             }
 
-            OverlayDefinition.addActionRow(English.walkHere, 0, Class13.mouseX, Landscape.mouseY, 7, tileCoords);
+            addActionRow(English.walkHere, 0, Class13.mouseX, Landscape.mouseY, 7, tileCoords);
         }
 
         for (int idx = 0; Model.resourceCount > idx; idx++) {
@@ -917,7 +918,7 @@ public class MovedStatics {
                     if (gameObjectDefinition == null)
                         continue;
                     if (Class8.itemSelected == 1) {
-                        OverlayDefinition.addActionRow(English.use, hash, x, y, 5, Native.aClass1_3295 + Native.toCyan + gameObjectDefinition.name);
+                        addActionRow(English.use, hash, x, y, 5, Native.aClass1_3295 + Native.toCyan + gameObjectDefinition.name);
                     } else if (Main.widgetSelected != 1) {
                         String[] options = gameObjectDefinition.actions;
                         if (Class60.aBoolean1402)
@@ -936,7 +937,7 @@ public class MovedStatics {
                                         actionType = 27;
                                     if (i_7_ == 4)
                                         actionType = 1002;
-                                    OverlayDefinition.addActionRow(options[i_7_], hash, x, y, actionType, Native.cyan + gameObjectDefinition.name);
+                                    addActionRow(options[i_7_], hash, x, y, actionType, Native.cyan + gameObjectDefinition.name);
                                 }
                             }
                         }
@@ -960,9 +961,9 @@ public class MovedStatics {
 
 
                         }
-                        OverlayDefinition.addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, 1004, examineText.toString());
+                        addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, 1004, examineText.toString());
                     } else if ((ItemDefinition.selectedMask & 0x4) == 4) {
-                        OverlayDefinition.addActionRow(Native.aClass1_1918, hash, x, y, 32, Native.aClass1_611 + Native.toCyan + gameObjectDefinition.name);
+                        addActionRow(Native.aClass1_1918, hash, x, y, 32, Native.aClass1_611 + Native.toCyan + gameObjectDefinition.name);
                     }
                 }
                 if (type == 1) {
@@ -1003,7 +1004,7 @@ public class MovedStatics {
                         for (Item item = (Item) itemList.last((byte) -95); item != null; item = (Item) itemList.previous(4)) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
                             if (Class8.itemSelected == 1) {
-                                OverlayDefinition.addActionRow(English.use, item.itemId, x, y, 47, Native.aClass1_3295 + Native.toLightRed + itemDefinition.name);
+                                addActionRow(English.use, item.itemId, x, y, 47, Native.aClass1_3295 + Native.toLightRed + itemDefinition.name);
                             } else if (Main.widgetSelected != 1) {
                                 String[] class1s = itemDefinition.groundOptions;
                                 if (Class60.aBoolean1402)
@@ -1011,7 +1012,7 @@ public class MovedStatics {
                                 for (int i_15_ = 4; i_15_ >= 0; i_15_--) {
                                     if (class1s == null || class1s[i_15_] == null) {
                                         if (i_15_ == 2) {
-                                            OverlayDefinition.addActionRow(English.take, item.itemId, x, y, 3, Native.lightRed + itemDefinition.name);
+                                            addActionRow(English.take, item.itemId, x, y, 3, Native.lightRed + itemDefinition.name);
                                         }
                                     } else {
                                         int i_16_ = 0;
@@ -1025,12 +1026,12 @@ public class MovedStatics {
                                             i_16_ = 8;
                                         if (i_15_ == 4)
                                             i_16_ = 36;
-                                        OverlayDefinition.addActionRow(class1s[i_15_], item.itemId, x, y, i_16_, Native.lightRed +  itemDefinition.name);
+                                        addActionRow(class1s[i_15_], item.itemId, x, y, i_16_, Native.lightRed +  itemDefinition.name);
                                     }
                                 }
-                                OverlayDefinition.addActionRow(English.examine, item.itemId, x, y, 1003, Native.lightRed + itemDefinition.name);
+                                addActionRow(English.examine, item.itemId, x, y, 1003, Native.lightRed + itemDefinition.name);
                             } else if ((0x1 & ItemDefinition.selectedMask) == 1) {
-                                OverlayDefinition.addActionRow(Native.aClass1_1918, item.itemId, x, y, 15, Native.aClass1_611 + Native.toLightRed + itemDefinition.name);
+                                addActionRow(Native.aClass1_1918, item.itemId, x, y, 15, Native.aClass1_611 + Native.toLightRed + itemDefinition.name);
                             }
                         }
                     }
@@ -1051,5 +1052,113 @@ public class MovedStatics {
             GameObjectDefinition.aLong2561 = OverlayDefinition.lastClick;
             Actor.eventMouseButtonPressed = 0;
         }
+    }
+
+    public static int method614(int arg1, int arg2, int arg3) {
+        int i_7_ = 256 + -arg3;
+        return (arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) + (~0xff00ff & (0xff00ff & arg1) * i_7_ + arg3 * (0xff00ff & arg2)) >> 8;
+    }
+
+    public static void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
+        int len = mapX * mapX + mapY * mapY;
+        if (len > 4225 && len < 90000) {
+            int theta = 0x7ff & GroundItemTile.cameraHorizontal + Class43.cameraYawOffset;
+            int sine = Model.SINE[theta];
+            int cosine = Model.COSINE[theta];
+            sine = sine * 256 / (Class51.mapZoomOffset + 256);
+            cosine = cosine * 256 / (Class51.mapZoomOffset + 256);
+            int y = cosine * mapY - sine * mapX >> 16;
+            int x = mapX * cosine + mapY * sine >> 16;
+            double angle = Math.atan2(x, y);
+            int drawX = (int) (Math.sin(angle) * 63.0);
+            int drawY = (int) (57.0 * Math.cos(angle));
+            SpotAnimDefinition.minimapEdge.drawRotated(-10 + 94 + drawX + 4, 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
+        } else {
+            SceneTile.drawOnMinimap(mapY, mapX, sprite);
+        }
+    }
+
+    /**
+     * Updates the overlay depending on the provided actionId
+     * @param actionId Can be one of these values:
+     *                 5 = Render login background
+     *                 10 = Render login box
+     *                 20 = Render empty login box
+     *                 25 = Render game overlay
+     *                 30 = Render 3D game area
+     *                 40 = Render connection lost, attempting to re-establish
+     *                 1000 = Render client fatal error
+     */
+    public static void updateOverlay(int actionId) {
+        if (actionId != Class51.currentAction) {
+            if (Class51.currentAction == 0)
+                CollisionMap.method144(12433);
+            if (actionId == 20 || actionId == 40) {
+                Main.anInt1756 = 0;
+                OverlayDefinition.anInt2321 = 0;
+                Class40_Sub3.anInt2032 = 0;
+            }
+            if (actionId != 20 && actionId != 40 && PlayerAppearance.lostConnectionSocket != null) {
+                PlayerAppearance.lostConnectionSocket.method1009();
+                PlayerAppearance.lostConnectionSocket = null;
+            }
+            if (Class51.currentAction == 25 || Class51.currentAction == 40) {
+                Class65.method1018();
+                Rasterizer.resetPixels();
+            }
+            if (Class51.currentAction == 25) {
+                Class37.anInt874 = 0;
+                PacketBuffer.anInt2231 = 1;
+                IdentityKit.anInt2591 = 0;
+                GameObject.anInt3048 = 1;
+                ProducingGraphicsBuffer.anInt1634 = 0;
+            }
+            if (actionId == 0 || actionId == 35) {
+                FloorDecoration.method344(-40);
+                method440((byte) -73);
+                if (ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 == null)
+                    ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(765, 503, MouseHandler.gameCanvas);
+            }
+            if (actionId == 5 || actionId == 10 || actionId == 20) {
+                ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
+                FloorDecoration.method344(-69);
+                Item.method779(MouseHandler.gameCanvas, true, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
+            }
+            if (actionId == 25 || actionId == 30 || actionId == 40) {
+                ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
+                method440((byte) -98);
+                Class40_Sub5_Sub17_Sub1.method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
+            }
+            Class51.currentAction = actionId;
+            clearScreen = true;
+        }
+    }
+
+    public static void addActionRow(String string, int menuAction, int firstMenuOperand, int secondMenuOperand, int actionType, String arg6) {
+        if (ActorDefinition.menuActionRow < 500) {
+            if (arg6.length() <= 0)
+                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string;
+            else
+                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string + Native.whitespace + arg6;
+            menuActionTypes[ActorDefinition.menuActionRow] = actionType;
+            Class33.selectedMenuActions[ActorDefinition.menuActionRow] = menuAction;
+            InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow] = firstMenuOperand;
+            Class59.secondMenuOperand[ActorDefinition.menuActionRow] = secondMenuOperand;
+            ActorDefinition.menuActionRow++;
+        }
+    }
+
+    public static synchronized void method405(int arg0, int arg1) {
+        if(Class24.method340()) {
+            method557(arg1);
+            Class22_Sub1.musicCacheArchive = null;
+            Class26.aBoolean618 = false;
+            if(arg0 != 16969)
+                Class33.method414(false, -11, -36, -55, 122, null);
+        }
+    }
+
+    public static void method557(int arg0) {
+        Class42.method886(0, 0, false, null, arg0);
     }
 }

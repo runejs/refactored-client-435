@@ -21,7 +21,6 @@ import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.scene.tile.WallDecoration;
-import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.TextUtils;
 
 public class IncomingPackets {
@@ -448,7 +447,7 @@ public class IncomingPackets {
                 if(GameInterface.fullscreenInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = -1;
-                    OverlayDefinition.updateOverlay(30);
+                    MovedStatics.updateOverlay(30);
                 }
                 if(GameInterface.fullscreenSiblingInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -520,7 +519,7 @@ public class IncomingPackets {
                 if(GameInterface.fullscreenInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = -1;
-                    OverlayDefinition.updateOverlay(30);
+                    MovedStatics.updateOverlay(30);
                 }
                 if(GameInterface.fullscreenSiblingInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -595,7 +594,7 @@ public class IncomingPackets {
                 if(interfaceId != GameInterface.fullscreenInterfaceId) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = interfaceId;
-                    OverlayDefinition.updateOverlay(35);
+                    MovedStatics.updateOverlay(35);
                 }
                 if(interfaceId != GameInterface.fullscreenSiblingInterfaceId) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -621,7 +620,7 @@ public class IncomingPackets {
                 if(GameInterface.fullscreenInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = -1;
-                    OverlayDefinition.updateOverlay(30);
+                    MovedStatics.updateOverlay(30);
                 }
                 if(GameInterface.fullscreenSiblingInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -651,7 +650,7 @@ public class IncomingPackets {
                 if(GameInterface.fullscreenInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = -1;
-                    OverlayDefinition.updateOverlay(30);
+                    MovedStatics.updateOverlay(30);
                 }
                 if(GameInterface.fullscreenSiblingInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -675,7 +674,7 @@ public class IncomingPackets {
                 int songId = incomingPacketBuffer.getUnsignedShortLE();
                 if(songId == 65535)
                     songId = -1;
-                Class51.method942(songId);
+                Class51.playSong(songId);
                 incomingPacket = -1;
                 return true;
             }
@@ -773,7 +772,7 @@ public class IncomingPackets {
                 if(GameInterface.fullscreenInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = -1;
-                    OverlayDefinition.updateOverlay(30);
+                    MovedStatics.updateOverlay(30);
                 }
                 if(GameInterface.fullscreenSiblingInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -800,13 +799,13 @@ public class IncomingPackets {
             if(incomingPacket == 234) {
                 Player.cutsceneActive = true;
                 MovedStatics.anInt564 = incomingPacketBuffer.getUnsignedByte();
-                UnderlayDefinition.anInt2576 = incomingPacketBuffer.getUnsignedByte();
+                MovedStatics.anInt2576 = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.anInt892 = incomingPacketBuffer.getUnsignedShortBE();
                 Class60.anInt1413 = incomingPacketBuffer.getUnsignedByte();
                 Class22_Sub1.anInt1856 = incomingPacketBuffer.getUnsignedByte();
                 if(Class22_Sub1.anInt1856 >= 100) {
                     int i_69_ = 128 * MovedStatics.anInt564 + 64;
-                    int i_70_ = 128 * UnderlayDefinition.anInt2576 + 64;
+                    int i_70_ = 128 * MovedStatics.anInt2576 + 64;
                     int i_71_ = Class37.getFloorDrawHeight(Player.worldLevel, i_69_, i_70_) - MovedStatics.anInt892;
                     int i_72_ = i_69_ + -Class12.cameraX;
                     int i_73_ = i_70_ + -Class40_Sub5_Sub6.cameraY;

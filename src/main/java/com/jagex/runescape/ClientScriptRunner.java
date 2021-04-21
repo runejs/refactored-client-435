@@ -73,10 +73,10 @@ public class ClientScriptRunner extends Node {
                 if((i_1_ == 1 || i_1_ == 2) && (i_1_ == 1 || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 1 && Player.hasFriend(class1))) {
                     if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !class1.equals(Player.localPlayer.playerName)) {
                         if(InteractiveObject.playerRights >= 1) {
-                            OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.white + class1);
+                            MovedStatics.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.white + class1);
                         }
-                        OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 51, Native.white + class1);
-                        OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 45, Native.white + class1);
+                        MovedStatics.addActionRow(English.addIgnore, 0, 0, 0, 51, Native.white + class1);
+                        MovedStatics.addActionRow(English.addFriend, 0, 0, 0, 45, Native.white + class1);
                     }
                     i++;
                 }
@@ -84,15 +84,15 @@ public class ClientScriptRunner extends Node {
                     i++;
                     if(arg1 > -14 + i_2_ && arg1 <= i_2_) {
                         if(InteractiveObject.playerRights >= 1) {
-                            OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.white + class1);
+                            MovedStatics.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.white + class1);
                         }
-                        OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 51, Native.white + class1);
-                        OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 45, Native.white + class1);
+                        MovedStatics.addActionRow(English.addIgnore, 0, 0, 0, 51, Native.white + class1);
+                        MovedStatics.addActionRow(English.addFriend, 0, 0, 0, 45, Native.white + class1);
                     }
                 }
                 if(i_1_ == 4 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Player.hasFriend(class1))) {
                     if(arg1 > -14 + i_2_ && arg1 <= i_2_) {
-                        OverlayDefinition.addActionRow(English.acceptTrade, 0, 0, 0, 26, Native.white + class1);
+                        MovedStatics.addActionRow(English.acceptTrade, 0, 0, 0, 26, Native.white + class1);
                     }
                     i++;
                 }
@@ -100,7 +100,7 @@ public class ClientScriptRunner extends Node {
                     i++;
                 if(i_1_ == 8 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Player.hasFriend(class1))) {
                     if(i_2_ + -14 < arg1 && arg1 <= i_2_) {
-                        OverlayDefinition.addActionRow(English.acceptChallenge, 0, 0, 0, 46, Native.white + class1);
+                        MovedStatics.addActionRow(English.acceptChallenge, 0, 0, 0, 46, Native.white + class1);
                     }
                     i++;
                 }
@@ -760,7 +760,7 @@ public class ClientScriptRunner extends Node {
                                                 intValueIndex -= 3;
                                                 WallDecoration.method950(scriptIntValues[intValueIndex], scriptIntValues[intValueIndex + 1], scriptIntValues[2 + intValueIndex]);
                                             } else if(scriptOpcode == 3201) {
-                                                Class51.method942(scriptIntValues[--intValueIndex]);
+                                                Class51.playSong(scriptIntValues[--intValueIndex]);
                                             } else {
                                                 if(scriptOpcode != 3202) {
                                                     break;

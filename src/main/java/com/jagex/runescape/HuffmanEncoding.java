@@ -113,10 +113,10 @@ public class HuffmanEncoding {
                     class1 = class1 + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.aClass1_569 + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthasis;
                 }
                 if (Class8.itemSelected == 1) {
-                    OverlayDefinition.addActionRow(English.use, index, x, y, 49, Native.aClass1_3295 + Native.toYellow + class1);
+                    MovedStatics.addActionRow(English.use, index, x, y, 49, Native.aClass1_3295 + Native.toYellow + class1);
                 } else if (Main.widgetSelected == 1) {
                     if ((0x2 & ItemDefinition.selectedMask) == 2) {
-                        OverlayDefinition.addActionRow(Native.aClass1_1918, index, x, y, 21, Native.aClass1_611 + Native.toYellow + class1);
+                        MovedStatics.addActionRow(Native.aClass1_1918, index, x, y, 21, Native.aClass1_611 + Native.toYellow + class1);
                     }
                 } else {
                     String[] class1s = actorDefinition.options;
@@ -142,7 +142,7 @@ public class HuffmanEncoding {
                                 if (i == 4) {
                                     i_3_ = 20;
                                 }
-                                OverlayDefinition.addActionRow(class1s[i], index, x, y, i_3_, Native.yellow + class1);
+                                MovedStatics.addActionRow(class1s[i], index, x, y, i_3_, Native.yellow + class1);
                             }
                         }
                     }
@@ -169,7 +169,7 @@ public class HuffmanEncoding {
                                 if (i == 4) {
                                     i_5_ = 20 + i_4_;
                                 }
-                                OverlayDefinition.addActionRow(class1s[i], index, x, y, i_5_, Native.yellow +class1);
+                                MovedStatics.addActionRow(class1s[i], index, x, y, i_5_, Native.yellow +class1);
                             }
                         }
                     }
@@ -193,7 +193,7 @@ public class HuffmanEncoding {
 
 
                     }
-                    OverlayDefinition.addActionRow(English.examine, index, x, y, 1001, examineText.toString());
+                    MovedStatics.addActionRow(English.examine, index, x, y, 1001, examineText.toString());
                 }
             }
         }

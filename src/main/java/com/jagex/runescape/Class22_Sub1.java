@@ -19,7 +19,7 @@ public class Class22_Sub1 extends Class22 {
     public static long aLong1841;
     public static int[] anIntArray1846 = new int[5];
     public static int[] anIntArray1847 = new int[2000];
-    public static CacheArchive aCacheArchive_1855;
+    public static CacheArchive musicCacheArchive;
     public static int anInt1856;
 
     public boolean aBoolean1835;
@@ -139,7 +139,7 @@ public class Class22_Sub1 extends Class22 {
             }
             aSignlinkNode_1836 = null;
             if(arg0 != 0)
-                aCacheArchive_1855 = null;
+                musicCacheArchive = null;
         }
     }
 

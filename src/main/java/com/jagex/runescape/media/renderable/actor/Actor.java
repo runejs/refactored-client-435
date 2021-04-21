@@ -3,7 +3,6 @@ package com.jagex.runescape.media.renderable.actor;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
@@ -21,7 +20,6 @@ public abstract class Actor extends Renderable {
 
     public static int[] anIntArray3111;
     public static volatile int eventMouseButtonPressed = 0;
-    public static CacheArchive aCacheArchive_3144;
     public static int[] minimapHintX = new int[1000];
     public static int anInt3151 = -16 + (int) (Math.random() * 33.0);
     public static Signlink signlink;
@@ -276,7 +274,7 @@ public abstract class Actor extends Renderable {
             if(!VertexNormal.lowMemory)
                 MovedStatics.onBuildTimePlane = 0;
             Class17.regionY = arg2;
-            OverlayDefinition.updateOverlay(25);
+            MovedStatics.updateOverlay(25);
             Class51.method940(0, English.loadingPleaseWait, false, null);
             int i = Class26.baseY;
             int i_33_ = SpotAnimDefinition.baseX;

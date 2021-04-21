@@ -189,7 +189,7 @@ public class Landscape {
                 }
                 Main.method364((byte) -34, true);
                 RSCanvas.clearCaches();
-                ISAAC.method281(Npc.currentScene, 27324, currentCollisionMap);
+                ISAAC.drawMapTiles(Npc.currentScene, currentCollisionMap);
                 Main.method364((byte) -34, true);
                 int z = MovedStatics.lowestPlane;
                 if(Player.worldLevel < z)
@@ -225,9 +225,9 @@ public class Landscape {
                     }
                 }
                 if(GameInterface.fullscreenInterfaceId != -1)
-                    OverlayDefinition.updateOverlay(35);
+                    MovedStatics.updateOverlay(35);
                 else
-                    OverlayDefinition.updateOverlay(30);
+                    MovedStatics.updateOverlay(30);
                 MovedStatics.method973();
                 SceneCluster.packetBuffer.putPacket(178);
                 RSRuntimeException.method1057(126);

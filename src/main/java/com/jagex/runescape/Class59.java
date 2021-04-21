@@ -33,7 +33,7 @@ public class Class59 {
             Class48.logout(-7225);
         else {
             // Connection lost
-            OverlayDefinition.updateOverlay(40);
+            MovedStatics.updateOverlay(40);
             PlayerAppearance.lostConnectionSocket = MovedStatics.gameSocket;
             MovedStatics.gameSocket = null;
         }

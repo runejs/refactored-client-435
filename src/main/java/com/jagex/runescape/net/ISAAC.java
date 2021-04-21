@@ -10,7 +10,6 @@ import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.actor.Actor;
-import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.tile.FloorDecoration;
@@ -49,7 +48,7 @@ public class ISAAC {
         init(true);
     }
 
-    public static void method281(Scene arg0, int arg1, CollisionMap[] arg2) {
+    public static void drawMapTiles(Scene scene, CollisionMap[] collisionMaps) {
         for(int i = 0; i < 4; i++) {
             for(int i_0_ = 0; i_0_ < 104; i_0_++) {
                 for(int i_1_ = 0; i_1_ < 104; i_1_++) {
@@ -58,7 +57,7 @@ public class ISAAC {
                         if((0x2 & OverlayDefinition.tile_flags[1][i_0_][i_1_]) == 2)
                             i_2_--;
                         if(i_2_ >= 0)
-                            arg2[i_2_].markBlocked(i_1_, i_0_);
+                            collisionMaps[i_2_].markBlocked(i_1_, i_0_);
                     }
                 }
             }
@@ -101,9 +100,9 @@ public class ISAAC {
                 for(int i_17_ = 0; i_17_ < 104; i_17_++) {
                     int i_18_ = 5 + i_16_;
                     if(i_18_ >= 0 && i_18_ < 104) {
-                        int i_19_ = 0xff & Class42.tile_underlayids[i][i_18_][i_17_];
-                        if(i_19_ > 0) {
-                            UnderlayDefinition underlayDefinition = UnderlayDefinition.getDefinition(i_19_ - 1);
+                        int underlayId = 0xff & Class42.tile_underlayids[i][i_18_][i_17_];
+                        if(underlayId > 0) {
+                            UnderlayDefinition underlayDefinition = UnderlayDefinition.getDefinition(underlayId - 1);
                             Class40_Sub5_Sub17_Sub6.anIntArray3250[i_17_] += underlayDefinition.anInt2565;
                             Class59.anIntArray1398[i_17_] += underlayDefinition.hue;
                             SceneTile.anIntArray2048[i_17_] += underlayDefinition.saturation;
@@ -181,7 +180,7 @@ public class ISAAC {
                                     boolean bool = true;
                                     if(i_30_ == 0 && OverlayDefinition.tile_underlay_path[i][i_16_][i_27_] != 0)
                                         bool = false;
-                                    if(i_31_ > 0 && !Npc.loadFloor(-1 + i_31_, arg1 + -27320).aBoolean2338)
+                                    if(i_31_ > 0 && !OverlayDefinition.getDefinition(-1 + i_31_, 4).aBoolean2338)
                                         bool = false;
                                     if(bool && i_32_ == i_33_ && i_34_ == i_32_ && i_32_ == i_35_)
                                         MovedStatics.anIntArrayArrayArray262[i][i_16_][i_27_] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[i][i_16_][i_27_], 2340);
@@ -192,14 +191,14 @@ public class ISAAC {
                                 if(i_31_ != 0) {
                                     int i_46_ = 1 + OverlayDefinition.tile_underlay_path[i][i_16_][i_27_];
                                     byte i_47_ = Class35.tile_overlay_rotation[i][i_16_][i_27_];
-                                    OverlayDefinition class40_sub5_sub3 = Npc.loadFloor(-1 + i_31_, 4);
-                                    int i_48_ = class40_sub5_sub3.anInt2322;
+                                    OverlayDefinition class40_sub5_sub3 = OverlayDefinition.getDefinition(-1 + i_31_, 4);
+                                    int i_48_ = class40_sub5_sub3.texture;
                                     int i_49_;
                                     int i_50_;
                                     if(i_48_ >= 0) {
                                         i_49_ = -1;
                                         i_50_ = Rasterizer3D.anInterface3_2939.method14(true, i_48_);
-                                    } else if(class40_sub5_sub3.anInt2345 == 16711935) {
+                                    } else if(class40_sub5_sub3.color == 16711935) {
                                         i_49_ = -2;
                                         i_48_ = -1;
                                         i_50_ = -2;
@@ -216,7 +215,7 @@ public class ISAAC {
                                     int i_53_ = 0;
                                     if(i_50_ != -2)
                                         i_53_ = Rasterizer3D.hsl2rgb[MovedStatics.method420(i_50_, 96, true)];
-                                    if(class40_sub5_sub3.anInt2336 != -1) {
+                                    if(class40_sub5_sub3.secondaryColor != -1) {
                                         int i_54_ = 0xff & Class40_Sub5_Sub15.anInt2791 + class40_sub5_sub3.anInt2334;
                                         int i_55_ = class40_sub5_sub3.anInt2330 + Actor.anInt3151;
                                         if(i_55_ >= 0) {
@@ -227,9 +226,9 @@ public class ISAAC {
                                         i_50_ = Class13.method244(class40_sub5_sub3.anInt2346, i_55_, i_54_);
                                         i_53_ = Rasterizer3D.hsl2rgb[MovedStatics.method420(i_50_, 96, true)];
                                     }
-                                    arg0.addTile(i, i_16_, i_27_, i_46_, i_47_, i_48_, i_32_, i_33_, i_34_, i_35_, Class40_Sub5_Sub17_Sub6.method831(i_39_, i_36_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_37_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_38_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_40_, (byte) 73), MovedStatics.method420(i_49_, i_36_, true), MovedStatics.method420(i_49_, i_37_, true), MovedStatics.method420(i_49_, i_38_, true), MovedStatics.method420(i_49_, i_40_, true), i_45_, i_53_);
+                                    scene.addTile(i, i_16_, i_27_, i_46_, i_47_, i_48_, i_32_, i_33_, i_34_, i_35_, Class40_Sub5_Sub17_Sub6.method831(i_39_, i_36_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_37_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_38_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_40_, (byte) 73), MovedStatics.method420(i_49_, i_36_, true), MovedStatics.method420(i_49_, i_37_, true), MovedStatics.method420(i_49_, i_38_, true), MovedStatics.method420(i_49_, i_40_, true), i_45_, i_53_);
                                 } else
-                                    arg0.addTile(i, i_16_, i_27_, 0, 0, -1, i_32_, i_33_, i_34_, i_35_, Class40_Sub5_Sub17_Sub6.method831(i_39_, i_36_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_37_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_38_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_40_, (byte) 73), 0, 0, 0, 0, i_45_, 0);
+                                    scene.addTile(i, i_16_, i_27_, 0, 0, -1, i_32_, i_33_, i_34_, i_35_, Class40_Sub5_Sub17_Sub6.method831(i_39_, i_36_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_37_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_38_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_40_, (byte) 73), 0, 0, 0, 0, i_45_, 0);
                             }
                         }
                     }
@@ -237,7 +236,7 @@ public class ISAAC {
             }
             for(int i_56_ = 1; i_56_ < 103; i_56_++) {
                 for(int i_57_ = 1; i_57_ < 103; i_57_++)
-                    arg0.method130(i, i_57_, i_56_, Class59.getVisibilityPlaneFor(i, i_56_, 0, i_57_));
+                    scene.method130(i, i_57_, i_56_, Class59.getVisibilityPlaneFor(i, i_56_, 0, i_57_));
             }
             Class42.tile_underlayids[i] = null;
             MouseHandler.tile_overlayids[i] = null;
@@ -245,18 +244,16 @@ public class ISAAC {
             Class35.tile_overlay_rotation[i] = null;
             InteractiveObject.aByteArrayArrayArray492[i] = null;
         }
-        arg0.method118(-50, -10, -50);
+        scene.method118(-50, -10, -50);
         for(int i = 0; i < 104; i++) {
             for(int i_58_ = 0; i_58_ < 104; i_58_++) {
                 if((OverlayDefinition.tile_flags[1][i][i_58_] & 0x2) == 2)
-                    arg0.method92(i, i_58_);
+                    scene.method92(i, i_58_);
             }
         }
         int i = 1;
         int i_59_ = 2;
         int i_60_ = 4;
-        if(arg1 != 27324)
-            method281(null, 6, null);
         for(int i_61_ = 0; i_61_ < 4; i_61_++) {
             if(i_61_ > 0) {
                 i <<= 3;

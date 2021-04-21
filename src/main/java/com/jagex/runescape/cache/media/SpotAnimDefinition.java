@@ -3,7 +3,6 @@ package com.jagex.runescape.cache.media;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -303,7 +302,7 @@ public class SpotAnimDefinition extends CachedNode {
     public Model method549(int arg0, int arg1) {
         Model class40_sub5_sub17_sub5 = (Model) MovedStatics.aClass9_851.get((long) id);
         if (class40_sub5_sub17_sub5 == null) {
-            class40_sub5_sub17_sub5 = Model.getModel(UnderlayDefinition. aCacheArchive_2582, modelId);
+            class40_sub5_sub17_sub5 = Model.getModel(MovedStatics. aCacheArchive_2582, modelId);
             if (class40_sub5_sub17_sub5 == null) {
                 return null;
             }

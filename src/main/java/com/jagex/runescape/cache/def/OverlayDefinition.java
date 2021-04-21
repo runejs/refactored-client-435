@@ -1,24 +1,9 @@
 package com.jagex.runescape.cache.def;
 
-import com.jagex.runescape.*;
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.language.Native;
-import com.jagex.runescape.media.Rasterizer;
-import com.jagex.runescape.media.renderable.GameObject;
-import com.jagex.runescape.media.renderable.Item;
-import com.jagex.runescape.media.renderable.Model;
-import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
-import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.node.CachedNode;
-import com.jagex.runescape.scene.GroundItemTile;
-import com.jagex.runescape.scene.InteractiveObject;
-import com.jagex.runescape.scene.tile.FloorDecoration;
-import com.jagex.runescape.scene.tile.SceneTile;
-import com.jagex.runescape.scene.util.CollisionMap;
+import com.jagex.runescape.node.NodeCache;
 
 public class OverlayDefinition extends CachedNode {
     public static int placementY;
@@ -32,146 +17,73 @@ public class OverlayDefinition extends CachedNode {
     public static int anInt2342;
     public static volatile long lastClick = 0L;
 
+    public static NodeCache overlayDefinitionCache = new NodeCache(64);
+    public static CacheArchive gameDefinitionsCacheArchive;
+
     public int saturation;
-    public int anInt2322;
+    public int texture;
     public int anInt2330;
     public int hue;
     public int anInt2334;
-    public int anInt2336;
+    public int secondaryColor;
     public int lightness;
     public boolean aBoolean2338 = true;
-    public int anInt2345;
+    public int color;
     public int anInt2346;
 
     public OverlayDefinition() {
-        anInt2322 = -1;
-        anInt2336 = -1;
-        anInt2345 = 0;
+        texture = -1;
+        secondaryColor = -1;
+        color = 0;
     }
 
-    public static void method557(int arg0) {
-        Class42.method886(0, 0, false, null, arg0);
+    public static OverlayDefinition getDefinition(int arg0, int arg1) {
+        OverlayDefinition overlayDefinition = (OverlayDefinition) overlayDefinitionCache.get(arg0);
+        if(overlayDefinition != null)
+            return overlayDefinition;
+        byte[] is = gameDefinitionsCacheArchive.getFile(arg1, arg0);
+        overlayDefinition = new OverlayDefinition();
+        if(is != null)
+            overlayDefinition.readValues(new Buffer(is));
+        overlayDefinition.method555();
+        overlayDefinitionCache.put(arg0, overlayDefinition);
+        return overlayDefinition;
     }
 
-    public static void addActionRow(String string, int menuAction, int firstMenuOperand, int secondMenuOperand, int actionType, String arg6) {
-        if (ActorDefinition.menuActionRow < 500) {
-            if (arg6.length() <= 0)
-                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string;
-            else
-                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string + Native.whitespace + arg6;
-            MovedStatics.menuActionTypes[ActorDefinition.menuActionRow] = actionType;
-            Class33.selectedMenuActions[ActorDefinition.menuActionRow] = menuAction;
-            InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow] = firstMenuOperand;
-            Class59.secondMenuOperand[ActorDefinition.menuActionRow] = secondMenuOperand;
-            ActorDefinition.menuActionRow++;
-        }
+    public static void initializeOverlayDefinitionCache(CacheArchive cacheArchive) {
+        gameDefinitionsCacheArchive = cacheArchive;
     }
 
-    /**
-     * Updates the overlay depending on the provided actionId
-     * @param actionId Can be one of these values:
-     *                 5 = Render login background
-     *                 10 = Render login box
-     *                 20 = Render empty login box
-     *                 25 = Render game overlay
-     *                 30 = Render 3D game area
-     *                 40 = Render connection lost, attempting to re-establish
-     *                 1000 = Render client fatal error
-     */
-    public static void updateOverlay(int actionId) {
-        if (actionId != Class51.currentAction) {
-            if (Class51.currentAction == 0)
-                CollisionMap.method144(12433);
-            if (actionId == 20 || actionId == 40) {
-                Main.anInt1756 = 0;
-                anInt2321 = 0;
-                Class40_Sub3.anInt2032 = 0;
-            }
-            if (actionId != 20 && actionId != 40 && PlayerAppearance.lostConnectionSocket != null) {
-                PlayerAppearance.lostConnectionSocket.method1009();
-                PlayerAppearance.lostConnectionSocket = null;
-            }
-            if (Class51.currentAction == 25 || Class51.currentAction == 40) {
-                Class65.method1018();
-                Rasterizer.resetPixels();
-            }
-            if (Class51.currentAction == 25) {
-                Class37.anInt874 = 0;
-                PacketBuffer.anInt2231 = 1;
-                IdentityKit.anInt2591 = 0;
-                GameObject.anInt3048 = 1;
-                ProducingGraphicsBuffer.anInt1634 = 0;
-            }
-            if (actionId == 0 || actionId == 35) {
-                FloorDecoration.method344(-40);
-                MovedStatics.method440((byte) -73);
-                if (ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 == null)
-                    ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(765, 503, MouseHandler.gameCanvas);
-            }
-            if (actionId == 5 || actionId == 10 || actionId == 20) {
-                ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
-                FloorDecoration.method344(-69);
-                Item.method779(MouseHandler.gameCanvas, true, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
-            }
-            if (actionId == 25 || actionId == 30 || actionId == 40) {
-                ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
-                MovedStatics.method440((byte) -98);
-                Class40_Sub5_Sub17_Sub1.method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
-            }
-            Class51.currentAction = actionId;
-            MovedStatics.clearScreen = true;
-        }
-    }
-
-    public static void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
-        int len = mapX * mapX + mapY * mapY;
-        if (len > 4225 && len < 90000) {
-            int theta = 0x7ff & GroundItemTile.cameraHorizontal + Class43.cameraYawOffset;
-            int sine = Model.SINE[theta];
-            int cosine = Model.COSINE[theta];
-            sine = sine * 256 / (Class51.mapZoomOffset + 256);
-            cosine = cosine * 256 / (Class51.mapZoomOffset + 256);
-            int y = cosine * mapY - sine * mapX >> 16;
-            int x = mapX * cosine + mapY * sine >> 16;
-            double angle = Math.atan2(x, y);
-            int drawX = (int) (Math.sin(angle) * 63.0);
-            int drawY = (int) (57.0 * Math.cos(angle));
-            SpotAnimDefinition.minimapEdge.drawRotated(-10 + 94 + drawX + 4, 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
-        } else {
-            SceneTile.drawOnMinimap(mapY, mapX, sprite);
-        }
-    }
-
-    public void method553(Buffer arg2) {
+    public void readValues(Buffer buffer) {
         while (true) {
-            int i = arg2.getUnsignedByte();
-            if (i == 0)
+            int opcode = buffer.getUnsignedByte();
+            if (opcode == 0)
                 break;
-            method556(arg2, i);
+            handleOpCode(buffer, opcode);
         }
     }
 
     public void method555() {
-        if (anInt2336 != -1) {
-            calculateHsl(anInt2336);
+        if (secondaryColor != -1) {
+            calculateHsl(secondaryColor);
             anInt2330 = saturation;
             anInt2346 = lightness;
             anInt2334 = hue;
         }
-        calculateHsl(anInt2345);
+        calculateHsl(color);
     }
 
-    public void method556(Buffer arg1, int arg2) {
-        if (arg2 == 1)
-            anInt2345 = arg1.getMediumBE();
-        else if (arg2 != 2) {
-            if (arg2 != 5) {
-                if (arg2 == 7)
-                    anInt2336 = arg1.getMediumBE();
-            } else
-                aBoolean2338 = false;
-        } else
-            anInt2322 = arg1.getUnsignedByte();
+    public void handleOpCode(Buffer buffer, int opcode) {
+        if (opcode == 1) {
+            color = buffer.getMediumBE();
+        } else if (opcode == 2) {
+            texture = buffer.getUnsignedByte();
+        } else if (opcode == 5) {
+            aBoolean2338 = false;
+        } else if (opcode == 7) {
+            // TODO how does this render differently?
+            secondaryColor = buffer.getMediumBE();
+        }
     }
 
     public void calculateHsl(int color) {

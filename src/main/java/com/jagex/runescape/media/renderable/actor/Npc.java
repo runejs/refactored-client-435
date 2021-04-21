@@ -34,19 +34,6 @@ public class Npc extends Actor {
     public ActorDefinition actorDefinition;
 
 
-    public static OverlayDefinition loadFloor(int arg0, int arg1) {
-        OverlayDefinition overlayDefinition = (OverlayDefinition) Class33.aClass9_778.get((long) arg0);
-        if(overlayDefinition != null)
-            return overlayDefinition;
-        byte[] is = Actor.aCacheArchive_3144.getFile(arg1, arg0);
-        overlayDefinition = new OverlayDefinition();
-        if(is != null)
-            overlayDefinition.method553(new Buffer(is));
-        overlayDefinition.method555();
-        Class33.aClass9_778.put((long) arg0, overlayDefinition);
-        return overlayDefinition;
-    }
-
     public static void parseNpcUpdateMasks() {
         for(int i = 0; i < actorUpdatingIndex; i++) {
             int npcIndex = Player.actorUpdatingIndices[i];

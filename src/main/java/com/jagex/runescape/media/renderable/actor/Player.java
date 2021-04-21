@@ -3,7 +3,6 @@ package com.jagex.runescape.media.renderable.actor;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.frame.ChatBox;
@@ -399,10 +398,10 @@ public class Player extends Actor {
             else
                 rsString = player.playerName + Native.aClass1_569 + English.prefixSkill + player.skillLevel + Native.rightParenthasis;
             if (Class8.itemSelected == 1) {
-                OverlayDefinition.addActionRow(English.use, index, x, y, 22, Native.aClass1_3295 + Native.aClass1_3068 + rsString);
+                MovedStatics.addActionRow(English.use, index, x, y, 22, Native.aClass1_3295 + Native.aClass1_3068 + rsString);
             } else if (Main.widgetSelected == 1) {
                 if ((ItemDefinition.selectedMask & 0x8) == 8) {
-                    OverlayDefinition.addActionRow(Native.aClass1_1918, index, x, y, 1, Native.aClass1_611 + Native.aClass1_3068 + rsString);
+                    MovedStatics.addActionRow(Native.aClass1_1918, index, x, y, 1, Native.aClass1_611 + Native.aClass1_3068 + rsString);
                 }
             } else {
                 for (int i = 4; i >= 0; i--) {
@@ -430,7 +429,7 @@ public class Player extends Actor {
                             i_16_ = i_17_ + 14;
                         if (i == 4)
                             i_16_ = 41 + i_17_;
-                        OverlayDefinition.addActionRow(Main.playerActions[i], index, x, y, i_16_, Native.white + rsString);
+                        MovedStatics.addActionRow(Main.playerActions[i], index, x, y, i_16_, Native.white + rsString);
                     }
                 }
             }

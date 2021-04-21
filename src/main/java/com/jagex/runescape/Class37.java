@@ -74,7 +74,7 @@ public class Class37 {
             if(Player.npcs[i] != null)
                 Player.npcs[i].facingActorIndex = -1;
         }
-        OverlayDefinition.updateOverlay(30);
+        MovedStatics.updateOverlay(30);
     }
 
     public static void renderMinimap() {
@@ -155,20 +155,20 @@ public class Class37 {
                 if(npc != null) {
                     int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
                     int npcY = npc.worldY / 32 - Player.localPlayer.worldY / 32;
-                    OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], npcX, npcY);
+                    MovedStatics.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], npcX, npcY);
                 }
             }
             if(Player.headIconDrawType == 2) {
                 int hintX = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + MovedStatics.anInt175);
                 int hintY = 4 * (ProducingGraphicsBuffer.anInt1637 - SpotAnimDefinition.baseX) - (-2 + Player.localPlayer.worldX / 32);
-                OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], hintY, hintX);
+                MovedStatics.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], hintY, hintX);
             }
             if(Player.headIconDrawType == 10 && ProducingGraphicsBuffer.anInt1623 >= 0 && Player.trackedPlayers.length > ProducingGraphicsBuffer.anInt1623) {
                 Player player = Player.trackedPlayers[ProducingGraphicsBuffer.anInt1623];
                 if(player != null) {
                     int playerX = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
                     int playerY = player.worldX / 32 - Player.localPlayer.worldX / 32;
-                    OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], playerY, playerX);
+                    MovedStatics.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], playerY, playerX);
                 }
             }
         }
