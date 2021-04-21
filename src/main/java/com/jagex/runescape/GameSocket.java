@@ -34,8 +34,8 @@ public class GameSocket implements Runnable {
     }
 
 
-    public void method1008(int arg0, int arg1, int arg2, byte[] arg3) throws IOException {
-        if (!socketDisconnected && arg2 < -126) {
+    public void method1008(int arg0, int arg1, byte[] arg3) throws IOException {
+        if (!socketDisconnected) {
             while (arg1 > 0) {
                 int i = socketInputStream.read(arg3, arg0, arg1);
                 if (i <= 0)
