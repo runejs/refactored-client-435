@@ -100,7 +100,7 @@ public class SpotAnimDefinition extends CachedNode {
                         i = -IncomingPackets.incomingPacketBuffer.currentPosition + 8;
                     }
                     if (i > 0) {
-                        MovedStatics.gameSocket.readPacketToBuffer(IncomingPackets.incomingPacketBuffer.currentPosition, i, IncomingPackets.incomingPacketBuffer.buffer);
+                        MovedStatics.gameSocket.readDataToBuffer(IncomingPackets.incomingPacketBuffer.currentPosition, i, IncomingPackets.incomingPacketBuffer.buffer);
                         IncomingPackets.incomingPacketBuffer.currentPosition += i;
                     }
                 }
@@ -206,10 +206,10 @@ public class SpotAnimDefinition extends CachedNode {
                     PlayerAppearance.anInt708 <<= 8;
                     PlayerAppearance.anInt708 += MovedStatics.gameSocket.read();
                     Class44.anInt1049 = MovedStatics.gameSocket.read();
-                    MovedStatics.gameSocket.readPacketToBuffer(0, 1, IncomingPackets.incomingPacketBuffer.buffer);
+                    MovedStatics.gameSocket.readDataToBuffer(0, 1, IncomingPackets.incomingPacketBuffer.buffer);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                     IncomingPackets.incomingPacket = IncomingPackets.incomingPacketBuffer.getPacket();
-                    MovedStatics.gameSocket.readPacketToBuffer(0, 2, IncomingPackets.incomingPacketBuffer.buffer);
+                    MovedStatics.gameSocket.readDataToBuffer(0, 2, IncomingPackets.incomingPacketBuffer.buffer);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                     IncomingPackets.incomingPacketSize = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                     Class40_Sub3.anInt2032 = 10;
@@ -217,7 +217,7 @@ public class SpotAnimDefinition extends CachedNode {
                 if (Class40_Sub3.anInt2032 == 10) {
                     if (MovedStatics.gameSocket.inputStreamAvailable() >= IncomingPackets.incomingPacketSize) {
                         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                        MovedStatics.gameSocket.readPacketToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
+                        MovedStatics.gameSocket.readDataToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
                         Main.setConfigToDefaults();
                         Class51.regionX = -1;
                         FloorDecoration.method343(false, 5688);

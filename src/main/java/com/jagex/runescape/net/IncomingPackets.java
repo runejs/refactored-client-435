@@ -41,7 +41,7 @@ public class IncomingPackets {
 
             if(incomingPacket == -1) {
                 // This will always run first. It fetches the incoming packet ID which should have a size of 1
-                MovedStatics.gameSocket.readPacketToBuffer(0, 1, incomingPacketBuffer.buffer);
+                MovedStatics.gameSocket.readDataToBuffer(0, 1, incomingPacketBuffer.buffer);
                 incomingPacketBuffer.currentPosition = 0;
                 availableBytes--;
                 incomingPacket = incomingPacketBuffer.getPacket();
@@ -51,7 +51,7 @@ public class IncomingPackets {
             if(incomingPacketSize == -1) {
                 // Server-defined packet size between 0 and 255
                 if(availableBytes > 0) {
-                    MovedStatics.gameSocket.readPacketToBuffer(0, 1, incomingPacketBuffer.buffer);
+                    MovedStatics.gameSocket.readDataToBuffer(0, 1, incomingPacketBuffer.buffer);
                     incomingPacketSize = incomingPacketBuffer.buffer[0] & 0xff;
                     availableBytes--;
                 } else
@@ -63,7 +63,7 @@ public class IncomingPackets {
                 if(availableBytes <= 1)
                     return false;
                 availableBytes -= 2;
-                MovedStatics.gameSocket.readPacketToBuffer(0, 2, incomingPacketBuffer.buffer);
+                MovedStatics.gameSocket.readDataToBuffer(0, 2, incomingPacketBuffer.buffer);
                 incomingPacketBuffer.currentPosition = 0;
                 incomingPacketSize = incomingPacketBuffer.getUnsignedShortBE();
             }
@@ -74,7 +74,7 @@ public class IncomingPackets {
             }
 
             incomingPacketBuffer.currentPosition = 0;
-            MovedStatics.gameSocket.readPacketToBuffer(0, incomingPacketSize, incomingPacketBuffer.buffer);
+            MovedStatics.gameSocket.readDataToBuffer(0, incomingPacketSize, incomingPacketBuffer.buffer);
             Class49.anInt1151 = MovedStatics.previousIncomingPacket;
             Class35.anInt1728 = 0;
             MovedStatics.previousIncomingPacket = RSString.currentIncomingPacket;

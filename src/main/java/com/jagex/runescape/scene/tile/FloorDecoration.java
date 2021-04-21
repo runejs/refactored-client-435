@@ -265,7 +265,7 @@ public class FloorDecoration {
                     if(i_37_ > i_34_) {
                         i_37_ = i_34_;
                     }
-                    Class57.gameSocket.readPacketToBuffer(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition, i_37_, Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer);
+                    Class57.gameSocket.readDataToBuffer(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition, i_37_, Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer);
                     if(Class8.aByte302 != 0) {
                         for(int i_38_ = 0; i_37_ > i_38_; i_38_++) {
                             Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_38_] = (byte) GameShell.method27(Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_38_], Class8.aByte302);
@@ -329,7 +329,7 @@ public class FloorDecoration {
                     if(i_42_ > i_34_) {
                         i_42_ = i_34_;
                     }
-                    Class57.gameSocket.readPacketToBuffer(LinkedList.aClass40_Sub1_1081.currentPosition, i_42_, LinkedList.aClass40_Sub1_1081.buffer);
+                    Class57.gameSocket.readDataToBuffer(LinkedList.aClass40_Sub1_1081.currentPosition, i_42_, LinkedList.aClass40_Sub1_1081.buffer);
                     if(Class8.aByte302 != 0) {
                         for(int i_43_ = 0; i_42_ > i_43_; i_43_++) {
                             LinkedList.aClass40_Sub1_1081.buffer[LinkedList.aClass40_Sub1_1081.currentPosition + i_43_] = (byte) GameShell.method27(LinkedList.aClass40_Sub1_1081.buffer[LinkedList.aClass40_Sub1_1081.currentPosition + i_43_], Class8.aByte302);
