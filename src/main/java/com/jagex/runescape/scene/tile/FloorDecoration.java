@@ -295,7 +295,7 @@ public class FloorDecoration {
                                     .aClass40_Sub5_Sub13_2250.anInt2763
                                     != ~i_39_) {
                                 try {
-                                    com.jagex.runescape.Class57.gameSocket.method1009();
+                                    com.jagex.runescape.Class57.gameSocket.kill();
                                 } catch(Exception exception) {
                                 }
                                 com.jagex.runescape.Class8.aByte302
@@ -376,7 +376,7 @@ public class FloorDecoration {
         } catch(IOException ioexception) {
             ioexception.printStackTrace();
             try {
-                Class57.gameSocket.method1009();
+                Class57.gameSocket.kill();
             } catch(Exception exception) {
                 exception.printStackTrace();
                 /* empty */

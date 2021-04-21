@@ -231,9 +231,9 @@ public class Signlink implements Runnable {
                     currentNode.value = ((Class) objects[0]).getDeclaredField((String) objects[1]);
                 } else
                     throw new Exception();
-                currentNode.anInt434 = 1;
+                currentNode.status = 1;
             } catch(Exception exception) {
-                currentNode.anInt434 = 2;
+                currentNode.status = 2;
             }
         }
 

@@ -585,9 +585,9 @@ public class MovedStatics {
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
                 SignlinkNode signlinkNode = Actor.signlink.method388(false, new URL(Actor.signlink.anApplet740.getCodeBase(), "clienterror.ws?c=" + Class39.anInt901 + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
-                while (signlinkNode.anInt434 == 0)
+                while (signlinkNode.status == 0)
                     Class43.sleep(1L);
-                if (signlinkNode.anInt434 != 1)
+                if (signlinkNode.status != 1)
                     return;
                 DataInputStream datainputstream = (DataInputStream) signlinkNode.value;
                 datainputstream.read();
@@ -1097,7 +1097,7 @@ public class MovedStatics {
                 Class40_Sub3.anInt2032 = 0;
             }
             if (actionId != 20 && actionId != 40 && PlayerAppearance.lostConnectionSocket != null) {
-                PlayerAppearance.lostConnectionSocket.method1009();
+                PlayerAppearance.lostConnectionSocket.kill();
                 PlayerAppearance.lostConnectionSocket = null;
             }
             if (Class51.currentAction == 25 || Class51.currentAction == 40) {

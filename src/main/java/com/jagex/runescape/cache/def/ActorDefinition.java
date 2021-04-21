@@ -57,7 +57,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
 
     public static void method567() {
         if(Class57.gameSocket != null) {
-            Class57.gameSocket.method1009();
+            Class57.gameSocket.kill();
         }
     }
 

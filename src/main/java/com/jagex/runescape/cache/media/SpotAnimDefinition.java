@@ -52,7 +52,7 @@ public class SpotAnimDefinition extends CachedNode {
         try {
             if (Class40_Sub3.anInt2032 == 0) {
                 if (MovedStatics.gameSocket != null) {
-                    MovedStatics.gameSocket.method1009();
+                    MovedStatics.gameSocket.kill();
                     MovedStatics.gameSocket = null;
                 }
                 Class37.aBoolean871 = false;
@@ -64,10 +64,10 @@ public class SpotAnimDefinition extends CachedNode {
                 if (FloorDecoration.aSignlinkNode_607 == null) {
                     FloorDecoration.aSignlinkNode_607 = Main.signlink.method395(3, Wall.anInt350);
                 }
-                if (FloorDecoration.aSignlinkNode_607.anInt434 == 2) {
+                if (FloorDecoration.aSignlinkNode_607.status == 2) {
                     throw new IOException();
                 }
-                if (FloorDecoration.aSignlinkNode_607.anInt434 == 1) {
+                if (FloorDecoration.aSignlinkNode_607.status == 1) {
                     MovedStatics.gameSocket = new GameSocket((Socket) FloorDecoration.aSignlinkNode_607.value, Main.signlink);
                     Class40_Sub3.anInt2032 = 2;
                     FloorDecoration.aSignlinkNode_607 = null;

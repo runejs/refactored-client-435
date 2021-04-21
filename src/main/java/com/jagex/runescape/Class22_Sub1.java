@@ -117,8 +117,8 @@ public class Class22_Sub1 extends Class22 {
     }
 
     public void method302(int arg0) {
-        if(aSignlinkNode_1836 != null && aSignlinkNode_1836.anInt434 != 0) {
-            if(aSignlinkNode_1836.anInt434 == 1) {
+        if(aSignlinkNode_1836 != null && aSignlinkNode_1836.status != 0) {
+            if(aSignlinkNode_1836.status == 1) {
                 SizedAccessFile sizedAccessFile = (SizedAccessFile) aSignlinkNode_1836.value;
                 try {
                     sizedAccessFile.write(aByteArray1866, 0, aByteArray1866.length);

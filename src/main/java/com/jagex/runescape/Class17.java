@@ -26,7 +26,7 @@ public class Class17 {
     public static void method273(GameSocket arg0, boolean arg2) {
         if(Class57.gameSocket != null) {
             try {
-                Class57.gameSocket.method1009();
+                Class57.gameSocket.kill();
             } catch(Exception exception) {
                 exception.printStackTrace();
                 /* empty */
@@ -66,7 +66,7 @@ public class Class17 {
             } catch(java.io.IOException ioexception) {
                 ioexception.printStackTrace();
                 try {
-                    Class57.gameSocket.method1009();
+                    Class57.gameSocket.kill();
                 } catch(Exception exception) {
                     exception.printStackTrace();
                     /* empty */

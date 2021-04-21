@@ -320,7 +320,7 @@ public class Class48 {
 
     public static void logout(int arg0) {
         if(MovedStatics.gameSocket != null) {
-            MovedStatics.gameSocket.method1009();
+            MovedStatics.gameSocket.kill();
             MovedStatics.gameSocket = null;
         }
         RSCanvas.clearCaches();

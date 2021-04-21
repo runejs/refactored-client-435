@@ -18,7 +18,7 @@ public class GameSocket implements Runnable {
     public boolean socketError;
 
     public int queuedDataPosition = 0;
-    public int anInt1520 = 0;
+    public int dataWrittenPosition = 0;
     public boolean socketDisconnected;
     public byte[] queuedData;
 
@@ -46,17 +46,21 @@ public class GameSocket implements Runnable {
         }
     }
 
-    public void method1009() {
+    public void kill() {
         if (!socketDisconnected) {
             synchronized (this) {
                 socketDisconnected = true;
                 this.notifyAll();
             }
+
             if (signLinkNode != null) {
-                while (signLinkNode.anInt434 == 0)
+                while (signLinkNode.status == 0) {
                     Class43.sleep(1L);
-                if (signLinkNode.anInt434 == 1) {
+                }
+
+                if (signLinkNode.status == 1) {
                     try {
+                        // Kill the signLinkNode
                         ((Thread) signLinkNode.value).join();
                     } catch (InterruptedException interruptedexception) {
                         interruptedexception.printStackTrace();
@@ -64,6 +68,7 @@ public class GameSocket implements Runnable {
                     }
                 }
             }
+
             signLinkNode = null;
         }
     }
@@ -80,7 +85,7 @@ public class GameSocket implements Runnable {
                 for (int currentByte = 0; currentByte < size; currentByte++) {
                     queuedData[queuedDataPosition] = data[startPos + currentByte];
                     queuedDataPosition = (1 + queuedDataPosition) % 5000;
-                    if (queuedDataPosition == (4900 + anInt1520) % 5000)
+                    if (queuedDataPosition == (4900 + dataWrittenPosition) % 5000)
                         throw new IOException();
                 }
                 if (signLinkNode == null)
@@ -91,41 +96,42 @@ public class GameSocket implements Runnable {
     }
 
     public void finalize() {
-        method1009();
+        kill();
     }
 
     public void run() {
         try {
             for (; ; ) {
-                int i;
-                int i_0_;
+                int dataSize;
+                int offset;
                 synchronized (this) {
-                    if (queuedDataPosition == anInt1520) {
+                    if (queuedDataPosition == dataWrittenPosition) {
                         if (socketDisconnected) {
                             break;
                         }
                         try {
+                            // Wait for new data if the written position has reached the queued position
                             this.wait();
                         } catch (InterruptedException interruptedexception) {
                             /* empty */
                             interruptedexception.printStackTrace();
                         }
                     }
-                    if (queuedDataPosition >= anInt1520)
-                        i = queuedDataPosition - anInt1520;
+                    if (queuedDataPosition >= dataWrittenPosition)
+                        dataSize = queuedDataPosition - dataWrittenPosition;
                     else
-                        i = -anInt1520 + 5000;
-                    i_0_ = anInt1520;
+                        dataSize = -dataWrittenPosition + 5000;
+                    offset = dataWrittenPosition;
                 }
-                if (i > 0) {
+                if (dataSize > 0) {
                     try {
-                        socketOutputStream.write(queuedData, i_0_, i);
+                        socketOutputStream.write(queuedData, offset, dataSize);
                     } catch (IOException ioexception) {
                         socketError = true;
                     }
-                    anInt1520 = (i + anInt1520) % 5000;
+                    dataWrittenPosition = (dataSize + dataWrittenPosition) % 5000;
                     try {
-                        if (anInt1520 == queuedDataPosition)
+                        if (dataWrittenPosition == queuedDataPosition)
                             socketOutputStream.flush();
                     } catch (IOException ioexception) {
                         ioexception.printStackTrace();

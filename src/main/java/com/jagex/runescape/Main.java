@@ -1752,11 +1752,11 @@ public class Main extends GameShell {
                             Class8.anInt290++;
                         }
                         if (Class8.anInt290 == 1) {
-                            if (ProducingGraphicsBuffer.aSignlinkNode_1632.anInt434 == 2) {
+                            if (ProducingGraphicsBuffer.aSignlinkNode_1632.status == 2) {
                                 method35(-1);
                                 break;
                             }
-                            if (ProducingGraphicsBuffer.aSignlinkNode_1632.anInt434 == 1)
+                            if (ProducingGraphicsBuffer.aSignlinkNode_1632.status == 1)
                                 Class8.anInt290++;
                         }
                         if (Class8.anInt290 == 2) {
@@ -1806,7 +1806,7 @@ public class Main extends GameShell {
             Class12.mouseCapturer.aBoolean913 = false;
         Class12.mouseCapturer = null;
         if (MovedStatics.gameSocket != null) {
-            MovedStatics.gameSocket.method1009();
+            MovedStatics.gameSocket.kill();
             MovedStatics.gameSocket = null;
         }
         ItemDefinition.method744();

@@ -50,7 +50,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             } catch (java.io.IOException ioexception) {
                 ioexception.printStackTrace();
                 try {
-                    Class57.gameSocket.method1009();
+                    Class57.gameSocket.kill();
                 } catch (Exception exception) {
                     exception.printStackTrace();
                     /* empty */
