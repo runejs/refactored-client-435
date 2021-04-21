@@ -5,7 +5,9 @@ import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
+import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.frame.console.Console;
+import com.jagex.runescape.frame.tab.parts.TabParts;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
@@ -17,6 +19,7 @@ import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
 import tech.henning.fourthreefive.Configuration;
+import tech.henning.fourthreefive.whitelabel.Images;
 
 import java.awt.*;
 
@@ -155,7 +158,11 @@ public class Item extends Renderable {
             class40_sub5_sub14_sub4.drawInverse(-180, -171);
             class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg3, Native.logo, (byte) 21, "");
             Class39.aProducingGraphicsBuffer_907.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawImage(-128 + 382 + -(class40_sub5_sub14_sub4.imageWidth / 2), 18);
+            // UNCOMMENT LINE UNDER FOR LOGO
+            // class40_sub5_sub14_sub4.drawImage(-128 + 382 + -(class40_sub5_sub14_sub4.imageWidth / 2), 18);
+            // Comment line under to remove custom logo:
+            ImageRGB logo = Images.GetPart("logo");
+            logo.drawImage(-128 + 382 + -(logo.imageWidth / 2), 18);
             Class40_Sub5_Sub15.loginScreenBox = Main.method359(Native.titleBox, "", arg3);
             Class59.imgLoginScreenButton = Main.method359(Native.titleButton, "", arg3);
             Class22.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(arg3, Native.runes, "");
