@@ -1052,7 +1052,7 @@ public class IncomingPackets {
             }
             if(incomingPacket == 58) {
                 int i_106_ = incomingPacketBuffer.getIntME2();
-                Class12.aSignlinkNode_394 = Main.signlink.method393(i_106_); // this just ends up throwing an exception? wot
+                Class12.aSignlinkNode_394 = Main.signlink.createExceptionNode(i_106_); // TODO this just ends up throwing an exception? wot
                 incomingPacket = -1;
                 return true;
             }

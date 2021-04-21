@@ -46,23 +46,23 @@ public class ScreenController {
             if (screenMode == ScreenMode.FIXED) {
                 frameWidth = 765;
                 frameHeight = 540;
-                Class35.aFrame1732.setResizable(false);
-                Class35.aFrame1732.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
-                Class35.aFrame1732.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
+                GameShell.clientFrame.setResizable(false);
+                GameShell.clientFrame.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
+                GameShell.clientFrame.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
             } else if (screenMode == ScreenMode.RESIZABLE) {
                 frameWidth = 900;
                 frameHeight = 637;
-                Class35.aFrame1732.setResizable(true);
-                Class35.aFrame1732.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
-                Class35.aFrame1732.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
+                GameShell.clientFrame.setResizable(true);
+                GameShell.clientFrame.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
+                GameShell.clientFrame.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
 
 
             } else if (screenMode == ScreenMode.FULLSCREEN) {
                 frameWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
                 frameHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
             }
-            Class35.aFrame1732.setSize(ScreenController.frameWidth, ScreenController.frameHeight);
-            Dimension innerSize = getInnerSize(Class35.aFrame1732);
+            GameShell.clientFrame.setSize(ScreenController.frameWidth, ScreenController.frameHeight);
+            Dimension innerSize = getInnerSize(GameShell.clientFrame);
             drawHeight = innerSize.height;
             drawWidth = innerSize.width;
             setBounds();
@@ -75,12 +75,12 @@ public class ScreenController {
         Class12.width = drawWidth;
         IdentityKit.height = drawHeight;
         if (frameMode != ScreenMode.FIXED) {
-            if (frameWidth != Class35.aFrame1732.getWidth()) {
-                frameWidth = Class35.aFrame1732.getWidth();
+            if (frameWidth != GameShell.clientFrame.getWidth()) {
+                frameWidth = GameShell.clientFrame.getWidth();
                 setBounds();
             }
-            if (frameHeight != Class35.aFrame1732.getHeight()) {
-                frameHeight = Class35.aFrame1732.getHeight();
+            if (frameHeight != GameShell.clientFrame.getHeight()) {
+                frameHeight = GameShell.clientFrame.getHeight();
                 setBounds();
             }
         }
@@ -90,7 +90,7 @@ public class ScreenController {
         if (MouseHandler.gameCanvas == null) {
             return;
         }
-        Dimension innerSize = getInnerSize(Class35.aFrame1732);
+        Dimension innerSize = getInnerSize(GameShell.clientFrame);
         drawHeight = innerSize.height;
         drawWidth = innerSize.width;
         Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 512 : drawWidth, frameMode == ScreenMode.FIXED ? 334 : drawHeight);
@@ -115,14 +115,14 @@ public class ScreenController {
         MouseHandler.gameCanvas.setSize(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight);
 
         if (Class51.currentAction <= 35 && Class51.currentAction >= 30) {
-            MovedStatics.gameScreenImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, Class35.aFrame1732);
+            MovedStatics.gameScreenImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, GameShell.clientFrame);
         } else {
             MouseHandler.gameCanvas.setSize(Class12.width, IdentityKit.height);
             MouseHandler.gameCanvas.setVisible(true);
-            if (Class35.aFrame1732 == null)
+            if (GameShell.clientFrame == null)
                 MouseHandler.gameCanvas.setLocation(0, 0);
             else {
-                Insets insets = Class35.aFrame1732.getInsets();
+                Insets insets = GameShell.clientFrame.getInsets();
                 MouseHandler.gameCanvas.setLocation(insets.left, insets.top);
             }//            Class38.loginBoxGraphics = Class40_Sub5_Sub13.createGraphicsBuffer(frameWidth, frameHeight, Class35.aFrame1732);
         }

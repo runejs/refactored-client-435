@@ -62,7 +62,7 @@ public class SpotAnimDefinition extends CachedNode {
             }
             if (Class40_Sub3.anInt2032 == 1) {
                 if (FloorDecoration.aSignlinkNode_607 == null) {
-                    FloorDecoration.aSignlinkNode_607 = Main.signlink.method395(3, Wall.anInt350);
+                    FloorDecoration.aSignlinkNode_607 = Main.signlink.createSocketNode(Wall.gameServerPort);
                 }
                 if (FloorDecoration.aSignlinkNode_607.status == 2) {
                     throw new IOException();
@@ -228,10 +228,10 @@ public class SpotAnimDefinition extends CachedNode {
                     if (Main.anInt1756 > 2000) {
                         if (OverlayDefinition.anInt2321 < 1) {
                             OverlayDefinition.anInt2321++;
-                            if (OverlayDefinition.anInt2340 == Wall.anInt350) {
-                                Wall.anInt350 = CollisionMap.anInt172;
+                            if (OverlayDefinition.gameServerPort == Wall.gameServerPort) {
+                                Wall.gameServerPort = CollisionMap.anInt172;
                             } else {
-                                Wall.anInt350 = OverlayDefinition.anInt2340;
+                                Wall.gameServerPort = OverlayDefinition.gameServerPort;
                             }
                             Class40_Sub3.anInt2032 = 0;
                         } else {
@@ -242,10 +242,10 @@ public class SpotAnimDefinition extends CachedNode {
             }
         } catch (IOException ioexception) {
             if (OverlayDefinition.anInt2321 < 1) {
-                if (Wall.anInt350 == OverlayDefinition.anInt2340) {
-                    Wall.anInt350 = CollisionMap.anInt172;
+                if (Wall.gameServerPort == OverlayDefinition.gameServerPort) {
+                    Wall.gameServerPort = CollisionMap.anInt172;
                 } else {
-                    Wall.anInt350 = OverlayDefinition.anInt2340;
+                    Wall.gameServerPort = OverlayDefinition.gameServerPort;
                 }
                 OverlayDefinition.anInt2321++;
                 Class40_Sub3.anInt2032 = 0;

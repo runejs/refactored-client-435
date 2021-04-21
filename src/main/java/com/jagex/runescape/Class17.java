@@ -23,7 +23,7 @@ public class Class17 {
     public static int anInt464 = 0;
     public static int[] anIntArray466 = new int[256];
 
-    public static void method273(GameSocket arg0, boolean arg2) {
+    public static void method273(GameSocket socket, boolean arg2) {
         if(Class57.gameSocket != null) {
             try {
                 Class57.gameSocket.kill();
@@ -33,8 +33,8 @@ public class Class17 {
             }
             Class57.gameSocket = null;
         }
-        Class57.gameSocket = arg0;
-        GameShell.method19(arg2, 24041);
+        Class57.gameSocket = socket;
+        GameShell.method19(arg2);
         LinkedList.aClass40_Sub1_1081.currentPosition = 0;
         Class40_Sub5_Sub13.aClass40_Sub1_2752 = null;
         Landscape.anInt1157 = 0;

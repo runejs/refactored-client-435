@@ -89,7 +89,7 @@ public class GameSocket implements Runnable {
                         throw new IOException();
                 }
                 if (signLinkNode == null)
-                    signLinkNode = signLink.createCanvasNode(3, this);
+                    signLinkNode = signLink.createThreadNode(3, this);
                 this.notifyAll();
             }
         }

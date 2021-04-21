@@ -12,7 +12,7 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Wall {
     public static int cameraVelocityHorizontal = 0;
-    public static int anInt350;
+    public static int gameServerPort;
     public static int[] walkingQueueY = new int[4000];
     public static GameInterface aGameInterface_353 = null;
     public static int anInt356 = 0;

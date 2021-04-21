@@ -206,7 +206,7 @@ public class Landscape {
                 }
                 ISAAC.method285((byte) 118);
                 GameObjectDefinition.objectModelCache.clear();
-                if(Class35.aFrame1732 != null) {
+                if(GameShell.clientFrame != null) {
                     SceneCluster.packetBuffer.putPacket(121);
                     SceneCluster.packetBuffer.putIntBE(1057001181);
                 }

@@ -267,7 +267,7 @@ public class Class40_Sub3 extends Node {
             }
         } else if (Class40_Sub5_Sub6.loadingPercent == 110) {
             Class12.mouseCapturer = new Class39();
-            Main.signlink.createCanvasNode(10, Class12.mouseCapturer);
+            Main.signlink.createThreadNode(10, Class12.mouseCapturer);
             Native.currentLoadingText = English.loadedInputHandler;
             Class40_Sub5_Sub6.loadingPercent = 120;
             MovedStatics.anInt1607 = 94;

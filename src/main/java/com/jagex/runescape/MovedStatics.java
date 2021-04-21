@@ -80,7 +80,6 @@ public class MovedStatics {
     public static volatile long aLong174 = 0L;
     public static int anInt175 = 0;
     public static int[] anIntArray178;
-    public static GameShell anApplet_Sub1_179 = null;
     public static int anInt188;
     public static Class22 aClass22_189;
     public static int anInt194;
@@ -100,7 +99,6 @@ public class MovedStatics {
     public static int anInt1318 = 3353893;
     public static IndexedImage tabBottomBack;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array215;
-    public static long aLong219 = 0L;
     public static NodeCache modelCache = new NodeCache(260);
     public static int anInt255;
     public static boolean aBoolean260 = false;
@@ -171,7 +169,7 @@ public class MovedStatics {
                 Class17.aProducingGraphicsBuffer_463 = null;
                 Class42.anIntArray1013 = null;
                 method405(16969, 10);
-                GameShell.method19(true, 24041);
+                GameShell.method19(true);
                 ISAAC.aBoolean512 = false;
             }
         }
@@ -481,7 +479,7 @@ public class MovedStatics {
     public static void method332(int arg0) {
         synchronized (CollisionMap.anObject162) {
             if (Buffer.anInt1987 == 0)
-                Main.signlink.createCanvasNode(5, new Class44());
+                Main.signlink.createThreadNode(5, new Class44());
             Buffer.anInt1987 = arg0;
         }
     }
@@ -584,7 +582,7 @@ public class MovedStatics {
                 string = string.replace('@', '_');
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
-                SignlinkNode signlinkNode = Actor.signlink.method388(false, new URL(Actor.signlink.anApplet740.getCodeBase(), "clienterror.ws?c=" + Class39.anInt901 + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
+                SignlinkNode signlinkNode = Actor.signlink.addType4Node(new URL(Actor.signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + Class39.anInt901 + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
                 while (signlinkNode.status == 0)
                     Class43.sleep(1L);
                 if (signlinkNode.status != 1)

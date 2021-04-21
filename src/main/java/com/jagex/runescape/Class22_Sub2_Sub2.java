@@ -20,7 +20,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
         this.method321((byte) 109, (long) anInt2226);
         aRunnable_Impl1_2223.method2(anIntArray2227, anInt2229);
         anInt2229 = 0;
-        arg0.createCanvasNode(10, this);
+        arg0.createThreadNode(10, this);
     }
 
     public static void method325() {

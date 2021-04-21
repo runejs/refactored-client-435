@@ -13,7 +13,7 @@ public class OverlayDefinition extends CachedNode {
     public static int anInt2328 = -1;
     public static int[][][] constructMapTiles = new int[4][13][13];
     public static byte[][][] tile_underlay_path;
-    public static int anInt2340;
+    public static int gameServerPort;
     public static int anInt2342;
     public static volatile long lastClick = 0L;
 

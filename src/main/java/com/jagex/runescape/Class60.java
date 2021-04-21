@@ -115,16 +115,16 @@ public class Class60 {
                 InteractiveObject.menuOffsetX = x;
             }
 
-        } else if(Class57.clickX > 0 && RSString.clickY > 0 && Class57.clickX < Class35.aFrame1732.getWidth() && RSString.clickY < Class35.aFrame1732.getHeight()) {
+        } else if(Class57.clickX > 0 && RSString.clickY > 0 && Class57.clickX < GameShell.clientFrame.getWidth() && RSString.clickY < GameShell.clientFrame.getHeight()) {
                         Class40_Sub5_Sub17_Sub1.menuScreenArea = 0;
             int x = -(width / 2) + -4 + Class57.clickX;
-            if(width + x > Class35.aFrame1732.getWidth() - 4)
-                x = Class35.aFrame1732.getWidth() - 4;
+            if(width + x > GameShell.clientFrame.getWidth() - 4)
+                x = GameShell.clientFrame.getWidth() - 4;
             if(x < 0)
                 x = 0;
             int y = RSString.clickY + -4;
-            if(y + height > Class35.aFrame1732.getHeight() - 4)
-                y = Class35.aFrame1732.getHeight() - 4;
+            if(y + height > GameShell.clientFrame.getHeight() - 4)
+                y = GameShell.clientFrame.getHeight() - 4;
             if(y + height > ScreenController.frameHeight-22)
                 y = ScreenController.frameHeight-22 - height;
             if(y < 0)

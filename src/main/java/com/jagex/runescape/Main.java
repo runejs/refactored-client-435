@@ -1619,14 +1619,14 @@ public class Main extends GameShell {
     }
 
     public void method35(int arg1) {
-        if (Wall.anInt350 != OverlayDefinition.anInt2340)
-            Wall.anInt350 = OverlayDefinition.anInt2340;
+        if (Wall.gameServerPort != OverlayDefinition.gameServerPort)
+            Wall.gameServerPort = OverlayDefinition.gameServerPort;
         else
-            Wall.anInt350 = CollisionMap.anInt172;
+            Wall.gameServerPort = CollisionMap.anInt172;
         Class29.gameSocket = null;
-        ProducingGraphicsBuffer.aSignlinkNode_1632 = null;
+        ProducingGraphicsBuffer.gameServerConnectionSignlink = null;
         Class8.anInt292++;
-        Class8.anInt290 = 0;
+        Class8.connectionStage = 0;
         if (Class8.anInt292 < 2 || arg1 != 7 && arg1 != 9) {
             if (Class8.anInt292 < 2 || arg1 != 6) {
                 if (Class8.anInt292 >= 4) {
@@ -1747,28 +1747,28 @@ public class Main extends GameShell {
             if (ISAAC.anInt509-- <= 0) {
                 do {
                     try {
-                        if (Class8.anInt290 == 0) {
-                            ProducingGraphicsBuffer.aSignlinkNode_1632 = signlink.method395(5 ^ 0x6, Wall.anInt350);
-                            Class8.anInt290++;
+                        if (Class8.connectionStage == 0) {
+                            ProducingGraphicsBuffer.gameServerConnectionSignlink = signlink.createSocketNode(Wall.gameServerPort);
+                            Class8.connectionStage++;
                         }
-                        if (Class8.anInt290 == 1) {
-                            if (ProducingGraphicsBuffer.aSignlinkNode_1632.status == 2) {
+                        if (Class8.connectionStage == 1) {
+                            if (ProducingGraphicsBuffer.gameServerConnectionSignlink.status == 2) {
                                 method35(-1);
                                 break;
                             }
-                            if (ProducingGraphicsBuffer.aSignlinkNode_1632.status == 1)
-                                Class8.anInt290++;
+                            if (ProducingGraphicsBuffer.gameServerConnectionSignlink.status == 1)
+                                Class8.connectionStage++;
                         }
-                        if (Class8.anInt290 == 2) {
-                            Class29.gameSocket = new GameSocket((Socket) ProducingGraphicsBuffer.aSignlinkNode_1632.value, signlink);
+                        if (Class8.connectionStage == 2) {
+                            Class29.gameSocket = new GameSocket((Socket) ProducingGraphicsBuffer.gameServerConnectionSignlink.value, signlink);
                             Buffer buffer = new Buffer(5);
                             buffer.putByte(15);
                             buffer.putIntBE(435);
                             Class29.gameSocket.sendDataFromBuffer(5, 0, buffer.buffer);
-                            Class8.anInt290++;
+                            Class8.connectionStage++;
                             Class22_Sub1.aLong1841 = System.currentTimeMillis();
                         }
-                        if (Class8.anInt290 == 3) {
+                        if (Class8.connectionStage == 3) {
                             if (Class51.currentAction > 5 && Class29.gameSocket.inputStreamAvailable() <= 0) {
                                 if (System.currentTimeMillis() + -Class22_Sub1.aLong1841 > 30000L) {
                                     method35(-2);
@@ -1780,14 +1780,14 @@ public class Main extends GameShell {
                                     method35(i);
                                     break;
                                 }
-                                Class8.anInt290++;
+                                Class8.connectionStage++;
                             }
                         }
-                        if (Class8.anInt290 != 4)
+                        if (Class8.connectionStage != 4)
                             break;
                         Class17.method273(Class29.gameSocket, Class51.currentAction > 20);
-                        ProducingGraphicsBuffer.aSignlinkNode_1632 = null;
-                        Class8.anInt290 = 0;
+                        ProducingGraphicsBuffer.gameServerConnectionSignlink = null;
+                        Class8.connectionStage = 0;
                         Class29.gameSocket = null;
                         Class8.anInt292 = 0;
                     } catch (java.io.IOException ioexception) {
@@ -1838,10 +1838,10 @@ public class Main extends GameShell {
 
     public void startup(boolean arg0) {
         CollisionMap.anInt172 = Class44.modewhere == 0 ? 443 : 50000 + Player.worldId;
-        OverlayDefinition.anInt2340 = Class44.modewhere != 0 ? Player.worldId + 40000 : Configuration.GAME_PORT;
+        OverlayDefinition.gameServerPort = Class44.modewhere != 0 ? Player.worldId + 40000 : Configuration.GAME_PORT;
         if (!arg0)
             aBoolean1790 = true;
-        Wall.anInt350 = OverlayDefinition.anInt2340;
+        Wall.gameServerPort = OverlayDefinition.gameServerPort;
         MovedStatics.method997(47);
         GameInterface.method642(MouseHandler.gameCanvas, -10);
         RSRuntimeException.method1056(MouseHandler.gameCanvas, (byte) 70);

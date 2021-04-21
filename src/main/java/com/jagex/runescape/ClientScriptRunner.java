@@ -139,7 +139,7 @@ public class ClientScriptRunner extends Node {
                     }
                     clientScriptRunner.opcodes[i] = opcode;
                     clientScriptRunner.values[i] = val;
-                    clientScriptRunner.valueNodes[i] = signlink.method392(Class26.stringToType(typeString), valName);
+                    clientScriptRunner.valueNodes[i] = signlink.createType10Node(Class26.stringToType(typeString), valName);
                 } else if(opcode == 3 || opcode == 4) {
                     String typeString = new String(buffer.getRSString().method80());
                     String functionName = new String(buffer.getRSString().method80());

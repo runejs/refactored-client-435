@@ -17,7 +17,7 @@ public class PacketBuffer extends Buffer {
     public static long aLong2241 = 0L;
     public static int currentSound = 0;
     public static Class40_Sub5_Sub13 aClass40_Sub5_Sub13_2250;
-    public static boolean aBoolean2255 = false;
+    public static boolean closedClient = false;
     public static int lastClickX = 0;
     public static int anInt2258;
 

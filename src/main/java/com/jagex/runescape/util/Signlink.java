@@ -19,7 +19,7 @@ public class Signlink implements Runnable {
     public static String javaVendor;
     public static int anInt737 = 3;
     public static String javaVersion;
-    public boolean aBoolean721;
+    public boolean killed;
     public int uid = 0;
     public SizedAccessFile[] dataIndexAccessFiles;
     public SignlinkNode current = null;
@@ -28,16 +28,15 @@ public class Signlink implements Runnable {
     public InetAddress netAddress;
     public SignlinkNode next = null;
     public Interface2 anInterface2_732;
-    public Thread aThread733;
-    public String aString734 = null;
+    public Thread signLinkThread;
+    public String cachePath = null;
     public SizedAccessFile cacheDataAccessFile;
-    public GameShell anApplet740;
+    public GameShell gameShell;
 
-    public Signlink(boolean arg0, GameShell arg1, InetAddress netAddress, int fileStoreId, String cacheFolder, int cacheIndexes) throws IOException {
+    public Signlink(boolean loadCache, GameShell gameShell, InetAddress netAddress, int fileStoreId, String cacheFolder, int cacheIndexes) throws IOException {
         metaIndexAccessFile = null;
         cacheDataAccessFile = null;
-        anApplet740 = null;
-        anApplet740 = arg1;
+        this.gameShell = gameShell;
         this.netAddress = netAddress;
         javaVersion = "1.1";
         javaVendor = "Unknown";
@@ -51,47 +50,45 @@ public class Signlink implements Runnable {
             /* empty */
         }
         try {
-            if(arg1 == null)
+            if(gameShell == null)
                 aMethod729 = Class.forName("java.awt.Component").getDeclaredMethod("setFocusTraversalKeysEnabled", Boolean.TYPE);
             else
-                aMethod729 = arg1.getClass().getMethod("setFocusTraversalKeysEnabled", Boolean.TYPE);
+                aMethod729 = gameShell.getClass().getMethod("setFocusTraversalKeysEnabled", Boolean.TYPE);
         } catch(Exception exception) {
             /* empty */
         }
         try {
-            if(arg1 != null)
-                aMethod724 = arg1.getClass().getMethod("setFocusCycleRoot", Boolean.TYPE);
+            if(gameShell != null)
+                aMethod724 = gameShell.getClass().getMethod("setFocusCycleRoot", Boolean.TYPE);
             else
                 aMethod724 = Class.forName("java.awt.Container").getDeclaredMethod("setFocusCycleRoot", Boolean.TYPE);
         } catch(Exception exception) {
             /* empty */
         }
-        if(arg0) {
-            method397(-3849);
-            cacheDataAccessFile = new SizedAccessFile(new File(aString734 + "main_file_cache.dat2"), "rw", 52428800L);
+        if(loadCache) {
+            findCachePath();
+            cacheDataAccessFile = new SizedAccessFile(new File(cachePath + "main_file_cache.dat2"), "rw", 52428800L);
             dataIndexAccessFiles = new SizedAccessFile[cacheIndexes];
-            for(int i = 0; i < cacheIndexes; i++)
-                dataIndexAccessFiles[i] = new SizedAccessFile(new File(aString734 + "main_file_cache.idx" + i), "rw", 1048576L);
-            metaIndexAccessFile = new SizedAccessFile(new File(aString734 + "main_file_cache.idx255"), "rw", 1048576L);
-            method390(6);
+            for(int currentIndex = 0; currentIndex < cacheIndexes; currentIndex++)
+                dataIndexAccessFiles[currentIndex] = new SizedAccessFile(new File(cachePath + "main_file_cache.idx" + currentIndex), "rw", 1048576L);
+            metaIndexAccessFile = new SizedAccessFile(new File(cachePath + "main_file_cache.idx255"), "rw", 1048576L);
+            initializeUniqueIdentifier();
         }
-        aBoolean721 = false;
-        aThread733 = new Thread(this);
-        aThread733.setPriority(10);
-        aThread733.setDaemon(true);
-        aThread733.start();
+        killed = false;
+        signLinkThread = new Thread(this);
+        signLinkThread.setPriority(10);
+        signLinkThread.setDaemon(true);
+        signLinkThread.start();
 
     }
 
-    public void method385(int arg0) {
+    public void killSignlinkThread() {
         synchronized(this) {
-            aBoolean721 = true;
+            killed = true;
             this.notifyAll();
         }
         try {
-            aThread733.join();
-            if(arg0 != 0)
-                method396(-55);
+            signLinkThread.join();
         } catch(InterruptedException interruptedexception) {
             /* empty */
         }
@@ -130,17 +127,13 @@ public class Signlink implements Runnable {
     }
 
     public Interface2 method387(int arg0) {
-
         if(arg0 != -25100)
             return null;
         return anInterface2_732;
-
     }
 
-    public SignlinkNode method388(boolean arg0, URL arg1) {
-        if(arg0)
-            method397(-42);
-        return putNode(0, 4, arg1);
+    public SignlinkNode addType4Node(URL url) {
+        return putNode(0, 4, url);
     }
 
     public SignlinkNode putNode(int integerData, int type, Object objectData) {
@@ -160,28 +153,24 @@ public class Signlink implements Runnable {
         return signlinkNode;
     }
 
-    public void method390(int arg0) {
-
+    public void initializeUniqueIdentifier() {
         try {
-            File file = new File(aString734 + "uid.dat");
+            File file = new File(cachePath + "uid.dat");
             if(!file.exists() || file.length() < 4) {
-                DataOutputStream dataoutputstream = new DataOutputStream(new FileOutputStream(aString734 + "uid.dat"));
+                DataOutputStream dataoutputstream = new DataOutputStream(new FileOutputStream(cachePath + "uid.dat"));
                 dataoutputstream.writeInt((int) (9.9999999E7 * Math.random()));
                 dataoutputstream.close();
             }
         } catch(Exception exception) {
             /* empty */
         }
-        if(arg0 != 6)
-            uid = 116;
         try {
-            DataInputStream datainputstream = new DataInputStream(new FileInputStream(aString734 + "uid.dat"));
+            DataInputStream datainputstream = new DataInputStream(new FileInputStream(cachePath + "uid.dat"));
             uid = 1 + datainputstream.readInt();
             datainputstream.close();
         } catch(Exception exception) {
             /* empty */
         }
-
     }
 
     public Runnable_Impl1 method391() {
@@ -193,7 +182,7 @@ public class Signlink implements Runnable {
             SignlinkNode currentNode;
             synchronized(this) {
                 for(; ; ) {
-                    if(aBoolean721)
+                    if(killed)
                         return;
                     if(current != null) {
                         currentNode = current;
@@ -229,8 +218,10 @@ public class Signlink implements Runnable {
                 } else if(type == 10) {
                     Object[] objects = (Object[]) currentNode.objectData;
                     currentNode.value = ((Class) objects[0]).getDeclaredField((String) objects[1]);
-                } else
+                } else {
                     throw new Exception();
+                }
+
                 currentNode.status = 1;
             } catch(Exception exception) {
                 currentNode.status = 2;
@@ -239,24 +230,21 @@ public class Signlink implements Runnable {
 
     }
 
-    public SignlinkNode method392(Class variableType, String variableName) {
-        return putNode(0, 10, new Object[]{variableType, variableName});
+    public SignlinkNode createType10Node(Class variableType, String variableName) {
+        return putNode(0, 10, new Object[]{ variableType, variableName });
     }
 
-    public SignlinkNode method393(int arg1) {
+    // TODO this will just throw an exception, since type 3 isn't handled
+    public SignlinkNode createExceptionNode(int arg1) {
         return putNode(arg1, 3, null);
-
     }
 
-    public SignlinkNode createCanvasNode(int nodeId, Runnable gameCanvas) {
-        method392(null, null);
-        return putNode(nodeId, 2, gameCanvas);
+    public SignlinkNode createThreadNode(int nodeId, Runnable runnableClass) {
+        return putNode(nodeId, 2, runnableClass);
     }
 
-    public SignlinkNode method395(int arg0, int arg1) {
-        if(arg0 != 3)
-            method397(-29);
-        return putNode(arg1, 1, null);
+    public SignlinkNode createSocketNode(int port) {
+        return putNode(port, 1, null);
     }
 
     public SignlinkNode method396(int arg0) {
@@ -267,27 +255,42 @@ public class Signlink implements Runnable {
 
     }
 
-    public void method397(int arg0) {
-
-        if(homeDirectory == null)
+    public void findCachePath() {
+        if (homeDirectory == null) {
             homeDirectory = "~/";
-        String[] cacheLocations = {"c:/rsrcache/", "/rsrcache/", "c:/windows/", "c:/winnt/", "d:/windows/", "d:/winnt/", "e:/windows/", "e:/winnt/", "f:/windows/", "f:/winnt/", "c:/", homeDirectory, "/tmp/", ""};
-        if(arg0 != -3849)
-            method392(null, null); // TODO: Does this even ever run?
-        for(String cacheLocation : cacheLocations) {
+        }
+
+        String[] cacheLocations = {
+                "c:/rsrcache/",
+                "/rsrcache/",
+                "c:/windows/",
+                "c:/winnt/",
+                "d:/windows/",
+                "d:/winnt/",
+                "e:/windows/",
+                "e:/winnt/",
+                "f:/windows/",
+                "f:/winnt/",
+                "c:/",
+                homeDirectory,
+                "/tmp/",
+                ""
+        };
+
+        for (String cacheLocation : cacheLocations) {
             try {
-                if(cacheLocation.length() > 0) {
+                if (cacheLocation.length() > 0) {
                     File file = new File(cacheLocation);
-                    if(!file.exists())
+                    if (!file.exists()) {
                         continue;
+                    }
                 }
                 File file = new File(cacheLocation + Configuration.CACHE_NAME);
-                if(file.exists() || file.mkdir()) {
-                    aString734 = file.getPath() + "/";
+                if (file.exists() || file.mkdir()) {
+                    cachePath = file.getPath() + "/";
                     return;
                 }
-            } catch(Exception exception) {
-            }
+            } catch (Exception exception) { }
         }
         throw new RuntimeException();
 
