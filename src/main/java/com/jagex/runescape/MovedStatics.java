@@ -58,7 +58,7 @@ public class MovedStatics {
     public static volatile int mouseButtonPressed = 0;
     public static int anInt321 = 5063219;
     public static volatile int eventMouseY = -1;
-    public static int anInt324 = 0;
+    public static int previousIncomingPacket = 0;
     public static boolean redrawChatbox = false;
     public static ImageRGB[] mapDots;
     public static CacheArchive aCacheArchive_654;
@@ -728,10 +728,8 @@ public class MovedStatics {
         }
     }
 
-    public static int method525(byte[] arg0, int arg1, byte arg2) {
-        if (arg2 != -68)
-            return -56;
-        return method1034(true, 0, arg1, arg0);
+    public static int method525(byte[] data, int size) {
+        return method1034(true, 0, size, data);
     }
 
     public static ImageRGB[] method526(CacheArchive arg0, String arg2, String arg3) {

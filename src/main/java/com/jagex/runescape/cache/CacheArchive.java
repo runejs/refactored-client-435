@@ -326,7 +326,7 @@ public class CacheArchive {
     }
 
     public void decodeArchive(byte[] data) {
-        anInt216 = MovedStatics.method525(data, data.length, (byte) -68);
+        anInt216 = MovedStatics.method525(data, data.length);
         Buffer buffer = new Buffer(decompress(data));
         int i = buffer.getUnsignedByte();
         if(i == 5) {

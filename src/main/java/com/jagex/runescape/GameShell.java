@@ -46,7 +46,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                 Buffer class40_sub1 = new Buffer(4);
                 class40_sub1.putByte(arg0 ? 2 : 3);
                 class40_sub1.putMediumBE(0);
-                Class57.gameSocket.method1010(4, 0, class40_sub1.buffer);
+                Class57.gameSocket.sendDataFromBuffer(4, 0, class40_sub1.buffer);
             } catch (java.io.IOException ioexception) {
                 ioexception.printStackTrace();
                 try {

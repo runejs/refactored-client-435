@@ -17,10 +17,10 @@ public class GameSocket implements Runnable {
     public Signlink signLink;
     public boolean socketError;
 
-    public int anInt1509 = 0;
+    public int queuedDataPosition = 0;
     public int anInt1520 = 0;
     public boolean socketDisconnected;
-    public byte[] aByteArray1504;
+    public byte[] queuedData;
 
     public GameSocket(Socket socket, Signlink signLink) throws IOException {
         socketDisconnected = false;
@@ -34,14 +34,14 @@ public class GameSocket implements Runnable {
     }
 
 
-    public void method1008(int arg0, int arg1, byte[] arg3) throws IOException {
+    public void readPacketToBuffer(int currentPosition, int packetSize, byte[] buffer) throws IOException {
         if (!socketDisconnected) {
-            while (arg1 > 0) {
-                int i = socketInputStream.read(arg3, arg0, arg1);
+            while (packetSize > 0) {
+                int i = socketInputStream.read(buffer, currentPosition, packetSize);
                 if (i <= 0)
                     throw new EOFException();
-                arg1 -= i;
-                arg0 += i;
+                packetSize -= i;
+                currentPosition += i;
             }
         }
     }
@@ -68,19 +68,19 @@ public class GameSocket implements Runnable {
         }
     }
 
-    public void method1010(int arg0, int arg2, byte[] arg3) throws IOException {
+    public void sendDataFromBuffer(int size, int startPos, byte[] data) throws IOException {
         if (!socketDisconnected) {
             if (socketError) {
                 socketError = false;
                 throw new IOException();
             }
-            if (aByteArray1504 == null)
-                aByteArray1504 = new byte[5000];
+            if (queuedData == null)
+                queuedData = new byte[5000];
             synchronized (this) {
-                for (int i = 0; i < arg0; i++) {
-                    aByteArray1504[anInt1509] = arg3[arg2 + i];
-                    anInt1509 = (1 + anInt1509) % 5000;
-                    if (anInt1509 == (4900 + anInt1520) % 5000)
+                for (int currentByte = 0; currentByte < size; currentByte++) {
+                    queuedData[queuedDataPosition] = data[startPos + currentByte];
+                    queuedDataPosition = (1 + queuedDataPosition) % 5000;
+                    if (queuedDataPosition == (4900 + anInt1520) % 5000)
                         throw new IOException();
                 }
                 if (signLinkNode == null)
@@ -100,7 +100,7 @@ public class GameSocket implements Runnable {
                 int i;
                 int i_0_;
                 synchronized (this) {
-                    if (anInt1509 == anInt1520) {
+                    if (queuedDataPosition == anInt1520) {
                         if (socketDisconnected) {
                             break;
                         }
@@ -111,21 +111,21 @@ public class GameSocket implements Runnable {
                             interruptedexception.printStackTrace();
                         }
                     }
-                    if (anInt1509 >= anInt1520)
-                        i = anInt1509 - anInt1520;
+                    if (queuedDataPosition >= anInt1520)
+                        i = queuedDataPosition - anInt1520;
                     else
                         i = -anInt1520 + 5000;
                     i_0_ = anInt1520;
                 }
                 if (i > 0) {
                     try {
-                        socketOutputStream.write(aByteArray1504, i_0_, i);
+                        socketOutputStream.write(queuedData, i_0_, i);
                     } catch (IOException ioexception) {
                         socketError = true;
                     }
                     anInt1520 = (i + anInt1520) % 5000;
                     try {
-                        if (anInt1520 == anInt1509)
+                        if (anInt1520 == queuedDataPosition)
                             socketOutputStream.flush();
                     } catch (IOException ioexception) {
                         ioexception.printStackTrace();
@@ -144,7 +144,7 @@ public class GameSocket implements Runnable {
                 /* empty */
                 ioexception.printStackTrace();
             }
-            aByteArray1504 = null;
+            queuedData = null;
         } catch (Exception exception) {
             MovedStatics.printException(null, exception);
         }

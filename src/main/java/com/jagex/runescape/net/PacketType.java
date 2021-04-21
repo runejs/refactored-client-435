@@ -43,13 +43,15 @@ public enum PacketType {
     UPDATE_REFERENCE_POSITION(254, 2);
 
     /**
-     * The packet ID as received from the server.
+     * The packet opcode after ISAAC decryption.
      */
     private final int id;
 
     /**
-     * The packet size of this specific packet.
-     * @implNote Set to -1 for {unknown}, set to -2 to define the size from the server.
+     * The packet size in bytes of this specific packet.
+     * @implNote If the size is greater than 0, then the packet size is set as-is.
+     *           If this value is -1, the server is sending the size between 0 and 255 in the next 1 byte.
+     *           If this value is -2, the server is sending the size between 0 and 65525 in the next 2 bytes.
      */
     private final int size;
 

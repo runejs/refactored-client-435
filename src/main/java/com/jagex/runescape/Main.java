@@ -685,16 +685,16 @@ public class Main extends GameShell {
         return 7 + -arg6 + 1 + -arg4;
     }
 
-    public static void method44() {
+    public static void setConfigToDefaults() {
         Class51.aLong1203 = 0L;
         Class12.mouseCapturer.coord = 0;
         Class22_Sub2.duplicateClickCount = 0;
         Class35.aBoolean1735 = true;
         MovedStatics.aBoolean571 = true;
         MovedStatics.method540();
-        MovedStatics.anInt324 = -1;
+        MovedStatics.previousIncomingPacket = -1;
         MovedStatics.menuOpen = false;
-        RSString.anInt1690 = -1;
+        RSString.currentIncomingPacket = -1;
         IncomingPackets.incomingPacket = -1;
         Class40_Sub5_Sub15.systemUpdateTime = 0;
         Class35.anInt1728 = 0;
@@ -905,7 +905,7 @@ public class Main extends GameShell {
             if(!Class37.aBoolean871 && MovedStatics.gameSocket != null) {
                 SceneCluster.packetBuffer.putPacket(13);
                 try {
-                    MovedStatics.gameSocket.method1010(SceneCluster.packetBuffer.currentPosition, 0, SceneCluster.packetBuffer.buffer);
+                    MovedStatics.gameSocket.sendDataFromBuffer(SceneCluster.packetBuffer.currentPosition, 0, SceneCluster.packetBuffer.buffer);
                     SceneCluster.packetBuffer.currentPosition = 0;
                 } catch(java.io.IOException ioexception) {
                     Class37.aBoolean871 = true;
@@ -1603,7 +1603,7 @@ public class Main extends GameShell {
                             try {
                                 if(MovedStatics.gameSocket == null || SceneCluster.packetBuffer.currentPosition <= 0)
                                     break;
-                                MovedStatics.gameSocket.method1010(SceneCluster.packetBuffer.currentPosition, 0, SceneCluster.packetBuffer.buffer);
+                                MovedStatics.gameSocket.sendDataFromBuffer(SceneCluster.packetBuffer.currentPosition, 0, SceneCluster.packetBuffer.buffer);
                                 Class22.anInt537 = 0;
                                 SceneCluster.packetBuffer.currentPosition = 0;
                             } catch(java.io.IOException ioexception) {
@@ -1667,7 +1667,7 @@ public class Main extends GameShell {
             Class60.updateLogin();
         } else if (Class51.currentAction == 20) {
             Class60.updateLogin();
-            SpotAnimDefinition.method552(true);
+            SpotAnimDefinition.handleLoginScreenActions();
         } else if (Class51.currentAction == 25)
             Landscape.loadRegion();
         if (Class51.currentAction == 30) {
@@ -1678,7 +1678,7 @@ public class Main extends GameShell {
             updateGame();
         } else if (Class51.currentAction == 40) {
             // Connection lost
-            SpotAnimDefinition.method552(true);
+            SpotAnimDefinition.handleLoginScreenActions();
         }
     }
 
@@ -1764,7 +1764,7 @@ public class Main extends GameShell {
                             Buffer buffer = new Buffer(5);
                             buffer.putByte(15);
                             buffer.putIntBE(435);
-                            Class29.gameSocket.method1010(5, 0, buffer.buffer);
+                            Class29.gameSocket.sendDataFromBuffer(5, 0, buffer.buffer);
                             Class8.anInt290++;
                             Class22_Sub1.aLong1841 = System.currentTimeMillis();
                         }

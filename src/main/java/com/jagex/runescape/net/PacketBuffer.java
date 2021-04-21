@@ -121,6 +121,10 @@ public class PacketBuffer extends Buffer {
         currentPosition = (7 + bitoffset) / 8;
     }
 
+    /**
+     * Gets the packet opcode after ISAAC decryption (the - inCypher.nextInt() part).
+     * @return the unencrypted packet opcode
+     */
     public int getPacket() {
         return 0xff & buffer[currentPosition++] - inCipher.nextInt();
     }

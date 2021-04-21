@@ -58,8 +58,8 @@ public class Class37 {
         ActorDefinition.menuActionRow = 0;
         IncomingPackets.incomingPacketSize = 0;
         SceneCluster.packetBuffer.currentPosition = 0;
-        RSString.anInt1690 = -1;
-        MovedStatics.anInt324 = -1;
+        RSString.currentIncomingPacket = -1;
+        MovedStatics.previousIncomingPacket = -1;
         Class35.anInt1728 = 0;
         Class49.anInt1151 = -1;
         MovedStatics.destinationX = 0;

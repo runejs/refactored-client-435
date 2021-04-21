@@ -62,7 +62,7 @@ public class Class17 {
                 class40_sub1.putByte(4);
                 class40_sub1.putByte(Class8.aByte302);
                 class40_sub1.putShortBE(0);
-                Class57.gameSocket.method1010(4, 0, class40_sub1.buffer);
+                Class57.gameSocket.sendDataFromBuffer(4, 0, class40_sub1.buffer);
             } catch(java.io.IOException ioexception) {
                 ioexception.printStackTrace();
                 try {
