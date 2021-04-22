@@ -241,6 +241,21 @@ public class ChatBox {
 //        chatboxInput = result.toString();
     }
 
+    /**
+     * Adds a client-sided chat message.
+     * @param name The name of the person sending this message, or blank.
+     * @param message The message
+     * @param type The message type. Can be:
+     *             0 = System message (all black)
+     *             1 = Moderator message (with crown)
+     *             2 = Regular message
+     *             3 = Regular private message
+     *             4 = Trade message
+     *             5 = Log in / log out notification
+     *             6 = Unknown, might be forced private message
+     *             7 = Moderator private message
+     *             8 = Duel/Challenge message
+     */
     public static void addChatMessage(String name, String message, int type) {
         if(GameInterface.chatboxInterfaceId == -1)
             redrawChatbox = true;

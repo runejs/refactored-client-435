@@ -17,6 +17,7 @@ import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.PacketBuffer;
+import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.util.BitUtils;
 import tech.henning.fourthreefive.Configuration;
 
@@ -125,9 +126,9 @@ public class Class48 {
                         Item.anInt3065 = i;
                     if((gameInterface.hoveredSiblingId >= 0 || gameInterface.hoveredTextColor != 0) && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_) {
                         if(gameInterface.hoveredSiblingId >= 0)
-                            OverlayDefinition.anInt2328 = gameInterface.hoveredSiblingId;
+                            OverlayDefinition.hoveredWidgetChildId = gameInterface.hoveredSiblingId;
                         else
-                            OverlayDefinition.anInt2328 = i;
+                            OverlayDefinition.hoveredWidgetChildId = i;
                     }
                     if(gameInterface.type == GameInterfaceType.LAYER) {
                         if(!gameInterface.isHidden || Class29.isHovering(areaId, i) || PacketBuffer.hiddenButtonTest) {
@@ -138,6 +139,10 @@ public class Class48 {
                                 GameInterface.scrollInterface(gameInterface.originalHeight, mouseY, mouseX, gameInterface.scrollHeight, gameInterface, gameInterface.originalWidth + i_2_, areaId, i_1_);
                         }
                     } else {
+                        if (Configuration.DEBUG_WIDGETS && gameInterface.type != GameInterfaceType.IF1_TOOLTIP && i_2_ <= mouseX && i_1_ <= mouseY && gameInterface.originalWidth + i_2_ > mouseX && gameInterface.originalHeight + i_1_ > mouseY) {
+                            GenericTile.hoveredWidgetId = gameInterface.id;
+                        }
+
                         if(gameInterface.actionType == 1 && i_2_ <= mouseX && i_1_ <= mouseY && gameInterface.originalWidth + i_2_ > mouseX && gameInterface.originalHeight + i_1_ > mouseY) {
                             boolean bool = false;
                             if(gameInterface.contentType != 0)
@@ -166,6 +171,7 @@ public class Class48 {
                         if(gameInterface.actionType == 6 && MovedStatics.lastContinueTextWidgetId == -1 && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_) {
                             MovedStatics.addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 54, "");
                         }
+
                         if(gameInterface.type == GameInterfaceType.INVENTORY) {
                             int i_4_ = 0;
                             for(int i_5_ = 0; i_5_ < gameInterface.originalHeight; i_5_++) {

@@ -71,7 +71,7 @@ public class Class43 {
             if(GameInterface.fullscreenInterfaceId == -1) {
                 MovedStatics.method445(9767);
                 Item.anInt3065 = -1;
-                OverlayDefinition.anInt2328 = -1;
+                OverlayDefinition.hoveredWidgetChildId = -1;
                 boolean bool = false;
                 // Right game screen
                 if(ScreenController.isCoordinatesIn3dScreen(Class13.mouseX ,Landscape.mouseY )) {
@@ -89,18 +89,18 @@ public class Class43 {
                 }
 
                 MovedStatics.anInt573 = Item.anInt3065;
-                ItemDefinition.anInt2850 = OverlayDefinition.anInt2328;
+                ItemDefinition.anInt2850 = OverlayDefinition.hoveredWidgetChildId;
                 Item.anInt3065 = -1;
-                OverlayDefinition.anInt2328 = -1;
+                OverlayDefinition.hoveredWidgetChildId = -1;
                 // Right click tab
                 if(ScreenController.isCoordinatesInTabArea(Class13.mouseX, Landscape.mouseY)) {
                     ScreenController.handleTabClick(Class13.mouseX, Landscape.mouseY);
                 }
-                if(OverlayDefinition.anInt2328 != CollisionMap.anInt163) {
+                if(OverlayDefinition.hoveredWidgetChildId != CollisionMap.currentHoveredWidgetChildId) {
                     GameInterface.redrawTabArea = true;
-                    CollisionMap.anInt163 = OverlayDefinition.anInt2328;
+                    CollisionMap.currentHoveredWidgetChildId = OverlayDefinition.hoveredWidgetChildId;
                 }
-                OverlayDefinition.anInt2328 = -1;
+                OverlayDefinition.hoveredWidgetChildId = -1;
                 if(Item.anInt3065 != FloorDecoration.anInt614) {
                     FloorDecoration.anInt614 = Item.anInt3065;
                     GameInterface.redrawTabArea = true;
@@ -108,12 +108,15 @@ public class Class43 {
                 Item.anInt3065 = -1;
                 // right click chatbox
                 if(ScreenController.isCoordinatesInChatArea(Class13.mouseX ,Landscape.mouseY)) {
-                    ScreenController.handleChatClick(Class13.mouseX ,Landscape.mouseY);
+                    ScreenController.handleChatBoxMouse(Class13.mouseX ,Landscape.mouseY);
                 }
-                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && Class55.anInt1296 != OverlayDefinition.anInt2328) {
+
+                // Set hovering for chat widgets
+                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && Class55.currentHoveredChatboxWidgetChildId != OverlayDefinition.hoveredWidgetChildId) {
                     ChatBox.redrawChatbox = true;
-                    Class55.anInt1296 = OverlayDefinition.anInt2328;
+                    Class55.currentHoveredChatboxWidgetChildId = OverlayDefinition.hoveredWidgetChildId;
                 }
+
                 if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && Item.anInt3065 != MovedStatics.anInt1586) {
                     ChatBox.redrawChatbox = true;
                     MovedStatics.anInt1586 = Item.anInt3065;
@@ -143,9 +146,9 @@ public class Class43 {
                 }
             } else {
                 Item.anInt3065 = -1;
-                OverlayDefinition.anInt2328 = -1;
+                OverlayDefinition.hoveredWidgetChildId = -1;
                 Class13.handleInterfaceActions(0, Class13.mouseX, Landscape.mouseY, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
-                ItemDefinition.anInt2850 = OverlayDefinition.anInt2328;
+                ItemDefinition.anInt2850 = OverlayDefinition.hoveredWidgetChildId;
                 MovedStatics.anInt573 = Item.anInt3065;
             }
         }

@@ -6,14 +6,14 @@ import com.jagex.runescape.scene.util.CollisionMap;
 public class Class29 {
     public static GameSocket updateServerSocket;
 
-    public static boolean isHovering(int areaId, int arg2) {
-        if(areaId == 0 && ItemDefinition.anInt2850 == arg2)
+    public static boolean isHovering(int areaId, int widgetChildId) {
+        if(areaId == 0 && ItemDefinition.anInt2850 == widgetChildId)
             return true;
 
-        if(areaId == 1 && arg2 == CollisionMap.anInt163)
+        if(areaId == 1 && widgetChildId == CollisionMap.currentHoveredWidgetChildId)
             return true;
 
-        if((areaId == 2 || areaId == 3) && Class55.anInt1296 == arg2)
+        if((areaId == 2 || areaId == 3) && Class55.currentHoveredChatboxWidgetChildId == widgetChildId)
             return true;
 
         return false;

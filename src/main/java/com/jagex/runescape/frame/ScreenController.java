@@ -95,8 +95,9 @@ public class ScreenController {
         Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 512 : drawWidth, frameMode == ScreenMode.FIXED ? 334 : drawHeight);
         Class24.fullScreenTextureArray = Rasterizer3D.setLineOffsets(null);
         Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 479 : drawWidth, frameMode == ScreenMode.FIXED ? 96 : drawHeight);
-        MovedStatics.chatboxLineOffsets = Rasterizer3D.setLineOffsets(null);
-        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 190 : drawWidth, frameMode == ScreenMode.FIXED ? 261 : drawHeight);
+        // TODO rethink this, maybe its way easier than this
+//        MovedStatics.chatboxLineOffsets = Rasterizer3D.setLineOffsets(null);
+//        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 190 : drawWidth, frameMode == ScreenMode.FIXED ? 261 : drawHeight);
         ActorDefinition.sidebarOffsets = Rasterizer3D.setLineOffsets(null);
         Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 765 : drawWidth, frameMode == ScreenMode.FIXED ? 503 : drawHeight);
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(null);
@@ -218,7 +219,7 @@ public class ScreenController {
         //width 516
         //height 184
         drawFramePiece(RSCanvas.chatBoxImageProducer, x + 17, y + 16);
-        drawFramePiece(HuffmanEncoding.aProducingGraphicsBuffer_1541, x, y + 112);
+        drawFramePiece(HuffmanEncoding.chatModes, x, y + 112);
         drawFramePieceCutout(RSCanvas.tabBottom, x + 496, y + 125, 20, RSCanvas.tabBottom.height, 0, 0);
         drawFramePiece(MovedStatics.chatboxRight, x, y + 16);
         drawFramePieceCutout(Class17.chatboxTop, x, y, Class17.chatboxTop.width - 37, Class17.chatboxTop.height - 3, 0, 3);
@@ -313,27 +314,35 @@ public class ScreenController {
         }
     }
 
-    public static void handleChatClick(int x, int y) {
-        if (frameMode == ScreenMode.FIXED) {
-            if (GameInterface.chatboxInterfaceId == -1) {
-                if (ChatBox.dialogueId == -1) {
-                    if (y < 434 && x < 426)
-                        ClientScriptRunner.method873(y - 357, 45);
-                } else
-                    Class13.handleInterfaceActions(3, x, y, 17, 357, 496, 453, ChatBox.dialogueId);
-            } else
-                Class13.handleInterfaceActions(2, x, y, 17, 357, 496, 453, GameInterface.chatboxInterfaceId);
-        } else {
-            if (GameInterface.chatboxInterfaceId == -1) {
-                if (ChatBox.dialogueId == -1) {
-                    if (y < frameHeight - (112) && x < 426)
-                        ClientScriptRunner.method873(y - (frameHeight - 162), 45);
-                } else
-                    Class13.handleInterfaceActions(3, x, y, 17, (frameHeight - 162), frameWidth - 496, frameHeight - 54, ChatBox.dialogueId);
-            } else
-                Class13.handleInterfaceActions(2, x, y, 17, (frameHeight - 162), frameWidth - 496, frameHeight - 54, GameInterface.chatboxInterfaceId);
+    public static void handleChatBoxMouse(int x, int y) {
+        int chatBoxWidth = 479;
+        int chatBoxHeight = 96;
+        int offsetBottom = 50; // Offset for the chat modes below the chat, and the chat bottom frame itself
+        int offsetLeft = 17; // Offset from the left of the screen to account for chat left frame
+
+        // Define chat box bounds as absolute screen coordinates (accounts for resizable)
+        int minX = offsetLeft;
+        int minY = drawHeight - offsetBottom - chatBoxHeight;
+        int maxX = minX + chatBoxWidth;
+        int maxY = minY + chatBoxHeight;
+
+        // Chat being shown, and mouse is in usernames area
+        if (GameInterface.chatboxInterfaceId == -1 && ChatBox.dialogueId == -1 && y < maxY - 21 && x < maxX - 70) {
+            ClientScriptRunner.handleChatNamesRightClick(y - minY);
+            return;
         }
 
+        // Handle interface actions for permanent chat box widget. Takes precedence over regular chat box widgets
+        if (ChatBox.dialogueId != -1) {
+            Class13.handleInterfaceActions(3, x, y, minX, minY, maxX, maxY, ChatBox.dialogueId);
+            return;
+        }
+
+        // Handle interface actions for regular chat box widget
+        if (GameInterface.chatboxInterfaceId != -1) {
+            Class13.handleInterfaceActions(2, x, y, minX, minY, maxX, maxY, GameInterface.chatboxInterfaceId);
+            return;
+        }
     }
 
 

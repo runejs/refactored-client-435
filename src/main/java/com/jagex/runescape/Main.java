@@ -92,7 +92,7 @@ public class Main extends GameShell {
      *   0 = Game area (the area that renders in 3D),
      *   1 = Tab area (the widgets that display within the tab area),
      *   2 = Chat area (the chat itself, as well as all sorts of dialogues and anything that renders over the chat)
-     *   3 = TODO unknown, might be permanent chat widgets
+     *   3 = Permanent chat widget area (walkable chat widgets that replace the actual chat itself)
      * @param minX The top right X of this widget's boundaries
      * @param minY The top right Y of this widget's boundaries
      * @param maxX The bottom right X of this widget's boundaries
@@ -530,6 +530,11 @@ public class Main extends GameShell {
                         }
                         if (gameInterface.type == GameInterfaceType.LINE)
                             Rasterizer.drawDiagonalLine(absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, gameInterface.originalHeight + absoluteY, gameInterface.textColor);
+                    }
+
+                    // Draw debug information for non layer widgets and non tooltip widgets
+                    if (Configuration.DEBUG_WIDGETS && gameInterface.type != GameInterfaceType.LAYER && gameInterface.type != GameInterfaceType.IF1_TOOLTIP && GenericTile.hoveredWidgetId == gameInterface.id) {
+                        Rasterizer.drawUnfilledRectangle(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, 0xffff00);
                     }
                 }
             }

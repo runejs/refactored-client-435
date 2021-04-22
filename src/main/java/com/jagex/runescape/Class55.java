@@ -12,7 +12,7 @@ public class Class55 {
     public static int mouseInvInterfaceIndex = 0;
     public static Class48 aClass48_1289;
     public static volatile int eventClickX = 0;
-    public static int anInt1296 = -1;
+    public static int currentHoveredChatboxWidgetChildId = -1;
     public static int anInt1299 = 2301979;
     public static int destinationY = 0;
 

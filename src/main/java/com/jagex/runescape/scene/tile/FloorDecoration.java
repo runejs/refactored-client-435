@@ -177,7 +177,7 @@ public class FloorDecoration {
             GameShell.aClass40_Sub5_Sub14_Sub2_1 = null;
             MovedStatics.aClass40_Sub5_Sub14_Sub2_2105 = null;
             MovedStatics.anIntArray852 = null;
-            HuffmanEncoding.aProducingGraphicsBuffer_1541 = null;
+            HuffmanEncoding.chatModes = null;
             Buffer.tabTopBack = null;
             MovedStatics.tabImageProducer = null;
             MovedStatics.aClass40_Sub5_Sub14_Sub2_1315 = null;

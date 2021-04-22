@@ -88,10 +88,10 @@ public class IncomingPackets {
             lastOpcode = opcode;
 
             if(opcode == 71) {
-                long l = incomingPacketBuffer.getLongBE();
-                String class1 = RSString.formatChatString(KeyFocusListener.method956(82, incomingPacketBuffer));
+                long username = incomingPacketBuffer.getLongBE();
+                String message = RSString.formatChatString(KeyFocusListener.method956(82, incomingPacketBuffer));
 
-                ChatBox.addChatMessage(Player.longToUsername(l).method85().toString(), class1, 6);
+                ChatBox.addChatMessage(Player.longToUsername(username).method85().toString(), message, 6);
                 opcode = -1;
                 return true;
             }
@@ -269,11 +269,11 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 82) {
+            if(opcode == 82) { // duel/trade/challenge request, or regular chat message
                 String message = incomingPacketBuffer.getString();
                 if(message.endsWith(Native.tradeRequest)) {
-                    String class1_32_ = message.substring(0, message.indexOf(Native.colon));
-                    long l = RSString.nameToLong(class1_32_);
+                    String username = message.substring(0, message.indexOf(Native.colon));
+                    long l = RSString.nameToLong(username);
                     boolean bool = false;
                     for(int i_33_ = 0; i_33_ < Class42.anInt1008; i_33_++) {
                         if(l == Player.ignores[i_33_]) {
@@ -282,10 +282,10 @@ public class IncomingPackets {
                         }
                     }
                     if(!bool && !Player.inTutorialIsland)
-                        ChatBox.addChatMessage(class1_32_, "wishes to trade with you.", 4);
+                        ChatBox.addChatMessage(username, "wishes to trade with you.", 4);
                 } else if(message.endsWith(Native.duelRequest)) {
-                    String class1_30_ = message.substring(0, message.indexOf(Native.colon));
-                    long l = RSString.nameToLong(class1_30_);
+                    String username = message.substring(0, message.indexOf(Native.colon));
+                    long l = RSString.nameToLong(username);
                     boolean bool = false;
                     for(int i_31_ = 0; Class42.anInt1008 > i_31_; i_31_++) {
                         if(l == Player.ignores[i_31_]) {
@@ -294,10 +294,10 @@ public class IncomingPackets {
                         }
                     }
                     if(!bool && !Player.inTutorialIsland)
-                        ChatBox.addChatMessage(class1_30_, English.suffixWishesToDuelWithYou, 8);
+                        ChatBox.addChatMessage(username, English.suffixWishesToDuelWithYou, 8);
                 } else if(message.endsWith(Native.challengeRequest)) {
-                    String class1_27_ = message.substring(0, message.indexOf(Native.colon));
-                    long l = RSString.nameToLong(class1_27_);
+                    String username = message.substring(0, message.indexOf(Native.colon));
+                    long l = RSString.nameToLong(username);
                     boolean bool = false;
                     for(int i_28_ = 0; i_28_ < Class42.anInt1008; i_28_++) {
                         if(l == Player.ignores[i_28_]) {
@@ -306,8 +306,8 @@ public class IncomingPackets {
                         }
                     }
                     if(!bool && !Player.inTutorialIsland) {
-                        String class1_29_ = message.substring(1 + message.indexOf(Native.colon), -9 + message.length());
-                        ChatBox.addChatMessage(class1_27_, class1_29_, 8);
+                        String challengeMessage = message.substring(1 + message.indexOf(Native.colon), -9 + message.length());
+                        ChatBox.addChatMessage(username, challengeMessage, 8);
                     }
                 } else {
                     ChatBox.addChatMessage("", message, 0);
@@ -955,7 +955,7 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.UPDATE_FRIEND_LOGIN_MESSAGE.getOpcode()) {
+            if(opcode == PacketType.PRIVATE_MESSAGE_RECEIVED.getOpcode()) {
                 long fromPlayerIndex = incomingPacketBuffer.getLongBE();
                 long chatIdModifier = incomingPacketBuffer.getUnsignedShortBE();
                 long privateMessageCounter = incomingPacketBuffer.getMediumBE();
@@ -979,13 +979,13 @@ public class IncomingPackets {
                 if(!hideMessage && !Player.inTutorialIsland) {
                     Player.privateMessageIds[Player.privateMessageIndex] = chatId;
                     Player.privateMessageIndex = (1 + Player.privateMessageIndex) % 100;
-                    String loginNotification = RSString.formatChatString(KeyFocusListener.method956(67, incomingPacketBuffer));
+                    String privateMessage = RSString.formatChatString(KeyFocusListener.method956(67, incomingPacketBuffer));
                     if(fromPlayerRights == 2 || fromPlayerRights == 3)
-                        ChatBox.addChatMessage(Native.goldCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), loginNotification, 7);
+                        ChatBox.addChatMessage(Native.goldCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), privateMessage, 7);
                     else if(fromPlayerRights == 1)
-                        ChatBox.addChatMessage(Native.whiteCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), loginNotification, 7);
+                        ChatBox.addChatMessage(Native.whiteCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), privateMessage, 7);
                     else
-                        ChatBox.addChatMessage(TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), loginNotification, 3);
+                        ChatBox.addChatMessage(TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), privateMessage, 3);
                 }
                 opcode = -1;
                 return true;

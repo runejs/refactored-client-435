@@ -11,7 +11,7 @@ import com.jagex.runescape.util.BitUtils;
 public class CollisionMap {
     public static int anInt141;
     public static Object anObject162 = new Object();
-    public static int anInt163 = -1;
+    public static int currentHoveredWidgetChildId = -1;
     public static int anInt165 = 0;
     public static Class8 aClass8_166;
     public static int menuHeight;

@@ -19,6 +19,7 @@ import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.scene.tile.WallDecoration;
+import tech.henning.fourthreefive.Configuration;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -132,6 +133,68 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 Class40_Sub3.showIconsRedrawnText = false;
                 y += 15;
             }
+        }
+        if (Configuration.DEBUG_WIDGETS) {
+            int y = 20;
+            int x = 507;
+            int widgetParentId = GenericTile.hoveredWidgetId >> 16;
+            int widgetChildId = GenericTile.hoveredWidgetId & 0x7fff;
+            String typeAsString = "";
+
+            // Gather widget metadata from the cached interfaces
+            GameInterface[] parentInterface;
+            GameInterface childInterface = null;
+            if (widgetParentId >= 0 && widgetChildId < 469) {
+                parentInterface = GameInterface.cachedInterfaces[widgetParentId];
+
+                if (parentInterface != null) {
+                    childInterface = parentInterface[widgetChildId];
+                }
+
+                if (childInterface != null) {
+                    switch (childInterface.type) {
+                        case TEXT:
+                            typeAsString = "TEXT";
+                            break;
+                        case GRAPHIC:
+                            typeAsString = "GRAPHIC";
+                            break;
+                        case MODEL:
+                            typeAsString = "MODEL";
+                            break;
+                        case RECTANGLE:
+                            typeAsString = "RECTANGLE";
+                            break;
+                        case INVENTORY:
+                            typeAsString = "INVENTORY";
+                            break;
+                        case LINE:
+                            typeAsString = "LINE";
+                            break;
+                        case TEXT_INVENTORY:
+                            typeAsString = "TEXT_INVENTORY";
+                            break;
+                        case LAYER:
+                            typeAsString = "LAYER";
+                            break;
+                        case IF1_TOOLTIP:
+                            typeAsString = "IF1_TOOLTIP";
+                            break;
+                        default:
+                            typeAsString = "UNKNOWN";
+                    }
+                }
+            }
+
+            WallDecoration.fontNormal.drawStringRight("Widget " + widgetParentId + ":" + widgetChildId, x, y, 0xffff00);
+            y+= 15;
+            if (childInterface != null) {
+                WallDecoration.fontNormal.drawStringRight("Parent ID: " + childInterface.parentId, x, y, 0xffff00);
+                y+= 15;
+                WallDecoration.fontNormal.drawStringRight("Type: " + typeAsString, x, y, 0xffff00);
+                y+= 15;
+            }
+            
         }
         if (Class40_Sub5_Sub15.systemUpdateTime != 0) {
             int seconds = Class40_Sub5_Sub15.systemUpdateTime / 50;

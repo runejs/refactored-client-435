@@ -128,6 +128,11 @@ public class Configuration {
      */
     public static boolean DEBUG_CONTEXT = true;
 
+    /**
+     * When hovering over widgets, show useful information
+     */
+    public static boolean DEBUG_WIDGETS = false;
+
 
     public static RSString getUsername() {
         if(USE_STATIC_DETAILS) {

@@ -177,7 +177,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             FloorDecoration.inventoryBackgroundImage.drawImage(0, 0);
             MovedStatics.gameScreenImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, arg0);
             Rasterizer.resetPixels();
-            HuffmanEncoding.aProducingGraphicsBuffer_1541 = Class40_Sub5_Sub13.createGraphicsBuffer(496, 50, arg0);
+            HuffmanEncoding.chatModes = Class40_Sub5_Sub13.createGraphicsBuffer(496, 50, arg0);
             RSCanvas.tabBottom = Class40_Sub5_Sub13.createGraphicsBuffer(269, 37, arg0);
             InteractiveObject.tabTop = Class40_Sub5_Sub13.createGraphicsBuffer(249, 45, arg0);
             ImageRGB image = HuffmanEncoding.method1028(arg2, Native.imgBackleft1, (byte) 21, Native.aClass1_305);
