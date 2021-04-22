@@ -15,7 +15,7 @@ public class Configuration {
     public static void read() {
         try {
             final Yaml yaml = new Yaml();
-            final String packagedPath = System.getProperty("user.home") + File.separator + "runejs-client.yaml";
+            final String packagedPath = System.getProperty("user.home") + File.separator + "client-435.conf.yaml";
             final FileInputStream inputStream = new FileInputStream(new File(packagedPath));
             final Map<String, Object> obj = yaml.load(inputStream);
 
@@ -36,6 +36,7 @@ public class Configuration {
             ROOFS_ENABLED = (boolean) game.get("roofsEnabled");
             FREE_TELEPORTS = (boolean) game.get("freeTeleports");
             DEBUG_CONTEXT = (boolean) game.get("debugContextMenu");
+            SERVER_DISPLAY_NAME = (String) obj.get("serverDisplayName");
 
             if (USERNAME == null) {
                 USERNAME = "";
@@ -58,7 +59,7 @@ public class Configuration {
     /**
      * Name of the cache folder located in the users home directory.
      */
-    public static String CACHE_NAME = ".runejs";
+    public static String CACHE_NAME = ".filestore_435";
 
     /**
      * Port for establishing a connection to the game server.
@@ -127,6 +128,11 @@ public class Configuration {
      * When rightclicking objects show id and location
      */
     public static boolean DEBUG_CONTEXT = true;
+
+    /**
+     * The display name of the game server to use within the client
+     */
+    public static String SERVER_DISPLAY_NAME = "Build 435";
 
     /**
      * When hovering over widgets, show useful information

@@ -1,6 +1,8 @@
 package com.jagex.runescape.language;
 
 
+import tech.henning.fourthreefive.Configuration;
+
 public class English {
     public static String suffixFromYourIgnoreListFirst = " from your ignore list first";
     public static String suffixHasLoggedIn = " has logged in.";
@@ -75,8 +77,8 @@ public class English {
     public static String effectRed = "red:";
     public static String remove = "Remove";
     public static String reportAbuse = "Report abuse";
-    public static String runeScapeHasBeenUpdated = "RuneScape has been updated!";
-    public static String runeScapeIsLoadingPleaseWait = "RuneScape is loading - please wait...";
+    public static String runeScapeHasBeenUpdated = Configuration.SERVER_DISPLAY_NAME + " has been updated!";
+    public static String runeScapeIsLoadingPleaseWait = Configuration.SERVER_DISPLAY_NAME + " is loading - please wait...";
     public static String sidePanelRedrawn = "Side panel redrawn";
     public static String prefixSkill = "skill-";
     public static String effectSlide = "slide:";
@@ -122,7 +124,7 @@ public class English {
     public static String malformedLoginPacket = "Malformed login packet.";
     public static String pleaseTryAgain = "Please try again.";
     public static String pleaseWait1MinuteAndTryAgain = "Please wait 1 minute and try again.";
-    public static String welcomeToRunescape = "Welcome to RuneScape";
+    public static String welcomeToRunescape = "Welcome to " + Configuration.SERVER_DISPLAY_NAME;
     public static String use = "Use";
     public static String accountLockedAsWeSuspectItHasBeenStolen = "Account locked as we suspect it has been stolen.";
     public static String loadedWordpack = "Loaded wordpack";
@@ -169,7 +171,7 @@ public class English {
     public static String connectingToUpdateServer = "Connecting to update server";
     public static String addFriend = "Add friend";
     public static String andChooseTheCreateAccount = "and choose the 'create account'";
-    public static String goBackToTheMainRunescapeWebPage = "go back to the main RuneScape webpage";
+    public static String goBackToTheMainRunescapeWebPage = "go back to the main " + Configuration.SERVER_DISPLAY_NAME + " webpage";
     public static String sContinue = "Continue";
     public static String ok = "Ok";
     public static String commandFpson = "::fpson";

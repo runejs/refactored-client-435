@@ -12,6 +12,7 @@ import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.WallDecoration;
+import tech.henning.fourthreefive.Configuration;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -22,7 +23,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class Console {
-    private static final String CONSOLE_VERSION = "RuneJS #435";
+    private static final String CONSOLE_VERSION = Configuration.SERVER_DISPLAY_NAME;
     public static Console console; // TODO: Temp until finding a better spot to store this
     private String[] consoleMessages;
     private int messageCount;
@@ -50,7 +51,7 @@ public class Console {
         this.previousCommandCount = 1;
         this.previousCommandIndex = 1;
         this.commands = new CommandList();
-        this.log("Welcome to the RuneJS console, type help for help.");
+        this.log("Welcome to the " + Configuration.SERVER_DISPLAY_NAME + " console, type help for help.");
         this.initialiseCommands();
     }
 

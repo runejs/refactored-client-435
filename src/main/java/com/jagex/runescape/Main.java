@@ -679,7 +679,7 @@ public class Main extends GameShell {
             }
 
             Main main = new Main();
-            main.openClientApplet("runescape", 13, 32 + Class44.modewhat, InetAddress.getByName(Configuration.SERVER_ADDRESS), 435);
+            main.openClientApplet("client435", 13, 32 + Class44.modewhat, InetAddress.getByName(Configuration.SERVER_ADDRESS), 435);
 
         } catch (Exception exception) {
             exception.printStackTrace();

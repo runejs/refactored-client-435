@@ -1,12 +1,8 @@
 # RuneScape Java Client #435
 
-A RuneScape game client from October of 2006 - the client has been modified specifically for use with RuneJS, a RuneScape game server emulator written in ES6 and TypeScript. **This client is not for OldSchool RuneScape** - it actually pre-dates the very first OSRS client by quite some time. 
+A RuneScape game client from October of 2006 which has been modified to work with RuneJS, a RuneScape game server emulator written in NodeJS and TypeScript. **This client is not for OldSchool RuneScape** - client #435 pre-dates the very first OSRS client by quite some time. 
 
-The game client is written in Java, as the original was in 2006. As RuneJS is meant to be a learning experience for game content development, there are no plans to create a JavaScript based RuneJS client at this time.
-
-The purpose of this project being open source is to better understand how the game works under the hood, allowing for a better RuneJS game server. Obfuscation cleanup is always welcome! :)
-
-We've no interest in OSRS client hacking, this client exists solely to log into RuneJS and has been modified accordingly.
+We've no interest in OSRS client hacking, this client exists as a means to develop on RuneJS game servers and will not work with other server emulators.
 
 ## Usage
 
@@ -16,28 +12,30 @@ Running the client can be done either with the pre-built client JAR file or by b
 
 Running the pre-built client requires having Java installed: https://www.java.com/en/
 
-Once installed, go into the `/prebuilt/` and simply double-click the JAR file to run it. Alternatively, if double clicking the JAR does not work, you can use the command `java -jar RuneJS_Client.jar` from the `/prebuilt/` directory.
+Once installed, go into the `/prebuilt/` and simply double-click the JAR file to run it. Alternatively, if double clicking the JAR does not work, you can use the command `java -jar client-435.jar` from the `/prebuilt/` directory.
 
 The client will use a set of default configurations if no file is provided. The default client configuration matches up to the default RuneJS server configuration for quick and easy initial setup. It's highly advised that you generate your own RSA public and private keys for long term use.
 
-To provide your own configurations, create a file named `runejs-client.yaml` in your User Home directory with the following content:
+To provide your own configurations, create a file named `client-435.conf.yaml` in your User Home directory with the following content:
 
 ```yaml
 net:
   address: 127.0.0.1
   game_port: 43594
 cache:
-  cacheDir: .runejs_cache
-  jaggrabEnabled: false
+  cacheDir: .filestore_435
 rsa:
-  rsaPub: YOUR_RSA_PUBLIC_KEY
-  rsaModulus: YOUR_RSA_PRIVATE_KEY
+  rsaPub: YOUR_RSA_PUBLIC_KEY (default dev pair provided in the example file)
+  rsaModulus: YOUR_RSA_PRIVATE_KEY (default dev pair provided in the example file)
 login:
-  useStaticCredentials: false
+  useStaticCredentials: true
+  username: a
+  password: a
 game:
   roofsEnabled: true
   freeTeleports: false
   debugContextMenu: true
+serverDisplayName: Build 435
 ```
 
 Make sure to modify the given configuration for your specific needs.
@@ -55,7 +53,7 @@ The `application` gradle plugin provides the `run` task, which starts up the Mai
 arguments can be provided via `--args`.
 
 ```
-./gradlew run --args="1 live live highmem members"
+./gradlew run
 ```
 
 **Building a Jar**
@@ -64,5 +62,5 @@ The `jar` task can be used to build a jar, which is generated in the `build/libs
 
 ```
 ./gradlew jar
-java -jar ./build/libs/435-client-0.1.jar 1 live live highmem members
+java -jar ./build/libs/client-435-0.1.jar
 ```
