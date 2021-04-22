@@ -87,7 +87,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 x = ScreenController.drawWidth - 220;
             }
 
-                int colour = 0xffff00;
+            int colour = 0xffff00;
             if (GenericTile.fps < 30 && VertexNormal.lowMemory) {
                 colour = 0xff0000;
             }
@@ -137,6 +137,9 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (Configuration.DEBUG_WIDGETS) {
             int y = 20;
             int x = 507;
+            if(ScreenController.frameMode != ScreenMode.FIXED) {
+                x = ScreenController.drawWidth - 220;
+            }
             int widgetParentId = GenericTile.hoveredWidgetId >> 16;
             int widgetChildId = GenericTile.hoveredWidgetId & 0x7fff;
             String typeAsString = "";
