@@ -3,7 +3,6 @@ package com.jagex.runescape.frame;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.tab.TabProducer;
 import com.jagex.runescape.input.MouseHandler;
@@ -114,7 +113,7 @@ public class ScreenController {
         Scene.method95(500, 800, frameMode == ScreenMode.FIXED ? 512 : drawWidth, frameMode == ScreenMode.FIXED ? 334 : drawHeight, is);
         MouseHandler.gameCanvas.setSize(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight);
 
-        if (Class51.currentAction <= 35 && Class51.currentAction >= 30) {
+        if (Class51.gameStatusCode <= 35 && Class51.gameStatusCode >= 30) {
             MovedStatics.gameScreenImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, GameShell.clientFrame);
         } else {
             MouseHandler.gameCanvas.setSize(Class12.width, IdentityKit.height);
@@ -377,7 +376,7 @@ public class ScreenController {
 
             if (Item.obfuscatedKeyStatus[81] && InteractiveObject.playerRights > 1) {
                 SceneCluster.packetBuffer.putPacket(246);
-                SceneCluster.packetBuffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + SpotAnimDefinition.baseX), Integer.toString(destY + Class26.baseY)));
+                SceneCluster.packetBuffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + MovedStatics.baseX), Integer.toString(destY + Class26.baseY)));
             } else {
                 boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], destX, 0, true, 0, 0, Player.localPlayer.pathX[0], destY, 1);
                 if (bool) {

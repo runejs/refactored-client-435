@@ -7,7 +7,6 @@ import com.jagex.runescape.io.Buffer;
 import java.awt.*;
 
 public class Class35 implements Interface3 {
-    public static int anInt1728 = 0;
     public static int anInt1730 = 0;
     public static int songTimeout = 0;
     public static boolean aBoolean1734 = false;

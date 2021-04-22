@@ -24,11 +24,11 @@ import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class40_Sub3 extends Node {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2019;
-    public static int anInt2020;
+    public static int ticksPerLoop;
     public static int[] soundDelay = new int[50];
     public static int anInt2024 = 1;
-    public static boolean aBoolean2026 = false;
-    public static int anInt2032 = 0;
+    public static boolean showIconsRedrawnText = false;
+    public static int loginStatus = 0;
     public int anInt2017;
     public int anInt2018;
     public int anInt2025;
@@ -145,7 +145,7 @@ public class Class40_Sub3 extends Node {
                 Console.console = new Console();
                 Native.currentLoadingText = English.loadedTitleScreen;
                 MovedStatics.anInt1607 = 50;
-                MovedStatics.updateOverlay(5);
+                MovedStatics.processGameStatus(5);
                 Class40_Sub5_Sub6.loadingPercent = 70;
             }
         } else if (Class40_Sub5_Sub6.loadingPercent == 70) {
@@ -174,14 +174,14 @@ public class Class40_Sub3 extends Node {
                 i++;
             else
                 AnimationSequence.minimapCompass = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.compass, (byte) 21, "");
-            if (SpotAnimDefinition.minimapEdge == null)
-                SpotAnimDefinition.minimapEdge = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.aClass1_1427, (byte) 21, "");
+            if (MovedStatics.minimapEdge == null)
+                MovedStatics.minimapEdge = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.aClass1_1427, (byte) 21, "");
             else
                 i++;
-            if (SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301 != null)
+            if (MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301 != null)
                 i++;
             else
-                SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301 = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.aClass1_671, "");
+                MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301 = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.aClass1_671, "");
             if (Class8.aClass40_Sub5_Sub14_Sub4Array296 == null)
                 Class8.aClass40_Sub5_Sub14_Sub4Array296 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
             else
@@ -230,14 +230,14 @@ public class Class40_Sub3 extends Node {
                 Native.currentLoadingText = English.loadingSprites + (100 * i / 14) + Native.percent;
                 MovedStatics.anInt1607 = 70;
             } else {
-                SpotAnimDefinition.minimapEdge.trim();
+                MovedStatics.minimapEdge.trim();
                 int i_4_ = (int) (Math.random() * 21.0) - 10;
                 int i_5_ = (int) (21.0 * Math.random()) - 10;
                 int i_6_ = (int) (41.0 * Math.random()) - 20;
                 int i_7_ = -10 + (int) (21.0 * Math.random());
                 for (int i_8_ = 0; Class8.aClass40_Sub5_Sub14_Sub4Array296.length > i_8_; i_8_++)
                     Class8.aClass40_Sub5_Sub14_Sub4Array296[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
-                SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[0].mixPalette(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
+                MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301[0].mixPalette(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
                 Native.currentLoadingText = English.loadedSprites;
                 MovedStatics.anInt1607 = 70;
                 Class40_Sub5_Sub6.loadingPercent = 85;
@@ -298,7 +298,7 @@ public class Class40_Sub3 extends Node {
             if (arg0 != 100)
                 aClass40_Sub5_Sub14_Sub4Array2019 = null;
             if (Class40_Sub5_Sub6.loadingPercent == 140)
-                MovedStatics.updateOverlay(10);
+                MovedStatics.processGameStatus(10);
         }
     }
 

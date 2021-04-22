@@ -8,7 +8,7 @@ public class Class57 {
     public static int[][] wayPoints = new int[104][104];
     public static int clickX = 0;
     public static int anInt1342 = 0;
-    public static GameSocket gameSocket;
+    public static GameSocket updateServerSocket;
     public static IndexedImage bottomChatBack;
     public static int[] anIntArray1347;
 

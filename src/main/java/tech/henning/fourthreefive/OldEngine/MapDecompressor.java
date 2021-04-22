@@ -6,7 +6,6 @@ package tech.henning.fourthreefive.OldEngine;/*
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.OverlayDefinition;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.scene.util.CollisionMap;
 
@@ -119,7 +118,7 @@ public class MapDecompressor {
      */
     public static void spawnObject(int objectId, int x, int y, int z, int rotation, int type) {
         final CollisionMap[] groundData = Landscape.currentCollisionMap;
-        int localX = x - SpotAnimDefinition.baseX;
+        int localX = x - MovedStatics.baseX;
         int localY = y - Class26.baseY; // ??? is this correct?
         int plane = z;
         if(localX > -1 && localY > -1) {

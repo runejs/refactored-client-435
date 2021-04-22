@@ -17,7 +17,6 @@ import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.language.English;
@@ -55,10 +54,8 @@ public class MovedStatics {
     public static int crossY = 0;
     public static int anInt2278 = 0;
     public static int anInt2280 = 0;
-    public static volatile int mouseButtonPressed = 0;
     public static int anInt321 = 5063219;
     public static volatile int eventMouseY = -1;
-    public static int previousIncomingPacket = 0;
     public static boolean redrawChatbox = false;
     public static ImageRGB[] mapDots;
     public static CacheArchive aCacheArchive_654;
@@ -94,18 +91,18 @@ public class MovedStatics {
     public static boolean reportMutePlayer = false;
     public static int anInt1607 = 10;
     public static NodeCache aClass9_1611 = new NodeCache(50);
-    public static long[] aLongArray1614 = new long[32];
+    public static long[] tickSamples = new long[32];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1315;
     public static int anInt1318 = 3353893;
     public static IndexedImage tabBottomBack;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array215;
     public static NodeCache modelCache = new NodeCache(260);
     public static int anInt255;
-    public static boolean aBoolean260 = false;
+    public static boolean showChatPanelRedrawnText = false;
     public static int[][][] anIntArrayArrayArray262;
     public static int anInt1806;
     public static int lastContinueTextWidgetId = -1;
-    public static GameSocket gameSocket;
+    public static GameSocket gameServerSocket;
     public static int[][][] tile_height = new int[4][105][105];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2105;
     public static int[] anIntArray2106 = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
@@ -122,7 +119,6 @@ public class MovedStatics {
     public static HashTable aClass23_841 = new HashTable(4096);
     public static int anInt848 = 0;
     public static int currentCameraPositionV;
-    public static NodeCache aClass9_851 = new NodeCache(30);
     public static int[] anIntArray852;
     public static long aLong853;
     public static int anInt854 = -1;
@@ -142,8 +138,11 @@ public class MovedStatics {
     public static int anInt2576;
     public static int anInt2581;
     public static CacheArchive aCacheArchive_2582;
+    public static ImageRGB minimapEdge;
+    public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2301;
+    public static int baseX;
 
-    public static void method440(byte arg0) {
+    public static void method440() {
         if (ISAAC.aBoolean512) {
             Class51.anIntArray1198 = null;
             GameObject.flameRightBackground = null;
@@ -165,13 +164,11 @@ public class MovedStatics {
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = null;
             anIntArray178 = null;
             KeyFocusListener.aProducingGraphicsBuffer_1285 = null;
-            if (arg0 <= -65) {
-                Class17.aProducingGraphicsBuffer_463 = null;
-                Class42.anIntArray1013 = null;
-                method405(16969, 10);
-                GameShell.method19(true);
-                ISAAC.aBoolean512 = false;
-            }
+            Class17.aProducingGraphicsBuffer_463 = null;
+            Class42.anIntArray1013 = null;
+            method405(10);
+            GameShell.method19(true);
+            ISAAC.aBoolean512 = false;
         }
     }
 
@@ -179,7 +176,7 @@ public class MovedStatics {
     public static ProducingGraphicsBuffer loginBoxGraphics;
     public static int[] anIntArray889 = new int[128];
     public static int anInt892;
-    public static boolean aBoolean893 = false;
+    public static boolean showSidePanelRedrawnText = false;
     public static int[] anIntArray1916 = new int[50];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1919;
     public static int anInt1923 = 0;
@@ -238,7 +235,7 @@ public class MovedStatics {
         if (Player.headIconDrawType == 2) {
             if (arg0 >= -28)
                 method445(-128);
-            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -SpotAnimDefinition.baseX << 7) + Landscape.anInt1170, 4976905);
+            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -baseX << 7) + Landscape.anInt1170, 4976905);
             if (ISAAC.anInt522 > -1 && pulseCycle % 20 < 10)
                 aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
         }
@@ -584,7 +581,7 @@ public class MovedStatics {
                 string = string.replace('#', '_');
                 SignlinkNode signlinkNode = Actor.signlink.addType4Node(new URL(Actor.signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + Class39.anInt901 + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
                 while (signlinkNode.status == 0)
-                    Class43.sleep(1L);
+                    Class43.threadSleep(1L);
                 if (signlinkNode.status != 1)
                     return;
                 DataInputStream datainputstream = (DataInputStream) signlinkNode.value;
@@ -893,7 +890,7 @@ public class MovedStatics {
         if (Class8.itemSelected == 0 && Main.widgetSelected == 0) {
             String tileCoords = "";
             if (Configuration.DEBUG_CONTEXT) {
-                tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + SpotAnimDefinition.baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
+                tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
             }
 
             addActionRow(English.walkHere, 0, Class13.mouseX, Landscape.mouseY, 7, tileCoords);
@@ -949,7 +946,7 @@ public class MovedStatics {
                             examineText.append("<col=00ff00>) (</col>");
                             examineText.append(
                                     MessageFormat.format("<col=ffffff>{0}, {1}</col>",
-                                            Integer.toString(x + SpotAnimDefinition.baseX),
+                                            Integer.toString(x + baseX),
                                             Integer.toString(y + Class26.baseY)
                                     )
                             );
@@ -1039,14 +1036,14 @@ public class MovedStatics {
 
     public static void method1015() {
         synchronized (GameObject.frame) {
-            SpotAnimDefinition.mouseButtonPressed = mouseButtonPressed;
+            MouseHandler.currentMouseButtonPressed = MouseHandler.mouseButtonPressed;
             Class13.mouseX = Class12.eventMouseX;
             Landscape.mouseY = eventMouseY;
-            MouseHandler.clickType = Actor.eventMouseButtonPressed;
+            MouseHandler.clickType = MouseHandler.eventMouseButtonPressed;
             Class57.clickX = Class55.eventClickX;
             RSString.clickY = eventClickY;
             GameObjectDefinition.aLong2561 = OverlayDefinition.lastClick;
-            Actor.eventMouseButtonPressed = 0;
+            MouseHandler.eventMouseButtonPressed = 0;
         }
     }
 
@@ -1068,64 +1065,64 @@ public class MovedStatics {
             double angle = Math.atan2(x, y);
             int drawX = (int) (Math.sin(angle) * 63.0);
             int drawY = (int) (57.0 * Math.cos(angle));
-            SpotAnimDefinition.minimapEdge.drawRotated(-10 + 94 + drawX + 4, 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
+            minimapEdge.drawRotated(-10 + 94 + drawX + 4, 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
         } else {
             SceneTile.drawOnMinimap(mapY, mapX, sprite);
         }
     }
 
     /**
-     * Updates the overlay depending on the provided actionId
-     * @param actionId Can be one of these values:
-     *                 5 = Render login background
-     *                 10 = Render login box
-     *                 20 = Render empty login box
-     *                 25 = Render game overlay
-     *                 30 = Render 3D game area
-     *                 40 = Render connection lost, attempting to re-establish
-     *                 1000 = Render client fatal error
+     * Processes a new status code
+     * @param statusCode Can be one of these values:
+     *                 5 = Login background
+     *                 10 = Login screen
+     *                 20 = Empty login box
+     *                 25 = Game overlay
+     *                 30 = 3D game area
+     *                 40 = Connection lost, attempting to re-establish
+     *                 1000 = Client fatal error
      */
-    public static void updateOverlay(int actionId) {
-        if (actionId != Class51.currentAction) {
-            if (Class51.currentAction == 0)
+    public static void processGameStatus(int statusCode) {
+        if (statusCode != Class51.gameStatusCode) {
+            if (Class51.gameStatusCode == 0)
                 CollisionMap.method144(12433);
-            if (actionId == 20 || actionId == 40) {
+            if (statusCode == 20 || statusCode == 40) {
                 Main.anInt1756 = 0;
                 OverlayDefinition.anInt2321 = 0;
-                Class40_Sub3.anInt2032 = 0;
+                Class40_Sub3.loginStatus = 0;
             }
-            if (actionId != 20 && actionId != 40 && PlayerAppearance.lostConnectionSocket != null) {
+            if (statusCode != 20 && statusCode != 40 && PlayerAppearance.lostConnectionSocket != null) {
                 PlayerAppearance.lostConnectionSocket.kill();
                 PlayerAppearance.lostConnectionSocket = null;
             }
-            if (Class51.currentAction == 25 || Class51.currentAction == 40) {
+            if (Class51.gameStatusCode == 25 || Class51.gameStatusCode == 40) {
                 Class65.method1018();
                 Rasterizer.resetPixels();
             }
-            if (Class51.currentAction == 25) {
+            if (Class51.gameStatusCode == 25) {
                 Class37.anInt874 = 0;
                 PacketBuffer.anInt2231 = 1;
                 IdentityKit.anInt2591 = 0;
                 GameObject.anInt3048 = 1;
                 ProducingGraphicsBuffer.anInt1634 = 0;
             }
-            if (actionId == 0 || actionId == 35) {
+            if (statusCode == 0 || statusCode == 35) {
                 FloorDecoration.method344(-40);
-                method440((byte) -73);
+                method440();
                 if (ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 == null)
                     ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(765, 503, MouseHandler.gameCanvas);
             }
-            if (actionId == 5 || actionId == 10 || actionId == 20) {
+            if (statusCode == 5 || statusCode == 10 || statusCode == 20) {
                 ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
                 FloorDecoration.method344(-69);
-                Item.method779(MouseHandler.gameCanvas, true, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
+                Item.renderLoginScreen(MouseHandler.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
             }
-            if (actionId == 25 || actionId == 30 || actionId == 40) {
+            if (statusCode == 25 || statusCode == 30 || statusCode == 40) {
                 ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
-                method440((byte) -98);
+                method440();
                 Class40_Sub5_Sub17_Sub1.method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
             }
-            Class51.currentAction = actionId;
+            Class51.gameStatusCode = statusCode;
             clearScreen = true;
         }
     }
@@ -1144,13 +1141,11 @@ public class MovedStatics {
         }
     }
 
-    public static synchronized void method405(int arg0, int arg1) {
+    public static synchronized void method405(int arg1) {
         if(Class24.method340()) {
             method557(arg1);
             Class22_Sub1.musicCacheArchive = null;
             Class26.aBoolean618 = false;
-            if(arg0 != 16969)
-                Class33.method414(false, -11, -36, -55, 122, null);
         }
     }
 

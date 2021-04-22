@@ -178,17 +178,17 @@ public class Class60 {
     }
 
     public static void method992() {
-        SceneCluster.aTimer_768.start();
+        SceneCluster.gameTimer.start();
         for(int i = 0; i < 32; i++)
-            GameShell.aLongArray4[i] = 0L;
+            GameShell.tickSamples[i] = 0L;
         for(int i = 0; i < 32; i++)
-            MovedStatics.aLongArray1614[i] = 0L;
-        Class40_Sub3.anInt2020 = 0;
+            MovedStatics.tickSamples[i] = 0L;
+        Class40_Sub3.ticksPerLoop = 0;
     }
 
     public static void updateLogin() {
         MovedStatics.method836(1);
-        if(Class51.currentAction == 10) {
+        if(Class51.gameStatusCode == 10) {
             int i = Class57.clickX + -202;
             int clickType = MouseHandler.clickType;
             int clickY = -171 + RSString.clickY;
@@ -221,7 +221,7 @@ public class Class60 {
                 if(clickType == 1 && clickX + -75 <= i && i <= clickX + 75 && clickY >= i_18_ + -20 && clickY <= i_18_ + 20) {
                     Native.username = Native.username.method62().method85();
                     Class33.setLoginScreenMessage("", English.connectingToServer, "");
-                    MovedStatics.updateOverlay(20);
+                    MovedStatics.processGameStatus(20);
                 } else {
                     clickX = 260;
                     if(clickType == 1 && i >= -75 + clickX && clickX + 75 >= i && clickY >= -20 + i_18_ && clickY <= i_18_ + 20) {
@@ -252,7 +252,7 @@ public class Class60 {
                             if(ItemDefinition.anInt2854 == 84) {
                                 Native.username = Native.username.method62().method85();
                                 Class33.setLoginScreenMessage("", English.connectingToServer, "");
-                                MovedStatics.updateOverlay(20);
+                                MovedStatics.processGameStatus(20);
                             }
                             if(bool && Native.password.length() < 20)
                                 Native.password = Native.password.addChar(Class59.anInt1388);

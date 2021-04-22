@@ -39,7 +39,7 @@ public class ChatBox {
             '9', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243',
             '$', '%', '"', '[', ']', '_', '{', '}', '/', '|'};
     public static void renderChatbox() {
-        MovedStatics.aBoolean260 = true;
+        MovedStatics.showChatPanelRedrawnText = true;
         Class22.method305();
         if(messagePromptRaised) {
             TypeFace.fontBold.drawStringLeft(Native.aClass1_1563, 239, 40, 0);

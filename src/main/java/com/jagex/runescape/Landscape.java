@@ -5,7 +5,6 @@ import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.FileOperations;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -37,7 +36,7 @@ public class Landscape {
     public static int[] anIntArray1186;
 
     public static void loadRegion() {
-        Main.method364((byte) -34, false);
+        Main.method364(false);
         Class37.anInt874 = 0;
         boolean bool = true;
         for(int i = 0; i < RSString.terrainData.length; i++) {
@@ -63,7 +62,7 @@ public class Landscape {
                 byte[] is = GenericTile.objectData[i];
                 if(is != null) {
                     int i_2_ = (ISAAC.mapCoordinates[i] & 0xff) * 64 - Class26.baseY;
-                    int i_3_ = (ISAAC.mapCoordinates[i] >> 8) * 64 - SpotAnimDefinition.baseX;
+                    int i_3_ = (ISAAC.mapCoordinates[i] >> 8) * 64 - MovedStatics.baseX;
                     if(GroundItemTile.loadGeneratedMap) {
                         i_3_ = 10;
                         i_2_ = 10;
@@ -87,12 +86,12 @@ public class Landscape {
                 }
                 Class65.method1020();
                 int dataLength = RSString.terrainData.length;
-                Class37.method436(118);
-                Main.method364((byte) -34, true);
+                Class37.method436();
+                Main.method364(true);
                 if(!GroundItemTile.loadGeneratedMap) {
                     for(int pointer = 0; dataLength > pointer; pointer++) {
                         int offsetY = -Class26.baseY + (0xff & ISAAC.mapCoordinates[pointer]) * 64;
-                        int offsetX = -SpotAnimDefinition.baseX + 64 * (ISAAC.mapCoordinates[pointer] >> 8);
+                        int offsetX = -MovedStatics.baseX + 64 * (ISAAC.mapCoordinates[pointer] >> 8);
                         byte[] is = RSString.terrainData[pointer];
                         if(FileOperations.FileExists("./data/maps/" + LinkedList.anIntArray1071[pointer] + ".dat")) {
                             System.out.println("reading file: " + "./data/maps/" + LinkedList.anIntArray1071[pointer] + ".dat");
@@ -102,13 +101,13 @@ public class Landscape {
                             AnimationSequence.loadTerrainBlock(currentCollisionMap, (Class51.regionX - 6) * 8, is, -6, offsetX, offsetY, 8 * (-6 + Class17.regionY));
                     }
                     for(int pointer = 0; dataLength > pointer; pointer++) {
-                        int offsetX = -SpotAnimDefinition.baseX + (ISAAC.mapCoordinates[pointer] >> 8) * 64;
+                        int offsetX = -MovedStatics.baseX + (ISAAC.mapCoordinates[pointer] >> 8) * 64;
                         int offsetY = -Class26.baseY + 64 * (ISAAC.mapCoordinates[pointer] & 0xff);
                         byte[] data = RSString.terrainData[pointer];
                         if(data == null && Class17.regionY < 800)
                             MovedStatics.initiateVertexHeights(offsetY, (byte) 103, 64, 64, offsetX);
                     }
-                    Main.method364((byte) -34, true);
+                    Main.method364(true);
                     for(int region = 0; dataLength > region; region++) {
                         //                        System.out.println("Requesting map: "+Class13.anIntArray421[i_12_]);
                         // load maps in here
@@ -125,7 +124,7 @@ public class Landscape {
                             }
                         }
                         if(data != null) {
-                            int offsetX = -SpotAnimDefinition.baseX + (ISAAC.mapCoordinates[region] >> 8) * 64;
+                            int offsetX = -MovedStatics.baseX + (ISAAC.mapCoordinates[region] >> 8) * 64;
                             int offsetY = 64 * (0xff & ISAAC.mapCoordinates[region]) - Class26.baseY;
                             GameObject.loadObjectBlock(offsetX, Npc.currentScene, currentCollisionMap, data, offsetY);
                         } else {
@@ -165,7 +164,7 @@ public class Landscape {
                                 MovedStatics.initiateVertexHeights(y * 8, (byte) 120, 8, 8, 8 * x);
                         }
                     }
-                    Main.method364((byte) -34, true);
+                    Main.method364(true);
                     for(int z = 0; z < 4; z++) {
                         for(int x = 0; x < 13; x++) {
                             for(int y = 0; y < 13; y++) {
@@ -187,10 +186,10 @@ public class Landscape {
                         }
                     }
                 }
-                Main.method364((byte) -34, true);
+                Main.method364(true);
                 RSCanvas.clearCaches();
                 ISAAC.drawMapTiles(Npc.currentScene, currentCollisionMap);
-                Main.method364((byte) -34, true);
+                Main.method364(true);
                 int z = MovedStatics.lowestPlane;
                 if(Player.worldLevel < z)
                     z = Player.worldLevel;
@@ -225,9 +224,9 @@ public class Landscape {
                     }
                 }
                 if(GameInterface.fullscreenInterfaceId != -1)
-                    MovedStatics.updateOverlay(35);
+                    MovedStatics.processGameStatus(35);
                 else
-                    MovedStatics.updateOverlay(30);
+                    MovedStatics.processGameStatus(30);
                 MovedStatics.method973();
                 SceneCluster.packetBuffer.putPacket(178);
                 RSRuntimeException.method1057(126);

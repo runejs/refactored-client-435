@@ -23,17 +23,17 @@ public class Class17 {
     public static int anInt464 = 0;
     public static int[] anIntArray466 = new int[256];
 
-    public static void method273(GameSocket socket, boolean arg2) {
-        if(Class57.gameSocket != null) {
+    public static void handleUpdateServerConnection(GameSocket updateServerSocket, boolean arg2) {
+        if(Class57.updateServerSocket != null) {
             try {
-                Class57.gameSocket.kill();
+                Class57.updateServerSocket.kill();
             } catch(Exception exception) {
                 exception.printStackTrace();
                 /* empty */
             }
-            Class57.gameSocket = null;
+            Class57.updateServerSocket = null;
         }
-        Class57.gameSocket = socket;
+        Class57.updateServerSocket = updateServerSocket;
         GameShell.method19(arg2);
         LinkedList.aClass40_Sub1_1081.currentPosition = 0;
         Class40_Sub5_Sub13.aClass40_Sub1_2752 = null;
@@ -62,16 +62,16 @@ public class Class17 {
                 class40_sub1.putByte(4);
                 class40_sub1.putByte(Class8.aByte302);
                 class40_sub1.putShortBE(0);
-                Class57.gameSocket.sendDataFromBuffer(4, 0, class40_sub1.buffer);
+                Class57.updateServerSocket.sendDataFromBuffer(4, 0, class40_sub1.buffer);
             } catch(java.io.IOException ioexception) {
                 ioexception.printStackTrace();
                 try {
-                    Class57.gameSocket.kill();
+                    Class57.updateServerSocket.kill();
                 } catch(Exception exception) {
                     exception.printStackTrace();
                     /* empty */
                 }
-                Class57.gameSocket = null;
+                Class57.updateServerSocket = null;
                 MovedStatics.anInt2278++;
             }
         }

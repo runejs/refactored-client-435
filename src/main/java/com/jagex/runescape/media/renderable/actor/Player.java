@@ -4,7 +4,7 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.cache.def.SpotAnimDefinition;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
@@ -357,7 +357,7 @@ public class Player extends Actor {
 
     public static void setTutorialIslandFlag() {
         inTutorialIsland = false;
-        int xPos = (localPlayer.worldX >> 7) + SpotAnimDefinition.baseX;
+        int xPos = (localPlayer.worldX >> 7) + MovedStatics.baseX;
         int yPos = Class26.baseY + (localPlayer.worldY >> 7);
         if(xPos >= 3053 && xPos <= 3156 && yPos >= 3056 && yPos <= 3136)
             inTutorialIsland = true;
@@ -464,7 +464,7 @@ public class Player extends Actor {
         animatedModel.method799();
         anInt3117 = animatedModel.modelHeight;
         if(!aBoolean3287 && graphicId != -1 && anInt3140 != -1) {
-            Model model = SpotAnimDefinition.forId(graphicId, 13).method549(anInt3140, 2);
+            Model model = SpotAnimDefinition.forId(graphicId).method549(anInt3140);
             if(model != null) {
                 model.translate(0, -graphicHeight, 0);
                 Model[] models = {animatedModel, model};

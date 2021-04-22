@@ -14,7 +14,7 @@ public abstract class ProducingGraphicsBuffer {
     public static int anInt1623 = 0;
     public static int oneMouseButton = 0;
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1631;
-    public static SignlinkNode gameServerConnectionSignlink;
+    public static SignlinkNode updateServerSignlinkNode;
     public static int anInt1634 = 0;
     public static int anInt1637 = 0;
 

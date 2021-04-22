@@ -128,7 +128,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
                 if(!aBoolean1820)
                     break;
             }
-            Class43.sleep(50L);
+            Class43.threadSleep(50L);
         }
     }
 
@@ -146,7 +146,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
                 }
                 method212(System.currentTimeMillis());
             }
-            Class43.sleep(5L);
+            Class43.threadSleep(5L);
         }
     }
 

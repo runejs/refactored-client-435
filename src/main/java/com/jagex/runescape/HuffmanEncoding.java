@@ -3,7 +3,6 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -185,7 +184,7 @@ public class HuffmanEncoding {
                         examineText.append("<col=00ff00>) (</col>");
                         examineText.append(
                                 MessageFormat.format("<col=ffffff>{0}, {1}</col>",
-                                        Integer.toString(x + SpotAnimDefinition.baseX),
+                                        Integer.toString(x + MovedStatics.baseX),
                                         Integer.toString(y + Class26.baseY)
                                 )
                         );

@@ -2,10 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.cs.ClientScript;
-import com.jagex.runescape.cache.def.GameObjectDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
-import com.jagex.runescape.cache.def.VarPlayerDefinition;
-import com.jagex.runescape.cache.def.VarbitDefinition;
+import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.actor.Actor;
@@ -47,7 +44,7 @@ public class RSCanvas extends Canvas {
         Class40_Sub5_Sub6.method586(64);
         Class8.method211();
         MovedStatics.method188();
-        Class22_Sub2.method316();
+        SpotAnimDefinition.clearSpotAnimDefinitionCache();
         VarbitDefinition.clearVarbitDefinitionCache();
         VarPlayerDefinition.clearVarPlayerDefinitionCache();
         Class51.clearModelCache();

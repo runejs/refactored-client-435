@@ -5,9 +5,9 @@ import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.frame.ChatBox;
+import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -574,7 +574,7 @@ public class GameInterface extends CachedNode {
                 ClientScriptRunner.crossX = Class57.clickX;
                 LinkedList.crossType = 2;
                 SceneCluster.packetBuffer.putPacket(190);
-                SceneCluster.packetBuffer.putShortLE(i + SpotAnimDefinition.baseX);
+                SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
                 SceneCluster.packetBuffer.putShortBE(i_12_);
                 SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
             }
@@ -589,7 +589,7 @@ public class GameInterface extends CachedNode {
             if(action == 27) {
                 AnimationSequence.method596(i, i_12_, (byte) -79, i_10_);
                 SceneCluster.packetBuffer.putPacket(229);
-                SceneCluster.packetBuffer.putShortLE(SpotAnimDefinition.baseX + i);
+                SceneCluster.packetBuffer.putShortLE(MovedStatics.baseX + i);
                 SceneCluster.packetBuffer.putShortLE((0x1ffffd20 & i_12_) >> 14);
                 SceneCluster.packetBuffer.putShortLE(Class26.baseY + i_10_);
             }
@@ -775,7 +775,7 @@ public class GameInterface extends CachedNode {
                     ClientScriptRunner.crossX = Class57.clickX;
                     SceneCluster.packetBuffer.putPacket(168);
                     SceneCluster.packetBuffer.putShortLE(i_12_);
-                    SceneCluster.packetBuffer.putShortBE(SpotAnimDefinition.baseX + i);
+                    SceneCluster.packetBuffer.putShortBE(MovedStatics.baseX + i);
                     SceneCluster.packetBuffer.putIntME1(Class60.anInt1417);
                     SceneCluster.packetBuffer.putShortBE(Class26.baseY + i_10_);
                 }
@@ -843,7 +843,7 @@ public class GameInterface extends CachedNode {
                     SceneCluster.packetBuffer.putPacket(62);
                     SceneCluster.packetBuffer.putShortBE((0x1fffd05d & i_12_) >> 14);
                     SceneCluster.packetBuffer.putShortLE(i_10_ + Class26.baseY);
-                    SceneCluster.packetBuffer.putShortLE(i + SpotAnimDefinition.baseX);
+                    SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
                 }
                 if(action == 30) {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
@@ -875,7 +875,7 @@ public class GameInterface extends CachedNode {
                 if(action == 29) {
                     AnimationSequence.method596(i, i_12_, (byte) -77, i_10_);
                     SceneCluster.packetBuffer.putPacket(164);
-                    SceneCluster.packetBuffer.putShortLE(SpotAnimDefinition.baseX + i);
+                    SceneCluster.packetBuffer.putShortLE(MovedStatics.baseX + i);
                     SceneCluster.packetBuffer.putShortLE(Class26.baseY + i_10_);
                     SceneCluster.packetBuffer.putShortLE(i_12_ >> 14 & 0x7fff);
                 }
@@ -886,7 +886,7 @@ public class GameInterface extends CachedNode {
                     SceneCluster.packetBuffer.putShortLE((i_12_ & 0x1fffccf7) >> 14);
                     SceneCluster.packetBuffer.putShortLE(LinkedList.anInt1061);
                     SceneCluster.packetBuffer.putIntME1(ISAAC.anInt525);
-                    SceneCluster.packetBuffer.putShortLE(i + SpotAnimDefinition.baseX);
+                    SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
                 }
                 if(action == 34) {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
@@ -995,7 +995,7 @@ public class GameInterface extends CachedNode {
                         ClientScriptRunner.crossX = Class57.clickX;
                         MovedStatics.crossY = RSString.clickY;
                         SceneCluster.packetBuffer.putPacket(244);
-                        SceneCluster.packetBuffer.putShortLE(i + SpotAnimDefinition.baseX);
+                        SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
                         SceneCluster.packetBuffer.putShortBE(Class26.baseY + i_10_);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
                     }
@@ -1011,7 +1011,7 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putPacket(85);
                         SceneCluster.packetBuffer.putShortBE(Class26.baseY + i_10_);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
-                        SceneCluster.packetBuffer.putShortLE(i + SpotAnimDefinition.baseX);
+                        SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
                     }
                     if(action == 21) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
@@ -1091,7 +1091,7 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putPacket(183);
                         SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
                         SceneCluster.packetBuffer.putShortBE(i_12_ >> 14 & 0x7fff);
-                        SceneCluster.packetBuffer.putShortBE(i + SpotAnimDefinition.baseX);
+                        SceneCluster.packetBuffer.putShortBE(i + MovedStatics.baseX);
                     }
                     if(action == 50) {
                         Class33.method406(i, i_12_, i_10_, -121);
@@ -1106,7 +1106,7 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortBE(i_12_ >> 14 & 0x7fff);
                         SceneCluster.packetBuffer.putShortLE(i_10_ + Class26.baseY);
                         SceneCluster.packetBuffer.putIntME1(Class60.anInt1417);
-                        SceneCluster.packetBuffer.putShortLE(i + SpotAnimDefinition.baseX);
+                        SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
                     }
                     if(action == 25) {
                         SceneCluster.packetBuffer.putPacket(228);
@@ -1180,7 +1180,7 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putPacket(65);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
                         SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
-                        SceneCluster.packetBuffer.putShortLE(SpotAnimDefinition.baseX + i);
+                        SceneCluster.packetBuffer.putShortLE(MovedStatics.baseX + i);
                     }
                     if(action == 9) {
                         PacketBuffer.closeAllWidgets();
@@ -1215,7 +1215,7 @@ public class GameInterface extends CachedNode {
                         OverlayDefinition.crossIndex = 0;
                         ClientScriptRunner.crossX = Class57.clickX;
                         SceneCluster.packetBuffer.putPacket(27);
-                        SceneCluster.packetBuffer.putShortBE(SpotAnimDefinition.baseX + i);
+                        SceneCluster.packetBuffer.putShortBE(MovedStatics.baseX + i);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
                         SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
                     }
@@ -1252,7 +1252,7 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putPacket(30);
                         SceneCluster.packetBuffer.putShortBE(0x7fff & i_12_ >> 14);
                         SceneCluster.packetBuffer.putShortBE(Class26.baseY + i_10_);
-                        SceneCluster.packetBuffer.putShortLE(i + SpotAnimDefinition.baseX);
+                        SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
                     }
                     if(action == 20) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_12_];
@@ -1276,7 +1276,7 @@ public class GameInterface extends CachedNode {
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
                         SceneCluster.packetBuffer.putPacket(172);
-                        SceneCluster.packetBuffer.putShortBE(i + SpotAnimDefinition.baseX);
+                        SceneCluster.packetBuffer.putShortBE(i + MovedStatics.baseX);
                         SceneCluster.packetBuffer.putShortBE(LinkedList.anInt1061);
                         SceneCluster.packetBuffer.putShortBE(i_12_);
                         SceneCluster.packetBuffer.putIntME2(ISAAC.anInt525);
@@ -1354,7 +1354,7 @@ public class GameInterface extends CachedNode {
                 if(Wall.aGameInterface_353.anObjectArray2669 != null && (arg2 & 0x200) != 0) {
                     ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2669, 0, i, gameInterface, i_26_);
                 }
-                if(SpotAnimDefinition.mouseButtonPressed == 0 && (arg2 & 0x400) != 0) {
+                if(MouseHandler.currentMouseButtonPressed == 0 && (arg2 & 0x400) != 0) {
                     if(Wall.aGameInterface_353.anObjectArray2695 != null) {
                         ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2695, 0, i, gameInterface, i_26_);
                     }

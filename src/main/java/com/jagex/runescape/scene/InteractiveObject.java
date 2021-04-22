@@ -12,7 +12,6 @@ public class InteractiveObject {
     public static int[] firstMenuOperand = new int[500];
     public static NodeQueue aNodeQueue_485 = new NodeQueue();
     public static int anInt487 = 0;
-    public static CacheArchive aCacheArchive_488;
     public static byte[][][] aByteArrayArrayArray492;
     public static int playerRights = 0;
     public static boolean showFps = false;

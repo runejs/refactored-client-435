@@ -55,9 +55,9 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     public int[] modifiedModelColors;
     public boolean renderOnMinimap = true;
 
-    public static void method567() {
-        if(Class57.gameSocket != null) {
-            Class57.gameSocket.kill();
+    public static void killUpdateServerSocket() {
+        if(Class57.updateServerSocket != null) {
+            Class57.updateServerSocket.kill();
         }
     }
 

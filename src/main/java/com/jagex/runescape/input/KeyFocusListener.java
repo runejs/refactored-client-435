@@ -25,6 +25,8 @@ import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import static com.jagex.runescape.Class40_Sub3.ticksPerLoop;
+
 public class KeyFocusListener implements KeyListener, FocusListener {
     public static LinkedList aLinkedList_1278 = new LinkedList();
     public static int[] anIntArray1282 = new int[256];
@@ -115,19 +117,19 @@ public class KeyFocusListener implements KeyListener, FocusListener {
 
             WallDecoration.fontNormal.drawStringRight("ClickY: " + RSString.clickY, x, y ,0xffff00);
             y += 15;
-            if (MovedStatics.aBoolean893) {
+            if (MovedStatics.showSidePanelRedrawnText) {
                 WallDecoration.fontNormal.drawStringRight(English.sidePanelRedrawn, x, y, 16711680);
                 y += 15;
-                MovedStatics.aBoolean893 = false;
+                MovedStatics.showSidePanelRedrawnText = false;
             }
-            if (MovedStatics.aBoolean260) {
+            if (MovedStatics.showChatPanelRedrawnText) {
                 WallDecoration.fontNormal.drawStringRight(English.chatPanelRedrawn, x, y, 16711680);
                 y += 15;
-                MovedStatics.aBoolean260 = false;
+                MovedStatics.showChatPanelRedrawnText = false;
             }
-            if (Class40_Sub3.aBoolean2026) {
+            if (Class40_Sub3.showIconsRedrawnText) {
                 WallDecoration.fontNormal.drawStringRight(English.iconsRedrawn, x, y, 16711680);
-                Class40_Sub3.aBoolean2026 = false;
+                Class40_Sub3.showIconsRedrawnText = false;
                 y += 15;
             }
         }

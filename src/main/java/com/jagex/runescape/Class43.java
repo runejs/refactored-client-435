@@ -1,6 +1,5 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.ItemDefinition;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.OverlayDefinition;
@@ -21,12 +20,11 @@ import com.jagex.runescape.scene.tile.SceneTile;
 import com.jagex.runescape.scene.util.CollisionMap;
 
 public class Class43 {
-    public static NodeCache aClass9_1014 = new NodeCache(64);
     public static int cameraYawOffset = 0;
     public static LinkedList aLinkedList_1022 = new LinkedList();
     public static int bankInsertMode = 0;
 
-    public static void sleep(long ms) {
+    public static void threadSleep(long ms) {
         if (ms <= 0L) {
             return;
         }
@@ -39,7 +37,7 @@ public class Class43 {
     }
 
     public static void drawTabArea(int arg0) {
-        MovedStatics.aBoolean893 = true;
+        MovedStatics.showSidePanelRedrawnText = true;
         MovedStatics.method996(19655);
         if(GameInterface.tabAreaInterfaceId != -1) {
             boolean bool = Main.drawParentInterface(1, 0, 0, 190, 261, GameInterface.tabAreaInterfaceId);

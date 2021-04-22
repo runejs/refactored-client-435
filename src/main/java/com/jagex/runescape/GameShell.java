@@ -8,7 +8,6 @@ import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer3D;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
@@ -32,31 +31,32 @@ import java.net.URL;
 public abstract class GameShell extends Canvas implements Runnable, FocusListener, WindowListener {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1;
     public static int[] anIntArray2 = new int[5];
-    public static long[] aLongArray4 = new long[32];
+    public static long[] tickSamples = new long[32];
     public static int anInt31;
 
     public static long exitTimeInMillis = 0L;
     public static Frame clientFrame;
     public static GameShell currentGameShell = null;
+    public static int millisPerTick = 20;
     public boolean gameShellError = false;
 
 
-    public static void method19(boolean arg0) {
-        if (Class57.gameSocket != null) {
+    public static void method19(boolean loggedIn) {
+        if (Class57.updateServerSocket != null) {
             try {
                 Buffer buffer = new Buffer(4);
-                buffer.putByte(arg0 ? 2 : 3);
+                buffer.putByte(loggedIn ? 2 : 3);
                 buffer.putMediumBE(0);
-                Class57.gameSocket.sendDataFromBuffer(4, 0, buffer.buffer);
+                Class57.updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
             } catch (java.io.IOException ioexception) {
                 ioexception.printStackTrace();
                 try {
-                    Class57.gameSocket.kill();
+                    Class57.updateServerSocket.kill();
                 } catch (Exception exception) {
                     exception.printStackTrace();
                     /* empty */
                 }
-                Class57.gameSocket = null;
+                Class57.updateServerSocket = null;
                 MovedStatics.anInt2278++;
             }
         }
@@ -88,7 +88,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                     boolean bool;
                     bool = Class13.mouseX >= i_6_ && i_4_ <= Landscape.mouseY && i_8_ > Class13.mouseX && i_7_ > Landscape.mouseY;
                     boolean bool_9_ = false;
-                    if (SpotAnimDefinition.mouseButtonPressed == 1 && bool)
+                    if (MouseHandler.currentMouseButtonPressed == 1 && bool)
                         bool_9_ = true;
                     boolean bool_10_ = false;
                     if (gameInterface.anInt2738 != -1 && bool_9_ && Wall.aGameInterface_353 == null) {
@@ -202,16 +202,31 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         }
         setCanvas();
         ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(Class12.width, IdentityKit.height, MouseHandler.gameCanvas);
-        startup(true);
-        SceneCluster.aTimer_768 = Timer.create();
-        SceneCluster.aTimer_768.start();
+        startup();
+        SceneCluster.gameTimer = Timer.create();
+        SceneCluster.gameTimer.start();
 
         // Initialize client loop
         while (exitTimeInMillis == 0L || System.currentTimeMillis() < exitTimeInMillis) {
-            Class40_Sub3.anInt2020 = SceneCluster.aTimer_768.sleep(Class39.anInt912, Class40_Sub3.anInt2024);
-            for (int i = 0; i < Class40_Sub3.anInt2020; i++)
-                method29(true);
-            method26((byte) 88);
+            Class40_Sub3.ticksPerLoop = SceneCluster.gameTimer.getTicks(millisPerTick, Class40_Sub3.anInt2024);
+            for (int currentTick = 0; currentTick < Class40_Sub3.ticksPerLoop; currentTick++) {
+                long currentTimeMillis = System.currentTimeMillis();
+
+                // Saves the time this particular tick is being processed on
+                MovedStatics.tickSamples[MouseHandler.currentTickSample] = currentTimeMillis;
+
+                // Increases the current tick identifier by 1, looping at 31 back to 0 (including 31)
+                // This means the client stores the last 32 tick times to do some other calculations
+                MouseHandler.currentTickSample = 0x1f & MouseHandler.currentTickSample + 1;
+
+                synchronized (this) {
+                    MovedStatics.aBoolean571 = GenericTile.clientFocused;
+                }
+
+                processGameLoop();
+            }
+
+            runAfterGameLoop();
         }
 
         // If we ever escape from the client loop, exit
@@ -293,7 +308,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public abstract void processGameLoop();
 
     public void focusLost(FocusEvent arg0) {
-        GenericTile.aBoolean1215 = false;
+        GenericTile.clientFocused = false;
     }
 
     public abstract void method24();
@@ -312,14 +327,14 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public void destroy() {
         if (currentGameShell == this && !PacketBuffer.closedClient) {
             exitTimeInMillis = System.currentTimeMillis();
-            Class43.sleep(5000L);
+            Class43.threadSleep(5000L);
             Actor.signlink = null;
             closeGameShell();
         }
     }
 
     public void focusGained(FocusEvent arg0) {
-        GenericTile.aBoolean1215 = true;
+        GenericTile.clientFocused = true;
         MovedStatics.clearScreen = true;
     }
 
@@ -355,31 +370,37 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public void windowIconified(WindowEvent arg0) {
     }
 
-    public void method26(byte arg0) {
-        if (arg0 == 88) {
-            long l = System.currentTimeMillis();
-            long l_11_ = aLongArray4[PlayerAppearance.anInt681];
-            aLongArray4[PlayerAppearance.anInt681] = l;
-            if (l_11_ != 0 && l > l_11_) {
-                int i = (int) (-l_11_ + l);
-                GenericTile.fps = ((i >> 1) + 32000) / i;
-            }
-            PlayerAppearance.anInt681 = PlayerAppearance.anInt681 + 1 & 0x1f;
-            if (MovedStatics.anInt938++ > 50) {
-                MovedStatics.anInt938 -= 50;
-                MovedStatics.clearScreen = true;
-                MouseHandler.gameCanvas.setSize(Class12.width, IdentityKit.height);
-                MouseHandler.gameCanvas.setVisible(true);
-                MouseHandler.gameCanvas.setBackground(Color.BLACK);
-                if (clientFrame == null)
-                    MouseHandler.gameCanvas.setLocation(0, 0);
-                else {
-                    Insets insets = clientFrame.getInsets();
-                    MouseHandler.gameCanvas.setLocation(insets.left, insets.top);
-                }
-            }
-            method34(arg0 + -210);
+    public void runAfterGameLoop() {
+        long currentTimeMillis = System.currentTimeMillis();
+        long lastTickInMillis = tickSamples[PlayerAppearance.currentTickSample];
+
+        // Saves the time this particular tick is being processed on
+        tickSamples[PlayerAppearance.currentTickSample] = currentTimeMillis;
+
+        if (lastTickInMillis != 0 && currentTimeMillis > lastTickInMillis) {
+            int i = (int) (currentTimeMillis - lastTickInMillis);
+            int maxSamples = tickSamples.length;
+            GenericTile.fps = ((i >> 1) + (maxSamples * 1000)) / i;
         }
+
+        // Increases the current tick identifier by 1, looping at 31 back to 0 (including 31)
+        // This means the client stores the last 32 tick times to do some other calculations
+        PlayerAppearance.currentTickSample = PlayerAppearance.currentTickSample + 1 & 0x1f;
+
+        if (MovedStatics.anInt938++ > 50) {
+            MovedStatics.anInt938 -= 50;
+            MovedStatics.clearScreen = true;
+            MouseHandler.gameCanvas.setSize(Class12.width, IdentityKit.height);
+            MouseHandler.gameCanvas.setVisible(true);
+            MouseHandler.gameCanvas.setBackground(Color.BLACK);
+            if (clientFrame == null)
+                MouseHandler.gameCanvas.setLocation(0, 0);
+            else {
+                Insets insets = clientFrame.getInsets();
+                MouseHandler.gameCanvas.setLocation(insets.left, insets.top);
+            }
+        }
+        updateStatusText();
     }
 
 //    public AppletContext getAppletContext() {
@@ -389,23 +410,6 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
 //            return ISAAC.aClass31_521.anApplet740.getAppletContext();
 //        return super.getAppletContext();
 //    }
-
-    public void method29(boolean arg0) {
-        long l = System.currentTimeMillis();
-        long l_14_ = MovedStatics.aLongArray1614[MouseHandler.anInt1468];
-        if (l_14_ != 0L && l > l_14_) {
-            /* empty */
-        }
-        MovedStatics.aLongArray1614[MouseHandler.anInt1468] = l;
-        MouseHandler.anInt1468 = 0x1f & MouseHandler.anInt1468 + 1;
-        synchronized (this) {
-            MovedStatics.aBoolean571 = GenericTile.aBoolean1215;
-        }
-        processGameLoop();
-        if (arg0)
-            return;
-        windowIconified(null);
-    }
 
     public void openClientApplet(String cacheFolder, int cacheIndexes, int fileStoreId, InetAddress inetAddress, int clientVersion) {
         try {
@@ -438,7 +442,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         return this.getDocumentBase();
     }
 
-    public abstract void startup(boolean bool);
+    public abstract void startup();
 
     public void update(Graphics graphics) {
         paint(graphics);
@@ -483,7 +487,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         MovedStatics.aLong174 = System.currentTimeMillis();
     }
 
-    public abstract void method34(int i);
+    public abstract void updateStatusText();
 
     public void windowDeiconified(WindowEvent windowEvent) {
     }

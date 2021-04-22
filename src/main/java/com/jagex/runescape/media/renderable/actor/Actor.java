@@ -1,11 +1,9 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.GameObjectDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
@@ -19,7 +17,6 @@ import com.jagex.runescape.util.Signlink;
 public abstract class Actor extends Renderable {
 
     public static int[] anIntArray3111;
-    public static volatile int eventMouseButtonPressed = 0;
     public static int[] minimapHintX = new int[1000];
     public static int anInt3151 = -16 + (int) (Math.random() * 33.0);
     public static Signlink signlink;
@@ -202,7 +199,7 @@ public abstract class Actor extends Renderable {
                         }
                     }
                 } else {
-                    IndexedImage class40_sub5_sub14_sub2 = SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
+                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
                     if(class40_sub5_sub14_sub2 != null) {
                         int i_6_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
                         int i_7_ = (gameObjectDefinition.sizeY * 4 + -class40_sub5_sub14_sub2.imgHeight) / 2;
@@ -218,7 +215,7 @@ public abstract class Actor extends Renderable {
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
                 int i_11_ = i_8_ & 0x1f;
                 if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
+                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
                     if(class40_sub5_sub14_sub2 != null) {
                         int i_12_ = (-class40_sub5_sub14_sub2.imgHeight + gameObjectDefinition.sizeY * 4) / 2;
                         int i_13_ = (gameObjectDefinition.sizeX * 4 + -class40_sub5_sub14_sub2.imgWidth) / 2;
@@ -248,7 +245,7 @@ public abstract class Actor extends Renderable {
                 int i_16_ = (i & 0x1fffd9fb) >> 14;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);
                 if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = SpotAnimDefinition.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
+                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
                     if(class40_sub5_sub14_sub2 != null) {
                         int i_17_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
                         int i_18_ = (-class40_sub5_sub14_sub2.imgHeight + 4 * gameObjectDefinition.sizeY) / 2;
@@ -274,15 +271,15 @@ public abstract class Actor extends Renderable {
             if(!VertexNormal.lowMemory)
                 MovedStatics.onBuildTimePlane = 0;
             Class17.regionY = arg2;
-            MovedStatics.updateOverlay(25);
+            MovedStatics.processGameStatus(25);
             Class51.method940(0, English.loadingPleaseWait, false, null);
             int i = Class26.baseY;
-            int i_33_ = SpotAnimDefinition.baseX;
-            SpotAnimDefinition.baseX = (arg3 - 6) * 8;
-            int i_34_ = SpotAnimDefinition.baseX + -i_33_;
+            int i_33_ = MovedStatics.baseX;
+            MovedStatics.baseX = (arg3 - 6) * 8;
+            int i_34_ = MovedStatics.baseX + -i_33_;
             if(arg1 != -1000)
                 method781(14, 98, 96, -85, -118, 89);
-            i_33_ = SpotAnimDefinition.baseX;
+            i_33_ = MovedStatics.baseX;
             Class26.baseY = (-6 + arg2) * 8;
             int i_35_ = Class26.baseY + -i;
             i = Class26.baseY;

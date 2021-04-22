@@ -318,24 +318,22 @@ public class Class48 {
         return ActorDefinition.method578();
     }
 
-    public static void logout(int arg0) {
-        if(MovedStatics.gameSocket != null) {
-            MovedStatics.gameSocket.kill();
-            MovedStatics.gameSocket = null;
+    public static void logout() {
+        if(MovedStatics.gameServerSocket != null) {
+            MovedStatics.gameServerSocket.kill();
+            MovedStatics.gameServerSocket = null;
         }
         RSCanvas.clearCaches();
         Npc.currentScene.initToNull();
         int i = 0;
-        if(arg0 != -7225)
-            aClass40_Sub1_1132 = null;
         for(/**/; i < 4; i++)
             Landscape.currentCollisionMap[i].reset();
         System.gc();
-        MovedStatics.method405(arg0 ^ ~0x5e71, 10);
+        MovedStatics.method405(10);
         Class35.songTimeout = 0;
         MouseHandler.currentSongId = -1;
-        Class37.method436(arg0 + 7352);
-        MovedStatics.updateOverlay(10);
+        Class37.method436();
+        MovedStatics.processGameStatus(10);
         ScreenController.frameMode(ScreenMode.FIXED);
     }
 

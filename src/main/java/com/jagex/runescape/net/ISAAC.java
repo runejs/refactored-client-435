@@ -180,7 +180,7 @@ public class ISAAC {
                                     boolean bool = true;
                                     if(i_30_ == 0 && OverlayDefinition.tile_underlay_path[i][i_16_][i_27_] != 0)
                                         bool = false;
-                                    if(i_31_ > 0 && !OverlayDefinition.getDefinition(-1 + i_31_, 4).aBoolean2338)
+                                    if(i_31_ > 0 && !OverlayDefinition.getDefinition(-1 + i_31_, 4).hideOverlay)
                                         bool = false;
                                     if(bool && i_32_ == i_33_ && i_34_ == i_32_ && i_32_ == i_35_)
                                         MovedStatics.anIntArrayArrayArray262[i][i_16_][i_27_] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[i][i_16_][i_27_], 2340);
@@ -216,14 +216,14 @@ public class ISAAC {
                                     if(i_50_ != -2)
                                         i_53_ = Rasterizer3D.hsl2rgb[MovedStatics.method420(i_50_, 96, true)];
                                     if(class40_sub5_sub3.secondaryColor != -1) {
-                                        int i_54_ = 0xff & Class40_Sub5_Sub15.anInt2791 + class40_sub5_sub3.anInt2334;
-                                        int i_55_ = class40_sub5_sub3.anInt2330 + Actor.anInt3151;
+                                        int i_54_ = 0xff & Class40_Sub5_Sub15.anInt2791 + class40_sub5_sub3.otherHue;
+                                        int i_55_ = class40_sub5_sub3.otherSaturation + Actor.anInt3151;
                                         if(i_55_ >= 0) {
                                             if(i_55_ > 255)
                                                 i_55_ = 255;
                                         } else
                                             i_55_ = 0;
-                                        i_50_ = Class13.method244(class40_sub5_sub3.anInt2346, i_55_, i_54_);
+                                        i_50_ = Class13.method244(class40_sub5_sub3.otherLightness, i_55_, i_54_);
                                         i_53_ = Rasterizer3D.hsl2rgb[MovedStatics.method420(i_50_, 96, true)];
                                     }
                                     scene.addTile(i, i_16_, i_27_, i_46_, i_47_, i_48_, i_32_, i_33_, i_34_, i_35_, Class40_Sub5_Sub17_Sub6.method831(i_39_, i_36_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_37_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_38_, (byte) 73), Class40_Sub5_Sub17_Sub6.method831(i_39_, i_40_, (byte) 73), MovedStatics.method420(i_49_, i_36_, true), MovedStatics.method420(i_49_, i_37_, true), MovedStatics.method420(i_49_, i_38_, true), MovedStatics.method420(i_49_, i_40_, true), i_45_, i_53_);

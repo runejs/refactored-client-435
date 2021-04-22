@@ -17,6 +17,7 @@ import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
 import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.Rasterizer3D;
+import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
@@ -40,6 +41,7 @@ import com.jagex.runescape.util.Signlink;
 import tech.henning.fourthreefive.Configuration;
 
 import java.awt.*;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 
@@ -57,6 +59,7 @@ public class Main extends GameShell {
     public static CacheFileChannel dataChannel;
     public static CacheFileChannel metaChannel;
     public static CacheFileChannel[] indexChannels = new CacheFileChannel[13];
+    public static int currentPort;
     private static int drawCount = 0;
 
     /**
@@ -627,39 +630,49 @@ public class Main extends GameShell {
         }
         try {
             if (params.length != 5)
-                Class37.method432();
+                printHelp();
+
             Player.worldId = Integer.parseInt(params[0]);
-            if (!params[1].equals("live")) {
-                if (params[1].equals("office"))
-                    Class44.modewhere = 1;
-                else if (params[1].equals("local"))
-                    Class44.modewhere = 2;
-                else
-                    Class37.method432();
-            } else
+
+            // Location argument (to set server IP based on JMod location?)
+            if (params[1].equals("live")) {
                 Class44.modewhere = 0;
+            } else if (params[1].equals("office")) {
+                Class44.modewhere = 1;
+            } else if (params[1].equals("local")) {
+                Class44.modewhere = 2;
+            } else {
+                printHelp();
+            }
+
             if (params[2].equals("live"))
                 Class44.modewhat = 0;
             else if (!params[2].equals("rc")) {
                 if (params[2].equals("wip"))
                     Class44.modewhat = 2;
                 else
-                    Class37.method432();
+                    printHelp();
             } else
                 Class44.modewhat = 1;
-            if (params[3].equals("lowmem"))
+
+            // Memory argument
+            if (params[3].equals("lowmem")) {
                 Class59.setLowMemory();
-            else if (params[3].equals("highmem"))
+            } else if (params[3].equals("highmem")) {
                 Class8.setHighMemory();
-            else
-                Class37.method432();
-            if (!params[4].equals("free")) {
-                if (params[4].equals("members"))
-                    Class22.membersWorld = true;
-                else
-                    Class37.method432();
-            } else
+            } else {
+                printHelp();
+            }
+
+            // Player membership argument
+            if (params[4].equals("free")) {
                 Class22.membersWorld = false;
+            } else if (params[4].equals("members")) {
+                Class22.membersWorld = true;
+            } else {
+                printHelp();
+            }
+
             Main main = new Main();
             main.openClientApplet("runescape", 13, 32 + Class44.modewhat, InetAddress.getByName(Configuration.SERVER_ADDRESS), 435);
 
@@ -692,16 +705,16 @@ public class Main extends GameShell {
         Class35.aBoolean1735 = true;
         MovedStatics.aBoolean571 = true;
         MovedStatics.method540();
-        MovedStatics.previousIncomingPacket = -1;
+        IncomingPackets.secondLastOpcode = -1;
         MovedStatics.menuOpen = false;
-        RSString.currentIncomingPacket = -1;
-        IncomingPackets.incomingPacket = -1;
+        IncomingPackets.lastOpcode = -1;
+        IncomingPackets.opcode = -1;
         Class40_Sub5_Sub15.systemUpdateTime = 0;
-        Class35.anInt1728 = 0;
+        IncomingPackets.cyclesSinceLastPacket = 0;
         Player.headIconDrawType = 0;
         SceneCluster.packetBuffer.currentPosition = 0;
         SceneCluster.idleLogout = 0;
-        Class49.anInt1151 = -1;
+        IncomingPackets.thirdLastOpcode = -1;
         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
         ActorDefinition.menuActionRow = 0;
         Class40_Sub5_Sub13.method650(0);
@@ -895,17 +908,14 @@ public class Main extends GameShell {
 
     }
 
-    public static void method364(byte arg0, boolean arg1) {
-        if(arg0 != -34) {
-            MovedStatics.method368((byte) 123, true, false);
-        }
+    public static void method364(boolean arg1) {
         Class22.anInt537++;
         if(Class22.anInt537 >= 50 || arg1) {
             Class22.anInt537 = 0;
-            if(!Class37.aBoolean871 && MovedStatics.gameSocket != null) {
+            if(!Class37.aBoolean871 && MovedStatics.gameServerSocket != null) {
                 SceneCluster.packetBuffer.putPacket(13);
                 try {
-                    MovedStatics.gameSocket.sendDataFromBuffer(SceneCluster.packetBuffer.currentPosition, 0, SceneCluster.packetBuffer.buffer);
+                    MovedStatics.gameServerSocket.sendDataFromBuffer(SceneCluster.packetBuffer.currentPosition, 0, SceneCluster.packetBuffer.buffer);
                     SceneCluster.packetBuffer.currentPosition = 0;
                 } catch(java.io.IOException ioexception) {
                     Class37.aBoolean871 = true;
@@ -1025,11 +1035,11 @@ public class Main extends GameShell {
                     SceneCluster.packetBuffer.putByte(Player.currentTabId);
                 }
                 GameInterface.drawTabIcons = false;
-                Class40_Sub3.aBoolean2026 = true;
+                Class40_Sub3.showIconsRedrawnText = true;
                 MovedStatics.method527(Player.currentTabId, 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
             }
             if(MovedStatics.redrawChatbox) {
-                Class40_Sub3.aBoolean2026 = true;
+                Class40_Sub3.showIconsRedrawnText = true;
                 MovedStatics.redrawChatbox = false;
                 GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             }
@@ -1069,11 +1079,11 @@ public class Main extends GameShell {
                     SceneCluster.packetBuffer.putByte(Player.currentTabId);
                 }
                 GameInterface.drawTabIcons = false;
-                Class40_Sub3.aBoolean2026 = true;
+                Class40_Sub3.showIconsRedrawnText = true;
                 MovedStatics.method527(Player.currentTabId, 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
             }
             if(MovedStatics.redrawChatbox) {
-                Class40_Sub3.aBoolean2026 = true;
+                Class40_Sub3.showIconsRedrawnText = true;
                 MovedStatics.redrawChatbox = false;
                 GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             }
@@ -1138,7 +1148,7 @@ public class Main extends GameShell {
         } else {
             Class33.setLoginScreenMessage(English.unexpectedServerResponse, English.pleaseTryUsingDifferentWorld, "");
         }
-        MovedStatics.updateOverlay(10);
+        MovedStatics.processGameStatus(10);
     }
 
     public static void method164() {
@@ -1263,9 +1273,9 @@ public class Main extends GameShell {
                 if(!IncomingPackets.parseIncomingPackets())
                     break;
             }
-            if(Class51.currentAction == 30 || Class51.currentAction == 35) {
-                if(ISAAC.aBoolean519 && Class51.currentAction == 30) {
-                    SpotAnimDefinition.mouseButtonPressed = 0;
+            if(Class51.gameStatusCode == 30 || Class51.gameStatusCode == 35) {
+                if(ISAAC.aBoolean519 && Class51.gameStatusCode == 30) {
+                    MouseHandler.currentMouseButtonPressed = 0;
                     MouseHandler.clickType = 0;
                     while(MovedStatics.method416((byte) -104)) {
                         /* empty */
@@ -1385,13 +1395,13 @@ public class Main extends GameShell {
                     SceneCluster.packetBuffer.putByte(0);
                 }
                 LinkedList.method910(-32322);
-                if(Class51.currentAction == 30 || Class51.currentAction == 35) {
+                if(Class51.gameStatusCode == 30 || Class51.gameStatusCode == 35) {
                     Class40_Sub5_Sub13.method652();
                     MusicSystem.processAudio();
-                    Class35.anInt1728++;
-                    if(Class35.anInt1728 > 750)
+                    IncomingPackets.cyclesSinceLastPacket++;
+                    if (IncomingPackets.cyclesSinceLastPacket > 750) {
                         Class59.dropClient();
-                    else {
+                    } else {
                         Class17.animatePlayers(-1);
                         Class8.animateNpcs();
                         Class22_Sub1.method313();
@@ -1415,7 +1425,7 @@ public class Main extends GameShell {
                             Buffer.lastItemDragTime++;
                             if(Class13.mouseX > Renderable.anInt2869 + 5 || Renderable.anInt2869 + -5 > Class13.mouseX || ItemDefinition.anInt2798 + 5 < Landscape.mouseY || ItemDefinition.anInt2798 - 5 > Landscape.mouseY)
                                 Class40_Sub5_Sub15.lastItemDragged = true;
-                            if(SpotAnimDefinition.mouseButtonPressed == 0) {
+                            if(MouseHandler.currentMouseButtonPressed == 0) {
                                 if(SceneTile.activeInterfaceType == 3)
                                     ChatBox.redrawChatbox = true;
                                 if(SceneTile.activeInterfaceType == 2)
@@ -1497,7 +1507,7 @@ public class Main extends GameShell {
                             ScreenController.handleChatButtonsClick();
                         }
 
-                        if(SpotAnimDefinition.mouseButtonPressed == 1 || MouseHandler.clickType == 1)
+                        if(MouseHandler.currentMouseButtonPressed == 1 || MouseHandler.clickType == 1)
                             Npc.anInt3294++;
 
                         int i = 34;
@@ -1601,9 +1611,9 @@ public class Main extends GameShell {
                         }
                         do {
                             try {
-                                if(MovedStatics.gameSocket == null || SceneCluster.packetBuffer.currentPosition <= 0)
+                                if(MovedStatics.gameServerSocket == null || SceneCluster.packetBuffer.currentPosition <= 0)
                                     break;
-                                MovedStatics.gameSocket.sendDataFromBuffer(SceneCluster.packetBuffer.currentPosition, 0, SceneCluster.packetBuffer.buffer);
+                                MovedStatics.gameServerSocket.sendDataFromBuffer(SceneCluster.packetBuffer.currentPosition, 0, SceneCluster.packetBuffer.buffer);
                                 Class22.anInt537 = 0;
                                 SceneCluster.packetBuffer.currentPosition = 0;
                             } catch(java.io.IOException ioexception) {
@@ -1618,19 +1628,236 @@ public class Main extends GameShell {
         }
     }
 
+    public static void printHelp() {
+        System.out.println("Usage: worldid, [live/office/local], [live/rc/wip], [lowmem/highmem], [free/members]");
+        System.exit(1);
+    }
+
+    public static void handleLoginScreenActions() {
+        try {
+            if (Class40_Sub3.loginStatus == 0) { // Initialize
+                if (MovedStatics.gameServerSocket != null) {
+                    MovedStatics.gameServerSocket.kill();
+                    MovedStatics.gameServerSocket = null;
+                }
+                Class37.aBoolean871 = false;
+                Class40_Sub3.loginStatus = 1;
+                anInt1756 = 0;
+                FloorDecoration.gameServerSignlinkNode = null;
+            }
+            if (Class40_Sub3.loginStatus == 1) { // Create connection to server, and wait for it to become available
+                if (FloorDecoration.gameServerSignlinkNode == null) {
+                    FloorDecoration.gameServerSignlinkNode = signlink.createSocketNode(currentPort);
+                }
+                if (FloorDecoration.gameServerSignlinkNode.status == 2) {
+                    throw new IOException();
+                }
+                if (FloorDecoration.gameServerSignlinkNode.status == 1) {
+                    MovedStatics.gameServerSocket = new GameSocket((Socket) FloorDecoration.gameServerSignlinkNode.value, signlink);
+                    Class40_Sub3.loginStatus = 2;
+                    FloorDecoration.gameServerSignlinkNode = null;
+                }
+            }
+            if (Class40_Sub3.loginStatus == 2) {
+                long l = MovedStatics.aLong853 = RSString.nameToLong(Native.username.toString());
+                SceneCluster.packetBuffer.currentPosition = 0;
+                SceneCluster.packetBuffer.putByte(14);
+                int i = (int) (0x1fL & l >> 16);
+                SceneCluster.packetBuffer.putByte(i);
+                MovedStatics.gameServerSocket.sendDataFromBuffer(2, 0, SceneCluster.packetBuffer.buffer);
+                Class40_Sub3.loginStatus = 3;
+                IncomingPackets.incomingPacketBuffer.currentPosition = 0;
+            }
+            if (Class40_Sub3.loginStatus == 3) {
+                int i = MovedStatics.gameServerSocket.read();
+                if (i != 0) {
+                    displayMessageForResponseCode(i);
+                    return;
+                }
+                IncomingPackets.incomingPacketBuffer.currentPosition = 0;
+                Class40_Sub3.loginStatus = 4;
+            }
+            if (Class40_Sub3.loginStatus == 4) {
+
+                if (IncomingPackets.incomingPacketBuffer.currentPosition < 8) {
+                    int i = MovedStatics.gameServerSocket.inputStreamAvailable();
+                    if (i > -IncomingPackets.incomingPacketBuffer.currentPosition + 8) {
+                        i = -IncomingPackets.incomingPacketBuffer.currentPosition + 8;
+                    }
+                    if (i > 0) {
+                        MovedStatics.gameServerSocket.readDataToBuffer(IncomingPackets.incomingPacketBuffer.currentPosition, i, IncomingPackets.incomingPacketBuffer.buffer);
+                        IncomingPackets.incomingPacketBuffer.currentPosition += i;
+                    }
+                }
+                if (IncomingPackets.incomingPacketBuffer.currentPosition == 8) {
+                    IncomingPackets.incomingPacketBuffer.currentPosition = 0;
+                    Renderable.aLong2858 = IncomingPackets.incomingPacketBuffer.getLongBE();
+                    Class40_Sub3.loginStatus = 5;
+                }
+            }
+            if (Class40_Sub3.loginStatus == 5) {
+                int[] seeds = new int[4];
+                seeds[0] = (int) (Math.random() * 9.9999999E7);
+                seeds[1] = (int) (Math.random() * 9.9999999E7);
+                seeds[2] = (int) (Renderable.aLong2858 >> 32);
+                seeds[3] = (int) Renderable.aLong2858;
+                SceneCluster.packetBuffer.currentPosition = 0;
+                SceneCluster.packetBuffer.putByte(10);
+                SceneCluster.packetBuffer.putIntBE(seeds[0]);
+                SceneCluster.packetBuffer.putIntBE(seeds[1]);
+                SceneCluster.packetBuffer.putIntBE(seeds[2]);
+                SceneCluster.packetBuffer.putIntBE(seeds[3]);
+                SceneCluster.packetBuffer.putIntBE(signlink.uid);
+                SceneCluster.packetBuffer.putLongBE(RSString.nameToLong(Native.username.toString()));
+                SceneCluster.packetBuffer.method505(Native.password);
+                if (Configuration.RSA_ENABLED) {
+                    SceneCluster.packetBuffer.applyRSA(Configuration.RSA_MODULUS, Configuration.RSA_PUBLIC_KEY);
+                }
+
+
+                // The actual login packet starts here
+
+                MovedStatics.packetBuffer.currentPosition = 0;
+                if (Class51.gameStatusCode == 40) {
+                    // Reconnecting session
+                    MovedStatics.packetBuffer.putByte(18);
+                } else {
+                    // New session
+                    MovedStatics.packetBuffer.putByte(16);
+                }
+                MovedStatics.packetBuffer.putByte(57 + SceneCluster.packetBuffer.currentPosition);
+                MovedStatics.packetBuffer.putIntBE(435);
+                MovedStatics.packetBuffer.putByte(VertexNormal.lowMemory ? 1 : 0);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.skeletonCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.skinDefinitionCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameDefinitionsCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameInterfaceCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.soundEffectCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameWorldMapCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.musicCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.modelCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameImageCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameTextureCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.huffmanCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.jingleCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.clientScriptCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putBytes(0, SceneCluster.packetBuffer.currentPosition, SceneCluster.packetBuffer.buffer);
+                MovedStatics.gameServerSocket.sendDataFromBuffer(MovedStatics.packetBuffer.currentPosition, 0, MovedStatics.packetBuffer.buffer);
+                SceneCluster.packetBuffer.initOutCipher(seeds);
+                for (int i = 0; i < 4; i++) {
+                    seeds[i] += 50;
+                }
+                IncomingPackets.incomingPacketBuffer.initInCipher(seeds);
+                Class40_Sub3.loginStatus = 6;
+            }
+
+
+
+            if (Class40_Sub3.loginStatus == 6 && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) {
+                int responseCode = MovedStatics.gameServerSocket.read();
+                if (responseCode != 21 || Class51.gameStatusCode != 20) {
+                    if (responseCode == 2) {
+                        Class40_Sub3.loginStatus = 9;
+                    } else {
+                        if (responseCode == 15 && Class51.gameStatusCode == 40) {
+                            Class37.method434(0);
+                            return;
+                        }
+                        if (responseCode == 23 && OverlayDefinition.anInt2321 < 1) {
+                            OverlayDefinition.anInt2321++;
+                            Class40_Sub3.loginStatus = 0;
+                        } else {
+                            displayMessageForResponseCode(responseCode);
+                            return;
+                        }
+                    }
+                } else {
+                    Class40_Sub3.loginStatus = 7;
+                }
+            }
+            if (Class40_Sub3.loginStatus == 7 && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) {
+                Class33.anInt784 = 180 + MovedStatics.gameServerSocket.read() * 60;
+                Class40_Sub3.loginStatus = 8;
+
+            }
+            if (Class40_Sub3.loginStatus == 8) {
+                anInt1756 = 0;
+                Class33.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld, English.yourProfileWillBeTransferredIn, (Class33.anInt784 / 60) + English.suffixSeconds);
+                if (--Class33.anInt784 <= 0) {
+                    Class40_Sub3.loginStatus = 0;
+                }
+            } else {
+                if (Class40_Sub3.loginStatus == 9 && MovedStatics.gameServerSocket.inputStreamAvailable() >= 8) {
+                    Configuration.USERNAME = Native.username.toString();
+                    Configuration.PASSWORD = Native.password.toString();
+                    InteractiveObject.playerRights = MovedStatics.gameServerSocket.read();
+                    Class22.accountFlagged = MovedStatics.gameServerSocket.read() == 1;
+                    PlayerAppearance.anInt708 = MovedStatics.gameServerSocket.read();
+                    PlayerAppearance.anInt708 <<= 8;
+                    PlayerAppearance.anInt708 += MovedStatics.gameServerSocket.read();
+                    Class44.anInt1049 = MovedStatics.gameServerSocket.read();
+                    MovedStatics.gameServerSocket.readDataToBuffer(0, 1, IncomingPackets.incomingPacketBuffer.buffer);
+                    IncomingPackets.incomingPacketBuffer.currentPosition = 0;
+                    IncomingPackets.opcode = IncomingPackets.incomingPacketBuffer.getPacket();
+                    MovedStatics.gameServerSocket.readDataToBuffer(0, 2, IncomingPackets.incomingPacketBuffer.buffer);
+                    IncomingPackets.incomingPacketBuffer.currentPosition = 0;
+                    IncomingPackets.incomingPacketSize = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+                    Class40_Sub3.loginStatus = 10;
+                }
+                if (Class40_Sub3.loginStatus == 10) {
+                    if (MovedStatics.gameServerSocket.inputStreamAvailable() >= IncomingPackets.incomingPacketSize) {
+                        IncomingPackets.incomingPacketBuffer.currentPosition = 0;
+                        MovedStatics.gameServerSocket.readDataToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
+                        setConfigToDefaults();
+                        Class51.regionX = -1;
+                        FloorDecoration.method343(false, 5688);
+                        IncomingPackets.opcode = -1;
+                    }
+                } else {
+                    anInt1756++;
+                    if (anInt1756 > 2000) {
+                        if (OverlayDefinition.anInt2321 < 1) {
+                            OverlayDefinition.anInt2321++;
+                            if (OverlayDefinition.gameServerPort == currentPort) {
+                                currentPort = CollisionMap.someOtherPort;
+                            } else {
+                                currentPort = OverlayDefinition.gameServerPort;
+                            }
+                            Class40_Sub3.loginStatus = 0;
+                        } else {
+                            displayMessageForResponseCode(-3);
+                        }
+                    }
+                }
+            }
+        } catch (IOException ioexception) {
+            if (OverlayDefinition.anInt2321 < 1) {
+                if (currentPort == OverlayDefinition.gameServerPort) {
+                    currentPort = CollisionMap.someOtherPort;
+                } else {
+                    currentPort = OverlayDefinition.gameServerPort;
+                }
+                OverlayDefinition.anInt2321++;
+                Class40_Sub3.loginStatus = 0;
+            } else {
+                displayMessageForResponseCode(-2);
+            }
+        }
+    }
+
     public void method35(int arg1) {
-        if (Wall.gameServerPort != OverlayDefinition.gameServerPort)
-            Wall.gameServerPort = OverlayDefinition.gameServerPort;
+        if (currentPort != OverlayDefinition.gameServerPort)
+            currentPort = OverlayDefinition.gameServerPort;
         else
-            Wall.gameServerPort = CollisionMap.anInt172;
-        Class29.gameSocket = null;
-        ProducingGraphicsBuffer.gameServerConnectionSignlink = null;
+            currentPort = CollisionMap.someOtherPort;
+        Class29.updateServerSocket = null;
+        ProducingGraphicsBuffer.updateServerSignlinkNode = null;
         Class8.anInt292++;
         Class8.connectionStage = 0;
         if (Class8.anInt292 < 2 || arg1 != 7 && arg1 != 9) {
             if (Class8.anInt292 < 2 || arg1 != 6) {
                 if (Class8.anInt292 >= 4) {
-                    if (Class51.currentAction <= 5) {
+                    if (Class51.gameStatusCode <= 5) {
                         this.openErrorPage("js5connect");
                         ISAAC.anInt509 = 3000;
                     } else
@@ -1638,13 +1865,13 @@ public class Main extends GameShell {
                 }
             } else {
                 this.openErrorPage("js5connect_outofdate");
-                Class51.currentAction = 1000;
+                Class51.gameStatusCode = 1000;
             }
-        } else if (Class51.currentAction > 5)
+        } else if (Class51.gameStatusCode > 5)
             ISAAC.anInt509 = 3000;
         else {
             this.openErrorPage("js5connect_full");
-            Class51.currentAction = 1000;
+            Class51.gameStatusCode = 1000;
         }
     }
 
@@ -1657,40 +1884,43 @@ public class Main extends GameShell {
         GameInterface.method639(122);
         MovedStatics.method1015();
 
-        if (Class51.currentAction == 0) {
+        if (Class51.gameStatusCode == 0) {
             Class40_Sub3.startup(100);
             Class60.method992();
-        } else if (Class51.currentAction == 5) {
+        } else if (Class51.gameStatusCode == 5) {
             Class40_Sub3.startup(100);
             Class60.method992();
-        } else if (Class51.currentAction == 10) {
+        } else if (Class51.gameStatusCode == 10) {
             Class60.updateLogin();
-        } else if (Class51.currentAction == 20) {
+        } else if (Class51.gameStatusCode == 20) {
             Class60.updateLogin();
-            SpotAnimDefinition.handleLoginScreenActions();
-        } else if (Class51.currentAction == 25)
+            handleLoginScreenActions();
+        } else if (Class51.gameStatusCode == 25)
             Landscape.loadRegion();
-        if (Class51.currentAction == 30) {
+        if (Class51.gameStatusCode == 30) {
             ScreenController.refreshFrameSize();
             updateGame();
-        } else if (Class51.currentAction == 35) {
+        } else if (Class51.gameStatusCode == 35) {
             ScreenController.refreshFrameSize();
             updateGame();
-        } else if (Class51.currentAction == 40) {
+        } else if (Class51.gameStatusCode == 40) {
             // Connection lost
-            SpotAnimDefinition.handleLoginScreenActions();
+            handleLoginScreenActions();
         }
     }
 
     public void method39() {
-        if (Class51.currentAction != 1000) {
+        if (Class51.gameStatusCode != 1000) {
             boolean bool = FloorDecoration.method346();
             if (!bool)
                 method40();
         }
     }
 
-    public void method34(int arg0) { // TODO: Might be Startup
+    /**
+     * Sets the text that is shown in the middle of the screen depending on the current status code
+     */
+    public void updateStatusText() {
         if (MovedStatics.aBoolean1575) {
             Class22_Sub1.method311(MouseHandler.gameCanvas);
             Class55.method965(32, MouseHandler.gameCanvas);
@@ -1698,15 +1928,15 @@ public class Main extends GameShell {
             GameInterface.method642(MouseHandler.gameCanvas, -10);
             RSRuntimeException.method1056(MouseHandler.gameCanvas, (byte) 33);
         }
-        if (Class51.currentAction == 0)
+        if (Class51.gameStatusCode == 0)
             GameObject.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
-        else if (Class51.currentAction == 5) {
-            WallDecoration.drawLoadingScreen(-19010, TypeFace.fontBold, TypeFace.fontSmall);
-        } else if (Class51.currentAction == 10) {
-            WallDecoration.drawLoadingScreen(-19010, TypeFace.fontBold, TypeFace.fontSmall);
-        } else if (Class51.currentAction == 20) {
-            WallDecoration.drawLoadingScreen(-19010, TypeFace.fontBold, TypeFace.fontSmall);
-        } else if (Class51.currentAction == 25) {
+        else if (Class51.gameStatusCode == 5) {
+            WallDecoration.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
+        } else if (Class51.gameStatusCode == 10) {
+            WallDecoration.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
+        } else if (Class51.gameStatusCode == 20) {
+            WallDecoration.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
+        } else if (Class51.gameStatusCode == 25) {
             if (ProducingGraphicsBuffer.anInt1634 == 1) {
                 if (Class37.anInt874 > PacketBuffer.anInt2231)
                     PacketBuffer.anInt2231 = Class37.anInt874;
@@ -1719,12 +1949,12 @@ public class Main extends GameShell {
                 Class51.method940(0, English.loadingPleaseWait, true, Native.leftParenthasis + i + Native.aClass1_698);
             } else
                 Class51.method940(0, English.loadingPleaseWait, false, null);
-        } else if (Class51.currentAction == 30) {
+        } else if (Class51.gameStatusCode == 30) {
             drawGameScreen();
 
-        } else if (Class51.currentAction == 35) {
+        } else if (Class51.gameStatusCode == 35) {
             method164();
-        } else if (Class51.currentAction == 40)
+        } else if (Class51.gameStatusCode == 40)
             Class51.method940(0, English.connectionLost, false, English.pleaseWaitAttemptingToReestablish);
         Npc.anInt3294 = 0;
     }
@@ -1732,15 +1962,15 @@ public class Main extends GameShell {
     public void method40() {
         if (MovedStatics.anInt813 >= 4) {
             this.openErrorPage("js5crc");
-            Class51.currentAction = 1000;
+            Class51.gameStatusCode = 1000;
         } else {
             if (MovedStatics.anInt2278 >= 4) {
-                if (Class51.currentAction > 5) {
+                if (Class51.gameStatusCode > 5) {
                     MovedStatics.anInt2278 = 3;
                     ISAAC.anInt509 = 3000;
                 } else {
                     this.openErrorPage("js5io");
-                    Class51.currentAction = 1000;
+                    Class51.gameStatusCode = 1000;
                     return;
                 }
             }
@@ -1748,34 +1978,34 @@ public class Main extends GameShell {
                 do {
                     try {
                         if (Class8.connectionStage == 0) {
-                            ProducingGraphicsBuffer.gameServerConnectionSignlink = signlink.createSocketNode(Wall.gameServerPort);
+                            ProducingGraphicsBuffer.updateServerSignlinkNode = signlink.createSocketNode(currentPort);
                             Class8.connectionStage++;
                         }
                         if (Class8.connectionStage == 1) {
-                            if (ProducingGraphicsBuffer.gameServerConnectionSignlink.status == 2) {
+                            if (ProducingGraphicsBuffer.updateServerSignlinkNode.status == 2) {
                                 method35(-1);
                                 break;
                             }
-                            if (ProducingGraphicsBuffer.gameServerConnectionSignlink.status == 1)
+                            if (ProducingGraphicsBuffer.updateServerSignlinkNode.status == 1)
                                 Class8.connectionStage++;
                         }
                         if (Class8.connectionStage == 2) {
-                            Class29.gameSocket = new GameSocket((Socket) ProducingGraphicsBuffer.gameServerConnectionSignlink.value, signlink);
+                            Class29.updateServerSocket = new GameSocket((Socket) ProducingGraphicsBuffer.updateServerSignlinkNode.value, signlink);
                             Buffer buffer = new Buffer(5);
                             buffer.putByte(15);
-                            buffer.putIntBE(435);
-                            Class29.gameSocket.sendDataFromBuffer(5, 0, buffer.buffer);
+                            buffer.putIntBE(435); // Cache revision
+                            Class29.updateServerSocket.sendDataFromBuffer(5, 0, buffer.buffer);
                             Class8.connectionStage++;
                             Class22_Sub1.aLong1841 = System.currentTimeMillis();
                         }
                         if (Class8.connectionStage == 3) {
-                            if (Class51.currentAction > 5 && Class29.gameSocket.inputStreamAvailable() <= 0) {
+                            if (Class51.gameStatusCode > 5 && Class29.updateServerSocket.inputStreamAvailable() <= 0) {
                                 if (System.currentTimeMillis() + -Class22_Sub1.aLong1841 > 30000L) {
                                     method35(-2);
                                     break;
                                 }
                             } else {
-                                int i = Class29.gameSocket.read();
+                                int i = Class29.updateServerSocket.read();
                                 if (i != 0) {
                                     method35(i);
                                     break;
@@ -1785,10 +2015,12 @@ public class Main extends GameShell {
                         }
                         if (Class8.connectionStage != 4)
                             break;
-                        Class17.method273(Class29.gameSocket, Class51.currentAction > 20);
-                        ProducingGraphicsBuffer.gameServerConnectionSignlink = null;
+
+                        Class17.handleUpdateServerConnection(Class29.updateServerSocket, Class51.gameStatusCode > 20);
+
+                        ProducingGraphicsBuffer.updateServerSignlinkNode = null;
                         Class8.connectionStage = 0;
-                        Class29.gameSocket = null;
+                        Class29.updateServerSocket = null;
                         Class8.anInt292 = 0;
                     } catch (java.io.IOException ioexception) {
                         ioexception.printStackTrace();
@@ -1805,15 +2037,15 @@ public class Main extends GameShell {
         if (Class12.mouseCapturer != null)
             Class12.mouseCapturer.aBoolean913 = false;
         Class12.mouseCapturer = null;
-        if (MovedStatics.gameSocket != null) {
-            MovedStatics.gameSocket.kill();
-            MovedStatics.gameSocket = null;
+        if (MovedStatics.gameServerSocket != null) {
+            MovedStatics.gameServerSocket.kill();
+            MovedStatics.gameServerSocket = null;
         }
         ItemDefinition.method744();
         Class13.method249(true);
         Class33.method407(false);
         Class60.method989();
-        ActorDefinition.method567();
+        ActorDefinition.killUpdateServerSocket();
         GenericTile.method947(-1);
         do {
             try {
@@ -1836,12 +2068,12 @@ public class Main extends GameShell {
     }
 
 
-    public void startup(boolean arg0) {
-        CollisionMap.anInt172 = Class44.modewhere == 0 ? 443 : 50000 + Player.worldId;
+    public void startup() {
+        // Define ports
+        CollisionMap.someOtherPort = Class44.modewhere == 0 ? 443 : 50000 + Player.worldId;
         OverlayDefinition.gameServerPort = Class44.modewhere != 0 ? Player.worldId + 40000 : Configuration.GAME_PORT;
-        if (!arg0)
-            aBoolean1790 = true;
-        Wall.gameServerPort = OverlayDefinition.gameServerPort;
+        currentPort = OverlayDefinition.gameServerPort;
+
         MovedStatics.method997(47);
         GameInterface.method642(MouseHandler.gameCanvas, -10);
         RSRuntimeException.method1056(MouseHandler.gameCanvas, (byte) 70);

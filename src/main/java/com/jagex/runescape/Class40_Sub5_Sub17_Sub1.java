@@ -5,7 +5,7 @@ import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.cache.def.SpotAnimDefinition;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.io.Buffer;
@@ -84,7 +84,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
         anInt2961 = arg9;
         anInt2984 = arg3;
         anInt2997 = arg7;
-        int i = SpotAnimDefinition.forId(anInt2962, 13).animationId;
+        int i = SpotAnimDefinition.forId(anInt2962).animationId;
         if(i != -1)
             aAnimationSequence_3006 = ProducingGraphicsBuffer_Sub1.getAnimationSequence(i);
         else
@@ -118,7 +118,7 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
             }
             if((actor.facePositionX != 0 || actor.facePositionY != 0) && (actor.anInt3109 == 0 || actor.anInt3074 > 0)) {
                 int i = actor.worldY - 64 * (actor.facePositionY - Class26.baseY - Class26.baseY);
-                int i_13_ = -((-SpotAnimDefinition.baseX + actor.facePositionX + -SpotAnimDefinition.baseX) * 64) + actor.worldX;
+                int i_13_ = -((-MovedStatics.baseX + actor.facePositionX + -MovedStatics.baseX) * 64) + actor.worldX;
                 if(i_13_ != 0 || i != 0)
                     actor.initialFaceDirection = 0x7ff & (int) (325.949 * Math.atan2((double) i_13_, (double) i));
                 actor.facePositionY = 0;
@@ -627,8 +627,8 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     }
 
     public Model getRotatedModel() {
-        SpotAnimDefinition spotAnimDefinition = SpotAnimDefinition.forId(anInt2962, 13);
-        Model class40_sub5_sub17_sub5 = spotAnimDefinition.method549(anInt2982, 2);
+        SpotAnimDefinition spotAnimDefinition = SpotAnimDefinition.forId(anInt2962);
+        Model class40_sub5_sub17_sub5 = spotAnimDefinition.method549(anInt2982);
         if(class40_sub5_sub17_sub5 == null)
             return null;
         class40_sub5_sub17_sub5.method804(anInt2976);

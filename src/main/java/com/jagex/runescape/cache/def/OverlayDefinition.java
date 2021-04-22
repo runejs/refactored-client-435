@@ -22,14 +22,14 @@ public class OverlayDefinition extends CachedNode {
 
     public int saturation;
     public int texture;
-    public int anInt2330;
+    public int otherSaturation;
     public int hue;
-    public int anInt2334;
+    public int otherHue;
     public int secondaryColor;
     public int lightness;
-    public boolean aBoolean2338 = true;
+    public boolean hideOverlay = true;
     public int color;
-    public int anInt2346;
+    public int otherLightness;
 
     public OverlayDefinition() {
         texture = -1;
@@ -45,7 +45,7 @@ public class OverlayDefinition extends CachedNode {
         overlayDefinition = new OverlayDefinition();
         if(is != null)
             overlayDefinition.readValues(new Buffer(is));
-        overlayDefinition.method555();
+        overlayDefinition.calculateHsl();
         overlayDefinitionCache.put(arg0, overlayDefinition);
         return overlayDefinition;
     }
@@ -63,27 +63,26 @@ public class OverlayDefinition extends CachedNode {
         }
     }
 
-    public void method555() {
-        if (secondaryColor != -1) {
-            calculateHsl(secondaryColor);
-            anInt2330 = saturation;
-            anInt2346 = lightness;
-            anInt2334 = hue;
-        }
-        calculateHsl(color);
-    }
-
     public void handleOpCode(Buffer buffer, int opcode) {
         if (opcode == 1) {
             color = buffer.getMediumBE();
         } else if (opcode == 2) {
             texture = buffer.getUnsignedByte();
         } else if (opcode == 5) {
-            aBoolean2338 = false;
+            hideOverlay = false;
         } else if (opcode == 7) {
-            // TODO how does this render differently?
             secondaryColor = buffer.getMediumBE();
         }
+    }
+
+    public void calculateHsl() {
+        if (secondaryColor != -1) {
+            calculateHsl(secondaryColor);
+            otherSaturation = saturation;
+            otherLightness = lightness;
+            otherHue = hue;
+        }
+        calculateHsl(color);
     }
 
     public void calculateHsl(int color) {

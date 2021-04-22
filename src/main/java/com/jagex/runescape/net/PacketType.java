@@ -45,7 +45,7 @@ public enum PacketType {
     /**
      * The packet opcode after ISAAC decryption.
      */
-    private final int id;
+    private final int opcode;
 
     /**
      * The packet size in bytes of this specific packet.
@@ -87,13 +87,13 @@ public enum PacketType {
             -2, 4, 0, 0, 0, 0, 0, 0, 0, 0,  // 240
             6, 0, 0, 6, 2, 4 };
 
-    PacketType(int id, int size) {
-        this.id = id;
+    PacketType(int opcode, int size) {
+        this.opcode = opcode;
         this.size = size;
     }
 
-    public int getId() {
-        return id;
+    public int getOpcode() {
+        return opcode;
     }
 
     public int getSize() {
@@ -102,7 +102,7 @@ public enum PacketType {
 
     public static int findPacketSize(int id) {
         for (PacketType packetType : values()) {
-            if (packetType.id == id) {
+            if (packetType.opcode == id) {
                 return packetType.size;
             }
         }

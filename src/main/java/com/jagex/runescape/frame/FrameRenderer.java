@@ -17,10 +17,10 @@ public class FrameRenderer implements Runnable {
         while(true){
 //            System.out.println("Rendering");
 
-            if(Class51.currentAction <= 35 && Class51.currentAction >= 30){
+            if(Class51.gameStatusCode <= 35 && Class51.gameStatusCode >= 30){
                 minimap.RenderResizableMiniMapArea(ScreenController.drawWidth - 210, 0);
             }
-            if(Class51.currentAction <= 35 && Class51.currentAction >= 30){
+            if(Class51.gameStatusCode <= 35 && Class51.gameStatusCode >= 30){
                 tabProducer.RenderResizableSideBarArea();
             }
             try {

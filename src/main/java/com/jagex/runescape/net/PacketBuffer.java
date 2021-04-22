@@ -62,7 +62,7 @@ public class PacketBuffer extends Buffer {
         if(GameInterface.fullscreenInterfaceId != -1) {
             GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
             GameInterface.fullscreenInterfaceId = -1;
-            MovedStatics.updateOverlay(30);
+            MovedStatics.processGameStatus(30);
         }
         if(GameInterface.fullscreenSiblingInterfaceId != -1) {
             GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
