@@ -38,6 +38,7 @@ import com.jagex.runescape.sound.MusicSystem;
 import com.jagex.runescape.util.BitUtils;
 import com.jagex.runescape.util.Signlink;
 import tech.henning.fourthreefive.Configuration;
+import tech.henning.fourthreefive.whitelabel.Images;
 
 import java.awt.*;
 import java.net.InetAddress;
@@ -595,6 +596,7 @@ public class Main extends GameShell {
         }
         i_62_ = 1176;
         i_61_ = 0;
+
         for (int i_71_ = 0; i_71_ < 33920; i_71_++)
             GameObject.flameRightBackground.pixels[i_71_] = SceneTile.aClass40_Sub5_Sub14_Sub4_2043.pixels[i_71_];
         for (int i_72_ = 1; i_72_ < -1 + i; i_72_++) {

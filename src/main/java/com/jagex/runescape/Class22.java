@@ -156,8 +156,8 @@ public abstract class Class22 {
                         i_22_ = 64;
                     if(varPlayerValue == 4)
                         i_22_ = 0;
-                    if(i_22_ != RSCanvas.anInt60) {
-                        if(RSCanvas.anInt60 != 0 || MouseHandler.anInt1457 == -1) {
+                    if(i_22_ != RSCanvas.musicVolume) {
+                        if(RSCanvas.musicVolume != 0 || MouseHandler.anInt1457 == -1) {
                             if(i_22_ == 0) {
                                 Class33.method402(false);
                                 Class35.songTimeout = 0;
@@ -167,7 +167,7 @@ public abstract class Class22 {
                             Class33.method414(false, 0, MouseHandler.anInt1457, i_22_, 0, CacheArchive.musicCacheArchive);
                             Class35.songTimeout = 0;
                         }
-                        RSCanvas.anInt60 = i_22_;
+                        RSCanvas.musicVolume = i_22_;
                     }
                 }
                 if(varPlayerType == 9)

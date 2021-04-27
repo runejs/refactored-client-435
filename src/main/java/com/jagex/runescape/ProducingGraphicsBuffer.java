@@ -17,6 +17,7 @@ public abstract class ProducingGraphicsBuffer {
     public static SignlinkNode aSignlinkNode_1632;
     public static int anInt1634 = 0;
     public static int anInt1637 = 0;
+    public static ProducingGraphicsBuffer muteButton;
 
     public int height;
     public int width;

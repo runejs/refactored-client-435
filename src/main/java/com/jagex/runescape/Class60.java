@@ -189,6 +189,25 @@ public class Class60 {
 
     public static void updateLogin() {
         MovedStatics.method836(1);
+        if(MouseHandler.clickType == 1 && RSString.clickY >= ScreenController.drawHeight-42 && Class57.clickX>=ScreenController.drawWidth-42 ){
+            int newVolume = 0;
+            if(RSCanvas.musicVolume == 0) {
+                newVolume = 255;
+            }
+            if(RSCanvas.musicVolume != 0 || MouseHandler.anInt1457 == -1) {
+                if(newVolume == 0) {
+                    Class33.method402(false);
+                    Class35.songTimeout = 0;
+                } else
+                    MovedStatics.method456(newVolume);
+            } else {
+                Class33.method414(false, 0, MouseHandler.anInt1457, newVolume, 0, CacheArchive.musicCacheArchive);
+                Class35.songTimeout = 0;
+            }
+
+            RSCanvas.musicVolume = newVolume;
+        }
+
         if(Class51.currentAction == 10) {
             int i = Class57.clickX + -202;
             int clickType = MouseHandler.clickType;

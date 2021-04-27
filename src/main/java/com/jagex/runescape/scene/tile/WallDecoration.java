@@ -1,6 +1,9 @@
 package com.jagex.runescape.scene.tile;
 
 import com.jagex.runescape.*;
+import com.jagex.runescape.cache.media.ImageRGB;
+import com.jagex.runescape.frame.ScreenController;
+import com.jagex.runescape.frame.tab.parts.TabParts;
 import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.IndexedImage;
@@ -20,6 +23,7 @@ import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.InteractiveObject;
+import tech.henning.fourthreefive.whitelabel.Images;
 
 import java.awt.*;
 
@@ -399,24 +403,41 @@ public class WallDecoration {
                     i_93_ += 15;
                 }
             }
+            ProducingGraphicsBuffer.muteButton.prepareRasterizer();
+            ImageRGB musicIcon = TabParts.GetPart("music");
+            Rasterizer.drawFilledRectangle(0, 0, 42, 42, 0x4d4431);
+            Rasterizer.drawUnfilledRectangle(0, 0, 42, 42, 0x242017);
+            musicIcon.drawImage(4, 3);
+            if(RSCanvas.musicVolume == 0) {
+                Rasterizer.drawDiagonalLine(0,0, 42,42, 0xFF0000);
+            }
             Main.renderFlames();
             try {
+
+
+
                 Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+                ProducingGraphicsBuffer.muteButton.drawGraphics(ScreenController.drawWidth-42, ScreenController.drawHeight-42, graphics);
 
                 MovedStatics.loginBoxGraphics.drawGraphics(202, 171, graphics);
                 if (arg0 != -19010)
                     method949();
                 Class8.flameLeftBackground.drawGraphics(0, 0, graphics);
                 GameObject.flameRightBackground.drawGraphics(637, 0, graphics);
+
                 if (!MovedStatics.clearScreen)
                     break;
                 MovedStatics.clearScreen = false;
+
                 Class39.aProducingGraphicsBuffer_907.drawGraphics(128, 0, graphics);
                 Class51.aProducingGraphicsBuffer_1206.drawGraphics(202, 371, graphics);
                 Class17.aProducingGraphicsBuffer_463.drawGraphics(0, 265, graphics);
                 KeyFocusListener.aProducingGraphicsBuffer_1285.drawGraphics(562, 265, graphics);
                 GameObjectDefinition.aProducingGraphicsBuffer_2524.drawGraphics(128, 171, graphics);
                 ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.drawGraphics(562, 171, graphics);
+                ProducingGraphicsBuffer.muteButton.drawGraphics(ScreenController.drawWidth-42, ScreenController.drawHeight-42, graphics);
+
+
             } catch (Exception exception) {
                 MouseHandler.gameCanvas.repaint();
             }

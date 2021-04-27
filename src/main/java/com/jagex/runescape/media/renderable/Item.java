@@ -5,7 +5,6 @@ import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.frame.console.Console;
 import com.jagex.runescape.frame.tab.parts.TabParts;
 import com.jagex.runescape.input.KeyFocusListener;
@@ -111,6 +110,8 @@ public class Item extends Renderable {
             Rasterizer.resetPixels();
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631 = Class40_Sub5_Sub13.createGraphicsBuffer(75, 94, arg0);
             Rasterizer.resetPixels();
+            ProducingGraphicsBuffer.muteButton = Class40_Sub5_Sub13.createGraphicsBuffer(42, 42, arg0);
+            Rasterizer.resetPixels();
             byte[] is = arg2.method170("", Native.titleImage);
             ImageRGB class40_sub5_sub14_sub4 = new ImageRGB(is, arg0);
             Class8.flameLeftBackground.prepareRasterizer();
@@ -156,13 +157,20 @@ public class Item extends Renderable {
             class40_sub5_sub14_sub4.drawInverse(254, -171);
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(-180, -171);
+            ProducingGraphicsBuffer.muteButton.prepareRasterizer();
+            ImageRGB musicIcon = TabParts.GetPart("music");
+            Rasterizer.drawFilledRectangle(0, 0, 42, 42, 0x4d4431);
+            Rasterizer.drawUnfilledRectangle(0, 0, 42, 42, 0x242017);
+            musicIcon.drawImage(4, 3);
             class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg3, Native.logo, (byte) 21, "");
             Class39.aProducingGraphicsBuffer_907.prepareRasterizer();
             // UNCOMMENT LINE UNDER FOR LOGO
             // class40_sub5_sub14_sub4.drawImage(-128 + 382 + -(class40_sub5_sub14_sub4.imageWidth / 2), 18);
             // Comment line under to remove custom logo:
             ImageRGB logo = Images.GetPart("logo");
+
             logo.drawImage(-128 + 382 + -(logo.imageWidth / 2), 18);
+
             Class40_Sub5_Sub15.loginScreenBox = Main.method359(Native.titleBox, "", arg3);
             Class59.imgLoginScreenButton = Main.method359(Native.titleButton, "", arg3);
             Class22.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(arg3, Native.runes, "");
@@ -210,8 +218,8 @@ public class Item extends Renderable {
             Native.password = Configuration.getPassword();
             MovedStatics.anIntArray178 = new int[32768];
             Class26.loginScreenState = 0;
-            if (RSCanvas.anInt60 != 0 && !VertexNormal.lowMemory)
-                Class33.method412(false, CacheArchive.musicCacheArchive, 0, (byte) 66, Native.titleSong, 10, "", RSCanvas.anInt60);
+            if (RSCanvas.musicVolume != 0 && !VertexNormal.lowMemory)
+                Class33.method412(false, CacheArchive.musicCacheArchive, 0, (byte) 66, Native.titleSong, 10, "", RSCanvas.musicVolume);
             else
                 Class33.method405(16969, 10);
             GameShell.method19(false, 24041);

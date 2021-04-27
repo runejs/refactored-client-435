@@ -416,12 +416,13 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             Class35.aFrame1732 = new Frame();
             Class35.aFrame1732.setTitle(Configuration.SERVER_DISPLAY_NAME);
 //            Class35.aFrame1732.setResizable(false);
-            ScreenController.frameMode(ScreenMode.FIXED);
             Class35.aFrame1732.setPreferredSize(new Dimension(width, height));
             Class35.aFrame1732.setResizable(ScreenController.frameMode == ScreenMode.RESIZABLE);
             Class35.aFrame1732.addWindowListener(this);
             Class35.aFrame1732.setVisible(true);
             Class35.aFrame1732.toFront();
+            ScreenController.frameMode(ScreenMode.FIXED);
+
             Insets insets = Class35.aFrame1732.getInsets();
             Class35.aFrame1732.setSize(insets.right + width + insets.left, insets.bottom + insets.top + height);
 //            Class35.aFrame1732.setLocationRelativeTo(null);

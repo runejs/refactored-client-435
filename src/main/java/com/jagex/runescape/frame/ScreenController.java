@@ -45,7 +45,7 @@ public class ScreenController {
             frameMode = screenMode;
             if (screenMode == ScreenMode.FIXED) {
                 frameWidth = 765;
-                frameHeight = 540;
+                frameHeight = 503;
                 Class35.aFrame1732.setResizable(false);
                 Class35.aFrame1732.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
                 Class35.aFrame1732.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));

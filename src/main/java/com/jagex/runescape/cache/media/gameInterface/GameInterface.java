@@ -667,7 +667,6 @@ public class GameInterface extends CachedNode {
                 }
             }
             if(action == 57) {
-                System.out.println("action 57");
                 SceneCluster.packetBuffer.putPacket(64);
                 SceneCluster.packetBuffer.putIntBE(i_10_);
                 GameInterface gameInterface = getInterface(i_10_);
