@@ -21,91 +21,49 @@ import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.GenericTile;
 import com.jagex.runescape.scene.tile.Wall;
 import com.jagex.runescape.scene.tile.WallDecoration;
-import com.jagex.runescape.scene.util.CollisionMap;
 import com.jagex.runescape.util.TextUtils;
 
 public class IncomingPackets {
 
-    private static final int
-
-            SET_WIDGET_ITEM_MODEL = 120, MOVE_WIDGET_CHILD = 3, UPDATE_SPECIFIC_WIDGET_ITEMS = 214, UPDATE_ALL_WIDGET_ITEMS = 12, UPDATE_WIDGET_TEXT = 110, UPDATE_WIDGET_TEXT_COLOR = 231, SET_WIDGET_PLAYER_HEAD = 210, SET_WIDGET_NPC_HEAD = 160, PLAY_WIDGET_ANIMATION = 24, SET_TAB_WIDGET = 140,
-
-    SHOW_CHATBOX_WIDGET = 208, SHOW_SCREEN_WIDGET = 118, SHOW_FULLSCREEN_INTERFACE = 195, SHOW_TAB_AND_SCREEN_WIDGETS = 84, CLOSE_ALL_WIDGETS = 180,
-
-    UPDATE_CARRY_WEIGHT = 171, UPDATE_RUN_ENERGY = 18, UPDATE_SKILL = 34,
-
-    UPDATE_REFERENCE_POSITION = 254, SET_MAP_CHUNK = 166, CLEAR_MAP_CHUNK = 64,
-
-    UPDATE_PLAYERS = 92, UPDATE_NPCS = 128, LOGOUT = 181,
-
-    PLAY_SOUND = 131, PLAY_SONG = 217, PLAY_QUICK_SONG = 40;
-
     public static int incomingPacketSize = 0;
     public static PacketBuffer incomingPacketBuffer = new PacketBuffer(5000);
     public static int incomingPacket = 0;
-    public static int[] INCOMING_PACKET_SIZES = new int[]{
-            0, 15, 6, 8, 0, 0, 1, 0, 0, 5,  // 0
-            0, 0, -2, 0, 0, 0, 0, 0, 1, 7,  // 10
-            0, 0, 0, -2, 6, 0, 0, 0, 0, 0,  // 20
-            0, 0, 0, 0, 6, 0, 0, 0, 0, 0,  // 30
-            5, 0, 0, 0, 0, 0, 0, 0, 1, 4,  // 40
-            0, -1, 0, 0, 0, 0, 2, 0, 4, 0,  // 50
-            0, 0, 0, -2, 2, 0, 0, 0, 0, 0,  // 60
-            1, -1, 0, 0, 3, 0, 0, 0, 0, 0,  // 70
-            0, 0, -1, -1, 4, -1, 0, 0, 1, 0,  // 80
-            0, 0, -2, 0, 0, 0, 0, 0, 0, 7,  // 90
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  // 100
-            -2, 0, 0, 0, 0, 5, 2, 8, 2, 0,  // 110
-            8, 0, 0, 0, 0, 0, 0, 0, -2, 3,  // 120
-            2, 5, 0, 0, 0, 0, 0, 0, 0, 0,  // 130
-            3, 0, 10, 2, 0, 0, 0, 0, 0, 0,  // 140
-            0, 0, 0, 0, 0, 0, 10, 0, 0, 0,  // 150
-            6, 0, 0, 0, 0, 0, -2, 0, 0, 0,  // 160
-            0, 2, 0, 0, 4, 5, 0, 0, 0, 0,  // 170
-            0, 0, 6, 0, 0, 2, 6, 0, 0, 0,  // 180
-            0, 0, 0, 0, 6, 4, 3, 0, 0, 0,  // 190
-            0, 0, 6, 0, 0, 0, 0, 0, 2, 0,  // 200
-            4, -2, 0, 0, -2, 0, 0, 2, 0, 0,  // 210
-            0, 0, 3, -1, 0, 0, 0, 0, 0, 14,  // 220
-            0, 6, 0, 0, 6, 1, 0, 2, 0, 0,  // 230
-            -2, 4, 0, 0, 0, 0, 0, 0, 0, 0,  // 240
-            6, 0, 0, 6, 2, 4};
 
     public static boolean parseIncomingPackets() {
         if(MovedStatics.gameSocket == null)
             return false;
         try {
-            int i = MovedStatics.gameSocket.inputStreamAvailable();
-            if(i == 0)
+            int availableBytes = MovedStatics.gameSocket.inputStreamAvailable();
+            if(availableBytes == 0)
                 return false;
             if(incomingPacket == -1) {
-                MovedStatics.gameSocket.method1008(0, 1, -127, incomingPacketBuffer.buffer);
+                MovedStatics.gameSocket.method1008(0, 1, incomingPacketBuffer.buffer);
                 incomingPacketBuffer.currentPosition = 0;
-                i--;
+                availableBytes--;
                 incomingPacket = incomingPacketBuffer.getPacket();
-                incomingPacketSize = INCOMING_PACKET_SIZES[incomingPacket];
+                incomingPacketSize = PacketType.findPacketSize(incomingPacket);
             }
             //System.out.println("packet received: " + Class57.incomingPacket);
             if(incomingPacketSize == -1) {
-                if(i > 0) {
-                    MovedStatics.gameSocket.method1008(0, 1, -127, incomingPacketBuffer.buffer);
+                if(availableBytes > 0) {
+                    MovedStatics.gameSocket.method1008(0, 1, incomingPacketBuffer.buffer);
                     incomingPacketSize = incomingPacketBuffer.buffer[0] & 0xff;
-                    i--;
+                    availableBytes--;
                 } else
                     return false;
             }
             if(incomingPacketSize == -2) {
-                if(i <= 1)
+                if(availableBytes <= 1)
                     return false;
-                i -= 2;
-                MovedStatics.gameSocket.method1008(0, 2, -127, incomingPacketBuffer.buffer);
+                availableBytes -= 2;
+                MovedStatics.gameSocket.method1008(0, 2, incomingPacketBuffer.buffer);
                 incomingPacketBuffer.currentPosition = 0;
                 incomingPacketSize = incomingPacketBuffer.getUnsignedShortBE();
             }
-            if(incomingPacketSize > i)
+            if(incomingPacketSize > availableBytes)
                 return false;
             incomingPacketBuffer.currentPosition = 0;
-            MovedStatics.gameSocket.method1008(0, incomingPacketSize, -128, incomingPacketBuffer.buffer);
+            MovedStatics.gameSocket.method1008(0, incomingPacketSize, incomingPacketBuffer.buffer);
             Class49.anInt1151 = MovedStatics.anInt324;
             Class35.anInt1728 = 0;
             MovedStatics.anInt324 = RSString.anInt1690;
@@ -118,7 +76,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == 156) { // friend logged in
+            if(incomingPacket == PacketType.FRIEND_LOGGED_IN.getId()) {
                 long l = incomingPacketBuffer.getLongBE();
                 int i_1_ = incomingPacketBuffer.getUnsignedShortBE();
                 String string = Player.longToUsername(l).method85().toString();
@@ -170,7 +128,7 @@ public class IncomingPackets {
                 MovedStatics.destinationX = 0;
                 return true;
             }
-            if(incomingPacket == 7) { // close cutscene
+            if(incomingPacket == PacketType.CLOSE_CUTSCENE.getId()) { // close cutscene
                 Player.cutsceneActive = false;
                 for(int i_7_ = 0; i_7_ < 5; i_7_++)
                     Class40_Sub5_Sub17_Sub1.aBooleanArray2975[i_7_] = false;
@@ -204,7 +162,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == UPDATE_ALL_WIDGET_ITEMS) {
+            if(incomingPacket == PacketType.UPDATE_ALL_WIDGET_ITEMS.getId()) {
                 GameInterface.redrawTabArea = true;
                 final int packed = incomingPacketBuffer.getIntBE();
                 final GameInterface gameInterface = GameInterface.getInterface(packed);
@@ -400,12 +358,12 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == LOGOUT) {
+            if(incomingPacket == PacketType.LOGOUT.getId()) {
                 Class48.logout(-7225);
                 incomingPacket = -1;
                 return false;
             }
-            if(incomingPacket == PLAY_WIDGET_ANIMATION) {
+            if(incomingPacket == PacketType.PLAY_WIDGET_ANIMATION.getId()) {
                 int animationId = incomingPacketBuffer.getShortBE();
                 int widgetData = incomingPacketBuffer.getIntBE();
                 GameInterface gameInterface = GameInterface.getInterface(widgetData);
@@ -431,13 +389,13 @@ public class IncomingPackets {
             if(incomingPacket == 117) {
                 int i_46_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_47_ = incomingPacketBuffer.getUnsignedShortLE();
-                int i_48_ = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.getInterface(i_48_);
+                int widgetId = incomingPacketBuffer.getIntLE();
+                GameInterface gameInterface = GameInterface.getInterface(widgetId);
                 incomingPacket = -1;
                 gameInterface.anInt2722 = i_47_ + (i_46_ << 16);
                 return true;
             }
-            if(incomingPacket == SHOW_TAB_AND_SCREEN_WIDGETS) { // show tab and screen widget
+            if(incomingPacket == PacketType.SHOW_TAB_AND_SCREEN_WIDGETS.getId()) {
                 int i_49_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_50_ = incomingPacketBuffer.getUnsignedShortLE();
                 if(GameInterface.chatboxInterfaceId != -1) {
@@ -472,7 +430,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == CLEAR_MAP_CHUNK) {
+            if(incomingPacket == PacketType.CLEAR_MAP_CHUNK.getId()) {
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
                 for(int i_51_ = MovedStatics.placementX; i_51_ < 8 + MovedStatics.placementX; i_51_++) {
@@ -497,13 +455,13 @@ public class IncomingPackets {
                 if(i_54_ >= 1 && i_54_ <= 5) {
                     if(class1.equalsIgnoreCase("null"))
                         class1 = null;
-                    Main.playerActions[i_54_ + -1] = class1;
-                    Class13.playerArray[i_54_ + -1] = i_53_ == 0;
+                    Main.playerActions[i_54_ - 1] = class1;
+                    Class13.playerArray[i_54_ - 1] = i_53_ == 0;
                 }
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == SHOW_SCREEN_WIDGET) {
+            if(incomingPacket == PacketType.SHOW_SCREEN_WIDGET.getId()) {
                 int i_55_ = incomingPacketBuffer.getUnsignedShortBE();
                 GameInterface.resetInterfaceAnimations(i_55_);
                 if(GameInterface.tabAreaInterfaceId != -1) {
@@ -539,7 +497,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == UPDATE_RUN_ENERGY) {
+            if(incomingPacket == PacketType.UPDATE_RUN_ENERGY.getId()) {
                 if(Player.currentTabId == 12)
                     GameInterface.redrawTabArea = true;
                 ClientScriptRunner.runEnergy = incomingPacketBuffer.getUnsignedByte();
@@ -561,7 +519,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == 185) { // open permanent dialogue interface
+            if(incomingPacket == PacketType.SHOW_PERMANENT_CHATBOX_WIDGET.getId()) {
                 int chatboxInterfaceId = incomingPacketBuffer.getShortBE();
                 if(ChatBox.dialogueId != chatboxInterfaceId) {
                     GameInterface.resetInterface(ChatBox.dialogueId);
@@ -572,7 +530,7 @@ public class IncomingPackets {
                 MovedStatics.lastContinueTextWidgetId = -1;
                 return true;
             }
-            if(incomingPacket == SHOW_FULLSCREEN_INTERFACE) {
+            if(incomingPacket == PacketType.SHOW_FULLSCREEN_INTERFACE.getId()) {
                 int siblingInterfaceId = incomingPacketBuffer.getUnsignedShortBE();
                 int interfaceId = incomingPacketBuffer.getUnsignedShortBE();
                 GameInterface.resetInterfaceAnimations(interfaceId);
@@ -606,7 +564,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == CLOSE_ALL_WIDGETS) {
+            if(incomingPacket == PacketType.CLOSE_ALL_WIDGETS.getId()) {
                 if(GameInterface.tabAreaInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
                     GameInterface.redrawTabArea = true;
@@ -639,7 +597,7 @@ public class IncomingPackets {
                 }
                 return true;
             }
-            if(incomingPacket == SHOW_CHATBOX_WIDGET) {
+            if(incomingPacket == PacketType.SHOW_CHATBOX_WIDGET.getId()) {
                 int widgetId = incomingPacketBuffer.getUnsignedShortBE();
                 GameInterface.resetInterfaceAnimations(widgetId);
                 if(GameInterface.tabAreaInterfaceId != -1) {
@@ -671,7 +629,7 @@ public class IncomingPackets {
                 MovedStatics.lastContinueTextWidgetId = -1;
                 return true;
             }
-            if(incomingPacket == PLAY_SONG) {
+            if(incomingPacket == PacketType.PLAY_SONG.getId()) {
                 int songId = incomingPacketBuffer.getUnsignedShortLE();
                 if(songId == 65535)
                     songId = -1;
@@ -679,7 +637,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == PLAY_QUICK_SONG) {
+            if(incomingPacket == PacketType.PLAY_QUICK_SONG.getId()) {
                 int songTimeout = incomingPacketBuffer.getMediumBE();
                 int songId = incomingPacketBuffer.getUnsignedShortBE();
                 if(songId == 65535)
@@ -688,7 +646,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == UPDATE_REFERENCE_POSITION) {
+            if(incomingPacket == PacketType.UPDATE_REFERENCE_POSITION.getId()) {
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
                 incomingPacket = -1;
@@ -725,12 +683,12 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == 116) {
+            if(incomingPacket == PacketType.SET_SYSTEM_UPDATE_TIME.getId()) {
                 Class40_Sub5_Sub15.systemUpdateTime = incomingPacketBuffer.getUnsignedShortLE() * 30;
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == UPDATE_PLAYERS) {
+            if(incomingPacket == PacketType.UPDATE_PLAYERS.getId()) {
                 parsePlayerUpdatePacket();
                 incomingPacket = -1;
                 return true;
@@ -741,7 +699,7 @@ public class IncomingPackets {
                 Buffer.anIntArray1984[varPlayerIndex] = varPlayerValue;
                 if(varPlayerValue != VarPlayerDefinition.varPlayers[varPlayerIndex]) {
                     VarPlayerDefinition.varPlayers[varPlayerIndex] = varPlayerValue;
-                    Class22.method309(varPlayerIndex);
+                    Class22.method309(varPlayerIndex); // TODO find out what this does
                     if(ChatBox.dialogueId != -1)
                         ChatBox.redrawChatbox = true;
                     GameInterface.redrawTabArea = true;
@@ -749,12 +707,12 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == UPDATE_NPCS) {
+            if(incomingPacket == PacketType.UPDATE_NPCS.getId()) {
                 parseNpcUpdatePacket();
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == PLAY_SOUND) {
+            if(incomingPacket == PacketType.PLAY_SOUND.getId()) {
                 int soundId = incomingPacketBuffer.getUnsignedShortBE();
                 int volume = incomingPacketBuffer.getUnsignedByte();
                 int delay = incomingPacketBuffer.getUnsignedShortBE();
@@ -834,14 +792,14 @@ public class IncomingPackets {
                 childInterface.rotationX = rotationX;
                 return true;
             }
-            if(incomingPacket == 6) { // open tab
+            if(incomingPacket == PacketType.SET_CURRENT_TAB.getId()) {
                 Player.currentTabId = incomingPacketBuffer.getUnsignedByte();
                 GameInterface.drawTabIcons = true;
                 GameInterface.redrawTabArea = true;
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == UPDATE_CARRY_WEIGHT) { // update carry weight
+            if(incomingPacket == PacketType.UPDATE_CARRY_WEIGHT.getId()) {
                 if(Player.currentTabId == 12)
                     GameInterface.redrawTabArea = true;
                 GenericTile.carryWeight = incomingPacketBuffer.getShortBE();
@@ -868,7 +826,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == SET_WIDGET_NPC_HEAD) {
+            if(incomingPacket == PacketType.SET_WIDGET_NPC_HEAD.getId()) {
                 int npcId = incomingPacketBuffer.getUnsignedShortLE();
                 int widgetData = incomingPacketBuffer.getIntLE();
                 GameInterface gameInterface = GameInterface.getInterface(widgetData);
@@ -924,7 +882,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == SET_WIDGET_PLAYER_HEAD) {
+            if(incomingPacket == PacketType.SET_WIDGET_PLAYER_HEAD.getId()) {
                 int interfaceData = incomingPacketBuffer.getIntLE();
                 GameInterface gameInterface = GameInterface.getInterface(interfaceData);
                 gameInterface.modelType = InterfaceModelType.LOCAL_PLAYER_CHATHEAD;
@@ -932,7 +890,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == UPDATE_WIDGET_TEXT) { // update interface text
+            if(incomingPacket == PacketType.UPDATE_WIDGET_TEXT.getId()) {
                 int interfaceData = incomingPacketBuffer.getIntLE();
                 String interfaceText = incomingPacketBuffer.getString();
                 GameInterface gameInterface = GameInterface.getInterface(interfaceData);
@@ -943,13 +901,13 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == 70) { // set friends list status
+            if(incomingPacket == PacketType.SET_FRIEND_LIST_STATUS.getId()) {
                 Player.friendListStatus = incomingPacketBuffer.getUnsignedByte();
                 GameInterface.redrawTabArea = true;
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == SET_WIDGET_ITEM_MODEL) { // item model on interface
+            if(incomingPacket == PacketType.SET_WIDGET_ITEM_MODEL.getId()) {
                 int zoom = incomingPacketBuffer.getUnsignedShortBE();
                 int itemId = incomingPacketBuffer.getUnsignedShortLE();
                 int widgetData = incomingPacketBuffer.getIntLE();
@@ -978,7 +936,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == 51) { // friend login
+            if(incomingPacket == PacketType.UPDATE_FRIEND_LOGIN_MESSAGE.getId()) {
                 long fromPlayerIndex = incomingPacketBuffer.getLongBE();
                 long chatIdModifier = incomingPacketBuffer.getUnsignedShortBE();
                 long privateMessageCounter = incomingPacketBuffer.getMediumBE();
@@ -1013,7 +971,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == 27) { // reset actor animations
+            if(incomingPacket == PacketType.RESET_ACTOR_ANIMATIONS.getId()) {
                 for(int playerIdx = 0; playerIdx < Player.trackedPlayers.length; playerIdx++) {
                     if(Player.trackedPlayers[playerIdx] != null)
                         Player.trackedPlayers[playerIdx].playingAnimation = -1;
@@ -1025,7 +983,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == SET_TAB_WIDGET) {
+            if(incomingPacket == PacketType.SET_TAB_WIDGET.getId()) {
                 int interfaceId = incomingPacketBuffer.getUnsignedShortBE();
                 int tabIndex = incomingPacketBuffer.getUnsignedByte();
                 if(interfaceId == 65535)
@@ -1039,7 +997,7 @@ public class IncomingPackets {
                 GameInterface.redrawTabArea = true;
                 return true;
             }
-            if(incomingPacket == UPDATE_SKILL) {
+            if(incomingPacket == PacketType.UPDATE_SKILL.getId()) {
                 GameInterface.redrawTabArea = true;
                 int skillLevel = incomingPacketBuffer.getUnsignedByte();
                 int skillId = incomingPacketBuffer.getUnsignedByte();
@@ -1054,7 +1012,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == MOVE_WIDGET_CHILD) { // move widget position
+            if(incomingPacket == PacketType.MOVE_WIDGET_CHILD.getId()) {
                 int interfaceData = incomingPacketBuffer.getIntBE();
                 int x = incomingPacketBuffer.getShortLE();
                 int y = incomingPacketBuffer.getShortLE();
@@ -1086,7 +1044,7 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == UPDATE_SPECIFIC_WIDGET_ITEMS) {
+            if(incomingPacket == PacketType.UPDATE_SPECIFIC_WIDGET_ITEMS.getId()) {
                 GameInterface.redrawTabArea = true;
                 int widgetData = incomingPacketBuffer.getIntBE();
                 GameInterface gameInterface = GameInterface.getInterface(widgetData);
@@ -1116,12 +1074,12 @@ public class IncomingPackets {
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == SET_MAP_CHUNK) {
+            if(incomingPacket == PacketType.SET_MAP_CHUNK.getId()) {
                 FloorDecoration.method343(false, 5688);
                 incomingPacket = -1;
                 return true;
             }
-            if(incomingPacket == UPDATE_WIDGET_TEXT_COLOR) { // update widget text color
+            if(incomingPacket == PacketType.UPDATE_WIDGET_TEXT_COLOR.getId()) {
                 int i_113_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_114_ = incomingPacketBuffer.getIntLE();
                 int i_115_ = i_113_ >> 10 & 0x1f;
