@@ -558,24 +558,24 @@ public class Main extends GameShell {
             if (IdentityKit.anInt2613 > 0) {
                 for (int i = 0; i < 256; i++) {
                     if (IdentityKit.anInt2613 > 768)
-                        Class42.anIntArray1013[i] = MovedStatics.method614(Class51.anIntArray1198[i], Class40_Sub5_Sub17_Sub6.anIntArray3248[i], -IdentityKit.anInt2613 + 1024);
+                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Class51.anIntArray1198[i], Class40_Sub5_Sub17_Sub6.anIntArray3248[i], -IdentityKit.anInt2613 + 1024);
                     else if (IdentityKit.anInt2613 > 256)
-                        Class42.anIntArray1013[i] = Class40_Sub5_Sub17_Sub6.anIntArray3248[i];
+                        MovedStatics.anIntArray1013[i] = Class40_Sub5_Sub17_Sub6.anIntArray3248[i];
                     else
-                        Class42.anIntArray1013[i] = MovedStatics.method614(Class40_Sub5_Sub17_Sub6.anIntArray3248[i], Class51.anIntArray1198[i], -IdentityKit.anInt2613 + 256);
+                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Class40_Sub5_Sub17_Sub6.anIntArray3248[i], Class51.anIntArray1198[i], -IdentityKit.anInt2613 + 256);
                 }
             } else {
-                System.arraycopy(Class51.anIntArray1198, 0, Class42.anIntArray1013, 0, 256);
+                System.arraycopy(Class51.anIntArray1198, 0, MovedStatics.anIntArray1013, 0, 256);
             }
         } else {
             for (int i = 0; i < 256; i++) {
                 if (Class40_Sub5_Sub6.anInt2452 <= 768) {
                     if (Class40_Sub5_Sub6.anInt2452 > 256)
-                        Class42.anIntArray1013[i] = Renderable.anIntArray2865[i];
+                        MovedStatics.anIntArray1013[i] = Renderable.anIntArray2865[i];
                     else
-                        Class42.anIntArray1013[i] = MovedStatics.method614(Renderable.anIntArray2865[i], Class51.anIntArray1198[i], -Class40_Sub5_Sub6.anInt2452 + 256);
+                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Renderable.anIntArray2865[i], Class51.anIntArray1198[i], -Class40_Sub5_Sub6.anInt2452 + 256);
                 } else
-                    Class42.anIntArray1013[i] = MovedStatics.method614(Class51.anIntArray1198[i], Renderable.anIntArray2865[i], -Class40_Sub5_Sub6.anInt2452 + 1024);
+                    MovedStatics.anIntArray1013[i] = MovedStatics.method614(Class51.anIntArray1198[i], Renderable.anIntArray2865[i], -Class40_Sub5_Sub6.anInt2452 + 1024);
             }
         }
         int i = 256;
@@ -593,7 +593,7 @@ public class Main extends GameShell {
                 if (i_67_ != 0) {
                     int i_68_ = -i_67_ + 256;
                     int i_69_ = i_67_;
-                    i_67_ = Class42.anIntArray1013[i_67_];
+                    i_67_ = MovedStatics.anIntArray1013[i_67_];
                     int i_70_ = Class8.flameLeftBackground.pixels[i_62_];
                     Class8.flameLeftBackground.pixels[i_62_++] = BitUtils.bitWiseAND(-16711936, BitUtils.bitWiseAND(i_67_, 16711935) * i_69_ + i_68_ * BitUtils.bitWiseAND(i_70_, 16711935)) + BitUtils.bitWiseAND(BitUtils.bitWiseAND(65280, i_70_) * i_68_ + i_69_ * BitUtils.bitWiseAND(65280, i_67_), 16711680) >> 8;
                 } else
@@ -615,7 +615,7 @@ public class Main extends GameShell {
                     int i_77_ = i_76_;
                     int i_78_ = GameObject.flameRightBackground.pixels[i_62_];
                     int i_79_ = 256 + -i_76_;
-                    i_76_ = Class42.anIntArray1013[i_76_];
+                    i_76_ = MovedStatics.anIntArray1013[i_76_];
                     GameObject.flameRightBackground.pixels[i_62_++] = BitUtils.bitWiseAND(i_77_ * BitUtils.bitWiseAND(65280, i_76_) + i_79_ * BitUtils.bitWiseAND(65280, i_78_), 16711680) + BitUtils.bitWiseAND(i_79_ * BitUtils.bitWiseAND(16711935, i_78_) + BitUtils.bitWiseAND(16711935, i_76_) * i_77_, -16711936) >> 8;
                 } else
                     i_62_++;
@@ -1577,7 +1577,7 @@ public class Main extends GameShell {
                             if((0x2 & i_22_) == 2)
                                 Class48.cameraOffsetY += ProducingGraphicsBuffer_Sub1.anInt2211;
                             if((i_22_ & 0x1) == 1)
-                                Buffer.cameraOffsetX += Class42.anInt1010;
+                                Buffer.cameraOffsetX += MovedStatics.anInt1010;
                             MovedStatics.anInt1923 = 0;
                             if((0x4 & i_22_) == 4)
                                 Class57.anInt1342 += MovedStatics.anInt195;
@@ -1595,12 +1595,12 @@ public class Main extends GameShell {
                         if(Class48.cameraOffsetY > 55)
                             ProducingGraphicsBuffer_Sub1.anInt2211 = -2;
                         if(Buffer.cameraOffsetX < -50)
-                            Class42.anInt1010 = 2;
+                            MovedStatics.anInt1010 = 2;
                         if(Class43.cameraYawOffset < -60)
                             Class13.anInt419 = 2;
                         Class22.anInt537++;
                         if(Buffer.cameraOffsetX > 50)
-                            Class42.anInt1010 = -2;
+                            MovedStatics.anInt1010 = -2;
                         if(Class43.cameraYawOffset > 60)
                             Class13.anInt419 = -2;
                         if(Class57.anInt1342 < -40)
@@ -1733,19 +1733,19 @@ public class Main extends GameShell {
                 MovedStatics.packetBuffer.putByte(57 + SceneCluster.packetBuffer.currentPosition);
                 MovedStatics.packetBuffer.putIntBE(435);
                 MovedStatics.packetBuffer.putByte(VertexNormal.lowMemory ? 1 : 0);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.skeletonCacheArchive.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.skinDefinitionCacheArchive.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameDefinitionsCacheArchive.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameInterfaceCacheArchive.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.soundEffectCacheArchive.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameWorldMapCacheArchive.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.musicCacheArchive.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.modelCacheArchive.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameImageCacheArchive.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameTextureCacheArchive.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.huffmanCacheArchive.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.jingleCacheArchive.anInt216);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.clientScriptCacheArchive.anInt216);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.skeletonCacheArchive.crc8);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.skinDefinitionCacheArchive.crc8);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameDefinitionsCacheArchive.crc8);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameInterfaceCacheArchive.crc8);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.soundEffectCacheArchive.crc8);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameWorldMapCacheArchive.crc8);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.musicCacheArchive.crc8);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.modelCacheArchive.crc8);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameImageCacheArchive.crc8);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameTextureCacheArchive.crc8);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.huffmanCacheArchive.crc8);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.jingleCacheArchive.crc8);
+                MovedStatics.packetBuffer.putIntBE(CacheArchive.clientScriptCacheArchive.crc8);
                 MovedStatics.packetBuffer.putBytes(0, SceneCluster.packetBuffer.currentPosition, SceneCluster.packetBuffer.buffer);
                 MovedStatics.gameServerSocket.sendDataFromBuffer(MovedStatics.packetBuffer.currentPosition, 0, MovedStatics.packetBuffer.buffer);
                 SceneCluster.packetBuffer.initOutCipher(seeds);

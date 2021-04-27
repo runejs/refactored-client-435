@@ -34,19 +34,19 @@ public class CacheArchive {
     public static CacheArchive definitionCache;
 
     public byte[][] aByteArrayArray212;
-    public int anInt216;
-    public Class42[] aClass42Array217;
+    public int crc8;
+    public NameHashCollection[] aNameHashCollectionArray217;
     public boolean aBoolean220;
-    public int anInt221;
+    public int fileCount;
     public int[] anIntArray224;
-    public int[] anIntArray227;
+    public int[] fileIds;
     public boolean aBoolean233;
     public int[][] anIntArrayArray236;
-    public int[] anIntArray239;
+    public int[] nameHashes;
     public int[][] anIntArrayArray243;
     public byte[][][] inMemoryCacheBuffer;
     public int[] anIntArray252;
-    public Class42 aClass42_254;
+    public NameHashCollection nameHashCollection;
     public int[] anIntArray261;
     public volatile boolean[] aBooleanArray1796;
     public int anInt1797 = -1;
@@ -120,6 +120,10 @@ public class CacheArchive {
         byte[] decompressed = new byte[length];
         buffer.getBytes(length, 0, decompressed);
         return decompressed;
+    }
+
+    public static int calculateFullCrc8(byte[] data, int size) {
+        return MovedStatics.calculateCrc8(0, size, data);
     }
 
     public void method196(boolean arg0, int arg2, boolean arg3, byte[] data) {
@@ -267,8 +271,8 @@ public class CacheArchive {
     public byte[] method170(String arg0, String arg1) {
         arg1 = arg1.toLowerCase();
         arg0 = arg0.toLowerCase();
-        int i = aClass42_254.method882(RSString.stringHash(arg1));
-        int i_0_ = aClass42Array217[i].method882(RSString.stringHash(arg0));
+        int i = nameHashCollection.method882(RSString.stringHash(arg1));
+        int i_0_ = aNameHashCollectionArray217[i].method882(RSString.stringHash(arg0));
 
         return getFile(i, i_0_);
     }
@@ -326,61 +330,63 @@ public class CacheArchive {
     }
 
     public void decodeArchive(byte[] data) {
-        anInt216 = MovedStatics.method525(data, data.length);
+        crc8 = calculateFullCrc8(data, data.length);
         Buffer buffer = new Buffer(decompress(data));
-        int i = buffer.getUnsignedByte();
-        if(i == 5) {
-            int i_1_ = 0;
-            int i_2_ = buffer.getUnsignedByte();
-            anInt221 = buffer.getUnsignedShortBE();
-            anIntArray227 = new int[anInt221];
-            int i_3_ = -1;
-            for(int i_4_ = 0; anInt221 > i_4_; i_4_++) {
-                anIntArray227[i_4_] = i_1_ += buffer.getUnsignedShortBE();
-                if(anIntArray227[i_4_] > i_3_)
-                    i_3_ = anIntArray227[i_4_];
+        int format = buffer.getUnsignedByte();
+        if(format == 5) {
+            int accumulator = 0;
+            int settings = buffer.getUnsignedByte();
+            fileCount = buffer.getUnsignedShortBE();
+            fileIds = new int[fileCount];
+            int size = -1;
+            for(int index = 0; fileCount > index; index++) {
+                fileIds[index] = accumulator += buffer.getUnsignedShortBE();
+                if(fileIds[index] > size)
+                    size = fileIds[index];
             }
-            anIntArrayArray243 = new int[i_3_ + 1][];
-            anIntArray224 = new int[1 + i_3_];
-            anIntArray252 = new int[i_3_ + 1];
-            inMemoryCacheBuffer = new byte[1 + i_3_][][];
-            anIntArray261 = new int[1 + i_3_];
-            aByteArrayArray212 = new byte[i_3_ + 1][];
-            if(i_2_ != 0) {
-                anIntArray239 = new int[i_3_ + 1];
-                for(int i_5_ = 0; anInt221 > i_5_; i_5_++)
-                    anIntArray239[anIntArray227[i_5_]] = buffer.getIntBE();
-                aClass42_254 = new Class42(anIntArray239);
+
+            anIntArrayArray243 = new int[size + 1][];
+            anIntArray224 = new int[1 + size];
+            anIntArray252 = new int[size + 1];
+            inMemoryCacheBuffer = new byte[1 + size][][];
+            anIntArray261 = new int[1 + size];
+            aByteArrayArray212 = new byte[size + 1][];
+
+            if(settings != 0) {
+                nameHashes = new int[size + 1];
+                for(int i_5_ = 0; fileCount > i_5_; i_5_++)
+                    nameHashes[fileIds[i_5_]] = buffer.getIntBE();
+                nameHashCollection = new NameHashCollection(nameHashes);
             }
-            for(int i_6_ = 0; i_6_ < anInt221; i_6_++)
-                anIntArray252[anIntArray227[i_6_]] = buffer.getIntBE();
-            for(int i_7_ = 0; i_7_ < anInt221; i_7_++)
-                anIntArray224[anIntArray227[i_7_]] = buffer.getIntBE();
-            for(int i_8_ = 0; anInt221 > i_8_; i_8_++)
-                anIntArray261[anIntArray227[i_8_]] = buffer.getUnsignedShortBE();
-            for(int i_9_ = 0; i_9_ < anInt221; i_9_++) {
-                i_1_ = 0;
-                int i_10_ = anIntArray227[i_9_];
+            for(int i_6_ = 0; i_6_ < fileCount; i_6_++)
+                anIntArray252[fileIds[i_6_]] = buffer.getIntBE();
+            for(int i_7_ = 0; i_7_ < fileCount; i_7_++)
+                anIntArray224[fileIds[i_7_]] = buffer.getIntBE();
+            for(int i_8_ = 0; fileCount > i_8_; i_8_++)
+                anIntArray261[fileIds[i_8_]] = buffer.getUnsignedShortBE();
+            for(int i_9_ = 0; i_9_ < fileCount; i_9_++) {
+                accumulator = 0;
+                int i_10_ = fileIds[i_9_];
                 int i_11_ = -1;
                 int i_12_ = anIntArray261[i_10_];
                 anIntArrayArray243[i_10_] = new int[i_12_];
                 for(int i_13_ = 0; i_12_ > i_13_; i_13_++) {
-                    int i_14_ = anIntArrayArray243[i_10_][i_13_] = i_1_ += buffer.getUnsignedShortBE();
+                    int i_14_ = anIntArrayArray243[i_10_][i_13_] = accumulator += buffer.getUnsignedShortBE();
                     if(i_14_ > i_11_)
                         i_11_ = i_14_;
                 }
                 inMemoryCacheBuffer[i_10_] = new byte[i_11_ + 1][];
             }
-            if(i_2_ != 0) {
-                aClass42Array217 = new Class42[i_3_ + 1];
-                anIntArrayArray236 = new int[1 + i_3_][];
-                for(int i_15_ = 0; anInt221 > i_15_; i_15_++) {
-                    int i_16_ = anIntArray227[i_15_];
+            if(settings != 0) {
+                aNameHashCollectionArray217 = new NameHashCollection[size + 1];
+                anIntArrayArray236 = new int[1 + size][];
+                for(int i_15_ = 0; fileCount > i_15_; i_15_++) {
+                    int i_16_ = fileIds[i_15_];
                     int i_17_ = anIntArray261[i_16_];
                     anIntArrayArray236[i_16_] = new int[inMemoryCacheBuffer[i_16_].length];
                     for(int i_18_ = 0; i_17_ > i_18_; i_18_++)
                         anIntArrayArray236[i_16_][anIntArrayArray243[i_16_][i_18_]] = buffer.getIntBE();
-                    aClass42Array217[i_16_] = new Class42(anIntArrayArray236[i_16_]);
+                    aNameHashCollectionArray217[i_16_] = new NameHashCollection(anIntArrayArray236[i_16_]);
                 }
             }
         }
@@ -388,7 +394,7 @@ public class CacheArchive {
 
     public int method179(int arg1, String arg2) {
         arg2 = arg2.toLowerCase();
-        return aClass42Array217[arg1].method882(RSString.stringHash(arg2));
+        return aNameHashCollectionArray217[arg1].method882(RSString.stringHash(arg2));
     }
 
     public boolean method181(int arg0, int[] arg2) {
@@ -472,15 +478,15 @@ public class CacheArchive {
 
     public int getHash(String arg1) {
         arg1 = arg1.toLowerCase();
-        return aClass42_254.method882(RSString.stringHash(arg1));
+        return nameHashCollection.method882(RSString.stringHash(arg1));
     }
 
     public boolean method185(byte arg0) {
         boolean bool = true;
         if(arg0 < 11)
             return true;
-        for(int i = 0; i < anIntArray227.length; i++) {
-            int i_47_ = anIntArray227[i];
+        for(int i = 0; i < fileIds.length; i++) {
+            int i_47_ = fileIds[i];
             if(aByteArrayArray212[i_47_] == null) {
                 method177(i_47_);
                 if(aByteArrayArray212[i_47_] == null)
@@ -537,14 +543,14 @@ public class CacheArchive {
     public boolean method194(String arg0, String arg1) {
         arg0 = arg0.toLowerCase();
         arg1 = arg1.toLowerCase();
-        int i = aClass42_254.method882(RSString.stringHash(arg0));
-        int i_49_ = aClass42Array217[i].method882(RSString.stringHash(arg1));
+        int i = nameHashCollection.method882(RSString.stringHash(arg0));
+        int i_49_ = aNameHashCollectionArray217[i].method882(RSString.stringHash(arg1));
         return loaded(i, i_49_);
     }
 
     public void method195(int arg0, String arg1) {
         arg1 = arg1.toLowerCase();
-        int i = aClass42_254.method882(RSString.stringHash(arg1));
+        int i = nameHashCollection.method882(RSString.stringHash(arg1));
         if(arg0 == 0 && i >= 0)
             method174(i);
     }

@@ -92,11 +92,11 @@ public class Class40_Sub5_Sub6 extends CachedNode {
                             SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
                         }
                     }
-                    if(Class37.anInt876 == 4 && Class42.anInt1008 < 100) {
+                    if(Class37.anInt876 == 4 && MovedStatics.anInt1008 < 100) {
                         long l = RSString.nameToLong(ChatBox.chatMessage);
                         Class17.method275(l);
                     }
-                    if(Class37.anInt876 == 5 && Class42.anInt1008 > 0) {
+                    if(Class37.anInt876 == 5 && MovedStatics.anInt1008 > 0) {
                         long l = RSString.nameToLong(ChatBox.chatMessage);
                         MovedStatics.method838(0, l);
                     }

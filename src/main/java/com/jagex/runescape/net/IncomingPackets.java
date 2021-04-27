@@ -275,7 +275,7 @@ public class IncomingPackets {
                     String username = message.substring(0, message.indexOf(Native.colon));
                     long l = RSString.nameToLong(username);
                     boolean bool = false;
-                    for(int i_33_ = 0; i_33_ < Class42.anInt1008; i_33_++) {
+                    for(int i_33_ = 0; i_33_ < MovedStatics.anInt1008; i_33_++) {
                         if(l == Player.ignores[i_33_]) {
                             bool = true;
                             break;
@@ -287,7 +287,7 @@ public class IncomingPackets {
                     String username = message.substring(0, message.indexOf(Native.colon));
                     long l = RSString.nameToLong(username);
                     boolean bool = false;
-                    for(int i_31_ = 0; Class42.anInt1008 > i_31_; i_31_++) {
+                    for(int i_31_ = 0; MovedStatics.anInt1008 > i_31_; i_31_++) {
                         if(l == Player.ignores[i_31_]) {
                             bool = true;
                             break;
@@ -299,7 +299,7 @@ public class IncomingPackets {
                     String username = message.substring(0, message.indexOf(Native.colon));
                     long l = RSString.nameToLong(username);
                     boolean bool = false;
-                    for(int i_28_ = 0; i_28_ < Class42.anInt1008; i_28_++) {
+                    for(int i_28_ = 0; i_28_ < MovedStatics.anInt1008; i_28_++) {
                         if(l == Player.ignores[i_28_]) {
                             bool = true;
                             break;
@@ -969,7 +969,7 @@ public class IncomingPackets {
                     }
                 }
                 if(fromPlayerRights <= 1) {
-                    for(int ignoreIndex = 0; ignoreIndex < Class42.anInt1008; ignoreIndex++) {
+                    for(int ignoreIndex = 0; ignoreIndex < MovedStatics.anInt1008; ignoreIndex++) {
                         if(fromPlayerIndex == Player.ignores[ignoreIndex]) {
                             hideMessage = true;
                             break;
@@ -1110,8 +1110,8 @@ public class IncomingPackets {
                 return true;
             }
             if(opcode == 211) { // update ignore list
-                Class42.anInt1008 = incomingPacketSize / 8;
-                for(int i_118_ = 0; Class42.anInt1008 > i_118_; i_118_++)
+                MovedStatics.anInt1008 = incomingPacketSize / 8;
+                for(int i_118_ = 0; MovedStatics.anInt1008 > i_118_; i_118_++)
                     Player.ignores[i_118_] = incomingPacketBuffer.getLongBE();
                 opcode = -1;
                 return true;

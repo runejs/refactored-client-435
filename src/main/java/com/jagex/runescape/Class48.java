@@ -71,7 +71,7 @@ public class Class48 {
                 int i = arg2.getUnsignedByte();
                 if(i == 0) {
                     if(arg7 == 0)
-                        MovedStatics.tile_height[0][arg0][arg4] = -Class42.method888(arg6 + arg0 + 932731, (byte) -45, arg5 + 556238 + arg4) * 8;
+                        MovedStatics.tile_height[0][arg0][arg4] = -MovedStatics.method888(arg6 + arg0 + 932731, (byte) -45, arg5 + 556238 + arg4) * 8;
                     else
                         MovedStatics.tile_height[arg7][arg0][arg4] = -240 + MovedStatics.tile_height[arg7 + -1][arg0][arg4];
                     break;
@@ -93,7 +93,7 @@ public class Class48 {
                 } else if(i <= 81)
                     OverlayDefinition.tile_flags[arg7][arg0][arg4] = (byte) (-49 + i);
                 else
-                    Class42.tile_underlayids[arg7][arg0][arg4] = (byte) (-81 + i);
+                    MovedStatics.tile_underlayids[arg7][arg0][arg4] = (byte) (-81 + i);
             }
         } else {
             for(; ; ) {

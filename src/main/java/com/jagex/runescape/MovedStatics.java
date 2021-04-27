@@ -141,6 +141,12 @@ public class MovedStatics {
     public static ImageRGB minimapEdge;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2301;
     public static int baseX;
+    public static byte[][][] tile_underlayids;
+    public static NodeCache aClass9_998 = new NodeCache(100);
+    public static int anInt1006 = 0;
+    public static int anInt1008 = 0;
+    public static int anInt1010 = 2;
+    public static int[] anIntArray1013;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -165,7 +171,7 @@ public class MovedStatics {
             anIntArray178 = null;
             KeyFocusListener.aProducingGraphicsBuffer_1285 = null;
             Class17.aProducingGraphicsBuffer_463 = null;
-            Class42.anIntArray1013 = null;
+            anIntArray1013 = null;
             method405(10);
             GameShell.method19(true);
             ISAAC.aBoolean512 = false;
@@ -373,7 +379,7 @@ public class MovedStatics {
             mapDots = null;
         }
         if (arg1) {
-            i += Class42.anInt1006 + anInt554;
+            i += anInt1006 + anInt554;
         }
         return i;
     }
@@ -529,14 +535,14 @@ public class MovedStatics {
         return GameShell.method32(i_7_, arg2, i_8_, true, i_1_);
     }
 
-    public static int method1034(boolean arg0, int arg1, int arg2, byte[] arg3) {
-        int i = -1;
-        if (!arg0)
-            return 39;
-        for (int i_1_ = arg1; i_1_ < arg2; i_1_++)
-            i = KeyFocusListener.anIntArray1282[0xff & (i ^ arg3[i_1_])] ^ i >>> 8;
-        i ^= 0xffffffff;
-        return i;
+    public static int calculateCrc8(int offset, int size, byte[] data) {
+        int crc = -1;
+        for (int currentByte = offset; currentByte < size; currentByte++) {
+            int tableIndex = 0xff & (crc ^ data[currentByte]);
+            crc = KeyFocusListener.crc8LookupTable[tableIndex] ^ crc >>> 8;
+        }
+        crc ^= 0xffffffff;
+        return crc;
     }
 
     public static String[] method968(String[] arg0) {
@@ -560,7 +566,7 @@ public class MovedStatics {
         InteractiveObject.aByteArrayArrayArray492 = null;
         OverlayDefinition.tile_underlay_path = null;
         MouseHandler.tile_overlayids = null;
-        Class42.tile_underlayids = null;
+        tile_underlayids = null;
         Class40_Sub5_Sub17_Sub6.anIntArray3250 = null;
     }
 
@@ -642,7 +648,7 @@ public class MovedStatics {
 
     public static void method188() {
         Class40_Sub5_Sub6.aClass9_2439.clear();
-        Class42.aClass9_998.clear();
+        aClass9_998.clear();
     }
 
     public static void method399(int arg0, int arg2) {
@@ -709,11 +715,11 @@ public class MovedStatics {
 
     public static void method838(int arg0, long arg1) {
         if (arg1 != 0) {
-            for (int i = arg0; i < Class42.anInt1008; i++) {
+            for (int i = arg0; i < anInt1008; i++) {
                 if (Player.ignores[i] == arg1) {
                     GameInterface.redrawTabArea = true;
-                    Class42.anInt1008--;
-                    for (int i_16_ = i; Class42.anInt1008 > i_16_; i_16_++)
+                    anInt1008--;
+                    for (int i_16_ = i; anInt1008 > i_16_; i_16_++)
                         Player.ignores[i_16_] = Player.ignores[1 + i_16_];
                     SceneCluster.packetBuffer.putPacket(28);
                     SceneCluster.packetBuffer.putLongBE(arg1);
@@ -721,10 +727,6 @@ public class MovedStatics {
                 }
             }
         }
-    }
-
-    public static int method525(byte[] data, int size) {
-        return method1034(true, 0, size, data);
     }
 
     public static ImageRGB[] method526(CacheArchive arg0, String arg2, String arg3) {
@@ -866,7 +868,7 @@ public class MovedStatics {
                         return;
                     }
                 }
-                for(int i = 0; Class42.anInt1008 > i; i++) {
+                for(int i = 0; anInt1008 > i; i++) {
                     if(Player.ignores[i] == name) {
                         ChatBox.addChatMessage("", English.pleaseRemove + username + English.suffixFromYourIgnoreListFirst, 0);
                         return;
@@ -1150,6 +1152,59 @@ public class MovedStatics {
     }
 
     public static void method557(int arg0) {
-        Class42.method886(0, 0, false, null, arg0);
+        method886(0, 0, false, null, arg0);
+    }
+
+    public static int method884(int arg0, int arg1) {
+        int i = 57 * arg1 + arg0;
+        i ^= i << 13;
+        int i_2_ = 1376312589 + (i * i * 15731 + 789221) * i & 0x7fffffff;
+        return i_2_ >> 19 & 0xff;
+    }
+
+    public static void method885(CacheArchive arg0, boolean arg1, CacheArchive arg2) {
+        IdentityKit.membersServer = arg1;
+        Class8.aCacheArchive_284 = arg2;
+        Class26.aCacheArchive_632 = arg0;
+        ItemDefinition.count = Class26.aCacheArchive_632.fileLength(10);
+    }
+
+    public static void method886(int arg0, int arg1, boolean arg2, byte[] arg3, int arg4) {
+        if(arg0 == 0 && aClass22_189 != null) {
+            if(MouseHandler.anInt1450 < 0) {
+                if(RSCanvas.anInt54 != 0) {
+                    PacketBuffer.anInt2258 = arg1;
+                    Player.aByteArray3270 = arg3;
+                    PlayerAppearance.aBoolean687 = arg2;
+                } else
+                    RSString.method56(arg2, arg3, arg1);
+            } else {
+                Buffer.anInt1982 = arg4;
+                if(MouseHandler.anInt1450 != 0) {
+                    int i = Class29.method372(arg0 ^ 0x60, MouseHandler.anInt1450);
+                    i -= Class39.anInt909;
+                    RSCanvas.anInt54 = (i + 3600) / arg4;
+                    if(RSCanvas.anInt54 < 1)
+                        RSCanvas.anInt54 = 1;
+                } else
+                    RSCanvas.anInt54 = 1;
+                PacketBuffer.anInt2258 = arg1;
+                Player.aByteArray3270 = arg3;
+                PlayerAppearance.aBoolean687 = arg2;
+            }
+        }
+    }
+
+    public static int method888(int arg0, byte arg1, int arg2) {
+        int i = -128 + method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> 1) + -(-128 + method160(arg0, 15177, 1, arg2) >> 2));
+        i = 35 + (int) (0.3 * (double) i);
+        if(arg1 != -45)
+            return -24;
+        if(i >= 10) {
+            if(i > 60)
+                i = 60;
+        } else
+            i = 10;
+        return i;
     }
 }

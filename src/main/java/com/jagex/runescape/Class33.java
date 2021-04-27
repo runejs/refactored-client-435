@@ -360,7 +360,7 @@ public class Class33 {
                         else
                             method566(OverlayDefinition.anInt2342, Main.aBoolean1790, MovedStatics.anInt1806, is);
                     } else
-                        Class42.method886(0, OverlayDefinition.anInt2342, Main.aBoolean1790, is, MovedStatics.anInt255);
+                        MovedStatics.method886(0, OverlayDefinition.anInt2342, Main.aBoolean1790, is, MovedStatics.anInt255);
                     Class26.aBoolean618 = false;
                     Class22_Sub1.musicCacheArchive = null;
                 }

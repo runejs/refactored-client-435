@@ -286,7 +286,7 @@ public class ClientScriptRunner extends Node {
                 }
             }
 
-            buffer.method473(bufferPos);
+            buffer.putCrc8(bufferPos);
             buffer.finishVarByte(-bufferPos + buffer.currentPosition);
             clientScriptRunner.remove();
         }

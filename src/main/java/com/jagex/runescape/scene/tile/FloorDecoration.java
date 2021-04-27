@@ -209,7 +209,7 @@ public class FloorDecoration {
             currentMsSinceLastUpdate = 200;
         }
         Class22.msSinceLastUpdate += currentMsSinceLastUpdate;
-        if(Class42.anInt1006 == 0 && Class17.anInt464 == 0 && MovedStatics.anInt554 == 0 && ProducingGraphicsBuffer.anInt1618 == 0) {
+        if(MovedStatics.anInt1006 == 0 && Class17.anInt464 == 0 && MovedStatics.anInt554 == 0 && ProducingGraphicsBuffer.anInt1618 == 0) {
             return true;
         }
         if(Class57.updateServerSocket == null) {
@@ -231,7 +231,7 @@ public class FloorDecoration {
                 Class37.aClass23_869.put(class40_sub5_sub13.key, class40_sub5_sub13);
                 ProducingGraphicsBuffer.anInt1618--;
             }
-            for(/**/; Class42.anInt1006 < 20 && MovedStatics.anInt554 > 0; MovedStatics.anInt554--) {
+            for(/**/; MovedStatics.anInt1006 < 20 && MovedStatics.anInt554 > 0; MovedStatics.anInt554--) {
                 Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) InteractiveObject.aNodeQueue_485.next();
                 Buffer class40_sub1 = new Buffer(4);
                 class40_sub1.putByte(0);
@@ -239,7 +239,7 @@ public class FloorDecoration {
                 Class57.updateServerSocket.sendDataFromBuffer(4, 0, class40_sub1.buffer);
                 class40_sub5_sub13.clear();
                 MovedStatics.aClass23_841.put(class40_sub5_sub13.key, class40_sub5_sub13);
-                Class42.anInt1006++;
+                MovedStatics.anInt1006++;
             }
             for(int i_33_ = 0; i_33_ < 100; i_33_++) {
                 int i_34_ = Class57.updateServerSocket.inputStreamAvailable();
@@ -314,7 +314,7 @@ public class FloorDecoration {
                         Class40_Sub5_Sub13.aClass40_Sub1_2752 = null;
                         Landscape.anInt1157 = 0;
                         if(!Npc.aBoolean3298) {
-                            Class42.anInt1006--;
+                            MovedStatics.anInt1006--;
                         } else {
                             Class17.anInt464--;
                         }

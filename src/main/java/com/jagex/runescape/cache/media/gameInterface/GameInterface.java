@@ -343,7 +343,7 @@ public class GameInterface extends CachedNode {
                 gameInterface.disabledText = English.pleaseWait;
                 gameInterface.actionType = 0;
             } else {
-                int i_4_ = Class42.anInt1008;
+                int i_4_ = MovedStatics.anInt1008;
                 if(Player.friendListStatus == 0)
                     i_4_ = 0;
                 if(i_4_ <= type) {
@@ -355,7 +355,7 @@ public class GameInterface extends CachedNode {
                 }
             }
         } else if(type == 503) {
-            gameInterface.scrollHeight = 15 * Class42.anInt1008 + 20;
+            gameInterface.scrollHeight = 15 * MovedStatics.anInt1008 + 20;
             if(gameInterface.scrollHeight <= gameInterface.originalHeight)
                 gameInterface.scrollHeight = gameInterface.originalHeight + 1;
         } else if(type == 324) {

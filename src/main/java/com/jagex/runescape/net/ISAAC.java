@@ -100,7 +100,7 @@ public class ISAAC {
                 for(int i_17_ = 0; i_17_ < 104; i_17_++) {
                     int i_18_ = 5 + i_16_;
                     if(i_18_ >= 0 && i_18_ < 104) {
-                        int underlayId = 0xff & Class42.tile_underlayids[i][i_18_][i_17_];
+                        int underlayId = 0xff & MovedStatics.tile_underlayids[i][i_18_][i_17_];
                         if(underlayId > 0) {
                             UnderlayDefinition underlayDefinition = UnderlayDefinition.getDefinition(underlayId - 1);
                             Class40_Sub5_Sub17_Sub6.anIntArray3250[i_17_] += underlayDefinition.anInt2565;
@@ -112,7 +112,7 @@ public class ISAAC {
                     }
                     int i_20_ = i_16_ - 5;
                     if(i_20_ >= 0 && i_20_ < 104) {
-                        int i_21_ = 0xff & Class42.tile_underlayids[i][i_20_][i_17_];
+                        int i_21_ = 0xff & MovedStatics.tile_underlayids[i][i_20_][i_17_];
                         if(i_21_ > 0) {
                             UnderlayDefinition underlayDefinition = UnderlayDefinition.getDefinition(-1 + i_21_);
                             Class40_Sub5_Sub17_Sub6.anIntArray3250[i_17_] -= underlayDefinition.anInt2565;
@@ -149,7 +149,7 @@ public class ISAAC {
                         if(i_27_ >= 1 && i_27_ < 103 && (!VertexNormal.lowMemory || (0x2 & OverlayDefinition.tile_flags[0][i_16_][i_27_]) != 0 || (0x10 & OverlayDefinition.tile_flags[i][i_16_][i_27_]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(i, i_27_, 0, i_16_))) {
                             if(MovedStatics.lowestPlane > i)
                                 MovedStatics.lowestPlane = i;
-                            int i_30_ = Class42.tile_underlayids[i][i_16_][i_27_] & 0xff;
+                            int i_30_ = MovedStatics.tile_underlayids[i][i_16_][i_27_] & 0xff;
                             int i_31_ = MouseHandler.tile_overlayids[i][i_16_][i_27_] & 0xff;
                             if(i_30_ > 0 || i_31_ > 0) {
                                 int i_32_ = MovedStatics.tile_height[i][i_16_][i_27_];
@@ -238,7 +238,7 @@ public class ISAAC {
                 for(int i_57_ = 1; i_57_ < 103; i_57_++)
                     scene.method130(i, i_57_, i_56_, Class59.getVisibilityPlaneFor(i, i_56_, 0, i_57_));
             }
-            Class42.tile_underlayids[i] = null;
+            MovedStatics.tile_underlayids[i] = null;
             MouseHandler.tile_overlayids[i] = null;
             OverlayDefinition.tile_underlay_path[i] = null;
             Class35.tile_overlay_rotation[i] = null;

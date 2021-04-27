@@ -169,7 +169,7 @@ public class Player extends Actor {
                 long l = RSString.nameToLong(player.playerName);
                 boolean bool = false;
                 if(playerRights <= 1) {
-                    for(int i = 0; i < Class42.anInt1008; i++) {
+                    for(int i = 0; i < MovedStatics.anInt1008; i++) {
                         if(l == ignores[i]) {
                             bool = true;
                             break;

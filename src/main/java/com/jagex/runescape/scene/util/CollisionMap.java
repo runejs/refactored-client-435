@@ -47,11 +47,11 @@ public class CollisionMap {
 
 
     public static int method157(int arg0, int arg1, int arg2) {
-        int i = Class42.method884(-1 + arg1, -1 + arg2) + Class42.method884(1 + arg1, arg2 - 1) + Class42.method884(-1 + arg1, 1 + arg2) + Class42.method884(1 + arg1, arg2 + 1);
+        int i = MovedStatics.method884(-1 + arg1, -1 + arg2) + MovedStatics.method884(1 + arg1, arg2 - 1) + MovedStatics.method884(-1 + arg1, 1 + arg2) + MovedStatics.method884(1 + arg1, arg2 + 1);
         if(arg0 != 0)
             return 56;
-        int i_126_ = Class42.method884(arg1 - 1, arg2) + Class42.method884(arg1 + 1, arg2) - (-Class42.method884(arg1, arg2 - 1) + -Class42.method884(arg1, 1 + arg2));
-        int i_127_ = Class42.method884(arg1, arg2);
+        int i_126_ = MovedStatics.method884(arg1 - 1, arg2) + MovedStatics.method884(arg1 + 1, arg2) - (-MovedStatics.method884(arg1, arg2 - 1) + -MovedStatics.method884(arg1, 1 + arg2));
+        int i_127_ = MovedStatics.method884(arg1, arg2);
         return i / 16 - (-(i_126_ / 8) - i_127_ / 4);
     }
 

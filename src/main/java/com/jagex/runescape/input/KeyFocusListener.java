@@ -26,24 +26,22 @@ import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import static com.jagex.runescape.Class40_Sub3.ticksPerLoop;
-
 public class KeyFocusListener implements KeyListener, FocusListener {
     public static LinkedList aLinkedList_1278 = new LinkedList();
-    public static int[] anIntArray1282 = new int[256];
+    public static int[] crc8LookupTable = new int[256];
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1285;
 
     static {
-        for (int i = 0; i < 256; i++) {
-            int i_6_ = i;
-            for (int i_7_ = 0; i_7_ < 8; i_7_++) {
-                if ((i_6_ & 0x1) != 1) {
-                    i_6_ >>>= 1;
+        for (int divident = 0; divident < 256; divident++) {
+            int currentByte = divident;
+            for (int bit = 0; bit < 8; bit++) {
+                if ((currentByte & 0x1) != 1) {
+                    currentByte >>>= 1;
                 } else {
-                    i_6_ = ~0x12477cdf ^ i_6_ >>> 1;
+                    currentByte = -306674912 ^ currentByte >>> 1;
                 }
             }
-            anIntArray1282[i] = i_6_;
+            crc8LookupTable[divident] = currentByte;
         }
     }
 

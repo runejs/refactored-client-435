@@ -53,7 +53,7 @@ public class Class17 {
                 break;
             InteractiveObject.aNodeQueue_485.unshift(class40_sub5_sub13);
             GameObjectDefinition.aClass23_2545.put(class40_sub5_sub13.key, class40_sub5_sub13);
-            Class42.anInt1006--;
+            MovedStatics.anInt1006--;
             MovedStatics.anInt554++;
         }
         if(Class8.aByte302 != 0) {
@@ -87,11 +87,11 @@ public class Class17 {
 
     public static void method275(long arg1) {
         if(arg1 != 0L) {
-            if(Class42.anInt1008 >= 100)
+            if(MovedStatics.anInt1008 >= 100)
                 ChatBox.addChatMessage("", English.yourIgnoreListIsFull.toString(), 0);
             else {
                 String class1 = TextUtils.formatName(TextUtils.longToName(arg1));
-                for(int i = 0; i < Class42.anInt1008; i++) {
+                for(int i = 0; i < MovedStatics.anInt1008; i++) {
                     if(arg1 == Player.ignores[i]) {
                         ChatBox.addChatMessage("", class1 + English.suffixIsAlreadyOnYourIgnoreList, 0);
                         return;
@@ -104,7 +104,7 @@ public class Class17 {
                     }
                 }
                 if(!class1.equals(Player.localPlayer.playerName)) {
-                    Player.ignores[Class42.anInt1008++] = arg1;
+                    Player.ignores[MovedStatics.anInt1008++] = arg1;
                     GameInterface.redrawTabArea = true;
                     SceneCluster.packetBuffer.putPacket(251);
                     SceneCluster.packetBuffer.putLongBE(arg1);
