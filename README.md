@@ -1,6 +1,6 @@
-# RuneScape Java Client #435
+# RuneJS Java Client #435
 
-A RuneScape game client from October of 2006 which has been modified to work with RuneJS, a RuneScape game server emulator written in NodeJS and TypeScript. **This client is not for OldSchool RuneScape** - client #435 pre-dates the very first OSRS client by quite some time. 
+A RuneScape game client from October 2006 which has been modified to work with RuneJS, a RuneScape game server written in NodeJS and TypeScript. **This client is not for OldSchool RuneScape** - client #435 pre-dates the very first OSRS client by quite some time. 
 
 We've no interest in OSRS client hacking, this client exists as a means to develop on RuneJS game servers and will not work with other server emulators.
 
