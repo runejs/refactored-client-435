@@ -23,7 +23,6 @@ import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.net.IncomingPackets;
 import com.jagex.runescape.net.PacketBuffer;
 import com.jagex.runescape.scene.InteractiveObject;
-import tech.henning.fourthreefive.whitelabel.Images;
 
 import java.awt.*;
 
@@ -345,7 +344,7 @@ public class WallDecoration {
             if (Class51.currentAction == 10) {
                 Class40_Sub5_Sub15.loginScreenBox.drawImage(0, 0);
                 if (Class26.loginScreenState == 0) {
-                    fontBold.drawShadowedStringCenter(English.welcomeToRunescape, 180, 80, 16776960, true);
+                    fontBold.drawShadowedStringCenter(English.welcomeTo, 180, 80, 16776960, true);
                     int drawX = 100;
                     int drawY = 120;
                     Class59.imgLoginScreenButton.drawImage(drawX - 73, drawY - 20);
@@ -391,16 +390,14 @@ public class WallDecoration {
                     int i = 180;
                     int i_92_ = 150;
                     int i_93_ = 65;
-                    fontBold.drawShadowedStringCenter(English.toCreateANewAccountYouNeedTo, 180, i_93_, 16777215, true);
-                    i_93_ += 15;
-                    fontBold.drawShadowedStringCenter(English.goBackToTheMainRunescapeWebPage, 180, i_93_, 16777215, true);
-                    i_93_ += 15;
-                    fontBold.drawShadowedStringCenter(English.andChooseTheCreateAccount, 180, i_93_, 16777215, true);
-                    i_93_ += 15;
-                    fontBold.drawShadowedStringCenter(English.suffixButtonNearTheTopOfThatPage, 180, i_93_, 16777215, true);
+
+                    for(int textIndex = 0; textIndex < English.createAccountText.length; textIndex++) {
+                        fontBold.drawShadowedStringCenter(English.createAccountText[textIndex], 180, i_93_, 16777215, true);
+                        i_93_ += 15;
+                    }
+
                     Class59.imgLoginScreenButton.drawImage(-73 + i, i_92_ - 20);
                     fontBold.drawShadowedStringCenter(English.cancel, i, 5 + i_92_, 16777215, true);
-                    i_93_ += 15;
                 }
             }
             ProducingGraphicsBuffer.muteButton.prepareRasterizer();

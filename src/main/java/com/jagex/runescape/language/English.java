@@ -4,6 +4,27 @@ package com.jagex.runescape.language;
 import tech.henning.fourthreefive.Configuration;
 
 public class English {
+
+    public static final String[] createAccountText = {
+            "To create a new account, all you need",
+            "to do is ",
+            "and choose the 'create account'",
+            "button near the top of that page."
+    };
+
+    public static final String[] runejsLoginText = {
+
+    };
+
+    public static final String newUser = "New User";
+    public static final String existingUser = "Existing user";
+    public static final String cancel = "Cancel";
+    public static final String login = "Login";
+    public static final String welcomeTo = "Welcome to " + Configuration.SERVER_DISPLAY_NAME;
+    public static final String createAFreeAccount = "Create a free account";
+    public static final String enterYourUsernameAndPassword = "Enter your username & password.";
+
+
     public static String suffixFromYourIgnoreListFirst = " from your ignore list first";
     public static String suffixHasLoggedIn = " has logged in.";
     public static String suffixHasLoggedOut = " has logged out.";
@@ -14,24 +35,20 @@ public class English {
     public static String addIgnore = "Add ignore";
     public static String asItWasUsedToBreakOurRules = "as it was used to break our rules.";
     public static String attack = "Attack";
-    public static String suffixButtonNearTheTopOfThatPage = "button near the top of that page.";
     public static String cabbage = "Cabbage";
     public static String checkingForUpdates = "Checking for updates - ";
     public static String clickToContinue = "Click to continue";
     public static String connectingToFriendserver = "Connecting to friendserver";
     public static String connectingToServer = "Connecting to server...";
-    public static String createAFreeAccount = "Create a free account";
     public static String prefixEnterMessageToSendTo = "Enter message to send to ";
     public static String enterNameOfFriendToDeleteFromList = "Enter name of friend to delete from list";
     public static String enterNameOfPlayerToAddToList = "Enter name of player to add to list";
     public static String enterNameOfPlayerToDeleteFromList = "Enter name of player to delete from list";
     public static String enterName = "Enter name:";
     public static String enterObjectName = "Enter object name";
-    public static String enterYourUsernameAndPassword = "Enter your username & password.";
     public static String errorConnectingToServer = "Error connecting to server.";
     public static String errorLoadingYourProfile = "Error loading your profile.";
     public static String examine = "Examine";
-    public static String existingUser = "Existing user";
     public static String effectFlash3 = "flash3:";
     public static String friends = "Friends";
     public static String from = "From";
@@ -86,7 +103,6 @@ public class English {
     public static String take = "Take";
     public static String thisComputersAddressHasBeenBlocked = "This computers address has been blocked";
     public static String theWorldIsFull = "This world is full.";
-    public static String toCreateANewAccountYouNeedTo = "To create a new account you need to";
     public static String toPlayOnThisWorldMoveToFreeArea = "To play on this world move to a free area first";
     public static String to = "To";
     public static String trade = "Trade";
@@ -107,7 +123,6 @@ public class English {
     public static String loginLimitExceeded = "Login limit exceeded.";
     public static String pleaseWaitAttemptingToReestablish = "Please wait - attempting to reestablish";
     public static String connectionTimedOut = "Connection timed out.";
-    public static String newUser = "New User";
     public static String pleaseTryUsingDifferentWorld = "Please try using a different world.";
     public static String invalidUsernameOrPassword = "Invalid username or password.";
     public static String pleaseCheckYourMessageCenterForDetails = "Please check your message-centre for details.";
@@ -117,14 +132,12 @@ public class English {
     public static String couldNotCompleteLogin = "Could not complete login.";
     public static String membersObject = "Members object";
     public static String badSessionId = "Bad session id.";
-    public static String login = "Login";
     public static String pleaseSubscribeOrUseDifferentWorld = "Please subscribe, or use a different world.";
     public static String youNeedMembersAccountToLoginToThisWorld = "You need a members account to login to this world.";
     public static String serviceUnavailable = "Service unavailable.";
     public static String malformedLoginPacket = "Malformed login packet.";
     public static String pleaseTryAgain = "Please try again.";
     public static String pleaseWait1MinuteAndTryAgain = "Please wait 1 minute and try again.";
-    public static String welcomeToRunescape = "Welcome to " + Configuration.SERVER_DISPLAY_NAME;
     public static String use = "Use";
     public static String accountLockedAsWeSuspectItHasBeenStolen = "Account locked as we suspect it has been stolen.";
     public static String loadedWordpack = "Loaded wordpack";
@@ -170,12 +183,9 @@ public class English {
     public static String publicChat = "Public chat";
     public static String connectingToUpdateServer = "Connecting to update server";
     public static String addFriend = "Add friend";
-    public static String andChooseTheCreateAccount = "and choose the 'create account'";
-    public static String goBackToTheMainRunescapeWebPage = "go back to the main " + Configuration.SERVER_DISPLAY_NAME + " webpage";
     public static String sContinue = "Continue";
     public static String ok = "Ok";
     public static String commandFpson = "::fpson";
-    public static String cancel = "Cancel";
     public static String select = "Select";
     public static String pleaseWait = "Please wait...";
 }
