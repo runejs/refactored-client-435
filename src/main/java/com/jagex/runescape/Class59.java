@@ -29,13 +29,14 @@ public class Class59 {
     }
 
     public static void dropClient() {
-        if(SceneCluster.idleLogout > 0)
-            Class48.logout(-7225);
-        else {
+        if(SceneCluster.idleLogout > 0) {
+            // Instant logout
+            Class48.logout();
+        } else {
             // Connection lost
-            OverlayDefinition.updateOverlay(40);
-            PlayerAppearance.lostConnectionSocket = MovedStatics.gameSocket;
-            MovedStatics.gameSocket = null;
+            MovedStatics.processGameStatus(40);
+            PlayerAppearance.lostConnectionSocket = MovedStatics.gameServerSocket;
+            MovedStatics.gameServerSocket = null;
         }
     }
 

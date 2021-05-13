@@ -20,7 +20,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
         this.method321((byte) 109, (long) anInt2226);
         aRunnable_Impl1_2223.method2(anIntArray2227, anInt2229);
         anInt2229 = 0;
-        arg0.createCanvasNode(10, this);
+        arg0.createThreadNode(10, this);
     }
 
     public static void method325() {
@@ -107,7 +107,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
                     }
                     method302(0);
                 }
-                Class43.sleep(100L);
+                Class43.threadSleep(100L);
             }
         } catch(Exception exception) {
             MovedStatics.printException(null, exception);
@@ -125,7 +125,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
                 if(!aBoolean2224)
                     break;
             }
-            Class43.sleep(20L);
+            Class43.threadSleep(20L);
         }
         if(arg0 >= 100)
             aRunnable_Impl1_2223.method4(26534);

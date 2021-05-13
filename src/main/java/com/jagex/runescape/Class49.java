@@ -9,7 +9,6 @@ import com.jagex.runescape.scene.SceneCluster;
 public class Class49 {
     public static volatile int anInt1147 = 0;
     public static CacheArchive aCacheArchive_1150;
-    public static int anInt1151 = 0;
     public static Class40_Sub9_Sub1 aClass40_Sub9_Sub1_1152;
     public static int anInt1154;
 

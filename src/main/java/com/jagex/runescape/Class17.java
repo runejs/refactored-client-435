@@ -23,18 +23,18 @@ public class Class17 {
     public static int anInt464 = 0;
     public static int[] anIntArray466 = new int[256];
 
-    public static void method273(GameSocket arg0, boolean arg2) {
-        if(Class57.gameSocket != null) {
+    public static void handleUpdateServerConnection(GameSocket updateServerSocket, boolean arg2) {
+        if(Class57.updateServerSocket != null) {
             try {
-                Class57.gameSocket.method1009();
+                Class57.updateServerSocket.kill();
             } catch(Exception exception) {
                 exception.printStackTrace();
                 /* empty */
             }
-            Class57.gameSocket = null;
+            Class57.updateServerSocket = null;
         }
-        Class57.gameSocket = arg0;
-        GameShell.method19(arg2, 24041);
+        Class57.updateServerSocket = updateServerSocket;
+        GameShell.method19(arg2);
         LinkedList.aClass40_Sub1_1081.currentPosition = 0;
         Class40_Sub5_Sub13.aClass40_Sub1_2752 = null;
         Landscape.anInt1157 = 0;
@@ -53,7 +53,7 @@ public class Class17 {
                 break;
             InteractiveObject.aNodeQueue_485.unshift(class40_sub5_sub13);
             GameObjectDefinition.aClass23_2545.put(class40_sub5_sub13.key, class40_sub5_sub13);
-            Class42.anInt1006--;
+            MovedStatics.anInt1006--;
             MovedStatics.anInt554++;
         }
         if(Class8.aByte302 != 0) {
@@ -62,16 +62,16 @@ public class Class17 {
                 class40_sub1.putByte(4);
                 class40_sub1.putByte(Class8.aByte302);
                 class40_sub1.putShortBE(0);
-                Class57.gameSocket.method1010(4, 0, class40_sub1.buffer);
+                Class57.updateServerSocket.sendDataFromBuffer(4, 0, class40_sub1.buffer);
             } catch(java.io.IOException ioexception) {
                 ioexception.printStackTrace();
                 try {
-                    Class57.gameSocket.method1009();
+                    Class57.updateServerSocket.kill();
                 } catch(Exception exception) {
                     exception.printStackTrace();
                     /* empty */
                 }
-                Class57.gameSocket = null;
+                Class57.updateServerSocket = null;
                 MovedStatics.anInt2278++;
             }
         }
@@ -87,11 +87,11 @@ public class Class17 {
 
     public static void method275(long arg1) {
         if(arg1 != 0L) {
-            if(Class42.anInt1008 >= 100)
+            if(MovedStatics.anInt1008 >= 100)
                 ChatBox.addChatMessage("", English.yourIgnoreListIsFull.toString(), 0);
             else {
                 String class1 = TextUtils.formatName(TextUtils.longToName(arg1));
-                for(int i = 0; i < Class42.anInt1008; i++) {
+                for(int i = 0; i < MovedStatics.anInt1008; i++) {
                     if(arg1 == Player.ignores[i]) {
                         ChatBox.addChatMessage("", class1 + English.suffixIsAlreadyOnYourIgnoreList, 0);
                         return;
@@ -104,7 +104,7 @@ public class Class17 {
                     }
                 }
                 if(!class1.equals(Player.localPlayer.playerName)) {
-                    Player.ignores[Class42.anInt1008++] = arg1;
+                    Player.ignores[MovedStatics.anInt1008++] = arg1;
                     GameInterface.redrawTabArea = true;
                     SceneCluster.packetBuffer.putPacket(251);
                     SceneCluster.packetBuffer.putLongBE(arg1);

@@ -14,7 +14,6 @@ public class RSString {
     public static ProducingGraphicsBuffer mapbackProducingGraphicsBuffer;
     public static int clickY = 0;
     public static NodeCache aClass9_1684;
-    public static int anInt1690 = 0;
     public static CacheArchive aCacheArchive_1705;
     public static int[] keyCodes = new int[128];
     public static int tooltipDelay = 50;
@@ -103,8 +102,8 @@ public class RSString {
         return substring(arg1, length);
     }
 
-    public int method51(int arg0, int arg1, byte[] arg2, int arg3) {
-        Class18.method278(chars, arg0, arg2, arg3, arg1 - arg0);
+    public int method51(int arg0, int arg1, byte[] buffer, int arg3) {
+        Class18.method278(chars, arg0, buffer, arg3, arg1 - arg0);
         return -arg0 + arg1;
     }
 

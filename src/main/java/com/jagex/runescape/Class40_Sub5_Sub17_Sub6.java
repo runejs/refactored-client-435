@@ -1,7 +1,7 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.cache.def.SpotAnimDefinition;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.Renderable;
@@ -36,7 +36,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
         anInt3231 = arg4;
         anInt3249 = arg0;
         anInt3239 = arg1;
-        int i = SpotAnimDefinition.forId(anInt3249, 13).animationId;
+        int i = SpotAnimDefinition.forId(anInt3249).animationId;
         if(i != -1) {
             aBoolean3237 = false;
             aAnimationSequence_3242 = ProducingGraphicsBuffer_Sub1.getAnimationSequence(i);
@@ -103,12 +103,12 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
 
 
     public Model getRotatedModel() {
-        SpotAnimDefinition spotAnimDefinition = SpotAnimDefinition.forId(anInt3249, 13);
+        SpotAnimDefinition spotAnimDefinition = SpotAnimDefinition.forId(anInt3249);
         Model class40_sub5_sub17_sub5;
         if(aBoolean3237)
-            class40_sub5_sub17_sub5 = spotAnimDefinition.method549(-1, 2);
+            class40_sub5_sub17_sub5 = spotAnimDefinition.method549(-1);
         else
-            class40_sub5_sub17_sub5 = spotAnimDefinition.method549(anInt3240, 2);
+            class40_sub5_sub17_sub5 = spotAnimDefinition.method549(anInt3240);
         if(class40_sub5_sub17_sub5 == null)
             return null;
         return class40_sub5_sub17_sub5;

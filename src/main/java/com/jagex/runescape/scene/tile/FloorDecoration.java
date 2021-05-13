@@ -27,7 +27,7 @@ public class FloorDecoration {
     public static CRC32 aCRC32_590 = new CRC32();
     public static IndexedImage inventoryBackgroundImage;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
-    public static SignlinkNode aSignlinkNode_607;
+    public static SignlinkNode gameServerSignlinkNode;
     public static Class40_Sub9 aClass40_Sub9_608;
     public static int[] anIntArray612;
     public static int anInt614 = -1;
@@ -177,7 +177,7 @@ public class FloorDecoration {
             GameShell.aClass40_Sub5_Sub14_Sub2_1 = null;
             MovedStatics.aClass40_Sub5_Sub14_Sub2_2105 = null;
             MovedStatics.anIntArray852 = null;
-            HuffmanEncoding.aProducingGraphicsBuffer_1541 = null;
+            HuffmanEncoding.chatModes = null;
             Buffer.tabTopBack = null;
             MovedStatics.tabImageProducer = null;
             MovedStatics.aClass40_Sub5_Sub14_Sub2_1315 = null;
@@ -209,10 +209,10 @@ public class FloorDecoration {
             currentMsSinceLastUpdate = 200;
         }
         Class22.msSinceLastUpdate += currentMsSinceLastUpdate;
-        if(Class42.anInt1006 == 0 && Class17.anInt464 == 0 && MovedStatics.anInt554 == 0 && ProducingGraphicsBuffer.anInt1618 == 0) {
+        if(MovedStatics.anInt1006 == 0 && Class17.anInt464 == 0 && MovedStatics.anInt554 == 0 && ProducingGraphicsBuffer.anInt1618 == 0) {
             return true;
         }
-        if(Class57.gameSocket == null) {
+        if(Class57.updateServerSocket == null) {
             return false;
         }
         try {
@@ -224,25 +224,25 @@ public class FloorDecoration {
                     break;
                 }
                 Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class51.aClass23_1194.method329();
-                Buffer class40_sub1 = new Buffer(4);
-                class40_sub1.putByte(1);
-                class40_sub1.putMediumBE((int) class40_sub5_sub13.key);
-                Class57.gameSocket.method1010(4, 0, class40_sub1.buffer);
+                Buffer buffer = new Buffer(4);
+                buffer.putByte(1);
+                buffer.putMediumBE((int) class40_sub5_sub13.key);
+                Class57.updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
                 Class37.aClass23_869.put(class40_sub5_sub13.key, class40_sub5_sub13);
                 ProducingGraphicsBuffer.anInt1618--;
             }
-            for(/**/; Class42.anInt1006 < 20 && MovedStatics.anInt554 > 0; MovedStatics.anInt554--) {
+            for(/**/; MovedStatics.anInt1006 < 20 && MovedStatics.anInt554 > 0; MovedStatics.anInt554--) {
                 Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) InteractiveObject.aNodeQueue_485.next();
                 Buffer class40_sub1 = new Buffer(4);
                 class40_sub1.putByte(0);
                 class40_sub1.putMediumBE((int) class40_sub5_sub13.key);
-                Class57.gameSocket.method1010(4, 0, class40_sub1.buffer);
+                Class57.updateServerSocket.sendDataFromBuffer(4, 0, class40_sub1.buffer);
                 class40_sub5_sub13.clear();
                 MovedStatics.aClass23_841.put(class40_sub5_sub13.key, class40_sub5_sub13);
-                Class42.anInt1006++;
+                MovedStatics.anInt1006++;
             }
             for(int i_33_ = 0; i_33_ < 100; i_33_++) {
-                int i_34_ = Class57.gameSocket.inputStreamAvailable();
+                int i_34_ = Class57.updateServerSocket.inputStreamAvailable();
                 if(i_34_ < 0) {
                     throw new IOException();
                 }
@@ -265,7 +265,7 @@ public class FloorDecoration {
                     if(i_37_ > i_34_) {
                         i_37_ = i_34_;
                     }
-                    Class57.gameSocket.method1008(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition, i_37_, Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer);
+                    Class57.updateServerSocket.readDataToBuffer(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition, i_37_, Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer);
                     if(Class8.aByte302 != 0) {
                         for(int i_38_ = 0; i_37_ > i_38_; i_38_++) {
                             Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_38_] = (byte) GameShell.method27(Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_38_], Class8.aByte302);
@@ -295,13 +295,13 @@ public class FloorDecoration {
                                     .aClass40_Sub5_Sub13_2250.anInt2763
                                     != ~i_39_) {
                                 try {
-                                    com.jagex.runescape.Class57.gameSocket.method1009();
+                                    com.jagex.runescape.Class57.updateServerSocket.kill();
                                 } catch(Exception exception) {
                                 }
                                 com.jagex.runescape.Class8.aByte302
                                         = (byte) (int) (Math.random() * 255.0
                                         + 1.0);
-                                com.jagex.runescape.Class57.gameSocket = null;
+                                com.jagex.runescape.Class57.updateServerSocket = null;
                                 MovedStatics.anInt813++;
                                 return false;
                             }
@@ -314,7 +314,7 @@ public class FloorDecoration {
                         Class40_Sub5_Sub13.aClass40_Sub1_2752 = null;
                         Landscape.anInt1157 = 0;
                         if(!Npc.aBoolean3298) {
-                            Class42.anInt1006--;
+                            MovedStatics.anInt1006--;
                         } else {
                             Class17.anInt464--;
                         }
@@ -329,7 +329,7 @@ public class FloorDecoration {
                     if(i_42_ > i_34_) {
                         i_42_ = i_34_;
                     }
-                    Class57.gameSocket.method1008(LinkedList.aClass40_Sub1_1081.currentPosition, i_42_, LinkedList.aClass40_Sub1_1081.buffer);
+                    Class57.updateServerSocket.readDataToBuffer(LinkedList.aClass40_Sub1_1081.currentPosition, i_42_, LinkedList.aClass40_Sub1_1081.buffer);
                     if(Class8.aByte302 != 0) {
                         for(int i_43_ = 0; i_42_ > i_43_; i_43_++) {
                             LinkedList.aClass40_Sub1_1081.buffer[LinkedList.aClass40_Sub1_1081.currentPosition + i_43_] = (byte) GameShell.method27(LinkedList.aClass40_Sub1_1081.buffer[LinkedList.aClass40_Sub1_1081.currentPosition + i_43_], Class8.aByte302);
@@ -376,13 +376,13 @@ public class FloorDecoration {
         } catch(IOException ioexception) {
             ioexception.printStackTrace();
             try {
-                Class57.gameSocket.method1009();
+                Class57.updateServerSocket.kill();
             } catch(Exception exception) {
                 exception.printStackTrace();
                 /* empty */
             }
             MovedStatics.anInt2278++;
-            Class57.gameSocket = null;
+            Class57.updateServerSocket = null;
             return false;
         }
     }

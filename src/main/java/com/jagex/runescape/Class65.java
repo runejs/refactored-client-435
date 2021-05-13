@@ -48,6 +48,6 @@ public class Class65 {
         MouseHandler.tile_overlayids = new byte[4][104][104];
         Class40_Sub5_Sub17_Sub6.anIntArray3250 = new int[104];
         Class35.tile_overlay_rotation = new byte[4][104][104];
-        Class42.tile_underlayids = new byte[4][104][104];
+        MovedStatics.tile_underlayids = new byte[4][104][104];
     }
 }

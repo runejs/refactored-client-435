@@ -3,7 +3,6 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.input.MouseHandler;
@@ -46,22 +45,17 @@ public class Class37 {
         return (128 + -_y) * i2 + j2 * _y >> 7;
     }
 
-    public static void method432() {
-        System.out.println("Usage: worldid, [live/office/local], [live/rc/wip], [lowmem/highmem], [free/members]");
-        System.exit(1);
-    }
-
 
     public static void method434(int arg0) {
         MovedStatics.menuOpen = false;
-        IncomingPackets.incomingPacket = -1;
+        IncomingPackets.opcode = -1;
         ActorDefinition.menuActionRow = 0;
         IncomingPackets.incomingPacketSize = 0;
         SceneCluster.packetBuffer.currentPosition = 0;
-        RSString.anInt1690 = -1;
-        MovedStatics.anInt324 = -1;
-        Class35.anInt1728 = 0;
-        Class49.anInt1151 = -1;
+        IncomingPackets.lastOpcode = -1;
+        IncomingPackets.secondLastOpcode = -1;
+        IncomingPackets.cyclesSinceLastPacket = 0;
+        IncomingPackets.thirdLastOpcode = -1;
         MovedStatics.destinationX = 0;
         MovedStatics.minimapState = 0;
         Class40_Sub5_Sub15.systemUpdateTime = 0;
@@ -74,7 +68,7 @@ public class Class37 {
             if(Player.npcs[i] != null)
                 Player.npcs[i].facingActorIndex = -1;
         }
-        OverlayDefinition.updateOverlay(30);
+        MovedStatics.processGameStatus(30);
     }
 
     public static void renderMinimap() {
@@ -155,20 +149,20 @@ public class Class37 {
                 if(npc != null) {
                     int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
                     int npcY = npc.worldY / 32 - Player.localPlayer.worldY / 32;
-                    OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], npcX, npcY);
+                    MovedStatics.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], npcX, npcY);
                 }
             }
             if(Player.headIconDrawType == 2) {
                 int hintX = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + MovedStatics.anInt175);
-                int hintY = 4 * (ProducingGraphicsBuffer.anInt1637 - SpotAnimDefinition.baseX) - (-2 + Player.localPlayer.worldX / 32);
-                OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], hintY, hintX);
+                int hintY = 4 * (ProducingGraphicsBuffer.anInt1637 - MovedStatics.baseX) - (-2 + Player.localPlayer.worldX / 32);
+                MovedStatics.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], hintY, hintX);
             }
             if(Player.headIconDrawType == 10 && ProducingGraphicsBuffer.anInt1623 >= 0 && Player.trackedPlayers.length > ProducingGraphicsBuffer.anInt1623) {
                 Player player = Player.trackedPlayers[ProducingGraphicsBuffer.anInt1623];
                 if(player != null) {
                     int playerX = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
                     int playerY = player.worldX / 32 - Player.localPlayer.worldX / 32;
-                    OverlayDefinition.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], playerY, playerX);
+                    MovedStatics.drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], playerY, playerX);
                 }
             }
         }
@@ -188,9 +182,7 @@ public class Class37 {
 
     }
 
-    public static void method436(int arg0) {
-        if(arg0 < 95)
-            method436(25);
+    public static void method436() {
         for(Class40_Sub2 class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method909(-4)) {
             if(class40_sub2.aClass40_Sub9_Sub2_2001 != null) {
                 Class49.aClass40_Sub9_Sub1_1152.method853(class40_sub2.aClass40_Sub9_Sub2_2001);

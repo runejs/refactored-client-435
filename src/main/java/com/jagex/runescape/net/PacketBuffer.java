@@ -4,7 +4,6 @@ import com.jagex.runescape.*;
 import com.jagex.runescape.audio.Effect;
 import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.io.Buffer;
@@ -18,7 +17,7 @@ public class PacketBuffer extends Buffer {
     public static long aLong2241 = 0L;
     public static int currentSound = 0;
     public static Class40_Sub5_Sub13 aClass40_Sub5_Sub13_2250;
-    public static boolean aBoolean2255 = false;
+    public static boolean closedClient = false;
     public static int lastClickX = 0;
     public static int anInt2258;
 
@@ -63,7 +62,7 @@ public class PacketBuffer extends Buffer {
         if(GameInterface.fullscreenInterfaceId != -1) {
             GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
             GameInterface.fullscreenInterfaceId = -1;
-            OverlayDefinition.updateOverlay(30);
+            MovedStatics.processGameStatus(30);
         }
         if(GameInterface.fullscreenSiblingInterfaceId != -1) {
             GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -122,6 +121,10 @@ public class PacketBuffer extends Buffer {
         currentPosition = (7 + bitoffset) / 8;
     }
 
+    /**
+     * Gets the packet opcode after ISAAC decryption (the - inCypher.nextInt() part).
+     * @return the unencrypted packet opcode
+     */
     public int getPacket() {
         return 0xff & buffer[currentPosition++] - inCipher.nextInt();
     }

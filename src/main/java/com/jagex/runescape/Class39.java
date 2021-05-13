@@ -9,7 +9,6 @@ public class Class39 implements Runnable {
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_907;
     public static ProducingGraphicsBuffer mapbackLeft;
     public static int anInt909 = 0;
-    public static int anInt912 = 20;
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;
     public Object objectLock;
     public boolean aBoolean913 = true;
@@ -80,7 +79,7 @@ public class Class39 implements Runnable {
                     coord++;
                 }
             }
-            Class43.sleep(50L);
+            Class43.threadSleep(50L);
         }
     }
 }

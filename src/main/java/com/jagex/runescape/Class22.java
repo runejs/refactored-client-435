@@ -157,14 +157,14 @@ public abstract class Class22 {
                     if(varPlayerValue == 4)
                         i_22_ = 0;
                     if(i_22_ != RSCanvas.musicVolume) {
-                        if(RSCanvas.musicVolume != 0 || MouseHandler.anInt1457 == -1) {
+                        if(RSCanvas.musicVolume != 0 || MouseHandler.currentSongId == -1) {
                             if(i_22_ == 0) {
                                 Class33.method402(false);
                                 Class35.songTimeout = 0;
                             } else
                                 MovedStatics.method456(i_22_);
                         } else {
-                            Class33.method414(false, 0, MouseHandler.anInt1457, i_22_, 0, CacheArchive.musicCacheArchive);
+                            Class33.method414(false, 0, MouseHandler.currentSongId, i_22_, 0, CacheArchive.musicCacheArchive);
                             Class35.songTimeout = 0;
                         }
                         RSCanvas.musicVolume = i_22_;

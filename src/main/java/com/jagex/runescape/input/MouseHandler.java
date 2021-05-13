@@ -15,7 +15,6 @@ import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.media.VertexNormal;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.media.renderable.Renderable;
-import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Player;
 import com.jagex.runescape.scene.GroundItemTile;
 import com.jagex.runescape.scene.InteractiveObject;
@@ -30,13 +29,16 @@ import java.awt.event.*;
 public class MouseHandler implements MouseListener, MouseMotionListener, FocusListener, MouseWheelListener {
     public static int anInt1450 = -1;
     public static NodeCache modelCache = new NodeCache(50);
-    public static int anInt1457 = -1;
+    public static int currentSongId = -1;
     public static ImageRGB[] minimapHint = new ImageRGB[1000];
-    public static int anInt1468;
+    public static int currentTickSample;
     public static Canvas gameCanvas;
     public static int clickType = 0;
     public static byte[][][] tile_overlayids;
     public static int cameraZoom = 600;
+    public static int currentMouseButtonPressed = 0;
+    public static volatile int mouseButtonPressed = 0;
+    public static volatile int eventMouseButtonPressed = 0;
     public boolean mouseWheelDown;
     public int mouseWheelX;
     public int mouseWheelY;
@@ -167,7 +169,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
     public synchronized void focusLost(FocusEvent arg0) {
         if(GameObject.frame != null)
-            MovedStatics.mouseButtonPressed = 0;
+            mouseButtonPressed = 0;
     }
 
     public synchronized void mouseDragged(MouseEvent mouseEvent) {
@@ -215,11 +217,11 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 return;
             }
             if(event.isMetaDown() || event.getButton() == MouseEvent.BUTTON3) {
-                Actor.eventMouseButtonPressed = 2;
-                MovedStatics.mouseButtonPressed = 2;
+                eventMouseButtonPressed = 2;
+                mouseButtonPressed = 2;
             } else {
-                Actor.eventMouseButtonPressed = 1;
-                MovedStatics.mouseButtonPressed = 1;
+                eventMouseButtonPressed = 1;
+                mouseButtonPressed = 1;
             }
         }
         if(event.isPopupTrigger())
@@ -234,7 +236,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             if(cameraZoom <= 150 && rotation <= 0 || cameraZoom >= 1600 && rotation >= 0) {
                 return;
             }
-            int diff = rotation * 12;
+            int diff = rotation * 64;
             cameraZoom = cameraZoom + diff;
         }
     }
@@ -362,7 +364,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public synchronized void mouseReleased(MouseEvent arg0) {
         if(GameObject.frame != null) {
             LinkedList.anInt1073 = 0;
-            MovedStatics.mouseButtonPressed = 0;
+            mouseButtonPressed = 0;
             mouseWheelDown = false;
         }
         if(arg0.isPopupTrigger())

@@ -1,7 +1,6 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -53,12 +52,12 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
                 i--;
             else
                 i -= 101;
-            OverlayDefinition.addActionRow(English.remove, 0, 0, 0, 13, Native.white + Player.friendUsernames[i]);
-            OverlayDefinition.addActionRow(English.message, 0, 0, 0, 18, Native.white + Player.friendUsernames[i]);
+            MovedStatics.addActionRow(English.remove, 0, 0, 0, 13, Native.white + Player.friendUsernames[i]);
+            MovedStatics.addActionRow(English.message, 0, 0, 0, 18, Native.white + Player.friendUsernames[i]);
             return true;
         }
         if(i >= 401 && i <= 500) {
-            OverlayDefinition.addActionRow(English.remove, 0, 0, 0, 35, Native.white + arg1.disabledText);
+            MovedStatics.addActionRow(English.remove, 0, 0, 0, 35, Native.white + arg1.disabledText);
             return true;
         }
         return false;

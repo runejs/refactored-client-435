@@ -1,7 +1,7 @@
 package com.jagex.runescape.util;
 
 public abstract class Timer {
-    public abstract int sleep(int i, int i_0_);
+    public abstract int getTicks(int i, int i_0_);
 
     public abstract void start();
 

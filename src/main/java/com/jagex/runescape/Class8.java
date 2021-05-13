@@ -21,7 +21,7 @@ public class Class8 {
     public static CacheArchive aCacheArchive_284;
     public static long aLong288;
     public static int anInt289;
-    public static int anInt290 = 0;
+    public static int connectionStage = 0;
     public static int anInt292 = 0;
     public static FontMetrics fontMetrics;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array296;

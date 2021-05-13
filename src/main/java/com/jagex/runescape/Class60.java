@@ -3,7 +3,6 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.OverlayDefinition;
 import com.jagex.runescape.cache.media.TypeFace;
 import com.jagex.runescape.frame.ScreenController;
 import com.jagex.runescape.frame.ScreenMode;
@@ -116,16 +115,16 @@ public class Class60 {
                 InteractiveObject.menuOffsetX = x;
             }
 
-        } else if(Class57.clickX > 0 && RSString.clickY > 0 && Class57.clickX < Class35.aFrame1732.getWidth() && RSString.clickY < Class35.aFrame1732.getHeight()) {
+        } else if(Class57.clickX > 0 && RSString.clickY > 0 && Class57.clickX < GameShell.clientFrame.getWidth() && RSString.clickY < GameShell.clientFrame.getHeight()) {
                         Class40_Sub5_Sub17_Sub1.menuScreenArea = 0;
             int x = -(width / 2) + -4 + Class57.clickX;
-            if(width + x > Class35.aFrame1732.getWidth() - 4)
-                x = Class35.aFrame1732.getWidth() - 4;
+            if(width + x > GameShell.clientFrame.getWidth() - 4)
+                x = GameShell.clientFrame.getWidth() - 4;
             if(x < 0)
                 x = 0;
             int y = RSString.clickY + -4;
-            if(y + height > Class35.aFrame1732.getHeight() - 4)
-                y = Class35.aFrame1732.getHeight() - 4;
+            if(y + height > GameShell.clientFrame.getHeight() - 4)
+                y = GameShell.clientFrame.getHeight() - 4;
             if(y + height > ScreenController.frameHeight-22)
                 y = ScreenController.frameHeight-22 - height;
             if(y < 0)
@@ -179,12 +178,12 @@ public class Class60 {
     }
 
     public static void method992() {
-        SceneCluster.aTimer_768.start();
+        SceneCluster.gameTimer.start();
         for(int i = 0; i < 32; i++)
-            GameShell.aLongArray4[i] = 0L;
+            GameShell.tickSamples[i] = 0L;
         for(int i = 0; i < 32; i++)
-            MovedStatics.aLongArray1614[i] = 0L;
-        Class40_Sub3.anInt2020 = 0;
+            MovedStatics.tickSamples[i] = 0L;
+        Class40_Sub3.ticksPerLoop = 0;
     }
 
     public static void updateLogin() {
@@ -194,21 +193,21 @@ public class Class60 {
             if(RSCanvas.musicVolume == 0) {
                 newVolume = 255;
             }
-            if(RSCanvas.musicVolume != 0 || MouseHandler.anInt1457 == -1) {
+            if(RSCanvas.musicVolume != 0 || MouseHandler.currentSongId == -1) {
                 if(newVolume == 0) {
                     Class33.method402(false);
                     Class35.songTimeout = 0;
                 } else
                     MovedStatics.method456(newVolume);
             } else {
-                Class33.method414(false, 0, MouseHandler.anInt1457, newVolume, 0, CacheArchive.musicCacheArchive);
+                Class33.method414(false, 0, MouseHandler.currentSongId, newVolume, 0, CacheArchive.musicCacheArchive);
                 Class35.songTimeout = 0;
             }
 
             RSCanvas.musicVolume = newVolume;
         }
 
-        if(Class51.currentAction == 10) {
+        if(Class51.gameStatusCode == 10) {
             int i = Class57.clickX + -202;
             int clickType = MouseHandler.clickType;
             int clickY = -171 + RSString.clickY;
@@ -241,7 +240,7 @@ public class Class60 {
                 if(clickType == 1 && clickX + -75 <= i && i <= clickX + 75 && clickY >= i_18_ + -20 && clickY <= i_18_ + 20) {
                     Native.username = Native.username.method62().method85();
                     Class33.setLoginScreenMessage("", English.connectingToServer, "");
-                    OverlayDefinition.updateOverlay(20);
+                    MovedStatics.processGameStatus(20);
                 } else {
                     clickX = 260;
                     if(clickType == 1 && i >= -75 + clickX && clickX + 75 >= i && clickY >= -20 + i_18_ && clickY <= i_18_ + 20) {
@@ -272,7 +271,7 @@ public class Class60 {
                             if(ItemDefinition.anInt2854 == 84) {
                                 Native.username = Native.username.method62().method85();
                                 Class33.setLoginScreenMessage("", English.connectingToServer, "");
-                                OverlayDefinition.updateOverlay(20);
+                                MovedStatics.processGameStatus(20);
                             }
                             if(bool && Native.password.length() < 20)
                                 Native.password = Native.password.addChar(Class59.anInt1388);

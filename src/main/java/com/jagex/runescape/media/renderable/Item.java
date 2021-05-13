@@ -90,7 +90,7 @@ public class Item extends Renderable {
         IdentityKit.aHuffmanEncoding_2590 = arg1;
     }
 
-    public static void method779(Component arg0, boolean arg1, CacheArchive arg2, CacheArchive arg3) {
+    public static void renderLoginScreen(Component arg0, CacheArchive huffmanCacheArchive, CacheArchive gameImageCacheArchive) {
         if (!ISAAC.aBoolean512) {
             Class8.flameLeftBackground = Class40_Sub5_Sub13.createGraphicsBuffer(128, 265, arg0);
             Rasterizer.resetPixels();
@@ -112,7 +112,7 @@ public class Item extends Renderable {
             Rasterizer.resetPixels();
             ProducingGraphicsBuffer.muteButton = Class40_Sub5_Sub13.createGraphicsBuffer(42, 42, arg0);
             Rasterizer.resetPixels();
-            byte[] is = arg2.method170("", Native.titleImage);
+            byte[] is = huffmanCacheArchive.method170("", Native.titleImage);
             ImageRGB class40_sub5_sub14_sub4 = new ImageRGB(is, arg0);
             Class8.flameLeftBackground.prepareRasterizer();
             class40_sub5_sub14_sub4.drawInverse(0, 0);
@@ -162,7 +162,7 @@ public class Item extends Renderable {
             Rasterizer.drawFilledRectangle(0, 0, 42, 42, 0x4d4431);
             Rasterizer.drawUnfilledRectangle(0, 0, 42, 42, 0x242017);
             musicIcon.drawImage(4, 3);
-            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(arg3, Native.logo, (byte) 21, "");
+            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(gameImageCacheArchive, Native.logo, (byte) 21, "");
             Class39.aProducingGraphicsBuffer_907.prepareRasterizer();
             // UNCOMMENT LINE UNDER FOR LOGO
             // class40_sub5_sub14_sub4.drawImage(-128 + 382 + -(class40_sub5_sub14_sub4.imageWidth / 2), 18);
@@ -171,9 +171,10 @@ public class Item extends Renderable {
 
             logo.drawImage(-128 + 382 + -(logo.imageWidth / 2), 18);
 
-            Class40_Sub5_Sub15.loginScreenBox = Main.method359(Native.titleBox, "", arg3);
-            Class59.imgLoginScreenButton = Main.method359(Native.titleButton, "", arg3);
-            Class22.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(arg3, Native.runes, "");
+            Class40_Sub5_Sub15.loginScreenBox = Main.method359(Native.titleBox, "", gameImageCacheArchive);
+            Class59.imgLoginScreenButton = Main.method359(Native.titleButton, "", gameImageCacheArchive);
+            Class22.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(gameImageCacheArchive, Native.runes, "");
+
             Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);
             for (int i = 0; i < 33920; i++)
@@ -196,8 +197,6 @@ public class Item extends Renderable {
                 Renderable.anIntArray2865[i + 64] = 4 * i + 65280;
             for (int i = 0; i < 64; i++)
                 Renderable.anIntArray2865[128 + i] = i * 262144 + 65535;
-            if (!arg1)
-                method779(null, false, null, null);
             for (int i = 0; i < 64; i++)
                 Renderable.anIntArray2865[i + 192] = 16777215;
             Class40_Sub5_Sub17_Sub6.anIntArray3248 = new int[256];
@@ -209,7 +208,7 @@ public class Item extends Renderable {
                 Class40_Sub5_Sub17_Sub6.anIntArray3248[128 + i] = i * 1024 + 16711935;
             for (int i = 0; i < 64; i++)
                 Class40_Sub5_Sub17_Sub6.anIntArray3248[192 + i] = 16777215;
-            Class42.anIntArray1013 = new int[256];
+            MovedStatics.anIntArray1013 = new int[256];
             MovedStatics.anIntArray1445 = new int[32768];
             Landscape.anIntArray1168 = new int[32768];
             FramemapDefinition.method879(null);
@@ -221,8 +220,8 @@ public class Item extends Renderable {
             if (RSCanvas.musicVolume != 0 && !VertexNormal.lowMemory)
                 Class33.method412(false, CacheArchive.musicCacheArchive, 0, (byte) 66, Native.titleSong, 10, "", RSCanvas.musicVolume);
             else
-                Class33.method405(16969, 10);
-            GameShell.method19(false, 24041);
+                MovedStatics.method405(10);
+            GameShell.method19(false);
             MovedStatics.clearScreen = true;
             ISAAC.aBoolean512 = true;
         }
