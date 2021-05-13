@@ -3,7 +3,6 @@ package com.jagex.runescape.frame;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.IdentityKit;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.frame.tab.TabProducer;
 import com.jagex.runescape.input.MouseHandler;
@@ -45,24 +44,24 @@ public class ScreenController {
             frameMode = screenMode;
             if (screenMode == ScreenMode.FIXED) {
                 frameWidth = 765;
-                frameHeight = 503;
-                Class35.aFrame1732.setResizable(false);
-                Class35.aFrame1732.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
-                Class35.aFrame1732.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
+                frameHeight = 540;
+                GameShell.clientFrame.setResizable(false);
+                GameShell.clientFrame.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
+                GameShell.clientFrame.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
             } else if (screenMode == ScreenMode.RESIZABLE) {
                 frameWidth = 900;
                 frameHeight = 637;
-                Class35.aFrame1732.setResizable(true);
-                Class35.aFrame1732.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
-                Class35.aFrame1732.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
+                GameShell.clientFrame.setResizable(true);
+                GameShell.clientFrame.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
+                GameShell.clientFrame.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
 
 
             } else if (screenMode == ScreenMode.FULLSCREEN) {
                 frameWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
                 frameHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
             }
-            Class35.aFrame1732.setSize(ScreenController.frameWidth, ScreenController.frameHeight);
-            Dimension innerSize = getInnerSize(Class35.aFrame1732);
+            GameShell.clientFrame.setSize(ScreenController.frameWidth, ScreenController.frameHeight);
+            Dimension innerSize = getInnerSize(GameShell.clientFrame);
             drawHeight = innerSize.height;
             drawWidth = innerSize.width;
             setBounds();
@@ -75,12 +74,12 @@ public class ScreenController {
         Class12.width = drawWidth;
         IdentityKit.height = drawHeight;
         if (frameMode != ScreenMode.FIXED) {
-            if (frameWidth != Class35.aFrame1732.getWidth()) {
-                frameWidth = Class35.aFrame1732.getWidth();
+            if (frameWidth != GameShell.clientFrame.getWidth()) {
+                frameWidth = GameShell.clientFrame.getWidth();
                 setBounds();
             }
-            if (frameHeight != Class35.aFrame1732.getHeight()) {
-                frameHeight = Class35.aFrame1732.getHeight();
+            if (frameHeight != GameShell.clientFrame.getHeight()) {
+                frameHeight = GameShell.clientFrame.getHeight();
                 setBounds();
             }
         }
@@ -90,14 +89,15 @@ public class ScreenController {
         if (MouseHandler.gameCanvas == null) {
             return;
         }
-        Dimension innerSize = getInnerSize(Class35.aFrame1732);
+        Dimension innerSize = getInnerSize(GameShell.clientFrame);
         drawHeight = innerSize.height;
         drawWidth = innerSize.width;
         Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 512 : drawWidth, frameMode == ScreenMode.FIXED ? 334 : drawHeight);
         Class24.fullScreenTextureArray = Rasterizer3D.setLineOffsets(null);
         Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 479 : drawWidth, frameMode == ScreenMode.FIXED ? 96 : drawHeight);
-        MovedStatics.chatboxLineOffsets = Rasterizer3D.setLineOffsets(null);
-        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 190 : drawWidth, frameMode == ScreenMode.FIXED ? 261 : drawHeight);
+        // TODO rethink this, maybe its way easier than this
+//        MovedStatics.chatboxLineOffsets = Rasterizer3D.setLineOffsets(null);
+//        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 190 : drawWidth, frameMode == ScreenMode.FIXED ? 261 : drawHeight);
         ActorDefinition.sidebarOffsets = Rasterizer3D.setLineOffsets(null);
         Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 765 : drawWidth, frameMode == ScreenMode.FIXED ? 503 : drawHeight);
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(null);
@@ -114,15 +114,15 @@ public class ScreenController {
         Scene.method95(500, 800, frameMode == ScreenMode.FIXED ? 512 : drawWidth, frameMode == ScreenMode.FIXED ? 334 : drawHeight, is);
         MouseHandler.gameCanvas.setSize(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight);
 
-        if (Class51.currentAction <= 35 && Class51.currentAction >= 30) {
-            MovedStatics.gameScreenImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, Class35.aFrame1732);
+        if (Class51.gameStatusCode <= 35 && Class51.gameStatusCode >= 30) {
+            MovedStatics.gameScreenImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, GameShell.clientFrame);
         } else {
             MouseHandler.gameCanvas.setSize(Class12.width, IdentityKit.height);
             MouseHandler.gameCanvas.setVisible(true);
-            if (Class35.aFrame1732 == null)
+            if (GameShell.clientFrame == null)
                 MouseHandler.gameCanvas.setLocation(0, 0);
             else {
-                Insets insets = Class35.aFrame1732.getInsets();
+                Insets insets = GameShell.clientFrame.getInsets();
                 MouseHandler.gameCanvas.setLocation(insets.left, insets.top);
             }//            Class38.loginBoxGraphics = Class40_Sub5_Sub13.createGraphicsBuffer(frameWidth, frameHeight, Class35.aFrame1732);
         }
@@ -219,7 +219,7 @@ public class ScreenController {
         //width 516
         //height 184
         drawFramePiece(RSCanvas.chatBoxImageProducer, x + 17, y + 16);
-        drawFramePiece(HuffmanEncoding.aProducingGraphicsBuffer_1541, x, y + 112);
+        drawFramePiece(HuffmanEncoding.chatModes, x, y + 112);
         drawFramePieceCutout(RSCanvas.tabBottom, x + 496, y + 125, 20, RSCanvas.tabBottom.height, 0, 0);
         drawFramePiece(MovedStatics.chatboxRight, x, y + 16);
         drawFramePieceCutout(Class17.chatboxTop, x, y, Class17.chatboxTop.width - 37, Class17.chatboxTop.height - 3, 0, 3);
@@ -314,27 +314,35 @@ public class ScreenController {
         }
     }
 
-    public static void handleChatClick(int x, int y) {
-        if (frameMode == ScreenMode.FIXED) {
-            if (GameInterface.chatboxInterfaceId == -1) {
-                if (ChatBox.dialogueId == -1) {
-                    if (y < 434 && x < 426)
-                        ClientScriptRunner.method873(y - 357, 45);
-                } else
-                    Class13.handleInterfaceActions(3, x, y, 17, 357, 496, 453, ChatBox.dialogueId);
-            } else
-                Class13.handleInterfaceActions(2, x, y, 17, 357, 496, 453, GameInterface.chatboxInterfaceId);
-        } else {
-            if (GameInterface.chatboxInterfaceId == -1) {
-                if (ChatBox.dialogueId == -1) {
-                    if (y < frameHeight - (112) && x < 426)
-                        ClientScriptRunner.method873(y - (frameHeight - 162), 45);
-                } else
-                    Class13.handleInterfaceActions(3, x, y, 17, (frameHeight - 162), frameWidth - 496, frameHeight - 54, ChatBox.dialogueId);
-            } else
-                Class13.handleInterfaceActions(2, x, y, 17, (frameHeight - 162), frameWidth - 496, frameHeight - 54, GameInterface.chatboxInterfaceId);
+    public static void handleChatBoxMouse(int x, int y) {
+        int chatBoxWidth = 479;
+        int chatBoxHeight = 96;
+        int offsetBottom = 50; // Offset for the chat modes below the chat, and the chat bottom frame itself
+        int offsetLeft = 17; // Offset from the left of the screen to account for chat left frame
+
+        // Define chat box bounds as absolute screen coordinates (accounts for resizable)
+        int minX = offsetLeft;
+        int minY = drawHeight - offsetBottom - chatBoxHeight;
+        int maxX = minX + chatBoxWidth;
+        int maxY = minY + chatBoxHeight;
+
+        // Chat being shown, and mouse is in usernames area
+        if (GameInterface.chatboxInterfaceId == -1 && ChatBox.dialogueId == -1 && y < maxY - 21 && x < maxX - 70) {
+            ClientScriptRunner.handleChatNamesRightClick(y - minY);
+            return;
         }
 
+        // Handle interface actions for permanent chat box widget. Takes precedence over regular chat box widgets
+        if (ChatBox.dialogueId != -1) {
+            Class13.handleInterfaceActions(3, x, y, minX, minY, maxX, maxY, ChatBox.dialogueId);
+            return;
+        }
+
+        // Handle interface actions for regular chat box widget
+        if (GameInterface.chatboxInterfaceId != -1) {
+            Class13.handleInterfaceActions(2, x, y, minX, minY, maxX, maxY, GameInterface.chatboxInterfaceId);
+            return;
+        }
     }
 
 
@@ -377,7 +385,7 @@ public class ScreenController {
 
             if (Item.obfuscatedKeyStatus[81] && InteractiveObject.playerRights > 1) {
                 SceneCluster.packetBuffer.putPacket(246);
-                SceneCluster.packetBuffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + SpotAnimDefinition.baseX), Integer.toString(destY + Class26.baseY)));
+                SceneCluster.packetBuffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + MovedStatics.baseX), Integer.toString(destY + Class26.baseY)));
             } else {
                 boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], destX, 0, true, 0, 0, Player.localPlayer.pathX[0], destY, 1);
                 if (bool) {

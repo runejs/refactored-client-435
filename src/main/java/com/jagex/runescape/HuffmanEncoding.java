@@ -3,7 +3,6 @@ package com.jagex.runescape;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.ImageRGB;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
@@ -16,7 +15,7 @@ import tech.henning.fourthreefive.Configuration;
 import java.text.MessageFormat;
 
 public class HuffmanEncoding {
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1541;
+    public static ProducingGraphicsBuffer chatModes;
     public static int anInt1545 = 0;
     public static int reportAbuseInterfaceID = -1;
     public static int anInt1559 = 7759444;
@@ -113,10 +112,10 @@ public class HuffmanEncoding {
                     class1 = class1 + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.aClass1_569 + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthasis;
                 }
                 if (Class8.itemSelected == 1) {
-                    OverlayDefinition.addActionRow(English.use, index, x, y, 49, Native.aClass1_3295 + Native.toYellow + class1);
+                    MovedStatics.addActionRow(English.use, index, x, y, 49, Native.aClass1_3295 + Native.toYellow + class1);
                 } else if (Main.widgetSelected == 1) {
                     if ((0x2 & ItemDefinition.selectedMask) == 2) {
-                        OverlayDefinition.addActionRow(Native.aClass1_1918, index, x, y, 21, Native.aClass1_611 + Native.toYellow + class1);
+                        MovedStatics.addActionRow(Native.aClass1_1918, index, x, y, 21, Native.aClass1_611 + Native.toYellow + class1);
                     }
                 } else {
                     String[] class1s = actorDefinition.options;
@@ -142,7 +141,7 @@ public class HuffmanEncoding {
                                 if (i == 4) {
                                     i_3_ = 20;
                                 }
-                                OverlayDefinition.addActionRow(class1s[i], index, x, y, i_3_, Native.yellow + class1);
+                                MovedStatics.addActionRow(class1s[i], index, x, y, i_3_, Native.yellow + class1);
                             }
                         }
                     }
@@ -169,7 +168,7 @@ public class HuffmanEncoding {
                                 if (i == 4) {
                                     i_5_ = 20 + i_4_;
                                 }
-                                OverlayDefinition.addActionRow(class1s[i], index, x, y, i_5_, Native.yellow +class1);
+                                MovedStatics.addActionRow(class1s[i], index, x, y, i_5_, Native.yellow +class1);
                             }
                         }
                     }
@@ -185,7 +184,7 @@ public class HuffmanEncoding {
                         examineText.append("<col=00ff00>) (</col>");
                         examineText.append(
                                 MessageFormat.format("<col=ffffff>{0}, {1}</col>",
-                                        Integer.toString(x + SpotAnimDefinition.baseX),
+                                        Integer.toString(x + MovedStatics.baseX),
                                         Integer.toString(y + Class26.baseY)
                                 )
                         );
@@ -193,7 +192,7 @@ public class HuffmanEncoding {
 
 
                     }
-                    OverlayDefinition.addActionRow(English.examine, index, x, y, 1001, examineText.toString());
+                    MovedStatics.addActionRow(English.examine, index, x, y, 1001, examineText.toString());
                 }
             }
         }

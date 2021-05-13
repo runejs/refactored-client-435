@@ -28,7 +28,7 @@ public class MillisTimer extends Timer {
             cache[i] = time;
     }
 
-    public int sleep(int arg0, int arg1) {
+    public int getTicks(int arg0, int arg1) {
         int i = sleep;
         sleep = 1;
         int i_5_ = anInt1915;
@@ -57,7 +57,7 @@ public class MillisTimer extends Timer {
         }
         if(sleep < arg1)
             sleep = arg1;
-        Class43.sleep(sleep);
+        Class43.threadSleep(sleep);
         int i_7_ = 0;
         for(/**/; anInt1903 < 256; anInt1903 += anInt1915)
             i_7_++;

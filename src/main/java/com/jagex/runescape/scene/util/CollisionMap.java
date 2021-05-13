@@ -11,12 +11,12 @@ import com.jagex.runescape.util.BitUtils;
 public class CollisionMap {
     public static int anInt141;
     public static Object anObject162 = new Object();
-    public static int anInt163 = -1;
+    public static int currentHoveredWidgetChildId = -1;
     public static int anInt165 = 0;
     public static Class8 aClass8_166;
     public static int menuHeight;
     public static byte[] aByteArray169 = new byte[]{95, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57};
-    public static int anInt172;
+    public static int someOtherPort;
 
 
     public int insetX;
@@ -47,11 +47,11 @@ public class CollisionMap {
 
 
     public static int method157(int arg0, int arg1, int arg2) {
-        int i = Class42.method884(-1 + arg1, -1 + arg2) + Class42.method884(1 + arg1, arg2 - 1) + Class42.method884(-1 + arg1, 1 + arg2) + Class42.method884(1 + arg1, arg2 + 1);
+        int i = MovedStatics.method884(-1 + arg1, -1 + arg2) + MovedStatics.method884(1 + arg1, arg2 - 1) + MovedStatics.method884(-1 + arg1, 1 + arg2) + MovedStatics.method884(1 + arg1, arg2 + 1);
         if(arg0 != 0)
             return 56;
-        int i_126_ = Class42.method884(arg1 - 1, arg2) + Class42.method884(arg1 + 1, arg2) - (-Class42.method884(arg1, arg2 - 1) + -Class42.method884(arg1, 1 + arg2));
-        int i_127_ = Class42.method884(arg1, arg2);
+        int i_126_ = MovedStatics.method884(arg1 - 1, arg2) + MovedStatics.method884(arg1 + 1, arg2) - (-MovedStatics.method884(arg1, arg2 - 1) + -MovedStatics.method884(arg1, 1 + arg2));
+        int i_127_ = MovedStatics.method884(arg1, arg2);
         return i / 16 - (-(i_126_ / 8) - i_127_ / 4);
     }
 

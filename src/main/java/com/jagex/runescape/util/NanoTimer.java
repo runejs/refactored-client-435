@@ -3,7 +3,7 @@ package com.jagex.runescape.util;
 import com.jagex.runescape.Class43;
 
 public class NanoTimer extends Timer {
-    public long last;
+    public long nextUpdate;
 
     public NanoTimer() {
         start();
@@ -14,27 +14,43 @@ public class NanoTimer extends Timer {
     }
 
     public void start() {
-        last = System.nanoTime();
+        nextUpdate = System.nanoTime();
     }
 
-    public int sleep(int arg0, int arg1) {
-        int i;
-        try {
-            long l = (long) arg1 * 1000000L;
-            long l_0_ = last - System.nanoTime();
-            if(l > l_0_)
-                l_0_ = l;
-            Class43.sleep(l_0_ / 1000000L);
-            long l_1_ = System.nanoTime();
-            int i_2_;
-            for(i_2_ = 0; i_2_ < 10 && (i_2_ < 1 || last < l_1_); i_2_++)
-                last += (long) arg0 * 1000000L;
-            if(l_1_ > last)
-                last = l_1_;
-            i = i_2_;
-        } catch(RuntimeException runtimeexception) {
-            throw runtimeexception;
+    /**
+     * Gets the pending ticks required to reach the next update time, based on a set time per tick
+     * @param millisPerTick the tick length in milliseconds, normally 20ms
+     * @param minSleep the minimum amount to sleep for, normally 1ms
+     * @return the ticks that we needed, to reach the next update time
+     */
+    public int getTicks(int millisPerTick, int minSleep) {
+        // Converts minSleep to nanoseconds
+        long minSleepNano = (long) minSleep * 1000000L;
+
+        // Sets the sleep value to the delta till the next update
+        long sleepNano = nextUpdate - System.nanoTime();
+
+        // Make sure we always sleep above the specified minSleep value (to avoid sleeping by 0 or any negative values)
+        if(sleepNano < minSleepNano)
+            sleepNano = minSleepNano;
+
+        // Sleeps the thread till the next due update
+        Class43.threadSleep(sleepNano / 1000000L);
+
+        long currentNanoTime = System.nanoTime();
+
+        // Increases the nextUpdate value by the milliseconds per tick, until we go above the current time (caps at 10 ticks)
+        int ticks;
+        for(ticks = 0; ticks < 10 && (ticks < 1 || nextUpdate < currentNanoTime); ticks++) {
+            nextUpdate += (long) millisPerTick * 1000000L;
         }
-        return i;
+
+        // Make sure we always keep the next update above or equal to the current time
+        if(nextUpdate < currentNanoTime) {
+            nextUpdate = currentNanoTime;
+        }
+
+        // Returns the ticks that we needed, to reach the nextUpdate time
+        return ticks;
     }
 }

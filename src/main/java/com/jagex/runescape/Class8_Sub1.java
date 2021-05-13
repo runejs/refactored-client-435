@@ -116,7 +116,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
     public void method222(Signlink arg0, int arg1) throws Exception {
         anInt1831 = arg1;
         method219(System.currentTimeMillis());
-        arg0.createCanvasNode(10, this);
+        arg0.createThreadNode(10, this);
     }
 
     public void method213() {
@@ -128,7 +128,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
                 if(!aBoolean1820)
                     break;
             }
-            Class43.sleep(50L);
+            Class43.threadSleep(50L);
         }
     }
 
@@ -146,7 +146,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
                 }
                 method212(System.currentTimeMillis());
             }
-            Class43.sleep(5L);
+            Class43.threadSleep(5L);
         }
     }
 

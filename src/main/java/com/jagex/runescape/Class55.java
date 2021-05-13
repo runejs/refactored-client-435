@@ -1,10 +1,9 @@
 package com.jagex.runescape;
 
 import com.jagex.runescape.cache.CacheArchive;
-import com.jagex.runescape.cache.def.*;
+import com.jagex.runescape.cache.def.SpotAnimDefinition;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.media.renderable.GameObject;
-import com.jagex.runescape.scene.InteractiveObject;
 
 import java.awt.*;
 import java.io.*;
@@ -13,7 +12,7 @@ public class Class55 {
     public static int mouseInvInterfaceIndex = 0;
     public static Class48 aClass48_1289;
     public static volatile int eventClickX = 0;
-    public static int anInt1296 = -1;
+    public static int currentHoveredChatboxWidgetChildId = -1;
     public static int anInt1299 = 2301979;
     public static int destinationY = 0;
 
@@ -58,12 +57,12 @@ public class Class55 {
     }
 
     public static Class40_Sub5_Sub15 method960(int arg1) {
-        Class40_Sub5_Sub15 class40_sub5_sub15 = (Class40_Sub5_Sub15) Class42.aClass9_998.get((long) arg1);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = (Class40_Sub5_Sub15) MovedStatics.aClass9_998.get((long) arg1);
         if(class40_sub5_sub15 != null)
             return class40_sub5_sub15;
         class40_sub5_sub15 = Class35.method421(MovedStatics.aCacheArchive_2364, (byte) 79, arg1, ClientScriptRunner.aCacheArchive_2162, false);
         if(class40_sub5_sub15 != null)
-            Class42.aClass9_998.put((long) arg1, class40_sub5_sub15);
+            MovedStatics.aClass9_998.put((long) arg1, class40_sub5_sub15);
         return class40_sub5_sub15;
     }
 
@@ -102,8 +101,8 @@ public class Class55 {
     }
 
     public static void method966(int arg0, CacheArchive arg1, CacheArchive arg2) {
-        UnderlayDefinition.aCacheArchive_2582 = arg1;
+        MovedStatics.aCacheArchive_2582 = arg1;
         int i = -87 / ((-20 - arg0) / 56);
-        InteractiveObject.aCacheArchive_488 = arg2;
+        SpotAnimDefinition.gameDefinitionsCacheArchive = arg2;
     }
 }

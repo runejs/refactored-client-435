@@ -1,6 +1,5 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.cache.CacheIndex;
 import com.jagex.runescape.media.renderable.GameObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
@@ -53,14 +52,14 @@ public class RSRuntimeException extends RuntimeException {
     }
 
     public static void method1057(int arg0) {
-        SceneCluster.aTimer_768.reset();
+        SceneCluster.gameTimer.reset();
         for(int i = 0; i < 32; i++)
-            GameShell.aLongArray4[i] = 0L;
+            GameShell.tickSamples[i] = 0L;
         for(int i = 0; i < 32; i++)
-            MovedStatics.aLongArray1614[i] = 0L;
+            MovedStatics.tickSamples[i] = 0L;
         if(arg0 <= 67)
             lastActiveInvInterface = -3;
-        Class40_Sub3.anInt2020 = 0;
+        Class40_Sub3.ticksPerLoop = 0;
     }
 
     /*synthetic*/

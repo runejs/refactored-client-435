@@ -8,6 +8,7 @@ import com.jagex.runescape.frame.ScreenMode;
 import com.jagex.runescape.frame.tab.parts.TabParts;
 import com.jagex.runescape.input.MouseHandler;
 import com.jagex.runescape.io.Buffer;
+import com.jagex.runescape.media.Rasterizer;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.*;
@@ -16,7 +17,6 @@ import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.CacheArchive;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.frame.ChatBox;
 import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.language.English;
@@ -54,10 +54,8 @@ public class MovedStatics {
     public static int crossY = 0;
     public static int anInt2278 = 0;
     public static int anInt2280 = 0;
-    public static volatile int mouseButtonPressed = 0;
     public static int anInt321 = 5063219;
     public static volatile int eventMouseY = -1;
-    public static int anInt324 = 0;
     public static boolean redrawChatbox = false;
     public static ImageRGB[] mapDots;
     public static CacheArchive aCacheArchive_654;
@@ -79,7 +77,6 @@ public class MovedStatics {
     public static volatile long aLong174 = 0L;
     public static int anInt175 = 0;
     public static int[] anIntArray178;
-    public static GameShell anApplet_Sub1_179 = null;
     public static int anInt188;
     public static Class22 aClass22_189;
     public static int anInt194;
@@ -94,19 +91,18 @@ public class MovedStatics {
     public static boolean reportMutePlayer = false;
     public static int anInt1607 = 10;
     public static NodeCache aClass9_1611 = new NodeCache(50);
-    public static long[] aLongArray1614 = new long[32];
+    public static long[] tickSamples = new long[32];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1315;
     public static int anInt1318 = 3353893;
     public static IndexedImage tabBottomBack;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array215;
-    public static long aLong219 = 0L;
     public static NodeCache modelCache = new NodeCache(260);
     public static int anInt255;
-    public static boolean aBoolean260 = false;
+    public static boolean showChatPanelRedrawnText = false;
     public static int[][][] anIntArrayArrayArray262;
     public static int anInt1806;
     public static int lastContinueTextWidgetId = -1;
-    public static GameSocket gameSocket;
+    public static GameSocket gameServerSocket;
     public static int[][][] tile_height = new int[4][105][105];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2105;
     public static int[] anIntArray2106 = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
@@ -123,7 +119,6 @@ public class MovedStatics {
     public static HashTable aClass23_841 = new HashTable(4096);
     public static int anInt848 = 0;
     public static int currentCameraPositionV;
-    public static NodeCache aClass9_851 = new NodeCache(30);
     public static int[] anIntArray852;
     public static long aLong853;
     public static int anInt854 = -1;
@@ -139,8 +134,21 @@ public class MovedStatics {
     public static int destinationX = 0;
     public static int anInt1511 = -1;
     public static int lowestPlane = 99;
+    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
+    public static int anInt2576;
+    public static int anInt2581;
+    public static CacheArchive aCacheArchive_2582;
+    public static ImageRGB minimapEdge;
+    public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2301;
+    public static int baseX;
+    public static byte[][][] tile_underlayids;
+    public static NodeCache aClass9_998 = new NodeCache(100);
+    public static int anInt1006 = 0;
+    public static int anInt1008 = 0;
+    public static int anInt1010 = 2;
+    public static int[] anIntArray1013;
 
-    public static void method440(byte arg0) {
+    public static void method440() {
         if (ISAAC.aBoolean512) {
             Class51.anIntArray1198 = null;
             GameObject.flameRightBackground = null;
@@ -162,25 +170,19 @@ public class MovedStatics {
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = null;
             anIntArray178 = null;
             KeyFocusListener.aProducingGraphicsBuffer_1285 = null;
-            if (arg0 <= -65) {
-                Class17.aProducingGraphicsBuffer_463 = null;
-                Class42.anIntArray1013 = null;
-                Class33.method405(16969, 10);
-                GameShell.method19(true, 24041);
-                ISAAC.aBoolean512 = false;
-            }
+            Class17.aProducingGraphicsBuffer_463 = null;
+            anIntArray1013 = null;
+            method405(10);
+            GameShell.method19(true);
+            ISAAC.aBoolean512 = false;
         }
-    }
-
-    public static void method441(CacheArchive arg0) {
-        Actor.aCacheArchive_3144 = arg0;
     }
 
     public static int[] menuActionTypes = new int[500];
     public static ProducingGraphicsBuffer loginBoxGraphics;
     public static int[] anIntArray889 = new int[128];
     public static int anInt892;
-    public static boolean aBoolean893 = false;
+    public static boolean showSidePanelRedrawnText = false;
     public static int[] anIntArray1916 = new int[50];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1919;
     public static int anInt1923 = 0;
@@ -207,10 +209,10 @@ public class MovedStatics {
                                 i_4_ = 450;
                             if (Class13.mouseX < 4 + i_4_) {
                                 if (InteractiveObject.playerRights >= 1) {
-                                    OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 2028, Native.white + class1);
+                                    addActionRow(English.reportAbuse, 0, 0, 0, 2028, Native.white + class1);
                                 }
-                                OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 2051, Native.white + class1);
-                                OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 2045, Native.white + class1);
+                                addActionRow(English.addIgnore, 0, 0, 0, 2051, Native.white + class1);
+                                addActionRow(English.addFriend, 0, 0, 0, 2045, Native.white + class1);
                             }
                         }
                         if (i >= 5)
@@ -239,9 +241,9 @@ public class MovedStatics {
         if (Player.headIconDrawType == 2) {
             if (arg0 >= -28)
                 method445(-128);
-            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -SpotAnimDefinition.baseX << 7) + Landscape.anInt1170, 4976905);
+            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -baseX << 7) + Landscape.anInt1170, 4976905);
             if (ISAAC.anInt522 > -1 && pulseCycle % 20 < 10)
-                UnderlayDefinition.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
+                aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
         }
     }
 
@@ -357,7 +359,7 @@ public class MovedStatics {
     }
 
     public static void method233(boolean arg0) {
-        Class33.aClass9_778.clear();
+        OverlayDefinition.overlayDefinitionCache.clear();
         if (!arg0)
             method236(null, null, null);
     }
@@ -377,7 +379,7 @@ public class MovedStatics {
             mapDots = null;
         }
         if (arg1) {
-            i += Class42.anInt1006 + anInt554;
+            i += anInt1006 + anInt554;
         }
         return i;
     }
@@ -480,7 +482,7 @@ public class MovedStatics {
     public static void method332(int arg0) {
         synchronized (CollisionMap.anObject162) {
             if (Buffer.anInt1987 == 0)
-                Main.signlink.createCanvasNode(5, new Class44());
+                Main.signlink.createThreadNode(5, new Class44());
             Buffer.anInt1987 = arg0;
         }
     }
@@ -533,14 +535,14 @@ public class MovedStatics {
         return GameShell.method32(i_7_, arg2, i_8_, true, i_1_);
     }
 
-    public static int method1034(boolean arg0, int arg1, int arg2, byte[] arg3) {
-        int i = -1;
-        if (!arg0)
-            return 39;
-        for (int i_1_ = arg1; i_1_ < arg2; i_1_++)
-            i = KeyFocusListener.anIntArray1282[0xff & (i ^ arg3[i_1_])] ^ i >>> 8;
-        i ^= 0xffffffff;
-        return i;
+    public static int calculateCrc8(int offset, int size, byte[] data) {
+        int crc = -1;
+        for (int currentByte = offset; currentByte < size; currentByte++) {
+            int tableIndex = 0xff & (crc ^ data[currentByte]);
+            crc = KeyFocusListener.crc8LookupTable[tableIndex] ^ crc >>> 8;
+        }
+        crc ^= 0xffffffff;
+        return crc;
     }
 
     public static String[] method968(String[] arg0) {
@@ -564,7 +566,7 @@ public class MovedStatics {
         InteractiveObject.aByteArrayArrayArray492 = null;
         OverlayDefinition.tile_underlay_path = null;
         MouseHandler.tile_overlayids = null;
-        Class42.tile_underlayids = null;
+        tile_underlayids = null;
         Class40_Sub5_Sub17_Sub6.anIntArray3250 = null;
     }
 
@@ -583,10 +585,10 @@ public class MovedStatics {
                 string = string.replace('@', '_');
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
-                SignlinkNode signlinkNode = Actor.signlink.method388(false, new URL(Actor.signlink.anApplet740.getCodeBase(), "clienterror.ws?c=" + Class39.anInt901 + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
-                while (signlinkNode.anInt434 == 0)
-                    Class43.sleep(1L);
-                if (signlinkNode.anInt434 != 1)
+                SignlinkNode signlinkNode = Actor.signlink.addType4Node(new URL(Actor.signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + Class39.anInt901 + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
+                while (signlinkNode.status == 0)
+                    Class43.threadSleep(1L);
+                if (signlinkNode.status != 1)
                     return;
                 DataInputStream datainputstream = (DataInputStream) signlinkNode.value;
                 datainputstream.read();
@@ -597,27 +599,27 @@ public class MovedStatics {
     public static void method184(byte[] data, int arg1) {
         Buffer buffer = new Buffer(data);
         buffer.currentPosition = -2 + data.length;
-        UnderlayDefinition.anInt2581 = buffer.getUnsignedShortBE();
-        Actor.anIntArray3111 = new int[UnderlayDefinition.anInt2581];
-        GroundItemTile.aByteArrayArray1370 = new byte[UnderlayDefinition.anInt2581][];
-        Class17.anIntArray456 = new int[UnderlayDefinition.anInt2581];
-        Npc.anIntArray3312 = new int[UnderlayDefinition.anInt2581];
-        Class57.anIntArray1347 = new int[UnderlayDefinition.anInt2581];
+        anInt2581 = buffer.getUnsignedShortBE();
+        Actor.anIntArray3111 = new int[anInt2581];
+        GroundItemTile.aByteArrayArray1370 = new byte[anInt2581][];
+        Class17.anIntArray456 = new int[anInt2581];
+        Npc.anIntArray3312 = new int[anInt2581];
+        Class57.anIntArray1347 = new int[anInt2581];
 
-        buffer.currentPosition = data.length + -7 + -(UnderlayDefinition.anInt2581 * 8);
+        buffer.currentPosition = data.length + -7 + -(anInt2581 * 8);
         ItemDefinition.anInt2846 = buffer.getUnsignedShortBE();
         GameShell.anInt31 = buffer.getUnsignedShortBE();
         int i = 1 + (buffer.getUnsignedByte() & 0xff);
-        for (int i_34_ = 0; i_34_ < UnderlayDefinition.anInt2581; i_34_++)
+        for (int i_34_ = 0; i_34_ < anInt2581; i_34_++)
             Class57.anIntArray1347[i_34_] = buffer.getUnsignedShortBE();
-        for (int i_35_ = arg1; i_35_ < UnderlayDefinition.anInt2581; i_35_++)
+        for (int i_35_ = arg1; i_35_ < anInt2581; i_35_++)
             Actor.anIntArray3111[i_35_] = buffer.getUnsignedShortBE();
-        for (int i_36_ = 0; i_36_ < UnderlayDefinition.anInt2581; i_36_++)
+        for (int i_36_ = 0; i_36_ < anInt2581; i_36_++)
             Class17.anIntArray456[i_36_] = buffer.getUnsignedShortBE();
-        for (int i_37_ = 0; UnderlayDefinition.anInt2581 > i_37_; i_37_++)
+        for (int i_37_ = 0; anInt2581 > i_37_; i_37_++)
             Npc.anIntArray3312[i_37_] = buffer.getUnsignedShortBE();
 
-        buffer.currentPosition = data.length - (7 + UnderlayDefinition.anInt2581 * 8 + -3 + i * 3);
+        buffer.currentPosition = data.length - (7 + anInt2581 * 8 + -3 + i * 3);
         Buffer.anIntArray1972 = new int[i];
         for (int i_38_ = 1; i > i_38_; i_38_++) {
             Buffer.anIntArray1972[i_38_] = buffer.getMediumBE();
@@ -625,7 +627,7 @@ public class MovedStatics {
                 Buffer.anIntArray1972[i_38_] = 1;
         }
         buffer.currentPosition = 0;
-        for (int i_39_ = 0; UnderlayDefinition.anInt2581 > i_39_; i_39_++) {
+        for (int i_39_ = 0; anInt2581 > i_39_; i_39_++) {
             int i_40_ = Npc.anIntArray3312[i_39_];
             int i_41_ = Class17.anIntArray456[i_39_];
             int i_42_ = i_40_ * i_41_;
@@ -646,7 +648,7 @@ public class MovedStatics {
 
     public static void method188() {
         Class40_Sub5_Sub6.aClass9_2439.clear();
-        Class42.aClass9_998.clear();
+        aClass9_998.clear();
     }
 
     public static void method399(int arg0, int arg2) {
@@ -713,11 +715,11 @@ public class MovedStatics {
 
     public static void method838(int arg0, long arg1) {
         if (arg1 != 0) {
-            for (int i = arg0; i < Class42.anInt1008; i++) {
+            for (int i = arg0; i < anInt1008; i++) {
                 if (Player.ignores[i] == arg1) {
                     GameInterface.redrawTabArea = true;
-                    Class42.anInt1008--;
-                    for (int i_16_ = i; Class42.anInt1008 > i_16_; i_16_++)
+                    anInt1008--;
+                    for (int i_16_ = i; anInt1008 > i_16_; i_16_++)
                         Player.ignores[i_16_] = Player.ignores[1 + i_16_];
                     SceneCluster.packetBuffer.putPacket(28);
                     SceneCluster.packetBuffer.putLongBE(arg1);
@@ -725,12 +727,6 @@ public class MovedStatics {
                 }
             }
         }
-    }
-
-    public static int method525(byte[] arg0, int arg1, byte arg2) {
-        if (arg2 != -68)
-            return -56;
-        return method1034(true, 0, arg1, arg0);
     }
 
     public static ImageRGB[] method526(CacheArchive arg0, String arg2, String arg3) {
@@ -872,7 +868,7 @@ public class MovedStatics {
                         return;
                     }
                 }
-                for(int i = 0; Class42.anInt1008 > i; i++) {
+                for(int i = 0; anInt1008 > i; i++) {
                     if(Player.ignores[i] == name) {
                         ChatBox.addChatMessage("", English.pleaseRemove + username + English.suffixFromYourIgnoreListFirst, 0);
                         return;
@@ -896,10 +892,10 @@ public class MovedStatics {
         if (Class8.itemSelected == 0 && Main.widgetSelected == 0) {
             String tileCoords = "";
             if (Configuration.DEBUG_CONTEXT) {
-                tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + SpotAnimDefinition.baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
+                tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
             }
 
-            OverlayDefinition.addActionRow(English.walkHere, 0, Class13.mouseX, Landscape.mouseY, 7, tileCoords);
+            addActionRow(English.walkHere, 0, Class13.mouseX, Landscape.mouseY, 7, tileCoords);
         }
 
         for (int idx = 0; Model.resourceCount > idx; idx++) {
@@ -917,7 +913,7 @@ public class MovedStatics {
                     if (gameObjectDefinition == null)
                         continue;
                     if (Class8.itemSelected == 1) {
-                        OverlayDefinition.addActionRow(English.use, hash, x, y, 5, Native.aClass1_3295 + Native.toCyan + gameObjectDefinition.name);
+                        addActionRow(English.use, hash, x, y, 5, Native.aClass1_3295 + Native.toCyan + gameObjectDefinition.name);
                     } else if (Main.widgetSelected != 1) {
                         String[] options = gameObjectDefinition.actions;
                         if (Class60.aBoolean1402)
@@ -936,7 +932,7 @@ public class MovedStatics {
                                         actionType = 27;
                                     if (i_7_ == 4)
                                         actionType = 1002;
-                                    OverlayDefinition.addActionRow(options[i_7_], hash, x, y, actionType, Native.cyan + gameObjectDefinition.name);
+                                    addActionRow(options[i_7_], hash, x, y, actionType, Native.cyan + gameObjectDefinition.name);
                                 }
                             }
                         }
@@ -952,7 +948,7 @@ public class MovedStatics {
                             examineText.append("<col=00ff00>) (</col>");
                             examineText.append(
                                     MessageFormat.format("<col=ffffff>{0}, {1}</col>",
-                                            Integer.toString(x + SpotAnimDefinition.baseX),
+                                            Integer.toString(x + baseX),
                                             Integer.toString(y + Class26.baseY)
                                     )
                             );
@@ -960,9 +956,9 @@ public class MovedStatics {
 
 
                         }
-                        OverlayDefinition.addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, 1004, examineText.toString());
+                        addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, 1004, examineText.toString());
                     } else if ((ItemDefinition.selectedMask & 0x4) == 4) {
-                        OverlayDefinition.addActionRow(Native.aClass1_1918, hash, x, y, 32, Native.aClass1_611 + Native.toCyan + gameObjectDefinition.name);
+                        addActionRow(Native.aClass1_1918, hash, x, y, 32, Native.aClass1_611 + Native.toCyan + gameObjectDefinition.name);
                     }
                 }
                 if (type == 1) {
@@ -1003,7 +999,7 @@ public class MovedStatics {
                         for (Item item = (Item) itemList.last((byte) -95); item != null; item = (Item) itemList.previous(4)) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
                             if (Class8.itemSelected == 1) {
-                                OverlayDefinition.addActionRow(English.use, item.itemId, x, y, 47, Native.aClass1_3295 + Native.toLightRed + itemDefinition.name);
+                                addActionRow(English.use, item.itemId, x, y, 47, Native.aClass1_3295 + Native.toLightRed + itemDefinition.name);
                             } else if (Main.widgetSelected != 1) {
                                 String[] class1s = itemDefinition.groundOptions;
                                 if (Class60.aBoolean1402)
@@ -1011,7 +1007,7 @@ public class MovedStatics {
                                 for (int i_15_ = 4; i_15_ >= 0; i_15_--) {
                                     if (class1s == null || class1s[i_15_] == null) {
                                         if (i_15_ == 2) {
-                                            OverlayDefinition.addActionRow(English.take, item.itemId, x, y, 3, Native.lightRed + itemDefinition.name);
+                                            addActionRow(English.take, item.itemId, x, y, 3, Native.lightRed + itemDefinition.name);
                                         }
                                     } else {
                                         int i_16_ = 0;
@@ -1025,12 +1021,12 @@ public class MovedStatics {
                                             i_16_ = 8;
                                         if (i_15_ == 4)
                                             i_16_ = 36;
-                                        OverlayDefinition.addActionRow(class1s[i_15_], item.itemId, x, y, i_16_, Native.lightRed +  itemDefinition.name);
+                                        addActionRow(class1s[i_15_], item.itemId, x, y, i_16_, Native.lightRed +  itemDefinition.name);
                                     }
                                 }
-                                OverlayDefinition.addActionRow(English.examine, item.itemId, x, y, 1003, Native.lightRed + itemDefinition.name);
+                                addActionRow(English.examine, item.itemId, x, y, 1003, Native.lightRed + itemDefinition.name);
                             } else if ((0x1 & ItemDefinition.selectedMask) == 1) {
-                                OverlayDefinition.addActionRow(Native.aClass1_1918, item.itemId, x, y, 15, Native.aClass1_611 + Native.toLightRed + itemDefinition.name);
+                                addActionRow(Native.aClass1_1918, item.itemId, x, y, 15, Native.aClass1_611 + Native.toLightRed + itemDefinition.name);
                             }
                         }
                     }
@@ -1042,14 +1038,173 @@ public class MovedStatics {
 
     public static void method1015() {
         synchronized (GameObject.frame) {
-            SpotAnimDefinition.mouseButtonPressed = mouseButtonPressed;
+            MouseHandler.currentMouseButtonPressed = MouseHandler.mouseButtonPressed;
             Class13.mouseX = Class12.eventMouseX;
             Landscape.mouseY = eventMouseY;
-            MouseHandler.clickType = Actor.eventMouseButtonPressed;
+            MouseHandler.clickType = MouseHandler.eventMouseButtonPressed;
             Class57.clickX = Class55.eventClickX;
             RSString.clickY = eventClickY;
             GameObjectDefinition.aLong2561 = OverlayDefinition.lastClick;
-            Actor.eventMouseButtonPressed = 0;
+            MouseHandler.eventMouseButtonPressed = 0;
         }
+    }
+
+    public static int method614(int arg1, int arg2, int arg3) {
+        int i_7_ = 256 + -arg3;
+        return (arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) + (~0xff00ff & (0xff00ff & arg1) * i_7_ + arg3 * (0xff00ff & arg2)) >> 8;
+    }
+
+    public static void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
+        int len = mapX * mapX + mapY * mapY;
+        if (len > 4225 && len < 90000) {
+            int theta = 0x7ff & GroundItemTile.cameraHorizontal + Class43.cameraYawOffset;
+            int sine = Model.SINE[theta];
+            int cosine = Model.COSINE[theta];
+            sine = sine * 256 / (Class51.mapZoomOffset + 256);
+            cosine = cosine * 256 / (Class51.mapZoomOffset + 256);
+            int y = cosine * mapY - sine * mapX >> 16;
+            int x = mapX * cosine + mapY * sine >> 16;
+            double angle = Math.atan2(x, y);
+            int drawX = (int) (Math.sin(angle) * 63.0);
+            int drawY = (int) (57.0 * Math.cos(angle));
+            minimapEdge.drawRotated(-10 + 94 + drawX + 4, 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
+        } else {
+            SceneTile.drawOnMinimap(mapY, mapX, sprite);
+        }
+    }
+
+    /**
+     * Processes a new status code
+     * @param statusCode Can be one of these values:
+     *                 5 = Login background
+     *                 10 = Login screen
+     *                 20 = Empty login box
+     *                 25 = Game overlay
+     *                 30 = 3D game area
+     *                 40 = Connection lost, attempting to re-establish
+     *                 1000 = Client fatal error
+     */
+    public static void processGameStatus(int statusCode) {
+        if (statusCode != Class51.gameStatusCode) {
+            if (Class51.gameStatusCode == 0)
+                CollisionMap.method144(12433);
+            if (statusCode == 20 || statusCode == 40) {
+                Main.anInt1756 = 0;
+                OverlayDefinition.anInt2321 = 0;
+                Class40_Sub3.loginStatus = 0;
+            }
+            if (statusCode != 20 && statusCode != 40 && PlayerAppearance.lostConnectionSocket != null) {
+                PlayerAppearance.lostConnectionSocket.kill();
+                PlayerAppearance.lostConnectionSocket = null;
+            }
+            if (Class51.gameStatusCode == 25 || Class51.gameStatusCode == 40) {
+                Class65.method1018();
+                Rasterizer.resetPixels();
+            }
+            if (Class51.gameStatusCode == 25) {
+                Class37.anInt874 = 0;
+                PacketBuffer.anInt2231 = 1;
+                IdentityKit.anInt2591 = 0;
+                GameObject.anInt3048 = 1;
+                ProducingGraphicsBuffer.anInt1634 = 0;
+            }
+            if (statusCode == 0 || statusCode == 35) {
+                FloorDecoration.method344(-40);
+                method440();
+                if (ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 == null)
+                    ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(765, 503, MouseHandler.gameCanvas);
+            }
+            if (statusCode == 5 || statusCode == 10 || statusCode == 20) {
+                ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
+                FloorDecoration.method344(-69);
+                Item.renderLoginScreen(MouseHandler.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
+            }
+            if (statusCode == 25 || statusCode == 30 || statusCode == 40) {
+                ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
+                method440();
+                Class40_Sub5_Sub17_Sub1.method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
+            }
+            Class51.gameStatusCode = statusCode;
+            clearScreen = true;
+        }
+    }
+
+    public static void addActionRow(String string, int menuAction, int firstMenuOperand, int secondMenuOperand, int actionType, String arg6) {
+        if (ActorDefinition.menuActionRow < 500) {
+            if (arg6.length() <= 0)
+                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string;
+            else
+                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string + Native.whitespace + arg6;
+            menuActionTypes[ActorDefinition.menuActionRow] = actionType;
+            Class33.selectedMenuActions[ActorDefinition.menuActionRow] = menuAction;
+            InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow] = firstMenuOperand;
+            Class59.secondMenuOperand[ActorDefinition.menuActionRow] = secondMenuOperand;
+            ActorDefinition.menuActionRow++;
+        }
+    }
+
+    public static synchronized void method405(int arg1) {
+        if(Class24.method340()) {
+            method557(arg1);
+            Class22_Sub1.musicCacheArchive = null;
+            Class26.aBoolean618 = false;
+        }
+    }
+
+    public static void method557(int arg0) {
+        method886(0, 0, false, null, arg0);
+    }
+
+    public static int method884(int arg0, int arg1) {
+        int i = 57 * arg1 + arg0;
+        i ^= i << 13;
+        int i_2_ = 1376312589 + (i * i * 15731 + 789221) * i & 0x7fffffff;
+        return i_2_ >> 19 & 0xff;
+    }
+
+    public static void method885(CacheArchive arg0, boolean arg1, CacheArchive arg2) {
+        IdentityKit.membersServer = arg1;
+        Class8.aCacheArchive_284 = arg2;
+        Class26.aCacheArchive_632 = arg0;
+        ItemDefinition.count = Class26.aCacheArchive_632.fileLength(10);
+    }
+
+    public static void method886(int arg0, int arg1, boolean arg2, byte[] arg3, int arg4) {
+        if(arg0 == 0 && aClass22_189 != null) {
+            if(MouseHandler.anInt1450 < 0) {
+                if(RSCanvas.anInt54 != 0) {
+                    PacketBuffer.anInt2258 = arg1;
+                    Player.aByteArray3270 = arg3;
+                    PlayerAppearance.aBoolean687 = arg2;
+                } else
+                    RSString.method56(arg2, arg3, arg1);
+            } else {
+                Buffer.anInt1982 = arg4;
+                if(MouseHandler.anInt1450 != 0) {
+                    int i = Class29.method372(arg0 ^ 0x60, MouseHandler.anInt1450);
+                    i -= Class39.anInt909;
+                    RSCanvas.anInt54 = (i + 3600) / arg4;
+                    if(RSCanvas.anInt54 < 1)
+                        RSCanvas.anInt54 = 1;
+                } else
+                    RSCanvas.anInt54 = 1;
+                PacketBuffer.anInt2258 = arg1;
+                Player.aByteArray3270 = arg3;
+                PlayerAppearance.aBoolean687 = arg2;
+            }
+        }
+    }
+
+    public static int method888(int arg0, byte arg1, int arg2) {
+        int i = -128 + method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> 1) + -(-128 + method160(arg0, 15177, 1, arg2) >> 2));
+        i = 35 + (int) (0.3 * (double) i);
+        if(arg1 != -45)
+            return -24;
+        if(i >= 10) {
+            if(i > 60)
+                i = 60;
+        } else
+            i = 10;
+        return i;
     }
 }

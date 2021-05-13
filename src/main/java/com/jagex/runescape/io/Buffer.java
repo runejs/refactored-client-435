@@ -130,11 +130,10 @@ public class Buffer extends Node {
         buffer[currentPosition++] = (byte) (value >> 16);
     }
 
-    // ???
-    public int method473(int value) {
-        int i = MovedStatics.method1034(true, value, currentPosition, buffer);
-        putIntBE(i);
-        return i;
+    public int putCrc8(int value) {
+        int crc = MovedStatics.calculateCrc8(value, currentPosition, buffer);
+        putIntBE(crc);
+        return crc;
     }
 
     public void putShortBE(int value) {

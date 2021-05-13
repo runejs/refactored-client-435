@@ -2,7 +2,6 @@ package com.jagex.runescape.net;
 
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.*;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.cache.media.gameInterface.InterfaceModelType;
 import com.jagex.runescape.cache.media.gameInterface.GameInterfaceType;
@@ -12,10 +11,15 @@ import com.jagex.runescape.input.KeyFocusListener;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.English;
 import com.jagex.runescape.language.Native;
+import com.jagex.runescape.media.renderable.GameObject;
+import com.jagex.runescape.media.renderable.Item;
+import com.jagex.runescape.media.renderable.Model;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.media.renderable.actor.Npc;
 import com.jagex.runescape.media.renderable.actor.Player;
+import com.jagex.runescape.media.renderable.actor.PlayerAppearance;
 import com.jagex.runescape.scene.GroundItemTile;
+import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.FloorDecoration;
 import com.jagex.runescape.scene.tile.GenericTile;
@@ -24,59 +28,74 @@ import com.jagex.runescape.scene.tile.WallDecoration;
 import com.jagex.runescape.util.TextUtils;
 
 public class IncomingPackets {
-
     public static int incomingPacketSize = 0;
     public static PacketBuffer incomingPacketBuffer = new PacketBuffer(5000);
-    public static int incomingPacket = 0;
+    public static int opcode = 0;
+    public static int lastOpcode = 0;
+    public static int secondLastOpcode = 0;
+    public static int thirdLastOpcode = 0;
+    public static int cyclesSinceLastPacket = 0;
 
     public static boolean parseIncomingPackets() {
-        if(MovedStatics.gameSocket == null)
+        if(MovedStatics.gameServerSocket == null)
             return false;
         try {
-            int availableBytes = MovedStatics.gameSocket.inputStreamAvailable();
-            if(availableBytes == 0)
+            int availableBytes = MovedStatics.gameServerSocket.inputStreamAvailable();
+            if(availableBytes == 0) {
+                // Out of memory
                 return false;
-            if(incomingPacket == -1) {
-                MovedStatics.gameSocket.method1008(0, 1, incomingPacketBuffer.buffer);
+            }
+
+            if(opcode == -1) {
+                // This will always run first. It fetches the incoming packet ID which should have a size of 1
+                MovedStatics.gameServerSocket.readDataToBuffer(0, 1, incomingPacketBuffer.buffer);
                 incomingPacketBuffer.currentPosition = 0;
                 availableBytes--;
-                incomingPacket = incomingPacketBuffer.getPacket();
-                incomingPacketSize = PacketType.findPacketSize(incomingPacket);
+                opcode = incomingPacketBuffer.getPacket();
+                incomingPacketSize = PacketType.findPacketSize(opcode);
             }
-            //System.out.println("packet received: " + Class57.incomingPacket);
+
             if(incomingPacketSize == -1) {
+                // Server-defined packet size between 0 and 255
                 if(availableBytes > 0) {
-                    MovedStatics.gameSocket.method1008(0, 1, incomingPacketBuffer.buffer);
+                    MovedStatics.gameServerSocket.readDataToBuffer(0, 1, incomingPacketBuffer.buffer);
                     incomingPacketSize = incomingPacketBuffer.buffer[0] & 0xff;
                     availableBytes--;
                 } else
                     return false;
             }
+
             if(incomingPacketSize == -2) {
+                // Server-defined packet size between 0 and 65535
                 if(availableBytes <= 1)
                     return false;
                 availableBytes -= 2;
-                MovedStatics.gameSocket.method1008(0, 2, incomingPacketBuffer.buffer);
+                MovedStatics.gameServerSocket.readDataToBuffer(0, 2, incomingPacketBuffer.buffer);
                 incomingPacketBuffer.currentPosition = 0;
                 incomingPacketSize = incomingPacketBuffer.getUnsignedShortBE();
             }
-            if(incomingPacketSize > availableBytes)
-                return false;
-            incomingPacketBuffer.currentPosition = 0;
-            MovedStatics.gameSocket.method1008(0, incomingPacketSize, incomingPacketBuffer.buffer);
-            Class49.anInt1151 = MovedStatics.anInt324;
-            Class35.anInt1728 = 0;
-            MovedStatics.anInt324 = RSString.anInt1690;
-            RSString.anInt1690 = incomingPacket;
-            if(incomingPacket == 71) {
-                long l = incomingPacketBuffer.getLongBE();
-                String class1 = RSString.formatChatString(KeyFocusListener.method956(82, incomingPacketBuffer));
 
-                ChatBox.addChatMessage(Player.longToUsername(l).method85().toString(), class1, 6);
-                incomingPacket = -1;
+            if(incomingPacketSize > availableBytes) {
+                // Out of memory, would not be able to read this packet
+                return false;
+            }
+
+            incomingPacketBuffer.currentPosition = 0;
+            MovedStatics.gameServerSocket.readDataToBuffer(0, incomingPacketSize, incomingPacketBuffer.buffer);
+            cyclesSinceLastPacket = 0;
+            thirdLastOpcode = secondLastOpcode;
+            secondLastOpcode = lastOpcode;
+            lastOpcode = opcode;
+
+            if(opcode == 71) {
+                long username = incomingPacketBuffer.getLongBE();
+                String message = RSString.formatChatString(KeyFocusListener.method956(82, incomingPacketBuffer));
+
+                ChatBox.addChatMessage(Player.longToUsername(username).method85().toString(), message, 6);
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.FRIEND_LOGGED_IN.getId()) {
+            if(opcode == PacketType.FRIEND_LOGGED_IN.getOpcode()) {
                 long l = incomingPacketBuffer.getLongBE();
                 int i_1_ = incomingPacketBuffer.getUnsignedShortBE();
                 String string = Player.longToUsername(l).method85().toString();
@@ -120,27 +139,27 @@ public class IncomingPackets {
                         }
                     }
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 233) { // clear destination X
-                incomingPacket = -1;
+            if(opcode == 233) { // clear destination X
+                opcode = -1;
                 MovedStatics.destinationX = 0;
                 return true;
             }
-            if(incomingPacket == PacketType.CLOSE_CUTSCENE.getId()) { // close cutscene
+            if(opcode == PacketType.CLOSE_CUTSCENE.getOpcode()) { // close cutscene
                 Player.cutsceneActive = false;
                 for(int i_7_ = 0; i_7_ < 5; i_7_++)
                     Class40_Sub5_Sub17_Sub1.aBooleanArray2975[i_7_] = false;
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 23) {
+            if(opcode == 23) {
                 FloorDecoration.method343(true, 5688);
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 222) {
+            if(opcode == 222) {
                 int varPlayerValue = incomingPacketBuffer.getByte();
                 int varPlayerIndex = incomingPacketBuffer.getUnsignedShortBE();
                 Buffer.anIntArray1984[varPlayerIndex] = varPlayerValue;
@@ -151,18 +170,18 @@ public class IncomingPackets {
                     if(ChatBox.dialogueId != -1)
                         ChatBox.redrawChatbox = true;
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 115) { // set widget hidden state
+            if(opcode == 115) { // set widget hidden state
                 boolean bool = incomingPacketBuffer.getUnsignedByte() == 1;
                 int i_10_ = incomingPacketBuffer.getIntLE();
                 GameInterface gameInterface = GameInterface.getInterface(i_10_);
                 gameInterface.isHidden = bool;
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.UPDATE_ALL_WIDGET_ITEMS.getId()) {
+            if(opcode == PacketType.UPDATE_ALL_WIDGET_ITEMS.getOpcode()) {
                 GameInterface.redrawTabArea = true;
                 final int packed = incomingPacketBuffer.getIntBE();
                 final GameInterface gameInterface = GameInterface.getInterface(packed);
@@ -215,19 +234,19 @@ public class IncomingPackets {
                         }
                     }
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 250) { // widget model type 1
+            if(opcode == 250) { // widget model type 1
                 int modelId = incomingPacketBuffer.getUnsignedShortLE();
                 int widgetData = incomingPacketBuffer.getIntLE();
                 GameInterface gameInterface = GameInterface.getInterface(widgetData);
                 gameInterface.modelId = modelId;
                 gameInterface.modelType = InterfaceModelType.MODEL;
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 255) { // camera shake?
+            if(opcode == 255) { // camera shake?
                 int i_23_ = incomingPacketBuffer.getUnsignedByte();
                 int i_24_ = incomingPacketBuffer.getUnsignedByte();
                 int i_25_ = incomingPacketBuffer.getUnsignedByte();
@@ -237,83 +256,83 @@ public class IncomingPackets {
                 GameShell.anIntArray2[i_23_] = i_25_;
                 GroundItemTile.anIntArray1358[i_23_] = i_26_;
                 Class22_Sub1.anIntArray1846[i_23_] = 0;
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 235) {
+            if(opcode == 235) {
                 MovedStatics.minimapState = incomingPacketBuffer.getUnsignedByte();
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 48) { // multi combat zone
+            if(opcode == 48) { // multi combat zone
                 MovedStatics.anInt2118 = incomingPacketBuffer.getUnsignedByte();
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 82) {
+            if(opcode == 82) { // duel/trade/challenge request, or regular chat message
                 String message = incomingPacketBuffer.getString();
                 if(message.endsWith(Native.tradeRequest)) {
-                    String class1_32_ = message.substring(0, message.indexOf(Native.colon));
-                    long l = RSString.nameToLong(class1_32_);
+                    String username = message.substring(0, message.indexOf(Native.colon));
+                    long l = RSString.nameToLong(username);
                     boolean bool = false;
-                    for(int i_33_ = 0; i_33_ < Class42.anInt1008; i_33_++) {
+                    for(int i_33_ = 0; i_33_ < MovedStatics.anInt1008; i_33_++) {
                         if(l == Player.ignores[i_33_]) {
                             bool = true;
                             break;
                         }
                     }
                     if(!bool && !Player.inTutorialIsland)
-                        ChatBox.addChatMessage(class1_32_, "wishes to trade with you.", 4);
+                        ChatBox.addChatMessage(username, "wishes to trade with you.", 4);
                 } else if(message.endsWith(Native.duelRequest)) {
-                    String class1_30_ = message.substring(0, message.indexOf(Native.colon));
-                    long l = RSString.nameToLong(class1_30_);
+                    String username = message.substring(0, message.indexOf(Native.colon));
+                    long l = RSString.nameToLong(username);
                     boolean bool = false;
-                    for(int i_31_ = 0; Class42.anInt1008 > i_31_; i_31_++) {
+                    for(int i_31_ = 0; MovedStatics.anInt1008 > i_31_; i_31_++) {
                         if(l == Player.ignores[i_31_]) {
                             bool = true;
                             break;
                         }
                     }
                     if(!bool && !Player.inTutorialIsland)
-                        ChatBox.addChatMessage(class1_30_, English.suffixWishesToDuelWithYou, 8);
+                        ChatBox.addChatMessage(username, English.suffixWishesToDuelWithYou, 8);
                 } else if(message.endsWith(Native.challengeRequest)) {
-                    String class1_27_ = message.substring(0, message.indexOf(Native.colon));
-                    long l = RSString.nameToLong(class1_27_);
+                    String username = message.substring(0, message.indexOf(Native.colon));
+                    long l = RSString.nameToLong(username);
                     boolean bool = false;
-                    for(int i_28_ = 0; i_28_ < Class42.anInt1008; i_28_++) {
+                    for(int i_28_ = 0; i_28_ < MovedStatics.anInt1008; i_28_++) {
                         if(l == Player.ignores[i_28_]) {
                             bool = true;
                             break;
                         }
                     }
                     if(!bool && !Player.inTutorialIsland) {
-                        String class1_29_ = message.substring(1 + message.indexOf(Native.colon), -9 + message.length());
-                        ChatBox.addChatMessage(class1_27_, class1_29_, 8);
+                        String challengeMessage = message.substring(1 + message.indexOf(Native.colon), -9 + message.length());
+                        ChatBox.addChatMessage(username, challengeMessage, 8);
                     }
                 } else {
                     ChatBox.addChatMessage("", message, 0);
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 83) { // console command
+            if(opcode == 83) { // console command
                 RSString message = incomingPacketBuffer.getRSString();
                 Console.console.log("<col=FFFF00>" + message.toString() + "</col>");
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 85) { // console auto-completion
+            if(opcode == 85) { // console auto-completion
                 String command = incomingPacketBuffer.getString();
                 String help = incomingPacketBuffer.getString();
                 Console.console.addCommand(command, help);
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 182) { // set widget scroll position
+            if(opcode == 182) { // set widget scroll position
                 int i_34_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_35_ = incomingPacketBuffer.getIntLE();
                 GameInterface gameInterface = GameInterface.getInterface(i_35_);
-                incomingPacket = -1;
+                opcode = -1;
                 if(gameInterface != null && gameInterface.type == GameInterfaceType.LAYER) {
                     if(i_34_ < 0)
                         i_34_ = 0;
@@ -323,7 +342,7 @@ public class IncomingPackets {
                 }
                 return true;
             }
-            if(incomingPacket == 174) { // clear widget item container?
+            if(opcode == 174) { // clear widget item container?
                 int i_36_ = incomingPacketBuffer.getIntME1();
                 GameInterface gameInterface = GameInterface.getInterface(i_36_);
                 if(gameInterface.isNewInterfaceFormat) {
@@ -341,29 +360,29 @@ public class IncomingPackets {
                         gameInterface.items[i_39_] = 0;
                     }
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 130) {
+            if(opcode == 130) {
                 MovedStatics.anInt854 = incomingPacketBuffer.getUnsignedShortLE();
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 129) {
+            if(opcode == 129) {
                 int i_40_ = incomingPacketBuffer.getUnsignedByte();
                 int i_41_ = incomingPacketBuffer.getUnsignedByte();
                 int i_42_ = incomingPacketBuffer.getUnsignedByte();
                 Player.worldLevel = i_40_ >> 1;
                 Player.localPlayer.method787(i_42_, -7717, (i_40_ & 0x1) == 1, i_41_);
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.LOGOUT.getId()) {
-                Class48.logout(-7225);
-                incomingPacket = -1;
+            if(opcode == PacketType.LOGOUT.getOpcode()) {
+                Class48.logout();
+                opcode = -1;
                 return false;
             }
-            if(incomingPacket == PacketType.PLAY_WIDGET_ANIMATION.getId()) {
+            if(opcode == PacketType.PLAY_WIDGET_ANIMATION.getOpcode()) {
                 int animationId = incomingPacketBuffer.getShortBE();
                 int widgetData = incomingPacketBuffer.getIntBE();
                 GameInterface gameInterface = GameInterface.getInterface(widgetData);
@@ -372,10 +391,10 @@ public class IncomingPackets {
                     gameInterface.animationFrame = 0;
                     gameInterface.animation = animationId;
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 56) {
+            if(opcode == 56) {
                 int i_45_ = incomingPacketBuffer.getShortBE();
                 if(i_45_ >= 0)
                     GameInterface.resetInterfaceAnimations(i_45_);
@@ -383,19 +402,19 @@ public class IncomingPackets {
                     GameInterface.resetInterface(GroundItemTile.walkableWidgetId);
                     GroundItemTile.walkableWidgetId = i_45_;
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 117) {
+            if(opcode == 117) {
                 int i_46_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_47_ = incomingPacketBuffer.getUnsignedShortLE();
                 int widgetId = incomingPacketBuffer.getIntLE();
                 GameInterface gameInterface = GameInterface.getInterface(widgetId);
-                incomingPacket = -1;
+                opcode = -1;
                 gameInterface.anInt2722 = i_47_ + (i_46_ << 16);
                 return true;
             }
-            if(incomingPacket == PacketType.SHOW_TAB_AND_SCREEN_WIDGETS.getId()) {
+            if(opcode == PacketType.SHOW_TAB_AND_SCREEN_WIDGETS.getOpcode()) {
                 int i_49_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_50_ = incomingPacketBuffer.getUnsignedShortLE();
                 if(GameInterface.chatboxInterfaceId != -1) {
@@ -406,7 +425,7 @@ public class IncomingPackets {
                 if(GameInterface.fullscreenInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = -1;
-                    OverlayDefinition.updateOverlay(30);
+                    MovedStatics.processGameStatus(30);
                 }
                 if(GameInterface.fullscreenSiblingInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -427,10 +446,10 @@ public class IncomingPackets {
                 }
                 GameInterface.redrawTabArea = true;
                 GameInterface.drawTabIcons = true;
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.CLEAR_MAP_CHUNK.getId()) {
+            if(opcode == PacketType.CLEAR_MAP_CHUNK.getOpcode()) {
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
                 for(int i_51_ = MovedStatics.placementX; i_51_ < 8 + MovedStatics.placementX; i_51_++) {
@@ -445,10 +464,10 @@ public class IncomingPackets {
                     if(class40_sub3.anInt2039 >= MovedStatics.placementX && MovedStatics.placementX + 8 > class40_sub3.anInt2039 && class40_sub3.anInt2038 >= OverlayDefinition.placementY && OverlayDefinition.placementY + 8 > class40_sub3.anInt2038 && Player.worldLevel == class40_sub3.anInt2018)
                         class40_sub3.anInt2031 = 0;
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 223) { // set player options
+            if(opcode == 223) { // set player options
                 String class1 = incomingPacketBuffer.getString();
                 int i_53_ = incomingPacketBuffer.getUnsignedByte();
                 int i_54_ = incomingPacketBuffer.getUnsignedByte();
@@ -458,10 +477,10 @@ public class IncomingPackets {
                     Main.playerActions[i_54_ - 1] = class1;
                     Class13.playerArray[i_54_ - 1] = i_53_ == 0;
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.SHOW_SCREEN_WIDGET.getId()) {
+            if(opcode == PacketType.SHOW_SCREEN_WIDGET.getOpcode()) {
                 int i_55_ = incomingPacketBuffer.getUnsignedShortBE();
                 GameInterface.resetInterfaceAnimations(i_55_);
                 if(GameInterface.tabAreaInterfaceId != -1) {
@@ -478,7 +497,7 @@ public class IncomingPackets {
                 if(GameInterface.fullscreenInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = -1;
-                    OverlayDefinition.updateOverlay(30);
+                    MovedStatics.processGameStatus(30);
                 }
                 if(GameInterface.fullscreenSiblingInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -494,17 +513,17 @@ public class IncomingPackets {
                     ChatBox.inputType = 0;
                 }
                 GameInterface.callOnLoadListeners(GameInterface.gameScreenInterfaceId);
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.UPDATE_RUN_ENERGY.getId()) {
+            if(opcode == PacketType.UPDATE_RUN_ENERGY.getOpcode()) {
                 if(Player.currentTabId == 12)
                     GameInterface.redrawTabArea = true;
                 ClientScriptRunner.runEnergy = incomingPacketBuffer.getUnsignedByte();
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 253) {
+            if(opcode == 253) {
                 Player.cutsceneActive = true;
                 Class22.anInt545 = incomingPacketBuffer.getUnsignedByte();
                 SceneCluster.anInt767 = incomingPacketBuffer.getUnsignedByte();
@@ -516,21 +535,21 @@ public class IncomingPackets {
                     Class12.cameraX = Class22.anInt545 * 128 + 64;
                     SceneCluster.cameraZ = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, Class40_Sub5_Sub6.cameraY) - MovedStatics.anInt194;
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.SHOW_PERMANENT_CHATBOX_WIDGET.getId()) {
+            if(opcode == PacketType.SHOW_PERMANENT_CHATBOX_WIDGET.getOpcode()) {
                 int chatboxInterfaceId = incomingPacketBuffer.getShortBE();
                 if(ChatBox.dialogueId != chatboxInterfaceId) {
                     GameInterface.resetInterface(ChatBox.dialogueId);
                     ChatBox.dialogueId = chatboxInterfaceId;
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 ChatBox.redrawChatbox = true;
                 MovedStatics.lastContinueTextWidgetId = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.SHOW_FULLSCREEN_INTERFACE.getId()) {
+            if(opcode == PacketType.SHOW_FULLSCREEN_INTERFACE.getOpcode()) {
                 int siblingInterfaceId = incomingPacketBuffer.getUnsignedShortBE();
                 int interfaceId = incomingPacketBuffer.getUnsignedShortBE();
                 GameInterface.resetInterfaceAnimations(interfaceId);
@@ -553,7 +572,7 @@ public class IncomingPackets {
                 if(interfaceId != GameInterface.fullscreenInterfaceId) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = interfaceId;
-                    OverlayDefinition.updateOverlay(35);
+                    MovedStatics.processGameStatus(35);
                 }
                 if(interfaceId != GameInterface.fullscreenSiblingInterfaceId) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -561,10 +580,10 @@ public class IncomingPackets {
                 }
                 MovedStatics.lastContinueTextWidgetId = -1;
                 ChatBox.inputType = 0;
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.CLOSE_ALL_WIDGETS.getId()) {
+            if(opcode == PacketType.CLOSE_ALL_WIDGETS.getOpcode()) {
                 if(GameInterface.tabAreaInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
                     GameInterface.redrawTabArea = true;
@@ -579,7 +598,7 @@ public class IncomingPackets {
                 if(GameInterface.fullscreenInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = -1;
-                    OverlayDefinition.updateOverlay(30);
+                    MovedStatics.processGameStatus(30);
                 }
                 if(GameInterface.fullscreenSiblingInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -589,7 +608,7 @@ public class IncomingPackets {
                     GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
                     GameInterface.gameScreenInterfaceId = -1;
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 MovedStatics.lastContinueTextWidgetId = -1;
                 if(ChatBox.inputType != 0) {
                     ChatBox.redrawChatbox = true;
@@ -597,7 +616,7 @@ public class IncomingPackets {
                 }
                 return true;
             }
-            if(incomingPacket == PacketType.SHOW_CHATBOX_WIDGET.getId()) {
+            if(opcode == PacketType.SHOW_CHATBOX_WIDGET.getOpcode()) {
                 int widgetId = incomingPacketBuffer.getUnsignedShortBE();
                 GameInterface.resetInterfaceAnimations(widgetId);
                 if(GameInterface.tabAreaInterfaceId != -1) {
@@ -609,7 +628,7 @@ public class IncomingPackets {
                 if(GameInterface.fullscreenInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = -1;
-                    OverlayDefinition.updateOverlay(30);
+                    MovedStatics.processGameStatus(30);
                 }
                 if(GameInterface.fullscreenSiblingInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -625,34 +644,34 @@ public class IncomingPackets {
                 }
 
                 ChatBox.redrawChatbox = true;
-                incomingPacket = -1;
+                opcode = -1;
                 MovedStatics.lastContinueTextWidgetId = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.PLAY_SONG.getId()) {
+            if(opcode == PacketType.PLAY_SONG.getOpcode()) {
                 int songId = incomingPacketBuffer.getUnsignedShortLE();
                 if(songId == 65535)
                     songId = -1;
-                Class51.method942(songId);
-                incomingPacket = -1;
+                Class51.playSong(songId);
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.PLAY_QUICK_SONG.getId()) {
+            if(opcode == PacketType.PLAY_QUICK_SONG.getOpcode()) {
                 int songTimeout = incomingPacketBuffer.getMediumBE();
                 int songId = incomingPacketBuffer.getUnsignedShortBE();
                 if(songId == 65535)
                     songId = -1;
                 Class57.method975(songTimeout, songId);
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.UPDATE_REFERENCE_POSITION.getId()) {
+            if(opcode == PacketType.UPDATE_REFERENCE_POSITION.getOpcode()) {
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 88) {
+            if(opcode == 88) {
                 Class51.anInt1205 = incomingPacketBuffer.getUnsignedByte();
                 if(Player.currentTabId == Class51.anInt1205) {
                     if(Class51.anInt1205 != 3)
@@ -661,39 +680,39 @@ public class IncomingPackets {
                         Player.currentTabId = 1;
                     GameInterface.redrawTabArea = true;
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 63) { // mass object/ground item update packet
+            if(opcode == 63) { // mass object/ground item update packet
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
                 while(incomingPacketBuffer.currentPosition < incomingPacketSize) {
-                    incomingPacket = incomingPacketBuffer.getUnsignedByte();
-                    WallDecoration.method949();
+                    opcode = incomingPacketBuffer.getUnsignedByte();
+                    parseMapIncomingPacket();
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 196) { // set chat mode configs
+            if(opcode == 196) { // set chat mode configs
                 ChatBox.publicChatMode = incomingPacketBuffer.getUnsignedByte();
                 ChatBox.privateChatMode = incomingPacketBuffer.getUnsignedByte();
                 ChatBox.tradeMode = incomingPacketBuffer.getUnsignedByte();
                 ChatBox.redrawChatbox = true;
                 MovedStatics.redrawChatbox = true;
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.SET_SYSTEM_UPDATE_TIME.getId()) {
+            if(opcode == PacketType.SET_SYSTEM_UPDATE_TIME.getOpcode()) {
                 Class40_Sub5_Sub15.systemUpdateTime = incomingPacketBuffer.getUnsignedShortLE() * 30;
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.UPDATE_PLAYERS.getId()) {
+            if(opcode == PacketType.UPDATE_PLAYERS.getOpcode()) {
                 parsePlayerUpdatePacket();
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 2) {
+            if(opcode == 2) {
                 int varPlayerValue = incomingPacketBuffer.getIntBE();
                 int varPlayerIndex = incomingPacketBuffer.getUnsignedShortBE();
                 Buffer.anIntArray1984[varPlayerIndex] = varPlayerValue;
@@ -704,23 +723,23 @@ public class IncomingPackets {
                         ChatBox.redrawChatbox = true;
                     GameInterface.redrawTabArea = true;
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.UPDATE_NPCS.getId()) {
+            if(opcode == PacketType.UPDATE_NPCS.getOpcode()) {
                 parseNpcUpdatePacket();
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.PLAY_SOUND.getId()) {
+            if(opcode == PacketType.PLAY_SOUND.getOpcode()) {
                 int soundId = incomingPacketBuffer.getUnsignedShortBE();
                 int volume = incomingPacketBuffer.getUnsignedByte();
                 int delay = incomingPacketBuffer.getUnsignedShortBE();
                 WallDecoration.method950(soundId, volume, delay);
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 237) { // show tab overlay widget
+            if(opcode == 237) { // show tab overlay widget
                 int i_68_ = incomingPacketBuffer.getUnsignedShortBE();
                 GameInterface.resetInterfaceAnimations(i_68_);
                 if(GameInterface.chatboxInterfaceId != -1) {
@@ -731,7 +750,7 @@ public class IncomingPackets {
                 if(GameInterface.fullscreenInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
                     GameInterface.fullscreenInterfaceId = -1;
-                    OverlayDefinition.updateOverlay(30);
+                    MovedStatics.processGameStatus(30);
                 }
                 if(GameInterface.fullscreenSiblingInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
@@ -751,20 +770,20 @@ public class IncomingPackets {
                     ChatBox.inputType = 0;
                 }
                 MovedStatics.lastContinueTextWidgetId = -1;
-                incomingPacket = -1;
+                opcode = -1;
                 GameInterface.redrawTabArea = true;
                 return true;
             }
-            if(incomingPacket == 234) {
+            if(opcode == 234) {
                 Player.cutsceneActive = true;
                 MovedStatics.anInt564 = incomingPacketBuffer.getUnsignedByte();
-                UnderlayDefinition.anInt2576 = incomingPacketBuffer.getUnsignedByte();
+                MovedStatics.anInt2576 = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.anInt892 = incomingPacketBuffer.getUnsignedShortBE();
                 Class60.anInt1413 = incomingPacketBuffer.getUnsignedByte();
                 Class22_Sub1.anInt1856 = incomingPacketBuffer.getUnsignedByte();
                 if(Class22_Sub1.anInt1856 >= 100) {
                     int i_69_ = 128 * MovedStatics.anInt564 + 64;
-                    int i_70_ = 128 * UnderlayDefinition.anInt2576 + 64;
+                    int i_70_ = 128 * MovedStatics.anInt2576 + 64;
                     int i_71_ = Class37.getFloorDrawHeight(Player.worldLevel, i_69_, i_70_) - MovedStatics.anInt892;
                     int i_72_ = i_69_ + -Class12.cameraX;
                     int i_73_ = i_70_ + -Class40_Sub5_Sub6.cameraY;
@@ -777,42 +796,42 @@ public class IncomingPackets {
                     if(Class26.anInt627 > 383)
                         Class26.anInt627 = 383;
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 142) {
+            if(opcode == 142) {
                 int rotationZ = incomingPacketBuffer.getUnsignedShortBE();
                 int modelZoom = incomingPacketBuffer.getUnsignedShortLE();
                 int rotationX = incomingPacketBuffer.getUnsignedShortBE();
                 int interfaceData = incomingPacketBuffer.getIntLE();
                 GameInterface childInterface = GameInterface.getInterface(interfaceData);
-                incomingPacket = -1;
+                opcode = -1;
                 childInterface.rotationZ = rotationZ;
                 childInterface.modelZoom = modelZoom;
                 childInterface.rotationX = rotationX;
                 return true;
             }
-            if(incomingPacket == PacketType.SET_CURRENT_TAB.getId()) {
+            if(opcode == PacketType.SET_CURRENT_TAB.getOpcode()) {
                 Player.currentTabId = incomingPacketBuffer.getUnsignedByte();
                 GameInterface.drawTabIcons = true;
                 GameInterface.redrawTabArea = true;
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.UPDATE_CARRY_WEIGHT.getId()) {
+            if(opcode == PacketType.UPDATE_CARRY_WEIGHT.getOpcode()) {
                 if(Player.currentTabId == 12)
                     GameInterface.redrawTabArea = true;
                 GenericTile.carryWeight = incomingPacketBuffer.getShortBE();
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
             // object/ground item update packets?
-            if(incomingPacket == 9 || incomingPacket == 99 || incomingPacket == 229 || incomingPacket == 19 || incomingPacket == 202 || incomingPacket == 1 || incomingPacket == 74 || incomingPacket == 175 || incomingPacket == 49 || incomingPacket == 143 || incomingPacket == 241) {
-                WallDecoration.method949();
-                incomingPacket = -1;
+            if(opcode == 9 || opcode == 99 || opcode == 229 || opcode == 19 || opcode == 202 || opcode == 1 || opcode == 74 || opcode == 175 || opcode == 49 || opcode == 143 || opcode == 241) {
+                parseMapIncomingPacket();
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 14) { // reset client configs?
+            if(opcode == 14) { // reset client configs?
                 for(int varPlayerIndex = 0; VarPlayerDefinition.varPlayerDefinitionsSize > varPlayerIndex; varPlayerIndex++) {
                     VarPlayerDefinition varPlayerDefinition = VarPlayerDefinition.getDefinition(varPlayerIndex);
                     if(varPlayerDefinition.type == 0) {
@@ -823,31 +842,31 @@ public class IncomingPackets {
                 if(ChatBox.dialogueId != -1)
                     ChatBox.redrawChatbox = true;
                 GameInterface.redrawTabArea = true;
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.SET_WIDGET_NPC_HEAD.getId()) {
+            if(opcode == PacketType.SET_WIDGET_NPC_HEAD.getOpcode()) {
                 int npcId = incomingPacketBuffer.getUnsignedShortLE();
                 int widgetData = incomingPacketBuffer.getIntLE();
                 GameInterface gameInterface = GameInterface.getInterface(widgetData);
                 gameInterface.modelType = InterfaceModelType.NPC_CHATHEAD;
-                incomingPacket = -1;
+                opcode = -1;
                 gameInterface.modelId = npcId;
                 return true;
             }
-            if(incomingPacket == 132) { // open chatbox input widget
+            if(opcode == 132) { // open chatbox input widget
                 if(GameInterface.chatboxInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
                     GameInterface.chatboxInterfaceId = -1;
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 ChatBox.inputMessage = "";
                 ChatBox.inputType = 1;
                 ChatBox.redrawChatbox = true;
                 ChatBox.messagePromptRaised = false;
                 return true;
             }
-            if(incomingPacket == 186) {
+            if(opcode == 186) {
                 Player.headIconDrawType = incomingPacketBuffer.getUnsignedByte();
                 if(Player.headIconDrawType == 1)
                     HuffmanEncoding.anInt1545 = incomingPacketBuffer.getUnsignedShortBE();
@@ -879,18 +898,18 @@ public class IncomingPackets {
                 }
                 if(Player.headIconDrawType == 10)
                     ProducingGraphicsBuffer.anInt1623 = incomingPacketBuffer.getUnsignedShortBE();
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.SET_WIDGET_PLAYER_HEAD.getId()) {
+            if(opcode == PacketType.SET_WIDGET_PLAYER_HEAD.getOpcode()) {
                 int interfaceData = incomingPacketBuffer.getIntLE();
                 GameInterface gameInterface = GameInterface.getInterface(interfaceData);
                 gameInterface.modelType = InterfaceModelType.LOCAL_PLAYER_CHATHEAD;
                 gameInterface.modelId = Player.localPlayer.playerAppearance.getHeadModelId();
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.UPDATE_WIDGET_TEXT.getId()) {
+            if(opcode == PacketType.UPDATE_WIDGET_TEXT.getOpcode()) {
                 int interfaceData = incomingPacketBuffer.getIntLE();
                 String interfaceText = incomingPacketBuffer.getString();
                 GameInterface gameInterface = GameInterface.getInterface(interfaceData);
@@ -898,16 +917,16 @@ public class IncomingPackets {
                 if(Player.tabWidgetIds[Player.currentTabId] == interfaceData >> 16) {
                     GameInterface.redrawTabArea = true;
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.SET_FRIEND_LIST_STATUS.getId()) {
+            if(opcode == PacketType.SET_FRIEND_LIST_STATUS.getOpcode()) {
                 Player.friendListStatus = incomingPacketBuffer.getUnsignedByte();
                 GameInterface.redrawTabArea = true;
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.SET_WIDGET_ITEM_MODEL.getId()) {
+            if(opcode == PacketType.SET_WIDGET_ITEM_MODEL.getOpcode()) {
                 int zoom = incomingPacketBuffer.getUnsignedShortBE();
                 int itemId = incomingPacketBuffer.getUnsignedShortLE();
                 int widgetData = incomingPacketBuffer.getIntLE();
@@ -922,7 +941,7 @@ public class IncomingPackets {
                     gameInterface.itemId = itemId;
                 } else {
                     if(itemId == -1) {
-                        incomingPacket = -1;
+                        opcode = -1;
                         gameInterface.modelType = InterfaceModelType.NULL;
                         return true;
                     }
@@ -933,10 +952,10 @@ public class IncomingPackets {
                     gameInterface.modelZoom = 100 * itemDefinition.zoom2d / zoom;
                     gameInterface.rotationZ = itemDefinition.yan2d;
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.UPDATE_FRIEND_LOGIN_MESSAGE.getId()) {
+            if(opcode == PacketType.PRIVATE_MESSAGE_RECEIVED.getOpcode()) {
                 long fromPlayerIndex = incomingPacketBuffer.getLongBE();
                 long chatIdModifier = incomingPacketBuffer.getUnsignedShortBE();
                 long privateMessageCounter = incomingPacketBuffer.getMediumBE();
@@ -950,7 +969,7 @@ public class IncomingPackets {
                     }
                 }
                 if(fromPlayerRights <= 1) {
-                    for(int ignoreIndex = 0; ignoreIndex < Class42.anInt1008; ignoreIndex++) {
+                    for(int ignoreIndex = 0; ignoreIndex < MovedStatics.anInt1008; ignoreIndex++) {
                         if(fromPlayerIndex == Player.ignores[ignoreIndex]) {
                             hideMessage = true;
                             break;
@@ -960,18 +979,18 @@ public class IncomingPackets {
                 if(!hideMessage && !Player.inTutorialIsland) {
                     Player.privateMessageIds[Player.privateMessageIndex] = chatId;
                     Player.privateMessageIndex = (1 + Player.privateMessageIndex) % 100;
-                    String loginNotification = RSString.formatChatString(KeyFocusListener.method956(67, incomingPacketBuffer));
+                    String privateMessage = RSString.formatChatString(KeyFocusListener.method956(67, incomingPacketBuffer));
                     if(fromPlayerRights == 2 || fromPlayerRights == 3)
-                        ChatBox.addChatMessage(Native.goldCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), loginNotification, 7);
+                        ChatBox.addChatMessage(Native.goldCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), privateMessage, 7);
                     else if(fromPlayerRights == 1)
-                        ChatBox.addChatMessage(Native.whiteCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), loginNotification, 7);
+                        ChatBox.addChatMessage(Native.whiteCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), privateMessage, 7);
                     else
-                        ChatBox.addChatMessage(TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), loginNotification, 3);
+                        ChatBox.addChatMessage(TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), privateMessage, 3);
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.RESET_ACTOR_ANIMATIONS.getId()) {
+            if(opcode == PacketType.RESET_ACTOR_ANIMATIONS.getOpcode()) {
                 for(int playerIdx = 0; playerIdx < Player.trackedPlayers.length; playerIdx++) {
                     if(Player.trackedPlayers[playerIdx] != null)
                         Player.trackedPlayers[playerIdx].playingAnimation = -1;
@@ -980,10 +999,10 @@ public class IncomingPackets {
                     if(Player.npcs[npcIdx] != null)
                         Player.npcs[npcIdx].playingAnimation = -1;
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.SET_TAB_WIDGET.getId()) {
+            if(opcode == PacketType.SET_TAB_WIDGET.getOpcode()) {
                 int interfaceId = incomingPacketBuffer.getUnsignedShortBE();
                 int tabIndex = incomingPacketBuffer.getUnsignedByte();
                 if(interfaceId == 65535)
@@ -993,11 +1012,11 @@ public class IncomingPackets {
                     Player.tabWidgetIds[tabIndex] = interfaceId;
                 }
                 GameInterface.drawTabIcons = true;
-                incomingPacket = -1;
+                opcode = -1;
                 GameInterface.redrawTabArea = true;
                 return true;
             }
-            if(incomingPacket == PacketType.UPDATE_SKILL.getId()) {
+            if(opcode == PacketType.UPDATE_SKILL.getOpcode()) {
                 GameInterface.redrawTabArea = true;
                 int skillLevel = incomingPacketBuffer.getUnsignedByte();
                 int skillId = incomingPacketBuffer.getUnsignedByte();
@@ -1009,20 +1028,20 @@ public class IncomingPackets {
                     if(Player.experienceForLevels[levelIndex] <= skillExperience)
                         Player.nextLevels[skillId] = levelIndex + 2;
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.MOVE_WIDGET_CHILD.getId()) {
+            if(opcode == PacketType.MOVE_WIDGET_CHILD.getOpcode()) {
                 int interfaceData = incomingPacketBuffer.getIntBE();
                 int x = incomingPacketBuffer.getShortLE();
                 int y = incomingPacketBuffer.getShortLE();
                 GameInterface gameInterface = GameInterface.getInterface(interfaceData);
                 gameInterface.currentX = gameInterface.originalX + y;
                 gameInterface.currentY = gameInterface.originalY + x;
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 72) { // reset varbits?
+            if(opcode == 72) { // reset varbits?
                 for(int varPlayerIndex = 0; varPlayerIndex < VarPlayerDefinition.varPlayers.length; varPlayerIndex++) {
                     if(Buffer.anIntArray1984[varPlayerIndex] != VarPlayerDefinition.varPlayers[varPlayerIndex]) {
                         VarPlayerDefinition.varPlayers[varPlayerIndex] = Buffer.anIntArray1984[varPlayerIndex];
@@ -1030,21 +1049,21 @@ public class IncomingPackets {
                         GameInterface.redrawTabArea = true;
                     }
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 240) {
+            if(opcode == 240) {
                 ClientScriptRunner.parseClientScriptPacket(Main.signlink, incomingPacketBuffer);
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 58) {
+            if(opcode == 58) {
                 int i_106_ = incomingPacketBuffer.getIntME2();
-                Class12.aSignlinkNode_394 = Main.signlink.method393(i_106_); // this just ends up throwing an exception? wot
-                incomingPacket = -1;
+                Class12.aSignlinkNode_394 = Main.signlink.createExceptionNode(i_106_); // TODO this just ends up throwing an exception? wot
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.UPDATE_SPECIFIC_WIDGET_ITEMS.getId()) {
+            if(opcode == PacketType.UPDATE_SPECIFIC_WIDGET_ITEMS.getOpcode()) {
                 GameInterface.redrawTabArea = true;
                 int widgetData = incomingPacketBuffer.getIntBE();
                 GameInterface gameInterface = GameInterface.getInterface(widgetData);
@@ -1071,33 +1090,33 @@ public class IncomingPackets {
                         gameInterface.itemAmounts[itemSlot] = i_110_;
                     }
                 }
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.SET_MAP_CHUNK.getId()) {
+            if(opcode == PacketType.SET_MAP_CHUNK.getOpcode()) {
                 FloorDecoration.method343(false, 5688);
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == PacketType.UPDATE_WIDGET_TEXT_COLOR.getId()) {
+            if(opcode == PacketType.UPDATE_WIDGET_TEXT_COLOR.getOpcode()) {
                 int i_113_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_114_ = incomingPacketBuffer.getIntLE();
                 int i_115_ = i_113_ >> 10 & 0x1f;
                 int i_116_ = 0x1f & i_113_ >> 5;
                 GameInterface gameInterface = GameInterface.getInterface(i_114_);
-                incomingPacket = -1;
+                opcode = -1;
                 int i_117_ = i_113_ & 0x1f;
                 gameInterface.textColor = (i_116_ << 11) + (i_115_ << 19) + (i_117_ << 3);
                 return true;
             }
-            if(incomingPacket == 211) { // update ignore list
-                Class42.anInt1008 = incomingPacketSize / 8;
-                for(int i_118_ = 0; Class42.anInt1008 > i_118_; i_118_++)
+            if(opcode == 211) { // update ignore list
+                MovedStatics.anInt1008 = incomingPacketSize / 8;
+                for(int i_118_ = 0; MovedStatics.anInt1008 > i_118_; i_118_++)
                     Player.ignores[i_118_] = incomingPacketBuffer.getLongBE();
-                incomingPacket = -1;
+                opcode = -1;
                 return true;
             }
-            if(incomingPacket == 124) { // close chatbox widget
+            if(opcode == 124) { // close chatbox widget
                 if(GameInterface.chatboxInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
                     GameInterface.chatboxInterfaceId = -1;
@@ -1105,20 +1124,20 @@ public class IncomingPackets {
                 ChatBox.redrawChatbox = true;
                 ChatBox.inputMessage = "";
                 ChatBox.inputType = 2;
-                incomingPacket = -1;
+                opcode = -1;
                 ChatBox.messagePromptRaised = false;
                 return true;
             }
-            MovedStatics.printException("T1 - " + incomingPacket + "," + MovedStatics.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize, null);
-            Class48.logout(-7225);
+            MovedStatics.printException("T1 - " + opcode + "," + secondLastOpcode + "," + thirdLastOpcode + " - " + incomingPacketSize, null);
+            Class48.logout();
         } catch(java.io.IOException ioexception) {
             Class59.dropClient();
         } catch(Exception exception) {
-            String string = "T2 - " + incomingPacket + "," + MovedStatics.anInt324 + "," + Class49.anInt1151 + " - " + incomingPacketSize + "," + (SpotAnimDefinition.baseX + Player.localPlayer.pathY[0]) + "," + (Player.localPlayer.pathX[0] + Class26.baseY) + " - ";
+            String string = "T2 - " + opcode + "," + secondLastOpcode + "," + thirdLastOpcode + " - " + incomingPacketSize + "," + (MovedStatics.baseX + Player.localPlayer.pathY[0]) + "," + (Player.localPlayer.pathX[0] + Class26.baseY) + " - ";
             for(int i = 0; incomingPacketSize > i && i < 50; i++)
                 string += incomingPacketBuffer.buffer[i] + ",";
             MovedStatics.printException(string, exception);
-            Class48.logout(-7225);
+            Class48.logout();
             exception.printStackTrace();
         }
         return true;
@@ -1164,6 +1183,266 @@ public class IncomingPackets {
         for(/**/; Player.localPlayerCount > i; i++) {
             if(Player.trackedPlayers[Player.trackedPlayerIndices[i]] == null)
                 throw new RuntimeException("gpp2 pos:" + i + " size:" + Player.localPlayerCount);
+        }
+    }
+
+    public static void parseMapIncomingPacket() {
+        if (opcode == 49) {
+            int i = incomingPacketBuffer.getUnsignedByte();
+            int i_0_ = OverlayDefinition.placementY + (i & 0x7);
+            int i_1_ = ((0x7b & i) >> 4) + MovedStatics.placementX;
+            int i_2_ = incomingPacketBuffer.getUnsignedByte();
+            int i_3_ = i_2_ >> 2;
+            int i_4_ = 0x3 & i_2_;
+            int i_5_ = Npc.anIntArray3304[i_3_];
+            int i_6_ = incomingPacketBuffer.getUnsignedShortLE();
+            if (i_1_ >= 0 && i_0_ >= 0 && i_1_ < 103 && i_0_ < 103) {
+                int i_7_ = MovedStatics.tile_height[Player.worldLevel][i_1_][i_0_];
+                int i_8_ = MovedStatics.tile_height[Player.worldLevel][i_1_ + 1][i_0_];
+                int i_9_ = MovedStatics.tile_height[Player.worldLevel][1 + i_1_][1 + i_0_];
+                int i_10_ = MovedStatics.tile_height[Player.worldLevel][i_1_][i_0_ + 1];
+                if (i_5_ == 0) {
+                    Wall wall = Npc.currentScene.method126(Player.worldLevel, i_1_, i_0_);
+                    if (wall != null) {
+                        int i_11_ = 0x7fff & wall.hash >> 14;
+                        if (i_3_ == 2) {
+                            wall.primary = new GameObject(i_11_, 2, 4 + i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
+                            wall.secondary = new GameObject(i_11_, 2, 0x3 & i_4_ + 1, i_7_, i_8_, i_9_, i_10_, i_6_, false);
+                        } else
+                            wall.primary = new GameObject(i_11_, i_3_, i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
+                    }
+                }
+                if (i_5_ == 1) {
+                    WallDecoration wallDecoration = Npc.currentScene.getWallDecoration(Player.worldLevel, i_1_, i_0_);
+                    if (wallDecoration != null)
+                        wallDecoration.renderable = new GameObject((0x1fffe268 & wallDecoration.hash) >> 14, 4, 0, i_7_, i_8_, i_9_, i_10_, i_6_, false);
+                }
+                if (i_5_ == 2) {
+                    InteractiveObject interactiveObject = Npc.currentScene.method107(Player.worldLevel, i_1_, i_0_);
+                    if (i_3_ == 11)
+                        i_3_ = 10;
+                    if (interactiveObject != null)
+                        interactiveObject.renderable = new GameObject(interactiveObject.hash >> 14 & 0x7fff, i_3_, i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
+                }
+                if (i_5_ == 3) {
+                    FloorDecoration floorDecoration = Npc.currentScene.getFloorDecoration(Player.worldLevel, i_1_, i_0_);
+                    if (floorDecoration != null)
+                        floorDecoration.renderable = new GameObject(0x7fff & floorDecoration.hash >> 14, 22, i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
+                }
+            }
+        } else if (opcode == 241) { // set landscape object
+            int i = incomingPacketBuffer.getUnsignedByte();
+            int i_12_ = i & 0x3;
+            int i_13_ = i >> 2;
+            int i_14_ = Npc.anIntArray3304[i_13_];
+            int objectId = incomingPacketBuffer.getUnsignedShortBE();
+            int i_16_ = incomingPacketBuffer.getUnsignedByte();
+            int i_17_ = (0x7 & i_16_) + OverlayDefinition.placementY;
+            int i_18_ = MovedStatics.placementX + ((i_16_ & 0x75) >> 4);
+            if (i_18_ >= 0 && i_17_ >= 0 && i_18_ < 104 && i_17_ < 104)
+                GameObjectDefinition.method609(objectId, i_18_, i_12_, -1, Player.worldLevel, i_17_, i_14_, i_13_, 0);
+        } else {
+            if (opcode == 9) {
+                int offset = incomingPacketBuffer.getUnsignedByte();
+                int localX = (offset & 0x7) + OverlayDefinition.placementY;
+                int localY = (0x7 & offset >> 4) + MovedStatics.placementX;
+                int soundId = incomingPacketBuffer.getUnsignedShortBE();
+
+                int soundData = incomingPacketBuffer.getUnsignedByte();
+                int radius = soundData >> 4 & 0xf;
+                int volume = 0x7 & soundData;
+                int delay = incomingPacketBuffer.getUnsignedByte();
+                if (localY >= 0 && localX >= 0 && localY < 104 && localX < 104) {
+                    int i_26_ = 1 + radius;
+                    if (Player.localPlayer.pathY[0] >= localY - i_26_ && Player.localPlayer.pathY[0] <= localY + i_26_ && localX - i_26_ <= Player.localPlayer.pathX[0] && localX + i_26_ >= Player.localPlayer.pathX[0] && RSCanvas.anInt65 != 0 && volume > 0 && PacketBuffer.currentSound < 50) {
+                        IdentityKit.sound[PacketBuffer.currentSound] = soundId;
+                        ItemDefinition.soundVolume[PacketBuffer.currentSound] = volume;
+                        Class40_Sub3.soundDelay[PacketBuffer.currentSound] = delay;
+                        PacketBuffer.effects[PacketBuffer.currentSound] = null;
+                        MovedStatics.anIntArray1916[PacketBuffer.currentSound] = radius + (localX << 8) + (localY << 16);
+                        PacketBuffer.currentSound++;
+                    }
+                }
+            }
+            if (opcode == 202) {
+                int i = incomingPacketBuffer.getUnsignedByte();
+                int i_27_ = ((0x78 & i) >> 4) + MovedStatics.placementX;
+                int i_28_ = OverlayDefinition.placementY + (0x7 & i);
+                int i_29_ = incomingPacketBuffer.getUnsignedShortBE();
+                int i_30_ = incomingPacketBuffer.getUnsignedByte();
+                int i_31_ = incomingPacketBuffer.getUnsignedShortBE();
+                if (i_27_ >= 0 && i_28_ >= 0 && i_27_ < 104 && i_28_ < 104) {
+                    i_28_ = 128 * i_28_ + 64;
+                    i_27_ = i_27_ * 128 + 64;
+                    Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = new Class40_Sub5_Sub17_Sub6(i_29_, Player.worldLevel, i_27_, i_28_, -i_30_ + Class37.getFloorDrawHeight(Player.worldLevel, i_27_, i_28_), i_31_, MovedStatics.pulseCycle);
+                    Class57.aLinkedList_1332.pushBack(class40_sub5_sub17_sub6, -111);
+                }
+            } else if (opcode == 99) {
+                int i = incomingPacketBuffer.getUnsignedByte();
+                int i_32_ = MovedStatics.placementX + ((0x75 & i) >> 4);
+                int i_33_ = (i & 0x7) + OverlayDefinition.placementY;
+                int i_34_ = incomingPacketBuffer.getUnsignedShortBE();
+                int i_35_ = incomingPacketBuffer.getUnsignedShortBE();
+                int i_36_ = incomingPacketBuffer.getUnsignedShortBE();
+                if (i_32_ >= 0 && i_33_ >= 0 && i_32_ < 104 && i_33_ < 104) {
+                    LinkedList linkedList = Wall.groundItems[Player.worldLevel][i_32_][i_33_];
+                    if (linkedList != null) {
+                        for (Item item = (Item) linkedList.method902((byte) -90); item != null; item = (Item) linkedList.method909(-4)) {
+                            if (item.itemId == (i_34_ & 0x7fff) && i_35_ == item.itemCount) {
+                                item.itemCount = i_36_;
+                                break;
+                            }
+                        }
+                        FramemapDefinition.spawnGroundItem(i_33_, i_32_);
+                    }
+                }
+            } else if (opcode == 143) { // remove landscape object
+                int offset = incomingPacketBuffer.getUnsignedByte();
+                int positionY = OverlayDefinition.placementY + (0x7 & offset);
+                int positionX = MovedStatics.placementX + (offset >> 4 & 0x7);
+                int objectInfo = incomingPacketBuffer.getUnsignedByte();
+                int orientation = objectInfo & 0x3;
+                int typeIndex = objectInfo >> 2;
+                int objectType = Npc.anIntArray3304[typeIndex];
+                if (positionX >= 0 && positionY >= 0 && positionX < 104 && positionY < 104)
+                    GameObjectDefinition.method609(-1, positionX, orientation, -1, Player.worldLevel, positionY, objectType, typeIndex, 0);
+            } else {
+                if (opcode == 229) {
+                    int i = incomingPacketBuffer.getByte();
+                    int i_43_ = incomingPacketBuffer.getUnsignedShortBE();
+                    int i_44_ = incomingPacketBuffer.getByte();
+                    int i_45_ = incomingPacketBuffer.getByte();
+                    int i_46_ = incomingPacketBuffer.getUnsignedByte();
+                    int i_47_ = i_46_ & 0x3;
+                    int i_48_ = i_46_ >> 2;
+                    int i_49_ = Npc.anIntArray3304[i_48_];
+                    int i_50_ = incomingPacketBuffer.getUnsignedByte();
+                    int i_51_ = (i_50_ & 0x7) + OverlayDefinition.placementY;
+                    int i_52_ = MovedStatics.placementX + (i_50_ >> 4 & 0x7);
+                    int i_53_ = incomingPacketBuffer.getUnsignedShortBE();
+                    int i_54_ = incomingPacketBuffer.getByte();
+                    int i_55_ = incomingPacketBuffer.getUnsignedShortLE();
+                    int i_56_ = incomingPacketBuffer.getUnsignedShortLE();
+                    Player class40_sub5_sub17_sub4_sub1;
+                    if (i_43_ != PlayerAppearance.anInt708)
+                        class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_43_];
+                    else
+                        class40_sub5_sub17_sub4_sub1 = Player.localPlayer;
+                    if (class40_sub5_sub17_sub4_sub1 != null) {
+                        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_55_);
+                        int i_57_ = MovedStatics.tile_height[Player.worldLevel][i_52_][i_51_];
+                        int i_58_ = MovedStatics.tile_height[Player.worldLevel][i_52_][1 + i_51_];
+                        int i_59_ = MovedStatics.tile_height[Player.worldLevel][1 + i_52_][1 + i_51_];
+                        int i_60_ = MovedStatics.tile_height[Player.worldLevel][i_52_ + 1][i_51_];
+                        Model class40_sub5_sub17_sub5 = gameObjectDefinition.createTerrainObjectModel(i_59_, i_58_, i_47_, i_57_, i_48_, i_60_);
+                        if (class40_sub5_sub17_sub5 != null) {
+                            if (i < i_54_) {
+                                int i_61_ = i_54_;
+                                i_54_ = i;
+                                i = i_61_;
+                            }
+                            if (i_44_ < i_45_) {
+                                int i_62_ = i_45_;
+                                i_45_ = i_44_;
+                                i_44_ = i_62_;
+                            }
+                            GameObjectDefinition.method609(-1, i_52_, 0, 1 + i_56_, Player.worldLevel, i_51_, i_49_, 0, 1 + i_53_);
+                            class40_sub5_sub17_sub4_sub1.anInt3274 = i_56_ + MovedStatics.pulseCycle;
+                            int i_63_ = gameObjectDefinition.sizeX;
+                            class40_sub5_sub17_sub4_sub1.playerModel = class40_sub5_sub17_sub5;
+                            class40_sub5_sub17_sub4_sub1.anInt3283 = i_53_ + MovedStatics.pulseCycle;
+                            int i_64_ = gameObjectDefinition.sizeY;
+                            if (i_47_ == 1 || i_47_ == 3) {
+                                i_64_ = gameObjectDefinition.sizeX;
+                                i_63_ = gameObjectDefinition.sizeY;
+                            }
+                            class40_sub5_sub17_sub4_sub1.anInt3271 = i_52_ * 128 + 64 * i_63_;
+                            class40_sub5_sub17_sub4_sub1.anInt3291 = i_51_ * 128 + 64 * i_64_;
+                            class40_sub5_sub17_sub4_sub1.anInt3272 = Class37.getFloorDrawHeight(Player.worldLevel, class40_sub5_sub17_sub4_sub1.anInt3271, class40_sub5_sub17_sub4_sub1.anInt3291);
+                            class40_sub5_sub17_sub4_sub1.anInt3281 = i_45_ + i_51_;
+                            class40_sub5_sub17_sub4_sub1.anInt3258 = i_52_ + i_54_;
+                            class40_sub5_sub17_sub4_sub1.anInt3262 = i_52_ + i;
+                            class40_sub5_sub17_sub4_sub1.anInt3289 = i_44_ + i_51_;
+                        }
+                    }
+                }
+                if (opcode == 74) { // remove world item
+                    int i = incomingPacketBuffer.getUnsignedByte();
+                    int i_65_ = MovedStatics.placementX + (i >> 4 & 0x7);
+                    int i_66_ = (i & 0x7) + OverlayDefinition.placementY;
+                    int i_67_ = incomingPacketBuffer.getUnsignedShortBE();
+                    if (i_65_ >= 0 && i_66_ >= 0 && i_65_ < 104 && i_66_ < 104) {
+                        LinkedList linkedList = Wall.groundItems[Player.worldLevel][i_65_][i_66_];
+                        if (linkedList != null) {
+                            for (Item item = (Item) linkedList.method902((byte) -90); item != null; item = (Item) linkedList.method909(-4)) {
+                                if ((0x7fff & i_67_) == item.itemId) {
+                                    item.remove();
+                                    break;
+                                }
+                            }
+                            if (linkedList.method902((byte) -90) == null)
+                                Wall.groundItems[Player.worldLevel][i_65_][i_66_] = null;
+                            FramemapDefinition.spawnGroundItem(i_66_, i_65_);
+                        }
+                    }
+                } else if (opcode == 1) {
+                    int i = incomingPacketBuffer.getUnsignedByte();
+                    int i_68_ = (i & 0x7) + OverlayDefinition.placementY;
+                    int i_69_ = MovedStatics.placementX + (0x7 & i >> 4);
+                    int i_70_ = i_69_ + incomingPacketBuffer.getByte();
+                    int i_71_ = i_68_ + incomingPacketBuffer.getByte();
+                    int i_72_ = incomingPacketBuffer.getShortBE();
+                    int i_73_ = incomingPacketBuffer.getUnsignedShortBE();
+                    int i_74_ = incomingPacketBuffer.getUnsignedByte() * 4;
+                    int i_75_ = 4 * incomingPacketBuffer.getUnsignedByte();
+                    int i_76_ = incomingPacketBuffer.getUnsignedShortBE();
+                    int i_77_ = incomingPacketBuffer.getUnsignedShortBE();
+                    int i_78_ = incomingPacketBuffer.getUnsignedByte();
+                    int i_79_ = incomingPacketBuffer.getUnsignedByte();
+                    if (i_69_ >= 0 && i_68_ >= 0 && i_69_ < 104 && i_68_ < 104 && i_70_ >= 0 && i_71_ >= 0 && i_70_ < 104 && i_71_ < 104 && i_73_ != 65535) {
+                        i_70_ = 64 + 128 * i_70_;
+                        i_69_ = 64 + 128 * i_69_;
+                        i_68_ = i_68_ * 128 + 64;
+                        Class40_Sub5_Sub17_Sub1 class40_sub5_sub17_sub1 = new Class40_Sub5_Sub17_Sub1(i_73_, Player.worldLevel, i_69_, i_68_, Class37.getFloorDrawHeight(Player.worldLevel, i_69_, i_68_) + -i_74_, i_76_ + MovedStatics.pulseCycle, i_77_ + MovedStatics.pulseCycle, i_78_, i_79_, i_72_, i_75_);
+                        i_71_ = 128 * i_71_ + 64;
+                        class40_sub5_sub17_sub1.method766(i_76_ + MovedStatics.pulseCycle, 0, i_71_, -i_75_ + Class37.getFloorDrawHeight(Player.worldLevel, i_70_, i_71_), i_70_);
+                        Class43.aLinkedList_1022.pushBack(class40_sub5_sub17_sub1, -73);
+                    }
+                } else {
+                    if (opcode == 19) { // update world item amount
+                        int i = incomingPacketBuffer.getUnsignedShortLE();
+                        int i_80_ = incomingPacketBuffer.getUnsignedShortLE();
+                        int i_81_ = incomingPacketBuffer.getUnsignedShortBE();
+                        int i_82_ = incomingPacketBuffer.getUnsignedByte();
+                        int i_83_ = ((0x71 & i_82_) >> 4) + MovedStatics.placementX;
+                        int i_84_ = (0x7 & i_82_) + OverlayDefinition.placementY;
+                        if (i_83_ >= 0 && i_84_ >= 0 && i_83_ < 104 && i_84_ < 104 && PlayerAppearance.anInt708 != i_80_) {
+                            Item item = new Item();
+                            item.itemId = i_81_;
+                            item.itemCount = i;
+                            if (Wall.groundItems[Player.worldLevel][i_83_][i_84_] == null)
+                                Wall.groundItems[Player.worldLevel][i_83_][i_84_] = new LinkedList();
+                            Wall.groundItems[Player.worldLevel][i_83_][i_84_].pushBack(item, 64);
+                            FramemapDefinition.spawnGroundItem(i_84_, i_83_);
+                        }
+                    } else if (opcode == 175) { // add world item
+                        int i = incomingPacketBuffer.getUnsignedShortLE();
+                        int i_85_ = incomingPacketBuffer.getUnsignedShortBE();
+                        int i_86_ = incomingPacketBuffer.getUnsignedByte();
+                        int i_87_ = OverlayDefinition.placementY + (i_86_ & 0x7);
+                        int i_88_ = MovedStatics.placementX + ((0x7a & i_86_) >> 4);
+                        if (i_88_ >= 0 && i_87_ >= 0 && i_88_ < 104 && i_87_ < 104) {
+                            Item item = new Item();
+                            item.itemCount = i_85_;
+                            item.itemId = i;
+                            if (Wall.groundItems[Player.worldLevel][i_88_][i_87_] == null)
+                                Wall.groundItems[Player.worldLevel][i_88_][i_87_] = new LinkedList();
+                            Wall.groundItems[Player.worldLevel][i_88_][i_87_].pushBack(item, -118);
+                            FramemapDefinition.spawnGroundItem(i_87_, i_88_);
+                        }
+                    }
+                }
+            }
         }
     }
 }

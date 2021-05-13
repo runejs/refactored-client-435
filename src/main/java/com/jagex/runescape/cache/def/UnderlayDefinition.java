@@ -7,10 +7,6 @@ import com.jagex.runescape.node.CachedNode;
 import com.jagex.runescape.node.NodeCache;
 
 public class UnderlayDefinition extends CachedNode {
-    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
-    public static int anInt2576;
-    public static int anInt2581;
-    public static CacheArchive aCacheArchive_2582;
     public static NodeCache underlayDefinitionCache = new NodeCache(64);
     public static CacheArchive gameDefinitionsCacheArchive;
 
@@ -19,11 +15,6 @@ public class UnderlayDefinition extends CachedNode {
     public int hueMultiplier;
     public int hue;
     public int color = 0;
-
-    public static int method614(int arg1, int arg2, int arg3) {
-        int i_7_ = 256 + -arg3;
-        return (arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) + (~0xff00ff & (0xff00ff & arg1) * i_7_ + arg3 * (0xff00ff & arg2)) >> 8;
-    }
 
     public static void initializeUnderlayDefinitionCache(CacheArchive cacheArchive) {
         gameDefinitionsCacheArchive = cacheArchive;

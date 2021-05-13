@@ -2,7 +2,7 @@ package com.jagex.runescape;
 
 import com.jagex.runescape.cache.def.ActorDefinition;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.def.UnderlayDefinition;
+import com.jagex.runescape.cache.def.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.cache.media.IndexedImage;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
@@ -20,8 +20,8 @@ public abstract class Class22_Sub2 extends Class22 {
 
 
     public static IndexedImage[] method315() {
-        IndexedImage[] class40_sub5_sub14_sub2s = new IndexedImage[UnderlayDefinition.anInt2581];
-        for(int i = 0; UnderlayDefinition.anInt2581 > i; i++) {
+        IndexedImage[] class40_sub5_sub14_sub2s = new IndexedImage[MovedStatics.anInt2581];
+        for(int i = 0; MovedStatics.anInt2581 > i; i++) {
             IndexedImage class40_sub5_sub14_sub2 = class40_sub5_sub14_sub2s[i] = new IndexedImage();
             class40_sub5_sub14_sub2.maxWidth = ItemDefinition.anInt2846;
             class40_sub5_sub14_sub2.maxHeight = GameShell.anInt31;
@@ -36,16 +36,11 @@ public abstract class Class22_Sub2 extends Class22 {
         return class40_sub5_sub14_sub2s;
     }
 
-    public static void method316() {
-        Class43.aClass9_1014.clear();
-        MovedStatics.aClass9_851.clear();
-    }
-
     public static ImageRGB[] method319(byte arg0) {
-        ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[UnderlayDefinition.anInt2581];
+        ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[MovedStatics.anInt2581];
         if(arg0 != -62)
             return null;
-        for(int i = 0; i < UnderlayDefinition.anInt2581; i++) {
+        for(int i = 0; i < MovedStatics.anInt2581; i++) {
             ImageRGB class40_sub5_sub14_sub4 = class40_sub5_sub14_sub4s[i] = new ImageRGB();
             class40_sub5_sub14_sub4.maxWidth = ItemDefinition.anInt2846;
             class40_sub5_sub14_sub4.maxHeight = GameShell.anInt31;

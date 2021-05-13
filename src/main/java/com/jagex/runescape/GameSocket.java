@@ -17,10 +17,10 @@ public class GameSocket implements Runnable {
     public Signlink signLink;
     public boolean socketError;
 
-    public int anInt1509 = 0;
-    public int anInt1520 = 0;
+    public int queuedDataPosition = 0;
+    public int dataWrittenPosition = 0;
     public boolean socketDisconnected;
-    public byte[] aByteArray1504;
+    public byte[] queuedData;
 
     public GameSocket(Socket socket, Signlink signLink) throws IOException {
         socketDisconnected = false;
@@ -34,29 +34,33 @@ public class GameSocket implements Runnable {
     }
 
 
-    public void method1008(int arg0, int arg1, byte[] arg3) throws IOException {
+    public void readDataToBuffer(int currentPosition, int packetSize, byte[] buffer) throws IOException {
         if (!socketDisconnected) {
-            while (arg1 > 0) {
-                int i = socketInputStream.read(arg3, arg0, arg1);
+            while (packetSize > 0) {
+                int i = socketInputStream.read(buffer, currentPosition, packetSize);
                 if (i <= 0)
                     throw new EOFException();
-                arg1 -= i;
-                arg0 += i;
+                packetSize -= i;
+                currentPosition += i;
             }
         }
     }
 
-    public void method1009() {
+    public void kill() {
         if (!socketDisconnected) {
             synchronized (this) {
                 socketDisconnected = true;
                 this.notifyAll();
             }
+
             if (signLinkNode != null) {
-                while (signLinkNode.anInt434 == 0)
-                    Class43.sleep(1L);
-                if (signLinkNode.anInt434 == 1) {
+                while (signLinkNode.status == 0) {
+                    Class43.threadSleep(1L);
+                }
+
+                if (signLinkNode.status == 1) {
                     try {
+                        // Kill the signLinkNode
                         ((Thread) signLinkNode.value).join();
                     } catch (InterruptedException interruptedexception) {
                         interruptedexception.printStackTrace();
@@ -64,68 +68,70 @@ public class GameSocket implements Runnable {
                     }
                 }
             }
+
             signLinkNode = null;
         }
     }
 
-    public void method1010(int arg0, int arg2, byte[] arg3) throws IOException {
+    public void sendDataFromBuffer(int size, int startPos, byte[] data) throws IOException {
         if (!socketDisconnected) {
             if (socketError) {
                 socketError = false;
                 throw new IOException();
             }
-            if (aByteArray1504 == null)
-                aByteArray1504 = new byte[5000];
+            if (queuedData == null)
+                queuedData = new byte[5000];
             synchronized (this) {
-                for (int i = 0; i < arg0; i++) {
-                    aByteArray1504[anInt1509] = arg3[arg2 + i];
-                    anInt1509 = (1 + anInt1509) % 5000;
-                    if (anInt1509 == (4900 + anInt1520) % 5000)
+                for (int currentByte = 0; currentByte < size; currentByte++) {
+                    queuedData[queuedDataPosition] = data[startPos + currentByte];
+                    queuedDataPosition = (1 + queuedDataPosition) % 5000;
+                    if (queuedDataPosition == (4900 + dataWrittenPosition) % 5000)
                         throw new IOException();
                 }
                 if (signLinkNode == null)
-                    signLinkNode = signLink.createCanvasNode(3, this);
+                    signLinkNode = signLink.createThreadNode(3, this);
                 this.notifyAll();
             }
         }
     }
 
     public void finalize() {
-        method1009();
+        kill();
     }
 
     public void run() {
         try {
             for (; ; ) {
-                int i;
-                int i_0_;
+                int dataSize;
+                int offset;
                 synchronized (this) {
-                    if (anInt1509 == anInt1520) {
+                    if (queuedDataPosition == dataWrittenPosition) {
                         if (socketDisconnected) {
                             break;
                         }
                         try {
+                            // Wait for new data if the written position has reached the queued position
                             this.wait();
                         } catch (InterruptedException interruptedexception) {
                             /* empty */
                             interruptedexception.printStackTrace();
                         }
                     }
-                    if (anInt1509 >= anInt1520)
-                        i = anInt1509 - anInt1520;
+                    if (queuedDataPosition >= dataWrittenPosition)
+                        dataSize = queuedDataPosition - dataWrittenPosition;
                     else
-                        i = -anInt1520 + 5000;
-                    i_0_ = anInt1520;
+                        dataSize = -dataWrittenPosition + 5000;
+                    offset = dataWrittenPosition;
                 }
-                if (i > 0) {
+                if (dataSize > 0) {
                     try {
-                        socketOutputStream.write(aByteArray1504, i_0_, i);
+                        socketOutputStream.write(queuedData, offset, dataSize);
                     } catch (IOException ioexception) {
                         socketError = true;
                     }
-                    anInt1520 = (i + anInt1520) % 5000;
+                    dataWrittenPosition = (dataSize + dataWrittenPosition) % 5000;
                     try {
-                        if (anInt1520 == anInt1509)
+                        if (dataWrittenPosition == queuedDataPosition)
                             socketOutputStream.flush();
                     } catch (IOException ioexception) {
                         ioexception.printStackTrace();
@@ -144,7 +150,7 @@ public class GameSocket implements Runnable {
                 /* empty */
                 ioexception.printStackTrace();
             }
-            aByteArray1504 = null;
+            queuedData = null;
         } catch (Exception exception) {
             MovedStatics.printException(null, exception);
         }

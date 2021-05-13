@@ -15,7 +15,7 @@ public enum PacketType {
     RESET_ACTOR_ANIMATIONS(27, 0),
     UPDATE_SKILL(34, 6),
     PLAY_QUICK_SONG(40, 5),
-    UPDATE_FRIEND_LOGIN_MESSAGE(51, -1),
+    PRIVATE_MESSAGE_RECEIVED(51, -1),
     CLEAR_MAP_CHUNK(64, 2),
     SET_FRIEND_LIST_STATUS(70, 1),
     SHOW_TAB_AND_SCREEN_WIDGETS(84, 4),
@@ -43,13 +43,15 @@ public enum PacketType {
     UPDATE_REFERENCE_POSITION(254, 2);
 
     /**
-     * The packet ID as received from the server.
+     * The packet opcode after ISAAC decryption.
      */
-    private final int id;
+    private final int opcode;
 
     /**
-     * The packet size of this specific packet.
-     * @implNote Set to -1 for {unknown}, set to -2 to define the size from the server.
+     * The packet size in bytes of this specific packet.
+     * @implNote If the size is greater than 0, then the packet size is set as-is.
+     *           If this value is -1, the server is sending the size between 0 and 255 in the next 1 byte.
+     *           If this value is -2, the server is sending the size between 0 and 65525 in the next 2 bytes.
      */
     private final int size;
 
@@ -85,13 +87,13 @@ public enum PacketType {
             -2, 4, 0, 0, 0, 0, 0, 0, 0, 0,  // 240
             6, 0, 0, 6, 2, 4 };
 
-    PacketType(int id, int size) {
-        this.id = id;
+    PacketType(int opcode, int size) {
+        this.opcode = opcode;
         this.size = size;
     }
 
-    public int getId() {
-        return id;
+    public int getOpcode() {
+        return opcode;
     }
 
     public int getSize() {
@@ -100,7 +102,7 @@ public enum PacketType {
 
     public static int findPacketSize(int id) {
         for (PacketType packetType : values()) {
-            if (packetType.id == id) {
+            if (packetType.opcode == id) {
                 return packetType.size;
             }
         }

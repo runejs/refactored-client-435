@@ -53,56 +53,54 @@ public class ClientScriptRunner extends Node {
         return Native.aClass1_478;
     }
 
-    public static void method873(int arg1, int arg2) {
-        if(arg2 != 45)
-            runEnergy = 53;
-        int i = 0;
-        for(int i_0_ = 0; i_0_ < 100; i_0_++) {
-            if(ChatBox.chatMessages[i_0_] != null) {
-                int i_1_ = ChatBox.chatTypes[i_0_];
-                int i_2_ = 4 + ChatBox.chatboxScroll + -(i * 14) + 70;
+    public static void handleChatNamesRightClick(int arg1) {
+        int offset = 0;
+        for(int index = 0; index < 100; index++) {
+            if(ChatBox.chatMessages[index] != null) {
+                int chatType = ChatBox.chatTypes[index];
+                int i_2_ = 4 + ChatBox.chatboxScroll + -(offset * 14) + 70;
                 if(i_2_ < -20)
                     break;
-                if(i_1_ == 0)
-                    i++;
-                String class1 = ChatBox.chatPlayerNames[i_0_];
-                if(class1 != null && class1.startsWith(Native.whiteCrown))
-                    class1 = class1.substring(5);
-                if(class1 != null && class1.startsWith(Native.goldCrown))
-                    class1 = class1.substring(5);
-                if((i_1_ == 1 || i_1_ == 2) && (i_1_ == 1 || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 1 && Player.hasFriend(class1))) {
-                    if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !class1.equals(Player.localPlayer.playerName)) {
+                if(chatType == 0)
+                    offset++;
+                String username = ChatBox.chatPlayerNames[index];
+                if(username != null && username.startsWith(Native.whiteCrown))
+                    username = username.substring(5);
+                if(username != null && username.startsWith(Native.goldCrown))
+                    username = username.substring(5);
+                if((chatType == 1 || chatType == 2) && (chatType == 1 || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 1 && Player.hasFriend(username))) {
+                    if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !username.equals(Player.localPlayer.playerName)) {
                         if(InteractiveObject.playerRights >= 1) {
-                            OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.white + class1);
+                            MovedStatics.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.white + username);
                         }
-                        OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 51, Native.white + class1);
-                        OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 45, Native.white + class1);
+                        MovedStatics.addActionRow(English.addIgnore, 0, 0, 0, 51, Native.white + username);
+                        MovedStatics.addActionRow(English.addFriend, 0, 0, 0, 45, Native.white + username);
                     }
-                    i++;
+                    offset++;
                 }
-                if((i_1_ == 3 || i_1_ == 7) && CollisionMap.anInt165 == 0 && (i_1_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(class1))) {
-                    i++;
+                if((chatType == 3 || chatType == 7) && CollisionMap.anInt165 == 0 && (chatType == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(username))) {
+                    offset++;
                     if(arg1 > -14 + i_2_ && arg1 <= i_2_) {
                         if(InteractiveObject.playerRights >= 1) {
-                            OverlayDefinition.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.white + class1);
+                            MovedStatics.addActionRow(English.reportAbuse, 0, 0, 0, 28, Native.white + username);
                         }
-                        OverlayDefinition.addActionRow(English.addIgnore, 0, 0, 0, 51, Native.white + class1);
-                        OverlayDefinition.addActionRow(English.addFriend, 0, 0, 0, 45, Native.white + class1);
+                        MovedStatics.addActionRow(English.addIgnore, 0, 0, 0, 51, Native.white + username);
+                        MovedStatics.addActionRow(English.addFriend, 0, 0, 0, 45, Native.white + username);
                     }
                 }
-                if(i_1_ == 4 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Player.hasFriend(class1))) {
+                if(chatType == 4 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Player.hasFriend(username))) {
                     if(arg1 > -14 + i_2_ && arg1 <= i_2_) {
-                        OverlayDefinition.addActionRow(English.acceptTrade, 0, 0, 0, 26, Native.white + class1);
+                        MovedStatics.addActionRow(English.acceptTrade, 0, 0, 0, 26, Native.white + username);
                     }
-                    i++;
+                    offset++;
                 }
-                if((i_1_ == 5 || i_1_ == 6) && CollisionMap.anInt165 == 0 && ChatBox.privateChatMode < 2)
-                    i++;
-                if(i_1_ == 8 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Player.hasFriend(class1))) {
+                if((chatType == 5 || chatType == 6) && CollisionMap.anInt165 == 0 && ChatBox.privateChatMode < 2)
+                    offset++;
+                if(chatType == 8 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Player.hasFriend(username))) {
                     if(i_2_ + -14 < arg1 && arg1 <= i_2_) {
-                        OverlayDefinition.addActionRow(English.acceptChallenge, 0, 0, 0, 46, Native.white + class1);
+                        MovedStatics.addActionRow(English.acceptChallenge, 0, 0, 0, 46, Native.white + username);
                     }
-                    i++;
+                    offset++;
                 }
             }
         }
@@ -139,7 +137,7 @@ public class ClientScriptRunner extends Node {
                     }
                     clientScriptRunner.opcodes[i] = opcode;
                     clientScriptRunner.values[i] = val;
-                    clientScriptRunner.valueNodes[i] = signlink.method392(Class26.stringToType(typeString), valName);
+                    clientScriptRunner.valueNodes[i] = signlink.createType10Node(Class26.stringToType(typeString), valName);
                 } else if(opcode == 3 || opcode == 4) {
                     String typeString = new String(buffer.getRSString().method80());
                     String functionName = new String(buffer.getRSString().method80());
@@ -192,15 +190,15 @@ public class ClientScriptRunner extends Node {
 
             for(int i = 0; clientScriptRunner.scriptCount > i; i++) {
                 if(clientScriptRunner.valueNodes[i] != null) {
-                    if(clientScriptRunner.valueNodes[i].anInt434 == 2)
+                    if(clientScriptRunner.valueNodes[i].status == 2)
                         clientScriptRunner.errorCodes[i] = -5;
-                    if(clientScriptRunner.valueNodes[i].anInt434 == 0)
+                    if(clientScriptRunner.valueNodes[i].status == 0)
                         bool = true;
                 }
                 if(clientScriptRunner.functionNodes[i] != null) {
-                    if(clientScriptRunner.functionNodes[i].anInt434 == 2)
+                    if(clientScriptRunner.functionNodes[i].status == 2)
                         clientScriptRunner.errorCodes[i] = -6;
-                    if(clientScriptRunner.functionNodes[i].anInt434 == 0)
+                    if(clientScriptRunner.functionNodes[i].status == 0)
                         bool = true;
                 }
             }
@@ -288,7 +286,7 @@ public class ClientScriptRunner extends Node {
                 }
             }
 
-            buffer.method473(bufferPos);
+            buffer.putCrc8(bufferPos);
             buffer.finishVarByte(-bufferPos + buffer.currentPosition);
             clientScriptRunner.remove();
         }
@@ -760,7 +758,7 @@ public class ClientScriptRunner extends Node {
                                                 intValueIndex -= 3;
                                                 WallDecoration.method950(scriptIntValues[intValueIndex], scriptIntValues[intValueIndex + 1], scriptIntValues[2 + intValueIndex]);
                                             } else if(scriptOpcode == 3201) {
-                                                Class51.method942(scriptIntValues[--intValueIndex]);
+                                                Class51.playSong(scriptIntValues[--intValueIndex]);
                                             } else {
                                                 if(scriptOpcode != 3202) {
                                                     break;

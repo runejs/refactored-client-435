@@ -1,7 +1,6 @@
 package com.jagex.runescape.media.renderable.actor;
 
 import com.jagex.runescape.*;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.media.renderable.Item;
 import com.jagex.runescape.scene.SceneCluster;
 import com.jagex.runescape.scene.tile.Wall;
@@ -186,7 +185,7 @@ public class Pathfinding {
             }
             SceneCluster.packetBuffer.putShortLE(y + Class26.baseY);
             SceneCluster.packetBuffer.putByte(Item.obfuscatedKeyStatus[82] ? 1 : 0);
-            SceneCluster.packetBuffer.putShortLE(SpotAnimDefinition.baseX + x);
+            SceneCluster.packetBuffer.putShortLE(MovedStatics.baseX + x);
             MovedStatics.destinationX = Class24.walkingQueueX[0];
             Class55.destinationY = Wall.walkingQueueY[0];
             for(int counter = 1; maxPathSize > counter; counter++) {

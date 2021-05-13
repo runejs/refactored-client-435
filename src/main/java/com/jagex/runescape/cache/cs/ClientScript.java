@@ -6,7 +6,6 @@ import com.jagex.runescape.cache.def.VarPlayerDefinition;
 import com.jagex.runescape.cache.def.VarbitDefinition;
 import com.jagex.runescape.node.NodeCache;
 import com.jagex.runescape.cache.def.ItemDefinition;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
 import com.jagex.runescape.cache.media.gameInterface.GameInterface;
 import com.jagex.runescape.io.Buffer;
 import com.jagex.runescape.language.Native;
@@ -178,7 +177,7 @@ public class ClientScript extends CachedNode {
                     operand = VarbitDefinition.getVarbitValue(varbitId);
                 }
                 if (opcode == 18) {
-                    operand = (Player.localPlayer.worldX >> 7) + SpotAnimDefinition.baseX;
+                    operand = (Player.localPlayer.worldX >> 7) + MovedStatics.baseX;
                 }
                 if (opcode == 19) {
                     operand = (Player.localPlayer.worldY >> 7) + Class26.baseY;

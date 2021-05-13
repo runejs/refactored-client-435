@@ -5,7 +5,7 @@ import com.jagex.runescape.cache.def.FrameDefinition;
 import com.jagex.runescape.cache.def.FramemapDefinition;
 import com.jagex.runescape.cache.media.AnimationSequence;
 import com.jagex.runescape.cache.media.IndexedImage;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
+import com.jagex.runescape.cache.def.SpotAnimDefinition;
 import com.jagex.runescape.media.renderable.actor.Actor;
 import com.jagex.runescape.node.CachedNode;
 
@@ -81,7 +81,7 @@ public class Class40_Sub5_Sub15 extends CachedNode {
         if(arg1.graphicId != -1 && MovedStatics.pulseCycle >= arg1.graphicDelay) {
             if(arg1.anInt3140 < 0)
                 arg1.anInt3140 = 0;
-            int i = SpotAnimDefinition.forId(arg1.graphicId, 13).animationId;
+            int i = SpotAnimDefinition.forId(arg1.graphicId).animationId;
             if(i == -1)
                 arg1.graphicId = -1;
             else {

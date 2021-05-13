@@ -11,7 +11,7 @@ import com.jagex.runescape.media.renderable.Model;
 public class PlayerAppearance {
 
     public static int[] anIntArray680 = new int[50];
-    public static int anInt681;
+    public static int currentTickSample;
     public static int[] anIntArray684 = new int[50];
     public static int[] anIntArray685 = new int[50];
     public static boolean aBoolean687;

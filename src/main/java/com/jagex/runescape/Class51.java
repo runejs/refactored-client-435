@@ -18,7 +18,7 @@ public class Class51 {
     public static int mapZoomOffset = 0;
     public static HashTable aClass23_1194 = new HashTable(4096);
     public static int anInt1195 = 0;
-    public static int currentAction = 0;
+    public static int gameStatusCode = 0;
     public static int[] anIntArray1198;
     public static int regionX;
     public static long aLong1203 = 0L;
@@ -43,9 +43,9 @@ public class Class51 {
             ActorDefinition.drawMapBack();
             GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             MovedStatics.method527(Player.currentTabId, arg0 + 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
-            MovedStatics.aBoolean893 = true;
-            Class40_Sub3.aBoolean2026 = true;
-            MovedStatics.aBoolean260 = true;
+            MovedStatics.showSidePanelRedrawnText = true;
+            Class40_Sub3.showIconsRedrawnText = true;
+            MovedStatics.showChatPanelRedrawnText = true;
         }
         int i = 151;
         Class65.method1018();
@@ -68,11 +68,11 @@ public class Class51 {
         MovedStatics.modelCache.clear();
     }
 
-    public static void method942(int arg1) {
-        if(arg1 == -1 && Class35.songTimeout == 0)
+    public static void playSong(int songId) {
+        if(songId == -1 && Class35.songTimeout == 0)
             Class33.method402(false);
-        else if(arg1 != -1 && arg1 != MouseHandler.anInt1457 && RSCanvas.musicVolume != 0 && Class35.songTimeout == 0)
-            Class33.method403(RSCanvas.musicVolume, true, 10, arg1, CacheArchive.musicCacheArchive, 0, 0, false);
-        MouseHandler.anInt1457 = arg1;
+        else if(songId != -1 && songId != MouseHandler.currentSongId && RSCanvas.musicVolume != 0 && Class35.songTimeout == 0)
+            Class33.method403(RSCanvas.musicVolume, true, 10, songId, CacheArchive.musicCacheArchive, 0, 0, false);
+        MouseHandler.currentSongId = songId;
     }
 }

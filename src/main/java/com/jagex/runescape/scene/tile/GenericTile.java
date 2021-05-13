@@ -20,11 +20,14 @@ import java.awt.*;
 
 public class GenericTile {
     public static int anInt1214 = 0;
-    public static volatile boolean aBoolean1215 = true;
+    public static volatile boolean clientFocused = true;
     public static byte[][] objectData;
     public static int fps = 0;
     public static int carryWeight = 0;
     public static int anInt1233 = 0;
+
+    // TODO move this out, it's used for debugging
+    public static int hoveredWidgetId = -1;
 
     public int texture;
     public int colourB;
@@ -45,7 +48,7 @@ public class GenericTile {
     }
 
     public static void method943(int arg0, TypeFace arg2, int arg3, int arg4) {
-        HuffmanEncoding.aProducingGraphicsBuffer_1541.prepareRasterizer();
+        HuffmanEncoding.chatModes.prepareRasterizer();
         Class57.bottomChatBack.drawImage(0, 0);
         arg2.drawShadowedStringCenter(English.publicChat, 55, 28, 16777215, true);
         if(arg4 == 0)
@@ -74,7 +77,7 @@ public class GenericTile {
         try {
             Graphics graphics = MouseHandler.gameCanvas.getGraphics();
             if(ScreenController.frameMode == ScreenMode.FIXED) {
-                HuffmanEncoding.aProducingGraphicsBuffer_1541.drawGraphics(0, 453, graphics);
+                HuffmanEncoding.chatModes.drawGraphics(0, 453, graphics);
             }
         } catch(Exception exception) {
             MouseHandler.gameCanvas.repaint();

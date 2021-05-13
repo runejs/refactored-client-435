@@ -3,27 +3,11 @@ package com.jagex.runescape.media.renderable.actor;
 import com.jagex.runescape.*;
 import com.jagex.runescape.cache.def.*;
 import com.jagex.runescape.cache.media.AnimationSequence;
-import com.jagex.runescape.cache.media.SpotAnimDefinition;
-import com.jagex.runescape.cache.media.gameInterface.GameInterface;
-import com.jagex.runescape.frame.ChatBox;
-import com.jagex.runescape.frame.ScreenController;
-import com.jagex.runescape.input.MouseHandler;
-import com.jagex.runescape.io.Buffer;
-import com.jagex.runescape.language.Native;
-import com.jagex.runescape.media.renderable.Item;
+import com.jagex.runescape.cache.def.SpotAnimDefinition;
 import com.jagex.runescape.media.renderable.Model;
-import com.jagex.runescape.media.renderable.Renderable;
-import com.jagex.runescape.net.ISAAC;
 import com.jagex.runescape.net.IncomingPackets;
-import com.jagex.runescape.net.PacketBuffer;
-import com.jagex.runescape.scene.GroundItemTile;
-import com.jagex.runescape.scene.InteractiveObject;
 import com.jagex.runescape.scene.Scene;
 import com.jagex.runescape.scene.SceneCluster;
-import com.jagex.runescape.scene.tile.FloorDecoration;
-import com.jagex.runescape.scene.tile.SceneTile;
-import com.jagex.runescape.scene.tile.WallDecoration;
-import com.jagex.runescape.sound.MusicSystem;
 
 public class Npc extends Actor {
     public static int anInt3294 = 0;
@@ -33,19 +17,6 @@ public class Npc extends Actor {
     public static int[] anIntArray3312;
     public ActorDefinition actorDefinition;
 
-
-    public static OverlayDefinition loadFloor(int arg0, int arg1) {
-        OverlayDefinition overlayDefinition = (OverlayDefinition) Class33.aClass9_778.get((long) arg0);
-        if(overlayDefinition != null)
-            return overlayDefinition;
-        byte[] is = Actor.aCacheArchive_3144.getFile(arg1, arg0);
-        overlayDefinition = new OverlayDefinition();
-        if(is != null)
-            overlayDefinition.method553(new Buffer(is));
-        overlayDefinition.method555();
-        Class33.aClass9_778.put((long) arg0, overlayDefinition);
-        return overlayDefinition;
-    }
 
     public static void parseNpcUpdateMasks() {
         for(int i = 0; i < actorUpdatingIndex; i++) {
@@ -246,7 +217,7 @@ public class Npc extends Actor {
         model.method799();
         anInt3117 = model.modelHeight;
         if(graphicId != -1 && anInt3140 != -1) {
-            Model model1 = SpotAnimDefinition.forId(graphicId, 13).method549(anInt3140, 2);
+            Model model1 = SpotAnimDefinition.forId(graphicId).method549(anInt3140);
             if(model1 != null) {
                 model1.translate(0, -graphicHeight, 0);
                 Model[] models = {model, model1};
