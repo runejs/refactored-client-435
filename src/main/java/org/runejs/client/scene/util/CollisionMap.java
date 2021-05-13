@@ -1,6 +1,5 @@
 package org.runejs.client.scene.util;
 
-import com.jagex.runescape.*;
 import org.runejs.client.*;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.media.renderable.GameObject;

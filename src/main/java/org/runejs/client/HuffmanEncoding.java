@@ -1,7 +1,6 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.CacheArchive;
-import com.jagex.runescape.cache.def.*;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.language.English;
@@ -12,7 +11,7 @@ import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.util.BitUtils;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.ItemDefinition;
-import tech.henning.fourthreefive.Configuration;
+import org.runejs.Configuration;
 
 import java.text.MessageFormat;
 

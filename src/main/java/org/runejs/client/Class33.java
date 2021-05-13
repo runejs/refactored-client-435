@@ -6,7 +6,6 @@ import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.cache.CacheArchive;
-import com.jagex.runescape.cache.def.*;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.frame.ChatBox;

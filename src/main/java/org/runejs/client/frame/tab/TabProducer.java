@@ -1,6 +1,5 @@
 package org.runejs.client.frame.tab;
 
-import com.jagex.runescape.*;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.ProducingGraphicsBuffer;
 import org.runejs.client.cache.media.ImageRGB;

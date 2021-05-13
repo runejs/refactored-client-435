@@ -1,6 +1,5 @@
 package org.runejs.client.media.renderable;
 
-import com.jagex.runescape.*;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.ProducingGraphicsBuffer_Sub1;
 import org.runejs.client.cache.def.ItemDefinition;

@@ -1,7 +1,7 @@
 package org.runejs.client.language;
 
 
-import tech.henning.fourthreefive.Configuration;
+import org.runejs.Configuration;
 
 public class English {
 
@@ -12,7 +12,7 @@ public class English {
             "button near the top of that page."
     };
 
-    public static final String[] runejsLoginText = {
+    public static final String[] customLoginText = {
 
     };
 
@@ -94,8 +94,8 @@ public class English {
     public static String effectRed = "red:";
     public static String remove = "Remove";
     public static String reportAbuse = "Report abuse";
-    public static String runeScapeHasBeenUpdated = Configuration.SERVER_DISPLAY_NAME + " has been updated!";
-    public static String runeScapeIsLoadingPleaseWait = Configuration.SERVER_DISPLAY_NAME + " is loading - please wait...";
+    public static String gameHasBeenUpdated = Configuration.SERVER_DISPLAY_NAME + " has been updated!";
+    public static String gameIsLoadingPleaseWait = Configuration.SERVER_DISPLAY_NAME + " is loading - please wait...";
     public static String sidePanelRedrawn = "Side panel redrawn";
     public static String prefixSkill = "skill-";
     public static String effectSlide = "slide:";

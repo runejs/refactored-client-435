@@ -1,6 +1,5 @@
 package org.runejs.client.scene.tile;
 
-import com.jagex.runescape.*;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;

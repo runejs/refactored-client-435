@@ -1,6 +1,5 @@
 package org.runejs.client.net;
 
-import com.jagex.runescape.*;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.RSCanvas;
 import org.runejs.client.RSString;

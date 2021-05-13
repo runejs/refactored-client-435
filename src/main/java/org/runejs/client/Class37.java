@@ -1,6 +1,5 @@
 package org.runejs.client;
 
-import com.jagex.runescape.cache.def.*;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;

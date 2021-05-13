@@ -1,7 +1,5 @@
 package org.runejs.client.net;
 
-import com.jagex.runescape.*;
-import com.jagex.runescape.cache.def.*;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;

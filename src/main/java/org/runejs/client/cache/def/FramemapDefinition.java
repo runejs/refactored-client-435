@@ -1,6 +1,5 @@
 package org.runejs.client.cache.def;
 
-import com.jagex.runescape.*;
 import org.runejs.client.Landscape;
 import org.runejs.client.LinkedList;
 import org.runejs.client.MovedStatics;

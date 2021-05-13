@@ -2,7 +2,7 @@ package org.runejs.client.frame.console.Commands;
 
 import org.runejs.client.frame.console.Command;
 import org.runejs.client.frame.console.Console;
-import tech.henning.fourthreefive.Configuration;
+import org.runejs.Configuration;
 
 public class DebugWidgetsCommand extends Command {
     public DebugWidgetsCommand() {

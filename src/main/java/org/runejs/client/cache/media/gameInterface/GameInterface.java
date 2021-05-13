@@ -1,8 +1,6 @@
 package org.runejs.client.cache.media.gameInterface;
 
-import com.jagex.runescape.*;
 import org.runejs.client.cache.CacheArchive;
-import com.jagex.runescape.cache.def.*;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.ImageRGB;
@@ -30,7 +28,7 @@ import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.TextUtils;
 import org.runejs.client.*;
-import tech.henning.fourthreefive.Configuration;
+import org.runejs.Configuration;
 
 import java.awt.*;
 import java.lang.reflect.Method;

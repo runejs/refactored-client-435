@@ -1,7 +1,5 @@
 package org.runejs.client.cache;
 
-import com.jagex.runescape.*;
-
 public class NameHashCollection {
     public int[] anIntArray996;
 

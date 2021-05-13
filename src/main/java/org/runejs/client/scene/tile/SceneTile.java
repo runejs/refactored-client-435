@@ -1,6 +1,5 @@
 package org.runejs.client.scene.tile;
 
-import com.jagex.runescape.*;
 import org.runejs.client.*;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.media.ImageRGB;

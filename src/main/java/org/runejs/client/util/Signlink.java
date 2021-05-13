@@ -4,7 +4,7 @@ import org.runejs.client.SizedAccessFile;
 import org.runejs.client.Interface2;
 import org.runejs.client.GameShell;
 import org.runejs.client.Runnable_Impl1;
-import tech.henning.fourthreefive.Configuration;
+import org.runejs.Configuration;
 
 import java.io.*;
 import java.lang.reflect.Method;

@@ -19,7 +19,7 @@ import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.util.BitUtils;
-import tech.henning.fourthreefive.Configuration;
+import org.runejs.Configuration;
 
 import java.text.MessageFormat;
 

@@ -1,8 +1,6 @@
 package org.runejs.client.media.renderable;
 
-import com.jagex.runescape.*;
 import org.runejs.client.cache.CacheArchive;
-import com.jagex.runescape.cache.def.*;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.IndexedImage;
@@ -19,8 +17,8 @@ import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.*;
-import tech.henning.fourthreefive.Configuration;
-import tech.henning.fourthreefive.whitelabel.Images;
+import org.runejs.Configuration;
+import org.runejs.whitelabel.Images;
 
 import java.awt.*;
 

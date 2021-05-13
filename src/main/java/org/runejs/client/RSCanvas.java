@@ -2,7 +2,6 @@ package org.runejs.client;
 
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.cs.ClientScript;
-import com.jagex.runescape.cache.def.*;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.renderable.actor.Actor;

@@ -1,6 +1,5 @@
 package org.runejs.client.scene.tile;
 
-import com.jagex.runescape.*;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.def.ItemDefinition;
@@ -8,7 +7,6 @@ import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.node.NodeCache;
-import com.jagex.runescape.cache.def.*;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.input.KeyFocusListener;
@@ -55,7 +53,7 @@ public class WallDecoration {
 //            Rasterizer.drawFilledRectangle(0,0, ScreenController.frameWidth, ScreenController.frameHeight, 0);
             if (Class51.gameStatusCode == 0 || Class51.gameStatusCode == 5) {
                 int i = 20;
-                fontBold.drawStringLeft(English.runeScapeIsLoadingPleaseWait, 180, 74 + -i, 16777215);
+                fontBold.drawStringLeft(English.gameIsLoadingPleaseWait, 180, 74 + -i, 16777215);
                 int i_89_ = -i + 82;
                 Rasterizer.drawUnfilledRectangle(28, i_89_, 304, 34, 9179409);
                 Rasterizer.drawUnfilledRectangle(29, 1 + i_89_, 302, 32, 0);

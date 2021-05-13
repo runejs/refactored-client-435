@@ -1,6 +1,5 @@
 package org.runejs.client.input;
 
-import com.jagex.runescape.*;
 import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.ItemDefinition;

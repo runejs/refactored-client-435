@@ -1,6 +1,5 @@
 package org.runejs.client.media.renderable.actor;
 
-import com.jagex.runescape.*;
 import org.runejs.client.*;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.ItemDefinition;

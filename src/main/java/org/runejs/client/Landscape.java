@@ -3,7 +3,6 @@ package org.runejs.client;
 import org.runejs.client.audio.Effect;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.FileOperations;
-import com.jagex.runescape.cache.def.*;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.io.Buffer;
@@ -23,7 +22,7 @@ import org.runejs.client.cache.def.FramemapDefinition;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.def.OverlayDefinition;
-import tech.henning.fourthreefive.OldEngine.MapDecompressor;
+import org.runejs.OldEngine.MapDecompressor;
 
 import java.io.IOException;
 

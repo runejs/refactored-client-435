@@ -1,6 +1,5 @@
 package org.runejs.client;
 
-import com.jagex.runescape.cache.def.*;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ScreenController;
@@ -11,7 +10,6 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
-import com.jagex.runescape.media.renderable.actor.*;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.CacheArchive;
@@ -30,7 +28,6 @@ import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
-import com.jagex.runescape.scene.tile.*;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.SignlinkNode;
@@ -38,7 +35,7 @@ import org.runejs.client.util.TextUtils;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.media.renderable.actor.*;
 import org.runejs.client.scene.tile.*;
-import tech.henning.fourthreefive.Configuration;
+import org.runejs.Configuration;
 
 import java.awt.*;
 import java.io.DataInputStream;

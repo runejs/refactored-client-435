@@ -3,9 +3,6 @@ package org.runejs.client;
 import org.runejs.client.cache.CacheIndex;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.CacheFileChannel;
-import com.jagex.runescape.cache.def.*;
-import com.jagex.runescape.cache.media.*;
-import com.jagex.runescape.cache.media.gameInterface.*;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
@@ -33,7 +30,6 @@ import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
-import com.jagex.runescape.scene.tile.*;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.util.BitUtils;
@@ -47,7 +43,7 @@ import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
 import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
 import org.runejs.client.scene.tile.*;
-import tech.henning.fourthreefive.Configuration;
+import org.runejs.Configuration;
 
 import java.awt.*;
 import java.io.IOException;
@@ -1123,7 +1119,7 @@ public class Main extends GameShell {
         } else if(responseCode == 5) {
             Class33.setLoginScreenMessage(English.yourAccountIsAlreadyLoggedIn, English.tryAgainIn60Secs, "");
         } else if(responseCode == 6) {
-            Class33.setLoginScreenMessage(English.runeScapeHasBeenUpdated, English.pleaseReloadThisPage, "");
+            Class33.setLoginScreenMessage(English.gameHasBeenUpdated, English.pleaseReloadThisPage, "");
         } else if(responseCode == 7) {
             Class33.setLoginScreenMessage(English.theWorldIsFull, English.pleaseUseADifferentWorld, "");
         } else if(responseCode == 8) {

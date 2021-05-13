@@ -1,6 +1,5 @@
 package org.runejs.client.media.renderable.actor;
 
-import com.jagex.runescape.*;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.Wall;

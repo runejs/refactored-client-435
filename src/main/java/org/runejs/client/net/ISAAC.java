@@ -1,6 +1,5 @@
 package org.runejs.client.net;
 
-import com.jagex.runescape.*;
 import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.def.UnderlayDefinition;

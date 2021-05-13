@@ -1,6 +1,5 @@
 package org.runejs.client.frame;
 
-import com.jagex.runescape.*;
 import org.runejs.client.*;
 import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.cache.media.TypeFace;

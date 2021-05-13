@@ -1,6 +1,5 @@
 package org.runejs.client.scene.tile;
 
-import com.jagex.runescape.*;
 import org.runejs.client.HuffmanEncoding;
 import org.runejs.client.Landscape;
 import org.runejs.client.cache.CacheArchive;

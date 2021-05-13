@@ -1,6 +1,5 @@
 package org.runejs.client.cache.def;
 
-import com.jagex.runescape.*;
 import org.runejs.client.*;
 import org.runejs.client.cache.CacheIndex;
 import org.runejs.client.cache.CacheArchive;
@@ -12,7 +11,7 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.node.CachedNode;
-import tech.henning.fourthreefive.OldEngine.ObjectDecompressor;
+import org.runejs.OldEngine.ObjectDecompressor;
 
 import java.io.IOException;
 

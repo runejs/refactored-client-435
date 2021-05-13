@@ -1,6 +1,5 @@
 package org.runejs.client.io;
 
-import com.jagex.runescape.*;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.RSString;
 import org.runejs.client.node.NodeCache;

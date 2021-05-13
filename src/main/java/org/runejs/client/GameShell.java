@@ -1,7 +1,6 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.def.IdentityKit;
-import com.jagex.runescape.cache.media.*;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
 import org.runejs.client.frame.ScreenController;
@@ -21,7 +20,7 @@ import org.runejs.client.util.Timer;
 
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.IndexedImage;
-import tech.henning.fourthreefive.Configuration;
+import org.runejs.Configuration;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -274,8 +273,6 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         String string = getDocumentBase().getHost().toLowerCase();
         if (arg0 != 31)
             return false;
-        if (string.endsWith("runescape.com"))
-            return true;
         if (string.endsWith("127.0.0.1"))
             return true;
         for (/**/; string.length() > 0 && string.charAt(string.length() - 1) >= '0' && string.charAt(string.length() + -1) <= 57; string = string.substring(0, string.length() - 1)) {

@@ -7,7 +7,6 @@ import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.Renderable;
-import com.jagex.runescape.scene.tile.*;
 import org.runejs.client.scene.tile.*;
 
 import java.util.Arrays;

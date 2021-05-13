@@ -28,7 +28,7 @@ public class RSRuntimeException extends RuntimeException {
                 CollisionMap.aClass8_166.method212(l);
                 int i = (int) (-Class8.aLong288 + l);
                 Class8.aLong288 = l;
-                synchronized(aClass1654 != null ? aClass1654 : (aClass1654 = method1058("Class8"))) {
+                synchronized(aClass1654 != null ? aClass1654 : (aClass1654 = method1058("org.runejs.client.Class8"))) {
                     if(arg0 <= 81)
                         method1054((byte) -96);
                     MovedStatics.anInt2081 += CollisionMap.anInt141 * i;

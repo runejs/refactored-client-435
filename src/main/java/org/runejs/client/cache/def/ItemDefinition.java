@@ -1,6 +1,5 @@
 package org.runejs.client.cache.def;
 
-import com.jagex.runescape.*;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.cs.ClientScript;
 import org.runejs.client.cache.media.gameInterface.GameInterface;

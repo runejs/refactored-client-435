@@ -1,6 +1,5 @@
 package org.runejs.client.cache;
 
-import com.jagex.runescape.*;
 import org.runejs.client.*;
 import org.runejs.client.cache.bzip.BZip;
 import org.runejs.client.cache.def.GameObjectDefinition;

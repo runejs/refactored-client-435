@@ -1,7 +1,6 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.CacheArchive;
-import com.jagex.runescape.cache.def.*;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
@@ -29,7 +28,7 @@ import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.util.BitUtils;
-import tech.henning.fourthreefive.Configuration;
+import org.runejs.Configuration;
 
 import java.awt.*;
 

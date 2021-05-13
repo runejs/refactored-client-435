@@ -1,6 +1,5 @@
 package org.runejs.client.media.renderable;
 
-import com.jagex.runescape.*;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.FrameDefinition;
 import org.runejs.client.cache.def.FramemapDefinition;
@@ -8,7 +7,7 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.Class40_Sub5_Sub15;
-import tech.henning.fourthreefive.OldEngine.ModelLoader;
+import org.runejs.OldEngine.ModelLoader;
 
 public class Model extends Renderable {
     public static Model aClass40_Sub5_Sub17_Sub5_3170 = new Model();

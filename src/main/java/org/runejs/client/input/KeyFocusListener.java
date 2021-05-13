@@ -1,8 +1,6 @@
 package org.runejs.client.input;
 
-import com.jagex.runescape.*;
 import org.runejs.client.cache.CacheArchive;
-import com.jagex.runescape.cache.def.*;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
@@ -24,7 +22,7 @@ import org.runejs.client.cache.def.FramemapDefinition;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.def.OverlayDefinition;
-import tech.henning.fourthreefive.Configuration;
+import org.runejs.Configuration;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;

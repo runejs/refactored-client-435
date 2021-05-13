@@ -1,8 +1,6 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.CacheArchive;
-import com.jagex.runescape.cache.def.*;
-import com.jagex.runescape.cache.media.*;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.ImageRGB;

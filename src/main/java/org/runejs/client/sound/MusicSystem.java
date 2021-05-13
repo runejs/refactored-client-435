@@ -1,7 +1,6 @@
 package org.runejs.client.sound;
 
 
-import com.jagex.runescape.*;
 import org.runejs.client.audio.Effect;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.IdentityKit;

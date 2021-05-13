@@ -1,6 +1,5 @@
 package org.runejs.client.media.renderable.actor;
 
-import com.jagex.runescape.*;
 import org.runejs.client.GameSocket;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.ProducingGraphicsBuffer;

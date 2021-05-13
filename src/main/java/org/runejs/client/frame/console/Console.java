@@ -6,14 +6,13 @@ import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
-import com.jagex.runescape.frame.console.Commands.*;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.frame.console.Commands.*;
-import tech.henning.fourthreefive.Configuration;
+import org.runejs.Configuration;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;

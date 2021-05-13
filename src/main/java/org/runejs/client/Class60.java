@@ -14,7 +14,7 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.util.CollisionMap;
-import tech.henning.fourthreefive.Configuration;
+import org.runejs.Configuration;
 
 public class Class60 {
     public static boolean aBoolean1402 = false;

@@ -1,6 +1,5 @@
 package org.runejs.client.scene.tile;
 
-import com.jagex.runescape.*;
 import org.runejs.client.LinkedList;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
