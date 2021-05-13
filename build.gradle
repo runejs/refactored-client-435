@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'tech.henning'
-version = '0.1'
+version = '0.2'
 
 sourceCompatibility = 8
 targetCompatibility = 8
@@ -26,6 +26,7 @@ jar {
 
     from {
         sourceSets.main.output
+        sourceSets.main.resources
         configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
     }
 }

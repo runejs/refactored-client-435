@@ -5,8 +5,12 @@ import java.awt.image.DataBufferByte;
 import java.awt.image.WritableRaster;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Base64;
 
+import jdk.internal.loader.Resource;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.input.MouseHandler;
 
@@ -31,8 +35,12 @@ public class Images {
 
     private static void CreateParts() {
         try {
-            File imgPath = new File("./data/logo.png");
-            BufferedImage bufferedImage = ImageIO.read(imgPath);
+            String classResource = Images.class.getResource("Images.class").toString();
+            System.out.println(classResource);
+            InputStream resource = Images.class.getClassLoader().getResourceAsStream("logo.png");
+            System.out.println(resource);
+            BufferedImage bufferedImage = ImageIO.read(resource);
+
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write(bufferedImage, "png", baos);
