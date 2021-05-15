@@ -212,7 +212,7 @@ public class Class60 {
             int clickType = MouseHandler.clickType;
             int clickY = -171 + RSString.clickY;
             if(Class26.loginScreenState == 0) {
-                int i_14_ = 100;
+                /*int i_14_ = 100;
                 int i_15_ = 120;
                 if(clickType == 1 && i >= i_14_ - 75 && i_14_ + 75 >= i && clickY >= -20 + i_15_ && i_15_ + 20 >= clickY) {
                     MovedStatics.loginScreenFocus = 0;
@@ -220,6 +220,15 @@ public class Class60 {
                 }
                 i_14_ = 260;
                 if(clickType == 1 && i >= -75 + i_14_ && i <= 75 + i_14_ && clickY >= -20 + i_15_ && 20 + i_15_ >= clickY) {
+                    Class26.loginScreenState = 2;
+                    MovedStatics.loginScreenFocus = 0;
+                    Native.loginScreenMessageLineOne = "";
+                    Native.loginScreenMessageLineTwo = English.enterYourUsernameAndPassword;
+                    Native.loginScreenMessageLineThree = "";
+                }*/
+                int i_20_ = 150;
+                int i_21_ = 180;
+                if(clickType == 1 && i >= -75 + i_21_ && 75 + i_21_ >= i && -20 + i_20_ <= clickY && 20 + i_20_ >= clickY) {
                     Class26.loginScreenState = 2;
                     MovedStatics.loginScreenFocus = 0;
                     Native.loginScreenMessageLineOne = "";
