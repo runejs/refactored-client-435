@@ -320,17 +320,17 @@ public class Class33 {
         return i == 45;
     }
 
-    public static int method410(int arg0, int arg1, int arg2, boolean arg3) {
-        arg2 &= 0x3;
+    public static int getRotatedTileY(int x, int y, int rotation, boolean arg3) {
+        rotation &= 0x3;
         if(arg3)
             return -80;
-        if(arg2 == 0)
-            return arg1;
-        if(arg2 == 1)
-            return 7 + -arg0;
-        if(arg2 == 2)
-            return -arg1 + 7;
-        return arg0;
+        if(rotation == 0)
+            return y;
+        if(rotation == 1)
+            return 7 + -x;
+        if(rotation == 2)
+            return -y + 7;
+        return x;
 
     }
 

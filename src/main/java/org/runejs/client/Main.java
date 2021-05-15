@@ -693,22 +693,6 @@ public class Main extends GameShell {
     }
 
 
-    public static int method42(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
-        arg5 &= 0x3;
-        if ((arg0 & arg1) == 1) {
-            int i = arg2;
-            arg2 = arg4;
-            arg4 = i;
-        }
-        if (arg5 == 0)
-            return arg3;
-        if (arg5 == 1)
-            return arg6;
-        if (arg5 == 2)
-            return 7 - (arg3 + arg2) + 1;
-        return 7 + -arg6 + 1 + -arg4;
-    }
-
     public static void setConfigToDefaults() {
         Class51.aLong1203 = 0L;
         Class12.mouseCapturer.coord = 0;
@@ -1821,7 +1805,7 @@ public class Main extends GameShell {
                         MovedStatics.gameServerSocket.readDataToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
                         setConfigToDefaults();
                         Class51.regionX = -1;
-                        FloorDecoration.method343(false, 5688);
+                        FloorDecoration.constructMapRegion(false, 5688);
                         IncomingPackets.opcode = -1;
                     }
                 } else {

@@ -180,7 +180,7 @@ public class Landscape {
                                     int tileCoordinates = (tileX / 8 << 8) + tileY / 8;
                                     for(int i_38_ = 0; i_38_ < ISAAC.mapCoordinates.length; i_38_++) {
                                         if(tileCoordinates == ISAAC.mapCoordinates[i_38_] && GenericTile.objectData[i_38_] != null) {
-                                            Class24.method341(8 * (tileX & 0x7), Npc.currentScene, 0, z, tileRotation, tileZ, GenericTile.objectData[i_38_], 8 * y, currentCollisionMap, 8 * (tileY & 0x7), x * 8);
+                                            Class24.constructMapRegionObjects(8 * (tileX & 0x7), 8 * (tileY & 0x7), tileZ, tileRotation, x * 8, 8 * y, z, Npc.currentScene, GenericTile.objectData[i_38_], currentCollisionMap);
                                             break;
                                         }
                                     }
@@ -304,19 +304,19 @@ public class Landscape {
     }
 
 
-    public static void loadTerrainSubblock(int arg0, int arg2, int arg3, int arg4, int x, int arg6, int arg7, byte[] arg8, CollisionMap[] arg9) {
+    public static void loadTerrainSubblock(int y, int drawX, int drawingPlane, int currentPlane, int x, int drawY, int rotation, byte[] terrainData, CollisionMap[] collisionMaps) {
         for(int i = 0; i < 8; i++) {
-            for(int y = 0; y < 8; y++) {
-                if(x + i > 0 && i + x < 103 && arg0 + y > 0 && y + arg0 < 103)
-                    arg9[arg4].clippingData[x + i][y + arg0] = BitUtils.bitWiseAND(arg9[arg4].clippingData[x + i][y + arg0], -16777217);
+            for(int yIdx = 0; yIdx < 8; yIdx++) {
+                if(x + i > 0 && i + x < 103 && y + yIdx > 0 && yIdx + y < 103)
+                    collisionMaps[currentPlane].clippingData[x + i][yIdx + y] = BitUtils.bitWiseAND(collisionMaps[currentPlane].clippingData[x + i][yIdx + y], -16777217);
             }
         }
-        Buffer class40_sub1 = new Buffer(arg8);
-        for(int i = 0; i < 4; i++) {
-            for(int i_1_ = 0; i_1_ < 64; i_1_++) {
-                for(int i_2_ = 0; i_2_ < 64; i_2_++) {
-                    if(i == arg3 && i_1_ >= arg2 && 8 + arg2 > i_1_ && i_2_ >= arg6 && 8 + arg6 > i_2_)
-                        Class48.method922(x + Class24.method338(arg7, false, i_1_ & 0x7, i_2_ & 0x7), arg7, class40_sub1, arg0 + Class33.method410(i_1_ & 0x7, 0x7 & i_2_, arg7, false), 0, 0, arg4);
+        Buffer class40_sub1 = new Buffer(terrainData);
+        for(int plane = 0; plane < 4; plane++) {
+            for(int tileX = 0; tileX < 64; tileX++) {
+                for(int tileY = 0; tileY < 64; tileY++) {
+                    if(plane == drawingPlane && tileX >= drawX && 8 + drawX > tileX && tileY >= drawY && 8 + drawY > tileY)
+                        Class48.method922(x + Class24.getRotatedTileX(rotation, false, tileX & 0x7, tileY & 0x7), rotation, class40_sub1, y + Class33.getRotatedTileY(tileX & 0x7, 0x7 & tileY, rotation, false), 0, 0, currentPlane);
                     else
                         Class48.method922(-1, 0, class40_sub1, -1, 0, 0, 0);
                 }

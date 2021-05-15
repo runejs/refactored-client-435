@@ -43,7 +43,7 @@ public class FloorDecoration {
         Class22_Sub1.method312(arg1, arg2.worldY, arg2.worldX, 4976905);
     }
 
-    public static void method343(boolean arg0, int arg1) {
+    public static void constructMapRegion(boolean arg0, int arg1) {
 
         GroundItemTile.loadGeneratedMap = arg0;
         if(GroundItemTile.loadGeneratedMap) {

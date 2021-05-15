@@ -79,14 +79,28 @@ public class WallDecoration {
             if (Class51.gameStatusCode == 10) {
                 Class40_Sub5_Sub15.loginScreenBox.drawImage(0, 0);
                 if (Class26.loginScreenState == 0) {
-                    fontBold.drawShadowedStringCenter(English.welcomeTo, 180, 80, 16776960, true);
+                    /*fontBold.drawShadowedStringCenter(English.welcomeTo, 180, 80, 16776960, true);
                     int drawX = 100;
                     int drawY = 120;
                     Class59.imgLoginScreenButton.drawImage(drawX - 73, drawY - 20);
                     fontBold.drawText(English.newUser, drawX + -73, -20 + drawY, 144, 40, 16777215, true, 1, 1, 0);
                     drawX = 260;
                     Class59.imgLoginScreenButton.drawImage(drawX - 73, drawY + -20);
-                    fontBold.drawText(English.existingUser, drawX - 73, -20 + drawY, 144, 40, 16777215, true, 1, 1, 0);
+                    fontBold.drawText(English.existingUser, drawX - 73, -20 + drawY, 144, 40, 16777215, true, 1, 1, 0);*/
+
+                    fontBold.drawShadowedStringCenter(English.welcomeTo, 180, 40, 16776960, true);
+                    int i = 180;
+                    int i_92_ = 150;
+                    int i_93_ = 65;
+
+                    for(int textIndex = 0; textIndex < English.customLoginText.length; textIndex++) {
+                        fontBold.drawShadowedStringCenter(English.customLoginText[textIndex], 180, i_93_, 16777215, true);
+                        i_93_ += 15;
+                    }
+
+                    Class59.imgLoginScreenButton.drawImage(-73 + i, i_92_ - 20);
+                    fontBold.drawShadowedStringCenter(English.login, i, 5 + i_92_, 16777215, true);
+
                 } else if (Class26.loginScreenState == 2) {
                     int y1 = 40;
                     int drawX = 100;

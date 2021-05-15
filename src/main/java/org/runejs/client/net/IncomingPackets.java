@@ -155,7 +155,7 @@ public class IncomingPackets {
                 return true;
             }
             if(opcode == 23) {
-                FloorDecoration.method343(true, 5688);
+                FloorDecoration.constructMapRegion(true, 5688);
                 opcode = -1;
                 return true;
             }
@@ -1094,7 +1094,7 @@ public class IncomingPackets {
                 return true;
             }
             if(opcode == PacketType.SET_MAP_CHUNK.getOpcode()) {
-                FloorDecoration.method343(false, 5688);
+                FloorDecoration.constructMapRegion(false, 5688);
                 opcode = -1;
                 return true;
             }
