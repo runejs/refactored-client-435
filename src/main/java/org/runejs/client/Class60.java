@@ -188,6 +188,7 @@ public class Class60 {
 
     public static void updateLogin() {
         MovedStatics.method836(1);
+
         if(MouseHandler.clickType == 1 && RSString.clickY >= ScreenController.drawHeight-42 && Class57.clickX>=ScreenController.drawWidth-42 ){
             int newVolume = 0;
             if(RSCanvas.musicVolume == 0) {
@@ -197,8 +198,10 @@ public class Class60 {
                 if(newVolume == 0) {
                     Class33.method402(false);
                     Class35.songTimeout = 0;
-                } else
+                } else {
+                    Class33.method412(false, CacheArchive.musicCacheArchive, 0, (byte) 66, Native.titleSong, 10, "", RSCanvas.musicVolume);
                     MovedStatics.method456(newVolume);
+                }
             } else {
                 Class33.method414(false, 0, MouseHandler.currentSongId, newVolume, 0, CacheArchive.musicCacheArchive);
                 Class35.songTimeout = 0;
