@@ -177,7 +177,7 @@ public class Class37 {
         AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
         MovedStatics.minimapBackgroundImage.drawImage(0, 0);
 
-        if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+        if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && Projectile.menuScreenArea == 1) {
             Class40_Sub5_Sub6.drawMenu(550, 4);
         }
         ActorDefinition.drawMapBack();

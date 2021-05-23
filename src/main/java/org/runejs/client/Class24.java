@@ -70,7 +70,7 @@ public class Class24 {
                             collisionMapPlane--;
                         if(collisionMapPlane >= 0)
                             collisionMap = collisionMaps[collisionMapPlane];
-                        Class40_Sub5_Sub17_Sub1.addObject(i, tileX, tileY, plane, originalOrientation + orientation & 0x3, objectType, scene, collisionMap);
+                        Projectile.addObject(i, tileX, tileY, plane, originalOrientation + orientation & 0x3, objectType, scene, collisionMap);
                     }
                 }
             }

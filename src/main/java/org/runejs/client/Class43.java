@@ -21,7 +21,7 @@ import org.runejs.client.scene.util.CollisionMap;
 
 public class Class43 {
     public static int cameraYawOffset = 0;
-    public static LinkedList aLinkedList_1022 = new LinkedList();
+    public static LinkedList projectileQueue = new LinkedList();
     public static int bankInsertMode = 0;
 
     public static void threadSleep(long ms) {
@@ -48,7 +48,7 @@ public class Class43 {
             if(!bool)
                 GameInterface.redrawTabArea = true;
         }
-        if(MovedStatics.menuOpen && Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+        if(MovedStatics.menuOpen && Projectile.menuScreenArea == 1) {
             if(MovedStatics.anInt848 == 1)
                 method398(-2);
             else if(ScreenController.frameMode == ScreenMode.FIXED)
@@ -180,15 +180,15 @@ public class Class43 {
             TypeFace.fontBold.drawShadowedString(class1, 3 + i_0_, 14 + i_2_, false, i_3_);
             int i_4_ = Class13.mouseX;
             int i_5_ = Landscape.mouseY;
-            if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
+            if(Projectile.menuScreenArea == 0) {
                 i_4_ -= 4;
                 i_5_ -= 4;
             }
-            if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+            if(Projectile.menuScreenArea == 1) {
                 i_4_ -= 553;
                 i_5_ -= 205;
             }
-            if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
+            if(Projectile.menuScreenArea == 2) {
                 i_5_ -= 357;
                 i_4_ -= 17;
             }

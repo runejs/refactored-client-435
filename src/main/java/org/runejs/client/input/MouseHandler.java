@@ -56,23 +56,23 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             if(meta != 1) {
                 int x = Class13.mouseX;
                 int y = Landscape.mouseY;
-                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
+                if(Projectile.menuScreenArea == 0) {
                     x -= 4;
                     y -= 4;
                 }
-                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+                if(Projectile.menuScreenArea == 1) {
                     y -= 205;
                     x -= 553;
                 }
-                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
+                if(Projectile.menuScreenArea == 2) {
                     y -= 357;
                     x -= 17;
                 }
                 if(-10 + InteractiveObject.menuOffsetX > x || 10 + VertexNormal.menuWidth + InteractiveObject.menuOffsetX < x || y < Main.menuOffsetY + -10 || y > Main.menuOffsetY + CollisionMap.menuHeight + 10) {
-                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
+                    if(Projectile.menuScreenArea == 1)
                         GameInterface.redrawTabArea = true;
                     MovedStatics.menuOpen = false;
-                    if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
+                    if(Projectile.menuScreenArea == 2)
                         ChatBox.redrawChatbox = true;
                 }
             }
@@ -82,15 +82,15 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 int dx = VertexNormal.menuWidth;
                 int x = Class57.clickX;
                 int y = RSString.clickY;
-                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
+                if(Projectile.menuScreenArea == 0) {
                     x -= 4;
                     y -= 4;
                 }
-                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+                if(Projectile.menuScreenArea == 1) {
                     x -= 553;
                     y -= 205;
                 }
-                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
+                if(Projectile.menuScreenArea == 2) {
                     x -= 17;
                     y -= 357;
                 }
@@ -102,10 +102,10 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 }
                 if(id != -1)
                     GameInterface.processMenuActions(109, id);
-                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1)
+                if(Projectile.menuScreenArea == 1)
                     GameInterface.redrawTabArea = true;
                 MovedStatics.menuOpen = false;
-                if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2)
+                if(Projectile.menuScreenArea == 2)
                     ChatBox.redrawChatbox = true;
             }
         } else {

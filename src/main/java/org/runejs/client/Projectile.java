@@ -32,7 +32,7 @@ import org.runejs.Configuration;
 
 import java.awt.*;
 
-public class Class40_Sub5_Sub17_Sub1 extends Renderable {
+public class Projectile extends Renderable {
 
     public static String[] aClass1Array2964 = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
@@ -44,52 +44,52 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     public static int anInt3004;
 
 
-    public int anInt2957;
-    public int anInt2958;
-    public int anInt2960;
-    public int anInt2961;
-    public int anInt2962;
-    public boolean aBoolean2968;
-    public int anInt2971;
-    public double aDouble2972;
-    public int anInt2973 = 0;
-    public int anInt2974;
+    public int startHeight;
+    public int startX;
+    public int endHeight;
+    public int entityIndex;
+    public int graphicsId;
+    public boolean moving;
+    public int endCycle;
+    public double speedVectorZ;
+    public int duration = 0;
+    public int delay;
     public int anInt2976;
-    public double aDouble2980;
+    public double currentX;
     public int anInt2981;
-    public int anInt2982;
-    public int anInt2984;
-    public int anInt2989;
-    public double aDouble2992;
-    public double aDouble2993;
-    public double aDouble2995;
-    public double aDouble2996;
-    public int anInt2997;
-    public double aDouble3001;
-    public AnimationSequence aAnimationSequence_3006;
-    public double aDouble3011;
+    public int animationFrame;
+    public int startY;
+    public int startDistanceFromTarget;
+    public double currentHeight;
+    public double currentY;
+    public double speedVectorScalar;
+    public double heightOffset;
+    public int startSlope;
+    public double speedVectorY;
+    public AnimationSequence animationSequences;
+    public double speedVectorX;
     public int anInt3013;
 
-    public Class40_Sub5_Sub17_Sub1(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10) {
-        aBoolean2968 = false;
-        anInt2982 = 0;
-        anInt2958 = arg2;
-        anInt2957 = arg4;
-        aBoolean2968 = false;
-        anInt2960 = arg10;
-        anInt2989 = arg8;
-        anInt2962 = arg0;
+    public Projectile(int graphicsId, int arg1, int startX, int startY, int height, int delay, int speed, int startSlope, int startDistanceFromTarget, int entityIndex, int endHeight) {
+        moving = false;
+        animationFrame = 0;
+        this.startX = startX;
+        startHeight = height;
+        moving = false;
+        this.endHeight = endHeight;
+        this.startDistanceFromTarget = startDistanceFromTarget;
+        this.graphicsId = graphicsId;
         anInt2981 = arg1;
-        anInt2971 = arg6;
-        anInt2974 = arg5;
-        anInt2961 = arg9;
-        anInt2984 = arg3;
-        anInt2997 = arg7;
-        int i = SpotAnimDefinition.forId(anInt2962).animationId;
+        endCycle = speed;
+        this.delay = delay;
+        this.entityIndex = entityIndex;
+        this.startY = startY;
+        this.startSlope = startSlope;
+        int i = SpotAnimDefinition.forId(this.graphicsId).animationId;
         if(i != -1)
-            aAnimationSequence_3006 = ProducingGraphicsBuffer_Sub1.getAnimationSequence(i);
+            animationSequences = ProducingGraphicsBuffer_Sub1.getAnimationSequence(i);
         else
-            aAnimationSequence_3006 = null;
+            animationSequences = null;
 
     }
 
@@ -628,51 +628,49 @@ public class Class40_Sub5_Sub17_Sub1 extends Renderable {
     }
 
     public Model getRotatedModel() {
-        SpotAnimDefinition spotAnimDefinition = SpotAnimDefinition.forId(anInt2962);
-        Model class40_sub5_sub17_sub5 = spotAnimDefinition.method549(anInt2982);
+        SpotAnimDefinition spotAnimDefinition = SpotAnimDefinition.forId(graphicsId);
+        Model class40_sub5_sub17_sub5 = spotAnimDefinition.method549(animationFrame);
         if(class40_sub5_sub17_sub5 == null)
             return null;
         class40_sub5_sub17_sub5.method804(anInt2976);
         return class40_sub5_sub17_sub5;
     }
 
-    public void method765(int arg0, int arg1) {
-        aBoolean2968 = true;
-        aDouble2993 += (double) arg1 * aDouble3001;
-        aDouble2980 += aDouble3011 * (double) arg1;
-        if(arg0 >= 35) {
-            aDouble2992 += aDouble2996 * 0.5 * (double) arg1 * (double) arg1 + (double) arg1 * aDouble2972;
-            aDouble2972 += (double) arg1 * aDouble2996;
-            anInt3013 = 0x7ff & (int) (Math.atan2(aDouble3011, aDouble3001) * 325.949) + 1024;
-            anInt2976 = 0x7ff & (int) (325.949 * Math.atan2(aDouble2972, aDouble2995));
-            if(aAnimationSequence_3006 != null) {
-                anInt2973 += arg1;
-                while(aAnimationSequence_3006.frameLengths[anInt2982] < anInt2973) {
-                    anInt2973 -= aAnimationSequence_3006.frameLengths[anInt2982];
-                    anInt2982++;
-                    if(aAnimationSequence_3006.frameIds.length <= anInt2982)
-                        anInt2982 = 0;
-                }
+    public void move(int time) {
+        moving = true;
+        currentY += (double) time * speedVectorY;
+        currentX += speedVectorX * (double) time;
+        currentHeight += heightOffset * 0.5 * (double) time * (double) time + (double) time * speedVectorZ;
+        speedVectorZ += (double) time * heightOffset;
+        anInt3013 = 0x7ff & (int) (Math.atan2(speedVectorX, speedVectorY) * 325.949) + 1024;
+        anInt2976 = 0x7ff & (int) (325.949 * Math.atan2(speedVectorZ, speedVectorScalar));
+        if(animationSequences != null) {
+            duration += time;
+            while(animationSequences.frameLengths[animationFrame] < duration) {
+                duration -= animationSequences.frameLengths[animationFrame];
+                animationFrame++;
+                if(animationSequences.frameIds.length <= animationFrame)
+                    animationFrame = 0;
             }
         }
     }
 
-    public void method766(int arg0, int arg1, int arg2, int arg3, int arg4) {
-        if(!aBoolean2968) {
-            double d = (double) (-anInt2958 + arg4);
-            double d_32_ = (double) (-anInt2984 + arg2);
-            double d_33_ = Math.sqrt(d * d + d_32_ * d_32_);
-            aDouble2980 = (double) anInt2958 + d * (double) anInt2989 / d_33_;
-            aDouble2993 = (double) anInt2984 + (double) anInt2989 * d_32_ / d_33_;
-            aDouble2992 = (double) anInt2957;
+    public void trackTarget(int loopCycle, int arg1, int targetY, int k, int targetX) {
+        if(!moving) {
+            double distanceX = (double) (-startX + targetX);
+            double distanceY = (double) (-startY + targetY);
+            double distanceScalar = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+            currentX = (double) startX + distanceX * (double) startDistanceFromTarget / distanceScalar;
+            currentY = (double) startY + (double) startDistanceFromTarget * distanceY / distanceScalar;
+            currentHeight = (double) startHeight;
         }
-        double d = (double) (-arg0 + 1 + anInt2971);
-        aDouble3001 = ((double) arg2 - aDouble2993) / d;
-        aDouble3011 = ((double) arg4 - aDouble2980) / d;
-        aDouble2995 = Math.sqrt(aDouble3001 * aDouble3001 + aDouble3011 * aDouble3011);
-        if(!aBoolean2968)
-            aDouble2972 = -aDouble2995 * Math.tan((double) anInt2997 * 0.02454369);
-        aDouble2996 = (-aDouble2992 + (double) arg3 - aDouble2972 * d) * 2.0 / (d * d);
+        double cyclesRemaining = (double) (-loopCycle + 1 + endCycle);
+        speedVectorY = ((double) targetY - currentY) / cyclesRemaining;
+        speedVectorX = ((double) targetX - currentX) / cyclesRemaining;
+        speedVectorScalar = Math.sqrt(speedVectorY * speedVectorY + speedVectorX * speedVectorX);
+        if(!moving)
+            speedVectorZ = -speedVectorScalar * Math.tan((double) startSlope * 0.02454369);
+        heightOffset = (-currentHeight + (double) k - speedVectorZ * cyclesRemaining) * 2.0 / (cyclesRemaining * cyclesRemaining);
         if(arg1 != 0)
             Npc.parseTrackedNpcs();
     }

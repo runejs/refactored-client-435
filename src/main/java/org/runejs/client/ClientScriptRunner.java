@@ -887,7 +887,7 @@ public class ClientScriptRunner extends Node {
                                                 int i_79_ = Class8.aCalendar279.get(Calendar.DATE);
                                                 int i_80_ = Class8.aCalendar279.get(Calendar.MONTH);
                                                 int i_81_ = Class8.aCalendar279.get(Calendar.YEAR);
-                                                scriptStringValues[stringValueIndex++] = i_79_ + "-" + Class40_Sub5_Sub17_Sub1.aClass1Array2964[i_80_] + "-" + i_81_;
+                                                scriptStringValues[stringValueIndex++] = i_79_ + "-" + Projectile.aClass1Array2964[i_80_] + "-" + i_81_;
                                             } else if(scriptOpcode == 4105) {
                                                 stringValueIndex -= 2;
                                                 String class1 = scriptStringValues[stringValueIndex];
