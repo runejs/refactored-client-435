@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'tech.henning'
-version = '0.2'
+version = '0.3'
 
 sourceCompatibility = 8
 targetCompatibility = 8

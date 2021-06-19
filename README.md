@@ -12,7 +12,7 @@ Running the client can be done either with the pre-built client JAR file or by b
 
 Running the pre-built client requires having Java installed: https://www.java.com/en/
 
-Once installed, go into the `/prebuilt/` and simply double-click the JAR file to run it. Alternatively if executing the JAR does not work, the command `java -jar client-435-0.2.jar` may be used from within the `/prebuilt/` directory.
+Once installed, go into the `/prebuilt/` and simply double-click the JAR file to run it. Alternatively if executing the JAR does not work, the command `java -jar client-435-0.3.jar` may be used from within the `/prebuilt/` directory.
 
 The client will use a set of default configurations if no file is provided. The default client configuration matches up to the default RuneJS server configuration for quick and easy initial setup. It's highly advised that you generate your own RSA public and private keys for long term use.
 
@@ -62,5 +62,5 @@ The `jar` task can be used to build a jar, which is generated in the `build/libs
 
 ```
 ./gradlew jar
-java -jar ./build/libs/client-435-0.2.jar
+java -jar ./build/libs/client-435-0.3.jar
 ```
