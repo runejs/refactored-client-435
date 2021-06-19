@@ -10,6 +10,8 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
+import org.runejs.client.net.UpdateServer;
+import org.runejs.client.net.UpdateServerNode;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.CacheArchive;
@@ -52,7 +54,6 @@ public class MovedStatics {
     public static LinkedList aLinkedList_2268 = new LinkedList();
     public static ProducingGraphicsBuffer chatboxRight;
     public static int crossY = 0;
-    public static int anInt2278 = 0;
     public static int anInt2280 = 0;
     public static int anInt321 = 5063219;
     public static volatile int eventMouseY = -1;
@@ -68,7 +69,6 @@ public class MovedStatics {
     public static boolean aBoolean2083 = false;
     public static ProducingGraphicsBuffer tabImageProducer;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_549;
-    public static int anInt554 = 0;
     public static int anInt564;
     public static boolean aBoolean565 = false;
     public static boolean aBoolean571;
@@ -116,7 +116,6 @@ public class MovedStatics {
     public static int anInt1996 = 0;
     public static HashTable aClass23_805;
     public static int anInt813 = 0;
-    public static HashTable aClass23_841 = new HashTable(4096);
     public static int anInt848 = 0;
     public static int currentCameraPositionV;
     public static int[] anIntArray852;
@@ -143,10 +142,14 @@ public class MovedStatics {
     public static int baseX;
     public static byte[][][] tile_underlayids;
     public static NodeCache aClass9_998 = new NodeCache(100);
-    public static int anInt1006 = 0;
     public static int anInt1008 = 0;
     public static int anInt1010 = 2;
     public static int[] anIntArray1013;
+    public static IndexedImage[] moderatorIcon;
+    public static int[] anIntArray2764 = new int[128];
+    public static ImageRGB minimapImage;
+    public static int msSinceLastUpdate = 0;
+    public static long lastUpdateInMillis;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -373,13 +376,13 @@ public class MovedStatics {
     public static int method368(byte arg0, boolean arg1, boolean arg2) {
         int i = 0;
         if (arg2) {
-            i += Class17.anInt464 + ProducingGraphicsBuffer.anInt1618;
+            i += UpdateServer.anInt464 + UpdateServer.anInt1618;
         }
         if (arg0 != -41) {
             mapDots = null;
         }
         if (arg1) {
-            i += anInt1006 + anInt554;
+            i += UpdateServer.anInt1006 + UpdateServer.anInt554;
         }
         return i;
     }
@@ -410,7 +413,7 @@ public class MovedStatics {
             if (Class26.aBoolean618)
                 OverlayDefinition.anInt2342 = arg0;
             else
-                Class40_Sub5_Sub13.method651(22741, arg0);
+                method651(22741, arg0);
         }
     }
 
@@ -441,42 +444,6 @@ public class MovedStatics {
 
     public static void method540() {
         KeyFocusListener.aLinkedList_1278 = new LinkedList();
-    }
-
-    public static void method327(boolean arg0, CacheArchive arg1, int arg2, int arg3, byte arg4, int arg5, byte arg6) {
-        int i = 14 % ((arg6 - 5) / 62);
-        long l = (long) (arg3 + (arg2 << 16));
-        Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class51.aClass23_1194.getNode(l);
-        if (class40_sub5_sub13 == null) {
-            class40_sub5_sub13 = (Class40_Sub5_Sub13) Class37.aClass23_869.getNode(l);
-            if (class40_sub5_sub13 == null) {
-                class40_sub5_sub13 = (Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.getNode(l);
-                if (class40_sub5_sub13 == null) {
-                    if (!arg0) {
-                        class40_sub5_sub13 = (Class40_Sub5_Sub13) aClass23_841.getNode(l);
-                        if (class40_sub5_sub13 != null)
-                            return;
-                    }
-                    class40_sub5_sub13 = new Class40_Sub5_Sub13();
-                    class40_sub5_sub13.anInt2763 = arg5;
-                    class40_sub5_sub13.aByte2758 = arg4;
-                    class40_sub5_sub13.aClass6_Sub1_2754 = arg1;
-                    if (arg0) {
-                        Class51.aClass23_1194.put(l, class40_sub5_sub13);
-                        ProducingGraphicsBuffer.anInt1618++;
-                    } else {
-                        InteractiveObject.aNodeQueue_485.push(class40_sub5_sub13);
-                        GameObjectDefinition.aClass23_2545.put(l, class40_sub5_sub13);
-                        anInt554++;
-                    }
-                } else if (arg0) {
-                    class40_sub5_sub13.clear();
-                    Class51.aClass23_1194.put(l, class40_sub5_sub13);
-                    anInt554--;
-                    ProducingGraphicsBuffer.anInt1618++;
-                }
-            }
-        }
     }
 
     public static void method332(int arg0) {
@@ -653,9 +620,9 @@ public class MovedStatics {
 
     public static void method399(int arg0, int arg2) {
         long l = (arg0 << 16) + arg2;
-        Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) GameObjectDefinition.aClass23_2545.getNode(l);
-        if (class40_sub5_sub13 != null) {
-            InteractiveObject.aNodeQueue_485.unshift(class40_sub5_sub13);
+        UpdateServerNode updateServerNode = (UpdateServerNode) UpdateServer.aClass23_2545.getNode(l);
+        if (updateServerNode != null) {
+            InteractiveObject.aNodeQueue_485.unshift(updateServerNode);
         }
     }
 
@@ -817,9 +784,9 @@ public class MovedStatics {
 
     public static int calculateDataLoaded(int arg1, int arg2) {
         long l = (long) ((arg1 << 16) + arg2);
-        if (PacketBuffer.aClass40_Sub5_Sub13_2250 == null || PacketBuffer.aClass40_Sub5_Sub13_2250.key != l)
+        if (UpdateServer.aUpdateServerNode_2250 == null || UpdateServer.aUpdateServerNode_2250.key != l)
             return 0;
-        return 1 + Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition * 99 / (Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer.length + -PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758);
+        return 1 + UpdateServer.aClass40_Sub1_2752.currentPosition * 99 / (UpdateServer.aClass40_Sub1_2752.buffer.length + -UpdateServer.aUpdateServerNode_2250.aByte2758);
     }
 
     public static boolean method416(byte arg0) {
@@ -827,7 +794,7 @@ public class MovedStatics {
             if (Class59.anInt1389 == GenericTile.anInt1214)
                 return false;
             ItemDefinition.anInt2854 = anIntArray2113[Class59.anInt1389];
-            Class59.anInt1388 = Class40_Sub5_Sub13.anIntArray2764[Class59.anInt1389];
+            Class59.anInt1388 = anIntArray2764[Class59.anInt1389];
             if (arg0 > -21)
                 English.clickToContinue = null;
             Class59.anInt1389 = Class59.anInt1389 + 1 & 0x7f;
@@ -1112,7 +1079,7 @@ public class MovedStatics {
                 FloorDecoration.method344(-40);
                 method440();
                 if (ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 == null)
-                    ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(765, 503, MouseHandler.gameCanvas);
+                    ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = createGraphicsBuffer(765, 503, MouseHandler.gameCanvas);
             }
             if (statusCode == 5 || statusCode == 10 || statusCode == 20) {
                 ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
@@ -1206,5 +1173,59 @@ public class MovedStatics {
         } else
             i = 10;
         return i;
+    }
+
+    public static ProducingGraphicsBuffer createGraphicsBuffer(int width, int height, Component component) {
+        try {
+            ProducingGraphicsBuffer producingGraphicsBuffer = new ProducingGraphicsBuffer_Sub2();
+            producingGraphicsBuffer.method1041(13, width, component, height);
+            return producingGraphicsBuffer;
+        } catch(Throwable throwable) {
+            ProducingGraphicsBuffer_Sub1 class68_sub1 = new ProducingGraphicsBuffer_Sub1();
+            class68_sub1.method1041(44, width, component, height);
+            return class68_sub1;
+        }
+    }
+
+    public static void method650(int arg1) {
+        LinkedList.anInt1073 = arg1;
+    }
+
+    public static void method651(int arg0, int arg1) {
+        if(aClass22_189 != null) {
+            if(RSCanvas.anInt54 != 0) {
+                if(Player.aByteArray3270 != null)
+                    PacketBuffer.anInt2258 = arg1;
+            } else if(MouseHandler.anInt1450 >= 0) {
+                MouseHandler.anInt1450 = arg1;
+                aClass22_189.method304((byte) -111, arg1, 0);
+            }
+            if(arg0 != 22741)
+                method652();
+        }
+    }
+
+    public static void method652() {
+        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
+            if(class40_sub3.anInt2031 > 0)
+                class40_sub3.anInt2031--;
+            if(class40_sub3.anInt2031 == 0) {
+                if(class40_sub3.anInt2028 < 0 || method459(class40_sub3.anInt2036, class40_sub3.anInt2028, (byte) 103)) {
+                    GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039, class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
+                    class40_sub3.remove();
+                }
+            } else {
+                if(class40_sub3.anInt2033 > 0)
+                    class40_sub3.anInt2033--;
+                if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 && class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 && (class40_sub3.anInt2017 < 0 || method459(class40_sub3.anInt2030, class40_sub3.anInt2017, (byte) 106))) {
+                    GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
+                    class40_sub3.anInt2033 = -1;
+                    if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2028 == -1)
+                        class40_sub3.remove();
+                    else if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2025 == class40_sub3.anInt2035 && class40_sub3.anInt2030 == class40_sub3.anInt2036)
+                        class40_sub3.remove();
+                }
+            }
+        }
     }
 }

@@ -22,7 +22,6 @@ import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.tile.Wall;
 
 public class Class37 {
-    public static HashTable aClass23_869 = new HashTable(32);
     public static boolean aBoolean871 = false;
     public static int anInt874;
     public static int anInt876 = 0;
@@ -92,7 +91,7 @@ public class Class37 {
         int centerX = 48 + Player.localPlayer.worldX / 32;
         int centerY = 464 + -(Player.localPlayer.worldY / 32);
         int angle = GroundItemTile.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
-        Class40_Sub5_Sub13.minimapImage.shapeImageToPixels(25, 5, 146, 151, centerX, centerY, angle, Class51.mapZoomOffset + 256, Landscape.anIntArray1186, MovedStatics.anIntArray852);
+        MovedStatics.minimapImage.shapeImageToPixels(25, 5, 146, 151, centerX, centerY, angle, Class51.mapZoomOffset + 256, Landscape.anIntArray1186, MovedStatics.anIntArray852);
         for(int i = 0; GameObject.minimapHintCount > i; i++) {
             int hintX = 2 + 4 * Actor.minimapHintX[i] + -(Player.localPlayer.worldX / 32);
             int hintY = 2 + 4 * LinkedList.minimapHintY[i] - Player.localPlayer.worldY / 32;

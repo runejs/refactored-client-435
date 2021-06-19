@@ -24,11 +24,10 @@ public abstract class Class22 {
     public static boolean membersWorld = false;
     public static boolean accountFlagged = false;
     public static int anInt545;
-    public static int msSinceLastUpdate = 0;
     public static boolean[] aBooleanArray548 = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, false, false};
 
     public static void method299(byte arg0, int arg1) {
-        int[] is = Class40_Sub5_Sub13.minimapImage.pixels;
+        int[] is = MovedStatics.minimapImage.pixels;
         int i = is.length;
         for(int i_0_ = 0; i > i_0_; i_0_++)
             is[i_0_] = 0;
@@ -42,7 +41,7 @@ public abstract class Class22 {
                 i_2_ += 4;
             }
         }
-        Class40_Sub5_Sub13.minimapImage.method723();
+        MovedStatics.minimapImage.method723();
         int i_4_ = (-10 + (int) (Math.random() * 20.0) + 238 << 8) + (228 + (int) (Math.random() * 20.0) << 16) + 238 + (int) (20.0 * Math.random()) + -10;
         int i_5_ = -10 + (int) (20.0 * Math.random()) + 238 << 16;
         for(int i_6_ = 1; i_6_ < 103; i_6_++) {

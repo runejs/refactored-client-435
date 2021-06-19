@@ -11,7 +11,6 @@ import org.runejs.client.frame.ChatBox;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.node.Class40_Sub6;
 import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.Class40_Sub5_Sub13;
 
 public class PacketBuffer extends Buffer {
     public static int anInt2231 = 1;
@@ -19,7 +18,6 @@ public class PacketBuffer extends Buffer {
     public static Effect[] effects = new Effect[50];
     public static long aLong2241 = 0L;
     public static int currentSound = 0;
-    public static Class40_Sub5_Sub13 aClass40_Sub5_Sub13_2250;
     public static boolean closedClient = false;
     public static int lastClickX = 0;
     public static int anInt2258;

@@ -26,7 +26,6 @@ import java.text.MessageFormat;
 public class Class48 {
     public static int cameraOffsetY = 0;
     public static int modifiedWidgetId = 0;
-    public static Buffer aClass40_Sub1_1132;
 
     public int[][] anIntArrayArray1128;
     public int anInt1131;
@@ -340,7 +339,6 @@ public class Class48 {
         MouseHandler.currentSongId = -1;
         Class37.method436();
         MovedStatics.processGameStatus(10);
-        ScreenController.frameMode(ScreenMode.FIXED);
     }
 
     public int method921(int arg0, int arg1) {

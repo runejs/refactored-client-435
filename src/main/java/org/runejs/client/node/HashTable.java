@@ -20,7 +20,7 @@ public class HashTable {
         }
     }
 
-    public Node method329() {
+    public Node getNextNode() {
         anInt572 = 0;
         return method336();
     }

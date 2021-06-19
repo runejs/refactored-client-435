@@ -18,7 +18,6 @@ import java.io.IOException;
 public class GameObjectDefinition extends CachedNode implements EntityDefinition {
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2524;
     public static int anInt2543 = 0;
-    public static HashTable aClass23_2545 = new HashTable(4096);
     public static int lastClickY = 0;
     public static long aLong2561 = 0L;
     public static int count;

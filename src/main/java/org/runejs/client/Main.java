@@ -23,9 +23,7 @@ import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
-import org.runejs.client.net.ISAAC;
-import org.runejs.client.net.IncomingPackets;
-import org.runejs.client.net.PacketBuffer;
+import org.runejs.client.net.*;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.Scene;
@@ -548,13 +546,13 @@ public class Main extends GameShell {
     }
 
     public static void method37(CacheArchive cacheArchive, int arg2) {
-        if (Class48.aClass40_Sub1_1132 == null) {
-            MovedStatics.method327(true, null, 255, 255, (byte) 0, 0, (byte) 90);
+        if (UpdateServer.crcTableBuffer == null) {
+            UpdateServer.method327(true, null, 255, 255, (byte) 0, 0);
             Class24.aClass6_Sub1Array580[arg2] = cacheArchive;
         } else {
-            Class48.aClass40_Sub1_1132.currentPosition = 5 + arg2 * 4;
-            int i = Class48.aClass40_Sub1_1132.getIntBE();
-            cacheArchive.method200(i, 99);
+            UpdateServer.crcTableBuffer.currentPosition = 5 + arg2 * 4;
+            int i = UpdateServer.crcTableBuffer.getIntBE();
+            cacheArchive.requestLatestVersion(i);
         }
     }
 
@@ -712,7 +710,7 @@ public class Main extends GameShell {
         IncomingPackets.thirdLastOpcode = -1;
         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
         ActorDefinition.menuActionRow = 0;
-        Class40_Sub5_Sub13.method650(0);
+        MovedStatics.method650(0);
         for (int i = 0; i < 100; i++)
             ChatBox.chatMessages[i] = null;
         Class8.itemSelected = 0;
@@ -1391,7 +1389,7 @@ public class Main extends GameShell {
                 }
                 LinkedList.method910(-32322);
                 if(Class51.gameStatusCode == 30 || Class51.gameStatusCode == 35) {
-                    Class40_Sub5_Sub13.method652();
+                    MovedStatics.method652();
                     MusicSystem.processAudio();
                     IncomingPackets.cyclesSinceLastPacket++;
                     if (IncomingPackets.cyclesSinceLastPacket > 750) {
@@ -1557,7 +1555,7 @@ public class Main extends GameShell {
                         int i_21_ = Class17.method274(true);
                         if(i_20_ > 4500 && i_21_ > 4500) {
                             SceneCluster.idleLogout = 250;
-                            Class40_Sub5_Sub13.method650(4000);
+                            MovedStatics.method650(4000);
                             SceneCluster.packetBuffer.putPacket(216);
                         }
                         Player.anInt3264++;
@@ -1906,7 +1904,7 @@ public class Main extends GameShell {
 
     public void method39() {
         if (Class51.gameStatusCode != 1000) {
-            boolean bool = FloorDecoration.method346();
+            boolean bool = UpdateServer.processUpdateServerResponse();
             if (!bool)
                 method40();
         }
@@ -1959,9 +1957,9 @@ public class Main extends GameShell {
             this.openErrorPage("js5crc");
             Class51.gameStatusCode = 1000;
         } else {
-            if (MovedStatics.anInt2278 >= 4) {
+            if (UpdateServer.anInt2278 >= 4) {
                 if (Class51.gameStatusCode > 5) {
-                    MovedStatics.anInt2278 = 3;
+                    UpdateServer.anInt2278 = 3;
                     ISAAC.anInt509 = 3000;
                 } else {
                     this.openErrorPage("js5io");
@@ -2011,7 +2009,7 @@ public class Main extends GameShell {
                         if (Class8.connectionStage != 4)
                             break;
 
-                        Class17.handleUpdateServerConnection(Class29.updateServerSocket, Class51.gameStatusCode > 20);
+                        UpdateServer.handleUpdateServerConnection(Class29.updateServerSocket, Class51.gameStatusCode > 20);
 
                         ProducingGraphicsBuffer.updateServerSignlinkNode = null;
                         Class8.connectionStage = 0;

@@ -28,7 +28,6 @@ public class Class8 {
     public static int[] anIntArray297 = new int[5];
     public static ProducingGraphicsBuffer flameLeftBackground;
     public static int itemSelected = 0;
-    public static byte aByte302 = (byte) 0;
 
     public Class8(int arg0) {
         CollisionMap.anInt141 = arg0;

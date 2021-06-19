@@ -7,6 +7,7 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.PacketBuffer;
+import org.runejs.client.net.UpdateServer;
 import org.runejs.client.node.Class40_Sub6;
 
 import java.io.ByteArrayInputStream;
@@ -53,7 +54,7 @@ public class CacheArchive {
     public volatile boolean aBoolean1800 = false;
     public CacheIndex metaIndex;
     public int cacheIndexId;
-    public int anInt1810;
+    public int archiveCrcValue;
     public boolean aBoolean1811;
     public CacheIndex dataIndex;
 
@@ -166,16 +167,16 @@ public class CacheArchive {
             if(aBoolean1800)
                 throw new RuntimeException();
             if(arg2 == null) {
-                MovedStatics.method327(true, this, 255, cacheIndexId, (byte) 0,
-                        anInt1810, (byte) 85);
+                UpdateServer.method327(true, this, 255, cacheIndexId, (byte) 0,
+                        archiveCrcValue);
                 return;
             }
             crc32.reset();
             crc32.update(arg2, 0, arg2.length);
             int i = (int) crc32.getValue();
-            if(i != anInt1810) {
-                MovedStatics.method327(true, this, 255, cacheIndexId, (byte) 0,
-                        anInt1810, (byte) -121);
+            if(i != archiveCrcValue) {
+                UpdateServer.method327(true, this, 255, cacheIndexId, (byte) 0,
+                        archiveCrcValue);
                 return;
             }
 
@@ -187,7 +188,7 @@ public class CacheArchive {
             if(arg2 == null || arg2.length <= 2) {
                 aBooleanArray1796[arg3] = false;
                 if(aBoolean1811 || arg1)
-                    MovedStatics.method327(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3], (byte) -117);
+                    UpdateServer.method327(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3]);
                 return;
             }
             crc32.reset();
@@ -197,7 +198,7 @@ public class CacheArchive {
             if(i != anIntArray252[arg3] || i_0_ != anIntArray224[arg3]) {
                 aBooleanArray1796[arg3] = false;
                 if(aBoolean1811 || arg1)
-                    MovedStatics.method327(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3], (byte) -78);
+                    UpdateServer.method327(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3]);
                 return;
             }
             aBooleanArray1796[arg3] = true;
@@ -210,7 +211,7 @@ public class CacheArchive {
         if(dataIndex != null && aBooleanArray1796 != null && aBooleanArray1796[arg1])
             GameObjectDefinition.method602(this, arg1, dataIndex);
         else
-            MovedStatics.method327(true, this, cacheIndexId, arg1, (byte) 2, anIntArray252[arg1], (byte) -127);
+            UpdateServer.method327(true, this, cacheIndexId, arg1, (byte) 2, anIntArray252[arg1]);
     }
 
     public void method174(int arg0) {
@@ -236,14 +237,12 @@ public class CacheArchive {
         }
     }
 
-    public void method200(int arg0, int arg1) {
-        if(arg1 >= 41) {
-            anInt1810 = arg0;
-            if(metaIndex == null)
-                MovedStatics.method327(true, this, 255, cacheIndexId, (byte) 0, anInt1810, (byte) -118);
-            else
-                GameObjectDefinition.method602(this, cacheIndexId, metaIndex);
-        }
+    public void requestLatestVersion(int crcValue) {
+        archiveCrcValue = crcValue;
+        if(metaIndex == null)
+            UpdateServer.method327(true, this, 255, cacheIndexId, (byte) 0, archiveCrcValue);
+        else
+            GameObjectDefinition.method602(this, cacheIndexId, metaIndex);
     }
 
     public int method201(int arg0) {

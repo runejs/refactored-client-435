@@ -26,7 +26,7 @@ public class Minimap extends FramePieceRenderer {
     private static int[] resizableMinimapLineOffsets;
 
     public Minimap() {
-        this.tempResizableMiniMapimage = Class40_Sub5_Sub13.createGraphicsBuffer(210, 210, MouseHandler.gameCanvas);
+        this.tempResizableMiniMapimage = MovedStatics.createGraphicsBuffer(210, 210, MouseHandler.gameCanvas);
         resizableMinimapOffsets1 = new int[200];
         resizableMinimapOffsets2 = new int[200];
         for(int i = 0; i < resizableMinimapOffsets2.length; i++) {
@@ -34,7 +34,7 @@ public class Minimap extends FramePieceRenderer {
             resizableMinimapOffsets2[i] = 0;
         }
 
-        resizableMiniMapimage = Class40_Sub5_Sub13.createGraphicsBuffer(210, 210, MouseHandler.gameCanvas);
+        resizableMiniMapimage = MovedStatics.createGraphicsBuffer(210, 210, MouseHandler.gameCanvas);
         rasterizerInstanced = new RasterizerInstanced(this.tempResizableMiniMapimage);
 
     }
@@ -93,7 +93,7 @@ public class Minimap extends FramePieceRenderer {
         int i = 48 + Player.localPlayer.worldX / 32;
         int i_8_ = 464 + -(Player.localPlayer.worldY / 32);
         int i_9_ = GroundItemTile.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
-        shapeImageToPixels(Class40_Sub5_Sub13.minimapImage,5, 5, 200, 200, i, i_8_, i_9_, Class51.mapZoomOffset + 256, resizableMinimapOffsets2, resizableMinimapOffsets1);
+        shapeImageToPixels(MovedStatics.minimapImage,5, 5, 200, 200, i, i_8_, i_9_, Class51.mapZoomOffset + 256, resizableMinimapOffsets2, resizableMinimapOffsets1);
         drawResizableMinimapDots();
         rasterizerInstanced.drawFilledRectangle(105, 105, 3, 3, 16777215);
         rasterizerInstanced.drawFilledRectangle(0, 0, 210, 5, 0x242017);

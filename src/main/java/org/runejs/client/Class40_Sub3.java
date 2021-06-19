@@ -51,7 +51,7 @@ public class Class40_Sub3 extends Node {
             Npc.currentScene = new Scene(MovedStatics.tile_height);
             for (int i = 0; i < 4; i++)
                 Landscape.currentCollisionMap[i] = new CollisionMap(104, 104);
-            Class40_Sub5_Sub13.minimapImage = new ImageRGB(512, 512);
+            MovedStatics.minimapImage = new ImageRGB(512, 512);
             MovedStatics.anInt1607 = 5;
             Class40_Sub5_Sub6.loadingPercent = 20;
             Native.currentLoadingText = English.startingGameEngine;
@@ -225,10 +225,10 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.aClass40_Sub5_Sub14_Sub2Array215 = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.scrollbar, "");
             else
                 i++;
-            if (Class40_Sub5_Sub13.moderatorIcon != null)
+            if (MovedStatics.moderatorIcon != null)
                 i++;
             else
-                Class40_Sub5_Sub13.moderatorIcon = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.aClass1_881, "");
+                MovedStatics.moderatorIcon = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.aClass1_881, "");
             if (i < 14) {
                 Native.currentLoadingText = English.loadingSprites + (100 * i / 14) + Native.percent;
                 MovedStatics.anInt1607 = 70;

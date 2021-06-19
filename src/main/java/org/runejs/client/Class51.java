@@ -16,7 +16,6 @@ import java.awt.event.KeyEvent;
 
 public class Class51 {
     public static int mapZoomOffset = 0;
-    public static HashTable aClass23_1194 = new HashTable(4096);
     public static int anInt1195 = 0;
     public static int gameStatusCode = 0;
     public static int[] anIntArray1198;

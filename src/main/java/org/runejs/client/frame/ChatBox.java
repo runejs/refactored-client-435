@@ -104,11 +104,11 @@ public class ChatBox {
                         if(y > 0 && y < 110) {
                             int x = 4;
                             if(privelege == 1) {
-                                Class40_Sub5_Sub13.moderatorIcon[0].drawImage(x, y + -12);
+                                MovedStatics.moderatorIcon[0].drawImage(x, y + -12);
                                 x += 14;
                             }
                             if(privelege == 2) {
-                                Class40_Sub5_Sub13.moderatorIcon[1].drawImage(x, y - 12);
+                                MovedStatics.moderatorIcon[1].drawImage(x, y - 12);
                                 x += 14;
                             }
                             typeFace.drawString(name+ Native.colon, x, y, 0);
@@ -125,11 +125,11 @@ public class ChatBox {
                             i_13_ += typeFace.getStringWidth(English.from);
                             i_13_ += typeFace.method689(32);
                             if(privelege == 1) {
-                                Class40_Sub5_Sub13.moderatorIcon[0].drawImage(i_13_, y + -12);
+                                MovedStatics.moderatorIcon[0].drawImage(i_13_, y + -12);
                                 i_13_ += 14;
                             }
                             if(privelege == 2) {
-                                Class40_Sub5_Sub13.moderatorIcon[1].drawImage(i_13_, y - 12);
+                                MovedStatics.moderatorIcon[1].drawImage(i_13_, y - 12);
                                 i_13_ += 14;
                             }
                             typeFace.drawString(name + Native.colon, i_13_, y, 0);
