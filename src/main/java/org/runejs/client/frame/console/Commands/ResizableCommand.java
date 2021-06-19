@@ -7,7 +7,7 @@ import org.runejs.client.frame.console.Console;
 
 public class ResizableCommand extends Command {
     public ResizableCommand() {
-        super(new String[]{ "resizable", "responsive" }, "toggles resiable mode");
+        super(new String[]{ "resizable", "responsive", "resizeable", "fullscreen", "full", "maximize", "max", "grow", "thicc" }, "toggles resiable mode");
     }
 
     @Override

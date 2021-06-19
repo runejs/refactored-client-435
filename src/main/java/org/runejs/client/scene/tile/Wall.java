@@ -1,6 +1,7 @@
 package org.runejs.client.scene.tile;
 
 import org.runejs.client.LinkedList;
+import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
@@ -9,7 +10,6 @@ import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.util.CollisionMap;
-import org.runejs.client.Class40_Sub5_Sub13;
 import org.runejs.client.Class40_Sub5_Sub15;
 
 public class Wall {
@@ -63,11 +63,11 @@ public class Wall {
                         i_4_ += class40_sub5_sub14_sub1.getStringWidth(English.from);
                         i_4_ += class40_sub5_sub14_sub1.method689(32);
                         if(i_1_ == 1) {
-                            Class40_Sub5_Sub13.moderatorIcon[0].drawImage(i_4_, i_3_ - 12);
+                            MovedStatics.moderatorIcon[0].drawImage(i_4_, i_3_ - 12);
                             i_4_ += 14;
                         }
                         if(i_1_ == 2) {
-                            Class40_Sub5_Sub13.moderatorIcon[1].drawImage(i_4_, -12 + i_3_);
+                            MovedStatics.moderatorIcon[1].drawImage(i_4_, -12 + i_3_);
                             i_4_ += 14;
                         }
                         class40_sub5_sub14_sub1.drawString(class1 + Native.aClass1_515 + ChatBox.chatMessages[i_0_], i_4_, i_3_, 0);

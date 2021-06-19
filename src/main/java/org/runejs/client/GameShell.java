@@ -12,6 +12,7 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.net.PacketBuffer;
+import org.runejs.client.net.UpdateServer;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.tile.Wall;
@@ -43,22 +44,22 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
 
 
     public static void method19(boolean loggedIn) {
-        if (Class57.updateServerSocket != null) {
+        if (UpdateServer.updateServerSocket != null) {
             try {
                 Buffer buffer = new Buffer(4);
                 buffer.putByte(loggedIn ? 2 : 3);
                 buffer.putMediumBE(0);
-                Class57.updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
+                UpdateServer.updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
             } catch (java.io.IOException ioexception) {
                 ioexception.printStackTrace();
                 try {
-                    Class57.updateServerSocket.kill();
+                    UpdateServer.updateServerSocket.kill();
                 } catch (Exception exception) {
                     exception.printStackTrace();
                     /* empty */
                 }
-                Class57.updateServerSocket = null;
-                MovedStatics.anInt2278++;
+                UpdateServer.updateServerSocket = null;
+                UpdateServer.anInt2278++;
             }
         }
 
@@ -202,7 +203,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             }
         }
         setCanvas();
-        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = Class40_Sub5_Sub13.createGraphicsBuffer(Class12.width, IdentityKit.height, MouseHandler.gameCanvas);
+        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = MovedStatics.createGraphicsBuffer(Class12.width, IdentityKit.height, MouseHandler.gameCanvas);
         startup();
         SceneCluster.gameTimer = Timer.create();
         SceneCluster.gameTimer.start();

@@ -1,6 +1,7 @@
 package org.runejs.client.cache.media;
 
 import org.runejs.client.Class17;
+import org.runejs.client.MovedStatics;
 import org.runejs.client.RSString;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.node.NodeCache;
@@ -14,7 +15,6 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.scene.GroundItemTile;
-import org.runejs.client.Class40_Sub5_Sub13;
 
 import java.awt.*;
 import java.util.Random;
@@ -170,7 +170,7 @@ public class TypeFace extends Rasterizer {
                         if (!effect.equals(registeredTrademark)) {
                             if (effect.startsWith(image, 0)) {
                                 int icon = Integer.parseInt(effect.substring(4));
-                                destinationWidth += Class40_Sub5_Sub13.moderatorIcon[icon].maxWidth;
+                                destinationWidth += MovedStatics.moderatorIcon[icon].maxWidth;
                             }
                             if (effect.startsWith(startColor, 0)) {
                                 TextTagNode stylingNode = new TextTagNode(text.substring(oldindex, idx + 1));
@@ -396,7 +396,7 @@ public class TypeFace extends Rasterizer {
                             if (effect.startsWith(image, 0)) {
                                 try {
                                     int icon = Integer.parseInt(effect.substring(4));
-                                    width += Class40_Sub5_Sub13.moderatorIcon[icon].maxWidth;
+                                    width += MovedStatics.moderatorIcon[icon].maxWidth;
                                 } catch (Exception var10) {
 
                                 }
@@ -460,7 +460,7 @@ public class TypeFace extends Rasterizer {
                             if (effect.startsWith(image, 0)) {
                                 try {
                                     int icon = Integer.parseInt(effect.substring(4));
-                                    width += Class40_Sub5_Sub13.moderatorIcon[icon].maxWidth;
+                                    width += MovedStatics.moderatorIcon[icon].maxWidth;
                                 } catch (Exception var10) {
 
                                 }
@@ -911,7 +911,7 @@ public class TypeFace extends Rasterizer {
 
                                     ++modifier;
                                     symbolWidth = Integer.parseInt(symbol.substring(4));
-                                    IndexedImage image = Class40_Sub5_Sub13.moderatorIcon[symbolWidth];
+                                    IndexedImage image = MovedStatics.moderatorIcon[symbolWidth];
                                     int imageHeight = image.maxHeight;
                                     if (opacity == 256) {
                                         image.drawImage(drawX + xOff, drawY + characterDefaultHeight - imageHeight + yOffset);
@@ -1120,7 +1120,7 @@ public class TypeFace extends Rasterizer {
                             if (effectString.startsWith(image, 0)) {
                                 try {
                                     int icon = Integer.valueOf(effectString.substring(4));
-                                    IndexedImage nameIcon = Class40_Sub5_Sub13.moderatorIcon[icon];
+                                    IndexedImage nameIcon = MovedStatics.moderatorIcon[icon];
                                     int imageHeight = nameIcon.maxHeight;
                                     if (opacity == 256) {
                                         nameIcon.drawImage(x, y + characterDefaultHeight - imageHeight);

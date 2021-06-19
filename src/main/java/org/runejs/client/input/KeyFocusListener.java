@@ -332,7 +332,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 int i_5_ = 0x7f & 1 + IdentityKit.anInt2598;
                 if (Class59.anInt1389 != i_5_) {
                     MovedStatics.anIntArray2113[IdentityKit.anInt2598] = obfuscatedKeyCode;
-                    Class40_Sub5_Sub13.anIntArray2764[IdentityKit.anInt2598] = keyChar;
+                    MovedStatics.anIntArray2764[IdentityKit.anInt2598] = keyChar;
                     IdentityKit.anInt2598 = i_5_;
                 }
             }

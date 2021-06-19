@@ -15,6 +15,7 @@ import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.IncomingPackets;
 import org.runejs.client.net.PacketBuffer;
+import org.runejs.client.net.UpdateServerNode;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.util.SignlinkNode;
@@ -24,7 +25,6 @@ import java.io.IOException;
 import java.util.zip.CRC32;
 
 public class FloorDecoration {
-    public static CRC32 aCRC32_590 = new CRC32();
     public static IndexedImage inventoryBackgroundImage;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
     public static SignlinkNode gameServerSignlinkNode;
@@ -197,193 +197,6 @@ public class FloorDecoration {
                 Class40_Sub5_Sub17_Sub6.framePieceTop = null;
                 Class44.chatboxBackgroundImage = null;
             }
-        }
-    }
-
-    // TODO Some sort of update
-    public static boolean method346() {
-        long l = System.currentTimeMillis();
-        int currentMsSinceLastUpdate = (int) (l - LinkedList.lastUpdateInMillis);
-        LinkedList.lastUpdateInMillis = l;
-        if(currentMsSinceLastUpdate > 200) {
-            currentMsSinceLastUpdate = 200;
-        }
-        Class22.msSinceLastUpdate += currentMsSinceLastUpdate;
-        if(MovedStatics.anInt1006 == 0 && Class17.anInt464 == 0 && MovedStatics.anInt554 == 0 && ProducingGraphicsBuffer.anInt1618 == 0) {
-            return true;
-        }
-        if(Class57.updateServerSocket == null) {
-            return false;
-        }
-        try {
-            if(Class22.msSinceLastUpdate > 30000) {
-                throw new IOException();
-            }
-            for(/**/; Class17.anInt464 < 20; Class17.anInt464++) {
-                if(ProducingGraphicsBuffer.anInt1618 <= 0) {
-                    break;
-                }
-                Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class51.aClass23_1194.method329();
-                Buffer buffer = new Buffer(4);
-                buffer.putByte(1);
-                buffer.putMediumBE((int) class40_sub5_sub13.key);
-                Class57.updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
-                Class37.aClass23_869.put(class40_sub5_sub13.key, class40_sub5_sub13);
-                ProducingGraphicsBuffer.anInt1618--;
-            }
-            for(/**/; MovedStatics.anInt1006 < 20 && MovedStatics.anInt554 > 0; MovedStatics.anInt554--) {
-                Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) InteractiveObject.aNodeQueue_485.next();
-                Buffer class40_sub1 = new Buffer(4);
-                class40_sub1.putByte(0);
-                class40_sub1.putMediumBE((int) class40_sub5_sub13.key);
-                Class57.updateServerSocket.sendDataFromBuffer(4, 0, class40_sub1.buffer);
-                class40_sub5_sub13.clear();
-                MovedStatics.aClass23_841.put(class40_sub5_sub13.key, class40_sub5_sub13);
-                MovedStatics.anInt1006++;
-            }
-            for(int i_33_ = 0; i_33_ < 100; i_33_++) {
-                int i_34_ = Class57.updateServerSocket.inputStreamAvailable();
-                if(i_34_ < 0) {
-                    throw new IOException();
-                }
-                if(i_34_ == 0) {
-                    break;
-                }
-                Class22.msSinceLastUpdate = 0;
-                int i_35_ = 0;
-                if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null) {
-                    i_35_ = 8;
-                } else if(Landscape.anInt1157 == 0) {
-                    i_35_ = 1;
-                }
-                if(i_35_ <= 0) {
-                    int i_36_ = Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer.length + -PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758;
-                    int i_37_ = -Landscape.anInt1157 + 512;
-                    if(-Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_36_ < i_37_) {
-                        i_37_ = i_36_ - Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition;
-                    }
-                    if(i_37_ > i_34_) {
-                        i_37_ = i_34_;
-                    }
-                    Class57.updateServerSocket.readDataToBuffer(Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition, i_37_, Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer);
-                    if(Class8.aByte302 != 0) {
-                        for(int i_38_ = 0; i_37_ > i_38_; i_38_++) {
-                            Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_38_] = (byte) GameShell.method27(Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer[Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition + i_38_], Class8.aByte302);
-                        }
-                    }
-                    Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition += i_37_;
-                    Landscape.anInt1157 += i_37_;
-                    if(i_36_ == Class40_Sub5_Sub13.aClass40_Sub1_2752.currentPosition) {
-                        if(PacketBuffer.aClass40_Sub5_Sub13_2250.key == 16711935) {
-                            Class48.aClass40_Sub1_1132 = Class40_Sub5_Sub13.aClass40_Sub1_2752;
-                            for(int i_40_ = 0; i_40_ < 256; i_40_++) {
-                                CacheArchive class6_sub1 = Class24.aClass6_Sub1Array580[i_40_];
-                                if(class6_sub1 != null) {
-                                    Class48.aClass40_Sub1_1132.currentPosition = 4 * i_40_ + 5;
-                                    int i_41_ = Class48.aClass40_Sub1_1132.getIntBE();
-                                    class6_sub1.method200(i_41_, 99);
-                                }
-                            }
-                        } else {
-                            aCRC32_590.reset();
-                            aCRC32_590.update(Class40_Sub5_Sub13
-                                            .aClass40_Sub1_2752
-                                            .buffer,
-                                    0, i_36_);
-                            int i_39_ = (int) aCRC32_590.getValue();
-                            if(~PacketBuffer
-                                    .aClass40_Sub5_Sub13_2250.anInt2763
-                                    != ~i_39_) {
-                                try {
-                                    Class57.updateServerSocket.kill();
-                                } catch(Exception exception) {
-                                }
-                                Class8.aByte302
-                                        = (byte) (int) (Math.random() * 255.0
-                                        + 1.0);
-                                Class57.updateServerSocket = null;
-                                MovedStatics.anInt813++;
-                                return false;
-                            }
-                            MovedStatics.anInt2278 = 0;
-                            MovedStatics.anInt813 = 0;
-                            PacketBuffer.aClass40_Sub5_Sub13_2250.aClass6_Sub1_2754.method196((PacketBuffer.aClass40_Sub5_Sub13_2250.key & 0xff0000L) == 16711680L, (int) (PacketBuffer.aClass40_Sub5_Sub13_2250.key & 0xffffL), Npc.aBoolean3298, Class40_Sub5_Sub13.aClass40_Sub1_2752.buffer);
-                        }
-                        PacketBuffer.aClass40_Sub5_Sub13_2250.remove();
-                        PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
-                        Class40_Sub5_Sub13.aClass40_Sub1_2752 = null;
-                        Landscape.anInt1157 = 0;
-                        if(!Npc.aBoolean3298) {
-                            MovedStatics.anInt1006--;
-                        } else {
-                            Class17.anInt464--;
-                        }
-                    } else {
-                        if(Landscape.anInt1157 != 512) {
-                            break;
-                        }
-                        Landscape.anInt1157 = 0;
-                    }
-                } else {
-                    int i_42_ = -LinkedList.aClass40_Sub1_1081.currentPosition + i_35_;
-                    if(i_42_ > i_34_) {
-                        i_42_ = i_34_;
-                    }
-                    Class57.updateServerSocket.readDataToBuffer(LinkedList.aClass40_Sub1_1081.currentPosition, i_42_, LinkedList.aClass40_Sub1_1081.buffer);
-                    if(Class8.aByte302 != 0) {
-                        for(int i_43_ = 0; i_42_ > i_43_; i_43_++) {
-                            LinkedList.aClass40_Sub1_1081.buffer[LinkedList.aClass40_Sub1_1081.currentPosition + i_43_] = (byte) GameShell.method27(LinkedList.aClass40_Sub1_1081.buffer[LinkedList.aClass40_Sub1_1081.currentPosition + i_43_], Class8.aByte302);
-                        }
-                    }
-                    LinkedList.aClass40_Sub1_1081.currentPosition += i_42_;
-                    if(i_35_ > LinkedList.aClass40_Sub1_1081.currentPosition) {
-                        break;
-                    }
-                    if(PacketBuffer.aClass40_Sub5_Sub13_2250 == null) {
-                        LinkedList.aClass40_Sub1_1081.currentPosition = 0;
-                        int i_44_ = LinkedList.aClass40_Sub1_1081.getUnsignedByte();
-                        int i_45_ = LinkedList.aClass40_Sub1_1081.getUnsignedShortBE();
-                        int i_46_ = LinkedList.aClass40_Sub1_1081.getUnsignedByte();
-                        int i_47_ = LinkedList.aClass40_Sub1_1081.getIntBE();
-                        long l_48_ = (long) ((i_44_ << 16) + i_45_);
-                        Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class37.aClass23_869.getNode(l_48_);
-                        Npc.aBoolean3298 = true;
-                        if(class40_sub5_sub13 == null) {
-                            class40_sub5_sub13 = (Class40_Sub5_Sub13) MovedStatics.aClass23_841.getNode(l_48_);
-                            Npc.aBoolean3298 = false;
-                        }
-                        if(class40_sub5_sub13 == null) {
-                            throw new IOException();
-                        }
-                        PacketBuffer.aClass40_Sub5_Sub13_2250 = class40_sub5_sub13;
-                        int i_49_ = i_46_ == 0 ? 5 : 9;
-                        Class40_Sub5_Sub13.aClass40_Sub1_2752 = new Buffer(PacketBuffer.aClass40_Sub5_Sub13_2250.aByte2758 + i_49_ + i_47_);
-                        Class40_Sub5_Sub13.aClass40_Sub1_2752.putByte(i_46_);
-                        Class40_Sub5_Sub13.aClass40_Sub1_2752.putIntBE(i_47_);
-                        Landscape.anInt1157 = 8;
-                        LinkedList.aClass40_Sub1_1081.currentPosition = 0;
-                    } else if(Landscape.anInt1157 == 0) {
-                        if(LinkedList.aClass40_Sub1_1081.buffer[0] == -1) {
-                            LinkedList.aClass40_Sub1_1081.currentPosition = 0;
-                            Landscape.anInt1157 = 1;
-                        } else {
-                            PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
-                        }
-                    }
-                }
-            }
-            return true;
-        } catch(IOException ioexception) {
-            ioexception.printStackTrace();
-            try {
-                Class57.updateServerSocket.kill();
-            } catch(Exception exception) {
-                exception.printStackTrace();
-                /* empty */
-            }
-            MovedStatics.anInt2278++;
-            Class57.updateServerSocket = null;
-            return false;
         }
     }
 

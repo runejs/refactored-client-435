@@ -10,7 +10,6 @@ import java.awt.*;
 
 public abstract class ProducingGraphicsBuffer {
     public static NodeCache aClass9_1615 = new NodeCache(64);
-    public static int anInt1618 = 0;
     public static int anInt1623 = 0;
     public static int oneMouseButton = 0;
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1631;

@@ -20,64 +20,7 @@ public class Class17 {
     public static Font helveticaBold;
     public static ProducingGraphicsBuffer chatboxTop;
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_463;
-    public static int anInt464 = 0;
     public static int[] anIntArray466 = new int[256];
-
-    public static void handleUpdateServerConnection(GameSocket updateServerSocket, boolean arg2) {
-        if(Class57.updateServerSocket != null) {
-            try {
-                Class57.updateServerSocket.kill();
-            } catch(Exception exception) {
-                exception.printStackTrace();
-                /* empty */
-            }
-            Class57.updateServerSocket = null;
-        }
-        Class57.updateServerSocket = updateServerSocket;
-        GameShell.method19(arg2);
-        LinkedList.aClass40_Sub1_1081.currentPosition = 0;
-        Class40_Sub5_Sub13.aClass40_Sub1_2752 = null;
-        Landscape.anInt1157 = 0;
-        PacketBuffer.aClass40_Sub5_Sub13_2250 = null;
-        for(; ; ) {
-            Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) Class37.aClass23_869.method329();
-            if(class40_sub5_sub13 == null)
-                break;
-            Class51.aClass23_1194.put(class40_sub5_sub13.key, class40_sub5_sub13);
-            anInt464--;
-            ProducingGraphicsBuffer.anInt1618++;
-        }
-        for(; ; ) {
-            Class40_Sub5_Sub13 class40_sub5_sub13 = (Class40_Sub5_Sub13) MovedStatics.aClass23_841.method329();
-            if(class40_sub5_sub13 == null)
-                break;
-            InteractiveObject.aNodeQueue_485.unshift(class40_sub5_sub13);
-            GameObjectDefinition.aClass23_2545.put(class40_sub5_sub13.key, class40_sub5_sub13);
-            MovedStatics.anInt1006--;
-            MovedStatics.anInt554++;
-        }
-        if(Class8.aByte302 != 0) {
-            try {
-                Buffer class40_sub1 = new Buffer(4);
-                class40_sub1.putByte(4);
-                class40_sub1.putByte(Class8.aByte302);
-                class40_sub1.putShortBE(0);
-                Class57.updateServerSocket.sendDataFromBuffer(4, 0, class40_sub1.buffer);
-            } catch(java.io.IOException ioexception) {
-                ioexception.printStackTrace();
-                try {
-                    Class57.updateServerSocket.kill();
-                } catch(Exception exception) {
-                    exception.printStackTrace();
-                    /* empty */
-                }
-                Class57.updateServerSocket = null;
-                MovedStatics.anInt2278++;
-            }
-        }
-        Class22.msSinceLastUpdate = 0;
-        LinkedList.lastUpdateInMillis = System.currentTimeMillis();
-    }
 
     public static int method274(boolean arg0) {
         if(!arg0)

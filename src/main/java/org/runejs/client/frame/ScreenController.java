@@ -71,6 +71,9 @@ public class ScreenController {
     }
 
     public static void refreshFrameSize() {
+        if(Class51.gameStatusCode == 5 || Class51.gameStatusCode == 10 || Class51.gameStatusCode == 20) {
+            MovedStatics.clearScreen = true;
+        }
         Class12.width = drawWidth;
         IdentityKit.height = drawHeight;
         if (frameMode != ScreenMode.FIXED) {
@@ -115,7 +118,7 @@ public class ScreenController {
         MouseHandler.gameCanvas.setSize(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight);
 
         if (Class51.gameStatusCode <= 35 && Class51.gameStatusCode >= 30) {
-            MovedStatics.gameScreenImageProducer = Class40_Sub5_Sub13.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, GameShell.clientFrame);
+            MovedStatics.gameScreenImageProducer = MovedStatics.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, GameShell.clientFrame);
         } else {
             MouseHandler.gameCanvas.setSize(Class12.width, IdentityKit.height);
             MouseHandler.gameCanvas.setVisible(true);

@@ -13,14 +13,12 @@ import org.runejs.client.media.renderable.actor.Player;
 import java.awt.*;
 
 public class LinkedList {
-    public static long lastUpdateInMillis;
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_1057;
     public static int anInt1061;
     public static LinkedList aLinkedList_1064 = new LinkedList();
     public static int[] anIntArray1071;
     public static volatile int anInt1073 = 0;
     public static int crossType = 0;
-    public static Buffer aClass40_Sub1_1081 = new Buffer(8);
     public static int[] minimapHintY = new int[1000];
     public Node aClass40_1056 = new Node();
     public Node aClass40_1068;

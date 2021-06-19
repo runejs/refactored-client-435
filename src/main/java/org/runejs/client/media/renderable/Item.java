@@ -92,77 +92,77 @@ public class Item extends Renderable {
 
     public static void renderLoginScreen(Component arg0, CacheArchive huffmanCacheArchive, CacheArchive gameImageCacheArchive) {
         if (!ISAAC.aBoolean512) {
-            Class8.flameLeftBackground = Class40_Sub5_Sub13.createGraphicsBuffer(128, 265, arg0);
+            Class8.flameLeftBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
             Rasterizer.resetPixels();
-            GameObject.flameRightBackground = Class40_Sub5_Sub13.createGraphicsBuffer(128, 265, arg0);
+            GameObject.flameRightBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
             Rasterizer.resetPixels();
-            Class39.aProducingGraphicsBuffer_907 = Class40_Sub5_Sub13.createGraphicsBuffer(509, 171, arg0);
+            Class39.aProducingGraphicsBuffer_907 = MovedStatics.createGraphicsBuffer(509, 171, arg0);
             Rasterizer.resetPixels();
-            Class51.aProducingGraphicsBuffer_1206 = Class40_Sub5_Sub13.createGraphicsBuffer(360, 132, arg0);
+            Class51.aProducingGraphicsBuffer_1206 = MovedStatics.createGraphicsBuffer(360, 132, arg0);
             Rasterizer.resetPixels();
-            MovedStatics.loginBoxGraphics = Class40_Sub5_Sub13.createGraphicsBuffer(360, 200, arg0);
+            MovedStatics.loginBoxGraphics = MovedStatics.createGraphicsBuffer(360, 200, arg0);
             Rasterizer.resetPixels();
-            Class17.aProducingGraphicsBuffer_463 = Class40_Sub5_Sub13.createGraphicsBuffer(202, 238, arg0);
+            Class17.aProducingGraphicsBuffer_463 = MovedStatics.createGraphicsBuffer(202, 238, arg0);
             Rasterizer.resetPixels();
-            KeyFocusListener.aProducingGraphicsBuffer_1285 = Class40_Sub5_Sub13.createGraphicsBuffer(203, 238, arg0);
+            KeyFocusListener.aProducingGraphicsBuffer_1285 = MovedStatics.createGraphicsBuffer(203, 238, arg0);
             Rasterizer.resetPixels();
-            GameObjectDefinition.aProducingGraphicsBuffer_2524 = Class40_Sub5_Sub13.createGraphicsBuffer(74, 94, arg0);
+            GameObjectDefinition.aProducingGraphicsBuffer_2524 = MovedStatics.createGraphicsBuffer(74, 94, arg0);
             Rasterizer.resetPixels();
-            ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631 = Class40_Sub5_Sub13.createGraphicsBuffer(75, 94, arg0);
+            ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631 = MovedStatics.createGraphicsBuffer(75, 94, arg0);
             Rasterizer.resetPixels();
-            ProducingGraphicsBuffer.muteButton = Class40_Sub5_Sub13.createGraphicsBuffer(42, 42, arg0);
+            ProducingGraphicsBuffer.muteButton = MovedStatics.createGraphicsBuffer(42, 42, arg0);
             Rasterizer.resetPixels();
             byte[] is = huffmanCacheArchive.method170("", Native.titleImage);
-            ImageRGB class40_sub5_sub14_sub4 = new ImageRGB(is, arg0);
+            ImageRGB titleImg = new ImageRGB(is, arg0);
             Class8.flameLeftBackground.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(0, 0);
+            titleImg.drawInverse(0, 0);
             GameObject.flameRightBackground.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(-637, 0);
+            titleImg.drawInverse(-637, 0);
             Class39.aProducingGraphicsBuffer_907.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(-128, 0);
+            titleImg.drawInverse(-128, 0);
             Class51.aProducingGraphicsBuffer_1206.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(-202, -371);
+            titleImg.drawInverse(-202, -371);
             MovedStatics.loginBoxGraphics.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(-202, -171);
+            titleImg.drawInverse(-202, -171);
             Class17.aProducingGraphicsBuffer_463.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(0, -265);
+            titleImg.drawInverse(0, -265);
             KeyFocusListener.aProducingGraphicsBuffer_1285.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(-562, -265);
+            titleImg.drawInverse(-562, -265);
             GameObjectDefinition.aProducingGraphicsBuffer_2524.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(-128, -171);
+            titleImg.drawInverse(-128, -171);
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(-562, -171);
-            int[] is_18_ = new int[class40_sub5_sub14_sub4.imageWidth];
-            for (int i = 0; i < class40_sub5_sub14_sub4.imageHeight; i++) {
-                for (int i_19_ = 0; i_19_ < class40_sub5_sub14_sub4.imageWidth; i_19_++)
-                    is_18_[i_19_] = class40_sub5_sub14_sub4.pixels[i * class40_sub5_sub14_sub4.imageWidth + class40_sub5_sub14_sub4.imageWidth + -i_19_ - 1];
-                for (int i_20_ = 0; i_20_ < class40_sub5_sub14_sub4.imageWidth; i_20_++)
-                    class40_sub5_sub14_sub4.pixels[i_20_ + class40_sub5_sub14_sub4.imageWidth * i] = is_18_[i_20_];
+            titleImg.drawInverse(-562, -171);
+            int[] is_18_ = new int[titleImg.imageWidth];
+            for (int i = 0; i < titleImg.imageHeight; i++) {
+                for (int i_19_ = 0; i_19_ < titleImg.imageWidth; i_19_++)
+                    is_18_[i_19_] = titleImg.pixels[i * titleImg.imageWidth + titleImg.imageWidth + -i_19_ - 1];
+                for (int i_20_ = 0; i_20_ < titleImg.imageWidth; i_20_++)
+                    titleImg.pixels[i_20_ + titleImg.imageWidth * i] = is_18_[i_20_];
             }
             Class8.flameLeftBackground.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(382, 0);
+            titleImg.drawInverse(382, 0);
             GameObject.flameRightBackground.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(-255, 0);
+            titleImg.drawInverse(-255, 0);
             Class39.aProducingGraphicsBuffer_907.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(254, 0);
+            titleImg.drawInverse(254, 0);
             Class51.aProducingGraphicsBuffer_1206.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(180, -371);
+            titleImg.drawInverse(180, -371);
             MovedStatics.loginBoxGraphics.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(180, -171);
+            titleImg.drawInverse(180, -171);
             Class17.aProducingGraphicsBuffer_463.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(382, -265);
+            titleImg.drawInverse(382, -265);
             KeyFocusListener.aProducingGraphicsBuffer_1285.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(-180, -265);
+            titleImg.drawInverse(-180, -265);
             GameObjectDefinition.aProducingGraphicsBuffer_2524.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(254, -171);
+            titleImg.drawInverse(254, -171);
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.prepareRasterizer();
-            class40_sub5_sub14_sub4.drawInverse(-180, -171);
+            titleImg.drawInverse(-180, -171);
             ProducingGraphicsBuffer.muteButton.prepareRasterizer();
             ImageRGB musicIcon = TabParts.GetPart("music");
             Rasterizer.drawFilledRectangle(0, 0, 42, 42, 0x4d4431);
             Rasterizer.drawUnfilledRectangle(0, 0, 42, 42, 0x242017);
             musicIcon.drawImage(4, 3);
-            class40_sub5_sub14_sub4 = HuffmanEncoding.method1028(gameImageCacheArchive, Native.logo, (byte) 21, "");
+            titleImg = HuffmanEncoding.method1028(gameImageCacheArchive, Native.logo, (byte) 21, "");
             Class39.aProducingGraphicsBuffer_907.prepareRasterizer();
             // UNCOMMENT LINE UNDER FOR LOGO
             // class40_sub5_sub14_sub4.drawImage(-128 + 382 + -(class40_sub5_sub14_sub4.imageWidth / 2), 18);
