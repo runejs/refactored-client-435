@@ -553,15 +553,15 @@ public class GameInterface extends CachedNode {
                 SceneCluster.packetBuffer.putIntME2(i_10_);
                 SceneCluster.packetBuffer.putShortBE(npcIdx);
                 SceneCluster.packetBuffer.putShortBE(i);
-                Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
+                Projectile.atInventoryInterfaceType = 2;
                 GenericTile.anInt1233 = i;
                 RSRuntimeException.anInt1651 = 0;
                 if(gameScreenInterfaceId == i_10_ >> 16) {
-                    Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
+                    Projectile.atInventoryInterfaceType = 1;
                 }
                 PlayerAppearance.anInt704 = i_10_;
                 if(i_10_ >> 16 == chatboxInterfaceId) {
-                    Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
+                    Projectile.atInventoryInterfaceType = 3;
                 }
             }
             if(action == 38) {
@@ -642,12 +642,12 @@ public class GameInterface extends CachedNode {
                 PlayerAppearance.anInt704 = i_10_;
                 RSRuntimeException.anInt1651 = 0;
                 GenericTile.anInt1233 = i;
-                Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
+                Projectile.atInventoryInterfaceType = 2;
                 if(i_10_ >> 16 == gameScreenInterfaceId) {
-                    Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
+                    Projectile.atInventoryInterfaceType = 1;
                 }
                 if(i_10_ >> 16 == chatboxInterfaceId) {
-                    Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
+                    Projectile.atInventoryInterfaceType = 3;
                 }
             }
             if(action == 53) {
@@ -656,14 +656,14 @@ public class GameInterface extends CachedNode {
                 SceneCluster.packetBuffer.putShortLE(i);
                 SceneCluster.packetBuffer.putIntME1(i_10_);
                 GenericTile.anInt1233 = i;
-                Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
+                Projectile.atInventoryInterfaceType = 2;
                 RSRuntimeException.anInt1651 = 0;
                 PlayerAppearance.anInt704 = i_10_;
                 if(i_10_ >> 16 == gameScreenInterfaceId) {
-                    Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
+                    Projectile.atInventoryInterfaceType = 1;
                 }
                 if(i_10_ >> 16 == chatboxInterfaceId) {
-                    Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
+                    Projectile.atInventoryInterfaceType = 3;
                 }
             }
             if(action == 57) {
@@ -687,12 +687,12 @@ public class GameInterface extends CachedNode {
                 GenericTile.anInt1233 = i;
                 PlayerAppearance.anInt704 = i_10_;
                 RSRuntimeException.anInt1651 = 0;
-                Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
+                Projectile.atInventoryInterfaceType = 2;
                 if(i_10_ >> 16 == gameScreenInterfaceId) {
-                    Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
+                    Projectile.atInventoryInterfaceType = 1;
                 }
                 if(i_10_ >> 16 == chatboxInterfaceId) {
-                    Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
+                    Projectile.atInventoryInterfaceType = 3;
                 }
             }
             if(action == 10) {
@@ -795,14 +795,14 @@ public class GameInterface extends CachedNode {
                     SceneCluster.packetBuffer.putShortBE(npcIdx);
                     SceneCluster.packetBuffer.putShortLE(i);
                     SceneCluster.packetBuffer.putIntLE(i_10_);
-                    Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
+                    Projectile.atInventoryInterfaceType = 2;
                     GenericTile.anInt1233 = i;
                     PlayerAppearance.anInt704 = i_10_;
                     if(gameScreenInterfaceId == i_10_ >> 16) {
-                        Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
+                        Projectile.atInventoryInterfaceType = 1;
                     }
                     if(chatboxInterfaceId == i_10_ >> 16) {
-                        Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
+                        Projectile.atInventoryInterfaceType = 3;
                     }
                     RSRuntimeException.anInt1651 = 0;
                 }
@@ -910,12 +910,12 @@ public class GameInterface extends CachedNode {
                     PlayerAppearance.anInt704 = i_10_;
                     RSRuntimeException.anInt1651 = 0;
                     GenericTile.anInt1233 = i;
-                    Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
+                    Projectile.atInventoryInterfaceType = 2;
                     if(gameScreenInterfaceId == i_10_ >> 16) {
-                        Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
+                        Projectile.atInventoryInterfaceType = 1;
                     }
                     if(chatboxInterfaceId == i_10_ >> 16) {
-                        Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
+                        Projectile.atInventoryInterfaceType = 3;
                     }
                 }
                 if(action == 33) {
@@ -962,14 +962,14 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortLE(npcIdx);
                         SceneCluster.packetBuffer.putIntBE(i_10_);
                         GenericTile.anInt1233 = i;
-                        Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
+                        Projectile.atInventoryInterfaceType = 2;
                         PlayerAppearance.anInt704 = i_10_;
                         RSRuntimeException.anInt1651 = 0;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
-                            Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
+                            Projectile.atInventoryInterfaceType = 1;
                         }
                         if(i_10_ >> 16 == chatboxInterfaceId) {
-                            Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
+                            Projectile.atInventoryInterfaceType = 3;
                         }
                     }
                     if(action == 12) {
@@ -1077,12 +1077,12 @@ public class GameInterface extends CachedNode {
                         GenericTile.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
                         PlayerAppearance.anInt704 = i_10_;
-                        Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
+                        Projectile.atInventoryInterfaceType = 2;
                         if(i_10_ >> 16 == gameScreenInterfaceId) {
-                            Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
+                            Projectile.atInventoryInterfaceType = 1;
                         }
                         if(i_10_ >> 16 == chatboxInterfaceId) {
-                            Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
+                            Projectile.atInventoryInterfaceType = 3;
                         }
                     }
                     if(action == 17) {
@@ -1113,12 +1113,12 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putIntLE(i_10_);
                         SceneCluster.packetBuffer.putShortLE(i);
                         RSRuntimeException.anInt1651 = 0;
-                        Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
+                        Projectile.atInventoryInterfaceType = 2;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
-                            Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
+                            Projectile.atInventoryInterfaceType = 1;
                         }
                         if(i_10_ >> 16 == chatboxInterfaceId) {
-                            Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
+                            Projectile.atInventoryInterfaceType = 3;
                         }
                         PlayerAppearance.anInt704 = i_10_;
                         GenericTile.anInt1233 = i;
@@ -1130,12 +1130,12 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortLE(npcIdx);
                         GenericTile.anInt1233 = i;
                         PlayerAppearance.anInt704 = i_10_;
-                        Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
+                        Projectile.atInventoryInterfaceType = 2;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
-                            Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
+                            Projectile.atInventoryInterfaceType = 1;
                         }
                         if(i_10_ >> 16 == chatboxInterfaceId) {
-                            Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
+                            Projectile.atInventoryInterfaceType = 3;
                         }
                         RSRuntimeException.anInt1651 = 0;
                     }
@@ -1194,14 +1194,14 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putIntME1(i_10_);
                         SceneCluster.packetBuffer.putShortBE(npcIdx);
                         RSRuntimeException.anInt1651 = 0;
-                        Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
+                        Projectile.atInventoryInterfaceType = 2;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
-                            Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
+                            Projectile.atInventoryInterfaceType = 1;
                         }
                         GenericTile.anInt1233 = i;
                         PlayerAppearance.anInt704 = i_10_;
                         if(i_10_ >> 16 == chatboxInterfaceId) {
-                            Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
+                            Projectile.atInventoryInterfaceType = 3;
                         }
                     }
                     if(action == 36) {
@@ -1238,12 +1238,12 @@ public class GameInterface extends CachedNode {
                         PlayerAppearance.anInt704 = i_10_;
                         RSRuntimeException.anInt1651 = 0;
                         GenericTile.anInt1233 = i;
-                        Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
+                        Projectile.atInventoryInterfaceType = 2;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
-                            Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
+                            Projectile.atInventoryInterfaceType = 1;
                         }
                         if(chatboxInterfaceId == i_10_ >> 16) {
-                            Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
+                            Projectile.atInventoryInterfaceType = 3;
                         }
                     }
                     if(action == 16) {
@@ -1289,13 +1289,13 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortBE(npcIdx);
                         GenericTile.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
-                        Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 2;
+                        Projectile.atInventoryInterfaceType = 2;
                         PlayerAppearance.anInt704 = i_10_;
                         if(i_10_ >> 16 == gameScreenInterfaceId) {
-                            Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 1;
+                            Projectile.atInventoryInterfaceType = 1;
                         }
                         if(i_10_ >> 16 == chatboxInterfaceId) {
-                            Class40_Sub5_Sub17_Sub1.atInventoryInterfaceType = 3;
+                            Projectile.atInventoryInterfaceType = 3;
                         }
                     }
                     if(action == 4) {

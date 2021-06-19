@@ -89,7 +89,7 @@ public class GameObject extends Renderable {
                         logic_y--;
                     if(logic_y >= 0)
                         collisionMap = collisionMaps[logic_y];
-                    Class40_Sub5_Sub17_Sub1.addObject(object_id, object_x, object_z, tile_y, object_orientation, object_type, scene, collisionMap);
+                    Projectile.addObject(object_id, object_x, object_z, tile_y, object_orientation, object_type, scene, collisionMap);
                 }
             }
         }

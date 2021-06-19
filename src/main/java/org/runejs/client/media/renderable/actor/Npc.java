@@ -166,7 +166,7 @@ public class Npc extends Actor {
             Npc npc = Player.npcs[i];
             Player.npcIds[Player.npcCount++] = i;
             npc.anInt3134 = MovedStatics.pulseCycle;
-            int initialFaceDirection = Class40_Sub5_Sub17_Sub1.directions[IncomingPackets.incomingPacketBuffer.getBits(3)];
+            int initialFaceDirection = Projectile.directions[IncomingPackets.incomingPacketBuffer.getBits(3)];
             if(initializing) {
                 npc.initialFaceDirection = initialFaceDirection;
             }

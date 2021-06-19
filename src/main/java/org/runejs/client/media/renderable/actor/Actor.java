@@ -349,7 +349,7 @@ public abstract class Actor extends Renderable {
             Player.cutsceneActive = false;
             PacketBuffer.currentSound = 0;
             Class57.aLinkedList_1332.method906(0);
-            Class43.aLinkedList_1022.method906(0);
+            Class43.projectileQueue.method906(0);
         }
     }
 

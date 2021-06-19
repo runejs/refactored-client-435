@@ -74,7 +74,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
         } else  {
-            if(ScreenController.frameMode == ScreenMode.FIXED && Class40_Sub5_Sub17_Sub1.menuScreenArea == 0){
+            if(ScreenController.frameMode == ScreenMode.FIXED && Projectile.menuScreenArea == 0){
                 Class40_Sub5_Sub6.drawMenu(4,4);
             }
         }

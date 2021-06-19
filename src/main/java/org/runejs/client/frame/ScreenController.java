@@ -44,7 +44,7 @@ public class ScreenController {
             frameMode = screenMode;
             if (screenMode == ScreenMode.FIXED) {
                 frameWidth = 765;
-                frameHeight = 540;
+                frameHeight = 503;
                 GameShell.clientFrame.setResizable(false);
                 GameShell.clientFrame.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
                 GameShell.clientFrame.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));

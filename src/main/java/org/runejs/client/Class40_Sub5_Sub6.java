@@ -301,15 +301,15 @@ public class Class40_Sub5_Sub6 extends CachedNode {
         TypeFace.fontBold.drawString(English.chooseOption, offsetX + 3, 14 + offsetY, colour);
         int x = Class13.mouseX - (xOffSet);
         int y = (-yOffSet) + Landscape.mouseY;
-        if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 0) {
+        if(Projectile.menuScreenArea == 0) {
             x -= 4;
             y -= 4;
         }
-        if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 1) {
+        if(Projectile.menuScreenArea == 1) {
             y -= 205;
             x -= 553;
         }
-        if(Class40_Sub5_Sub17_Sub1.menuScreenArea == 2) {
+        if(Projectile.menuScreenArea == 2) {
             y -= 357;
             x -= 17;
         }

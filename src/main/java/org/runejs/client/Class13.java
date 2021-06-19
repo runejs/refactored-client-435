@@ -43,7 +43,7 @@ public class Class13 {
             Class44.method898(255, actor);
         else
             PlayerAppearance.method381(actor);
-        Class40_Sub5_Sub17_Sub1.method762(actor);
+        Projectile.method762(actor);
         Class40_Sub5_Sub15.method736(true, actor);
     }
 

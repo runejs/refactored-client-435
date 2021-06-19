@@ -342,7 +342,7 @@ public class Player extends Actor {
             if(offsetY > 15)
                 offsetY -= 32;
             int initialFaceDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-            int faceDirection = Class40_Sub5_Sub17_Sub1.directions[initialFaceDirection];
+            int faceDirection = Projectile.directions[initialFaceDirection];
             if(bool)
                 player.initialFaceDirection = faceDirection;
             int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);

@@ -150,7 +150,7 @@ public class IncomingPackets {
             if(opcode == PacketType.CLOSE_CUTSCENE.getOpcode()) { // close cutscene
                 Player.cutsceneActive = false;
                 for(int i_7_ = 0; i_7_ < 5; i_7_++)
-                    Class40_Sub5_Sub17_Sub1.aBooleanArray2975[i_7_] = false;
+                    Projectile.aBooleanArray2975[i_7_] = false;
                 opcode = -1;
                 return true;
             }
@@ -251,7 +251,7 @@ public class IncomingPackets {
                 int i_24_ = incomingPacketBuffer.getUnsignedByte();
                 int i_25_ = incomingPacketBuffer.getUnsignedByte();
                 int i_26_ = incomingPacketBuffer.getUnsignedByte();
-                Class40_Sub5_Sub17_Sub1.aBooleanArray2975[i_23_] = true;
+                Projectile.aBooleanArray2975[i_23_] = true;
                 Class8.anIntArray297[i_23_] = i_24_;
                 GameShell.anIntArray2[i_23_] = i_25_;
                 GroundItemTile.anIntArray1358[i_23_] = i_26_;
@@ -1386,27 +1386,27 @@ public class IncomingPackets {
                         }
                     }
                 } else if (opcode == 1) {
-                    int i = incomingPacketBuffer.getUnsignedByte();
-                    int i_68_ = (i & 0x7) + OverlayDefinition.placementY;
-                    int i_69_ = MovedStatics.placementX + (0x7 & i >> 4);
-                    int i_70_ = i_69_ + incomingPacketBuffer.getByte();
-                    int i_71_ = i_68_ + incomingPacketBuffer.getByte();
-                    int i_72_ = incomingPacketBuffer.getShortBE();
-                    int i_73_ = incomingPacketBuffer.getUnsignedShortBE();
-                    int i_74_ = incomingPacketBuffer.getUnsignedByte() * 4;
-                    int i_75_ = 4 * incomingPacketBuffer.getUnsignedByte();
-                    int i_76_ = incomingPacketBuffer.getUnsignedShortBE();
-                    int i_77_ = incomingPacketBuffer.getUnsignedShortBE();
-                    int i_78_ = incomingPacketBuffer.getUnsignedByte();
-                    int i_79_ = incomingPacketBuffer.getUnsignedByte();
-                    if (i_69_ >= 0 && i_68_ >= 0 && i_69_ < 104 && i_68_ < 104 && i_70_ >= 0 && i_71_ >= 0 && i_70_ < 104 && i_71_ < 104 && i_73_ != 65535) {
-                        i_70_ = 64 + 128 * i_70_;
-                        i_69_ = 64 + 128 * i_69_;
-                        i_68_ = i_68_ * 128 + 64;
-                        Class40_Sub5_Sub17_Sub1 class40_sub5_sub17_sub1 = new Class40_Sub5_Sub17_Sub1(i_73_, Player.worldLevel, i_69_, i_68_, Class37.getFloorDrawHeight(Player.worldLevel, i_69_, i_68_) + -i_74_, i_76_ + MovedStatics.pulseCycle, i_77_ + MovedStatics.pulseCycle, i_78_, i_79_, i_72_, i_75_);
-                        i_71_ = 128 * i_71_ + 64;
-                        class40_sub5_sub17_sub1.method766(i_76_ + MovedStatics.pulseCycle, 0, i_71_, -i_75_ + Class37.getFloorDrawHeight(Player.worldLevel, i_70_, i_71_), i_70_);
-                        Class43.aLinkedList_1022.pushBack(class40_sub5_sub17_sub1, -73);
+                    int offset = incomingPacketBuffer.getUnsignedByte();
+                    int startY = (offset & 0x7) + OverlayDefinition.placementY;
+                    int startX = MovedStatics.placementX + (0x7 & offset >> 4);
+                    int endX = startX + incomingPacketBuffer.getByte();
+                    int endY = startY + incomingPacketBuffer.getByte();
+                    int entityIndex = incomingPacketBuffer.getShortBE();
+                    int graphicsId = incomingPacketBuffer.getUnsignedShortBE();
+                    int startHeight = incomingPacketBuffer.getUnsignedByte() * 4;
+                    int endHeight = 4 * incomingPacketBuffer.getUnsignedByte();
+                    int delay = incomingPacketBuffer.getUnsignedShortBE();
+                    int speed = incomingPacketBuffer.getUnsignedShortBE();
+                    int startSlope = incomingPacketBuffer.getUnsignedByte();
+                    int startDistance = incomingPacketBuffer.getUnsignedByte();
+                    if (startX >= 0 && startY >= 0 && startX < 104 && startY < 104 && endX >= 0 && endY >= 0 && endX < 104 && endY < 104 && graphicsId != 65535) {
+                        endX = 64 + 128 * endX;
+                        startX = 64 + 128 * startX;
+                        startY = startY * 128 + 64;
+                        Projectile projectile = new Projectile(graphicsId, Player.worldLevel, startX, startY, Class37.getFloorDrawHeight(Player.worldLevel, startX, startY) + -startHeight, delay + MovedStatics.pulseCycle, speed + MovedStatics.pulseCycle, startSlope, startDistance, entityIndex, endHeight);
+                        endY = 128 * endY + 64;
+                        projectile.trackTarget(delay + MovedStatics.pulseCycle, 0, endY, -endHeight + Class37.getFloorDrawHeight(Player.worldLevel, endX, endY), endX);
+                        Class43.projectileQueue.pushBack(projectile, -73);
                     }
                 } else {
                     if (opcode == 19) { // update world item amount
