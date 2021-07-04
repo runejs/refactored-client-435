@@ -175,9 +175,9 @@ public class CacheArchive {
             crc32.update(arg2, 0, arg2.length);
             int i = (int) crc32.getValue();
             if(i != archiveCrcValue) {
-                UpdateServer.method327(true, this, 255, cacheIndexId, (byte) 0,
+                /*UpdateServer.method327(true, this, 255, cacheIndexId, (byte) 0,
                         archiveCrcValue);
-                return;
+                return;*/
             }
 
             decodeArchive(arg2);
@@ -393,7 +393,8 @@ public class CacheArchive {
 
     public int method179(int arg1, String arg2) {
         arg2 = arg2.toLowerCase();
-        return aNameHashCollectionArray217[arg1].method882(RSString.stringHash(arg2));
+        int newHash = RSString.stringHash(arg2);
+        return aNameHashCollectionArray217[arg1].method882(newHash);
     }
 
     public boolean method181(int arg0, int[] arg2) {
@@ -477,7 +478,8 @@ public class CacheArchive {
 
     public int getHash(String arg1) {
         arg1 = arg1.toLowerCase();
-        return nameHashCollection.method882(RSString.stringHash(arg1));
+        int newHash = RSString.stringHash(arg1);
+        return nameHashCollection.method882(newHash);
     }
 
     public boolean method185(byte arg0) {

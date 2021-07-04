@@ -112,7 +112,7 @@ public class UpdateServer {
 
         try {
             if(MovedStatics.msSinceLastUpdate > 30000) {
-                throw new IOException();
+                // throw new IOException();
             }
 
             // Immediate file requests
@@ -194,14 +194,14 @@ public class UpdateServer {
                             crc32.update(aClass40_Sub1_2752.buffer, 0, inboundFileLength);
                             int fileRealCrcValue = (int) crc32.getValue();
                             if(~aUpdateServerNode_2250.crc != ~fileRealCrcValue) {
-                                try {
+                                /*try {
                                     updateServerSocket.kill();
                                 } catch(Exception exception) {
                                 }
                                 aByte302 = (byte) (int) (Math.random() * 255.0 + 1.0);
                                 updateServerSocket = null;
                                 MovedStatics.anInt813++;
-                                return false;
+                                return false;*/
                             }
 
                             anInt2278 = 0;
@@ -251,6 +251,7 @@ public class UpdateServer {
                         int fileId = fileDataBuffer.getUnsignedShortBE();
                         int fileCompression = fileDataBuffer.getUnsignedByte();
                         int fileSize = fileDataBuffer.getIntBE();
+                        // System.out.println("Update server response, index=" + fileIndexId + ", file=" + fileId);
                         long fileKey = ((long) fileIndexId << 16) + fileId;
                         UpdateServerNode updateServerNode = (UpdateServerNode) activeRequests.getNode(fileKey);
                         Npc.aBoolean3298 = true;
