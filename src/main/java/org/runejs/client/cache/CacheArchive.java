@@ -55,29 +55,29 @@ public class CacheArchive {
     public CacheIndex metaIndex;
     public int cacheIndexId;
     public int archiveCrcValue;
-    public boolean aBoolean1811;
+    public boolean hasVersionNumbers;
     public CacheIndex dataIndex;
 
     static {
         Player.npcs = new Npc[32768];
     }
 
-    public CacheArchive(CacheIndex dataIndex, CacheIndex metaIndex, int cacheIndexId, boolean arg3, boolean arg4, boolean arg5) {
+    public CacheArchive(CacheIndex dataIndex, CacheIndex metaIndex, int cacheIndexId, boolean arg3, boolean arg4, boolean hasVersionNumbers) {
         aBoolean220 = arg4;
         aBoolean233 = arg3;
         this.dataIndex = dataIndex;
-        aBoolean1811 = arg5;
+        this.hasVersionNumbers = hasVersionNumbers;
         this.metaIndex = metaIndex;
         this.cacheIndexId = cacheIndexId;
         Main.method37(this, this.cacheIndexId);
     }
 
-    public static CacheArchive loadArchive(int cacheIndexId, boolean arg1, boolean arg2, boolean arg4) {
+    public static CacheArchive loadArchive(int cacheIndexId, boolean hasVersionNumbers, boolean arg2, boolean arg4) {
         CacheIndex dataIndex = null;
         if(Main.dataChannel != null) {
             dataIndex = new CacheIndex(cacheIndexId, Main.dataChannel, Main.indexChannels[cacheIndexId], 1000000);
         }
-        return new CacheArchive(dataIndex, Main.metaIndex, cacheIndexId, arg2, arg4, arg1);
+        return new CacheArchive(dataIndex, Main.metaIndex, cacheIndexId, arg2, arg4, hasVersionNumbers);
     }
 
     public static byte[] decompress(byte[] cacheData) {
@@ -187,7 +187,7 @@ public class CacheArchive {
                 aBoolean1800 = true;
             if(arg2 == null || arg2.length <= 2) {
                 aBooleanArray1796[arg3] = false;
-                if(aBoolean1811 || arg1)
+                if(hasVersionNumbers || arg1)
                     UpdateServer.method327(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3]);
                 return;
             }
@@ -197,7 +197,7 @@ public class CacheArchive {
             int i_0_ = ((arg2[-2 + arg2.length] & 0xff) << 8) + (0xff & arg2[arg2.length + -1]);
             if(i != anIntArray252[arg3] || i_0_ != anIntArray224[arg3]) {
                 aBooleanArray1796[arg3] = false;
-                if(aBoolean1811 || arg1)
+                if(hasVersionNumbers || arg1)
                     UpdateServer.method327(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3]);
                 return;
             }

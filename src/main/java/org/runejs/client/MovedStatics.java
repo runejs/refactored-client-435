@@ -620,9 +620,9 @@ public class MovedStatics {
 
     public static void method399(int arg0, int arg2) {
         long l = (arg0 << 16) + arg2;
-        UpdateServerNode updateServerNode = (UpdateServerNode) UpdateServer.aClass23_2545.getNode(l);
+        UpdateServerNode updateServerNode = (UpdateServerNode) UpdateServer.queuedFileResponses.getNode(l);
         if (updateServerNode != null) {
-            InteractiveObject.aNodeQueue_485.unshift(updateServerNode);
+            UpdateServer.activeQueuedRequests.unshift(updateServerNode);
         }
     }
 
@@ -784,9 +784,9 @@ public class MovedStatics {
 
     public static int calculateDataLoaded(int arg1, int arg2) {
         long l = (long) ((arg1 << 16) + arg2);
-        if (UpdateServer.aUpdateServerNode_2250 == null || UpdateServer.aUpdateServerNode_2250.key != l)
+        if (UpdateServer.activeNode == null || UpdateServer.activeNode.key != l)
             return 0;
-        return 1 + UpdateServer.aClass40_Sub1_2752.currentPosition * 99 / (UpdateServer.aClass40_Sub1_2752.buffer.length + -UpdateServer.aUpdateServerNode_2250.aByte2758);
+        return 1 + UpdateServer.fileDataBuffer.currentPosition * 99 / (UpdateServer.fileDataBuffer.buffer.length + -UpdateServer.activeNode.versionSize);
     }
 
     public static boolean method416(byte arg0) {
