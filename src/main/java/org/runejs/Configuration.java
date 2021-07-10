@@ -45,6 +45,10 @@ public class Configuration {
             if (PASSWORD == null) {
                 PASSWORD = "";
             }
+            
+            if (SERVER_DISPLAY_NAME == null) {
+                SERVER_DISPLAY_NAME = "Build 435";
+            }
 
         } catch (Exception e) {
             System.out.println("Unable to load client config - using defaults.");
