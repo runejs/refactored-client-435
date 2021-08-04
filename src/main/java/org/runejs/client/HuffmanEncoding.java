@@ -175,6 +175,15 @@ public class HuffmanEncoding {
                     }
                     StringBuilder examineText = new StringBuilder();
                     examineText.append(MessageFormat.format("<col=ffff00>{0}</col>", actorDefinition.name));
+
+                    if(actorDefinition.combatLevel != 0) {
+                        String combatLevel = " " +
+                            SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel)
+                                + Native.leftParenthasis + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthasis;
+                        examineText.append(combatLevel);
+                    }
+
+
                     if (Configuration.DEBUG_CONTEXT) {
                         examineText.append(" <col=00ff00>(</col>");
                         examineText.append(
