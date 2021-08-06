@@ -199,7 +199,7 @@ public class UpdateServer {
                                     updateServerSocket.kill();
                                 } catch(Exception exception) {
                                 }
-                                aByte302 = (byte) (int) (Math.random() * 255.0 + 1.0);
+                                archiveIndex = (byte) (int) (Math.random() * 255.0 + 1.0);
                                 updateServerSocket = null;
                                 MovedStatics.anInt813++;
                                 return false;*/

@@ -162,17 +162,17 @@ public class CacheArchive {
 
     }
 
-    public void method198(boolean arg1, byte[] arg2, int arg3, CacheIndex arg4) {
-        if(metaIndex == arg4) {
+    public void method198(boolean arg1, byte[] fileData, int arg3, CacheIndex cacheIndex) {
+        if(metaIndex == cacheIndex) {
             if(aBoolean1800)
                 throw new RuntimeException();
-            if(arg2 == null) {
+            if(fileData == null) {
                 UpdateServer.method327(true, this, 255, cacheIndexId, (byte) 0,
                         archiveCrcValue);
                 return;
             }
             crc32.reset();
-            crc32.update(arg2, 0, arg2.length);
+            crc32.update(fileData, 0, fileData.length);
             int i = (int) crc32.getValue();
             if(i != archiveCrcValue) {
                 /*UpdateServer.method327(true, this, 255, cacheIndexId, (byte) 0,
@@ -180,21 +180,21 @@ public class CacheArchive {
                 return;*/
             }
 
-            decodeArchive(arg2);
+            decodeArchive(fileData);
             method199();
         } else {
             if(!arg1 && anInt1797 == arg3)
                 aBoolean1800 = true;
-            if(arg2 == null || arg2.length <= 2) {
+            if(fileData == null || fileData.length <= 2) {
                 aBooleanArray1796[arg3] = false;
                 if(hasVersionNumbers || arg1)
                     UpdateServer.method327(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3]);
                 return;
             }
             crc32.reset();
-            crc32.update(arg2, 0, arg2.length - 2);
+            crc32.update(fileData, 0, fileData.length - 2);
             int i = (int) crc32.getValue();
-            int i_0_ = ((arg2[-2 + arg2.length] & 0xff) << 8) + (0xff & arg2[arg2.length + -1]);
+            int i_0_ = ((fileData[-2 + fileData.length] & 0xff) << 8) + (0xff & fileData[fileData.length + -1]);
             if(i != anIntArray252[arg3] || i_0_ != anIntArray224[arg3]) {
                 aBooleanArray1796[arg3] = false;
                 if(hasVersionNumbers || arg1)
@@ -203,7 +203,7 @@ public class CacheArchive {
             }
             aBooleanArray1796[arg3] = true;
             if(arg1)
-                aByteArrayArray212[arg3] = arg2;
+                aByteArrayArray212[arg3] = fileData;
         }
     }
 
