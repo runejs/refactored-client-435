@@ -196,10 +196,10 @@ public class CacheArchive {
             int i = (int) crc32.getValue();
             int i_0_ = ((fileData[-2 + fileData.length] & 0xff) << 8) + (0xff & fileData[fileData.length + -1]);
             if(i != anIntArray252[arg3] || i_0_ != anIntArray224[arg3]) {
-                aBooleanArray1796[arg3] = false;
+                /*aBooleanArray1796[arg3] = false;
                 if(hasVersionNumbers || arg1)
                     UpdateServer.method327(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3]);
-                return;
+                return;*/
             }
             aBooleanArray1796[arg3] = true;
             if(arg1)
