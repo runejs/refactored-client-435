@@ -301,8 +301,8 @@ public class UpdateServer {
         }
     }
 
-    public static void method327(boolean immediate, CacheArchive archive, int archiveIndexId, int fileId, byte versionSize, int expectedCrc) {
-        long fileKey = fileId + ((long) archiveIndexId << 16);
+    public static void requestFile(boolean immediate, CacheArchive archive, int archiveIndex, int fileIndex, byte versionSize, int expectedCrc) {
+        long fileKey = fileIndex + ((long) archiveIndex << 16);
         UpdateServerNode updateServerNode = (UpdateServerNode) immediateFileResponses.getNode(fileKey);
 
         if (updateServerNode == null) {

@@ -547,7 +547,7 @@ public class Main extends GameShell {
 
     public static void method37(CacheArchive cacheArchive, int arg2) {
         if (UpdateServer.crcTableBuffer == null) {
-            UpdateServer.method327(true, null, 255, 255, (byte) 0, 0);
+            UpdateServer.requestFile(true, null, 255, 255, (byte) 0, 0);
             Class24.aClass6_Sub1Array580[arg2] = cacheArchive;
         } else {
             UpdateServer.crcTableBuffer.currentPosition = 5 + arg2 * 4;
