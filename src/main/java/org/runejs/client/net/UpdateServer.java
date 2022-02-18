@@ -248,12 +248,12 @@ public class UpdateServer {
 
                     if(activeNode == null) {
                         inboundDataBuffer.currentPosition = 0;
-                        int fileIndexId = inboundDataBuffer.getUnsignedByte();
+                        int archiveId = inboundDataBuffer.getUnsignedByte();
                         int fileId = inboundDataBuffer.getUnsignedShortBE();
                         int fileCompression = inboundDataBuffer.getUnsignedByte();
                         int fileSize = inboundDataBuffer.getIntBE();
                         // System.out.println("Update server response, index=" + fileIndexId + ", file=" + fileId);
-                        long fileKey = ((long) fileIndexId << 16) + fileId;
+                        long fileKey = ((long) archiveId << 16) + fileId;
                         UpdateServerNode updateServerNode = (UpdateServerNode) immediateFileRequests.getNode(fileKey);
                         Npc.aBoolean3298 = true;
 
