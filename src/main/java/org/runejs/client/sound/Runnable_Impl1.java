@@ -1,4 +1,4 @@
-package org.runejs.client;
+package org.runejs.client.sound;
 
 public interface Runnable_Impl1 extends Runnable {
     void method1(byte i);

@@ -1,5 +1,7 @@
-package org.runejs.client;
+package org.runejs.client.sound;
 
+import org.runejs.client.Class43;
+import org.runejs.client.MovedStatics;
 import org.runejs.client.audio.MidiFileReader;
 import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;

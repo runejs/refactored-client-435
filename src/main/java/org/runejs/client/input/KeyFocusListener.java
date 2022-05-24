@@ -279,7 +279,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (arg0 < 62) {
             aLinkedList_1278 = null;
         }
-        return Class22.method307(arg1, -1, 32767);
+        return MovedStatics.method307(arg1, -1, 32767);
     }
 
     public void keyTyped(KeyEvent arg0) {

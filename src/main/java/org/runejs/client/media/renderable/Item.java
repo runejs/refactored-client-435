@@ -174,7 +174,7 @@ public class Item extends Renderable {
 
             Class40_Sub5_Sub15.loginScreenBox = Main.method359(Native.titleBox, "", gameImageCacheArchive);
             Class59.imgLoginScreenButton = Main.method359(Native.titleButton, "", gameImageCacheArchive);
-            Class22.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(gameImageCacheArchive, Native.runes, "");
+            MovedStatics.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(gameImageCacheArchive, Native.runes, "");
 
             Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);

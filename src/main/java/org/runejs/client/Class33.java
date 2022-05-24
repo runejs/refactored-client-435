@@ -279,13 +279,6 @@ public class Class33 {
             OverlayDefinition.overlayDefinitionCache = null;
     }
 
-    public static synchronized void method407(boolean arg0) {
-        if(arg0)
-            Native.aClass1_795 = null;
-        Class65.method1019(104);
-    }
-
-
     public static boolean menuHasAddFriend(byte arg0, int arg1) {
         if(arg1 < 0)
             return false;

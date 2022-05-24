@@ -61,7 +61,7 @@ public class LinkedList {
                 Actor.method789(Player.localPlayer.pathY[0], -1000, Class17.regionY, Class51.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
             else if(Buffer.anInt1985 != Player.worldLevel) {
                 Buffer.anInt1985 = Player.worldLevel;
-                Class22.method299((byte) 53, Player.worldLevel);
+                MovedStatics.method299((byte) 53, Player.worldLevel);
             }
         }
     }

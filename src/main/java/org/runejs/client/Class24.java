@@ -17,7 +17,7 @@ public class Class24 {
     public static IndexedImage[] method337(CacheArchive arg1, int arg2, int arg3) {
         if(!ImageRGB.spriteExists(arg2, arg3, arg1))
             return null;
-        return Class22_Sub2.method315();
+        return MovedStatics.method315();
     }
 
     public static int getRotatedTileX(int rotation, boolean arg1, int x, int y) {

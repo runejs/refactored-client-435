@@ -159,7 +159,7 @@ public class Class40_Sub3 extends Node {
                 method977(3, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
                 method980(28987, CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
                 Main.method357(CacheArchive.modelCacheArchive, arg0 ^ ~0x2a85, CacheArchive.gameDefinitionsCacheArchive);
-                MovedStatics.method885(CacheArchive.gameDefinitionsCacheArchive, Class22.membersWorld, CacheArchive.modelCacheArchive);
+                MovedStatics.method885(CacheArchive.gameDefinitionsCacheArchive, MovedStatics.membersWorld, CacheArchive.modelCacheArchive);
                 MovedStatics.method236(CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.skeletonCacheArchive);
                 Class55.method966(arg0 ^ 0x38, CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
                 VarbitDefinition.initializeVarbitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);

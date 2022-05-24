@@ -676,9 +676,9 @@ public class Main extends GameShell {
 
             // Player membership argument
             if (params[4].equals("free")) {
-                Class22.membersWorld = false;
+                MovedStatics.membersWorld = false;
             } else if (params[4].equals("members")) {
-                Class22.membersWorld = true;
+                MovedStatics.membersWorld = true;
             } else {
                 printHelp();
             }
@@ -695,7 +695,7 @@ public class Main extends GameShell {
     public static void setConfigToDefaults() {
         Class51.aLong1203 = 0L;
         Class12.mouseCapturer.coord = 0;
-        Class22_Sub2.duplicateClickCount = 0;
+        MovedStatics.duplicateClickCount = 0;
         Class35.aBoolean1735 = true;
         MovedStatics.aBoolean571 = true;
         MovedStatics.method540();
@@ -809,7 +809,7 @@ public class Main extends GameShell {
         int i_5_ = MovedStatics.cameraY;
         for(int i_6_ = 0; i_6_ < 5; i_6_++) {
             if(Projectile.aBooleanArray2975[i_6_]) {
-                int i_7_ = (int) ((double) (MovedStatics.anIntArray297[i_6_] * 2 + 1) * Math.random() - (double) MovedStatics.anIntArray297[i_6_] + Math.sin((double) Class22_Sub1.anIntArray1846[i_6_] * ((double) GroundItemTile.anIntArray1358[i_6_] / 100.0)) * (double) anIntArray2[i_6_]);
+                int i_7_ = (int) ((double) (MovedStatics.anIntArray297[i_6_] * 2 + 1) * Math.random() - (double) MovedStatics.anIntArray297[i_6_] + Math.sin((double) MovedStatics.anIntArray1846[i_6_] * ((double) GroundItemTile.anIntArray1358[i_6_] / 100.0)) * (double) anIntArray2[i_6_]);
                 if(i_6_ == 1) {
                     SceneCluster.cameraZ += i_7_;
                 }
@@ -842,7 +842,7 @@ public class Main extends GameShell {
         Npc.currentScene.render(Class12.cameraX, SceneCluster.cameraZ, MovedStatics.cameraY, Class26.anInt627, ProducingGraphicsBuffer_Sub1.anInt2210, i);
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404();
-        StaticAudio.method450((byte) -67);
+        MovedStatics.method450((byte) -67);
         ((Class35) Rasterizer3D.anInterface3_2939).method425((byte) 6, MovedStatics.anInt199);
         KeyFocusListener.draw3dScreen();
 
@@ -903,9 +903,9 @@ public class Main extends GameShell {
     }
 
     public static void method364(boolean arg1) {
-        Class22.anInt537++;
-        if(Class22.anInt537 >= 50 || arg1) {
-            Class22.anInt537 = 0;
+        MovedStatics.anInt537++;
+        if(MovedStatics.anInt537 >= 50 || arg1) {
+            MovedStatics.anInt537 = 0;
             if(!Class37.aBoolean871 && MovedStatics.gameServerSocket != null) {
                 SceneCluster.packetBuffer.putPacket(13);
                 try {
@@ -1173,7 +1173,7 @@ public class Main extends GameShell {
 
     public static void method165(int arg0) {
         int i = 64 + SceneCluster.anInt767 * 128;
-        int i_3_ = 64 + 128 * Class22.anInt545;
+        int i_3_ = 64 + 128 * MovedStatics.anInt545;
         int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) + -MovedStatics.anInt194;
         if(i_3_ > Class12.cameraX) {
             Class12.cameraX += Class59.anInt1386 * (i_3_ + -Class12.cameraX) / 1000 + MovedStatics.anInt188;
@@ -1226,21 +1226,21 @@ public class Main extends GameShell {
         if(i_11_ < -1024)
             i_11_ += 2048;
         if(i_11_ > 0) {
-            ProducingGraphicsBuffer_Sub1.anInt2210 += Class22_Sub1.anInt1856 * i_11_ / 1000 + Class60.anInt1413;
+            ProducingGraphicsBuffer_Sub1.anInt2210 += MovedStatics.anInt1856 * i_11_ / 1000 + Class60.anInt1413;
             ProducingGraphicsBuffer_Sub1.anInt2210 &= 0x7ff;
         }
         if(arg0 > 0) {
             if(i_11_ < 0) {
-                ProducingGraphicsBuffer_Sub1.anInt2210 -= Class60.anInt1413 + Class22_Sub1.anInt1856 * -i_11_ / 1000;
+                ProducingGraphicsBuffer_Sub1.anInt2210 -= Class60.anInt1413 + MovedStatics.anInt1856 * -i_11_ / 1000;
                 ProducingGraphicsBuffer_Sub1.anInt2210 &= 0x7ff;
             }
             if(i_9_ > Class26.anInt627) {
-                Class26.anInt627 += Class60.anInt1413 + Class22_Sub1.anInt1856 * (i_9_ - Class26.anInt627) / 1000;
+                Class26.anInt627 += Class60.anInt1413 + MovedStatics.anInt1856 * (i_9_ - Class26.anInt627) / 1000;
                 if(Class26.anInt627 > i_9_)
                     Class26.anInt627 = i_9_;
             }
             if(Class26.anInt627 > i_9_) {
-                Class26.anInt627 -= Class22_Sub1.anInt1856 * (Class26.anInt627 + -i_9_) / 1000 + Class60.anInt1413;
+                Class26.anInt627 -= MovedStatics.anInt1856 * (Class26.anInt627 + -i_9_) / 1000 + Class60.anInt1413;
                 if(Class26.anInt627 < i_9_)
                     Class26.anInt627 = i_9_;
             }
@@ -1279,7 +1279,7 @@ public class Main extends GameShell {
                 }
                 ClientScriptRunner.createClientScriptCheckPacket(205, SceneCluster.packetBuffer);
                 synchronized(Class12.mouseCapturer.objectLock) {
-                    if(Class22.accountFlagged) {
+                    if(MovedStatics.accountFlagged) {
                         if(MouseHandler.clickType != 0 || Class12.mouseCapturer.coord >= 40) {
                             int coordinateCount = 0;
                             SceneCluster.packetBuffer.putPacket(210);
@@ -1307,24 +1307,24 @@ public class Main extends GameShell {
                                     pixelOffset = 0x7ffff;
                                 }
                                 if(x == PacketBuffer.lastClickX && y == GameObjectDefinition.lastClickY) {
-                                    if(Class22_Sub2.duplicateClickCount < 2047)
-                                        Class22_Sub2.duplicateClickCount++;
+                                    if(MovedStatics.duplicateClickCount < 2047)
+                                        MovedStatics.duplicateClickCount++;
                                 } else {
                                     int differenceX = x - PacketBuffer.lastClickX;
                                     PacketBuffer.lastClickX = x;
                                     int differenceY = pixelOffset - GameObjectDefinition.lastClickY;
                                     GameObjectDefinition.lastClickY = pixelOffset;
-                                    if(Class22_Sub2.duplicateClickCount < 8 && differenceX >= -32 && differenceX <= 31 && differenceY >= -32 && differenceY <= 31) {
+                                    if(MovedStatics.duplicateClickCount < 8 && differenceX >= -32 && differenceX <= 31 && differenceY >= -32 && differenceY <= 31) {
                                         differenceX += 32;
                                         differenceY += 32;
-                                        SceneCluster.packetBuffer.putShortBE(differenceY + (differenceX << 6) + (Class22_Sub2.duplicateClickCount << 12));
-                                        Class22_Sub2.duplicateClickCount = 0;
-                                    } else if(Class22_Sub2.duplicateClickCount < 8) {
-                                        SceneCluster.packetBuffer.putMediumBE(y + 8388608 + (Class22_Sub2.duplicateClickCount << 19));
-                                        Class22_Sub2.duplicateClickCount = 0;
+                                        SceneCluster.packetBuffer.putShortBE(differenceY + (differenceX << 6) + (MovedStatics.duplicateClickCount << 12));
+                                        MovedStatics.duplicateClickCount = 0;
+                                    } else if(MovedStatics.duplicateClickCount < 8) {
+                                        SceneCluster.packetBuffer.putMediumBE(y + 8388608 + (MovedStatics.duplicateClickCount << 19));
+                                        MovedStatics.duplicateClickCount = 0;
                                     } else {
-                                        SceneCluster.packetBuffer.putIntBE((Class22_Sub2.duplicateClickCount << 19) + -1073741824 + y);
-                                        Class22_Sub2.duplicateClickCount = 0;
+                                        SceneCluster.packetBuffer.putIntBE((MovedStatics.duplicateClickCount << 19) + -1073741824 + y);
+                                        MovedStatics.duplicateClickCount = 0;
                                     }
                                 }
                             }
@@ -1398,7 +1398,7 @@ public class Main extends GameShell {
                     } else {
                         Class17.animatePlayers(-1);
                         MovedStatics.animateNpcs();
-                        Class22_Sub1.method313();
+                        MovedStatics.method313();
                         if(LinkedList.crossType != 0) {
                             OverlayDefinition.crossIndex += 20;
                             if(OverlayDefinition.crossIndex >= 400)
@@ -1550,7 +1550,7 @@ public class Main extends GameShell {
                         if(Player.cutsceneActive)
                             method165(35);
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
-                            Class22_Sub1.anIntArray1846[i_19_]++;
+                            MovedStatics.anIntArray1846[i_19_]++;
                         MovedStatics.manageTextInputs();
                         int i_20_ = Npc.method400(-1);
                         int i_21_ = Class17.method274(true);
@@ -1587,7 +1587,7 @@ public class Main extends GameShell {
                             MovedStatics.anInt1010 = 2;
                         if(Class43.cameraYawOffset < -60)
                             Class13.anInt419 = 2;
-                        Class22.anInt537++;
+                        MovedStatics.anInt537++;
                         if(Buffer.cameraOffsetX > 50)
                             MovedStatics.anInt1010 = -2;
                         if(Class43.cameraYawOffset > 60)
@@ -1600,7 +1600,7 @@ public class Main extends GameShell {
                             anInt1766 = 1;
                         if(Class51.mapZoomOffset > 10)
                             anInt1766 = -1;
-                        if(Class22.anInt537 > 50) {
+                        if(MovedStatics.anInt537 > 50) {
                             SceneCluster.packetBuffer.putPacket(13);
                         }
                         do {
@@ -1608,7 +1608,7 @@ public class Main extends GameShell {
                                 if(MovedStatics.gameServerSocket == null || SceneCluster.packetBuffer.currentPosition <= 0)
                                     break;
                                 MovedStatics.gameServerSocket.sendDataFromBuffer(SceneCluster.packetBuffer.currentPosition, 0, SceneCluster.packetBuffer.buffer);
-                                Class22.anInt537 = 0;
+                                MovedStatics.anInt537 = 0;
                                 SceneCluster.packetBuffer.currentPosition = 0;
                             } catch(java.io.IOException ioexception) {
                                 Class59.dropClient();
@@ -1785,7 +1785,7 @@ public class Main extends GameShell {
                     Configuration.USERNAME = Native.username.toString();
                     Configuration.PASSWORD = Native.password.toString();
                     InteractiveObject.playerRights = MovedStatics.gameServerSocket.read();
-                    Class22.accountFlagged = MovedStatics.gameServerSocket.read() == 1;
+                    MovedStatics.accountFlagged = MovedStatics.gameServerSocket.read() == 1;
                     PlayerAppearance.anInt708 = MovedStatics.gameServerSocket.read();
                     PlayerAppearance.anInt708 <<= 8;
                     PlayerAppearance.anInt708 += MovedStatics.gameServerSocket.read();
@@ -1916,7 +1916,7 @@ public class Main extends GameShell {
      */
     public void updateStatusText() {
         if (MovedStatics.aBoolean1575) {
-            Class22_Sub1.method311(MouseHandler.gameCanvas);
+            MovedStatics.method311(MouseHandler.gameCanvas);
             Class55.method965(32, MouseHandler.gameCanvas);
             this.setCanvas();
             GameInterface.method642(MouseHandler.gameCanvas, -10);
@@ -1990,11 +1990,11 @@ public class Main extends GameShell {
                             buffer.putIntBE(435); // Cache revision
                             Class29.updateServerSocket.sendDataFromBuffer(5, 0, buffer.buffer);
                             MovedStatics.connectionStage++;
-                            Class22_Sub1.aLong1841 = System.currentTimeMillis();
+                            MovedStatics.aLong1841 = System.currentTimeMillis();
                         }
                         if (MovedStatics.connectionStage == 3) {
                             if (Class51.gameStatusCode > 5 && Class29.updateServerSocket.inputStreamAvailable() <= 0) {
-                                if (System.currentTimeMillis() + -Class22_Sub1.aLong1841 > 30000L) {
+                                if (System.currentTimeMillis() + -MovedStatics.aLong1841 > 30000L) {
                                     method35(-2);
                                     break;
                                 }
@@ -2037,7 +2037,7 @@ public class Main extends GameShell {
         }
         ItemDefinition.method744();
         Class13.method249(true);
-        Class33.method407(false);
+        MovedStatics.method407(false);
         StaticAudio.method989();
         ActorDefinition.killUpdateServerSocket();
         GenericTile.method947(-1);

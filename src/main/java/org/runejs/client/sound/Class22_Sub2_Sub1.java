@@ -1,6 +1,9 @@
-package org.runejs.client;
+package org.runejs.client.sound;
 
 import javax.sound.midi.*;
+
+import org.runejs.client.MovedStatics;
+
 import java.io.ByteArrayInputStream;
 
 public class Class22_Sub2_Sub1 extends Class22_Sub2 implements Receiver {
@@ -20,7 +23,7 @@ public class Class22_Sub2_Sub1 extends Class22_Sub2 implements Receiver {
             aSequencer2220.open();
             method321((byte) 115, -1L);
         } catch(Exception exception) {
-            Class65.method1019(104);
+            MovedStatics.method1019();
         }
     }
 

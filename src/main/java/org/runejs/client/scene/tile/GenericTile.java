@@ -2,6 +2,7 @@ package org.runejs.client.scene.tile;
 
 import org.runejs.client.HuffmanEncoding;
 import org.runejs.client.Landscape;
+import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;
@@ -16,7 +17,6 @@ import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.util.CollisionMap;
-import org.runejs.client.Class22_Sub2;
 import org.runejs.client.Class57;
 
 import java.awt.*;
@@ -91,7 +91,7 @@ public class GenericTile {
         if(!ImageRGB.spriteExists(arg3, arg1, arg2))
             return null;
         int i = -59 % ((-60 - arg0) / 34);
-        return Class22_Sub2.method319((byte) -62);
+        return MovedStatics.method319((byte) -62);
     }
 
     public static void method945(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {

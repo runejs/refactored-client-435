@@ -2,6 +2,10 @@ package org.runejs.client;
 
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.media.renderable.actor.Npc;
+import org.runejs.client.sound.Class22_Sub1;
+import org.runejs.client.sound.Class22_Sub2_Sub1;
+import org.runejs.client.sound.Class22_Sub2_Sub2;
+import org.runejs.client.sound.Runnable_Impl1;
 import org.runejs.client.util.Signlink;
 
 public class Class39 implements Runnable {

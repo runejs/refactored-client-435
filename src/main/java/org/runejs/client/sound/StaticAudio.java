@@ -2,31 +2,22 @@ package org.runejs.client.sound;
 
 import java.awt.Component;
 
-import org.runejs.client.Class22;
-import org.runejs.client.Class22_Sub1;
 import org.runejs.client.Class24;
 import org.runejs.client.Class26;
 import org.runejs.client.Class33;
-import org.runejs.client.Class35;
 import org.runejs.client.Class37;
 import org.runejs.client.Class39;
-import org.runejs.client.Class44;
 import org.runejs.client.Class59;
-import org.runejs.client.Landscape;
 import org.runejs.client.LinkedList;
 import org.runejs.client.Main;
 import org.runejs.client.MovedStatics;
-import org.runejs.client.ProducingGraphicsBuffer;
 import org.runejs.client.Projectile;
 import org.runejs.client.RSCanvas;
 import org.runejs.client.RSString;
 import org.runejs.client.audio.Effect;
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;
-import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.net.ISAAC;
 import org.runejs.client.node.NodeCache;
 import org.runejs.client.util.Signlink;
 
@@ -242,9 +233,9 @@ public class StaticAudio {
 
 	public static synchronized void method402(boolean arg0) {
 	    if(Class24.method340()) {
-	        Class22.method308();
+	        MovedStatics.method308();
 	        Class26.aBoolean618 = arg0;
-	        Class22_Sub1.musicCacheArchive = null;
+	        StaticAudio.musicCacheArchive = null;
 	    }
 	}
 
@@ -254,7 +245,7 @@ public class StaticAudio {
 	        MovedStatics.anInt255 = arg2;
 	        Projectile.anInt3004 = arg5;
 	        Class26.aBoolean618 = arg1;
-	        Class22_Sub1.musicCacheArchive = cacheArchive;
+	        StaticAudio.musicCacheArchive = cacheArchive;
 	        MovedStatics.anInt1806 = -1;
 	        OverlayDefinition.anInt2342 = arg0;
 	        MovedStatics.anInt2110 = arg6;
@@ -273,7 +264,7 @@ public class StaticAudio {
 	public static synchronized void handleMusic() {
 	    if(Class24.method340()) {
 	        if(Class26.aBoolean618) {
-	            byte[] is = method74(Projectile.anInt3004, Class22_Sub1.musicCacheArchive, MovedStatics.anInt289, MovedStatics.anInt2110);
+	            byte[] is = method74(Projectile.anInt3004, StaticAudio.musicCacheArchive, MovedStatics.anInt289, MovedStatics.anInt2110);
 	            if(is != null) {
 	                if(MovedStatics.anInt255 < 0) {
 	                    if(MovedStatics.anInt1806 < 0)
@@ -283,20 +274,10 @@ public class StaticAudio {
 	                } else
 	                    MovedStatics.method886(0, OverlayDefinition.anInt2342, Main.aBoolean1790, is, MovedStatics.anInt255);
 	                Class26.aBoolean618 = false;
-	                Class22_Sub1.musicCacheArchive = null;
+	                StaticAudio.musicCacheArchive = null;
 	            }
 	        }
 	        Class59.method984(0);
-	    }
-	}
-
-	public static void method450(byte arg0) {
-	    if (Player.headIconDrawType == 2) {
-	        if (arg0 >= -28)
-	            MovedStatics.method445(-128);
-	        Class22_Sub1.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + MovedStatics.anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -MovedStatics.baseX << 7) + Landscape.anInt1170, 4976905);
-	        if (ISAAC.anInt522 > -1 && MovedStatics.pulseCycle % 20 < 10)
-	            MovedStatics.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
 	    }
 	}
 
@@ -311,7 +292,7 @@ public class StaticAudio {
 	public static synchronized void method405(int arg1) {
 	    if(Class24.method340()) {
 	        MovedStatics.method557(arg1);
-	        Class22_Sub1.musicCacheArchive = null;
+	        StaticAudio.musicCacheArchive = null;
 	        Class26.aBoolean618 = false;
 	    }
 	}
@@ -333,7 +314,7 @@ public class StaticAudio {
 	public static void method975(int songTimeout, int songId) {
 	    if(RSCanvas.musicVolume != 0 && songId != -1) {
 	        StaticAudio.method414(false, 1, songId, RSCanvas.musicVolume, 0, CacheArchive.jingleCacheArchive);
-	        songTimeout = songTimeout;
+	        StaticAudio.songTimeout = songTimeout;
 	    }
 	}
 
@@ -346,7 +327,7 @@ public class StaticAudio {
 	        Projectile.anInt3004 = arg4;
 	        Main.aBoolean1790 = arg0;
 	        MovedStatics.anInt2110 = arg1;
-	        Class22_Sub1.musicCacheArchive = arg5;
+	        StaticAudio.musicCacheArchive = arg5;
 	        MovedStatics.anInt289 = songid;
 	    }
 	}
@@ -369,5 +350,7 @@ public class StaticAudio {
 	        currentSound++;
 	    }
 	}
+
+	public static CacheArchive musicCacheArchive;
 
 }

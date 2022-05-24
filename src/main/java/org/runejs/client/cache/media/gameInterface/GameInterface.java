@@ -674,7 +674,7 @@ public class GameInterface extends CachedNode {
                     int i_16_ = gameInterface.clientScripts[0][1];
                     if(gameInterface.alternateRhs[0] != VarPlayerDefinition.varPlayers[i_16_]) {
                         VarPlayerDefinition.varPlayers[i_16_] = gameInterface.alternateRhs[0];
-                        Class22.method309(i_16_);
+                        MovedStatics.method309(i_16_);
                         redrawTabArea = true;
                     }
                 }
@@ -786,7 +786,7 @@ public class GameInterface extends CachedNode {
                     if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
                         int i_17_ = gameInterface.clientScripts[0][1];
                         VarPlayerDefinition.varPlayers[i_17_] = -VarPlayerDefinition.varPlayers[i_17_] + 1;
-                        Class22.method309(i_17_);
+                        MovedStatics.method309(i_17_);
                         redrawTabArea = true;
                     }
                 }

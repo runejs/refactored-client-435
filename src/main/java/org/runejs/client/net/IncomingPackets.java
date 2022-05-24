@@ -166,7 +166,7 @@ public class IncomingPackets {
                 Buffer.anIntArray1984[varPlayerIndex] = varPlayerValue;
                 if(VarPlayerDefinition.varPlayers[varPlayerIndex] != varPlayerValue) {
                     VarPlayerDefinition.varPlayers[varPlayerIndex] = varPlayerValue;
-                    Class22.method309(varPlayerIndex);
+                    MovedStatics.method309(varPlayerIndex);
                     GameInterface.redrawTabArea = true;
                     if(ChatBox.dialogueId != -1)
                         ChatBox.redrawChatbox = true;
@@ -256,7 +256,7 @@ public class IncomingPackets {
                 MovedStatics.anIntArray297[i_23_] = i_24_;
                 GameShell.anIntArray2[i_23_] = i_25_;
                 GroundItemTile.anIntArray1358[i_23_] = i_26_;
-                Class22_Sub1.anIntArray1846[i_23_] = 0;
+                MovedStatics.anIntArray1846[i_23_] = 0;
                 opcode = -1;
                 return true;
             }
@@ -526,14 +526,14 @@ public class IncomingPackets {
             }
             if(opcode == 253) {
                 Player.cutsceneActive = true;
-                Class22.anInt545 = incomingPacketBuffer.getUnsignedByte();
+                MovedStatics.anInt545 = incomingPacketBuffer.getUnsignedByte();
                 SceneCluster.anInt767 = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.anInt194 = incomingPacketBuffer.getUnsignedShortBE();
                 MovedStatics.anInt188 = incomingPacketBuffer.getUnsignedByte();
                 Class59.anInt1386 = incomingPacketBuffer.getUnsignedByte();
                 if(Class59.anInt1386 >= 100) {
                     MovedStatics.cameraY = 64 + SceneCluster.anInt767 * 128;
-                    Class12.cameraX = Class22.anInt545 * 128 + 64;
+                    Class12.cameraX = MovedStatics.anInt545 * 128 + 64;
                     SceneCluster.cameraZ = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, MovedStatics.cameraY) - MovedStatics.anInt194;
                 }
                 opcode = -1;
@@ -719,7 +719,7 @@ public class IncomingPackets {
                 Buffer.anIntArray1984[varPlayerIndex] = varPlayerValue;
                 if(varPlayerValue != VarPlayerDefinition.varPlayers[varPlayerIndex]) {
                     VarPlayerDefinition.varPlayers[varPlayerIndex] = varPlayerValue;
-                    Class22.method309(varPlayerIndex); // TODO find out what this does
+                    MovedStatics.method309(varPlayerIndex); // TODO find out what this does
                     if(ChatBox.dialogueId != -1)
                         ChatBox.redrawChatbox = true;
                     GameInterface.redrawTabArea = true;
@@ -781,8 +781,8 @@ public class IncomingPackets {
                 MovedStatics.anInt2576 = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.anInt892 = incomingPacketBuffer.getUnsignedShortBE();
                 Class60.anInt1413 = incomingPacketBuffer.getUnsignedByte();
-                Class22_Sub1.anInt1856 = incomingPacketBuffer.getUnsignedByte();
-                if(Class22_Sub1.anInt1856 >= 100) {
+                MovedStatics.anInt1856 = incomingPacketBuffer.getUnsignedByte();
+                if(MovedStatics.anInt1856 >= 100) {
                     int i_69_ = 128 * MovedStatics.anInt564 + 64;
                     int i_70_ = 128 * MovedStatics.anInt2576 + 64;
                     int i_71_ = Class37.getFloorDrawHeight(Player.worldLevel, i_69_, i_70_) - MovedStatics.anInt892;
@@ -1046,7 +1046,7 @@ public class IncomingPackets {
                 for(int varPlayerIndex = 0; varPlayerIndex < VarPlayerDefinition.varPlayers.length; varPlayerIndex++) {
                     if(Buffer.anIntArray1984[varPlayerIndex] != VarPlayerDefinition.varPlayers[varPlayerIndex]) {
                         VarPlayerDefinition.varPlayers[varPlayerIndex] = Buffer.anIntArray1984[varPlayerIndex];
-                        Class22.method309(varPlayerIndex);
+                        MovedStatics.method309(varPlayerIndex);
                         GameInterface.redrawTabArea = true;
                     }
                 }
