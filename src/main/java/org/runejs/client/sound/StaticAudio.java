@@ -57,23 +57,13 @@ public class StaticAudio {
 
 	public static void method1040(Component arg0, int arg1, Signlink arg2) {
 	    try {
+	    	
 	        Class8_Sub1 class8_sub1 = new Class8_Sub1_Sub2();
 	        class8_sub1.method222(arg2, 2048);
 	        aClass8_166 = class8_sub1;
+	        
 	    } catch (Throwable throwable) {
-	        try {
-	            aClass8_166 = new Class8_Sub1_Sub1(arg2, arg0);
-	        } catch (Throwable throwable_0_) {
-	            if (arg1 <= Signlink.javaVendor.toLowerCase().indexOf("microsoft")) {
-	                try {
-	                    aClass8_166 = new Class8_Sub2();
-	                    return;
-	                } catch (Throwable throwable_1_) {
-	                    /* empty */
-	                }
-	            }
-	            aClass8_166 = new Class8(8000);
-	        }
+            aClass8_166 = new Class8(8000);	        
 	    }
 	
 	}
