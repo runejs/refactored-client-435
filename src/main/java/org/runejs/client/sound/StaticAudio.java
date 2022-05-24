@@ -353,7 +353,7 @@ public class StaticAudio {
 	        } else {
 	            Buffer.anInt1982 = arg4;
 	            if(StaticAudio.anInt1450 != 0) {
-	                int i = StaticAudio.method372(arg0 ^ 0x60, StaticAudio.anInt1450);
+	                int i = StaticAudio.method372(StaticAudio.anInt1450);
 	                i -= StaticAudio.anInt909;
 	                StaticAudio.anInt54 = (i + 3600) / arg4;
 	                if(StaticAudio.anInt54 < 1)
@@ -430,18 +430,8 @@ public class StaticAudio {
 	            aClass22_189 = new Class22_Sub2_Sub1(); // Java Midi Based
 	            return true;
 	        } catch(Throwable throwable) {
-	       /*     Runnable_Impl1 runnable_impl1 = arg0.method391();
-	            if(runnable_impl1 != null) {
-	                aClass22_189 = new Class22_Sub2_Sub2(arg0, runnable_impl1); // ???
-	                return true;
-	            }
-	            if(highmem) {
-	                aClass22_189 = new Class22_Sub1(arg0); // JS based
-	                return true;
-	            }*/
 	            return false;
 	        }
-	//        return false;
 	    }
 
 	public static int anInt1450 = -1;
@@ -456,7 +446,7 @@ public class StaticAudio {
 	            if(anInt1450 == 0)
 	                Buffer.anInt1982 = 0;
 	            else {
-	                int i = StaticAudio.method372(113, anInt1450);
+	                int i = StaticAudio.method372(anInt1450);
 	                i -= StaticAudio.anInt909;
 	                Buffer.anInt1982 = (-1 + arg2 + 3600 + i) / arg2;
 	            }
@@ -478,9 +468,7 @@ public class StaticAudio {
 	
 	}
 
-	public static int method372(int arg0, int arg1) {
-	    if(arg0 <= 92)
-	        method372(4, 3);
+	public static int method372(int arg1) {
 	    return (int) (0.5 + Math.log(0.00390625 * (double) arg1) * 868.5889638065036);
 	}
 

@@ -1,7 +1,6 @@
 package org.runejs.client.util;
 
 import org.runejs.client.SizedAccessFile;
-import org.runejs.client.sound.Runnable_Impl1;
 import org.runejs.client.GameShell;
 import org.runejs.Configuration;
 
@@ -22,7 +21,6 @@ public class Signlink implements Runnable {
     public int uid = 0;
     public SizedAccessFile[] dataIndexAccessFiles;
     public SignlinkNode current = null;
-    public Runnable_Impl1 aRunnable_Impl1_727;
     public SizedAccessFile metaIndexAccessFile;
     public InetAddress netAddress;
     public SignlinkNode next = null;
@@ -90,8 +88,6 @@ public class Signlink implements Runnable {
         } catch(InterruptedException interruptedexception) {
             /* empty */
         }
-        if(aRunnable_Impl1_727 != null)
-            aRunnable_Impl1_727.method1((byte) -102);
         if(cacheDataAccessFile != null) {
             try {
                 cacheDataAccessFile.close();
@@ -163,10 +159,6 @@ public class Signlink implements Runnable {
         } catch(Exception exception) {
             /* empty */
         }
-    }
-
-    public Runnable_Impl1 method391() {
-        return aRunnable_Impl1_727;
     }
 
     public void run() {
