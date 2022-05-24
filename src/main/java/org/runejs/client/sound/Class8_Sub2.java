@@ -1,4 +1,4 @@
-package org.runejs.client;
+package org.runejs.client.sound;
 //import sun.audio.AudioPlayer;
 
 public class Class8_Sub2 extends Class8 {

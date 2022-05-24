@@ -883,10 +883,10 @@ public class ClientScriptRunner extends Node {
                                             } else if(scriptOpcode == 4104) {
                                                 int i_78_ = scriptIntValues[--intValueIndex];
                                                 long l = 86400000L * ((long) i_78_ + 11745L);
-                                                Class8.aCalendar279.setTime(new Date(l));
-                                                int i_79_ = Class8.aCalendar279.get(Calendar.DATE);
-                                                int i_80_ = Class8.aCalendar279.get(Calendar.MONTH);
-                                                int i_81_ = Class8.aCalendar279.get(Calendar.YEAR);
+                                                MovedStatics.aCalendar279.setTime(new Date(l));
+                                                int i_79_ = MovedStatics.aCalendar279.get(Calendar.DATE);
+                                                int i_80_ = MovedStatics.aCalendar279.get(Calendar.MONTH);
+                                                int i_81_ = MovedStatics.aCalendar279.get(Calendar.YEAR);
                                                 scriptStringValues[stringValueIndex++] = i_79_ + "-" + Projectile.aClass1Array2964[i_80_] + "-" + i_81_;
                                             } else if(scriptOpcode == 4105) {
                                                 stringValueIndex -= 2;

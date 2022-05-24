@@ -184,7 +184,7 @@ public class WallDecoration {
             ProducingGraphicsBuffer.muteButton.drawGraphics(ScreenController.drawWidth-42, ScreenController.drawHeight-42, graphics);
 
             MovedStatics.loginBoxGraphics.drawGraphics(offsetX + 202, offsetY + 171, graphics);
-            Class8.flameLeftBackground.drawGraphics(offsetX, offsetY, graphics);
+            MovedStatics.flameLeftBackground.drawGraphics(offsetX, offsetY, graphics);
             GameObject.flameRightBackground.drawGraphics(offsetX + 637, offsetY, graphics);
 
             if (!MovedStatics.clearScreen)

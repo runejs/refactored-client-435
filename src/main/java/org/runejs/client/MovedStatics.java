@@ -23,6 +23,7 @@ import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer3D;
+import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.net.ISAAC;
@@ -45,6 +46,7 @@ import java.awt.*;
 import java.io.DataInputStream;
 import java.net.URL;
 import java.text.MessageFormat;
+import java.util.Calendar;
 
 public class MovedStatics {
 
@@ -67,7 +69,6 @@ public class MovedStatics {
     public static int pulseCycle = 0;
     public static int anInt938 = 500;
     public static int loginScreenFocus = 0;
-    public static int anInt2081;
     public static boolean aBoolean2083 = false;
     public static ProducingGraphicsBuffer tabImageProducer;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_549;
@@ -165,7 +166,7 @@ public class MovedStatics {
             anIntArray1445 = null;
             Class40_Sub5_Sub15.loginScreenBox = null;
             Renderable.anIntArray2865 = null;
-            Class8.flameLeftBackground = null;
+            MovedStatics.flameLeftBackground = null;
             Class39.aProducingGraphicsBuffer_907 = null;
             GameObjectDefinition.aProducingGraphicsBuffer_2524 = null;
             Class39.aClass40_Sub5_Sub14_Sub4_918 = null;
@@ -858,7 +859,7 @@ public class MovedStatics {
 
     public static void method1013() {
         int lasthash = -1;
-        if (Class8.itemSelected == 0 && Main.widgetSelected == 0) {
+        if (MovedStatics.itemSelected == 0 && Main.widgetSelected == 0) {
             String tileCoords = "";
             if (Configuration.DEBUG_CONTEXT) {
                 tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
@@ -881,7 +882,7 @@ public class MovedStatics {
                         gameObjectDefinition = gameObjectDefinition.getChildDefinition();
                     if (gameObjectDefinition == null)
                         continue;
-                    if (Class8.itemSelected == 1) {
+                    if (MovedStatics.itemSelected == 1) {
                         addActionRow(English.use, hash, x, y, 5, Native.aClass1_3295 + Native.toCyan + gameObjectDefinition.name);
                     } else if (Main.widgetSelected != 1) {
                         String[] options = gameObjectDefinition.actions;
@@ -967,7 +968,7 @@ public class MovedStatics {
                     if (itemList != null) {
                         for (Item item = (Item) itemList.last((byte) -95); item != null; item = (Item) itemList.previous(4)) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
-                            if (Class8.itemSelected == 1) {
+                            if (MovedStatics.itemSelected == 1) {
                                 addActionRow(English.use, item.itemId, x, y, 47, Native.aClass1_3295 + Native.toLightRed + itemDefinition.name);
                             } else if (Main.widgetSelected != 1) {
                                 String[] class1s = itemDefinition.groundOptions;
@@ -1133,7 +1134,7 @@ public class MovedStatics {
 
     public static void method885(CacheArchive arg0, boolean arg1, CacheArchive arg2) {
         IdentityKit.membersServer = arg1;
-        Class8.aCacheArchive_284 = arg2;
+        MovedStatics.aCacheArchive_284 = arg2;
         Class26.aCacheArchive_632 = arg0;
         ItemDefinition.count = Class26.aCacheArchive_632.fileLength(10);
     }
@@ -1380,7 +1381,7 @@ public class MovedStatics {
 	                                    Class55.mouseInvInterfaceIndex = i_4_;
 	                                    if(gameInterface.items[i_4_] > 0) {
 	                                        ItemDefinition itemDefinition = ItemDefinition.forId(-1 + gameInterface.items[i_4_], 10);
-	                                        if(Class8.itemSelected != 1 || !gameInterface.isInventory) {
+	                                        if(MovedStatics.itemSelected != 1 || !gameInterface.isInventory) {
 	                                            if(Main.widgetSelected == 1 && gameInterface.isInventory) {
 	                                                if((ItemDefinition.selectedMask & 0x10) == 16) {
 	                                                    addActionRow(Native.aClass1_1918, itemDefinition.id, i_4_, gameInterface.id, 37, Native.aClass1_611 + Native.toLightRed + itemDefinition.name);
@@ -1511,4 +1512,38 @@ public class MovedStatics {
 
 	public static int modifiedWidgetId = 0;
 	public static int cameraOffsetY = 0;
+
+	public static void method211() {
+	    ISAAC.aClass9_516.clear();
+	    MouseHandler.modelCache.clear();
+	    Buffer.rgbImageCache.clear();
+	
+	}
+
+	public static void setHighMemory() {
+	    VertexNormal.lowMemory = false;
+	    Scene.lowMemory = false;
+	
+	}
+
+	public static void animateNpcs() {
+	    for(int i = 0; i < Player.npcCount; i++) {
+	        int i_0_ = Player.npcIds[i];
+	        Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_0_];
+	        if(class40_sub5_sub17_sub4_sub2 != null)
+	            Class13.handleActorAnimation(class40_sub5_sub17_sub4_sub2);
+	    }
+	
+	}
+
+	public static int itemSelected = 0;
+	public static ProducingGraphicsBuffer flameLeftBackground;
+	public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array296;
+	public static FontMetrics fontMetrics;
+	public static CacheArchive aCacheArchive_284;
+	public static Calendar aCalendar279 = Calendar.getInstance();
+	public static int anInt289;
+	public static int connectionStage = 0;
+	public static int anInt292 = 0;
+	public static int[] anIntArray297 = new int[5];
 }

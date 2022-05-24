@@ -18,7 +18,6 @@ import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.net.UpdateServerNode;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
-import org.runejs.client.sound.PcmStream;
 import org.runejs.client.util.SignlinkNode;
 import org.runejs.client.*;
 
@@ -29,7 +28,6 @@ public class FloorDecoration {
     public static IndexedImage inventoryBackgroundImage;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
     public static SignlinkNode gameServerSignlinkNode;
-    public static PcmStream aPcmStream_608;
     public static int[] anIntArray612;
     public static int anInt614 = -1;
 

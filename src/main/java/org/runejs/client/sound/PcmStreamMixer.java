@@ -2,7 +2,6 @@ package org.runejs.client.sound;
 
 import org.runejs.client.LinkedList;
 import org.runejs.client.node.Node;
-import org.runejs.client.scene.util.CollisionMap;
 
 public class PcmStreamMixer extends PcmStream {
     public int anInt2872 = 16;
@@ -67,7 +66,7 @@ public class PcmStreamMixer extends PcmStream {
     public int method848(int[] arg0, int arg1, int arg2) {
         anInt2875 -= arg2;
         if(anInt2875 <= 0) {
-            anInt2875 += CollisionMap.anInt141 >> 4;
+            anInt2875 += StaticAudio.sampleRate >> 4;
             for(int i = 0; i < 8; i++) {
                 LinkedList linkedList = aLinkedListArray2873[i];
                 for(PcmStream class40_sub9 = (PcmStream) linkedList.method902((byte) -90); class40_sub9 != null; class40_sub9 = (PcmStream) linkedList.method909(-4)) {

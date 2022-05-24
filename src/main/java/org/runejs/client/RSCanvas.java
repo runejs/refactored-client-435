@@ -42,7 +42,7 @@ public class RSCanvas extends Canvas {
         GameInterface.method640();
         GameObjectDefinition.clearGameObjectModelCache();
         Class40_Sub5_Sub6.method586(64);
-        Class8.method211();
+        MovedStatics.method211();
         MovedStatics.method188();
         SpotAnimDefinition.clearSpotAnimDefinitionCache();
         VarbitDefinition.clearVarbitDefinitionCache();

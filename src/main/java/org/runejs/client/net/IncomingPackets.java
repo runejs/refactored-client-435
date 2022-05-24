@@ -252,7 +252,7 @@ public class IncomingPackets {
                 int i_25_ = incomingPacketBuffer.getUnsignedByte();
                 int i_26_ = incomingPacketBuffer.getUnsignedByte();
                 Projectile.aBooleanArray2975[i_23_] = true;
-                Class8.anIntArray297[i_23_] = i_24_;
+                MovedStatics.anIntArray297[i_23_] = i_24_;
                 GameShell.anIntArray2[i_23_] = i_25_;
                 GroundItemTile.anIntArray1358[i_23_] = i_26_;
                 Class22_Sub1.anIntArray1846[i_23_] = 0;

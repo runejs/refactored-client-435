@@ -14,6 +14,7 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.util.CollisionMap;
+import org.runejs.client.sound.StaticAudio;
 import org.runejs.Configuration;
 
 public class Class60 {
@@ -42,9 +43,9 @@ public class Class60 {
     }
 
     public static void method989() {
-        if(CollisionMap.aClass8_166 != null) {
-            CollisionMap.aClass8_166.method213();
-            CollisionMap.aClass8_166 = null;
+        if(StaticAudio.aClass8_166 != null) {
+            StaticAudio.aClass8_166.method213();
+            StaticAudio.aClass8_166 = null;
         }
     }
 

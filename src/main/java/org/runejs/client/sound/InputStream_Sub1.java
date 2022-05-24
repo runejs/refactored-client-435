@@ -1,6 +1,8 @@
-package org.runejs.client;
+package org.runejs.client.sound;
 
 import java.io.InputStream;
+
+import org.runejs.client.MovedStatics;
 
 public class InputStream_Sub1 extends InputStream {
     public int[] objecttypes;

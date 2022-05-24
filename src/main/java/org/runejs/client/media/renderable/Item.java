@@ -92,7 +92,7 @@ public class Item extends Renderable {
 
     public static void renderLoginScreen(Component arg0, CacheArchive huffmanCacheArchive, CacheArchive gameImageCacheArchive) {
         if (!ISAAC.aBoolean512) {
-            Class8.flameLeftBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
+            MovedStatics.flameLeftBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
             Rasterizer.resetPixels();
             GameObject.flameRightBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
             Rasterizer.resetPixels();
@@ -114,7 +114,7 @@ public class Item extends Renderable {
             Rasterizer.resetPixels();
             byte[] is = huffmanCacheArchive.method170("", Native.titleImage);
             ImageRGB titleImg = new ImageRGB(is, arg0);
-            Class8.flameLeftBackground.prepareRasterizer();
+            MovedStatics.flameLeftBackground.prepareRasterizer();
             titleImg.drawInverse(0, 0);
             GameObject.flameRightBackground.prepareRasterizer();
             titleImg.drawInverse(-637, 0);
@@ -139,7 +139,7 @@ public class Item extends Renderable {
                 for (int i_20_ = 0; i_20_ < titleImg.imageWidth; i_20_++)
                     titleImg.pixels[i_20_ + titleImg.imageWidth * i] = is_18_[i_20_];
             }
-            Class8.flameLeftBackground.prepareRasterizer();
+            MovedStatics.flameLeftBackground.prepareRasterizer();
             titleImg.drawInverse(382, 0);
             GameObject.flameRightBackground.prepareRasterizer();
             titleImg.drawInverse(-255, 0);
@@ -178,7 +178,7 @@ public class Item extends Renderable {
             Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);
             for (int i = 0; i < 33920; i++)
-                Class39.aClass40_Sub5_Sub14_Sub4_918.pixels[i] = Class8.flameLeftBackground.pixels[i];
+                Class39.aClass40_Sub5_Sub14_Sub4_918.pixels[i] = MovedStatics.flameLeftBackground.pixels[i];
             for (int i = 0; i < 33920; i++)
                 SceneTile.aClass40_Sub5_Sub14_Sub4_2043.pixels[i] = GameObject.flameRightBackground.pixels[i];
             Class51.anIntArray1198 = new int[256];

@@ -1,6 +1,6 @@
-package org.runejs.client;
+package org.runejs.client.sound;
 
-import org.runejs.client.scene.util.CollisionMap;
+import org.runejs.client.Class43;
 import org.runejs.client.util.Signlink;
 
 public abstract class Class8_Sub1 extends Class8 implements Runnable {
@@ -46,7 +46,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
 
     public void method221(long arg0) {
         if(aLong1821 != 0L) {
-            for(/**/; aLong1832 < arg0; aLong1832 += (long) (256000 / CollisionMap.anInt141))
+            for(/**/; aLong1832 < arg0; aLong1832 += (long) (256000 / StaticAudio.sampleRate))
                 method217(256);
             if(arg0 < aLong1821)
                 return;
@@ -60,7 +60,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
             aLong1821 = 0L;
         }
         while(aLong1832 < arg0) {
-            aLong1832 += (long) (250880 / CollisionMap.anInt141);
+            aLong1832 += (long) (250880 / StaticAudio.sampleRate);
             int i;
             try {
                 i = method224();

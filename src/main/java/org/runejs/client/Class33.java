@@ -42,7 +42,7 @@ public class Class33 {
             MovedStatics.anInt1806 = -1;
             OverlayDefinition.anInt2342 = arg0;
             MovedStatics.anInt2110 = arg6;
-            Class8.anInt289 = songId;
+            MovedStatics.anInt289 = songId;
         }
     }
 
@@ -353,7 +353,7 @@ public class Class33 {
     public static synchronized void method413(byte arg0) {
         if(Class24.method340()) {
             if(Class26.aBoolean618) {
-                byte[] is = RSString.method74(Projectile.anInt3004, Class22_Sub1.musicCacheArchive, Class8.anInt289, MovedStatics.anInt2110);
+                byte[] is = RSString.method74(Projectile.anInt3004, Class22_Sub1.musicCacheArchive, MovedStatics.anInt289, MovedStatics.anInt2110);
                 if(is != null) {
                     if(MovedStatics.anInt255 < 0) {
                         if(MovedStatics.anInt1806 < 0)
@@ -382,7 +382,7 @@ public class Class33 {
             Main.aBoolean1790 = arg0;
             MovedStatics.anInt2110 = arg1;
             Class22_Sub1.musicCacheArchive = arg5;
-            Class8.anInt289 = songid;
+            MovedStatics.anInt289 = songid;
         }
     }
 

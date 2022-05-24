@@ -78,7 +78,7 @@ public abstract class Class22 {
                                     i_12_++;
                             }
                         }
-                        MouseHandler.minimapHint[GameObject.minimapHintCount] = Class8.aClass40_Sub5_Sub14_Sub4Array296[i_11_];
+                        MouseHandler.minimapHint[GameObject.minimapHintCount] = MovedStatics.aClass40_Sub5_Sub14_Sub4Array296[i_11_];
                         Actor.minimapHintX[GameObject.minimapHintCount] = i_13_;
                         LinkedList.minimapHintY[GameObject.minimapHintCount] = i_12_;
                         GameObject.minimapHintCount++;

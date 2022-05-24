@@ -755,7 +755,7 @@ public class GameInterface extends CachedNode {
                 Class49.anInt1154 = npcIdx;
                 LinkedList.anInt1061 = i;
                 ISAAC.anInt525 = i_10_;
-                Class8.itemSelected = 1;
+                MovedStatics.itemSelected = 1;
                 Native.aClass1_3295 = Native.lightRed + ItemDefinition.forId(npcIdx, 10).name + Native.white;
                 Main.widgetSelected = 0;
                 if(Native.aClass1_3295 == null) {
@@ -924,7 +924,7 @@ public class GameInterface extends CachedNode {
                     Main.widgetSelected = 1;
                     Native.aClass1_1918 = gameInterface.targetVerb;
                     ItemDefinition.selectedMask = gameInterface.clickMask;
-                    Class8.itemSelected = 0;
+                    MovedStatics.itemSelected = 0;
                     Class60.anInt1417 = i_10_;
                     Native.aClass1_611 = Native.green + gameInterface.spellName + Native.white;
                     if(ItemDefinition.selectedMask == 16) {
@@ -1310,8 +1310,8 @@ public class GameInterface extends CachedNode {
                             SceneCluster.packetBuffer.putShortLE(npcIdx);
                         }
                     }
-                    if(Class8.itemSelected != 0) {
-                        Class8.itemSelected = 0;
+                    if(MovedStatics.itemSelected != 0) {
+                        MovedStatics.itemSelected = 0;
                         redrawTabArea = true;
                     }
                     if(Main.widgetSelected != 0) {

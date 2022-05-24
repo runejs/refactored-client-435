@@ -25,6 +25,7 @@ import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.Decimator;
+import org.runejs.client.sound.StaticAudio;
 
 public class Class40_Sub3 extends Node {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2019;
@@ -112,8 +113,8 @@ public class Class40_Sub3 extends Node {
             }
         } else if (Class40_Sub5_Sub6.loadingPercent == 45) {
             MovedStatics.method446(Main.signlink, 0, !VertexNormal.lowMemory, (byte) 30);
-            Class49.aPcmStreamMixer_1152 = MouseHandler.method1003(Main.signlink, MouseHandler.gameCanvas, arg0 ^ 0x74be);
-            Class55.aDecimator_1289 = new Decimator(22050, CollisionMap.anInt141);
+            Class49.aPcmStreamMixer_1152 = StaticAudio.method1003(Main.signlink, MouseHandler.gameCanvas);
+            Class55.aDecimator_1289 = new Decimator(22050, StaticAudio.sampleRate);
             Class40_Sub5_Sub6.loadingPercent = 50;
             Native.currentLoadingText = English.preparedSoundEngine;
             MovedStatics.anInt1607 = 35;
@@ -186,8 +187,8 @@ public class Class40_Sub3 extends Node {
                 i++;
             else
                 MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301 = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.aClass1_671, "");
-            if (Class8.aClass40_Sub5_Sub14_Sub4Array296 == null)
-                Class8.aClass40_Sub5_Sub14_Sub4Array296 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
+            if (MovedStatics.aClass40_Sub5_Sub14_Sub4Array296 == null)
+                MovedStatics.aClass40_Sub5_Sub14_Sub4Array296 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
             else
                 i++;
             if (AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 != null)
@@ -239,8 +240,8 @@ public class Class40_Sub3 extends Node {
                 int i_5_ = (int) (21.0 * Math.random()) - 10;
                 int i_6_ = (int) (41.0 * Math.random()) - 20;
                 int i_7_ = -10 + (int) (21.0 * Math.random());
-                for (int i_8_ = 0; Class8.aClass40_Sub5_Sub14_Sub4Array296.length > i_8_; i_8_++)
-                    Class8.aClass40_Sub5_Sub14_Sub4Array296[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
+                for (int i_8_ = 0; MovedStatics.aClass40_Sub5_Sub14_Sub4Array296.length > i_8_; i_8_++)
+                    MovedStatics.aClass40_Sub5_Sub14_Sub4Array296[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
                 MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301[0].mixPalette(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
                 Native.currentLoadingText = English.loadedSprites;
                 MovedStatics.anInt1607 = 70;

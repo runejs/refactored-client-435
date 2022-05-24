@@ -30,6 +30,7 @@ import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
+import org.runejs.client.sound.StaticAudio;
 import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.cache.def.*;
@@ -186,7 +187,7 @@ public class Main extends GameShell {
                                     int i_14_ = 0;
                                     if (-32 + Rasterizer.viewportLeft < i_10_ && Rasterizer.viewportRight > i_10_ && Rasterizer.viewportTop + -32 < i_11_ && Rasterizer.viewportBottom > i_11_ || SceneTile.activeInterfaceType != 0 && GroundItemTile.selectedInventorySlot == i_7_) {
                                         int i_15_ = 0;
-                                        if (Class8.itemSelected == 1 && i_7_ == LinkedList.anInt1061 && gameInterface.id == ISAAC.anInt525)
+                                        if (MovedStatics.itemSelected == 1 && i_7_ == LinkedList.anInt1061 && gameInterface.id == ISAAC.anInt525)
                                             i_15_ = 16777215;
                                         ImageRGB imageRGB = ItemDefinition.sprite(gameInterface.itemAmounts[i_7_], i_13_, i_15_);
                                         if (imageRGB == null)
@@ -582,7 +583,7 @@ public class Main extends GameShell {
             }
         }
         int i = 256;
-        System.arraycopy(Class39.aClass40_Sub5_Sub14_Sub4_918.pixels, 0, Class8.flameLeftBackground.pixels, 0, 33920);
+        System.arraycopy(Class39.aClass40_Sub5_Sub14_Sub4_918.pixels, 0, MovedStatics.flameLeftBackground.pixels, 0, 33920);
         int i_61_ = 0;
         int i_62_ = 1152;
         for (int i_63_ = 1; i - 1 > i_63_; i_63_++) {
@@ -597,8 +598,8 @@ public class Main extends GameShell {
                     int i_68_ = -i_67_ + 256;
                     int i_69_ = i_67_;
                     i_67_ = MovedStatics.anIntArray1013[i_67_];
-                    int i_70_ = Class8.flameLeftBackground.pixels[i_62_];
-                    Class8.flameLeftBackground.pixels[i_62_++] = BitUtils.bitWiseAND(-16711936, BitUtils.bitWiseAND(i_67_, 16711935) * i_69_ + i_68_ * BitUtils.bitWiseAND(i_70_, 16711935)) + BitUtils.bitWiseAND(BitUtils.bitWiseAND(65280, i_70_) * i_68_ + i_69_ * BitUtils.bitWiseAND(65280, i_67_), 16711680) >> 8;
+                    int i_70_ = MovedStatics.flameLeftBackground.pixels[i_62_];
+                    MovedStatics.flameLeftBackground.pixels[i_62_++] = BitUtils.bitWiseAND(-16711936, BitUtils.bitWiseAND(i_67_, 16711935) * i_69_ + i_68_ * BitUtils.bitWiseAND(i_70_, 16711935)) + BitUtils.bitWiseAND(BitUtils.bitWiseAND(65280, i_70_) * i_68_ + i_69_ * BitUtils.bitWiseAND(65280, i_67_), 16711680) >> 8;
                 } else
                     i_62_++;
             }
@@ -668,7 +669,7 @@ public class Main extends GameShell {
             if (params[3].equals("lowmem")) {
                 Class59.setLowMemory();
             } else if (params[3].equals("highmem")) {
-                Class8.setHighMemory();
+                MovedStatics.setHighMemory();
             } else {
                 printHelp();
             }
@@ -713,7 +714,7 @@ public class Main extends GameShell {
         MovedStatics.method650(0);
         for (int i = 0; i < 100; i++)
             ChatBox.chatMessages[i] = null;
-        Class8.itemSelected = 0;
+        MovedStatics.itemSelected = 0;
         Class57.anInt1342 = -40 + (int) (80.0 * Math.random());
         MovedStatics.cameraOffsetY = -55 + (int) (Math.random() * 110.0);
         MovedStatics.destinationX = 0;
@@ -808,7 +809,7 @@ public class Main extends GameShell {
         int i_5_ = Class40_Sub5_Sub6.cameraY;
         for(int i_6_ = 0; i_6_ < 5; i_6_++) {
             if(Projectile.aBooleanArray2975[i_6_]) {
-                int i_7_ = (int) ((double) (Class8.anIntArray297[i_6_] * 2 + 1) * Math.random() - (double) Class8.anIntArray297[i_6_] + Math.sin((double) Class22_Sub1.anIntArray1846[i_6_] * ((double) GroundItemTile.anIntArray1358[i_6_] / 100.0)) * (double) anIntArray2[i_6_]);
+                int i_7_ = (int) ((double) (MovedStatics.anIntArray297[i_6_] * 2 + 1) * Math.random() - (double) MovedStatics.anIntArray297[i_6_] + Math.sin((double) Class22_Sub1.anIntArray1846[i_6_] * ((double) GroundItemTile.anIntArray1358[i_6_] / 100.0)) * (double) anIntArray2[i_6_]);
                 if(i_6_ == 1) {
                     SceneCluster.cameraZ += i_7_;
                 }
@@ -1396,7 +1397,7 @@ public class Main extends GameShell {
                         Class59.dropClient();
                     } else {
                         Class17.animatePlayers(-1);
-                        Class8.animateNpcs();
+                        MovedStatics.animateNpcs();
                         Class22_Sub1.method313();
                         if(LinkedList.crossType != 0) {
                             OverlayDefinition.crossIndex += 20;
@@ -1845,11 +1846,11 @@ public class Main extends GameShell {
             currentPort = CollisionMap.someOtherPort;
         Class29.updateServerSocket = null;
         ProducingGraphicsBuffer.updateServerSignlinkNode = null;
-        Class8.anInt292++;
-        Class8.connectionStage = 0;
-        if (Class8.anInt292 < 2 || arg1 != 7 && arg1 != 9) {
-            if (Class8.anInt292 < 2 || arg1 != 6) {
-                if (Class8.anInt292 >= 4) {
+        MovedStatics.anInt292++;
+        MovedStatics.connectionStage = 0;
+        if (MovedStatics.anInt292 < 2 || arg1 != 7 && arg1 != 9) {
+            if (MovedStatics.anInt292 < 2 || arg1 != 6) {
+                if (MovedStatics.anInt292 >= 4) {
                     if (Class51.gameStatusCode <= 5) {
                         this.openErrorPage("js5connect");
                         ISAAC.anInt509 = 3000;
@@ -1873,7 +1874,7 @@ public class Main extends GameShell {
         method39();
         Class13.method242((byte) -91);
         Class33.method413((byte) -116);
-        RSRuntimeException.method1054((byte) 125);
+        StaticAudio.method1054();
         GameInterface.method639(122);
         MovedStatics.method1015();
 
@@ -1970,28 +1971,28 @@ public class Main extends GameShell {
             if (ISAAC.anInt509-- <= 0) {
                 do {
                     try {
-                        if (Class8.connectionStage == 0) {
+                        if (MovedStatics.connectionStage == 0) {
                             ProducingGraphicsBuffer.updateServerSignlinkNode = signlink.createSocketNode(currentPort);
-                            Class8.connectionStage++;
+                            MovedStatics.connectionStage++;
                         }
-                        if (Class8.connectionStage == 1) {
+                        if (MovedStatics.connectionStage == 1) {
                             if (ProducingGraphicsBuffer.updateServerSignlinkNode.status == 2) {
                                 method35(-1);
                                 break;
                             }
                             if (ProducingGraphicsBuffer.updateServerSignlinkNode.status == 1)
-                                Class8.connectionStage++;
+                                MovedStatics.connectionStage++;
                         }
-                        if (Class8.connectionStage == 2) {
+                        if (MovedStatics.connectionStage == 2) {
                             Class29.updateServerSocket = new GameSocket((Socket) ProducingGraphicsBuffer.updateServerSignlinkNode.value, signlink);
                             Buffer buffer = new Buffer(5);
                             buffer.putByte(15);
                             buffer.putIntBE(435); // Cache revision
                             Class29.updateServerSocket.sendDataFromBuffer(5, 0, buffer.buffer);
-                            Class8.connectionStage++;
+                            MovedStatics.connectionStage++;
                             Class22_Sub1.aLong1841 = System.currentTimeMillis();
                         }
-                        if (Class8.connectionStage == 3) {
+                        if (MovedStatics.connectionStage == 3) {
                             if (Class51.gameStatusCode > 5 && Class29.updateServerSocket.inputStreamAvailable() <= 0) {
                                 if (System.currentTimeMillis() + -Class22_Sub1.aLong1841 > 30000L) {
                                     method35(-2);
@@ -2003,18 +2004,18 @@ public class Main extends GameShell {
                                     method35(i);
                                     break;
                                 }
-                                Class8.connectionStage++;
+                                MovedStatics.connectionStage++;
                             }
                         }
-                        if (Class8.connectionStage != 4)
+                        if (MovedStatics.connectionStage != 4)
                             break;
 
                         UpdateServer.handleUpdateServerConnection(Class29.updateServerSocket, Class51.gameStatusCode > 20);
 
                         ProducingGraphicsBuffer.updateServerSignlinkNode = null;
-                        Class8.connectionStage = 0;
+                        MovedStatics.connectionStage = 0;
                         Class29.updateServerSocket = null;
-                        Class8.anInt292 = 0;
+                        MovedStatics.anInt292 = 0;
                     } catch (java.io.IOException ioexception) {
                         ioexception.printStackTrace();
                         method35(-3);
