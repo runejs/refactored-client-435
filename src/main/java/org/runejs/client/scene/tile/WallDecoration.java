@@ -1,8 +1,6 @@
 package org.runejs.client.scene.tile;
 
 import org.runejs.client.cache.def.GameObjectDefinition;
-import org.runejs.client.cache.def.IdentityKit;
-import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
@@ -17,7 +15,6 @@ import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
-import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.*;
 
 import java.awt.*;
@@ -36,17 +33,6 @@ public class WallDecoration {
     public int y;
     public int x;
     public int hash = 0;
-
-    public static void method950(int soundId, int volume, int delay) {
-        if (MovedStatics.anInt200 != 0 && volume != 0 && PacketBuffer.currentSound < 50) {
-            IdentityKit.sound[PacketBuffer.currentSound] = soundId;
-            ItemDefinition.soundVolume[PacketBuffer.currentSound] = volume;
-            Class40_Sub3.soundDelay[PacketBuffer.currentSound] = delay;
-            PacketBuffer.effects[PacketBuffer.currentSound] = null;
-            MovedStatics.anIntArray1916[PacketBuffer.currentSound] = 0;
-            PacketBuffer.currentSound++;
-        }
-    }
 
     public static void drawLoadingScreen(TypeFace fontBold, TypeFace fontSmall) {
         MovedStatics.loginBoxGraphics.prepareRasterizer();

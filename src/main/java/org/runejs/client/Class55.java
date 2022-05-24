@@ -4,14 +4,12 @@ import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.SpotAnimDefinition;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.renderable.GameObject;
-import org.runejs.client.sound.Decimator;
 
 import java.awt.*;
 import java.io.*;
 
 public class Class55 {
     public static int mouseInvInterfaceIndex = 0;
-    public static Decimator aDecimator_1289;
     public static volatile int eventClickX = 0;
     public static int currentHoveredChatboxWidgetChildId = -1;
     public static int anInt1299 = 2301979;

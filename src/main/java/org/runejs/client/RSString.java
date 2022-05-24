@@ -1,7 +1,6 @@
 package org.runejs.client;
 
 import org.runejs.client.node.HashTable;
-import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.renderable.actor.Player;
@@ -13,7 +12,6 @@ import java.nio.charset.StandardCharsets;
 public class RSString {
     public static ProducingGraphicsBuffer mapbackProducingGraphicsBuffer;
     public static int clickY = 0;
-    public static NodeCache aClass9_1684;
     public static CacheArchive aCacheArchive_1705;
     public static int[] keyCodes = new int[128];
     public static int tooltipDelay = 50;
@@ -43,23 +41,6 @@ public class RSString {
             }
         }
     }
-
-    public static byte[] method74(int arg0, CacheArchive arg1, int arg2, int arg4) {
-        long l = (long) (arg0 + 37 * arg2 & 0xffff) + ((long) arg4 << 32) + (long) (arg2 << 16);
-        if(aClass9_1684 != null) {
-            Class40_Sub5_Sub6 class40_sub5_sub6 = (Class40_Sub5_Sub6) aClass9_1684.get(l);
-            if(class40_sub5_sub6 != null)
-                return class40_sub5_sub6.aByteArray2441;
-        }
-        byte[] is = arg1.getFile(arg2, arg0);
-        if(is == null)
-            return null;
-        if(aClass9_1684 != null)
-            aClass9_1684.put(l, new Class40_Sub5_Sub6(is));
-        return is;
-    }
-
-
 
     /*synthetic*/
     public static Class method90(String arg0) {

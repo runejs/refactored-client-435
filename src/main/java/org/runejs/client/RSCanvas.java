@@ -18,7 +18,6 @@ public class RSCanvas extends Canvas {
     public static int musicVolume = 255;
     public static int[] anIntArray62;
     public static ProducingGraphicsBuffer chatBoxImageProducer;
-    public static int anInt65 = 127;
     public static int[] anIntArray66;
 
     public Component aComponent49;
@@ -41,7 +40,7 @@ public class RSCanvas extends Canvas {
         UnderlayDefinition.clearUnderlayDefinitionCache();
         GameInterface.method640();
         GameObjectDefinition.clearGameObjectModelCache();
-        Class40_Sub5_Sub6.method586(64);
+        MovedStatics.method586(64);
         MovedStatics.method211();
         MovedStatics.method188();
         SpotAnimDefinition.clearSpotAnimDefinitionCache();

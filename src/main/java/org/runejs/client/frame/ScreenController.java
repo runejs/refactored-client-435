@@ -188,7 +188,7 @@ public class ScreenController {
         }
 
         if (MovedStatics.menuOpen) {
-            Class40_Sub5_Sub6.drawMenu(0, 0);
+            MovedStatics.drawMenu(0, 0);
         }
 
     }

@@ -42,13 +42,6 @@ public class Class60 {
         return i;
     }
 
-    public static void method989() {
-        if(StaticAudio.aClass8_166 != null) {
-            StaticAudio.aClass8_166.method213();
-            StaticAudio.aClass8_166 = null;
-        }
-    }
-
     public static void determineMenuSize() {
         int width = TypeFace.fontBold.getStringWidth(English.chooseOption);
         for(int i = 0; i < ActorDefinition.menuActionRow; i++) {
@@ -195,17 +188,17 @@ public class Class60 {
             if(RSCanvas.musicVolume == 0) {
                 newVolume = 255;
             }
-            if(RSCanvas.musicVolume != 0 || MouseHandler.currentSongId == -1) {
+            if(RSCanvas.musicVolume != 0 || StaticAudio.currentSongId == -1) {
                 if(newVolume == 0) {
-                    Class33.method402(false);
-                    Class35.songTimeout = 0;
+                    StaticAudio.method402(false);
+                    StaticAudio.songTimeout = 0;
                 } else {
-                    Class33.method412(false, CacheArchive.musicCacheArchive, 0, (byte) 66, Native.titleSong, 10, "", RSCanvas.musicVolume);
+                    StaticAudio.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", RSCanvas.musicVolume);
                     MovedStatics.method456(newVolume);
                 }
             } else {
-                Class33.method414(false, 0, MouseHandler.currentSongId, newVolume, 0, CacheArchive.musicCacheArchive);
-                Class35.songTimeout = 0;
+                StaticAudio.method414(false, 0, StaticAudio.currentSongId, newVolume, 0, CacheArchive.musicCacheArchive);
+                StaticAudio.songTimeout = 0;
             }
 
             RSCanvas.musicVolume = newVolume;

@@ -221,17 +221,6 @@ public class HuffmanEncoding {
         return MovedStatics.method927(i_13_, arg0, true, i);
     }
 
-    public static void method1030(byte arg0) {
-        if (arg0 < 123) {
-            method1030((byte) -24);
-        }
-        for (Class40_Sub2 class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method909(-4)) {
-            if (class40_sub2.gameObjectDefinition != null) {
-                class40_sub2.method528();
-            }
-        }
-    }
-
     public int method1023(byte[] arg0, int arg1, int arg2, byte[] arg3, int arg4, int arg5) {
         if (arg1 == 0) {
             return 0;

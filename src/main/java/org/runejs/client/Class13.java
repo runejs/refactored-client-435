@@ -47,7 +47,7 @@ public class Class13 {
         Class40_Sub5_Sub15.method736(true, actor);
     }
 
-    public static void method242(byte arg0) {
+    public static void handleRequests(byte arg0) {
         if(arg0 > -88)
             method247(null, (byte) 34);
         for(; ; ) {

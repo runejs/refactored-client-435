@@ -1,8 +1,7 @@
-package org.runejs.client;
+package org.runejs.client.sound;
 
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.node.Node;
-import org.runejs.client.sound.RawPcmStream;
 
 public class Class40_Sub2 extends Node {
 
@@ -20,8 +19,8 @@ public class Class40_Sub2 extends Node {
     public int anInt2012;
     public int anInt2013;
     public int anInt2014;
-
-    public void method528() {
+    
+	public void method528() {
         int i = anInt1997;
         GameObjectDefinition gameObjectDefinition = this.gameObjectDefinition.getChildDefinition();
         if(gameObjectDefinition == null) {
@@ -38,8 +37,9 @@ public class Class40_Sub2 extends Node {
             anIntArray2005 = gameObjectDefinition.anIntArray2523;
         }
         if(i != anInt1997 && aRawPcmStream_2001 != null) {
-            Class49.aPcmStreamMixer_1152.method853(aRawPcmStream_2001);
+            StaticAudio.aPcmStreamMixer_1152.method853(aRawPcmStream_2001);
             aRawPcmStream_2001 = null;
         }
     }
+
 }

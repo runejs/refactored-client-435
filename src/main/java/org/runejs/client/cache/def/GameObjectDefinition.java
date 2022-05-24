@@ -217,7 +217,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         return model;
     }
 
-    public boolean method601() {
+    public boolean hasSounds() {
         if(childIds == null) {
             return ambientSoundId != -1 || anIntArray2523 != null;
         }

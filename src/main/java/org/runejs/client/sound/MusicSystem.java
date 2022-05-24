@@ -3,11 +3,7 @@ package org.runejs.client.sound;
 
 import org.runejs.client.audio.Effect;
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.cache.def.IdentityKit;
-import org.runejs.client.cache.def.ItemDefinition;
-import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.*;
 
 import javax.sound.midi.InvalidMidiDataException;
@@ -89,33 +85,33 @@ public final class MusicSystem implements Runnable {
     }
 
     public static void processAudio() {
-        for(int index = 0; index < PacketBuffer.currentSound; index++) {
-            Class40_Sub3.soundDelay[index]--;
-            if(Class40_Sub3.soundDelay[index] < -10) {
-                PacketBuffer.currentSound--;
-                for(int j = index; PacketBuffer.currentSound > j; j++) {
-                    IdentityKit.sound[j] = IdentityKit.sound[j + 1];
-                    PacketBuffer.effects[j] = PacketBuffer.effects[1 + j];
-                    ItemDefinition.soundVolume[j] = ItemDefinition.soundVolume[1 + j];
-                    Class40_Sub3.soundDelay[j] = Class40_Sub3.soundDelay[1 + j];
-                    MovedStatics.anIntArray1916[j] = MovedStatics.anIntArray1916[1 + j];
+        for(int index = 0; index < StaticAudio.currentSound; index++) {
+            StaticAudio.soundDelay[index]--;
+            if(StaticAudio.soundDelay[index] < -10) {
+                StaticAudio.currentSound--;
+                for(int j = index; StaticAudio.currentSound > j; j++) {
+                    StaticAudio.sound[j] = StaticAudio.sound[j + 1];
+                    StaticAudio.effects[j] = StaticAudio.effects[1 + j];
+                    StaticAudio.soundVolume[j] = StaticAudio.soundVolume[1 + j];
+                    StaticAudio.soundDelay[j] = StaticAudio.soundDelay[1 + j];
+                    StaticAudio.anIntArray1916[j] = StaticAudio.anIntArray1916[1 + j];
                 }
                 index--;
             } else {
-                Effect effect = PacketBuffer.effects[index];
+                Effect effect = StaticAudio.effects[index];
                 if(effect == null) {
-                    effect = Effect.method429(CacheArchive.soundEffectCacheArchive, IdentityKit.sound[index], 0);
+                    effect = Effect.method429(CacheArchive.soundEffectCacheArchive, StaticAudio.sound[index], 0);
                     if(effect == null)
                         continue;
-                    Class40_Sub3.soundDelay[index] += effect.delay();
-                    PacketBuffer.effects[index] = effect;
+                    StaticAudio.soundDelay[index] += effect.delay();
+                    StaticAudio.effects[index] = effect;
                 }
-                if(Class40_Sub3.soundDelay[index] < 0) {
+                if(StaticAudio.soundDelay[index] < 0) {
                     int i_10_;
-                    if(MovedStatics.anIntArray1916[index] != 0) {
-                        int i_11_ = 128 * (MovedStatics.anIntArray1916[index] & 0xff);
-                        int i_12_ = 0xff & MovedStatics.anIntArray1916[index] >> 16;
-                        int i_13_ = (MovedStatics.anIntArray1916[index] & 0xffb8) >> 8;
+                    if(StaticAudio.anIntArray1916[index] != 0) {
+                        int i_11_ = 128 * (StaticAudio.anIntArray1916[index] & 0xff);
+                        int i_12_ = 0xff & StaticAudio.anIntArray1916[index] >> 16;
+                        int i_13_ = (StaticAudio.anIntArray1916[index] & 0xffb8) >> 8;
                         int i_14_ = i_13_ * 128 + 64 + -Player.localPlayer.worldY;
                         int i_15_ = i_12_ * 128 + 64 - Player.localPlayer.worldX;
                         if(i_15_ < 0)
@@ -124,28 +120,28 @@ public final class MusicSystem implements Runnable {
                             i_14_ = -i_14_;
                         int i_16_ = -128 + i_15_ + i_14_;
                         if(i_16_ > i_11_) {
-                            Class40_Sub3.soundDelay[index] = -100;
+                            StaticAudio.soundDelay[index] = -100;
                             continue;
                         }
                         if(i_16_ < 0)
                             i_16_ = 0;
-                        i_10_ = (i_11_ + -i_16_) * RSCanvas.anInt65 / i_11_;
+                        i_10_ = (i_11_ + -i_16_) * StaticAudio.soundEffectVolume / i_11_;
                     } else
                         i_10_ = MovedStatics.anInt200;
-                    RawSound class40_sub12_sub1 = effect.method428().resample(Class55.aDecimator_1289);
+                    RawSound class40_sub12_sub1 = effect.method428().resample(StaticAudio.aDecimator_1289);
                     RawPcmStream class40_sub9_sub2 = RawPcmStream.create(class40_sub12_sub1, 100, i_10_);
-                    class40_sub9_sub2.method860(-1 + ItemDefinition.soundVolume[index]);
-                    Class49.aPcmStreamMixer_1152.method846(class40_sub9_sub2);
-                    Class40_Sub3.soundDelay[index] = -100;
+                    class40_sub9_sub2.method860(-1 + StaticAudio.soundVolume[index]);
+                    StaticAudio.aPcmStreamMixer_1152.method846(class40_sub9_sub2);
+                    StaticAudio.soundDelay[index] = -100;
                 }
             }
         }
-        if(Class35.songTimeout > 0) {
-            Class35.songTimeout -= 20;
-            if(Class35.songTimeout < 0)
-                Class35.songTimeout = 0;
-            if(Class35.songTimeout == 0 && RSCanvas.musicVolume != 0 && MouseHandler.currentSongId != -1)
-                Class33.method414(false, 0, MouseHandler.currentSongId, RSCanvas.musicVolume, 0, CacheArchive.musicCacheArchive);
+        if(StaticAudio.songTimeout > 0) {
+            StaticAudio.songTimeout -= 20;
+            if(StaticAudio.songTimeout < 0)
+                StaticAudio.songTimeout = 0;
+            if(StaticAudio.songTimeout == 0 && RSCanvas.musicVolume != 0 && StaticAudio.currentSongId != -1)
+                StaticAudio.method414(false, 0, StaticAudio.currentSongId, RSCanvas.musicVolume, 0, CacheArchive.musicCacheArchive);
         }
     }
 

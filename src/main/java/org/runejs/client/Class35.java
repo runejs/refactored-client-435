@@ -6,7 +6,6 @@ import org.runejs.client.io.Buffer;
 
 public class Class35 implements Interface3 {
     public static int anInt1730 = 0;
-    public static int songTimeout = 0;
     public static boolean aBoolean1734 = false;
     public static boolean aBoolean1735 = true;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1744;

@@ -17,6 +17,7 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.util.CollisionMap;
+import org.runejs.client.sound.StaticAudio;
 
 public abstract class Class22 {
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array535;
@@ -119,7 +120,7 @@ public abstract class Class22 {
     public static void method309(int varPlayerIndex) {
         do {
             AnimationSequence.anInt2480 = MovedStatics.pulseCycle;
-            HuffmanEncoding.method1030((byte) 127);
+            StaticAudio.method1030();
             int varPlayerType = VarPlayerDefinition.getDefinition(varPlayerIndex).type;
             if(varPlayerType != 0) {
                 int varPlayerValue = VarPlayerDefinition.varPlayers[varPlayerIndex];
@@ -156,15 +157,15 @@ public abstract class Class22 {
                     if(varPlayerValue == 4)
                         i_22_ = 0;
                     if(i_22_ != RSCanvas.musicVolume) {
-                        if(RSCanvas.musicVolume != 0 || MouseHandler.currentSongId == -1) {
+                        if(RSCanvas.musicVolume != 0 || StaticAudio.currentSongId == -1) {
                             if(i_22_ == 0) {
-                                Class33.method402(false);
-                                Class35.songTimeout = 0;
+                                StaticAudio.method402(false);
+                                StaticAudio.songTimeout = 0;
                             } else
                                 MovedStatics.method456(i_22_);
                         } else {
-                            Class33.method414(false, 0, MouseHandler.currentSongId, i_22_, 0, CacheArchive.musicCacheArchive);
-                            Class35.songTimeout = 0;
+                            StaticAudio.method414(false, 0, StaticAudio.currentSongId, i_22_, 0, CacheArchive.musicCacheArchive);
+                            StaticAudio.songTimeout = 0;
                         }
                         RSCanvas.musicVolume = i_22_;
                     }
@@ -173,15 +174,15 @@ public abstract class Class22 {
                     Class43.bankInsertMode = varPlayerValue;
                 if(varPlayerType == 10) {
                     if(varPlayerValue == 0)
-                        RSCanvas.anInt65 = 127;
+                        StaticAudio.soundEffectVolume = 127;
                     if(varPlayerValue == 1)
-                        RSCanvas.anInt65 = 96;
+                        StaticAudio.soundEffectVolume = 96;
                     if(varPlayerValue == 2)
-                        RSCanvas.anInt65 = 64;
+                        StaticAudio.soundEffectVolume = 64;
                     if(varPlayerValue == 3)
-                        RSCanvas.anInt65 = 32;
+                        StaticAudio.soundEffectVolume = 32;
                     if(varPlayerValue == 4)
-                        RSCanvas.anInt65 = 0;
+                        StaticAudio.soundEffectVolume = 0;
                 }
                 if(varPlayerType == 8) {
                     ChatBox.redrawChatbox = true;
