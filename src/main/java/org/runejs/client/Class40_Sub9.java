@@ -1,10 +1,11 @@
 package org.runejs.client;
 
 import org.runejs.client.node.Node;
+import org.runejs.client.sound.AbstractSound;
 
 public abstract class Class40_Sub9 extends Node {
     public boolean aBoolean2134;
-    public Class40_Sub12 aClass40_Sub12_2135;
+    public AbstractSound aAbstractSound_2135;
 
     public abstract void method843(int i);
 

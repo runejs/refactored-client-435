@@ -17,6 +17,7 @@ import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.util.CollisionMap;
+import org.runejs.client.sound.RawSound;
 import org.runejs.client.util.BitUtils;
 import org.runejs.client.cache.def.FramemapDefinition;
 import org.runejs.client.cache.def.GameObjectDefinition;
@@ -271,7 +272,7 @@ public class Landscape {
                         if(class40_sub2.anInt1997 >= 0) {
                             Effect effect = Effect.method429(CacheArchive.soundEffectCacheArchive, class40_sub2.anInt1997, 0);
                             if(effect != null) {
-                                Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aDecimator_1289);
+                                RawSound class40_sub12_sub1 = effect.method428().resample(Class55.aDecimator_1289);
                                 Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_49_);
                                 class40_sub9_sub2.method860(-1);
                                 Class49.aClass40_Sub9_Sub1_1152.method846(class40_sub9_sub2);
@@ -285,7 +286,7 @@ public class Landscape {
                             int i_50_ = (int) ((double) class40_sub2.anIntArray2005.length * Math.random());
                             Effect effect = Effect.method429(CacheArchive.soundEffectCacheArchive, class40_sub2.anIntArray2005[i_50_], 0);
                             if(effect != null) {
-                                Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aDecimator_1289);
+                                RawSound class40_sub12_sub1 = effect.method428().resample(Class55.aDecimator_1289);
                                 Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_49_);
                                 class40_sub9_sub2.method860(0);
                                 Class49.aClass40_Sub9_Sub1_1152.method846(class40_sub9_sub2);

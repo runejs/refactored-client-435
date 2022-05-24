@@ -132,7 +132,7 @@ public final class MusicSystem implements Runnable {
                         i_10_ = (i_11_ + -i_16_) * RSCanvas.anInt65 / i_11_;
                     } else
                         i_10_ = MovedStatics.anInt200;
-                    Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aDecimator_1289);
+                    RawSound class40_sub12_sub1 = effect.method428().resample(Class55.aDecimator_1289);
                     Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_10_);
                     class40_sub9_sub2.method860(-1 + ItemDefinition.soundVolume[index]);
                     Class49.aClass40_Sub9_Sub1_1152.method846(class40_sub9_sub2);

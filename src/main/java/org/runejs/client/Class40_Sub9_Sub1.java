@@ -2,6 +2,7 @@ package org.runejs.client;
 
 import org.runejs.client.node.Node;
 import org.runejs.client.scene.util.CollisionMap;
+import org.runejs.client.sound.AbstractSound;
 
 public class Class40_Sub9_Sub1 extends Class40_Sub9 {
     public int anInt2872 = 16;
@@ -80,8 +81,8 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
             LinkedList linkedList = aLinkedListArray2873[i];
             for(Class40_Sub9 class40_sub9 = (Class40_Sub9) linkedList.method902((byte) -90); class40_sub9 != null; class40_sub9 = (Class40_Sub9) linkedList.method909(-4)) {
                 class40_sub9.aBoolean2134 = false;
-                if(class40_sub9.aClass40_Sub12_2135 != null)
-                    class40_sub9.aClass40_Sub12_2135.anInt2167 = 0;
+                if(class40_sub9.aAbstractSound_2135 != null)
+                    class40_sub9.aAbstractSound_2135.position = 0;
             }
         }
         int i = 0;
@@ -103,15 +104,15 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
                     LinkedList linkedList = aLinkedListArray2873[i_4_];
                     for(Class40_Sub9 class40_sub9 = (Class40_Sub9) linkedList.method902((byte) -90); class40_sub9 != null; class40_sub9 = (Class40_Sub9) linkedList.method909(-4)) {
                         if(!class40_sub9.aBoolean2134) {
-                            Class40_Sub12 class40_sub12 = class40_sub9.aClass40_Sub12_2135;
-                            if(class40_sub12 != null && class40_sub12.anInt2167 > i_5_)
+                            AbstractSound class40_sub12 = class40_sub9.aAbstractSound_2135;
+                            if(class40_sub12 != null && class40_sub12.position > i_5_)
                                 i_2_ |= 1 << i_4_;
                             else {
                                 if(i < anInt2872) {
                                     int i_7_ = class40_sub9.method844(arg0, arg1, arg2);
                                     i += i_7_;
                                     if(class40_sub12 != null)
-                                        class40_sub12.anInt2167 += i_7_;
+                                        class40_sub12.position += i_7_;
                                 } else
                                     class40_sub9.method843(arg2);
                                 class40_sub9.aBoolean2134 = true;
