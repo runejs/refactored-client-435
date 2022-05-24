@@ -20,6 +20,7 @@ import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.util.CollisionMap;
+import org.runejs.client.sound.PcmStreamMixer;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.*;
 
@@ -140,12 +141,12 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         }
     }
 
-    public static Class40_Sub9_Sub1 method1003(Signlink arg0, Component arg1, int arg2) {
+    public static PcmStreamMixer method1003(Signlink arg0, Component arg1, int arg2) {
 
         if(arg2 != 29914)
             tile_overlayids = null;
         ProducingGraphicsBuffer.method1040(arg1, 0, arg0);
-        Class40_Sub9_Sub1 class40_sub9_sub1 = new Class40_Sub9_Sub1();
+        PcmStreamMixer class40_sub9_sub1 = new PcmStreamMixer();
         Class8.method218(class40_sub9_sub1);
         return class40_sub9_sub1;
 

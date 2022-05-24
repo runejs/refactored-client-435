@@ -13,7 +13,7 @@ public class Class8_Sub1_Sub2 extends Class8_Sub1 {
         audioFormat = new AudioFormat(22050.0F, 16, 1, true, false);
     }
 
-    public static Class method229(String arg0) {
+    private static Class method229(String arg0) {
         Class var_class;
         try {
             var_class = Class.forName(arg0);

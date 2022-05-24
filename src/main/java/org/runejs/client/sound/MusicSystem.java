@@ -133,9 +133,9 @@ public final class MusicSystem implements Runnable {
                     } else
                         i_10_ = MovedStatics.anInt200;
                     RawSound class40_sub12_sub1 = effect.method428().resample(Class55.aDecimator_1289);
-                    Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_10_);
+                    RawPcmStream class40_sub9_sub2 = RawPcmStream.create(class40_sub12_sub1, 100, i_10_);
                     class40_sub9_sub2.method860(-1 + ItemDefinition.soundVolume[index]);
-                    Class49.aClass40_Sub9_Sub1_1152.method846(class40_sub9_sub2);
+                    Class49.aPcmStreamMixer_1152.method846(class40_sub9_sub2);
                     Class40_Sub3.soundDelay[index] = -100;
                 }
             }

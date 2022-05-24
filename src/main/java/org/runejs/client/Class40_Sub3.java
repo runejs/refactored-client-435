@@ -112,7 +112,7 @@ public class Class40_Sub3 extends Node {
             }
         } else if (Class40_Sub5_Sub6.loadingPercent == 45) {
             MovedStatics.method446(Main.signlink, 0, !VertexNormal.lowMemory, (byte) 30);
-            Class49.aClass40_Sub9_Sub1_1152 = MouseHandler.method1003(Main.signlink, MouseHandler.gameCanvas, arg0 ^ 0x74be);
+            Class49.aPcmStreamMixer_1152 = MouseHandler.method1003(Main.signlink, MouseHandler.gameCanvas, arg0 ^ 0x74be);
             Class55.aDecimator_1289 = new Decimator(22050, CollisionMap.anInt141);
             Class40_Sub5_Sub6.loadingPercent = 50;
             Native.currentLoadingText = English.preparedSoundEngine;

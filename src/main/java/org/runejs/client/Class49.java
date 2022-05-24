@@ -5,11 +5,12 @@ import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.SceneCluster;
+import org.runejs.client.sound.PcmStreamMixer;
 
 public class Class49 {
     public static volatile int anInt1147 = 0;
     public static CacheArchive aCacheArchive_1150;
-    public static Class40_Sub9_Sub1 aClass40_Sub9_Sub1_1152;
+    public static PcmStreamMixer aPcmStreamMixer_1152;
     public static int anInt1154;
 
     public static void setCameraPosition(int pitch, int x, int z, int yaw, int y, int ___pitch, int arg6) {

@@ -17,6 +17,7 @@ import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.util.CollisionMap;
+import org.runejs.client.sound.RawPcmStream;
 import org.runejs.client.sound.RawSound;
 import org.runejs.client.util.BitUtils;
 import org.runejs.client.cache.def.FramemapDefinition;
@@ -255,49 +256,49 @@ public class Landscape {
                 else if(arg4 < class40_sub2.anInt2003)
                     i_48_ += -arg4 + class40_sub2.anInt2003;
                 if(class40_sub2.anInt2000 < -64 + i_48_ || RSCanvas.anInt65 == 0 || arg2 != class40_sub2.anInt1993) {
-                    if(class40_sub2.aClass40_Sub9_Sub2_2001 != null) {
-                        Class49.aClass40_Sub9_Sub1_1152.method853(class40_sub2.aClass40_Sub9_Sub2_2001);
-                        class40_sub2.aClass40_Sub9_Sub2_2001 = null;
+                    if(class40_sub2.aRawPcmStream_2001 != null) {
+                        Class49.aPcmStreamMixer_1152.method853(class40_sub2.aRawPcmStream_2001);
+                        class40_sub2.aRawPcmStream_2001 = null;
                     }
-                    if(class40_sub2.aClass40_Sub9_Sub2_2010 != null) {
-                        Class49.aClass40_Sub9_Sub1_1152.method853(class40_sub2.aClass40_Sub9_Sub2_2010);
-                        class40_sub2.aClass40_Sub9_Sub2_2010 = null;
+                    if(class40_sub2.aRawPcmStream_2010 != null) {
+                        Class49.aPcmStreamMixer_1152.method853(class40_sub2.aRawPcmStream_2010);
+                        class40_sub2.aRawPcmStream_2010 = null;
                     }
                 } else {
                     i_48_ -= 64;
                     if(i_48_ < 0)
                         i_48_ = 0;
                     int i_49_ = (-i_48_ + class40_sub2.anInt2000) * RSCanvas.anInt65 / class40_sub2.anInt2000;
-                    if(class40_sub2.aClass40_Sub9_Sub2_2001 == null) {
+                    if(class40_sub2.aRawPcmStream_2001 == null) {
                         if(class40_sub2.anInt1997 >= 0) {
                             Effect effect = Effect.method429(CacheArchive.soundEffectCacheArchive, class40_sub2.anInt1997, 0);
                             if(effect != null) {
                                 RawSound class40_sub12_sub1 = effect.method428().resample(Class55.aDecimator_1289);
-                                Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_49_);
+                                RawPcmStream class40_sub9_sub2 = RawPcmStream.create(class40_sub12_sub1, 100, i_49_);
                                 class40_sub9_sub2.method860(-1);
-                                Class49.aClass40_Sub9_Sub1_1152.method846(class40_sub9_sub2);
-                                class40_sub2.aClass40_Sub9_Sub2_2001 = class40_sub9_sub2;
+                                Class49.aPcmStreamMixer_1152.method846(class40_sub9_sub2);
+                                class40_sub2.aRawPcmStream_2001 = class40_sub9_sub2;
                             }
                         }
                     } else
-                        class40_sub2.aClass40_Sub9_Sub2_2001.method857(i_49_);
-                    if(class40_sub2.aClass40_Sub9_Sub2_2010 == null) {
+                        class40_sub2.aRawPcmStream_2001.method857(i_49_);
+                    if(class40_sub2.aRawPcmStream_2010 == null) {
                         if(class40_sub2.anIntArray2005 != null && (class40_sub2.anInt2014 -= arg3) <= 0) {
                             int i_50_ = (int) ((double) class40_sub2.anIntArray2005.length * Math.random());
                             Effect effect = Effect.method429(CacheArchive.soundEffectCacheArchive, class40_sub2.anIntArray2005[i_50_], 0);
                             if(effect != null) {
                                 RawSound class40_sub12_sub1 = effect.method428().resample(Class55.aDecimator_1289);
-                                Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_49_);
+                                RawPcmStream class40_sub9_sub2 = RawPcmStream.create(class40_sub12_sub1, 100, i_49_);
                                 class40_sub9_sub2.method860(0);
-                                Class49.aClass40_Sub9_Sub1_1152.method846(class40_sub9_sub2);
+                                Class49.aPcmStreamMixer_1152.method846(class40_sub9_sub2);
                                 class40_sub2.anInt2014 = class40_sub2.anInt2012 + (int) ((double) (-class40_sub2.anInt2012 + class40_sub2.anInt2002) * Math.random());
-                                class40_sub2.aClass40_Sub9_Sub2_2010 = class40_sub9_sub2;
+                                class40_sub2.aRawPcmStream_2010 = class40_sub9_sub2;
                             }
                         }
                     } else {
-                        class40_sub2.aClass40_Sub9_Sub2_2010.method857(i_49_);
-                        if(!class40_sub2.aClass40_Sub9_Sub2_2010.method863())
-                            class40_sub2.aClass40_Sub9_Sub2_2010 = null;
+                        class40_sub2.aRawPcmStream_2010.method857(i_49_);
+                        if(!class40_sub2.aRawPcmStream_2010.method863())
+                            class40_sub2.aRawPcmStream_2010 = null;
                     }
                 }
             }

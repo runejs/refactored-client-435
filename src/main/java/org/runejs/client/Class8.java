@@ -12,6 +12,7 @@ import org.runejs.client.net.ISAAC;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.util.CollisionMap;
+import org.runejs.client.sound.PcmStream;
 
 import java.awt.*;
 import java.util.Calendar;
@@ -75,20 +76,20 @@ public class Class8 {
         arg1 += 7;
         while(i < arg1)
             arg0[i++] = 0;
-        if(FloorDecoration.aClass40_Sub9_608 != null)
-            FloorDecoration.aClass40_Sub9_608.method844(arg0, 0, arg1);
+        if(FloorDecoration.aPcmStream_608 != null)
+            FloorDecoration.aPcmStream_608.fill(arg0, 0, arg1);
         ItemDefinition.method748(arg1);
     }
 
 
     public static synchronized void method217(int arg0) {
-        if(FloorDecoration.aClass40_Sub9_608 != null)
-            FloorDecoration.aClass40_Sub9_608.method843(arg0);
+        if(FloorDecoration.aPcmStream_608 != null)
+            FloorDecoration.aPcmStream_608.skip(arg0);
         ItemDefinition.method748(arg0);
     }
 
-    public static synchronized void method218(Class40_Sub9 arg0) {
-        FloorDecoration.aClass40_Sub9_608 = arg0;
+    public static synchronized void method218(PcmStream arg0) {
+        FloorDecoration.aPcmStream_608 = arg0;
     }
 
     public void method212(long arg0) {
