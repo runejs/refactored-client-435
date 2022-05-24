@@ -1,12 +1,9 @@
 package org.runejs.client.sound;
 
-import java.awt.*;
-
 public class Class8 {
     public Class8(int arg0) {
         StaticAudio.sampleRate = arg0;
         StaticAudio.aLong288 = System.currentTimeMillis();
-
     }
 
     public static synchronized void method215(int[] arg0, int arg1) {

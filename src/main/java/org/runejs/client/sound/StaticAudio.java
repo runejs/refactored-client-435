@@ -41,6 +41,7 @@ public class StaticAudio {
 	public static long aLong288;
 	public static Class8 aClass8_166;
 	/*synthetic*/ public static Class aClass1654;
+	public static Object lock = new Object();
 	public static int anInt2081;
 
 	public static void method748(int arg1) {
@@ -56,12 +57,10 @@ public class StaticAudio {
 	public static int anInt2866;
 
 	public static void method1040(Component arg0, int arg1, Signlink arg2) {
-	    try {
-	    	
+	    try {    	
 	        Class8_Sub1 class8_sub1 = new Class8_Sub1_Sub2();
 	        class8_sub1.method222(arg2, 2048);
-	        aClass8_166 = class8_sub1;
-	        
+	        aClass8_166 = class8_sub1;        
 	    } catch (Throwable throwable) {
             aClass8_166 = new Class8(8000);	        
 	    }

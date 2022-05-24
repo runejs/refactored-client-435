@@ -4,7 +4,7 @@ import org.runejs.client.Class43;
 import org.runejs.client.util.Signlink;
 
 public abstract class Class8_Sub1 extends Class8 implements Runnable {
-    public static int[] anIntArray1829 = new int[256];
+    public static int[] samples = new int[256];
     public boolean aBoolean1820;
     public long aLong1821;
     public int anInt1822;
@@ -31,12 +31,12 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
     }
 
     public void method219(long arg0) throws Exception {
-        method226(anInt1831);
+        open(anInt1831);
         for(; ; ) {
-            int i = method224();
+            int i = avail();
             if(i < anInt1827)
                 break;
-            method223();
+            write();
         }
         anInt1823 = 0;
         anInt1830 = 0;
@@ -53,7 +53,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
             try {
                 method219(arg0);
             } catch(Exception exception) {
-                method225();
+                close();
                 aLong1821 += 5000L;
                 return;
             }
@@ -63,9 +63,9 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
             aLong1832 += (long) (250880 / StaticAudio.sampleRate);
             int i;
             try {
-                i = method224();
+                i = avail();
             } catch(Exception exception) {
-                method225();
+                close();
                 aLong1821 = arg0;
                 return;
             }
@@ -82,7 +82,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
                 if(i >= anInt1831) {
                     anInt1823 += 5;
                     if(anInt1823 >= 100) {
-                        method225();
+                        close();
                         anInt1831 += 2048;
                         aLong1821 = arg0;
                         return;
@@ -93,11 +93,11 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
             anInt1830 = i;
             if(i < anInt1827)
                 break;
-            method215(anIntArray1829, 256);
+            method215(samples, 256);
             try {
-                method223();
+                write();
             } catch(Exception exception) {
-                method225();
+                close();
                 aLong1821 = arg0;
                 return;
             }
@@ -105,7 +105,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
             anInt1830 -= 256;
         }
         if(arg0 >= aLong1826 + 5000L) {
-            method225();
+            close();
             aLong1821 = arg0;
             for(int i = 0; i < 512; i++)
                 anIntArray1833[i] = 0;
@@ -132,7 +132,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
         }
     }
 
-    public abstract void method223() throws Exception;
+    public abstract void write() throws Exception;
 
     public void run() {
 
@@ -140,7 +140,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
             synchronized(this) {
                 if(aBoolean1820) {
                     if(aLong1821 == 0L)
-                        method225();
+                        close();
                     aBoolean1820 = false;
                     break;
                 }
@@ -150,11 +150,11 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
         }
     }
 
-    public abstract int method224() throws Exception;
+    public abstract int avail() throws Exception;
 
-    public abstract void method225();
+    public abstract void close();
 
-    public abstract void method226(int i) throws Exception;
+    public abstract void open(int i) throws Exception;
 
     public synchronized void method212(long arg0) {
         method221(arg0);
