@@ -2,9 +2,6 @@ package org.runejs.client;
 
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;
-import org.runejs.client.input.MouseHandler;
-import org.runejs.client.io.Buffer;
-import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.frame.ChatBox;
@@ -306,32 +303,5 @@ public class Class33 {
         Native.loginScreenMessageLineOne = line1;
         Native.loginScreenMessageLineTwo = line2;
         Native.loginScreenMessageLineThree = line3;
-    }
-
-    public static void method566(int arg0, boolean arg1, int arg2, byte[] arg3) {
-        if(MovedStatics.aClass22_189 != null) {
-            if(MouseHandler.anInt1450 >= 0) {
-                arg2 -= 20;
-                if(arg2 < 1)
-                    arg2 = 1;
-                RSCanvas.anInt54 = arg2;
-                if(MouseHandler.anInt1450 == 0)
-                    Buffer.anInt1982 = 0;
-                else {
-                    int i = Class29.method372(113, MouseHandler.anInt1450);
-                    i -= Class39.anInt909;
-                    Buffer.anInt1982 = (-1 + arg2 + 3600 + i) / arg2;
-                }
-                Player.aByteArray3270 = arg3;
-                PacketBuffer.anInt2258 = arg0;
-                PlayerAppearance.aBoolean687 = arg1;
-            } else if(RSCanvas.anInt54 == 0)
-                RSString.method56(arg1, arg3, arg0);
-            else {
-                PacketBuffer.anInt2258 = arg0;
-                PlayerAppearance.aBoolean687 = arg1;
-                Player.aByteArray3270 = arg3;
-            }
-        }
     }
 }

@@ -17,8 +17,6 @@ public class PacketBuffer extends Buffer {
     public static long aLong2241 = 0L;
     public static boolean closedClient = false;
     public static int lastClickX = 0;
-    public static int anInt2258;
-
     public ISAAC inCipher;
     public ISAAC outCipher;
     public int bitoffset;

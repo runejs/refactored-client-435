@@ -26,7 +26,6 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class MouseHandler implements MouseListener, MouseMotionListener, FocusListener, MouseWheelListener {
-    public static int anInt1450 = -1;
     public static NodeCache modelCache = new NodeCache(50);
     public static ImageRGB[] minimapHint = new ImageRGB[1000];
     public static int currentTickSample;

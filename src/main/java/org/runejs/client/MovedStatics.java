@@ -35,7 +35,6 @@ import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.util.CollisionMap;
-import org.runejs.client.sound.Class22;
 import org.runejs.client.sound.StaticAudio;
 import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;
@@ -84,12 +83,10 @@ public class MovedStatics {
     public static int anInt175 = 0;
     public static int[] anIntArray178;
     public static int anInt188;
-    public static Class22 aClass22_189;
     public static int anInt194;
     public static int anInt195 = 1;
     public static int[] chatboxLineOffsets;
     public static int anInt199 = 0;
-    public static int anInt200 = 127;
     public static volatile boolean aBoolean1575 = false;
     public static CacheArchive aCacheArchive_1577;
     public static int[] anIntArray1579;
@@ -103,17 +100,14 @@ public class MovedStatics {
     public static IndexedImage tabBottomBack;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array215;
     public static NodeCache modelCache = new NodeCache(260);
-    public static int anInt255;
     public static boolean showChatPanelRedrawnText = false;
     public static int[][][] anIntArrayArrayArray262;
-    public static int anInt1806;
     public static int lastContinueTextWidgetId = -1;
     public static GameSocket gameServerSocket;
     public static int[][][] tile_height = new int[4][105][105];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2105;
     public static int[] anIntArray2106 = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
     public static int secondaryCameraVertical = 0;
-    public static int anInt2110;
     public static int[] anIntArray2113 = new int[128];
     public static GameInterface aGameInterface_2116;
     public static int anInt2118 = 0;
@@ -390,15 +384,6 @@ public class MovedStatics {
             tile_height[arg1][arg3][arg0] = tile_height[arg1][arg3][-1 + arg0];
         else if (arg3 > 0 && arg0 > 0 && tile_height[arg1][arg3 + -1][-1 + arg0] != 0)
             tile_height[arg1][arg3][arg0] = tile_height[arg1][-1 + arg3][arg0 - 1];
-    }
-
-    public static void method456(int arg0) {
-        if (Class24.method340()) {
-            if (Class26.aBoolean618)
-                OverlayDefinition.anInt2342 = arg0;
-            else
-                method651(22741, arg0);
-        }
     }
 
     public static boolean method459(int arg0, int arg1, byte arg2) {
@@ -1094,10 +1079,6 @@ public class MovedStatics {
         }
     }
 
-    public static void method557(int arg0) {
-        method886(0, 0, false, null, arg0);
-    }
-
     public static int method884(int arg0, int arg1) {
         int i = 57 * arg1 + arg0;
         i ^= i << 13;
@@ -1110,32 +1091,6 @@ public class MovedStatics {
         MovedStatics.aCacheArchive_284 = arg2;
         Class26.aCacheArchive_632 = arg0;
         ItemDefinition.count = Class26.aCacheArchive_632.fileLength(10);
-    }
-
-    public static void method886(int arg0, int arg1, boolean arg2, byte[] arg3, int arg4) {
-        if(arg0 == 0 && aClass22_189 != null) {
-            if(MouseHandler.anInt1450 < 0) {
-                if(RSCanvas.anInt54 != 0) {
-                    PacketBuffer.anInt2258 = arg1;
-                    Player.aByteArray3270 = arg3;
-                    PlayerAppearance.aBoolean687 = arg2;
-                } else
-                    RSString.method56(arg2, arg3, arg1);
-            } else {
-                Buffer.anInt1982 = arg4;
-                if(MouseHandler.anInt1450 != 0) {
-                    int i = Class29.method372(arg0 ^ 0x60, MouseHandler.anInt1450);
-                    i -= Class39.anInt909;
-                    RSCanvas.anInt54 = (i + 3600) / arg4;
-                    if(RSCanvas.anInt54 < 1)
-                        RSCanvas.anInt54 = 1;
-                } else
-                    RSCanvas.anInt54 = 1;
-                PacketBuffer.anInt2258 = arg1;
-                Player.aByteArray3270 = arg3;
-                PlayerAppearance.aBoolean687 = arg2;
-            }
-        }
     }
 
     public static int method888(int arg0, byte arg1, int arg2) {
@@ -1165,20 +1120,6 @@ public class MovedStatics {
 
     public static void method650(int arg1) {
         LinkedList.anInt1073 = arg1;
-    }
-
-    public static void method651(int arg0, int arg1) {
-        if(aClass22_189 != null) {
-            if(RSCanvas.anInt54 != 0) {
-                if(Player.aByteArray3270 != null)
-                    PacketBuffer.anInt2258 = arg1;
-            } else if(MouseHandler.anInt1450 >= 0) {
-                MouseHandler.anInt1450 = arg1;
-                aClass22_189.method304((byte) -111, arg1, 0);
-            }
-            if(arg0 != 22741)
-                method652();
-        }
     }
 
     public static void method652() {
@@ -1515,7 +1456,6 @@ public class MovedStatics {
 	public static FontMetrics fontMetrics;
 	public static CacheArchive aCacheArchive_284;
 	public static Calendar aCalendar279 = Calendar.getInstance();
-	public static int anInt289;
 	public static int connectionStage = 0;
 	public static int anInt292 = 0;
 	public static int[] anIntArray297 = new int[5];
@@ -1819,19 +1759,7 @@ public class MovedStatics {
 	public static int cameraY;
 
 	public static synchronized void method407(boolean arg0) {
-	    MovedStatics.method1019();
-	}
-
-	public static void method1019() {
-	    if(aClass22_189 != null) {
-	        MovedStatics.method308();   
-            if(RSCanvas.anInt54 > 0) {
-                aClass22_189.method301(256, 0);
-                RSCanvas.anInt54 = 0;
-            }
-            aClass22_189.method306((byte) 101);
-            aClass22_189 = null;
-	    }
+	    StaticAudio.method1019();
 	}
 
 	public static void method309(int varPlayerIndex) {
@@ -1873,18 +1801,18 @@ public class MovedStatics {
 	                    i_22_ = 64;
 	                if(varPlayerValue == 4)
 	                    i_22_ = 0;
-	                if(i_22_ != RSCanvas.musicVolume) {
-	                    if(RSCanvas.musicVolume != 0 || StaticAudio.currentSongId == -1) {
+	                if(i_22_ != StaticAudio.musicVolume) {
+	                    if(StaticAudio.musicVolume != 0 || StaticAudio.currentSongId == -1) {
 	                        if(i_22_ == 0) {
 	                            StaticAudio.method402(false);
 	                            StaticAudio.songTimeout = 0;
 	                        } else
-	                            method456(i_22_);
+	                            StaticAudio.method456(i_22_);
 	                    } else {
 	                        StaticAudio.method414(false, 0, StaticAudio.currentSongId, i_22_, 0, CacheArchive.musicCacheArchive);
 	                        StaticAudio.songTimeout = 0;
 	                    }
-	                    RSCanvas.musicVolume = i_22_;
+	                    StaticAudio.musicVolume = i_22_;
 	                }
 	            }
 	            if(varPlayerType == 9)
@@ -1907,15 +1835,15 @@ public class MovedStatics {
 	            }
 	            if(varPlayerType == 4) {
 	                if(varPlayerValue == 0)
-	                    anInt200 = 127;
+	                    StaticAudio.anInt200 = 127;
 	                if(varPlayerValue == 1)
-	                    anInt200 = 96;
+	                    StaticAudio.anInt200 = 96;
 	                if(varPlayerValue == 2)
-	                    anInt200 = 64;
+	                    StaticAudio.anInt200 = 64;
 	                if(varPlayerValue == 3)
-	                    anInt200 = 32;
+	                    StaticAudio.anInt200 = 32;
 	                if(varPlayerValue == 4)
-	                    anInt200 = 0;
+	                    StaticAudio.anInt200 = 0;
 	            }
 	            if(varPlayerType == 6)
 	                anInt2280 = varPlayerValue;
@@ -1941,10 +1869,6 @@ public class MovedStatics {
 	    } catch(Exception exception) {
 	        return English.cabbage;
 	    }
-	}
-
-	public static void method308() {
-	    RSString.method56(false, null, 0);
 	}
 
 	public static void method305() {

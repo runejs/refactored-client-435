@@ -185,23 +185,23 @@ public class Class60 {
 
         if(MouseHandler.clickType == 1 && RSString.clickY >= ScreenController.drawHeight-42 && Class57.clickX>=ScreenController.drawWidth-42 ){
             int newVolume = 0;
-            if(RSCanvas.musicVolume == 0) {
+            if(StaticAudio.musicVolume == 0) {
                 newVolume = 255;
             }
-            if(RSCanvas.musicVolume != 0 || StaticAudio.currentSongId == -1) {
+            if(StaticAudio.musicVolume != 0 || StaticAudio.currentSongId == -1) {
                 if(newVolume == 0) {
                     StaticAudio.method402(false);
                     StaticAudio.songTimeout = 0;
                 } else {
-                    StaticAudio.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", RSCanvas.musicVolume);
-                    MovedStatics.method456(newVolume);
+                    StaticAudio.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", StaticAudio.musicVolume);
+                    StaticAudio.method456(newVolume);
                 }
             } else {
                 StaticAudio.method414(false, 0, StaticAudio.currentSongId, newVolume, 0, CacheArchive.musicCacheArchive);
                 StaticAudio.songTimeout = 0;
             }
 
-            RSCanvas.musicVolume = newVolume;
+            StaticAudio.musicVolume = newVolume;
         }
 
         if(Class51.gameStatusCode == 10) {

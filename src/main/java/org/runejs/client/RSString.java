@@ -2,8 +2,6 @@ package org.runejs.client;
 
 import org.runejs.client.node.HashTable;
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.input.MouseHandler;
-import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.util.BitUtils;
 
 import java.awt.*;
@@ -21,26 +19,6 @@ public class RSString {
     public int length;
     public byte[] chars;
     public int anInt1696;
-
-    public static void method56(boolean arg1, byte[] arg2, int arg3) {
-        if(MovedStatics.aClass22_189 != null) {
-            if(MouseHandler.anInt1450 >= 0) {
-                MovedStatics.aClass22_189.method303((byte) -96);
-                Class39.anInt909 = 0;
-                Player.aByteArray3270 = null;
-                RSCanvas.anInt54 = 20;
-                MouseHandler.anInt1450 = -1;
-            }
-            if(arg2 != null) {
-                if(RSCanvas.anInt54 > 0) {
-                    MovedStatics.aClass22_189.method301(arg3, 0);
-                    RSCanvas.anInt54 = 0;
-                }
-                MouseHandler.anInt1450 = arg3;
-                MovedStatics.aClass22_189.method300(arg2, arg1, -15910, arg3);
-            }
-        }
-    }
 
     /*synthetic*/
     public static Class method90(String arg0) {

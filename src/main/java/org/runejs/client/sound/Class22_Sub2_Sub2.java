@@ -19,7 +19,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
         aRunnable_Impl1_2223 = arg1;
         aRunnable_Impl1_2223.method3(25832);
         aRunnable_Impl1_2223.method6(116);
-        this.method321((byte) 109, (long) anInt2226);
+        this.method321((long) anInt2226);
         aRunnable_Impl1_2223.method2(anIntArray2227, anInt2229);
         anInt2229 = 0;
         arg0.createThreadNode(10, this);
@@ -67,7 +67,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
                             if(aBoolean2228)
                                 aMidiFileReader_2225.reset(l_1_);
                             else {
-                                this.method321((byte) 110, (long) (int) (l_1_ / (long) (aMidiFileReader_2225.division * 1000)));
+                                this.method321((long) (int) (l_1_ / (long) (aMidiFileReader_2225.division * 1000)));
                                 aMidiFileReader_2225.clear();
                                 method325();
                                 return;
@@ -134,16 +134,14 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
 
     }
 
-    public synchronized void method300(byte[] arg0, boolean arg1, int arg2, int arg3) {
+    public synchronized void method300(byte[] arg0, boolean arg1, int arg3) {
 
-        if(arg2 != -15910)
-            aMidiFileReader_2225 = null;
         boolean bool = true;
         aMidiFileReader_2225.parse(arg0);
         anInt2226 = 0;
         aBoolean2228 = arg1;
         aRunnable_Impl1_2223.method6(-26);
-        this.method317(arg3, 0, (long) anInt2226, 0);
+        this.method317(arg3, 0, (long) anInt2226);
         int i = aMidiFileReader_2225.trackCount();
         for(int i_7_ = 0; i_7_ < i; i_7_++) {
             aMidiFileReader_2225.gotoTrack(i_7_);
@@ -160,7 +158,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
         if(bool) {
             if(aBoolean2228)
                 throw new RuntimeException();
-            this.method321((byte) 127, (long) anInt2226);
+            this.method321((long) anInt2226);
             aMidiFileReader_2225.clear();
         }
         method325();
@@ -169,7 +167,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
 
     public synchronized void method301(int arg0, int arg1) {
 
-        this.method318(-115, (long) anInt2226, arg0);
+        this.method318((long) anInt2226, arg0);
         aRunnable_Impl1_2223.method2(anIntArray2227, anInt2229);
         anInt2229 = arg1;
 
@@ -182,7 +180,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
     }
 
     public synchronized void method304(byte arg0, int arg1, int arg2) {
-        this.method317(arg1, arg2, (long) anInt2226, 0);
+        this.method317(arg1, arg2, (long) anInt2226);
         if(arg0 >= -82)
             method302(50);
     }
@@ -190,7 +188,7 @@ public class Class22_Sub2_Sub2 extends Class22_Sub2 implements Runnable {
     public synchronized void method303(byte arg0) {
 
         aRunnable_Impl1_2223.method6(-21);
-        this.method321((byte) 115, (long) anInt2226);
+        this.method321((long) anInt2226);
         aRunnable_Impl1_2223.method2(anIntArray2227, anInt2229);
         anInt2229 = 0;
         if(arg0 != -96)

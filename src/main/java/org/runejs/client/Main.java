@@ -57,7 +57,6 @@ public class Main extends GameShell {
     public static int anInt1769 = -1;
     public static int widgetSelected = 0;
     public static String[] playerActions = new String[5];
-    public static boolean aBoolean1790;
     public static Signlink signlink;
     public static CacheIndex metaIndex;
     public static CacheFileChannel dataChannel;

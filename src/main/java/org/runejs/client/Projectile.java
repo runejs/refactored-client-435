@@ -42,9 +42,6 @@ public class Projectile extends Renderable {
     public static int[] directions = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
 
     public static int atInventoryInterfaceType = 0;
-    public static int anInt3004;
-
-
     public int startHeight;
     public int startX;
     public int endHeight;
@@ -378,7 +375,7 @@ public class Projectile extends Renderable {
             if(gameObjectDefinition.hasActions == 0)
                 hash += -2147483648;
             if(gameObjectDefinition.hasSounds())
-                StaticAudio.addObjectSounds(localY, true, plane, face, localX, gameObjectDefinition);
+                StaticAudio.addObjectSounds(localY, plane, face, localX, gameObjectDefinition);
             if(type == 22) {
                 if(!VertexNormal.lowMemory || gameObjectDefinition.hasActions != 0 || gameObjectDefinition.obstructsGround) {
                     Renderable renderable;

@@ -2,22 +2,11 @@ package org.runejs.client.sound;
 
 import java.awt.Component;
 
-import org.runejs.client.Class24;
-import org.runejs.client.Class26;
-import org.runejs.client.Class33;
-import org.runejs.client.Class37;
-import org.runejs.client.Class39;
-import org.runejs.client.Class59;
 import org.runejs.client.LinkedList;
-import org.runejs.client.Main;
-import org.runejs.client.MovedStatics;
-import org.runejs.client.Projectile;
-import org.runejs.client.RSCanvas;
-import org.runejs.client.RSString;
 import org.runejs.client.audio.Effect;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.GameObjectDefinition;
-import org.runejs.client.cache.def.OverlayDefinition;
+import org.runejs.client.io.Buffer;
 import org.runejs.client.node.NodeCache;
 import org.runejs.client.util.Signlink;
 
@@ -95,11 +84,9 @@ public class StaticAudio {
 	public static PcmStreamMixer aPcmStreamMixer_1152;
 	public static LinkedList aLinkedList_2268 = new LinkedList();
 
-	public static void addObjectSounds(int arg0, boolean arg1, int arg2, int arg3, int arg4, GameObjectDefinition arg5) {
+	public static void addObjectSounds(int arg0, int arg2, int arg3, int arg4, GameObjectDefinition arg5) {
 	    Class40_Sub2 class40_sub2 = new Class40_Sub2();
 	    class40_sub2.anInt2000 = 128 * arg5.anInt2502;
-	    if(!arg1)
-	        Class37.method438(119, -54);
 	    class40_sub2.anInt2002 = arg5.anInt2542;
 	    class40_sub2.anIntArray2005 = arg5.anIntArray2523;
 	    class40_sub2.anInt2012 = arg5.anInt2499;
@@ -232,29 +219,29 @@ public class StaticAudio {
 	public static int[] sound = new int[50];
 
 	public static synchronized void method402(boolean arg0) {
-	    if(Class24.method340()) {
-	        MovedStatics.method308();
-	        Class26.aBoolean618 = arg0;
+	    if(StaticAudio.method340()) {
+	        StaticAudio.method308();
+	        StaticAudio.aBoolean618 = arg0;
 	        StaticAudio.musicCacheArchive = null;
 	    }
 	}
 
 	public static synchronized void method403(int arg0, boolean arg1, int arg2, int songId, CacheArchive cacheArchive, int arg5, int arg6, boolean arg7) {
-	    if(Class24.method340()) {
-	        Main.aBoolean1790 = arg7;
-	        MovedStatics.anInt255 = arg2;
-	        Projectile.anInt3004 = arg5;
-	        Class26.aBoolean618 = arg1;
+	    if(StaticAudio.method340()) {
+	        StaticAudio.aBoolean1790 = arg7;
+	        StaticAudio.anInt255 = arg2;
+	        StaticAudio.anInt3004 = arg5;
+	        StaticAudio.aBoolean618 = arg1;
 	        StaticAudio.musicCacheArchive = cacheArchive;
-	        MovedStatics.anInt1806 = -1;
-	        OverlayDefinition.anInt2342 = arg0;
-	        MovedStatics.anInt2110 = arg6;
-	        MovedStatics.anInt289 = songId;
+	        StaticAudio.anInt1806 = -1;
+	        StaticAudio.anInt2342 = arg0;
+	        StaticAudio.anInt2110 = arg6;
+	        StaticAudio.anInt289 = songId;
 	    }
 	}
 
 	public static synchronized void method412(boolean arg0, CacheArchive arg1, int arg2, String arg4, int arg5, String arg6, int arg7) {
-	    if(Class24.method340()) {
+	    if(StaticAudio.method340()) {
 	        int i = arg1.getHash(arg4);
 	        int i_16_ = arg1.method179(i, arg6);
 	        method403(arg7, true, arg5, i, arg1, i_16_, arg2, arg0);
@@ -262,27 +249,27 @@ public class StaticAudio {
 	}
 
 	public static synchronized void handleMusic() {
-	    if(Class24.method340()) {
-	        if(Class26.aBoolean618) {
-	            byte[] is = method74(Projectile.anInt3004, StaticAudio.musicCacheArchive, MovedStatics.anInt289, MovedStatics.anInt2110);
+	    if(StaticAudio.method340()) {
+	        if(StaticAudio.aBoolean618) {
+	            byte[] is = method74(StaticAudio.anInt3004, StaticAudio.musicCacheArchive, StaticAudio.anInt289, StaticAudio.anInt2110);
 	            if(is != null) {
-	                if(MovedStatics.anInt255 < 0) {
-	                    if(MovedStatics.anInt1806 < 0)
-	                        RSString.method56(Main.aBoolean1790, is, OverlayDefinition.anInt2342);
+	                if(StaticAudio.anInt255 < 0) {
+	                    if(StaticAudio.anInt1806 < 0)
+	                        StaticAudio.method56(StaticAudio.aBoolean1790, is, StaticAudio.anInt2342);
 	                    else
-	                        Class33.method566(OverlayDefinition.anInt2342, Main.aBoolean1790, MovedStatics.anInt1806, is);
+	                        StaticAudio.method566(StaticAudio.anInt2342, StaticAudio.aBoolean1790, StaticAudio.anInt1806, is);
 	                } else
-	                    MovedStatics.method886(0, OverlayDefinition.anInt2342, Main.aBoolean1790, is, MovedStatics.anInt255);
-	                Class26.aBoolean618 = false;
+	                    StaticAudio.method886(0, StaticAudio.anInt2342, StaticAudio.aBoolean1790, is, StaticAudio.anInt255);
+	                StaticAudio.aBoolean618 = false;
 	                StaticAudio.musicCacheArchive = null;
 	            }
 	        }
-	        Class59.method984(0);
+	        StaticAudio.method984(0);
 	    }
 	}
 
-	public static boolean method446(Signlink arg0, int arg1, boolean arg2) {
-	    if (!Class39.method452(arg0, arg2))
+	public static boolean method446(Signlink arg0, int arg1, boolean highmem) {
+	    if (!StaticAudio.method452(arg0, highmem))
 	        return false;
 	    if (arg1 > 0)
 	        aClass9_1684 = new NodeCache(arg1);
@@ -290,10 +277,10 @@ public class StaticAudio {
 	}
 
 	public static synchronized void method405(int arg1) {
-	    if(Class24.method340()) {
-	        MovedStatics.method557(arg1);
+	    if(StaticAudio.method340()) {
+	        StaticAudio.method557(arg1);
 	        StaticAudio.musicCacheArchive = null;
-	        Class26.aBoolean618 = false;
+	        StaticAudio.aBoolean618 = false;
 	    }
 	}
 
@@ -312,36 +299,36 @@ public class StaticAudio {
 	}
 
 	public static void method975(int songTimeout, int songId) {
-	    if(RSCanvas.musicVolume != 0 && songId != -1) {
-	        StaticAudio.method414(false, 1, songId, RSCanvas.musicVolume, 0, CacheArchive.jingleCacheArchive);
+	    if(StaticAudio.musicVolume != 0 && songId != -1) {
+	        StaticAudio.method414(false, 1, songId, StaticAudio.musicVolume, 0, CacheArchive.jingleCacheArchive);
 	        StaticAudio.songTimeout = songTimeout;
 	    }
 	}
 
 	public static synchronized void method414(boolean arg0, int arg1, int songid, int arg3, int arg4, CacheArchive arg5) {
-	    if(Class24.method340()) {
-	        Class26.aBoolean618 = true;
-	        MovedStatics.anInt1806 = -1;
-	        MovedStatics.anInt255 = -1;
-	        OverlayDefinition.anInt2342 = arg3;
-	        Projectile.anInt3004 = arg4;
-	        Main.aBoolean1790 = arg0;
-	        MovedStatics.anInt2110 = arg1;
+	    if(StaticAudio.method340()) {
+	        StaticAudio.aBoolean618 = true;
+	        StaticAudio.anInt1806 = -1;
+	        StaticAudio.anInt255 = -1;
+	        StaticAudio.anInt2342 = arg3;
+	        StaticAudio.anInt3004 = arg4;
+	        StaticAudio.aBoolean1790 = arg0;
+	        StaticAudio.anInt2110 = arg1;
 	        StaticAudio.musicCacheArchive = arg5;
-	        MovedStatics.anInt289 = songid;
+	        StaticAudio.anInt289 = songid;
 	    }
 	}
 
 	public static void playSong(int songId) {
 	    if(songId == -1 && songTimeout == 0)
 	        method402(false);
-	    else if(songId != -1 && songId != currentSongId && RSCanvas.musicVolume != 0 && songTimeout == 0)
-	        method403(RSCanvas.musicVolume, true, 10, songId, CacheArchive.musicCacheArchive, 0, 0, false);
+	    else if(songId != -1 && songId != currentSongId && StaticAudio.musicVolume != 0 && songTimeout == 0)
+	        method403(StaticAudio.musicVolume, true, 10, songId, CacheArchive.musicCacheArchive, 0, 0, false);
 	    currentSongId = songId;
 	}
 
 	public static void method950(int soundId, int volume, int delay) {
-	    if (MovedStatics.anInt200 != 0 && volume != 0 && currentSound < 50) {
+	    if (StaticAudio.anInt200 != 0 && volume != 0 && currentSound < 50) {
 	        sound[currentSound] = soundId;
 	        soundVolume[currentSound] = volume;
 	        soundDelay[currentSound] = delay;
@@ -352,5 +339,205 @@ public class StaticAudio {
 	}
 
 	public static CacheArchive musicCacheArchive;
+	public static Class22 aClass22_189;
+
+	public static void method886(int arg0, int arg1, boolean arg2, byte[] arg3, int arg4) {
+	    if(arg0 == 0 && aClass22_189 != null) {
+	        if(StaticAudio.anInt1450 < 0) {
+	            if(StaticAudio.anInt54 != 0) {
+	                StaticAudio.anInt2258 = arg1;
+	                StaticAudio.aByteArray3270 = arg3;
+	                StaticAudio.aBoolean687 = arg2;
+	            } else
+	                StaticAudio.method56(arg2, arg3, arg1);
+	        } else {
+	            Buffer.anInt1982 = arg4;
+	            if(StaticAudio.anInt1450 != 0) {
+	                int i = StaticAudio.method372(arg0 ^ 0x60, StaticAudio.anInt1450);
+	                i -= StaticAudio.anInt909;
+	                StaticAudio.anInt54 = (i + 3600) / arg4;
+	                if(StaticAudio.anInt54 < 1)
+	                    StaticAudio.anInt54 = 1;
+	            } else
+	                StaticAudio.anInt54 = 1;
+	            StaticAudio.anInt2258 = arg1;
+	            StaticAudio.aByteArray3270 = arg3;
+	            StaticAudio.aBoolean687 = arg2;
+	        }
+	    }
+	}
+
+	public static void method651(int arg0, int arg1) {
+	    if(aClass22_189 != null) {
+	        if(StaticAudio.anInt54 != 0) {
+	            if(StaticAudio.aByteArray3270 != null)
+	                StaticAudio.anInt2258 = arg1;
+	        } else if(StaticAudio.anInt1450 >= 0) {
+	            StaticAudio.anInt1450 = arg1;
+	            aClass22_189.method304((byte) -111, arg1, 0);
+	        }
+	    }
+	}
+
+	public static void method1019() {
+	    if(aClass22_189 != null) {
+	        StaticAudio.method308();   
+	        if(StaticAudio.anInt54 > 0) {
+	            aClass22_189.method301(256, 0);
+	            StaticAudio.anInt54 = 0;
+	        }
+	        aClass22_189.method306((byte) 101);
+	        aClass22_189 = null;
+	    }
+	}
+
+	public static void method984(int arg0) {
+	    if(arg0 == 0) {
+	        if(aClass22_189 != null) {
+	            if(StaticAudio.anInt1450 >= 0) {
+	                if(StaticAudio.anInt54 > 0) {
+	                    StaticAudio.anInt909 += Buffer.anInt1982;
+	                    aClass22_189.method304((byte) -97, StaticAudio.anInt1450, StaticAudio.anInt909);
+	                    StaticAudio.anInt54--;
+	                    if(StaticAudio.anInt54 == 0) {
+	                        aClass22_189.method303((byte) -96);
+	                        StaticAudio.anInt1450 = -1;
+	                        StaticAudio.anInt54 = 20;
+	                    }
+	                }
+	            } else if(StaticAudio.anInt54 > 0) {
+	                StaticAudio.anInt54--;
+	                if(StaticAudio.anInt54 == 0) {
+	                    if(StaticAudio.aByteArray3270 == null)
+	                        aClass22_189.method301(256, 0);
+	                    else {
+	                        aClass22_189.method301(StaticAudio.anInt2258, arg0);
+	                        StaticAudio.anInt1450 = StaticAudio.anInt2258;
+	                        aClass22_189.method300(StaticAudio.aByteArray3270, StaticAudio.aBoolean687, StaticAudio.anInt2258);
+	                        StaticAudio.aByteArray3270 = null;
+	                    }
+	                    StaticAudio.anInt909 = 0;
+	                }
+	            }
+	            aClass22_189.method302(0);
+	        }
+	    }
+	}
+
+	public static boolean method452(Signlink arg0, boolean highmem) {
+	        StaticAudio.anInt54 = 20;
+	        try {
+	            aClass22_189 = new Class22_Sub2_Sub1(); // Java Midi Based
+	            return true;
+	        } catch(Throwable throwable) {
+	       /*     Runnable_Impl1 runnable_impl1 = arg0.method391();
+	            if(runnable_impl1 != null) {
+	                aClass22_189 = new Class22_Sub2_Sub2(arg0, runnable_impl1); // ???
+	                return true;
+	            }
+	            if(highmem) {
+	                aClass22_189 = new Class22_Sub1(arg0); // JS based
+	                return true;
+	            }*/
+	            return false;
+	        }
+	//        return false;
+	    }
+
+	public static int anInt1450 = -1;
+
+	public static void method566(int arg0, boolean arg1, int arg2, byte[] arg3) {
+	    if(aClass22_189 != null) {
+	        if(anInt1450 >= 0) {
+	            arg2 -= 20;
+	            if(arg2 < 1)
+	                arg2 = 1;
+	            StaticAudio.anInt54 = arg2;
+	            if(anInt1450 == 0)
+	                Buffer.anInt1982 = 0;
+	            else {
+	                int i = StaticAudio.method372(113, anInt1450);
+	                i -= StaticAudio.anInt909;
+	                Buffer.anInt1982 = (-1 + arg2 + 3600 + i) / arg2;
+	            }
+	            StaticAudio.aByteArray3270 = arg3;
+	            StaticAudio.anInt2258 = arg0;
+	            StaticAudio.aBoolean687 = arg1;
+	        } else if(StaticAudio.anInt54 == 0)
+	            StaticAudio.method56(arg1, arg3, arg0);
+	        else {
+	            StaticAudio.anInt2258 = arg0;
+	            StaticAudio.aBoolean687 = arg1;
+	            StaticAudio.aByteArray3270 = arg3;
+	        }
+	    }
+	}
+
+	public static boolean method340() {
+	    return aClass22_189 != null;
+	
+	}
+
+	public static int method372(int arg0, int arg1) {
+	    if(arg0 <= 92)
+	        method372(4, 3);
+	    return (int) (0.5 + Math.log(0.00390625 * (double) arg1) * 868.5889638065036);
+	}
+
+	public static int musicVolume = 255;
+	public static int anInt200 = 127;
+	public static boolean aBoolean618 = false;
+	public static int anInt2342;
+
+	public static void method456(int arg0) {
+	    if (method340()) {
+	        if (aBoolean618)
+	            anInt2342 = arg0;
+	        else
+	            method651(22741, arg0);
+	    }
+	}
+
+	public static int anInt909 = 0;
+
+	public static void method56(boolean arg1, byte[] arg2, int arg3) {
+	    if(aClass22_189 != null) {
+	        if(anInt1450 >= 0) {
+	            aClass22_189.method303((byte) -96);
+	            anInt909 = 0;
+	            StaticAudio.aByteArray3270 = null;
+	            StaticAudio.anInt54 = 20;
+	            anInt1450 = -1;
+	        }
+	        if(arg2 != null) {
+	            if(StaticAudio.anInt54 > 0) {
+	                aClass22_189.method301(arg3, 0);
+	                StaticAudio.anInt54 = 0;
+	            }
+	            anInt1450 = arg3;
+	            aClass22_189.method300(arg2, arg1, arg3);
+	        }
+	    }
+	}
+
+	public static int anInt255;
+	public static int anInt3004;
+	public static int anInt289;
+	public static int anInt1806;
+	public static int anInt2110;
+
+	public static void method308() {
+	    method56(false, null, 0);
+	}
+
+	public static void method557(int arg0) {
+	    method886(0, 0, false, null, arg0);
+	}
+
+	public static int anInt54 = 0;
+	public static int anInt2258;
+	public static byte[] aByteArray3270;
+	public static boolean aBoolean687;
+	public static boolean aBoolean1790;
 
 }

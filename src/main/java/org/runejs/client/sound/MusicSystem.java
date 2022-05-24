@@ -4,7 +4,6 @@ package org.runejs.client.sound;
 import org.runejs.client.audio.Effect;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.*;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiUnavailableException;
@@ -127,7 +126,7 @@ public final class MusicSystem implements Runnable {
                             i_16_ = 0;
                         i_10_ = (i_11_ + -i_16_) * StaticAudio.soundEffectVolume / i_11_;
                     } else
-                        i_10_ = MovedStatics.anInt200;
+                        i_10_ = StaticAudio.anInt200;
                     RawSound class40_sub12_sub1 = effect.method428().resample(StaticAudio.aDecimator_1289);
                     RawPcmStream class40_sub9_sub2 = RawPcmStream.create(class40_sub12_sub1, 100, i_10_);
                     class40_sub9_sub2.method860(-1 + StaticAudio.soundVolume[index]);
@@ -140,8 +139,8 @@ public final class MusicSystem implements Runnable {
             StaticAudio.songTimeout -= 20;
             if(StaticAudio.songTimeout < 0)
                 StaticAudio.songTimeout = 0;
-            if(StaticAudio.songTimeout == 0 && RSCanvas.musicVolume != 0 && StaticAudio.currentSongId != -1)
-                StaticAudio.method414(false, 0, StaticAudio.currentSongId, RSCanvas.musicVolume, 0, CacheArchive.musicCacheArchive);
+            if(StaticAudio.songTimeout == 0 && StaticAudio.musicVolume != 0 && StaticAudio.currentSongId != -1)
+                StaticAudio.method414(false, 0, StaticAudio.currentSongId, StaticAudio.musicVolume, 0, CacheArchive.musicCacheArchive);
         }
     }
 

@@ -17,7 +17,6 @@ public class PlayerAppearance {
     public static int currentTickSample;
     public static int[] anIntArray684 = new int[50];
     public static int[] anIntArray685 = new int[50];
-    public static boolean aBoolean687;
     public static int[] anIntArray688 = new int[50];
     public static int[] anIntArray695 = new int[50];
     public static String[] aClass1Array697 = new String[50];

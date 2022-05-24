@@ -1,7 +1,7 @@
 package org.runejs.client.sound;
 
 public abstract class Class22 {
-    public abstract void method300(byte[] is, boolean bool, int i, int i_17_);
+    public abstract void method300(byte[] is, boolean bool, int i_17_);
 
     public abstract void method301(int i, int i_18_);
 

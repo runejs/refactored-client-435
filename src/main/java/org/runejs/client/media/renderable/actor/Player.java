@@ -24,7 +24,6 @@ public class Player extends Actor {
 
     public static int anInt3264 = 0;
     public static int worldLevel;
-    public static byte[] aByteArray3270;
     public static int[] viewportOffsets;
     public static int headIconDrawType = 0;
     public static Player localPlayer;
@@ -110,8 +109,6 @@ public class Player extends Actor {
             return false;
         if(arg1 == 127)
             return false;
-        if(arg0 < 118)
-            aByteArray3270 = null;
         return arg1 < 129 || arg1 > 159;
     }
 

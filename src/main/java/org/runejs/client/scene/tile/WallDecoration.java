@@ -6,6 +6,7 @@ import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.node.NodeCache;
+import org.runejs.client.sound.StaticAudio;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.input.KeyFocusListener;
@@ -147,7 +148,7 @@ public class WallDecoration {
         Rasterizer.drawUnfilledRectangle(0, 0, 42, 42, 0x242017);
         musicIcon.drawImage(4, 3);
 
-        if(RSCanvas.musicVolume == 0) {
+        if(StaticAudio.musicVolume == 0) {
             Rasterizer.drawDiagonalLine(0,0, 42,42, 0xFF0000);
         }
 

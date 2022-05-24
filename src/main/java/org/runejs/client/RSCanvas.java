@@ -12,10 +12,8 @@ import java.awt.*;
 public class RSCanvas extends Canvas {
     public static byte[][] aByteArrayArray47 = new byte[50][];
     public static LinkedList aLinkedList_53 = new LinkedList();
-    public static int anInt54 = 0;
     public static int anInt57;
     public static ProducingGraphicsBuffer tabBottom;
-    public static int musicVolume = 255;
     public static int[] anIntArray62;
     public static ProducingGraphicsBuffer chatBoxImageProducer;
     public static int[] anIntArray66;

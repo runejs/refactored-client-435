@@ -34,11 +34,6 @@ public class Class24 {
     }
 
 
-    public static boolean method340() {
-        return MovedStatics.aClass22_189 != null;
-
-    }
-
     public static void constructMapRegionObjects(int drawX, int drawY, int drawingPlane, int orientation, int x, int y, int plane, Scene scene, byte[] objectData, CollisionMap[] collisionMaps) {
         Buffer objectBuffer = new Buffer(objectData);
         int i = -1;

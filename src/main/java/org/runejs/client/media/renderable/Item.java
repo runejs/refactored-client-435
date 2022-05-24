@@ -218,8 +218,8 @@ public class Item extends Renderable {
             Native.password = Configuration.getPassword();
             MovedStatics.anIntArray178 = new int[32768];
             Class26.loginScreenState = 0;
-            if (RSCanvas.musicVolume != 0 && !VertexNormal.lowMemory)
-                StaticAudio.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", RSCanvas.musicVolume);
+            if (StaticAudio.musicVolume != 0 && !VertexNormal.lowMemory)
+                StaticAudio.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", StaticAudio.musicVolume);
             else
                 StaticAudio.method405(10);
             GameShell.method19(false);

@@ -2,8 +2,6 @@ package org.runejs.client.sound;
 
 import javax.sound.midi.*;
 
-import org.runejs.client.MovedStatics;
-
 import java.io.ByteArrayInputStream;
 
 public class Class22_Sub2_Sub1 extends Class22_Sub2 implements Receiver {
@@ -21,15 +19,15 @@ public class Class22_Sub2_Sub1 extends Class22_Sub2 implements Receiver {
             aSequencer2220 = MidiSystem.getSequencer(false);
             aSequencer2220.getTransmitter().setReceiver(this);
             aSequencer2220.open();
-            method321((byte) 115, -1L);
+            method321(-1L);
         } catch(Exception exception) {
-            MovedStatics.method1019();
+            StaticAudio.method1019();
         }
     }
 
     public synchronized void method304(byte arg0, int arg1, int arg2) {
         if(aSequencer2220 != null) {
-            method317(arg1, arg2, -1L, 0);
+            method317(arg1, arg2, -1L);
             if(arg0 > -82)
                 aSequencer2220 = null;
         }
@@ -52,7 +50,7 @@ public class Class22_Sub2_Sub1 extends Class22_Sub2 implements Receiver {
         if(null != aSequencer2220) {
             if(arg1 != 0)
                 method301(114, 102);
-            method318(-100, -1L, arg0);
+            method318(-1L, arg0);
         }
     }
 
@@ -64,7 +62,7 @@ public class Class22_Sub2_Sub1 extends Class22_Sub2 implements Receiver {
         if(aSequencer2220 != null) {
             aBoolean2221 = false;
             aSequencer2220.stop();
-            method321((byte) 106, -1L);
+            method321(-1L);
             if(arg0 != -96)
                 method314(-102, -74, -81, 35L);
         }
@@ -80,15 +78,13 @@ public class Class22_Sub2_Sub1 extends Class22_Sub2 implements Receiver {
         }
     }
 
-    public void method300(byte[] arg0, boolean arg1, int arg2, int arg3) {
+    public void method300(byte[] arg0, boolean arg1, int arg3) {
         if(aSequencer2220 != null) {
             try {
-                if(arg2 != -15910)
-                    aSequencer2220 = null;
                 Sequence sequence = MidiSystem.getSequence(new ByteArrayInputStream(arg0));
                 aSequencer2220.setSequence(sequence);
                 aSequencer2220.setLoopCount(!arg1 ? 0 : -1);
-                method317(arg3, 0, -1L, arg2 ^ ~0x3e25);
+                method317(arg3, 0, -1L);
                 aBoolean2221 = true;
                 aSequencer2220.start();
             } catch(Exception exception) {
