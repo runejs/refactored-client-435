@@ -63,7 +63,7 @@ public class Class13 {
 
     public static void handleInterfaceActions(int areaId, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, int widgetId) {
         if(GameInterface.decodeGameInterface(widgetId)) {
-            Class48.handleInterfaceActions(areaId, mouseX, mouseY, minX, minY, maxX, maxY, GameInterface.cachedInterfaces[widgetId], -1, 0, 0);
+            MovedStatics.handleInterfaceActions(areaId, mouseX, mouseY, minX, minY, maxX, maxY, GameInterface.cachedInterfaces[widgetId], -1, 0, 0);
         }
     }
 

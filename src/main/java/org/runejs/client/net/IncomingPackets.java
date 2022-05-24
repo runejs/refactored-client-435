@@ -378,7 +378,7 @@ public class IncomingPackets {
                 return true;
             }
             if(opcode == PacketType.LOGOUT.getOpcode()) {
-                Class48.logout();
+                MovedStatics.logout();
                 opcode = -1;
                 return false;
             }
@@ -1129,7 +1129,7 @@ public class IncomingPackets {
                 return true;
             }
             MovedStatics.printException("T1 - " + opcode + "," + secondLastOpcode + "," + thirdLastOpcode + " - " + incomingPacketSize, null);
-            Class48.logout();
+            MovedStatics.logout();
         } catch(java.io.IOException ioexception) {
             Class59.dropClient();
         } catch(Exception exception) {
@@ -1137,7 +1137,7 @@ public class IncomingPackets {
             for(int i = 0; incomingPacketSize > i && i < 50; i++)
                 string += incomingPacketBuffer.buffer[i] + ",";
             MovedStatics.printException(string, exception);
-            Class48.logout();
+            MovedStatics.logout();
             exception.printStackTrace();
         }
         return true;

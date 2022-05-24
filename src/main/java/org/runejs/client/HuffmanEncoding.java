@@ -218,7 +218,7 @@ public class HuffmanEncoding {
         if (arg2 != 21) {
             ChatBox.chatTypes = null;
         }
-        return Class48.method927(i_13_, arg0, true, i);
+        return MovedStatics.method927(i_13_, arg0, true, i);
     }
 
     public static void method1030(byte arg0) {

@@ -1706,7 +1706,7 @@ public class GameInterface extends CachedNode {
         if(class40_sub5_sub14_sub4 != null) {
             return class40_sub5_sub14_sub4;
         }
-        class40_sub5_sub14_sub4 = Class48.method927(0, CacheArchive.gameImageCacheArchive, true, i);
+        class40_sub5_sub14_sub4 = MovedStatics.method927(0, CacheArchive.gameImageCacheArchive, true, i);
         if(class40_sub5_sub14_sub4 == null) {
             FramemapDefinition.aBoolean2177 = true;
         } else {
@@ -1749,7 +1749,7 @@ public class GameInterface extends CachedNode {
         if(imageRGB != null) {
             return imageRGB;
         }
-        imageRGB = Class48.method927(0, CacheArchive.gameImageCacheArchive, true, i);
+        imageRGB = MovedStatics.method927(0, CacheArchive.gameImageCacheArchive, true, i);
         if(imageRGB == null) {
             FramemapDefinition.aBoolean2177 = true;
         } else {

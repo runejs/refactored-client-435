@@ -271,7 +271,7 @@ public class Landscape {
                         if(class40_sub2.anInt1997 >= 0) {
                             Effect effect = Effect.method429(CacheArchive.soundEffectCacheArchive, class40_sub2.anInt1997, 0);
                             if(effect != null) {
-                                Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aClass48_1289);
+                                Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aDecimator_1289);
                                 Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_49_);
                                 class40_sub9_sub2.method860(-1);
                                 Class49.aClass40_Sub9_Sub1_1152.method846(class40_sub9_sub2);
@@ -285,7 +285,7 @@ public class Landscape {
                             int i_50_ = (int) ((double) class40_sub2.anIntArray2005.length * Math.random());
                             Effect effect = Effect.method429(CacheArchive.soundEffectCacheArchive, class40_sub2.anIntArray2005[i_50_], 0);
                             if(effect != null) {
-                                Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aClass48_1289);
+                                Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aDecimator_1289);
                                 Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_49_);
                                 class40_sub9_sub2.method860(0);
                                 Class49.aClass40_Sub9_Sub1_1152.method846(class40_sub9_sub2);
@@ -316,9 +316,9 @@ public class Landscape {
             for(int tileX = 0; tileX < 64; tileX++) {
                 for(int tileY = 0; tileY < 64; tileY++) {
                     if(plane == drawingPlane && tileX >= drawX && 8 + drawX > tileX && tileY >= drawY && 8 + drawY > tileY)
-                        Class48.method922(x + Class24.getRotatedTileX(rotation, false, tileX & 0x7, tileY & 0x7), rotation, class40_sub1, y + Class33.getRotatedTileY(tileX & 0x7, 0x7 & tileY, rotation, false), 0, 0, currentPlane);
+                        MovedStatics.method922(x + Class24.getRotatedTileX(rotation, false, tileX & 0x7, tileY & 0x7), rotation, class40_sub1, y + Class33.getRotatedTileY(tileX & 0x7, 0x7 & tileY, rotation, false), 0, 0, currentPlane);
                     else
-                        Class48.method922(-1, 0, class40_sub1, -1, 0, 0, 0);
+                        MovedStatics.method922(-1, 0, class40_sub1, -1, 0, 0, 0);
                 }
             }
         }

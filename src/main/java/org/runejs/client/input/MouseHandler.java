@@ -119,7 +119,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                         Renderable.anInt2869 = Class57.clickX;
                         Class40_Sub5_Sub15.lastItemDragged = false;
                         SceneTile.activeInterfaceType = 2;
-                        Class48.modifiedWidgetId = id;
+                        MovedStatics.modifiedWidgetId = id;
                         ItemDefinition.anInt2798 = RSString.clickY;
                         GroundItemTile.selectedInventorySlot = item;
                         if(id >> 16 == GameInterface.gameScreenInterfaceId)

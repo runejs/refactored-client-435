@@ -192,7 +192,7 @@ public class Main extends GameShell {
                                         if (imageRGB == null)
                                             result = false;
                                         else {
-                                            if (SceneTile.activeInterfaceType != 0 && GroundItemTile.selectedInventorySlot == i_7_ && gameInterface.id == Class48.modifiedWidgetId) {
+                                            if (SceneTile.activeInterfaceType != 0 && GroundItemTile.selectedInventorySlot == i_7_ && gameInterface.id == MovedStatics.modifiedWidgetId) {
                                                 i_14_ = Landscape.mouseY + -ItemDefinition.anInt2798;
                                                 i_12_ = Class13.mouseX + -Renderable.anInt2869;
                                                 if (i_12_ < 5 && i_12_ > -5)
@@ -715,7 +715,7 @@ public class Main extends GameShell {
             ChatBox.chatMessages[i] = null;
         Class8.itemSelected = 0;
         Class57.anInt1342 = -40 + (int) (80.0 * Math.random());
-        Class48.cameraOffsetY = -55 + (int) (Math.random() * 110.0);
+        MovedStatics.cameraOffsetY = -55 + (int) (Math.random() * 110.0);
         MovedStatics.destinationX = 0;
         Class43.cameraYawOffset = (int) (Math.random() * 120.0) + -60;
         Buffer.anInt1985 = -1;
@@ -1427,8 +1427,8 @@ public class Main extends GameShell {
                                 if(Class40_Sub5_Sub15.lastItemDragged && Buffer.lastItemDragTime >= 5) {
                                     RSRuntimeException.lastActiveInvInterface = -1;
                                     Class43.processRightClick();
-                                    if(RSRuntimeException.lastActiveInvInterface == Class48.modifiedWidgetId && Class55.mouseInvInterfaceIndex != GroundItemTile.selectedInventorySlot) {
-                                        GameInterface childInterface = GameInterface.getInterface(Class48.modifiedWidgetId);
+                                    if(RSRuntimeException.lastActiveInvInterface == MovedStatics.modifiedWidgetId && Class55.mouseInvInterfaceIndex != GroundItemTile.selectedInventorySlot) {
+                                        GameInterface childInterface = GameInterface.getInterface(MovedStatics.modifiedWidgetId);
                                         int moveItemInsertionMode = 0;
                                         if(Class43.bankInsertMode == 1 && childInterface.contentType == 206)
                                             moveItemInsertionMode = 1;
@@ -1461,7 +1461,7 @@ public class Main extends GameShell {
                                         SceneCluster.packetBuffer.putByte(moveItemInsertionMode);
                                         SceneCluster.packetBuffer.putShortBE(GroundItemTile.selectedInventorySlot);
                                         SceneCluster.packetBuffer.putShortLE(Class55.mouseInvInterfaceIndex);
-                                        SceneCluster.packetBuffer.putIntME2(Class48.modifiedWidgetId);
+                                        SceneCluster.packetBuffer.putIntME2(MovedStatics.modifiedWidgetId);
                                     }
                                 } else {
                                     if((ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend((byte) 63, ActorDefinition.menuActionRow - 1)) && ActorDefinition.menuActionRow > 2)
@@ -1563,14 +1563,14 @@ public class Main extends GameShell {
                         if(MovedStatics.anInt1923 > 500) {
                             int i_22_ = (int) (8.0 * Math.random());
                             if((0x2 & i_22_) == 2)
-                                Class48.cameraOffsetY += ProducingGraphicsBuffer_Sub1.anInt2211;
+                                MovedStatics.cameraOffsetY += ProducingGraphicsBuffer_Sub1.anInt2211;
                             if((i_22_ & 0x1) == 1)
                                 Buffer.cameraOffsetX += MovedStatics.anInt1010;
                             MovedStatics.anInt1923 = 0;
                             if((0x4 & i_22_) == 4)
                                 Class57.anInt1342 += MovedStatics.anInt195;
                         }
-                        if(Class48.cameraOffsetY < -55)
+                        if(MovedStatics.cameraOffsetY < -55)
                             ProducingGraphicsBuffer_Sub1.anInt2211 = 2;
                         if(Player.anInt3264 > 500) {
                             int i_23_ = (int) (Math.random() * 8.0);
@@ -1580,7 +1580,7 @@ public class Main extends GameShell {
                                 Class51.mapZoomOffset += anInt1766;
                             Player.anInt3264 = 0;
                         }
-                        if(Class48.cameraOffsetY > 55)
+                        if(MovedStatics.cameraOffsetY > 55)
                             ProducingGraphicsBuffer_Sub1.anInt2211 = -2;
                         if(Buffer.cameraOffsetX < -50)
                             MovedStatics.anInt1010 = 2;
