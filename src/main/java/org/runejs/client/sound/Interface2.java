@@ -1,4 +1,4 @@
-package org.runejs.client;
+package org.runejs.client.sound;
 
 import java.awt.*;
 

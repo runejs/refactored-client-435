@@ -1,7 +1,7 @@
 package org.runejs.client.util;
 
 import org.runejs.client.SizedAccessFile;
-import org.runejs.client.Interface2;
+import org.runejs.client.sound.Interface2;
 import org.runejs.client.GameShell;
 import org.runejs.client.Runnable_Impl1;
 import org.runejs.Configuration;

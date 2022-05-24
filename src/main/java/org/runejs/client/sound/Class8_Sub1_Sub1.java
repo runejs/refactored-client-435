@@ -1,6 +1,5 @@
 package org.runejs.client.sound;
 
-import org.runejs.client.Interface2;
 import org.runejs.client.util.Signlink;
 
 import java.awt.*;
