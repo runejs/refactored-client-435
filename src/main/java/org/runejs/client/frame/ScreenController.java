@@ -416,7 +416,7 @@ public class ScreenController {
             y -= 467;
         } else {
             x -= 6;
-            y -= frameHeight - 54;
+            y -= drawHeight - 36;
         }
         if (MouseHandler.clickType == 1) {
             if (x >= 0 && x <= 100 && y >= 0 && y <= 32) {
