@@ -39,9 +39,24 @@ public class SoundSystem {
 	 * easier to plug in.
 	 */
 	public static void initialiseSound(Signlink signlink) {
-		SoundSystem.pcmStreamMixer = SoundSystem.method1003(signlink);
+		try {
+			PcmPlayer player = new PcmPlayer();
+			player.method222(signlink, 2048);
+			SoundSystem.pcmPlayer = player;
+		} catch (Throwable throwable) {
+			/*
+			 * Vastly simplified, it used to create new PcmPlayerBase(8000) in addition
+			 * to other audio backends which are deprecated on error. However, this is
+			 * not needed due to existing nullchecks in the code. After testing, it
+			 * appears that the hierarchy of the PCM classes can be removed just fine.
+			 */
+		}
+		
+		PcmStreamMixer mixer = new PcmStreamMixer();
+		PcmPlayer.setMixer(mixer);
+		SoundSystem.pcmStreamMixer = mixer;
 	}
-
+	
 	private static Class pcmClass;
 
 	public static void handleSounds() {
@@ -148,29 +163,6 @@ public class SoundSystem {
 				}
 			}
 		}
-	}
-
-	private static PcmStreamMixer method1003(Signlink arg0) {
-		createPlayer(arg0);
-		PcmStreamMixer mixer = new PcmStreamMixer();
-		PcmPlayer.setMixer(mixer);
-		return mixer;
-	}
-
-	/*
-	 * Vastly simplified, it used to create new PcmPlayerBase(8000) in addition
-	 * to other audio backends which are deprecated on error. However, this is
-	 * not needed due to existing nullchecks in the code. After testing, it
-	 * appears that the hierarchy of the PCM classes can be removed just fine.
-	 */
-	private static void createPlayer(Signlink arg2) {
-		try {
-			PcmPlayer class8_sub1 = new PcmPlayer();
-			class8_sub1.method222(arg2, 2048);
-			SoundSystem.pcmPlayer = class8_sub1;
-		} catch (Throwable throwable) {
-		}
-
 	}
 
 	/*
