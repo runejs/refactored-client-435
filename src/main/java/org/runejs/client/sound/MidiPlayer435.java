@@ -51,7 +51,7 @@ public class MidiPlayer435 implements Receiver {
 	}
 
 	/**
-     * Creates a new {@link MidiPlayer}.
+     * Creates a new {@link MidiPlayer435}.
 	 */
 	public MidiPlayer435() {
 		try {

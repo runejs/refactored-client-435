@@ -49,7 +49,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     public boolean nonFlatShading;
     public boolean wall;
     public int[] objectTypes;
-    public int[] anIntArray2523;
+    public int[] soundEffectIds;
     public int[] objectModels;
     public int ambient;
     public boolean walkable;
@@ -219,12 +219,12 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
 
     public boolean hasSounds() {
         if(childIds == null) {
-            return ambientSoundId != -1 || anIntArray2523 != null;
+            return ambientSoundId != -1 || soundEffectIds != null;
         }
         for(int i = 0; i < childIds.length; i++) {
             if(childIds[i] != -1) {
                 GameObjectDefinition gameObjectDefinition = getDefinition(childIds[i]);
-                if(gameObjectDefinition.ambientSoundId != -1 || gameObjectDefinition.anIntArray2523 != null) {
+                if(gameObjectDefinition.ambientSoundId != -1 || gameObjectDefinition.soundEffectIds != null) {
                     return true;
                 }
             }
@@ -514,9 +514,9 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
             anInt2542 = buffer.getUnsignedShortBE();
             anInt2502 = buffer.getUnsignedByte();
             int length = buffer.getUnsignedByte();
-            anIntArray2523 = new int[length];
+            soundEffectIds = new int[length];
             for(int index = 0; index < length; ++index) {
-                anIntArray2523[index] = buffer.getUnsignedShortBE();
+                soundEffectIds[index] = buffer.getUnsignedShortBE();
             }
         }
     }

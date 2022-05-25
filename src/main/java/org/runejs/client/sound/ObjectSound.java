@@ -3,16 +3,16 @@ package org.runejs.client.sound;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.node.Node;
 
-public class Class40_Sub2 extends Node {
+public class ObjectSound extends Node {
 
     public int anInt1993;
     public int anInt1994;
-    public int anInt1997;
+    public int soundEffectId;
     public int anInt2000;
-    public RawPcmStream aRawPcmStream_2001;
+    public RawPcmStream stream1;
     public int anInt2002;
     public int anInt2003;
-    public int[] anIntArray2005;
+    public int[] soundEffectIds;
     public int anInt2007;
     public RawPcmStream aRawPcmStream_2010;
     public GameObjectDefinition gameObjectDefinition;
@@ -21,24 +21,24 @@ public class Class40_Sub2 extends Node {
     public int anInt2014;
     
 	public void method528() {
-        int i = anInt1997;
+        int i = soundEffectId;
         GameObjectDefinition gameObjectDefinition = this.gameObjectDefinition.getChildDefinition();
         if(gameObjectDefinition == null) {
             anInt2000 = 0;
             anInt2012 = 0;
             anInt2002 = 0;
-            anIntArray2005 = null;
-            anInt1997 = -1;
+            soundEffectIds = null;
+            soundEffectId = -1;
         } else {
             anInt2000 = 128 * gameObjectDefinition.anInt2502;
             anInt2012 = gameObjectDefinition.anInt2499;
             anInt2002 = gameObjectDefinition.anInt2542;
-            anInt1997 = gameObjectDefinition.ambientSoundId;
-            anIntArray2005 = gameObjectDefinition.anIntArray2523;
+            soundEffectId = gameObjectDefinition.ambientSoundId;
+            soundEffectIds = gameObjectDefinition.soundEffectIds;
         }
-        if(i != anInt1997 && aRawPcmStream_2001 != null) {
-            StaticAudio.aPcmStreamMixer_1152.method853(aRawPcmStream_2001);
-            aRawPcmStream_2001 = null;
+        if(i != soundEffectId && stream1 != null) {
+            StaticAudio.aPcmStreamMixer_1152.removeSubStream(stream1);
+            stream1 = null;
         }
     }
 

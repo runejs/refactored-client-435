@@ -187,7 +187,7 @@ public class PcmStreamMixer extends PcmStream {
         }
     }
 
-    public synchronized void method853(PcmStream arg0) {
+    public synchronized void removeSubStream(PcmStream arg0) {
         arg0.remove();
     }
 }
