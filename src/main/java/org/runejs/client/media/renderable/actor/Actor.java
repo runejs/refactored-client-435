@@ -347,7 +347,7 @@ public abstract class Actor extends Renderable {
                 Class55.destinationY -= i_35_;
             }
             Player.cutsceneActive = false;
-            SoundSystem.currentSound = 0;
+            SoundSystem.reset();
             Class57.aLinkedList_1332.clear(0);
             Class43.projectileQueue.clear(0);
         }

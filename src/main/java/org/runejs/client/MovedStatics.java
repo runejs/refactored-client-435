@@ -1815,32 +1815,14 @@ public class MovedStatics {
 	            if(varPlayerType == 9)
 	                Class43.bankInsertMode = varPlayerValue;
 	            if(varPlayerType == 10) {
-	                if(varPlayerValue == 0)
-	                    SoundSystem.areaSoundEffectVolume = 127;
-	                if(varPlayerValue == 1)
-	                    SoundSystem.areaSoundEffectVolume = 96;
-	                if(varPlayerValue == 2)
-	                    SoundSystem.areaSoundEffectVolume = 64;
-	                if(varPlayerValue == 3)
-	                    SoundSystem.areaSoundEffectVolume = 32;
-	                if(varPlayerValue == 4)
-	                    SoundSystem.areaSoundEffectVolume = 0;
+	            	SoundSystem.updateAreaSoundEffectVolume(varPlayerValue);
 	            }
 	            if(varPlayerType == 8) {
 	                ChatBox.redrawChatbox = true;
 	                CollisionMap.anInt165 = varPlayerValue;
 	            }
 	            if(varPlayerType == 4) {
-	                if(varPlayerValue == 0)
-	                    SoundSystem.soundEffectVolume = 127;
-	                if(varPlayerValue == 1)
-	                    SoundSystem.soundEffectVolume = 96;
-	                if(varPlayerValue == 2)
-	                    SoundSystem.soundEffectVolume = 64;
-	                if(varPlayerValue == 3)
-	                    SoundSystem.soundEffectVolume = 32;
-	                if(varPlayerValue == 4)
-	                    SoundSystem.soundEffectVolume = 0;
+	            	SoundSystem.updateSoundEffectVolume(varPlayerValue);
 	            }
 	            if(varPlayerType == 6)
 	                anInt2280 = varPlayerValue;

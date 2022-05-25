@@ -737,7 +737,7 @@ public class IncomingPackets {
                 int soundId = incomingPacketBuffer.getUnsignedShortBE();
                 int volume = incomingPacketBuffer.getUnsignedByte();
                 int delay = incomingPacketBuffer.getUnsignedShortBE();
-                SoundSystem.method950(soundId, volume, delay);
+                SoundSystem.play(soundId, volume, delay);
                 opcode = -1;
                 return true;
             }
@@ -1256,13 +1256,8 @@ public class IncomingPackets {
                 int delay = incomingPacketBuffer.getUnsignedByte();
                 if (localY >= 0 && localX >= 0 && localY < 104 && localX < 104) {
                     int i_26_ = 1 + radius;
-                    if (Player.localPlayer.pathY[0] >= localY - i_26_ && Player.localPlayer.pathY[0] <= localY + i_26_ && localX - i_26_ <= Player.localPlayer.pathX[0] && localX + i_26_ >= Player.localPlayer.pathX[0] && SoundSystem.areaSoundEffectVolume != 0 && volume > 0 && SoundSystem.currentSound < 50) {
-                        SoundSystem.sound[SoundSystem.currentSound] = soundId;
-                        SoundSystem.soundVolume[SoundSystem.currentSound] = volume;
-                        SoundSystem.soundDelay[SoundSystem.currentSound] = delay;
-                        SoundSystem.effects[SoundSystem.currentSound] = null;
-                        SoundSystem.soundLocations[SoundSystem.currentSound] = radius + (localX << 8) + (localY << 16);
-                        SoundSystem.currentSound++;
+                    if (Player.localPlayer.pathY[0] >= localY - i_26_ && Player.localPlayer.pathY[0] <= localY + i_26_ && localX - i_26_ <= Player.localPlayer.pathX[0] && localX + i_26_ >= Player.localPlayer.pathX[0]) {                        
+                        SoundSystem.play(soundId, volume, delay, radius + (localX << 8) + (localY << 16));
                     }
                 }
             }

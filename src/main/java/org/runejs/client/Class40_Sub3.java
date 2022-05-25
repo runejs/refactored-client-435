@@ -112,8 +112,7 @@ public class Class40_Sub3 extends Node {
             }
         } else if (MovedStatics.loadingPercent == 45) {
             MusicSystem.initialiseMusic(0);
-            SoundSystem.pcmStreamMixer = SoundSystem.method1003(Main.signlink);
-            SoundSystem.decimator = new Decimator(22050, SoundSystem.sampleRate);
+            SoundSystem.initialiseSound(Main.signlink);
             MovedStatics.loadingPercent = 50;
             Native.currentLoadingText = English.preparedSoundEngine;
             MovedStatics.anInt1607 = 35;

@@ -762,7 +762,7 @@ public class ClientScriptRunner extends Node {
                                         if(scriptOpcode < 3300) {
                                             if(scriptOpcode == 3200) {
                                                 intValueIndex -= 3;
-                                                SoundSystem.method950(scriptIntValues[intValueIndex], scriptIntValues[intValueIndex + 1], scriptIntValues[2 + intValueIndex]);
+                                                SoundSystem.play(scriptIntValues[intValueIndex], scriptIntValues[intValueIndex + 1], scriptIntValues[2 + intValueIndex]);
                                             } else if(scriptOpcode == 3201) {
                                                 MusicSystem.playSong(scriptIntValues[--intValueIndex]);
                                             } else {

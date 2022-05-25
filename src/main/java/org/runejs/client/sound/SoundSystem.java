@@ -9,28 +9,37 @@ import org.runejs.client.util.Signlink;
 
 public class SoundSystem {
 
-	public static int areaSoundEffectVolume = 127;
-	public static int currentSound = 0;
-	public static Decimator decimator;
-	public static Effect[] effects = new Effect[50];
-	public static PcmStreamMixer pcmStreamMixer;
-	public static int sampleRate;
-	public static int[] sound = new int[50];
-	public static int[] soundDelay = new int[50];
-	public static int soundEffectVolume = 127;
-	public static int[] soundLocations = new int[50];
-	public static int[] soundVolume = new int[50];
-
+	static int sampleRate;
 	static long aLong288;
 	static PcmStream pcmStream;
-	
+	static PcmStreamMixer pcmStreamMixer;
+
+	private static Decimator decimator;
+	private static int currentSound = 0;
 	private static int anInt2081;
 	private static int anInt2866;
 	private static Object lock = new Object();
 	private static LinkedList objectSounds = new LinkedList();
 	private static PcmPlayer pcmPlayer;
 
-
+	private static Effect[] effects = new Effect[50];
+	private static int[] sound = new int[50];
+	private static int[] soundDelay = new int[50];
+	private static int[] soundLocations = new int[50];
+	private static int[] soundVolume = new int[50];
+	
+	private static int areaSoundEffectVolume = 127;
+	private static int soundEffectVolume = 127;
+	
+	public static void reset() {
+		SoundSystem.currentSound = 0;
+	}
+	
+	public static void initialiseSound(Signlink signlink) {
+        SoundSystem.pcmStreamMixer = SoundSystem.method1003(signlink);
+        SoundSystem.decimator = new Decimator(22050, SoundSystem.sampleRate);
+	}
+	
 	public static void addObjectSounds(int arg0, int arg2, int arg3, int arg4, GameObjectDefinition arg5) {
 		ObjectSound class40_sub2 = new ObjectSound();
 		class40_sub2.anInt2000 = 128 * arg5.anInt2502;
@@ -111,7 +120,7 @@ public class SoundSystem {
 		return mixer;
 	}
 
-	public static void method950(int soundId, int volume, int delay) {
+	public static void play(int soundId, int volume, int delay) {
 		if (SoundSystem.soundEffectVolume != 0 && volume != 0 && SoundSystem.currentSound < 50) {
 			SoundSystem.sound[SoundSystem.currentSound] = soundId;
 			SoundSystem.soundVolume[SoundSystem.currentSound] = volume;
@@ -122,6 +131,31 @@ public class SoundSystem {
 		}
 	}
 
+	/**
+	 * This is an added method. This helps add easier modularity since it is easier to plug in.
+	 */
+	public static void play(int soundId, int volume, int delay, int location) {
+		if (SoundSystem.areaSoundEffectVolume != 0 && volume > 0 && SoundSystem.currentSound < 50) {
+			SoundSystem.sound[SoundSystem.currentSound] = soundId;
+			SoundSystem.soundVolume[SoundSystem.currentSound] = volume;
+			SoundSystem.soundDelay[SoundSystem.currentSound] = delay;
+			SoundSystem.effects[SoundSystem.currentSound] = null;
+			SoundSystem.soundLocations[SoundSystem.currentSound] = 0;
+			SoundSystem.currentSound++;
+		}
+		
+		/*
+		 if (/* && SoundSystem.areaSoundEffectVolume != 0 && volume > 0 && SoundSystem.currentSound < 50) 
+		  
+                        SoundSystem.sound[SoundSystem.currentSound] = soundId;
+                        SoundSystem.soundVolume[SoundSystem.currentSound] = volume;
+                        SoundSystem.soundDelay[SoundSystem.currentSound] = delay;
+                        SoundSystem.effects[SoundSystem.currentSound] = null;
+                        SoundSystem.soundLocations[SoundSystem.currentSound] = radius + (localX << 8) + (localY << 16);
+                        SoundSystem.currentSound++;
+		 */
+	}
+	
 	public static void method989() {
 		if (SoundSystem.pcmPlayer != null) {
 			SoundSystem.pcmPlayer.method213();
@@ -279,6 +313,32 @@ public class SoundSystem {
 
 	private static synchronized void setMixer(PcmStream arg0) {
 		SoundSystem.pcmStream = arg0;
+	}
+
+	public static void updateSoundEffectVolume(int varPlayerValue) {
+        if(varPlayerValue == 0)
+            SoundSystem.soundEffectVolume = 127;
+        if(varPlayerValue == 1)
+            SoundSystem.soundEffectVolume = 96;
+        if(varPlayerValue == 2)
+            SoundSystem.soundEffectVolume = 64;
+        if(varPlayerValue == 3)
+            SoundSystem.soundEffectVolume = 32;
+        if(varPlayerValue == 4)
+            SoundSystem.soundEffectVolume = 0;		
+	}
+
+	public static void updateAreaSoundEffectVolume(int varPlayerValue) {
+        if(varPlayerValue == 0)
+            SoundSystem.areaSoundEffectVolume = 127;
+        if(varPlayerValue == 1)
+            SoundSystem.areaSoundEffectVolume = 96;
+        if(varPlayerValue == 2)
+            SoundSystem.areaSoundEffectVolume = 64;
+        if(varPlayerValue == 3)
+            SoundSystem.areaSoundEffectVolume = 32;
+        if(varPlayerValue == 4)
+            SoundSystem.areaSoundEffectVolume = 0;		
 	}
 
 }
