@@ -339,10 +339,10 @@ public class StaticAudio {
 	}
 
 	public static CacheArchive musicCacheArchive;
-	public static Class22 aClass22_189;
+	public static MidiPlayer435 aMidiPlayer435_189;
 
 	public static void method886(int arg0, int arg1, boolean arg2, byte[] arg3, int arg4) {
-	    if(arg0 == 0 && aClass22_189 != null) {
+	    if(arg0 == 0 && aMidiPlayer435_189 != null) {
 	        if(StaticAudio.anInt1450 < 0) {
 	            if(StaticAudio.anInt54 != 0) {
 	                StaticAudio.anInt2258 = arg1;
@@ -368,39 +368,39 @@ public class StaticAudio {
 	}
 
 	public static void method651(int arg0, int arg1) {
-	    if(aClass22_189 != null) {
+	    if(aMidiPlayer435_189 != null) {
 	        if(StaticAudio.anInt54 != 0) {
 	            if(StaticAudio.aByteArray3270 != null)
 	                StaticAudio.anInt2258 = arg1;
 	        } else if(StaticAudio.anInt1450 >= 0) {
 	            StaticAudio.anInt1450 = arg1;
-	            aClass22_189.method304((byte) -111, arg1, 0);
+	            aMidiPlayer435_189.method304((byte) -111, arg1, 0);
 	        }
 	    }
 	}
 
 	public static void method1019() {
-	    if(aClass22_189 != null) {
+	    if(aMidiPlayer435_189 != null) {
 	        StaticAudio.method308();   
 	        if(StaticAudio.anInt54 > 0) {
-	            aClass22_189.method301(256, 0);
+	            aMidiPlayer435_189.method301(256, 0);
 	            StaticAudio.anInt54 = 0;
 	        }
-	        aClass22_189.method306((byte) 101);
-	        aClass22_189 = null;
+	        aMidiPlayer435_189.method306((byte) 101);
+	        aMidiPlayer435_189 = null;
 	    }
 	}
 
 	public static void method984(int arg0) {
 	    if(arg0 == 0) {
-	        if(aClass22_189 != null) {
+	        if(aMidiPlayer435_189 != null) {
 	            if(StaticAudio.anInt1450 >= 0) {
 	                if(StaticAudio.anInt54 > 0) {
 	                    StaticAudio.anInt909 += Buffer.anInt1982;
-	                    aClass22_189.method304((byte) -97, StaticAudio.anInt1450, StaticAudio.anInt909);
+	                    aMidiPlayer435_189.method304((byte) -97, StaticAudio.anInt1450, StaticAudio.anInt909);
 	                    StaticAudio.anInt54--;
 	                    if(StaticAudio.anInt54 == 0) {
-	                        aClass22_189.method303((byte) -96);
+	                        aMidiPlayer435_189.method303((byte) -96);
 	                        StaticAudio.anInt1450 = -1;
 	                        StaticAudio.anInt54 = 20;
 	                    }
@@ -409,17 +409,17 @@ public class StaticAudio {
 	                StaticAudio.anInt54--;
 	                if(StaticAudio.anInt54 == 0) {
 	                    if(StaticAudio.aByteArray3270 == null)
-	                        aClass22_189.method301(256, 0);
+	                        aMidiPlayer435_189.method301(256, 0);
 	                    else {
-	                        aClass22_189.method301(StaticAudio.anInt2258, arg0);
+	                        aMidiPlayer435_189.method301(StaticAudio.anInt2258, arg0);
 	                        StaticAudio.anInt1450 = StaticAudio.anInt2258;
-	                        aClass22_189.method300(StaticAudio.aByteArray3270, StaticAudio.aBoolean687, StaticAudio.anInt2258);
+	                        aMidiPlayer435_189.method300(StaticAudio.aByteArray3270, StaticAudio.aBoolean687, StaticAudio.anInt2258);
 	                        StaticAudio.aByteArray3270 = null;
 	                    }
 	                    StaticAudio.anInt909 = 0;
 	                }
 	            }
-	            aClass22_189.method302(0);
+	            aMidiPlayer435_189.method302(0);
 	        }
 	    }
 	}
@@ -427,7 +427,7 @@ public class StaticAudio {
 	public static boolean method452(Signlink arg0, boolean highmem) {
 	        StaticAudio.anInt54 = 20;
 	        try {
-	            aClass22_189 = new Class22_Sub2_Sub1(); // Java Midi Based
+	            aMidiPlayer435_189 = new MidiPlayer435(); // Java Midi Based
 	            return true;
 	        } catch(Throwable throwable) {
 	            return false;
@@ -437,7 +437,7 @@ public class StaticAudio {
 	public static int anInt1450 = -1;
 
 	public static void method566(int arg0, boolean arg1, int arg2, byte[] arg3) {
-	    if(aClass22_189 != null) {
+	    if(aMidiPlayer435_189 != null) {
 	        if(anInt1450 >= 0) {
 	            arg2 -= 20;
 	            if(arg2 < 1)
@@ -464,7 +464,7 @@ public class StaticAudio {
 	}
 
 	public static boolean method340() {
-	    return aClass22_189 != null;
+	    return aMidiPlayer435_189 != null;
 	
 	}
 
@@ -489,9 +489,9 @@ public class StaticAudio {
 	public static int anInt909 = 0;
 
 	public static void method56(boolean arg1, byte[] arg2, int arg3) {
-	    if(aClass22_189 != null) {
+	    if(aMidiPlayer435_189 != null) {
 	        if(anInt1450 >= 0) {
-	            aClass22_189.method303((byte) -96);
+	            aMidiPlayer435_189.method303((byte) -96);
 	            anInt909 = 0;
 	            StaticAudio.aByteArray3270 = null;
 	            StaticAudio.anInt54 = 20;
@@ -499,11 +499,11 @@ public class StaticAudio {
 	        }
 	        if(arg2 != null) {
 	            if(StaticAudio.anInt54 > 0) {
-	                aClass22_189.method301(arg3, 0);
+	                aMidiPlayer435_189.method301(arg3, 0);
 	                StaticAudio.anInt54 = 0;
 	            }
 	            anInt1450 = arg3;
-	            aClass22_189.method300(arg2, arg1, arg3);
+	            aMidiPlayer435_189.method300(arg2, arg1, arg3);
 	        }
 	    }
 	}
