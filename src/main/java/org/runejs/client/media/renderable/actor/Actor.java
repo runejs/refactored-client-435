@@ -10,7 +10,7 @@ import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.tile.WallDecoration;
-import org.runejs.client.sound.StaticAudio;
+import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.*;
 
@@ -347,7 +347,7 @@ public abstract class Actor extends Renderable {
                 Class55.destinationY -= i_35_;
             }
             Player.cutsceneActive = false;
-            StaticAudio.currentSound = 0;
+            SoundSystem.currentSound = 0;
             Class57.aLinkedList_1332.clear(0);
             Class43.projectileQueue.clear(0);
         }

@@ -13,7 +13,8 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.util.CollisionMap;
-import org.runejs.client.sound.StaticAudio;
+import org.runejs.client.sound.MusicSystem;
+import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.SignlinkNode;
@@ -761,15 +762,15 @@ public class ClientScriptRunner extends Node {
                                         if(scriptOpcode < 3300) {
                                             if(scriptOpcode == 3200) {
                                                 intValueIndex -= 3;
-                                                StaticAudio.method950(scriptIntValues[intValueIndex], scriptIntValues[intValueIndex + 1], scriptIntValues[2 + intValueIndex]);
+                                                SoundSystem.method950(scriptIntValues[intValueIndex], scriptIntValues[intValueIndex + 1], scriptIntValues[2 + intValueIndex]);
                                             } else if(scriptOpcode == 3201) {
-                                                StaticAudio.playSong(scriptIntValues[--intValueIndex]);
+                                                MusicSystem.playSong(scriptIntValues[--intValueIndex]);
                                             } else {
                                                 if(scriptOpcode != 3202) {
                                                     break;
                                                 }
                                                 intValueIndex -= 2;
-                                                StaticAudio.playSoundJingle(scriptIntValues[intValueIndex + 1], scriptIntValues[intValueIndex]);
+                                                MusicSystem.playSoundJingle(scriptIntValues[intValueIndex + 1], scriptIntValues[intValueIndex]);
                                             }
                                         } else if(scriptOpcode < 3400) {
                                             if(scriptOpcode != 3300) {

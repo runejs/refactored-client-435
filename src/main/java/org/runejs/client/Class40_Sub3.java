@@ -24,7 +24,8 @@ import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.Decimator;
-import org.runejs.client.sound.StaticAudio;
+import org.runejs.client.sound.MusicSystem;
+import org.runejs.client.sound.SoundSystem;
 
 public class Class40_Sub3 extends Node {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2019;
@@ -110,9 +111,9 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.anInt1607 = 30;
             }
         } else if (MovedStatics.loadingPercent == 45) {
-            StaticAudio.initialiseMusic(0);
-            StaticAudio.pcmStreamMixer = StaticAudio.method1003(Main.signlink);
-            StaticAudio.decimator = new Decimator(22050, StaticAudio.sampleRate);
+            MusicSystem.initialiseMusic(0);
+            SoundSystem.pcmStreamMixer = SoundSystem.method1003(Main.signlink);
+            SoundSystem.decimator = new Decimator(22050, SoundSystem.sampleRate);
             MovedStatics.loadingPercent = 50;
             Native.currentLoadingText = English.preparedSoundEngine;
             MovedStatics.anInt1607 = 35;

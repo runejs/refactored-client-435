@@ -29,7 +29,8 @@ import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.util.CollisionMap;
-import org.runejs.client.sound.StaticAudio;
+import org.runejs.client.sound.MusicSystem;
+import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.cache.def.*;
@@ -719,7 +720,7 @@ public class Main extends GameShell {
         Class43.cameraYawOffset = (int) (Math.random() * 120.0) + -60;
         Buffer.anInt1985 = -1;
         Player.npcCount = 0;
-        StaticAudio.currentSound = 0;
+        SoundSystem.currentSound = 0;
         widgetSelected = 0;
         GroundItemTile.cameraHorizontal = 0x7ff & -10 + (int) (20.0 * Math.random());
         Class51.mapZoomOffset = -20 + (int) (Math.random() * 30.0);
@@ -1036,7 +1037,7 @@ public class Main extends GameShell {
                 GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             }
 
-            StaticAudio.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
+            SoundSystem.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
             MovedStatics.anInt199 = 0;
 
         } else {
@@ -1080,7 +1081,7 @@ public class Main extends GameShell {
                 GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             }
 
-            StaticAudio.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
+            SoundSystem.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
             MovedStatics.anInt199 = 0;
         }
 
@@ -1389,7 +1390,8 @@ public class Main extends GameShell {
                 LinkedList.method910(-32322);
                 if(Class51.gameStatusCode == 30 || Class51.gameStatusCode == 35) {
                     MovedStatics.method652();
-                    StaticAudio.processAudio();
+                    SoundSystem.processSounds();
+                    MusicSystem.processMusic();
                     IncomingPackets.cyclesSinceLastPacket++;
                     if (IncomingPackets.cyclesSinceLastPacket > 750) {
                         Class59.dropClient();
@@ -1871,8 +1873,8 @@ public class Main extends GameShell {
         MovedStatics.pulseCycle++;
         handleUpdateServer();
         Class13.handleRequests((byte) -91);
-        StaticAudio.handleMusic();
-        StaticAudio.handleSounds();
+        MusicSystem.handleMusic();
+        SoundSystem.handleSounds();
         GameInterface.method639(122);
         MovedStatics.method1015();
 
@@ -2036,7 +2038,7 @@ public class Main extends GameShell {
         ItemDefinition.method744();
         Class13.method249(true);
         MovedStatics.method407(false);
-        StaticAudio.method989();
+        SoundSystem.method989();
         ActorDefinition.killUpdateServerSocket();
         GenericTile.method947(-1);
         do {

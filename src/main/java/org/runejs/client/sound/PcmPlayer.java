@@ -31,8 +31,8 @@ public class PcmPlayer implements Runnable {
     public byte[] byteSamples = new byte[512];
     
     public PcmPlayer() throws Exception {
-        StaticAudio.sampleRate = 22050;
-        StaticAudio.aLong288 = System.currentTimeMillis();
+        SoundSystem.sampleRate = 22050;
+        SoundSystem.aLong288 = System.currentTimeMillis();
         aLong1821 = 0L;
         anInt1827 = 256;
         aBoolean1820 = false;
@@ -60,7 +60,7 @@ public class PcmPlayer implements Runnable {
 
     public void method221(long arg0) {
         if(aLong1821 != 0L) {
-            for(/**/; aLong1832 < arg0; aLong1832 += (long) (256000 / StaticAudio.sampleRate))
+            for(/**/; aLong1832 < arg0; aLong1832 += (long) (256000 / SoundSystem.sampleRate))
                 method217(256);
             if(arg0 < aLong1821)
                 return;
@@ -74,7 +74,7 @@ public class PcmPlayer implements Runnable {
             aLong1821 = 0L;
         }
         while(aLong1832 < arg0) {
-            aLong1832 += (long) (250880 / StaticAudio.sampleRate);
+            aLong1832 += (long) (250880 / SoundSystem.sampleRate);
             int i;
             try {
                 i = avail();
@@ -255,16 +255,16 @@ public class PcmPlayer implements Runnable {
         arg1 += 7;
         while(i < arg1)
             arg0[i++] = 0;
-        if(StaticAudio.pcmStream != null)
-            StaticAudio.pcmStream.fill(arg0, 0, arg1);
-        StaticAudio.method748(arg1);
+        if(SoundSystem.pcmStream != null)
+            SoundSystem.pcmStream.fill(arg0, 0, arg1);
+        SoundSystem.method748(arg1);
     }
 
 
     private static synchronized void method217(int arg0) {
-        if(StaticAudio.pcmStream != null)
-            StaticAudio.pcmStream.skip(arg0);
-        StaticAudio.method748(arg0);
+        if(SoundSystem.pcmStream != null)
+            SoundSystem.pcmStream.skip(arg0);
+        SoundSystem.method748(arg0);
     }
 
 }

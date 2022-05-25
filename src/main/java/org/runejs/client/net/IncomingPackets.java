@@ -23,7 +23,8 @@ import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.tile.WallDecoration;
-import org.runejs.client.sound.StaticAudio;
+import org.runejs.client.sound.MusicSystem;
+import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.TextUtils;
 import org.runejs.client.*;
 import org.runejs.client.cache.def.*;
@@ -653,7 +654,7 @@ public class IncomingPackets {
                 int songId = incomingPacketBuffer.getUnsignedShortLE();
                 if(songId == 65535)
                     songId = -1;
-                StaticAudio.playSong(songId);
+                MusicSystem.playSong(songId);
                 opcode = -1;
                 return true;
             }
@@ -662,7 +663,7 @@ public class IncomingPackets {
                 int songId = incomingPacketBuffer.getUnsignedShortBE();
                 if(songId == 65535)
                     songId = -1;
-                StaticAudio.playSoundJingle(songTimeout, songId);
+                MusicSystem.playSoundJingle(songTimeout, songId);
                 opcode = -1;
                 return true;
             }
@@ -736,7 +737,7 @@ public class IncomingPackets {
                 int soundId = incomingPacketBuffer.getUnsignedShortBE();
                 int volume = incomingPacketBuffer.getUnsignedByte();
                 int delay = incomingPacketBuffer.getUnsignedShortBE();
-                StaticAudio.method950(soundId, volume, delay);
+                SoundSystem.method950(soundId, volume, delay);
                 opcode = -1;
                 return true;
             }
@@ -1255,13 +1256,13 @@ public class IncomingPackets {
                 int delay = incomingPacketBuffer.getUnsignedByte();
                 if (localY >= 0 && localX >= 0 && localY < 104 && localX < 104) {
                     int i_26_ = 1 + radius;
-                    if (Player.localPlayer.pathY[0] >= localY - i_26_ && Player.localPlayer.pathY[0] <= localY + i_26_ && localX - i_26_ <= Player.localPlayer.pathX[0] && localX + i_26_ >= Player.localPlayer.pathX[0] && StaticAudio.areaSoundEffectVolume != 0 && volume > 0 && StaticAudio.currentSound < 50) {
-                        StaticAudio.sound[StaticAudio.currentSound] = soundId;
-                        StaticAudio.soundVolume[StaticAudio.currentSound] = volume;
-                        StaticAudio.soundDelay[StaticAudio.currentSound] = delay;
-                        StaticAudio.effects[StaticAudio.currentSound] = null;
-                        StaticAudio.soundLocations[StaticAudio.currentSound] = radius + (localX << 8) + (localY << 16);
-                        StaticAudio.currentSound++;
+                    if (Player.localPlayer.pathY[0] >= localY - i_26_ && Player.localPlayer.pathY[0] <= localY + i_26_ && localX - i_26_ <= Player.localPlayer.pathX[0] && localX + i_26_ >= Player.localPlayer.pathX[0] && SoundSystem.areaSoundEffectVolume != 0 && volume > 0 && SoundSystem.currentSound < 50) {
+                        SoundSystem.sound[SoundSystem.currentSound] = soundId;
+                        SoundSystem.soundVolume[SoundSystem.currentSound] = volume;
+                        SoundSystem.soundDelay[SoundSystem.currentSound] = delay;
+                        SoundSystem.effects[SoundSystem.currentSound] = null;
+                        SoundSystem.soundLocations[SoundSystem.currentSound] = radius + (localX << 8) + (localY << 16);
+                        SoundSystem.currentSound++;
                     }
                 }
             }

@@ -14,7 +14,7 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.util.CollisionMap;
-import org.runejs.client.sound.StaticAudio;
+import org.runejs.client.sound.MusicSystem;
 import org.runejs.Configuration;
 
 public class Class60 {
@@ -185,23 +185,23 @@ public class Class60 {
 
         if(MouseHandler.clickType == 1 && RSString.clickY >= ScreenController.drawHeight-42 && Class57.clickX>=ScreenController.drawWidth-42 ){
             int newVolume = 0;
-            if(StaticAudio.musicVolume == 0) {
+            if(MusicSystem.musicVolume == 0) {
                 newVolume = 255;
             }
-            if(StaticAudio.musicVolume != 0 || StaticAudio.currentSongId == -1) {
+            if(MusicSystem.musicVolume != 0 || MusicSystem.currentSongId == -1) {
                 if(newVolume == 0) {
-                    StaticAudio.method402(false);
-                    StaticAudio.songTimeout = 0;
+                    MusicSystem.method402(false);
+                    MusicSystem.songTimeout = 0;
                 } else {
-                    StaticAudio.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", StaticAudio.musicVolume);
-                    StaticAudio.method456(newVolume);
+                    MusicSystem.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", MusicSystem.musicVolume);
+                    MusicSystem.method456(newVolume);
                 }
             } else {
-                StaticAudio.playMusicTrack(false, 0, StaticAudio.currentSongId, newVolume, 0, CacheArchive.musicCacheArchive);
-                StaticAudio.songTimeout = 0;
+                MusicSystem.playMusicTrack(false, 0, MusicSystem.currentSongId, newVolume, 0, CacheArchive.musicCacheArchive);
+                MusicSystem.songTimeout = 0;
             }
 
-            StaticAudio.musicVolume = newVolume;
+            MusicSystem.musicVolume = newVolume;
         }
 
         if(Class51.gameStatusCode == 10) {

@@ -35,7 +35,8 @@ import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.util.CollisionMap;
-import org.runejs.client.sound.StaticAudio;
+import org.runejs.client.sound.MusicSystem;
+import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.SignlinkNode;
@@ -175,7 +176,7 @@ public class MovedStatics {
             KeyFocusListener.aProducingGraphicsBuffer_1285 = null;
             Class17.aProducingGraphicsBuffer_463 = null;
             anIntArray1013 = null;
-            StaticAudio.method405(10);
+            MusicSystem.method405(10);
             GameShell.method19(true);
             ISAAC.aBoolean512 = false;
         }
@@ -1157,10 +1158,10 @@ public class MovedStatics {
 	    for(/**/; i < 4; i++)
 	        Landscape.currentCollisionMap[i].reset();
 	    System.gc();
-	    StaticAudio.method405(10);
-	    StaticAudio.songTimeout = 0;
-	    StaticAudio.currentSongId = -1;
-	    StaticAudio.clearObjectSounds();
+	    MusicSystem.method405(10);
+	    MusicSystem.songTimeout = 0;
+	    MusicSystem.currentSongId = -1;
+	    SoundSystem.clearObjectSounds();
 	    processGameStatus(10);
 	}
 
@@ -1759,13 +1760,13 @@ public class MovedStatics {
 	public static int cameraY;
 
 	public static synchronized void method407(boolean arg0) {
-	    StaticAudio.method1019();
+	    MusicSystem.method1019();
 	}
 
 	public static void method309(int varPlayerIndex) {
 	    do {
 	        AnimationSequence.anInt2480 = pulseCycle;
-	        StaticAudio.setObjectSounds();
+	        SoundSystem.setObjectSounds();
 	        int varPlayerType = VarPlayerDefinition.getDefinition(varPlayerIndex).type;
 	        if(varPlayerType != 0) {
 	            int varPlayerValue = VarPlayerDefinition.varPlayers[varPlayerIndex];
@@ -1801,33 +1802,33 @@ public class MovedStatics {
 	                    i_22_ = 64;
 	                if(varPlayerValue == 4)
 	                    i_22_ = 0;
-	                if(i_22_ != StaticAudio.musicVolume) {
-	                    if(StaticAudio.musicVolume != 0 || StaticAudio.currentSongId == -1) {
+	                if(i_22_ != MusicSystem.musicVolume) {
+	                    if(MusicSystem.musicVolume != 0 || MusicSystem.currentSongId == -1) {
 	                        if(i_22_ == 0) {
-	                            StaticAudio.method402(false);
-	                            StaticAudio.songTimeout = 0;
+	                            MusicSystem.method402(false);
+	                            MusicSystem.songTimeout = 0;
 	                        } else
-	                            StaticAudio.method456(i_22_);
+	                            MusicSystem.method456(i_22_);
 	                    } else {
-	                        StaticAudio.playMusicTrack(false, 0, StaticAudio.currentSongId, i_22_, 0, CacheArchive.musicCacheArchive);
-	                        StaticAudio.songTimeout = 0;
+	                        MusicSystem.playMusicTrack(false, 0, MusicSystem.currentSongId, i_22_, 0, CacheArchive.musicCacheArchive);
+	                        MusicSystem.songTimeout = 0;
 	                    }
-	                    StaticAudio.musicVolume = i_22_;
+	                    MusicSystem.musicVolume = i_22_;
 	                }
 	            }
 	            if(varPlayerType == 9)
 	                Class43.bankInsertMode = varPlayerValue;
 	            if(varPlayerType == 10) {
 	                if(varPlayerValue == 0)
-	                    StaticAudio.areaSoundEffectVolume = 127;
+	                    SoundSystem.areaSoundEffectVolume = 127;
 	                if(varPlayerValue == 1)
-	                    StaticAudio.areaSoundEffectVolume = 96;
+	                    SoundSystem.areaSoundEffectVolume = 96;
 	                if(varPlayerValue == 2)
-	                    StaticAudio.areaSoundEffectVolume = 64;
+	                    SoundSystem.areaSoundEffectVolume = 64;
 	                if(varPlayerValue == 3)
-	                    StaticAudio.areaSoundEffectVolume = 32;
+	                    SoundSystem.areaSoundEffectVolume = 32;
 	                if(varPlayerValue == 4)
-	                    StaticAudio.areaSoundEffectVolume = 0;
+	                    SoundSystem.areaSoundEffectVolume = 0;
 	            }
 	            if(varPlayerType == 8) {
 	                ChatBox.redrawChatbox = true;
@@ -1835,15 +1836,15 @@ public class MovedStatics {
 	            }
 	            if(varPlayerType == 4) {
 	                if(varPlayerValue == 0)
-	                    StaticAudio.soundEffectVolume = 127;
+	                    SoundSystem.soundEffectVolume = 127;
 	                if(varPlayerValue == 1)
-	                    StaticAudio.soundEffectVolume = 96;
+	                    SoundSystem.soundEffectVolume = 96;
 	                if(varPlayerValue == 2)
-	                    StaticAudio.soundEffectVolume = 64;
+	                    SoundSystem.soundEffectVolume = 64;
 	                if(varPlayerValue == 3)
-	                    StaticAudio.soundEffectVolume = 32;
+	                    SoundSystem.soundEffectVolume = 32;
 	                if(varPlayerValue == 4)
-	                    StaticAudio.soundEffectVolume = 0;
+	                    SoundSystem.soundEffectVolume = 0;
 	            }
 	            if(varPlayerType == 6)
 	                anInt2280 = varPlayerValue;

@@ -37,7 +37,7 @@ public class ObjectSound extends Node {
             soundEffectIds = gameObjectDefinition.soundEffectIds;
         }
         if(i != soundEffectId && stream1 != null) {
-            StaticAudio.pcmStreamMixer.removeSubStream(stream1);
+            SoundSystem.pcmStreamMixer.removeSubStream(stream1);
             stream1 = null;
         }
     }

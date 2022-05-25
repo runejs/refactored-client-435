@@ -27,7 +27,7 @@ import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.scene.util.CollisionMap;
-import org.runejs.client.sound.StaticAudio;
+import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
 import org.runejs.Configuration;
 
@@ -375,7 +375,7 @@ public class Projectile extends Renderable {
             if(gameObjectDefinition.hasActions == 0)
                 hash += -2147483648;
             if(gameObjectDefinition.hasSounds())
-                StaticAudio.addObjectSounds(localY, plane, face, localX, gameObjectDefinition);
+                SoundSystem.addObjectSounds(localY, plane, face, localX, gameObjectDefinition);
             if(type == 22) {
                 if(!VertexNormal.lowMemory || gameObjectDefinition.hasActions != 0 || gameObjectDefinition.obstructsGround) {
                     Renderable renderable;

@@ -16,7 +16,7 @@ import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.util.CollisionMap;
-import org.runejs.client.sound.StaticAudio;
+import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
 import org.runejs.client.cache.def.FramemapDefinition;
 import org.runejs.client.cache.def.GameObjectDefinition;
@@ -89,7 +89,7 @@ public class Landscape {
                 }
                 Class65.method1020();
                 int dataLength = RSString.terrainData.length;
-                StaticAudio.clearObjectSounds();
+                SoundSystem.clearObjectSounds();
                 Main.method364(true);
                 if(!GroundItemTile.loadGeneratedMap) {
                     for(int pointer = 0; dataLength > pointer; pointer++) {

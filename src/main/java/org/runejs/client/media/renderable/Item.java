@@ -16,7 +16,7 @@ import org.runejs.client.net.ISAAC;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.tile.Wall;
-import org.runejs.client.sound.StaticAudio;
+import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.*;
 import org.runejs.Configuration;
 import org.runejs.whitelabel.Images;
@@ -218,10 +218,10 @@ public class Item extends Renderable {
             Native.password = Configuration.getPassword();
             MovedStatics.anIntArray178 = new int[32768];
             Class26.loginScreenState = 0;
-            if (StaticAudio.musicVolume != 0 && !VertexNormal.lowMemory)
-                StaticAudio.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", StaticAudio.musicVolume);
+            if (MusicSystem.musicVolume != 0 && !VertexNormal.lowMemory)
+                MusicSystem.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", MusicSystem.musicVolume);
             else
-                StaticAudio.method405(10);
+                MusicSystem.method405(10);
             GameShell.method19(false);
             MovedStatics.clearScreen = true;
             ISAAC.aBoolean512 = true;
