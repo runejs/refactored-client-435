@@ -387,7 +387,7 @@ public class StaticAudio {
 	            aMidiPlayer435_189.method301(256, 0);
 	            StaticAudio.anInt54 = 0;
 	        }
-	        aMidiPlayer435_189.method306((byte) 101);
+	        aMidiPlayer435_189.close((byte) 101);
 	        aMidiPlayer435_189 = null;
 	    }
 	}
