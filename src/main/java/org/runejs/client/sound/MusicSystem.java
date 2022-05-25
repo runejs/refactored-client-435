@@ -1,319 +1,331 @@
 package org.runejs.client.sound;
 
-
-import org.runejs.client.audio.Effect;
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.cache.def.IdentityKit;
-import org.runejs.client.cache.def.ItemDefinition;
-import org.runejs.client.input.MouseHandler;
-import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.net.PacketBuffer;
-import org.runejs.client.*;
+import org.runejs.client.node.CachedNode;
+import org.runejs.client.node.NodeCache;
 
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.MidiUnavailableException;
-import java.io.IOException;
-import java.io.InputStream;
+public class MusicSystem {
 
-/**
- * A simple class written to handle playing music and fading in/out.
- *
- * @author Dane
- */
-public final class MusicSystem implements Runnable {
+	public static int currentSongId = -1;
+	public static int musicVolume = 255;
+	public static int songTimeout = 0;
+	
 
-    /**
-     * Default volume ranges from 0..4.
-     */
-    public static int defaultVolume = 3;
+	private static boolean aBoolean1790;
+	private static int anInt1806;
+	private static int anInt2110;
+	private static int volume3;
+	private static int anInt255;
+	private static int fileId;
+	private static int childId;
+	private static byte[] data_;
+	private static boolean fetchMusic = false;
+	private static boolean loop_;
+	private static MidiPlayer midi;
+	private static NodeCache musicCache;
+	private static CacheArchive musicFetcher;
+	private static int timer = 0;
+	private static int velocity = 0;
+	private static int velocity_increment = 0;
+	private static int volume1;
+	private static int volume2 = -1;
 
-    /**
-     * The next song to play.
-     */
-    private static String song;
+	public static synchronized void handleMusic() {
+		if (musicIsntNull()) {
+			if (MusicSystem.fetchMusic) {
+				byte[] is = fetchMusic(MusicSystem.childId, MusicSystem.musicFetcher, MusicSystem.fileId, MusicSystem.anInt2110);
+				if (is != null) {
+					if (MusicSystem.anInt255 < 0) {
+						if (MusicSystem.anInt1806 < 0)
+							method56(MusicSystem.aBoolean1790, is, MusicSystem.volume3);
+						else
+							method566(MusicSystem.volume3, MusicSystem.aBoolean1790, MusicSystem.anInt1806, is);
+					} else
+						method886(MusicSystem.volume3, MusicSystem.aBoolean1790, is, MusicSystem.anInt255);
+					MusicSystem.fetchMusic = false;
+					MusicSystem.musicFetcher = null;
+				}
+			}
+			method984(0);
+		}
+	}
 
-    /**
-     * The next jingle to play.
-     */
-    private static String jingle;
+	public static boolean initialiseMusic(int size) {
+		if (!musicPlayerStarted())
+			return false;
+		if (size > 0)
+			MusicSystem.musicCache = new NodeCache(size);
+		return true;
+	}
 
-    /**
-     * The instance of {@link MidiPlayer}.
-     */
-    private final MidiPlayer player;
+	/**
+	 * Called when setting volume to 0 or receiving a song of -1 via packet.
+	 */
+	public static synchronized void method402(boolean arg0) {
+		if (musicIsntNull()) {
+			MusicSystem.method308();
+			MusicSystem.fetchMusic = arg0;
+			MusicSystem.musicFetcher = null;
+		}
+	}
 
-    /**
-     * The song that <b>should</b> be playing. If not, the audio will fade to transition to this song.
-     */
-    private String current = "none";
+	public static synchronized void method405(int arg1) {
+		if (musicIsntNull()) {
+			MusicSystem.method557(arg1);
+			MusicSystem.musicFetcher = null;
+			MusicSystem.fetchMusic = false;
+		}
+	}
 
-    /**
-     * The actively playing song.
-     */
-    private String playing = "none";
+	public static synchronized void syncedStop(boolean arg0) {
+		stop_();
+	}
 
-    /**
-     * The previously played song.
-     */
-    private String last = "none";
+	public static synchronized void method412(boolean arg0, CacheArchive arg1, int arg2, String arg4, int arg5, String arg6, int arg7) {
+		if (musicIsntNull()) {
+			int i = arg1.getHash(arg4);
+			int i_16_ = arg1.method179(i, arg6);
+			method403(arg7, true, arg5, i, arg1, i_16_, arg2, arg0);
+		}
+	}
 
-    /**
-     * The current volume.
-     */
-    private int volume;
+	public static void method456(int volume) {
+		if (MusicSystem.musicIsntNull()) {
+			if (MusicSystem.fetchMusic)
+				MusicSystem.volume3 = volume;
+			else
+				MusicSystem.method651(volume);
+		}
+	}
 
-    /**
-     * The run state.
-     */
-    private boolean running;
+	public static synchronized void playMusicTrack(boolean arg0, int arg1, int songid, int volume, int childId, CacheArchive arg5) {
+		if (musicIsntNull()) {
+			MusicSystem.fetchMusic = true;
+			MusicSystem.anInt1806 = -1;
+			MusicSystem.anInt255 = -1;
+			MusicSystem.volume3 = volume;
+			MusicSystem.childId = childId;
+			MusicSystem.aBoolean1790 = arg0;
+			MusicSystem.anInt2110 = arg1;
+			MusicSystem.musicFetcher = arg5;
+			MusicSystem.fileId = songid;
+		}
+	}
 
-    private InputStream soundStream;
+	public static void playSong(int songId) {
+		if (songId == -1 && MusicSystem.songTimeout == 0)
+			method402(false);
+		else if (songId != -1 && songId != MusicSystem.currentSongId && MusicSystem.musicVolume != 0 && MusicSystem.songTimeout == 0)
+			method403(MusicSystem.musicVolume, true, 10, songId, CacheArchive.musicCacheArchive, 0, 0, false);
+		MusicSystem.currentSongId = songId;
+	}
 
+	public static void playSoundJingle(int songTimeout, int songId) {
+		if (MusicSystem.musicVolume != 0 && songId != -1) {
+			MusicSystem.playMusicTrack(false, 1, songId, MusicSystem.musicVolume, 0, CacheArchive.jingleCacheArchive);
+			MusicSystem.songTimeout = songTimeout;
+		}
+	}
 
-    /**
-     * Creates a new {@link MusicSystem}.
-     *
-     * @throws MidiUnavailableException
-     * @see MidiPlayer
-     */
-    public MusicSystem() throws MidiUnavailableException {
-        this.running = true;
-//        this.soundStream = stream;
-        this.player = new MidiPlayer();
-        this.setDefault();
+	public static void processMusic() {
+		if (MusicSystem.songTimeout > 0) {
+			MusicSystem.songTimeout -= 20;
+			if (MusicSystem.songTimeout < 0)
+				MusicSystem.songTimeout = 0;
+			if (MusicSystem.songTimeout == 0 && MusicSystem.musicVolume != 0 && MusicSystem.currentSongId != -1)
+				MusicSystem.playMusicTrack(false, 0, MusicSystem.currentSongId, MusicSystem.musicVolume, 0, CacheArchive.musicCacheArchive);
+		}
+	}
 
-        Thread t = new Thread(this);
-        t.setName("MusicSystem");
-        t.setDaemon(true);
-        t.start();
-    }
+	static void stop_() {
+		if (MusicSystem.midi != null) {
+			method308();
+			if (MusicSystem.timer > 0) {
+				MusicSystem.midi.resetVolume(256);
+				MusicSystem.timer = 0;
+			}
+			MusicSystem.midi.close0((byte) 101);
+			MusicSystem.midi = null;
+		}
+	}
+	
+	private static byte[] fetchMusic(int childId, CacheArchive musicArchive, int fileId, int arg4) {
+		long hash = (childId + 37 * fileId & 0xffff) + ((long) arg4 << 32) + (fileId << 16);
+		if (MusicSystem.musicCache != null) {
+			MusicData data = (MusicData) MusicSystem.musicCache.get(hash);
+			if (data != null)
+				return data.data;
+		}
+		byte[] is = musicArchive.getFile(fileId, childId);
+		if (is == null)
+			return null;
+		if (MusicSystem.musicCache != null)
+			MusicSystem.musicCache.put(hash, new MusicData(is));
+		return is;
+	}
 
-    public static void processAudio() {
-        for(int index = 0; index < PacketBuffer.currentSound; index++) {
-            Class40_Sub3.soundDelay[index]--;
-            if(Class40_Sub3.soundDelay[index] < -10) {
-                PacketBuffer.currentSound--;
-                for(int j = index; PacketBuffer.currentSound > j; j++) {
-                    IdentityKit.sound[j] = IdentityKit.sound[j + 1];
-                    PacketBuffer.effects[j] = PacketBuffer.effects[1 + j];
-                    ItemDefinition.soundVolume[j] = ItemDefinition.soundVolume[1 + j];
-                    Class40_Sub3.soundDelay[j] = Class40_Sub3.soundDelay[1 + j];
-                    MovedStatics.anIntArray1916[j] = MovedStatics.anIntArray1916[1 + j];
-                }
-                index--;
-            } else {
-                Effect effect = PacketBuffer.effects[index];
-                if(effect == null) {
-                    effect = Effect.method429(CacheArchive.soundEffectCacheArchive, IdentityKit.sound[index], 0);
-                    if(effect == null)
-                        continue;
-                    Class40_Sub3.soundDelay[index] += effect.delay();
-                    PacketBuffer.effects[index] = effect;
-                }
-                if(Class40_Sub3.soundDelay[index] < 0) {
-                    int i_10_;
-                    if(MovedStatics.anIntArray1916[index] != 0) {
-                        int i_11_ = 128 * (MovedStatics.anIntArray1916[index] & 0xff);
-                        int i_12_ = 0xff & MovedStatics.anIntArray1916[index] >> 16;
-                        int i_13_ = (MovedStatics.anIntArray1916[index] & 0xffb8) >> 8;
-                        int i_14_ = i_13_ * 128 + 64 + -Player.localPlayer.worldY;
-                        int i_15_ = i_12_ * 128 + 64 - Player.localPlayer.worldX;
-                        if(i_15_ < 0)
-                            i_15_ = -i_15_;
-                        if(i_14_ < 0)
-                            i_14_ = -i_14_;
-                        int i_16_ = -128 + i_15_ + i_14_;
-                        if(i_16_ > i_11_) {
-                            Class40_Sub3.soundDelay[index] = -100;
-                            continue;
-                        }
-                        if(i_16_ < 0)
-                            i_16_ = 0;
-                        i_10_ = (i_11_ + -i_16_) * RSCanvas.anInt65 / i_11_;
-                    } else
-                        i_10_ = MovedStatics.anInt200;
-                    Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aClass48_1289);
-                    Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_10_);
-                    class40_sub9_sub2.method860(-1 + ItemDefinition.soundVolume[index]);
-                    Class49.aClass40_Sub9_Sub1_1152.method846(class40_sub9_sub2);
-                    Class40_Sub3.soundDelay[index] = -100;
-                }
-            }
-        }
-        if(Class35.songTimeout > 0) {
-            Class35.songTimeout -= 20;
-            if(Class35.songTimeout < 0)
-                Class35.songTimeout = 0;
-            if(Class35.songTimeout == 0 && RSCanvas.musicVolume != 0 && MouseHandler.currentSongId != -1)
-                Class33.method414(false, 0, MouseHandler.currentSongId, RSCanvas.musicVolume, 0, CacheArchive.musicCacheArchive);
-        }
-    }
+	private static void method308() {
+		method56(false, null, 0);
+	}
 
-    /**
-     * Sets the volume to default.
-     *
-     * @see #defaultVolume
-     */
-    public void setDefault() {
-        this.volume = defaultVolume * 64;
-    }
+	private static int method372(int arg1) {
+		return (int) (0.5 + Math.log(0.00390625 * arg1) * 868.5889638065036);
+	}
 
-    /**
-     * Stops the {@link MusicSystem} thread.
-     */
-    public void stop() {
-        play("shutdown");
-    }
+	private static synchronized void method403(int arg0, boolean arg1, int arg2, int songId, CacheArchive cacheArchive, int arg5, int arg6, boolean arg7) {
+		if (musicIsntNull()) {
+			MusicSystem.aBoolean1790 = arg7;
+			MusicSystem.anInt255 = arg2;
+			MusicSystem.childId = arg5;
+			MusicSystem.fetchMusic = arg1;
+			MusicSystem.musicFetcher = cacheArchive;
+			MusicSystem.anInt1806 = -1;
+			MusicSystem.volume3 = arg0;
+			MusicSystem.anInt2110 = arg6;
+			MusicSystem.fileId = songId;
+		}
+	}
 
-    /**
-     * Plays the specified midi.
-     *
-     * @param midi the midi
-     */
-    public void play(String midi) {
-        play(midi, false);
-    }
+	private static void method557(int arg0) {
+		method886(0, false, null, arg0);
+	}
 
-    /**
-     * Plays the specified midi with the additional option of being a jingle. A jingle is a temporary song that overrides
-     * the currently playing song.
-     *
-     * @param midi   the midi
-     * @param jingle play as a jingle?
-     */
-    public void play(String midi, boolean jingle) {
-        if (jingle) {
-            MusicSystem.jingle = midi;
-        } else {
-            MusicSystem.song = midi;
-        }
-    }
+	private static void method56(boolean loop, byte[] arg2, int arg3) {
+		if (MusicSystem.midi != null) {
+			if (MusicSystem.volume2 >= 0) {
+				MusicSystem.midi.stop0();
+				MusicSystem.velocity = 0;
+				MusicSystem.data_ = null;
+				MusicSystem.timer = 20;
+				MusicSystem.volume2 = -1;
+			}
+			if (arg2 != null) {
+				if (MusicSystem.timer > 0) {
+					MusicSystem.midi.resetVolume(arg3);
+					MusicSystem.timer = 0;
+				}
+				MusicSystem.volume2 = arg3;
+				MusicSystem.midi.play(arg2, loop, arg3);
+			}
+		}
+	}
 
-    /**
-     * Sets the volume.
-     *
-     * @param volume the volume (integer value from 0..256)
-     */
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
+	private static void method566(int arg0, boolean arg1, int arg2, byte[] arg3) {
+		if (MusicSystem.midi != null) {
+			if (MusicSystem.volume2 >= 0) {
+				arg2 -= 20;
+				if (arg2 < 1)
+					arg2 = 1;
+				MusicSystem.timer = arg2;
+				if (MusicSystem.volume2 == 0)
+					MusicSystem.velocity_increment = 0;
+				else {
+					int i = MusicSystem.method372(MusicSystem.volume2);
+					i -= MusicSystem.velocity;
+					MusicSystem.velocity_increment = (-1 + arg2 + 3600 + i) / arg2;
+				}
+				MusicSystem.data_ = arg3;
+				MusicSystem.volume1 = arg0;
+				MusicSystem.loop_ = arg1;
+			} else if (MusicSystem.timer == 0)
+				MusicSystem.method56(arg1, arg3, arg0);
+			else {
+				MusicSystem.volume1 = arg0;
+				MusicSystem.loop_ = arg1;
+				MusicSystem.data_ = arg3;
+			}
+		}
+	}
 
-    /**
-     * Gets the volume.
-     *
-     * @return the volume
-     */
-    public int getVolume() {
-        return volume;
-    }
+	private static void method651(int volume) {
+		if (MusicSystem.midi != null) {
+			if (MusicSystem.timer != 0) {
+				if (MusicSystem.data_ != null)
+					MusicSystem.volume1 = volume;
+			} else if (MusicSystem.volume2 >= 0) {
+				MusicSystem.volume2 = volume;
+				MusicSystem.midi.setVolume(volume, 0);
+			}
+		}
+	}
 
-    /**
-     * The main loop for the {@link MusicSystem}. Contains logic for transitioning between songs.
-     *
-     * @throws InvalidMidiDataException
-     * @throws IOException
-     */
-    private void update() throws InvalidMidiDataException, IOException {
-        if (jingle != null) {
-            // fade out or switch to jingle
-            if (!current.equals(jingle)) {
-                current = jingle;
-                playing = jingle;
+	private static void method886(int volume, boolean loop, byte[] data, int velocity) {
+		if (MusicSystem.midi != null) {
+			if (MusicSystem.volume2 < 0) {
+				if (MusicSystem.timer != 0) {
+					MusicSystem.volume1 = volume;
+					MusicSystem.data_ = data;
+					MusicSystem.loop_ = loop;
+				} else
+					MusicSystem.method56(loop, data, volume);
+			} else {
+				MusicSystem.velocity_increment = velocity;
+				if (MusicSystem.volume2 != 0) {
+					int i = MusicSystem.method372(MusicSystem.volume2);
+					i -= MusicSystem.velocity;
+					MusicSystem.timer = (i + 3600) / velocity;
+					if (MusicSystem.timer < 1)
+						MusicSystem.timer = 1;
+				} else
+					MusicSystem.timer = 1;
+				MusicSystem.volume1 = volume;
+				MusicSystem.data_ = data;
+				MusicSystem.loop_ = loop;
+			}
+		}
+	}
 
-                // no fade in, immediate
-                player.setVolume(this.volume);
+	private static void method984(int arg0) {
+		if (arg0 == 0) {
+			if (MusicSystem.midi != null) {
+				if (MusicSystem.volume2 >= 0) {
+					if (MusicSystem.timer > 0) {
+						MusicSystem.velocity += MusicSystem.velocity_increment;
+						MusicSystem.midi.setVolume(MusicSystem.volume2, MusicSystem.velocity);
+						MusicSystem.timer--;
+						if (MusicSystem.timer == 0) {
+							MusicSystem.midi.stop0();
+							MusicSystem.volume2 = -1;
+							MusicSystem.timer = 20;
+						}
+					}
+				} else if (MusicSystem.timer > 0) {
+					MusicSystem.timer--;
+					if (MusicSystem.timer == 0) {
+						if (MusicSystem.data_ == null)
+							MusicSystem.midi.resetVolume(256);
+						else {
+							MusicSystem.midi.resetVolume(MusicSystem.volume1);
+							MusicSystem.volume2 = MusicSystem.volume1;
+							MusicSystem.midi.play(MusicSystem.data_, MusicSystem.loop_, MusicSystem.volume1);
+							MusicSystem.data_ = null;
+						}
+						MusicSystem.velocity = 0;
+					}
+				}
+			}
+		}
+	}
 
-                    player.play(this.soundStream, false);
-            } else if (player.isDone()) {
-                current = "";
-                playing = "";
-                jingle = null;
-            }
-            return;
-        }
+	private static boolean musicIsntNull() {
+		return MusicSystem.midi != null;
 
-        // no music or jingles playing
-        if (song == null) {
-            if (player.isMuted()) {
-                playing = "none";
-            } else {
-                player.adjustVolume(-1);
-            }
-            return;
-        }
+	}
 
-        boolean songChanging = !current.equals(song);
-
-        if (songChanging) {
-            current = song;
-
-            if (current.equals("replay")) {
-                current = last;
-            }
-
-            last = current;
-        }
-
-        boolean fadeOut = !playing.equals(current);
-
-        if (fadeOut) {
-            if (!player.isMuted()) {
-                player.adjustVolume(-2);
-                return;
-            }
-
-            playing = current;
-
-            if (playing == null || playing.equals("none")) {
-                return;
-            }
-
-            if ("shutdown".equals(playing)) {
-                song = null;
-                running = false;
-                current = "none";
-                playing = "none";
-                last = "none";
-                return;
-            }
-
-            player.play(this.soundStream, true);
-
-        } else {
-            // fade in
-            int volume = player.getVolume();
-
-            if (volume < this.volume) {
-                player.adjustVolume(4);
-            } else if (volume > this.volume) {
-                player.adjustVolume(-4);
-            }
-        }
-    }
-
-    @Override
-    public void run() {
-        while (running) {
-            try {
-                Thread.sleep(20);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            try {
-                update();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        if (player != null) {
-            try {
-                player.stop();
-            } catch (InvalidMidiDataException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
+	private static boolean musicPlayerStarted() {
+		MusicSystem.timer = 20;
+		try {
+			MusicSystem.midi = new MidiPlayer();
+			return true;
+		} catch (Throwable throwable) {
+			return false;
+		}
+	}
+	
+	private static class MusicData extends CachedNode {
+		private byte[] data;
+		private MusicData(byte[] data) {
+	        this.data = data;
+	    }
+	}
 }

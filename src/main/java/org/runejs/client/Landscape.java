@@ -1,6 +1,5 @@
 package org.runejs.client;
 
-import org.runejs.client.audio.Effect;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.FileOperations;
 import org.runejs.client.cache.media.AnimationSequence;
@@ -17,6 +16,7 @@ import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.util.CollisionMap;
+import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
 import org.runejs.client.cache.def.FramemapDefinition;
 import org.runejs.client.cache.def.GameObjectDefinition;
@@ -89,7 +89,7 @@ public class Landscape {
                 }
                 Class65.method1020();
                 int dataLength = RSString.terrainData.length;
-                Class37.method436();
+                SoundSystem.clearObjectSounds();
                 Main.method364(true);
                 if(!GroundItemTile.loadGeneratedMap) {
                     for(int pointer = 0; dataLength > pointer; pointer++) {
@@ -240,70 +240,6 @@ public class Landscape {
 
     }
 
-    public static void method934(int arg0, int arg2, int arg3, int arg4) {
-        for(Class40_Sub2 class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method909(-4)) {
-            if(class40_sub2.anInt1997 != -1 || class40_sub2.anIntArray2005 != null) {
-                int i_48_ = 0;
-                if(arg0 <= class40_sub2.anInt2013) {
-                    if(arg0 < class40_sub2.anInt1994)
-                        i_48_ += class40_sub2.anInt1994 - arg0;
-                } else
-                    i_48_ += -class40_sub2.anInt2013 + arg0;
-                if(arg4 > class40_sub2.anInt2007)
-                    i_48_ += -class40_sub2.anInt2007 + arg4;
-                else if(arg4 < class40_sub2.anInt2003)
-                    i_48_ += -arg4 + class40_sub2.anInt2003;
-                if(class40_sub2.anInt2000 < -64 + i_48_ || RSCanvas.anInt65 == 0 || arg2 != class40_sub2.anInt1993) {
-                    if(class40_sub2.aClass40_Sub9_Sub2_2001 != null) {
-                        Class49.aClass40_Sub9_Sub1_1152.method853(class40_sub2.aClass40_Sub9_Sub2_2001);
-                        class40_sub2.aClass40_Sub9_Sub2_2001 = null;
-                    }
-                    if(class40_sub2.aClass40_Sub9_Sub2_2010 != null) {
-                        Class49.aClass40_Sub9_Sub1_1152.method853(class40_sub2.aClass40_Sub9_Sub2_2010);
-                        class40_sub2.aClass40_Sub9_Sub2_2010 = null;
-                    }
-                } else {
-                    i_48_ -= 64;
-                    if(i_48_ < 0)
-                        i_48_ = 0;
-                    int i_49_ = (-i_48_ + class40_sub2.anInt2000) * RSCanvas.anInt65 / class40_sub2.anInt2000;
-                    if(class40_sub2.aClass40_Sub9_Sub2_2001 == null) {
-                        if(class40_sub2.anInt1997 >= 0) {
-                            Effect effect = Effect.method429(CacheArchive.soundEffectCacheArchive, class40_sub2.anInt1997, 0);
-                            if(effect != null) {
-                                Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aClass48_1289);
-                                Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_49_);
-                                class40_sub9_sub2.method860(-1);
-                                Class49.aClass40_Sub9_Sub1_1152.method846(class40_sub9_sub2);
-                                class40_sub2.aClass40_Sub9_Sub2_2001 = class40_sub9_sub2;
-                            }
-                        }
-                    } else
-                        class40_sub2.aClass40_Sub9_Sub2_2001.method857(i_49_);
-                    if(class40_sub2.aClass40_Sub9_Sub2_2010 == null) {
-                        if(class40_sub2.anIntArray2005 != null && (class40_sub2.anInt2014 -= arg3) <= 0) {
-                            int i_50_ = (int) ((double) class40_sub2.anIntArray2005.length * Math.random());
-                            Effect effect = Effect.method429(CacheArchive.soundEffectCacheArchive, class40_sub2.anIntArray2005[i_50_], 0);
-                            if(effect != null) {
-                                Class40_Sub12_Sub1 class40_sub12_sub1 = effect.method428().method875(Class55.aClass48_1289);
-                                Class40_Sub9_Sub2 class40_sub9_sub2 = Class40_Sub9_Sub2.method864(class40_sub12_sub1, 100, i_49_);
-                                class40_sub9_sub2.method860(0);
-                                Class49.aClass40_Sub9_Sub1_1152.method846(class40_sub9_sub2);
-                                class40_sub2.anInt2014 = class40_sub2.anInt2012 + (int) ((double) (-class40_sub2.anInt2012 + class40_sub2.anInt2002) * Math.random());
-                                class40_sub2.aClass40_Sub9_Sub2_2010 = class40_sub9_sub2;
-                            }
-                        }
-                    } else {
-                        class40_sub2.aClass40_Sub9_Sub2_2010.method857(i_49_);
-                        if(!class40_sub2.aClass40_Sub9_Sub2_2010.method863())
-                            class40_sub2.aClass40_Sub9_Sub2_2010 = null;
-                    }
-                }
-            }
-        }
-    }
-
-
     public static void loadTerrainSubblock(int y, int drawX, int drawingPlane, int currentPlane, int x, int drawY, int rotation, byte[] terrainData, CollisionMap[] collisionMaps) {
         for(int i = 0; i < 8; i++) {
             for(int yIdx = 0; yIdx < 8; yIdx++) {
@@ -316,9 +252,9 @@ public class Landscape {
             for(int tileX = 0; tileX < 64; tileX++) {
                 for(int tileY = 0; tileY < 64; tileY++) {
                     if(plane == drawingPlane && tileX >= drawX && 8 + drawX > tileX && tileY >= drawY && 8 + drawY > tileY)
-                        Class48.method922(x + Class24.getRotatedTileX(rotation, false, tileX & 0x7, tileY & 0x7), rotation, class40_sub1, y + Class33.getRotatedTileY(tileX & 0x7, 0x7 & tileY, rotation, false), 0, 0, currentPlane);
+                        MovedStatics.method922(x + Class24.getRotatedTileX(rotation, false, tileX & 0x7, tileY & 0x7), rotation, class40_sub1, y + Class33.getRotatedTileY(tileX & 0x7, 0x7 & tileY, rotation, false), 0, 0, currentPlane);
                     else
-                        Class48.method922(-1, 0, class40_sub1, -1, 0, 0, 0);
+                        MovedStatics.method922(-1, 0, class40_sub1, -1, 0, 0, 0);
                 }
             }
         }

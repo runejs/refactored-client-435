@@ -47,7 +47,7 @@ public class Class13 {
         Class40_Sub5_Sub15.method736(true, actor);
     }
 
-    public static void method242(byte arg0) {
+    public static void handleRequests(byte arg0) {
         if(arg0 > -88)
             method247(null, (byte) 34);
         for(; ; ) {
@@ -63,7 +63,7 @@ public class Class13 {
 
     public static void handleInterfaceActions(int areaId, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, int widgetId) {
         if(GameInterface.decodeGameInterface(widgetId)) {
-            Class48.handleInterfaceActions(areaId, mouseX, mouseY, minX, minY, maxX, maxY, GameInterface.cachedInterfaces[widgetId], -1, 0, 0);
+            MovedStatics.handleInterfaceActions(areaId, mouseX, mouseY, minX, minY, maxX, maxY, GameInterface.cachedInterfaces[widgetId], -1, 0, 0);
         }
     }
 

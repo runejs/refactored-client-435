@@ -146,9 +146,9 @@ public class SceneTile extends Node {
     }
 
     public static void drawMenuTooltip(int arg0) {
-        if (ActorDefinition.menuActionRow >= 2 || Class8.itemSelected != 0 || Main.widgetSelected != 0) {
+        if (ActorDefinition.menuActionRow >= 2 || MovedStatics.itemSelected != 0 || Main.widgetSelected != 0) {
             String class1;
-            if (Class8.itemSelected == 1 && ActorDefinition.menuActionRow < 2)
+            if (MovedStatics.itemSelected == 1 && ActorDefinition.menuActionRow < 2)
                 class1 = English.use + Native.whitespace + Native.aClass1_3295 + Native.aClass1_894;
             else if (Main.widgetSelected != 1 || ActorDefinition.menuActionRow >= 2)
                 class1 = Landscape.menuActionTexts[-1 + ActorDefinition.menuActionRow];

@@ -5,7 +5,6 @@ import org.runejs.client.cache.CacheArchive;
 import java.awt.*;
 
 public class Class26 {
-    public static boolean aBoolean618 = false;
     public static int loginScreenState = 0;
     public static Image loadingBoxImage;
     public static int anInt627;

@@ -21,20 +21,6 @@ public class Class65 {
         Class24.fullScreenTextureArray = Rasterizer3D.setLineOffsets(Class24.fullScreenTextureArray);
     }
 
-    public static void method1019(int arg0) {
-        if(MovedStatics.aClass22_189 != null) {
-            Class22.method308();
-            if(arg0 == 104) {
-                if(RSCanvas.anInt54 > 0) {
-                    MovedStatics.aClass22_189.method301(256, 0);
-                    RSCanvas.anInt54 = 0;
-                }
-                MovedStatics.aClass22_189.method306((byte) 101);
-                MovedStatics.aClass22_189 = null;
-            }
-        }
-    }
-
     public static void method1020() {
         Class59.anIntArray1398 = new int[104];
         OverlayDefinition.tile_underlay_path = new byte[4][104][104];

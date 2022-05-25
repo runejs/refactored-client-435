@@ -2,10 +2,6 @@ package org.runejs.client;
 
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;
-import org.runejs.client.input.MouseHandler;
-import org.runejs.client.io.Buffer;
-import org.runejs.client.net.PacketBuffer;
-import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.frame.ChatBox;
@@ -23,28 +19,6 @@ public class Class33 {
     public static int anInt784 = 0;
     public static int[] selectedMenuActions = new int[500];
 
-
-    public static synchronized void method402(boolean arg0) {
-        if(Class24.method340()) {
-            Class22.method308();
-            Class26.aBoolean618 = arg0;
-            Class22_Sub1.musicCacheArchive = null;
-        }
-    }
-
-    public static synchronized void method403(int arg0, boolean arg1, int arg2, int songId, CacheArchive cacheArchive, int arg5, int arg6, boolean arg7) {
-        if(Class24.method340()) {
-            Main.aBoolean1790 = arg7;
-            MovedStatics.anInt255 = arg2;
-            Projectile.anInt3004 = arg5;
-            Class26.aBoolean618 = arg1;
-            Class22_Sub1.musicCacheArchive = cacheArchive;
-            MovedStatics.anInt1806 = -1;
-            OverlayDefinition.anInt2342 = arg0;
-            MovedStatics.anInt2110 = arg6;
-            Class8.anInt289 = songId;
-        }
-    }
 
     public static void method404() {
         SceneCluster.anInt770 = 0;
@@ -302,16 +276,7 @@ public class Class33 {
             OverlayDefinition.overlayDefinitionCache = null;
     }
 
-    public static synchronized void method407(boolean arg0) {
-        if(arg0)
-            Native.aClass1_795 = null;
-        Class65.method1019(104);
-    }
-
-
     public static boolean menuHasAddFriend(byte arg0, int arg1) {
-        if(arg0 <= 23)
-            method402(true);
         if(arg1 < 0)
             return false;
         int i = MovedStatics.menuActionTypes[arg1];
@@ -338,78 +303,5 @@ public class Class33 {
         Native.loginScreenMessageLineOne = line1;
         Native.loginScreenMessageLineTwo = line2;
         Native.loginScreenMessageLineThree = line3;
-    }
-
-    public static synchronized void method412(boolean arg0, CacheArchive arg1, int arg2, byte arg3, String arg4, int arg5, String arg6, int arg7) {
-        if(Class24.method340()) {
-            if(arg3 != 66)
-                method412(false, null, 120, (byte) -44, null, 71, null, -13);
-            int i = arg1.getHash(arg4);
-            int i_16_ = arg1.method179(i, arg6);
-            method403(arg7, true, arg5, i, arg1, i_16_, arg2, arg0);
-        }
-    }
-
-    public static synchronized void method413(byte arg0) {
-        if(Class24.method340()) {
-            if(Class26.aBoolean618) {
-                byte[] is = RSString.method74(Projectile.anInt3004, Class22_Sub1.musicCacheArchive, Class8.anInt289, MovedStatics.anInt2110);
-                if(is != null) {
-                    if(MovedStatics.anInt255 < 0) {
-                        if(MovedStatics.anInt1806 < 0)
-                            RSString.method56(Main.aBoolean1790, is, OverlayDefinition.anInt2342);
-                        else
-                            method566(OverlayDefinition.anInt2342, Main.aBoolean1790, MovedStatics.anInt1806, is);
-                    } else
-                        MovedStatics.method886(0, OverlayDefinition.anInt2342, Main.aBoolean1790, is, MovedStatics.anInt255);
-                    Class26.aBoolean618 = false;
-                    Class22_Sub1.musicCacheArchive = null;
-                }
-            }
-            Class59.method984(0);
-            if(arg0 >= -109)
-                method406(-59, -67, 107, 108);
-        }
-    }
-
-    public static synchronized void method414(boolean arg0, int arg1, int songid, int arg3, int arg4, CacheArchive arg5) {
-        if(Class24.method340()) {
-            Class26.aBoolean618 = true;
-            MovedStatics.anInt1806 = -1;
-            MovedStatics.anInt255 = -1;
-            OverlayDefinition.anInt2342 = arg3;
-            Projectile.anInt3004 = arg4;
-            Main.aBoolean1790 = arg0;
-            MovedStatics.anInt2110 = arg1;
-            Class22_Sub1.musicCacheArchive = arg5;
-            Class8.anInt289 = songid;
-        }
-    }
-
-    public static void method566(int arg0, boolean arg1, int arg2, byte[] arg3) {
-        if(MovedStatics.aClass22_189 != null) {
-            if(MouseHandler.anInt1450 >= 0) {
-                arg2 -= 20;
-                if(arg2 < 1)
-                    arg2 = 1;
-                RSCanvas.anInt54 = arg2;
-                if(MouseHandler.anInt1450 == 0)
-                    Buffer.anInt1982 = 0;
-                else {
-                    int i = Class29.method372(113, MouseHandler.anInt1450);
-                    i -= Class39.anInt909;
-                    Buffer.anInt1982 = (-1 + arg2 + 3600 + i) / arg2;
-                }
-                Player.aByteArray3270 = arg3;
-                PacketBuffer.anInt2258 = arg0;
-                PlayerAppearance.aBoolean687 = arg1;
-            } else if(RSCanvas.anInt54 == 0)
-                RSString.method56(arg1, arg3, arg0);
-            else {
-                PacketBuffer.anInt2258 = arg0;
-                PlayerAppearance.aBoolean687 = arg1;
-                Player.aByteArray3270 = arg3;
-            }
-        }
     }
 }

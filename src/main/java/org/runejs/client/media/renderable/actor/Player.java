@@ -24,7 +24,6 @@ public class Player extends Actor {
 
     public static int anInt3264 = 0;
     public static int worldLevel;
-    public static byte[] aByteArray3270;
     public static int[] viewportOffsets;
     public static int headIconDrawType = 0;
     public static Player localPlayer;
@@ -110,8 +109,6 @@ public class Player extends Actor {
             return false;
         if(arg1 == 127)
             return false;
-        if(arg0 < 118)
-            aByteArray3270 = null;
         return arg1 < 129 || arg1 > 159;
     }
 
@@ -397,7 +394,7 @@ public class Player extends Actor {
                 rsString = player.playerName + SceneTile.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.aClass1_569 + English.prefixLevel + player.combatLevel + Native.rightParenthasis;
             else
                 rsString = player.playerName + Native.aClass1_569 + English.prefixSkill + player.skillLevel + Native.rightParenthasis;
-            if (Class8.itemSelected == 1) {
+            if (MovedStatics.itemSelected == 1) {
                 MovedStatics.addActionRow(English.use, index, x, y, 22, Native.aClass1_3295 + Native.aClass1_3068 + rsString);
             } else if (Main.widgetSelected == 1) {
                 if ((ItemDefinition.selectedMask & 0x8) == 8) {

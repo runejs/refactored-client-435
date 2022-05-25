@@ -118,7 +118,7 @@ public class ClientScript extends CachedNode {
                     i_19_ += opcodes[scriptDataIndex++];
                     GameInterface gameInterface = GameInterface.getInterface(i_19_);
                     int i_20_ = opcodes[scriptDataIndex++];
-                    if (i_20_ != -1 && (!ItemDefinition.forId(i_20_, 10).members || Class22.membersWorld)) {
+                    if (i_20_ != -1 && (!ItemDefinition.forId(i_20_, 10).members || MovedStatics.membersWorld)) {
                         for (int i_21_ = 0; i_21_ < gameInterface.items.length; i_21_++) {
                             if (1 + i_20_ == gameInterface.items[i_21_]) {
                                 operand += gameInterface.itemAmounts[i_21_];
@@ -142,7 +142,7 @@ public class ClientScript extends CachedNode {
                 }
                 if (opcode == 9) {
                     for (int i_22_ = 0; i_22_ < 25; i_22_++) {
-                        if (Class22.aBooleanArray548[i_22_]) {
+                        if (MovedStatics.aBooleanArray548[i_22_]) {
                             operand += Player.nextLevels[i_22_];
                         }
                     }
@@ -152,7 +152,7 @@ public class ClientScript extends CachedNode {
                     i_23_ += opcodes[scriptDataIndex++];
                     GameInterface gameInterface = GameInterface.getInterface(i_23_);
                     int i_24_ = opcodes[scriptDataIndex++];
-                    if (i_24_ != -1 && (!ItemDefinition.forId(i_24_, 10).members || Class22.membersWorld)) {
+                    if (i_24_ != -1 && (!ItemDefinition.forId(i_24_, 10).members || MovedStatics.membersWorld)) {
                         for (int i_25_ = 0; gameInterface.items.length > i_25_; i_25_++) {
                             if (i_24_ + 1 == gameInterface.items[i_25_]) {
                                 operand = 999999999;

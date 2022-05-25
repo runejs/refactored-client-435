@@ -1,8 +1,8 @@
 package org.runejs.client.audio;
 
-import org.runejs.client.Class40_Sub12_Sub1;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.io.Buffer;
+import org.runejs.client.sound.RawSound;
 
 public class Effect {
     public Instrument[] instruments;
@@ -27,7 +27,7 @@ public class Effect {
         instruments = new Instrument[10];
     }
 
-    public static Effect method429(CacheArchive arg0, int arg1, int arg2) {
+    public static Effect readSoundEffect(CacheArchive arg0, int arg1, int arg2) {
         byte[] is = arg0.getFile(arg1, arg2);
         if(is == null)
             return null;
@@ -81,8 +81,8 @@ public class Effect {
         return offset;
     }
 
-    public Class40_Sub12_Sub1 method428() {
+    public RawSound method428() {
         byte[] is = method426();
-        return new Class40_Sub12_Sub1(22050, is, 22050 * loop_begin / 1000, 22050 * loop_end / 1000);
+        return new RawSound(22050, is, 22050 * loop_begin / 1000, 22050 * loop_end / 1000);
     }
 }

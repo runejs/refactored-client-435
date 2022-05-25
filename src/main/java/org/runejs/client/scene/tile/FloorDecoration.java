@@ -28,7 +28,6 @@ public class FloorDecoration {
     public static IndexedImage inventoryBackgroundImage;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
     public static SignlinkNode gameServerSignlinkNode;
-    public static Class40_Sub9 aClass40_Sub9_608;
     public static int[] anIntArray612;
     public static int anInt614 = -1;
 
@@ -40,7 +39,7 @@ public class FloorDecoration {
     public int z;
 
     public static void method342(int arg1, Actor arg2) {
-        Class22_Sub1.method312(arg1, arg2.worldY, arg2.worldX, 4976905);
+        MovedStatics.method312(arg1, arg2.worldY, arg2.worldX, 4976905);
     }
 
     public static void constructMapRegion(boolean arg0, int arg1) {

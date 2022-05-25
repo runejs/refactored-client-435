@@ -75,7 +75,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             SceneTile.drawMenuTooltip(4);
         } else  {
             if(ScreenController.frameMode == ScreenMode.FIXED && Projectile.menuScreenArea == 0){
-                Class40_Sub5_Sub6.drawMenu(4,4);
+                MovedStatics.drawMenu(4,4);
             }
         }
         if (MovedStatics.anInt2118 == 1) {
@@ -279,7 +279,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (arg0 < 62) {
             aLinkedList_1278 = null;
         }
-        return Class22.method307(arg1, -1, 32767);
+        return MovedStatics.method307(arg1, -1, 32767);
     }
 
     public void keyTyped(KeyEvent arg0) {

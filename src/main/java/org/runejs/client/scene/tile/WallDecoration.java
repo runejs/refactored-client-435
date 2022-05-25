@@ -1,13 +1,12 @@
 package org.runejs.client.scene.tile;
 
 import org.runejs.client.cache.def.GameObjectDefinition;
-import org.runejs.client.cache.def.IdentityKit;
-import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.node.NodeCache;
+import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.input.KeyFocusListener;
@@ -17,7 +16,6 @@ import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
-import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.*;
 
 import java.awt.*;
@@ -36,17 +34,6 @@ public class WallDecoration {
     public int y;
     public int x;
     public int hash = 0;
-
-    public static void method950(int soundId, int volume, int delay) {
-        if (MovedStatics.anInt200 != 0 && volume != 0 && PacketBuffer.currentSound < 50) {
-            IdentityKit.sound[PacketBuffer.currentSound] = soundId;
-            ItemDefinition.soundVolume[PacketBuffer.currentSound] = volume;
-            Class40_Sub3.soundDelay[PacketBuffer.currentSound] = delay;
-            PacketBuffer.effects[PacketBuffer.currentSound] = null;
-            MovedStatics.anIntArray1916[PacketBuffer.currentSound] = 0;
-            PacketBuffer.currentSound++;
-        }
-    }
 
     public static void drawLoadingScreen(TypeFace fontBold, TypeFace fontSmall) {
         MovedStatics.loginBoxGraphics.prepareRasterizer();
@@ -161,7 +148,7 @@ public class WallDecoration {
         Rasterizer.drawUnfilledRectangle(0, 0, 42, 42, 0x242017);
         musicIcon.drawImage(4, 3);
 
-        if(RSCanvas.musicVolume == 0) {
+        if(MusicSystem.musicVolume == 0) {
             Rasterizer.drawDiagonalLine(0,0, 42,42, 0xFF0000);
         }
 
@@ -184,7 +171,7 @@ public class WallDecoration {
             ProducingGraphicsBuffer.muteButton.drawGraphics(ScreenController.drawWidth-42, ScreenController.drawHeight-42, graphics);
 
             MovedStatics.loginBoxGraphics.drawGraphics(offsetX + 202, offsetY + 171, graphics);
-            Class8.flameLeftBackground.drawGraphics(offsetX, offsetY, graphics);
+            MovedStatics.flameLeftBackground.drawGraphics(offsetX, offsetY, graphics);
             GameObject.flameRightBackground.drawGraphics(offsetX + 637, offsetY, graphics);
 
             if (!MovedStatics.clearScreen)

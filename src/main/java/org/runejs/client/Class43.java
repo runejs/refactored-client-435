@@ -52,7 +52,7 @@ public class Class43 {
             if(MovedStatics.anInt848 == 1)
                 method398(-2);
             else if(ScreenController.frameMode == ScreenMode.FIXED)
-                Class40_Sub5_Sub6.drawMenu(0,0);
+                MovedStatics.drawMenu(0,0);
         }
         if(arg0 >= -22)
             cameraYawOffset = 80;
@@ -163,7 +163,7 @@ public class Class43 {
             }
         }
         if(class1 == null)
-            Class40_Sub5_Sub6.drawMenu(0,0);
+            MovedStatics.drawMenu(0,0);
         else {
             int i = VertexNormal.menuWidth;
             int i_0_ = InteractiveObject.menuOffsetX;

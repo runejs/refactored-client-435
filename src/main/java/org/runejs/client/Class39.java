@@ -2,13 +2,11 @@ package org.runejs.client;
 
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.media.renderable.actor.Npc;
-import org.runejs.client.util.Signlink;
 
 public class Class39 implements Runnable {
     public static int anInt901;
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_907;
     public static ProducingGraphicsBuffer mapbackLeft;
-    public static int anInt909 = 0;
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;
     public Object objectLock;
     public boolean aBoolean913 = true;
@@ -48,27 +46,6 @@ public class Class39 implements Runnable {
             arg0.anInt2036 = i_1_;
         }
     }
-
-    public static boolean method452(Signlink arg0, boolean arg2) {
-        RSCanvas.anInt54 = 20;
-        try {
-            MovedStatics.aClass22_189 = new Class22_Sub2_Sub1(); // Java Midi Based
-            return true;
-        } catch(Throwable throwable) {
-            Runnable_Impl1 runnable_impl1 = arg0.method391();
-            if(runnable_impl1 != null) {
-                MovedStatics.aClass22_189 = new Class22_Sub2_Sub2(arg0, runnable_impl1); // ???
-                return true;
-            }
-            if(arg2) {
-                MovedStatics.aClass22_189 = new Class22_Sub1(arg0); // JS based
-                return true;
-            }
-            return false;
-        }
-//        return false;
-    }
-
 
     public void run() {
         while(aBoolean913) {

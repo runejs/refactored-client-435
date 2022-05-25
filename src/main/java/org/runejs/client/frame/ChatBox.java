@@ -40,7 +40,7 @@ public class ChatBox {
             '$', '%', '"', '[', ']', '_', '{', '}', '/', '|'};
     public static void renderChatbox() {
         MovedStatics.showChatPanelRedrawnText = true;
-        Class22.method305();
+        MovedStatics.method305();
         if(messagePromptRaised) {
             TypeFace.fontBold.drawStringLeft(Native.aClass1_1563, 239, 40, 0);
             TypeFace.fontBold.drawStringLeft(chatMessage + "*", 239, 60, 128);
@@ -180,7 +180,7 @@ public class ChatBox {
                 redrawChatbox = true;
         }
         if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && Projectile.menuScreenArea == 2)
-            Class40_Sub5_Sub6.drawMenu(0, 0);
+            MovedStatics.drawMenu(0, 0);
         if(ScreenController.frameMode == ScreenMode.FIXED) {
             LinkedList.drawChatBoxGraphics();
         }

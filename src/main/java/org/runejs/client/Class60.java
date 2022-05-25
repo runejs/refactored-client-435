@@ -14,6 +14,7 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.util.CollisionMap;
+import org.runejs.client.sound.MusicSystem;
 import org.runejs.Configuration;
 
 public class Class60 {
@@ -39,13 +40,6 @@ public class Class60 {
         if(arg1.method194(Native.runes, ""))
             i++;
         return i;
-    }
-
-    public static void method989() {
-        if(CollisionMap.aClass8_166 != null) {
-            CollisionMap.aClass8_166.method213();
-            CollisionMap.aClass8_166 = null;
-        }
     }
 
     public static void determineMenuSize() {
@@ -191,23 +185,23 @@ public class Class60 {
 
         if(MouseHandler.clickType == 1 && RSString.clickY >= ScreenController.drawHeight-42 && Class57.clickX>=ScreenController.drawWidth-42 ){
             int newVolume = 0;
-            if(RSCanvas.musicVolume == 0) {
+            if(MusicSystem.musicVolume == 0) {
                 newVolume = 255;
             }
-            if(RSCanvas.musicVolume != 0 || MouseHandler.currentSongId == -1) {
+            if(MusicSystem.musicVolume != 0 || MusicSystem.currentSongId == -1) {
                 if(newVolume == 0) {
-                    Class33.method402(false);
-                    Class35.songTimeout = 0;
+                    MusicSystem.method402(false);
+                    MusicSystem.songTimeout = 0;
                 } else {
-                    Class33.method412(false, CacheArchive.musicCacheArchive, 0, (byte) 66, Native.titleSong, 10, "", RSCanvas.musicVolume);
-                    MovedStatics.method456(newVolume);
+                    MusicSystem.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", MusicSystem.musicVolume);
+                    MusicSystem.method456(newVolume);
                 }
             } else {
-                Class33.method414(false, 0, MouseHandler.currentSongId, newVolume, 0, CacheArchive.musicCacheArchive);
-                Class35.songTimeout = 0;
+                MusicSystem.playMusicTrack(false, 0, MusicSystem.currentSongId, newVolume, 0, CacheArchive.musicCacheArchive);
+                MusicSystem.songTimeout = 0;
             }
 
-            RSCanvas.musicVolume = newVolume;
+            MusicSystem.musicVolume = newVolume;
         }
 
         if(Class51.gameStatusCode == 10) {

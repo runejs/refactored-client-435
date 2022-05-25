@@ -12,8 +12,9 @@ import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.InteractiveObject;
-import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.scene.util.CollisionMap;
+import org.runejs.client.sound.MusicSystem;
+import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.SignlinkNode;
@@ -484,11 +485,11 @@ public class ClientScriptRunner extends Node {
                         continue;
                     }
                     if(scriptOpcode == 42) {
-                        scriptIntValues[intValueIndex++] = Class22_Sub1.anIntArray1847[intOperands[scriptIndex]];
+                        scriptIntValues[intValueIndex++] = MovedStatics.anIntArray1847[intOperands[scriptIndex]];
                         continue;
                     }
                     if(scriptOpcode == 43) {
-                        Class22_Sub1.anIntArray1847[intOperands[scriptIndex]] = scriptIntValues[--intValueIndex];
+                        MovedStatics.anIntArray1847[intOperands[scriptIndex]] = scriptIntValues[--intValueIndex];
                         continue;
                     }
                 }
@@ -519,10 +520,10 @@ public class ClientScriptRunner extends Node {
                         if(bool) {
                             MovedStatics.aGameInterface_2116 = childInterface;
                         } else {
-                            Class22_Sub2.aGameInterface_1887 = childInterface;
+                            MovedStatics.aGameInterface_1887 = childInterface;
                         }
                     } else if(scriptOpcode == 101) {
-                        GameInterface gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
+                        GameInterface gameInterface = !bool ? MovedStatics.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                         GameInterface childInterface = GameInterface.getInterface(gameInterface.parentId);
                         childInterface.children[BitUtils.bitWiseAND(gameInterface.id, 32767)] = null;
                     } else {
@@ -538,7 +539,7 @@ public class ClientScriptRunner extends Node {
                         gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                         scriptOpcode -= 1000;
                     } else {
-                        gameInterface = bool ? MovedStatics.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
+                        gameInterface = bool ? MovedStatics.aGameInterface_2116 : MovedStatics.aGameInterface_1887;
                     }
                     if(scriptOpcode == 1000) {
                         intValueIndex -= 2;
@@ -559,7 +560,7 @@ public class ClientScriptRunner extends Node {
                 } else if(scriptOpcode >= 1100 && scriptOpcode < 1200 || scriptOpcode >= 2100 && scriptOpcode < 2200) {
                     GameInterface gameInterface;
                     if(scriptOpcode < 2000) {
-                        gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
+                        gameInterface = !bool ? MovedStatics.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                     } else {
                         gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                         scriptOpcode -= 1000;
@@ -631,7 +632,7 @@ public class ClientScriptRunner extends Node {
                                     if(bool) {
                                         MovedStatics.aGameInterface_2116 = gameInterface.children[i_28_];
                                     } else {
-                                        Class22_Sub2.aGameInterface_1887 = gameInterface.children[i_28_];
+                                        MovedStatics.aGameInterface_1887 = gameInterface.children[i_28_];
                                     }
                                 }
                             } else if(scriptOpcode == 1401) {
@@ -647,7 +648,7 @@ public class ClientScriptRunner extends Node {
                                     if(bool) {
                                         MovedStatics.aGameInterface_2116 = gameInterface;
                                     } else {
-                                        Class22_Sub2.aGameInterface_1887 = gameInterface;
+                                        MovedStatics.aGameInterface_1887 = gameInterface;
                                     }
                                 }
                             } else {
@@ -666,12 +667,12 @@ public class ClientScriptRunner extends Node {
                                     if(bool) {
                                         MovedStatics.aGameInterface_2116 = gameInterface_35_;
                                     } else {
-                                        Class22_Sub2.aGameInterface_1887 = gameInterface_35_;
+                                        MovedStatics.aGameInterface_1887 = gameInterface_35_;
                                     }
                                 }
                             }
                         } else if(scriptOpcode < 1600) {
-                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
+                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : MovedStatics.aGameInterface_1887;
                             if(scriptOpcode == 1500) {
                                 scriptIntValues[intValueIndex++] = gameInterface.currentX;
                             } else if(scriptOpcode == 1501) {
@@ -744,7 +745,7 @@ public class ClientScriptRunner extends Node {
                                             int i_44_ = scriptIntValues[intValueIndex + 1];
                                             Class33.method406(0, i_44_, i_43_, -128);
                                         } else if(scriptOpcode == 3002) {
-                                            GameInterface gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
+                                            GameInterface gameInterface = !bool ? MovedStatics.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                                             if(MovedStatics.lastContinueTextWidgetId == -1) {
                                                 PacketBuffer.method517(gameInterface.id & 0x7fff, gameInterface.parentId);
                                                 MovedStatics.lastContinueTextWidgetId = gameInterface.id;
@@ -753,7 +754,7 @@ public class ClientScriptRunner extends Node {
                                             if(scriptOpcode != 3003) {
                                                 break;
                                             }
-                                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
+                                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : MovedStatics.aGameInterface_1887;
                                             int i_45_ = scriptIntValues[--intValueIndex];
                                             Class33.method406(0x7fff & gameInterface.id, i_45_, gameInterface.parentId, -121);
                                         }
@@ -761,15 +762,15 @@ public class ClientScriptRunner extends Node {
                                         if(scriptOpcode < 3300) {
                                             if(scriptOpcode == 3200) {
                                                 intValueIndex -= 3;
-                                                WallDecoration.method950(scriptIntValues[intValueIndex], scriptIntValues[intValueIndex + 1], scriptIntValues[2 + intValueIndex]);
+                                                SoundSystem.play(scriptIntValues[intValueIndex], scriptIntValues[intValueIndex + 1], scriptIntValues[2 + intValueIndex]);
                                             } else if(scriptOpcode == 3201) {
-                                                Class51.playSong(scriptIntValues[--intValueIndex]);
+                                                MusicSystem.playSong(scriptIntValues[--intValueIndex]);
                                             } else {
                                                 if(scriptOpcode != 3202) {
                                                     break;
                                                 }
                                                 intValueIndex -= 2;
-                                                Class57.method975(scriptIntValues[intValueIndex + 1], scriptIntValues[intValueIndex]);
+                                                MusicSystem.playSoundJingle(scriptIntValues[intValueIndex + 1], scriptIntValues[intValueIndex]);
                                             }
                                         } else if(scriptOpcode < 3400) {
                                             if(scriptOpcode != 3300) {
@@ -883,10 +884,10 @@ public class ClientScriptRunner extends Node {
                                             } else if(scriptOpcode == 4104) {
                                                 int i_78_ = scriptIntValues[--intValueIndex];
                                                 long l = 86400000L * ((long) i_78_ + 11745L);
-                                                Class8.aCalendar279.setTime(new Date(l));
-                                                int i_79_ = Class8.aCalendar279.get(Calendar.DATE);
-                                                int i_80_ = Class8.aCalendar279.get(Calendar.MONTH);
-                                                int i_81_ = Class8.aCalendar279.get(Calendar.YEAR);
+                                                MovedStatics.aCalendar279.setTime(new Date(l));
+                                                int i_79_ = MovedStatics.aCalendar279.get(Calendar.DATE);
+                                                int i_80_ = MovedStatics.aCalendar279.get(Calendar.MONTH);
+                                                int i_81_ = MovedStatics.aCalendar279.get(Calendar.YEAR);
                                                 scriptStringValues[stringValueIndex++] = i_79_ + "-" + Projectile.aClass1Array2964[i_80_] + "-" + i_81_;
                                             } else if(scriptOpcode == 4105) {
                                                 stringValueIndex -= 2;
@@ -939,7 +940,7 @@ public class ClientScriptRunner extends Node {
                                 }
                             }
                         } else {
-                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
+                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : MovedStatics.aGameInterface_1887;
                             if(scriptOpcode == 1600) {
                                 scriptIntValues[intValueIndex++] = gameInterface.scrollWidth;
                             } else {
@@ -955,7 +956,7 @@ public class ClientScriptRunner extends Node {
                             gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                             scriptOpcode -= 1000;
                         } else {
-                            gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
+                            gameInterface = !bool ? MovedStatics.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                         }
                         if(scriptOpcode >= 1300 && scriptOpcode <= 1309 || scriptOpcode >= 1314 && scriptOpcode <= 1317) {
                             String class1 = scriptStringValues[--stringValueIndex];
@@ -1034,7 +1035,7 @@ public class ClientScriptRunner extends Node {
                 } else {
                     GameInterface gameInterface;
                     if(scriptOpcode < 2000) {
-                        gameInterface = !bool ? Class22_Sub2.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
+                        gameInterface = !bool ? MovedStatics.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                     } else {
                         gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                         scriptOpcode -= 1000;
@@ -1066,7 +1067,7 @@ public class ClientScriptRunner extends Node {
                         if(scriptOpcode != 1203) {
                             break;
                         }
-                        GameInterface desiredInterface = !bool ? MovedStatics.aGameInterface_2116 : Class22_Sub2.aGameInterface_1887;
+                        GameInterface desiredInterface = !bool ? MovedStatics.aGameInterface_2116 : MovedStatics.aGameInterface_1887;
                         gameInterface.anInt2738 = desiredInterface.id;
                     }
                 }

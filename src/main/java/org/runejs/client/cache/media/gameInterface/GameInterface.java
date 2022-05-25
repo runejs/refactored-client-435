@@ -674,7 +674,7 @@ public class GameInterface extends CachedNode {
                     int i_16_ = gameInterface.clientScripts[0][1];
                     if(gameInterface.alternateRhs[0] != VarPlayerDefinition.varPlayers[i_16_]) {
                         VarPlayerDefinition.varPlayers[i_16_] = gameInterface.alternateRhs[0];
-                        Class22.method309(i_16_);
+                        MovedStatics.method309(i_16_);
                         redrawTabArea = true;
                     }
                 }
@@ -755,7 +755,7 @@ public class GameInterface extends CachedNode {
                 Class49.anInt1154 = npcIdx;
                 LinkedList.anInt1061 = i;
                 ISAAC.anInt525 = i_10_;
-                Class8.itemSelected = 1;
+                MovedStatics.itemSelected = 1;
                 Native.aClass1_3295 = Native.lightRed + ItemDefinition.forId(npcIdx, 10).name + Native.white;
                 Main.widgetSelected = 0;
                 if(Native.aClass1_3295 == null) {
@@ -786,7 +786,7 @@ public class GameInterface extends CachedNode {
                     if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
                         int i_17_ = gameInterface.clientScripts[0][1];
                         VarPlayerDefinition.varPlayers[i_17_] = -VarPlayerDefinition.varPlayers[i_17_] + 1;
-                        Class22.method309(i_17_);
+                        MovedStatics.method309(i_17_);
                         redrawTabArea = true;
                     }
                 }
@@ -924,7 +924,7 @@ public class GameInterface extends CachedNode {
                     Main.widgetSelected = 1;
                     Native.aClass1_1918 = gameInterface.targetVerb;
                     ItemDefinition.selectedMask = gameInterface.clickMask;
-                    Class8.itemSelected = 0;
+                    MovedStatics.itemSelected = 0;
                     Class60.anInt1417 = i_10_;
                     Native.aClass1_611 = Native.green + gameInterface.spellName + Native.white;
                     if(ItemDefinition.selectedMask == 16) {
@@ -1310,8 +1310,8 @@ public class GameInterface extends CachedNode {
                             SceneCluster.packetBuffer.putShortLE(npcIdx);
                         }
                     }
-                    if(Class8.itemSelected != 0) {
-                        Class8.itemSelected = 0;
+                    if(MovedStatics.itemSelected != 0) {
+                        MovedStatics.itemSelected = 0;
                         redrawTabArea = true;
                     }
                     if(Main.widgetSelected != 0) {
@@ -1706,7 +1706,7 @@ public class GameInterface extends CachedNode {
         if(class40_sub5_sub14_sub4 != null) {
             return class40_sub5_sub14_sub4;
         }
-        class40_sub5_sub14_sub4 = Class48.method927(0, CacheArchive.gameImageCacheArchive, true, i);
+        class40_sub5_sub14_sub4 = MovedStatics.method927(0, CacheArchive.gameImageCacheArchive, true, i);
         if(class40_sub5_sub14_sub4 == null) {
             FramemapDefinition.aBoolean2177 = true;
         } else {
@@ -1749,7 +1749,7 @@ public class GameInterface extends CachedNode {
         if(imageRGB != null) {
             return imageRGB;
         }
-        imageRGB = Class48.method927(0, CacheArchive.gameImageCacheArchive, true, i);
+        imageRGB = MovedStatics.method927(0, CacheArchive.gameImageCacheArchive, true, i);
         if(imageRGB == null) {
             FramemapDefinition.aBoolean2177 = true;
         } else {

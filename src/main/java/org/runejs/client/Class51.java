@@ -1,11 +1,9 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
-import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.node.HashTable;
@@ -65,13 +63,5 @@ public class Class51 {
 
     public static void clearModelCache() {
         MovedStatics.modelCache.clear();
-    }
-
-    public static void playSong(int songId) {
-        if(songId == -1 && Class35.songTimeout == 0)
-            Class33.method402(false);
-        else if(songId != -1 && songId != MouseHandler.currentSongId && RSCanvas.musicVolume != 0 && Class35.songTimeout == 0)
-            Class33.method403(RSCanvas.musicVolume, true, 10, songId, CacheArchive.musicCacheArchive, 0, 0, false);
-        MouseHandler.currentSongId = songId;
     }
 }
