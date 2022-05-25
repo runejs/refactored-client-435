@@ -5,13 +5,15 @@ import org.runejs.client.audio.Effect;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.media.renderable.actor.Player;
+import org.runejs.client.node.Node;
 import org.runejs.client.util.Signlink;
 
 public class SoundSystem {
 
 	static final int SAMPLE_RATE = 22050;
 	static long timeMs;
-	static PcmStreamMixer pcmStreamMixer;
+	
+	private static PcmStreamMixer pcmStreamMixer;
 
 	private static int currentSound = 0;
 
@@ -312,4 +314,45 @@ public class SoundSystem {
 			}
 		}
 	}
+	
+	private static class ObjectSound extends Node {
+
+		private int plane;
+		private int minX;
+		private int soundEffectId;
+		private int hearDistance;
+		private RawPcmStream stream1;
+		private int unkn2;
+		private int minY;
+		private int[] soundEffectIds;
+		private int maxY;
+		private RawPcmStream stream2;
+		private GameObjectDefinition gameObjectDefinition;
+		private int unkn1;
+		private int maxX;
+		private int anInt2014;
+
+		private void set() {
+			int i = soundEffectId;
+			GameObjectDefinition gameObjectDefinition = this.gameObjectDefinition.getChildDefinition();
+			if (gameObjectDefinition == null) {
+				hearDistance = 0;
+				unkn1 = 0;
+				unkn2 = 0;
+				soundEffectIds = null;
+				soundEffectId = -1;
+			} else {
+				hearDistance = 128 * gameObjectDefinition.ambientSoundHearDistance;
+				unkn1 = gameObjectDefinition.unkn1;
+				unkn2 = gameObjectDefinition.unkn2;
+				soundEffectId = gameObjectDefinition.ambientSoundId;
+				soundEffectIds = gameObjectDefinition.soundEffectIds;
+			}
+			if (i != soundEffectId && stream1 != null) {
+				SoundSystem.pcmStreamMixer.removeSubStream(stream1);
+				stream1 = null;
+			}
+		}
+	}
+	
 }

@@ -82,10 +82,10 @@ public class PcmStreamMixer extends PcmStream {
         }
         for(int i = 0; i < 8; i++) {
             LinkedList linkedList = this.substreams[i];
-            for(PcmStream class40_sub9 = (PcmStream) linkedList.method902((byte) -90); class40_sub9 != null; class40_sub9 = (PcmStream) linkedList.method909(-4)) {
-                class40_sub9.active = false;
-                if(class40_sub9.sound != null)
-                    class40_sub9.sound.position = 0;
+            for(PcmStream stream = (PcmStream) linkedList.method902((byte) -90); stream != null; stream = (PcmStream) linkedList.method909(-4)) {
+                stream.active = false;
+                if(stream.sound != null)
+                    stream.sound.position = 0;
             }
         }
         int i = 0;
@@ -105,20 +105,20 @@ public class PcmStreamMixer extends PcmStream {
                 if((i_6_ & 0x1) != 0) {
                     i_2_ &= 1 << i_4_ ^ 0xffffffff;
                     LinkedList linkedList = this.substreams[i_4_];
-                    for(PcmStream class40_sub9 = (PcmStream) linkedList.method902((byte) -90); class40_sub9 != null; class40_sub9 = (PcmStream) linkedList.method909(-4)) {
-                        if(!class40_sub9.active) {
-                            AbstractSound class40_sub12 = class40_sub9.sound;
+                    for(PcmStream stream = (PcmStream) linkedList.method902((byte) -90); stream != null; stream = (PcmStream) linkedList.method909(-4)) {
+                        if(!stream.active) {
+                            AbstractSound class40_sub12 = stream.sound;
                             if(class40_sub12 != null && class40_sub12.position > i_5_)
                                 i_2_ |= 1 << i_4_;
                             else {
                                 if(i < this.anInt2872) {
-                                    int i_7_ = class40_sub9.fill(arg0, arg1, arg2);
+                                    int i_7_ = stream.fill(arg0, arg1, arg2);
                                     i += i_7_;
                                     if(class40_sub12 != null)
                                         class40_sub12.position += i_7_;
                                 } else
-                                    class40_sub9.skip(arg2);
-                                class40_sub9.active = true;
+                                    stream.skip(arg2);
+                                stream.active = true;
                             }
                         }
                     }
@@ -147,8 +147,8 @@ public class PcmStreamMixer extends PcmStream {
             this.anInt2875 = 0;
         for(int i = 0; i < 8; i++) {
             LinkedList linkedList = this.substreams[i];
-            for(PcmStream class40_sub9 = (PcmStream) linkedList.method902((byte) -90); class40_sub9 != null; class40_sub9 = (PcmStream) linkedList.method909(-4))
-                class40_sub9.skip(arg0);
+            for(PcmStream stream = (PcmStream) linkedList.method902((byte) -90); stream != null; stream = (PcmStream) linkedList.method909(-4))
+                stream.skip(arg0);
         }
     }
 
