@@ -254,14 +254,14 @@ public class PcmPlayer implements Runnable {
 		arg1 += 7;
 		while (i < arg1)
 			arg0[i++] = 0;
-		if (PcmPlayer.pcmStream != null)
-			PcmPlayer.pcmStream.fill(arg0, 0, arg1);
+		if (PcmPlayer.mixer != null)
+			PcmPlayer.mixer.fill(arg0, 0, arg1);
 		skip0(arg1);
 	}
 
 	private static synchronized void skip(int arg0) {
-		if (PcmPlayer.pcmStream != null)
-			PcmPlayer.pcmStream.skip(arg0);
+		if (PcmPlayer.mixer != null)
+			PcmPlayer.mixer.skip(arg0);
 		skip0(arg0);
 	}
 
@@ -282,16 +282,16 @@ public class PcmPlayer implements Runnable {
 		PcmPlayer.anInt2081 += SoundSystem.SAMPLE_RATE * elapsed;
 		int i_0_ = (-(2000 * SoundSystem.SAMPLE_RATE) + PcmPlayer.anInt2081) / 1000;
 		if (i_0_ > 0) {
-			if (PcmPlayer.pcmStream != null)
-				PcmPlayer.pcmStream.skip(i_0_);
+			if (PcmPlayer.mixer != null)
+				PcmPlayer.mixer.skip(i_0_);
 			PcmPlayer.anInt2081 -= i_0_ * 1000;
 		}
 	}
 
 	static synchronized void setMixer(PcmStream arg0) {
-		PcmPlayer.pcmStream = arg0;
+		PcmPlayer.mixer = arg0;
 	}
 
-	private static PcmStream pcmStream;
+	private static PcmStream mixer;
 
 }

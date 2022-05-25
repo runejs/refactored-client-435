@@ -5,7 +5,7 @@ import org.runejs.client.node.Node;
 public abstract class PcmStreamMixerListener extends Node {
     public int anInt2133;
 
-    public abstract void method841();
+    public abstract void remove2();
 
-    public abstract int method842(PcmStreamMixer class40_sub9_sub1);
+    public abstract int update(PcmStreamMixer class40_sub9_sub1);
 }
