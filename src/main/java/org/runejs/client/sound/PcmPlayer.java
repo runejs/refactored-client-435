@@ -3,7 +3,7 @@ package org.runejs.client.sound;
 import org.runejs.client.Class43;
 import org.runejs.client.util.Signlink;
 
-public abstract class Class8_Sub1 extends Class8 implements Runnable {
+public abstract class PcmPlayer extends PcmPlayerBase implements Runnable {
     public static int[] samples = new int[256];
     public boolean aBoolean1820;
     public long aLong1821;
@@ -19,7 +19,7 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
     public long aLong1832;
     public int[] anIntArray1833;
 
-    public Class8_Sub1(int arg0) throws Exception {
+    public PcmPlayer(int arg0) throws Exception {
         super(arg0);
         aLong1821 = 0L;
         anInt1827 = 256;
@@ -191,5 +191,33 @@ public abstract class Class8_Sub1 extends Class8 implements Runnable {
             anInt1822 = i_6_;
         }
         anInt1825 = i_2_;
+    }
+    
+    private static synchronized void method215(int[] arg0, int arg1) {
+        int i = 0;
+        arg1 -= 7;
+        while(i < arg1) {
+            arg0[i++] = 0;
+            arg0[i++] = 0;
+            arg0[i++] = 0;
+            arg0[i++] = 0;
+            arg0[i++] = 0;
+            arg0[i++] = 0;
+            arg0[i++] = 0;
+            arg0[i++] = 0;
+        }
+        arg1 += 7;
+        while(i < arg1)
+            arg0[i++] = 0;
+        if(StaticAudio.pcmStream != null)
+            StaticAudio.pcmStream.fill(arg0, 0, arg1);
+        StaticAudio.method748(arg1);
+    }
+
+
+    private static synchronized void method217(int arg0) {
+        if(StaticAudio.pcmStream != null)
+            StaticAudio.pcmStream.skip(arg0);
+        StaticAudio.method748(arg0);
     }
 }

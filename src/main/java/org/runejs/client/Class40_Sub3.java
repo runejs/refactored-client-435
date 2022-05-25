@@ -11,7 +11,6 @@ import org.runejs.client.node.Node;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.console.Console;
 import org.runejs.client.input.KeyFocusListener;
-import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer3D;
@@ -111,8 +110,8 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.anInt1607 = 30;
             }
         } else if (MovedStatics.loadingPercent == 45) {
-            StaticAudio.method446(Main.signlink, 0, !VertexNormal.lowMemory);
-            StaticAudio.pcmStreamMixer = StaticAudio.method1003(Main.signlink, MouseHandler.gameCanvas);
+            StaticAudio.initialiseMusic(0);
+            StaticAudio.pcmStreamMixer = StaticAudio.method1003(Main.signlink);
             StaticAudio.decimator = new Decimator(22050, StaticAudio.sampleRate);
             MovedStatics.loadingPercent = 50;
             Native.currentLoadingText = English.preparedSoundEngine;

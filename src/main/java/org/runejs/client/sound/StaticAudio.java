@@ -1,7 +1,5 @@
 package org.runejs.client.sound;
 
-import java.awt.Component;
-
 import org.runejs.client.LinkedList;
 import org.runejs.client.audio.Effect;
 import org.runejs.client.cache.CacheArchive;
@@ -15,28 +13,35 @@ public class StaticAudio {
 
 	public static int sampleRate;
 
-	/*synthetic*/
-	public static Class method1058(String arg0) {
+	
+	/*
+	The following was combined with the commented code in the synchronized block. Rather than 
+	 
+	public static Class aClass1654;//was synthetic
+
+	public static Class method1058(String arg0) {//was synthetic
 	    try {
 	        return Class.forName(arg0);
 	    } catch(ClassNotFoundException classnotfoundexception) {
 	        throw new NoClassDefFoundError(classnotfoundexception.getMessage());
 	    }
-	}
+	}*/
+	public static Object lock = new Object();
 
 	public static void handleSounds() {
-	    if(StaticAudio.aClass8_166 != null) {
+	    if(StaticAudio.pcmPlayer != null) {
 	        long l = System.currentTimeMillis();
 	        if(StaticAudio.aLong288 < l) {
-	            StaticAudio.aClass8_166.method212(l);
+	            StaticAudio.pcmPlayer.method212(l);
 	            int i = (int) (-StaticAudio.aLong288 + l);
 	            StaticAudio.aLong288 = l;
-	            synchronized(StaticAudio.aClass1654 != null ? StaticAudio.aClass1654 : (StaticAudio.aClass1654 = method1058("org.runejs.client.sound.Class8"))) {
+	            //TODO synchronized(StaticAudio.aClass1654 != null ? StaticAudio.aClass1654 : (StaticAudio.aClass1654 = method1058("org.runejs.client.sound.PcmPlayerBase"))) {
+	            synchronized(lock) {
 	                StaticAudio.anInt2081 += sampleRate * i;
 	                int i_0_ = (-(2000 * sampleRate) + StaticAudio.anInt2081) / 1000;
 	                if(i_0_ > 0) {
-	                    if(StaticAudio.aPcmStream_608 != null)
-	                        StaticAudio.aPcmStream_608.skip(i_0_);
+	                    if(StaticAudio.pcmStream != null)
+	                        StaticAudio.pcmStream.skip(i_0_);
 	                    StaticAudio.anInt2081 -= i_0_ * 1000;
 	                }
 	            }
@@ -44,11 +49,9 @@ public class StaticAudio {
 	    }
 	}
 
-	public static PcmStream aPcmStream_608;
+	public static PcmStream pcmStream;
 	public static long aLong288;
-	public static Class8 aClass8_166;
-	/*synthetic*/ public static Class aClass1654;
-	//TODO replace class/synchronized with: public static Object lock = new Object();
+	public static PcmPlayerBase pcmPlayer;
 	public static int anInt2081;
 
 	public static void method748(int arg1) {
@@ -63,41 +66,42 @@ public class StaticAudio {
 
 	public static int anInt2866;
 
-	public static void method1040(Component arg0, int arg1, Signlink arg2) {
+	public static void createPlayer(Signlink arg2) {
 	    try {    	
-	        Class8_Sub1 class8_sub1 = new Class8_Sub1_Sub2();
+	        PcmPlayer class8_sub1 = new PcmPlayerDevice();
 	        class8_sub1.method222(arg2, 2048);
-	        aClass8_166 = class8_sub1;        
+	        pcmPlayer = class8_sub1;        
 	    } catch (Throwable throwable) {
-            aClass8_166 = new Class8(8000);	        
+	   // I dont think this is needed. This was just a placeholder/empty class, however it is redundant since the code also has nullchecks.
+	   // After testing, it appears that the hierarchy of the PCM classes can be removed just fine.
+       //     pcmPlayer = new PcmPlayerBase(8000);	        
 	    }
 	
 	}
 
-	public static PcmStreamMixer method1003(Signlink arg0, Component arg1) {
-	    method1040(arg1, 0, arg0);
-	    PcmStreamMixer class40_sub9_sub1 = new PcmStreamMixer();
-	    Class8.method218(class40_sub9_sub1);
-	    return class40_sub9_sub1;
-	
+	public static PcmStreamMixer method1003(Signlink arg0) {
+	    createPlayer(arg0);
+	    PcmStreamMixer mixer = new PcmStreamMixer();
+	    StaticAudio.setMixer(mixer);
+	    return mixer;
 	}
 
 	public static PcmStreamMixer pcmStreamMixer;
 	public static Decimator decimator;
-	public static NodeCache aClass9_1684;
+	public static NodeCache musicCache;
 
-	public static byte[] method74(int arg0, CacheArchive arg1, int arg2, int arg4) {
+	public static byte[] fetchMusic(int arg0, CacheArchive arg1, int arg2, int arg4) {
 	    long l = (long) (arg0 + 37 * arg2 & 0xffff) + ((long) arg4 << 32) + (long) (arg2 << 16);
-	    if(aClass9_1684 != null) {
-	        ByteArrayNode class40_sub5_sub6 = (ByteArrayNode) aClass9_1684.get(l);
+	    if(musicCache != null) {
+	        ByteArrayNode class40_sub5_sub6 = (ByteArrayNode) musicCache.get(l);
 	        if(class40_sub5_sub6 != null)
 	            return class40_sub5_sub6.byteArray;
 	    }
 	    byte[] is = arg1.getFile(arg2, arg0);
 	    if(is == null)
 	        return null;
-	    if(aClass9_1684 != null)
-	        aClass9_1684.put(l, new ByteArrayNode(is));
+	    if(musicCache != null)
+	        musicCache.put(l, new ByteArrayNode(is));
 	    return is;
 	}
 
@@ -138,7 +142,7 @@ public class StaticAudio {
 	public static synchronized void handleMusic() {
 	    if(StaticAudio.method340()) {
 	        if(StaticAudio.aBoolean618) {
-	            byte[] is = method74(StaticAudio.anInt3004, StaticAudio.musicCacheArchive, StaticAudio.anInt289, StaticAudio.anInt2110);
+	            byte[] is = fetchMusic(StaticAudio.anInt3004, StaticAudio.musicCacheArchive, StaticAudio.anInt289, StaticAudio.anInt2110);
 	            if(is != null) {
 	                if(StaticAudio.anInt255 < 0) {
 	                    if(StaticAudio.anInt1806 < 0)
@@ -155,11 +159,11 @@ public class StaticAudio {
 	    }
 	}
 
-	public static boolean method446(Signlink arg0, int arg1, boolean highmem) {
-	    if (!StaticAudio.method452(arg0, highmem))
+	public static boolean initialiseMusic(int size) {
+	    if (!StaticAudio.musicPlayerStarted())
 	        return false;
-	    if (arg1 > 0)
-	        aClass9_1684 = new NodeCache(arg1);
+	    if (size > 0)
+	        musicCache = new NodeCache(size);
 	    return true;
 	}
 
@@ -179,9 +183,9 @@ public class StaticAudio {
 	public static int[] soundLocations = new int[50];
 
 	public static void method989() {
-	    if(aClass8_166 != null) {
-	        aClass8_166.method213();
-	        aClass8_166 = null;
+	    if(pcmPlayer != null) {
+	        pcmPlayer.method213();
+	        pcmPlayer = null;
 	    }
 	}
 
@@ -310,10 +314,10 @@ public class StaticAudio {
 	    }
 	}
 
-	public static boolean method452(Signlink arg0, boolean highmem) {
+	public static boolean musicPlayerStarted() {
 	        StaticAudio.anInt54 = 20;
 	        try {
-	            midi = new MidiPlayer(); // Java Midi Based
+	            midi = new MidiPlayer();
 	            return true;
 	        } catch(Throwable throwable) {
 	            return false;
@@ -588,5 +592,9 @@ public class StaticAudio {
 	}
 
 	public static LinkedList objectSounds = new LinkedList();
+
+	public static synchronized void setMixer(PcmStream arg0) {
+	    pcmStream = arg0;
+	}
 
 }

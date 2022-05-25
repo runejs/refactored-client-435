@@ -6,12 +6,12 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-public class Class8_Sub1_Sub2 extends Class8_Sub1 {
+public class PcmPlayerDevice extends PcmPlayer {
     public SourceDataLine line;
     public AudioFormat audioFormat;
     public byte[] byteSamples = new byte[512];
 
-    public Class8_Sub1_Sub2() throws Exception {
+    public PcmPlayerDevice() throws Exception {
         super(22050);
         audioFormat = new AudioFormat(22050.0F, 16, 1, true, false);
     }
@@ -40,7 +40,7 @@ public class Class8_Sub1_Sub2 extends Class8_Sub1 {
 
     public void write() {
         for(int i = 0; i < 256; i++) {
-            int ampl = Class8_Sub1.samples[i];
+            int ampl = PcmPlayer.samples[i];
             if((ampl + 8388608 & ~0xffffff) != 0)
                 ampl = 0x7fffff ^ ampl >> 31;
             byteSamples[i * 2] = (byte) (ampl >> 8);
