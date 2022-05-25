@@ -375,7 +375,7 @@ public class StaticAudio {
 	                StaticAudio.anInt2258 = arg1;
 	        } else if(StaticAudio.anInt1450 >= 0) {
 	            StaticAudio.anInt1450 = arg1;
-	            aMidiPlayer435_189.method304((byte) -111, arg1, 0);
+	            aMidiPlayer435_189.setVolume(arg1, 0);
 	        }
 	    }
 	}
@@ -384,10 +384,10 @@ public class StaticAudio {
 	    if(aMidiPlayer435_189 != null) {
 	        StaticAudio.method308();   
 	        if(StaticAudio.anInt54 > 0) {
-	            aMidiPlayer435_189.method301(256, 0);
+	            aMidiPlayer435_189.resetVolume(256);
 	            StaticAudio.anInt54 = 0;
 	        }
-	        aMidiPlayer435_189.close((byte) 101);
+	        aMidiPlayer435_189.close0((byte) 101);
 	        aMidiPlayer435_189 = null;
 	    }
 	}
@@ -398,10 +398,10 @@ public class StaticAudio {
 	            if(StaticAudio.anInt1450 >= 0) {
 	                if(StaticAudio.anInt54 > 0) {
 	                    StaticAudio.anInt909 += Buffer.anInt1982;
-	                    aMidiPlayer435_189.method304((byte) -97, StaticAudio.anInt1450, StaticAudio.anInt909);
+	                    aMidiPlayer435_189.setVolume(StaticAudio.anInt1450, StaticAudio.anInt909);
 	                    StaticAudio.anInt54--;
 	                    if(StaticAudio.anInt54 == 0) {
-	                        aMidiPlayer435_189.method303((byte) -96);
+	                        aMidiPlayer435_189.stop0();
 	                        StaticAudio.anInt1450 = -1;
 	                        StaticAudio.anInt54 = 20;
 	                    }
@@ -410,17 +410,16 @@ public class StaticAudio {
 	                StaticAudio.anInt54--;
 	                if(StaticAudio.anInt54 == 0) {
 	                    if(StaticAudio.aByteArray3270 == null)
-	                        aMidiPlayer435_189.method301(256, 0);
+	                        aMidiPlayer435_189.resetVolume(256);
 	                    else {
-	                        aMidiPlayer435_189.method301(StaticAudio.anInt2258, arg0);
+	                        aMidiPlayer435_189.resetVolume(StaticAudio.anInt2258);
 	                        StaticAudio.anInt1450 = StaticAudio.anInt2258;
-	                        aMidiPlayer435_189.method300(StaticAudio.aByteArray3270, StaticAudio.aBoolean687, StaticAudio.anInt2258);
+	                        aMidiPlayer435_189.play(StaticAudio.aByteArray3270, StaticAudio.aBoolean687, StaticAudio.anInt2258);
 	                        StaticAudio.aByteArray3270 = null;
 	                    }
 	                    StaticAudio.anInt909 = 0;
 	                }
 	            }
-	            aMidiPlayer435_189.method302(0);
 	        }
 	    }
 	}
@@ -489,10 +488,10 @@ public class StaticAudio {
 
 	public static int anInt909 = 0;
 
-	public static void method56(boolean arg1, byte[] arg2, int arg3) {
+	public static void method56(boolean loop, byte[] arg2, int arg3) {
 	    if(aMidiPlayer435_189 != null) {
 	        if(anInt1450 >= 0) {
-	            aMidiPlayer435_189.method303((byte) -96);
+	            aMidiPlayer435_189.stop0();
 	            anInt909 = 0;
 	            StaticAudio.aByteArray3270 = null;
 	            StaticAudio.anInt54 = 20;
@@ -500,11 +499,11 @@ public class StaticAudio {
 	        }
 	        if(arg2 != null) {
 	            if(StaticAudio.anInt54 > 0) {
-	                aMidiPlayer435_189.method301(arg3, 0);
+	                aMidiPlayer435_189.resetVolume(arg3);
 	                StaticAudio.anInt54 = 0;
 	            }
 	            anInt1450 = arg3;
-	            aMidiPlayer435_189.method300(arg2, arg1, arg3);
+	            aMidiPlayer435_189.play(arg2, loop, arg3);
 	        }
 	    }
 	}
