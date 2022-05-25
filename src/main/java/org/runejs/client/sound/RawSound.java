@@ -13,17 +13,4 @@ public class RawSound extends AbstractSound {
         end = arg3;
     }
 
-    public RawSound resample(Decimator decimator) {
-        samples = decimator.resample(samples);
-        sampleRate = decimator.scaleRate(sampleRate);
-        if(start == end)
-            start = end = decimator.scalePosition(start);
-        else {
-            start = decimator.scalePosition(start);
-            end = decimator.scalePosition(end);
-            if(start == end)
-                start--;
-        }
-        return this;
-    }
 }

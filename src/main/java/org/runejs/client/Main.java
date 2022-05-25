@@ -2038,7 +2038,7 @@ public class Main extends GameShell {
         ItemDefinition.method744();
         Class13.method249(true);
         MusicSystem.syncedStop(false);
-        SoundSystem.method989();
+        SoundSystem.stop();
         ActorDefinition.killUpdateServerSocket();
         GenericTile.method947(-1);
         do {

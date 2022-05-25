@@ -11,28 +11,27 @@ import org.runejs.client.util.Signlink;
 
 public class PcmPlayer implements Runnable {
 	    
-    public static int[] samples = new int[256];
-    public boolean aBoolean1820;
-    public long aLong1821;
-    public int anInt1822;
-    public int anInt1823;
-    public int anInt1824;
-    public int anInt1825 = 0;
-    public long aLong1826;
-    public int anInt1827;
-    public int anInt1828;
-    public int anInt1830;
-    public int anInt1831;
-    public long aLong1832;
-    public int[] anIntArray1833;
-    public SourceDataLine line;
+    private static int[] samples = new int[256];
+    private boolean aBoolean1820;
+    private long aLong1821;
+    private int anInt1822;
+    private int anInt1823;
+    private int anInt1824;
+    private int anInt1825 = 0;
+    private long aLong1826;
+    private int anInt1827;
+    private int anInt1828;
+    private int anInt1830;
+    private int anInt1831;
+    private long aLong1832;
+    private int[] anIntArray1833;
+    private SourceDataLine line;
     
-    public AudioFormat audioFormat;
-    public byte[] byteSamples = new byte[512];
+    private AudioFormat audioFormat;
+    private byte[] byteSamples = new byte[512];
     
     public PcmPlayer() throws Exception {
-        SoundSystem.sampleRate = 22050;
-        SoundSystem.aLong288 = System.currentTimeMillis();
+        SoundSystem.timeMs = System.currentTimeMillis();
         aLong1821 = 0L;
         anInt1827 = 256;
         aBoolean1820 = false;
@@ -44,7 +43,7 @@ public class PcmPlayer implements Runnable {
 
     }
 
-    public void method219(long arg0) throws Exception {
+    private void method219(long arg0) throws Exception {
         open(anInt1831);
         for(; ; ) {
             int i = avail();
@@ -58,9 +57,9 @@ public class PcmPlayer implements Runnable {
         aLong1826 = arg0;
     }
 
-    public void method221(long arg0) {
+    private void method221(long arg0) {
         if(aLong1821 != 0L) {
-            for(/**/; aLong1832 < arg0; aLong1832 += (long) (256000 / SoundSystem.sampleRate))
+            for(/**/; aLong1832 < arg0; aLong1832 += (long) (256000 / SoundSystem.SAMPLE_RATE))
                 method217(256);
             if(arg0 < aLong1821)
                 return;
@@ -74,7 +73,7 @@ public class PcmPlayer implements Runnable {
             aLong1821 = 0L;
         }
         while(aLong1832 < arg0) {
-            aLong1832 += (long) (250880 / SoundSystem.sampleRate);
+            aLong1832 += (long) (250880 / SoundSystem.SAMPLE_RATE);
             int i;
             try {
                 i = avail();
@@ -133,7 +132,7 @@ public class PcmPlayer implements Runnable {
         arg0.createThreadNode(10, this);
     }
 
-    public void method213() {
+    public void stop() {
         synchronized(this) {
             aBoolean1820 = true;
         }
@@ -146,7 +145,7 @@ public class PcmPlayer implements Runnable {
         }
     }
 
-    public void write() {
+    private void write() {
         for(int i = 0; i < 256; i++) {
             int ampl = PcmPlayer.samples[i];
             if((ampl + 8388608 & ~0xffffff) != 0)
@@ -173,7 +172,7 @@ public class PcmPlayer implements Runnable {
         }
     }
 
-    public int avail() {
+    private int avail() {
         int i;
         try {
             i = line.available() >> 1;
@@ -183,14 +182,14 @@ public class PcmPlayer implements Runnable {
         return i;
     }
 
-    public void close() {
+    private void close() {
         if(line != null) {
             line.close();
             line = null;
         }
     }
     
-    public void open(int arg0) throws LineUnavailableException {
+    private void open(int arg0) throws LineUnavailableException {
         try {
             DataLine.Info info = new DataLine.Info(SourceDataLine.class, audioFormat, arg0 * 2);
             line = (SourceDataLine) AudioSystem.getLine(info);
@@ -208,7 +207,7 @@ public class PcmPlayer implements Runnable {
             aLong1832 = arg0;
     }
 
-    public void method227(int arg0) {
+    private void method227(int arg0) {
         int i = arg0 - anInt1827;
         int i_1_ = anIntArray1833[anInt1825];
         anIntArray1833[anInt1825] = i;
@@ -255,16 +254,45 @@ public class PcmPlayer implements Runnable {
         arg1 += 7;
         while(i < arg1)
             arg0[i++] = 0;
-        if(SoundSystem.pcmStream != null)
-            SoundSystem.pcmStream.fill(arg0, 0, arg1);
-        SoundSystem.method748(arg1);
+        if(PcmPlayer.pcmStream != null)
+            PcmPlayer.pcmStream.fill(arg0, 0, arg1);
+        method748(arg1);
     }
 
 
     private static synchronized void method217(int arg0) {
-        if(SoundSystem.pcmStream != null)
-            SoundSystem.pcmStream.skip(arg0);
-        SoundSystem.method748(arg0);
+        if(PcmPlayer.pcmStream != null)
+            PcmPlayer.pcmStream.skip(arg0);
+        method748(arg0);
     }
+
+	private static void method748(int arg1) {
+		for (PcmPlayer.anInt2866 += arg1; PcmPlayer.anInt2866 >= SoundSystem.SAMPLE_RATE; PcmPlayer.anInt2866 -= SoundSystem.SAMPLE_RATE) {
+			PcmPlayer.anInt2081 -= PcmPlayer.anInt2081 >> 2;
+		}
+		PcmPlayer.anInt2081 -= 1000 * arg1;
+		if (PcmPlayer.anInt2081 < 0) {
+			PcmPlayer.anInt2081 = 0;
+		}
+	}
+	
+	private static int anInt2866;
+	private static int anInt2081;
+
+	public static void handle(int i) {
+		PcmPlayer.anInt2081 += SoundSystem.SAMPLE_RATE * i;
+		int i_0_ = (-(2000 * SoundSystem.SAMPLE_RATE) + PcmPlayer.anInt2081) / 1000;
+		if (i_0_ > 0) {
+			if (PcmPlayer.pcmStream != null)
+				PcmPlayer.pcmStream.skip(i_0_);
+			PcmPlayer.anInt2081 -= i_0_ * 1000;
+		}
+	}
+
+	static synchronized void setMixer(PcmStream arg0) {
+		PcmPlayer.pcmStream = arg0;
+	}
+	
+	private static PcmStream pcmStream;
 
 }

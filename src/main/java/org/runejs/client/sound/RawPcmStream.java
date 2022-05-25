@@ -170,7 +170,7 @@ public class RawPcmStream extends PcmStream {
     public static RawPcmStream create(RawSound arg0, int arg1, int arg2) {
         if(arg0.samples == null || arg0.samples.length == 0)
             return null;
-        return new RawPcmStream(arg0, (int) ((long) arg0.sampleRate * 256L * (long) arg1 / (long) (100 * SoundSystem.sampleRate)), arg2);
+        return new RawPcmStream(arg0, (int) ((long) arg0.sampleRate * 256L * (long) arg1 / (long) (100 * SoundSystem.SAMPLE_RATE)), arg2);
     }
 
     private static int method865(int arg0, int arg1, byte[] arg2, int[] arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, RawPcmStream arg10, int arg11, int arg12) {
