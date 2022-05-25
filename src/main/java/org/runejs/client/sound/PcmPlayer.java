@@ -1,9 +1,16 @@
 package org.runejs.client.sound;
 
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.SourceDataLine;
+
 import org.runejs.client.Class43;
 import org.runejs.client.util.Signlink;
 
-public abstract class PcmPlayer extends PcmPlayerBase implements Runnable {
+public class PcmPlayer implements Runnable {
+	    
     public static int[] samples = new int[256];
     public boolean aBoolean1820;
     public long aLong1821;
@@ -18,9 +25,14 @@ public abstract class PcmPlayer extends PcmPlayerBase implements Runnable {
     public int anInt1831;
     public long aLong1832;
     public int[] anIntArray1833;
-
-    public PcmPlayer(int arg0) throws Exception {
-        super(arg0);
+    public SourceDataLine line;
+    
+    public AudioFormat audioFormat;
+    public byte[] byteSamples = new byte[512];
+    
+    public PcmPlayer() throws Exception {
+        StaticAudio.sampleRate = 22050;
+        StaticAudio.aLong288 = System.currentTimeMillis();
         aLong1821 = 0L;
         anInt1827 = 256;
         aBoolean1820 = false;
@@ -28,6 +40,8 @@ public abstract class PcmPlayer extends PcmPlayerBase implements Runnable {
         anInt1822 = 0;
         anInt1824 = 0;
         anIntArray1833 = new int[512];
+        audioFormat = new AudioFormat(22050.0F, 16, 1, true, false);
+
     }
 
     public void method219(long arg0) throws Exception {
@@ -132,8 +146,17 @@ public abstract class PcmPlayer extends PcmPlayerBase implements Runnable {
         }
     }
 
-    public abstract void write() throws Exception;
-
+    public void write() {
+        for(int i = 0; i < 256; i++) {
+            int ampl = PcmPlayer.samples[i];
+            if((ampl + 8388608 & ~0xffffff) != 0)
+                ampl = 0x7fffff ^ ampl >> 31;
+            byteSamples[i * 2] = (byte) (ampl >> 8);
+            byteSamples[i * 2 + 1] = (byte) (ampl >> 16);
+        }
+        line.write(byteSamples, 0, 512);
+    }
+    
     public void run() {
 
         for(; ; ) {
@@ -150,11 +173,34 @@ public abstract class PcmPlayer extends PcmPlayerBase implements Runnable {
         }
     }
 
-    public abstract int avail() throws Exception;
+    public int avail() {
+        int i;
+        try {
+            i = line.available() >> 1;
+        } catch(RuntimeException runtimeexception) {
+            throw runtimeexception;
+        }
+        return i;
+    }
 
-    public abstract void close();
-
-    public abstract void open(int i) throws Exception;
+    public void close() {
+        if(line != null) {
+            line.close();
+            line = null;
+        }
+    }
+    
+    public void open(int arg0) throws LineUnavailableException {
+        try {
+            DataLine.Info info = new DataLine.Info(SourceDataLine.class, audioFormat, arg0 * 2);
+            line = (SourceDataLine) AudioSystem.getLine(info);
+            line.open();
+            line.start();
+        } catch(LineUnavailableException lineunavailableexception) {
+            line = null;
+            throw lineunavailableexception;
+        }
+    }
 
     public synchronized void method212(long arg0) {
         method221(arg0);
@@ -220,4 +266,5 @@ public abstract class PcmPlayer extends PcmPlayerBase implements Runnable {
             StaticAudio.pcmStream.skip(arg0);
         StaticAudio.method748(arg0);
     }
+
 }

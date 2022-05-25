@@ -51,7 +51,7 @@ public class StaticAudio {
 
 	public static PcmStream pcmStream;
 	public static long aLong288;
-	public static PcmPlayerBase pcmPlayer;
+	public static PcmPlayer pcmPlayer;
 	public static int anInt2081;
 
 	public static void method748(int arg1) {
@@ -68,11 +68,11 @@ public class StaticAudio {
 
 	public static void createPlayer(Signlink arg2) {
 	    try {    	
-	        PcmPlayer class8_sub1 = new PcmPlayerDevice();
+	        PcmPlayer class8_sub1 = new PcmPlayer();
 	        class8_sub1.method222(arg2, 2048);
 	        pcmPlayer = class8_sub1;        
 	    } catch (Throwable throwable) {
-	   // I dont think this is needed. This was just a placeholder/empty class, however it is redundant since the code also has nullchecks.
+	   // I dont think this was  needed. This was just a placeholder/empty class, however it is redundant since any code using pcmPlayer also has nullchecks.
 	   // After testing, it appears that the hierarchy of the PCM classes can be removed just fine.
        //     pcmPlayer = new PcmPlayerBase(8000);	        
 	    }
