@@ -89,7 +89,7 @@ public class Landscape {
                 }
                 Class65.method1020();
                 int dataLength = RSString.terrainData.length;
-                StaticAudio.method436();
+                StaticAudio.clearObjectSounds();
                 Main.method364(true);
                 if(!GroundItemTile.loadGeneratedMap) {
                     for(int pointer = 0; dataLength > pointer; pointer++) {

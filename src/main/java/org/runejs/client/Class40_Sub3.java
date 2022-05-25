@@ -113,7 +113,7 @@ public class Class40_Sub3 extends Node {
         } else if (MovedStatics.loadingPercent == 45) {
             StaticAudio.method446(Main.signlink, 0, !VertexNormal.lowMemory);
             StaticAudio.pcmStreamMixer = StaticAudio.method1003(Main.signlink, MouseHandler.gameCanvas);
-            StaticAudio.aDecimator_1289 = new Decimator(22050, StaticAudio.sampleRate);
+            StaticAudio.decimator = new Decimator(22050, StaticAudio.sampleRate);
             MovedStatics.loadingPercent = 50;
             Native.currentLoadingText = English.preparedSoundEngine;
             MovedStatics.anInt1607 = 35;

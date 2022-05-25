@@ -1036,7 +1036,7 @@ public class Main extends GameShell {
                 GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             }
 
-            StaticAudio.method934(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
+            StaticAudio.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
             MovedStatics.anInt199 = 0;
 
         } else {
@@ -1080,7 +1080,7 @@ public class Main extends GameShell {
                 GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             }
 
-            StaticAudio.method934(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
+            StaticAudio.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
             MovedStatics.anInt199 = 0;
         }
 

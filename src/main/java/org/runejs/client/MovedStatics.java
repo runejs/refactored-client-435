@@ -1160,7 +1160,7 @@ public class MovedStatics {
 	    StaticAudio.method405(10);
 	    StaticAudio.songTimeout = 0;
 	    StaticAudio.currentSongId = -1;
-	    StaticAudio.method436();
+	    StaticAudio.clearObjectSounds();
 	    processGameStatus(10);
 	}
 
@@ -1765,7 +1765,7 @@ public class MovedStatics {
 	public static void method309(int varPlayerIndex) {
 	    do {
 	        AnimationSequence.anInt2480 = pulseCycle;
-	        StaticAudio.method1030();
+	        StaticAudio.setObjectSounds();
 	        int varPlayerType = VarPlayerDefinition.getDefinition(varPlayerIndex).type;
 	        if(varPlayerType != 0) {
 	            int varPlayerValue = VarPlayerDefinition.varPlayers[varPlayerIndex];
