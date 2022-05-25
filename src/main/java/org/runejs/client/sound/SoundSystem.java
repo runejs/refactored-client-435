@@ -14,7 +14,7 @@ public class SoundSystem {
 	static PcmStreamMixer pcmStreamMixer;
 
 	private static int currentSound = 0;
-	
+
 	private static PcmPlayer pcmPlayer;
 
 	private static Effect[] effects = new Effect[50];
@@ -22,28 +22,36 @@ public class SoundSystem {
 	private static int[] soundDelay = new int[50];
 	private static int[] soundLocations = new int[50];
 	private static int[] soundVolume = new int[50];
-	
+
 	private static int areaSoundEffectVolume = 127;
 	private static int soundEffectVolume = 127;
-	
+
+	/*
+	 * This is an added method. This helps add easier modularity since it is
+	 * easier to plug in.
+	 */
 	public static void reset() {
 		SoundSystem.currentSound = 0;
 	}
-	
+
+	/*
+	 * This is an added method. This helps add easier modularity since it is
+	 * easier to plug in.
+	 */
 	public static void initialiseSound(Signlink signlink) {
-        SoundSystem.pcmStreamMixer = SoundSystem.method1003(signlink);
+		SoundSystem.pcmStreamMixer = SoundSystem.method1003(signlink);
 	}
-	
+
 	private static Class pcmClass;
-	
-	public static void handleSounds() { 	
+
+	public static void handleSounds() {
 		if (SoundSystem.pcmPlayer != null) {
 			long l = System.currentTimeMillis();
 			if (SoundSystem.timeMs < l) {
 				SoundSystem.pcmPlayer.method212(l);
 				int i = (int) (-SoundSystem.timeMs + l);
 				SoundSystem.timeMs = l;
-				synchronized(pcmClass != null ? pcmClass : (pcmClass = PcmPlayer.class)) {
+				synchronized (pcmClass != null ? pcmClass : (pcmClass = PcmPlayer.class)) {
 					PcmPlayer.handle(i);
 				}
 			}
@@ -61,8 +69,9 @@ public class SoundSystem {
 		}
 	}
 
-	/**
-	 * This is an added method. This helps add easier modularity since it is easier to plug in.
+	/*
+	 * This is an added method. This helps add easier modularity since it is
+	 * easier to plug in.
 	 */
 	public static void play(int soundId, int volume, int delay, int location) {
 		if (SoundSystem.areaSoundEffectVolume != 0 && volume > 0 && SoundSystem.currentSound < 50) {
@@ -74,9 +83,10 @@ public class SoundSystem {
 			SoundSystem.currentSound++;
 		}
 	}
-	
-	/**
-	 * In 443, this here also sets the sampleRate to 0. However, checking OSRS and 435 this was not the case.
+
+	/*
+	 * In 443, this here also sets the sampleRate to 0. However, checking OSRS,
+	 * 435, and 578 this was not the case.
 	 * 
 	 */
 	public static void stop() {
@@ -85,7 +95,7 @@ public class SoundSystem {
 			SoundSystem.pcmPlayer = null;
 		}
 	}
-	
+
 	public static void processSounds() {
 		for (int index = 0; index < SoundSystem.currentSound; index++) {
 			SoundSystem.soundDelay[index]--;
@@ -139,51 +149,62 @@ public class SoundSystem {
 			}
 		}
 	}
-	
+
 	private static PcmStreamMixer method1003(Signlink arg0) {
 		createPlayer(arg0);
 		PcmStreamMixer mixer = new PcmStreamMixer();
 		PcmPlayer.setMixer(mixer);
 		return mixer;
 	}
-	
+
+	/*
+	 * Vastly simplified, it used to create new PcmPlayerBase(8000) in addition
+	 * to other audio backends which are deprecated on error. However, this is
+	 * not needed due to existing nullchecks in the code. After testing, it
+	 * appears that the hierarchy of the PCM classes can be removed just fine.
+	 */
 	private static void createPlayer(Signlink arg2) {
 		try {
 			PcmPlayer class8_sub1 = new PcmPlayer();
 			class8_sub1.method222(arg2, 2048);
 			SoundSystem.pcmPlayer = class8_sub1;
 		} catch (Throwable throwable) {
-		       // pcmPlayer = new PcmPlayerBase(8000);	
-			   // I dont think this was  needed. This was just a placeholder/empty class, however it is redundant since any code using pcmPlayer also has nullchecks.
-			   // After testing, it appears that the hierarchy of the PCM classes can be removed just fine.
 		}
 
 	}
 
+	/*
+	 * This is an added method. This helps add easier modularity since it is
+	 * easier to plug in.
+	 */
 	public static void updateSoundEffectVolume(int varPlayerValue) {
-        if(varPlayerValue == 0)
-            SoundSystem.soundEffectVolume = 127;
-        if(varPlayerValue == 1)
-            SoundSystem.soundEffectVolume = 96;
-        if(varPlayerValue == 2)
-            SoundSystem.soundEffectVolume = 64;
-        if(varPlayerValue == 3)
-            SoundSystem.soundEffectVolume = 32;
-        if(varPlayerValue == 4)
-            SoundSystem.soundEffectVolume = 0;		
+		if (varPlayerValue == 0)
+			SoundSystem.soundEffectVolume = 127;
+		if (varPlayerValue == 1)
+			SoundSystem.soundEffectVolume = 96;
+		if (varPlayerValue == 2)
+			SoundSystem.soundEffectVolume = 64;
+		if (varPlayerValue == 3)
+			SoundSystem.soundEffectVolume = 32;
+		if (varPlayerValue == 4)
+			SoundSystem.soundEffectVolume = 0;
 	}
 
+	/*
+	 * This is an added method. This helps add easier modularity since it is
+	 * easier to plug in.
+	 */
 	public static void updateAreaSoundEffectVolume(int varPlayerValue) {
-        if(varPlayerValue == 0)
-            SoundSystem.areaSoundEffectVolume = 127;
-        if(varPlayerValue == 1)
-            SoundSystem.areaSoundEffectVolume = 96;
-        if(varPlayerValue == 2)
-            SoundSystem.areaSoundEffectVolume = 64;
-        if(varPlayerValue == 3)
-            SoundSystem.areaSoundEffectVolume = 32;
-        if(varPlayerValue == 4)
-            SoundSystem.areaSoundEffectVolume = 0;		
+		if (varPlayerValue == 0)
+			SoundSystem.areaSoundEffectVolume = 127;
+		if (varPlayerValue == 1)
+			SoundSystem.areaSoundEffectVolume = 96;
+		if (varPlayerValue == 2)
+			SoundSystem.areaSoundEffectVolume = 64;
+		if (varPlayerValue == 3)
+			SoundSystem.areaSoundEffectVolume = 32;
+		if (varPlayerValue == 4)
+			SoundSystem.areaSoundEffectVolume = 0;
 	}
 
 	private static LinkedList objectSounds = new LinkedList();
@@ -214,7 +235,7 @@ public class SoundSystem {
 		if (class40_sub2.soundEffectIds != null)
 			class40_sub2.anInt2014 = (int) ((class40_sub2.unkn2 - class40_sub2.unkn1) * Math.random()) + class40_sub2.unkn1;
 	}
-	
+
 	public static void clearObjectSounds() {
 		for (ObjectSound class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method902((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method909(-4)) {
 			if (class40_sub2.stream1 != null) {
@@ -228,7 +249,7 @@ public class SoundSystem {
 		}
 		SoundSystem.objectSounds.clear(0);
 	}
-	
+
 	public static void setObjectSounds() {
 		for (ObjectSound class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method902((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method909(-4)) {
 			if (class40_sub2.gameObjectDefinition != null) {

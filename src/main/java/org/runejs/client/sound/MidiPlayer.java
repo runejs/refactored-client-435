@@ -15,7 +15,7 @@ import javax.sound.midi.ShortMessage;
  *
  */
 public class MidiPlayer implements Receiver {
-	
+
 	private static volatile boolean active = false;
 	private static int[] anIntArray889 = new int[128];
 
@@ -28,27 +28,27 @@ public class MidiPlayer implements Receiver {
 	private static final int RESET_ALL_CONTROLLERS = 121;
 	private static final int ALL_NOTES_OFF = 123;
 
-    /**
-     * An integer array of channel volumes in their bitpacked squared forms.
-     *
-     * @see <a href="https://www.midi.org/specifications-old/category/reference-tables">MIDI Specifications</a>
-     */
-    private static final int[] volumes = new int[]{0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200};
+	/**
+	 * An integer array of channel volumes in their bitpacked squared forms.
+	 *
+	 * @see <a href="https://www.midi.org/specifications-old/category/reference-tables">MIDI Specifications</a>
+	 */
+	private static final int[] volumes = new int[]{0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200, 0x3200};
 
-    /**
-     * The tracked volume
-     */
+	/**
+	 * The tracked volume
+	 */
 	private static int volume = 256;
 
-    /**
-     * The {@link MidiSystem} receiver.
-     */
-    private static Receiver receiver;
+	/**
+	 * The {@link MidiSystem} receiver.
+	 */
+	private static Receiver receiver;
 
-    /**
-     * The {@link MidiSystem} sequencer.
-     */
-    private static Sequencer sequencer;
+	/**
+	 * The {@link MidiSystem} sequencer.
+	 */
+	private static Sequencer sequencer;
 
 	private static int getChannelVolume(int channel) {
 		int data = MidiPlayer.volumes[channel];
@@ -57,7 +57,7 @@ public class MidiPlayer implements Receiver {
 	}
 
 	/**
-     * Creates a new {@link MidiPlayer}.
+	 * Creates a new {@link MidiPlayer}.
 	 */
 	public MidiPlayer() {
 		try {
@@ -123,11 +123,11 @@ public class MidiPlayer implements Receiver {
 	}
 
 	/**
-	 * Sends the parameters to the {@link #receiver} 
+	 * Sends the parameters to the {@link #receiver}
 	 * 
-     * @param status the status
-     * @param data1  the data1
-     * @param data2  the data2
+	 * @param status the status
+	 * @param data1 the data1
+	 * @param data2 the data2
 	 * @param timeStamp
 	 */
 	public void send(int status, int data1, int data2, long timeStamp) {
@@ -189,9 +189,9 @@ public class MidiPlayer implements Receiver {
 	/**
 	 * An internal method used to override specific control changes.
 	 * 
-     * @param status the status
-     * @param data1  the data1
-     * @param data2  the data2
+	 * @param status the status
+	 * @param data1 the data1
+	 * @param data2 the data2
 	 * @param timeStamp
 	 * @return <code>true</code> if overriden, else <code>false</code>.
 	 */
@@ -233,7 +233,6 @@ public class MidiPlayer implements Receiver {
 		return false;
 	}
 
-	
 	@Override
 	public synchronized void send(MidiMessage message, long timeStamp) {
 		if (active) {
