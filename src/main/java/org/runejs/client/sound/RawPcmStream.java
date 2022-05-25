@@ -3,20 +3,20 @@ package org.runejs.client.sound;
 public class RawPcmStream extends PcmStream {
     public int anInt2878;
     public int anInt2879;
-    public int anInt2880;
+    public int start;
     public int anInt2881;
     public int anInt2882;
     public int anInt2883;
-    public int anInt2884;
+    public int numLoops;
     public int anInt2885;
-    public int anInt2886;
+    public int end;
     public boolean aBoolean2887;
     public int anInt2888;
 
     public RawPcmStream(RawSound arg0, int arg1, int arg2) {
         sound = arg0;
-        anInt2880 = arg0.start;
-        anInt2886 = arg0.end;
+        start = arg0.start;
+        end = arg0.end;
         anInt2882 = arg1;
         anInt2885 = arg2;
         anInt2888 = 0;
@@ -244,30 +244,30 @@ public class RawPcmStream extends PcmStream {
             return 0;
         }
         RawSound class40_sub12_sub1 = (RawSound) sound;
-        int i = anInt2880 << 8;
-        int i_0_ = anInt2886 << 8;
+        int i = start << 8;
+        int i_0_ = end << 8;
         int i_1_ = class40_sub12_sub1.samples.length << 8;
         int i_2_ = i_0_ - i;
         if(i_2_ <= 0)
-            anInt2884 = 0;
+            numLoops = 0;
         int i_3_ = arg1;
         arg2 += arg1;
-        if(anInt2884 < 0) {
+        if(numLoops < 0) {
             if(aBoolean2887) {
                 if(anInt2882 < 0) {
-                    i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.samples[anInt2880]);
+                    i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.samples[start]);
                     if(anInt2888 >= i)
                         return 1;
                     anInt2888 = i + i - 1 - anInt2888;
                     anInt2882 = -anInt2882;
                 }
                 for(; ; ) {
-                    i_3_ = method866(arg0, i_3_, i_0_, arg2, class40_sub12_sub1.samples[anInt2886 - 1]);
+                    i_3_ = method866(arg0, i_3_, i_0_, arg2, class40_sub12_sub1.samples[end - 1]);
                     if(anInt2888 < i_0_)
                         return 1;
                     anInt2888 = i_0_ + i_0_ - 1 - anInt2888;
                     anInt2882 = -anInt2882;
-                    i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.samples[anInt2880]);
+                    i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.samples[start]);
                     if(anInt2888 >= i)
                         return 1;
                     anInt2888 = i + i - 1 - anInt2888;
@@ -276,72 +276,72 @@ public class RawPcmStream extends PcmStream {
             }
             if(anInt2882 < 0) {
                 for(; ; ) {
-                    i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.samples[anInt2886 - 1]);
+                    i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.samples[end - 1]);
                     if(anInt2888 >= i)
                         return 1;
                     anInt2888 = i_0_ - 1 - (i_0_ - 1 - anInt2888) % i_2_;
                 }
             }
             for(; ; ) {
-                i_3_ = method866(arg0, i_3_, i_0_, arg2, class40_sub12_sub1.samples[anInt2880]);
+                i_3_ = method866(arg0, i_3_, i_0_, arg2, class40_sub12_sub1.samples[start]);
                 if(anInt2888 < i_0_)
                     return 1;
                 anInt2888 = i + (anInt2888 - i) % i_2_;
             }
         }
         do {
-            if(anInt2884 > 0) {
+            if(numLoops > 0) {
                 if(aBoolean2887) {
                     if(anInt2882 < 0) {
-                        i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.samples[anInt2880]);
+                        i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.samples[start]);
                         if(anInt2888 >= i)
                             return 1;
                         anInt2888 = i + i - 1 - anInt2888;
                         anInt2882 = -anInt2882;
-                        if(--anInt2884 == 0)
+                        if(--numLoops == 0)
                             break;
                     }
                     do {
-                        i_3_ = method866(arg0, i_3_, i_0_, arg2, class40_sub12_sub1.samples[anInt2886 - 1]);
+                        i_3_ = method866(arg0, i_3_, i_0_, arg2, class40_sub12_sub1.samples[end - 1]);
                         if(anInt2888 < i_0_)
                             return 1;
                         anInt2888 = i_0_ + i_0_ - 1 - anInt2888;
                         anInt2882 = -anInt2882;
-                        if(--anInt2884 == 0)
+                        if(--numLoops == 0)
                             break;
-                        i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.samples[anInt2880]);
+                        i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.samples[start]);
                         if(anInt2888 >= i)
                             return 1;
                         anInt2888 = i + i - 1 - anInt2888;
                         anInt2882 = -anInt2882;
-                    } while(--anInt2884 != 0);
+                    } while(--numLoops != 0);
                 } else if(anInt2882 < 0) {
                     for(; ; ) {
-                        i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.samples[anInt2886 - 1]);
+                        i_3_ = method854(arg0, i_3_, i, arg2, class40_sub12_sub1.samples[end - 1]);
                         if(anInt2888 >= i)
                             return 1;
                         int i_4_ = (i_0_ - 1 - anInt2888) / i_2_;
-                        if(i_4_ >= anInt2884) {
-                            anInt2888 += i_2_ * anInt2884;
-                            anInt2884 = 0;
+                        if(i_4_ >= numLoops) {
+                            anInt2888 += i_2_ * numLoops;
+                            numLoops = 0;
                             break;
                         }
                         anInt2888 += i_2_ * i_4_;
-                        anInt2884 -= i_4_;
+                        numLoops -= i_4_;
                     }
                 } else {
                     for(; ; ) {
-                        i_3_ = method866(arg0, i_3_, i_0_, arg2, class40_sub12_sub1.samples[anInt2880]);
+                        i_3_ = method866(arg0, i_3_, i_0_, arg2, class40_sub12_sub1.samples[start]);
                         if(anInt2888 < i_0_)
                             return 1;
                         int i_5_ = (anInt2888 - i) / i_2_;
-                        if(i_5_ >= anInt2884) {
-                            anInt2888 -= i_2_ * anInt2884;
-                            anInt2884 = 0;
+                        if(i_5_ >= numLoops) {
+                            anInt2888 -= i_2_ * numLoops;
+                            numLoops = 0;
                             break;
                         }
                         anInt2888 -= i_2_ * i_5_;
-                        anInt2884 -= i_5_;
+                        numLoops -= i_5_;
                     }
                 }
             }
@@ -368,16 +368,16 @@ public class RawPcmStream extends PcmStream {
     }
 
     public synchronized void setNumLoops(int arg0) {
-        anInt2884 = arg0;
+        numLoops = arg0;
     }
 
     public int method845() {
         int i = anInt2885 * 3;
         i = (i ^ i >> 31) + (i >>> 31);
-        if(anInt2884 == 0)
+        if(numLoops == 0)
             i -= i * anInt2888 / (((RawSound) sound).samples.length << 8);
-        else if(anInt2884 >= 0)
-            i -= i * anInt2880 / ((RawSound) sound).samples.length;
+        else if(numLoops >= 0)
+            i -= i * start / ((RawSound) sound).samples.length;
         if(i > 255)
             return 255;
         return i;
@@ -403,13 +403,13 @@ public class RawPcmStream extends PcmStream {
         }
         anInt2888 += anInt2882 * arg0;
         RawSound class40_sub12_sub1 = (RawSound) sound;
-        int i = anInt2880 << 8;
-        int i_6_ = anInt2886 << 8;
+        int i = start << 8;
+        int i_6_ = end << 8;
         int i_7_ = class40_sub12_sub1.samples.length << 8;
         int i_8_ = i_6_ - i;
         if(i_8_ <= 0)
-            anInt2884 = 0;
-        if(anInt2884 < 0) {
+            numLoops = 0;
+        if(numLoops < 0) {
             if(aBoolean2887) {
                 if(anInt2882 < 0) {
                     if(anInt2888 >= i)
@@ -432,14 +432,14 @@ public class RawPcmStream extends PcmStream {
                 anInt2888 = i + (anInt2888 - i) % i_8_;
         } else {
             do {
-                if(anInt2884 > 0) {
+                if(numLoops > 0) {
                     if(aBoolean2887) {
                         if(anInt2882 < 0) {
                             if(anInt2888 >= i)
                                 return;
                             anInt2888 = i + i - 1 - anInt2888;
                             anInt2882 = -anInt2882;
-                            if(--anInt2884 == 0)
+                            if(--numLoops == 0)
                                 break;
                         }
                         do {
@@ -447,35 +447,35 @@ public class RawPcmStream extends PcmStream {
                                 return;
                             anInt2888 = i_6_ + i_6_ - 1 - anInt2888;
                             anInt2882 = -anInt2882;
-                            if(--anInt2884 == 0)
+                            if(--numLoops == 0)
                                 break;
                             if(anInt2888 >= i)
                                 return;
                             anInt2888 = i + i - 1 - anInt2888;
                             anInt2882 = -anInt2882;
-                        } while(--anInt2884 != 0);
+                        } while(--numLoops != 0);
                     } else if(anInt2882 < 0) {
                         if(anInt2888 >= i)
                             return;
                         int i_9_ = (i_6_ - 1 - anInt2888) / i_8_;
-                        if(i_9_ >= anInt2884) {
-                            anInt2888 += i_8_ * anInt2884;
-                            anInt2884 = 0;
+                        if(i_9_ >= numLoops) {
+                            anInt2888 += i_8_ * numLoops;
+                            numLoops = 0;
                         } else {
                             anInt2888 += i_8_ * i_9_;
-                            anInt2884 -= i_9_;
+                            numLoops -= i_9_;
                             return;
                         }
                     } else {
                         if(anInt2888 < i_6_)
                             return;
                         int i_10_ = (anInt2888 - i) / i_8_;
-                        if(i_10_ >= anInt2884) {
-                            anInt2888 -= i_8_ * anInt2884;
-                            anInt2884 = 0;
+                        if(i_10_ >= numLoops) {
+                            anInt2888 -= i_8_ * numLoops;
+                            numLoops = 0;
                         } else {
                             anInt2888 -= i_8_ * i_10_;
-                            anInt2884 -= i_10_;
+                            numLoops -= i_10_;
                             return;
                         }
                     }

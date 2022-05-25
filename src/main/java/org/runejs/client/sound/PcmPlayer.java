@@ -60,7 +60,7 @@ public class PcmPlayer implements Runnable {
 	private void method221(long arg0) {
 		if (aLong1821 != 0L) {
 			for (/**/; aLong1832 < arg0; aLong1832 += (long) (256000 / SoundSystem.SAMPLE_RATE))
-				method217(256);
+				skip(256);
 			if (arg0 < aLong1821)
 				return;
 			try {
@@ -256,16 +256,16 @@ public class PcmPlayer implements Runnable {
 			arg0[i++] = 0;
 		if (PcmPlayer.pcmStream != null)
 			PcmPlayer.pcmStream.fill(arg0, 0, arg1);
-		method748(arg1);
+		skip0(arg1);
 	}
 
-	private static synchronized void method217(int arg0) {
+	private static synchronized void skip(int arg0) {
 		if (PcmPlayer.pcmStream != null)
 			PcmPlayer.pcmStream.skip(arg0);
-		method748(arg0);
+		skip0(arg0);
 	}
 
-	private static void method748(int arg1) {
+	private static void skip0(int arg1) {
 		for (PcmPlayer.anInt2866 += arg1; PcmPlayer.anInt2866 >= SoundSystem.SAMPLE_RATE; PcmPlayer.anInt2866 -= SoundSystem.SAMPLE_RATE) {
 			PcmPlayer.anInt2081 -= PcmPlayer.anInt2081 >> 2;
 		}
