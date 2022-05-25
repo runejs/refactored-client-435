@@ -7,6 +7,7 @@ import org.runejs.client.audio.Effect;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.io.Buffer;
+import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.node.NodeCache;
 import org.runejs.client.util.Signlink;
 
@@ -202,15 +203,15 @@ public class StaticAudio {
 	public static byte[] method74(int arg0, CacheArchive arg1, int arg2, int arg4) {
 	    long l = (long) (arg0 + 37 * arg2 & 0xffff) + ((long) arg4 << 32) + (long) (arg2 << 16);
 	    if(aClass9_1684 != null) {
-	        Class40_Sub5_Sub6 class40_sub5_sub6 = (Class40_Sub5_Sub6) aClass9_1684.get(l);
+	        ByteArrayNode class40_sub5_sub6 = (ByteArrayNode) aClass9_1684.get(l);
 	        if(class40_sub5_sub6 != null)
-	            return class40_sub5_sub6.aByteArray2441;
+	            return class40_sub5_sub6.byteArray;
 	    }
 	    byte[] is = arg1.getFile(arg2, arg0);
 	    if(is == null)
 	        return null;
 	    if(aClass9_1684 != null)
-	        aClass9_1684.put(l, new Class40_Sub5_Sub6(is));
+	        aClass9_1684.put(l, new ByteArrayNode(is));
 	    return is;
 	}
 
@@ -527,5 +528,66 @@ public class StaticAudio {
 	public static byte[] aByteArray3270;
 	public static boolean aBoolean687;
 	public static boolean aBoolean1790;
+
+	public static void processAudio() {
+	    for(int index = 0; index < currentSound; index++) {
+	        soundDelay[index]--;
+	        if(soundDelay[index] < -10) {
+	            currentSound--;
+	            for(int j = index; currentSound > j; j++) {
+	                sound[j] = sound[j + 1];
+	                effects[j] = effects[1 + j];
+	                soundVolume[j] = soundVolume[1 + j];
+	                soundDelay[j] = soundDelay[1 + j];
+	                anIntArray1916[j] = anIntArray1916[1 + j];
+	            }
+	            index--;
+	        } else {
+	            Effect effect = effects[index];
+	            if(effect == null) {
+	                effect = Effect.method429(CacheArchive.soundEffectCacheArchive, sound[index], 0);
+	                if(effect == null)
+	                    continue;
+	                soundDelay[index] += effect.delay();
+	                effects[index] = effect;
+	            }
+	            if(soundDelay[index] < 0) {
+	                int i_10_;
+	                if(anIntArray1916[index] != 0) {
+	                    int i_11_ = 128 * (anIntArray1916[index] & 0xff);
+	                    int i_12_ = 0xff & anIntArray1916[index] >> 16;
+	                    int i_13_ = (anIntArray1916[index] & 0xffb8) >> 8;
+	                    int i_14_ = i_13_ * 128 + 64 + -Player.localPlayer.worldY;
+	                    int i_15_ = i_12_ * 128 + 64 - Player.localPlayer.worldX;
+	                    if(i_15_ < 0)
+	                        i_15_ = -i_15_;
+	                    if(i_14_ < 0)
+	                        i_14_ = -i_14_;
+	                    int i_16_ = -128 + i_15_ + i_14_;
+	                    if(i_16_ > i_11_) {
+	                        soundDelay[index] = -100;
+	                        continue;
+	                    }
+	                    if(i_16_ < 0)
+	                        i_16_ = 0;
+	                    i_10_ = (i_11_ + -i_16_) * soundEffectVolume / i_11_;
+	                } else
+	                    i_10_ = anInt200;
+	                RawSound class40_sub12_sub1 = effect.method428().resample(aDecimator_1289);
+	                RawPcmStream class40_sub9_sub2 = RawPcmStream.create(class40_sub12_sub1, 100, i_10_);
+	                class40_sub9_sub2.method860(-1 + soundVolume[index]);
+	                aPcmStreamMixer_1152.method846(class40_sub9_sub2);
+	                soundDelay[index] = -100;
+	            }
+	        }
+	    }
+	    if(songTimeout > 0) {
+	        songTimeout -= 20;
+	        if(songTimeout < 0)
+	            songTimeout = 0;
+	        if(songTimeout == 0 && musicVolume != 0 && currentSongId != -1)
+	            method414(false, 0, currentSongId, musicVolume, 0, CacheArchive.musicCacheArchive);
+	    }
+	}
 
 }

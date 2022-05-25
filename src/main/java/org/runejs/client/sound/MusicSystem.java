@@ -1,10 +1,6 @@
 package org.runejs.client.sound;
 
 
-import org.runejs.client.audio.Effect;
-import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.media.renderable.actor.Player;
-
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiUnavailableException;
 import java.io.IOException;
@@ -81,67 +77,6 @@ public final class MusicSystem implements Runnable {
         t.setName("MusicSystem");
         t.setDaemon(true);
         t.start();
-    }
-
-    public static void processAudio() {
-        for(int index = 0; index < StaticAudio.currentSound; index++) {
-            StaticAudio.soundDelay[index]--;
-            if(StaticAudio.soundDelay[index] < -10) {
-                StaticAudio.currentSound--;
-                for(int j = index; StaticAudio.currentSound > j; j++) {
-                    StaticAudio.sound[j] = StaticAudio.sound[j + 1];
-                    StaticAudio.effects[j] = StaticAudio.effects[1 + j];
-                    StaticAudio.soundVolume[j] = StaticAudio.soundVolume[1 + j];
-                    StaticAudio.soundDelay[j] = StaticAudio.soundDelay[1 + j];
-                    StaticAudio.anIntArray1916[j] = StaticAudio.anIntArray1916[1 + j];
-                }
-                index--;
-            } else {
-                Effect effect = StaticAudio.effects[index];
-                if(effect == null) {
-                    effect = Effect.method429(CacheArchive.soundEffectCacheArchive, StaticAudio.sound[index], 0);
-                    if(effect == null)
-                        continue;
-                    StaticAudio.soundDelay[index] += effect.delay();
-                    StaticAudio.effects[index] = effect;
-                }
-                if(StaticAudio.soundDelay[index] < 0) {
-                    int i_10_;
-                    if(StaticAudio.anIntArray1916[index] != 0) {
-                        int i_11_ = 128 * (StaticAudio.anIntArray1916[index] & 0xff);
-                        int i_12_ = 0xff & StaticAudio.anIntArray1916[index] >> 16;
-                        int i_13_ = (StaticAudio.anIntArray1916[index] & 0xffb8) >> 8;
-                        int i_14_ = i_13_ * 128 + 64 + -Player.localPlayer.worldY;
-                        int i_15_ = i_12_ * 128 + 64 - Player.localPlayer.worldX;
-                        if(i_15_ < 0)
-                            i_15_ = -i_15_;
-                        if(i_14_ < 0)
-                            i_14_ = -i_14_;
-                        int i_16_ = -128 + i_15_ + i_14_;
-                        if(i_16_ > i_11_) {
-                            StaticAudio.soundDelay[index] = -100;
-                            continue;
-                        }
-                        if(i_16_ < 0)
-                            i_16_ = 0;
-                        i_10_ = (i_11_ + -i_16_) * StaticAudio.soundEffectVolume / i_11_;
-                    } else
-                        i_10_ = StaticAudio.anInt200;
-                    RawSound class40_sub12_sub1 = effect.method428().resample(StaticAudio.aDecimator_1289);
-                    RawPcmStream class40_sub9_sub2 = RawPcmStream.create(class40_sub12_sub1, 100, i_10_);
-                    class40_sub9_sub2.method860(-1 + StaticAudio.soundVolume[index]);
-                    StaticAudio.aPcmStreamMixer_1152.method846(class40_sub9_sub2);
-                    StaticAudio.soundDelay[index] = -100;
-                }
-            }
-        }
-        if(StaticAudio.songTimeout > 0) {
-            StaticAudio.songTimeout -= 20;
-            if(StaticAudio.songTimeout < 0)
-                StaticAudio.songTimeout = 0;
-            if(StaticAudio.songTimeout == 0 && StaticAudio.musicVolume != 0 && StaticAudio.currentSongId != -1)
-                StaticAudio.method414(false, 0, StaticAudio.currentSongId, StaticAudio.musicVolume, 0, CacheArchive.musicCacheArchive);
-        }
     }
 
     /**

@@ -29,7 +29,6 @@ import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.util.CollisionMap;
-import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.StaticAudio;
 import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;
@@ -1390,7 +1389,7 @@ public class Main extends GameShell {
                 LinkedList.method910(-32322);
                 if(Class51.gameStatusCode == 30 || Class51.gameStatusCode == 35) {
                     MovedStatics.method652();
-                    MusicSystem.processAudio();
+                    StaticAudio.processAudio();
                     IncomingPackets.cyclesSinceLastPacket++;
                     if (IncomingPackets.cyclesSinceLastPacket > 750) {
                         Class59.dropClient();
