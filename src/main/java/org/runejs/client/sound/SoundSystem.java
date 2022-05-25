@@ -46,13 +46,13 @@ public class SoundSystem {
 
 	public static void handleSounds() {
 		if (SoundSystem.pcmPlayer != null) {
-			long l = System.currentTimeMillis();
-			if (SoundSystem.timeMs < l) {
-				SoundSystem.pcmPlayer.method212(l);
-				int i = (int) (-SoundSystem.timeMs + l);
-				SoundSystem.timeMs = l;
+			long currentTime = System.currentTimeMillis();
+			if (SoundSystem.timeMs < currentTime) {
+				SoundSystem.pcmPlayer.method212(currentTime);
+				int elapsed = (int) (currentTime - SoundSystem.timeMs);
+				SoundSystem.timeMs = currentTime;
 				synchronized (pcmClass != null ? pcmClass : (pcmClass = PcmPlayer.class)) {
-					PcmPlayer.handle(i);
+					PcmPlayer.handle(elapsed);
 				}
 			}
 		}

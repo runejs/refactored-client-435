@@ -278,8 +278,8 @@ public class PcmPlayer implements Runnable {
 	private static int anInt2866;
 	private static int anInt2081;
 
-	public static void handle(int i) {
-		PcmPlayer.anInt2081 += SoundSystem.SAMPLE_RATE * i;
+	public static void handle(int elapsed) {
+		PcmPlayer.anInt2081 += SoundSystem.SAMPLE_RATE * elapsed;
 		int i_0_ = (-(2000 * SoundSystem.SAMPLE_RATE) + PcmPlayer.anInt2081) / 1000;
 		if (i_0_ > 0) {
 			if (PcmPlayer.pcmStream != null)
