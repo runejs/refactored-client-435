@@ -27,10 +27,10 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     public static NodeCache terrainObjectModelCache = new NodeCache(10);
     public static NodeCache animatedObjectModelCache = new NodeCache(30);
 
-    public int anInt2499;
+    public int unkn1;
     public int offsetX;
     public boolean solid;
-    public int anInt2502;
+    public int ambientSoundHearDistance;
     public int sizeX;
     public int offsetY;
     public int setDecorDisplacement;
@@ -61,7 +61,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     public int id;
     public int modelSizeHeight;
     public boolean castsShadow;
-    public int anInt2542;
+    public int unkn2;
     public int contrast;
     public int hasActions;
     public boolean obstructsGround;
@@ -70,10 +70,10 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     public boolean rotated;
 
     public GameObjectDefinition() {
-        anInt2502 = 0;
+        ambientSoundHearDistance = 0;
         blockingMask = 0;
         ambientSoundId = -1;
-        anInt2499 = 0;
+        unkn1 = 0;
         offsetX = 0;
         modelSizeX = 128;
         hollow = false;
@@ -86,7 +86,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         offsetHeight = 0;
         solid = true;
         sizeY = 1;
-        anInt2542 = 0;
+        unkn2 = 0;
         offsetY = 0;
         nonFlatShading = false;
         mapSceneID = -1;
@@ -508,11 +508,11 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
             }
         } else if(opcode == 78) {
             ambientSoundId = buffer.getUnsignedShortBE();
-            anInt2502 = buffer.getUnsignedByte();
+            ambientSoundHearDistance = buffer.getUnsignedByte();
         } else if(opcode == 79) {
-            anInt2499 = buffer.getUnsignedShortBE();
-            anInt2542 = buffer.getUnsignedShortBE();
-            anInt2502 = buffer.getUnsignedByte();
+            unkn1 = buffer.getUnsignedShortBE();
+            unkn2 = buffer.getUnsignedShortBE();
+            ambientSoundHearDistance = buffer.getUnsignedByte();
             int length = buffer.getUnsignedByte();
             soundEffectIds = new int[length];
             for(int index = 0; index < length; ++index) {

@@ -6,33 +6,33 @@ import org.runejs.client.node.Node;
 public class ObjectSound extends Node {
 
     public int plane;
-    public int anInt1994;
+    public int minX;
     public int soundEffectId;
-    public int anInt2000;
+    public int hearDistance;
     public RawPcmStream stream1;
-    public int anInt2002;
-    public int anInt2003;
+    public int unkn2;
+    public int minY;
     public int[] soundEffectIds;
-    public int anInt2007;
+    public int maxY;
     public RawPcmStream stream2;
     public GameObjectDefinition gameObjectDefinition;
-    public int anInt2012;
-    public int anInt2013;
+    public int unkn1;
+    public int maxX;
     public int anInt2014;
     
 	public void set() {
         int i = soundEffectId;
         GameObjectDefinition gameObjectDefinition = this.gameObjectDefinition.getChildDefinition();
         if(gameObjectDefinition == null) {
-            anInt2000 = 0;
-            anInt2012 = 0;
-            anInt2002 = 0;
+            hearDistance = 0;
+            unkn1 = 0;
+            unkn2 = 0;
             soundEffectIds = null;
             soundEffectId = -1;
         } else {
-            anInt2000 = 128 * gameObjectDefinition.anInt2502;
-            anInt2012 = gameObjectDefinition.anInt2499;
-            anInt2002 = gameObjectDefinition.anInt2542;
+            hearDistance = 128 * gameObjectDefinition.ambientSoundHearDistance;
+            unkn1 = gameObjectDefinition.unkn1;
+            unkn2 = gameObjectDefinition.unkn2;
             soundEffectId = gameObjectDefinition.ambientSoundId;
             soundEffectIds = gameObjectDefinition.soundEffectIds;
         }

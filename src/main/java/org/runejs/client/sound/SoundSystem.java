@@ -233,21 +233,21 @@ public class SoundSystem {
 
 	public static void addObjectSounds(int arg0, int arg2, int arg3, int arg4, GameObjectDefinition arg5) {
 		ObjectSound class40_sub2 = new ObjectSound();
-		class40_sub2.anInt2000 = 128 * arg5.anInt2502;
-		class40_sub2.anInt2002 = arg5.anInt2542;
+		class40_sub2.hearDistance = 128 * arg5.ambientSoundHearDistance;
+		class40_sub2.unkn2 = arg5.unkn2;
 		class40_sub2.soundEffectIds = arg5.soundEffectIds;
-		class40_sub2.anInt2012 = arg5.anInt2499;
+		class40_sub2.unkn1 = arg5.unkn1;
 		int i = arg5.sizeX;
 		int i_17_ = arg5.sizeY;
 		class40_sub2.plane = arg2;
-		class40_sub2.anInt1994 = arg4 * 128;
+		class40_sub2.minX = arg4 * 128;
 		if (arg3 == 1 || arg3 == 3) {
 			i = arg5.sizeY;
 			i_17_ = arg5.sizeX;
 		}
-		class40_sub2.anInt2003 = 128 * arg0;
-		class40_sub2.anInt2007 = (i_17_ + arg0) * 128;
-		class40_sub2.anInt2013 = (arg4 + i) * 128;
+		class40_sub2.minY = 128 * arg0;
+		class40_sub2.maxY = (i_17_ + arg0) * 128;
+		class40_sub2.maxX = (arg4 + i) * 128;
 		class40_sub2.soundEffectId = arg5.ambientSoundId;
 		if (arg5.childIds != null) {
 			class40_sub2.gameObjectDefinition = arg5;
@@ -255,7 +255,7 @@ public class SoundSystem {
 		}
 		SoundSystem.objectSounds.pushBack(class40_sub2, -126);
 		if (class40_sub2.soundEffectIds != null)
-			class40_sub2.anInt2014 = (int) ((class40_sub2.anInt2002 - class40_sub2.anInt2012) * Math.random()) + class40_sub2.anInt2012;
+			class40_sub2.anInt2014 = (int) ((class40_sub2.unkn2 - class40_sub2.unkn1) * Math.random()) + class40_sub2.unkn1;
 	}
 	
 	public static void clearObjectSounds() {
@@ -280,20 +280,20 @@ public class SoundSystem {
 		}
 	}
 
-	public static void updateObjectSounds(int pwx, int pwl, int arg3, int pwy) {
+	public static void updateObjectSounds(int pwx, int pwl, int redrawRate, int pwy) {
 		for (ObjectSound class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method902((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method909(-4)) {
 			if (class40_sub2.soundEffectId != -1 || class40_sub2.soundEffectIds != null) {
-				int i_48_ = 0;
-				if (pwx <= class40_sub2.anInt2013) {
-					if (pwx < class40_sub2.anInt1994)
-						i_48_ += class40_sub2.anInt1994 - pwx;
+				int distance = 0;
+				if (pwx <= class40_sub2.maxX) {
+					if (pwx < class40_sub2.minX)
+						distance += class40_sub2.minX - pwx;
 				} else
-					i_48_ += -class40_sub2.anInt2013 + pwx;
-				if (pwy > class40_sub2.anInt2007)
-					i_48_ += -class40_sub2.anInt2007 + pwy;
-				else if (pwy < class40_sub2.anInt2003)
-					i_48_ += -pwy + class40_sub2.anInt2003;
-				if (class40_sub2.anInt2000 < -64 + i_48_ || SoundSystem.areaSoundEffectVolume == 0 || pwl != class40_sub2.plane) {
+					distance += -class40_sub2.maxX + pwx;
+				if (pwy > class40_sub2.maxY)
+					distance += -class40_sub2.maxY + pwy;
+				else if (pwy < class40_sub2.minY)
+					distance += -pwy + class40_sub2.minY;
+				if (class40_sub2.hearDistance < -64 + distance || SoundSystem.areaSoundEffectVolume == 0 || pwl != class40_sub2.plane) {
 					if (class40_sub2.stream1 != null) {
 						SoundSystem.pcmStreamMixer.removeSubStream(class40_sub2.stream1);
 						class40_sub2.stream1 = null;
@@ -303,10 +303,10 @@ public class SoundSystem {
 						class40_sub2.stream2 = null;
 					}
 				} else {
-					i_48_ -= 64;
-					if (i_48_ < 0)
-						i_48_ = 0;
-					int i_49_ = (-i_48_ + class40_sub2.anInt2000) * SoundSystem.areaSoundEffectVolume / class40_sub2.anInt2000;
+					distance -= 64;
+					if (distance < 0)
+						distance = 0;
+					int i_49_ = (-distance + class40_sub2.hearDistance) * SoundSystem.areaSoundEffectVolume / class40_sub2.hearDistance;
 					if (class40_sub2.stream1 == null) {
 						if (class40_sub2.soundEffectId >= 0) {
 							Effect effect = Effect.readSoundEffect(CacheArchive.soundEffectCacheArchive, class40_sub2.soundEffectId, 0);
@@ -321,7 +321,7 @@ public class SoundSystem {
 					} else
 						class40_sub2.stream1.method857(i_49_);
 					if (class40_sub2.stream2 == null) {
-						if (class40_sub2.soundEffectIds != null && (class40_sub2.anInt2014 -= arg3) <= 0) {
+						if (class40_sub2.soundEffectIds != null && (class40_sub2.anInt2014 -= redrawRate) <= 0) {
 							int i_50_ = (int) (class40_sub2.soundEffectIds.length * Math.random());
 							Effect effect = Effect.readSoundEffect(CacheArchive.soundEffectCacheArchive, class40_sub2.soundEffectIds[i_50_], 0);
 							if (effect != null) {
@@ -329,7 +329,7 @@ public class SoundSystem {
 								RawPcmStream class40_sub9_sub2 = RawPcmStream.create(class40_sub12_sub1, 100, i_49_);
 								class40_sub9_sub2.setNumLoops(0);
 								SoundSystem.pcmStreamMixer.addSubStream(class40_sub9_sub2);
-								class40_sub2.anInt2014 = class40_sub2.anInt2012 + (int) ((-class40_sub2.anInt2012 + class40_sub2.anInt2002) * Math.random());
+								class40_sub2.anInt2014 = class40_sub2.unkn1 + (int) ((-class40_sub2.unkn1 + class40_sub2.unkn2) * Math.random());
 								class40_sub2.stream2 = class40_sub9_sub2;
 							}
 						}
