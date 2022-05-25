@@ -67,7 +67,7 @@ public class MidiPlayer implements Receiver {
 			sequencer.open();
 			reset(-1L);
 		} catch (Exception exception) {
-			MusicSystem.method1019();
+			MusicSystem.stop_();
 		}
 	}
 

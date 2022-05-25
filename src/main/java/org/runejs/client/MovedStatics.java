@@ -1759,10 +1759,6 @@ public class MovedStatics {
 	public static int loadingPercent = 0;
 	public static int cameraY;
 
-	public static synchronized void method407(boolean arg0) {
-	    MusicSystem.method1019();
-	}
-
 	public static void method309(int varPlayerIndex) {
 	    do {
 	        AnimationSequence.anInt2480 = pulseCycle;
