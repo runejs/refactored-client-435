@@ -19,7 +19,6 @@ public class SoundSystem {
 	private static int anInt2081;
 	private static int anInt2866;
 	private static Object lock = new Object();
-	private static LinkedList objectSounds = new LinkedList();
 	private static PcmPlayer pcmPlayer;
 
 	private static Effect[] effects = new Effect[50];
@@ -40,46 +39,6 @@ public class SoundSystem {
         SoundSystem.decimator = new Decimator(22050, SoundSystem.sampleRate);
 	}
 	
-	public static void addObjectSounds(int arg0, int arg2, int arg3, int arg4, GameObjectDefinition arg5) {
-		ObjectSound class40_sub2 = new ObjectSound();
-		class40_sub2.anInt2000 = 128 * arg5.anInt2502;
-		class40_sub2.anInt2002 = arg5.anInt2542;
-		class40_sub2.soundEffectIds = arg5.soundEffectIds;
-		class40_sub2.anInt2012 = arg5.anInt2499;
-		int i = arg5.sizeX;
-		int i_17_ = arg5.sizeY;
-		class40_sub2.plane = arg2;
-		class40_sub2.anInt1994 = arg4 * 128;
-		if (arg3 == 1 || arg3 == 3) {
-			i = arg5.sizeY;
-			i_17_ = arg5.sizeX;
-		}
-		class40_sub2.anInt2003 = 128 * arg0;
-		class40_sub2.anInt2007 = (i_17_ + arg0) * 128;
-		class40_sub2.anInt2013 = (arg4 + i) * 128;
-		class40_sub2.soundEffectId = arg5.ambientSoundId;
-		if (arg5.childIds != null) {
-			class40_sub2.gameObjectDefinition = arg5;
-			class40_sub2.set();
-		}
-		SoundSystem.objectSounds.pushBack(class40_sub2, -126);
-		if (class40_sub2.soundEffectIds != null)
-			class40_sub2.anInt2014 = (int) ((class40_sub2.anInt2002 - class40_sub2.anInt2012) * Math.random()) + class40_sub2.anInt2012;
-	}
-	public static void clearObjectSounds() {
-		for (ObjectSound class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method902((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method909(-4)) {
-			if (class40_sub2.stream1 != null) {
-				SoundSystem.pcmStreamMixer.removeSubStream(class40_sub2.stream1);
-				class40_sub2.stream1 = null;
-			}
-			if (class40_sub2.stream2 != null) {
-				SoundSystem.pcmStreamMixer.removeSubStream(class40_sub2.stream2);
-				class40_sub2.stream2 = null;
-			}
-		}
-		SoundSystem.objectSounds.clear(0);
-	}
-
 	public static void handleSounds() {
 		/*
 		The following was combined with the commented code in the synchronized block. Rather than 
@@ -217,6 +176,102 @@ public class SoundSystem {
 		}
 	}
 
+	static void method748(int arg1) {
+		for (SoundSystem.anInt2866 += arg1; SoundSystem.anInt2866 >= SoundSystem.sampleRate; SoundSystem.anInt2866 -= SoundSystem.sampleRate) {
+			SoundSystem.anInt2081 -= SoundSystem.anInt2081 >> 2;
+		}
+		SoundSystem.anInt2081 -= 1000 * arg1;
+		if (SoundSystem.anInt2081 < 0) {
+			SoundSystem.anInt2081 = 0;
+		}
+	}
+	
+	private static void createPlayer(Signlink arg2) {
+		try {
+			PcmPlayer class8_sub1 = new PcmPlayer();
+			class8_sub1.method222(arg2, 2048);
+			SoundSystem.pcmPlayer = class8_sub1;
+		} catch (Throwable throwable) {
+			   // I dont think this was  needed. This was just a placeholder/empty class, however it is redundant since any code using pcmPlayer also has nullchecks.
+			   // After testing, it appears that the hierarchy of the PCM classes can be removed just fine.
+		       // pcmPlayer = new PcmPlayerBase(8000);	
+		}
+
+	}
+
+	private static synchronized void setMixer(PcmStream arg0) {
+		SoundSystem.pcmStream = arg0;
+	}
+
+	public static void updateSoundEffectVolume(int varPlayerValue) {
+        if(varPlayerValue == 0)
+            SoundSystem.soundEffectVolume = 127;
+        if(varPlayerValue == 1)
+            SoundSystem.soundEffectVolume = 96;
+        if(varPlayerValue == 2)
+            SoundSystem.soundEffectVolume = 64;
+        if(varPlayerValue == 3)
+            SoundSystem.soundEffectVolume = 32;
+        if(varPlayerValue == 4)
+            SoundSystem.soundEffectVolume = 0;		
+	}
+
+	public static void updateAreaSoundEffectVolume(int varPlayerValue) {
+        if(varPlayerValue == 0)
+            SoundSystem.areaSoundEffectVolume = 127;
+        if(varPlayerValue == 1)
+            SoundSystem.areaSoundEffectVolume = 96;
+        if(varPlayerValue == 2)
+            SoundSystem.areaSoundEffectVolume = 64;
+        if(varPlayerValue == 3)
+            SoundSystem.areaSoundEffectVolume = 32;
+        if(varPlayerValue == 4)
+            SoundSystem.areaSoundEffectVolume = 0;		
+	}
+
+	private static LinkedList objectSounds = new LinkedList();
+
+	public static void addObjectSounds(int arg0, int arg2, int arg3, int arg4, GameObjectDefinition arg5) {
+		ObjectSound class40_sub2 = new ObjectSound();
+		class40_sub2.anInt2000 = 128 * arg5.anInt2502;
+		class40_sub2.anInt2002 = arg5.anInt2542;
+		class40_sub2.soundEffectIds = arg5.soundEffectIds;
+		class40_sub2.anInt2012 = arg5.anInt2499;
+		int i = arg5.sizeX;
+		int i_17_ = arg5.sizeY;
+		class40_sub2.plane = arg2;
+		class40_sub2.anInt1994 = arg4 * 128;
+		if (arg3 == 1 || arg3 == 3) {
+			i = arg5.sizeY;
+			i_17_ = arg5.sizeX;
+		}
+		class40_sub2.anInt2003 = 128 * arg0;
+		class40_sub2.anInt2007 = (i_17_ + arg0) * 128;
+		class40_sub2.anInt2013 = (arg4 + i) * 128;
+		class40_sub2.soundEffectId = arg5.ambientSoundId;
+		if (arg5.childIds != null) {
+			class40_sub2.gameObjectDefinition = arg5;
+			class40_sub2.set();
+		}
+		SoundSystem.objectSounds.pushBack(class40_sub2, -126);
+		if (class40_sub2.soundEffectIds != null)
+			class40_sub2.anInt2014 = (int) ((class40_sub2.anInt2002 - class40_sub2.anInt2012) * Math.random()) + class40_sub2.anInt2012;
+	}
+	
+	public static void clearObjectSounds() {
+		for (ObjectSound class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method902((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method909(-4)) {
+			if (class40_sub2.stream1 != null) {
+				SoundSystem.pcmStreamMixer.removeSubStream(class40_sub2.stream1);
+				class40_sub2.stream1 = null;
+			}
+			if (class40_sub2.stream2 != null) {
+				SoundSystem.pcmStreamMixer.removeSubStream(class40_sub2.stream2);
+				class40_sub2.stream2 = null;
+			}
+		}
+		SoundSystem.objectSounds.clear(0);
+	}
+	
 	public static void setObjectSounds() {
 		for (ObjectSound class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method902((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method909(-4)) {
 			if (class40_sub2.gameObjectDefinition != null) {
@@ -287,58 +342,4 @@ public class SoundSystem {
 			}
 		}
 	}
-
-	static void method748(int arg1) {
-		for (SoundSystem.anInt2866 += arg1; SoundSystem.anInt2866 >= SoundSystem.sampleRate; SoundSystem.anInt2866 -= SoundSystem.sampleRate) {
-			SoundSystem.anInt2081 -= SoundSystem.anInt2081 >> 2;
-		}
-		SoundSystem.anInt2081 -= 1000 * arg1;
-		if (SoundSystem.anInt2081 < 0) {
-			SoundSystem.anInt2081 = 0;
-		}
-	}
-	
-	private static void createPlayer(Signlink arg2) {
-		try {
-			PcmPlayer class8_sub1 = new PcmPlayer();
-			class8_sub1.method222(arg2, 2048);
-			SoundSystem.pcmPlayer = class8_sub1;
-		} catch (Throwable throwable) {
-			   // I dont think this was  needed. This was just a placeholder/empty class, however it is redundant since any code using pcmPlayer also has nullchecks.
-			   // After testing, it appears that the hierarchy of the PCM classes can be removed just fine.
-		       // pcmPlayer = new PcmPlayerBase(8000);	
-		}
-
-	}
-
-	private static synchronized void setMixer(PcmStream arg0) {
-		SoundSystem.pcmStream = arg0;
-	}
-
-	public static void updateSoundEffectVolume(int varPlayerValue) {
-        if(varPlayerValue == 0)
-            SoundSystem.soundEffectVolume = 127;
-        if(varPlayerValue == 1)
-            SoundSystem.soundEffectVolume = 96;
-        if(varPlayerValue == 2)
-            SoundSystem.soundEffectVolume = 64;
-        if(varPlayerValue == 3)
-            SoundSystem.soundEffectVolume = 32;
-        if(varPlayerValue == 4)
-            SoundSystem.soundEffectVolume = 0;		
-	}
-
-	public static void updateAreaSoundEffectVolume(int varPlayerValue) {
-        if(varPlayerValue == 0)
-            SoundSystem.areaSoundEffectVolume = 127;
-        if(varPlayerValue == 1)
-            SoundSystem.areaSoundEffectVolume = 96;
-        if(varPlayerValue == 2)
-            SoundSystem.areaSoundEffectVolume = 64;
-        if(varPlayerValue == 3)
-            SoundSystem.areaSoundEffectVolume = 32;
-        if(varPlayerValue == 4)
-            SoundSystem.areaSoundEffectVolume = 0;		
-	}
-
 }
