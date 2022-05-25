@@ -10,7 +10,6 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Base64;
 
-import jdk.internal.loader.Resource;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.input.MouseHandler;
 

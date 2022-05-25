@@ -16,6 +16,7 @@ import org.runejs.client.net.ISAAC;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.tile.Wall;
+import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.*;
 import org.runejs.Configuration;
 import org.runejs.whitelabel.Images;
@@ -31,13 +32,13 @@ public class Item extends Renderable {
 
     public static void calculateCameraPosition() {
         int sceneX = Buffer.cameraOffsetX + Player.localPlayer.worldX;
-        int sceneY = Player.localPlayer.worldY + Class48.cameraOffsetY;
-        if (Class40_Sub5_Sub6.currentCameraPositionH - sceneX < -500 || -sceneX + Class40_Sub5_Sub6.currentCameraPositionH > 500 || MovedStatics.currentCameraPositionV + -sceneY < -500 || -sceneY + MovedStatics.currentCameraPositionV > 500) {
+        int sceneY = Player.localPlayer.worldY + MovedStatics.cameraOffsetY;
+        if (MovedStatics.currentCameraPositionH - sceneX < -500 || -sceneX + MovedStatics.currentCameraPositionH > 500 || MovedStatics.currentCameraPositionV + -sceneY < -500 || -sceneY + MovedStatics.currentCameraPositionV > 500) {
             MovedStatics.currentCameraPositionV = sceneY;
-            Class40_Sub5_Sub6.currentCameraPositionH = sceneX;
+            MovedStatics.currentCameraPositionH = sceneX;
         }
-        if (Class40_Sub5_Sub6.currentCameraPositionH != sceneX)
-            Class40_Sub5_Sub6.currentCameraPositionH += (-Class40_Sub5_Sub6.currentCameraPositionH + sceneX) / 16;
+        if (MovedStatics.currentCameraPositionH != sceneX)
+            MovedStatics.currentCameraPositionH += (-MovedStatics.currentCameraPositionH + sceneX) / 16;
         if (MovedStatics.currentCameraPositionV != sceneY)
             MovedStatics.currentCameraPositionV += (-MovedStatics.currentCameraPositionV + sceneY) / 16;
 
@@ -55,14 +56,14 @@ public class Item extends Renderable {
             Class60.cameraVelocityVertical /= 2;
         int i_1_ = MovedStatics.currentCameraPositionV >> 7;
         GroundItemTile.cameraHorizontal = Wall.cameraVelocityHorizontal / 2 + GroundItemTile.cameraHorizontal & 0x7ff;
-        int i_2_ = Class40_Sub5_Sub6.currentCameraPositionH >> 7;
+        int i_2_ = MovedStatics.currentCameraPositionH >> 7;
         Class65.cameraVertical += Class60.cameraVelocityVertical / 2;
         int i_3_ = 0;
         if (Class65.cameraVertical < 128)
             Class65.cameraVertical = 128;
         if (Class65.cameraVertical > 383)
             Class65.cameraVertical = 383;
-        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, Class40_Sub5_Sub6.currentCameraPositionH, MovedStatics.currentCameraPositionV);
+        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, MovedStatics.currentCameraPositionH, MovedStatics.currentCameraPositionV);
         if (i_2_ > 3 && i_1_ > 3 && i_2_ < 100 && i_1_ < 100) {
             for (int i_5_ = -4 + i_2_; i_5_ <= 4 + i_2_; i_5_++) {
                 for (int i_6_ = -4 + i_1_; 4 + i_1_ >= i_6_; i_6_++) {
@@ -92,7 +93,7 @@ public class Item extends Renderable {
 
     public static void renderLoginScreen(Component arg0, CacheArchive huffmanCacheArchive, CacheArchive gameImageCacheArchive) {
         if (!ISAAC.aBoolean512) {
-            Class8.flameLeftBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
+            MovedStatics.flameLeftBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
             Rasterizer.resetPixels();
             GameObject.flameRightBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
             Rasterizer.resetPixels();
@@ -114,7 +115,7 @@ public class Item extends Renderable {
             Rasterizer.resetPixels();
             byte[] is = huffmanCacheArchive.method170("", Native.titleImage);
             ImageRGB titleImg = new ImageRGB(is, arg0);
-            Class8.flameLeftBackground.prepareRasterizer();
+            MovedStatics.flameLeftBackground.prepareRasterizer();
             titleImg.drawInverse(0, 0);
             GameObject.flameRightBackground.prepareRasterizer();
             titleImg.drawInverse(-637, 0);
@@ -139,7 +140,7 @@ public class Item extends Renderable {
                 for (int i_20_ = 0; i_20_ < titleImg.imageWidth; i_20_++)
                     titleImg.pixels[i_20_ + titleImg.imageWidth * i] = is_18_[i_20_];
             }
-            Class8.flameLeftBackground.prepareRasterizer();
+            MovedStatics.flameLeftBackground.prepareRasterizer();
             titleImg.drawInverse(382, 0);
             GameObject.flameRightBackground.prepareRasterizer();
             titleImg.drawInverse(-255, 0);
@@ -173,12 +174,12 @@ public class Item extends Renderable {
 
             Class40_Sub5_Sub15.loginScreenBox = Main.method359(Native.titleBox, "", gameImageCacheArchive);
             Class59.imgLoginScreenButton = Main.method359(Native.titleButton, "", gameImageCacheArchive);
-            Class22.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(gameImageCacheArchive, Native.runes, "");
+            MovedStatics.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(gameImageCacheArchive, Native.runes, "");
 
             Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);
             for (int i = 0; i < 33920; i++)
-                Class39.aClass40_Sub5_Sub14_Sub4_918.pixels[i] = Class8.flameLeftBackground.pixels[i];
+                Class39.aClass40_Sub5_Sub14_Sub4_918.pixels[i] = MovedStatics.flameLeftBackground.pixels[i];
             for (int i = 0; i < 33920; i++)
                 SceneTile.aClass40_Sub5_Sub14_Sub4_2043.pixels[i] = GameObject.flameRightBackground.pixels[i];
             Class51.anIntArray1198 = new int[256];
@@ -217,10 +218,10 @@ public class Item extends Renderable {
             Native.password = Configuration.getPassword();
             MovedStatics.anIntArray178 = new int[32768];
             Class26.loginScreenState = 0;
-            if (RSCanvas.musicVolume != 0 && !VertexNormal.lowMemory)
-                Class33.method412(false, CacheArchive.musicCacheArchive, 0, (byte) 66, Native.titleSong, 10, "", RSCanvas.musicVolume);
+            if (MusicSystem.musicVolume != 0 && !VertexNormal.lowMemory)
+                MusicSystem.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", MusicSystem.musicVolume);
             else
-                MovedStatics.method405(10);
+                MusicSystem.method405(10);
             GameShell.method19(false);
             MovedStatics.clearScreen = true;
             ISAAC.aBoolean512 = true;

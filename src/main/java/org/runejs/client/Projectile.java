@@ -27,6 +27,7 @@ import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.scene.util.CollisionMap;
+import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
 import org.runejs.Configuration;
 
@@ -41,9 +42,6 @@ public class Projectile extends Renderable {
     public static int[] directions = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
 
     public static int atInventoryInterfaceType = 0;
-    public static int anInt3004;
-
-
     public int startHeight;
     public int startX;
     public int endHeight;
@@ -272,7 +270,7 @@ public class Projectile extends Renderable {
         }
         int i = 3;
         if(Class26.anInt627 < 310) {
-            int i_22_ = Class40_Sub5_Sub6.cameraY >> 7;
+            int i_22_ = MovedStatics.cameraY >> 7;
             int i_23_ = Class12.cameraX >> 7;
             if(i_22_ > 103) {
                 i_22_ = 103;
@@ -376,8 +374,8 @@ public class Projectile extends Renderable {
                 objectConfig += 256;
             if(gameObjectDefinition.hasActions == 0)
                 hash += -2147483648;
-            if(gameObjectDefinition.method601())
-                Class37.method437(localY, true, plane, face, localX, gameObjectDefinition);
+            if(gameObjectDefinition.hasSounds())
+                SoundSystem.addObjectSounds(localY, plane, face, localX, gameObjectDefinition);
             if(type == 22) {
                 if(!VertexNormal.lowMemory || gameObjectDefinition.hasActions != 0 || gameObjectDefinition.obstructsGround) {
                     Renderable renderable;

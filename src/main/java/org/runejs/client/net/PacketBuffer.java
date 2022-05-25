@@ -3,7 +3,6 @@ package org.runejs.client.net;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.RSCanvas;
 import org.runejs.client.RSString;
-import org.runejs.client.audio.Effect;
 import org.runejs.client.cache.CacheIndex;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
@@ -15,13 +14,9 @@ import org.runejs.client.scene.SceneCluster;
 public class PacketBuffer extends Buffer {
     public static int anInt2231 = 1;
     public static boolean hiddenButtonTest = false;
-    public static Effect[] effects = new Effect[50];
     public static long aLong2241 = 0L;
-    public static int currentSound = 0;
     public static boolean closedClient = false;
     public static int lastClickX = 0;
-    public static int anInt2258;
-
     public ISAAC inCipher;
     public ISAAC outCipher;
     public int bitoffset;

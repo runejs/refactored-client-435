@@ -2,8 +2,6 @@ package org.runejs.client;
 
 import org.runejs.client.node.NodeCache;
 import org.runejs.client.media.Rasterizer;
-import org.runejs.client.scene.util.CollisionMap;
-import org.runejs.client.util.Signlink;
 import org.runejs.client.util.SignlinkNode;
 
 import java.awt.*;
@@ -22,30 +20,6 @@ public abstract class ProducingGraphicsBuffer {
     public int width;
     public int[] pixels;
     public Image image;
-
-    public static void method1040(Component arg0, int arg1, Signlink arg2) {
-        try {
-            Class8_Sub1 class8_sub1 = new Class8_Sub1_Sub2();
-            class8_sub1.method222(arg2, 2048);
-            CollisionMap.aClass8_166 = class8_sub1;
-        } catch (Throwable throwable) {
-            try {
-                CollisionMap.aClass8_166 = new Class8_Sub1_Sub1(arg2, arg0);
-            } catch (Throwable throwable_0_) {
-                if (arg1 <= Signlink.javaVendor.toLowerCase().indexOf("microsoft")) {
-                    try {
-                        CollisionMap.aClass8_166 = new Class8_Sub2();
-                        return;
-                    } catch (Throwable throwable_1_) {
-                        /* empty */
-                    }
-                }
-                CollisionMap.aClass8_166 = new Class8(8000);
-            }
-        }
-
-    }
-
 
     public abstract void method1041(int i, int i_2_, Component component, int i_3_);
 

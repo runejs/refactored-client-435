@@ -26,7 +26,7 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
 
 
     public static AnimationSequence getAnimationSequence(int animationId) {
-        AnimationSequence animationSequence = (AnimationSequence) Class40_Sub5_Sub6.aClass9_2439.get((long) animationId);
+        AnimationSequence animationSequence = (AnimationSequence) MovedStatics.aClass9_2439.get((long) animationId);
 
         if(animationSequence != null)
             return animationSequence;
@@ -35,7 +35,7 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
         if(is != null)
             animationSequence.decodeAllAnimationSequences(new Buffer(is));
         animationSequence.method591();
-        Class40_Sub5_Sub6.aClass9_2439.put((long) animationId, animationSequence);
+        MovedStatics.aClass9_2439.put((long) animationId, animationSequence);
         return animationSequence;
     }
 

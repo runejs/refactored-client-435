@@ -1,9 +1,7 @@
 package org.runejs.client.util;
 
 import org.runejs.client.SizedAccessFile;
-import org.runejs.client.Interface2;
 import org.runejs.client.GameShell;
-import org.runejs.client.Runnable_Impl1;
 import org.runejs.Configuration;
 
 import java.io.*;
@@ -23,11 +21,9 @@ public class Signlink implements Runnable {
     public int uid = 0;
     public SizedAccessFile[] dataIndexAccessFiles;
     public SignlinkNode current = null;
-    public Runnable_Impl1 aRunnable_Impl1_727;
     public SizedAccessFile metaIndexAccessFile;
     public InetAddress netAddress;
     public SignlinkNode next = null;
-    public Interface2 anInterface2_732;
     public Thread signLinkThread;
     public String cachePath = null;
     public SizedAccessFile cacheDataAccessFile;
@@ -92,8 +88,6 @@ public class Signlink implements Runnable {
         } catch(InterruptedException interruptedexception) {
             /* empty */
         }
-        if(aRunnable_Impl1_727 != null)
-            aRunnable_Impl1_727.method1((byte) -102);
         if(cacheDataAccessFile != null) {
             try {
                 cacheDataAccessFile.close();
@@ -124,12 +118,6 @@ public class Signlink implements Runnable {
     public SignlinkNode method386(Class[] argumentTypes, String functionName, Class functionType) {
         return putNode(0, 9, new Object[]{functionType, functionName, argumentTypes});
 
-    }
-
-    public Interface2 method387(int arg0) {
-        if(arg0 != -25100)
-            return null;
-        return anInterface2_732;
     }
 
     public SignlinkNode addType4Node(URL url) {
@@ -171,10 +159,6 @@ public class Signlink implements Runnable {
         } catch(Exception exception) {
             /* empty */
         }
-    }
-
-    public Runnable_Impl1 method391() {
-        return aRunnable_Impl1_727;
     }
 
     public void run() {

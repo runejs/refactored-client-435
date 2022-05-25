@@ -10,7 +10,6 @@ import java.io.*;
 
 public class Class55 {
     public static int mouseInvInterfaceIndex = 0;
-    public static Class48 aClass48_1289;
     public static volatile int eventClickX = 0;
     public static int currentHoveredChatboxWidgetChildId = -1;
     public static int anInt1299 = 2301979;
@@ -66,22 +65,6 @@ public class Class55 {
         return class40_sub5_sub15;
     }
 
-
-    public static int method963(int arg0, byte arg1, int arg2) {
-        if(arg0 > arg2) {
-            int i = arg2;
-            arg2 = arg0;
-            arg0 = i;
-        }
-        if(arg1 != -62)
-            aClass48_1289 = null;
-        int i;
-        for(/**/; arg0 != 0; arg0 = i) {
-            i = arg2 % arg0;
-            arg2 = arg0;
-        }
-        return arg2;
-    }
 
     public static void drawTabGraphics() {
         try {

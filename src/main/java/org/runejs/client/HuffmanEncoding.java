@@ -112,7 +112,7 @@ public class HuffmanEncoding {
                 if (actorDefinition.combatLevel != 0) {
                     class1 = class1 + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.aClass1_569 + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthasis;
                 }
-                if (Class8.itemSelected == 1) {
+                if (MovedStatics.itemSelected == 1) {
                     MovedStatics.addActionRow(English.use, index, x, y, 49, Native.aClass1_3295 + Native.toYellow + class1);
                 } else if (Main.widgetSelected == 1) {
                     if ((0x2 & ItemDefinition.selectedMask) == 2) {
@@ -218,18 +218,7 @@ public class HuffmanEncoding {
         if (arg2 != 21) {
             ChatBox.chatTypes = null;
         }
-        return Class48.method927(i_13_, arg0, true, i);
-    }
-
-    public static void method1030(byte arg0) {
-        if (arg0 < 123) {
-            method1030((byte) -24);
-        }
-        for (Class40_Sub2 class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method909(-4)) {
-            if (class40_sub2.gameObjectDefinition != null) {
-                class40_sub2.method528();
-            }
-        }
+        return MovedStatics.method927(i_13_, arg0, true, i);
     }
 
     public int method1023(byte[] arg0, int arg1, int arg2, byte[] arg3, int arg4, int arg5) {

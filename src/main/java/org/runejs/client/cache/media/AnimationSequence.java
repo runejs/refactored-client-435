@@ -57,7 +57,7 @@ public class AnimationSequence extends CachedNode {
             for(int i = 0; i < 4; i++) {
                 for(int i_3_ = 0; i_3_ < 64; i_3_++) {
                     for(int i_4_ = 0; i_4_ < 64; i_4_++)
-                        Class48.method922(i_3_ + arg4, 0, class40_sub1, i_4_ + arg5, arg6, arg1, i);
+                        MovedStatics.method922(i_3_ + arg4, 0, class40_sub1, i_4_ + arg5, arg6, arg1, i);
                 }
             }
         }

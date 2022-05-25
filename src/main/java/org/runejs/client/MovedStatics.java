@@ -2,8 +2,10 @@ package org.runejs.client;
 
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
+import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
+import org.runejs.client.frame.console.Console;
 import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
@@ -17,11 +19,13 @@ import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.IndexedImage;
+import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer3D;
+import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.net.ISAAC;
@@ -31,6 +35,9 @@ import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.util.CollisionMap;
+import org.runejs.client.sound.MusicSystem;
+import org.runejs.client.sound.SoundSystem;
+import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.SignlinkNode;
 import org.runejs.client.util.TextUtils;
@@ -43,6 +50,7 @@ import java.awt.*;
 import java.io.DataInputStream;
 import java.net.URL;
 import java.text.MessageFormat;
+import java.util.Calendar;
 
 public class MovedStatics {
 
@@ -51,7 +59,6 @@ public class MovedStatics {
     public static ProducingGraphicsBuffer tabPieceUpperRight;
     public static boolean aBoolean1444 = false;
     public static int[] anIntArray1445;
-    public static LinkedList aLinkedList_2268 = new LinkedList();
     public static ProducingGraphicsBuffer chatboxRight;
     public static int crossY = 0;
     public static int anInt2280 = 0;
@@ -65,7 +72,6 @@ public class MovedStatics {
     public static int pulseCycle = 0;
     public static int anInt938 = 500;
     public static int loginScreenFocus = 0;
-    public static int anInt2081;
     public static boolean aBoolean2083 = false;
     public static ProducingGraphicsBuffer tabImageProducer;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_549;
@@ -78,12 +84,10 @@ public class MovedStatics {
     public static int anInt175 = 0;
     public static int[] anIntArray178;
     public static int anInt188;
-    public static Class22 aClass22_189;
     public static int anInt194;
     public static int anInt195 = 1;
     public static int[] chatboxLineOffsets;
     public static int anInt199 = 0;
-    public static int anInt200 = 127;
     public static volatile boolean aBoolean1575 = false;
     public static CacheArchive aCacheArchive_1577;
     public static int[] anIntArray1579;
@@ -97,17 +101,14 @@ public class MovedStatics {
     public static IndexedImage tabBottomBack;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array215;
     public static NodeCache modelCache = new NodeCache(260);
-    public static int anInt255;
     public static boolean showChatPanelRedrawnText = false;
     public static int[][][] anIntArrayArrayArray262;
-    public static int anInt1806;
     public static int lastContinueTextWidgetId = -1;
     public static GameSocket gameServerSocket;
     public static int[][][] tile_height = new int[4][105][105];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2105;
     public static int[] anIntArray2106 = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
     public static int secondaryCameraVertical = 0;
-    public static int anInt2110;
     public static int[] anIntArray2113 = new int[128];
     public static GameInterface aGameInterface_2116;
     public static int anInt2118 = 0;
@@ -163,11 +164,11 @@ public class MovedStatics {
             anIntArray1445 = null;
             Class40_Sub5_Sub15.loginScreenBox = null;
             Renderable.anIntArray2865 = null;
-            Class8.flameLeftBackground = null;
+            MovedStatics.flameLeftBackground = null;
             Class39.aProducingGraphicsBuffer_907 = null;
             GameObjectDefinition.aProducingGraphicsBuffer_2524 = null;
             Class39.aClass40_Sub5_Sub14_Sub4_918 = null;
-            Class22.aClass40_Sub5_Sub14_Sub2Array535 = null;
+            MovedStatics.aClass40_Sub5_Sub14_Sub2Array535 = null;
             Class40_Sub5_Sub17_Sub6.anIntArray3248 = null;
             MovedStatics.loginBoxGraphics = null;
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = null;
@@ -175,7 +176,7 @@ public class MovedStatics {
             KeyFocusListener.aProducingGraphicsBuffer_1285 = null;
             Class17.aProducingGraphicsBuffer_463 = null;
             anIntArray1013 = null;
-            method405(10);
+            MusicSystem.method405(10);
             GameShell.method19(true);
             ISAAC.aBoolean512 = false;
         }
@@ -183,10 +184,8 @@ public class MovedStatics {
 
     public static int[] menuActionTypes = new int[500];
     public static ProducingGraphicsBuffer loginBoxGraphics;
-    public static int[] anIntArray889 = new int[128];
     public static int anInt892;
     public static boolean showSidePanelRedrawnText = false;
-    public static int[] anIntArray1916 = new int[50];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1919;
     public static int anInt1923 = 0;
 
@@ -227,26 +226,6 @@ public class MovedStatics {
             }
             if (arg0 != 9767)
                 anInt1923 = 48;
-        }
-    }
-
-    public static boolean method446(Signlink arg0, int arg1, boolean arg2, byte arg3) {
-        if (arg3 != 30)
-            Pathfinding.doWalkTo(47, -7, 96, -97, -111, true, -110, 57, -36, -84, -42);
-        if (!Class39.method452(arg0, arg2))
-            return false;
-        if (arg1 > 0)
-            RSString.aClass9_1684 = new NodeCache(arg1);
-        return true;
-    }
-
-    public static void method450(byte arg0) {
-        if (Player.headIconDrawType == 2) {
-            if (arg0 >= -28)
-                method445(-128);
-            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -baseX << 7) + Landscape.anInt1170, 4976905);
-            if (ISAAC.anInt522 > -1 && pulseCycle % 20 < 10)
-                aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
         }
     }
 
@@ -355,8 +334,8 @@ public class MovedStatics {
         }
         if (arg0 != 256)
             anInt2280 = 44;
-        int i = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, Class40_Sub5_Sub6.cameraY);
-        if (i + -SceneCluster.cameraZ < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][Class12.cameraX >> 7][Class40_Sub5_Sub6.cameraY >> 7] & 0x4) != 0)
+        int i = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, MovedStatics.cameraY);
+        if (i + -SceneCluster.cameraZ < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][Class12.cameraX >> 7][MovedStatics.cameraY >> 7] & 0x4) != 0)
             return Player.worldLevel;
         return 3;
     }
@@ -406,15 +385,6 @@ public class MovedStatics {
             tile_height[arg1][arg3][arg0] = tile_height[arg1][arg3][-1 + arg0];
         else if (arg3 > 0 && arg0 > 0 && tile_height[arg1][arg3 + -1][-1 + arg0] != 0)
             tile_height[arg1][arg3][arg0] = tile_height[arg1][-1 + arg3][arg0 - 1];
-    }
-
-    public static void method456(int arg0) {
-        if (Class24.method340()) {
-            if (Class26.aBoolean618)
-                OverlayDefinition.anInt2342 = arg0;
-            else
-                method651(22741, arg0);
-        }
     }
 
     public static boolean method459(int arg0, int arg1, byte arg2) {
@@ -614,7 +584,7 @@ public class MovedStatics {
     }
 
     public static void method188() {
-        Class40_Sub5_Sub6.aClass9_2439.clear();
+        MovedStatics.aClass9_2439.clear();
         aClass9_998.clear();
     }
 
@@ -653,7 +623,7 @@ public class MovedStatics {
         if (RSRuntimeException.anInt1641 > Landscape.anIntArray1168.length) {
             RSRuntimeException.anInt1641 -= Landscape.anIntArray1168.length;
             int i_9_ = (int) (12.0 * Math.random());
-            FramemapDefinition.method879(Class22.aClass40_Sub5_Sub14_Sub2Array535[i_9_]);
+            FramemapDefinition.method879(MovedStatics.aClass40_Sub5_Sub14_Sub2Array535[i_9_]);
         }
         for (int i_10_ = 1; i_10_ < -1 + i; i_10_++) {
             for (int i_11_ = 1; i_11_ < 127; i_11_++) {
@@ -667,14 +637,14 @@ public class MovedStatics {
         for (int i_14_ = 0; i_14_ < i + -1; i_14_++)
             Class17.anIntArray466[i_14_] = Class17.anIntArray466[i_14_ + 1];
         Class17.anIntArray466[i - arg0] = (int) (16.0 * Math.sin((double) pulseCycle / 14.0) + 14.0 * Math.sin((double) pulseCycle / 15.0) + 12.0 * Math.sin((double) pulseCycle / 16.0));
-        if (Class40_Sub5_Sub6.anInt2452 > 0)
-            Class40_Sub5_Sub6.anInt2452 -= 4;
+        if (MovedStatics.anInt2452 > 0)
+            MovedStatics.anInt2452 -= 4;
         if (IdentityKit.anInt2613 > 0)
             IdentityKit.anInt2613 -= 4;
-        if (Class40_Sub5_Sub6.anInt2452 == 0 && IdentityKit.anInt2613 == 0) {
+        if (MovedStatics.anInt2452 == 0 && IdentityKit.anInt2613 == 0) {
             int i_15_ = (int) (2000.0 * Math.random());
             if (i_15_ == 0)
-                Class40_Sub5_Sub6.anInt2452 = 1024;
+                MovedStatics.anInt2452 = 1024;
             if (i_15_ == 1)
                 IdentityKit.anInt2613 = 1024;
         }
@@ -856,7 +826,7 @@ public class MovedStatics {
 
     public static void method1013() {
         int lasthash = -1;
-        if (Class8.itemSelected == 0 && Main.widgetSelected == 0) {
+        if (MovedStatics.itemSelected == 0 && Main.widgetSelected == 0) {
             String tileCoords = "";
             if (Configuration.DEBUG_CONTEXT) {
                 tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
@@ -879,7 +849,7 @@ public class MovedStatics {
                         gameObjectDefinition = gameObjectDefinition.getChildDefinition();
                     if (gameObjectDefinition == null)
                         continue;
-                    if (Class8.itemSelected == 1) {
+                    if (MovedStatics.itemSelected == 1) {
                         addActionRow(English.use, hash, x, y, 5, Native.aClass1_3295 + Native.toCyan + gameObjectDefinition.name);
                     } else if (Main.widgetSelected != 1) {
                         String[] options = gameObjectDefinition.actions;
@@ -965,7 +935,7 @@ public class MovedStatics {
                     if (itemList != null) {
                         for (Item item = (Item) itemList.last((byte) -95); item != null; item = (Item) itemList.previous(4)) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
-                            if (Class8.itemSelected == 1) {
+                            if (MovedStatics.itemSelected == 1) {
                                 addActionRow(English.use, item.itemId, x, y, 47, Native.aClass1_3295 + Native.toLightRed + itemDefinition.name);
                             } else if (Main.widgetSelected != 1) {
                                 String[] class1s = itemDefinition.groundOptions;
@@ -1110,18 +1080,6 @@ public class MovedStatics {
         }
     }
 
-    public static synchronized void method405(int arg1) {
-        if(Class24.method340()) {
-            method557(arg1);
-            Class22_Sub1.musicCacheArchive = null;
-            Class26.aBoolean618 = false;
-        }
-    }
-
-    public static void method557(int arg0) {
-        method886(0, 0, false, null, arg0);
-    }
-
     public static int method884(int arg0, int arg1) {
         int i = 57 * arg1 + arg0;
         i ^= i << 13;
@@ -1131,35 +1089,9 @@ public class MovedStatics {
 
     public static void method885(CacheArchive arg0, boolean arg1, CacheArchive arg2) {
         IdentityKit.membersServer = arg1;
-        Class8.aCacheArchive_284 = arg2;
+        MovedStatics.aCacheArchive_284 = arg2;
         Class26.aCacheArchive_632 = arg0;
         ItemDefinition.count = Class26.aCacheArchive_632.fileLength(10);
-    }
-
-    public static void method886(int arg0, int arg1, boolean arg2, byte[] arg3, int arg4) {
-        if(arg0 == 0 && aClass22_189 != null) {
-            if(MouseHandler.anInt1450 < 0) {
-                if(RSCanvas.anInt54 != 0) {
-                    PacketBuffer.anInt2258 = arg1;
-                    Player.aByteArray3270 = arg3;
-                    PlayerAppearance.aBoolean687 = arg2;
-                } else
-                    RSString.method56(arg2, arg3, arg1);
-            } else {
-                Buffer.anInt1982 = arg4;
-                if(MouseHandler.anInt1450 != 0) {
-                    int i = Class29.method372(arg0 ^ 0x60, MouseHandler.anInt1450);
-                    i -= Class39.anInt909;
-                    RSCanvas.anInt54 = (i + 3600) / arg4;
-                    if(RSCanvas.anInt54 < 1)
-                        RSCanvas.anInt54 = 1;
-                } else
-                    RSCanvas.anInt54 = 1;
-                PacketBuffer.anInt2258 = arg1;
-                Player.aByteArray3270 = arg3;
-                PlayerAppearance.aBoolean687 = arg2;
-            }
-        }
     }
 
     public static int method888(int arg0, byte arg1, int arg2) {
@@ -1191,20 +1123,6 @@ public class MovedStatics {
         LinkedList.anInt1073 = arg1;
     }
 
-    public static void method651(int arg0, int arg1) {
-        if(aClass22_189 != null) {
-            if(RSCanvas.anInt54 != 0) {
-                if(Player.aByteArray3270 != null)
-                    PacketBuffer.anInt2258 = arg1;
-            } else if(MouseHandler.anInt1450 >= 0) {
-                MouseHandler.anInt1450 = arg1;
-                aClass22_189.method304((byte) -111, arg1, 0);
-            }
-            if(arg0 != 22741)
-                method652();
-        }
-    }
-
     public static void method652() {
         for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
             if(class40_sub3.anInt2031 > 0)
@@ -1228,4 +1146,908 @@ public class MovedStatics {
             }
         }
     }
+
+	public static void logout() {
+	    if(gameServerSocket != null) {
+	        gameServerSocket.kill();
+	        gameServerSocket = null;
+	    }
+	    RSCanvas.clearCaches();
+	    Npc.currentScene.initToNull();
+	    int i = 0;
+	    for(/**/; i < 4; i++)
+	        Landscape.currentCollisionMap[i].reset();
+	    System.gc();
+	    MusicSystem.method405(10);
+	    MusicSystem.songTimeout = 0;
+	    MusicSystem.currentSongId = -1;
+	    SoundSystem.clearObjectSounds();
+	    processGameStatus(10);
+	}
+
+	public static ImageRGB method927(int arg0, CacheArchive arg1, boolean arg2, int arg3) {
+	    if(!ImageRGB.spriteExists(arg0, arg3, arg1))
+	        return null;
+	    if(!arg2)
+	        MovedStatics.method922(3, -92, null, -119, -82, -28, -32);
+	    return ActorDefinition.method578();
+	}
+
+	public static void method922(int arg0, int arg1, Buffer arg2, int arg4, int arg5, int arg6, int arg7) {
+	    if(arg0 >= 0 && arg0 < 104 && arg4 >= 0 && arg4 < 104) {
+	        OverlayDefinition.tile_flags[arg7][arg0][arg4] = (byte) 0;
+	        for(; ; ) {
+	            int i = arg2.getUnsignedByte();
+	            if(i == 0) {
+	                if(arg7 == 0)
+	                    tile_height[0][arg0][arg4] = -method888(arg6 + arg0 + 932731, (byte) -45, arg5 + 556238 + arg4) * 8;
+	                else
+	                    tile_height[arg7][arg0][arg4] = -240 + tile_height[arg7 + -1][arg0][arg4];
+	                break;
+	            }
+	            if(i == 1) {
+	                int i_0_ = arg2.getUnsignedByte();
+	                if(i_0_ == 1)
+	                    i_0_ = 0;
+	                if(arg7 != 0)
+	                    tile_height[arg7][arg0][arg4] = tile_height[-1 + arg7][arg0][arg4] + -(8 * i_0_);
+	                else
+	                    tile_height[0][arg0][arg4] = 8 * -i_0_;
+	                break;
+	            }
+	            if(i <= 49) {
+	                MouseHandler.tile_overlayids[arg7][arg0][arg4] = arg2.getByte();
+	                OverlayDefinition.tile_underlay_path[arg7][arg0][arg4] = (byte) ((i + -2) / 4);
+	                Class35.tile_overlay_rotation[arg7][arg0][arg4] = (byte) BitUtils.bitWiseAND(arg1 + -2 + i, 3);
+	            } else if(i <= 81)
+	                OverlayDefinition.tile_flags[arg7][arg0][arg4] = (byte) (-49 + i);
+	            else
+	                tile_underlayids[arg7][arg0][arg4] = (byte) (-81 + i);
+	        }
+	    } else {
+	        for(; ; ) {
+	            int i = arg2.getUnsignedByte();
+	            if(i == 0)
+	                break;
+	            if(i == 1) {
+	                arg2.getUnsignedByte();
+	                break;
+	            }
+	            if(i <= 49)
+	                arg2.getUnsignedByte();
+	        }
+	    }
+	}
+
+	// Area IDs:
+	// 0 = Game area (the area that renders in 3D)
+	// 1 = Tab area (the widgets that display within the tab area)
+	// 2 = Chat area (the chat itself, as well as all sorts of dialogues and anything that renders over the chat)
+	public static void handleInterfaceActions(int areaId, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, GameInterface[] gameInterfaces, int parentId, int scrollPosition, int scrollWidth) {
+	    // Only try to handle actions if mouse is within this widget's boundaries
+	    if(minX <= mouseX && mouseY >= minY && maxX > mouseX && maxY > mouseY) {
+	        for(int i = 0; gameInterfaces.length > i; i++) {
+	            GameInterface gameInterface = gameInterfaces[i];
+	            if(gameInterface != null && parentId == gameInterface.parentId) {
+	                int i_1_ = gameInterface.currentY - (-minY + scrollPosition);
+	                int i_2_ = -scrollWidth + gameInterface.currentX + minX;
+	                if(gameInterface.type == GameInterfaceType.IF1_TOOLTIP && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_)
+	                    Item.anInt3065 = i;
+	                if((gameInterface.hoveredSiblingId >= 0 || gameInterface.hoveredTextColor != 0) && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_) {
+	                    if(gameInterface.hoveredSiblingId >= 0)
+	                        OverlayDefinition.hoveredWidgetChildId = gameInterface.hoveredSiblingId;
+	                    else
+	                        OverlayDefinition.hoveredWidgetChildId = i;
+	                }
+	                if(gameInterface.type == GameInterfaceType.LAYER) {
+	                    if(!gameInterface.isHidden || Class29.isHovering(areaId, i) || PacketBuffer.hiddenButtonTest) {
+	                        handleInterfaceActions(areaId, mouseX, mouseY, i_2_, i_1_, i_2_ + gameInterface.originalWidth, i_1_ + gameInterface.originalHeight, gameInterfaces, i, gameInterface.scrollPosition, gameInterface.scrollWidth);
+	                        if(gameInterface.children != null)
+	                            handleInterfaceActions(areaId, mouseX, mouseY, i_2_, i_1_, gameInterface.originalWidth + i_2_, i_1_ + gameInterface.originalHeight, gameInterface.children, gameInterface.id, gameInterface.scrollPosition, gameInterface.scrollWidth);
+	                        if(gameInterface.originalHeight < gameInterface.scrollHeight)
+	                            GameInterface.scrollInterface(gameInterface.originalHeight, mouseY, mouseX, gameInterface.scrollHeight, gameInterface, gameInterface.originalWidth + i_2_, areaId, i_1_);
+	                    }
+	                } else {
+	                    if (Configuration.DEBUG_WIDGETS && gameInterface.type != GameInterfaceType.IF1_TOOLTIP && i_2_ <= mouseX && i_1_ <= mouseY && gameInterface.originalWidth + i_2_ > mouseX && gameInterface.originalHeight + i_1_ > mouseY) {
+	                        GenericTile.hoveredWidgetId = gameInterface.id;
+	                    }
+	
+	                    if(gameInterface.actionType == 1 && i_2_ <= mouseX && i_1_ <= mouseY && gameInterface.originalWidth + i_2_ > mouseX && gameInterface.originalHeight + i_1_ > mouseY) {
+	                        boolean bool = false;
+	                        if(gameInterface.contentType != 0)
+	                            bool = ProducingGraphicsBuffer_Sub1.method1051(300, gameInterface);
+	                        if(!bool) {
+	                            addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 42, "");
+	                        }
+	                    }
+	                    if(gameInterface.actionType == 2 && Main.widgetSelected == 0 && mouseX >= i_2_ && mouseY >= i_1_ && mouseX < gameInterface.originalWidth + i_2_ && mouseY < i_1_ + gameInterface.originalHeight) {
+	                        addActionRow(gameInterface.targetVerb, 0, 0, gameInterface.id, 33, Native.green + gameInterface.spellName);
+	                    }
+	                    if(gameInterface.actionType == 3 && mouseX >= i_2_ && mouseY >= i_1_ && i_2_ + gameInterface.originalWidth > mouseX && mouseY < i_1_ + gameInterface.originalHeight) {
+	                        int i_3_;
+	                        if(areaId != 3)
+	                            i_3_ = 9;
+	                        else
+	                            i_3_ = 40;
+	                        addActionRow(English.close, 0, 0, gameInterface.id, i_3_, "");
+	                    }
+	                    if(gameInterface.actionType == 4 && mouseX >= i_2_ && i_1_ <= mouseY && mouseX < gameInterface.originalWidth + i_2_ && gameInterface.originalHeight + i_1_ > mouseY) {
+	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 23, "");
+	                    }
+	                    if(gameInterface.actionType == 5 && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && i_1_ + gameInterface.originalHeight > mouseY) {
+	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 57, "");
+	                    }
+	                    if(gameInterface.actionType == 6 && lastContinueTextWidgetId == -1 && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_) {
+	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 54, "");
+	                    }
+	
+	                    if(gameInterface.type == GameInterfaceType.INVENTORY) {
+	                        int i_4_ = 0;
+	                        for(int i_5_ = 0; i_5_ < gameInterface.originalHeight; i_5_++) {
+	                            for(int i_6_ = 0; i_6_ < gameInterface.originalWidth; i_6_++) {
+	                                int i_7_ = i_6_ * (gameInterface.itemSpritePadsX + 32) + i_2_;
+	                                int i_8_ = i_1_ + (32 + gameInterface.itemSpritePadsY) * i_5_;
+	                                if(i_4_ < 20) {
+	                                    i_7_ += gameInterface.images[i_4_];
+	                                    i_8_ += gameInterface.imageX[i_4_];
+	                                }
+	                                if(mouseX >= i_7_ && i_8_ <= mouseY && i_7_ + 32 > mouseX && mouseY < 32 + i_8_) {
+	                                    RSRuntimeException.lastActiveInvInterface = gameInterface.id;
+	                                    Class55.mouseInvInterfaceIndex = i_4_;
+	                                    if(gameInterface.items[i_4_] > 0) {
+	                                        ItemDefinition itemDefinition = ItemDefinition.forId(-1 + gameInterface.items[i_4_], 10);
+	                                        if(MovedStatics.itemSelected != 1 || !gameInterface.isInventory) {
+	                                            if(Main.widgetSelected == 1 && gameInterface.isInventory) {
+	                                                if((ItemDefinition.selectedMask & 0x10) == 16) {
+	                                                    addActionRow(Native.aClass1_1918, itemDefinition.id, i_4_, gameInterface.id, 37, Native.aClass1_611 + Native.toLightRed + itemDefinition.name);
+	                                                }
+	                                            } else {
+	                                                String[] class1s = itemDefinition.interfaceOptions;
+	                                                if(Class60.aBoolean1402)
+	                                                    class1s = method968(class1s);
+	                                                if(gameInterface.isInventory) {
+	                                                    for(int i_9_ = 4; i_9_ >= 3; i_9_--) {
+	                                                        if(class1s != null && class1s[i_9_] != null) {
+	                                                            int i_10_;
+	                                                            if(i_9_ != 3)
+	                                                                i_10_ = 11;
+	                                                            else
+	                                                                i_10_ = 43;
+	                                                            addActionRow(class1s[i_9_], itemDefinition.id, i_4_, gameInterface.id, i_10_, Native.lightRed + itemDefinition.name);
+	                                                        } else if(i_9_ == 4) {
+	                                                            addActionRow(English.drop, itemDefinition.id, i_4_, gameInterface.id, 11, Native.lightRed + itemDefinition.name);
+	                                                        }
+	                                                    }
+	                                                }
+	                                                if(gameInterface.itemUsable) {
+	                                                    addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, 19, Native.lightRed + itemDefinition.name);
+	                                                }
+	                                                if(gameInterface.isInventory && class1s != null) {
+	                                                    for(int i_11_ = 2; i_11_ >= 0; i_11_--) {
+	                                                        if(class1s[i_11_] != null) {
+	                                                            int i_12_ = 0;
+	                                                            if(i_11_ == 0)
+	                                                                i_12_ = 52;
+	                                                            if(i_11_ == 1)
+	                                                                i_12_ = 6;
+	                                                            if(i_11_ == 2)
+	                                                                i_12_ = 31;
+	                                                            addActionRow(class1s[i_11_], itemDefinition.id, i_4_, gameInterface.id, i_12_, Native.lightRed + itemDefinition.name);
+	                                                        }
+	                                                    }
+	                                                }
+	                                                class1s = gameInterface.configActions;
+	                                                if(Class60.aBoolean1402)
+	                                                    class1s = method968(class1s);
+	                                                if(class1s != null) {
+	                                                    for(int i_13_ = 4; i_13_ >= 0; i_13_--) {
+	                                                        if(class1s[i_13_] != null) {
+	                                                            int i_14_ = 0;
+	                                                            if(i_13_ == 0)
+	                                                                i_14_ = 53;
+	                                                            if(i_13_ == 1)
+	                                                                i_14_ = 25;
+	                                                            if(i_13_ == 2)
+	                                                                i_14_ = 55;
+	                                                            if(i_13_ == 3)
+	                                                                i_14_ = 48;
+	                                                            if(i_13_ == 4)
+	                                                                i_14_ = 24;
+	                                                            addActionRow(class1s[i_13_], itemDefinition.id, i_4_, gameInterface.id, i_14_, Native.lightRed + itemDefinition.name);
+	                                                        }
+	                                                    }
+	                                                }
+	                                                StringBuilder examineText = new StringBuilder();
+	                                                examineText.append(MessageFormat.format("<col=ff9040>{0}</col>", itemDefinition.name));
+	                                                if (Configuration.DEBUG_CONTEXT) {
+	                                                    examineText.append(" <col=00ff00>(</col>");
+	                                                    examineText.append(
+	                                                            MessageFormat.format("<col=ffffff>{0}</col>",
+	                                                                    Integer.toString(itemDefinition.id)
+	                                                            )
+	                                                    );
+	                                                    examineText.append("<col=00ff00>)</col>");
+	                                                }
+	                                                addActionRow(English.examine, itemDefinition.id, i_4_, gameInterface.id, 1006, examineText.toString());
+	                                            }
+	                                        } else if(ISAAC.anInt525 != gameInterface.id || i_4_ != LinkedList.anInt1061) {
+	                                            addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, 56, Native.aClass1_3295+ Native.toLightRed + itemDefinition.name);
+	                                        }
+	                                    }
+	                                }
+	                                i_4_++;
+	                            }
+	                        }
+	                    }
+	                    if(gameInterface.isNewInterfaceFormat && gameInterface.itemId != -1 && mouseX >= i_2_ && mouseY >= i_1_ && mouseX < gameInterface.originalWidth + i_2_ && mouseY < i_1_ + gameInterface.originalHeight) {
+	                        ItemDefinition itemDefinition = ItemDefinition.forId(gameInterface.itemId, 10);
+	                        if(gameInterface.isInventory) {
+	                            String[] class1s = itemDefinition.interfaceOptions;
+	                            if(Class60.aBoolean1402)
+	                                class1s = method968(class1s);
+	                            if(class1s == null || class1s[4] == null)
+	                                addActionRow(English.drop, itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 11, Native.lightRed +itemDefinition.name);
+	                            else
+	                                addActionRow(class1s[4], itemDefinition.id, gameInterface.anInt2736 + -1, gameInterface.id, 11, Native.lightRed + itemDefinition.name);
+	                            if(class1s != null && class1s[3] != null)
+	                                addActionRow(class1s[3], itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 43, Native.lightRed + itemDefinition.name);
+	                            if(class1s != null && class1s[2] != null)
+	                                addActionRow(class1s[2], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, 31, Native.lightRed + itemDefinition.name);
+	                            if(class1s != null && class1s[1] != null)
+	                                addActionRow(class1s[1], itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 6, Native.lightRed + itemDefinition.name);
+	                            if(class1s != null && class1s[0] != null)
+	                                addActionRow(class1s[0], itemDefinition.id, -1 + gameInterface.anInt2736, gameInterface.id, 52, Native.lightRed + itemDefinition.name);
+	                        }
+	                        if(gameInterface.id >= 0)
+	                            addActionRow(English.examine, itemDefinition.id, -1, gameInterface.id, 1007, Native.lightRed + itemDefinition.name);
+	                        else
+	                            addActionRow(English.examine, itemDefinition.id, gameInterface.id & 0x7fff, gameInterface.parentId, 1007, Native.lightRed + itemDefinition.name);
+	                    }
+	                    if(gameInterface.hasListeners && gameInterface.aClass1Array2661 != null && i_2_ <= mouseX && i_1_ <= mouseY && gameInterface.originalWidth + i_2_ > mouseX && mouseY < i_1_ + gameInterface.originalHeight) {
+	                        String class1 = "";
+	                        if(gameInterface.itemId != -1) {
+	                            ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(gameInterface.itemId, 0);
+	                            class1 = Native.lightRed + class40_sub5_sub16.name;
+	                        }
+	                        for(int i_15_ = gameInterface.aClass1Array2661.length - 1; i_15_ >= 0; i_15_--) {
+	                            if(gameInterface.aClass1Array2661[i_15_] != null) {
+	                                if(gameInterface.id < 0)
+	                                    addActionRow(gameInterface.aClass1Array2661[i_15_], i_15_ + 1, 0x7fff & gameInterface.id, gameInterface.parentId, 50, class1);
+	                                else
+	                                    addActionRow(gameInterface.aClass1Array2661[i_15_], i_15_ + 1, 0, gameInterface.id, 50, class1);
+	                            }
+	                        }
+	                    }
+	                }
+	            }
+	        }
+	    }
+	
+	}
+
+	public static int modifiedWidgetId = 0;
+	public static int cameraOffsetY = 0;
+
+	public static void method211() {
+	    ISAAC.aClass9_516.clear();
+	    MouseHandler.modelCache.clear();
+	    Buffer.rgbImageCache.clear();
+	
+	}
+
+	public static void setHighMemory() {
+	    VertexNormal.lowMemory = false;
+	    Scene.lowMemory = false;
+	
+	}
+
+	public static void animateNpcs() {
+	    for(int i = 0; i < Player.npcCount; i++) {
+	        int i_0_ = Player.npcIds[i];
+	        Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_0_];
+	        if(class40_sub5_sub17_sub4_sub2 != null)
+	            Class13.handleActorAnimation(class40_sub5_sub17_sub4_sub2);
+	    }
+	
+	}
+
+	public static int itemSelected = 0;
+	public static ProducingGraphicsBuffer flameLeftBackground;
+	public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array296;
+	public static FontMetrics fontMetrics;
+	public static CacheArchive aCacheArchive_284;
+	public static Calendar aCalendar279 = Calendar.getInstance();
+	public static int connectionStage = 0;
+	public static int anInt292 = 0;
+	public static int[] anIntArray297 = new int[5];
+
+	public static void drawMenu(int xOffSet, int yOffSet) {
+	    int height = CollisionMap.menuHeight;
+	    int width = VertexNormal.menuWidth;
+	    int offsetX = InteractiveObject.menuOffsetX - (xOffSet);
+	    int offsetY = (-yOffSet) + Main.menuOffsetY;
+	    int colour = 0x5d5447;
+	    ChatBox.redrawChatbox = true;
+	    GameInterface.redrawTabArea = true;
+	    Rasterizer.drawFilledRectangleAlpha(offsetX, offsetY, width, height, colour, 120);
+	    Rasterizer.drawFilledRectangle(1 + offsetX, 1 + offsetY, -2 + width, 16, 0);
+	    Rasterizer.drawUnfilledRectangle(offsetX + 1, 18 + offsetY, -2 + width, -19 + height, 0);
+	    TypeFace.fontBold.drawString(English.chooseOption, offsetX + 3, 14 + offsetY, colour);
+	    int x = Class13.mouseX - (xOffSet);
+	    int y = (-yOffSet) + Landscape.mouseY;
+	    if(Projectile.menuScreenArea == 0) {
+	        x -= 4;
+	        y -= 4;
+	    }
+	    if(Projectile.menuScreenArea == 1) {
+	        y -= 205;
+	        x -= 553;
+	    }
+	    if(Projectile.menuScreenArea == 2) {
+	        y -= 357;
+	        x -= 17;
+	    }
+	    for(int action = 0; action < ActorDefinition.menuActionRow; action++) {
+	        int actionY = 15 * (-action + ActorDefinition.menuActionRow + -1) + offsetY + 31;
+	        int actionColour = 16777215;
+	        if(x > offsetX && offsetX + width > x && y > -13 + actionY && actionY + 3 > y)
+	            actionColour = 16776960;
+	        TypeFace.fontBold.drawShadowedString(Landscape.menuActionTexts[action], offsetX + 3, actionY, true, actionColour);
+	    }
+	}
+
+	public static void manageTextInputs() {
+	    while(method416((byte) -125)) {
+	        if(ItemDefinition.anInt2854 == 28) {
+	            break;
+	        }
+	        if(Console.console.consoleOpen) {
+	            Console.console.handleInput();
+	            break;
+	        }
+	        if(GameInterface.gameScreenInterfaceId != -1 && HuffmanEncoding.reportAbuseInterfaceID == GameInterface.gameScreenInterfaceId) {
+	            if(ItemDefinition.anInt2854 == 85 && Native.reportedName.length() > 0)
+	                Native.reportedName = Native.reportedName.substring(0, -1 + Native.reportedName.length());
+	            if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && Native.reportedName.length() < 12)
+	                Native.reportedName = Native.reportedName + (char) Class59.anInt1388;
+	        } else if(ChatBox.messagePromptRaised) {
+	            if(ItemDefinition.anInt2854 == 85 && ChatBox.chatMessage.length() > 0) {
+	                ChatBox.chatMessage = ChatBox.chatMessage.substring(0, -1 + ChatBox.chatMessage.length());
+	                ChatBox.redrawChatbox = true;
+	            }
+	            if(Player.method793((byte) 120, Class59.anInt1388) && ChatBox.chatMessage.length() < 80) {
+	                ChatBox.chatMessage = ChatBox.chatMessage + (char) Class59.anInt1388;
+	                ChatBox.redrawChatbox = true;
+	            }
+	            if(ItemDefinition.anInt2854 == 84) {
+	                ChatBox.messagePromptRaised = false;
+	                ChatBox.redrawChatbox = true;
+	                if(Class37.anInt876 == 1) {
+	                    long l = RSString.nameToLong(ChatBox.chatMessage);
+	                    addFriend(l);
+	                }
+	                if(Class37.anInt876 == 2 && Player.friendsCount > 0) {
+	                    long l = RSString.nameToLong(ChatBox.chatMessage);
+	                    GameShell.method28(l);
+	                }
+	                if(Class37.anInt876 == 3 && ChatBox.chatMessage.length() > 0) {
+	                    SceneCluster.packetBuffer.putPacket(207);
+	                    SceneCluster.packetBuffer.putByte(0);
+	                    int i = SceneCluster.packetBuffer.currentPosition;
+	                    SceneCluster.packetBuffer.putLongBE(PacketBuffer.aLong2241);
+	                    ChatBox.filterInput();
+	                    ProducingGraphicsBuffer_Sub1.method1052(ChatBox.chatMessage, SceneCluster.packetBuffer);
+	                    SceneCluster.packetBuffer.finishVarByte(-i + SceneCluster.packetBuffer.currentPosition);
+	                    if(ChatBox.privateChatMode == 2) {
+	                        ChatBox.privateChatMode = 1;
+	                        redrawChatbox = true;
+	                        SceneCluster.packetBuffer.putPacket(32);
+	                        SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
+	                        SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
+	                        SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
+	                    }
+	                }
+	                if(Class37.anInt876 == 4 && anInt1008 < 100) {
+	                    long l = RSString.nameToLong(ChatBox.chatMessage);
+	                    Class17.method275(l);
+	                }
+	                if(Class37.anInt876 == 5 && anInt1008 > 0) {
+	                    long l = RSString.nameToLong(ChatBox.chatMessage);
+	                    method838(0, l);
+	                }
+	            }
+	        } else if(ChatBox.inputType == 1) {
+	            if(ItemDefinition.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
+	                ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 1);
+	                ChatBox.redrawChatbox = true;
+	            }
+	            if(HuffmanEncoding.method1027(Class59.anInt1388) && ChatBox.inputMessage.length() < 10) {
+	                ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
+	                ChatBox.redrawChatbox = true;
+	            }
+	            if(ItemDefinition.anInt2854 == 84) {
+	                if(ChatBox.inputMessage.length() > 0) {
+	                    int inputValue = 0;
+	                    try {
+	                        inputValue = Integer.parseInt(ChatBox.inputMessage);
+	                    } catch(Exception _ex) {
+	                        /* empty */
+	                    }
+	                    SceneCluster.packetBuffer.putPacket(238);
+	                    SceneCluster.packetBuffer.putIntBE(inputValue);
+	                }
+	                ChatBox.redrawChatbox = true;
+	                ChatBox.inputType = 0;
+	            }
+	        } else if(ChatBox.inputType == 2) {
+	            if(ItemDefinition.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
+	                ChatBox.inputMessage = ChatBox.inputMessage.substring(0, -1 + ChatBox.inputMessage.length());
+	                ChatBox.redrawChatbox = true;
+	            }
+	            if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && ChatBox.inputMessage.length() < 12) {
+	                ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
+	                ChatBox.redrawChatbox = true;
+	            }
+	            if(ItemDefinition.anInt2854 == 84) {
+	                if(ChatBox.inputMessage.length() > 0) {
+	                    SceneCluster.packetBuffer.putPacket(86);
+	                    SceneCluster.packetBuffer.putLongBE(RSString.nameToLong(ChatBox.inputMessage));
+	                }
+	                ChatBox.inputType = 0;
+	                ChatBox.redrawChatbox = true;
+	            }
+	        } else if(ChatBox.inputType == 3) {
+	            if(ItemDefinition.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
+	                ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 10);
+	                ChatBox.redrawChatbox = true;
+	            }
+	            if(Player.method793((byte) 122, Class59.anInt1388) && ChatBox.inputMessage.length() < 40) {
+	                ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
+	                ChatBox.redrawChatbox = true;
+	            }
+	        } else if(GameInterface.chatboxInterfaceId == -1 && GameInterface.fullscreenInterfaceId == -1) {
+	            if(ItemDefinition.anInt2854 == 85 && ChatBox.chatboxInput.length() > 0) {
+	                ChatBox.chatboxInput = ChatBox.chatboxInput.substring(0, ChatBox.chatboxInput.length() - 1);
+	                ChatBox.redrawChatbox = true;
+	            }
+	            if(Player.method793((byte) 124, Class59.anInt1388) && ChatBox.chatboxInput.length() < 80) {
+	                ChatBox.chatboxInput = ChatBox.chatboxInput + (char) Class59.anInt1388;
+	                ChatBox.redrawChatbox = true;
+	            }
+	            if(ItemDefinition.anInt2854 == 84 && ChatBox.chatboxInput.length() > 0) {
+	                if(InteractiveObject.playerRights > 1) {
+	                    if(ChatBox.chatboxInput.equals(English.commandClientDrop))
+	                        Class59.dropClient();
+	                    if(ChatBox.chatboxInput.equals(English.commandFpson)) {
+	                        InteractiveObject.showFps = true;
+	                        ChatBox.inputType = 3;
+	                    }
+	                    if(ChatBox.chatboxInput.startsWith("::region")) {
+	                        for(int qq = 0; qq < 469; qq++) {
+	                            if(GameInterface.decodeGameInterface(qq)) {
+	                                GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[qq];
+	                                for(int y = 0; gameInterfaces.length > y; y++) {
+	                                    GameInterface gameInterface = gameInterfaces[y];
+	                                    if(gameInterface.disabledText != null) {
+	                                        String text = gameInterface.disabledText.toString().toLowerCase();
+	                                        if(gameInterface.disabledText.toString().toLowerCase().contains("bank")) {
+	                                            System.out.println(qq + " contains " + text);
+	                                        }
+	                                    }
+	                                }
+	                            }
+	                        }
+	                    }
+	
+	                    if(ChatBox.chatboxInput.equals(Native.cmd_fpsoff))
+	                        InteractiveObject.showFps = false;
+	                    if(ChatBox.chatboxInput.equals(English.commandNoclip)) {
+	                        for(int i = 0; i < 4; i++) {
+	                            for(int i_9_ = 1; i_9_ < 103; i_9_++) {
+	                                for(int i_10_ = 1; i_10_ < 103; i_10_++)
+	                                    Landscape.currentCollisionMap[i].clippingData[i_9_][i_10_] = 0;
+	                            }
+	                        }
+	                    }
+	                    if(ChatBox.chatboxInput.equals(English.commandErrorTest) && Class44.modewhere == 2)
+	                        throw new RuntimeException();
+	                    if(ChatBox.chatboxInput.equals(Native.cmd_hiddenbuttontest))
+	                        PacketBuffer.hiddenButtonTest = true;
+	                }
+	                if(ChatBox.chatboxInput.startsWith(Native.cmd_prefix)) {
+	                    SceneCluster.packetBuffer.putPacket(248);
+	                    SceneCluster.packetBuffer.putByte(-1 + ChatBox.chatboxInput.length());
+	                    SceneCluster.packetBuffer.putString(ChatBox.chatboxInput.substring(2));
+	                } else {
+	                    int i = 0;
+	                    String class1 = ChatBox.chatboxInput.toLowerCase();
+	                    int i_11_ = 0;
+	                    if(class1.startsWith(English.effectYellow)) {
+	                        i_11_ = 0;
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectYellow.length());
+	                    } else if(class1.startsWith(English.effectRed)) {
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectRed.length());
+	                        i_11_ = 1;
+	                    } else if(class1.startsWith(English.effectGreen)) {
+	                        i_11_ = 2;
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectGreen.length());
+	                    } else if(class1.startsWith(English.effectCyan)) {
+	                        i_11_ = 3;
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectCyan.length());
+	                    } else if(class1.startsWith(English.effectPurple)) {
+	                        i_11_ = 4;
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectPurple.length());
+	                    } else if(class1.startsWith(English.effectWhite)) {
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectWhite.length());
+	                        i_11_ = 5;
+	                    } else if(class1.startsWith(Native.aClass1_1019)) {
+	                        i_11_ = 6;
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(Native.aClass1_1019.length());
+	                    } else if(class1.startsWith(English.effectFlash2)) {
+	                        i_11_ = 7;
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectFlash2.length());
+	                    } else if(class1.startsWith(English.effectFlash3)) {
+	                        i_11_ = 8;
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectFlash3.length());
+	                    } else if(class1.startsWith(English.effectGlow1)) {
+	                        i_11_ = 9;
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectGlow1.length());
+	                    } else if(class1.startsWith(English.effectGlow2)) {
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectGlow2.length());
+	                        i_11_ = 10;
+	                    } else if(class1.startsWith(English.effectGlow3)) {
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectGlow3.length());
+	                        i_11_ = 11;
+	                    }
+	                    class1 = ChatBox.chatboxInput.toLowerCase();
+	                    if(class1.startsWith(English.effectWave)) {
+	                        i = 1;
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectWave.length());
+	                    } else if(class1.startsWith(English.effectWave2)) {
+	                        i = 2;
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectWave2.length());
+	                    } else if(class1.startsWith(English.effectShake)) {
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectShake.length());
+	                        i = 3;
+	                    } else if(class1.startsWith(Native.aClass1_2438)) {
+	                        i = 4;
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(Native.aClass1_2438.length());
+	                    } else if(class1.startsWith(English.effectSlide)) {
+	                        i = 5;
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectSlide.length());
+	                    }
+	                    SceneCluster.packetBuffer.putPacket(75);
+	                    SceneCluster.packetBuffer.putByte(0);
+	                    int i_12_ = SceneCluster.packetBuffer.currentPosition;
+	                    SceneCluster.packetBuffer.putByte(i_11_);
+	                    SceneCluster.packetBuffer.putByte(i);
+	                    ChatBox.filterInput();
+	                    ProducingGraphicsBuffer_Sub1.method1052(ChatBox.chatboxInput, SceneCluster.packetBuffer);
+	                    SceneCluster.packetBuffer.finishVarByte(SceneCluster.packetBuffer.currentPosition + -i_12_);
+	                    if(ChatBox.publicChatMode == 2) {
+	                        redrawChatbox = true;
+	                        ChatBox.publicChatMode = 3;
+	                        SceneCluster.packetBuffer.putPacket(32);
+	                        SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
+	                        SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
+	                        SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
+	                    }
+	                }
+	                ChatBox.redrawChatbox = true;
+	                ChatBox.chatboxInput = "";
+	            }
+	        }
+	    }
+	
+	}
+
+	private static char VALID_CHARACTERS[] = {' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w',
+	'c', 'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8',
+	'9', ' ', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243',
+	'$', '%', '"', '[', ']'};
+
+	public static void method586(int arg0) {
+	    ISAAC.cachedActorDefinitions.clear();
+	    aClass9_1611.clear();
+	    if(arg0 <= 63)
+	        English.errorConnectingToServer = null;
+	}
+
+	public static NodeCache aClass9_2439 = new NodeCache(64);
+	public static int currentCameraPositionH;
+	public static int anInt2452 = 0;
+	public static int loadingPercent = 0;
+	public static int cameraY;
+
+	public static void method309(int varPlayerIndex) {
+	    do {
+	        AnimationSequence.anInt2480 = pulseCycle;
+	        SoundSystem.setObjectSounds();
+	        int varPlayerType = VarPlayerDefinition.getDefinition(varPlayerIndex).type;
+	        if(varPlayerType != 0) {
+	            int varPlayerValue = VarPlayerDefinition.varPlayers[varPlayerIndex];
+	            if(varPlayerType == 1) {
+	                if(varPlayerValue == 1) {
+	                    Rasterizer3D.method711(0.9);
+	                    ((Class35) Rasterizer3D.anInterface3_2939).method424(0.9);
+	                }
+	                if(varPlayerValue == 2) {
+	                    Rasterizer3D.method711(0.8);
+	                    ((Class35) Rasterizer3D.anInterface3_2939).method424(0.8);
+	                }
+	                if(varPlayerValue == 3) {
+	                    Rasterizer3D.method711(0.7);
+	                    ((Class35) Rasterizer3D.anInterface3_2939).method424(0.7);
+	                }
+	                if(varPlayerValue == 4) {
+	                    Rasterizer3D.method711(0.6);
+	                    ((Class35) Rasterizer3D.anInterface3_2939).method424(0.6);
+	                }
+	                GameObject.clearImageCache();
+	                clearScreen = true;
+	            }
+	            if(varPlayerType == 3) {
+	                int i_22_ = 0;
+	                if(varPlayerValue == 0)
+	                    i_22_ = 255;
+	                if(varPlayerValue == 1)
+	                    i_22_ = 192;
+	                if(varPlayerValue == 2)
+	                    i_22_ = 128;
+	                if(varPlayerValue == 3)
+	                    i_22_ = 64;
+	                if(varPlayerValue == 4)
+	                    i_22_ = 0;
+	                if(i_22_ != MusicSystem.musicVolume) {
+	                    if(MusicSystem.musicVolume != 0 || MusicSystem.currentSongId == -1) {
+	                        if(i_22_ == 0) {
+	                            MusicSystem.method402(false);
+	                            MusicSystem.songTimeout = 0;
+	                        } else
+	                            MusicSystem.method456(i_22_);
+	                    } else {
+	                        MusicSystem.playMusicTrack(false, 0, MusicSystem.currentSongId, i_22_, 0, CacheArchive.musicCacheArchive);
+	                        MusicSystem.songTimeout = 0;
+	                    }
+	                    MusicSystem.musicVolume = i_22_;
+	                }
+	            }
+	            if(varPlayerType == 9)
+	                Class43.bankInsertMode = varPlayerValue;
+	            if(varPlayerType == 10) {
+	            	SoundSystem.updateAreaSoundEffectVolume(varPlayerValue);
+	            }
+	            if(varPlayerType == 8) {
+	                ChatBox.redrawChatbox = true;
+	                CollisionMap.anInt165 = varPlayerValue;
+	            }
+	            if(varPlayerType == 4) {
+	            	SoundSystem.updateSoundEffectVolume(varPlayerValue);
+	            }
+	            if(varPlayerType == 6)
+	                anInt2280 = varPlayerValue;
+	            if(varPlayerType != 5)
+	                break;
+	            ProducingGraphicsBuffer.oneMouseButton = varPlayerValue;
+	        }
+	
+	        break;
+	    } while(false);
+	}
+
+	public static String method307(Buffer arg0, int arg1, int arg2) {
+	    try {
+	        if(arg1 != -1)
+	            MovedStatics.aBooleanArray548 = null;
+	        int length = arg0.getSmart();
+	        if(length > arg2)
+	            length = arg2;
+	        byte[] chars = new byte[length];
+	        arg0.currentPosition += IdentityKit.aHuffmanEncoding_2590.method1023(arg0.buffer, length, 0, chars, arg0.currentPosition, -1);
+	        return new String(chars);
+	    } catch(Exception exception) {
+	        return English.cabbage;
+	    }
+	}
+
+	public static void method305() {
+	//        if(ScreenController.frameMode == ScreenMode.FIXED){
+	
+	            RSCanvas.chatBoxImageProducer.prepareRasterizer();
+	//        }
+	        Class44.chatboxBackgroundImage.drawImage(0, 0);
+	        chatboxLineOffsets = Rasterizer3D.setLineOffsets(chatboxLineOffsets);
+	    }
+
+	public static void method299(byte arg0, int arg1) {
+	    int[] is = minimapImage.pixels;
+	    int i = is.length;
+	    for(int i_0_ = 0; i > i_0_; i_0_++)
+	        is[i_0_] = 0;
+	    for(int i_1_ = 1; i_1_ < 103; i_1_++) {
+	        int i_2_ = 24628 + (-(512 * i_1_) + 52736) * 4;
+	        for(int i_3_ = 1; i_3_ < 103; i_3_++) {
+	            if((0x18 & OverlayDefinition.tile_flags[arg1][i_3_][i_1_]) == 0)
+	                Npc.currentScene.method96(is, i_2_, 512, arg1, i_3_, i_1_);
+	            if(arg1 < 3 && (OverlayDefinition.tile_flags[1 + arg1][i_3_][i_1_] & 0x8) != 0)
+	                Npc.currentScene.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
+	            i_2_ += 4;
+	        }
+	    }
+	    minimapImage.method723();
+	    int i_4_ = (-10 + (int) (Math.random() * 20.0) + 238 << 8) + (228 + (int) (Math.random() * 20.0) << 16) + 238 + (int) (20.0 * Math.random()) + -10;
+	    int i_5_ = -10 + (int) (20.0 * Math.random()) + 238 << 16;
+	    for(int i_6_ = 1; i_6_ < 103; i_6_++) {
+	        for(int i_7_ = 1; i_7_ < 103; i_7_++) {
+	            if((OverlayDefinition.tile_flags[arg1][i_7_][i_6_] & 0x18) == 0)
+	                Actor.method781(1850, arg1, i_7_, i_4_, i_5_, i_6_);
+	            if(arg1 < 3 && (0x8 & OverlayDefinition.tile_flags[1 + arg1][i_7_][i_6_]) != 0)
+	                Actor.method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
+	        }
+	    }
+	    GameObject.minimapHintCount = 0;
+	    if(arg0 < 24)
+	        Player.trackedPlayerAppearanceCache = null;
+	    for(int i_8_ = 0; i_8_ < 104; i_8_++) {
+	        for(int i_9_ = 0; i_9_ < 104; i_9_++) {
+	            int i_10_ = Npc.currentScene.getFloorDecorationHash(Player.worldLevel, i_8_, i_9_);
+	            if(i_10_ != 0) {
+	                i_10_ = 0x7fff & i_10_ >> 14;
+	                int i_11_ = GameObjectDefinition.getDefinition(i_10_).icon;
+	                if(i_11_ >= 0) {
+	                    int i_12_ = i_9_;
+	                    int i_13_ = i_8_;
+	                    if(i_11_ != 22 && i_11_ != 29 && i_11_ != 34 && i_11_ != 36 && i_11_ != 46 && i_11_ != 47 && i_11_ != 48) {
+	                        int[][] is_14_ = Landscape.currentCollisionMap[Player.worldLevel].clippingData;
+	                        for(int i_15_ = 0; i_15_ < 10; i_15_++) {
+	                            int i_16_ = (int) (Math.random() * 4.0);
+	                            if(i_16_ == 0 && i_13_ > 0 && i_13_ > -3 + i_8_ && (is_14_[-1 + i_13_][i_12_] & 0x1280108) == 0)
+	                                i_13_--;
+	                            if(i_16_ == 1 && i_13_ < 103 && i_13_ < i_8_ + 3 && (is_14_[i_13_ + 1][i_12_] & 0x1280180) == 0)
+	                                i_13_++;
+	                            if(i_16_ == 2 && i_12_ > 0 && i_12_ > -3 + i_9_ && (is_14_[i_13_][i_12_ - 1] & 0x1280102) == 0)
+	                                i_12_--;
+	                            if(i_16_ == 3 && i_12_ < 103 && 3 + i_9_ > i_12_ && (0x1280120 & is_14_[i_13_][1 + i_12_]) == 0)
+	                                i_12_++;
+	                        }
+	                    }
+	                    MouseHandler.minimapHint[GameObject.minimapHintCount] = aClass40_Sub5_Sub14_Sub4Array296[i_11_];
+	                    Actor.minimapHintX[GameObject.minimapHintCount] = i_13_;
+	                    LinkedList.minimapHintY[GameObject.minimapHintCount] = i_12_;
+	                    GameObject.minimapHintCount++;
+	                }
+	            }
+	        }
+	    }
+	}
+
+	public static boolean[] aBooleanArray548 = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, false, false};
+	public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array535;
+	public static int anInt537 = 0;
+	public static boolean membersWorld = false;
+	public static boolean accountFlagged = false;
+	public static int anInt545;
+	public static GameInterface aGameInterface_1887;
+	public static int duplicateClickCount = 0;
+
+	public static IndexedImage[] method315() {
+	    IndexedImage[] class40_sub5_sub14_sub2s = new IndexedImage[anInt2581];
+	    for(int i = 0; anInt2581 > i; i++) {
+	        IndexedImage class40_sub5_sub14_sub2 = class40_sub5_sub14_sub2s[i] = new IndexedImage();
+	        class40_sub5_sub14_sub2.maxWidth = ItemDefinition.anInt2846;
+	        class40_sub5_sub14_sub2.maxHeight = GameShell.anInt31;
+	        class40_sub5_sub14_sub2.xDrawOffset = Class57.anIntArray1347[i];
+	        class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[i];
+	        class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[i];
+	        class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[i];
+	        class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
+	        class40_sub5_sub14_sub2.imgPixels = GroundItemTile.aByteArrayArray1370[i];
+	    }
+	    ActorDefinition.method569();
+	    return class40_sub5_sub14_sub2s;
+	}
+
+	public static ImageRGB[] method319(byte arg0) {
+	    ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[anInt2581];
+	    if(arg0 != -62)
+	        return null;
+	    for(int i = 0; i < anInt2581; i++) {
+	        ImageRGB class40_sub5_sub14_sub4 = class40_sub5_sub14_sub4s[i] = new ImageRGB();
+	        class40_sub5_sub14_sub4.maxWidth = ItemDefinition.anInt2846;
+	        class40_sub5_sub14_sub4.maxHeight = GameShell.anInt31;
+	        class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[i];
+	        class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[i];
+	        class40_sub5_sub14_sub4.imageWidth = Class17.anIntArray456[i];
+	        class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[i];
+	        byte[] is = GroundItemTile.aByteArrayArray1370[i];
+	        int i_4_ = class40_sub5_sub14_sub4.imageHeight * class40_sub5_sub14_sub4.imageWidth;
+	        class40_sub5_sub14_sub4.pixels = new int[i_4_];
+	        for(int i_5_ = 0; i_5_ < i_4_; i_5_++)
+	            class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
+	    }
+	    ActorDefinition.method569();
+	    return class40_sub5_sub14_sub4s;
+	}
+
+	public static void method311(Component arg1) {
+	    arg1.removeKeyListener(Class59.keyFocusListener);
+	    arg1.removeFocusListener(Class59.keyFocusListener);
+	}
+
+	public static void method450(byte arg0) {
+	    if (Player.headIconDrawType == 2) {
+	        if (arg0 >= -28)
+	            method445(-128);
+	        MovedStatics.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -baseX << 7) + Landscape.anInt1170, 4976905);
+	        if (ISAAC.anInt522 > -1 && pulseCycle % 20 < 10)
+	            aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
+	    }
+	}
+
+	public static void method312(int arg0, int arg1, int arg2, int arg3) {
+	    if(arg2 < 128 || arg1 < 128 || arg2 > 13056 || arg1 > 13056) {
+	        Class44.anInt1048 = -1;
+	        ISAAC.anInt522 = -1;
+	    } else {
+	        int i = Class37.getFloorDrawHeight(Player.worldLevel, arg2, arg1) + -arg0;
+	        arg1 -= cameraY;
+	        i -= SceneCluster.cameraZ;
+	        int i_1_ = Model.COSINE[Class26.anInt627];
+	        int i_2_ = Model.SINE[Class26.anInt627];
+	        arg2 -= Class12.cameraX;
+	        int i_3_ = Model.SINE[ProducingGraphicsBuffer_Sub1.anInt2210];
+	        int i_4_ = Model.COSINE[ProducingGraphicsBuffer_Sub1.anInt2210];
+	        int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> 16;
+	        arg1 = i_4_ * arg1 - arg2 * i_3_ >> 16;
+	        if(arg3 != 4976905)
+	            English.password = null;
+	        arg2 = i_5_;
+	        i_5_ = i * i_1_ - arg1 * i_2_ >> 16;
+	        arg1 = arg1 * i_1_ + i * i_2_ >> 16;
+	        i = i_5_;
+	        if(arg1 < 50) {
+	            Class44.anInt1048 = -1;
+	            ISAAC.anInt522 = -1;
+	        } else {
+	            if(ScreenController.frameMode == ScreenMode.FIXED){
+	                ISAAC.anInt522 = 256 + (arg2 << 9) / arg1;
+	                Class44.anInt1048 = (i << 9) / arg1 + 167;
+	            } else {
+	                ISAAC.anInt522 = ScreenController.drawWidth/2 + (arg2 << 9) / arg1;
+	                Class44.anInt1048 = (i << 9) / arg1 +  ScreenController.drawHeight/2;
+	            }
+	
+	        }
+	    }
+	}
+
+	public static void method313() {
+	    for(int i = -1; Player.localPlayerCount > i; i++) {
+	        int i_6_;
+	        if(i == -1)
+	            i_6_ = 2047;
+	        else
+	            i_6_ = Player.trackedPlayerIndices[i];
+	        Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_6_];
+	        if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.anInt3078 > 0) {
+	            class40_sub5_sub17_sub4_sub1.anInt3078--;
+	            if(class40_sub5_sub17_sub4_sub1.anInt3078 == 0)
+	                class40_sub5_sub17_sub4_sub1.forcedChatMessage = null;
+	        }
+	    }
+	    for(int i_7_ = 0; i_7_ < Player.npcCount; i_7_++) {
+	        int i_8_ = Player.npcIds[i_7_];
+	        Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_8_];
+	        if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.anInt3078 > 0) {
+	            class40_sub5_sub17_sub4_sub2.anInt3078--;
+	            if(class40_sub5_sub17_sub4_sub2.anInt3078 == 0)
+	                class40_sub5_sub17_sub4_sub2.forcedChatMessage = null;
+	        }
+	    }
+	}
+
+	public static int anInt1856;
+	public static int[] anIntArray1847 = new int[2000];
+	public static int[] anIntArray1846 = new int[5];
+	public static long aLong1841;
 }

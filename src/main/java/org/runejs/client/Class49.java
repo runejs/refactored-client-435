@@ -9,7 +9,6 @@ import org.runejs.client.scene.SceneCluster;
 public class Class49 {
     public static volatile int anInt1147 = 0;
     public static CacheArchive aCacheArchive_1150;
-    public static Class40_Sub9_Sub1 aClass40_Sub9_Sub1_1152;
     public static int anInt1154;
 
     public static void setCameraPosition(int pitch, int x, int z, int yaw, int y, int ___pitch, int arg6) {
@@ -39,7 +38,7 @@ public class Class49 {
         SceneCluster.cameraZ = -zOffset + z;
         Class12.cameraX = -xOffset + x;
         Class26.anInt627 = pitch;
-        Class40_Sub5_Sub6.cameraY = y + -yOffset;
+        MovedStatics.cameraY = y + -yOffset;
     }
 
 

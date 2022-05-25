@@ -1,7 +1,6 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.def.ActorDefinition;
-import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.ImageRGB;
@@ -177,53 +176,10 @@ public class Class37 {
         MovedStatics.minimapBackgroundImage.drawImage(0, 0);
 
         if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && Projectile.menuScreenArea == 1) {
-            Class40_Sub5_Sub6.drawMenu(550, 4);
+            MovedStatics.drawMenu(550, 4);
         }
         ActorDefinition.drawMapBack();
 
-    }
-
-    public static void method436() {
-        for(Class40_Sub2 class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method909(-4)) {
-            if(class40_sub2.aClass40_Sub9_Sub2_2001 != null) {
-                Class49.aClass40_Sub9_Sub1_1152.method853(class40_sub2.aClass40_Sub9_Sub2_2001);
-                class40_sub2.aClass40_Sub9_Sub2_2001 = null;
-            }
-            if(class40_sub2.aClass40_Sub9_Sub2_2010 != null) {
-                Class49.aClass40_Sub9_Sub1_1152.method853(class40_sub2.aClass40_Sub9_Sub2_2010);
-                class40_sub2.aClass40_Sub9_Sub2_2010 = null;
-            }
-        }
-        MovedStatics.aLinkedList_2268.method906(0);
-    }
-
-    public static void method437(int arg0, boolean arg1, int arg2, int arg3, int arg4, GameObjectDefinition arg5) {
-        Class40_Sub2 class40_sub2 = new Class40_Sub2();
-        class40_sub2.anInt2000 = 128 * arg5.anInt2502;
-        if(!arg1)
-            method438(119, -54);
-        class40_sub2.anInt2002 = arg5.anInt2542;
-        class40_sub2.anIntArray2005 = arg5.anIntArray2523;
-        class40_sub2.anInt2012 = arg5.anInt2499;
-        int i = arg5.sizeX;
-        int i_17_ = arg5.sizeY;
-        class40_sub2.anInt1993 = arg2;
-        class40_sub2.anInt1994 = arg4 * 128;
-        if(arg3 == 1 || arg3 == 3) {
-            i = arg5.sizeY;
-            i_17_ = arg5.sizeX;
-        }
-        class40_sub2.anInt2003 = 128 * arg0;
-        class40_sub2.anInt2007 = (i_17_ + arg0) * 128;
-        class40_sub2.anInt2013 = (arg4 + i) * 128;
-        class40_sub2.anInt1997 = arg5.ambientSoundId;
-        if(arg5.childIds != null) {
-            class40_sub2.gameObjectDefinition = arg5;
-            class40_sub2.method528();
-        }
-        MovedStatics.aLinkedList_2268.pushBack(class40_sub2, -126);
-        if(class40_sub2.anIntArray2005 != null)
-            class40_sub2.anInt2014 = (int) ((double) (class40_sub2.anInt2002 - class40_sub2.anInt2012) * Math.random()) + class40_sub2.anInt2012;
     }
 
     public static boolean method438(int areaId, int arg1) {

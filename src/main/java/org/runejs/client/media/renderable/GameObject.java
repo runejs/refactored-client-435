@@ -100,7 +100,7 @@ public class GameObject extends Renderable {
             Graphics graphics = MouseHandler.gameCanvas.getGraphics();
             if(Class17.helveticaBold == null) {
                 Class17.helveticaBold = new Font("Helvetica", Font.BOLD, 13);
-                Class8.fontMetrics = MouseHandler.gameCanvas.getFontMetrics(Class17.helveticaBold);
+                MovedStatics.fontMetrics = MouseHandler.gameCanvas.getFontMetrics(Class17.helveticaBold);
             }
             if(MovedStatics.clearScreen) {
                 MovedStatics.clearScreen = false;
@@ -121,7 +121,7 @@ public class GameObject extends Renderable {
                 loadingBoxGraphics.fillRect(2 + 3 * percent, 2, 300 - 3 * percent, 30);
                 loadingBoxGraphics.setFont(Class17.helveticaBold);
                 loadingBoxGraphics.setColor(Color.white);
-                loadingBoxGraphics.drawString(desc, (304 - (Class8.fontMetrics.stringWidth(desc))) / 2, 22);
+                loadingBoxGraphics.drawString(desc, (304 - (MovedStatics.fontMetrics.stringWidth(desc))) / 2, 22);
                 graphics.drawImage(Class26.loadingBoxImage, Class12.width / 2 - 152, IdentityKit.height / 2 - 18, null);
             } catch(Exception exception) {
                 int centerWidth = Class12.width / 2 - 152;
@@ -134,7 +134,7 @@ public class GameObject extends Renderable {
                 graphics.fillRect(percent * 3 + 2 + centerWidth, 2 + centerHeight, 300 + -(3 * percent), 30);
                 graphics.setFont(Class17.helveticaBold);
                 graphics.setColor(Color.white);
-                graphics.drawString(desc, (304 - (Class8.fontMetrics.stringWidth(desc))) / 2+ centerWidth, 22 + centerHeight);
+                graphics.drawString(desc, (304 - (MovedStatics.fontMetrics.stringWidth(desc))) / 2+ centerWidth, 22 + centerHeight);
             }
         } catch(Exception exception) {
             MouseHandler.gameCanvas.repaint();

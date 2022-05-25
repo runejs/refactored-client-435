@@ -20,16 +20,13 @@ import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.util.CollisionMap;
-import org.runejs.client.util.Signlink;
 import org.runejs.client.*;
 
 import java.awt.*;
 import java.awt.event.*;
 
 public class MouseHandler implements MouseListener, MouseMotionListener, FocusListener, MouseWheelListener {
-    public static int anInt1450 = -1;
     public static NodeCache modelCache = new NodeCache(50);
-    public static int currentSongId = -1;
     public static ImageRGB[] minimapHint = new ImageRGB[1000];
     public static int currentTickSample;
     public static Canvas gameCanvas;
@@ -119,7 +116,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                         Renderable.anInt2869 = Class57.clickX;
                         Class40_Sub5_Sub15.lastItemDragged = false;
                         SceneTile.activeInterfaceType = 2;
-                        Class48.modifiedWidgetId = id;
+                        MovedStatics.modifiedWidgetId = id;
                         ItemDefinition.anInt2798 = RSString.clickY;
                         GroundItemTile.selectedInventorySlot = item;
                         if(id >> 16 == GameInterface.gameScreenInterfaceId)
@@ -138,17 +135,6 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             if(meta == 2 && ActorDefinition.menuActionRow > 0)
                 Class60.determineMenuSize();
         }
-    }
-
-    public static Class40_Sub9_Sub1 method1003(Signlink arg0, Component arg1, int arg2) {
-
-        if(arg2 != 29914)
-            tile_overlayids = null;
-        ProducingGraphicsBuffer.method1040(arg1, 0, arg0);
-        Class40_Sub9_Sub1 class40_sub9_sub1 = new Class40_Sub9_Sub1();
-        Class8.method218(class40_sub9_sub1);
-        return class40_sub9_sub1;
-
     }
 
     public synchronized void mouseEntered(MouseEvent arg0) {

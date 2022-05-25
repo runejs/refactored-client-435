@@ -13,7 +13,6 @@ public abstract class Renderable extends CachedNode {
     public static long aLong2858 = 0L;
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2860;
     public static int[] anIntArray2865;
-    public static int anInt2866;
     public static int anInt2869;
 
     static {

@@ -23,6 +23,8 @@ import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.tile.WallDecoration;
+import org.runejs.client.sound.MusicSystem;
+import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.TextUtils;
 import org.runejs.client.*;
 import org.runejs.client.cache.def.*;
@@ -165,7 +167,7 @@ public class IncomingPackets {
                 Buffer.anIntArray1984[varPlayerIndex] = varPlayerValue;
                 if(VarPlayerDefinition.varPlayers[varPlayerIndex] != varPlayerValue) {
                     VarPlayerDefinition.varPlayers[varPlayerIndex] = varPlayerValue;
-                    Class22.method309(varPlayerIndex);
+                    MovedStatics.method309(varPlayerIndex);
                     GameInterface.redrawTabArea = true;
                     if(ChatBox.dialogueId != -1)
                         ChatBox.redrawChatbox = true;
@@ -252,10 +254,10 @@ public class IncomingPackets {
                 int i_25_ = incomingPacketBuffer.getUnsignedByte();
                 int i_26_ = incomingPacketBuffer.getUnsignedByte();
                 Projectile.aBooleanArray2975[i_23_] = true;
-                Class8.anIntArray297[i_23_] = i_24_;
+                MovedStatics.anIntArray297[i_23_] = i_24_;
                 GameShell.anIntArray2[i_23_] = i_25_;
                 GroundItemTile.anIntArray1358[i_23_] = i_26_;
-                Class22_Sub1.anIntArray1846[i_23_] = 0;
+                MovedStatics.anIntArray1846[i_23_] = 0;
                 opcode = -1;
                 return true;
             }
@@ -378,7 +380,7 @@ public class IncomingPackets {
                 return true;
             }
             if(opcode == PacketType.LOGOUT.getOpcode()) {
-                Class48.logout();
+                MovedStatics.logout();
                 opcode = -1;
                 return false;
             }
@@ -525,15 +527,15 @@ public class IncomingPackets {
             }
             if(opcode == 253) {
                 Player.cutsceneActive = true;
-                Class22.anInt545 = incomingPacketBuffer.getUnsignedByte();
+                MovedStatics.anInt545 = incomingPacketBuffer.getUnsignedByte();
                 SceneCluster.anInt767 = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.anInt194 = incomingPacketBuffer.getUnsignedShortBE();
                 MovedStatics.anInt188 = incomingPacketBuffer.getUnsignedByte();
                 Class59.anInt1386 = incomingPacketBuffer.getUnsignedByte();
                 if(Class59.anInt1386 >= 100) {
-                    Class40_Sub5_Sub6.cameraY = 64 + SceneCluster.anInt767 * 128;
-                    Class12.cameraX = Class22.anInt545 * 128 + 64;
-                    SceneCluster.cameraZ = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, Class40_Sub5_Sub6.cameraY) - MovedStatics.anInt194;
+                    MovedStatics.cameraY = 64 + SceneCluster.anInt767 * 128;
+                    Class12.cameraX = MovedStatics.anInt545 * 128 + 64;
+                    SceneCluster.cameraZ = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, MovedStatics.cameraY) - MovedStatics.anInt194;
                 }
                 opcode = -1;
                 return true;
@@ -652,7 +654,7 @@ public class IncomingPackets {
                 int songId = incomingPacketBuffer.getUnsignedShortLE();
                 if(songId == 65535)
                     songId = -1;
-                Class51.playSong(songId);
+                MusicSystem.playSong(songId);
                 opcode = -1;
                 return true;
             }
@@ -661,7 +663,7 @@ public class IncomingPackets {
                 int songId = incomingPacketBuffer.getUnsignedShortBE();
                 if(songId == 65535)
                     songId = -1;
-                Class57.method975(songTimeout, songId);
+                MusicSystem.playSoundJingle(songTimeout, songId);
                 opcode = -1;
                 return true;
             }
@@ -718,7 +720,7 @@ public class IncomingPackets {
                 Buffer.anIntArray1984[varPlayerIndex] = varPlayerValue;
                 if(varPlayerValue != VarPlayerDefinition.varPlayers[varPlayerIndex]) {
                     VarPlayerDefinition.varPlayers[varPlayerIndex] = varPlayerValue;
-                    Class22.method309(varPlayerIndex); // TODO find out what this does
+                    MovedStatics.method309(varPlayerIndex); // TODO find out what this does
                     if(ChatBox.dialogueId != -1)
                         ChatBox.redrawChatbox = true;
                     GameInterface.redrawTabArea = true;
@@ -735,7 +737,7 @@ public class IncomingPackets {
                 int soundId = incomingPacketBuffer.getUnsignedShortBE();
                 int volume = incomingPacketBuffer.getUnsignedByte();
                 int delay = incomingPacketBuffer.getUnsignedShortBE();
-                WallDecoration.method950(soundId, volume, delay);
+                SoundSystem.play(soundId, volume, delay);
                 opcode = -1;
                 return true;
             }
@@ -780,13 +782,13 @@ public class IncomingPackets {
                 MovedStatics.anInt2576 = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.anInt892 = incomingPacketBuffer.getUnsignedShortBE();
                 Class60.anInt1413 = incomingPacketBuffer.getUnsignedByte();
-                Class22_Sub1.anInt1856 = incomingPacketBuffer.getUnsignedByte();
-                if(Class22_Sub1.anInt1856 >= 100) {
+                MovedStatics.anInt1856 = incomingPacketBuffer.getUnsignedByte();
+                if(MovedStatics.anInt1856 >= 100) {
                     int i_69_ = 128 * MovedStatics.anInt564 + 64;
                     int i_70_ = 128 * MovedStatics.anInt2576 + 64;
                     int i_71_ = Class37.getFloorDrawHeight(Player.worldLevel, i_69_, i_70_) - MovedStatics.anInt892;
                     int i_72_ = i_69_ + -Class12.cameraX;
-                    int i_73_ = i_70_ + -Class40_Sub5_Sub6.cameraY;
+                    int i_73_ = i_70_ + -MovedStatics.cameraY;
                     int i_74_ = -SceneCluster.cameraZ + i_71_;
                     int i_75_ = (int) Math.sqrt((double) (i_73_ * i_73_ + i_72_ * i_72_));
                     Class26.anInt627 = (int) (325.949 * Math.atan2((double) i_74_, (double) i_75_)) & 0x7ff;
@@ -1045,7 +1047,7 @@ public class IncomingPackets {
                 for(int varPlayerIndex = 0; varPlayerIndex < VarPlayerDefinition.varPlayers.length; varPlayerIndex++) {
                     if(Buffer.anIntArray1984[varPlayerIndex] != VarPlayerDefinition.varPlayers[varPlayerIndex]) {
                         VarPlayerDefinition.varPlayers[varPlayerIndex] = Buffer.anIntArray1984[varPlayerIndex];
-                        Class22.method309(varPlayerIndex);
+                        MovedStatics.method309(varPlayerIndex);
                         GameInterface.redrawTabArea = true;
                     }
                 }
@@ -1129,7 +1131,7 @@ public class IncomingPackets {
                 return true;
             }
             MovedStatics.printException("T1 - " + opcode + "," + secondLastOpcode + "," + thirdLastOpcode + " - " + incomingPacketSize, null);
-            Class48.logout();
+            MovedStatics.logout();
         } catch(java.io.IOException ioexception) {
             Class59.dropClient();
         } catch(Exception exception) {
@@ -1137,7 +1139,7 @@ public class IncomingPackets {
             for(int i = 0; incomingPacketSize > i && i < 50; i++)
                 string += incomingPacketBuffer.buffer[i] + ",";
             MovedStatics.printException(string, exception);
-            Class48.logout();
+            MovedStatics.logout();
             exception.printStackTrace();
         }
         return true;
@@ -1254,13 +1256,8 @@ public class IncomingPackets {
                 int delay = incomingPacketBuffer.getUnsignedByte();
                 if (localY >= 0 && localX >= 0 && localY < 104 && localX < 104) {
                     int i_26_ = 1 + radius;
-                    if (Player.localPlayer.pathY[0] >= localY - i_26_ && Player.localPlayer.pathY[0] <= localY + i_26_ && localX - i_26_ <= Player.localPlayer.pathX[0] && localX + i_26_ >= Player.localPlayer.pathX[0] && RSCanvas.anInt65 != 0 && volume > 0 && PacketBuffer.currentSound < 50) {
-                        IdentityKit.sound[PacketBuffer.currentSound] = soundId;
-                        ItemDefinition.soundVolume[PacketBuffer.currentSound] = volume;
-                        Class40_Sub3.soundDelay[PacketBuffer.currentSound] = delay;
-                        PacketBuffer.effects[PacketBuffer.currentSound] = null;
-                        MovedStatics.anIntArray1916[PacketBuffer.currentSound] = radius + (localX << 8) + (localY << 16);
-                        PacketBuffer.currentSound++;
+                    if (Player.localPlayer.pathY[0] >= localY - i_26_ && Player.localPlayer.pathY[0] <= localY + i_26_ && localX - i_26_ <= Player.localPlayer.pathX[0] && localX + i_26_ >= Player.localPlayer.pathX[0]) {                        
+                        SoundSystem.play(soundId, volume, delay, radius + (localX << 8) + (localY << 16));
                     }
                 }
             }
