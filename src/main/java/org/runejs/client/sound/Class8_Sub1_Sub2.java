@@ -1,6 +1,10 @@
 package org.runejs.client.sound;
 
-import javax.sound.sampled.*;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.SourceDataLine;
 
 public class Class8_Sub1_Sub2 extends Class8_Sub1 {
     public SourceDataLine line;

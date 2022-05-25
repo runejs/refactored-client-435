@@ -340,10 +340,10 @@ public class StaticAudio {
 	}
 
 	public static CacheArchive musicCacheArchive;
-	public static MidiPlayer435 aMidiPlayer435_189;
+	public static MidiPlayer midi;
 
 	public static void method886(int arg0, int arg1, boolean arg2, byte[] arg3, int arg4) {
-	    if(arg0 == 0 && aMidiPlayer435_189 != null) {
+	    if(arg0 == 0 && midi != null) {
 	        if(StaticAudio.anInt1450 < 0) {
 	            if(StaticAudio.anInt54 != 0) {
 	                StaticAudio.anInt2258 = arg1;
@@ -369,39 +369,39 @@ public class StaticAudio {
 	}
 
 	public static void method651(int arg0, int arg1) {
-	    if(aMidiPlayer435_189 != null) {
+	    if(midi != null) {
 	        if(StaticAudio.anInt54 != 0) {
 	            if(StaticAudio.aByteArray3270 != null)
 	                StaticAudio.anInt2258 = arg1;
 	        } else if(StaticAudio.anInt1450 >= 0) {
 	            StaticAudio.anInt1450 = arg1;
-	            aMidiPlayer435_189.setVolume(arg1, 0);
+	            midi.setVolume(arg1, 0);
 	        }
 	    }
 	}
 
 	public static void method1019() {
-	    if(aMidiPlayer435_189 != null) {
+	    if(midi != null) {
 	        StaticAudio.method308();   
 	        if(StaticAudio.anInt54 > 0) {
-	            aMidiPlayer435_189.resetVolume(256);
+	            midi.resetVolume(256);
 	            StaticAudio.anInt54 = 0;
 	        }
-	        aMidiPlayer435_189.close0((byte) 101);
-	        aMidiPlayer435_189 = null;
+	        midi.close0((byte) 101);
+	        midi = null;
 	    }
 	}
 
 	public static void method984(int arg0) {
 	    if(arg0 == 0) {
-	        if(aMidiPlayer435_189 != null) {
+	        if(midi != null) {
 	            if(StaticAudio.anInt1450 >= 0) {
 	                if(StaticAudio.anInt54 > 0) {
 	                    StaticAudio.anInt909 += Buffer.anInt1982;
-	                    aMidiPlayer435_189.setVolume(StaticAudio.anInt1450, StaticAudio.anInt909);
+	                    midi.setVolume(StaticAudio.anInt1450, StaticAudio.anInt909);
 	                    StaticAudio.anInt54--;
 	                    if(StaticAudio.anInt54 == 0) {
-	                        aMidiPlayer435_189.stop0();
+	                        midi.stop0();
 	                        StaticAudio.anInt1450 = -1;
 	                        StaticAudio.anInt54 = 20;
 	                    }
@@ -410,11 +410,11 @@ public class StaticAudio {
 	                StaticAudio.anInt54--;
 	                if(StaticAudio.anInt54 == 0) {
 	                    if(StaticAudio.aByteArray3270 == null)
-	                        aMidiPlayer435_189.resetVolume(256);
+	                        midi.resetVolume(256);
 	                    else {
-	                        aMidiPlayer435_189.resetVolume(StaticAudio.anInt2258);
+	                        midi.resetVolume(StaticAudio.anInt2258);
 	                        StaticAudio.anInt1450 = StaticAudio.anInt2258;
-	                        aMidiPlayer435_189.play(StaticAudio.aByteArray3270, StaticAudio.aBoolean687, StaticAudio.anInt2258);
+	                        midi.play(StaticAudio.aByteArray3270, StaticAudio.aBoolean687, StaticAudio.anInt2258);
 	                        StaticAudio.aByteArray3270 = null;
 	                    }
 	                    StaticAudio.anInt909 = 0;
@@ -427,7 +427,7 @@ public class StaticAudio {
 	public static boolean method452(Signlink arg0, boolean highmem) {
 	        StaticAudio.anInt54 = 20;
 	        try {
-	            aMidiPlayer435_189 = new MidiPlayer435(); // Java Midi Based
+	            midi = new MidiPlayer(); // Java Midi Based
 	            return true;
 	        } catch(Throwable throwable) {
 	            return false;
@@ -437,7 +437,7 @@ public class StaticAudio {
 	public static int anInt1450 = -1;
 
 	public static void method566(int arg0, boolean arg1, int arg2, byte[] arg3) {
-	    if(aMidiPlayer435_189 != null) {
+	    if(midi != null) {
 	        if(anInt1450 >= 0) {
 	            arg2 -= 20;
 	            if(arg2 < 1)
@@ -464,7 +464,7 @@ public class StaticAudio {
 	}
 
 	public static boolean method340() {
-	    return aMidiPlayer435_189 != null;
+	    return midi != null;
 	
 	}
 
@@ -489,9 +489,9 @@ public class StaticAudio {
 	public static int anInt909 = 0;
 
 	public static void method56(boolean loop, byte[] arg2, int arg3) {
-	    if(aMidiPlayer435_189 != null) {
+	    if(midi != null) {
 	        if(anInt1450 >= 0) {
-	            aMidiPlayer435_189.stop0();
+	            midi.stop0();
 	            anInt909 = 0;
 	            StaticAudio.aByteArray3270 = null;
 	            StaticAudio.anInt54 = 20;
@@ -499,11 +499,11 @@ public class StaticAudio {
 	        }
 	        if(arg2 != null) {
 	            if(StaticAudio.anInt54 > 0) {
-	                aMidiPlayer435_189.resetVolume(arg3);
+	                midi.resetVolume(arg3);
 	                StaticAudio.anInt54 = 0;
 	            }
 	            anInt1450 = arg3;
-	            aMidiPlayer435_189.play(arg2, loop, arg3);
+	            midi.play(arg2, loop, arg3);
 	        }
 	    }
 	}

@@ -1,14 +1,20 @@
 package org.runejs.client.sound;
 
-import javax.sound.midi.*;
-
 import java.io.ByteArrayInputStream;
+
+import javax.sound.midi.InvalidMidiDataException;
+import javax.sound.midi.MidiMessage;
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.Receiver;
+import javax.sound.midi.Sequence;
+import javax.sound.midi.Sequencer;
+import javax.sound.midi.ShortMessage;
 
 /**
  * An implementation of a MidiPlayer. This is the code from Revision #435 which has been cleaned up, combined into a class and uses some comments from Dane who released a standalone MIDI player for 317..
  *
  */
-public class MidiPlayer435 implements Receiver {
+public class MidiPlayer implements Receiver {
 	
 	private static volatile boolean active = false;
 	private static int[] anIntArray889 = new int[128];
@@ -45,15 +51,15 @@ public class MidiPlayer435 implements Receiver {
     private static Sequencer sequencer;
 
 	private static int getChannelVolume(int channel) {
-		int data = MidiPlayer435.volumes[channel];
-		data = (data * MidiPlayer435.volume >> 8) * data;
+		int data = MidiPlayer.volumes[channel];
+		data = (data * MidiPlayer.volume >> 8) * data;
 		return (int) (Math.sqrt(data) + 0.5);
 	}
 
 	/**
-     * Creates a new {@link MidiPlayer435}.
+     * Creates a new {@link MidiPlayer}.
 	 */
-	public MidiPlayer435() {
+	public MidiPlayer() {
 		try {
 			receiver = MidiSystem.getReceiver();
 			sequencer = MidiSystem.getSequencer(false);
@@ -136,8 +142,8 @@ public class MidiPlayer435 implements Receiver {
 
 	public void setVolume(int volume, int velocity, long timeStamp) {
 		volume = (int) (volume * Math.pow(0.1, velocity * 5.0E-4) + 0.5);
-		if (volume != MidiPlayer435.volume) {
-			MidiPlayer435.volume = volume;
+		if (volume != MidiPlayer.volume) {
+			MidiPlayer.volume = volume;
 			for (int i = 0; i < 16; i++) {
 				int data = getChannelVolume(i);
 				send(ShortMessage.CONTROL_CHANGE + i, MSB_CHANNEL_VOLUME, data >> 7, timeStamp);
@@ -147,9 +153,9 @@ public class MidiPlayer435 implements Receiver {
 	}
 
 	public void resetVolume(long timeStamp, int volume) {
-		MidiPlayer435.volume = volume;
+		MidiPlayer.volume = volume;
 		for (int i = 0; i < 16; i++)
-			MidiPlayer435.volumes[i] = 12800;
+			MidiPlayer.volumes[i] = 12800;
 		for (int i = 0; i < 16; i++) {
 			int data = getChannelVolume(i);
 			send(ShortMessage.CONTROL_CHANGE + i, MSB_CHANNEL_VOLUME, data >> 7, timeStamp);
@@ -159,8 +165,8 @@ public class MidiPlayer435 implements Receiver {
 
 	public void reset(long timeStamp) {
 		for (int i = 0; i < 128; i++) {
-			int i_6_ = MidiPlayer435.anIntArray889[i];
-			MidiPlayer435.anIntArray889[i] = 0;
+			int i_6_ = MidiPlayer.anIntArray889[i];
+			MidiPlayer.anIntArray889[i] = 0;
 			for (int i_7_ = 0; i_7_ < 16; i_7_++) {
 				if ((i_6_ & 1 << i_7_) != 0)
 					send(144 + i_7_, i, 0, timeStamp);
@@ -192,21 +198,21 @@ public class MidiPlayer435 implements Receiver {
 	public boolean send0(int status, int data1, int data2, long timeStamp) {
 		if ((status & 0xe0) == ShortMessage.NOTE_OFF) {
 			int i = 1 << (status & 0xf);
-			int i_8_ = MidiPlayer435.anIntArray889[data1];
+			int i_8_ = MidiPlayer.anIntArray889[data1];
 			if (status >= 144 && data2 != 0) {
 				if ((i_8_ & i) != 0)
 					send(status, data1, 0, timeStamp);
 				else
-					MidiPlayer435.anIntArray889[data1] = i_8_ | i;
+					MidiPlayer.anIntArray889[data1] = i_8_ | i;
 			} else
-				MidiPlayer435.anIntArray889[data1] = i_8_ & (i ^ 0xffffffff);
+				MidiPlayer.anIntArray889[data1] = i_8_ & (i ^ 0xffffffff);
 			return false;
 		}
 		if ((status & 0xf0) == ShortMessage.CONTROL_CHANGE) {
 			if (data1 == RESET_ALL_CONTROLLERS) {
 				send(status, data1, data2, timeStamp);
 				int i = status & 0xf;
-				MidiPlayer435.volumes[i] = 12800;
+				MidiPlayer.volumes[i] = 12800;
 				int i_9_ = getChannelVolume(i);
 				send(status, MSB_CHANNEL_VOLUME, i_9_ >> 7, timeStamp);
 				send(status, LSB_CHANNEL_VOLUME, i_9_ & 0x7f, timeStamp);
@@ -215,9 +221,9 @@ public class MidiPlayer435 implements Receiver {
 			if (data1 == MSB_CHANNEL_VOLUME || data1 == LSB_CHANNEL_VOLUME) {
 				int i = status & 0xf;
 				if (data1 == MSB_CHANNEL_VOLUME)
-					MidiPlayer435.volumes[i] = (MidiPlayer435.volumes[i] & 0x7f) + (data2 << 7);
+					MidiPlayer.volumes[i] = (MidiPlayer.volumes[i] & 0x7f) + (data2 << 7);
 				else
-					MidiPlayer435.volumes[i] = (MidiPlayer435.volumes[i] & 0x3f80) + data2;
+					MidiPlayer.volumes[i] = (MidiPlayer.volumes[i] & 0x3f80) + data2;
 				int i_10_ = getChannelVolume(i);
 				send(status, MSB_CHANNEL_VOLUME, i_10_ >> 7, timeStamp);
 				send(status, LSB_CHANNEL_VOLUME, i_10_ & 0x7f, timeStamp);
