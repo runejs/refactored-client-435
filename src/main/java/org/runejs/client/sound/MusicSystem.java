@@ -1,6 +1,7 @@
 package org.runejs.client.sound;
 
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.node.CachedNode;
 import org.runejs.client.node.NodeCache;
 
 public class MusicSystem {
@@ -13,10 +14,10 @@ public class MusicSystem {
 	private static boolean aBoolean1790;
 	private static int anInt1806;
 	private static int anInt2110;
-	private static int anInt2342;
+	private static int volume3;
 	private static int anInt255;
-	private static int anInt289;
-	private static int anInt3004;
+	private static int fileId;
+	private static int childId;
 	private static byte[] data_;
 	private static boolean fetchMusic = false;
 	private static boolean loop_;
@@ -32,15 +33,15 @@ public class MusicSystem {
 	public static synchronized void handleMusic() {
 		if (musicIsntNull()) {
 			if (MusicSystem.fetchMusic) {
-				byte[] is = fetchMusic(MusicSystem.anInt3004, MusicSystem.musicFetcher, MusicSystem.anInt289, MusicSystem.anInt2110);
+				byte[] is = fetchMusic(MusicSystem.childId, MusicSystem.musicFetcher, MusicSystem.fileId, MusicSystem.anInt2110);
 				if (is != null) {
 					if (MusicSystem.anInt255 < 0) {
 						if (MusicSystem.anInt1806 < 0)
-							method56(MusicSystem.aBoolean1790, is, MusicSystem.anInt2342);
+							method56(MusicSystem.aBoolean1790, is, MusicSystem.volume3);
 						else
-							method566(MusicSystem.anInt2342, MusicSystem.aBoolean1790, MusicSystem.anInt1806, is);
+							method566(MusicSystem.volume3, MusicSystem.aBoolean1790, MusicSystem.anInt1806, is);
 					} else
-						method886(0, MusicSystem.anInt2342, MusicSystem.aBoolean1790, is, MusicSystem.anInt255);
+						method886(MusicSystem.volume3, MusicSystem.aBoolean1790, is, MusicSystem.anInt255);
 					MusicSystem.fetchMusic = false;
 					MusicSystem.musicFetcher = null;
 				}
@@ -88,26 +89,26 @@ public class MusicSystem {
 		}
 	}
 
-	public static void method456(int arg0) {
+	public static void method456(int volume) {
 		if (MusicSystem.musicIsntNull()) {
 			if (MusicSystem.fetchMusic)
-				MusicSystem.anInt2342 = arg0;
+				MusicSystem.volume3 = volume;
 			else
-				MusicSystem.method651(22741, arg0);
+				MusicSystem.method651(volume);
 		}
 	}
 
-	public static synchronized void playMusicTrack(boolean arg0, int arg1, int songid, int arg3, int arg4, CacheArchive arg5) {
+	public static synchronized void playMusicTrack(boolean arg0, int arg1, int songid, int volume, int childId, CacheArchive arg5) {
 		if (musicIsntNull()) {
 			MusicSystem.fetchMusic = true;
 			MusicSystem.anInt1806 = -1;
 			MusicSystem.anInt255 = -1;
-			MusicSystem.anInt2342 = arg3;
-			MusicSystem.anInt3004 = arg4;
+			MusicSystem.volume3 = volume;
+			MusicSystem.childId = childId;
 			MusicSystem.aBoolean1790 = arg0;
 			MusicSystem.anInt2110 = arg1;
 			MusicSystem.musicFetcher = arg5;
-			MusicSystem.anInt289 = songid;
+			MusicSystem.fileId = songid;
 		}
 	}
 
@@ -148,18 +149,18 @@ public class MusicSystem {
 		}
 	}
 	
-	private static byte[] fetchMusic(int arg0, CacheArchive arg1, int arg2, int arg4) {
-		long l = (arg0 + 37 * arg2 & 0xffff) + ((long) arg4 << 32) + (arg2 << 16);
+	private static byte[] fetchMusic(int childId, CacheArchive musicArchive, int fileId, int arg4) {
+		long hash = (childId + 37 * fileId & 0xffff) + ((long) arg4 << 32) + (fileId << 16);
 		if (MusicSystem.musicCache != null) {
-			ByteArrayNode class40_sub5_sub6 = (ByteArrayNode) MusicSystem.musicCache.get(l);
-			if (class40_sub5_sub6 != null)
-				return class40_sub5_sub6.byteArray;
+			MusicData data = (MusicData) MusicSystem.musicCache.get(hash);
+			if (data != null)
+				return data.data;
 		}
-		byte[] is = arg1.getFile(arg2, arg0);
+		byte[] is = musicArchive.getFile(fileId, childId);
 		if (is == null)
 			return null;
 		if (MusicSystem.musicCache != null)
-			MusicSystem.musicCache.put(l, new ByteArrayNode(is));
+			MusicSystem.musicCache.put(hash, new MusicData(is));
 		return is;
 	}
 
@@ -175,18 +176,18 @@ public class MusicSystem {
 		if (musicIsntNull()) {
 			MusicSystem.aBoolean1790 = arg7;
 			MusicSystem.anInt255 = arg2;
-			MusicSystem.anInt3004 = arg5;
+			MusicSystem.childId = arg5;
 			MusicSystem.fetchMusic = arg1;
 			MusicSystem.musicFetcher = cacheArchive;
 			MusicSystem.anInt1806 = -1;
-			MusicSystem.anInt2342 = arg0;
+			MusicSystem.volume3 = arg0;
 			MusicSystem.anInt2110 = arg6;
-			MusicSystem.anInt289 = songId;
+			MusicSystem.fileId = songId;
 		}
 	}
 
 	private static void method557(int arg0) {
-		method886(0, 0, false, null, arg0);
+		method886(0, false, null, arg0);
 	}
 
 	private static void method56(boolean loop, byte[] arg2, int arg3) {
@@ -236,40 +237,40 @@ public class MusicSystem {
 		}
 	}
 
-	private static void method651(int arg0, int arg1) {
+	private static void method651(int volume) {
 		if (MusicSystem.midi != null) {
 			if (MusicSystem.timer != 0) {
 				if (MusicSystem.data_ != null)
-					MusicSystem.volume1 = arg1;
+					MusicSystem.volume1 = volume;
 			} else if (MusicSystem.volume2 >= 0) {
-				MusicSystem.volume2 = arg1;
-				MusicSystem.midi.setVolume(arg1, 0);
+				MusicSystem.volume2 = volume;
+				MusicSystem.midi.setVolume(volume, 0);
 			}
 		}
 	}
 
-	private static void method886(int arg0, int arg1, boolean arg2, byte[] arg3, int arg4) {
-		if (arg0 == 0 && MusicSystem.midi != null) {
+	private static void method886(int volume, boolean loop, byte[] data, int velocity) {
+		if (MusicSystem.midi != null) {
 			if (MusicSystem.volume2 < 0) {
 				if (MusicSystem.timer != 0) {
-					MusicSystem.volume1 = arg1;
-					MusicSystem.data_ = arg3;
-					MusicSystem.loop_ = arg2;
+					MusicSystem.volume1 = volume;
+					MusicSystem.data_ = data;
+					MusicSystem.loop_ = loop;
 				} else
-					MusicSystem.method56(arg2, arg3, arg1);
+					MusicSystem.method56(loop, data, volume);
 			} else {
-				MusicSystem.velocity_increment = arg4;
+				MusicSystem.velocity_increment = velocity;
 				if (MusicSystem.volume2 != 0) {
 					int i = MusicSystem.method372(MusicSystem.volume2);
 					i -= MusicSystem.velocity;
-					MusicSystem.timer = (i + 3600) / arg4;
+					MusicSystem.timer = (i + 3600) / velocity;
 					if (MusicSystem.timer < 1)
 						MusicSystem.timer = 1;
 				} else
 					MusicSystem.timer = 1;
-				MusicSystem.volume1 = arg1;
-				MusicSystem.data_ = arg3;
-				MusicSystem.loop_ = arg2;
+				MusicSystem.volume1 = volume;
+				MusicSystem.data_ = data;
+				MusicSystem.loop_ = loop;
 			}
 		}
 	}
@@ -319,5 +320,12 @@ public class MusicSystem {
 		} catch (Throwable throwable) {
 			return false;
 		}
+	}
+	
+	private static class MusicData extends CachedNode {
+		private byte[] data;
+		private MusicData(byte[] data) {
+	        this.data = data;
+	    }
 	}
 }
