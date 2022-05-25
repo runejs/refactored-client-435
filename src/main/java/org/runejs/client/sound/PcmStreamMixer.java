@@ -4,80 +4,81 @@ import org.runejs.client.LinkedList;
 import org.runejs.client.node.Node;
 
 public class PcmStreamMixer extends PcmStream {
-    public int anInt2872 = 16;
-    public LinkedList[] aLinkedListArray2873 = new LinkedList[8];
-    public LinkedList aLinkedList_2874 = new LinkedList();
-    public int anInt2875 = 0;
-    public int anInt2876 = -1;
-    public int anInt2877 = 0;
+    private int anInt2872 = 16;
+    private LinkedList[] aLinkedListArray2873 = new LinkedList[8];
+    private LinkedList aLinkedList_2874 = new LinkedList();
+    private int anInt2875 = 0;
+    private int anInt2876 = -1;
+    private int anInt2877 = 0;
 
     public PcmStreamMixer() {
         for(int i = 0; i < 8; i++)
-            aLinkedListArray2873[i] = new LinkedList();
+            this.aLinkedListArray2873[i] = new LinkedList();
     }
 
-    public static int method849(PcmStream arg0) {
+    private static int method849(PcmStream arg0) {
         return arg0.method845() >> 5;
     }
 
     public synchronized void addSubStream(PcmStream arg0) {
-        LinkedList linkedList = aLinkedListArray2873[method849(arg0)];
+        LinkedList linkedList = this.aLinkedListArray2873[method849(arg0)];
         linkedList.method905(0, arg0);
     }
 
+    @Override
     public synchronized void skip(int arg0) {
         do {
-            if(anInt2876 < 0) {
-                method851(arg0);
+            if(this.anInt2876 < 0) {
+                this.skip0(arg0);
                 break;
             }
-            if(anInt2877 + arg0 < anInt2876) {
-                anInt2877 += arg0;
-                method851(arg0);
+            if(this.anInt2877 + arg0 < this.anInt2876) {
+                this.anInt2877 += arg0;
+                this.skip0(arg0);
                 break;
             }
-            int i = anInt2876 - anInt2877;
-            method851(i);
+            int i = this.anInt2876 - this.anInt2877;
+            this.skip0(i);
             arg0 -= i;
-            anInt2877 += i;
-            method852();
-            PcmStreamMixerListener class40_sub8 = (PcmStreamMixerListener) aLinkedList_2874.method902((byte) -90);
+            this.anInt2877 += i;
+            this.method852();
+            PcmStreamMixerListener class40_sub8 = (PcmStreamMixerListener) this.aLinkedList_2874.method902((byte) -90);
             synchronized(class40_sub8) {
                 int i_0_ = class40_sub8.method842(this);
                 if(i_0_ < 0) {
                     class40_sub8.anInt2133 = 0;
-                    method850(class40_sub8);
+                    this.method850(class40_sub8);
                 } else {
                     class40_sub8.anInt2133 = i_0_;
-                    method847(class40_sub8.next, class40_sub8);
+                    this.method847(class40_sub8.next, class40_sub8);
                 }
             }
         } while(arg0 != 0);
     }
 
-    public void method847(Node arg0, PcmStreamMixerListener arg1) {
-        for(/**/; arg0 != aLinkedList_2874.aClass40_1056 && ((PcmStreamMixerListener) arg0).anInt2133 <= arg1.anInt2133; arg0 = arg0.next) {
+    private void method847(Node arg0, PcmStreamMixerListener arg1) {
+        for(/**/; arg0 != this.aLinkedList_2874.aClass40_1056 && ((PcmStreamMixerListener) arg0).anInt2133 <= arg1.anInt2133; arg0 = arg0.next) {
             /* empty */
         }
-        aLinkedList_2874.method911(-31793, arg0, arg1);
-        anInt2876 = ((PcmStreamMixerListener) aLinkedList_2874.aClass40_1056.next).anInt2133;
+        this.aLinkedList_2874.method911(-31793, arg0, arg1);
+        this.anInt2876 = ((PcmStreamMixerListener) this.aLinkedList_2874.aClass40_1056.next).anInt2133;
     }
 
-    public int method848(int[] arg0, int arg1, int arg2) {
-        anInt2875 -= arg2;
-        if(anInt2875 <= 0) {
-            anInt2875 += SoundSystem.SAMPLE_RATE >> 4;
+    private int fill0(int[] arg0, int arg1, int arg2) {
+        this.anInt2875 -= arg2;
+        if(this.anInt2875 <= 0) {
+            this.anInt2875 += SoundSystem.SAMPLE_RATE >> 4;
             for(int i = 0; i < 8; i++) {
-                LinkedList linkedList = aLinkedListArray2873[i];
+                LinkedList linkedList = this.aLinkedListArray2873[i];
                 for(PcmStream class40_sub9 = (PcmStream) linkedList.method902((byte) -90); class40_sub9 != null; class40_sub9 = (PcmStream) linkedList.method909(-4)) {
                     int i_1_ = method849(class40_sub9);
                     if(i_1_ != i)
-                        aLinkedListArray2873[i_1_].method905(0, class40_sub9);
+                        this.aLinkedListArray2873[i_1_].method905(0, class40_sub9);
                 }
             }
         }
         for(int i = 0; i < 8; i++) {
-            LinkedList linkedList = aLinkedListArray2873[i];
+            LinkedList linkedList = this.aLinkedListArray2873[i];
             for(PcmStream class40_sub9 = (PcmStream) linkedList.method902((byte) -90); class40_sub9 != null; class40_sub9 = (PcmStream) linkedList.method909(-4)) {
                 class40_sub9.active = false;
                 if(class40_sub9.sound != null)
@@ -100,14 +101,14 @@ public class PcmStreamMixer extends PcmStream {
             for(int i_6_ = i_2_ >>> i_4_ & 0x11111111; i_6_ != 0; i_6_ >>>= 4) {
                 if((i_6_ & 0x1) != 0) {
                     i_2_ &= 1 << i_4_ ^ 0xffffffff;
-                    LinkedList linkedList = aLinkedListArray2873[i_4_];
+                    LinkedList linkedList = this.aLinkedListArray2873[i_4_];
                     for(PcmStream class40_sub9 = (PcmStream) linkedList.method902((byte) -90); class40_sub9 != null; class40_sub9 = (PcmStream) linkedList.method909(-4)) {
                         if(!class40_sub9.active) {
                             AbstractSound class40_sub12 = class40_sub9.sound;
                             if(class40_sub12 != null && class40_sub12.position > i_5_)
                                 i_2_ |= 1 << i_4_;
                             else {
-                                if(i < anInt2872) {
+                                if(i < this.anInt2872) {
                                     int i_7_ = class40_sub9.fill(arg0, arg1, arg2);
                                     i += i_7_;
                                     if(class40_sub12 != null)
@@ -127,59 +128,60 @@ public class PcmStreamMixer extends PcmStream {
         return i;
     }
 
-    public void method850(PcmStreamMixerListener arg0) {
+    private void method850(PcmStreamMixerListener arg0) {
         arg0.remove();
         arg0.method841();
-        Node class40 = aLinkedList_2874.aClass40_1056.next;
-        if(class40 == aLinkedList_2874.aClass40_1056)
-            anInt2876 = -1;
+        Node class40 = this.aLinkedList_2874.aClass40_1056.next;
+        if(class40 == this.aLinkedList_2874.aClass40_1056)
+            this.anInt2876 = -1;
         else
-            anInt2876 = ((PcmStreamMixerListener) class40).anInt2133;
+            this.anInt2876 = ((PcmStreamMixerListener) class40).anInt2133;
     }
 
-    public void method851(int arg0) {
-        anInt2875 -= arg0;
-        if(anInt2875 < 0)
-            anInt2875 = 0;
+    private void skip0(int arg0) {
+        this.anInt2875 -= arg0;
+        if(this.anInt2875 < 0)
+            this.anInt2875 = 0;
         for(int i = 0; i < 8; i++) {
-            LinkedList linkedList = aLinkedListArray2873[i];
+            LinkedList linkedList = this.aLinkedListArray2873[i];
             for(PcmStream class40_sub9 = (PcmStream) linkedList.method902((byte) -90); class40_sub9 != null; class40_sub9 = (PcmStream) linkedList.method909(-4))
                 class40_sub9.skip(arg0);
         }
     }
 
-    public void method852() {
-        if(anInt2877 > 0) {
-            for(PcmStreamMixerListener class40_sub8 = (PcmStreamMixerListener) aLinkedList_2874.method902((byte) -90); class40_sub8 != null; class40_sub8 = (PcmStreamMixerListener) aLinkedList_2874.method909(-4))
-                class40_sub8.anInt2133 -= anInt2877;
-            anInt2876 -= anInt2877;
-            anInt2877 = 0;
+    private void method852() {
+        if(this.anInt2877 > 0) {
+            for(PcmStreamMixerListener class40_sub8 = (PcmStreamMixerListener) this.aLinkedList_2874.method902((byte) -90); class40_sub8 != null; class40_sub8 = (PcmStreamMixerListener) this.aLinkedList_2874.method909(-4))
+                class40_sub8.anInt2133 -= this.anInt2877;
+            this.anInt2876 -= this.anInt2877;
+            this.anInt2877 = 0;
         }
     }
 
+    @Override
     public synchronized int fill(int[] arg0, int arg1, int arg2) {
         for(; ; ) {
-            if(anInt2876 < 0)
-                return method848(arg0, arg1, arg2);
-            if(anInt2877 + arg2 < anInt2876) {
-                anInt2877 += arg2;
-                return method848(arg0, arg1, arg2);
+            if(this.anInt2876 < 0)
+                return this.fill0(arg0, arg1, arg2);
+            if(this.anInt2877 + arg2 < this.anInt2876) {
+                this.anInt2877 += arg2;
+                return this.fill0(arg0, arg1, arg2);
             }
-            int i = anInt2876 - anInt2877;
-            int i_8_ = method848(arg0, arg1, i);
+            int i = this.anInt2876 - this.anInt2877;
+            int i_8_ = this.fill0(arg0, arg1, i);
             arg1 += i;
             arg2 -= i;
-            anInt2877 += i;
-            method852();
-            PcmStreamMixerListener class40_sub8 = (PcmStreamMixerListener) aLinkedList_2874.method902((byte) -90);
+            this.anInt2877 += i;
+            this.method852();
+            PcmStreamMixerListener class40_sub8 = (PcmStreamMixerListener) this.aLinkedList_2874.method902((byte) -90);
             synchronized(class40_sub8) {
                 int i_9_ = class40_sub8.method842(this);
                 if(i_9_ < 0) {
                     class40_sub8.anInt2133 = 0;
-                    method850(class40_sub8);
+                    this.method850(class40_sub8);
                 } else {
                     class40_sub8.anInt2133 = i_9_;
-                    method847(class40_sub8.next, class40_sub8);
+                    this.method847(class40_sub8.next, class40_sub8);
                 }
             }
             if(arg2 == 0)
