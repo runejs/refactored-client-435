@@ -769,7 +769,7 @@ public class ClientScriptRunner extends Node {
                                                     break;
                                                 }
                                                 intValueIndex -= 2;
-                                                StaticAudio.method975(scriptIntValues[intValueIndex + 1], scriptIntValues[intValueIndex]);
+                                                StaticAudio.playSoundJingle(scriptIntValues[intValueIndex + 1], scriptIntValues[intValueIndex]);
                                             }
                                         } else if(scriptOpcode < 3400) {
                                             if(scriptOpcode != 3300) {

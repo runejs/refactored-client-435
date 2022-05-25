@@ -734,8 +734,8 @@ public class Main extends GameShell {
         for (int i = 0; i < 32768; i++)
             Player.npcs[i] = null;
         Player.localPlayer = Player.trackedPlayers[2047] = new Player();
-        Class43.projectileQueue.method906(0);
-        Class57.aLinkedList_1332.method906(0);
+        Class43.projectileQueue.clear(0);
+        Class57.aLinkedList_1332.clear(0);
         for (int i = 0; i < 4; i++) {
             for (int i_82_ = 0; i_82_ < 104; i_82_++) {
                 for (int i_83_ = 0; i_83_ < 104; i_83_++)

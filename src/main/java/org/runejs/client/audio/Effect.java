@@ -27,7 +27,7 @@ public class Effect {
         instruments = new Instrument[10];
     }
 
-    public static Effect method429(CacheArchive arg0, int arg1, int arg2) {
+    public static Effect readSoundEffect(CacheArchive arg0, int arg1, int arg2) {
         byte[] is = arg0.getFile(arg1, arg2);
         if(is == null)
             return null;

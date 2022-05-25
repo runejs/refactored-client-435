@@ -1809,7 +1809,7 @@ public class MovedStatics {
 	                        } else
 	                            StaticAudio.method456(i_22_);
 	                    } else {
-	                        StaticAudio.method414(false, 0, StaticAudio.currentSongId, i_22_, 0, CacheArchive.musicCacheArchive);
+	                        StaticAudio.playMusicTrack(false, 0, StaticAudio.currentSongId, i_22_, 0, CacheArchive.musicCacheArchive);
 	                        StaticAudio.songTimeout = 0;
 	                    }
 	                    StaticAudio.musicVolume = i_22_;
@@ -1818,6 +1818,22 @@ public class MovedStatics {
 	            if(varPlayerType == 9)
 	                Class43.bankInsertMode = varPlayerValue;
 	            if(varPlayerType == 10) {
+	                if(varPlayerValue == 0)
+	                    StaticAudio.areaSoundEffectVolume = 127;
+	                if(varPlayerValue == 1)
+	                    StaticAudio.areaSoundEffectVolume = 96;
+	                if(varPlayerValue == 2)
+	                    StaticAudio.areaSoundEffectVolume = 64;
+	                if(varPlayerValue == 3)
+	                    StaticAudio.areaSoundEffectVolume = 32;
+	                if(varPlayerValue == 4)
+	                    StaticAudio.areaSoundEffectVolume = 0;
+	            }
+	            if(varPlayerType == 8) {
+	                ChatBox.redrawChatbox = true;
+	                CollisionMap.anInt165 = varPlayerValue;
+	            }
+	            if(varPlayerType == 4) {
 	                if(varPlayerValue == 0)
 	                    StaticAudio.soundEffectVolume = 127;
 	                if(varPlayerValue == 1)
@@ -1828,22 +1844,6 @@ public class MovedStatics {
 	                    StaticAudio.soundEffectVolume = 32;
 	                if(varPlayerValue == 4)
 	                    StaticAudio.soundEffectVolume = 0;
-	            }
-	            if(varPlayerType == 8) {
-	                ChatBox.redrawChatbox = true;
-	                CollisionMap.anInt165 = varPlayerValue;
-	            }
-	            if(varPlayerType == 4) {
-	                if(varPlayerValue == 0)
-	                    StaticAudio.anInt200 = 127;
-	                if(varPlayerValue == 1)
-	                    StaticAudio.anInt200 = 96;
-	                if(varPlayerValue == 2)
-	                    StaticAudio.anInt200 = 64;
-	                if(varPlayerValue == 3)
-	                    StaticAudio.anInt200 = 32;
-	                if(varPlayerValue == 4)
-	                    StaticAudio.anInt200 = 0;
 	            }
 	            if(varPlayerType == 6)
 	                anInt2280 = varPlayerValue;

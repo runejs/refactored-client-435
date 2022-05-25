@@ -120,7 +120,7 @@ public class LinkedList {
         arg1.next.previous = arg1;
     }
 
-    public void method906(int arg0) {
+    public void clear(int arg0) {
         if(arg0 != 0)
             method903(-33, (byte) -75);
         for(; ; ) {

@@ -367,7 +367,7 @@ public class RawPcmStream extends PcmStream {
         anInt2881 = 0;
     }
 
-    public synchronized void method860(int arg0) {
+    public synchronized void setNumLoops(int arg0) {
         anInt2884 = arg0;
     }
 
@@ -383,7 +383,7 @@ public class RawPcmStream extends PcmStream {
         return i;
     }
 
-    public boolean method863() {
+    public boolean hasNext() {
         return this.hasPrevious();
     }
 

@@ -5,7 +5,7 @@ import org.runejs.client.node.Node;
 
 public class ObjectSound extends Node {
 
-    public int anInt1993;
+    public int plane;
     public int anInt1994;
     public int soundEffectId;
     public int anInt2000;
@@ -14,13 +14,13 @@ public class ObjectSound extends Node {
     public int anInt2003;
     public int[] soundEffectIds;
     public int anInt2007;
-    public RawPcmStream aRawPcmStream_2010;
+    public RawPcmStream stream2;
     public GameObjectDefinition gameObjectDefinition;
     public int anInt2012;
     public int anInt2013;
     public int anInt2014;
     
-	public void method528() {
+	public void set() {
         int i = soundEffectId;
         GameObjectDefinition gameObjectDefinition = this.gameObjectDefinition.getChildDefinition();
         if(gameObjectDefinition == null) {
@@ -37,7 +37,7 @@ public class ObjectSound extends Node {
             soundEffectIds = gameObjectDefinition.soundEffectIds;
         }
         if(i != soundEffectId && stream1 != null) {
-            StaticAudio.aPcmStreamMixer_1152.removeSubStream(stream1);
+            StaticAudio.pcmStreamMixer.removeSubStream(stream1);
             stream1 = null;
         }
     }

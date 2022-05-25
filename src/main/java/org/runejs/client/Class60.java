@@ -197,7 +197,7 @@ public class Class60 {
                     StaticAudio.method456(newVolume);
                 }
             } else {
-                StaticAudio.method414(false, 0, StaticAudio.currentSongId, newVolume, 0, CacheArchive.musicCacheArchive);
+                StaticAudio.playMusicTrack(false, 0, StaticAudio.currentSongId, newVolume, 0, CacheArchive.musicCacheArchive);
                 StaticAudio.songTimeout = 0;
             }
 

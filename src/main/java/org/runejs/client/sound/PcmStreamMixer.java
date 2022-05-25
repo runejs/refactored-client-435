@@ -20,7 +20,7 @@ public class PcmStreamMixer extends PcmStream {
         return arg0.method845() >> 5;
     }
 
-    public synchronized void method846(PcmStream arg0) {
+    public synchronized void addSubStream(PcmStream arg0) {
         LinkedList linkedList = aLinkedListArray2873[method849(arg0)];
         linkedList.method905(0, arg0);
     }

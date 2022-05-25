@@ -82,8 +82,8 @@ public class StaticAudio {
 	
 	}
 
-	public static PcmStreamMixer aPcmStreamMixer_1152;
-	public static LinkedList aLinkedList_2268 = new LinkedList();
+	public static PcmStreamMixer pcmStreamMixer;
+	public static LinkedList objectSounds = new LinkedList();
 
 	public static void addObjectSounds(int arg0, int arg2, int arg3, int arg4, GameObjectDefinition arg5) {
 	    ObjectSound class40_sub2 = new ObjectSound();
@@ -93,7 +93,7 @@ public class StaticAudio {
 	    class40_sub2.anInt2012 = arg5.anInt2499;
 	    int i = arg5.sizeX;
 	    int i_17_ = arg5.sizeY;
-	    class40_sub2.anInt1993 = arg2;
+	    class40_sub2.plane = arg2;
 	    class40_sub2.anInt1994 = arg4 * 128;
 	    if(arg3 == 1 || arg3 == 3) {
 	        i = arg5.sizeY;
@@ -105,29 +105,29 @@ public class StaticAudio {
 	    class40_sub2.soundEffectId = arg5.ambientSoundId;
 	    if(arg5.childIds != null) {
 	        class40_sub2.gameObjectDefinition = arg5;
-	        class40_sub2.method528();
+	        class40_sub2.set();
 	    }
-	    aLinkedList_2268.pushBack(class40_sub2, -126);
+	    objectSounds.pushBack(class40_sub2, -126);
 	    if(class40_sub2.soundEffectIds != null)
 	        class40_sub2.anInt2014 = (int) ((double) (class40_sub2.anInt2002 - class40_sub2.anInt2012) * Math.random()) + class40_sub2.anInt2012;
 	}
 
 	public static void method436() {
-	    for(ObjectSound class40_sub2 = (ObjectSound) aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) aLinkedList_2268.method909(-4)) {
+	    for(ObjectSound class40_sub2 = (ObjectSound) objectSounds.method902((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) objectSounds.method909(-4)) {
 	        if(class40_sub2.stream1 != null) {
-	            aPcmStreamMixer_1152.removeSubStream(class40_sub2.stream1);
+	            pcmStreamMixer.removeSubStream(class40_sub2.stream1);
 	            class40_sub2.stream1 = null;
 	        }
-	        if(class40_sub2.aRawPcmStream_2010 != null) {
-	            aPcmStreamMixer_1152.removeSubStream(class40_sub2.aRawPcmStream_2010);
-	            class40_sub2.aRawPcmStream_2010 = null;
+	        if(class40_sub2.stream2 != null) {
+	            pcmStreamMixer.removeSubStream(class40_sub2.stream2);
+	            class40_sub2.stream2 = null;
 	        }
 	    }
-	    aLinkedList_2268.method906(0);
+	    objectSounds.clear(0);
 	}
 
 	public static void method934(int arg0, int arg2, int arg3, int arg4) {
-	    for(ObjectSound class40_sub2 = (ObjectSound) aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) aLinkedList_2268.method909(-4)) {
+	    for(ObjectSound class40_sub2 = (ObjectSound) objectSounds.method902((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) objectSounds.method909(-4)) {
 	        if(class40_sub2.soundEffectId != -1 || class40_sub2.soundEffectIds != null) {
 	            int i_48_ = 0;
 	            if(arg0 <= class40_sub2.anInt2013) {
@@ -139,50 +139,50 @@ public class StaticAudio {
 	                i_48_ += -class40_sub2.anInt2007 + arg4;
 	            else if(arg4 < class40_sub2.anInt2003)
 	                i_48_ += -arg4 + class40_sub2.anInt2003;
-	            if(class40_sub2.anInt2000 < -64 + i_48_ || StaticAudio.soundEffectVolume == 0 || arg2 != class40_sub2.anInt1993) {
+	            if(class40_sub2.anInt2000 < -64 + i_48_ || StaticAudio.areaSoundEffectVolume == 0 || arg2 != class40_sub2.plane) {
 	                if(class40_sub2.stream1 != null) {
-	                    aPcmStreamMixer_1152.removeSubStream(class40_sub2.stream1);
+	                    pcmStreamMixer.removeSubStream(class40_sub2.stream1);
 	                    class40_sub2.stream1 = null;
 	                }
-	                if(class40_sub2.aRawPcmStream_2010 != null) {
-	                    aPcmStreamMixer_1152.removeSubStream(class40_sub2.aRawPcmStream_2010);
-	                    class40_sub2.aRawPcmStream_2010 = null;
+	                if(class40_sub2.stream2 != null) {
+	                    pcmStreamMixer.removeSubStream(class40_sub2.stream2);
+	                    class40_sub2.stream2 = null;
 	                }
 	            } else {
 	                i_48_ -= 64;
 	                if(i_48_ < 0)
 	                    i_48_ = 0;
-	                int i_49_ = (-i_48_ + class40_sub2.anInt2000) * StaticAudio.soundEffectVolume / class40_sub2.anInt2000;
+	                int i_49_ = (-i_48_ + class40_sub2.anInt2000) * StaticAudio.areaSoundEffectVolume / class40_sub2.anInt2000;
 	                if(class40_sub2.stream1 == null) {
 	                    if(class40_sub2.soundEffectId >= 0) {
-	                        Effect effect = Effect.method429(CacheArchive.soundEffectCacheArchive, class40_sub2.soundEffectId, 0);
+	                        Effect effect = Effect.readSoundEffect(CacheArchive.soundEffectCacheArchive, class40_sub2.soundEffectId, 0);
 	                        if(effect != null) {
 	                            RawSound class40_sub12_sub1 = effect.method428().resample(StaticAudio.aDecimator_1289);
 	                            RawPcmStream class40_sub9_sub2 = RawPcmStream.create(class40_sub12_sub1, 100, i_49_);
-	                            class40_sub9_sub2.method860(-1);
-	                            aPcmStreamMixer_1152.method846(class40_sub9_sub2);
+	                            class40_sub9_sub2.setNumLoops(-1);
+	                            pcmStreamMixer.addSubStream(class40_sub9_sub2);
 	                            class40_sub2.stream1 = class40_sub9_sub2;
 	                        }
 	                    }
 	                } else
 	                    class40_sub2.stream1.method857(i_49_);
-	                if(class40_sub2.aRawPcmStream_2010 == null) {
+	                if(class40_sub2.stream2 == null) {
 	                    if(class40_sub2.soundEffectIds != null && (class40_sub2.anInt2014 -= arg3) <= 0) {
 	                        int i_50_ = (int) ((double) class40_sub2.soundEffectIds.length * Math.random());
-	                        Effect effect = Effect.method429(CacheArchive.soundEffectCacheArchive, class40_sub2.soundEffectIds[i_50_], 0);
+	                        Effect effect = Effect.readSoundEffect(CacheArchive.soundEffectCacheArchive, class40_sub2.soundEffectIds[i_50_], 0);
 	                        if(effect != null) {
 	                            RawSound class40_sub12_sub1 = effect.method428().resample(StaticAudio.aDecimator_1289);
 	                            RawPcmStream class40_sub9_sub2 = RawPcmStream.create(class40_sub12_sub1, 100, i_49_);
-	                            class40_sub9_sub2.method860(0);
-	                            aPcmStreamMixer_1152.method846(class40_sub9_sub2);
+	                            class40_sub9_sub2.setNumLoops(0);
+	                            pcmStreamMixer.addSubStream(class40_sub9_sub2);
 	                            class40_sub2.anInt2014 = class40_sub2.anInt2012 + (int) ((double) (-class40_sub2.anInt2012 + class40_sub2.anInt2002) * Math.random());
-	                            class40_sub2.aRawPcmStream_2010 = class40_sub9_sub2;
+	                            class40_sub2.stream2 = class40_sub9_sub2;
 	                        }
 	                    }
 	                } else {
-	                    class40_sub2.aRawPcmStream_2010.method857(i_49_);
-	                    if(!class40_sub2.aRawPcmStream_2010.method863())
-	                        class40_sub2.aRawPcmStream_2010 = null;
+	                    class40_sub2.stream2.method857(i_49_);
+	                    if(!class40_sub2.stream2.hasNext())
+	                        class40_sub2.stream2 = null;
 	                }
 	            }
 	        }
@@ -190,9 +190,9 @@ public class StaticAudio {
 	}
 
 	public static void method1030() {
-	    for (ObjectSound class40_sub2 = (ObjectSound) aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) aLinkedList_2268.method909(-4)) {
+	    for (ObjectSound class40_sub2 = (ObjectSound) objectSounds.method902((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) objectSounds.method909(-4)) {
 	        if (class40_sub2.gameObjectDefinition != null) {
-	            class40_sub2.method528();
+	            class40_sub2.set();
 	        }
 	    }
 	}
@@ -215,7 +215,7 @@ public class StaticAudio {
 	    return is;
 	}
 
-	public static int soundEffectVolume = 127;
+	public static int areaSoundEffectVolume = 127;
 	public static int currentSound = 0;
 	public static int[] sound = new int[50];
 
@@ -290,7 +290,7 @@ public class StaticAudio {
 	public static int[] soundVolume = new int[50];
 	public static int[] soundDelay = new int[50];
 	public static Effect[] effects = new Effect[50];
-	public static int[] anIntArray1916 = new int[50];
+	public static int[] soundLocations = new int[50];
 
 	public static void method989() {
 	    if(aClass8_166 != null) {
@@ -299,14 +299,14 @@ public class StaticAudio {
 	    }
 	}
 
-	public static void method975(int songTimeout, int songId) {
+	public static void playSoundJingle(int songTimeout, int songId) {
 	    if(StaticAudio.musicVolume != 0 && songId != -1) {
-	        StaticAudio.method414(false, 1, songId, StaticAudio.musicVolume, 0, CacheArchive.jingleCacheArchive);
+	        StaticAudio.playMusicTrack(false, 1, songId, StaticAudio.musicVolume, 0, CacheArchive.jingleCacheArchive);
 	        StaticAudio.songTimeout = songTimeout;
 	    }
 	}
 
-	public static synchronized void method414(boolean arg0, int arg1, int songid, int arg3, int arg4, CacheArchive arg5) {
+	public static synchronized void playMusicTrack(boolean arg0, int arg1, int songid, int arg3, int arg4, CacheArchive arg5) {
 	    if(StaticAudio.method340()) {
 	        StaticAudio.aBoolean618 = true;
 	        StaticAudio.anInt1806 = -1;
@@ -329,12 +329,12 @@ public class StaticAudio {
 	}
 
 	public static void method950(int soundId, int volume, int delay) {
-	    if (StaticAudio.anInt200 != 0 && volume != 0 && currentSound < 50) {
+	    if (StaticAudio.soundEffectVolume != 0 && volume != 0 && currentSound < 50) {
 	        sound[currentSound] = soundId;
 	        soundVolume[currentSound] = volume;
 	        soundDelay[currentSound] = delay;
 	        effects[currentSound] = null;
-	        anIntArray1916[currentSound] = 0;
+	        soundLocations[currentSound] = 0;
 	        currentSound++;
 	    }
 	}
@@ -473,7 +473,7 @@ public class StaticAudio {
 	}
 
 	public static int musicVolume = 255;
-	public static int anInt200 = 127;
+	public static int soundEffectVolume = 127;
 	public static boolean aBoolean618 = false;
 	public static int anInt2342;
 
@@ -538,13 +538,13 @@ public class StaticAudio {
 	                effects[j] = effects[1 + j];
 	                soundVolume[j] = soundVolume[1 + j];
 	                soundDelay[j] = soundDelay[1 + j];
-	                anIntArray1916[j] = anIntArray1916[1 + j];
+	                soundLocations[j] = soundLocations[1 + j];
 	            }
 	            index--;
 	        } else {
 	            Effect effect = effects[index];
 	            if(effect == null) {
-	                effect = Effect.method429(CacheArchive.soundEffectCacheArchive, sound[index], 0);
+	                effect = Effect.readSoundEffect(CacheArchive.soundEffectCacheArchive, sound[index], 0);
 	                if(effect == null)
 	                    continue;
 	                soundDelay[index] += effect.delay();
@@ -552,10 +552,10 @@ public class StaticAudio {
 	            }
 	            if(soundDelay[index] < 0) {
 	                int i_10_;
-	                if(anIntArray1916[index] != 0) {
-	                    int i_11_ = 128 * (anIntArray1916[index] & 0xff);
-	                    int i_12_ = 0xff & anIntArray1916[index] >> 16;
-	                    int i_13_ = (anIntArray1916[index] & 0xffb8) >> 8;
+	                if(soundLocations[index] != 0) {
+	                    int i_11_ = 128 * (soundLocations[index] & 0xff);
+	                    int i_12_ = 0xff & soundLocations[index] >> 16;
+	                    int i_13_ = (soundLocations[index] & 0xffb8) >> 8;
 	                    int i_14_ = i_13_ * 128 + 64 + -Player.localPlayer.worldY;
 	                    int i_15_ = i_12_ * 128 + 64 - Player.localPlayer.worldX;
 	                    if(i_15_ < 0)
@@ -569,13 +569,13 @@ public class StaticAudio {
 	                    }
 	                    if(i_16_ < 0)
 	                        i_16_ = 0;
-	                    i_10_ = (i_11_ + -i_16_) * soundEffectVolume / i_11_;
+	                    i_10_ = (i_11_ + -i_16_) * areaSoundEffectVolume / i_11_;
 	                } else
-	                    i_10_ = anInt200;
+	                    i_10_ = soundEffectVolume;
 	                RawSound class40_sub12_sub1 = effect.method428().resample(aDecimator_1289);
 	                RawPcmStream class40_sub9_sub2 = RawPcmStream.create(class40_sub12_sub1, 100, i_10_);
-	                class40_sub9_sub2.method860(-1 + soundVolume[index]);
-	                aPcmStreamMixer_1152.method846(class40_sub9_sub2);
+	                class40_sub9_sub2.setNumLoops(-1 + soundVolume[index]);
+	                pcmStreamMixer.addSubStream(class40_sub9_sub2);
 	                soundDelay[index] = -100;
 	            }
 	        }
@@ -585,7 +585,7 @@ public class StaticAudio {
 	        if(songTimeout < 0)
 	            songTimeout = 0;
 	        if(songTimeout == 0 && musicVolume != 0 && currentSongId != -1)
-	            method414(false, 0, currentSongId, musicVolume, 0, CacheArchive.musicCacheArchive);
+	            playMusicTrack(false, 0, currentSongId, musicVolume, 0, CacheArchive.musicCacheArchive);
 	    }
 	}
 

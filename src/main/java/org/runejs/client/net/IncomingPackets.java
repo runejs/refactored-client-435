@@ -662,7 +662,7 @@ public class IncomingPackets {
                 int songId = incomingPacketBuffer.getUnsignedShortBE();
                 if(songId == 65535)
                     songId = -1;
-                StaticAudio.method975(songTimeout, songId);
+                StaticAudio.playSoundJingle(songTimeout, songId);
                 opcode = -1;
                 return true;
             }
@@ -1255,12 +1255,12 @@ public class IncomingPackets {
                 int delay = incomingPacketBuffer.getUnsignedByte();
                 if (localY >= 0 && localX >= 0 && localY < 104 && localX < 104) {
                     int i_26_ = 1 + radius;
-                    if (Player.localPlayer.pathY[0] >= localY - i_26_ && Player.localPlayer.pathY[0] <= localY + i_26_ && localX - i_26_ <= Player.localPlayer.pathX[0] && localX + i_26_ >= Player.localPlayer.pathX[0] && StaticAudio.soundEffectVolume != 0 && volume > 0 && StaticAudio.currentSound < 50) {
+                    if (Player.localPlayer.pathY[0] >= localY - i_26_ && Player.localPlayer.pathY[0] <= localY + i_26_ && localX - i_26_ <= Player.localPlayer.pathX[0] && localX + i_26_ >= Player.localPlayer.pathX[0] && StaticAudio.areaSoundEffectVolume != 0 && volume > 0 && StaticAudio.currentSound < 50) {
                         StaticAudio.sound[StaticAudio.currentSound] = soundId;
                         StaticAudio.soundVolume[StaticAudio.currentSound] = volume;
                         StaticAudio.soundDelay[StaticAudio.currentSound] = delay;
                         StaticAudio.effects[StaticAudio.currentSound] = null;
-                        StaticAudio.anIntArray1916[StaticAudio.currentSound] = radius + (localX << 8) + (localY << 16);
+                        StaticAudio.soundLocations[StaticAudio.currentSound] = radius + (localX << 8) + (localY << 16);
                         StaticAudio.currentSound++;
                     }
                 }
