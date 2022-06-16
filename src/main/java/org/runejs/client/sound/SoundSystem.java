@@ -96,7 +96,7 @@ public class SoundSystem {
 			SoundSystem.soundVolume[SoundSystem.currentSound] = volume;
 			SoundSystem.soundDelay[SoundSystem.currentSound] = delay;
 			SoundSystem.effects[SoundSystem.currentSound] = null;
-			SoundSystem.soundLocations[SoundSystem.currentSound] = 0;
+			SoundSystem.soundLocations[SoundSystem.currentSound] = location;
 			SoundSystem.currentSound++;
 		}
 	}
