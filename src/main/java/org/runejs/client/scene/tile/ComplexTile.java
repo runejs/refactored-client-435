@@ -14,7 +14,7 @@ public class ComplexTile {
     public int[] triangleB;
     public int rotation;
     public boolean flat = true;
-    public int overlayRGB;
+    public int overlayRgb;
     public int[] triangleHSLA;
     public int[] triangleC;
     public int[] triangleHSLB;
@@ -23,15 +23,15 @@ public class ComplexTile {
     public int[] triangleA;
     public int[] originalVertexY;
     public int[] originalVertexZ;
-    public int underlayRGB;
+    public int underlayRgb;
 
-    public ComplexTile(int tileX, int yA, int yB, int yC, int yD, int tileZ, int rotation, int texture, int shape, int cA, int cAA, int cB, int cBA, int cD, int cDA, int cC, int cCA, int overlayRGB, int underlayRGB) {
+    public ComplexTile(int tileX, int tileZ, int rotation, int texture, int shape, int yA, int yB, int yC, int yD, int cA, int cB, int cC, int cD, int cAA, int cBA, int cCA, int cDA, int overlayRGB, int underlayRGB) {
         if(yA != yB || yA != yD || yA != yC)
             flat = false;
         this.shape = shape;
         this.rotation = rotation;
-        this.underlayRGB = underlayRGB;
-        this.overlayRGB = overlayRGB;
+        this.underlayRgb = underlayRGB;
+        this.overlayRgb = overlayRGB;
         int c = 128;
         int i5 = c / 2;
         int j5 = c / 4;

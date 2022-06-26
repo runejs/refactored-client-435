@@ -90,22 +90,22 @@ public class Scene {
     public int[][][] heightMap;
     public int mapSizeZ;
     public int mapSizeY;
-    public int[][] anIntArrayArray121;
+    public int[][] tileRotations;
     public int[] anIntArray123;
     public int anInt126;
     public int[] anIntArray127;
-    public int[][] anIntArrayArray129;
+    public int[][] tileShapes;
 
     public Scene(int[][][] heightMap) {
         final int length = 104;// was parameter
         final int width = 104;// was parameter
         final int height = 4;// was parameter
         sceneSpawnRequestsCacheCurrentPos = 0;
-        anIntArrayArray121 = new int[][]{{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, {12, 8, 4, 0, 13, 9, 5, 1, 14, 10, 6, 2, 15, 11, 7, 3}, {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0}, {3, 7, 11, 15, 2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12}};
+        tileRotations = new int[][]{{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, {12, 8, 4, 0, 13, 9, 5, 1, 14, 10, 6, 2, 15, 11, 7, 3}, {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0}, {3, 7, 11, 15, 2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12}};
         anIntArray123 = new int[10000];
         anInt126 = 0;
         anIntArray127 = new int[10000];
-        anIntArrayArray129 = new int[][]{new int[16], {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1}, {0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1}, {1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1}};
+        tileShapes = new int[][]{new int[16], {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1}, {0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1}, {1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1}};
         mapSizeZ = height;
         mapSizeX = width;
         mapSizeY = length;
@@ -434,7 +434,7 @@ public class Scene {
                                 int underlayRgb = 0;
 
                                 if(underlayColor2 != -1) {
-                                    underlayRgb = Rasterizer3D.hsl2rgb[MovedStatics.method831(underlayColor2, 96)];
+                                    underlayRgb = Rasterizer3D.hsl2rgb[applyUnderlayLightness(underlayColor2, 96)];
                                 }
 
                                 if(tileOverlayId != 0) {
@@ -468,7 +468,7 @@ public class Scene {
 
                                     int overlayRgb = 0;
                                     if(overlayColor2 != -2) {
-                                        overlayRgb = Rasterizer3D.hsl2rgb[MovedStatics.method420(overlayColor2, 96)];
+                                        overlayRgb = Rasterizer3D.hsl2rgb[applyOverlayLightness(overlayColor2, 96)];
                                     }
 
                                     if(overlay.secondaryColor != -1) {
@@ -483,27 +483,27 @@ public class Scene {
                                         }
 
                                         overlayColor2 = MovedStatics.hslToInt(h, s, overlay.secondaryLightness);
-                                        overlayRgb = Rasterizer3D.hsl2rgb[MovedStatics.method420(overlayColor2, 96)];
+                                        overlayRgb = Rasterizer3D.hsl2rgb[applyOverlayLightness(overlayColor2, 96)];
                                     }
 
                                     scene.addTile(plane, tileX, tileY, tileUnderlayPath, tileOverlayRotation, overlayTextureId, currentTileHeight, nextXTileHeight, nextXYTileHeight, nextYTileHeight,
-                                            MovedStatics.method831(underlayColor1, currentTileLightness),
-                                            MovedStatics.method831(underlayColor1, nextXTileLightness),
-                                            MovedStatics.method831(underlayColor1, nextXYTileLightness),
-                                            MovedStatics.method831(underlayColor1, nextYTileLightness),
-                                            MovedStatics.method420(overlayColor1, currentTileLightness),
-                                            MovedStatics.method420(overlayColor1, nextXTileLightness),
-                                            MovedStatics.method420(overlayColor1, nextXYTileLightness),
-                                            MovedStatics.method420(overlayColor1, nextYTileLightness),
+                                            applyUnderlayLightness(underlayColor1, currentTileLightness),
+                                            applyUnderlayLightness(underlayColor1, nextXTileLightness),
+                                            applyUnderlayLightness(underlayColor1, nextXYTileLightness),
+                                            applyUnderlayLightness(underlayColor1, nextYTileLightness),
+                                            applyOverlayLightness(overlayColor1, currentTileLightness),
+                                            applyOverlayLightness(overlayColor1, nextXTileLightness),
+                                            applyOverlayLightness(overlayColor1, nextXYTileLightness),
+                                            applyOverlayLightness(overlayColor1, nextYTileLightness),
                                             underlayRgb,
                                             overlayRgb);
                                 } else {
                                     scene.addTile(plane, tileX, tileY, 0, 0, -1,
                                             currentTileHeight, nextXTileHeight, nextXYTileHeight, nextYTileHeight,
-                                            MovedStatics.method831(underlayColor1, currentTileLightness),
-                                            MovedStatics.method831(underlayColor1, nextXTileLightness),
-                                            MovedStatics.method831(underlayColor1, nextXYTileLightness),
-                                            MovedStatics.method831(underlayColor1, nextYTileLightness),
+                                            applyUnderlayLightness(underlayColor1, currentTileLightness),
+                                            applyUnderlayLightness(underlayColor1, nextXTileLightness),
+                                            applyUnderlayLightness(underlayColor1, nextXYTileLightness),
+                                            applyUnderlayLightness(underlayColor1, nextYTileLightness),
                                             0, 0, 0, 0,
                                             underlayRgb,
                                             0);
@@ -660,6 +660,36 @@ public class Scene {
 
     }
 
+    public static int applyUnderlayLightness(int color, int lightness) {
+        if(color == -1)
+            return 12345678;
+        lightness = (0x7f & color) * lightness / 128;
+        if(lightness < 2)
+            lightness = 2;
+        else if(lightness > 126)
+            lightness = 126;
+        return lightness + (color & 0xff80);
+    }
+
+    public static int applyOverlayLightness(int color, int lightness) {
+        if (color == -2)
+            return 12345678;
+        if (color == -1) {
+            if (lightness < 0)
+                lightness = 0;
+            else if (lightness > 127)
+                lightness = 127;
+            lightness = -lightness + 127;
+            return lightness;
+        }
+        lightness = lightness * (color & 0x7f) / 128;
+        if (lightness < 2)
+            lightness = 2;
+        else if (lightness > 126)
+            lightness = 126;
+        return (0xff80 & color) + lightness;
+    }
+
     public int method91(int arg0, int arg1, int arg2) {
         SceneTile sceneTile = tileArray[arg0][arg1][arg2];
         if (sceneTile == null || sceneTile.wallDecoration == null) {
@@ -718,42 +748,42 @@ public class Scene {
         }
     }
 
-    public void method96(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        SceneTile sceneTile = tileArray[arg3][arg4][arg5];
+    public void method96(int[] pixels, int arg1, int arg2, int tilePlane, int tileX, int tileY) {
+        SceneTile sceneTile = tileArray[tilePlane][tileX][tileY];
         if (sceneTile != null) {
             GenericTile genericTile = sceneTile.plainTile;
             if (genericTile == null) {
                 ComplexTile complexTile = sceneTile.shapedTile;
                 if (complexTile != null) {
-                    int i = complexTile.shape;
-                    int i_16_ = complexTile.rotation;
-                    int i_17_ = complexTile.underlayRGB;
-                    int i_18_ = complexTile.overlayRGB;
-                    int[] is = anIntArrayArray129[i];
-                    int[] is_19_ = anIntArrayArray121[i_16_];
-                    int i_20_ = 0;
-                    if (i_17_ == 0) {
-                        for (int i_22_ = 0; i_22_ < 4; i_22_++) {
-                            if (is[is_19_[i_20_++]] != 0) {
-                                arg0[arg1] = i_18_;
+                    int shape = complexTile.shape;
+                    int rotation = complexTile.rotation;
+                    int underlayRgb = complexTile.underlayRgb;
+                    int overlayRgb = complexTile.overlayRgb;
+                    int[] shapeArr = tileShapes[shape];
+                    int[] rotationArr = tileRotations[rotation];
+                    int rotationIndex = 0;
+                    if (underlayRgb == 0) {
+                        for (int plane = 0; plane < 4; plane++) {
+                            if (shapeArr[rotationArr[rotationIndex++]] != 0) {
+                                pixels[arg1] = overlayRgb;
                             }
-                            if (is[is_19_[i_20_++]] != 0) {
-                                arg0[arg1 + 1] = i_18_;
+                            if (shapeArr[rotationArr[rotationIndex++]] != 0) {
+                                pixels[arg1 + 1] = overlayRgb;
                             }
-                            if (is[is_19_[i_20_++]] != 0) {
-                                arg0[arg1 + 2] = i_18_;
+                            if (shapeArr[rotationArr[rotationIndex++]] != 0) {
+                                pixels[arg1 + 2] = overlayRgb;
                             }
-                            if (is[is_19_[i_20_++]] != 0) {
-                                arg0[arg1 + 3] = i_18_;
+                            if (shapeArr[rotationArr[rotationIndex++]] != 0) {
+                                pixels[arg1 + 3] = overlayRgb;
                             }
                             arg1 += arg2;
                         }
                     } else {
-                        for (int i_21_ = 0; i_21_ < 4; i_21_++) {
-                            arg0[arg1] = is[is_19_[i_20_++]] == 0 ? i_17_ : i_18_;
-                            arg0[arg1 + 1] = is[is_19_[i_20_++]] == 0 ? i_17_ : i_18_;
-                            arg0[arg1 + 2] = is[is_19_[i_20_++]] == 0 ? i_17_ : i_18_;
-                            arg0[arg1 + 3] = is[is_19_[i_20_++]] == 0 ? i_17_ : i_18_;
+                        for (int plane = 0; plane < 4; plane++) {
+                            pixels[arg1] = shapeArr[rotationArr[rotationIndex++]] == 0 ? underlayRgb : overlayRgb;
+                            pixels[arg1 + 1] = shapeArr[rotationArr[rotationIndex++]] == 0 ? underlayRgb : overlayRgb;
+                            pixels[arg1 + 2] = shapeArr[rotationArr[rotationIndex++]] == 0 ? underlayRgb : overlayRgb;
+                            pixels[arg1 + 3] = shapeArr[rotationArr[rotationIndex++]] == 0 ? underlayRgb : overlayRgb;
                             arg1 += arg2;
                         }
                     }
@@ -761,11 +791,11 @@ public class Scene {
             } else {
                 int i = genericTile.rgbColor;
                 if (i != 0) {
-                    for (int i_15_ = 0; i_15_ < 4; i_15_++) {
-                        arg0[arg1] = i;
-                        arg0[arg1 + 1] = i;
-                        arg0[arg1 + 2] = i;
-                        arg0[arg1 + 3] = i;
+                    for (int plane = 0; plane < 4; plane++) {
+                        pixels[arg1] = i;
+                        pixels[arg1 + 1] = i;
+                        pixels[arg1 + 2] = i;
+                        pixels[arg1 + 3] = i;
                         arg1 += arg2;
                     }
                 }
@@ -979,7 +1009,9 @@ public class Scene {
             }
             tileArray[plane][x][y].plainTile = genericTile;
         } else if (shape == 1) {
-            GenericTile genericTile = new GenericTile(colourA, colourB, colourC, colourD, textureId, overlayRGB, vertexHeightSW == vertexHeightSE && vertexHeightSW == vertexHeightNE && vertexHeightSW == vertexHeightNW);
+            GenericTile genericTile = new GenericTile(
+                    colourA, colourB, colourC, colourD, textureId, overlayRGB,
+                    vertexHeightSW == vertexHeightSE && vertexHeightSW == vertexHeightNE && vertexHeightSW == vertexHeightNW);
             for (int _z = plane; _z >= 0; _z--) {
                 if (tileArray[_z][x][y] == null) {
                     tileArray[_z][x][y] = new SceneTile(_z, x, y);
@@ -987,7 +1019,8 @@ public class Scene {
             }
             tileArray[plane][x][y].plainTile = genericTile;
         } else {
-            ComplexTile complexTile = new ComplexTile(x, vertexHeightSW, vertexHeightSE, vertexHeightNW, vertexHeightNE, y, clippingPathRotation, textureId, shape, cA, colourA, cB, colourB, cD, colourD, cC, colourC, overlayRGB, underlayRGB);
+            ComplexTile complexTile = new ComplexTile(
+                    x, y, clippingPathRotation, textureId, shape, vertexHeightSW, vertexHeightSE, vertexHeightNW, vertexHeightNE, cA, cB, cC, cD, colourA, colourB, colourC, colourD, overlayRGB, underlayRGB);
             for (int _z = plane; _z >= 0; _z--) {
                 if (tileArray[_z][x][y] == null) {
                     tileArray[_z][x][y] = new SceneTile(_z, x, y);

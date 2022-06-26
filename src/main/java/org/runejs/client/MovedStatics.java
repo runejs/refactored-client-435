@@ -780,25 +780,6 @@ public class MovedStatics {
         }
     }
 
-    public static int method420(int arg0, int arg1) {
-        if (arg0 == -2)
-            return 12345678;
-        if (arg0 == -1) {
-            if (arg1 < 0)
-                arg1 = 0;
-            else if (arg1 > 127)
-                arg1 = 127;
-            arg1 = -arg1 + 127;
-            return arg1;
-        }
-        arg1 = arg1 * (arg0 & 0x7f) / 128;
-        if (arg1 < 2)
-            arg1 = 2;
-        else if (arg1 > 126)
-            arg1 = 126;
-        return (0xff80 & arg0) + arg1;
-    }
-
     public static void addFriend(long name) {
         if(name != 0L) {
             if(Player.friendsCount >= 100 && Class44.anInt1049 != 1 || Player.friendsCount >= 200) {
@@ -1204,14 +1185,4 @@ public class MovedStatics {
         return saturation / 2 + (lightness / 32 << 7) + (hue / 4 << 10);
     }
 
-    public static int method831(int arg0, int arg1) {
-        if(arg0 == -1)
-            return 12345678;
-        arg1 = (0x7f & arg0) * arg1 / 128;
-        if(arg1 < 2)
-            arg1 = 2;
-        else if(arg1 > 126)
-            arg1 = 126;
-        return arg1 + (arg0 & 0xff80);
-    }
 }
