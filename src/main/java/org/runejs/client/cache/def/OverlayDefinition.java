@@ -9,10 +9,8 @@ public class OverlayDefinition extends CachedNode {
     public static int placementY;
     public static int crossIndex = 0;
     public static int anInt2321 = 0;
-    public static byte[][][] tile_flags = new byte[4][104][104];
     public static int hoveredWidgetChildId = -1;
     public static int[][][] constructMapTiles = new int[4][13][13];
-    public static byte[][][] tile_underlay_path;
     public static int gameServerPort;
     public static int anInt2342;
     public static volatile long lastClick = 0L;
@@ -22,14 +20,14 @@ public class OverlayDefinition extends CachedNode {
 
     public int saturation;
     public int texture;
-    public int otherSaturation;
+    public int secondarySaturation;
     public int hue;
-    public int otherHue;
+    public int secondaryHue;
     public int secondaryColor;
     public int lightness;
     public boolean hideOverlay = true;
     public int color;
-    public int otherLightness;
+    public int secondaryLightness;
 
     public OverlayDefinition() {
         texture = -1;
@@ -78,9 +76,9 @@ public class OverlayDefinition extends CachedNode {
     public void calculateHsl() {
         if (secondaryColor != -1) {
             calculateHsl(secondaryColor);
-            otherSaturation = saturation;
-            otherLightness = lightness;
-            otherHue = hue;
+            secondarySaturation = saturation;
+            secondaryLightness = lightness;
+            secondaryHue = hue;
         }
         calculateHsl(color);
     }

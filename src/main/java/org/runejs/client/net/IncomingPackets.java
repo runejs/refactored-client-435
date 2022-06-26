@@ -18,6 +18,7 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
+import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.GenericTile;
@@ -456,11 +457,11 @@ public class IncomingPackets {
                     for(int i_52_ = OverlayDefinition.placementY; 8 + OverlayDefinition.placementY > i_52_; i_52_++) {
                         if(Wall.groundItems[Player.worldLevel][i_51_][i_52_] != null) {
                             Wall.groundItems[Player.worldLevel][i_51_][i_52_] = null;
-                            FramemapDefinition.spawnGroundItem(i_52_, i_51_);
+                            AnimationBaseDefinition.spawnGroundItem(i_52_, i_51_);
                         }
                     }
                 }
-                for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
+                for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.next(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909()) {
                     if(class40_sub3.anInt2039 >= MovedStatics.placementX && MovedStatics.placementX + 8 > class40_sub3.anInt2039 && class40_sub3.anInt2038 >= OverlayDefinition.placementY && OverlayDefinition.placementY + 8 > class40_sub3.anInt2038 && Player.worldLevel == class40_sub3.anInt2018)
                         class40_sub3.anInt2031 = 0;
                 }
@@ -703,7 +704,7 @@ public class IncomingPackets {
                 return true;
             }
             if(opcode == PacketType.SET_SYSTEM_UPDATE_TIME.getOpcode()) {
-                Class40_Sub5_Sub15.systemUpdateTime = incomingPacketBuffer.getUnsignedShortLE() * 30;
+                AnimationFrameGroup.systemUpdateTime = incomingPacketBuffer.getUnsignedShortLE() * 30;
                 opcode = -1;
                 return true;
             }
@@ -876,24 +877,24 @@ public class IncomingPackets {
                     HuffmanEncoding.anInt1545 = incomingPacketBuffer.getUnsignedShortBE();
                 if(Player.headIconDrawType >= 2 && Player.headIconDrawType <= 6) {
                     if(Player.headIconDrawType == 2) {
-                        Class35.anInt1730 = 64;
+                        TextureStore.anInt1730 = 64;
                         Landscape.anInt1170 = 64;
                     }
                     if(Player.headIconDrawType == 3) {
-                        Class35.anInt1730 = 64;
+                        TextureStore.anInt1730 = 64;
                         Landscape.anInt1170 = 0;
                     }
                     if(Player.headIconDrawType == 4) {
-                        Class35.anInt1730 = 64;
+                        TextureStore.anInt1730 = 64;
                         Landscape.anInt1170 = 128;
                     }
                     if(Player.headIconDrawType == 5) {
                         Landscape.anInt1170 = 64;
-                        Class35.anInt1730 = 0;
+                        TextureStore.anInt1730 = 0;
                     }
                     if(Player.headIconDrawType == 6) {
                         Landscape.anInt1170 = 64;
-                        Class35.anInt1730 = 128;
+                        TextureStore.anInt1730 = 128;
                     }
                     Player.headIconDrawType = 2;
                     ProducingGraphicsBuffer.anInt1637 = incomingPacketBuffer.getUnsignedShortBE();
@@ -1201,10 +1202,10 @@ public class IncomingPackets {
             int i_5_ = Npc.anIntArray3304[i_3_];
             int i_6_ = incomingPacketBuffer.getUnsignedShortLE();
             if (i_1_ >= 0 && i_0_ >= 0 && i_1_ < 103 && i_0_ < 103) {
-                int i_7_ = MovedStatics.tile_height[Player.worldLevel][i_1_][i_0_];
-                int i_8_ = MovedStatics.tile_height[Player.worldLevel][i_1_ + 1][i_0_];
-                int i_9_ = MovedStatics.tile_height[Player.worldLevel][1 + i_1_][1 + i_0_];
-                int i_10_ = MovedStatics.tile_height[Player.worldLevel][i_1_][i_0_ + 1];
+                int i_7_ = Scene.tileHeights[Player.worldLevel][i_1_][i_0_];
+                int i_8_ = Scene.tileHeights[Player.worldLevel][i_1_ + 1][i_0_];
+                int i_9_ = Scene.tileHeights[Player.worldLevel][1 + i_1_][1 + i_0_];
+                int i_10_ = Scene.tileHeights[Player.worldLevel][i_1_][i_0_ + 1];
                 if (i_5_ == 0) {
                     Wall wall = Npc.currentScene.method126(Player.worldLevel, i_1_, i_0_);
                     if (wall != null) {
@@ -1279,7 +1280,7 @@ public class IncomingPackets {
                     i_28_ = 128 * i_28_ + 64;
                     i_27_ = i_27_ * 128 + 64;
                     Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = new Class40_Sub5_Sub17_Sub6(i_29_, Player.worldLevel, i_27_, i_28_, -i_30_ + Class37.getFloorDrawHeight(Player.worldLevel, i_27_, i_28_), i_31_, MovedStatics.pulseCycle);
-                    Class57.aLinkedList_1332.pushBack(class40_sub5_sub17_sub6, -111);
+                    Class57.aLinkedList_1332.pushBack(class40_sub5_sub17_sub6);
                 }
             } else if (opcode == 99) {
                 int i = incomingPacketBuffer.getUnsignedByte();
@@ -1291,13 +1292,13 @@ public class IncomingPackets {
                 if (i_32_ >= 0 && i_33_ >= 0 && i_32_ < 104 && i_33_ < 104) {
                     LinkedList linkedList = Wall.groundItems[Player.worldLevel][i_32_][i_33_];
                     if (linkedList != null) {
-                        for (Item item = (Item) linkedList.method902((byte) -90); item != null; item = (Item) linkedList.method909(-4)) {
+                        for (Item item = (Item) linkedList.next(); item != null; item = (Item) linkedList.method909()) {
                             if (item.itemId == (i_34_ & 0x7fff) && i_35_ == item.itemCount) {
                                 item.itemCount = i_36_;
                                 break;
                             }
                         }
-                        FramemapDefinition.spawnGroundItem(i_33_, i_32_);
+                        AnimationBaseDefinition.spawnGroundItem(i_33_, i_32_);
                     }
                 }
             } else if (opcode == 143) { // remove landscape object
@@ -1334,10 +1335,10 @@ public class IncomingPackets {
                         class40_sub5_sub17_sub4_sub1 = Player.localPlayer;
                     if (class40_sub5_sub17_sub4_sub1 != null) {
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_55_);
-                        int i_57_ = MovedStatics.tile_height[Player.worldLevel][i_52_][i_51_];
-                        int i_58_ = MovedStatics.tile_height[Player.worldLevel][i_52_][1 + i_51_];
-                        int i_59_ = MovedStatics.tile_height[Player.worldLevel][1 + i_52_][1 + i_51_];
-                        int i_60_ = MovedStatics.tile_height[Player.worldLevel][i_52_ + 1][i_51_];
+                        int i_57_ = Scene.tileHeights[Player.worldLevel][i_52_][i_51_];
+                        int i_58_ = Scene.tileHeights[Player.worldLevel][i_52_][1 + i_51_];
+                        int i_59_ = Scene.tileHeights[Player.worldLevel][1 + i_52_][1 + i_51_];
+                        int i_60_ = Scene.tileHeights[Player.worldLevel][i_52_ + 1][i_51_];
                         Model class40_sub5_sub17_sub5 = gameObjectDefinition.createTerrainObjectModel(i_59_, i_58_, i_47_, i_57_, i_48_, i_60_);
                         if (class40_sub5_sub17_sub5 != null) {
                             if (i < i_54_) {
@@ -1378,15 +1379,15 @@ public class IncomingPackets {
                     if (i_65_ >= 0 && i_66_ >= 0 && i_65_ < 104 && i_66_ < 104) {
                         LinkedList linkedList = Wall.groundItems[Player.worldLevel][i_65_][i_66_];
                         if (linkedList != null) {
-                            for (Item item = (Item) linkedList.method902((byte) -90); item != null; item = (Item) linkedList.method909(-4)) {
+                            for (Item item = (Item) linkedList.next(); item != null; item = (Item) linkedList.method909()) {
                                 if ((0x7fff & i_67_) == item.itemId) {
                                     item.remove();
                                     break;
                                 }
                             }
-                            if (linkedList.method902((byte) -90) == null)
+                            if (linkedList.next() == null)
                                 Wall.groundItems[Player.worldLevel][i_65_][i_66_] = null;
-                            FramemapDefinition.spawnGroundItem(i_66_, i_65_);
+                            AnimationBaseDefinition.spawnGroundItem(i_66_, i_65_);
                         }
                     }
                 } else if (opcode == 1) {
@@ -1410,7 +1411,7 @@ public class IncomingPackets {
                         Projectile projectile = new Projectile(graphicsId, Player.worldLevel, startX, startY, Class37.getFloorDrawHeight(Player.worldLevel, startX, startY) + -startHeight, delay + MovedStatics.pulseCycle, speed + MovedStatics.pulseCycle, startSlope, startDistance, entityIndex, endHeight);
                         endY = 128 * endY + 64;
                         projectile.trackTarget(delay + MovedStatics.pulseCycle, 0, endY, -endHeight + Class37.getFloorDrawHeight(Player.worldLevel, endX, endY), endX);
-                        Class43.projectileQueue.pushBack(projectile, -73);
+                        Class43.projectileQueue.pushBack(projectile);
                     }
                 } else {
                     if (opcode == 19) { // update world item amount
@@ -1426,8 +1427,8 @@ public class IncomingPackets {
                             item.itemCount = i;
                             if (Wall.groundItems[Player.worldLevel][i_83_][i_84_] == null)
                                 Wall.groundItems[Player.worldLevel][i_83_][i_84_] = new LinkedList();
-                            Wall.groundItems[Player.worldLevel][i_83_][i_84_].pushBack(item, 64);
-                            FramemapDefinition.spawnGroundItem(i_84_, i_83_);
+                            Wall.groundItems[Player.worldLevel][i_83_][i_84_].pushBack(item);
+                            AnimationBaseDefinition.spawnGroundItem(i_84_, i_83_);
                         }
                     } else if (opcode == 175) { // add world item
                         int i = incomingPacketBuffer.getUnsignedShortLE();
@@ -1441,8 +1442,8 @@ public class IncomingPackets {
                             item.itemId = i;
                             if (Wall.groundItems[Player.worldLevel][i_88_][i_87_] == null)
                                 Wall.groundItems[Player.worldLevel][i_88_][i_87_] = new LinkedList();
-                            Wall.groundItems[Player.worldLevel][i_88_][i_87_].pushBack(item, -118);
-                            FramemapDefinition.spawnGroundItem(i_87_, i_88_);
+                            Wall.groundItems[Player.worldLevel][i_88_][i_87_].pushBack(item);
+                            AnimationBaseDefinition.spawnGroundItem(i_87_, i_88_);
                         }
                     }
                 }

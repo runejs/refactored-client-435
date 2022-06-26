@@ -125,7 +125,7 @@ public class Main extends GameShell {
                 int opacity = gameInterface.opacity;
                 if (gameInterface == Wall.aGameInterface_353) {
                     opacity = 128;
-                    GameInterface gameInterface_3_ = FramemapDefinition.method878(gameInterface);
+                    GameInterface gameInterface_3_ = AnimationBaseDefinition.method878(gameInterface);
                     int[] is = Class13.method247(gameInterface_3_, (byte) 117);
                     int[] is_4_ = Class13.method247(gameInterface, (byte) 97);
                     int i_5_ = Landscape.mouseY + -MovedStatics.anInt2621 + is_4_[1] - is[1];
@@ -175,7 +175,7 @@ public class Main extends GameShell {
                                     if (gameInterface.imageY != null && i_7_ < 20) {
                                         ImageRGB imageRGB = gameInterface.method638((byte) 78, i_7_);
                                         if (imageRGB == null) {
-                                            if (FramemapDefinition.aBoolean2177)
+                                            if (AnimationBaseDefinition.aBoolean2177)
                                                 result = false;
                                         } else
                                             imageRGB.drawImage(i_10_, i_11_);
@@ -263,7 +263,7 @@ public class Main extends GameShell {
                     } else if (gameInterface.type == GameInterfaceType.TEXT) {
                         TypeFace font = gameInterface.getTypeFace();
                         if (font == null) {
-                            if (FramemapDefinition.aBoolean2177)
+                            if (AnimationBaseDefinition.aBoolean2177)
                                 result = false;
                         } else {
                             String text = gameInterface.disabledText;
@@ -369,7 +369,7 @@ public class Main extends GameShell {
                                     } else
                                         spriteRgb.drawImageWithTexture(gameInterface.originalWidth / 2 + absoluteX, gameInterface.originalHeight / 2 + absoluteY, gameInterface.textureId, i_26_);
                                 }
-                            } else if (FramemapDefinition.aBoolean2177)
+                            } else if (AnimationBaseDefinition.aBoolean2177)
                                 result = false;
                             if (gameInterface.itemId != -1) {
                                 // TODO find out why this renders when maxWidth == 33
@@ -384,7 +384,7 @@ public class Main extends GameShell {
                             ImageRGB imageRGB = gameInterface.getImageRgb(ItemDefinition.checkForAlternateAction(gameInterface));
                             if (imageRGB != null)
                                 imageRGB.drawImage(absoluteX, absoluteY);
-                            else if (FramemapDefinition.aBoolean2177)
+                            else if (AnimationBaseDefinition.aBoolean2177)
                                 result = false;
                         }
                     } else if (gameInterface.type == GameInterfaceType.MODEL) {
@@ -404,7 +404,7 @@ public class Main extends GameShell {
                                 model = gameInterface.getModelForInterface(animationSequence, gameInterface.animationFrame, applyAlternateAction, Player.localPlayer.playerAppearance);
                             }
                             // TODO FramemapDefinition.aBoolean2177 might be object/model/sprite doesnt exist
-                            if (model == null && FramemapDefinition.aBoolean2177)
+                            if (model == null && AnimationBaseDefinition.aBoolean2177)
                                 result = false;
                         } else if (gameInterface.modelId != 0) {
                             model = Player.localPlayer.getRotatedModel();
@@ -452,7 +452,7 @@ public class Main extends GameShell {
                         if (gameInterface.type == GameInterfaceType.TEXT_INVENTORY) {
                             TypeFace font = gameInterface.getTypeFace();
                             if (font == null) {
-                                if (FramemapDefinition.aBoolean2177)
+                                if (AnimationBaseDefinition.aBoolean2177)
                                     result = false;
                                 continue;
                             }
@@ -695,14 +695,14 @@ public class Main extends GameShell {
         Class51.aLong1203 = 0L;
         Class12.mouseCapturer.coord = 0;
         Class22_Sub2.duplicateClickCount = 0;
-        Class35.aBoolean1735 = true;
+        TextureStore.aBoolean1735 = true;
         MovedStatics.aBoolean571 = true;
         MovedStatics.method540();
         IncomingPackets.secondLastOpcode = -1;
         MovedStatics.menuOpen = false;
         IncomingPackets.lastOpcode = -1;
         IncomingPackets.opcode = -1;
-        Class40_Sub5_Sub15.systemUpdateTime = 0;
+        AnimationFrameGroup.systemUpdateTime = 0;
         IncomingPackets.cyclesSinceLastPacket = 0;
         Player.headIconDrawType = 0;
         SceneCluster.packetBuffer.currentPosition = 0;
@@ -842,7 +842,7 @@ public class Main extends GameShell {
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404();
         MovedStatics.method450((byte) -67);
-        ((Class35) Rasterizer3D.anInterface3_2939).method425((byte) 6, MovedStatics.anInt199);
+        ((TextureStore) Rasterizer3D.textureStore).method425((byte) 6, MovedStatics.anInt199);
         KeyFocusListener.draw3dScreen();
 
         if(ScreenController.frameMode == ScreenMode.FIXED) {
@@ -1254,8 +1254,8 @@ public class Main extends GameShell {
     }
 
     public static void updateGame() {
-        if(Class40_Sub5_Sub15.systemUpdateTime > 1)
-            Class40_Sub5_Sub15.systemUpdateTime--;
+        if(AnimationFrameGroup.systemUpdateTime > 1)
+            AnimationFrameGroup.systemUpdateTime--;
         if(SceneCluster.idleLogout > 0)
             SceneCluster.idleLogout--;
         if(Class37.aBoolean871) {
@@ -1377,13 +1377,13 @@ public class Main extends GameShell {
                     SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
                     SceneCluster.packetBuffer.putShortBE(Class65.cameraVertical);
                 }
-                if(MovedStatics.aBoolean571 && !Class35.aBoolean1735) {
-                    Class35.aBoolean1735 = true;
+                if(MovedStatics.aBoolean571 && !TextureStore.aBoolean1735) {
+                    TextureStore.aBoolean1735 = true;
                     SceneCluster.packetBuffer.putPacket(160);
                     SceneCluster.packetBuffer.putByte(1);
                 }
-                if(!MovedStatics.aBoolean571 && Class35.aBoolean1735) {
-                    Class35.aBoolean1735 = false;
+                if(!MovedStatics.aBoolean571 && TextureStore.aBoolean1735) {
+                    TextureStore.aBoolean1735 = false;
                     SceneCluster.packetBuffer.putPacket(160);
                     SceneCluster.packetBuffer.putByte(0);
                 }
@@ -1417,14 +1417,14 @@ public class Main extends GameShell {
                         if(SceneTile.activeInterfaceType != 0) {
                             Buffer.lastItemDragTime++;
                             if(Class13.mouseX > Renderable.anInt2869 + 5 || Renderable.anInt2869 + -5 > Class13.mouseX || ItemDefinition.anInt2798 + 5 < Landscape.mouseY || ItemDefinition.anInt2798 - 5 > Landscape.mouseY)
-                                Class40_Sub5_Sub15.lastItemDragged = true;
+                                AnimationFrameGroup.lastItemDragged = true;
                             if(MouseHandler.currentMouseButtonPressed == 0) {
                                 if(SceneTile.activeInterfaceType == 3)
                                     ChatBox.redrawChatbox = true;
                                 if(SceneTile.activeInterfaceType == 2)
                                     GameInterface.redrawTabArea = true;
                                 SceneTile.activeInterfaceType = 0;
-                                if(Class40_Sub5_Sub15.lastItemDragged && Buffer.lastItemDragTime >= 5) {
+                                if(AnimationFrameGroup.lastItemDragged && Buffer.lastItemDragTime >= 5) {
                                     RSRuntimeException.lastActiveInvInterface = -1;
                                     Class43.processRightClick();
                                     if(RSRuntimeException.lastActiveInvInterface == Class48.modifiedWidgetId && Class55.mouseInvInterfaceIndex != GroundItemTile.selectedInventorySlot) {

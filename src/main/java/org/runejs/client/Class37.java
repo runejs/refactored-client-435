@@ -1,8 +1,8 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.def.ActorDefinition;
+import org.runejs.client.cache.def.AnimationFrameGroup;
 import org.runejs.client.cache.def.GameObjectDefinition;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.frame.ScreenController;
@@ -14,8 +14,8 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.IncomingPackets;
-import org.runejs.client.node.HashTable;
 import org.runejs.client.scene.GroundItemTile;
+import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.SceneTile;
@@ -37,12 +37,12 @@ public class Class37 {
         if(groundX < 0 || groundY < 0 || groundX > 103 || groundY > 103)
             return 0;
         int groundZ = plane;
-        if(groundZ < 3 && (OverlayDefinition.tile_flags[1][groundX][groundY] & 0x2) == 2)
+        if(groundZ < 3 && (Scene.tileFlags[1][groundX][groundY] & 0x2) == 2)
             groundZ++;
         int _x = 0x7f & x;
         int _y = y & 0x7f;
-        int i2 = (-_x + 128) * MovedStatics.tile_height[groundZ][groundX][groundY] + _x * MovedStatics.tile_height[groundZ][groundX + 1][groundY] >> 7;
-        int j2 = _x * MovedStatics.tile_height[groundZ][1 + groundX][1 + groundY] + MovedStatics.tile_height[groundZ][groundX][1 + groundY] * (128 + -_x) >> 7;
+        int i2 = (-_x + 128) * Scene.tileHeights[groundZ][groundX][groundY] + _x * Scene.tileHeights[groundZ][groundX + 1][groundY] >> 7;
+        int j2 = _x * Scene.tileHeights[groundZ][1 + groundX][1 + groundY] + Scene.tileHeights[groundZ][groundX][1 + groundY] * (128 + -_x) >> 7;
         return (128 + -_y) * i2 + j2 * _y >> 7;
     }
 
@@ -59,7 +59,7 @@ public class Class37 {
         IncomingPackets.thirdLastOpcode = -1;
         MovedStatics.destinationX = 0;
         MovedStatics.minimapState = 0;
-        Class40_Sub5_Sub15.systemUpdateTime = 0;
+        AnimationFrameGroup.systemUpdateTime = 0;
         IncomingPackets.incomingPacketBuffer.currentPosition = arg0;
         for(int i = 0; Player.trackedPlayers.length > i; i++) {
             if(Player.trackedPlayers[i] != null)
@@ -184,7 +184,7 @@ public class Class37 {
     }
 
     public static void method436() {
-        for(Class40_Sub2 class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method909(-4)) {
+        for(Class40_Sub2 class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.next(); class40_sub2 != null; class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method909()) {
             if(class40_sub2.aClass40_Sub9_Sub2_2001 != null) {
                 Class49.aClass40_Sub9_Sub1_1152.method853(class40_sub2.aClass40_Sub9_Sub2_2001);
                 class40_sub2.aClass40_Sub9_Sub2_2001 = null;
@@ -221,7 +221,7 @@ public class Class37 {
             class40_sub2.gameObjectDefinition = arg5;
             class40_sub2.method528();
         }
-        MovedStatics.aLinkedList_2268.pushBack(class40_sub2, -126);
+        MovedStatics.aLinkedList_2268.pushBack(class40_sub2);
         if(class40_sub2.anIntArray2005 != null)
             class40_sub2.anInt2014 = (int) ((double) (class40_sub2.anInt2002 - class40_sub2.anInt2012) * Math.random()) + class40_sub2.anInt2012;
     }

@@ -14,7 +14,7 @@ public class Class57 {
     public static void method975(int songTimeout, int songId) {
         if(RSCanvas.musicVolume != 0 && songId != -1) {
             Class33.method414(false, 1, songId, RSCanvas.musicVolume, 0, CacheArchive.jingleCacheArchive);
-            Class35.songTimeout = songTimeout;
+            TextureStore.songTimeout = songTimeout;
         }
     }
 }

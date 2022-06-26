@@ -1,5 +1,6 @@
 package org.runejs.client.scene.tile;
 
+import org.runejs.client.cache.def.AnimationFrameGroup;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.def.ItemDefinition;
@@ -63,7 +64,7 @@ public class WallDecoration {
         }
         if (Class51.gameStatusCode == 20) {
             int drawY = 40;
-            Class40_Sub5_Sub15.loginScreenBox.drawImage(0, 0);
+            AnimationFrameGroup.loginScreenBox.drawImage(0, 0);
             fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineOne, 180, drawY, 16776960, true);
             drawY += 15;
             fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineTwo, 180, drawY, 16776960, true);
@@ -77,7 +78,7 @@ public class WallDecoration {
             drawY += 15;
         }
         if (Class51.gameStatusCode == 10) {
-            Class40_Sub5_Sub15.loginScreenBox.drawImage(0, 0);
+            AnimationFrameGroup.loginScreenBox.drawImage(0, 0);
             if (Class26.loginScreenState == 0) {
                 /*fontBold.drawShadowedStringCenter(English.welcomeTo, 180, 80, 16776960, true);
                 int drawX = 100;
@@ -184,6 +185,7 @@ public class WallDecoration {
             ProducingGraphicsBuffer.muteButton.drawGraphics(ScreenController.drawWidth-42, ScreenController.drawHeight-42, graphics);
 
             MovedStatics.loginBoxGraphics.drawGraphics(offsetX + 202, offsetY + 171, graphics);
+            System.out.println("This is the damn number " + (offsetX) + "," + (offsetY));
             Class8.flameLeftBackground.drawGraphics(offsetX, offsetY, graphics);
             GameObject.flameRightBackground.drawGraphics(offsetX + 637, offsetY, graphics);
 

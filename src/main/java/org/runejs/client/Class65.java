@@ -1,12 +1,7 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.def.OverlayDefinition;
-import org.runejs.client.cache.media.AnimationSequence;
-import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.Rasterizer3D;
-import org.runejs.client.scene.InteractiveObject;
-import org.runejs.client.scene.tile.FloorDecoration;
-import org.runejs.client.scene.tile.SceneTile;
+import org.runejs.client.scene.Scene;
 
 public class Class65 {
     public static int cameraVertical;
@@ -36,18 +31,18 @@ public class Class65 {
     }
 
     public static void method1020() {
-        Class59.anIntArray1398 = new int[104];
-        OverlayDefinition.tile_underlay_path = new byte[4][104][104];
+        Scene.lightnessBuffer = new int[104];
+        Scene.tileUnderlayPaths = new byte[4][104][104];
         MovedStatics.anIntArrayArrayArray262 = new int[4][105][105];
         MovedStatics.lowestPlane = 99;
-        InteractiveObject.aByteArrayArrayArray492 = new byte[4][105][105];
-        FloorDecoration.anIntArray612 = new int[104];
-        MovedStatics.anIntArray1579 = new int[104];
-        SceneTile.anIntArray2048 = new int[104];
-        AnimationSequence.anIntArrayArray2490 = new int[105][105];
-        MouseHandler.tile_overlayids = new byte[4][104][104];
-        Class40_Sub5_Sub17_Sub6.anIntArray3250 = new int[104];
-        Class35.tile_overlay_rotation = new byte[4][104][104];
-        MovedStatics.tile_underlayids = new byte[4][104][104];
+        Scene.objectShadowData = new byte[4][105][105];
+        Scene.bufferLength = new int[104];
+        Scene.hueMultiplierBuffer = new int[104];
+        Scene.saturationBuffer = new int[104];
+        Scene.tileLightness = new int[105][105];
+        Scene.tileOverlayIds = new byte[4][104][104];
+        Scene.hueBuffer = new int[104];
+        Scene.tileOverlayRotations = new byte[4][104][104];
+        Scene.tileUnderlayIds = new byte[4][104][104];
     }
 }

@@ -1,12 +1,12 @@
 package org.runejs.client.media.renderable;
 
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.cache.def.FrameDefinition;
-import org.runejs.client.cache.def.FramemapDefinition;
+import org.runejs.client.cache.def.AnimationFrameDefinition;
+import org.runejs.client.cache.def.AnimationBaseDefinition;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
-import org.runejs.client.Class40_Sub5_Sub15;
+import org.runejs.client.cache.def.AnimationFrameGroup;
 import org.runejs.OldEngine.ModelLoader;
 
 public class Model extends Renderable {
@@ -1058,16 +1058,16 @@ public class Model extends Renderable {
         triangleColorValues = null;
     }
 
-    public void method809(Class40_Sub5_Sub15 arg0, int arg1, Class40_Sub5_Sub15 arg2, int arg3, int[] arg4) {
+    public void method809(AnimationFrameGroup arg0, int arg1, AnimationFrameGroup arg2, int arg3, int[] arg4) {
         if(arg1 != -1) {
             if(arg4 == null || arg3 == -1)
                 method825(arg0, arg1);
             else {
                 verticesNormal = null;
                 anInt3169 = 0;
-                FrameDefinition frameDefinition = arg0.aFrameDefinitionArray2794[arg1];
-                FrameDefinition frameDefinition_80_ = arg2.aFrameDefinitionArray2794[arg3];
-                FramemapDefinition framemapDefinition = frameDefinition.framemap;
+                AnimationFrameDefinition frameDefinition = arg0.frames[arg1];
+                AnimationFrameDefinition frameDefinition_80_ = arg2.frames[arg3];
+                AnimationBaseDefinition framemapDefinition = frameDefinition.animationBaseDefinition;
                 anInt3218 = 0;
                 anInt3213 = 0;
                 anInt3206 = 0;
@@ -1075,11 +1075,11 @@ public class Model extends Renderable {
                 int i_81_ = arg4[i++];
                 for(int i_82_ = 0; i_82_ < frameDefinition.translatorCount; i_82_++) {
                     int i_83_;
-                    for(i_83_ = frameDefinition.index_frame_ids[i_82_]; i_83_ > i_81_; i_81_ = arg4[i++]) {
+                    for(i_83_ = frameDefinition.baseIndexes[i_82_]; i_83_ > i_81_; i_81_ = arg4[i++]) {
                         /* empty */
                     }
                     if(i_83_ != i_81_ || framemapDefinition.types[i_83_] == 0)
-                        method811(framemapDefinition.types[i_83_], framemapDefinition.frameMaps[i_83_], frameDefinition.translator_x[i_82_], frameDefinition.translator_y[i_82_], frameDefinition.translator_z[i_82_]);
+                        method811(framemapDefinition.types[i_83_], framemapDefinition.frameMaps[i_83_], frameDefinition.translatorX[i_82_], frameDefinition.translatorY[i_82_], frameDefinition.translatorZ[i_82_]);
                 }
                 anInt3218 = 0;
                 anInt3213 = 0;
@@ -1088,11 +1088,11 @@ public class Model extends Renderable {
                 i_81_ = arg4[i++];
                 for(int i_84_ = 0; i_84_ < frameDefinition_80_.translatorCount; i_84_++) {
                     int i_85_;
-                    for(i_85_ = frameDefinition_80_.index_frame_ids[i_84_]; i_85_ > i_81_; i_81_ = arg4[i++]) {
+                    for(i_85_ = frameDefinition_80_.baseIndexes[i_84_]; i_85_ > i_81_; i_81_ = arg4[i++]) {
                         /* empty */
                     }
                     if(i_85_ == i_81_ || framemapDefinition.types[i_85_] == 0)
-                        method811(framemapDefinition.types[i_85_], framemapDefinition.frameMaps[i_85_], frameDefinition_80_.translator_x[i_84_], frameDefinition_80_.translator_y[i_84_], frameDefinition_80_.translator_z[i_84_]);
+                        method811(framemapDefinition.types[i_85_], framemapDefinition.frameMaps[i_85_], frameDefinition_80_.translatorX[i_84_], frameDefinition_80_.translatorY[i_84_], frameDefinition_80_.translatorZ[i_84_]);
                 }
             }
         }
@@ -1814,18 +1814,18 @@ public class Model extends Renderable {
         }
     }
 
-    public void method825(Class40_Sub5_Sub15 arg0, int arg1) {
+    public void method825(AnimationFrameGroup arg0, int arg1) {
         if(vectorSkin != null && arg1 != -1) {
             verticesNormal = null;
             anInt3169 = 0;
-            FrameDefinition frameDefinition = arg0.aFrameDefinitionArray2794[arg1];
-            FramemapDefinition framemapDefinition = frameDefinition.framemap;
+            AnimationFrameDefinition frameDefinition = arg0.frames[arg1];
+            AnimationBaseDefinition framemapDefinition = frameDefinition.animationBaseDefinition;
             anInt3218 = 0;
             anInt3213 = 0;
             anInt3206 = 0;
             for(int i = 0; i < frameDefinition.translatorCount; i++) {
-                int i_249_ = frameDefinition.index_frame_ids[i];
-                method811(framemapDefinition.types[i_249_], framemapDefinition.frameMaps[i_249_], frameDefinition.translator_x[i], frameDefinition.translator_y[i], frameDefinition.translator_z[i]);
+                int i_249_ = frameDefinition.baseIndexes[i];
+                method811(framemapDefinition.types[i_249_], framemapDefinition.frameMaps[i_249_], frameDefinition.translatorX[i], frameDefinition.translatorY[i], frameDefinition.translatorZ[i]);
             }
         }
     }

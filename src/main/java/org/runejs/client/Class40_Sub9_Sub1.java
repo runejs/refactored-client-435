@@ -41,7 +41,7 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
             arg0 -= i;
             anInt2877 += i;
             method852();
-            Class40_Sub8 class40_sub8 = (Class40_Sub8) aLinkedList_2874.method902((byte) -90);
+            Class40_Sub8 class40_sub8 = (Class40_Sub8) aLinkedList_2874.next();
             synchronized(class40_sub8) {
                 int i_0_ = class40_sub8.method842(this);
                 if(i_0_ < 0) {
@@ -56,11 +56,11 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
     }
 
     public void method847(Node arg0, Class40_Sub8 arg1) {
-        for(/**/; arg0 != aLinkedList_2874.aClass40_1056 && ((Class40_Sub8) arg0).anInt2133 <= arg1.anInt2133; arg0 = arg0.next) {
+        for(/**/; arg0 != aLinkedList_2874.head && ((Class40_Sub8) arg0).anInt2133 <= arg1.anInt2133; arg0 = arg0.next) {
             /* empty */
         }
         aLinkedList_2874.method911(-31793, arg0, arg1);
-        anInt2876 = ((Class40_Sub8) aLinkedList_2874.aClass40_1056.next).anInt2133;
+        anInt2876 = ((Class40_Sub8) aLinkedList_2874.head.next).anInt2133;
     }
 
     public int method848(int[] arg0, int arg1, int arg2) {
@@ -69,7 +69,7 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
             anInt2875 += CollisionMap.anInt141 >> 4;
             for(int i = 0; i < 8; i++) {
                 LinkedList linkedList = aLinkedListArray2873[i];
-                for(Class40_Sub9 class40_sub9 = (Class40_Sub9) linkedList.method902((byte) -90); class40_sub9 != null; class40_sub9 = (Class40_Sub9) linkedList.method909(-4)) {
+                for(Class40_Sub9 class40_sub9 = (Class40_Sub9) linkedList.next(); class40_sub9 != null; class40_sub9 = (Class40_Sub9) linkedList.method909()) {
                     int i_1_ = method849(class40_sub9);
                     if(i_1_ != i)
                         aLinkedListArray2873[i_1_].method905(0, class40_sub9);
@@ -78,7 +78,7 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
         }
         for(int i = 0; i < 8; i++) {
             LinkedList linkedList = aLinkedListArray2873[i];
-            for(Class40_Sub9 class40_sub9 = (Class40_Sub9) linkedList.method902((byte) -90); class40_sub9 != null; class40_sub9 = (Class40_Sub9) linkedList.method909(-4)) {
+            for(Class40_Sub9 class40_sub9 = (Class40_Sub9) linkedList.next(); class40_sub9 != null; class40_sub9 = (Class40_Sub9) linkedList.method909()) {
                 class40_sub9.aBoolean2134 = false;
                 if(class40_sub9.aClass40_Sub12_2135 != null)
                     class40_sub9.aClass40_Sub12_2135.anInt2167 = 0;
@@ -101,7 +101,7 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
                 if((i_6_ & 0x1) != 0) {
                     i_2_ &= 1 << i_4_ ^ 0xffffffff;
                     LinkedList linkedList = aLinkedListArray2873[i_4_];
-                    for(Class40_Sub9 class40_sub9 = (Class40_Sub9) linkedList.method902((byte) -90); class40_sub9 != null; class40_sub9 = (Class40_Sub9) linkedList.method909(-4)) {
+                    for(Class40_Sub9 class40_sub9 = (Class40_Sub9) linkedList.next(); class40_sub9 != null; class40_sub9 = (Class40_Sub9) linkedList.method909()) {
                         if(!class40_sub9.aBoolean2134) {
                             Class40_Sub12 class40_sub12 = class40_sub9.aClass40_Sub12_2135;
                             if(class40_sub12 != null && class40_sub12.anInt2167 > i_5_)
@@ -130,8 +130,8 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
     public void method850(Class40_Sub8 arg0) {
         arg0.remove();
         arg0.method841();
-        Node class40 = aLinkedList_2874.aClass40_1056.next;
-        if(class40 == aLinkedList_2874.aClass40_1056)
+        Node class40 = aLinkedList_2874.head.next;
+        if(class40 == aLinkedList_2874.head)
             anInt2876 = -1;
         else
             anInt2876 = ((Class40_Sub8) class40).anInt2133;
@@ -143,14 +143,14 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
             anInt2875 = 0;
         for(int i = 0; i < 8; i++) {
             LinkedList linkedList = aLinkedListArray2873[i];
-            for(Class40_Sub9 class40_sub9 = (Class40_Sub9) linkedList.method902((byte) -90); class40_sub9 != null; class40_sub9 = (Class40_Sub9) linkedList.method909(-4))
+            for(Class40_Sub9 class40_sub9 = (Class40_Sub9) linkedList.next(); class40_sub9 != null; class40_sub9 = (Class40_Sub9) linkedList.method909())
                 class40_sub9.method843(arg0);
         }
     }
 
     public void method852() {
         if(anInt2877 > 0) {
-            for(Class40_Sub8 class40_sub8 = (Class40_Sub8) aLinkedList_2874.method902((byte) -90); class40_sub8 != null; class40_sub8 = (Class40_Sub8) aLinkedList_2874.method909(-4))
+            for(Class40_Sub8 class40_sub8 = (Class40_Sub8) aLinkedList_2874.next(); class40_sub8 != null; class40_sub8 = (Class40_Sub8) aLinkedList_2874.method909())
                 class40_sub8.anInt2133 -= anInt2877;
             anInt2876 -= anInt2877;
             anInt2877 = 0;
@@ -171,7 +171,7 @@ public class Class40_Sub9_Sub1 extends Class40_Sub9 {
             arg2 -= i;
             anInt2877 += i;
             method852();
-            Class40_Sub8 class40_sub8 = (Class40_Sub8) aLinkedList_2874.method902((byte) -90);
+            Class40_Sub8 class40_sub8 = (Class40_Sub8) aLinkedList_2874.next();
             synchronized(class40_sub8) {
                 int i_9_ = class40_sub8.method842(this);
                 if(i_9_ < 0) {

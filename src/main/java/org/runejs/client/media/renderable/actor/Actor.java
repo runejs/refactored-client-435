@@ -18,7 +18,6 @@ public abstract class Actor extends Renderable {
 
     public static int[] anIntArray3111;
     public static int[] minimapHintX = new int[1000];
-    public static int anInt3151 = -16 + (int) (Math.random() * 33.0);
     public static Signlink signlink;
     public static int actorUpdatingIndex = 0;
 
@@ -335,7 +334,7 @@ public abstract class Actor extends Renderable {
                     }
                 }
             }
-            for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
+            for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.next(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909()) {
                 class40_sub3.anInt2038 -= i_35_;
                 class40_sub3.anInt2039 -= i_34_;
                 if(class40_sub3.anInt2039 < 0 || class40_sub3.anInt2038 < 0 || class40_sub3.anInt2039 >= 104 || class40_sub3.anInt2038 >= 104)

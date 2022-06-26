@@ -8,7 +8,6 @@ import org.runejs.client.frame.ChatBox;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.node.HashTable;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.tile.WallDecoration;
 
@@ -68,9 +67,9 @@ public class Class51 {
     }
 
     public static void playSong(int songId) {
-        if(songId == -1 && Class35.songTimeout == 0)
+        if(songId == -1 && TextureStore.songTimeout == 0)
             Class33.method402(false);
-        else if(songId != -1 && songId != MouseHandler.currentSongId && RSCanvas.musicVolume != 0 && Class35.songTimeout == 0)
+        else if(songId != -1 && songId != MouseHandler.currentSongId && RSCanvas.musicVolume != 0 && TextureStore.songTimeout == 0)
             Class33.method403(RSCanvas.musicVolume, true, 10, songId, CacheArchive.musicCacheArchive, 0, 0, false);
         MouseHandler.currentSongId = songId;
     }

@@ -10,7 +10,7 @@ import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.util.CollisionMap;
-import org.runejs.client.Class40_Sub5_Sub15;
+import org.runejs.client.cache.def.AnimationFrameGroup;
 
 public class Wall {
     public static int cameraVelocityHorizontal = 0;
@@ -39,7 +39,7 @@ public class Wall {
         if(CollisionMap.anInt165 != 0) {
             TypeFace class40_sub5_sub14_sub1 = WallDecoration.fontNormal;
             int i = 0;
-            if(Class40_Sub5_Sub15.systemUpdateTime != 0)
+            if(AnimationFrameGroup.systemUpdateTime != 0)
                 i = 1;
             for(int i_0_ = 0; i_0_ < 100; i_0_++) {
                 if(ChatBox.chatMessages[i_0_] != null) {

@@ -1,6 +1,7 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.def.ActorDefinition;
+import org.runejs.client.cache.def.AnimationFrameGroup;
 import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.media.TypeFace;
@@ -54,7 +55,7 @@ public class Class40_Sub5_Sub6 extends CachedNode {
             if(GameInterface.gameScreenInterfaceId != -1 && HuffmanEncoding.reportAbuseInterfaceID == GameInterface.gameScreenInterfaceId) {
                 if(ItemDefinition.anInt2854 == 85 && Native.reportedName.length() > 0)
                     Native.reportedName = Native.reportedName.substring(0, -1 + Native.reportedName.length());
-                if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && Native.reportedName.length() < 12)
+                if((AnimationFrameGroup.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && Native.reportedName.length() < 12)
                     Native.reportedName = Native.reportedName + (char) Class59.anInt1388;
             } else if(ChatBox.messagePromptRaised) {
                 if(ItemDefinition.anInt2854 == 85 && ChatBox.chatMessage.length() > 0) {
@@ -130,7 +131,7 @@ public class Class40_Sub5_Sub6 extends CachedNode {
                     ChatBox.inputMessage = ChatBox.inputMessage.substring(0, -1 + ChatBox.inputMessage.length());
                     ChatBox.redrawChatbox = true;
                 }
-                if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && ChatBox.inputMessage.length() < 12) {
+                if((AnimationFrameGroup.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && ChatBox.inputMessage.length() < 12) {
                     ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }

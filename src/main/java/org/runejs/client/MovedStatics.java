@@ -86,7 +86,6 @@ public class MovedStatics {
     public static int anInt200 = 127;
     public static volatile boolean aBoolean1575 = false;
     public static CacheArchive aCacheArchive_1577;
-    public static int[] anIntArray1579;
     public static int anInt1586 = -1;
     public static boolean reportMutePlayer = false;
     public static int anInt1607 = 10;
@@ -103,7 +102,6 @@ public class MovedStatics {
     public static int anInt1806;
     public static int lastContinueTextWidgetId = -1;
     public static GameSocket gameServerSocket;
-    public static int[][][] tile_height = new int[4][105][105];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2105;
     public static int[] anIntArray2106 = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
     public static int secondaryCameraVertical = 0;
@@ -140,7 +138,6 @@ public class MovedStatics {
     public static ImageRGB minimapEdge;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2301;
     public static int baseX;
-    public static byte[][][] tile_underlayids;
     public static NodeCache aClass9_998 = new NodeCache(100);
     public static int anInt1008 = 0;
     public static int anInt1010 = 2;
@@ -161,7 +158,7 @@ public class MovedStatics {
             Class40_Sub5_Sub17_Sub6.anIntArray3255 = null;
             Class59.imgLoginScreenButton = null;
             anIntArray1445 = null;
-            Class40_Sub5_Sub15.loginScreenBox = null;
+            AnimationFrameGroup.loginScreenBox = null;
             Renderable.anIntArray2865 = null;
             Class8.flameLeftBackground = null;
             Class39.aProducingGraphicsBuffer_907 = null;
@@ -193,7 +190,7 @@ public class MovedStatics {
     public static void method445(int arg0) {
         if (CollisionMap.anInt165 != 0) {
             int i = 0;
-            if (Class40_Sub5_Sub15.systemUpdateTime != 0)
+            if (AnimationFrameGroup.systemUpdateTime != 0)
                 i = 1;
             for (int i_1_ = 0; i_1_ < 100; i_1_++) {
                 if (ChatBox.chatMessages[i_1_] != null) {
@@ -244,7 +241,7 @@ public class MovedStatics {
         if (Player.headIconDrawType == 2) {
             if (arg0 >= -28)
                 method445(-128);
-            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -baseX << 7) + Landscape.anInt1170, 4976905);
+            Class22_Sub1.method312(2 * ActorDefinition.anInt2404, TextureStore.anInt1730 + (-Class26.baseY + anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -baseX << 7) + Landscape.anInt1170, 4976905);
             if (ISAAC.anInt522 > -1 && pulseCycle % 20 < 10)
                 aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
         }
@@ -277,7 +274,7 @@ public class MovedStatics {
 
     public static void method997(int arg0) {
         if (arg0 != 47)
-            initiateVertexHeights(-42, (byte) 12, 92, 18, -72);
+            Scene.initiateVertexHeights(-42, (byte) 12, 92, 18, -72);
         if (Signlink.javaVendor.toLowerCase().indexOf("microsoft") == -1) {
             HuffmanEncoding.anIntArray1564[44] = 71;
             HuffmanEncoding.anIntArray1564[45] = 26;
@@ -313,28 +310,9 @@ public class MovedStatics {
 
     }
 
-    public static void initiateVertexHeights(int arg0, byte arg1, int arg2, int arg3, int arg4) {
-        int i = -112 / ((50 - arg1) / 53);
-        for (int i_0_ = arg0; i_0_ <= arg0 + arg2; i_0_++) {
-            for (int i_1_ = arg4; arg3 + arg4 >= i_1_; i_1_++) {
-                if (i_1_ >= 0 && i_1_ < 104 && i_0_ >= 0 && i_0_ < 104) {
-                    InteractiveObject.aByteArrayArrayArray492[0][i_1_][i_0_] = (byte) 127;
-                    if (arg4 == i_1_ && i_1_ > 0)
-                        tile_height[0][i_1_][i_0_] = tile_height[0][-1 + i_1_][i_0_];
-                    if (arg4 + arg3 == i_1_ && i_1_ < 103)
-                        tile_height[0][i_1_][i_0_] = tile_height[0][i_1_ + 1][i_0_];
-                    if (i_0_ == arg0 && i_0_ > 0)
-                        tile_height[0][i_1_][i_0_] = tile_height[0][i_1_][i_0_ + -1];
-                    if (i_0_ == arg0 + arg2 && i_0_ < 103)
-                        tile_height[0][i_1_][i_0_] = tile_height[0][i_1_][1 + i_0_];
-                }
-            }
-        }
-    }
-
     public static void method1000(boolean arg0) {
         if (arg0) {
-            for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.method902((byte) -90); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.method909(-4)) {
+            for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.next(); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.method909()) {
                 if (Player.worldLevel == class40_sub5_sub17_sub6.anInt3239 && !class40_sub5_sub17_sub6.aBoolean3237) {
                     if (pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
                         class40_sub5_sub17_sub6.method834(8076, anInt199);
@@ -356,7 +334,7 @@ public class MovedStatics {
         if (arg0 != 256)
             anInt2280 = 44;
         int i = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, Class40_Sub5_Sub6.cameraY);
-        if (i + -SceneCluster.cameraZ < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][Class12.cameraX >> 7][Class40_Sub5_Sub6.cameraY >> 7] & 0x4) != 0)
+        if (i + -SceneCluster.cameraZ < 800 && (Scene.tileFlags[Player.worldLevel][Class12.cameraX >> 7][Class40_Sub5_Sub6.cameraY >> 7] & 0x4) != 0)
             return Player.worldLevel;
         return 3;
     }
@@ -390,22 +368,22 @@ public class MovedStatics {
     public static void method455(int arg0, int arg1, int arg3) {
         for (int i = 0; i < 8; i++) {
             for (int i_0_ = 0; i_0_ < 8; i_0_++)
-                tile_height[arg1][arg3 + i][arg0 + i_0_] = 0;
+                Scene.tileHeights[arg1][arg3 + i][arg0 + i_0_] = 0;
         }
         if (arg3 > 0) {
             for (int i = 1; i < 8; i++)
-                tile_height[arg1][arg3][arg0 + i] = tile_height[arg1][-1 + arg3][i + arg0];
+                Scene.tileHeights[arg1][arg3][arg0 + i] = Scene.tileHeights[arg1][-1 + arg3][i + arg0];
         }
         if (arg0 > 0) {
             for (int i = 1; i < 8; i++)
-                tile_height[arg1][i + arg3][arg0] = tile_height[arg1][i + arg3][-1 + arg0];
+                Scene.tileHeights[arg1][i + arg3][arg0] = Scene.tileHeights[arg1][i + arg3][-1 + arg0];
         }
-        if (arg3 > 0 && tile_height[arg1][-1 + arg3][arg0] != 0)
-            tile_height[arg1][arg3][arg0] = tile_height[arg1][arg3 - 1][arg0];
-        else if (arg0 > 0 && tile_height[arg1][arg3][arg0 - 1] != 0)
-            tile_height[arg1][arg3][arg0] = tile_height[arg1][arg3][-1 + arg0];
-        else if (arg3 > 0 && arg0 > 0 && tile_height[arg1][arg3 + -1][-1 + arg0] != 0)
-            tile_height[arg1][arg3][arg0] = tile_height[arg1][-1 + arg3][arg0 - 1];
+        if (arg3 > 0 && Scene.tileHeights[arg1][-1 + arg3][arg0] != 0)
+            Scene.tileHeights[arg1][arg3][arg0] = Scene.tileHeights[arg1][arg3 - 1][arg0];
+        else if (arg0 > 0 && Scene.tileHeights[arg1][arg3][arg0 - 1] != 0)
+            Scene.tileHeights[arg1][arg3][arg0] = Scene.tileHeights[arg1][arg3][-1 + arg0];
+        else if (arg3 > 0 && arg0 > 0 && Scene.tileHeights[arg1][arg3 + -1][-1 + arg0] != 0)
+            Scene.tileHeights[arg1][arg3][arg0] = Scene.tileHeights[arg1][-1 + arg3][arg0 - 1];
     }
 
     public static void method456(int arg0) {
@@ -459,9 +437,9 @@ public class MovedStatics {
     }
 
     public static void method335(byte arg0) {
-        Projectile projectile = (Projectile) Class43.projectileQueue.method902((byte) -90);
+        Projectile projectile = (Projectile) Class43.projectileQueue.next();
         if (arg0 == 61) {
-            for (/**/; projectile != null; projectile = (Projectile) Class43.projectileQueue.method909(arg0 + -65)) {
+            for (/**/; projectile != null; projectile = (Projectile) Class43.projectileQueue.method909()) {
                 if (Player.worldLevel == projectile.anInt2981 && pulseCycle <= projectile.endCycle) {
                     if (projectile.delay <= pulseCycle) {
                         if (projectile.entityIndex > 0) {
@@ -523,18 +501,18 @@ public class MovedStatics {
     }
 
     public static void method973() {
-        anIntArray1579 = null;
-        SceneTile.anIntArray2048 = null;
-        FloorDecoration.anIntArray612 = null;
+        Scene.hueMultiplierBuffer = null;
+        Scene.saturationBuffer = null;
+        Scene.bufferLength = null;
         anIntArrayArrayArray262 = null;
-        AnimationSequence.anIntArrayArray2490 = null;
-        Class35.tile_overlay_rotation = null;
-        Class59.anIntArray1398 = null;
-        InteractiveObject.aByteArrayArrayArray492 = null;
-        OverlayDefinition.tile_underlay_path = null;
-        MouseHandler.tile_overlayids = null;
-        tile_underlayids = null;
-        Class40_Sub5_Sub17_Sub6.anIntArray3250 = null;
+        Scene.tileLightness = null;
+        Scene.tileOverlayRotations = null;
+        Scene.lightnessBuffer = null;
+        Scene.objectShadowData = null;
+        Scene.tileUnderlayPaths = null;
+        Scene.tileOverlayIds = null;
+        Scene.tileUnderlayIds = null;
+        Scene.hueBuffer = null;
     }
 
     public static void printException(String arg0, Throwable exception) {
@@ -653,7 +631,7 @@ public class MovedStatics {
         if (RSRuntimeException.anInt1641 > Landscape.anIntArray1168.length) {
             RSRuntimeException.anInt1641 -= Landscape.anIntArray1168.length;
             int i_9_ = (int) (12.0 * Math.random());
-            FramemapDefinition.method879(Class22.aClass40_Sub5_Sub14_Sub2Array535[i_9_]);
+            AnimationBaseDefinition.method879(Class22.aClass40_Sub5_Sub14_Sub2Array535[i_9_]);
         }
         for (int i_10_ = 1; i_10_ < -1 + i; i_10_++) {
             for (int i_11_ = 1; i_11_ < 127; i_11_++) {
@@ -714,7 +692,7 @@ public class MovedStatics {
                 if (currentTabId == 2)
                     GameShell.aClass40_Sub5_Sub14_Sub2_1.drawImage(82, 8);
                 if (currentTabId == 3)
-                    Class35.aClass40_Sub5_Sub14_Sub2_1744.drawImage(110, 8);
+                    TextureStore.aClass40_Sub5_Sub14_Sub2_1744.drawImage(110, 8);
                 if (currentTabId == 4)
                     WallDecoration.aClass40_Sub5_Sub14_Sub2_1270.drawImage(153, 8);
                 if (currentTabId == 5)
@@ -723,19 +701,19 @@ public class MovedStatics {
                     aClass40_Sub5_Sub14_Sub2_2105.drawImage(209, 9);
             }
             if (tabWidgetIds[0] != -1 && arg4 != 0)
-                Class40_Sub5_Sub15.tabIcons[0].drawImage(29, 13);
+                AnimationFrameGroup.tabIcons[0].drawImage(29, 13);
             if (tabWidgetIds[1] != -1 && arg4 != 1)
-                Class40_Sub5_Sub15.tabIcons[1].drawImage(53, 11);
+                AnimationFrameGroup.tabIcons[1].drawImage(53, 11);
             if (tabWidgetIds[2] != -1 && arg4 != 2)
-                Class40_Sub5_Sub15.tabIcons[2].drawImage(82, 11);
+                AnimationFrameGroup.tabIcons[2].drawImage(82, 11);
             if (tabWidgetIds[3] != -1 && arg4 != 3)
-                Class40_Sub5_Sub15.tabIcons[3].drawImage(115, 12);
+                AnimationFrameGroup.tabIcons[3].drawImage(115, 12);
             if (tabWidgetIds[4] != -1 && arg4 != 4)
-                Class40_Sub5_Sub15.tabIcons[4].drawImage(153, 13);
+                AnimationFrameGroup.tabIcons[4].drawImage(153, 13);
             if (tabWidgetIds[5] != -1 && arg4 != 5)
-                Class40_Sub5_Sub15.tabIcons[5].drawImage(180, 11);
+                AnimationFrameGroup.tabIcons[5].drawImage(180, 11);
             if (tabWidgetIds[6] != -1 && arg4 != 6)
-                Class40_Sub5_Sub15.tabIcons[6].drawImage(208, 13);
+                AnimationFrameGroup.tabIcons[6].drawImage(208, 13);
         }
         RSCanvas.tabBottom.prepareRasterizer();
         tabBottomBack.drawImage(0, 0);
@@ -759,17 +737,17 @@ public class MovedStatics {
                     ISAAC.aClass40_Sub5_Sub14_Sub2_524.drawImage(229, 0);
             }
             if (tabWidgetIds[8] != -1 && arg4 != 8)
-                Class40_Sub5_Sub15.tabIcons[7].drawImage(74, 2);
+                AnimationFrameGroup.tabIcons[7].drawImage(74, 2);
             if (tabWidgetIds[9] != -1 && arg4 != 9)
-                Class40_Sub5_Sub15.tabIcons[8].drawImage(102, 3);
+                AnimationFrameGroup.tabIcons[8].drawImage(102, 3);
             if (tabWidgetIds[10] != -1 && arg4 != 10)
-                Class40_Sub5_Sub15.tabIcons[9].drawImage(137, 4);
+                AnimationFrameGroup.tabIcons[9].drawImage(137, 4);
             if (tabWidgetIds[11] != -1 && arg4 != 11)
-                Class40_Sub5_Sub15.tabIcons[10].drawImage(174, 2);
+                AnimationFrameGroup.tabIcons[10].drawImage(174, 2);
             if (tabWidgetIds[12] != -1 && arg4 != 12)
-                Class40_Sub5_Sub15.tabIcons[11].drawImage(201, 2);
+                AnimationFrameGroup.tabIcons[11].drawImage(201, 2);
             if (tabWidgetIds[13] != -1 && arg4 != 13)
-                Class40_Sub5_Sub15.tabIcons[12].drawImage(226, 2);
+                AnimationFrameGroup.tabIcons[12].drawImage(226, 2);
         }
         try {
             Graphics graphics = MouseHandler.gameCanvas.getGraphics();
@@ -802,7 +780,7 @@ public class MovedStatics {
         }
     }
 
-    public static int method420(int arg0, int arg1, boolean arg2) {
+    public static int method420(int arg0, int arg1) {
         if (arg0 == -2)
             return 12345678;
         if (arg0 == -1) {
@@ -813,8 +791,6 @@ public class MovedStatics {
             arg1 = -arg1 + 127;
             return arg1;
         }
-        if (!arg2)
-            calculateDataLoaded(-124, -88);
         arg1 = arg1 * (arg0 & 0x7f) / 128;
         if (arg1 < 2)
             arg1 = 2;
@@ -963,7 +939,7 @@ public class MovedStatics {
                 if (type == 3) {
                     LinkedList itemList = Wall.groundItems[Player.worldLevel][x][y];
                     if (itemList != null) {
-                        for (Item item = (Item) itemList.last((byte) -95); item != null; item = (Item) itemList.previous(4)) {
+                        for (Item item = (Item) itemList.last(); item != null; item = (Item) itemList.previous()) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
                             if (Class8.itemSelected == 1) {
                                 addActionRow(English.use, item.itemId, x, y, 47, Native.aClass1_3295 + Native.toLightRed + itemDefinition.name);
@@ -1162,19 +1138,6 @@ public class MovedStatics {
         }
     }
 
-    public static int method888(int arg0, byte arg1, int arg2) {
-        int i = -128 + method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> 1) + -(-128 + method160(arg0, 15177, 1, arg2) >> 2));
-        i = 35 + (int) (0.3 * (double) i);
-        if(arg1 != -45)
-            return -24;
-        if(i >= 10) {
-            if(i > 60)
-                i = 60;
-        } else
-            i = 10;
-        return i;
-    }
-
     public static ProducingGraphicsBuffer createGraphicsBuffer(int width, int height, Component component) {
         try {
             ProducingGraphicsBuffer producingGraphicsBuffer = new ProducingGraphicsBuffer_Sub2();
@@ -1206,7 +1169,7 @@ public class MovedStatics {
     }
 
     public static void method652() {
-        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
+        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.next(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909()) {
             if(class40_sub3.anInt2031 > 0)
                 class40_sub3.anInt2031--;
             if(class40_sub3.anInt2031 == 0) {
@@ -1227,5 +1190,28 @@ public class MovedStatics {
                 }
             }
         }
+    }
+
+    public static int hslToInt(int hue, int saturation, int lightness) {
+        if(saturation > 179)
+            lightness /= 2;
+        if(saturation > 192)
+            lightness /= 2;
+        if(saturation > 217)
+            lightness /= 2;
+        if(saturation > 243)
+            lightness /= 2;
+        return saturation / 2 + (lightness / 32 << 7) + (hue / 4 << 10);
+    }
+
+    public static int method831(int arg0, int arg1) {
+        if(arg0 == -1)
+            return 12345678;
+        arg1 = (0x7f & arg0) * arg1 / 128;
+        if(arg1 < 2)
+            arg1 = 2;
+        else if(arg1 > 126)
+            arg1 = 126;
+        return arg1 + (arg0 & 0xff80);
     }
 }

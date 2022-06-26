@@ -10,9 +10,9 @@ public class UnderlayDefinition extends CachedNode {
     public static CacheArchive gameDefinitionsCacheArchive;
 
     public int saturation;
-    public int anInt2565;
-    public int hueMultiplier;
     public int hue;
+    public int hueMultiplier;
+    public int lightness;
     public int color = 0;
 
     public static void initializeUnderlayDefinitionCache(CacheArchive cacheArchive) {
@@ -87,17 +87,17 @@ public class UnderlayDefinition extends CachedNode {
         } else {
             hueMultiplier = (int) (d_5_ * d_6_ * 512.0);
         }
-        hue = (int) (256.0 * d_6_);
+        lightness = (int) (256.0 * d_6_);
         if(hueMultiplier < 1) {
             hueMultiplier = 1;
         }
-        anInt2565 = (int) (d_4_ * (double) hueMultiplier);
-        if(hue >= 0) {
-            if(hue > 255) {
-                hue = 255;
+        hue = (int) (d_4_ * (double) hueMultiplier);
+        if(lightness >= 0) {
+            if(lightness > 255) {
+                lightness = 255;
             }
         } else {
-            hue = 0;
+            lightness = 0;
         }
     }
 

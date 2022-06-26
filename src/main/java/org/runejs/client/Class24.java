@@ -2,7 +2,6 @@ package org.runejs.client;
 
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.GameObjectDefinition;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.io.Buffer;
@@ -66,7 +65,7 @@ public class Class24 {
                     if(tileX > 0 && tileY > 0 && tileX < 103 && tileY < 103) {
                         CollisionMap collisionMap = null;
                         int collisionMapPlane = plane;
-                        if((OverlayDefinition.tile_flags[1][tileX][tileY] & 0x2) == 2) // bridge tile, go down 1 level
+                        if((Scene.tileFlags[1][tileX][tileY] & 0x2) == 2) // bridge tile, go down 1 level
                             collisionMapPlane--;
                         if(collisionMapPlane >= 0)
                             collisionMap = collisionMaps[collisionMapPlane];

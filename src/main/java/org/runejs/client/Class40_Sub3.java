@@ -48,7 +48,7 @@ public class Class40_Sub3 extends Node {
 
     public static void startup(int arg0) {
         if (Class40_Sub5_Sub6.loadingPercent == 0) {
-            Npc.currentScene = new Scene(MovedStatics.tile_height);
+            Npc.currentScene = new Scene(Scene.tileHeights);
             for (int i = 0; i < 4; i++)
                 Landscape.currentCollisionMap[i] = new CollisionMap(104, 104);
             MovedStatics.minimapImage = new ImageRGB(512, 512);
@@ -218,7 +218,7 @@ public class Class40_Sub3 extends Node {
             else
                 Class37.cursorCross = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_2179, "");
             if (MovedStatics.mapDots == null)
-                MovedStatics.mapDots = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_183, "");
+                MovedStatics.mapDots = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapdots, "");
             else
                 i++;
             if (MovedStatics.aClass40_Sub5_Sub14_Sub2Array215 == null)
@@ -258,8 +258,8 @@ public class Class40_Sub3 extends Node {
             }
         } else if (Class40_Sub5_Sub6.loadingPercent == 90) {
             if (CacheArchive.gameTextureCacheArchive.method185((byte) 62)) {
-                Class35 class35 = new Class35(CacheArchive.gameTextureCacheArchive, CacheArchive.gameImageCacheArchive, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
-                Rasterizer3D.method703(class35);
+                TextureStore textureStore = new TextureStore(CacheArchive.gameTextureCacheArchive, CacheArchive.gameImageCacheArchive, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
+                Rasterizer3D.setTextureStore(textureStore);
                 Rasterizer3D.method711(0.8);
                 Class40_Sub5_Sub6.loadingPercent = 110;
                 MovedStatics.anInt1607 = 90;
@@ -317,7 +317,7 @@ public class Class40_Sub3 extends Node {
         CacheArchive.definitionCache = arg3;
         GameObjectDefinition.count = CacheArchive.definitionCache.fileLength(6);
 
-        Class35.aBoolean1734 = arg2;
+        TextureStore.aBoolean1734 = arg2;
         if (arg0 == 28987)
             RSString.aCacheArchive_1705 = arg1;
     }

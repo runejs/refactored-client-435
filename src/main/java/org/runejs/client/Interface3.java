@@ -5,7 +5,7 @@ public interface Interface3 {
 
     boolean method13(byte i, int i_1_);
 
-    int method14(boolean bool, int i);
+    int getFile(int i);
 
     boolean method15(int i, byte i_2_);
 }

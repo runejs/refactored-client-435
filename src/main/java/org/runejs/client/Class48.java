@@ -7,8 +7,6 @@ import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
-import org.runejs.client.frame.ScreenController;
-import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
@@ -17,6 +15,7 @@ import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.PacketBuffer;
+import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.util.BitUtils;
 import org.runejs.Configuration;
@@ -63,48 +62,50 @@ public class Class48 {
 
     }
 
-    public static void method922(int arg0, int arg1, Buffer arg2, int arg4, int arg5, int arg6, int arg7) {
-        if(arg0 >= 0 && arg0 < 104 && arg4 >= 0 && arg4 < 104) {
-            OverlayDefinition.tile_flags[arg7][arg0][arg4] = (byte) 0;
+    public static void decodeTile(Buffer buffer, int localX, int localY, int plane, int offsetX, int offsetY, int rotationOffset) {
+        // offsetY and offsetX are usually 0
+        if(localX >= 0 && localX < 104 && localY >= 0 && localY < 104) {
+            Scene.tileFlags[plane][localX][localY] = (byte) 0;
             for(; ; ) {
-                int i = arg2.getUnsignedByte();
-                if(i == 0) {
-                    if(arg7 == 0)
-                        MovedStatics.tile_height[0][arg0][arg4] = -MovedStatics.method888(arg6 + arg0 + 932731, (byte) -45, arg5 + 556238 + arg4) * 8;
-                    else
-                        MovedStatics.tile_height[arg7][arg0][arg4] = -240 + MovedStatics.tile_height[arg7 + -1][arg0][arg4];
+                int opcode = buffer.getUnsignedByte();
+                if(opcode == 0) {
+                    if(plane == 0) {
+                        Scene.tileHeights[0][localX][localY] = -Scene.calculateTileHeight(offsetX + localX + 932731, offsetY + 556238 + localY) * 8;
+                    } else
+                        Scene.tileHeights[plane][localX][localY] = -240 + Scene.tileHeights[plane + -1][localX][localY];
+
                     break;
                 }
-                if(i == 1) {
-                    int i_0_ = arg2.getUnsignedByte();
-                    if(i_0_ == 1)
-                        i_0_ = 0;
-                    if(arg7 != 0)
-                        MovedStatics.tile_height[arg7][arg0][arg4] = MovedStatics.tile_height[-1 + arg7][arg0][arg4] + -(8 * i_0_);
+                if(opcode == 1) {
+                    int tileHeight = buffer.getUnsignedByte();
+                    if(tileHeight == 1)
+                        tileHeight = 0;
+                    if(plane != 0)
+                        Scene.tileHeights[plane][localX][localY] = Scene.tileHeights[-1 + plane][localX][localY] + -(8 * tileHeight);
                     else
-                        MovedStatics.tile_height[0][arg0][arg4] = 8 * -i_0_;
+                        Scene.tileHeights[0][localX][localY] = 8 * -tileHeight;
                     break;
                 }
-                if(i <= 49) {
-                    MouseHandler.tile_overlayids[arg7][arg0][arg4] = arg2.getByte();
-                    OverlayDefinition.tile_underlay_path[arg7][arg0][arg4] = (byte) ((i + -2) / 4);
-                    Class35.tile_overlay_rotation[arg7][arg0][arg4] = (byte) BitUtils.bitWiseAND(arg1 + -2 + i, 3);
-                } else if(i <= 81)
-                    OverlayDefinition.tile_flags[arg7][arg0][arg4] = (byte) (-49 + i);
+                if(opcode <= 49) {
+                    Scene.tileOverlayIds[plane][localX][localY] = buffer.getByte();
+                    Scene.tileUnderlayPaths[plane][localX][localY] = (byte) ((opcode + -2) / 4);
+                    Scene.tileOverlayRotations[plane][localX][localY] = (byte) BitUtils.bitWiseAND(rotationOffset + -2 + opcode, 3);
+                } else if(opcode <= 81)
+                    Scene.tileFlags[plane][localX][localY] = (byte) (-49 + opcode);
                 else
-                    MovedStatics.tile_underlayids[arg7][arg0][arg4] = (byte) (-81 + i);
+                    Scene.tileUnderlayIds[plane][localX][localY] = (byte) (-81 + opcode);
             }
         } else {
             for(; ; ) {
-                int i = arg2.getUnsignedByte();
+                int i = buffer.getUnsignedByte();
                 if(i == 0)
                     break;
                 if(i == 1) {
-                    arg2.getUnsignedByte();
+                    buffer.getUnsignedByte();
                     break;
                 }
                 if(i <= 49)
-                    arg2.getUnsignedByte();
+                    buffer.getUnsignedByte();
             }
         }
     }
@@ -319,7 +320,7 @@ public class Class48 {
         if(!ImageRGB.spriteExists(arg0, arg3, arg1))
             return null;
         if(!arg2)
-            method922(3, -92, null, -119, -82, -28, -32);
+            decodeTile(null, 3, -119, -32, -28, -82, -92);
         return ActorDefinition.method578();
     }
 
@@ -335,7 +336,7 @@ public class Class48 {
             Landscape.currentCollisionMap[i].reset();
         System.gc();
         MovedStatics.method405(10);
-        Class35.songTimeout = 0;
+        TextureStore.songTimeout = 0;
         MouseHandler.currentSongId = -1;
         Class37.method436();
         MovedStatics.processGameStatus(10);

@@ -17,7 +17,6 @@ import java.nio.charset.StandardCharsets;
 
 public class SceneTile extends Node {
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_2043;
-    public static int[] anIntArray2048;
     public static int activeInterfaceType = 0;
 
     public SceneTile aSceneTile_2058;

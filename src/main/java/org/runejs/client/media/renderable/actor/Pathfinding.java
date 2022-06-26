@@ -1,5 +1,6 @@
 package org.runejs.client.media.renderable.actor;
 
+import org.runejs.client.cache.def.AnimationFrameGroup;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.Wall;
@@ -105,7 +106,7 @@ public class Pathfinding {
                 Landscape.distanceValues[1 + currentX][1 + currentY] = newDistanceValue;
             }
         }
-        Class40_Sub5_Sub15.arbitraryDestination = 0;
+        AnimationFrameGroup.arbitraryDestination = 0;
         if(!foundDestination) {
             if(flag) {
                 int i_14_ = 1000;
@@ -138,7 +139,7 @@ public class Pathfinding {
                     return false;
                 if(startX == currentX && startY == currentY)
                     return false;
-                Class40_Sub5_Sub15.arbitraryDestination = 1;
+                AnimationFrameGroup.arbitraryDestination = 1;
             } else {
                 return false;
             }

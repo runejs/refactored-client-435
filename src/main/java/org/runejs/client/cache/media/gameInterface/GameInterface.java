@@ -210,11 +210,11 @@ public class GameInterface extends CachedNode {
                 for(int i = 0; i < 112; i++) {
                     Item.obfuscatedKeyStatus[i] = false;
                 }
-                GameObjectDefinition.anInt2543 = FramemapDefinition.anInt2183;
+                GameObjectDefinition.anInt2543 = AnimationBaseDefinition.anInt2183;
             } else {
-                while(GameObjectDefinition.anInt2543 != FramemapDefinition.anInt2183) {
-                    int i = RSString.keyCodes[FramemapDefinition.anInt2183];
-                    FramemapDefinition.anInt2183 = 0x7f & FramemapDefinition.anInt2183 + 1;
+                while(GameObjectDefinition.anInt2543 != AnimationBaseDefinition.anInt2183) {
+                    int i = RSString.keyCodes[AnimationBaseDefinition.anInt2183];
+                    AnimationBaseDefinition.anInt2183 = 0x7f & AnimationBaseDefinition.anInt2183 + 1;
                     if(i < 0) {
                         Item.obfuscatedKeyStatus[i ^ 0xffffffff] = false;
                     } else {
@@ -1338,7 +1338,7 @@ public class GameInterface extends CachedNode {
 
         if(Wall.aGameInterface_353 != null) {
             GameInterface gameInterface = Wall.aGameInterface_353;
-            GameInterface gameInterface_24_ = FramemapDefinition.method878(gameInterface);
+            GameInterface gameInterface_24_ = AnimationBaseDefinition.method878(gameInterface);
             if(gameInterface_24_ != null) {
                 int[] is = Class13.method247(gameInterface_24_, (byte) 97);
                 int[] is_25_ = Class13.method247(gameInterface, (byte) 110);
@@ -1699,7 +1699,7 @@ public class GameInterface extends CachedNode {
     }
 
     public ImageRGB method638(byte arg0, int arg1) {
-        FramemapDefinition.aBoolean2177 = false;
+        AnimationBaseDefinition.aBoolean2177 = false;
         if(arg1 < 0 || imageY.length <= arg1) {
             return null;
         }
@@ -1714,7 +1714,7 @@ public class GameInterface extends CachedNode {
         }
         class40_sub5_sub14_sub4 = Class48.method927(0, CacheArchive.gameImageCacheArchive, true, i);
         if(class40_sub5_sub14_sub4 == null) {
-            FramemapDefinition.aBoolean2177 = true;
+            AnimationBaseDefinition.aBoolean2177 = true;
         } else {
             ImageRGB.imageRgbCache.put((long) i, class40_sub5_sub14_sub4);
         }
@@ -1722,7 +1722,7 @@ public class GameInterface extends CachedNode {
     }
 
     public ImageRGB getImageRgb(boolean useAlternateImage) {
-        FramemapDefinition.aBoolean2177 = false;
+        AnimationBaseDefinition.aBoolean2177 = false;
 
         int i;
         if(useAlternateImage) {
@@ -1757,7 +1757,7 @@ public class GameInterface extends CachedNode {
         }
         imageRGB = Class48.method927(0, CacheArchive.gameImageCacheArchive, true, i);
         if(imageRGB == null) {
-            FramemapDefinition.aBoolean2177 = true;
+            AnimationBaseDefinition.aBoolean2177 = true;
         } else {
             ImageRGB.imageRgbCache.put((long) i, imageRGB);
         }
@@ -1864,7 +1864,7 @@ public class GameInterface extends CachedNode {
     }
 
     public Model getModelForInterface(AnimationSequence animationSequence, int animationFrame, boolean applyAlternateAction, PlayerAppearance playerAppearance) {
-        FramemapDefinition.aBoolean2177 = false;
+        AnimationBaseDefinition.aBoolean2177 = false;
         InterfaceModelType modelType;
         int modelId;
         if(applyAlternateAction) {
@@ -1886,7 +1886,7 @@ public class GameInterface extends CachedNode {
             if(modelType == InterfaceModelType.MODEL) {
                 model = Model.getModel(CacheArchive.modelCacheArchive, modelId);
                 if(model == null) {
-                    FramemapDefinition.aBoolean2177 = true;
+                    AnimationBaseDefinition.aBoolean2177 = true;
                     return null;
                 }
                 model.createBones();
@@ -1895,7 +1895,7 @@ public class GameInterface extends CachedNode {
             if(modelType == InterfaceModelType.NPC_CHATHEAD) {
                 model = ActorDefinition.getDefinition(modelId).getHeadModel();
                 if(model == null) {
-                    FramemapDefinition.aBoolean2177 = true;
+                    AnimationBaseDefinition.aBoolean2177 = true;
                     return null;
                 }
                 model.createBones();
@@ -1907,7 +1907,7 @@ public class GameInterface extends CachedNode {
                 }
                 model = playerAppearance.getStaticModel();
                 if(model == null) {
-                    FramemapDefinition.aBoolean2177 = true;
+                    AnimationBaseDefinition.aBoolean2177 = true;
                     return null;
                 }
                 model.createBones();
@@ -1917,7 +1917,7 @@ public class GameInterface extends CachedNode {
                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(modelId, 10);
                 model = class40_sub5_sub16.asGroundStack(false, 10);
                 if(model == null) {
-                    FramemapDefinition.aBoolean2177 = true;
+                    AnimationBaseDefinition.aBoolean2177 = true;
                     return null;
                 }
                 model.createBones();
@@ -1937,7 +1937,7 @@ public class GameInterface extends CachedNode {
     }
 
     public TypeFace getTypeFace() {
-        FramemapDefinition.aBoolean2177 = false;
+        AnimationBaseDefinition.aBoolean2177 = false;
         if(fontId == 65535) {
             return null;
         }
@@ -1950,7 +1950,7 @@ public class GameInterface extends CachedNode {
         typeFace = TypeFace.getFont(CacheArchive.gameImageCacheArchive, 0, fontId);
 
         if(typeFace == null) {
-            FramemapDefinition.aBoolean2177 = true;
+            AnimationBaseDefinition.aBoolean2177 = true;
         } else {
             TypeFace.typeFaceCache.put(fontId, typeFace);
         }

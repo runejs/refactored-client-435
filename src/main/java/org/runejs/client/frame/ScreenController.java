@@ -1,6 +1,7 @@
 package org.runejs.client.frame;
 
 import org.runejs.client.cache.def.ActorDefinition;
+import org.runejs.client.cache.def.AnimationFrameGroup;
 import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.tab.TabProducer;
@@ -401,7 +402,7 @@ public class ScreenController {
                     SceneCluster.packetBuffer.putByte(89);
                     SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldX);
                     SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldY);
-                    SceneCluster.packetBuffer.putByte(Class40_Sub5_Sub15.arbitraryDestination);
+                    SceneCluster.packetBuffer.putByte(AnimationFrameGroup.arbitraryDestination);
                     SceneCluster.packetBuffer.putByte(63);
                 }
             }

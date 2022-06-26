@@ -140,11 +140,11 @@ public final class MusicSystem implements Runnable {
                 }
             }
         }
-        if(Class35.songTimeout > 0) {
-            Class35.songTimeout -= 20;
-            if(Class35.songTimeout < 0)
-                Class35.songTimeout = 0;
-            if(Class35.songTimeout == 0 && RSCanvas.musicVolume != 0 && MouseHandler.currentSongId != -1)
+        if(TextureStore.songTimeout > 0) {
+            TextureStore.songTimeout -= 20;
+            if(TextureStore.songTimeout < 0)
+                TextureStore.songTimeout = 0;
+            if(TextureStore.songTimeout == 0 && RSCanvas.musicVolume != 0 && MouseHandler.currentSongId != -1)
                 Class33.method414(false, 0, MouseHandler.currentSongId, RSCanvas.musicVolume, 0, CacheArchive.musicCacheArchive);
         }
     }

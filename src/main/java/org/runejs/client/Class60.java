@@ -197,14 +197,14 @@ public class Class60 {
             if(RSCanvas.musicVolume != 0 || MouseHandler.currentSongId == -1) {
                 if(newVolume == 0) {
                     Class33.method402(false);
-                    Class35.songTimeout = 0;
+                    TextureStore.songTimeout = 0;
                 } else {
                     Class33.method412(false, CacheArchive.musicCacheArchive, 0, (byte) 66, Native.titleSong, 10, "", RSCanvas.musicVolume);
                     MovedStatics.method456(newVolume);
                 }
             } else {
                 Class33.method414(false, 0, MouseHandler.currentSongId, newVolume, 0, CacheArchive.musicCacheArchive);
-                Class35.songTimeout = 0;
+                TextureStore.songTimeout = 0;
             }
 
             RSCanvas.musicVolume = newVolume;

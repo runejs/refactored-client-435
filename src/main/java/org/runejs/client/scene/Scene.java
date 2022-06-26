@@ -1,13 +1,15 @@
 package org.runejs.client.scene;
 
-import org.runejs.client.Class13;
-import org.runejs.client.Landscape;
-import org.runejs.client.LinkedList;
+import org.runejs.client.*;
+import org.runejs.client.cache.def.OverlayDefinition;
+import org.runejs.client.cache.def.UnderlayDefinition;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.scene.tile.*;
+import org.runejs.client.scene.util.CollisionMap;
+import org.runejs.client.util.BitUtils;
 
 import java.util.Arrays;
 
@@ -63,6 +65,21 @@ public class Scene {
     public static boolean[][][][] TILE_VISIBILITY_MAPS = new boolean[8][32][(TILE_DRAW_DISTANCE * 2) + 1][(TILE_DRAW_DISTANCE * 2) + 1];
     public static int anInt135;
     public static int anInt136;
+    public static int[] hueBuffer;
+    public static int[] lightnessBuffer;
+    public static int[] saturationBuffer;
+    public static int[] hueMultiplierBuffer;
+    public static int[] bufferLength;
+    public static int[][][] tileHeights = new int[4][105][105];
+    public static byte[][][] tileUnderlayIds;
+    public static int[][] tileLightness;
+    public static int hueOffset = -8 + (int) (17.0 * Math.random());
+    public static int lightnessOffset = -16 + (int) (Math.random() * 33.0);
+    public static byte[][][] objectShadowData;
+    public static byte[][][] tileFlags = new byte[4][104][104];
+    public static byte[][][] tileOverlayIds;
+    public static byte[][][] tileUnderlayPaths;
+    public static byte[][][] tileOverlayRotations;
 
     public SceneTile[][][] tileArray;
     public int[][][] anIntArrayArrayArray83;
@@ -201,6 +218,446 @@ public class Scene {
         sceneCluster.worldEndZ = highestZ;
         sceneCluster.worldStartZ = lowestZ;
         cullingClusters[z][cullingClusterPointer[z]++] = sceneCluster;
+    }
+
+    public static void initiateVertexHeights(int arg0, byte arg1, int arg2, int arg3, int arg4) {
+        int i = -112 / ((50 - arg1) / 53);
+        for (int i_0_ = arg0; i_0_ <= arg0 + arg2; i_0_++) {
+            for (int i_1_ = arg4; arg3 + arg4 >= i_1_; i_1_++) {
+                if (i_1_ >= 0 && i_1_ < 104 && i_0_ >= 0 && i_0_ < 104) {
+                    objectShadowData[0][i_1_][i_0_] = (byte) 127;
+                    if (arg4 == i_1_ && i_1_ > 0)
+                        tileHeights[0][i_1_][i_0_] = tileHeights[0][-1 + i_1_][i_0_];
+                    if (arg4 + arg3 == i_1_ && i_1_ < 103)
+                        tileHeights[0][i_1_][i_0_] = tileHeights[0][i_1_ + 1][i_0_];
+                    if (i_0_ == arg0 && i_0_ > 0)
+                        tileHeights[0][i_1_][i_0_] = tileHeights[0][i_1_][i_0_ + -1];
+                    if (i_0_ == arg0 + arg2 && i_0_ < 103)
+                        tileHeights[0][i_1_][i_0_] = tileHeights[0][i_1_][1 + i_0_];
+                }
+            }
+        }
+    }
+
+    public static int calculateTileHeight(int x, int y) {
+        int i = -128 + MovedStatics.method160(x + 45365, 15177, 4, 91923 + y) - (-(MovedStatics.method160(x + 10294, 15177, 2, 37821 + y) - 128 >> 1) + -(-128 + MovedStatics.method160(x, 15177, 1, y) >> 2));
+        i = 35 + (int) (0.3 * (double) i);
+        if(i >= 10) {
+            if(i > 60)
+                i = 60;
+        } else
+            i = 10;
+        return i;
+    }
+
+    public static void drawMapTiles(Scene scene, CollisionMap[] collisionMaps) {
+        for(int plane = 0; plane < 4; plane++) {
+            for(int x = 0; x < 104; x++) {
+                for(int y = 0; y < 104; y++) {
+                    if((0x1 & tileFlags[plane][x][y]) == 1) {
+                        int collisionMapIndex = plane;
+
+                        if((0x2 & tileFlags[1][x][y]) == 2) {
+                            collisionMapIndex--;
+                        }
+
+                        if(collisionMapIndex >= 0) {
+                            collisionMaps[collisionMapIndex].markBlocked(y, x);
+                        }
+                    }
+                }
+            }
+        }
+
+        hueOffset += (int) (5.0 * Math.random()) + -2;
+        lightnessOffset += -2 + (int) (5.0 * Math.random());
+
+        if(hueOffset < -8) {
+            hueOffset = -8;
+        }
+
+        if(hueOffset > 8) {
+            hueOffset = 8;
+        }
+
+        if(lightnessOffset < -16) {
+            lightnessOffset = -16;
+        }
+
+        if(lightnessOffset > 16) {
+            lightnessOffset = 16;
+        }
+
+        for(int plane = 0; plane < 4; plane++) {
+            byte[][] shadowIntensity = objectShadowData[plane];
+            int specularDistributionFactor = (int) Math.sqrt(5100.0);
+            int specularDistribution = specularDistributionFactor * 768 >> 8;
+
+            for(int y = 1; y < 103; y++) {
+                for(int x = 1; x < 103; x++) {
+                    int xHeightDifference = -tileHeights[plane][x - 1][y] + tileHeights[plane][1 + x][y];
+                    int yHeightDifference = tileHeights[plane][x][y + 1] + -tileHeights[plane][x][y + -1];
+                    int normalizedLength = (int) Math.sqrt(yHeightDifference * yHeightDifference + xHeightDifference * xHeightDifference + 65536);
+                    int normalizedNormalX = (xHeightDifference << 8) / normalizedLength;
+                    int normalizedNormalY = 65536 / normalizedLength;
+                    int normalizedNormalZ = (yHeightDifference << 8) / normalizedLength;
+                    int weightedShadowIntensity = (shadowIntensity[x][y] >> 1) + (shadowIntensity[x][-1 + y] >> 2) + (shadowIntensity[1 + x][y] >> 3) + (shadowIntensity[x - 1][y] >> 2) + (shadowIntensity[x][1 + y] >> 3);
+                    int directionalLightIntensity = 96 + (normalizedNormalX * -50 + -10 * normalizedNormalY + normalizedNormalZ * -50) / specularDistribution;
+                    tileLightness[x][y] = directionalLightIntensity + -weightedShadowIntensity;
+                }
+            }
+
+            for(int y = 0; y < 104; y++) {
+                hueBuffer[y] = 0;
+                saturationBuffer[y] = 0;
+                lightnessBuffer[y] = 0;
+                hueMultiplierBuffer[y] = 0;
+                bufferLength[y] = 0;
+            }
+
+            for(int tileX = -5; tileX < 109; tileX++) {
+                for(int y = 0; y < 104; y++) {
+                    int xOffsetPositive = 5 + tileX;
+                    int xOffsetNegative = tileX - 5;
+
+                    if(xOffsetPositive >= 0 && xOffsetPositive < 104) {
+                        int underlayId = 0xff & tileUnderlayIds[plane][xOffsetPositive][y];
+                        if(underlayId > 0) {
+                            UnderlayDefinition underlayDefinition =
+                                    UnderlayDefinition.getDefinition(underlayId - 1);
+                            hueBuffer[y] += underlayDefinition.hue;
+                            lightnessBuffer[y] += underlayDefinition.lightness;
+                            saturationBuffer[y] += underlayDefinition.saturation;
+                            hueMultiplierBuffer[y] += underlayDefinition.hueMultiplier;
+                            bufferLength[y]++;
+                        }
+                    }
+
+                    if(xOffsetNegative >= 0 && xOffsetNegative < 104) {
+                        int underlayId = 0xff & tileUnderlayIds[plane][xOffsetNegative][y];
+                        if(underlayId > 0) {
+                            UnderlayDefinition underlayDefinition =
+                                    UnderlayDefinition.getDefinition(underlayId - 1);
+                            hueBuffer[y] -= underlayDefinition.hue;
+                            lightnessBuffer[y] -= underlayDefinition.lightness;
+                            saturationBuffer[y] -= underlayDefinition.saturation;
+                            hueMultiplierBuffer[y] -= underlayDefinition.hueMultiplier;
+                            bufferLength[y]--;
+                        }
+                    }
+                }
+
+                if(tileX >= 1 && tileX < 103) {
+                    int hueValue = 0;
+                    int lightnessValue = 0;
+                    int saturationValue = 0;
+                    int modifierLength = 0;
+                    int hueMultiplier = 0;
+
+                    for(int tileY = -5; tileY < 109; tileY++) {
+                        int yOffsetPositive = tileY + 5;
+                        int yOffsetNegative = tileY - 5;
+
+                        if(yOffsetPositive >= 0 && yOffsetPositive < 104) {
+                            hueMultiplier += hueMultiplierBuffer[yOffsetPositive];
+                            lightnessValue += lightnessBuffer[yOffsetPositive];
+                            modifierLength += bufferLength[yOffsetPositive];
+                            saturationValue += saturationBuffer[yOffsetPositive];
+                            hueValue += hueBuffer[yOffsetPositive];
+                        }
+
+                        if(yOffsetNegative >= 0 && yOffsetNegative < 104) {
+                            lightnessValue -= lightnessBuffer[yOffsetNegative];
+                            modifierLength -= bufferLength[yOffsetNegative];
+                            saturationValue -= saturationBuffer[yOffsetNegative];
+                            hueMultiplier -= hueMultiplierBuffer[yOffsetNegative];
+                            hueValue -= hueBuffer[yOffsetNegative];
+                        }
+
+                        if(tileY >= 1 && tileY < 103 && (!VertexNormal.lowMemory || (0x2 & tileFlags[0][tileX][tileY]) != 0 || (0x10 & tileFlags[plane][tileX][tileY]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(plane, tileY, 0, tileX))) {
+                            if(MovedStatics.lowestPlane > plane) {
+                                MovedStatics.lowestPlane = plane;
+                            }
+
+                            int tileUnderlayId = tileUnderlayIds[plane][tileX][tileY] & 0xff;
+                            int tileOverlayId = tileOverlayIds[plane][tileX][tileY] & 0xff;
+
+                            if(tileUnderlayId > 0 || tileOverlayId > 0) {
+                                int currentTileHeight = tileHeights[plane][tileX][tileY];
+                                int nextXTileHeight = tileHeights[plane][tileX + 1][tileY];
+                                int nextYTileHeight = tileHeights[plane][tileX][tileY + 1];
+                                int nextXYTileHeight = tileHeights[plane][tileX + 1][1 + tileY];
+
+                                int currentTileLightness = tileLightness[tileX][tileY];
+                                int nextXTileLightness = tileLightness[tileX + 1][tileY];
+                                int nextYTileLightness = tileLightness[tileX][tileY + 1];
+                                int nextXYTileLightness = tileLightness[tileX + 1][tileY + 1];
+
+                                int underlayColor1 = -1;
+                                int underlayColor2 = -1;
+
+                                if(tileUnderlayId > 0) {
+                                    int h = 256 * hueValue / hueMultiplier;
+                                    int s = saturationValue / modifierLength;
+                                    int l = lightnessValue / modifierLength;
+
+                                    underlayColor1 = MovedStatics.hslToInt(h, s, l);
+                                    s += lightnessOffset;
+                                    h = h + hueOffset & 0xff;
+
+                                    if(s >= 0) {
+                                        if(s > 255)
+                                            s = 255;
+                                    } else {
+                                        s = 0;
+                                    }
+
+                                    underlayColor2 = MovedStatics.hslToInt(h, s, l);
+                                }
+
+                                if(plane > 0) {
+                                    boolean hasUnderlay = true;
+
+                                    if(tileUnderlayId == 0 && tileUnderlayPaths[plane][tileX][tileY] != 0) {
+                                        hasUnderlay = false;
+                                    }
+
+                                    if(tileOverlayId > 0 && !OverlayDefinition.getDefinition(-1 + tileOverlayId, 4).hideOverlay) {
+                                        hasUnderlay = false;
+                                    }
+
+                                    if(hasUnderlay && currentTileHeight == nextXTileHeight && nextXYTileHeight == currentTileHeight && currentTileHeight == nextYTileHeight) {
+                                        MovedStatics.anIntArrayArrayArray262[plane][tileX][tileY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][tileX][tileY], 2340);
+                                    }
+                                }
+
+                                int underlayRgb = 0;
+
+                                if(underlayColor2 != -1) {
+                                    underlayRgb = Rasterizer3D.hsl2rgb[MovedStatics.method831(underlayColor2, 96)];
+                                }
+
+                                if(tileOverlayId != 0) {
+                                    int tileUnderlayPath = tileUnderlayPaths[plane][tileX][tileY] + 1;
+                                    byte tileOverlayRotation = tileOverlayRotations[plane][tileX][tileY];
+                                    OverlayDefinition overlay = OverlayDefinition.getDefinition(tileOverlayId - 1, 4);
+                                    int overlayTextureId = overlay.texture;
+                                    int overlayColor1;
+                                    int overlayColor2;
+
+                                    if(overlayTextureId >= 0) {
+                                        overlayColor1 = -1;
+                                        overlayColor2 = Rasterizer3D.textureStore.getFile(overlayTextureId);
+                                    } else if(overlay.color == 16711935) {
+                                        overlayColor1 = -2;
+                                        overlayTextureId = -1;
+                                        overlayColor2 = -2;
+                                    } else {
+                                        overlayColor1 = MovedStatics.hslToInt(overlay.hue, overlay.saturation, overlay.lightness);
+                                        int h = hueOffset + overlay.hue & 0xff;
+                                        int s = lightnessOffset + overlay.saturation;
+
+                                        if(s < 0) {
+                                            s = 0;
+                                        } else if(s > 255) {
+                                            s = 255;
+                                        }
+
+                                        overlayColor2 = MovedStatics.hslToInt(h, s, overlay.lightness);
+                                    }
+
+                                    int overlayRgb = 0;
+                                    if(overlayColor2 != -2) {
+                                        overlayRgb = Rasterizer3D.hsl2rgb[MovedStatics.method420(overlayColor2, 96)];
+                                    }
+
+                                    if(overlay.secondaryColor != -1) {
+                                        int h = 0xff & hueOffset + overlay.secondaryHue;
+                                        int s = overlay.secondarySaturation + lightnessOffset;
+                                        if(s >= 0) {
+                                            if(s > 255) {
+                                                s = 255;
+                                            }
+                                        } else {
+                                            s = 0;
+                                        }
+
+                                        overlayColor2 = MovedStatics.hslToInt(h, s, overlay.secondaryLightness);
+                                        overlayRgb = Rasterizer3D.hsl2rgb[MovedStatics.method420(overlayColor2, 96)];
+                                    }
+
+                                    scene.addTile(plane, tileX, tileY, tileUnderlayPath, tileOverlayRotation, overlayTextureId, currentTileHeight, nextXTileHeight, nextXYTileHeight, nextYTileHeight,
+                                            MovedStatics.method831(underlayColor1, currentTileLightness),
+                                            MovedStatics.method831(underlayColor1, nextXTileLightness),
+                                            MovedStatics.method831(underlayColor1, nextXYTileLightness),
+                                            MovedStatics.method831(underlayColor1, nextYTileLightness),
+                                            MovedStatics.method420(overlayColor1, currentTileLightness),
+                                            MovedStatics.method420(overlayColor1, nextXTileLightness),
+                                            MovedStatics.method420(overlayColor1, nextXYTileLightness),
+                                            MovedStatics.method420(overlayColor1, nextYTileLightness),
+                                            underlayRgb,
+                                            overlayRgb);
+                                } else {
+                                    scene.addTile(plane, tileX, tileY, 0, 0, -1,
+                                            currentTileHeight, nextXTileHeight, nextXYTileHeight, nextYTileHeight,
+                                            MovedStatics.method831(underlayColor1, currentTileLightness),
+                                            MovedStatics.method831(underlayColor1, nextXTileLightness),
+                                            MovedStatics.method831(underlayColor1, nextXYTileLightness),
+                                            MovedStatics.method831(underlayColor1, nextYTileLightness),
+                                            0, 0, 0, 0,
+                                            underlayRgb,
+                                            0);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            for(int i_56_ = 1; i_56_ < 103; i_56_++) {
+                for(int i_57_ = 1; i_57_ < 103; i_57_++)
+                    scene.method130(plane, i_57_, i_56_, Class59.getVisibilityPlaneFor(plane, i_56_, 0, i_57_));
+            }
+            tileUnderlayIds[plane] = null;
+            tileOverlayIds[plane] = null;
+            tileUnderlayPaths[plane] = null;
+            tileOverlayRotations[plane] = null;
+            objectShadowData[plane] = null;
+        }
+        scene.method118(-50, -10, -50);
+        for(int i = 0; i < 104; i++) {
+            for(int i_58_ = 0; i_58_ < 104; i_58_++) {
+                if((tileFlags[1][i][i_58_] & 0x2) == 2)
+                    scene.method92(i, i_58_);
+            }
+        }
+        int i = 1;
+        int i_59_ = 2;
+        int i_60_ = 4;
+        for(int i_61_ = 0; i_61_ < 4; i_61_++) {
+            if(i_61_ > 0) {
+                i <<= 3;
+                i_60_ <<= 3;
+                i_59_ <<= 3;
+            }
+            for(int i_62_ = 0; i_62_ <= i_61_; i_62_++) {
+                for(int i_63_ = 0; i_63_ <= 104; i_63_++) {
+                    for(int i_64_ = 0; i_64_ <= 104; i_64_++) {
+                        if((MovedStatics.anIntArrayArrayArray262[i_62_][i_64_][i_63_] & i) != 0) {
+                            int i_65_;
+                            for(i_65_ = i_63_; i_65_ > 0 && (i & MovedStatics.anIntArrayArrayArray262[i_62_][i_64_][-1 + i_65_]) != 0; i_65_--) {
+                                /* empty */
+                            }
+                            int i_66_;
+                            for(i_66_ = i_63_; i_66_ < 104 && (MovedStatics.anIntArrayArrayArray262[i_62_][i_64_][i_66_ + 1] & i) != 0; i_66_++) {
+                                /* empty */
+                            }
+                            int i_67_ = i_62_;
+                            int i_68_ = i_62_;
+                            while_4_:
+                            for(/**/; i_67_ > 0; i_67_--) {
+                                for(int i_69_ = i_65_; i_69_ <= i_66_; i_69_++) {
+                                    if((MovedStatics.anIntArrayArrayArray262[-1 + i_67_][i_64_][i_69_] & i) == 0)
+                                        break while_4_;
+                                }
+                            }
+                            while_5_:
+                            for(/**/; i_68_ < i_61_; i_68_++) {
+                                for(int i_70_ = i_65_; i_70_ <= i_66_; i_70_++) {
+                                    if((i & MovedStatics.anIntArrayArrayArray262[i_68_ + 1][i_64_][i_70_]) == 0)
+                                        break while_5_;
+                                }
+                            }
+                            int i_71_ = (-i_65_ + i_66_ + 1) * (-i_67_ + i_68_ + 1);
+                            if(i_71_ >= 8) {
+                                int i_72_ = 240;
+                                int i_73_ = -i_72_ + tileHeights[i_68_][i_64_][i_65_];
+                                int i_74_ = tileHeights[i_67_][i_64_][i_65_];
+                                method116(i_61_, 1, 128 * i_64_, 128 * i_64_, 128 * i_65_, 128 + 128 * i_66_, i_73_, i_74_);
+                                for(int i_75_ = i_67_; i_75_ <= i_68_; i_75_++) {
+                                    for(int i_76_ = i_65_; i_76_ <= i_66_; i_76_++)
+                                        MovedStatics.anIntArrayArrayArray262[i_75_][i_64_][i_76_] = BitUtils.bitWiseAND(MovedStatics.anIntArrayArrayArray262[i_75_][i_64_][i_76_], i ^ 0xffffffff);
+                                }
+                            }
+                        }
+                        if((i_59_ & MovedStatics.anIntArrayArrayArray262[i_62_][i_64_][i_63_]) != 0) {
+                            int i_77_;
+                            for(i_77_ = i_64_; i_77_ > 0 && (i_59_ & MovedStatics.anIntArrayArrayArray262[i_62_][i_77_ - 1][i_63_]) != 0; i_77_--) {
+                                /* empty */
+                            }
+                            int i_78_ = i_62_;
+                            int i_79_ = i_64_;
+                            int i_80_ = i_62_;
+                            for(/**/; i_79_ < 104; i_79_++) {
+                                if((i_59_ & MovedStatics.anIntArrayArrayArray262[i_62_][1 + i_79_][i_63_]) == 0)
+                                    break;
+                            }
+                            while_6_:
+                            for(/**/; i_80_ > 0; i_80_--) {
+                                for(int i_81_ = i_77_; i_81_ <= i_79_; i_81_++) {
+                                    if((MovedStatics.anIntArrayArrayArray262[i_80_ + -1][i_81_][i_63_] & i_59_) == 0)
+                                        break while_6_;
+                                }
+                            }
+                            while_7_:
+                            for(/**/; i_78_ < i_61_; i_78_++) {
+                                for(int i_82_ = i_77_; i_82_ <= i_79_; i_82_++) {
+                                    if((i_59_ & MovedStatics.anIntArrayArrayArray262[1 + i_78_][i_82_][i_63_]) == 0)
+                                        break while_7_;
+                                }
+                            }
+                            int i_83_ = (i_79_ - i_77_ + 1) * (-i_80_ + 1 + i_78_);
+                            if(i_83_ >= 8) {
+                                int i_84_ = tileHeights[i_80_][i_77_][i_63_];
+                                int i_85_ = 240;
+                                int i_86_ = tileHeights[i_78_][i_77_][i_63_] - i_85_;
+                                method116(i_61_, 2, 128 * i_77_, 128 * i_79_ + 128, 128 * i_63_, i_63_ * 128, i_86_, i_84_);
+                                for(int i_87_ = i_80_; i_78_ >= i_87_; i_87_++) {
+                                    for(int i_88_ = i_77_; i_88_ <= i_79_; i_88_++)
+                                        MovedStatics.anIntArrayArrayArray262[i_87_][i_88_][i_63_] = BitUtils.bitWiseAND(MovedStatics.anIntArrayArrayArray262[i_87_][i_88_][i_63_], i_59_ ^ 0xffffffff);
+                                }
+                            }
+                        }
+                        if((MovedStatics.anIntArrayArrayArray262[i_62_][i_64_][i_63_] & i_60_) != 0) {
+                            int i_89_ = i_64_;
+                            int i_90_ = i_64_;
+                            int i_91_ = i_63_;
+                            int i_92_ = i_63_;
+                            for(/**/; i_91_ > 0; i_91_--) {
+                                if((MovedStatics.anIntArrayArrayArray262[i_62_][i_64_][-1 + i_91_] & i_60_) == 0)
+                                    break;
+                            }
+                            for(/**/; i_92_ < 104; i_92_++) {
+                                if((i_60_ & MovedStatics.anIntArrayArrayArray262[i_62_][i_64_][i_92_ + 1]) == 0)
+                                    break;
+                            }
+                            while_8_:
+                            for(/**/; i_89_ > 0; i_89_--) {
+                                for(int i_93_ = i_91_; i_93_ <= i_92_; i_93_++) {
+                                    if((i_60_ & MovedStatics.anIntArrayArrayArray262[i_62_][i_89_ + -1][i_93_]) == 0)
+                                        break while_8_;
+                                }
+                            }
+                            while_9_:
+                            for(/**/; i_90_ < 104; i_90_++) {
+                                for(int i_94_ = i_91_; i_92_ >= i_94_; i_94_++) {
+                                    if((i_60_ & MovedStatics.anIntArrayArrayArray262[i_62_][1 + i_90_][i_94_]) == 0)
+                                        break while_9_;
+                                }
+                            }
+                            if((-i_89_ + i_90_ + 1) * (1 + i_92_ - i_91_) >= 4) {
+                                int i_95_ = tileHeights[i_62_][i_89_][i_91_];
+                                method116(i_61_, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_, i_92_ * 128 + 128, i_95_, i_95_);
+                                for(int i_96_ = i_89_; i_96_ <= i_90_; i_96_++) {
+                                    for(int i_97_ = i_91_; i_92_ >= i_97_; i_97_++)
+                                        MovedStatics.anIntArrayArrayArray262[i_62_][i_96_][i_97_] = BitUtils.bitWiseAND(MovedStatics.anIntArrayArrayArray262[i_62_][i_96_][i_97_], i_60_ ^ 0xffffffff);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
     public int method91(int arg0, int arg1, int arg2) {
@@ -491,7 +948,28 @@ public class Scene {
         Arrays.fill(interactiveObjects, null);
     }
 
-    public void addTile(int plane, int x, int y, int shape, int clippingPathRotation, int textureId, int vertexHeightSW, int vertexHeightSE, int vertexHeightNE, int vertexHeightNW, int cA, int cB, int cD, int cC, int colourA, int colourB, int colourD, int colourC, int underlayRGB, int overlayRGB) {
+    public void addTile(
+            int plane,
+            int x,
+            int y,
+            int shape,
+            int clippingPathRotation,
+            int textureId,
+            int vertexHeightSW,
+            int vertexHeightSE,
+            int vertexHeightNE,
+            int vertexHeightNW,
+            int cA,
+            int cB,
+            int cD,
+            int cC,
+            int colourA,
+            int colourB,
+            int colourD,
+            int colourC,
+            int underlayRGB,
+            int overlayRGB
+    ) {
         if (shape == 0) {
             GenericTile genericTile = new GenericTile(cA, cB, cC, cD, -1, underlayRGB, false);
             for (int _z = plane; _z >= 0; _z--) {
@@ -761,9 +1239,9 @@ public class Scene {
     }
 
     public void method106(SceneTile arg0, boolean arg1) {
-        tileList.pushBack(arg0, -69);
+        tileList.pushBack(arg0);
         for (; ; ) {
-            SceneTile groundTile = (SceneTile) tileList.method913(25447);
+            SceneTile groundTile = (SceneTile) tileList.method913();
             if (groundTile == null) {
                 break;
             }
@@ -945,25 +1423,25 @@ public class Scene {
                         if (i < cameraPositionTileX && (i_98_ & 0x4) != 0) {
                             SceneTile sceneTile_99_ = sceneTiles[i + 1][i_76_];
                             if (sceneTile_99_ != null && sceneTile_99_.visible) {
-                                tileList.pushBack(sceneTile_99_, -115);
+                                tileList.pushBack(sceneTile_99_);
                             }
                         }
                         if (i_76_ < cameraPositionTileY && (i_98_ & 0x2) != 0) {
                             SceneTile sceneTile_100_ = sceneTiles[i][i_76_ + 1];
                             if (sceneTile_100_ != null && sceneTile_100_.visible) {
-                                tileList.pushBack(sceneTile_100_, 127);
+                                tileList.pushBack(sceneTile_100_);
                             }
                         }
                         if (i > cameraPositionTileX && (i_98_ & 0x1) != 0) {
                             SceneTile sceneTile_101_ = sceneTiles[i - 1][i_76_];
                             if (sceneTile_101_ != null && sceneTile_101_.visible) {
-                                tileList.pushBack(sceneTile_101_, -106);
+                                tileList.pushBack(sceneTile_101_);
                             }
                         }
                         if (i_76_ > cameraPositionTileY && (i_98_ & 0x8) != 0) {
                             SceneTile tile = sceneTiles[i][i_76_ - 1];
                             if (tile != null && tile.visible) {
-                                tileList.pushBack(tile, -81);
+                                tileList.pushBack(tile);
                             }
                         }
                     }
@@ -1068,9 +1546,9 @@ public class Scene {
                                 for (int i_123_ = interactiveObject.tileTop; i_123_ <= interactiveObject.tileBottom; i_123_++) {
                                     SceneTile sceneTile_124_ = sceneTiles[i_122_][i_123_];
                                     if (sceneTile_124_.wallCullDirection != 0) {
-                                        tileList.pushBack(sceneTile_124_, 108);
+                                        tileList.pushBack(sceneTile_124_);
                                     } else if ((i_122_ != i || i_123_ != i_76_) && sceneTile_124_.visible) {
-                                        tileList.pushBack(sceneTile_124_, 92);
+                                        tileList.pushBack(sceneTile_124_);
                                     }
                                 }
                             }
@@ -1169,31 +1647,31 @@ public class Scene {
                         if (i_77_ < mapSizeZ - 1) {
                             SceneTile sceneTile_139_ = tileArray[i_77_ + 1][i][i_76_];
                             if (sceneTile_139_ != null && sceneTile_139_.visible) {
-                                tileList.pushBack(sceneTile_139_, -88);
+                                tileList.pushBack(sceneTile_139_);
                             }
                         }
                         if (i < cameraPositionTileX) {
                             SceneTile sceneTile_140_ = sceneTiles[i + 1][i_76_];
                             if (sceneTile_140_ != null && sceneTile_140_.visible) {
-                                tileList.pushBack(sceneTile_140_, 63);
+                                tileList.pushBack(sceneTile_140_);
                             }
                         }
                         if (i_76_ < cameraPositionTileY) {
                             SceneTile sceneTile_141_ = sceneTiles[i][i_76_ + 1];
                             if (sceneTile_141_ != null && sceneTile_141_.visible) {
-                                tileList.pushBack(sceneTile_141_, -81);
+                                tileList.pushBack(sceneTile_141_);
                             }
                         }
                         if (i > cameraPositionTileX) {
                             SceneTile sceneTile_142_ = sceneTiles[i - 1][i_76_];
                             if (sceneTile_142_ != null && sceneTile_142_.visible) {
-                                tileList.pushBack(sceneTile_142_, 89);
+                                tileList.pushBack(sceneTile_142_);
                             }
                         }
                         if (i_76_ > cameraPositionTileY) {
                             SceneTile sceneTile_143_ = sceneTiles[i][i_76_ - 1];
                             if (sceneTile_143_ != null && sceneTile_143_.visible) {
-                                tileList.pushBack(sceneTile_143_, -125);
+                                tileList.pushBack(sceneTile_143_);
                             }
                         }
                     }
@@ -1689,7 +2167,7 @@ public class Scene {
                     Rasterizer3D.drawShadedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, plainTile.colourD, plainTile.colourC, plainTile.colourB);
                 }
             } else if (lowMemory) {
-                int rgb = Rasterizer3D.anInterface3_2939.method14(true, plainTile.texture);
+                int rgb = Rasterizer3D.textureStore.getFile(plainTile.texture);
                 Rasterizer3D.drawShadedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, method108(rgb, plainTile.colourD), method108(rgb, plainTile.colourC), method108(rgb, plainTile.colourB));
             } else if (plainTile.flat) {
                 Rasterizer3D.drawTexturedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, plainTile.colourD, plainTile.colourC, plainTile.colourB, xA, xB, xC, zA, zB, zD, yA, yB, yC, plainTile.texture);
@@ -1713,7 +2191,7 @@ public class Scene {
                     Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, plainTile.colourA, plainTile.colourB, plainTile.colourC);
                 }
             } else if (lowMemory) {
-                int i_209_ = Rasterizer3D.anInterface3_2939.method14(true, plainTile.texture);
+                int i_209_ = Rasterizer3D.textureStore.getFile(plainTile.texture);
                 Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, method108(i_209_, plainTile.colourA), method108(i_209_, plainTile.colourB), method108(i_209_, plainTile.colourC));
             } else {
                 Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, plainTile.colourA, plainTile.colourB, plainTile.colourC, xA, xB, xC, zA, zB, zD, yA, yB, yC, plainTile.texture);
@@ -1926,7 +2404,7 @@ public class Scene {
                         Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, shapedTile.triangleHSLA[triangle], shapedTile.triangleHSLB[triangle], shapedTile.triangleHSLC[triangle]);
                     }
                 } else if (lowMemory) {
-                    int i_240_ = Rasterizer3D.anInterface3_2939.method14(true, shapedTile.triangleTexture[triangle]);
+                    int i_240_ = Rasterizer3D.textureStore.getFile(shapedTile.triangleTexture[triangle]);
                     Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, method108(i_240_, shapedTile.triangleHSLA[triangle]), method108(i_240_, shapedTile.triangleHSLB[triangle]), method108(i_240_, shapedTile.triangleHSLC[triangle]));
                 } else if (shapedTile.flat) {
                     Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, shapedTile.triangleHSLA[triangle], shapedTile.triangleHSLB[triangle], shapedTile.triangleHSLC[triangle], ComplexTile.viewspaceX[0], ComplexTile.viewspaceX[1], ComplexTile.viewspaceX[3], ComplexTile.viewspaceY[0], ComplexTile.viewspaceY[1], ComplexTile.viewspaceY[3], ComplexTile.viewspaceZ[0], ComplexTile.viewspaceZ[1], ComplexTile.viewspaceZ[3], shapedTile.triangleTexture[triangle]);

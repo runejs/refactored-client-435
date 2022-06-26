@@ -1,5 +1,6 @@
 package org.runejs.client;
 
+import org.runejs.client.cache.def.AnimationFrameGroup;
 import org.runejs.client.node.Class40_Sub6;
 import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.media.IndexedImage;
@@ -44,7 +45,7 @@ public class Class13 {
         else
             PlayerAppearance.method381(actor);
         Projectile.method762(actor);
-        Class40_Sub5_Sub15.method736(true, actor);
+        AnimationFrameGroup.method736(true, actor);
     }
 
     public static void method242(byte arg0) {
@@ -53,7 +54,7 @@ public class Class13 {
         for(; ; ) {
             Class40_Sub6 class40_sub6;
             synchronized(RSCanvas.aLinkedList_53) {
-                class40_sub6 = (Class40_Sub6) IdentityKit.aLinkedList_2604.method913(25447);
+                class40_sub6 = (Class40_Sub6) IdentityKit.aLinkedList_2604.method913();
             }
             if(class40_sub6 == null)
                 break;
@@ -65,18 +66,6 @@ public class Class13 {
         if(GameInterface.decodeGameInterface(widgetId)) {
             Class48.handleInterfaceActions(areaId, mouseX, mouseY, minX, minY, maxX, maxY, GameInterface.cachedInterfaces[widgetId], -1, 0, 0);
         }
-    }
-
-    public static int method244(int arg0, int arg1, int arg3) {
-        if(arg1 > 179)
-            arg0 /= 2;
-        if(arg1 > 192)
-            arg0 /= 2;
-        if(arg1 > 217)
-            arg0 /= 2;
-        if(arg1 > 243)
-            arg0 /= 2;
-        return arg1 / 2 + (arg0 / 32 << 7) + (arg3 / 4 << 10);
     }
 
     public static synchronized byte[] method246(int arg1) {
@@ -129,7 +118,7 @@ public class Class13 {
 
     public static void method249(boolean arg0) {
         if(!arg0)
-            method244(-58, 116, 98);
+            MovedStatics.hslToInt(98, 116, -58);
         if(GameObject.frame != null) {
             synchronized(GameObject.frame) {
                 GameObject.frame = null;

@@ -14,11 +14,12 @@ import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.scene.GroundItemTile;
+import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.util.BitUtils;
-import org.runejs.client.cache.def.FramemapDefinition;
+import org.runejs.client.cache.def.AnimationBaseDefinition;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.def.OverlayDefinition;
@@ -84,7 +85,7 @@ public class Landscape {
                 for(int z = 0; z < 4; z++) {
                     for(int x = 0; x < 104; x++) {
                         for(int y = 0; y < 104; y++)
-                            OverlayDefinition.tile_flags[z][x][y] = (byte) 0;
+                            Scene.tileFlags[z][x][y] = (byte) 0;
                     }
                 }
                 Class65.method1020();
@@ -108,7 +109,7 @@ public class Landscape {
                         int offsetY = -Class26.baseY + 64 * (ISAAC.mapCoordinates[pointer] & 0xff);
                         byte[] data = RSString.terrainData[pointer];
                         if(data == null && Class17.regionY < 800)
-                            MovedStatics.initiateVertexHeights(offsetY, (byte) 103, 64, 64, offsetX);
+                            Scene.initiateVertexHeights(offsetY, (byte) 103, 64, 64, offsetX);
                     }
                     Main.method364(true);
                     for(int region = 0; dataLength > region; region++) {
@@ -164,7 +165,7 @@ public class Landscape {
                         for(int y = 0; y < 13; y++) {
                             int displayMap = OverlayDefinition.constructMapTiles[0][x][y];
                             if(displayMap == -1)
-                                MovedStatics.initiateVertexHeights(y * 8, (byte) 120, 8, 8, 8 * x);
+                                Scene.initiateVertexHeights(y * 8, (byte) 120, 8, 8, 8 * x);
                         }
                     }
                     Main.method364(true);
@@ -191,7 +192,7 @@ public class Landscape {
                 }
                 Main.method364(true);
                 RSCanvas.clearCaches();
-                ISAAC.drawMapTiles(Npc.currentScene, currentCollisionMap);
+                Scene.drawMapTiles(Npc.currentScene, currentCollisionMap);
                 Main.method364(true);
                 int z = MovedStatics.lowestPlane;
                 if(Player.worldLevel < z)
@@ -204,7 +205,7 @@ public class Landscape {
                     Npc.currentScene.setHeightLevel(MovedStatics.lowestPlane);
                 for(int x = 0; x < 104; x++) {
                     for(int y = 0; y < 104; y++)
-                        FramemapDefinition.spawnGroundItem(y, x);
+                        AnimationBaseDefinition.spawnGroundItem(y, x);
                 }
                 ISAAC.method285((byte) 118);
                 GameObjectDefinition.objectModelCache.clear();
@@ -241,7 +242,7 @@ public class Landscape {
     }
 
     public static void method934(int arg0, int arg2, int arg3, int arg4) {
-        for(Class40_Sub2 class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method909(-4)) {
+        for(Class40_Sub2 class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.next(); class40_sub2 != null; class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method909()) {
             if(class40_sub2.anInt1997 != -1 || class40_sub2.anIntArray2005 != null) {
                 int i_48_ = 0;
                 if(arg0 <= class40_sub2.anInt2013) {
@@ -316,9 +317,9 @@ public class Landscape {
             for(int tileX = 0; tileX < 64; tileX++) {
                 for(int tileY = 0; tileY < 64; tileY++) {
                     if(plane == drawingPlane && tileX >= drawX && 8 + drawX > tileX && tileY >= drawY && 8 + drawY > tileY)
-                        Class48.method922(x + Class24.getRotatedTileX(rotation, false, tileX & 0x7, tileY & 0x7), rotation, class40_sub1, y + Class33.getRotatedTileY(tileX & 0x7, 0x7 & tileY, rotation, false), 0, 0, currentPlane);
+                        Class48.decodeTile(class40_sub1, x + Class24.getRotatedTileX(rotation, false, tileX & 0x7, tileY & 0x7), y + Class33.getRotatedTileY(tileX & 0x7, 0x7 & tileY, rotation, false), currentPlane, 0, 0, rotation);
                     else
-                        Class48.method922(-1, 0, class40_sub1, -1, 0, 0, 0);
+                        Class48.decodeTile(class40_sub1, -1, -1, 0, 0, 0, 0);
                 }
             }
         }

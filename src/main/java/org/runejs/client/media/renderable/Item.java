@@ -14,6 +14,7 @@ import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.scene.GroundItemTile;
+import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.*;
@@ -67,9 +68,9 @@ public class Item extends Renderable {
             for (int i_5_ = -4 + i_2_; i_5_ <= 4 + i_2_; i_5_++) {
                 for (int i_6_ = -4 + i_1_; 4 + i_1_ >= i_6_; i_6_++) {
                     int i_7_ = Player.worldLevel;
-                    if (i_7_ < 3 && (0x2 & OverlayDefinition.tile_flags[1][i_5_][i_6_]) == 2)
+                    if (i_7_ < 3 && (0x2 & Scene.tileFlags[1][i_5_][i_6_]) == 2)
                         i_7_++;
-                    int i_8_ = i_4_ + -MovedStatics.tile_height[i_7_][i_5_][i_6_];
+                    int i_8_ = i_4_ + -Scene.tileHeights[i_7_][i_5_][i_6_];
                     if (i_8_ > i_3_)
                         i_3_ = i_8_;
                 }
@@ -171,7 +172,7 @@ public class Item extends Renderable {
 
             logo.drawImage(-128 + 382 + -(logo.imageWidth / 2), 18);
 
-            Class40_Sub5_Sub15.loginScreenBox = Main.method359(Native.titleBox, "", gameImageCacheArchive);
+            AnimationFrameGroup.loginScreenBox = Main.method359(Native.titleBox, "", gameImageCacheArchive);
             Class59.imgLoginScreenButton = Main.method359(Native.titleButton, "", gameImageCacheArchive);
             Class22.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(gameImageCacheArchive, Native.runes, "");
 
@@ -211,7 +212,7 @@ public class Item extends Renderable {
             MovedStatics.anIntArray1013 = new int[256];
             MovedStatics.anIntArray1445 = new int[32768];
             Landscape.anIntArray1168 = new int[32768];
-            FramemapDefinition.method879(null);
+            AnimationBaseDefinition.method879(null);
             Class40_Sub5_Sub17_Sub6.anIntArray3255 = new int[32768];
             Native.username = Configuration.getUsername();
             Native.password = Configuration.getPassword();

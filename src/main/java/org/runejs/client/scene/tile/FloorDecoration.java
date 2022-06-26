@@ -2,6 +2,7 @@ package org.runejs.client.scene.tile;
 
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.ActorDefinition;
+import org.runejs.client.cache.def.AnimationFrameGroup;
 import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.IndexedImage;
@@ -10,26 +11,19 @@ import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.Actor;
-import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.IncomingPackets;
-import org.runejs.client.net.PacketBuffer;
-import org.runejs.client.net.UpdateServerNode;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.util.SignlinkNode;
 import org.runejs.client.*;
-
-import java.io.IOException;
-import java.util.zip.CRC32;
 
 public class FloorDecoration {
     public static IndexedImage inventoryBackgroundImage;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
     public static SignlinkNode gameServerSignlinkNode;
     public static Class40_Sub9 aClass40_Sub9_608;
-    public static int[] anIntArray612;
     public static int anInt614 = -1;
 
     public int config;
@@ -165,7 +159,7 @@ public class FloorDecoration {
             Class57.bottomChatBack = null;
             inventoryBackgroundImage = null;
             WallDecoration.aClass40_Sub5_Sub14_Sub2_1270 = null;
-            Class40_Sub5_Sub15.tabIcons = null;
+            AnimationFrameGroup.tabIcons = null;
             Class13.aClass40_Sub5_Sub14_Sub2_418 = null;
             RSString.mapbackProducingGraphicsBuffer = null;
             RSCanvas.anIntArray62 = null;
@@ -189,7 +183,7 @@ public class FloorDecoration {
             if(arg0 < -28) {
                 MovedStatics.chatboxRight = null;
                 MovedStatics.tabPieceUpperRight = null;
-                Class35.aClass40_Sub5_Sub14_Sub2_1744 = null;
+                TextureStore.aClass40_Sub5_Sub14_Sub2_1744 = null;
                 MovedStatics.aClass40_Sub5_Sub14_Sub2_549 = null;
                 Renderable.aClass40_Sub5_Sub14_Sub2_2860 = null;
                 Class24.fullScreenTextureArray = null;

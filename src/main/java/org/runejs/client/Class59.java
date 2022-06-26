@@ -1,6 +1,5 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.input.MouseHandler;
@@ -20,7 +19,6 @@ public class Class59 {
     public static KeyFocusListener keyFocusListener;
     public static int[] secondMenuOperand;
     public static long[] friends;
-    public static int[] anIntArray1398;
 
     static {
         secondMenuOperand = new int[500];
@@ -82,9 +80,9 @@ public class Class59 {
     public static int getVisibilityPlaneFor(int arg0, int arg1, int arg2, int arg3) {
         if(arg2 != 0)
             getVisibilityPlaneFor(-73, 123, 115, 98);
-        if((OverlayDefinition.tile_flags[arg0][arg3][arg1] & 0x8) != 0)
+        if((Scene.tileFlags[arg0][arg3][arg1] & 0x8) != 0)
             return 0;
-        if(arg0 > 0 && (OverlayDefinition.tile_flags[1][arg3][arg1] & 0x2) != 0)
+        if(arg0 > 0 && (Scene.tileFlags[1][arg3][arg1] & 0x2) != 0)
             return -1 + arg0;
         return arg0;
     }

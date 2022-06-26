@@ -4,7 +4,6 @@ import org.runejs.client.*;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.def.IdentityKit;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.input.MouseHandler;
@@ -85,7 +84,7 @@ public class GameObject extends Renderable {
                 if(object_x > 0 && object_z > 0 && object_x < 103 && object_z < 103) {
                     CollisionMap collisionMap = null;
                     int logic_y = tile_y;
-                    if((OverlayDefinition.tile_flags[1][object_x][object_z] & 2) == 2)
+                    if((Scene.tileFlags[1][object_x][object_z] & 2) == 2)
                         logic_y--;
                     if(logic_y >= 0)
                         collisionMap = collisionMaps[logic_y];

@@ -7,12 +7,10 @@ import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.media.renderable.actor.PlayerAppearance;
 
 public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public static ProducingGraphicsBuffer framePieceTop;
     public static int[] anIntArray3248;
-    public static int[] anIntArray3250;
     public static int[] anIntArray3253;
     public static int[] anIntArray3255;
 
@@ -43,19 +41,6 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
         } else
             aBoolean3237 = true;
 
-    }
-
-    public static int method831(int arg0, int arg1, byte arg2) {
-        if(arg0 == -1)
-            return 12345678;
-        if(arg2 != 73)
-            PlayerAppearance.playerColours = null;
-        arg1 = (0x7f & arg0) * arg1 / 128;
-        if(arg1 < 2)
-            arg1 = 2;
-        else if(arg1 > 126)
-            arg1 = 126;
-        return arg1 + (arg0 & 0xff80);
     }
 
     public static void method833(int arg0, boolean arg1) {

@@ -1,54 +1,56 @@
-package org.runejs.client;
+package org.runejs.client.cache.def;
 
+import org.runejs.client.ClientScriptRunner;
+import org.runejs.client.LinkedList;
+import org.runejs.client.MovedStatics;
+import org.runejs.client.ProducingGraphicsBuffer_Sub1;
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.cache.def.FrameDefinition;
-import org.runejs.client.cache.def.FramemapDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.IndexedImage;
-import org.runejs.client.cache.def.SpotAnimDefinition;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.node.CachedNode;
 
-public class Class40_Sub5_Sub15 extends CachedNode {
+public class AnimationFrameGroup extends CachedNode {
     public static IndexedImage loginScreenBox;
     public static IndexedImage[] tabIcons;
     public static int arbitraryDestination = 0;
     public static int systemUpdateTime = 0;
     public static boolean lastItemDragged = false;
     public static int[] anIntArray2788 = new int[]{16, 32, 64, 128};
-    public static int anInt2791 = -8 + (int) (17.0 * Math.random());
 
-    public FrameDefinition[] aFrameDefinitionArray2794;
+    public AnimationFrameDefinition[] frames;
 
-    public Class40_Sub5_Sub15(CacheArchive arg0, CacheArchive arg1, int arg2, boolean arg3) {
-        LinkedList linkedList = new LinkedList();
-        int i = arg0.fileLength(arg2);
-        aFrameDefinitionArray2794 = new FrameDefinition[i];
-        int[] is = arg0.method192(arg2, true);
-        for(int i_0_ = 0; is.length > i_0_; i_0_++) {
-            byte[] is_1_ = arg0.getFile(arg2, is[i_0_]);
-            FramemapDefinition framemapDefinition = null;
-            int i_2_ = is_1_[1] & 0xff | is_1_[0] << 8 & 0xff00;
-            for(FramemapDefinition framemapDefinition_3_ = (FramemapDefinition) linkedList.method902((byte) -90); framemapDefinition_3_ != null; framemapDefinition_3_ = (FramemapDefinition) linkedList.method909(-4)) {
-                if(i_2_ == framemapDefinition_3_.id) {
-                    framemapDefinition = framemapDefinition_3_;
+    public AnimationFrameGroup(CacheArchive animsArchive, CacheArchive basesArchive,
+                               int animGroupIndex) {
+        LinkedList definitions = new LinkedList();
+        int i = animsArchive.fileLength(animGroupIndex);
+        frames = new AnimationFrameDefinition[i];
+        int[] groupedFileIndexes = animsArchive.getGroupedFileIndexes(animGroupIndex);
+
+        for(int fileIndex = 0; groupedFileIndexes.length > fileIndex; fileIndex++) {
+            // anims grouped file reading
+            byte[] fileData = animsArchive.getFile(animGroupIndex, groupedFileIndexes[fileIndex]);
+            AnimationBaseDefinition animationBaseDefinition = null;
+            int id = fileData[1] & 0xff | fileData[0] << 8 & 0xff00;
+            for(AnimationBaseDefinition def = (AnimationBaseDefinition) definitions.next();
+                def != null;
+                def = (AnimationBaseDefinition) definitions.method909()) {
+                if(id == def.id) {
+                    animationBaseDefinition = def;
                     break;
                 }
             }
-            if(framemapDefinition == null) {
-                byte[] is_4_;
-                if(!arg3)
-                    is_4_ = arg1.method182(0, i_2_);
-                else
-                    is_4_ = arg1.method182(i_2_, 0);
-                framemapDefinition = new FramemapDefinition(i_2_, is_4_);
-                linkedList.pushBack(framemapDefinition, 60);
+
+            if(animationBaseDefinition == null) {
+                byte[] animBaseData = basesArchive.method182(0, id);
+                // bases file reading
+                animationBaseDefinition = new AnimationBaseDefinition(id, animBaseData);
+                definitions.pushBack(animationBaseDefinition);
             }
-            aFrameDefinitionArray2794[is[i_0_]] = new FrameDefinition(is_1_, framemapDefinition);
+
+            frames[groupedFileIndexes[fileIndex]] = new AnimationFrameDefinition(fileData, animationBaseDefinition);
         }
     }
-
-
 
     public static boolean method735(int arg1) {
         if(arg1 >= 97 && arg1 <= 122)
@@ -132,7 +134,43 @@ public class Class40_Sub5_Sub15 extends CachedNode {
         }
     }
 
+    public static AnimationFrameGroup loadAnimation(CacheArchive animsArchive, CacheArchive basesArchive, int animGroupIndex) {
+        boolean isLoaded = true;
+        int[] fileIndexes = animsArchive.getGroupedFileIndexes(animGroupIndex);
+
+        for(int i = 0; fileIndexes.length > i; i++) {
+            byte[] groupedFileData = animsArchive.method182(fileIndexes[i], animGroupIndex);
+            if(groupedFileData == null)
+                isLoaded = false;
+            else {
+                int animBaseFileIndex = 0xff & groupedFileData[1] | (0xff & groupedFileData[0]) << 8;
+                byte[] animBaseFileData = basesArchive.method182(0, animBaseFileIndex);
+                if(animBaseFileData == null)
+                    isLoaded = false;
+            }
+        }
+
+        if(!isLoaded)
+            return null;
+
+        try {
+            return new AnimationFrameGroup(animsArchive, basesArchive, animGroupIndex);
+        } catch(Exception exception) {
+            return null;
+        }
+    }
+
+    public static AnimationFrameGroup method960(int arg1) {
+        AnimationFrameGroup animationBuilder = (AnimationFrameGroup) MovedStatics.aClass9_998.get((long) arg1);
+        if(animationBuilder != null)
+            return animationBuilder;
+        animationBuilder = loadAnimation(MovedStatics.aCacheArchive_2364, ClientScriptRunner.aCacheArchive_2162, arg1);
+        if(animationBuilder != null)
+            MovedStatics.aClass9_998.put((long) arg1, animationBuilder);
+        return animationBuilder;
+    }
+
     public boolean method737(int arg0) {
-        return aFrameDefinitionArray2794[arg0].aBoolean985;
+        return frames[arg0].showing;
     }
 }

@@ -3,7 +3,6 @@ package org.runejs.client;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.def.IdentityKit;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.def.VarPlayerDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.IndexedImage;
@@ -16,6 +15,7 @@ import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
+import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.util.CollisionMap;
 
 public abstract class Class22 {
@@ -34,9 +34,9 @@ public abstract class Class22 {
         for(int i_1_ = 1; i_1_ < 103; i_1_++) {
             int i_2_ = 24628 + (-(512 * i_1_) + 52736) * 4;
             for(int i_3_ = 1; i_3_ < 103; i_3_++) {
-                if((0x18 & OverlayDefinition.tile_flags[arg1][i_3_][i_1_]) == 0)
+                if((0x18 & Scene.tileFlags[arg1][i_3_][i_1_]) == 0)
                     Npc.currentScene.method96(is, i_2_, 512, arg1, i_3_, i_1_);
-                if(arg1 < 3 && (OverlayDefinition.tile_flags[1 + arg1][i_3_][i_1_] & 0x8) != 0)
+                if(arg1 < 3 && (Scene.tileFlags[1 + arg1][i_3_][i_1_] & 0x8) != 0)
                     Npc.currentScene.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
                 i_2_ += 4;
             }
@@ -46,9 +46,9 @@ public abstract class Class22 {
         int i_5_ = -10 + (int) (20.0 * Math.random()) + 238 << 16;
         for(int i_6_ = 1; i_6_ < 103; i_6_++) {
             for(int i_7_ = 1; i_7_ < 103; i_7_++) {
-                if((OverlayDefinition.tile_flags[arg1][i_7_][i_6_] & 0x18) == 0)
+                if((Scene.tileFlags[arg1][i_7_][i_6_] & 0x18) == 0)
                     Actor.method781(1850, arg1, i_7_, i_4_, i_5_, i_6_);
-                if(arg1 < 3 && (0x8 & OverlayDefinition.tile_flags[1 + arg1][i_7_][i_6_]) != 0)
+                if(arg1 < 3 && (0x8 & Scene.tileFlags[1 + arg1][i_7_][i_6_]) != 0)
                     Actor.method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
             }
         }
@@ -126,19 +126,19 @@ public abstract class Class22 {
                 if(varPlayerType == 1) {
                     if(varPlayerValue == 1) {
                         Rasterizer3D.method711(0.9);
-                        ((Class35) Rasterizer3D.anInterface3_2939).method424(0.9);
+                        ((TextureStore) Rasterizer3D.textureStore).method424(0.9);
                     }
                     if(varPlayerValue == 2) {
                         Rasterizer3D.method711(0.8);
-                        ((Class35) Rasterizer3D.anInterface3_2939).method424(0.8);
+                        ((TextureStore) Rasterizer3D.textureStore).method424(0.8);
                     }
                     if(varPlayerValue == 3) {
                         Rasterizer3D.method711(0.7);
-                        ((Class35) Rasterizer3D.anInterface3_2939).method424(0.7);
+                        ((TextureStore) Rasterizer3D.textureStore).method424(0.7);
                     }
                     if(varPlayerValue == 4) {
                         Rasterizer3D.method711(0.6);
-                        ((Class35) Rasterizer3D.anInterface3_2939).method424(0.6);
+                        ((TextureStore) Rasterizer3D.textureStore).method424(0.6);
                     }
                     GameObject.clearImageCache();
                     MovedStatics.clearScreen = true;
@@ -159,12 +159,12 @@ public abstract class Class22 {
                         if(RSCanvas.musicVolume != 0 || MouseHandler.currentSongId == -1) {
                             if(i_22_ == 0) {
                                 Class33.method402(false);
-                                Class35.songTimeout = 0;
+                                TextureStore.songTimeout = 0;
                             } else
                                 MovedStatics.method456(i_22_);
                         } else {
                             Class33.method414(false, 0, MouseHandler.currentSongId, i_22_, 0, CacheArchive.musicCacheArchive);
-                            Class35.songTimeout = 0;
+                            TextureStore.songTimeout = 0;
                         }
                         RSCanvas.musicVolume = i_22_;
                     }

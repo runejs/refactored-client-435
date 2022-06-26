@@ -216,7 +216,7 @@ public class HuffmanEncoding {
         if (arg0 < 123) {
             method1030((byte) -24);
         }
-        for (Class40_Sub2 class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method902((byte) -90); class40_sub2 != null; class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method909(-4)) {
+        for (Class40_Sub2 class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.next(); class40_sub2 != null; class40_sub2 = (Class40_Sub2) MovedStatics.aLinkedList_2268.method909()) {
             if (class40_sub2.gameObjectDefinition != null) {
                 class40_sub2.method528();
             }

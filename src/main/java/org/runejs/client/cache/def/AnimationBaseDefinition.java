@@ -13,7 +13,7 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.Class37;
 
-public class FramemapDefinition extends Node {
+public class AnimationBaseDefinition extends Node {
     public static boolean aBoolean2177 = false;
     public static int anInt2183 = 0;
 
@@ -23,7 +23,8 @@ public class FramemapDefinition extends Node {
     public int id;
     public int[] types;
 
-    public FramemapDefinition(int id, byte[] data) {
+    // archive 1: bases (single-file groups, flat files only)
+    public AnimationBaseDefinition(int id, byte[] data) {
         this.id = id;
         Buffer buffer = new Buffer(data);
         length = buffer.getUnsignedByte();
@@ -96,7 +97,7 @@ public class FramemapDefinition extends Node {
         else {
             int i = -99999999;
             Item item = null;
-            for(Item item_32_ = (Item) linkedList.method902((byte) -90); item_32_ != null; item_32_ = (Item) linkedList.method909(-4)) {
+            for(Item item_32_ = (Item) linkedList.next(); item_32_ != null; item_32_ = (Item) linkedList.method909()) {
                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(item_32_.itemId, 10);
                 int i_33_ = class40_sub5_sub16.cost;
                 if(class40_sub5_sub16.stackable == 1)
@@ -112,7 +113,7 @@ public class FramemapDefinition extends Node {
                 Item item_34_ = null;
                 Item item_35_ = null;
                 linkedList.method905(0, item);
-                for(Item item_36_ = (Item) linkedList.method902((byte) -90); item_36_ != null; item_36_ = (Item) linkedList.method909(-4)) {
+                for(Item item_36_ = (Item) linkedList.next(); item_36_ != null; item_36_ = (Item) linkedList.method909()) {
                     if(item.itemId != item_36_.itemId) {
                         if(item_35_ == null)
                             item_35_ = item_36_;

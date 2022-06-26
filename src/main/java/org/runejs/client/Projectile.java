@@ -1,8 +1,8 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.cache.def.AnimationFrameGroup;
 import org.runejs.client.cache.def.GameObjectDefinition;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.IndexedImage;
@@ -163,12 +163,12 @@ public class Projectile extends Renderable {
 
     public static void method763(Component arg0, CacheArchive arg2) {
         if(!MovedStatics.aBoolean2083) {
-            FloorDecoration.inventoryBackgroundImage = Main.method359(Native.aClass1_638, Native.aClass1_305, arg2);
+            FloorDecoration.inventoryBackgroundImage = Main.method359(Native.invback, Native.aClass1_305, arg2);
             Class44.chatboxBackgroundImage = Main.method359(Native.chatback, Native.aClass1_305, arg2);
-            MovedStatics.minimapBackgroundImage = Main.method359(Native.mapBack, Native.aClass1_305, arg2);
-            Class57.bottomChatBack = Main.method359(Native.aClass1_1395, Native.aClass1_305, arg2);
-            MovedStatics.tabBottomBack = Main.method359(Native.aClass1_256, Native.aClass1_305, arg2);
-            Buffer.tabTopBack = Main.method359(Native.aClass1_338, Native.aClass1_305, arg2);
+            MovedStatics.minimapBackgroundImage = Main.method359(Native.mapback, Native.aClass1_305, arg2);
+            Class57.bottomChatBack = Main.method359(Native.backbase1, Native.aClass1_305, arg2);
+            MovedStatics.tabBottomBack = Main.method359(Native.backbase2, Native.aClass1_305, arg2);
+            Buffer.tabTopBack = Main.method359(Native.backhmid1, Native.aClass1_305, arg2);
             RSCanvas.chatBoxImageProducer = MovedStatics.createGraphicsBuffer(479, 96, arg0);
             Class44.chatboxBackgroundImage.drawImage(0, 0);
             RSString.mapbackProducingGraphicsBuffer = MovedStatics.createGraphicsBuffer(172, 156, arg0);
@@ -181,13 +181,13 @@ public class Projectile extends Renderable {
             HuffmanEncoding.chatModes = MovedStatics.createGraphicsBuffer(496, 50, arg0);
             RSCanvas.tabBottom = MovedStatics.createGraphicsBuffer(269, 37, arg0);
             InteractiveObject.tabTop = MovedStatics.createGraphicsBuffer(249, 45, arg0);
-            ImageRGB image = HuffmanEncoding.method1028(arg2, Native.imgBackleft1, (byte) 21, Native.aClass1_305);
+            ImageRGB image = HuffmanEncoding.method1028(arg2, Native.backleft1, (byte) 21, Native.aClass1_305);
             Landscape.framePieceRight = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
-            image = HuffmanEncoding.method1028(arg2, Native.aClass1_1024, (byte) 21, Native.aClass1_305);
+            image = HuffmanEncoding.method1028(arg2, Native.backleft2, (byte) 21, Native.aClass1_305);
             MovedStatics.chatboxRight = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
-            image = HuffmanEncoding.method1028(arg2, Native.aClass1_281, (byte) 21, Native.aClass1_305);
+            image = HuffmanEncoding.method1028(arg2, Native.backright1, (byte) 21, Native.aClass1_305);
             Class39.mapbackLeft = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = HuffmanEncoding.method1028(arg2, Native.backright2, (byte) 21, Native.aClass1_305);
@@ -202,15 +202,15 @@ public class Projectile extends Renderable {
             image = HuffmanEncoding.method1028(arg2, Native.aClass1_2588, (byte) 21, Native.aClass1_305);
             MovedStatics.tabPieceUpperRight = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
-            image = HuffmanEncoding.method1028(arg2, Native.aClass1_196, (byte) 21, Native.aClass1_305);
+            image = HuffmanEncoding.method1028(arg2, Native.backvmid3, (byte) 21, Native.aClass1_305);
             PlayerAppearance.tabPieveLowerRight = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
-            image = HuffmanEncoding.method1028(arg2, Native.aClass1_304, (byte) 21, Native.aClass1_305);
+            image = HuffmanEncoding.method1028(arg2, Native.backhmid2, (byte) 21, Native.aClass1_305);
             Class17.chatboxTop = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             MovedStatics.aClass40_Sub5_Sub14_Sub2_1315 = Main.method359(Native.aClass1_2093, Native.aClass1_305, arg2);
             GameShell.aClass40_Sub5_Sub14_Sub2_1 = Main.method359(Native.aClass1_3254, Native.aClass1_305, arg2);
-            Class35.aClass40_Sub5_Sub14_Sub2_1744 = Main.method359(Native.aClass1_1517, Native.aClass1_305, arg2);
+            TextureStore.aClass40_Sub5_Sub14_Sub2_1744 = Main.method359(Native.aClass1_1517, Native.aClass1_305, arg2);
             MovedStatics.aClass40_Sub5_Sub14_Sub2_2105 = MovedStatics.aClass40_Sub5_Sub14_Sub2_1315.method691();
             MovedStatics.aClass40_Sub5_Sub14_Sub2_2105.flipHorizontal();
             WallDecoration.aClass40_Sub5_Sub14_Sub2_1270 = GameShell.aClass40_Sub5_Sub14_Sub2_1.method691();
@@ -219,7 +219,7 @@ public class Projectile extends Renderable {
             Renderable.aClass40_Sub5_Sub14_Sub2_2860.flipVertical();
             MovedStatics.aClass40_Sub5_Sub14_Sub2_549 = GameShell.aClass40_Sub5_Sub14_Sub2_1.method691();
             MovedStatics.aClass40_Sub5_Sub14_Sub2_549.flipVertical();
-            MovedStatics.aClass40_Sub5_Sub14_Sub2_1919 = Class35.aClass40_Sub5_Sub14_Sub2_1744.method691();
+            MovedStatics.aClass40_Sub5_Sub14_Sub2_1919 = TextureStore.aClass40_Sub5_Sub14_Sub2_1744.method691();
             MovedStatics.aClass40_Sub5_Sub14_Sub2_1919.flipVertical();
             ISAAC.aClass40_Sub5_Sub14_Sub2_524 = MovedStatics.aClass40_Sub5_Sub14_Sub2_1315.method691();
             ISAAC.aClass40_Sub5_Sub14_Sub2_524.flipHorizontal();
@@ -227,7 +227,7 @@ public class Projectile extends Renderable {
             Class13.aClass40_Sub5_Sub14_Sub2_418 = GameShell.aClass40_Sub5_Sub14_Sub2_1.method691();
             Class13.aClass40_Sub5_Sub14_Sub2_418.flipHorizontal();
             Class13.aClass40_Sub5_Sub14_Sub2_418.flipVertical();
-            Class40_Sub5_Sub15.tabIcons = IndexedImage.getMultipleIndexedImages(arg2, Native.aClass1_2787, Native.aClass1_305);
+            AnimationFrameGroup.tabIcons = IndexedImage.getMultipleIndexedImages(arg2, Native.aClass1_2787, Native.aClass1_305);
             Landscape.anIntArray1186 = new int[151];
             MovedStatics.anIntArray852 = new int[151];
             RSCanvas.anIntArray66 = new int[33];
@@ -280,7 +280,7 @@ public class Projectile extends Renderable {
             if(i_23_ > 103) {
                 i_23_ = 103;
             }
-            if((OverlayDefinition.tile_flags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
+            if((Scene.tileFlags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
                 i = Player.worldLevel;
             int i_24_ = Player.localPlayer.worldX >> 7;
             int i_25_ = Player.localPlayer.worldY >> 7;
@@ -310,7 +310,7 @@ public class Projectile extends Renderable {
                         i_23_ = 103;
                     }
                     i_29_ += i_28_;
-                    if((OverlayDefinition.tile_flags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
+                    if((Scene.tileFlags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
                         i = Player.worldLevel;
                     if(i_29_ >= 65536) {
                         if(i_23_ < i_24_)
@@ -324,7 +324,7 @@ public class Projectile extends Renderable {
                         if(i_23_ > 103) {
                             i_23_ = 103;
                         }
-                        if((0x4 & OverlayDefinition.tile_flags[Player.worldLevel][i_23_][i_22_]) != 0)
+                        if((0x4 & Scene.tileFlags[Player.worldLevel][i_23_][i_22_]) != 0)
                             i = Player.worldLevel;
                     }
                 }
@@ -337,7 +337,7 @@ public class Projectile extends Renderable {
                             i_23_--;
                     } else
                         i_23_++;
-                    if((OverlayDefinition.tile_flags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
+                    if((Scene.tileFlags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
                         i = Player.worldLevel;
                     i_31_ += i_30_;
                     if(i_31_ >= 65536) {
@@ -346,7 +346,7 @@ public class Projectile extends Renderable {
                             i_22_++;
                         else if(i_22_ > i_25_)
                             i_22_--;
-                        if((OverlayDefinition.tile_flags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
+                        if((Scene.tileFlags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
                             i = Player.worldLevel;
                     }
                 }
@@ -354,20 +354,20 @@ public class Projectile extends Renderable {
         }
         if(arg0 > -101)
             CacheArchive.skinDefinitionCacheArchive = null;
-        if((OverlayDefinition.tile_flags[Player.worldLevel][Player.localPlayer.worldX >> 7][Player.localPlayer.worldY >> 7] & 0x4) != 0)
+        if((Scene.tileFlags[Player.worldLevel][Player.localPlayer.worldX >> 7][Player.localPlayer.worldY >> 7] & 0x4) != 0)
             i = Player.worldLevel;
         return i;
 
     }
 
     public static void addObject(int objectId, int localX, int localY, int plane, int face, int type, Scene scene, CollisionMap collisionMap) {
-        if(!VertexNormal.lowMemory || (0x2 & OverlayDefinition.tile_flags[0][localX][localY]) != 0 || (0x10 & OverlayDefinition.tile_flags[plane][localX][localY]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(plane, localY, 0, localX)) {
+        if(!VertexNormal.lowMemory || (0x2 & Scene.tileFlags[0][localX][localY]) != 0 || (0x10 & Scene.tileFlags[plane][localX][localY]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(plane, localY, 0, localX)) {
             if(MovedStatics.lowestPlane > plane)
                 MovedStatics.lowestPlane = plane;
-            int vertexHeight = MovedStatics.tile_height[plane][localX][localY];
-            int vertexHeightRight = MovedStatics.tile_height[plane][localX + 1][localY];
-            int vertexHeightTopRight = MovedStatics.tile_height[plane][localX + 1][localY + 1];
-            int vertexHeightTop = MovedStatics.tile_height[plane][localX][localY + 1];
+            int vertexHeight = Scene.tileHeights[plane][localX][localY];
+            int vertexHeightRight = Scene.tileHeights[plane][localX + 1][localY];
+            int vertexHeightTopRight = Scene.tileHeights[plane][localX + 1][localY + 1];
+            int vertexHeightTop = Scene.tileHeights[plane][localX][localY + 1];
             int vertexMix = vertexHeight + vertexHeightRight + vertexHeightTopRight + vertexHeightTop >> 2;
             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(objectId);
             int hash = localX + (localY << 7) + (objectId << 14) + 1073741824;
@@ -420,8 +420,8 @@ public class Projectile extends Renderable {
                                     int i_45_ = class40_sub5_sub17_sub5.method805() / 4;
                                     if(i_45_ > 30)
                                         i_45_ = 30;
-                                    if(i_45_ > InteractiveObject.aByteArrayArrayArray492[plane][localX + i_43_][localY + i_44_])
-                                        InteractiveObject.aByteArrayArrayArray492[plane][i_43_ + localX][localY + i_44_] = (byte) i_45_;
+                                    if(i_45_ > Scene.objectShadowData[plane][localX + i_43_][localY + i_44_])
+                                        Scene.objectShadowData[plane][i_43_ + localX][localY + i_44_] = (byte) i_45_;
                                 }
                             }
                         }
@@ -449,29 +449,29 @@ public class Projectile extends Renderable {
                 scene.addWall(localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face], 0, hash, renderable, null, objectConfig);
                 if(face == 0) {
                     if(gameObjectDefinition.castsShadow) {
-                        InteractiveObject.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
-                        InteractiveObject.aByteArrayArrayArray492[plane][localX][localY + 1] = (byte) 50;
+                        Scene.objectShadowData[plane][localX][localY] = (byte) 50;
+                        Scene.objectShadowData[plane][localX][localY + 1] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
                         MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 585);
                 } else if(face == 1) {
                     if(gameObjectDefinition.castsShadow) {
-                        InteractiveObject.aByteArrayArrayArray492[plane][localX][localY + 1] = (byte) 50;
-                        InteractiveObject.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
+                        Scene.objectShadowData[plane][localX][localY + 1] = (byte) 50;
+                        Scene.objectShadowData[plane][localX + 1][1 + localY] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
                         MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY + 1], 1170);
                 } else if(face == 2) {
                     if(gameObjectDefinition.castsShadow) {
-                        InteractiveObject.aByteArrayArrayArray492[plane][1 + localX][localY] = (byte) 50;
-                        InteractiveObject.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
+                        Scene.objectShadowData[plane][1 + localX][localY] = (byte) 50;
+                        Scene.objectShadowData[plane][localX + 1][1 + localY] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
                         MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX + 1][localY], 585);
                 } else if(face == 3) {
                     if(gameObjectDefinition.castsShadow) {
-                        InteractiveObject.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
-                        InteractiveObject.aByteArrayArrayArray492[plane][localX + 1][localY] = (byte) 50;
+                        Scene.objectShadowData[plane][localX][localY] = (byte) 50;
+                        Scene.objectShadowData[plane][localX + 1][localY] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
                         MovedStatics.anIntArrayArrayArray262[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[plane][localX][localY], 1170);
@@ -486,16 +486,16 @@ public class Projectile extends Renderable {
                     renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 1, vertexHeightRight);
                 else
                     renderable = new GameObject(objectId, 1, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                scene.addWall(localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
+                scene.addWall(localX, localY, plane, vertexMix, AnimationFrameGroup.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
                 if(gameObjectDefinition.castsShadow) {
                     if(face == 0)
-                        InteractiveObject.aByteArrayArrayArray492[plane][localX][localY + 1] = (byte) 50;
+                        Scene.objectShadowData[plane][localX][localY + 1] = (byte) 50;
                     else if(face == 1)
-                        InteractiveObject.aByteArrayArrayArray492[plane][localX + 1][1 + localY] = (byte) 50;
+                        Scene.objectShadowData[plane][localX + 1][1 + localY] = (byte) 50;
                     else if(face == 2)
-                        InteractiveObject.aByteArrayArrayArray492[plane][localX + 1][localY] = (byte) 50;
+                        Scene.objectShadowData[plane][localX + 1][localY] = (byte) 50;
                     else if(face == 3)
-                        InteractiveObject.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
+                        Scene.objectShadowData[plane][localX][localY] = (byte) 50;
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
@@ -536,17 +536,17 @@ public class Projectile extends Renderable {
                     renderable = new GameObject(objectId, 3, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
                 else
                     renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 3, vertexHeightRight);
-                scene.addWall(localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
+                scene.addWall(localX, localY, plane, vertexMix, AnimationFrameGroup.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
                 if(gameObjectDefinition.castsShadow) {
                     if(face != 0) {
                         if(face == 1)
-                            InteractiveObject.aByteArrayArrayArray492[plane][1 + localX][localY + 1] = (byte) 50;
+                            Scene.objectShadowData[plane][1 + localX][localY + 1] = (byte) 50;
                         else if(face == 2)
-                            InteractiveObject.aByteArrayArrayArray492[plane][localX + 1][localY] = (byte) 50;
+                            Scene.objectShadowData[plane][localX + 1][localY] = (byte) 50;
                         else if(face == 3)
-                            InteractiveObject.aByteArrayArrayArray492[plane][localX][localY] = (byte) 50;
+                            Scene.objectShadowData[plane][localX][localY] = (byte) 50;
                     } else
-                        InteractiveObject.aByteArrayArrayArray492[plane][localX][localY + 1] = (byte) 50;
+                        Scene.objectShadowData[plane][localX][localY + 1] = (byte) 50;
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);

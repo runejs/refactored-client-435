@@ -1,5 +1,6 @@
 package org.runejs.client.input;
 
+import org.runejs.client.cache.def.AnimationFrameGroup;
 import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.ItemDefinition;
@@ -17,6 +18,7 @@ import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
+import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.util.CollisionMap;
@@ -34,7 +36,6 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public static int currentTickSample;
     public static Canvas gameCanvas;
     public static int clickType = 0;
-    public static byte[][][] tile_overlayids;
     public static int cameraZoom = 600;
     public static int currentMouseButtonPressed = 0;
     public static volatile int mouseButtonPressed = 0;
@@ -117,7 +118,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     GameInterface gameInterface = GameInterface.getInterface(id);
                     if(gameInterface.itemSwapable || gameInterface.itemDeletesDraged) {
                         Renderable.anInt2869 = Class57.clickX;
-                        Class40_Sub5_Sub15.lastItemDragged = false;
+                        AnimationFrameGroup.lastItemDragged = false;
                         SceneTile.activeInterfaceType = 2;
                         Class48.modifiedWidgetId = id;
                         ItemDefinition.anInt2798 = RSString.clickY;
@@ -143,7 +144,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public static Class40_Sub9_Sub1 method1003(Signlink arg0, Component arg1, int arg2) {
 
         if(arg2 != 29914)
-            tile_overlayids = null;
+            Scene.tileOverlayIds = null;
         ProducingGraphicsBuffer.method1040(arg1, 0, arg0);
         Class40_Sub9_Sub1 class40_sub9_sub1 = new Class40_Sub9_Sub1();
         Class8.method218(class40_sub9_sub1);

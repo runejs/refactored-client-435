@@ -1,6 +1,7 @@
 package org.runejs.client.scene.util;
 
 import org.runejs.client.*;
+import org.runejs.client.cache.def.AnimationFrameGroup;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
@@ -56,10 +57,10 @@ public class CollisionMap {
     }
 
     public static void method543(CollisionMap arg0, int arg1, int arg2, int arg3, int arg4, Scene arg5, int arg6, int arg7, int arg8, int arg9) {
-        int i = MovedStatics.tile_height[arg2][arg9][arg8];
-        int i_0_ = MovedStatics.tile_height[arg2][1 + arg9][arg8];
-        int i_1_ = MovedStatics.tile_height[arg2][arg9][1 + arg8];
-        int i_2_ = MovedStatics.tile_height[arg2][arg9 + 1][arg8 + 1];
+        int i = Scene.tileHeights[arg2][arg9][arg8];
+        int i_0_ = Scene.tileHeights[arg2][1 + arg9][arg8];
+        int i_1_ = Scene.tileHeights[arg2][arg9][1 + arg8];
+        int i_2_ = Scene.tileHeights[arg2][arg9 + 1][arg8 + 1];
         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
         int i_3_ = i_2_ + i_0_ + i + i_1_ >> 2;
         int i_4_ = (arg7 << 6) + arg4;
@@ -124,7 +125,7 @@ public class CollisionMap {
                 renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, arg7, i, 1, i_0_);
             else
                 renderable = new GameObject(arg1, 1, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
-            arg5.addWall(arg9, arg8, arg3, i_3_, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
+            arg5.addWall(arg9, arg8, arg3, i_3_, AnimationFrameGroup.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
             if (gameObjectDefinition.solid)
                 arg0.unmarkWall(arg9, arg8, arg4, arg7, gameObjectDefinition.walkable);
         } else if (arg4 == 2) {
@@ -147,7 +148,7 @@ public class CollisionMap {
                 renderable = new GameObject(arg1, 3, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             else
                 renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, arg7, i, 3, i_0_);
-            arg5.addWall(arg9, arg8, arg3, i_3_, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
+            arg5.addWall(arg9, arg8, arg3, i_3_, AnimationFrameGroup.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
             if (gameObjectDefinition.solid)
                 arg0.unmarkWall(arg9, arg8, arg4, arg7, gameObjectDefinition.walkable);
         } else if (arg4 == 9) {

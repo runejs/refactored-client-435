@@ -20,14 +20,13 @@ public class LinkedList {
     public static volatile int anInt1073 = 0;
     public static int crossType = 0;
     public static int[] minimapHintY = new int[1000];
-    public Node aClass40_1056 = new Node();
-    public Node aClass40_1068;
+
+    public Node head = new Node();
+    public Node previous;
 
     public LinkedList() {
-
-        aClass40_1056.previous = aClass40_1056;
-        aClass40_1056.next = aClass40_1056;
-
+        head.previous = head;
+        head.next = head;
     }
 
 
@@ -66,45 +65,39 @@ public class LinkedList {
         }
     }
 
-    public Node method899(byte arg0) {
-        int i = -68 / ((28 - arg0) / 50);
-        Node class40 = aClass40_1056.previous;
-        if(class40 == aClass40_1056)
+    public Node method899() {
+        Node node = head.previous;
+        if(node == head)
             return null;
-        class40.remove();
-        return class40;
+        node.remove();
+        return node;
     }
 
-    public Node last(byte arg0) {
-        Node class40 = aClass40_1056.previous;
-        if(class40 == aClass40_1056) {
-            aClass40_1068 = null;
+    public Node last() {
+        Node node = head.previous;
+        if(node == head) {
+            previous = null;
             return null;
         }
-        aClass40_1068 = class40.previous;
-        if(arg0 > -53)
-            return null;
-        return class40;
+        previous = node.previous;
+        return node;
     }
 
-    public Node method902(byte arg0) {
-        if(arg0 != -90)
-            last((byte) 0);
-        Node class40 = aClass40_1056.next;
-        if(aClass40_1056 == class40) {
-            aClass40_1068 = null;
+    public Node next() {
+        Node node = head.next;
+        if(head == node) {
+            previous = null;
             return null;
         }
-        aClass40_1068 = class40.next;
-        return class40;
+        previous = node.next;
+        return node;
     }
 
-    public void pushBack(Node node, int arg1) {
+    public void pushBack(Node node) {
         if(node.previous != null)
             node.remove();
-        node.previous = aClass40_1056.previous;
-        int i = 106 % ((-7 - arg1) / 59);
-        node.next = aClass40_1056;
+        node.previous = head.previous;
+        node.next = head;
         node.previous.next = node;
         node.next.previous = node;
     }
@@ -114,8 +107,8 @@ public class LinkedList {
             arg1.remove();
         if(arg0 != 0)
             method911(-96, null, null);
-        arg1.next = aClass40_1056.next;
-        arg1.previous = aClass40_1056;
+        arg1.next = head.next;
+        arg1.previous = head;
         arg1.previous.next = arg1;
         arg1.next.previous = arg1;
     }
@@ -124,23 +117,21 @@ public class LinkedList {
         if(arg0 != 0)
             method903(-33, (byte) -75);
         for(; ; ) {
-            Node class40 = aClass40_1056.next;
-            if(class40 == aClass40_1056)
+            Node class40 = head.next;
+            if(class40 == head)
                 break;
             class40.remove();
         }
     }
 
-    public Node method909(int arg0) {
-        Node class40 = aClass40_1068;
-        if(aClass40_1056 == class40) {
-            aClass40_1068 = null;
+    public Node method909() {
+        Node node = previous;
+        if(head == node) {
+            previous = null;
             return null;
         }
-        if(arg0 != -4)
-            method910(109);
-        aClass40_1068 = class40.next;
-        return class40;
+        previous = node.next;
+        return node;
     }
 
     public void method911(int arg0, Node arg1, Node arg2) {
@@ -154,25 +145,21 @@ public class LinkedList {
         }
     }
 
-    public Node previous(int arg0) {
-        if(arg0 != 4)
-            return null;
-        Node class40 = aClass40_1068;
-        if(class40 == aClass40_1056) {
-            aClass40_1068 = null;
+    public Node previous() {
+        Node node = previous;
+        if(node == head) {
+            previous = null;
             return null;
         }
-        aClass40_1068 = class40.previous;
-        return class40;
+        previous = node.previous;
+        return node;
     }
 
-    public Node method913(int arg0) {
-        if(arg0 != 25447)
-            method902((byte) -115);
-        Node class40 = aClass40_1056.next;
-        if(aClass40_1056 == class40)
+    public Node method913() {
+        Node node = head.next;
+        if(head == node)
             return null;
-        class40.remove();
-        return class40;
+        node.remove();
+        return node;
     }
 }

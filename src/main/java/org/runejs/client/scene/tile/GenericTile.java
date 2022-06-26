@@ -4,7 +4,6 @@ import org.runejs.client.HuffmanEncoding;
 import org.runejs.client.Landscape;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.GameObjectDefinition;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.frame.ScreenController;
@@ -15,6 +14,7 @@ import org.runejs.client.language.English;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
+import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.Class22_Sub2;
 import org.runejs.client.Class57;
@@ -141,7 +141,7 @@ public class GenericTile {
                 }
                 if(arg1 >= 0) {
                     int i_5_ = arg7;
-                    if(i_5_ < 3 && (OverlayDefinition.tile_flags[1][arg2][arg0] & 0x2) == 2)
+                    if(i_5_ < 3 && (Scene.tileFlags[1][arg2][arg0] & 0x2) == 2)
                         i_5_++;
                     CollisionMap.method543(Landscape.currentCollisionMap[arg7], arg1, i_5_, arg7, arg3, Npc.currentScene, -22078, arg4, arg0, arg2);
                 }

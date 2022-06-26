@@ -1,6 +1,7 @@
 package org.runejs.client.input;
 
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.cache.def.*;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
@@ -18,10 +19,6 @@ import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.*;
-import org.runejs.client.cache.def.FramemapDefinition;
-import org.runejs.client.cache.def.GameObjectDefinition;
-import org.runejs.client.cache.def.IdentityKit;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.Configuration;
 
 import java.awt.event.FocusEvent;
@@ -200,8 +197,8 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             }
             
         }
-        if (Class40_Sub5_Sub15.systemUpdateTime != 0) {
-            int seconds = Class40_Sub5_Sub15.systemUpdateTime / 50;
+        if (AnimationFrameGroup.systemUpdateTime != 0) {
+            int seconds = AnimationFrameGroup.systemUpdateTime / 50;
             int minutes = seconds / 60;
             seconds %= 60;
             if (seconds < 10) {
@@ -214,31 +211,31 @@ public class KeyFocusListener implements KeyListener, FocusListener {
 
     public static int method955(CacheArchive arg0) {
         int i = 0;
-        if (arg0.method194(Native.aClass1_638, Native.aClass1_305)) {
+        if (arg0.method194(Native.invback, Native.aClass1_305)) {
             i++;
         }
         if (arg0.method194(Native.chatback, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.mapBack, Native.aClass1_305)) {
+        if (arg0.method194(Native.mapback, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_1395, Native.aClass1_305)) {
+        if (arg0.method194(Native.backbase1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_256, Native.aClass1_305)) {
+        if (arg0.method194(Native.backbase2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_338, Native.aClass1_305)) {
+        if (arg0.method194(Native.backhmid1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackleft1, Native.aClass1_305)) {
+        if (arg0.method194(Native.backleft1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_1024, Native.aClass1_305)) {
+        if (arg0.method194(Native.backleft2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_281, Native.aClass1_305)) {
+        if (arg0.method194(Native.backright1, Native.aClass1_305)) {
             i++;
         }
         if (arg0.method194(Native.backright2, Native.aClass1_305)) {
@@ -253,10 +250,10 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (arg0.method194(Native.aClass1_2588, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_196, Native.aClass1_305)) {
+        if (arg0.method194(Native.backvmid3, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_304, Native.aClass1_305)) {
+        if (arg0.method194(Native.backhmid2, Native.aClass1_305)) {
             i++;
         }
         if (arg0.method194(Native.aClass1_2093, Native.aClass1_305)) {
@@ -324,7 +321,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             if (GameObjectDefinition.anInt2543 >= 0 && obfuscatedKeyCode >= 0) {
                 RSString.keyCodes[GameObjectDefinition.anInt2543] = obfuscatedKeyCode;
                 GameObjectDefinition.anInt2543 = 0x7f & GameObjectDefinition.anInt2543 + 1;
-                if (GameObjectDefinition.anInt2543 == FramemapDefinition.anInt2183) {
+                if (GameObjectDefinition.anInt2543 == AnimationBaseDefinition.anInt2183) {
                     GameObjectDefinition.anInt2543 = -1;
                 }
             }
@@ -353,7 +350,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             if (GameObjectDefinition.anInt2543 >= 0 && i >= 0) {
                 RSString.keyCodes[GameObjectDefinition.anInt2543] = i ^ 0xffffffff;
                 GameObjectDefinition.anInt2543 = 0x7f & 1 + GameObjectDefinition.anInt2543;
-                if (FramemapDefinition.anInt2183 == GameObjectDefinition.anInt2543) {
+                if (AnimationBaseDefinition.anInt2183 == GameObjectDefinition.anInt2543) {
                     GameObjectDefinition.anInt2543 = -1;
                 }
             }
