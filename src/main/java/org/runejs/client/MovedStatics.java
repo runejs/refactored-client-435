@@ -1469,7 +1469,7 @@ public class MovedStatics {
 	    int colour = 0x5d5447;
 	    ChatBox.redrawChatbox = true;
 	    GameInterface.redrawTabArea = true;
-	    Rasterizer.drawFilledRectangleAlpha(offsetX, offsetY, width, height, colour, 120);
+	    Rasterizer.drawFilledRectangleAlpha(offsetX, offsetY, width, height, colour, Configuration.RIGHT_CLICK_MENU_TRANSPARENCY);
 	    Rasterizer.drawFilledRectangle(1 + offsetX, 1 + offsetY, -2 + width, 16, 0);
 	    Rasterizer.drawUnfilledRectangle(offsetX + 1, 18 + offsetY, -2 + width, -19 + height, 0);
 	    TypeFace.fontBold.drawString(English.chooseOption, offsetX + 3, 14 + offsetY, colour);

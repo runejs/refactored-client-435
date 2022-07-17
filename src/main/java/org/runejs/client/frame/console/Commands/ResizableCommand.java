@@ -17,8 +17,7 @@ public class ResizableCommand extends Command {
             console.log("<col=00FF00>Client is now Resizable</col>");
         } else {
             ScreenController.frameMode(ScreenMode.FIXED);
-
-            console.log("<col=00FF00>Client is now  not Resizable</col>");
+            console.log("<col=00FF00>Client is now not Resizable</col>");
         }
     }
 }

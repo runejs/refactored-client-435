@@ -26,7 +26,6 @@ import java.text.MessageFormat;
 
 public class ScreenController {
 
-
     public static ScreenMode frameMode = null;
     public static int frameWidth = 765;
     public static int frameHeight = 540;
@@ -37,7 +36,6 @@ public class ScreenController {
     private static Thread drawingThread;
     private static FrameRenderer renderer;
     public static boolean DebugView = false;
-
 
     public static void frameMode(ScreenMode screenMode) {
         if (frameMode != screenMode) {
@@ -54,8 +52,6 @@ public class ScreenController {
                 GameShell.clientFrame.setResizable(true);
                 GameShell.clientFrame.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
                 GameShell.clientFrame.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
-
-
             } else if (screenMode == ScreenMode.FULLSCREEN) {
                 frameWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
                 frameHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
@@ -64,10 +60,9 @@ public class ScreenController {
             Dimension innerSize = getInnerSize(GameShell.clientFrame);
             drawHeight = innerSize.height;
             drawWidth = innerSize.width;
+            GameShell.clientFrame.setSize(drawWidth, drawHeight);
             setBounds();
-
         }
-
     }
 
     public static void refreshFrameSize() {
@@ -112,7 +107,6 @@ public class ScreenController {
             int i_2_ = Rasterizer3D.sinetable[i_0_];
             is[i] = i_2_ * i_1_ >> 16;
         }
-
 
         Scene.method95(500, 800, frameMode == ScreenMode.FIXED ? 512 : drawWidth, frameMode == ScreenMode.FIXED ? 334 : drawHeight, is);
         MouseHandler.gameCanvas.setSize(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight);
@@ -182,24 +176,25 @@ public class ScreenController {
             } else {
                 Rasterizer.drawFilledRectangleAlpha(drawWidth - 210, 0, 210, 210, 0x0000FF, 90);
             }
-
-
             Rasterizer.drawFilledRectangle(Class13.mouseX - 4, Landscape.mouseY - 4, 4, 4, 0xFF0000);
         }
 
         if (MovedStatics.menuOpen) {
             MovedStatics.drawMenu(0, 0);
         }
-
     }
-
 
     public static Dimension getInnerSize(Frame frame) {
         Dimension size = frame.getSize();
         Insets insets = frame.getInsets();
         if (insets != null) {
-            size.height -= insets.top + insets.bottom;
-            size.width -= insets.left + insets.right;
+            if (frameMode == ScreenMode.FIXED) {
+                size.height += insets.top + insets.bottom;
+                size.width += insets.right + insets.left;
+            } else {
+                size.height -= insets.top + insets.bottom;
+                size.width -= insets.left + insets.right;
+            }
         }
         return size;
     }
@@ -214,8 +209,6 @@ public class ScreenController {
         drawFramePieceCutout(RSCanvas.tabBottom, x, y + 300, RSCanvas.tabBottom.width - 35, RSCanvas.tabBottom.height, 35, 0);
         drawFramePieceCutout(InteractiveObject.tabTop, x, y, InteractiveObject.tabTop.width - 15, InteractiveObject.tabTop.height - 6, 15, 6);
         drawFramePiece(MovedStatics.tabImageProducer, x + 22, y + 39);
-
-
     }
 
     public static void RenderChatArea(int x, int y) {
@@ -229,8 +222,6 @@ public class ScreenController {
         //        System.out.println(Class40_Sub5_Sub1.chatboxRight.height + (Class17.chatboxTop.height-3) + HuffmanEncoding.aProducingGraphicsBuffer_1541.height);
 
         drawFramePieceCutout(PlayerAppearance.tabPieveLowerRight, x + 496, y + 16, 20, PlayerAppearance.tabPieveLowerRight.height, 0, 0);
-
-
     }
 
     public static void drawFramePiece(ProducingGraphicsBuffer framePiece, int x, int y) {
@@ -240,7 +231,6 @@ public class ScreenController {
     public static void drawFramePieceCutout(ProducingGraphicsBuffer framePiece, int x, int y, int width, int height, int offsetX, int offsetY) {
         Rasterizer.copyPixelsCutOff(framePiece.pixels, framePiece.width, framePiece.height, x, y, width, height, offsetX, offsetY);
     }
-
 
     public static boolean isCoordinatesIn3dScreen(int x, int y) {
         if (frameMode == ScreenMode.FIXED) {
@@ -265,7 +255,6 @@ public class ScreenController {
         }
     }
 
-
     public static boolean isCoordinatesInExtendedTabArea(int x, int y) {
         int[] top = tabProducer.getTopBarCoordSize(drawWidth - 241, drawHeight - (334));
         int[] bottom = tabProducer.getBottomBarCoordSize(drawWidth - 241, drawHeight - (334));
@@ -288,7 +277,6 @@ public class ScreenController {
             int maxY = minY + RSCanvas.chatBoxImageProducer.height;
             return x > minX && y > minY && x < maxX && y < maxY;
         }
-
     }
 
     public static boolean isCoordinatesInMinimapArea(int x, int y) {
@@ -320,7 +308,7 @@ public class ScreenController {
     public static void handleChatBoxMouse(int x, int y) {
         int chatBoxWidth = 479;
         int chatBoxHeight = 96;
-        int offsetBottom = 50; // Offset for the chat modes below the chat, and the chat bottom frame itself
+        int offsetBottom = frameMode == ScreenMode.FIXED ? (GameShell.clientFrame.getInsets().top + GameShell.clientFrame.getInsets().bottom) + 80 : 50 ; // Offset for the chat modes below the chat, and the chat bottom frame itself
         int offsetLeft = 17; // Offset from the left of the screen to account for chat left frame
 
         // Define chat box bounds as absolute screen coordinates (accounts for resizable)
@@ -367,7 +355,7 @@ public class ScreenController {
                 }
 
             } else {
-                x = -(frameWidth - 210) + Class57.clickX;
+                x = -(frameWidth - 225) + Class57.clickX;
                 y = -5 + RSString.clickY - 4;
                 if (x >= 0 && y >= 0 && x < 204 && y < 200) {
                     x -= 107;
@@ -544,7 +532,6 @@ public class ScreenController {
                     tabProducer.clickTabButton(x,y, drawWidth - 241, drawHeight - (334));
                 }
             }
-
         }
     }
 }
