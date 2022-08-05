@@ -39,22 +39,22 @@ public class UnderlayDefinition extends CachedNode {
 
     public void calculateHsl() {
         double r = (double) (color >> 16 & 0xff) / 256.0;
-        double g = (double) (color & 0xff) / 256.0;
-        double b = (double) ((color & 0xff68) >> 8) / 256.0;
+        double b = (double) (color & 0xff) / 256.0;
+        double g = (double) ((color & 0xff68) >> 8) / 256.0;
         double cmin = r;
-        if(cmin > b) {
-            cmin = b;
-        }
-        if(g < cmin) {
+        if(cmin > g) {
             cmin = g;
         }
-        double cmax = r;
-        if(cmax < b) {
-            cmax = b;
+        if(b < cmin) {
+            cmin = b;
         }
-        double d_4_ = 0.0;
+        double cmax = r;
         if(cmax < g) {
             cmax = g;
+        }
+        double d_4_ = 0.0;
+        if(cmax < b) {
+            cmax = b;
         }
         double d_5_ = (cmax + cmin) / 2.0;
         saturation = (int) (d_5_ * 256.0);
@@ -67,11 +67,11 @@ public class UnderlayDefinition extends CachedNode {
                 d_6_ = (-cmin + cmax) / (-cmin + (-cmax + 2.0));
             }
             if(r == cmax) {
-                d_4_ = (-g + b) / (-cmin + cmax);
-            } else if(cmax == b) {
-                d_4_ = 2.0 + (g - r) / (cmax - cmin);
+                d_4_ = (-b + g) / (-cmin + cmax);
             } else if(cmax == g) {
-                d_4_ = (r - b) / (-cmin + cmax) + 4.0;
+                d_4_ = 2.0 + (b - r) / (cmax - cmin);
+            } else if(cmax == b) {
+                d_4_ = (r - g) / (-cmin + cmax) + 4.0;
             }
         }
         d_4_ /= 6.0;
