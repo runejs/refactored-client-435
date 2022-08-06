@@ -37,7 +37,6 @@ public class Configuration {
             FREE_TELEPORTS = (boolean) game.get("freeTeleports");
             DEBUG_CONTEXT = (boolean) game.get("debugContextMenu");
             SERVER_DISPLAY_NAME = (String) obj.get("serverDisplayName");
-            RIGHT_CLICK_MENU_TRANSPARENCY = (int) game.get("menuTransparency");
 
             if (USERNAME == null) {
                 USERNAME = "";
@@ -144,11 +143,6 @@ public class Configuration {
      */
     public static boolean DEBUG_WIDGETS = false;
 
-    /**
-     * Controls the transparency on right click menus
-     * 0 for full transparency 255 for no transparency.
-     */
-    public static int RIGHT_CLICK_MENU_TRANSPARENCY = 255;
 
     public static RSString getUsername() {
         if(USE_STATIC_DETAILS) {
