@@ -39,8 +39,8 @@ public class UnderlayDefinition extends CachedNode {
 
     public void calculateHsl() {
         double r = (double) (color >> 16 & 0xff) / 256.0;
-        double b = (double) (color & 0xff) / 256.0;
         double g = (double) ((color & 0xff68) >> 8) / 256.0;
+        double b = (double) (color & 0xff) / 256.0;
         double cmin = r;
         if(cmin > g) {
             cmin = g;
