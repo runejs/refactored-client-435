@@ -837,8 +837,12 @@ public class IncomingPackets {
                 for(int varPlayerIndex = 0; VarPlayerDefinition.varPlayerDefinitionsSize > varPlayerIndex; varPlayerIndex++) {
                     VarPlayerDefinition varPlayerDefinition = VarPlayerDefinition.getDefinition(varPlayerIndex);
                     if(varPlayerDefinition.type == 0) {
-                        Buffer.anIntArray1984[varPlayerIndex] = 0;
-                        VarPlayerDefinition.varPlayers[varPlayerIndex] = 0;
+                        try {
+                            Buffer.anIntArray1984[varPlayerIndex] = 0;
+                            VarPlayerDefinition.varPlayers[varPlayerIndex] = 0;
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
                 if(ChatBox.dialogueId != -1)

@@ -5,7 +5,7 @@ import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.node.HashTable;
-import org.runejs.client.scene.InteractiveObject;
+import org.runejs.client.node.NodeQueue;
 
 import java.io.IOException;
 import java.util.zip.CRC32;
@@ -14,16 +14,17 @@ import java.util.zip.CRC32;
 public class UpdateServer {
 
     public static GameSocket updateServerSocket;
-    public static Buffer fileDataBuffer = new Buffer(8);
-    public static Buffer aClass40_Sub1_2752;
+    public static Buffer inboundDataBuffer = new Buffer(8);
+    public static Buffer fileDataBuffer;
     public static Buffer crcTableBuffer;
-    public static HashTable updateServerRequests = new HashTable(4096);
-    public static HashTable activeRequests = new HashTable(32);
-    public static HashTable queuedRequests = new HashTable(4096);
-    public static HashTable aClass23_2545 = new HashTable(4096);
-    public static UpdateServerNode aUpdateServerNode_2250;
-    public static CRC32 crc32 = new CRC32();
-    public static byte aByte302 = (byte) 0;
+    public static HashTable immediateFileRequests = new HashTable(32);
+    public static HashTable immediateFileResponses = new HashTable(4096);
+    public static HashTable queuableRequests = new HashTable(4096);
+    public static NodeQueue activeQueuedRequests = new NodeQueue();
+    public static HashTable queuedFileResponses = new HashTable(4096);
+    public static UpdateServerNode activeNode;
+    public static CRC32 crc = new CRC32();
+    public static byte archiveIndex = (byte) 0;
     public static int anInt464 = 0;
     public static int anInt554 = 0;
     public static int anInt1618 = 0;
@@ -31,7 +32,7 @@ public class UpdateServer {
     public static int anInt1006 = 0;
 
 
-    public static void handleUpdateServerConnection(GameSocket socket, boolean arg2) {
+    public static void handleUpdateServerConnection(GameSocket socket, boolean playerLoggedIn) {
         if(updateServerSocket != null) {
             try {
                 updateServerSocket.kill();
@@ -43,40 +44,40 @@ public class UpdateServer {
         }
 
         updateServerSocket = socket;
-        GameShell.method19(arg2);
-        fileDataBuffer.currentPosition = 0;
-        aClass40_Sub1_2752 = null;
+        GameShell.method19(playerLoggedIn);
+        inboundDataBuffer.currentPosition = 0;
+        fileDataBuffer = null;
         Landscape.anInt1157 = 0;
-        aUpdateServerNode_2250 = null;
+        activeNode = null;
 
         for(; ; ) {
-            UpdateServerNode updateServerNode = (UpdateServerNode) activeRequests.getNextNode();
+            UpdateServerNode updateServerNode = (UpdateServerNode) immediateFileRequests.getNextNode();
             if(updateServerNode == null) {
                 break;
             }
 
-            updateServerRequests.put(updateServerNode.key, updateServerNode);
+            immediateFileResponses.put(updateServerNode.key, updateServerNode);
             anInt464--;
             anInt1618++;
         }
 
         for(; ; ) {
-            UpdateServerNode updateServerNode = (UpdateServerNode) queuedRequests.getNextNode();
+            UpdateServerNode updateServerNode = (UpdateServerNode) queuableRequests.getNextNode();
             if(updateServerNode == null) {
                 break;
             }
 
-            InteractiveObject.aNodeQueue_485.unshift(updateServerNode);
-            aClass23_2545.put(updateServerNode.key, updateServerNode);
+            activeQueuedRequests.unshift(updateServerNode);
+            queuedFileResponses.put(updateServerNode.key, updateServerNode);
             anInt1006--;
             anInt554++;
         }
 
-        if(aByte302 != 0) {
+        if(archiveIndex != 0) {
             try {
                 Buffer fileRequestBuffer = new Buffer(4);
                 fileRequestBuffer.putByte(4);
-                fileRequestBuffer.putByte(aByte302);
+                fileRequestBuffer.putByte(archiveIndex);
                 fileRequestBuffer.putShortBE(0);
                 updateServerSocket.sendDataFromBuffer(4, 0, fileRequestBuffer.buffer);
             } catch(java.io.IOException ioexception) {
@@ -120,24 +121,24 @@ public class UpdateServer {
                 if(anInt1618 <= 0) {
                     break;
                 }
-                UpdateServerNode updateServerNode = (UpdateServerNode) updateServerRequests.getNextNode();
+                UpdateServerNode updateServerNode = (UpdateServerNode) immediateFileResponses.getNextNode();
                 Buffer buffer = new Buffer(4);
                 buffer.putByte(1); // immediate file request
-                buffer.putMediumBE((int) updateServerNode.key); // file index + file id
+                buffer.putMediumBE((int) updateServerNode.key); // file index + file id (read as a byte "index" and a short "file" in the update server)
                 updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
-                activeRequests.put(updateServerNode.key, updateServerNode);
+                immediateFileRequests.put(updateServerNode.key, updateServerNode);
                 anInt1618--;
             }
 
-            // Queuable file requests
+            // Queueable file requests
             for(/**/; anInt1006 < 20 && anInt554 > 0; anInt554--) {
-                UpdateServerNode updateServerNode = (UpdateServerNode) InteractiveObject.aNodeQueue_485.next();
+                UpdateServerNode updateServerNode = (UpdateServerNode) activeQueuedRequests.next();
                 Buffer buffer = new Buffer(4);
                 buffer.putByte(0); // queued file request
-                buffer.putMediumBE((int) updateServerNode.key); // file index + file id
+                buffer.putMediumBE((int) updateServerNode.key); // file index + file id (read as a byte "index" and a short "file" in the update server)
                 updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
                 updateServerNode.clear();
-                queuedRequests.put(updateServerNode.key, updateServerNode);
+                queuableRequests.put(updateServerNode.key, updateServerNode);
                 anInt1006++;
             }
 
@@ -153,34 +154,34 @@ public class UpdateServer {
                 MovedStatics.msSinceLastUpdate = 0;
 
                 int i_35_ = 0;
-                if(aUpdateServerNode_2250 == null) {
+                if(activeNode == null) {
                     i_35_ = 8;
                 } else if(Landscape.anInt1157 == 0) {
                     i_35_ = 1;
                 }
 
                 if(i_35_ <= 0) {
-                    int inboundFileLength = aClass40_Sub1_2752.buffer.length + -aUpdateServerNode_2250.aByte2758;
+                    int inboundFileLength = fileDataBuffer.buffer.length + -activeNode.versionSize;
                     int i_37_ = -Landscape.anInt1157 + 512;
-                    if(-aClass40_Sub1_2752.currentPosition + inboundFileLength < i_37_) {
-                        i_37_ = inboundFileLength - aClass40_Sub1_2752.currentPosition;
+                    if(-fileDataBuffer.currentPosition + inboundFileLength < i_37_) {
+                        i_37_ = inboundFileLength - fileDataBuffer.currentPosition;
                     }
                     if(i_37_ > dataAvailable) {
                         i_37_ = dataAvailable;
                     }
-                    updateServerSocket.readDataToBuffer(aClass40_Sub1_2752.currentPosition, i_37_, aClass40_Sub1_2752.buffer);
-                    if(aByte302 != 0) {
+                    updateServerSocket.readDataToBuffer(fileDataBuffer.currentPosition, i_37_, fileDataBuffer.buffer);
+                    if(archiveIndex != 0) {
                         for(int i_38_ = 0; i_37_ > i_38_; i_38_++) {
-                            aClass40_Sub1_2752.buffer[aClass40_Sub1_2752.currentPosition + i_38_] = (byte) GameShell.method27(aClass40_Sub1_2752.buffer[aClass40_Sub1_2752.currentPosition + i_38_], aByte302);
+                            fileDataBuffer.buffer[fileDataBuffer.currentPosition + i_38_] = (byte) GameShell.method27(fileDataBuffer.buffer[fileDataBuffer.currentPosition + i_38_], archiveIndex);
                         }
                     }
 
-                    aClass40_Sub1_2752.currentPosition += i_37_;
+                    fileDataBuffer.currentPosition += i_37_;
                     Landscape.anInt1157 += i_37_;
 
-                    if(inboundFileLength == aClass40_Sub1_2752.currentPosition) {
-                        if(aUpdateServerNode_2250.key == 16711935) { // crc table file key
-                            crcTableBuffer = aClass40_Sub1_2752;
+                    if(inboundFileLength == fileDataBuffer.currentPosition) {
+                        if(activeNode.key == 16711935) { // crc table file key
+                            crcTableBuffer = fileDataBuffer;
                             for(int i = 0; i < 256; i++) {
                                 CacheArchive archive = Class24.aClass6_Sub1Array580[i];
                                 if(archive != null) {
@@ -190,28 +191,28 @@ public class UpdateServer {
                                 }
                             }
                         } else {
-                            crc32.reset();
-                            crc32.update(aClass40_Sub1_2752.buffer, 0, inboundFileLength);
-                            int fileRealCrcValue = (int) crc32.getValue();
-                            if(~aUpdateServerNode_2250.crc != ~fileRealCrcValue) {
-                                try {
+                            crc.reset();
+                            crc.update(fileDataBuffer.buffer, 0, inboundFileLength);
+                            int fileRealCrcValue = (int) crc.getValue();
+                            if(~activeNode.crc != ~fileRealCrcValue) {
+                                /*try {
                                     updateServerSocket.kill();
                                 } catch(Exception exception) {
                                 }
-                                aByte302 = (byte) (int) (Math.random() * 255.0 + 1.0);
+                                archiveIndex = (byte) (int) (Math.random() * 255.0 + 1.0);
                                 updateServerSocket = null;
                                 MovedStatics.anInt813++;
-                                return false;
+                                return false;*/
                             }
 
                             anInt2278 = 0;
                             MovedStatics.anInt813 = 0;
-                            aUpdateServerNode_2250.cacheArchive.method196((aUpdateServerNode_2250.key & 0xff0000L) == 16711680L, (int) (aUpdateServerNode_2250.key & 0xffffL), Npc.aBoolean3298, aClass40_Sub1_2752.buffer);
+                            activeNode.cacheArchive.method196((activeNode.key & 0xff0000L) == 16711680L, (int) (activeNode.key & 0xffffL), Npc.aBoolean3298, fileDataBuffer.buffer);
                         }
 
-                        aUpdateServerNode_2250.remove();
-                        aUpdateServerNode_2250 = null;
-                        aClass40_Sub1_2752 = null;
+                        activeNode.remove();
+                        activeNode = null;
+                        fileDataBuffer = null;
                         Landscape.anInt1157 = 0;
 
                         if(!Npc.aBoolean3298) {
@@ -226,37 +227,38 @@ public class UpdateServer {
                         Landscape.anInt1157 = 0;
                     }
                 } else {
-                    int pos = -fileDataBuffer.currentPosition + i_35_;
+                    int pos = -inboundDataBuffer.currentPosition + i_35_;
                     if(pos > dataAvailable) {
                         pos = dataAvailable;
                     }
 
-                    updateServerSocket.readDataToBuffer(fileDataBuffer.currentPosition, pos, fileDataBuffer.buffer);
+                    updateServerSocket.readDataToBuffer(inboundDataBuffer.currentPosition, pos, inboundDataBuffer.buffer);
 
-                    if(aByte302 != 0) {
+                    if(archiveIndex != 0) {
                         for(int i = 0; pos > i; i++) {
-                            fileDataBuffer.buffer[fileDataBuffer.currentPosition + i] =
-                                    (byte) GameShell.method27(fileDataBuffer.buffer[fileDataBuffer.currentPosition + i], aByte302);
+                            inboundDataBuffer.buffer[inboundDataBuffer.currentPosition + i] =
+                                    (byte) GameShell.method27(inboundDataBuffer.buffer[inboundDataBuffer.currentPosition + i], archiveIndex);
                         }
                     }
 
-                    fileDataBuffer.currentPosition += pos;
-                    if(i_35_ > fileDataBuffer.currentPosition) {
+                    inboundDataBuffer.currentPosition += pos;
+                    if(i_35_ > inboundDataBuffer.currentPosition) {
                         break;
                     }
 
-                    if(aUpdateServerNode_2250 == null) {
-                        fileDataBuffer.currentPosition = 0;
-                        int fileIndexId = fileDataBuffer.getUnsignedByte();
-                        int fileId = fileDataBuffer.getUnsignedShortBE();
-                        int fileCompression = fileDataBuffer.getUnsignedByte();
-                        int fileSize = fileDataBuffer.getIntBE();
+                    if(activeNode == null) {
+                        inboundDataBuffer.currentPosition = 0;
+                        int fileIndexId = inboundDataBuffer.getUnsignedByte();
+                        int fileId = inboundDataBuffer.getUnsignedShortBE();
+                        int fileCompression = inboundDataBuffer.getUnsignedByte();
+                        int fileSize = inboundDataBuffer.getIntBE();
+                        // System.out.println("Update server response, index=" + fileIndexId + ", file=" + fileId);
                         long fileKey = ((long) fileIndexId << 16) + fileId;
-                        UpdateServerNode updateServerNode = (UpdateServerNode) activeRequests.getNode(fileKey);
+                        UpdateServerNode updateServerNode = (UpdateServerNode) immediateFileRequests.getNode(fileKey);
                         Npc.aBoolean3298 = true;
 
                         if(updateServerNode == null) {
-                            updateServerNode = (UpdateServerNode) queuedRequests.getNode(fileKey);
+                            updateServerNode = (UpdateServerNode) queuableRequests.getNode(fileKey);
                             Npc.aBoolean3298 = false;
                         }
 
@@ -264,19 +266,19 @@ public class UpdateServer {
                             throw new IOException();
                         }
 
-                        aUpdateServerNode_2250 = updateServerNode;
+                        activeNode = updateServerNode;
                         int compressionSizeOffset = fileCompression == 0 ? 5 : 9;
-                        aClass40_Sub1_2752 = new Buffer(aUpdateServerNode_2250.aByte2758 + compressionSizeOffset + fileSize);
-                        aClass40_Sub1_2752.putByte(fileCompression);
-                        aClass40_Sub1_2752.putIntBE(fileSize);
+                        fileDataBuffer = new Buffer(activeNode.versionSize + compressionSizeOffset + fileSize);
+                        fileDataBuffer.putByte(fileCompression);
+                        fileDataBuffer.putIntBE(fileSize);
                         Landscape.anInt1157 = 8;
-                        fileDataBuffer.currentPosition = 0;
+                        inboundDataBuffer.currentPosition = 0;
                     } else if(Landscape.anInt1157 == 0) {
-                        if(fileDataBuffer.buffer[0] == -1) {
-                            fileDataBuffer.currentPosition = 0;
+                        if(inboundDataBuffer.buffer[0] == -1) {
+                            inboundDataBuffer.currentPosition = 0;
                             Landscape.anInt1157 = 1;
                         } else {
-                            aUpdateServerNode_2250 = null;
+                            activeNode = null;
                         }
                     }
                 }
@@ -299,35 +301,35 @@ public class UpdateServer {
         }
     }
 
-    public static void method327(boolean unknownBool, CacheArchive archive, int archiveIndexId, int fileId, byte arg4, int expectedCrc) {
-        long fileKey = fileId + ((long) archiveIndexId << 16);
-        UpdateServerNode updateServerNode = (UpdateServerNode) updateServerRequests.getNode(fileKey);
+    public static void requestFile(boolean immediate, CacheArchive archive, int archiveIndex, int fileIndex, byte versionSize, int expectedCrc) {
+        long fileKey = fileIndex + ((long) archiveIndex << 16);
+        UpdateServerNode updateServerNode = (UpdateServerNode) immediateFileResponses.getNode(fileKey);
 
         if (updateServerNode == null) {
-            updateServerNode = (UpdateServerNode) activeRequests.getNode(fileKey);
+            updateServerNode = (UpdateServerNode) immediateFileRequests.getNode(fileKey);
             if (updateServerNode == null) {
-                updateServerNode = (UpdateServerNode) aClass23_2545.getNode(fileKey);
+                updateServerNode = (UpdateServerNode) queuedFileResponses.getNode(fileKey);
                 if (updateServerNode == null) {
-                    if (!unknownBool) {
-                        updateServerNode = (UpdateServerNode) queuedRequests.getNode(fileKey);
+                    if (!immediate) {
+                        updateServerNode = (UpdateServerNode) queuableRequests.getNode(fileKey);
                         if (updateServerNode != null)
                             return;
                     }
                     updateServerNode = new UpdateServerNode();
                     updateServerNode.crc = expectedCrc;
-                    updateServerNode.aByte2758 = arg4;
+                    updateServerNode.versionSize = versionSize;
                     updateServerNode.cacheArchive = archive;
-                    if (unknownBool) {
-                        updateServerRequests.put(fileKey, updateServerNode);
+                    if (immediate) {
+                        immediateFileResponses.put(fileKey, updateServerNode);
                         anInt1618++;
                     } else {
-                        InteractiveObject.aNodeQueue_485.push(updateServerNode);
-                        aClass23_2545.put(fileKey, updateServerNode);
+                        activeQueuedRequests.push(updateServerNode);
+                        queuedFileResponses.put(fileKey, updateServerNode);
                         anInt554++;
                     }
-                } else if (unknownBool) {
+                } else if (immediate) {
                     updateServerNode.clear();
-                    updateServerRequests.put(fileKey, updateServerNode);
+                    immediateFileResponses.put(fileKey, updateServerNode);
                     anInt554--;
                     anInt1618++;
                 }

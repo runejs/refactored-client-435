@@ -269,7 +269,13 @@ public class GameInterface extends CachedNode {
             }
         }
 
-        return cachedInterfaces[parentInterfaceId][childInterfaceId];
+        try {
+            return cachedInterfaces[parentInterfaceId][childInterfaceId];
+        } catch(Exception error) {
+            System.out.println(parentInterfaceId + " " + childInterfaceId);
+            error.printStackTrace();
+            return null;
+        }
     }
 
     public static void updateGameInterface(GameInterface gameInterface) {

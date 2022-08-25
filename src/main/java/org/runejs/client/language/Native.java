@@ -17,12 +17,11 @@ public class Native {
     public static String loginScreenMessageLineThree = "";
     public static String loginScreenMessageLineTwo = "";
     public static String aClass1_305 = "";
-    public static String aClass1_698 = "%";
+    public static String percentChar = "%";
     public static String percent = "%";
     public static String percentOne = "%1";
     public static String percentThree = "%3";
     public static String percentFour = "%4";
-    public static String rightParenthasis = ")";
     public static String aClass1_795 = ",";
     public static String aClass1_1348 = "0%";
     public static String prefixColon = ":  ";
@@ -127,5 +126,6 @@ public class Native {
     public static String justAnotherYellowBar = "@yel@|";
 
     public static String leftParenthasis = "(";
+    public static String rightParenthasis = ")";
     public static String colon =":";
 }

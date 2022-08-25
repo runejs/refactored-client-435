@@ -34,10 +34,10 @@ public class CacheArchive {
     public static CacheArchive clientScriptCacheArchive;
     public static CacheArchive definitionCache;
 
-    public byte[][] aByteArrayArray212;
+    public byte[][] fileData;
     public int crc8;
     public NameHashCollection[] aNameHashCollectionArray217;
-    public boolean aBoolean220;
+    public boolean clearMemoryBuffer;
     public int fileCount;
     public int[] anIntArray224;
     public int[] fileIds;
@@ -55,29 +55,29 @@ public class CacheArchive {
     public CacheIndex metaIndex;
     public int cacheIndexId;
     public int archiveCrcValue;
-    public boolean aBoolean1811;
+    public boolean hasVersionNumbers;
     public CacheIndex dataIndex;
 
     static {
         Player.npcs = new Npc[32768];
     }
 
-    public CacheArchive(CacheIndex dataIndex, CacheIndex metaIndex, int cacheIndexId, boolean arg3, boolean arg4, boolean arg5) {
-        aBoolean220 = arg4;
+    public CacheArchive(CacheIndex dataIndex, CacheIndex metaIndex, int cacheIndexId, boolean arg3, boolean clearMemoryBuffer, boolean hasVersionNumbers) {
+        this.clearMemoryBuffer = clearMemoryBuffer;
         aBoolean233 = arg3;
         this.dataIndex = dataIndex;
-        aBoolean1811 = arg5;
+        this.hasVersionNumbers = hasVersionNumbers;
         this.metaIndex = metaIndex;
         this.cacheIndexId = cacheIndexId;
         Main.method37(this, this.cacheIndexId);
     }
 
-    public static CacheArchive loadArchive(int cacheIndexId, boolean arg1, boolean arg2, boolean arg4) {
+    public static CacheArchive loadArchive(int cacheIndexId, boolean hasVersionNumbers, boolean arg2, boolean arg4) {
         CacheIndex dataIndex = null;
         if(Main.dataChannel != null) {
             dataIndex = new CacheIndex(cacheIndexId, Main.dataChannel, Main.indexChannels[cacheIndexId], 1000000);
         }
-        return new CacheArchive(dataIndex, Main.metaIndex, cacheIndexId, arg2, arg4, arg1);
+        return new CacheArchive(dataIndex, Main.metaIndex, cacheIndexId, arg2, arg4, hasVersionNumbers);
     }
 
     public static byte[] decompress(byte[] cacheData) {
@@ -145,7 +145,7 @@ public class CacheArchive {
                 aBooleanArray1796[arg2] = true;
             }
             if(arg3) {
-                aByteArrayArray212[arg2] = data;
+                fileData[arg2] = data;
             }
         }
     }
@@ -153,7 +153,7 @@ public class CacheArchive {
     public int getPercentLoaded() {
         if(aBoolean1800)
             return 100;
-        if(aByteArrayArray212 != null)
+        if(fileData != null)
             return 99;
         int i = MovedStatics.calculateDataLoaded(255, cacheIndexId);
         if(i >= 100)
@@ -162,48 +162,49 @@ public class CacheArchive {
 
     }
 
-    public void method198(boolean arg1, byte[] arg2, int arg3, CacheIndex arg4) {
-        if(metaIndex == arg4) {
+    public void method198(boolean immediate, byte[] fileData, int fileIndex, CacheIndex cacheIndex) {
+        if(metaIndex == cacheIndex) {
             if(aBoolean1800)
                 throw new RuntimeException();
-            if(arg2 == null) {
-                UpdateServer.method327(true, this, 255, cacheIndexId, (byte) 0,
+            if(fileData == null) {
+                UpdateServer.requestFile(true, this, 255, cacheIndexId, (byte) 0,
                         archiveCrcValue);
                 return;
             }
             crc32.reset();
-            crc32.update(arg2, 0, arg2.length);
+            crc32.update(fileData, 0, fileData.length);
             int i = (int) crc32.getValue();
             if(i != archiveCrcValue) {
-                UpdateServer.method327(true, this, 255, cacheIndexId, (byte) 0,
-                        archiveCrcValue);
-                return;
+                // @TODO still broken
+                // UpdateServer.method327(true, this, 255, cacheIndexId, (byte) 0,
+                //         archiveCrcValue);
+                // return;
             }
 
-            decodeArchive(arg2);
+            decodeArchive(fileData);
             method199();
         } else {
-            if(!arg1 && anInt1797 == arg3)
+            if(!immediate && anInt1797 == fileIndex)
                 aBoolean1800 = true;
-            if(arg2 == null || arg2.length <= 2) {
-                aBooleanArray1796[arg3] = false;
-                if(aBoolean1811 || arg1)
-                    UpdateServer.method327(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3]);
+            if(fileData == null || fileData.length <= 2) {
+                aBooleanArray1796[fileIndex] = false;
+                if(hasVersionNumbers || immediate)
+                    UpdateServer.requestFile(immediate, this, cacheIndexId, fileIndex, (byte) 2, anIntArray252[fileIndex]);
                 return;
             }
             crc32.reset();
-            crc32.update(arg2, 0, arg2.length - 2);
+            crc32.update(fileData, 0, fileData.length - 2);
             int i = (int) crc32.getValue();
-            int i_0_ = ((arg2[-2 + arg2.length] & 0xff) << 8) + (0xff & arg2[arg2.length + -1]);
-            if(i != anIntArray252[arg3] || i_0_ != anIntArray224[arg3]) {
-                aBooleanArray1796[arg3] = false;
-                if(aBoolean1811 || arg1)
-                    UpdateServer.method327(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3]);
+            int i_0_ = ((fileData[-2 + fileData.length] & 0xff) << 8) + (0xff & fileData[fileData.length + -1]);
+            if(i != anIntArray252[fileIndex] || i_0_ != anIntArray224[fileIndex]) {
+                aBooleanArray1796[fileIndex] = false;
+                if(hasVersionNumbers || immediate)
+                    UpdateServer.requestFile(immediate, this, cacheIndexId, fileIndex, (byte) 2, anIntArray252[fileIndex]);
                 return;
             }
-            aBooleanArray1796[arg3] = true;
-            if(arg1)
-                aByteArrayArray212[arg3] = arg2;
+            aBooleanArray1796[fileIndex] = true;
+            if(immediate)
+                this.fileData[fileIndex] = fileData;
         }
     }
 
@@ -211,7 +212,7 @@ public class CacheArchive {
         if(dataIndex != null && aBooleanArray1796 != null && aBooleanArray1796[arg1])
             GameObjectDefinition.method602(this, arg1, dataIndex);
         else
-            UpdateServer.method327(true, this, cacheIndexId, arg1, (byte) 2, anIntArray252[arg1]);
+            UpdateServer.requestFile(true, this, cacheIndexId, arg1, (byte) 2, anIntArray252[arg1]);
     }
 
     public void method174(int arg0) {
@@ -219,7 +220,7 @@ public class CacheArchive {
     }
 
     public void method199() {
-        aBooleanArray1796 = new boolean[aByteArrayArray212.length];
+        aBooleanArray1796 = new boolean[fileData.length];
         for(int i_1_ = 0; i_1_ < aBooleanArray1796.length; i_1_++)
             aBooleanArray1796[i_1_] = false;
         if(dataIndex == null)
@@ -240,13 +241,13 @@ public class CacheArchive {
     public void requestLatestVersion(int crcValue) {
         archiveCrcValue = crcValue;
         if(metaIndex == null)
-            UpdateServer.method327(true, this, 255, cacheIndexId, (byte) 0, archiveCrcValue);
+            UpdateServer.requestFile(true, this, 255, cacheIndexId, (byte) 0, archiveCrcValue);
         else
             GameObjectDefinition.method602(this, cacheIndexId, metaIndex);
     }
 
     public int method201(int arg0) {
-        if(aByteArrayArray212[arg0] != null)
+        if(fileData[arg0] != null)
             return 100;
         if(aBooleanArray1796[arg0])
             return 100;
@@ -256,7 +257,7 @@ public class CacheArchive {
     public int method202() {
         int i = 0;
         int i_3_ = 0;
-        for(int i_4_ = 0; i_4_ < aByteArrayArray212.length; i_4_++) {
+        for(int i_4_ = 0; i_4_ < fileData.length; i_4_++) {
             if(anIntArray261[i_4_] > 0) {
                 i += 100;
                 i_3_ += method201(i_4_);
@@ -300,31 +301,31 @@ public class CacheArchive {
             return false;
         if(inMemoryCacheBuffer[arg0][arg2] != null)
             return true;
-        if(aByteArrayArray212[arg0] != null)
+        if(fileData[arg0] != null)
             return true;
         method177(arg0);
-        return aByteArrayArray212[arg0] != null;
+        return fileData[arg0] != null;
     }
 
     public int getLength() {
         return inMemoryCacheBuffer.length;
     }
 
-    public byte[] method176(int arg0, int arg1, int[] arg2) {
-        if(arg0 < 0 || arg0 >= inMemoryCacheBuffer.length || inMemoryCacheBuffer[arg0] == null || arg1 < 0 || arg1 >= inMemoryCacheBuffer[arg0].length)
+    public byte[] method176(int archiveId, int fileId, int[] arg2) {
+        if(archiveId < 0 || archiveId >= inMemoryCacheBuffer.length || inMemoryCacheBuffer[archiveId] == null || fileId < 0 || fileId >= inMemoryCacheBuffer[archiveId].length)
             return null;
-        if(inMemoryCacheBuffer[arg0][arg1] == null) {
-            boolean bool = method181(arg0, arg2);
+        if(inMemoryCacheBuffer[archiveId][fileId] == null) {
+            boolean bool = method181(archiveId, arg2);
             if(!bool) {
-                method177(arg0);
-                bool = method181(arg0, arg2);
+                method177(archiveId);
+                bool = method181(archiveId, arg2);
                 if(!bool)
                     return null;
             }
         }
-        byte[] is = inMemoryCacheBuffer[arg0][arg1];
-        if(aBoolean220)
-            inMemoryCacheBuffer[arg0][arg1] = null;
+        byte[] is = inMemoryCacheBuffer[archiveId][fileId];
+        if(clearMemoryBuffer)
+            inMemoryCacheBuffer[archiveId][fileId] = null;
         return is;
     }
 
@@ -349,7 +350,7 @@ public class CacheArchive {
             anIntArray252 = new int[size + 1];
             inMemoryCacheBuffer = new byte[1 + size][][];
             anIntArray261 = new int[1 + size];
-            aByteArrayArray212 = new byte[size + 1][];
+            fileData = new byte[size + 1][];
 
             if(settings != 0) {
                 nameHashes = new int[size + 1];
@@ -393,11 +394,12 @@ public class CacheArchive {
 
     public int method179(int arg1, String arg2) {
         arg2 = arg2.toLowerCase();
-        return aNameHashCollectionArray217[arg1].method882(RSString.stringHash(arg2));
+        int newHash = RSString.stringHash(arg2);
+        return aNameHashCollectionArray217[arg1].method882(newHash);
     }
 
     public boolean method181(int arg0, int[] arg2) {
-        if(aByteArrayArray212[arg0] == null)
+        if(fileData[arg0] == null)
             return false;
         int i = anIntArray261[arg0];
         byte[][] is = inMemoryCacheBuffer[arg0];
@@ -413,17 +415,17 @@ public class CacheArchive {
             return true;
         byte[] is_21_;
         if(arg2 == null || arg2[0] == 0 && arg2[1] == 0 && arg2[2] == 0 && arg2[3] == 0)
-            is_21_ = aByteArrayArray212[arg0];
+            is_21_ = fileData[arg0];
         else {
-            is_21_ = new byte[aByteArrayArray212[arg0].length];
-            Class18.method278(aByteArrayArray212[arg0], 0, is_21_, 0, is_21_.length);
+            is_21_ = new byte[fileData[arg0].length];
+            Class18.method278(fileData[arg0], 0, is_21_, 0, is_21_.length);
             Buffer class40_sub1 = new Buffer(is_21_);
             class40_sub1.method483(arg2, class40_sub1.buffer.length, 5);
         }
         byte[] is_22_;
         is_22_ = decompress(is_21_);
         if(aBoolean233)
-            aByteArrayArray212[arg0] = null;
+            fileData[arg0] = null;
         if(i > 1) {
             int i_23_ = is_22_.length;
             int i_24_ = is_22_[--i_23_] & 0xff;
@@ -477,7 +479,8 @@ public class CacheArchive {
 
     public int getHash(String arg1) {
         arg1 = arg1.toLowerCase();
-        return nameHashCollection.method882(RSString.stringHash(arg1));
+        int newHash = RSString.stringHash(arg1);
+        return nameHashCollection.method882(newHash);
     }
 
     public boolean method185(byte arg0) {
@@ -486,29 +489,29 @@ public class CacheArchive {
             return true;
         for(int i = 0; i < fileIds.length; i++) {
             int i_47_ = fileIds[i];
-            if(aByteArrayArray212[i_47_] == null) {
+            if(fileData[i_47_] == null) {
                 method177(i_47_);
-                if(aByteArrayArray212[i_47_] == null)
+                if(fileData[i_47_] == null)
                     bool = false;
             }
         }
         return bool;
     }
 
-    public boolean fileExists(int arg1) {
-        if(aByteArrayArray212[arg1] != null)
+    public boolean fileExists(int fileIndex) {
+        if(fileData[fileIndex] != null)
             return true;
-        method177(arg1);
-        if(aByteArrayArray212[arg1] != null)
+        method177(fileIndex);
+        if(fileData[fileIndex] != null)
             return true;
         return false;
     }
 
-    public byte[] method187(int arg0) {
+    public byte[] method187(int fileIndex) {
         if(inMemoryCacheBuffer.length == 1)
-            return getFile(0, arg0);
-        if(inMemoryCacheBuffer[arg0].length == 1)
-            return getFile(arg0, 0);
+            return getFile(0, fileIndex);
+        if(inMemoryCacheBuffer[fileIndex].length == 1)
+            return getFile(fileIndex, 0);
         throw new RuntimeException();
     }
 
