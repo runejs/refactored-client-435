@@ -74,7 +74,8 @@ public class FloorDecoration {
                 }
 
             }
-            LinkedList.anIntArray1071 = new int[i_8_];
+
+            LinkedList.terrainDataIds = new int[i_8_];
             RSString.terrainData = new byte[i_8_][];
             Class13.anIntArray421 = new int[i_8_];
             GenericTile.objectData = new byte[i_8_][];
@@ -98,7 +99,7 @@ public class FloorDecoration {
                                 ISAAC.mapCoordinates[i_8_] = i_17_;
                                 int i_19_ = i_17_ & 0xff;
                                 int i_20_ = (0xffbe & i_17_) >> 8;
-                                LinkedList.anIntArray1071[i_8_] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.aClass1_1085+i_20_+ Native.aClass1_303+i_19_);
+                                LinkedList.terrainDataIds[i_8_] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.aClass1_1085+i_20_+ Native.aClass1_303+i_19_);
                                 Class13.anIntArray421[i_8_] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.aClass1_553+i_20_+ Native.aClass1_303+i_19_);
                                 i_8_++;
                             }
@@ -127,7 +128,7 @@ public class FloorDecoration {
             if((chunkX / 8 == 48 || chunkX / 8 == 49) && chunkY / 8 == 48) {
                 bool = true;
             }
-            LinkedList.anIntArray1071 = new int[i_25_];
+            LinkedList.terrainDataIds = new int[i_25_];
             if(chunkX / 8 == 48 && chunkY / 8 == 148) {
                 bool = true;
             }
@@ -138,7 +139,7 @@ public class FloorDecoration {
                     int i_30_ = i_29_ + (i_28_ << 8);
                     if(!bool || i_29_ != 49 && i_29_ != 149 && i_29_ != 147 && i_28_ != 50 && (i_28_ != 49 || i_29_ != 47)) {
                         ISAAC.mapCoordinates[i_25_] = i_30_;
-                        LinkedList.anIntArray1071[i_25_] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.aClass1_1085 + i_28_ + Native.aClass1_303 + i_29_);
+                        LinkedList.terrainDataIds[i_25_] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.aClass1_1085 + i_28_ + Native.aClass1_303 + i_29_);
                         Class13.anIntArray421[i_25_] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.aClass1_553 + i_28_ + Native.aClass1_303 + i_29_);
                         i_25_++;
                     }

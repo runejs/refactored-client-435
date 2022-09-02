@@ -187,7 +187,7 @@ public class ClientScriptRunner extends Node {
 
     public static void createClientScriptCheckPacket(int packetId, PacketBuffer buffer) {
         for(; ; ) {
-            ClientScriptRunner clientScriptRunner = (ClientScriptRunner) KeyFocusListener.aLinkedList_1278.method902((byte) -90);
+            ClientScriptRunner clientScriptRunner = (ClientScriptRunner) KeyFocusListener.aLinkedList_1278.peekFront((byte) -90);
             if(clientScriptRunner == null) {
                 break;
             }

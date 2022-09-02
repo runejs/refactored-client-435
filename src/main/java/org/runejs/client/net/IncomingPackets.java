@@ -462,7 +462,7 @@ public class IncomingPackets {
                         }
                     }
                 }
-                for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method902((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.method909(-4)) {
+                for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFront((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.next(-4)) {
                     if(class40_sub3.anInt2039 >= MovedStatics.placementX && MovedStatics.placementX + 8 > class40_sub3.anInt2039 && class40_sub3.anInt2038 >= OverlayDefinition.placementY && OverlayDefinition.placementY + 8 > class40_sub3.anInt2038 && Player.worldLevel == class40_sub3.anInt2018)
                         class40_sub3.anInt2031 = 0;
                 }
@@ -1284,7 +1284,7 @@ public class IncomingPackets {
                 if (i_32_ >= 0 && i_33_ >= 0 && i_32_ < 104 && i_33_ < 104) {
                     LinkedList linkedList = Wall.groundItems[Player.worldLevel][i_32_][i_33_];
                     if (linkedList != null) {
-                        for (Item item = (Item) linkedList.method902((byte) -90); item != null; item = (Item) linkedList.method909(-4)) {
+                        for (Item item = (Item) linkedList.peekFront((byte) -90); item != null; item = (Item) linkedList.next(-4)) {
                             if (item.itemId == (i_34_ & 0x7fff) && i_35_ == item.itemCount) {
                                 item.itemCount = i_36_;
                                 break;
@@ -1371,13 +1371,13 @@ public class IncomingPackets {
                     if (i_65_ >= 0 && i_66_ >= 0 && i_65_ < 104 && i_66_ < 104) {
                         LinkedList linkedList = Wall.groundItems[Player.worldLevel][i_65_][i_66_];
                         if (linkedList != null) {
-                            for (Item item = (Item) linkedList.method902((byte) -90); item != null; item = (Item) linkedList.method909(-4)) {
+                            for (Item item = (Item) linkedList.peekFront((byte) -90); item != null; item = (Item) linkedList.next(-4)) {
                                 if ((0x7fff & i_67_) == item.itemId) {
                                     item.remove();
                                     break;
                                 }
                             }
-                            if (linkedList.method902((byte) -90) == null)
+                            if (linkedList.peekFront((byte) -90) == null)
                                 Wall.groundItems[Player.worldLevel][i_65_][i_66_] = null;
                             FramemapDefinition.spawnGroundItem(i_66_, i_65_);
                         }

@@ -763,7 +763,7 @@ public class Scene {
     public void method106(SceneTile arg0, boolean arg1) {
         tileList.pushBack(arg0, -69);
         for (; ; ) {
-            SceneTile groundTile = (SceneTile) tileList.method913(25447);
+            SceneTile groundTile = (SceneTile) tileList.popFront(25447);
             if (groundTile == null) {
                 break;
             }

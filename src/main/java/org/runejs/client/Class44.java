@@ -123,7 +123,7 @@ public class Class44 implements Runnable {
             for(; ; ) {
                 Class40_Sub6 class40_sub6;
                 synchronized(RSCanvas.aLinkedList_53) {
-                    class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.method902((byte) -90);
+                    class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.peekFront((byte) -90);
                 }
                 if(class40_sub6 == null) {
                     Class43.threadSleep(100L);

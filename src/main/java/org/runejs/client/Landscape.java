@@ -43,8 +43,8 @@ public class Landscape {
         Class37.anInt874 = 0;
         boolean bool = true;
         for(int i = 0; i < RSString.terrainData.length; i++) {
-            if(LinkedList.anIntArray1071[i] != -1 && RSString.terrainData[i] == null) {
-                RSString.terrainData[i] = CacheArchive.gameWorldMapCacheArchive.getFile(LinkedList.anIntArray1071[i], 0);
+            if(LinkedList.terrainDataIds[i] != -1 && RSString.terrainData[i] == null) {
+                RSString.terrainData[i] = CacheArchive.gameWorldMapCacheArchive.getFile(LinkedList.terrainDataIds[i], 0);
                 if(RSString.terrainData[i] == null) {
                     Class37.anInt874++;
                     bool = false;
@@ -96,9 +96,9 @@ public class Landscape {
                         int offsetY = -Class26.baseY + (0xff & ISAAC.mapCoordinates[pointer]) * 64;
                         int offsetX = -MovedStatics.baseX + 64 * (ISAAC.mapCoordinates[pointer] >> 8);
                         byte[] is = RSString.terrainData[pointer];
-                        if(FileOperations.FileExists("./data/maps/" + LinkedList.anIntArray1071[pointer] + ".dat")) {
-                            System.out.println("reading file: " + "./data/maps/" + LinkedList.anIntArray1071[pointer] + ".dat");
-                            is = FileOperations.ReadFile("./data/maps/" + LinkedList.anIntArray1071[pointer] + ".dat");
+                        if(FileOperations.FileExists("./data/maps/" + LinkedList.terrainDataIds[pointer] + ".dat")) {
+                            System.out.println("reading file: " + "./data/maps/" + LinkedList.terrainDataIds[pointer] + ".dat");
+                            is = FileOperations.ReadFile("./data/maps/" + LinkedList.terrainDataIds[pointer] + ".dat");
                         }
                         if(is != null)
                             AnimationSequence.loadTerrainBlock(currentCollisionMap, (Class51.regionX - 6) * 8, is, -6, offsetX, offsetY, 8 * (-6 + Class17.regionY));

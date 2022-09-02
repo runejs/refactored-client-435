@@ -96,7 +96,7 @@ public class FramemapDefinition extends Node {
         else {
             int i = -99999999;
             Item item = null;
-            for(Item item_32_ = (Item) linkedList.method902((byte) -90); item_32_ != null; item_32_ = (Item) linkedList.method909(-4)) {
+            for(Item item_32_ = (Item) linkedList.peekFront((byte) -90); item_32_ != null; item_32_ = (Item) linkedList.next(-4)) {
                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(item_32_.itemId, 10);
                 int i_33_ = class40_sub5_sub16.cost;
                 if(class40_sub5_sub16.stackable == 1)
@@ -111,8 +111,8 @@ public class FramemapDefinition extends Node {
             else {
                 Item item_34_ = null;
                 Item item_35_ = null;
-                linkedList.method905(0, item);
-                for(Item item_36_ = (Item) linkedList.method902((byte) -90); item_36_ != null; item_36_ = (Item) linkedList.method909(-4)) {
+                linkedList.pushFront(0, item);
+                for(Item item_36_ = (Item) linkedList.peekFront((byte) -90); item_36_ != null; item_36_ = (Item) linkedList.next(-4)) {
                     if(item.itemId != item_36_.itemId) {
                         if(item_35_ == null)
                             item_35_ = item_36_;
