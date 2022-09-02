@@ -90,7 +90,7 @@ public class MovedStatics {
     public static int anInt199 = 0;
     public static volatile boolean aBoolean1575 = false;
     public static CacheArchive aCacheArchive_1577;
-    public static int[] anIntArray1579;
+    public static int[] blendedHueMultiplier_maybe;
     public static int anInt1586 = -1;
     public static boolean reportMutePlayer = false;
     public static int anInt1607 = 10;
@@ -297,7 +297,7 @@ public class MovedStatics {
         for (int i_0_ = arg0; i_0_ <= arg0 + arg2; i_0_++) {
             for (int i_1_ = arg4; arg3 + arg4 >= i_1_; i_1_++) {
                 if (i_1_ >= 0 && i_1_ < 104 && i_0_ >= 0 && i_0_ < 104) {
-                    InteractiveObject.aByteArrayArrayArray492[0][i_1_][i_0_] = (byte) 127;
+                    InteractiveObject.tileShadowIntensity_maybe[0][i_1_][i_0_] = (byte) 127;
                     if (arg4 == i_1_ && i_1_ > 0)
                         tile_height[0][i_1_][i_0_] = tile_height[0][-1 + i_1_][i_0_];
                     if (arg4 + arg3 == i_1_ && i_1_ < 103)
@@ -493,18 +493,18 @@ public class MovedStatics {
     }
 
     public static void method973() {
-        anIntArray1579 = null;
-        SceneTile.anIntArray2048 = null;
-        FloorDecoration.anIntArray612 = null;
+        blendedHueMultiplier_maybe = null;
+        SceneTile.blendedLightness_maybe = null;
+        FloorDecoration.blendDirectionTracker_maybe = null;
         anIntArrayArrayArray262 = null;
-        AnimationSequence.anIntArrayArray2490 = null;
+        AnimationSequence.tileLightIntensity_maybe = null;
         Class35.tile_overlay_rotation = null;
-        Class59.anIntArray1398 = null;
-        InteractiveObject.aByteArrayArrayArray492 = null;
+        Class59.blendedSaturation_maybe = null;
+        InteractiveObject.tileShadowIntensity_maybe = null;
         OverlayDefinition.tile_underlay_path = null;
         MouseHandler.tile_overlayids = null;
         tile_underlayids = null;
-        Class40_Sub5_Sub17_Sub6.anIntArray3250 = null;
+        Class40_Sub5_Sub17_Sub6.blendedHue_maybe = null;
     }
 
     public static void printException(String arg0, Throwable exception) {
@@ -772,25 +772,28 @@ public class MovedStatics {
         }
     }
 
-    public static int method420(int arg0, int arg1, boolean arg2) {
-        if (arg0 == -2)
+    public static int mixLightnessSigned(int hsl, int lightness, boolean junk) {
+        if (hsl == -2)
             return 12345678;
-        if (arg0 == -1) {
-            if (arg1 < 0)
-                arg1 = 0;
-            else if (arg1 > 127)
-                arg1 = 127;
-            arg1 = -arg1 + 127;
-            return arg1;
+            
+        if (hsl == -1) {
+            if (lightness < 0)
+                lightness = 0;
+            else if (lightness > 127)
+                lightness = 127;
+            lightness = -lightness + 127;
+            return lightness;
         }
-        if (!arg2)
+
+        if (!junk)
             calculateDataLoaded(-124, -88);
-        arg1 = arg1 * (arg0 & 0x7f) / 128;
-        if (arg1 < 2)
-            arg1 = 2;
-        else if (arg1 > 126)
-            arg1 = 126;
-        return (0xff80 & arg0) + arg1;
+
+        lightness = lightness * (hsl & 0x7f) / 128;
+        if (lightness < 2)
+            lightness = 2;
+        else if (lightness > 126)
+            lightness = 126;
+        return (0xff80 & hsl) + lightness;
     }
 
     public static void addFriend(long name) {
@@ -1768,20 +1771,20 @@ public class MovedStatics {
 	            int varPlayerValue = VarPlayerDefinition.varPlayers[varPlayerIndex];
 	            if(varPlayerType == 1) {
 	                if(varPlayerValue == 1) {
-	                    Rasterizer3D.method711(0.9);
-	                    ((Class35) Rasterizer3D.anInterface3_2939).method424(0.9);
+	                    Rasterizer3D.createPalette(0.9);
+	                    ((Class35) Rasterizer3D.anInterface3_2939).setBrightness(0.9);
 	                }
 	                if(varPlayerValue == 2) {
-	                    Rasterizer3D.method711(0.8);
-	                    ((Class35) Rasterizer3D.anInterface3_2939).method424(0.8);
+	                    Rasterizer3D.createPalette(0.8);
+	                    ((Class35) Rasterizer3D.anInterface3_2939).setBrightness(0.8);
 	                }
 	                if(varPlayerValue == 3) {
-	                    Rasterizer3D.method711(0.7);
-	                    ((Class35) Rasterizer3D.anInterface3_2939).method424(0.7);
+	                    Rasterizer3D.createPalette(0.7);
+	                    ((Class35) Rasterizer3D.anInterface3_2939).setBrightness(0.7);
 	                }
 	                if(varPlayerValue == 4) {
-	                    Rasterizer3D.method711(0.6);
-	                    ((Class35) Rasterizer3D.anInterface3_2939).method424(0.6);
+	                    Rasterizer3D.createPalette(0.6);
+	                    ((Class35) Rasterizer3D.anInterface3_2939).setBrightness(0.6);
 	                }
 	                GameObject.clearImageCache();
 	                clearScreen = true;

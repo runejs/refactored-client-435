@@ -128,7 +128,7 @@ public class EntryTable extends Node {
                 }
             }
             for(int i_19_ = 0; i_19_ < is_13_.length; i_19_++)
-                is_13_[i_19_] = Rasterizer3D.method707(is_13_[i_19_], arg0);
+                is_13_[i_19_] = Rasterizer3D.adjustBrightness(is_13_[i_19_], arg0);
             int i_20_;
             if(i_12_ == 0)
                 i_20_ = 0;

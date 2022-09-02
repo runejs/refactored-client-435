@@ -259,7 +259,7 @@ public class Class40_Sub3 extends Node {
             if (CacheArchive.gameTextureCacheArchive.method185((byte) 62)) {
                 Class35 class35 = new Class35(CacheArchive.gameTextureCacheArchive, CacheArchive.gameImageCacheArchive, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
                 Rasterizer3D.method703(class35);
-                Rasterizer3D.method711(0.8);
+                Rasterizer3D.createPalette(0.8);
                 MovedStatics.loadingPercent = 110;
                 MovedStatics.anInt1607 = 90;
                 Native.currentLoadingText = English.loadedTextures;

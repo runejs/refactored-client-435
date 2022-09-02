@@ -15,7 +15,7 @@ public class Class35 implements Interface3 {
     public EntryTable[] aClass40_Sub10Array1740;
     public int anInt1748;
     public CacheArchive aCacheArchive_1749;
-    public double aDouble1750 = 1.0;
+    public double brightness = 1.0;
     public int anInt1752;
     public int anInt1753;
 
@@ -24,7 +24,7 @@ public class Class35 implements Interface3 {
         anInt1753 = 0;
         anInt1752 = arg2;
         aCacheArchive_1749 = arg1;
-        aDouble1750 = arg3;
+        brightness = arg3;
         anInt1748 = arg4;
         anInt1753 = anInt1752;
         int[] is = arg0.method192(0, true);
@@ -84,7 +84,7 @@ public class Class35 implements Interface3 {
                 class40_sub10.aBoolean2146 = true;
                 return class40_sub10.anIntArray2139;
             }
-            boolean bool = class40_sub10.method869(aDouble1750, anInt1748, aCacheArchive_1749);
+            boolean bool = class40_sub10.method869(brightness, anInt1748, aCacheArchive_1749);
             if(bool) {
                 if(anInt1753 == 0) {
                     EntryTable class40_sub10_3_ = (EntryTable) aLinkedList_1727.popLast((byte) 87);
@@ -113,8 +113,8 @@ public class Class35 implements Interface3 {
         return aClass40_Sub10Array1740[arg1].aBoolean2143;
     }
 
-    public void method424(double arg1) {
-        aDouble1750 = arg1;
+    public void setBrightness(double brightness) {
+        this.brightness = brightness;
         method422();
     }
 

@@ -18,7 +18,7 @@ public class AnimationSequence extends CachedNode {
     public static int anInt2480 = 0;
     public static ImageRGB minimapCompass;
     public static CacheArchive aCacheArchive_2484;
-    public static int[][] anIntArrayArray2490;
+    public static int[][] tileLightIntensity_maybe;
 
     public int[] frameLengths;
     public int precedenceAnimating = -1;
