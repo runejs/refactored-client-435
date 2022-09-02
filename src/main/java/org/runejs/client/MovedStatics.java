@@ -102,7 +102,7 @@ public class MovedStatics {
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array215;
     public static NodeCache modelCache = new NodeCache(260);
     public static boolean showChatPanelRedrawnText = false;
-    public static int[][][] anIntArrayArrayArray262;
+    public static int[][][] tileCullingBitsets;
     public static int lastContinueTextWidgetId = -1;
     public static GameSocket gameServerSocket;
     public static int[][][] tile_height = new int[4][105][105];
@@ -292,20 +292,20 @@ public class MovedStatics {
 
     }
 
-    public static void initiateVertexHeights(int arg0, byte arg1, int arg2, int arg3, int arg4) {
+    public static void initiateVertexHeights(int offsetY, byte arg1, int sizeY, int sizeX, int offsetX) {
         int i = -112 / ((50 - arg1) / 53);
-        for (int i_0_ = arg0; i_0_ <= arg0 + arg2; i_0_++) {
-            for (int i_1_ = arg4; arg3 + arg4 >= i_1_; i_1_++) {
-                if (i_1_ >= 0 && i_1_ < 104 && i_0_ >= 0 && i_0_ < 104) {
-                    InteractiveObject.tileShadowIntensity_maybe[0][i_1_][i_0_] = (byte) 127;
-                    if (arg4 == i_1_ && i_1_ > 0)
-                        tile_height[0][i_1_][i_0_] = tile_height[0][-1 + i_1_][i_0_];
-                    if (arg4 + arg3 == i_1_ && i_1_ < 103)
-                        tile_height[0][i_1_][i_0_] = tile_height[0][i_1_ + 1][i_0_];
-                    if (i_0_ == arg0 && i_0_ > 0)
-                        tile_height[0][i_1_][i_0_] = tile_height[0][i_1_][i_0_ + -1];
-                    if (i_0_ == arg0 + arg2 && i_0_ < 103)
-                        tile_height[0][i_1_][i_0_] = tile_height[0][i_1_][1 + i_0_];
+        for (int y = offsetY; y <= offsetY + sizeY; y++) {
+            for (int x = offsetX; sizeX + offsetX >= x; x++) {
+                if (x >= 0 && x < 104 && y >= 0 && y < 104) {
+                    InteractiveObject.tileShadowIntensity_maybe[0][x][y] = (byte) 127;
+                    if (offsetX == x && x > 0)
+                        tile_height[0][x][y] = tile_height[0][-1 + x][y];
+                    if (offsetX + sizeX == x && x < 103)
+                        tile_height[0][x][y] = tile_height[0][x + 1][y];
+                    if (y == offsetY && y > 0)
+                        tile_height[0][x][y] = tile_height[0][x][y + -1];
+                    if (y == offsetY + sizeY && y < 103)
+                        tile_height[0][x][y] = tile_height[0][x][1 + y];
                 }
             }
         }
@@ -458,18 +458,18 @@ public class MovedStatics {
         }
     }
 
-    public static int method160(int arg0, int arg1, int arg2, int arg3) {
-        int i = arg0 & -1 + arg2;
-        int i_0_ = arg3 / arg2;
-        int i_1_ = arg2 - 1 & arg3;
-        int i_2_ = arg0 / arg2;
-        int i_3_ = CollisionMap.method157(arg1 + -15177, i_2_, i_0_);
-        int i_4_ = CollisionMap.method157(arg1 ^ arg1, 1 + i_2_, i_0_);
-        int i_5_ = CollisionMap.method157(0, i_2_, 1 + i_0_);
-        int i_6_ = CollisionMap.method157(0, 1 + i_2_, 1 + i_0_);
-        int i_7_ = GameShell.method32(i_3_, arg2, i_4_, true, i);
-        int i_8_ = GameShell.method32(i_5_, arg2, i_6_, true, i);
-        return GameShell.method32(i_7_, arg2, i_8_, true, i_1_);
+    public static int perlinNoise(int x, int y, int scale) {
+        int muX = x & -1 + scale;
+        int scaledY = y / scale;
+        int muY = scale - 1 & y;
+        int scaledX = x / scale;
+        int a = CollisionMap.randomNoiseWeightedSum(scaledX, scaledY);
+        int b = CollisionMap.randomNoiseWeightedSum(1 + scaledX, scaledY);
+        int c = CollisionMap.randomNoiseWeightedSum(scaledX, 1 + scaledY);
+        int d = CollisionMap.randomNoiseWeightedSum(1 + scaledX, 1 + scaledY);
+        int i1 = GameShell.interpolate(a, scale, b, true, muX);
+        int i2 = GameShell.interpolate(c, scale, d, true, muX);
+        return GameShell.interpolate(i1, scale, i2, true, muY);
     }
 
     public static int calculateCrc8(int offset, int size, byte[] data) {
@@ -496,7 +496,7 @@ public class MovedStatics {
         blendedHueMultiplier_maybe = null;
         SceneTile.blendedLightness_maybe = null;
         FloorDecoration.blendDirectionTracker_maybe = null;
-        anIntArrayArrayArray262 = null;
+        tileCullingBitsets = null;
         AnimationSequence.tileLightIntensity_maybe = null;
         Class35.tile_overlay_rotation = null;
         Class59.blendedSaturation_maybe = null;
@@ -1083,8 +1083,8 @@ public class MovedStatics {
         }
     }
 
-    public static int method884(int arg0, int arg1) {
-        int i = 57 * arg1 + arg0;
+    public static int randomNoise(int x, int y) {
+        int i = 57 * y + x;
         i ^= i << 13;
         int i_2_ = 1376312589 + (i * i * 15731 + 789221) * i & 0x7fffffff;
         return i_2_ >> 19 & 0xff;
@@ -1097,17 +1097,20 @@ public class MovedStatics {
         ItemDefinition.count = Class26.aCacheArchive_632.fileLength(10);
     }
 
-    public static int method888(int arg0, byte arg1, int arg2) {
-        int i = -128 + method160(arg0 + 45365, 15177, 4, 91923 + arg2) - (-(method160(arg0 + 10294, 15177, 2, 37821 + arg2) - 128 >> 1) + -(-128 + method160(arg0, 15177, 1, arg2) >> 2));
-        i = 35 + (int) (0.3 * (double) i);
-        if(arg1 != -45)
+    public static int method888(int x, byte junk, int y) {
+        int vertexHeight = -128 + perlinNoise(x + 45365, 91923 + y, 4) - (-(perlinNoise(x + 10294, 37821 + y, 2) - 128 >> 1) + -(-128 + perlinNoise(x, y, 1) >> 2));
+        vertexHeight = 35 + (int) (0.3 * (double) vertexHeight);
+
+        if(junk != -45)
             return -24;
-        if(i >= 10) {
-            if(i > 60)
-                i = 60;
+
+        if(vertexHeight >= 10) {
+            if(vertexHeight > 60)
+                vertexHeight = 60;
         } else
-            i = 10;
-        return i;
+            vertexHeight = 10;
+
+        return vertexHeight;
     }
 
     public static ProducingGraphicsBuffer createGraphicsBuffer(int width, int height, Component component) {
@@ -1176,48 +1179,50 @@ public class MovedStatics {
 	    return ActorDefinition.method578();
 	}
 
-	public static void method922(int arg0, int arg1, Buffer arg2, int arg4, int arg5, int arg6, int arg7) {
-	    if(arg0 >= 0 && arg0 < 104 && arg4 >= 0 && arg4 < 104) {
-	        OverlayDefinition.tile_flags[arg7][arg0][arg4] = (byte) 0;
+	public static void method922(int x, int arg1, Buffer fileData, int y, int regionY, int regionX, int level) {
+	    if(x >= 0 && x < 104 && y >= 0 && y < 104) {
+	        OverlayDefinition.tile_flags[level][x][y] = (byte) 0;
 	        for(; ; ) {
-	            int i = arg2.getUnsignedByte();
-	            if(i == 0) {
-	                if(arg7 == 0)
-	                    tile_height[0][arg0][arg4] = -method888(arg6 + arg0 + 932731, (byte) -45, arg5 + 556238 + arg4) * 8;
-	                else
-	                    tile_height[arg7][arg0][arg4] = -240 + tile_height[arg7 + -1][arg0][arg4];
+	            int opcode = fileData.getUnsignedByte();
+	            if(opcode == 0) {
+	                if(level == 0) {
+                        tile_height[0][x][y] = -method888(regionX + x + 932731, (byte) -45, regionY + 556238 + y) * 8;
+                    } else {
+                        tile_height[level][x][y] = -240 + tile_height[level + -1][x][y];
+                    }
+
 	                break;
 	            }
-	            if(i == 1) {
-	                int i_0_ = arg2.getUnsignedByte();
-	                if(i_0_ == 1)
-	                    i_0_ = 0;
-	                if(arg7 != 0)
-	                    tile_height[arg7][arg0][arg4] = tile_height[-1 + arg7][arg0][arg4] + -(8 * i_0_);
+	            if(opcode == 1) {
+	                int tileHeight = fileData.getUnsignedByte();
+	                if(tileHeight == 1)
+	                    tileHeight = 0;
+	                if(level != 0)
+	                    tile_height[level][x][y] = tile_height[-1 + level][x][y] + -(8 * tileHeight);
 	                else
-	                    tile_height[0][arg0][arg4] = 8 * -i_0_;
+	                    tile_height[0][x][y] = 8 * -tileHeight;
 	                break;
 	            }
-	            if(i <= 49) {
-	                MouseHandler.tile_overlayids[arg7][arg0][arg4] = arg2.getByte();
-	                OverlayDefinition.tile_underlay_path[arg7][arg0][arg4] = (byte) ((i + -2) / 4);
-	                Class35.tile_overlay_rotation[arg7][arg0][arg4] = (byte) BitUtils.bitWiseAND(arg1 + -2 + i, 3);
-	            } else if(i <= 81)
-	                OverlayDefinition.tile_flags[arg7][arg0][arg4] = (byte) (-49 + i);
+	            if(opcode <= 49) {
+	                MouseHandler.tile_overlayids[level][x][y] = fileData.getByte();
+	                OverlayDefinition.tile_underlay_path[level][x][y] = (byte) ((opcode + -2) / 4);
+	                Class35.tile_overlay_rotation[level][x][y] = (byte) BitUtils.bitWiseAND(arg1 + -2 + opcode, 3);
+	            } else if(opcode <= 81)
+	                OverlayDefinition.tile_flags[level][x][y] = (byte) (-49 + opcode);
 	            else
-	                tile_underlayids[arg7][arg0][arg4] = (byte) (-81 + i);
+	                tile_underlayids[level][x][y] = (byte) (-81 + opcode);
 	        }
 	    } else {
 	        for(; ; ) {
-	            int i = arg2.getUnsignedByte();
+	            int i = fileData.getUnsignedByte();
 	            if(i == 0)
 	                break;
 	            if(i == 1) {
-	                arg2.getUnsignedByte();
+	                fileData.getUnsignedByte();
 	                break;
 	            }
 	            if(i <= 49)
-	                arg2.getUnsignedByte();
+	                fileData.getUnsignedByte();
 	        }
 	    }
 	}

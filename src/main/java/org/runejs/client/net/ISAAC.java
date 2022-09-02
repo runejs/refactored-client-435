@@ -48,16 +48,16 @@ public class ISAAC {
         init(true);
     }
 
-    public static void drawMapTiles(Scene scene, CollisionMap[] collisionMaps) {
-        for(int i = 0; i < 4; i++) {
-            for(int i_0_ = 0; i_0_ < 104; i_0_++) {
-                for(int i_1_ = 0; i_1_ < 104; i_1_++) {
-                    if((0x1 & OverlayDefinition.tile_flags[i][i_0_][i_1_]) == 1) {
-                        int i_2_ = i;
-                        if((0x2 & OverlayDefinition.tile_flags[1][i_0_][i_1_]) == 2)
-                            i_2_--;
-                        if(i_2_ >= 0)
-                            collisionMaps[i_2_].markBlocked(i_1_, i_0_);
+    public static void createRegion(Scene scene, CollisionMap[] collisionMaps) {
+        for(int plane = 0; plane < 4; plane++) {
+            for(int x = 0; x < 104; x++) {
+                for(int y = 0; y < 104; y++) {
+                    if((0x1 & OverlayDefinition.tile_flags[plane][x][y]) == 1) {
+                        int markingPlane = plane;
+                        if((0x2 & OverlayDefinition.tile_flags[1][x][y]) == 2)
+                            markingPlane--;
+                        if(markingPlane >= 0)
+                            collisionMaps[markingPlane].markBlocked(y, x);
                     }
                 }
             }
@@ -184,7 +184,7 @@ public class ISAAC {
                                     if(overlayId > 0 && !OverlayDefinition.getDefinition(-1 + overlayId, 4).hideOverlay)
                                         hideUnderlay = false;
                                     if(hideUnderlay && vertexHeightSW == vertexHeightSE && vertexHeightNE == vertexHeightSW && vertexHeightSW == vertexHeightNW)
-                                        MovedStatics.anIntArrayArrayArray262[_plane][x][y] = BitUtils.bitWiseOR(MovedStatics.anIntArrayArrayArray262[_plane][x][y], 0x924);
+                                        MovedStatics.tileCullingBitsets[_plane][x][y] = BitUtils.bitWiseOR(MovedStatics.tileCullingBitsets[_plane][x][y], 0x924);
                                 }
                                 int underlayMinimapColour = 0;
                                 if(hslBitsetRandomised != -1)
@@ -252,126 +252,127 @@ public class ISAAC {
                     scene.method92(i, i_58_);
             }
         }
-        int i = 1;
+        int renderRule1 = 1;
         int i_59_ = 2;
         int i_60_ = 4;
-        for(int i_61_ = 0; i_61_ < 4; i_61_++) {
-            if(i_61_ > 0) {
-                i <<= 3;
+        for(int plane = 0; plane < 4; plane++) {
+            if(plane > 0) {
+                renderRule1 <<= 3;
                 i_60_ <<= 3;
                 i_59_ <<= 3;
             }
-            for(int i_62_ = 0; i_62_ <= i_61_; i_62_++) {
-                for(int i_63_ = 0; i_63_ <= 104; i_63_++) {
-                    for(int i_64_ = 0; i_64_ <= 104; i_64_++) {
-                        if((MovedStatics.anIntArrayArrayArray262[i_62_][i_64_][i_63_] & i) != 0) {
+            for(int _plane = 0; _plane <= plane; _plane++) {
+                for(int y = 0; y <= 104; y++) {
+                    for(int x = 0; x <= 104; x++) {
+                        if((MovedStatics.tileCullingBitsets[_plane][x][y] & renderRule1) != 0) {
                             int i_65_;
-                            for(i_65_ = i_63_; i_65_ > 0 && (i & MovedStatics.anIntArrayArrayArray262[i_62_][i_64_][-1 + i_65_]) != 0; i_65_--) {
+                            for(i_65_ = y; i_65_ > 0 && (renderRule1 & MovedStatics.tileCullingBitsets[_plane][x][-1 + i_65_]) != 0; i_65_--) {
                                 /* empty */
                             }
                             int i_66_;
-                            for(i_66_ = i_63_; i_66_ < 104 && (MovedStatics.anIntArrayArrayArray262[i_62_][i_64_][i_66_ + 1] & i) != 0; i_66_++) {
+                            for(i_66_ = y; i_66_ < 104 && (MovedStatics.tileCullingBitsets[_plane][x][i_66_ + 1] & renderRule1) != 0; i_66_++) {
                                 /* empty */
                             }
-                            int i_67_ = i_62_;
-                            int i_68_ = i_62_;
+                            int i_67_ = _plane;
+                            int i_68_ = _plane;
                             while_4_:
                             for(/**/; i_67_ > 0; i_67_--) {
                                 for(int i_69_ = i_65_; i_69_ <= i_66_; i_69_++) {
-                                    if((MovedStatics.anIntArrayArrayArray262[-1 + i_67_][i_64_][i_69_] & i) == 0)
+                                    if((MovedStatics.tileCullingBitsets[-1 + i_67_][x][i_69_] & renderRule1) == 0)
                                         break while_4_;
                                 }
                             }
                             while_5_:
-                            for(/**/; i_68_ < i_61_; i_68_++) {
+                            for(/**/; i_68_ < plane; i_68_++) {
                                 for(int i_70_ = i_65_; i_70_ <= i_66_; i_70_++) {
-                                    if((i & MovedStatics.anIntArrayArrayArray262[i_68_ + 1][i_64_][i_70_]) == 0)
+                                    if((renderRule1 & MovedStatics.tileCullingBitsets[i_68_ + 1][x][i_70_]) == 0)
                                         break while_5_;
                                 }
                             }
                             int i_71_ = (-i_65_ + i_66_ + 1) * (-i_67_ + i_68_ + 1);
                             if(i_71_ >= 8) {
                                 int i_72_ = 240;
-                                int i_73_ = -i_72_ + MovedStatics.tile_height[i_68_][i_64_][i_65_];
-                                int i_74_ = MovedStatics.tile_height[i_67_][i_64_][i_65_];
-                                Scene.method116(i_61_, 1, 128 * i_64_, 128 * i_64_, 128 * i_65_, 128 + 128 * i_66_, i_73_, i_74_);
+                                int i_73_ = -i_72_ + MovedStatics.tile_height[i_68_][x][i_65_];
+                                int i_74_ = MovedStatics.tile_height[i_67_][x][i_65_];
+                                Scene.method116(plane, 1, 128 * x, 128 * x, 128 * i_65_, 128 + 128 * i_66_, i_73_, i_74_);
                                 for(int i_75_ = i_67_; i_75_ <= i_68_; i_75_++) {
                                     for(int i_76_ = i_65_; i_76_ <= i_66_; i_76_++)
-                                        MovedStatics.anIntArrayArrayArray262[i_75_][i_64_][i_76_] = BitUtils.bitWiseAND(MovedStatics.anIntArrayArrayArray262[i_75_][i_64_][i_76_], i ^ 0xffffffff);
+                                        MovedStatics.tileCullingBitsets[i_75_][x][i_76_] = BitUtils.bitWiseAND(MovedStatics.tileCullingBitsets[i_75_][x][i_76_], renderRule1 ^ 0xffffffff);
                                 }
                             }
                         }
-                        if((i_59_ & MovedStatics.anIntArrayArrayArray262[i_62_][i_64_][i_63_]) != 0) {
-                            int i_77_;
-                            for(i_77_ = i_64_; i_77_ > 0 && (i_59_ & MovedStatics.anIntArrayArrayArray262[i_62_][i_77_ - 1][i_63_]) != 0; i_77_--) {
+                        if((i_59_ & MovedStatics.tileCullingBitsets[_plane][x][y]) != 0) {
+                            int lowestOcclusionX;
+                            for(lowestOcclusionX = x; lowestOcclusionX > 0 && (i_59_ & MovedStatics.tileCullingBitsets[_plane][lowestOcclusionX - 1][y]) != 0; lowestOcclusionX--) {
                                 /* empty */
                             }
-                            int i_78_ = i_62_;
-                            int i_79_ = i_64_;
-                            int i_80_ = i_62_;
-                            for(/**/; i_79_ < 104; i_79_++) {
-                                if((i_59_ & MovedStatics.anIntArrayArrayArray262[i_62_][1 + i_79_][i_63_]) == 0)
+                            int highestOcclusionPlane = _plane;
+                            int highestOcclusionX = x;
+                            int lowestOcclusionPlane = _plane;
+                            for(/**/; highestOcclusionX < 104; highestOcclusionX++) {
+                                if((i_59_ & MovedStatics.tileCullingBitsets[_plane][1 + highestOcclusionX][y]) == 0)
                                     break;
                             }
                             while_6_:
-                            for(/**/; i_80_ > 0; i_80_--) {
-                                for(int i_81_ = i_77_; i_81_ <= i_79_; i_81_++) {
-                                    if((MovedStatics.anIntArrayArrayArray262[i_80_ + -1][i_81_][i_63_] & i_59_) == 0)
+                            for(/**/; lowestOcclusionPlane > 0; lowestOcclusionPlane--) {
+                                for(int i_81_ = lowestOcclusionX; i_81_ <= highestOcclusionX; i_81_++) {
+                                    if((MovedStatics.tileCullingBitsets[lowestOcclusionPlane + -1][i_81_][y] & i_59_) == 0)
                                         break while_6_;
                                 }
                             }
                             while_7_:
-                            for(/**/; i_78_ < i_61_; i_78_++) {
-                                for(int i_82_ = i_77_; i_82_ <= i_79_; i_82_++) {
-                                    if((i_59_ & MovedStatics.anIntArrayArrayArray262[1 + i_78_][i_82_][i_63_]) == 0)
+                            for(/**/; highestOcclusionPlane < plane; highestOcclusionPlane++) {
+                                for(int i_82_ = lowestOcclusionX; i_82_ <= highestOcclusionX; i_82_++) {
+                                    if((i_59_ & MovedStatics.tileCullingBitsets[1 + highestOcclusionPlane][i_82_][y]) == 0)
                                         break while_7_;
                                 }
                             }
-                            int i_83_ = (i_79_ - i_77_ + 1) * (-i_80_ + 1 + i_78_);
-                            if(i_83_ >= 8) {
-                                int i_84_ = MovedStatics.tile_height[i_80_][i_77_][i_63_];
-                                int i_85_ = 240;
-                                int i_86_ = MovedStatics.tile_height[i_78_][i_77_][i_63_] - i_85_;
-                                Scene.method116(i_61_, 2, 128 * i_77_, 128 * i_79_ + 128, 128 * i_63_, i_63_ * 128, i_86_, i_84_);
-                                for(int i_87_ = i_80_; i_78_ >= i_87_; i_87_++) {
-                                    for(int i_88_ = i_77_; i_88_ <= i_79_; i_88_++)
-                                        MovedStatics.anIntArrayArrayArray262[i_87_][i_88_][i_63_] = BitUtils.bitWiseAND(MovedStatics.anIntArrayArrayArray262[i_87_][i_88_][i_63_], i_59_ ^ 0xffffffff);
+
+                            int occlusionSurface = (highestOcclusionX - lowestOcclusionX + 1) * (-lowestOcclusionPlane + 1 + highestOcclusionPlane);
+                            if(occlusionSurface >= 8) {
+                                int lowestOcclusionVertexHeight = MovedStatics.tile_height[lowestOcclusionPlane][lowestOcclusionX][y];
+                                int highestOcclusionVertexHeightOffset = 240;
+                                int highestOcclusionVertexHeight = MovedStatics.tile_height[highestOcclusionPlane][lowestOcclusionX][y] - highestOcclusionVertexHeightOffset;
+                                Scene.method116(plane, 2, 128 * lowestOcclusionX, 128 * highestOcclusionX + 128, 128 * y, y * 128, highestOcclusionVertexHeight, lowestOcclusionVertexHeight);
+                                for(int occludedPlane = lowestOcclusionPlane; highestOcclusionPlane >= occludedPlane; occludedPlane++) {
+                                    for(int occludedX = lowestOcclusionX; occludedX <= highestOcclusionX; occludedX++)
+                                        MovedStatics.tileCullingBitsets[occludedPlane][occludedX][y] = BitUtils.bitWiseAND(MovedStatics.tileCullingBitsets[occludedPlane][occludedX][y], i_59_ ^ 0xffffffff);
                                 }
                             }
                         }
-                        if((MovedStatics.anIntArrayArrayArray262[i_62_][i_64_][i_63_] & i_60_) != 0) {
-                            int i_89_ = i_64_;
-                            int i_90_ = i_64_;
-                            int i_91_ = i_63_;
-                            int i_92_ = i_63_;
+                        if((MovedStatics.tileCullingBitsets[_plane][x][y] & i_60_) != 0) {
+                            int i_89_ = x;
+                            int i_90_ = x;
+                            int i_91_ = y;
+                            int i_92_ = y;
                             for(/**/; i_91_ > 0; i_91_--) {
-                                if((MovedStatics.anIntArrayArrayArray262[i_62_][i_64_][-1 + i_91_] & i_60_) == 0)
+                                if((MovedStatics.tileCullingBitsets[_plane][x][-1 + i_91_] & i_60_) == 0)
                                     break;
                             }
                             for(/**/; i_92_ < 104; i_92_++) {
-                                if((i_60_ & MovedStatics.anIntArrayArrayArray262[i_62_][i_64_][i_92_ + 1]) == 0)
+                                if((i_60_ & MovedStatics.tileCullingBitsets[_plane][x][i_92_ + 1]) == 0)
                                     break;
                             }
                             while_8_:
                             for(/**/; i_89_ > 0; i_89_--) {
                                 for(int i_93_ = i_91_; i_93_ <= i_92_; i_93_++) {
-                                    if((i_60_ & MovedStatics.anIntArrayArrayArray262[i_62_][i_89_ + -1][i_93_]) == 0)
+                                    if((i_60_ & MovedStatics.tileCullingBitsets[_plane][i_89_ + -1][i_93_]) == 0)
                                         break while_8_;
                                 }
                             }
                             while_9_:
                             for(/**/; i_90_ < 104; i_90_++) {
                                 for(int i_94_ = i_91_; i_92_ >= i_94_; i_94_++) {
-                                    if((i_60_ & MovedStatics.anIntArrayArrayArray262[i_62_][1 + i_90_][i_94_]) == 0)
+                                    if((i_60_ & MovedStatics.tileCullingBitsets[_plane][1 + i_90_][i_94_]) == 0)
                                         break while_9_;
                                 }
                             }
                             if((-i_89_ + i_90_ + 1) * (1 + i_92_ - i_91_) >= 4) {
-                                int i_95_ = MovedStatics.tile_height[i_62_][i_89_][i_91_];
-                                Scene.method116(i_61_, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_, i_92_ * 128 + 128, i_95_, i_95_);
+                                int i_95_ = MovedStatics.tile_height[_plane][i_89_][i_91_];
+                                Scene.method116(plane, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_, i_92_ * 128 + 128, i_95_, i_95_);
                                 for(int i_96_ = i_89_; i_96_ <= i_90_; i_96_++) {
                                     for(int i_97_ = i_91_; i_92_ >= i_97_; i_97_++)
-                                        MovedStatics.anIntArrayArrayArray262[i_62_][i_96_][i_97_] = BitUtils.bitWiseAND(MovedStatics.anIntArrayArrayArray262[i_62_][i_96_][i_97_], i_60_ ^ 0xffffffff);
+                                        MovedStatics.tileCullingBitsets[_plane][i_96_][i_97_] = BitUtils.bitWiseAND(MovedStatics.tileCullingBitsets[_plane][i_96_][i_97_], i_60_ ^ 0xffffffff);
                                 }
                             }
                         }

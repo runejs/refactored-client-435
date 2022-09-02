@@ -264,23 +264,23 @@ public abstract class Actor extends Renderable {
 
 
 
-    public static void method789(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        if(arg3 != Class51.regionX || arg2 != Class17.regionY || MovedStatics.onBuildTimePlane != arg5 && VertexNormal.lowMemory) {
-            MovedStatics.onBuildTimePlane = arg5;
-            Class51.regionX = arg3;
+    public static void method789(int chunkLocalX, int junk, int chunkY, int chunkX, int chunkLocalY, int level) {
+        if(chunkX != Class51.regionX || chunkY != Class17.regionY || MovedStatics.onBuildTimePlane != level && VertexNormal.lowMemory) {
+            MovedStatics.onBuildTimePlane = level;
+            Class51.regionX = chunkX;
             if(!VertexNormal.lowMemory)
                 MovedStatics.onBuildTimePlane = 0;
-            Class17.regionY = arg2;
+            Class17.regionY = chunkY;
             MovedStatics.processGameStatus(25);
             Class51.method940(0, English.loadingPleaseWait, false, null);
             int i = Class26.baseY;
             int i_33_ = MovedStatics.baseX;
-            MovedStatics.baseX = (arg3 - 6) * 8;
+            MovedStatics.baseX = (chunkX - 6) * 8;
             int i_34_ = MovedStatics.baseX + -i_33_;
-            if(arg1 != -1000)
+            if(junk != -1000)
                 method781(14, 98, 96, -85, -118, 89);
             i_33_ = MovedStatics.baseX;
-            Class26.baseY = (-6 + arg2) * 8;
+            Class26.baseY = (-6 + chunkY) * 8;
             int i_35_ = Class26.baseY + -i;
             i = Class26.baseY;
             for(int i_36_ = 0; i_36_ < 32768; i_36_++) {
@@ -305,9 +305,9 @@ public abstract class Actor extends Renderable {
                     class40_sub5_sub17_sub4_sub1.worldX -= 128 * i_34_;
                 }
             }
-            Player.worldLevel = arg5;
+            Player.worldLevel = level;
             int i_40_ = 0;
-            Player.localPlayer.method787(arg4, -7717, false, arg0);
+            Player.localPlayer.method787(chunkLocalY, -7717, false, chunkLocalX);
             int i_41_ = 104;
             int i_42_ = 1;
             if(i_34_ < 0) {

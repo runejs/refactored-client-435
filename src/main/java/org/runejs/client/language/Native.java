@@ -31,7 +31,7 @@ public class Native {
     public static String cmd_fpsoff = "::fpsoff";
     public static String aClass1_1918 = null;
     public static String lineBreak = "\\n";
-    public static String aClass1_303 = "_";
+    public static String MAP_NAME_UNDERSCORE = "_";
     public static RSString supportedCharacters = RSString.CreateString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y-_=)0[*U]*W;:(W@(S*X,<.>)4?*6*V ");
     public static String aClass1_1921 = "b12_full";
     public static String aClass1_1395 = "backbase1";
@@ -46,7 +46,7 @@ public class Native {
     public static String headiconsPrayer ="headicons_prayer";
     public static String aClass1_2114 = "hitmarks";
     public static String aClass1_638 = "invback";
-    public static String aClass1_553 = "l";
+    public static String MAP_NAME_PREFIX_L = "l";
     public static String aClass1_183 = "mapdots";
     public static String aClass1_1427 = "mapedge";
     public static String aClass1_203 = "mapmarker";
@@ -82,7 +82,7 @@ public class Native {
     public static String reportedName = "";
     public static String aClass1_1563 = "";
     public static String percentTwo = "%2";
-    public static String aClass1_1085 = "m";
+    public static String MAP_NAME_PREFIX_M = "m";
     public static String comma = ",";
     public static String percentFive = "%5";
     public static String aClass1_2093 = "redstone1";

@@ -9,7 +9,7 @@ import org.runejs.client.node.Class40_Sub6;
 import org.runejs.client.scene.util.CollisionMap;
 
 public class Class44 implements Runnable {
-    public static int[][] anIntArrayArray1030;
+    public static int[][] xteaKeys;
     public static int modewhat = 0;
     public static byte[][] aByteArrayArray1039 = new byte[250][];
     public static int modewhere = 0;

@@ -24,7 +24,7 @@ public class Class65 {
     public static void method1020() {
         Class59.blendedSaturation_maybe = new int[104];
         OverlayDefinition.tile_underlay_path = new byte[4][104][104];
-        MovedStatics.anIntArrayArrayArray262 = new int[4][105][105];
+        MovedStatics.tileCullingBitsets = new int[4][105][105];
         MovedStatics.lowestPlane = 99;
         InteractiveObject.tileShadowIntensity_maybe = new byte[4][105][105];
         FloorDecoration.blendDirectionTracker_maybe = new int[104];

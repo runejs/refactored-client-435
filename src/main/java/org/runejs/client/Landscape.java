@@ -50,8 +50,8 @@ public class Landscape {
                     bool = false;
                 }
             }
-            if(Class13.anIntArray421[i] != -1 && GenericTile.objectData[i] == null) {
-                GenericTile.objectData[i] = CacheArchive.gameWorldMapCacheArchive.method176(Class13.anIntArray421[i], 0, Class44.anIntArrayArray1030[i]);
+            if(Class13.objectDataIds[i] != -1 && GenericTile.objectData[i] == null) {
+                GenericTile.objectData[i] = CacheArchive.gameWorldMapCacheArchive.method176(Class13.objectDataIds[i], 0, Class44.xteaKeys[i]);
                 if(GenericTile.objectData[i] == null) {
                     Class37.anInt874++;
                     bool = false;
@@ -115,14 +115,14 @@ public class Landscape {
                         //                        System.out.println("Requesting map: "+Class13.anIntArray421[i_12_]);
                         // load maps in here
                         byte[] data = GenericTile.objectData[region];
-                        if(FileOperations.FileExists("./data/maps/" + Class13.anIntArray421[region] + ".cmap")) {
-                            MapDecompressor.objectLoader("./data/maps/" + Class13.anIntArray421[region] + ".cmap");
-                        } else if(FileOperations.FileExists("./data/maps/" + Class13.anIntArray421[region] + ".dat")) {
-                            System.out.println("reading file: " + "./data/maps/" + Class13.anIntArray421[region] + ".dat");
-                            data = FileOperations.ReadFile("./data/maps/" + Class13.anIntArray421[region] + ".dat");
+                        if(FileOperations.FileExists("./data/maps/" + Class13.objectDataIds[region] + ".cmap")) {
+                            MapDecompressor.objectLoader("./data/maps/" + Class13.objectDataIds[region] + ".cmap");
+                        } else if(FileOperations.FileExists("./data/maps/" + Class13.objectDataIds[region] + ".dat")) {
+                            System.out.println("reading file: " + "./data/maps/" + Class13.objectDataIds[region] + ".dat");
+                            data = FileOperations.ReadFile("./data/maps/" + Class13.objectDataIds[region] + ".dat");
                         } else {
                             try {
-                                data = MapDecompressor.grabMap(Class13.anIntArray421[region]);
+                                data = MapDecompressor.grabMap(Class13.objectDataIds[region]);
                             } catch(IOException e) {
                             }
                         }
@@ -131,7 +131,7 @@ public class Landscape {
                             int offsetY = 64 * (0xff & ISAAC.mapCoordinates[region]) - Class26.baseY;
                             GameObject.loadObjectBlock(offsetX, Npc.currentScene, currentCollisionMap, data, offsetY);
                         } else {
-                            System.out.println("Missing map: " + Class13.anIntArray421[region]);
+                            System.out.println("Missing map: " + Class13.objectDataIds[region]);
                         }
                     }
                 }
@@ -191,7 +191,7 @@ public class Landscape {
                 }
                 Main.method364(true);
                 RSCanvas.clearCaches();
-                ISAAC.drawMapTiles(Npc.currentScene, currentCollisionMap);
+                ISAAC.createRegion(Npc.currentScene, currentCollisionMap);
                 Main.method364(true);
                 int z = MovedStatics.lowestPlane;
                 if(Player.worldLevel < z)
@@ -220,8 +220,8 @@ public class Landscape {
                     for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
                         for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {
                             if(i_42_ > i_46_ || i_46_ > i_45_ || i_47_ < i_43_ || i_47_ > i_44_) {
-                                CacheArchive.gameWorldMapCacheArchive.method195(0, Native.aClass1_1085+i_46_+ Native.aClass1_303+i_47_);
-                                CacheArchive.gameWorldMapCacheArchive.method195(0, Native.aClass1_553+i_46_+ Native.aClass1_303+i_47_);
+                                CacheArchive.gameWorldMapCacheArchive.method195(0, Native.MAP_NAME_PREFIX_M +i_46_+ Native.MAP_NAME_UNDERSCORE +i_47_);
+                                CacheArchive.gameWorldMapCacheArchive.method195(0, Native.MAP_NAME_PREFIX_L +i_46_+ Native.MAP_NAME_UNDERSCORE +i_47_);
                             }
                         }
                     }

@@ -16,7 +16,7 @@ public class Class13 {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_418;
     public static int anInt419 = 2;
     public static int mouseX = 0;
-    public static int[] anIntArray421;
+    public static int[] objectDataIds;
 
     public static void handleActorAnimation(Actor actor) {
         if(actor.worldX < 128 || actor.worldY < 128 || actor.worldX >= 13184 || actor.worldY >= 13184) {

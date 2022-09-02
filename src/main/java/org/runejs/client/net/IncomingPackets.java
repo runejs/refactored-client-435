@@ -157,7 +157,7 @@ public class IncomingPackets {
                 return true;
             }
             if(opcode == 23) {
-                FloorDecoration.constructMapRegion(true, 5688);
+                FloorDecoration.constructMapRegion(true);
                 opcode = -1;
                 return true;
             }
@@ -1096,7 +1096,7 @@ public class IncomingPackets {
                 return true;
             }
             if(opcode == PacketType.SET_MAP_CHUNK.getOpcode()) {
-                FloorDecoration.constructMapRegion(false, 5688);
+                FloorDecoration.constructMapRegion(false);
                 opcode = -1;
                 return true;
             }
@@ -1233,16 +1233,16 @@ public class IncomingPackets {
                 }
             }
         } else if (opcode == 241) { // set landscape object
-            int i = incomingPacketBuffer.getUnsignedByte();
-            int i_12_ = i & 0x3;
-            int i_13_ = i >> 2;
-            int i_14_ = Npc.anIntArray3304[i_13_];
+            int data = incomingPacketBuffer.getUnsignedByte();
+            int orientation = data & 0x3;
+            int objectTypeIndex = data >> 2;
+            int objectType = Npc.anIntArray3304[objectTypeIndex];
             int objectId = incomingPacketBuffer.getUnsignedShortBE();
-            int i_16_ = incomingPacketBuffer.getUnsignedByte();
-            int i_17_ = (0x7 & i_16_) + OverlayDefinition.placementY;
-            int i_18_ = MovedStatics.placementX + ((i_16_ & 0x75) >> 4);
-            if (i_18_ >= 0 && i_17_ >= 0 && i_18_ < 104 && i_17_ < 104)
-                GameObjectDefinition.method609(objectId, i_18_, i_12_, -1, Player.worldLevel, i_17_, i_14_, i_13_, 0);
+            int positionOffset = incomingPacketBuffer.getUnsignedByte();
+            int x = (0x7 & positionOffset) + OverlayDefinition.placementY;
+            int y = MovedStatics.placementX + ((positionOffset & 0x75) >> 4);
+            if (y >= 0 && x >= 0 && y < 104 && x < 104)
+                GameObjectDefinition.method609(objectId, y, orientation, -1, Player.worldLevel, x, objectType, objectTypeIndex, 0);
         } else {
             if (opcode == 9) {
                 int offset = incomingPacketBuffer.getUnsignedByte();

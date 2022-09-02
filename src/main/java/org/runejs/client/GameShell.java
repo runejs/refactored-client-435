@@ -169,7 +169,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         }
     }
 
-    public static int method32(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
+    public static int interpolate(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
         if (!arg3)
             return -109;
         int i = 65536 + -Rasterizer3D.cosinetable[1024 * arg4 / arg1] >> 1;

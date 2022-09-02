@@ -1804,7 +1804,7 @@ public class Main extends GameShell {
                         MovedStatics.gameServerSocket.readDataToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
                         setConfigToDefaults();
                         Class51.regionX = -1;
-                        FloorDecoration.constructMapRegion(false, 5688);
+                        FloorDecoration.constructMapRegion(false);
                         IncomingPackets.opcode = -1;
                     }
                 } else {
