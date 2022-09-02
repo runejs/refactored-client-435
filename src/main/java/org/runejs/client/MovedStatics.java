@@ -1768,7 +1768,7 @@ public class MovedStatics {
 	public static int loadingPercent = 0;
 	public static int cameraY;
 
-	public static void method309(int varPlayerIndex) {
+	public static void handleVarPlayers(int varPlayerIndex) {
 	    do {
 	        AnimationSequence.anInt2480 = pulseCycle;
 	        SoundSystem.setObjectSounds();

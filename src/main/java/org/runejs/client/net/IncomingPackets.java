@@ -167,7 +167,7 @@ public class IncomingPackets {
                 Buffer.anIntArray1984[varPlayerIndex] = varPlayerValue;
                 if(VarPlayerDefinition.varPlayers[varPlayerIndex] != varPlayerValue) {
                     VarPlayerDefinition.varPlayers[varPlayerIndex] = varPlayerValue;
-                    MovedStatics.method309(varPlayerIndex);
+                    MovedStatics.handleVarPlayers(varPlayerIndex);
                     GameInterface.redrawTabArea = true;
                     if(ChatBox.dialogueId != -1)
                         ChatBox.redrawChatbox = true;
@@ -720,7 +720,7 @@ public class IncomingPackets {
                 Buffer.anIntArray1984[varPlayerIndex] = varPlayerValue;
                 if(varPlayerValue != VarPlayerDefinition.varPlayers[varPlayerIndex]) {
                     VarPlayerDefinition.varPlayers[varPlayerIndex] = varPlayerValue;
-                    MovedStatics.method309(varPlayerIndex); // TODO find out what this does
+                    MovedStatics.handleVarPlayers(varPlayerIndex);
                     if(ChatBox.dialogueId != -1)
                         ChatBox.redrawChatbox = true;
                     GameInterface.redrawTabArea = true;
@@ -1047,7 +1047,7 @@ public class IncomingPackets {
                 for(int varPlayerIndex = 0; varPlayerIndex < VarPlayerDefinition.varPlayers.length; varPlayerIndex++) {
                     if(Buffer.anIntArray1984[varPlayerIndex] != VarPlayerDefinition.varPlayers[varPlayerIndex]) {
                         VarPlayerDefinition.varPlayers[varPlayerIndex] = Buffer.anIntArray1984[varPlayerIndex];
-                        MovedStatics.method309(varPlayerIndex);
+                        MovedStatics.handleVarPlayers(varPlayerIndex);
                         GameInterface.redrawTabArea = true;
                     }
                 }
