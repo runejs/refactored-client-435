@@ -13,7 +13,7 @@ public class Rasterizer3D extends Rasterizer {
     public static boolean opaque = false;
     public static int center_x;
     public static int[] lineOffsets;
-    public static Interface3 anInterface3_2939;
+    public static Interface3 interface3;
     public static int[] shadowDecay = new int[512];
     public static int anInt2941;
     public static int anInt2942;
@@ -95,13 +95,13 @@ public class Rasterizer3D extends Rasterizer {
     }
 
     public static void drawTexturedTriangle(int y_a, int y_b, int y_c, int x_a, int x_b, int x_c, int grad_a, int grad_b, int grad_c, int Px, int Mx, int Nx, int Pz, int Mz, int Nz, int Py, int My, int Ny, int t_id) {
-        int[] texture = anInterface3_2939.getTexturePixels(56, t_id);
+        int[] texture = interface3.getTexturePixels(56, t_id);
         if(texture == null) {
-            int i = anInterface3_2939.method14(true, t_id);
+            int i = interface3.getAverageTextureColour(true, t_id);
             drawShadedTriangle(y_a, y_b, y_c, x_a, x_b, x_c, method709(i, grad_a), method709(i, grad_b), method709(i, grad_c));
         } else {
-            lowMemory = anInterface3_2939.method15(t_id, (byte) -90);
-            opaque = anInterface3_2939.method13((byte) -109, t_id);
+            lowMemory = interface3.method15(t_id, (byte) -90);
+            opaque = interface3.isTextureOpaque((byte) -109, t_id);
             Mx = Px - Mx;
             Mz = Pz - Mz;
             My = Py - My;
@@ -1008,7 +1008,7 @@ public class Rasterizer3D extends Rasterizer {
     }
 
     public static void method703(Interface3 arg0) {
-        anInterface3_2939 = arg0;
+        interface3 = arg0;
     }
 
 

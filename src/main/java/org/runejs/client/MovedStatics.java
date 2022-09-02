@@ -1772,19 +1772,19 @@ public class MovedStatics {
 	            if(varPlayerType == 1) {
 	                if(varPlayerValue == 1) {
 	                    Rasterizer3D.createPalette(0.9);
-	                    ((Class35) Rasterizer3D.anInterface3_2939).setBrightness(0.9);
+	                    ((Class35) Rasterizer3D.interface3).setBrightness(0.9);
 	                }
 	                if(varPlayerValue == 2) {
 	                    Rasterizer3D.createPalette(0.8);
-	                    ((Class35) Rasterizer3D.anInterface3_2939).setBrightness(0.8);
+	                    ((Class35) Rasterizer3D.interface3).setBrightness(0.8);
 	                }
 	                if(varPlayerValue == 3) {
 	                    Rasterizer3D.createPalette(0.7);
-	                    ((Class35) Rasterizer3D.anInterface3_2939).setBrightness(0.7);
+	                    ((Class35) Rasterizer3D.interface3).setBrightness(0.7);
 	                }
 	                if(varPlayerValue == 4) {
 	                    Rasterizer3D.createPalette(0.6);
-	                    ((Class35) Rasterizer3D.anInterface3_2939).setBrightness(0.6);
+	                    ((Class35) Rasterizer3D.interface3).setBrightness(0.6);
 	                }
 	                GameObject.clearImageCache();
 	                clearScreen = true;

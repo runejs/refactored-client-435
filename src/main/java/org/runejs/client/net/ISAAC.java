@@ -198,7 +198,7 @@ public class ISAAC {
                                     int overlayMinimapColour;
                                     if(textureId >= 0) {
                                         hslBitset = -1;
-                                        overlayMinimapColour = Rasterizer3D.anInterface3_2939.method14(true, textureId);
+                                        overlayMinimapColour = Rasterizer3D.interface3.getAverageTextureColour(true, textureId);
                                     } else if(overlayDefinition.color == 16711935) {
                                         hslBitset = -2;
                                         textureId = -1;

@@ -491,9 +491,9 @@ public class Scene {
         Arrays.fill(interactiveObjects, null);
     }
 
-    public void addTile(int plane, int x, int y, int shape, int clippingPathRotation, int textureId, int vertexHeightSW, int vertexHeightSE, int vertexHeightNE, int vertexHeightNW, int cA, int cB, int cD, int cC, int colourA, int colourB, int colourD, int colourC, int underlayRGB, int overlayRGB) {
+    public void addTile(int plane, int x, int y, int shape, int clippingPathRotation, int textureId, int vertexHeightSW, int vertexHeightSE, int vertexHeightNE, int vertexHeightNW, int overlayColourA, int overlayColourB, int overlayColourD, int overlayColourC, int underlayColourA, int underlayColourB, int underlayColourD, int underlayColourC, int underlayRGB, int overlayRGB) {
         if (shape == 0) {
-            GenericTile genericTile = new GenericTile(cA, cB, cC, cD, -1, underlayRGB, false);
+            GenericTile genericTile = new GenericTile(overlayColourA, overlayColourB, overlayColourC, overlayColourD, -1, underlayRGB, false);
             for (int _z = plane; _z >= 0; _z--) {
                 if (tileArray[_z][x][y] == null) {
                     tileArray[_z][x][y] = new SceneTile(_z, x, y);
@@ -501,7 +501,7 @@ public class Scene {
             }
             tileArray[plane][x][y].plainTile = genericTile;
         } else if (shape == 1) {
-            GenericTile genericTile = new GenericTile(colourA, colourB, colourC, colourD, textureId, overlayRGB, vertexHeightSW == vertexHeightSE && vertexHeightSW == vertexHeightNE && vertexHeightSW == vertexHeightNW);
+            GenericTile genericTile = new GenericTile(underlayColourA, underlayColourB, underlayColourC, underlayColourD, textureId, overlayRGB, vertexHeightSW == vertexHeightSE && vertexHeightSW == vertexHeightNE && vertexHeightSW == vertexHeightNW);
             for (int _z = plane; _z >= 0; _z--) {
                 if (tileArray[_z][x][y] == null) {
                     tileArray[_z][x][y] = new SceneTile(_z, x, y);
@@ -509,7 +509,7 @@ public class Scene {
             }
             tileArray[plane][x][y].plainTile = genericTile;
         } else {
-            ComplexTile complexTile = new ComplexTile(x, vertexHeightSW, vertexHeightSE, vertexHeightNW, vertexHeightNE, y, clippingPathRotation, textureId, shape, cA, colourA, cB, colourB, cD, colourD, cC, colourC, overlayRGB, underlayRGB);
+            ComplexTile complexTile = new ComplexTile(x, vertexHeightSW, vertexHeightSE, vertexHeightNW, vertexHeightNE, y, clippingPathRotation, textureId, shape, overlayColourA, underlayColourA, overlayColourB, underlayColourB, overlayColourD, underlayColourD, overlayColourC, underlayColourC, overlayRGB, underlayRGB);
             for (int _z = plane; _z >= 0; _z--) {
                 if (tileArray[_z][x][y] == null) {
                     tileArray[_z][x][y] = new SceneTile(_z, x, y);
@@ -1689,7 +1689,7 @@ public class Scene {
                     Rasterizer3D.drawShadedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, plainTile.colourD, plainTile.colourC, plainTile.colourB);
                 }
             } else if (lowMemory) {
-                int rgb = Rasterizer3D.anInterface3_2939.method14(true, plainTile.texture);
+                int rgb = Rasterizer3D.interface3.getAverageTextureColour(true, plainTile.texture);
                 Rasterizer3D.drawShadedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, method108(rgb, plainTile.colourD), method108(rgb, plainTile.colourC), method108(rgb, plainTile.colourB));
             } else if (plainTile.flat) {
                 Rasterizer3D.drawTexturedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, plainTile.colourD, plainTile.colourC, plainTile.colourB, xA, xB, xC, zA, zB, zD, yA, yB, yC, plainTile.texture);
@@ -1713,7 +1713,7 @@ public class Scene {
                     Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, plainTile.colourA, plainTile.colourB, plainTile.colourC);
                 }
             } else if (lowMemory) {
-                int i_209_ = Rasterizer3D.anInterface3_2939.method14(true, plainTile.texture);
+                int i_209_ = Rasterizer3D.interface3.getAverageTextureColour(true, plainTile.texture);
                 Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, method108(i_209_, plainTile.colourA), method108(i_209_, plainTile.colourB), method108(i_209_, plainTile.colourC));
             } else {
                 Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, plainTile.colourA, plainTile.colourB, plainTile.colourC, xA, xB, xC, zA, zB, zD, yA, yB, yC, plainTile.texture);
@@ -1926,7 +1926,7 @@ public class Scene {
                         Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, shapedTile.triangleHSLA[triangle], shapedTile.triangleHSLB[triangle], shapedTile.triangleHSLC[triangle]);
                     }
                 } else if (lowMemory) {
-                    int i_240_ = Rasterizer3D.anInterface3_2939.method14(true, shapedTile.triangleTexture[triangle]);
+                    int i_240_ = Rasterizer3D.interface3.getAverageTextureColour(true, shapedTile.triangleTexture[triangle]);
                     Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, method108(i_240_, shapedTile.triangleHSLA[triangle]), method108(i_240_, shapedTile.triangleHSLB[triangle]), method108(i_240_, shapedTile.triangleHSLC[triangle]));
                 } else if (shapedTile.flat) {
                     Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, shapedTile.triangleHSLA[triangle], shapedTile.triangleHSLB[triangle], shapedTile.triangleHSLC[triangle], ComplexTile.viewspaceX[0], ComplexTile.viewspaceX[1], ComplexTile.viewspaceX[3], ComplexTile.viewspaceY[0], ComplexTile.viewspaceY[1], ComplexTile.viewspaceY[3], ComplexTile.viewspaceZ[0], ComplexTile.viewspaceZ[1], ComplexTile.viewspaceZ[3], shapedTile.triangleTexture[triangle]);
