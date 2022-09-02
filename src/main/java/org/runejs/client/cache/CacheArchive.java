@@ -310,21 +310,21 @@ public class CacheArchive {
         return inMemoryCacheBuffer.length;
     }
 
-    public byte[] method176(int arg0, int arg1, int[] arg2) {
-        if(arg0 < 0 || arg0 >= inMemoryCacheBuffer.length || inMemoryCacheBuffer[arg0] == null || arg1 < 0 || arg1 >= inMemoryCacheBuffer[arg0].length)
+    public byte[] method176(int fileId, int childId, int[] arg2) {
+        if(fileId < 0 || fileId >= inMemoryCacheBuffer.length || inMemoryCacheBuffer[fileId] == null || childId < 0 || childId >= inMemoryCacheBuffer[fileId].length)
             return null;
-        if(inMemoryCacheBuffer[arg0][arg1] == null) {
-            boolean bool = method181(arg0, arg2);
+        if(inMemoryCacheBuffer[fileId][childId] == null) {
+            boolean bool = method181(fileId, arg2);
             if(!bool) {
-                method177(arg0);
-                bool = method181(arg0, arg2);
+                method177(fileId);
+                bool = method181(fileId, arg2);
                 if(!bool)
                     return null;
             }
         }
-        byte[] is = inMemoryCacheBuffer[arg0][arg1];
+        byte[] is = inMemoryCacheBuffer[fileId][childId];
         if(aBoolean220)
-            inMemoryCacheBuffer[arg0][arg1] = null;
+            inMemoryCacheBuffer[fileId][childId] = null;
         return is;
     }
 

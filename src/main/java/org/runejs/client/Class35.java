@@ -37,22 +37,22 @@ public class Class35 implements Interface3 {
 
     }
 
-    public static Class40_Sub5_Sub15 method421(CacheArchive arg0, byte arg1, int arg2, CacheArchive arg3, boolean arg4) {
+    public static Class40_Sub5_Sub15 method421(CacheArchive skeletonArchive, byte arg1, int arg2, CacheArchive skinArchive, boolean arg4) {
         if(arg1 < 40)
             return null;
         boolean bool = true;
-        int[] is = arg0.method192(arg2, true);
+        int[] is = skeletonArchive.method192(arg2, true);
         for(int i = 0; is.length > i; i++) {
-            byte[] is_0_ = arg0.method182(is[i], arg2);
+            byte[] is_0_ = skeletonArchive.method182(is[i], arg2);
             if(is_0_ == null)
                 bool = false;
             else {
                 int i_1_ = 0xff & is_0_[1] | (0xff & is_0_[0]) << 8;
                 byte[] is_2_;
                 if(arg4)
-                    is_2_ = arg3.method182(i_1_, 0);
+                    is_2_ = skinArchive.method182(i_1_, 0);
                 else
-                    is_2_ = arg3.method182(0, i_1_);
+                    is_2_ = skinArchive.method182(0, i_1_);
                 if(is_2_ == null)
                     bool = false;
             }
@@ -60,7 +60,7 @@ public class Class35 implements Interface3 {
         if(!bool)
             return null;
         try {
-            return new Class40_Sub5_Sub15(arg0, arg3, arg2, arg4);
+            return new Class40_Sub5_Sub15(skeletonArchive, skinArchive, arg2, arg4);
         } catch(Exception exception) {
             return null;
         }

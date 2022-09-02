@@ -8,7 +8,7 @@ import org.runejs.client.scene.SceneCluster;
 
 public class Class49 {
     public static volatile int anInt1147 = 0;
-    public static CacheArchive aCacheArchive_1150;
+    public static CacheArchive definitionCache;
     public static int anInt1154;
 
     public static void setCameraPosition(int pitch, int x, int z, int yaw, int y, int ___pitch, int arg6) {

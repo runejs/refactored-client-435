@@ -343,13 +343,13 @@ public class MovedStatics {
     public static void method233(boolean arg0) {
         OverlayDefinition.overlayDefinitionCache.clear();
         if (!arg0)
-            method236(null, null, null);
+            initializeAnimationCaches(null, null, null);
     }
 
-    public static void method236(CacheArchive arg1, CacheArchive arg2, CacheArchive arg3) {
-        ClientScriptRunner.aCacheArchive_2162 = arg1;
-        aCacheArchive_2364 = arg3;
-        AnimationSequence.aCacheArchive_2484 = arg2;
+    public static void initializeAnimationCaches(CacheArchive skinArchive, CacheArchive definitionArchive, CacheArchive skeletonArchive) {
+        ClientScriptRunner.aCacheArchive_2162 = skinArchive;
+        aCacheArchive_2364 = skeletonArchive;
+        AnimationSequence.aCacheArchive_2484 = definitionArchive;
     }
 
     public static int method368(byte arg0, boolean arg1, boolean arg2) {
@@ -1090,10 +1090,11 @@ public class MovedStatics {
         return i_2_ >> 19 & 0xff;
     }
 
-    public static void method885(CacheArchive arg0, boolean arg1, CacheArchive arg2) {
+
+    public static void initializeItemDefinitionCache(CacheArchive definitionCache, boolean arg1, CacheArchive arg2) {
         IdentityKit.membersServer = arg1;
         MovedStatics.aCacheArchive_284 = arg2;
-        Class26.aCacheArchive_632 = arg0;
+        Class26.aCacheArchive_632 = definitionCache;
         ItemDefinition.count = Class26.aCacheArchive_632.fileLength(10);
     }
 
