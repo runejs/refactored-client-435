@@ -63,7 +63,7 @@ public class PcmStreamMixer extends PcmStream {
         for(/**/; arg0 != this.head.last && ((PcmStreamMixerListener) arg0).anInt2133 <= arg1.anInt2133; arg0 = arg0.next) {
             /* empty */
         }
-        this.head.method911(-31793, arg0, arg1);
+        this.head.addBefore(-31793, arg0, arg1);
         this.anInt2876 = ((PcmStreamMixerListener) this.head.last.next).anInt2133;
     }
 

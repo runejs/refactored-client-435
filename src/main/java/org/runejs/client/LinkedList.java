@@ -159,14 +159,20 @@ public class LinkedList {
         return node;
     }
 
-    public void method911(int arg0, Node arg1, Node arg2) {
-        if(arg2.previous != null)
-            arg2.unlink();
-        if(arg0 == -31793) {
-            arg2.previous = arg1.previous;
-            arg2.next = arg1;
-            arg2.previous.next = arg2;
-            arg2.next.previous = arg2;
+    /**
+     * Inserts a node before another node
+     *
+     * @param insertingNode The node to insert
+     * @param existingNode The node before which `insertingNode` should be added
+     */
+    public void addBefore(int junk, Node existingNode, Node insertingNode) {
+        if(insertingNode.previous != null)
+            insertingNode.unlink();
+        if(junk == -31793) {
+            insertingNode.previous = existingNode.previous;
+            insertingNode.next = existingNode;
+            insertingNode.previous.next = insertingNode;
+            insertingNode.next.previous = insertingNode;
         }
     }
 
