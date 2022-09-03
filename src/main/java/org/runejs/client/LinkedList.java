@@ -20,17 +20,21 @@ public class LinkedList {
     public static volatile int anInt1073 = 0;
     public static int crossType = 0;
     public static int[] minimapHintY = new int[1000];
-    public Node tail = new Node();
-    public Node current;
+
+    /**
+     * The last element in the LinkedList
+     */
+    public Node last = new Node();
+
+    /**
+     * The first element in the LinkedList
+     */
+    public Node first;
 
     public LinkedList() {
-
-        tail.previous = tail;
-        tail.next = tail;
-
+        last.previous = last;
+        last.next = last;
     }
-
-
 
     public static String method903(int arg0, byte arg1) {
         if(arg1 >= -13)
@@ -66,86 +70,98 @@ public class LinkedList {
         }
     }
 
-    public Node popLast(byte arg0) {
-        Node node = tail.previous;
+    public Node removeLast(byte arg0) {
+        Node node = last.previous;
 
-        if(node == tail)
+        if(node == last)
             return null;
 
-        node.remove();
+        node.unlink();
         return node;
     }
 
     public Node peekLast(byte arg0) {
-        Node node = tail.previous;
+        Node node = last.previous;
 
-        if(node == tail) {
-            current = null;
+        if(node == last) {
+            first = null;
             return null;
         }
 
-        current = node.previous;
+        first = node.previous;
         return node;
     }
 
-    public Node peekFront(byte arg0) {
-        Node node = tail.next;
+    public Node peekFirst(byte arg0) {
+        Node node = last.next;
 
-        if(tail == node) {
-            current = null;
+        if(last == node) {
+            first = null;
             return null;
         }
 
-        current = node.next;
+        first = node.next;
         return node;
     }
 
-    public void pushBack(Node node, int arg1) {
+    /**
+     * Appends a node to the end of the LinkedList
+     */
+    public void addLast(Node node, int arg1) {
         if(node.previous != null)
-            node.remove();
+            node.unlink();
 
-        node.previous = tail.previous;
-        node.next = tail;
+        node.previous = last.previous;
+        node.next = last;
         node.previous.next = node;
         node.next.previous = node;
     }
 
-    public void pushFront(int arg0, Node node) {
+    /**
+     * Adds a node at the start of the LinkedList
+     */
+    public void addFirst(int arg0, Node node) {
         if(node.previous != null)
-            node.remove();
+            node.unlink();
 
-        node.previous = tail;
-        node.next = tail.next;
+        node.previous = last;
+        node.next = last.next;
         node.previous.next = node;
         node.next.previous = node;
     }
 
+    /**
+     * Removes all of the elements from this list. The list will be empty after this call returns.
+     */
     public void clear(int arg0) {
         while (true) {
-            Node next = tail.next;
+            Node next = last.next;
 
-            if(next == tail)
+            if(next == last)
                 return;
 
-            next.remove();
+            next.unlink();
         }
     }
 
-    public Node next(int arg0) {
-        Node node = current;
+    /**
+     * Retrieves and removes the first element of this list, or returns null if this list is empty.
+     */
+    public Node pollFirst(int arg0) {
+        Node node = first;
 
-        if(node == tail) {
-            current = null;
+        if(node == last) {
+            first = null;
             return null;
         }
 
-        current = node.next;
+        first = node.next;
         return node;
     }
 
     public void method911(int arg0, Node arg1, Node arg2) {
         if(arg2.previous != null)
-            arg2.remove();
+            arg2.unlink();
         if(arg0 == -31793) {
             arg2.previous = arg1.previous;
             arg2.next = arg1;
@@ -154,25 +170,31 @@ public class LinkedList {
         }
     }
 
-    public Node previous(int arg0) {
-        Node node = current;
+    /**
+     * Retrieves and removes the last element of this list, or returns null if this list is empty.
+     */
+    public Node pollLast(int arg0) {
+        Node node = first;
 
-        if(node == tail) {
-            current = null;
+        if(node == last) {
+            first = null;
             return null;
         }
 
-        current = node.previous;
+        first = node.previous;
         return node;
     }
 
-    public Node popFront(int arg0) {
-        Node next = tail.next;
+    /**
+     * Removes and returns the first element from this list.
+     */
+    public Node removeFirst(int arg0) {
+        Node next = last.next;
 
-        if(tail == next)
+        if(last == next)
             return null;
 
-        next.remove();
+        next.unlink();
         return next;
     }
 }

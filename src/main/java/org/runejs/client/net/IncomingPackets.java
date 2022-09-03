@@ -462,7 +462,7 @@ public class IncomingPackets {
                         }
                     }
                 }
-                for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFront((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.next(-4)) {
+                for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst(-4)) {
                     if(class40_sub3.anInt2039 >= MovedStatics.placementX && MovedStatics.placementX + 8 > class40_sub3.anInt2039 && class40_sub3.anInt2038 >= OverlayDefinition.placementY && OverlayDefinition.placementY + 8 > class40_sub3.anInt2038 && Player.worldLevel == class40_sub3.anInt2018)
                         class40_sub3.anInt2031 = 0;
                 }
@@ -1272,7 +1272,7 @@ public class IncomingPackets {
                     i_28_ = 128 * i_28_ + 64;
                     i_27_ = i_27_ * 128 + 64;
                     Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = new Class40_Sub5_Sub17_Sub6(i_29_, Player.worldLevel, i_27_, i_28_, -i_30_ + Class37.getFloorDrawHeight(Player.worldLevel, i_27_, i_28_), i_31_, MovedStatics.pulseCycle);
-                    Class57.aLinkedList_1332.pushBack(class40_sub5_sub17_sub6, -111);
+                    Class57.aLinkedList_1332.addLast(class40_sub5_sub17_sub6, -111);
                 }
             } else if (opcode == 99) {
                 int i = incomingPacketBuffer.getUnsignedByte();
@@ -1284,7 +1284,7 @@ public class IncomingPackets {
                 if (i_32_ >= 0 && i_33_ >= 0 && i_32_ < 104 && i_33_ < 104) {
                     LinkedList linkedList = Wall.groundItems[Player.worldLevel][i_32_][i_33_];
                     if (linkedList != null) {
-                        for (Item item = (Item) linkedList.peekFront((byte) -90); item != null; item = (Item) linkedList.next(-4)) {
+                        for (Item item = (Item) linkedList.peekFirst((byte) -90); item != null; item = (Item) linkedList.pollFirst(-4)) {
                             if (item.itemId == (i_34_ & 0x7fff) && i_35_ == item.itemCount) {
                                 item.itemCount = i_36_;
                                 break;
@@ -1371,13 +1371,13 @@ public class IncomingPackets {
                     if (i_65_ >= 0 && i_66_ >= 0 && i_65_ < 104 && i_66_ < 104) {
                         LinkedList linkedList = Wall.groundItems[Player.worldLevel][i_65_][i_66_];
                         if (linkedList != null) {
-                            for (Item item = (Item) linkedList.peekFront((byte) -90); item != null; item = (Item) linkedList.next(-4)) {
+                            for (Item item = (Item) linkedList.peekFirst((byte) -90); item != null; item = (Item) linkedList.pollFirst(-4)) {
                                 if ((0x7fff & i_67_) == item.itemId) {
-                                    item.remove();
+                                    item.unlink();
                                     break;
                                 }
                             }
-                            if (linkedList.peekFront((byte) -90) == null)
+                            if (linkedList.peekFirst((byte) -90) == null)
                                 Wall.groundItems[Player.worldLevel][i_65_][i_66_] = null;
                             FramemapDefinition.spawnGroundItem(i_66_, i_65_);
                         }
@@ -1403,7 +1403,7 @@ public class IncomingPackets {
                         Projectile projectile = new Projectile(graphicsId, Player.worldLevel, startX, startY, Class37.getFloorDrawHeight(Player.worldLevel, startX, startY) + -startHeight, delay + MovedStatics.pulseCycle, speed + MovedStatics.pulseCycle, startSlope, startDistance, entityIndex, endHeight);
                         endY = 128 * endY + 64;
                         projectile.trackTarget(delay + MovedStatics.pulseCycle, 0, endY, -endHeight + Class37.getFloorDrawHeight(Player.worldLevel, endX, endY), endX);
-                        Class43.projectileQueue.pushBack(projectile, -73);
+                        Class43.projectileQueue.addLast(projectile, -73);
                     }
                 } else {
                     if (opcode == 19) { // update world item amount
@@ -1419,7 +1419,7 @@ public class IncomingPackets {
                             item.itemCount = i;
                             if (Wall.groundItems[Player.worldLevel][i_83_][i_84_] == null)
                                 Wall.groundItems[Player.worldLevel][i_83_][i_84_] = new LinkedList();
-                            Wall.groundItems[Player.worldLevel][i_83_][i_84_].pushBack(item, 64);
+                            Wall.groundItems[Player.worldLevel][i_83_][i_84_].addLast(item, 64);
                             FramemapDefinition.spawnGroundItem(i_84_, i_83_);
                         }
                     } else if (opcode == 175) { // add world item
@@ -1434,7 +1434,7 @@ public class IncomingPackets {
                             item.itemId = i;
                             if (Wall.groundItems[Player.worldLevel][i_88_][i_87_] == null)
                                 Wall.groundItems[Player.worldLevel][i_88_][i_87_] = new LinkedList();
-                            Wall.groundItems[Player.worldLevel][i_88_][i_87_].pushBack(item, -118);
+                            Wall.groundItems[Player.worldLevel][i_88_][i_87_].addLast(item, -118);
                             FramemapDefinition.spawnGroundItem(i_87_, i_88_);
                         }
                     }

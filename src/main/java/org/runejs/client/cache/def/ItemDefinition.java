@@ -137,7 +137,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         }
         for(int scriptIndex = 0; gameInterface.alternateOperators.length > scriptIndex; scriptIndex++) {
             int i_10_ = ClientScript.parseClientScripts(scriptIndex, false, gameInterface);
-            int rhsValue = gameInterface.alternateRhs[scriptIndex];
+            int rhsValue = gameInterface.alternateRhs[scriptIndex]; // 1
             if(gameInterface.alternateOperators[scriptIndex] == 2) {
                 if(rhsValue <= i_10_) {
                     return false;
@@ -208,7 +208,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(backColour == 0) {
             ImageRGB sprite = (ImageRGB) Buffer.rgbImageCache.get((long) id);
             if(sprite != null && sprite.maxHeight != stackSize && sprite.maxHeight != -1) {
-                sprite.remove();
+                sprite.unlink();
                 sprite = null;
             }
             if(sprite != null)

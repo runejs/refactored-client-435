@@ -182,12 +182,12 @@ public class ClientScriptRunner extends Node {
             }
         }
 
-        KeyFocusListener.aLinkedList_1278.pushBack(clientScriptRunner, 92);
+        KeyFocusListener.aLinkedList_1278.addLast(clientScriptRunner, 92);
     }
 
     public static void createClientScriptCheckPacket(int packetId, PacketBuffer buffer) {
         for(; ; ) {
-            ClientScriptRunner clientScriptRunner = (ClientScriptRunner) KeyFocusListener.aLinkedList_1278.peekFront((byte) -90);
+            ClientScriptRunner clientScriptRunner = (ClientScriptRunner) KeyFocusListener.aLinkedList_1278.peekFirst((byte) -90);
             if(clientScriptRunner == null) {
                 break;
             }
@@ -294,7 +294,7 @@ public class ClientScriptRunner extends Node {
 
             buffer.putCrc8(bufferPos);
             buffer.finishVarByte(-bufferPos + buffer.currentPosition);
-            clientScriptRunner.remove();
+            clientScriptRunner.unlink();
         }
     }
 

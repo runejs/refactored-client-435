@@ -313,17 +313,17 @@ public class MovedStatics {
 
     public static void method1000(boolean arg0) {
         if (arg0) {
-            for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.peekFront((byte) -90); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.next(-4)) {
+            for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.peekFirst((byte) -90); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.pollFirst(-4)) {
                 if (Player.worldLevel == class40_sub5_sub17_sub6.anInt3239 && !class40_sub5_sub17_sub6.aBoolean3237) {
                     if (pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
                         class40_sub5_sub17_sub6.method834(8076, anInt199);
                         if (class40_sub5_sub17_sub6.aBoolean3237)
-                            class40_sub5_sub17_sub6.remove();
+                            class40_sub5_sub17_sub6.unlink();
                         else
                             Npc.currentScene.method134(class40_sub5_sub17_sub6.anInt3239, class40_sub5_sub17_sub6.anInt3244, class40_sub5_sub17_sub6.anInt3235, class40_sub5_sub17_sub6.anInt3231, 60, class40_sub5_sub17_sub6, 0, -1, false);
                     }
                 } else
-                    class40_sub5_sub17_sub6.remove();
+                    class40_sub5_sub17_sub6.unlink();
             }
         }
     }
@@ -429,9 +429,9 @@ public class MovedStatics {
     }
 
     public static void method335(byte arg0) {
-        Projectile projectile = (Projectile) Class43.projectileQueue.peekFront((byte) -90);
+        Projectile projectile = (Projectile) Class43.projectileQueue.peekFirst((byte) -90);
         if (arg0 == 61) {
-            for (/**/; projectile != null; projectile = (Projectile) Class43.projectileQueue.next(arg0 + -65)) {
+            for (/**/; projectile != null; projectile = (Projectile) Class43.projectileQueue.pollFirst(arg0 + -65)) {
                 if (Player.worldLevel == projectile.anInt2981 && pulseCycle <= projectile.endCycle) {
                     if (projectile.delay <= pulseCycle) {
                         if (projectile.entityIndex > 0) {
@@ -453,7 +453,7 @@ public class MovedStatics {
                         Npc.currentScene.method134(Player.worldLevel, (int) projectile.currentX, (int) projectile.currentY, (int) projectile.currentHeight, 60, projectile, projectile.anInt3013, -1, false);
                     }
                 } else
-                    projectile.remove();
+                    projectile.unlink();
             }
         }
     }
@@ -936,7 +936,7 @@ public class MovedStatics {
                 if (type == 3) {
                     LinkedList itemList = Wall.groundItems[Player.worldLevel][x][y];
                     if (itemList != null) {
-                        for (Item item = (Item) itemList.peekLast((byte) -95); item != null; item = (Item) itemList.previous(4)) {
+                        for (Item item = (Item) itemList.peekLast((byte) -95); item != null; item = (Item) itemList.pollLast(4)) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
                             if (MovedStatics.itemSelected == 1) {
                                 addActionRow(English.use, item.itemId, x, y, 47, Native.aClass1_3295 + Native.toLightRed + itemDefinition.name);
@@ -1131,13 +1131,13 @@ public class MovedStatics {
     }
 
     public static void method652() {
-        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFront((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.next(-4)) {
+        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst(-4)) {
             if(class40_sub3.anInt2031 > 0)
                 class40_sub3.anInt2031--;
             if(class40_sub3.anInt2031 == 0) {
                 if(class40_sub3.anInt2028 < 0 || method459(class40_sub3.anInt2036, class40_sub3.anInt2028, (byte) 103)) {
                     GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039, class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
-                    class40_sub3.remove();
+                    class40_sub3.unlink();
                 }
             } else {
                 if(class40_sub3.anInt2033 > 0)
@@ -1146,9 +1146,9 @@ public class MovedStatics {
                     GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
                     class40_sub3.anInt2033 = -1;
                     if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2028 == -1)
-                        class40_sub3.remove();
+                        class40_sub3.unlink();
                     else if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2025 == class40_sub3.anInt2035 && class40_sub3.anInt2030 == class40_sub3.anInt2036)
-                        class40_sub3.remove();
+                        class40_sub3.unlink();
                 }
             }
         }

@@ -34,7 +34,7 @@ public class PacketBuffer extends Buffer {
         synchronized(RSCanvas.aLinkedList_53) {
             if(arg3 != -28)
                 method521(false, -84, -120);
-            RSCanvas.aLinkedList_53.pushBack(class40_sub6, -72);
+            RSCanvas.aLinkedList_53.addLast(class40_sub6, -72);
         }
         MovedStatics.method332(600);
     }
