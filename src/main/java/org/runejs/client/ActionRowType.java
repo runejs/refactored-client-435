@@ -77,6 +77,32 @@ public enum ActionRowType {
     ITEM_ON_V1_WIDGET_INTERACTION_OPTION_4(48),
     ITEM_ON_V1_WIDGET_INTERACTION_OPTION_5(24),
     ITEM_ON_V2_WIDGET_INTERACTION_OPTION_3(31),
+
+    /**
+     * The first NPC interaction option
+     *
+     * observed values: [ 'Talk to' ]
+     */
+    NPC_INTERACTION_OPTION_1(12),
+    /**
+     * The second NPC interaction option
+     */
+    NPC_INTERACTION_OPTION_2(30),
+    /**
+     * The third NPC interaction option
+     *
+     * observed values: [ 'Trade' ]
+     */
+    NPC_INTERACTION_OPTION_3(4),
+    /**
+     * The fourth NPC interaction option
+     */
+    NPC_INTERACTION_OPTION_4(34),
+    /**
+     * The fifth NPC interaction option
+     */
+    NPC_INTERACTION_OPTION_5(20),
+
     /**
      * The "Cast" option on a spell inside a spell list
      */

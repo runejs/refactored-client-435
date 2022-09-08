@@ -844,7 +844,7 @@ public class GameInterface extends CachedNode {
                     SceneCluster.packetBuffer.putShortLE(i_10_ + Class26.baseY);
                     SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
                 }
-                if(action == 30) {
+                if(action == ActionRowType.NPC_INTERACTION_OPTION_2.getId()) {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
@@ -887,7 +887,7 @@ public class GameInterface extends CachedNode {
                     SceneCluster.packetBuffer.putIntME1(ISAAC.anInt525);
                     SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
                 }
-                if(action == 34) {
+                if(action == ActionRowType.NPC_INTERACTION_OPTION_4.getId()) {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
@@ -972,7 +972,7 @@ public class GameInterface extends CachedNode {
                             Projectile.atInventoryInterfaceType = 3;
                         }
                     }
-                    if(action == 12) {
+                    if(action == ActionRowType.NPC_INTERACTION_OPTION_1.getId()) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
@@ -1253,7 +1253,7 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortBE(Class26.baseY + i_10_);
                         SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
                     }
-                    if(action == 20) {
+                    if(action == ActionRowType.NPC_INTERACTION_OPTION_5.getId()) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
@@ -1298,7 +1298,7 @@ public class GameInterface extends CachedNode {
                             Projectile.atInventoryInterfaceType = 3;
                         }
                     }
-                    if(action == 4) {
+                    if(action == ActionRowType.NPC_INTERACTION_OPTION_3.getId()) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
