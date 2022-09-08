@@ -7,35 +7,20 @@ package org.runejs.client;
  * @author jameskmonger
  */
 public enum ActionRowType {
-    // 54 is click here to continue (what else?)
+    // 42
+    //     interface
 
-    // 9 and 40 are interface close
-    //      9 appears to be the longstanding chatbox dialogue close
-    //      40 is anything else
+    // 50
+    //     cs2 interface handling??
 
-    // 42 is some kind of tooltip. 
-    //          Sends packet 64 (button click) to server and does further processing
-
-    // 12 is NPC interaction
-    // 4 is also NPC interaction
+    // 40
+    //      some kind of close button
     
-    // 2 is ??
-    // 3 is pickup item (specific? or is it 1st item option)
-    // 44 is ??
-    // 16 is ??
-    // 17 is ??
-    // 20 is ??
-    // 50 is ??
-    // 32 is ?? (bit shifts the target by 14..)
-    
-    // 187 is ???? interacts with player in some way
-    // 39 is second option on player (what is this? follow?)
-    
-    // 8 interacts with worlditem (e.g. light logs)
-    // 54 is 'click to continue' on dialogue
-    // 36 is ??
+    // 9
+    //      some kind of close button
 
-    // 47 is item on world item
+    // 54
+    //      click to continue? (what else?)
 
     /**
      * Toggle the value of a varp.
@@ -65,6 +50,8 @@ public enum ActionRowType {
      */
     ITEM_ON_WIDGET_USE(19),
     MAGIC_ON_NPC(21),
+    MAGIC_ON_WORLD_ITEM(15),
+    MAGIC_ON_OBJECT(32),
     ITEM_ON_PLAYER(22),
     CHATBOX_ACCEPT_TRADE(26),
     CHATBOX_REPORT_ABUSE(28),

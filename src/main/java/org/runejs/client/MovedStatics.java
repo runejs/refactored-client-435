@@ -905,8 +905,7 @@ public class MovedStatics {
                         }
                         addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, ActionRowType.EXAMINE_OBJECT.getId(), examineText.toString());
                     } else if ((ItemDefinition.selectedMask & 0x4) == 4) {
-                        // TODO (jameskmonger) probably magic on object
-                        addActionRow(Native.selectedSpellVerb, hash, x, y, 32, Native.selectedSpellName + Native.toCyan + gameObjectDefinition.name);
+                        addActionRow(Native.selectedSpellVerb, hash, x, y, ActionRowType.MAGIC_ON_OBJECT.getId(), Native.selectedSpellName + Native.toCyan + gameObjectDefinition.name);
                     }
                 }
                 if (type == 1) {
@@ -975,8 +974,7 @@ public class MovedStatics {
                                 }
                                 addActionRow(English.examine, item.itemId, x, y, ActionRowType.EXAMINE_ITEM.getId(), Native.lightRed + itemDefinition.name);
                             } else if ((0x1 & ItemDefinition.selectedMask) == 1) {
-                                // TODO (jameskmonger) probably magic on world item
-                                addActionRow(Native.selectedSpellVerb, item.itemId, x, y, 15, Native.selectedSpellName + Native.toLightRed + itemDefinition.name);
+                                addActionRow(Native.selectedSpellVerb, item.itemId, x, y, ActionRowType.MAGIC_ON_WORLD_ITEM.getId(), Native.selectedSpellName + Native.toLightRed + itemDefinition.name);
                             }
                         }
                     }
@@ -1273,6 +1271,7 @@ public class MovedStatics {
                             // is this text vs not text? contentType is definitely 0 for text on music player
 	                        if(gameInterface.contentType != 0)
 	                            bool = ProducingGraphicsBuffer_Sub1.method1051(300, gameInterface);
+
 	                        if(!bool) {
 	                            addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 42, "");
 	                        }

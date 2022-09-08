@@ -763,7 +763,7 @@ public class GameInterface extends CachedNode {
                 }
                 redrawTabArea = true;
             } else {
-                if(action == 15) {
+                if(action == ActionRowType.MAGIC_ON_WORLD_ITEM.getId()) {
                     boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
                     if(!bool) {
                         bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
@@ -1100,7 +1100,7 @@ public class GameInterface extends CachedNode {
                         ChatBox.dialogueId = -1;
                         ChatBox.redrawChatbox = true;
                     }
-                    if(action == 32 && AnimationSequence.method596(i, npcIdx, (byte) -27, i_10_)) {
+                    if(action == ActionRowType.MAGIC_ON_OBJECT.getId() && AnimationSequence.method596(i, npcIdx, (byte) -27, i_10_)) {
                         SceneCluster.packetBuffer.putPacket(225);
                         SceneCluster.packetBuffer.putShortBE(npcIdx >> 14 & 0x7fff);
                         SceneCluster.packetBuffer.putShortLE(i_10_ + Class26.baseY);
