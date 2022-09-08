@@ -155,6 +155,33 @@ public enum ActionRowType {
      */
     OBJECT_INTERACTION_OPTION_5(1002),
 
+
+    /**
+     * Player uses an item on a world item
+     */
+    ITEM_USE_ON_WORLD_ITEM(47),
+
+    /**
+     * The first world item interaction option
+     */
+    WORLD_ITEM_INTERACTION_OPTION_1(2),
+    /**
+     * The second world item interaction option
+     */
+    WORLD_ITEM_INTERACTION_OPTION_2(38),
+    /**
+     * The third world item interaction option
+     */
+    WORLD_ITEM_INTERACTION_OPTION_3(3),
+    /**
+     * The fourth world item interaction option
+     */
+    WORLD_ITEM_INTERACTION_OPTION_4(8),
+    /**
+     * The fifth world item interaction option
+     */
+    WORLD_ITEM_INTERACTION_OPTION_5(36),
+
     /**
      * The "Cast" option on a spell inside a spell list
      */

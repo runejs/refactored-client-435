@@ -947,7 +947,7 @@ public class MovedStatics {
                         for (Item item = (Item) itemList.last((byte) -95); item != null; item = (Item) itemList.previous(4)) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
                             if (MovedStatics.itemSelected == 1) {
-                                addActionRow(English.use, item.itemId, x, y, 47, Native.selectedItemName + Native.toLightRed + itemDefinition.name);
+                                addActionRow(English.use, item.itemId, x, y, ActionRowType.ITEM_USE_ON_WORLD_ITEM.getId(), Native.selectedItemName + Native.toLightRed + itemDefinition.name);
                             } else if (Main.widgetSelected != 1) {
                                 String[] class1s = itemDefinition.groundOptions;
                                 if (Class60.DEBUG_DISPLAY_ALL_ACTION_ROWS)
@@ -955,25 +955,27 @@ public class MovedStatics {
                                 for (int i_15_ = 4; i_15_ >= 0; i_15_--) {
                                     if (class1s == null || class1s[i_15_] == null) {
                                         if (i_15_ == 2) {
+                                            // TODO (jameskmonger) this is the same id as WORLD_ITEM_INTERACTION_OPTION_3
                                             addActionRow(English.take, item.itemId, x, y, 3, Native.lightRed + itemDefinition.name);
                                         }
                                     } else {
-                                        int i_16_ = 0;
+                                        int actionType = 0;
                                         if (i_15_ == 0)
-                                            i_16_ = 2;
+                                            actionType = ActionRowType.WORLD_ITEM_INTERACTION_OPTION_1.getId();
                                         if (i_15_ == 1)
-                                            i_16_ = 38;
+                                            actionType = ActionRowType.WORLD_ITEM_INTERACTION_OPTION_2.getId();
                                         if (i_15_ == 2)
-                                            i_16_ = 3;
+                                            actionType = ActionRowType.WORLD_ITEM_INTERACTION_OPTION_3.getId();
                                         if (i_15_ == 3)
-                                            i_16_ = 8;
+                                            actionType = ActionRowType.WORLD_ITEM_INTERACTION_OPTION_4.getId();
                                         if (i_15_ == 4)
-                                            i_16_ = 36;
-                                        addActionRow(class1s[i_15_], item.itemId, x, y, i_16_, Native.lightRed +  itemDefinition.name);
+                                            actionType = ActionRowType.WORLD_ITEM_INTERACTION_OPTION_5.getId();
+                                        addActionRow(class1s[i_15_], item.itemId, x, y, actionType, Native.lightRed +  itemDefinition.name);
                                     }
                                 }
                                 addActionRow(English.examine, item.itemId, x, y, ActionRowType.EXAMINE_ITEM.getId(), Native.lightRed + itemDefinition.name);
                             } else if ((0x1 & ItemDefinition.selectedMask) == 1) {
+                                // TODO (jameskmonger) probably magic on world item
                                 addActionRow(Native.selectedSpellVerb, item.itemId, x, y, 15, Native.selectedSpellName + Native.toLightRed + itemDefinition.name);
                             }
                         }
