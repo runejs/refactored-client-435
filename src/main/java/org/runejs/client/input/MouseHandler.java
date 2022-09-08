@@ -108,7 +108,20 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         } else {
             if(meta == 1 && ActorDefinition.menuActionRow > 0) {
                 int action = MovedStatics.menuActionTypes[ActorDefinition.menuActionRow - 1];
-                if(action == 53 || action == 25 || action == 55 || action == 48 || action == 24 || action == 52 || action == 6 || action == 31 || action == 43 || action == 11 || action == 19 || action == ActionRowType.EXAMINE_ITEM_ON_WIDGET.getId()) {
+                if(
+                    action == 53
+                        || action == 25
+                        || action == 55
+                        || action == 48
+                        || action == 24
+                        || action == ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_1.getId()
+                        || action == ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_2.getId()
+                        || action == ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_3.getId()
+                        || action == ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_4.getId()
+                        || action == ActionRowType.DROP_ITEM.getId()
+                        || action == 19
+                        || action == ActionRowType.EXAMINE_ITEM_ON_WIDGET.getId()
+                ) {
                     int item = InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow - 1];
                     int id = Class59.secondMenuOperand[-1 + ActorDefinition.menuActionRow];
                     GameInterface gameInterface = GameInterface.getInterface(id);
