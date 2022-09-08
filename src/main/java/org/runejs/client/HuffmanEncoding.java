@@ -108,15 +108,15 @@ public class HuffmanEncoding {
                 actorDefinition = actorDefinition.getChildDefinition();
             }
             if (actorDefinition != null && actorDefinition.isClickable) {
-                String class1 = actorDefinition.name;
+                String npcDisplayName = actorDefinition.name;
                 if (actorDefinition.combatLevel != 0) {
-                    class1 = class1 + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthesis;
+                    npcDisplayName = npcDisplayName + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthesis;
                 }
                 if (MovedStatics.itemSelected == 1) {
-                    MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.ITEM_ON_NPC.getId(), Native.aClass1_3295 + Native.toYellow + class1);
+                    MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.ITEM_ON_NPC.getId(), Native.selectedItemName + Native.toYellow + npcDisplayName);
                 } else if (Main.widgetSelected == 1) {
                     if ((0x2 & ItemDefinition.selectedMask) == 2) {
-                        MovedStatics.addActionRow(Native.aClass1_1918, index, x, y, ActionRowType.MAGIC_ON_NPC.getId(), Native.aClass1_611 + Native.toYellow + class1);
+                        MovedStatics.addActionRow(Native.selectedSpellVerb, index, x, y, ActionRowType.MAGIC_ON_NPC.getId(), Native.selectedSpellName + Native.toYellow + npcDisplayName);
                     }
                 } else {
                     String[] options = actorDefinition.options;
@@ -144,7 +144,7 @@ public class HuffmanEncoding {
                                 if (i == 4) {
                                     actionType = ActionRowType.NPC_INTERACTION_OPTION_5.getId();
                                 }
-                                MovedStatics.addActionRow(options[i], index, x, y, actionType, Native.yellow + class1);
+                                MovedStatics.addActionRow(options[i], index, x, y, actionType, Native.yellow + npcDisplayName);
                             }
                         }
                     }
@@ -176,7 +176,7 @@ public class HuffmanEncoding {
                                 if (i == 4) {
                                     actionType = ActionRowType.NPC_INTERACTION_OPTION_5.getId() + actionTypeOffset;
                                 }
-                                MovedStatics.addActionRow(options[i], index, x, y, actionType, Native.yellow +class1);
+                                MovedStatics.addActionRow(options[i], index, x, y, actionType, Native.yellow +npcDisplayName);
                             }
                         }
                     }

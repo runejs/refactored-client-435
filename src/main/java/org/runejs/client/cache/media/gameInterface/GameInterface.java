@@ -756,10 +756,10 @@ public class GameInterface extends CachedNode {
                 LinkedList.selectedInventorySlot = i;
                 ISAAC.anInt525 = i_10_;
                 MovedStatics.itemSelected = 1;
-                Native.aClass1_3295 = Native.lightRed + ItemDefinition.forId(npcIdx, 10).name + Native.white;
+                Native.selectedItemName = Native.lightRed + ItemDefinition.forId(npcIdx, 10).name + Native.white;
                 Main.widgetSelected = 0;
-                if(Native.aClass1_3295 == null) {
-                    Native.aClass1_3295 = "null";
+                if(Native.selectedItemName == null) {
+                    Native.selectedItemName = "null";
                 }
                 redrawTabArea = true;
             } else {
@@ -922,11 +922,11 @@ public class GameInterface extends CachedNode {
                     GameInterface gameInterface = getInterface(i_10_);
                     redrawTabArea = true;
                     Main.widgetSelected = 1;
-                    Native.aClass1_1918 = gameInterface.targetVerb;
+                    Native.selectedSpellVerb = gameInterface.targetVerb;
                     ItemDefinition.selectedMask = gameInterface.clickMask;
                     MovedStatics.itemSelected = 0;
                     Class60.anInt1417 = i_10_;
-                    Native.aClass1_611 = Native.green + gameInterface.spellName + Native.white;
+                    Native.selectedSpellName = Native.green + gameInterface.spellName + Native.white;
                     if(ItemDefinition.selectedMask == 16) {
                         drawTabIcons = true;
                         Player.currentTabId = 3;

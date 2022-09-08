@@ -389,16 +389,16 @@ public class Player extends Actor {
 
     public static void processPlayerMenuOptions(Player player, int x, int y, int index) {
         if (localPlayer != player && ActorDefinition.menuActionRow < 400) {
-            String rsString;
+            String playerDisplayName;
             if (player.skillLevel == 0)
-                rsString = player.playerName + SceneTile.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + player.combatLevel + Native.rightParenthesis;
+                playerDisplayName = player.playerName + SceneTile.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + player.combatLevel + Native.rightParenthesis;
             else
-                rsString = player.playerName + Native.leftParenthesisWithSpacePrefix + English.prefixSkill + player.skillLevel + Native.rightParenthesis;
+                playerDisplayName = player.playerName + Native.leftParenthesisWithSpacePrefix + English.prefixSkill + player.skillLevel + Native.rightParenthesis;
             if (MovedStatics.itemSelected == 1) {
-                MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.ITEM_ON_PLAYER.getId(), Native.aClass1_3295 + Native.aClass1_3068 + rsString);
+                MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.ITEM_ON_PLAYER.getId(), Native.selectedItemName + Native.arrowActionOnOther + playerDisplayName);
             } else if (Main.widgetSelected == 1) {
                 if ((ItemDefinition.selectedMask & 0x8) == 8) {
-                    MovedStatics.addActionRow(Native.aClass1_1918, index, x, y, ActionRowType.MAGIC_ON_PLAYER.getId(), Native.aClass1_611 + Native.aClass1_3068 + rsString);
+                    MovedStatics.addActionRow(Native.selectedSpellVerb, index, x, y, ActionRowType.MAGIC_ON_PLAYER.getId(), Native.selectedSpellName + Native.arrowActionOnOther + playerDisplayName);
                 }
             } else {
                 for (int i = 4; i >= 0; i--) {
@@ -426,13 +426,13 @@ public class Player extends Actor {
                             i_16_ = i_17_ + 14;
                         if (i == 4)
                             i_16_ = 41 + i_17_;
-                        MovedStatics.addActionRow(Main.playerActions[i], index, x, y, i_16_, Native.white + rsString);
+                        MovedStatics.addActionRow(Main.playerActions[i], index, x, y, i_16_, Native.white + playerDisplayName);
                     }
                 }
             }
             for (int i = 0; i < ActorDefinition.menuActionRow; i++) {
                 if (MovedStatics.menuActionTypes[i] == 7) {
-                    Landscape.menuActionTexts[i] = English.walkHere + Native.whitespace + Native.white + rsString;
+                    Landscape.menuActionTexts[i] = English.walkHere + Native.whitespace + Native.white + playerDisplayName;
                     break;
                 }
             }

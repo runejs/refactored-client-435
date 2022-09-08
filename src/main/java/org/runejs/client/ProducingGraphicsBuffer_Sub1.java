@@ -39,10 +39,10 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
         return animationSequence;
     }
 
-    public static boolean method1051(int arg0, GameInterface arg1) {
+    public static boolean method1051(int arg0, GameInterface gameInterface) {
         if(arg0 != 300)
             return false;
-        int i = arg1.contentType;
+        int i = gameInterface.contentType;
         if(i >= 1 && i <= 200 || i >= 701 && i <= 900) {
             if(i >= 801)
                 i -= 701;
@@ -57,7 +57,7 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
             return true;
         }
         if(i >= 401 && i <= 500) {
-            MovedStatics.addActionRow(English.remove, 0, 0, 0, ActionRowType.REMOVE_IGNORE.getId(), Native.white + arg1.disabledText);
+            MovedStatics.addActionRow(English.remove, 0, 0, 0, ActionRowType.REMOVE_IGNORE.getId(), Native.white + gameInterface.disabledText);
             return true;
         }
         return false;

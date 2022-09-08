@@ -197,24 +197,25 @@ public class MovedStatics {
             for (int i_1_ = 0; i_1_ < 100; i_1_++) {
                 if (ChatBox.chatMessages[i_1_] != null) {
                     int i_2_ = ChatBox.chatTypes[i_1_];
-                    String class1 = ChatBox.chatPlayerNames[i_1_];
-                    if (class1 != null && class1.startsWith(Native.whiteCrown))
-                        class1 = class1.substring(5);
-                    if (class1 != null && class1.startsWith(Native.goldCrown))
-                        class1 = class1.substring(5);
-                    if ((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(class1))) {
+                    String username = ChatBox.chatPlayerNames[i_1_];
+                    if (username != null && username.startsWith(Native.whiteCrown))
+                        username = username.substring(5);
+                    if (username != null && username.startsWith(Native.goldCrown))
+                        username = username.substring(5);
+                    if ((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(username))) {
                         int i_3_ = 329 + -(13 * i);
                         i++;
                         if (Class13.mouseX > 4 && i_3_ + -10 < Landscape.mouseY + -4 && -4 + Landscape.mouseY <= i_3_ + 3) {
-                            int i_4_ = 25 + WallDecoration.fontNormal.getStringWidth(English.from + Native.prefixColon + class1 + ChatBox.chatMessages[i_1_]);
+                            int i_4_ = 25 + WallDecoration.fontNormal.getStringWidth(English.from + Native.prefixColon + username + ChatBox.chatMessages[i_1_]);
                             if (i_4_ > 450)
                                 i_4_ = 450;
                             if (Class13.mouseX < 4 + i_4_) {
+                                int actionRowOffset = 2000;
                                 if (InteractiveObject.playerRights >= 1) {
-                                    addActionRow(English.reportAbuse, 0, 0, 0, 2000 + ActionRowType.CHATBOX_REPORT_ABUSE.getId(), Native.white + class1);
+                                    addActionRow(English.reportAbuse, 0, 0, 0, actionRowOffset + ActionRowType.CHATBOX_REPORT_ABUSE.getId(), Native.white + username);
                                 }
-                                addActionRow(English.addIgnore, 0, 0, 0, 2000 + ActionRowType.CHATBOX_ADD_IGNORE.getId(), Native.white + class1);
-                                addActionRow(English.addFriend, 0, 0, 0, 2000 + ActionRowType.CHATBOX_ADD_FRIEND.getId(), Native.white + class1);
+                                addActionRow(English.addIgnore, 0, 0, 0, actionRowOffset + ActionRowType.CHATBOX_ADD_IGNORE.getId(), Native.white + username);
+                                addActionRow(English.addFriend, 0, 0, 0, actionRowOffset + ActionRowType.CHATBOX_ADD_FRIEND.getId(), Native.white + username);
                             }
                         }
                         if (i >= 5)
@@ -859,7 +860,7 @@ public class MovedStatics {
                     if (gameObjectDefinition == null)
                         continue;
                     if (MovedStatics.itemSelected == 1) {
-                        addActionRow(English.use, hash, x, y, 5, Native.aClass1_3295 + Native.toCyan + gameObjectDefinition.name);
+                        addActionRow(English.use, hash, x, y, 5, Native.selectedItemName + Native.toCyan + gameObjectDefinition.name);
                     } else if (Main.widgetSelected != 1) {
                         String[] options = gameObjectDefinition.actions;
                         if (Class60.DEBUG_DISPLAY_ALL_ACTION_ROWS)
@@ -904,7 +905,7 @@ public class MovedStatics {
                         }
                         addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, ActionRowType.EXAMINE_OBJECT.getId(), examineText.toString());
                     } else if ((ItemDefinition.selectedMask & 0x4) == 4) {
-                        addActionRow(Native.aClass1_1918, hash, x, y, 32, Native.aClass1_611 + Native.toCyan + gameObjectDefinition.name);
+                        addActionRow(Native.selectedSpellVerb, hash, x, y, 32, Native.selectedSpellName + Native.toCyan + gameObjectDefinition.name);
                     }
                 }
                 if (type == 1) {
@@ -945,7 +946,7 @@ public class MovedStatics {
                         for (Item item = (Item) itemList.last((byte) -95); item != null; item = (Item) itemList.previous(4)) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
                             if (MovedStatics.itemSelected == 1) {
-                                addActionRow(English.use, item.itemId, x, y, 47, Native.aClass1_3295 + Native.toLightRed + itemDefinition.name);
+                                addActionRow(English.use, item.itemId, x, y, 47, Native.selectedItemName + Native.toLightRed + itemDefinition.name);
                             } else if (Main.widgetSelected != 1) {
                                 String[] class1s = itemDefinition.groundOptions;
                                 if (Class60.DEBUG_DISPLAY_ALL_ACTION_ROWS)
@@ -972,7 +973,7 @@ public class MovedStatics {
                                 }
                                 addActionRow(English.examine, item.itemId, x, y, ActionRowType.EXAMINE_ITEM.getId(), Native.lightRed + itemDefinition.name);
                             } else if ((0x1 & ItemDefinition.selectedMask) == 1) {
-                                addActionRow(Native.aClass1_1918, item.itemId, x, y, 15, Native.aClass1_611 + Native.toLightRed + itemDefinition.name);
+                                addActionRow(Native.selectedSpellVerb, item.itemId, x, y, 15, Native.selectedSpellName + Native.toLightRed + itemDefinition.name);
                             }
                         }
                     }
@@ -1321,7 +1322,7 @@ public class MovedStatics {
 	                                        if(MovedStatics.itemSelected != 1 || !gameInterface.isInventory) {
 	                                            if(Main.widgetSelected == 1 && gameInterface.isInventory) {
 	                                                if((ItemDefinition.selectedMask & 0x10) == 16) {
-	                                                    addActionRow(Native.aClass1_1918, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.MAGIC_ON_WIDGET_ITEM.getId(), Native.aClass1_611 + Native.toLightRed + itemDefinition.name);
+	                                                    addActionRow(Native.selectedSpellVerb, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.MAGIC_ON_WIDGET_ITEM.getId(), Native.selectedSpellName + Native.toLightRed + itemDefinition.name);
 	                                                }
 	                                            } else {
 	                                                String[] class1s = itemDefinition.interfaceOptions;
@@ -1393,7 +1394,7 @@ public class MovedStatics {
 	                                                addActionRow(English.examine, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId(), examineText.toString());
 	                                            }
 	                                        } else if(ISAAC.anInt525 != gameInterface.id || i_4_ != LinkedList.selectedInventorySlot) {
-	                                            addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.ITEM_USE_ON_INVENTORY_ITEM.getId(), Native.aClass1_3295+ Native.toLightRed + itemDefinition.name);
+	                                            addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.ITEM_USE_ON_INVENTORY_ITEM.getId(), Native.selectedItemName + Native.toLightRed + itemDefinition.name);
 	                                        }
 	                                    }
 	                                }

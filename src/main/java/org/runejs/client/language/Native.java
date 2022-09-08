@@ -29,7 +29,7 @@ public class Native {
     public static String prefixColonZero = ":0";
     public static String cmd_prefix = "::";
     public static String cmd_fpsoff = "::fpsoff";
-    public static String aClass1_1918 = null;
+    public static String selectedSpellVerb = null;
     public static String lineBreak = "\\n";
     public static String aClass1_303 = "_";
     public static RSString supportedCharacters = RSString.CreateString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y-_=)0[*U]*W;:(W@(S*X,<.>)4?*6*V ");
@@ -67,7 +67,7 @@ public class Native {
     public static String titleButton = "titlebutton";
     public static String COLON_CHARACTER = ": ";
     public static String aClass1_327 = "@or1@";
-    public static String aClass1_3068 = " -> @whi@";
+    public static String arrowActionOnOther = " -> @whi@";
     public static String aClass1_2588 = "backvmid2";
     public static String aClass1_2593 = "K";
     public static String aClass1_2179 = "cross";
@@ -93,10 +93,10 @@ public class Native {
     public static String whitespace = " ";
     public static String emptyString = "";
     public static String mapFunction = "mapfunction";
-    public static String aClass1_3295 = null;
+    public static String selectedItemName = null;
     public static String aClass1_1374 = "backvmid1";
     public static String aClass1_478 = "*";
-    public static String aClass1_611 = null;
+    public static String selectedSpellName = null;
     public static String huffman = "huffman";
     public static String backright2 = "backright2";
     public static String clickToContinueString = null;
