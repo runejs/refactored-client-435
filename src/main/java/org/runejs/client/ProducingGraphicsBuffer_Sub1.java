@@ -53,7 +53,7 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
             else
                 i -= 101;
             MovedStatics.addActionRow(English.remove, 0, 0, 0, ActionRowType.REMOVE_FRIEND.getId(), Native.white + Player.friendUsernames[i]);
-            MovedStatics.addActionRow(English.message, 0, 0, 0, 18, Native.white + Player.friendUsernames[i]);
+            MovedStatics.addActionRow(English.message, 0, 0, 0, ActionRowType.MESSAGE_FRIEND.getId(), Native.white + Player.friendUsernames[i]);
             return true;
         }
         if(i >= 401 && i <= 500) {

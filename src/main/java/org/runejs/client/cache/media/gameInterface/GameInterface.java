@@ -806,7 +806,7 @@ public class GameInterface extends CachedNode {
                     }
                     RSRuntimeException.anInt1651 = 0;
                 }
-                if(action == 18) {
+                if(action == ActionRowType.MESSAGE_FRIEND.getId()) {
                     String class1 = Landscape.menuActionTexts[arg1];
                     int i_18_ = class1.indexOf(Native.white);
                     if(i_18_ != -1) {
