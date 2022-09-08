@@ -1025,7 +1025,7 @@ public class GameInterface extends CachedNode {
                             SceneCluster.packetBuffer.putIntME1(Class60.anInt1417);
                         }
                     }
-                    if(action == ActionRowType.CHATBOX_ADD_FRIEND.getId() || action == ActionRowType.CHATBOX_ADD_IGNORE.getId() || action == 13 || action == 35) {
+                    if(action == ActionRowType.CHATBOX_ADD_FRIEND.getId() || action == ActionRowType.CHATBOX_ADD_IGNORE.getId() || action == ActionRowType.REMOVE_FRIEND.getId() || action == ActionRowType.REMOVE_IGNORE.getId()) {
                         String s = Landscape.menuActionTexts[arg1];
                         int l1 = s.indexOf(Native.white);
                         if(l1 != -1) {
@@ -1036,10 +1036,10 @@ public class GameInterface extends CachedNode {
                             if(action == ActionRowType.CHATBOX_ADD_IGNORE.getId()) {
                                 Class17.method275(l);
                             }
-                            if(action == 13) {
+                            if(action == ActionRowType.REMOVE_FRIEND.getId()) {
                                 GameShell.method28(l);
                             }
-                            if(action == 35) {
+                            if(action == ActionRowType.REMOVE_IGNORE.getId()) {
                                 MovedStatics.method838(0, l);
                             }
                         }

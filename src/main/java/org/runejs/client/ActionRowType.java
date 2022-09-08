@@ -8,10 +8,13 @@ package org.runejs.client;
  */
 public enum ActionRowType {
     MAGIC_ON_PLAYER(1),
+    REMOVE_FRIEND(13),
     MAGIC_ON_NPC(21),
     ITEM_ON_PLAYER(22),
     CHATBOX_ACCEPT_TRADE(26),
     CHATBOX_REPORT_ABUSE(28),
+    REMOVE_IGNORE(35),
+    // @TODO (jameskmonger) do these need CHATBOX_ prefix?
     CHATBOX_ADD_FRIEND(45),
     CHATBOX_ACCEPT_CHALLENGE(46),
     ITEM_ON_NPC(49),
