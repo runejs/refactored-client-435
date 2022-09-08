@@ -1308,14 +1308,14 @@ public class MovedStatics {
 	                                                if(gameInterface.isInventory) {
 	                                                    for(int i_9_ = 4; i_9_ >= 3; i_9_--) {
 	                                                        if(class1s != null && class1s[i_9_] != null) {
-	                                                            int i_10_;
+	                                                            int actionType;
 	                                                            if(i_9_ != 3)
-	                                                                i_10_ = 11;
+	                                                                actionType = ActionRowType.DROP_ITEM.getId();
 	                                                            else
-	                                                                i_10_ = 43;
-	                                                            addActionRow(class1s[i_9_], itemDefinition.id, i_4_, gameInterface.id, i_10_, Native.lightRed + itemDefinition.name);
+	                                                                actionType = ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_4.getId();
+	                                                            addActionRow(class1s[i_9_], itemDefinition.id, i_4_, gameInterface.id, actionType, Native.lightRed + itemDefinition.name);
 	                                                        } else if(i_9_ == 4) {
-	                                                            addActionRow(English.drop, itemDefinition.id, i_4_, gameInterface.id, 11, Native.lightRed + itemDefinition.name);
+	                                                            addActionRow(English.drop, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.DROP_ITEM.getId(), Native.lightRed + itemDefinition.name);
 	                                                        }
 	                                                    }
 	                                                }
@@ -1325,14 +1325,14 @@ public class MovedStatics {
 	                                                if(gameInterface.isInventory && class1s != null) {
 	                                                    for(int i_11_ = 2; i_11_ >= 0; i_11_--) {
 	                                                        if(class1s[i_11_] != null) {
-	                                                            int i_12_ = 0;
+	                                                            int actionType = 0;
 	                                                            if(i_11_ == 0)
-	                                                                i_12_ = 52;
+	                                                                actionType = ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_1.getId();
 	                                                            if(i_11_ == 1)
-	                                                                i_12_ = 6;
+	                                                                actionType = ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_2.getId();
 	                                                            if(i_11_ == 2)
-	                                                                i_12_ = 31;
-	                                                            addActionRow(class1s[i_11_], itemDefinition.id, i_4_, gameInterface.id, i_12_, Native.lightRed + itemDefinition.name);
+	                                                                actionType = ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_3.getId();
+	                                                            addActionRow(class1s[i_11_], itemDefinition.id, i_4_, gameInterface.id, actionType, Native.lightRed + itemDefinition.name);
 	                                                        }
 	                                                    }
 	                                                }
