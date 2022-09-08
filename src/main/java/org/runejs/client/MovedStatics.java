@@ -1312,7 +1312,7 @@ public class MovedStatics {
 	                                                            if(i_9_ != 3)
 	                                                                actionType = ActionRowType.DROP_ITEM.getId();
 	                                                            else
-	                                                                actionType = ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_4.getId();
+	                                                                actionType = ActionRowType.ITEM_ON_V2_WIDGET_INTERACTION_OPTION_4.getId();
 	                                                            addActionRow(class1s[i_9_], itemDefinition.id, i_4_, gameInterface.id, actionType, Native.lightRed + itemDefinition.name);
 	                                                        } else if(i_9_ == 4) {
 	                                                            addActionRow(English.drop, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.DROP_ITEM.getId(), Native.lightRed + itemDefinition.name);
@@ -1327,11 +1327,11 @@ public class MovedStatics {
 	                                                        if(class1s[i_11_] != null) {
 	                                                            int actionType = 0;
 	                                                            if(i_11_ == 0)
-	                                                                actionType = ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_1.getId();
+	                                                                actionType = ActionRowType.ITEM_ON_V2_WIDGET_INTERACTION_OPTION_1.getId();
 	                                                            if(i_11_ == 1)
-	                                                                actionType = ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_2.getId();
+	                                                                actionType = ActionRowType.ITEM_ON_V2_WIDGET_INTERACTION_OPTION_2.getId();
 	                                                            if(i_11_ == 2)
-	                                                                actionType = ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_3.getId();
+	                                                                actionType = ActionRowType.ITEM_ON_V2_WIDGET_INTERACTION_OPTION_3.getId();
 	                                                            addActionRow(class1s[i_11_], itemDefinition.id, i_4_, gameInterface.id, actionType, Native.lightRed + itemDefinition.name);
 	                                                        }
 	                                                    }
@@ -1368,7 +1368,7 @@ public class MovedStatics {
 	                                                    );
 	                                                    examineText.append("<col=00ff00>)</col>");
 	                                                }
-	                                                addActionRow(English.examine, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.EXAMINE_ITEM_ON_WIDGET.getId(), examineText.toString());
+	                                                addActionRow(English.examine, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId(), examineText.toString());
 	                                            }
 	                                        } else if(ISAAC.anInt525 != gameInterface.id || i_4_ != LinkedList.anInt1061) {
 	                                            addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, 56, Native.aClass1_3295+ Native.toLightRed + itemDefinition.name);
@@ -1390,13 +1390,13 @@ public class MovedStatics {
 	                            else
 	                                addActionRow(class1s[4], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.DROP_ITEM.getId(), Native.lightRed + itemDefinition.name);
 	                            if(class1s != null && class1s[3] != null)
-	                                addActionRow(class1s[3], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_4.getId(), Native.lightRed + itemDefinition.name);
+	                                addActionRow(class1s[3], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.ITEM_ON_V2_WIDGET_INTERACTION_OPTION_4.getId(), Native.lightRed + itemDefinition.name);
 	                            if(class1s != null && class1s[2] != null)
-	                                addActionRow(class1s[2], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_3.getId(), Native.lightRed + itemDefinition.name);
+	                                addActionRow(class1s[2], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.ITEM_ON_V2_WIDGET_INTERACTION_OPTION_3.getId(), Native.lightRed + itemDefinition.name);
 	                            if(class1s != null && class1s[1] != null)
-	                                addActionRow(class1s[1], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_2.getId(), Native.lightRed + itemDefinition.name);
+	                                addActionRow(class1s[1], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.ITEM_ON_V2_WIDGET_INTERACTION_OPTION_2.getId(), Native.lightRed + itemDefinition.name);
 	                            if(class1s != null && class1s[0] != null)
-	                                addActionRow(class1s[0], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_1.getId(), Native.lightRed + itemDefinition.name);
+	                                addActionRow(class1s[0], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.ITEM_ON_V2_WIDGET_INTERACTION_OPTION_1.getId(), Native.lightRed + itemDefinition.name);
 	                        }
 	                        if(gameInterface.id >= 0)
 	                            addActionRow(English.examine, itemDefinition.id, -1, gameInterface.id, 1007, Native.lightRed + itemDefinition.name);

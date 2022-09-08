@@ -679,7 +679,7 @@ public class GameInterface extends CachedNode {
                     }
                 }
             }
-            if(action == ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_1.getId()) {
+            if(action == ActionRowType.ITEM_ON_V2_WIDGET_INTERACTION_OPTION_1.getId()) {
                 SceneCluster.packetBuffer.putPacket(240);
                 SceneCluster.packetBuffer.putShortLE(i);
                 SceneCluster.packetBuffer.putShortLE(npcIdx);
@@ -956,7 +956,7 @@ public class GameInterface extends CachedNode {
                             SceneCluster.packetBuffer.putIntBE(i_10_);
                         }
                     }
-                    if(action == ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_3.getId()) {
+                    if(action == ActionRowType.ITEM_ON_V2_WIDGET_INTERACTION_OPTION_3.getId()) {
                         SceneCluster.packetBuffer.putPacket(163);
                         SceneCluster.packetBuffer.putShortLE(i);
                         SceneCluster.packetBuffer.putShortLE(npcIdx);
@@ -1066,7 +1066,7 @@ public class GameInterface extends CachedNode {
                             Npc.currentScene.method120(Class57.clickX - 4, -4 + RSString.clickY);
                         }
                     }
-                    if(action == ActionRowType.EXAMINE_ITEM_ON_WIDGET.getId()) {
+                    if(action == ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId()) {
                         GameInterface gameInterface = getInterface(i_10_);
                         if(gameInterface == null || gameInterface.itemAmounts[i] < 100000) {
                             SceneCluster.packetBuffer.putPacket(151);
@@ -1188,7 +1188,7 @@ public class GameInterface extends CachedNode {
                         PacketBuffer.method517(0, i_10_);
                         MovedStatics.lastContinueTextWidgetId = i_10_;
                     }
-                    if(action == ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_4.getId()) {
+                    if(action == ActionRowType.ITEM_ON_V2_WIDGET_INTERACTION_OPTION_4.getId()) {
                         SceneCluster.packetBuffer.putPacket(98);
                         SceneCluster.packetBuffer.putShortBE(i);
                         SceneCluster.packetBuffer.putIntME1(i_10_);
@@ -1282,7 +1282,7 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortLE(Class26.baseY + i_10_);
                         SceneCluster.packetBuffer.putShortLE(Class49.anInt1154);
                     }
-                    if(action == ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_2.getId()) {
+                    if(action == ActionRowType.ITEM_ON_V2_WIDGET_INTERACTION_OPTION_2.getId()) {
                         SceneCluster.packetBuffer.putPacket(102);
                         SceneCluster.packetBuffer.putIntLE(i_10_);
                         SceneCluster.packetBuffer.putShortLE(i);
