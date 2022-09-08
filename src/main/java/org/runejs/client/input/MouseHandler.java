@@ -119,7 +119,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                         || action == ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_3.getId()
                         || action == ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_4.getId()
                         || action == ActionRowType.DROP_ITEM.getId()
-                        || action == 19
+                        || action == ActionRowType.ITEM_ON_WIDGET_USE.getId()
                         || action == ActionRowType.EXAMINE_ITEM_ON_WIDGET.getId()
                 ) {
                     int item = InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow - 1];

@@ -751,7 +751,7 @@ public class GameInterface extends CachedNode {
                     SceneCluster.packetBuffer.putShortBE(LinkedList.anInt1061);
                 }
             }
-            if(action == 19) {
+            if(action == ActionRowType.ITEM_ON_WIDGET_USE.getId()) {
                 Class49.anInt1154 = npcIdx;
                 LinkedList.anInt1061 = i;
                 ISAAC.anInt525 = i_10_;

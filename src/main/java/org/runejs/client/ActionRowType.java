@@ -12,6 +12,10 @@ public enum ActionRowType {
     DROP_ITEM(11),
     REMOVE_FRIEND(13),
     MESSAGE_FRIEND(18),
+    /**
+     * The initial 'use' on an item in the inventory (to select it)
+     */
+    ITEM_ON_WIDGET_USE(19),
     MAGIC_ON_NPC(21),
     ITEM_ON_PLAYER(22),
     CHATBOX_ACCEPT_TRADE(26),
@@ -25,6 +29,9 @@ public enum ActionRowType {
     CHATBOX_ACCEPT_CHALLENGE(46),
     ITEM_ON_NPC(49),
     CHATBOX_ADD_IGNORE(51),
+    /**
+     * Used for the 'interact' options on an item on an interface
+     */
     ITEM_ON_WIDGET_INTERACTION_OPTION_1(52),
 
     EXAMINE_NPC(1001),

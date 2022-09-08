@@ -1320,7 +1320,7 @@ public class MovedStatics {
 	                                                    }
 	                                                }
 	                                                if(gameInterface.itemUsable) {
-	                                                    addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, 19, Native.lightRed + itemDefinition.name);
+	                                                    addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.ITEM_ON_WIDGET_USE.getId(), Native.lightRed + itemDefinition.name);
 	                                                }
 	                                                if(gameInterface.isInventory && class1s != null) {
 	                                                    for(int i_11_ = 2; i_11_ >= 0; i_11_--) {
