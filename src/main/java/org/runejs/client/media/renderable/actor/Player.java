@@ -395,10 +395,10 @@ public class Player extends Actor {
             else
                 playerDisplayName = player.playerName + Native.leftParenthesisWithSpacePrefix + English.prefixSkill + player.skillLevel + Native.rightParenthesis;
             if (MovedStatics.itemSelected == 1) {
-                MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.ITEM_ON_PLAYER.getId(), Native.selectedItemName + Native.arrowActionOnOther + playerDisplayName);
+                MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.USE_ITEM_ON_PLAYER.getId(), Native.selectedItemName + Native.arrowActionOnOther + playerDisplayName);
             } else if (Main.widgetSelected == 1) {
                 if ((ItemDefinition.selectedMask & 0x8) == 8) {
-                    MovedStatics.addActionRow(Native.selectedSpellVerb, index, x, y, ActionRowType.MAGIC_ON_PLAYER.getId(), Native.selectedSpellName + Native.arrowActionOnOther + playerDisplayName);
+                    MovedStatics.addActionRow(Native.selectedSpellVerb, index, x, y, ActionRowType.CAST_MAGIC_ON_PLAYER.getId(), Native.selectedSpellName + Native.arrowActionOnOther + playerDisplayName);
                 }
             } else {
                 for (int i = 4; i >= 0; i--) {
@@ -422,15 +422,15 @@ public class Player extends Actor {
                         }
 
                         if (i == 0)
-                            actionType = ActionRowType.PLAYER_INTERACTION_OPTION_1.getId() + actionRowOffset;
+                            actionType = ActionRowType.INTERACT_WITH_PLAYER_OPTION_1.getId() + actionRowOffset;
                         if (i == 1)
-                            actionType = ActionRowType.PLAYER_INTERACTION_OPTION_2.getId() + actionRowOffset;
+                            actionType = ActionRowType.INTERACT_WITH_PLAYER_OPTION_2.getId() + actionRowOffset;
                         if (i == 2)
-                            actionType = ActionRowType.PLAYER_INTERACTION_OPTION_3.getId() + actionRowOffset;
+                            actionType = ActionRowType.INTERACT_WITH_PLAYER_OPTION_3.getId() + actionRowOffset;
                         if (i == 3)
-                            actionType = ActionRowType.PLAYER_INTERACTION_OPTION_4.getId() + actionRowOffset;
+                            actionType = ActionRowType.INTERACT_WITH_PLAYER_OPTION_4.getId() + actionRowOffset;
                         if (i == 4)
-                            actionType = ActionRowType.PLAYER_INTERACTION_OPTION_5.getId() + actionRowOffset;
+                            actionType = ActionRowType.INTERACT_WITH_PLAYER_OPTION_5.getId() + actionRowOffset;
                         MovedStatics.addActionRow(Main.playerActions[i], index, x, y, actionType, Native.white + playerDisplayName);
                     }
                 }

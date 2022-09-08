@@ -113,10 +113,10 @@ public class HuffmanEncoding {
                     npcDisplayName = npcDisplayName + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthesis;
                 }
                 if (MovedStatics.itemSelected == 1) {
-                    MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.ITEM_ON_NPC.getId(), Native.selectedItemName + Native.toYellow + npcDisplayName);
+                    MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.USE_ITEM_ON_NPC.getId(), Native.selectedItemName + Native.toYellow + npcDisplayName);
                 } else if (Main.widgetSelected == 1) {
                     if ((0x2 & ItemDefinition.selectedMask) == 2) {
-                        MovedStatics.addActionRow(Native.selectedSpellVerb, index, x, y, ActionRowType.MAGIC_ON_NPC.getId(), Native.selectedSpellName + Native.toYellow + npcDisplayName);
+                        MovedStatics.addActionRow(Native.selectedSpellVerb, index, x, y, ActionRowType.CAST_MAGIC_ON_NPC.getId(), Native.selectedSpellName + Native.toYellow + npcDisplayName);
                     }
                 } else {
                     String[] options = actorDefinition.options;
@@ -130,19 +130,19 @@ public class HuffmanEncoding {
                             if (options[i] != null && !options[i].equalsIgnoreCase(English.attack)) {
                                 int actionType = 0;
                                 if (i == 0) {
-                                    actionType = ActionRowType.NPC_INTERACTION_OPTION_1.getId();
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_1.getId();
                                 }
                                 if (i == 1) {
-                                    actionType = ActionRowType.NPC_INTERACTION_OPTION_2.getId();
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_2.getId();
                                 }
                                 if (i == 2) {
-                                    actionType = ActionRowType.NPC_INTERACTION_OPTION_3.getId();
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_3.getId();
                                 }
                                 if (i == 3) {
-                                    actionType = ActionRowType.NPC_INTERACTION_OPTION_4.getId();
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_4.getId();
                                 }
                                 if (i == 4) {
-                                    actionType = ActionRowType.NPC_INTERACTION_OPTION_5.getId();
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_5.getId();
                                 }
                                 MovedStatics.addActionRow(options[i], index, x, y, actionType, Native.yellow + npcDisplayName);
                             }
@@ -162,19 +162,19 @@ public class HuffmanEncoding {
 
                                 int actionType = 0;
                                 if (i == 0) {
-                                    actionType = ActionRowType.NPC_INTERACTION_OPTION_1.getId() + actionTypeOffset;
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_1.getId() + actionTypeOffset;
                                 }
                                 if (i == 1) {
-                                    actionType = ActionRowType.NPC_INTERACTION_OPTION_2.getId() + actionTypeOffset;
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_2.getId() + actionTypeOffset;
                                 }
                                 if (i == 2) {
-                                    actionType = ActionRowType.NPC_INTERACTION_OPTION_3.getId() + actionTypeOffset;
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_3.getId() + actionTypeOffset;
                                 }
                                 if (i == 3) {
-                                    actionType = ActionRowType.NPC_INTERACTION_OPTION_4.getId() + actionTypeOffset;
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_4.getId() + actionTypeOffset;
                                 }
                                 if (i == 4) {
-                                    actionType = ActionRowType.NPC_INTERACTION_OPTION_5.getId() + actionTypeOffset;
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_5.getId() + actionTypeOffset;
                                 }
                                 MovedStatics.addActionRow(options[i], index, x, y, actionType, Native.yellow +npcDisplayName);
                             }

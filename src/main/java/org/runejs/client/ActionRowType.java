@@ -49,150 +49,152 @@ public enum ActionRowType {
     CHATBOX_ADD_IGNORE(51),
     CHATBOX_ACCEPT_TRADE(26),
     CHATBOX_REPORT_ABUSE(28),
+    /**
+     * The initial 'use' to select an item on a widget
+     */
+    SELECT_ITEM_ON_WIDGET(19),
 
     /**
      * The "Cast" option on a spell inside a spell list
      */
     SELECT_SPELL_ON_WIDGET(33),
-    /**
-     * The initial 'use' on an item in the inventory (to select it)
-     */
-    ITEM_ON_WIDGET_USE(19),
 
-    ITEM_ON_PLAYER(22),
+    USE_ITEM_ON_PLAYER(22),
 
-    ITEM_ON_NPC(49),
+    USE_ITEM_ON_NPC(49),
 
     /**
      * For when the player uses an inventory item on another.
+     *
+     * TODO TODO TODO is this inventory or widget ??
      */
-    ITEM_USE_ON_INVENTORY_ITEM(56),
-
-    /**
-     * Player uses an item on an object
-     */
-    ITEM_USE_ON_OBJECT(5),
+    USE_ITEM_ON_INVENTORY_ITEM(56),
 
     /**
      * Player uses an item on a world item
      */
-    ITEM_USE_ON_WORLD_ITEM(47),
+    USE_ITEM_ON_WORLD_ITEM(47),
 
-    MAGIC_ON_PLAYER(1),
-    MAGIC_ON_NPC(21),
-    MAGIC_ON_WIDGET_ITEM(37),
-    MAGIC_ON_WORLD_ITEM(15),
-    MAGIC_ON_OBJECT(32),
+    /**
+     * Player uses an item on an object
+     */
+    USE_ITEM_ON_OBJECT(5),
+
+    CAST_MAGIC_ON_PLAYER(1),
+    CAST_MAGIC_ON_NPC(21),
+    CAST_MAGIC_ON_WIDGET_ITEM(37),
+    CAST_MAGIC_ON_WORLD_ITEM(15),
+    CAST_MAGIC_ON_OBJECT(32),
 
     /**
      * The first Player interaction option
      */
-    PLAYER_INTERACTION_OPTION_1(10),
+    INTERACT_WITH_PLAYER_OPTION_1(10),
     /**
      * The second Player interaction option
      */
-    PLAYER_INTERACTION_OPTION_2(39),
+    INTERACT_WITH_PLAYER_OPTION_2(39),
     /**
      * The third Player interaction option
      */
-    PLAYER_INTERACTION_OPTION_3(44),
+    INTERACT_WITH_PLAYER_OPTION_3(44),
     /**
      * The fourth Player interaction option
      */
-    PLAYER_INTERACTION_OPTION_4(14),
+    INTERACT_WITH_PLAYER_OPTION_4(14),
     /**
      * The fifth Player interaction option
      */
-    PLAYER_INTERACTION_OPTION_5(41),
+    INTERACT_WITH_PLAYER_OPTION_5(41),
 
     /**
      * The first NPC interaction option
      *
      * observed values: [ 'Talk to' ]
      */
-    NPC_INTERACTION_OPTION_1(12),
+    INTERACT_WITH_NPC_OPTION_1(12),
     /**
      * The second NPC interaction option
      */
-    NPC_INTERACTION_OPTION_2(30),
+    INTERACT_WITH_NPC_OPTION_2(30),
     /**
      * The third NPC interaction option
      *
      * observed values: [ 'Trade' ]
      */
-    NPC_INTERACTION_OPTION_3(4),
+    INTERACT_WITH_NPC_OPTION_3(4),
     /**
      * The fourth NPC interaction option
      */
-    NPC_INTERACTION_OPTION_4(34),
+    INTERACT_WITH_NPC_OPTION_4(34),
     /**
      * The fifth NPC interaction option
      */
-    NPC_INTERACTION_OPTION_5(20),
+    INTERACT_WITH_NPC_OPTION_5(20),
 
     /**
      * The first object interaction option
      */
-    OBJECT_INTERACTION_OPTION_1(16),
+    INTERACT_WITH_OBJECT_OPTION_1(16),
     /**
      * The second object interaction option
      */
-    OBJECT_INTERACTION_OPTION_2(29),
+    INTERACT_WITH_OBJECT_OPTION_2(29),
     /**
      * The third object interaction option
      */
-    OBJECT_INTERACTION_OPTION_3(17),
+    INTERACT_WITH_OBJECT_OPTION_3(17),
     /**
      * The fourth object interaction option
      */
-    OBJECT_INTERACTION_OPTION_4(27),
+    INTERACT_WITH_OBJECT_OPTION_4(27),
     /**
      * The fifth object interaction option
      *
      * (jameskmonger) why is this so high? it sits with the Examine ids
      */
-    OBJECT_INTERACTION_OPTION_5(1002),
+    INTERACT_WITH_OBJECT_OPTION_5(1002),
 
     /**
      * The first world item interaction option
      */
-    WORLD_ITEM_INTERACTION_OPTION_1(2),
+    INTERACT_WITH_WORLD_ITEM_OPTION_1(2),
     /**
      * The second world item interaction option
      */
-    WORLD_ITEM_INTERACTION_OPTION_2(38),
+    INTERACT_WITH_WORLD_ITEM_OPTION_2(38),
     /**
      * The third world item interaction option
      */
-    WORLD_ITEM_INTERACTION_OPTION_3(3),
+    INTERACT_WITH_WORLD_ITEM_OPTION_3(3),
     /**
      * The fourth world item interaction option
      */
-    WORLD_ITEM_INTERACTION_OPTION_4(8),
+    INTERACT_WITH_WORLD_ITEM_OPTION_4(8),
     /**
      * The fifth world item interaction option
      */
-    WORLD_ITEM_INTERACTION_OPTION_5(36),
+    INTERACT_WITH_WORLD_ITEM_OPTION_5(36),
 
     /**
      * Used for the 'interact' options on an item on a V1 (old format) interface
      *
      * For example, these are the 5 options when you right-click an item in a shop.
      */
-    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_1(53),
-    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_2(25),
-    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_3(55),
-    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_4(48),
-    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_5(24),
+    INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_1(53),
+    INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_2(25),
+    INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_3(55),
+    INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_4(48),
+    INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_5(24),
 
     /**
      * Used for the 'interact' options on an item on a V2 (new format) interface
      */
-    ITEM_ON_V2_WIDGET_INTERACTION_OPTION_1(52),
+    INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_1(52),
     // this one is read on the server as 'option 5' - which is correct?
-    ITEM_ON_V2_WIDGET_INTERACTION_OPTION_2(6),
-    ITEM_ON_V2_WIDGET_INTERACTION_OPTION_3(31),
-    ITEM_ON_V2_WIDGET_INTERACTION_OPTION_4(43),
+    INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_2(6),
+    INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_3(31),
+    INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_4(43),
 
     EXAMINE_NPC(1001),
     EXAMINE_ITEM(1003),
