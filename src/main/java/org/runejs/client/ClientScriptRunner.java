@@ -77,11 +77,11 @@ public class ClientScriptRunner extends Node {
                 if((chatType == 1 || chatType == 2) && (chatType == 1 || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 1 && Player.hasFriend(username))) {
                     if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !username.equals(Player.localPlayer.playerName)) {
                         if(InteractiveObject.playerRights >= 1) {
-                            MovedStatics.addActionRow(English.reportAbuse, 0, 0, 0, ActionRowType.CHATBOX_REPORT_ABUSE.getId(), Native.white + username);
+                            MovedStatics.addActionRow(English.reportAbuse, 0, 0, 0, ActionRowType.REPORT_ABUSE.getId(), Native.white + username);
                         }
 
-                        MovedStatics.addActionRow(English.addIgnore, 0, 0, 0, ActionRowType.CHATBOX_ADD_IGNORE.getId(), Native.white + username);
-                        MovedStatics.addActionRow(English.addFriend, 0, 0, 0, ActionRowType.CHATBOX_ADD_FRIEND.getId(), Native.white + username);
+                        MovedStatics.addActionRow(English.addIgnore, 0, 0, 0, ActionRowType.ADD_IGNORE.getId(), Native.white + username);
+                        MovedStatics.addActionRow(English.addFriend, 0, 0, 0, ActionRowType.ADD_FRIEND.getId(), Native.white + username);
                     }
                     offset++;
                 }
@@ -89,16 +89,16 @@ public class ClientScriptRunner extends Node {
                     offset++;
                     if(arg1 > -14 + i_2_ && arg1 <= i_2_) {
                         if(InteractiveObject.playerRights >= 1) {
-                            MovedStatics.addActionRow(English.reportAbuse, 0, 0, 0, ActionRowType.CHATBOX_REPORT_ABUSE.getId(), Native.white + username);
+                            MovedStatics.addActionRow(English.reportAbuse, 0, 0, 0, ActionRowType.REPORT_ABUSE.getId(), Native.white + username);
                         }
 
-                        MovedStatics.addActionRow(English.addIgnore, 0, 0, 0, ActionRowType.CHATBOX_ADD_IGNORE.getId(), Native.white + username);
-                        MovedStatics.addActionRow(English.addFriend, 0, 0, 0, ActionRowType.CHATBOX_ADD_FRIEND.getId(), Native.white + username);
+                        MovedStatics.addActionRow(English.addIgnore, 0, 0, 0, ActionRowType.ADD_IGNORE.getId(), Native.white + username);
+                        MovedStatics.addActionRow(English.addFriend, 0, 0, 0, ActionRowType.ADD_FRIEND.getId(), Native.white + username);
                     }
                 }
                 if(chatType == 4 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Player.hasFriend(username))) {
                     if(arg1 > -14 + i_2_ && arg1 <= i_2_) {
-                        MovedStatics.addActionRow(English.acceptTrade, 0, 0, 0, ActionRowType.CHATBOX_ACCEPT_TRADE.getId(), Native.white + username);
+                        MovedStatics.addActionRow(English.acceptTrade, 0, 0, 0, ActionRowType.ACCEPT_TRADE.getId(), Native.white + username);
                     }
                     offset++;
                 }
@@ -106,7 +106,7 @@ public class ClientScriptRunner extends Node {
                     offset++;
                 if(chatType == 8 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Player.hasFriend(username))) {
                     if(i_2_ + -14 < arg1 && arg1 <= i_2_) {
-                        MovedStatics.addActionRow(English.acceptChallenge, 0, 0, 0, ActionRowType.CHATBOX_ACCEPT_CHALLENGE.getId(), Native.white + username);
+                        MovedStatics.addActionRow(English.acceptChallenge, 0, 0, 0, ActionRowType.ACCEPT_CHALLENGE.getId(), Native.white + username);
                     }
                     offset++;
                 }

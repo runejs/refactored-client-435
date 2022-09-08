@@ -40,15 +40,14 @@ public enum ActionRowType {
     WALK_HERE(7),
     DROP_ITEM(11),
 
-    REMOVE_FRIEND(13),
     MESSAGE_FRIEND(18),
+    ADD_FRIEND(45),
+    REMOVE_FRIEND(13),
+    ADD_IGNORE(51),
     REMOVE_IGNORE(35),
-    // @TODO (jameskmonger) do these need CHATBOX_ prefix?
-    CHATBOX_ADD_FRIEND(45),
-    CHATBOX_ACCEPT_CHALLENGE(46),
-    CHATBOX_ADD_IGNORE(51),
-    CHATBOX_ACCEPT_TRADE(26),
-    CHATBOX_REPORT_ABUSE(28),
+    ACCEPT_TRADE(26),
+    ACCEPT_CHALLENGE(46),
+    REPORT_ABUSE(28),
     /**
      * The initial 'use' to select an item on a widget
      */

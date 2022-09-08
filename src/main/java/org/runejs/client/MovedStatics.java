@@ -212,10 +212,10 @@ public class MovedStatics {
                             if (Class13.mouseX < 4 + i_4_) {
                                 int actionRowOffset = 2000;
                                 if (InteractiveObject.playerRights >= 1) {
-                                    addActionRow(English.reportAbuse, 0, 0, 0, actionRowOffset + ActionRowType.CHATBOX_REPORT_ABUSE.getId(), Native.white + username);
+                                    addActionRow(English.reportAbuse, 0, 0, 0, actionRowOffset + ActionRowType.REPORT_ABUSE.getId(), Native.white + username);
                                 }
-                                addActionRow(English.addIgnore, 0, 0, 0, actionRowOffset + ActionRowType.CHATBOX_ADD_IGNORE.getId(), Native.white + username);
-                                addActionRow(English.addFriend, 0, 0, 0, actionRowOffset + ActionRowType.CHATBOX_ADD_FRIEND.getId(), Native.white + username);
+                                addActionRow(English.addIgnore, 0, 0, 0, actionRowOffset + ActionRowType.ADD_IGNORE.getId(), Native.white + username);
+                                addActionRow(English.addFriend, 0, 0, 0, actionRowOffset + ActionRowType.ADD_FRIEND.getId(), Native.white + username);
                             }
                         }
                         if (i >= 5)
