@@ -109,11 +109,11 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             if(meta == 1 && ActorDefinition.menuActionRow > 0) {
                 int action = MovedStatics.menuActionTypes[ActorDefinition.menuActionRow - 1];
                 if(
-                    action == 53
-                        || action == 25
-                        || action == 55
-                        || action == 48
-                        || action == 24
+                    action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_1.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_2.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_3.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_4.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_5.getId()
                         || action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_1.getId()
                         || action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_2.getId()
                         || action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_3.getId()
