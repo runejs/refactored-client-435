@@ -16,7 +16,7 @@ public class Class59 {
     public static KeyFocusListener keyFocusListener;
     public static int[] secondMenuOperand;
     public static long[] friends;
-    public static int[] blendedSaturation_maybe;
+    public static int[] blendedSaturation;
 
     static {
         secondMenuOperand = new int[500];

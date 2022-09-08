@@ -90,7 +90,7 @@ public class MovedStatics {
     public static int anInt199 = 0;
     public static volatile boolean aBoolean1575 = false;
     public static CacheArchive aCacheArchive_1577;
-    public static int[] blendedHueMultiplier_maybe;
+    public static int[] blendedHueMultiplier;
     public static int anInt1586 = -1;
     public static boolean reportMutePlayer = false;
     public static int anInt1607 = 10;
@@ -297,7 +297,7 @@ public class MovedStatics {
         for (int y = offsetY; y <= offsetY + sizeY; y++) {
             for (int x = offsetX; sizeX + offsetX >= x; x++) {
                 if (x >= 0 && x < 104 && y >= 0 && y < 104) {
-                    InteractiveObject.tileShadowIntensity_maybe[0][x][y] = (byte) 127;
+                    InteractiveObject.tileShadowIntensity[0][x][y] = (byte) 127;
                     if (offsetX == x && x > 0)
                         tile_height[0][x][y] = tile_height[0][-1 + x][y];
                     if (offsetX + sizeX == x && x < 103)
@@ -493,18 +493,18 @@ public class MovedStatics {
     }
 
     public static void method973() {
-        blendedHueMultiplier_maybe = null;
-        SceneTile.blendedLightness_maybe = null;
-        FloorDecoration.blendDirectionTracker_maybe = null;
+        blendedHueMultiplier = null;
+        SceneTile.blendedLightness = null;
+        FloorDecoration.blendDirectionTracker = null;
         tileCullingBitsets = null;
-        AnimationSequence.tileLightIntensity_maybe = null;
+        AnimationSequence.tileLightIntensity = null;
         Class35.tile_overlay_rotation = null;
-        Class59.blendedSaturation_maybe = null;
-        InteractiveObject.tileShadowIntensity_maybe = null;
+        Class59.blendedSaturation = null;
+        InteractiveObject.tileShadowIntensity = null;
         OverlayDefinition.tile_underlay_path = null;
         MouseHandler.tile_overlayids = null;
         tile_underlayids = null;
-        Class40_Sub5_Sub17_Sub6.blendedHue_maybe = null;
+        Class40_Sub5_Sub17_Sub6.blendedHue = null;
     }
 
     public static void printException(String arg0, Throwable exception) {

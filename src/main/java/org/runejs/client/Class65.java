@@ -22,17 +22,17 @@ public class Class65 {
     }
 
     public static void method1020() {
-        Class59.blendedSaturation_maybe = new int[104];
+        Class59.blendedSaturation = new int[104];
         OverlayDefinition.tile_underlay_path = new byte[4][104][104];
         MovedStatics.tileCullingBitsets = new int[4][105][105];
         MovedStatics.lowestPlane = 99;
-        InteractiveObject.tileShadowIntensity_maybe = new byte[4][105][105];
-        FloorDecoration.blendDirectionTracker_maybe = new int[104];
-        MovedStatics.blendedHueMultiplier_maybe = new int[104];
-        SceneTile.blendedLightness_maybe = new int[104];
-        AnimationSequence.tileLightIntensity_maybe = new int[105][105];
+        InteractiveObject.tileShadowIntensity = new byte[4][105][105];
+        FloorDecoration.blendDirectionTracker = new int[104];
+        MovedStatics.blendedHueMultiplier = new int[104];
+        SceneTile.blendedLightness = new int[104];
+        AnimationSequence.tileLightIntensity = new int[105][105];
         MouseHandler.tile_overlayids = new byte[4][104][104];
-        Class40_Sub5_Sub17_Sub6.blendedHue_maybe = new int[104];
+        Class40_Sub5_Sub17_Sub6.blendedHue = new int[104];
         Class35.tile_overlay_rotation = new byte[4][104][104];
         MovedStatics.tile_underlayids = new byte[4][104][104];
     }

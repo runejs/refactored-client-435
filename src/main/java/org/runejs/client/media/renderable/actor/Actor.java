@@ -18,7 +18,7 @@ public abstract class Actor extends Renderable {
 
     public static int[] anIntArray3111;
     public static int[] minimapHintX = new int[1000];
-    public static int randomiserLightness_maybe = -16 + (int) (Math.random() * 33.0);
+    public static int randomiserLightness = -16 + (int) (Math.random() * 33.0);
     public static Signlink signlink;
     public static int actorUpdatingIndex = 0;
 

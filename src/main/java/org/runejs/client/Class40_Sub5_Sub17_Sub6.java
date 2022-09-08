@@ -12,7 +12,7 @@ import org.runejs.client.media.renderable.actor.PlayerAppearance;
 public class Class40_Sub5_Sub17_Sub6 extends Renderable {
     public static ProducingGraphicsBuffer framePieceTop;
     public static int[] anIntArray3248;
-    public static int[] blendedHue_maybe;
+    public static int[] blendedHue;
     public static int[] anIntArray3253;
     public static int[] anIntArray3255;
 

@@ -62,18 +62,18 @@ public class ISAAC {
                 }
             }
         }
-        Class40_Sub5_Sub15.randomiserHue_maybe += (int) (5.0 * Math.random()) + -2;
-        Actor.randomiserLightness_maybe += -2 + (int) (5.0 * Math.random());
-        if(Class40_Sub5_Sub15.randomiserHue_maybe < -8)
-            Class40_Sub5_Sub15.randomiserHue_maybe = -8;
-        if(Class40_Sub5_Sub15.randomiserHue_maybe > 8)
-            Class40_Sub5_Sub15.randomiserHue_maybe = 8;
-        if(Actor.randomiserLightness_maybe < -16)
-            Actor.randomiserLightness_maybe = -16;
-        if(Actor.randomiserLightness_maybe > 16)
-            Actor.randomiserLightness_maybe = 16;
+        Class40_Sub5_Sub15.randomiserHue += (int) (5.0 * Math.random()) + -2;
+        Actor.randomiserLightness += -2 + (int) (5.0 * Math.random());
+        if(Class40_Sub5_Sub15.randomiserHue < -8)
+            Class40_Sub5_Sub15.randomiserHue = -8;
+        if(Class40_Sub5_Sub15.randomiserHue > 8)
+            Class40_Sub5_Sub15.randomiserHue = 8;
+        if(Actor.randomiserLightness < -16)
+            Actor.randomiserLightness = -16;
+        if(Actor.randomiserLightness > 16)
+            Actor.randomiserLightness = 16;
         for(int _plane = 0; _plane < 4; _plane++) {
-            byte[][] shadowIntensity = InteractiveObject.tileShadowIntensity_maybe[_plane];
+            byte[][] shadowIntensity = InteractiveObject.tileShadowIntensity[_plane];
             int directionalLightLength = (int) Math.sqrt(5100.0);
             int specularDistribution = directionalLightLength * 768 >> 8;
             for(int y = 1; y < 103; y++) {
@@ -86,15 +86,15 @@ public class ISAAC {
                     int normalisedX = (heightDifferenceX << 8) / normalisedLength;
                     int normalisedY = (heightDifferenceY << 8) / normalisedLength;
                     int directionalLightIntensity = 96 + (normalisedX * -50 + -10 * normalisedZ + normalisedY * -50) / specularDistribution;
-                    AnimationSequence.tileLightIntensity_maybe[x][y] = directionalLightIntensity + -weightedShadowIntensity;
+                    AnimationSequence.tileLightIntensity[x][y] = directionalLightIntensity + -weightedShadowIntensity;
                 }
             }
             for(int i_15_ = 0; i_15_ < 104; i_15_++) {
-                Class40_Sub5_Sub17_Sub6.blendedHue_maybe[i_15_] = 0;
-                Class59.blendedSaturation_maybe[i_15_] = 0;
-                SceneTile.blendedLightness_maybe[i_15_] = 0;
-                MovedStatics.blendedHueMultiplier_maybe[i_15_] = 0;
-                FloorDecoration.blendDirectionTracker_maybe[i_15_] = 0;
+                Class40_Sub5_Sub17_Sub6.blendedHue[i_15_] = 0;
+                Class59.blendedSaturation[i_15_] = 0;
+                SceneTile.blendedLightness[i_15_] = 0;
+                MovedStatics.blendedHueMultiplier[i_15_] = 0;
+                FloorDecoration.blendDirectionTracker[i_15_] = 0;
             }
             for(int x = -5; x < 109; x++) {
                 for(int y = 0; y < 104; y++) {
@@ -103,11 +103,11 @@ public class ISAAC {
                         int underlayId = 0xff & MovedStatics.tile_underlayids[_plane][positiveX][y];
                         if(underlayId > 0) {
                             UnderlayDefinition underlayDefinition = UnderlayDefinition.getDefinition(underlayId - 1);
-                            Class40_Sub5_Sub17_Sub6.blendedHue_maybe[y] += underlayDefinition.hue;
-                            Class59.blendedSaturation_maybe[y] += underlayDefinition.saturation;
-                            SceneTile.blendedLightness_maybe[y] += underlayDefinition.lightness;
-                            MovedStatics.blendedHueMultiplier_maybe[y] += underlayDefinition.hueMultiplier;
-                            FloorDecoration.blendDirectionTracker_maybe[y]++;
+                            Class40_Sub5_Sub17_Sub6.blendedHue[y] += underlayDefinition.hue;
+                            Class59.blendedSaturation[y] += underlayDefinition.saturation;
+                            SceneTile.blendedLightness[y] += underlayDefinition.lightness;
+                            MovedStatics.blendedHueMultiplier[y] += underlayDefinition.hueMultiplier;
+                            FloorDecoration.blendDirectionTracker[y]++;
                         }
                     }
                     int negativeX = x - 5;
@@ -115,11 +115,11 @@ public class ISAAC {
                         int underlayId = 0xff & MovedStatics.tile_underlayids[_plane][negativeX][y];
                         if(underlayId > 0) {
                             UnderlayDefinition underlayDefinition = UnderlayDefinition.getDefinition(underlayId - 1);
-                            Class40_Sub5_Sub17_Sub6.blendedHue_maybe[y] -= underlayDefinition.hue;
-                            Class59.blendedSaturation_maybe[y] -= underlayDefinition.saturation;
-                            SceneTile.blendedLightness_maybe[y] -= underlayDefinition.lightness;
-                            MovedStatics.blendedHueMultiplier_maybe[y] -= underlayDefinition.hueMultiplier;
-                            FloorDecoration.blendDirectionTracker_maybe[y]--;
+                            Class40_Sub5_Sub17_Sub6.blendedHue[y] -= underlayDefinition.hue;
+                            Class59.blendedSaturation[y] -= underlayDefinition.saturation;
+                            SceneTile.blendedLightness[y] -= underlayDefinition.lightness;
+                            MovedStatics.blendedHueMultiplier[y] -= underlayDefinition.hueMultiplier;
+                            FloorDecoration.blendDirectionTracker[y]--;
                         }
                     }
                 }
@@ -133,19 +133,19 @@ public class ISAAC {
                         int positiveY = y + 5;
                         int negativeY = y - 5;
                         if(positiveY >= 0 && positiveY < 104) {
-                            hueMultiplier += MovedStatics.blendedHueMultiplier_maybe[positiveY];
-                            saturation += Class59.blendedSaturation_maybe[positiveY];
-                            direction += FloorDecoration.blendDirectionTracker_maybe[positiveY];
-                            lightness += SceneTile.blendedLightness_maybe[positiveY];
-                            hue += Class40_Sub5_Sub17_Sub6.blendedHue_maybe[positiveY];
+                            hueMultiplier += MovedStatics.blendedHueMultiplier[positiveY];
+                            saturation += Class59.blendedSaturation[positiveY];
+                            direction += FloorDecoration.blendDirectionTracker[positiveY];
+                            lightness += SceneTile.blendedLightness[positiveY];
+                            hue += Class40_Sub5_Sub17_Sub6.blendedHue[positiveY];
                         }
 
                         if(negativeY >= 0 && negativeY < 104) {
-                            saturation -= Class59.blendedSaturation_maybe[negativeY];
-                            direction -= FloorDecoration.blendDirectionTracker_maybe[negativeY];
-                            lightness -= SceneTile.blendedLightness_maybe[negativeY];
-                            hueMultiplier -= MovedStatics.blendedHueMultiplier_maybe[negativeY];
-                            hue -= Class40_Sub5_Sub17_Sub6.blendedHue_maybe[negativeY];
+                            saturation -= Class59.blendedSaturation[negativeY];
+                            direction -= FloorDecoration.blendDirectionTracker[negativeY];
+                            lightness -= SceneTile.blendedLightness[negativeY];
+                            hueMultiplier -= MovedStatics.blendedHueMultiplier[negativeY];
+                            hue -= Class40_Sub5_Sub17_Sub6.blendedHue[negativeY];
                         }
                         if(y >= 1 && y < 103 && (!VertexNormal.lowMemory || (0x2 & OverlayDefinition.tile_flags[0][x][y]) != 0 || (0x10 & OverlayDefinition.tile_flags[_plane][x][y]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(_plane, y, 0, x))) {
                             if(MovedStatics.lowestPlane > _plane)
@@ -157,19 +157,19 @@ public class ISAAC {
                                 int vertexHeightSE = MovedStatics.tile_height[_plane][x + 1][y];
                                 int vertexHeightNE = MovedStatics.tile_height[_plane][x + 1][1 + y];
                                 int vertexHeightNW = MovedStatics.tile_height[_plane][x][y + 1];
-                                int lightIntensitySW = AnimationSequence.tileLightIntensity_maybe[x][y];
-                                int lightIntensitySE = AnimationSequence.tileLightIntensity_maybe[x + 1][y];
-                                int lightIntensityNE = AnimationSequence.tileLightIntensity_maybe[x + 1][y + 1];
+                                int lightIntensitySW = AnimationSequence.tileLightIntensity[x][y];
+                                int lightIntensitySE = AnimationSequence.tileLightIntensity[x + 1][y];
+                                int lightIntensityNE = AnimationSequence.tileLightIntensity[x + 1][y + 1];
                                 int hslBitsetOriginal = -1;
-                                int lightIntensityNW = AnimationSequence.tileLightIntensity_maybe[x][y + 1];
+                                int lightIntensityNW = AnimationSequence.tileLightIntensity[x][y + 1];
                                 int hslBitsetRandomised = -1;
                                 if(underlayId > 0) {
                                     int h = 256 * hue / hueMultiplier;
                                     int s = saturation / direction;
                                     int l = lightness / direction;
                                     hslBitsetOriginal = Class13.generateHslBitset(s, l, h);
-                                    l += Actor.randomiserLightness_maybe;
-                                    h = h + Class40_Sub5_Sub15.randomiserHue_maybe & 0xff;
+                                    l += Actor.randomiserLightness;
+                                    h = h + Class40_Sub5_Sub15.randomiserHue & 0xff;
                                     if(l >= 0) {
                                         if(l > 255)
                                             l = 255;
@@ -205,8 +205,8 @@ public class ISAAC {
                                         overlayMinimapColour = -2;
                                     } else {
                                         hslBitset = Class13.generateHslBitset(overlayDefinition.lightness, overlayDefinition.saturation, overlayDefinition.hue);
-                                        int h = Class40_Sub5_Sub15.randomiserHue_maybe + overlayDefinition.hue & 0xff;
-                                        int s = Actor.randomiserLightness_maybe + overlayDefinition.saturation;
+                                        int h = Class40_Sub5_Sub15.randomiserHue + overlayDefinition.hue & 0xff;
+                                        int s = Actor.randomiserLightness + overlayDefinition.saturation;
                                         if(s < 0)
                                             s = 0;
                                         else if(s > 255)
@@ -217,8 +217,8 @@ public class ISAAC {
                                     if(overlayMinimapColour != -2)
                                         rgb = Rasterizer3D.hsl2rgb[MovedStatics.mixLightnessSigned(overlayMinimapColour, 96, true)];
                                     if(overlayDefinition.secondaryColor != -1) {
-                                        int i_54_ = 0xff & Class40_Sub5_Sub15.randomiserHue_maybe + overlayDefinition.otherHue;
-                                        int i_55_ = overlayDefinition.otherSaturation + Actor.randomiserLightness_maybe;
+                                        int i_54_ = 0xff & Class40_Sub5_Sub15.randomiserHue + overlayDefinition.otherHue;
+                                        int i_55_ = overlayDefinition.otherSaturation + Actor.randomiserLightness;
                                         if(i_55_ >= 0) {
                                             if(i_55_ > 255)
                                                 i_55_ = 255;
@@ -243,7 +243,7 @@ public class ISAAC {
             MouseHandler.tile_overlayids[_plane] = null;
             OverlayDefinition.tile_underlay_path[_plane] = null;
             Class35.tile_overlay_rotation[_plane] = null;
-            InteractiveObject.tileShadowIntensity_maybe[_plane] = null;
+            InteractiveObject.tileShadowIntensity[_plane] = null;
         }
         scene.method118(-50, -10, -50);
         for(int i = 0; i < 104; i++) {

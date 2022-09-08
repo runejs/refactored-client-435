@@ -418,8 +418,8 @@ public class Projectile extends Renderable {
                                     int i_45_ = class40_sub5_sub17_sub5.method805() / 4;
                                     if(i_45_ > 30)
                                         i_45_ = 30;
-                                    if(i_45_ > InteractiveObject.tileShadowIntensity_maybe[plane][localX + i_43_][localY + i_44_])
-                                        InteractiveObject.tileShadowIntensity_maybe[plane][i_43_ + localX][localY + i_44_] = (byte) i_45_;
+                                    if(i_45_ > InteractiveObject.tileShadowIntensity[plane][localX + i_43_][localY + i_44_])
+                                        InteractiveObject.tileShadowIntensity[plane][i_43_ + localX][localY + i_44_] = (byte) i_45_;
                                 }
                             }
                         }
@@ -447,29 +447,29 @@ public class Projectile extends Renderable {
                 scene.addWall(localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face], 0, hash, renderable, null, objectConfig);
                 if(face == 0) {
                     if(gameObjectDefinition.castsShadow) {
-                        InteractiveObject.tileShadowIntensity_maybe[plane][localX][localY] = (byte) 50;
-                        InteractiveObject.tileShadowIntensity_maybe[plane][localX][localY + 1] = (byte) 50;
+                        InteractiveObject.tileShadowIntensity[plane][localX][localY] = (byte) 50;
+                        InteractiveObject.tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
                         MovedStatics.tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.tileCullingBitsets[plane][localX][localY], 585);
                 } else if(face == 1) {
                     if(gameObjectDefinition.castsShadow) {
-                        InteractiveObject.tileShadowIntensity_maybe[plane][localX][localY + 1] = (byte) 50;
-                        InteractiveObject.tileShadowIntensity_maybe[plane][localX + 1][1 + localY] = (byte) 50;
+                        InteractiveObject.tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
+                        InteractiveObject.tileShadowIntensity[plane][localX + 1][1 + localY] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
                         MovedStatics.tileCullingBitsets[plane][localX][localY + 1] = BitUtils.bitWiseOR(MovedStatics.tileCullingBitsets[plane][localX][localY + 1], 1170);
                 } else if(face == 2) {
                     if(gameObjectDefinition.castsShadow) {
-                        InteractiveObject.tileShadowIntensity_maybe[plane][1 + localX][localY] = (byte) 50;
-                        InteractiveObject.tileShadowIntensity_maybe[plane][localX + 1][1 + localY] = (byte) 50;
+                        InteractiveObject.tileShadowIntensity[plane][1 + localX][localY] = (byte) 50;
+                        InteractiveObject.tileShadowIntensity[plane][localX + 1][1 + localY] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
                         MovedStatics.tileCullingBitsets[plane][localX + 1][localY] = BitUtils.bitWiseOR(MovedStatics.tileCullingBitsets[plane][localX + 1][localY], 585);
                 } else if(face == 3) {
                     if(gameObjectDefinition.castsShadow) {
-                        InteractiveObject.tileShadowIntensity_maybe[plane][localX][localY] = (byte) 50;
-                        InteractiveObject.tileShadowIntensity_maybe[plane][localX + 1][localY] = (byte) 50;
+                        InteractiveObject.tileShadowIntensity[plane][localX][localY] = (byte) 50;
+                        InteractiveObject.tileShadowIntensity[plane][localX + 1][localY] = (byte) 50;
                     }
                     if(gameObjectDefinition.wall)
                         MovedStatics.tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(MovedStatics.tileCullingBitsets[plane][localX][localY], 1170);
@@ -487,13 +487,13 @@ public class Projectile extends Renderable {
                 scene.addWall(localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
                 if(gameObjectDefinition.castsShadow) {
                     if(face == 0)
-                        InteractiveObject.tileShadowIntensity_maybe[plane][localX][localY + 1] = (byte) 50;
+                        InteractiveObject.tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
                     else if(face == 1)
-                        InteractiveObject.tileShadowIntensity_maybe[plane][localX + 1][1 + localY] = (byte) 50;
+                        InteractiveObject.tileShadowIntensity[plane][localX + 1][1 + localY] = (byte) 50;
                     else if(face == 2)
-                        InteractiveObject.tileShadowIntensity_maybe[plane][localX + 1][localY] = (byte) 50;
+                        InteractiveObject.tileShadowIntensity[plane][localX + 1][localY] = (byte) 50;
                     else if(face == 3)
-                        InteractiveObject.tileShadowIntensity_maybe[plane][localX][localY] = (byte) 50;
+                        InteractiveObject.tileShadowIntensity[plane][localX][localY] = (byte) 50;
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
@@ -538,13 +538,13 @@ public class Projectile extends Renderable {
                 if(gameObjectDefinition.castsShadow) {
                     if(face != 0) {
                         if(face == 1)
-                            InteractiveObject.tileShadowIntensity_maybe[plane][1 + localX][localY + 1] = (byte) 50;
+                            InteractiveObject.tileShadowIntensity[plane][1 + localX][localY + 1] = (byte) 50;
                         else if(face == 2)
-                            InteractiveObject.tileShadowIntensity_maybe[plane][localX + 1][localY] = (byte) 50;
+                            InteractiveObject.tileShadowIntensity[plane][localX + 1][localY] = (byte) 50;
                         else if(face == 3)
-                            InteractiveObject.tileShadowIntensity_maybe[plane][localX][localY] = (byte) 50;
+                            InteractiveObject.tileShadowIntensity[plane][localX][localY] = (byte) 50;
                     } else
-                        InteractiveObject.tileShadowIntensity_maybe[plane][localX][localY + 1] = (byte) 50;
+                        InteractiveObject.tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
                 }
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
