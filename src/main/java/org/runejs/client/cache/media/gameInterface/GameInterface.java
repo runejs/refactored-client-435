@@ -593,7 +593,7 @@ public class GameInterface extends CachedNode {
                 SceneCluster.packetBuffer.putShortLE((0x1ffffd20 & npcIdx) >> 14);
                 SceneCluster.packetBuffer.putShortLE(Class26.baseY + i_10_);
             }
-            if(action == 1) {
+            if(action == ActionRowType.MAGIC_ON_PLAYER.getId()) {
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[npcIdx];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
@@ -1012,7 +1012,7 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortBE(npcIdx);
                         SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
                     }
-                    if(action == 21) {
+                    if(action == ActionRowType.MAGIC_ON_NPC.getId()) {
                         Npc npc = Player.npcs[npcIdx];
                         if(npc != null) {
                             Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], npc.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], npc.pathX[0], 2);

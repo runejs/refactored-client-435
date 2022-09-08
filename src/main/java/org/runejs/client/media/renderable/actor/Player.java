@@ -398,7 +398,7 @@ public class Player extends Actor {
                 MovedStatics.addActionRow(English.use, index, x, y, 22, Native.aClass1_3295 + Native.aClass1_3068 + rsString);
             } else if (Main.widgetSelected == 1) {
                 if ((ItemDefinition.selectedMask & 0x8) == 8) {
-                    MovedStatics.addActionRow(Native.aClass1_1918, index, x, y, 1, Native.aClass1_611 + Native.aClass1_3068 + rsString);
+                    MovedStatics.addActionRow(Native.aClass1_1918, index, x, y, ActionRowType.MAGIC_ON_PLAYER.getId(), Native.aClass1_611 + Native.aClass1_3068 + rsString);
                 }
             } else {
                 for (int i = 4; i >= 0; i--) {

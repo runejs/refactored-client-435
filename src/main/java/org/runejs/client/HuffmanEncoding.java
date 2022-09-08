@@ -116,7 +116,7 @@ public class HuffmanEncoding {
                     MovedStatics.addActionRow(English.use, index, x, y, 49, Native.aClass1_3295 + Native.toYellow + class1);
                 } else if (Main.widgetSelected == 1) {
                     if ((0x2 & ItemDefinition.selectedMask) == 2) {
-                        MovedStatics.addActionRow(Native.aClass1_1918, index, x, y, 21, Native.aClass1_611 + Native.toYellow + class1);
+                        MovedStatics.addActionRow(Native.aClass1_1918, index, x, y, ActionRowType.MAGIC_ON_NPC.getId(), Native.aClass1_611 + Native.toYellow + class1);
                     }
                 } else {
                     String[] class1s = actorDefinition.options;
