@@ -1383,8 +1383,8 @@ public class MovedStatics {
 	                                                }
 	                                                addActionRow(English.examine, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId(), examineText.toString());
 	                                            }
-	                                        } else if(ISAAC.anInt525 != gameInterface.id || i_4_ != LinkedList.anInt1061) {
-	                                            addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, 56, Native.aClass1_3295+ Native.toLightRed + itemDefinition.name);
+	                                        } else if(ISAAC.anInt525 != gameInterface.id || i_4_ != LinkedList.selectedInventorySlot) {
+	                                            addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.ITEM_USE_ON_INVENTORY_ITEM.getId(), Native.aClass1_3295+ Native.toLightRed + itemDefinition.name);
 	                                        }
 	                                    }
 	                                }

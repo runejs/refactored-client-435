@@ -94,6 +94,11 @@ public enum ActionRowType {
      */
     ITEM_ON_V2_WIDGET_INTERACTION_OPTION_1(52),
 
+    /**
+     * For when the player uses an inventory item on another.
+     */
+    ITEM_USE_ON_INVENTORY_ITEM(56),
+
     EXAMINE_NPC(1001),
     EXAMINE_ITEM(1003),
     EXAMINE_OBJECT(1004),

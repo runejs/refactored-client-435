@@ -748,12 +748,12 @@ public class GameInterface extends CachedNode {
                     SceneCluster.packetBuffer.putShortLE(npcIdx);
                     SceneCluster.packetBuffer.putIntME1(ISAAC.anInt525);
                     SceneCluster.packetBuffer.putShortBE(Class49.anInt1154);
-                    SceneCluster.packetBuffer.putShortBE(LinkedList.anInt1061);
+                    SceneCluster.packetBuffer.putShortBE(LinkedList.selectedInventorySlot);
                 }
             }
             if(action == ActionRowType.ITEM_ON_WIDGET_USE.getId()) {
                 Class49.anInt1154 = npcIdx;
-                LinkedList.anInt1061 = i;
+                LinkedList.selectedInventorySlot = i;
                 ISAAC.anInt525 = i_10_;
                 MovedStatics.itemSelected = 1;
                 Native.aClass1_3295 = Native.lightRed + ItemDefinition.forId(npcIdx, 10).name + Native.white;
@@ -867,7 +867,7 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putPacket(208);
                         SceneCluster.packetBuffer.putShortBE(npcIdx);
                         SceneCluster.packetBuffer.putShortBE(Class49.anInt1154);
-                        SceneCluster.packetBuffer.putShortLE(LinkedList.anInt1061);
+                        SceneCluster.packetBuffer.putShortLE(LinkedList.selectedInventorySlot);
                         SceneCluster.packetBuffer.putIntBE(ISAAC.anInt525);
                     }
                 }
@@ -883,7 +883,7 @@ public class GameInterface extends CachedNode {
                     SceneCluster.packetBuffer.putShortLE(i_10_ + Class26.baseY);
                     SceneCluster.packetBuffer.putShortBE(Class49.anInt1154);
                     SceneCluster.packetBuffer.putShortLE((npcIdx & 0x1fffccf7) >> 14);
-                    SceneCluster.packetBuffer.putShortLE(LinkedList.anInt1061);
+                    SceneCluster.packetBuffer.putShortLE(LinkedList.selectedInventorySlot);
                     SceneCluster.packetBuffer.putIntME1(ISAAC.anInt525);
                     SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
                 }
@@ -899,14 +899,14 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortBE(npcIdx);
                     }
                 }
-                if(action == 56) {
+                if(action == ActionRowType.ITEM_USE_ON_INVENTORY_ITEM.getId()) {
                     SceneCluster.packetBuffer.putPacket(40);
                     SceneCluster.packetBuffer.putShortLE(npcIdx);
                     SceneCluster.packetBuffer.putShortLE(i);
                     SceneCluster.packetBuffer.putIntLE(i_10_);
                     SceneCluster.packetBuffer.putIntLE(ISAAC.anInt525);
                     SceneCluster.packetBuffer.putShortLE(Class49.anInt1154);
-                    SceneCluster.packetBuffer.putShortBE(LinkedList.anInt1061);
+                    SceneCluster.packetBuffer.putShortBE(LinkedList.selectedInventorySlot);
                     PlayerAppearance.anInt704 = i_10_;
                     RSRuntimeException.anInt1651 = 0;
                     GenericTile.anInt1233 = i;
@@ -933,7 +933,7 @@ public class GameInterface extends CachedNode {
                         redrawTabArea = true;
                     }
                 } else {
-                    if(action == 1007) {
+                    if(action == ActionRowType.EXAMINE_ITEM_ON_V2_WIDGET.getId()) {
                         GameInterface gameInterface = getInterface(i_10_);
                         if(gameInterface != null && gameInterface.children != null && i != -1) {
                             gameInterface = gameInterface.children[i];
@@ -1276,7 +1276,7 @@ public class GameInterface extends CachedNode {
                         LinkedList.crossType = 2;
                         SceneCluster.packetBuffer.putPacket(172);
                         SceneCluster.packetBuffer.putShortBE(i + MovedStatics.baseX);
-                        SceneCluster.packetBuffer.putShortBE(LinkedList.anInt1061);
+                        SceneCluster.packetBuffer.putShortBE(LinkedList.selectedInventorySlot);
                         SceneCluster.packetBuffer.putShortBE(npcIdx);
                         SceneCluster.packetBuffer.putIntME2(ISAAC.anInt525);
                         SceneCluster.packetBuffer.putShortLE(Class26.baseY + i_10_);

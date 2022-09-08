@@ -186,7 +186,7 @@ public class Main extends GameShell {
                                     int i_14_ = 0;
                                     if (-32 + Rasterizer.viewportLeft < i_10_ && Rasterizer.viewportRight > i_10_ && Rasterizer.viewportTop + -32 < i_11_ && Rasterizer.viewportBottom > i_11_ || SceneTile.activeInterfaceType != 0 && GroundItemTile.selectedInventorySlot == i_7_) {
                                         int i_15_ = 0;
-                                        if (MovedStatics.itemSelected == 1 && i_7_ == LinkedList.anInt1061 && gameInterface.id == ISAAC.anInt525)
+                                        if (MovedStatics.itemSelected == 1 && i_7_ == LinkedList.selectedInventorySlot && gameInterface.id == ISAAC.anInt525)
                                             i_15_ = 16777215;
                                         ImageRGB imageRGB = ItemDefinition.sprite(gameInterface.itemAmounts[i_7_], i_13_, i_15_);
                                         if (imageRGB == null)

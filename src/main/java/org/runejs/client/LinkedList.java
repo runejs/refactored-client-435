@@ -14,7 +14,7 @@ import java.awt.*;
 
 public class LinkedList {
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_1057;
-    public static int anInt1061;
+    public static int selectedInventorySlot;
     public static LinkedList aLinkedList_1064 = new LinkedList();
     public static int[] anIntArray1071;
     public static volatile int anInt1073 = 0;
