@@ -37,35 +37,73 @@ public enum ActionRowType {
      */
     BUTTON_SET_VARP_VALUE(57),
 
-    MAGIC_ON_PLAYER(1),
-    // this one is read on the server as 'option 5' - which is correct?
-    ITEM_ON_V2_WIDGET_INTERACTION_OPTION_2(6),
-
     WALK_HERE(7),
     DROP_ITEM(11),
+
     REMOVE_FRIEND(13),
     MESSAGE_FRIEND(18),
+    REMOVE_IGNORE(35),
+    // @TODO (jameskmonger) do these need CHATBOX_ prefix?
+    CHATBOX_ADD_FRIEND(45),
+    CHATBOX_ACCEPT_CHALLENGE(46),
+    CHATBOX_ADD_IGNORE(51),
+    CHATBOX_ACCEPT_TRADE(26),
+    CHATBOX_REPORT_ABUSE(28),
+
+    /**
+     * The "Cast" option on a spell inside a spell list
+     */
+    SELECT_SPELL_ON_WIDGET(33),
     /**
      * The initial 'use' on an item in the inventory (to select it)
      */
     ITEM_ON_WIDGET_USE(19),
+
+    ITEM_ON_PLAYER(22),
+
+    ITEM_ON_NPC(49),
+
+    /**
+     * For when the player uses an inventory item on another.
+     */
+    ITEM_USE_ON_INVENTORY_ITEM(56),
+
+    /**
+     * Player uses an item on an object
+     */
+    ITEM_USE_ON_OBJECT(5),
+
+    /**
+     * Player uses an item on a world item
+     */
+    ITEM_USE_ON_WORLD_ITEM(47),
+
+    MAGIC_ON_PLAYER(1),
     MAGIC_ON_NPC(21),
+    MAGIC_ON_WIDGET_ITEM(37),
     MAGIC_ON_WORLD_ITEM(15),
     MAGIC_ON_OBJECT(32),
-    ITEM_ON_PLAYER(22),
-    CHATBOX_ACCEPT_TRADE(26),
-    CHATBOX_REPORT_ABUSE(28),
+
     /**
-     * Used for the 'interact' options on an item on a V1 (old format) interface
-     * 
-     * For example, these are the 5 options when you right-click an item in a shop.
+     * The first Player interaction option
      */
-    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_1(53),
-    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_2(25),
-    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_3(55),
-    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_4(48),
-    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_5(24),
-    ITEM_ON_V2_WIDGET_INTERACTION_OPTION_3(31),
+    PLAYER_INTERACTION_OPTION_1(10),
+    /**
+     * The second Player interaction option
+     */
+    PLAYER_INTERACTION_OPTION_2(39),
+    /**
+     * The third Player interaction option
+     */
+    PLAYER_INTERACTION_OPTION_3(44),
+    /**
+     * The fourth Player interaction option
+     */
+    PLAYER_INTERACTION_OPTION_4(14),
+    /**
+     * The fifth Player interaction option
+     */
+    PLAYER_INTERACTION_OPTION_5(41),
 
     /**
      * The first NPC interaction option
@@ -92,33 +130,6 @@ public enum ActionRowType {
      */
     NPC_INTERACTION_OPTION_5(20),
 
-
-    /**
-     * The first Player interaction option
-     */
-    PLAYER_INTERACTION_OPTION_1(10),
-    /**
-     * The second Player interaction option
-     */
-    PLAYER_INTERACTION_OPTION_2(39),
-    /**
-     * The third Player interaction option
-     */
-    PLAYER_INTERACTION_OPTION_3(44),
-    /**
-     * The fourth Player interaction option
-     */
-    PLAYER_INTERACTION_OPTION_4(14),
-    /**
-     * The fifth Player interaction option
-     */
-    PLAYER_INTERACTION_OPTION_5(41),
-
-    /**
-     * Player uses an item on an object
-     */
-    ITEM_USE_ON_OBJECT(5),
-
     /**
      * The first object interaction option
      */
@@ -142,12 +153,6 @@ public enum ActionRowType {
      */
     OBJECT_INTERACTION_OPTION_5(1002),
 
-
-    /**
-     * Player uses an item on a world item
-     */
-    ITEM_USE_ON_WORLD_ITEM(47),
-
     /**
      * The first world item interaction option
      */
@@ -170,30 +175,29 @@ public enum ActionRowType {
     WORLD_ITEM_INTERACTION_OPTION_5(36),
 
     /**
-     * The "Cast" option on a spell inside a spell list
+     * Used for the 'interact' options on an item on a V1 (old format) interface
+     *
+     * For example, these are the 5 options when you right-click an item in a shop.
      */
-    SELECT_SPELL_ON_WIDGET(33),
-    REMOVE_IGNORE(35),
-    MAGIC_ON_WIDGET_ITEM(37),
-    ITEM_ON_V2_WIDGET_INTERACTION_OPTION_4(43),
-    // @TODO (jameskmonger) do these need CHATBOX_ prefix?
-    CHATBOX_ADD_FRIEND(45),
-    CHATBOX_ACCEPT_CHALLENGE(46),
-    ITEM_ON_NPC(49),
-    CHATBOX_ADD_IGNORE(51),
+    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_1(53),
+    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_2(25),
+    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_3(55),
+    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_4(48),
+    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_5(24),
+
     /**
      * Used for the 'interact' options on an item on a V2 (new format) interface
      */
     ITEM_ON_V2_WIDGET_INTERACTION_OPTION_1(52),
-
-    /**
-     * For when the player uses an inventory item on another.
-     */
-    ITEM_USE_ON_INVENTORY_ITEM(56),
+    // this one is read on the server as 'option 5' - which is correct?
+    ITEM_ON_V2_WIDGET_INTERACTION_OPTION_2(6),
+    ITEM_ON_V2_WIDGET_INTERACTION_OPTION_3(31),
+    ITEM_ON_V2_WIDGET_INTERACTION_OPTION_4(43),
 
     EXAMINE_NPC(1001),
     EXAMINE_ITEM(1003),
     EXAMINE_OBJECT(1004),
+    // TODO (jameskmonger) 1005 has some significance, what is it?
     EXAMINE_ITEM_ON_V1_WIDGET(1006),
     EXAMINE_ITEM_ON_V2_WIDGET(1007);
 
