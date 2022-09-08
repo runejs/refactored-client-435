@@ -128,6 +128,34 @@ public enum ActionRowType {
     PLAYER_INTERACTION_OPTION_5(41),
 
     /**
+     * Player uses an item on an object
+     */
+    ITEM_USE_ON_OBJECT(5),
+
+    /**
+     * The first object interaction option
+     */
+    OBJECT_INTERACTION_OPTION_1(16),
+    /**
+     * The second object interaction option
+     */
+    OBJECT_INTERACTION_OPTION_2(29),
+    /**
+     * The third object interaction option
+     */
+    OBJECT_INTERACTION_OPTION_3(17),
+    /**
+     * The fourth object interaction option
+     */
+    OBJECT_INTERACTION_OPTION_4(27),
+    /**
+     * The fifth object interaction option
+     *
+     * (jameskmonger) why is this so high? it sits with the Examine ids
+     */
+    OBJECT_INTERACTION_OPTION_5(1002),
+
+    /**
      * The "Cast" option on a spell inside a spell list
      */
     SELECT_SPELL_ON_WIDGET(33),

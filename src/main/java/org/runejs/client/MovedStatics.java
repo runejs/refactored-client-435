@@ -860,7 +860,7 @@ public class MovedStatics {
                     if (gameObjectDefinition == null)
                         continue;
                     if (MovedStatics.itemSelected == 1) {
-                        addActionRow(English.use, hash, x, y, 5, Native.selectedItemName + Native.toCyan + gameObjectDefinition.name);
+                        addActionRow(English.use, hash, x, y, ActionRowType.ITEM_USE_ON_OBJECT.getId(), Native.selectedItemName + Native.toCyan + gameObjectDefinition.name);
                     } else if (Main.widgetSelected != 1) {
                         String[] options = gameObjectDefinition.actions;
                         if (Class60.DEBUG_DISPLAY_ALL_ACTION_ROWS)
@@ -870,15 +870,15 @@ public class MovedStatics {
                                 if (options[i_7_] != null) {
                                     int actionType = 0;
                                     if (i_7_ == 0)
-                                        actionType = 16;
+                                        actionType = ActionRowType.OBJECT_INTERACTION_OPTION_1.getId();
                                     if (i_7_ == 1)
-                                        actionType = 29;
+                                        actionType = ActionRowType.OBJECT_INTERACTION_OPTION_2.getId();
                                     if (i_7_ == 2)
-                                        actionType = 17;
+                                        actionType = ActionRowType.OBJECT_INTERACTION_OPTION_3.getId();
                                     if (i_7_ == 3)
-                                        actionType = 27;
+                                        actionType = ActionRowType.OBJECT_INTERACTION_OPTION_4.getId();
                                     if (i_7_ == 4)
-                                        actionType = 1002;
+                                        actionType = ActionRowType.OBJECT_INTERACTION_OPTION_5.getId();
                                     addActionRow(options[i_7_], hash, x, y, actionType, Native.cyan + gameObjectDefinition.name);
                                 }
                             }
@@ -905,6 +905,7 @@ public class MovedStatics {
                         }
                         addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, ActionRowType.EXAMINE_OBJECT.getId(), examineText.toString());
                     } else if ((ItemDefinition.selectedMask & 0x4) == 4) {
+                        // TODO (jameskmonger) probably magic on object
                         addActionRow(Native.selectedSpellVerb, hash, x, y, 32, Native.selectedSpellName + Native.toCyan + gameObjectDefinition.name);
                     }
                 }
