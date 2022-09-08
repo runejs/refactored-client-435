@@ -1264,12 +1264,12 @@ public class MovedStatics {
 	                        addActionRow(gameInterface.targetVerb, 0, 0, gameInterface.id, ActionRowType.SELECT_SPELL_ON_WIDGET.getId(), Native.green + gameInterface.spellName);
 	                    }
 	                    if(gameInterface.actionType == 3 && mouseX >= i_2_ && mouseY >= i_1_ && i_2_ + gameInterface.originalWidth > mouseX && mouseY < i_1_ + gameInterface.originalHeight) {
-	                        int i_3_;
+	                        int actionType;
 	                        if(areaId != 3)
-	                            i_3_ = 9;
+	                            actionType = 9;
 	                        else
-	                            i_3_ = 40;
-	                        addActionRow(English.close, 0, 0, gameInterface.id, i_3_, "");
+                                actionType = 40;
+	                        addActionRow(English.close, 0, 0, gameInterface.id, actionType, "");
 	                    }
 	                    if(gameInterface.actionType == 4 && mouseX >= i_2_ && i_1_ <= mouseY && mouseX < gameInterface.originalWidth + i_2_ && gameInterface.originalHeight + i_1_ > mouseY) {
 	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 23, "");
@@ -1342,18 +1342,18 @@ public class MovedStatics {
 	                                                if(class1s != null) {
 	                                                    for(int i_13_ = 4; i_13_ >= 0; i_13_--) {
 	                                                        if(class1s[i_13_] != null) {
-	                                                            int i_14_ = 0;
+	                                                            int actionType = 0;
 	                                                            if(i_13_ == 0)
-	                                                                i_14_ = 53;
+	                                                                actionType = ActionRowType.ITEM_ON_V1_WIDGET_INTERACTION_OPTION_1.getId();
 	                                                            if(i_13_ == 1)
-	                                                                i_14_ = 25;
+	                                                                actionType = ActionRowType.ITEM_ON_V1_WIDGET_INTERACTION_OPTION_2.getId();
 	                                                            if(i_13_ == 2)
-	                                                                i_14_ = 55;
+	                                                                actionType = ActionRowType.ITEM_ON_V1_WIDGET_INTERACTION_OPTION_3.getId();
 	                                                            if(i_13_ == 3)
-	                                                                i_14_ = 48;
+	                                                                actionType = ActionRowType.ITEM_ON_V1_WIDGET_INTERACTION_OPTION_4.getId();
 	                                                            if(i_13_ == 4)
-	                                                                i_14_ = 24;
-	                                                            addActionRow(class1s[i_13_], itemDefinition.id, i_4_, gameInterface.id, i_14_, Native.lightRed + itemDefinition.name);
+	                                                                actionType = ActionRowType.ITEM_ON_V1_WIDGET_INTERACTION_OPTION_5.getId();
+	                                                            addActionRow(class1s[i_13_], itemDefinition.id, i_4_, gameInterface.id, actionType, Native.lightRed + itemDefinition.name);
 	                                                        }
 	                                                    }
 	                                                }
@@ -1399,9 +1399,9 @@ public class MovedStatics {
 	                                addActionRow(class1s[0], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.ITEM_ON_V2_WIDGET_INTERACTION_OPTION_1.getId(), Native.lightRed + itemDefinition.name);
 	                        }
 	                        if(gameInterface.id >= 0)
-	                            addActionRow(English.examine, itemDefinition.id, -1, gameInterface.id, 1007, Native.lightRed + itemDefinition.name);
+	                            addActionRow(English.examine, itemDefinition.id, -1, gameInterface.id, ActionRowType.EXAMINE_ITEM_ON_V2_WIDGET.getId(), Native.lightRed + itemDefinition.name);
 	                        else
-	                            addActionRow(English.examine, itemDefinition.id, gameInterface.id & 0x7fff, gameInterface.parentId, 1007, Native.lightRed + itemDefinition.name);
+	                            addActionRow(English.examine, itemDefinition.id, gameInterface.id & 0x7fff, gameInterface.parentId, ActionRowType.EXAMINE_ITEM_ON_V2_WIDGET.getId(), Native.lightRed + itemDefinition.name);
 	                    }
 	                    if(gameInterface.hasListeners && gameInterface.aClass1Array2661 != null && i_2_ <= mouseX && i_1_ <= mouseY && gameInterface.originalWidth + i_2_ > mouseX && mouseY < i_1_ + gameInterface.originalHeight) {
 	                        String class1 = "";

@@ -634,7 +634,7 @@ public class GameInterface extends CachedNode {
                     }
                 }
             }
-            if(action == 55) {
+            if(action == ActionRowType.ITEM_ON_V1_WIDGET_INTERACTION_OPTION_3.getId()) {
                 SceneCluster.packetBuffer.putPacket(26);
                 SceneCluster.packetBuffer.putShortBE(i);
                 SceneCluster.packetBuffer.putIntLE(i_10_);
@@ -650,7 +650,7 @@ public class GameInterface extends CachedNode {
                     Projectile.atInventoryInterfaceType = 3;
                 }
             }
-            if(action == 53) {
+            if(action == ActionRowType.ITEM_ON_V1_WIDGET_INTERACTION_OPTION_1.getId()) {
                 SceneCluster.packetBuffer.putPacket(38);
                 SceneCluster.packetBuffer.putShortBE(npcIdx);
                 SceneCluster.packetBuffer.putShortLE(i);
@@ -790,7 +790,7 @@ public class GameInterface extends CachedNode {
                         redrawTabArea = true;
                     }
                 }
-                if(action == 48) {
+                if(action == ActionRowType.ITEM_ON_V1_WIDGET_INTERACTION_OPTION_4.getId()) {
                     SceneCluster.packetBuffer.putPacket(147);
                     SceneCluster.packetBuffer.putShortBE(npcIdx);
                     SceneCluster.packetBuffer.putShortLE(i);
@@ -1107,7 +1107,7 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putIntME1(Class60.anInt1417);
                         SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
                     }
-                    if(action == 25) {
+                    if(action == ActionRowType.ITEM_ON_V1_WIDGET_INTERACTION_OPTION_2.getId()) {
                         SceneCluster.packetBuffer.putPacket(228);
                         SceneCluster.packetBuffer.putShortLE(npcIdx);
                         SceneCluster.packetBuffer.putIntLE(i_10_);
@@ -1230,7 +1230,7 @@ public class GameInterface extends CachedNode {
                             SceneCluster.packetBuffer.putShortLE(npcIdx);
                         }
                     }
-                    if(action == 24) {
+                    if(action == ActionRowType.ITEM_ON_V1_WIDGET_INTERACTION_OPTION_5.getId()) {
                         SceneCluster.packetBuffer.putPacket(124);
                         SceneCluster.packetBuffer.putShortBE(i);
                         SceneCluster.packetBuffer.putIntLE(i_10_);

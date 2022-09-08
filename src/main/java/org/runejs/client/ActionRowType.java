@@ -49,6 +49,7 @@ public enum ActionRowType {
 
 
     MAGIC_ON_PLAYER(1),
+    // this one is read on the server as 'option 5' - which is correct?
     ITEM_ON_V2_WIDGET_INTERACTION_OPTION_2(6),
     DROP_ITEM(11),
     REMOVE_FRIEND(13),
@@ -61,6 +62,16 @@ public enum ActionRowType {
     ITEM_ON_PLAYER(22),
     CHATBOX_ACCEPT_TRADE(26),
     CHATBOX_REPORT_ABUSE(28),
+    /**
+     * Used for the 'interact' options on an item on a V1 (old format) interface
+     * 
+     * For example, these are the 5 options when you right-click an item in a shop.
+     */
+    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_1(53),
+    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_2(25),
+    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_3(55),
+    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_4(48),
+    ITEM_ON_V1_WIDGET_INTERACTION_OPTION_5(24),
     ITEM_ON_V2_WIDGET_INTERACTION_OPTION_3(31),
     /**
      * The "Cast" option on a spell inside a spell list
@@ -75,14 +86,15 @@ public enum ActionRowType {
     ITEM_ON_NPC(49),
     CHATBOX_ADD_IGNORE(51),
     /**
-     * Used for the 'interact' options on an item on an interface
+     * Used for the 'interact' options on an item on a V2 (new format) interface
      */
     ITEM_ON_V2_WIDGET_INTERACTION_OPTION_1(52),
 
     EXAMINE_NPC(1001),
     EXAMINE_ITEM(1003),
     EXAMINE_OBJECT(1004),
-    EXAMINE_ITEM_ON_V1_WIDGET(1006);
+    EXAMINE_ITEM_ON_V1_WIDGET(1006),
+    EXAMINE_ITEM_ON_V2_WIDGET(1007);
 
     private final int id;
 
