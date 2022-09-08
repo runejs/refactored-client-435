@@ -1386,7 +1386,7 @@ public class MovedStatics {
 	                            if(Class60.aBoolean1402)
 	                                class1s = method968(class1s);
 	                            if(class1s == null || class1s[4] == null)
-	                                addActionRow(English.drop, itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.DROP_ITEM.getId(), , Native.lightRed +itemDefinition.name);
+	                                addActionRow(English.drop, itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.DROP_ITEM.getId(), Native.lightRed +itemDefinition.name);
 	                            else
 	                                addActionRow(class1s[4], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.DROP_ITEM.getId(), Native.lightRed + itemDefinition.name);
 	                            if(class1s != null && class1s[3] != null)
