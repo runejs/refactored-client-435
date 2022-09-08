@@ -403,30 +403,35 @@ public class Player extends Actor {
             } else {
                 for (int i = 4; i >= 0; i--) {
                     if (Main.playerActions[i] != null) {
-                        int i_16_ = 0;
-                        int i_17_ = 0;
+                        int actionType = 0;
+                        int actionRowOffset = 0;
+
                         if (Main.playerActions[i].equalsIgnoreCase(English.attack)) {
+                            // offset attack actions so that they are lower priority for players of higher combat lvl or the same team
                             if (localPlayer.combatLevel < player.combatLevel)
-                                i_17_ = 2000;
+                                actionRowOffset = 2000;
                             if (localPlayer.teamId != 0 && player.teamId != 0) {
                                 if (localPlayer.teamId != player.teamId)
-                                    i_17_ = 0;
+                                    actionRowOffset = 0;
                                 else
-                                    i_17_ = 2000;
+                                    actionRowOffset = 2000;
                             }
-                        } else if (Class13.playerArray[i])
-                            i_17_ = 2000;
+                        } else if (Class13.playerArray[i]) {
+                            // what is this for?
+                            actionRowOffset = 2000;
+                        }
+
                         if (i == 0)
-                            i_16_ = 10 + i_17_;
+                            actionType = ActionRowType.PLAYER_INTERACTION_OPTION_1.getId() + actionRowOffset;
                         if (i == 1)
-                            i_16_ = 39 + i_17_;
+                            actionType = ActionRowType.PLAYER_INTERACTION_OPTION_2.getId() + actionRowOffset;
                         if (i == 2)
-                            i_16_ = i_17_ + 44;
+                            actionType = ActionRowType.PLAYER_INTERACTION_OPTION_3.getId() + actionRowOffset;
                         if (i == 3)
-                            i_16_ = i_17_ + 14;
+                            actionType = ActionRowType.PLAYER_INTERACTION_OPTION_4.getId() + actionRowOffset;
                         if (i == 4)
-                            i_16_ = 41 + i_17_;
-                        MovedStatics.addActionRow(Main.playerActions[i], index, x, y, i_16_, Native.white + playerDisplayName);
+                            actionType = ActionRowType.PLAYER_INTERACTION_OPTION_5.getId() + actionRowOffset;
+                        MovedStatics.addActionRow(Main.playerActions[i], index, x, y, actionType, Native.white + playerDisplayName);
                     }
                 }
             }

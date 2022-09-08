@@ -103,6 +103,28 @@ public enum ActionRowType {
      */
     NPC_INTERACTION_OPTION_5(20),
 
+
+    /**
+     * The first Player interaction option
+     */
+    PLAYER_INTERACTION_OPTION_1(10),
+    /**
+     * The second Player interaction option
+     */
+    PLAYER_INTERACTION_OPTION_2(39),
+    /**
+     * The third Player interaction option
+     */
+    PLAYER_INTERACTION_OPTION_3(44),
+    /**
+     * The fourth Player interaction option
+     */
+    PLAYER_INTERACTION_OPTION_4(14),
+    /**
+     * The fifth Player interaction option
+     */
+    PLAYER_INTERACTION_OPTION_5(41),
+
     /**
      * The "Cast" option on a spell inside a spell list
      */
