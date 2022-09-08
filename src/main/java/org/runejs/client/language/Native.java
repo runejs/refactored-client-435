@@ -5,7 +5,7 @@ import org.runejs.client.RSString;
 public class Native {
 
     public static String aClass1_1123 = " ";
-    public static String aClass1_569 = " (";
+    public static String leftParenthesisWithSpacePrefix = " (";
     public static String aClass1_894 = " ->";
     public static String aClass1_1536 =" x ";
     public static RSString password = RSString.CreateString("");
@@ -22,7 +22,7 @@ public class Native {
     public static String percentOne = "%1";
     public static String percentThree = "%3";
     public static String percentFour = "%4";
-    public static String rightParenthasis = ")";
+    public static String rightParenthesis = ")";
     public static String aClass1_795 = ",";
     public static String aClass1_1348 = "0%";
     public static String prefixColon = ":  ";
@@ -126,6 +126,6 @@ public class Native {
     public static String yellowBar = "@yel@|";
     public static String justAnotherYellowBar = "@yel@|";
 
-    public static String leftParenthasis = "(";
+    public static String leftParenthesis = "(";
     public static String colon =":";
 }

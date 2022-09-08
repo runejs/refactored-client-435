@@ -110,7 +110,7 @@ public class HuffmanEncoding {
             if (actorDefinition != null && actorDefinition.isClickable) {
                 String class1 = actorDefinition.name;
                 if (actorDefinition.combatLevel != 0) {
-                    class1 = class1 + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.aClass1_569 + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthasis;
+                    class1 = class1 + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthesis;
                 }
                 if (MovedStatics.itemSelected == 1) {
                     MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.ITEM_ON_NPC.getId(), Native.aClass1_3295 + Native.toYellow + class1);
@@ -186,7 +186,7 @@ public class HuffmanEncoding {
                     if(actorDefinition.combatLevel != 0) {
                         String combatLevel = " " +
                             SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel)
-                                + Native.leftParenthasis + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthasis;
+                                + Native.leftParenthesis + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthesis;
                         examineText.append(combatLevel);
                     }
 

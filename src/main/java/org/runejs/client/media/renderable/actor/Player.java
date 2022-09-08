@@ -391,9 +391,9 @@ public class Player extends Actor {
         if (localPlayer != player && ActorDefinition.menuActionRow < 400) {
             String rsString;
             if (player.skillLevel == 0)
-                rsString = player.playerName + SceneTile.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.aClass1_569 + English.prefixLevel + player.combatLevel + Native.rightParenthasis;
+                rsString = player.playerName + SceneTile.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + player.combatLevel + Native.rightParenthesis;
             else
-                rsString = player.playerName + Native.aClass1_569 + English.prefixSkill + player.skillLevel + Native.rightParenthasis;
+                rsString = player.playerName + Native.leftParenthesisWithSpacePrefix + English.prefixSkill + player.skillLevel + Native.rightParenthesis;
             if (MovedStatics.itemSelected == 1) {
                 MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.ITEM_ON_PLAYER.getId(), Native.aClass1_3295 + Native.aClass1_3068 + rsString);
             } else if (Main.widgetSelected == 1) {
