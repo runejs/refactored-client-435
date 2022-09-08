@@ -679,7 +679,7 @@ public class GameInterface extends CachedNode {
                     }
                 }
             }
-            if(action == 52) {
+            if(action == ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_1.getId()) {
                 SceneCluster.packetBuffer.putPacket(240);
                 SceneCluster.packetBuffer.putShortLE(i);
                 SceneCluster.packetBuffer.putShortLE(npcIdx);
@@ -956,7 +956,7 @@ public class GameInterface extends CachedNode {
                             SceneCluster.packetBuffer.putIntBE(i_10_);
                         }
                     }
-                    if(action == 31) {
+                    if(action == ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_3.getId()) {
                         SceneCluster.packetBuffer.putPacket(163);
                         SceneCluster.packetBuffer.putShortLE(i);
                         SceneCluster.packetBuffer.putShortLE(npcIdx);
@@ -1188,7 +1188,7 @@ public class GameInterface extends CachedNode {
                         PacketBuffer.method517(0, i_10_);
                         MovedStatics.lastContinueTextWidgetId = i_10_;
                     }
-                    if(action == 43) {
+                    if(action == ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_4.getId()) {
                         SceneCluster.packetBuffer.putPacket(98);
                         SceneCluster.packetBuffer.putShortBE(i);
                         SceneCluster.packetBuffer.putIntME1(i_10_);
@@ -1282,7 +1282,7 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortLE(Class26.baseY + i_10_);
                         SceneCluster.packetBuffer.putShortLE(Class49.anInt1154);
                     }
-                    if(action == 6) {
+                    if(action == ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_2.getId()) {
                         SceneCluster.packetBuffer.putPacket(102);
                         SceneCluster.packetBuffer.putIntLE(i_10_);
                         SceneCluster.packetBuffer.putShortLE(i);

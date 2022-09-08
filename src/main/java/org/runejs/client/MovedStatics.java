@@ -1390,13 +1390,13 @@ public class MovedStatics {
 	                            else
 	                                addActionRow(class1s[4], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.DROP_ITEM.getId(), Native.lightRed + itemDefinition.name);
 	                            if(class1s != null && class1s[3] != null)
-	                                addActionRow(class1s[3], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, 43, Native.lightRed + itemDefinition.name);
+	                                addActionRow(class1s[3], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_4.getId(), Native.lightRed + itemDefinition.name);
 	                            if(class1s != null && class1s[2] != null)
-	                                addActionRow(class1s[2], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, 31, Native.lightRed + itemDefinition.name);
+	                                addActionRow(class1s[2], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_3.getId(), Native.lightRed + itemDefinition.name);
 	                            if(class1s != null && class1s[1] != null)
-	                                addActionRow(class1s[1], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, 6, Native.lightRed + itemDefinition.name);
+	                                addActionRow(class1s[1], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_2.getId(), Native.lightRed + itemDefinition.name);
 	                            if(class1s != null && class1s[0] != null)
-	                                addActionRow(class1s[0], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, 52, Native.lightRed + itemDefinition.name);
+	                                addActionRow(class1s[0], itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.ITEM_ON_WIDGET_INTERACTION_OPTION_1.getId(), Native.lightRed + itemDefinition.name);
 	                        }
 	                        if(gameInterface.id >= 0)
 	                            addActionRow(English.examine, itemDefinition.id, -1, gameInterface.id, 1007, Native.lightRed + itemDefinition.name);
