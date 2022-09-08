@@ -1251,18 +1251,26 @@ public class MovedStatics {
 	                    if (Configuration.DEBUG_WIDGETS && gameInterface.type != GameInterfaceType.IF1_TOOLTIP && i_2_ <= mouseX && i_1_ <= mouseY && gameInterface.originalWidth + i_2_ > mouseX && gameInterface.originalHeight + i_1_ > mouseY) {
 	                        GenericTile.hoveredWidgetId = gameInterface.id;
 	                    }
-	
+
+                        // standard button type? this is used for 'Open House Options'
+                        // also used for clickable text (e.g. music list)
 	                    if(gameInterface.actionType == 1 && i_2_ <= mouseX && i_1_ <= mouseY && gameInterface.originalWidth + i_2_ > mouseX && gameInterface.originalHeight + i_1_ > mouseY) {
 	                        boolean bool = false;
+
+                            // is this text vs not text? contentType is definitely 0 for text on music player
 	                        if(gameInterface.contentType != 0)
 	                            bool = ProducingGraphicsBuffer_Sub1.method1051(300, gameInterface);
 	                        if(!bool) {
 	                            addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 42, "");
 	                        }
 	                    }
+
+                        // spells
 	                    if(gameInterface.actionType == 2 && Main.widgetSelected == 0 && mouseX >= i_2_ && mouseY >= i_1_ && mouseX < gameInterface.originalWidth + i_2_ && mouseY < i_1_ + gameInterface.originalHeight) {
 	                        addActionRow(gameInterface.targetVerb, 0, 0, gameInterface.id, ActionRowType.SELECT_SPELL_ON_WIDGET.getId(), Native.green + gameInterface.spellName);
 	                    }
+
+                        // close button
 	                    if(gameInterface.actionType == 3 && mouseX >= i_2_ && mouseY >= i_1_ && i_2_ + gameInterface.originalWidth > mouseX && mouseY < i_1_ + gameInterface.originalHeight) {
 	                        int actionType;
 	                        if(areaId != 3)
@@ -1271,12 +1279,17 @@ public class MovedStatics {
                                 actionType = 40;
 	                        addActionRow(English.close, 0, 0, gameInterface.id, actionType, "");
 	                    }
+
+                        // toggle varp
 	                    if(gameInterface.actionType == 4 && mouseX >= i_2_ && i_1_ <= mouseY && mouseX < gameInterface.originalWidth + i_2_ && gameInterface.originalHeight + i_1_ > mouseY) {
-	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 23, "");
+	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, ActionRowType.BUTTON_TOGGLE_VARP.getId(), "");
 	                    }
+
+                        // sets the varp to another value (stored in the `alternateRhs` of the button) when clicked
 	                    if(gameInterface.actionType == 5 && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && i_1_ + gameInterface.originalHeight > mouseY) {
-	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 57, "");
+	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, ActionRowType.BUTTON_SET_VARP_VALUE.getId(), "");
 	                    }
+
 	                    if(gameInterface.actionType == 6 && lastContinueTextWidgetId == -1 && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_) {
 	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 54, "");
 	                    }

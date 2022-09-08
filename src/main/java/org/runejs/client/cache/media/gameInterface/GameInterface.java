@@ -666,7 +666,7 @@ public class GameInterface extends CachedNode {
                     Projectile.atInventoryInterfaceType = 3;
                 }
             }
-            if(action == 57) {
+            if(action == ActionRowType.BUTTON_SET_VARP_VALUE.getId()) {
                 SceneCluster.packetBuffer.putPacket(64);
                 SceneCluster.packetBuffer.putIntBE(i_10_);
                 GameInterface gameInterface = getInterface(i_10_);
@@ -778,7 +778,7 @@ public class GameInterface extends CachedNode {
                     SceneCluster.packetBuffer.putIntME1(Class60.anInt1417);
                     SceneCluster.packetBuffer.putShortBE(Class26.baseY + i_10_);
                 }
-                if(action == 23) {
+                if(action == ActionRowType.BUTTON_TOGGLE_VARP.getId()) {
                     SceneCluster.packetBuffer.putPacket(64);
                     SceneCluster.packetBuffer.putIntBE(i_10_);
 

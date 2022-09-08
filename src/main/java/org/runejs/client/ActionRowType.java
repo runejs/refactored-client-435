@@ -7,11 +7,7 @@ package org.runejs.client;
  * @author jameskmonger
  */
 public enum ActionRowType {
-    // 23, 57, 54 are all some kind of interface click
-    //     they do different things with the varps
-    //     23 is toggle?
-    //     57 ????? reads from alternateRhs and switches varp
-    //     54 is click here to continue
+    // 54 is click here to continue (what else?)
 
     // 9 and 40 are interface close
     //      9 appears to be the longstanding chatbox dialogue close
@@ -19,12 +15,6 @@ public enum ActionRowType {
 
     // 42 is some kind of tooltip. 
     //          Sends packet 64 (button click) to server and does further processing
-
-    // the ITEM_ON_WIDGET_INTERACTION are for 'new format' widgets
-    // 1007 is examine item on new format widget
-
-    // 53, 25, 55, 48, 24 are options on old format widget
-    // 1006 is examine item on old format widget
 
     // 12 is NPC interaction
     // 4 is also NPC interaction
@@ -36,7 +26,7 @@ public enum ActionRowType {
     // 17 is ??
     // 20 is ??
     // 50 is ??
-    // 225 is ?? (bit shifts the target by 14..)
+    // 32 is ?? (bit shifts the target by 14..)
     
     // 187 is ???? interacts with player in some way
     // 39 is second option on player (what is this? follow?)
@@ -47,6 +37,20 @@ public enum ActionRowType {
 
     // 47 is item on world item
 
+    /**
+     * Toggle the value of a varp.
+     *
+     * e.g. toggling run/walk
+     */
+    BUTTON_TOGGLE_VARP(23),
+
+    /**
+     * Set the value of a varp to the `alternateRhs` of the interface
+     *
+     * e.g. setting the brightness value, there are multiple button widgets targeting
+     *          the same varp with a different `alternateRhs`
+     */
+    BUTTON_SET_VARP_VALUE(57),
 
     MAGIC_ON_PLAYER(1),
     // this one is read on the server as 'option 5' - which is correct?
