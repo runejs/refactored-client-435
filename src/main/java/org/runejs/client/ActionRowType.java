@@ -21,6 +21,10 @@ public enum ActionRowType {
     CHATBOX_ACCEPT_TRADE(26),
     CHATBOX_REPORT_ABUSE(28),
     ITEM_ON_WIDGET_INTERACTION_OPTION_3(31),
+    /**
+     * The "Cast" option on a spell inside a spell list
+     */
+    SELECT_SPELL_ON_WIDGET(33),
     REMOVE_IGNORE(35),
     MAGIC_ON_WIDGET_ITEM(37),
     ITEM_ON_WIDGET_INTERACTION_OPTION_4(43),

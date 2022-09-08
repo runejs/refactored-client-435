@@ -918,7 +918,7 @@ public class GameInterface extends CachedNode {
                         Projectile.atInventoryInterfaceType = 3;
                     }
                 }
-                if(action == 33) {
+                if(action == ActionRowType.SELECT_SPELL_ON_WIDGET.getId()) {
                     GameInterface gameInterface = getInterface(i_10_);
                     redrawTabArea = true;
                     Main.widgetSelected = 1;
@@ -1151,7 +1151,7 @@ public class GameInterface extends CachedNode {
                             SceneCluster.packetBuffer.putShortLE(npcIdx);
                         }
                     }
-                    if(action == 28) {
+                    if(action == ActionRowType.CHATBOX_REPORT_ABUSE.getId()) {
                         String class1 = Landscape.menuActionTexts[arg1];
                         int i_22_ = class1.indexOf(Native.white);
                         if(i_22_ != -1) {
