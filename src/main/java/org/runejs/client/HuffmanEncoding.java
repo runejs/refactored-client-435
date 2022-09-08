@@ -202,7 +202,7 @@ public class HuffmanEncoding {
 
 
                     }
-                    MovedStatics.addActionRow(English.examine, index, x, y, 1001, examineText.toString());
+                    MovedStatics.addActionRow(English.examine, index, x, y, ActionRowType.EXAMINE_NPC.getId(), examineText.toString());
                 }
             }
         }

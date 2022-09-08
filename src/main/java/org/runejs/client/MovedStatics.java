@@ -893,7 +893,7 @@ public class MovedStatics {
 
 
                         }
-                        addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, 1004, examineText.toString());
+                        addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, ActionRowType.EXAMINE_OBJECT.getId(), examineText.toString());
                     } else if ((ItemDefinition.selectedMask & 0x4) == 4) {
                         addActionRow(Native.aClass1_1918, hash, x, y, 32, Native.aClass1_611 + Native.toCyan + gameObjectDefinition.name);
                     }
@@ -961,7 +961,7 @@ public class MovedStatics {
                                         addActionRow(class1s[i_15_], item.itemId, x, y, i_16_, Native.lightRed +  itemDefinition.name);
                                     }
                                 }
-                                addActionRow(English.examine, item.itemId, x, y, 1003, Native.lightRed + itemDefinition.name);
+                                addActionRow(English.examine, item.itemId, x, y, ActionRowType.EXAMINE_ITEM.getId(), Native.lightRed + itemDefinition.name);
                             } else if ((0x1 & ItemDefinition.selectedMask) == 1) {
                                 addActionRow(Native.aClass1_1918, item.itemId, x, y, 15, Native.aClass1_611 + Native.toLightRed + itemDefinition.name);
                             }

@@ -578,7 +578,7 @@ public class GameInterface extends CachedNode {
                 SceneCluster.packetBuffer.putShortBE(npcIdx);
                 SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
             }
-            if(action == 1004) { // examine object
+            if(action == ActionRowType.EXAMINE_OBJECT.getId()) { // examine object
                 MovedStatics.crossY = RSString.clickY;
                 ClientScriptRunner.crossX = Class57.clickX;
                 LinkedList.crossType = 2;
@@ -719,7 +719,7 @@ public class GameInterface extends CachedNode {
                     SceneCluster.packetBuffer.putShortBE(npcIdx);
                 }
             }
-            if(action == 1001) {
+            if(action == ActionRowType.EXAMINE_NPC.getId()) {
                 ClientScriptRunner.crossX = Class57.clickX;
                 LinkedList.crossType = 2;
                 MovedStatics.crossY = RSString.clickY;
@@ -829,7 +829,7 @@ public class GameInterface extends CachedNode {
                         }
                     }
                 }
-                if(action == 1003) {
+                if(action == ActionRowType.EXAMINE_ITEM.getId()) { // examine item
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
