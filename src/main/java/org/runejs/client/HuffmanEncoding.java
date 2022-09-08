@@ -113,7 +113,7 @@ public class HuffmanEncoding {
                     class1 = class1 + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.aClass1_569 + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthasis;
                 }
                 if (MovedStatics.itemSelected == 1) {
-                    MovedStatics.addActionRow(English.use, index, x, y, 49, Native.aClass1_3295 + Native.toYellow + class1);
+                    MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.ITEM_ON_NPC.getId(), Native.aClass1_3295 + Native.toYellow + class1);
                 } else if (Main.widgetSelected == 1) {
                     if ((0x2 & ItemDefinition.selectedMask) == 2) {
                         MovedStatics.addActionRow(Native.aClass1_1918, index, x, y, ActionRowType.MAGIC_ON_NPC.getId(), Native.aClass1_611 + Native.toYellow + class1);

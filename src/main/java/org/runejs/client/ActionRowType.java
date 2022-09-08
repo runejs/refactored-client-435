@@ -9,6 +9,8 @@ package org.runejs.client;
 public enum ActionRowType {
     MAGIC_ON_PLAYER(1),
     MAGIC_ON_NPC(21),
+    ITEM_ON_PLAYER(22),
+    ITEM_ON_NPC(49),
     EXAMINE_NPC(1001),
     EXAMINE_ITEM(1003),
     EXAMINE_OBJECT(1004);
