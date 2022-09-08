@@ -4,6 +4,10 @@ package org.runejs.client;
  * This represents a single row in the right-click action menu,
  * or the preview at the top left of the screen.
  *
+ * These codes are used to determine the behaviour associated with a row
+ * when a user clicks on it (or when a user left-clicks the entity, if the
+ * row is the highest priority).
+ * 
  * @author jameskmonger
  */
 public enum ActionRowType {
