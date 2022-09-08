@@ -1368,7 +1368,7 @@ public class MovedStatics {
 	                                                    );
 	                                                    examineText.append("<col=00ff00>)</col>");
 	                                                }
-	                                                addActionRow(English.examine, itemDefinition.id, i_4_, gameInterface.id, 1006, examineText.toString());
+	                                                addActionRow(English.examine, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.EXAMINE_ITEM_ON_WIDGET.getId(), examineText.toString());
 	                                            }
 	                                        } else if(ISAAC.anInt525 != gameInterface.id || i_4_ != LinkedList.anInt1061) {
 	                                            addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, 56, Native.aClass1_3295+ Native.toLightRed + itemDefinition.name);

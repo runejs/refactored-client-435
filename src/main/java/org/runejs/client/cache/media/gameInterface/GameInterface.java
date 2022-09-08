@@ -1066,7 +1066,7 @@ public class GameInterface extends CachedNode {
                             Npc.currentScene.method120(Class57.clickX - 4, -4 + RSString.clickY);
                         }
                     }
-                    if(action == 1006) {
+                    if(action == ActionRowType.EXAMINE_ITEM_ON_WIDGET.getId()) {
                         GameInterface gameInterface = getInterface(i_10_);
                         if(gameInterface == null || gameInterface.itemAmounts[i] < 100000) {
                             SceneCluster.packetBuffer.putPacket(151);

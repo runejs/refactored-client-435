@@ -28,7 +28,8 @@ public enum ActionRowType {
 
     EXAMINE_NPC(1001),
     EXAMINE_ITEM(1003),
-    EXAMINE_OBJECT(1004);
+    EXAMINE_OBJECT(1004),
+    EXAMINE_ITEM_ON_WIDGET(1006);
 
     private final int id;
 
