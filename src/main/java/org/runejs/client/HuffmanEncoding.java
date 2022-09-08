@@ -120,8 +120,8 @@ public class HuffmanEncoding {
                     }
                 } else {
                     String[] options = actorDefinition.options;
-                    if (Class60.aBoolean1402) {
-                        options = MovedStatics.method968(options);
+                    if (Class60.DEBUG_DISPLAY_ALL_ACTION_ROWS) {
+                        options = MovedStatics.getAllOptionsWithIndices(options);
                     }
 
                     // add non-attack options to NPC

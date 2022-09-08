@@ -65,7 +65,7 @@ public class Native {
     public static String aClass1_1213 = " @whi@(";
     public static String aClass1_1230 = "headicons_hint";
     public static String titleButton = "titlebutton";
-    public static String aClass1_515 = ": ";
+    public static String COLON_CHARACTER = ": ";
     public static String aClass1_327 = "@or1@";
     public static String aClass1_3068 = " -> @whi@";
     public static String aClass1_2588 = "backvmid2";
