@@ -1123,7 +1123,7 @@ public class GameInterface extends CachedNode {
                         PlayerAppearance.anInt704 = i_10_;
                         GenericTile.anInt1233 = i;
                     }
-                    if(action == 11) {
+                    if(action == ActionRowType.DROP_ITEM.getId()) {
                         SceneCluster.packetBuffer.putPacket(29);
                         SceneCluster.packetBuffer.putIntME1(i_10_);
                         SceneCluster.packetBuffer.putShortBE(i);

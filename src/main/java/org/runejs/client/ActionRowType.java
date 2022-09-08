@@ -8,6 +8,7 @@ package org.runejs.client;
  */
 public enum ActionRowType {
     MAGIC_ON_PLAYER(1),
+    DROP_ITEM(11),
     REMOVE_FRIEND(13),
     MESSAGE_FRIEND(18),
     MAGIC_ON_NPC(21),
