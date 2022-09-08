@@ -214,7 +214,7 @@ public class MovedStatics {
                                     addActionRow(English.reportAbuse, 0, 0, 0, 2000 + ActionRowType.CHATBOX_REPORT_ABUSE.getId(), Native.white + class1);
                                 }
                                 addActionRow(English.addIgnore, 0, 0, 0, 2000 + ActionRowType.CHATBOX_ADD_IGNORE.getId(), Native.white + class1);
-                                addActionRow(English.addFriend, 0, 0, 0, 2000 + ActionRowType.CHATBOX_ADD_FRIEND.getId().getId(), Native.white + class1);
+                                addActionRow(English.addFriend, 0, 0, 0, 2000 + ActionRowType.CHATBOX_ADD_FRIEND.getId(), Native.white + class1);
                             }
                         }
                         if (i >= 5)
