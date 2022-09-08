@@ -1059,7 +1059,7 @@ public class GameInterface extends CachedNode {
                     if(arg0 < 51) {
                         MovedStatics.mapDots = null;
                     }
-                    if(action == 7) {
+                    if(action == ActionRowType.WALK_HERE.getId()) {
                         if(MovedStatics.menuOpen) {
                             Npc.currentScene.method120(-4 + i, -4 + i_10_);
                         } else {

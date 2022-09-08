@@ -842,7 +842,7 @@ public class MovedStatics {
                 tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
             }
 
-            addActionRow(English.walkHere, 0, Class13.mouseX, Landscape.mouseY, 7, tileCoords);
+            addActionRow(English.walkHere, 0, Class13.mouseX, Landscape.mouseY, ActionRowType.WALK_HERE.getId(), tileCoords);
         }
 
         for (int idx = 0; Model.resourceCount > idx; idx++) {

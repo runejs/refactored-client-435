@@ -55,6 +55,8 @@ public enum ActionRowType {
     MAGIC_ON_PLAYER(1),
     // this one is read on the server as 'option 5' - which is correct?
     ITEM_ON_V2_WIDGET_INTERACTION_OPTION_2(6),
+
+    WALK_HERE(7),
     DROP_ITEM(11),
     REMOVE_FRIEND(13),
     MESSAGE_FRIEND(18),
