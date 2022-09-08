@@ -18,6 +18,7 @@ public enum ActionRowType {
     CHATBOX_REPORT_ABUSE(28),
     ITEM_ON_WIDGET_INTERACTION_OPTION_3(31),
     REMOVE_IGNORE(35),
+    MAGIC_ON_WIDGET_ITEM(37),
     ITEM_ON_WIDGET_INTERACTION_OPTION_4(43),
     // @TODO (jameskmonger) do these need CHATBOX_ prefix?
     CHATBOX_ADD_FRIEND(45),

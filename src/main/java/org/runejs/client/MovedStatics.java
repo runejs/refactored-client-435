@@ -1299,7 +1299,7 @@ public class MovedStatics {
 	                                        if(MovedStatics.itemSelected != 1 || !gameInterface.isInventory) {
 	                                            if(Main.widgetSelected == 1 && gameInterface.isInventory) {
 	                                                if((ItemDefinition.selectedMask & 0x10) == 16) {
-	                                                    addActionRow(Native.aClass1_1918, itemDefinition.id, i_4_, gameInterface.id, 37, Native.aClass1_611 + Native.toLightRed + itemDefinition.name);
+	                                                    addActionRow(Native.aClass1_1918, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.MAGIC_ON_WIDGET_ITEM.getId(), Native.aClass1_611 + Native.toLightRed + itemDefinition.name);
 	                                                }
 	                                            } else {
 	                                                String[] class1s = itemDefinition.interfaceOptions;

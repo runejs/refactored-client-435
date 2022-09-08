@@ -547,7 +547,7 @@ public class GameInterface extends CachedNode {
                 ChatBox.inputType = 0;
                 ChatBox.redrawChatbox = true;
             }
-            if(action == 37) {
+            if(action == ActionRowType.MAGIC_ON_WIDGET_ITEM.getId()) {
                 SceneCluster.packetBuffer.putPacket(21);
                 SceneCluster.packetBuffer.putIntLE(Class60.anInt1417);
                 SceneCluster.packetBuffer.putIntME2(i_10_);
