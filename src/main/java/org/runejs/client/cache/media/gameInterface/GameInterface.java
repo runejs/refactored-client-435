@@ -606,7 +606,7 @@ public class GameInterface extends CachedNode {
                     SceneCluster.packetBuffer.putShortLE(npcIdx);
                 }
             }
-            if(action == 26 || action == 46) {
+            if(action == ActionRowType.CHATBOX_ACCEPT_TRADE.getId() || action == ActionRowType.CHATBOX_ACCEPT_CHALLENGE.getId()) {
                 String name = Landscape.menuActionTexts[arg1];
                 int i_13_ = name.indexOf(Native.white);
                 if(i_13_ != -1) {
@@ -618,11 +618,11 @@ public class GameInterface extends CachedNode {
                         if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.playerName != null && class40_sub5_sub17_sub4_sub1.playerName.equalsIgnoreCase(username)) {
                             bool = true;
                             Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
-                            if(action == 26) {
+                            if(action == ActionRowType.CHATBOX_ACCEPT_TRADE.getId()) {
                                 SceneCluster.packetBuffer.putPacket(96);
                                 SceneCluster.packetBuffer.putShortBE(Player.trackedPlayerIndices[i_15_]);
                             }
-                            if(action == 46) {
+                            if(action == ActionRowType.CHATBOX_ACCEPT_CHALLENGE.getId()) {
                                 SceneCluster.packetBuffer.putPacket(68);
                                 SceneCluster.packetBuffer.putShortLE(Player.trackedPlayerIndices[i_15_]);
                             }
@@ -1025,15 +1025,15 @@ public class GameInterface extends CachedNode {
                             SceneCluster.packetBuffer.putIntME1(Class60.anInt1417);
                         }
                     }
-                    if(action == 45 || action == 51 || action == 13 || action == 35) {
+                    if(action == ActionRowType.CHATBOX_ADD_FRIEND.getId() || action == ActionRowType.CHATBOX_ADD_IGNORE.getId() || action == 13 || action == 35) {
                         String s = Landscape.menuActionTexts[arg1];
                         int l1 = s.indexOf(Native.white);
                         if(l1 != -1) {
                             long l = TextUtils.nameToLong(s.substring(l1 + 5).trim());
-                            if(action == 45) {
+                            if(action == ActionRowType.CHATBOX_ADD_FRIEND.getId()) {
                                 MovedStatics.addFriend(l);
                             }
-                            if(action == 51) {
+                            if(action == ActionRowType.CHATBOX_ADD_IGNORE.getId()) {
                                 Class17.method275(l);
                             }
                             if(action == 13) {
