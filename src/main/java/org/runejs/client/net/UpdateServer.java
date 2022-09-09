@@ -209,7 +209,7 @@ public class UpdateServer {
                             aUpdateServerNode_2250.cacheArchive.method196((aUpdateServerNode_2250.key & 0xff0000L) == 16711680L, (int) (aUpdateServerNode_2250.key & 0xffffL), Npc.aBoolean3298, aClass40_Sub1_2752.buffer);
                         }
 
-                        aUpdateServerNode_2250.remove();
+                        aUpdateServerNode_2250.unlink();
                         aUpdateServerNode_2250 = null;
                         aClass40_Sub1_2752 = null;
                         Landscape.anInt1157 = 0;

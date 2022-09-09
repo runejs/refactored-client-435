@@ -9,10 +9,10 @@ public class UnderlayDefinition extends CachedNode {
     public static NodeCache underlayDefinitionCache = new NodeCache(64);
     public static CacheArchive gameDefinitionsCacheArchive;
 
-    public int saturation;
-    public int anInt2565;
-    public int hueMultiplier;
+    public int lightness;
     public int hue;
+    public int hueMultiplier;
+    public int saturation;
     public int color = 0;
 
     public static void initializeUnderlayDefinitionCache(CacheArchive cacheArchive) {
@@ -52,52 +52,55 @@ public class UnderlayDefinition extends CachedNode {
         if(cmax < g) {
             cmax = g;
         }
-        double d_4_ = 0.0;
+        double h = 0.0;
         if(cmax < b) {
             cmax = b;
         }
-        double d_5_ = (cmax + cmin) / 2.0;
-        saturation = (int) (d_5_ * 256.0);
-        double d_6_ = 0.0;
+        double l = (cmax + cmin) / 2.0;
+        lightness = (int) (l * 256.0);
+        double s = 0.0;
+
         if(cmax != cmin) {
-            if(d_5_ < 0.5) {
-                d_6_ = (cmax - cmin) / (cmax + cmin);
+            if(l < 0.5) {
+                s = (cmax - cmin) / (cmax + cmin);
             }
-            if(d_5_ >= 0.5) {
-                d_6_ = (-cmin + cmax) / (-cmin + (-cmax + 2.0));
+            if(l >= 0.5) {
+                s = (-cmin + cmax) / (-cmin + (-cmax + 2.0));
             }
             if(r == cmax) {
-                d_4_ = (-b + g) / (-cmin + cmax);
+                h = (-b + g) / (-cmin + cmax);
             } else if(cmax == g) {
-                d_4_ = 2.0 + (b - r) / (cmax - cmin);
+                h = 2.0 + (b - r) / (cmax - cmin);
             } else if(cmax == b) {
-                d_4_ = (r - g) / (-cmin + cmax) + 4.0;
+                h = (r - g) / (-cmin + cmax) + 4.0;
             }
         }
-        d_4_ /= 6.0;
+
+        h /= 6.0;
+
+        if(lightness >= 0) {
+            if(lightness > 255) {
+                lightness = 255;
+            }
+        } else {
+            lightness = 0;
+        }
+        if(l > 0.5) {
+            hueMultiplier = (int) ((-l + 1.0) * s * 512.0);
+        } else {
+            hueMultiplier = (int) (l * s * 512.0);
+        }
+        saturation = (int) (256.0 * s);
+        if(hueMultiplier < 1) {
+            hueMultiplier = 1;
+        }
+        hue = (int) (h * (double) hueMultiplier);
         if(saturation >= 0) {
             if(saturation > 255) {
                 saturation = 255;
             }
         } else {
             saturation = 0;
-        }
-        if(d_5_ > 0.5) {
-            hueMultiplier = (int) ((-d_5_ + 1.0) * d_6_ * 512.0);
-        } else {
-            hueMultiplier = (int) (d_5_ * d_6_ * 512.0);
-        }
-        hue = (int) (256.0 * d_6_);
-        if(hueMultiplier < 1) {
-            hueMultiplier = 1;
-        }
-        anInt2565 = (int) (d_4_ * (double) hueMultiplier);
-        if(hue >= 0) {
-            if(hue > 255) {
-                hue = 255;
-            }
-        } else {
-            hue = 0;
         }
     }
 

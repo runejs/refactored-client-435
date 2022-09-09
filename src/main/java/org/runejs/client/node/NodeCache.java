@@ -25,11 +25,11 @@ public class NodeCache {
     public void put(long key, CachedNode node) {
         if(remaining == 0) { // no more space, make some room
             CachedNode cachedNode = nodeQueue.pop();
-            cachedNode.remove();
+            cachedNode.unlink();
             cachedNode.clear();
             if(cachedNode == this.cachedNode) {
                 cachedNode = nodeQueue.pop();
-                cachedNode.remove();
+                cachedNode.unlink();
                 cachedNode.clear();
             }
         } else {
@@ -51,7 +51,7 @@ public class NodeCache {
         CachedNode cachedNode = (CachedNode) hashTable.getNode(key);
         if(cachedNode == null)
             return;
-        cachedNode.remove();
+        cachedNode.unlink();
         cachedNode.clear();
         remaining++;
     }
@@ -61,7 +61,7 @@ public class NodeCache {
             CachedNode cachedNode = nodeQueue.pop();
             if(cachedNode == null)
                 break;
-            cachedNode.remove();
+            cachedNode.unlink();
             cachedNode.clear();
         }
         remaining = size;

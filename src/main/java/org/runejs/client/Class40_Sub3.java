@@ -154,11 +154,11 @@ public class Class40_Sub3 extends Node {
             if (CacheArchive.gameDefinitionsCacheArchive.method185((byte) 98)) {
                 OverlayDefinition.initializeOverlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 UnderlayDefinition.initializeUnderlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
-                method977(3, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
-                method980(28987, CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
+                initializeIdentityKitDefinitionCache(3, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
+                initializeGameObjectDefinitionCache(28987, CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
                 Main.method357(CacheArchive.modelCacheArchive, arg0 ^ ~0x2a85, CacheArchive.gameDefinitionsCacheArchive);
-                MovedStatics.method885(CacheArchive.gameDefinitionsCacheArchive, MovedStatics.membersWorld, CacheArchive.modelCacheArchive);
-                MovedStatics.method236(CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.skeletonCacheArchive);
+                MovedStatics.initializeItemDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, MovedStatics.membersWorld, CacheArchive.modelCacheArchive);
+                MovedStatics.initializeAnimationCaches(CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.skeletonCacheArchive);
                 Class55.method966(arg0 ^ 0x38, CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
                 VarbitDefinition.initializeVarbitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 VarPlayerDefinition.initializeVarPlayerDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
@@ -259,7 +259,7 @@ public class Class40_Sub3 extends Node {
             if (CacheArchive.gameTextureCacheArchive.method185((byte) 62)) {
                 Class35 class35 = new Class35(CacheArchive.gameTextureCacheArchive, CacheArchive.gameImageCacheArchive, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
                 Rasterizer3D.method703(class35);
-                Rasterizer3D.method711(0.8);
+                Rasterizer3D.createPalette(0.8);
                 MovedStatics.loadingPercent = 110;
                 MovedStatics.anInt1607 = 90;
                 Native.currentLoadingText = English.loadedTextures;
@@ -304,16 +304,16 @@ public class Class40_Sub3 extends Node {
         }
     }
 
-    public static void method977(int arg0, CacheArchive arg1, CacheArchive arg2) {
+    public static void initializeIdentityKitDefinitionCache(int arg0, CacheArchive definitionCache, CacheArchive arg2) {
         MovedStatics.aCacheArchive_654 = arg2;
         if (arg0 == 3) {
-            Class49.aCacheArchive_1150 = arg1;
-            PlayerAppearance.identityKitLength = Class49.aCacheArchive_1150.fileLength(3);
+            Class49.definitionCache = definitionCache;
+            PlayerAppearance.identityKitLength = Class49.definitionCache.fileLength(3);
         }
     }
 
-    public static void method980(int arg0, CacheArchive arg1, boolean arg2, CacheArchive arg3) {
-        CacheArchive.definitionCache = arg3;
+    public static void initializeGameObjectDefinitionCache(int arg0, CacheArchive arg1, boolean arg2, CacheArchive definitionCache) {
+        CacheArchive.definitionCache = definitionCache;
         GameObjectDefinition.count = CacheArchive.definitionCache.fileLength(6);
 
         Class35.aBoolean1734 = arg2;

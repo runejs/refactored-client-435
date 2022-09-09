@@ -16,7 +16,7 @@ public class Class40_Sub5_Sub15 extends CachedNode {
     public static int systemUpdateTime = 0;
     public static boolean lastItemDragged = false;
     public static int[] anIntArray2788 = new int[]{16, 32, 64, 128};
-    public static int anInt2791 = -8 + (int) (17.0 * Math.random());
+    public static int randomiserHue = -8 + (int) (17.0 * Math.random());
 
     public FrameDefinition[] aFrameDefinitionArray2794;
 
@@ -29,7 +29,7 @@ public class Class40_Sub5_Sub15 extends CachedNode {
             byte[] is_1_ = arg0.getFile(arg2, is[i_0_]);
             FramemapDefinition framemapDefinition = null;
             int i_2_ = is_1_[1] & 0xff | is_1_[0] << 8 & 0xff00;
-            for(FramemapDefinition framemapDefinition_3_ = (FramemapDefinition) linkedList.method902((byte) -90); framemapDefinition_3_ != null; framemapDefinition_3_ = (FramemapDefinition) linkedList.method909(-4)) {
+            for(FramemapDefinition framemapDefinition_3_ = (FramemapDefinition) linkedList.peekFirst((byte) -90); framemapDefinition_3_ != null; framemapDefinition_3_ = (FramemapDefinition) linkedList.pollFirst(-4)) {
                 if(i_2_ == framemapDefinition_3_.id) {
                     framemapDefinition = framemapDefinition_3_;
                     break;
@@ -42,7 +42,7 @@ public class Class40_Sub5_Sub15 extends CachedNode {
                 else
                     is_4_ = arg1.method182(i_2_, 0);
                 framemapDefinition = new FramemapDefinition(i_2_, is_4_);
-                linkedList.pushBack(framemapDefinition, 60);
+                linkedList.addLast(framemapDefinition, 60);
             }
             aFrameDefinitionArray2794[is[i_0_]] = new FrameDefinition(is_1_, framemapDefinition);
         }

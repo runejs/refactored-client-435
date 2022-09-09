@@ -16,7 +16,7 @@ public class Class13 {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_418;
     public static int anInt419 = 2;
     public static int mouseX = 0;
-    public static int[] anIntArray421;
+    public static int[] objectDataIds;
 
     public static void handleActorAnimation(Actor actor) {
         if(actor.worldX < 128 || actor.worldY < 128 || actor.worldX >= 13184 || actor.worldY >= 13184) {
@@ -53,7 +53,7 @@ public class Class13 {
         for(; ; ) {
             Class40_Sub6 class40_sub6;
             synchronized(RSCanvas.aLinkedList_53) {
-                class40_sub6 = (Class40_Sub6) IdentityKit.aLinkedList_2604.method913(25447);
+                class40_sub6 = (Class40_Sub6) IdentityKit.aLinkedList_2604.removeFirst(25447);
             }
             if(class40_sub6 == null)
                 break;
@@ -67,16 +67,16 @@ public class Class13 {
         }
     }
 
-    public static int method244(int arg0, int arg1, int arg3) {
-        if(arg1 > 179)
-            arg0 /= 2;
-        if(arg1 > 192)
-            arg0 /= 2;
-        if(arg1 > 217)
-            arg0 /= 2;
-        if(arg1 > 243)
-            arg0 /= 2;
-        return arg1 / 2 + (arg0 / 32 << 7) + (arg3 / 4 << 10);
+    public static int generateHslBitset(int s, int l, int h) {
+        if(l > 179)
+            s /= 2;
+        if(l > 192)
+            s /= 2;
+        if(l > 217)
+            s /= 2;
+        if(l > 243)
+            s /= 2;
+        return l / 2 + (s / 32 << 7) + (h / 4 << 10);
     }
 
     public static synchronized byte[] method246(int arg1) {
@@ -129,7 +129,7 @@ public class Class13 {
 
     public static void method249(boolean arg0) {
         if(!arg0)
-            method244(-58, 116, 98);
+            generateHslBitset(-58, 116, 98);
         if(GameObject.frame != null) {
             synchronized(GameObject.frame) {
                 GameObject.frame = null;

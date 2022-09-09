@@ -16,21 +16,25 @@ public class LinkedList {
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_1057;
     public static int anInt1061;
     public static LinkedList aLinkedList_1064 = new LinkedList();
-    public static int[] anIntArray1071;
+    public static int[] terrainDataIds;
     public static volatile int anInt1073 = 0;
     public static int crossType = 0;
     public static int[] minimapHintY = new int[1000];
-    public Node aClass40_1056 = new Node();
-    public Node aClass40_1068;
+
+    /**
+     * The last element in the LinkedList
+     */
+    public Node last = new Node();
+
+    /**
+     * The first element in the LinkedList
+     */
+    public Node first;
 
     public LinkedList() {
-
-        aClass40_1056.previous = aClass40_1056;
-        aClass40_1056.next = aClass40_1056;
-
+        last.previous = last;
+        last.next = last;
     }
-
-
 
     public static String method903(int arg0, byte arg1) {
         if(arg1 >= -13)
@@ -66,113 +70,137 @@ public class LinkedList {
         }
     }
 
-    public Node method899(byte arg0) {
-        int i = -68 / ((28 - arg0) / 50);
-        Node class40 = aClass40_1056.previous;
-        if(class40 == aClass40_1056)
+    public Node removeLast(byte arg0) {
+        Node node = last.previous;
+
+        if(node == last)
             return null;
-        class40.remove();
-        return class40;
+
+        node.unlink();
+        return node;
     }
 
-    public Node last(byte arg0) {
-        Node class40 = aClass40_1056.previous;
-        if(class40 == aClass40_1056) {
-            aClass40_1068 = null;
+    public Node peekLast(byte arg0) {
+        Node node = last.previous;
+
+        if(node == last) {
+            first = null;
             return null;
         }
-        aClass40_1068 = class40.previous;
-        if(arg0 > -53)
-            return null;
-        return class40;
+
+        first = node.previous;
+        return node;
     }
 
-    public Node method902(byte arg0) {
-        if(arg0 != -90)
-            last((byte) 0);
-        Node class40 = aClass40_1056.next;
-        if(aClass40_1056 == class40) {
-            aClass40_1068 = null;
+    public Node peekFirst(byte arg0) {
+        Node node = last.next;
+
+        if(last == node) {
+            first = null;
             return null;
         }
-        aClass40_1068 = class40.next;
-        return class40;
+
+        first = node.next;
+        return node;
     }
 
-    public void pushBack(Node node, int arg1) {
+    /**
+     * Appends a node to the end of the LinkedList
+     */
+    public void addLast(Node node, int arg1) {
         if(node.previous != null)
-            node.remove();
-        node.previous = aClass40_1056.previous;
-        int i = 106 % ((-7 - arg1) / 59);
-        node.next = aClass40_1056;
+            node.unlink();
+
+        node.previous = last.previous;
+        node.next = last;
         node.previous.next = node;
         node.next.previous = node;
     }
 
-    public void method905(int arg0, Node arg1) {
-        if(arg1.previous != null)
-            arg1.remove();
-        if(arg0 != 0)
-            method911(-96, null, null);
-        arg1.next = aClass40_1056.next;
-        arg1.previous = aClass40_1056;
-        arg1.previous.next = arg1;
-        arg1.next.previous = arg1;
+    /**
+     * Adds a node at the start of the LinkedList
+     */
+    public void addFirst(int arg0, Node node) {
+        if(node.previous != null)
+            node.unlink();
+
+        node.previous = last;
+        node.next = last.next;
+        node.previous.next = node;
+        node.next.previous = node;
     }
 
+    /**
+     * Removes all of the elements from this list. The list will be empty after this call returns.
+     */
     public void clear(int arg0) {
-        if(arg0 != 0)
-            method903(-33, (byte) -75);
-        for(; ; ) {
-            Node class40 = aClass40_1056.next;
-            if(class40 == aClass40_1056)
-                break;
-            class40.remove();
+        while (true) {
+            Node next = last.next;
+
+            if(next == last)
+                return;
+
+            next.unlink();
         }
     }
 
-    public Node method909(int arg0) {
-        Node class40 = aClass40_1068;
-        if(aClass40_1056 == class40) {
-            aClass40_1068 = null;
+    /**
+     * Retrieves and removes the first element of this list, or returns null if this list is empty.
+     */
+    public Node pollFirst(int arg0) {
+        Node node = first;
+
+        if(node == last) {
+            first = null;
             return null;
         }
-        if(arg0 != -4)
-            method910(109);
-        aClass40_1068 = class40.next;
-        return class40;
+
+        first = node.next;
+        return node;
     }
 
-    public void method911(int arg0, Node arg1, Node arg2) {
-        if(arg2.previous != null)
-            arg2.remove();
-        if(arg0 == -31793) {
-            arg2.next = arg1;
-            arg2.previous = arg1.previous;
-            arg2.previous.next = arg2;
-            arg2.next.previous = arg2;
+    /**
+     * Inserts a node before another node
+     *
+     * @param insertingNode The node to insert
+     * @param existingNode The node before which `insertingNode` should be added
+     */
+    public void addBefore(int junk, Node existingNode, Node insertingNode) {
+        if(insertingNode.previous != null)
+            insertingNode.unlink();
+        if(junk == -31793) {
+            insertingNode.previous = existingNode.previous;
+            insertingNode.next = existingNode;
+            insertingNode.previous.next = insertingNode;
+            insertingNode.next.previous = insertingNode;
         }
     }
 
-    public Node previous(int arg0) {
-        if(arg0 != 4)
-            return null;
-        Node class40 = aClass40_1068;
-        if(class40 == aClass40_1056) {
-            aClass40_1068 = null;
+    /**
+     * Retrieves and removes the last element of this list, or returns null if this list is empty.
+     */
+    public Node pollLast(int arg0) {
+        Node node = first;
+
+        if(node == last) {
+            first = null;
             return null;
         }
-        aClass40_1068 = class40.previous;
-        return class40;
+
+        first = node.previous;
+        return node;
     }
 
-    public Node method913(int arg0) {
-        if(arg0 != 25447)
-            method902((byte) -115);
-        Node class40 = aClass40_1056.next;
-        if(aClass40_1056 == class40)
+    /**
+     * Removes and returns the first element from this list.
+     */
+    public Node removeFirst(int arg0) {
+        Node next = last.next;
+
+        if(last == next)
             return null;
-        class40.remove();
-        return class40;
+
+        next.unlink();
+        return next;
     }
 }

@@ -27,7 +27,7 @@ public class HashTable {
 
     public void put(long key, Node node) {
         if(node.previous != null) {
-            node.remove();
+            node.unlink();
         }
         Node node1 = nodes[(int) ((long) (-1 + size) & key)];
         node.next = node1;

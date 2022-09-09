@@ -225,13 +225,13 @@ public class SoundSystem {
 			class40_sub2.gameObjectDefinition = arg5;
 			class40_sub2.set();
 		}
-		SoundSystem.objectSounds.pushBack(class40_sub2, -126);
+		SoundSystem.objectSounds.addLast(class40_sub2, -126);
 		if (class40_sub2.soundEffectIds != null)
 			class40_sub2.anInt2014 = (int) ((class40_sub2.unkn2 - class40_sub2.unkn1) * Math.random()) + class40_sub2.unkn1;
 	}
 
 	public static void clearObjectSounds() {
-		for (ObjectSound class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method902((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method909(-4)) {
+		for (ObjectSound class40_sub2 = (ObjectSound) SoundSystem.objectSounds.peekFirst((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) SoundSystem.objectSounds.pollFirst(-4)) {
 			if (class40_sub2.stream1 != null) {
 				SoundSystem.pcmStreamMixer.removeSubStream(class40_sub2.stream1);
 				class40_sub2.stream1 = null;
@@ -245,7 +245,7 @@ public class SoundSystem {
 	}
 
 	public static void setObjectSounds() {
-		for (ObjectSound class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method902((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method909(-4)) {
+		for (ObjectSound class40_sub2 = (ObjectSound) SoundSystem.objectSounds.peekFirst((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) SoundSystem.objectSounds.pollFirst(-4)) {
 			if (class40_sub2.gameObjectDefinition != null) {
 				class40_sub2.set();
 			}
@@ -253,7 +253,7 @@ public class SoundSystem {
 	}
 
 	public static void updateObjectSounds(int pwx, int pwl, int redrawRate, int pwy) {
-		for (ObjectSound class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method902((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) SoundSystem.objectSounds.method909(-4)) {
+		for (ObjectSound class40_sub2 = (ObjectSound) SoundSystem.objectSounds.peekFirst((byte) -90); class40_sub2 != null; class40_sub2 = (ObjectSound) SoundSystem.objectSounds.pollFirst(-4)) {
 			if (class40_sub2.soundEffectId != -1 || class40_sub2.soundEffectIds != null) {
 				int distance = 0;
 				if (pwx <= class40_sub2.maxX) {

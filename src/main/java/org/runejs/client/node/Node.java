@@ -10,7 +10,7 @@ public class Node {
         return previous != null;
     }
 
-    public void remove() {
+    public void unlink() {
         if(previous != null) {
             previous.next = next;
             next.previous = previous;

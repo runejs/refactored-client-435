@@ -44,12 +44,10 @@ public class CollisionMap {
     }
 
 
-    public static int method157(int arg0, int arg1, int arg2) {
-        int i = MovedStatics.method884(-1 + arg1, -1 + arg2) + MovedStatics.method884(1 + arg1, arg2 - 1) + MovedStatics.method884(-1 + arg1, 1 + arg2) + MovedStatics.method884(1 + arg1, arg2 + 1);
-        if(arg0 != 0)
-            return 56;
-        int i_126_ = MovedStatics.method884(arg1 - 1, arg2) + MovedStatics.method884(arg1 + 1, arg2) - (-MovedStatics.method884(arg1, arg2 - 1) + -MovedStatics.method884(arg1, 1 + arg2));
-        int i_127_ = MovedStatics.method884(arg1, arg2);
+    public static int randomNoiseWeightedSum(int arg1, int arg2) {
+        int i = MovedStatics.randomNoise(-1 + arg1, -1 + arg2) + MovedStatics.randomNoise(1 + arg1, arg2 - 1) + MovedStatics.randomNoise(-1 + arg1, 1 + arg2) + MovedStatics.randomNoise(1 + arg1, arg2 + 1);
+        int i_126_ = MovedStatics.randomNoise(arg1 - 1, arg2) + MovedStatics.randomNoise(arg1 + 1, arg2) - (-MovedStatics.randomNoise(arg1, arg2 - 1) + -MovedStatics.randomNoise(arg1, 1 + arg2));
+        int i_127_ = MovedStatics.randomNoise(arg1, arg2);
         return i / 16 - (-(i_126_ / 8) - i_127_ / 4);
     }
 

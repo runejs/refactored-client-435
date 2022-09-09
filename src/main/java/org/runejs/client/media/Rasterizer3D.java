@@ -13,7 +13,7 @@ public class Rasterizer3D extends Rasterizer {
     public static boolean opaque = false;
     public static int center_x;
     public static int[] lineOffsets;
-    public static Interface3 anInterface3_2939;
+    public static Interface3 interface3;
     public static int[] shadowDecay = new int[512];
     public static int anInt2941;
     public static int anInt2942;
@@ -95,13 +95,13 @@ public class Rasterizer3D extends Rasterizer {
     }
 
     public static void drawTexturedTriangle(int y_a, int y_b, int y_c, int x_a, int x_b, int x_c, int grad_a, int grad_b, int grad_c, int Px, int Mx, int Nx, int Pz, int Mz, int Nz, int Py, int My, int Ny, int t_id) {
-        int[] texture = anInterface3_2939.getTexturePixels(56, t_id);
+        int[] texture = interface3.getTexturePixels(56, t_id);
         if(texture == null) {
-            int i = anInterface3_2939.method14(true, t_id);
+            int i = interface3.getAverageTextureColour(true, t_id);
             drawShadedTriangle(y_a, y_b, y_c, x_a, x_b, x_c, method709(i, grad_a), method709(i, grad_b), method709(i, grad_c));
         } else {
-            lowMemory = anInterface3_2939.method15(t_id, (byte) -90);
-            opaque = anInterface3_2939.method13((byte) -109, t_id);
+            lowMemory = interface3.method15(t_id, (byte) -90);
+            opaque = interface3.isTextureOpaque((byte) -109, t_id);
             Mx = Px - Mx;
             Mz = Pz - Mz;
             My = Py - My;
@@ -1008,7 +1008,7 @@ public class Rasterizer3D extends Rasterizer {
     }
 
     public static void method703(Interface3 arg0) {
-        anInterface3_2939 = arg0;
+        interface3 = arg0;
     }
 
 
@@ -1619,17 +1619,20 @@ public class Rasterizer3D extends Rasterizer {
         }
     }
 
-    public static int method707(int arg0, double arg1) {
-        double d = (double) (arg0 >> 16) / 256.0;
-        double d_50_ = (double) (arg0 >> 8 & 0xff) / 256.0;
-        double d_51_ = (double) (arg0 & 0xff) / 256.0;
-        d = Math.pow(d, arg1);
-        d_50_ = Math.pow(d_50_, arg1);
-        d_51_ = Math.pow(d_51_, arg1);
-        int i = (int) (d * 256.0);
-        int i_52_ = (int) (d_50_ * 256.0);
-        int i_53_ = (int) (d_51_ * 256.0);
-        return (i << 16) + (i_52_ << 8) + i_53_;
+    public static int adjustBrightness(int rgb, double brightness) {
+        double r = (double) (rgb >> 16) / 256.0;
+        double g = (double) (rgb >> 8 & 0xff) / 256.0;
+        double b = (double) (rgb & 0xff) / 256.0;
+
+        r = Math.pow(r, brightness);
+        g = Math.pow(g, brightness);
+        b = Math.pow(b, brightness);
+
+        int outR = (int) (r * 256.0);
+        int outG = (int) (g * 256.0);
+        int outB = (int) (b * 256.0);
+
+        return (outR << 16) + (outG << 8) + outB;
     }
 
     public static int[] setLineOffsets(int[] arg0) {
@@ -1658,8 +1661,8 @@ public class Rasterizer3D extends Rasterizer {
         anInt2941 = bottomY - center_y;
     }
 
-    public static void method711(double arg0) {
-        method714(arg0, 0, 512);
+    public static void createPalette(double brightness) {
+        createPalette(brightness, 512);
     }
 
     public static void drawFlatTriangle(int xA, int yA, int xB, int yB, int xC, int yC, int colour) {
@@ -1983,71 +1986,78 @@ public class Rasterizer3D extends Rasterizer {
         return lineOffsets;
     }
 
-    public static void method714(double arg0, int arg1, int arg2) {
-        arg0 += Math.random() * 0.03 - 0.015;
-        int i = arg1 * 128;
-        for(int i_58_ = arg1; i_58_ < arg2; i_58_++) {
-            double d = (double) (i_58_ >> 3) / 64.0 + 0.0078125;
-            double d_59_ = (double) (i_58_ & 0x7) / 8.0 + 0.0625;
-            for(int i_60_ = 0; i_60_ < 128; i_60_++) {
-                double d_61_ = (double) i_60_ / 128.0;
-                double d_62_ = d_61_;
-                double d_63_ = d_61_;
-                double d_64_ = d_61_;
-                if(d_59_ != 0.0) {
-                    double d_65_;
-                    if(d_61_ < 0.5) {
-                        d_65_ = d_61_ * (1.0 + d_59_);
+    public static void createPalette(double brightness, int const_512) {
+        brightness += Math.random() * 0.03 - 0.015;
+        int index = 0;
+
+        for(int y = 0; y < const_512; y++) {
+            double hue = (double) (y >> 3) / 64.0 + 0.0078125;
+            double lightness = (double) (y & 0x7) / 8.0 + 0.0625;
+
+            for(int x = 0; x < 128; x++) {
+                double intensity = (double) x / 128.0;
+                double red = intensity;
+                double green = intensity;
+                double blue = intensity;
+
+                if(lightness != 0.0) {
+                    double a;
+                    if(intensity < 0.5) {
+                        a = intensity * (1.0 + lightness);
                     } else {
-                        d_65_ = d_61_ + d_59_ - d_61_ * d_59_;
+                        a = intensity + lightness - intensity * lightness;
                     }
-                    double d_66_ = 2.0 * d_61_ - d_65_;
-                    double d_67_ = d + 0.3333333333333333;
-                    if(d_67_ > 1.0) {
-                        d_67_--;
+                    double b = 2.0 * intensity - a;
+                    double fRed = hue + 0.3333333333333333;
+                    if(fRed > 1.0) {
+                        fRed--;
                     }
-                    double d_68_ = d;
-                    double d_69_ = d - 0.3333333333333333;
-                    if(d_69_ < 0.0) {
-                        d_69_++;
+                    double fGreen = hue;
+                    double fBlue = hue - 0.3333333333333333;
+                    if(fBlue < 0.0) {
+                        fBlue++;
                     }
-                    if(6.0 * d_67_ < 1.0) {
-                        d_62_ = d_66_ + (d_65_ - d_66_) * 6.0 * d_67_;
-                    } else if(2.0 * d_67_ < 1.0) {
-                        d_62_ = d_65_;
-                    } else if(3.0 * d_67_ < 2.0) {
-                        d_62_ = d_66_ + (d_65_ - d_66_) * (0.6666666666666666 - d_67_) * 6.0;
+                    if(6.0 * fRed < 1.0) {
+                        red = b + (a - b) * 6.0 * fRed;
+                    } else if(2.0 * fRed < 1.0) {
+                        red = a;
+                    } else if(3.0 * fRed < 2.0) {
+                        red = b + (a - b) * (0.6666666666666666 - fRed) * 6.0;
                     } else {
-                        d_62_ = d_66_;
+                        red = b;
                     }
-                    if(6.0 * d_68_ < 1.0) {
-                        d_63_ = d_66_ + (d_65_ - d_66_) * 6.0 * d_68_;
-                    } else if(2.0 * d_68_ < 1.0) {
-                        d_63_ = d_65_;
-                    } else if(3.0 * d_68_ < 2.0) {
-                        d_63_ = d_66_ + (d_65_ - d_66_) * (0.6666666666666666 - d_68_) * 6.0;
+                    if(6.0 * fGreen < 1.0) {
+                        green = b + (a - b) * 6.0 * fGreen;
+                    } else if(2.0 * fGreen < 1.0) {
+                        green = a;
+                    } else if(3.0 * fGreen < 2.0) {
+                        green = b + (a - b) * (0.6666666666666666 - fGreen) * 6.0;
                     } else {
-                        d_63_ = d_66_;
+                        green = b;
                     }
-                    if(6.0 * d_69_ < 1.0) {
-                        d_64_ = d_66_ + (d_65_ - d_66_) * 6.0 * d_69_;
-                    } else if(2.0 * d_69_ < 1.0) {
-                        d_64_ = d_65_;
-                    } else if(3.0 * d_69_ < 2.0) {
-                        d_64_ = d_66_ + (d_65_ - d_66_) * (0.6666666666666666 - d_69_) * 6.0;
+                    if(6.0 * fBlue < 1.0) {
+                        blue = b + (a - b) * 6.0 * fBlue;
+                    } else if(2.0 * fBlue < 1.0) {
+                        blue = a;
+                    } else if(3.0 * fBlue < 2.0) {
+                        blue = b + (a - b) * (0.6666666666666666 - fBlue) * 6.0;
                     } else {
-                        d_64_ = d_66_;
+                        blue = b;
                     }
                 }
-                int i_70_ = (int) (d_62_ * 256.0);
-                int i_71_ = (int) (d_63_ * 256.0);
-                int i_72_ = (int) (d_64_ * 256.0);
-                int i_73_ = (i_70_ << 16) + (i_71_ << 8) + i_72_;
-                i_73_ = method707(i_73_, arg0);
-                if(i_73_ == 0) {
-                    i_73_ = 1;
+
+                int outR = ((int) (red * 256.0) << 16);
+                int outG = ((int) (green * 256.0) << 8);
+                int outB = ((int) (blue * 256.0));
+
+                int rgb = outR | outG | outB;
+                rgb = adjustBrightness(rgb, brightness);
+
+                if(rgb == 0) {
+                    rgb = 1;
                 }
-                hsl2rgb[i++] = i_73_;
+
+                hsl2rgb[index++] = rgb;
             }
         }
     }

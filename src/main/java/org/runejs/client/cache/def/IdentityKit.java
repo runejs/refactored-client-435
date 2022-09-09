@@ -31,7 +31,7 @@ public class IdentityKit extends CachedNode {
         if(identityKit != null) {
             return identityKit;
         }
-        byte[] is = Class49.aCacheArchive_1150.getFile(3, arg1);
+        byte[] is = Class49.definitionCache.getFile(3, arg1);
         identityKit = new IdentityKit();
         if(is != null) {
             identityKit.readValues(new Buffer(is));

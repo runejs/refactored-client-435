@@ -46,7 +46,7 @@ public class RSCanvas extends Canvas {
         VarPlayerDefinition.clearVarPlayerDefinitionCache();
         Class51.clearModelCache();
         Actor.clearCaches();
-        ((Class35) Rasterizer3D.anInterface3_2939).method422();
+        ((Class35) Rasterizer3D.interface3).clearTextures();
         ClientScript.clientScriptCache.clear();
         CacheArchive.skeletonCacheArchive.clearCache();
         CacheArchive.skinDefinitionCacheArchive.clearCache();

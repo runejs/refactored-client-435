@@ -842,7 +842,7 @@ public class Main extends GameShell {
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404();
         MovedStatics.method450((byte) -67);
-        ((Class35) Rasterizer3D.anInterface3_2939).method425((byte) 6, MovedStatics.anInt199);
+        ((Class35) Rasterizer3D.interface3).method425((byte) 6, MovedStatics.anInt199);
         KeyFocusListener.draw3dScreen();
 
         if(ScreenController.frameMode == ScreenMode.FIXED) {
@@ -1804,7 +1804,7 @@ public class Main extends GameShell {
                         MovedStatics.gameServerSocket.readDataToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
                         setConfigToDefaults();
                         Class51.regionX = -1;
-                        FloorDecoration.constructMapRegion(false, 5688);
+                        FloorDecoration.constructMapRegion(false);
                         IncomingPackets.opcode = -1;
                     }
                 } else {

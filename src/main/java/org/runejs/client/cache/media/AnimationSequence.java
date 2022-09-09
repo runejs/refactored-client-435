@@ -18,7 +18,7 @@ public class AnimationSequence extends CachedNode {
     public static int anInt2480 = 0;
     public static ImageRGB minimapCompass;
     public static CacheArchive aCacheArchive_2484;
-    public static int[][] anIntArrayArray2490;
+    public static int[][] tileLightIntensity;
 
     public int[] frameLengths;
     public int precedenceAnimating = -1;
@@ -43,21 +43,21 @@ public class AnimationSequence extends CachedNode {
         stretches = false;
     }
 
-    public static void loadTerrainBlock(CollisionMap[] arg0, int arg1, byte[] arg2, int arg3, int arg4, int arg5, int arg6) {
+    public static void loadTerrainBlock(CollisionMap[] collisions, int regionX_maybe, byte[] blockData, int junk, int offsetX, int offsetY, int regionY_maybe) {
         for(int i = 0; i < 4; i++) {
             for(int i_1_ = 0; i_1_ < 64; i_1_++) {
                 for(int i_2_ = 0; i_2_ < 64; i_2_++) {
-                    if(arg4 + i_1_ > 0 && i_1_ + arg4 < 103 && arg5 + i_2_ > 0 && i_2_ + arg5 < 103)
-                        arg0[i].clippingData[i_1_ + arg4][i_2_ + arg5] = BitUtils.bitWiseAND(arg0[i].clippingData[i_1_ + arg4][i_2_ + arg5], -16777217);
+                    if(offsetX + i_1_ > 0 && i_1_ + offsetX < 103 && offsetY + i_2_ > 0 && i_2_ + offsetY < 103)
+                        collisions[i].clippingData[i_1_ + offsetX][i_2_ + offsetY] = BitUtils.bitWiseAND(collisions[i].clippingData[i_1_ + offsetX][i_2_ + offsetY], -16777217);
                 }
             }
         }
-        Buffer class40_sub1 = new Buffer(arg2);
-        if(arg3 == -6) {
-            for(int i = 0; i < 4; i++) {
-                for(int i_3_ = 0; i_3_ < 64; i_3_++) {
-                    for(int i_4_ = 0; i_4_ < 64; i_4_++)
-                        MovedStatics.method922(i_3_ + arg4, 0, class40_sub1, i_4_ + arg5, arg6, arg1, i);
+        Buffer class40_sub1 = new Buffer(blockData);
+        if(junk == -6) {
+            for(int plane = 0; plane < 4; plane++) {
+                for(int tileX = 0; tileX < 64; tileX++) {
+                    for(int tileY = 0; tileY < 64; tileY++)
+                        MovedStatics.method922(tileX + offsetX, 0, class40_sub1, tileY + offsetY, regionY_maybe, regionX_maybe, plane);
                 }
             }
         }

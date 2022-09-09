@@ -25,7 +25,7 @@ public class ComplexTile {
     public int[] originalVertexZ;
     public int underlayRGB;
 
-    public ComplexTile(int tileX, int yA, int yB, int yC, int yD, int tileZ, int rotation, int texture, int shape, int cA, int cAA, int cB, int cBA, int cD, int cDA, int cC, int cCA, int overlayRGB, int underlayRGB) {
+    public ComplexTile(int tileX, int yA, int yB, int yC, int yD, int tileZ, int rotation, int texture, int shape, int overlayColorA, int underlayColorA, int overlayColorB, int underlayColorB, int overlayColorD, int underlayColorD, int overlayColorC, int underlayColorC, int overlayRGB, int underlayRGB) {
         if(yA != yB || yA != yD || yA != yC)
             flat = false;
         this.shape = shape;
@@ -58,102 +58,102 @@ public class ComplexTile {
             int vertexY;
             int vertexCOverlay;
             int vertexCUnderlay;
-            if(vertexType == 1) {
+            if (vertexType == 1) {
                 vertexX = i6;
                 vertexZ = j6;
                 vertexY = yA;
-                vertexCOverlay = cA;
-                vertexCUnderlay = cAA;
-            } else if(vertexType == 2) {
+                vertexCOverlay = overlayColorA;
+                vertexCUnderlay = underlayColorA;
+            } else if (vertexType == 2) {
                 vertexX = i6 + i5;
                 vertexZ = j6;
                 vertexY = yA + yB >> 1;
-                vertexCOverlay = cA + cB >> 1;
-                vertexCUnderlay = cAA + cBA >> 1;
-            } else if(vertexType == 3) {
+                vertexCOverlay = overlayColorA + overlayColorB >> 1;
+                vertexCUnderlay = underlayColorA + underlayColorB >> 1;
+            } else if (vertexType == 3) {
                 vertexX = i6 + c;
                 vertexZ = j6;
                 vertexY = yB;
-                vertexCOverlay = cB;
-                vertexCUnderlay = cBA;
-            } else if(vertexType == 4) {
+                vertexCOverlay = overlayColorB;
+                vertexCUnderlay = underlayColorB;
+            } else if (vertexType == 4) {
                 vertexX = i6 + c;
                 vertexZ = j6 + i5;
                 vertexY = yB + yD >> 1;
-                vertexCOverlay = cB + cD >> 1;
-                vertexCUnderlay = cBA + cDA >> 1;
-            } else if(vertexType == 5) {
+                vertexCOverlay = overlayColorB + overlayColorD >> 1;
+                vertexCUnderlay = underlayColorB + underlayColorD >> 1;
+            } else if (vertexType == 5) {
                 vertexX = i6 + c;
                 vertexZ = j6 + c;
                 vertexY = yD;
-                vertexCOverlay = cD;
-                vertexCUnderlay = cDA;
-            } else if(vertexType == 6) {
+                vertexCOverlay = overlayColorD;
+                vertexCUnderlay = underlayColorD;
+            } else if (vertexType == 6) {
                 vertexX = i6 + i5;
                 vertexZ = j6 + c;
                 vertexY = yD + yC >> 1;
-                vertexCOverlay = cD + cC >> 1;
-                vertexCUnderlay = cDA + cCA >> 1;
-            } else if(vertexType == 7) {
+                vertexCOverlay = overlayColorD + overlayColorC >> 1;
+                vertexCUnderlay = underlayColorD + underlayColorC >> 1;
+            } else if (vertexType == 7) {
                 vertexX = i6;
                 vertexZ = j6 + c;
                 vertexY = yC;
-                vertexCOverlay = cC;
-                vertexCUnderlay = cCA;
-            } else if(vertexType == 8) {
+                vertexCOverlay = overlayColorC;
+                vertexCUnderlay = underlayColorC;
+            } else if (vertexType == 8) {
                 vertexX = i6;
                 vertexZ = j6 + i5;
                 vertexY = yC + yA >> 1;
-                vertexCOverlay = cC + cA >> 1;
-                vertexCUnderlay = cCA + cAA >> 1;
-            } else if(vertexType == 9) {
+                vertexCOverlay = overlayColorC + overlayColorA >> 1;
+                vertexCUnderlay = underlayColorC + underlayColorA >> 1;
+            } else if (vertexType == 9) {
                 vertexX = i6 + i5;
                 vertexZ = j6 + j5;
                 vertexY = yA + yB >> 1;
-                vertexCOverlay = cA + cB >> 1;
-                vertexCUnderlay = cAA + cBA >> 1;
-            } else if(vertexType == 10) {
+                vertexCOverlay = overlayColorA + overlayColorB >> 1;
+                vertexCUnderlay = underlayColorA + underlayColorB >> 1;
+            } else if (vertexType == 10) {
                 vertexX = i6 + k5;
                 vertexZ = j6 + i5;
                 vertexY = yB + yD >> 1;
-                vertexCOverlay = cB + cD >> 1;
-                vertexCUnderlay = cBA + cDA >> 1;
-            } else if(vertexType == 11) {
+                vertexCOverlay = overlayColorB + overlayColorD >> 1;
+                vertexCUnderlay = underlayColorB + underlayColorD >> 1;
+            } else if (vertexType == 11) {
                 vertexX = i6 + i5;
                 vertexZ = j6 + k5;
                 vertexY = yD + yC >> 1;
-                vertexCOverlay = cD + cC >> 1;
-                vertexCUnderlay = cDA + cCA >> 1;
-            } else if(vertexType == 12) {
+                vertexCOverlay = overlayColorD + overlayColorC >> 1;
+                vertexCUnderlay = underlayColorD + underlayColorC >> 1;
+            } else if (vertexType == 12) {
                 vertexX = i6 + j5;
                 vertexZ = j6 + i5;
                 vertexY = yC + yA >> 1;
-                vertexCOverlay = cC + cA >> 1;
-                vertexCUnderlay = cCA + cAA >> 1;
-            } else if(vertexType == 13) {
+                vertexCOverlay = overlayColorC + overlayColorA >> 1;
+                vertexCUnderlay = underlayColorC + underlayColorA >> 1;
+            } else if (vertexType == 13) {
                 vertexX = i6 + j5;
                 vertexZ = j6 + j5;
                 vertexY = yA;
-                vertexCOverlay = cA;
-                vertexCUnderlay = cAA;
-            } else if(vertexType == 14) {
+                vertexCOverlay = overlayColorA;
+                vertexCUnderlay = underlayColorA;
+            } else if (vertexType == 14) {
                 vertexX = i6 + k5;
                 vertexZ = j6 + j5;
                 vertexY = yB;
-                vertexCOverlay = cB;
-                vertexCUnderlay = cBA;
-            } else if(vertexType == 15) {
+                vertexCOverlay = overlayColorB;
+                vertexCUnderlay = underlayColorB;
+            } else if (vertexType == 15) {
                 vertexX = i6 + k5;
                 vertexZ = j6 + k5;
                 vertexY = yD;
-                vertexCOverlay = cD;
-                vertexCUnderlay = cDA;
+                vertexCOverlay = overlayColorD;
+                vertexCUnderlay = underlayColorD;
             } else {
                 vertexX = i6 + j5;
                 vertexZ = j6 + k5;
                 vertexY = yC;
-                vertexCOverlay = cC;
-                vertexCUnderlay = cCA;
+                vertexCOverlay = overlayColorC;
+                vertexCUnderlay = underlayColorC;
             }
             originalVertexX[vertex] = vertexX;
             originalVertexY[vertex] = vertexY;

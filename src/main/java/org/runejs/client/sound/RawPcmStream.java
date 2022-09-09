@@ -228,7 +228,7 @@ public class RawPcmStream extends PcmStream {
             if(this.anInt2881 != 0)
                 return arg1;
             if(this.anInt2883 == -2147483648) {
-                this.remove();
+                this.unlink();
                 return arg3;
             }
             this.anInt2885 = this.anInt2883;
@@ -351,13 +351,13 @@ public class RawPcmStream extends PcmStream {
             this.method854(arg0, i_3_, 0, arg2, 0);
             if(this.anInt2888 < 0) {
                 this.anInt2888 = 0;
-                this.remove();
+                this.unlink();
             }
         } else {
             this.method866(arg0, i_3_, i_1_, arg2, 0);
             if(this.anInt2888 >= i_1_) {
                 this.anInt2888 = i_1_ - 1;
-                this.remove();
+                this.unlink();
             }
         }
         return 1;
@@ -394,7 +394,7 @@ public class RawPcmStream extends PcmStream {
         if(this.anInt2881 > 0) {
             if(arg0 >= this.anInt2881) {
                 if(this.anInt2883 == -2147483648) {
-                    this.remove();
+                    this.unlink();
                     arg0 = this.anInt2881;
                 } else
                     this.anInt2885 = this.anInt2883;
@@ -487,11 +487,11 @@ public class RawPcmStream extends PcmStream {
             if(this.anInt2882 < 0) {
                 if(this.anInt2888 < 0) {
                     this.anInt2888 = 0;
-                    this.remove();
+                    this.unlink();
                 }
             } else if(this.anInt2888 >= i_7_) {
                 this.anInt2888 = i_7_ - 1;
-                this.remove();
+                this.unlink();
             }
         }
     }
@@ -510,7 +510,7 @@ public class RawPcmStream extends PcmStream {
             if(this.anInt2881 != 0)
                 return arg1;
             if(this.anInt2883 == -2147483648) {
-                this.remove();
+                this.unlink();
                 return arg3;
             }
             this.anInt2885 = this.anInt2883;
