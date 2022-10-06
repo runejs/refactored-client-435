@@ -18,7 +18,7 @@ import org.runejs.client.sound.MusicSystem;
 import org.runejs.Configuration;
 
 public class Class60 {
-    public static boolean aBoolean1402 = false;
+    public static boolean DEBUG_DISPLAY_ALL_ACTION_ROWS = false;
     public static int anInt1413;
     public static int cameraVelocityVertical = 0;
     public static int anInt1417;

@@ -172,7 +172,7 @@ public class ChatBox {
             else
                 name = Native.username.toString();
             typeFace.drawString(name + Native.colon, 4, 90, 0);
-            typeFace.drawBasicStringLegacy("@blu@" + chatboxInput + Native.aClass1_478, typeFace.getStringWidth(name + Native.aClass1_515) + 6, 90);
+            typeFace.drawBasicStringLegacy("@blu@" + chatboxInput + Native.aClass1_478, typeFace.getStringWidth(name + Native.COLON_CHARACTER) + 6, 90);
             Rasterizer.drawHorizontalLine(0, 77, 479, 0);
         } else {
             boolean bool = Main.drawParentInterface(3, 0, 0, 479, 96, dialogueId);

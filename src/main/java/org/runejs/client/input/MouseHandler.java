@@ -108,7 +108,20 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         } else {
             if(meta == 1 && ActorDefinition.menuActionRow > 0) {
                 int action = MovedStatics.menuActionTypes[ActorDefinition.menuActionRow - 1];
-                if(action == 53 || action == 25 || action == 55 || action == 48 || action == 24 || action == 52 || action == 6 || action == 31 || action == 43 || action == 11 || action == 19 || action == 1006) {
+                if(
+                    action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_1.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_2.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_3.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_4.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_5.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_1.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_2.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_3.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_4.getId()
+                        || action == ActionRowType.DROP_ITEM.getId()
+                        || action == ActionRowType.SELECT_ITEM_ON_WIDGET.getId()
+                        || action == ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId()
+                ) {
                     int item = InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow - 1];
                     int id = Class59.secondMenuOperand[-1 + ActorDefinition.menuActionRow];
                     GameInterface gameInterface = GameInterface.getInterface(id);

@@ -149,11 +149,11 @@ public class SceneTile extends Node {
         if (ActorDefinition.menuActionRow >= 2 || MovedStatics.itemSelected != 0 || Main.widgetSelected != 0) {
             String class1;
             if (MovedStatics.itemSelected == 1 && ActorDefinition.menuActionRow < 2)
-                class1 = English.use + Native.whitespace + Native.aClass1_3295 + Native.aClass1_894;
+                class1 = English.use + Native.whitespace + Native.selectedItemName + Native.aClass1_894;
             else if (Main.widgetSelected != 1 || ActorDefinition.menuActionRow >= 2)
                 class1 = Landscape.menuActionTexts[-1 + ActorDefinition.menuActionRow];
             else
-                class1 = Native.aClass1_1918 + Native.whitespace + Native.aClass1_611 + Native.aClass1_894;
+                class1 = Native.selectedSpellVerb + Native.whitespace + Native.selectedSpellName + Native.aClass1_894;
             if (ActorDefinition.menuActionRow > 2)
                 class1 = class1 + Native.whiteSlash + (ActorDefinition.menuActionRow + -2) + English.suffixMoreOptions;
             if (arg0 == 4)

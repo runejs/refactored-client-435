@@ -14,7 +14,7 @@ import java.awt.*;
 
 public class LinkedList {
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_1057;
-    public static int anInt1061;
+    public static int selectedInventorySlot;
     public static LinkedList aLinkedList_1064 = new LinkedList();
     public static int[] terrainDataIds;
     public static volatile int anInt1073 = 0;
@@ -43,9 +43,9 @@ public class LinkedList {
         for(int i = -3 + class1.length(); i > 0; i -= 3)
             class1 = class1.substring(0, i) + Native.aClass1_795 + class1.substring(i);
         if(class1.length() > 8)
-            class1 = Native.green + class1.substring(0, -8 + class1.length()) + English.suffixMillion + Native.aClass1_1213 + class1 + Native.rightParenthasis;
+            class1 = Native.green + class1.substring(0, -8 + class1.length()) + English.suffixMillion + Native.aClass1_1213 + class1 + Native.rightParenthesis;
         else if(class1.length() > 4)
-            class1 = Native.cyan + class1.substring(0, class1.length() + -4) + Native.aClass1_2593 + Native.aClass1_1213 + class1 + Native.rightParenthasis;
+            class1 = Native.cyan + class1.substring(0, class1.length() + -4) + Native.aClass1_2593 + Native.aClass1_1213 + class1 + Native.rightParenthesis;
         return Native.aClass1_1123 + class1;
     }
 

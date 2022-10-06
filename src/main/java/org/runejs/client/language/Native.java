@@ -5,7 +5,7 @@ import org.runejs.client.RSString;
 public class Native {
 
     public static String aClass1_1123 = " ";
-    public static String aClass1_569 = " (";
+    public static String leftParenthesisWithSpacePrefix = " (";
     public static String aClass1_894 = " ->";
     public static String aClass1_1536 =" x ";
     public static RSString password = RSString.CreateString("");
@@ -22,14 +22,14 @@ public class Native {
     public static String percentOne = "%1";
     public static String percentThree = "%3";
     public static String percentFour = "%4";
-    public static String rightParenthasis = ")";
+    public static String rightParenthesis = ")";
     public static String aClass1_795 = ",";
     public static String aClass1_1348 = "0%";
     public static String prefixColon = ":  ";
     public static String prefixColonZero = ":0";
     public static String cmd_prefix = "::";
     public static String cmd_fpsoff = "::fpsoff";
-    public static String aClass1_1918 = null;
+    public static String selectedSpellVerb = null;
     public static String lineBreak = "\\n";
     public static String MAP_NAME_UNDERSCORE = "_";
     public static RSString supportedCharacters = RSString.CreateString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y-_=)0[*U]*W;:(W@(S*X,<.>)4?*6*V ");
@@ -65,9 +65,9 @@ public class Native {
     public static String aClass1_1213 = " @whi@(";
     public static String aClass1_1230 = "headicons_hint";
     public static String titleButton = "titlebutton";
-    public static String aClass1_515 = ": ";
+    public static String COLON_CHARACTER = ": ";
     public static String aClass1_327 = "@or1@";
-    public static String aClass1_3068 = " -> @whi@";
+    public static String arrowActionOnOther = " -> @whi@";
     public static String aClass1_2588 = "backvmid2";
     public static String aClass1_2593 = "K";
     public static String aClass1_2179 = "cross";
@@ -93,10 +93,10 @@ public class Native {
     public static String whitespace = " ";
     public static String emptyString = "";
     public static String mapFunction = "mapfunction";
-    public static String aClass1_3295 = null;
+    public static String selectedItemName = null;
     public static String aClass1_1374 = "backvmid1";
     public static String aClass1_478 = "*";
-    public static String aClass1_611 = null;
+    public static String selectedSpellName = null;
     public static String huffman = "huffman";
     public static String backright2 = "backright2";
     public static String clickToContinueString = null;
@@ -126,6 +126,6 @@ public class Native {
     public static String yellowBar = "@yel@|";
     public static String justAnotherYellowBar = "@yel@|";
 
-    public static String leftParenthasis = "(";
+    public static String leftParenthesis = "(";
     public static String colon =":";
 }

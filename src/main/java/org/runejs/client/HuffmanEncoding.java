@@ -108,68 +108,75 @@ public class HuffmanEncoding {
                 actorDefinition = actorDefinition.getChildDefinition();
             }
             if (actorDefinition != null && actorDefinition.isClickable) {
-                String class1 = actorDefinition.name;
+                String npcDisplayName = actorDefinition.name;
                 if (actorDefinition.combatLevel != 0) {
-                    class1 = class1 + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.aClass1_569 + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthasis;
+                    npcDisplayName = npcDisplayName + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthesis;
                 }
                 if (MovedStatics.itemSelected == 1) {
-                    MovedStatics.addActionRow(English.use, index, x, y, 49, Native.aClass1_3295 + Native.toYellow + class1);
+                    MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.USE_ITEM_ON_NPC.getId(), Native.selectedItemName + Native.toYellow + npcDisplayName);
                 } else if (Main.widgetSelected == 1) {
                     if ((0x2 & ItemDefinition.selectedMask) == 2) {
-                        MovedStatics.addActionRow(Native.aClass1_1918, index, x, y, 21, Native.aClass1_611 + Native.toYellow + class1);
+                        MovedStatics.addActionRow(Native.selectedSpellVerb, index, x, y, ActionRowType.CAST_MAGIC_ON_NPC.getId(), Native.selectedSpellName + Native.toYellow + npcDisplayName);
                     }
                 } else {
-                    String[] class1s = actorDefinition.options;
-                    if (Class60.aBoolean1402) {
-                        class1s = MovedStatics.method968(class1s);
+                    String[] options = actorDefinition.options;
+                    if (Class60.DEBUG_DISPLAY_ALL_ACTION_ROWS) {
+                        options = MovedStatics.getAllOptionsWithIndices(options);
                     }
-                    if (class1s != null) {
+
+                    // add non-attack options to NPC
+                    if (options != null) {
                         for (int i = 4; i >= 0; i--) {
-                            if (class1s[i] != null && !class1s[i].equalsIgnoreCase(English.attack)) {
-                                int i_3_ = 0;
+                            if (options[i] != null && !options[i].equalsIgnoreCase(English.attack)) {
+                                int actionType = 0;
                                 if (i == 0) {
-                                    i_3_ = 12;
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_1.getId();
                                 }
                                 if (i == 1) {
-                                    i_3_ = 30;
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_2.getId();
                                 }
                                 if (i == 2) {
-                                    i_3_ = 4;
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_3.getId();
                                 }
                                 if (i == 3) {
-                                    i_3_ = 34;
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_4.getId();
                                 }
                                 if (i == 4) {
-                                    i_3_ = 20;
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_5.getId();
                                 }
-                                MovedStatics.addActionRow(class1s[i], index, x, y, i_3_, Native.yellow + class1);
+                                MovedStatics.addActionRow(options[i], index, x, y, actionType, Native.yellow + npcDisplayName);
                             }
                         }
                     }
-                    if (class1s != null) {
+
+                    // add 'Attack' option to NPC
+                    if (options != null) {
                         for (int i = 4; i >= 0; i--) {
-                            if (class1s[i] != null && class1s[i].equalsIgnoreCase(English.attack)) {
-                                int i_4_ = 0;
+                            if (options[i] != null && options[i].equalsIgnoreCase(English.attack)) {
+                                int actionTypeOffset = 0;
+
+                                // deprioritise the action in the list if the NPC is higher level than the player
                                 if (Player.localPlayer.combatLevel < actorDefinition.combatLevel) {
-                                    i_4_ = 2000;
+                                    actionTypeOffset = 2000;
                                 }
-                                int i_5_ = 0;
+
+                                int actionType = 0;
                                 if (i == 0) {
-                                    i_5_ = 12 + i_4_;
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_1.getId() + actionTypeOffset;
                                 }
                                 if (i == 1) {
-                                    i_5_ = i_4_ + 30;
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_2.getId() + actionTypeOffset;
                                 }
                                 if (i == 2) {
-                                    i_5_ = i_4_ + 4;
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_3.getId() + actionTypeOffset;
                                 }
                                 if (i == 3) {
-                                    i_5_ = i_4_ + 34;
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_4.getId() + actionTypeOffset;
                                 }
                                 if (i == 4) {
-                                    i_5_ = 20 + i_4_;
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_5.getId() + actionTypeOffset;
                                 }
-                                MovedStatics.addActionRow(class1s[i], index, x, y, i_5_, Native.yellow +class1);
+                                MovedStatics.addActionRow(options[i], index, x, y, actionType, Native.yellow +npcDisplayName);
                             }
                         }
                     }
@@ -179,7 +186,7 @@ public class HuffmanEncoding {
                     if(actorDefinition.combatLevel != 0) {
                         String combatLevel = " " +
                             SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel)
-                                + Native.leftParenthasis + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthasis;
+                                + Native.leftParenthesis + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthesis;
                         examineText.append(combatLevel);
                     }
 
@@ -202,7 +209,7 @@ public class HuffmanEncoding {
 
 
                     }
-                    MovedStatics.addActionRow(English.examine, index, x, y, 1001, examineText.toString());
+                    MovedStatics.addActionRow(English.examine, index, x, y, ActionRowType.EXAMINE_NPC.getId(), examineText.toString());
                 }
             }
         }

@@ -389,50 +389,55 @@ public class Player extends Actor {
 
     public static void processPlayerMenuOptions(Player player, int x, int y, int index) {
         if (localPlayer != player && ActorDefinition.menuActionRow < 400) {
-            String rsString;
+            String playerDisplayName;
             if (player.skillLevel == 0)
-                rsString = player.playerName + SceneTile.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.aClass1_569 + English.prefixLevel + player.combatLevel + Native.rightParenthasis;
+                playerDisplayName = player.playerName + SceneTile.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + player.combatLevel + Native.rightParenthesis;
             else
-                rsString = player.playerName + Native.aClass1_569 + English.prefixSkill + player.skillLevel + Native.rightParenthasis;
+                playerDisplayName = player.playerName + Native.leftParenthesisWithSpacePrefix + English.prefixSkill + player.skillLevel + Native.rightParenthesis;
             if (MovedStatics.itemSelected == 1) {
-                MovedStatics.addActionRow(English.use, index, x, y, 22, Native.aClass1_3295 + Native.aClass1_3068 + rsString);
+                MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.USE_ITEM_ON_PLAYER.getId(), Native.selectedItemName + Native.arrowActionOnOther + playerDisplayName);
             } else if (Main.widgetSelected == 1) {
                 if ((ItemDefinition.selectedMask & 0x8) == 8) {
-                    MovedStatics.addActionRow(Native.aClass1_1918, index, x, y, 1, Native.aClass1_611 + Native.aClass1_3068 + rsString);
+                    MovedStatics.addActionRow(Native.selectedSpellVerb, index, x, y, ActionRowType.CAST_MAGIC_ON_PLAYER.getId(), Native.selectedSpellName + Native.arrowActionOnOther + playerDisplayName);
                 }
             } else {
                 for (int i = 4; i >= 0; i--) {
                     if (Main.playerActions[i] != null) {
-                        int i_16_ = 0;
-                        int i_17_ = 0;
+                        int actionType = 0;
+                        int actionRowOffset = 0;
+
                         if (Main.playerActions[i].equalsIgnoreCase(English.attack)) {
+                            // offset attack actions so that they are lower priority for players of higher combat lvl or the same team
                             if (localPlayer.combatLevel < player.combatLevel)
-                                i_17_ = 2000;
+                                actionRowOffset = 2000;
                             if (localPlayer.teamId != 0 && player.teamId != 0) {
                                 if (localPlayer.teamId != player.teamId)
-                                    i_17_ = 0;
+                                    actionRowOffset = 0;
                                 else
-                                    i_17_ = 2000;
+                                    actionRowOffset = 2000;
                             }
-                        } else if (Class13.playerArray[i])
-                            i_17_ = 2000;
+                        } else if (Class13.playerArray[i]) {
+                            // what is this for?
+                            actionRowOffset = 2000;
+                        }
+
                         if (i == 0)
-                            i_16_ = 10 + i_17_;
+                            actionType = ActionRowType.INTERACT_WITH_PLAYER_OPTION_1.getId() + actionRowOffset;
                         if (i == 1)
-                            i_16_ = 39 + i_17_;
+                            actionType = ActionRowType.INTERACT_WITH_PLAYER_OPTION_2.getId() + actionRowOffset;
                         if (i == 2)
-                            i_16_ = i_17_ + 44;
+                            actionType = ActionRowType.INTERACT_WITH_PLAYER_OPTION_3.getId() + actionRowOffset;
                         if (i == 3)
-                            i_16_ = i_17_ + 14;
+                            actionType = ActionRowType.INTERACT_WITH_PLAYER_OPTION_4.getId() + actionRowOffset;
                         if (i == 4)
-                            i_16_ = 41 + i_17_;
-                        MovedStatics.addActionRow(Main.playerActions[i], index, x, y, i_16_, Native.white + rsString);
+                            actionType = ActionRowType.INTERACT_WITH_PLAYER_OPTION_5.getId() + actionRowOffset;
+                        MovedStatics.addActionRow(Main.playerActions[i], index, x, y, actionType, Native.white + playerDisplayName);
                     }
                 }
             }
             for (int i = 0; i < ActorDefinition.menuActionRow; i++) {
                 if (MovedStatics.menuActionTypes[i] == 7) {
-                    Landscape.menuActionTexts[i] = English.walkHere + Native.whitespace + Native.white + rsString;
+                    Landscape.menuActionTexts[i] = English.walkHere + Native.whitespace + Native.white + playerDisplayName;
                     break;
                 }
             }
