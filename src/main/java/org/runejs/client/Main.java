@@ -844,7 +844,7 @@ public class Main extends GameShell {
         }
 
 
-        if(ISAAC.aBoolean519 && UpdateServer.method368((byte) -41, false, true) == 0) {
+        if(ISAAC.aBoolean519 && UpdateServer.getActiveCount((byte) -41, false, true) == 0) {
             ISAAC.aBoolean519 = false;
         }
         if(ISAAC.aBoolean519) {
@@ -1896,7 +1896,7 @@ public class Main extends GameShell {
         if (Class51.gameStatusCode != 1000) {
             boolean bool = UpdateServer.processUpdateServerResponse();
             if (!bool)
-                method40();
+                connectUpdateServer();
         }
     }
 
@@ -1942,14 +1942,14 @@ public class Main extends GameShell {
         Npc.anInt3294 = 0;
     }
 
-    public void method40() {
-        if (UpdateServer.anInt813 >= 4) {
+    public void connectUpdateServer() {
+        if (UpdateServer.crcMismatches >= 4) {
             this.openErrorPage("js5crc");
             Class51.gameStatusCode = 1000;
         } else {
-            if (UpdateServer.anInt2278 >= 4) {
+            if (UpdateServer.ioExceptions >= 4) {
                 if (Class51.gameStatusCode > 5) {
-                    UpdateServer.anInt2278 = 3;
+                    UpdateServer.ioExceptions = 3;
                     ISAAC.anInt509 = 3000;
                 } else {
                     this.openErrorPage("js5io");

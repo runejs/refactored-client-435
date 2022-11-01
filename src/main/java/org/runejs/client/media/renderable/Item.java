@@ -223,7 +223,7 @@ public class Item extends Renderable {
                 MusicSystem.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", MusicSystem.musicVolume);
             else
                 MusicSystem.method405(10);
-            UpdateServer.method19(false);
+            UpdateServer.resetUpdateServerRequests(false);
             MovedStatics.clearScreen = true;
             ISAAC.aBoolean512 = true;
         }

@@ -69,7 +69,7 @@ public class CacheArchive {
         aBoolean1811 = arg5;
         this.metaIndex = metaIndex;
         this.cacheIndexId = cacheIndexId;
-        UpdateServer.method37(this, this.cacheIndexId);
+        UpdateServer.getArchiveChecksum(this, this.cacheIndexId);
     }
 
     public static CacheArchive loadArchive(int cacheIndexId, boolean arg1, boolean arg2, boolean arg4) {

@@ -172,7 +172,7 @@ public class MovedStatics {
             Class17.aProducingGraphicsBuffer_463 = null;
             anIntArray1013 = null;
             MusicSystem.method405(10);
-            UpdateServer.method19(true);
+            UpdateServer.resetUpdateServerRequests(true);
             ISAAC.aBoolean512 = false;
         }
     }
