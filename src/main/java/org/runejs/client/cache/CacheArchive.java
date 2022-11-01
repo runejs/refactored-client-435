@@ -69,7 +69,7 @@ public class CacheArchive {
         aBoolean1811 = arg5;
         this.metaIndex = metaIndex;
         this.cacheIndexId = cacheIndexId;
-        Main.method37(this, this.cacheIndexId);
+        UpdateServer.method37(this, this.cacheIndexId);
     }
 
     public static CacheArchive loadArchive(int cacheIndexId, boolean arg1, boolean arg2, boolean arg4) {
@@ -155,7 +155,7 @@ public class CacheArchive {
             return 100;
         if(aByteArrayArray212 != null)
             return 99;
-        int i = MovedStatics.calculateDataLoaded(255, cacheIndexId);
+        int i = UpdateServer.calculateDataLoaded(255, cacheIndexId);
         if(i >= 100)
             i = 99;
         return i;
@@ -215,7 +215,7 @@ public class CacheArchive {
     }
 
     public void method174(int arg0) {
-        MovedStatics.method399(cacheIndexId, arg0);
+        UpdateServer.method399(cacheIndexId, arg0);
     }
 
     public void method199() {
@@ -250,7 +250,7 @@ public class CacheArchive {
             return 100;
         if(aBooleanArray1796[arg0])
             return 100;
-        return MovedStatics.calculateDataLoaded(cacheIndexId, arg0);
+        return UpdateServer.calculateDataLoaded(cacheIndexId, arg0);
     }
 
     public int method202() {

@@ -13,7 +13,6 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.ISAAC;
-import org.runejs.client.net.UpdateServer;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.util.BitUtils;
@@ -55,12 +54,6 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     public int id;
     public int[] modifiedModelColors;
     public boolean renderOnMinimap = true;
-
-    public static void killUpdateServerSocket() {
-        if(UpdateServer.updateServerSocket != null) {
-            UpdateServer.updateServerSocket.kill();
-        }
-    }
 
     public static void method569() {
         Class17.anIntArray456 = null;

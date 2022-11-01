@@ -6,13 +6,11 @@ import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.input.MouseHandler;
-import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.net.PacketBuffer;
-import org.runejs.client.net.UpdateServer;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.tile.Wall;
@@ -42,28 +40,6 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public static int millisPerTick = 20;
     public boolean gameShellError = false;
 
-
-    public static void method19(boolean loggedIn) {
-        if (UpdateServer.updateServerSocket != null) {
-            try {
-                Buffer buffer = new Buffer(4);
-                buffer.putByte(loggedIn ? 2 : 3);
-                buffer.putMediumBE(0);
-                UpdateServer.updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
-            } catch (java.io.IOException ioexception) {
-                ioexception.printStackTrace();
-                try {
-                    UpdateServer.updateServerSocket.kill();
-                } catch (Exception exception) {
-                    exception.printStackTrace();
-                    /* empty */
-                }
-                UpdateServer.updateServerSocket = null;
-                UpdateServer.anInt2278++;
-            }
-        }
-
-    }
 
     public static void runClientScriptsForInterface(int minY, int arg1, int scrollWidth, int arg3, int minX, int parentId, GameInterface[] interfaceCollection, int arg8, int scrollHeight) {
         for (int i = 0; i < interfaceCollection.length; i++) {
@@ -143,10 +119,6 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
 
     public static void providesignlink(Signlink signlink) {
         Actor.signlink = Main.signlink = signlink;
-    }
-
-    public static int method27(int arg0, int arg1) {
-        return arg0 ^ arg1;
     }
 
     public static void method28(long arg0) {

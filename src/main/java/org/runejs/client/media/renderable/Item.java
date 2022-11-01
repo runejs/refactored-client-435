@@ -13,6 +13,7 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.ISAAC;
+import org.runejs.client.net.UpdateServer;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.tile.Wall;
@@ -222,7 +223,7 @@ public class Item extends Renderable {
                 MusicSystem.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", MusicSystem.musicVolume);
             else
                 MusicSystem.method405(10);
-            GameShell.method19(false);
+            UpdateServer.method19(false);
             MovedStatics.clearScreen = true;
             ISAAC.aBoolean512 = true;
         }

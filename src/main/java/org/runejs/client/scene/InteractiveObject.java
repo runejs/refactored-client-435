@@ -1,6 +1,5 @@
 package org.runejs.client.scene;
 
-import org.runejs.client.node.NodeQueue;
 import org.runejs.client.ProducingGraphicsBuffer;
 import org.runejs.client.RSString;
 import org.runejs.client.media.renderable.Renderable;
@@ -9,7 +8,6 @@ public class InteractiveObject {
     public static int menuOffsetX;
     public static ProducingGraphicsBuffer tabTop;
     public static int[] firstMenuOperand = new int[500];
-    public static NodeQueue aNodeQueue_485 = new NodeQueue();
     public static int anInt487 = 0;
     public static byte[][][] tileShadowIntensity;
     public static int playerRights = 0;
