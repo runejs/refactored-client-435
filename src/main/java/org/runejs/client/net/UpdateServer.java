@@ -12,7 +12,7 @@ import java.util.zip.CRC32;
 
 public class UpdateServer {
     public static int ioExceptions = 0;
-	public static int crcMismatches = 0;
+    public static int crcMismatches = 0;
 
     private static GameSocket updateServerSocket;
     private static Buffer fileDataBuffer = new Buffer(8);
@@ -29,12 +29,12 @@ public class UpdateServer {
     private static int pendingWrites = 0;
     private static int immediateWrites = 0;
     private static int pendingResponses = 0;
-	private static boolean priorityRequest;
-	private static NodeQueue pendingWriteQueue = new NodeQueue();
-	private static int blockOffset = 0;
-	private static int msSinceLastUpdate = 0;
-	private static long lastUpdateInMillis;
-	private static CacheArchive[] cacheArchiveLoaders = new CacheArchive[256];
+    private static boolean priorityRequest;
+    private static NodeQueue pendingWriteQueue = new NodeQueue();
+    private static int blockOffset = 0;
+    private static int msSinceLastUpdate = 0;
+    private static long lastUpdateInMillis;
+    private static CacheArchive[] cacheArchiveLoaders = new CacheArchive[256];
 
     public static void handleUpdateServerConnection(GameSocket socket, boolean arg2) {
         if(updateServerSocket != null) {
@@ -340,72 +340,72 @@ public class UpdateServer {
         }
     }
 
-	public static void method399(int arg0, int arg2) {
-	    long l = (arg0 << 16) + arg2;
-	    UpdateServerNode updateServerNode = (UpdateServerNode) writeQueue.getNode(l);
-	    if (updateServerNode != null) {
-	        pendingWriteQueue.unshift(updateServerNode);
-	    }
-	}
+    public static void method399(int arg0, int arg2) {
+        long l = (arg0 << 16) + arg2;
+        UpdateServerNode updateServerNode = (UpdateServerNode) writeQueue.getNode(l);
+        if (updateServerNode != null) {
+            pendingWriteQueue.unshift(updateServerNode);
+        }
+    }
 
-	public static void getArchiveChecksum(CacheArchive cacheArchive, int arg2) {
-	    if (crcTableBuffer == null) {
-	        method327(true, null, 255, 255, (byte) 0, 0);
-	        UpdateServer.cacheArchiveLoaders[arg2] = cacheArchive;
-	    } else {
-	        crcTableBuffer.currentPosition = 5 + arg2 * 4;
-	        int i = crcTableBuffer.getIntBE();
-	        cacheArchive.requestLatestVersion(i);
-	    }
-	}
+    public static void getArchiveChecksum(CacheArchive cacheArchive, int arg2) {
+        if (crcTableBuffer == null) {
+            method327(true, null, 255, 255, (byte) 0, 0);
+            UpdateServer.cacheArchiveLoaders[arg2] = cacheArchive;
+        } else {
+            crcTableBuffer.currentPosition = 5 + arg2 * 4;
+            int i = crcTableBuffer.getIntBE();
+            cacheArchive.requestLatestVersion(i);
+        }
+    }
 
-	private static int xor(int arg0, int arg1) {
-	    return arg0 ^ arg1;
-	}
+    private static int xor(int arg0, int arg1) {
+        return arg0 ^ arg1;
+    }
 
-	public static void resetUpdateServerRequests(boolean loggedIn) {
-	    if (updateServerSocket != null) {
-	        try {
-	            Buffer buffer = new Buffer(4);
-	            buffer.putByte(loggedIn ? 2 : 3);
-	            buffer.putMediumBE(0);
-	            updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
-	        } catch (java.io.IOException ioexception) {
-	            ioexception.printStackTrace();
-	            try {
-	                updateServerSocket.kill();
-	            } catch (Exception exception) {
-	                exception.printStackTrace();
-	                /* empty */
-	            }
-	            updateServerSocket = null;
-	            ioExceptions++;
-	        }
-	    }
-	
-	}
+    public static void resetUpdateServerRequests(boolean loggedIn) {
+        if (updateServerSocket != null) {
+            try {
+                Buffer buffer = new Buffer(4);
+                buffer.putByte(loggedIn ? 2 : 3);
+                buffer.putMediumBE(0);
+                updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
+            } catch (java.io.IOException ioexception) {
+                ioexception.printStackTrace();
+                try {
+                    updateServerSocket.kill();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                    /* empty */
+                }
+                updateServerSocket = null;
+                ioExceptions++;
+            }
+        }
+    
+    }
 
-	public static void killUpdateServerSocket() {
-	    if(updateServerSocket != null) {
-	        updateServerSocket.kill();
-	    }
-	}
+    public static void killUpdateServerSocket() {
+        if(updateServerSocket != null) {
+            updateServerSocket.kill();
+        }
+    }
 
-	public static int calculateDataLoaded(int arg1, int arg2) {
-	    long l = (long) ((arg1 << 16) + arg2);
-	    if (currentResponse == null || currentResponse.key != l)
-	        return 0;
-	    return 1 + inboundFile.currentPosition * 99 / (inboundFile.buffer.length + -currentResponse.padding);
-	}
+    public static int calculateDataLoaded(int arg1, int arg2) {
+        long l = (long) ((arg1 << 16) + arg2);
+        if (currentResponse == null || currentResponse.key != l)
+            return 0;
+        return 1 + inboundFile.currentPosition * 99 / (inboundFile.buffer.length + -currentResponse.padding);
+    }
 
-	public static int getActiveCount(byte arg0, boolean pending, boolean immediate) {
-	    int total = 0;
-	    if (immediate) {
-	        total += immediateResponses + immediateWrites;
-	    }
-	    if (pending) {
-	        total += pendingResponses + pendingWrites;
-	    }
-	    return total;
-	}
+    public static int getActiveCount(byte arg0, boolean pending, boolean immediate) {
+        int total = 0;
+        if (immediate) {
+            total += immediateResponses + immediateWrites;
+        }
+        if (pending) {
+            total += pendingResponses + pendingWrites;
+        }
+        return total;
+    }
 }
