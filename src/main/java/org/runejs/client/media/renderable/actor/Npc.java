@@ -11,7 +11,6 @@ import org.runejs.client.scene.SceneCluster;
 
 public class Npc extends Actor {
     public static int anInt3294 = 0;
-    public static boolean aBoolean3298;
     public static Scene currentScene;
     public static int[] anIntArray3304 = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
     public static int[] anIntArray3312;

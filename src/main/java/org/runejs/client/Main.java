@@ -545,17 +545,6 @@ public class Main extends GameShell {
         return result;
     }
 
-    public static void method37(CacheArchive cacheArchive, int arg2) {
-        if (UpdateServer.crcTableBuffer == null) {
-            UpdateServer.method327(true, null, 255, 255, (byte) 0, 0);
-            Class24.aClass6_Sub1Array580[arg2] = cacheArchive;
-        } else {
-            UpdateServer.crcTableBuffer.currentPosition = 5 + arg2 * 4;
-            int i = UpdateServer.crcTableBuffer.getIntBE();
-            cacheArchive.requestLatestVersion(i);
-        }
-    }
-
     public static void renderFlames() {
         if (MovedStatics.anInt2452 <= 0) {
             if (IdentityKit.anInt2613 > 0) {
@@ -855,7 +844,7 @@ public class Main extends GameShell {
         }
 
 
-        if(ISAAC.aBoolean519 && MovedStatics.method368((byte) -41, false, true) == 0) {
+        if(ISAAC.aBoolean519 && UpdateServer.getActiveCount((byte) -41, false, true) == 0) {
             ISAAC.aBoolean519 = false;
         }
         if(ISAAC.aBoolean519) {
@@ -1907,7 +1896,7 @@ public class Main extends GameShell {
         if (Class51.gameStatusCode != 1000) {
             boolean bool = UpdateServer.processUpdateServerResponse();
             if (!bool)
-                method40();
+                connectUpdateServer();
         }
     }
 
@@ -1953,14 +1942,14 @@ public class Main extends GameShell {
         Npc.anInt3294 = 0;
     }
 
-    public void method40() {
-        if (MovedStatics.anInt813 >= 4) {
+    public void connectUpdateServer() {
+        if (UpdateServer.crcMismatches >= 4) {
             this.openErrorPage("js5crc");
             Class51.gameStatusCode = 1000;
         } else {
-            if (UpdateServer.anInt2278 >= 4) {
+            if (UpdateServer.ioExceptions >= 4) {
                 if (Class51.gameStatusCode > 5) {
-                    UpdateServer.anInt2278 = 3;
+                    UpdateServer.ioExceptions = 3;
                     ISAAC.anInt509 = 3000;
                 } else {
                     this.openErrorPage("js5io");
@@ -2039,7 +2028,7 @@ public class Main extends GameShell {
         Class13.method249(true);
         MusicSystem.syncedStop(false);
         SoundSystem.stop();
-        ActorDefinition.killUpdateServerSocket();
+        UpdateServer.killUpdateServerSocket();
         GenericTile.method947(-1);
         do {
             try {

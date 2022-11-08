@@ -1,35 +1,40 @@
 package org.runejs.client.net;
 
-import org.runejs.client.*;
+import org.runejs.client.GameSocket;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.io.Buffer;
-import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.node.HashTable;
-import org.runejs.client.scene.InteractiveObject;
+import org.runejs.client.node.NodeQueue;
 
 import java.io.IOException;
 import java.util.zip.CRC32;
 
 
 public class UpdateServer {
+    public static int ioExceptions = 0;
+    public static int crcMismatches = 0;
 
-    public static GameSocket updateServerSocket;
-    public static Buffer fileDataBuffer = new Buffer(8);
-    public static Buffer aClass40_Sub1_2752;
-    public static Buffer crcTableBuffer;
-    public static HashTable updateServerRequests = new HashTable(4096);
-    public static HashTable activeRequests = new HashTable(32);
-    public static HashTable queuedRequests = new HashTable(4096);
-    public static HashTable aClass23_2545 = new HashTable(4096);
-    public static UpdateServerNode aUpdateServerNode_2250;
-    public static CRC32 crc32 = new CRC32();
-    public static byte aByte302 = (byte) 0;
-    public static int anInt464 = 0;
-    public static int anInt554 = 0;
-    public static int anInt1618 = 0;
-    public static int anInt2278 = 0;
-    public static int anInt1006 = 0;
-
+    private static GameSocket updateServerSocket;
+    private static Buffer fileDataBuffer = new Buffer(8);
+    private static Buffer inboundFile;
+    private static Buffer crcTableBuffer;
+    private static HashTable immediateWriteQueue = new HashTable(4096);
+    private static HashTable activeRequests = new HashTable(32);
+    private static HashTable queuedRequests = new HashTable(4096);
+    private static HashTable writeQueue = new HashTable(4096);
+    private static UpdateServerNode currentResponse;
+    private static CRC32 crc32 = new CRC32();
+    private static byte encryption = (byte) 0;
+    private static int immediateResponses = 0;
+    private static int pendingWrites = 0;
+    private static int immediateWrites = 0;
+    private static int pendingResponses = 0;
+    private static boolean priorityRequest;
+    private static NodeQueue pendingWriteQueue = new NodeQueue();
+    private static int blockOffset = 0;
+    private static int msSinceLastUpdate = 0;
+    private static long lastUpdateInMillis;
+    private static CacheArchive[] cacheArchiveLoaders = new CacheArchive[256];
 
     public static void handleUpdateServerConnection(GameSocket socket, boolean arg2) {
         if(updateServerSocket != null) {
@@ -43,11 +48,11 @@ public class UpdateServer {
         }
 
         updateServerSocket = socket;
-        GameShell.method19(arg2);
+        UpdateServer.resetUpdateServerRequests(arg2);
         fileDataBuffer.currentPosition = 0;
-        aClass40_Sub1_2752 = null;
-        Landscape.anInt1157 = 0;
-        aUpdateServerNode_2250 = null;
+        inboundFile = null;
+        UpdateServer.blockOffset = 0;
+        currentResponse = null;
 
         for(; ; ) {
             UpdateServerNode updateServerNode = (UpdateServerNode) activeRequests.getNextNode();
@@ -55,9 +60,9 @@ public class UpdateServer {
                 break;
             }
 
-            updateServerRequests.put(updateServerNode.key, updateServerNode);
-            anInt464--;
-            anInt1618++;
+            immediateWriteQueue.put(updateServerNode.key, updateServerNode);
+            immediateResponses--;
+            immediateWrites++;
         }
 
         for(; ; ) {
@@ -66,17 +71,17 @@ public class UpdateServer {
                 break;
             }
 
-            InteractiveObject.aNodeQueue_485.unshift(updateServerNode);
-            aClass23_2545.put(updateServerNode.key, updateServerNode);
-            anInt1006--;
-            anInt554++;
+            UpdateServer.pendingWriteQueue.unshift(updateServerNode);
+            writeQueue.put(updateServerNode.key, updateServerNode);
+            pendingResponses--;
+            pendingWrites++;
         }
 
-        if(aByte302 != 0) {
+        if(encryption != 0) {
             try {
                 Buffer fileRequestBuffer = new Buffer(4);
                 fileRequestBuffer.putByte(4);
-                fileRequestBuffer.putByte(aByte302);
+                fileRequestBuffer.putByte(encryption);
                 fileRequestBuffer.putShortBE(0);
                 updateServerSocket.sendDataFromBuffer(4, 0, fileRequestBuffer.buffer);
             } catch(java.io.IOException ioexception) {
@@ -88,22 +93,22 @@ public class UpdateServer {
                     /* empty */
                 }
                 updateServerSocket = null;
-                anInt2278++;
+                ioExceptions++;
             }
         }
-        MovedStatics.msSinceLastUpdate = 0;
-        MovedStatics.lastUpdateInMillis = System.currentTimeMillis();
+        UpdateServer.msSinceLastUpdate = 0;
+        UpdateServer.lastUpdateInMillis = System.currentTimeMillis();
     }
 
     public static boolean processUpdateServerResponse() {
         long l = System.currentTimeMillis();
-        int currentMsSinceLastUpdate = (int) (l - MovedStatics.lastUpdateInMillis);
-        MovedStatics.lastUpdateInMillis = l;
+        int currentMsSinceLastUpdate = (int) (l - UpdateServer.lastUpdateInMillis);
+        UpdateServer.lastUpdateInMillis = l;
         if(currentMsSinceLastUpdate > 200) {
             currentMsSinceLastUpdate = 200;
         }
-        MovedStatics.msSinceLastUpdate += currentMsSinceLastUpdate;
-        if(anInt1006 == 0 && anInt464 == 0 && anInt554 == 0 && anInt1618 == 0) {
+        UpdateServer.msSinceLastUpdate += currentMsSinceLastUpdate;
+        if(pendingResponses == 0 && immediateResponses == 0 && pendingWrites == 0 && immediateWrites == 0) {
             return true;
         }
         if(updateServerSocket == null) {
@@ -111,34 +116,34 @@ public class UpdateServer {
         }
 
         try {
-            if(MovedStatics.msSinceLastUpdate > 30000) {
+            if(UpdateServer.msSinceLastUpdate > 30000) {
                 throw new IOException();
             }
 
             // Immediate file requests
-            for(/**/; anInt464 < 20; anInt464++) {
-                if(anInt1618 <= 0) {
+            for(/**/; immediateResponses < 20; immediateResponses++) {
+                if(immediateWrites <= 0) {
                     break;
                 }
-                UpdateServerNode updateServerNode = (UpdateServerNode) updateServerRequests.getNextNode();
+                UpdateServerNode updateServerNode = (UpdateServerNode) immediateWriteQueue.getNextNode();
                 Buffer buffer = new Buffer(4);
                 buffer.putByte(1); // immediate file request
                 buffer.putMediumBE((int) updateServerNode.key); // file index + file id
                 updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
                 activeRequests.put(updateServerNode.key, updateServerNode);
-                anInt1618--;
+                immediateWrites--;
             }
 
             // Queuable file requests
-            for(/**/; anInt1006 < 20 && anInt554 > 0; anInt554--) {
-                UpdateServerNode updateServerNode = (UpdateServerNode) InteractiveObject.aNodeQueue_485.next();
+            for(/**/; pendingResponses < 20 && pendingWrites > 0; pendingWrites--) {
+                UpdateServerNode updateServerNode = (UpdateServerNode) UpdateServer.pendingWriteQueue.next();
                 Buffer buffer = new Buffer(4);
                 buffer.putByte(0); // queued file request
                 buffer.putMediumBE((int) updateServerNode.key); // file index + file id
                 updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
                 updateServerNode.clear();
                 queuedRequests.put(updateServerNode.key, updateServerNode);
-                anInt1006++;
+                pendingResponses++;
             }
 
             for(int i1 = 0; i1 < 100; i1++) {
@@ -150,39 +155,39 @@ public class UpdateServer {
                     break;
                 }
 
-                MovedStatics.msSinceLastUpdate = 0;
+                UpdateServer.msSinceLastUpdate = 0;
 
-                int i_35_ = 0;
-                if(aUpdateServerNode_2250 == null) {
-                    i_35_ = 8;
-                } else if(Landscape.anInt1157 == 0) {
-                    i_35_ = 1;
+                int read = 0;
+                if(currentResponse == null) {
+                    read = 8;
+                } else if(UpdateServer.blockOffset == 0) {
+                    read = 1;
                 }
 
-                if(i_35_ <= 0) {
-                    int inboundFileLength = aClass40_Sub1_2752.buffer.length + -aUpdateServerNode_2250.aByte2758;
-                    int i_37_ = -Landscape.anInt1157 + 512;
-                    if(-aClass40_Sub1_2752.currentPosition + inboundFileLength < i_37_) {
-                        i_37_ = inboundFileLength - aClass40_Sub1_2752.currentPosition;
+                if(read <= 0) {
+                    int inboundFileLength = inboundFile.buffer.length + -currentResponse.padding;
+                    int i_37_ = -UpdateServer.blockOffset + 512;
+                    if(-inboundFile.currentPosition + inboundFileLength < i_37_) {
+                        i_37_ = inboundFileLength - inboundFile.currentPosition;
                     }
                     if(i_37_ > dataAvailable) {
                         i_37_ = dataAvailable;
                     }
-                    updateServerSocket.readDataToBuffer(aClass40_Sub1_2752.currentPosition, i_37_, aClass40_Sub1_2752.buffer);
-                    if(aByte302 != 0) {
+                    updateServerSocket.readDataToBuffer(inboundFile.currentPosition, i_37_, inboundFile.buffer);
+                    if(encryption != 0) {
                         for(int i_38_ = 0; i_37_ > i_38_; i_38_++) {
-                            aClass40_Sub1_2752.buffer[aClass40_Sub1_2752.currentPosition + i_38_] = (byte) GameShell.method27(aClass40_Sub1_2752.buffer[aClass40_Sub1_2752.currentPosition + i_38_], aByte302);
+                            inboundFile.buffer[inboundFile.currentPosition + i_38_] = (byte) UpdateServer.xor(inboundFile.buffer[inboundFile.currentPosition + i_38_], encryption);
                         }
                     }
 
-                    aClass40_Sub1_2752.currentPosition += i_37_;
-                    Landscape.anInt1157 += i_37_;
+                    inboundFile.currentPosition += i_37_;
+                    UpdateServer.blockOffset += i_37_;
 
-                    if(inboundFileLength == aClass40_Sub1_2752.currentPosition) {
-                        if(aUpdateServerNode_2250.key == 16711935) { // crc table file key
-                            crcTableBuffer = aClass40_Sub1_2752;
+                    if(inboundFileLength == inboundFile.currentPosition) {
+                        if(currentResponse.key == 16711935) { // crc table file key
+                            crcTableBuffer = inboundFile;
                             for(int i = 0; i < 256; i++) {
-                                CacheArchive archive = Class24.aClass6_Sub1Array580[i];
+                                CacheArchive archive = UpdateServer.cacheArchiveLoaders[i];
                                 if(archive != null) {
                                     crcTableBuffer.currentPosition = 4 * i + 5;
                                     int indexCrcValue = crcTableBuffer.getIntBE();
@@ -191,61 +196,61 @@ public class UpdateServer {
                             }
                         } else {
                             crc32.reset();
-                            crc32.update(aClass40_Sub1_2752.buffer, 0, inboundFileLength);
+                            crc32.update(inboundFile.buffer, 0, inboundFileLength);
                             int fileRealCrcValue = (int) crc32.getValue();
-                            if(~aUpdateServerNode_2250.crc != ~fileRealCrcValue) {
+                            if(~currentResponse.crc != ~fileRealCrcValue) {
                                 try {
                                     updateServerSocket.kill();
                                 } catch(Exception exception) {
                                 }
-                                aByte302 = (byte) (int) (Math.random() * 255.0 + 1.0);
+                                encryption = (byte) (int) (Math.random() * 255.0 + 1.0);
                                 updateServerSocket = null;
-                                MovedStatics.anInt813++;
+                                UpdateServer.crcMismatches++;
                                 return false;
                             }
 
-                            anInt2278 = 0;
-                            MovedStatics.anInt813 = 0;
-                            aUpdateServerNode_2250.cacheArchive.method196((aUpdateServerNode_2250.key & 0xff0000L) == 16711680L, (int) (aUpdateServerNode_2250.key & 0xffffL), Npc.aBoolean3298, aClass40_Sub1_2752.buffer);
+                            ioExceptions = 0;
+                            UpdateServer.crcMismatches = 0;
+                            currentResponse.cacheArchive.method196((currentResponse.key & 0xff0000L) == 16711680L, (int) (currentResponse.key & 0xffffL), UpdateServer.priorityRequest, inboundFile.buffer);
                         }
 
-                        aUpdateServerNode_2250.unlink();
-                        aUpdateServerNode_2250 = null;
-                        aClass40_Sub1_2752 = null;
-                        Landscape.anInt1157 = 0;
+                        currentResponse.unlink();
+                        currentResponse = null;
+                        inboundFile = null;
+                        UpdateServer.blockOffset = 0;
 
-                        if(!Npc.aBoolean3298) {
-                            anInt1006--;
+                        if(!UpdateServer.priorityRequest) {
+                            pendingResponses--;
                         } else {
-                            anInt464--;
+                            immediateResponses--;
                         }
                     } else {
-                        if(Landscape.anInt1157 != 512) {
+                        if(UpdateServer.blockOffset != 512) {
                             break;
                         }
-                        Landscape.anInt1157 = 0;
+                        UpdateServer.blockOffset = 0;
                     }
                 } else {
-                    int pos = -fileDataBuffer.currentPosition + i_35_;
+                    int pos = -fileDataBuffer.currentPosition + read;
                     if(pos > dataAvailable) {
                         pos = dataAvailable;
                     }
 
                     updateServerSocket.readDataToBuffer(fileDataBuffer.currentPosition, pos, fileDataBuffer.buffer);
 
-                    if(aByte302 != 0) {
+                    if(encryption != 0) {
                         for(int i = 0; pos > i; i++) {
                             fileDataBuffer.buffer[fileDataBuffer.currentPosition + i] =
-                                    (byte) GameShell.method27(fileDataBuffer.buffer[fileDataBuffer.currentPosition + i], aByte302);
+                                    (byte) UpdateServer.xor(fileDataBuffer.buffer[fileDataBuffer.currentPosition + i], encryption);
                         }
                     }
 
                     fileDataBuffer.currentPosition += pos;
-                    if(i_35_ > fileDataBuffer.currentPosition) {
+                    if(read > fileDataBuffer.currentPosition) {
                         break;
                     }
 
-                    if(aUpdateServerNode_2250 == null) {
+                    if(currentResponse == null) {
                         fileDataBuffer.currentPosition = 0;
                         int fileIndexId = fileDataBuffer.getUnsignedByte();
                         int fileId = fileDataBuffer.getUnsignedShortBE();
@@ -253,30 +258,30 @@ public class UpdateServer {
                         int fileSize = fileDataBuffer.getIntBE();
                         long fileKey = ((long) fileIndexId << 16) + fileId;
                         UpdateServerNode updateServerNode = (UpdateServerNode) activeRequests.getNode(fileKey);
-                        Npc.aBoolean3298 = true;
+                        UpdateServer.priorityRequest = true;
 
                         if(updateServerNode == null) {
                             updateServerNode = (UpdateServerNode) queuedRequests.getNode(fileKey);
-                            Npc.aBoolean3298 = false;
+                            UpdateServer.priorityRequest = false;
                         }
 
                         if(updateServerNode == null) {
                             throw new IOException();
                         }
 
-                        aUpdateServerNode_2250 = updateServerNode;
+                        currentResponse = updateServerNode;
                         int compressionSizeOffset = fileCompression == 0 ? 5 : 9;
-                        aClass40_Sub1_2752 = new Buffer(aUpdateServerNode_2250.aByte2758 + compressionSizeOffset + fileSize);
-                        aClass40_Sub1_2752.putByte(fileCompression);
-                        aClass40_Sub1_2752.putIntBE(fileSize);
-                        Landscape.anInt1157 = 8;
+                        inboundFile = new Buffer(currentResponse.padding + compressionSizeOffset + fileSize);
+                        inboundFile.putByte(fileCompression);
+                        inboundFile.putIntBE(fileSize);
+                        UpdateServer.blockOffset = 8;
                         fileDataBuffer.currentPosition = 0;
-                    } else if(Landscape.anInt1157 == 0) {
+                    } else if(UpdateServer.blockOffset == 0) {
                         if(fileDataBuffer.buffer[0] == -1) {
                             fileDataBuffer.currentPosition = 0;
-                            Landscape.anInt1157 = 1;
+                            UpdateServer.blockOffset = 1;
                         } else {
-                            aUpdateServerNode_2250 = null;
+                            currentResponse = null;
                         }
                     }
                 }
@@ -292,7 +297,7 @@ public class UpdateServer {
                 exception.printStackTrace();
             }
 
-            anInt2278++;
+            ioExceptions++;
             updateServerSocket = null;
 
             return false;
@@ -301,12 +306,12 @@ public class UpdateServer {
 
     public static void method327(boolean unknownBool, CacheArchive archive, int archiveIndexId, int fileId, byte arg4, int expectedCrc) {
         long fileKey = fileId + ((long) archiveIndexId << 16);
-        UpdateServerNode updateServerNode = (UpdateServerNode) updateServerRequests.getNode(fileKey);
+        UpdateServerNode updateServerNode = (UpdateServerNode) immediateWriteQueue.getNode(fileKey);
 
         if (updateServerNode == null) {
             updateServerNode = (UpdateServerNode) activeRequests.getNode(fileKey);
             if (updateServerNode == null) {
-                updateServerNode = (UpdateServerNode) aClass23_2545.getNode(fileKey);
+                updateServerNode = (UpdateServerNode) writeQueue.getNode(fileKey);
                 if (updateServerNode == null) {
                     if (!unknownBool) {
                         updateServerNode = (UpdateServerNode) queuedRequests.getNode(fileKey);
@@ -315,23 +320,92 @@ public class UpdateServer {
                     }
                     updateServerNode = new UpdateServerNode();
                     updateServerNode.crc = expectedCrc;
-                    updateServerNode.aByte2758 = arg4;
+                    updateServerNode.padding = arg4;
                     updateServerNode.cacheArchive = archive;
                     if (unknownBool) {
-                        updateServerRequests.put(fileKey, updateServerNode);
-                        anInt1618++;
+                        immediateWriteQueue.put(fileKey, updateServerNode);
+                        immediateWrites++;
                     } else {
-                        InteractiveObject.aNodeQueue_485.push(updateServerNode);
-                        aClass23_2545.put(fileKey, updateServerNode);
-                        anInt554++;
+                        UpdateServer.pendingWriteQueue.push(updateServerNode);
+                        writeQueue.put(fileKey, updateServerNode);
+                        pendingWrites++;
                     }
                 } else if (unknownBool) {
                     updateServerNode.clear();
-                    updateServerRequests.put(fileKey, updateServerNode);
-                    anInt554--;
-                    anInt1618++;
+                    immediateWriteQueue.put(fileKey, updateServerNode);
+                    pendingWrites--;
+                    immediateWrites++;
                 }
             }
         }
+    }
+
+    public static void method399(int arg0, int arg2) {
+        long l = (arg0 << 16) + arg2;
+        UpdateServerNode updateServerNode = (UpdateServerNode) writeQueue.getNode(l);
+        if (updateServerNode != null) {
+            pendingWriteQueue.unshift(updateServerNode);
+        }
+    }
+
+    public static void getArchiveChecksum(CacheArchive cacheArchive, int arg2) {
+        if (crcTableBuffer == null) {
+            method327(true, null, 255, 255, (byte) 0, 0);
+            UpdateServer.cacheArchiveLoaders[arg2] = cacheArchive;
+        } else {
+            crcTableBuffer.currentPosition = 5 + arg2 * 4;
+            int i = crcTableBuffer.getIntBE();
+            cacheArchive.requestLatestVersion(i);
+        }
+    }
+
+    private static int xor(int arg0, int arg1) {
+        return arg0 ^ arg1;
+    }
+
+    public static void resetUpdateServerRequests(boolean loggedIn) {
+        if (updateServerSocket != null) {
+            try {
+                Buffer buffer = new Buffer(4);
+                buffer.putByte(loggedIn ? 2 : 3);
+                buffer.putMediumBE(0);
+                updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
+            } catch (java.io.IOException ioexception) {
+                ioexception.printStackTrace();
+                try {
+                    updateServerSocket.kill();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                    /* empty */
+                }
+                updateServerSocket = null;
+                ioExceptions++;
+            }
+        }
+    
+    }
+
+    public static void killUpdateServerSocket() {
+        if(updateServerSocket != null) {
+            updateServerSocket.kill();
+        }
+    }
+
+    public static int calculateDataLoaded(int arg1, int arg2) {
+        long l = (long) ((arg1 << 16) + arg2);
+        if (currentResponse == null || currentResponse.key != l)
+            return 0;
+        return 1 + inboundFile.currentPosition * 99 / (inboundFile.buffer.length + -currentResponse.padding);
+    }
+
+    public static int getActiveCount(byte arg0, boolean pending, boolean immediate) {
+        int total = 0;
+        if (immediate) {
+            total += immediateResponses + immediateWrites;
+        }
+        if (pending) {
+            total += pendingResponses + pendingWrites;
+        }
+        return total;
     }
 }
