@@ -197,7 +197,7 @@ public class Projectile extends Renderable {
             image = HuffmanEncoding.method1028(arg2, Native.imgBackvmid1, (byte) 21, Native.aClass1_305);
             Class40_Sub7.mapBackRight = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
-            image = HuffmanEncoding.method1028(arg2, Native.aClass1_2588, (byte) 21, Native.aClass1_305);
+            image = HuffmanEncoding.method1028(arg2, Native.imgBackvmid2, (byte) 21, Native.aClass1_305);
             MovedStatics.tabPieceUpperRight = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = HuffmanEncoding.method1028(arg2, Native.imgBackvmid3, (byte) 21, Native.aClass1_305);
@@ -225,7 +225,7 @@ public class Projectile extends Renderable {
             Class13.aClass40_Sub5_Sub14_Sub2_418 = GameShell.aClass40_Sub5_Sub14_Sub2_1.method691();
             Class13.aClass40_Sub5_Sub14_Sub2_418.flipHorizontal();
             Class13.aClass40_Sub5_Sub14_Sub2_418.flipVertical();
-            Class40_Sub5_Sub15.tabIcons = IndexedImage.getMultipleIndexedImages(arg2, Native.aClass1_2787, Native.aClass1_305);
+            Class40_Sub5_Sub15.tabIcons = IndexedImage.getMultipleIndexedImages(arg2, Native.sideIcons, Native.aClass1_305);
             Landscape.anIntArray1186 = new int[151];
             MovedStatics.anIntArray852 = new int[151];
             RSCanvas.anIntArray66 = new int[33];

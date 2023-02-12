@@ -250,7 +250,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (arg0.method194(Native.imgBackvmid1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_2588, Native.aClass1_305)) {
+        if (arg0.method194(Native.imgBackvmid2, Native.aClass1_305)) {
             i++;
         }
         if (arg0.method194(Native.imgBackvmid3, Native.aClass1_305)) {
@@ -268,7 +268,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (arg0.method194(Native.aClass1_1517, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_2787, Native.aClass1_305)) {
+        if (arg0.method194(Native.sideIcons, Native.aClass1_305)) {
             i++;
         }
         return i;

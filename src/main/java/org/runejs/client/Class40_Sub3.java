@@ -193,7 +193,7 @@ public class Class40_Sub3 extends Node {
             else
                 AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_2114, "");
             if (FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 == null)
-                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_2161, "");
+                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPK, "");
             else
                 i++;
             if (ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 != null)
@@ -201,11 +201,11 @@ public class Class40_Sub3 extends Node {
             else
                 ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
             if (MovedStatics.aClass40_Sub5_Sub14_Sub4Array2567 == null)
-                MovedStatics.aClass40_Sub5_Sub14_Sub4Array2567 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_1230, "");
+                MovedStatics.aClass40_Sub5_Sub14_Sub4Array2567 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsHint, "");
             else
                 i++;
             if (LinkedList.aClass40_Sub5_Sub14_Sub4_1057 == null)
-                LinkedList.aClass40_Sub5_Sub14_Sub4_1057 = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.aClass1_2109, (byte) 21, "");
+                LinkedList.aClass40_Sub5_Sub14_Sub4_1057 = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.overlayMultiway, (byte) 21, "");
             else
                 i++;
             if (aClass40_Sub5_Sub14_Sub4Array2019 == null)
@@ -227,7 +227,7 @@ public class Class40_Sub3 extends Node {
             if (MovedStatics.moderatorIcon != null)
                 i++;
             else
-                MovedStatics.moderatorIcon = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.aClass1_881, "");
+                MovedStatics.moderatorIcon = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.modIcons, "");
             if (i < 14) {
                 Native.currentLoadingText = English.loadingSprites + (100 * i / 14) + Native.percent;
                 MovedStatics.anInt1607 = 70;
