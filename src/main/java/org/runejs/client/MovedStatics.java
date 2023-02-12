@@ -225,9 +225,7 @@ public class MovedStatics {
         }
     }
 
-    public static void method996(int arg0) {
-        if (arg0 != 19655)
-            English.systemUpdateIn = null;
+    public static void method996() {
         tabImageProducer.prepareRasterizer();
         if (ScreenController.frameMode == ScreenMode.FIXED) {
             FloorDecoration.inventoryBackgroundImage.drawImage(0, 0);

@@ -38,7 +38,7 @@ public class Class43 {
 
     public static void drawTabArea(int arg0) {
         MovedStatics.showSidePanelRedrawnText = true;
-        MovedStatics.method996(19655);
+        MovedStatics.method996();
         if(GameInterface.tabAreaInterfaceId != -1) {
             boolean bool = Main.drawParentInterface(1, 0, 0, 190, 261, GameInterface.tabAreaInterfaceId);
             if(!bool)
