@@ -34,7 +34,7 @@ public class RSCanvas extends Canvas {
     }
 
     public static void clearCaches() {
-        MovedStatics.method233(true);
+        MovedStatics.method233();
         UnderlayDefinition.clearUnderlayDefinitionCache();
         GameInterface.method640();
         GameObjectDefinition.clearGameObjectModelCache();

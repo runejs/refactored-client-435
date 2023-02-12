@@ -336,10 +336,8 @@ public class MovedStatics {
         return 3;
     }
 
-    public static void method233(boolean arg0) {
+    public static void method233() {
         OverlayDefinition.overlayDefinitionCache.clear();
-        if (!arg0)
-            initializeAnimationCaches(null, null, null);
     }
 
     public static void initializeAnimationCaches(CacheArchive skinArchive, CacheArchive definitionArchive, CacheArchive skeletonArchive) {
