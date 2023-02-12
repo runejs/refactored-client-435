@@ -272,7 +272,7 @@ public abstract class Actor extends Renderable {
                 MovedStatics.onBuildTimePlane = 0;
             Class17.regionY = chunkY;
             MovedStatics.processGameStatus(25);
-            Class51.method940(0, English.loadingPleaseWait, false, null);
+            Class51.method940(English.loadingPleaseWait, false, null);
             int i = Class26.baseY;
             int i_33_ = MovedStatics.baseX;
             MovedStatics.baseX = (chunkX - 6) * 8;

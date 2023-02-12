@@ -74,7 +74,7 @@ public class Landscape {
             }
             if(bool) {
                 if(ProducingGraphicsBuffer.anInt1634 != 0)
-                    Class51.method940(0, English.loadingPleaseWait, true, Native.aClass1_2423);
+                    Class51.method940(English.loadingPleaseWait, true, Native.aClass1_2423);
                 RSCanvas.clearCaches();
                 Npc.currentScene.initToNull();
                 System.gc();
