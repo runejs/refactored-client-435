@@ -1689,7 +1689,7 @@ public class Scene {
                     Rasterizer3D.drawShadedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, plainTile.colourD, plainTile.colourC, plainTile.colourB);
                 }
             } else if (lowMemory) {
-                int rgb = Rasterizer3D.interface3.getAverageTextureColour(true, plainTile.texture);
+                int rgb = Rasterizer3D.interface3.getAverageTextureColour(plainTile.texture);
                 Rasterizer3D.drawShadedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, method108(rgb, plainTile.colourD), method108(rgb, plainTile.colourC), method108(rgb, plainTile.colourB));
             } else if (plainTile.flat) {
                 Rasterizer3D.drawTexturedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, plainTile.colourD, plainTile.colourC, plainTile.colourB, xA, xB, xC, zA, zB, zD, yA, yB, yC, plainTile.texture);
@@ -1713,7 +1713,7 @@ public class Scene {
                     Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, plainTile.colourA, plainTile.colourB, plainTile.colourC);
                 }
             } else if (lowMemory) {
-                int i_209_ = Rasterizer3D.interface3.getAverageTextureColour(true, plainTile.texture);
+                int i_209_ = Rasterizer3D.interface3.getAverageTextureColour(plainTile.texture);
                 Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, method108(i_209_, plainTile.colourA), method108(i_209_, plainTile.colourB), method108(i_209_, plainTile.colourC));
             } else {
                 Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, plainTile.colourA, plainTile.colourB, plainTile.colourC, xA, xB, xC, zA, zB, zD, yA, yB, yC, plainTile.texture);
@@ -1926,7 +1926,7 @@ public class Scene {
                         Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, shapedTile.triangleHSLA[triangle], shapedTile.triangleHSLB[triangle], shapedTile.triangleHSLC[triangle]);
                     }
                 } else if (lowMemory) {
-                    int i_240_ = Rasterizer3D.interface3.getAverageTextureColour(true, shapedTile.triangleTexture[triangle]);
+                    int i_240_ = Rasterizer3D.interface3.getAverageTextureColour(shapedTile.triangleTexture[triangle]);
                     Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, method108(i_240_, shapedTile.triangleHSLA[triangle]), method108(i_240_, shapedTile.triangleHSLB[triangle]), method108(i_240_, shapedTile.triangleHSLC[triangle]));
                 } else if (shapedTile.flat) {
                     Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, shapedTile.triangleHSLA[triangle], shapedTile.triangleHSLB[triangle], shapedTile.triangleHSLC[triangle], ComplexTile.viewspaceX[0], ComplexTile.viewspaceX[1], ComplexTile.viewspaceX[3], ComplexTile.viewspaceY[0], ComplexTile.viewspaceY[1], ComplexTile.viewspaceY[3], ComplexTile.viewspaceZ[0], ComplexTile.viewspaceZ[1], ComplexTile.viewspaceZ[3], shapedTile.triangleTexture[triangle]);

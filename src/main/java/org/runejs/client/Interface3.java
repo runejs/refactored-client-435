@@ -5,7 +5,7 @@ public interface Interface3 {
 
     boolean isTextureOpaque(byte i, int textureId);
 
-    int getAverageTextureColour(boolean bool, int i);
+    int getAverageTextureColour(int i);
 
     boolean method15(int i, byte i_2_);
 }
