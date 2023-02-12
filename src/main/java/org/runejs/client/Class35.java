@@ -113,15 +113,13 @@ public class Class35 implements Interface3 {
         clearTextures();
     }
 
-    public void method425(byte arg0, int arg1) {
+    public void method425(int arg1) {
         int i = 0;
-        if(arg0 == 6) {
-            for(/**/; i < textures.length; i++) {
-                Texture class40_sub10 = textures[i];
-                if(class40_sub10 != null && class40_sub10.anInt2136 != 0 && class40_sub10.aBoolean2146) {
-                    class40_sub10.method868(arg1);
-                    class40_sub10.aBoolean2146 = false;
-                }
+        for (/**/; i < textures.length; i++) {
+            Texture class40_sub10 = textures[i];
+            if (class40_sub10 != null && class40_sub10.anInt2136 != 0 && class40_sub10.aBoolean2146) {
+                class40_sub10.method868(arg1);
+                class40_sub10.aBoolean2146 = false;
             }
         }
     }
