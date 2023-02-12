@@ -83,9 +83,8 @@ public class Class55 {
         }
     }
 
-    public static void method966(int arg0, CacheArchive arg1, CacheArchive arg2) {
+    public static void method966(CacheArchive arg1, CacheArchive arg2) {
         MovedStatics.aCacheArchive_2582 = arg1;
-        int i = -87 / ((-20 - arg0) / 56);
         SpotAnimDefinition.gameDefinitionsCacheArchive = arg2;
     }
 }
