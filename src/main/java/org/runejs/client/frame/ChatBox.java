@@ -42,7 +42,7 @@ public class ChatBox {
         MovedStatics.showChatPanelRedrawnText = true;
         MovedStatics.method305();
         if(messagePromptRaised) {
-            TypeFace.fontBold.drawStringLeft(Native.aClass1_1563, 239, 40, 0);
+            TypeFace.fontBold.drawStringLeft(Native.enterPlayerNameHeader, 239, 40, 0);
             TypeFace.fontBold.drawStringLeft(chatMessage + "*", 239, 60, 128);
         } else if(inputType == 1) {
             TypeFace.fontBold.drawStringLeft(English.enterAmount, 239, 40, 0);

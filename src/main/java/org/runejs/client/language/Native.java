@@ -80,7 +80,7 @@ public class Native {
     public static String titleBox = "titlebox";
     public static String titleImage = "title.jpg";
     public static String reportedName = "";
-    public static String aClass1_1563 = "";
+    public static String enterPlayerNameHeader = "";
     public static String percentTwo = "%2";
     public static String MAP_NAME_PREFIX_M = "m";
     public static String comma = ",";
