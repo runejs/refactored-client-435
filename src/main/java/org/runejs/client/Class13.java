@@ -96,9 +96,7 @@ public class Class13 {
         return new byte[arg1];
     }
 
-    public static int[] method247(GameInterface arg0, byte arg1) {
-        if(arg1 <= 74)
-            anInt419 = -37;
+    public static int[] method247(GameInterface arg0) {
         int i;
         if(arg0.id < 0)
             i = arg0.parentId >> 16;

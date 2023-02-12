@@ -126,8 +126,8 @@ public class Main extends GameShell {
                 if (gameInterface == Wall.aGameInterface_353) {
                     opacity = 128;
                     GameInterface gameInterface_3_ = FramemapDefinition.method878(gameInterface);
-                    int[] is = Class13.method247(gameInterface_3_, (byte) 117);
-                    int[] is_4_ = Class13.method247(gameInterface, (byte) 97);
+                    int[] is = Class13.method247(gameInterface_3_);
+                    int[] is_4_ = Class13.method247(gameInterface);
                     int i_5_ = Landscape.mouseY + -MovedStatics.anInt2621 + is_4_[1] - is[1];
                     if (i_5_ < 0)
                         i_5_ = 0;
