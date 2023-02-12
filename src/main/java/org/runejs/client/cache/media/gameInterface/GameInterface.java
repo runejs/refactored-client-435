@@ -1093,7 +1093,7 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortBE(i + MovedStatics.baseX);
                     }
                     if(action == 50) {
-                        Class33.method406(i, npcIdx, i_10_, -121);
+                        Class33.method406(i, npcIdx, i_10_);
                     }
                     if(action == 40) {
                         resetInterface(ChatBox.dialogueId);

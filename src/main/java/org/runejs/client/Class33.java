@@ -221,7 +221,7 @@ public class Class33 {
         }
     }
 
-    public static void method406(int arg0, int arg1, int arg2, int arg3) {
+    public static void method406(int arg0, int arg1, int arg2) {
         if(arg1 == 1) {
             SceneCluster.packetBuffer.putPacket(111);
             SceneCluster.packetBuffer.putIntBE(arg2);
@@ -272,8 +272,6 @@ public class Class33 {
             SceneCluster.packetBuffer.putIntBE(arg2);
             SceneCluster.packetBuffer.putShortBE(arg0);
         }
-        if(arg3 > -112)
-            OverlayDefinition.overlayDefinitionCache = null;
     }
 
     public static boolean menuHasAddFriend(byte arg0, int arg1) {

@@ -745,7 +745,7 @@ public class ClientScriptRunner extends Node {
                                             intValueIndex -= 2;
                                             int i_43_ = scriptIntValues[intValueIndex];
                                             int i_44_ = scriptIntValues[intValueIndex + 1];
-                                            Class33.method406(0, i_44_, i_43_, -128);
+                                            Class33.method406(0, i_44_, i_43_);
                                         } else if(scriptOpcode == 3002) {
                                             GameInterface gameInterface = !bool ? MovedStatics.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                                             if(MovedStatics.lastContinueTextWidgetId == -1) {
@@ -758,7 +758,7 @@ public class ClientScriptRunner extends Node {
                                             }
                                             GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : MovedStatics.aGameInterface_1887;
                                             int i_45_ = scriptIntValues[--intValueIndex];
-                                            Class33.method406(0x7fff & gameInterface.id, i_45_, gameInterface.parentId, -121);
+                                            Class33.method406(0x7fff & gameInterface.id, i_45_, gameInterface.parentId);
                                         }
                                     } else if(scriptOpcode >= 3200) {
                                         if(scriptOpcode < 3300) {
