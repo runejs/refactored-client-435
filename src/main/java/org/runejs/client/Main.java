@@ -1018,7 +1018,7 @@ public class Main extends GameShell {
                 }
                 GameInterface.drawTabIcons = false;
                 Class40_Sub3.showIconsRedrawnText = true;
-                MovedStatics.method527(Player.currentTabId, 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
+                MovedStatics.method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
             }
             if(MovedStatics.redrawChatbox) {
                 Class40_Sub3.showIconsRedrawnText = true;
@@ -1062,7 +1062,7 @@ public class Main extends GameShell {
                 }
                 GameInterface.drawTabIcons = false;
                 Class40_Sub3.showIconsRedrawnText = true;
-                MovedStatics.method527(Player.currentTabId, 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
+                MovedStatics.method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
             }
             if(MovedStatics.redrawChatbox) {
                 Class40_Sub3.showIconsRedrawnText = true;

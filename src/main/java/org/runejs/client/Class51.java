@@ -38,7 +38,7 @@ public class Class51 {
             Class55.drawTabGraphics();
             ActorDefinition.drawMapBack();
             GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
-            MovedStatics.method527(Player.currentTabId, 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
+            MovedStatics.method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
             MovedStatics.showSidePanelRedrawnText = true;
             Class40_Sub3.showIconsRedrawnText = true;
             MovedStatics.showChatPanelRedrawnText = true;

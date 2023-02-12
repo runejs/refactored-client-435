@@ -655,7 +655,7 @@ public class MovedStatics {
         return GenericTile.method944((byte) -3, i, arg0, i_4_);
     }
 
-    public static void method527(int currentTabId, int arg1, int[] tabWidgetIds, boolean arg3, int arg4) {
+    public static void method527(int currentTabId, int[] tabWidgetIds, boolean arg3, int arg4) {
         InteractiveObject.tabTop.prepareRasterizer();
         Buffer.tabTopBack.drawImage(0, 0);
         if (arg3) {
@@ -692,7 +692,7 @@ public class MovedStatics {
         }
         RSCanvas.tabBottom.prepareRasterizer();
         tabBottomBack.drawImage(0, 0);
-        if (arg1 != 4)
+        if (4 != 4)
             Player.hasFriend(null);
         if (arg3) {
             if (tabWidgetIds[currentTabId] != -1) {
