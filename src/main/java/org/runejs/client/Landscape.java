@@ -107,7 +107,7 @@ public class Landscape {
                         int offsetY = -Class26.baseY + 64 * (ISAAC.mapCoordinates[pointer] & 0xff);
                         byte[] data = RSString.terrainData[pointer];
                         if(data == null && Class17.regionY < 800)
-                            MovedStatics.initiateVertexHeights(offsetY, (byte) 103, 64, 64, offsetX);
+                            MovedStatics.initiateVertexHeights(offsetY, 64, 64, offsetX);
                     }
                     Main.method364(true);
                     for(int region = 0; dataLength > region; region++) {
@@ -163,7 +163,7 @@ public class Landscape {
                         for(int y = 0; y < 13; y++) {
                             int displayMap = OverlayDefinition.constructMapTiles[0][x][y];
                             if(displayMap == -1)
-                                MovedStatics.initiateVertexHeights(y * 8, (byte) 120, 8, 8, 8 * x);
+                                MovedStatics.initiateVertexHeights(y * 8, 8, 8, 8 * x);
                         }
                     }
                     Main.method364(true);

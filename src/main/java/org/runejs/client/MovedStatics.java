@@ -252,7 +252,7 @@ public class MovedStatics {
 
     public static void method997(int arg0) {
         if (arg0 != 47)
-            initiateVertexHeights(-42, (byte) 12, 92, 18, -72);
+            initiateVertexHeights(-42, 92, 18, -72);
         if (Signlink.javaVendor.toLowerCase().indexOf("microsoft") == -1) {
             HuffmanEncoding.anIntArray1564[44] = 71;
             HuffmanEncoding.anIntArray1564[45] = 26;
@@ -288,8 +288,7 @@ public class MovedStatics {
 
     }
 
-    public static void initiateVertexHeights(int offsetY, byte arg1, int sizeY, int sizeX, int offsetX) {
-        int i = -112 / ((50 - arg1) / 53);
+    public static void initiateVertexHeights(int offsetY, int sizeY, int sizeX, int offsetX) {
         for (int y = offsetY; y <= offsetY + sizeY; y++) {
             for (int x = offsetX; sizeX + offsetX >= x; x++) {
                 if (x >= 0 && x < 104 && y >= 0 && y < 104) {
