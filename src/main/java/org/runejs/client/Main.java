@@ -1861,7 +1861,7 @@ public class Main extends GameShell {
     public void processGameLoop() {
         MovedStatics.pulseCycle++;
         handleUpdateServer();
-        Class13.handleRequests((byte) -91);
+        Class13.handleRequests();
         MusicSystem.handleMusic();
         SoundSystem.handleSounds();
         GameInterface.method639(122);

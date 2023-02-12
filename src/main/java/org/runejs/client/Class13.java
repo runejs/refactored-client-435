@@ -47,9 +47,7 @@ public class Class13 {
         Class40_Sub5_Sub15.method736(true, actor);
     }
 
-    public static void handleRequests(byte arg0) {
-        if(arg0 > -88)
-            method247(null, (byte) 34);
+    public static void handleRequests() {
         for(; ; ) {
             Class40_Sub6 class40_sub6;
             synchronized(RSCanvas.aLinkedList_53) {
