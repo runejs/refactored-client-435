@@ -156,7 +156,7 @@ public class Class40_Sub3 extends Node {
                 UnderlayDefinition.initializeUnderlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 initializeIdentityKitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
                 initializeGameObjectDefinitionCache(CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
-                Main.method357(CacheArchive.modelCacheArchive, 100 ^ ~0x2a85, CacheArchive.gameDefinitionsCacheArchive);
+                Main.method357(CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
                 MovedStatics.initializeItemDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, MovedStatics.membersWorld, CacheArchive.modelCacheArchive);
                 MovedStatics.initializeAnimationCaches(CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.skeletonCacheArchive);
                 Class55.method966(100 ^ 0x38, CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);

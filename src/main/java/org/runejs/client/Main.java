@@ -864,16 +864,11 @@ public class Main extends GameShell {
         }
     }
 
-    public static void method357(CacheArchive arg0, int arg1, CacheArchive arg2) {
+    public static void method357(CacheArchive arg0, CacheArchive arg2) {
         GroundItemTile.aCacheArchive_1375 = arg2;
         ActorDefinition.count = GroundItemTile.aCacheArchive_1375.fileLength(9);
 
         MovedStatics.aCacheArchive_1577 = arg0;
-        if(arg1 == -10978) {
-            return;
-        }
-        drawGameScreen();
-
     }
 
     public static IndexedImage method359(String arg0, String arg1, CacheArchive arg2) {
