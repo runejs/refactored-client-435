@@ -830,7 +830,7 @@ public class Main extends GameShell {
         Npc.currentScene.render(Class12.cameraX, SceneCluster.cameraZ, MovedStatics.cameraY, Class26.anInt627, ProducingGraphicsBuffer_Sub1.anInt2210, i);
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404();
-        MovedStatics.method450((byte) -67);
+        MovedStatics.method450();
         ((Class35) Rasterizer3D.interface3).method425((byte) 6, MovedStatics.anInt199);
         KeyFocusListener.draw3dScreen();
 

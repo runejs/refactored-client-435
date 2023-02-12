@@ -1953,10 +1953,8 @@ public class MovedStatics {
 	    arg1.removeFocusListener(Class59.keyFocusListener);
 	}
 
-	public static void method450(byte arg0) {
+	public static void method450() {
 	    if (Player.headIconDrawType == 2) {
-	        if (arg0 >= -28)
-	            method445(-128);
 	        MovedStatics.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -baseX << 7) + Landscape.anInt1170, 4976905);
 	        if (ISAAC.anInt522 > -1 && pulseCycle % 20 < 10)
 	            aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
