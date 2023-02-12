@@ -369,11 +369,9 @@ public class MovedStatics {
             tile_height[arg1][arg3][arg0] = tile_height[arg1][-1 + arg3][arg0 - 1];
     }
 
-    public static boolean method459(int arg0, int arg1, byte arg2) {
+    public static boolean method459(int arg0, int arg1) {
         if (arg0 == 11)
             arg0 = 10;
-        if (arg2 < 83)
-            method459(125, 22, (byte) 101);
         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
         if (arg0 >= 5 && arg0 <= 8)
             arg0 = 4;
@@ -1103,14 +1101,14 @@ public class MovedStatics {
             if(class40_sub3.anInt2031 > 0)
                 class40_sub3.anInt2031--;
             if(class40_sub3.anInt2031 == 0) {
-                if(class40_sub3.anInt2028 < 0 || method459(class40_sub3.anInt2036, class40_sub3.anInt2028, (byte) 103)) {
+                if(class40_sub3.anInt2028 < 0 || method459(class40_sub3.anInt2036, class40_sub3.anInt2028)) {
                     GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039, class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
                     class40_sub3.unlink();
                 }
             } else {
                 if(class40_sub3.anInt2033 > 0)
                     class40_sub3.anInt2033--;
-                if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 && class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 && (class40_sub3.anInt2017 < 0 || method459(class40_sub3.anInt2030, class40_sub3.anInt2017, (byte) 106))) {
+                if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 && class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 && (class40_sub3.anInt2017 < 0 || method459(class40_sub3.anInt2030, class40_sub3.anInt2017))) {
                     GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
                     class40_sub3.anInt2033 = -1;
                     if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2028 == -1)
