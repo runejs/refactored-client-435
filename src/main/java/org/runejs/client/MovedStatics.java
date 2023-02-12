@@ -633,18 +633,16 @@ public class MovedStatics {
         }
     }
 
-    public static void method838(int arg0, long arg1) {
-        if (arg1 != 0) {
-            for (int i = arg0; i < anInt1008; i++) {
-                if (Player.ignores[i] == arg1) {
-                    GameInterface.redrawTabArea = true;
-                    anInt1008--;
-                    for (int i_16_ = i; anInt1008 > i_16_; i_16_++)
-                        Player.ignores[i_16_] = Player.ignores[1 + i_16_];
-                    SceneCluster.packetBuffer.putPacket(28);
-                    SceneCluster.packetBuffer.putLongBE(arg1);
-                    break;
-                }
+    public static void method838(long arg1) {
+        for (int i = 0; i < anInt1008; i++) {
+            if (Player.ignores[i] == arg1) {
+                GameInterface.redrawTabArea = true;
+                anInt1008--;
+                for (int i_16_ = i; anInt1008 > i_16_; i_16_++)
+                    Player.ignores[i_16_] = Player.ignores[1 + i_16_];
+                SceneCluster.packetBuffer.putPacket(28);
+                SceneCluster.packetBuffer.putLongBE(arg1);
+                break;
             }
         }
     }
@@ -1548,7 +1546,7 @@ public class MovedStatics {
 	                }
 	                if(Class37.anInt876 == 5 && anInt1008 > 0) {
 	                    long l = RSString.nameToLong(ChatBox.chatMessage);
-	                    method838(0, l);
+	                    method838(l);
 	                }
 	            }
 	        } else if(ChatBox.inputType == 1) {
