@@ -184,7 +184,7 @@ public class MovedStatics {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1919;
     public static int anInt1923 = 0;
 
-    public static void method445(int arg0) {
+    public static void method445() {
         if (CollisionMap.anInt165 != 0) {
             int i = 0;
             if (Class40_Sub5_Sub15.systemUpdateTime != 0)
@@ -220,8 +220,6 @@ public class MovedStatics {
                         return;
                 }
             }
-            if (arg0 != 9767)
-                anInt1923 = 48;
         }
     }
 

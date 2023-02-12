@@ -69,7 +69,7 @@ public class Class43 {
             MovedStatics.menuActionTypes[0] = 1005;
             ActorDefinition.menuActionRow = 1;
             if(GameInterface.fullscreenInterfaceId == -1) {
-                MovedStatics.method445(9767);
+                MovedStatics.method445();
                 Item.anInt3065 = -1;
                 OverlayDefinition.hoveredWidgetChildId = -1;
                 boolean bool = false;
