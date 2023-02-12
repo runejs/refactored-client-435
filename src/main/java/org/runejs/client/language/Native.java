@@ -69,7 +69,7 @@ public class Native {
     public static String aClass1_327 = "@or1@";
     public static String arrowActionOnOther = " -> @whi@";
     public static String imgBackvmid2 = "backvmid2";
-    public static String aClass1_2593 = "K";
+    public static String suffixK = "K";
     public static String cursorCross = "cross";
     public static String imgBackbase2 = "backbase2";
     public static String percent100Parentheses = "(100%)";
