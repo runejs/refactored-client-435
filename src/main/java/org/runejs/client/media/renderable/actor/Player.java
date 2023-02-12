@@ -93,10 +93,8 @@ public class Player extends Actor {
         aBoolean3287 = false;
     }
 
-    public static void drawGameScreenGraphics(int arg0) {
+    public static void drawGameScreenGraphics() {
         try {
-            if(arg0 < 106)
-                return;
             Graphics graphics = MouseHandler.gameCanvas.getGraphics();
             MovedStatics.gameScreenImageProducer.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
         } catch(Exception exception) {

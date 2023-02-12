@@ -853,7 +853,7 @@ public class Main extends GameShell {
             Class51.method940(English.loadingPleaseWait, false, null);
         }
 
-        Player.drawGameScreenGraphics(110);
+        Player.drawGameScreenGraphics();
         Class12.cameraX = i_1_;
         MovedStatics.cameraY = i_5_;
         ProducingGraphicsBuffer_Sub1.anInt2210 = i_2_;
