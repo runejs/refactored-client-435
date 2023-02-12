@@ -7,5 +7,5 @@ public interface Interface3 {
 
     int getAverageTextureColour(int i);
 
-    boolean method15(int i, byte i_2_);
+    boolean method15(int i);
 }
