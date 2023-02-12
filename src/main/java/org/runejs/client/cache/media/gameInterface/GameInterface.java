@@ -203,7 +203,7 @@ public class GameInterface extends CachedNode {
         textureId = 0;
     }
 
-    public static void method639(int arg0) {
+    public static void method639() {
         synchronized(Class59.keyFocusListener) {
             Class59.anInt1389 = GenericTile.anInt1214;
             if(GameObjectDefinition.anInt2543 < 0) {
@@ -223,9 +223,6 @@ public class GameInterface extends CachedNode {
                 }
             }
             GenericTile.anInt1214 = IdentityKit.anInt2598;
-        }
-        if(arg0 <= 121) {
-            English.startingGameEngine = null;
         }
     }
 

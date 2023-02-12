@@ -1864,7 +1864,7 @@ public class Main extends GameShell {
         Class13.handleRequests();
         MusicSystem.handleMusic();
         SoundSystem.handleSounds();
-        GameInterface.method639(122);
+        GameInterface.method639();
         MovedStatics.method1015();
 
         if (Class51.gameStatusCode == 0) {
