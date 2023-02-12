@@ -100,7 +100,7 @@ public class Landscape {
                             is = FileOperations.ReadFile("./data/maps/" + LinkedList.terrainDataIds[pointer] + ".dat");
                         }
                         if(is != null)
-                            AnimationSequence.loadTerrainBlock(currentCollisionMap, (Class51.regionX - 6) * 8, is, -6, offsetX, offsetY, 8 * (-6 + Class17.regionY));
+                            AnimationSequence.loadTerrainBlock(currentCollisionMap, (Class51.regionX - 6) * 8, is, offsetX, offsetY, 8 * (-6 + Class17.regionY));
                     }
                     for(int pointer = 0; dataLength > pointer; pointer++) {
                         int offsetX = -MovedStatics.baseX + (ISAAC.mapCoordinates[pointer] >> 8) * 64;

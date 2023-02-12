@@ -43,7 +43,7 @@ public class AnimationSequence extends CachedNode {
         stretches = false;
     }
 
-    public static void loadTerrainBlock(CollisionMap[] collisions, int regionX_maybe, byte[] blockData, int junk, int offsetX, int offsetY, int regionY_maybe) {
+    public static void loadTerrainBlock(CollisionMap[] collisions, int regionX_maybe, byte[] blockData, int offsetX, int offsetY, int regionY_maybe) {
         for(int i = 0; i < 4; i++) {
             for(int i_1_ = 0; i_1_ < 64; i_1_++) {
                 for(int i_2_ = 0; i_2_ < 64; i_2_++) {
@@ -53,7 +53,7 @@ public class AnimationSequence extends CachedNode {
             }
         }
         Buffer class40_sub1 = new Buffer(blockData);
-        if(junk == -6) {
+        if(true) {
             for(int plane = 0; plane < 4; plane++) {
                 for(int tileX = 0; tileX < 64; tileX++) {
                     for(int tileY = 0; tileY < 64; tileY++)
