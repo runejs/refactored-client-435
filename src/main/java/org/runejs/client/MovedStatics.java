@@ -748,7 +748,7 @@ public class MovedStatics {
         }
     }
 
-    public static int mixLightnessSigned(int hsl, int lightness, boolean junk) {
+    public static int mixLightnessSigned(int hsl, int lightness) {
         if (hsl == -2)
             return 12345678;
             
@@ -760,9 +760,6 @@ public class MovedStatics {
             lightness = -lightness + 127;
             return lightness;
         }
-
-        if (!junk)
-            UpdateServer.calculateDataLoaded(-124, -88);
 
         lightness = lightness * (hsl & 0x7f) / 128;
         if (lightness < 2)
