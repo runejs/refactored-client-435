@@ -154,7 +154,7 @@ public class Class40_Sub3 extends Node {
             if (CacheArchive.gameDefinitionsCacheArchive.method185((byte) 98)) {
                 OverlayDefinition.initializeOverlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 UnderlayDefinition.initializeUnderlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
-                initializeIdentityKitDefinitionCache(3, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
+                initializeIdentityKitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
                 initializeGameObjectDefinitionCache(28987, CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
                 Main.method357(CacheArchive.modelCacheArchive, 100 ^ ~0x2a85, CacheArchive.gameDefinitionsCacheArchive);
                 MovedStatics.initializeItemDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, MovedStatics.membersWorld, CacheArchive.modelCacheArchive);
@@ -302,12 +302,10 @@ public class Class40_Sub3 extends Node {
         }
     }
 
-    public static void initializeIdentityKitDefinitionCache(int arg0, CacheArchive definitionCache, CacheArchive arg2) {
+    public static void initializeIdentityKitDefinitionCache(CacheArchive definitionCache, CacheArchive arg2) {
         MovedStatics.aCacheArchive_654 = arg2;
-        if (arg0 == 3) {
-            Class49.definitionCache = definitionCache;
-            PlayerAppearance.identityKitLength = Class49.definitionCache.fileLength(3);
-        }
+        Class49.definitionCache = definitionCache;
+        PlayerAppearance.identityKitLength = Class49.definitionCache.fileLength(3);
     }
 
     public static void initializeGameObjectDefinitionCache(int arg0, CacheArchive arg1, boolean arg2, CacheArchive definitionCache) {
