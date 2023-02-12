@@ -133,7 +133,7 @@ public class SceneTile extends Node {
         if (diff < -3)
             return Native.orange2;
         if (diff < 0)
-            return Native.aClass1_327;
+            return Native.orange1;
         if (diff > 9)
             return Native.green;
         if (diff > 6)

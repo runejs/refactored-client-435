@@ -66,7 +66,7 @@ public class Native {
     public static String headiconsHint = "headicons_hint";
     public static String titleButton = "titlebutton";
     public static String COLON_CHARACTER = ": ";
-    public static String aClass1_327 = "@or1@";
+    public static String orange1 = "@or1@";
     public static String arrowActionOnOther = " -> @whi@";
     public static String imgBackvmid2 = "backvmid2";
     public static String suffixK = "K";
