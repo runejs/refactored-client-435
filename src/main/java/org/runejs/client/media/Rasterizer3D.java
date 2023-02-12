@@ -101,7 +101,7 @@ public class Rasterizer3D extends Rasterizer {
             drawShadedTriangle(y_a, y_b, y_c, x_a, x_b, x_c, method709(i, grad_a), method709(i, grad_b), method709(i, grad_c));
         } else {
             lowMemory = interface3.method15(t_id, (byte) -90);
-            opaque = interface3.isTextureOpaque((byte) -109, t_id);
+            opaque = interface3.isTextureOpaque(t_id);
             Mx = Px - Mx;
             Mz = Pz - Mz;
             My = Py - My;

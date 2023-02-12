@@ -3,7 +3,7 @@ package org.runejs.client;
 public interface Interface3 {
     int[] getTexturePixels(int junk, int textureId);
 
-    boolean isTextureOpaque(byte i, int textureId);
+    boolean isTextureOpaque(int textureId);
 
     int getAverageTextureColour(int i);
 

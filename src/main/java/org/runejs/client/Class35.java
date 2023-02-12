@@ -104,9 +104,7 @@ public class Class35 implements Interface3 {
         return 0;
     }
 
-    public boolean isTextureOpaque(byte arg0, int textureId) {
-        if(arg0 > -99)
-            return true;
+    public boolean isTextureOpaque(int textureId) {
         return textures[textureId].opaque;
     }
 
