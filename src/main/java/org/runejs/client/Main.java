@@ -285,7 +285,7 @@ public class Main extends GameShell {
                                 if (text == null)
                                     text = "null";
                                 if (itemDefinition.stackable == 1 || gameInterface.itemAmount != 1)
-                                    text = text + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmount, (byte) -109);
+                                    text = text + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmount);
                             }
                             if (gameInterface.actionType == 6 && MovedStatics.lastContinueTextWidgetId == gameInterface.id) {
                                 textColor = gameInterface.textColor;
@@ -465,7 +465,7 @@ public class Main extends GameShell {
                                         if (itemName == null)
                                             itemName = "null";
                                         if (itemDefinition.stackable == 1 || gameInterface.itemAmounts[itemSlot] != 1)
-                                            itemName = itemName + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmounts[itemSlot], (byte) -105);
+                                            itemName = itemName + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmounts[itemSlot]);
                                         int itemX = col * (gameInterface.itemSpritePadsX + 115) + absoluteX;
                                         int itemY = row * (gameInterface.itemSpritePadsY + 12) + absoluteY;
                                         if (gameInterface.xTextAlignment == 0)
@@ -724,8 +724,8 @@ public class Main extends GameShell {
         for (int i = 0; i < 32768; i++)
             Player.npcs[i] = null;
         Player.localPlayer = Player.trackedPlayers[2047] = new Player();
-        Class43.projectileQueue.clear(0);
-        Class57.aLinkedList_1332.clear(0);
+        Class43.projectileQueue.clear();
+        Class57.aLinkedList_1332.clear();
         for (int i = 0; i < 4; i++) {
             for (int i_82_ = 0; i_82_ < 104; i_82_++) {
                 for (int i_83_ = 0; i_83_ < 104; i_83_++)
@@ -1376,7 +1376,7 @@ public class Main extends GameShell {
                     SceneCluster.packetBuffer.putPacket(160);
                     SceneCluster.packetBuffer.putByte(0);
                 }
-                LinkedList.method910(-32322);
+                LinkedList.method910();
                 if(Class51.gameStatusCode == 30 || Class51.gameStatusCode == 35) {
                     MovedStatics.method652();
                     SoundSystem.processSounds();

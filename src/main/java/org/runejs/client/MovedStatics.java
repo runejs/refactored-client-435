@@ -309,7 +309,7 @@ public class MovedStatics {
 
     public static void method1000(boolean arg0) {
         if (arg0) {
-            for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.peekFirst((byte) -90); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.pollFirst(-4)) {
+            for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.peekFirst(); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.pollFirst()) {
                 if (Player.worldLevel == class40_sub5_sub17_sub6.anInt3239 && !class40_sub5_sub17_sub6.aBoolean3237) {
                     if (pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
                         class40_sub5_sub17_sub6.method834(8076, anInt199);
@@ -411,9 +411,9 @@ public class MovedStatics {
     }
 
     public static void method335(byte arg0) {
-        Projectile projectile = (Projectile) Class43.projectileQueue.peekFirst((byte) -90);
+        Projectile projectile = (Projectile) Class43.projectileQueue.peekFirst();
         if (arg0 == 61) {
-            for (/**/; projectile != null; projectile = (Projectile) Class43.projectileQueue.pollFirst(arg0 + -65)) {
+            for (/**/; projectile != null; projectile = (Projectile) Class43.projectileQueue.pollFirst()) {
                 if (Player.worldLevel == projectile.anInt2981 && pulseCycle <= projectile.endCycle) {
                     if (projectile.delay <= pulseCycle) {
                         if (projectile.entityIndex > 0) {
@@ -912,7 +912,7 @@ public class MovedStatics {
                 if (type == 3) {
                     LinkedList itemList = Wall.groundItems[Player.worldLevel][x][y];
                     if (itemList != null) {
-                        for (Item item = (Item) itemList.peekLast((byte) -95); item != null; item = (Item) itemList.pollLast(4)) {
+                        for (Item item = (Item) itemList.peekLast(); item != null; item = (Item) itemList.pollLast()) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
                             if (MovedStatics.itemSelected == 1) {
                                 addActionRow(English.use, item.itemId, x, y, ActionRowType.USE_ITEM_ON_WORLD_ITEM.getId(), Native.selectedItemName + Native.toLightRed + itemDefinition.name);
@@ -1108,7 +1108,7 @@ public class MovedStatics {
     }
 
     public static void method652() {
-        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst(-4)) {
+        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst()) {
             if(class40_sub3.anInt2031 > 0)
                 class40_sub3.anInt2031--;
             if(class40_sub3.anInt2031 == 0) {

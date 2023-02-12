@@ -335,7 +335,7 @@ public abstract class Actor extends Renderable {
                     }
                 }
             }
-            for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst(-4)) {
+            for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst()) {
                 class40_sub3.anInt2038 -= i_35_;
                 class40_sub3.anInt2039 -= i_34_;
                 if(class40_sub3.anInt2039 < 0 || class40_sub3.anInt2038 < 0 || class40_sub3.anInt2039 >= 104 || class40_sub3.anInt2038 >= 104)
@@ -348,8 +348,8 @@ public abstract class Actor extends Renderable {
             }
             Player.cutsceneActive = false;
             SoundSystem.reset();
-            Class57.aLinkedList_1332.clear(0);
-            Class43.projectileQueue.clear(0);
+            Class57.aLinkedList_1332.clear();
+            Class43.projectileQueue.clear();
         }
     }
 

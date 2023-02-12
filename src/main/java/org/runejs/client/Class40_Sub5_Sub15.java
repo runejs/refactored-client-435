@@ -29,7 +29,7 @@ public class Class40_Sub5_Sub15 extends CachedNode {
             byte[] is_1_ = arg0.getFile(arg2, is[i_0_]);
             FramemapDefinition framemapDefinition = null;
             int i_2_ = is_1_[1] & 0xff | is_1_[0] << 8 & 0xff00;
-            for(FramemapDefinition framemapDefinition_3_ = (FramemapDefinition) linkedList.peekFirst((byte) -90); framemapDefinition_3_ != null; framemapDefinition_3_ = (FramemapDefinition) linkedList.pollFirst(-4)) {
+            for(FramemapDefinition framemapDefinition_3_ = (FramemapDefinition) linkedList.peekFirst(); framemapDefinition_3_ != null; framemapDefinition_3_ = (FramemapDefinition) linkedList.pollFirst()) {
                 if(i_2_ == framemapDefinition_3_.id) {
                     framemapDefinition = framemapDefinition_3_;
                     break;
@@ -42,7 +42,7 @@ public class Class40_Sub5_Sub15 extends CachedNode {
                 else
                     is_4_ = arg1.method182(i_2_, 0);
                 framemapDefinition = new FramemapDefinition(i_2_, is_4_);
-                linkedList.addLast(framemapDefinition, 60);
+                linkedList.addLast(framemapDefinition);
             }
             aFrameDefinitionArray2794[is[i_0_]] = new FrameDefinition(is_1_, framemapDefinition);
         }
