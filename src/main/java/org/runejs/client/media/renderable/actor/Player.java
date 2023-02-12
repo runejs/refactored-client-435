@@ -102,7 +102,8 @@ public class Player extends Actor {
         }
     }
 
-    public static boolean method793(byte arg0, int arg1) {
+    public static boolean method793(int arg1) {
+        // something to do with checking for valid (typable?) keycodes
         if(arg1 < 32)
             return false;
         if(arg1 == 127)

@@ -1492,7 +1492,7 @@ public class MovedStatics {
 	                ChatBox.chatMessage = ChatBox.chatMessage.substring(0, -1 + ChatBox.chatMessage.length());
 	                ChatBox.redrawChatbox = true;
 	            }
-	            if(Player.method793((byte) 120, Class59.anInt1388) && ChatBox.chatMessage.length() < 80) {
+	            if(Player.method793(Class59.anInt1388) && ChatBox.chatMessage.length() < 80) {
 	                ChatBox.chatMessage = ChatBox.chatMessage + (char) Class59.anInt1388;
 	                ChatBox.redrawChatbox = true;
 	            }
@@ -1578,7 +1578,7 @@ public class MovedStatics {
 	                ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 10);
 	                ChatBox.redrawChatbox = true;
 	            }
-	            if(Player.method793((byte) 122, Class59.anInt1388) && ChatBox.inputMessage.length() < 40) {
+	            if(Player.method793(Class59.anInt1388) && ChatBox.inputMessage.length() < 40) {
 	                ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
 	                ChatBox.redrawChatbox = true;
 	            }
@@ -1587,7 +1587,7 @@ public class MovedStatics {
 	                ChatBox.chatboxInput = ChatBox.chatboxInput.substring(0, ChatBox.chatboxInput.length() - 1);
 	                ChatBox.redrawChatbox = true;
 	            }
-	            if(Player.method793((byte) 124, Class59.anInt1388) && ChatBox.chatboxInput.length() < 80) {
+	            if(Player.method793(Class59.anInt1388) && ChatBox.chatboxInput.length() < 80) {
 	                ChatBox.chatboxInput = ChatBox.chatboxInput + (char) Class59.anInt1388;
 	                ChatBox.redrawChatbox = true;
 	            }
