@@ -117,9 +117,7 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
         return class40_sub5_sub17_sub5;
     }
 
-    public void method834(int arg0, int arg1) {
-        if(arg0 != 8076)
-            method834(106, 6);
+    public void method834(int arg1) {
         if(!aBoolean3237) {
             anInt3233 += arg1;
             while(anInt3233 > aAnimationSequence_3242.frameLengths[anInt3240]) {
