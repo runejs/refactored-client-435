@@ -151,7 +151,7 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.loadingPercent = 70;
             }
         } else if (MovedStatics.loadingPercent == 70) {
-            if (CacheArchive.gameDefinitionsCacheArchive.method185((byte) 98)) {
+            if (CacheArchive.gameDefinitionsCacheArchive.method185()) {
                 OverlayDefinition.initializeOverlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 UnderlayDefinition.initializeUnderlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 initializeIdentityKitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
@@ -256,7 +256,7 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.anInt1607 = 80;
             }
         } else if (MovedStatics.loadingPercent == 90) {
-            if (CacheArchive.gameTextureCacheArchive.method185((byte) 62)) {
+            if (CacheArchive.gameTextureCacheArchive.method185()) {
                 Class35 class35 = new Class35(CacheArchive.gameTextureCacheArchive, CacheArchive.gameImageCacheArchive, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
                 Rasterizer3D.method703(class35);
                 Rasterizer3D.createPalette(0.8);
@@ -285,10 +285,10 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.anInt1607 = 96;
             }
         } else if (MovedStatics.loadingPercent == 130) {
-            if (!CacheArchive.gameInterfaceCacheArchive.method185((byte) 66)) {
+            if (!CacheArchive.gameInterfaceCacheArchive.method185()) {
                 Native.currentLoadingText = English.loadingInterfaces + (4 * CacheArchive.gameInterfaceCacheArchive.method202() / 5) + Native.percent;
                 MovedStatics.anInt1607 = 100;
-            } else if (CacheArchive.clientScriptCacheArchive.method185((byte) 69)) {
+            } else if (CacheArchive.clientScriptCacheArchive.method185()) {
                 Native.currentLoadingText = English.loadedInterfaces;
                 MovedStatics.loadingPercent = 140;
                 MovedStatics.anInt1607 = 100;
