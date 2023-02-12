@@ -1259,7 +1259,7 @@ public class Main extends GameShell {
                 if(ISAAC.aBoolean519 && Class51.gameStatusCode == 30) {
                     MouseHandler.currentMouseButtonPressed = 0;
                     MouseHandler.clickType = 0;
-                    while(MovedStatics.method416((byte) -104)) {
+                    while(MovedStatics.method416()) {
                         /* empty */
                     }
                     for(int i = 0; i < Item.obfuscatedKeyStatus.length; i++)

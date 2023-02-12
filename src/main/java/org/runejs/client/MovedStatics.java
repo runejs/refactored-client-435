@@ -735,14 +735,12 @@ public class MovedStatics {
         }
     }
 
-    public static boolean method416(byte arg0) {
+    public static boolean method416() {
         synchronized (Class59.keyFocusListener) {
             if (Class59.anInt1389 == GenericTile.anInt1214)
                 return false;
             ItemDefinition.anInt2854 = anIntArray2113[Class59.anInt1389];
             Class59.anInt1388 = anIntArray2764[Class59.anInt1389];
-            if (arg0 > -21)
-                English.clickToContinue = null;
             Class59.anInt1389 = Class59.anInt1389 + 1 & 0x7f;
             return true;
         }
@@ -1494,7 +1492,7 @@ public class MovedStatics {
 	}
 
 	public static void manageTextInputs() {
-	    while(method416((byte) -125)) {
+	    while(method416()) {
 	        if(ItemDefinition.anInt2854 == 28) {
 	            break;
 	        }
