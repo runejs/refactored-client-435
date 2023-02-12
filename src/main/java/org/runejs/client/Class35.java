@@ -37,9 +37,7 @@ public class Class35 implements Interface3 {
 
     }
 
-    public static Class40_Sub5_Sub15 method421(CacheArchive skeletonArchive, byte arg1, int arg2, CacheArchive skinArchive, boolean arg4) {
-        if(arg1 < 40)
-            return null;
+    public static Class40_Sub5_Sub15 method421(CacheArchive skeletonArchive, int arg2, CacheArchive skinArchive, boolean arg4) {
         boolean bool = true;
         int[] is = skeletonArchive.method192(arg2, true);
         for(int i = 0; is.length > i; i++) {

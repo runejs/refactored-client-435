@@ -59,7 +59,7 @@ public class Class55 {
         Class40_Sub5_Sub15 class40_sub5_sub15 = (Class40_Sub5_Sub15) MovedStatics.aClass9_998.get((long) arg1);
         if(class40_sub5_sub15 != null)
             return class40_sub5_sub15;
-        class40_sub5_sub15 = Class35.method421(MovedStatics.aCacheArchive_2364, (byte) 79, arg1, ClientScriptRunner.aCacheArchive_2162, false);
+        class40_sub5_sub15 = Class35.method421(MovedStatics.aCacheArchive_2364, arg1, ClientScriptRunner.aCacheArchive_2162, false);
         if(class40_sub5_sub15 != null)
             MovedStatics.aClass9_998.put((long) arg1, class40_sub5_sub15);
         return class40_sub5_sub15;
