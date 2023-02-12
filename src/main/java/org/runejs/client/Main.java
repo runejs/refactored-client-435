@@ -1542,7 +1542,7 @@ public class Main extends GameShell {
                             MovedStatics.anIntArray1846[i_19_]++;
                         MovedStatics.manageTextInputs();
                         int i_20_ = Npc.method400(-1);
-                        int i_21_ = Class17.method274(true);
+                        int i_21_ = Class17.method274();
                         if(i_20_ > 4500 && i_21_ > 4500) {
                             SceneCluster.idleLogout = 250;
                             MovedStatics.method650(4000);
