@@ -41,7 +41,7 @@ public class Native {
     public static String imgBackright1 = "backright1";
     public static String imgBackvmid3 = "backvmid3";
     public static String chatback = "chatback";
-    public static String aClass1_1019 = "flash1:";
+    public static String effectFlash1 = "flash1:";
     public static String headiconsPK = "headicons_pk";
     public static String headiconsPrayer ="headicons_prayer";
     public static String hitmarks = "hitmarks";
@@ -59,7 +59,7 @@ public class Native {
     public static String redstone2 = "redstone2";
     public static String redstone3 = "redstone3";
     public static String titleSong = "scape main";
-    public static String aClass1_2438 = "scroll:";
+    public static String effectScroll = "scroll:";
     public static String scrollbar = "scrollbar";
     public static String sideIcons = "sideicons";
     public static String whiteOpeningParenthesis = " @whi@(";
