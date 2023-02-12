@@ -2,7 +2,6 @@ package org.runejs.client;
 
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.ImageRGB;
-import org.runejs.client.frame.ChatBox;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Player;
@@ -95,10 +94,7 @@ public class HuffmanEncoding {
     }
 
 
-    public static RSString method1024(boolean arg0, byte arg1, int arg2) {
-        if (arg1 > -30) {
-            English.connectingToFriendserver = null;
-        }
+    public static RSString method1024(boolean arg0, int arg2) {
         return PacketBuffer.method521(arg0, 10, arg2);
     }
 
@@ -219,12 +215,9 @@ public class HuffmanEncoding {
         return arg0 >= 48 && arg0 <= 57;
     }
 
-    public static ImageRGB method1028(CacheArchive arg0, String arg1, byte arg2, String arg3) {
+    public static ImageRGB method1028(CacheArchive arg0, String arg1, String arg3) {
         int i = arg0.getHash(arg1);
         int i_13_ = arg0.method179(i, arg3);
-        if (arg2 != 21) {
-            ChatBox.chatTypes = null;
-        }
         return MovedStatics.method927(i_13_, arg0, true, i);
     }
 

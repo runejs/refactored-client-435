@@ -175,9 +175,9 @@ public class Class40_Sub3 extends Node {
             if (AnimationSequence.minimapCompass != null)
                 i++;
             else
-                AnimationSequence.minimapCompass = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.compass, (byte) 21, "");
+                AnimationSequence.minimapCompass = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.compass, "");
             if (MovedStatics.minimapEdge == null)
-                MovedStatics.minimapEdge = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.aClass1_1427, (byte) 21, "");
+                MovedStatics.minimapEdge = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.aClass1_1427, "");
             else
                 i++;
             if (MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301 != null)
@@ -205,7 +205,7 @@ public class Class40_Sub3 extends Node {
             else
                 i++;
             if (LinkedList.aClass40_Sub5_Sub14_Sub4_1057 == null)
-                LinkedList.aClass40_Sub5_Sub14_Sub4_1057 = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.aClass1_2109, (byte) 21, "");
+                LinkedList.aClass40_Sub5_Sub14_Sub4_1057 = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.aClass1_2109, "");
             else
                 i++;
             if (aClass40_Sub5_Sub14_Sub4Array2019 == null)
