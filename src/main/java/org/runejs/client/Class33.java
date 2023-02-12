@@ -280,10 +280,8 @@ public class Class33 {
         return i == 45;
     }
 
-    public static int getRotatedTileY(int x, int y, int rotation, boolean arg3) {
+    public static int getRotatedTileY(int x, int y, int rotation) {
         rotation &= 0x3;
-        if(arg3)
-            return -80;
         if(rotation == 0)
             return y;
         if(rotation == 1)
