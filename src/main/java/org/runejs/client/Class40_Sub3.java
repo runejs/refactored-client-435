@@ -281,7 +281,7 @@ public class Class40_Sub3 extends Node {
                 Native.currentLoadingText = English.loadedWordpack;
                 MovedStatics.anInt1607 = 96;
             } else {
-                Native.currentLoadingText = English.loadingWordPack + Native.aClass1_1348;
+                Native.currentLoadingText = English.loadingWordPack + Native.zeroPercent;
                 MovedStatics.anInt1607 = 96;
             }
         } else if (MovedStatics.loadingPercent == 130) {

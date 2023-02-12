@@ -17,14 +17,14 @@ public class Native {
     public static String loginScreenMessageLineThree = "";
     public static String loginScreenMessageLineTwo = "";
     public static String aClass1_305 = "";
-    public static String aClass1_698 = "%";
+    public static String percent_b = "%";
     public static String percent = "%";
     public static String percentOne = "%1";
     public static String percentThree = "%3";
     public static String percentFour = "%4";
     public static String rightParenthesis = ")";
-    public static String aClass1_795 = ",";
-    public static String aClass1_1348 = "0%";
+    public static String comma_b = ",";
+    public static String zeroPercent = "0%";
     public static String prefixColon = ":  ";
     public static String prefixColonZero = ":0";
     public static String cmd_prefix = "::";

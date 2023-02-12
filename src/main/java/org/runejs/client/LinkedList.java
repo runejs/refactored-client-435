@@ -41,7 +41,7 @@ public class LinkedList {
             return null;
         String class1 = Integer.toString(arg0);
         for(int i = -3 + class1.length(); i > 0; i -= 3)
-            class1 = class1.substring(0, i) + Native.aClass1_795 + class1.substring(i);
+            class1 = class1.substring(0, i) + Native.comma_b + class1.substring(i);
         if(class1.length() > 8)
             class1 = Native.green + class1.substring(0, -8 + class1.length()) + English.suffixMillion + Native.aClass1_1213 + class1 + Native.rightParenthesis;
         else if(class1.length() > 4)

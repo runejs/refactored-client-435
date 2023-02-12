@@ -1924,12 +1924,12 @@ public class Main extends GameShell {
                 if (Class37.anInt874 > PacketBuffer.anInt2231)
                     PacketBuffer.anInt2231 = Class37.anInt874;
                 int i = (-Class37.anInt874 + PacketBuffer.anInt2231) * 50 / PacketBuffer.anInt2231;
-                Class51.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.aClass1_698);
+                Class51.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.percent_b);
             } else if (ProducingGraphicsBuffer.anInt1634 == 2) {
                 if (IdentityKit.anInt2591 > GameObject.anInt3048)
                     GameObject.anInt3048 = IdentityKit.anInt2591;
                 int i = 50 * (-IdentityKit.anInt2591 + GameObject.anInt3048) / GameObject.anInt3048 + 50;
-                Class51.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.aClass1_698);
+                Class51.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.percent_b);
             } else
                 Class51.method940(English.loadingPleaseWait, false, null);
         } else if (Class51.gameStatusCode == 30) {
