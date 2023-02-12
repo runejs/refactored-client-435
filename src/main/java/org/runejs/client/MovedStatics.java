@@ -375,7 +375,7 @@ public class MovedStatics {
         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
         if (arg0 >= 5 && arg0 <= 8)
             arg0 = 4;
-        return gameObjectDefinition.method610(arg0, 7533);
+        return gameObjectDefinition.method610(arg0);
     }
 
     public static IndexedImage method538(int arg0) {
