@@ -254,7 +254,7 @@ public class Class60 {
                         Native.password = Configuration.getPassword();
                         Class26.loginScreenState = 0;
                     }
-                    while(MovedStatics.method416((byte) -104)) {
+                    while(MovedStatics.method416()) {
                         boolean bool = false;
                         for(int i_19_ = 0; Native.supportedCharacters.length() > i_19_; i_19_++) {
                             if(Native.supportedCharacters.charAt(i_19_) == Class59.anInt1388) {

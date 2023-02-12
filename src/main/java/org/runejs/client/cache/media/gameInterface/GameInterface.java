@@ -1040,7 +1040,7 @@ public class GameInterface extends CachedNode {
                                 GameShell.method28(l);
                             }
                             if(action == ActionRowType.REMOVE_IGNORE.getId()) {
-                                MovedStatics.method838(0, l);
+                                MovedStatics.method838(l);
                             }
                         }
                     }

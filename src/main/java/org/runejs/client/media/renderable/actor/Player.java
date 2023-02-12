@@ -177,7 +177,7 @@ public class Player extends Actor {
                     chatBuffer.currentPosition = 0;
                     IncomingPackets.incomingPacketBuffer.getBytes(0, messageLength, chatBuffer.buffer);
                     chatBuffer.currentPosition = 0;
-                    String incomming = KeyFocusListener.method956(124, IncomingPackets.incomingPacketBuffer);
+                    String incomming = KeyFocusListener.method956(IncomingPackets.incomingPacketBuffer);
                     String class1 = RSString.formatChatString(incomming);
                     player.forcedChatMessage = class1.trim();
                     player.anInt3078 = 150;

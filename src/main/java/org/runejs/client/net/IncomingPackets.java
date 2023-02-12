@@ -91,7 +91,7 @@ public class IncomingPackets {
 
             if(opcode == 71) {
                 long username = incomingPacketBuffer.getLongBE();
-                String message = RSString.formatChatString(KeyFocusListener.method956(82, incomingPacketBuffer));
+                String message = RSString.formatChatString(KeyFocusListener.method956(incomingPacketBuffer));
 
                 ChatBox.addChatMessage(Player.longToUsername(username).method85().toString(), message, 6);
                 opcode = -1;
@@ -981,7 +981,7 @@ public class IncomingPackets {
                 if(!hideMessage && !Player.inTutorialIsland) {
                     Player.privateMessageIds[Player.privateMessageIndex] = chatId;
                     Player.privateMessageIndex = (1 + Player.privateMessageIndex) % 100;
-                    String privateMessage = RSString.formatChatString(KeyFocusListener.method956(67, incomingPacketBuffer));
+                    String privateMessage = RSString.formatChatString(KeyFocusListener.method956(incomingPacketBuffer));
                     if(fromPlayerRights == 2 || fromPlayerRights == 3)
                         ChatBox.addChatMessage(Native.goldCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), privateMessage, 7);
                     else if(fromPlayerRights == 1)

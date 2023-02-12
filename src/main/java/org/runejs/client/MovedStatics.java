@@ -184,7 +184,7 @@ public class MovedStatics {
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_1919;
     public static int anInt1923 = 0;
 
-    public static void method445(int arg0) {
+    public static void method445() {
         if (CollisionMap.anInt165 != 0) {
             int i = 0;
             if (Class40_Sub5_Sub15.systemUpdateTime != 0)
@@ -220,14 +220,10 @@ public class MovedStatics {
                         return;
                 }
             }
-            if (arg0 != 9767)
-                anInt1923 = 48;
         }
     }
 
-    public static void method996(int arg0) {
-        if (arg0 != 19655)
-            English.systemUpdateIn = null;
+    public static void method996() {
         tabImageProducer.prepareRasterizer();
         if (ScreenController.frameMode == ScreenMode.FIXED) {
             FloorDecoration.inventoryBackgroundImage.drawImage(0, 0);
@@ -250,9 +246,8 @@ public class MovedStatics {
         ActorDefinition.sidebarOffsets = Rasterizer3D.setLineOffsets(ActorDefinition.sidebarOffsets);
     }
 
-    public static void method997(int arg0) {
-        if (arg0 != 47)
-            initiateVertexHeights(-42, (byte) 12, 92, 18, -72);
+    public static void method997() {
+        // (Jameskmonger) I think this is something to do with keycode remapping, though Im not sure
         if (Signlink.javaVendor.toLowerCase().indexOf("microsoft") == -1) {
             HuffmanEncoding.anIntArray1564[44] = 71;
             HuffmanEncoding.anIntArray1564[45] = 26;
@@ -288,8 +283,7 @@ public class MovedStatics {
 
     }
 
-    public static void initiateVertexHeights(int offsetY, byte arg1, int sizeY, int sizeX, int offsetX) {
-        int i = -112 / ((50 - arg1) / 53);
+    public static void initiateVertexHeights(int offsetY, int sizeY, int sizeX, int offsetX) {
         for (int y = offsetY; y <= offsetY + sizeY; y++) {
             for (int x = offsetX; sizeX + offsetX >= x; x++) {
                 if (x >= 0 && x < 104 && y >= 0 && y < 104) {
@@ -307,39 +301,33 @@ public class MovedStatics {
         }
     }
 
-    public static void method1000(boolean arg0) {
-        if (arg0) {
-            for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.peekFirst((byte) -90); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.pollFirst(-4)) {
-                if (Player.worldLevel == class40_sub5_sub17_sub6.anInt3239 && !class40_sub5_sub17_sub6.aBoolean3237) {
-                    if (pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
-                        class40_sub5_sub17_sub6.method834(8076, anInt199);
-                        if (class40_sub5_sub17_sub6.aBoolean3237)
-                            class40_sub5_sub17_sub6.unlink();
-                        else
-                            Npc.currentScene.method134(class40_sub5_sub17_sub6.anInt3239, class40_sub5_sub17_sub6.anInt3244, class40_sub5_sub17_sub6.anInt3235, class40_sub5_sub17_sub6.anInt3231, 60, class40_sub5_sub17_sub6, 0, -1, false);
-                    }
-                } else
-                    class40_sub5_sub17_sub6.unlink();
-            }
+    public static void method1000() {
+        for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.peekFirst((byte) -90); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.pollFirst(-4)) {
+            if (Player.worldLevel == class40_sub5_sub17_sub6.anInt3239 && !class40_sub5_sub17_sub6.aBoolean3237) {
+                if (pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
+                    class40_sub5_sub17_sub6.method834(anInt199);
+                    if (class40_sub5_sub17_sub6.aBoolean3237)
+                        class40_sub5_sub17_sub6.unlink();
+                    else
+                        Npc.currentScene.method134(class40_sub5_sub17_sub6.anInt3239, class40_sub5_sub17_sub6.anInt3244, class40_sub5_sub17_sub6.anInt3235, class40_sub5_sub17_sub6.anInt3231, 60, class40_sub5_sub17_sub6, 0, -1, false);
+                }
+            } else
+                class40_sub5_sub17_sub6.unlink();
         }
     }
 
-    public static int method546(int arg0) {
+    public static int method546() {
         if (!Configuration.ROOFS_ENABLED) {
             return Player.worldLevel;
         }
-        if (arg0 != 256)
-            anInt2280 = 44;
         int i = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, MovedStatics.cameraY);
         if (i + -SceneCluster.cameraZ < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][Class12.cameraX >> 7][MovedStatics.cameraY >> 7] & 0x4) != 0)
             return Player.worldLevel;
         return 3;
     }
 
-    public static void method233(boolean arg0) {
+    public static void method233() {
         OverlayDefinition.overlayDefinitionCache.clear();
-        if (!arg0)
-            initializeAnimationCaches(null, null, null);
     }
 
     public static void initializeAnimationCaches(CacheArchive skinArchive, CacheArchive definitionArchive, CacheArchive skeletonArchive) {
@@ -369,15 +357,13 @@ public class MovedStatics {
             tile_height[arg1][arg3][arg0] = tile_height[arg1][-1 + arg3][arg0 - 1];
     }
 
-    public static boolean method459(int arg0, int arg1, byte arg2) {
+    public static boolean method459(int arg0, int arg1) {
         if (arg0 == 11)
             arg0 = 10;
-        if (arg2 < 83)
-            method459(125, 22, (byte) 101);
         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
         if (arg0 >= 5 && arg0 <= 8)
             arg0 = 4;
-        return gameObjectDefinition.method610(arg0, 7533);
+        return gameObjectDefinition.method610(arg0);
     }
 
     public static IndexedImage method538(int arg0) {
@@ -410,33 +396,31 @@ public class MovedStatics {
         return PacketBuffer.method521(false, 10, arg0);
     }
 
-    public static void method335(byte arg0) {
+    public static void method335() {
         Projectile projectile = (Projectile) Class43.projectileQueue.peekFirst((byte) -90);
-        if (arg0 == 61) {
-            for (/**/; projectile != null; projectile = (Projectile) Class43.projectileQueue.pollFirst(arg0 + -65)) {
-                if (Player.worldLevel == projectile.anInt2981 && pulseCycle <= projectile.endCycle) {
-                    if (projectile.delay <= pulseCycle) {
-                        if (projectile.entityIndex > 0) {
-                            Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[-1 + projectile.entityIndex];
-                            if (class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.worldX >= 0 && class40_sub5_sub17_sub4_sub2.worldX < 13312 && class40_sub5_sub17_sub4_sub2.worldY >= 0 && class40_sub5_sub17_sub4_sub2.worldY < 13312)
-                                projectile.trackTarget(pulseCycle, arg0 + -61, class40_sub5_sub17_sub4_sub2.worldY, Class37.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub2.worldX, class40_sub5_sub17_sub4_sub2.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub2.worldX);
-                        }
-                        if (projectile.entityIndex < 0) {
-                            int i = -1 + -projectile.entityIndex;
-                            Player class40_sub5_sub17_sub4_sub1;
-                            if (i != PlayerAppearance.anInt708)
-                                class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i];
-                            else
-                                class40_sub5_sub17_sub4_sub1 = Player.localPlayer;
-                            if (class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.worldX >= 0 && class40_sub5_sub17_sub4_sub1.worldX < 13312 && class40_sub5_sub17_sub4_sub1.worldY >= 0 && class40_sub5_sub17_sub4_sub1.worldY < 13312)
-                                projectile.trackTarget(pulseCycle, 0, class40_sub5_sub17_sub4_sub1.worldY, Class37.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub1.worldX, class40_sub5_sub17_sub4_sub1.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub1.worldX);
-                        }
-                        projectile.move(anInt199);
-                        Npc.currentScene.method134(Player.worldLevel, (int) projectile.currentX, (int) projectile.currentY, (int) projectile.currentHeight, 60, projectile, projectile.anInt3013, -1, false);
+        for (/**/; projectile != null; projectile = (Projectile) Class43.projectileQueue.pollFirst(61 + -65)) {
+            if (Player.worldLevel == projectile.anInt2981 && pulseCycle <= projectile.endCycle) {
+                if (projectile.delay <= pulseCycle) {
+                    if (projectile.entityIndex > 0) {
+                        Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[-1 + projectile.entityIndex];
+                        if (class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.worldX >= 0 && class40_sub5_sub17_sub4_sub2.worldX < 13312 && class40_sub5_sub17_sub4_sub2.worldY >= 0 && class40_sub5_sub17_sub4_sub2.worldY < 13312)
+                            projectile.trackTarget(pulseCycle, 61 + -61, class40_sub5_sub17_sub4_sub2.worldY, Class37.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub2.worldX, class40_sub5_sub17_sub4_sub2.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub2.worldX);
                     }
-                } else
-                    projectile.unlink();
-            }
+                    if (projectile.entityIndex < 0) {
+                        int i = -1 + -projectile.entityIndex;
+                        Player class40_sub5_sub17_sub4_sub1;
+                        if (i != PlayerAppearance.anInt708)
+                            class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i];
+                        else
+                            class40_sub5_sub17_sub4_sub1 = Player.localPlayer;
+                        if (class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.worldX >= 0 && class40_sub5_sub17_sub4_sub1.worldX < 13312 && class40_sub5_sub17_sub4_sub1.worldY >= 0 && class40_sub5_sub17_sub4_sub1.worldY < 13312)
+                            projectile.trackTarget(pulseCycle, 0, class40_sub5_sub17_sub4_sub1.worldY, Class37.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub1.worldX, class40_sub5_sub17_sub4_sub1.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub1.worldX);
+                    }
+                    projectile.move(anInt199);
+                    Npc.currentScene.method134(Player.worldLevel, (int) projectile.currentX, (int) projectile.currentY, (int) projectile.currentHeight, 60, projectile, projectile.anInt3013, -1, false);
+                }
+            } else
+                projectile.unlink();
         }
     }
 
@@ -633,18 +617,16 @@ public class MovedStatics {
         }
     }
 
-    public static void method838(int arg0, long arg1) {
-        if (arg1 != 0) {
-            for (int i = arg0; i < anInt1008; i++) {
-                if (Player.ignores[i] == arg1) {
-                    GameInterface.redrawTabArea = true;
-                    anInt1008--;
-                    for (int i_16_ = i; anInt1008 > i_16_; i_16_++)
-                        Player.ignores[i_16_] = Player.ignores[1 + i_16_];
-                    SceneCluster.packetBuffer.putPacket(28);
-                    SceneCluster.packetBuffer.putLongBE(arg1);
-                    break;
-                }
+    public static void method838(long arg1) {
+        for (int i = 0; i < anInt1008; i++) {
+            if (Player.ignores[i] == arg1) {
+                GameInterface.redrawTabArea = true;
+                anInt1008--;
+                for (int i_16_ = i; anInt1008 > i_16_; i_16_++)
+                    Player.ignores[i_16_] = Player.ignores[1 + i_16_];
+                SceneCluster.packetBuffer.putPacket(28);
+                SceneCluster.packetBuffer.putLongBE(arg1);
+                break;
             }
         }
     }
@@ -655,7 +637,7 @@ public class MovedStatics {
         return GenericTile.method944((byte) -3, i, arg0, i_4_);
     }
 
-    public static void method527(int currentTabId, int arg1, int[] tabWidgetIds, boolean arg3, int arg4) {
+    public static void method527(int currentTabId, int[] tabWidgetIds, boolean arg3, int arg4) {
         InteractiveObject.tabTop.prepareRasterizer();
         Buffer.tabTopBack.drawImage(0, 0);
         if (arg3) {
@@ -692,7 +674,7 @@ public class MovedStatics {
         }
         RSCanvas.tabBottom.prepareRasterizer();
         tabBottomBack.drawImage(0, 0);
-        if (arg1 != 4)
+        if (4 != 4)
             Player.hasFriend(null);
         if (arg3) {
             if (tabWidgetIds[currentTabId] != -1) {
@@ -735,20 +717,18 @@ public class MovedStatics {
         }
     }
 
-    public static boolean method416(byte arg0) {
+    public static boolean method416() {
         synchronized (Class59.keyFocusListener) {
             if (Class59.anInt1389 == GenericTile.anInt1214)
                 return false;
             ItemDefinition.anInt2854 = anIntArray2113[Class59.anInt1389];
             Class59.anInt1388 = anIntArray2764[Class59.anInt1389];
-            if (arg0 > -21)
-                English.clickToContinue = null;
             Class59.anInt1389 = Class59.anInt1389 + 1 & 0x7f;
             return true;
         }
     }
 
-    public static int mixLightnessSigned(int hsl, int lightness, boolean junk) {
+    public static int mixLightnessSigned(int hsl, int lightness) {
         if (hsl == -2)
             return 12345678;
             
@@ -760,9 +740,6 @@ public class MovedStatics {
             lightness = -lightness + 127;
             return lightness;
         }
-
-        if (!junk)
-            UpdateServer.calculateDataLoaded(-124, -88);
 
         lightness = lightness * (hsl & 0x7f) / 128;
         if (lightness < 2)
@@ -1112,14 +1089,14 @@ public class MovedStatics {
             if(class40_sub3.anInt2031 > 0)
                 class40_sub3.anInt2031--;
             if(class40_sub3.anInt2031 == 0) {
-                if(class40_sub3.anInt2028 < 0 || method459(class40_sub3.anInt2036, class40_sub3.anInt2028, (byte) 103)) {
+                if(class40_sub3.anInt2028 < 0 || method459(class40_sub3.anInt2036, class40_sub3.anInt2028)) {
                     GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039, class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
                     class40_sub3.unlink();
                 }
             } else {
                 if(class40_sub3.anInt2033 > 0)
                     class40_sub3.anInt2033--;
-                if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 && class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 && (class40_sub3.anInt2017 < 0 || method459(class40_sub3.anInt2030, class40_sub3.anInt2017, (byte) 106))) {
+                if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 && class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 && (class40_sub3.anInt2017 < 0 || method459(class40_sub3.anInt2030, class40_sub3.anInt2017))) {
                     GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
                     class40_sub3.anInt2033 = -1;
                     if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2028 == -1)
@@ -1497,7 +1474,7 @@ public class MovedStatics {
 	}
 
 	public static void manageTextInputs() {
-	    while(method416((byte) -125)) {
+	    while(method416()) {
 	        if(ItemDefinition.anInt2854 == 28) {
 	            break;
 	        }
@@ -1553,7 +1530,7 @@ public class MovedStatics {
 	                }
 	                if(Class37.anInt876 == 5 && anInt1008 > 0) {
 	                    long l = RSString.nameToLong(ChatBox.chatMessage);
-	                    method838(0, l);
+	                    method838(l);
 	                }
 	            }
 	        } else if(ChatBox.inputType == 1) {
@@ -1859,7 +1836,7 @@ public class MovedStatics {
 	        chatboxLineOffsets = Rasterizer3D.setLineOffsets(chatboxLineOffsets);
 	    }
 
-	public static void method299(byte arg0, int arg1) {
+	public static void method299(int arg1) {
 	    int[] is = minimapImage.pixels;
 	    int i = is.length;
 	    for(int i_0_ = 0; i > i_0_; i_0_++)
@@ -1886,8 +1863,6 @@ public class MovedStatics {
 	        }
 	    }
 	    GameObject.minimapHintCount = 0;
-	    if(arg0 < 24)
-	        Player.trackedPlayerAppearanceCache = null;
 	    for(int i_8_ = 0; i_8_ < 104; i_8_++) {
 	        for(int i_9_ = 0; i_9_ < 104; i_9_++) {
 	            int i_10_ = Npc.currentScene.getFloorDecorationHash(Player.worldLevel, i_8_, i_9_);
@@ -1947,10 +1922,8 @@ public class MovedStatics {
 	    return class40_sub5_sub14_sub2s;
 	}
 
-	public static ImageRGB[] method319(byte arg0) {
+	public static ImageRGB[] method319() {
 	    ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[anInt2581];
-	    if(arg0 != -62)
-	        return null;
 	    for(int i = 0; i < anInt2581; i++) {
 	        ImageRGB class40_sub5_sub14_sub4 = class40_sub5_sub14_sub4s[i] = new ImageRGB();
 	        class40_sub5_sub14_sub4.maxWidth = ItemDefinition.anInt2846;
@@ -1974,10 +1947,8 @@ public class MovedStatics {
 	    arg1.removeFocusListener(Class59.keyFocusListener);
 	}
 
-	public static void method450(byte arg0) {
+	public static void method450() {
 	    if (Player.headIconDrawType == 2) {
-	        if (arg0 >= -28)
-	            method445(-128);
 	        MovedStatics.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -baseX << 7) + Landscape.anInt1170, 4976905);
 	        if (ISAAC.anInt522 > -1 && pulseCycle % 20 < 10)
 	            aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);

@@ -6,7 +6,6 @@ import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.node.HashTable;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.tile.WallDecoration;
 
@@ -31,7 +30,7 @@ public class Class51 {
 
 
 
-    public static void method940(int arg0, String arg1, boolean arg2, String arg3) {
+    public static void method940(String arg1, boolean arg2, String arg3) {
         if(MovedStatics.clearScreen) {
             MovedStatics.clearScreen = false;
             ItemDefinition.drawWelcomeScreenGraphics();
@@ -39,7 +38,7 @@ public class Class51 {
             Class55.drawTabGraphics();
             ActorDefinition.drawMapBack();
             GenericTile.method943(ChatBox.tradeMode, WallDecoration.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
-            MovedStatics.method527(Player.currentTabId, arg0 + 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
+            MovedStatics.method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
             MovedStatics.showSidePanelRedrawnText = true;
             Class40_Sub3.showIconsRedrawnText = true;
             MovedStatics.showChatPanelRedrawnText = true;
@@ -47,7 +46,7 @@ public class Class51 {
         int i = 151;
         Class65.method1018();
         i -= 3;
-        WallDecoration.fontNormal.drawStringLeft(arg1, 257, i, arg0);
+        WallDecoration.fontNormal.drawStringLeft(arg1, 257, i, 0);
         WallDecoration.fontNormal.drawStringLeft(arg1, 256, i + -1, 16777215);
         if(arg3 != null) {
             i += 15;
@@ -58,7 +57,7 @@ public class Class51 {
             WallDecoration.fontNormal.drawStringLeft(arg3, 257, i, 0);
             WallDecoration.fontNormal.drawStringLeft(arg3, 256, i - 1, 16777215);
         }
-        Player.drawGameScreenGraphics(arg0 + 107);
+        Player.drawGameScreenGraphics(107);
     }
 
     public static void clearModelCache() {

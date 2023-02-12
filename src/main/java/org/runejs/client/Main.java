@@ -771,8 +771,8 @@ public class Main extends GameShell {
         ItemDefinition.method749(true);
         Class40_Sub5_Sub17_Sub6.method833(0, false);
         ItemDefinition.method749(false);
-        MovedStatics.method335((byte) 61);
-        MovedStatics.method1000(true);
+        MovedStatics.method335();
+        MovedStatics.method1000();
         if(!Player.cutsceneActive) {
             int i = Class65.cameraVertical;
             if(MovedStatics.secondaryCameraVertical / 256 > i) {
@@ -788,7 +788,7 @@ public class Main extends GameShell {
         if(!Player.cutsceneActive) {
             i = Projectile.method764((byte) -107);
         } else {
-            i = MovedStatics.method546(256);
+            i = MovedStatics.method546();
         }
         int i_1_ = Class12.cameraX;
         int i_2_ = ProducingGraphicsBuffer_Sub1.anInt2210;
@@ -830,7 +830,7 @@ public class Main extends GameShell {
         Npc.currentScene.render(Class12.cameraX, SceneCluster.cameraZ, MovedStatics.cameraY, Class26.anInt627, ProducingGraphicsBuffer_Sub1.anInt2210, i);
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404();
-        MovedStatics.method450((byte) -67);
+        MovedStatics.method450();
         ((Class35) Rasterizer3D.interface3).method425((byte) 6, MovedStatics.anInt199);
         KeyFocusListener.draw3dScreen();
 
@@ -850,7 +850,7 @@ public class Main extends GameShell {
         if(ISAAC.aBoolean519) {
             Class65.method1018();
             Rasterizer.resetPixels();
-            Class51.method940(0, English.loadingPleaseWait, false, null);
+            Class51.method940(English.loadingPleaseWait, false, null);
         }
 
         Player.drawGameScreenGraphics(110);
@@ -1018,7 +1018,7 @@ public class Main extends GameShell {
                 }
                 GameInterface.drawTabIcons = false;
                 Class40_Sub3.showIconsRedrawnText = true;
-                MovedStatics.method527(Player.currentTabId, 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
+                MovedStatics.method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
             }
             if(MovedStatics.redrawChatbox) {
                 Class40_Sub3.showIconsRedrawnText = true;
@@ -1062,7 +1062,7 @@ public class Main extends GameShell {
                 }
                 GameInterface.drawTabIcons = false;
                 Class40_Sub3.showIconsRedrawnText = true;
-                MovedStatics.method527(Player.currentTabId, 4, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
+                MovedStatics.method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
             }
             if(MovedStatics.redrawChatbox) {
                 Class40_Sub3.showIconsRedrawnText = true;
@@ -1259,7 +1259,7 @@ public class Main extends GameShell {
                 if(ISAAC.aBoolean519 && Class51.gameStatusCode == 30) {
                     MouseHandler.currentMouseButtonPressed = 0;
                     MouseHandler.clickType = 0;
-                    while(MovedStatics.method416((byte) -104)) {
+                    while(MovedStatics.method416()) {
                         /* empty */
                     }
                     for(int i = 0; i < Item.obfuscatedKeyStatus.length; i++)
@@ -1924,21 +1924,21 @@ public class Main extends GameShell {
                 if (Class37.anInt874 > PacketBuffer.anInt2231)
                     PacketBuffer.anInt2231 = Class37.anInt874;
                 int i = (-Class37.anInt874 + PacketBuffer.anInt2231) * 50 / PacketBuffer.anInt2231;
-                Class51.method940(0, English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.aClass1_698);
+                Class51.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.aClass1_698);
             } else if (ProducingGraphicsBuffer.anInt1634 == 2) {
                 if (IdentityKit.anInt2591 > GameObject.anInt3048)
                     GameObject.anInt3048 = IdentityKit.anInt2591;
                 int i = 50 * (-IdentityKit.anInt2591 + GameObject.anInt3048) / GameObject.anInt3048 + 50;
-                Class51.method940(0, English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.aClass1_698);
+                Class51.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.aClass1_698);
             } else
-                Class51.method940(0, English.loadingPleaseWait, false, null);
+                Class51.method940(English.loadingPleaseWait, false, null);
         } else if (Class51.gameStatusCode == 30) {
             drawGameScreen();
 
         } else if (Class51.gameStatusCode == 35) {
             method164();
         } else if (Class51.gameStatusCode == 40)
-            Class51.method940(0, English.connectionLost, false, English.pleaseWaitAttemptingToReestablish);
+            Class51.method940(English.connectionLost, false, English.pleaseWaitAttemptingToReestablish);
         Npc.anInt3294 = 0;
     }
 
@@ -2057,7 +2057,7 @@ public class Main extends GameShell {
         OverlayDefinition.gameServerPort = Class44.modewhere != 0 ? Player.worldId + 40000 : Configuration.GAME_PORT;
         currentPort = OverlayDefinition.gameServerPort;
 
-        MovedStatics.method997(47);
+        MovedStatics.method997();
         GameInterface.method642(MouseHandler.gameCanvas, -10);
         RSRuntimeException.method1056(MouseHandler.gameCanvas, (byte) 70);
         RSCanvas.anInt57 = Signlink.anInt737;

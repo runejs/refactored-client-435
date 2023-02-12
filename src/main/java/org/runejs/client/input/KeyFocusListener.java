@@ -275,10 +275,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
 
     }
 
-    public static String method956(int arg0, Buffer arg1) {
-        if (arg0 < 62) {
-            aLinkedList_1278 = null;
-        }
+    public static String method956(Buffer arg1) {
         return MovedStatics.method307(arg1, -1, 32767);
     }
 

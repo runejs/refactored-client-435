@@ -520,7 +520,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         }
     }
 
-    public boolean method610(int arg0, int arg1) {
+    public boolean method610(int arg0) {
         if(objectTypes != null) {
             for(int i = 0; objectTypes.length > i; i++) {
                 if(objectTypes[i] == arg0) {
