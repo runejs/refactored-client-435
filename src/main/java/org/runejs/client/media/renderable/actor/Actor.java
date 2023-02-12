@@ -264,7 +264,7 @@ public abstract class Actor extends Renderable {
 
 
 
-    public static void method789(int chunkLocalX, int junk, int chunkY, int chunkX, int chunkLocalY, int level) {
+    public static void method789(int chunkLocalX, int chunkY, int chunkX, int chunkLocalY, int level) {
         if(chunkX != Class51.regionX || chunkY != Class17.regionY || MovedStatics.onBuildTimePlane != level && VertexNormal.lowMemory) {
             MovedStatics.onBuildTimePlane = level;
             Class51.regionX = chunkX;
@@ -277,7 +277,7 @@ public abstract class Actor extends Renderable {
             int i_33_ = MovedStatics.baseX;
             MovedStatics.baseX = (chunkX - 6) * 8;
             int i_34_ = MovedStatics.baseX + -i_33_;
-            if(junk != -1000)
+            if(-1000 != -1000)
                 method781(14, 98, 96, -85, -118, 89);
             i_33_ = MovedStatics.baseX;
             Class26.baseY = (-6 + chunkY) * 8;
