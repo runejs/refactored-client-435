@@ -1836,7 +1836,7 @@ public class MovedStatics {
 	        chatboxLineOffsets = Rasterizer3D.setLineOffsets(chatboxLineOffsets);
 	    }
 
-	public static void method299(byte arg0, int arg1) {
+	public static void method299(int arg1) {
 	    int[] is = minimapImage.pixels;
 	    int i = is.length;
 	    for(int i_0_ = 0; i > i_0_; i_0_++)
@@ -1863,8 +1863,6 @@ public class MovedStatics {
 	        }
 	    }
 	    GameObject.minimapHintCount = 0;
-	    if(arg0 < 24)
-	        Player.trackedPlayerAppearanceCache = null;
 	    for(int i_8_ = 0; i_8_ < 104; i_8_++) {
 	        for(int i_9_ = 0; i_9_ < 104; i_9_++) {
 	            int i_10_ = Npc.currentScene.getFloorDecorationHash(Player.worldLevel, i_8_, i_9_);
