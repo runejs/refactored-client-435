@@ -1743,7 +1743,7 @@ public class Main extends GameShell {
                         Class40_Sub3.loginStatus = 9;
                     } else {
                         if (responseCode == 15 && Class51.gameStatusCode == 40) {
-                            Class37.method434(0);
+                            Class37.method434();
                             return;
                         }
                         if (responseCode == 23 && OverlayDefinition.anInt2321 < 1) {
