@@ -389,7 +389,7 @@ public class ISAAC {
         for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst(-4)) {
             if(class40_sub3.anInt2031 == -1) {
                 class40_sub3.anInt2033 = 0;
-                Class39.method451(class40_sub3, 19813);
+                Class39.method451(class40_sub3);
             } else
                 class40_sub3.unlink();
         }

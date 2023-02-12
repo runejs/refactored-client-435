@@ -182,6 +182,7 @@ public class Class37 {
     }
 
     public static boolean method438(int areaId, int arg1) {
+        // (Jameskmonger) something to do with right clicking
         if(areaId == 0 && arg1 == MovedStatics.anInt573)
             return true;
         if(areaId == 1 && FloorDecoration.anInt614 == arg1)

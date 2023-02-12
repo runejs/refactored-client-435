@@ -137,7 +137,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
             class40_sub3.anInt2027 = arg7;
             class40_sub3.anInt2018 = arg5;
             class40_sub3.anInt2038 = arg6;
-            Class39.method451(class40_sub3, 19813);
+            Class39.method451(class40_sub3);
             LinkedList.aLinkedList_1064.addLast(class40_sub3, 97);
         }
         class40_sub3.anInt2017 = objectId;
