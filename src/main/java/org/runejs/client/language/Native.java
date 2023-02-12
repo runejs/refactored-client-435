@@ -47,10 +47,10 @@ public class Native {
     public static String aClass1_2114 = "hitmarks";
     public static String aClass1_638 = "invback";
     public static String MAP_NAME_PREFIX_L = "l";
-    public static String aClass1_183 = "mapdots";
-    public static String aClass1_1427 = "mapedge";
-    public static String aClass1_203 = "mapmarker";
-    public static String aClass1_671 ="mapscene";
+    public static String mapDots = "mapdots";
+    public static String mapEdge = "mapedge";
+    public static String mapMarker = "mapmarker";
+    public static String mapScene ="mapscene";
     public static String aClass1_881 = "mod_icons";
     public static String aClass1_28 = "null";
     public static String aClass1_2109 = "overlay_multiway";

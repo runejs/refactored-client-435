@@ -177,13 +177,13 @@ public class Class40_Sub3 extends Node {
             else
                 AnimationSequence.minimapCompass = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.compass, (byte) 21, "");
             if (MovedStatics.minimapEdge == null)
-                MovedStatics.minimapEdge = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.aClass1_1427, (byte) 21, "");
+                MovedStatics.minimapEdge = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.mapEdge, (byte) 21, "");
             else
                 i++;
             if (MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301 != null)
                 i++;
             else
-                MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301 = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.aClass1_671, "");
+                MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301 = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.mapScene, "");
             if (MovedStatics.aClass40_Sub5_Sub14_Sub4Array296 == null)
                 MovedStatics.aClass40_Sub5_Sub14_Sub4Array296 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
             else
@@ -209,7 +209,7 @@ public class Class40_Sub3 extends Node {
             else
                 i++;
             if (aClass40_Sub5_Sub14_Sub4Array2019 == null)
-                aClass40_Sub5_Sub14_Sub4Array2019 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_203, "");
+                aClass40_Sub5_Sub14_Sub4Array2019 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapMarker, "");
             else
                 i++;
             if (Class37.cursorCross != null)
@@ -217,7 +217,7 @@ public class Class40_Sub3 extends Node {
             else
                 Class37.cursorCross = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_2179, "");
             if (MovedStatics.mapDots == null)
-                MovedStatics.mapDots = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_183, "");
+                MovedStatics.mapDots = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapDots, "");
             else
                 i++;
             if (MovedStatics.aClass40_Sub5_Sub14_Sub2Array215 == null)
