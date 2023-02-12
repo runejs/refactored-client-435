@@ -36,7 +36,7 @@ public class Class43 {
         }
     }
 
-    public static void drawTabArea(int arg0) {
+    public static void drawTabArea() {
         MovedStatics.showSidePanelRedrawnText = true;
         MovedStatics.method996();
         if(GameInterface.tabAreaInterfaceId != -1) {
@@ -50,12 +50,10 @@ public class Class43 {
         }
         if(MovedStatics.menuOpen && Projectile.menuScreenArea == 1) {
             if(MovedStatics.anInt848 == 1)
-                method398(-2);
+                method398();
             else if(ScreenController.frameMode == ScreenMode.FIXED)
                 MovedStatics.drawMenu(0,0);
         }
-        if(arg0 >= -22)
-            cameraYawOffset = 80;
 
         if(ScreenController.frameMode == ScreenMode.FIXED) {
             Class55.drawTabGraphics();
@@ -154,7 +152,7 @@ public class Class43 {
         }
     }
 
-    public static void method398(int arg0) {
+    public static void method398() {
         String class1 = null;
         for(int i = 0; ActorDefinition.menuActionRow > i; i++) {
             if(Landscape.menuActionTexts[i].contains(Native.lightRed)) {
@@ -175,7 +173,7 @@ public class Class43 {
                 i_0_ = 0;
             int i_3_ = 6116423;
             Rasterizer.drawFilledRectangle(i_0_, i_2_, i, i_1_, i_3_);
-            Rasterizer.drawFilledRectangle(i_0_ + 1, i_2_ + 1, arg0 + i, 16, 0);
+            Rasterizer.drawFilledRectangle(i_0_ + 1, i_2_ + 1, -2 + i, 16, 0);
             Rasterizer.drawUnfilledRectangle(i_0_ + 1, 18 + i_2_, -2 + i, i_1_ + -19, 0);
             TypeFace.fontBold.drawShadowedString(class1, 3 + i_0_, 14 + i_2_, false, i_3_);
             int i_4_ = Class13.mouseX;

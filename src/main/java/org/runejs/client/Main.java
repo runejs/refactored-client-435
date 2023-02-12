@@ -967,7 +967,7 @@ public class Main extends GameShell {
             if(SceneTile.activeInterfaceType == 2) {
                 GameInterface.redrawTabArea = true;
             }
-            Class43.drawTabArea(-29);
+            Class43.drawTabArea();
 
             if(GameInterface.chatboxInterfaceId != -1) {
                 boolean bool = Renderable.handleSequences(GameInterface.chatboxInterfaceId);
@@ -1041,7 +1041,7 @@ public class Main extends GameShell {
             method353((byte) -114);
             ChatBox.renderChatbox();
 
-            Class43.drawTabArea(-29);
+            Class43.drawTabArea();
 
             Class37.renderMinimap();
 
