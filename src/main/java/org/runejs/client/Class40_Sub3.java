@@ -46,7 +46,7 @@ public class Class40_Sub3 extends Node {
     public int anInt2039;
 
 
-    public static void startup(int arg0) {
+    public static void startup() {
         if (MovedStatics.loadingPercent == 0) {
             Npc.currentScene = new Scene(MovedStatics.tile_height);
             for (int i = 0; i < 4; i++)
@@ -156,10 +156,10 @@ public class Class40_Sub3 extends Node {
                 UnderlayDefinition.initializeUnderlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 initializeIdentityKitDefinitionCache(3, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
                 initializeGameObjectDefinitionCache(28987, CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
-                Main.method357(CacheArchive.modelCacheArchive, arg0 ^ ~0x2a85, CacheArchive.gameDefinitionsCacheArchive);
+                Main.method357(CacheArchive.modelCacheArchive, 100 ^ ~0x2a85, CacheArchive.gameDefinitionsCacheArchive);
                 MovedStatics.initializeItemDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, MovedStatics.membersWorld, CacheArchive.modelCacheArchive);
                 MovedStatics.initializeAnimationCaches(CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.skeletonCacheArchive);
-                Class55.method966(arg0 ^ 0x38, CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
+                Class55.method966(100 ^ 0x38, CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
                 VarbitDefinition.initializeVarbitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 VarPlayerDefinition.initializeVarPlayerDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 GameInterface.createInterfaceMemoryBuffers();
@@ -297,8 +297,6 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.anInt1607 = 100;
             }
         } else {
-            if (arg0 != 100)
-                aClass40_Sub5_Sub14_Sub4Array2019 = null;
             if (MovedStatics.loadingPercent == 140)
                 MovedStatics.processGameStatus(10);
         }

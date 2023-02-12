@@ -1868,10 +1868,10 @@ public class Main extends GameShell {
         MovedStatics.method1015();
 
         if (Class51.gameStatusCode == 0) {
-            Class40_Sub3.startup(100);
+            Class40_Sub3.startup();
             Class60.method992();
         } else if (Class51.gameStatusCode == 5) {
-            Class40_Sub3.startup(100);
+            Class40_Sub3.startup();
             Class60.method992();
         } else if (Class51.gameStatusCode == 10) {
             Class60.updateLogin();
