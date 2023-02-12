@@ -302,19 +302,17 @@ public class MovedStatics {
     }
 
     public static void method1000() {
-        if (true) {
-            for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.peekFirst(); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.pollFirst()) {
-                if (Player.worldLevel == class40_sub5_sub17_sub6.anInt3239 && !class40_sub5_sub17_sub6.aBoolean3237) {
-                    if (pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
-                        class40_sub5_sub17_sub6.method834(8076, anInt199);
-                        if (class40_sub5_sub17_sub6.aBoolean3237)
-                            class40_sub5_sub17_sub6.unlink();
-                        else
-                            Npc.currentScene.method134(class40_sub5_sub17_sub6.anInt3239, class40_sub5_sub17_sub6.anInt3244, class40_sub5_sub17_sub6.anInt3235, class40_sub5_sub17_sub6.anInt3231, 60, class40_sub5_sub17_sub6, 0, -1, false);
-                    }
-                } else
-                    class40_sub5_sub17_sub6.unlink();
-            }
+        for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.peekFirst(); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.pollFirst()) {
+            if (Player.worldLevel == class40_sub5_sub17_sub6.anInt3239 && !class40_sub5_sub17_sub6.aBoolean3237) {
+                if (pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
+                    class40_sub5_sub17_sub6.method834(8076, anInt199);
+                    if (class40_sub5_sub17_sub6.aBoolean3237)
+                        class40_sub5_sub17_sub6.unlink();
+                    else
+                        Npc.currentScene.method134(class40_sub5_sub17_sub6.anInt3239, class40_sub5_sub17_sub6.anInt3244, class40_sub5_sub17_sub6.anInt3235, class40_sub5_sub17_sub6.anInt3231, 60, class40_sub5_sub17_sub6, 0, -1, false);
+                }
+            } else
+                class40_sub5_sub17_sub6.unlink();
         }
     }
 
@@ -400,31 +398,29 @@ public class MovedStatics {
 
     public static void method335() {
         Projectile projectile = (Projectile) Class43.projectileQueue.peekFirst();
-        if (true) {
-            for (/**/; projectile != null; projectile = (Projectile) Class43.projectileQueue.pollFirst()) {
-                if (Player.worldLevel == projectile.anInt2981 && pulseCycle <= projectile.endCycle) {
-                    if (projectile.delay <= pulseCycle) {
-                        if (projectile.entityIndex > 0) {
-                            Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[-1 + projectile.entityIndex];
-                            if (class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.worldX >= 0 && class40_sub5_sub17_sub4_sub2.worldX < 13312 && class40_sub5_sub17_sub4_sub2.worldY >= 0 && class40_sub5_sub17_sub4_sub2.worldY < 13312)
-                                projectile.trackTarget(pulseCycle, 61 + -61, class40_sub5_sub17_sub4_sub2.worldY, Class37.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub2.worldX, class40_sub5_sub17_sub4_sub2.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub2.worldX);
-                        }
-                        if (projectile.entityIndex < 0) {
-                            int i = -1 + -projectile.entityIndex;
-                            Player class40_sub5_sub17_sub4_sub1;
-                            if (i != PlayerAppearance.anInt708)
-                                class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i];
-                            else
-                                class40_sub5_sub17_sub4_sub1 = Player.localPlayer;
-                            if (class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.worldX >= 0 && class40_sub5_sub17_sub4_sub1.worldX < 13312 && class40_sub5_sub17_sub4_sub1.worldY >= 0 && class40_sub5_sub17_sub4_sub1.worldY < 13312)
-                                projectile.trackTarget(pulseCycle, 0, class40_sub5_sub17_sub4_sub1.worldY, Class37.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub1.worldX, class40_sub5_sub17_sub4_sub1.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub1.worldX);
-                        }
-                        projectile.move(anInt199);
-                        Npc.currentScene.method134(Player.worldLevel, (int) projectile.currentX, (int) projectile.currentY, (int) projectile.currentHeight, 60, projectile, projectile.anInt3013, -1, false);
+        for (/**/; projectile != null; projectile = (Projectile) Class43.projectileQueue.pollFirst()) {
+            if (Player.worldLevel == projectile.anInt2981 && pulseCycle <= projectile.endCycle) {
+                if (projectile.delay <= pulseCycle) {
+                    if (projectile.entityIndex > 0) {
+                        Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[-1 + projectile.entityIndex];
+                        if (class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.worldX >= 0 && class40_sub5_sub17_sub4_sub2.worldX < 13312 && class40_sub5_sub17_sub4_sub2.worldY >= 0 && class40_sub5_sub17_sub4_sub2.worldY < 13312)
+                            projectile.trackTarget(pulseCycle, 61 + -61, class40_sub5_sub17_sub4_sub2.worldY, Class37.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub2.worldX, class40_sub5_sub17_sub4_sub2.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub2.worldX);
                     }
-                } else
-                    projectile.unlink();
-            }
+                    if (projectile.entityIndex < 0) {
+                        int i = -1 + -projectile.entityIndex;
+                        Player class40_sub5_sub17_sub4_sub1;
+                        if (i != PlayerAppearance.anInt708)
+                            class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i];
+                        else
+                            class40_sub5_sub17_sub4_sub1 = Player.localPlayer;
+                        if (class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.worldX >= 0 && class40_sub5_sub17_sub4_sub1.worldX < 13312 && class40_sub5_sub17_sub4_sub1.worldY >= 0 && class40_sub5_sub17_sub4_sub1.worldY < 13312)
+                            projectile.trackTarget(pulseCycle, 0, class40_sub5_sub17_sub4_sub1.worldY, Class37.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub1.worldX, class40_sub5_sub17_sub4_sub1.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub1.worldX);
+                    }
+                    projectile.move(anInt199);
+                    Npc.currentScene.method134(Player.worldLevel, (int) projectile.currentX, (int) projectile.currentY, (int) projectile.currentHeight, 60, projectile, projectile.anInt3013, -1, false);
+                }
+            } else
+                projectile.unlink();
         }
     }
 
@@ -622,17 +618,15 @@ public class MovedStatics {
     }
 
     public static void method838(long arg1) {
-        if (true) {
-            for (int i = 0; i < anInt1008; i++) {
-                if (Player.ignores[i] == arg1) {
-                    GameInterface.redrawTabArea = true;
-                    anInt1008--;
-                    for (int i_16_ = i; anInt1008 > i_16_; i_16_++)
-                        Player.ignores[i_16_] = Player.ignores[1 + i_16_];
-                    SceneCluster.packetBuffer.putPacket(28);
-                    SceneCluster.packetBuffer.putLongBE(arg1);
-                    break;
-                }
+        for (int i = 0; i < anInt1008; i++) {
+            if (Player.ignores[i] == arg1) {
+                GameInterface.redrawTabArea = true;
+                anInt1008--;
+                for (int i_16_ = i; anInt1008 > i_16_; i_16_++)
+                    Player.ignores[i_16_] = Player.ignores[1 + i_16_];
+                SceneCluster.packetBuffer.putPacket(28);
+                SceneCluster.packetBuffer.putLongBE(arg1);
+                break;
             }
         }
     }
