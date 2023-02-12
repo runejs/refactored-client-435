@@ -72,7 +72,7 @@ public class Native {
     public static String aClass1_2593 = "K";
     public static String cursorCross = "cross";
     public static String imgBackbase2 = "backbase2";
-    public static String aClass1_2423 = "(100%)";
+    public static String percent100Parentheses = "(100%)";
     public static String logo = "logo";
     public static String imgBacktop1 = "backtop1";
     public static String imgBackhmid1 = "backhmid1";
