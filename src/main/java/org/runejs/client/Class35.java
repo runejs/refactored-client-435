@@ -74,7 +74,7 @@ public class Class35 implements Interface3 {
         anInt1753 = anInt1752;
     }
 
-    public int[] getTexturePixels(int junk, int textureId) {
+    public int[] getTexturePixels(int textureId) {
         Texture texture = textures[textureId];
         if (texture != null) {
             if (texture.pixels_maybe != null) {
