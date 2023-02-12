@@ -2025,7 +2025,7 @@ public class Main extends GameShell {
             MovedStatics.gameServerSocket = null;
         }
         ItemDefinition.method744();
-        Class13.method249(true);
+        Class13.method249();
         MusicSystem.syncedStop(false);
         SoundSystem.stop();
         UpdateServer.killUpdateServerSocket();

@@ -123,9 +123,7 @@ public class Class13 {
         return is;
     }
 
-    public static void method249(boolean arg0) {
-        if(!arg0)
-            generateHslBitset(-58, 116, 98);
+    public static void method249() {
         if(GameObject.frame != null) {
             synchronized(GameObject.frame) {
                 GameObject.frame = null;
