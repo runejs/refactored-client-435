@@ -62,7 +62,7 @@ public class Native {
     public static String aClass1_2438 = "scroll:";
     public static String scrollbar = "scrollbar";
     public static String sideIcons = "sideicons";
-    public static String aClass1_1213 = " @whi@(";
+    public static String whiteOpeningParenthesis = " @whi@(";
     public static String headiconsHint = "headicons_hint";
     public static String titleButton = "titlebutton";
     public static String COLON_CHARACTER = ": ";
