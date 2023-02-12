@@ -307,20 +307,18 @@ public class MovedStatics {
         }
     }
 
-    public static void method1000(boolean arg0) {
-        if (arg0) {
-            for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.peekFirst((byte) -90); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.pollFirst(-4)) {
-                if (Player.worldLevel == class40_sub5_sub17_sub6.anInt3239 && !class40_sub5_sub17_sub6.aBoolean3237) {
-                    if (pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
-                        class40_sub5_sub17_sub6.method834(8076, anInt199);
-                        if (class40_sub5_sub17_sub6.aBoolean3237)
-                            class40_sub5_sub17_sub6.unlink();
-                        else
-                            Npc.currentScene.method134(class40_sub5_sub17_sub6.anInt3239, class40_sub5_sub17_sub6.anInt3244, class40_sub5_sub17_sub6.anInt3235, class40_sub5_sub17_sub6.anInt3231, 60, class40_sub5_sub17_sub6, 0, -1, false);
-                    }
-                } else
-                    class40_sub5_sub17_sub6.unlink();
-            }
+    public static void method1000() {
+        for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.peekFirst((byte) -90); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.pollFirst(-4)) {
+            if (Player.worldLevel == class40_sub5_sub17_sub6.anInt3239 && !class40_sub5_sub17_sub6.aBoolean3237) {
+                if (pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
+                    class40_sub5_sub17_sub6.method834(8076, anInt199);
+                    if (class40_sub5_sub17_sub6.aBoolean3237)
+                        class40_sub5_sub17_sub6.unlink();
+                    else
+                        Npc.currentScene.method134(class40_sub5_sub17_sub6.anInt3239, class40_sub5_sub17_sub6.anInt3244, class40_sub5_sub17_sub6.anInt3235, class40_sub5_sub17_sub6.anInt3231, 60, class40_sub5_sub17_sub6, 0, -1, false);
+                }
+            } else
+                class40_sub5_sub17_sub6.unlink();
         }
     }
 

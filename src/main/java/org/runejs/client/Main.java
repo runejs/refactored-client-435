@@ -772,7 +772,7 @@ public class Main extends GameShell {
         Class40_Sub5_Sub17_Sub6.method833(0, false);
         ItemDefinition.method749(false);
         MovedStatics.method335();
-        MovedStatics.method1000(true);
+        MovedStatics.method1000();
         if(!Player.cutsceneActive) {
             int i = Class65.cameraVertical;
             if(MovedStatics.secondaryCameraVertical / 256 > i) {
