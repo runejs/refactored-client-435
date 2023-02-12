@@ -1908,7 +1908,7 @@ public class Main extends GameShell {
             MovedStatics.method311(MouseHandler.gameCanvas);
             Class55.method965(32, MouseHandler.gameCanvas);
             this.setCanvas();
-            GameInterface.method642(MouseHandler.gameCanvas, -10);
+            GameInterface.method642(MouseHandler.gameCanvas);
             RSRuntimeException.method1056(MouseHandler.gameCanvas, (byte) 33);
         }
         if (Class51.gameStatusCode == 0)
@@ -2058,7 +2058,7 @@ public class Main extends GameShell {
         currentPort = OverlayDefinition.gameServerPort;
 
         MovedStatics.method997();
-        GameInterface.method642(MouseHandler.gameCanvas, -10);
+        GameInterface.method642(MouseHandler.gameCanvas);
         RSRuntimeException.method1056(MouseHandler.gameCanvas, (byte) 70);
         RSCanvas.anInt57 = Signlink.anInt737;
         try {

@@ -234,10 +234,7 @@ public class GameInterface extends CachedNode {
     }
 
 
-    public static void method642(Component arg0, int arg1) {
-        if(arg1 != -10) {
-            method639(-106);
-        }
+    public static void method642(Component arg0) {
         Method method = Signlink.aMethod729;
         if(method != null) {
             try {
