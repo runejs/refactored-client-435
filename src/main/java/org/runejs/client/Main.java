@@ -788,7 +788,7 @@ public class Main extends GameShell {
         if(!Player.cutsceneActive) {
             i = Projectile.method764((byte) -107);
         } else {
-            i = MovedStatics.method546(256);
+            i = MovedStatics.method546();
         }
         int i_1_ = Class12.cameraX;
         int i_2_ = ProducingGraphicsBuffer_Sub1.anInt2210;

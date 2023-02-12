@@ -324,12 +324,10 @@ public class MovedStatics {
         }
     }
 
-    public static int method546(int arg0) {
+    public static int method546() {
         if (!Configuration.ROOFS_ENABLED) {
             return Player.worldLevel;
         }
-        if (arg0 != 256)
-            anInt2280 = 44;
         int i = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, MovedStatics.cameraY);
         if (i + -SceneCluster.cameraZ < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][Class12.cameraX >> 7][MovedStatics.cameraY >> 7] & 0x4) != 0)
             return Player.worldLevel;
