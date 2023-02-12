@@ -91,7 +91,7 @@ public class GenericTile {
         if(!ImageRGB.spriteExists(arg3, arg1, arg2))
             return null;
         int i = -59 % ((-60 - arg0) / 34);
-        return MovedStatics.method319((byte) -62);
+        return MovedStatics.method319();
     }
 
     public static void method945(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {

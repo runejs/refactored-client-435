@@ -1924,10 +1924,8 @@ public class MovedStatics {
 	    return class40_sub5_sub14_sub2s;
 	}
 
-	public static ImageRGB[] method319(byte arg0) {
+	public static ImageRGB[] method319() {
 	    ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[anInt2581];
-	    if(arg0 != -62)
-	        return null;
 	    for(int i = 0; i < anInt2581; i++) {
 	        ImageRGB class40_sub5_sub14_sub4 = class40_sub5_sub14_sub4s[i] = new ImageRGB();
 	        class40_sub5_sub14_sub4.maxWidth = ItemDefinition.anInt2846;
