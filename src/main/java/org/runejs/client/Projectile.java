@@ -161,7 +161,7 @@ public class Projectile extends Renderable {
 
     public static void method763(Component arg0, CacheArchive arg2) {
         if(!MovedStatics.aBoolean2083) {
-            FloorDecoration.inventoryBackgroundImage = Main.method359(Native.aClass1_638, Native.aClass1_305, arg2);
+            FloorDecoration.inventoryBackgroundImage = Main.method359(Native.invback, Native.aClass1_305, arg2);
             Class44.chatboxBackgroundImage = Main.method359(Native.chatback, Native.aClass1_305, arg2);
             MovedStatics.minimapBackgroundImage = Main.method359(Native.mapBack, Native.aClass1_305, arg2);
             Class57.bottomChatBack = Main.method359(Native.imgBackbase1, Native.aClass1_305, arg2);
@@ -206,9 +206,9 @@ public class Projectile extends Renderable {
             image = HuffmanEncoding.method1028(arg2, Native.imgBackhmid2, (byte) 21, Native.aClass1_305);
             Class17.chatboxTop = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
-            MovedStatics.aClass40_Sub5_Sub14_Sub2_1315 = Main.method359(Native.aClass1_2093, Native.aClass1_305, arg2);
-            GameShell.aClass40_Sub5_Sub14_Sub2_1 = Main.method359(Native.aClass1_3254, Native.aClass1_305, arg2);
-            Class35.aClass40_Sub5_Sub14_Sub2_1744 = Main.method359(Native.aClass1_1517, Native.aClass1_305, arg2);
+            MovedStatics.aClass40_Sub5_Sub14_Sub2_1315 = Main.method359(Native.redstone1, Native.aClass1_305, arg2);
+            GameShell.aClass40_Sub5_Sub14_Sub2_1 = Main.method359(Native.redstone2, Native.aClass1_305, arg2);
+            Class35.aClass40_Sub5_Sub14_Sub2_1744 = Main.method359(Native.redstone3, Native.aClass1_305, arg2);
             MovedStatics.aClass40_Sub5_Sub14_Sub2_2105 = MovedStatics.aClass40_Sub5_Sub14_Sub2_1315.method691();
             MovedStatics.aClass40_Sub5_Sub14_Sub2_2105.flipHorizontal();
             WallDecoration.aClass40_Sub5_Sub14_Sub2_1270 = GameShell.aClass40_Sub5_Sub14_Sub2_1.method691();

@@ -45,7 +45,7 @@ public class Native {
     public static String headiconsPK = "headicons_pk";
     public static String headiconsPrayer ="headicons_prayer";
     public static String hitmarks = "hitmarks";
-    public static String aClass1_638 = "invback";
+    public static String invback = "invback";
     public static String MAP_NAME_PREFIX_L = "l";
     public static String mapDots = "mapdots";
     public static String mapEdge = "mapedge";
@@ -56,8 +56,8 @@ public class Native {
     public static String overlayMultiway = "overlay_multiway";
     public static String fontP11Full = "p11_full";
     public static String fontP12Full = "p12_full";
-    public static String aClass1_3254 = "redstone2";
-    public static String aClass1_1517 = "redstone3";
+    public static String redstone2 = "redstone2";
+    public static String redstone3 = "redstone3";
     public static String titleSong = "scape main";
     public static String aClass1_2438 = "scroll:";
     public static String scrollbar = "scrollbar";
@@ -85,7 +85,7 @@ public class Native {
     public static String MAP_NAME_PREFIX_M = "m";
     public static String comma = ",";
     public static String percentFive = "%5";
-    public static String aClass1_2093 = "redstone1";
+    public static String redstone1 = "redstone1";
     public static String percentDns = "%dns";
     public static String period = ".";
     public static String compass = "compass";

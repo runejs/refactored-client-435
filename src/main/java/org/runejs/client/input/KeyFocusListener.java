@@ -214,7 +214,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
 
     public static int method955(CacheArchive arg0) {
         int i = 0;
-        if (arg0.method194(Native.aClass1_638, Native.aClass1_305)) {
+        if (arg0.method194(Native.invback, Native.aClass1_305)) {
             i++;
         }
         if (arg0.method194(Native.chatback, Native.aClass1_305)) {
@@ -259,13 +259,13 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (arg0.method194(Native.imgBackhmid2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_2093, Native.aClass1_305)) {
+        if (arg0.method194(Native.redstone1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_3254, Native.aClass1_305)) {
+        if (arg0.method194(Native.redstone2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_1517, Native.aClass1_305)) {
+        if (arg0.method194(Native.redstone3, Native.aClass1_305)) {
             i++;
         }
         if (arg0.method194(Native.sideIcons, Native.aClass1_305)) {
