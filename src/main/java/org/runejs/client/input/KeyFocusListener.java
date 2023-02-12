@@ -223,40 +223,40 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (arg0.method194(Native.mapBack, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_1395, Native.aClass1_305)) {
+        if (arg0.method194(Native.imgBackbase1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_256, Native.aClass1_305)) {
+        if (arg0.method194(Native.imgBackbase2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_338, Native.aClass1_305)) {
+        if (arg0.method194(Native.imgBackhmid1, Native.aClass1_305)) {
             i++;
         }
         if (arg0.method194(Native.imgBackleft1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_1024, Native.aClass1_305)) {
+        if (arg0.method194(Native.imgBackleft2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_281, Native.aClass1_305)) {
+        if (arg0.method194(Native.imgBackright1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.backright2, Native.aClass1_305)) {
+        if (arg0.method194(Native.imgBackright2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_1788, Native.aClass1_305)) {
+        if (arg0.method194(Native.imgBacktop1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_1374, Native.aClass1_305)) {
+        if (arg0.method194(Native.imgBackvmid1, Native.aClass1_305)) {
             i++;
         }
         if (arg0.method194(Native.aClass1_2588, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_196, Native.aClass1_305)) {
+        if (arg0.method194(Native.imgBackvmid3, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.aClass1_304, Native.aClass1_305)) {
+        if (arg0.method194(Native.imgBackhmid2, Native.aClass1_305)) {
             i++;
         }
         if (arg0.method194(Native.aClass1_2093, Native.aClass1_305)) {

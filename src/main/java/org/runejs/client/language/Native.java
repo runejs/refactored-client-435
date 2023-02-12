@@ -34,12 +34,12 @@ public class Native {
     public static String MAP_NAME_UNDERSCORE = "_";
     public static RSString supportedCharacters = RSString.CreateString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y-_=)0[*U]*W;:(W@(S*X,<.>)4?*6*V ");
     public static String aClass1_1921 = "b12_full";
-    public static String aClass1_1395 = "backbase1";
-    public static String aClass1_304 = "backhmid2";
+    public static String imgBackbase1 = "backbase1";
+    public static String imgBackhmid2 = "backhmid2";
     public static String imgBackleft1 = "backleft1";
-    public static String aClass1_1024 = "backleft2";
-    public static String aClass1_281 = "backright1";
-    public static String aClass1_196 = "backvmid3";
+    public static String imgBackleft2 = "backleft2";
+    public static String imgBackright1 = "backright1";
+    public static String imgBackvmid3 = "backvmid3";
     public static String chatback = "chatback";
     public static String aClass1_1019 = "flash1:";
     public static String aClass1_2161 = "headicons_pk";
@@ -71,11 +71,11 @@ public class Native {
     public static String aClass1_2588 = "backvmid2";
     public static String aClass1_2593 = "K";
     public static String aClass1_2179 = "cross";
-    public static String aClass1_256 = "backbase2";
+    public static String imgBackbase2 = "backbase2";
     public static String aClass1_2423 = "(100%)";
     public static String logo = "logo";
-    public static String aClass1_1788 = "backtop1";
-    public static String aClass1_338 = "backhmid1";
+    public static String imgBacktop1 = "backtop1";
+    public static String imgBackhmid1 = "backhmid1";
     public static String runes = "runes";
     public static String titleBox = "titlebox";
     public static String titleImage = "title.jpg";
@@ -94,11 +94,11 @@ public class Native {
     public static String emptyString = "";
     public static String mapFunction = "mapfunction";
     public static String selectedItemName = null;
-    public static String aClass1_1374 = "backvmid1";
+    public static String imgBackvmid1 = "backvmid1";
     public static String aClass1_478 = "*";
     public static String selectedSpellName = null;
     public static String huffman = "huffman";
-    public static String backright2 = "backright2";
+    public static String imgBackright2 = "backright2";
     public static String clickToContinueString = null;
     public static String cmd_hiddenbuttontest = "::hiddenbuttontest";
 
