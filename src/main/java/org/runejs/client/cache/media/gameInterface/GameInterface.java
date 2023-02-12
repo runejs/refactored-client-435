@@ -942,7 +942,7 @@ public class GameInterface extends CachedNode {
                             SceneCluster.packetBuffer.putPacket(151);
                             SceneCluster.packetBuffer.putShortLE(npcIdx);
                         } else {
-                            ChatBox.addChatMessage("", gameInterface.itemAmount + Native.aClass1_1536 + ItemDefinition.forId(npcIdx, 10).name, 0);
+                            ChatBox.addChatMessage("", gameInterface.itemAmount + Native.amountSeparatorX + ItemDefinition.forId(npcIdx, 10).name, 0);
                         }
                     }
                     if(action == 42) {
@@ -1072,7 +1072,7 @@ public class GameInterface extends CachedNode {
                             SceneCluster.packetBuffer.putPacket(151);
                             SceneCluster.packetBuffer.putShortLE(npcIdx);
                         } else {
-                            ChatBox.addChatMessage("", gameInterface.itemAmounts[i] + Native.aClass1_1536 + ItemDefinition.forId(npcIdx, 10).name, 0);
+                            ChatBox.addChatMessage("", gameInterface.itemAmounts[i] + Native.amountSeparatorX + ItemDefinition.forId(npcIdx, 10).name, 0);
                         }
                         GenericTile.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;

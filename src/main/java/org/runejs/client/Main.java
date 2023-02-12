@@ -285,7 +285,7 @@ public class Main extends GameShell {
                                 if (text == null)
                                     text = "null";
                                 if (itemDefinition.stackable == 1 || gameInterface.itemAmount != 1)
-                                    text = text + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmount, (byte) -109);
+                                    text = text + Native.amountPrefixX + LinkedList.method903(gameInterface.itemAmount, (byte) -109);
                             }
                             if (gameInterface.actionType == 6 && MovedStatics.lastContinueTextWidgetId == gameInterface.id) {
                                 textColor = gameInterface.textColor;
@@ -465,7 +465,7 @@ public class Main extends GameShell {
                                         if (itemName == null)
                                             itemName = "null";
                                         if (itemDefinition.stackable == 1 || gameInterface.itemAmounts[itemSlot] != 1)
-                                            itemName = itemName + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmounts[itemSlot], (byte) -105);
+                                            itemName = itemName + Native.amountPrefixX + LinkedList.method903(gameInterface.itemAmounts[itemSlot], (byte) -105);
                                         int itemX = col * (gameInterface.itemSpritePadsX + 115) + absoluteX;
                                         int itemY = row * (gameInterface.itemSpritePadsY + 12) + absoluteY;
                                         if (gameInterface.xTextAlignment == 0)

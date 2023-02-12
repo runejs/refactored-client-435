@@ -46,7 +46,7 @@ public class LinkedList {
             class1 = Native.green + class1.substring(0, -8 + class1.length()) + English.suffixMillion + Native.whiteOpeningParenthesis + class1 + Native.rightParenthesis;
         else if(class1.length() > 4)
             class1 = Native.cyan + class1.substring(0, class1.length() + -4) + Native.suffixK + Native.whiteOpeningParenthesis + class1 + Native.rightParenthesis;
-        return Native.aClass1_1123 + class1;
+        return Native.whitespace_b + class1;
     }
 
     public static void drawChatBoxGraphics() {

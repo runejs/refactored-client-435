@@ -86,8 +86,8 @@ public class Wall {
                     if(i_2_ == 6 && ChatBox.privateChatMode < 2) {
                         int i_6_ = -(13 * i) + 329;
                         i++;
-                        class40_sub5_sub14_sub1.drawString(English.to + Native.aClass1_1123 + class1 + Native.COLON_CHARACTER + ChatBox.chatMessages[i_0_], 4, i_6_, 0);
-                        class40_sub5_sub14_sub1.drawString(English.to + Native.aClass1_1123 + class1 + Native.COLON_CHARACTER + ChatBox.chatMessages[i_0_], 4, i_6_ + -1, 65535);
+                        class40_sub5_sub14_sub1.drawString(English.to + Native.whitespace_b + class1 + Native.COLON_CHARACTER + ChatBox.chatMessages[i_0_], 4, i_6_, 0);
+                        class40_sub5_sub14_sub1.drawString(English.to + Native.whitespace_b + class1 + Native.COLON_CHARACTER + ChatBox.chatMessages[i_0_], 4, i_6_ + -1, 65535);
                         if(i >= 5)
                             return;
                     }

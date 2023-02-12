@@ -4,13 +4,13 @@ import org.runejs.client.RSString;
 
 public class Native {
 
-    public static String aClass1_1123 = " ";
+    public static String whitespace_b = " ";
     public static String leftParenthesisWithSpacePrefix = " (";
-    public static String aClass1_894 = " ->";
-    public static String aClass1_1536 =" x ";
+    public static String targetThingArrow = " ->";
+    public static String amountSeparatorX =" x ";
     public static RSString password = RSString.CreateString("");
     public static RSString username = RSString.CreateString("");
-    public static String aClass1_674 = " x";
+    public static String amountPrefixX = " x";
     public static RSString string_blank = RSString.CreateString("");
     public static String currentLoadingText = "";
     public static String loginScreenMessageLineOne = "";
@@ -95,7 +95,7 @@ public class Native {
     public static String mapFunction = "mapfunction";
     public static String selectedItemName = null;
     public static String imgBackvmid1 = "backvmid1";
-    public static String aClass1_478 = "*";
+    public static String asterisk = "*";
     public static String selectedSpellName = null;
     public static String huffman = "huffman";
     public static String imgBackright2 = "backright2";
