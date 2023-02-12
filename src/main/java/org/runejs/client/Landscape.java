@@ -69,7 +69,7 @@ public class Landscape {
                         i_3_ = 10;
                         i_2_ = 10;
                     }
-                    bool &= Class40_Sub7.method840((byte) -67, is, i_3_, i_2_);
+                    bool &= Class40_Sub7.method840(is, i_3_, i_2_);
                 }
             }
             if(bool) {

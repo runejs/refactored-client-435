@@ -12,12 +12,10 @@ public class Class40_Sub7 extends Node {
     public RSString aClass1_2124;
 
 
-    public static boolean method840(byte arg0, byte[] arg1, int arg2, int arg3) {
+    public static boolean method840(byte[] arg1, int arg2, int arg3) {
         boolean bool = true;
         Buffer class40_sub1 = new Buffer(arg1);
         int i = -1;
-        if(arg0 > -40)
-            return false;
         for(; ; ) {
             int i_0_ = class40_sub1.getSmart();
             if(i_0_ == 0)
