@@ -33,7 +33,7 @@ public class Native {
     public static String lineBreak = "\\n";
     public static String MAP_NAME_UNDERSCORE = "_";
     public static RSString supportedCharacters = RSString.CreateString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(Q(R+R(T(U^(V(Z(X(Y-_=)0[*U]*W;:(W@(S*X,<.>)4?*6*V ");
-    public static String aClass1_1921 = "b12_full";
+    public static String fontB12Full = "b12_full";
     public static String imgBackbase1 = "backbase1";
     public static String imgBackhmid2 = "backhmid2";
     public static String imgBackleft1 = "backleft1";
@@ -54,8 +54,8 @@ public class Native {
     public static String modIcons = "mod_icons";
     public static String aClass1_28 = "null";
     public static String overlayMultiway = "overlay_multiway";
-    public static String aClass1_2101 = "p11_full";
-    public static String aClass1_1580 = "p12_full";
+    public static String fontP11Full = "p11_full";
+    public static String fontP12Full = "p12_full";
     public static String aClass1_3254 = "redstone2";
     public static String aClass1_1517 = "redstone3";
     public static String titleSong = "scape main";

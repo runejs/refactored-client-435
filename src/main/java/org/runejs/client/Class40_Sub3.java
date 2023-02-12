@@ -120,15 +120,15 @@ public class Class40_Sub3 extends Node {
             if (TypeFace.fontSmall != null)
                 i++;
             else
-                TypeFace.fontSmall = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.aClass1_2101);
+                TypeFace.fontSmall = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontP11Full);
             if (WallDecoration.fontNormal != null)
                 i++;
             else
-                WallDecoration.fontNormal = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.aClass1_1580);
+                WallDecoration.fontNormal = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontP12Full);
             if (TypeFace.fontBold != null)
                 i++;
             else
-                TypeFace.fontBold = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.aClass1_1921);
+                TypeFace.fontBold = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontB12Full);
             if (i < 3) {
                 Native.currentLoadingText = English.loadingFonts + (i * 100 / 3) + Native.percent;
                 MovedStatics.anInt1607 = 40;
