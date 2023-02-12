@@ -305,7 +305,7 @@ public class MovedStatics {
         for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.peekFirst(); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.pollFirst()) {
             if (Player.worldLevel == class40_sub5_sub17_sub6.anInt3239 && !class40_sub5_sub17_sub6.aBoolean3237) {
                 if (pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
-                    class40_sub5_sub17_sub6.method834(8076, anInt199);
+                    class40_sub5_sub17_sub6.method834(anInt199);
                     if (class40_sub5_sub17_sub6.aBoolean3237)
                         class40_sub5_sub17_sub6.unlink();
                     else
