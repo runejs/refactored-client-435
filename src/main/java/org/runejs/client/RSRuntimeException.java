@@ -17,9 +17,8 @@ public class RSRuntimeException extends RuntimeException {
         aThrowable1652 = arg0;
     }
 
-    public static void method1056(Component arg0, byte arg1) {
+    public static void method1056(Component arg0) {
         arg0.addMouseListener(GameObject.frame);
-        int i = -23 / ((-32 - arg1) / 47);
         arg0.addMouseMotionListener(GameObject.frame);
         arg0.addFocusListener(GameObject.frame);
         arg0.addMouseWheelListener(GameObject.frame);

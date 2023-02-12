@@ -264,7 +264,7 @@ public class Projectile extends Renderable {
         }
     }
 
-    public static int method764(byte arg0) {
+    public static int method764() {
         if(!Configuration.ROOFS_ENABLED) {
             return Player.worldLevel;
         }
@@ -350,8 +350,6 @@ public class Projectile extends Renderable {
                 }
             }
         }
-        if(arg0 > -101)
-            CacheArchive.skinDefinitionCacheArchive = null;
         if((OverlayDefinition.tile_flags[Player.worldLevel][Player.localPlayer.worldX >> 7][Player.localPlayer.worldY >> 7] & 0x4) != 0)
             i = Player.worldLevel;
         return i;

@@ -366,7 +366,7 @@ public class MovedStatics {
         return gameObjectDefinition.method610(arg0);
     }
 
-    public static IndexedImage method538(int arg0) {
+    public static IndexedImage method538() {
         IndexedImage class40_sub5_sub14_sub2 = new IndexedImage();
         class40_sub5_sub14_sub2.maxWidth = ItemDefinition.anInt2846;
         class40_sub5_sub14_sub2.maxHeight = GameShell.anInt31;
@@ -375,7 +375,7 @@ public class MovedStatics {
         class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[0];
         class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[0];
         class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
-        class40_sub5_sub14_sub2.imgPixels = GroundItemTile.aByteArrayArray1370[arg0];
+        class40_sub5_sub14_sub2.imgPixels = GroundItemTile.aByteArrayArray1370[0];
         ActorDefinition.method569();
         return class40_sub5_sub14_sub2;
     }

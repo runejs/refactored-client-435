@@ -1686,7 +1686,7 @@ public class GameInterface extends CachedNode {
         }
     }
 
-    public ImageRGB method638(byte arg0, int arg1) {
+    public ImageRGB method638(int arg1) {
         FramemapDefinition.aBoolean2177 = false;
         if(arg1 < 0 || imageY.length <= arg1) {
             return null;
@@ -1695,7 +1695,6 @@ public class GameInterface extends CachedNode {
         if(i == -1) {
             return null;
         }
-        int i_9_ = 124 % ((-15 - arg0) / 34);
         ImageRGB class40_sub5_sub14_sub4 = (ImageRGB) ImageRGB.imageRgbCache.get((long) i);
         if(class40_sub5_sub14_sub4 != null) {
             return class40_sub5_sub14_sub4;

@@ -56,7 +56,7 @@ public class GameObject extends Renderable {
     public static IndexedImage method769(int arg0, CacheArchive imageArchive, int arg2) {
         if(!Buffer.method472(imageArchive, arg2))
             return null;
-        return MovedStatics.method538(0);
+        return MovedStatics.method538();
     }
 
 
