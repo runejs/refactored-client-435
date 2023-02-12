@@ -2057,7 +2057,7 @@ public class Main extends GameShell {
         OverlayDefinition.gameServerPort = Class44.modewhere != 0 ? Player.worldId + 40000 : Configuration.GAME_PORT;
         currentPort = OverlayDefinition.gameServerPort;
 
-        MovedStatics.method997(47);
+        MovedStatics.method997();
         GameInterface.method642(MouseHandler.gameCanvas, -10);
         RSRuntimeException.method1056(MouseHandler.gameCanvas, (byte) 70);
         RSCanvas.anInt57 = Signlink.anInt737;

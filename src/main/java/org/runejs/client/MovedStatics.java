@@ -250,9 +250,8 @@ public class MovedStatics {
         ActorDefinition.sidebarOffsets = Rasterizer3D.setLineOffsets(ActorDefinition.sidebarOffsets);
     }
 
-    public static void method997(int arg0) {
-        if (arg0 != 47)
-            initiateVertexHeights(-42, 92, 18, -72);
+    public static void method997() {
+        // (Jameskmonger) I think this is something to do with keycode remapping, though Im not sure
         if (Signlink.javaVendor.toLowerCase().indexOf("microsoft") == -1) {
             HuffmanEncoding.anIntArray1564[44] = 71;
             HuffmanEncoding.anIntArray1564[45] = 26;
