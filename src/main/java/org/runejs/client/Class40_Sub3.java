@@ -191,7 +191,7 @@ public class Class40_Sub3 extends Node {
             if (AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 != null)
                 i++;
             else
-                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_2114, "");
+                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.hitmarks, "");
             if (FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 == null)
                 FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPK, "");
             else
@@ -215,7 +215,7 @@ public class Class40_Sub3 extends Node {
             if (Class37.cursorCross != null)
                 i++;
             else
-                Class37.cursorCross = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_2179, "");
+                Class37.cursorCross = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.cursorCross, "");
             if (MovedStatics.mapDots == null)
                 MovedStatics.mapDots = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapDots, "");
             else

@@ -44,7 +44,7 @@ public class Native {
     public static String aClass1_1019 = "flash1:";
     public static String headiconsPK = "headicons_pk";
     public static String headiconsPrayer ="headicons_prayer";
-    public static String aClass1_2114 = "hitmarks";
+    public static String hitmarks = "hitmarks";
     public static String aClass1_638 = "invback";
     public static String MAP_NAME_PREFIX_L = "l";
     public static String mapDots = "mapdots";
@@ -70,7 +70,7 @@ public class Native {
     public static String arrowActionOnOther = " -> @whi@";
     public static String imgBackvmid2 = "backvmid2";
     public static String aClass1_2593 = "K";
-    public static String aClass1_2179 = "cross";
+    public static String cursorCross = "cross";
     public static String imgBackbase2 = "backbase2";
     public static String aClass1_2423 = "(100%)";
     public static String logo = "logo";
