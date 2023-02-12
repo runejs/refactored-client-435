@@ -1454,7 +1454,7 @@ public class Main extends GameShell {
                                         SceneCluster.packetBuffer.putIntME2(MovedStatics.modifiedWidgetId);
                                     }
                                 } else {
-                                    if((ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend((byte) 63, ActorDefinition.menuActionRow - 1)) && ActorDefinition.menuActionRow > 2)
+                                    if((ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend(ActorDefinition.menuActionRow - 1)) && ActorDefinition.menuActionRow > 2)
                                         Class60.determineMenuSize();
                                     else if(ActorDefinition.menuActionRow > 0)
                                         GameInterface.processMenuActions(123, -1 + ActorDefinition.menuActionRow);
