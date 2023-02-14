@@ -819,7 +819,7 @@ public class GameInterface extends CachedNode {
                             ChatBox.chatMessage = "";
                             ChatBox.messagePromptRaised = true;
                             PacketBuffer.aLong2241 = Class59.friends[i_19_];
-                            Native.aClass1_1563 = English.prefixEnterMessageToSendTo + Player.friendUsernames[i_19_];
+                            Native.enterPlayerNameHeader = English.prefixEnterMessageToSendTo + Player.friendUsernames[i_19_];
                         }
                     }
                 }
@@ -936,7 +936,7 @@ public class GameInterface extends CachedNode {
                             SceneCluster.packetBuffer.putPacket(151);
                             SceneCluster.packetBuffer.putShortLE(npcIdx);
                         } else {
-                            ChatBox.addChatMessage("", gameInterface.itemAmount + Native.aClass1_1536 + ItemDefinition.forId(npcIdx, 10).name, 0);
+                            ChatBox.addChatMessage("", gameInterface.itemAmount + Native.amountSeparatorX + ItemDefinition.forId(npcIdx, 10).name, 0);
                         }
                     }
                     if(action == 42) {
@@ -1066,7 +1066,7 @@ public class GameInterface extends CachedNode {
                             SceneCluster.packetBuffer.putPacket(151);
                             SceneCluster.packetBuffer.putShortLE(npcIdx);
                         } else {
-                            ChatBox.addChatMessage("", gameInterface.itemAmounts[i] + Native.aClass1_1536 + ItemDefinition.forId(npcIdx, 10).name, 0);
+                            ChatBox.addChatMessage("", gameInterface.itemAmounts[i] + Native.amountSeparatorX + ItemDefinition.forId(npcIdx, 10).name, 0);
                         }
                         GenericTile.anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
@@ -1432,7 +1432,7 @@ public class GameInterface extends CachedNode {
         if(Player.friendListStatus == 2) {
             if(i == 201) {
                 Class37.anInt876 = 1;
-                Native.aClass1_1563 = English.enterNameOfFriendToAddToList;
+                Native.enterPlayerNameHeader = English.enterNameOfFriendToAddToList;
                 ChatBox.messagePromptRaised = true;
                 ChatBox.inputType = 0;
                 ChatBox.chatMessage = "";
@@ -1440,7 +1440,7 @@ public class GameInterface extends CachedNode {
             }
             if(i == 202) {
                 Class37.anInt876 = 2;
-                Native.aClass1_1563 = English.enterNameOfFriendToDeleteFromList;
+                Native.enterPlayerNameHeader = English.enterNameOfFriendToDeleteFromList;
                 ChatBox.redrawChatbox = true;
                 ChatBox.inputType = 0;
                 ChatBox.messagePromptRaised = true;
@@ -1455,7 +1455,7 @@ public class GameInterface extends CachedNode {
             ChatBox.inputType = 0;
             Class37.anInt876 = 4;
             ChatBox.redrawChatbox = true;
-            Native.aClass1_1563 = English.enterNameOfPlayerToAddToList;
+            Native.enterPlayerNameHeader = English.enterNameOfPlayerToAddToList;
             ChatBox.chatMessage = "";
             ChatBox.messagePromptRaised = true;
         }
@@ -1465,7 +1465,7 @@ public class GameInterface extends CachedNode {
             Class37.anInt876 = 5;
             ChatBox.messagePromptRaised = true;
             ChatBox.chatMessage = "";
-            Native.aClass1_1563 = English.enterNameOfPlayerToDeleteFromList;
+            Native.enterPlayerNameHeader = English.enterNameOfPlayerToDeleteFromList;
         }
         if(i >= 300 && i <= 313) {
             int i_13_ = (-300 + i) / 2;

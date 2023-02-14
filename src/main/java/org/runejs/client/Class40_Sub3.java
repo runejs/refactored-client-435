@@ -120,15 +120,15 @@ public class Class40_Sub3 extends Node {
             if (TypeFace.fontSmall != null)
                 i++;
             else
-                TypeFace.fontSmall = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.aClass1_2101);
+                TypeFace.fontSmall = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontP11Full);
             if (WallDecoration.fontNormal != null)
                 i++;
             else
-                WallDecoration.fontNormal = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.aClass1_1580);
+                WallDecoration.fontNormal = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontP12Full);
             if (TypeFace.fontBold != null)
                 i++;
             else
-                TypeFace.fontBold = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.aClass1_1921);
+                TypeFace.fontBold = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontB12Full);
             if (i < 3) {
                 Native.currentLoadingText = English.loadingFonts + (i * 100 / 3) + Native.percent;
                 MovedStatics.anInt1607 = 40;
@@ -177,13 +177,13 @@ public class Class40_Sub3 extends Node {
             else
                 AnimationSequence.minimapCompass = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.compass, "");
             if (MovedStatics.minimapEdge == null)
-                MovedStatics.minimapEdge = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.aClass1_1427, "");
+                MovedStatics.minimapEdge = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.mapEdge, "");
             else
                 i++;
             if (MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301 != null)
                 i++;
             else
-                MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301 = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.aClass1_671, "");
+                MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301 = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.mapScene, "");
             if (MovedStatics.aClass40_Sub5_Sub14_Sub4Array296 == null)
                 MovedStatics.aClass40_Sub5_Sub14_Sub4Array296 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
             else
@@ -191,9 +191,9 @@ public class Class40_Sub3 extends Node {
             if (AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 != null)
                 i++;
             else
-                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_2114, "");
+                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.hitmarks, "");
             if (FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 == null)
-                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_2161, "");
+                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPK, "");
             else
                 i++;
             if (ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 != null)
@@ -201,23 +201,23 @@ public class Class40_Sub3 extends Node {
             else
                 ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
             if (MovedStatics.aClass40_Sub5_Sub14_Sub4Array2567 == null)
-                MovedStatics.aClass40_Sub5_Sub14_Sub4Array2567 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_1230, "");
+                MovedStatics.aClass40_Sub5_Sub14_Sub4Array2567 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsHint, "");
             else
                 i++;
             if (LinkedList.aClass40_Sub5_Sub14_Sub4_1057 == null)
-                LinkedList.aClass40_Sub5_Sub14_Sub4_1057 = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.aClass1_2109, "");
+                LinkedList.aClass40_Sub5_Sub14_Sub4_1057 = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.overlayMultiway, "");
             else
                 i++;
             if (aClass40_Sub5_Sub14_Sub4Array2019 == null)
-                aClass40_Sub5_Sub14_Sub4Array2019 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_203, "");
+                aClass40_Sub5_Sub14_Sub4Array2019 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapMarker, "");
             else
                 i++;
             if (Class37.cursorCross != null)
                 i++;
             else
-                Class37.cursorCross = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_2179, "");
+                Class37.cursorCross = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.cursorCross, "");
             if (MovedStatics.mapDots == null)
-                MovedStatics.mapDots = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.aClass1_183, "");
+                MovedStatics.mapDots = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapDots, "");
             else
                 i++;
             if (MovedStatics.aClass40_Sub5_Sub14_Sub2Array215 == null)
@@ -227,7 +227,7 @@ public class Class40_Sub3 extends Node {
             if (MovedStatics.moderatorIcon != null)
                 i++;
             else
-                MovedStatics.moderatorIcon = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.aClass1_881, "");
+                MovedStatics.moderatorIcon = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.modIcons, "");
             if (i < 14) {
                 Native.currentLoadingText = English.loadingSprites + (100 * i / 14) + Native.percent;
                 MovedStatics.anInt1607 = 70;
@@ -281,7 +281,7 @@ public class Class40_Sub3 extends Node {
                 Native.currentLoadingText = English.loadedWordpack;
                 MovedStatics.anInt1607 = 96;
             } else {
-                Native.currentLoadingText = English.loadingWordPack + Native.aClass1_1348;
+                Native.currentLoadingText = English.loadingWordPack + Native.zeroPercent;
                 MovedStatics.anInt1607 = 96;
             }
         } else if (MovedStatics.loadingPercent == 130) {

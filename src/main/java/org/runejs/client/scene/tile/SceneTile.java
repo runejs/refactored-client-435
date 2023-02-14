@@ -133,7 +133,7 @@ public class SceneTile extends Node {
         if (diff < -3)
             return Native.orange2;
         if (diff < 0)
-            return Native.aClass1_327;
+            return Native.orange1;
         if (diff > 9)
             return Native.green;
         if (diff > 6)
@@ -149,11 +149,11 @@ public class SceneTile extends Node {
         if (ActorDefinition.menuActionRow >= 2 || MovedStatics.itemSelected != 0 || Main.widgetSelected != 0) {
             String class1;
             if (MovedStatics.itemSelected == 1 && ActorDefinition.menuActionRow < 2)
-                class1 = English.use + Native.whitespace + Native.selectedItemName + Native.aClass1_894;
+                class1 = English.use + Native.whitespace + Native.selectedItemName + Native.targetThingArrow;
             else if (Main.widgetSelected != 1 || ActorDefinition.menuActionRow >= 2)
                 class1 = Landscape.menuActionTexts[-1 + ActorDefinition.menuActionRow];
             else
-                class1 = Native.selectedSpellVerb + Native.whitespace + Native.selectedSpellName + Native.aClass1_894;
+                class1 = Native.selectedSpellVerb + Native.whitespace + Native.selectedSpellName + Native.targetThingArrow;
             if (ActorDefinition.menuActionRow > 2)
                 class1 = class1 + Native.whiteSlash + (ActorDefinition.menuActionRow + -2) + English.suffixMoreOptions;
             if (arg0 == 4)

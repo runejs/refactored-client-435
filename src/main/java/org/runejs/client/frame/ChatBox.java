@@ -42,7 +42,7 @@ public class ChatBox {
         MovedStatics.showChatPanelRedrawnText = true;
         MovedStatics.method305();
         if(messagePromptRaised) {
-            TypeFace.fontBold.drawStringLeft(Native.aClass1_1563, 239, 40, 0);
+            TypeFace.fontBold.drawStringLeft(Native.enterPlayerNameHeader, 239, 40, 0);
             TypeFace.fontBold.drawStringLeft(chatMessage + "*", 239, 60, 128);
         } else if(inputType == 1) {
             TypeFace.fontBold.drawStringLeft(English.enterAmount, 239, 40, 0);
@@ -149,15 +149,15 @@ public class ChatBox {
                     }
                     if(type == 6 && CollisionMap.anInt165 == 0 && privateChatMode < 2) {
                         if(y > 0 && y < 110) {
-                            typeFace.drawString(English.to + Native.aClass1_1123 + name + Native.colon, 4, y, 0);
-                            typeFace.drawString(chatMessages[i], typeFace.getStringWidth(English.to + Native.aClass1_1123 + name) + 12, y, 8388608);
+                            typeFace.drawString(English.to + Native.whitespace_b + name + Native.colon, 4, y, 0);
+                            typeFace.drawString(chatMessages[i], typeFace.getStringWidth(English.to + Native.whitespace_b + name) + 12, y, 8388608);
                         }
                         line++;
                     }
                     if(type == 8 && (tradeMode == 0 || tradeMode == 1 && Player.hasFriend(name))) {
                         line++;
                         if(y > 0 && y < 110)
-                            typeFace.drawString(name + Native.aClass1_1123 + chatMessages[i], 4, y, 8270336);
+                            typeFace.drawString(name + Native.whitespace_b + chatMessages[i], 4, y, 8270336);
                     }
                 }
             }
@@ -172,7 +172,7 @@ public class ChatBox {
             else
                 name = Native.username.toString();
             typeFace.drawString(name + Native.colon, 4, 90, 0);
-            typeFace.drawBasicStringLegacy("@blu@" + chatboxInput + Native.aClass1_478, typeFace.getStringWidth(name + Native.COLON_CHARACTER) + 6, 90);
+            typeFace.drawBasicStringLegacy("@blu@" + chatboxInput + Native.asterisk, typeFace.getStringWidth(name + Native.COLON_CHARACTER) + 6, 90);
             Rasterizer.drawHorizontalLine(0, 77, 479, 0);
         } else {
             boolean bool = Main.drawParentInterface(3, 0, 0, 479, 96, dialogueId);

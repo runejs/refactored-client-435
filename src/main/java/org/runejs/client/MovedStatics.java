@@ -1654,9 +1654,9 @@ public class MovedStatics {
 	                    } else if(class1.startsWith(English.effectWhite)) {
 	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectWhite.length());
 	                        i_11_ = 5;
-	                    } else if(class1.startsWith(Native.aClass1_1019)) {
+	                    } else if(class1.startsWith(Native.effectFlash1)) {
 	                        i_11_ = 6;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(Native.aClass1_1019.length());
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(Native.effectFlash1.length());
 	                    } else if(class1.startsWith(English.effectFlash2)) {
 	                        i_11_ = 7;
 	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectFlash2.length());
@@ -1683,9 +1683,9 @@ public class MovedStatics {
 	                    } else if(class1.startsWith(English.effectShake)) {
 	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectShake.length());
 	                        i = 3;
-	                    } else if(class1.startsWith(Native.aClass1_2438)) {
+	                    } else if(class1.startsWith(Native.effectScroll)) {
 	                        i = 4;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(Native.aClass1_2438.length());
+	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(Native.effectScroll.length());
 	                    } else if(class1.startsWith(English.effectSlide)) {
 	                        i = 5;
 	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectSlide.length());
