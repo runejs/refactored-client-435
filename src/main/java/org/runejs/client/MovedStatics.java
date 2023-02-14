@@ -302,7 +302,7 @@ public class MovedStatics {
     }
 
     public static void method1000() {
-        for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.peekFirst((byte) -90); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.pollFirst(-4)) {
+        for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.peekFirst(); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.pollFirst()) {
             if (Player.worldLevel == class40_sub5_sub17_sub6.anInt3239 && !class40_sub5_sub17_sub6.aBoolean3237) {
                 if (pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
                     class40_sub5_sub17_sub6.method834(anInt199);
@@ -397,8 +397,8 @@ public class MovedStatics {
     }
 
     public static void method335() {
-        Projectile projectile = (Projectile) Class43.projectileQueue.peekFirst((byte) -90);
-        for (/**/; projectile != null; projectile = (Projectile) Class43.projectileQueue.pollFirst(61 + -65)) {
+        Projectile projectile = (Projectile) Class43.projectileQueue.peekFirst();
+        for (/**/; projectile != null; projectile = (Projectile) Class43.projectileQueue.pollFirst()) {
             if (Player.worldLevel == projectile.anInt2981 && pulseCycle <= projectile.endCycle) {
                 if (projectile.delay <= pulseCycle) {
                     if (projectile.entityIndex > 0) {
@@ -889,7 +889,7 @@ public class MovedStatics {
                 if (type == 3) {
                     LinkedList itemList = Wall.groundItems[Player.worldLevel][x][y];
                     if (itemList != null) {
-                        for (Item item = (Item) itemList.peekLast((byte) -95); item != null; item = (Item) itemList.pollLast(4)) {
+                        for (Item item = (Item) itemList.peekLast(); item != null; item = (Item) itemList.pollLast()) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
                             if (MovedStatics.itemSelected == 1) {
                                 addActionRow(English.use, item.itemId, x, y, ActionRowType.USE_ITEM_ON_WORLD_ITEM.getId(), Native.selectedItemName + Native.toLightRed + itemDefinition.name);
@@ -1052,12 +1052,9 @@ public class MovedStatics {
         ItemDefinition.count = Class26.aCacheArchive_632.fileLength(10);
     }
 
-    public static int method888(int x, byte junk, int y) {
+    public static int method888(int x, int y) {
         int vertexHeight = -128 + perlinNoise(x + 45365, 91923 + y, 4) - (-(perlinNoise(x + 10294, 37821 + y, 2) - 128 >> 1) + -(-128 + perlinNoise(x, y, 1) >> 2));
         vertexHeight = 35 + (int) (0.3 * (double) vertexHeight);
-
-        if(junk != -45)
-            return -24;
 
         if(vertexHeight >= 10) {
             if(vertexHeight > 60)
@@ -1085,7 +1082,7 @@ public class MovedStatics {
     }
 
     public static void method652() {
-        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst(-4)) {
+        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst()) {
             if(class40_sub3.anInt2031 > 0)
                 class40_sub3.anInt2031--;
             if(class40_sub3.anInt2031 == 0) {
@@ -1141,7 +1138,7 @@ public class MovedStatics {
 	            int opcode = fileData.getUnsignedByte();
 	            if(opcode == 0) {
 	                if(level == 0) {
-                        tile_height[0][x][y] = -method888(regionX + x + 932731, (byte) -45, regionY + 556238 + y) * 8;
+                        tile_height[0][x][y] = -method888(regionX + x + 932731, regionY + 556238 + y) * 8;
                     } else {
                         tile_height[level][x][y] = -240 + tile_height[level + -1][x][y];
                     }
@@ -1492,7 +1489,7 @@ public class MovedStatics {
 	                ChatBox.chatMessage = ChatBox.chatMessage.substring(0, -1 + ChatBox.chatMessage.length());
 	                ChatBox.redrawChatbox = true;
 	            }
-	            if(Player.method793((byte) 120, Class59.anInt1388) && ChatBox.chatMessage.length() < 80) {
+	            if(Player.method793(Class59.anInt1388) && ChatBox.chatMessage.length() < 80) {
 	                ChatBox.chatMessage = ChatBox.chatMessage + (char) Class59.anInt1388;
 	                ChatBox.redrawChatbox = true;
 	            }
@@ -1578,7 +1575,7 @@ public class MovedStatics {
 	                ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 10);
 	                ChatBox.redrawChatbox = true;
 	            }
-	            if(Player.method793((byte) 122, Class59.anInt1388) && ChatBox.inputMessage.length() < 40) {
+	            if(Player.method793(Class59.anInt1388) && ChatBox.inputMessage.length() < 40) {
 	                ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
 	                ChatBox.redrawChatbox = true;
 	            }
@@ -1587,7 +1584,7 @@ public class MovedStatics {
 	                ChatBox.chatboxInput = ChatBox.chatboxInput.substring(0, ChatBox.chatboxInput.length() - 1);
 	                ChatBox.redrawChatbox = true;
 	            }
-	            if(Player.method793((byte) 124, Class59.anInt1388) && ChatBox.chatboxInput.length() < 80) {
+	            if(Player.method793(Class59.anInt1388) && ChatBox.chatboxInput.length() < 80) {
 	                ChatBox.chatboxInput = ChatBox.chatboxInput + (char) Class59.anInt1388;
 	                ChatBox.redrawChatbox = true;
 	            }

@@ -123,7 +123,7 @@ public class Class44 implements Runnable {
             for(; ; ) {
                 Class40_Sub6 class40_sub6;
                 synchronized(RSCanvas.aLinkedList_53) {
-                    class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.peekFirst((byte) -90);
+                    class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.peekFirst();
                 }
                 if(class40_sub6 == null) {
                     Class43.threadSleep(100L);
@@ -144,7 +144,7 @@ public class Class44 implements Runnable {
                     } else if(class40_sub6.anInt2112 == 1) {
                         class40_sub6.aByteArray2102 = class40_sub6.cacheIndex.get((int) class40_sub6.key);
                         synchronized(RSCanvas.aLinkedList_53) {
-                            IdentityKit.aLinkedList_2604.addLast(class40_sub6, 115);
+                            IdentityKit.aLinkedList_2604.addLast(class40_sub6);
                         }
                     }
                     synchronized(CollisionMap.anObject162) {

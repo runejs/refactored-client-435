@@ -13,7 +13,6 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.IncomingPackets;
-import org.runejs.client.node.HashTable;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.FloorDecoration;
@@ -46,7 +45,7 @@ public class Class37 {
     }
 
 
-    public static void method434(int arg0) {
+    public static void method434() {
         MovedStatics.menuOpen = false;
         IncomingPackets.opcode = -1;
         ActorDefinition.menuActionRow = 0;
@@ -59,7 +58,7 @@ public class Class37 {
         MovedStatics.destinationX = 0;
         MovedStatics.minimapState = 0;
         Class40_Sub5_Sub15.systemUpdateTime = 0;
-        IncomingPackets.incomingPacketBuffer.currentPosition = arg0;
+        IncomingPackets.incomingPacketBuffer.currentPosition = 0;
         for(int i = 0; Player.trackedPlayers.length > i; i++) {
             if(Player.trackedPlayers[i] != null)
                 Player.trackedPlayers[i].facingActorIndex = -1;
@@ -183,6 +182,7 @@ public class Class37 {
     }
 
     public static boolean method438(int areaId, int arg1) {
+        // (Jameskmonger) something to do with right clicking
         if(areaId == 0 && arg1 == MovedStatics.anInt573)
             return true;
         if(areaId == 1 && FloorDecoration.anInt614 == arg1)

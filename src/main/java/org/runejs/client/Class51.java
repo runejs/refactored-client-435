@@ -57,7 +57,7 @@ public class Class51 {
             WallDecoration.fontNormal.drawStringLeft(arg3, 257, i, 0);
             WallDecoration.fontNormal.drawStringLeft(arg3, 256, i - 1, 16777215);
         }
-        Player.drawGameScreenGraphics(107);
+        Player.drawGameScreenGraphics();
     }
 
     public static void clearModelCache() {

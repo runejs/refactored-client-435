@@ -46,7 +46,7 @@ public class Class40_Sub3 extends Node {
     public int anInt2039;
 
 
-    public static void startup(int arg0) {
+    public static void startup() {
         if (MovedStatics.loadingPercent == 0) {
             Npc.currentScene = new Scene(MovedStatics.tile_height);
             for (int i = 0; i < 4; i++)
@@ -151,15 +151,15 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.loadingPercent = 70;
             }
         } else if (MovedStatics.loadingPercent == 70) {
-            if (CacheArchive.gameDefinitionsCacheArchive.method185((byte) 98)) {
+            if (CacheArchive.gameDefinitionsCacheArchive.method185()) {
                 OverlayDefinition.initializeOverlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 UnderlayDefinition.initializeUnderlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
-                initializeIdentityKitDefinitionCache(3, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
-                initializeGameObjectDefinitionCache(28987, CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
-                Main.method357(CacheArchive.modelCacheArchive, arg0 ^ ~0x2a85, CacheArchive.gameDefinitionsCacheArchive);
+                initializeIdentityKitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
+                initializeGameObjectDefinitionCache(CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
+                Main.method357(CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
                 MovedStatics.initializeItemDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, MovedStatics.membersWorld, CacheArchive.modelCacheArchive);
                 MovedStatics.initializeAnimationCaches(CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.skeletonCacheArchive);
-                Class55.method966(arg0 ^ 0x38, CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
+                Class55.method966(CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
                 VarbitDefinition.initializeVarbitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 VarPlayerDefinition.initializeVarPlayerDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 GameInterface.createInterfaceMemoryBuffers();
@@ -256,7 +256,7 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.anInt1607 = 80;
             }
         } else if (MovedStatics.loadingPercent == 90) {
-            if (CacheArchive.gameTextureCacheArchive.method185((byte) 62)) {
+            if (CacheArchive.gameTextureCacheArchive.method185()) {
                 Class35 class35 = new Class35(CacheArchive.gameTextureCacheArchive, CacheArchive.gameImageCacheArchive, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
                 Rasterizer3D.method703(class35);
                 Rasterizer3D.createPalette(0.8);
@@ -285,10 +285,10 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.anInt1607 = 96;
             }
         } else if (MovedStatics.loadingPercent == 130) {
-            if (!CacheArchive.gameInterfaceCacheArchive.method185((byte) 66)) {
+            if (!CacheArchive.gameInterfaceCacheArchive.method185()) {
                 Native.currentLoadingText = English.loadingInterfaces + (4 * CacheArchive.gameInterfaceCacheArchive.method202() / 5) + Native.percent;
                 MovedStatics.anInt1607 = 100;
-            } else if (CacheArchive.clientScriptCacheArchive.method185((byte) 69)) {
+            } else if (CacheArchive.clientScriptCacheArchive.method185()) {
                 Native.currentLoadingText = English.loadedInterfaces;
                 MovedStatics.loadingPercent = 140;
                 MovedStatics.anInt1607 = 100;
@@ -297,27 +297,22 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.anInt1607 = 100;
             }
         } else {
-            if (arg0 != 100)
-                aClass40_Sub5_Sub14_Sub4Array2019 = null;
             if (MovedStatics.loadingPercent == 140)
                 MovedStatics.processGameStatus(10);
         }
     }
 
-    public static void initializeIdentityKitDefinitionCache(int arg0, CacheArchive definitionCache, CacheArchive arg2) {
+    public static void initializeIdentityKitDefinitionCache(CacheArchive definitionCache, CacheArchive arg2) {
         MovedStatics.aCacheArchive_654 = arg2;
-        if (arg0 == 3) {
-            Class49.definitionCache = definitionCache;
-            PlayerAppearance.identityKitLength = Class49.definitionCache.fileLength(3);
-        }
+        Class49.definitionCache = definitionCache;
+        PlayerAppearance.identityKitLength = Class49.definitionCache.fileLength(3);
     }
 
-    public static void initializeGameObjectDefinitionCache(int arg0, CacheArchive arg1, boolean arg2, CacheArchive definitionCache) {
+    public static void initializeGameObjectDefinitionCache(CacheArchive arg1, boolean arg2, CacheArchive definitionCache) {
         CacheArchive.definitionCache = definitionCache;
         GameObjectDefinition.count = CacheArchive.definitionCache.fileLength(6);
 
         Class35.aBoolean1734 = arg2;
-        if (arg0 == 28987)
-            RSString.aCacheArchive_1705 = arg1;
+        RSString.aCacheArchive_1705 = arg1;
     }
 }

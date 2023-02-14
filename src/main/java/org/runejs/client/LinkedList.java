@@ -36,9 +36,7 @@ public class LinkedList {
         last.next = last;
     }
 
-    public static String method903(int arg0, byte arg1) {
-        if(arg1 >= -13)
-            return null;
+    public static String method903(int arg0) {
         String class1 = Integer.toString(arg0);
         for(int i = -3 + class1.length(); i > 0; i -= 3)
             class1 = class1.substring(0, i) + Native.comma_b + class1.substring(i);
@@ -59,18 +57,18 @@ public class LinkedList {
         }
     }
 
-    public static void method910(int arg0) {
-        if(arg0 == -32322) {
-            if(VertexNormal.lowMemory && MovedStatics.onBuildTimePlane != Player.worldLevel)
+    public static void method910() {
+        if(true) {
+            if (VertexNormal.lowMemory && MovedStatics.onBuildTimePlane != Player.worldLevel)
                 Actor.method789(Player.localPlayer.pathY[0], -1000, Class17.regionY, Class51.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
-            else if(Buffer.anInt1985 != Player.worldLevel) {
+            else if (Buffer.anInt1985 != Player.worldLevel) {
                 Buffer.anInt1985 = Player.worldLevel;
                 MovedStatics.method299(Player.worldLevel);
             }
         }
     }
 
-    public Node removeLast(byte arg0) {
+    public Node removeLast() {
         Node node = last.previous;
 
         if(node == last)
@@ -80,7 +78,7 @@ public class LinkedList {
         return node;
     }
 
-    public Node peekLast(byte arg0) {
+    public Node peekLast() {
         Node node = last.previous;
 
         if(node == last) {
@@ -92,7 +90,7 @@ public class LinkedList {
         return node;
     }
 
-    public Node peekFirst(byte arg0) {
+    public Node peekFirst() {
         Node node = last.next;
 
         if(last == node) {
@@ -107,7 +105,7 @@ public class LinkedList {
     /**
      * Appends a node to the end of the LinkedList
      */
-    public void addLast(Node node, int arg1) {
+    public void addLast(Node node) {
         if(node.previous != null)
             node.unlink();
 
@@ -120,7 +118,7 @@ public class LinkedList {
     /**
      * Adds a node at the start of the LinkedList
      */
-    public void addFirst(int arg0, Node node) {
+    public void addFirst(Node node) {
         if(node.previous != null)
             node.unlink();
 
@@ -133,7 +131,7 @@ public class LinkedList {
     /**
      * Removes all of the elements from this list. The list will be empty after this call returns.
      */
-    public void clear(int arg0) {
+    public void clear() {
         while (true) {
             Node next = last.next;
 
@@ -147,7 +145,7 @@ public class LinkedList {
     /**
      * Retrieves and removes the first element of this list, or returns null if this list is empty.
      */
-    public Node pollFirst(int arg0) {
+    public Node pollFirst() {
         Node node = first;
 
         if(node == last) {
@@ -162,13 +160,14 @@ public class LinkedList {
     /**
      * Inserts a node before another node
      *
+     * @param existingNode  The node before which `insertingNode` should be added
      * @param insertingNode The node to insert
-     * @param existingNode The node before which `insertingNode` should be added
      */
-    public void addBefore(int junk, Node existingNode, Node insertingNode) {
+    public void addBefore(Node existingNode, Node insertingNode) {
         if(insertingNode.previous != null)
             insertingNode.unlink();
-        if(junk == -31793) {
+
+        if(true) {
             insertingNode.previous = existingNode.previous;
             insertingNode.next = existingNode;
             insertingNode.previous.next = insertingNode;
@@ -179,7 +178,7 @@ public class LinkedList {
     /**
      * Retrieves and removes the last element of this list, or returns null if this list is empty.
      */
-    public Node pollLast(int arg0) {
+    public Node pollLast() {
         Node node = first;
 
         if(node == last) {
@@ -194,7 +193,7 @@ public class LinkedList {
     /**
      * Removes and returns the first element from this list.
      */
-    public Node removeFirst(int arg0) {
+    public Node removeFirst() {
         Node next = last.next;
 
         if(last == next)

@@ -271,7 +271,7 @@ public class Console {
             consoleInput = consoleInput.substring(0, currentChatIndex - 1) + consoleInput.substring(currentChatIndex);
             currentChatIndex--;
         }
-        if (Player.method793((byte) 120, Class59.anInt1388) && consoleInput.length() < 80) { // any character
+        if (Player.method793(Class59.anInt1388) && consoleInput.length() < 80) { // any character
             consoleInput = consoleInput.substring(0, currentChatIndex) + (char) Class59.anInt1388 + consoleInput.substring(currentChatIndex);
             currentChatIndex++;
         }

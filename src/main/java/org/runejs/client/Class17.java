@@ -1,13 +1,9 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
-import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.net.PacketBuffer;
-import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.util.TextUtils;
 
@@ -22,9 +18,7 @@ public class Class17 {
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_463;
     public static int[] anIntArray466 = new int[256];
 
-    public static int method274(boolean arg0) {
-        if(!arg0)
-            aProducingGraphicsBuffer_463 = null;
+    public static int method274() {
         return Class49.anInt1147++;
     }
 

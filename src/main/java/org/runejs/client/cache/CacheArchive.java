@@ -480,10 +480,8 @@ public class CacheArchive {
         return nameHashCollection.method882(RSString.stringHash(arg1));
     }
 
-    public boolean method185(byte arg0) {
+    public boolean method185() {
         boolean bool = true;
-        if(arg0 < 11)
-            return true;
         for(int i = 0; i < fileIds.length; i++) {
             int i_47_ = fileIds[i];
             if(aByteArrayArray212[i_47_] == null) {

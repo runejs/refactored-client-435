@@ -37,9 +37,7 @@ public class Class35 implements Interface3 {
 
     }
 
-    public static Class40_Sub5_Sub15 method421(CacheArchive skeletonArchive, byte arg1, int arg2, CacheArchive skinArchive, boolean arg4) {
-        if(arg1 < 40)
-            return null;
+    public static Class40_Sub5_Sub15 method421(CacheArchive skeletonArchive, int arg2, CacheArchive skinArchive, boolean arg4) {
         boolean bool = true;
         int[] is = skeletonArchive.method192(arg2, true);
         for(int i = 0; is.length > i; i++) {
@@ -80,7 +78,7 @@ public class Class35 implements Interface3 {
         Texture texture = textures[textureId];
         if (texture != null) {
             if (texture.pixels_maybe != null) {
-                textureCache.addFirst(0, texture);
+                textureCache.addFirst(texture);
                 texture.aBoolean2146 = true;
                 return texture.pixels_maybe;
             }
@@ -88,11 +86,11 @@ public class Class35 implements Interface3 {
             boolean bool = texture.method869(brightness, textureSize, gameImageCacheArchive);
             if (bool) {
                 if (anInt1753 == 0) {
-                    Texture class40_sub10_3_ = (Texture) textureCache.removeLast((byte) 87);
+                    Texture class40_sub10_3_ = (Texture) textureCache.removeLast();
                     class40_sub10_3_.clearPixels();
                 } else
                     anInt1753--;
-                textureCache.addFirst(0, texture);
+                textureCache.addFirst(texture);
                 texture.aBoolean2146 = true;
                 return texture.pixels_maybe;
             }
@@ -100,17 +98,13 @@ public class Class35 implements Interface3 {
         return null;
     }
 
-    public int getAverageTextureColour(boolean arg0, int arg1) {
-        if(!arg0)
-            return 115;
+    public int getAverageTextureColour(int arg1) {
         if(textures[arg1] != null)
             return textures[arg1].anInt2137;
         return 0;
     }
 
-    public boolean isTextureOpaque(byte arg0, int textureId) {
-        if(arg0 > -99)
-            return true;
+    public boolean isTextureOpaque(int textureId) {
         return textures[textureId].opaque;
     }
 
@@ -119,22 +113,20 @@ public class Class35 implements Interface3 {
         clearTextures();
     }
 
-    public void method425(byte arg0, int arg1) {
+    public void method425(int arg1) {
         int i = 0;
-        if(arg0 == 6) {
-            for(/**/; i < textures.length; i++) {
-                Texture class40_sub10 = textures[i];
-                if(class40_sub10 != null && class40_sub10.anInt2136 != 0 && class40_sub10.aBoolean2146) {
-                    class40_sub10.method868(arg1);
-                    class40_sub10.aBoolean2146 = false;
-                }
+        for (/**/; i < textures.length; i++) {
+            Texture class40_sub10 = textures[i];
+            if (class40_sub10 != null && class40_sub10.anInt2136 != 0 && class40_sub10.aBoolean2146) {
+                class40_sub10.method868(arg1);
+                class40_sub10.aBoolean2146 = false;
             }
         }
     }
 
-    public boolean method15(int arg0, byte arg1) {
-        if(arg1 != -90)
-            return false;
+    public boolean method15(int arg0) {
+        // (Jameskmonger) this takes in an arg0, seemingly a texture ID, but does nothing with it...
+        //          I don't think it's a dummy tho, have we broken something here at some point?
         return textureSize == 64;
     }
 }

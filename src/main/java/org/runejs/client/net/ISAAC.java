@@ -198,7 +198,7 @@ public class ISAAC {
                                     int overlayMinimapColour;
                                     if(textureId >= 0) {
                                         hslBitset = -1;
-                                        overlayMinimapColour = Rasterizer3D.interface3.getAverageTextureColour(true, textureId);
+                                        overlayMinimapColour = Rasterizer3D.interface3.getAverageTextureColour(textureId);
                                     } else if(overlayDefinition.color == 16711935) {
                                         hslBitset = -2;
                                         textureId = -1;
@@ -386,10 +386,10 @@ public class ISAAC {
     public static void method285(byte arg0) {
         if(arg0 != 118)
             aBoolean519 = true;
-        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst((byte) -90); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst(-4)) {
+        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst()) {
             if(class40_sub3.anInt2031 == -1) {
                 class40_sub3.anInt2033 = 0;
-                Class39.method451(class40_sub3, 19813);
+                Class39.method451(class40_sub3);
             } else
                 class40_sub3.unlink();
         }
