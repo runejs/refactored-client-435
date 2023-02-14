@@ -78,7 +78,7 @@ public class Class35 implements Interface3 {
         Texture texture = textures[textureId];
         if (texture != null) {
             if (texture.pixels_maybe != null) {
-                textureCache.addFirst(0, texture);
+                textureCache.addFirst(texture);
                 texture.aBoolean2146 = true;
                 return texture.pixels_maybe;
             }
@@ -86,11 +86,11 @@ public class Class35 implements Interface3 {
             boolean bool = texture.method869(brightness, textureSize, gameImageCacheArchive);
             if (bool) {
                 if (anInt1753 == 0) {
-                    Texture class40_sub10_3_ = (Texture) textureCache.removeLast((byte) 87);
+                    Texture class40_sub10_3_ = (Texture) textureCache.removeLast();
                     class40_sub10_3_.clearPixels();
                 } else
                     anInt1753--;
-                textureCache.addFirst(0, texture);
+                textureCache.addFirst(texture);
                 texture.aBoolean2146 = true;
                 return texture.pixels_maybe;
             }

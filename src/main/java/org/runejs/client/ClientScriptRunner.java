@@ -184,12 +184,12 @@ public class ClientScriptRunner extends Node {
             }
         }
 
-        KeyFocusListener.aLinkedList_1278.addLast(clientScriptRunner, 92);
+        KeyFocusListener.aLinkedList_1278.addLast(clientScriptRunner);
     }
 
     public static void createClientScriptCheckPacket(int packetId, PacketBuffer buffer) {
         for(; ; ) {
-            ClientScriptRunner clientScriptRunner = (ClientScriptRunner) KeyFocusListener.aLinkedList_1278.peekFirst((byte) -90);
+            ClientScriptRunner clientScriptRunner = (ClientScriptRunner) KeyFocusListener.aLinkedList_1278.peekFirst();
             if(clientScriptRunner == null) {
                 break;
             }
