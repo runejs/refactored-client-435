@@ -285,7 +285,7 @@ public class Main extends GameShell {
                                 if (text == null)
                                     text = "null";
                                 if (itemDefinition.stackable == 1 || gameInterface.itemAmount != 1)
-                                    text = text + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmount);
+                                    text = text + Native.amountPrefixX + LinkedList.method903(gameInterface.itemAmount);
                             }
                             if (gameInterface.actionType == 6 && MovedStatics.lastContinueTextWidgetId == gameInterface.id) {
                                 textColor = gameInterface.textColor;
@@ -465,7 +465,7 @@ public class Main extends GameShell {
                                         if (itemName == null)
                                             itemName = "null";
                                         if (itemDefinition.stackable == 1 || gameInterface.itemAmounts[itemSlot] != 1)
-                                            itemName = itemName + Native.aClass1_674 + LinkedList.method903(gameInterface.itemAmounts[itemSlot]);
+                                            itemName = itemName + Native.amountPrefixX + LinkedList.method903(gameInterface.itemAmounts[itemSlot]);
                                         int itemX = col * (gameInterface.itemSpritePadsX + 115) + absoluteX;
                                         int itemY = row * (gameInterface.itemSpritePadsY + 12) + absoluteY;
                                         if (gameInterface.xTextAlignment == 0)
@@ -1916,12 +1916,12 @@ public class Main extends GameShell {
                 if (Class37.anInt874 > PacketBuffer.anInt2231)
                     PacketBuffer.anInt2231 = Class37.anInt874;
                 int i = (-Class37.anInt874 + PacketBuffer.anInt2231) * 50 / PacketBuffer.anInt2231;
-                Class51.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.aClass1_698);
+                Class51.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.percent_b);
             } else if (ProducingGraphicsBuffer.anInt1634 == 2) {
                 if (IdentityKit.anInt2591 > GameObject.anInt3048)
                     GameObject.anInt3048 = IdentityKit.anInt2591;
                 int i = 50 * (-IdentityKit.anInt2591 + GameObject.anInt3048) / GameObject.anInt3048 + 50;
-                Class51.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.aClass1_698);
+                Class51.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.percent_b);
             } else
                 Class51.method940(English.loadingPleaseWait, false, null);
         } else if (Class51.gameStatusCode == 30) {

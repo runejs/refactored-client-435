@@ -56,7 +56,7 @@ public class ClientScriptRunner extends Node {
     public static String method872(int arg0, int arg1) {
         if(arg0 > arg1)
             return Integer.toString(arg1);
-        return Native.aClass1_478;
+        return Native.asterisk;
     }
 
     public static void handleChatNamesRightClick(int arg1) {

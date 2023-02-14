@@ -39,12 +39,12 @@ public class LinkedList {
     public static String method903(int arg0) {
         String class1 = Integer.toString(arg0);
         for(int i = -3 + class1.length(); i > 0; i -= 3)
-            class1 = class1.substring(0, i) + Native.aClass1_795 + class1.substring(i);
+            class1 = class1.substring(0, i) + Native.comma_b + class1.substring(i);
         if(class1.length() > 8)
-            class1 = Native.green + class1.substring(0, -8 + class1.length()) + English.suffixMillion + Native.aClass1_1213 + class1 + Native.rightParenthesis;
+            class1 = Native.green + class1.substring(0, -8 + class1.length()) + English.suffixMillion + Native.whiteOpeningParenthesis + class1 + Native.rightParenthesis;
         else if(class1.length() > 4)
-            class1 = Native.cyan + class1.substring(0, class1.length() + -4) + Native.aClass1_2593 + Native.aClass1_1213 + class1 + Native.rightParenthesis;
-        return Native.aClass1_1123 + class1;
+            class1 = Native.cyan + class1.substring(0, class1.length() + -4) + Native.suffixK + Native.whiteOpeningParenthesis + class1 + Native.rightParenthesis;
+        return Native.whitespace_b + class1;
     }
 
     public static void drawChatBoxGraphics() {

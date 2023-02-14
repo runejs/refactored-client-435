@@ -15,10 +15,13 @@ public class ResizableCommand extends Command {
         if(ScreenController.frameMode == ScreenMode.FIXED) {
             ScreenController.frameMode(ScreenMode.RESIZABLE);
             console.log("<col=00FF00>Client is now Resizable</col>");
-        } else {
+        } else if(ScreenController.frameMode == ScreenMode.RESIZABLE) {
+            ScreenController.frameMode(ScreenMode.FULLSCREEN);
+            console.log("<col=00FF00>Client is now Fullscreen</col>");
+        } else if(ScreenController.frameMode == ScreenMode.FULLSCREEN) {
             ScreenController.frameMode(ScreenMode.FIXED);
 
-            console.log("<col=00FF00>Client is now  not Resizable</col>");
+            console.log("<col=00FF00>Client is now Fixed</col>");
         }
     }
 }
