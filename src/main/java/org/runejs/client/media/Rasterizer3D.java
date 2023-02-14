@@ -95,12 +95,12 @@ public class Rasterizer3D extends Rasterizer {
     }
 
     public static void drawTexturedTriangle(int y_a, int y_b, int y_c, int x_a, int x_b, int x_c, int grad_a, int grad_b, int grad_c, int Px, int Mx, int Nx, int Pz, int Mz, int Nz, int Py, int My, int Ny, int t_id) {
-        int[] texture = interface3.getTexturePixels(56, t_id);
+        int[] texture = interface3.getTexturePixels(t_id);
         if(texture == null) {
             int i = interface3.getAverageTextureColour(t_id);
             drawShadedTriangle(y_a, y_b, y_c, x_a, x_b, x_c, method709(i, grad_a), method709(i, grad_b), method709(i, grad_c));
         } else {
-            lowMemory = interface3.method15(t_id);
+            lowMemory = interface3.method15();
             opaque = interface3.isTextureOpaque(t_id);
             Mx = Px - Mx;
             Mz = Pz - Mz;

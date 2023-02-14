@@ -179,31 +179,31 @@ public class Projectile extends Renderable {
             HuffmanEncoding.chatModes = MovedStatics.createGraphicsBuffer(496, 50, arg0);
             RSCanvas.tabBottom = MovedStatics.createGraphicsBuffer(269, 37, arg0);
             InteractiveObject.tabTop = MovedStatics.createGraphicsBuffer(249, 45, arg0);
-            ImageRGB image = HuffmanEncoding.method1028(arg2, Native.imgBackleft1, (byte) 21, Native.aClass1_305);
+            ImageRGB image = HuffmanEncoding.method1028(arg2, Native.imgBackleft1, Native.aClass1_305);
             Landscape.framePieceRight = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
-            image = HuffmanEncoding.method1028(arg2, Native.imgBackleft2, (byte) 21, Native.aClass1_305);
+            image = HuffmanEncoding.method1028(arg2, Native.imgBackleft2, Native.aClass1_305);
             MovedStatics.chatboxRight = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
-            image = HuffmanEncoding.method1028(arg2, Native.imgBackright1, (byte) 21, Native.aClass1_305);
+            image = HuffmanEncoding.method1028(arg2, Native.imgBackright1, Native.aClass1_305);
             Class39.mapbackLeft = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
-            image = HuffmanEncoding.method1028(arg2, Native.imgBackright2, (byte) 21, Native.aClass1_305);
+            image = HuffmanEncoding.method1028(arg2, Native.imgBackright2, Native.aClass1_305);
             GameObject.tabPieceLeft = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
-            image = HuffmanEncoding.method1028(arg2, Native.imgBacktop1, (byte) 21, Native.aClass1_305);
+            image = HuffmanEncoding.method1028(arg2, Native.imgBacktop1, Native.aClass1_305);
             Class40_Sub5_Sub17_Sub6.framePieceTop = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
-            image = HuffmanEncoding.method1028(arg2, Native.imgBackvmid1, (byte) 21, Native.aClass1_305);
+            image = HuffmanEncoding.method1028(arg2, Native.imgBackvmid1, Native.aClass1_305);
             Class40_Sub7.mapBackRight = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
-            image = HuffmanEncoding.method1028(arg2, Native.imgBackvmid2, (byte) 21, Native.aClass1_305);
+            image = HuffmanEncoding.method1028(arg2, Native.imgBackvmid2, Native.aClass1_305);
             MovedStatics.tabPieceUpperRight = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
-            image = HuffmanEncoding.method1028(arg2, Native.imgBackvmid3, (byte) 21, Native.aClass1_305);
+            image = HuffmanEncoding.method1028(arg2, Native.imgBackvmid3, Native.aClass1_305);
             PlayerAppearance.tabPieveLowerRight = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
-            image = HuffmanEncoding.method1028(arg2, Native.imgBackhmid2, (byte) 21, Native.aClass1_305);
+            image = HuffmanEncoding.method1028(arg2, Native.imgBackhmid2, Native.aClass1_305);
             Class17.chatboxTop = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             MovedStatics.aClass40_Sub5_Sub14_Sub2_1315 = Main.method359(Native.redstone1, Native.aClass1_305, arg2);
@@ -264,7 +264,7 @@ public class Projectile extends Renderable {
         }
     }
 
-    public static int method764(byte arg0) {
+    public static int method764() {
         if(!Configuration.ROOFS_ENABLED) {
             return Player.worldLevel;
         }
@@ -350,8 +350,6 @@ public class Projectile extends Renderable {
                 }
             }
         }
-        if(arg0 > -101)
-            CacheArchive.skinDefinitionCacheArchive = null;
         if((OverlayDefinition.tile_flags[Player.worldLevel][Player.localPlayer.worldX >> 7][Player.localPlayer.worldY >> 7] & 0x4) != 0)
             i = Player.worldLevel;
         return i;

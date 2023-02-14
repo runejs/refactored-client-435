@@ -100,7 +100,7 @@ public class FloorDecoration {
                     }
                 }
             }
-            Actor.method789(chunkLocalX, -1000, chunkY, chunkX, chunkLocalY, level);
+            Actor.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
         } else {
             int chunkLocalY = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
             int chunkX = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
@@ -144,7 +144,7 @@ public class FloorDecoration {
                 }
             }
 
-            Actor.method789(chunkLocalX, -1000, chunkY, chunkX, chunkLocalY, level);
+            Actor.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
         }
     }
 

@@ -173,7 +173,7 @@ public class Main extends GameShell {
                                 }
                                 if (gameInterface.items[i_7_] <= 0) {
                                     if (gameInterface.imageY != null && i_7_ < 20) {
-                                        ImageRGB imageRGB = gameInterface.method638((byte) 78, i_7_);
+                                        ImageRGB imageRGB = gameInterface.method638(i_7_);
                                         if (imageRGB == null) {
                                             if (FramemapDefinition.aBoolean2177)
                                                 result = false;
@@ -298,7 +298,7 @@ public class Main extends GameShell {
                                     textColor = 16777215;
                             }
 
-                            text = SceneTile.method532((byte) 20, gameInterface, text);
+                            text = SceneTile.method532(gameInterface, text);
                             font.drawText(text, absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, textColor, gameInterface.textShadowed, gameInterface.xTextAlignment, gameInterface.yTextAlignment, gameInterface.lineHeight);
                         }
                     } else if (gameInterface.type == GameInterfaceType.GRAPHIC) {
@@ -484,7 +484,7 @@ public class Main extends GameShell {
                             int textHeight = 0;
                             TypeFace class40_sub5_sub14_sub1 = WallDecoration.fontNormal;
                             String text = gameInterface.disabledText;
-                            text = SceneTile.method532((byte) 20, gameInterface, text);
+                            text = SceneTile.method532(gameInterface, text);
                             while (text.length() > 0) {
                                 int lineBreakCharacter = text.indexOf(Native.lineBreak);
                                 String textLine;
@@ -516,7 +516,7 @@ public class Main extends GameShell {
                             Rasterizer.drawUnfilledRectangle(tooltipX, tooltipY, textWidth, textHeight, 0);
                             text = gameInterface.disabledText;
                             int tooltipTitleY = 2 + tooltipY + class40_sub5_sub14_sub1.characterDefaultHeight;
-                            text = SceneTile.method532((byte) 20, gameInterface, text);
+                            text = SceneTile.method532(gameInterface, text);
                             while (text.length() > 0) {
                                 int lineBreakCharacter = text.indexOf(Native.lineBreak);
                                 String textLine;
@@ -765,7 +765,7 @@ public class Main extends GameShell {
         ISAAC.aBoolean519 = true;
     }
 
-    public static void method353(byte arg0) {
+    public static void method353() {
         MovedStatics.anInt2628++;
         Class40_Sub5_Sub17_Sub6.method833(0, true);
         ItemDefinition.method749(true);
@@ -786,7 +786,7 @@ public class Main extends GameShell {
         }
         int i;
         if(!Player.cutsceneActive) {
-            i = Projectile.method764((byte) -107);
+            i = Projectile.method764();
         } else {
             i = MovedStatics.method546();
         }
@@ -844,7 +844,7 @@ public class Main extends GameShell {
         }
 
 
-        if(ISAAC.aBoolean519 && UpdateServer.getActiveCount((byte) -41, false, true) == 0) {
+        if(ISAAC.aBoolean519 && UpdateServer.getActiveCount(false, true) == 0) {
             ISAAC.aBoolean519 = false;
         }
         if(ISAAC.aBoolean519) {
@@ -859,9 +859,6 @@ public class Main extends GameShell {
         ProducingGraphicsBuffer_Sub1.anInt2210 = i_2_;
         Class26.anInt627 = i_4_;
         SceneCluster.cameraZ = i_3_;
-        if(arg0 >= -98) {
-            GameInterface.drawScrollBar(0, -27, 3, 10, 23, -36);
-        }
     }
 
     public static void method357(CacheArchive arg0, CacheArchive arg2) {
@@ -874,14 +871,14 @@ public class Main extends GameShell {
     public static IndexedImage method359(String arg0, String arg1, CacheArchive arg2) {
         int i = arg2.getHash(arg0);
         int i_23_ = arg2.method179(i, arg1);
-        return method363(arg2, (byte) -42, i_23_, i);
+        return method363(arg2, i_23_, i);
     }
 
-    public static IndexedImage method363(CacheArchive arg0, byte arg1, int arg2, int arg3) {
+    public static IndexedImage method363(CacheArchive arg0, int arg2, int arg3) {
         if(!ImageRGB.spriteExists(arg2, arg3, arg0)) {
             return null;
         }
-        return MovedStatics.method538(0);
+        return MovedStatics.method538();
 
     }
 
@@ -959,7 +956,7 @@ public class Main extends GameShell {
                     GameInterface.redrawTabArea = true;
                 }
             }
-            method353((byte) -114);
+            method353();
 
             if(Projectile.atInventoryInterfaceType == -3) {
                 GameInterface.redrawTabArea = true;
@@ -967,7 +964,7 @@ public class Main extends GameShell {
             if(SceneTile.activeInterfaceType == 2) {
                 GameInterface.redrawTabArea = true;
             }
-            Class43.drawTabArea(-29);
+            Class43.drawTabArea();
 
             if(GameInterface.chatboxInterfaceId != -1) {
                 boolean bool = Renderable.handleSequences(GameInterface.chatboxInterfaceId);
@@ -1038,10 +1035,10 @@ public class Main extends GameShell {
             if(ChatBox.dialogueId != -1) {
                 Renderable.handleSequences(ChatBox.dialogueId);
             }
-            method353((byte) -114);
+            method353();
             ChatBox.renderChatbox();
 
-            Class43.drawTabArea(-29);
+            Class43.drawTabArea();
 
             Class37.renderMinimap();
 
@@ -1154,7 +1151,7 @@ public class Main extends GameShell {
         }
     }
 
-    public static void method165(int arg0) {
+    public static void method165() {
         int i = 64 + SceneCluster.anInt767 * 128;
         int i_3_ = 64 + 128 * MovedStatics.anInt545;
         int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) + -MovedStatics.anInt194;
@@ -1212,7 +1209,7 @@ public class Main extends GameShell {
             ProducingGraphicsBuffer_Sub1.anInt2210 += MovedStatics.anInt1856 * i_11_ / 1000 + Class60.anInt1413;
             ProducingGraphicsBuffer_Sub1.anInt2210 &= 0x7ff;
         }
-        if(arg0 > 0) {
+        if(true) {
             if(i_11_ < 0) {
                 ProducingGraphicsBuffer_Sub1.anInt2210 -= Class60.anInt1413 + MovedStatics.anInt1856 * -i_11_ / 1000;
                 ProducingGraphicsBuffer_Sub1.anInt2210 &= 0x7ff;
@@ -1532,7 +1529,7 @@ public class Main extends GameShell {
                             WallDecoration.durationHoveredOverWidget--;
                         Item.calculateCameraPosition();
                         if(Player.cutsceneActive)
-                            method165(35);
+                            method165();
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
                             MovedStatics.anIntArray1846[i_19_]++;
                         MovedStatics.manageTextInputs();
@@ -1904,7 +1901,7 @@ public class Main extends GameShell {
             Class55.method965(32, MouseHandler.gameCanvas);
             this.setCanvas();
             GameInterface.method642(MouseHandler.gameCanvas);
-            RSRuntimeException.method1056(MouseHandler.gameCanvas, (byte) 33);
+            RSRuntimeException.method1056(MouseHandler.gameCanvas);
         }
         if (Class51.gameStatusCode == 0)
             GameObject.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
@@ -2054,7 +2051,7 @@ public class Main extends GameShell {
 
         MovedStatics.method997();
         GameInterface.method642(MouseHandler.gameCanvas);
-        RSRuntimeException.method1056(MouseHandler.gameCanvas, (byte) 70);
+        RSRuntimeException.method1056(MouseHandler.gameCanvas);
         RSCanvas.anInt57 = Signlink.anInt737;
         try {
             if (signlink.cacheDataAccessFile != null) {

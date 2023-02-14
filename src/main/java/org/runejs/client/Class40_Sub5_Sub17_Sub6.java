@@ -45,12 +45,9 @@ public class Class40_Sub5_Sub17_Sub6 extends Renderable {
 
     }
 
-    public static int mixLightness(int hsl, int lightness, byte junk) {
+    public static int mixLightness(int hsl, int lightness) {
         if(hsl == -1)
             return 12345678;
-            
-        if(junk != 73)
-            PlayerAppearance.playerColours = null;
 
         lightness = (0x7f & hsl) * lightness / 128;
         if(lightness < 2)

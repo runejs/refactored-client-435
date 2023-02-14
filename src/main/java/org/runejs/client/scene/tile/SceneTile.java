@@ -52,7 +52,7 @@ public class SceneTile extends Node {
 
     }
 
-    public static String method532(byte arg0, GameInterface gameInterface, String arg2) {
+    public static String method532(GameInterface gameInterface, String arg2) {
         if (arg2.contains(Native.percent)) {
             for (; ; ) {
                 int i = arg2.indexOf(Native.percentOne);
@@ -76,7 +76,7 @@ public class SceneTile extends Node {
                 int i = arg2.indexOf(Native.percentFour);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(arg0 ^ 0x3b9ac9eb, ClientScript.parseClientScripts(3, false, gameInterface)) + arg2.substring(i + 2);
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(3, false, gameInterface)) + arg2.substring(i + 2);
             }
             for (; ; ) {
                 int i = arg2.indexOf(Native.percentFive);

@@ -398,7 +398,7 @@ public class UpdateServer {
         return 1 + inboundFile.currentPosition * 99 / (inboundFile.buffer.length + -currentResponse.padding);
     }
 
-    public static int getActiveCount(byte arg0, boolean pending, boolean immediate) {
+    public static int getActiveCount(boolean pending, boolean immediate) {
         int total = 0;
         if (immediate) {
             total += immediateResponses + immediateWrites;

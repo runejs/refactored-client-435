@@ -139,7 +139,7 @@ public class Class40_Sub3 extends Node {
             }
         } else if (MovedStatics.loadingPercent == 60) {
             int i = Class60.method988(CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
-            int i_3_ = ISAAC.method288((byte) 119);
+            int i_3_ = ISAAC.method288();
             if (i < i_3_) {
                 Native.currentLoadingText = English.loadingTitleScreen + (100 * i / i_3_) + Native.percent;
                 MovedStatics.anInt1607 = 50;
@@ -175,9 +175,9 @@ public class Class40_Sub3 extends Node {
             if (AnimationSequence.minimapCompass != null)
                 i++;
             else
-                AnimationSequence.minimapCompass = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.compass, (byte) 21, "");
+                AnimationSequence.minimapCompass = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.compass, "");
             if (MovedStatics.minimapEdge == null)
-                MovedStatics.minimapEdge = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.mapEdge, (byte) 21, "");
+                MovedStatics.minimapEdge = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.mapEdge, "");
             else
                 i++;
             if (MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301 != null)
@@ -205,7 +205,7 @@ public class Class40_Sub3 extends Node {
             else
                 i++;
             if (LinkedList.aClass40_Sub5_Sub14_Sub4_1057 == null)
-                LinkedList.aClass40_Sub5_Sub14_Sub4_1057 = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.overlayMultiway, (byte) 21, "");
+                LinkedList.aClass40_Sub5_Sub14_Sub4_1057 = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.overlayMultiway, "");
             else
                 i++;
             if (aClass40_Sub5_Sub14_Sub4Array2019 == null)

@@ -74,7 +74,7 @@ public class Class35 implements Interface3 {
         anInt1753 = anInt1752;
     }
 
-    public int[] getTexturePixels(int junk, int textureId) {
+    public int[] getTexturePixels(int textureId) {
         Texture texture = textures[textureId];
         if (texture != null) {
             if (texture.pixels_maybe != null) {
@@ -124,9 +124,7 @@ public class Class35 implements Interface3 {
         }
     }
 
-    public boolean method15(int arg0) {
-        // (Jameskmonger) this takes in an arg0, seemingly a texture ID, but does nothing with it...
-        //          I don't think it's a dummy tho, have we broken something here at some point?
+    public boolean method15() {
         return textureSize == 64;
     }
 }

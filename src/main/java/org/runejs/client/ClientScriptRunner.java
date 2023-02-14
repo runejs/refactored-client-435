@@ -879,7 +879,7 @@ public class ClientScriptRunner extends Node {
                                             } else if(scriptOpcode == 4102) {
                                                 String class1 = scriptStringValues[--stringValueIndex];
                                                 int i_77_ = scriptIntValues[--intValueIndex];
-                                                scriptStringValues[stringValueIndex++] = class1 + HuffmanEncoding.method1024(true, (byte) -85, i_77_);
+                                                scriptStringValues[stringValueIndex++] = class1 + HuffmanEncoding.method1024(true, i_77_);
                                             } else if(scriptOpcode == 4103) {
                                                 String class1 = scriptStringValues[--stringValueIndex];
                                                 scriptStringValues[stringValueIndex++] = class1.toLowerCase();
