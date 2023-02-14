@@ -21,7 +21,7 @@ public class Class39 implements Runnable {
         coordsX = new int[500];
     }
 
-    public static void method451(Class40_Sub3 arg0, int arg1) {
+    public static void method451(Class40_Sub3 arg0) {
         int i = 0;
         int i_0_ = -1;
         int i_1_ = 0;
@@ -34,17 +34,15 @@ public class Class39 implements Runnable {
             i = Npc.currentScene.getLocationHash(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
         if(arg0.anInt2027 == 3)
             i = Npc.currentScene.getFloorDecorationHash(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
-        if(arg1 == 19813) {
-            if(i != 0) {
-                int i_3_ = Npc.currentScene.getArrangement(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i);
-                i_0_ = (0x1fffe692 & i) >> 14;
-                i_2_ = (i_3_ & 0xde) >> 6;
-                i_1_ = i_3_ & 0x1f;
-            }
-            arg0.anInt2025 = i_2_;
-            arg0.anInt2028 = i_0_;
-            arg0.anInt2036 = i_1_;
+        if (i != 0) {
+            int i_3_ = Npc.currentScene.getArrangement(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i);
+            i_0_ = (0x1fffe692 & i) >> 14;
+            i_2_ = (i_3_ & 0xde) >> 6;
+            i_1_ = i_3_ & 0x1f;
         }
+        arg0.anInt2025 = i_2_;
+        arg0.anInt2028 = i_0_;
+        arg0.anInt2036 = i_1_;
     }
 
     public void run() {

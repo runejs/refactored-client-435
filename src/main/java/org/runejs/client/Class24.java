@@ -19,10 +19,8 @@ public class Class24 {
         return MovedStatics.method315();
     }
 
-    public static int getRotatedTileX(int rotation, boolean arg1, int x, int y) {
+    public static int getRotatedTileX(int rotation, int x, int y) {
         rotation &= 0x3;
-        if(arg1)
-            return 68;
         if(rotation == 0)
             return x;
         if(rotation == 1)

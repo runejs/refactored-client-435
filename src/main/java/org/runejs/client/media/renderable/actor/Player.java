@@ -93,10 +93,8 @@ public class Player extends Actor {
         aBoolean3287 = false;
     }
 
-    public static void drawGameScreenGraphics(int arg0) {
+    public static void drawGameScreenGraphics() {
         try {
-            if(arg0 < 106)
-                return;
             Graphics graphics = MouseHandler.gameCanvas.getGraphics();
             MovedStatics.gameScreenImageProducer.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
         } catch(Exception exception) {
@@ -104,7 +102,8 @@ public class Player extends Actor {
         }
     }
 
-    public static boolean method793(byte arg0, int arg1) {
+    public static boolean method793(int arg1) {
+        // something to do with checking for valid (typable?) keycodes
         if(arg1 < 32)
             return false;
         if(arg1 == 127)

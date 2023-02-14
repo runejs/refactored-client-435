@@ -126,8 +126,8 @@ public class Main extends GameShell {
                 if (gameInterface == Wall.aGameInterface_353) {
                     opacity = 128;
                     GameInterface gameInterface_3_ = FramemapDefinition.method878(gameInterface);
-                    int[] is = Class13.method247(gameInterface_3_, (byte) 117);
-                    int[] is_4_ = Class13.method247(gameInterface, (byte) 97);
+                    int[] is = Class13.method247(gameInterface_3_);
+                    int[] is_4_ = Class13.method247(gameInterface);
                     int i_5_ = Landscape.mouseY + -MovedStatics.anInt2621 + is_4_[1] - is[1];
                     if (i_5_ < 0)
                         i_5_ = 0;
@@ -831,7 +831,7 @@ public class Main extends GameShell {
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404();
         MovedStatics.method450();
-        ((Class35) Rasterizer3D.interface3).method425((byte) 6, MovedStatics.anInt199);
+        ((Class35) Rasterizer3D.interface3).method425(MovedStatics.anInt199);
         KeyFocusListener.draw3dScreen();
 
         if(ScreenController.frameMode == ScreenMode.FIXED) {
@@ -853,7 +853,7 @@ public class Main extends GameShell {
             Class51.method940(English.loadingPleaseWait, false, null);
         }
 
-        Player.drawGameScreenGraphics(110);
+        Player.drawGameScreenGraphics();
         Class12.cameraX = i_1_;
         MovedStatics.cameraY = i_5_;
         ProducingGraphicsBuffer_Sub1.anInt2210 = i_2_;
@@ -864,16 +864,11 @@ public class Main extends GameShell {
         }
     }
 
-    public static void method357(CacheArchive arg0, int arg1, CacheArchive arg2) {
+    public static void method357(CacheArchive arg0, CacheArchive arg2) {
         GroundItemTile.aCacheArchive_1375 = arg2;
         ActorDefinition.count = GroundItemTile.aCacheArchive_1375.fileLength(9);
 
         MovedStatics.aCacheArchive_1577 = arg0;
-        if(arg1 == -10978) {
-            return;
-        }
-        drawGameScreen();
-
     }
 
     public static IndexedImage method359(String arg0, String arg1, CacheArchive arg2) {
@@ -1454,7 +1449,7 @@ public class Main extends GameShell {
                                         SceneCluster.packetBuffer.putIntME2(MovedStatics.modifiedWidgetId);
                                     }
                                 } else {
-                                    if((ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend((byte) 63, ActorDefinition.menuActionRow - 1)) && ActorDefinition.menuActionRow > 2)
+                                    if((ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend(ActorDefinition.menuActionRow - 1)) && ActorDefinition.menuActionRow > 2)
                                         Class60.determineMenuSize();
                                     else if(ActorDefinition.menuActionRow > 0)
                                         GameInterface.processMenuActions(123, -1 + ActorDefinition.menuActionRow);
@@ -1542,7 +1537,7 @@ public class Main extends GameShell {
                             MovedStatics.anIntArray1846[i_19_]++;
                         MovedStatics.manageTextInputs();
                         int i_20_ = Npc.method400(-1);
-                        int i_21_ = Class17.method274(true);
+                        int i_21_ = Class17.method274();
                         if(i_20_ > 4500 && i_21_ > 4500) {
                             SceneCluster.idleLogout = 250;
                             MovedStatics.method650(4000);
@@ -1743,7 +1738,7 @@ public class Main extends GameShell {
                         Class40_Sub3.loginStatus = 9;
                     } else {
                         if (responseCode == 15 && Class51.gameStatusCode == 40) {
-                            Class37.method434(0);
+                            Class37.method434();
                             return;
                         }
                         if (responseCode == 23 && OverlayDefinition.anInt2321 < 1) {
@@ -1861,17 +1856,17 @@ public class Main extends GameShell {
     public void processGameLoop() {
         MovedStatics.pulseCycle++;
         handleUpdateServer();
-        Class13.handleRequests((byte) -91);
+        Class13.handleRequests();
         MusicSystem.handleMusic();
         SoundSystem.handleSounds();
-        GameInterface.method639(122);
+        GameInterface.method639();
         MovedStatics.method1015();
 
         if (Class51.gameStatusCode == 0) {
-            Class40_Sub3.startup(100);
+            Class40_Sub3.startup();
             Class60.method992();
         } else if (Class51.gameStatusCode == 5) {
-            Class40_Sub3.startup(100);
+            Class40_Sub3.startup();
             Class60.method992();
         } else if (Class51.gameStatusCode == 10) {
             Class60.updateLogin();
@@ -1908,7 +1903,7 @@ public class Main extends GameShell {
             MovedStatics.method311(MouseHandler.gameCanvas);
             Class55.method965(32, MouseHandler.gameCanvas);
             this.setCanvas();
-            GameInterface.method642(MouseHandler.gameCanvas, -10);
+            GameInterface.method642(MouseHandler.gameCanvas);
             RSRuntimeException.method1056(MouseHandler.gameCanvas, (byte) 33);
         }
         if (Class51.gameStatusCode == 0)
@@ -2025,7 +2020,7 @@ public class Main extends GameShell {
             MovedStatics.gameServerSocket = null;
         }
         ItemDefinition.method744();
-        Class13.method249(true);
+        Class13.method249();
         MusicSystem.syncedStop(false);
         SoundSystem.stop();
         UpdateServer.killUpdateServerSocket();
@@ -2058,7 +2053,7 @@ public class Main extends GameShell {
         currentPort = OverlayDefinition.gameServerPort;
 
         MovedStatics.method997();
-        GameInterface.method642(MouseHandler.gameCanvas, -10);
+        GameInterface.method642(MouseHandler.gameCanvas);
         RSRuntimeException.method1056(MouseHandler.gameCanvas, (byte) 70);
         RSCanvas.anInt57 = Signlink.anInt737;
         try {

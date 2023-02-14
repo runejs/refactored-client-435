@@ -47,9 +47,7 @@ public class Class13 {
         Class40_Sub5_Sub15.method736(true, actor);
     }
 
-    public static void handleRequests(byte arg0) {
-        if(arg0 > -88)
-            method247(null, (byte) 34);
+    public static void handleRequests() {
         for(; ; ) {
             Class40_Sub6 class40_sub6;
             synchronized(RSCanvas.aLinkedList_53) {
@@ -98,9 +96,7 @@ public class Class13 {
         return new byte[arg1];
     }
 
-    public static int[] method247(GameInterface arg0, byte arg1) {
-        if(arg1 <= 74)
-            anInt419 = -37;
+    public static int[] method247(GameInterface arg0) {
         int i;
         if(arg0.id < 0)
             i = arg0.parentId >> 16;
@@ -127,9 +123,7 @@ public class Class13 {
         return is;
     }
 
-    public static void method249(boolean arg0) {
-        if(!arg0)
-            generateHslBitset(-58, 116, 98);
+    public static void method249() {
         if(GameObject.frame != null) {
             synchronized(GameObject.frame) {
                 GameObject.frame = null;

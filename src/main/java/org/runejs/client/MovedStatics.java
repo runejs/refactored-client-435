@@ -1052,12 +1052,9 @@ public class MovedStatics {
         ItemDefinition.count = Class26.aCacheArchive_632.fileLength(10);
     }
 
-    public static int method888(int x, byte junk, int y) {
+    public static int method888(int x, int y) {
         int vertexHeight = -128 + perlinNoise(x + 45365, 91923 + y, 4) - (-(perlinNoise(x + 10294, 37821 + y, 2) - 128 >> 1) + -(-128 + perlinNoise(x, y, 1) >> 2));
         vertexHeight = 35 + (int) (0.3 * (double) vertexHeight);
-
-        if(junk != -45)
-            return -24;
 
         if(vertexHeight >= 10) {
             if(vertexHeight > 60)
@@ -1141,7 +1138,7 @@ public class MovedStatics {
 	            int opcode = fileData.getUnsignedByte();
 	            if(opcode == 0) {
 	                if(level == 0) {
-                        tile_height[0][x][y] = -method888(regionX + x + 932731, (byte) -45, regionY + 556238 + y) * 8;
+                        tile_height[0][x][y] = -method888(regionX + x + 932731, regionY + 556238 + y) * 8;
                     } else {
                         tile_height[level][x][y] = -240 + tile_height[level + -1][x][y];
                     }
@@ -1492,7 +1489,7 @@ public class MovedStatics {
 	                ChatBox.chatMessage = ChatBox.chatMessage.substring(0, -1 + ChatBox.chatMessage.length());
 	                ChatBox.redrawChatbox = true;
 	            }
-	            if(Player.method793((byte) 120, Class59.anInt1388) && ChatBox.chatMessage.length() < 80) {
+	            if(Player.method793(Class59.anInt1388) && ChatBox.chatMessage.length() < 80) {
 	                ChatBox.chatMessage = ChatBox.chatMessage + (char) Class59.anInt1388;
 	                ChatBox.redrawChatbox = true;
 	            }
@@ -1578,7 +1575,7 @@ public class MovedStatics {
 	                ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 10);
 	                ChatBox.redrawChatbox = true;
 	            }
-	            if(Player.method793((byte) 122, Class59.anInt1388) && ChatBox.inputMessage.length() < 40) {
+	            if(Player.method793(Class59.anInt1388) && ChatBox.inputMessage.length() < 40) {
 	                ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
 	                ChatBox.redrawChatbox = true;
 	            }
@@ -1587,7 +1584,7 @@ public class MovedStatics {
 	                ChatBox.chatboxInput = ChatBox.chatboxInput.substring(0, ChatBox.chatboxInput.length() - 1);
 	                ChatBox.redrawChatbox = true;
 	            }
-	            if(Player.method793((byte) 124, Class59.anInt1388) && ChatBox.chatboxInput.length() < 80) {
+	            if(Player.method793(Class59.anInt1388) && ChatBox.chatboxInput.length() < 80) {
 	                ChatBox.chatboxInput = ChatBox.chatboxInput + (char) Class59.anInt1388;
 	                ChatBox.redrawChatbox = true;
 	            }

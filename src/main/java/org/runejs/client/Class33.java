@@ -1,7 +1,6 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.def.ActorDefinition;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.frame.ChatBox;
@@ -221,7 +220,7 @@ public class Class33 {
         }
     }
 
-    public static void method406(int arg0, int arg1, int arg2, int arg3) {
+    public static void method406(int arg0, int arg1, int arg2) {
         if(arg1 == 1) {
             SceneCluster.packetBuffer.putPacket(111);
             SceneCluster.packetBuffer.putIntBE(arg2);
@@ -272,23 +271,17 @@ public class Class33 {
             SceneCluster.packetBuffer.putIntBE(arg2);
             SceneCluster.packetBuffer.putShortBE(arg0);
         }
-        if(arg3 > -112)
-            OverlayDefinition.overlayDefinitionCache = null;
     }
 
-    public static boolean menuHasAddFriend(byte arg0, int arg1) {
-        if(arg1 < 0)
-            return false;
+    public static boolean menuHasAddFriend(int arg1) {
         int i = MovedStatics.menuActionTypes[arg1];
         if(i >= 2000)
             i -= 2000;
         return i == 45;
     }
 
-    public static int getRotatedTileY(int x, int y, int rotation, boolean arg3) {
+    public static int getRotatedTileY(int x, int y, int rotation) {
         rotation &= 0x3;
-        if(arg3)
-            return -80;
         if(rotation == 0)
             return y;
         if(rotation == 1)

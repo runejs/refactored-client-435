@@ -203,7 +203,7 @@ public class GameInterface extends CachedNode {
         textureId = 0;
     }
 
-    public static void method639(int arg0) {
+    public static void method639() {
         synchronized(Class59.keyFocusListener) {
             Class59.anInt1389 = GenericTile.anInt1214;
             if(GameObjectDefinition.anInt2543 < 0) {
@@ -224,9 +224,6 @@ public class GameInterface extends CachedNode {
             }
             GenericTile.anInt1214 = IdentityKit.anInt2598;
         }
-        if(arg0 <= 121) {
-            English.startingGameEngine = null;
-        }
     }
 
     public static void method640() {
@@ -234,10 +231,7 @@ public class GameInterface extends CachedNode {
     }
 
 
-    public static void method642(Component arg0, int arg1) {
-        if(arg1 != -10) {
-            method639(-106);
-        }
+    public static void method642(Component arg0) {
         Method method = Signlink.aMethod729;
         if(method != null) {
             try {
@@ -1093,7 +1087,7 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortBE(i + MovedStatics.baseX);
                     }
                     if(action == 50) {
-                        Class33.method406(i, npcIdx, i_10_, -121);
+                        Class33.method406(i, npcIdx, i_10_);
                     }
                     if(action == 40) {
                         resetInterface(ChatBox.dialogueId);
@@ -1334,8 +1328,8 @@ public class GameInterface extends CachedNode {
             GameInterface gameInterface = Wall.aGameInterface_353;
             GameInterface gameInterface_24_ = FramemapDefinition.method878(gameInterface);
             if(gameInterface_24_ != null) {
-                int[] is = Class13.method247(gameInterface_24_, (byte) 97);
-                int[] is_25_ = Class13.method247(gameInterface, (byte) 110);
+                int[] is = Class13.method247(gameInterface_24_);
+                int[] is_25_ = Class13.method247(gameInterface);
                 int i = is_25_[1] - is[1] + -MovedStatics.anInt2621 + Landscape.mouseY;
                 int i_26_ = -is[0] + is_25_[0] + Class13.mouseX + -MovedStatics.anInt1996;
                 if(i < 0) {
