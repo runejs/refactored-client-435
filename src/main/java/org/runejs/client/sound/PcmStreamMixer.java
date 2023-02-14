@@ -25,7 +25,7 @@ public class PcmStreamMixer extends PcmStream {
 
     public synchronized void addSubStream(PcmStream arg0) {
         LinkedList linkedList = this.substreams[method849(arg0)];
-        linkedList.addFirst(0, arg0);
+        linkedList.addFirst(arg0);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class PcmStreamMixer extends PcmStream {
             arg0 -= i;
             this.anInt2877 += i;
             this.loop0();
-            PcmStreamMixerListener class40_sub8 = (PcmStreamMixerListener) this.head.peekFirst((byte) -90);
+            PcmStreamMixerListener class40_sub8 = (PcmStreamMixerListener) this.head.peekFirst();
             synchronized(class40_sub8) {
                 int i_0_ = class40_sub8.update(this);
                 if(i_0_ < 0) {
@@ -63,7 +63,7 @@ public class PcmStreamMixer extends PcmStream {
         for(/**/; arg0 != this.head.last && ((PcmStreamMixerListener) arg0).anInt2133 <= arg1.anInt2133; arg0 = arg0.next) {
             /* empty */
         }
-        this.head.addBefore(-31793, arg0, arg1);
+        this.head.addBefore(arg0, arg1);
         this.anInt2876 = ((PcmStreamMixerListener) this.head.last.next).anInt2133;
     }
 
@@ -73,16 +73,16 @@ public class PcmStreamMixer extends PcmStream {
             this.anInt2875 += SoundSystem.SAMPLE_RATE >> 4;
             for(int i = 0; i < 8; i++) {
                 LinkedList linkedList = this.substreams[i];
-                for(PcmStream class40_sub9 = (PcmStream) linkedList.peekFirst((byte) -90); class40_sub9 != null; class40_sub9 = (PcmStream) linkedList.pollFirst(-4)) {
+                for(PcmStream class40_sub9 = (PcmStream) linkedList.peekFirst(); class40_sub9 != null; class40_sub9 = (PcmStream) linkedList.pollFirst()) {
                     int i_1_ = method849(class40_sub9);
                     if(i_1_ != i)
-                        this.substreams[i_1_].addFirst(0, class40_sub9);
+                        this.substreams[i_1_].addFirst(class40_sub9);
                 }
             }
         }
         for(int i = 0; i < 8; i++) {
             LinkedList linkedList = this.substreams[i];
-            for(PcmStream stream = (PcmStream) linkedList.peekFirst((byte) -90); stream != null; stream = (PcmStream) linkedList.pollFirst(-4)) {
+            for(PcmStream stream = (PcmStream) linkedList.peekFirst(); stream != null; stream = (PcmStream) linkedList.pollFirst()) {
                 stream.active = false;
                 if(stream.sound != null)
                     stream.sound.position = 0;
@@ -105,7 +105,7 @@ public class PcmStreamMixer extends PcmStream {
                 if((i_6_ & 0x1) != 0) {
                     i_2_ &= 1 << i_4_ ^ 0xffffffff;
                     LinkedList linkedList = this.substreams[i_4_];
-                    for(PcmStream stream = (PcmStream) linkedList.peekFirst((byte) -90); stream != null; stream = (PcmStream) linkedList.pollFirst(-4)) {
+                    for(PcmStream stream = (PcmStream) linkedList.peekFirst(); stream != null; stream = (PcmStream) linkedList.pollFirst()) {
                         if(!stream.active) {
                             AbstractSound class40_sub12 = stream.sound;
                             if(class40_sub12 != null && class40_sub12.position > i_5_)
@@ -147,14 +147,14 @@ public class PcmStreamMixer extends PcmStream {
             this.anInt2875 = 0;
         for(int i = 0; i < 8; i++) {
             LinkedList linkedList = this.substreams[i];
-            for(PcmStream stream = (PcmStream) linkedList.peekFirst((byte) -90); stream != null; stream = (PcmStream) linkedList.pollFirst(-4))
+            for(PcmStream stream = (PcmStream) linkedList.peekFirst(); stream != null; stream = (PcmStream) linkedList.pollFirst())
                 stream.skip(arg0);
         }
     }
 
     private void loop0() {
         if(this.anInt2877 > 0) {
-            for(PcmStreamMixerListener class40_sub8 = (PcmStreamMixerListener) this.head.peekFirst((byte) -90); class40_sub8 != null; class40_sub8 = (PcmStreamMixerListener) this.head.pollFirst(-4))
+            for(PcmStreamMixerListener class40_sub8 = (PcmStreamMixerListener) this.head.peekFirst(); class40_sub8 != null; class40_sub8 = (PcmStreamMixerListener) this.head.pollFirst())
                 class40_sub8.anInt2133 -= this.anInt2877;
             this.anInt2876 -= this.anInt2877;
             this.anInt2877 = 0;
@@ -176,7 +176,7 @@ public class PcmStreamMixer extends PcmStream {
             arg2 -= i;
             this.anInt2877 += i;
             this.loop0();
-            PcmStreamMixerListener class40_sub8 = (PcmStreamMixerListener) this.head.peekFirst((byte) -90);
+            PcmStreamMixerListener class40_sub8 = (PcmStreamMixerListener) this.head.peekFirst();
             synchronized(class40_sub8) {
                 int i_9_ = class40_sub8.update(this);
                 if(i_9_ < 0) {
