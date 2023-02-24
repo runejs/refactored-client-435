@@ -63,12 +63,12 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
         return false;
     }
 
-    public static int method1052(String arg1, Buffer arg2) {
-        int i = arg2.currentPosition;
-        byte[] strBytes = arg1.getBytes(StandardCharsets.UTF_8);
-        arg2.putSmart(strBytes.length);
-        arg2.currentPosition += IdentityKit.aHuffmanEncoding_2590.encrypt(0, arg2.currentPosition, strBytes.length, strBytes, arg2.buffer);
-        return -i + arg2.currentPosition;
+    public static int method1052(String value, Buffer buffer) {
+        int startingPosition = buffer.currentPosition;
+        byte[] strBytes = value.getBytes(StandardCharsets.UTF_8);
+        buffer.putSmart(strBytes.length);
+        buffer.currentPosition += IdentityKit.aHuffmanEncoding_2590.encrypt(0, buffer.currentPosition, strBytes.length, strBytes, buffer.buffer);
+        return buffer.currentPosition - startingPosition;
 
     }
 
