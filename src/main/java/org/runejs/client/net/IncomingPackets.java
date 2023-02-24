@@ -1,8 +1,10 @@
 package org.runejs.client.net;
 
+import org.runejs.client.*;
+import org.runejs.client.cache.def.*;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
-import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
+import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.frame.console.Console;
 import org.runejs.client.input.KeyFocusListener;
@@ -26,11 +28,8 @@ import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.tile.WallDecoration;
-import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.TextUtils;
-import org.runejs.client.*;
-import org.runejs.client.cache.def.*;
 
 public class IncomingPackets {
     public static int incomingPacketSize = 0;
@@ -738,14 +737,6 @@ public class IncomingPackets {
             }
             if(opcode == PacketType.UPDATE_NPCS.getOpcode()) {
                 parseNpcUpdatePacket();
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.PLAY_SOUND.getOpcode()) {
-                int soundId = incomingPacketBuffer.getUnsignedShortBE();
-                int volume = incomingPacketBuffer.getUnsignedByte();
-                int delay = incomingPacketBuffer.getUnsignedShortBE();
-                SoundSystem.play(soundId, volume, delay);
                 opcode = -1;
                 return true;
             }
