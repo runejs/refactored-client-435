@@ -1,6 +1,7 @@
 package org.runejs.client.net.codec.runejs435;
 
 import org.runejs.client.message.outbound.chat.SendChatMessageOutboundMessage;
+import org.runejs.client.message.outbound.chat.SendPrivateMessageOutboundMessage;
 import org.runejs.client.net.PacketType;
 import org.runejs.client.net.codec.MessagePacketCodec;
 import org.runejs.client.net.codec.runejs435.decoder.chat.*;
@@ -19,6 +20,7 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
 
     private void registerEncoders() {
         register(SendChatMessageOutboundMessage.class, new SendChatMessageMessageEncoder());
+        register(SendPrivateMessageOutboundMessage.class, new SendPrivateMessageMessageEncoder());
     }
 
     private void registerDecoders() {

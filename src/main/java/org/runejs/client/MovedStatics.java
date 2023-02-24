@@ -44,6 +44,7 @@ import org.runejs.client.util.TextUtils;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.media.renderable.actor.*;
 import org.runejs.client.message.outbound.chat.SendChatMessageOutboundMessage;
+import org.runejs.client.message.outbound.chat.SendPrivateMessageOutboundMessage;
 import org.runejs.client.scene.tile.*;
 import org.runejs.Configuration;
 
@@ -1507,14 +1508,11 @@ public class MovedStatics {
 	                    GameShell.method28(l);
 	                }
 	                if(Class37.anInt876 == 3 && ChatBox.chatMessage.length() > 0) {
-                        // TODO (James) private messages
-	                    SceneCluster.packetBuffer.putPacket(207);
-	                    SceneCluster.packetBuffer.putByte(0);
-	                    int i = SceneCluster.packetBuffer.currentPosition;
-	                    SceneCluster.packetBuffer.putLongBE(PacketBuffer.aLong2241);
+                        // private messages
 	                    ChatBox.filterInput();
-	                    ProducingGraphicsBuffer_Sub1.method1052(ChatBox.chatMessage, SceneCluster.packetBuffer);
-	                    SceneCluster.packetBuffer.finishVarByte(-i + SceneCluster.packetBuffer.currentPosition);
+
+                        OutgoingPackets.sendMessage(new SendPrivateMessageOutboundMessage(PacketBuffer.aLong2241, ChatBox.chatboxInput));
+                        
 	                    if(ChatBox.privateChatMode == 2) {
 	                        ChatBox.privateChatMode = 1;
 	                        redrawChatbox = true;
