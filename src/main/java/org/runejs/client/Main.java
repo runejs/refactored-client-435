@@ -57,6 +57,8 @@ public class Main extends GameShell {
 
     /**
      * The codec currently in use to encode and decode packets.
+     * 
+     * TODO (Jameskmonger) add a clear way to use different codecs
      */
     public static final MessagePacketCodec packetCodec = new RuneJS435PacketCodec();
     
