@@ -982,41 +982,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.PRIVATE_MESSAGE_RECEIVED.getOpcode()) {
-                long fromPlayerIndex = incomingPacketBuffer.getLongBE();
-                long chatIdModifier = incomingPacketBuffer.getUnsignedShortBE();
-                long privateMessageCounter = incomingPacketBuffer.getMediumBE();
-                int fromPlayerRights = incomingPacketBuffer.getUnsignedByte();
-                boolean hideMessage = false;
-                long chatId = (chatIdModifier << 32) + privateMessageCounter;
-                for(int msgIndex = 0; msgIndex < 100; msgIndex++) {
-                    if(chatId == Player.privateMessageIds[msgIndex]) {
-                        hideMessage = true;
-                        break;
-                    }
-                }
-                if(fromPlayerRights <= 1) {
-                    for(int ignoreIndex = 0; ignoreIndex < MovedStatics.anInt1008; ignoreIndex++) {
-                        if(fromPlayerIndex == Player.ignores[ignoreIndex]) {
-                            hideMessage = true;
-                            break;
-                        }
-                    }
-                }
-                if(!hideMessage && !Player.inTutorialIsland) {
-                    Player.privateMessageIds[Player.privateMessageIndex] = chatId;
-                    Player.privateMessageIndex = (1 + Player.privateMessageIndex) % 100;
-                    String privateMessage = RSString.formatChatString(KeyFocusListener.method956(incomingPacketBuffer));
-                    if(fromPlayerRights == 2 || fromPlayerRights == 3)
-                        ChatBox.addChatMessage(Native.goldCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), privateMessage, 7);
-                    else if(fromPlayerRights == 1)
-                        ChatBox.addChatMessage(Native.whiteCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), privateMessage, 7);
-                    else
-                        ChatBox.addChatMessage(TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), privateMessage, 3);
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.RESET_ACTOR_ANIMATIONS.getOpcode()) {
                 for(int playerIdx = 0; playerIdx < Player.trackedPlayers.length; playerIdx++) {
                     if(Player.trackedPlayers[playerIdx] != null)
