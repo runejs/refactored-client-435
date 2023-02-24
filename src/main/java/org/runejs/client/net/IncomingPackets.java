@@ -675,15 +675,6 @@ public class IncomingPackets {
                 MovedStatics.lastContinueTextWidgetId = -1;
                 return true;
             }
-            if(opcode == PacketType.PLAY_QUICK_SONG.getOpcode()) {
-                int songTimeout = incomingPacketBuffer.getMediumBE();
-                int songId = incomingPacketBuffer.getUnsignedShortBE();
-                if(songId == 65535)
-                    songId = -1;
-                MusicSystem.playSoundJingle(songTimeout, songId);
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.UPDATE_REFERENCE_POSITION.getOpcode()) {
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
