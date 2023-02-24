@@ -296,52 +296,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 82) { // duel/trade/challenge request, or regular chat message
-                String message = incomingPacketBuffer.getString();
-                if(message.endsWith(Native.tradeRequest)) {
-                    String username = message.substring(0, message.indexOf(Native.colon));
-                    long l = RSString.nameToLong(username);
-                    boolean bool = false;
-                    for(int i_33_ = 0; i_33_ < MovedStatics.anInt1008; i_33_++) {
-                        if(l == Player.ignores[i_33_]) {
-                            bool = true;
-                            break;
-                        }
-                    }
-                    if(!bool && !Player.inTutorialIsland)
-                        ChatBox.addChatMessage(username, "wishes to trade with you.", 4);
-                } else if(message.endsWith(Native.duelRequest)) {
-                    String username = message.substring(0, message.indexOf(Native.colon));
-                    long l = RSString.nameToLong(username);
-                    boolean bool = false;
-                    for(int i_31_ = 0; MovedStatics.anInt1008 > i_31_; i_31_++) {
-                        if(l == Player.ignores[i_31_]) {
-                            bool = true;
-                            break;
-                        }
-                    }
-                    if(!bool && !Player.inTutorialIsland)
-                        ChatBox.addChatMessage(username, English.suffixWishesToDuelWithYou, 8);
-                } else if(message.endsWith(Native.challengeRequest)) {
-                    String username = message.substring(0, message.indexOf(Native.colon));
-                    long l = RSString.nameToLong(username);
-                    boolean bool = false;
-                    for(int i_28_ = 0; i_28_ < MovedStatics.anInt1008; i_28_++) {
-                        if(l == Player.ignores[i_28_]) {
-                            bool = true;
-                            break;
-                        }
-                    }
-                    if(!bool && !Player.inTutorialIsland) {
-                        String challengeMessage = message.substring(1 + message.indexOf(Native.colon), -9 + message.length());
-                        ChatBox.addChatMessage(username, challengeMessage, 8);
-                    }
-                } else {
-                    ChatBox.addChatMessage("", message, 0);
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == 83) { // console command
                 RSString message = incomingPacketBuffer.getRSString();
                 Console.console.log("<col=FFFF00>" + message.toString() + "</col>");
