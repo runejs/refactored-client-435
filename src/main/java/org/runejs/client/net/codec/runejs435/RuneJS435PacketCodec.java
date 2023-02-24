@@ -24,5 +24,6 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.FORCE_PRIVATE_MESSAGE.getOpcode(), new ForcedPrivateMessageDecoder());
         register(PacketType.FRIEND_LOGGED_IN.getOpcode(), new FriendChangedWorldMessageDecoder());
         register(PacketType.SET_CHAT_MODES.getOpcode(), new SetChatModesMessageDecoder());
+        register(PacketType.SET_FRIEND_LIST_STATUS.getOpcode(), new SetFriendsListStatusMessageDecoder());
     }
 }

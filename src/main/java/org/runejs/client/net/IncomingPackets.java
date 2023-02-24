@@ -838,12 +838,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.SET_FRIEND_LIST_STATUS.getOpcode()) {
-                Player.friendListStatus = incomingPacketBuffer.getUnsignedByte();
-                GameInterface.redrawTabArea = true;
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.SET_WIDGET_ITEM_MODEL.getOpcode()) {
                 int zoom = incomingPacketBuffer.getUnsignedShortBE();
                 int itemId = incomingPacketBuffer.getUnsignedShortLE();

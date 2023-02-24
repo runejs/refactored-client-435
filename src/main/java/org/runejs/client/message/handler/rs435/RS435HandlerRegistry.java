@@ -13,5 +13,6 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(ForcedPrivateMessageInboundMessage.class, new ForcedPrivateMessageHandler());
         register(FriendChangedWorldInboundMessage.class, new FriendChangedWorldMessageHandler());
         register(SetChatModesInboundMessage.class, new SetChatModesMessageHandler());
+        register(SetFriendsListStatusInboundMessage.class, new SetFriendsListStatusMessageHandler());
     }
 }
