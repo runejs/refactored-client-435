@@ -620,15 +620,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 196) { // set chat mode configs
-                ChatBox.publicChatMode = incomingPacketBuffer.getUnsignedByte();
-                ChatBox.privateChatMode = incomingPacketBuffer.getUnsignedByte();
-                ChatBox.tradeMode = incomingPacketBuffer.getUnsignedByte();
-                ChatBox.redrawChatbox = true;
-                MovedStatics.redrawChatbox = true;
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.SET_SYSTEM_UPDATE_TIME.getOpcode()) {
                 Class40_Sub5_Sub15.systemUpdateTime = incomingPacketBuffer.getUnsignedShortLE() * 30;
                 opcode = -1;

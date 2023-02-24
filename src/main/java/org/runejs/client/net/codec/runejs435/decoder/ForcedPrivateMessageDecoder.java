@@ -8,7 +8,7 @@ import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.net.codec.MessageDecoder;
 
 /**
- * A {@link MessageDecoder} that decodes {@link ReceivePrivateMessageInboundMessage}s.
+ * A {@link MessageDecoder} that decodes {@link ForcedPrivateMessageInboundMessage}s.
  */
 public class ForcedPrivateMessageDecoder implements MessageDecoder<ForcedPrivateMessageInboundMessage> {
     @Override
