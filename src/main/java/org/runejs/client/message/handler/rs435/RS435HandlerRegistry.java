@@ -1,7 +1,8 @@
 package org.runejs.client.message.handler.rs435;
 
 import org.runejs.client.message.handler.MessageHandlerRegistry;
-import org.runejs.client.message.inbound.*;
+import org.runejs.client.message.handler.rs435.chat.*;
+import org.runejs.client.message.inbound.chat.*;
 
 /**
  * A {@link MessageHandlerRegistry} for the RS revision 435 client.

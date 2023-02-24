@@ -1,4 +1,4 @@
-package org.runejs.client.message.handler.rs435;
+package org.runejs.client.message.handler.rs435.chat;
 
 import org.runejs.client.MovedStatics;
 import org.runejs.client.RSString;
@@ -7,8 +7,7 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
-import org.runejs.client.message.inbound.ReceiveChatboxMessageInboundMessage;
-import org.runejs.client.message.inbound.ReceivePrivateMessageInboundMessage;
+import org.runejs.client.message.inbound.chat.ReceiveChatboxMessageInboundMessage;
 
 /**
  * A {@link MessageHandler} that handles {@link ReceiveChatboxMessageInboundMessage}s.

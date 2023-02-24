@@ -1,9 +1,9 @@
-package org.runejs.client.message.handler.rs435;
+package org.runejs.client.message.handler.rs435.chat;
 
 import org.runejs.client.MovedStatics;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.message.handler.MessageHandler;
-import org.runejs.client.message.inbound.SetChatModesInboundMessage;
+import org.runejs.client.message.inbound.chat.SetChatModesInboundMessage;
 
 /**
  * A {@link MessageHandler} that handles {@link SetChatModesInboundMessage}s.

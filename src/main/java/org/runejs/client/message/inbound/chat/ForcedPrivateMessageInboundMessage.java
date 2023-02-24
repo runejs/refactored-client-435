@@ -1,4 +1,4 @@
-package org.runejs.client.message.inbound;
+package org.runejs.client.message.inbound.chat;
 
 import org.runejs.client.message.InboundMessage;
 

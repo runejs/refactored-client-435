@@ -1,8 +1,8 @@
-package org.runejs.client.net.codec.runejs435.decoder;
+package org.runejs.client.net.codec.runejs435.decoder.chat;
 
 import org.runejs.client.RSString;
 import org.runejs.client.input.KeyFocusListener;
-import org.runejs.client.message.inbound.ReceivePrivateMessageInboundMessage;
+import org.runejs.client.message.inbound.chat.ReceivePrivateMessageInboundMessage;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.net.codec.MessageDecoder;
 

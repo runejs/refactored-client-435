@@ -1,6 +1,6 @@
-package org.runejs.client.net.codec.runejs435.decoder;
+package org.runejs.client.net.codec.runejs435.decoder.chat;
 
-import org.runejs.client.message.inbound.SetChatModesInboundMessage;
+import org.runejs.client.message.inbound.chat.SetChatModesInboundMessage;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.net.codec.MessageDecoder;
 

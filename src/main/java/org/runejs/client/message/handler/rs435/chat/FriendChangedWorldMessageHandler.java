@@ -1,4 +1,4 @@
-package org.runejs.client.message.handler.rs435;
+package org.runejs.client.message.handler.rs435.chat;
 
 import org.runejs.client.Class59;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
@@ -6,8 +6,7 @@ import org.runejs.client.frame.ChatBox;
 import org.runejs.client.language.English;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
-import org.runejs.client.message.inbound.ForcedPrivateMessageInboundMessage;
-import org.runejs.client.message.inbound.FriendChangedWorldInboundMessage;
+import org.runejs.client.message.inbound.chat.FriendChangedWorldInboundMessage;
 
 /**
  * A {@link MessageHandler} that handles {@link FriendChangedWorldMessageHandler}s.

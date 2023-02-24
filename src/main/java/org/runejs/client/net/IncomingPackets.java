@@ -1,14 +1,13 @@
 package org.runejs.client.net;
 
+import org.runejs.client.*;
+import org.runejs.client.cache.def.*;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
-import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
+import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.frame.console.Console;
-import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.io.Buffer;
-import org.runejs.client.language.English;
-import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
@@ -18,7 +17,6 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.InboundMessage;
 import org.runejs.client.message.handler.MessageHandler;
-import org.runejs.client.message.inbound.ForcedPrivateMessageInboundMessage;
 import org.runejs.client.net.codec.MessageDecoder;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
@@ -29,9 +27,6 @@ import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
-import org.runejs.client.util.TextUtils;
-import org.runejs.client.*;
-import org.runejs.client.cache.def.*;
 
 public class IncomingPackets {
     public static int incomingPacketSize = 0;

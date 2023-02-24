@@ -1,6 +1,6 @@
-package org.runejs.client.net.codec.runejs435.decoder;
+package org.runejs.client.net.codec.runejs435.decoder.chat;
 
-import org.runejs.client.message.inbound.SetFriendsListStatusInboundMessage;
+import org.runejs.client.message.inbound.chat.SetFriendsListStatusInboundMessage;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.net.codec.MessageDecoder;
 
