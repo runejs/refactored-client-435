@@ -675,14 +675,6 @@ public class IncomingPackets {
                 MovedStatics.lastContinueTextWidgetId = -1;
                 return true;
             }
-            if(opcode == PacketType.PLAY_SONG.getOpcode()) {
-                int songId = incomingPacketBuffer.getUnsignedShortLE();
-                if(songId == 65535)
-                    songId = -1;
-                MusicSystem.playSong(songId);
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.PLAY_QUICK_SONG.getOpcode()) {
                 int songTimeout = incomingPacketBuffer.getMediumBE();
                 int songId = incomingPacketBuffer.getUnsignedShortBE();
