@@ -23,7 +23,11 @@ import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
+import org.runejs.client.message.handler.MessageHandlerRegistry;
+import org.runejs.client.message.handler.rs435.RS435HandlerRegistry;
 import org.runejs.client.net.*;
+import org.runejs.client.net.codec.MessagePacketCodec;
+import org.runejs.client.net.codec.runejs435.RuneJS435PacketCodec;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.Scene;
@@ -50,6 +54,19 @@ import java.net.InetAddress;
 import java.net.Socket;
 
 public class Main extends GameShell {
+
+    /**
+     * The codec currently in use to encode and decode packets.
+     * 
+     * TODO (Jameskmonger) add a clear way to use different codecs
+     */
+    public static final MessagePacketCodec packetCodec = new RuneJS435PacketCodec();
+    
+    /**
+     * The registry that holds all the InboundMessage handlers.
+     */
+    public static final MessageHandlerRegistry handlerRegistry = new RS435HandlerRegistry();
+
     public static int anInt1756 = 0;
     public static int menuOffsetY;
     public static int anInt1764 = 0;

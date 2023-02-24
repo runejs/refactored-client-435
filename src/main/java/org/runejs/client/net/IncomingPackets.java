@@ -16,6 +16,9 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
+import org.runejs.client.message.InboundMessage;
+import org.runejs.client.message.handler.MessageHandler;
+import org.runejs.client.net.codec.MessageDecoder;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
@@ -54,7 +57,7 @@ public class IncomingPackets {
                 incomingPacketBuffer.currentPosition = 0;
                 availableBytes--;
                 opcode = incomingPacketBuffer.getPacket();
-                incomingPacketSize = PacketType.findPacketSize(opcode);
+                incomingPacketSize = Main.packetCodec.getPacketLength(opcode);
             }
 
             if(incomingPacketSize == -1) {
@@ -83,11 +86,33 @@ public class IncomingPackets {
             }
 
             incomingPacketBuffer.currentPosition = 0;
-            MovedStatics.gameServerSocket.readDataToBuffer(0, incomingPacketSize, incomingPacketBuffer.buffer);
+
             cyclesSinceLastPacket = 0;
             thirdLastOpcode = secondLastOpcode;
             secondLastOpcode = lastOpcode;
             lastOpcode = opcode;
+
+            // find the correct decoder for this packet
+            MessageDecoder decoder = Main.packetCodec.getMessageDecoder(opcode);
+
+            if (decoder != null) {
+                // create a new packet buffer with the correct size, and read the data into it
+                PacketBuffer packetBuffer = new PacketBuffer(incomingPacketSize);
+                MovedStatics.gameServerSocket.readDataToBuffer(0, incomingPacketSize, packetBuffer.buffer);
+
+                // decode the packet and handle it
+                InboundMessage message = decoder.decode(packetBuffer);
+                MessageHandler handler = Main.handlerRegistry.getMessageHandler(message.getClass());
+                handler.handle(message);
+
+                opcode = -1;
+                return true;
+            }
+
+            // if we get here, we have no decoder for this packet
+            // and it is left to be handled by the old system
+
+            MovedStatics.gameServerSocket.readDataToBuffer(0, incomingPacketSize, incomingPacketBuffer.buffer);
 
             if(opcode == 71) {
                 long username = incomingPacketBuffer.getLongBE();

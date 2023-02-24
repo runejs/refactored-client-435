@@ -21,8 +21,18 @@ public class PacketBuffer extends Buffer {
     public ISAAC outCipher;
     public int bitoffset;
 
-    public PacketBuffer(int arg0) {
-        super(arg0);
+    /**
+     * The size of this packet buffer, in bytes.
+     */
+    public final int size;
+
+    /**
+     * Creates a new packet buffer with the specified size, in bytes.
+     */
+    public PacketBuffer(int size) {
+        super(size);
+
+        this.size = size;
     }
 
     public static void method513(int arg0, CacheArchive arg1, CacheIndex arg2, byte arg3) {
