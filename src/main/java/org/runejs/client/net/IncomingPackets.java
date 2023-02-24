@@ -115,53 +115,6 @@ public class IncomingPackets {
 
             MovedStatics.gameServerSocket.readDataToBuffer(0, incomingPacketSize, incomingPacketBuffer.buffer);
 
-            if(opcode == PacketType.FRIEND_LOGGED_IN.getOpcode()) {
-                long l = incomingPacketBuffer.getLongBE();
-                int i_1_ = incomingPacketBuffer.getUnsignedShortBE();
-                String string = Player.longToUsername(l).method85().toString();
-                for(int i_2_ = 0; i_2_ < Player.friendsCount; i_2_++) {
-                    if(l == Class59.friends[i_2_]) {
-                        if(i_1_ != Player.friendWorlds[i_2_]) {
-                            Player.friendWorlds[i_2_] = i_1_;
-                            GameInterface.redrawTabArea = true;
-                            if(i_1_ > 0)
-                                ChatBox.addChatMessage("", string + English.suffixHasLoggedIn, 5);
-                            if(i_1_ == 0)
-                                ChatBox.addChatMessage("", string + English.suffixHasLoggedOut, 5);
-                        }
-                        string = null;
-                        break;
-                    }
-                }
-                boolean bool = false;
-                if(string != null && Player.friendsCount < 200) {
-                    Class59.friends[Player.friendsCount] = l;
-                    Player.friendUsernames[Player.friendsCount] = string;
-                    Player.friendWorlds[Player.friendsCount] = i_1_;
-                    Player.friendsCount++;
-                    GameInterface.redrawTabArea = true;
-                }
-                while(!bool) {
-                    bool = true;
-                    for(int i_3_ = 0; Player.friendsCount - 1 > i_3_; i_3_++) {
-                        if(Player.worldId != Player.friendWorlds[i_3_] && Player.friendWorlds[1 + i_3_] == Player.worldId || Player.friendWorlds[i_3_] == 0 && Player.friendWorlds[i_3_ + 1] != 0) {
-                            bool = false;
-                            int i_4_ = Player.friendWorlds[i_3_];
-                            Player.friendWorlds[i_3_] = Player.friendWorlds[i_3_ + 1];
-                            Player.friendWorlds[1 + i_3_] = i_4_;
-                            String class1_5_ = Player.friendUsernames[i_3_];
-                            Player.friendUsernames[i_3_] = Player.friendUsernames[1 + i_3_];
-                            Player.friendUsernames[1 + i_3_] = class1_5_;
-                            long l_6_ = Class59.friends[i_3_];
-                            Class59.friends[i_3_] = Class59.friends[i_3_ + 1];
-                            Class59.friends[1 + i_3_] = l_6_;
-                            GameInterface.redrawTabArea = true;
-                        }
-                    }
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == 233) { // clear destination X
                 opcode = -1;
                 MovedStatics.destinationX = 0;

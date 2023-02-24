@@ -2,6 +2,7 @@ package org.runejs.client.message.handler.rs435;
 
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.inbound.ForcedPrivateMessageInboundMessage;
+import org.runejs.client.message.inbound.FriendChangedWorldInboundMessage;
 import org.runejs.client.message.inbound.ReceiveChatboxMessageInboundMessage;
 import org.runejs.client.message.inbound.ReceivePrivateMessageInboundMessage;
 
@@ -13,5 +14,6 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(ReceivePrivateMessageInboundMessage.class, new ReceivePrivateMessageHandler());
         register(ReceiveChatboxMessageInboundMessage.class, new ReceiveChatboxMessageHandler());
         register(ForcedPrivateMessageInboundMessage.class, new ForcedPrivateMessageHandler());
+        register(FriendChangedWorldInboundMessage.class, new FriendChangedWorldMessageHandler());
     }
 }
