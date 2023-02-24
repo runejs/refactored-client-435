@@ -18,6 +18,7 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.InboundMessage;
 import org.runejs.client.message.handler.MessageHandler;
+import org.runejs.client.message.inbound.ForcedPrivateMessageInboundMessage;
 import org.runejs.client.net.codec.MessageDecoder;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
@@ -114,14 +115,6 @@ public class IncomingPackets {
 
             MovedStatics.gameServerSocket.readDataToBuffer(0, incomingPacketSize, incomingPacketBuffer.buffer);
 
-            if(opcode == 71) {
-                long username = incomingPacketBuffer.getLongBE();
-                String message = RSString.formatChatString(KeyFocusListener.method956(incomingPacketBuffer));
-
-                ChatBox.addChatMessage(Player.longToUsername(username).method85().toString(), message, 6);
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.FRIEND_LOGGED_IN.getOpcode()) {
                 long l = incomingPacketBuffer.getLongBE();
                 int i_1_ = incomingPacketBuffer.getUnsignedShortBE();
