@@ -27,7 +27,19 @@ public class OutgoingPackets {
         return buffer;
     }
 
-    // TODO (Jameskmonger) add support for variable-length packets
+    /**
+     * Opens a variable-length packet with the specified opcode.
+     * 
+     * The first byte of the packet will be reserved for the size of the packet.
+     */
+    public static VariableLengthPacketBuffer openVariableSizePacket(int opcode) {
+        VariableLengthPacketBuffer buffer = new VariableLengthPacketBuffer();
+        
+        buffer.outCipher = outCipher;
+        buffer.putPacket(opcode);
+
+        return buffer;
+    }
 
     /**
      * Sends an OutboundMessage to the server.
@@ -42,7 +54,6 @@ public class OutgoingPackets {
         PacketBuffer buffer = encoder.encode(message);
 
         // TODO (Jameskmonger) this shouldn't live on SceneCluster
-        int initialPosition = SceneCluster.packetBuffer.currentPosition;
-        SceneCluster.packetBuffer.putBytes(0, buffer.size, buffer.buffer);
+        SceneCluster.packetBuffer.putBytes(0, buffer.getSize(), buffer.buffer);
     }
 }

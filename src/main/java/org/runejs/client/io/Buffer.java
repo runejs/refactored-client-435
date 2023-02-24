@@ -160,8 +160,13 @@ public class Buffer extends Node {
         buffer[currentPosition++] = (byte) value;
     }
 
-    public void finishVarByte(int value) {
-        buffer[-1 + currentPosition + -value] = (byte) value;
+    /**
+     * Updates the length marker byte for a variable length packet.
+     * 
+     * @param length The length of the packet.
+     */
+    public void finishVarByte(int length) {
+        buffer[-1 + currentPosition - length] = (byte) length;
     }
 
     public void putLongBE(long arg0) {

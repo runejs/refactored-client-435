@@ -1736,6 +1736,10 @@ public class Main extends GameShell {
                 MovedStatics.packetBuffer.putBytes(0, SceneCluster.packetBuffer.currentPosition, SceneCluster.packetBuffer.buffer);
                 MovedStatics.gameServerSocket.sendDataFromBuffer(MovedStatics.packetBuffer.currentPosition, 0, MovedStatics.packetBuffer.buffer);
                 SceneCluster.packetBuffer.initOutCipher(seeds);
+
+                // TODO (Jameskmonger) this allows the OutgoingPackets to access the ISAAC cipher. This is a hack and should be fixed.
+                OutgoingPackets.init(SceneCluster.packetBuffer.outCipher);
+                
                 for (int i = 0; i < 4; i++) {
                     seeds[i] += 50;
                 }

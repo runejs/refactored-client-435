@@ -24,7 +24,7 @@ public class PacketBuffer extends Buffer {
     /**
      * The size of this packet buffer, in bytes.
      */
-    public final int size;
+    private final int size;
 
     /**
      * Creates a new packet buffer with the specified size, in bytes.
@@ -33,6 +33,13 @@ public class PacketBuffer extends Buffer {
         super(size);
 
         this.size = size;
+    }
+
+    /**
+     * Gets the size of this packet buffer, in bytes.
+     */
+    public int getSize() {
+        return this.size;
     }
 
     public static void method513(int arg0, CacheArchive arg1, CacheIndex arg2, byte arg3) {
@@ -152,6 +159,7 @@ public class PacketBuffer extends Buffer {
     }
 
     public void putPacket(int packetId) {
+        //System.out.println("putPacket: " + packetId);
         buffer[currentPosition++] = (byte) (packetId + outCipher.nextInt() & 0xff);
     }
 
