@@ -17,6 +17,8 @@ public class NPCInteractionMessageEncoder implements MessageEncoder<NPCInteracti
                 return encodeOption1Interaction(message);
             case 2:
                 return encodeOption2Interaction(message);
+            case 3:
+                return encodeOption3Interaction(message);
             default:
                 throw new RuntimeException("Invalid option: " + message.option);
         }
@@ -44,6 +46,19 @@ public class NPCInteractionMessageEncoder implements MessageEncoder<NPCInteracti
         PacketBuffer buffer = OutgoingPackets.openFixedSizePacket(2, 57);
 
         buffer.putShortBE(message.npcIndex);
+
+        return buffer;
+    }
+
+    /**
+     * Encodes an interaction for the third option.
+     * @param message The message to encode
+     * @return The encoded packet
+     */
+    private PacketBuffer encodeOption3Interaction(NPCInteractionOutboundMessage message) {
+        PacketBuffer buffer = OutgoingPackets.openFixedSizePacket(2, 116);
+
+        buffer.putShortLE(message.npcIndex);
 
         return buffer;
     }

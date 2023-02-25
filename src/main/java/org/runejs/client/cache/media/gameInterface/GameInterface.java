@@ -1302,8 +1302,8 @@ public class GameInterface extends CachedNode {
                             ClientScriptRunner.crossX = Class57.clickX;
                             OverlayDefinition.crossIndex = 0;
                             MovedStatics.crossY = RSString.clickY;
-                            SceneCluster.packetBuffer.putPacket(116);
-                            SceneCluster.packetBuffer.putShortLE(npcIdx);
+
+                            OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(3, npcIdx));
                         }
                     }
                     if(MovedStatics.itemSelected != 0) {
