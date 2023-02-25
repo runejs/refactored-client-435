@@ -584,10 +584,19 @@ public class GameInterface extends CachedNode {
             }
             if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_4.getId()) {
                 AnimationSequence.method596(i, npcIdx, (byte) -79, i_10_);
-                SceneCluster.packetBuffer.putPacket(229);
-                SceneCluster.packetBuffer.putShortLE(MovedStatics.baseX + i);
-                SceneCluster.packetBuffer.putShortLE((0x1ffffd20 & npcIdx) >> 14);
-                SceneCluster.packetBuffer.putShortLE(Class26.baseY + i_10_);
+
+                int objectX = MovedStatics.baseX + i;
+                int objectId = (0x1ffffd20 & npcIdx) >> 14;
+                int objectY = Class26.baseY + i_10_;
+
+                OutgoingPackets.sendMessage(
+                    new ObjectInteractionOutboundMessage(
+                        4,
+                        objectId,
+                        objectX,
+                        objectY
+                    )
+                );
             }
             if(action == ActionRowType.CAST_MAGIC_ON_PLAYER.getId()) {
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[npcIdx];
