@@ -277,7 +277,7 @@ public class Class33 {
         int i = MovedStatics.menuActionTypes[arg1];
         if(i >= ActionRowType.LOW_PRIORITY_MODIFIER)
             i -= ActionRowType.LOW_PRIORITY_MODIFIER;
-        return i == 45;
+        return i == ActionRowType.ADD_FRIEND.getId();
     }
 
     public static int getRotatedTileY(int x, int y, int rotation) {
