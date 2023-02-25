@@ -1257,8 +1257,8 @@ public class GameInterface extends CachedNode {
                             ClientScriptRunner.crossX = Class57.clickX;
                             MovedStatics.crossY = RSString.clickY;
                             OverlayDefinition.crossIndex = 0;
-                            SceneCluster.packetBuffer.putPacket(153);
-                            SceneCluster.packetBuffer.putShortLE(npcIdx);
+
+                            OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(5, npcIdx));
                         }
                     }
                     if(action == ActionRowType.USE_ITEM_ON_WORLD_ITEM.getId()) {
