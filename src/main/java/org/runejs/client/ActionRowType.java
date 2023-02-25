@@ -28,8 +28,6 @@ public enum ActionRowType {
     // 54
     //      click to continue? (what else?)
 
-    // 1005 has some significance, what is it?
-
     /**
      * Toggle the value of a varp.
      *
@@ -315,6 +313,11 @@ public enum ActionRowType {
      * Examine an object.
      */
     EXAMINE_OBJECT(1004),
+
+    /**
+     * Cancels (closes) the menu.
+     */
+    CANCEL(1005),
 
     /**
      * Examine an item on a V1 widget.

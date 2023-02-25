@@ -64,7 +64,7 @@ public class Class43 {
     public static void processRightClick() {
         if(SceneTile.activeInterfaceType == 0) {
             Landscape.menuActionTexts[0] = English.cancel;
-            MovedStatics.menuActionTypes[0] = 1005;
+            MovedStatics.menuActionTypes[0] = ActionRowType.CANCEL.getId();
             ActorDefinition.menuActionRow = 1;
             if(GameInterface.fullscreenInterfaceId == -1) {
                 MovedStatics.method445();

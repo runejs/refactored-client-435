@@ -537,7 +537,7 @@ public class GameInterface extends CachedNode {
             }
 
             int npcIdx = Class33.selectedMenuActions[arg1];
-            if(ChatBox.inputType != 0 && action != 1005) {
+            if(ChatBox.inputType != 0 && action != ActionRowType.CANCEL.getId()) {
                 ChatBox.inputType = 0;
                 ChatBox.redrawChatbox = true;
             }
