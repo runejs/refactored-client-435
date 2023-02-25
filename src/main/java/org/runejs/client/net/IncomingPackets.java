@@ -98,6 +98,10 @@ public class IncomingPackets {
                 // decode the packet and handle it
                 InboundMessage message = decoder.decode(packetBuffer);
                 MessageHandler handler = Main.handlerRegistry.getMessageHandler(message.getClass());
+
+                if (handler == null)
+                    throw new RuntimeException("No handler for message: " + message.getClass().getName());
+
                 handler.handle(message);
 
                 opcode = -1;
