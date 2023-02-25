@@ -108,6 +108,9 @@ public class Main extends GameShell {
 
     /**
      * Recursive function that draws all the widgets within a GameInterface array.
+     * 
+     * TODO (James) make this use GameInterfaceArea for the areaId param
+     * 
      * @param areaId Mostly used for logical checks
      *   0 = Game area (the area that renders in 3D),
      *   1 = Tab area (the widgets that display within the tab area),
@@ -1466,7 +1469,7 @@ public class Main extends GameShell {
                                     if((ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend(ActorDefinition.menuActionRow - 1)) && ActorDefinition.menuActionRow > 2)
                                         Class60.determineMenuSize();
                                     else if(ActorDefinition.menuActionRow > 0)
-                                        GameInterface.processMenuActions(-1 + ActorDefinition.menuActionRow);
+                                        GameInterface.processMenuActions(ActorDefinition.menuActionRow - 1);
                                 }
                                 RSRuntimeException.anInt1651 = 10;
                                 MouseHandler.clickType = 0;
