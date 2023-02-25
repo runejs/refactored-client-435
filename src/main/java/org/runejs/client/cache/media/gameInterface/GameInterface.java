@@ -1143,8 +1143,8 @@ public class GameInterface extends CachedNode {
                             MovedStatics.crossY = RSString.clickY;
                             ClientScriptRunner.crossX = Class57.clickX;
                             OverlayDefinition.crossIndex = 0;
-                            SceneCluster.packetBuffer.putPacket(187);
-                            SceneCluster.packetBuffer.putShortLE(npcIdx);
+
+                            OutgoingPackets.sendMessage(new PlayerInteractionOutboundMessage(5, npcIdx));
                         }
                     }
                     if(action == ActionRowType.REPORT_ABUSE.getId()) {

@@ -22,6 +22,8 @@ public class PlayerInteractionMessageEncoder implements MessageEncoder<PlayerInt
                 return encodeOption3Interaction(message);
             case 4:
                 return encodeOption4Interaction(message);
+            case 5:
+                return encodeOption5Interaction(message);
             default:
                 throw new RuntimeException("Invalid option: " + message.option);
         }
@@ -75,6 +77,19 @@ public class PlayerInteractionMessageEncoder implements MessageEncoder<PlayerInt
         PacketBuffer buffer = OutgoingPackets.openFixedSizePacket(2, 96);
 
         buffer.putShortBE(message.playerIndex);
+
+        return buffer;
+    }
+
+    /**
+     * Encodes an interaction for the fifth option.
+     * @param message The message to encode
+     * @return The encoded packet
+     */
+    private PacketBuffer encodeOption5Interaction(PlayerInteractionOutboundMessage message) {
+        PacketBuffer buffer = OutgoingPackets.openFixedSizePacket(2, 187);
+
+        buffer.putShortLE(message.playerIndex);
 
         return buffer;
     }
