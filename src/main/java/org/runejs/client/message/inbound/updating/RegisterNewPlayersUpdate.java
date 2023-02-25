@@ -1,7 +1,7 @@
 package org.runejs.client.message.inbound.updating;
 
 public class RegisterNewPlayersUpdate {
-    class RegisterNewPlayerUpdate {
+    public static class RegisterNewPlayerUpdate {
         public final int playerIndex;
         public final int offsetX;
         public final int offsetY;

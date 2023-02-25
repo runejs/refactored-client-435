@@ -6,9 +6,11 @@ import java.util.List;
 import org.runejs.client.message.inbound.updating.LocalPlayerMovementUpdate;
 import org.runejs.client.message.inbound.updating.OtherPlayersMovementUpdate;
 import org.runejs.client.message.inbound.updating.PlayerMovementUpdate;
+import org.runejs.client.message.inbound.updating.RegisterNewPlayersUpdate;
 import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
 import org.runejs.client.message.inbound.updating.LocalPlayerMovementUpdate.LocalPlayerMapRegionChangeUpdate;
 import org.runejs.client.message.inbound.updating.OtherPlayersMovementUpdate.OtherPlayerMovementUpdate;
+import org.runejs.client.message.inbound.updating.RegisterNewPlayersUpdate.RegisterNewPlayerUpdate;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.net.codec.MessageDecoder;
 
@@ -18,11 +20,12 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
     public UpdatePlayersInboundMessage decode(PacketBuffer buffer) {
         LocalPlayerMovementUpdate localPlayerMovement = decodeLocalPlayerMovementUpdate(buffer);
         OtherPlayersMovementUpdate otherPlayersMovement = decodeOtherPlayersMovementUpdate(buffer);
+        RegisterNewPlayersUpdate registerNewPlayers = decodeRegisterNewPlayersUpdate(buffer);
 
         return new UpdatePlayersInboundMessage(
                 localPlayerMovement,
                 otherPlayersMovement,
-                null,
+                registerNewPlayers,
                 null);
     }
 
@@ -79,7 +82,7 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
 
         List<OtherPlayerMovementUpdate> updates = new ArrayList<OtherPlayerMovementUpdate>();
 
-        for(int i = 0; trackedPlayerCount > i; i++) {
+        for (int i = 0; trackedPlayerCount > i; i++) {
             int updateRequired = buffer.getBits(1);
 
             if (updateRequired == 0) {
@@ -88,12 +91,12 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
             }
 
             int movementType = buffer.getBits(2);
-            if(movementType == 0) { // No movement
+            if (movementType == 0) { // No movement
                 updates.add(new OtherPlayerMovementUpdate(null, false));
                 continue;
             }
 
-            if(movementType == 3) { // deregister
+            if (movementType == 3) { // deregister
                 updates.add(new OtherPlayerMovementUpdate(null, true));
                 continue;
             }
@@ -102,7 +105,8 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
                 int walkDirection = buffer.getBits(3);
                 int runUpdateBlock = buffer.getBits(1);
 
-                updates.add(new OtherPlayerMovementUpdate(new PlayerMovementUpdate(walkDirection, null, runUpdateBlock == 1), false));
+                updates.add(new OtherPlayerMovementUpdate(
+                        new PlayerMovementUpdate(walkDirection, null, runUpdateBlock == 1), false));
                 continue;
             }
 
@@ -111,14 +115,43 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
                 int runDirection = buffer.getBits(3);
                 int runUpdateBlock = buffer.getBits(1);
 
-                updates.add(new OtherPlayerMovementUpdate(new PlayerMovementUpdate(walkDirection, runDirection, runUpdateBlock == 1), false));
+                updates.add(new OtherPlayerMovementUpdate(
+                        new PlayerMovementUpdate(walkDirection, runDirection, runUpdateBlock == 1), false));
                 continue;
             }
 
             throw new IllegalStateException("Invalid movement type: " + movementType);
         }
 
-        return new OtherPlayersMovementUpdate(trackedPlayerCount, updates.toArray(new OtherPlayerMovementUpdate[updates.size()]));
+        return new OtherPlayersMovementUpdate(trackedPlayerCount,
+                updates.toArray(new OtherPlayerMovementUpdate[updates.size()]));
+    }
+
+    private RegisterNewPlayersUpdate decodeRegisterNewPlayersUpdate(PacketBuffer buffer) {
+        List<RegisterNewPlayerUpdate> updates = new ArrayList<RegisterNewPlayerUpdate>();
+
+        while (buffer.getRemainingBits(buffer.getSize()) >= 11) {
+            int newPlayerIndex = buffer.getBits(11);
+
+            if (newPlayerIndex == 2047)
+                break;
+
+            int offsetX = buffer.getBits(5);
+            int offsetY = buffer.getBits(5);
+            if (offsetX > 15)
+                offsetX -= 32;
+            if (offsetY > 15)
+                offsetY -= 32;
+            int initialFaceDirection = buffer.getBits(3);
+            int updateRequired = buffer.getBits(1);
+            int discardWalkingQueue = buffer.getBits(1);
+
+            updates.add(new RegisterNewPlayerUpdate(newPlayerIndex, offsetX, offsetY, initialFaceDirection,
+                    updateRequired == 1, discardWalkingQueue == 1));
+        }
+        buffer.finishBitAccess();
+
+        return new RegisterNewPlayersUpdate(updates.toArray(new RegisterNewPlayerUpdate[updates.size()]));
     }
 
 }
