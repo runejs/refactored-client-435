@@ -18,6 +18,8 @@ public class ObjectInteractionMessageEncoder implements MessageEncoder<ObjectInt
                 return encodeOption3Interaction(message);
             case 4:
                 return encodeOption4Interaction(message);
+            case 5:
+                return encodeOption5Interaction(message);
             default:
                 throw new RuntimeException("Invalid option: " + message.option);
         }
@@ -59,6 +61,16 @@ public class ObjectInteractionMessageEncoder implements MessageEncoder<ObjectInt
         buffer.putShortLE(message.x);
         buffer.putShortLE(message.objectId);
         buffer.putShortLE(message.y);
+
+        return buffer;
+    }
+
+    private PacketBuffer encodeOption5Interaction(ObjectInteractionOutboundMessage message) {
+        PacketBuffer buffer = OutgoingPackets.openFixedSizePacket(6, 62);
+
+        buffer.putShortBE(message.objectId);
+        buffer.putShortLE(message.y);
+        buffer.putShortLE(message.x);
 
         return buffer;
     }

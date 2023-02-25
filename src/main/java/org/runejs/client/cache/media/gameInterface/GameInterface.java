@@ -844,10 +844,19 @@ public class GameInterface extends CachedNode {
                 }
                 if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_5.getId()) {
                     AnimationSequence.method596(i, npcIdx, (byte) -11, i_10_);
-                    SceneCluster.packetBuffer.putPacket(62);
-                    SceneCluster.packetBuffer.putShortBE((0x1fffd05d & npcIdx) >> 14);
-                    SceneCluster.packetBuffer.putShortLE(i_10_ + Class26.baseY);
-                    SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
+
+                    int objectId = (0x1ffffd20 & npcIdx) >> 14;
+                    int objectY = i_10_ + Class26.baseY;
+                    int objectX = i + MovedStatics.baseX;
+
+                    OutgoingPackets.sendMessage(
+                        new ObjectInteractionOutboundMessage(
+                            5,
+                            objectId,
+                            objectX,
+                            objectY
+                        )
+                    );
                 }
                 if(action == ActionRowType.INTERACT_WITH_NPC_OPTION_2.getId()) {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
