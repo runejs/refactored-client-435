@@ -1234,9 +1234,9 @@ public class MovedStatics {
 	                    if(gameInterface.actionType == 3 && mouseX >= i_2_ && mouseY >= i_1_ && i_2_ + gameInterface.originalWidth > mouseX && mouseY < i_1_ + gameInterface.originalHeight) {
 	                        int actionType;
 	                        if(area != GameInterfaceArea.PERMANENT_CHAT_BOX_WIDGET)
-	                            actionType = 9;
+	                            actionType = ActionRowType.CLOSE_WIDGET.getId();
 	                        else
-                                actionType = 40;
+                                actionType = ActionRowType.CLOSE_PERMANENT_CHATBOX_WIDGET.getId();
 	                        addActionRow(English.close, 0, 0, gameInterface.id, actionType, "");
 	                    }
 

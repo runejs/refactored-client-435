@@ -1088,7 +1088,7 @@ public class GameInterface extends CachedNode {
                     if(action == 50) {
                         Class33.method406(i, npcIdx, i_10_);
                     }
-                    if(action == 40) {
+                    if(action == ActionRowType.CLOSE_PERMANENT_CHATBOX_WIDGET.getId()) {
                         resetInterface(ChatBox.dialogueId);
                         ChatBox.dialogueId = -1;
                         ChatBox.redrawChatbox = true;
@@ -1174,7 +1174,7 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
                         SceneCluster.packetBuffer.putShortLE(MovedStatics.baseX + i);
                     }
-                    if(action == 9) {
+                    if(action == ActionRowType.CLOSE_WIDGET.getId()) {
                         PacketBuffer.closeAllWidgets();
                     }
                     if(action == 54 && MovedStatics.lastContinueTextWidgetId == -1) { // Click to continue

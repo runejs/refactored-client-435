@@ -19,12 +19,6 @@ public enum ActionRowType {
     // 50
     //     cs2 interface handling??
 
-    // 40
-    //      some kind of close button
-    
-    // 9
-    //      some kind of close button
-
     // 54
     //      click to continue? (what else?)
 
@@ -327,7 +321,17 @@ public enum ActionRowType {
     /**
      * Examine an item on a V2 widget.
      */
-    EXAMINE_ITEM_ON_V2_WIDGET(1007);
+    EXAMINE_ITEM_ON_V2_WIDGET(1007),
+
+    /**
+     * TODO (Jameskmonger) document this
+     */
+    CLOSE_WIDGET(9),
+    
+    /**
+     * TODO (Jameskmonger) document this
+     */
+    CLOSE_PERMANENT_CHATBOX_WIDGET(40);
 
     private final int id;
 
