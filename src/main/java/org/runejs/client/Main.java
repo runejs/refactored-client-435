@@ -1466,7 +1466,7 @@ public class Main extends GameShell {
                                     if((ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend(ActorDefinition.menuActionRow - 1)) && ActorDefinition.menuActionRow > 2)
                                         Class60.determineMenuSize();
                                     else if(ActorDefinition.menuActionRow > 0)
-                                        GameInterface.processMenuActions(123, -1 + ActorDefinition.menuActionRow);
+                                        GameInterface.processMenuActions(-1 + ActorDefinition.menuActionRow);
                                 }
                                 RSRuntimeException.anInt1651 = 10;
                                 MouseHandler.clickType = 0;

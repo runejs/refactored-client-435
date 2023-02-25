@@ -527,8 +527,10 @@ public class GameInterface extends CachedNode {
         return objects;
     }
 
-    public static void processMenuActions(int arg0, int arg1) {
-        if(arg1 >= 0) {
+    public static void processMenuActions(int arg1) {
+        // TODO (Jameskmonger) there used to be a dummy here, but it was removed.
+        //     if (true) kept to make the diff smaller.
+        if(true) {
             int i = InteractiveObject.firstMenuOperand[arg1];
             int i_10_ = Class59.secondMenuOperand[arg1];
             int action = MovedStatics.menuActionTypes[arg1];
@@ -1049,9 +1051,6 @@ public class GameInterface extends CachedNode {
                             SceneCluster.packetBuffer.putPacket(220);
                             SceneCluster.packetBuffer.putShortBE(npcIdx);
                         }
-                    }
-                    if(arg0 < 51) {
-                        MovedStatics.mapDots = null;
                     }
                     if(action == ActionRowType.WALK_HERE.getId()) {
                         if(MovedStatics.menuOpen) {
