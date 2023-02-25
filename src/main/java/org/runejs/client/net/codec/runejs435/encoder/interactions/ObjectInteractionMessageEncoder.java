@@ -1,0 +1,30 @@
+package org.runejs.client.net.codec.runejs435.encoder.interactions;
+
+import org.runejs.client.message.outbound.interactions.ObjectInteractionOutboundMessage;
+import org.runejs.client.net.OutgoingPackets;
+import org.runejs.client.net.PacketBuffer;
+import org.runejs.client.net.codec.MessageEncoder;
+
+public class ObjectInteractionMessageEncoder implements MessageEncoder<ObjectInteractionOutboundMessage> {
+
+    @Override
+    public PacketBuffer encode(ObjectInteractionOutboundMessage message) {
+        switch (message.option) {
+            case 1:
+                return encodeOption1Interaction(message);
+            default:
+                throw new RuntimeException("Invalid option: " + message.option);
+        }
+    }
+
+    private PacketBuffer encodeOption1Interaction(ObjectInteractionOutboundMessage message) {
+        PacketBuffer buffer = OutgoingPackets.openFixedSizePacket(6, 30);
+
+        buffer.putShortBE(message.objectId);
+        buffer.putShortBE(message.y);
+        buffer.putShortLE(message.x);
+
+        return buffer;
+    }
+    
+}

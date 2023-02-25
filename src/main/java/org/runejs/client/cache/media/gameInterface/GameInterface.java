@@ -17,7 +17,9 @@ import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
+import org.runejs.client.message.outbound.interactions.ObjectInteractionOutboundMessage;
 import org.runejs.client.net.ISAAC;
+import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.scene.InteractiveObject;
@@ -1242,10 +1244,18 @@ public class GameInterface extends CachedNode {
                     }
                     if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_1.getId()) {
                         AnimationSequence.method596(i, npcIdx, (byte) -47, i_10_);
-                        SceneCluster.packetBuffer.putPacket(30);
-                        SceneCluster.packetBuffer.putShortBE(0x7fff & npcIdx >> 14);
-                        SceneCluster.packetBuffer.putShortBE(Class26.baseY + i_10_);
-                        SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
+                        int objectId = 0x7fff & npcIdx >> 14;
+                        int objectX = i + MovedStatics.baseX;
+                        int objectY = i_10_ + Class26.baseY;
+
+                        OutgoingPackets.sendMessage(
+                            new ObjectInteractionOutboundMessage(
+                                1,
+                                objectId,
+                                objectX,
+                                objectY
+                            )
+                        );
                     }
                     if(action == ActionRowType.INTERACT_WITH_NPC_OPTION_5.getId()) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
