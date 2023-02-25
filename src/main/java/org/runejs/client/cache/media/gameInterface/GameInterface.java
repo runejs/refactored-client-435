@@ -17,7 +17,9 @@ import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
+import org.runejs.client.message.outbound.interactions.NPCInteractionOutboundMessage;
 import org.runejs.client.net.ISAAC;
+import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.scene.InteractiveObject;
@@ -974,8 +976,8 @@ public class GameInterface extends CachedNode {
                             MovedStatics.crossY = RSString.clickY;
                             OverlayDefinition.crossIndex = 0;
                             LinkedList.crossType = 2;
-                            SceneCluster.packetBuffer.putPacket(63);
-                            SceneCluster.packetBuffer.putShortLE(npcIdx);
+
+                            OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(1, npcIdx));
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_1.getId()) {
