@@ -24,11 +24,13 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
         RegisterNewPlayersUpdate registerNewPlayers = decodeRegisterNewPlayersUpdate(buffer);
         buffer.finishBitAccess();
 
+        PacketBuffer remainingBuffer = decodeRemainingBytes(buffer);
+
         return new UpdatePlayersInboundMessage(
                 localPlayerMovement,
                 otherPlayersMovement,
                 registerNewPlayers,
-                null);
+                remainingBuffer);
     }
 
     private LocalPlayerMovementUpdate decodeLocalPlayerMovementUpdate(PacketBuffer buffer) {
@@ -152,6 +154,15 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
         }
 
         return new RegisterNewPlayersUpdate(updates.toArray(new RegisterNewPlayerUpdate[updates.size()]));
+    }
+
+    private PacketBuffer decodeRemainingBytes(PacketBuffer buffer) {
+        int remainingBytes = buffer.getSize() - buffer.currentPosition;
+        PacketBuffer remainingBuffer = new PacketBuffer(remainingBytes);
+        System.arraycopy(buffer.buffer, buffer.currentPosition, remainingBuffer.buffer, 0, remainingBytes);
+        remainingBuffer.currentPosition = 0;
+
+        return remainingBuffer;
     }
 
 }
