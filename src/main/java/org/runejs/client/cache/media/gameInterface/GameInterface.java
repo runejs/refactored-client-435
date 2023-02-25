@@ -711,8 +711,8 @@ public class GameInterface extends CachedNode {
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
                     ClientScriptRunner.crossX = Class57.clickX;
-                    SceneCluster.packetBuffer.putPacket(96);
-                    SceneCluster.packetBuffer.putShortBE(npcIdx);
+
+                    OutgoingPackets.sendMessage(new PlayerInteractionOutboundMessage(4, npcIdx));
                 }
             }
             if(action == ActionRowType.EXAMINE_NPC.getId()) {
