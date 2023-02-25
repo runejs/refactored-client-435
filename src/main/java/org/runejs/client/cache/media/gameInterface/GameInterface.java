@@ -1048,8 +1048,8 @@ public class GameInterface extends CachedNode {
                             OverlayDefinition.crossIndex = 0;
                             ClientScriptRunner.crossX = Class57.clickX;
                             MovedStatics.crossY = RSString.clickY;
-                            SceneCluster.packetBuffer.putPacket(220);
-                            SceneCluster.packetBuffer.putShortBE(npcIdx);
+
+                            OutgoingPackets.sendMessage(new PlayerInteractionOutboundMessage(3, npcIdx));
                         }
                     }
                     if(arg0 < 51) {
