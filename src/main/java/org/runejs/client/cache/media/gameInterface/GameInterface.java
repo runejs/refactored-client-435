@@ -869,10 +869,19 @@ public class GameInterface extends CachedNode {
                 }
                 if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_2.getId()) {
                     AnimationSequence.method596(i, npcIdx, (byte) -77, i_10_);
-                    SceneCluster.packetBuffer.putPacket(164);
-                    SceneCluster.packetBuffer.putShortLE(MovedStatics.baseX + i);
-                    SceneCluster.packetBuffer.putShortLE(Class26.baseY + i_10_);
-                    SceneCluster.packetBuffer.putShortLE(npcIdx >> 14 & 0x7fff);
+
+                    int objectX = i + MovedStatics.baseX;
+                    int objectY = i_10_ + Class26.baseY;
+                    int objectId = npcIdx >> 14 & 0x7fff;
+
+                    OutgoingPackets.sendMessage(
+                        new ObjectInteractionOutboundMessage(
+                            2,
+                            objectId,
+                            objectX,
+                            objectY
+                        )
+                    );
                 }
                 if(action == ActionRowType.USE_ITEM_ON_OBJECT.getId() && AnimationSequence.method596(i, npcIdx, (byte) -104, i_10_)) {
                     SceneCluster.packetBuffer.putPacket(24);
