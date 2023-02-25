@@ -6,9 +6,11 @@ import java.util.List;
 import org.runejs.client.message.inbound.updating.LocalPlayerMovementUpdate;
 import org.runejs.client.message.inbound.updating.OtherPlayersMovementUpdate;
 import org.runejs.client.message.inbound.updating.PlayerMovementUpdate;
+import org.runejs.client.message.inbound.updating.RegisterNewPlayersUpdate;
 import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
 import org.runejs.client.message.inbound.updating.LocalPlayerMovementUpdate.LocalPlayerMapRegionChangeUpdate;
 import org.runejs.client.message.inbound.updating.OtherPlayersMovementUpdate.OtherPlayerMovementUpdate;
+import org.runejs.client.message.inbound.updating.RegisterNewPlayersUpdate.RegisterNewPlayerUpdate;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.net.codec.MessageDecoder;
 
@@ -29,12 +31,13 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
         buffer.initBitAccess();
         LocalPlayerMovementUpdate localPlayerMovement = decodeLocalPlayerMovementUpdate(buffer);
         OtherPlayersMovementUpdate otherPlayersMovement = decodeOtherPlayersMovementUpdate(buffer);
+        RegisterNewPlayersUpdate registerNewPlayers = decodeRegisterNewPlayersUpdate(buffer);
         buffer.finishBitAccess();
 
         return new UpdatePlayersInboundMessage(
                 localPlayerMovement,
                 otherPlayersMovement,
-                null,
+                registerNewPlayers,
                 null);
     }
 
@@ -156,6 +159,39 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
         }
 
         return new OtherPlayersMovementUpdate(trackedPlayerCount, updates.toArray(new OtherPlayerMovementUpdate[updates.size()]));
+    }
+
+    /**
+     * Decodes the registration details of new players into a {@link RegisterNewPlayersUpdate}.
+     * 
+     * @param buffer The buffer.
+     * @return The register new players update.
+     */
+    private RegisterNewPlayersUpdate decodeRegisterNewPlayersUpdate(PacketBuffer buffer) {
+        List<RegisterNewPlayerUpdate> updates = new ArrayList<RegisterNewPlayerUpdate>();
+
+        while (buffer.getRemainingBits(buffer.getSize()) >= 11) {
+            int newPlayerIndex = buffer.getBits(11);
+
+            if (newPlayerIndex == 2047)
+                break;
+
+            int offsetX = buffer.getBits(5);
+            int offsetY = buffer.getBits(5);
+            if (offsetX > 15)
+                offsetX -= 32;
+            if (offsetY > 15)
+                offsetY -= 32;
+            int initialFaceDirection = buffer.getBits(3);
+            boolean updateRequired = buffer.getBits(1) == 1;
+            boolean discardWalkingQueue = buffer.getBits(1) == 1;
+
+            updates.add(new RegisterNewPlayerUpdate(newPlayerIndex, offsetX, offsetY, initialFaceDirection,
+                    updateRequired, discardWalkingQueue));
+        }
+        buffer.finishBitAccess();
+
+        return new RegisterNewPlayersUpdate(updates.toArray(new RegisterNewPlayerUpdate[updates.size()]));
     }
 
 }
