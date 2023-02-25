@@ -205,7 +205,7 @@ public class MovedStatics {
                             if (i_4_ > 450)
                                 i_4_ = 450;
                             if (Class13.mouseX < 4 + i_4_) {
-                                int actionRowOffset = 2000;
+                                int actionRowOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
                                 if (InteractiveObject.playerRights >= 1) {
                                     addActionRow(English.reportAbuse, 0, 0, 0, actionRowOffset + ActionRowType.REPORT_ABUSE.getId(), Native.white + username);
                                 }

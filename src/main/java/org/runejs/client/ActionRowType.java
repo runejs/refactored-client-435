@@ -331,6 +331,15 @@ public enum ActionRowType {
 
     private final int id;
 
+    /**
+     * Used to mark actions that are lower priority, i.e.
+     * they should be displayed lower in the menu.
+     * 
+     * This is used to ensure that left-click is not "Attack" on
+     * high-level NPCs, for example.
+     */
+    public final static int LOW_PRIORITY_MODIFIER = 2000;
+
     ActionRowType(int actionTypeId) {
         this.id = actionTypeId;
     }

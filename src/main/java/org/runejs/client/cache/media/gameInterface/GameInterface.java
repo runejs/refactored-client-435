@@ -532,8 +532,8 @@ public class GameInterface extends CachedNode {
             int i = InteractiveObject.firstMenuOperand[arg1];
             int i_10_ = Class59.secondMenuOperand[arg1];
             int action = MovedStatics.menuActionTypes[arg1];
-            if(action >= 2000) {
-                action -= 2000;
+            if(action >= ActionRowType.LOW_PRIORITY_MODIFIER) {
+                action -= ActionRowType.LOW_PRIORITY_MODIFIER;
             }
 
             int npcIdx = Class33.selectedMenuActions[arg1];
