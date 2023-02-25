@@ -18,9 +18,11 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
 
     @Override
     public UpdatePlayersInboundMessage decode(PacketBuffer buffer) {
+        buffer.initBitAccess();
         LocalPlayerMovementUpdate localPlayerMovement = decodeLocalPlayerMovementUpdate(buffer);
         OtherPlayersMovementUpdate otherPlayersMovement = decodeOtherPlayersMovementUpdate(buffer);
         RegisterNewPlayersUpdate registerNewPlayers = decodeRegisterNewPlayersUpdate(buffer);
+        buffer.finishBitAccess();
 
         return new UpdatePlayersInboundMessage(
                 localPlayerMovement,
@@ -30,7 +32,6 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
     }
 
     private LocalPlayerMovementUpdate decodeLocalPlayerMovementUpdate(PacketBuffer buffer) {
-        buffer.initBitAccess();
         int updateRequired = buffer.getBits(1);
 
         if (updateRequired == 0) {
@@ -149,7 +150,6 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
             updates.add(new RegisterNewPlayerUpdate(newPlayerIndex, offsetX, offsetY, initialFaceDirection,
                     updateRequired == 1, discardWalkingQueue == 1));
         }
-        buffer.finishBitAccess();
 
         return new RegisterNewPlayersUpdate(updates.toArray(new RegisterNewPlayerUpdate[updates.size()]));
     }
