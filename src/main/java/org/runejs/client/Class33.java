@@ -275,9 +275,9 @@ public class Class33 {
 
     public static boolean menuHasAddFriend(int arg1) {
         int i = MovedStatics.menuActionTypes[arg1];
-        if(i >= 2000)
-            i -= 2000;
-        return i == 45;
+        if(i >= ActionRowType.LOW_PRIORITY_MODIFIER)
+            i -= ActionRowType.LOW_PRIORITY_MODIFIER;
+        return i == ActionRowType.ADD_FRIEND.getId();
     }
 
     public static int getRotatedTileY(int x, int y, int rotation) {
