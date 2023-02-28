@@ -111,56 +111,54 @@ public class Player extends Actor {
         return arg1 < 129 || arg1 > 159;
     }
 
-
-
-    public static void parsePlayerUpdateMasks(Player player, int mask, int playerIndex) {
+    public static void parsePlayerUpdateMasks(PacketBuffer appearanceBuffer, Player player, int mask, int playerIndex) {
         if((0x100 & mask) != 0) { // damage/hitsplat 1
-            int damageType1 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            int damageType2 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            int damageType1 = appearanceBuffer.getUnsignedByte();
+            int damageType2 = appearanceBuffer.getUnsignedByte();
             player.method785(damageType2, MovedStatics.pulseCycle, damageType1);
             player.anInt3139 = 300 + MovedStatics.pulseCycle;
-            player.remainingHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            player.maximumHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            player.remainingHitpoints = appearanceBuffer.getUnsignedByte();
+            player.maximumHitpoints = appearanceBuffer.getUnsignedByte();
         }
         if((mask & 0x10) != 0) { // face position
-            player.facePositionX = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
-            player.facePositionY = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
+            player.facePositionX = appearanceBuffer.getUnsignedShortBE();
+            player.facePositionY = appearanceBuffer.getUnsignedShortLE();
         }
         if((mask & 0x1) != 0) { // animation
-            int animationId = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
+            int animationId = appearanceBuffer.getUnsignedShortLE();
             if(animationId == 65535)
                 animationId = -1;
-            int animationDelay = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            int animationDelay = appearanceBuffer.getUnsignedByte();
             ActorDefinition.playAnimation(animationId, animationDelay, player);
         }
         if((mask & 0x4) != 0) { // face actor
-            player.facingActorIndex = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            player.facingActorIndex = appearanceBuffer.getUnsignedShortBE();
             if(player.facingActorIndex == 65535)
                 player.facingActorIndex = -1;
         }
         if((0x40 & mask) != 0) { // damage/hitsplat 2
-            int damageType1 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            int damageType2 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            int damageType1 = appearanceBuffer.getUnsignedByte();
+            int damageType2 = appearanceBuffer.getUnsignedByte();
             player.method785(damageType2, MovedStatics.pulseCycle, damageType1);
             player.anInt3139 = 300 + MovedStatics.pulseCycle;
-            player.remainingHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            player.maximumHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            player.remainingHitpoints = appearanceBuffer.getUnsignedByte();
+            player.maximumHitpoints = appearanceBuffer.getUnsignedByte();
         }
         if((mask & 0x400) != 0) { // Forced movement?
-            player.anInt3125 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            player.anInt3081 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            player.anInt3099 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            player.anInt3127 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            player.anInt3112 = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE() + MovedStatics.pulseCycle;
-            player.anInt3107 = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE() + MovedStatics.pulseCycle;
-            player.anInt3073 = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            player.anInt3125 = appearanceBuffer.getUnsignedByte();
+            player.anInt3081 = appearanceBuffer.getUnsignedByte();
+            player.anInt3099 = appearanceBuffer.getUnsignedByte();
+            player.anInt3127 = appearanceBuffer.getUnsignedByte();
+            player.anInt3112 = appearanceBuffer.getUnsignedShortBE() + MovedStatics.pulseCycle;
+            player.anInt3107 = appearanceBuffer.getUnsignedShortLE() + MovedStatics.pulseCycle;
+            player.anInt3073 = appearanceBuffer.getUnsignedByte();
             player.method790(0);
         }
         if((0x8 & mask) != 0) { // chat
-            int chatEffectsAndColors = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
-            int playerRights = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            int messageLength = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            int bufferPosition = IncomingPackets.incomingPacketBuffer.currentPosition;
+            int chatEffectsAndColors = appearanceBuffer.getUnsignedShortBE();
+            int playerRights = appearanceBuffer.getUnsignedByte();
+            int messageLength = appearanceBuffer.getUnsignedByte();
+            int bufferPosition = appearanceBuffer.currentPosition;
             if(player.playerName != null && player.playerAppearance != null) {
                 long l = RSString.nameToLong(player.playerName);
                 boolean bool = false;
@@ -174,9 +172,9 @@ public class Player extends Actor {
                 }
                 if(!bool && !inTutorialIsland) {
                     chatBuffer.currentPosition = 0;
-                    IncomingPackets.incomingPacketBuffer.getBytes(0, messageLength, chatBuffer.buffer);
+                    appearanceBuffer.getBytes(0, messageLength, chatBuffer.buffer);
                     chatBuffer.currentPosition = 0;
-                    String incomming = KeyFocusListener.method956(IncomingPackets.incomingPacketBuffer);
+                    String incomming = KeyFocusListener.method956(appearanceBuffer);
                     String class1 = RSString.formatChatString(incomming);
                     player.forcedChatMessage = class1.trim();
                     player.anInt3078 = 150;
@@ -190,19 +188,19 @@ public class Player extends Actor {
                         ChatBox.addChatMessage(player.playerName, class1, 2);
                 }
             }
-            IncomingPackets.incomingPacketBuffer.currentPosition = messageLength + bufferPosition;
+            appearanceBuffer.currentPosition = messageLength + bufferPosition;
         }
         if((0x20 & mask) != 0) { // appearance
-            int appearanceUpdateLength = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            int appearanceUpdateLength = appearanceBuffer.getUnsignedByte();
             byte[] is = new byte[appearanceUpdateLength];
             Buffer buffer = new Buffer(is);
-            IncomingPackets.incomingPacketBuffer.getBytes(appearanceUpdateLength, 0, is);
+            appearanceBuffer.getBytes(appearanceUpdateLength, 0, is);
             trackedPlayerAppearanceCache[playerIndex] = buffer;
             player.parsePlayerAppearanceData(buffer);
         }
         if((mask & 0x200) != 0) { // graphics
-            player.graphicId = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
-            int graphicData = IncomingPackets.incomingPacketBuffer.getIntBE();
+            player.graphicId = appearanceBuffer.getUnsignedShortLE();
+            int graphicData = appearanceBuffer.getIntBE();
             player.anInt3129 = 0;
             player.graphicDelay = MovedStatics.pulseCycle + (graphicData & 0xffff);
             if(player.graphicId == 65535)
@@ -213,7 +211,7 @@ public class Player extends Actor {
                 player.anInt3140 = -1;
         }
         if((0x80 & mask) != 0) { // forced chat
-            player.forcedChatMessage = IncomingPackets.incomingPacketBuffer.getString();
+            player.forcedChatMessage = appearanceBuffer.getString();
             if(player.forcedChatMessage.charAt(0) == 126) {
                 player.forcedChatMessage = player.forcedChatMessage.substring(1);
                 ChatBox.addChatMessage(player.playerName, player.forcedChatMessage, 2);
@@ -225,14 +223,14 @@ public class Player extends Actor {
         }
     }
 
-    public static void parseTrackedPlayerUpdateMasks() {
+    public static void parseTrackedPlayerUpdateMasks(PacketBuffer appearanceBuffer) {
         for(int i = 0; i < actorUpdatingIndex; i++) {
             int trackedPlayerIndex = actorUpdatingIndices[i];
             Player player = trackedPlayers[trackedPlayerIndex];
-            int mask = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            int mask = appearanceBuffer.getUnsignedByte();
             if((mask & 0x2) != 0)
-                mask += IncomingPackets.incomingPacketBuffer.getUnsignedByte() << 8;
-            parsePlayerUpdateMasks(player, mask, trackedPlayerIndex);
+                mask += appearanceBuffer.getUnsignedByte() << 8;
+            parsePlayerUpdateMasks(appearanceBuffer, player, mask, trackedPlayerIndex);
         }
     }
 
