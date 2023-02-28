@@ -408,16 +408,16 @@ public class Player extends Actor {
                         if (Main.playerActions[i].equalsIgnoreCase(English.attack)) {
                             // offset attack actions so that they are lower priority for players of higher combat lvl or the same team
                             if (localPlayer.combatLevel < player.combatLevel)
-                                actionRowOffset = 2000;
+                                actionRowOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
                             if (localPlayer.teamId != 0 && player.teamId != 0) {
                                 if (localPlayer.teamId != player.teamId)
                                     actionRowOffset = 0;
                                 else
-                                    actionRowOffset = 2000;
+                                    actionRowOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
                             }
                         } else if (Class13.playerArray[i]) {
                             // what is this for?
-                            actionRowOffset = 2000;
+                            actionRowOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
                         }
 
                         if (i == 0)

@@ -4,6 +4,7 @@ import org.runejs.client.node.Class40_Sub6;
 import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
+import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Player;
@@ -59,9 +60,9 @@ public class Class13 {
         }
     }
 
-    public static void handleInterfaceActions(int areaId, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, int widgetId) {
+    public static void handleInterfaceActions(GameInterfaceArea area, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, int widgetId) {
         if(GameInterface.decodeGameInterface(widgetId)) {
-            MovedStatics.handleInterfaceActions(areaId, mouseX, mouseY, minX, minY, maxX, maxY, GameInterface.cachedInterfaces[widgetId], -1, 0, 0);
+            MovedStatics.handleInterfaceActions(area, mouseX, mouseY, minX, minY, maxX, maxY, GameInterface.cachedInterfaces[widgetId], -1, 0, 0);
         }
     }
 

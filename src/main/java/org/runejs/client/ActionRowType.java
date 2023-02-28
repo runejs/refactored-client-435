@@ -19,16 +19,8 @@ public enum ActionRowType {
     // 50
     //     cs2 interface handling??
 
-    // 40
-    //      some kind of close button
-    
-    // 9
-    //      some kind of close button
-
     // 54
     //      click to continue? (what else?)
-
-    // 1005 has some significance, what is it?
 
     /**
      * Toggle the value of a varp.
@@ -317,6 +309,11 @@ public enum ActionRowType {
     EXAMINE_OBJECT(1004),
 
     /**
+     * Cancels (closes) the menu.
+     */
+    CANCEL(1005),
+
+    /**
      * Examine an item on a V1 widget.
      */
     EXAMINE_ITEM_ON_V1_WIDGET(1006),
@@ -324,9 +321,28 @@ public enum ActionRowType {
     /**
      * Examine an item on a V2 widget.
      */
-    EXAMINE_ITEM_ON_V2_WIDGET(1007);
+    EXAMINE_ITEM_ON_V2_WIDGET(1007),
+
+    /**
+     * TODO (Jameskmonger) document this
+     */
+    CLOSE_WIDGET(9),
+    
+    /**
+     * TODO (Jameskmonger) document this
+     */
+    CLOSE_PERMANENT_CHATBOX_WIDGET(40);
 
     private final int id;
+
+    /**
+     * Used to mark actions that are lower priority, i.e.
+     * they should be displayed lower in the menu.
+     * 
+     * This is used to ensure that left-click is not "Attack" on
+     * high-level NPCs, for example.
+     */
+    public final static int LOW_PRIORITY_MODIFIER = 2000;
 
     ActionRowType(int actionTypeId) {
         this.id = actionTypeId;
