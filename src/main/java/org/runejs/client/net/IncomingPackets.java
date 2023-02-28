@@ -1021,7 +1021,7 @@ public class IncomingPackets {
         Player.parsePlayerMovement();
         Player.parseTrackedPlayerMovement();
         Player.registerNewPlayers();
-        Player.parseTrackedPlayerUpdateMasks();
+        Player.parseTrackedPlayerUpdateMasks(IncomingPackets.incomingPacketBuffer);
         for(int i = 0; Class17.deregisterActorCount > i; i++) {
             int trackedPlayerIndex = Player.deregisterActorIndices[i];
             if(MovedStatics.pulseCycle != Player.trackedPlayers[trackedPlayerIndex].anInt3134)
