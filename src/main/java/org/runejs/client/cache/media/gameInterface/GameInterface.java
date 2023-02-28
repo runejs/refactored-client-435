@@ -17,7 +17,7 @@ import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
-import org.runejs.client.message.outbound.interactions.ObjectInteractionOutboundMessage;
+import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
@@ -868,8 +868,8 @@ public class GameInterface extends CachedNode {
                         ClientScriptRunner.crossX = Class57.clickX;
                         MovedStatics.crossY = RSString.clickY;
                         LinkedList.crossType = 2;
-                        SceneCluster.packetBuffer.putPacket(57);
-                        SceneCluster.packetBuffer.putShortBE(npcIdx);
+
+                        OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(2, npcIdx));
                     }
                 }
                 if(action == ActionRowType.USE_ITEM_ON_NPC.getId()) {
@@ -920,8 +920,8 @@ public class GameInterface extends CachedNode {
                         LinkedList.crossType = 2;
                         ClientScriptRunner.crossX = Class57.clickX;
                         MovedStatics.crossY = RSString.clickY;
-                        SceneCluster.packetBuffer.putPacket(0);
-                        SceneCluster.packetBuffer.putShortBE(npcIdx);
+
+                        OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(4, npcIdx));
                     }
                 }
                 if(action == ActionRowType.USE_ITEM_ON_INVENTORY_ITEM.getId()) {
@@ -1005,8 +1005,8 @@ public class GameInterface extends CachedNode {
                             MovedStatics.crossY = RSString.clickY;
                             OverlayDefinition.crossIndex = 0;
                             LinkedList.crossType = 2;
-                            SceneCluster.packetBuffer.putPacket(63);
-                            SceneCluster.packetBuffer.putShortLE(npcIdx);
+
+                            OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(1, npcIdx));
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_1.getId()) {
@@ -1300,8 +1300,8 @@ public class GameInterface extends CachedNode {
                             ClientScriptRunner.crossX = Class57.clickX;
                             MovedStatics.crossY = RSString.clickY;
                             OverlayDefinition.crossIndex = 0;
-                            SceneCluster.packetBuffer.putPacket(153);
-                            SceneCluster.packetBuffer.putShortLE(npcIdx);
+
+                            OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(5, npcIdx));
                         }
                     }
                     if(action == ActionRowType.USE_ITEM_ON_WORLD_ITEM.getId()) {
@@ -1345,8 +1345,8 @@ public class GameInterface extends CachedNode {
                             ClientScriptRunner.crossX = Class57.clickX;
                             OverlayDefinition.crossIndex = 0;
                             MovedStatics.crossY = RSString.clickY;
-                            SceneCluster.packetBuffer.putPacket(116);
-                            SceneCluster.packetBuffer.putShortLE(npcIdx);
+
+                            OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(3, npcIdx));
                         }
                     }
                     if(MovedStatics.itemSelected != 0) {
