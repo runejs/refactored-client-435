@@ -3,6 +3,7 @@ package org.runejs.client.frame;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
+import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
 import org.runejs.client.frame.tab.TabProducer;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.English;
@@ -302,17 +303,17 @@ public class ScreenController {
     public static void handleTabClick(int mouseX, int mouseY) {
         if (frameMode == ScreenMode.FIXED) {
             if (GameInterface.tabAreaInterfaceId != -1)
-                Class13.handleInterfaceActions(1, mouseX, mouseY, 553, 205, 743, 466, GameInterface.tabAreaInterfaceId);
+                Class13.handleInterfaceActions(GameInterfaceArea.TAB_AREA, mouseX, mouseY, 553, 205, 743, 466, GameInterface.tabAreaInterfaceId);
             else if (Player.tabWidgetIds[Player.currentTabId] != -1) {
-                Class13.handleInterfaceActions(1, mouseX, mouseY, 553, 205, 743, 466, Player.tabWidgetIds[Player.currentTabId]);
+                Class13.handleInterfaceActions(GameInterfaceArea.TAB_AREA, mouseX, mouseY, 553, 205, 743, 466, Player.tabWidgetIds[Player.currentTabId]);
             }
         } else {
             int[] tabInterFaceCoords= tabProducer.getTabInterfaceCoordSize(drawWidth - 241, drawHeight - (334));
 
             if (GameInterface.tabAreaInterfaceId != -1)
-                Class13.handleInterfaceActions(1, mouseX, mouseY, tabInterFaceCoords[0], tabInterFaceCoords[1], tabInterFaceCoords[0]+tabInterFaceCoords[2],tabInterFaceCoords[1]+tabInterFaceCoords[3], GameInterface.tabAreaInterfaceId);
+                Class13.handleInterfaceActions(GameInterfaceArea.TAB_AREA, mouseX, mouseY, tabInterFaceCoords[0], tabInterFaceCoords[1], tabInterFaceCoords[0]+tabInterFaceCoords[2],tabInterFaceCoords[1]+tabInterFaceCoords[3], GameInterface.tabAreaInterfaceId);
             else if (Player.tabWidgetIds[Player.currentTabId] != -1) {
-                Class13.handleInterfaceActions(1, mouseX, mouseY, tabInterFaceCoords[0], tabInterFaceCoords[1], tabInterFaceCoords[0]+tabInterFaceCoords[2],tabInterFaceCoords[1]+tabInterFaceCoords[3], Player.tabWidgetIds[Player.currentTabId]);
+                Class13.handleInterfaceActions(GameInterfaceArea.TAB_AREA, mouseX, mouseY, tabInterFaceCoords[0], tabInterFaceCoords[1], tabInterFaceCoords[0]+tabInterFaceCoords[2],tabInterFaceCoords[1]+tabInterFaceCoords[3], Player.tabWidgetIds[Player.currentTabId]);
             }
         }
     }
@@ -337,13 +338,13 @@ public class ScreenController {
 
         // Handle interface actions for permanent chat box widget. Takes precedence over regular chat box widgets
         if (ChatBox.dialogueId != -1) {
-            Class13.handleInterfaceActions(3, x, y, minX, minY, maxX, maxY, ChatBox.dialogueId);
+            Class13.handleInterfaceActions(GameInterfaceArea.PERMANENT_CHAT_BOX_WIDGET, x, y, minX, minY, maxX, maxY, ChatBox.dialogueId);
             return;
         }
 
         // Handle interface actions for regular chat box widget
         if (GameInterface.chatboxInterfaceId != -1) {
-            Class13.handleInterfaceActions(2, x, y, minX, minY, maxX, maxY, GameInterface.chatboxInterfaceId);
+            Class13.handleInterfaceActions(GameInterfaceArea.CHAT_AREA, x, y, minX, minY, maxX, maxY, GameInterface.chatboxInterfaceId);
             return;
         }
     }

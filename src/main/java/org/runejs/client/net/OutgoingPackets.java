@@ -17,6 +17,8 @@ public class OutgoingPackets {
 
     /**
      * Opens a fixed-size packet with the specified opcode.
+     * 
+     * @param size The size of the packet in bytes, not including the opcode.
      */
     public static PacketBuffer openFixedSizePacket(int size, int opcode) {
         // data + 1 byte for opcode

@@ -63,10 +63,8 @@ public class AnimationSequence extends CachedNode {
         }
     }
 
-    public static boolean method596(int arg0, int arg1, byte arg2, int arg3) {
+    public static boolean method596(int arg0, int arg1, byte junk, int arg3) {
         int i = 0x7fff & arg1 >> 14;
-        if(arg2 > -9)
-            method596(-4, -74, (byte) -44, -62);
         int i_14_ = Npc.currentScene.getArrangement(Player.worldLevel, arg0, arg3, arg1);
         if(i_14_ == -1)
             return false;
