@@ -17,7 +17,9 @@ import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
+import org.runejs.client.message.outbound.interactions.ObjectInteractionOutboundMessage;
 import org.runejs.client.net.ISAAC;
+import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.scene.InteractiveObject;
@@ -584,10 +586,19 @@ public class GameInterface extends CachedNode {
             }
             if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_4.getId()) {
                 AnimationSequence.method596(i, npcIdx, (byte) -79, i_10_);
-                SceneCluster.packetBuffer.putPacket(229);
-                SceneCluster.packetBuffer.putShortLE(MovedStatics.baseX + i);
-                SceneCluster.packetBuffer.putShortLE((0x1ffffd20 & npcIdx) >> 14);
-                SceneCluster.packetBuffer.putShortLE(Class26.baseY + i_10_);
+
+                int objectX = MovedStatics.baseX + i;
+                int objectId = (0x1ffffd20 & npcIdx) >> 14;
+                int objectY = Class26.baseY + i_10_;
+
+                OutgoingPackets.sendMessage(
+                    new ObjectInteractionOutboundMessage(
+                        4,
+                        objectId,
+                        objectX,
+                        objectY
+                    )
+                );
             }
             if(action == ActionRowType.CAST_MAGIC_ON_PLAYER.getId()) {
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[npcIdx];
@@ -835,10 +846,19 @@ public class GameInterface extends CachedNode {
                 }
                 if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_5.getId()) {
                     AnimationSequence.method596(i, npcIdx, (byte) -11, i_10_);
-                    SceneCluster.packetBuffer.putPacket(62);
-                    SceneCluster.packetBuffer.putShortBE((0x1fffd05d & npcIdx) >> 14);
-                    SceneCluster.packetBuffer.putShortLE(i_10_ + Class26.baseY);
-                    SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
+
+                    int objectId = (0x1ffffd20 & npcIdx) >> 14;
+                    int objectY = i_10_ + Class26.baseY;
+                    int objectX = i + MovedStatics.baseX;
+
+                    OutgoingPackets.sendMessage(
+                        new ObjectInteractionOutboundMessage(
+                            5,
+                            objectId,
+                            objectX,
+                            objectY
+                        )
+                    );
                 }
                 if(action == ActionRowType.INTERACT_WITH_NPC_OPTION_2.getId()) {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
@@ -869,10 +889,19 @@ public class GameInterface extends CachedNode {
                 }
                 if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_2.getId()) {
                     AnimationSequence.method596(i, npcIdx, (byte) -77, i_10_);
-                    SceneCluster.packetBuffer.putPacket(164);
-                    SceneCluster.packetBuffer.putShortLE(MovedStatics.baseX + i);
-                    SceneCluster.packetBuffer.putShortLE(Class26.baseY + i_10_);
-                    SceneCluster.packetBuffer.putShortLE(npcIdx >> 14 & 0x7fff);
+
+                    int objectX = i + MovedStatics.baseX;
+                    int objectY = i_10_ + Class26.baseY;
+                    int objectId = npcIdx >> 14 & 0x7fff;
+
+                    OutgoingPackets.sendMessage(
+                        new ObjectInteractionOutboundMessage(
+                            2,
+                            objectId,
+                            objectX,
+                            objectY
+                        )
+                    );
                 }
                 if(action == ActionRowType.USE_ITEM_ON_OBJECT.getId() && AnimationSequence.method596(i, npcIdx, (byte) -104, i_10_)) {
                     SceneCluster.packetBuffer.putPacket(24);
@@ -1080,10 +1109,19 @@ public class GameInterface extends CachedNode {
                     }
                     if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_3.getId()) {
                         AnimationSequence.method596(i, npcIdx, (byte) -104, i_10_);
-                        SceneCluster.packetBuffer.putPacket(183);
-                        SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
-                        SceneCluster.packetBuffer.putShortBE(npcIdx >> 14 & 0x7fff);
-                        SceneCluster.packetBuffer.putShortBE(i + MovedStatics.baseX);
+
+                        int objectY = i_10_ + Class26.baseY;
+                        int objectId = npcIdx >> 14 & 0x7fff;
+                        int objectX = i + MovedStatics.baseX;
+
+                        OutgoingPackets.sendMessage(
+                            new ObjectInteractionOutboundMessage(
+                                3,
+                                objectId,
+                                objectX,
+                                objectY
+                            )
+                        );
                     }
                     if(action == 50) {
                         Class33.method406(i, npcIdx, i_10_);
@@ -1241,10 +1279,18 @@ public class GameInterface extends CachedNode {
                     }
                     if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_1.getId()) {
                         AnimationSequence.method596(i, npcIdx, (byte) -47, i_10_);
-                        SceneCluster.packetBuffer.putPacket(30);
-                        SceneCluster.packetBuffer.putShortBE(0x7fff & npcIdx >> 14);
-                        SceneCluster.packetBuffer.putShortBE(Class26.baseY + i_10_);
-                        SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
+                        int objectId = 0x7fff & npcIdx >> 14;
+                        int objectX = i + MovedStatics.baseX;
+                        int objectY = i_10_ + Class26.baseY;
+
+                        OutgoingPackets.sendMessage(
+                            new ObjectInteractionOutboundMessage(
+                                1,
+                                objectId,
+                                objectX,
+                                objectY
+                            )
+                        );
                     }
                     if(action == ActionRowType.INTERACT_WITH_NPC_OPTION_5.getId()) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
