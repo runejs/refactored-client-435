@@ -529,17 +529,19 @@ public class GameInterface extends CachedNode {
         return objects;
     }
 
-    public static void processMenuActions(int arg0, int arg1) {
-        if(arg1 >= 0) {
+    public static void processMenuActions(int arg1) {
+        // TODO (Jameskmonger) there used to be a dummy here, but it was removed.
+        //     if (true) kept to make the diff smaller.
+        if(true) {
             int i = InteractiveObject.firstMenuOperand[arg1];
             int i_10_ = Class59.secondMenuOperand[arg1];
             int action = MovedStatics.menuActionTypes[arg1];
-            if(action >= 2000) {
-                action -= 2000;
+            if(action >= ActionRowType.LOW_PRIORITY_MODIFIER) {
+                action -= ActionRowType.LOW_PRIORITY_MODIFIER;
             }
 
             int npcIdx = Class33.selectedMenuActions[arg1];
-            if(ChatBox.inputType != 0 && action != 1005) {
+            if(ChatBox.inputType != 0 && action != ActionRowType.CANCEL.getId()) {
                 ChatBox.inputType = 0;
                 ChatBox.redrawChatbox = true;
             }
@@ -1079,9 +1081,6 @@ public class GameInterface extends CachedNode {
                             SceneCluster.packetBuffer.putShortBE(npcIdx);
                         }
                     }
-                    if(arg0 < 51) {
-                        MovedStatics.mapDots = null;
-                    }
                     if(action == ActionRowType.WALK_HERE.getId()) {
                         if(MovedStatics.menuOpen) {
                             Npc.currentScene.method120(-4 + i, -4 + i_10_);
@@ -1127,7 +1126,7 @@ public class GameInterface extends CachedNode {
                     if(action == 50) {
                         Class33.method406(i, npcIdx, i_10_);
                     }
-                    if(action == 40) {
+                    if(action == ActionRowType.CLOSE_PERMANENT_CHATBOX_WIDGET.getId()) {
                         resetInterface(ChatBox.dialogueId);
                         ChatBox.dialogueId = -1;
                         ChatBox.redrawChatbox = true;
@@ -1213,7 +1212,7 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
                         SceneCluster.packetBuffer.putShortLE(MovedStatics.baseX + i);
                     }
-                    if(action == 9) {
+                    if(action == ActionRowType.CLOSE_WIDGET.getId()) {
                         PacketBuffer.closeAllWidgets();
                     }
                     if(action == 54 && MovedStatics.lastContinueTextWidgetId == -1) { // Click to continue
