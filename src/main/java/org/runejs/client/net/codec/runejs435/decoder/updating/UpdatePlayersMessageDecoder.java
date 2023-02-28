@@ -37,12 +37,14 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
         int updateRequired = buffer.getBits(1);
 
         if (updateRequired == 0) {
+            // no update whatsoever
             return null;
         }
 
         int movementType = buffer.getBits(2);
         if (movementType == 0) {
-            return null;
+            // no movement
+            return new LocalPlayerMovementUpdate(null, null);
         }
 
         if (movementType == 1) { // Walking
@@ -89,12 +91,14 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
             int updateRequired = buffer.getBits(1);
 
             if (updateRequired == 0) {
-                updates.add(new OtherPlayerMovementUpdate(null, false));
+                // no update whatsoever
+                updates.add(null);
                 continue;
             }
 
             int movementType = buffer.getBits(2);
-            if (movementType == 0) { // No movement
+            if (movementType == 0) {
+                // No movement
                 updates.add(new OtherPlayerMovementUpdate(null, false));
                 continue;
             }
