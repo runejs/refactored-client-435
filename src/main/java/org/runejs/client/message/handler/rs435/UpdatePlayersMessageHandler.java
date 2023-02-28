@@ -2,14 +2,17 @@ package org.runejs.client.message.handler.rs435;
 
 import org.runejs.client.Class17;
 import org.runejs.client.MovedStatics;
+import org.runejs.client.Projectile;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.updating.LocalPlayerMovementUpdate;
 import org.runejs.client.message.inbound.updating.OtherPlayersMovementUpdate;
 import org.runejs.client.message.inbound.updating.PlayerMovementUpdate;
+import org.runejs.client.message.inbound.updating.RegisterNewPlayersUpdate;
 import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
 import org.runejs.client.message.inbound.updating.OtherPlayersMovementUpdate.OtherPlayerMovementUpdate;
+import org.runejs.client.message.inbound.updating.RegisterNewPlayersUpdate.RegisterNewPlayerUpdate;
 
 /**
  * Applies the main "player updating" message to the game state.
@@ -29,6 +32,8 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
         handleLocalPlayerMovement(message.localPlayerMovement);
         handleOtherPlayersMovement(message.otherPlayersMovement);
 
+        handleRegisterNewPlayers(message.newPlayers);
+        
         // TODO handle others
         
         // handle any deregistrations
@@ -164,4 +169,51 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
         }
     }
 
+    /**
+     * Handle the registration of new players.
+     * 
+     * This method is pulled from the original implementation with minimal changes.
+     * 
+     * @param update The update information to apply
+     */
+    private void handleRegisterNewPlayers(RegisterNewPlayersUpdate update) {
+        for (RegisterNewPlayerUpdate playerUpdate : update.players) {
+            int newPlayerIndex = playerUpdate.playerIndex;
+            if(newPlayerIndex == 2047)
+                break;
+
+            // rehydrate the player from existing appearance data
+            boolean bool = false;
+            if(Player.trackedPlayers[newPlayerIndex] == null) {
+                Player.trackedPlayers[newPlayerIndex] = new Player();
+                if(Player.trackedPlayerAppearanceCache[newPlayerIndex] != null)
+                    Player.trackedPlayers[newPlayerIndex].parsePlayerAppearanceData(Player.trackedPlayerAppearanceCache[newPlayerIndex]);
+                bool = true;
+            }
+
+            // begin registration proper
+            Player.trackedPlayerIndices[Player.localPlayerCount++] = newPlayerIndex;
+            Player player = Player.trackedPlayers[newPlayerIndex];
+            player.anInt3134 = MovedStatics.pulseCycle;
+            int offsetX = playerUpdate.offsetX;
+            int offsetY = playerUpdate.offsetY;
+            if(offsetX > 15)
+                offsetX -= 32;
+            if(offsetY > 15)
+                offsetY -= 32;
+
+            // parse and apply direction
+            int initialFaceDirection = playerUpdate.faceDirection;
+            int faceDirection = Projectile.directions[initialFaceDirection];
+            if(bool)
+                player.initialFaceDirection = faceDirection;
+
+            // discard walking queue if necessary
+            if(playerUpdate.discardWalkingQueue)
+                Player.actorUpdatingIndices[Player.actorUpdatingIndex++] = newPlayerIndex;
+
+            // adjust the actors position?
+            player.method787(offsetY + Player.localPlayer.pathX[0], -7717, playerUpdate.updateRequired, Player.localPlayer.pathY[0] + offsetX);
+        }
+    }
 }
