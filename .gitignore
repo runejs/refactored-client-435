@@ -41,3 +41,5 @@ artifacts/
 .classpath
 .project
 .settings/org.eclipse.jdt.core.prefs
+
+.filestore_435

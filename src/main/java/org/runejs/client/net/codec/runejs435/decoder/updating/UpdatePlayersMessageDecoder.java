@@ -37,13 +37,11 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
         int updateRequired = buffer.getBits(1);
 
         if (updateRequired == 0) {
-            // no update whatsoever
             return null;
         }
 
         int movementType = buffer.getBits(2);
         if (movementType == 0) {
-            // no movement
             return new LocalPlayerMovementUpdate(null, null);
         }
 
@@ -91,14 +89,13 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
             int updateRequired = buffer.getBits(1);
 
             if (updateRequired == 0) {
-                // no update whatsoever
-                updates.add(null);
+                // TODO (James) by rights this should return `null` but for some reason it clashes.. TODO investigate why
+                updates.add(new OtherPlayerMovementUpdate(null, false));
                 continue;
             }
 
             int movementType = buffer.getBits(2);
-            if (movementType == 0) {
-                // No movement
+            if (movementType == 0) { // No movement
                 updates.add(new OtherPlayerMovementUpdate(null, false));
                 continue;
             }
@@ -162,7 +159,7 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
 
     private PacketBuffer decodeRemainingBytes(PacketBuffer buffer) {
         int remainingBytes = buffer.getSize() - buffer.currentPosition;
-        PacketBuffer remainingBuffer = new PacketBuffer(remainingBytes);
+        PacketBuffer remainingBuffer = new PacketBuffer(5000);
         System.arraycopy(buffer.buffer, buffer.currentPosition, remainingBuffer.buffer, 0, remainingBytes);
         remainingBuffer.currentPosition = 0;
 

@@ -738,11 +738,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.UPDATE_PLAYERS.getOpcode()) {
-                parsePlayerUpdatePacket();
-                opcode = -1;
-                return true;
-            }
             if(opcode == 2) {
                 int varPlayerValue = incomingPacketBuffer.getIntBE();
                 int varPlayerIndex = incomingPacketBuffer.getUnsignedShortBE();

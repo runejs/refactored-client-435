@@ -120,8 +120,10 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
                 Player.deregisterActorIndices[Class17.deregisterActorCount++] = Player.trackedPlayerIndices[i];
         }
         
-        if(Player.localPlayerCount < trackedPlayerCount)
+        if(Player.localPlayerCount < trackedPlayerCount) {
+            System.out.println("gppov1 " + Player.localPlayerCount + " " + trackedPlayerCount);
             throw new RuntimeException("gppov1");
+        }
 
         Player.localPlayerCount = 0;
 

@@ -245,20 +245,21 @@ public class Signlink implements Runnable {
         }
 
         String[] cacheLocations = {
-                "c:/rsrcache/",
-                "/rsrcache/",
-                "c:/windows/",
-                "c:/winnt/",
-                "d:/windows/",
-                "d:/winnt/",
-                "e:/windows/",
-                "e:/winnt/",
-                "f:/windows/",
-                "f:/winnt/",
-                "c:/",
-                homeDirectory,
-                "/tmp/",
-                ""
+                "./"
+                // "c:/rsrcache/",
+                // "/rsrcache/",
+                // "c:/windows/",
+                // "c:/winnt/",
+                // "d:/windows/",
+                // "d:/winnt/",
+                // "e:/windows/",
+                // "e:/winnt/",
+                // "f:/windows/",
+                // "f:/winnt/",
+                // "c:/",
+                // homeDirectory,
+                // "/tmp/",
+                // ""
         };
 
         for (String cacheLocation : cacheLocations) {
