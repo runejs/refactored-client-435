@@ -15,6 +15,7 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.IncomingPackets;
+import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.util.CollisionMap;
 
@@ -227,6 +228,14 @@ public class Player extends Actor {
         for(int i = 0; i < actorUpdatingIndex; i++) {
             int trackedPlayerIndex = actorUpdatingIndices[i];
             Player player = trackedPlayers[trackedPlayerIndex];
+
+            // this is a deviation from the original client
+            // originally the buffer was huge (5000 bytes) and the code just skipped any zeroes
+            // this is effectively the same thing but allows for smaller buffers
+            int remainingBytes = appearanceBuffer.getSize() - appearanceBuffer.currentPosition;
+            if(remainingBytes < 1)
+                break;
+
             int mask = appearanceBuffer.getUnsignedByte();
             if((mask & 0x2) != 0)
                 mask += appearanceBuffer.getUnsignedByte() << 8;
