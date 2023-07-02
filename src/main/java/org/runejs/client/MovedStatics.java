@@ -4,6 +4,8 @@ import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
+import org.runejs.client.chat.ChatColorEffect;
+import org.runejs.client.chat.ChatShapeEffect;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.frame.console.Console;
@@ -1633,66 +1635,27 @@ public class MovedStatics {
 	                    SceneCluster.packetBuffer.putByte(-1 + ChatBox.chatboxInput.length());
 	                    SceneCluster.packetBuffer.putString(ChatBox.chatboxInput.substring(2));
 	                } else {
-	                    int chatShapeEffect = 0;
-	                    String class1 = ChatBox.chatboxInput.toLowerCase();
-	                    int chatColorEffect = 0;
-	                    if(class1.startsWith(English.effectYellow)) {
-	                        chatColorEffect = 0;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectYellow.length());
-	                    } else if(class1.startsWith(English.effectRed)) {
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectRed.length());
-	                        chatColorEffect = 1;
-	                    } else if(class1.startsWith(English.effectGreen)) {
-	                        chatColorEffect = 2;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectGreen.length());
-	                    } else if(class1.startsWith(English.effectCyan)) {
-	                        chatColorEffect = 3;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectCyan.length());
-	                    } else if(class1.startsWith(English.effectPurple)) {
-	                        chatColorEffect = 4;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectPurple.length());
-	                    } else if(class1.startsWith(English.effectWhite)) {
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectWhite.length());
-	                        chatColorEffect = 5;
-	                    } else if(class1.startsWith(Native.effectFlash1)) {
-	                        chatColorEffect = 6;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(Native.effectFlash1.length());
-	                    } else if(class1.startsWith(English.effectFlash2)) {
-	                        chatColorEffect = 7;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectFlash2.length());
-	                    } else if(class1.startsWith(English.effectFlash3)) {
-	                        chatColorEffect = 8;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectFlash3.length());
-	                    } else if(class1.startsWith(English.effectGlow1)) {
-	                        chatColorEffect = 9;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectGlow1.length());
-	                    } else if(class1.startsWith(English.effectGlow2)) {
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectGlow2.length());
-	                        chatColorEffect = 10;
-	                    } else if(class1.startsWith(English.effectGlow3)) {
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectGlow3.length());
-	                        chatColorEffect = 11;
-	                    }
-	                    class1 = ChatBox.chatboxInput.toLowerCase();
-	                    if(class1.startsWith(English.effectWave)) {
-	                        chatShapeEffect = 1;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectWave.length());
-	                    } else if(class1.startsWith(English.effectWave2)) {
-	                        chatShapeEffect = 2;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectWave2.length());
-	                    } else if(class1.startsWith(English.effectShake)) {
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectShake.length());
-	                        chatShapeEffect = 3;
-	                    } else if(class1.startsWith(Native.effectScroll)) {
-	                        chatShapeEffect = 4;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(Native.effectScroll.length());
-	                    } else if(class1.startsWith(English.effectSlide)) {
-	                        chatShapeEffect = 5;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectSlide.length());
-	                    }
+	                    ChatColorEffect chatColorEffect = ChatColorEffect.fromString(ChatBox.chatboxInput.toLowerCase());
+
+                        if (chatColorEffect != null) {
+                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(chatColorEffect.getPrefixLength());
+                        }
+
+                        ChatShapeEffect chatShapeEffect = ChatShapeEffect.fromString(ChatBox.chatboxInput.toLowerCase());
+
+                        if (chatShapeEffect != null) {
+                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(chatShapeEffect.getPrefixLength());
+                        }
+
 	                    ChatBox.filterInput();
 
-                        OutgoingPackets.sendMessage(new SendChatMessageOutboundMessage(chatColorEffect, chatShapeEffect, ChatBox.chatboxInput));
+                        SendChatMessageOutboundMessage message = new SendChatMessageOutboundMessage(
+                            chatColorEffect != null ? chatColorEffect : ChatColorEffect.YELLOW,
+                            chatShapeEffect != null ? chatShapeEffect : ChatShapeEffect.NONE,
+                            ChatBox.chatboxInput
+                        );
+
+                        OutgoingPackets.sendMessage(message);
 
                         // I guess resets from 'off' to... 'friends'? public?
 	                    if(ChatBox.publicChatMode == 2) {

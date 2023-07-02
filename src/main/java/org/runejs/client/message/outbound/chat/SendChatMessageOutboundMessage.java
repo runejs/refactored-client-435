@@ -1,5 +1,6 @@
 package org.runejs.client.message.outbound.chat;
 
+import org.runejs.client.chat.*;
 import org.runejs.client.message.OutboundMessage;
 
 /**
@@ -8,17 +9,13 @@ import org.runejs.client.message.OutboundMessage;
 public class SendChatMessageOutboundMessage implements OutboundMessage {
     /**
      * The color effect of the message, e.g. "red" or "flash1"
-     * 
-     * TODO (Jameskmonger) could use an enum here
      */
-    public final int chatColorEffect;
+    public final ChatColorEffect chatColorEffect;
 
     /**
      * The shape effect of the message, e.g. "scroll" or "wave"
-     * 
-     * TODO (Jameskmonger) could use an enum here
      */
-    public final int chatShapeEffect;
+    public final ChatShapeEffect chatShapeEffect;
     
     /**
      * The message to send
@@ -32,7 +29,7 @@ public class SendChatMessageOutboundMessage implements OutboundMessage {
      * @param chatShapeEffect The shape effect for the message
      * @param message The message to send
      */
-    public SendChatMessageOutboundMessage(int chatColorEffect, int chatShapeEffect, String message) {
+    public SendChatMessageOutboundMessage(ChatColorEffect chatColorEffect, ChatShapeEffect chatShapeEffect, String message) {
         this.chatColorEffect = chatColorEffect;
         this.chatShapeEffect = chatShapeEffect;
         this.message = message;

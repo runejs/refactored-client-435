@@ -17,8 +17,8 @@ public class SendChatMessageMessageEncoder implements MessageEncoder<SendChatMes
     public PacketBuffer encode(SendChatMessageOutboundMessage message) {
         VariableLengthPacketBuffer buffer = OutgoingPackets.openVariableSizePacket(75);
 
-        buffer.putByte(message.chatColorEffect);
-        buffer.putByte(message.chatShapeEffect);
+        buffer.putByte(message.chatColorEffect.getNetworkCode());
+        buffer.putByte(message.chatShapeEffect.getNetworkCode());
 
         // probably putString?
         ProducingGraphicsBuffer_Sub1.method1052(message.message, buffer);
