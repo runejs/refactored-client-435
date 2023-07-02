@@ -1,8 +1,5 @@
 package org.runejs.client.chat;
 
-import org.runejs.client.language.English;
-import org.runejs.client.language.Native;
-
 import java.util.Arrays;
 
 /**
@@ -15,11 +12,11 @@ public enum ChatShapeEffect {
      * Represents no effect, does not have a prefix.
      */
     NONE(0, null),
-    WAVE(1, English.effectWave),
-    WAVE2(2, English.effectWave2),
-    SHAKE(3, English.effectShake),
-    SCROLL(4, Native.effectScroll),
-    SLIDE(5, English.effectSlide);
+    WAVE(1, "wave:"),
+    WAVE2(2, "wave2:"),
+    SHAKE(3, "shake:"),
+    SCROLL(4, "scroll:"),
+    SLIDE(5, "slide:");
 
     /**
      * The numeric code sent to the server to represent this effect.

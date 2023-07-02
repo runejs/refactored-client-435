@@ -1,8 +1,5 @@
 package org.runejs.client.chat;
 
-import org.runejs.client.language.English;
-import org.runejs.client.language.Native;
-
 import java.util.Arrays;
 
 /**
@@ -11,18 +8,18 @@ import java.util.Arrays;
  * e.g. "yellow:hello!" or "flash1:selling lobsters 80ea"
  */
 public enum ChatColorEffect {
-    YELLOW(0, English.effectYellow.toLowerCase()),
-    RED(1, English.effectRed.toLowerCase()),
-    GREEN(2, English.effectGreen.toLowerCase()),
-    CYAN(3, English.effectCyan.toLowerCase()),
-    PURPLE(4, English.effectPurple.toLowerCase()),
-    WHITE(5, English.effectWhite.toLowerCase()),
-    FLASH1(6, Native.effectFlash1.toLowerCase()),
-    FLASH2(7, English.effectFlash2.toLowerCase()),
-    FLASH3(8, English.effectFlash3.toLowerCase()),
-    GLOW1(9, English.effectGlow1.toLowerCase()),
-    GLOW2(10, English.effectGlow2.toLowerCase()),
-    GLOW3(11, English.effectGlow3.toLowerCase());
+    YELLOW(0, "yellow:"),
+    RED(1, "red:"),
+    GREEN(2, "green:"),
+    CYAN(3, "cyan:"),
+    PURPLE(4, "purple:"),
+    WHITE(5, "white:"),
+    FLASH1(6, "flash1:"),
+    FLASH2(7, "flash2:"),
+    FLASH3(8, "flash3:"),
+    GLOW1(9, "glow1:"),
+    GLOW2(10, "glow2:"),
+    GLOW3(11, "glow3:");
 
     /**
      * The numeric code sent to the server to represent this effect.
