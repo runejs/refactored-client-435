@@ -2,6 +2,7 @@ package org.runejs.client;
 
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
+import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
@@ -208,7 +209,7 @@ public class MovedStatics {
                             if (i_4_ > 450)
                                 i_4_ = 450;
                             if (Class13.mouseX < 4 + i_4_) {
-                                int actionRowOffset = 2000;
+                                int actionRowOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
                                 if (InteractiveObject.playerRights >= 1) {
                                     addActionRow(English.reportAbuse, 0, 0, 0, actionRowOffset + ActionRowType.REPORT_ABUSE.getId(), Native.white + username);
                                 }
@@ -1182,12 +1183,8 @@ public class MovedStatics {
 	    }
 	}
 
-	// Area IDs:
-	// 0 = Game area (the area that renders in 3D)
-	// 1 = Tab area (the widgets that display within the tab area)
-	// 2 = Chat area (the chat itself, as well as all sorts of dialogues and anything that renders over the chat)
-	public static void handleInterfaceActions(int areaId, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, GameInterface[] gameInterfaces, int parentId, int scrollPosition, int scrollWidth) {
-	    // Only try to handle actions if mouse is within this widget's boundaries
+	public static void handleInterfaceActions(GameInterfaceArea area, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, GameInterface[] gameInterfaces, int parentId, int scrollPosition, int scrollWidth) {
+        // Only try to handle actions if mouse is within this widget's boundaries
 	    if(minX <= mouseX && mouseY >= minY && maxX > mouseX && maxY > mouseY) {
 	        for(int i = 0; gameInterfaces.length > i; i++) {
 	            GameInterface gameInterface = gameInterfaces[i];
@@ -1203,10 +1200,12 @@ public class MovedStatics {
 	                        OverlayDefinition.hoveredWidgetChildId = i;
 	                }
 	                if(gameInterface.type == GameInterfaceType.LAYER) {
+                        int areaId = area.getId();
+
 	                    if(!gameInterface.isHidden || Class29.isHovering(areaId, i) || PacketBuffer.hiddenButtonTest) {
-	                        handleInterfaceActions(areaId, mouseX, mouseY, i_2_, i_1_, i_2_ + gameInterface.originalWidth, i_1_ + gameInterface.originalHeight, gameInterfaces, i, gameInterface.scrollPosition, gameInterface.scrollWidth);
+	                        handleInterfaceActions(area, mouseX, mouseY, i_2_, i_1_, i_2_ + gameInterface.originalWidth, i_1_ + gameInterface.originalHeight, gameInterfaces, i, gameInterface.scrollPosition, gameInterface.scrollWidth);
 	                        if(gameInterface.children != null)
-	                            handleInterfaceActions(areaId, mouseX, mouseY, i_2_, i_1_, gameInterface.originalWidth + i_2_, i_1_ + gameInterface.originalHeight, gameInterface.children, gameInterface.id, gameInterface.scrollPosition, gameInterface.scrollWidth);
+	                            handleInterfaceActions(area, mouseX, mouseY, i_2_, i_1_, gameInterface.originalWidth + i_2_, i_1_ + gameInterface.originalHeight, gameInterface.children, gameInterface.id, gameInterface.scrollPosition, gameInterface.scrollWidth);
 	                        if(gameInterface.originalHeight < gameInterface.scrollHeight)
 	                            GameInterface.scrollInterface(gameInterface.originalHeight, mouseY, mouseX, gameInterface.scrollHeight, gameInterface, gameInterface.originalWidth + i_2_, areaId, i_1_);
 	                    }
@@ -1237,10 +1236,10 @@ public class MovedStatics {
                         // close button
 	                    if(gameInterface.actionType == 3 && mouseX >= i_2_ && mouseY >= i_1_ && i_2_ + gameInterface.originalWidth > mouseX && mouseY < i_1_ + gameInterface.originalHeight) {
 	                        int actionType;
-	                        if(areaId != 3)
-	                            actionType = 9;
+	                        if(area != GameInterfaceArea.PERMANENT_CHAT_BOX_WIDGET)
+	                            actionType = ActionRowType.CLOSE_WIDGET.getId();
 	                        else
-                                actionType = 40;
+                                actionType = ActionRowType.CLOSE_PERMANENT_CHATBOX_WIDGET.getId();
 	                        addActionRow(English.close, 0, 0, gameInterface.id, actionType, "");
 	                    }
 

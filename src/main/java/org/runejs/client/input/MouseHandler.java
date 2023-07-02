@@ -98,7 +98,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                         id = row;
                 }
                 if(id != -1)
-                    GameInterface.processMenuActions(109, id);
+                    GameInterface.processMenuActions(id);
                 if(Projectile.menuScreenArea == 1)
                     GameInterface.redrawTabArea = true;
                 MovedStatics.menuOpen = false;
@@ -144,7 +144,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             if(meta == 1 && (ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend(-1 + ActorDefinition.menuActionRow)) && ActorDefinition.menuActionRow > 2)
                 meta = 2;
             if(meta == 1 && ActorDefinition.menuActionRow > 0)
-                GameInterface.processMenuActions(59, ActorDefinition.menuActionRow + -1);
+                GameInterface.processMenuActions(ActorDefinition.menuActionRow - 1);
             if(meta == 2 && ActorDefinition.menuActionRow > 0)
                 Class60.determineMenuSize();
         }

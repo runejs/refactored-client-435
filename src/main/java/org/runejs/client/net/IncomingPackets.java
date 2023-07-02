@@ -25,7 +25,6 @@ import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.tile.WallDecoration;
-import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
 
 public class IncomingPackets {
@@ -570,23 +569,6 @@ public class IncomingPackets {
                 MovedStatics.lastContinueTextWidgetId = -1;
                 return true;
             }
-            if(opcode == PacketType.PLAY_SONG.getOpcode()) {
-                int songId = incomingPacketBuffer.getUnsignedShortLE();
-                if(songId == 65535)
-                    songId = -1;
-                MusicSystem.playSong(songId);
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.PLAY_QUICK_SONG.getOpcode()) {
-                int songTimeout = incomingPacketBuffer.getMediumBE();
-                int songId = incomingPacketBuffer.getUnsignedShortBE();
-                if(songId == 65535)
-                    songId = -1;
-                MusicSystem.playSoundJingle(songTimeout, songId);
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.UPDATE_REFERENCE_POSITION.getOpcode()) {
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
@@ -641,14 +623,6 @@ public class IncomingPackets {
             }
             if(opcode == PacketType.UPDATE_NPCS.getOpcode()) {
                 parseNpcUpdatePacket();
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.PLAY_SOUND.getOpcode()) {
-                int soundId = incomingPacketBuffer.getUnsignedShortBE();
-                int volume = incomingPacketBuffer.getUnsignedByte();
-                int delay = incomingPacketBuffer.getUnsignedShortBE();
-                SoundSystem.play(soundId, volume, delay);
                 opcode = -1;
                 return true;
             }

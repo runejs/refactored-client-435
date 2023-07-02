@@ -5,6 +5,7 @@ import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
+import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
@@ -64,7 +65,7 @@ public class Class43 {
     public static void processRightClick() {
         if(SceneTile.activeInterfaceType == 0) {
             Landscape.menuActionTexts[0] = English.cancel;
-            MovedStatics.menuActionTypes[0] = 1005;
+            MovedStatics.menuActionTypes[0] = ActionRowType.CANCEL.getId();
             ActorDefinition.menuActionRow = 1;
             if(GameInterface.fullscreenInterfaceId == -1) {
                 MovedStatics.method445();
@@ -82,7 +83,7 @@ public class Class43 {
                             yOffset = 0;
                             xOffset = 0;
                         }
-                        Class13.handleInterfaceActions(0, Class13.mouseX - xOffset, Landscape.mouseY - yOffset, 4, 4, 516, 338, GameInterface.gameScreenInterfaceId);
+                        Class13.handleInterfaceActions(GameInterfaceArea.GAME_AREA, Class13.mouseX - xOffset, Landscape.mouseY - yOffset, 4, 4, 516, 338, GameInterface.gameScreenInterfaceId);
                     }
                 }
 
@@ -145,7 +146,7 @@ public class Class43 {
             } else {
                 Item.anInt3065 = -1;
                 OverlayDefinition.hoveredWidgetChildId = -1;
-                Class13.handleInterfaceActions(0, Class13.mouseX, Landscape.mouseY, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
+                Class13.handleInterfaceActions(GameInterfaceArea.GAME_AREA, Class13.mouseX, Landscape.mouseY, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
                 ItemDefinition.anInt2850 = OverlayDefinition.hoveredWidgetChildId;
                 MovedStatics.anInt573 = Item.anInt3065;
             }

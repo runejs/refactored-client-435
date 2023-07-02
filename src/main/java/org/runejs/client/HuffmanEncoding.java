@@ -153,7 +153,7 @@ public class HuffmanEncoding {
 
                                 // deprioritise the action in the list if the NPC is higher level than the player
                                 if (Player.localPlayer.combatLevel < actorDefinition.combatLevel) {
-                                    actionTypeOffset = 2000;
+                                    actionTypeOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
                                 }
 
                                 int actionType = 0;
