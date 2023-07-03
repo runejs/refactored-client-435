@@ -181,16 +181,16 @@ public class Class33 {
                     TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048, i_8_);
                 }
                 if(PlayerAppearance.anIntArray695[i] == 1) {
-                    TypeFace.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, MovedStatics.anInt2628);
-                    TypeFace.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, MovedStatics.anInt2628);
+                    TypeFace.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048 + 1, MovedStatics.anInt2628, 0);
+                    TypeFace.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048, MovedStatics.anInt2628, i_8_);
                 }
                 if(PlayerAppearance.anIntArray695[i] == 2) {
-                    TypeFace.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, 1 + Class44.anInt1048, 0, MovedStatics.anInt2628);
-                    TypeFace.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, MovedStatics.anInt2628);
+                    TypeFace.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, 1 + Class44.anInt1048, MovedStatics.anInt2628, 0);
+                    TypeFace.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, Class44.anInt1048, MovedStatics.anInt2628, i_8_);
                 }
                 if(PlayerAppearance.anIntArray695[i] == 3) {
-                    TypeFace.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
-                    TypeFace.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
+                    TypeFace.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048 + 1, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150, 0);
+                    TypeFace.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150, i_8_);
                 }
                 if(PlayerAppearance.anIntArray695[i] == 4) {
                     int i_12_ = TypeFace.fontBold.getStringWidth(class1);
