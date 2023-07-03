@@ -7,10 +7,7 @@ import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
 import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.frame.console.Console;
-import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.io.Buffer;
-import org.runejs.client.language.English;
-import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
@@ -29,7 +26,6 @@ import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.sound.SoundSystem;
-import org.runejs.client.util.TextUtils;
 
 public class IncomingPackets {
     public static int incomingPacketSize = 0;
@@ -113,61 +109,6 @@ public class IncomingPackets {
 
             MovedStatics.gameServerSocket.readDataToBuffer(0, incomingPacketSize, incomingPacketBuffer.buffer);
 
-            if(opcode == 71) {
-                long username = incomingPacketBuffer.getLongBE();
-                String message = RSString.formatChatString(KeyFocusListener.method956(incomingPacketBuffer));
-
-                ChatBox.addChatMessage(Player.longToUsername(username).method85().toString(), message, 6);
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.FRIEND_LOGGED_IN.getOpcode()) {
-                long l = incomingPacketBuffer.getLongBE();
-                int i_1_ = incomingPacketBuffer.getUnsignedShortBE();
-                String string = Player.longToUsername(l).method85().toString();
-                for(int i_2_ = 0; i_2_ < Player.friendsCount; i_2_++) {
-                    if(l == Class59.friends[i_2_]) {
-                        if(i_1_ != Player.friendWorlds[i_2_]) {
-                            Player.friendWorlds[i_2_] = i_1_;
-                            GameInterface.redrawTabArea = true;
-                            if(i_1_ > 0)
-                                ChatBox.addChatMessage("", string + English.suffixHasLoggedIn, 5);
-                            if(i_1_ == 0)
-                                ChatBox.addChatMessage("", string + English.suffixHasLoggedOut, 5);
-                        }
-                        string = null;
-                        break;
-                    }
-                }
-                boolean bool = false;
-                if(string != null && Player.friendsCount < 200) {
-                    Class59.friends[Player.friendsCount] = l;
-                    Player.friendUsernames[Player.friendsCount] = string;
-                    Player.friendWorlds[Player.friendsCount] = i_1_;
-                    Player.friendsCount++;
-                    GameInterface.redrawTabArea = true;
-                }
-                while(!bool) {
-                    bool = true;
-                    for(int i_3_ = 0; Player.friendsCount - 1 > i_3_; i_3_++) {
-                        if(Player.worldId != Player.friendWorlds[i_3_] && Player.friendWorlds[1 + i_3_] == Player.worldId || Player.friendWorlds[i_3_] == 0 && Player.friendWorlds[i_3_ + 1] != 0) {
-                            bool = false;
-                            int i_4_ = Player.friendWorlds[i_3_];
-                            Player.friendWorlds[i_3_] = Player.friendWorlds[i_3_ + 1];
-                            Player.friendWorlds[1 + i_3_] = i_4_;
-                            String class1_5_ = Player.friendUsernames[i_3_];
-                            Player.friendUsernames[i_3_] = Player.friendUsernames[1 + i_3_];
-                            Player.friendUsernames[1 + i_3_] = class1_5_;
-                            long l_6_ = Class59.friends[i_3_];
-                            Class59.friends[i_3_] = Class59.friends[i_3_ + 1];
-                            Class59.friends[1 + i_3_] = l_6_;
-                            GameInterface.redrawTabArea = true;
-                        }
-                    }
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == 233) { // clear destination X
                 opcode = -1;
                 MovedStatics.destinationX = 0;
@@ -292,52 +233,6 @@ public class IncomingPackets {
             }
             if(opcode == 48) { // multi combat zone
                 MovedStatics.anInt2118 = incomingPacketBuffer.getUnsignedByte();
-                opcode = -1;
-                return true;
-            }
-            if(opcode == 82) { // duel/trade/challenge request, or regular chat message
-                String message = incomingPacketBuffer.getString();
-                if(message.endsWith(Native.tradeRequest)) {
-                    String username = message.substring(0, message.indexOf(Native.colon));
-                    long l = RSString.nameToLong(username);
-                    boolean bool = false;
-                    for(int i_33_ = 0; i_33_ < MovedStatics.anInt1008; i_33_++) {
-                        if(l == Player.ignores[i_33_]) {
-                            bool = true;
-                            break;
-                        }
-                    }
-                    if(!bool && !Player.inTutorialIsland)
-                        ChatBox.addChatMessage(username, "wishes to trade with you.", 4);
-                } else if(message.endsWith(Native.duelRequest)) {
-                    String username = message.substring(0, message.indexOf(Native.colon));
-                    long l = RSString.nameToLong(username);
-                    boolean bool = false;
-                    for(int i_31_ = 0; MovedStatics.anInt1008 > i_31_; i_31_++) {
-                        if(l == Player.ignores[i_31_]) {
-                            bool = true;
-                            break;
-                        }
-                    }
-                    if(!bool && !Player.inTutorialIsland)
-                        ChatBox.addChatMessage(username, English.suffixWishesToDuelWithYou, 8);
-                } else if(message.endsWith(Native.challengeRequest)) {
-                    String username = message.substring(0, message.indexOf(Native.colon));
-                    long l = RSString.nameToLong(username);
-                    boolean bool = false;
-                    for(int i_28_ = 0; i_28_ < MovedStatics.anInt1008; i_28_++) {
-                        if(l == Player.ignores[i_28_]) {
-                            bool = true;
-                            break;
-                        }
-                    }
-                    if(!bool && !Player.inTutorialIsland) {
-                        String challengeMessage = message.substring(1 + message.indexOf(Native.colon), -9 + message.length());
-                        ChatBox.addChatMessage(username, challengeMessage, 8);
-                    }
-                } else {
-                    ChatBox.addChatMessage("", message, 0);
-                }
                 opcode = -1;
                 return true;
             }
@@ -702,15 +597,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 196) { // set chat mode configs
-                ChatBox.publicChatMode = incomingPacketBuffer.getUnsignedByte();
-                ChatBox.privateChatMode = incomingPacketBuffer.getUnsignedByte();
-                ChatBox.tradeMode = incomingPacketBuffer.getUnsignedByte();
-                ChatBox.redrawChatbox = true;
-                MovedStatics.redrawChatbox = true;
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.SET_SYSTEM_UPDATE_TIME.getOpcode()) {
                 Class40_Sub5_Sub15.systemUpdateTime = incomingPacketBuffer.getUnsignedShortLE() * 30;
                 opcode = -1;
@@ -921,12 +807,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.SET_FRIEND_LIST_STATUS.getOpcode()) {
-                Player.friendListStatus = incomingPacketBuffer.getUnsignedByte();
-                GameInterface.redrawTabArea = true;
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.SET_WIDGET_ITEM_MODEL.getOpcode()) {
                 int zoom = incomingPacketBuffer.getUnsignedShortBE();
                 int itemId = incomingPacketBuffer.getUnsignedShortLE();
@@ -952,41 +832,6 @@ public class IncomingPackets {
                     gameInterface.modelType = InterfaceModelType.ITEM;
                     gameInterface.modelZoom = 100 * itemDefinition.zoom2d / zoom;
                     gameInterface.rotationZ = itemDefinition.yan2d;
-                }
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.PRIVATE_MESSAGE_RECEIVED.getOpcode()) {
-                long fromPlayerIndex = incomingPacketBuffer.getLongBE();
-                long chatIdModifier = incomingPacketBuffer.getUnsignedShortBE();
-                long privateMessageCounter = incomingPacketBuffer.getMediumBE();
-                int fromPlayerRights = incomingPacketBuffer.getUnsignedByte();
-                boolean hideMessage = false;
-                long chatId = (chatIdModifier << 32) + privateMessageCounter;
-                for(int msgIndex = 0; msgIndex < 100; msgIndex++) {
-                    if(chatId == Player.privateMessageIds[msgIndex]) {
-                        hideMessage = true;
-                        break;
-                    }
-                }
-                if(fromPlayerRights <= 1) {
-                    for(int ignoreIndex = 0; ignoreIndex < MovedStatics.anInt1008; ignoreIndex++) {
-                        if(fromPlayerIndex == Player.ignores[ignoreIndex]) {
-                            hideMessage = true;
-                            break;
-                        }
-                    }
-                }
-                if(!hideMessage && !Player.inTutorialIsland) {
-                    Player.privateMessageIds[Player.privateMessageIndex] = chatId;
-                    Player.privateMessageIndex = (1 + Player.privateMessageIndex) % 100;
-                    String privateMessage = RSString.formatChatString(KeyFocusListener.method956(incomingPacketBuffer));
-                    if(fromPlayerRights == 2 || fromPlayerRights == 3)
-                        ChatBox.addChatMessage(Native.goldCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), privateMessage, 7);
-                    else if(fromPlayerRights == 1)
-                        ChatBox.addChatMessage(Native.whiteCrown + TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), privateMessage, 7);
-                    else
-                        ChatBox.addChatMessage(TextUtils.formatName(TextUtils.longToName(fromPlayerIndex)), privateMessage, 3);
                 }
                 opcode = -1;
                 return true;

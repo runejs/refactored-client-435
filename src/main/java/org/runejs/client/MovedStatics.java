@@ -4,6 +4,8 @@ import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
+import org.runejs.client.chat.ChatColorEffect;
+import org.runejs.client.chat.ChatShapeEffect;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.frame.console.Console;
@@ -29,6 +31,7 @@ import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.net.ISAAC;
+import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
@@ -43,6 +46,8 @@ import org.runejs.client.util.SignlinkNode;
 import org.runejs.client.util.TextUtils;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.media.renderable.actor.*;
+import org.runejs.client.message.outbound.chat.SendChatMessageOutboundMessage;
+import org.runejs.client.message.outbound.chat.SendPrivateMessageOutboundMessage;
 import org.runejs.client.scene.tile.*;
 import org.runejs.Configuration;
 
@@ -1504,13 +1509,11 @@ public class MovedStatics {
 	                    GameShell.method28(l);
 	                }
 	                if(Class37.anInt876 == 3 && ChatBox.chatMessage.length() > 0) {
-	                    SceneCluster.packetBuffer.putPacket(207);
-	                    SceneCluster.packetBuffer.putByte(0);
-	                    int i = SceneCluster.packetBuffer.currentPosition;
-	                    SceneCluster.packetBuffer.putLongBE(PacketBuffer.aLong2241);
+                        // private messages
 	                    ChatBox.filterInput();
-	                    ProducingGraphicsBuffer_Sub1.method1052(ChatBox.chatMessage, SceneCluster.packetBuffer);
-	                    SceneCluster.packetBuffer.finishVarByte(-i + SceneCluster.packetBuffer.currentPosition);
+
+                        OutgoingPackets.sendMessage(new SendPrivateMessageOutboundMessage(PacketBuffer.aLong2241, ChatBox.chatboxInput));
+                        
 	                    if(ChatBox.privateChatMode == 2) {
 	                        ChatBox.privateChatMode = 1;
 	                        redrawChatbox = true;
@@ -1632,71 +1635,29 @@ public class MovedStatics {
 	                    SceneCluster.packetBuffer.putByte(-1 + ChatBox.chatboxInput.length());
 	                    SceneCluster.packetBuffer.putString(ChatBox.chatboxInput.substring(2));
 	                } else {
-	                    int i = 0;
-	                    String class1 = ChatBox.chatboxInput.toLowerCase();
-	                    int i_11_ = 0;
-	                    if(class1.startsWith(English.effectYellow)) {
-	                        i_11_ = 0;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectYellow.length());
-	                    } else if(class1.startsWith(English.effectRed)) {
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectRed.length());
-	                        i_11_ = 1;
-	                    } else if(class1.startsWith(English.effectGreen)) {
-	                        i_11_ = 2;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectGreen.length());
-	                    } else if(class1.startsWith(English.effectCyan)) {
-	                        i_11_ = 3;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectCyan.length());
-	                    } else if(class1.startsWith(English.effectPurple)) {
-	                        i_11_ = 4;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectPurple.length());
-	                    } else if(class1.startsWith(English.effectWhite)) {
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectWhite.length());
-	                        i_11_ = 5;
-	                    } else if(class1.startsWith(Native.effectFlash1)) {
-	                        i_11_ = 6;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(Native.effectFlash1.length());
-	                    } else if(class1.startsWith(English.effectFlash2)) {
-	                        i_11_ = 7;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectFlash2.length());
-	                    } else if(class1.startsWith(English.effectFlash3)) {
-	                        i_11_ = 8;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectFlash3.length());
-	                    } else if(class1.startsWith(English.effectGlow1)) {
-	                        i_11_ = 9;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectGlow1.length());
-	                    } else if(class1.startsWith(English.effectGlow2)) {
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectGlow2.length());
-	                        i_11_ = 10;
-	                    } else if(class1.startsWith(English.effectGlow3)) {
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectGlow3.length());
-	                        i_11_ = 11;
-	                    }
-	                    class1 = ChatBox.chatboxInput.toLowerCase();
-	                    if(class1.startsWith(English.effectWave)) {
-	                        i = 1;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectWave.length());
-	                    } else if(class1.startsWith(English.effectWave2)) {
-	                        i = 2;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectWave2.length());
-	                    } else if(class1.startsWith(English.effectShake)) {
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectShake.length());
-	                        i = 3;
-	                    } else if(class1.startsWith(Native.effectScroll)) {
-	                        i = 4;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(Native.effectScroll.length());
-	                    } else if(class1.startsWith(English.effectSlide)) {
-	                        i = 5;
-	                        ChatBox.chatboxInput = ChatBox.chatboxInput.substring(English.effectSlide.length());
-	                    }
-	                    SceneCluster.packetBuffer.putPacket(75);
-	                    SceneCluster.packetBuffer.putByte(0);
-	                    int i_12_ = SceneCluster.packetBuffer.currentPosition;
-	                    SceneCluster.packetBuffer.putByte(i_11_);
-	                    SceneCluster.packetBuffer.putByte(i);
+	                    ChatColorEffect chatColorEffect = ChatColorEffect.fromString(ChatBox.chatboxInput.toLowerCase());
+
+                        if (chatColorEffect != null) {
+                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(chatColorEffect.getPrefixLength());
+                        }
+
+                        ChatShapeEffect chatShapeEffect = ChatShapeEffect.fromString(ChatBox.chatboxInput.toLowerCase());
+
+                        if (chatShapeEffect != null) {
+                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(chatShapeEffect.getPrefixLength());
+                        }
+
 	                    ChatBox.filterInput();
-	                    ProducingGraphicsBuffer_Sub1.method1052(ChatBox.chatboxInput, SceneCluster.packetBuffer);
-	                    SceneCluster.packetBuffer.finishVarByte(SceneCluster.packetBuffer.currentPosition + -i_12_);
+
+                        SendChatMessageOutboundMessage message = new SendChatMessageOutboundMessage(
+                            chatColorEffect != null ? chatColorEffect : ChatColorEffect.YELLOW,
+                            chatShapeEffect != null ? chatShapeEffect : ChatShapeEffect.NONE,
+                            ChatBox.chatboxInput
+                        );
+
+                        OutgoingPackets.sendMessage(message);
+
+                        // I guess resets from 'off' to... 'friends'? public?
 	                    if(ChatBox.publicChatMode == 2) {
 	                        redrawChatbox = true;
 	                        ChatBox.publicChatMode = 3;
