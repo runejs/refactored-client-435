@@ -78,10 +78,10 @@ public class Class33 {
                         PlayerAppearance.anIntArray688[SceneCluster.anInt770] = TypeFace.fontBold.characterDefaultHeight;
                         PlayerAppearance.anIntArray715[SceneCluster.anInt770] = ISAAC.anInt522;
                         PlayerAppearance.anIntArray685[SceneCluster.anInt770] = Class44.anInt1048;
-                        PlayerAppearance.anIntArray712[SceneCluster.anInt770] = actor.chatcolor;
-                        PlayerAppearance.anIntArray695[SceneCluster.anInt770] = actor.chatEffects;
+                        PlayerAppearance.overheadChatColor[SceneCluster.anInt770] = actor.chatcolor;
+                        PlayerAppearance.overheadChatEffect[SceneCluster.anInt770] = actor.chatEffects;
                         PlayerAppearance.anIntArray684[SceneCluster.anInt770] = actor.anInt3078;
-                        PlayerAppearance.aClass1Array697[SceneCluster.anInt770] = actor.forcedChatMessage;
+                        PlayerAppearance.overheadChatMessage[SceneCluster.anInt770] = actor.forcedChatMessage;
                         SceneCluster.anInt770++;
                     }
                 }
@@ -134,18 +134,18 @@ public class Class33 {
             }
             ISAAC.anInt522 = PlayerAppearance.anIntArray715[i];
             Class44.anInt1048 = PlayerAppearance.anIntArray685[i] = i_4_;
-            String class1 = PlayerAppearance.aClass1Array697[i];
+            String class1 = PlayerAppearance.overheadChatMessage[i];
             if(MovedStatics.anInt2280 == 0) {
                 int i_8_ = 16776960;
-                if(PlayerAppearance.anIntArray712[i] < 6)
-                    i_8_ = MovedStatics.anIntArray2106[PlayerAppearance.anIntArray712[i]];
-                if(PlayerAppearance.anIntArray712[i] == 6)
+                if(PlayerAppearance.overheadChatColor[i] < 6)
+                    i_8_ = MovedStatics.anIntArray2106[PlayerAppearance.overheadChatColor[i]];
+                if(PlayerAppearance.overheadChatColor[i] == 6)
                     i_8_ = MovedStatics.anInt2628 % 20 >= 10 ? 16776960 : 16711680;
-                if(PlayerAppearance.anIntArray712[i] == 7)
+                if(PlayerAppearance.overheadChatColor[i] == 7)
                     i_8_ = MovedStatics.anInt2628 % 20 < 10 ? 255 : 65535;
-                if(PlayerAppearance.anIntArray712[i] == 8)
+                if(PlayerAppearance.overheadChatColor[i] == 8)
                     i_8_ = MovedStatics.anInt2628 % 20 >= 10 ? 8454016 : 45056;
-                if(PlayerAppearance.anIntArray712[i] == 9) {
+                if(PlayerAppearance.overheadChatColor[i] == 9) {
                     int i_9_ = 150 - PlayerAppearance.anIntArray684[i];
                     if(i_9_ >= 50) {
                         if(i_9_ < 100)
@@ -155,7 +155,7 @@ public class Class33 {
                     } else
                         i_8_ = 16711680 + 1280 * i_9_;
                 }
-                if(PlayerAppearance.anIntArray712[i] == 10) {
+                if(PlayerAppearance.overheadChatColor[i] == 10) {
                     int i_10_ = 150 + -PlayerAppearance.anIntArray684[i];
                     if(i_10_ >= 50) {
                         if(i_10_ >= 100) {
@@ -166,7 +166,7 @@ public class Class33 {
                     } else
                         i_8_ = 5 * i_10_ + 16711680;
                 }
-                if(PlayerAppearance.anIntArray712[i] == 11) {
+                if(PlayerAppearance.overheadChatColor[i] == 11) {
                     int i_11_ = -PlayerAppearance.anIntArray684[i] + 150;
                     if(i_11_ >= 50) {
                         if(i_11_ < 100)
@@ -176,23 +176,23 @@ public class Class33 {
                     } else
                         i_8_ = -(327685 * i_11_) + 16777215;
                 }
-                if(PlayerAppearance.anIntArray695[i] == 0) {
+                if(PlayerAppearance.overheadChatEffect[i] == 0) {
                     TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
                     TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048, i_8_);
                 }
-                if(PlayerAppearance.anIntArray695[i] == 1) {
+                if(PlayerAppearance.overheadChatEffect[i] == 1) {
                     TypeFace.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, MovedStatics.anInt2628);
                     TypeFace.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, MovedStatics.anInt2628);
                 }
-                if(PlayerAppearance.anIntArray695[i] == 2) {
+                if(PlayerAppearance.overheadChatEffect[i] == 2) {
                     TypeFace.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, 1 + Class44.anInt1048, 0, MovedStatics.anInt2628);
                     TypeFace.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, MovedStatics.anInt2628);
                 }
-                if(PlayerAppearance.anIntArray695[i] == 3) {
+                if(PlayerAppearance.overheadChatEffect[i] == 3) {
                     TypeFace.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
                     TypeFace.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
                 }
-                if(PlayerAppearance.anIntArray695[i] == 4) {
+                if(PlayerAppearance.overheadChatEffect[i] == 4) {
                     int i_12_ = TypeFace.fontBold.getStringWidth(class1);
                     int i_13_ = (i_12_ + 100) * (150 + -PlayerAppearance.anIntArray684[i]) / 150;
                     Rasterizer.setBounds(ISAAC.anInt522 + -50, 0, 50 + ISAAC.anInt522, 334);
@@ -200,7 +200,7 @@ public class Class33 {
                     TypeFace.fontBold.drawString(class1, 50 + ISAAC.anInt522 + -i_13_, Class44.anInt1048, i_8_);
                     Rasterizer.resetBounds();
                 }
-                if(PlayerAppearance.anIntArray695[i] == 5) {
+                if(PlayerAppearance.overheadChatEffect[i] == 5) {
                     int i_14_ = 0;
                     int i_15_ = 150 + -PlayerAppearance.anIntArray684[i];
                     Rasterizer.setBounds(0, -1 + -TypeFace.fontBold.characterDefaultHeight + Class44.anInt1048, 512, 5 + Class44.anInt1048);

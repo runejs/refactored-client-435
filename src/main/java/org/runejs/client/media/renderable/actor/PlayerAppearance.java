@@ -18,11 +18,11 @@ public class PlayerAppearance {
     public static int[] anIntArray684 = new int[50];
     public static int[] anIntArray685 = new int[50];
     public static int[] anIntArray688 = new int[50];
-    public static int[] anIntArray695 = new int[50];
-    public static String[] aClass1Array697 = new String[50];
+    public static int[] overheadChatEffect = new int[50];
+    public static String[] overheadChatMessage = new String[50];
     public static int anInt704 = 0;
     public static int anInt708 = -1;
-    public static int[] anIntArray712 = new int[50];
+    public static int[] overheadChatColor = new int[50];
     public static ProducingGraphicsBuffer tabPieveLowerRight;
     public static int[] anIntArray715 = new int[50];
     public static GameSocket lostConnectionSocket;
