@@ -134,70 +134,70 @@ public class Class33 {
             }
             ISAAC.anInt522 = PlayerAppearance.anIntArray715[i];
             Class44.anInt1048 = PlayerAppearance.anIntArray685[i] = i_4_;
-            String class1 = PlayerAppearance.overheadChatMessage[i];
+            String message = PlayerAppearance.overheadChatMessage[i];
             if(MovedStatics.chatEffectsDisabled == 0) {
-                int i_8_ = MovedStatics.OVERHEAD_CHAT_COLORS[0];
+                int textColor = MovedStatics.OVERHEAD_CHAT_COLORS[0];
                 if(PlayerAppearance.overheadChatColor[i] < 6)
-                    i_8_ = MovedStatics.OVERHEAD_CHAT_COLORS[PlayerAppearance.overheadChatColor[i]];
+                    textColor = MovedStatics.OVERHEAD_CHAT_COLORS[PlayerAppearance.overheadChatColor[i]];
                 if(PlayerAppearance.overheadChatColor[i] == 6)
-                    i_8_ = MovedStatics.anInt2628 % 20 >= 10 ? 16776960 : 16711680;
+                    textColor = MovedStatics.anInt2628 % 20 >= 10 ? 16776960 : 16711680;
                 if(PlayerAppearance.overheadChatColor[i] == 7)
-                    i_8_ = MovedStatics.anInt2628 % 20 < 10 ? 255 : 65535;
+                    textColor = MovedStatics.anInt2628 % 20 < 10 ? 255 : 65535;
                 if(PlayerAppearance.overheadChatColor[i] == 8)
-                    i_8_ = MovedStatics.anInt2628 % 20 >= 10 ? 8454016 : 45056;
+                    textColor = MovedStatics.anInt2628 % 20 >= 10 ? 8454016 : 45056;
                 if(PlayerAppearance.overheadChatColor[i] == 9) {
                     int i_9_ = 150 - PlayerAppearance.anIntArray684[i];
                     if(i_9_ >= 50) {
                         if(i_9_ < 100)
-                            i_8_ = -((-50 + i_9_) * 327680) + 16776960;
+                            textColor = -((-50 + i_9_) * 327680) + 16776960;
                         else if(i_9_ < 150)
-                            i_8_ = 65280 + 5 * (i_9_ + -100);
+                            textColor = 65280 + 5 * (i_9_ + -100);
                     } else
-                        i_8_ = 16711680 + 1280 * i_9_;
+                        textColor = 16711680 + 1280 * i_9_;
                 }
                 if(PlayerAppearance.overheadChatColor[i] == 10) {
                     int i_10_ = 150 + -PlayerAppearance.anIntArray684[i];
                     if(i_10_ >= 50) {
                         if(i_10_ >= 100) {
                             if(i_10_ < 150)
-                                i_8_ = 255 - (-(327680 * (i_10_ - 100)) - 500) + -(5 * i_10_);
+                                textColor = 255 - (-(327680 * (i_10_ - 100)) - 500) + -(5 * i_10_);
                         } else
-                            i_8_ = 16711935 - (327680 * i_10_ - 16384000);
+                            textColor = 16711935 - (327680 * i_10_ - 16384000);
                     } else
-                        i_8_ = 5 * i_10_ + 16711680;
+                        textColor = 5 * i_10_ + 16711680;
                 }
                 if(PlayerAppearance.overheadChatColor[i] == 11) {
                     int i_11_ = -PlayerAppearance.anIntArray684[i] + 150;
                     if(i_11_ >= 50) {
                         if(i_11_ < 100)
-                            i_8_ = 327685 * (i_11_ - 50) + 65280;
+                            textColor = 327685 * (i_11_ - 50) + 65280;
                         else if(i_11_ < 150)
-                            i_8_ = -((-100 + i_11_) * 327680) + 16777215;
+                            textColor = -((-100 + i_11_) * 327680) + 16777215;
                     } else
-                        i_8_ = -(327685 * i_11_) + 16777215;
+                        textColor = -(327685 * i_11_) + 16777215;
                 }
                 if(PlayerAppearance.overheadChatEffect[i] == 0) {
-                    TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
-                    TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048, i_8_);
+                    TypeFace.fontBold.drawStringLeft(message, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
+                    TypeFace.fontBold.drawStringLeft(message, ISAAC.anInt522, Class44.anInt1048, textColor);
                 }
                 if(PlayerAppearance.overheadChatEffect[i] == 1) {
-                    TypeFace.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, MovedStatics.anInt2628);
-                    TypeFace.fontBold.drawCenteredStringWaveY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, MovedStatics.anInt2628);
+                    TypeFace.fontBold.drawCenteredStringWaveY(message, ISAAC.anInt522, Class44.anInt1048 + 1, 0, MovedStatics.anInt2628);
+                    TypeFace.fontBold.drawCenteredStringWaveY(message, ISAAC.anInt522, Class44.anInt1048, textColor, MovedStatics.anInt2628);
                 }
                 if(PlayerAppearance.overheadChatEffect[i] == 2) {
-                    TypeFace.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, 1 + Class44.anInt1048, 0, MovedStatics.anInt2628);
-                    TypeFace.fontBold.drawCenteredStringWaveXY(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, MovedStatics.anInt2628);
+                    TypeFace.fontBold.drawCenteredStringWaveXY(message, ISAAC.anInt522, 1 + Class44.anInt1048, 0, MovedStatics.anInt2628);
+                    TypeFace.fontBold.drawCenteredStringWaveXY(message, ISAAC.anInt522, Class44.anInt1048, textColor, MovedStatics.anInt2628);
                 }
                 if(PlayerAppearance.overheadChatEffect[i] == 3) {
-                    TypeFace.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
-                    TypeFace.fontBold.drawCenteredStringWaveXYMove(class1, ISAAC.anInt522, Class44.anInt1048, i_8_, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
+                    TypeFace.fontBold.drawCenteredStringWaveXYMove(message, ISAAC.anInt522, Class44.anInt1048 + 1, 0, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
+                    TypeFace.fontBold.drawCenteredStringWaveXYMove(message, ISAAC.anInt522, Class44.anInt1048, textColor, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
                 }
                 if(PlayerAppearance.overheadChatEffect[i] == 4) {
-                    int i_12_ = TypeFace.fontBold.getStringWidth(class1);
+                    int i_12_ = TypeFace.fontBold.getStringWidth(message);
                     int i_13_ = (i_12_ + 100) * (150 + -PlayerAppearance.anIntArray684[i]) / 150;
                     Rasterizer.setBounds(ISAAC.anInt522 + -50, 0, 50 + ISAAC.anInt522, 334);
-                    TypeFace.fontBold.drawString(class1, -i_13_ + ISAAC.anInt522 + 50, Class44.anInt1048 + 1, 0);
-                    TypeFace.fontBold.drawString(class1, 50 + ISAAC.anInt522 + -i_13_, Class44.anInt1048, i_8_);
+                    TypeFace.fontBold.drawString(message, -i_13_ + ISAAC.anInt522 + 50, Class44.anInt1048 + 1, 0);
+                    TypeFace.fontBold.drawString(message, 50 + ISAAC.anInt522 + -i_13_, Class44.anInt1048, textColor);
                     Rasterizer.resetBounds();
                 }
                 if(PlayerAppearance.overheadChatEffect[i] == 5) {
@@ -209,13 +209,13 @@ public class Class33 {
                             i_14_ = i_15_ + -125;
                     } else
                         i_14_ = i_15_ + -25;
-                    TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, i_14_ + Class44.anInt1048 + 1, 0);
-                    TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, i_14_ + Class44.anInt1048, i_8_);
+                    TypeFace.fontBold.drawStringLeft(message, ISAAC.anInt522, i_14_ + Class44.anInt1048 + 1, 0);
+                    TypeFace.fontBold.drawStringLeft(message, ISAAC.anInt522, i_14_ + Class44.anInt1048, textColor);
                     Rasterizer.resetBounds();
                 }
             } else {
-                TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
-                TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048, MovedStatics.OVERHEAD_CHAT_COLORS[0]);
+                TypeFace.fontBold.drawStringLeft(message, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
+                TypeFace.fontBold.drawStringLeft(message, ISAAC.anInt522, Class44.anInt1048, MovedStatics.OVERHEAD_CHAT_COLORS[0]);
             }
         }
     }
