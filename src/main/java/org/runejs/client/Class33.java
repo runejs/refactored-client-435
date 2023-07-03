@@ -135,7 +135,7 @@ public class Class33 {
             ISAAC.anInt522 = PlayerAppearance.anIntArray715[i];
             Class44.anInt1048 = PlayerAppearance.anIntArray685[i] = i_4_;
             String class1 = PlayerAppearance.overheadChatMessage[i];
-            if(MovedStatics.anInt2280 == 0) {
+            if(MovedStatics.chatEffectsDisabled == 0) {
                 int i_8_ = 16776960;
                 if(PlayerAppearance.overheadChatColor[i] < 6)
                     i_8_ = MovedStatics.anIntArray2106[PlayerAppearance.overheadChatColor[i]];

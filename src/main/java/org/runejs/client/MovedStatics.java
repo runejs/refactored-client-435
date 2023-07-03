@@ -66,7 +66,7 @@ public class MovedStatics {
     public static int[] anIntArray1445;
     public static ProducingGraphicsBuffer chatboxRight;
     public static int crossY = 0;
-    public static int anInt2280 = 0;
+    public static int chatEffectsDisabled = 0;
     public static int anInt321 = 5063219;
     public static volatile int eventMouseY = -1;
     public static boolean redrawChatbox = false;
@@ -1759,7 +1759,7 @@ public class MovedStatics {
 	            	SoundSystem.updateSoundEffectVolume(varPlayerValue);
 	            }
 	            if(varPlayerType == 6)
-	                anInt2280 = varPlayerValue;
+	                chatEffectsDisabled = varPlayerValue;
 	            if(varPlayerType != 5)
 	                break;
 	            ProducingGraphicsBuffer.oneMouseButton = varPlayerValue;
