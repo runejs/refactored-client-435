@@ -136,9 +136,9 @@ public class Class33 {
             Class44.anInt1048 = PlayerAppearance.anIntArray685[i] = i_4_;
             String class1 = PlayerAppearance.overheadChatMessage[i];
             if(MovedStatics.chatEffectsDisabled == 0) {
-                int i_8_ = 16776960;
+                int i_8_ = MovedStatics.OVERHEAD_CHAT_COLORS[0];
                 if(PlayerAppearance.overheadChatColor[i] < 6)
-                    i_8_ = MovedStatics.anIntArray2106[PlayerAppearance.overheadChatColor[i]];
+                    i_8_ = MovedStatics.OVERHEAD_CHAT_COLORS[PlayerAppearance.overheadChatColor[i]];
                 if(PlayerAppearance.overheadChatColor[i] == 6)
                     i_8_ = MovedStatics.anInt2628 % 20 >= 10 ? 16776960 : 16711680;
                 if(PlayerAppearance.overheadChatColor[i] == 7)
@@ -215,7 +215,7 @@ public class Class33 {
                 }
             } else {
                 TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
-                TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048, 16776960);
+                TypeFace.fontBold.drawStringLeft(class1, ISAAC.anInt522, Class44.anInt1048, MovedStatics.OVERHEAD_CHAT_COLORS[0]);
             }
         }
     }
