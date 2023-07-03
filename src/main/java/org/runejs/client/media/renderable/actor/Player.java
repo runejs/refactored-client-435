@@ -14,7 +14,6 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.net.IncomingPackets;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.util.CollisionMap;
@@ -235,121 +234,6 @@ public class Player extends Actor {
                 mask += appearanceBuffer.getUnsignedByte() << 8;
             parsePlayerUpdateMasks(appearanceBuffer, player, mask, trackedPlayerIndex);
         }
-    }
-
-    public static void parsePlayerMovement() {
-        IncomingPackets.incomingPacketBuffer.initBitAccess();
-        int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
-        if(updateRequired != 0) {
-            int movementType = IncomingPackets.incomingPacketBuffer.getBits(2);
-            if(movementType == 0) // No movement
-                actorUpdatingIndices[actorUpdatingIndex++] = 2047;
-            else if(movementType == 1) { // Walking
-                int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                localPlayer.move(walkDirection, false);
-                int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
-                if(runUpdateBlock == 1)
-                    actorUpdatingIndices[actorUpdatingIndex++] = 2047;
-            } else if(movementType == 2) { // Running
-                int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                localPlayer.move(walkDirection, true);
-                int runDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                localPlayer.move(runDirection, true);
-                int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
-                if(runUpdateBlock == 1)
-                    actorUpdatingIndices[actorUpdatingIndex++] = 2047;
-            } else if(movementType == 3) { // Map region changed
-                int teleporting = IncomingPackets.incomingPacketBuffer.getBits(1);
-                worldLevel = IncomingPackets.incomingPacketBuffer.getBits(2);
-                int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
-                if(runUpdateBlock == 1)
-                    actorUpdatingIndices[actorUpdatingIndex++] = 2047;
-                int localChunkX = IncomingPackets.incomingPacketBuffer.getBits(7);
-                int localChunkY = IncomingPackets.incomingPacketBuffer.getBits(7);
-                localPlayer.method787(localChunkY, -7717, teleporting == 1, localChunkX);
-            }
-        }
-    }
-
-    public static void parseTrackedPlayerMovement() {
-        int trackedPlayerCount = IncomingPackets.incomingPacketBuffer.getBits(8);
-        if(trackedPlayerCount < localPlayerCount) {
-            for(int i = trackedPlayerCount; localPlayerCount > i; i++)
-                deregisterActorIndices[Class17.deregisterActorCount++] = trackedPlayerIndices[i];
-        }
-        if(localPlayerCount < trackedPlayerCount)
-            throw new RuntimeException("gppov1");
-        localPlayerCount = 0;
-        for(int i = 0; trackedPlayerCount > i; i++) {
-            int trackedPlayerIndex = trackedPlayerIndices[i];
-            Player player = trackedPlayers[trackedPlayerIndex];
-            int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
-            if(updateRequired == 0) {
-                trackedPlayerIndices[localPlayerCount++] = trackedPlayerIndex;
-                player.anInt3134 = MovedStatics.pulseCycle;
-            } else {
-                int movementType = IncomingPackets.incomingPacketBuffer.getBits(2);
-                if(movementType == 0) { // No movement
-                    trackedPlayerIndices[localPlayerCount++] = trackedPlayerIndex;
-                    player.anInt3134 = MovedStatics.pulseCycle;
-                    actorUpdatingIndices[actorUpdatingIndex++] = trackedPlayerIndex;
-                } else if(movementType == 1) { // Walking
-                    trackedPlayerIndices[localPlayerCount++] = trackedPlayerIndex;
-                    player.anInt3134 = MovedStatics.pulseCycle;
-                    int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                    player.move(walkDirection, false);
-                    int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
-                    if(runUpdateBlock == 1)
-                        actorUpdatingIndices[actorUpdatingIndex++] = trackedPlayerIndex;
-                } else if(movementType == 2) { // Running
-                    trackedPlayerIndices[localPlayerCount++] = trackedPlayerIndex;
-                    player.anInt3134 = MovedStatics.pulseCycle;
-                    int walkDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                    player.move(walkDirection, true);
-                    int runDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-                    player.move(runDirection, true);
-                    int runUpdateBlock = IncomingPackets.incomingPacketBuffer.getBits(1);
-                    if(runUpdateBlock == 1)
-                        actorUpdatingIndices[actorUpdatingIndex++] = trackedPlayerIndex;
-                } else if(movementType == 3)
-                    deregisterActorIndices[Class17.deregisterActorCount++] = trackedPlayerIndex;
-            }
-        }
-    }
-
-    public static void registerNewPlayers() {
-        while(IncomingPackets.incomingPacketBuffer.getRemainingBits(IncomingPackets.incomingPacketSize) >= 11) {
-            int newPlayerIndex = IncomingPackets.incomingPacketBuffer.getBits(11);
-            if(newPlayerIndex == 2047)
-                break;
-            boolean bool = false;
-            if(trackedPlayers[newPlayerIndex] == null) {
-                trackedPlayers[newPlayerIndex] = new Player();
-                if(trackedPlayerAppearanceCache[newPlayerIndex] != null)
-                    trackedPlayers[newPlayerIndex].parsePlayerAppearanceData(trackedPlayerAppearanceCache[newPlayerIndex]);
-                bool = true;
-            }
-            trackedPlayerIndices[localPlayerCount++] = newPlayerIndex;
-            Player player = trackedPlayers[newPlayerIndex];
-            player.anInt3134 = MovedStatics.pulseCycle;
-            int offsetX = IncomingPackets.incomingPacketBuffer.getBits(5);
-            int offsetY = IncomingPackets.incomingPacketBuffer.getBits(5);
-            if(offsetX > 15)
-                offsetX -= 32;
-            if(offsetY > 15)
-                offsetY -= 32;
-            int initialFaceDirection = IncomingPackets.incomingPacketBuffer.getBits(3);
-            int faceDirection = Projectile.directions[initialFaceDirection];
-            if(bool)
-                player.initialFaceDirection = faceDirection;
-            int updateRequired = IncomingPackets.incomingPacketBuffer.getBits(1);
-            int discardWalkingQueue = IncomingPackets.incomingPacketBuffer.getBits(1);
-            if(discardWalkingQueue == 1)
-                actorUpdatingIndices[actorUpdatingIndex++] = newPlayerIndex;
-            player.method787(offsetY + localPlayer.pathX[0], -7717, updateRequired == 1, localPlayer.pathY[0] + offsetX);
-        }
-        IncomingPackets.incomingPacketBuffer.finishBitAccess();
-
     }
 
     public static void setTutorialIslandFlag() {

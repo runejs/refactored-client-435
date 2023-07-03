@@ -1010,27 +1010,6 @@ public class IncomingPackets {
         }
     }
 
-    public static void parsePlayerUpdatePacket() {
-        Actor.actorUpdatingIndex = 0;
-        Class17.deregisterActorCount = 0;
-        Player.parsePlayerMovement();
-        Player.parseTrackedPlayerMovement();
-        Player.registerNewPlayers();
-        Player.parseTrackedPlayerUpdateMasks(IncomingPackets.incomingPacketBuffer);
-        for(int i = 0; Class17.deregisterActorCount > i; i++) {
-            int trackedPlayerIndex = Player.deregisterActorIndices[i];
-            if(MovedStatics.pulseCycle != Player.trackedPlayers[trackedPlayerIndex].anInt3134)
-                Player.trackedPlayers[trackedPlayerIndex] = null;
-        }
-        if(incomingPacketSize != incomingPacketBuffer.currentPosition)
-            throw new RuntimeException("gpp1 pos:" + incomingPacketBuffer.currentPosition + " psize:" + incomingPacketSize);
-        int i = 0;
-        for(/**/; Player.localPlayerCount > i; i++) {
-            if(Player.trackedPlayers[Player.trackedPlayerIndices[i]] == null)
-                throw new RuntimeException("gpp2 pos:" + i + " size:" + Player.localPlayerCount);
-        }
-    }
-
     public static void parseMapIncomingPacket() {
         if (opcode == 49) {
             int i = incomingPacketBuffer.getUnsignedByte();
