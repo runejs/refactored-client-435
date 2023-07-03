@@ -81,7 +81,7 @@ public class Class33 {
                         PlayerAppearance.anIntArray715[SceneCluster.anInt770] = ISAAC.anInt522;
                         PlayerAppearance.anIntArray685[SceneCluster.anInt770] = Class44.anInt1048;
                         PlayerAppearance.overheadChatColor[SceneCluster.anInt770] = actor.chatcolor;
-                        PlayerAppearance.overheadChatEffect[SceneCluster.anInt770] = actor.chatEffects;
+                        PlayerAppearance.overheadChatShape[SceneCluster.anInt770] = actor.chatEffects;
                         PlayerAppearance.anIntArray684[SceneCluster.anInt770] = actor.anInt3078;
                         PlayerAppearance.overheadChatMessage[SceneCluster.anInt770] = actor.forcedChatMessage;
                         SceneCluster.anInt770++;
@@ -180,23 +180,23 @@ public class Class33 {
                     } else
                         textColor = -(327685 * i_11_) + MovedStatics.OVERHEAD_CHAT_COLORS[5];
                 }
-                if(PlayerAppearance.overheadChatEffect[i] == ChatShapeEffect.NONE.getNetworkCode()) {
+                if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.NONE.getNetworkCode()) {
                     TypeFace.fontBold.drawStringLeft(message, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
                     TypeFace.fontBold.drawStringLeft(message, ISAAC.anInt522, Class44.anInt1048, textColor);
                 }
-                if(PlayerAppearance.overheadChatEffect[i] == ChatShapeEffect.WAVE.getNetworkCode()) {
+                if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.WAVE.getNetworkCode()) {
                     TypeFace.fontBold.drawCenteredStringWaveY(message, ISAAC.anInt522, Class44.anInt1048 + 1, 0, MovedStatics.anInt2628);
                     TypeFace.fontBold.drawCenteredStringWaveY(message, ISAAC.anInt522, Class44.anInt1048, textColor, MovedStatics.anInt2628);
                 }
-                if(PlayerAppearance.overheadChatEffect[i] == ChatShapeEffect.WAVE2.getNetworkCode()) {
+                if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.WAVE2.getNetworkCode()) {
                     TypeFace.fontBold.drawCenteredStringWaveXY(message, ISAAC.anInt522, 1 + Class44.anInt1048, 0, MovedStatics.anInt2628);
                     TypeFace.fontBold.drawCenteredStringWaveXY(message, ISAAC.anInt522, Class44.anInt1048, textColor, MovedStatics.anInt2628);
                 }
-                if(PlayerAppearance.overheadChatEffect[i] == ChatShapeEffect.SHAKE.getNetworkCode()) {
+                if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.SHAKE.getNetworkCode()) {
                     TypeFace.fontBold.drawCenteredStringWaveXYMove(message, ISAAC.anInt522, Class44.anInt1048 + 1, 0, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
                     TypeFace.fontBold.drawCenteredStringWaveXYMove(message, ISAAC.anInt522, Class44.anInt1048, textColor, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
                 }
-                if(PlayerAppearance.overheadChatEffect[i] == ChatShapeEffect.SCROLL.getNetworkCode()) {
+                if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.SCROLL.getNetworkCode()) {
                     int i_12_ = TypeFace.fontBold.getStringWidth(message);
                     int i_13_ = (i_12_ + 100) * (150 + -PlayerAppearance.anIntArray684[i]) / 150;
                     Rasterizer.setBounds(ISAAC.anInt522 + -50, 0, 50 + ISAAC.anInt522, 334);
@@ -204,7 +204,7 @@ public class Class33 {
                     TypeFace.fontBold.drawString(message, 50 + ISAAC.anInt522 + -i_13_, Class44.anInt1048, textColor);
                     Rasterizer.resetBounds();
                 }
-                if(PlayerAppearance.overheadChatEffect[i] == ChatShapeEffect.SLIDE.getNetworkCode()) {
+                if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.SLIDE.getNetworkCode()) {
                     int i_14_ = 0;
                     int i_15_ = 150 + -PlayerAppearance.anIntArray684[i];
                     Rasterizer.setBounds(0, -1 + -TypeFace.fontBold.characterDefaultHeight + Class44.anInt1048, 512, 5 + Class44.anInt1048);
