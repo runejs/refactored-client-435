@@ -2,6 +2,7 @@ package org.runejs.client.message.handler.rs435;
 
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.handler.rs435.chat.*;
+import org.runejs.client.message.handler.rs435.console.*;
 import org.runejs.client.message.inbound.chat.*;
 import org.runejs.client.message.handler.rs435.audio.PlayQuickSongMessageHandler;
 import org.runejs.client.message.handler.rs435.audio.PlaySongMessageHandler;
@@ -9,6 +10,7 @@ import org.runejs.client.message.handler.rs435.audio.PlaySoundMessageHandler;
 import org.runejs.client.message.inbound.audio.PlayQuickSongInboundMessage;
 import org.runejs.client.message.inbound.audio.PlaySongInboundMessage;
 import org.runejs.client.message.inbound.audio.PlaySoundInboundMessage;
+import org.runejs.client.message.inbound.console.*;
 
 /**
  * A {@link MessageHandlerRegistry} for the RS revision 435 client.
@@ -24,5 +26,8 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(PlaySongInboundMessage.class, new PlaySongMessageHandler());
         register(PlayQuickSongInboundMessage.class, new PlayQuickSongMessageHandler());
         register(PlaySoundInboundMessage.class, new PlaySoundMessageHandler());
+
+        // console
+        register(ReceiveConsoleCommandMessage.class, new ReceiveConsoleCommandMessageHandler());
     }
 }

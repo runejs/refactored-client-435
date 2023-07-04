@@ -242,13 +242,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 85) { // console auto-completion
-                String command = incomingPacketBuffer.getString();
-                String help = incomingPacketBuffer.getString();
-                Console.console.addCommand(command, help);
-                opcode = -1;
-                return true;
-            }
             if(opcode == 182) { // set widget scroll position
                 int i_34_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_35_ = incomingPacketBuffer.getIntLE();
