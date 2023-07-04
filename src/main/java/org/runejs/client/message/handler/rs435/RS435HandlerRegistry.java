@@ -29,5 +29,6 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
 
         // console
         register(ReceiveConsoleCommandMessage.class, new ReceiveConsoleCommandMessageHandler());
+        register(ReceiveConsoleLogMessage.class, new ReceiveConsoleLogMessageHandler());
     }
 }
