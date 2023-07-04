@@ -42,6 +42,7 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
 
         // misc
         register(PacketType.LOGOUT.getOpcode(), new LogoutMessageDecoder());
+        register(PacketType.UPDATE_CARRY_WEIGHT.getOpcode(), new UpdateCarryWeightMessageDecoder());
         register(PacketType.UPDATE_RUN_ENERGY.getOpcode(), new UpdateRunEnergyMessageDecoder());
     }
 }

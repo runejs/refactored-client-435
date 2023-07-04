@@ -693,13 +693,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.UPDATE_CARRY_WEIGHT.getOpcode()) {
-                if(Player.currentTabId == 12)
-                    GameInterface.redrawTabArea = true;
-                GenericTile.carryWeight = incomingPacketBuffer.getShortBE();
-                opcode = -1;
-                return true;
-            }
             // object/ground item update packets?
             if(opcode == 9 || opcode == 99 || opcode == 229 || opcode == 19 || opcode == 202 || opcode == 1 || opcode == 74 || opcode == 175 || opcode == 49 || opcode == 143 || opcode == 241) {
                 parseMapIncomingPacket();
