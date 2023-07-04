@@ -199,7 +199,7 @@ public abstract class Actor extends Renderable {
                         }
                     }
                 } else {
-                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
+                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
                     if(class40_sub5_sub14_sub2 != null) {
                         int i_6_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
                         int i_7_ = (gameObjectDefinition.sizeY * 4 + -class40_sub5_sub14_sub2.imgHeight) / 2;
@@ -215,7 +215,7 @@ public abstract class Actor extends Renderable {
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
                 int i_11_ = i_8_ & 0x1f;
                 if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
+                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
                     if(class40_sub5_sub14_sub2 != null) {
                         int i_12_ = (-class40_sub5_sub14_sub2.imgHeight + gameObjectDefinition.sizeY * 4) / 2;
                         int i_13_ = (gameObjectDefinition.sizeX * 4 + -class40_sub5_sub14_sub2.imgWidth) / 2;
@@ -245,7 +245,7 @@ public abstract class Actor extends Renderable {
                 int i_16_ = (i & 0x1fffd9fb) >> 14;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);
                 if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301[gameObjectDefinition.mapSceneID];
+                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
                     if(class40_sub5_sub14_sub2 != null) {
                         int i_17_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
                         int i_18_ = (-class40_sub5_sub14_sub2.imgHeight + 4 * gameObjectDefinition.sizeY) / 2;

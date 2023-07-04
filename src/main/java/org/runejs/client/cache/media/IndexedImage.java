@@ -32,19 +32,20 @@ public class IndexedImage extends Rasterizer {
         return Class24.method337(arg0, i_1_, i);
     }
 
-    public IndexedImage method691() {
-        IndexedImage class40_sub5_sub14_sub2 = new IndexedImage(imgWidth, imgHeight, palette.length);
-        class40_sub5_sub14_sub2.maxWidth = maxWidth;
-        class40_sub5_sub14_sub2.maxHeight = maxHeight;
-        class40_sub5_sub14_sub2.xDrawOffset = xDrawOffset;
-        class40_sub5_sub14_sub2.yDrawOffset = yDrawOffset;
-        int i = imgPixels.length;
-        for(int i_0_ = 0; i_0_ < i; i_0_++)
-            class40_sub5_sub14_sub2.imgPixels[i_0_] = imgPixels[i_0_];
-        i = palette.length;
-        for(int i_1_ = 0; i_1_ < i; i_1_++)
-            class40_sub5_sub14_sub2.palette[i_1_] = palette[i_1_];
-        return class40_sub5_sub14_sub2;
+    public IndexedImage cloneImage() {
+        IndexedImage newImage = new IndexedImage(imgWidth, imgHeight, palette.length);
+        newImage.maxWidth = maxWidth;
+        newImage.maxHeight = maxHeight;
+        newImage.xDrawOffset = xDrawOffset;
+        newImage.yDrawOffset = yDrawOffset;
+
+        for(int i = 0; i < imgPixels.length; i++)
+            newImage.imgPixels[i] = imgPixels[i];
+
+        for(int i = 0; i < palette.length; i++)
+            newImage.palette[i] = palette[i];
+
+        return newImage;
     }
 
     public void drawImage(int x, int y) {

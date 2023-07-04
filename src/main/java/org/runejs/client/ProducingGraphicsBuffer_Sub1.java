@@ -15,7 +15,10 @@ import java.awt.image.*;
 import java.nio.charset.StandardCharsets;
 
 public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implements ImageProducer, ImageObserver {
-    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2204;
+    /**
+     * Overhead icon sprites, e.g. overhead prayers
+     */
+    public static ImageRGB[] headIconSprites;
     public static int[] anIntArray2207 = {0, -1, 0, 1};
     public static int anInt2210;
     public static int anInt2211 = 2;

@@ -180,12 +180,12 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.minimapEdge = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.mapEdge, "");
             else
                 i++;
-            if (MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301 != null)
+            if (MovedStatics.mapSceneIcons != null)
                 i++;
             else
-                MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301 = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.mapScene, "");
-            if (MovedStatics.aClass40_Sub5_Sub14_Sub4Array296 == null)
-                MovedStatics.aClass40_Sub5_Sub14_Sub4Array296 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
+                MovedStatics.mapSceneIcons = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.mapScene, "");
+            if (MovedStatics.mapFunctionIcons == null)
+                MovedStatics.mapFunctionIcons = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
             else
                 i++;
             if (AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 != null)
@@ -196,12 +196,12 @@ public class Class40_Sub3 extends Node {
                 FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPK, "");
             else
                 i++;
-            if (ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 != null)
+            if (ProducingGraphicsBuffer_Sub1.headIconSprites != null)
                 i++;
             else
-                ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
-            if (MovedStatics.aClass40_Sub5_Sub14_Sub4Array2567 == null)
-                MovedStatics.aClass40_Sub5_Sub14_Sub4Array2567 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsHint, "");
+                ProducingGraphicsBuffer_Sub1.headIconSprites = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
+            if (MovedStatics.hintIconSprites == null)
+                MovedStatics.hintIconSprites = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsHint, "");
             else
                 i++;
             if (LinkedList.aClass40_Sub5_Sub14_Sub4_1057 == null)
@@ -220,8 +220,8 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.mapDots = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapDots, "");
             else
                 i++;
-            if (MovedStatics.aClass40_Sub5_Sub14_Sub2Array215 == null)
-                MovedStatics.aClass40_Sub5_Sub14_Sub2Array215 = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.scrollbar, "");
+            if (MovedStatics.scrollbarArrowImages == null)
+                MovedStatics.scrollbarArrowImages = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.scrollbar, "");
             else
                 i++;
             if (MovedStatics.moderatorIcon != null)
@@ -237,9 +237,9 @@ public class Class40_Sub3 extends Node {
                 int i_5_ = (int) (21.0 * Math.random()) - 10;
                 int i_6_ = (int) (41.0 * Math.random()) - 20;
                 int i_7_ = -10 + (int) (21.0 * Math.random());
-                for (int i_8_ = 0; MovedStatics.aClass40_Sub5_Sub14_Sub4Array296.length > i_8_; i_8_++)
-                    MovedStatics.aClass40_Sub5_Sub14_Sub4Array296[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
-                MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301[0].mixPalette(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
+                for (int i_8_ = 0; MovedStatics.mapFunctionIcons.length > i_8_; i_8_++)
+                    MovedStatics.mapFunctionIcons[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
+                MovedStatics.mapSceneIcons[0].mixPalette(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
                 Native.currentLoadingText = English.loadedSprites;
                 MovedStatics.anInt1607 = 70;
                 MovedStatics.loadingPercent = 85;

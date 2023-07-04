@@ -24,7 +24,12 @@ public class WallDecoration {
     public static int durationHoveredOverWidget = 0;
     public static NodeCache modelCache = new NodeCache(50);
     public static TypeFace fontNormal;
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1270;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for one of the tabs on the right-hand side of the top,
+     * but not the furthest-right (see `tabHighlightImageTopRightEdge` for that).
+     */
+    public static IndexedImage tabHighlightImageTopRight;
 
     public int configBits;
     public int z;

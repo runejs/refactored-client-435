@@ -29,7 +29,11 @@ public class ISAAC {
     public static NodeCache aClass9_516 = new NodeCache(64);
     public static boolean aBoolean519 = true;
     public static int anInt522 = -1;
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_524;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for the furthest-right tab on the bottom.
+     */
+    public static IndexedImage tabHighlightImageBottomRightEdge;
     public static int anInt525;
     public static int[] mapCoordinates;
 

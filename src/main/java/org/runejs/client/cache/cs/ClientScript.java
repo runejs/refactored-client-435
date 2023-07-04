@@ -85,7 +85,7 @@ public class ClientScript extends CachedNode {
             int i = 0;
             int scriptDataIndex = 0;
             if (arg1) {
-                HuffmanEncoding.anInt1559 = -63;
+                HuffmanEncoding.SCROLLBAR_COLOR_CHIP_EDGE_LIGHT = -63;
             }
             int operator = 0;
             while (true) {
