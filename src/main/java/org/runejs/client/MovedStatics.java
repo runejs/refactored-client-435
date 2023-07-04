@@ -15,6 +15,7 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
+import org.runejs.client.message.outbound.chat.ChatCommandOutboundMessage;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.node.NodeCache;
@@ -1631,9 +1632,10 @@ public class MovedStatics {
 	                        PacketBuffer.hiddenButtonTest = true;
 	                }
 	                if(ChatBox.chatboxInput.startsWith(Native.cmd_prefix)) {
-	                    SceneCluster.packetBuffer.putPacket(248);
-	                    SceneCluster.packetBuffer.putByte(-1 + ChatBox.chatboxInput.length());
-	                    SceneCluster.packetBuffer.putString(ChatBox.chatboxInput.substring(2));
+                        // remove the :: prefix
+                        String command = ChatBox.chatboxInput.substring(2);
+
+                        OutgoingPackets.sendMessage(new ChatCommandOutboundMessage(command));
 	                } else {
 	                    ChatColorEffect chatColorEffect = ChatColorEffect.fromString(ChatBox.chatboxInput.toLowerCase());
 
