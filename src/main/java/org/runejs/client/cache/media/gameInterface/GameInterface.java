@@ -1145,11 +1145,14 @@ public class GameInterface extends CachedNode {
                         ChatBox.redrawChatbox = true;
                     }
                     if(action == ActionRowType.CAST_MAGIC_ON_OBJECT.getId() && AnimationSequence.method596(i, npcIdx, (byte) -27, i_10_)) {
-                        SceneCluster.packetBuffer.putPacket(225);
-                        SceneCluster.packetBuffer.putShortBE(npcIdx >> 14 & 0x7fff);
-                        SceneCluster.packetBuffer.putShortLE(i_10_ + Class26.baseY);
-                        SceneCluster.packetBuffer.putIntME1(Class60.anInt1417);
-                        SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
+                        OutgoingPackets.sendMessage(
+                            new CastMagicOnObjectOutboundMessage(
+                                Class60.anInt1417,
+                                npcIdx >> 14 & 0x7fff,
+                                i + MovedStatics.baseX,
+                                i_10_ + Class26.baseY
+                            )
+                        );
                     }
                     if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_2.getId()) {
                         SceneCluster.packetBuffer.putPacket(228);
