@@ -19,6 +19,7 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
+import org.runejs.client.message.outbound.useitem.*;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
@@ -796,11 +797,19 @@ public class GameInterface extends CachedNode {
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
                     OverlayDefinition.crossIndex = 0;
-                    SceneCluster.packetBuffer.putPacket(110);
-                    SceneCluster.packetBuffer.putShortLE(npcIdx);
-                    SceneCluster.packetBuffer.putIntME1(ISAAC.anInt525);
-                    SceneCluster.packetBuffer.putShortBE(Class49.anInt1154);
-                    SceneCluster.packetBuffer.putShortBE(LinkedList.selectedInventorySlot);
+                    
+                    int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
+                    int containerId = ISAAC.anInt525 & 0xFFFF;
+
+                    OutgoingPackets.sendMessage(
+                        new UseItemOnPlayerOutboundMessage(
+                            Class49.anInt1154,
+                            widgetId,
+                            containerId,
+                            LinkedList.selectedInventorySlot,
+                            npcIdx
+                        )
+                    );
                 }
             }
             if(action == ActionRowType.SELECT_ITEM_ON_WIDGET.getId()) {
