@@ -843,21 +843,6 @@ public class IncomingPackets {
                 GameInterface.redrawTabArea = true;
                 return true;
             }
-            if(opcode == PacketType.UPDATE_SKILL.getOpcode()) {
-                GameInterface.redrawTabArea = true;
-                int skillLevel = incomingPacketBuffer.getUnsignedByte();
-                int skillId = incomingPacketBuffer.getUnsignedByte();
-                int skillExperience = incomingPacketBuffer.getIntLE();
-                Player.playerExperience[skillId] = skillExperience;
-                Player.playerLevels[skillId] = skillLevel;
-                Player.nextLevels[skillId] = 1;
-                for(int levelIndex = 0; levelIndex < 98; levelIndex++) {
-                    if(Player.experienceForLevels[levelIndex] <= skillExperience)
-                        Player.nextLevels[skillId] = levelIndex + 2;
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.MOVE_WIDGET_CHILD.getOpcode()) {
                 int interfaceData = incomingPacketBuffer.getIntBE();
                 int x = incomingPacketBuffer.getShortLE();
