@@ -184,8 +184,8 @@ public class Class40_Sub3 extends Node {
                 i++;
             else
                 MovedStatics.mapSceneIcons = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.mapScene, "");
-            if (MovedStatics.aClass40_Sub5_Sub14_Sub4Array296 == null)
-                MovedStatics.aClass40_Sub5_Sub14_Sub4Array296 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
+            if (MovedStatics.mapFunctionIcons == null)
+                MovedStatics.mapFunctionIcons = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
             else
                 i++;
             if (AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 != null)
@@ -237,8 +237,8 @@ public class Class40_Sub3 extends Node {
                 int i_5_ = (int) (21.0 * Math.random()) - 10;
                 int i_6_ = (int) (41.0 * Math.random()) - 20;
                 int i_7_ = -10 + (int) (21.0 * Math.random());
-                for (int i_8_ = 0; MovedStatics.aClass40_Sub5_Sub14_Sub4Array296.length > i_8_; i_8_++)
-                    MovedStatics.aClass40_Sub5_Sub14_Sub4Array296[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
+                for (int i_8_ = 0; MovedStatics.mapFunctionIcons.length > i_8_; i_8_++)
+                    MovedStatics.mapFunctionIcons[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
                 MovedStatics.mapSceneIcons[0].mixPalette(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
                 Native.currentLoadingText = English.loadedSprites;
                 MovedStatics.anInt1607 = 70;

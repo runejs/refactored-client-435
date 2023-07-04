@@ -1463,7 +1463,10 @@ public class MovedStatics {
 
 	public static int itemSelected = 0;
 	public static ProducingGraphicsBuffer flameLeftBackground;
-	public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array296;
+    /**
+     * Images for function icons on the minimap (e.g. quests, instructors)
+     */
+	public static ImageRGB[] mapFunctionIcons;
 	public static FontMetrics fontMetrics;
 	public static CacheArchive aCacheArchive_284;
 	public static Calendar aCalendar279 = Calendar.getInstance();
@@ -1875,7 +1878,7 @@ public class MovedStatics {
 	                                i_12_++;
 	                        }
 	                    }
-	                    MouseHandler.minimapHint[GameObject.minimapHintCount] = aClass40_Sub5_Sub14_Sub4Array296[i_11_];
+	                    MouseHandler.minimapHint[GameObject.minimapHintCount] = mapFunctionIcons[i_11_];
 	                    Actor.minimapHintX[GameObject.minimapHintCount] = i_13_;
 	                    LinkedList.minimapHintY[GameObject.minimapHintCount] = i_12_;
 	                    GameObject.minimapHintCount++;
