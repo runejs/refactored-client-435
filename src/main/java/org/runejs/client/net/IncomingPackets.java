@@ -6,7 +6,6 @@ import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
 import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
 import org.runejs.client.frame.ChatBox;
-import org.runejs.client.frame.console.Console;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Item;
@@ -237,19 +236,6 @@ public class IncomingPackets {
             }
             if(opcode == 48) { // multi combat zone
                 MovedStatics.anInt2118 = incomingPacketBuffer.getUnsignedByte();
-                opcode = -1;
-                return true;
-            }
-            if(opcode == 83) { // console command
-                RSString message = incomingPacketBuffer.getRSString();
-                Console.console.log("<col=FFFF00>" + message.toString() + "</col>");
-                opcode = -1;
-                return true;
-            }
-            if(opcode == 85) { // console auto-completion
-                String command = incomingPacketBuffer.getString();
-                String help = incomingPacketBuffer.getString();
-                Console.console.addCommand(command, help);
                 opcode = -1;
                 return true;
             }
