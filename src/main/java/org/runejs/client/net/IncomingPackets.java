@@ -98,6 +98,10 @@ public class IncomingPackets {
                 // decode the packet and handle it
                 InboundMessage message = decoder.decode(packetBuffer);
                 MessageHandler handler = Main.handlerRegistry.getMessageHandler(message.getClass());
+
+                if (handler == null)
+                    throw new RuntimeException("No handler for message: " + message.getClass().getName());
+
                 handler.handle(message);
 
                 opcode = -1;
@@ -602,11 +606,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.UPDATE_PLAYERS.getOpcode()) {
-                parsePlayerUpdatePacket();
-                opcode = -1;
-                return true;
-            }
             if(opcode == 2) {
                 int varPlayerValue = incomingPacketBuffer.getIntBE();
                 int varPlayerIndex = incomingPacketBuffer.getUnsignedShortBE();
@@ -1008,27 +1007,6 @@ public class IncomingPackets {
         for(int i = 0; Player.npcCount > i; i++) {
             if(Player.npcs[Player.npcIds[i]] == null)
                 throw new RuntimeException("gnp2 pos:" + i + " size:" + Player.npcCount);
-        }
-    }
-
-    public static void parsePlayerUpdatePacket() {
-        Actor.actorUpdatingIndex = 0;
-        Class17.deregisterActorCount = 0;
-        Player.parsePlayerMovement();
-        Player.parseTrackedPlayerMovement();
-        Player.registerNewPlayers();
-        Player.parseTrackedPlayerUpdateMasks();
-        for(int i = 0; Class17.deregisterActorCount > i; i++) {
-            int trackedPlayerIndex = Player.deregisterActorIndices[i];
-            if(MovedStatics.pulseCycle != Player.trackedPlayers[trackedPlayerIndex].anInt3134)
-                Player.trackedPlayers[trackedPlayerIndex] = null;
-        }
-        if(incomingPacketSize != incomingPacketBuffer.currentPosition)
-            throw new RuntimeException("gpp1 pos:" + incomingPacketBuffer.currentPosition + " psize:" + incomingPacketSize);
-        int i = 0;
-        for(/**/; Player.localPlayerCount > i; i++) {
-            if(Player.trackedPlayers[Player.trackedPlayerIndices[i]] == null)
-                throw new RuntimeException("gpp2 pos:" + i + " size:" + Player.localPlayerCount);
         }
     }
 
