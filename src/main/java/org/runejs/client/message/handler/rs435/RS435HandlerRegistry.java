@@ -1,6 +1,8 @@
 package org.runejs.client.message.handler.rs435;
 
 import org.runejs.client.message.handler.MessageHandlerRegistry;
+import org.runejs.client.message.handler.rs435.audio.*;
+import org.runejs.client.message.inbound.audio.*;
 import org.runejs.client.message.handler.rs435.chat.*;
 import org.runejs.client.message.handler.rs435.misc.*;
 import org.runejs.client.message.inbound.chat.*;
@@ -11,12 +13,15 @@ import org.runejs.client.message.inbound.audio.PlayQuickSongInboundMessage;
 import org.runejs.client.message.inbound.audio.PlaySongInboundMessage;
 import org.runejs.client.message.inbound.audio.PlaySoundInboundMessage;
 import org.runejs.client.message.inbound.misc.*;
+import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
 
 /**
  * A {@link MessageHandlerRegistry} for the RS revision 435 client.
  */
 public class RS435HandlerRegistry extends MessageHandlerRegistry {
     public RS435HandlerRegistry() {
+        super();
+
         register(ReceivePrivateMessageInboundMessage.class, new ReceivePrivateMessageHandler());
         register(ReceiveChatboxMessageInboundMessage.class, new ReceiveChatboxMessageHandler());
         register(ForcedPrivateMessageInboundMessage.class, new ForcedPrivateMessageHandler());
@@ -29,8 +34,10 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
 
         // misc
         register(LogoutMessage.class, new LogoutMessageHandler());
+      
         register(UpdateCarryWeightMessage.class, new UpdateCarryWeightMessageHandler());
         register(UpdateRunEnergyMessage.class, new UpdateRunEnergyMessageHandler());
         register(UpdateSkillMessage.class, new UpdateSkillMessageHandler());
+        register(UpdatePlayersInboundMessage.class, new UpdatePlayersMessageHandler());
     }
 }
