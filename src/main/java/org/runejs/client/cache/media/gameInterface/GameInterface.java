@@ -571,10 +571,15 @@ public class GameInterface extends CachedNode {
                 MovedStatics.crossY = RSString.clickY;
                 ClientScriptRunner.crossX = Class57.clickX;
                 LinkedList.crossType = 2;
-                SceneCluster.packetBuffer.putPacket(190);
-                SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
-                SceneCluster.packetBuffer.putShortBE(npcIdx);
-                SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
+
+                OutgoingPackets.sendMessage(
+                    new WorldItemInteractionOutboundMessage(
+                        2,
+                        npcIdx,
+                        MovedStatics.baseX + i,
+                        Class26.baseY + i_10_
+                    )
+                );
             }
             if(action == ActionRowType.EXAMINE_OBJECT.getId()) { // examine object
                 MovedStatics.crossY = RSString.clickY;
@@ -1018,10 +1023,15 @@ public class GameInterface extends CachedNode {
                         OverlayDefinition.crossIndex = 0;
                         ClientScriptRunner.crossX = Class57.clickX;
                         MovedStatics.crossY = RSString.clickY;
-                        SceneCluster.packetBuffer.putPacket(244);
-                        SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
-                        SceneCluster.packetBuffer.putShortBE(Class26.baseY + i_10_);
-                        SceneCluster.packetBuffer.putShortBE(npcIdx);
+
+                        OutgoingPackets.sendMessage(
+                            new WorldItemInteractionOutboundMessage(
+                                1,
+                                npcIdx,
+                                MovedStatics.baseX + i,
+                                Class26.baseY + i_10_
+                            )
+                        );
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_3.getId()) {
                         boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
@@ -1032,10 +1042,15 @@ public class GameInterface extends CachedNode {
                         ClientScriptRunner.crossX = Class57.clickX;
                         LinkedList.crossType = 2;
                         MovedStatics.crossY = RSString.clickY;
-                        SceneCluster.packetBuffer.putPacket(85);
-                        SceneCluster.packetBuffer.putShortBE(Class26.baseY + i_10_);
-                        SceneCluster.packetBuffer.putShortBE(npcIdx);
-                        SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
+
+                        OutgoingPackets.sendMessage(
+                            new WorldItemInteractionOutboundMessage(
+                                3,
+                                npcIdx,
+                                MovedStatics.baseX + i,
+                                Class26.baseY + i_10_
+                            )
+                        );
                     }
                     if(action == ActionRowType.CAST_MAGIC_ON_NPC.getId()) {
                         Npc npc = Player.npcs[npcIdx];
@@ -1207,10 +1222,15 @@ public class GameInterface extends CachedNode {
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
                         MovedStatics.crossY = RSString.clickY;
-                        SceneCluster.packetBuffer.putPacket(65);
-                        SceneCluster.packetBuffer.putShortBE(npcIdx);
-                        SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
-                        SceneCluster.packetBuffer.putShortLE(MovedStatics.baseX + i);
+
+                        OutgoingPackets.sendMessage(
+                            new WorldItemInteractionOutboundMessage(
+                                4,
+                                npcIdx,
+                                MovedStatics.baseX + i,
+                                Class26.baseY + i_10_
+                            )
+                        );
                     }
                     if(action == ActionRowType.CLOSE_WIDGET.getId()) {
                         PacketBuffer.closeAllWidgets();
@@ -1244,10 +1264,15 @@ public class GameInterface extends CachedNode {
                         LinkedList.crossType = 2;
                         OverlayDefinition.crossIndex = 0;
                         ClientScriptRunner.crossX = Class57.clickX;
-                        SceneCluster.packetBuffer.putPacket(27);
-                        SceneCluster.packetBuffer.putShortBE(MovedStatics.baseX + i);
-                        SceneCluster.packetBuffer.putShortBE(npcIdx);
-                        SceneCluster.packetBuffer.putShortBE(i_10_ + Class26.baseY);
+
+                        OutgoingPackets.sendMessage(
+                            new WorldItemInteractionOutboundMessage(
+                                5,
+                                npcIdx,
+                                MovedStatics.baseX + i,
+                                Class26.baseY + i_10_
+                            )
+                        );
                     }
                     if(action == ActionRowType.INTERACT_WITH_PLAYER_OPTION_2.getId()) {
                         Player otherPlayer = Player.trackedPlayers[npcIdx];
