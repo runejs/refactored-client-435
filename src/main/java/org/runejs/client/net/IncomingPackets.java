@@ -239,20 +239,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 182) { // set widget scroll position
-                int i_34_ = incomingPacketBuffer.getUnsignedShortBE();
-                int i_35_ = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.getInterface(i_35_);
-                opcode = -1;
-                if(gameInterface != null && gameInterface.type == GameInterfaceType.LAYER) {
-                    if(i_34_ < 0)
-                        i_34_ = 0;
-                    if(-gameInterface.originalHeight + gameInterface.scrollHeight < i_34_)
-                        i_34_ = -gameInterface.originalHeight + gameInterface.scrollHeight;
-                    gameInterface.scrollPosition = i_34_;
-                }
-                return true;
-            }
             if(opcode == 174) { // clear widget item container?
                 int i_36_ = incomingPacketBuffer.getIntME1();
                 GameInterface gameInterface = GameInterface.getInterface(i_36_);
