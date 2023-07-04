@@ -3,12 +3,14 @@ package org.runejs.client.net.codec.runejs435;
 import org.runejs.client.net.PacketType;
 import org.runejs.client.net.codec.MessagePacketCodec;
 import org.runejs.client.message.outbound.chat.*;
+import org.runejs.client.message.outbound.console.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.net.codec.runejs435.decoder.audio.*;
 import org.runejs.client.net.codec.runejs435.decoder.chat.*;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleCommandMessageDecoder;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleLogMessageDecoder;
 import org.runejs.client.net.codec.runejs435.encoder.chat.*;
+import org.runejs.client.net.codec.runejs435.encoder.console.*;
 import org.runejs.client.net.codec.runejs435.encoder.interactions.*;
 
 /**
@@ -28,6 +30,9 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PlayerInteractionOutboundMessage.class, new PlayerInteractionMessageEncoder());
         register(NPCInteractionOutboundMessage.class, new NPCInteractionMessageEncoder());
         register(ObjectInteractionOutboundMessage.class, new ObjectInteractionMessageEncoder());
+
+        // console
+        register(ConsoleCommandOutboundMessage.class, new ConsoleCommandMessageEncoder());
     }
 
     private void registerDecoders() {
