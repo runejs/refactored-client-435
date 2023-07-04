@@ -1,6 +1,8 @@
 package org.runejs.client.media.renderable.actor;
 
 import org.runejs.client.media.renderable.Item;
+import org.runejs.client.message.outbound.WalkOutboundMessage;
+import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.*;
@@ -171,28 +173,40 @@ public class Pathfinding {
             currentIndex--;
             int x = Class24.walkingQueueX[currentIndex];
             int y = Wall.walkingQueueY[currentIndex];
+
+            WalkOutboundMessage.WalkType walkType = WalkOutboundMessage.WalkType.TILE;
+
             if(clickType == 0) {
-                SceneCluster.packetBuffer.putPacket(73);
-                SceneCluster.packetBuffer.putByte(3 + maxPathSize + maxPathSize);
+                walkType = WalkOutboundMessage.WalkType.TILE;
             }
-            if(clickType == 1) {
-                SceneCluster.packetBuffer.putPacket(236);
-                SceneCluster.packetBuffer.putByte(14 + maxPathSize + maxPathSize + 3);
+            else if(clickType == 1) {
+                walkType = WalkOutboundMessage.WalkType.MAP;
             }
-            if(clickType == 2) {
-                SceneCluster.packetBuffer.putPacket(89);
-                SceneCluster.packetBuffer.putByte(3 + maxPathSize + maxPathSize);
+            else if(clickType == 2) {
+                walkType = WalkOutboundMessage.WalkType.INTERACTION;
             }
-            SceneCluster.packetBuffer.putShortLE(y + Class26.baseY);
-            SceneCluster.packetBuffer.putByte(Item.obfuscatedKeyStatus[82] ? 1 : 0);
-            SceneCluster.packetBuffer.putShortLE(MovedStatics.baseX + x);
-            MovedStatics.destinationX = Class24.walkingQueueX[0];
-            Class55.destinationY = Wall.walkingQueueY[0];
+
+            WalkOutboundMessage.WalkStep[] steps = new WalkOutboundMessage.WalkStep[maxPathSize];
             for(int counter = 1; maxPathSize > counter; counter++) {
                 currentIndex--;
-                SceneCluster.packetBuffer.putByte(Class24.walkingQueueX[currentIndex] - x);
-                SceneCluster.packetBuffer.putByte(-y + Wall.walkingQueueY[currentIndex]);
+                int stepX = Class24.walkingQueueX[currentIndex] - x;
+                int stepY = Wall.walkingQueueY[currentIndex] - y;
+                steps[counter - 1] = new WalkOutboundMessage.WalkStep(stepX, stepY);
             }
+
+            OutgoingPackets.sendMessage(
+                new WalkOutboundMessage(
+                    walkType,
+                    MovedStatics.baseX + x,
+                    Class26.baseY + y,
+                    Item.obfuscatedKeyStatus[82],
+                    steps
+                )
+            );
+
+            MovedStatics.destinationX = Class24.walkingQueueX[0];
+            Class55.destinationY = Wall.walkingQueueY[0];
+
             return true;
         }
         return clickType != 1;

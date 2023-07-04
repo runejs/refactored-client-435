@@ -1,5 +1,6 @@
 package org.runejs.client.net.codec.runejs435;
 
+import org.runejs.client.message.outbound.WalkOutboundMessage;
 import org.runejs.client.net.PacketType;
 import org.runejs.client.net.codec.MessagePacketCodec;
 import org.runejs.client.message.outbound.chat.*;
@@ -11,6 +12,7 @@ import org.runejs.client.net.codec.runejs435.decoder.chat.*;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleCommandMessageDecoder;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleLogMessageDecoder;
 import org.runejs.client.net.codec.runejs435.decoder.misc.*;
+import org.runejs.client.net.codec.runejs435.encoder.WalkMessageEncoder;
 import org.runejs.client.net.codec.runejs435.encoder.chat.*;
 import org.runejs.client.net.codec.runejs435.encoder.console.*;
 import org.runejs.client.net.codec.runejs435.encoder.interactions.*;
@@ -29,6 +31,8 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
     }
 
     private void registerEncoders() {
+        register(WalkOutboundMessage.class, new WalkMessageEncoder());
+
         register(SendChatMessageOutboundMessage.class, new SendChatMessageMessageEncoder());
         register(SendPrivateMessageOutboundMessage.class, new SendPrivateMessageMessageEncoder());
         register(ChatCommandOutboundMessage.class, new ChatCommandMessageEncoder());
