@@ -762,17 +762,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.UPDATE_WIDGET_TEXT.getOpcode()) {
-                int interfaceData = incomingPacketBuffer.getIntLE();
-                String interfaceText = incomingPacketBuffer.getString();
-                GameInterface gameInterface = GameInterface.getInterface(interfaceData);
-                gameInterface.disabledText = interfaceText;
-                if(Player.tabWidgetIds[Player.currentTabId] == interfaceData >> 16) {
-                    GameInterface.redrawTabArea = true;
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.SET_WIDGET_ITEM_MODEL.getOpcode()) {
                 int zoom = incomingPacketBuffer.getUnsignedShortBE();
                 int itemId = incomingPacketBuffer.getUnsignedShortLE();
@@ -893,17 +882,6 @@ public class IncomingPackets {
             if(opcode == PacketType.SET_MAP_CHUNK.getOpcode()) {
                 FloorDecoration.constructMapRegion(false);
                 opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.UPDATE_WIDGET_TEXT_COLOR.getOpcode()) {
-                int i_113_ = incomingPacketBuffer.getUnsignedShortBE();
-                int i_114_ = incomingPacketBuffer.getIntLE();
-                int i_115_ = i_113_ >> 10 & 0x1f;
-                int i_116_ = 0x1f & i_113_ >> 5;
-                GameInterface gameInterface = GameInterface.getInterface(i_114_);
-                opcode = -1;
-                int i_117_ = i_113_ & 0x1f;
-                gameInterface.textColor = (i_116_ << 11) + (i_115_ << 19) + (i_117_ << 3);
                 return true;
             }
             if(opcode == 211) { // update ignore list

@@ -12,6 +12,7 @@ import org.runejs.client.net.codec.runejs435.decoder.chat.*;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleCommandMessageDecoder;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleLogMessageDecoder;
 import org.runejs.client.net.codec.runejs435.decoder.misc.*;
+import org.runejs.client.net.codec.runejs435.decoder.widget.text.*;
 import org.runejs.client.net.codec.runejs435.encoder.chat.*;
 import org.runejs.client.net.codec.runejs435.encoder.console.*;
 import org.runejs.client.net.codec.runejs435.encoder.interactions.*;
@@ -85,5 +86,9 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.UPDATE_RUN_ENERGY.getOpcode(), new UpdateRunEnergyMessageDecoder());
         register(PacketType.UPDATE_SKILL.getOpcode(), new UpdateSkillMessageDecoder());
         register(PacketType.UPDATE_PLAYERS.getOpcode(), new UpdatePlayersMessageDecoder());
+
+        // widget
+        register(PacketType.UPDATE_WIDGET_TEXT_COLOR.getOpcode(), new SetWidgetTextColorMessageDecoder());
+        register(PacketType.UPDATE_WIDGET_TEXT.getOpcode(), new SetWidgetTextMessageDecoder());
     }
 }

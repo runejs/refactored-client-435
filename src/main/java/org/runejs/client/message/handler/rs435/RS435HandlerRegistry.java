@@ -2,6 +2,7 @@ package org.runejs.client.message.handler.rs435;
 
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.handler.rs435.audio.*;
+import org.runejs.client.message.handler.rs435.widget.text.*;
 import org.runejs.client.message.inbound.audio.*;
 import org.runejs.client.message.handler.rs435.chat.*;
 import org.runejs.client.message.handler.rs435.console.*;
@@ -16,6 +17,7 @@ import org.runejs.client.message.inbound.audio.PlaySoundInboundMessage;
 import org.runejs.client.message.inbound.console.*;
 import org.runejs.client.message.inbound.misc.*;
 import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
+import org.runejs.client.message.inbound.widget.text.*;
 
 /**
  * A {@link MessageHandlerRegistry} for the RS revision 435 client.
@@ -45,5 +47,9 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(UpdateRunEnergyMessage.class, new UpdateRunEnergyMessageHandler());
         register(UpdateSkillMessage.class, new UpdateSkillMessageHandler());
         register(UpdatePlayersInboundMessage.class, new UpdatePlayersMessageHandler());
+
+        // widget
+        register(SetWidgetTextInboundMessage.class, new SetWidgetTextMessageHandler());
+        register(SetWidgetTextColorInboundMessage.class, new SetWidgetTextColorMessageHandler());
     }
 }
