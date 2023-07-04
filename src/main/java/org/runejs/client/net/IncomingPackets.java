@@ -207,15 +207,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 250) { // widget model type 1
-                int modelId = incomingPacketBuffer.getUnsignedShortLE();
-                int widgetData = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.getInterface(widgetData);
-                gameInterface.modelId = modelId;
-                gameInterface.modelType = InterfaceModelType.MODEL;
-                opcode = -1;
-                return true;
-            }
             if(opcode == 255) { // camera shake?
                 int i_23_ = incomingPacketBuffer.getUnsignedByte();
                 int i_24_ = incomingPacketBuffer.getUnsignedByte();
