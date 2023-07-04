@@ -14,7 +14,12 @@ import org.runejs.client.scene.tile.Wall;
 
 public class Class13 {
     public static boolean[] playerArray = new boolean[5];
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_418;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for one of the tabs on the right-hand side of the bottom,
+     * but not the furthest-right (see `tabHighlightImageBottomRightEdge` for that).
+     */
+    public static IndexedImage tabHighlightImageBottomRight;
     public static int anInt419 = 2;
     public static int mouseX = 0;
     public static int[] objectDataIds;

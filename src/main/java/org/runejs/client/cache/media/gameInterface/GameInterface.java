@@ -398,23 +398,23 @@ public class GameInterface extends CachedNode {
         }
     }
 
-    public static void drawScrollBar(int x, int y, int height, int scrollPosition, int scrollMaximum, int unknownArrayIndex) {
+    public static void drawScrollBar(int x, int y, int height, int scrollPosition, int scrollMaximum) {
         int length = (-32 + height) * height / scrollMaximum;
-        MovedStatics.aClass40_Sub5_Sub14_Sub2Array215[unknownArrayIndex].drawImage(x, y);
-        MovedStatics.aClass40_Sub5_Sub14_Sub2Array215[1].drawImage(x, y - (-height + 16));
-        Rasterizer.drawFilledRectangle(x, y + 16, 16, height + -32, Class55.anInt1299);
+        MovedStatics.scrollbarArrowImages[0].drawImage(x, y);
+        MovedStatics.scrollbarArrowImages[1].drawImage(x, y - (-height + 16));
+        Rasterizer.drawFilledRectangle(x, y + 16, 16, height + -32, Class55.SCROLLBAR_COLOR_BACKGROUND);
         if(length < 8)
             length = 8;
         int scrollCurrent = (-32 + height - length) * scrollPosition / (-height + scrollMaximum);
-        Rasterizer.drawFilledRectangle(x, 16 + y + scrollCurrent, 16, length, MovedStatics.anInt321);
-        Rasterizer.drawVerticalLine(x, 16 + y + scrollCurrent, length, HuffmanEncoding.anInt1559);
-        Rasterizer.drawVerticalLine(1 + x, scrollCurrent + y + 16, length, HuffmanEncoding.anInt1559);
-        Rasterizer.drawHorizontalLine(x, scrollCurrent + y + 16, 16, HuffmanEncoding.anInt1559);
-        Rasterizer.drawHorizontalLine(x, 17 + y + scrollCurrent, 16, HuffmanEncoding.anInt1559);
-        Rasterizer.drawVerticalLine(x + 15, y + 16 + scrollCurrent, length, MovedStatics.anInt1318);
-        Rasterizer.drawVerticalLine(x + 14, scrollCurrent + 17 + y, length - 1, MovedStatics.anInt1318);
-        Rasterizer.drawHorizontalLine(x, length + scrollCurrent + 15 + y, 16, MovedStatics.anInt1318);
-        Rasterizer.drawHorizontalLine(x + 1, 14 + y + scrollCurrent + length, 15, MovedStatics.anInt1318);
+        Rasterizer.drawFilledRectangle(x, 16 + y + scrollCurrent, 16, length, MovedStatics.SCROLLBAR_COLOR_CHIP_FILL);
+        Rasterizer.drawVerticalLine(x, 16 + y + scrollCurrent, length, HuffmanEncoding.SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
+        Rasterizer.drawVerticalLine(1 + x, scrollCurrent + y + 16, length, HuffmanEncoding.SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
+        Rasterizer.drawHorizontalLine(x, scrollCurrent + y + 16, 16, HuffmanEncoding.SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
+        Rasterizer.drawHorizontalLine(x, 17 + y + scrollCurrent, 16, HuffmanEncoding.SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
+        Rasterizer.drawVerticalLine(x + 15, y + 16 + scrollCurrent, length, MovedStatics.SCROLLBAR_COLOR_CHIP_EDGE_DARK);
+        Rasterizer.drawVerticalLine(x + 14, scrollCurrent + 17 + y, length - 1, MovedStatics.SCROLLBAR_COLOR_CHIP_EDGE_DARK);
+        Rasterizer.drawHorizontalLine(x, length + scrollCurrent + 15 + y, 16, MovedStatics.SCROLLBAR_COLOR_CHIP_EDGE_DARK);
+        Rasterizer.drawHorizontalLine(x + 1, 14 + y + scrollCurrent + length, 15, MovedStatics.SCROLLBAR_COLOR_CHIP_EDGE_DARK);
     }
 
     public static boolean decodeGameInterface(int interfaceId) {

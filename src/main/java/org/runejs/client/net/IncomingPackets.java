@@ -6,7 +6,6 @@ import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
 import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
 import org.runejs.client.frame.ChatBox;
-import org.runejs.client.frame.console.Console;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Item;
@@ -98,6 +97,10 @@ public class IncomingPackets {
                 // decode the packet and handle it
                 InboundMessage message = decoder.decode(packetBuffer);
                 MessageHandler handler = Main.handlerRegistry.getMessageHandler(message.getClass());
+
+                if (handler == null)
+                    throw new RuntimeException("No handler for message: " + message.getClass().getName());
+
                 handler.handle(message);
 
                 opcode = -1;
@@ -236,19 +239,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 83) { // console command
-                RSString message = incomingPacketBuffer.getRSString();
-                Console.console.log("<col=FFFF00>" + message.toString() + "</col>");
-                opcode = -1;
-                return true;
-            }
-            if(opcode == 85) { // console auto-completion
-                String command = incomingPacketBuffer.getString();
-                String help = incomingPacketBuffer.getString();
-                Console.console.addCommand(command, help);
-                opcode = -1;
-                return true;
-            }
             if(opcode == 182) { // set widget scroll position
                 int i_34_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_35_ = incomingPacketBuffer.getIntLE();
@@ -297,11 +287,6 @@ public class IncomingPackets {
                 Player.localPlayer.method787(i_42_, -7717, (i_40_ & 0x1) == 1, i_41_);
                 opcode = -1;
                 return true;
-            }
-            if(opcode == PacketType.LOGOUT.getOpcode()) {
-                MovedStatics.logout();
-                opcode = -1;
-                return false;
             }
             if(opcode == PacketType.PLAY_WIDGET_ANIMATION.getOpcode()) {
                 int animationId = incomingPacketBuffer.getShortBE();
@@ -434,13 +419,6 @@ public class IncomingPackets {
                     ChatBox.inputType = 0;
                 }
                 GameInterface.callOnLoadListeners(GameInterface.gameScreenInterfaceId);
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.UPDATE_RUN_ENERGY.getOpcode()) {
-                if(Player.currentTabId == 12)
-                    GameInterface.redrawTabArea = true;
-                ClientScriptRunner.runEnergy = incomingPacketBuffer.getUnsignedByte();
                 opcode = -1;
                 return true;
             }
@@ -602,11 +580,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.UPDATE_PLAYERS.getOpcode()) {
-                parsePlayerUpdatePacket();
-                opcode = -1;
-                return true;
-            }
             if(opcode == 2) {
                 int varPlayerValue = incomingPacketBuffer.getIntBE();
                 int varPlayerIndex = incomingPacketBuffer.getUnsignedShortBE();
@@ -702,13 +675,6 @@ public class IncomingPackets {
                 Player.currentTabId = incomingPacketBuffer.getUnsignedByte();
                 GameInterface.drawTabIcons = true;
                 GameInterface.redrawTabArea = true;
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.UPDATE_CARRY_WEIGHT.getOpcode()) {
-                if(Player.currentTabId == 12)
-                    GameInterface.redrawTabArea = true;
-                GenericTile.carryWeight = incomingPacketBuffer.getShortBE();
                 opcode = -1;
                 return true;
             }
@@ -862,21 +828,6 @@ public class IncomingPackets {
                 GameInterface.redrawTabArea = true;
                 return true;
             }
-            if(opcode == PacketType.UPDATE_SKILL.getOpcode()) {
-                GameInterface.redrawTabArea = true;
-                int skillLevel = incomingPacketBuffer.getUnsignedByte();
-                int skillId = incomingPacketBuffer.getUnsignedByte();
-                int skillExperience = incomingPacketBuffer.getIntLE();
-                Player.playerExperience[skillId] = skillExperience;
-                Player.playerLevels[skillId] = skillLevel;
-                Player.nextLevels[skillId] = 1;
-                for(int levelIndex = 0; levelIndex < 98; levelIndex++) {
-                    if(Player.experienceForLevels[levelIndex] <= skillExperience)
-                        Player.nextLevels[skillId] = levelIndex + 2;
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.MOVE_WIDGET_CHILD.getOpcode()) {
                 int interfaceData = incomingPacketBuffer.getIntBE();
                 int x = incomingPacketBuffer.getShortLE();
@@ -1008,27 +959,6 @@ public class IncomingPackets {
         for(int i = 0; Player.npcCount > i; i++) {
             if(Player.npcs[Player.npcIds[i]] == null)
                 throw new RuntimeException("gnp2 pos:" + i + " size:" + Player.npcCount);
-        }
-    }
-
-    public static void parsePlayerUpdatePacket() {
-        Actor.actorUpdatingIndex = 0;
-        Class17.deregisterActorCount = 0;
-        Player.parsePlayerMovement();
-        Player.parseTrackedPlayerMovement();
-        Player.registerNewPlayers();
-        Player.parseTrackedPlayerUpdateMasks();
-        for(int i = 0; Class17.deregisterActorCount > i; i++) {
-            int trackedPlayerIndex = Player.deregisterActorIndices[i];
-            if(MovedStatics.pulseCycle != Player.trackedPlayers[trackedPlayerIndex].anInt3134)
-                Player.trackedPlayers[trackedPlayerIndex] = null;
-        }
-        if(incomingPacketSize != incomingPacketBuffer.currentPosition)
-            throw new RuntimeException("gpp1 pos:" + incomingPacketBuffer.currentPosition + " psize:" + incomingPacketSize);
-        int i = 0;
-        for(/**/; Player.localPlayerCount > i; i++) {
-            if(Player.trackedPlayers[Player.trackedPlayerIndices[i]] == null)
-                throw new RuntimeException("gpp2 pos:" + i + " size:" + Player.localPlayerCount);
         }
     }
 

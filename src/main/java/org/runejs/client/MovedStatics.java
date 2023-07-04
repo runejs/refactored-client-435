@@ -15,6 +15,7 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
+import org.runejs.client.message.outbound.chat.ChatCommandOutboundMessage;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.node.NodeCache;
@@ -67,6 +68,11 @@ public class MovedStatics {
     public static ProducingGraphicsBuffer chatboxRight;
     public static int crossY = 0;
     public static int anInt2280 = 0;
+    /**
+     * The fill colour of the scroll indicator chip.
+     */
+    public static int SCROLLBAR_COLOR_CHIP_FILL = 0x4D4233;
+    public static int chatEffectsDisabled = 0;
     public static int anInt321 = 5063219;
     public static volatile int eventMouseY = -1;
     public static boolean redrawChatbox = false;
@@ -79,7 +85,12 @@ public class MovedStatics {
     public static int loginScreenFocus = 0;
     public static boolean aBoolean2083 = false;
     public static ProducingGraphicsBuffer tabImageProducer;
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_549;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for one of the tabs on the left-hand side of the bottom,
+     * but not the furthest-left (see `tabHighlightImageBottomLeftEdge` for that).
+     */
+    public static IndexedImage tabHighlightImageBottomLeft;
     public static int anInt564;
     public static boolean aBoolean565 = false;
     public static boolean aBoolean571;
@@ -101,18 +112,37 @@ public class MovedStatics {
     public static int anInt1607 = 10;
     public static NodeCache aClass9_1611 = new NodeCache(50);
     public static long[] tickSamples = new long[32];
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1315;
-    public static int anInt1318 = 3353893;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for the furthest-left tab on the top row.
+     */
+    public static IndexedImage tabHighlightImageTopLeftEdge;
+    /**
+     * The darkened edge (bottom and right) color of the scroll indicator chip.
+     */
+    public static int SCROLLBAR_COLOR_CHIP_EDGE_DARK = 0x332D25;
     public static IndexedImage tabBottomBack;
-    public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array215;
+    /**
+     * Up/down arrow images for the scrollbar.
+     */
+    public static IndexedImage[] scrollbarArrowImages;
     public static NodeCache modelCache = new NodeCache(260);
     public static boolean showChatPanelRedrawnText = false;
     public static int[][][] tileCullingBitsets;
     public static int lastContinueTextWidgetId = -1;
     public static GameSocket gameServerSocket;
     public static int[][][] tile_height = new int[4][105][105];
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_2105;
-    public static int[] anIntArray2106 = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for the furthest-right tab on the top row.
+     */
+    public static IndexedImage tabHighlightImageTopRightEdge;
+    /**
+     * The overhead chat colours in RGB.
+     *
+     * Yellow, Red, Green, Cyan, Purple, White
+     */
+    public static int[] OVERHEAD_CHAT_COLORS = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
     public static int secondaryCameraVertical = 0;
     public static int[] anIntArray2113 = new int[128];
     public static GameInterface aGameInterface_2116;
@@ -138,12 +168,18 @@ public class MovedStatics {
     public static int destinationX = 0;
     public static int anInt1511 = -1;
     public static int lowestPlane = 99;
-    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
+    /**
+     * The hint (arrow) icon sprites.
+     */
+    public static ImageRGB[] hintIconSprites;
     public static int anInt2576;
     public static int anInt2581;
     public static CacheArchive aCacheArchive_2582;
     public static ImageRGB minimapEdge;
-    public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2301;
+    /**
+     * Images for scenery on the minimap (e.g. trees, ladders, etc)
+     */
+    public static IndexedImage[] mapSceneIcons;
     public static int baseX;
     public static byte[][][] tile_underlayids;
     public static NodeCache aClass9_998 = new NodeCache(100);
@@ -187,7 +223,11 @@ public class MovedStatics {
     public static ProducingGraphicsBuffer loginBoxGraphics;
     public static int anInt892;
     public static boolean showSidePanelRedrawnText = false;
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1919;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for the central tab on the bottom row.
+     */
+    public static IndexedImage tabHighlightImageBottomMiddle;
     public static int anInt1923 = 0;
 
     public static void method445() {
@@ -649,19 +689,19 @@ public class MovedStatics {
         if (arg3) {
             if (tabWidgetIds[currentTabId] != -1) {
                 if (currentTabId == 0)
-                    aClass40_Sub5_Sub14_Sub2_1315.drawImage(22, 10);
+                    tabHighlightImageTopLeftEdge.drawImage(22, 10);
                 if (currentTabId == 1)
-                    GameShell.aClass40_Sub5_Sub14_Sub2_1.drawImage(54, 8);
+                    GameShell.tabHighlightImageTopLeft.drawImage(54, 8);
                 if (currentTabId == 2)
-                    GameShell.aClass40_Sub5_Sub14_Sub2_1.drawImage(82, 8);
+                    GameShell.tabHighlightImageTopLeft.drawImage(82, 8);
                 if (currentTabId == 3)
-                    Class35.aClass40_Sub5_Sub14_Sub2_1744.drawImage(110, 8);
+                    Class35.tabHighlightImageTopMiddle.drawImage(110, 8);
                 if (currentTabId == 4)
-                    WallDecoration.aClass40_Sub5_Sub14_Sub2_1270.drawImage(153, 8);
+                    WallDecoration.tabHighlightImageTopRight.drawImage(153, 8);
                 if (currentTabId == 5)
-                    WallDecoration.aClass40_Sub5_Sub14_Sub2_1270.drawImage(181, 8);
+                    WallDecoration.tabHighlightImageTopRight.drawImage(181, 8);
                 if (currentTabId == 6)
-                    aClass40_Sub5_Sub14_Sub2_2105.drawImage(209, 9);
+                    tabHighlightImageTopRightEdge.drawImage(209, 9);
             }
             if (tabWidgetIds[0] != -1 && arg4 != 0)
                 Class40_Sub5_Sub15.tabIcons[0].drawImage(29, 13);
@@ -685,19 +725,19 @@ public class MovedStatics {
         if (arg3) {
             if (tabWidgetIds[currentTabId] != -1) {
                 if (currentTabId == 7)
-                    Renderable.aClass40_Sub5_Sub14_Sub2_2860.drawImage(42, 0);
+                    Renderable.tabHighlightImageBottomLeftEdge.drawImage(42, 0);
                 if (currentTabId == 8)
-                    aClass40_Sub5_Sub14_Sub2_549.drawImage(74, 0);
+                    tabHighlightImageBottomLeft.drawImage(74, 0);
                 if (currentTabId == 9)
-                    aClass40_Sub5_Sub14_Sub2_549.drawImage(102, 0);
+                    tabHighlightImageBottomLeft.drawImage(102, 0);
                 if (currentTabId == 10)
-                    aClass40_Sub5_Sub14_Sub2_1919.drawImage(130, 1);
+                    tabHighlightImageBottomMiddle.drawImage(130, 1);
                 if (currentTabId == 11)
-                    Class13.aClass40_Sub5_Sub14_Sub2_418.drawImage(173, 0);
+                    Class13.tabHighlightImageBottomRight.drawImage(173, 0);
                 if (currentTabId == 12)
-                    Class13.aClass40_Sub5_Sub14_Sub2_418.drawImage(201, 0);
+                    Class13.tabHighlightImageBottomRight.drawImage(201, 0);
                 if (currentTabId == 13)
-                    ISAAC.aClass40_Sub5_Sub14_Sub2_524.drawImage(229, 0);
+                    ISAAC.tabHighlightImageBottomRightEdge.drawImage(229, 0);
             }
             if (tabWidgetIds[8] != -1 && arg4 != 8)
                 Class40_Sub5_Sub15.tabIcons[7].drawImage(74, 2);
@@ -1431,7 +1471,10 @@ public class MovedStatics {
 
 	public static int itemSelected = 0;
 	public static ProducingGraphicsBuffer flameLeftBackground;
-	public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array296;
+    /**
+     * Images for function icons on the minimap (e.g. quests, instructors)
+     */
+	public static ImageRGB[] mapFunctionIcons;
 	public static FontMetrics fontMetrics;
 	public static CacheArchive aCacheArchive_284;
 	public static Calendar aCalendar279 = Calendar.getInstance();
@@ -1631,9 +1674,10 @@ public class MovedStatics {
 	                        PacketBuffer.hiddenButtonTest = true;
 	                }
 	                if(ChatBox.chatboxInput.startsWith(Native.cmd_prefix)) {
-	                    SceneCluster.packetBuffer.putPacket(248);
-	                    SceneCluster.packetBuffer.putByte(-1 + ChatBox.chatboxInput.length());
-	                    SceneCluster.packetBuffer.putString(ChatBox.chatboxInput.substring(2));
+                        // remove the :: prefix
+                        String command = ChatBox.chatboxInput.substring(2);
+
+                        OutgoingPackets.sendMessage(new ChatCommandOutboundMessage(command));
 	                } else {
 	                    ChatColorEffect chatColorEffect = ChatColorEffect.fromString(ChatBox.chatboxInput.toLowerCase());
 
@@ -1759,7 +1803,7 @@ public class MovedStatics {
 	            	SoundSystem.updateSoundEffectVolume(varPlayerValue);
 	            }
 	            if(varPlayerType == 6)
-	                anInt2280 = varPlayerValue;
+	                chatEffectsDisabled = varPlayerValue;
 	            if(varPlayerType != 5)
 	                break;
 	            ProducingGraphicsBuffer.oneMouseButton = varPlayerValue;
@@ -1843,7 +1887,7 @@ public class MovedStatics {
 	                                i_12_++;
 	                        }
 	                    }
-	                    MouseHandler.minimapHint[GameObject.minimapHintCount] = aClass40_Sub5_Sub14_Sub4Array296[i_11_];
+	                    MouseHandler.minimapHint[GameObject.minimapHintCount] = mapFunctionIcons[i_11_];
 	                    Actor.minimapHintX[GameObject.minimapHintCount] = i_13_;
 	                    LinkedList.minimapHintY[GameObject.minimapHintCount] = i_12_;
 	                    GameObject.minimapHintCount++;
@@ -1908,7 +1952,7 @@ public class MovedStatics {
 	    if (Player.headIconDrawType == 2) {
 	        MovedStatics.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -baseX << 7) + Landscape.anInt1170, 4976905);
 	        if (ISAAC.anInt522 > -1 && pulseCycle % 20 < 10)
-	            aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
+	            hintIconSprites[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
 	    }
 	}
 

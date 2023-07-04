@@ -9,7 +9,8 @@ import org.runejs.client.frame.ChatBox;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.scene.SceneCluster;
+import org.runejs.client.message.outbound.console.ConsoleCommandOutboundMessage;
+import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.frame.console.Commands.*;
 import org.runejs.Configuration;
@@ -83,7 +84,7 @@ public class Console {
         if (consoleOpen) {
             int scrollpos = getMaxScroll() - currentScroll - 310;
             if (messageCount > 17) {
-                GameInterface.drawScrollBar(width - 18, 0, height-21, scrollpos, getMaxScroll(), 0);
+                GameInterface.drawScrollBar(width - 18, 0, height-21, scrollpos, getMaxScroll());
             }
             if (alpha) {
                 Rasterizer.drawFilledRectangleAlpha(0, 0, width, height, 0x513092, 97);
@@ -151,8 +152,7 @@ public class Console {
         String[] cmdInput = cmd.split(" ");
         int index = this.commands.indexOf(cmdInput[0].toLowerCase());
         if (index == -1) {
-            SceneCluster.packetBuffer.putPacket(246);
-            SceneCluster.packetBuffer.putString(cmd);
+            OutgoingPackets.sendMessage(new ConsoleCommandOutboundMessage(cmd));
         } else {
             this.commands.get(index).execute(this, cmdInput);
         }
