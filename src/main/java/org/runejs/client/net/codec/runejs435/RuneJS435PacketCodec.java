@@ -42,6 +42,7 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         // magic
         register(CastMagicOnPlayerOutboundMessage.class, new CastMagicOnPlayerMessageEncoder());
         register(CastMagicOnObjectOutboundMessage.class, new CastMagicOnObjectMessageEncoder());
+        register(CastMagicOnWidgetItemOutboundMessage.class, new CastMagicOnWidgetItemMessageEncoder());
         register(CastMagicOnWorldItemOutboundMessage.class, new CastMagicOnWorldItemMessageEncoder());
         register(CastMagicOnNPCOutboundMessage.class, new CastMagicOnNPCMessageEncoder());
     }

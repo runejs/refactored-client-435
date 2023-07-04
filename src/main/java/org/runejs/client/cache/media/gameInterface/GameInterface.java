@@ -547,11 +547,19 @@ public class GameInterface extends CachedNode {
                 ChatBox.redrawChatbox = true;
             }
             if(action == ActionRowType.CAST_MAGIC_ON_WIDGET_ITEM.getId()) {
-                SceneCluster.packetBuffer.putPacket(21);
-                SceneCluster.packetBuffer.putIntLE(Class60.anInt1417);
-                SceneCluster.packetBuffer.putIntME2(i_10_);
-                SceneCluster.packetBuffer.putShortBE(npcIdx);
-                SceneCluster.packetBuffer.putShortBE(i);
+                int widgetId = (i_10_ >> 16) & 0xFFFF;
+                int containerId = i_10_ & 0xFFFF;
+
+                OutgoingPackets.sendMessage(
+                    new CastMagicOnWidgetItemOutboundMessage(
+                        Class60.anInt1417,
+                        npcIdx,
+                        widgetId,
+                        containerId,
+                        i
+                    )
+                );
+
                 Projectile.atInventoryInterfaceType = 2;
                 GenericTile.anInt1233 = i;
                 RSRuntimeException.anInt1651 = 0;
