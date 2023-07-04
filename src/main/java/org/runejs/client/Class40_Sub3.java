@@ -180,10 +180,10 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.minimapEdge = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.mapEdge, "");
             else
                 i++;
-            if (MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301 != null)
+            if (MovedStatics.mapSceneIcons != null)
                 i++;
             else
-                MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301 = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.mapScene, "");
+                MovedStatics.mapSceneIcons = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.mapScene, "");
             if (MovedStatics.aClass40_Sub5_Sub14_Sub4Array296 == null)
                 MovedStatics.aClass40_Sub5_Sub14_Sub4Array296 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
             else
@@ -239,7 +239,7 @@ public class Class40_Sub3 extends Node {
                 int i_7_ = -10 + (int) (21.0 * Math.random());
                 for (int i_8_ = 0; MovedStatics.aClass40_Sub5_Sub14_Sub4Array296.length > i_8_; i_8_++)
                     MovedStatics.aClass40_Sub5_Sub14_Sub4Array296[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
-                MovedStatics.aClass40_Sub5_Sub14_Sub2Array2301[0].mixPalette(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
+                MovedStatics.mapSceneIcons[0].mixPalette(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
                 Native.currentLoadingText = English.loadedSprites;
                 MovedStatics.anInt1607 = 70;
                 MovedStatics.loadingPercent = 85;

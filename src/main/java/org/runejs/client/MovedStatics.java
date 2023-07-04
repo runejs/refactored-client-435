@@ -168,7 +168,10 @@ public class MovedStatics {
     public static int anInt2581;
     public static CacheArchive aCacheArchive_2582;
     public static ImageRGB minimapEdge;
-    public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array2301;
+    /**
+     * Images for scenery on the minimap (e.g. trees, ladders, etc)
+     */
+    public static IndexedImage[] mapSceneIcons;
     public static int baseX;
     public static byte[][][] tile_underlayids;
     public static NodeCache aClass9_998 = new NodeCache(100);
