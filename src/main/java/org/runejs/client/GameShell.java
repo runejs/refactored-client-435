@@ -10,6 +10,8 @@ import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
+import org.runejs.client.message.outbound.chat.ModifySocialListOutboundMessage;
+import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.GenericTile;
@@ -138,8 +140,9 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                         Player.friendWorlds[i_13_] = Player.friendWorlds[i_13_ + 1];
                         Class59.friends[i_13_] = Class59.friends[1 + i_13_];
                     }
-                    SceneCluster.packetBuffer.putPacket(255);
-                    SceneCluster.packetBuffer.putLongBE(arg0);
+
+                    OutgoingPackets.sendMessage(
+                        new ModifySocialListOutboundMessage(arg0, ModifySocialListOutboundMessage.SocialList.FRIEND, ModifySocialListOutboundMessage.SocialListAction.REMOVE));
                     break;
                 }
             }
