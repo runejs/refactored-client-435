@@ -20,6 +20,7 @@ import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.outbound.chat.AcceptRequestOutboundMessage;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
+import org.runejs.client.message.outbound.useitem.*;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
@@ -809,11 +810,19 @@ public class GameInterface extends CachedNode {
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
                     OverlayDefinition.crossIndex = 0;
-                    SceneCluster.packetBuffer.putPacket(110);
-                    SceneCluster.packetBuffer.putShortLE(npcIdx);
-                    SceneCluster.packetBuffer.putIntME1(ISAAC.anInt525);
-                    SceneCluster.packetBuffer.putShortBE(Class49.anInt1154);
-                    SceneCluster.packetBuffer.putShortBE(LinkedList.selectedInventorySlot);
+                    
+                    int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
+                    int containerId = ISAAC.anInt525 & 0xFFFF;
+
+                    OutgoingPackets.sendMessage(
+                        new UseItemOnPlayerOutboundMessage(
+                            Class49.anInt1154,
+                            widgetId,
+                            containerId,
+                            LinkedList.selectedInventorySlot,
+                            npcIdx
+                        )
+                    );
                 }
             }
             if(action == ActionRowType.SELECT_ITEM_ON_WIDGET.getId()) {
@@ -951,11 +960,19 @@ public class GameInterface extends CachedNode {
                         MovedStatics.crossY = RSString.clickY;
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
-                        SceneCluster.packetBuffer.putPacket(208);
-                        SceneCluster.packetBuffer.putShortBE(npcIdx);
-                        SceneCluster.packetBuffer.putShortBE(Class49.anInt1154);
-                        SceneCluster.packetBuffer.putShortLE(LinkedList.selectedInventorySlot);
-                        SceneCluster.packetBuffer.putIntBE(ISAAC.anInt525);
+
+                        int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
+                        int containerId = ISAAC.anInt525 & 0xFFFF;
+
+                        OutgoingPackets.sendMessage(
+                            new UseItemOnPlayerOutboundMessage(
+                                Class49.anInt1154,
+                                widgetId,
+                                containerId,
+                                LinkedList.selectedInventorySlot,
+                                npcIdx
+                            )
+                        );
                     }
                 }
                 if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_2.getId()) {
@@ -975,13 +992,20 @@ public class GameInterface extends CachedNode {
                     );
                 }
                 if(action == ActionRowType.USE_ITEM_ON_OBJECT.getId() && AnimationSequence.method596(i, npcIdx, (byte) -104, i_10_)) {
-                    SceneCluster.packetBuffer.putPacket(24);
-                    SceneCluster.packetBuffer.putShortLE(i_10_ + Class26.baseY);
-                    SceneCluster.packetBuffer.putShortBE(Class49.anInt1154);
-                    SceneCluster.packetBuffer.putShortLE((npcIdx & 0x1fffccf7) >> 14);
-                    SceneCluster.packetBuffer.putShortLE(LinkedList.selectedInventorySlot);
-                    SceneCluster.packetBuffer.putIntME1(ISAAC.anInt525);
-                    SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
+                    int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
+                    int containerId = ISAAC.anInt525 & 0xFFFF;
+
+                    OutgoingPackets.sendMessage(
+                        new UseItemOnObjectOutboundMessage(
+                            Class49.anInt1154,
+                            widgetId,
+                            containerId,
+                            LinkedList.selectedInventorySlot,
+                            (npcIdx & 0x1fffccf7) >> 14,
+                            i + MovedStatics.baseX,
+                            i_10_ + Class26.baseY
+                        )
+                    );
                 }
                 if(action == ActionRowType.INTERACT_WITH_NPC_OPTION_4.getId()) {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
@@ -996,13 +1020,25 @@ public class GameInterface extends CachedNode {
                     }
                 }
                 if(action == ActionRowType.USE_ITEM_ON_INVENTORY_ITEM.getId()) {
-                    SceneCluster.packetBuffer.putPacket(40);
-                    SceneCluster.packetBuffer.putShortLE(npcIdx);
-                    SceneCluster.packetBuffer.putShortLE(i);
-                    SceneCluster.packetBuffer.putIntLE(i_10_);
-                    SceneCluster.packetBuffer.putIntLE(ISAAC.anInt525);
-                    SceneCluster.packetBuffer.putShortLE(Class49.anInt1154);
-                    SceneCluster.packetBuffer.putShortBE(LinkedList.selectedInventorySlot);
+                    int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
+                    int containerId = ISAAC.anInt525 & 0xFFFF;
+
+                    int targetWidgetId = (i_10_ >> 16) & 0xFFFF;
+                    int targetContainerId = i_10_ & 0xFFFF;
+
+                    OutgoingPackets.sendMessage(
+                        new UseItemOnWidgetItemOutboundMessage(
+                            Class49.anInt1154,
+                            widgetId,
+                            containerId,
+                            LinkedList.selectedInventorySlot,
+                            npcIdx,
+                            targetWidgetId,
+                            targetContainerId,
+                            i
+                        )
+                    );
+
                     PlayerAppearance.anInt704 = i_10_;
                     RSRuntimeException.anInt1651 = 0;
                     GenericTile.anInt1233 = i;
@@ -1447,13 +1483,21 @@ public class GameInterface extends CachedNode {
                         MovedStatics.crossY = RSString.clickY;
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
-                        SceneCluster.packetBuffer.putPacket(172);
-                        SceneCluster.packetBuffer.putShortBE(i + MovedStatics.baseX);
-                        SceneCluster.packetBuffer.putShortBE(LinkedList.selectedInventorySlot);
-                        SceneCluster.packetBuffer.putShortBE(npcIdx);
-                        SceneCluster.packetBuffer.putIntME2(ISAAC.anInt525);
-                        SceneCluster.packetBuffer.putShortLE(Class26.baseY + i_10_);
-                        SceneCluster.packetBuffer.putShortLE(Class49.anInt1154);
+
+                        int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
+                        int containerId = ISAAC.anInt525 & 0xFFFF;
+
+                        OutgoingPackets.sendMessage(
+                            new UseItemOnWorldItemOutboundMessage(
+                                Class49.anInt1154,
+                                widgetId,
+                                containerId,
+                                LinkedList.selectedInventorySlot,
+                                npcIdx,
+                                i + MovedStatics.baseX,
+                                Class26.baseY + i_10_
+                            )
+                        );
                     }
                     if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_2.getId()) {
                         int widgetId = (i_10_ >> 16) & 0xFFFF;

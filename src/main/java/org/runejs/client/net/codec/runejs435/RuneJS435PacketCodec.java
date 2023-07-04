@@ -6,6 +6,7 @@ import org.runejs.client.message.outbound.chat.*;
 import org.runejs.client.message.outbound.console.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
+import org.runejs.client.message.outbound.useitem.*;
 import org.runejs.client.net.codec.runejs435.decoder.audio.*;
 import org.runejs.client.net.codec.runejs435.decoder.chat.*;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleCommandMessageDecoder;
@@ -15,6 +16,7 @@ import org.runejs.client.net.codec.runejs435.encoder.chat.*;
 import org.runejs.client.net.codec.runejs435.encoder.console.*;
 import org.runejs.client.net.codec.runejs435.encoder.interactions.*;
 import org.runejs.client.net.codec.runejs435.encoder.magic.*;
+import org.runejs.client.net.codec.runejs435.encoder.useitem.*;
 import org.runejs.client.net.codec.runejs435.decoder.updating.UpdatePlayersMessageDecoder;
 
 /**
@@ -52,6 +54,13 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(CastMagicOnWidgetItemOutboundMessage.class, new CastMagicOnWidgetItemMessageEncoder());
         register(CastMagicOnWorldItemOutboundMessage.class, new CastMagicOnWorldItemMessageEncoder());
         register(CastMagicOnNPCOutboundMessage.class, new CastMagicOnNPCMessageEncoder());
+
+        // use item on
+        register(UseItemOnPlayerOutboundMessage.class, new UseItemOnPlayerMessageEncoder());
+        register(UseItemOnNPCOutboundMessage.class, new UseItemOnNPCMessageEncoder());
+        register(UseItemOnObjectOutboundMessage.class, new UseItemOnObjectMessageEncoder());
+        register(UseItemOnWorldItemOutboundMessage.class, new UseItemOnWorldItemMessageEncoder());
+        register(UseItemOnWidgetItemOutboundMessage.class, new UseItemOnWidgetItemMessageEncoder());
     }
 
     private void registerDecoders() {
