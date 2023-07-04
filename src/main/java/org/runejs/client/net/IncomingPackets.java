@@ -229,16 +229,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 235) {
-                MovedStatics.minimapState = incomingPacketBuffer.getUnsignedByte();
-                opcode = -1;
-                return true;
-            }
-            if(opcode == 48) { // multi combat zone
-                MovedStatics.anInt2118 = incomingPacketBuffer.getUnsignedByte();
-                opcode = -1;
-                return true;
-            }
             if(opcode == 182) { // set widget scroll position
                 int i_34_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_35_ = incomingPacketBuffer.getIntLE();
