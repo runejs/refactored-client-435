@@ -380,38 +380,6 @@ public class IncomingPackets {
                 MovedStatics.lastContinueTextWidgetId = -1;
                 return true;
             }
-            if(opcode == PacketType.SHOW_CHATBOX_WIDGET.getOpcode()) {
-                int widgetId = incomingPacketBuffer.getUnsignedShortBE();
-                GameInterface.resetInterfaceAnimations(widgetId);
-                if(GameInterface.tabAreaInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
-                    GameInterface.drawTabIcons = true;
-                    GameInterface.tabAreaInterfaceId = -1;
-                    GameInterface.redrawTabArea = true;
-                }
-                if(GameInterface.fullscreenInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
-                    GameInterface.fullscreenInterfaceId = -1;
-                    MovedStatics.processGameStatus(30);
-                }
-                if(GameInterface.fullscreenSiblingInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
-                    GameInterface.fullscreenSiblingInterfaceId = -1;
-                }
-                if(GameInterface.gameScreenInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
-                    GameInterface.gameScreenInterfaceId = -1;
-                }
-                if(GameInterface.chatboxInterfaceId != widgetId) {
-                    GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
-                    GameInterface.chatboxInterfaceId = widgetId;
-                }
-
-                ChatBox.redrawChatbox = true;
-                opcode = -1;
-                MovedStatics.lastContinueTextWidgetId = -1;
-                return true;
-            }
             if(opcode == PacketType.UPDATE_REFERENCE_POSITION.getOpcode()) {
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
