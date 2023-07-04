@@ -34,8 +34,13 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
 
         handleRegisterNewPlayers(message.newPlayers);
         
-        // TODO handle others
-        
+        /**
+         * We call into the original method here to keep this implementation simple.
+         * 
+         * In future, we should refactor this to be a part of the message handling system also.
+         */
+        Player.parseTrackedPlayerUpdateMasks(message.appearanceUpdates);
+
         // handle any deregistrations
         for(int i = 0; Class17.deregisterActorCount > i; i++) {
             int trackedPlayerIndex = Player.deregisterActorIndices[i];
