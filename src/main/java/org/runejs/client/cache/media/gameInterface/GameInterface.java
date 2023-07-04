@@ -598,8 +598,10 @@ public class GameInterface extends CachedNode {
                 ClientScriptRunner.crossX = Class57.clickX;
                 LinkedList.crossType = 2;
                 OverlayDefinition.crossIndex = 0;
-                SceneCluster.packetBuffer.putPacket(148);
-                SceneCluster.packetBuffer.putShortLE(npcIdx >> 14 & 0x7fff);
+
+                int objectId = npcIdx >> 14 & 0x7fff;
+
+                OutgoingPackets.sendMessage(new ExamineObjectOutboundMessage(objectId));
             }
             if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_4.getId()) {
                 AnimationSequence.method596(i, npcIdx, (byte) -79, i_10_);
