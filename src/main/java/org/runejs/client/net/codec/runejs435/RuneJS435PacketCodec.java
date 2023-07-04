@@ -5,6 +5,7 @@ import org.runejs.client.net.codec.MessagePacketCodec;
 import org.runejs.client.message.outbound.chat.*;
 import org.runejs.client.message.outbound.console.*;
 import org.runejs.client.message.outbound.interactions.*;
+import org.runejs.client.message.outbound.magic.*;
 import org.runejs.client.net.codec.runejs435.decoder.audio.*;
 import org.runejs.client.net.codec.runejs435.decoder.chat.*;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleCommandMessageDecoder;
@@ -13,6 +14,7 @@ import org.runejs.client.net.codec.runejs435.decoder.misc.*;
 import org.runejs.client.net.codec.runejs435.encoder.chat.*;
 import org.runejs.client.net.codec.runejs435.encoder.console.*;
 import org.runejs.client.net.codec.runejs435.encoder.interactions.*;
+import org.runejs.client.net.codec.runejs435.encoder.magic.*;
 import org.runejs.client.net.codec.runejs435.decoder.updating.UpdatePlayersMessageDecoder;
 
 /**
@@ -36,6 +38,9 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
 
         // console
         register(ConsoleCommandOutboundMessage.class, new ConsoleCommandMessageEncoder());
+
+        // magic
+        register(CastMagicOnPlayerOutboundMessage.class, new CastMagicOnPlayerMessageEncoder());
     }
 
     private void registerDecoders() {
