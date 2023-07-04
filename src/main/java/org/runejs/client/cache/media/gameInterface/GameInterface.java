@@ -18,6 +18,7 @@ import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.outbound.interactions.*;
+import org.runejs.client.message.outbound.magic.*;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
@@ -546,11 +547,19 @@ public class GameInterface extends CachedNode {
                 ChatBox.redrawChatbox = true;
             }
             if(action == ActionRowType.CAST_MAGIC_ON_WIDGET_ITEM.getId()) {
-                SceneCluster.packetBuffer.putPacket(21);
-                SceneCluster.packetBuffer.putIntLE(Class60.anInt1417);
-                SceneCluster.packetBuffer.putIntME2(i_10_);
-                SceneCluster.packetBuffer.putShortBE(npcIdx);
-                SceneCluster.packetBuffer.putShortBE(i);
+                int widgetId = (i_10_ >> 16) & 0xFFFF;
+                int containerId = i_10_ & 0xFFFF;
+
+                OutgoingPackets.sendMessage(
+                    new CastMagicOnWidgetItemOutboundMessage(
+                        Class60.anInt1417,
+                        npcIdx,
+                        widgetId,
+                        containerId,
+                        i
+                    )
+                );
+
                 Projectile.atInventoryInterfaceType = 2;
                 GenericTile.anInt1233 = i;
                 RSRuntimeException.anInt1651 = 0;
@@ -608,9 +617,13 @@ public class GameInterface extends CachedNode {
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
-                    SceneCluster.packetBuffer.putPacket(221);
-                    SceneCluster.packetBuffer.putIntME1(Class60.anInt1417);
-                    SceneCluster.packetBuffer.putShortLE(npcIdx);
+
+                    OutgoingPackets.sendMessage(
+                        new CastMagicOnPlayerOutboundMessage(
+                            Class60.anInt1417,
+                            npcIdx
+                        )
+                    );
                 }
             }
             if(action == ActionRowType.ACCEPT_TRADE.getId() || action == ActionRowType.ACCEPT_CHALLENGE.getId()) {
@@ -806,11 +819,15 @@ public class GameInterface extends CachedNode {
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
                     ClientScriptRunner.crossX = Class57.clickX;
-                    SceneCluster.packetBuffer.putPacket(168);
-                    SceneCluster.packetBuffer.putShortLE(npcIdx);
-                    SceneCluster.packetBuffer.putShortBE(MovedStatics.baseX + i);
-                    SceneCluster.packetBuffer.putIntME1(Class60.anInt1417);
-                    SceneCluster.packetBuffer.putShortBE(Class26.baseY + i_10_);
+
+                    OutgoingPackets.sendMessage(
+                        new CastMagicOnWorldItemOutboundMessage(
+                            Class60.anInt1417,
+                            npcIdx,
+                            MovedStatics.baseX + i,
+                            Class26.baseY + i_10_
+                        )
+                    );
                 }
                 if(action == ActionRowType.BUTTON_TOGGLE_VARP.getId()) {
                     SceneCluster.packetBuffer.putPacket(64);
@@ -1090,9 +1107,13 @@ public class GameInterface extends CachedNode {
                             MovedStatics.crossY = RSString.clickY;
                             OverlayDefinition.crossIndex = 0;
                             LinkedList.crossType = 2;
-                            SceneCluster.packetBuffer.putPacket(253);
-                            SceneCluster.packetBuffer.putShortBE(npcIdx);
-                            SceneCluster.packetBuffer.putIntME1(Class60.anInt1417);
+
+                            OutgoingPackets.sendMessage(
+                                new CastMagicOnNPCOutboundMessage(
+                                    Class60.anInt1417,
+                                    npcIdx
+                                )
+                            );
                         }
                     }
                     if(action == ActionRowType.ADD_FRIEND.getId() || action == ActionRowType.ADD_IGNORE.getId() || action == ActionRowType.REMOVE_FRIEND.getId() || action == ActionRowType.REMOVE_IGNORE.getId()) {
@@ -1177,11 +1198,14 @@ public class GameInterface extends CachedNode {
                         ChatBox.redrawChatbox = true;
                     }
                     if(action == ActionRowType.CAST_MAGIC_ON_OBJECT.getId() && AnimationSequence.method596(i, npcIdx, (byte) -27, i_10_)) {
-                        SceneCluster.packetBuffer.putPacket(225);
-                        SceneCluster.packetBuffer.putShortBE(npcIdx >> 14 & 0x7fff);
-                        SceneCluster.packetBuffer.putShortLE(i_10_ + Class26.baseY);
-                        SceneCluster.packetBuffer.putIntME1(Class60.anInt1417);
-                        SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
+                        OutgoingPackets.sendMessage(
+                            new CastMagicOnObjectOutboundMessage(
+                                Class60.anInt1417,
+                                npcIdx >> 14 & 0x7fff,
+                                i + MovedStatics.baseX,
+                                i_10_ + Class26.baseY
+                            )
+                        );
                     }
                     if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_2.getId()) {
                         int widgetId = (i_10_ >> 16) & 0xFFFF;
