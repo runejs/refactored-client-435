@@ -18,6 +18,7 @@ import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.outbound.chat.AcceptRequestOutboundMessage;
+import org.runejs.client.message.outbound.examine.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
 import org.runejs.client.message.outbound.useitem.*;
@@ -797,8 +798,7 @@ public class GameInterface extends CachedNode {
                         class40_sub5_sub5 = class40_sub5_sub5.getChildDefinition();
                     }
                     if(class40_sub5_sub5 != null) {
-                        SceneCluster.packetBuffer.putPacket(247);
-                        SceneCluster.packetBuffer.putShortLE(class40_sub5_sub5.id);
+                        OutgoingPackets.sendMessage(new ExamineNPCOutboundMessage(class40_sub5_sub5.id));
                     }
                 }
             }
