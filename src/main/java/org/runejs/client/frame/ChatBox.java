@@ -64,7 +64,7 @@ public class ChatBox {
             }
             Rasterizer.resetBounds();
             if(itemSearchResultCount > 5)
-                GameInterface.drawScrollBar(463, 0, 77, itemSearchScroll, 7 + 14 * itemSearchResultCount, 0);
+                GameInterface.drawScrollBar(463, 0, 77, itemSearchScroll, 7 + 14 * itemSearchResultCount);
             if(inputMessage.length() != 0) {
                 if(itemSearchResultCount == 0)
                     TypeFace.fontBold.drawStringLeft(English.noMatchingObjectsFound, 239, 40, 0);
@@ -165,7 +165,7 @@ public class ChatBox {
             chatboxScrollMax = line * 14 + 7;
             if(chatboxScrollMax < 78)
                 chatboxScrollMax = 78;
-            GameInterface.drawScrollBar(463, 0, 77, chatboxScrollMax - chatboxScroll - 77, chatboxScrollMax, 0);
+            GameInterface.drawScrollBar(463, 0, 77, chatboxScrollMax - chatboxScroll - 77, chatboxScrollMax);
             String name;
             if(Player.localPlayer != null && Player.localPlayer.playerName != null)
                 name = Player.localPlayer.playerName;
