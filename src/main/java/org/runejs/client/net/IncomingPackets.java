@@ -636,18 +636,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 142) {
-                int rotationZ = incomingPacketBuffer.getUnsignedShortBE();
-                int modelZoom = incomingPacketBuffer.getUnsignedShortLE();
-                int rotationX = incomingPacketBuffer.getUnsignedShortBE();
-                int interfaceData = incomingPacketBuffer.getIntLE();
-                GameInterface childInterface = GameInterface.getInterface(interfaceData);
-                opcode = -1;
-                childInterface.rotationZ = rotationZ;
-                childInterface.modelZoom = modelZoom;
-                childInterface.rotationX = rotationX;
-                return true;
-            }
             if(opcode == PacketType.SET_CURRENT_TAB.getOpcode()) {
                 Player.currentTabId = incomingPacketBuffer.getUnsignedByte();
                 GameInterface.drawTabIcons = true;
