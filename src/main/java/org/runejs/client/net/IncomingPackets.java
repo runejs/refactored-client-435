@@ -124,11 +124,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 23) {
-                FloorDecoration.constructMapRegion(true);
-                opcode = -1;
-                return true;
-            }
             if(opcode == 222) {
                 int varPlayerValue = incomingPacketBuffer.getByte();
                 int varPlayerIndex = incomingPacketBuffer.getUnsignedShortBE();

@@ -51,6 +51,7 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         // region
         register(ClearChunkInboundMessage.class, new ClearChunkMessageHandler());
         register(LoadStandardRegionInboundMessage.class, new LoadStandardRegionMessageHandler());
+        register(LoadConstructedRegionInboundMessage.class, new LoadConstructedRegionMessageHandler());
         register(UpdateReferencePositionInboundMessage.class, new UpdateReferencePositionMessageHandler());
     }
 }
