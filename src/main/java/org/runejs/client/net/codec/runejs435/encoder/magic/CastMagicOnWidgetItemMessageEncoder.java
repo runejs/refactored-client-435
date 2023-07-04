@@ -4,7 +4,6 @@ import org.runejs.client.message.outbound.magic.CastMagicOnWidgetItemOutboundMes
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.net.codec.MessageEncoder;
-import org.runejs.client.scene.SceneCluster;
 
 /**
  * A {@link MessageEncoder} for the {@link CastMagicOnWidgetItemOutboundMessage}.
@@ -14,10 +13,10 @@ public class CastMagicOnWidgetItemMessageEncoder implements MessageEncoder<CastM
     public PacketBuffer encode(CastMagicOnWidgetItemOutboundMessage message) {
         PacketBuffer buffer = OutgoingPackets.openFixedSizePacket(12, 21);
 
-        SceneCluster.packetBuffer.putIntLE(message.spellId);
-        SceneCluster.packetBuffer.putIntME2((message.widgetId << 16) | message.containerId);
-        SceneCluster.packetBuffer.putShortBE(message.itemId);
-        SceneCluster.packetBuffer.putShortBE(message.slot);
+        buffer.putIntLE(message.spellId);
+        buffer.putIntME2((message.widgetId << 16) | message.containerId);
+        buffer.putShortBE(message.itemId);
+        buffer.putShortBE(message.slot);
 
         return buffer;
     }
