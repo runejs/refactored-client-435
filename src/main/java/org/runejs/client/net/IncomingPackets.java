@@ -656,13 +656,6 @@ public class IncomingPackets {
                 childInterface.rotationX = rotationX;
                 return true;
             }
-            if(opcode == PacketType.SET_CURRENT_TAB.getOpcode()) {
-                Player.currentTabId = incomingPacketBuffer.getUnsignedByte();
-                GameInterface.drawTabIcons = true;
-                GameInterface.redrawTabArea = true;
-                opcode = -1;
-                return true;
-            }
             // object/ground item update packets?
             if(opcode == 9 || opcode == 99 || opcode == 229 || opcode == 19 || opcode == 202 || opcode == 1 || opcode == 74 || opcode == 175 || opcode == 49 || opcode == 143 || opcode == 241) {
                 parseMapIncomingPacket();
