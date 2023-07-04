@@ -739,35 +739,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.SET_WIDGET_ITEM_MODEL.getOpcode()) {
-                int zoom = incomingPacketBuffer.getUnsignedShortBE();
-                int itemId = incomingPacketBuffer.getUnsignedShortLE();
-                int widgetData = incomingPacketBuffer.getIntLE();
-                if(itemId == 65535) {
-                    itemId = -1;
-                }
-
-                GameInterface gameInterface = GameInterface.getInterface(widgetData);
-
-                if(gameInterface.isNewInterfaceFormat) {
-                    gameInterface.itemAmount = 1;
-                    gameInterface.itemId = itemId;
-                } else {
-                    if(itemId == -1) {
-                        opcode = -1;
-                        gameInterface.modelType = InterfaceModelType.NULL;
-                        return true;
-                    }
-                    ItemDefinition itemDefinition = ItemDefinition.forId(itemId, 10);
-                    gameInterface.rotationX = itemDefinition.xan2d;
-                    gameInterface.modelId = itemId;
-                    gameInterface.modelType = InterfaceModelType.ITEM;
-                    gameInterface.modelZoom = 100 * itemDefinition.zoom2d / zoom;
-                    gameInterface.rotationZ = itemDefinition.yan2d;
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.RESET_ACTOR_ANIMATIONS.getOpcode()) {
                 for(int playerIdx = 0; playerIdx < Player.trackedPlayers.length; playerIdx++) {
                     if(Player.trackedPlayers[playerIdx] != null)
