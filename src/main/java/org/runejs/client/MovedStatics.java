@@ -119,7 +119,10 @@ public class MovedStatics {
      */
     public static int SCROLLBAR_COLOR_CHIP_EDGE_DARK = 0x332D25;
     public static IndexedImage tabBottomBack;
-    public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array215;
+    /**
+     * Up/down arrow images for the scrollbar.
+     */
+    public static IndexedImage[] scrollbarArrowImages;
     public static NodeCache modelCache = new NodeCache(260);
     public static boolean showChatPanelRedrawnText = false;
     public static int[][][] tileCullingBitsets;

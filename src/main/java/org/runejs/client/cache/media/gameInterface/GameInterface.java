@@ -400,8 +400,8 @@ public class GameInterface extends CachedNode {
 
     public static void drawScrollBar(int x, int y, int height, int scrollPosition, int scrollMaximum, int unknownArrayIndex) {
         int length = (-32 + height) * height / scrollMaximum;
-        MovedStatics.aClass40_Sub5_Sub14_Sub2Array215[unknownArrayIndex].drawImage(x, y);
-        MovedStatics.aClass40_Sub5_Sub14_Sub2Array215[1].drawImage(x, y - (-height + 16));
+        MovedStatics.scrollbarArrowImages[unknownArrayIndex].drawImage(x, y);
+        MovedStatics.scrollbarArrowImages[1].drawImage(x, y - (-height + 16));
         Rasterizer.drawFilledRectangle(x, y + 16, 16, height + -32, Class55.SCROLLBAR_COLOR_BACKGROUND);
         if(length < 8)
             length = 8;

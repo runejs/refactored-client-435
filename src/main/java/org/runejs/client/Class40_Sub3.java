@@ -220,8 +220,8 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.mapDots = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapDots, "");
             else
                 i++;
-            if (MovedStatics.aClass40_Sub5_Sub14_Sub2Array215 == null)
-                MovedStatics.aClass40_Sub5_Sub14_Sub2Array215 = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.scrollbar, "");
+            if (MovedStatics.scrollbarArrowImages == null)
+                MovedStatics.scrollbarArrowImages = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.scrollbar, "");
             else
                 i++;
             if (MovedStatics.moderatorIcon != null)
