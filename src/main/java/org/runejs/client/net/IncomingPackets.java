@@ -6,7 +6,6 @@ import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
 import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
 import org.runejs.client.frame.ChatBox;
-import org.runejs.client.frame.console.Console;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Item;
