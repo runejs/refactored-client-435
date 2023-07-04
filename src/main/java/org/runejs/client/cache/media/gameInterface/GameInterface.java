@@ -923,8 +923,8 @@ public class GameInterface extends CachedNode {
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
                     ClientScriptRunner.crossX = Class57.clickX;
-                    SceneCluster.packetBuffer.putPacket(151);
-                    SceneCluster.packetBuffer.putShortLE(npcIdx);
+
+                    OutgoingPackets.sendMessage(new ExamineItemOutboundMessage(npcIdx));
                 }
                 if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_5.getId()) {
                     AnimationSequence.method596(i, npcIdx, (byte) -11, i_10_);
@@ -1073,8 +1073,7 @@ public class GameInterface extends CachedNode {
                             gameInterface = gameInterface.children[i];
                         }
                         if(gameInterface == null || gameInterface.itemAmount < 100000) {
-                            SceneCluster.packetBuffer.putPacket(151);
-                            SceneCluster.packetBuffer.putShortLE(npcIdx);
+                            OutgoingPackets.sendMessage(new ExamineItemOutboundMessage(npcIdx));
                         } else {
                             ChatBox.addChatMessage("", gameInterface.itemAmount + Native.amountSeparatorX + ItemDefinition.forId(npcIdx, 10).name, 0);
                         }
@@ -1223,8 +1222,7 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId()) {
                         GameInterface gameInterface = getInterface(i_10_);
                         if(gameInterface == null || gameInterface.itemAmounts[i] < 100000) {
-                            SceneCluster.packetBuffer.putPacket(151);
-                            SceneCluster.packetBuffer.putShortLE(npcIdx);
+                            OutgoingPackets.sendMessage(new ExamineItemOutboundMessage(npcIdx));
                         } else {
                             ChatBox.addChatMessage("", gameInterface.itemAmounts[i] + Native.amountSeparatorX + ItemDefinition.forId(npcIdx, 10).name, 0);
                         }

@@ -65,6 +65,7 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(UseItemOnWidgetItemOutboundMessage.class, new UseItemOnWidgetItemMessageEncoder());
 
         // examine
+        register(ExamineItemOutboundMessage.class, new ExamineItemMessageEncoder());
         register(ExamineNPCOutboundMessage.class, new ExamineNPCMessageEncoder());
         register(ExamineObjectOutboundMessage.class, new ExamineObjectMessageEncoder());
     }
