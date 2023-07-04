@@ -432,13 +432,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.UPDATE_RUN_ENERGY.getOpcode()) {
-                if(Player.currentTabId == 12)
-                    GameInterface.redrawTabArea = true;
-                ClientScriptRunner.runEnergy = incomingPacketBuffer.getUnsignedByte();
-                opcode = -1;
-                return true;
-            }
             if(opcode == 253) {
                 Player.cutsceneActive = true;
                 MovedStatics.anInt545 = incomingPacketBuffer.getUnsignedByte();

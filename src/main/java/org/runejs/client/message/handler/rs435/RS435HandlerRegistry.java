@@ -29,5 +29,6 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
 
         // misc
         register(LogoutMessage.class, new LogoutMessageHandler());
+        register(UpdateRunEnergyMessage.class, new UpdateRunEnergyMessageHandler());
     }
 }
