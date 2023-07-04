@@ -96,5 +96,6 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.SET_WIDGET_MODEL.getOpcode(), new SetWidgetModelMessageDecoder());
         register(PacketType.SET_WIDGET_ITEM_MODEL.getOpcode(), new SetWidgetItemModelMessageDecoder());
         register(PacketType.SET_WIDGET_NPC_HEAD.getOpcode(), new SetWidgetNPCChatheadModelMessageDecoder());
+        register(PacketType.SET_WIDGET_PLAYER_HEAD.getOpcode(), new SetWidgetLocalPlayerChatheadModelMessageDecoder());
     }
 }

@@ -59,5 +59,6 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(SetWidgetModelInboundMessage.class, new SetWidgetModelMessageHandler());
         register(SetWidgetItemModelInboundMessage.class, new SetWidgetItemModelMessageHandler());
         register(SetWidgetNPCChatheadModelInboundMessage.class, new SetWidgetNPCChatheadModelMessageHandler());
+        register(SetWidgetLocalPlayerChatheadModelInboundMessage.class, new SetWidgetLocalPlayerChatheadModelMessageHandler());
     }
 }

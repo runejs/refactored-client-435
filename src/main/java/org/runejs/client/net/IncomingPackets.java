@@ -722,14 +722,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.SET_WIDGET_PLAYER_HEAD.getOpcode()) {
-                int interfaceData = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.getInterface(interfaceData);
-                gameInterface.modelType = InterfaceModelType.LOCAL_PLAYER_CHATHEAD;
-                gameInterface.modelId = Player.localPlayer.playerAppearance.getHeadModelId();
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.RESET_ACTOR_ANIMATIONS.getOpcode()) {
                 for(int playerIdx = 0; playerIdx < Player.trackedPlayers.length; playerIdx++) {
                     if(Player.trackedPlayers[playerIdx] != null)
