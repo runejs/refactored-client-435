@@ -565,11 +565,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.SET_SYSTEM_UPDATE_TIME.getOpcode()) {
-                Class40_Sub5_Sub15.systemUpdateTime = incomingPacketBuffer.getUnsignedShortLE() * 30;
-                opcode = -1;
-                return true;
-            }
             if(opcode == 2) {
                 int varPlayerValue = incomingPacketBuffer.getIntBE();
                 int varPlayerIndex = incomingPacketBuffer.getUnsignedShortBE();

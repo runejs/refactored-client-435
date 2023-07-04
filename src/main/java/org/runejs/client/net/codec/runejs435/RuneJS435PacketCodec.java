@@ -82,6 +82,7 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.LOGOUT.getOpcode(), new LogoutMessageDecoder());
         register(PacketType.SET_MINIMAP_STATE.getOpcode(), new SetMinimapStateMessageDecoder());
         register(PacketType.SET_MULTI_COMBAT.getOpcode(), new SetMultiCombatStateMessageDecoder());
+        register(PacketType.SET_SYSTEM_UPDATE_TIME.getOpcode(), new SetSystemUpdateTimeMessageDecoder());
       
         register(PacketType.UPDATE_CARRY_WEIGHT.getOpcode(), new UpdateCarryWeightMessageDecoder());
         register(PacketType.UPDATE_RUN_ENERGY.getOpcode(), new UpdateRunEnergyMessageDecoder());
