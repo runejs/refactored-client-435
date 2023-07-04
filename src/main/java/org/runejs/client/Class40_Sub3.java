@@ -200,8 +200,8 @@ public class Class40_Sub3 extends Node {
                 i++;
             else
                 ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
-            if (MovedStatics.aClass40_Sub5_Sub14_Sub4Array2567 == null)
-                MovedStatics.aClass40_Sub5_Sub14_Sub4Array2567 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsHint, "");
+            if (MovedStatics.hintIconSprites == null)
+                MovedStatics.hintIconSprites = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsHint, "");
             else
                 i++;
             if (LinkedList.aClass40_Sub5_Sub14_Sub4_1057 == null)

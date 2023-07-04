@@ -47,7 +47,7 @@ public class Class33 {
                     if(Player.headIconDrawType == 1 && HuffmanEncoding.anInt1545 == Player.npcIds[-Player.localPlayerCount + i] && MovedStatics.pulseCycle % 20 < 10) {
                         FloorDecoration.method342(15 + actor.anInt3117, actor);
                         if(ISAAC.anInt522 > -1)
-                            MovedStatics.aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, Class44.anInt1048 + -28);
+                            MovedStatics.hintIconSprites[0].drawImage(ISAAC.anInt522 + -12, Class44.anInt1048 + -28);
                     }
                 } else {
                     Player class40_sub5_sub17_sub4_sub1 = (Player) actor;
@@ -68,7 +68,7 @@ public class Class33 {
                     if(i >= 0 && Player.headIconDrawType == 10 && ProducingGraphicsBuffer.anInt1623 == Player.trackedPlayerIndices[i]) {
                         FloorDecoration.method342(actor.anInt3117 + 15, actor);
                         if(ISAAC.anInt522 > -1)
-                            MovedStatics.aClass40_Sub5_Sub14_Sub4Array2567[1].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
+                            MovedStatics.hintIconSprites[1].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
                     }
                 }
                 if(actor.forcedChatMessage != null && (i >= Player.localPlayerCount || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 3 || ChatBox.publicChatMode == 1 && Player.hasFriend(((Player) actor).playerName))) {

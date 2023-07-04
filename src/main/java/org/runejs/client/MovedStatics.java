@@ -160,7 +160,10 @@ public class MovedStatics {
     public static int destinationX = 0;
     public static int anInt1511 = -1;
     public static int lowestPlane = 99;
-    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2567;
+    /**
+     * The hint (arrow) icon sprites.
+     */
+    public static ImageRGB[] hintIconSprites;
     public static int anInt2576;
     public static int anInt2581;
     public static CacheArchive aCacheArchive_2582;
@@ -1934,7 +1937,7 @@ public class MovedStatics {
 	    if (Player.headIconDrawType == 2) {
 	        MovedStatics.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -baseX << 7) + Landscape.anInt1170, 4976905);
 	        if (ISAAC.anInt522 > -1 && pulseCycle % 20 < 10)
-	            aClass40_Sub5_Sub14_Sub4Array2567[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
+	            hintIconSprites[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
 	    }
 	}
 
