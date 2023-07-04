@@ -1007,13 +1007,25 @@ public class GameInterface extends CachedNode {
                     }
                 }
                 if(action == ActionRowType.USE_ITEM_ON_INVENTORY_ITEM.getId()) {
-                    SceneCluster.packetBuffer.putPacket(40);
-                    SceneCluster.packetBuffer.putShortLE(npcIdx);
-                    SceneCluster.packetBuffer.putShortLE(i);
-                    SceneCluster.packetBuffer.putIntLE(i_10_);
-                    SceneCluster.packetBuffer.putIntLE(ISAAC.anInt525);
-                    SceneCluster.packetBuffer.putShortLE(Class49.anInt1154);
-                    SceneCluster.packetBuffer.putShortBE(LinkedList.selectedInventorySlot);
+                    int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
+                    int containerId = ISAAC.anInt525 & 0xFFFF;
+
+                    int targetWidgetId = (i_10_ >> 16) & 0xFFFF;
+                    int targetContainerId = i_10_ & 0xFFFF;
+
+                    OutgoingPackets.sendMessage(
+                        new UseItemOnWidgetItemOutboundMessage(
+                            Class49.anInt1154,
+                            widgetId,
+                            containerId,
+                            LinkedList.selectedInventorySlot,
+                            npcIdx,
+                            targetWidgetId,
+                            targetContainerId,
+                            i
+                        )
+                    );
+
                     PlayerAppearance.anInt704 = i_10_;
                     RSRuntimeException.anInt1651 = 0;
                     GenericTile.anInt1233 = i;
