@@ -15,6 +15,7 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
+import org.runejs.client.message.outbound.chat.ChatCommandOutboundMessage;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.node.NodeCache;
@@ -71,6 +72,8 @@ public class MovedStatics {
      * The fill colour of the scroll indicator chip.
      */
     public static int SCROLLBAR_COLOR_CHIP_FILL = 0x4D4233;
+    public static int chatEffectsDisabled = 0;
+    public static int anInt321 = 5063219;
     public static volatile int eventMouseY = -1;
     public static boolean redrawChatbox = false;
     public static ImageRGB[] mapDots;
@@ -134,7 +137,12 @@ public class MovedStatics {
      * for the furthest-right tab on the top row.
      */
     public static IndexedImage tabHighlightImageTopRightEdge;
-    public static int[] anIntArray2106 = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
+    /**
+     * The overhead chat colours in RGB.
+     *
+     * Yellow, Red, Green, Cyan, Purple, White
+     */
+    public static int[] OVERHEAD_CHAT_COLORS = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
     public static int secondaryCameraVertical = 0;
     public static int[] anIntArray2113 = new int[128];
     public static GameInterface aGameInterface_2116;
@@ -1666,9 +1674,10 @@ public class MovedStatics {
 	                        PacketBuffer.hiddenButtonTest = true;
 	                }
 	                if(ChatBox.chatboxInput.startsWith(Native.cmd_prefix)) {
-	                    SceneCluster.packetBuffer.putPacket(248);
-	                    SceneCluster.packetBuffer.putByte(-1 + ChatBox.chatboxInput.length());
-	                    SceneCluster.packetBuffer.putString(ChatBox.chatboxInput.substring(2));
+                        // remove the :: prefix
+                        String command = ChatBox.chatboxInput.substring(2);
+
+                        OutgoingPackets.sendMessage(new ChatCommandOutboundMessage(command));
 	                } else {
 	                    ChatColorEffect chatColorEffect = ChatColorEffect.fromString(ChatBox.chatboxInput.toLowerCase());
 
@@ -1794,7 +1803,7 @@ public class MovedStatics {
 	            	SoundSystem.updateSoundEffectVolume(varPlayerValue);
 	            }
 	            if(varPlayerType == 6)
-	                anInt2280 = varPlayerValue;
+	                chatEffectsDisabled = varPlayerValue;
 	            if(varPlayerType != 5)
 	                break;
 	            ProducingGraphicsBuffer.oneMouseButton = varPlayerValue;
