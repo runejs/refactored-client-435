@@ -10,6 +10,7 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.region.LoadStandardRegionInboundMessage;
 import org.runejs.client.net.ISAAC;
+import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.tile.GenericTile;
 
 /**
@@ -18,6 +19,8 @@ import org.runejs.client.scene.tile.GenericTile;
 public class LoadStandardRegionMessageHandler implements MessageHandler<LoadStandardRegionInboundMessage> {
     @Override
     public void handle(LoadStandardRegionInboundMessage message) {
+        GroundItemTile.loadGeneratedMap = false;
+
         int chunkLocalY = message.chunkLocalY;
         int chunkX = message.chunkX;
         int chunkLocalX = message.chunkLocalX;
