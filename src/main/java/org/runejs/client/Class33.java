@@ -185,16 +185,16 @@ public class Class33 {
                     TypeFace.fontBold.drawStringLeft(message, ISAAC.anInt522, Class44.anInt1048, textColor);
                 }
                 if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.WAVE.getNetworkCode()) {
-                    TypeFace.fontBold.drawCenteredStringWaveY(message, ISAAC.anInt522, Class44.anInt1048 + 1, 0, MovedStatics.anInt2628);
-                    TypeFace.fontBold.drawCenteredStringWaveY(message, ISAAC.anInt522, Class44.anInt1048, textColor, MovedStatics.anInt2628);
+                    TypeFace.fontBold.drawCenteredStringWaveY(message, ISAAC.anInt522, Class44.anInt1048 + 1, MovedStatics.anInt2628, 0);
+                    TypeFace.fontBold.drawCenteredStringWaveY(message, ISAAC.anInt522, Class44.anInt1048, MovedStatics.anInt2628, textColor);
                 }
                 if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.WAVE2.getNetworkCode()) {
-                    TypeFace.fontBold.drawCenteredStringWaveXY(message, ISAAC.anInt522, 1 + Class44.anInt1048, 0, MovedStatics.anInt2628);
-                    TypeFace.fontBold.drawCenteredStringWaveXY(message, ISAAC.anInt522, Class44.anInt1048, textColor, MovedStatics.anInt2628);
+                    TypeFace.fontBold.drawCenteredStringWaveXY(message, ISAAC.anInt522, 1 + Class44.anInt1048, MovedStatics.anInt2628, 0);
+                    TypeFace.fontBold.drawCenteredStringWaveXY(message, ISAAC.anInt522, Class44.anInt1048, MovedStatics.anInt2628, textColor);
                 }
                 if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.SHAKE.getNetworkCode()) {
-                    TypeFace.fontBold.drawCenteredStringWaveXYMove(message, ISAAC.anInt522, Class44.anInt1048 + 1, 0, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
-                    TypeFace.fontBold.drawCenteredStringWaveXYMove(message, ISAAC.anInt522, Class44.anInt1048, textColor, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150);
+                    TypeFace.fontBold.drawCenteredStringWaveXYMove(message, ISAAC.anInt522, Class44.anInt1048 + 1, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150, 0);
+                    TypeFace.fontBold.drawCenteredStringWaveXYMove(message, ISAAC.anInt522, Class44.anInt1048, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150, textColor);
                 }
                 if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.SCROLL.getNetworkCode()) {
                     int i_12_ = TypeFace.fontBold.getStringWidth(message);
