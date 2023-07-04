@@ -784,11 +784,15 @@ public class GameInterface extends CachedNode {
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
                     ClientScriptRunner.crossX = Class57.clickX;
-                    SceneCluster.packetBuffer.putPacket(168);
-                    SceneCluster.packetBuffer.putShortLE(npcIdx);
-                    SceneCluster.packetBuffer.putShortBE(MovedStatics.baseX + i);
-                    SceneCluster.packetBuffer.putIntME1(Class60.anInt1417);
-                    SceneCluster.packetBuffer.putShortBE(Class26.baseY + i_10_);
+
+                    OutgoingPackets.sendMessage(
+                        new CastMagicOnWorldItemOutboundMessage(
+                            Class60.anInt1417,
+                            npcIdx,
+                            MovedStatics.baseX + i,
+                            Class26.baseY + i_10_
+                        )
+                    );
                 }
                 if(action == ActionRowType.BUTTON_TOGGLE_VARP.getId()) {
                     SceneCluster.packetBuffer.putPacket(64);
