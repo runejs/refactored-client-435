@@ -17,6 +17,7 @@ import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
+import org.runejs.client.message.outbound.chat.AcceptRequestOutboundMessage;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
 import org.runejs.client.net.ISAAC;
@@ -643,14 +644,26 @@ public class GameInterface extends CachedNode {
                         if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.playerName != null && class40_sub5_sub17_sub4_sub1.playerName.equalsIgnoreCase(username)) {
                             bool = true;
                             Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+
+                            AcceptRequestOutboundMessage.RequestType requestType = AcceptRequestOutboundMessage.RequestType.INVALID;
+
                             if(action == ActionRowType.ACCEPT_TRADE.getId()) {
-                                SceneCluster.packetBuffer.putPacket(96);
-                                SceneCluster.packetBuffer.putShortBE(Player.trackedPlayerIndices[i_15_]);
+                                requestType = AcceptRequestOutboundMessage.RequestType.TRADE;
+
                             }
                             if(action == ActionRowType.ACCEPT_CHALLENGE.getId()) {
-                                SceneCluster.packetBuffer.putPacket(68);
-                                SceneCluster.packetBuffer.putShortLE(Player.trackedPlayerIndices[i_15_]);
+                                requestType = AcceptRequestOutboundMessage.RequestType.CHALLENGE;
                             }
+
+                            if (requestType != AcceptRequestOutboundMessage.RequestType.INVALID) {
+                                OutgoingPackets.sendMessage(
+                                    new AcceptRequestOutboundMessage(
+                                        requestType,
+                                        Player.trackedPlayerIndices[i_15_]
+                                    )
+                                );
+                            }
+
                             break;
                         }
                     }
