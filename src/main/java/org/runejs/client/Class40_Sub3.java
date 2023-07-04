@@ -196,10 +196,10 @@ public class Class40_Sub3 extends Node {
                 FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPK, "");
             else
                 i++;
-            if (ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 != null)
+            if (ProducingGraphicsBuffer_Sub1.headIconSprites != null)
                 i++;
             else
-                ProducingGraphicsBuffer_Sub1.aClass40_Sub5_Sub14_Sub4Array2204 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
+                ProducingGraphicsBuffer_Sub1.headIconSprites = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
             if (MovedStatics.hintIconSprites == null)
                 MovedStatics.hintIconSprites = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsHint, "");
             else
