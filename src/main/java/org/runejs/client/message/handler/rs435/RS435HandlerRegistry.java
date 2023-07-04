@@ -4,7 +4,15 @@ import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.handler.rs435.audio.*;
 import org.runejs.client.message.inbound.audio.*;
 import org.runejs.client.message.handler.rs435.chat.*;
+import org.runejs.client.message.handler.rs435.misc.*;
 import org.runejs.client.message.inbound.chat.*;
+import org.runejs.client.message.handler.rs435.audio.PlayQuickSongMessageHandler;
+import org.runejs.client.message.handler.rs435.audio.PlaySongMessageHandler;
+import org.runejs.client.message.handler.rs435.audio.PlaySoundMessageHandler;
+import org.runejs.client.message.inbound.audio.PlayQuickSongInboundMessage;
+import org.runejs.client.message.inbound.audio.PlaySongInboundMessage;
+import org.runejs.client.message.inbound.audio.PlaySoundInboundMessage;
+import org.runejs.client.message.inbound.misc.*;
 import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
 
 /**
@@ -24,6 +32,12 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(PlayQuickSongInboundMessage.class, new PlayQuickSongMessageHandler());
         register(PlaySoundInboundMessage.class, new PlaySoundMessageHandler());
 
+        // misc
+        register(LogoutMessage.class, new LogoutMessageHandler());
+      
+        register(UpdateCarryWeightMessage.class, new UpdateCarryWeightMessageHandler());
+        register(UpdateRunEnergyMessage.class, new UpdateRunEnergyMessageHandler());
+        register(UpdateSkillMessage.class, new UpdateSkillMessageHandler());
         register(UpdatePlayersInboundMessage.class, new UpdatePlayersMessageHandler());
     }
 }

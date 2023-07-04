@@ -302,11 +302,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.LOGOUT.getOpcode()) {
-                MovedStatics.logout();
-                opcode = -1;
-                return false;
-            }
             if(opcode == PacketType.PLAY_WIDGET_ANIMATION.getOpcode()) {
                 int animationId = incomingPacketBuffer.getShortBE();
                 int widgetData = incomingPacketBuffer.getIntBE();
@@ -438,13 +433,6 @@ public class IncomingPackets {
                     ChatBox.inputType = 0;
                 }
                 GameInterface.callOnLoadListeners(GameInterface.gameScreenInterfaceId);
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.UPDATE_RUN_ENERGY.getOpcode()) {
-                if(Player.currentTabId == 12)
-                    GameInterface.redrawTabArea = true;
-                ClientScriptRunner.runEnergy = incomingPacketBuffer.getUnsignedByte();
                 opcode = -1;
                 return true;
             }
@@ -704,13 +692,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.UPDATE_CARRY_WEIGHT.getOpcode()) {
-                if(Player.currentTabId == 12)
-                    GameInterface.redrawTabArea = true;
-                GenericTile.carryWeight = incomingPacketBuffer.getShortBE();
-                opcode = -1;
-                return true;
-            }
             // object/ground item update packets?
             if(opcode == 9 || opcode == 99 || opcode == 229 || opcode == 19 || opcode == 202 || opcode == 1 || opcode == 74 || opcode == 175 || opcode == 49 || opcode == 143 || opcode == 241) {
                 parseMapIncomingPacket();
@@ -859,21 +840,6 @@ public class IncomingPackets {
                 GameInterface.drawTabIcons = true;
                 opcode = -1;
                 GameInterface.redrawTabArea = true;
-                return true;
-            }
-            if(opcode == PacketType.UPDATE_SKILL.getOpcode()) {
-                GameInterface.redrawTabArea = true;
-                int skillLevel = incomingPacketBuffer.getUnsignedByte();
-                int skillId = incomingPacketBuffer.getUnsignedByte();
-                int skillExperience = incomingPacketBuffer.getIntLE();
-                Player.playerExperience[skillId] = skillExperience;
-                Player.playerLevels[skillId] = skillLevel;
-                Player.nextLevels[skillId] = 1;
-                for(int levelIndex = 0; levelIndex < 98; levelIndex++) {
-                    if(Player.experienceForLevels[levelIndex] <= skillExperience)
-                        Player.nextLevels[skillId] = levelIndex + 2;
-                }
-                opcode = -1;
                 return true;
             }
             if(opcode == PacketType.MOVE_WIDGET_CHILD.getOpcode()) {

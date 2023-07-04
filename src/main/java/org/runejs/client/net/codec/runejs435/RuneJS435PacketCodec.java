@@ -6,6 +6,7 @@ import org.runejs.client.message.outbound.chat.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.net.codec.runejs435.decoder.audio.*;
 import org.runejs.client.net.codec.runejs435.decoder.chat.*;
+import org.runejs.client.net.codec.runejs435.decoder.misc.*;
 import org.runejs.client.net.codec.runejs435.encoder.chat.*;
 import org.runejs.client.net.codec.runejs435.encoder.interactions.*;
 import org.runejs.client.net.codec.runejs435.decoder.updating.UpdatePlayersMessageDecoder;
@@ -39,7 +40,13 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.PLAY_SONG.getOpcode(), new PlaySongMessageDecoder());
         register(PacketType.PLAY_QUICK_SONG.getOpcode(), new PlayQuickSongMessageDecoder());
         register(PacketType.PLAY_SOUND.getOpcode(), new PlaySoundMessageDecoder());
-        
+
+        // misc
+        register(PacketType.LOGOUT.getOpcode(), new LogoutMessageDecoder());
+      
+        register(PacketType.UPDATE_CARRY_WEIGHT.getOpcode(), new UpdateCarryWeightMessageDecoder());
+        register(PacketType.UPDATE_RUN_ENERGY.getOpcode(), new UpdateRunEnergyMessageDecoder());
+        register(PacketType.UPDATE_SKILL.getOpcode(), new UpdateSkillMessageDecoder());
         register(PacketType.UPDATE_PLAYERS.getOpcode(), new UpdatePlayersMessageDecoder());
     }
 }
