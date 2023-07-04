@@ -67,7 +67,7 @@ public class MovedStatics {
     public static int[] anIntArray1445;
     public static ProducingGraphicsBuffer chatboxRight;
     public static int crossY = 0;
-    public static int anInt2280 = 0;
+    public static int chatEffectsDisabled = 0;
     public static int anInt321 = 5063219;
     public static volatile int eventMouseY = -1;
     public static boolean redrawChatbox = false;
@@ -113,7 +113,12 @@ public class MovedStatics {
     public static GameSocket gameServerSocket;
     public static int[][][] tile_height = new int[4][105][105];
     public static IndexedImage aClass40_Sub5_Sub14_Sub2_2105;
-    public static int[] anIntArray2106 = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
+    /**
+     * The overhead chat colours in RGB.
+     *
+     * Yellow, Red, Green, Cyan, Purple, White
+     */
+    public static int[] OVERHEAD_CHAT_COLORS = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
     public static int secondaryCameraVertical = 0;
     public static int[] anIntArray2113 = new int[128];
     public static GameInterface aGameInterface_2116;
@@ -1761,7 +1766,7 @@ public class MovedStatics {
 	            	SoundSystem.updateSoundEffectVolume(varPlayerValue);
 	            }
 	            if(varPlayerType == 6)
-	                anInt2280 = varPlayerValue;
+	                chatEffectsDisabled = varPlayerValue;
 	            if(varPlayerType != 5)
 	                break;
 	            ProducingGraphicsBuffer.oneMouseButton = varPlayerValue;

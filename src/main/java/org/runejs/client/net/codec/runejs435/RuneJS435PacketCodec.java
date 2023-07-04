@@ -9,9 +9,11 @@ import org.runejs.client.net.codec.runejs435.decoder.audio.*;
 import org.runejs.client.net.codec.runejs435.decoder.chat.*;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleCommandMessageDecoder;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleLogMessageDecoder;
+import org.runejs.client.net.codec.runejs435.decoder.misc.*;
 import org.runejs.client.net.codec.runejs435.encoder.chat.*;
 import org.runejs.client.net.codec.runejs435.encoder.console.*;
 import org.runejs.client.net.codec.runejs435.encoder.interactions.*;
+import org.runejs.client.net.codec.runejs435.decoder.updating.UpdatePlayersMessageDecoder;
 
 /**
  * A {@link MessagePacketCodec} for the RuneJS customised 435 protocol.
@@ -50,5 +52,13 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         // console
         register(PacketType.RECEIVE_CONSOLE_COMMAND.getOpcode(), new ReceiveConsoleCommandMessageDecoder());
         register(PacketType.RECEIVE_CONSOLE_LOG.getOpcode(), new ReceiveConsoleLogMessageDecoder());
+
+        // misc
+        register(PacketType.LOGOUT.getOpcode(), new LogoutMessageDecoder());
+      
+        register(PacketType.UPDATE_CARRY_WEIGHT.getOpcode(), new UpdateCarryWeightMessageDecoder());
+        register(PacketType.UPDATE_RUN_ENERGY.getOpcode(), new UpdateRunEnergyMessageDecoder());
+        register(PacketType.UPDATE_SKILL.getOpcode(), new UpdateSkillMessageDecoder());
+        register(PacketType.UPDATE_PLAYERS.getOpcode(), new UpdatePlayersMessageDecoder());
     }
 }
