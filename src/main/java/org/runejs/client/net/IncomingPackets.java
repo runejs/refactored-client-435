@@ -298,11 +298,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.LOGOUT.getOpcode()) {
-                MovedStatics.logout();
-                opcode = -1;
-                return false;
-            }
             if(opcode == PacketType.PLAY_WIDGET_ANIMATION.getOpcode()) {
                 int animationId = incomingPacketBuffer.getShortBE();
                 int widgetData = incomingPacketBuffer.getIntBE();
