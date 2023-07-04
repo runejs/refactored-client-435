@@ -1054,9 +1054,13 @@ public class GameInterface extends CachedNode {
                             MovedStatics.crossY = RSString.clickY;
                             OverlayDefinition.crossIndex = 0;
                             LinkedList.crossType = 2;
-                            SceneCluster.packetBuffer.putPacket(253);
-                            SceneCluster.packetBuffer.putShortBE(npcIdx);
-                            SceneCluster.packetBuffer.putIntME1(Class60.anInt1417);
+
+                            OutgoingPackets.sendMessage(
+                                new CastMagicOnNPCOutboundMessage(
+                                    Class60.anInt1417,
+                                    npcIdx
+                                )
+                            );
                         }
                     }
                     if(action == ActionRowType.ADD_FRIEND.getId() || action == ActionRowType.ADD_IGNORE.getId() || action == ActionRowType.REMOVE_FRIEND.getId() || action == ActionRowType.REMOVE_IGNORE.getId()) {
