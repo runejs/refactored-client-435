@@ -979,13 +979,20 @@ public class GameInterface extends CachedNode {
                     );
                 }
                 if(action == ActionRowType.USE_ITEM_ON_OBJECT.getId() && AnimationSequence.method596(i, npcIdx, (byte) -104, i_10_)) {
-                    SceneCluster.packetBuffer.putPacket(24);
-                    SceneCluster.packetBuffer.putShortLE(i_10_ + Class26.baseY);
-                    SceneCluster.packetBuffer.putShortBE(Class49.anInt1154);
-                    SceneCluster.packetBuffer.putShortLE((npcIdx & 0x1fffccf7) >> 14);
-                    SceneCluster.packetBuffer.putShortLE(LinkedList.selectedInventorySlot);
-                    SceneCluster.packetBuffer.putIntME1(ISAAC.anInt525);
-                    SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
+                    int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
+                    int containerId = ISAAC.anInt525 & 0xFFFF;
+
+                    OutgoingPackets.sendMessage(
+                        new UseItemOnObjectOutboundMessage(
+                            Class49.anInt1154,
+                            widgetId,
+                            containerId,
+                            LinkedList.selectedInventorySlot,
+                            (npcIdx & 0x1fffccf7) >> 14,
+                            i + MovedStatics.baseX,
+                            i_10_ + Class26.baseY
+                        )
+                    );
                 }
                 if(action == ActionRowType.INTERACT_WITH_NPC_OPTION_4.getId()) {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
