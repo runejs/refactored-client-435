@@ -16,6 +16,7 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.message.outbound.chat.ChatCommandOutboundMessage;
+import org.runejs.client.message.outbound.widget.input.SubmitChatboxWidgetNumericInputOutboundMessage;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.node.NodeCache;
@@ -1592,8 +1593,8 @@ public class MovedStatics {
 	                    } catch(Exception _ex) {
 	                        /* empty */
 	                    }
-	                    SceneCluster.packetBuffer.putPacket(238);
-	                    SceneCluster.packetBuffer.putIntBE(inputValue);
+
+                        OutgoingPackets.sendMessage(new SubmitChatboxWidgetNumericInputOutboundMessage(inputValue));
 	                }
 	                ChatBox.redrawChatbox = true;
 	                ChatBox.inputType = 0;
