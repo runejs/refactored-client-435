@@ -5,6 +5,7 @@ import org.runejs.client.message.handler.rs435.audio.*;
 import org.runejs.client.message.handler.rs435.widget.*;
 import org.runejs.client.message.handler.rs435.widget.model.*;
 import org.runejs.client.message.handler.rs435.widget.text.*;
+import org.runejs.client.message.handler.rs435.widget.visibility.*;
 import org.runejs.client.message.inbound.audio.*;
 import org.runejs.client.message.handler.rs435.chat.*;
 import org.runejs.client.message.handler.rs435.console.*;
@@ -22,6 +23,7 @@ import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
 import org.runejs.client.message.inbound.widget.*;
 import org.runejs.client.message.inbound.widget.model.*;
 import org.runejs.client.message.inbound.widget.text.*;
+import org.runejs.client.message.inbound.widget.visibility.*;
 
 /**
  * A {@link MessageHandlerRegistry} for the RS revision 435 client.
@@ -63,5 +65,6 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(RotateWidgetModelInboundMessage.class, new RotateWidgetModelMessageHandler());
         register(AnimateWidgetModelInboundMessage.class, new AnimateWidgetModelMessageHandler());
         register(SetWidgetModelRotationSpeedInboundMessage.class, new SetWidgetModelRotationSpeedMessageHandler());
+        register(CloseAllWidgetsInboundMessage.class, new CloseAllWidgetsMessageHandler());
     }
 }

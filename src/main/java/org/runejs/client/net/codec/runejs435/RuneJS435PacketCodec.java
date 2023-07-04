@@ -15,6 +15,7 @@ import org.runejs.client.net.codec.runejs435.decoder.misc.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.model.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.text.*;
+import org.runejs.client.net.codec.runejs435.decoder.widget.visibility.*;
 import org.runejs.client.net.codec.runejs435.encoder.chat.*;
 import org.runejs.client.net.codec.runejs435.encoder.console.*;
 import org.runejs.client.net.codec.runejs435.encoder.interactions.*;
@@ -100,5 +101,6 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.ROTATE_WIDGET_MODEL.getOpcode(), new RotateWidgetModelMessageDecoder());
         register(PacketType.PLAY_WIDGET_ANIMATION.getOpcode(), new AnimateWidgetModelMessageDecoder());
         register(PacketType.SET_WIDGET_MODEL_ROTATION_SPEED.getOpcode(), new SetWidgetModelRotationSpeedMessageDecoder());
+        register(PacketType.CLOSE_ALL_WIDGETS.getOpcode(), new CloseAllWidgetsMessageDecoder());
     }
 }
