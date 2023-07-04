@@ -2,6 +2,7 @@ package org.runejs.client.message.handler.rs435;
 
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.handler.rs435.audio.*;
+import org.runejs.client.message.handler.rs435.region.*;
 import org.runejs.client.message.inbound.audio.*;
 import org.runejs.client.message.handler.rs435.chat.*;
 import org.runejs.client.message.handler.rs435.console.*;
@@ -15,6 +16,7 @@ import org.runejs.client.message.inbound.audio.PlaySongInboundMessage;
 import org.runejs.client.message.inbound.audio.PlaySoundInboundMessage;
 import org.runejs.client.message.inbound.console.*;
 import org.runejs.client.message.inbound.misc.*;
+import org.runejs.client.message.inbound.region.*;
 import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
 
 /**
@@ -45,5 +47,10 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(UpdateRunEnergyMessage.class, new UpdateRunEnergyMessageHandler());
         register(UpdateSkillMessage.class, new UpdateSkillMessageHandler());
         register(UpdatePlayersInboundMessage.class, new UpdatePlayersMessageHandler());
+
+        // region
+        register(ClearChunkInboundMessage.class, new ClearChunkMessageHandler());
+        register(LoadStandardRegionInboundMessage.class, new LoadStandardRegionMessageHandler());
+        register(UpdateReferencePositionInboundMessage.class, new UpdateReferencePositionMessageHandler());
     }
 }

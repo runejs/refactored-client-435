@@ -866,11 +866,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.SET_MAP_CHUNK.getOpcode()) {
-                FloorDecoration.constructMapRegion(false);
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.UPDATE_WIDGET_TEXT_COLOR.getOpcode()) {
                 int i_113_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_114_ = incomingPacketBuffer.getIntLE();

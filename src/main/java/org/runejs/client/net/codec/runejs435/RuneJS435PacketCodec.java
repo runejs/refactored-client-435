@@ -89,6 +89,7 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
 
         // region
         register(PacketType.CLEAR_MAP_CHUNK.getOpcode(), new ClearChunkMessageDecoder());
+        register(PacketType.SET_MAP_CHUNK.getOpcode(), new LoadStandardRegionMessageDecoder());
         register(PacketType.UPDATE_REFERENCE_POSITION.getOpcode(), new UpdateReferencePositionMessageDecoder());
     }
 }
