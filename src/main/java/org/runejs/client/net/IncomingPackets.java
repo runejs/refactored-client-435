@@ -675,15 +675,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.SET_WIDGET_NPC_HEAD.getOpcode()) {
-                int npcId = incomingPacketBuffer.getUnsignedShortLE();
-                int widgetData = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.getInterface(widgetData);
-                gameInterface.modelType = InterfaceModelType.NPC_CHATHEAD;
-                opcode = -1;
-                gameInterface.modelId = npcId;
-                return true;
-            }
             if(opcode == 132) { // open chatbox input widget
                 if(GameInterface.chatboxInterfaceId != -1) {
                     GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
