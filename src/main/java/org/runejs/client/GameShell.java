@@ -29,7 +29,12 @@ import java.net.InetAddress;
 import java.net.URL;
 
 public abstract class GameShell extends Canvas implements Runnable, FocusListener, WindowListener {
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for one of the tabs on the left-hand side of the top,
+     * but not the furthest-left (see `tabHighlightImageTopLeftEdge` for that).
+     */
+    public static IndexedImage tabHighlightImageTopLeft;
     public static int[] anIntArray2 = new int[5];
     public static long[] tickSamples = new long[32];
     public static int anInt31;

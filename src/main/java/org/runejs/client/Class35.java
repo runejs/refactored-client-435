@@ -8,7 +8,11 @@ public class Class35 implements Interface3 {
     public static int anInt1730 = 0;
     public static boolean aBoolean1734 = false;
     public static boolean aBoolean1735 = true;
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_1744;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for the central tab on the top row.
+     */
+    public static IndexedImage tabHighlightImageTopMiddle;
     public static byte[][][] tile_overlay_rotation;
 
     public LinkedList textureCache = new LinkedList();

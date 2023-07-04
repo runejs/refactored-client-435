@@ -11,7 +11,11 @@ import org.runejs.client.node.CachedNode;
 
 public abstract class Renderable extends CachedNode {
     public static long aLong2858 = 0L;
-    public static IndexedImage aClass40_Sub5_Sub14_Sub2_2860;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for the furthest-left tab on the bottom.
+     */
+    public static IndexedImage tabHighlightImageBottomLeftEdge;
     public static int[] anIntArray2865;
     public static int anInt2869;
 
