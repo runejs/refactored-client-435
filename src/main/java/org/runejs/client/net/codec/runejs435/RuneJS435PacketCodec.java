@@ -13,6 +13,7 @@ import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleComma
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleLogMessageDecoder;
 import org.runejs.client.net.codec.runejs435.decoder.misc.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.*;
+import org.runejs.client.net.codec.runejs435.decoder.widget.input.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.model.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.text.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.visibility.*;
@@ -102,5 +103,6 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.PLAY_WIDGET_ANIMATION.getOpcode(), new AnimateWidgetModelMessageDecoder());
         register(PacketType.SET_WIDGET_MODEL_ROTATION_SPEED.getOpcode(), new SetWidgetModelRotationSpeedMessageDecoder());
         register(PacketType.CLOSE_ALL_WIDGETS.getOpcode(), new CloseAllWidgetsMessageDecoder());
+        register(PacketType.SHOW_TEXT_INPUT_WIDGET.getOpcode(), new ShowTextInputWidgetMessageDecoder());
     }
 }

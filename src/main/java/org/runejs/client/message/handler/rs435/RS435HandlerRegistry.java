@@ -3,6 +3,7 @@ package org.runejs.client.message.handler.rs435;
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.handler.rs435.audio.*;
 import org.runejs.client.message.handler.rs435.widget.*;
+import org.runejs.client.message.handler.rs435.widget.input.*;
 import org.runejs.client.message.handler.rs435.widget.model.*;
 import org.runejs.client.message.handler.rs435.widget.text.*;
 import org.runejs.client.message.handler.rs435.widget.visibility.*;
@@ -21,6 +22,7 @@ import org.runejs.client.message.inbound.console.*;
 import org.runejs.client.message.inbound.misc.*;
 import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
 import org.runejs.client.message.inbound.widget.*;
+import org.runejs.client.message.inbound.widget.input.*;
 import org.runejs.client.message.inbound.widget.model.*;
 import org.runejs.client.message.inbound.widget.text.*;
 import org.runejs.client.message.inbound.widget.visibility.*;
@@ -66,5 +68,6 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(AnimateWidgetModelInboundMessage.class, new AnimateWidgetModelMessageHandler());
         register(SetWidgetModelRotationSpeedInboundMessage.class, new SetWidgetModelRotationSpeedMessageHandler());
         register(CloseAllWidgetsInboundMessage.class, new CloseAllWidgetsMessageHandler());
+        register(ShowTextInputWidgetInboundMessage.class, new ShowTextInputWidgetMessageHandler());
     }
 }
