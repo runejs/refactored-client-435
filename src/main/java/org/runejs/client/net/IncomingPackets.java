@@ -354,42 +354,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.SHOW_SCREEN_WIDGET.getOpcode()) {
-                int i_55_ = incomingPacketBuffer.getUnsignedShortBE();
-                GameInterface.resetInterfaceAnimations(i_55_);
-                if(GameInterface.tabAreaInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
-                    GameInterface.drawTabIcons = true;
-                    GameInterface.tabAreaInterfaceId = -1;
-                    GameInterface.redrawTabArea = true;
-                }
-                if(GameInterface.chatboxInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
-                    ChatBox.redrawChatbox = true;
-                    GameInterface.chatboxInterfaceId = -1;
-                }
-                if(GameInterface.fullscreenInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
-                    GameInterface.fullscreenInterfaceId = -1;
-                    MovedStatics.processGameStatus(30);
-                }
-                if(GameInterface.fullscreenSiblingInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
-                    GameInterface.fullscreenSiblingInterfaceId = -1;
-                }
-                if(i_55_ != GameInterface.gameScreenInterfaceId) {
-                    GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
-                    GameInterface.gameScreenInterfaceId = i_55_;
-                }
-                MovedStatics.lastContinueTextWidgetId = -1;
-                if(ChatBox.inputType != 0) {
-                    ChatBox.redrawChatbox = true;
-                    ChatBox.inputType = 0;
-                }
-                GameInterface.callOnLoadListeners(GameInterface.gameScreenInterfaceId);
-                opcode = -1;
-                return true;
-            }
             if(opcode == 253) {
                 Player.cutsceneActive = true;
                 MovedStatics.anInt545 = incomingPacketBuffer.getUnsignedByte();

@@ -69,5 +69,6 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(SetWidgetModelRotationSpeedInboundMessage.class, new SetWidgetModelRotationSpeedMessageHandler());
         register(CloseAllWidgetsInboundMessage.class, new CloseAllWidgetsMessageHandler());
         register(ShowTextInputWidgetInboundMessage.class, new ShowTextInputWidgetMessageHandler());
+        register(ShowScreenWidgetInboundMessage.class, new ShowScreenWidgetMessageHandler());
     }
 }
