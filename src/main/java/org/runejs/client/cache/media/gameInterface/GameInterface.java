@@ -1458,13 +1458,21 @@ public class GameInterface extends CachedNode {
                         MovedStatics.crossY = RSString.clickY;
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
-                        SceneCluster.packetBuffer.putPacket(172);
-                        SceneCluster.packetBuffer.putShortBE(i + MovedStatics.baseX);
-                        SceneCluster.packetBuffer.putShortBE(LinkedList.selectedInventorySlot);
-                        SceneCluster.packetBuffer.putShortBE(npcIdx);
-                        SceneCluster.packetBuffer.putIntME2(ISAAC.anInt525);
-                        SceneCluster.packetBuffer.putShortLE(Class26.baseY + i_10_);
-                        SceneCluster.packetBuffer.putShortLE(Class49.anInt1154);
+
+                        int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
+                        int containerId = ISAAC.anInt525 & 0xFFFF;
+
+                        OutgoingPackets.sendMessage(
+                            new UseItemOnWorldItemOutboundMessage(
+                                Class49.anInt1154,
+                                widgetId,
+                                containerId,
+                                LinkedList.selectedInventorySlot,
+                                npcIdx,
+                                i + MovedStatics.baseX,
+                                Class26.baseY + i_10_
+                            )
+                        );
                     }
                     if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_2.getId()) {
                         int widgetId = (i_10_ >> 16) & 0xFFFF;
