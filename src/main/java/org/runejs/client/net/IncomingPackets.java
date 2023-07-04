@@ -288,15 +288,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 117) {
-                int i_46_ = incomingPacketBuffer.getUnsignedShortBE();
-                int i_47_ = incomingPacketBuffer.getUnsignedShortLE();
-                int widgetId = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.getInterface(widgetId);
-                opcode = -1;
-                gameInterface.anInt2722 = i_47_ + (i_46_ << 16);
-                return true;
-            }
             if(opcode == PacketType.SHOW_TAB_AND_SCREEN_WIDGETS.getOpcode()) {
                 int i_49_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_50_ = incomingPacketBuffer.getUnsignedShortLE();
