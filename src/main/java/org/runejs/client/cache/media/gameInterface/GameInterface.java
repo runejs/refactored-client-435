@@ -947,11 +947,19 @@ public class GameInterface extends CachedNode {
                         MovedStatics.crossY = RSString.clickY;
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
-                        SceneCluster.packetBuffer.putPacket(208);
-                        SceneCluster.packetBuffer.putShortBE(npcIdx);
-                        SceneCluster.packetBuffer.putShortBE(Class49.anInt1154);
-                        SceneCluster.packetBuffer.putShortLE(LinkedList.selectedInventorySlot);
-                        SceneCluster.packetBuffer.putIntBE(ISAAC.anInt525);
+
+                        int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
+                        int containerId = ISAAC.anInt525 & 0xFFFF;
+
+                        OutgoingPackets.sendMessage(
+                            new UseItemOnPlayerOutboundMessage(
+                                Class49.anInt1154,
+                                widgetId,
+                                containerId,
+                                LinkedList.selectedInventorySlot,
+                                npcIdx
+                            )
+                        );
                     }
                 }
                 if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_2.getId()) {
