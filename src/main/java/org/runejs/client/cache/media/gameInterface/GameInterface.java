@@ -642,10 +642,19 @@ public class GameInterface extends CachedNode {
                 }
             }
             if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_3.getId()) {
-                SceneCluster.packetBuffer.putPacket(26);
-                SceneCluster.packetBuffer.putShortBE(i);
-                SceneCluster.packetBuffer.putIntLE(i_10_);
-                SceneCluster.packetBuffer.putShortBE(npcIdx);
+                int widgetId = (i_10_ >> 16) & 0xFFFF;
+                int containerId = i_10_ & 0xFFFF;
+
+                OutgoingPackets.sendMessage(
+                    new WidgetV1ItemInteractionOutboundMessage(
+                        3,
+                        widgetId,
+                        containerId,
+                        i,
+                        npcIdx
+                    )
+                );
+
                 PlayerAppearance.anInt704 = i_10_;
                 RSRuntimeException.anInt1651 = 0;
                 GenericTile.anInt1233 = i;
@@ -658,10 +667,19 @@ public class GameInterface extends CachedNode {
                 }
             }
             if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_1.getId()) {
-                SceneCluster.packetBuffer.putPacket(38);
-                SceneCluster.packetBuffer.putShortBE(npcIdx);
-                SceneCluster.packetBuffer.putShortLE(i);
-                SceneCluster.packetBuffer.putIntME1(i_10_);
+                int widgetId = (i_10_ >> 16) & 0xFFFF;
+                int containerId = i_10_ & 0xFFFF;
+
+                OutgoingPackets.sendMessage(
+                    new WidgetV1ItemInteractionOutboundMessage(
+                        1,
+                        widgetId,
+                        containerId,
+                        i,
+                        npcIdx
+                    )
+                );
+
                 GenericTile.anInt1233 = i;
                 Projectile.atInventoryInterfaceType = 2;
                 RSRuntimeException.anInt1651 = 0;
@@ -798,10 +816,19 @@ public class GameInterface extends CachedNode {
                     }
                 }
                 if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_4.getId()) {
-                    SceneCluster.packetBuffer.putPacket(147);
-                    SceneCluster.packetBuffer.putShortBE(npcIdx);
-                    SceneCluster.packetBuffer.putShortLE(i);
-                    SceneCluster.packetBuffer.putIntLE(i_10_);
+                    int widgetId = (i_10_ >> 16) & 0xFFFF;
+                    int containerId = i_10_ & 0xFFFF;
+
+                    OutgoingPackets.sendMessage(
+                        new WidgetV1ItemInteractionOutboundMessage(
+                            4,
+                            widgetId,
+                            containerId,
+                            i,
+                            npcIdx
+                        )
+                    );
+
                     Projectile.atInventoryInterfaceType = 2;
                     GenericTile.anInt1233 = i;
                     PlayerAppearance.anInt704 = i_10_;
@@ -1139,10 +1166,19 @@ public class GameInterface extends CachedNode {
                         SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
                     }
                     if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_2.getId()) {
-                        SceneCluster.packetBuffer.putPacket(228);
-                        SceneCluster.packetBuffer.putShortLE(npcIdx);
-                        SceneCluster.packetBuffer.putIntLE(i_10_);
-                        SceneCluster.packetBuffer.putShortLE(i);
+                        int widgetId = (i_10_ >> 16) & 0xFFFF;
+                        int containerId = i_10_ & 0xFFFF;
+
+                        OutgoingPackets.sendMessage(
+                            new WidgetV1ItemInteractionOutboundMessage(
+                                2,
+                                widgetId,
+                                containerId,
+                                i,
+                                npcIdx
+                            )
+                        );
+
                         RSRuntimeException.anInt1651 = 0;
                         Projectile.atInventoryInterfaceType = 2;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
@@ -1262,10 +1298,19 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_5.getId()) {
-                        SceneCluster.packetBuffer.putPacket(124);
-                        SceneCluster.packetBuffer.putShortBE(i);
-                        SceneCluster.packetBuffer.putIntLE(i_10_);
-                        SceneCluster.packetBuffer.putShortBE(npcIdx);
+                        int widgetId = (i_10_ >> 16) & 0xFFFF;
+                        int containerId = i_10_ & 0xFFFF;
+
+                        OutgoingPackets.sendMessage(
+                            new WidgetV1ItemInteractionOutboundMessage(
+                                5,
+                                widgetId,
+                                containerId,
+                                i,
+                                npcIdx
+                            )
+                        );
+
                         PlayerAppearance.anInt704 = i_10_;
                         RSRuntimeException.anInt1651 = 0;
                         GenericTile.anInt1233 = i;
