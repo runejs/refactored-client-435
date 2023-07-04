@@ -547,12 +547,6 @@ public class IncomingPackets {
                 MovedStatics.lastContinueTextWidgetId = -1;
                 return true;
             }
-            if(opcode == PacketType.UPDATE_REFERENCE_POSITION.getOpcode()) {
-                OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
-                MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
-                opcode = -1;
-                return true;
-            }
             if(opcode == 88) {
                 Class51.anInt1205 = incomingPacketBuffer.getUnsignedByte();
                 if(Player.currentTabId == Class51.anInt1205) {
