@@ -8,6 +8,7 @@ import org.runejs.client.net.codec.runejs435.decoder.audio.*;
 import org.runejs.client.net.codec.runejs435.decoder.chat.*;
 import org.runejs.client.net.codec.runejs435.encoder.chat.*;
 import org.runejs.client.net.codec.runejs435.encoder.interactions.*;
+import org.runejs.client.net.codec.runejs435.decoder.updating.UpdatePlayersMessageDecoder;
 
 /**
  * A {@link MessagePacketCodec} for the RuneJS customised 435 protocol.
@@ -38,5 +39,7 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.PLAY_SONG.getOpcode(), new PlaySongMessageDecoder());
         register(PacketType.PLAY_QUICK_SONG.getOpcode(), new PlayQuickSongMessageDecoder());
         register(PacketType.PLAY_SOUND.getOpcode(), new PlaySoundMessageDecoder());
+        
+        register(PacketType.UPDATE_PLAYERS.getOpcode(), new UpdatePlayersMessageDecoder());
     }
 }
