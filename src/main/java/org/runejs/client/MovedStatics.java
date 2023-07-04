@@ -67,7 +67,10 @@ public class MovedStatics {
     public static ProducingGraphicsBuffer chatboxRight;
     public static int crossY = 0;
     public static int anInt2280 = 0;
-    public static int anInt321 = 5063219;
+    /**
+     * The fill colour of the scroll indicator chip.
+     */
+    public static int SCROLLBAR_COLOR_CHIP_FILL = 0x4D4233;
     public static volatile int eventMouseY = -1;
     public static boolean redrawChatbox = false;
     public static ImageRGB[] mapDots;
@@ -111,7 +114,10 @@ public class MovedStatics {
      * for the furthest-left tab on the top row.
      */
     public static IndexedImage tabHighlightImageTopLeftEdge;
-    public static int anInt1318 = 3353893;
+    /**
+     * The darkened edge (bottom and right) color of the scroll indicator chip.
+     */
+    public static int SCROLLBAR_COLOR_CHIP_EDGE_DARK = 0x332D25;
     public static IndexedImage tabBottomBack;
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array215;
     public static NodeCache modelCache = new NodeCache(260);
