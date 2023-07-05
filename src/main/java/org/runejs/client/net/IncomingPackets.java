@@ -277,41 +277,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.SHOW_TAB_AND_SCREEN_WIDGETS.getOpcode()) {
-                int i_49_ = incomingPacketBuffer.getUnsignedShortBE();
-                int i_50_ = incomingPacketBuffer.getUnsignedShortLE();
-                if(GameInterface.chatboxInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
-                    ChatBox.redrawChatbox = true;
-                    GameInterface.chatboxInterfaceId = -1;
-                }
-                if(GameInterface.fullscreenInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
-                    GameInterface.fullscreenInterfaceId = -1;
-                    MovedStatics.processGameStatus(30);
-                }
-                if(GameInterface.fullscreenSiblingInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
-                    GameInterface.fullscreenSiblingInterfaceId = -1;
-                }
-                if(GameInterface.gameScreenInterfaceId != i_50_) {
-                    GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
-                    GameInterface.gameScreenInterfaceId = i_50_;
-                }
-                if(GameInterface.tabAreaInterfaceId != i_49_) {
-                    GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
-                    GameInterface.tabAreaInterfaceId = i_49_;
-                }
-                MovedStatics.lastContinueTextWidgetId = -1;
-                if(ChatBox.inputType != 0) {
-                    ChatBox.redrawChatbox = true;
-                    ChatBox.inputType = 0;
-                }
-                GameInterface.redrawTabArea = true;
-                GameInterface.drawTabIcons = true;
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.CLEAR_MAP_CHUNK.getOpcode()) {
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();

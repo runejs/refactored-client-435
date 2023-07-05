@@ -73,6 +73,7 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(ShowFullScreenWidgetInboundMessage.class, new ShowFullScreenWidgetMessageHandler());
         register(ShowChatboxWidgetInboundMessage.class, new ShowChatboxWidgetMessageHandler());
         register(ShowWalkableScreenWidgetInboundMessage.class, new ShowWalkableScreenWidgetMessageHandler());
+        register(ShowTabAndScreenWidgetInboundMessage.class, new ShowTabAndScreenWidgetMessageHandler());
         register(SetWidgetPositionInboundMessage.class, new SetWidgetPositionMessageHandler());
     }
 }
