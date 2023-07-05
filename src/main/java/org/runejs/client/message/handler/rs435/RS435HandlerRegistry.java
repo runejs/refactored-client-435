@@ -23,7 +23,7 @@ import org.runejs.client.message.inbound.audio.PlaySoundInboundMessage;
 import org.runejs.client.message.inbound.console.*;
 import org.runejs.client.message.inbound.misc.*;
 import org.runejs.client.message.inbound.region.*;
-import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
+import org.runejs.client.message.inbound.updating.*;
 import org.runejs.client.message.inbound.widget.*;
 import org.runejs.client.message.inbound.widget.container.*;
 import org.runejs.client.message.inbound.widget.input.*;
@@ -66,7 +66,10 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(UpdateCarryWeightMessage.class, new UpdateCarryWeightMessageHandler());
         register(UpdateRunEnergyMessage.class, new UpdateRunEnergyMessageHandler());
         register(UpdateSkillMessage.class, new UpdateSkillMessageHandler());
+
+        // player/npc updating
         register(UpdatePlayersInboundMessage.class, new UpdatePlayersMessageHandler());
+        register(UpdateNPCsInboundMessage.class, new UpdateNPCsMessageHandler());
 
         // widget
         register(SetWidgetTextInboundMessage.class, new SetWidgetTextMessageHandler());
