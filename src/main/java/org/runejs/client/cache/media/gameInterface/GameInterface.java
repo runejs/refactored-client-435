@@ -27,6 +27,7 @@ import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
+import org.runejs.client.net.codec.runejs435.encoder.widget.input.ClickWidgetButtonMessageEncoder;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
@@ -729,8 +730,11 @@ public class GameInterface extends CachedNode {
                 }
             }
             if(action == ActionRowType.BUTTON_SET_VARP_VALUE.getId()) {
-                SceneCluster.packetBuffer.putPacket(64);
-                SceneCluster.packetBuffer.putIntBE(i_10_);
+                int widgetId = (i_10_ >> 16) & 0xFFFF;
+                int childId = i_10_ & 0xFFFF;
+
+                OutgoingPackets.sendMessage(new ClickWidgetButtonOutboundMessage(widgetId, childId));
+
                 GameInterface gameInterface = getInterface(i_10_);
                 if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
                     int i_16_ = gameInterface.clientScripts[0][1];
@@ -861,8 +865,10 @@ public class GameInterface extends CachedNode {
                     );
                 }
                 if(action == ActionRowType.BUTTON_TOGGLE_VARP.getId()) {
-                    SceneCluster.packetBuffer.putPacket(64);
-                    SceneCluster.packetBuffer.putIntBE(i_10_);
+                    int widgetId = (i_10_ >> 16) & 0xFFFF;
+                    int childId = i_10_ & 0xFFFF;
+
+                    OutgoingPackets.sendMessage(new ClickWidgetButtonOutboundMessage(widgetId, childId));
 
                     GameInterface gameInterface = getInterface(i_10_);
                     if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
@@ -1087,8 +1093,10 @@ public class GameInterface extends CachedNode {
                             bool = method166((byte) 88, gameInterface);
                         }
                         if(bool) {
-                            SceneCluster.packetBuffer.putPacket(64);
-                            SceneCluster.packetBuffer.putIntBE(i_10_);
+                            int widgetId = (i_10_ >> 16) & 0xFFFF;
+                            int childId = i_10_ & 0xFFFF;
+
+                            OutgoingPackets.sendMessage(new ClickWidgetButtonOutboundMessage(widgetId, childId));
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_3.getId()) {
