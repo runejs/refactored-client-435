@@ -90,6 +90,7 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
 
         // widget container
         register(UpdateAllWidgetItemsInboundMessage.class, new UpdateAllWidgetItemsMessageHandler());
+        register(UpdateSpecificWidgetItemsInboundMessage.class, new UpdateSpecificWidgetItemsMessageHandler());
         register(ClearWidgetItemsInboundMessage.class, new ClearWidgetItemsMessageHandler());
         
         // region

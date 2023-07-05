@@ -356,36 +356,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.UPDATE_SPECIFIC_WIDGET_ITEMS.getOpcode()) {
-                GameInterface.redrawTabArea = true;
-                int widgetData = incomingPacketBuffer.getIntBE();
-                GameInterface gameInterface = GameInterface.getInterface(widgetData);
-                while(incomingPacketSize > incomingPacketBuffer.currentPosition) {
-                    int itemSlot = incomingPacketBuffer.getSmart();
-                    int i_109_ = incomingPacketBuffer.getUnsignedShortBE();
-                    int i_110_ = 0;
-                    if(i_109_ != 0) {
-                        i_110_ = incomingPacketBuffer.getUnsignedByte();
-                        if(i_110_ == 255)
-                            i_110_ = incomingPacketBuffer.getIntBE();
-                    }
-                    if(gameInterface.isNewInterfaceFormat) {
-                        GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[widgetData >> 16];
-                        for(int i_111_ = 0; i_111_ < gameInterfaces.length; i_111_++) {
-                            GameInterface gameInterface_112_ = gameInterfaces[i_111_];
-                            if((gameInterface.id & 0xffff) == (gameInterface_112_.parentId & 0xffff) && 1 + itemSlot == gameInterface_112_.anInt2736) {
-                                gameInterface_112_.itemAmount = i_110_;
-                                gameInterface_112_.itemId = i_109_ + -1;
-                            }
-                        }
-                    } else if(itemSlot >= 0 && gameInterface.items.length > itemSlot) {
-                        gameInterface.items[itemSlot] = i_109_;
-                        gameInterface.itemAmounts[itemSlot] = i_110_;
-                    }
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == 211) { // update ignore list
                 MovedStatics.anInt1008 = incomingPacketSize / 8;
                 for(int i_118_ = 0; MovedStatics.anInt1008 > i_118_; i_118_++)

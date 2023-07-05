@@ -136,6 +136,7 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
 
         // widget container
         register(PacketType.UPDATE_ALL_WIDGET_ITEMS.getOpcode(), new UpdateAllWidgetItemsMessageDecoder());
+        register(PacketType.UPDATE_SPECIFIC_WIDGET_ITEMS.getOpcode(), new UpdateSpecificWidgetItemsMessageDecoder());
         register(PacketType.CLEAR_WIDGET_ITEMS.getOpcode(), new ClearWidgetItemsMessageDecoder());
 
         // region
