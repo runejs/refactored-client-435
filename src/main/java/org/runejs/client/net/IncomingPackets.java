@@ -202,15 +202,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 250) { // widget model type 1
-                int modelId = incomingPacketBuffer.getUnsignedShortLE();
-                int widgetData = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.getInterface(widgetData);
-                gameInterface.modelId = modelId;
-                gameInterface.modelType = InterfaceModelType.MODEL;
-                opcode = -1;
-                return true;
-            }
             if(opcode == 255) { // camera shake?
                 int i_23_ = incomingPacketBuffer.getUnsignedByte();
                 int i_24_ = incomingPacketBuffer.getUnsignedByte();
@@ -222,20 +213,6 @@ public class IncomingPackets {
                 GroundItemTile.anIntArray1358[i_23_] = i_26_;
                 MovedStatics.anIntArray1846[i_23_] = 0;
                 opcode = -1;
-                return true;
-            }
-            if(opcode == 182) { // set widget scroll position
-                int i_34_ = incomingPacketBuffer.getUnsignedShortBE();
-                int i_35_ = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.getInterface(i_35_);
-                opcode = -1;
-                if(gameInterface != null && gameInterface.type == GameInterfaceType.LAYER) {
-                    if(i_34_ < 0)
-                        i_34_ = 0;
-                    if(-gameInterface.originalHeight + gameInterface.scrollHeight < i_34_)
-                        i_34_ = -gameInterface.originalHeight + gameInterface.scrollHeight;
-                    gameInterface.scrollPosition = i_34_;
-                }
                 return true;
             }
             if(opcode == 174) { // clear widget item container?
@@ -273,73 +250,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.PLAY_WIDGET_ANIMATION.getOpcode()) {
-                int animationId = incomingPacketBuffer.getShortBE();
-                int widgetData = incomingPacketBuffer.getIntBE();
-                GameInterface gameInterface = GameInterface.getInterface(widgetData);
-                if(animationId != gameInterface.animation || animationId == -1) {
-                    gameInterface.remainingAnimationTime = 0;
-                    gameInterface.animationFrame = 0;
-                    gameInterface.animation = animationId;
-                }
-                opcode = -1;
-                return true;
-            }
-            if(opcode == 56) {
-                int i_45_ = incomingPacketBuffer.getShortBE();
-                if(i_45_ >= 0)
-                    GameInterface.resetInterfaceAnimations(i_45_);
-                if(i_45_ != GroundItemTile.walkableWidgetId) {
-                    GameInterface.resetInterface(GroundItemTile.walkableWidgetId);
-                    GroundItemTile.walkableWidgetId = i_45_;
-                }
-                opcode = -1;
-                return true;
-            }
-            if(opcode == 117) {
-                int i_46_ = incomingPacketBuffer.getUnsignedShortBE();
-                int i_47_ = incomingPacketBuffer.getUnsignedShortLE();
-                int widgetId = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.getInterface(widgetId);
-                opcode = -1;
-                gameInterface.anInt2722 = i_47_ + (i_46_ << 16);
-                return true;
-            }
-            if(opcode == PacketType.SHOW_TAB_AND_SCREEN_WIDGETS.getOpcode()) {
-                int i_49_ = incomingPacketBuffer.getUnsignedShortBE();
-                int i_50_ = incomingPacketBuffer.getUnsignedShortLE();
-                if(GameInterface.chatboxInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
-                    ChatBox.redrawChatbox = true;
-                    GameInterface.chatboxInterfaceId = -1;
-                }
-                if(GameInterface.fullscreenInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
-                    GameInterface.fullscreenInterfaceId = -1;
-                    MovedStatics.processGameStatus(30);
-                }
-                if(GameInterface.fullscreenSiblingInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
-                    GameInterface.fullscreenSiblingInterfaceId = -1;
-                }
-                if(GameInterface.gameScreenInterfaceId != i_50_) {
-                    GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
-                    GameInterface.gameScreenInterfaceId = i_50_;
-                }
-                if(GameInterface.tabAreaInterfaceId != i_49_) {
-                    GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
-                    GameInterface.tabAreaInterfaceId = i_49_;
-                }
-                MovedStatics.lastContinueTextWidgetId = -1;
-                if(ChatBox.inputType != 0) {
-                    ChatBox.redrawChatbox = true;
-                    ChatBox.inputType = 0;
-                }
-                GameInterface.redrawTabArea = true;
-                GameInterface.drawTabIcons = true;
-                opcode = -1;
-                return true;
-            }
             if(opcode == 223) { // set player options
                 String class1 = incomingPacketBuffer.getString();
                 int i_53_ = incomingPacketBuffer.getUnsignedByte();
@@ -350,42 +260,6 @@ public class IncomingPackets {
                     Main.playerActions[i_54_ - 1] = class1;
                     Class13.playerArray[i_54_ - 1] = i_53_ == 0;
                 }
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.SHOW_SCREEN_WIDGET.getOpcode()) {
-                int i_55_ = incomingPacketBuffer.getUnsignedShortBE();
-                GameInterface.resetInterfaceAnimations(i_55_);
-                if(GameInterface.tabAreaInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
-                    GameInterface.drawTabIcons = true;
-                    GameInterface.tabAreaInterfaceId = -1;
-                    GameInterface.redrawTabArea = true;
-                }
-                if(GameInterface.chatboxInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
-                    ChatBox.redrawChatbox = true;
-                    GameInterface.chatboxInterfaceId = -1;
-                }
-                if(GameInterface.fullscreenInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
-                    GameInterface.fullscreenInterfaceId = -1;
-                    MovedStatics.processGameStatus(30);
-                }
-                if(GameInterface.fullscreenSiblingInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
-                    GameInterface.fullscreenSiblingInterfaceId = -1;
-                }
-                if(i_55_ != GameInterface.gameScreenInterfaceId) {
-                    GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
-                    GameInterface.gameScreenInterfaceId = i_55_;
-                }
-                MovedStatics.lastContinueTextWidgetId = -1;
-                if(ChatBox.inputType != 0) {
-                    ChatBox.redrawChatbox = true;
-                    ChatBox.inputType = 0;
-                }
-                GameInterface.callOnLoadListeners(GameInterface.gameScreenInterfaceId);
                 opcode = -1;
                 return true;
             }
@@ -402,116 +276,6 @@ public class IncomingPackets {
                     SceneCluster.cameraZ = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, MovedStatics.cameraY) - MovedStatics.anInt194;
                 }
                 opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.SHOW_PERMANENT_CHATBOX_WIDGET.getOpcode()) {
-                int chatboxInterfaceId = incomingPacketBuffer.getShortBE();
-                if(ChatBox.dialogueId != chatboxInterfaceId) {
-                    GameInterface.resetInterface(ChatBox.dialogueId);
-                    ChatBox.dialogueId = chatboxInterfaceId;
-                }
-                opcode = -1;
-                ChatBox.redrawChatbox = true;
-                MovedStatics.lastContinueTextWidgetId = -1;
-                return true;
-            }
-            if(opcode == PacketType.SHOW_FULLSCREEN_INTERFACE.getOpcode()) {
-                int siblingInterfaceId = incomingPacketBuffer.getUnsignedShortBE();
-                int interfaceId = incomingPacketBuffer.getUnsignedShortBE();
-                GameInterface.resetInterfaceAnimations(interfaceId);
-
-                if(siblingInterfaceId != -1) {
-                    GameInterface.resetInterfaceAnimations(siblingInterfaceId);
-                }
-                if(GameInterface.gameScreenInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
-                    GameInterface.gameScreenInterfaceId = -1;
-                }
-                if(GameInterface.tabAreaInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
-                    GameInterface.tabAreaInterfaceId = -1;
-                }
-                if(GameInterface.chatboxInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
-                    GameInterface.chatboxInterfaceId = -1;
-                }
-                if(interfaceId != GameInterface.fullscreenInterfaceId) {
-                    GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
-                    GameInterface.fullscreenInterfaceId = interfaceId;
-                    MovedStatics.processGameStatus(35);
-                }
-                if(interfaceId != GameInterface.fullscreenSiblingInterfaceId) {
-                    GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
-                    GameInterface.fullscreenSiblingInterfaceId = siblingInterfaceId;
-                }
-                MovedStatics.lastContinueTextWidgetId = -1;
-                ChatBox.inputType = 0;
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.CLOSE_ALL_WIDGETS.getOpcode()) {
-                if(GameInterface.tabAreaInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
-                    GameInterface.redrawTabArea = true;
-                    GameInterface.drawTabIcons = true;
-                    GameInterface.tabAreaInterfaceId = -1;
-                }
-                if(GameInterface.chatboxInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
-                    ChatBox.redrawChatbox = true;
-                    GameInterface.chatboxInterfaceId = -1;
-                }
-                if(GameInterface.fullscreenInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
-                    GameInterface.fullscreenInterfaceId = -1;
-                    MovedStatics.processGameStatus(30);
-                }
-                if(GameInterface.fullscreenSiblingInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
-                    GameInterface.fullscreenSiblingInterfaceId = -1;
-                }
-                if(GameInterface.gameScreenInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
-                    GameInterface.gameScreenInterfaceId = -1;
-                }
-                opcode = -1;
-                MovedStatics.lastContinueTextWidgetId = -1;
-                if(ChatBox.inputType != 0) {
-                    ChatBox.redrawChatbox = true;
-                    ChatBox.inputType = 0;
-                }
-                return true;
-            }
-            if(opcode == PacketType.SHOW_CHATBOX_WIDGET.getOpcode()) {
-                int widgetId = incomingPacketBuffer.getUnsignedShortBE();
-                GameInterface.resetInterfaceAnimations(widgetId);
-                if(GameInterface.tabAreaInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
-                    GameInterface.drawTabIcons = true;
-                    GameInterface.tabAreaInterfaceId = -1;
-                    GameInterface.redrawTabArea = true;
-                }
-                if(GameInterface.fullscreenInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
-                    GameInterface.fullscreenInterfaceId = -1;
-                    MovedStatics.processGameStatus(30);
-                }
-                if(GameInterface.fullscreenSiblingInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
-                    GameInterface.fullscreenSiblingInterfaceId = -1;
-                }
-                if(GameInterface.gameScreenInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
-                    GameInterface.gameScreenInterfaceId = -1;
-                }
-                if(GameInterface.chatboxInterfaceId != widgetId) {
-                    GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
-                    GameInterface.chatboxInterfaceId = widgetId;
-                }
-
-                ChatBox.redrawChatbox = true;
-                opcode = -1;
-                MovedStatics.lastContinueTextWidgetId = -1;
                 return true;
             }
             if(opcode == 88) {
@@ -555,41 +319,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 237) { // show tab overlay widget
-                int i_68_ = incomingPacketBuffer.getUnsignedShortBE();
-                GameInterface.resetInterfaceAnimations(i_68_);
-                if(GameInterface.chatboxInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
-                    GameInterface.chatboxInterfaceId = -1;
-                    ChatBox.redrawChatbox = true;
-                }
-                if(GameInterface.fullscreenInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
-                    GameInterface.fullscreenInterfaceId = -1;
-                    MovedStatics.processGameStatus(30);
-                }
-                if(GameInterface.fullscreenSiblingInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
-                    GameInterface.fullscreenSiblingInterfaceId = -1;
-                }
-                if(GameInterface.gameScreenInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
-                    GameInterface.gameScreenInterfaceId = -1;
-                }
-                if(GameInterface.tabAreaInterfaceId != i_68_) {
-                    GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
-                    GameInterface.tabAreaInterfaceId = i_68_;
-                }
-                GameInterface.drawTabIcons = true;
-                if(ChatBox.inputType != 0) {
-                    ChatBox.redrawChatbox = true;
-                    ChatBox.inputType = 0;
-                }
-                MovedStatics.lastContinueTextWidgetId = -1;
-                opcode = -1;
-                GameInterface.redrawTabArea = true;
-                return true;
-            }
             if(opcode == 234) {
                 Player.cutsceneActive = true;
                 MovedStatics.anInt564 = incomingPacketBuffer.getUnsignedByte();
@@ -615,18 +344,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 142) {
-                int rotationZ = incomingPacketBuffer.getUnsignedShortBE();
-                int modelZoom = incomingPacketBuffer.getUnsignedShortLE();
-                int rotationX = incomingPacketBuffer.getUnsignedShortBE();
-                int interfaceData = incomingPacketBuffer.getIntLE();
-                GameInterface childInterface = GameInterface.getInterface(interfaceData);
-                opcode = -1;
-                childInterface.rotationZ = rotationZ;
-                childInterface.modelZoom = modelZoom;
-                childInterface.rotationX = rotationX;
-                return true;
-            }
             // object/ground item update packets?
             if(opcode == 9 || opcode == 99 || opcode == 229 || opcode == 19 || opcode == 202 || opcode == 1 || opcode == 74 || opcode == 175 || opcode == 49 || opcode == 143 || opcode == 241) {
                 parseMapIncomingPacket();
@@ -645,27 +362,6 @@ public class IncomingPackets {
                     ChatBox.redrawChatbox = true;
                 GameInterface.redrawTabArea = true;
                 opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.SET_WIDGET_NPC_HEAD.getOpcode()) {
-                int npcId = incomingPacketBuffer.getUnsignedShortLE();
-                int widgetData = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.getInterface(widgetData);
-                gameInterface.modelType = InterfaceModelType.NPC_CHATHEAD;
-                opcode = -1;
-                gameInterface.modelId = npcId;
-                return true;
-            }
-            if(opcode == 132) { // open chatbox input widget
-                if(GameInterface.chatboxInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
-                    GameInterface.chatboxInterfaceId = -1;
-                }
-                opcode = -1;
-                ChatBox.inputMessage = "";
-                ChatBox.inputType = 1;
-                ChatBox.redrawChatbox = true;
-                ChatBox.messagePromptRaised = false;
                 return true;
             }
             if(opcode == 186) {
@@ -703,54 +399,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.SET_WIDGET_PLAYER_HEAD.getOpcode()) {
-                int interfaceData = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.getInterface(interfaceData);
-                gameInterface.modelType = InterfaceModelType.LOCAL_PLAYER_CHATHEAD;
-                gameInterface.modelId = Player.localPlayer.playerAppearance.getHeadModelId();
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.UPDATE_WIDGET_TEXT.getOpcode()) {
-                int interfaceData = incomingPacketBuffer.getIntLE();
-                String interfaceText = incomingPacketBuffer.getString();
-                GameInterface gameInterface = GameInterface.getInterface(interfaceData);
-                gameInterface.disabledText = interfaceText;
-                if(Player.tabWidgetIds[Player.currentTabId] == interfaceData >> 16) {
-                    GameInterface.redrawTabArea = true;
-                }
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.SET_WIDGET_ITEM_MODEL.getOpcode()) {
-                int zoom = incomingPacketBuffer.getUnsignedShortBE();
-                int itemId = incomingPacketBuffer.getUnsignedShortLE();
-                int widgetData = incomingPacketBuffer.getIntLE();
-                if(itemId == 65535) {
-                    itemId = -1;
-                }
-
-                GameInterface gameInterface = GameInterface.getInterface(widgetData);
-
-                if(gameInterface.isNewInterfaceFormat) {
-                    gameInterface.itemAmount = 1;
-                    gameInterface.itemId = itemId;
-                } else {
-                    if(itemId == -1) {
-                        opcode = -1;
-                        gameInterface.modelType = InterfaceModelType.NULL;
-                        return true;
-                    }
-                    ItemDefinition itemDefinition = ItemDefinition.forId(itemId, 10);
-                    gameInterface.rotationX = itemDefinition.xan2d;
-                    gameInterface.modelId = itemId;
-                    gameInterface.modelType = InterfaceModelType.ITEM;
-                    gameInterface.modelZoom = 100 * itemDefinition.zoom2d / zoom;
-                    gameInterface.rotationZ = itemDefinition.yan2d;
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.RESET_ACTOR_ANIMATIONS.getOpcode()) {
                 for(int playerIdx = 0; playerIdx < Player.trackedPlayers.length; playerIdx++) {
                     if(Player.trackedPlayers[playerIdx] != null)
@@ -760,30 +408,6 @@ public class IncomingPackets {
                     if(Player.npcs[npcIdx] != null)
                         Player.npcs[npcIdx].playingAnimation = -1;
                 }
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.SET_TAB_WIDGET.getOpcode()) {
-                int interfaceId = incomingPacketBuffer.getUnsignedShortBE();
-                int tabIndex = incomingPacketBuffer.getUnsignedByte();
-                if(interfaceId == 65535)
-                    interfaceId = -1;
-                if(interfaceId != Player.tabWidgetIds[tabIndex]) {
-                    GameInterface.resetInterface(Player.tabWidgetIds[tabIndex]);
-                    Player.tabWidgetIds[tabIndex] = interfaceId;
-                }
-                GameInterface.drawTabIcons = true;
-                opcode = -1;
-                GameInterface.redrawTabArea = true;
-                return true;
-            }
-            if(opcode == PacketType.MOVE_WIDGET_CHILD.getOpcode()) {
-                int interfaceData = incomingPacketBuffer.getIntBE();
-                int x = incomingPacketBuffer.getShortLE();
-                int y = incomingPacketBuffer.getShortLE();
-                GameInterface gameInterface = GameInterface.getInterface(interfaceData);
-                gameInterface.currentX = gameInterface.originalX + y;
-                gameInterface.currentY = gameInterface.originalY + x;
                 opcode = -1;
                 return true;
             }
@@ -839,34 +463,11 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.UPDATE_WIDGET_TEXT_COLOR.getOpcode()) {
-                int i_113_ = incomingPacketBuffer.getUnsignedShortBE();
-                int i_114_ = incomingPacketBuffer.getIntLE();
-                int i_115_ = i_113_ >> 10 & 0x1f;
-                int i_116_ = 0x1f & i_113_ >> 5;
-                GameInterface gameInterface = GameInterface.getInterface(i_114_);
-                opcode = -1;
-                int i_117_ = i_113_ & 0x1f;
-                gameInterface.textColor = (i_116_ << 11) + (i_115_ << 19) + (i_117_ << 3);
-                return true;
-            }
             if(opcode == 211) { // update ignore list
                 MovedStatics.anInt1008 = incomingPacketSize / 8;
                 for(int i_118_ = 0; MovedStatics.anInt1008 > i_118_; i_118_++)
                     Player.ignores[i_118_] = incomingPacketBuffer.getLongBE();
                 opcode = -1;
-                return true;
-            }
-            if(opcode == 124) { // close chatbox widget
-                if(GameInterface.chatboxInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
-                    GameInterface.chatboxInterfaceId = -1;
-                }
-                ChatBox.redrawChatbox = true;
-                ChatBox.inputMessage = "";
-                ChatBox.inputType = 2;
-                opcode = -1;
-                ChatBox.messagePromptRaised = false;
                 return true;
             }
             MovedStatics.printException("T1 - " + opcode + "," + secondLastOpcode + "," + thirdLastOpcode + " - " + incomingPacketSize, null);

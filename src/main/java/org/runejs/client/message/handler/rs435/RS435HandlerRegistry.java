@@ -2,6 +2,11 @@ package org.runejs.client.message.handler.rs435;
 
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.handler.rs435.audio.*;
+import org.runejs.client.message.handler.rs435.widget.*;
+import org.runejs.client.message.handler.rs435.widget.input.*;
+import org.runejs.client.message.handler.rs435.widget.model.*;
+import org.runejs.client.message.handler.rs435.widget.text.*;
+import org.runejs.client.message.handler.rs435.widget.visibility.*;
 import org.runejs.client.message.handler.rs435.region.*;
 import org.runejs.client.message.inbound.audio.*;
 import org.runejs.client.message.handler.rs435.chat.*;
@@ -18,6 +23,11 @@ import org.runejs.client.message.inbound.console.*;
 import org.runejs.client.message.inbound.misc.*;
 import org.runejs.client.message.inbound.region.*;
 import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
+import org.runejs.client.message.inbound.widget.*;
+import org.runejs.client.message.inbound.widget.input.*;
+import org.runejs.client.message.inbound.widget.model.*;
+import org.runejs.client.message.inbound.widget.text.*;
+import org.runejs.client.message.inbound.widget.visibility.*;
 
 /**
  * A {@link MessageHandlerRegistry} for the RS revision 435 client.
@@ -52,6 +62,30 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(UpdateSkillMessage.class, new UpdateSkillMessageHandler());
         register(UpdatePlayersInboundMessage.class, new UpdatePlayersMessageHandler());
 
+        // widget
+        register(SetWidgetTextInboundMessage.class, new SetWidgetTextMessageHandler());
+        register(SetWidgetTextColorInboundMessage.class, new SetWidgetTextColorMessageHandler());
+        register(SetWidgetScrollPositionInboundMessage.class, new SetWidgetScrollPositionMessageHandler());
+        register(SetWidgetModelInboundMessage.class, new SetWidgetModelMessageHandler());
+        register(SetWidgetItemModelInboundMessage.class, new SetWidgetItemModelMessageHandler());
+        register(SetWidgetNPCChatheadModelInboundMessage.class, new SetWidgetNPCChatheadModelMessageHandler());
+        register(SetWidgetLocalPlayerChatheadModelInboundMessage.class, new SetWidgetLocalPlayerChatheadModelMessageHandler());
+        register(RotateWidgetModelInboundMessage.class, new RotateWidgetModelMessageHandler());
+        register(AnimateWidgetModelInboundMessage.class, new AnimateWidgetModelMessageHandler());
+        register(SetWidgetModelRotationSpeedInboundMessage.class, new SetWidgetModelRotationSpeedMessageHandler());
+        register(CloseAllWidgetsInboundMessage.class, new CloseAllWidgetsMessageHandler());
+        register(ShowTextInputWidgetInboundMessage.class, new ShowTextInputWidgetMessageHandler());
+        register(ShowScreenWidgetInboundMessage.class, new ShowScreenWidgetMessageHandler());
+        register(ShowFullScreenWidgetInboundMessage.class, new ShowFullScreenWidgetMessageHandler());
+        register(ShowChatboxWidgetInboundMessage.class, new ShowChatboxWidgetMessageHandler());
+        register(ShowWalkableScreenWidgetInboundMessage.class, new ShowWalkableScreenWidgetMessageHandler());
+        register(ReplaceTabWidgetInboundMessage.class, new ReplaceTabWidgetMessageHandler());
+        register(ShowTabAndScreenWidgetInboundMessage.class, new ShowTabAndScreenWidgetMessageHandler());
+        register(ShowTabWidgetInboundMessage.class, new ShowTabWidgetMessageHandler());
+        register(ShowNumberInputWidgetInboundMessage.class, new ShowNumberInputWidgetMessageHandler());
+        register(ShowPermanentChatboxWidgetInboundMessage.class, new ShowPermanentChatboxWidgetMessageHandler());
+        register(SetWidgetPositionInboundMessage.class, new SetWidgetPositionMessageHandler());
+        
         // region
         register(ClearChunkInboundMessage.class, new ClearChunkMessageHandler());
         register(LoadStandardRegionInboundMessage.class, new LoadStandardRegionMessageHandler());

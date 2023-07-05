@@ -18,6 +18,7 @@ public enum PacketType {
     PLAY_QUICK_SONG(40, 5),
     SET_MULTI_COMBAT(48, 1),
     PRIVATE_MESSAGE_RECEIVED(51, -1),
+    SHOW_WALKABLE_SCREEN_WIDGET(56, 2),
     FORCE_PRIVATE_MESSAGE(71, -1),
     CHATBOX_MESSAGE_RECEIVED(82, -1),
     CLEAR_MAP_CHUNK(64, 2),
@@ -28,11 +29,18 @@ public enum PacketType {
     UPDATE_PLAYERS(92, -2),
     UPDATE_WIDGET_TEXT(110, -2),
     SET_SYSTEM_UPDATE_TIME(116, 2),
+    SET_WIDGET_MODEL_ROTATION_SPEED(117, 8),
     SHOW_SCREEN_WIDGET(118, 2),
     SET_WIDGET_ITEM_MODEL(120, 8),
+    SHOW_TEXT_INPUT_WIDGET(124, 0),
     UPDATE_NPCS(128, -2),
     PLAY_SOUND(131, 5),
+    SHOW_NUMBER_INPUT_WIDGET(132, 0),
+    /**
+     * Set the widget to be displayed when a user selects a given tab.
+     */
     SET_TAB_WIDGET(140, 3),
+    ROTATE_WIDGET_MODEL(142, 10),
     FRIEND_LOGGED_IN(156, 10),
     SET_CHAT_MODES(196, 3),
     SET_WIDGET_NPC_HEAD(160, 6),
@@ -40,6 +48,7 @@ public enum PacketType {
     UPDATE_CARRY_WEIGHT(171, 2),
     CLOSE_ALL_WIDGETS(180, 0),
     LOGOUT(181, 0),
+    SET_WIDGET_SCROLL_POSITION(182, 6),
     SHOW_PERMANENT_CHATBOX_WIDGET(185, 2),
     SHOW_FULLSCREEN_INTERFACE(195, 4),
     SHOW_CHATBOX_WIDGET(208, 2),
@@ -48,6 +57,11 @@ public enum PacketType {
     PLAY_SONG(217, 2),
     UPDATE_WIDGET_TEXT_COLOR(231, 6),
     SET_MINIMAP_STATE(235, 1),
+    /**
+     * Display a widget over the tab area.
+     */
+    SHOW_TAB_WIDGET(237, 2),
+    SET_WIDGET_MODEL(250, 6),
     UPDATE_REFERENCE_POSITION(254, 2);
 
     /**

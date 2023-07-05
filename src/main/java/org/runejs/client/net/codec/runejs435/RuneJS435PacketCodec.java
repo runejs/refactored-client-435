@@ -8,18 +8,25 @@ import org.runejs.client.message.outbound.examine.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
 import org.runejs.client.message.outbound.useitem.*;
+import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.net.codec.runejs435.decoder.audio.*;
 import org.runejs.client.net.codec.runejs435.decoder.chat.*;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleCommandMessageDecoder;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleLogMessageDecoder;
 import org.runejs.client.net.codec.runejs435.decoder.misc.*;
 import org.runejs.client.net.codec.runejs435.decoder.region.*;
+import org.runejs.client.net.codec.runejs435.decoder.widget.*;
+import org.runejs.client.net.codec.runejs435.decoder.widget.input.*;
+import org.runejs.client.net.codec.runejs435.decoder.widget.model.*;
+import org.runejs.client.net.codec.runejs435.decoder.widget.text.*;
+import org.runejs.client.net.codec.runejs435.decoder.widget.visibility.*;
 import org.runejs.client.net.codec.runejs435.encoder.chat.*;
 import org.runejs.client.net.codec.runejs435.encoder.console.*;
 import org.runejs.client.net.codec.runejs435.encoder.examine.*;
 import org.runejs.client.net.codec.runejs435.encoder.interactions.*;
 import org.runejs.client.net.codec.runejs435.encoder.magic.*;
 import org.runejs.client.net.codec.runejs435.encoder.useitem.*;
+import org.runejs.client.net.codec.runejs435.encoder.widget.input.*;
 import org.runejs.client.net.codec.runejs435.decoder.updating.UpdatePlayersMessageDecoder;
 
 /**
@@ -65,11 +72,14 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(UseItemOnObjectOutboundMessage.class, new UseItemOnObjectMessageEncoder());
         register(UseItemOnWorldItemOutboundMessage.class, new UseItemOnWorldItemMessageEncoder());
         register(UseItemOnWidgetItemOutboundMessage.class, new UseItemOnWidgetItemMessageEncoder());
-
+        
         // examine
         register(ExamineItemOutboundMessage.class, new ExamineItemMessageEncoder());
         register(ExamineNPCOutboundMessage.class, new ExamineNPCMessageEncoder());
         register(ExamineObjectOutboundMessage.class, new ExamineObjectMessageEncoder());
+
+        // widget
+        register(SubmitChatboxWidgetNumericInputOutboundMessage.class, new SubmitChatboxWidgetNumericInputMessageEncoder());
     }
 
     private void registerDecoders() {
@@ -98,6 +108,30 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.UPDATE_RUN_ENERGY.getOpcode(), new UpdateRunEnergyMessageDecoder());
         register(PacketType.UPDATE_SKILL.getOpcode(), new UpdateSkillMessageDecoder());
         register(PacketType.UPDATE_PLAYERS.getOpcode(), new UpdatePlayersMessageDecoder());
+
+        // widget
+        register(PacketType.UPDATE_WIDGET_TEXT_COLOR.getOpcode(), new SetWidgetTextColorMessageDecoder());
+        register(PacketType.UPDATE_WIDGET_TEXT.getOpcode(), new SetWidgetTextMessageDecoder());
+        register(PacketType.SET_WIDGET_SCROLL_POSITION.getOpcode(), new SetWidgetScrollPositionMessageDecoder());
+        register(PacketType.SET_WIDGET_MODEL.getOpcode(), new SetWidgetModelMessageDecoder());
+        register(PacketType.SET_WIDGET_ITEM_MODEL.getOpcode(), new SetWidgetItemModelMessageDecoder());
+        register(PacketType.SET_WIDGET_NPC_HEAD.getOpcode(), new SetWidgetNPCChatheadModelMessageDecoder());
+        register(PacketType.SET_WIDGET_PLAYER_HEAD.getOpcode(), new SetWidgetLocalPlayerChatheadModelMessageDecoder());
+        register(PacketType.ROTATE_WIDGET_MODEL.getOpcode(), new RotateWidgetModelMessageDecoder());
+        register(PacketType.PLAY_WIDGET_ANIMATION.getOpcode(), new AnimateWidgetModelMessageDecoder());
+        register(PacketType.SET_WIDGET_MODEL_ROTATION_SPEED.getOpcode(), new SetWidgetModelRotationSpeedMessageDecoder());
+        register(PacketType.CLOSE_ALL_WIDGETS.getOpcode(), new CloseAllWidgetsMessageDecoder());
+        register(PacketType.SHOW_TEXT_INPUT_WIDGET.getOpcode(), new ShowTextInputWidgetMessageDecoder());
+        register(PacketType.SHOW_SCREEN_WIDGET.getOpcode(), new ShowScreenWidgetMessageDecoder());
+        register(PacketType.SHOW_FULLSCREEN_INTERFACE.getOpcode(), new ShowFullScreenWidgetMessageDecoder());
+        register(PacketType.SHOW_CHATBOX_WIDGET.getOpcode(), new ShowChatboxWidgetMessageDecoder());
+        register(PacketType.SHOW_WALKABLE_SCREEN_WIDGET.getOpcode(), new ShowWalkableScreenWidgetMessageDecoder());
+        register(PacketType.SET_TAB_WIDGET.getOpcode(), new ReplaceTabWidgetMessageDecoder());
+        register(PacketType.SHOW_TAB_WIDGET.getOpcode(), new ShowTabWidgetMessageDecoder());
+        register(PacketType.SHOW_TAB_AND_SCREEN_WIDGETS.getOpcode(), new ShowTabAndScreenWidgetMessageDecoder());
+        register(PacketType.SHOW_PERMANENT_CHATBOX_WIDGET.getOpcode(), new ShowPermanentChatboxWidgetMessageDecoder());
+        register(PacketType.SHOW_NUMBER_INPUT_WIDGET.getOpcode(), new ShowNumberInputWidgetMessageDecoder());
+        register(PacketType.MOVE_WIDGET_CHILD.getOpcode(), new SetWidgetPositionMessageDecoder());
 
         // region
         register(PacketType.CLEAR_MAP_CHUNK.getOpcode(), new ClearChunkMessageDecoder());
