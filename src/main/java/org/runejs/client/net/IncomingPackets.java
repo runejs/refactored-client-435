@@ -188,18 +188,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 88) {
-                Class51.anInt1205 = incomingPacketBuffer.getUnsignedByte();
-                if(Player.currentTabId == Class51.anInt1205) {
-                    if(Class51.anInt1205 != 3)
-                        Player.currentTabId = 3;
-                    else
-                        Player.currentTabId = 1;
-                    GameInterface.redrawTabArea = true;
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == 63) { // mass object/ground item update packet
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
