@@ -25,6 +25,7 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.handler.rs435.RS435HandlerRegistry;
+import org.runejs.client.message.outbound.widget.container.DragWidgetItemOutboundMessage;
 import org.runejs.client.net.*;
 import org.runejs.client.net.codec.MessagePacketCodec;
 import org.runejs.client.net.codec.runejs435.RuneJS435PacketCodec;
@@ -1460,11 +1461,13 @@ public class Main extends GameShell {
                                             }
                                         } else
                                             childInterface.swapItems(Class55.mouseInvInterfaceIndex, false, GroundItemTile.selectedInventorySlot);
-                                        SceneCluster.packetBuffer.putPacket(83);
-                                        SceneCluster.packetBuffer.putByte(moveItemInsertionMode);
-                                        SceneCluster.packetBuffer.putShortBE(GroundItemTile.selectedInventorySlot);
-                                        SceneCluster.packetBuffer.putShortLE(Class55.mouseInvInterfaceIndex);
-                                        SceneCluster.packetBuffer.putIntME2(MovedStatics.modifiedWidgetId);
+
+                                        OutgoingPackets.sendMessage(new DragWidgetItemOutboundMessage(
+                                            moveItemInsertionMode,
+                                            MovedStatics.modifiedWidgetId,
+                                            GroundItemTile.selectedInventorySlot,
+                                            Class55.mouseInvInterfaceIndex
+                                        ));
                                     }
                                 } else {
                                     if((ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend(ActorDefinition.menuActionRow - 1)) && ActorDefinition.menuActionRow > 2)

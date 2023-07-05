@@ -8,6 +8,8 @@ import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.io.Buffer;
+import org.runejs.client.message.outbound.widget.CloseWidgetsOutboundMessage;
+import org.runejs.client.message.outbound.widget.input.ClickPleaseWaitWidgetOutboundMessage;
 import org.runejs.client.node.Class40_Sub6;
 import org.runejs.client.scene.SceneCluster;
 
@@ -58,7 +60,8 @@ public class PacketBuffer extends Buffer {
 
 
     public static void closeAllWidgets() {
-        SceneCluster.packetBuffer.putPacket(176);
+        OutgoingPackets.sendMessage(new CloseWidgetsOutboundMessage());
+
         if(GameInterface.tabAreaInterfaceId != -1) {
             GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
             MovedStatics.lastContinueTextWidgetId = -1;
@@ -88,10 +91,17 @@ public class PacketBuffer extends Buffer {
         }
     }
 
-    public static void method517(int arg0, int arg1) {
-        SceneCluster.packetBuffer.putPacket(132);
-        SceneCluster.packetBuffer.putIntME2(arg1);
-        SceneCluster.packetBuffer.putShortLE(arg0);
+    public static void method517(int option, int interfaceData) {
+        int widgetId = (interfaceData >> 16) & 0xFFFF;
+        int childId = interfaceData & 0xFFFF;
+
+        OutgoingPackets.sendMessage(
+            new ClickPleaseWaitWidgetOutboundMessage(
+                widgetId,
+                childId,
+                option
+            )
+        );
     }
 
     public static RSString method521(boolean arg0, int arg2, int arg3) {

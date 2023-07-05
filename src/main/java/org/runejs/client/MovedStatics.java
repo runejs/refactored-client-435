@@ -1296,6 +1296,7 @@ public class MovedStatics {
 	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, ActionRowType.BUTTON_SET_VARP_VALUE.getId(), "");
 	                    }
 
+                        // "Please wait..." buttons
 	                    if(gameInterface.actionType == 6 && lastContinueTextWidgetId == -1 && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_) {
 	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 54, "");
 	                    }
