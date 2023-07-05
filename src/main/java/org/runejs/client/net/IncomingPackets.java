@@ -159,27 +159,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 174) { // clear widget item container?
-                int i_36_ = incomingPacketBuffer.getIntME1();
-                GameInterface gameInterface = GameInterface.getInterface(i_36_);
-                if(gameInterface.isNewInterfaceFormat) {
-                    GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[i_36_ >> 16];
-                    for(int i_37_ = 0; i_37_ < gameInterfaces.length; i_37_++) {
-                        GameInterface gameInterface_38_ = gameInterfaces[i_37_];
-                        if((0xffff & gameInterface.id) == (gameInterface_38_.parentId & 0xffff) && gameInterface_38_.anInt2736 > 0) {
-                            gameInterface_38_.itemId = -1;
-                            gameInterface_38_.itemAmount = 0;
-                        }
-                    }
-                } else {
-                    for(int i_39_ = 0; gameInterface.items.length > i_39_; i_39_++) {
-                        gameInterface.items[i_39_] = -1;
-                        gameInterface.items[i_39_] = 0;
-                    }
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == 130) {
                 MovedStatics.anInt854 = incomingPacketBuffer.getUnsignedShortLE();
                 opcode = -1;
