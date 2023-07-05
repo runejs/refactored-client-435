@@ -7,6 +7,7 @@ import org.runejs.client.message.outbound.console.*;
 import org.runejs.client.message.outbound.examine.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
+import org.runejs.client.message.outbound.misc.*;
 import org.runejs.client.message.outbound.useitem.*;
 import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.net.codec.runejs435.decoder.audio.*;
@@ -27,6 +28,7 @@ import org.runejs.client.net.codec.runejs435.encoder.console.*;
 import org.runejs.client.net.codec.runejs435.encoder.examine.*;
 import org.runejs.client.net.codec.runejs435.encoder.interactions.*;
 import org.runejs.client.net.codec.runejs435.encoder.magic.*;
+import org.runejs.client.net.codec.runejs435.encoder.misc.*;
 import org.runejs.client.net.codec.runejs435.encoder.useitem.*;
 import org.runejs.client.net.codec.runejs435.encoder.widget.input.*;
 
@@ -84,6 +86,9 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(SubmitChatboxWidgetNumericInputOutboundMessage.class, new SubmitChatboxWidgetNumericInputMessageEncoder());
         register(SubmitChatboxWidgetNameInputOutboundMessage.class, new SubmitChatboxWidgetNameInputMessageEncoder());
         register(SubmitReportAbuseOutboundMessage.class, new SubmitReportAbuseMessageEncoder());
+
+        // misc
+        register(ClickFlashingTabIconOutboundMessage.class, new ClickFlashingTabIconMessageEncoder());
     }
 
     private void registerDecoders() {
