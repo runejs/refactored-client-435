@@ -202,20 +202,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 14) { // reset client configs?
-                for(int varPlayerIndex = 0; VarPlayerDefinition.varPlayerDefinitionsSize > varPlayerIndex; varPlayerIndex++) {
-                    VarPlayerDefinition varPlayerDefinition = VarPlayerDefinition.getDefinition(varPlayerIndex);
-                    if(varPlayerDefinition.type == 0) {
-                        Buffer.anIntArray1984[varPlayerIndex] = 0;
-                        VarPlayerDefinition.varPlayers[varPlayerIndex] = 0;
-                    }
-                }
-                if(ChatBox.dialogueId != -1)
-                    ChatBox.redrawChatbox = true;
-                GameInterface.redrawTabArea = true;
-                opcode = -1;
-                return true;
-            }
             if(opcode == 186) {
                 Player.headIconDrawType = incomingPacketBuffer.getUnsignedByte();
                 if(Player.headIconDrawType == 1)
@@ -259,17 +245,6 @@ public class IncomingPackets {
                 for(int npcIdx = 0; Player.npcs.length > npcIdx; npcIdx++) {
                     if(Player.npcs[npcIdx] != null)
                         Player.npcs[npcIdx].playingAnimation = -1;
-                }
-                opcode = -1;
-                return true;
-            }
-            if(opcode == 72) { // reset varbits?
-                for(int varPlayerIndex = 0; varPlayerIndex < VarPlayerDefinition.varPlayers.length; varPlayerIndex++) {
-                    if(Buffer.anIntArray1984[varPlayerIndex] != VarPlayerDefinition.varPlayers[varPlayerIndex]) {
-                        VarPlayerDefinition.varPlayers[varPlayerIndex] = Buffer.anIntArray1984[varPlayerIndex];
-                        MovedStatics.handleVarPlayers(varPlayerIndex);
-                        GameInterface.redrawTabArea = true;
-                    }
                 }
                 opcode = -1;
                 return true;

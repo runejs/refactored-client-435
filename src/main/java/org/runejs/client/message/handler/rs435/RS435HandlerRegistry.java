@@ -41,6 +41,8 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         super();
 
         register(SetVarpValueInboundMessage.class, new SetVarpValueMessageHandler());
+        register(ResetVarpsInboundMessage.class, new ResetVarpsMessageHandler());
+        register(ResetVarbitsInboundMessage.class, new ResetVarbitsMessageHandler());
 
         register(ReceivePrivateMessageInboundMessage.class, new ReceivePrivateMessageHandler());
         register(ReceiveChatboxMessageInboundMessage.class, new ReceiveChatboxMessageHandler());
