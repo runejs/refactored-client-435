@@ -15,9 +15,8 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.message.outbound.chat.ChatCommandOutboundMessage;
+import org.runejs.client.message.outbound.chat.*;
 import org.runejs.client.message.outbound.widget.input.*;
-import org.runejs.client.message.outbound.chat.ModifySocialListOutboundMessage;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.node.NodeCache;
@@ -49,8 +48,6 @@ import org.runejs.client.util.SignlinkNode;
 import org.runejs.client.util.TextUtils;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.media.renderable.actor.*;
-import org.runejs.client.message.outbound.chat.SendChatMessageOutboundMessage;
-import org.runejs.client.message.outbound.chat.SendPrivateMessageOutboundMessage;
 import org.runejs.client.scene.tile.*;
 import org.runejs.Configuration;
 
@@ -1564,10 +1561,12 @@ public class MovedStatics {
 	                    if(ChatBox.privateChatMode == 2) {
 	                        ChatBox.privateChatMode = 1;
 	                        redrawChatbox = true;
-	                        SceneCluster.packetBuffer.putPacket(32);
-	                        SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
-	                        SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
-	                        SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
+
+                            OutgoingPackets.sendMessage(new SetChatOptionsOutboundMessage(
+                                ChatBox.publicChatMode,
+                                ChatBox.privateChatMode,
+                                ChatBox.tradeMode
+                            ));
 	                    }
 	                }
 	                if(Class37.anInt876 == 4 && anInt1008 < 100) {
@@ -1710,10 +1709,12 @@ public class MovedStatics {
 	                    if(ChatBox.publicChatMode == 2) {
 	                        redrawChatbox = true;
 	                        ChatBox.publicChatMode = 3;
-	                        SceneCluster.packetBuffer.putPacket(32);
-	                        SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
-	                        SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
-	                        SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
+
+                            OutgoingPackets.sendMessage(new SetChatOptionsOutboundMessage(
+                                ChatBox.publicChatMode,
+                                ChatBox.privateChatMode,
+                                ChatBox.tradeMode
+                            ));
 	                    }
 	                }
 	                ChatBox.redrawChatbox = true;

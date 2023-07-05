@@ -47,6 +47,7 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(SendChatMessageOutboundMessage.class, new SendChatMessageMessageEncoder());
         register(SendPrivateMessageOutboundMessage.class, new SendPrivateMessageMessageEncoder());
         register(ChatCommandOutboundMessage.class, new ChatCommandMessageEncoder());
+        register(SetChatOptionsOutboundMessage.class, new SetChatOptionsMessageEncoder());
         
         register(PlayerInteractionOutboundMessage.class, new PlayerInteractionMessageEncoder());
         register(NPCInteractionOutboundMessage.class, new NPCInteractionMessageEncoder());
