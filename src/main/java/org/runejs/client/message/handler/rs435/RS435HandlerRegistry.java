@@ -92,6 +92,7 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(ShowPermanentChatboxWidgetInboundMessage.class, new ShowPermanentChatboxWidgetMessageHandler());
         register(SetWidgetPositionInboundMessage.class, new SetWidgetPositionMessageHandler());
         register(SetReportAbuseWidgetInboundMessage.class, new SetReportAbuseWidgetMessageHandler());
+        register(SetWidgetHiddenInboundMessage.class, new SetWidgetHiddenMessageHandler());
 
         // widget container
         register(UpdateAllWidgetItemsInboundMessage.class, new UpdateAllWidgetItemsMessageHandler());

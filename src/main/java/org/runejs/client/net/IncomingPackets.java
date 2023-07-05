@@ -138,14 +138,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 115) { // set widget hidden state
-                boolean bool = incomingPacketBuffer.getUnsignedByte() == 1;
-                int i_10_ = incomingPacketBuffer.getIntLE();
-                GameInterface gameInterface = GameInterface.getInterface(i_10_);
-                gameInterface.isHidden = bool;
-                opcode = -1;
-                return true;
-            }
             if(opcode == 255) { // camera shake?
                 int i_23_ = incomingPacketBuffer.getUnsignedByte();
                 int i_24_ = incomingPacketBuffer.getUnsignedByte();
