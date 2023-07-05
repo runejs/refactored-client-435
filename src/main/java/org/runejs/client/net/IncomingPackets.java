@@ -356,13 +356,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 211) { // update ignore list
-                MovedStatics.anInt1008 = incomingPacketSize / 8;
-                for(int i_118_ = 0; MovedStatics.anInt1008 > i_118_; i_118_++)
-                    Player.ignores[i_118_] = incomingPacketBuffer.getLongBE();
-                opcode = -1;
-                return true;
-            }
             MovedStatics.printException("T1 - " + opcode + "," + secondLastOpcode + "," + thirdLastOpcode + " - " + incomingPacketSize, null);
             MovedStatics.logout();
         } catch(java.io.IOException ioexception) {
