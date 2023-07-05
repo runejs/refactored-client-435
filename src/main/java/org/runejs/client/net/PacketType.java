@@ -33,6 +33,9 @@ public enum PacketType {
     SHOW_TEXT_INPUT_WIDGET(124, 0),
     UPDATE_NPCS(128, -2),
     PLAY_SOUND(131, 5),
+    /**
+     * Set the widget to be displayed when a user selects a given tab.
+     */
     SET_TAB_WIDGET(140, 3),
     ROTATE_WIDGET_MODEL(142, 10),
     FRIEND_LOGGED_IN(156, 10),
@@ -50,6 +53,10 @@ public enum PacketType {
     UPDATE_SPECIFIC_WIDGET_ITEMS(214, -2),
     PLAY_SONG(217, 2),
     UPDATE_WIDGET_TEXT_COLOR(231, 6),
+    /**
+     * Display a widget over the tab area.
+     */
+    SHOW_TAB_WIDGET(237, 2),
     SET_WIDGET_MODEL(250, 6),
     UPDATE_REFERENCE_POSITION(254, 2);
 

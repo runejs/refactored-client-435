@@ -7,6 +7,8 @@ import org.runejs.client.message.InboundMessage;
  *
  * Note that this doesn't replace the entire tab area but rather it permanently sets
  * the contents of a given tab.
+ *
+ * If you want to overlay the tabarea with a widget, see {@link ShowTabWidgetInboundMessage}
  */
 public class ReplaceTabWidgetInboundMessage implements InboundMessage {
     /**

@@ -75,6 +75,7 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(ShowWalkableScreenWidgetInboundMessage.class, new ShowWalkableScreenWidgetMessageHandler());
         register(ReplaceTabWidgetInboundMessage.class, new ReplaceTabWidgetMessageHandler());
         register(ShowTabAndScreenWidgetInboundMessage.class, new ShowTabAndScreenWidgetMessageHandler());
+        register(ShowTabWidgetInboundMessage.class, new ShowTabWidgetMessageHandler());
         register(SetWidgetPositionInboundMessage.class, new SetWidgetPositionMessageHandler());
     }
 }
