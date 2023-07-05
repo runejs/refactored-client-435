@@ -92,6 +92,7 @@ public class Main extends GameShell {
      *   1 = Tab area (the widgets that display within the tab area),
      *   2 = Chat area (the chat itself, as well as all sorts of dialogues and anything that renders over the chat)
      *   3 = Permanent chat widget area (walkable chat widgets that replace the actual chat itself)
+     *   4 = ??? walkable widget?
      * @param minX The top right X of this widget's boundaries
      * @param minY The top right Y of this widget's boundaries
      * @param maxX The bottom right Y of this widget's boundaries
