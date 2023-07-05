@@ -14,6 +14,7 @@ import org.runejs.client.net.codec.runejs435.decoder.chat.*;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleCommandMessageDecoder;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleLogMessageDecoder;
 import org.runejs.client.net.codec.runejs435.decoder.misc.*;
+import org.runejs.client.net.codec.runejs435.decoder.region.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.input.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.model.*;
@@ -130,5 +131,11 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.SHOW_TAB_AND_SCREEN_WIDGETS.getOpcode(), new ShowTabAndScreenWidgetMessageDecoder());
         register(PacketType.SHOW_NUMBER_INPUT_WIDGET.getOpcode(), new ShowNumberInputWidgetMessageDecoder());
         register(PacketType.MOVE_WIDGET_CHILD.getOpcode(), new SetWidgetPositionMessageDecoder());
+
+        // region
+        register(PacketType.CLEAR_MAP_CHUNK.getOpcode(), new ClearChunkMessageDecoder());
+        register(PacketType.SET_MAP_CHUNK.getOpcode(), new LoadStandardRegionMessageDecoder());
+        register(PacketType.LOAD_CONSTRUCTED_MAP_REGION.getOpcode(), new LoadConstructedRegionMessageDecoder());
+        register(PacketType.UPDATE_REFERENCE_POSITION.getOpcode(), new UpdateReferencePositionMessageDecoder());
     }
 }

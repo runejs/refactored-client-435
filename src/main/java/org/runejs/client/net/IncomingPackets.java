@@ -124,11 +124,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 23) {
-                FloorDecoration.constructMapRegion(true);
-                opcode = -1;
-                return true;
-            }
             if(opcode == 222) {
                 int varPlayerValue = incomingPacketBuffer.getByte();
                 int varPlayerIndex = incomingPacketBuffer.getUnsignedShortBE();
@@ -255,24 +250,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.CLEAR_MAP_CHUNK.getOpcode()) {
-                OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
-                MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
-                for(int i_51_ = MovedStatics.placementX; i_51_ < 8 + MovedStatics.placementX; i_51_++) {
-                    for(int i_52_ = OverlayDefinition.placementY; 8 + OverlayDefinition.placementY > i_52_; i_52_++) {
-                        if(Wall.groundItems[Player.worldLevel][i_51_][i_52_] != null) {
-                            Wall.groundItems[Player.worldLevel][i_51_][i_52_] = null;
-                            FramemapDefinition.spawnGroundItem(i_52_, i_51_);
-                        }
-                    }
-                }
-                for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst()) {
-                    if(class40_sub3.anInt2039 >= MovedStatics.placementX && MovedStatics.placementX + 8 > class40_sub3.anInt2039 && class40_sub3.anInt2038 >= OverlayDefinition.placementY && OverlayDefinition.placementY + 8 > class40_sub3.anInt2038 && Player.worldLevel == class40_sub3.anInt2018)
-                        class40_sub3.anInt2031 = 0;
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == 223) { // set player options
                 String class1 = incomingPacketBuffer.getString();
                 int i_53_ = incomingPacketBuffer.getUnsignedByte();
@@ -310,12 +287,6 @@ public class IncomingPackets {
                 opcode = -1;
                 ChatBox.redrawChatbox = true;
                 MovedStatics.lastContinueTextWidgetId = -1;
-                return true;
-            }
-            if(opcode == PacketType.UPDATE_REFERENCE_POSITION.getOpcode()) {
-                OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
-                MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
-                opcode = -1;
                 return true;
             }
             if(opcode == 88) {
@@ -535,11 +506,6 @@ public class IncomingPackets {
                         gameInterface.itemAmounts[itemSlot] = i_110_;
                     }
                 }
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.SET_MAP_CHUNK.getOpcode()) {
-                FloorDecoration.constructMapRegion(false);
                 opcode = -1;
                 return true;
             }

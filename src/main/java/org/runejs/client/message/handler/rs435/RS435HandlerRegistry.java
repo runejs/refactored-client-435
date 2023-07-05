@@ -7,6 +7,7 @@ import org.runejs.client.message.handler.rs435.widget.input.*;
 import org.runejs.client.message.handler.rs435.widget.model.*;
 import org.runejs.client.message.handler.rs435.widget.text.*;
 import org.runejs.client.message.handler.rs435.widget.visibility.*;
+import org.runejs.client.message.handler.rs435.region.*;
 import org.runejs.client.message.inbound.audio.*;
 import org.runejs.client.message.handler.rs435.chat.*;
 import org.runejs.client.message.handler.rs435.console.*;
@@ -20,6 +21,7 @@ import org.runejs.client.message.inbound.audio.PlaySongInboundMessage;
 import org.runejs.client.message.inbound.audio.PlaySoundInboundMessage;
 import org.runejs.client.message.inbound.console.*;
 import org.runejs.client.message.inbound.misc.*;
+import org.runejs.client.message.inbound.region.*;
 import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
 import org.runejs.client.message.inbound.widget.*;
 import org.runejs.client.message.inbound.widget.input.*;
@@ -82,5 +84,11 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(ShowTabWidgetInboundMessage.class, new ShowTabWidgetMessageHandler());
         register(ShowNumberInputWidgetInboundMessage.class, new ShowNumberInputWidgetMessageHandler());
         register(SetWidgetPositionInboundMessage.class, new SetWidgetPositionMessageHandler());
+        
+        // region
+        register(ClearChunkInboundMessage.class, new ClearChunkMessageHandler());
+        register(LoadStandardRegionInboundMessage.class, new LoadStandardRegionMessageHandler());
+        register(LoadConstructedRegionInboundMessage.class, new LoadConstructedRegionMessageHandler());
+        register(UpdateReferencePositionInboundMessage.class, new UpdateReferencePositionMessageHandler());
     }
 }
