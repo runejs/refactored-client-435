@@ -146,62 +146,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.UPDATE_ALL_WIDGET_ITEMS.getOpcode()) {
-                GameInterface.redrawTabArea = true;
-                final int packed = incomingPacketBuffer.getIntBE();
-                final GameInterface gameInterface = GameInterface.getInterface(packed);
-
-                if(gameInterface.isNewInterfaceFormat) {
-                    final GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[packed >> 16];
-                    for(GameInterface child : gameInterfaces) {
-                        if((0xffff & gameInterface.id) == (0xffff & child.parentId) && child.anInt2736 > 0) {
-                            child.itemAmount = 0;
-                            child.itemId = -1;
-                        }
-                    }
-                } else {
-                    for(int index = 0; index < gameInterface.items.length; index++) {
-                        gameInterface.items[index] = 0;
-                        gameInterface.itemAmounts[index] = 0;
-                    }
-                }
-
-                final int size = incomingPacketBuffer.getUnsignedShortBE();
-
-                for(int index = 0; index < size; index += 8) {
-                    final int bitset = incomingPacketBuffer.getByte();
-
-                    for(int offset = 0; offset < 8; offset++) {
-                        final boolean empty = (bitset & 1 << offset) == 0;
-                        final int id, amount;
-
-                        if(empty) {
-                            id = amount = 0;
-                        } else {
-                            final int peek = incomingPacketBuffer.getUnsignedByte();
-                            amount = peek == 255 ? incomingPacketBuffer.getIntBE() : peek;
-                            id = incomingPacketBuffer.getUnsignedShortBE();
-                        }
-
-                        final int idx = index + offset;
-
-                        if(gameInterface.isNewInterfaceFormat) {
-                            GameInterface gameInterfaces[] = GameInterface.cachedInterfaces[packed >> 16];
-                            for(GameInterface child : gameInterfaces) {
-                                if((gameInterface.id & 0xffff) == (child.parentId & 0xffff) && 1 + idx == child.anInt2736) {
-                                    child.itemAmount = amount;
-                                    child.itemId = -1 + id;
-                                }
-                            }
-                        } else if(idx < gameInterface.items.length) {
-                            gameInterface.items[idx] = id;
-                            gameInterface.itemAmounts[idx] = amount;
-                        }
-                    }
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == 255) { // camera shake?
                 int i_23_ = incomingPacketBuffer.getUnsignedByte();
                 int i_24_ = incomingPacketBuffer.getUnsignedByte();

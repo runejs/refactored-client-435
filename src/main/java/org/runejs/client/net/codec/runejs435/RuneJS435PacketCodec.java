@@ -16,6 +16,7 @@ import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleLogMe
 import org.runejs.client.net.codec.runejs435.decoder.misc.*;
 import org.runejs.client.net.codec.runejs435.decoder.region.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.*;
+import org.runejs.client.net.codec.runejs435.decoder.widget.container.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.input.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.model.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.text.*;
@@ -132,6 +133,9 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.SHOW_PERMANENT_CHATBOX_WIDGET.getOpcode(), new ShowPermanentChatboxWidgetMessageDecoder());
         register(PacketType.SHOW_NUMBER_INPUT_WIDGET.getOpcode(), new ShowNumberInputWidgetMessageDecoder());
         register(PacketType.MOVE_WIDGET_CHILD.getOpcode(), new SetWidgetPositionMessageDecoder());
+
+        // widget container
+        register(PacketType.UPDATE_ALL_WIDGET_ITEMS.getOpcode(), new UpdateAllWidgetItemsMessageDecoder());
 
         // region
         register(PacketType.CLEAR_MAP_CHUNK.getOpcode(), new ClearChunkMessageDecoder());
