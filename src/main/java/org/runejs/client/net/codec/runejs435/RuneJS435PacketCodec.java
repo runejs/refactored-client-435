@@ -113,6 +113,7 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.SHOW_FULLSCREEN_INTERFACE.getOpcode(), new ShowFullScreenWidgetMessageDecoder());
         register(PacketType.SHOW_CHATBOX_WIDGET.getOpcode(), new ShowChatboxWidgetMessageDecoder());
         register(PacketType.SHOW_WALKABLE_SCREEN_WIDGET.getOpcode(), new ShowWalkableScreenWidgetMessageDecoder());
+        register(PacketType.SET_TAB_WIDGET.getOpcode(), new ReplaceTabWidgetMessageDecoder());
         register(PacketType.SHOW_TAB_AND_SCREEN_WIDGETS.getOpcode(), new ShowTabAndScreenWidgetMessageDecoder());
         register(PacketType.MOVE_WIDGET_CHILD.getOpcode(), new SetWidgetPositionMessageDecoder());
     }

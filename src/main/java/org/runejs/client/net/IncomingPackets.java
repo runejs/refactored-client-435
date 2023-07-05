@@ -520,20 +520,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.SET_TAB_WIDGET.getOpcode()) {
-                int interfaceId = incomingPacketBuffer.getUnsignedShortBE();
-                int tabIndex = incomingPacketBuffer.getUnsignedByte();
-                if(interfaceId == 65535)
-                    interfaceId = -1;
-                if(interfaceId != Player.tabWidgetIds[tabIndex]) {
-                    GameInterface.resetInterface(Player.tabWidgetIds[tabIndex]);
-                    Player.tabWidgetIds[tabIndex] = interfaceId;
-                }
-                GameInterface.drawTabIcons = true;
-                opcode = -1;
-                GameInterface.redrawTabArea = true;
-                return true;
-            }
             if(opcode == 72) { // reset varbits?
                 for(int varPlayerIndex = 0; varPlayerIndex < VarPlayerDefinition.varPlayers.length; varPlayerIndex++) {
                     if(Buffer.anIntArray1984[varPlayerIndex] != VarPlayerDefinition.varPlayers[varPlayerIndex]) {
