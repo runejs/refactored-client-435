@@ -10,7 +10,7 @@ import org.runejs.client.message.inbound.updating.movement.*;
 import org.runejs.client.message.inbound.updating.registration.*;
 import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
 import org.runejs.client.message.inbound.updating.movement.ActorGroupMovementUpdate.ActorMovementUpdate;
-import org.runejs.client.message.inbound.updating.registration.RegisterNewPlayersUpdate.RegisterNewPlayerUpdate;
+import org.runejs.client.message.inbound.updating.registration.ActorRegistration;
 
 /**
  * Applies the main "player updating" message to the game state.
@@ -179,9 +179,9 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
      * 
      * @param update The update information to apply
      */
-    private void handleRegisterNewPlayers(RegisterNewPlayersUpdate update) {
-        for (RegisterNewPlayerUpdate playerUpdate : update.players) {
-            int newPlayerIndex = playerUpdate.playerIndex;
+    private void handleRegisterNewPlayers(ActorGroupRegistrationUpdate<ActorRegistration> update) {
+        for (ActorRegistration playerUpdate : update.players) {
+            int newPlayerIndex = playerUpdate.index;
             if(newPlayerIndex == 2047)
                 break;
 

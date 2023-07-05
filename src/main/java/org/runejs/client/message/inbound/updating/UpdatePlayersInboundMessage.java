@@ -3,7 +3,8 @@ package org.runejs.client.message.inbound.updating;
 import org.runejs.client.message.InboundMessage;
 import org.runejs.client.message.inbound.updating.movement.ActorGroupMovementUpdate;
 import org.runejs.client.message.inbound.updating.movement.LocalPlayerMovementUpdate;
-import org.runejs.client.message.inbound.updating.registration.RegisterNewPlayersUpdate;
+import org.runejs.client.message.inbound.updating.registration.ActorGroupRegistrationUpdate;
+import org.runejs.client.message.inbound.updating.registration.ActorRegistration;
 import org.runejs.client.net.PacketBuffer;
 
 /**
@@ -23,7 +24,7 @@ public class UpdatePlayersInboundMessage implements InboundMessage {
     /**
      * The new players to register.
      */
-    public final RegisterNewPlayersUpdate newPlayers;
+    public final ActorGroupRegistrationUpdate<ActorRegistration> newPlayers;
 
     /**
      * The appearance updates for the players.
@@ -33,7 +34,12 @@ public class UpdatePlayersInboundMessage implements InboundMessage {
      */
     public final PacketBuffer appearanceUpdates;
 
-    public UpdatePlayersInboundMessage(LocalPlayerMovementUpdate localPlayerMovement, ActorGroupMovementUpdate otherPlayersMovement, RegisterNewPlayersUpdate newPlayers, PacketBuffer appearanceUpdates) {
+    public UpdatePlayersInboundMessage(
+        LocalPlayerMovementUpdate localPlayerMovement,
+        ActorGroupMovementUpdate otherPlayersMovement,
+        ActorGroupRegistrationUpdate<ActorRegistration> newPlayers,
+        PacketBuffer appearanceUpdates
+    ) {
         this.localPlayerMovement = localPlayerMovement;
         this.otherPlayersMovement = otherPlayersMovement;
         this.newPlayers = newPlayers;

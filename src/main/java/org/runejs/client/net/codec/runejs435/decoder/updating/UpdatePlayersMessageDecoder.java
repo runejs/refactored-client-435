@@ -6,11 +6,11 @@ import java.util.List;
 import org.runejs.client.message.inbound.updating.movement.LocalPlayerMovementUpdate;
 import org.runejs.client.message.inbound.updating.movement.ActorGroupMovementUpdate;
 import org.runejs.client.message.inbound.updating.movement.MovementUpdate;
-import org.runejs.client.message.inbound.updating.registration.RegisterNewPlayersUpdate;
+import org.runejs.client.message.inbound.updating.registration.ActorGroupRegistrationUpdate;
 import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
 import org.runejs.client.message.inbound.updating.movement.LocalPlayerMovementUpdate.LocalPlayerMapRegionChangeUpdate;
 import org.runejs.client.message.inbound.updating.movement.ActorGroupMovementUpdate.ActorMovementUpdate;
-import org.runejs.client.message.inbound.updating.registration.RegisterNewPlayersUpdate.RegisterNewPlayerUpdate;
+import org.runejs.client.message.inbound.updating.registration.ActorRegistration;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.net.codec.MessageDecoder;
 
@@ -31,7 +31,7 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
         buffer.initBitAccess();
         LocalPlayerMovementUpdate localPlayerMovement = decodeLocalPlayerMovementUpdate(buffer);
         ActorGroupMovementUpdate otherPlayersMovement = decodeOtherPlayersMovementUpdate(buffer);
-        RegisterNewPlayersUpdate registerNewPlayers = decodeRegisterNewPlayersUpdate(buffer);
+        ActorGroupRegistrationUpdate<ActorRegistration> registerNewPlayers = decodeRegisterNewPlayersUpdate(buffer);
         buffer.finishBitAccess();
 
         // the remaining bytes in the buffer are the appearance update
@@ -165,13 +165,13 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
     }
 
     /**
-     * Decodes the registration details of new players into a {@link RegisterNewPlayersUpdate}.
+     * Decodes the registration details of new players into a {@link ActorGroupRegistrationUpdate}.
      * 
      * @param buffer The buffer.
      * @return The register new players update.
      */
-    private RegisterNewPlayersUpdate decodeRegisterNewPlayersUpdate(PacketBuffer buffer) {
-        List<RegisterNewPlayerUpdate> updates = new ArrayList<RegisterNewPlayerUpdate>();
+    private ActorGroupRegistrationUpdate<ActorRegistration> decodeRegisterNewPlayersUpdate(PacketBuffer buffer) {
+        List<ActorRegistration> updates = new ArrayList<ActorRegistration>();
 
         while (buffer.getRemainingBits(buffer.getSize()) >= 11) {
             int newPlayerIndex = buffer.getBits(11);
@@ -189,11 +189,11 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
             boolean updateRequired = buffer.getBits(1) == 1;
             boolean discardWalkingQueue = buffer.getBits(1) == 1;
 
-            updates.add(new RegisterNewPlayerUpdate(newPlayerIndex, offsetX, offsetY, initialFaceDirection,
+            updates.add(new ActorRegistration(newPlayerIndex, offsetX, offsetY, initialFaceDirection,
                     updateRequired, discardWalkingQueue));
         }
 
-        return new RegisterNewPlayersUpdate(updates.toArray(new RegisterNewPlayerUpdate[updates.size()]));
+        return new ActorGroupRegistrationUpdate<ActorRegistration>(updates.toArray(new ActorRegistration[updates.size()]));
     }
 
     /**
