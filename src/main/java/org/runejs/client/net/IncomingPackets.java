@@ -173,19 +173,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 223) { // set player options
-                String class1 = incomingPacketBuffer.getString();
-                int i_53_ = incomingPacketBuffer.getUnsignedByte();
-                int i_54_ = incomingPacketBuffer.getUnsignedByte();
-                if(i_54_ >= 1 && i_54_ <= 5) {
-                    if(class1.equalsIgnoreCase("null"))
-                        class1 = null;
-                    Main.playerActions[i_54_ - 1] = class1;
-                    Class13.playerArray[i_54_ - 1] = i_53_ == 0;
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == 253) {
                 Player.cutsceneActive = true;
                 MovedStatics.anInt545 = incomingPacketBuffer.getUnsignedByte();

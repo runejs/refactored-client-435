@@ -60,6 +60,7 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(SetMinimapStateInboundMessage.class, new SetMinimapStateMessageHandler());
         register(SetMultiCombatStateInboundMessage.class, new SetMultiCombatStateMessageHandler());
         register(SetSystemUpdateTimeInboundMessage.class, new SetSystemUpdateTimeMessageHandler());
+        register(UpdatePlayerOptionsInboundMessage.class, new UpdatePlayerOptionsMessageHandler());
 
         register(UpdateCarryWeightMessage.class, new UpdateCarryWeightMessageHandler());
         register(UpdateRunEnergyMessage.class, new UpdateRunEnergyMessageHandler());

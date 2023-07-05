@@ -108,6 +108,7 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.UPDATE_CARRY_WEIGHT.getOpcode(), new UpdateCarryWeightMessageDecoder());
         register(PacketType.UPDATE_RUN_ENERGY.getOpcode(), new UpdateRunEnergyMessageDecoder());
         register(PacketType.UPDATE_SKILL.getOpcode(), new UpdateSkillMessageDecoder());
+        register(PacketType.UPDATE_PLAYER_OPTIONS.getOpcode(), new UpdatePlayerOptionsMessageDecoder());
         register(PacketType.UPDATE_PLAYERS.getOpcode(), new UpdatePlayersMessageDecoder());
 
         // widget
