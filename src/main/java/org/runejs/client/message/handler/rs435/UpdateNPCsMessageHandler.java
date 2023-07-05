@@ -24,7 +24,7 @@ public class UpdateNPCsMessageHandler implements MessageHandler<UpdateNPCsInboun
         handleTrackedMovement(message.trackedNPCMovement);
         handleRegisterNewNPCs(message.newNPCs);
 
-        // TODO NPC appearance
+        Npc.parseNpcUpdateMasks(message.appearanceUpdates);
 
         for(int i = 0; i < Class17.deregisterActorCount; i++) {
             int trackedNpcIndex = Player.deregisterActorIndices[i];

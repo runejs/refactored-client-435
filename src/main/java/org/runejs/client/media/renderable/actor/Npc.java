@@ -6,6 +6,7 @@ import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.def.SpotAnimDefinition;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.IncomingPackets;
+import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
 
@@ -17,22 +18,22 @@ public class Npc extends Actor {
     public ActorDefinition actorDefinition;
 
 
-    public static void parseNpcUpdateMasks() {
+    public static void parseNpcUpdateMasks(PacketBuffer buffer) {
         for(int i = 0; i < actorUpdatingIndex; i++) {
             int npcIndex = Player.actorUpdatingIndices[i];
             Npc npc = Player.npcs[npcIndex];
-            int mask = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            int mask = buffer.getUnsignedByte();
             if((0x1 & mask) != 0) {
-                int i_3_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-                int i_4_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+                int i_3_ = buffer.getUnsignedByte();
+                int i_4_ = buffer.getUnsignedByte();
                 npc.method785(i_4_, MovedStatics.pulseCycle, i_3_);
                 npc.anInt3139 = MovedStatics.pulseCycle + 300;
-                npc.remainingHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-                npc.maximumHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+                npc.remainingHitpoints = buffer.getUnsignedByte();
+                npc.maximumHitpoints = buffer.getUnsignedByte();
             }
             if((0x20 & mask) != 0) {
-                npc.graphicId = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
-                int i_5_ = IncomingPackets.incomingPacketBuffer.getIntBE();
+                npc.graphicId = buffer.getUnsignedShortLE();
+                int i_5_ = buffer.getIntBE();
                 npc.anInt3129 = 0;
                 npc.graphicDelay = MovedStatics.pulseCycle + (0xffff & i_5_);
                 npc.graphicHeight = i_5_ >> 16;
@@ -43,24 +44,24 @@ public class Npc extends Actor {
                     npc.graphicId = -1;
             }
             if((mask & 0x4) != 0) {
-                npc.facingActorIndex = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+                npc.facingActorIndex = buffer.getUnsignedShortBE();
                 if(npc.facingActorIndex == 65535)
                     npc.facingActorIndex = -1;
             }
             if((0x2 & mask) != 0) {
-                int i_6_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-                int i_7_ = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+                int i_6_ = buffer.getUnsignedByte();
+                int i_7_ = buffer.getUnsignedByte();
                 npc.method785(i_7_, MovedStatics.pulseCycle, i_6_);
                 npc.anInt3139 = MovedStatics.pulseCycle + 300;
-                npc.remainingHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-                npc.maximumHitpoints = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+                npc.remainingHitpoints = buffer.getUnsignedByte();
+                npc.maximumHitpoints = buffer.getUnsignedByte();
             }
             if((0x40 & mask) != 0) {
-                npc.forcedChatMessage = IncomingPackets.incomingPacketBuffer.getString();
+                npc.forcedChatMessage = buffer.getString();
                 npc.anInt3078 = 100;
             }
             if((mask & 0x80) != 0) {
-                npc.actorDefinition = ActorDefinition.getDefinition(IncomingPackets.incomingPacketBuffer.getUnsignedShortBE());
+                npc.actorDefinition = ActorDefinition.getDefinition(buffer.getUnsignedShortBE());
                 npc.anInt3083 = npc.actorDefinition.rotateRightAnimation;
                 npc.anInt3113 = npc.actorDefinition.degreesToTurn;
                 npc.turnRightAnimationId = npc.actorDefinition.rotate90RightAnimation;
@@ -72,14 +73,14 @@ public class Npc extends Actor {
                 npc.turnAroundAnimationId = npc.actorDefinition.rotate180Animation;
             }
             if((mask & 0x8) != 0) {
-                npc.facePositionX = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
-                npc.facePositionY = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
+                npc.facePositionX = buffer.getUnsignedShortBE();
+                npc.facePositionY = buffer.getUnsignedShortLE();
             }
             if((0x10 & mask) != 0) {
-                int animationId = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+                int animationId = buffer.getUnsignedShortBE();
                 if(animationId == 65535)
                     animationId = -1;
-                int animationDelay = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+                int animationDelay = buffer.getUnsignedByte();
                 if(animationId == npc.playingAnimation && animationId != -1) {
                     int i_10_ = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).replyMode;
                     if(i_10_ == 1) {
