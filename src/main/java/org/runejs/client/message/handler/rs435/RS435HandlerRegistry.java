@@ -44,6 +44,8 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(FriendChangedWorldInboundMessage.class, new FriendChangedWorldMessageHandler());
         register(SetChatModesInboundMessage.class, new SetChatModesMessageHandler());
         register(SetFriendsListStatusInboundMessage.class, new SetFriendsListStatusMessageHandler());
+        register(UpdateIgnoreListInboundMessage.class, new UpdateIgnoreListMessageHandler());
+
         register(PlaySongInboundMessage.class, new PlaySongMessageHandler());
         register(PlayQuickSongInboundMessage.class, new PlayQuickSongMessageHandler());
         register(PlaySoundInboundMessage.class, new PlaySoundMessageHandler());
@@ -58,6 +60,8 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(SetMinimapStateInboundMessage.class, new SetMinimapStateMessageHandler());
         register(SetMultiCombatStateInboundMessage.class, new SetMultiCombatStateMessageHandler());
         register(SetSystemUpdateTimeInboundMessage.class, new SetSystemUpdateTimeMessageHandler());
+        register(UpdatePlayerOptionsInboundMessage.class, new UpdatePlayerOptionsMessageHandler());
+        register(FlashTabIconInboundMessage.class, new FlashTabIconMessageHandler());
 
         register(UpdateCarryWeightMessage.class, new UpdateCarryWeightMessageHandler());
         register(UpdateRunEnergyMessage.class, new UpdateRunEnergyMessageHandler());

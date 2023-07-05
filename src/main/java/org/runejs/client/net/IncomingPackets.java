@@ -173,19 +173,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 223) { // set player options
-                String class1 = incomingPacketBuffer.getString();
-                int i_53_ = incomingPacketBuffer.getUnsignedByte();
-                int i_54_ = incomingPacketBuffer.getUnsignedByte();
-                if(i_54_ >= 1 && i_54_ <= 5) {
-                    if(class1.equalsIgnoreCase("null"))
-                        class1 = null;
-                    Main.playerActions[i_54_ - 1] = class1;
-                    Class13.playerArray[i_54_ - 1] = i_53_ == 0;
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == 253) {
                 Player.cutsceneActive = true;
                 MovedStatics.anInt545 = incomingPacketBuffer.getUnsignedByte();
@@ -197,18 +184,6 @@ public class IncomingPackets {
                     MovedStatics.cameraY = 64 + SceneCluster.anInt767 * 128;
                     Class12.cameraX = MovedStatics.anInt545 * 128 + 64;
                     SceneCluster.cameraZ = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, MovedStatics.cameraY) - MovedStatics.anInt194;
-                }
-                opcode = -1;
-                return true;
-            }
-            if(opcode == 88) {
-                Class51.anInt1205 = incomingPacketBuffer.getUnsignedByte();
-                if(Player.currentTabId == Class51.anInt1205) {
-                    if(Class51.anInt1205 != 3)
-                        Player.currentTabId = 3;
-                    else
-                        Player.currentTabId = 1;
-                    GameInterface.redrawTabArea = true;
                 }
                 opcode = -1;
                 return true;
@@ -353,13 +328,6 @@ public class IncomingPackets {
             if(opcode == 58) {
                 int i_106_ = incomingPacketBuffer.getIntME2();
                 Class12.aSignlinkNode_394 = Main.signlink.createExceptionNode(i_106_); // TODO this just ends up throwing an exception? wot
-                opcode = -1;
-                return true;
-            }
-            if(opcode == 211) { // update ignore list
-                MovedStatics.anInt1008 = incomingPacketSize / 8;
-                for(int i_118_ = 0; MovedStatics.anInt1008 > i_118_; i_118_++)
-                    Player.ignores[i_118_] = incomingPacketBuffer.getLongBE();
                 opcode = -1;
                 return true;
             }
