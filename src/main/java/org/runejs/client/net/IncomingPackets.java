@@ -461,18 +461,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 132) { // open chatbox input widget
-                if(GameInterface.chatboxInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
-                    GameInterface.chatboxInterfaceId = -1;
-                }
-                opcode = -1;
-                ChatBox.inputMessage = "";
-                ChatBox.inputType = 1; // number?
-                ChatBox.redrawChatbox = true;
-                ChatBox.messagePromptRaised = false;
-                return true;
-            }
             if(opcode == 186) {
                 Player.headIconDrawType = incomingPacketBuffer.getUnsignedByte();
                 if(Player.headIconDrawType == 1)

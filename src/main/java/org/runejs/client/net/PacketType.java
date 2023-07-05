@@ -33,6 +33,7 @@ public enum PacketType {
     SHOW_TEXT_INPUT_WIDGET(124, 0),
     UPDATE_NPCS(128, -2),
     PLAY_SOUND(131, 5),
+    SHOW_NUMBER_INPUT_WIDGET(132, 0),
     /**
      * Set the widget to be displayed when a user selects a given tab.
      */
