@@ -13,6 +13,7 @@ import org.runejs.client.message.outbound.widget.container.*;
 import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.net.codec.runejs435.decoder.audio.*;
 import org.runejs.client.net.codec.runejs435.decoder.chat.*;
+import org.runejs.client.net.codec.runejs435.decoder.config.*;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleCommandMessageDecoder;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleLogMessageDecoder;
 import org.runejs.client.net.codec.runejs435.decoder.misc.*;
@@ -97,6 +98,11 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
     }
 
     private void registerDecoders() {
+        register(PacketType.SET_VARP_BYTE.getOpcode(), new SetVarpByteMessageDecoder());
+        register(PacketType.SET_VARP_INT.getOpcode(), new SetVarpIntMessageDecoder());
+        register(PacketType.RESET_VARPS.getOpcode(), new ResetVarpsMessageDecoder());
+        register(PacketType.RESET_VARBITS.getOpcode(), new ResetVarbitsMessageDecoder());
+
         register(PacketType.PRIVATE_MESSAGE_RECEIVED.getOpcode(), new ReceivePrivateMessageDecoder());
         register(PacketType.CHATBOX_MESSAGE_RECEIVED.getOpcode(), new ReceiveChatboxMessageDecoder());
         register(PacketType.FORCE_PRIVATE_MESSAGE.getOpcode(), new ForcedPrivateMessageDecoder());

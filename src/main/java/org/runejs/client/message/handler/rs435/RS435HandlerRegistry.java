@@ -2,6 +2,7 @@ package org.runejs.client.message.handler.rs435;
 
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.handler.rs435.audio.*;
+import org.runejs.client.message.handler.rs435.config.*;
 import org.runejs.client.message.handler.rs435.widget.*;
 import org.runejs.client.message.handler.rs435.widget.container.*;
 import org.runejs.client.message.handler.rs435.widget.input.*;
@@ -20,6 +21,7 @@ import org.runejs.client.message.handler.rs435.audio.PlaySoundMessageHandler;
 import org.runejs.client.message.inbound.audio.PlayQuickSongInboundMessage;
 import org.runejs.client.message.inbound.audio.PlaySongInboundMessage;
 import org.runejs.client.message.inbound.audio.PlaySoundInboundMessage;
+import org.runejs.client.message.inbound.config.*;
 import org.runejs.client.message.inbound.console.*;
 import org.runejs.client.message.inbound.misc.*;
 import org.runejs.client.message.inbound.region.*;
@@ -37,6 +39,10 @@ import org.runejs.client.message.inbound.widget.visibility.*;
 public class RS435HandlerRegistry extends MessageHandlerRegistry {
     public RS435HandlerRegistry() {
         super();
+
+        register(SetVarpValueInboundMessage.class, new SetVarpValueMessageHandler());
+        register(ResetVarpsInboundMessage.class, new ResetVarpsMessageHandler());
+        register(ResetVarbitsInboundMessage.class, new ResetVarbitsMessageHandler());
 
         register(ReceivePrivateMessageInboundMessage.class, new ReceivePrivateMessageHandler());
         register(ReceiveChatboxMessageInboundMessage.class, new ReceiveChatboxMessageHandler());
