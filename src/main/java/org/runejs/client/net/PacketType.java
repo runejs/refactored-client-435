@@ -6,10 +6,15 @@ package org.runejs.client.net;
  * @see IncomingPackets
  */
 public enum PacketType {
+    /**
+     * Sets a varp to an int
+     */
+    SET_VARP_INT(2, 5),
     MOVE_WIDGET_CHILD(3, 8),
     SET_CURRENT_TAB(6, 1),
     CLOSE_CUTSCENE(7, 0),
     UPDATE_ALL_WIDGET_ITEMS(12, -2),
+    RESET_VARBITS(14, 0),
     UPDATE_RUN_ENERGY(18, 1),
     LOAD_CONSTRUCTED_MAP_REGION(23, -2),
     PLAY_WIDGET_ANIMATION(24, 6),
@@ -23,6 +28,7 @@ public enum PacketType {
     CHATBOX_MESSAGE_RECEIVED(82, -1),
     CLEAR_MAP_CHUNK(64, 2),
     SET_FRIEND_LIST_STATUS(70, 1),
+    RESET_VARPS(72, 0),
     RECEIVE_CONSOLE_LOG(83, -1),
     SHOW_TAB_AND_SCREEN_WIDGETS(84, 4),
     RECEIVE_CONSOLE_COMMAND(85, -1),
@@ -45,6 +51,7 @@ public enum PacketType {
     SET_TAB_WIDGET(140, 3),
     ROTATE_WIDGET_MODEL(142, 10),
     FRIEND_LOGGED_IN(156, 10),
+    SET_HINT_ICON(186, 6),
     SET_CHAT_MODES(196, 3),
     SET_WIDGET_NPC_HEAD(160, 6),
     SET_MAP_CHUNK(166, -2),
@@ -60,6 +67,10 @@ public enum PacketType {
     UPDATE_IGNORE_LIST(211, -2),
     UPDATE_SPECIFIC_WIDGET_ITEMS(214, -2),
     PLAY_SONG(217, 2),
+    /**
+     * Sets a varp to a byte
+     */
+    SET_VARP_BYTE(222, 3),
     UPDATE_PLAYER_OPTIONS(223, -1),
     UPDATE_WIDGET_TEXT_COLOR(231, 6),
     SET_MINIMAP_STATE(235, 1),

@@ -22,10 +22,12 @@ import org.runejs.client.message.outbound.examine.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
 import org.runejs.client.message.outbound.useitem.*;
-import org.runejs.client.message.outbound.widget.input.SubmitReportAbuseOutboundMessage;
+import org.runejs.client.message.outbound.widget.container.DropWidgetItemOutboundMessage;
+import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
+import org.runejs.client.net.codec.runejs435.encoder.widget.input.ClickWidgetButtonMessageEncoder;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
@@ -728,8 +730,11 @@ public class GameInterface extends CachedNode {
                 }
             }
             if(action == ActionRowType.BUTTON_SET_VARP_VALUE.getId()) {
-                SceneCluster.packetBuffer.putPacket(64);
-                SceneCluster.packetBuffer.putIntBE(i_10_);
+                int widgetId = (i_10_ >> 16) & 0xFFFF;
+                int childId = i_10_ & 0xFFFF;
+
+                OutgoingPackets.sendMessage(new ClickWidgetButtonOutboundMessage(widgetId, childId));
+
                 GameInterface gameInterface = getInterface(i_10_);
                 if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
                     int i_16_ = gameInterface.clientScripts[0][1];
@@ -860,8 +865,10 @@ public class GameInterface extends CachedNode {
                     );
                 }
                 if(action == ActionRowType.BUTTON_TOGGLE_VARP.getId()) {
-                    SceneCluster.packetBuffer.putPacket(64);
-                    SceneCluster.packetBuffer.putIntBE(i_10_);
+                    int widgetId = (i_10_ >> 16) & 0xFFFF;
+                    int childId = i_10_ & 0xFFFF;
+
+                    OutgoingPackets.sendMessage(new ClickWidgetButtonOutboundMessage(widgetId, childId));
 
                     GameInterface gameInterface = getInterface(i_10_);
                     if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
@@ -1086,8 +1093,10 @@ public class GameInterface extends CachedNode {
                             bool = method166((byte) 88, gameInterface);
                         }
                         if(bool) {
-                            SceneCluster.packetBuffer.putPacket(64);
-                            SceneCluster.packetBuffer.putIntBE(i_10_);
+                            int widgetId = (i_10_ >> 16) & 0xFFFF;
+                            int childId = i_10_ & 0xFFFF;
+
+                            OutgoingPackets.sendMessage(new ClickWidgetButtonOutboundMessage(widgetId, childId));
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_3.getId()) {
@@ -1298,10 +1307,16 @@ public class GameInterface extends CachedNode {
                         GenericTile.anInt1233 = i;
                     }
                     if(action == ActionRowType.DROP_ITEM.getId()) {
-                        SceneCluster.packetBuffer.putPacket(29);
-                        SceneCluster.packetBuffer.putIntME1(i_10_);
-                        SceneCluster.packetBuffer.putShortBE(i);
-                        SceneCluster.packetBuffer.putShortLE(npcIdx);
+                        int widgetId = (i_10_ >> 16) & 0xFFFF;
+                        int containerId = i_10_ & 0xFFFF;
+
+                        OutgoingPackets.sendMessage(new DropWidgetItemOutboundMessage(
+                            widgetId,
+                            containerId,
+                            npcIdx,
+                            i
+                        ));
+
                         GenericTile.anInt1233 = i;
                         PlayerAppearance.anInt704 = i_10_;
                         Projectile.atInventoryInterfaceType = 2;
@@ -1715,8 +1730,8 @@ public class GameInterface extends CachedNode {
         if(i == 325)
             Player.activePlayerAppearance.setGender(true);
         if(i == 326) {
-            SceneCluster.packetBuffer.putPacket(231);
-            Player.activePlayerAppearance.sendAppearanceData(arg0 ^ 0x58, SceneCluster.packetBuffer);
+            OutgoingPackets.sendMessage(new SubmitAppearanceOutboundMessage(Player.activePlayerAppearance));
+
             return true;
         }
         if(i == 620)

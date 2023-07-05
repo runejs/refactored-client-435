@@ -31,7 +31,7 @@ public class PlayerAppearance {
     public static int[][] playerColours = {{6798, 107, 10283, 16, 4797, 7744, 5799, 4634, 33697, 22433, 2983, 54193}, {8741, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003, 25239}, {25238, 8742, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003}, {4626, 11146, 6439, 12, 4758, 10270}, {4550, 4537, 5681, 5673, 5790, 6806, 8076, 4574}};
     public static int[] playerSkinColors = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
 
-    public final int[] appearanceIndices = {8, 11, 4, 6, 9, 7, 10};
+    public static int[] APPEARANCE_INDICES = {8, 11, 4, 6, 9, 7, 10};
 
     public boolean gender;
     public int[] appearance;
@@ -77,7 +77,7 @@ public class PlayerAppearance {
     public void sendAppearanceData(int startIndex, Buffer buffer) {
         buffer.putByte(gender ? 1 : 0);
         for(int i = startIndex; i < 7; i++) {
-            int i_0_ = appearance[appearanceIndices[i]];
+            int i_0_ = appearance[APPEARANCE_INDICES[i]];
             if(i_0_ != 0)
                 buffer.putByte(-256 + i_0_);
             else
@@ -263,7 +263,7 @@ public class PlayerAppearance {
                 for(int identityKitIndex = 0; identityKitLength > identityKitIndex; identityKitIndex++) {
                     IdentityKit identityKit = IdentityKit.cache(identityKitIndex);
                     if(!identityKit.nonSelectable && identityKit.bodyPartId == appearanceIndex + (!gender ? 0 : 7)) {
-                        appearance[appearanceIndices[appearanceIndex]] = identityKitIndex + 256;
+                        appearance[APPEARANCE_INDICES[appearanceIndex]] = identityKitIndex + 256;
                         break;
                     }
                 }
@@ -280,7 +280,7 @@ public class PlayerAppearance {
 
     public void loadCachedAppearance(int unknown1, boolean unknown2) {
         if(unknown1 != 1 || !gender) {
-            int i = appearance[appearanceIndices[unknown1]];
+            int i = appearance[APPEARANCE_INDICES[unknown1]];
             if(i != 0) {
                 i -= 256;
                 IdentityKit identityKit;
@@ -293,7 +293,7 @@ public class PlayerAppearance {
                         i = -1 + identityKitLength;
                     identityKit = IdentityKit.cache(i);
                 } while(identityKit == null || identityKit.nonSelectable || identityKit.bodyPartId != unknown1 + (!gender ? 0 : 7));
-                appearance[appearanceIndices[unknown1]] = i + 256;
+                appearance[APPEARANCE_INDICES[unknown1]] = i + 256;
                 updateAppearanceCache();
             }
         }
