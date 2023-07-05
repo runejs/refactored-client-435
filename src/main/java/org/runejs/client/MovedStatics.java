@@ -16,6 +16,7 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.message.outbound.chat.ChatCommandOutboundMessage;
+import org.runejs.client.message.outbound.chat.ModifySocialListOutboundMessage;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.node.NodeCache;
@@ -670,8 +671,9 @@ public class MovedStatics {
                 anInt1008--;
                 for (int i_16_ = i; anInt1008 > i_16_; i_16_++)
                     Player.ignores[i_16_] = Player.ignores[1 + i_16_];
-                SceneCluster.packetBuffer.putPacket(28);
-                SceneCluster.packetBuffer.putLongBE(arg1);
+
+                OutgoingPackets.sendMessage(
+                    new ModifySocialListOutboundMessage(arg1, ModifySocialListOutboundMessage.SocialList.IGNORE, ModifySocialListOutboundMessage.SocialListAction.REMOVE));
                 break;
             }
         }
@@ -819,8 +821,9 @@ public class MovedStatics {
                     Player.friendWorlds[Player.friendsCount] = 0;
                     Player.friendsCount++;
                     GameInterface.redrawTabArea = true;
-                    SceneCluster.packetBuffer.putPacket(114);
-                    SceneCluster.packetBuffer.putLongBE(name);
+
+                    OutgoingPackets.sendMessage(
+                        new ModifySocialListOutboundMessage(name, ModifySocialListOutboundMessage.SocialList.FRIEND, ModifySocialListOutboundMessage.SocialListAction.ADD));
                 }
             }
         }
