@@ -25,6 +25,7 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.handler.rs435.RS435HandlerRegistry;
+import org.runejs.client.message.outbound.misc.ClickFlashingTabIconOutboundMessage;
 import org.runejs.client.message.outbound.widget.container.DragWidgetItemOutboundMessage;
 import org.runejs.client.net.*;
 import org.runejs.client.net.codec.MessagePacketCodec;
@@ -1027,8 +1028,7 @@ public class Main extends GameShell {
             if(GameInterface.drawTabIcons) {
                 if(Class51.anInt1205 != -1 && Class51.anInt1205 == Player.currentTabId) {
                     Class51.anInt1205 = -1;
-                    SceneCluster.packetBuffer.putPacket(44);
-                    SceneCluster.packetBuffer.putByte(Player.currentTabId);
+                    OutgoingPackets.sendMessage(new ClickFlashingTabIconOutboundMessage(Player.currentTabId));
                 }
                 GameInterface.drawTabIcons = false;
                 Class40_Sub3.showIconsRedrawnText = true;
@@ -1071,8 +1071,7 @@ public class Main extends GameShell {
             if(GameInterface.drawTabIcons) {
                 if(Class51.anInt1205 != -1 && Class51.anInt1205 == Player.currentTabId) {
                     Class51.anInt1205 = -1;
-                    SceneCluster.packetBuffer.putPacket(44);
-                    SceneCluster.packetBuffer.putByte(Player.currentTabId);
+                    OutgoingPackets.sendMessage(new ClickFlashingTabIconOutboundMessage(Player.currentTabId));
                 }
                 GameInterface.drawTabIcons = false;
                 Class40_Sub3.showIconsRedrawnText = true;
