@@ -22,6 +22,7 @@ import org.runejs.client.message.outbound.examine.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
 import org.runejs.client.message.outbound.useitem.*;
+import org.runejs.client.message.outbound.widget.input.SubmitReportAbuseOutboundMessage;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
@@ -1723,10 +1724,13 @@ public class GameInterface extends CachedNode {
         if(i >= 601 && i <= 613) {
             PacketBuffer.closeAllWidgets();
             if(Native.reportedName.length() > 0) {
-                SceneCluster.packetBuffer.putPacket(202);
-                SceneCluster.packetBuffer.putLongBE(TextUtils.nameToLong(Native.reportedName));
-                SceneCluster.packetBuffer.putByte(-601 + i);
-                SceneCluster.packetBuffer.putByte(MovedStatics.reportMutePlayer ? 1 : 0);
+                OutgoingPackets.sendMessage(
+                    new SubmitReportAbuseOutboundMessage(
+                        TextUtils.nameToLong(Native.reportedName),
+                        i - 601,
+                        MovedStatics.reportMutePlayer
+                    )
+                );
             }
         }
         return false;

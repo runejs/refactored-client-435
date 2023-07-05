@@ -81,6 +81,8 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
 
         // widget
         register(SubmitChatboxWidgetNumericInputOutboundMessage.class, new SubmitChatboxWidgetNumericInputMessageEncoder());
+        register(SubmitChatboxWidgetNameInputOutboundMessage.class, new SubmitChatboxWidgetNameInputMessageEncoder());
+        register(SubmitReportAbuseOutboundMessage.class, new SubmitReportAbuseMessageEncoder());
     }
 
     private void registerDecoders() {
@@ -138,6 +140,8 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.SHOW_PERMANENT_CHATBOX_WIDGET.getOpcode(), new ShowPermanentChatboxWidgetMessageDecoder());
         register(PacketType.SHOW_NUMBER_INPUT_WIDGET.getOpcode(), new ShowNumberInputWidgetMessageDecoder());
         register(PacketType.MOVE_WIDGET_CHILD.getOpcode(), new SetWidgetPositionMessageDecoder());
+        register(PacketType.SET_REPORT_ABUSE_WIDGET.getOpcode(), new SetReportAbuseWidgetMessageDecoder());
+        register(PacketType.SET_WIDGET_HIDDEN.getOpcode(), new SetWidgetHiddenMessageDecoder());
 
         // widget container
         register(PacketType.UPDATE_ALL_WIDGET_ITEMS.getOpcode(), new UpdateAllWidgetItemsMessageDecoder());
