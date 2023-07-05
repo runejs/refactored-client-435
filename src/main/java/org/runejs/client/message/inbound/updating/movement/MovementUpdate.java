@@ -1,11 +1,11 @@
-package org.runejs.client.message.inbound.updating;
+package org.runejs.client.message.inbound.updating.movement;
 
 /**
- * The standard movement update for a player.
+ * The standard movement update for a player or NPC.
  * 
- * Used when the player is walking or running (movement types 1 and 2)
+ * Used when the actor is walking or running (movement types 1 and 2)
  */
-public class PlayerMovementUpdate {
+public class MovementUpdate {
     /**
      * The walk direction.
      */
@@ -14,7 +14,7 @@ public class PlayerMovementUpdate {
     /**
      * The run direction.
      * 
-     * This is an Integer because it can be null if the player is not running.
+     * This is an Integer because it can be null if the actor is not running.
      */
     public final Integer runDirection;
 
@@ -23,7 +23,7 @@ public class PlayerMovementUpdate {
      */
     public final boolean runUpdateBlock;
 
-    public PlayerMovementUpdate(int walkDirection, Integer runDirection, boolean runUpdateBlock) {
+    public MovementUpdate(int walkDirection, Integer runDirection, boolean runUpdateBlock) {
         this.walkDirection = walkDirection;
         this.runDirection = runDirection;
         this.runUpdateBlock = runUpdateBlock;

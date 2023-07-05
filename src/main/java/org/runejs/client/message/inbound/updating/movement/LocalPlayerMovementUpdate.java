@@ -1,4 +1,4 @@
-package org.runejs.client.message.inbound.updating;
+package org.runejs.client.message.inbound.updating.movement;
 
 /**
  * The update message containing the local player's movement.
@@ -49,7 +49,7 @@ public class LocalPlayerMovementUpdate {
      * 
      * This will be null if the player is not moving.
      */
-    public final PlayerMovementUpdate movementUpdate;
+    public final MovementUpdate movementUpdate;
 
     /**
      * The local player map region change update.
@@ -58,7 +58,7 @@ public class LocalPlayerMovementUpdate {
      */
     public final LocalPlayerMapRegionChangeUpdate mapRegionUpdate;
 
-    public LocalPlayerMovementUpdate(PlayerMovementUpdate movementUpdate, LocalPlayerMapRegionChangeUpdate mapRegionUpdate) {
+    public LocalPlayerMovementUpdate(MovementUpdate movementUpdate, LocalPlayerMapRegionChangeUpdate mapRegionUpdate) {
         if (movementUpdate != null && mapRegionUpdate != null)
             throw new IllegalArgumentException("Cannot have both a local player movement update and a local player map region change update.");
 
