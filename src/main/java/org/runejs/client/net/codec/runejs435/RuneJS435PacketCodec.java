@@ -15,6 +15,7 @@ import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleComma
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleLogMessageDecoder;
 import org.runejs.client.net.codec.runejs435.decoder.misc.*;
 import org.runejs.client.net.codec.runejs435.decoder.region.*;
+import org.runejs.client.net.codec.runejs435.decoder.updating.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.container.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.input.*;
@@ -28,7 +29,6 @@ import org.runejs.client.net.codec.runejs435.encoder.interactions.*;
 import org.runejs.client.net.codec.runejs435.encoder.magic.*;
 import org.runejs.client.net.codec.runejs435.encoder.useitem.*;
 import org.runejs.client.net.codec.runejs435.encoder.widget.input.*;
-import org.runejs.client.net.codec.runejs435.decoder.updating.UpdatePlayersMessageDecoder;
 
 /**
  * A {@link MessagePacketCodec} for the RuneJS customised 435 protocol.
@@ -110,6 +110,9 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.UPDATE_RUN_ENERGY.getOpcode(), new UpdateRunEnergyMessageDecoder());
         register(PacketType.UPDATE_SKILL.getOpcode(), new UpdateSkillMessageDecoder());
         register(PacketType.UPDATE_PLAYER_OPTIONS.getOpcode(), new UpdatePlayerOptionsMessageDecoder());
+
+        // player/npc updating
+        register(PacketType.UPDATE_NPCS.getOpcode(), new UpdateNPCsMessageDecoder());
         register(PacketType.UPDATE_PLAYERS.getOpcode(), new UpdatePlayersMessageDecoder());
 
         // widget
