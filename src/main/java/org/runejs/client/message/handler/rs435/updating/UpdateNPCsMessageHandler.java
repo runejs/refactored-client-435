@@ -1,4 +1,4 @@
-package org.runejs.client.message.handler.rs435;
+package org.runejs.client.message.handler.rs435.updating;
 
 import org.runejs.client.Class17;
 import org.runejs.client.MovedStatics;
