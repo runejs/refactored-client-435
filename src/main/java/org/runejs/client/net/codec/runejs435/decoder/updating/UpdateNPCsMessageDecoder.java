@@ -14,8 +14,10 @@ import java.util.List;
 public class UpdateNPCsMessageDecoder implements MessageDecoder<UpdateNPCsInboundMessage> {
     @Override
     public UpdateNPCsInboundMessage decode(PacketBuffer buffer) {
+        buffer.initBitAccess();
         ActorGroupMovementUpdate trackedMovement = decodeTrackedMovement(buffer);
         ActorGroupRegistrationUpdate<NPCRegistration> newNPCs = decodeRegistration(buffer);
+        buffer.finishBitAccess();
 
         // the remaining bytes in the buffer are the appearance update
         PacketBuffer appearanceUpdate = UpdateDecoderHelpers.decodeRemainingBytes(buffer);
