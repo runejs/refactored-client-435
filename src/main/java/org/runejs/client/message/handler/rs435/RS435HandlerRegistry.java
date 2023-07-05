@@ -50,7 +50,11 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
 
         // misc
         register(LogoutMessage.class, new LogoutMessageHandler());
-      
+        register(SetCurrentTabInboundMessage.class, new SetCurrentTabMessageHandler());
+        register(SetMinimapStateInboundMessage.class, new SetMinimapStateMessageHandler());
+        register(SetMultiCombatStateInboundMessage.class, new SetMultiCombatStateMessageHandler());
+        register(SetSystemUpdateTimeInboundMessage.class, new SetSystemUpdateTimeMessageHandler());
+
         register(UpdateCarryWeightMessage.class, new UpdateCarryWeightMessageHandler());
         register(UpdateRunEnergyMessage.class, new UpdateRunEnergyMessageHandler());
         register(UpdateSkillMessage.class, new UpdateSkillMessageHandler());

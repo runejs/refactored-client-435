@@ -18,6 +18,7 @@ import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.outbound.chat.AcceptRequestOutboundMessage;
+import org.runejs.client.message.outbound.examine.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
 import org.runejs.client.message.outbound.useitem.*;
@@ -597,8 +598,10 @@ public class GameInterface extends CachedNode {
                 ClientScriptRunner.crossX = Class57.clickX;
                 LinkedList.crossType = 2;
                 OverlayDefinition.crossIndex = 0;
-                SceneCluster.packetBuffer.putPacket(148);
-                SceneCluster.packetBuffer.putShortLE(npcIdx >> 14 & 0x7fff);
+
+                int objectId = npcIdx >> 14 & 0x7fff;
+
+                OutgoingPackets.sendMessage(new ExamineObjectOutboundMessage(objectId));
             }
             if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_4.getId()) {
                 AnimationSequence.method596(i, npcIdx, (byte) -79, i_10_);
@@ -797,8 +800,7 @@ public class GameInterface extends CachedNode {
                         class40_sub5_sub5 = class40_sub5_sub5.getChildDefinition();
                     }
                     if(class40_sub5_sub5 != null) {
-                        SceneCluster.packetBuffer.putPacket(247);
-                        SceneCluster.packetBuffer.putShortLE(class40_sub5_sub5.id);
+                        OutgoingPackets.sendMessage(new ExamineNPCOutboundMessage(class40_sub5_sub5.id));
                     }
                 }
             }
@@ -921,8 +923,8 @@ public class GameInterface extends CachedNode {
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
                     ClientScriptRunner.crossX = Class57.clickX;
-                    SceneCluster.packetBuffer.putPacket(151);
-                    SceneCluster.packetBuffer.putShortLE(npcIdx);
+
+                    OutgoingPackets.sendMessage(new ExamineItemOutboundMessage(npcIdx));
                 }
                 if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_5.getId()) {
                     AnimationSequence.method596(i, npcIdx, (byte) -11, i_10_);
@@ -1071,8 +1073,7 @@ public class GameInterface extends CachedNode {
                             gameInterface = gameInterface.children[i];
                         }
                         if(gameInterface == null || gameInterface.itemAmount < 100000) {
-                            SceneCluster.packetBuffer.putPacket(151);
-                            SceneCluster.packetBuffer.putShortLE(npcIdx);
+                            OutgoingPackets.sendMessage(new ExamineItemOutboundMessage(npcIdx));
                         } else {
                             ChatBox.addChatMessage("", gameInterface.itemAmount + Native.amountSeparatorX + ItemDefinition.forId(npcIdx, 10).name, 0);
                         }
@@ -1221,8 +1222,7 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId()) {
                         GameInterface gameInterface = getInterface(i_10_);
                         if(gameInterface == null || gameInterface.itemAmounts[i] < 100000) {
-                            SceneCluster.packetBuffer.putPacket(151);
-                            SceneCluster.packetBuffer.putShortLE(npcIdx);
+                            OutgoingPackets.sendMessage(new ExamineItemOutboundMessage(npcIdx));
                         } else {
                             ChatBox.addChatMessage("", gameInterface.itemAmounts[i] + Native.amountSeparatorX + ItemDefinition.forId(npcIdx, 10).name, 0);
                         }

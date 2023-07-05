@@ -4,6 +4,8 @@ import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.language.English;
 import org.runejs.client.media.renderable.actor.Player;
+import org.runejs.client.message.outbound.chat.ModifySocialListOutboundMessage;
+import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.util.TextUtils;
 
@@ -43,8 +45,9 @@ public class Class17 {
                 if(!class1.equals(Player.localPlayer.playerName)) {
                     Player.ignores[MovedStatics.anInt1008++] = arg1;
                     GameInterface.redrawTabArea = true;
-                    SceneCluster.packetBuffer.putPacket(251);
-                    SceneCluster.packetBuffer.putLongBE(arg1);
+
+                    OutgoingPackets.sendMessage(
+                        new ModifySocialListOutboundMessage(arg1, ModifySocialListOutboundMessage.SocialList.IGNORE, ModifySocialListOutboundMessage.SocialListAction.ADD));
                 }
             }
         }

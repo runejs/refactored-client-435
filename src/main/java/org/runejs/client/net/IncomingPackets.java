@@ -220,16 +220,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 235) {
-                MovedStatics.minimapState = incomingPacketBuffer.getUnsignedByte();
-                opcode = -1;
-                return true;
-            }
-            if(opcode == 48) { // multi combat zone
-                MovedStatics.anInt2118 = incomingPacketBuffer.getUnsignedByte();
-                opcode = -1;
-                return true;
-            }
             if(opcode == 174) { // clear widget item container?
                 int i_36_ = incomingPacketBuffer.getIntME1();
                 GameInterface gameInterface = GameInterface.getInterface(i_36_);
@@ -350,11 +340,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.SET_SYSTEM_UPDATE_TIME.getOpcode()) {
-                Class40_Sub5_Sub15.systemUpdateTime = incomingPacketBuffer.getUnsignedShortLE() * 30;
-                opcode = -1;
-                return true;
-            }
             if(opcode == 2) {
                 int varPlayerValue = incomingPacketBuffer.getIntBE();
                 int varPlayerIndex = incomingPacketBuffer.getUnsignedShortBE();
@@ -431,13 +416,6 @@ public class IncomingPackets {
                     if(Class26.anInt627 > 383)
                         Class26.anInt627 = 383;
                 }
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.SET_CURRENT_TAB.getOpcode()) {
-                Player.currentTabId = incomingPacketBuffer.getUnsignedByte();
-                GameInterface.drawTabIcons = true;
-                GameInterface.redrawTabArea = true;
                 opcode = -1;
                 return true;
             }

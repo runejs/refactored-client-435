@@ -15,6 +15,7 @@ public enum PacketType {
     RESET_ACTOR_ANIMATIONS(27, 0),
     UPDATE_SKILL(34, 6),
     PLAY_QUICK_SONG(40, 5),
+    SET_MULTI_COMBAT(48, 1),
     PRIVATE_MESSAGE_RECEIVED(51, -1),
     SHOW_WALKABLE_SCREEN_WIDGET(56, 2),
     FORCE_PRIVATE_MESSAGE(71, -1),
@@ -54,6 +55,7 @@ public enum PacketType {
     UPDATE_SPECIFIC_WIDGET_ITEMS(214, -2),
     PLAY_SONG(217, 2),
     UPDATE_WIDGET_TEXT_COLOR(231, 6),
+    SET_MINIMAP_STATE(235, 1),
     /**
      * Display a widget over the tab area.
      */
