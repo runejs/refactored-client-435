@@ -277,17 +277,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 56) {
-                int i_45_ = incomingPacketBuffer.getShortBE();
-                if(i_45_ >= 0)
-                    GameInterface.resetInterfaceAnimations(i_45_);
-                if(i_45_ != GroundItemTile.walkableWidgetId) {
-                    GameInterface.resetInterface(GroundItemTile.walkableWidgetId);
-                    GroundItemTile.walkableWidgetId = i_45_;
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.SHOW_TAB_AND_SCREEN_WIDGETS.getOpcode()) {
                 int i_49_ = incomingPacketBuffer.getUnsignedShortBE();
                 int i_50_ = incomingPacketBuffer.getUnsignedShortLE();
