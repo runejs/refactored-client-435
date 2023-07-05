@@ -1716,7 +1716,7 @@ public class GameInterface extends CachedNode {
             Player.activePlayerAppearance.setGender(true);
         if(i == 326) {
             SceneCluster.packetBuffer.putPacket(231);
-            Player.activePlayerAppearance.sendAppearanceData(arg0 ^ 0x58, SceneCluster.packetBuffer);
+            Player.activePlayerAppearance.sendAppearanceData(0, SceneCluster.packetBuffer);
             return true;
         }
         if(i == 620)
