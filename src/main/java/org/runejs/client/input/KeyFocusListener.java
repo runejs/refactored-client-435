@@ -59,7 +59,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         if (GameInterface.gameScreenInterfaceId != -1 || GroundItemTile.walkableWidgetId != -1) {
                 int var5 = GameInterface.gameScreenInterfaceId != -1 ? 0 : 4;
                 int id = GameInterface.gameScreenInterfaceId != -1 ? GameInterface.gameScreenInterfaceId : GroundItemTile.walkableWidgetId;
-                Renderable.handleSequences(GameInterface.gameScreenInterfaceId);
+                Renderable.handleSequences(id);
                 int yOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);
                 int xOffset = (ScreenController.drawWidth /2) - (512/2) - (234/3);
                 if(ScreenController.frameMode == ScreenMode.FIXED) {
