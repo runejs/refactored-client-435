@@ -134,6 +134,7 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         // player/npc updating
         register(PacketType.UPDATE_NPCS.getOpcode(), new UpdateNPCsMessageDecoder());
         register(PacketType.UPDATE_PLAYERS.getOpcode(), new UpdatePlayersMessageDecoder());
+        register(PacketType.RESET_ACTOR_ANIMATIONS.getOpcode(), new ResetAllActorAnimationsMessageDecoder());
 
         // widget
         register(PacketType.UPDATE_WIDGET_TEXT_COLOR.getOpcode(), new SetWidgetTextColorMessageDecoder());
