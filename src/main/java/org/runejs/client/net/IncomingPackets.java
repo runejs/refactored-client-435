@@ -278,17 +278,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.SHOW_PERMANENT_CHATBOX_WIDGET.getOpcode()) {
-                int chatboxInterfaceId = incomingPacketBuffer.getShortBE();
-                if(ChatBox.dialogueId != chatboxInterfaceId) {
-                    GameInterface.resetInterface(ChatBox.dialogueId);
-                    ChatBox.dialogueId = chatboxInterfaceId;
-                }
-                opcode = -1;
-                ChatBox.redrawChatbox = true;
-                MovedStatics.lastContinueTextWidgetId = -1;
-                return true;
-            }
             if(opcode == 88) {
                 Class51.anInt1205 = incomingPacketBuffer.getUnsignedByte();
                 if(Player.currentTabId == Class51.anInt1205) {
