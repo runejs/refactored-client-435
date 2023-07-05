@@ -124,20 +124,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 222) {
-                int varPlayerValue = incomingPacketBuffer.getByte();
-                int varPlayerIndex = incomingPacketBuffer.getUnsignedShortBE();
-                Buffer.anIntArray1984[varPlayerIndex] = varPlayerValue;
-                if(VarPlayerDefinition.varPlayers[varPlayerIndex] != varPlayerValue) {
-                    VarPlayerDefinition.varPlayers[varPlayerIndex] = varPlayerValue;
-                    MovedStatics.handleVarPlayers(varPlayerIndex);
-                    GameInterface.redrawTabArea = true;
-                    if(ChatBox.dialogueId != -1)
-                        ChatBox.redrawChatbox = true;
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == 255) { // camera shake?
                 int i_23_ = incomingPacketBuffer.getUnsignedByte();
                 int i_24_ = incomingPacketBuffer.getUnsignedByte();
@@ -181,20 +167,6 @@ public class IncomingPackets {
                 while(incomingPacketBuffer.currentPosition < incomingPacketSize) {
                     opcode = incomingPacketBuffer.getUnsignedByte();
                     parseMapIncomingPacket();
-                }
-                opcode = -1;
-                return true;
-            }
-            if(opcode == 2) {
-                int varPlayerValue = incomingPacketBuffer.getIntBE();
-                int varPlayerIndex = incomingPacketBuffer.getUnsignedShortBE();
-                Buffer.anIntArray1984[varPlayerIndex] = varPlayerValue;
-                if(varPlayerValue != VarPlayerDefinition.varPlayers[varPlayerIndex]) {
-                    VarPlayerDefinition.varPlayers[varPlayerIndex] = varPlayerValue;
-                    MovedStatics.handleVarPlayers(varPlayerIndex);
-                    if(ChatBox.dialogueId != -1)
-                        ChatBox.redrawChatbox = true;
-                    GameInterface.redrawTabArea = true;
                 }
                 opcode = -1;
                 return true;

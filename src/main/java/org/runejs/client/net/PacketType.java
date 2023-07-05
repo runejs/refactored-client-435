@@ -6,6 +6,10 @@ package org.runejs.client.net;
  * @see IncomingPackets
  */
 public enum PacketType {
+    /**
+     * Sets a varp to an int
+     */
+    SET_VARP_INT(2, 5),
     MOVE_WIDGET_CHILD(3, 8),
     SET_CURRENT_TAB(6, 1),
     CLOSE_CUTSCENE(7, 0),
@@ -60,6 +64,10 @@ public enum PacketType {
     UPDATE_IGNORE_LIST(211, -2),
     UPDATE_SPECIFIC_WIDGET_ITEMS(214, -2),
     PLAY_SONG(217, 2),
+    /**
+     * Sets a varp to a byte
+     */
+    SET_VARP_BYTE(222, 3),
     UPDATE_PLAYER_OPTIONS(223, -1),
     UPDATE_WIDGET_TEXT_COLOR(231, 6),
     SET_MINIMAP_STATE(235, 1),
