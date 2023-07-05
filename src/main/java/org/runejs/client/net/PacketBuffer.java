@@ -8,6 +8,7 @@ import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.io.Buffer;
+import org.runejs.client.message.outbound.widget.CloseWidgetsOutboundMessage;
 import org.runejs.client.message.outbound.widget.input.ClickPleaseWaitWidgetOutboundMessage;
 import org.runejs.client.node.Class40_Sub6;
 import org.runejs.client.scene.SceneCluster;
@@ -59,7 +60,8 @@ public class PacketBuffer extends Buffer {
 
 
     public static void closeAllWidgets() {
-        SceneCluster.packetBuffer.putPacket(176);
+        OutgoingPackets.sendMessage(new CloseWidgetsOutboundMessage());
+
         if(GameInterface.tabAreaInterfaceId != -1) {
             GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
             MovedStatics.lastContinueTextWidgetId = -1;
