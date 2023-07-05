@@ -16,7 +16,7 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.message.outbound.chat.ChatCommandOutboundMessage;
-import org.runejs.client.message.outbound.widget.input.SubmitChatboxWidgetNumericInputOutboundMessage;
+import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.message.outbound.chat.ModifySocialListOutboundMessage;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.node.HashTable;
@@ -1613,8 +1613,9 @@ public class MovedStatics {
 	            }
 	            if(ItemDefinition.anInt2854 == 84) {
 	                if(ChatBox.inputMessage.length() > 0) {
-	                    SceneCluster.packetBuffer.putPacket(86);
-	                    SceneCluster.packetBuffer.putLongBE(RSString.nameToLong(ChatBox.inputMessage));
+                        long name = RSString.nameToLong(ChatBox.inputMessage);
+
+                        OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name));
 	                }
 	                ChatBox.inputType = 0;
 	                ChatBox.redrawChatbox = true;
