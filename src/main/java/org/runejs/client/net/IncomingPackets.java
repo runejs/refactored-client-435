@@ -265,18 +265,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.PLAY_WIDGET_ANIMATION.getOpcode()) {
-                int animationId = incomingPacketBuffer.getShortBE();
-                int widgetData = incomingPacketBuffer.getIntBE();
-                GameInterface gameInterface = GameInterface.getInterface(widgetData);
-                if(animationId != gameInterface.animation || animationId == -1) {
-                    gameInterface.remainingAnimationTime = 0;
-                    gameInterface.animationFrame = 0;
-                    gameInterface.animation = animationId;
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.CLEAR_MAP_CHUNK.getOpcode()) {
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
