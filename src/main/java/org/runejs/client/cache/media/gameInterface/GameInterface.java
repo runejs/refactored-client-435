@@ -22,7 +22,7 @@ import org.runejs.client.message.outbound.examine.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
 import org.runejs.client.message.outbound.useitem.*;
-import org.runejs.client.message.outbound.widget.input.SubmitReportAbuseOutboundMessage;
+import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
@@ -1715,8 +1715,8 @@ public class GameInterface extends CachedNode {
         if(i == 325)
             Player.activePlayerAppearance.setGender(true);
         if(i == 326) {
-            SceneCluster.packetBuffer.putPacket(231);
-            Player.activePlayerAppearance.sendAppearanceData(0, SceneCluster.packetBuffer);
+            OutgoingPackets.sendMessage(new SubmitAppearanceOutboundMessage(Player.activePlayerAppearance));
+
             return true;
         }
         if(i == 620)

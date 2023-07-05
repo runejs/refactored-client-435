@@ -83,6 +83,7 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(SubmitChatboxWidgetNumericInputOutboundMessage.class, new SubmitChatboxWidgetNumericInputMessageEncoder());
         register(SubmitChatboxWidgetNameInputOutboundMessage.class, new SubmitChatboxWidgetNameInputMessageEncoder());
         register(SubmitReportAbuseOutboundMessage.class, new SubmitReportAbuseMessageEncoder());
+        register(SubmitAppearanceOutboundMessage.class, new SubmitAppearanceMessageEncoder());
     }
 
     private void registerDecoders() {
