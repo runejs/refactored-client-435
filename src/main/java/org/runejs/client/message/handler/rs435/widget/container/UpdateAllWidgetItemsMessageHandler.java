@@ -3,6 +3,7 @@ package org.runejs.client.message.handler.rs435.widget.container;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.widget.container.UpdateAllWidgetItemsInboundMessage;
+import org.runejs.client.message.inbound.widget.container.WidgetItem;
 
 public class UpdateAllWidgetItemsMessageHandler implements MessageHandler<UpdateAllWidgetItemsInboundMessage> {
     @Override
@@ -24,7 +25,7 @@ public class UpdateAllWidgetItemsMessageHandler implements MessageHandler<Update
             }
         }
 
-        for(UpdateAllWidgetItemsInboundMessage.WidgetItem item : message.items) {
+        for(WidgetItem item : message.items) {
             if(gameInterface.isNewInterfaceFormat) {
                 GameInterface gameInterfaces[] = GameInterface.cachedInterfaces[message.widgetId];
                 for(GameInterface child : gameInterfaces) {

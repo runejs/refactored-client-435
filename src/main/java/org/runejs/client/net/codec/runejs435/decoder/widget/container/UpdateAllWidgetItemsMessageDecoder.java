@@ -1,6 +1,7 @@
 package org.runejs.client.net.codec.runejs435.decoder.widget.container;
 
 import org.runejs.client.message.inbound.widget.container.UpdateAllWidgetItemsInboundMessage;
+import org.runejs.client.message.inbound.widget.container.WidgetItem;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.net.codec.MessageDecoder;
 
@@ -16,7 +17,7 @@ public class UpdateAllWidgetItemsMessageDecoder implements MessageDecoder<Update
 
         final int size = buffer.getUnsignedShortBE();
 
-        List<UpdateAllWidgetItemsInboundMessage.WidgetItem> items = new ArrayList<>();
+        List<WidgetItem> items = new ArrayList<>();
 
         for (int index = 0; index < size; index += 8) {
             final int bitset = buffer.getByte();
@@ -35,14 +36,14 @@ public class UpdateAllWidgetItemsMessageDecoder implements MessageDecoder<Update
 
                 final int idx = index + offset;
 
-                items.add(new UpdateAllWidgetItemsInboundMessage.WidgetItem(idx, id, amount));
+                items.add(new WidgetItem(idx, id, amount));
             }
         }
 
         return new UpdateAllWidgetItemsInboundMessage(
             widgetId,
             childId,
-            items.toArray(new UpdateAllWidgetItemsInboundMessage.WidgetItem[items.size()])
+            items.toArray(new WidgetItem[items.size()])
         );
     }
 }
