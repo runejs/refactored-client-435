@@ -667,7 +667,5 @@ public class Projectile extends Renderable {
         if(!moving)
             speedVectorZ = -speedVectorScalar * Math.tan((double) startSlope * 0.02454369);
         heightOffset = (-currentHeight + (double) k - speedVectorZ * cyclesRemaining) * 2.0 / (cyclesRemaining * cyclesRemaining);
-        if(arg1 != 0)
-            Npc.parseTrackedNpcs();
     }
 }

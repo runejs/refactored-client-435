@@ -212,11 +212,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.UPDATE_NPCS.getOpcode()) {
-                parseNpcUpdatePacket();
-                opcode = -1;
-                return true;
-            }
             if(opcode == 234) {
                 Player.cutsceneActive = true;
                 MovedStatics.anInt564 = incomingPacketBuffer.getUnsignedByte();
@@ -345,27 +340,6 @@ public class IncomingPackets {
         }
         return true;
 
-    }
-
-    public static void parseNpcUpdatePacket() {
-        Class17.deregisterActorCount = 0;
-        Actor.actorUpdatingIndex = 0;
-        Npc.parseTrackedNpcs();
-        Npc.registerNewNpcs();
-        Npc.parseNpcUpdateMasks();
-        for(int i = 0; i < Class17.deregisterActorCount; i++) {
-            int trackedNpcIndex = Player.deregisterActorIndices[i];
-            if(MovedStatics.pulseCycle != Player.npcs[trackedNpcIndex].anInt3134) {
-                Player.npcs[trackedNpcIndex].actorDefinition = null;
-                Player.npcs[trackedNpcIndex] = null;
-            }
-        }
-        if(incomingPacketBuffer.currentPosition != incomingPacketSize)
-            throw new RuntimeException("gnp1 pos:" + incomingPacketBuffer.currentPosition + " psize:" + incomingPacketSize);
-        for(int i = 0; Player.npcCount > i; i++) {
-            if(Player.npcs[Player.npcIds[i]] == null)
-                throw new RuntimeException("gnp2 pos:" + i + " size:" + Player.npcCount);
-        }
     }
 
     public static void parseMapIncomingPacket() {

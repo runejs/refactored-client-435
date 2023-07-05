@@ -1,7 +1,7 @@
 package org.runejs.client.message.inbound.updating.registration;
 
 /**
- * The update details for a single actor.
+ * Registration details for a single actor.
  */
 public class ActorRegistration {
     /**

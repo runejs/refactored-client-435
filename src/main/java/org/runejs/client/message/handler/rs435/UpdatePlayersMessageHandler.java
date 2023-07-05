@@ -46,6 +46,8 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
                 Player.trackedPlayers[trackedPlayerIndex] = null;
         }
 
+        // TODO check there are no bytes left (buffer.currentPosition != buffer.size) or should this happen in decoder?
+
         // check that the tracked player list is valid
         int i = 0;
         for(/**/; Player.localPlayerCount > i; i++) {
@@ -182,6 +184,8 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
     private void handleRegisterNewPlayers(ActorGroupRegistrationUpdate<ActorRegistration> update) {
         for (ActorRegistration playerUpdate : update.players) {
             int newPlayerIndex = playerUpdate.index;
+
+            // likely isn't needed as it's handled in the decoder
             if(newPlayerIndex == 2047)
                 break;
 
