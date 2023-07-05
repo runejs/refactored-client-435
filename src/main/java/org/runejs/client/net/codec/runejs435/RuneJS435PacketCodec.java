@@ -8,6 +8,7 @@ import org.runejs.client.message.outbound.examine.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
 import org.runejs.client.message.outbound.useitem.*;
+import org.runejs.client.message.outbound.widget.container.*;
 import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.net.codec.runejs435.decoder.audio.*;
 import org.runejs.client.net.codec.runejs435.decoder.chat.*;
@@ -28,6 +29,7 @@ import org.runejs.client.net.codec.runejs435.encoder.examine.*;
 import org.runejs.client.net.codec.runejs435.encoder.interactions.*;
 import org.runejs.client.net.codec.runejs435.encoder.magic.*;
 import org.runejs.client.net.codec.runejs435.encoder.useitem.*;
+import org.runejs.client.net.codec.runejs435.encoder.widget.container.*;
 import org.runejs.client.net.codec.runejs435.encoder.widget.input.*;
 
 /**
@@ -84,6 +86,7 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(SubmitChatboxWidgetNameInputOutboundMessage.class, new SubmitChatboxWidgetNameInputMessageEncoder());
         register(SubmitReportAbuseOutboundMessage.class, new SubmitReportAbuseMessageEncoder());
         register(SubmitAppearanceOutboundMessage.class, new SubmitAppearanceMessageEncoder());
+        register(DragWidgetItemOutboundMessage.class, new DragWidgetItemMessageEncoder());
     }
 
     private void registerDecoders() {
