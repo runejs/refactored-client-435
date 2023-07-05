@@ -202,41 +202,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 186) {
-                Player.headIconDrawType = incomingPacketBuffer.getUnsignedByte();
-                if(Player.headIconDrawType == 1)
-                    HuffmanEncoding.anInt1545 = incomingPacketBuffer.getUnsignedShortBE();
-                if(Player.headIconDrawType >= 2 && Player.headIconDrawType <= 6) {
-                    if(Player.headIconDrawType == 2) {
-                        Class35.anInt1730 = 64;
-                        Landscape.anInt1170 = 64;
-                    }
-                    if(Player.headIconDrawType == 3) {
-                        Class35.anInt1730 = 64;
-                        Landscape.anInt1170 = 0;
-                    }
-                    if(Player.headIconDrawType == 4) {
-                        Class35.anInt1730 = 64;
-                        Landscape.anInt1170 = 128;
-                    }
-                    if(Player.headIconDrawType == 5) {
-                        Landscape.anInt1170 = 64;
-                        Class35.anInt1730 = 0;
-                    }
-                    if(Player.headIconDrawType == 6) {
-                        Landscape.anInt1170 = 64;
-                        Class35.anInt1730 = 128;
-                    }
-                    Player.headIconDrawType = 2;
-                    ProducingGraphicsBuffer.anInt1637 = incomingPacketBuffer.getUnsignedShortBE();
-                    MovedStatics.anInt175 = incomingPacketBuffer.getUnsignedShortBE();
-                    ActorDefinition.anInt2404 = incomingPacketBuffer.getUnsignedByte();
-                }
-                if(Player.headIconDrawType == 10)
-                    ProducingGraphicsBuffer.anInt1623 = incomingPacketBuffer.getUnsignedShortBE();
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.RESET_ACTOR_ANIMATIONS.getOpcode()) {
                 for(int playerIdx = 0; playerIdx < Player.trackedPlayers.length; playerIdx++) {
                     if(Player.trackedPlayers[playerIdx] != null)
