@@ -592,16 +592,6 @@ public class IncomingPackets {
                 GameInterface.redrawTabArea = true;
                 return true;
             }
-            if(opcode == PacketType.MOVE_WIDGET_CHILD.getOpcode()) {
-                int interfaceData = incomingPacketBuffer.getIntBE();
-                int x = incomingPacketBuffer.getShortLE();
-                int y = incomingPacketBuffer.getShortLE();
-                GameInterface gameInterface = GameInterface.getInterface(interfaceData);
-                gameInterface.currentX = gameInterface.originalX + y;
-                gameInterface.currentY = gameInterface.originalY + x;
-                opcode = -1;
-                return true;
-            }
             if(opcode == 72) { // reset varbits?
                 for(int varPlayerIndex = 0; varPlayerIndex < VarPlayerDefinition.varPlayers.length; varPlayerIndex++) {
                     if(Buffer.anIntArray1984[varPlayerIndex] != VarPlayerDefinition.varPlayers[varPlayerIndex]) {
