@@ -146,62 +146,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.UPDATE_ALL_WIDGET_ITEMS.getOpcode()) {
-                GameInterface.redrawTabArea = true;
-                final int packed = incomingPacketBuffer.getIntBE();
-                final GameInterface gameInterface = GameInterface.getInterface(packed);
-
-                if(gameInterface.isNewInterfaceFormat) {
-                    final GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[packed >> 16];
-                    for(GameInterface child : gameInterfaces) {
-                        if((0xffff & gameInterface.id) == (0xffff & child.parentId) && child.anInt2736 > 0) {
-                            child.itemAmount = 0;
-                            child.itemId = -1;
-                        }
-                    }
-                } else {
-                    for(int index = 0; index < gameInterface.items.length; index++) {
-                        gameInterface.items[index] = 0;
-                        gameInterface.itemAmounts[index] = 0;
-                    }
-                }
-
-                final int size = incomingPacketBuffer.getUnsignedShortBE();
-
-                for(int index = 0; index < size; index += 8) {
-                    final int bitset = incomingPacketBuffer.getByte();
-
-                    for(int offset = 0; offset < 8; offset++) {
-                        final boolean empty = (bitset & 1 << offset) == 0;
-                        final int id, amount;
-
-                        if(empty) {
-                            id = amount = 0;
-                        } else {
-                            final int peek = incomingPacketBuffer.getUnsignedByte();
-                            amount = peek == 255 ? incomingPacketBuffer.getIntBE() : peek;
-                            id = incomingPacketBuffer.getUnsignedShortBE();
-                        }
-
-                        final int idx = index + offset;
-
-                        if(gameInterface.isNewInterfaceFormat) {
-                            GameInterface gameInterfaces[] = GameInterface.cachedInterfaces[packed >> 16];
-                            for(GameInterface child : gameInterfaces) {
-                                if((gameInterface.id & 0xffff) == (child.parentId & 0xffff) && 1 + idx == child.anInt2736) {
-                                    child.itemAmount = amount;
-                                    child.itemId = -1 + id;
-                                }
-                            }
-                        } else if(idx < gameInterface.items.length) {
-                            gameInterface.items[idx] = id;
-                            gameInterface.itemAmounts[idx] = amount;
-                        }
-                    }
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == 255) { // camera shake?
                 int i_23_ = incomingPacketBuffer.getUnsignedByte();
                 int i_24_ = incomingPacketBuffer.getUnsignedByte();
@@ -212,27 +156,6 @@ public class IncomingPackets {
                 GameShell.anIntArray2[i_23_] = i_25_;
                 GroundItemTile.anIntArray1358[i_23_] = i_26_;
                 MovedStatics.anIntArray1846[i_23_] = 0;
-                opcode = -1;
-                return true;
-            }
-            if(opcode == 174) { // clear widget item container?
-                int i_36_ = incomingPacketBuffer.getIntME1();
-                GameInterface gameInterface = GameInterface.getInterface(i_36_);
-                if(gameInterface.isNewInterfaceFormat) {
-                    GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[i_36_ >> 16];
-                    for(int i_37_ = 0; i_37_ < gameInterfaces.length; i_37_++) {
-                        GameInterface gameInterface_38_ = gameInterfaces[i_37_];
-                        if((0xffff & gameInterface.id) == (gameInterface_38_.parentId & 0xffff) && gameInterface_38_.anInt2736 > 0) {
-                            gameInterface_38_.itemId = -1;
-                            gameInterface_38_.itemAmount = 0;
-                        }
-                    }
-                } else {
-                    for(int i_39_ = 0; gameInterface.items.length > i_39_; i_39_++) {
-                        gameInterface.items[i_39_] = -1;
-                        gameInterface.items[i_39_] = 0;
-                    }
-                }
                 opcode = -1;
                 return true;
             }
@@ -430,36 +353,6 @@ public class IncomingPackets {
             if(opcode == 58) {
                 int i_106_ = incomingPacketBuffer.getIntME2();
                 Class12.aSignlinkNode_394 = Main.signlink.createExceptionNode(i_106_); // TODO this just ends up throwing an exception? wot
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.UPDATE_SPECIFIC_WIDGET_ITEMS.getOpcode()) {
-                GameInterface.redrawTabArea = true;
-                int widgetData = incomingPacketBuffer.getIntBE();
-                GameInterface gameInterface = GameInterface.getInterface(widgetData);
-                while(incomingPacketSize > incomingPacketBuffer.currentPosition) {
-                    int itemSlot = incomingPacketBuffer.getSmart();
-                    int i_109_ = incomingPacketBuffer.getUnsignedShortBE();
-                    int i_110_ = 0;
-                    if(i_109_ != 0) {
-                        i_110_ = incomingPacketBuffer.getUnsignedByte();
-                        if(i_110_ == 255)
-                            i_110_ = incomingPacketBuffer.getIntBE();
-                    }
-                    if(gameInterface.isNewInterfaceFormat) {
-                        GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[widgetData >> 16];
-                        for(int i_111_ = 0; i_111_ < gameInterfaces.length; i_111_++) {
-                            GameInterface gameInterface_112_ = gameInterfaces[i_111_];
-                            if((gameInterface.id & 0xffff) == (gameInterface_112_.parentId & 0xffff) && 1 + itemSlot == gameInterface_112_.anInt2736) {
-                                gameInterface_112_.itemAmount = i_110_;
-                                gameInterface_112_.itemId = i_109_ + -1;
-                            }
-                        }
-                    } else if(itemSlot >= 0 && gameInterface.items.length > itemSlot) {
-                        gameInterface.items[itemSlot] = i_109_;
-                        gameInterface.itemAmounts[itemSlot] = i_110_;
-                    }
-                }
                 opcode = -1;
                 return true;
             }

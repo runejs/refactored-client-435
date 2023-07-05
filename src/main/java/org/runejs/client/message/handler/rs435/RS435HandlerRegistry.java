@@ -3,6 +3,7 @@ package org.runejs.client.message.handler.rs435;
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.handler.rs435.audio.*;
 import org.runejs.client.message.handler.rs435.widget.*;
+import org.runejs.client.message.handler.rs435.widget.container.*;
 import org.runejs.client.message.handler.rs435.widget.input.*;
 import org.runejs.client.message.handler.rs435.widget.model.*;
 import org.runejs.client.message.handler.rs435.widget.text.*;
@@ -24,6 +25,7 @@ import org.runejs.client.message.inbound.misc.*;
 import org.runejs.client.message.inbound.region.*;
 import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
 import org.runejs.client.message.inbound.widget.*;
+import org.runejs.client.message.inbound.widget.container.*;
 import org.runejs.client.message.inbound.widget.input.*;
 import org.runejs.client.message.inbound.widget.model.*;
 import org.runejs.client.message.inbound.widget.text.*;
@@ -85,6 +87,11 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(ShowNumberInputWidgetInboundMessage.class, new ShowNumberInputWidgetMessageHandler());
         register(ShowPermanentChatboxWidgetInboundMessage.class, new ShowPermanentChatboxWidgetMessageHandler());
         register(SetWidgetPositionInboundMessage.class, new SetWidgetPositionMessageHandler());
+
+        // widget container
+        register(UpdateAllWidgetItemsInboundMessage.class, new UpdateAllWidgetItemsMessageHandler());
+        register(UpdateSpecificWidgetItemsInboundMessage.class, new UpdateSpecificWidgetItemsMessageHandler());
+        register(ClearWidgetItemsInboundMessage.class, new ClearWidgetItemsMessageHandler());
         
         // region
         register(ClearChunkInboundMessage.class, new ClearChunkMessageHandler());
