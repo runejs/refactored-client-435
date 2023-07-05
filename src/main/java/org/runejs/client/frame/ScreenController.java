@@ -15,6 +15,8 @@ import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
+import org.runejs.client.message.outbound.chat.SetChatOptionsOutboundMessage;
+import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
@@ -424,28 +426,34 @@ public class ScreenController {
                 MovedStatics.redrawChatbox = true;
                 ChatBox.publicChatMode = (1 + ChatBox.publicChatMode) % 4;
                 ChatBox.redrawChatbox = true;
-                SceneCluster.packetBuffer.putPacket(32);
-                SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
-                SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
-                SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
+
+                OutgoingPackets.sendMessage(new SetChatOptionsOutboundMessage(
+                    ChatBox.publicChatMode,
+                    ChatBox.privateChatMode,
+                    ChatBox.tradeMode
+                ));
             }
             if (x >= 129 && x <= 229 && y >= 0 && y <= 32) {
                 ChatBox.redrawChatbox = true;
                 ChatBox.privateChatMode = (ChatBox.privateChatMode + 1) % 3;
                 MovedStatics.redrawChatbox = true;
-                SceneCluster.packetBuffer.putPacket(32);
-                SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
-                SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
-                SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
+
+                OutgoingPackets.sendMessage(new SetChatOptionsOutboundMessage(
+                    ChatBox.publicChatMode,
+                    ChatBox.privateChatMode,
+                    ChatBox.tradeMode
+                ));
             }
             if (x >= 267 && x <= 367 && y >= 0 && y <= 32) {
                 ChatBox.tradeMode = (ChatBox.tradeMode + 1) % 3;
                 MovedStatics.redrawChatbox = true;
                 ChatBox.redrawChatbox = true;
-                SceneCluster.packetBuffer.putPacket(32);
-                SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
-                SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
-                SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
+
+                OutgoingPackets.sendMessage(new SetChatOptionsOutboundMessage(
+                    ChatBox.publicChatMode,
+                    ChatBox.privateChatMode,
+                    ChatBox.tradeMode
+                ));
             }
             if (x >= 406 && x <= 506 && y >= 0 && y <= 32) {
                 if (GameInterface.gameScreenInterfaceId == -1) {
