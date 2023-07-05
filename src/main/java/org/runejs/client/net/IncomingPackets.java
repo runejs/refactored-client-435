@@ -319,41 +319,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 237) { // show tab overlay widget
-                int i_68_ = incomingPacketBuffer.getUnsignedShortBE();
-                GameInterface.resetInterfaceAnimations(i_68_);
-                if(GameInterface.chatboxInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
-                    GameInterface.chatboxInterfaceId = -1;
-                    ChatBox.redrawChatbox = true;
-                }
-                if(GameInterface.fullscreenInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenInterfaceId);
-                    GameInterface.fullscreenInterfaceId = -1;
-                    MovedStatics.processGameStatus(30);
-                }
-                if(GameInterface.fullscreenSiblingInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.fullscreenSiblingInterfaceId);
-                    GameInterface.fullscreenSiblingInterfaceId = -1;
-                }
-                if(GameInterface.gameScreenInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.gameScreenInterfaceId);
-                    GameInterface.gameScreenInterfaceId = -1;
-                }
-                if(GameInterface.tabAreaInterfaceId != i_68_) {
-                    GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
-                    GameInterface.tabAreaInterfaceId = i_68_;
-                }
-                GameInterface.drawTabIcons = true;
-                if(ChatBox.inputType != 0) {
-                    ChatBox.redrawChatbox = true;
-                    ChatBox.inputType = 0;
-                }
-                MovedStatics.lastContinueTextWidgetId = -1;
-                opcode = -1;
-                GameInterface.redrawTabArea = true;
-                return true;
-            }
             if(opcode == 234) {
                 Player.cutsceneActive = true;
                 MovedStatics.anInt564 = incomingPacketBuffer.getUnsignedByte();
@@ -503,18 +468,6 @@ public class IncomingPackets {
                 for(int i_118_ = 0; MovedStatics.anInt1008 > i_118_; i_118_++)
                     Player.ignores[i_118_] = incomingPacketBuffer.getLongBE();
                 opcode = -1;
-                return true;
-            }
-            if(opcode == 124) { // close chatbox widget
-                if(GameInterface.chatboxInterfaceId != -1) {
-                    GameInterface.resetInterface(GameInterface.chatboxInterfaceId);
-                    GameInterface.chatboxInterfaceId = -1;
-                }
-                ChatBox.redrawChatbox = true;
-                ChatBox.inputMessage = "";
-                ChatBox.inputType = 2;
-                opcode = -1;
-                ChatBox.messagePromptRaised = false;
                 return true;
             }
             MovedStatics.printException("T1 - " + opcode + "," + secondLastOpcode + "," + thirdLastOpcode + " - " + incomingPacketSize, null);
