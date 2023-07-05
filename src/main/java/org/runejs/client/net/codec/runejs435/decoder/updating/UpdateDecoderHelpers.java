@@ -1,6 +1,11 @@
 package org.runejs.client.net.codec.runejs435.decoder.updating;
 
+import org.runejs.client.message.inbound.updating.movement.ActorGroupMovementUpdate;
+import org.runejs.client.message.inbound.updating.movement.MovementUpdate;
 import org.runejs.client.net.PacketBuffer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UpdateDecoderHelpers {
 
@@ -23,5 +28,65 @@ public class UpdateDecoderHelpers {
         remainingBuffer.currentPosition = 0;
 
         return remainingBuffer;
+    }
+
+    /**
+     * Decodes a group movement update for a group of actors.
+     * @param buffer The buffer to read
+     * @return The {@link ActorGroupMovementUpdate}
+     */
+    public static ActorGroupMovementUpdate decodeGroupMovementUpdate(PacketBuffer buffer) {
+        int trackedPlayerCount = buffer.getBits(8);
+
+        List<ActorGroupMovementUpdate.ActorMovementUpdate> updates = new ArrayList<>();
+
+        for (int i = 0; trackedPlayerCount > i; i++) {
+            boolean updateRequired = buffer.getBits(1) == 1;
+
+            // No update required
+            if (!updateRequired) {
+                updates.add(null);
+                continue;
+            }
+
+            int movementType = buffer.getBits(2);
+
+            // No movement
+            if (movementType == 0) {
+                updates.add(new ActorGroupMovementUpdate.ActorMovementUpdate(null, false));
+                continue;
+            }
+
+            // deregister
+            if (movementType == 3) {
+                updates.add(new ActorGroupMovementUpdate.ActorMovementUpdate(null, true));
+                continue;
+            }
+
+            // walking
+            if (movementType == 1) {
+                int walkDirection = buffer.getBits(3);
+                boolean runUpdateBlock = buffer.getBits(1) == 1;
+
+                updates.add(new ActorGroupMovementUpdate.ActorMovementUpdate(
+                    new MovementUpdate(walkDirection, null, runUpdateBlock), false));
+                continue;
+            }
+
+            // running
+            if (movementType == 2) {
+                int walkDirection = buffer.getBits(3);
+                int runDirection = buffer.getBits(3);
+                boolean runUpdateBlock = buffer.getBits(1) == 1;
+
+                updates.add(new ActorGroupMovementUpdate.ActorMovementUpdate(
+                    new MovementUpdate(walkDirection, runDirection, runUpdateBlock), false));
+                continue;
+            }
+
+            throw new IllegalStateException("Invalid movement type: " + movementType);
+        }
+
+        return new ActorGroupMovementUpdate(trackedPlayerCount, updates.toArray(new ActorGroupMovementUpdate.ActorMovementUpdate[updates.size()]));
     }
 }

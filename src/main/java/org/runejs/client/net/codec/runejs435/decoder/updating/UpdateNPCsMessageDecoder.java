@@ -2,7 +2,6 @@ package org.runejs.client.net.codec.runejs435.decoder.updating;
 
 import org.runejs.client.message.inbound.updating.UpdateNPCsInboundMessage;
 import org.runejs.client.message.inbound.updating.movement.ActorGroupMovementUpdate;
-import org.runejs.client.message.inbound.updating.movement.MovementUpdate;
 import org.runejs.client.message.inbound.updating.registration.ActorGroupRegistrationUpdate;
 import org.runejs.client.message.inbound.updating.registration.NPCRegistration;
 import org.runejs.client.net.PacketBuffer;
@@ -15,7 +14,7 @@ public class UpdateNPCsMessageDecoder implements MessageDecoder<UpdateNPCsInboun
     @Override
     public UpdateNPCsInboundMessage decode(PacketBuffer buffer) {
         buffer.initBitAccess();
-        ActorGroupMovementUpdate trackedMovement = decodeTrackedMovement(buffer);
+        ActorGroupMovementUpdate trackedMovement = UpdateDecoderHelpers.decodeGroupMovementUpdate(buffer);
         ActorGroupRegistrationUpdate<NPCRegistration> newNPCs = decodeRegistration(buffer);
         buffer.finishBitAccess();
 
@@ -23,61 +22,6 @@ public class UpdateNPCsMessageDecoder implements MessageDecoder<UpdateNPCsInboun
         PacketBuffer appearanceUpdate = UpdateDecoderHelpers.decodeRemainingBytes(buffer);
 
         return new UpdateNPCsInboundMessage(trackedMovement, newNPCs, appearanceUpdate);
-    }
-
-    private ActorGroupMovementUpdate decodeTrackedMovement(PacketBuffer buffer) {
-        int trackedPlayerCount = buffer.getBits(8);
-
-        List<ActorGroupMovementUpdate.ActorMovementUpdate> updates = new ArrayList<>();
-
-        for (int i = 0; trackedPlayerCount > i; i++) {
-            boolean updateRequired = buffer.getBits(1) == 1;
-
-            // No update required
-            if (!updateRequired) {
-                updates.add(null);
-                continue;
-            }
-
-            int movementType = buffer.getBits(2);
-
-            // No movement
-            if (movementType == 0) {
-                updates.add(new ActorGroupMovementUpdate.ActorMovementUpdate(null, false));
-                continue;
-            }
-
-            // deregister
-            if (movementType == 3) {
-                updates.add(new ActorGroupMovementUpdate.ActorMovementUpdate(null, true));
-                continue;
-            }
-
-            // walking
-            if (movementType == 1) {
-                int walkDirection = buffer.getBits(3);
-                boolean runUpdateBlock = buffer.getBits(1) == 1;
-
-                updates.add(new ActorGroupMovementUpdate.ActorMovementUpdate(
-                    new MovementUpdate(walkDirection, null, runUpdateBlock), false));
-                continue;
-            }
-
-            // running
-            if (movementType == 2) {
-                int walkDirection = buffer.getBits(3);
-                int runDirection = buffer.getBits(3);
-                boolean runUpdateBlock = buffer.getBits(1) == 1;
-
-                updates.add(new ActorGroupMovementUpdate.ActorMovementUpdate(
-                    new MovementUpdate(walkDirection, runDirection, runUpdateBlock), false));
-                continue;
-            }
-
-            throw new IllegalStateException("Invalid movement type: " + movementType);
-        }
-
-        return new ActorGroupMovementUpdate(trackedPlayerCount, updates.toArray(new ActorGroupMovementUpdate.ActorMovementUpdate[updates.size()]));
     }
 
     private ActorGroupRegistrationUpdate<NPCRegistration> decodeRegistration(PacketBuffer buffer) {

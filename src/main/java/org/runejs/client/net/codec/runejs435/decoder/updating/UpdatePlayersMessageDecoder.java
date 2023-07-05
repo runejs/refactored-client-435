@@ -9,7 +9,6 @@ import org.runejs.client.message.inbound.updating.movement.MovementUpdate;
 import org.runejs.client.message.inbound.updating.registration.ActorGroupRegistrationUpdate;
 import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
 import org.runejs.client.message.inbound.updating.movement.LocalPlayerMovementUpdate.LocalPlayerMapRegionChangeUpdate;
-import org.runejs.client.message.inbound.updating.movement.ActorGroupMovementUpdate.ActorMovementUpdate;
 import org.runejs.client.message.inbound.updating.registration.ActorRegistration;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.net.codec.MessageDecoder;
@@ -30,7 +29,7 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
     public UpdatePlayersInboundMessage decode(PacketBuffer buffer) {
         buffer.initBitAccess();
         LocalPlayerMovementUpdate localPlayerMovement = decodeLocalPlayerMovementUpdate(buffer);
-        ActorGroupMovementUpdate otherPlayersMovement = decodeOtherPlayersMovementUpdate(buffer);
+        ActorGroupMovementUpdate otherPlayersMovement = UpdateDecoderHelpers.decodeGroupMovementUpdate(buffer);
         ActorGroupRegistrationUpdate<ActorRegistration> registerNewPlayers = decodeRegisterNewPlayersUpdate(buffer);
         buffer.finishBitAccess();
 
@@ -101,67 +100,6 @@ public class UpdatePlayersMessageDecoder implements MessageDecoder<UpdatePlayers
         }
 
         throw new IllegalStateException("Invalid movement type: " + movementType);
-    }
-
-    /**
-     * Decodes the movement details of other players into an {@link ActorGroupMovementUpdate}.
-     * 
-     * @param buffer The buffer.
-     * @return The other players movement update.
-     */
-    private ActorGroupMovementUpdate decodeOtherPlayersMovementUpdate(PacketBuffer buffer) {
-        int trackedPlayerCount = buffer.getBits(8);
-
-        List<ActorMovementUpdate> updates = new ArrayList<ActorMovementUpdate>();
-
-        for (int i = 0; trackedPlayerCount > i; i++) {
-            boolean updateRequired = buffer.getBits(1) == 1;
-
-            // No update required
-            if (!updateRequired) {
-                updates.add(null);
-                continue;
-            }
-
-            int movementType = buffer.getBits(2);
-
-            // No movement
-            if (movementType == 0) {
-                updates.add(new ActorMovementUpdate(null, false));
-                continue;
-            }
-
-            // deregister
-            if (movementType == 3) {
-                updates.add(new ActorMovementUpdate(null, true));
-                continue;
-            }
-
-            // walking
-            if (movementType == 1) {
-                int walkDirection = buffer.getBits(3);
-                boolean runUpdateBlock = buffer.getBits(1) == 1;
-
-                updates.add(new ActorMovementUpdate(
-                    new MovementUpdate(walkDirection, null, runUpdateBlock), false));
-                continue;
-            }
-
-            // running
-            if (movementType == 2) {
-                int walkDirection = buffer.getBits(3);
-                int runDirection = buffer.getBits(3);
-                boolean runUpdateBlock = buffer.getBits(1) == 1;
-
-                updates.add(new ActorMovementUpdate(
-                    new MovementUpdate(walkDirection, runDirection, runUpdateBlock), false));
-                continue;
-            }
-
-            throw new IllegalStateException("Invalid movement type: " + movementType);
-        }
-
-        return new ActorGroupMovementUpdate(trackedPlayerCount, updates.toArray(new ActorMovementUpdate[updates.size()]));
     }
 
     /**
