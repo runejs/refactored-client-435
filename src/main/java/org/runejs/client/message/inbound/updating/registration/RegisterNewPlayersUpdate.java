@@ -1,4 +1,4 @@
-package org.runejs.client.message.inbound.updating;
+package org.runejs.client.message.inbound.updating.registration;
 
 /**
  * The update message containing details about new players that should be registered.

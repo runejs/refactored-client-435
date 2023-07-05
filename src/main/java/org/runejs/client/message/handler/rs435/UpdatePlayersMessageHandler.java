@@ -6,13 +6,11 @@ import org.runejs.client.Projectile;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
-import org.runejs.client.message.inbound.updating.LocalPlayerMovementUpdate;
-import org.runejs.client.message.inbound.updating.OtherPlayersMovementUpdate;
-import org.runejs.client.message.inbound.updating.PlayerMovementUpdate;
-import org.runejs.client.message.inbound.updating.RegisterNewPlayersUpdate;
+import org.runejs.client.message.inbound.updating.movement.*;
+import org.runejs.client.message.inbound.updating.registration.*;
 import org.runejs.client.message.inbound.updating.UpdatePlayersInboundMessage;
-import org.runejs.client.message.inbound.updating.OtherPlayersMovementUpdate.OtherPlayerMovementUpdate;
-import org.runejs.client.message.inbound.updating.RegisterNewPlayersUpdate.RegisterNewPlayerUpdate;
+import org.runejs.client.message.inbound.updating.movement.ActorGroupMovementUpdate.ActorMovementUpdate;
+import org.runejs.client.message.inbound.updating.registration.RegisterNewPlayersUpdate.RegisterNewPlayerUpdate;
 
 /**
  * Applies the main "player updating" message to the game state.
@@ -89,16 +87,16 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
 
         // general movement updates (walking etc)
         if (update.movementUpdate != null) {
-            PlayerMovementUpdate playerMovementUpdate = update.movementUpdate;
+            MovementUpdate movementUpdate = update.movementUpdate;
 
-            if (playerMovementUpdate.runDirection != null) {
-                Player.localPlayer.move(playerMovementUpdate.walkDirection, true);
-                Player.localPlayer.move(playerMovementUpdate.runDirection, true);
+            if (movementUpdate.runDirection != null) {
+                Player.localPlayer.move(movementUpdate.walkDirection, true);
+                Player.localPlayer.move(movementUpdate.runDirection, true);
             } else {
-                Player.localPlayer.move(playerMovementUpdate.walkDirection, false);
+                Player.localPlayer.move(movementUpdate.walkDirection, false);
             }
 
-            if (playerMovementUpdate.runUpdateBlock) {
+            if (movementUpdate.runUpdateBlock) {
                 Player.actorUpdatingIndices[Player.actorUpdatingIndex++] = 2047;
             }
 
@@ -116,8 +114,8 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
      * 
      * @param update The update information to apply
      */
-    private void handleOtherPlayersMovement(OtherPlayersMovementUpdate update) {
-        int trackedPlayerCount = update.playerCount;
+    private void handleOtherPlayersMovement(ActorGroupMovementUpdate update) {
+        int trackedPlayerCount = update.actorCount;
         if(trackedPlayerCount < Player.localPlayerCount) {
             for(int i = trackedPlayerCount; Player.localPlayerCount > i; i++)
                 Player.deregisterActorIndices[Class17.deregisterActorCount++] = Player.trackedPlayerIndices[i];
@@ -134,7 +132,7 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
             int trackedPlayerIndex = Player.trackedPlayerIndices[i];
             Player player = Player.trackedPlayers[trackedPlayerIndex];
 
-            OtherPlayerMovementUpdate playerUpdate = update.movementUpdates[i];
+            ActorMovementUpdate playerUpdate = update.movementUpdates[i];
             
             // no update required
             if (playerUpdate == null) {
@@ -159,7 +157,7 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
             }
 
             // handle the player movement
-            PlayerMovementUpdate movementUpdate = playerUpdate.movementUpdate;
+            MovementUpdate movementUpdate = playerUpdate.movementUpdate;
 
             if (movementUpdate.runDirection != null) {
                 player.move(movementUpdate.walkDirection, true);
