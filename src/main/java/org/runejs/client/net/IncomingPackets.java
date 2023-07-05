@@ -279,18 +279,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.RESET_ACTOR_ANIMATIONS.getOpcode()) {
-                for(int playerIdx = 0; playerIdx < Player.trackedPlayers.length; playerIdx++) {
-                    if(Player.trackedPlayers[playerIdx] != null)
-                        Player.trackedPlayers[playerIdx].playingAnimation = -1;
-                }
-                for(int npcIdx = 0; Player.npcs.length > npcIdx; npcIdx++) {
-                    if(Player.npcs[npcIdx] != null)
-                        Player.npcs[npcIdx].playingAnimation = -1;
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == 72) { // reset varbits?
                 for(int varPlayerIndex = 0; varPlayerIndex < VarPlayerDefinition.varPlayers.length; varPlayerIndex++) {
                     if(Buffer.anIntArray1984[varPlayerIndex] != VarPlayerDefinition.varPlayers[varPlayerIndex]) {
