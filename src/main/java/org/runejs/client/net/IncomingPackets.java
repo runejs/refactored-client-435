@@ -159,11 +159,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 130) {
-                MovedStatics.anInt854 = incomingPacketBuffer.getUnsignedShortLE();
-                opcode = -1;
-                return true;
-            }
             if(opcode == 129) {
                 int i_40_ = incomingPacketBuffer.getUnsignedByte();
                 int i_41_ = incomingPacketBuffer.getUnsignedByte();
