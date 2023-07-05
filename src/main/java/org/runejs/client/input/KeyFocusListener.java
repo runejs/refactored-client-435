@@ -57,16 +57,16 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             Class37.cursorCross[4 + OverlayDefinition.crossIndex / 100].drawImage(ClientScriptRunner.crossX - 8 - 4, MovedStatics.crossY - 8 - 4);
         }
         if (GameInterface.gameScreenInterfaceId != -1 || GroundItemTile.walkableWidgetId != -1) {
-                int var5 = GameInterface.gameScreenInterfaceId != -1 ? 0 : 4;
+                int areaId = GameInterface.gameScreenInterfaceId != -1 ? 0 : 4;
                 int id = GameInterface.gameScreenInterfaceId != -1 ? GameInterface.gameScreenInterfaceId : GroundItemTile.walkableWidgetId;
-                Renderable.handleSequences(GameInterface.gameScreenInterfaceId);
+                Renderable.handleSequences(id);
                 int yOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);
                 int xOffset = (ScreenController.drawWidth /2) - (512/2) - (234/3);
                 if(ScreenController.frameMode == ScreenMode.FIXED) {
                     yOffset = 0;
                     xOffset = 0;
                 }
-                Main.drawParentInterface(var5, xOffset, yOffset, 512+ xOffset, 334 + yOffset, id);
+                Main.drawParentInterface(areaId, xOffset, yOffset, 512+ xOffset, 334 + yOffset, id);
         }
         Class65.method1018();
         Player.setTutorialIslandFlag();
