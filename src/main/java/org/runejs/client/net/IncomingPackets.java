@@ -119,21 +119,28 @@ public class IncomingPackets {
             }
             if(opcode == PacketType.CLOSE_CUTSCENE.getOpcode()) { // close cutscene
                 Player.cutsceneActive = false;
-                for(int i_7_ = 0; i_7_ < 5; i_7_++)
-                    Projectile.aBooleanArray2975[i_7_] = false;
+                for(int cameraType = 0; cameraType < 5; cameraType++)
+                    Projectile.customCameraActive[cameraType] = false;
                 opcode = -1;
                 return true;
             }
-            if(opcode == 255) { // camera shake?
-                int i_23_ = incomingPacketBuffer.getUnsignedByte();
-                int i_24_ = incomingPacketBuffer.getUnsignedByte();
-                int i_25_ = incomingPacketBuffer.getUnsignedByte();
-                int i_26_ = incomingPacketBuffer.getUnsignedByte();
-                Projectile.aBooleanArray2975[i_23_] = true;
-                MovedStatics.anIntArray297[i_23_] = i_24_;
-                GameShell.anIntArray2[i_23_] = i_25_;
-                GroundItemTile.anIntArray1358[i_23_] = i_26_;
-                MovedStatics.anIntArray1846[i_23_] = 0;
+            if(opcode == PacketType.SHAKE_CAMERA.getOpcode()) { // camera shake?
+                /**
+                 * 0: east to west
+                 * 1: up down
+                 * 2: north to south
+                 * 3: yaw
+                 * 4: pitch
+                 */
+                int cameraType = incomingPacketBuffer.getUnsignedByte();
+                int jitter = incomingPacketBuffer.getUnsignedByte();
+                int amplitude = incomingPacketBuffer.getUnsignedByte();
+                int frequency = incomingPacketBuffer.getUnsignedByte();
+                Projectile.customCameraActive[cameraType] = true;
+                MovedStatics.customCameraJitter[cameraType] = jitter;
+                GameShell.customCameraAmplitude[cameraType] = amplitude;
+                GroundItemTile.customCameraFrequency[cameraType] = frequency;
+                MovedStatics.customCameraTimer[cameraType] = 0;
                 opcode = -1;
                 return true;
             }

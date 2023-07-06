@@ -79,7 +79,8 @@ public enum PacketType {
      */
     SHOW_TAB_WIDGET(237, 2),
     SET_WIDGET_MODEL(250, 6),
-    UPDATE_REFERENCE_POSITION(254, 2);
+    UPDATE_REFERENCE_POSITION(254, 2),
+    SHAKE_CAMERA(255, 4);
 
     /**
      * The packet opcode after ISAAC decryption.

@@ -1482,7 +1482,7 @@ public class MovedStatics {
 	public static Calendar aCalendar279 = Calendar.getInstance();
 	public static int connectionStage = 0;
 	public static int anInt292 = 0;
-	public static int[] anIntArray297 = new int[5];
+	public static int[] customCameraJitter = new int[5];
 
 	public static void drawMenu(int xOffSet, int yOffSet) {
 	    int height = CollisionMap.menuHeight;
@@ -2027,6 +2027,6 @@ public class MovedStatics {
 
 	public static int anInt1856;
 	public static int[] anIntArray1847 = new int[2000];
-	public static int[] anIntArray1846 = new int[5];
+	public static int[] customCameraTimer = new int[5];
 	public static long aLong1841;
 }
