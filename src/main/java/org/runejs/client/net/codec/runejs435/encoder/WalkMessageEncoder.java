@@ -35,7 +35,7 @@ public class WalkMessageEncoder implements MessageEncoder<WalkOutboundMessage> {
             return OutgoingPackets.openFixedSizePacket(3 + pathSize + pathSize, 89);
         }
 
-        if (walkType == WalkOutboundMessage.WalkType.INTERACTION) {
+        if (walkType == WalkOutboundMessage.WalkType.MAP) {
             return OutgoingPackets.openFixedSizePacket(3 + pathSize + pathSize + 14, 236);
         }
 
