@@ -197,7 +197,7 @@ public class IncomingPackets {
                 return true;
             }
             // object/ground item update packets?
-            if(opcode == PacketType.PLAY_SOUND_AT_POSITION.getOpcode() || opcode == PacketType.UPDATE_GROUND_ITEM_AMOUNT.getOpcode() || opcode == PacketType.TRANSFORM_PLAYER_TO_OBJECT.getOpcode() || opcode == PacketType.ADD_GROUND_ITEM_EXCLUDE_SOME_PLAYER.getOpcode() || opcode == PacketType.CREATE_STATIONARY_GFX.getOpcode() || opcode == PacketType.CREATE_PROJECTILE.getOpcode() || opcode == PacketType.REMOVE_GROUND_ITEM.getOpcode() || opcode == PacketType.ADD_GROUND_ITEM.getOpcode() || opcode == 49 || opcode == 143 || opcode == 241) {
+            if(opcode == PacketType.PLAY_SOUND_AT_POSITION.getOpcode() || opcode == PacketType.UPDATE_GROUND_ITEM_AMOUNT.getOpcode() || opcode == PacketType.TRANSFORM_PLAYER_TO_OBJECT.getOpcode() || opcode == PacketType.ADD_GROUND_ITEM_EXCLUDE_SOME_PLAYER.getOpcode() || opcode == PacketType.CREATE_STATIONARY_GFX.getOpcode() || opcode == PacketType.CREATE_PROJECTILE.getOpcode() || opcode == PacketType.REMOVE_GROUND_ITEM.getOpcode() || opcode == PacketType.ADD_GROUND_ITEM.getOpcode() || opcode == PacketType.ROTATE_ANIMATE_OBJECT.getOpcode() || opcode == 143 || opcode == 241) {
                 parseMapIncomingPacket();
                 opcode = -1;
                 return true;
@@ -230,47 +230,47 @@ public class IncomingPackets {
     }
 
     public static void parseMapIncomingPacket() {
-        if (opcode == 49) {
-            int i = incomingPacketBuffer.getUnsignedByte();
-            int i_0_ = OverlayDefinition.placementY + (i & 0x7);
-            int i_1_ = ((0x7b & i) >> 4) + MovedStatics.placementX;
-            int i_2_ = incomingPacketBuffer.getUnsignedByte();
-            int i_3_ = i_2_ >> 2;
-            int i_4_ = 0x3 & i_2_;
-            int i_5_ = Npc.anIntArray3304[i_3_];
-            int i_6_ = incomingPacketBuffer.getUnsignedShortLE();
-            if (i_1_ >= 0 && i_0_ >= 0 && i_1_ < 103 && i_0_ < 103) {
-                int i_7_ = MovedStatics.tile_height[Player.worldLevel][i_1_][i_0_];
-                int i_8_ = MovedStatics.tile_height[Player.worldLevel][i_1_ + 1][i_0_];
-                int i_9_ = MovedStatics.tile_height[Player.worldLevel][1 + i_1_][1 + i_0_];
-                int i_10_ = MovedStatics.tile_height[Player.worldLevel][i_1_][i_0_ + 1];
-                if (i_5_ == 0) {
-                    Wall wall = Npc.currentScene.method126(Player.worldLevel, i_1_, i_0_);
+        if (opcode == PacketType.ROTATE_ANIMATE_OBJECT.getOpcode()) {
+            int positionData = incomingPacketBuffer.getUnsignedByte();
+            int y = OverlayDefinition.placementY + (positionData & 0x7);
+            int x = ((0x7b & positionData) >> 4) + MovedStatics.placementX;
+            int objectData = incomingPacketBuffer.getUnsignedByte();
+            int objectTypeKey = objectData >> 2;
+            int orientation = 0x3 & objectData;
+            int objectType = Npc.anIntArray3304[objectTypeKey];
+            int animationId = incomingPacketBuffer.getUnsignedShortLE();
+            if (x >= 0 && y >= 0 && x < 103 && y < 103) {
+                int tileHeightX0Y0 = MovedStatics.tile_height[Player.worldLevel][x][y];
+                int tileHeightX1Y0 = MovedStatics.tile_height[Player.worldLevel][x + 1][y];
+                int tileHeightX1Y1 = MovedStatics.tile_height[Player.worldLevel][1 + x][1 + y];
+                int tileHeightX0Y1 = MovedStatics.tile_height[Player.worldLevel][x][y + 1];
+                if (objectType == 0) {
+                    Wall wall = Npc.currentScene.method126(Player.worldLevel, x, y);
                     if (wall != null) {
                         int i_11_ = 0x7fff & wall.hash >> 14;
-                        if (i_3_ == 2) {
-                            wall.primary = new GameObject(i_11_, 2, 4 + i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
-                            wall.secondary = new GameObject(i_11_, 2, 0x3 & i_4_ + 1, i_7_, i_8_, i_9_, i_10_, i_6_, false);
+                        if (objectTypeKey == 2) {
+                            wall.primary = new GameObject(i_11_, 2, 4 + orientation, tileHeightX0Y0, tileHeightX1Y0, tileHeightX1Y1, tileHeightX0Y1, animationId, false);
+                            wall.secondary = new GameObject(i_11_, 2, 0x3 & orientation + 1, tileHeightX0Y0, tileHeightX1Y0, tileHeightX1Y1, tileHeightX0Y1, animationId, false);
                         } else
-                            wall.primary = new GameObject(i_11_, i_3_, i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
+                            wall.primary = new GameObject(i_11_, objectTypeKey, orientation, tileHeightX0Y0, tileHeightX1Y0, tileHeightX1Y1, tileHeightX0Y1, animationId, false);
                     }
                 }
-                if (i_5_ == 1) {
-                    WallDecoration wallDecoration = Npc.currentScene.getWallDecoration(Player.worldLevel, i_1_, i_0_);
+                if (objectType == 1) {
+                    WallDecoration wallDecoration = Npc.currentScene.getWallDecoration(Player.worldLevel, x, y);
                     if (wallDecoration != null)
-                        wallDecoration.renderable = new GameObject((0x1fffe268 & wallDecoration.hash) >> 14, 4, 0, i_7_, i_8_, i_9_, i_10_, i_6_, false);
+                        wallDecoration.renderable = new GameObject((0x1fffe268 & wallDecoration.hash) >> 14, 4, 0, tileHeightX0Y0, tileHeightX1Y0, tileHeightX1Y1, tileHeightX0Y1, animationId, false);
                 }
-                if (i_5_ == 2) {
-                    InteractiveObject interactiveObject = Npc.currentScene.method107(Player.worldLevel, i_1_, i_0_);
-                    if (i_3_ == 11)
-                        i_3_ = 10;
+                if (objectType == 2) {
+                    InteractiveObject interactiveObject = Npc.currentScene.method107(Player.worldLevel, x, y);
+                    if (objectTypeKey == 11)
+                        objectTypeKey = 10;
                     if (interactiveObject != null)
-                        interactiveObject.renderable = new GameObject(interactiveObject.hash >> 14 & 0x7fff, i_3_, i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
+                        interactiveObject.renderable = new GameObject(interactiveObject.hash >> 14 & 0x7fff, objectTypeKey, orientation, tileHeightX0Y0, tileHeightX1Y0, tileHeightX1Y1, tileHeightX0Y1, animationId, false);
                 }
-                if (i_5_ == 3) {
-                    FloorDecoration floorDecoration = Npc.currentScene.getFloorDecoration(Player.worldLevel, i_1_, i_0_);
+                if (objectType == 3) {
+                    FloorDecoration floorDecoration = Npc.currentScene.getFloorDecoration(Player.worldLevel, x, y);
                     if (floorDecoration != null)
-                        floorDecoration.renderable = new GameObject(0x7fff & floorDecoration.hash >> 14, 22, i_4_, i_7_, i_8_, i_9_, i_10_, i_6_, false);
+                        floorDecoration.renderable = new GameObject(0x7fff & floorDecoration.hash >> 14, 22, orientation, tileHeightX0Y0, tileHeightX1Y0, tileHeightX1Y1, tileHeightX0Y1, animationId, false);
                 }
             }
         } else if (opcode == 241) { // set landscape object
