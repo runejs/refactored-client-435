@@ -2,6 +2,7 @@ package org.runejs.client.message.handler.rs435;
 
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.handler.rs435.audio.*;
+import org.runejs.client.message.handler.rs435.camera.*;
 import org.runejs.client.message.handler.rs435.config.*;
 import org.runejs.client.message.handler.rs435.updating.*;
 import org.runejs.client.message.handler.rs435.widget.*;
@@ -14,6 +15,7 @@ import org.runejs.client.message.handler.rs435.region.*;
 import org.runejs.client.message.handler.rs435.chat.*;
 import org.runejs.client.message.handler.rs435.console.*;
 import org.runejs.client.message.handler.rs435.misc.*;
+import org.runejs.client.message.inbound.camera.*;
 import org.runejs.client.message.inbound.chat.*;
 import org.runejs.client.message.handler.rs435.audio.PlayQuickSongMessageHandler;
 import org.runejs.client.message.handler.rs435.audio.PlaySongMessageHandler;
@@ -79,6 +81,9 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(UpdateNPCsInboundMessage.class, new UpdateNPCsMessageHandler());
         register(ResetAllActorAnimationsInboundMessage.class, new ResetAllActorAnimationsMessageHandler());
         register(SetLocalPlayerPositionInboundMessage.class, new SetLocalPlayerPositionMessageHandler());
+
+        // camera
+        register(CutsceneCameraMoveToInboundMessage.class, new CutsceneCameraMoveToMessageHandler());
 
         // widget
         register(SetWidgetTextInboundMessage.class, new SetWidgetTextMessageHandler());

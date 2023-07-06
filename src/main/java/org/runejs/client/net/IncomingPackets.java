@@ -144,21 +144,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.CUTSCENE_CAMERA_MOVE_TO.getOpcode()) { // move camera to
-                Player.cutsceneActive = true;
-                MovedStatics.anInt545 = incomingPacketBuffer.getUnsignedByte(); // x
-                SceneCluster.anInt767 = incomingPacketBuffer.getUnsignedByte(); // y
-                MovedStatics.anInt194 = incomingPacketBuffer.getUnsignedShortBE(); // height
-                MovedStatics.cutsceneCameraPositionBaseAdjust = incomingPacketBuffer.getUnsignedByte(); // base
-                Class59.cutsceneCameraPositionScaleAdjust = incomingPacketBuffer.getUnsignedByte(); // scale
-                if(Class59.cutsceneCameraPositionScaleAdjust >= 100) {
-                    MovedStatics.cameraY = 64 + SceneCluster.anInt767 * 128;
-                    Class12.cameraX = MovedStatics.anInt545 * 128 + 64;
-                    SceneCluster.cameraZ = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, MovedStatics.cameraY) - MovedStatics.anInt194;
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.BULK_WORLD_UPDATE.getOpcode()) { // mass object/ground item update packet
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
