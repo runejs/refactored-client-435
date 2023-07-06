@@ -3,12 +3,13 @@ package org.runejs.client.net.codec.runejs435.encoder;
 import org.runejs.client.message.outbound.WalkOutboundMessage;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
+import org.runejs.client.net.VariableLengthPacketBuffer;
 import org.runejs.client.net.codec.MessageEncoder;
 
 public class WalkMessageEncoder implements MessageEncoder<WalkOutboundMessage> {
     @Override
     public PacketBuffer encode(WalkOutboundMessage message) {
-        PacketBuffer buffer = this.createBufferForWalkType(message.type, message.steps.length);
+        VariableLengthPacketBuffer buffer = OutgoingPackets.openVariableSizePacket(this.getOpcodeForWalkType(message.type));
 
         buffer.putShortLE(message.startY);
         buffer.putByte(message.running ? 1 : 0);
@@ -23,23 +24,27 @@ public class WalkMessageEncoder implements MessageEncoder<WalkOutboundMessage> {
             buffer.putByte(step.y);
         }
 
+        // Map type walking has 14 bytes of junk on the end
+        if (message.type == WalkOutboundMessage.WalkType.MAP) {
+            buffer.currentPosition += 14;
+        }
+
+        buffer.writePacketLength();
+
         return buffer;
     }
 
-    private PacketBuffer createBufferForWalkType(WalkOutboundMessage.WalkType walkType, int pathSize) {
-        // original implementation did (3 + pathSize + pathSize), but pathSize included the first step (2 bytes).
-        // now it's separate, so it's 5 + pathSize + pathSize
-
+    private int getOpcodeForWalkType(WalkOutboundMessage.WalkType walkType) {
         if (walkType == WalkOutboundMessage.WalkType.TILE) {
-            return OutgoingPackets.openFixedSizePacket(5 + pathSize + pathSize, 73);
+            return 73;
         }
 
         if (walkType == WalkOutboundMessage.WalkType.INTERACTION) {
-            return OutgoingPackets.openFixedSizePacket(5 + pathSize + pathSize, 89);
+            return 89;
         }
 
         if (walkType == WalkOutboundMessage.WalkType.MAP) {
-            return OutgoingPackets.openFixedSizePacket(5 + pathSize + pathSize + 14, 236);
+            return 236;
         }
 
         throw new RuntimeException("Unhandled walk type");
