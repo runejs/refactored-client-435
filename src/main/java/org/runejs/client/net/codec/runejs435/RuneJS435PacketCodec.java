@@ -30,6 +30,7 @@ import org.runejs.client.net.codec.runejs435.decoder.widget.text.*;
 import org.runejs.client.net.codec.runejs435.decoder.widget.visibility.*;
 import org.runejs.client.net.codec.runejs435.decoder.world.*;
 import org.runejs.client.net.codec.runejs435.decoder.world.item.*;
+import org.runejs.client.net.codec.runejs435.decoder.world.object.*;
 import org.runejs.client.net.codec.runejs435.encoder.WalkMessageEncoder;
 import org.runejs.client.net.codec.runejs435.encoder.chat.*;
 import org.runejs.client.net.codec.runejs435.encoder.console.*;
@@ -202,5 +203,8 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.PLAY_SOUND_AT_POSITION.getOpcode(), new PlaySoundAtPositionMessageDecoder());
         register(PacketType.CREATE_PROJECTILE.getOpcode(), new CreateProjectileMessageDecoder());
         register(PacketType.CREATE_STATIONARY_GFX.getOpcode(), new CreateStationaryGFXMessageDecoder());
+        register(PacketType.SPAWN_OBJECT.getOpcode(), new CreateObjectMessageDecoder());
+        register(PacketType.REMOVE_OBJECT.getOpcode(), new RemoveObjectMessageDecoder());
+        register(PacketType.ROTATE_ANIMATE_OBJECT.getOpcode(), new RotateAnimateObjectMessageDecoder());
     }
 }
