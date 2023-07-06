@@ -197,7 +197,7 @@ public class IncomingPackets {
                 return true;
             }
             // object/ground item update packets?
-            if(opcode == PacketType.PLAY_SOUND_AT_POSITION.getOpcode() || opcode == PacketType.UPDATE_GROUND_ITEM_AMOUNT.getOpcode() || opcode == PacketType.TRANSFORM_PLAYER_TO_OBJECT.getOpcode() || opcode == 19 || opcode == 202 || opcode == 1 || opcode == 74 || opcode == 175 || opcode == 49 || opcode == 143 || opcode == 241) {
+            if(opcode == PacketType.PLAY_SOUND_AT_POSITION.getOpcode() || opcode == PacketType.UPDATE_GROUND_ITEM_AMOUNT.getOpcode() || opcode == PacketType.TRANSFORM_PLAYER_TO_OBJECT.getOpcode() || opcode == PacketType.ADD_GROUND_ITEM_EXCLUDE_SOME_PLAYER.getOpcode() || opcode == 202 || opcode == 1 || opcode == PacketType.REMOVE_GROUND_ITEM.getOpcode() || opcode == PacketType.ADD_GROUND_ITEM.getOpcode() || opcode == 49 || opcode == 143 || opcode == 241) {
                 parseMapIncomingPacket();
                 opcode = -1;
                 return true;
@@ -404,7 +404,7 @@ public class IncomingPackets {
                         }
                     }
                 }
-                if (opcode == 74) { // remove world item
+                if (opcode == PacketType.REMOVE_GROUND_ITEM.getOpcode()) { // remove world item
                     int i = incomingPacketBuffer.getUnsignedByte();
                     int i_65_ = MovedStatics.placementX + (i >> 4 & 0x7);
                     int i_66_ = (i & 0x7) + OverlayDefinition.placementY;
@@ -447,36 +447,36 @@ public class IncomingPackets {
                         Class43.projectileQueue.addLast(projectile);
                     }
                 } else {
-                    if (opcode == 19) { // update world item amount
-                        int i = incomingPacketBuffer.getUnsignedShortLE();
-                        int i_80_ = incomingPacketBuffer.getUnsignedShortLE();
-                        int i_81_ = incomingPacketBuffer.getUnsignedShortBE();
-                        int i_82_ = incomingPacketBuffer.getUnsignedByte();
-                        int i_83_ = ((0x71 & i_82_) >> 4) + MovedStatics.placementX;
-                        int i_84_ = (0x7 & i_82_) + OverlayDefinition.placementY;
-                        if (i_83_ >= 0 && i_84_ >= 0 && i_83_ < 104 && i_84_ < 104 && PlayerAppearance.anInt708 != i_80_) {
+                    if (opcode == PacketType.ADD_GROUND_ITEM_EXCLUDE_SOME_PLAYER.getOpcode()) {
+                        int amount = incomingPacketBuffer.getUnsignedShortLE();
+                        int playerToExclude = incomingPacketBuffer.getUnsignedShortLE();
+                        int itemId = incomingPacketBuffer.getUnsignedShortBE();
+                        int positionInfo = incomingPacketBuffer.getUnsignedByte();
+                        int x = ((0x71 & positionInfo) >> 4) + MovedStatics.placementX;
+                        int y = (0x7 & positionInfo) + OverlayDefinition.placementY;
+                        if (x >= 0 && y >= 0 && x < 104 && y < 104 && PlayerAppearance.anInt708 != playerToExclude) {
                             Item item = new Item();
-                            item.itemId = i_81_;
-                            item.itemCount = i;
-                            if (Wall.groundItems[Player.worldLevel][i_83_][i_84_] == null)
-                                Wall.groundItems[Player.worldLevel][i_83_][i_84_] = new LinkedList();
-                            Wall.groundItems[Player.worldLevel][i_83_][i_84_].addLast(item);
-                            FramemapDefinition.spawnGroundItem(i_84_, i_83_);
+                            item.itemId = itemId;
+                            item.itemCount = amount;
+                            if (Wall.groundItems[Player.worldLevel][x][y] == null)
+                                Wall.groundItems[Player.worldLevel][x][y] = new LinkedList();
+                            Wall.groundItems[Player.worldLevel][x][y].addLast(item);
+                            FramemapDefinition.spawnGroundItem(y, x);
                         }
-                    } else if (opcode == 175) { // add world item
-                        int i = incomingPacketBuffer.getUnsignedShortLE();
-                        int i_85_ = incomingPacketBuffer.getUnsignedShortBE();
-                        int i_86_ = incomingPacketBuffer.getUnsignedByte();
-                        int i_87_ = OverlayDefinition.placementY + (i_86_ & 0x7);
-                        int i_88_ = MovedStatics.placementX + ((0x7a & i_86_) >> 4);
-                        if (i_88_ >= 0 && i_87_ >= 0 && i_88_ < 104 && i_87_ < 104) {
+                    } else if (opcode == PacketType.ADD_GROUND_ITEM.getOpcode()) {
+                        int itemId = incomingPacketBuffer.getUnsignedShortLE();
+                        int amount = incomingPacketBuffer.getUnsignedShortBE();
+                        int positionInfo = incomingPacketBuffer.getUnsignedByte();
+                        int y = OverlayDefinition.placementY + (positionInfo & 0x7);
+                        int x = MovedStatics.placementX + ((0x7a & positionInfo) >> 4);
+                        if (x >= 0 && y >= 0 && x < 104 && y < 104) {
                             Item item = new Item();
-                            item.itemCount = i_85_;
-                            item.itemId = i;
-                            if (Wall.groundItems[Player.worldLevel][i_88_][i_87_] == null)
-                                Wall.groundItems[Player.worldLevel][i_88_][i_87_] = new LinkedList();
-                            Wall.groundItems[Player.worldLevel][i_88_][i_87_].addLast(item);
-                            FramemapDefinition.spawnGroundItem(i_87_, i_88_);
+                            item.itemCount = amount;
+                            item.itemId = itemId;
+                            if (Wall.groundItems[Player.worldLevel][x][y] == null)
+                                Wall.groundItems[Player.worldLevel][x][y] = new LinkedList();
+                            Wall.groundItems[Player.worldLevel][x][y].addLast(item);
+                            FramemapDefinition.spawnGroundItem(y, x);
                         }
                     }
                 }
