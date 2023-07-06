@@ -112,11 +112,6 @@ public class IncomingPackets {
 
             MovedStatics.gameServerSocket.readDataToBuffer(0, incomingPacketSize, incomingPacketBuffer.buffer);
 
-            if(opcode == 233) { // clear destination X
-                opcode = -1;
-                MovedStatics.destinationX = 0;
-                return true;
-            }
             if(opcode == PacketType.CLOSE_CUTSCENE.getOpcode()) { // close cutscene
                 Player.cutsceneActive = false;
                 for(int cameraType = 0; cameraType < 5; cameraType++)
