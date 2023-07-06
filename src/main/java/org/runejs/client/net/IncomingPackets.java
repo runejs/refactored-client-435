@@ -144,15 +144,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 129) {
-                int i_40_ = incomingPacketBuffer.getUnsignedByte();
-                int i_41_ = incomingPacketBuffer.getUnsignedByte();
-                int i_42_ = incomingPacketBuffer.getUnsignedByte();
-                Player.worldLevel = i_40_ >> 1;
-                Player.localPlayer.method787(i_42_, -7717, (i_40_ & 0x1) == 1, i_41_);
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.CUTSCENE_CAMERA_MOVE_TO.getOpcode()) { // move camera to
                 Player.cutsceneActive = true;
                 MovedStatics.anInt545 = incomingPacketBuffer.getUnsignedByte(); // x
