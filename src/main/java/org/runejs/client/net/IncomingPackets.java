@@ -122,12 +122,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            // object/ground item update packets?
-            if(opcode == PacketType.ROTATE_ANIMATE_OBJECT.getOpcode() || opcode == PacketType.REMOVE_OBJECT.getOpcode() || opcode == PacketType.SPAWN_OBJECT.getOpcode()) {
-                parseMapIncomingPacket();
-                opcode = -1;
-                return true;
-            }
             if(opcode == 240) {
                 ClientScriptRunner.parseClientScriptPacket(Main.signlink, incomingPacketBuffer);
                 opcode = -1;

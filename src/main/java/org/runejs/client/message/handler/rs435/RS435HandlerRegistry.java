@@ -17,6 +17,7 @@ import org.runejs.client.message.handler.rs435.console.*;
 import org.runejs.client.message.handler.rs435.misc.*;
 import org.runejs.client.message.handler.rs435.world.*;
 import org.runejs.client.message.handler.rs435.world.item.*;
+import org.runejs.client.message.handler.rs435.world.object.*;
 import org.runejs.client.message.inbound.camera.*;
 import org.runejs.client.message.inbound.chat.*;
 import org.runejs.client.message.handler.rs435.audio.PlayQuickSongMessageHandler;
@@ -38,6 +39,7 @@ import org.runejs.client.message.inbound.widget.text.*;
 import org.runejs.client.message.inbound.widget.visibility.*;
 import org.runejs.client.message.inbound.world.*;
 import org.runejs.client.message.inbound.world.item.*;
+import org.runejs.client.message.inbound.world.object.*;
 
 /**
  * A {@link MessageHandlerRegistry} for the RS revision 435 client.
@@ -138,5 +140,8 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(PlaySoundAtPositionInboundMessage.class, new PlaySoundAtPositionMessageHandler());
         register(CreateProjectileInboundMessage.class, new CreateProjectileMessageHandler());
         register(CreateStationaryGFXInboundMessage.class, new CreateStationaryGFXMessageHandler());
+        register(CreateObjectInboundMessage.class, new CreateObjectMessageHandler());
+        register(RemoveObjectInboundMessage.class, new RemoveObjectMessageHandler());
+        register(RotateAnimateObjectInboundMessage.class, new RotateAnimateObjectMessageHandler());
     }
 }
