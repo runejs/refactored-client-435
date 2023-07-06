@@ -178,7 +178,7 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.CUTSCENE_CAMERA.getOpcode()) { // static cutscene camera
+            if(opcode == PacketType.CUTSCENE_CAMERA_LOOK_TO.getOpcode()) { // static cutscene camera
                 Player.cutsceneActive = true;
                 MovedStatics.anInt564 = incomingPacketBuffer.getUnsignedByte(); // x pos
                 MovedStatics.anInt2576 = incomingPacketBuffer.getUnsignedByte(); // y pos
