@@ -161,7 +161,7 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 63) { // mass object/ground item update packet
+            if(opcode == PacketType.BULK_WORLD_UPDATE.getOpcode()) { // mass object/ground item update packet
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
                 while(incomingPacketBuffer.currentPosition < incomingPacketSize) {
