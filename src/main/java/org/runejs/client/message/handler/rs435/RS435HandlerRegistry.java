@@ -15,6 +15,8 @@ import org.runejs.client.message.handler.rs435.region.*;
 import org.runejs.client.message.handler.rs435.chat.*;
 import org.runejs.client.message.handler.rs435.console.*;
 import org.runejs.client.message.handler.rs435.misc.*;
+import org.runejs.client.message.handler.rs435.world.*;
+import org.runejs.client.message.handler.rs435.world.item.*;
 import org.runejs.client.message.inbound.camera.*;
 import org.runejs.client.message.inbound.chat.*;
 import org.runejs.client.message.handler.rs435.audio.PlayQuickSongMessageHandler;
@@ -34,6 +36,8 @@ import org.runejs.client.message.inbound.widget.input.*;
 import org.runejs.client.message.inbound.widget.model.*;
 import org.runejs.client.message.inbound.widget.text.*;
 import org.runejs.client.message.inbound.widget.visibility.*;
+import org.runejs.client.message.inbound.world.*;
+import org.runejs.client.message.inbound.world.item.*;
 
 /**
  * A {@link MessageHandlerRegistry} for the RS revision 435 client.
@@ -82,6 +86,7 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(UpdateNPCsInboundMessage.class, new UpdateNPCsMessageHandler());
         register(ResetAllActorAnimationsInboundMessage.class, new ResetAllActorAnimationsMessageHandler());
         register(SetLocalPlayerPositionInboundMessage.class, new SetLocalPlayerPositionMessageHandler());
+        register(ClearLocalPlayerDestinationInboundMessage.class, new ClearLocalPlayerDestinationMessageHandler());
 
         // camera
         register(CutsceneCameraLookToInboundMessage.class, new CutsceneCameraLookToMessageHandler());
@@ -125,5 +130,11 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(LoadStandardRegionInboundMessage.class, new LoadStandardRegionMessageHandler());
         register(LoadConstructedRegionInboundMessage.class, new LoadConstructedRegionMessageHandler());
         register(UpdateReferencePositionInboundMessage.class, new UpdateReferencePositionMessageHandler());
+
+        // world
+        register(AddGroundItemInboundMessage.class, new AddGroundItemMessageHandler());
+        register(UpdateGroundItemAmountInboundMessage.class, new UpdateGroundItemAmountMessageHandler());
+        register(RemoveGroundItemInboundMessage.class, new RemoveGroundItemMessageHandler());
+        register(PlaySoundAtPositionInboundMessage.class, new PlaySoundAtPositionMessageHandler());
     }
 }
