@@ -196,5 +196,6 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.UPDATE_GROUND_ITEM_AMOUNT.getOpcode(), new UpdateGroundItemAmountMessageDecoder());
         register(PacketType.REMOVE_GROUND_ITEM.getOpcode(), new RemoveGroundItemMessageDecoder());
         register(PacketType.PLAY_SOUND_AT_POSITION.getOpcode(), new PlaySoundAtPositionMessageDecoder());
+        register(PacketType.CREATE_STATIONARY_GFX.getOpcode(), new CreateStationaryGFXMessageDecoder());
     }
 }

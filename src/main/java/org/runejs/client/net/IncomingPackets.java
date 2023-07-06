@@ -123,7 +123,7 @@ public class IncomingPackets {
                 return true;
             }
             // object/ground item update packets?
-            if(opcode == PacketType.CREATE_STATIONARY_GFX.getOpcode() || opcode == PacketType.CREATE_PROJECTILE.getOpcode() || opcode == PacketType.ROTATE_ANIMATE_OBJECT.getOpcode() || opcode == PacketType.REMOVE_OBJECT.getOpcode() || opcode == PacketType.SPAWN_OBJECT.getOpcode()) {
+            if(opcode == PacketType.CREATE_PROJECTILE.getOpcode() || opcode == PacketType.ROTATE_ANIMATE_OBJECT.getOpcode() || opcode == PacketType.REMOVE_OBJECT.getOpcode() || opcode == PacketType.SPAWN_OBJECT.getOpcode()) {
                 parseMapIncomingPacket();
                 opcode = -1;
                 return true;
@@ -230,16 +230,16 @@ public class IncomingPackets {
             }
             if (opcode == PacketType.CREATE_STATIONARY_GFX.getOpcode()) {
                 int i = incomingPacketBuffer.getUnsignedByte();
-                int i_27_ = ((0x78 & i) >> 4) + MovedStatics.placementX;
-                int i_28_ = OverlayDefinition.placementY + (0x7 & i);
-                int i_29_ = incomingPacketBuffer.getUnsignedShortBE();
-                int i_30_ = incomingPacketBuffer.getUnsignedByte();
-                int i_31_ = incomingPacketBuffer.getUnsignedShortBE();
-                if (i_27_ >= 0 && i_28_ >= 0 && i_27_ < 104 && i_28_ < 104) {
-                    i_28_ = 128 * i_28_ + 64;
-                    i_27_ = i_27_ * 128 + 64;
-                    Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = new Class40_Sub5_Sub17_Sub6(i_29_, Player.worldLevel, i_27_, i_28_, -i_30_ + Class37.getFloorDrawHeight(Player.worldLevel, i_27_, i_28_), i_31_, MovedStatics.pulseCycle);
-                    Class57.aLinkedList_1332.addLast(class40_sub5_sub17_sub6);
+                int x = ((0x78 & i) >> 4) + MovedStatics.placementX;
+                int y = OverlayDefinition.placementY + (0x7 & i);
+                int gfxId = incomingPacketBuffer.getUnsignedShortBE();
+                int drawHeight = incomingPacketBuffer.getUnsignedByte();
+                int delay = incomingPacketBuffer.getUnsignedShortBE();
+                if (x >= 0 && y >= 0 && x < 104 && y < 104) {
+                    y = 128 * y + 64;
+                    x = x * 128 + 64;
+                    Class40_Sub5_Sub17_Sub6 gfx = new Class40_Sub5_Sub17_Sub6(gfxId, Player.worldLevel, x, y, -drawHeight + Class37.getFloorDrawHeight(Player.worldLevel, x, y), delay, MovedStatics.pulseCycle);
+                    Class57.aLinkedList_1332.addLast(gfx);
                 }
             } else if (opcode == PacketType.UPDATE_GROUND_ITEM_AMOUNT.getOpcode()) {
                 int i = incomingPacketBuffer.getUnsignedByte();
