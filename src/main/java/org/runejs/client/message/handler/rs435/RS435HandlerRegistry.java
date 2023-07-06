@@ -85,6 +85,7 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         // camera
         register(CutsceneCameraLookToInboundMessage.class, new CutsceneCameraLookToMessageHandler());
         register(CutsceneCameraMoveToInboundMessage.class, new CutsceneCameraMoveToMessageHandler());
+        register(ShakeCameraInboundMessage.class, new ShakeCameraMessageHandler());
 
         // widget
         register(SetWidgetTextInboundMessage.class, new SetWidgetTextMessageHandler());

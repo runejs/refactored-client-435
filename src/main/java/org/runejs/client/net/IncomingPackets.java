@@ -124,26 +124,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.SHAKE_CAMERA.getOpcode()) { // camera shake?
-                /**
-                 * 0: east to west
-                 * 1: up down
-                 * 2: north to south
-                 * 3: yaw
-                 * 4: pitch
-                 */
-                int cameraType = incomingPacketBuffer.getUnsignedByte();
-                int jitter = incomingPacketBuffer.getUnsignedByte();
-                int amplitude = incomingPacketBuffer.getUnsignedByte();
-                int frequency = incomingPacketBuffer.getUnsignedByte();
-                Projectile.customCameraActive[cameraType] = true;
-                MovedStatics.customCameraJitter[cameraType] = jitter;
-                GameShell.customCameraAmplitude[cameraType] = amplitude;
-                GroundItemTile.customCameraFrequency[cameraType] = frequency;
-                MovedStatics.customCameraTimer[cameraType] = 0;
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.BULK_WORLD_UPDATE.getOpcode()) { // mass object/ground item update packet
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
