@@ -117,13 +117,6 @@ public class IncomingPackets {
                 MovedStatics.destinationX = 0;
                 return true;
             }
-            if(opcode == PacketType.CLOSE_CUTSCENE.getOpcode()) { // close cutscene
-                Player.cutsceneActive = false;
-                for(int cameraType = 0; cameraType < 5; cameraType++)
-                    Projectile.customCameraActive[cameraType] = false;
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.BULK_WORLD_UPDATE.getOpcode()) { // mass object/ground item update packet
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
