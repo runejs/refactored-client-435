@@ -157,7 +157,7 @@ public class UpdateNPCsMessageHandler implements MessageHandler<UpdateNPCsInboun
             if(npc.anInt3113 == 0)
                 npc.anInt3118 = 0;
             npc.turnRightAnimationId = npc.actorDefinition.rotate90RightAnimation;
-            npc.method787(Player.localPlayer.pathX[0] + offsetY, -7717, playerUpdate.updateRequired, Player.localPlayer.pathY[0] + offsetX);
+            npc.method787(Player.localPlayer.pathX[0] + offsetY, playerUpdate.updateRequired, Player.localPlayer.pathY[0] + offsetX);
         }
     }
 }

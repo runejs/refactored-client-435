@@ -82,7 +82,7 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
                 Player.actorUpdatingIndices[Player.actorUpdatingIndex++] = 2047;
             }
             
-            Player.localPlayer.method787(update.mapRegionUpdate.localChunkY, -7717, update.mapRegionUpdate.teleporting, update.mapRegionUpdate.localChunkX);
+            Player.localPlayer.method787(update.mapRegionUpdate.localChunkY, update.mapRegionUpdate.teleporting, update.mapRegionUpdate.localChunkX);
 
             return;
         }
@@ -220,7 +220,7 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
                 Player.actorUpdatingIndices[Player.actorUpdatingIndex++] = newPlayerIndex;
 
             // adjust the actors position?
-            player.method787(offsetY + Player.localPlayer.pathX[0], -7717, playerUpdate.updateRequired, Player.localPlayer.pathY[0] + offsetX);
+            player.method787(offsetY + Player.localPlayer.pathX[0], playerUpdate.updateRequired, Player.localPlayer.pathY[0] + offsetX);
         }
     }
 }

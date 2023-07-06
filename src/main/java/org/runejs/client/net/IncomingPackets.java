@@ -142,7 +142,7 @@ public class IncomingPackets {
                 int i_41_ = incomingPacketBuffer.getUnsignedByte();
                 int i_42_ = incomingPacketBuffer.getUnsignedByte();
                 Player.worldLevel = i_40_ >> 1;
-                Player.localPlayer.method787(i_42_, -7717, (i_40_ & 0x1) == 1, i_41_);
+                Player.localPlayer.method787(i_42_, (i_40_ & 0x1) == 1, i_41_);
                 opcode = -1;
                 return true;
             }
