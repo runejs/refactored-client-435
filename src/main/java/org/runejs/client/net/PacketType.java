@@ -73,6 +73,7 @@ public enum PacketType {
     SET_VARP_BYTE(222, 3),
     UPDATE_PLAYER_OPTIONS(223, -1),
     UPDATE_WIDGET_TEXT_COLOR(231, 6),
+    CUTSCENE_CAMERA(234, 6),
     SET_MINIMAP_STATE(235, 1),
     /**
      * Display a widget over the tab area.

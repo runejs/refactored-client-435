@@ -178,27 +178,32 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == 234) {
+            if(opcode == PacketType.CUTSCENE_CAMERA.getOpcode()) { // static cutscene camera
                 Player.cutsceneActive = true;
-                MovedStatics.anInt564 = incomingPacketBuffer.getUnsignedByte();
-                MovedStatics.anInt2576 = incomingPacketBuffer.getUnsignedByte();
-                MovedStatics.anInt892 = incomingPacketBuffer.getUnsignedShortBE();
-                Class60.anInt1413 = incomingPacketBuffer.getUnsignedByte();
-                MovedStatics.anInt1856 = incomingPacketBuffer.getUnsignedByte();
-                if(MovedStatics.anInt1856 >= 100) {
-                    int i_69_ = 128 * MovedStatics.anInt564 + 64;
-                    int i_70_ = 128 * MovedStatics.anInt2576 + 64;
-                    int i_71_ = Class37.getFloorDrawHeight(Player.worldLevel, i_69_, i_70_) - MovedStatics.anInt892;
-                    int i_72_ = i_69_ + -Class12.cameraX;
-                    int i_73_ = i_70_ + -MovedStatics.cameraY;
-                    int i_74_ = -SceneCluster.cameraZ + i_71_;
-                    int i_75_ = (int) Math.sqrt((double) (i_73_ * i_73_ + i_72_ * i_72_));
-                    Class26.anInt627 = (int) (325.949 * Math.atan2((double) i_74_, (double) i_75_)) & 0x7ff;
-                    ProducingGraphicsBuffer_Sub1.anInt2210 = (int) (Math.atan2((double) i_72_, (double) i_73_) * -325.949) & 0x7ff;
-                    if(Class26.anInt627 < 128)
-                        Class26.anInt627 = 128;
-                    if(Class26.anInt627 > 383)
-                        Class26.anInt627 = 383;
+                MovedStatics.anInt564 = incomingPacketBuffer.getUnsignedByte(); // x pos
+                MovedStatics.anInt2576 = incomingPacketBuffer.getUnsignedByte(); // y pos
+                MovedStatics.anInt892 = incomingPacketBuffer.getUnsignedShortBE(); // height
+                Class60.cutsceneCameraRotationBaseAdjust = incomingPacketBuffer.getUnsignedByte();
+                MovedStatics.cutsceneCameraRotationScaleAdjust = incomingPacketBuffer.getUnsignedByte();
+                if(MovedStatics.cutsceneCameraRotationScaleAdjust >= 100) {
+                    int x = 128 * MovedStatics.anInt564 + 64;
+                    int y = 128 * MovedStatics.anInt2576 + 64;
+                    int z = Class37.getFloorDrawHeight(Player.worldLevel, x, y) - MovedStatics.anInt892;
+
+                    int deltaX = x - Class12.cameraX;
+                    int deltaY = y - MovedStatics.cameraY;
+                    int deltaZ = z - SceneCluster.cameraZ;
+
+                    int horizontalDistance = (int) Math.sqrt((double) (deltaY * deltaY + deltaX * deltaX));
+
+                    // (maybe) convert radians to 2048-step rotational unit
+                    Class26.cameraVerticalRotation = (int) (325.949 * Math.atan2((double) deltaZ, (double) horizontalDistance)) & 0x7ff;
+                    ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation = (int) (-325.949 * Math.atan2((double) deltaX, (double) deltaY)) & 0x7ff;
+
+                    if(Class26.cameraVerticalRotation < 128)
+                        Class26.cameraVerticalRotation = 128;
+                    if(Class26.cameraVerticalRotation > 383)
+                        Class26.cameraVerticalRotation = 383;
                 }
                 opcode = -1;
                 return true;

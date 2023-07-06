@@ -269,7 +269,7 @@ public class Projectile extends Renderable {
             return Player.worldLevel;
         }
         int i = 3;
-        if(Class26.anInt627 < 310) {
+        if(Class26.cameraVerticalRotation < 310) {
             int i_22_ = MovedStatics.cameraY >> 7;
             int i_23_ = Class12.cameraX >> 7;
             if(i_22_ > 103) {
