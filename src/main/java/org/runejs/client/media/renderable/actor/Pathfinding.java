@@ -7,6 +7,9 @@ import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pathfinding {
     public static boolean doWalkTo(int arg0, int arg1, int startX, int endX, int objectType, boolean flag, int arg7, int arg8, int startY, int endY, int clickType) {
         for(int x = 0; x < 104; x++) {
@@ -186,12 +189,13 @@ public class Pathfinding {
                 walkType = WalkOutboundMessage.WalkType.INTERACTION;
             }
 
-            WalkOutboundMessage.WalkStep[] steps = new WalkOutboundMessage.WalkStep[maxPathSize];
+            List<WalkOutboundMessage.WalkStep> steps = new ArrayList<>();
             for(int counter = 1; maxPathSize > counter; counter++) {
                 currentIndex--;
                 int stepX = Class24.walkingQueueX[currentIndex] - x;
                 int stepY = Wall.walkingQueueY[currentIndex] - y;
-                steps[counter - 1] = new WalkOutboundMessage.WalkStep(stepX, stepY);
+
+                steps.add(new WalkOutboundMessage.WalkStep(stepX, stepY));
             }
 
             OutgoingPackets.sendMessage(
@@ -200,7 +204,7 @@ public class Pathfinding {
                     MovedStatics.baseX + x,
                     Class26.baseY + y,
                     Item.obfuscatedKeyStatus[82],
-                    steps
+                    steps.toArray(new WalkOutboundMessage.WalkStep[steps.size()])
                 )
             );
 
