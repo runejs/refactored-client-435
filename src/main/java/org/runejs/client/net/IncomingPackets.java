@@ -123,7 +123,7 @@ public class IncomingPackets {
                 return true;
             }
             // object/ground item update packets?
-            if(opcode == PacketType.CREATE_PROJECTILE.getOpcode() || opcode == PacketType.ROTATE_ANIMATE_OBJECT.getOpcode() || opcode == PacketType.REMOVE_OBJECT.getOpcode() || opcode == PacketType.SPAWN_OBJECT.getOpcode()) {
+            if(opcode == PacketType.CREATE_PROJECTILE.getOpcode() || opcode == PacketType.ROTATE_ANIMATE_OBJECT.getOpcode() || opcode == PacketType.REMOVE_OBJECT.getOpcode()) {
                 parseMapIncomingPacket();
                 opcode = -1;
                 return true;
