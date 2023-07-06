@@ -197,7 +197,7 @@ public class IncomingPackets {
                 return true;
             }
             // object/ground item update packets?
-            if(opcode == PacketType.PLAY_SOUND_AT_POSITION.getOpcode() || opcode == PacketType.UPDATE_GROUND_ITEM_AMOUNT.getOpcode() || opcode == PacketType.TRANSFORM_PLAYER_TO_OBJECT.getOpcode() || opcode == PacketType.ADD_GROUND_ITEM_EXCLUDE_SOME_PLAYER.getOpcode() || opcode == PacketType.CREATE_STATIONARY_GFX.getOpcode() || opcode == PacketType.CREATE_PROJECTILE.getOpcode() || opcode == PacketType.REMOVE_GROUND_ITEM.getOpcode() || opcode == PacketType.ADD_GROUND_ITEM.getOpcode() || opcode == PacketType.ROTATE_ANIMATE_OBJECT.getOpcode() || opcode == PacketType.REMOVE_OBJECT.getOpcode() || opcode == 241) {
+            if(opcode == PacketType.PLAY_SOUND_AT_POSITION.getOpcode() || opcode == PacketType.UPDATE_GROUND_ITEM_AMOUNT.getOpcode() || opcode == PacketType.TRANSFORM_PLAYER_TO_OBJECT.getOpcode() || opcode == PacketType.ADD_GROUND_ITEM_EXCLUDE_SOME_PLAYER.getOpcode() || opcode == PacketType.CREATE_STATIONARY_GFX.getOpcode() || opcode == PacketType.CREATE_PROJECTILE.getOpcode() || opcode == PacketType.REMOVE_GROUND_ITEM.getOpcode() || opcode == PacketType.ADD_GROUND_ITEM.getOpcode() || opcode == PacketType.ROTATE_ANIMATE_OBJECT.getOpcode() || opcode == PacketType.REMOVE_OBJECT.getOpcode() || opcode == PacketType.SPAWN_OBJECT.getOpcode()) {
                 parseMapIncomingPacket();
                 opcode = -1;
                 return true;
@@ -273,7 +273,7 @@ public class IncomingPackets {
                         floorDecoration.renderable = new GameObject(0x7fff & floorDecoration.hash >> 14, 22, orientation, tileHeightX0Y0, tileHeightX1Y0, tileHeightX1Y1, tileHeightX0Y1, animationId, false);
                 }
             }
-        } else if (opcode == 241) { // set landscape object
+        } else if (opcode == PacketType.SPAWN_OBJECT.getOpcode()) { // set landscape object
             int data = incomingPacketBuffer.getUnsignedByte();
             int orientation = data & 0x3;
             int objectTypeIndex = data >> 2;
