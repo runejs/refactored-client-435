@@ -122,12 +122,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            // object/ground item update packets?
-            if(opcode == PacketType.CREATE_PROJECTILE.getOpcode()) {
-                parseMapIncomingPacket();
-                opcode = -1;
-                return true;
-            }
             if(opcode == 240) {
                 ClientScriptRunner.parseClientScriptPacket(Main.signlink, incomingPacketBuffer);
                 opcode = -1;
