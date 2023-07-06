@@ -83,6 +83,7 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(SetLocalPlayerPositionInboundMessage.class, new SetLocalPlayerPositionMessageHandler());
 
         // camera
+        register(CutsceneCameraLookToInboundMessage.class, new CutsceneCameraLookToMessageHandler());
         register(CutsceneCameraMoveToInboundMessage.class, new CutsceneCameraMoveToMessageHandler());
 
         // widget

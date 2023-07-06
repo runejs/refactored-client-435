@@ -154,36 +154,6 @@ public class IncomingPackets {
                 opcode = -1;
                 return true;
             }
-            if(opcode == PacketType.CUTSCENE_CAMERA_LOOK_TO.getOpcode()) { // static cutscene camera
-                Player.cutsceneActive = true;
-                MovedStatics.anInt564 = incomingPacketBuffer.getUnsignedByte(); // x pos
-                MovedStatics.anInt2576 = incomingPacketBuffer.getUnsignedByte(); // y pos
-                MovedStatics.anInt892 = incomingPacketBuffer.getUnsignedShortBE(); // height
-                Class60.cutsceneCameraRotationBaseAdjust = incomingPacketBuffer.getUnsignedByte();
-                MovedStatics.cutsceneCameraRotationScaleAdjust = incomingPacketBuffer.getUnsignedByte();
-                if(MovedStatics.cutsceneCameraRotationScaleAdjust >= 100) {
-                    int x = 128 * MovedStatics.anInt564 + 64;
-                    int y = 128 * MovedStatics.anInt2576 + 64;
-                    int z = Class37.getFloorDrawHeight(Player.worldLevel, x, y) - MovedStatics.anInt892;
-
-                    int deltaX = x - Class12.cameraX;
-                    int deltaY = y - MovedStatics.cameraY;
-                    int deltaZ = z - SceneCluster.cameraZ;
-
-                    int horizontalDistance = (int) Math.sqrt((double) (deltaY * deltaY + deltaX * deltaX));
-
-                    // (maybe) convert radians to 2048-step rotational unit
-                    Class26.cameraVerticalRotation = (int) (325.949 * Math.atan2((double) deltaZ, (double) horizontalDistance)) & 0x7ff;
-                    ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation = (int) (-325.949 * Math.atan2((double) deltaX, (double) deltaY)) & 0x7ff;
-
-                    if(Class26.cameraVerticalRotation < 128)
-                        Class26.cameraVerticalRotation = 128;
-                    if(Class26.cameraVerticalRotation > 383)
-                        Class26.cameraVerticalRotation = 383;
-                }
-                opcode = -1;
-                return true;
-            }
             // object/ground item update packets?
             if(opcode == PacketType.PLAY_SOUND_AT_POSITION.getOpcode() || opcode == PacketType.UPDATE_GROUND_ITEM_AMOUNT.getOpcode() || opcode == PacketType.TRANSFORM_PLAYER_TO_OBJECT.getOpcode() || opcode == PacketType.ADD_GROUND_ITEM_EXCLUDE_SOME_PLAYER.getOpcode() || opcode == PacketType.CREATE_STATIONARY_GFX.getOpcode() || opcode == PacketType.CREATE_PROJECTILE.getOpcode() || opcode == PacketType.REMOVE_GROUND_ITEM.getOpcode() || opcode == PacketType.ADD_GROUND_ITEM.getOpcode() || opcode == PacketType.ROTATE_ANIMATE_OBJECT.getOpcode() || opcode == PacketType.REMOVE_OBJECT.getOpcode() || opcode == PacketType.SPAWN_OBJECT.getOpcode()) {
                 parseMapIncomingPacket();

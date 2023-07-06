@@ -181,6 +181,7 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.UPDATE_REFERENCE_POSITION.getOpcode(), new UpdateReferencePositionMessageDecoder());
 
         // camera
+        register(PacketType.CUTSCENE_CAMERA_LOOK_TO.getOpcode(), new CutsceneCameraLookToMessageDecoder());
         register(PacketType.CUTSCENE_CAMERA_MOVE_TO.getOpcode(), new CutsceneCameraMoveToMessageDecoder());
     }
 }
