@@ -26,6 +26,29 @@ public enum PacketType {
     SHOW_WALKABLE_SCREEN_WIDGET(56, 2),
     FORCE_PRIVATE_MESSAGE(71, -1),
     CHATBOX_MESSAGE_RECEIVED(82, -1),
+
+
+    /**
+     * This packet contains a series of child packets within it.
+     *
+     * They contain the unencrypted opcode, followed by the normal packet body.
+     *
+     * They are executed in order.
+     */
+    BULK_WORLD_UPDATE(63, -2),
+    PLAY_SOUND_AT_POSITION(9, 5),
+    UPDATE_GROUND_ITEM_AMOUNT(99, 7),
+    TRANSFORM_PLAYER_TO_OBJECT(229, 14),
+    ROTATE_ANIMATE_OBJECT(49, 4),
+    REMOVE_OBJECT(143, 2),
+    SPAWN_OBJECT(241, 4),
+    ADD_GROUND_ITEM(175, 5),
+    ADD_GROUND_ITEM_EXCLUDE_SOME_PLAYER(19, 7),
+    REMOVE_GROUND_ITEM(74, 3),
+    CREATE_PROJECTILE(1, 15),
+    CREATE_STATIONARY_GFX(202, 6),
+
+
     CLEAR_MAP_CHUNK(64, 2),
     SET_FRIEND_LIST_STATUS(70, 1),
     RESET_VARPS(72, 0),
