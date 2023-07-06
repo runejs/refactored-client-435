@@ -112,11 +112,6 @@ public class IncomingPackets {
 
             MovedStatics.gameServerSocket.readDataToBuffer(0, incomingPacketSize, incomingPacketBuffer.buffer);
 
-            if(opcode == 233) { // clear destination X
-                opcode = -1;
-                MovedStatics.destinationX = 0;
-                return true;
-            }
             if(opcode == PacketType.BULK_WORLD_UPDATE.getOpcode()) { // mass object/ground item update packet
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();

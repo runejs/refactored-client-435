@@ -81,6 +81,7 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(UpdateNPCsInboundMessage.class, new UpdateNPCsMessageHandler());
         register(ResetAllActorAnimationsInboundMessage.class, new ResetAllActorAnimationsMessageHandler());
         register(SetLocalPlayerPositionInboundMessage.class, new SetLocalPlayerPositionMessageHandler());
+        register(ClearLocalPlayerDestinationInboundMessage.class, new ClearLocalPlayerDestinationMessageHandler());
 
         // camera
         register(CutsceneCameraLookToInboundMessage.class, new CutsceneCameraLookToMessageHandler());
