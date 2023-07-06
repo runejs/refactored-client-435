@@ -13,6 +13,7 @@ import org.runejs.client.message.outbound.widget.*;
 import org.runejs.client.message.outbound.widget.container.*;
 import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.net.codec.runejs435.decoder.audio.*;
+import org.runejs.client.net.codec.runejs435.decoder.camera.*;
 import org.runejs.client.net.codec.runejs435.decoder.chat.*;
 import org.runejs.client.net.codec.runejs435.decoder.config.*;
 import org.runejs.client.net.codec.runejs435.decoder.console.ReceiveConsoleCommandMessageDecoder;
@@ -179,5 +180,11 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.SET_MAP_CHUNK.getOpcode(), new LoadStandardRegionMessageDecoder());
         register(PacketType.LOAD_CONSTRUCTED_MAP_REGION.getOpcode(), new LoadConstructedRegionMessageDecoder());
         register(PacketType.UPDATE_REFERENCE_POSITION.getOpcode(), new UpdateReferencePositionMessageDecoder());
+
+        // camera
+        register(PacketType.CUTSCENE_CAMERA_LOOK_TO.getOpcode(), new CutsceneCameraLookToMessageDecoder());
+        register(PacketType.CUTSCENE_CAMERA_MOVE_TO.getOpcode(), new CutsceneCameraMoveToMessageDecoder());
+        register(PacketType.CLOSE_CUTSCENE.getOpcode(), new CutsceneExitMessageDecoder());
+        register(PacketType.SHAKE_CAMERA.getOpcode(), new ShakeCameraMessageDecoder());
     }
 }
