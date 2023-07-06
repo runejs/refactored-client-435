@@ -78,6 +78,7 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(UpdatePlayersInboundMessage.class, new UpdatePlayersMessageHandler());
         register(UpdateNPCsInboundMessage.class, new UpdateNPCsMessageHandler());
         register(ResetAllActorAnimationsInboundMessage.class, new ResetAllActorAnimationsMessageHandler());
+        register(SetLocalPlayerPositionInboundMessage.class, new SetLocalPlayerPositionMessageHandler());
 
         // widget
         register(SetWidgetTextInboundMessage.class, new SetWidgetTextMessageHandler());
