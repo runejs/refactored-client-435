@@ -98,7 +98,10 @@ public class MovedStatics {
     public static volatile long aLong174 = 0L;
     public static int anInt175 = 0;
     public static int[] anIntArray178;
-    public static int anInt188;
+    /**
+     * The base step value added to cutscene camera position movement.
+     */
+    public static int cutsceneCameraPositionBaseAdjust;
     public static int anInt194;
     public static int anInt195 = 1;
     public static int[] chatboxLineOffsets;

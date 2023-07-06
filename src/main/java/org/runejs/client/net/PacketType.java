@@ -80,6 +80,10 @@ public enum PacketType {
      */
     SHOW_TAB_WIDGET(237, 2),
     SET_WIDGET_MODEL(250, 6),
+    /**
+     * Initiate the cutscene camera and move it to a location.
+     */
+    CUTSCENE_CAMERA_MOVE_TO(253, 6),
     UPDATE_REFERENCE_POSITION(254, 2),
     SHAKE_CAMERA(255, 4);
 
