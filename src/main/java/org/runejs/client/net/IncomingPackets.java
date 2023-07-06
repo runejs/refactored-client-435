@@ -117,84 +117,12 @@ public class IncomingPackets {
                 MovedStatics.destinationX = 0;
                 return true;
             }
-            if(opcode == PacketType.CLOSE_CUTSCENE.getOpcode()) { // close cutscene
-                Player.cutsceneActive = false;
-                for(int cameraType = 0; cameraType < 5; cameraType++)
-                    Projectile.customCameraActive[cameraType] = false;
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.SHAKE_CAMERA.getOpcode()) { // camera shake?
-                /**
-                 * 0: east to west
-                 * 1: up down
-                 * 2: north to south
-                 * 3: yaw
-                 * 4: pitch
-                 */
-                int cameraType = incomingPacketBuffer.getUnsignedByte();
-                int jitter = incomingPacketBuffer.getUnsignedByte();
-                int amplitude = incomingPacketBuffer.getUnsignedByte();
-                int frequency = incomingPacketBuffer.getUnsignedByte();
-                Projectile.customCameraActive[cameraType] = true;
-                MovedStatics.customCameraJitter[cameraType] = jitter;
-                GameShell.customCameraAmplitude[cameraType] = amplitude;
-                GroundItemTile.customCameraFrequency[cameraType] = frequency;
-                MovedStatics.customCameraTimer[cameraType] = 0;
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.CUTSCENE_CAMERA_MOVE_TO.getOpcode()) { // move camera to
-                Player.cutsceneActive = true;
-                MovedStatics.anInt545 = incomingPacketBuffer.getUnsignedByte(); // x
-                SceneCluster.anInt767 = incomingPacketBuffer.getUnsignedByte(); // y
-                MovedStatics.anInt194 = incomingPacketBuffer.getUnsignedShortBE(); // height
-                MovedStatics.cutsceneCameraPositionBaseAdjust = incomingPacketBuffer.getUnsignedByte(); // base
-                Class59.cutsceneCameraPositionScaleAdjust = incomingPacketBuffer.getUnsignedByte(); // scale
-                if(Class59.cutsceneCameraPositionScaleAdjust >= 100) {
-                    MovedStatics.cameraY = 64 + SceneCluster.anInt767 * 128;
-                    Class12.cameraX = MovedStatics.anInt545 * 128 + 64;
-                    SceneCluster.cameraZ = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, MovedStatics.cameraY) - MovedStatics.anInt194;
-                }
-                opcode = -1;
-                return true;
-            }
             if(opcode == PacketType.BULK_WORLD_UPDATE.getOpcode()) { // mass object/ground item update packet
                 MovedStatics.placementX = incomingPacketBuffer.getUnsignedByte();
                 OverlayDefinition.placementY = incomingPacketBuffer.getUnsignedByte();
                 while(incomingPacketBuffer.currentPosition < incomingPacketSize) {
                     opcode = incomingPacketBuffer.getUnsignedByte();
                     parseMapIncomingPacket();
-                }
-                opcode = -1;
-                return true;
-            }
-            if(opcode == PacketType.CUTSCENE_CAMERA_LOOK_TO.getOpcode()) { // static cutscene camera
-                Player.cutsceneActive = true;
-                MovedStatics.anInt564 = incomingPacketBuffer.getUnsignedByte(); // x pos
-                MovedStatics.anInt2576 = incomingPacketBuffer.getUnsignedByte(); // y pos
-                MovedStatics.anInt892 = incomingPacketBuffer.getUnsignedShortBE(); // height
-                Class60.cutsceneCameraRotationBaseAdjust = incomingPacketBuffer.getUnsignedByte();
-                MovedStatics.cutsceneCameraRotationScaleAdjust = incomingPacketBuffer.getUnsignedByte();
-                if(MovedStatics.cutsceneCameraRotationScaleAdjust >= 100) {
-                    int x = 128 * MovedStatics.anInt564 + 64;
-                    int y = 128 * MovedStatics.anInt2576 + 64;
-                    int z = Class37.getFloorDrawHeight(Player.worldLevel, x, y) - MovedStatics.anInt892;
-
-                    int deltaX = x - Class12.cameraX;
-                    int deltaY = y - MovedStatics.cameraY;
-                    int deltaZ = z - SceneCluster.cameraZ;
-
-                    int horizontalDistance = (int) Math.sqrt((double) (deltaY * deltaY + deltaX * deltaX));
-
-                    // (maybe) convert radians to 2048-step rotational unit
-                    Class26.cameraVerticalRotation = (int) (325.949 * Math.atan2((double) deltaZ, (double) horizontalDistance)) & 0x7ff;
-                    ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation = (int) (-325.949 * Math.atan2((double) deltaX, (double) deltaY)) & 0x7ff;
-
-                    if(Class26.cameraVerticalRotation < 128)
-                        Class26.cameraVerticalRotation = 128;
-                    if(Class26.cameraVerticalRotation > 383)
-                        Class26.cameraVerticalRotation = 383;
                 }
                 opcode = -1;
                 return true;
