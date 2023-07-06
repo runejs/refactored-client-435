@@ -13,6 +13,6 @@ public class AddGroundItemMessageDecoder implements MessageDecoder<AddGroundItem
         int y = (positionInfo & 0x7);
         int x = ((0x7a & positionInfo) >> 4);
 
-        return new AddGroundItemInboundMessage(itemId, amount, x, y);
+        return new AddGroundItemInboundMessage(itemId, amount, x, y, -1);
     }
 }

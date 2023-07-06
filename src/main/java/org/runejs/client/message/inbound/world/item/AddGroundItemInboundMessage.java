@@ -11,10 +11,18 @@ public class AddGroundItemInboundMessage implements InboundMessage {
 
     public final int y;
 
-    public AddGroundItemInboundMessage(int itemId, int amount, int x, int y) {
+    /**
+     * The client will avoid spawning this item if excludePlayer matches the local player.
+     *
+     * Set to -1 if no player should be excluded.
+     */
+    public final int excludePlayer;
+
+    public AddGroundItemInboundMessage(int itemId, int amount, int x, int y, int excludePlayer) {
         this.itemId = itemId;
         this.amount = amount;
         this.x = x;
         this.y = y;
+        this.excludePlayer = excludePlayer;
     }
 }
