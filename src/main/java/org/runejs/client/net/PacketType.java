@@ -73,13 +73,22 @@ public enum PacketType {
     SET_VARP_BYTE(222, 3),
     UPDATE_PLAYER_OPTIONS(223, -1),
     UPDATE_WIDGET_TEXT_COLOR(231, 6),
+    /**
+     * Initiate the cutscene camera and turn it towards a location.
+     */
+    CUTSCENE_CAMERA_LOOK_TO(234, 6),
     SET_MINIMAP_STATE(235, 1),
     /**
      * Display a widget over the tab area.
      */
     SHOW_TAB_WIDGET(237, 2),
     SET_WIDGET_MODEL(250, 6),
-    UPDATE_REFERENCE_POSITION(254, 2);
+    /**
+     * Initiate the cutscene camera and move it to a location.
+     */
+    CUTSCENE_CAMERA_MOVE_TO(253, 6),
+    UPDATE_REFERENCE_POSITION(254, 2),
+    SHAKE_CAMERA(255, 4);
 
     /**
      * The packet opcode after ISAAC decryption.

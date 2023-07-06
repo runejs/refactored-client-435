@@ -802,8 +802,8 @@ public class Main extends GameShell {
                 i = MovedStatics.secondaryCameraVertical / 256;
             }
             int i_0_ = 0x7ff & GroundItemTile.cameraHorizontal + Class57.anInt1342;
-            if(Projectile.aBooleanArray2975[4] && 128 + anIntArray2[4] > i) {
-                i = 128 + anIntArray2[4];
+            if(Projectile.customCameraActive[4] && 128 + customCameraAmplitude[4] > i) {
+                i = 128 + customCameraAmplitude[4];
             }
             Class49.setCameraPosition(i, MovedStatics.currentCameraPositionH, -50 + Class37.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY), i_0_, MovedStatics.currentCameraPositionV, -1, 3 * i + 600);
         }
@@ -814,13 +814,13 @@ public class Main extends GameShell {
             i = MovedStatics.method546();
         }
         int i_1_ = Class12.cameraX;
-        int i_2_ = ProducingGraphicsBuffer_Sub1.anInt2210;
+        int i_2_ = ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation;
         int i_3_ = SceneCluster.cameraZ;
-        int i_4_ = Class26.anInt627;
+        int i_4_ = Class26.cameraVerticalRotation;
         int i_5_ = MovedStatics.cameraY;
         for(int i_6_ = 0; i_6_ < 5; i_6_++) {
-            if(Projectile.aBooleanArray2975[i_6_]) {
-                int i_7_ = (int) ((double) (MovedStatics.anIntArray297[i_6_] * 2 + 1) * Math.random() - (double) MovedStatics.anIntArray297[i_6_] + Math.sin((double) MovedStatics.anIntArray1846[i_6_] * ((double) GroundItemTile.anIntArray1358[i_6_] / 100.0)) * (double) anIntArray2[i_6_]);
+            if(Projectile.customCameraActive[i_6_]) {
+                int i_7_ = (int) ((double) (MovedStatics.customCameraJitter[i_6_] * 2 + 1) * Math.random() - (double) MovedStatics.customCameraJitter[i_6_] + Math.sin((double) MovedStatics.customCameraTimer[i_6_] * ((double) GroundItemTile.customCameraFrequency[i_6_] / 100.0)) * (double) customCameraAmplitude[i_6_]);
                 if(i_6_ == 1) {
                     SceneCluster.cameraZ += i_7_;
                 }
@@ -831,16 +831,16 @@ public class Main extends GameShell {
                     MovedStatics.cameraY += i_7_;
                 }
                 if(i_6_ == 4) {
-                    Class26.anInt627 += i_7_;
-                    if(Class26.anInt627 < 128) {
-                        Class26.anInt627 = 128;
+                    Class26.cameraVerticalRotation += i_7_;
+                    if(Class26.cameraVerticalRotation < 128) {
+                        Class26.cameraVerticalRotation = 128;
                     }
-                    if(Class26.anInt627 > 383) {
-                        Class26.anInt627 = 383;
+                    if(Class26.cameraVerticalRotation > 383) {
+                        Class26.cameraVerticalRotation = 383;
                     }
                 }
                 if(i_6_ == 3) {
-                    ProducingGraphicsBuffer_Sub1.anInt2210 = 0x7ff & i_7_ + ProducingGraphicsBuffer_Sub1.anInt2210;
+                    ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation = 0x7ff & i_7_ + ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation;
                 }
             }
         }
@@ -850,7 +850,7 @@ public class Main extends GameShell {
         Model.cursorX = Class13.mouseX - 4;
         Model.resourceCount = 0;
         Rasterizer.resetPixels();
-        Npc.currentScene.render(Class12.cameraX, SceneCluster.cameraZ, MovedStatics.cameraY, Class26.anInt627, ProducingGraphicsBuffer_Sub1.anInt2210, i);
+        Npc.currentScene.render(Class12.cameraX, SceneCluster.cameraZ, MovedStatics.cameraY, Class26.cameraVerticalRotation, ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation, i);
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404();
         MovedStatics.method450();
@@ -879,8 +879,8 @@ public class Main extends GameShell {
         Player.drawGameScreenGraphics();
         Class12.cameraX = i_1_;
         MovedStatics.cameraY = i_5_;
-        ProducingGraphicsBuffer_Sub1.anInt2210 = i_2_;
-        Class26.anInt627 = i_4_;
+        ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation = i_2_;
+        Class26.cameraVerticalRotation = i_4_;
         SceneCluster.cameraZ = i_3_;
     }
 
@@ -1177,35 +1177,35 @@ public class Main extends GameShell {
         int i_3_ = 64 + 128 * MovedStatics.anInt545;
         int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) + -MovedStatics.anInt194;
         if(i_3_ > Class12.cameraX) {
-            Class12.cameraX += Class59.anInt1386 * (i_3_ + -Class12.cameraX) / 1000 + MovedStatics.anInt188;
+            Class12.cameraX += Class59.cutsceneCameraPositionScaleAdjust * (i_3_ + -Class12.cameraX) / 1000 + MovedStatics.cutsceneCameraPositionBaseAdjust;
             if(Class12.cameraX > i_3_) {
                 Class12.cameraX = i_3_;
             }
         }
         if(i_4_ > SceneCluster.cameraZ) {
-            SceneCluster.cameraZ += Class59.anInt1386 * (i_4_ - SceneCluster.cameraZ) / 1000 + MovedStatics.anInt188;
+            SceneCluster.cameraZ += Class59.cutsceneCameraPositionScaleAdjust * (i_4_ - SceneCluster.cameraZ) / 1000 + MovedStatics.cutsceneCameraPositionBaseAdjust;
             if(i_4_ < SceneCluster.cameraZ)
                 SceneCluster.cameraZ = i_4_;
         }
         if(Class12.cameraX > i_3_) {
-            Class12.cameraX -= MovedStatics.anInt188 + Class59.anInt1386 * (Class12.cameraX + -i_3_) / 1000;
+            Class12.cameraX -= MovedStatics.cutsceneCameraPositionBaseAdjust + Class59.cutsceneCameraPositionScaleAdjust * (Class12.cameraX + -i_3_) / 1000;
             if(i_3_ > Class12.cameraX) {
                 Class12.cameraX = i_3_;
             }
         }
         if(MovedStatics.cameraY < i) {
-            MovedStatics.cameraY += MovedStatics.anInt188 + Class59.anInt1386 * (-MovedStatics.cameraY + i) / 1000;
+            MovedStatics.cameraY += MovedStatics.cutsceneCameraPositionBaseAdjust + Class59.cutsceneCameraPositionScaleAdjust * (-MovedStatics.cameraY + i) / 1000;
             if(MovedStatics.cameraY > i)
                 MovedStatics.cameraY = i;
         }
         if(SceneCluster.cameraZ > i_4_) {
-            SceneCluster.cameraZ -= (SceneCluster.cameraZ + -i_4_) * Class59.anInt1386 / 1000 + MovedStatics.anInt188;
+            SceneCluster.cameraZ -= (SceneCluster.cameraZ + -i_4_) * Class59.cutsceneCameraPositionScaleAdjust / 1000 + MovedStatics.cutsceneCameraPositionBaseAdjust;
             if(i_4_ > SceneCluster.cameraZ)
                 SceneCluster.cameraZ = i_4_;
         }
         i_3_ = 64 + MovedStatics.anInt564 * 128;
         if(MovedStatics.cameraY > i) {
-            MovedStatics.cameraY -= MovedStatics.anInt188 + Class59.anInt1386 * (MovedStatics.cameraY - i) / 1000;
+            MovedStatics.cameraY -= MovedStatics.cutsceneCameraPositionBaseAdjust + Class59.cutsceneCameraPositionScaleAdjust * (MovedStatics.cameraY - i) / 1000;
             if(MovedStatics.cameraY < i)
                 MovedStatics.cameraY = i;
         }
@@ -1221,37 +1221,37 @@ public class Main extends GameShell {
         int i_10_ = 0x7ff & (int) (-325.949 * Math.atan2((double) i_7_, (double) i_6_));
         if(i_9_ > 383)
             i_9_ = 383;
-        int i_11_ = -ProducingGraphicsBuffer_Sub1.anInt2210 + i_10_;
+        int i_11_ = -ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation + i_10_;
         if(i_11_ > 1024)
             i_11_ -= 2048;
         if(i_11_ < -1024)
             i_11_ += 2048;
         if(i_11_ > 0) {
-            ProducingGraphicsBuffer_Sub1.anInt2210 += MovedStatics.anInt1856 * i_11_ / 1000 + Class60.anInt1413;
-            ProducingGraphicsBuffer_Sub1.anInt2210 &= 0x7ff;
+            ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation += MovedStatics.cutsceneCameraRotationScaleAdjust * i_11_ / 1000 + Class60.cutsceneCameraRotationBaseAdjust;
+            ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation &= 0x7ff;
         }
         if(true) {
             if(i_11_ < 0) {
-                ProducingGraphicsBuffer_Sub1.anInt2210 -= Class60.anInt1413 + MovedStatics.anInt1856 * -i_11_ / 1000;
-                ProducingGraphicsBuffer_Sub1.anInt2210 &= 0x7ff;
+                ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation -= Class60.cutsceneCameraRotationBaseAdjust + MovedStatics.cutsceneCameraRotationScaleAdjust * -i_11_ / 1000;
+                ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation &= 0x7ff;
             }
-            if(i_9_ > Class26.anInt627) {
-                Class26.anInt627 += Class60.anInt1413 + MovedStatics.anInt1856 * (i_9_ - Class26.anInt627) / 1000;
-                if(Class26.anInt627 > i_9_)
-                    Class26.anInt627 = i_9_;
+            if(i_9_ > Class26.cameraVerticalRotation) {
+                Class26.cameraVerticalRotation += Class60.cutsceneCameraRotationBaseAdjust + MovedStatics.cutsceneCameraRotationScaleAdjust * (i_9_ - Class26.cameraVerticalRotation) / 1000;
+                if(Class26.cameraVerticalRotation > i_9_)
+                    Class26.cameraVerticalRotation = i_9_;
             }
-            if(Class26.anInt627 > i_9_) {
-                Class26.anInt627 -= MovedStatics.anInt1856 * (Class26.anInt627 + -i_9_) / 1000 + Class60.anInt1413;
-                if(Class26.anInt627 < i_9_)
-                    Class26.anInt627 = i_9_;
+            if(Class26.cameraVerticalRotation > i_9_) {
+                Class26.cameraVerticalRotation -= MovedStatics.cutsceneCameraRotationScaleAdjust * (Class26.cameraVerticalRotation + -i_9_) / 1000 + Class60.cutsceneCameraRotationBaseAdjust;
+                if(Class26.cameraVerticalRotation < i_9_)
+                    Class26.cameraVerticalRotation = i_9_;
             }
-            int i_12_ = i_10_ + -ProducingGraphicsBuffer_Sub1.anInt2210;
+            int i_12_ = i_10_ + -ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation;
             if(i_12_ > 1024)
                 i_12_ -= 2048;
             if(i_12_ < -1024)
                 i_12_ += 2048;
             if(i_12_ < 0 && i_11_ > 0 || i_12_ > 0 && i_11_ < 0)
-                ProducingGraphicsBuffer_Sub1.anInt2210 = i_10_;
+                ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation = i_10_;
         }
     }
 
@@ -1554,7 +1554,7 @@ public class Main extends GameShell {
                         if(Player.cutsceneActive)
                             method165();
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
-                            MovedStatics.anIntArray1846[i_19_]++;
+                            MovedStatics.customCameraTimer[i_19_]++;
                         MovedStatics.manageTextInputs();
                         int i_20_ = Npc.method400(-1);
                         int i_21_ = Class17.method274();
