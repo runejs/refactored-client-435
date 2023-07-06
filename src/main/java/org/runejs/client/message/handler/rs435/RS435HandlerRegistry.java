@@ -141,5 +141,6 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(CreateStationaryGFXInboundMessage.class, new CreateStationaryGFXMessageHandler());
         register(CreateObjectInboundMessage.class, new CreateObjectMessageHandler());
         register(RemoveObjectInboundMessage.class, new RemoveObjectMessageHandler());
+        register(RotateAnimateObjectInboundMessage.class, new RotateAnimateObjectMessageHandler());
     }
 }

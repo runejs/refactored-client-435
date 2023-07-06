@@ -200,5 +200,6 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.CREATE_STATIONARY_GFX.getOpcode(), new CreateStationaryGFXMessageDecoder());
         register(PacketType.SPAWN_OBJECT.getOpcode(), new CreateObjectMessageDecoder());
         register(PacketType.REMOVE_OBJECT.getOpcode(), new RemoveObjectMessageDecoder());
+        register(PacketType.ROTATE_ANIMATE_OBJECT.getOpcode(), new RotateAnimateObjectMessageDecoder());
     }
 }
