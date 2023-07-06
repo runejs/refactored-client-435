@@ -197,7 +197,7 @@ public class IncomingPackets {
                 return true;
             }
             // object/ground item update packets?
-            if(opcode == 9 || opcode == 99 || opcode == 229 || opcode == 19 || opcode == 202 || opcode == 1 || opcode == 74 || opcode == 175 || opcode == 49 || opcode == 143 || opcode == 241) {
+            if(opcode == PacketType.PLAY_SOUND_AT_POSITION.getOpcode() || opcode == PacketType.UPDATE_GROUND_ITEM_AMOUNT.getOpcode() || opcode == PacketType.TRANSFORM_PLAYER_TO_OBJECT.getOpcode() || opcode == 19 || opcode == 202 || opcode == 1 || opcode == 74 || opcode == 175 || opcode == 49 || opcode == 143 || opcode == 241) {
                 parseMapIncomingPacket();
                 opcode = -1;
                 return true;
@@ -285,7 +285,7 @@ public class IncomingPackets {
             if (y >= 0 && x >= 0 && y < 104 && x < 104)
                 GameObjectDefinition.method609(objectId, y, orientation, -1, Player.worldLevel, x, objectType, objectTypeIndex, 0);
         } else {
-            if (opcode == 9) {
+            if (opcode == PacketType.PLAY_SOUND_AT_POSITION.getOpcode()) {
                 int offset = incomingPacketBuffer.getUnsignedByte();
                 int localX = (offset & 0x7) + OverlayDefinition.placementY;
                 int localY = (0x7 & offset >> 4) + MovedStatics.placementX;
@@ -315,7 +315,7 @@ public class IncomingPackets {
                     Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = new Class40_Sub5_Sub17_Sub6(i_29_, Player.worldLevel, i_27_, i_28_, -i_30_ + Class37.getFloorDrawHeight(Player.worldLevel, i_27_, i_28_), i_31_, MovedStatics.pulseCycle);
                     Class57.aLinkedList_1332.addLast(class40_sub5_sub17_sub6);
                 }
-            } else if (opcode == 99) {
+            } else if (opcode == PacketType.UPDATE_GROUND_ITEM_AMOUNT.getOpcode()) {
                 int i = incomingPacketBuffer.getUnsignedByte();
                 int i_32_ = MovedStatics.placementX + ((0x75 & i) >> 4);
                 int i_33_ = (i & 0x7) + OverlayDefinition.placementY;
@@ -345,7 +345,7 @@ public class IncomingPackets {
                 if (positionX >= 0 && positionY >= 0 && positionX < 104 && positionY < 104)
                     GameObjectDefinition.method609(-1, positionX, orientation, -1, Player.worldLevel, positionY, objectType, typeIndex, 0);
             } else {
-                if (opcode == 229) {
+                if (opcode == PacketType.TRANSFORM_PLAYER_TO_OBJECT.getOpcode()) {
                     int i = incomingPacketBuffer.getByte();
                     int i_43_ = incomingPacketBuffer.getUnsignedShortBE();
                     int i_44_ = incomingPacketBuffer.getByte();
