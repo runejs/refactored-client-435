@@ -197,7 +197,7 @@ public class IncomingPackets {
                 return true;
             }
             // object/ground item update packets?
-            if(opcode == PacketType.PLAY_SOUND_AT_POSITION.getOpcode() || opcode == PacketType.UPDATE_GROUND_ITEM_AMOUNT.getOpcode() || opcode == PacketType.TRANSFORM_PLAYER_TO_OBJECT.getOpcode() || opcode == PacketType.ADD_GROUND_ITEM_EXCLUDE_SOME_PLAYER.getOpcode() || opcode == 202 || opcode == 1 || opcode == PacketType.REMOVE_GROUND_ITEM.getOpcode() || opcode == PacketType.ADD_GROUND_ITEM.getOpcode() || opcode == 49 || opcode == 143 || opcode == 241) {
+            if(opcode == PacketType.PLAY_SOUND_AT_POSITION.getOpcode() || opcode == PacketType.UPDATE_GROUND_ITEM_AMOUNT.getOpcode() || opcode == PacketType.TRANSFORM_PLAYER_TO_OBJECT.getOpcode() || opcode == PacketType.ADD_GROUND_ITEM_EXCLUDE_SOME_PLAYER.getOpcode() || opcode == 202 || opcode == PacketType.CREATE_PROJECTILE.getOpcode() || opcode == PacketType.REMOVE_GROUND_ITEM.getOpcode() || opcode == PacketType.ADD_GROUND_ITEM.getOpcode() || opcode == 49 || opcode == 143 || opcode == 241) {
                 parseMapIncomingPacket();
                 opcode = -1;
                 return true;
@@ -423,7 +423,7 @@ public class IncomingPackets {
                             FramemapDefinition.spawnGroundItem(i_66_, i_65_);
                         }
                     }
-                } else if (opcode == 1) {
+                } else if (opcode == PacketType.CREATE_PROJECTILE.getOpcode()) {
                     int offset = incomingPacketBuffer.getUnsignedByte();
                     int startY = (offset & 0x7) + OverlayDefinition.placementY;
                     int startX = MovedStatics.placementX + (0x7 & offset >> 4);
