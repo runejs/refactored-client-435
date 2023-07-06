@@ -137,5 +137,6 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(RemoveGroundItemInboundMessage.class, new RemoveGroundItemMessageHandler());
         register(PlaySoundAtPositionInboundMessage.class, new PlaySoundAtPositionMessageHandler());
         register(CreateProjectileInboundMessage.class, new CreateProjectileMessageHandler());
+        register(CreateStationaryGFXInboundMessage.class, new CreateStationaryGFXMessageHandler());
     }
 }
