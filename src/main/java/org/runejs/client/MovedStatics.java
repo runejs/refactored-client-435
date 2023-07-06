@@ -15,7 +15,8 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.message.outbound.chat.ChatCommandOutboundMessage;
+import org.runejs.client.message.outbound.chat.*;
+import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.node.NodeCache;
@@ -47,8 +48,6 @@ import org.runejs.client.util.SignlinkNode;
 import org.runejs.client.util.TextUtils;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.media.renderable.actor.*;
-import org.runejs.client.message.outbound.chat.SendChatMessageOutboundMessage;
-import org.runejs.client.message.outbound.chat.SendPrivateMessageOutboundMessage;
 import org.runejs.client.scene.tile.*;
 import org.runejs.Configuration;
 
@@ -99,7 +98,10 @@ public class MovedStatics {
     public static volatile long aLong174 = 0L;
     public static int anInt175 = 0;
     public static int[] anIntArray178;
-    public static int anInt188;
+    /**
+     * The base step value added to cutscene camera position movement.
+     */
+    public static int cutsceneCameraPositionBaseAdjust;
     public static int anInt194;
     public static int anInt195 = 1;
     public static int[] chatboxLineOffsets;
@@ -670,8 +672,9 @@ public class MovedStatics {
                 anInt1008--;
                 for (int i_16_ = i; anInt1008 > i_16_; i_16_++)
                     Player.ignores[i_16_] = Player.ignores[1 + i_16_];
-                SceneCluster.packetBuffer.putPacket(28);
-                SceneCluster.packetBuffer.putLongBE(arg1);
+
+                OutgoingPackets.sendMessage(
+                    new ModifySocialListOutboundMessage(arg1, ModifySocialListOutboundMessage.SocialList.IGNORE, ModifySocialListOutboundMessage.SocialListAction.REMOVE));
                 break;
             }
         }
@@ -819,8 +822,9 @@ public class MovedStatics {
                     Player.friendWorlds[Player.friendsCount] = 0;
                     Player.friendsCount++;
                     GameInterface.redrawTabArea = true;
-                    SceneCluster.packetBuffer.putPacket(114);
-                    SceneCluster.packetBuffer.putLongBE(name);
+
+                    OutgoingPackets.sendMessage(
+                        new ModifySocialListOutboundMessage(name, ModifySocialListOutboundMessage.SocialList.FRIEND, ModifySocialListOutboundMessage.SocialListAction.ADD));
                 }
             }
         }
@@ -1295,6 +1299,7 @@ public class MovedStatics {
 	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, ActionRowType.BUTTON_SET_VARP_VALUE.getId(), "");
 	                    }
 
+                        // "Please wait..." buttons
 	                    if(gameInterface.actionType == 6 && lastContinueTextWidgetId == -1 && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_) {
 	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 54, "");
 	                    }
@@ -1480,7 +1485,7 @@ public class MovedStatics {
 	public static Calendar aCalendar279 = Calendar.getInstance();
 	public static int connectionStage = 0;
 	public static int anInt292 = 0;
-	public static int[] anIntArray297 = new int[5];
+	public static int[] customCameraJitter = new int[5];
 
 	public static void drawMenu(int xOffSet, int yOffSet) {
 	    int height = CollisionMap.menuHeight;
@@ -1560,10 +1565,12 @@ public class MovedStatics {
 	                    if(ChatBox.privateChatMode == 2) {
 	                        ChatBox.privateChatMode = 1;
 	                        redrawChatbox = true;
-	                        SceneCluster.packetBuffer.putPacket(32);
-	                        SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
-	                        SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
-	                        SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
+
+                            OutgoingPackets.sendMessage(new SetChatOptionsOutboundMessage(
+                                ChatBox.publicChatMode,
+                                ChatBox.privateChatMode,
+                                ChatBox.tradeMode
+                            ));
 	                    }
 	                }
 	                if(Class37.anInt876 == 4 && anInt1008 < 100) {
@@ -1592,8 +1599,8 @@ public class MovedStatics {
 	                    } catch(Exception _ex) {
 	                        /* empty */
 	                    }
-	                    SceneCluster.packetBuffer.putPacket(238);
-	                    SceneCluster.packetBuffer.putIntBE(inputValue);
+
+                        OutgoingPackets.sendMessage(new SubmitChatboxWidgetNumericInputOutboundMessage(inputValue));
 	                }
 	                ChatBox.redrawChatbox = true;
 	                ChatBox.inputType = 0;
@@ -1609,8 +1616,9 @@ public class MovedStatics {
 	            }
 	            if(ItemDefinition.anInt2854 == 84) {
 	                if(ChatBox.inputMessage.length() > 0) {
-	                    SceneCluster.packetBuffer.putPacket(86);
-	                    SceneCluster.packetBuffer.putLongBE(RSString.nameToLong(ChatBox.inputMessage));
+                        long name = RSString.nameToLong(ChatBox.inputMessage);
+
+                        OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name));
 	                }
 	                ChatBox.inputType = 0;
 	                ChatBox.redrawChatbox = true;
@@ -1705,10 +1713,12 @@ public class MovedStatics {
 	                    if(ChatBox.publicChatMode == 2) {
 	                        redrawChatbox = true;
 	                        ChatBox.publicChatMode = 3;
-	                        SceneCluster.packetBuffer.putPacket(32);
-	                        SceneCluster.packetBuffer.putByte(ChatBox.publicChatMode);
-	                        SceneCluster.packetBuffer.putByte(ChatBox.privateChatMode);
-	                        SceneCluster.packetBuffer.putByte(ChatBox.tradeMode);
+
+                            OutgoingPackets.sendMessage(new SetChatOptionsOutboundMessage(
+                                ChatBox.publicChatMode,
+                                ChatBox.privateChatMode,
+                                ChatBox.tradeMode
+                            ));
 	                    }
 	                }
 	                ChatBox.redrawChatbox = true;
@@ -1964,11 +1974,11 @@ public class MovedStatics {
 	        int i = Class37.getFloorDrawHeight(Player.worldLevel, arg2, arg1) + -arg0;
 	        arg1 -= cameraY;
 	        i -= SceneCluster.cameraZ;
-	        int i_1_ = Model.COSINE[Class26.anInt627];
-	        int i_2_ = Model.SINE[Class26.anInt627];
+	        int i_1_ = Model.COSINE[Class26.cameraVerticalRotation];
+	        int i_2_ = Model.SINE[Class26.cameraVerticalRotation];
 	        arg2 -= Class12.cameraX;
-	        int i_3_ = Model.SINE[ProducingGraphicsBuffer_Sub1.anInt2210];
-	        int i_4_ = Model.COSINE[ProducingGraphicsBuffer_Sub1.anInt2210];
+	        int i_3_ = Model.SINE[ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation];
+	        int i_4_ = Model.COSINE[ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation];
 	        int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> 16;
 	        arg1 = i_4_ * arg1 - arg2 * i_3_ >> 16;
 	        if(arg3 != 4976905)
@@ -2018,8 +2028,13 @@ public class MovedStatics {
 	    }
 	}
 
-	public static int anInt1856;
+    /**
+     * The scaling step value added to cutscene camera rotations.
+     *
+     * Multiplies the difference between the current and target rotation.
+     */
+	public static int cutsceneCameraRotationScaleAdjust;
 	public static int[] anIntArray1847 = new int[2000];
-	public static int[] anIntArray1846 = new int[5];
+	public static int[] customCameraTimer = new int[5];
 	public static long aLong1841;
 }

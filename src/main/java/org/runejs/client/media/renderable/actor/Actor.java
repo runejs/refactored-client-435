@@ -307,7 +307,7 @@ public abstract class Actor extends Renderable {
             }
             Player.worldLevel = level;
             int i_40_ = 0;
-            Player.localPlayer.method787(chunkLocalY, -7717, false, chunkLocalX);
+            Player.localPlayer.method787(chunkLocalY, false, chunkLocalX);
             int i_41_ = 104;
             int i_42_ = 1;
             if(i_34_ < 0) {
@@ -427,7 +427,7 @@ public abstract class Actor extends Renderable {
         }
     }
 
-    public void method787(int arg0, int arg1, boolean arg2, int arg3) {
+    public void method787(int arg0, boolean arg2, int arg3) {
         if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation).priority == 1)
             playingAnimation = -1;
         if(!arg2) {
@@ -449,8 +449,6 @@ public abstract class Actor extends Renderable {
         }
         anInt3109 = 0;
         anInt3074 = 0;
-        if(arg1 != -7717)
-            method785(-19, 10, -70);
         anInt3094 = 0;
         pathY[0] = arg3;
         pathX[0] = arg0;

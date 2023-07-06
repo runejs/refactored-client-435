@@ -37,7 +37,7 @@ public class Projectile extends Renderable {
 
     public static String[] aClass1Array2964 = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
-    public static boolean[] aBooleanArray2975 = new boolean[5];
+    public static boolean[] customCameraActive = new boolean[5];
     public static int menuScreenArea;
     public static int[] directions = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
 
@@ -269,7 +269,7 @@ public class Projectile extends Renderable {
             return Player.worldLevel;
         }
         int i = 3;
-        if(Class26.anInt627 < 310) {
+        if(Class26.cameraVerticalRotation < 310) {
             int i_22_ = MovedStatics.cameraY >> 7;
             int i_23_ = Class12.cameraX >> 7;
             if(i_22_ > 103) {
@@ -667,7 +667,5 @@ public class Projectile extends Renderable {
         if(!moving)
             speedVectorZ = -speedVectorScalar * Math.tan((double) startSlope * 0.02454369);
         heightOffset = (-currentHeight + (double) k - speedVectorZ * cyclesRemaining) * 2.0 / (cyclesRemaining * cyclesRemaining);
-        if(arg1 != 0)
-            Npc.parseTrackedNpcs();
     }
 }

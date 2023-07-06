@@ -17,11 +17,17 @@ import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
+import org.runejs.client.message.outbound.chat.AcceptRequestOutboundMessage;
+import org.runejs.client.message.outbound.examine.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
+import org.runejs.client.message.outbound.useitem.*;
+import org.runejs.client.message.outbound.widget.container.DropWidgetItemOutboundMessage;
+import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
+import org.runejs.client.net.codec.runejs435.encoder.widget.input.ClickWidgetButtonMessageEncoder;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
@@ -595,8 +601,10 @@ public class GameInterface extends CachedNode {
                 ClientScriptRunner.crossX = Class57.clickX;
                 LinkedList.crossType = 2;
                 OverlayDefinition.crossIndex = 0;
-                SceneCluster.packetBuffer.putPacket(148);
-                SceneCluster.packetBuffer.putShortLE(npcIdx >> 14 & 0x7fff);
+
+                int objectId = npcIdx >> 14 & 0x7fff;
+
+                OutgoingPackets.sendMessage(new ExamineObjectOutboundMessage(objectId));
             }
             if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_4.getId()) {
                 AnimationSequence.method596(i, npcIdx, (byte) -79, i_10_);
@@ -643,14 +651,26 @@ public class GameInterface extends CachedNode {
                         if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.playerName != null && class40_sub5_sub17_sub4_sub1.playerName.equalsIgnoreCase(username)) {
                             bool = true;
                             Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+
+                            AcceptRequestOutboundMessage.RequestType requestType = AcceptRequestOutboundMessage.RequestType.INVALID;
+
                             if(action == ActionRowType.ACCEPT_TRADE.getId()) {
-                                SceneCluster.packetBuffer.putPacket(96);
-                                SceneCluster.packetBuffer.putShortBE(Player.trackedPlayerIndices[i_15_]);
+                                requestType = AcceptRequestOutboundMessage.RequestType.TRADE;
+
                             }
                             if(action == ActionRowType.ACCEPT_CHALLENGE.getId()) {
-                                SceneCluster.packetBuffer.putPacket(68);
-                                SceneCluster.packetBuffer.putShortLE(Player.trackedPlayerIndices[i_15_]);
+                                requestType = AcceptRequestOutboundMessage.RequestType.CHALLENGE;
                             }
+
+                            if (requestType != AcceptRequestOutboundMessage.RequestType.INVALID) {
+                                OutgoingPackets.sendMessage(
+                                    new AcceptRequestOutboundMessage(
+                                        requestType,
+                                        Player.trackedPlayerIndices[i_15_]
+                                    )
+                                );
+                            }
+
                             break;
                         }
                     }
@@ -710,8 +730,11 @@ public class GameInterface extends CachedNode {
                 }
             }
             if(action == ActionRowType.BUTTON_SET_VARP_VALUE.getId()) {
-                SceneCluster.packetBuffer.putPacket(64);
-                SceneCluster.packetBuffer.putIntBE(i_10_);
+                int widgetId = (i_10_ >> 16) & 0xFFFF;
+                int childId = i_10_ & 0xFFFF;
+
+                OutgoingPackets.sendMessage(new ClickWidgetButtonOutboundMessage(widgetId, childId));
+
                 GameInterface gameInterface = getInterface(i_10_);
                 if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
                     int i_16_ = gameInterface.clientScripts[0][1];
@@ -783,8 +806,7 @@ public class GameInterface extends CachedNode {
                         class40_sub5_sub5 = class40_sub5_sub5.getChildDefinition();
                     }
                     if(class40_sub5_sub5 != null) {
-                        SceneCluster.packetBuffer.putPacket(247);
-                        SceneCluster.packetBuffer.putShortLE(class40_sub5_sub5.id);
+                        OutgoingPackets.sendMessage(new ExamineNPCOutboundMessage(class40_sub5_sub5.id));
                     }
                 }
             }
@@ -796,11 +818,19 @@ public class GameInterface extends CachedNode {
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
                     OverlayDefinition.crossIndex = 0;
-                    SceneCluster.packetBuffer.putPacket(110);
-                    SceneCluster.packetBuffer.putShortLE(npcIdx);
-                    SceneCluster.packetBuffer.putIntME1(ISAAC.anInt525);
-                    SceneCluster.packetBuffer.putShortBE(Class49.anInt1154);
-                    SceneCluster.packetBuffer.putShortBE(LinkedList.selectedInventorySlot);
+                    
+                    int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
+                    int containerId = ISAAC.anInt525 & 0xFFFF;
+
+                    OutgoingPackets.sendMessage(
+                        new UseItemOnPlayerOutboundMessage(
+                            Class49.anInt1154,
+                            widgetId,
+                            containerId,
+                            LinkedList.selectedInventorySlot,
+                            npcIdx
+                        )
+                    );
                 }
             }
             if(action == ActionRowType.SELECT_ITEM_ON_WIDGET.getId()) {
@@ -835,8 +865,10 @@ public class GameInterface extends CachedNode {
                     );
                 }
                 if(action == ActionRowType.BUTTON_TOGGLE_VARP.getId()) {
-                    SceneCluster.packetBuffer.putPacket(64);
-                    SceneCluster.packetBuffer.putIntBE(i_10_);
+                    int widgetId = (i_10_ >> 16) & 0xFFFF;
+                    int childId = i_10_ & 0xFFFF;
+
+                    OutgoingPackets.sendMessage(new ClickWidgetButtonOutboundMessage(widgetId, childId));
 
                     GameInterface gameInterface = getInterface(i_10_);
                     if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
@@ -899,8 +931,8 @@ public class GameInterface extends CachedNode {
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
                     ClientScriptRunner.crossX = Class57.clickX;
-                    SceneCluster.packetBuffer.putPacket(151);
-                    SceneCluster.packetBuffer.putShortLE(npcIdx);
+
+                    OutgoingPackets.sendMessage(new ExamineItemOutboundMessage(npcIdx));
                 }
                 if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_5.getId()) {
                     AnimationSequence.method596(i, npcIdx, (byte) -11, i_10_);
@@ -938,11 +970,19 @@ public class GameInterface extends CachedNode {
                         MovedStatics.crossY = RSString.clickY;
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
-                        SceneCluster.packetBuffer.putPacket(208);
-                        SceneCluster.packetBuffer.putShortBE(npcIdx);
-                        SceneCluster.packetBuffer.putShortBE(Class49.anInt1154);
-                        SceneCluster.packetBuffer.putShortLE(LinkedList.selectedInventorySlot);
-                        SceneCluster.packetBuffer.putIntBE(ISAAC.anInt525);
+
+                        int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
+                        int containerId = ISAAC.anInt525 & 0xFFFF;
+
+                        OutgoingPackets.sendMessage(
+                            new UseItemOnPlayerOutboundMessage(
+                                Class49.anInt1154,
+                                widgetId,
+                                containerId,
+                                LinkedList.selectedInventorySlot,
+                                npcIdx
+                            )
+                        );
                     }
                 }
                 if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_2.getId()) {
@@ -962,13 +1002,20 @@ public class GameInterface extends CachedNode {
                     );
                 }
                 if(action == ActionRowType.USE_ITEM_ON_OBJECT.getId() && AnimationSequence.method596(i, npcIdx, (byte) -104, i_10_)) {
-                    SceneCluster.packetBuffer.putPacket(24);
-                    SceneCluster.packetBuffer.putShortLE(i_10_ + Class26.baseY);
-                    SceneCluster.packetBuffer.putShortBE(Class49.anInt1154);
-                    SceneCluster.packetBuffer.putShortLE((npcIdx & 0x1fffccf7) >> 14);
-                    SceneCluster.packetBuffer.putShortLE(LinkedList.selectedInventorySlot);
-                    SceneCluster.packetBuffer.putIntME1(ISAAC.anInt525);
-                    SceneCluster.packetBuffer.putShortLE(i + MovedStatics.baseX);
+                    int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
+                    int containerId = ISAAC.anInt525 & 0xFFFF;
+
+                    OutgoingPackets.sendMessage(
+                        new UseItemOnObjectOutboundMessage(
+                            Class49.anInt1154,
+                            widgetId,
+                            containerId,
+                            LinkedList.selectedInventorySlot,
+                            (npcIdx & 0x1fffccf7) >> 14,
+                            i + MovedStatics.baseX,
+                            i_10_ + Class26.baseY
+                        )
+                    );
                 }
                 if(action == ActionRowType.INTERACT_WITH_NPC_OPTION_4.getId()) {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
@@ -983,13 +1030,25 @@ public class GameInterface extends CachedNode {
                     }
                 }
                 if(action == ActionRowType.USE_ITEM_ON_INVENTORY_ITEM.getId()) {
-                    SceneCluster.packetBuffer.putPacket(40);
-                    SceneCluster.packetBuffer.putShortLE(npcIdx);
-                    SceneCluster.packetBuffer.putShortLE(i);
-                    SceneCluster.packetBuffer.putIntLE(i_10_);
-                    SceneCluster.packetBuffer.putIntLE(ISAAC.anInt525);
-                    SceneCluster.packetBuffer.putShortLE(Class49.anInt1154);
-                    SceneCluster.packetBuffer.putShortBE(LinkedList.selectedInventorySlot);
+                    int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
+                    int containerId = ISAAC.anInt525 & 0xFFFF;
+
+                    int targetWidgetId = (i_10_ >> 16) & 0xFFFF;
+                    int targetContainerId = i_10_ & 0xFFFF;
+
+                    OutgoingPackets.sendMessage(
+                        new UseItemOnWidgetItemOutboundMessage(
+                            Class49.anInt1154,
+                            widgetId,
+                            containerId,
+                            LinkedList.selectedInventorySlot,
+                            npcIdx,
+                            targetWidgetId,
+                            targetContainerId,
+                            i
+                        )
+                    );
+
                     PlayerAppearance.anInt704 = i_10_;
                     RSRuntimeException.anInt1651 = 0;
                     GenericTile.anInt1233 = i;
@@ -1022,8 +1081,7 @@ public class GameInterface extends CachedNode {
                             gameInterface = gameInterface.children[i];
                         }
                         if(gameInterface == null || gameInterface.itemAmount < 100000) {
-                            SceneCluster.packetBuffer.putPacket(151);
-                            SceneCluster.packetBuffer.putShortLE(npcIdx);
+                            OutgoingPackets.sendMessage(new ExamineItemOutboundMessage(npcIdx));
                         } else {
                             ChatBox.addChatMessage("", gameInterface.itemAmount + Native.amountSeparatorX + ItemDefinition.forId(npcIdx, 10).name, 0);
                         }
@@ -1035,8 +1093,10 @@ public class GameInterface extends CachedNode {
                             bool = method166((byte) 88, gameInterface);
                         }
                         if(bool) {
-                            SceneCluster.packetBuffer.putPacket(64);
-                            SceneCluster.packetBuffer.putIntBE(i_10_);
+                            int widgetId = (i_10_ >> 16) & 0xFFFF;
+                            int childId = i_10_ & 0xFFFF;
+
+                            OutgoingPackets.sendMessage(new ClickWidgetButtonOutboundMessage(widgetId, childId));
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_3.getId()) {
@@ -1172,8 +1232,7 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId()) {
                         GameInterface gameInterface = getInterface(i_10_);
                         if(gameInterface == null || gameInterface.itemAmounts[i] < 100000) {
-                            SceneCluster.packetBuffer.putPacket(151);
-                            SceneCluster.packetBuffer.putShortLE(npcIdx);
+                            OutgoingPackets.sendMessage(new ExamineItemOutboundMessage(npcIdx));
                         } else {
                             ChatBox.addChatMessage("", gameInterface.itemAmounts[i] + Native.amountSeparatorX + ItemDefinition.forId(npcIdx, 10).name, 0);
                         }
@@ -1248,10 +1307,16 @@ public class GameInterface extends CachedNode {
                         GenericTile.anInt1233 = i;
                     }
                     if(action == ActionRowType.DROP_ITEM.getId()) {
-                        SceneCluster.packetBuffer.putPacket(29);
-                        SceneCluster.packetBuffer.putIntME1(i_10_);
-                        SceneCluster.packetBuffer.putShortBE(i);
-                        SceneCluster.packetBuffer.putShortLE(npcIdx);
+                        int widgetId = (i_10_ >> 16) & 0xFFFF;
+                        int containerId = i_10_ & 0xFFFF;
+
+                        OutgoingPackets.sendMessage(new DropWidgetItemOutboundMessage(
+                            widgetId,
+                            containerId,
+                            npcIdx,
+                            i
+                        ));
+
                         GenericTile.anInt1233 = i;
                         PlayerAppearance.anInt704 = i_10_;
                         Projectile.atInventoryInterfaceType = 2;
@@ -1434,13 +1499,21 @@ public class GameInterface extends CachedNode {
                         MovedStatics.crossY = RSString.clickY;
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
-                        SceneCluster.packetBuffer.putPacket(172);
-                        SceneCluster.packetBuffer.putShortBE(i + MovedStatics.baseX);
-                        SceneCluster.packetBuffer.putShortBE(LinkedList.selectedInventorySlot);
-                        SceneCluster.packetBuffer.putShortBE(npcIdx);
-                        SceneCluster.packetBuffer.putIntME2(ISAAC.anInt525);
-                        SceneCluster.packetBuffer.putShortLE(Class26.baseY + i_10_);
-                        SceneCluster.packetBuffer.putShortLE(Class49.anInt1154);
+
+                        int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
+                        int containerId = ISAAC.anInt525 & 0xFFFF;
+
+                        OutgoingPackets.sendMessage(
+                            new UseItemOnWorldItemOutboundMessage(
+                                Class49.anInt1154,
+                                widgetId,
+                                containerId,
+                                LinkedList.selectedInventorySlot,
+                                npcIdx,
+                                i + MovedStatics.baseX,
+                                Class26.baseY + i_10_
+                            )
+                        );
                     }
                     if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_2.getId()) {
                         int widgetId = (i_10_ >> 16) & 0xFFFF;
@@ -1657,8 +1730,8 @@ public class GameInterface extends CachedNode {
         if(i == 325)
             Player.activePlayerAppearance.setGender(true);
         if(i == 326) {
-            SceneCluster.packetBuffer.putPacket(231);
-            Player.activePlayerAppearance.sendAppearanceData(arg0 ^ 0x58, SceneCluster.packetBuffer);
+            OutgoingPackets.sendMessage(new SubmitAppearanceOutboundMessage(Player.activePlayerAppearance));
+
             return true;
         }
         if(i == 620)
@@ -1666,10 +1739,13 @@ public class GameInterface extends CachedNode {
         if(i >= 601 && i <= 613) {
             PacketBuffer.closeAllWidgets();
             if(Native.reportedName.length() > 0) {
-                SceneCluster.packetBuffer.putPacket(202);
-                SceneCluster.packetBuffer.putLongBE(TextUtils.nameToLong(Native.reportedName));
-                SceneCluster.packetBuffer.putByte(-601 + i);
-                SceneCluster.packetBuffer.putByte(MovedStatics.reportMutePlayer ? 1 : 0);
+                OutgoingPackets.sendMessage(
+                    new SubmitReportAbuseOutboundMessage(
+                        TextUtils.nameToLong(Native.reportedName),
+                        i - 601,
+                        MovedStatics.reportMutePlayer
+                    )
+                );
             }
         }
         return false;
