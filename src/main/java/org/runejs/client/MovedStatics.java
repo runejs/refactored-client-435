@@ -98,7 +98,10 @@ public class MovedStatics {
     public static volatile long aLong174 = 0L;
     public static int anInt175 = 0;
     public static int[] anIntArray178;
-    public static int anInt188;
+    /**
+     * The base step value added to cutscene camera position movement.
+     */
+    public static int cutsceneCameraPositionBaseAdjust;
     public static int anInt194;
     public static int anInt195 = 1;
     public static int[] chatboxLineOffsets;
@@ -1482,7 +1485,7 @@ public class MovedStatics {
 	public static Calendar aCalendar279 = Calendar.getInstance();
 	public static int connectionStage = 0;
 	public static int anInt292 = 0;
-	public static int[] anIntArray297 = new int[5];
+	public static int[] customCameraJitter = new int[5];
 
 	public static void drawMenu(int xOffSet, int yOffSet) {
 	    int height = CollisionMap.menuHeight;
@@ -1971,11 +1974,11 @@ public class MovedStatics {
 	        int i = Class37.getFloorDrawHeight(Player.worldLevel, arg2, arg1) + -arg0;
 	        arg1 -= cameraY;
 	        i -= SceneCluster.cameraZ;
-	        int i_1_ = Model.COSINE[Class26.anInt627];
-	        int i_2_ = Model.SINE[Class26.anInt627];
+	        int i_1_ = Model.COSINE[Class26.cameraVerticalRotation];
+	        int i_2_ = Model.SINE[Class26.cameraVerticalRotation];
 	        arg2 -= Class12.cameraX;
-	        int i_3_ = Model.SINE[ProducingGraphicsBuffer_Sub1.anInt2210];
-	        int i_4_ = Model.COSINE[ProducingGraphicsBuffer_Sub1.anInt2210];
+	        int i_3_ = Model.SINE[ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation];
+	        int i_4_ = Model.COSINE[ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation];
 	        int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> 16;
 	        arg1 = i_4_ * arg1 - arg2 * i_3_ >> 16;
 	        if(arg3 != 4976905)
@@ -2025,8 +2028,13 @@ public class MovedStatics {
 	    }
 	}
 
-	public static int anInt1856;
+    /**
+     * The scaling step value added to cutscene camera rotations.
+     *
+     * Multiplies the difference between the current and target rotation.
+     */
+	public static int cutsceneCameraRotationScaleAdjust;
 	public static int[] anIntArray1847 = new int[2000];
-	public static int[] anIntArray1846 = new int[5];
+	public static int[] customCameraTimer = new int[5];
 	public static long aLong1841;
 }
