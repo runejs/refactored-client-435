@@ -123,7 +123,7 @@ public class IncomingPackets {
                 return true;
             }
             // object/ground item update packets?
-            if(opcode == PacketType.TRANSFORM_PLAYER_TO_OBJECT.getOpcode() || opcode == PacketType.CREATE_STATIONARY_GFX.getOpcode() || opcode == PacketType.CREATE_PROJECTILE.getOpcode() || opcode == PacketType.ROTATE_ANIMATE_OBJECT.getOpcode() || opcode == PacketType.REMOVE_OBJECT.getOpcode() || opcode == PacketType.SPAWN_OBJECT.getOpcode()) {
+            if(opcode == PacketType.CREATE_STATIONARY_GFX.getOpcode() || opcode == PacketType.CREATE_PROJECTILE.getOpcode() || opcode == PacketType.ROTATE_ANIMATE_OBJECT.getOpcode() || opcode == PacketType.REMOVE_OBJECT.getOpcode() || opcode == PacketType.SPAWN_OBJECT.getOpcode()) {
                 parseMapIncomingPacket();
                 opcode = -1;
                 return true;
@@ -272,61 +272,61 @@ public class IncomingPackets {
                     GameObjectDefinition.method609(-1, positionX, orientation, -1, Player.worldLevel, positionY, objectType, typeIndex, 0);
             } else {
                 if (opcode == PacketType.TRANSFORM_PLAYER_TO_OBJECT.getOpcode()) {
-                    int i = incomingPacketBuffer.getByte();
-                    int i_43_ = incomingPacketBuffer.getUnsignedShortBE();
-                    int i_44_ = incomingPacketBuffer.getByte();
-                    int i_45_ = incomingPacketBuffer.getByte();
-                    int i_46_ = incomingPacketBuffer.getUnsignedByte();
-                    int i_47_ = i_46_ & 0x3;
-                    int i_48_ = i_46_ >> 2;
-                    int i_49_ = Npc.anIntArray3304[i_48_];
-                    int i_50_ = incomingPacketBuffer.getUnsignedByte();
-                    int i_51_ = (i_50_ & 0x7) + OverlayDefinition.placementY;
-                    int i_52_ = MovedStatics.placementX + (i_50_ >> 4 & 0x7);
-                    int i_53_ = incomingPacketBuffer.getUnsignedShortBE();
-                    int i_54_ = incomingPacketBuffer.getByte();
-                    int i_55_ = incomingPacketBuffer.getUnsignedShortLE();
-                    int i_56_ = incomingPacketBuffer.getUnsignedShortLE();
-                    Player class40_sub5_sub17_sub4_sub1;
-                    if (i_43_ != PlayerAppearance.anInt708)
-                        class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_43_];
+                    int unknownXMax = incomingPacketBuffer.getByte();
+                    int playerId = incomingPacketBuffer.getUnsignedShortBE();
+                    int unknownYMax = incomingPacketBuffer.getByte();
+                    int unknownYMin = incomingPacketBuffer.getByte();
+                    int objectData = incomingPacketBuffer.getUnsignedByte();
+                    int orientation = objectData & 0x3;
+                    int typeKey = objectData >> 2;
+                    int type = Npc.anIntArray3304[typeKey];
+                    int positionData = incomingPacketBuffer.getUnsignedByte();
+                    int y = (positionData & 0x7) + OverlayDefinition.placementY;
+                    int x = MovedStatics.placementX + (positionData >> 4 & 0x7);
+                    int delay = incomingPacketBuffer.getUnsignedShortBE();
+                    int unknownXMin = incomingPacketBuffer.getByte();
+                    int objectId = incomingPacketBuffer.getUnsignedShortLE();
+                    int duration = incomingPacketBuffer.getUnsignedShortLE();
+                    Player player;
+                    if (playerId != PlayerAppearance.anInt708)
+                        player = Player.trackedPlayers[playerId];
                     else
-                        class40_sub5_sub17_sub4_sub1 = Player.localPlayer;
-                    if (class40_sub5_sub17_sub4_sub1 != null) {
-                        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_55_);
-                        int i_57_ = MovedStatics.tile_height[Player.worldLevel][i_52_][i_51_];
-                        int i_58_ = MovedStatics.tile_height[Player.worldLevel][i_52_][1 + i_51_];
-                        int i_59_ = MovedStatics.tile_height[Player.worldLevel][1 + i_52_][1 + i_51_];
-                        int i_60_ = MovedStatics.tile_height[Player.worldLevel][i_52_ + 1][i_51_];
-                        Model class40_sub5_sub17_sub5 = gameObjectDefinition.createTerrainObjectModel(i_59_, i_58_, i_47_, i_57_, i_48_, i_60_);
-                        if (class40_sub5_sub17_sub5 != null) {
-                            if (i < i_54_) {
-                                int i_61_ = i_54_;
-                                i_54_ = i;
-                                i = i_61_;
+                        player = Player.localPlayer;
+                    if (player != null) {
+                        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(objectId);
+                        int tileHeightX0Y0 = MovedStatics.tile_height[Player.worldLevel][x][y];
+                        int tileHeightX0Y1 = MovedStatics.tile_height[Player.worldLevel][x][1 + y];
+                        int tileHeightX1Y1 = MovedStatics.tile_height[Player.worldLevel][1 + x][1 + y];
+                        int tileHeightX1Y0 = MovedStatics.tile_height[Player.worldLevel][x + 1][y];
+                        Model model = gameObjectDefinition.createTerrainObjectModel(tileHeightX1Y1, tileHeightX0Y1, orientation, tileHeightX0Y0, typeKey, tileHeightX1Y0);
+                        if (model != null) {
+                            if (unknownXMax < unknownXMin) {
+                                int temp = unknownXMin;
+                                unknownXMin = unknownXMax;
+                                unknownXMax = temp;
                             }
-                            if (i_44_ < i_45_) {
-                                int i_62_ = i_45_;
-                                i_45_ = i_44_;
-                                i_44_ = i_62_;
+                            if (unknownYMax < unknownYMin) {
+                                int temp = unknownYMin;
+                                unknownYMin = unknownYMax;
+                                unknownYMax = temp;
                             }
-                            GameObjectDefinition.method609(-1, i_52_, 0, 1 + i_56_, Player.worldLevel, i_51_, i_49_, 0, 1 + i_53_);
-                            class40_sub5_sub17_sub4_sub1.anInt3274 = i_56_ + MovedStatics.pulseCycle;
-                            int i_63_ = gameObjectDefinition.sizeX;
-                            class40_sub5_sub17_sub4_sub1.playerModel = class40_sub5_sub17_sub5;
-                            class40_sub5_sub17_sub4_sub1.anInt3283 = i_53_ + MovedStatics.pulseCycle;
-                            int i_64_ = gameObjectDefinition.sizeY;
-                            if (i_47_ == 1 || i_47_ == 3) {
-                                i_64_ = gameObjectDefinition.sizeX;
-                                i_63_ = gameObjectDefinition.sizeY;
+                            GameObjectDefinition.method609(-1, x, 0, 1 + duration, Player.worldLevel, y, type, 0, 1 + delay);
+                            player.anInt3274 = duration + MovedStatics.pulseCycle;
+                            int sizeX = gameObjectDefinition.sizeX;
+                            player.playerModel = model;
+                            player.anInt3283 = delay + MovedStatics.pulseCycle;
+                            int sizeY = gameObjectDefinition.sizeY;
+                            if (orientation == 1 || orientation == 3) {
+                                sizeY = gameObjectDefinition.sizeX;
+                                sizeX = gameObjectDefinition.sizeY;
                             }
-                            class40_sub5_sub17_sub4_sub1.anInt3271 = i_52_ * 128 + 64 * i_63_;
-                            class40_sub5_sub17_sub4_sub1.anInt3291 = i_51_ * 128 + 64 * i_64_;
-                            class40_sub5_sub17_sub4_sub1.anInt3272 = Class37.getFloorDrawHeight(Player.worldLevel, class40_sub5_sub17_sub4_sub1.anInt3271, class40_sub5_sub17_sub4_sub1.anInt3291);
-                            class40_sub5_sub17_sub4_sub1.anInt3281 = i_45_ + i_51_;
-                            class40_sub5_sub17_sub4_sub1.anInt3258 = i_52_ + i_54_;
-                            class40_sub5_sub17_sub4_sub1.anInt3262 = i_52_ + i;
-                            class40_sub5_sub17_sub4_sub1.anInt3289 = i_44_ + i_51_;
+                            player.anInt3271 = x * 128 + 64 * sizeX;
+                            player.anInt3291 = y * 128 + 64 * sizeY;
+                            player.anInt3272 = Class37.getFloorDrawHeight(Player.worldLevel, player.anInt3271, player.anInt3291);
+                            player.anInt3281 = unknownYMin + y;
+                            player.anInt3258 = x + unknownXMin;
+                            player.anInt3262 = x + unknownXMax;
+                            player.anInt3289 = unknownYMax + y;
                         }
                     }
                 }
