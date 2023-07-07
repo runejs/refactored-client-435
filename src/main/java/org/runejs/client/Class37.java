@@ -88,8 +88,10 @@ public class Class37 {
 
         int centerX = 48 + Player.localPlayer.worldX / 32;
         int centerY = 464 + -(Player.localPlayer.worldY / 32);
-        int angle = GroundItemTile.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
-        MovedStatics.minimapImage.shapeImageToPixels(25, 5, 146, 151, centerX, centerY, angle, Class51.mapZoomOffset + 256, Landscape.anIntArray1186, MovedStatics.anIntArray852);
+        int angle = GroundItemTile.cameraHorizontal & 0x7ff;
+        int minimapZoom = 0;
+        
+        MovedStatics.minimapImage.shapeImageToPixels(25, 5, 146, 151, centerX, centerY, angle, minimapZoom + 256, Landscape.anIntArray1186, MovedStatics.anIntArray852);
         for(int i = 0; GameObject.minimapHintCount > i; i++) {
             int hintX = 2 + 4 * Actor.minimapHintX[i] + -(Player.localPlayer.worldX / 32);
             int hintY = 2 + 4 * LinkedList.minimapHintY[i] - Player.localPlayer.worldY / 32;

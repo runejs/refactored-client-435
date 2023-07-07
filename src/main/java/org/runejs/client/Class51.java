@@ -12,7 +12,6 @@ import org.runejs.client.scene.tile.WallDecoration;
 import java.awt.event.KeyEvent;
 
 public class Class51 {
-    public static int mapZoomOffset = 0;
     public static int anInt1195 = 0;
     public static int gameStatusCode = 0;
     public static int[] anIntArray1198;

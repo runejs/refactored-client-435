@@ -20,7 +20,6 @@ public class Class13 {
      * but not the furthest-right (see `tabHighlightImageBottomRightEdge` for that).
      */
     public static IndexedImage tabHighlightImageBottomRight;
-    public static int anInt419 = 2;
     public static int mouseX = 0;
     public static int[] objectDataIds;
 

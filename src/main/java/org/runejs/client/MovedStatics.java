@@ -1001,11 +1001,13 @@ public class MovedStatics {
     public static void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
         int len = mapX * mapX + mapY * mapY;
         if (len > 4225 && len < 90000) {
-            int theta = 0x7ff & GroundItemTile.cameraHorizontal + Class43.cameraYawOffset;
+            int theta = 0x7ff & GroundItemTile.cameraHorizontal;
             int sine = Model.SINE[theta];
             int cosine = Model.COSINE[theta];
-            sine = sine * 256 / (Class51.mapZoomOffset + 256);
-            cosine = cosine * 256 / (Class51.mapZoomOffset + 256);
+            int zoom = 0;
+
+            sine = sine * 256 / (zoom + 256);
+            cosine = cosine * 256 / (zoom + 256);
             int y = cosine * mapY - sine * mapX >> 16;
             int x = mapX * cosine + mapY * sine >> 16;
             double angle = Math.atan2(x, y);

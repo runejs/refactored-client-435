@@ -107,15 +107,17 @@ public class SceneTile extends Node {
         if (sprite == null) {
             return;
         }
-        int angle = 0x7ff & Class43.cameraYawOffset + GroundItemTile.cameraHorizontal;
+        int angle = 0x7ff & GroundItemTile.cameraHorizontal;
         int l = x * x + y * y;
         if (l > 6400) {
             return;
         }
         int sine = Model.SINE[angle];
         int cosine = Model.COSINE[angle];
-        sine = sine * 256 / (Class51.mapZoomOffset + 256);
-        cosine = cosine * 256 / (Class51.mapZoomOffset + 256);
+        int zoom = 0;
+
+        sine = sine * 256 / (zoom + 256);
+        cosine = cosine * 256 / (zoom + 256);
         int i_3_ = cosine * y + x * sine >> 16;
         int i_4_ = -(y * sine) + cosine * x >> 16;
         if (l > 2500)

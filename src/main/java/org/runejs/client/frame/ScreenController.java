@@ -379,11 +379,14 @@ public class ScreenController {
                     return;
                 }
             }
-            int angle = 0x7ff & Class43.cameraYawOffset + GroundItemTile.cameraHorizontal;
+            int angle = 0x7ff & GroundItemTile.cameraHorizontal;
             int sin = Rasterizer3D.sinetable[angle];
             int cos = Rasterizer3D.cosinetable[angle];
-            cos = (Class51.mapZoomOffset + 256) * cos >> 8;
-            sin = (Class51.mapZoomOffset + 256) * sin >> 8;
+
+            int zoom = 0;
+
+            cos = (zoom + 256) * cos >> 8;
+            sin = (zoom + 256) * sin >> 8;
             int i_14_ = y * sin + x * cos >> 11;
             int i_15_ = cos * y - x * sin >> 11;
             int destX = Player.localPlayer.worldX + i_14_ >> 7;
@@ -399,8 +402,8 @@ public class ScreenController {
                     SceneCluster.packetBuffer.putByte(y);
                     SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
                     SceneCluster.packetBuffer.putByte(57);
-                    SceneCluster.packetBuffer.putByte(Class43.cameraYawOffset);
-                    SceneCluster.packetBuffer.putByte(Class51.mapZoomOffset);
+//                    SceneCluster.packetBuffer.putByte(Class43.cameraYawOffset);
+//                    SceneCluster.packetBuffer.putByte(Class51.mapZoomOffset);
                     SceneCluster.packetBuffer.putByte(89);
                     SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldX);
                     SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldY);
