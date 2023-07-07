@@ -14,13 +14,13 @@ public class Pathfinding {
     public static boolean doWalkTo(int clickType, int startX, int startY, int endX, int endY, int goalDX, int goalDY, int surroundingsMask, int objectType, int objectOrientation, boolean flag) {
         for(int x = 0; x < 104; x++) {
             for(int y = 0; y < 104; y++) {
-                Class57.wayPoints[x][y] = 0;
+                Class57.wayPoints[x][y] = 0b0000;
                 Landscape.distanceValues[x][y] = 99999999;
             }
         }
         int currentX = startX;
         int currentY = startY;
-        Class57.wayPoints[startX][startY] = 99;
+        Class57.wayPoints[startX][startY] = (0b0110 << 4) | 0b0011; // why was this value (99) chosen?
         Landscape.distanceValues[startX][startY] = 0;
         int nextIndex = 0;
         int currentIndex = 0;
@@ -53,60 +53,60 @@ public class Pathfinding {
                 break;
             }
             int newDistanceValue = Landscape.distanceValues[currentX][currentY] + 1;
-            if(currentX > 0 && Class57.wayPoints[-1 + currentX][currentY] == 0 && (0x1280108 & clippingPaths[currentX - 1][currentY]) == 0) {
+            if(currentX > 0 && Class57.wayPoints[-1 + currentX][currentY] == 0b0000 && (0x1280108 & clippingPaths[currentX - 1][currentY]) == 0) {
                 Class24.walkingQueueX[nextIndex] = currentX - 1;
                 Wall.walkingQueueY[nextIndex] = currentY;
                 nextIndex = (1 + nextIndex) % maxPathSize;
-                Class57.wayPoints[-1 + currentX][currentY] = 2;
+                Class57.wayPoints[-1 + currentX][currentY] = 0b0010;
                 Landscape.distanceValues[currentX - 1][currentY] = newDistanceValue;
             }
-            if(currentX < 103 && Class57.wayPoints[currentX + 1][currentY] == 0 && (clippingPaths[1 + currentX][currentY] & 0x1280180) == 0) {
+            if(currentX < 103 && Class57.wayPoints[currentX + 1][currentY] == 0b0000 && (clippingPaths[1 + currentX][currentY] & 0x1280180) == 0) {
                 Class24.walkingQueueX[nextIndex] = currentX + 1;
                 Wall.walkingQueueY[nextIndex] = currentY;
                 nextIndex = (nextIndex + 1) % maxPathSize;
-                Class57.wayPoints[currentX + 1][currentY] = 8;
+                Class57.wayPoints[currentX + 1][currentY] = 0b1000;
                 Landscape.distanceValues[currentX + 1][currentY] = newDistanceValue;
             }
-            if(currentY > 0 && Class57.wayPoints[currentX][currentY - 1] == 0 && (clippingPaths[currentX][-1 + currentY] & 0x1280102) == 0) {
+            if(currentY > 0 && Class57.wayPoints[currentX][currentY - 1] == 0b0000 && (clippingPaths[currentX][-1 + currentY] & 0x1280102) == 0) {
                 Class24.walkingQueueX[nextIndex] = currentX;
                 Wall.walkingQueueY[nextIndex] = -1 + currentY;
-                Class57.wayPoints[currentX][-1 + currentY] = 1;
+                Class57.wayPoints[currentX][-1 + currentY] = 0b0001;
                 nextIndex = (nextIndex + 1) % maxPathSize;
                 Landscape.distanceValues[currentX][currentY - 1] = newDistanceValue;
             }
-            if(currentY < 103 && Class57.wayPoints[currentX][currentY + 1] == 0 && (clippingPaths[currentX][currentY + 1] & 0x1280120) == 0) {
+            if(currentY < 103 && Class57.wayPoints[currentX][currentY + 1] == 0b0000 && (clippingPaths[currentX][currentY + 1] & 0x1280120) == 0) {
                 Class24.walkingQueueX[nextIndex] = currentX;
                 Wall.walkingQueueY[nextIndex] = 1 + currentY;
-                Class57.wayPoints[currentX][currentY + 1] = 4;
+                Class57.wayPoints[currentX][currentY + 1] = 0b0100;
                 Landscape.distanceValues[currentX][1 + currentY] = newDistanceValue;
                 nextIndex = (nextIndex + 1) % maxPathSize;
             }
-            if(currentX > 0 && currentY > 0 && Class57.wayPoints[-1 + currentX][currentY - 1] == 0 && (clippingPaths[currentX - 1][-1 + currentY] & 0x128010e) == 0 && (0x1280108 & clippingPaths[currentX + -1][currentY]) == 0 && (clippingPaths[currentX][-1 + currentY] & 0x1280102) == 0) {
+            if(currentX > 0 && currentY > 0 && Class57.wayPoints[-1 + currentX][currentY - 1] == 0b0000 && (clippingPaths[currentX - 1][-1 + currentY] & 0x128010e) == 0 && (0x1280108 & clippingPaths[currentX + -1][currentY]) == 0 && (clippingPaths[currentX][-1 + currentY] & 0x1280102) == 0) {
                 Class24.walkingQueueX[nextIndex] = -1 + currentX;
                 Wall.walkingQueueY[nextIndex] = currentY - 1;
                 nextIndex = (nextIndex + 1) % maxPathSize;
-                Class57.wayPoints[currentX + -1][-1 + currentY] = 3;
+                Class57.wayPoints[currentX + -1][-1 + currentY] = 0b0011;
                 Landscape.distanceValues[-1 + currentX][currentY + -1] = newDistanceValue;
             }
-            if(currentX < 103 && currentY > 0 && Class57.wayPoints[currentX + 1][-1 + currentY] == 0 && (clippingPaths[1 + currentX][-1 + currentY] & 0x1280183) == 0 && (clippingPaths[currentX + 1][currentY] & 0x1280180) == 0 && (0x1280102 & clippingPaths[currentX][-1 + currentY]) == 0) {
+            if(currentX < 103 && currentY > 0 && Class57.wayPoints[currentX + 1][-1 + currentY] == 0b0000 && (clippingPaths[1 + currentX][-1 + currentY] & 0x1280183) == 0 && (clippingPaths[currentX + 1][currentY] & 0x1280180) == 0 && (0x1280102 & clippingPaths[currentX][-1 + currentY]) == 0) {
                 Class24.walkingQueueX[nextIndex] = 1 + currentX;
                 Wall.walkingQueueY[nextIndex] = currentY - 1;
                 nextIndex = (nextIndex + 1) % maxPathSize;
-                Class57.wayPoints[1 + currentX][-1 + currentY] = 9;
+                Class57.wayPoints[1 + currentX][-1 + currentY] = 0b1001;
                 Landscape.distanceValues[currentX + 1][-1 + currentY] = newDistanceValue;
             }
-            if(currentX > 0 && currentY < 103 && Class57.wayPoints[currentX + -1][currentY + 1] == 0 && (0x1280138 & clippingPaths[-1 + currentX][1 + currentY]) == 0 && (0x1280108 & clippingPaths[currentX - 1][currentY]) == 0 && (clippingPaths[currentX][currentY + 1] & 0x1280120) == 0) {
+            if(currentX > 0 && currentY < 103 && Class57.wayPoints[currentX + -1][currentY + 1] == 0b0000 && (0x1280138 & clippingPaths[-1 + currentX][1 + currentY]) == 0 && (0x1280108 & clippingPaths[currentX - 1][currentY]) == 0 && (clippingPaths[currentX][currentY + 1] & 0x1280120) == 0) {
                 Class24.walkingQueueX[nextIndex] = -1 + currentX;
                 Wall.walkingQueueY[nextIndex] = 1 + currentY;
-                Class57.wayPoints[currentX - 1][1 + currentY] = 6;
+                Class57.wayPoints[currentX - 1][1 + currentY] = 0b0110;
                 Landscape.distanceValues[-1 + currentX][currentY + 1] = newDistanceValue;
                 nextIndex = (1 + nextIndex) % maxPathSize;
             }
-            if(currentX < 103 && currentY < 103 && Class57.wayPoints[1 + currentX][1 + currentY] == 0 && (0x12801e0 & clippingPaths[currentX + 1][currentY + 1]) == 0 && (0x1280180 & clippingPaths[1 + currentX][currentY]) == 0 && (clippingPaths[currentX][1 + currentY] & 0x1280120) == 0) {
+            if(currentX < 103 && currentY < 103 && Class57.wayPoints[1 + currentX][1 + currentY] == 0b0000 && (0x12801e0 & clippingPaths[currentX + 1][currentY + 1]) == 0 && (0x1280180 & clippingPaths[1 + currentX][currentY]) == 0 && (clippingPaths[currentX][1 + currentY] & 0x1280120) == 0) {
                 Class24.walkingQueueX[nextIndex] = 1 + currentX;
                 Wall.walkingQueueY[nextIndex] = currentY + 1;
                 nextIndex = (nextIndex + 1) % maxPathSize;
-                Class57.wayPoints[1 + currentX][1 + currentY] = 12;
+                Class57.wayPoints[1 + currentX][1 + currentY] = 0b1100;
                 Landscape.distanceValues[1 + currentX][1 + currentY] = newDistanceValue;
             }
         }
@@ -159,13 +159,13 @@ public class Pathfinding {
                 Class24.walkingQueueX[currentIndex] = currentX;
                 Wall.walkingQueueY[currentIndex++] = currentY;
             }
-            if((waypoint & 0x1) != 0)
+            if((waypoint & 0b0001) != 0)
                 currentY++;
-            else if((waypoint & 0x4) != 0)
+            else if((waypoint & 0b0100) != 0)
                 currentY--;
-            if((waypoint & 0x2) != 0)
+            if((waypoint & 0b0010) != 0)
                 currentX++;
-            else if((waypoint & 0x8) != 0)
+            else if((waypoint & 0b1000) != 0)
                 currentX--;
             waypoint = Class57.wayPoints[currentX][currentY];
         }
