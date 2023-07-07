@@ -15,7 +15,32 @@ public class Pathfinding {
     public static int[][] wayPoints = new int[104][104];
     public static int[] walkingQueueX = new int[4000];
     public static int[] walkingQueueY = new int[4000];
+    /**
+     * Something to do with whether an extended search was used to find the destination.
+     *
+     * Used for the "analytics" data sent on minimap walk.
+     *
+     * TODO investigate and rename
+     */
     public static int arbitraryDestination = 0;
+
+    /**
+     *
+     * @param clickType
+     * @param startX
+     * @param startY
+     * @param endX
+     * @param endY
+     * @param goalDX
+     * @param goalDY
+     * @param surroundingsMask
+     * @param objectType
+     * @param objectOrientation
+     * @param flag Whether the pathfinding should run an extended search to find the destination.
+     *             TODO rename this
+     *
+     * @return
+     */
     public static boolean doWalkTo(int clickType, int startX, int startY, int endX, int endY, int goalDX, int goalDY, int surroundingsMask, int objectType, int objectOrientation, boolean flag) {
         for(int x = 0; x < 104; x++) {
             for(int y = 0; y < 104; y++) {
