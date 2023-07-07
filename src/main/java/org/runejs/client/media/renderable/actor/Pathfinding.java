@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pathfinding {
-    public static boolean doWalkTo(int clickType, int startX, int startY, int endX, int endY, int goalDX, int goalDY, int surroundingsMask, int objectType, boolean flag, int arg7) {
+    public static boolean doWalkTo(int clickType, int startX, int startY, int endX, int endY, int goalDX, int goalDY, int surroundingsMask, int objectType, boolean flag, int objectOrientation) {
         for(int x = 0; x < 104; x++) {
             for(int y = 0; y < 104; y++) {
                 Class57.wayPoints[x][y] = 0;
@@ -38,8 +38,8 @@ public class Pathfinding {
                 break;
             }
             if(objectType != 0) {
-                if(objectType >= 5 && objectType != 10 || !Landscape.currentCollisionMap[Player.worldLevel].reachedWall(currentX, currentY, endX, endY, objectType + -1, arg7)) {
-                    if(objectType < 10 && Landscape.currentCollisionMap[Player.worldLevel].reachedWallDecoration(currentX, currentY, endX, endY, -1 + objectType, arg7)) {
+                if(objectType >= 5 && objectType != 10 || !Landscape.currentCollisionMap[Player.worldLevel].reachedWall(currentX, currentY, endX, endY, objectType + -1, objectOrientation)) {
+                    if(objectType < 10 && Landscape.currentCollisionMap[Player.worldLevel].reachedWallDecoration(currentX, currentY, endX, endY, -1 + objectType, objectOrientation)) {
                         foundDestination = true;
                         break;
                     }
