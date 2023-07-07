@@ -578,10 +578,7 @@ public class GameInterface extends CachedNode {
                 }
             }
             if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_2.getId()) {
-                boolean bool = Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 0, 0);
-                if(!bool) {
-                    bool = Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 1, 1);
-                }
+                Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                 OverlayDefinition.crossIndex = 0;
                 MovedStatics.crossY = RSString.clickY;
                 ClientScriptRunner.crossX = Class57.clickX;
@@ -846,10 +843,7 @@ public class GameInterface extends CachedNode {
                 redrawTabArea = true;
             } else {
                 if(action == ActionRowType.CAST_MAGIC_ON_WORLD_ITEM.getId()) {
-                    boolean bool = Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 0, 0);
-                    if(!bool) {
-                        bool = Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 1, 1);
-                    }
+                    Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
@@ -1137,10 +1131,7 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_1.getId()) {
-                        boolean bool = Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 0, 0);
-                        if(!bool) {
-                            bool = Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 1, 1);
-                        }
+                        Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                         LinkedList.crossType = 2;
                         OverlayDefinition.crossIndex = 0;
                         ClientScriptRunner.crossX = Class57.clickX;
@@ -1156,10 +1147,7 @@ public class GameInterface extends CachedNode {
                         );
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_3.getId()) {
-                        boolean bool = Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 0, 0);
-                        if(!bool) {
-                            bool = Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 1, 1);
-                        }
+                        Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                         OverlayDefinition.crossIndex = 0;
                         ClientScriptRunner.crossX = Class57.clickX;
                         LinkedList.crossType = 2;
@@ -1357,10 +1345,7 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_4.getId()) {
-                        boolean bool = Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 0, 0);
-                        if(!bool) {
-                            bool = Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 1, 1);
-                        }
+                        Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                         ClientScriptRunner.crossX = Class57.clickX;
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
@@ -1408,10 +1393,7 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_5.getId()) {
-                        boolean bool = Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 0, 0);
-                        if(!bool) {
-                            bool = Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 1, 1);
-                        }
+                        Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                         MovedStatics.crossY = RSString.clickY;
                         LinkedList.crossType = 2;
                         OverlayDefinition.crossIndex = 0;
@@ -1491,10 +1473,7 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.USE_ITEM_ON_WORLD_ITEM.getId()) {
-                        boolean bool = Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 0, 0);
-                        if(!bool) {
-                            bool = Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 1, 1);
-                        }
+                        Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                         ClientScriptRunner.crossX = Class57.clickX;
                         MovedStatics.crossY = RSString.clickY;
                         OverlayDefinition.crossIndex = 0;

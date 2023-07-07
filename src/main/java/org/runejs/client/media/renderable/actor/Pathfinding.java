@@ -45,8 +45,26 @@ public class Pathfinding {
         return doWalkTo(2, startX, startY, endX, endY, sizeX, sizeY, surroundingsMask, type, orientation, true);
     }
 
+    /**
+     * Initiate a walk from clicking on an entity (player, npc, world item)
+     */
     public static boolean doEntityWalkTo(int startX, int startY, int endX, int endY, int sizeX, int sizeY) {
         return doWalkTo(2, startX, startY, endX, endY, sizeX, sizeY, 0, 0, 0, false);
+    }
+
+    /**
+     * Initiate a walk from clicking on a world item.
+     *
+     * Tries once to walk right on top of it, then tries to walk one tile away if the first failed.
+     */
+    public static boolean doWorldItemWalkTo(int startX, int startY, int endX, int endY) {
+        boolean success = Pathfinding.doEntityWalkTo(startX, startY, endX, endY, 0, 0);
+
+        if (success) {
+            return true;
+        }
+
+        return Pathfinding.doEntityWalkTo(startX, startY, endX, endY, 1, 1);
     }
 
     /**
