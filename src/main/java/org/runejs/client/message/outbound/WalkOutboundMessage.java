@@ -20,6 +20,23 @@ public class WalkOutboundMessage implements OutboundMessage {
         INTERACTION
     }
 
+    public static class MinimapWalkTelemetry {
+        //     SceneCluster.packetBuffer.putByte(x);
+        //     SceneCluster.packetBuffer.putByte(y);
+        //     SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
+        //     SceneCluster.packetBuffer.putByte(57);
+        //     SceneCluster.packetBuffer.putByte(Class43.cameraYawOffset);
+        //     SceneCluster.packetBuffer.putByte(Class51.mapZoomOffset);
+        //     SceneCluster.packetBuffer.putByte(89);
+        //     SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldX);
+        //     SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldY);
+        //     SceneCluster.packetBuffer.putByte(Class40_Sub5_Sub15.arbitraryDestination);
+        //     SceneCluster.packetBuffer.putByte(63);
+
+//        public final int mouseX;
+//        public final int mouseY;
+    }
+
     public static class WalkStep {
         public final int x;
         public final int y;
