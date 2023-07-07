@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pathfinding {
-    public static boolean doWalkTo(int arg0, int arg1, int startX, int endX, int objectType, boolean flag, int arg7, int arg8, int startY, int endY, int clickType) {
+    public static boolean doWalkTo(int clickType, int startX, int startY, int endX, int endY, int arg0, int arg1, int objectType, boolean flag, int arg7, int arg8) {
         for(int x = 0; x < 104; x++) {
             for(int y = 0; y < 104; y++) {
                 Class57.wayPoints[x][y] = 0;
