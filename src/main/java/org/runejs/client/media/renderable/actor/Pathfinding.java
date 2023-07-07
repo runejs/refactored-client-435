@@ -39,6 +39,13 @@ public class Pathfinding {
     }
 
     /**
+     * Initiate a walk from clicking on an object.
+     */
+    public static boolean doObjectWalkTo(int startX, int startY, int endX, int endY, int sizeX, int sizeY, int surroundingsMask, int type, int orientation) {
+        return doWalkTo(2, startX, startY, endX, endY, sizeX, sizeY, surroundingsMask, type, orientation, true);
+    }
+
+    /**
      *
      * @param clickType
      * @param startX
