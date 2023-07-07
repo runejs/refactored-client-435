@@ -213,6 +213,9 @@ public class Pathfinding {
 
             return true;
         }
-        return clickType != 1;
+
+        boolean isMapClick = clickType == 1;
+
+        return !isMapClick;
     }
 }
