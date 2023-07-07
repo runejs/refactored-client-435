@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pathfinding {
-    public static boolean doWalkTo(int clickType, int startX, int startY, int endX, int endY, int arg0, int arg1, int objectType, boolean flag, int arg7, int arg8) {
+    public static boolean doWalkTo(int clickType, int startX, int startY, int endX, int endY, int goalDX, int goalDY, int surroundingsMask, int objectType, boolean flag, int arg7) {
         for(int x = 0; x < 104; x++) {
             for(int y = 0; y < 104; y++) {
                 Class57.wayPoints[x][y] = 0;
@@ -48,7 +48,7 @@ public class Pathfinding {
                     break;
                 }
             }
-            if(arg0 != 0 && arg8 != 0 && Landscape.currentCollisionMap[Player.worldLevel].reachedFacingObject(currentX, currentY, endX, endY, arg0, arg8, arg1)) {
+            if(goalDX != 0 && goalDY != 0 && Landscape.currentCollisionMap[Player.worldLevel].reachedFacingObject(currentX, currentY, endX, endY, goalDX, goalDY, surroundingsMask)) {
                 foundDestination = true;
                 break;
             }
@@ -123,12 +123,12 @@ public class Pathfinding {
                             int i_20_ = 0;
                             if(deviationY < endY)
                                 i_19_ = endY - deviationY;
-                            else if(deviationY > endY - (-arg8 + 1))
-                                i_19_ = deviationY + -arg8 + -endY + 1;
+                            else if(deviationY > endY - (-goalDY + 1))
+                                i_19_ = deviationY + -goalDY + -endY + 1;
                             if(deviationX < endX)
                                 i_20_ = -deviationX + endX;
-                            else if(-1 + arg0 + endX < deviationX)
-                                i_20_ = deviationX + -arg0 + -endX + 1;
+                            else if(-1 + goalDX + endX < deviationX)
+                                i_20_ = deviationX + -goalDX + -endX + 1;
                             int i_21_ = i_19_ * i_19_ + i_20_ * i_20_;
                             if(i_14_ > i_21_ || i_21_ == i_14_ && Landscape.distanceValues[deviationX][deviationY] < maxStepsNonInclusive) {
                                 currentY = deviationY;

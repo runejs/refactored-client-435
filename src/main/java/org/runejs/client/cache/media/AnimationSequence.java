@@ -71,7 +71,7 @@ public class AnimationSequence extends CachedNode {
         int i_15_ = 0x3 & i_14_ >> 6;
         int i_16_ = 0x1f & i_14_;
         if(i_16_ != 10 && i_16_ != 11 && i_16_ != 22)
-            Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], arg0, arg3, 0, 0, 1 + i_16_, true, i_15_, 0);
+            Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], arg0, arg3, 0, 0, 0, 1 + i_16_, true, i_15_);
         else {
             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
             int i_17_ = gameObjectDefinition.blockingMask;
@@ -86,7 +86,7 @@ public class AnimationSequence extends CachedNode {
                 i_18_ = gameObjectDefinition.sizeY;
                 i_19_ = gameObjectDefinition.sizeX;
             }
-            Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], arg0, arg3, i_18_, i_17_, 0, true, 0, i_19_);
+            Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], arg0, arg3, i_18_, i_19_, i_17_, 0, true, 0);
         }
         ClientScriptRunner.crossX = Class57.clickX;
         LinkedList.crossType = 2;
