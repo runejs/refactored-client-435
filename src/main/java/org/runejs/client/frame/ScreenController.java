@@ -394,19 +394,23 @@ public class ScreenController {
                 SceneCluster.packetBuffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + MovedStatics.baseX), Integer.toString(destY + Class26.baseY)));
             } else {
                 boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], destX, 0, true, 0, 0, Player.localPlayer.pathX[0], destY, 1);
-                if (bool) {
-                    SceneCluster.packetBuffer.putByte(x);
-                    SceneCluster.packetBuffer.putByte(y);
-                    SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
-                    SceneCluster.packetBuffer.putByte(57);
-                    SceneCluster.packetBuffer.putByte(Class43.cameraYawOffset);
-                    SceneCluster.packetBuffer.putByte(Class51.mapZoomOffset);
-                    SceneCluster.packetBuffer.putByte(89);
-                    SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldX);
-                    SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldY);
-                    SceneCluster.packetBuffer.putByte(Class40_Sub5_Sub15.arbitraryDestination);
-                    SceneCluster.packetBuffer.putByte(63);
-                }
+
+                // client used to send these 14 bytes (for map walks)
+                // now that the packet itself is converted to message, this code breaks the buffer
+                // consider whether we want to reintroduce this - or is it junk? Likely anticheat-relate
+                // if (bool) {
+                //     SceneCluster.packetBuffer.putByte(x);
+                //     SceneCluster.packetBuffer.putByte(y);
+                //     SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
+                //     SceneCluster.packetBuffer.putByte(57);
+                //     SceneCluster.packetBuffer.putByte(Class43.cameraYawOffset);
+                //     SceneCluster.packetBuffer.putByte(Class51.mapZoomOffset);
+                //     SceneCluster.packetBuffer.putByte(89);
+                //     SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldX);
+                //     SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldY);
+                //     SceneCluster.packetBuffer.putByte(Class40_Sub5_Sub15.arbitraryDestination);
+                //     SceneCluster.packetBuffer.putByte(63);
+                // }
             }
         }
     }
