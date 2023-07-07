@@ -402,8 +402,8 @@ public class ScreenController {
                     SceneCluster.packetBuffer.putByte(y);
                     SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
                     SceneCluster.packetBuffer.putByte(57);
-//                    SceneCluster.packetBuffer.putByte(Class43.cameraYawOffset);
-//                    SceneCluster.packetBuffer.putByte(Class51.mapZoomOffset);
+                    SceneCluster.packetBuffer.putByte(0); // current minimap rotation randomisation
+                    SceneCluster.packetBuffer.putByte(0); // current minimap zoom randomisation
                     SceneCluster.packetBuffer.putByte(89);
                     SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldX);
                     SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldY);
