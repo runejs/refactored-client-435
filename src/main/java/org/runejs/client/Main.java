@@ -725,8 +725,6 @@ public class Main extends GameShell {
         for (int i = 0; i < 100; i++)
             ChatBox.chatMessages[i] = null;
         MovedStatics.itemSelected = 0;
-        Class57.anInt1342 = -40 + (int) (80.0 * Math.random());
-        MovedStatics.cameraOffsetY = -55 + (int) (Math.random() * 110.0);
         MovedStatics.destinationX = 0;
         Buffer.anInt1985 = -1;
         Player.npcCount = 0;
@@ -734,7 +732,6 @@ public class Main extends GameShell {
         widgetSelected = 0;
         GroundItemTile.cameraHorizontal = 0x7ff & -10 + (int) (20.0 * Math.random());
         MovedStatics.minimapState = 0;
-        Buffer.cameraOffsetX = -50 + (int) (Math.random() * 100.0);
         Player.localPlayerCount = 0;
         Class55.destinationY = 0;
         for (int i = 0; i < 2048; i++) {
@@ -798,7 +795,7 @@ public class Main extends GameShell {
             if(MovedStatics.secondaryCameraVertical / 256 > i) {
                 i = MovedStatics.secondaryCameraVertical / 256;
             }
-            int i_0_ = 0x7ff & GroundItemTile.cameraHorizontal + Class57.anInt1342;
+            int i_0_ = 0x7ff & GroundItemTile.cameraHorizontal;
             if(Projectile.customCameraActive[4] && 128 + customCameraAmplitude[4] > i) {
                 i = 128 + customCameraAmplitude[4];
             }
@@ -1560,30 +1557,10 @@ public class Main extends GameShell {
                             MovedStatics.method650(4000);
                             SceneCluster.packetBuffer.putPacket(216);
                         }
-                        MovedStatics.anInt1923++;
-                        if(MovedStatics.anInt1923 > 500) {
-                            int i_22_ = (int) (8.0 * Math.random());
-                            if((0x2 & i_22_) == 2)
-                                MovedStatics.cameraOffsetY += ProducingGraphicsBuffer_Sub1.anInt2211;
-                            if((i_22_ & 0x1) == 1)
-                                Buffer.cameraOffsetX += MovedStatics.anInt1010;
-                            MovedStatics.anInt1923 = 0;
-                            if((0x4 & i_22_) == 4)
-                                Class57.anInt1342 += MovedStatics.anInt195;
-                        }
-                        if(MovedStatics.cameraOffsetY < -55)
-                            ProducingGraphicsBuffer_Sub1.anInt2211 = 2;
-                        if(MovedStatics.cameraOffsetY > 55)
-                            ProducingGraphicsBuffer_Sub1.anInt2211 = -2;
-                        if(Buffer.cameraOffsetX < -50)
-                            MovedStatics.anInt1010 = 2;
+
+                        // antibot camera/minimap randomisation used to happen here
+
                         MovedStatics.anInt537++;
-                        if(Buffer.cameraOffsetX > 50)
-                            MovedStatics.anInt1010 = -2;
-                        if(Class57.anInt1342 < -40)
-                            MovedStatics.anInt195 = 1;
-                        if(Class57.anInt1342 > 40)
-                            MovedStatics.anInt195 = -1;
                         if(MovedStatics.anInt537 > 50) {
                             SceneCluster.packetBuffer.putPacket(13);
                         }

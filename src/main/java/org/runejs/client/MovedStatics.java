@@ -103,7 +103,6 @@ public class MovedStatics {
      */
     public static int cutsceneCameraPositionBaseAdjust;
     public static int anInt194;
-    public static int anInt195 = 1;
     public static int[] chatboxLineOffsets;
     public static int anInt199 = 0;
     public static volatile boolean aBoolean1575 = false;
@@ -186,7 +185,6 @@ public class MovedStatics {
     public static byte[][][] tile_underlayids;
     public static NodeCache aClass9_998 = new NodeCache(100);
     public static int anInt1008 = 0;
-    public static int anInt1010 = 2;
     public static int[] anIntArray1013;
     public static IndexedImage[] moderatorIcon;
     public static int[] anIntArray2764 = new int[128];
@@ -230,7 +228,6 @@ public class MovedStatics {
      * for the central tab on the bottom row.
      */
     public static IndexedImage tabHighlightImageBottomMiddle;
-    public static int anInt1923 = 0;
 
     public static void method445() {
         if (CollisionMap.anInt165 != 0) {
@@ -1451,7 +1448,6 @@ public class MovedStatics {
 	}
 
 	public static int modifiedWidgetId = 0;
-	public static int cameraOffsetY = 0;
 
 	public static void method211() {
 	    ISAAC.aClass9_516.clear();

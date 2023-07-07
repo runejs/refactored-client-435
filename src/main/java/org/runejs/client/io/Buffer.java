@@ -15,7 +15,6 @@ public class Buffer extends Node {
     public static NodeCache rgbImageCache = new NodeCache(100);
     public static IndexedImage tabTopBack;
     public static int[] anIntArray1972;
-    public static int cameraOffsetX = 0;
     public static int lastItemDragTime = 0;
 
     public static int[] anIntArray1984 = new int[2000];
