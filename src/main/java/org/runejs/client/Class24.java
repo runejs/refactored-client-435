@@ -11,7 +11,6 @@ import org.runejs.client.scene.util.CollisionMap;
 
 public class Class24 {
     public static int[] fullScreenTextureArray;
-    public static int[] walkingQueueX = new int[4000];
 
     public static IndexedImage[] method337(CacheArchive arg1, int arg2, int arg3) {
         if(!ImageRGB.spriteExists(arg2, arg3, arg1))

@@ -578,9 +578,9 @@ public class GameInterface extends CachedNode {
                 }
             }
             if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_2.getId()) {
-                boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
+                boolean bool = Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 0, 0, 0, 0, 0, false);
                 if(!bool) {
-                    bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
+                    bool = Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 1, 1, 0, 0, 0, false);
                 }
                 OverlayDefinition.crossIndex = 0;
                 MovedStatics.crossY = RSString.clickY;
@@ -625,7 +625,7 @@ public class GameInterface extends CachedNode {
             if(action == ActionRowType.CAST_MAGIC_ON_PLAYER.getId()) {
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[npcIdx];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
-                    Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+                    Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathY[0], class40_sub5_sub17_sub4_sub1.pathX[0], 1, 1, 0, 0, 0, false);
                     ClientScriptRunner.crossX = Class57.clickX;
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
@@ -650,7 +650,7 @@ public class GameInterface extends CachedNode {
                         Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[Player.trackedPlayerIndices[i_15_]];
                         if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.playerName != null && class40_sub5_sub17_sub4_sub1.playerName.equalsIgnoreCase(username)) {
                             bool = true;
-                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+                            Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathY[0], class40_sub5_sub17_sub4_sub1.pathX[0], 1, 1, 0, 0, 0, false);
 
                             AcceptRequestOutboundMessage.RequestType requestType = AcceptRequestOutboundMessage.RequestType.INVALID;
 
@@ -773,7 +773,7 @@ public class GameInterface extends CachedNode {
             if(action == ActionRowType.INTERACT_WITH_PLAYER_OPTION_1.getId()) {
                 Player otherPlayer = Player.trackedPlayers[npcIdx];
                 if(otherPlayer != null) {
-                    Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], otherPlayer.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], otherPlayer.pathX[0], 2);
+                    Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1, 0, 0, 0, false);
                     ClientScriptRunner.crossX = Class57.clickX;
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
@@ -785,7 +785,7 @@ public class GameInterface extends CachedNode {
             if(action == ActionRowType.INTERACT_WITH_PLAYER_OPTION_4.getId()) {
                 Player otherPlayer = Player.trackedPlayers[npcIdx];
                 if(otherPlayer != null) {
-                    Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], otherPlayer.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], otherPlayer.pathX[0], 2);
+                    Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1, 0, 0, 0, false);
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
@@ -813,7 +813,7 @@ public class GameInterface extends CachedNode {
             if(action == ActionRowType.USE_ITEM_ON_PLAYER.getId()) {
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[npcIdx];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
-                    Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub1.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathX[0], 2);
+                    Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathY[0], class40_sub5_sub17_sub4_sub1.pathX[0], 1, 1, 0, 0, 0, false);
                     ClientScriptRunner.crossX = Class57.clickX;
                     LinkedList.crossType = 2;
                     MovedStatics.crossY = RSString.clickY;
@@ -846,9 +846,9 @@ public class GameInterface extends CachedNode {
                 redrawTabArea = true;
             } else {
                 if(action == ActionRowType.CAST_MAGIC_ON_WORLD_ITEM.getId()) {
-                    boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
+                    boolean bool = Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 0, 0, 0, 0, 0, false);
                     if(!bool) {
-                        bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
+                        bool = Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 1, 1, 0, 0, 0, false);
                     }
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
@@ -953,7 +953,7 @@ public class GameInterface extends CachedNode {
                 if(action == ActionRowType.INTERACT_WITH_NPC_OPTION_2.getId()) {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
-                        Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
+                        Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1, 0, 0, 0, false);
                         OverlayDefinition.crossIndex = 0;
                         ClientScriptRunner.crossX = Class57.clickX;
                         MovedStatics.crossY = RSString.clickY;
@@ -965,7 +965,7 @@ public class GameInterface extends CachedNode {
                 if(action == ActionRowType.USE_ITEM_ON_NPC.getId()) {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
-                        Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
+                        Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1, 0, 0, 0, false);
                         ClientScriptRunner.crossX = Class57.clickX;
                         MovedStatics.crossY = RSString.clickY;
                         OverlayDefinition.crossIndex = 0;
@@ -1020,7 +1020,7 @@ public class GameInterface extends CachedNode {
                 if(action == ActionRowType.INTERACT_WITH_NPC_OPTION_4.getId()) {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
-                        Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
+                        Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1, 0, 0, 0, false);
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
                         ClientScriptRunner.crossX = Class57.clickX;
@@ -1127,7 +1127,7 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.INTERACT_WITH_NPC_OPTION_1.getId()) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
-                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
+                            Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1, 0, 0, 0, false);
                             ClientScriptRunner.crossX = Class57.clickX;
                             MovedStatics.crossY = RSString.clickY;
                             OverlayDefinition.crossIndex = 0;
@@ -1137,9 +1137,9 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_1.getId()) {
-                        boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
+                        boolean bool = Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 0, 0, 0, 0, 0, false);
                         if(!bool) {
-                            bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
+                            bool = Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 1, 1, 0, 0, 0, false);
                         }
                         LinkedList.crossType = 2;
                         OverlayDefinition.crossIndex = 0;
@@ -1156,9 +1156,9 @@ public class GameInterface extends CachedNode {
                         );
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_3.getId()) {
-                        boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
+                        boolean bool = Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 0, 0, 0, 0, 0, false);
                         if(!bool) {
-                            bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
+                            bool = Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 1, 1, 0, 0, 0, false);
                         }
                         OverlayDefinition.crossIndex = 0;
                         ClientScriptRunner.crossX = Class57.clickX;
@@ -1177,7 +1177,7 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.CAST_MAGIC_ON_NPC.getId()) {
                         Npc npc = Player.npcs[npcIdx];
                         if(npc != null) {
-                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], npc.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], npc.pathX[0], 2);
+                            Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], npc.pathY[0], npc.pathX[0], 1, 1, 0, 0, 0, false);
                             ClientScriptRunner.crossX = Class57.clickX;
                             MovedStatics.crossY = RSString.clickY;
                             OverlayDefinition.crossIndex = 0;
@@ -1213,7 +1213,7 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.INTERACT_WITH_PLAYER_OPTION_3.getId()) {
                         Player otherPlayer = Player.trackedPlayers[npcIdx];
                         if(otherPlayer != null) {
-                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], otherPlayer.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], otherPlayer.pathX[0], 2);
+                            Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1, 0, 0, 0, false);
                             LinkedList.crossType = 2;
                             OverlayDefinition.crossIndex = 0;
                             ClientScriptRunner.crossX = Class57.clickX;
@@ -1331,7 +1331,7 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.INTERACT_WITH_PLAYER_OPTION_5.getId()) {
                         Player otherPlayer = Player.trackedPlayers[npcIdx];
                         if(otherPlayer != null) {
-                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], otherPlayer.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], otherPlayer.pathX[0], 2);
+                            Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1, 0, 0, 0, false);
                             LinkedList.crossType = 2;
                             MovedStatics.crossY = RSString.clickY;
                             ClientScriptRunner.crossX = Class57.clickX;
@@ -1357,9 +1357,9 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_4.getId()) {
-                        boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
+                        boolean bool = Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 0, 0, 0, 0, 0, false);
                         if(!bool) {
-                            bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
+                            bool = Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 1, 1, 0, 0, 0, false);
                         }
                         ClientScriptRunner.crossX = Class57.clickX;
                         OverlayDefinition.crossIndex = 0;
@@ -1408,9 +1408,9 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_5.getId()) {
-                        boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
+                        boolean bool = Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 0, 0, 0, 0, 0, false);
                         if(!bool) {
-                            bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
+                            bool = Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 1, 1, 0, 0, 0, false);
                         }
                         MovedStatics.crossY = RSString.clickY;
                         LinkedList.crossType = 2;
@@ -1429,7 +1429,7 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.INTERACT_WITH_PLAYER_OPTION_2.getId()) {
                         Player otherPlayer = Player.trackedPlayers[npcIdx];
                         if(otherPlayer != null) {
-                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], otherPlayer.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], otherPlayer.pathX[0], 2);
+                            Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1, 0, 0, 0, false);
                             OverlayDefinition.crossIndex = 0;
                             ClientScriptRunner.crossX = Class57.clickX;
                             LinkedList.crossType = 2;
@@ -1481,7 +1481,7 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.INTERACT_WITH_NPC_OPTION_5.getId()) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
-                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
+                            Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1, 0, 0, 0, false);
                             LinkedList.crossType = 2;
                             ClientScriptRunner.crossX = Class57.clickX;
                             MovedStatics.crossY = RSString.clickY;
@@ -1491,9 +1491,9 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.USE_ITEM_ON_WORLD_ITEM.getId()) {
-                        boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 0, Player.localPlayer.pathX[0], i_10_, 2);
+                        boolean bool = Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 0, 0, 0, 0, 0, false);
                         if(!bool) {
-                            bool = Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], i, 0, false, 0, 1, Player.localPlayer.pathX[0], i_10_, 2);
+                            bool = Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_, 1, 1, 0, 0, 0, false);
                         }
                         ClientScriptRunner.crossX = Class57.clickX;
                         MovedStatics.crossY = RSString.clickY;
@@ -1543,7 +1543,7 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.INTERACT_WITH_NPC_OPTION_3.getId()) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
-                            Pathfinding.doWalkTo(1, 0, Player.localPlayer.pathY[0], class40_sub5_sub17_sub4_sub2.pathY[0], 0, false, 0, 1, Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathX[0], 2);
+                            Pathfinding.doWalkTo(2, Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1, 0, 0, 0, false);
                             LinkedList.crossType = 2;
                             ClientScriptRunner.crossX = Class57.clickX;
                             OverlayDefinition.crossIndex = 0;

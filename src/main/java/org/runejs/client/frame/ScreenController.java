@@ -357,24 +357,24 @@ public class ScreenController {
             return;
         }
         if (MouseHandler.clickType == 1) {
-            int x;
-            int y;
+            int minimapClickX;
+            int minimapClickY;
             if (frameMode == ScreenMode.FIXED) {
-                x = -575 + Class57.clickX;
-                y = -5 + RSString.clickY - 4;
-                if (x >= 0 && y >= 0 && x < 146 && y < 151) {
-                    x -= 73;
-                    y -= 75;
+                minimapClickX = -575 + Class57.clickX;
+                minimapClickY = -5 + RSString.clickY - 4;
+                if (minimapClickX >= 0 && minimapClickY >= 0 && minimapClickX < 146 && minimapClickY < 151) {
+                    minimapClickX -= 73;
+                    minimapClickY -= 75;
                 } else {
                     return;
                 }
 
             } else {
-                x = -(frameWidth - 210) + Class57.clickX;
-                y = -5 + RSString.clickY - 4;
-                if (x >= 0 && y >= 0 && x < 204 && y < 200) {
-                    x -= 107;
-                    y -= 100;
+                minimapClickX = -(frameWidth - 210) + Class57.clickX;
+                minimapClickY = -5 + RSString.clickY - 4;
+                if (minimapClickX >= 0 && minimapClickY >= 0 && minimapClickX < 204 && minimapClickY < 200) {
+                    minimapClickX -= 107;
+                    minimapClickY -= 100;
                 } else {
                     return;
                 }
@@ -384,8 +384,8 @@ public class ScreenController {
             int cos = Rasterizer3D.cosinetable[angle];
             cos = (Class51.mapZoomOffset + 256) * cos >> 8;
             sin = (Class51.mapZoomOffset + 256) * sin >> 8;
-            int i_14_ = y * sin + x * cos >> 11;
-            int i_15_ = cos * y - x * sin >> 11;
+            int i_14_ = minimapClickY * sin + minimapClickX * cos >> 11;
+            int i_15_ = cos * minimapClickY - minimapClickX * sin >> 11;
             int destX = Player.localPlayer.worldX + i_14_ >> 7;
             int destY = -i_15_ + Player.localPlayer.worldY >> 7;
 
@@ -393,10 +393,23 @@ public class ScreenController {
                 SceneCluster.packetBuffer.putPacket(246);
                 SceneCluster.packetBuffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + MovedStatics.baseX), Integer.toString(destY + Class26.baseY)));
             } else {
-                boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], destX, 0, true, 0, 0, Player.localPlayer.pathX[0], destY, 1);
+                boolean bool = Pathfinding.doWalkTo(
+                    1, 
+                    Player.localPlayer.pathY[0], 
+                    Player.localPlayer.pathX[0], 
+                    destX, 
+                    destY, 
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    true
+                );
+                
                 if (bool) {
-                    SceneCluster.packetBuffer.putByte(x);
-                    SceneCluster.packetBuffer.putByte(y);
+                    SceneCluster.packetBuffer.putByte(minimapClickX);
+                    SceneCluster.packetBuffer.putByte(minimapClickY);
                     SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
                     SceneCluster.packetBuffer.putByte(57);
                     SceneCluster.packetBuffer.putByte(Class43.cameraYawOffset);
@@ -404,7 +417,7 @@ public class ScreenController {
                     SceneCluster.packetBuffer.putByte(89);
                     SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldX);
                     SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldY);
-                    SceneCluster.packetBuffer.putByte(Class40_Sub5_Sub15.arbitraryDestination);
+                    SceneCluster.packetBuffer.putByte(Pathfinding.arbitraryDestination);
                     SceneCluster.packetBuffer.putByte(63);
                 }
             }
