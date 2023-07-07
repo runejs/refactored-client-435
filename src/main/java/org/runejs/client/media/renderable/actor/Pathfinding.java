@@ -25,6 +25,20 @@ public class Pathfinding {
     public static int arbitraryDestination = 0;
 
     /**
+     * Initiate a walk from a tile click.
+     */
+    public static boolean doTileWalkTo(int startX, int startY, int endX, int endY) {
+        return doWalkTo(0, startX, startY, endX, endY, 0, 0, 0, 0, 0, true);
+    }
+
+    /**
+     * Initiate a walk from a minimap click.
+     */
+    public static boolean doMinimapWalkTo(int startX, int startY, int endX, int endY) {
+        return doWalkTo(1, startX, startY, endX, endY, 0, 0, 0, 0, 0, true);
+    }
+
+    /**
      *
      * @param clickType
      * @param startX

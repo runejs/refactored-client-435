@@ -393,18 +393,11 @@ public class ScreenController {
                 SceneCluster.packetBuffer.putPacket(246);
                 SceneCluster.packetBuffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + MovedStatics.baseX), Integer.toString(destY + Class26.baseY)));
             } else {
-                boolean bool = Pathfinding.doWalkTo(
-                    1, 
+                boolean bool = Pathfinding.doMinimapWalkTo(
                     Player.localPlayer.pathY[0], 
                     Player.localPlayer.pathX[0], 
                     destX, 
-                    destY, 
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    true
+                    destY
                 );
                 
                 if (bool) {
