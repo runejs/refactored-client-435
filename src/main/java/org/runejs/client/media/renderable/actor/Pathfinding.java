@@ -25,6 +25,49 @@ public class Pathfinding {
     public static int arbitraryDestination = 0;
 
     /**
+     * Initiate a walk from a tile click.
+     */
+    public static boolean doTileWalkTo(int startX, int startY, int endX, int endY) {
+        return doWalkTo(0, startX, startY, endX, endY, 0, 0, 0, 0, 0, true);
+    }
+
+    /**
+     * Initiate a walk from a minimap click.
+     */
+    public static boolean doMinimapWalkTo(int startX, int startY, int endX, int endY) {
+        return doWalkTo(1, startX, startY, endX, endY, 0, 0, 0, 0, 0, true);
+    }
+
+    /**
+     * Initiate a walk from clicking on an object.
+     */
+    public static boolean doObjectWalkTo(int startX, int startY, int endX, int endY, int sizeX, int sizeY, int surroundingsMask, int type, int orientation) {
+        return doWalkTo(2, startX, startY, endX, endY, sizeX, sizeY, surroundingsMask, type, orientation, true);
+    }
+
+    /**
+     * Initiate a walk from clicking on an entity (player, npc, world item)
+     */
+    public static boolean doEntityWalkTo(int startX, int startY, int endX, int endY, int sizeX, int sizeY) {
+        return doWalkTo(2, startX, startY, endX, endY, sizeX, sizeY, 0, 0, 0, false);
+    }
+
+    /**
+     * Initiate a walk from clicking on a world item.
+     *
+     * Tries once to walk right on top of it, then tries to walk one tile away if the first failed.
+     */
+    public static boolean doWorldItemWalkTo(int startX, int startY, int endX, int endY) {
+        boolean success = Pathfinding.doEntityWalkTo(startX, startY, endX, endY, 0, 0);
+
+        if (success) {
+            return true;
+        }
+
+        return Pathfinding.doEntityWalkTo(startX, startY, endX, endY, 1, 1);
+    }
+
+    /**
      *
      * @param clickType
      * @param startX
