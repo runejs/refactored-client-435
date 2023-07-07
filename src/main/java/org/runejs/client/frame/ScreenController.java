@@ -417,7 +417,7 @@ public class ScreenController {
                     SceneCluster.packetBuffer.putByte(89);
                     SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldX);
                     SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldY);
-                    SceneCluster.packetBuffer.putByte(Class40_Sub5_Sub15.arbitraryDestination);
+                    SceneCluster.packetBuffer.putByte(Pathfinding.arbitraryDestination);
                     SceneCluster.packetBuffer.putByte(63);
                 }
             }

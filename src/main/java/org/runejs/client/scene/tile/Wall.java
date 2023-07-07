@@ -14,7 +14,6 @@ import org.runejs.client.Class40_Sub5_Sub15;
 
 public class Wall {
     public static int cameraVelocityHorizontal = 0;
-    public static int[] walkingQueueY = new int[4000];
     public static GameInterface aGameInterface_353 = null;
     public static int anInt356 = 0;
     public static LinkedList[][][] groundItems = new LinkedList[4][104][104];
