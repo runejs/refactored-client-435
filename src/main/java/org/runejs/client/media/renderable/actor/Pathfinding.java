@@ -291,4 +291,77 @@ public class Pathfinding {
 
         return !isMapClick;
     }
+
+    public static class MapWalkAnalytics {
+        /**
+         * X coordinate of the click within the minimap
+         */
+        public final int minimapClickX;
+
+        /**
+         * Y coordinate of the click within the minimap
+         */
+        public final int minimapClickY;
+
+        /**
+         * The current randomised zoom level of the minimap
+         */
+        public final int minimapRandomZoom;
+
+        /**
+         * The current randomised rotation of the minimap
+         */
+        public final int minimapRandomRotation;
+
+        /**
+         * The current yaw of the camera
+         */
+        public final int cameraYaw;
+
+        /**
+         * TODO what is this
+         */
+        public final int worldX;
+
+        /**
+         * TODO what is this
+         */
+        public final int worldY;
+
+        /**
+         * Whether the pathfinding algorithm used "deep search" to find a path
+         * 
+         * TODO improve name
+         */
+        public final boolean usedDeepSearch;
+
+        /**
+         * Magic number, consistent through revisions (57)
+         */
+        public final int magicA;
+
+        /**
+         * Magic number, consistent through revisions (89)
+         */
+        public final int magicB;
+
+        /**
+         * Magic number, consistent through revisions (63)
+         */
+        public final int magicC;
+
+        public MapWalkAnalytics(int minimapClickX, int minimapClickY, int minimapRandomZoom, int minimapRandomRotation, int cameraYaw, int worldX, int worldY, boolean usedDeepSearch, int magicA, int magicB, int magicC) {
+            this.minimapClickX = minimapClickX;
+            this.minimapClickY = minimapClickY;
+            this.minimapRandomZoom = minimapRandomZoom;
+            this.minimapRandomRotation = minimapRandomRotation;
+            this.cameraYaw = cameraYaw;
+            this.worldX = worldX;
+            this.worldY = worldY;
+            this.usedDeepSearch = usedDeepSearch;
+            this.magicA = magicA;
+            this.magicB = magicB;
+            this.magicC = magicC;
+        }
+    }
 }

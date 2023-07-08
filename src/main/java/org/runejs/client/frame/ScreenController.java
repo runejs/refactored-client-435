@@ -393,6 +393,20 @@ public class ScreenController {
                 SceneCluster.packetBuffer.putPacket(246);
                 SceneCluster.packetBuffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + MovedStatics.baseX), Integer.toString(destY + Class26.baseY)));
             } else {
+                Pathfinding.MapWalkAnalytics analytics = new Pathfinding.MapWalkAnalytics(
+                    minimapClickX,
+                    minimapClickY,
+                    Class51.mapZoomOffset,
+                    Class43.cameraYawOffset,
+                    GroundItemTile.cameraHorizontal,
+                    Player.localPlayer.worldX,
+                    Player.localPlayer.worldY,
+                    Pathfinding.arbitraryDestination == 1,
+                    57,
+                    89,
+                    63
+                );
+
                 boolean bool = Pathfinding.doMinimapWalkTo(
                     Player.localPlayer.pathY[0], 
                     Player.localPlayer.pathX[0], 
