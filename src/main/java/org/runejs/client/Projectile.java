@@ -267,7 +267,7 @@ public class Projectile extends Renderable {
         }
         int i = 3;
         if(Main.camera.getPitch() < 310) {
-            Point3d cameraPos = Main.camera.getCartesian();
+            Point3d cameraPos = Main.camera.getPosition();
             int i_22_ = cameraPos.y >> 7;
             int i_23_ = cameraPos.x >> 7;
             if(i_22_ > 103) {

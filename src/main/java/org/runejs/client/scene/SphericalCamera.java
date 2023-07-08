@@ -94,13 +94,6 @@ public class SphericalCamera implements Camera {
     }
 
     /**
-     * Returns the camera's current cartesian coordinates.
-     */
-    public Point3d getCartesian() {
-        return cartesian;
-    }
-
-    /**
      * Updates the camera's cartesian coordinates based on the current spherical coordinates.
      */
     private void updateCartesian() {
