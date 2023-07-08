@@ -18,6 +18,7 @@ import org.runejs.client.message.handler.rs435.misc.*;
 import org.runejs.client.message.handler.rs435.world.*;
 import org.runejs.client.message.handler.rs435.world.item.*;
 import org.runejs.client.message.handler.rs435.world.object.*;
+import org.runejs.client.message.inbound.BulkInboundMessage;
 import org.runejs.client.message.inbound.camera.*;
 import org.runejs.client.message.inbound.chat.*;
 import org.runejs.client.message.handler.rs435.audio.PlayQuickSongMessageHandler;
@@ -143,5 +144,6 @@ public class RS435HandlerRegistry extends MessageHandlerRegistry {
         register(CreateObjectInboundMessage.class, new CreateObjectMessageHandler());
         register(RemoveObjectInboundMessage.class, new RemoveObjectMessageHandler());
         register(RotateAnimateObjectInboundMessage.class, new RotateAnimateObjectMessageHandler());
+        register(BulkInboundMessage.class, new BulkMessageHandler());
     }
 }

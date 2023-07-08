@@ -1476,7 +1476,7 @@ public class Main extends GameShell {
                         if(Scene.clickedTileX != -1) {
                             int i = Scene.clickedTileX;
                             int i_18_ = Scene.clickedTileY;
-                            boolean bool = Pathfinding.doWalkTo(0, 0, Player.localPlayer.pathY[0], i, 0, true, 0, 0, Player.localPlayer.pathX[0], i_18_, 0);
+                            boolean bool = Pathfinding.doTileWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_18_);
                             if(bool) {
                                 MovedStatics.crossY = RSString.clickY;
                                 OverlayDefinition.crossIndex = 0;

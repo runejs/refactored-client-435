@@ -13,6 +13,7 @@ import org.runejs.client.message.outbound.useitem.*;
 import org.runejs.client.message.outbound.widget.*;
 import org.runejs.client.message.outbound.widget.container.*;
 import org.runejs.client.message.outbound.widget.input.*;
+import org.runejs.client.net.codec.runejs435.decoder.BulkMessageDecoder;
 import org.runejs.client.net.codec.runejs435.decoder.audio.*;
 import org.runejs.client.net.codec.runejs435.decoder.camera.*;
 import org.runejs.client.net.codec.runejs435.decoder.chat.*;
@@ -206,5 +207,6 @@ public class RuneJS435PacketCodec extends MessagePacketCodec {
         register(PacketType.SPAWN_OBJECT.getOpcode(), new CreateObjectMessageDecoder());
         register(PacketType.REMOVE_OBJECT.getOpcode(), new RemoveObjectMessageDecoder());
         register(PacketType.ROTATE_ANIMATE_OBJECT.getOpcode(), new RotateAnimateObjectMessageDecoder());
+        register(PacketType.BULK_WORLD_UPDATE.getOpcode(), new BulkMessageDecoder());
     }
 }
