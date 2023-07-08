@@ -1,7 +1,6 @@
 package org.runejs.client.scene;
 
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.media.renderable.actor.Player;
 
 /**
  * Temporary holding ground for camera code
@@ -38,10 +37,7 @@ public class SceneCamera {
         int yawDifference = 0x7ff & -yaw + 2048;
         int zOffset = 0;
         int pitchDifference = 2048 - pitch & 0x7ff;
-        int yOffset = arg6;
-        if(!Player.cutsceneActive) {
-            yOffset = cameraZoom + pitch * 3;
-        }
+        int yOffset = arg6 + pitch * 3;
         if(pitchDifference != 0) {
             int cosine = Model.COSINE[pitchDifference];
             int sine = Model.SINE[pitchDifference];
