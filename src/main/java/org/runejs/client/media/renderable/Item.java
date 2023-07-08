@@ -67,11 +67,7 @@ public class Item extends Renderable {
         SceneCamera.cameraZoom += SceneCamera.cameraVelocityZoom / 2;
         SceneCamera.cameraVelocityZoom /= 1.5;
 
-        // clamp the pitch
-        if (SceneCamera.cameraPitch < 128)
-            SceneCamera.cameraPitch = 128;
-        if (SceneCamera.cameraPitch > 383)
-            SceneCamera.cameraPitch = 383;
+        SceneCamera.clampPitch();
 
         // figure out minimum allowed pitch based on surrounding heights
         int i_3_ = 0;

@@ -99,4 +99,16 @@ public class SceneCamera {
         } else if (cameraTerrainMinScaledPitch > i_9_)
             cameraTerrainMinScaledPitch += (-cameraTerrainMinScaledPitch + i_9_) / 80;
     }
+
+    public static int getClampedPitch(int pitch) {
+        if (pitch < 128)
+            return 128;
+        if (pitch > 383)
+            return 383;
+        return pitch;
+    }
+
+    public static void clampPitch() {
+        cameraPitch = getClampedPitch(cameraPitch);
+    }
 }

@@ -830,12 +830,7 @@ public class Main extends GameShell {
                 }
                 if(i_6_ == 4) {
                     SceneCamera.cameraPitch += i_7_;
-                    if(SceneCamera.cameraPitch < 128) {
-                        SceneCamera.cameraPitch = 128;
-                    }
-                    if(SceneCamera.cameraPitch > 383) {
-                        SceneCamera.cameraPitch = 383;
-                    }
+                    SceneCamera.clampPitch();
                 }
                 if(i_6_ == 3) {
                     SceneCamera.cameraYaw = 0x7ff & i_7_ + SceneCamera.cameraYaw;
@@ -1214,11 +1209,10 @@ public class Main extends GameShell {
         int i_7_ = i_3_ - SceneCamera.cameraX;
         int i_8_ = (int) Math.sqrt((double) (i_7_ * i_7_ + i_6_ * i_6_));
         int i_9_ = 0x7ff & (int) (Math.atan2((double) i_5_, (double) i_8_) * 325.949);
-        if(i_9_ < 128)
-            i_9_ = 128;
+
+        i_9_ = SceneCamera.getClampedPitch(i_9_);
+
         int i_10_ = 0x7ff & (int) (-325.949 * Math.atan2((double) i_7_, (double) i_6_));
-        if(i_9_ > 383)
-            i_9_ = 383;
         int i_11_ = -SceneCamera.cameraYaw + i_10_;
         if(i_11_ > 1024)
             i_11_ -= 2048;

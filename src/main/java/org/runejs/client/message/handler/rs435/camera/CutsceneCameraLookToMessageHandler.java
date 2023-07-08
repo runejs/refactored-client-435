@@ -30,10 +30,7 @@ public class CutsceneCameraLookToMessageHandler implements MessageHandler<Cutsce
             SceneCamera.cameraPitch = (int) (325.949 * Math.atan2((double) deltaZ, (double) horizontalDistance)) & 0x7ff;
             SceneCamera.cameraYaw = (int) (-325.949 * Math.atan2((double) deltaX, (double) deltaY)) & 0x7ff;
 
-            if(SceneCamera.cameraPitch < 128)
-                SceneCamera.cameraPitch = 128;
-            if(SceneCamera.cameraPitch > 383)
-                SceneCamera.cameraPitch = 383;
+            SceneCamera.clampPitch();
         }
     }
 }
