@@ -2,7 +2,10 @@ package org.runejs.client.scene.camera;
 
 import org.runejs.client.scene.Point3d;
 
-public class LookAtCamera extends GameCamera {
+/**
+ * A cutscene camera which can move to a position, and turn to look at a target.
+ */
+public class CutsceneCamera extends GameCamera {
     private Point3d moveTo = new Point3d(0, 0, 0);
     private CameraAdjustmentSpeed movementSpeed = new CameraAdjustmentSpeed(0, 0);
     private Point3d lookAt = new Point3d(0, 0, 0);

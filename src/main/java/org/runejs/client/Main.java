@@ -32,7 +32,7 @@ import org.runejs.client.net.codec.MessagePacketCodec;
 import org.runejs.client.net.codec.runejs435.RuneJS435PacketCodec;
 import org.runejs.client.scene.*;
 import org.runejs.client.scene.camera.Camera;
-import org.runejs.client.scene.camera.LookAtCamera;
+import org.runejs.client.scene.camera.CutsceneCamera;
 import org.runejs.client.scene.camera.SphericalCamera;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
@@ -70,7 +70,7 @@ public class Main extends GameShell {
     public static final MessageHandlerRegistry handlerRegistry = new RS435HandlerRegistry();
 
     public static final SphericalCamera camera = new SphericalCamera();
-    public static final LookAtCamera cutsceneCamera = new LookAtCamera();
+    public static final CutsceneCamera cutsceneCamera = new CutsceneCamera();
 
     /**
      * Minimap rotation is always based on game camera
@@ -1180,7 +1180,8 @@ public class Main extends GameShell {
     }
 
     public static void method165() {
-        LookAtCamera camera = Main.cutsceneCamera;
+        // TODO (James) this moves the cutscene camera towards its target, we should move this into the CutsceneCamera class
+        CutsceneCamera camera = Main.cutsceneCamera;
 
         int i = camera.getMoveTo().y;
         int i_3_ = camera.getMoveTo().x;
