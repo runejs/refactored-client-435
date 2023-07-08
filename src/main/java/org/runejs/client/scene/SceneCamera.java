@@ -40,7 +40,7 @@ public class SceneCamera {
         int pitchDifference = 2048 - pitch & 0x7ff;
         int yOffset = arg6;
         if(!Player.cutsceneActive) {
-            yOffset = SceneCamera.cameraZoom + pitch * 3;
+            yOffset = cameraZoom + pitch * 3;
         }
         if(pitchDifference != 0) {
             int cosine = Model.COSINE[pitchDifference];
@@ -56,11 +56,11 @@ public class SceneCamera {
             yOffset = -(xOffset * sine) + yOffset * cosine >> 16;
             xOffset = temp;
         }
-        SceneCamera.cameraHorizontalRotation = yaw;
-        SceneCamera.cameraZ = -zOffset + z;
-        SceneCamera.cameraX = -xOffset + x;
-        SceneCamera.cameraVerticalRotation = pitch;
-        SceneCamera.cameraY = y + -yOffset;
+        cameraHorizontalRotation = yaw;
+        cameraZ = -zOffset + z;
+        cameraX = -xOffset + x;
+        cameraVerticalRotation = pitch;
+        cameraY = y + -yOffset;
     }
 
     /**
