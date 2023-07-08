@@ -30,22 +30,6 @@ public class SceneCamera {
     public static int cameraVelocityPitch = 0;
     public static int cameraVelocityZoom = 0;
 
-    /**
-     * The camera's current origin X coordinate.
-     *
-     * This is generally the player's position in the Scene, but it is dampened slightly
-     * and not attached directly to the player.
-     */
-    public static int cameraOriginX;
-
-    /**
-     * The camera's current origin Y coordinate.
-     *
-     * This is generally the player's position in the Scene, but it is dampened slightly
-     * and not attached directly to the player.
-     */
-    public static int cameraOriginY;
-
     // camera effects, jitter etc
 
     public static boolean[] customCameraActive = new boolean[5];

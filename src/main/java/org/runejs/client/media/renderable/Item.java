@@ -30,20 +30,25 @@ public class Item extends Renderable {
     public int itemId;
 
     public static void calculateCameraPosition() {
+        int originX = Main.camera.getOriginX();
+        int originY = Main.camera.getOriginY();
+
         int localPlayer3dPosX = Player.localPlayer.worldX;
         int localPlayer3dPosY = Player.localPlayer.worldY;
 
         // if the local player's position in 3d space is too far from the camera's origin, snap it
-        if (SceneCamera.cameraOriginX - localPlayer3dPosX < -500 || -localPlayer3dPosX + SceneCamera.cameraOriginX > 500 || SceneCamera.cameraOriginY + -localPlayer3dPosY < -500 || -localPlayer3dPosY + SceneCamera.cameraOriginY > 500) {
-            SceneCamera.cameraOriginY = localPlayer3dPosY;
-            SceneCamera.cameraOriginX = localPlayer3dPosX;
+        if (originX - localPlayer3dPosX < -500 || -localPlayer3dPosX + originX > 500 || originY + -localPlayer3dPosY < -500 || -localPlayer3dPosY + originY > 500) {
+            originY = localPlayer3dPosY;
+            originX = localPlayer3dPosX;
         }
 
         // otherwise, slowly move the camera origin towards local player pos
-        if (SceneCamera.cameraOriginX != localPlayer3dPosX)
-            SceneCamera.cameraOriginX += (-SceneCamera.cameraOriginX + localPlayer3dPosX) / 16;
-        if (SceneCamera.cameraOriginY != localPlayer3dPosY)
-            SceneCamera.cameraOriginY += (-SceneCamera.cameraOriginY + localPlayer3dPosY) / 16;
+        if (originX != localPlayer3dPosX)
+            originX += (-originX + localPlayer3dPosX) / 16;
+        if (originY != localPlayer3dPosY)
+            originY += (-originY + localPlayer3dPosY) / 16;
+
+        Main.camera.setOrigin(originX, originY, Main.camera.getOriginZ());
 
         // increase rotational velocity if key pressed, otherwise fall off
         if (obfuscatedKeyStatus[96] && !Console.console.consoleOpen)
@@ -71,9 +76,9 @@ public class Item extends Renderable {
 
         // figure out minimum allowed pitch based on surrounding heights
         int i_3_ = 0;
-        int i_1_ = SceneCamera.cameraOriginY >> 7;
-        int i_2_ = SceneCamera.cameraOriginX >> 7;
-        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, SceneCamera.cameraOriginX, SceneCamera.cameraOriginY);
+        int i_1_ = originY >> 7;
+        int i_2_ = originX >> 7;
+        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, originX, originY);
         if (i_2_ > 3 && i_1_ > 3 && i_2_ < 100 && i_1_ < 100) {
             for (int i_5_ = -4 + i_2_; i_5_ <= 4 + i_2_; i_5_++) {
                 for (int i_6_ = -4 + i_1_; 4 + i_1_ >= i_6_; i_6_++) {

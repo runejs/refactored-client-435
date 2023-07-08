@@ -30,11 +30,7 @@ import org.runejs.client.message.outbound.widget.container.DragWidgetItemOutboun
 import org.runejs.client.net.*;
 import org.runejs.client.net.codec.MessagePacketCodec;
 import org.runejs.client.net.codec.runejs435.RuneJS435PacketCodec;
-import org.runejs.client.scene.GroundItemTile;
-import org.runejs.client.scene.InteractiveObject;
-import org.runejs.client.scene.Scene;
-import org.runejs.client.scene.SceneCamera;
-import org.runejs.client.scene.SceneCluster;
+import org.runejs.client.scene.*;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
@@ -69,6 +65,8 @@ public class Main extends GameShell {
      * The registry that holds all the InboundMessage handlers.
      */
     public static final MessageHandlerRegistry handlerRegistry = new RS435HandlerRegistry();
+
+    public static final SphericalCamera camera = new SphericalCamera();
 
     public static int anInt1756 = 0;
     public static int menuOffsetY;
@@ -803,7 +801,7 @@ public class Main extends GameShell {
             int zoom = Player.cutsceneActive ? 600 : SceneCamera.cameraZoom;
             int cameraOriginZ = Class37.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY) - 50;
 
-            SceneCamera.setCameraPosition(SceneCamera.cameraOriginX, SceneCamera.cameraOriginY, cameraOriginZ, SceneCamera.cameraYaw, i, zoom);
+            SceneCamera.setCameraPosition(Main.camera.getOriginX(), Main.camera.getOriginY(), cameraOriginZ, SceneCamera.cameraYaw, i, zoom);
         }
         int i;
         if(!Player.cutsceneActive) {
