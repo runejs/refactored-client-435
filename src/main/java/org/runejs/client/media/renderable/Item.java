@@ -59,6 +59,10 @@ public class Item extends Renderable {
         SceneCamera.cameraTargetYaw = SceneCamera.cameraVelocityYaw / 2 + SceneCamera.cameraTargetYaw & 0x7ff;
         SceneCamera.cameraTargetPitch += SceneCamera.cameraVelocityPitch / 2;
 
+        // apply zoom velocity and dampen it
+        SceneCamera.cameraZoom += SceneCamera.cameraVelocityZoom / 2;
+        SceneCamera.cameraVelocityZoom /= 1.5;
+
         // clamp the pitch
         if (SceneCamera.cameraTargetPitch < 128)
             SceneCamera.cameraTargetPitch = 128;

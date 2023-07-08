@@ -27,6 +27,7 @@ public class SceneCamera {
 
     public static int cameraVelocityYaw = 0;
     public static int cameraVelocityPitch = 0;
+    public static int cameraVelocityZoom = 0;
 
     // positions that the camera is moving "towards" - why are these calculated separately and not just immediately applied?
 
