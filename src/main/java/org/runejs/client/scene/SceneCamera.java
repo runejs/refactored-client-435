@@ -29,11 +29,23 @@ public class SceneCamera {
     public static int cameraVelocityPitch = 0;
     public static int cameraVelocityZoom = 0;
 
+    /**
+     * The camera's current origin X coordinate.
+     *
+     * This is generally the player's position in the Scene, but it is dampened slightly
+     * and not attached directly to the player.
+     */
+    public static int cameraOriginX;
+
+    /**
+     * The camera's current origin Y coordinate.
+     *
+     * This is generally the player's position in the Scene, but it is dampened slightly
+     * and not attached directly to the player.
+     */
+    public static int cameraOriginY;
+
     // positions that the camera is moving "towards" - why are these calculated separately and not just immediately applied?
-
-
-    public static int cameraTargetX;
-    public static int cameraTargetY;
     public static int cameraTargetYaw = 0;
     public static int cameraTargetPitch = 128;
 
@@ -46,7 +58,7 @@ public class SceneCamera {
     public static int[] customCameraFrequency = new int[5];
     public static int[] customCameraAmplitude = new int[5];
 
-    public static void setCameraPosition(int pitch, int x, int z, int yaw, int y, int ___pitch, int arg6) {
+    public static void setCameraPosition(int pitch, int originX, int originZ, int yaw, int originY, int ___pitch, int arg6) {
         cameraHorizontalRotation = yaw;
         cameraVerticalRotation = pitch;
 
@@ -70,9 +82,9 @@ public class SceneCamera {
             xOffset = temp;
         }
 
-        cameraX = -xOffset + x;
-        cameraY = y + -yOffset;
-        cameraZ = -zOffset + z;
+        cameraX = -xOffset + originX;
+        cameraY = originY + -yOffset;
+        cameraZ = -zOffset + originZ;
     }
 
     /**

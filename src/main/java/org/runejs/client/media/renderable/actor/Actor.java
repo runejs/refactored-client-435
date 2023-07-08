@@ -36,6 +36,9 @@ public abstract class Actor extends Renderable {
     public int[] anIntArray3086;
     public int[] anIntArray3087;
     public int[] pathY;
+    /**
+     * TODO rename this, maybe to `sceneY`
+     */
     public int worldY;
     public String forcedChatMessage;
     public int graphicId;
@@ -44,6 +47,10 @@ public abstract class Actor extends Renderable {
     public int anInt3095 = 0;
     public int anInt3096;
     public int anInt3097;
+
+    /**
+     * TODO rename this, maybe to `sceneX`
+     */
     public int worldX;
     public int anInt3099;
     public int facePositionY;
