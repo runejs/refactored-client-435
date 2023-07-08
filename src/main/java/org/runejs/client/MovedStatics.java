@@ -99,7 +99,7 @@ public class MovedStatics {
      * The base step value added to cutscene camera position movement.
      */
     public static int cutsceneCameraPositionBaseAdjust;
-    public static int anInt194;
+    public static int cutsceneCameraPosHeight;
     public static int[] chatboxLineOffsets;
     public static int anInt199 = 0;
     public static volatile boolean aBoolean1575 = false;
@@ -1902,7 +1902,7 @@ public class MovedStatics {
 	public static int anInt537 = 0;
 	public static boolean membersWorld = false;
 	public static boolean accountFlagged = false;
-	public static int anInt545;
+	public static int cutsceneCameraTilePosX;
 	public static GameInterface aGameInterface_1887;
 	public static int duplicateClickCount = 0;
 
