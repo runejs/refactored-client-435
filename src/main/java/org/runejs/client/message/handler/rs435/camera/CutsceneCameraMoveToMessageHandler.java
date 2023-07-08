@@ -14,15 +14,15 @@ public class CutsceneCameraMoveToMessageHandler implements MessageHandler<Cutsce
     public void handle(CutsceneCameraMoveToInboundMessage message) {
         Player.cutsceneActive = true;
         // cutscene camera will be positioned on this tile in the region
-        MovedStatics.cutsceneCameraTilePosX = message.targetX;
-        SceneCluster.cutsceneCameraTilePosY = message.targetY;
-        MovedStatics.cutsceneCameraPosHeight = message.height;
+        SceneCamera.cutscene.tilePosX = message.targetX;
+        SceneCamera.cutscene.tilePosY = message.targetY;
+        SceneCamera.cutscene.height = message.height;
         MovedStatics.cutsceneCameraPositionBaseAdjust = message.speedBase;
         Class59.cutsceneCameraPositionScaleAdjust = message.speedScale;
         if(Class59.cutsceneCameraPositionScaleAdjust >= 100) {
-            SceneCamera.cameraY = 64 + SceneCluster.cutsceneCameraTilePosY * 128;
-            SceneCamera.cameraX = MovedStatics.cutsceneCameraTilePosX * 128 + 64;
-            SceneCamera.cameraZ = Class37.getFloorDrawHeight(Player.worldLevel, SceneCamera.cameraX, SceneCamera.cameraY) - MovedStatics.cutsceneCameraPosHeight;
+            SceneCamera.cameraY = 64 + SceneCamera.cutscene.tilePosY * 128;
+            SceneCamera.cameraX = SceneCamera.cutscene.tilePosX * 128 + 64;
+            SceneCamera.cameraZ = Class37.getFloorDrawHeight(Player.worldLevel, SceneCamera.cameraX, SceneCamera.cameraY) - SceneCamera.cutscene.height;
         }
     }
 }

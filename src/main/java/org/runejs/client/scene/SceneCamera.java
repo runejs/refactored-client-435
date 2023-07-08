@@ -8,6 +8,7 @@ import org.runejs.client.media.renderable.Model;
  * JKM will refactor this soon
  */
 public class SceneCamera {
+    public static CutsceneCamera cutscene = new CutsceneCamera();
     public static int cameraHorizontalRotation;
     public static int cameraVerticalRotation;
     public static int cameraZoom = 600;
