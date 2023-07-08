@@ -49,4 +49,8 @@ public abstract class GameCamera implements Camera {
     public Point3d getPosition() {
         return this.position;
     }
+
+    public void setPosition(Point3d position) {
+        this.position = position;
+    }
 }

@@ -1174,85 +1174,102 @@ public class Main extends GameShell {
     }
 
     public static void method165() {
-//        int i = 64 + SceneCluster.anInt767 * 128;
-//        int i_3_ = 64 + 128 * MovedStatics.anInt545;
-//        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) + -MovedStatics.anInt194;
-//        if(i_3_ > SceneCamera.cameraX) {
-//            SceneCamera.cameraX += Class59.cutsceneCameraPositionScaleAdjust * (i_3_ + -SceneCamera.cameraX) / 1000 + MovedStatics.cutsceneCameraPositionBaseAdjust;
-//            if(SceneCamera.cameraX > i_3_) {
-//                SceneCamera.cameraX = i_3_;
-//            }
-//        }
-//        if(i_4_ > SceneCamera.cameraZ) {
-//            SceneCamera.cameraZ += Class59.cutsceneCameraPositionScaleAdjust * (i_4_ - SceneCamera.cameraZ) / 1000 + MovedStatics.cutsceneCameraPositionBaseAdjust;
-//            if(i_4_ < SceneCamera.cameraZ)
-//                SceneCamera.cameraZ = i_4_;
-//        }
-//        if(SceneCamera.cameraX > i_3_) {
-//            SceneCamera.cameraX -= MovedStatics.cutsceneCameraPositionBaseAdjust + Class59.cutsceneCameraPositionScaleAdjust * (SceneCamera.cameraX + -i_3_) / 1000;
-//            if(i_3_ > SceneCamera.cameraX) {
-//                SceneCamera.cameraX = i_3_;
-//            }
-//        }
-//        if(SceneCamera.cameraY < i) {
-//            SceneCamera.cameraY += MovedStatics.cutsceneCameraPositionBaseAdjust + Class59.cutsceneCameraPositionScaleAdjust * (-SceneCamera.cameraY + i) / 1000;
-//            if(SceneCamera.cameraY > i)
-//                SceneCamera.cameraY = i;
-//        }
-//        if(SceneCamera.cameraZ > i_4_) {
-//            SceneCamera.cameraZ -= (SceneCamera.cameraZ + -i_4_) * Class59.cutsceneCameraPositionScaleAdjust / 1000 + MovedStatics.cutsceneCameraPositionBaseAdjust;
-//            if(i_4_ > SceneCamera.cameraZ)
-//                SceneCamera.cameraZ = i_4_;
-//        }
-//        i_3_ = 64 + MovedStatics.anInt564 * 128;
-//        if(SceneCamera.cameraY > i) {
-//            SceneCamera.cameraY -= MovedStatics.cutsceneCameraPositionBaseAdjust + Class59.cutsceneCameraPositionScaleAdjust * (SceneCamera.cameraY - i) / 1000;
-//            if(SceneCamera.cameraY < i)
-//                SceneCamera.cameraY = i;
-//        }
-//        i = MovedStatics.anInt2576 * 128 + 64;
-//        i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) - MovedStatics.anInt892;
-//        int i_5_ = -SceneCamera.cameraZ + i_4_;
-//        int i_6_ = i - SceneCamera.cameraY;
-//        int i_7_ = i_3_ - SceneCamera.cameraX;
-//        int i_8_ = (int) Math.sqrt((double) (i_7_ * i_7_ + i_6_ * i_6_));
-//        int i_9_ = 0x7ff & (int) (Math.atan2((double) i_5_, (double) i_8_) * 325.949);
-//
-//        i_9_ = SceneCamera.getClampedPitch(i_9_);
-//
-//        int i_10_ = 0x7ff & (int) (-325.949 * Math.atan2((double) i_7_, (double) i_6_));
-//        int i_11_ = -Main.camera.getYaw() + i_10_;
-//        if(i_11_ > 1024)
-//            i_11_ -= 2048;
-//        if(i_11_ < -1024)
-//            i_11_ += 2048;
-//        if(i_11_ > 0) {
-//            int yaw = Main.camera.getYaw() + MovedStatics.cutsceneCameraRotationScaleAdjust * i_11_ / 1000 + Class60.cutsceneCameraRotationBaseAdjust;
-//            Main.camera.setYaw(yaw & 0x7ff);
-//        }
-//        if(true) {
-//            if(i_11_ < 0) {
-//                int yaw = Main.camera.getYaw() - Class60.cutsceneCameraRotationBaseAdjust + MovedStatics.cutsceneCameraRotationScaleAdjust * -i_11_ / 1000;
-//                Main.camera.setYaw(yaw & 0x7ff);
-//            }
-//            if(i_9_ > Main.camera.getPitch()) {
-//                Main.camera.setPitch(Main.camera.getPitch() + Class60.cutsceneCameraRotationBaseAdjust + MovedStatics.cutsceneCameraRotationScaleAdjust * (i_9_ - Main.camera.getPitch()) / 1000);
-//                if(Main.camera.getPitch() > i_9_)
-//                    Main.camera.setPitch(i_9_);
-//            }
-//            if(Main.camera.getPitch() > i_9_) {
-//                Main.camera.setPitch(Main.camera.getPitch() - MovedStatics.cutsceneCameraRotationScaleAdjust * (Main.camera.getPitch() + -i_9_) / 1000 + Class60.cutsceneCameraRotationBaseAdjust);
-//                if(Main.camera.getPitch() < i_9_)
-//                    Main.camera.setPitch(i_9_);
-//            }
-//            int i_12_ = i_10_ + -Main.camera.getYaw();
-//            if(i_12_ > 1024)
-//                i_12_ -= 2048;
-//            if(i_12_ < -1024)
-//                i_12_ += 2048;
-//            if(i_12_ < 0 && i_11_ > 0 || i_12_ > 0 && i_11_ < 0)
-//                Main.camera.setYaw(i_10_);
-//        }
+        LookAtCamera camera = Main.cutsceneCamera;
+
+        int i = camera.getMoveTo().y;
+        int i_3_ = camera.getMoveTo().x;
+        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) - camera.getMoveTo().z;
+
+        int newX = camera.getPosition().x;
+        int newY = camera.getPosition().y;
+        int newZ = camera.getPosition().z;
+
+        if (i_3_ > newX) {
+            newX += camera.getMovementSpeed().scale * (i_3_ - newX) / 1000 + camera.getMovementSpeed().base;
+            if (newX > i_3_) {
+                newX = i_3_;
+            }
+        }
+        if (i_4_ > newZ) {
+            newZ += camera.getMovementSpeed().scale * (i_4_ - newZ) / 1000 + camera.getMovementSpeed().base;
+            if (i_4_ < newZ)
+                newZ = i_4_;
+        }
+        if (newX > i_3_) {
+            newX -= camera.getMovementSpeed().base + camera.getMovementSpeed().scale * (newX + -i_3_) / 1000;
+            if (i_3_ > newX) {
+                newX = i_3_;
+            }
+        }
+        if (newY < i) {
+            newY += camera.getMovementSpeed().base + camera.getMovementSpeed().scale * (-newY + i) / 1000;
+            if (newY > i)
+                newY = i;
+        }
+        if (newZ > i_4_) {
+            newZ -= (newZ + -i_4_) * camera.getMovementSpeed().scale / 1000 + camera.getMovementSpeed().base;
+            if (i_4_ > newZ)
+                newZ = i_4_;
+        }
+        if (newY > i) {
+            newY -= camera.getMovementSpeed().base + camera.getMovementSpeed().scale * (newY - i) / 1000;
+            if (newY < i)
+                newY = i;
+        }
+
+        camera.setPosition(new Point3d(newX, newY, newZ));
+
+        i_3_ = camera.getLookAt().x;
+        i = camera.getLookAt().y;
+        i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) - camera.getLookAt().z;
+        int i_5_ = -newZ + i_4_;
+        int i_6_ = i - newY;
+        int i_7_ = i_3_ - newX;
+        int i_8_ = (int) Math.sqrt((double) (i_7_ * i_7_ + i_6_ * i_6_));
+        int i_9_ = 0x7ff & (int) (Math.atan2((double) i_5_, (double) i_8_) * 325.949);
+        if (i_9_ < 128)
+            i_9_ = 128;
+        int i_10_ = 0x7ff & (int) (-325.949 * Math.atan2((double) i_7_, (double) i_6_));
+        if (i_9_ > 383)
+            i_9_ = 383;
+        int i_11_ = -camera.getRotation().yaw + i_10_;
+        if (i_11_ > 1024)
+            i_11_ -= 2048;
+        if (i_11_ < -1024)
+            i_11_ += 2048;
+
+        int newYaw = camera.getRotation().yaw;
+        int newPitch = camera.getRotation().pitch;
+
+        if (i_11_ > 0) {
+            newYaw += camera.getTurnSpeed().scale * i_11_ / 1000 + camera.getTurnSpeed().base;
+            newYaw &= 0x7ff;
+        }
+        if (true) {
+            if (i_11_ < 0) {
+                newYaw -= camera.getTurnSpeed().base + camera.getTurnSpeed().scale * -i_11_ / 1000;
+                newYaw &= 0x7ff;
+            }
+            if (i_9_ > newPitch) {
+                newPitch += camera.getTurnSpeed().base + camera.getTurnSpeed().scale * (i_9_ - newPitch) / 1000;
+                if (newPitch > i_9_)
+                    newPitch = i_9_;
+            }
+            if (newPitch > i_9_) {
+                newPitch -= camera.getTurnSpeed().scale * (newPitch + -i_9_) / 1000 + camera.getTurnSpeed().base;
+                if (newPitch < i_9_)
+                    newPitch = i_9_;
+            }
+            int i_12_ = i_10_ + -newYaw;
+            if (i_12_ > 1024)
+                i_12_ -= 2048;
+            if (i_12_ < -1024)
+                i_12_ += 2048;
+            if (i_12_ < 0 && i_11_ > 0 || i_12_ > 0 && i_11_ < 0)
+                newYaw = i_10_;
+        }
+
+        camera.rotate(newYaw, newPitch);
     }
 
     public static void updateGame() {

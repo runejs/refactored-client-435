@@ -6,8 +6,6 @@ package org.runejs.client.scene;
  * JKM will refactor this soon
  */
 public class SceneCamera {
-    public static CutsceneCamera cutscene = new CutsceneCamera();
-
     /**
      * The minimum pitch for the camera, based on the surrounding terrain. Scaled up and must be
      * divided before comparing to pitches directly.
