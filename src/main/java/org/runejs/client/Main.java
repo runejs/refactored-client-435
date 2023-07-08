@@ -799,9 +799,8 @@ public class Main extends GameShell {
             }
 
             int zoom = Player.cutsceneActive ? 600 : SceneCamera.cameraZoom;
-            int cameraOriginZ = Class37.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY) - 50;
 
-            SceneCamera.setCameraPosition(Main.camera.getOriginX(), Main.camera.getOriginY(), cameraOriginZ, SceneCamera.cameraYaw, i, zoom);
+            SceneCamera.setCameraPosition(Main.camera.getOriginX(), Main.camera.getOriginY(), Main.camera.getOriginZ(), SceneCamera.cameraYaw, i, zoom);
         }
         int i;
         if(!Player.cutsceneActive) {

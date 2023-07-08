@@ -48,7 +48,10 @@ public class Item extends Renderable {
         if (originY != localPlayer3dPosY)
             originY += (-originY + localPlayer3dPosY) / 16;
 
-        Main.camera.setOrigin(originX, originY, Main.camera.getOriginZ());
+        // update the camera's Z origin - this wasn't originally here, but it makes sense to do it with the other origins
+        int cameraOriginZ = Class37.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY) - 50;
+
+        Main.camera.setOrigin(originX, originY, cameraOriginZ);
 
         // increase rotational velocity if key pressed, otherwise fall off
         if (obfuscatedKeyStatus[96] && !Console.console.consoleOpen)
