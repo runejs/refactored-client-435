@@ -993,7 +993,7 @@ public class MovedStatics {
     public static void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
         int len = mapX * mapX + mapY * mapY;
         if (len > 4225 && len < 90000) {
-            int theta = 0x7ff & SceneCamera.cameraTargetYaw;
+            int theta = 0x7ff & SceneCamera.cameraYaw;
             int sine = Model.SINE[theta];
             int cosine = Model.COSINE[theta];
             int zoom = 0;

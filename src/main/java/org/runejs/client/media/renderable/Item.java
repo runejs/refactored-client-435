@@ -60,7 +60,7 @@ public class Item extends Renderable {
             SceneCamera.cameraVelocityPitch /= 2;
 
         // apply rotational velocities to camera's target position
-        SceneCamera.cameraTargetYaw = SceneCamera.cameraVelocityYaw / 2 + SceneCamera.cameraTargetYaw & 0x7ff;
+        SceneCamera.cameraYaw = 0x7ff & (SceneCamera.cameraVelocityYaw / 2 + SceneCamera.cameraYaw & 0x7ff);
         SceneCamera.cameraTargetPitch += SceneCamera.cameraVelocityPitch / 2;
 
         // apply zoom velocity and dampen it
