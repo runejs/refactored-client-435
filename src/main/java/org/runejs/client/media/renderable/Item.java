@@ -79,15 +79,8 @@ public class Item extends Renderable {
                 }
             }
         }
-        int i_9_ = i_3_ * 192;
-        if (i_9_ > 98048)
-            i_9_ = 98048;
-        if (i_9_ < 32768)
-            i_9_ = 32768;
-        if (SceneCamera.cameraTerrainMinScaledPitch < i_9_) {
-            SceneCamera.cameraTerrainMinScaledPitch += (-SceneCamera.cameraTerrainMinScaledPitch + i_9_) / 24;
-        } else if (SceneCamera.cameraTerrainMinScaledPitch > i_9_)
-            SceneCamera.cameraTerrainMinScaledPitch += (-SceneCamera.cameraTerrainMinScaledPitch + i_9_) / 80;
+
+        SceneCamera.setMaxSurroundingTerrainHeight(i_3_);
     }
 
     public static void method778(HuffmanEncoding arg1) {
