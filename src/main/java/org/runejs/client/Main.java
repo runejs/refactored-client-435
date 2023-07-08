@@ -31,6 +31,7 @@ import org.runejs.client.net.*;
 import org.runejs.client.net.codec.MessagePacketCodec;
 import org.runejs.client.net.codec.runejs435.RuneJS435PacketCodec;
 import org.runejs.client.scene.*;
+import org.runejs.client.scene.camera.LookAtCamera;
 import org.runejs.client.scene.camera.SphericalCamera;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
@@ -68,6 +69,7 @@ public class Main extends GameShell {
     public static final MessageHandlerRegistry handlerRegistry = new RS435HandlerRegistry();
 
     public static final SphericalCamera camera = new SphericalCamera();
+    public static final LookAtCamera cutsceneCamera = new LookAtCamera();
 
     public static int anInt1756 = 0;
     public static int menuOffsetY;
