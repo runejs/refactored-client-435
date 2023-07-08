@@ -92,8 +92,4 @@ public class SceneCamera {
             return 383;
         return pitch;
     }
-
-    public static void clampPitch() {
-        cameraPitch = getClampedPitch(cameraPitch);
-    }
 }

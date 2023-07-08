@@ -82,7 +82,7 @@ public class Minimap extends FramePieceRenderer {
             Rasterizer.drawFilledRectangle(0, 0, 42, 20, 0x242017);
 
             Rasterizer.drawCircle(21, 21, 20, 0x242017);
-            AnimationSequence.minimapCompass.shapeImageToPixels(5, 5, 33, 33, 25, 25, SceneCamera.cameraYaw, 256, resizableCompasOffsets2, resizableCompasOffsets1);
+            AnimationSequence.minimapCompass.shapeImageToPixels(5, 5, 33, 33, 25, 25, Main.camera.getYaw(), 256, resizableCompasOffsets2, resizableCompasOffsets1);
 
 
             Class65.method1018();
@@ -93,7 +93,7 @@ public class Minimap extends FramePieceRenderer {
 
         int i = 48 + Player.localPlayer.worldX / 32;
         int i_8_ = 464 + -(Player.localPlayer.worldY / 32);
-        int i_9_ = SceneCamera.cameraYaw & 0x7ff;
+        int i_9_ = Main.camera.getYaw() & 0x7ff;
         int minimapZoom = 0;
 
         shapeImageToPixels(MovedStatics.minimapImage,5, 5, 200, 200, i, i_8_, i_9_, minimapZoom + 256, resizableMinimapOffsets2, resizableMinimapOffsets1);
@@ -109,7 +109,7 @@ public class Minimap extends FramePieceRenderer {
         rasterizerInstanced.drawFilledRectangle(0, 0, 42, 20, 0x242017);
 
         rasterizerInstanced.drawCircle(21, 21, 20, 0x242017);
-        shapeImageToPixels(AnimationSequence.minimapCompass, 5, 5, 33, 33, 25, 25, SceneCamera.cameraYaw, 256, resizableCompasOffsets2, resizableCompasOffsets1);
+        shapeImageToPixels(AnimationSequence.minimapCompass, 5, 5, 33, 33, 25, 25, Main.camera.getYaw(), 256, resizableCompasOffsets2, resizableCompasOffsets1);
 
         System.arraycopy(tempResizableMiniMapimage.pixels, 0, resizableMiniMapimage.pixels,0, resizableMiniMapimage.pixels.length);
 //        Class65.method1018();
@@ -205,7 +205,7 @@ public class Minimap extends FramePieceRenderer {
         if(sprite == null) {
             return;
         }
-        int angle = 0x7ff & SceneCamera.cameraYaw;
+        int angle = 0x7ff & Main.camera.getYaw();
         int l = y * y + x * x;
         if(l > 17000) {
             return;
@@ -224,7 +224,7 @@ public class Minimap extends FramePieceRenderer {
     public void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
         int len = mapX * mapX + mapY * mapY;
         if (len > 4225 && len < 90000) {
-            int theta = 0x7ff & SceneCamera.cameraYaw;
+            int theta = 0x7ff & Main.camera.getYaw();
             int sine = Model.SINE[theta];
             int cosine = Model.COSINE[theta];
             int zoom = 0;

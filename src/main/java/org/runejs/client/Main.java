@@ -729,7 +729,8 @@ public class Main extends GameShell {
         Player.npcCount = 0;
         SoundSystem.reset();
         widgetSelected = 0;
-        SceneCamera.cameraYaw = 0x7ff & -10 + (int) (20.0 * Math.random());
+        // TODO is this necessary? or should it be removed alongside other randomisation
+        Main.camera.rotate(0x7ff & -10 + (int) (20.0 * Math.random()), Main.camera.getPitch(), Main.camera.getZoom());
         MovedStatics.minimapState = 0;
         Player.localPlayerCount = 0;
         Class55.destinationY = 0;
@@ -790,7 +791,7 @@ public class Main extends GameShell {
         MovedStatics.method335();
         MovedStatics.method1000();
         if(!Player.cutsceneActive) {
-            int i = SceneCamera.cameraPitch;
+            int i = Main.camera.getPitch();
             if(SceneCamera.cameraTerrainMinScaledPitch / 256 > i) {
                 i = SceneCamera.cameraTerrainMinScaledPitch / 256;
             }
@@ -798,9 +799,9 @@ public class Main extends GameShell {
                 i = 128 + SceneCamera.customCameraAmplitude[4];
             }
 
-            int zoom = Player.cutsceneActive ? 600 : SceneCamera.cameraZoom;
+            int zoom = Player.cutsceneActive ? 600 : Main.camera.getZoom();
 
-            SceneCamera.setCameraPosition(Main.camera.getOriginX(), Main.camera.getOriginY(), Main.camera.getOriginZ(), SceneCamera.cameraYaw, i, zoom);
+            SceneCamera.setCameraPosition(Main.camera.getOriginX(), Main.camera.getOriginY(), Main.camera.getOriginZ(), Main.camera.getYaw(), i, zoom);
         }
         int i;
         if(!Player.cutsceneActive) {
@@ -809,9 +810,9 @@ public class Main extends GameShell {
             i = MovedStatics.method546();
         }
         int i_1_ = SceneCamera.cameraX;
-        int i_2_ = SceneCamera.cameraYaw;
+        int i_2_ = Main.camera.getYaw();
         int i_3_ = SceneCamera.cameraZ;
-        int i_4_ = SceneCamera.cameraPitch;
+        int i_4_ = Main.camera.getPitch();
         int i_5_ = SceneCamera.cameraY;
         for(int i_6_ = 0; i_6_ < 5; i_6_++) {
             if(SceneCamera.customCameraActive[i_6_]) {
@@ -826,11 +827,10 @@ public class Main extends GameShell {
                     SceneCamera.cameraY += i_7_;
                 }
                 if(i_6_ == 4) {
-                    SceneCamera.cameraPitch += i_7_;
-                    SceneCamera.clampPitch();
+                    Main.camera.rotate(Main.camera.getYaw(), Main.camera.getPitch() + i_7_, Main.camera.getZoom());
                 }
                 if(i_6_ == 3) {
-                    SceneCamera.cameraYaw = 0x7ff & i_7_ + SceneCamera.cameraYaw;
+                    Main.camera.rotate(0x7ff & i_7_ + Main.camera.getYaw(), Main.camera.getPitch() + i_7_, Main.camera.getZoom());
                 }
             }
         }
@@ -840,7 +840,7 @@ public class Main extends GameShell {
         Model.cursorX = Class13.mouseX - 4;
         Model.resourceCount = 0;
         Rasterizer.resetPixels();
-        Npc.currentScene.render(SceneCamera.cameraX, SceneCamera.cameraY, SceneCamera.cameraZ, SceneCamera.cameraYaw, SceneCamera.cameraPitch, i);
+        Npc.currentScene.render(SceneCamera.cameraX, SceneCamera.cameraY, SceneCamera.cameraZ, Main.camera.getYaw(), Main.camera.getPitch(), i);
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404();
         MovedStatics.method450();
@@ -869,8 +869,7 @@ public class Main extends GameShell {
         Player.drawGameScreenGraphics();
         SceneCamera.cameraX = i_1_;
         SceneCamera.cameraY = i_5_;
-        SceneCamera.cameraYaw = i_2_;
-        SceneCamera.cameraPitch = i_4_;
+        Main.camera.rotate(i_2_, i_4_, Main.camera.getZoom());
         SceneCamera.cameraZ = i_3_;
     }
 
@@ -1210,37 +1209,37 @@ public class Main extends GameShell {
         i_9_ = SceneCamera.getClampedPitch(i_9_);
 
         int i_10_ = 0x7ff & (int) (-325.949 * Math.atan2((double) i_7_, (double) i_6_));
-        int i_11_ = -SceneCamera.cameraYaw + i_10_;
+        int i_11_ = -Main.camera.getYaw() + i_10_;
         if(i_11_ > 1024)
             i_11_ -= 2048;
         if(i_11_ < -1024)
             i_11_ += 2048;
         if(i_11_ > 0) {
-            SceneCamera.cameraYaw += SceneCamera.cutscene.rotationScaleAdjust * i_11_ / 1000 + SceneCamera.cutscene.rotationBaseAdjust;
-            SceneCamera.cameraYaw &= 0x7ff;
+            int yaw = Main.camera.getYaw() + SceneCamera.cutscene.rotationScaleAdjust * i_11_ / 1000 + SceneCamera.cutscene.rotationBaseAdjust;
+            Main.camera.setYaw(yaw & 0x7ff);
         }
         if(true) {
             if(i_11_ < 0) {
-                SceneCamera.cameraYaw -= SceneCamera.cutscene.rotationBaseAdjust + SceneCamera.cutscene.rotationScaleAdjust * -i_11_ / 1000;
-                SceneCamera.cameraYaw &= 0x7ff;
+                int yaw = Main.camera.getYaw() - SceneCamera.cutscene.rotationBaseAdjust + SceneCamera.cutscene.rotationScaleAdjust * -i_11_ / 1000;
+                Main.camera.setYaw(yaw & 0x7ff);
             }
-            if(i_9_ > SceneCamera.cameraPitch) {
-                SceneCamera.cameraPitch += SceneCamera.cutscene.rotationBaseAdjust + SceneCamera.cutscene.rotationScaleAdjust * (i_9_ - SceneCamera.cameraPitch) / 1000;
-                if(SceneCamera.cameraPitch > i_9_)
-                    SceneCamera.cameraPitch = i_9_;
+            if(i_9_ > Main.camera.getPitch()) {
+                Main.camera.setPitch(Main.camera.getPitch() + SceneCamera.cutscene.rotationBaseAdjust + SceneCamera.cutscene.rotationScaleAdjust * (i_9_ - Main.camera.getPitch()) / 1000);
+                if(Main.camera.getPitch() > i_9_)
+                    Main.camera.setPitch(i_9_);
             }
-            if(SceneCamera.cameraPitch > i_9_) {
-                SceneCamera.cameraPitch -= SceneCamera.cutscene.rotationScaleAdjust * (SceneCamera.cameraPitch + -i_9_) / 1000 + SceneCamera.cutscene.rotationBaseAdjust;
-                if(SceneCamera.cameraPitch < i_9_)
-                    SceneCamera.cameraPitch = i_9_;
+            if(Main.camera.getPitch() > i_9_) {
+                Main.camera.setPitch(Main.camera.getPitch() - SceneCamera.cutscene.rotationScaleAdjust * (Main.camera.getPitch() + -i_9_) / 1000 + SceneCamera.cutscene.rotationBaseAdjust);
+                if(Main.camera.getPitch() < i_9_)
+                    Main.camera.setPitch(i_9_);
             }
-            int i_12_ = i_10_ + -SceneCamera.cameraYaw;
+            int i_12_ = i_10_ + -Main.camera.getYaw();
             if(i_12_ > 1024)
                 i_12_ -= 2048;
             if(i_12_ < -1024)
                 i_12_ += 2048;
             if(i_12_ < 0 && i_11_ > 0 || i_12_ > 0 && i_11_ < 0)
-                SceneCamera.cameraYaw = i_10_;
+                Main.camera.setYaw(i_10_);
         }
     }
 
@@ -1365,8 +1364,8 @@ public class Main extends GameShell {
                     InteractiveObject.anInt487 = 20;
                     MovedStatics.aBoolean565 = false;
                     SceneCluster.packetBuffer.putPacket(58);
-                    SceneCluster.packetBuffer.putShortBE(SceneCamera.cameraYaw);
-                    SceneCluster.packetBuffer.putShortBE(SceneCamera.cameraPitch);
+                    SceneCluster.packetBuffer.putShortBE(Main.camera.getYaw());
+                    SceneCluster.packetBuffer.putShortBE(Main.camera.getPitch());
                 }
                 if(MovedStatics.aBoolean571 && !Class35.aBoolean1735) {
                     Class35.aBoolean1735 = true;

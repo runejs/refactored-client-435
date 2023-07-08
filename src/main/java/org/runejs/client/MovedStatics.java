@@ -985,7 +985,7 @@ public class MovedStatics {
     public static void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
         int len = mapX * mapX + mapY * mapY;
         if (len > 4225 && len < 90000) {
-            int theta = 0x7ff & SceneCamera.cameraYaw;
+            int theta = 0x7ff & Main.camera.getYaw();
             int sine = Model.SINE[theta];
             int cosine = Model.COSINE[theta];
             int zoom = 0;
@@ -1956,11 +1956,11 @@ public class MovedStatics {
 	        int i = Class37.getFloorDrawHeight(Player.worldLevel, arg2, arg1) + -arg0;
 	        arg1 -= SceneCamera.cameraY;
 	        i -= SceneCamera.cameraZ;
-	        int i_1_ = Model.COSINE[SceneCamera.cameraPitch];
-	        int i_2_ = Model.SINE[SceneCamera.cameraPitch];
+	        int i_1_ = Model.COSINE[Main.camera.getPitch()];
+	        int i_2_ = Model.SINE[Main.camera.getPitch()];
 	        arg2 -= SceneCamera.cameraX;
-	        int i_3_ = Model.SINE[SceneCamera.cameraYaw];
-	        int i_4_ = Model.COSINE[SceneCamera.cameraYaw];
+	        int i_3_ = Model.SINE[Main.camera.getYaw()];
+	        int i_4_ = Model.COSINE[Main.camera.getYaw()];
 	        int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> 16;
 	        arg1 = i_4_ * arg1 - arg2 * i_3_ >> 16;
 	        if(arg3 != 4976905)

@@ -71,11 +71,11 @@ public class Item extends Renderable {
         SceneCamera.cameraVelocityZoom /= 1.5;
 
         // apply velocities to camera's target position
-        SceneCamera.cameraYaw = 0x7ff & (SceneCamera.cameraVelocityYaw / 2 + SceneCamera.cameraYaw & 0x7ff);
-        SceneCamera.cameraPitch += SceneCamera.cameraVelocityPitch / 2;
-        SceneCamera.cameraZoom += zoomVelocity;
+        int yaw = 0x7ff & (SceneCamera.cameraVelocityYaw / 2 + Main.camera.getYaw() & 0x7ff);
+        int pitch = Main.camera.getPitch() + SceneCamera.cameraVelocityPitch / 2;
+        int zoom = Main.camera.getZoom() + zoomVelocity;
 
-        SceneCamera.clampPitch();
+        Main.camera.rotate(yaw, pitch, zoom);
 
         // figure out minimum allowed pitch based on surrounding heights
         int i_3_ = 0;
