@@ -3,8 +3,6 @@ package org.runejs.client.media.renderable.actor;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.message.outbound.WalkOutboundMessage;
 import org.runejs.client.net.OutgoingPackets;
-import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.*;
 
 import java.util.ArrayList;
@@ -28,28 +26,28 @@ public class Pathfinding {
      * Initiate a walk from a tile click.
      */
     public static boolean doTileWalkTo(int startX, int startY, int endX, int endY) {
-        return doWalkTo(0, startX, startY, endX, endY, 0, 0, 0, 0, 0, true);
+        return doWalkTo(0, startX, startY, endX, endY, 0, 0, 0, 0, 0, true, null);
     }
 
     /**
      * Initiate a walk from a minimap click.
      */
-    public static boolean doMinimapWalkTo(int startX, int startY, int endX, int endY) {
-        return doWalkTo(1, startX, startY, endX, endY, 0, 0, 0, 0, 0, true);
+    public static boolean doMinimapWalkTo(int startX, int startY, int endX, int endY, MinimapWalkAnalytics analytics) {
+        return doWalkTo(1, startX, startY, endX, endY, 0, 0, 0, 0, 0, true, analytics);
     }
 
     /**
      * Initiate a walk from clicking on an object.
      */
     public static boolean doObjectWalkTo(int startX, int startY, int endX, int endY, int sizeX, int sizeY, int surroundingsMask, int type, int orientation) {
-        return doWalkTo(2, startX, startY, endX, endY, sizeX, sizeY, surroundingsMask, type, orientation, true);
+        return doWalkTo(2, startX, startY, endX, endY, sizeX, sizeY, surroundingsMask, type, orientation, true, null);
     }
 
     /**
      * Initiate a walk from clicking on an entity (player, npc, world item)
      */
     public static boolean doEntityWalkTo(int startX, int startY, int endX, int endY, int sizeX, int sizeY) {
-        return doWalkTo(2, startX, startY, endX, endY, sizeX, sizeY, 0, 0, 0, false);
+        return doWalkTo(2, startX, startY, endX, endY, sizeX, sizeY, 0, 0, 0, false, null);
     }
 
     /**
@@ -81,10 +79,11 @@ public class Pathfinding {
      * @param objectOrientation
      * @param flag Whether the pathfinding should run an extended search to find the destination.
      *             TODO rename this
+     * @param analytics The minimap walk analytics data, or null if none is provided.
      *
      * @return
      */
-    public static boolean doWalkTo(int clickType, int startX, int startY, int endX, int endY, int goalDX, int goalDY, int surroundingsMask, int objectType, int objectOrientation, boolean flag) {
+    public static boolean doWalkTo(int clickType, int startX, int startY, int endX, int endY, int goalDX, int goalDY, int surroundingsMask, int objectType, int objectOrientation, boolean flag, MinimapWalkAnalytics analytics) {
         for(int x = 0; x < 104; x++) {
             for(int y = 0; y < 104; y++) {
                 wayPoints[x][y] = 0b0000;
@@ -277,7 +276,8 @@ public class Pathfinding {
                     MovedStatics.baseX + x,
                     Class26.baseY + y,
                     Item.obfuscatedKeyStatus[82],
-                    steps.toArray(new WalkOutboundMessage.WalkStep[steps.size()])
+                    steps.toArray(new WalkOutboundMessage.WalkStep[steps.size()]),
+                    analytics
                 )
             );
 
@@ -290,5 +290,78 @@ public class Pathfinding {
         boolean isMapClick = clickType == 1;
 
         return !isMapClick;
+    }
+
+    public static class MinimapWalkAnalytics {
+        /**
+         * X coordinate of the click within the minimap
+         */
+        public final int minimapClickX;
+
+        /**
+         * Y coordinate of the click within the minimap
+         */
+        public final int minimapClickY;
+
+        /**
+         * The current randomised zoom level of the minimap
+         */
+        public final int minimapRandomZoom;
+
+        /**
+         * The current randomised rotation of the minimap
+         */
+        public final int minimapRandomRotation;
+
+        /**
+         * The current yaw of the camera
+         */
+        public final int cameraYaw;
+
+        /**
+         * TODO what is this
+         */
+        public final int worldX;
+
+        /**
+         * TODO what is this
+         */
+        public final int worldY;
+
+        /**
+         * Whether the pathfinding algorithm used "deep search" to find a path
+         * 
+         * TODO improve name
+         */
+        public final boolean usedDeepSearch;
+
+        /**
+         * Magic number, consistent through revisions (57)
+         */
+        public final int magicA;
+
+        /**
+         * Magic number, consistent through revisions (89)
+         */
+        public final int magicB;
+
+        /**
+         * Magic number, consistent through revisions (63)
+         */
+        public final int magicC;
+
+        public MinimapWalkAnalytics(int minimapClickX, int minimapClickY, int minimapRandomZoom, int minimapRandomRotation, int cameraYaw, int worldX, int worldY, boolean usedDeepSearch, int magicA, int magicB, int magicC) {
+            this.minimapClickX = minimapClickX;
+            this.minimapClickY = minimapClickY;
+            this.minimapRandomZoom = minimapRandomZoom;
+            this.minimapRandomRotation = minimapRandomRotation;
+            this.cameraYaw = cameraYaw;
+            this.worldX = worldX;
+            this.worldY = worldY;
+            this.usedDeepSearch = usedDeepSearch;
+            this.magicA = magicA;
+            this.magicB = magicB;
+            this.magicC = magicC;
+        }
     }
 }

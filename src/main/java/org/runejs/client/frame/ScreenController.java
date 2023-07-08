@@ -396,26 +396,27 @@ public class ScreenController {
                 SceneCluster.packetBuffer.putPacket(246);
                 SceneCluster.packetBuffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + MovedStatics.baseX), Integer.toString(destY + Class26.baseY)));
             } else {
-                boolean bool = Pathfinding.doMinimapWalkTo(
+                Pathfinding.MinimapWalkAnalytics analytics = new Pathfinding.MinimapWalkAnalytics(
+                    minimapClickX,
+                    minimapClickY,
+                    0, // current minimap zoom randomisation
+                    0, // current minimap rotation randomisation
+                    GroundItemTile.cameraHorizontal,
+                    Player.localPlayer.worldX,
+                    Player.localPlayer.worldY,
+                    Pathfinding.arbitraryDestination == 1,
+                    57,
+                    89,
+                    63
+                );
+
+                Pathfinding.doMinimapWalkTo(
                     Player.localPlayer.pathY[0], 
                     Player.localPlayer.pathX[0], 
                     destX, 
-                    destY
+                    destY,
+                    analytics
                 );
-                
-                if (bool) {
-                    SceneCluster.packetBuffer.putByte(minimapClickX);
-                    SceneCluster.packetBuffer.putByte(minimapClickY);
-                    SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
-                    SceneCluster.packetBuffer.putByte(57);
-                    SceneCluster.packetBuffer.putByte(0); // current minimap rotation randomisation
-                    SceneCluster.packetBuffer.putByte(0); // current minimap zoom randomisation
-                    SceneCluster.packetBuffer.putByte(89);
-                    SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldX);
-                    SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldY);
-                    SceneCluster.packetBuffer.putByte(Pathfinding.arbitraryDestination);
-                    SceneCluster.packetBuffer.putByte(63);
-                }
             }
         }
     }

@@ -1,10 +1,16 @@
 package org.runejs.client.net.codec.runejs435.encoder;
 
+import org.runejs.client.Class43;
+import org.runejs.client.Class51;
+import org.runejs.client.media.renderable.actor.Pathfinding;
+import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.outbound.WalkOutboundMessage;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.net.VariableLengthPacketBuffer;
 import org.runejs.client.net.codec.MessageEncoder;
+import org.runejs.client.scene.GroundItemTile;
+import org.runejs.client.scene.SceneCluster;
 
 public class WalkMessageEncoder implements MessageEncoder<WalkOutboundMessage> {
     @Override
@@ -24,9 +30,9 @@ public class WalkMessageEncoder implements MessageEncoder<WalkOutboundMessage> {
             buffer.putByte(step.y);
         }
 
-        // Map type walking has 14 bytes of junk on the end
+        // Minimap walking has analytic data attached
         if (message.type == WalkOutboundMessage.WalkType.MAP) {
-            buffer.currentPosition += 14;
+            this.writeMinimapAnalytics(message, buffer);
         }
 
         buffer.writePacketLength();
@@ -48,5 +54,28 @@ public class WalkMessageEncoder implements MessageEncoder<WalkOutboundMessage> {
         }
 
         throw new RuntimeException("Unhandled walk type");
+    }
+
+    /**
+     * Write "analytic" data related to minimap walking, likely used to combat bots.
+     */
+    private void writeMinimapAnalytics(WalkOutboundMessage message, PacketBuffer buffer) {
+        if (message.minimapWalkAnalytics == null) {
+            throw new RuntimeException("No analytics for minimap walk");
+        }
+
+        Pathfinding.MinimapWalkAnalytics analytics = message.minimapWalkAnalytics;
+
+        buffer.putByte(analytics.minimapClickX);
+        buffer.putByte(analytics.minimapClickY);
+        buffer.putShortBE(analytics.cameraYaw);
+        buffer.putByte(analytics.magicA);
+        buffer.putByte(analytics.minimapRandomRotation);
+        buffer.putByte(analytics.minimapRandomZoom);
+        buffer.putByte(analytics.magicB);
+        buffer.putShortBE(analytics.worldX);
+        buffer.putShortBE(analytics.worldY);
+        buffer.putByte(analytics.usedDeepSearch ? 1 : 0);
+        buffer.putByte(analytics.magicC);
     }
 }
