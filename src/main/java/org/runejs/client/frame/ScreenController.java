@@ -376,7 +376,7 @@ public class ScreenController {
                     return;
                 }
             }
-            int angle = 0x7ff & Main.camera.getYaw();
+            int angle = 0x7ff & Main.getMinimapRotation();
             int sin = Rasterizer3D.sinetable[angle];
             int cos = Rasterizer3D.cosinetable[angle];
 

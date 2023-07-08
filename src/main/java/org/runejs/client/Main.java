@@ -71,6 +71,13 @@ public class Main extends GameShell {
     public static final SphericalCamera camera = new SphericalCamera();
     public static final LookAtCamera cutsceneCamera = new LookAtCamera();
 
+    /**
+     * Minimap rotation is always based on game camera
+     */
+    public static int getMinimapRotation() {
+        return camera.getRotation().yaw;
+    }
+
     public static int anInt1756 = 0;
     public static int menuOffsetY;
     public static int anInt1764 = 0;
