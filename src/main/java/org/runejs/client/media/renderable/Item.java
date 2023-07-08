@@ -61,17 +61,17 @@ public class Item extends Renderable {
 
         // apply rotational velocities to camera's target position
         SceneCamera.cameraYaw = 0x7ff & (SceneCamera.cameraVelocityYaw / 2 + SceneCamera.cameraYaw & 0x7ff);
-        SceneCamera.cameraTargetPitch += SceneCamera.cameraVelocityPitch / 2;
+        SceneCamera.cameraPitch += SceneCamera.cameraVelocityPitch / 2;
 
         // apply zoom velocity and dampen it
         SceneCamera.cameraZoom += SceneCamera.cameraVelocityZoom / 2;
         SceneCamera.cameraVelocityZoom /= 1.5;
 
         // clamp the pitch
-        if (SceneCamera.cameraTargetPitch < 128)
-            SceneCamera.cameraTargetPitch = 128;
-        if (SceneCamera.cameraTargetPitch > 383)
-            SceneCamera.cameraTargetPitch = 383;
+        if (SceneCamera.cameraPitch < 128)
+            SceneCamera.cameraPitch = 128;
+        if (SceneCamera.cameraPitch > 383)
+            SceneCamera.cameraPitch = 383;
 
         // figure out minimum allowed pitch based on surrounding heights
         int i_3_ = 0;

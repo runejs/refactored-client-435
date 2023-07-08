@@ -792,7 +792,7 @@ public class Main extends GameShell {
         MovedStatics.method335();
         MovedStatics.method1000();
         if(!Player.cutsceneActive) {
-            int i = SceneCamera.cameraTargetPitch;
+            int i = SceneCamera.cameraPitch;
             if(SceneCamera.cameraTerrainMinScaledPitch / 256 > i) {
                 i = SceneCamera.cameraTerrainMinScaledPitch / 256;
             }
@@ -1375,7 +1375,7 @@ public class Main extends GameShell {
                     MovedStatics.aBoolean565 = false;
                     SceneCluster.packetBuffer.putPacket(58);
                     SceneCluster.packetBuffer.putShortBE(SceneCamera.cameraYaw);
-                    SceneCluster.packetBuffer.putShortBE(SceneCamera.cameraTargetPitch);
+                    SceneCluster.packetBuffer.putShortBE(SceneCamera.cameraPitch);
                 }
                 if(MovedStatics.aBoolean571 && !Class35.aBoolean1735) {
                     Class35.aBoolean1735 = true;

@@ -8,8 +8,8 @@ import org.runejs.client.media.renderable.Model;
  * JKM will refactor this soon
  */
 public class SceneCamera {
-    public static int cameraYaw;
-    public static int cameraPitch;
+    public static int cameraYaw = 0;
+    public static int cameraPitch = 128;
     public static int cameraZoom = 600;
     public static int cameraX;
     public static int cameraY;
@@ -44,9 +44,6 @@ public class SceneCamera {
      * and not attached directly to the player.
      */
     public static int cameraOriginY;
-
-    // positions that the camera is moving "towards" - why are these calculated separately and not just immediately applied?
-    public static int cameraTargetPitch = 128;
 
     // camera effects, jitter etc
 
