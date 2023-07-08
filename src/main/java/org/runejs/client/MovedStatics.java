@@ -87,7 +87,7 @@ public class MovedStatics {
      * but not the furthest-left (see `tabHighlightImageBottomLeftEdge` for that).
      */
     public static IndexedImage tabHighlightImageBottomLeft;
-    public static int anInt564;
+    public static int cutsceneCameraTileLookToX;
     public static boolean aBoolean565 = false;
     public static boolean aBoolean571;
     public static int anInt573 = -1;
@@ -168,7 +168,7 @@ public class MovedStatics {
      * The hint (arrow) icon sprites.
      */
     public static ImageRGB[] hintIconSprites;
-    public static int anInt2576;
+    public static int cutsceneCameraTileLookToY;
     public static int anInt2581;
     public static CacheArchive aCacheArchive_2582;
     public static ImageRGB minimapEdge;
@@ -216,7 +216,7 @@ public class MovedStatics {
 
     public static int[] menuActionTypes = new int[500];
     public static ProducingGraphicsBuffer loginBoxGraphics;
-    public static int anInt892;
+    public static int cutsceneCameraLookToHeight;
     public static boolean showSidePanelRedrawnText = false;
     /**
      * The image used for the highlighted (selected) tab button,
