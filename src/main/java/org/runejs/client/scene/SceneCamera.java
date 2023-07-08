@@ -11,4 +11,13 @@ public class SceneCamera {
     public static int cameraX;
     public static int cameraY;
     public static int cameraZ;
+
+    // camera effects, jitter etc
+
+    public static boolean[] customCameraActive = new boolean[5];
+
+    public static int[] customCameraJitter = new int[5];
+    public static int[] customCameraTimer = new int[5];
+    public static int[] customCameraFrequency = new int[5];
+    public static int[] customCameraAmplitude = new int[5];
 }

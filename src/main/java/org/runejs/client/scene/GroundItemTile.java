@@ -6,7 +6,6 @@ import org.runejs.client.media.renderable.Renderable;
 public class GroundItemTile {
     public static boolean loadGeneratedMap = false;
     public static int selectedInventorySlot = 0;
-    public static int[] customCameraFrequency = new int[5];
     public static byte[][] aByteArrayArray1370;
     public static int cameraHorizontal = 0;
     public static CacheArchive aCacheArchive_1375;

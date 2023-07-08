@@ -38,7 +38,6 @@ public class Projectile extends Renderable {
 
     public static String[] aClass1Array2964 = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
-    public static boolean[] customCameraActive = new boolean[5];
     public static int menuScreenArea;
     public static int[] directions = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
 

@@ -797,8 +797,8 @@ public class Main extends GameShell {
                 i = MovedStatics.secondaryCameraVertical / 256;
             }
             int i_0_ = 0x7ff & GroundItemTile.cameraHorizontal;
-            if(Projectile.customCameraActive[4] && 128 + customCameraAmplitude[4] > i) {
-                i = 128 + customCameraAmplitude[4];
+            if(SceneCamera.customCameraActive[4] && 128 + SceneCamera.customCameraAmplitude[4] > i) {
+                i = 128 + SceneCamera.customCameraAmplitude[4];
             }
             Class49.setCameraPosition(i, MovedStatics.currentCameraPositionH, -50 + Class37.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY), i_0_, MovedStatics.currentCameraPositionV, -1, 3 * i + 600);
         }
@@ -814,8 +814,8 @@ public class Main extends GameShell {
         int i_4_ = SceneCamera.cameraVerticalRotation;
         int i_5_ = SceneCamera.cameraY;
         for(int i_6_ = 0; i_6_ < 5; i_6_++) {
-            if(Projectile.customCameraActive[i_6_]) {
-                int i_7_ = (int) ((double) (MovedStatics.customCameraJitter[i_6_] * 2 + 1) * Math.random() - (double) MovedStatics.customCameraJitter[i_6_] + Math.sin((double) MovedStatics.customCameraTimer[i_6_] * ((double) GroundItemTile.customCameraFrequency[i_6_] / 100.0)) * (double) customCameraAmplitude[i_6_]);
+            if(SceneCamera.customCameraActive[i_6_]) {
+                int i_7_ = (int) ((double) (SceneCamera.customCameraJitter[i_6_] * 2 + 1) * Math.random() - (double) SceneCamera.customCameraJitter[i_6_] + Math.sin((double) SceneCamera.customCameraTimer[i_6_] * ((double) SceneCamera.customCameraFrequency[i_6_] / 100.0)) * (double) SceneCamera.customCameraAmplitude[i_6_]);
                 if(i_6_ == 1) {
                     SceneCamera.cameraZ += i_7_;
                 }
@@ -1549,7 +1549,7 @@ public class Main extends GameShell {
                         if(Player.cutsceneActive)
                             method165();
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
-                            MovedStatics.customCameraTimer[i_19_]++;
+                            SceneCamera.customCameraTimer[i_19_]++;
                         MovedStatics.manageTextInputs();
                         int i_20_ = Npc.method400(-1);
                         int i_21_ = Class17.method274();
