@@ -235,7 +235,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 return;
             }
             int diff = rotation * 64;
-            SceneCamera.cameraZoom = SceneCamera.cameraZoom + diff;
+            SceneCamera.cameraVelocityZoom += diff;
         }
     }
 
