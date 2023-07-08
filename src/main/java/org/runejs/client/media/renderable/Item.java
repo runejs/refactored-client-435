@@ -13,7 +13,6 @@ import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.UpdateServer;
-import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.SceneCamera;
 import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.sound.MusicSystem;
@@ -43,21 +42,22 @@ public class Item extends Renderable {
             SceneCamera.cameraTargetY += (-SceneCamera.cameraTargetY + sceneY) / 16;
 
         if (obfuscatedKeyStatus[96] && !Console.console.consoleOpen)
-            SceneCamera.cameraVelocityHorizontal += (-24 - SceneCamera.cameraVelocityHorizontal) / 2;
+            SceneCamera.cameraVelocityYaw += (-24 - SceneCamera.cameraVelocityYaw) / 2;
         else if (obfuscatedKeyStatus[97] && !Console.console.consoleOpen)
-            SceneCamera.cameraVelocityHorizontal += (24 - SceneCamera.cameraVelocityHorizontal) / 2;
+            SceneCamera.cameraVelocityYaw += (24 - SceneCamera.cameraVelocityYaw) / 2;
         else
-            SceneCamera.cameraVelocityHorizontal /= 2;
+            SceneCamera.cameraVelocityYaw /= 2;
         if (obfuscatedKeyStatus[98] && !Console.console.consoleOpen)
-            SceneCamera.cameraVelocityVertical += (12 + -SceneCamera.cameraVelocityVertical) / 2;
+            SceneCamera.cameraVelocityPitch += (12 + -SceneCamera.cameraVelocityPitch) / 2;
         else if (obfuscatedKeyStatus[99] && !Console.console.consoleOpen)
-            SceneCamera.cameraVelocityVertical += (-12 - SceneCamera.cameraVelocityVertical) / 2;
+            SceneCamera.cameraVelocityPitch += (-12 - SceneCamera.cameraVelocityPitch) / 2;
         else
-            SceneCamera.cameraVelocityVertical /= 2;
+            SceneCamera.cameraVelocityPitch /= 2;
+
         int i_1_ = SceneCamera.cameraTargetY >> 7;
-        SceneCamera.cameraTargetYaw = SceneCamera.cameraVelocityHorizontal / 2 + SceneCamera.cameraTargetYaw & 0x7ff;
+        SceneCamera.cameraTargetYaw = SceneCamera.cameraVelocityYaw / 2 + SceneCamera.cameraTargetYaw & 0x7ff;
         int i_2_ = SceneCamera.cameraTargetX >> 7;
-        SceneCamera.cameraTargetPitch += SceneCamera.cameraVelocityVertical / 2;
+        SceneCamera.cameraTargetPitch += SceneCamera.cameraVelocityPitch / 2;
         int i_3_ = 0;
         if (SceneCamera.cameraTargetPitch < 128)
             SceneCamera.cameraTargetPitch = 128;

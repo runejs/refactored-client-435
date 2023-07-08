@@ -193,8 +193,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
         if(!mouseWheelDown)
             return;
-        SceneCamera.cameraVelocityHorizontal += i * 3;
-        SceneCamera.cameraVelocityVertical += j << 1;
+        SceneCamera.cameraVelocityYaw += i * 3;
+        SceneCamera.cameraVelocityPitch += j << 1;
     }
 
     public void focusGained(FocusEvent arg0) {
