@@ -793,8 +793,8 @@ public class Main extends GameShell {
         MovedStatics.method1000();
         if(!Player.cutsceneActive) {
             int i = Class65.cameraVertical;
-            if(MovedStatics.cameraTerrainMinScaledPitch / 256 > i) {
-                i = MovedStatics.cameraTerrainMinScaledPitch / 256;
+            if(SceneCamera.cameraTerrainMinScaledPitch / 256 > i) {
+                i = SceneCamera.cameraTerrainMinScaledPitch / 256;
             }
             int i_0_ = 0x7ff & GroundItemTile.cameraHorizontal;
             if(SceneCamera.customCameraActive[4] && 128 + SceneCamera.customCameraAmplitude[4] > i) {

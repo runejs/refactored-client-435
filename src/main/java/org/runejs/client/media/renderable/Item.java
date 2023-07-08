@@ -14,6 +14,7 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.scene.GroundItemTile;
+import org.runejs.client.scene.SceneCamera;
 import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.sound.MusicSystem;
@@ -83,10 +84,10 @@ public class Item extends Renderable {
             i_9_ = 98048;
         if (i_9_ < 32768)
             i_9_ = 32768;
-        if (MovedStatics.cameraTerrainMinScaledPitch < i_9_) {
-            MovedStatics.cameraTerrainMinScaledPitch += (-MovedStatics.cameraTerrainMinScaledPitch + i_9_) / 24;
-        } else if (MovedStatics.cameraTerrainMinScaledPitch > i_9_)
-            MovedStatics.cameraTerrainMinScaledPitch += (-MovedStatics.cameraTerrainMinScaledPitch + i_9_) / 80;
+        if (SceneCamera.cameraTerrainMinScaledPitch < i_9_) {
+            SceneCamera.cameraTerrainMinScaledPitch += (-SceneCamera.cameraTerrainMinScaledPitch + i_9_) / 24;
+        } else if (SceneCamera.cameraTerrainMinScaledPitch > i_9_)
+            SceneCamera.cameraTerrainMinScaledPitch += (-SceneCamera.cameraTerrainMinScaledPitch + i_9_) / 80;
     }
 
     public static void method778(HuffmanEncoding arg1) {
