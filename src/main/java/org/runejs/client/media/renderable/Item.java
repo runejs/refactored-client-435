@@ -41,6 +41,7 @@ public class Item extends Renderable {
         if (SceneCamera.cameraTargetY != sceneY)
             SceneCamera.cameraTargetY += (-SceneCamera.cameraTargetY + sceneY) / 16;
 
+        // increase rotational velocity if key pressed, otherwise fall off
         if (obfuscatedKeyStatus[96] && !Console.console.consoleOpen)
             SceneCamera.cameraVelocityYaw += (-24 - SceneCamera.cameraVelocityYaw) / 2;
         else if (obfuscatedKeyStatus[97] && !Console.console.consoleOpen)
@@ -54,17 +55,20 @@ public class Item extends Renderable {
         else
             SceneCamera.cameraVelocityPitch /= 2;
 
-        int i_1_ = SceneCamera.cameraTargetY >> 7;
+        // apply rotational velocities to camera's target position
         SceneCamera.cameraTargetYaw = SceneCamera.cameraVelocityYaw / 2 + SceneCamera.cameraTargetYaw & 0x7ff;
-        int i_2_ = SceneCamera.cameraTargetX >> 7;
         SceneCamera.cameraTargetPitch += SceneCamera.cameraVelocityPitch / 2;
-        int i_3_ = 0;
+
+        // clamp the pitch
         if (SceneCamera.cameraTargetPitch < 128)
             SceneCamera.cameraTargetPitch = 128;
         if (SceneCamera.cameraTargetPitch > 383)
             SceneCamera.cameraTargetPitch = 383;
 
         // figure out minimum allowed pitch based on surrounding heights
+        int i_3_ = 0;
+        int i_1_ = SceneCamera.cameraTargetY >> 7;
+        int i_2_ = SceneCamera.cameraTargetX >> 7;
         int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, SceneCamera.cameraTargetX, SceneCamera.cameraTargetY);
         if (i_2_ > 3 && i_1_ > 3 && i_2_ < 100 && i_1_ < 100) {
             for (int i_5_ = -4 + i_2_; i_5_ <= 4 + i_2_; i_5_++) {
