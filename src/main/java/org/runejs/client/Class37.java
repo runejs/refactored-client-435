@@ -81,14 +81,14 @@ public class Class37 {
                 if(mmBackgroundPixels[i] == 0)
                     rasterPixels[i] = 0;
             }
-            AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
+            AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraTargetYaw, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
             ActorDefinition.drawMapBack();
             return;
         }
 
         int centerX = 48 + Player.localPlayer.worldX / 32;
         int centerY = 464 + -(Player.localPlayer.worldY / 32);
-        int angle = GroundItemTile.cameraHorizontal & 0x7ff;
+        int angle = GroundItemTile.cameraTargetYaw & 0x7ff;
         int minimapZoom = 0;
         
         MovedStatics.minimapImage.shapeImageToPixels(25, 5, 146, 151, centerX, centerY, angle, minimapZoom + 256, Landscape.anIntArray1186, MovedStatics.anIntArray852);
@@ -173,7 +173,7 @@ public class Class37 {
             SceneTile.drawOnMinimap(flagY, flagX, Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[0]);
         }
         Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
-        AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraHorizontal, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
+        AnimationSequence.minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, GroundItemTile.cameraTargetYaw, 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
         MovedStatics.minimapBackgroundImage.drawImage(0, 0);
 
         if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && Projectile.menuScreenArea == 1) {

@@ -9,10 +9,10 @@ import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.SceneTile;
 
 public class Class65 {
-    public static int cameraVertical;
+    public static int cameraTargetPitch;
 
     static {
-        cameraVertical = 128;
+        cameraTargetPitch = 128;
     }
 
 

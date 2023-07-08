@@ -731,7 +731,7 @@ public class Main extends GameShell {
         Player.npcCount = 0;
         SoundSystem.reset();
         widgetSelected = 0;
-        GroundItemTile.cameraHorizontal = 0x7ff & -10 + (int) (20.0 * Math.random());
+        GroundItemTile.cameraTargetYaw = 0x7ff & -10 + (int) (20.0 * Math.random());
         MovedStatics.minimapState = 0;
         Player.localPlayerCount = 0;
         Class55.destinationY = 0;
@@ -792,18 +792,18 @@ public class Main extends GameShell {
         MovedStatics.method335();
         MovedStatics.method1000();
         if(!Player.cutsceneActive) {
-            int i = Class65.cameraVertical;
+            int i = Class65.cameraTargetPitch;
             if(SceneCamera.cameraTerrainMinScaledPitch / 256 > i) {
                 i = SceneCamera.cameraTerrainMinScaledPitch / 256;
             }
-            int i_0_ = 0x7ff & GroundItemTile.cameraHorizontal;
+            int i_0_ = 0x7ff & GroundItemTile.cameraTargetYaw;
             if(SceneCamera.customCameraActive[4] && 128 + SceneCamera.customCameraAmplitude[4] > i) {
                 i = 128 + SceneCamera.customCameraAmplitude[4];
             }
 
             int zoom = Player.cutsceneActive ? 600 : SceneCamera.cameraZoom;
 
-            SceneCamera.setCameraPosition(i, MovedStatics.currentCameraPositionH, -50 + Class37.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY), i_0_, MovedStatics.currentCameraPositionV, -1, zoom);
+            SceneCamera.setCameraPosition(i, MovedStatics.cameraTargetX, -50 + Class37.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY), i_0_, MovedStatics.cameraTargetY, -1, zoom);
         }
         int i;
         if(!Player.cutsceneActive) {
@@ -1374,8 +1374,8 @@ public class Main extends GameShell {
                     InteractiveObject.anInt487 = 20;
                     MovedStatics.aBoolean565 = false;
                     SceneCluster.packetBuffer.putPacket(58);
-                    SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
-                    SceneCluster.packetBuffer.putShortBE(Class65.cameraVertical);
+                    SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraTargetYaw);
+                    SceneCluster.packetBuffer.putShortBE(Class65.cameraTargetPitch);
                 }
                 if(MovedStatics.aBoolean571 && !Class35.aBoolean1735) {
                     Class35.aBoolean1735 = true;

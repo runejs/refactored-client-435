@@ -149,7 +149,7 @@ public class MovedStatics {
     public static int anInt1996 = 0;
     public static HashTable aClass23_805;
     public static int anInt848 = 0;
-    public static int currentCameraPositionV;
+    public static int cameraTargetY;
     public static int[] anIntArray852;
     public static long aLong853;
     public static int anInt854 = -1;
@@ -994,7 +994,7 @@ public class MovedStatics {
     public static void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
         int len = mapX * mapX + mapY * mapY;
         if (len > 4225 && len < 90000) {
-            int theta = 0x7ff & GroundItemTile.cameraHorizontal;
+            int theta = 0x7ff & GroundItemTile.cameraTargetYaw;
             int sine = Model.SINE[theta];
             int cosine = Model.COSINE[theta];
             int zoom = 0;
@@ -1735,7 +1735,7 @@ public class MovedStatics {
 	}
 
 	public static NodeCache aClass9_2439 = new NodeCache(64);
-	public static int currentCameraPositionH;
+	public static int cameraTargetX;
 	public static int anInt2452 = 0;
 	public static int loadingPercent = 0;
 
