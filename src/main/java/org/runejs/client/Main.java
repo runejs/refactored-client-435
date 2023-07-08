@@ -1201,14 +1201,14 @@ public class Main extends GameShell {
             if(i_4_ > SceneCamera.cameraZ)
                 SceneCamera.cameraZ = i_4_;
         }
-        i_3_ = 64 + MovedStatics.cutsceneCameraTileLookToX * 128;
+        i_3_ = 64 + SceneCamera.cutscene.lookToTileX * 128;
         if(SceneCamera.cameraY > i) {
             SceneCamera.cameraY -= MovedStatics.cutsceneCameraPositionBaseAdjust + Class59.cutsceneCameraPositionScaleAdjust * (SceneCamera.cameraY - i) / 1000;
             if(SceneCamera.cameraY < i)
                 SceneCamera.cameraY = i;
         }
-        i = MovedStatics.cutsceneCameraTileLookToY * 128 + 64;
-        i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) - MovedStatics.cutsceneCameraLookToHeight;
+        i = SceneCamera.cutscene.lookToTileY * 128 + 64;
+        i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) - SceneCamera.cutscene.lookToHeight;
         int i_5_ = -SceneCamera.cameraZ + i_4_;
         int i_6_ = i - SceneCamera.cameraY;
         int i_7_ = i_3_ - SceneCamera.cameraX;
