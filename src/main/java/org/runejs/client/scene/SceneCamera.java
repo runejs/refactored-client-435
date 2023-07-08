@@ -8,8 +8,8 @@ import org.runejs.client.media.renderable.Model;
  * JKM will refactor this soon
  */
 public class SceneCamera {
-    public static int cameraHorizontalRotation;
-    public static int cameraVerticalRotation;
+    public static int cameraYaw;
+    public static int cameraPitch;
     public static int cameraZoom = 600;
     public static int cameraX;
     public static int cameraY;
@@ -59,8 +59,8 @@ public class SceneCamera {
     public static int[] customCameraAmplitude = new int[5];
 
     public static void setCameraPosition(int originX, int originY, int originZ, int yaw, int pitch, int zoom) {
-        cameraHorizontalRotation = yaw;
-        cameraVerticalRotation = pitch;
+        cameraYaw = yaw;
+        cameraPitch = pitch;
 
         int xOffset = 0;
         int yawDifference = 0x7ff & -yaw + 2048;
