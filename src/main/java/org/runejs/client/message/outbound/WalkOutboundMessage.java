@@ -1,5 +1,6 @@
 package org.runejs.client.message.outbound;
 
+import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.message.OutboundMessage;
 
 public class WalkOutboundMessage implements OutboundMessage {
@@ -51,11 +52,19 @@ public class WalkOutboundMessage implements OutboundMessage {
 
     public final WalkStep[] steps;
 
-    public WalkOutboundMessage(WalkType type, int startX, int startY, boolean running, WalkStep[] steps) {
+    /**
+     * Minimap walking has analytics, likely used for anti-cheat
+     * 
+     * Null if not a minimap walk
+     */
+    public final Pathfinding.MinimapWalkAnalytics minimapWalkAnalytics;
+
+    public WalkOutboundMessage(WalkType type, int startX, int startY, boolean running, WalkStep[] steps, Pathfinding.MinimapWalkAnalytics minimapWalkAnalytics) {
         this.type = type;
         this.startX = startX;
         this.startY = startY;
         this.running = running;
         this.steps = steps;
+        this.minimapWalkAnalytics = minimapWalkAnalytics;
     }
 }

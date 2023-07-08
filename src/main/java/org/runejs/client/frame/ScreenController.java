@@ -407,27 +407,13 @@ public class ScreenController {
                     63
                 );
 
-                boolean bool = Pathfinding.doMinimapWalkTo(
+                Pathfinding.doMinimapWalkTo(
                     Player.localPlayer.pathY[0], 
                     Player.localPlayer.pathX[0], 
                     destX, 
                     destY,
                     analytics
                 );
-                
-                if (bool) {
-                    SceneCluster.packetBuffer.putByte(minimapClickX);
-                    SceneCluster.packetBuffer.putByte(minimapClickY);
-                    SceneCluster.packetBuffer.putShortBE(GroundItemTile.cameraHorizontal);
-                    SceneCluster.packetBuffer.putByte(57);
-                    SceneCluster.packetBuffer.putByte(Class43.cameraYawOffset);
-                    SceneCluster.packetBuffer.putByte(Class51.mapZoomOffset);
-                    SceneCluster.packetBuffer.putByte(89);
-                    SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldX);
-                    SceneCluster.packetBuffer.putShortBE(Player.localPlayer.worldY);
-                    SceneCluster.packetBuffer.putByte(Pathfinding.arbitraryDestination);
-                    SceneCluster.packetBuffer.putByte(63);
-                }
             }
         }
     }

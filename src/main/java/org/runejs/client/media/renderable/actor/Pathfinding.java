@@ -276,7 +276,8 @@ public class Pathfinding {
                     MovedStatics.baseX + x,
                     Class26.baseY + y,
                     Item.obfuscatedKeyStatus[82],
-                    steps.toArray(new WalkOutboundMessage.WalkStep[steps.size()])
+                    steps.toArray(new WalkOutboundMessage.WalkStep[steps.size()]),
+                    analytics
                 )
             );
 
