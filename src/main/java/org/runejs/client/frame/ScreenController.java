@@ -393,7 +393,7 @@ public class ScreenController {
                 SceneCluster.packetBuffer.putPacket(246);
                 SceneCluster.packetBuffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + MovedStatics.baseX), Integer.toString(destY + Class26.baseY)));
             } else {
-                Pathfinding.MapWalkAnalytics analytics = new Pathfinding.MapWalkAnalytics(
+                Pathfinding.MinimapWalkAnalytics analytics = new Pathfinding.MinimapWalkAnalytics(
                     minimapClickX,
                     minimapClickY,
                     Class51.mapZoomOffset,

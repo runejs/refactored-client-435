@@ -3,8 +3,6 @@ package org.runejs.client.media.renderable.actor;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.message.outbound.WalkOutboundMessage;
 import org.runejs.client.net.OutgoingPackets;
-import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.*;
 
 import java.util.ArrayList;
@@ -34,7 +32,7 @@ public class Pathfinding {
     /**
      * Initiate a walk from a minimap click.
      */
-    public static boolean doMinimapWalkTo(int startX, int startY, int endX, int endY, MapWalkAnalytics analytics) {
+    public static boolean doMinimapWalkTo(int startX, int startY, int endX, int endY, MinimapWalkAnalytics analytics) {
         return doWalkTo(1, startX, startY, endX, endY, 0, 0, 0, 0, 0, true, analytics);
     }
 
@@ -81,11 +79,11 @@ public class Pathfinding {
      * @param objectOrientation
      * @param flag Whether the pathfinding should run an extended search to find the destination.
      *             TODO rename this
-     * @param analytics The analytics data, or null if none is provided.
+     * @param analytics The minimap walk analytics data, or null if none is provided.
      *
      * @return
      */
-    public static boolean doWalkTo(int clickType, int startX, int startY, int endX, int endY, int goalDX, int goalDY, int surroundingsMask, int objectType, int objectOrientation, boolean flag, MapWalkAnalytics analytics) {
+    public static boolean doWalkTo(int clickType, int startX, int startY, int endX, int endY, int goalDX, int goalDY, int surroundingsMask, int objectType, int objectOrientation, boolean flag, MinimapWalkAnalytics analytics) {
         for(int x = 0; x < 104; x++) {
             for(int y = 0; y < 104; y++) {
                 wayPoints[x][y] = 0b0000;
@@ -293,7 +291,7 @@ public class Pathfinding {
         return !isMapClick;
     }
 
-    public static class MapWalkAnalytics {
+    public static class MinimapWalkAnalytics {
         /**
          * X coordinate of the click within the minimap
          */
@@ -351,7 +349,7 @@ public class Pathfinding {
          */
         public final int magicC;
 
-        public MapWalkAnalytics(int minimapClickX, int minimapClickY, int minimapRandomZoom, int minimapRandomRotation, int cameraYaw, int worldX, int worldY, boolean usedDeepSearch, int magicA, int magicB, int magicC) {
+        public MinimapWalkAnalytics(int minimapClickX, int minimapClickY, int minimapRandomZoom, int minimapRandomRotation, int cameraYaw, int worldX, int worldY, boolean usedDeepSearch, int magicA, int magicB, int magicC) {
             this.minimapClickX = minimapClickX;
             this.minimapClickY = minimapClickY;
             this.minimapRandomZoom = minimapRandomZoom;
