@@ -16,7 +16,6 @@ import org.runejs.client.net.UpdateServer;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.SceneCamera;
 import org.runejs.client.scene.tile.SceneTile;
-import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.*;
 import org.runejs.Configuration;
@@ -44,21 +43,21 @@ public class Item extends Renderable {
             MovedStatics.currentCameraPositionV += (-MovedStatics.currentCameraPositionV + sceneY) / 16;
 
         if (obfuscatedKeyStatus[96] && !Console.console.consoleOpen)
-            Wall.cameraVelocityHorizontal += (-24 - Wall.cameraVelocityHorizontal) / 2;
+            SceneCamera.cameraVelocityHorizontal += (-24 - SceneCamera.cameraVelocityHorizontal) / 2;
         else if (obfuscatedKeyStatus[97] && !Console.console.consoleOpen)
-            Wall.cameraVelocityHorizontal += (24 - Wall.cameraVelocityHorizontal) / 2;
+            SceneCamera.cameraVelocityHorizontal += (24 - SceneCamera.cameraVelocityHorizontal) / 2;
         else
-            Wall.cameraVelocityHorizontal /= 2;
+            SceneCamera.cameraVelocityHorizontal /= 2;
         if (obfuscatedKeyStatus[98] && !Console.console.consoleOpen)
-            Class60.cameraVelocityVertical += (12 + -Class60.cameraVelocityVertical) / 2;
+            SceneCamera.cameraVelocityVertical += (12 + -SceneCamera.cameraVelocityVertical) / 2;
         else if (obfuscatedKeyStatus[99] && !Console.console.consoleOpen)
-            Class60.cameraVelocityVertical += (-12 - Class60.cameraVelocityVertical) / 2;
+            SceneCamera.cameraVelocityVertical += (-12 - SceneCamera.cameraVelocityVertical) / 2;
         else
-            Class60.cameraVelocityVertical /= 2;
+            SceneCamera.cameraVelocityVertical /= 2;
         int i_1_ = MovedStatics.currentCameraPositionV >> 7;
-        GroundItemTile.cameraHorizontal = Wall.cameraVelocityHorizontal / 2 + GroundItemTile.cameraHorizontal & 0x7ff;
+        GroundItemTile.cameraHorizontal = SceneCamera.cameraVelocityHorizontal / 2 + GroundItemTile.cameraHorizontal & 0x7ff;
         int i_2_ = MovedStatics.currentCameraPositionH >> 7;
-        Class65.cameraVertical += Class60.cameraVelocityVertical / 2;
+        Class65.cameraVertical += SceneCamera.cameraVelocityVertical / 2;
         int i_3_ = 0;
         if (Class65.cameraVertical < 128)
             Class65.cameraVertical = 128;

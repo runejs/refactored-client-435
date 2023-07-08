@@ -19,7 +19,6 @@ import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCamera;
 import org.runejs.client.scene.tile.SceneTile;
-import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.*;
 
@@ -194,8 +193,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
         if(!mouseWheelDown)
             return;
-        Wall.cameraVelocityHorizontal += i * 3;
-        Class60.cameraVelocityVertical += j << 1;
+        SceneCamera.cameraVelocityHorizontal += i * 3;
+        SceneCamera.cameraVelocityVertical += j << 1;
     }
 
     public void focusGained(FocusEvent arg0) {

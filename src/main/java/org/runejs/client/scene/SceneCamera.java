@@ -23,6 +23,11 @@ public class SceneCamera {
      */
     public static int cameraTerrainMinScaledPitch = 0;
 
+    // movement velocity of camera
+
+    public static int cameraVelocityHorizontal = 0;
+    public static int cameraVelocityVertical = 0;
+
     // camera effects, jitter etc
 
     public static boolean[] customCameraActive = new boolean[5];
