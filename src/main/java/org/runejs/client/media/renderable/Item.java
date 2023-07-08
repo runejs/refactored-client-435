@@ -75,7 +75,8 @@ public class Item extends Renderable {
         int pitch = Main.camera.getPitch() + SceneCamera.cameraVelocityPitch / 2;
         int zoom = Main.camera.getZoom() + zoomVelocity;
 
-        Main.camera.rotate(yaw, pitch, zoom);
+        Main.camera.rotate(yaw, pitch);
+        Main.camera.setZoom(zoom);
 
         // figure out minimum allowed pitch based on surrounding heights
         int i_3_ = 0;

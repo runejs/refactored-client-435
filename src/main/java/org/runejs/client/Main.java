@@ -731,7 +731,7 @@ public class Main extends GameShell {
         SoundSystem.reset();
         widgetSelected = 0;
         // TODO is this necessary? or should it be removed alongside other randomisation
-        Main.camera.rotate(0x7ff & -10 + (int) (20.0 * Math.random()), Main.camera.getPitch(), Main.camera.getZoom());
+        Main.camera.setYaw(0x7ff & -10 + (int) (20.0 * Math.random()));
         MovedStatics.minimapState = 0;
         Player.localPlayerCount = 0;
         Class55.destinationY = 0;
@@ -828,10 +828,10 @@ public class Main extends GameShell {
 //                    SceneCamera.cameraY += i_7_;
 //                }
                 if(i_6_ == 4) {
-                    Main.camera.rotate(Main.camera.getYaw(), Main.camera.getPitch() + i_7_, Main.camera.getZoom());
+                    Main.camera.setPitch(Main.camera.getPitch() + i_7_);
                 }
                 if(i_6_ == 3) {
-                    Main.camera.rotate(0x7ff & i_7_ + Main.camera.getYaw(), Main.camera.getPitch() + i_7_, Main.camera.getZoom());
+                    Main.camera.setYaw(0x7ff & i_7_ + Main.camera.getYaw());
                 }
             }
         }
@@ -872,7 +872,7 @@ public class Main extends GameShell {
         Player.drawGameScreenGraphics();
 //        SceneCamera.cameraX = i_1_;
 //        SceneCamera.cameraY = i_5_;
-        Main.camera.rotate(i_2_, i_4_, Main.camera.getZoom());
+        Main.camera.rotate(i_2_, i_4_);
 //        SceneCamera.cameraZ = i_3_;
     }
 

@@ -2,10 +2,8 @@ package org.runejs.client.scene.camera;
 
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.scene.Point3d;
-import org.runejs.client.scene.camera.Camera;
-import org.runejs.client.scene.camera.CameraRotation;
 
-public class SphericalCamera implements Camera {
+public class SphericalCamera extends GameCamera implements Camera {
     /**
      * The camera's current origin X coordinate.
      *
@@ -22,21 +20,20 @@ public class SphericalCamera implements Camera {
      */
     private int originY = 0;
     private int originZ = 0;
-
-    private int yaw = 0;
-    private int pitch = 128;
     private int zoom = 600;
 
     private Point3d cartesian = new Point3d(0, 0, 0);
 
     // TODO velocity here too ?
 
+    @Override
     public Point3d getPosition() {
         return this.cartesian;
     }
 
-    public CameraRotation getRotation() {
-        return new CameraRotation(yaw, pitch);
+    @Override
+    protected void onRotationUpdate(CameraRotation newRotation, CameraRotation oldRotation) {
+        this.updateCartesian();
     }
 
     public void setOrigin(int x, int y, int z) {
@@ -58,40 +55,20 @@ public class SphericalCamera implements Camera {
         return originZ;
     }
 
-    public void rotate(int yaw, int pitch, int zoom) {
-        this.yaw = yaw;
-        this.pitch = pitch;
-        this.zoom = zoom;
-
-        this.clampPitch();
-        this.updateCartesian();
-    }
-
-    public void setYaw(int yaw) {
-        this.yaw = yaw;
-        this.updateCartesian();
-    }
-
     public int getYaw() {
-        return yaw;
-    }
-
-    public void setPitch(int pitch) {
-        this.pitch = pitch;
-        this.clampPitch();
-        this.updateCartesian();
+        return this.rotation.yaw;
     }
 
     public int getPitch() {
-        return pitch;
+        return this.rotation.pitch;
     }
 
     public int getZoom() {
         return zoom;
     }
 
-    public void clampPitch() {
-        pitch = Math.max(128, Math.min(pitch, 383));
+    public void setZoom(int zoom) {
+        this.zoom = zoom;
     }
 
     /**
@@ -99,10 +76,10 @@ public class SphericalCamera implements Camera {
      */
     private void updateCartesian() {
         int xOffset = 0;
-        int yawDifference = 0x7ff & -yaw + 2048;
+        int yawDifference = 0x7ff & -this.rotation.yaw + 2048;
         int zOffset = 0;
-        int pitchDifference = 2048 - pitch & 0x7ff;
-        int yOffset = zoom + pitch * 3;
+        int pitchDifference = 2048 - this.rotation.pitch & 0x7ff;
+        int yOffset = zoom + this.rotation.pitch * 3;
         if(pitchDifference != 0) {
             int cosine = Model.COSINE[pitchDifference];
             int sine = Model.SINE[pitchDifference];
