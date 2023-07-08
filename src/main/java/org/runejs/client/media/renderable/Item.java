@@ -32,8 +32,8 @@ public class Item extends Renderable {
     public int itemId;
 
     public static void calculateCameraPosition() {
-        int sceneX = Buffer.cameraOffsetX + Player.localPlayer.worldX;
-        int sceneY = Player.localPlayer.worldY + MovedStatics.cameraOffsetY;
+        int sceneX = Player.localPlayer.worldX;
+        int sceneY = Player.localPlayer.worldY;
         if (MovedStatics.currentCameraPositionH - sceneX < -500 || -sceneX + MovedStatics.currentCameraPositionH > 500 || MovedStatics.currentCameraPositionV + -sceneY < -500 || -sceneY + MovedStatics.currentCameraPositionV > 500) {
             MovedStatics.currentCameraPositionV = sceneY;
             MovedStatics.currentCameraPositionH = sceneX;

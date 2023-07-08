@@ -92,8 +92,10 @@ public class Minimap extends FramePieceRenderer {
 
         int i = 48 + Player.localPlayer.worldX / 32;
         int i_8_ = 464 + -(Player.localPlayer.worldY / 32);
-        int i_9_ = GroundItemTile.cameraHorizontal + Class43.cameraYawOffset & 0x7ff;
-        shapeImageToPixels(MovedStatics.minimapImage,5, 5, 200, 200, i, i_8_, i_9_, Class51.mapZoomOffset + 256, resizableMinimapOffsets2, resizableMinimapOffsets1);
+        int i_9_ = GroundItemTile.cameraHorizontal & 0x7ff;
+        int minimapZoom = 0;
+
+        shapeImageToPixels(MovedStatics.minimapImage,5, 5, 200, 200, i, i_8_, i_9_, minimapZoom + 256, resizableMinimapOffsets2, resizableMinimapOffsets1);
         drawResizableMinimapDots();
         rasterizerInstanced.drawFilledRectangle(105, 105, 3, 3, 16777215);
         rasterizerInstanced.drawFilledRectangle(0, 0, 210, 5, 0x242017);
@@ -202,15 +204,17 @@ public class Minimap extends FramePieceRenderer {
         if(sprite == null) {
             return;
         }
-        int angle = 0x7ff & Class43.cameraYawOffset + GroundItemTile.cameraHorizontal;
+        int angle = 0x7ff & GroundItemTile.cameraHorizontal;
         int l = y * y + x * x;
         if(l > 17000) {
             return;
         }
         int sine = Model.SINE[angle];
         int cosine = Model.COSINE[angle];
-        sine = sine * 256 / (Class51.mapZoomOffset + 256);
-        cosine = cosine * 256 / (Class51.mapZoomOffset + 256);
+        int zoom = 0;
+
+        sine = sine * 256 / (zoom + 256);
+        cosine = cosine * 256 / (zoom + 256);
         int i_3_ = cosine * x + y * sine >> 16;
         int i_4_ = -(x * sine) + cosine * y >> 16;
         drawImage(sprite, 106 + i_3_ + -(sprite.maxWidth / 2), -(sprite.maxHeight / 2) + -i_4_ + 106);
@@ -219,11 +223,13 @@ public class Minimap extends FramePieceRenderer {
     public void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
         int len = mapX * mapX + mapY * mapY;
         if (len > 4225 && len < 90000) {
-            int theta = 0x7ff & GroundItemTile.cameraHorizontal + Class43.cameraYawOffset;
+            int theta = 0x7ff & GroundItemTile.cameraHorizontal;
             int sine = Model.SINE[theta];
             int cosine = Model.COSINE[theta];
-            sine = sine * 256 / (Class51.mapZoomOffset + 256);
-            cosine = cosine * 256 / (Class51.mapZoomOffset + 256);
+            int zoom = 0;
+
+            sine = sine * 256 / (zoom + 256);
+            cosine = cosine * 256 / (zoom + 256);
             int y = cosine * mapY - sine * mapX >> 16;
             int x = mapX * cosine + mapY * sine >> 16;
             double angle = Math.atan2(x, y);

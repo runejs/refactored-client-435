@@ -379,11 +379,14 @@ public class ScreenController {
                     return;
                 }
             }
-            int angle = 0x7ff & Class43.cameraYawOffset + GroundItemTile.cameraHorizontal;
+            int angle = 0x7ff & GroundItemTile.cameraHorizontal;
             int sin = Rasterizer3D.sinetable[angle];
             int cos = Rasterizer3D.cosinetable[angle];
-            cos = (Class51.mapZoomOffset + 256) * cos >> 8;
-            sin = (Class51.mapZoomOffset + 256) * sin >> 8;
+
+            int zoom = 0;
+
+            cos = (zoom + 256) * cos >> 8;
+            sin = (zoom + 256) * sin >> 8;
             int i_14_ = minimapClickY * sin + minimapClickX * cos >> 11;
             int i_15_ = cos * minimapClickY - minimapClickX * sin >> 11;
             int destX = Player.localPlayer.worldX + i_14_ >> 7;
@@ -396,8 +399,8 @@ public class ScreenController {
                 Pathfinding.MinimapWalkAnalytics analytics = new Pathfinding.MinimapWalkAnalytics(
                     minimapClickX,
                     minimapClickY,
-                    Class51.mapZoomOffset,
-                    Class43.cameraYawOffset,
+                    0, // current minimap zoom randomisation
+                    0, // current minimap rotation randomisation
                     GroundItemTile.cameraHorizontal,
                     Player.localPlayer.worldX,
                     Player.localPlayer.worldY,

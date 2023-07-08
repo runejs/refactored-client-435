@@ -21,7 +21,6 @@ import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.util.CollisionMap;
 
 public class Class43 {
-    public static int cameraYawOffset = 0;
     public static LinkedList projectileQueue = new LinkedList();
     public static int bankInsertMode = 0;
 
