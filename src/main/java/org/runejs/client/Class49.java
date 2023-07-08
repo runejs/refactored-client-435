@@ -19,7 +19,7 @@ public class Class49 {
         int pitchDifference = 2048 - pitch & 0x7ff;
         int yOffset = arg6;
         if(!Player.cutsceneActive) {
-            yOffset = MouseHandler.cameraZoom + pitch * 3;
+            yOffset = SceneCamera.cameraZoom + pitch * 3;
         }
         if(pitchDifference != 0) {
             int cosine = Model.COSINE[pitchDifference];
