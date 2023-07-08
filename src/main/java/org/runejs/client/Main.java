@@ -72,7 +72,6 @@ public class Main extends GameShell {
     public static int anInt1756 = 0;
     public static int menuOffsetY;
     public static int anInt1764 = 0;
-    public static int anInt1766 = 1;
     public static int anInt1769 = -1;
     public static int widgetSelected = 0;
     public static String[] playerActions = new String[5];
@@ -111,9 +110,9 @@ public class Main extends GameShell {
 
     /**
      * Recursive function that draws all the widgets within a GameInterface array.
-     * 
+     *
      * TODO (James) make this use GameInterfaceArea for the areaId param
-     * 
+     *
      * @param areaId Mostly used for logical checks
      *   0 = Game area (the area that renders in 3D),
      *   1 = Tab area (the widgets that display within the tab area),
@@ -726,18 +725,13 @@ public class Main extends GameShell {
         for (int i = 0; i < 100; i++)
             ChatBox.chatMessages[i] = null;
         MovedStatics.itemSelected = 0;
-        Class57.anInt1342 = -40 + (int) (80.0 * Math.random());
-        MovedStatics.cameraOffsetY = -55 + (int) (Math.random() * 110.0);
         MovedStatics.destinationX = 0;
-        Class43.cameraYawOffset = (int) (Math.random() * 120.0) + -60;
         Buffer.anInt1985 = -1;
         Player.npcCount = 0;
         SoundSystem.reset();
         widgetSelected = 0;
         GroundItemTile.cameraHorizontal = 0x7ff & -10 + (int) (20.0 * Math.random());
-        Class51.mapZoomOffset = -20 + (int) (Math.random() * 30.0);
         MovedStatics.minimapState = 0;
-        Buffer.cameraOffsetX = -50 + (int) (Math.random() * 100.0);
         Player.localPlayerCount = 0;
         Class55.destinationY = 0;
         for (int i = 0; i < 2048; i++) {
@@ -801,7 +795,7 @@ public class Main extends GameShell {
             if(MovedStatics.secondaryCameraVertical / 256 > i) {
                 i = MovedStatics.secondaryCameraVertical / 256;
             }
-            int i_0_ = 0x7ff & GroundItemTile.cameraHorizontal + Class57.anInt1342;
+            int i_0_ = 0x7ff & GroundItemTile.cameraHorizontal;
             if(Projectile.customCameraActive[4] && 128 + customCameraAmplitude[4] > i) {
                 i = 128 + customCameraAmplitude[4];
             }
@@ -1563,47 +1557,10 @@ public class Main extends GameShell {
                             MovedStatics.method650(4000);
                             SceneCluster.packetBuffer.putPacket(216);
                         }
-                        Player.anInt3264++;
-                        MovedStatics.anInt1923++;
-                        if(MovedStatics.anInt1923 > 500) {
-                            int i_22_ = (int) (8.0 * Math.random());
-                            if((0x2 & i_22_) == 2)
-                                MovedStatics.cameraOffsetY += ProducingGraphicsBuffer_Sub1.anInt2211;
-                            if((i_22_ & 0x1) == 1)
-                                Buffer.cameraOffsetX += MovedStatics.anInt1010;
-                            MovedStatics.anInt1923 = 0;
-                            if((0x4 & i_22_) == 4)
-                                Class57.anInt1342 += MovedStatics.anInt195;
-                        }
-                        if(MovedStatics.cameraOffsetY < -55)
-                            ProducingGraphicsBuffer_Sub1.anInt2211 = 2;
-                        if(Player.anInt3264 > 500) {
-                            int i_23_ = (int) (Math.random() * 8.0);
-                            if((0x1 & i_23_) == 1)
-                                Class43.cameraYawOffset += Class13.anInt419;
-                            if((0x2 & i_23_) == 2)
-                                Class51.mapZoomOffset += anInt1766;
-                            Player.anInt3264 = 0;
-                        }
-                        if(MovedStatics.cameraOffsetY > 55)
-                            ProducingGraphicsBuffer_Sub1.anInt2211 = -2;
-                        if(Buffer.cameraOffsetX < -50)
-                            MovedStatics.anInt1010 = 2;
-                        if(Class43.cameraYawOffset < -60)
-                            Class13.anInt419 = 2;
+
+                        // antibot camera/minimap randomisation used to happen here
+
                         MovedStatics.anInt537++;
-                        if(Buffer.cameraOffsetX > 50)
-                            MovedStatics.anInt1010 = -2;
-                        if(Class43.cameraYawOffset > 60)
-                            Class13.anInt419 = -2;
-                        if(Class57.anInt1342 < -40)
-                            MovedStatics.anInt195 = 1;
-                        if(Class57.anInt1342 > 40)
-                            MovedStatics.anInt195 = -1;
-                        if(Class51.mapZoomOffset < -20)
-                            anInt1766 = 1;
-                        if(Class51.mapZoomOffset > 10)
-                            anInt1766 = -1;
                         if(MovedStatics.anInt537 > 50) {
                             SceneCluster.packetBuffer.putPacket(13);
                         }

@@ -22,7 +22,6 @@ import java.awt.*;
 
 public class Player extends Actor {
 
-    public static int anInt3264 = 0;
     public static int worldLevel;
     public static int[] viewportOffsets;
     public static int headIconDrawType = 0;
