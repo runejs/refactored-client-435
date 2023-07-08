@@ -58,7 +58,7 @@ public class SceneCamera {
     public static int[] customCameraFrequency = new int[5];
     public static int[] customCameraAmplitude = new int[5];
 
-    public static void setCameraPosition(int pitch, int originX, int originZ, int yaw, int originY, int arg6) {
+    public static void setCameraPosition(int pitch, int originX, int originZ, int yaw, int originY, int zoom) {
         cameraHorizontalRotation = yaw;
         cameraVerticalRotation = pitch;
 
@@ -66,7 +66,7 @@ public class SceneCamera {
         int yawDifference = 0x7ff & -yaw + 2048;
         int zOffset = 0;
         int pitchDifference = 2048 - pitch & 0x7ff;
-        int yOffset = arg6 + pitch * 3;
+        int yOffset = zoom + pitch * 3;
         if(pitchDifference != 0) {
             int cosine = Model.COSINE[pitchDifference];
             int sine = Model.SINE[pitchDifference];
