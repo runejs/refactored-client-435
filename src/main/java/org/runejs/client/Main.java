@@ -31,6 +31,7 @@ import org.runejs.client.net.*;
 import org.runejs.client.net.codec.MessagePacketCodec;
 import org.runejs.client.net.codec.runejs435.RuneJS435PacketCodec;
 import org.runejs.client.scene.*;
+import org.runejs.client.scene.camera.Camera;
 import org.runejs.client.scene.camera.LookAtCamera;
 import org.runejs.client.scene.camera.SphericalCamera;
 import org.runejs.client.scene.util.CollisionMap;
@@ -819,6 +820,8 @@ public class Main extends GameShell {
         } else {
             i = MovedStatics.method546();
         }
+        // TODO handle camera jitters on Main.getActiveCamera() instead
+        // TODO (James) finish this !!
 //        int i_1_ = SceneCamera.cameraX;
 //        int i_5_ = SceneCamera.cameraY;
 //        int i_3_ = SceneCamera.cameraZ;
@@ -851,8 +854,7 @@ public class Main extends GameShell {
         Model.resourceCount = 0;
         Rasterizer.resetPixels();
 
-        // TODO render with cutscene camera if it's active
-        Npc.currentScene.render(Main.camera, i);
+        Npc.currentScene.render(getActiveCamera(), i);
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404();
         MovedStatics.method450();
@@ -883,6 +885,10 @@ public class Main extends GameShell {
 //        SceneCamera.cameraY = i_5_;
         Main.camera.rotate(i_2_, i_4_);
 //        SceneCamera.cameraZ = i_3_;
+    }
+
+    public static Camera getActiveCamera() {
+        return Player.cutsceneActive ? Main.cutsceneCamera : Main.camera;
     }
 
     public static void method357(CacheArchive arg0, CacheArchive arg2) {

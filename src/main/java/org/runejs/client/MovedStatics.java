@@ -36,6 +36,7 @@ import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.*;
+import org.runejs.client.scene.camera.CameraRotation;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
@@ -348,12 +349,15 @@ public class MovedStatics {
         }
     }
 
+    /**
+     * get cutscene camera plane?
+     */
     public static int method546() {
         if (!Configuration.ROOFS_ENABLED) {
             return Player.worldLevel;
         }
 
-        Point3d cameraPos = Main.camera.getPosition();
+        Point3d cameraPos = Main.cutsceneCamera.getPosition();
 
         int i = Class37.getFloorDrawHeight(Player.worldLevel, cameraPos.x, cameraPos.y);
         if (i + -cameraPos.z < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][cameraPos.x >> 7][cameraPos.y >> 7] & 0x4) != 0)
@@ -1958,15 +1962,16 @@ public class MovedStatics {
 	    } else {
 	        int i = Class37.getFloorDrawHeight(Player.worldLevel, arg2, arg1) + -arg0;
 
-            Point3d cameraPos = Main.camera.getPosition();
+            Point3d cameraPos = Main.getActiveCamera().getPosition();
+            CameraRotation rotation = Main.getActiveCamera().getRotation();
 
 	        arg1 -= cameraPos.y;
 	        i -= cameraPos.z;
-	        int i_1_ = Model.COSINE[Main.camera.getPitch()];
-	        int i_2_ = Model.SINE[Main.camera.getPitch()];
+	        int i_1_ = Model.COSINE[rotation.pitch];
+	        int i_2_ = Model.SINE[rotation.pitch];
 	        arg2 -= cameraPos.x;
-	        int i_3_ = Model.SINE[Main.camera.getYaw()];
-	        int i_4_ = Model.COSINE[Main.camera.getYaw()];
+	        int i_3_ = Model.SINE[rotation.yaw];
+	        int i_4_ = Model.COSINE[rotation.yaw];
 	        int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> 16;
 	        arg1 = i_4_ * arg1 - arg2 * i_3_ >> 16;
 	        if(arg3 != 4976905)

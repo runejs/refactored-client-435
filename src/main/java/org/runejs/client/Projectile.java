@@ -261,6 +261,10 @@ public class Projectile extends Renderable {
         }
     }
 
+    /**
+     * get game camera plane?
+     * @return
+     */
     public static int method764() {
         if(!Configuration.ROOFS_ENABLED) {
             return Player.worldLevel;
