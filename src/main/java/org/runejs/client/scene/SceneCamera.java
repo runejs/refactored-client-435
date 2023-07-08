@@ -9,9 +9,6 @@ import org.runejs.client.media.renderable.Model;
  */
 public class SceneCamera {
     public static CutsceneCamera cutscene = new CutsceneCamera();
-    public static int cameraYaw = 0;
-    public static int cameraPitch = 128;
-    public static int cameraZoom = 600;
     public static int cameraX;
     public static int cameraY;
     public static int cameraZ;
@@ -40,9 +37,6 @@ public class SceneCamera {
     public static int[] customCameraAmplitude = new int[5];
 
     public static void setCameraPosition(int originX, int originY, int originZ, int yaw, int pitch, int zoom) {
-        cameraYaw = yaw;
-        cameraPitch = pitch;
-
         int xOffset = 0;
         int yawDifference = 0x7ff & -yaw + 2048;
         int zOffset = 0;
