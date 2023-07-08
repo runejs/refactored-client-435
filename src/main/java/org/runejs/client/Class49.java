@@ -4,6 +4,7 @@ import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.actor.Player;
+import org.runejs.client.scene.SceneCamera;
 import org.runejs.client.scene.SceneCluster;
 
 public class Class49 {
@@ -34,11 +35,11 @@ public class Class49 {
             yOffset = -(xOffset * sine) + yOffset * cosine >> 16;
             xOffset = temp;
         }
-        ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation = yaw;
-        SceneCluster.cameraZ = -zOffset + z;
-        Class12.cameraX = -xOffset + x;
-        Class26.cameraVerticalRotation = pitch;
-        MovedStatics.cameraY = y + -yOffset;
+        SceneCamera.cameraHorizontalRotation = yaw;
+        SceneCamera.cameraZ = -zOffset + z;
+        SceneCamera.cameraX = -xOffset + x;
+        SceneCamera.cameraVerticalRotation = pitch;
+        SceneCamera.cameraY = y + -yOffset;
     }
 
 

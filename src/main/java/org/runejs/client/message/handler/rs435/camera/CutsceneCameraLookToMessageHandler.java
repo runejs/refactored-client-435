@@ -4,6 +4,7 @@ import org.runejs.client.*;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.camera.CutsceneCameraLookToInboundMessage;
+import org.runejs.client.scene.SceneCamera;
 import org.runejs.client.scene.SceneCluster;
 
 public class CutsceneCameraLookToMessageHandler implements MessageHandler<CutsceneCameraLookToInboundMessage> {
@@ -20,20 +21,20 @@ public class CutsceneCameraLookToMessageHandler implements MessageHandler<Cutsce
             int y = 128 * MovedStatics.anInt2576 + 64;
             int z = Class37.getFloorDrawHeight(Player.worldLevel, x, y) - MovedStatics.anInt892;
 
-            int deltaX = x - Class12.cameraX;
-            int deltaY = y - MovedStatics.cameraY;
-            int deltaZ = z - SceneCluster.cameraZ;
+            int deltaX = x - SceneCamera.cameraX;
+            int deltaY = y - SceneCamera.cameraY;
+            int deltaZ = z - SceneCamera.cameraZ;
 
             int horizontalDistance = (int) Math.sqrt((double) (deltaY * deltaY + deltaX * deltaX));
 
             // (maybe) convert radians to 2048-step rotational unit
-            Class26.cameraVerticalRotation = (int) (325.949 * Math.atan2((double) deltaZ, (double) horizontalDistance)) & 0x7ff;
-            ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation = (int) (-325.949 * Math.atan2((double) deltaX, (double) deltaY)) & 0x7ff;
+            SceneCamera.cameraVerticalRotation = (int) (325.949 * Math.atan2((double) deltaZ, (double) horizontalDistance)) & 0x7ff;
+            SceneCamera.cameraHorizontalRotation = (int) (-325.949 * Math.atan2((double) deltaX, (double) deltaY)) & 0x7ff;
 
-            if(Class26.cameraVerticalRotation < 128)
-                Class26.cameraVerticalRotation = 128;
-            if(Class26.cameraVerticalRotation > 383)
-                Class26.cameraVerticalRotation = 383;
+            if(SceneCamera.cameraVerticalRotation < 128)
+                SceneCamera.cameraVerticalRotation = 128;
+            if(SceneCamera.cameraVerticalRotation > 383)
+                SceneCamera.cameraVerticalRotation = 383;
         }
     }
 }

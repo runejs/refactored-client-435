@@ -20,7 +20,6 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
      */
     public static ImageRGB[] headIconSprites;
     public static int[] anIntArray2207 = {0, -1, 0, 1};
-    public static int cameraHorizontalRotation;
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2213;
 
     public ColorModel colorModel;

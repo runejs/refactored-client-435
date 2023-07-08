@@ -8,7 +8,6 @@ public class SceneCluster {
     public static int[] anIntArray761 = {1, 2, 4, 8};
     public static int anInt767;
     public static Timer gameTimer;
-    public static int cameraZ;
     public static int anInt770 = 0;
     public static int idleLogout = 0;
 
