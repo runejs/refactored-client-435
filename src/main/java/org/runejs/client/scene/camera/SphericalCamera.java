@@ -1,6 +1,7 @@
-package org.runejs.client.scene;
+package org.runejs.client.scene.camera;
 
 import org.runejs.client.media.renderable.Model;
+import org.runejs.client.scene.Point3d;
 import org.runejs.client.scene.camera.Camera;
 import org.runejs.client.scene.camera.CameraRotation;
 
