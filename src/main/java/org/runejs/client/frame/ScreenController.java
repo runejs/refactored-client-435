@@ -411,7 +411,8 @@ public class ScreenController {
                     Player.localPlayer.pathY[0], 
                     Player.localPlayer.pathX[0], 
                     destX, 
-                    destY
+                    destY,
+                    analytics
                 );
                 
                 if (bool) {

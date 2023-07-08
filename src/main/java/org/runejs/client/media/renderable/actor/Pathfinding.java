@@ -28,28 +28,28 @@ public class Pathfinding {
      * Initiate a walk from a tile click.
      */
     public static boolean doTileWalkTo(int startX, int startY, int endX, int endY) {
-        return doWalkTo(0, startX, startY, endX, endY, 0, 0, 0, 0, 0, true);
+        return doWalkTo(0, startX, startY, endX, endY, 0, 0, 0, 0, 0, true, null);
     }
 
     /**
      * Initiate a walk from a minimap click.
      */
-    public static boolean doMinimapWalkTo(int startX, int startY, int endX, int endY) {
-        return doWalkTo(1, startX, startY, endX, endY, 0, 0, 0, 0, 0, true);
+    public static boolean doMinimapWalkTo(int startX, int startY, int endX, int endY, MapWalkAnalytics analytics) {
+        return doWalkTo(1, startX, startY, endX, endY, 0, 0, 0, 0, 0, true, analytics);
     }
 
     /**
      * Initiate a walk from clicking on an object.
      */
     public static boolean doObjectWalkTo(int startX, int startY, int endX, int endY, int sizeX, int sizeY, int surroundingsMask, int type, int orientation) {
-        return doWalkTo(2, startX, startY, endX, endY, sizeX, sizeY, surroundingsMask, type, orientation, true);
+        return doWalkTo(2, startX, startY, endX, endY, sizeX, sizeY, surroundingsMask, type, orientation, true, null);
     }
 
     /**
      * Initiate a walk from clicking on an entity (player, npc, world item)
      */
     public static boolean doEntityWalkTo(int startX, int startY, int endX, int endY, int sizeX, int sizeY) {
-        return doWalkTo(2, startX, startY, endX, endY, sizeX, sizeY, 0, 0, 0, false);
+        return doWalkTo(2, startX, startY, endX, endY, sizeX, sizeY, 0, 0, 0, false, null);
     }
 
     /**
@@ -81,10 +81,11 @@ public class Pathfinding {
      * @param objectOrientation
      * @param flag Whether the pathfinding should run an extended search to find the destination.
      *             TODO rename this
+     * @param analytics The analytics data, or null if none is provided.
      *
      * @return
      */
-    public static boolean doWalkTo(int clickType, int startX, int startY, int endX, int endY, int goalDX, int goalDY, int surroundingsMask, int objectType, int objectOrientation, boolean flag) {
+    public static boolean doWalkTo(int clickType, int startX, int startY, int endX, int endY, int goalDX, int goalDY, int surroundingsMask, int objectType, int objectOrientation, boolean flag, MapWalkAnalytics analytics) {
         for(int x = 0; x < 104; x++) {
             for(int y = 0; y < 104; y++) {
                 wayPoints[x][y] = 0b0000;
