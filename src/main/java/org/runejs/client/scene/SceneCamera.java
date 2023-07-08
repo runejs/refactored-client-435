@@ -46,6 +46,9 @@ public class SceneCamera {
     public static int[] customCameraAmplitude = new int[5];
 
     public static void setCameraPosition(int pitch, int x, int z, int yaw, int y, int ___pitch, int arg6) {
+        cameraHorizontalRotation = yaw;
+        cameraVerticalRotation = pitch;
+
         int xOffset = 0;
         int yawDifference = 0x7ff & -yaw + 2048;
         int zOffset = 0;
@@ -65,11 +68,10 @@ public class SceneCamera {
             yOffset = -(xOffset * sine) + yOffset * cosine >> 16;
             xOffset = temp;
         }
-        cameraHorizontalRotation = yaw;
-        cameraZ = -zOffset + z;
+
         cameraX = -xOffset + x;
-        cameraVerticalRotation = pitch;
         cameraY = y + -yOffset;
+        cameraZ = -zOffset + z;
     }
 
     /**
