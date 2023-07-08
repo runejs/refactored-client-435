@@ -9,13 +9,6 @@ import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.SceneTile;
 
 public class Class65 {
-    public static int cameraTargetPitch;
-
-    static {
-        cameraTargetPitch = 128;
-    }
-
-
     public static void method1018() {
         MovedStatics.gameScreenImageProducer.prepareRasterizer();
         Class24.fullScreenTextureArray = Rasterizer3D.setLineOffsets(Class24.fullScreenTextureArray);

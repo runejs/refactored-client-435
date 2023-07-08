@@ -33,14 +33,14 @@ public class Item extends Renderable {
     public static void calculateCameraPosition() {
         int sceneX = Player.localPlayer.worldX;
         int sceneY = Player.localPlayer.worldY;
-        if (MovedStatics.cameraTargetX - sceneX < -500 || -sceneX + MovedStatics.cameraTargetX > 500 || MovedStatics.cameraTargetY + -sceneY < -500 || -sceneY + MovedStatics.cameraTargetY > 500) {
-            MovedStatics.cameraTargetY = sceneY;
-            MovedStatics.cameraTargetX = sceneX;
+        if (SceneCamera.cameraTargetX - sceneX < -500 || -sceneX + SceneCamera.cameraTargetX > 500 || SceneCamera.cameraTargetY + -sceneY < -500 || -sceneY + SceneCamera.cameraTargetY > 500) {
+            SceneCamera.cameraTargetY = sceneY;
+            SceneCamera.cameraTargetX = sceneX;
         }
-        if (MovedStatics.cameraTargetX != sceneX)
-            MovedStatics.cameraTargetX += (-MovedStatics.cameraTargetX + sceneX) / 16;
-        if (MovedStatics.cameraTargetY != sceneY)
-            MovedStatics.cameraTargetY += (-MovedStatics.cameraTargetY + sceneY) / 16;
+        if (SceneCamera.cameraTargetX != sceneX)
+            SceneCamera.cameraTargetX += (-SceneCamera.cameraTargetX + sceneX) / 16;
+        if (SceneCamera.cameraTargetY != sceneY)
+            SceneCamera.cameraTargetY += (-SceneCamera.cameraTargetY + sceneY) / 16;
 
         if (obfuscatedKeyStatus[96] && !Console.console.consoleOpen)
             SceneCamera.cameraVelocityHorizontal += (-24 - SceneCamera.cameraVelocityHorizontal) / 2;
@@ -54,18 +54,18 @@ public class Item extends Renderable {
             SceneCamera.cameraVelocityVertical += (-12 - SceneCamera.cameraVelocityVertical) / 2;
         else
             SceneCamera.cameraVelocityVertical /= 2;
-        int i_1_ = MovedStatics.cameraTargetY >> 7;
-        GroundItemTile.cameraTargetYaw = SceneCamera.cameraVelocityHorizontal / 2 + GroundItemTile.cameraTargetYaw & 0x7ff;
-        int i_2_ = MovedStatics.cameraTargetX >> 7;
-        Class65.cameraTargetPitch += SceneCamera.cameraVelocityVertical / 2;
+        int i_1_ = SceneCamera.cameraTargetY >> 7;
+        SceneCamera.cameraTargetYaw = SceneCamera.cameraVelocityHorizontal / 2 + SceneCamera.cameraTargetYaw & 0x7ff;
+        int i_2_ = SceneCamera.cameraTargetX >> 7;
+        SceneCamera.cameraTargetPitch += SceneCamera.cameraVelocityVertical / 2;
         int i_3_ = 0;
-        if (Class65.cameraTargetPitch < 128)
-            Class65.cameraTargetPitch = 128;
-        if (Class65.cameraTargetPitch > 383)
-            Class65.cameraTargetPitch = 383;
+        if (SceneCamera.cameraTargetPitch < 128)
+            SceneCamera.cameraTargetPitch = 128;
+        if (SceneCamera.cameraTargetPitch > 383)
+            SceneCamera.cameraTargetPitch = 383;
 
         // figure out minimum allowed pitch based on surrounding heights
-        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, MovedStatics.cameraTargetX, MovedStatics.cameraTargetY);
+        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, SceneCamera.cameraTargetX, SceneCamera.cameraTargetY);
         if (i_2_ > 3 && i_1_ > 3 && i_2_ < 100 && i_1_ < 100) {
             for (int i_5_ = -4 + i_2_; i_5_ <= 4 + i_2_; i_5_++) {
                 for (int i_6_ = -4 + i_1_; 4 + i_1_ >= i_6_; i_6_++) {

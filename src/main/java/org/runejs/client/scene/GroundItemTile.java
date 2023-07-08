@@ -7,7 +7,6 @@ public class GroundItemTile {
     public static boolean loadGeneratedMap = false;
     public static int selectedInventorySlot = 0;
     public static byte[][] aByteArrayArray1370;
-    public static int cameraTargetYaw = 0;
     public static CacheArchive aCacheArchive_1375;
     public static int walkableWidgetId = -1;
     public static byte[][] aByteArrayArray1377 = new byte[1000][];
