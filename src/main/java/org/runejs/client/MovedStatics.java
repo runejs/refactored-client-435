@@ -352,8 +352,11 @@ public class MovedStatics {
         if (!Configuration.ROOFS_ENABLED) {
             return Player.worldLevel;
         }
-        int i = Class37.getFloorDrawHeight(Player.worldLevel, SceneCamera.cameraX, SceneCamera.cameraY);
-        if (i + -SceneCamera.cameraZ < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][SceneCamera.cameraX >> 7][SceneCamera.cameraY >> 7] & 0x4) != 0)
+
+        Point3d cameraPos = Main.camera.asCartesian();
+
+        int i = Class37.getFloorDrawHeight(Player.worldLevel, cameraPos.x, cameraPos.y);
+        if (i + -cameraPos.z < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][cameraPos.x >> 7][cameraPos.y >> 7] & 0x4) != 0)
             return Player.worldLevel;
         return 3;
     }
@@ -1954,11 +1957,14 @@ public class MovedStatics {
 	        ISAAC.anInt522 = -1;
 	    } else {
 	        int i = Class37.getFloorDrawHeight(Player.worldLevel, arg2, arg1) + -arg0;
-	        arg1 -= SceneCamera.cameraY;
-	        i -= SceneCamera.cameraZ;
+
+            Point3d cameraPos = Main.camera.asCartesian();
+
+	        arg1 -= cameraPos.y;
+	        i -= cameraPos.z;
 	        int i_1_ = Model.COSINE[Main.camera.getPitch()];
 	        int i_2_ = Model.SINE[Main.camera.getPitch()];
-	        arg2 -= SceneCamera.cameraX;
+	        arg2 -= cameraPos.x;
 	        int i_3_ = Model.SINE[Main.camera.getYaw()];
 	        int i_4_ = Model.COSINE[Main.camera.getYaw()];
 	        int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> 16;

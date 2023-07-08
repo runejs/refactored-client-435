@@ -21,10 +21,7 @@ import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.net.ISAAC;
-import org.runejs.client.scene.InteractiveObject;
-import org.runejs.client.scene.Scene;
-import org.runejs.client.scene.SceneCamera;
-import org.runejs.client.scene.SceneCluster;
+import org.runejs.client.scene.*;
 import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.scene.util.CollisionMap;
@@ -270,8 +267,9 @@ public class Projectile extends Renderable {
         }
         int i = 3;
         if(Main.camera.getPitch() < 310) {
-            int i_22_ = SceneCamera.cameraY >> 7;
-            int i_23_ = SceneCamera.cameraX >> 7;
+            Point3d cameraPos = Main.camera.asCartesian();
+            int i_22_ = cameraPos.y >> 7;
+            int i_23_ = cameraPos.x >> 7;
             if(i_22_ > 103) {
                 i_22_ = 103;
             }

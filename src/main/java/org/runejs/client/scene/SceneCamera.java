@@ -1,7 +1,5 @@
 package org.runejs.client.scene;
 
-import org.runejs.client.media.renderable.Model;
-
 /**
  * Temporary holding ground for camera code
  *
@@ -9,9 +7,6 @@ import org.runejs.client.media.renderable.Model;
  */
 public class SceneCamera {
     public static CutsceneCamera cutscene = new CutsceneCamera();
-    public static int cameraX;
-    public static int cameraY;
-    public static int cameraZ;
 
     /**
      * The minimum pitch for the camera, based on the surrounding terrain. Scaled up and must be
@@ -35,32 +30,6 @@ public class SceneCamera {
     public static int[] customCameraTimer = new int[5];
     public static int[] customCameraFrequency = new int[5];
     public static int[] customCameraAmplitude = new int[5];
-
-    public static void setCameraPosition(int originX, int originY, int originZ, int yaw, int pitch, int zoom) {
-        int xOffset = 0;
-        int yawDifference = 0x7ff & -yaw + 2048;
-        int zOffset = 0;
-        int pitchDifference = 2048 - pitch & 0x7ff;
-        int yOffset = zoom + pitch * 3;
-        if(pitchDifference != 0) {
-            int cosine = Model.COSINE[pitchDifference];
-            int sine = Model.SINE[pitchDifference];
-            int temp = zOffset * cosine + -(sine * yOffset) >> 16;
-            yOffset = cosine * yOffset + sine * zOffset >> 16;
-            zOffset = temp;
-        }
-        if(yawDifference != 0) {
-            int cosine = Model.COSINE[yawDifference];
-            int sine = Model.SINE[yawDifference];
-            int temp = cosine * xOffset + yOffset * sine >> 16;
-            yOffset = -(xOffset * sine) + yOffset * cosine >> 16;
-            xOffset = temp;
-        }
-
-        cameraX = -xOffset + originX;
-        cameraY = originY + -yOffset;
-        cameraZ = -zOffset + originZ;
-    }
 
     /**
      * Set the maximum height of the player's surrounding terrain.

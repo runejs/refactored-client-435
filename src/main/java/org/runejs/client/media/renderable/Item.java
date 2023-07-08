@@ -96,6 +96,9 @@ public class Item extends Renderable {
         }
 
         SceneCamera.setMaxSurroundingTerrainHeight(i_3_);
+
+        // TODO set terrain req onto pitch immediately ..
+        // TODO camera 4 jitter
     }
 
     public static void method778(HuffmanEncoding arg1) {

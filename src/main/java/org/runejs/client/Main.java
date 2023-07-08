@@ -790,42 +790,42 @@ public class Main extends GameShell {
         ItemDefinition.method749(false);
         MovedStatics.method335();
         MovedStatics.method1000();
-        if(!Player.cutsceneActive) {
-            int i = Main.camera.getPitch();
-            if(SceneCamera.cameraTerrainMinScaledPitch / 256 > i) {
-                i = SceneCamera.cameraTerrainMinScaledPitch / 256;
-            }
-            if(SceneCamera.customCameraActive[4] && 128 + SceneCamera.customCameraAmplitude[4] > i) {
-                i = 128 + SceneCamera.customCameraAmplitude[4];
-            }
-
-            int zoom = Player.cutsceneActive ? 600 : Main.camera.getZoom();
-
-            SceneCamera.setCameraPosition(Main.camera.getOriginX(), Main.camera.getOriginY(), Main.camera.getOriginZ(), Main.camera.getYaw(), i, zoom);
-        }
+//        if(!Player.cutsceneActive) {
+//            int i = Main.camera.getPitch();
+//            if(SceneCamera.cameraTerrainMinScaledPitch / 256 > i) {
+//                i = SceneCamera.cameraTerrainMinScaledPitch / 256;
+//            }
+//            if(SceneCamera.customCameraActive[4] && 128 + SceneCamera.customCameraAmplitude[4] > i) {
+//                i = 128 + SceneCamera.customCameraAmplitude[4];
+//            }
+//
+//            int zoom = Player.cutsceneActive ? 600 : Main.camera.getZoom();
+//
+//            SceneCamera.setCameraPosition(Main.camera.getOriginX(), Main.camera.getOriginY(), Main.camera.getOriginZ(), Main.camera.getYaw(), i, zoom);
+//        }
         int i;
         if(!Player.cutsceneActive) {
             i = Projectile.method764();
         } else {
             i = MovedStatics.method546();
         }
-        int i_1_ = SceneCamera.cameraX;
+//        int i_1_ = SceneCamera.cameraX;
+//        int i_5_ = SceneCamera.cameraY;
+//        int i_3_ = SceneCamera.cameraZ;
         int i_2_ = Main.camera.getYaw();
-        int i_3_ = SceneCamera.cameraZ;
         int i_4_ = Main.camera.getPitch();
-        int i_5_ = SceneCamera.cameraY;
         for(int i_6_ = 0; i_6_ < 5; i_6_++) {
             if(SceneCamera.customCameraActive[i_6_]) {
                 int i_7_ = (int) ((double) (SceneCamera.customCameraJitter[i_6_] * 2 + 1) * Math.random() - (double) SceneCamera.customCameraJitter[i_6_] + Math.sin((double) SceneCamera.customCameraTimer[i_6_] * ((double) SceneCamera.customCameraFrequency[i_6_] / 100.0)) * (double) SceneCamera.customCameraAmplitude[i_6_]);
-                if(i_6_ == 1) {
-                    SceneCamera.cameraZ += i_7_;
-                }
-                if(i_6_ == 0) {
-                    SceneCamera.cameraX += i_7_;
-                }
-                if(i_6_ == 2) {
-                    SceneCamera.cameraY += i_7_;
-                }
+//                if(i_6_ == 1) {
+//                    SceneCamera.cameraZ += i_7_;
+//                }
+//                if(i_6_ == 0) {
+//                    SceneCamera.cameraX += i_7_;
+//                }
+//                if(i_6_ == 2) {
+//                    SceneCamera.cameraY += i_7_;
+//                }
                 if(i_6_ == 4) {
                     Main.camera.rotate(Main.camera.getYaw(), Main.camera.getPitch() + i_7_, Main.camera.getZoom());
                 }
@@ -840,7 +840,10 @@ public class Main extends GameShell {
         Model.cursorX = Class13.mouseX - 4;
         Model.resourceCount = 0;
         Rasterizer.resetPixels();
-        Npc.currentScene.render(SceneCamera.cameraX, SceneCamera.cameraY, SceneCamera.cameraZ, Main.camera.getYaw(), Main.camera.getPitch(), i);
+
+        Point3d cameraPos = Main.camera.asCartesian();
+
+        Npc.currentScene.render(cameraPos.x, cameraPos.y, cameraPos.z, Main.camera.getYaw(), Main.camera.getPitch(), i);
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404();
         MovedStatics.method450();
@@ -867,10 +870,10 @@ public class Main extends GameShell {
         }
 
         Player.drawGameScreenGraphics();
-        SceneCamera.cameraX = i_1_;
-        SceneCamera.cameraY = i_5_;
+//        SceneCamera.cameraX = i_1_;
+//        SceneCamera.cameraY = i_5_;
         Main.camera.rotate(i_2_, i_4_, Main.camera.getZoom());
-        SceneCamera.cameraZ = i_3_;
+//        SceneCamera.cameraZ = i_3_;
     }
 
     public static void method357(CacheArchive arg0, CacheArchive arg2) {
@@ -1162,85 +1165,85 @@ public class Main extends GameShell {
     }
 
     public static void method165() {
-        int i = 64 + SceneCamera.cutscene.tilePosY * 128;
-        int i_3_ = 64 + 128 * SceneCamera.cutscene.tilePosX;
-        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) + -SceneCamera.cutscene.height;
-        if(i_3_ > SceneCamera.cameraX) {
-            SceneCamera.cameraX += SceneCamera.cutscene.positionScaleAdjust * (i_3_ + -SceneCamera.cameraX) / 1000 + SceneCamera.cutscene.positionBaseAdjust;
-            if(SceneCamera.cameraX > i_3_) {
-                SceneCamera.cameraX = i_3_;
-            }
-        }
-        if(i_4_ > SceneCamera.cameraZ) {
-            SceneCamera.cameraZ += SceneCamera.cutscene.positionScaleAdjust * (i_4_ - SceneCamera.cameraZ) / 1000 + SceneCamera.cutscene.positionBaseAdjust;
-            if(i_4_ < SceneCamera.cameraZ)
-                SceneCamera.cameraZ = i_4_;
-        }
-        if(SceneCamera.cameraX > i_3_) {
-            SceneCamera.cameraX -= SceneCamera.cutscene.positionBaseAdjust + SceneCamera.cutscene.positionScaleAdjust * (SceneCamera.cameraX + -i_3_) / 1000;
-            if(i_3_ > SceneCamera.cameraX) {
-                SceneCamera.cameraX = i_3_;
-            }
-        }
-        if(SceneCamera.cameraY < i) {
-            SceneCamera.cameraY += SceneCamera.cutscene.positionBaseAdjust + SceneCamera.cutscene.positionScaleAdjust * (-SceneCamera.cameraY + i) / 1000;
-            if(SceneCamera.cameraY > i)
-                SceneCamera.cameraY = i;
-        }
-        if(SceneCamera.cameraZ > i_4_) {
-            SceneCamera.cameraZ -= (SceneCamera.cameraZ + -i_4_) * SceneCamera.cutscene.positionScaleAdjust / 1000 + SceneCamera.cutscene.positionBaseAdjust;
-            if(i_4_ > SceneCamera.cameraZ)
-                SceneCamera.cameraZ = i_4_;
-        }
-        i_3_ = 64 + SceneCamera.cutscene.lookToTileX * 128;
-        if(SceneCamera.cameraY > i) {
-            SceneCamera.cameraY -= SceneCamera.cutscene.positionBaseAdjust + SceneCamera.cutscene.positionScaleAdjust * (SceneCamera.cameraY - i) / 1000;
-            if(SceneCamera.cameraY < i)
-                SceneCamera.cameraY = i;
-        }
-        i = SceneCamera.cutscene.lookToTileY * 128 + 64;
-        i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) - SceneCamera.cutscene.lookToHeight;
-        int i_5_ = -SceneCamera.cameraZ + i_4_;
-        int i_6_ = i - SceneCamera.cameraY;
-        int i_7_ = i_3_ - SceneCamera.cameraX;
-        int i_8_ = (int) Math.sqrt((double) (i_7_ * i_7_ + i_6_ * i_6_));
-        int i_9_ = 0x7ff & (int) (Math.atan2((double) i_5_, (double) i_8_) * 325.949);
-
-        i_9_ = SceneCamera.getClampedPitch(i_9_);
-
-        int i_10_ = 0x7ff & (int) (-325.949 * Math.atan2((double) i_7_, (double) i_6_));
-        int i_11_ = -Main.camera.getYaw() + i_10_;
-        if(i_11_ > 1024)
-            i_11_ -= 2048;
-        if(i_11_ < -1024)
-            i_11_ += 2048;
-        if(i_11_ > 0) {
-            int yaw = Main.camera.getYaw() + SceneCamera.cutscene.rotationScaleAdjust * i_11_ / 1000 + SceneCamera.cutscene.rotationBaseAdjust;
-            Main.camera.setYaw(yaw & 0x7ff);
-        }
-        if(true) {
-            if(i_11_ < 0) {
-                int yaw = Main.camera.getYaw() - SceneCamera.cutscene.rotationBaseAdjust + SceneCamera.cutscene.rotationScaleAdjust * -i_11_ / 1000;
-                Main.camera.setYaw(yaw & 0x7ff);
-            }
-            if(i_9_ > Main.camera.getPitch()) {
-                Main.camera.setPitch(Main.camera.getPitch() + SceneCamera.cutscene.rotationBaseAdjust + SceneCamera.cutscene.rotationScaleAdjust * (i_9_ - Main.camera.getPitch()) / 1000);
-                if(Main.camera.getPitch() > i_9_)
-                    Main.camera.setPitch(i_9_);
-            }
-            if(Main.camera.getPitch() > i_9_) {
-                Main.camera.setPitch(Main.camera.getPitch() - SceneCamera.cutscene.rotationScaleAdjust * (Main.camera.getPitch() + -i_9_) / 1000 + SceneCamera.cutscene.rotationBaseAdjust);
-                if(Main.camera.getPitch() < i_9_)
-                    Main.camera.setPitch(i_9_);
-            }
-            int i_12_ = i_10_ + -Main.camera.getYaw();
-            if(i_12_ > 1024)
-                i_12_ -= 2048;
-            if(i_12_ < -1024)
-                i_12_ += 2048;
-            if(i_12_ < 0 && i_11_ > 0 || i_12_ > 0 && i_11_ < 0)
-                Main.camera.setYaw(i_10_);
-        }
+//        int i = 64 + SceneCluster.anInt767 * 128;
+//        int i_3_ = 64 + 128 * MovedStatics.anInt545;
+//        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) + -MovedStatics.anInt194;
+//        if(i_3_ > SceneCamera.cameraX) {
+//            SceneCamera.cameraX += Class59.cutsceneCameraPositionScaleAdjust * (i_3_ + -SceneCamera.cameraX) / 1000 + MovedStatics.cutsceneCameraPositionBaseAdjust;
+//            if(SceneCamera.cameraX > i_3_) {
+//                SceneCamera.cameraX = i_3_;
+//            }
+//        }
+//        if(i_4_ > SceneCamera.cameraZ) {
+//            SceneCamera.cameraZ += Class59.cutsceneCameraPositionScaleAdjust * (i_4_ - SceneCamera.cameraZ) / 1000 + MovedStatics.cutsceneCameraPositionBaseAdjust;
+//            if(i_4_ < SceneCamera.cameraZ)
+//                SceneCamera.cameraZ = i_4_;
+//        }
+//        if(SceneCamera.cameraX > i_3_) {
+//            SceneCamera.cameraX -= MovedStatics.cutsceneCameraPositionBaseAdjust + Class59.cutsceneCameraPositionScaleAdjust * (SceneCamera.cameraX + -i_3_) / 1000;
+//            if(i_3_ > SceneCamera.cameraX) {
+//                SceneCamera.cameraX = i_3_;
+//            }
+//        }
+//        if(SceneCamera.cameraY < i) {
+//            SceneCamera.cameraY += MovedStatics.cutsceneCameraPositionBaseAdjust + Class59.cutsceneCameraPositionScaleAdjust * (-SceneCamera.cameraY + i) / 1000;
+//            if(SceneCamera.cameraY > i)
+//                SceneCamera.cameraY = i;
+//        }
+//        if(SceneCamera.cameraZ > i_4_) {
+//            SceneCamera.cameraZ -= (SceneCamera.cameraZ + -i_4_) * Class59.cutsceneCameraPositionScaleAdjust / 1000 + MovedStatics.cutsceneCameraPositionBaseAdjust;
+//            if(i_4_ > SceneCamera.cameraZ)
+//                SceneCamera.cameraZ = i_4_;
+//        }
+//        i_3_ = 64 + MovedStatics.anInt564 * 128;
+//        if(SceneCamera.cameraY > i) {
+//            SceneCamera.cameraY -= MovedStatics.cutsceneCameraPositionBaseAdjust + Class59.cutsceneCameraPositionScaleAdjust * (SceneCamera.cameraY - i) / 1000;
+//            if(SceneCamera.cameraY < i)
+//                SceneCamera.cameraY = i;
+//        }
+//        i = MovedStatics.anInt2576 * 128 + 64;
+//        i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) - MovedStatics.anInt892;
+//        int i_5_ = -SceneCamera.cameraZ + i_4_;
+//        int i_6_ = i - SceneCamera.cameraY;
+//        int i_7_ = i_3_ - SceneCamera.cameraX;
+//        int i_8_ = (int) Math.sqrt((double) (i_7_ * i_7_ + i_6_ * i_6_));
+//        int i_9_ = 0x7ff & (int) (Math.atan2((double) i_5_, (double) i_8_) * 325.949);
+//
+//        i_9_ = SceneCamera.getClampedPitch(i_9_);
+//
+//        int i_10_ = 0x7ff & (int) (-325.949 * Math.atan2((double) i_7_, (double) i_6_));
+//        int i_11_ = -Main.camera.getYaw() + i_10_;
+//        if(i_11_ > 1024)
+//            i_11_ -= 2048;
+//        if(i_11_ < -1024)
+//            i_11_ += 2048;
+//        if(i_11_ > 0) {
+//            int yaw = Main.camera.getYaw() + MovedStatics.cutsceneCameraRotationScaleAdjust * i_11_ / 1000 + Class60.cutsceneCameraRotationBaseAdjust;
+//            Main.camera.setYaw(yaw & 0x7ff);
+//        }
+//        if(true) {
+//            if(i_11_ < 0) {
+//                int yaw = Main.camera.getYaw() - Class60.cutsceneCameraRotationBaseAdjust + MovedStatics.cutsceneCameraRotationScaleAdjust * -i_11_ / 1000;
+//                Main.camera.setYaw(yaw & 0x7ff);
+//            }
+//            if(i_9_ > Main.camera.getPitch()) {
+//                Main.camera.setPitch(Main.camera.getPitch() + Class60.cutsceneCameraRotationBaseAdjust + MovedStatics.cutsceneCameraRotationScaleAdjust * (i_9_ - Main.camera.getPitch()) / 1000);
+//                if(Main.camera.getPitch() > i_9_)
+//                    Main.camera.setPitch(i_9_);
+//            }
+//            if(Main.camera.getPitch() > i_9_) {
+//                Main.camera.setPitch(Main.camera.getPitch() - MovedStatics.cutsceneCameraRotationScaleAdjust * (Main.camera.getPitch() + -i_9_) / 1000 + Class60.cutsceneCameraRotationBaseAdjust);
+//                if(Main.camera.getPitch() < i_9_)
+//                    Main.camera.setPitch(i_9_);
+//            }
+//            int i_12_ = i_10_ + -Main.camera.getYaw();
+//            if(i_12_ > 1024)
+//                i_12_ -= 2048;
+//            if(i_12_ < -1024)
+//                i_12_ += 2048;
+//            if(i_12_ < 0 && i_11_ > 0 || i_12_ > 0 && i_11_ < 0)
+//                Main.camera.setYaw(i_10_);
+//        }
     }
 
     public static void updateGame() {

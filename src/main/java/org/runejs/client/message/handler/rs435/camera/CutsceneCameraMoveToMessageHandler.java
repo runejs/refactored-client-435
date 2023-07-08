@@ -7,7 +7,6 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.camera.CutsceneCameraMoveToInboundMessage;
 import org.runejs.client.scene.SceneCamera;
-import org.runejs.client.scene.SceneCluster;
 
 public class CutsceneCameraMoveToMessageHandler implements MessageHandler<CutsceneCameraMoveToInboundMessage> {
     @Override
