@@ -141,7 +141,13 @@ public class MovedStatics {
      * Yellow, Red, Green, Cyan, Purple, White
      */
     public static int[] OVERHEAD_CHAT_COLORS = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
-    public static int secondaryCameraVertical = 0;
+    /**
+     * The minimum pitch for the camera, based on the surrounding terrain. Scaled up and must be
+     * divided before comparing to pitches directly.
+     *
+     * Lifts the camera up when there are mountains around, etc.
+     */
+    public static int cameraTerrainMinScaledPitch = 0;
     public static int[] anIntArray2113 = new int[128];
     public static GameInterface aGameInterface_2116;
     public static int anInt2118 = 0;

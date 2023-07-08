@@ -7,7 +7,6 @@ import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.frame.console.Console;
 import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.input.KeyFocusListener;
-import org.runejs.client.io.Buffer;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.VertexNormal;
@@ -64,6 +63,8 @@ public class Item extends Renderable {
             Class65.cameraVertical = 128;
         if (Class65.cameraVertical > 383)
             Class65.cameraVertical = 383;
+
+        // figure out minimum allowed pitch based on surrounding heights
         int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, MovedStatics.currentCameraPositionH, MovedStatics.currentCameraPositionV);
         if (i_2_ > 3 && i_1_ > 3 && i_2_ < 100 && i_1_ < 100) {
             for (int i_5_ = -4 + i_2_; i_5_ <= 4 + i_2_; i_5_++) {
@@ -82,10 +83,10 @@ public class Item extends Renderable {
             i_9_ = 98048;
         if (i_9_ < 32768)
             i_9_ = 32768;
-        if (MovedStatics.secondaryCameraVertical < i_9_) {
-            MovedStatics.secondaryCameraVertical += (-MovedStatics.secondaryCameraVertical + i_9_) / 24;
-        } else if (MovedStatics.secondaryCameraVertical > i_9_)
-            MovedStatics.secondaryCameraVertical += (-MovedStatics.secondaryCameraVertical + i_9_) / 80;
+        if (MovedStatics.cameraTerrainMinScaledPitch < i_9_) {
+            MovedStatics.cameraTerrainMinScaledPitch += (-MovedStatics.cameraTerrainMinScaledPitch + i_9_) / 24;
+        } else if (MovedStatics.cameraTerrainMinScaledPitch > i_9_)
+            MovedStatics.cameraTerrainMinScaledPitch += (-MovedStatics.cameraTerrainMinScaledPitch + i_9_) / 80;
     }
 
     public static void method778(HuffmanEncoding arg1) {
