@@ -20,7 +20,7 @@ public class CutsceneCameraLookToMessageHandler implements MessageHandler<Cutsce
             int y = 128 * SceneCamera.cutscene.lookToTileY + 64;
             int z = Class37.getFloorDrawHeight(Player.worldLevel, x, y) - SceneCamera.cutscene.lookToHeight;
 
-            Point3d cameraPos = Main.camera.asCartesian();
+            Point3d cameraPos = Main.camera.getCartesian();
 
             int deltaX = x - cameraPos.x;
             int deltaY = y - cameraPos.y;

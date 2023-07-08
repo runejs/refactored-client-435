@@ -353,7 +353,7 @@ public class MovedStatics {
             return Player.worldLevel;
         }
 
-        Point3d cameraPos = Main.camera.asCartesian();
+        Point3d cameraPos = Main.camera.getCartesian();
 
         int i = Class37.getFloorDrawHeight(Player.worldLevel, cameraPos.x, cameraPos.y);
         if (i + -cameraPos.z < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][cameraPos.x >> 7][cameraPos.y >> 7] & 0x4) != 0)
@@ -1958,7 +1958,7 @@ public class MovedStatics {
 	    } else {
 	        int i = Class37.getFloorDrawHeight(Player.worldLevel, arg2, arg1) + -arg0;
 
-            Point3d cameraPos = Main.camera.asCartesian();
+            Point3d cameraPos = Main.camera.getCartesian();
 
 	        arg1 -= cameraPos.y;
 	        i -= cameraPos.z;
