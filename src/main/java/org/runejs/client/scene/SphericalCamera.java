@@ -1,8 +1,10 @@
 package org.runejs.client.scene;
 
 import org.runejs.client.media.renderable.Model;
+import org.runejs.client.scene.camera.Camera;
+import org.runejs.client.scene.camera.CameraRotation;
 
-public class SphericalCamera {
+public class SphericalCamera implements Camera {
     /**
      * The camera's current origin X coordinate.
      *
@@ -27,6 +29,14 @@ public class SphericalCamera {
     private Point3d cartesian = new Point3d(0, 0, 0);
 
     // TODO velocity here too ?
+
+    public Point3d getPosition() {
+        return this.cartesian;
+    }
+
+    public CameraRotation getRotation() {
+        return new CameraRotation(yaw, pitch);
+    }
 
     public void setOrigin(int x, int y, int z) {
         originX = x;

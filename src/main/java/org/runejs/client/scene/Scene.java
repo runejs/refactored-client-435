@@ -7,6 +7,8 @@ import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.Renderable;
+import org.runejs.client.scene.camera.Camera;
+import org.runejs.client.scene.camera.CameraRotation;
 import org.runejs.client.scene.tile.*;
 
 import java.util.Arrays;
@@ -316,7 +318,16 @@ public class Scene {
         }
     }
 
-    public void render(int cameraPosX, int cameraPosY, int cameraPosZ, int yaw, int pitch, int plane) {
+    public void render(Camera camera, int plane) {
+        Point3d cameraPos = camera.getPosition();
+        CameraRotation cameraRotation = camera.getRotation();
+
+        int cameraPosX = cameraPos.x;
+        int cameraPosY = cameraPos.y;
+        int cameraPosZ = cameraPos.z;
+        int yaw = cameraRotation.yaw;
+        int pitch = cameraRotation.pitch;
+
         if (cameraPosX < 0) {
             cameraPosX = 0;
         } else if (cameraPosX >= mapSizeX * 128) {

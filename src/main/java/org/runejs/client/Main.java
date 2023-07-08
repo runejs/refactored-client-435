@@ -841,9 +841,8 @@ public class Main extends GameShell {
         Model.resourceCount = 0;
         Rasterizer.resetPixels();
 
-        Point3d cameraPos = Main.camera.getCartesian();
-
-        Npc.currentScene.render(cameraPos.x, cameraPos.y, cameraPos.z, Main.camera.getYaw(), Main.camera.getPitch(), i);
+        // TODO render with cutscene camera if it's active
+        Npc.currentScene.render(Main.camera, i);
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404();
         MovedStatics.method450();
