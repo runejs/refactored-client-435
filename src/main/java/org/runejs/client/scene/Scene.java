@@ -316,7 +316,7 @@ public class Scene {
         }
     }
 
-    public void render(int cameraPosX, int cameraPosZ, int cameraPosY, int pitch, int yaw, int plane) {
+    public void render(int cameraPosX, int cameraPosY, int cameraPosZ, int yaw, int pitch, int plane) {
         if (cameraPosX < 0) {
             cameraPosX = 0;
         } else if (cameraPosX >= mapSizeX * 128) {

@@ -843,7 +843,7 @@ public class Main extends GameShell {
         Model.cursorX = Class13.mouseX - 4;
         Model.resourceCount = 0;
         Rasterizer.resetPixels();
-        Npc.currentScene.render(SceneCamera.cameraX, SceneCamera.cameraZ, SceneCamera.cameraY, SceneCamera.cameraPitch, SceneCamera.cameraYaw, i);
+        Npc.currentScene.render(SceneCamera.cameraX, SceneCamera.cameraY, SceneCamera.cameraZ, SceneCamera.cameraYaw, SceneCamera.cameraPitch, i);
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404();
         MovedStatics.method450();
