@@ -7,7 +7,6 @@ import java.awt.*;
 public class Class26 {
     public static int loginScreenState = 0;
     public static Image loadingBoxImage;
-    public static int cameraVerticalRotation;
     public static CacheArchive aCacheArchive_632;
     public static int baseY;
 

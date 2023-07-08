@@ -17,8 +17,8 @@ import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
+import org.runejs.client.scene.SceneCamera;
 import org.runejs.client.scene.tile.SceneTile;
-import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.*;
 
@@ -32,7 +32,6 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public static Canvas gameCanvas;
     public static int clickType = 0;
     public static byte[][][] tile_overlayids;
-    public static int cameraZoom = 600;
     public static int currentMouseButtonPressed = 0;
     public static volatile int mouseButtonPressed = 0;
     public static volatile int eventMouseButtonPressed = 0;
@@ -194,8 +193,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
         if(!mouseWheelDown)
             return;
-        Wall.cameraVelocityHorizontal += i * 3;
-        Class60.cameraVelocityVertical += j << 1;
+        SceneCamera.cameraVelocityYaw += i * 3;
+        SceneCamera.cameraVelocityPitch += j << 1;
     }
 
     public void focusGained(FocusEvent arg0) {
@@ -232,11 +231,11 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         LinkedList.anInt1073 = 0;
 
         if(!handleInterfaceScrolling(event)) {
-            if(cameraZoom <= 150 && rotation <= 0 || cameraZoom >= 1600 && rotation >= 0) {
+            if(SceneCamera.cameraZoom <= 150 && rotation <= 0 || SceneCamera.cameraZoom >= 1600 && rotation >= 0) {
                 return;
             }
             int diff = rotation * 64;
-            cameraZoom = cameraZoom + diff;
+            SceneCamera.cameraZoom = SceneCamera.cameraZoom + diff;
         }
     }
 

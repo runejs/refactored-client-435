@@ -35,10 +35,7 @@ import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
-import org.runejs.client.scene.GroundItemTile;
-import org.runejs.client.scene.InteractiveObject;
-import org.runejs.client.scene.Scene;
-import org.runejs.client.scene.SceneCluster;
+import org.runejs.client.scene.*;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
@@ -144,7 +141,6 @@ public class MovedStatics {
      * Yellow, Red, Green, Cyan, Purple, White
      */
     public static int[] OVERHEAD_CHAT_COLORS = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
-    public static int secondaryCameraVertical = 0;
     public static int[] anIntArray2113 = new int[128];
     public static GameInterface aGameInterface_2116;
     public static int anInt2118 = 0;
@@ -153,7 +149,6 @@ public class MovedStatics {
     public static int anInt1996 = 0;
     public static HashTable aClass23_805;
     public static int anInt848 = 0;
-    public static int currentCameraPositionV;
     public static int[] anIntArray852;
     public static long aLong853;
     public static int anInt854 = -1;
@@ -365,8 +360,8 @@ public class MovedStatics {
         if (!Configuration.ROOFS_ENABLED) {
             return Player.worldLevel;
         }
-        int i = Class37.getFloorDrawHeight(Player.worldLevel, Class12.cameraX, MovedStatics.cameraY);
-        if (i + -SceneCluster.cameraZ < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][Class12.cameraX >> 7][MovedStatics.cameraY >> 7] & 0x4) != 0)
+        int i = Class37.getFloorDrawHeight(Player.worldLevel, SceneCamera.cameraX, SceneCamera.cameraY);
+        if (i + -SceneCamera.cameraZ < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][SceneCamera.cameraX >> 7][SceneCamera.cameraY >> 7] & 0x4) != 0)
             return Player.worldLevel;
         return 3;
     }
@@ -998,7 +993,7 @@ public class MovedStatics {
     public static void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
         int len = mapX * mapX + mapY * mapY;
         if (len > 4225 && len < 90000) {
-            int theta = 0x7ff & GroundItemTile.cameraHorizontal;
+            int theta = 0x7ff & SceneCamera.cameraTargetYaw;
             int sine = Model.SINE[theta];
             int cosine = Model.COSINE[theta];
             int zoom = 0;
@@ -1483,7 +1478,6 @@ public class MovedStatics {
 	public static Calendar aCalendar279 = Calendar.getInstance();
 	public static int connectionStage = 0;
 	public static int anInt292 = 0;
-	public static int[] customCameraJitter = new int[5];
 
 	public static void drawMenu(int xOffSet, int yOffSet) {
 	    int height = CollisionMap.menuHeight;
@@ -1740,10 +1734,8 @@ public class MovedStatics {
 	}
 
 	public static NodeCache aClass9_2439 = new NodeCache(64);
-	public static int currentCameraPositionH;
 	public static int anInt2452 = 0;
 	public static int loadingPercent = 0;
-	public static int cameraY;
 
 	public static void handleVarPlayers(int varPlayerIndex) {
 	    do {
@@ -1970,13 +1962,13 @@ public class MovedStatics {
 	        ISAAC.anInt522 = -1;
 	    } else {
 	        int i = Class37.getFloorDrawHeight(Player.worldLevel, arg2, arg1) + -arg0;
-	        arg1 -= cameraY;
-	        i -= SceneCluster.cameraZ;
-	        int i_1_ = Model.COSINE[Class26.cameraVerticalRotation];
-	        int i_2_ = Model.SINE[Class26.cameraVerticalRotation];
-	        arg2 -= Class12.cameraX;
-	        int i_3_ = Model.SINE[ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation];
-	        int i_4_ = Model.COSINE[ProducingGraphicsBuffer_Sub1.cameraHorizontalRotation];
+	        arg1 -= SceneCamera.cameraY;
+	        i -= SceneCamera.cameraZ;
+	        int i_1_ = Model.COSINE[SceneCamera.cameraVerticalRotation];
+	        int i_2_ = Model.SINE[SceneCamera.cameraVerticalRotation];
+	        arg2 -= SceneCamera.cameraX;
+	        int i_3_ = Model.SINE[SceneCamera.cameraHorizontalRotation];
+	        int i_4_ = Model.COSINE[SceneCamera.cameraHorizontalRotation];
 	        int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> 16;
 	        arg1 = i_4_ * arg1 - arg2 * i_3_ >> 16;
 	        if(arg3 != 4976905)
@@ -2033,6 +2025,5 @@ public class MovedStatics {
      */
 	public static int cutsceneCameraRotationScaleAdjust;
 	public static int[] anIntArray1847 = new int[2000];
-	public static int[] customCameraTimer = new int[5];
 	public static long aLong1841;
 }

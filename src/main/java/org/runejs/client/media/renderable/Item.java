@@ -7,16 +7,14 @@ import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.frame.console.Console;
 import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.input.KeyFocusListener;
-import org.runejs.client.io.Buffer;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.UpdateServer;
-import org.runejs.client.scene.GroundItemTile;
+import org.runejs.client.scene.SceneCamera;
 import org.runejs.client.scene.tile.SceneTile;
-import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.*;
 import org.runejs.Configuration;
@@ -34,37 +32,44 @@ public class Item extends Renderable {
     public static void calculateCameraPosition() {
         int sceneX = Player.localPlayer.worldX;
         int sceneY = Player.localPlayer.worldY;
-        if (MovedStatics.currentCameraPositionH - sceneX < -500 || -sceneX + MovedStatics.currentCameraPositionH > 500 || MovedStatics.currentCameraPositionV + -sceneY < -500 || -sceneY + MovedStatics.currentCameraPositionV > 500) {
-            MovedStatics.currentCameraPositionV = sceneY;
-            MovedStatics.currentCameraPositionH = sceneX;
+        if (SceneCamera.cameraTargetX - sceneX < -500 || -sceneX + SceneCamera.cameraTargetX > 500 || SceneCamera.cameraTargetY + -sceneY < -500 || -sceneY + SceneCamera.cameraTargetY > 500) {
+            SceneCamera.cameraTargetY = sceneY;
+            SceneCamera.cameraTargetX = sceneX;
         }
-        if (MovedStatics.currentCameraPositionH != sceneX)
-            MovedStatics.currentCameraPositionH += (-MovedStatics.currentCameraPositionH + sceneX) / 16;
-        if (MovedStatics.currentCameraPositionV != sceneY)
-            MovedStatics.currentCameraPositionV += (-MovedStatics.currentCameraPositionV + sceneY) / 16;
+        if (SceneCamera.cameraTargetX != sceneX)
+            SceneCamera.cameraTargetX += (-SceneCamera.cameraTargetX + sceneX) / 16;
+        if (SceneCamera.cameraTargetY != sceneY)
+            SceneCamera.cameraTargetY += (-SceneCamera.cameraTargetY + sceneY) / 16;
 
+        // increase rotational velocity if key pressed, otherwise fall off
         if (obfuscatedKeyStatus[96] && !Console.console.consoleOpen)
-            Wall.cameraVelocityHorizontal += (-24 - Wall.cameraVelocityHorizontal) / 2;
+            SceneCamera.cameraVelocityYaw += (-24 - SceneCamera.cameraVelocityYaw) / 2;
         else if (obfuscatedKeyStatus[97] && !Console.console.consoleOpen)
-            Wall.cameraVelocityHorizontal += (24 - Wall.cameraVelocityHorizontal) / 2;
+            SceneCamera.cameraVelocityYaw += (24 - SceneCamera.cameraVelocityYaw) / 2;
         else
-            Wall.cameraVelocityHorizontal /= 2;
+            SceneCamera.cameraVelocityYaw /= 2;
         if (obfuscatedKeyStatus[98] && !Console.console.consoleOpen)
-            Class60.cameraVelocityVertical += (12 + -Class60.cameraVelocityVertical) / 2;
+            SceneCamera.cameraVelocityPitch += (12 + -SceneCamera.cameraVelocityPitch) / 2;
         else if (obfuscatedKeyStatus[99] && !Console.console.consoleOpen)
-            Class60.cameraVelocityVertical += (-12 - Class60.cameraVelocityVertical) / 2;
+            SceneCamera.cameraVelocityPitch += (-12 - SceneCamera.cameraVelocityPitch) / 2;
         else
-            Class60.cameraVelocityVertical /= 2;
-        int i_1_ = MovedStatics.currentCameraPositionV >> 7;
-        GroundItemTile.cameraHorizontal = Wall.cameraVelocityHorizontal / 2 + GroundItemTile.cameraHorizontal & 0x7ff;
-        int i_2_ = MovedStatics.currentCameraPositionH >> 7;
-        Class65.cameraVertical += Class60.cameraVelocityVertical / 2;
+            SceneCamera.cameraVelocityPitch /= 2;
+
+        // apply rotational velocities to camera's target position
+        SceneCamera.cameraTargetYaw = SceneCamera.cameraVelocityYaw / 2 + SceneCamera.cameraTargetYaw & 0x7ff;
+        SceneCamera.cameraTargetPitch += SceneCamera.cameraVelocityPitch / 2;
+
+        // clamp the pitch
+        if (SceneCamera.cameraTargetPitch < 128)
+            SceneCamera.cameraTargetPitch = 128;
+        if (SceneCamera.cameraTargetPitch > 383)
+            SceneCamera.cameraTargetPitch = 383;
+
+        // figure out minimum allowed pitch based on surrounding heights
         int i_3_ = 0;
-        if (Class65.cameraVertical < 128)
-            Class65.cameraVertical = 128;
-        if (Class65.cameraVertical > 383)
-            Class65.cameraVertical = 383;
-        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, MovedStatics.currentCameraPositionH, MovedStatics.currentCameraPositionV);
+        int i_1_ = SceneCamera.cameraTargetY >> 7;
+        int i_2_ = SceneCamera.cameraTargetX >> 7;
+        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, SceneCamera.cameraTargetX, SceneCamera.cameraTargetY);
         if (i_2_ > 3 && i_1_ > 3 && i_2_ < 100 && i_1_ < 100) {
             for (int i_5_ = -4 + i_2_; i_5_ <= 4 + i_2_; i_5_++) {
                 for (int i_6_ = -4 + i_1_; 4 + i_1_ >= i_6_; i_6_++) {
@@ -77,15 +82,8 @@ public class Item extends Renderable {
                 }
             }
         }
-        int i_9_ = i_3_ * 192;
-        if (i_9_ > 98048)
-            i_9_ = 98048;
-        if (i_9_ < 32768)
-            i_9_ = 32768;
-        if (MovedStatics.secondaryCameraVertical < i_9_) {
-            MovedStatics.secondaryCameraVertical += (-MovedStatics.secondaryCameraVertical + i_9_) / 24;
-        } else if (MovedStatics.secondaryCameraVertical > i_9_)
-            MovedStatics.secondaryCameraVertical += (-MovedStatics.secondaryCameraVertical + i_9_) / 80;
+
+        SceneCamera.setMaxSurroundingTerrainHeight(i_3_);
     }
 
     public static void method778(HuffmanEncoding arg1) {

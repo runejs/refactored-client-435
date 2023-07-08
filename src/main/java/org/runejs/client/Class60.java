@@ -23,7 +23,6 @@ public class Class60 {
      * The base step value added to cutscene camera rotations.
      */
     public static int cutsceneCameraRotationBaseAdjust;
-    public static int cameraVelocityVertical = 0;
     public static int anInt1417;
 
     static {

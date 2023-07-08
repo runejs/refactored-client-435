@@ -23,6 +23,7 @@ import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.Scene;
+import org.runejs.client.scene.SceneCamera;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.WallDecoration;
@@ -37,7 +38,6 @@ public class Projectile extends Renderable {
 
     public static String[] aClass1Array2964 = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
-    public static boolean[] customCameraActive = new boolean[5];
     public static int menuScreenArea;
     public static int[] directions = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
 
@@ -269,9 +269,9 @@ public class Projectile extends Renderable {
             return Player.worldLevel;
         }
         int i = 3;
-        if(Class26.cameraVerticalRotation < 310) {
-            int i_22_ = MovedStatics.cameraY >> 7;
-            int i_23_ = Class12.cameraX >> 7;
+        if(SceneCamera.cameraVerticalRotation < 310) {
+            int i_22_ = SceneCamera.cameraY >> 7;
+            int i_23_ = SceneCamera.cameraX >> 7;
             if(i_22_ > 103) {
                 i_22_ = 103;
             }

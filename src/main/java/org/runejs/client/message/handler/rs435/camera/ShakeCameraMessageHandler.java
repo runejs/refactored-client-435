@@ -6,6 +6,7 @@ import org.runejs.client.Projectile;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.camera.ShakeCameraInboundMessage;
 import org.runejs.client.scene.GroundItemTile;
+import org.runejs.client.scene.SceneCamera;
 
 public class ShakeCameraMessageHandler implements MessageHandler<ShakeCameraInboundMessage> {
     @Override
@@ -17,10 +18,10 @@ public class ShakeCameraMessageHandler implements MessageHandler<ShakeCameraInbo
          * 3: yaw
          * 4: pitch
          */
-        Projectile.customCameraActive[message.cameraType] = true;
-        MovedStatics.customCameraJitter[message.cameraType] = message.jitter;
-        GameShell.customCameraAmplitude[message.cameraType] = message.amplitude;
-        GroundItemTile.customCameraFrequency[message.cameraType] = message.frequency;
-        MovedStatics.customCameraTimer[message.cameraType] = 0;
+        SceneCamera.customCameraActive[message.cameraType] = true;
+        SceneCamera.customCameraJitter[message.cameraType] = message.jitter;
+        SceneCamera.customCameraAmplitude[message.cameraType] = message.amplitude;
+        SceneCamera.customCameraFrequency[message.cameraType] = message.frequency;
+        SceneCamera.customCameraTimer[message.cameraType] = 0;
     }
 }

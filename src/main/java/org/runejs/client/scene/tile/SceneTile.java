@@ -12,6 +12,7 @@ import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
+import org.runejs.client.scene.SceneCamera;
 
 import java.nio.charset.StandardCharsets;
 
@@ -107,7 +108,7 @@ public class SceneTile extends Node {
         if (sprite == null) {
             return;
         }
-        int angle = 0x7ff & GroundItemTile.cameraHorizontal;
+        int angle = 0x7ff & SceneCamera.cameraTargetYaw;
         int l = x * x + y * y;
         if (l > 6400) {
             return;

@@ -18,10 +18,7 @@ import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.outbound.chat.SetChatOptionsOutboundMessage;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
-import org.runejs.client.scene.GroundItemTile;
-import org.runejs.client.scene.InteractiveObject;
-import org.runejs.client.scene.Scene;
-import org.runejs.client.scene.SceneCluster;
+import org.runejs.client.scene.*;
 import org.runejs.client.*;
 
 import java.awt.*;
@@ -379,7 +376,7 @@ public class ScreenController {
                     return;
                 }
             }
-            int angle = 0x7ff & GroundItemTile.cameraHorizontal;
+            int angle = 0x7ff & SceneCamera.cameraTargetYaw;
             int sin = Rasterizer3D.sinetable[angle];
             int cos = Rasterizer3D.cosinetable[angle];
 
@@ -401,7 +398,7 @@ public class ScreenController {
                     minimapClickY,
                     0, // current minimap zoom randomisation
                     0, // current minimap rotation randomisation
-                    GroundItemTile.cameraHorizontal,
+                    SceneCamera.cameraTargetYaw,
                     Player.localPlayer.worldX,
                     Player.localPlayer.worldY,
                     Pathfinding.arbitraryDestination == 1,
