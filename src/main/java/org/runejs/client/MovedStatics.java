@@ -94,10 +94,6 @@ public class MovedStatics {
     public static volatile long aLong174 = 0L;
     public static int anInt175 = 0;
     public static int[] anIntArray178;
-    /**
-     * The base step value added to cutscene camera position movement.
-     */
-    public static int cutsceneCameraPositionBaseAdjust;
     public static int[] chatboxLineOffsets;
     public static int anInt199 = 0;
     public static volatile boolean aBoolean1575 = false;
@@ -2012,13 +2008,6 @@ public class MovedStatics {
 	        }
 	    }
 	}
-
-    /**
-     * The scaling step value added to cutscene camera rotations.
-     *
-     * Multiplies the difference between the current and target rotation.
-     */
-	public static int cutsceneCameraRotationScaleAdjust;
 	public static int[] anIntArray1847 = new int[2000];
 	public static long aLong1841;
 }

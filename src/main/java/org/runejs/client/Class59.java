@@ -9,12 +9,6 @@ import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
 
 public class Class59 {
-    /**
-     * The scaling step value added to cutscene camera position movements.
-     *
-     * Multiplies the difference between the current and target position.
-     */
-    public static int cutsceneCameraPositionScaleAdjust;
     public static IndexedImage imgLoginScreenButton;
     public static int anInt1388;
     public static int anInt1389 = 0;

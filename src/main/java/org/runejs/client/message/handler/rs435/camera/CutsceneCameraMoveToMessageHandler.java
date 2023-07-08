@@ -17,9 +17,9 @@ public class CutsceneCameraMoveToMessageHandler implements MessageHandler<Cutsce
         SceneCamera.cutscene.tilePosX = message.targetX;
         SceneCamera.cutscene.tilePosY = message.targetY;
         SceneCamera.cutscene.height = message.height;
-        MovedStatics.cutsceneCameraPositionBaseAdjust = message.speedBase;
-        Class59.cutsceneCameraPositionScaleAdjust = message.speedScale;
-        if(Class59.cutsceneCameraPositionScaleAdjust >= 100) {
+        SceneCamera.cutscene.positionBaseAdjust = message.speedBase;
+        SceneCamera.cutscene.positionScaleAdjust = message.speedScale;
+        if(SceneCamera.cutscene.positionScaleAdjust >= 100) {
             SceneCamera.cameraY = 64 + SceneCamera.cutscene.tilePosY * 128;
             SceneCamera.cameraX = SceneCamera.cutscene.tilePosX * 128 + 64;
             SceneCamera.cameraZ = Class37.getFloorDrawHeight(Player.worldLevel, SceneCamera.cameraX, SceneCamera.cameraY) - SceneCamera.cutscene.height;

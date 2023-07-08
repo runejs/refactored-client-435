@@ -1175,35 +1175,35 @@ public class Main extends GameShell {
         int i_3_ = 64 + 128 * SceneCamera.cutscene.tilePosX;
         int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) + -SceneCamera.cutscene.height;
         if(i_3_ > SceneCamera.cameraX) {
-            SceneCamera.cameraX += Class59.cutsceneCameraPositionScaleAdjust * (i_3_ + -SceneCamera.cameraX) / 1000 + MovedStatics.cutsceneCameraPositionBaseAdjust;
+            SceneCamera.cameraX += SceneCamera.cutscene.positionScaleAdjust * (i_3_ + -SceneCamera.cameraX) / 1000 + SceneCamera.cutscene.positionBaseAdjust;
             if(SceneCamera.cameraX > i_3_) {
                 SceneCamera.cameraX = i_3_;
             }
         }
         if(i_4_ > SceneCamera.cameraZ) {
-            SceneCamera.cameraZ += Class59.cutsceneCameraPositionScaleAdjust * (i_4_ - SceneCamera.cameraZ) / 1000 + MovedStatics.cutsceneCameraPositionBaseAdjust;
+            SceneCamera.cameraZ += SceneCamera.cutscene.positionScaleAdjust * (i_4_ - SceneCamera.cameraZ) / 1000 + SceneCamera.cutscene.positionBaseAdjust;
             if(i_4_ < SceneCamera.cameraZ)
                 SceneCamera.cameraZ = i_4_;
         }
         if(SceneCamera.cameraX > i_3_) {
-            SceneCamera.cameraX -= MovedStatics.cutsceneCameraPositionBaseAdjust + Class59.cutsceneCameraPositionScaleAdjust * (SceneCamera.cameraX + -i_3_) / 1000;
+            SceneCamera.cameraX -= SceneCamera.cutscene.positionBaseAdjust + SceneCamera.cutscene.positionScaleAdjust * (SceneCamera.cameraX + -i_3_) / 1000;
             if(i_3_ > SceneCamera.cameraX) {
                 SceneCamera.cameraX = i_3_;
             }
         }
         if(SceneCamera.cameraY < i) {
-            SceneCamera.cameraY += MovedStatics.cutsceneCameraPositionBaseAdjust + Class59.cutsceneCameraPositionScaleAdjust * (-SceneCamera.cameraY + i) / 1000;
+            SceneCamera.cameraY += SceneCamera.cutscene.positionBaseAdjust + SceneCamera.cutscene.positionScaleAdjust * (-SceneCamera.cameraY + i) / 1000;
             if(SceneCamera.cameraY > i)
                 SceneCamera.cameraY = i;
         }
         if(SceneCamera.cameraZ > i_4_) {
-            SceneCamera.cameraZ -= (SceneCamera.cameraZ + -i_4_) * Class59.cutsceneCameraPositionScaleAdjust / 1000 + MovedStatics.cutsceneCameraPositionBaseAdjust;
+            SceneCamera.cameraZ -= (SceneCamera.cameraZ + -i_4_) * SceneCamera.cutscene.positionScaleAdjust / 1000 + SceneCamera.cutscene.positionBaseAdjust;
             if(i_4_ > SceneCamera.cameraZ)
                 SceneCamera.cameraZ = i_4_;
         }
         i_3_ = 64 + SceneCamera.cutscene.lookToTileX * 128;
         if(SceneCamera.cameraY > i) {
-            SceneCamera.cameraY -= MovedStatics.cutsceneCameraPositionBaseAdjust + Class59.cutsceneCameraPositionScaleAdjust * (SceneCamera.cameraY - i) / 1000;
+            SceneCamera.cameraY -= SceneCamera.cutscene.positionBaseAdjust + SceneCamera.cutscene.positionScaleAdjust * (SceneCamera.cameraY - i) / 1000;
             if(SceneCamera.cameraY < i)
                 SceneCamera.cameraY = i;
         }
@@ -1225,21 +1225,21 @@ public class Main extends GameShell {
         if(i_11_ < -1024)
             i_11_ += 2048;
         if(i_11_ > 0) {
-            SceneCamera.cameraHorizontalRotation += MovedStatics.cutsceneCameraRotationScaleAdjust * i_11_ / 1000 + Class60.cutsceneCameraRotationBaseAdjust;
+            SceneCamera.cameraHorizontalRotation += SceneCamera.cutscene.rotationScaleAdjust * i_11_ / 1000 + SceneCamera.cutscene.rotationBaseAdjust;
             SceneCamera.cameraHorizontalRotation &= 0x7ff;
         }
         if(true) {
             if(i_11_ < 0) {
-                SceneCamera.cameraHorizontalRotation -= Class60.cutsceneCameraRotationBaseAdjust + MovedStatics.cutsceneCameraRotationScaleAdjust * -i_11_ / 1000;
+                SceneCamera.cameraHorizontalRotation -= SceneCamera.cutscene.rotationBaseAdjust + SceneCamera.cutscene.rotationScaleAdjust * -i_11_ / 1000;
                 SceneCamera.cameraHorizontalRotation &= 0x7ff;
             }
             if(i_9_ > SceneCamera.cameraVerticalRotation) {
-                SceneCamera.cameraVerticalRotation += Class60.cutsceneCameraRotationBaseAdjust + MovedStatics.cutsceneCameraRotationScaleAdjust * (i_9_ - SceneCamera.cameraVerticalRotation) / 1000;
+                SceneCamera.cameraVerticalRotation += SceneCamera.cutscene.rotationBaseAdjust + SceneCamera.cutscene.rotationScaleAdjust * (i_9_ - SceneCamera.cameraVerticalRotation) / 1000;
                 if(SceneCamera.cameraVerticalRotation > i_9_)
                     SceneCamera.cameraVerticalRotation = i_9_;
             }
             if(SceneCamera.cameraVerticalRotation > i_9_) {
-                SceneCamera.cameraVerticalRotation -= MovedStatics.cutsceneCameraRotationScaleAdjust * (SceneCamera.cameraVerticalRotation + -i_9_) / 1000 + Class60.cutsceneCameraRotationBaseAdjust;
+                SceneCamera.cameraVerticalRotation -= SceneCamera.cutscene.rotationScaleAdjust * (SceneCamera.cameraVerticalRotation + -i_9_) / 1000 + SceneCamera.cutscene.rotationBaseAdjust;
                 if(SceneCamera.cameraVerticalRotation < i_9_)
                     SceneCamera.cameraVerticalRotation = i_9_;
             }

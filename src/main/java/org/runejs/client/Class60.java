@@ -19,10 +19,6 @@ import org.runejs.Configuration;
 
 public class Class60 {
     public static boolean DEBUG_DISPLAY_ALL_ACTION_ROWS = false;
-    /**
-     * The base step value added to cutscene camera rotations.
-     */
-    public static int cutsceneCameraRotationBaseAdjust;
     public static int anInt1417;
 
     static {
