@@ -58,7 +58,7 @@ public class SceneCamera {
     public static int[] customCameraFrequency = new int[5];
     public static int[] customCameraAmplitude = new int[5];
 
-    public static void setCameraPosition(int pitch, int originX, int originZ, int yaw, int originY, int ___pitch, int arg6) {
+    public static void setCameraPosition(int pitch, int originX, int originZ, int yaw, int originY, int arg6) {
         cameraHorizontalRotation = yaw;
         cameraVerticalRotation = pitch;
 
