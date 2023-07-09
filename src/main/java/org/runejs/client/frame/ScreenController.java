@@ -376,7 +376,7 @@ public class ScreenController {
                     return;
                 }
             }
-            int angle = 0x7ff & SceneCamera.cameraYaw;
+            int angle = 0x7ff & Main.getMinimapRotation();
             int sin = Rasterizer3D.sinetable[angle];
             int cos = Rasterizer3D.cosinetable[angle];
 
@@ -398,7 +398,7 @@ public class ScreenController {
                     minimapClickY,
                     0, // current minimap zoom randomisation
                     0, // current minimap rotation randomisation
-                    SceneCamera.cameraYaw,
+                    Main.playerCamera.getYaw(),
                     Player.localPlayer.worldX,
                     Player.localPlayer.worldY,
                     Pathfinding.arbitraryDestination == 1,

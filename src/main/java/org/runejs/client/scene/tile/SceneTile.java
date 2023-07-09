@@ -108,7 +108,7 @@ public class SceneTile extends Node {
         if (sprite == null) {
             return;
         }
-        int angle = 0x7ff & SceneCamera.cameraYaw;
+        int angle = 0x7ff & Main.getMinimapRotation();
         int l = x * x + y * y;
         if (l > 6400) {
             return;

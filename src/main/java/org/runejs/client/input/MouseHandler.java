@@ -231,7 +231,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         LinkedList.anInt1073 = 0;
 
         if(!handleInterfaceScrolling(event)) {
-            if(SceneCamera.cameraZoom <= 150 && rotation <= 0 || SceneCamera.cameraZoom >= 1600 && rotation >= 0) {
+            int currentZoom = Main.playerCamera.getZoom();
+            if(currentZoom <= 150 && rotation <= 0 || currentZoom >= 1600 && rotation >= 0) {
                 return;
             }
             int diff = rotation * 64;

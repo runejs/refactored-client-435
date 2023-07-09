@@ -36,6 +36,7 @@ import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.*;
+import org.runejs.client.scene.camera.CameraRotation;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
@@ -348,12 +349,18 @@ public class MovedStatics {
         }
     }
 
+    /**
+     * get cutscene camera plane?
+     */
     public static int method546() {
         if (!Configuration.ROOFS_ENABLED) {
             return Player.worldLevel;
         }
-        int i = Class37.getFloorDrawHeight(Player.worldLevel, SceneCamera.cameraX, SceneCamera.cameraY);
-        if (i + -SceneCamera.cameraZ < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][SceneCamera.cameraX >> 7][SceneCamera.cameraY >> 7] & 0x4) != 0)
+
+        Point3d cameraPos = Main.cutsceneCamera.getPosition();
+
+        int i = Class37.getFloorDrawHeight(Player.worldLevel, cameraPos.x, cameraPos.y);
+        if (i + -cameraPos.z < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][cameraPos.x >> 7][cameraPos.y >> 7] & 0x4) != 0)
             return Player.worldLevel;
         return 3;
     }
@@ -985,7 +992,7 @@ public class MovedStatics {
     public static void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
         int len = mapX * mapX + mapY * mapY;
         if (len > 4225 && len < 90000) {
-            int theta = 0x7ff & SceneCamera.cameraYaw;
+            int theta = 0x7ff & Main.playerCamera.getYaw();
             int sine = Model.SINE[theta];
             int cosine = Model.COSINE[theta];
             int zoom = 0;
@@ -1954,13 +1961,17 @@ public class MovedStatics {
 	        ISAAC.anInt522 = -1;
 	    } else {
 	        int i = Class37.getFloorDrawHeight(Player.worldLevel, arg2, arg1) + -arg0;
-	        arg1 -= SceneCamera.cameraY;
-	        i -= SceneCamera.cameraZ;
-	        int i_1_ = Model.COSINE[SceneCamera.cameraPitch];
-	        int i_2_ = Model.SINE[SceneCamera.cameraPitch];
-	        arg2 -= SceneCamera.cameraX;
-	        int i_3_ = Model.SINE[SceneCamera.cameraYaw];
-	        int i_4_ = Model.COSINE[SceneCamera.cameraYaw];
+
+            Point3d cameraPos = Main.getActiveCamera().getPosition();
+            CameraRotation rotation = Main.getActiveCamera().getRotation();
+
+	        arg1 -= cameraPos.y;
+	        i -= cameraPos.z;
+	        int i_1_ = Model.COSINE[rotation.pitch];
+	        int i_2_ = Model.SINE[rotation.pitch];
+	        arg2 -= cameraPos.x;
+	        int i_3_ = Model.SINE[rotation.yaw];
+	        int i_4_ = Model.COSINE[rotation.yaw];
 	        int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> 16;
 	        arg1 = i_4_ * arg1 - arg2 * i_3_ >> 16;
 	        if(arg3 != 4976905)
