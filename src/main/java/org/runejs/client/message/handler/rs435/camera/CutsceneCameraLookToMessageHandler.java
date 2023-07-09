@@ -10,15 +10,15 @@ public class CutsceneCameraLookToMessageHandler implements MessageHandler<Cutsce
     @Override
     public void handle(CutsceneCameraLookToInboundMessage message) {
         Player.cutsceneActive = true;
-        MovedStatics.anInt564 = message.targetX;
-        MovedStatics.anInt2576 = message.targetY;
-        MovedStatics.anInt892 = message.height;
-        Class60.cutsceneCameraRotationBaseAdjust = message.speedBase;
-        MovedStatics.cutsceneCameraRotationScaleAdjust = message.speedScale;
-        if(MovedStatics.cutsceneCameraRotationScaleAdjust >= 100) {
-            int x = 128 * MovedStatics.anInt564 + 64;
-            int y = 128 * MovedStatics.anInt2576 + 64;
-            int z = Class37.getFloorDrawHeight(Player.worldLevel, x, y) - MovedStatics.anInt892;
+        SceneCamera.cutscene.lookToTileX = message.targetX;
+        SceneCamera.cutscene.lookToTileY = message.targetY;
+        SceneCamera.cutscene.lookToHeight = message.height;
+        SceneCamera.cutscene.rotationBaseAdjust = message.speedBase;
+        SceneCamera.cutscene.rotationScaleAdjust = message.speedScale;
+        if(SceneCamera.cutscene.rotationScaleAdjust >= 100) {
+            int x = 128 * SceneCamera.cutscene.lookToTileX + 64;
+            int y = 128 * SceneCamera.cutscene.lookToTileY + 64;
+            int z = Class37.getFloorDrawHeight(Player.worldLevel, x, y) - SceneCamera.cutscene.lookToHeight;
 
             int deltaX = x - SceneCamera.cameraX;
             int deltaY = y - SceneCamera.cameraY;

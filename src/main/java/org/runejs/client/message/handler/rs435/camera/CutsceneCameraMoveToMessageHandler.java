@@ -1,6 +1,5 @@
 package org.runejs.client.message.handler.rs435.camera;
 
-import org.runejs.client.Class12;
 import org.runejs.client.Class37;
 import org.runejs.client.Class59;
 import org.runejs.client.MovedStatics;
@@ -14,15 +13,16 @@ public class CutsceneCameraMoveToMessageHandler implements MessageHandler<Cutsce
     @Override
     public void handle(CutsceneCameraMoveToInboundMessage message) {
         Player.cutsceneActive = true;
-        MovedStatics.anInt545 = message.targetX;
-        SceneCluster.anInt767 = message.targetY;
-        MovedStatics.anInt194 = message.height;
-        MovedStatics.cutsceneCameraPositionBaseAdjust = message.speedBase;
-        Class59.cutsceneCameraPositionScaleAdjust = message.speedScale;
-        if(Class59.cutsceneCameraPositionScaleAdjust >= 100) {
-            SceneCamera.cameraY = 64 + SceneCluster.anInt767 * 128;
-            SceneCamera.cameraX = MovedStatics.anInt545 * 128 + 64;
-            SceneCamera.cameraZ = Class37.getFloorDrawHeight(Player.worldLevel, SceneCamera.cameraX, SceneCamera.cameraY) - MovedStatics.anInt194;
+        // cutscene camera will be positioned on this tile in the region
+        SceneCamera.cutscene.tilePosX = message.targetX;
+        SceneCamera.cutscene.tilePosY = message.targetY;
+        SceneCamera.cutscene.height = message.height;
+        SceneCamera.cutscene.positionBaseAdjust = message.speedBase;
+        SceneCamera.cutscene.positionScaleAdjust = message.speedScale;
+        if(SceneCamera.cutscene.positionScaleAdjust >= 100) {
+            SceneCamera.cameraY = 64 + SceneCamera.cutscene.tilePosY * 128;
+            SceneCamera.cameraX = SceneCamera.cutscene.tilePosX * 128 + 64;
+            SceneCamera.cameraZ = Class37.getFloorDrawHeight(Player.worldLevel, SceneCamera.cameraX, SceneCamera.cameraY) - SceneCamera.cutscene.height;
         }
     }
 }
