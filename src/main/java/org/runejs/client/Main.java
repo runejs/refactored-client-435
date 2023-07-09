@@ -802,13 +802,16 @@ public class Main extends GameShell {
         ItemDefinition.method749(false);
         MovedStatics.method335();
         MovedStatics.method1000();
-
-        // TODO (james) handle terrain min pitch
-
         if (!Player.cutsceneActive) {
-            if(SceneCamera.customCameraActive[4] && 128 + SceneCamera.customCameraAmplitude[4] > Main.camera.getPitch()) {
-                Main.camera.setPitch(128 + SceneCamera.customCameraAmplitude[4]);
+            int pitch = Main.camera.getPitch();
+            if(SceneCamera.cameraTerrainMinScaledPitch / 256 > pitch) {
+                pitch = SceneCamera.cameraTerrainMinScaledPitch / 256;
             }
+            if(SceneCamera.customCameraActive[4] && 128 + SceneCamera.customCameraAmplitude[4] > pitch) {
+                pitch = 128 + SceneCamera.customCameraAmplitude[4];
+            }
+
+            Main.camera.setPitch(pitch);
         }
 
         int i;
