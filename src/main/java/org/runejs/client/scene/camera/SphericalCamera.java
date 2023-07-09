@@ -28,7 +28,7 @@ public class SphericalCamera extends GameCamera {
 
     @Override
     public Point3d getPosition() {
-        return this.cartesian.add(this.offset);
+        return this.cartesian.add(this.offsetPosition);
     }
 
     @Override

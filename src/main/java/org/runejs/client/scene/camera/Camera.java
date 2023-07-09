@@ -6,5 +6,5 @@ public interface Camera {
     CameraRotation getRotation();
     Point3d getPosition();
 
-    void setOffset(Point3d offset);
+    void setOffsetPosition(Point3d offsetPosition);
 }

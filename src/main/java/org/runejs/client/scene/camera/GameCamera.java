@@ -16,7 +16,7 @@ public abstract class GameCamera implements Camera {
     /**
      * The camera's current offset, used for the "shake camera" effect.
      */
-    protected Point3d offset = new Point3d(0, 0, 0);
+    protected Point3d offsetPosition = new Point3d(0, 0, 0);
 
     /**
      * Called when the camera's rotation is updated.
@@ -37,8 +37,9 @@ public abstract class GameCamera implements Camera {
     }
 
     @Override
-    public void setOffset(Point3d offset) {
-        this.offset = offset;
+    public void setOffsetPosition(Point3d offsetPosition) {
+        this.offsetPosition = offsetPosition;
+    }
     }
 
     public void rotate(int yaw, int pitch) {
@@ -60,7 +61,7 @@ public abstract class GameCamera implements Camera {
         // (jkm) there's a chance that this won't play nicely with the offsets, and maybe we should create
         //       a `getRawPosition` function or something to get position without offsets. Revisit this and
         //       check it's all working perfectly in all edge cases.
-        return this.position.add(this.offset);
+        return this.position.add(this.offsetPosition);
     }
 
     public void setPosition(Point3d position) {

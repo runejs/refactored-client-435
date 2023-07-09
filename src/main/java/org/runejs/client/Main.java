@@ -819,17 +819,20 @@ public class Main extends GameShell {
 
         int i_2_ = Main.camera.getYaw();
         int i_4_ = Main.camera.getPitch();
+
+        Point3d shakeOffset = new Point3d(0, 0, 0);
+
         for(int i_6_ = 0; i_6_ < 5; i_6_++) {
             if(SceneCamera.customCameraActive[i_6_]) {
                 int i_7_ = (int) ((double) (SceneCamera.customCameraJitter[i_6_] * 2 + 1) * Math.random() - (double) SceneCamera.customCameraJitter[i_6_] + Math.sin((double) SceneCamera.customCameraTimer[i_6_] * ((double) SceneCamera.customCameraFrequency[i_6_] / 100.0)) * (double) SceneCamera.customCameraAmplitude[i_6_]);
                 if(i_6_ == 1) {
-                    activeCamera.setOffset(new Point3d(0, 0, i_7_));
+                    shakeOffset.addZ(i_7_);
                 }
                 if(i_6_ == 0) {
-                    activeCamera.setOffset(new Point3d(i_7_, 0, 0));
+                    shakeOffset.addX(i_7_);
                 }
                 if(i_6_ == 2) {
-                    activeCamera.setOffset(new Point3d(0, i_7_, 0));
+                    shakeOffset.addY(i_7_);
                 }
                 if(i_6_ == 4) {
                     Main.camera.setPitch(Main.camera.getPitch() + i_7_);
@@ -839,6 +842,9 @@ public class Main extends GameShell {
                 }
             }
         }
+
+        activeCamera.setOffsetPosition(shakeOffset);
+
         Class65.method1018();
         Model.cursorY = Landscape.mouseY - 4;
         Model.gameScreenClickable = true;

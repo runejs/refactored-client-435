@@ -14,4 +14,16 @@ public class Point3d {
     public Point3d add(Point3d other) {
         return new Point3d(x + other.x, y + other.y, z + other.z);
     }
+
+    public Point3d addX(int x) {
+        return new Point3d(this.x + x, this.y, this.z );
+    }
+
+    public Point3d addY(int y) {
+        return new Point3d(this.x, this.y + y, this.z );
+    }
+
+    public Point3d addZ(int z) {
+        return new Point3d(this.x, this.y, this.z + z );
+    }
 }
