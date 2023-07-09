@@ -2,21 +2,26 @@ package org.runejs;
 
 import org.runejs.client.RSString;
 import org.runejs.client.language.Native;
+import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.math.BigInteger;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Configuration {
 
 
     public static void read() {
+        final String packagedPath = System.getProperty("user.home") + File.separator + "client-435.conf.yaml";
+        final File configFile = new File(packagedPath);
         try {
             final Yaml yaml = new Yaml();
-            final String packagedPath = System.getProperty("user.home") + File.separator + "client-435.conf.yaml";
-            final FileInputStream inputStream = new FileInputStream(new File(packagedPath));
+            final FileInputStream inputStream = new FileInputStream(configFile);
+
             final Map<String, Object> obj = yaml.load(inputStream);
 
             final Map<String, Object> net = (Map<String, Object>) obj.get("net");
@@ -52,6 +57,47 @@ public class Configuration {
 
         } catch (Exception e) {
             System.out.println("Unable to load client config - using defaults.");
+            Map<String, Object> net = new HashMap<String, Object>();
+
+            net.put("address", SERVER_ADDRESS);
+            net.put("game_port", GAME_PORT);
+
+            Map<String, Object> cache = new HashMap<String, Object>();
+            cache.put("cacheDir", GAME_PORT);
+
+            Map<String, Object> rsa = new HashMap<String, Object>();
+            rsa.put("rsaPub", RSA_PUBLIC_KEY);
+            rsa.put("rsaModulus", RSA_MODULUS);
+
+            Map<String, Object> login = new HashMap<String, Object>();
+            login.put("useStaticCredentials", USE_STATIC_DETAILS);
+            login.put("username", USERNAME);
+            login.put("password", PASSWORD);
+
+            Map<String, Object> game = new HashMap<String, Object>();
+            game.put("roofsEnabled", ROOFS_ENABLED);
+            game.put("freeTeleports", FREE_TELEPORTS);
+            game.put("debugContextMenu", DEBUG_CONTEXT);
+
+
+            Map<String, Object> clientConfig = new HashMap<String, Object>();
+            clientConfig.put("serverDisplayName", SERVER_DISPLAY_NAME);
+            clientConfig.put("net", net);
+            clientConfig.put("cache", cache);
+            clientConfig.put("rsa", rsa);
+            clientConfig.put("login", login);
+            clientConfig.put("game", game);
+            final DumperOptions options = new DumperOptions();
+            options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+            options.setPrettyFlow(true);
+            Yaml yaml = new Yaml(options);
+            try {
+                FileWriter writer = new FileWriter(configFile);
+                yaml.dump(clientConfig, writer);
+            } catch (Exception writeExeption) {
+                System.out.println("Failed to write default configuration to disk.");
+
+            }
         }
     }
 
