@@ -801,44 +801,36 @@ public class Main extends GameShell {
         ItemDefinition.method749(false);
         MovedStatics.method335();
         MovedStatics.method1000();
-//        if(!Player.cutsceneActive) {
-//            int i = Main.camera.getPitch();
-//            if(SceneCamera.cameraTerrainMinScaledPitch / 256 > i) {
-//                i = SceneCamera.cameraTerrainMinScaledPitch / 256;
-//            }
+
+        // TODO (james) handle terrain min pitch
+        // TODO (james) handle pitch jitter
 //            if(SceneCamera.customCameraActive[4] && 128 + SceneCamera.customCameraAmplitude[4] > i) {
 //                i = 128 + SceneCamera.customCameraAmplitude[4];
 //            }
-//
-//            int zoom = Player.cutsceneActive ? 600 : Main.camera.getZoom();
-//
-//            SceneCamera.setCameraPosition(Main.camera.getOriginX(), Main.camera.getOriginY(), Main.camera.getOriginZ(), Main.camera.getYaw(), i, zoom);
-//        }
+
         int i;
         if(!Player.cutsceneActive) {
             i = Projectile.method764();
         } else {
             i = MovedStatics.method546();
         }
-        // TODO handle camera jitters on Main.getActiveCamera() instead
-        // TODO (James) finish this !!
-//        int i_1_ = SceneCamera.cameraX;
-//        int i_5_ = SceneCamera.cameraY;
-//        int i_3_ = SceneCamera.cameraZ;
+
+        Camera activeCamera = getActiveCamera();
+
         int i_2_ = Main.camera.getYaw();
         int i_4_ = Main.camera.getPitch();
         for(int i_6_ = 0; i_6_ < 5; i_6_++) {
             if(SceneCamera.customCameraActive[i_6_]) {
                 int i_7_ = (int) ((double) (SceneCamera.customCameraJitter[i_6_] * 2 + 1) * Math.random() - (double) SceneCamera.customCameraJitter[i_6_] + Math.sin((double) SceneCamera.customCameraTimer[i_6_] * ((double) SceneCamera.customCameraFrequency[i_6_] / 100.0)) * (double) SceneCamera.customCameraAmplitude[i_6_]);
-//                if(i_6_ == 1) {
-//                    SceneCamera.cameraZ += i_7_;
-//                }
-//                if(i_6_ == 0) {
-//                    SceneCamera.cameraX += i_7_;
-//                }
-//                if(i_6_ == 2) {
-//                    SceneCamera.cameraY += i_7_;
-//                }
+                if(i_6_ == 1) {
+                    activeCamera.setOffset(new Point3d(0, 0, i_7_));
+                }
+                if(i_6_ == 0) {
+                    activeCamera.setOffset(new Point3d(i_7_, 0, 0));
+                }
+                if(i_6_ == 2) {
+                    activeCamera.setOffset(new Point3d(0, i_7_, 0));
+                }
                 if(i_6_ == 4) {
                     Main.camera.setPitch(Main.camera.getPitch() + i_7_);
                 }
@@ -854,7 +846,7 @@ public class Main extends GameShell {
         Model.resourceCount = 0;
         Rasterizer.resetPixels();
 
-        Npc.currentScene.render(getActiveCamera(), i);
+        Npc.currentScene.render(activeCamera, i);
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404();
         MovedStatics.method450();
@@ -881,10 +873,7 @@ public class Main extends GameShell {
         }
 
         Player.drawGameScreenGraphics();
-//        SceneCamera.cameraX = i_1_;
-//        SceneCamera.cameraY = i_5_;
         Main.camera.rotate(i_2_, i_4_);
-//        SceneCamera.cameraZ = i_3_;
     }
 
     public static Camera getActiveCamera() {

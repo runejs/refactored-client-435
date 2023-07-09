@@ -3,7 +3,7 @@ package org.runejs.client.scene.camera;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.scene.Point3d;
 
-public class SphericalCamera extends GameCamera implements Camera {
+public class SphericalCamera extends GameCamera {
     /**
      * The camera's current origin X coordinate.
      *
@@ -28,7 +28,7 @@ public class SphericalCamera extends GameCamera implements Camera {
 
     @Override
     public Point3d getPosition() {
-        return this.cartesian;
+        return this.cartesian.add(this.offset);
     }
 
     @Override
