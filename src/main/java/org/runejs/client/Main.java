@@ -804,10 +804,12 @@ public class Main extends GameShell {
         MovedStatics.method1000();
 
         // TODO (james) handle terrain min pitch
-        // TODO (james) handle pitch jitter
-//            if(SceneCamera.customCameraActive[4] && 128 + SceneCamera.customCameraAmplitude[4] > i) {
-//                i = 128 + SceneCamera.customCameraAmplitude[4];
-//            }
+
+        if (!Player.cutsceneActive) {
+            if(SceneCamera.customCameraActive[4] && 128 + SceneCamera.customCameraAmplitude[4] > Main.camera.getPitch()) {
+                Main.camera.setPitch(128 + SceneCamera.customCameraAmplitude[4]);
+            }
+        }
 
         int i;
         if(!Player.cutsceneActive) {
