@@ -1228,12 +1228,12 @@ public class Main extends GameShell {
                 SceneCamera.cameraYaw &= 0x7ff;
             }
             if(i_9_ > SceneCamera.cameraPitch) {
-                SceneCamera.cameraPitch += SceneCamera.cutscene.rotationBaseAdjust + SceneCamera.cutscene.rotationScaleAdjust * (i_9_ - SceneCamera.cameraVerticalRotation) / 1000;
+                SceneCamera.cameraPitch += SceneCamera.cutscene.rotationBaseAdjust + SceneCamera.cutscene.rotationScaleAdjust * (i_9_ - SceneCamera.cameraPitch) / 1000;
                 if(SceneCamera.cameraPitch > i_9_)
                     SceneCamera.cameraPitch = i_9_;
             }
             if(SceneCamera.cameraPitch > i_9_) {
-                SceneCamera.cameraPitch -= SceneCamera.cutscene.rotationScaleAdjust * (SceneCamera.cameraVerticalRotation + -i_9_) / 1000 + SceneCamera.cutscene.rotationBaseAdjust;
+                SceneCamera.cameraPitch -= SceneCamera.cutscene.rotationScaleAdjust * (SceneCamera.cameraPitch + -i_9_) / 1000 + SceneCamera.cutscene.rotationBaseAdjust;
                 if(SceneCamera.cameraPitch < i_9_)
                     SceneCamera.cameraPitch = i_9_;
             }
