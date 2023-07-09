@@ -398,7 +398,7 @@ public class ScreenController {
                     minimapClickY,
                     0, // current minimap zoom randomisation
                     0, // current minimap rotation randomisation
-                    Main.camera.getYaw(),
+                    Main.playerCamera.getYaw(),
                     Player.localPlayer.worldX,
                     Player.localPlayer.worldY,
                     Pathfinding.arbitraryDestination == 1,

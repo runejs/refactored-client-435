@@ -70,14 +70,21 @@ public class Main extends GameShell {
      */
     public static final MessageHandlerRegistry handlerRegistry = new RS435HandlerRegistry();
 
-    public static final SphericalCamera camera = new SphericalCamera();
+    /**
+     * The main camera, orbiting on a sphere around the player.
+     */
+    public static final SphericalCamera playerCamera = new SphericalCamera();
+
+    /**
+     * A customisable cutscene camera.
+     */
     public static final CutsceneCamera cutsceneCamera = new CutsceneCamera();
 
     /**
      * Minimap rotation is always based on game camera
      */
     public static int getMinimapRotation() {
-        return camera.getRotation().yaw;
+        return playerCamera.getRotation().yaw;
     }
 
     public static int anInt1756 = 0;
@@ -742,7 +749,7 @@ public class Main extends GameShell {
         SoundSystem.reset();
         widgetSelected = 0;
         // TODO is this necessary? or should it be removed alongside other randomisation
-        Main.camera.setYaw(0x7ff & -10 + (int) (20.0 * Math.random()));
+        Main.playerCamera.setYaw(0x7ff & -10 + (int) (20.0 * Math.random()));
         MovedStatics.minimapState = 0;
         Player.localPlayerCount = 0;
         Class55.destinationY = 0;
@@ -802,16 +809,17 @@ public class Main extends GameShell {
         ItemDefinition.method749(false);
         MovedStatics.method335();
         MovedStatics.method1000();
-        if (!Player.cutsceneActive) {
-            int pitch = Main.camera.getPitch();
+        if(!Player.cutsceneActive) {
+            int pitch = Main.playerCamera.getPitch();
             if(SceneCamera.cameraTerrainMinScaledPitch / 256 > pitch) {
                 pitch = SceneCamera.cameraTerrainMinScaledPitch / 256;
             }
+
             if(SceneCamera.customCameraActive[4] && 128 + SceneCamera.customCameraAmplitude[4] > pitch) {
                 pitch = 128 + SceneCamera.customCameraAmplitude[4];
             }
 
-            Main.camera.setPitch(pitch);
+            Main.playerCamera.setPitch(pitch);
         }
 
         int i;
@@ -886,8 +894,11 @@ public class Main extends GameShell {
         Player.drawGameScreenGraphics();
     }
 
+    /**
+     * Get the currently active camera.
+     */
     public static Camera getActiveCamera() {
-        return Player.cutsceneActive ? Main.cutsceneCamera : Main.camera;
+        return Player.cutsceneActive ? Main.cutsceneCamera : Main.playerCamera;
     }
 
     public static void method357(CacheArchive arg0, CacheArchive arg2) {
@@ -1399,8 +1410,8 @@ public class Main extends GameShell {
                     InteractiveObject.anInt487 = 20;
                     MovedStatics.aBoolean565 = false;
                     SceneCluster.packetBuffer.putPacket(58);
-                    SceneCluster.packetBuffer.putShortBE(Main.camera.getYaw());
-                    SceneCluster.packetBuffer.putShortBE(Main.camera.getPitch());
+                    SceneCluster.packetBuffer.putShortBE(Main.playerCamera.getYaw());
+                    SceneCluster.packetBuffer.putShortBE(Main.playerCamera.getPitch());
                 }
                 if(MovedStatics.aBoolean571 && !Class35.aBoolean1735) {
                     Class35.aBoolean1735 = true;

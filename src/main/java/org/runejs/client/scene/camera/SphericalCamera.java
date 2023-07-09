@@ -3,6 +3,9 @@ package org.runejs.client.scene.camera;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.scene.Point3d;
 
+/**
+ * A camera which orbits around a sphere centered at a given origin.
+ */
 public class SphericalCamera extends GameCamera {
     /**
      * The camera's current origin X coordinate.

@@ -270,8 +270,8 @@ public class Projectile extends Renderable {
             return Player.worldLevel;
         }
         int i = 3;
-        if(Main.camera.getPitch() < 310) {
-            Point3d cameraPos = Main.camera.getPosition();
+        if(Main.playerCamera.getPitch() < 310) {
+            Point3d cameraPos = Main.playerCamera.getPosition();
             int i_22_ = cameraPos.y >> 7;
             int i_23_ = cameraPos.x >> 7;
             if(i_22_ > 103) {
