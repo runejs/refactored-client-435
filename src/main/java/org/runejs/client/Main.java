@@ -32,6 +32,7 @@ import org.runejs.client.net.codec.MessagePacketCodec;
 import org.runejs.client.net.codec.runejs435.RuneJS435PacketCodec;
 import org.runejs.client.scene.*;
 import org.runejs.client.scene.camera.Camera;
+import org.runejs.client.scene.camera.CameraRotation;
 import org.runejs.client.scene.camera.CutsceneCamera;
 import org.runejs.client.scene.camera.SphericalCamera;
 import org.runejs.client.scene.util.CollisionMap;
@@ -817,33 +818,32 @@ public class Main extends GameShell {
 
         Camera activeCamera = getActiveCamera();
 
-        int i_2_ = Main.camera.getYaw();
-        int i_4_ = Main.camera.getPitch();
-
-        Point3d shakeOffset = new Point3d(0, 0, 0);
+        Point3d shakeOffsetPosition = new Point3d(0, 0, 0);
+        CameraRotation shakeOffsetRotation = new CameraRotation(0, 0);
 
         for(int i_6_ = 0; i_6_ < 5; i_6_++) {
             if(SceneCamera.customCameraActive[i_6_]) {
                 int i_7_ = (int) ((double) (SceneCamera.customCameraJitter[i_6_] * 2 + 1) * Math.random() - (double) SceneCamera.customCameraJitter[i_6_] + Math.sin((double) SceneCamera.customCameraTimer[i_6_] * ((double) SceneCamera.customCameraFrequency[i_6_] / 100.0)) * (double) SceneCamera.customCameraAmplitude[i_6_]);
                 if(i_6_ == 1) {
-                    shakeOffset.addZ(i_7_);
+                    shakeOffsetPosition = shakeOffsetPosition.addZ(i_7_);
                 }
                 if(i_6_ == 0) {
-                    shakeOffset.addX(i_7_);
+                    shakeOffsetPosition = shakeOffsetPosition.addX(i_7_);
                 }
                 if(i_6_ == 2) {
-                    shakeOffset.addY(i_7_);
+                    shakeOffsetPosition = shakeOffsetPosition.addY(i_7_);
                 }
                 if(i_6_ == 4) {
-                    Main.camera.setPitch(Main.camera.getPitch() + i_7_);
+                    shakeOffsetRotation = shakeOffsetRotation.addPitch(i_7_);
                 }
                 if(i_6_ == 3) {
-                    Main.camera.setYaw(0x7ff & i_7_ + Main.camera.getYaw());
+                    shakeOffsetRotation = shakeOffsetRotation.addYaw(i_7_);
                 }
             }
         }
 
-        activeCamera.setOffsetPosition(shakeOffset);
+        activeCamera.setOffsetPosition(shakeOffsetPosition);
+        activeCamera.setOffsetRotation(shakeOffsetRotation);
 
         Class65.method1018();
         Model.cursorY = Landscape.mouseY - 4;
@@ -879,7 +879,6 @@ public class Main extends GameShell {
         }
 
         Player.drawGameScreenGraphics();
-        Main.camera.rotate(i_2_, i_4_);
     }
 
     public static Camera getActiveCamera() {
