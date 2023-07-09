@@ -9,8 +9,8 @@ import org.runejs.client.media.renderable.Model;
  */
 public class SceneCamera {
     public static CutsceneCamera cutscene = new CutsceneCamera();
-    public static int cameraHorizontalRotation;
-    public static int cameraVerticalRotation;
+    public static int cameraYaw = 0;
+    public static int cameraPitch = 128;
     public static int cameraZoom = 600;
     public static int cameraX;
     public static int cameraY;
@@ -30,13 +30,21 @@ public class SceneCamera {
     public static int cameraVelocityPitch = 0;
     public static int cameraVelocityZoom = 0;
 
-    // positions that the camera is moving "towards" - why are these calculated separately and not just immediately applied?
+    /**
+     * The camera's current origin X coordinate.
+     *
+     * This is generally the player's position in the Scene, but it is dampened slightly
+     * and not attached directly to the player.
+     */
+    public static int cameraOriginX;
 
-
-    public static int cameraTargetX;
-    public static int cameraTargetY;
-    public static int cameraTargetYaw = 0;
-    public static int cameraTargetPitch = 128;
+    /**
+     * The camera's current origin Y coordinate.
+     *
+     * This is generally the player's position in the Scene, but it is dampened slightly
+     * and not attached directly to the player.
+     */
+    public static int cameraOriginY;
 
     // camera effects, jitter etc
 
@@ -47,15 +55,15 @@ public class SceneCamera {
     public static int[] customCameraFrequency = new int[5];
     public static int[] customCameraAmplitude = new int[5];
 
-    public static void setCameraPosition(int pitch, int x, int z, int yaw, int y, int ___pitch, int arg6) {
-        cameraHorizontalRotation = yaw;
-        cameraVerticalRotation = pitch;
+    public static void setCameraPosition(int originX, int originY, int originZ, int yaw, int pitch, int zoom) {
+        cameraYaw = yaw;
+        cameraPitch = pitch;
 
         int xOffset = 0;
         int yawDifference = 0x7ff & -yaw + 2048;
         int zOffset = 0;
         int pitchDifference = 2048 - pitch & 0x7ff;
-        int yOffset = arg6 + pitch * 3;
+        int yOffset = zoom + pitch * 3;
         if(pitchDifference != 0) {
             int cosine = Model.COSINE[pitchDifference];
             int sine = Model.SINE[pitchDifference];
@@ -71,9 +79,9 @@ public class SceneCamera {
             xOffset = temp;
         }
 
-        cameraX = -xOffset + x;
-        cameraY = y + -yOffset;
-        cameraZ = -zOffset + z;
+        cameraX = -xOffset + originX;
+        cameraY = originY + -yOffset;
+        cameraZ = -zOffset + originZ;
     }
 
     /**
@@ -91,5 +99,17 @@ public class SceneCamera {
             cameraTerrainMinScaledPitch += (-cameraTerrainMinScaledPitch + i_9_) / 24;
         } else if (cameraTerrainMinScaledPitch > i_9_)
             cameraTerrainMinScaledPitch += (-cameraTerrainMinScaledPitch + i_9_) / 80;
+    }
+
+    public static int getClampedPitch(int pitch) {
+        if (pitch < 128)
+            return 128;
+        if (pitch > 383)
+            return 383;
+        return pitch;
+    }
+
+    public static void clampPitch() {
+        cameraPitch = getClampedPitch(cameraPitch);
     }
 }
