@@ -186,6 +186,7 @@ public class Class60 {
             if(MusicSystem.musicVolume == 0) {
                 newVolume = 255;
             }
+
             if(MusicSystem.musicVolume != 0 || MusicSystem.currentSongId == -1) {
                 if(newVolume == 0) {
                     MusicSystem.method402(false);
@@ -200,6 +201,8 @@ public class Class60 {
             }
 
             MusicSystem.musicVolume = newVolume;
+            Configuration.setSoundMuted(newVolume == 0);
+
         }
 
         if(Class51.gameStatusCode == 10) {
