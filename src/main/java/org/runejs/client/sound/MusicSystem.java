@@ -1,5 +1,6 @@
 package org.runejs.client.sound;
 
+import org.runejs.Configuration;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.node.NodeCache;
@@ -7,7 +8,7 @@ import org.runejs.client.node.NodeCache;
 public class MusicSystem {
 
 	public static int currentSongId = -1;
-	public static int musicVolume = 255;
+	public static int musicVolume = Configuration.isSoundMuted() ? 0 : 255;
 	public static int songTimeout = 0;
 	
 

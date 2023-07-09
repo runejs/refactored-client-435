@@ -13,11 +13,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Configuration {
+    static final String clientConfigPath = System.getProperty("user.home") + File.separator + "client-435.conf.yaml";
 
 
     public static void read() {
-        final String packagedPath = System.getProperty("user.home") + File.separator + "client-435.conf.yaml";
-        final File configFile = new File(packagedPath);
+        final File configFile = new File(clientConfigPath);
         try {
             final Yaml yaml = new Yaml();
             final FileInputStream inputStream = new FileInputStream(configFile);
@@ -39,6 +39,7 @@ public class Configuration {
             USERNAME = (String) login.get("username");
             PASSWORD = (String) login.get("password");
             ROOFS_ENABLED = (boolean) game.get("roofsEnabled");
+            SOUND_MUTED = (boolean) game.get("soundMuted");
             FREE_TELEPORTS = (boolean) game.get("freeTeleports");
             DEBUG_CONTEXT = (boolean) game.get("debugContextMenu");
             SERVER_DISPLAY_NAME = (String) obj.get("serverDisplayName");
@@ -78,6 +79,7 @@ public class Configuration {
             game.put("roofsEnabled", ROOFS_ENABLED);
             game.put("freeTeleports", FREE_TELEPORTS);
             game.put("debugContextMenu", DEBUG_CONTEXT);
+            game.put("soundMuted", SOUND_MUTED);
 
 
             Map<String, Object> clientConfig = new HashMap<String, Object>();
@@ -189,6 +191,37 @@ public class Configuration {
      */
     public static boolean DEBUG_WIDGETS = false;
 
+    /**
+     * Should music be muted, overridden when logged in
+     */
+    private static boolean SOUND_MUTED = true;
+
+    public static boolean isSoundMuted() {
+        return SOUND_MUTED;
+    }
+
+    public static void setSoundMuted(boolean soundMuted) {
+        SOUND_MUTED = soundMuted;
+        final File configFile = new File(clientConfigPath);
+        final DumperOptions options = new DumperOptions();
+        options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+        options.setPrettyFlow(true);
+        final Yaml yaml = new Yaml(options);
+        try {
+            final FileInputStream inputStream = new FileInputStream(configFile);
+            final Map<String, Object> obj = yaml.load(inputStream);
+            final Map<String, Object> game = (Map<String, Object>) obj.get("game");
+            game.put("soundMuted", SOUND_MUTED);
+            obj.put("game",game);
+            FileWriter writer = new FileWriter(configFile);
+            yaml.dump(obj, writer);
+
+        } catch (Exception e) {
+            System.out.println("Could not write client config.");
+        }
+
+
+    }
 
     public static RSString getUsername() {
         if(USE_STATIC_DETAILS) {

@@ -1757,29 +1757,30 @@ public class MovedStatics {
 	                clearScreen = true;
 	            }
 	            if(varPlayerType == 3) {
-	                int i_22_ = 0;
+	                int newMusicVolume = 0;
 	                if(varPlayerValue == 0)
-	                    i_22_ = 255;
+	                    newMusicVolume = 255;
 	                if(varPlayerValue == 1)
-	                    i_22_ = 192;
+	                    newMusicVolume = 192;
 	                if(varPlayerValue == 2)
-	                    i_22_ = 128;
+	                    newMusicVolume = 128;
 	                if(varPlayerValue == 3)
-	                    i_22_ = 64;
+	                    newMusicVolume = 64;
 	                if(varPlayerValue == 4)
-	                    i_22_ = 0;
-	                if(i_22_ != MusicSystem.musicVolume) {
+	                    newMusicVolume = 0;
+	                if(newMusicVolume != MusicSystem.musicVolume) {
 	                    if(MusicSystem.musicVolume != 0 || MusicSystem.currentSongId == -1) {
-	                        if(i_22_ == 0) {
+	                        if(newMusicVolume == 0) {
 	                            MusicSystem.method402(false);
 	                            MusicSystem.songTimeout = 0;
 	                        } else
-	                            MusicSystem.method456(i_22_);
+	                            MusicSystem.method456(newMusicVolume);
 	                    } else {
-	                        MusicSystem.playMusicTrack(false, 0, MusicSystem.currentSongId, i_22_, 0, CacheArchive.musicCacheArchive);
+	                        MusicSystem.playMusicTrack(false, 0, MusicSystem.currentSongId, newMusicVolume, 0, CacheArchive.musicCacheArchive);
 	                        MusicSystem.songTimeout = 0;
 	                    }
-	                    MusicSystem.musicVolume = i_22_;
+	                    MusicSystem.musicVolume = newMusicVolume;
+                        Configuration.setSoundMuted(newMusicVolume == 0);
 	                }
 	            }
 	            if(varPlayerType == 9)
