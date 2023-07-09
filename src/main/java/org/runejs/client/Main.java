@@ -731,7 +731,7 @@ public class Main extends GameShell {
         Player.npcCount = 0;
         SoundSystem.reset();
         widgetSelected = 0;
-        SceneCamera.cameraTargetYaw = 0x7ff & -10 + (int) (20.0 * Math.random());
+        SceneCamera.cameraYaw = 0x7ff & -10 + (int) (20.0 * Math.random());
         MovedStatics.minimapState = 0;
         Player.localPlayerCount = 0;
         Class55.destinationY = 0;
@@ -792,18 +792,18 @@ public class Main extends GameShell {
         MovedStatics.method335();
         MovedStatics.method1000();
         if(!Player.cutsceneActive) {
-            int i = SceneCamera.cameraTargetPitch;
+            int i = SceneCamera.cameraPitch;
             if(SceneCamera.cameraTerrainMinScaledPitch / 256 > i) {
                 i = SceneCamera.cameraTerrainMinScaledPitch / 256;
             }
-            int i_0_ = 0x7ff & SceneCamera.cameraTargetYaw;
             if(SceneCamera.customCameraActive[4] && 128 + SceneCamera.customCameraAmplitude[4] > i) {
                 i = 128 + SceneCamera.customCameraAmplitude[4];
             }
 
             int zoom = Player.cutsceneActive ? 600 : SceneCamera.cameraZoom;
+            int cameraOriginZ = Class37.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY) - 50;
 
-            SceneCamera.setCameraPosition(i, SceneCamera.cameraTargetX, -50 + Class37.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY), i_0_, SceneCamera.cameraTargetY, -1, zoom);
+            SceneCamera.setCameraPosition(SceneCamera.cameraOriginX, SceneCamera.cameraOriginY, cameraOriginZ, SceneCamera.cameraYaw, i, zoom);
         }
         int i;
         if(!Player.cutsceneActive) {
@@ -812,9 +812,9 @@ public class Main extends GameShell {
             i = MovedStatics.method546();
         }
         int i_1_ = SceneCamera.cameraX;
-        int i_2_ = SceneCamera.cameraHorizontalRotation;
+        int i_2_ = SceneCamera.cameraYaw;
         int i_3_ = SceneCamera.cameraZ;
-        int i_4_ = SceneCamera.cameraVerticalRotation;
+        int i_4_ = SceneCamera.cameraPitch;
         int i_5_ = SceneCamera.cameraY;
         for(int i_6_ = 0; i_6_ < 5; i_6_++) {
             if(SceneCamera.customCameraActive[i_6_]) {
@@ -829,16 +829,11 @@ public class Main extends GameShell {
                     SceneCamera.cameraY += i_7_;
                 }
                 if(i_6_ == 4) {
-                    SceneCamera.cameraVerticalRotation += i_7_;
-                    if(SceneCamera.cameraVerticalRotation < 128) {
-                        SceneCamera.cameraVerticalRotation = 128;
-                    }
-                    if(SceneCamera.cameraVerticalRotation > 383) {
-                        SceneCamera.cameraVerticalRotation = 383;
-                    }
+                    SceneCamera.cameraPitch += i_7_;
+                    SceneCamera.clampPitch();
                 }
                 if(i_6_ == 3) {
-                    SceneCamera.cameraHorizontalRotation = 0x7ff & i_7_ + SceneCamera.cameraHorizontalRotation;
+                    SceneCamera.cameraYaw = 0x7ff & i_7_ + SceneCamera.cameraYaw;
                 }
             }
         }
@@ -848,7 +843,7 @@ public class Main extends GameShell {
         Model.cursorX = Class13.mouseX - 4;
         Model.resourceCount = 0;
         Rasterizer.resetPixels();
-        Npc.currentScene.render(SceneCamera.cameraX, SceneCamera.cameraZ, SceneCamera.cameraY, SceneCamera.cameraVerticalRotation, SceneCamera.cameraHorizontalRotation, i);
+        Npc.currentScene.render(SceneCamera.cameraX, SceneCamera.cameraY, SceneCamera.cameraZ, SceneCamera.cameraYaw, SceneCamera.cameraPitch, i);
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.method404();
         MovedStatics.method450();
@@ -877,8 +872,8 @@ public class Main extends GameShell {
         Player.drawGameScreenGraphics();
         SceneCamera.cameraX = i_1_;
         SceneCamera.cameraY = i_5_;
-        SceneCamera.cameraHorizontalRotation = i_2_;
-        SceneCamera.cameraVerticalRotation = i_4_;
+        SceneCamera.cameraYaw = i_2_;
+        SceneCamera.cameraPitch = i_4_;
         SceneCamera.cameraZ = i_3_;
     }
 
@@ -1214,42 +1209,41 @@ public class Main extends GameShell {
         int i_7_ = i_3_ - SceneCamera.cameraX;
         int i_8_ = (int) Math.sqrt((double) (i_7_ * i_7_ + i_6_ * i_6_));
         int i_9_ = 0x7ff & (int) (Math.atan2((double) i_5_, (double) i_8_) * 325.949);
-        if(i_9_ < 128)
-            i_9_ = 128;
+
+        i_9_ = SceneCamera.getClampedPitch(i_9_);
+
         int i_10_ = 0x7ff & (int) (-325.949 * Math.atan2((double) i_7_, (double) i_6_));
-        if(i_9_ > 383)
-            i_9_ = 383;
-        int i_11_ = -SceneCamera.cameraHorizontalRotation + i_10_;
+        int i_11_ = -SceneCamera.cameraYaw + i_10_;
         if(i_11_ > 1024)
             i_11_ -= 2048;
         if(i_11_ < -1024)
             i_11_ += 2048;
         if(i_11_ > 0) {
-            SceneCamera.cameraHorizontalRotation += MovedStatics.cutsceneCameraRotationScaleAdjust * i_11_ / 1000 + Class60.cutsceneCameraRotationBaseAdjust;
-            SceneCamera.cameraHorizontalRotation &= 0x7ff;
+            SceneCamera.cameraYaw += MovedStatics.cutsceneCameraRotationScaleAdjust * i_11_ / 1000 + Class60.cutsceneCameraRotationBaseAdjust;
+            SceneCamera.cameraYaw &= 0x7ff;
         }
         if(true) {
             if(i_11_ < 0) {
-                SceneCamera.cameraHorizontalRotation -= Class60.cutsceneCameraRotationBaseAdjust + MovedStatics.cutsceneCameraRotationScaleAdjust * -i_11_ / 1000;
-                SceneCamera.cameraHorizontalRotation &= 0x7ff;
+                SceneCamera.cameraYaw -= Class60.cutsceneCameraRotationBaseAdjust + MovedStatics.cutsceneCameraRotationScaleAdjust * -i_11_ / 1000;
+                SceneCamera.cameraYaw &= 0x7ff;
             }
-            if(i_9_ > SceneCamera.cameraVerticalRotation) {
-                SceneCamera.cameraVerticalRotation += Class60.cutsceneCameraRotationBaseAdjust + MovedStatics.cutsceneCameraRotationScaleAdjust * (i_9_ - SceneCamera.cameraVerticalRotation) / 1000;
-                if(SceneCamera.cameraVerticalRotation > i_9_)
-                    SceneCamera.cameraVerticalRotation = i_9_;
+            if(i_9_ > SceneCamera.cameraPitch) {
+                SceneCamera.cameraPitch += Class60.cutsceneCameraRotationBaseAdjust + MovedStatics.cutsceneCameraRotationScaleAdjust * (i_9_ - SceneCamera.cameraPitch) / 1000;
+                if(SceneCamera.cameraPitch > i_9_)
+                    SceneCamera.cameraPitch = i_9_;
             }
-            if(SceneCamera.cameraVerticalRotation > i_9_) {
-                SceneCamera.cameraVerticalRotation -= MovedStatics.cutsceneCameraRotationScaleAdjust * (SceneCamera.cameraVerticalRotation + -i_9_) / 1000 + Class60.cutsceneCameraRotationBaseAdjust;
-                if(SceneCamera.cameraVerticalRotation < i_9_)
-                    SceneCamera.cameraVerticalRotation = i_9_;
+            if(SceneCamera.cameraPitch > i_9_) {
+                SceneCamera.cameraPitch -= MovedStatics.cutsceneCameraRotationScaleAdjust * (SceneCamera.cameraPitch + -i_9_) / 1000 + Class60.cutsceneCameraRotationBaseAdjust;
+                if(SceneCamera.cameraPitch < i_9_)
+                    SceneCamera.cameraPitch = i_9_;
             }
-            int i_12_ = i_10_ + -SceneCamera.cameraHorizontalRotation;
+            int i_12_ = i_10_ + -SceneCamera.cameraYaw;
             if(i_12_ > 1024)
                 i_12_ -= 2048;
             if(i_12_ < -1024)
                 i_12_ += 2048;
             if(i_12_ < 0 && i_11_ > 0 || i_12_ > 0 && i_11_ < 0)
-                SceneCamera.cameraHorizontalRotation = i_10_;
+                SceneCamera.cameraYaw = i_10_;
         }
     }
 
@@ -1374,8 +1368,8 @@ public class Main extends GameShell {
                     InteractiveObject.anInt487 = 20;
                     MovedStatics.aBoolean565 = false;
                     SceneCluster.packetBuffer.putPacket(58);
-                    SceneCluster.packetBuffer.putShortBE(SceneCamera.cameraTargetYaw);
-                    SceneCluster.packetBuffer.putShortBE(SceneCamera.cameraTargetPitch);
+                    SceneCluster.packetBuffer.putShortBE(SceneCamera.cameraYaw);
+                    SceneCluster.packetBuffer.putShortBE(SceneCamera.cameraPitch);
                 }
                 if(MovedStatics.aBoolean571 && !Class35.aBoolean1735) {
                     Class35.aBoolean1735 = true;

@@ -316,7 +316,7 @@ public class Scene {
         }
     }
 
-    public void render(int cameraPosX, int arg1, int cameraPosY, int curveY, int curveX, int arg5) {
+    public void render(int cameraPosX, int cameraPosY, int cameraPosZ, int yaw, int pitch, int plane) {
         if (cameraPosX < 0) {
             cameraPosX = 0;
         } else if (cameraPosX >= mapSizeX * 128) {
@@ -328,17 +328,17 @@ public class Scene {
             cameraPosY = mapSizeY * 128 - 1;
         }
         cycle++;
-        curveSineY = Model.SINE[curveY];
-        curveCosineY = Model.COSINE[curveY];
-        curveSineX = Model.SINE[curveX];
-        curveCosineX = Model.COSINE[curveX];
-        TILE_VISIBILITY_MAP = TILE_VISIBILITY_MAPS[(curveY - 128) / 32][curveX / 64];
+        curveSineY = Model.SINE[pitch];
+        curveCosineY = Model.COSINE[pitch];
+        curveSineX = Model.SINE[yaw];
+        curveCosineX = Model.COSINE[yaw];
+        TILE_VISIBILITY_MAP = TILE_VISIBILITY_MAPS[(pitch - 128) / 32][yaw / 64];
         Scene.cameraPosX = cameraPosX;
-        cameraPosZ = arg1;
+        Scene.cameraPosZ = cameraPosZ;
         Scene.cameraPosY = cameraPosY;
         cameraPositionTileX = cameraPosX / 128;
         cameraPositionTileY = cameraPosY / 128;
-        anInt85 = arg5;
+        anInt85 = plane;
         currentPositionX = cameraPositionTileX - TILE_DRAW_DISTANCE;
         if (currentPositionX < 0) {
             currentPositionX = 0;
@@ -363,7 +363,7 @@ public class Scene {
                 for (int y = currentPositionY; y < mapBoundsY; y++) {
                     SceneTile sceneTile = sceneTiles[x][y];
                     if (sceneTile != null) {
-                        if (sceneTile.anInt2063 > arg5 || !TILE_VISIBILITY_MAP[x - cameraPositionTileX + TILE_DRAW_DISTANCE][y - cameraPositionTileY + TILE_DRAW_DISTANCE] && heightMap[z][x][y] - arg1 < 70000) {
+                        if (sceneTile.anInt2063 > plane || !TILE_VISIBILITY_MAP[x - cameraPositionTileX + TILE_DRAW_DISTANCE][y - cameraPositionTileY + TILE_DRAW_DISTANCE] && heightMap[z][x][y] - cameraPosZ < 70000) {
                             sceneTile.draw = false;
                             sceneTile.visible = false;
                             sceneTile.wallCullDirection = 0;
