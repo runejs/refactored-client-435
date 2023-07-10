@@ -874,6 +874,7 @@ public class Main extends GameShell {
         KeyFocusListener.draw3dScreen();
 
         DebugTools.drawWalkPath();
+        DebugTools.drawClipping();
 
         if(ScreenController.frameMode == ScreenMode.FIXED) {
             Console.console.drawConsole(512, 334);
