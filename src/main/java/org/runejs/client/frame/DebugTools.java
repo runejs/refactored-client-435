@@ -72,17 +72,20 @@ public class DebugTools {
             for (int y = Math.max(0, tileY - clippingRenderDistance); y < Math.min(104, tileY + clippingRenderDistance); y++) {
                 int data = Landscape.currentCollisionMap[Player.worldLevel].clippingData[x][y];
 
+                // center of tile to avoid needless projection calcs in next step
                 Point2d screenPos = MovedStatics.getProjectedScreenPosition(0, y * 128 + 64, x * 128 + 64);
 
                 if (screenPos == null) {
                     continue;
                 }
 
+                // ground-level points to indicate walkability
                 Point2d posSW = MovedStatics.getProjectedScreenPosition(0, y * 128, x * 128);
                 Point2d posNW = MovedStatics.getProjectedScreenPosition(0, y * 128 + 128, x * 128);
                 Point2d posSE = MovedStatics.getProjectedScreenPosition(0, y * 128, x * 128 + 128);
                 Point2d posNE = MovedStatics.getProjectedScreenPosition(0, y * 128 + 128, x * 128 + 128);
 
+                // mid-level points to indicate projectile shootability
                 Point2d posSWA = MovedStatics.getProjectedScreenPosition(100, y * 128, x * 128);
                 Point2d posNWA = MovedStatics.getProjectedScreenPosition(100, y * 128 + 128, x * 128);
                 Point2d posSEA = MovedStatics.getProjectedScreenPosition(100, y * 128, x * 128 + 128);
@@ -91,31 +94,31 @@ public class DebugTools {
                 int blockWalkColor = 0xFF0000;
                 int blockProjectileColor = 0x539FE9;
 
-                if ((data & 0x2) == 0x2) {
+                if ((data & 0x2) == 0x2) { // north
                     if (posNE != null && posNW != null) {
                         Rasterizer.drawDiagonalLine(posNE.x, posNE.y, posNW.x, posNW.y, blockWalkColor);
                     }
                 }
 
-                if ((data & 0x8) == 0x8) {
+                if ((data & 0x8) == 0x8) { // east
                     if (posSE != null && posNE != null) {
                         Rasterizer.drawDiagonalLine(posSE.x, posSE.y, posNE.x, posNE.y, blockWalkColor);
                     }
                 }
 
-                if ((data & 0x20) == 0x20) {
+                if ((data & 0x20) == 0x20) { // south
                     if (posSE != null && posSW != null) {
                         Rasterizer.drawDiagonalLine(posSE.x, posSE.y, posSW.x, posSW.y, blockWalkColor);
                     }
                 }
 
-                if ((data & 0x80) == 0x80) {
+                if ((data & 0x80) == 0x80) { // west
                     if (posSW != null && posNW != null) {
                         Rasterizer.drawDiagonalLine(posSW.x, posSW.y, posNW.x, posNW.y, blockWalkColor);
                     }
                 }
 
-                if ((data & 0x100) == 0x100) {
+                if ((data & 0x100) == 0x100) { // total block
                     if (posNE != null && posNW != null) {
                         Rasterizer.drawDiagonalLine(posNE.x, posNE.y, posNW.x, posNW.y, blockWalkColor);
                     }
@@ -130,7 +133,10 @@ public class DebugTools {
                     }
                 }
 
-                if ((data & 0x400) == 0x400) {
+                // below this are projectiles. these draw more lines than the ground-level ones,
+                // because there are vertical bars to join them to the ground
+
+                if ((data & 0x400) == 0x400) { // north (projectile)
                     if (posNEA != null && posNWA != null) {
                         Rasterizer.drawDiagonalLine(posNEA.x, posNEA.y, posNWA.x, posNWA.y, blockProjectileColor);
 
@@ -144,25 +150,25 @@ public class DebugTools {
                     }
                 }
 
-                if ((data & 0x1000) == 0x1000) {
+                if ((data & 0x1000) == 0x1000) { // east (projectile)
                     if (posSEA != null && posNEA != null) {
                         Rasterizer.drawDiagonalLine(posSEA.x, posSEA.y, posNEA.x, posNEA.y, blockProjectileColor);
                     }
                 }
 
-                if ((data & 0x4000) == 0x4000) {
+                if ((data & 0x4000) == 0x4000) { // south (projectile)
                     if (posSEA != null && posSWA != null) {
                         Rasterizer.drawDiagonalLine(posSEA.x, posSEA.y, posSWA.x, posSWA.y, blockProjectileColor);
                     }
                 }
 
-                if ((data & 0x8000) == 0x8000) {
+                if ((data & 0x10000) == 0x10000) { // west (projectile)
                     if (posSWA != null && posNWA != null) {
                         Rasterizer.drawDiagonalLine(posSWA.x, posSWA.y, posNWA.x, posNWA.y, blockProjectileColor);
                     }
                 }
 
-                if ((data & 0x20000) == 0x20000) {
+                if ((data & 0x20000) == 0x20000) { // total block (projectile)
                     if (posNEA != null && posNWA != null) {
                         Rasterizer.drawDiagonalLine(posNEA.x, posNEA.y, posNWA.x, posNWA.y, blockProjectileColor);
 
