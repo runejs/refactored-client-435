@@ -5,11 +5,12 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.scene.Point2d;
 
 public class DebugTools {
+    public static boolean walkpathEnabled = false;
     public static int[] walkpathX = null;
     public static int[] walkpathY = null;
 
     public static void drawWalkPath() {
-        if (walkpathX == null) {
+        if (!walkpathEnabled || walkpathX == null) {
             return;
         }
 

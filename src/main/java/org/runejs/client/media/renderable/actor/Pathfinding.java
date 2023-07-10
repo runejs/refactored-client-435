@@ -250,13 +250,15 @@ public class Pathfinding {
             int x = walkingQueueX[currentIndex];
             int y = walkingQueueY[currentIndex];
 
-            DebugTools.walkpathX = new int[maxPathSize + 1];
-            DebugTools.walkpathY = new int[maxPathSize + 1];
+            if (DebugTools.walkpathEnabled) {
+                DebugTools.walkpathX = new int[maxPathSize + 1];
+                DebugTools.walkpathY = new int[maxPathSize + 1];
 
-            DebugTools.walkpathX[0] = startX;
-            DebugTools.walkpathY[0] = startY;
-            DebugTools.walkpathX[1] = x;
-            DebugTools.walkpathY[1] = y;
+                DebugTools.walkpathX[0] = startX;
+                DebugTools.walkpathY[0] = startY;
+                DebugTools.walkpathX[1] = x;
+                DebugTools.walkpathY[1] = y;
+            }
 
             WalkOutboundMessage.WalkType walkType = WalkOutboundMessage.WalkType.TILE;
 
@@ -275,8 +277,11 @@ public class Pathfinding {
                 currentIndex--;
                 int stepX = walkingQueueX[currentIndex] - x;
                 int stepY = walkingQueueY[currentIndex] - y;
-                DebugTools.walkpathX[counter + 1] = walkingQueueX[currentIndex];
-                DebugTools.walkpathY[counter + 1] = walkingQueueY[currentIndex];
+
+                if (DebugTools.walkpathEnabled) {
+                    DebugTools.walkpathX[counter + 1] = walkingQueueX[currentIndex];
+                    DebugTools.walkpathY[counter + 1] = walkingQueueY[currentIndex];
+                }
 
                 steps.add(new WalkOutboundMessage.WalkStep(stepX, stepY));
             }
