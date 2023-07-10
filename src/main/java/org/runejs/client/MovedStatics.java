@@ -1949,52 +1949,58 @@ public class MovedStatics {
 
 	public static void method450() {
 	    if (Player.headIconDrawType == 2) {
-	        MovedStatics.method312(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -baseX << 7) + Landscape.anInt1170, 4976905);
+	        MovedStatics.getProjectedScreenPosition(2 * ActorDefinition.anInt2404, Class35.anInt1730 + (-Class26.baseY + anInt175 << 7), (ProducingGraphicsBuffer.anInt1637 + -baseX << 7) + Landscape.anInt1170);
 	        if (ISAAC.anInt522 > -1 && pulseCycle % 20 < 10)
 	            hintIconSprites[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
 	    }
 	}
 
-	public static void method312(int arg0, int arg1, int arg2, int arg3) {
-	    if(arg2 < 128 || arg1 < 128 || arg2 > 13056 || arg1 > 13056) {
-	        Class44.anInt1048 = -1;
-	        ISAAC.anInt522 = -1;
-	    } else {
-	        int i = Scene.getFloorDrawHeight(Player.worldLevel, arg2, arg1) + -arg0;
+    /**
+     * Project 3d pos to 3d
+     */
+    public static void getProjectedScreenPosition(int z, int y, int x) {
+        if (x < 128 || y < 128 || x > 13056 || y > 13056) {
+            Class44.anInt1048 = -1;
+            ISAAC.anInt522 = -1;
+            return;
+        }
 
-            Point3d cameraPos = Main.getActiveCamera().getPosition();
-            CameraRotation rotation = Main.getActiveCamera().getRotation();
+        int drawHeight = Scene.getFloorDrawHeight(Player.worldLevel, x, y) - z;
 
-	        arg1 -= cameraPos.y;
-	        i -= cameraPos.z;
-	        int i_1_ = Model.COSINE[rotation.pitch];
-	        int i_2_ = Model.SINE[rotation.pitch];
-	        arg2 -= cameraPos.x;
-	        int i_3_ = Model.SINE[rotation.yaw];
-	        int i_4_ = Model.COSINE[rotation.yaw];
-	        int i_5_ = arg1 * i_3_ + arg2 * i_4_ >> 16;
-	        arg1 = i_4_ * arg1 - arg2 * i_3_ >> 16;
-	        if(arg3 != 4976905)
-	            English.password = null;
-	        arg2 = i_5_;
-	        i_5_ = i * i_1_ - arg1 * i_2_ >> 16;
-	        arg1 = arg1 * i_1_ + i * i_2_ >> 16;
-	        i = i_5_;
-	        if(arg1 < 50) {
-	            Class44.anInt1048 = -1;
-	            ISAAC.anInt522 = -1;
-	        } else {
-	            if(ScreenController.frameMode == ScreenMode.FIXED){
-	                ISAAC.anInt522 = 256 + (arg2 << 9) / arg1;
-	                Class44.anInt1048 = (i << 9) / arg1 + 167;
-	            } else {
-	                ISAAC.anInt522 = ScreenController.drawWidth/2 + (arg2 << 9) / arg1;
-	                Class44.anInt1048 = (i << 9) / arg1 +  ScreenController.drawHeight/2;
-	            }
-	
-	        }
-	    }
-	}
+        Point3d cameraPos = Main.getActiveCamera().getPosition();
+        CameraRotation rotation = Main.getActiveCamera().getRotation();
+
+        x -= cameraPos.x;
+        y -= cameraPos.y;
+        drawHeight -= cameraPos.z;
+        int cosinePitch = Model.COSINE[rotation.pitch];
+        int sinePitch = Model.SINE[rotation.pitch];
+        int sineYaw = Model.SINE[rotation.yaw];
+        int cosineYaw = Model.COSINE[rotation.yaw];
+
+        // rotate x/y/z according to camera pos
+        int tmp = y * sineYaw + x * cosineYaw >> 16;
+        y = cosineYaw * y - x * sineYaw >> 16;
+        x = tmp;
+        tmp = drawHeight * cosinePitch - y * sinePitch >> 16;
+        y = y * cosinePitch + drawHeight * sinePitch >> 16;
+        drawHeight = tmp;
+
+        // statics to hold entity draw location
+        if (y < 50) {
+            Class44.anInt1048 = -1;
+            ISAAC.anInt522 = -1;
+        } else {
+            if (ScreenController.frameMode == ScreenMode.FIXED) {
+                ISAAC.anInt522 = 256 + (x << 9) / y;
+                Class44.anInt1048 = (drawHeight << 9) / y + 167;
+            } else {
+                ISAAC.anInt522 = ScreenController.drawWidth / 2 + (x << 9) / y;
+                Class44.anInt1048 = (drawHeight << 9) / y + ScreenController.drawHeight / 2;
+            }
+
+        }
+    }
 
 	public static void method313() {
 	    for(int i = -1; Player.localPlayerCount > i; i++) {
