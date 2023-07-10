@@ -58,7 +58,7 @@ public class SpotAnim extends Renderable {
         return lightness + (hsl & 0xff80);
     }
 
-    public static void method833(int arg0, boolean arg1) {
+    public static void renderPlayers(int arg0, boolean arg1) {
         if(Player.localPlayer.worldX >> 7 == MovedStatics.destinationX && Player.localPlayer.worldY >> 7 == Class55.destinationY)
             MovedStatics.destinationX = 0;
         int i = Player.localPlayerCount;

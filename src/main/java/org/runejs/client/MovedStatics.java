@@ -334,7 +334,7 @@ public class MovedStatics {
         }
     }
 
-    public static void method1000() {
+    public static void renderSpotAnims() {
         for (SpotAnim spotAnim = (SpotAnim) Class57.aLinkedList_1332.peekFirst(); spotAnim != null; spotAnim = (SpotAnim) Class57.aLinkedList_1332.pollFirst()) {
             if (Player.worldLevel == spotAnim.plane && !spotAnim.animationFinished) {
                 if (pulseCycle >= spotAnim.startCycle) {
@@ -435,7 +435,7 @@ public class MovedStatics {
         return PacketBuffer.method521(false, 10, arg0);
     }
 
-    public static void method335() {
+    public static void renderProjectiles() {
         Projectile projectile = (Projectile) Class43.projectileQueue.peekFirst();
         for (/**/; projectile != null; projectile = (Projectile) Class43.projectileQueue.pollFirst()) {
             if (Player.worldLevel == projectile.anInt2981 && pulseCycle <= projectile.endCycle) {

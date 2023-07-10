@@ -158,7 +158,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         return true;
     }
 
-    public static void method749(boolean arg0) {
+    public static void renderNPCs(boolean arg0) {
         for(int i = 0; Player.npcCount > i; i++) {
             Npc npc = Player.npcs[Player.npcIds[i]];
             int i_15_ = 536870912 + (Player.npcIds[i] << 14);
