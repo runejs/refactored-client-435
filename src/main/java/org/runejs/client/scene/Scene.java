@@ -2079,21 +2079,50 @@ public class Scene {
     }
 
     /**
-     * Get the floor height at a given x,y coordinate in 3d space
+     * Returns the floor height at a given x,y coordinate in 3D space.
+     * The calculation takes into account the surrounding tile heights and the specific position within a tile,
+     * performing a form of bilinear interpolation to determine the precise height.
+     *
+     * @param plane The current plane (or level) within the 3D space
+     * @param x The x coordinate in the 3D space
+     * @param y The y coordinate in the 3D space
+     * @param tileHeights A 3D array containing the heights of each tile
+     * @param tileFlags A 3D array containing the flags for each tile (e.g. whether it's a bridge)
+     * @return The height of the floor at the given x,y coordinate
      */
     public static int getFloorDrawHeight(int plane, int x, int y, int[][][] tileHeights, byte[][][] tileFlags) {
+        // Convert x and y into 'tile space' by dividing by 128 (right shifting by 7 bits)
         int groundX = x >> 7;
         int groundY = y >> 7;
+
+        // Check if the x and y values in 'tile space' are within the game world (0-103 inclusive)
         if(groundX < 0 || groundY < 0 || groundX > 103 || groundY > 103)
             return 0;
+
+        // Initialize groundZ as the given plane level
         int groundZ = plane;
-        if(groundZ < 3 && (tileFlags[1][groundX][groundY] & 0x2) == 2) // bridge tile
+
+        // If we're not on the top plane and we're on a bridge tile (indicated by the tile flag)
+        // then we increment the Z coordinate to take into account the bridge's height
+        if(groundZ < 3 && (tileFlags[1][groundX][groundY] & 0x2) == 2)
             groundZ++;
-        int _x = 0x7f & x;
-        int _y = y & 0x7f;
-        int i2 = (-_x + 128) * tileHeights[groundZ][groundX][groundY] + _x * tileHeights[groundZ][groundX + 1][groundY] >> 7;
-        int j2 = _x * tileHeights[groundZ][1 + groundX][1 + groundY] + tileHeights[groundZ][groundX][1 + groundY] * (128 + -_x) >> 7;
-        return (128 + -_y) * i2 + j2 * _y >> 7;
+
+        // Calculate the position within the tile on X-axis and Y-axis (range 0 to 127)
+        int tilePositionX = x & 0x7f;
+        int tilePositionY = y & 0x7f;
+
+        // Interpolate the height for the X-axis at Y position 'groundY' based on tile position X
+        // It's a weighted average between the height at groundX and groundX+1
+        int interpolatedHeightX1 = ((128 - tilePositionX) * tileHeights[groundZ][groundX][groundY] + tilePositionX * tileHeights[groundZ][groundX + 1][groundY]) >> 7;
+
+        // Interpolate the height for the X-axis at Y position 'groundY+1' based on tile position X
+        // Similar to above, but one step forward in the Y-axis
+        int interpolatedHeightX2 = (tilePositionX * tileHeights[groundZ][groundX + 1][groundY + 1] + tileHeights[groundZ][groundX][groundY + 1] * (128 - tilePositionX)) >> 7;
+
+        // Interpolate between the two interpolated X-axis heights, based on the tile position Y
+        // This results in a height that takes into account the position within the tile in both the X and Y directions
+        return ((128 - tilePositionY) * interpolatedHeightX1 + interpolatedHeightX2 * tilePositionY) >> 7;
+
     }
 
     public static int getFloorDrawHeight(int plane, int x, int y) {
