@@ -869,7 +869,7 @@ public class Main extends GameShell {
         Npc.currentScene.clearInteractiveObjectCache();
         Class33.draw2DActorAttachments();
         MovedStatics.drawPositionHintIcon();
-        ((Class35) Rasterizer3D.interface3).method425(MovedStatics.anInt199);
+        ((Class35) Rasterizer3D.interface3).animateTextures(MovedStatics.anInt199);
         KeyFocusListener.draw3dScreen();
 
         if(ScreenController.frameMode == ScreenMode.FIXED) {
