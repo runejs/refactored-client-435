@@ -100,63 +100,99 @@ public class Scene {
         initToNull();
     }
 
-    public static void method95(int arg1, int arg2, int width, int height, int[] arg0) {
+    /**
+     * Precomputes visibility information for the game world's tiles based on possible camera positions and orientations.
+     *
+     * This helps to quickly determine which tiles need to be rendered based on the camera's current position and orientation.
+     *
+     * It then interpolates this data, ensuring that the nearby tiles around visible tiles are also visible.
+     * This interpolation helps to prevent sudden changes in tile visiblity as the camera moves or rotates.
+     *
+     * @param minHeight The minimum height to check for visibility.
+     * @param maxHeight The maximum height to check for visibility.
+     * @param width The width of the viewport.
+     * @param height The height of the viewport.
+     * @param arg0 An array containing height values for each camera pitch angle.
+     */
+    public static void computeTileVisibilityMaps(int minHeight, int maxHeight, int width, int height, int[] arg0) {
         drawWidth = width;
         drawHeight = height;
         drawWidthMidpoint = width / 2;
         drawHeightMidpoint = height / 2;
-        boolean[][][][] bools = new boolean[9][32][(TILE_DRAW_DISTANCE * 2) + 3][(TILE_DRAW_DISTANCE * 2) + 3];
-        for (int i = 128; i <= 384; i += 32) {
-            for (int i_2_ = 0; i_2_ < 2048; i_2_ += 64) {
-                curveSineY = Model.SINE[i];
-                curveCosineY = Model.COSINE[i];
-                curveSineX = Model.SINE[i_2_];
-                curveCosineX = Model.COSINE[i_2_];
-                int i_3_ = (i - 128) / 32;
-                int i_4_ = i_2_ / 64;
-                for (int i_5_ = -26; i_5_ <= 26; i_5_++) {
-                    for (int i_6_ = -26; i_6_ <= 26; i_6_++) {
-                        int i_7_ = i_5_ * 128;
-                        int i_8_ = i_6_ * 128;
-                        boolean bool = false;
-                        for (int i_9_ = -arg1; i_9_ <= arg2; i_9_ += 128) {
-                            if (isPointVisibleOnScreen(i_7_, arg0[i_3_] + i_9_, i_8_)) {
-                                bool = true;
+
+        final int cameraAngles = 9;
+        final int rotationsPerCircle = 32;
+
+        boolean[][][][] visibilityMaps = new boolean[cameraAngles][rotationsPerCircle][(TILE_DRAW_DISTANCE * 2) + 3][(TILE_DRAW_DISTANCE * 2) + 3];
+
+        // Iterating over different camera pitch angles (from 128 to 384)
+        for (int pitch = 128; pitch <= 384; pitch += 32) {
+            // Iterating over different camera yaw angles (from 0 to 2048)
+            for (int yaw = 0; yaw < 2048; yaw += 64) {
+                curveSineY = Model.SINE[pitch];
+                curveCosineY = Model.COSINE[pitch];
+                curveSineX = Model.SINE[yaw];
+                curveCosineX = Model.COSINE[yaw];
+
+                int pitchIndex = (pitch - 128) / 32;
+                int yawIndex = yaw / 64;
+
+                // Iterating over different tile positions around the camera
+                for (int tileX = -26; tileX <= 26; tileX++) {
+                    for (int tileY = -26; tileY <= 26; tileY++) {
+                        int absoluteTileX = tileX * 128;
+                        int absoluteTileY = tileY * 128;
+                        boolean isVisible = false;
+
+                        // Checking visibility at different heights
+                        for (int h = -minHeight; h <= maxHeight; h += 128) {
+                            if (isPointVisibleOnScreen(absoluteTileX, arg0[pitchIndex] + h, absoluteTileY)) {
+                                isVisible = true;
                                 break;
                             }
                         }
-                        bools[i_3_][i_4_][i_5_ + TILE_DRAW_DISTANCE + 1][i_6_ + TILE_DRAW_DISTANCE + 1] = bool;
+                        visibilityMaps[pitchIndex][yawIndex][tileX + TILE_DRAW_DISTANCE + 1][tileY + TILE_DRAW_DISTANCE + 1] = isVisible;
                     }
                 }
             }
         }
-        for (int i = 0; i < 8; i++) {
-            for (int i_10_ = 0; i_10_ < 32; i_10_++) {
-                for (int i_11_ = -TILE_DRAW_DISTANCE; i_11_ < TILE_DRAW_DISTANCE; i_11_++) {
-                    for (int i_12_ = -TILE_DRAW_DISTANCE; i_12_ < TILE_DRAW_DISTANCE; i_12_++) {
-                        boolean bool = false;
-                        while_0_:
-                        for (int i_13_ = -1; i_13_ <= 1; i_13_++) {
-                            for (int i_14_ = -1; i_14_ <= 1; i_14_++) {
-                                if (bools[i][i_10_][i_11_ + i_13_ + TILE_DRAW_DISTANCE + 1][i_12_ + i_14_ + TILE_DRAW_DISTANCE + 1]) {
-                                    bool = true;
-                                    break while_0_;
+
+        // smooth out any gaps in the visibility maps by checking adjacent values
+        final int maxPitchIndex = 8;
+        final int maxYawIndex = 32;
+
+        for (int pitchIndex = 0; pitchIndex < maxPitchIndex; pitchIndex++) {
+            for (int yawIndex = 0; yawIndex < maxYawIndex; yawIndex++) {
+                for (int tileX = -TILE_DRAW_DISTANCE; tileX < TILE_DRAW_DISTANCE; tileX++) {
+                    for (int tileY = -TILE_DRAW_DISTANCE; tileY < TILE_DRAW_DISTANCE; tileY++) {
+                        boolean isVisible = false;
+
+                        checkVisibility:
+                        for (int xOffset = -1; xOffset <= 1; xOffset++) {
+                            for (int yOffset = -1; yOffset <= 1; yOffset++) {
+                                // Check visibility at the current pitch and yaw, adjusted by the offset
+                                if (visibilityMaps[pitchIndex][yawIndex][tileX + xOffset + TILE_DRAW_DISTANCE + 1][tileY + yOffset + TILE_DRAW_DISTANCE + 1]) {
+                                    isVisible = true;
+                                    break checkVisibility;
                                 }
-                                if (bools[i][(i_10_ + 1) % 31][i_11_ + i_13_ + TILE_DRAW_DISTANCE + 1][i_12_ + i_14_ + TILE_DRAW_DISTANCE + 1]) {
-                                    bool = true;
-                                    break while_0_;
+                                // Check visibility at the current pitch and next yaw, adjusted by the offset
+                                if (visibilityMaps[pitchIndex][(yawIndex + 1) % 31][tileX + xOffset + TILE_DRAW_DISTANCE + 1][tileY + yOffset + TILE_DRAW_DISTANCE + 1]) {
+                                    isVisible = true;
+                                    break checkVisibility;
                                 }
-                                if (bools[i + 1][i_10_][i_11_ + i_13_ + TILE_DRAW_DISTANCE + 1][i_12_ + i_14_ + TILE_DRAW_DISTANCE + 1]) {
-                                    bool = true;
-                                    break while_0_;
+                                // Check visibility at the next pitch and current yaw, adjusted by the offset
+                                if (visibilityMaps[pitchIndex + 1][yawIndex][tileX + xOffset + TILE_DRAW_DISTANCE + 1][tileY + yOffset + TILE_DRAW_DISTANCE + 1]) {
+                                    isVisible = true;
+                                    break checkVisibility;
                                 }
-                                if (bools[i + 1][(i_10_ + 1) % 31][i_11_ + i_13_ + TILE_DRAW_DISTANCE + 1][i_12_ + i_14_ + TILE_DRAW_DISTANCE + 1]) {
-                                    bool = true;
-                                    break while_0_;
+                                // Check visibility at the next pitch and next yaw, adjusted by the offset
+                                if (visibilityMaps[pitchIndex + 1][(yawIndex + 1) % 31][tileX + xOffset + TILE_DRAW_DISTANCE + 1][tileY + yOffset + TILE_DRAW_DISTANCE + 1]) {
+                                    isVisible = true;
+                                    break checkVisibility;
                                 }
                             }
                         }
-                        TILE_VISIBILITY_MAPS[i][i_10_][i_11_ + TILE_DRAW_DISTANCE][i_12_ + TILE_DRAW_DISTANCE] = bool;
+                        TILE_VISIBILITY_MAPS[pitchIndex][yawIndex][tileX + TILE_DRAW_DISTANCE][tileY + TILE_DRAW_DISTANCE] = isVisible;
                     }
                 }
             }
