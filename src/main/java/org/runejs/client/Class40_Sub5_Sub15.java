@@ -59,75 +59,75 @@ public class Class40_Sub5_Sub15 extends CachedNode {
         return false;
     }
 
-    public static void method736(boolean arg0, Actor arg1) {
-        arg1.aBoolean3105 = false;
-        if(arg1.anInt3077 != -1) {
-            AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(arg1.anInt3077);
+    public static void updateAnimation(Actor actor) {
+        actor.aBoolean3105 = false;
+        if(actor.anInt3077 != -1) {
+            AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(actor.anInt3077);
             if(animationSequence == null || animationSequence.frameIds == null)
-                arg1.anInt3077 = -1;
+                actor.anInt3077 = -1;
             else {
-                arg1.anInt3120++;
-                if(arg1.anInt3116 < animationSequence.frameIds.length && animationSequence.frameLengths[arg1.anInt3116] < arg1.anInt3120) {
-                    arg1.anInt3116++;
-                    arg1.anInt3120 = 1;
+                actor.anInt3120++;
+                if(actor.anInt3116 < animationSequence.frameIds.length && animationSequence.frameLengths[actor.anInt3116] < actor.anInt3120) {
+                    actor.anInt3116++;
+                    actor.anInt3120 = 1;
                 }
-                if(animationSequence.frameIds.length <= arg1.anInt3116) {
-                    arg1.anInt3116 = 0;
-                    arg1.anInt3120 = 0;
+                if(animationSequence.frameIds.length <= actor.anInt3116) {
+                    actor.anInt3116 = 0;
+                    actor.anInt3120 = 0;
                 }
             }
         }
-        if(arg1.graphicId != -1 && MovedStatics.pulseCycle >= arg1.graphicDelay) {
-            if(arg1.anInt3140 < 0)
-                arg1.anInt3140 = 0;
-            int i = SpotAnimDefinition.forId(arg1.graphicId).animationId;
+        if(actor.graphicId != -1 && MovedStatics.pulseCycle >= actor.graphicDelay) {
+            if(actor.anInt3140 < 0)
+                actor.anInt3140 = 0;
+            int i = SpotAnimDefinition.forId(actor.graphicId).animationId;
             if(i == -1)
-                arg1.graphicId = -1;
+                actor.graphicId = -1;
             else {
                 AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(i);
                 if(animationSequence == null || animationSequence.frameIds == null)
-                    arg1.graphicId = -1;
+                    actor.graphicId = -1;
                 else {
-                    arg1.anInt3129++;
-                    if(animationSequence.frameIds.length > arg1.anInt3140 && arg1.anInt3129 > animationSequence.frameLengths[arg1.anInt3140]) {
-                        arg1.anInt3129 = 1;
-                        arg1.anInt3140++;
+                    actor.anInt3129++;
+                    if(animationSequence.frameIds.length > actor.anInt3140 && actor.anInt3129 > animationSequence.frameLengths[actor.anInt3140]) {
+                        actor.anInt3129 = 1;
+                        actor.anInt3140++;
                     }
-                    if(animationSequence.frameIds.length <= arg1.anInt3140 && (arg1.anInt3140 < 0 || animationSequence.frameIds.length <= arg1.anInt3140))
-                        arg1.graphicId = -1;
+                    if(animationSequence.frameIds.length <= actor.anInt3140 && (actor.anInt3140 < 0 || animationSequence.frameIds.length <= actor.anInt3140))
+                        actor.graphicId = -1;
                 }
             }
         }
-        if(arg0) {
-            if(arg1.playingAnimation != -1 && arg1.playingAnimationDelay <= 1) {
-                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(arg1.playingAnimation);
-                if(animationSequence.precedenceAnimating == 1 && arg1.anInt3094 > 0 && arg1.anInt3112 <= MovedStatics.pulseCycle && MovedStatics.pulseCycle > arg1.anInt3107) {
-                    arg1.playingAnimationDelay = 1;
+        if(true) {
+            if(actor.playingAnimation != -1 && actor.playingAnimationDelay <= 1) {
+                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(actor.playingAnimation);
+                if(animationSequence.precedenceAnimating == 1 && actor.anInt3094 > 0 && actor.forceMoveEndCycle <= MovedStatics.pulseCycle && MovedStatics.pulseCycle > actor.forceMoveStartCycle) {
+                    actor.playingAnimationDelay = 1;
                     return;
                 }
             }
-            if(arg1.playingAnimation != -1 && arg1.playingAnimationDelay == 0) {
-                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(arg1.playingAnimation);
+            if(actor.playingAnimation != -1 && actor.playingAnimationDelay == 0) {
+                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(actor.playingAnimation);
                 if(animationSequence != null && animationSequence.frameIds != null) {
-                    arg1.anInt3115++;
-                    if(animationSequence.frameIds.length > arg1.anInt3104 && animationSequence.frameLengths[arg1.anInt3104] < arg1.anInt3115) {
-                        arg1.anInt3104++;
-                        arg1.anInt3115 = 1;
+                    actor.anInt3115++;
+                    if(animationSequence.frameIds.length > actor.anInt3104 && animationSequence.frameLengths[actor.anInt3104] < actor.anInt3115) {
+                        actor.anInt3104++;
+                        actor.anInt3115 = 1;
                     }
-                    if(animationSequence.frameIds.length <= arg1.anInt3104) {
-                        arg1.anInt3104 -= animationSequence.frameStep;
-                        arg1.anInt3095++;
-                        if(animationSequence.maxLoops <= arg1.anInt3095)
-                            arg1.playingAnimation = -1;
-                        if(arg1.anInt3104 < 0 || arg1.anInt3104 >= animationSequence.frameIds.length)
-                            arg1.playingAnimation = -1;
+                    if(animationSequence.frameIds.length <= actor.anInt3104) {
+                        actor.anInt3104 -= animationSequence.frameStep;
+                        actor.anInt3095++;
+                        if(animationSequence.maxLoops <= actor.anInt3095)
+                            actor.playingAnimation = -1;
+                        if(actor.anInt3104 < 0 || actor.anInt3104 >= animationSequence.frameIds.length)
+                            actor.playingAnimation = -1;
                     }
-                    arg1.aBoolean3105 = animationSequence.stretches;
+                    actor.aBoolean3105 = animationSequence.stretches;
                 } else
-                    arg1.playingAnimation = -1;
+                    actor.playingAnimation = -1;
             }
-            if(arg1.playingAnimationDelay > 0)
-                arg1.playingAnimationDelay--;
+            if(actor.playingAnimationDelay > 0)
+                actor.playingAnimationDelay--;
         }
     }
 

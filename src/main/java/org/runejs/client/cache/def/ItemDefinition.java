@@ -166,7 +166,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
                 int i_16_ = npc.worldX >> 7;
                 int i_17_ = npc.worldY >> 7;
                 if(i_16_ >= 0 && i_16_ < 104 && i_17_ >= 0 && i_17_ < 104) {
-                    if(npc.anInt3096 == 1 && (npc.worldX & 0x7f) == 64 && (npc.worldY & 0x7f) == 64) {
+                    if(npc.size == 1 && (npc.worldX & 0x7f) == 64 && (npc.worldY & 0x7f) == 64) {
                         if(MovedStatics.anIntArrayArray1435[i_16_][i_17_] == MovedStatics.anInt2628) {
                             continue;
                         }
@@ -175,7 +175,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
                     if(!npc.actorDefinition.isClickable) {
                         i_15_ += -2147483648;
                     }
-                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, Scene.getFloorDrawHeight(Player.worldLevel, npc.worldX + (-1 + npc.anInt3096) * 64, npc.anInt3096 * 64 + -64 + npc.worldY), -64 + npc.anInt3096 * 64 + 60, npc, npc.anInt3118, i_15_, npc.aBoolean3105);
+                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, Scene.getFloorDrawHeight(Player.worldLevel, npc.worldX + (-1 + npc.size) * 64, npc.size * 64 + -64 + npc.worldY), -64 + npc.size * 64 + 60, npc, npc.anInt3118, i_15_, npc.aBoolean3105);
                 }
             }
         }

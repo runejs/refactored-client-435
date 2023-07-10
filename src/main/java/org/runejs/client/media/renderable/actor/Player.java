@@ -146,13 +146,13 @@ public class Player extends Actor {
             player.maximumHitpoints = appearanceBuffer.getUnsignedByte();
         }
         if((mask & 0x400) != 0) { // Forced movement?
-            player.anInt3125 = appearanceBuffer.getUnsignedByte();
-            player.anInt3081 = appearanceBuffer.getUnsignedByte();
-            player.anInt3099 = appearanceBuffer.getUnsignedByte();
-            player.anInt3127 = appearanceBuffer.getUnsignedByte();
-            player.anInt3112 = appearanceBuffer.getUnsignedShortBE() + MovedStatics.pulseCycle;
-            player.anInt3107 = appearanceBuffer.getUnsignedShortLE() + MovedStatics.pulseCycle;
-            player.anInt3073 = appearanceBuffer.getUnsignedByte();
+            player.forceMoveStartX = appearanceBuffer.getUnsignedByte();
+            player.forceMoveStartY = appearanceBuffer.getUnsignedByte();
+            player.forceMoveEndX = appearanceBuffer.getUnsignedByte();
+            player.forceMoveEndY = appearanceBuffer.getUnsignedByte();
+            player.forceMoveEndCycle = appearanceBuffer.getUnsignedShortBE() + MovedStatics.pulseCycle;
+            player.forceMoveStartCycle = appearanceBuffer.getUnsignedShortLE() + MovedStatics.pulseCycle;
+            player.forceMoveFaceDirection = appearanceBuffer.getUnsignedByte();
             player.method790(0);
         }
         if((0x8 & mask) != 0) { // chat

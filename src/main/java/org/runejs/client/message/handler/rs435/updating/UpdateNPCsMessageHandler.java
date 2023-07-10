@@ -150,7 +150,7 @@ public class UpdateNPCsMessageHandler implements MessageHandler<UpdateNPCsInboun
             npc.idleAnimation = npc.actorDefinition.stanceAnimation;
             npc.anInt3083 = npc.actorDefinition.rotateRightAnimation;
             npc.walkAnimationId = npc.actorDefinition.walkAnimation;
-            npc.anInt3096 = npc.actorDefinition.boundaryDimension;
+            npc.size = npc.actorDefinition.boundaryDimension;
             npc.turnAroundAnimationId = npc.actorDefinition.rotate180Animation;
             npc.standTurnAnimationId = npc.actorDefinition.rotateLeftAnimation;
             npc.anInt3113 = npc.actorDefinition.degreesToTurn;

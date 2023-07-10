@@ -42,28 +42,28 @@ public class PlayerAppearance {
 
 
 
-    public static void method381(Actor arg1) {
-        if(MovedStatics.pulseCycle == arg1.anInt3107 || arg1.playingAnimation == -1 || arg1.playingAnimationDelay != 0 ||
-                arg1.anInt3115 + 1 > ProducingGraphicsBuffer_Sub1.getAnimationSequence(arg1.playingAnimation).frameLengths[arg1.anInt3104]) {
-            int i = -arg1.anInt3112 + arg1.anInt3107;
-            int i_16_ = -arg1.anInt3112 + MovedStatics.pulseCycle;
-            int i_17_ = arg1.anInt3125 * 128 + 64 * arg1.anInt3096;
-            int i_18_ = arg1.anInt3096 * 64 + 128 * arg1.anInt3081;
-            int i_19_ = arg1.anInt3096 * 64 + 128 * arg1.anInt3099;
-            int i_20_ = 128 * arg1.anInt3127 + arg1.anInt3096 * 64;
-            arg1.worldX = ((i - i_16_) * i_17_ + i_16_ * i_19_) / i;
-            arg1.worldY = (i_18_ * (i + -i_16_) + i_16_ * i_20_) / i;
+    public static void startForcedMovement(Actor actor) {
+        if(MovedStatics.pulseCycle == actor.forceMoveStartCycle || actor.playingAnimation == -1 || actor.playingAnimationDelay != 0 ||
+                actor.anInt3115 + 1 > ProducingGraphicsBuffer_Sub1.getAnimationSequence(actor.playingAnimation).frameLengths[actor.anInt3104]) {
+            int duration = -actor.forceMoveEndCycle + actor.forceMoveStartCycle;
+            int deltaTime = -actor.forceMoveEndCycle + MovedStatics.pulseCycle;
+            int x0 = actor.forceMoveStartX * 128 + 64 * actor.size;
+            int y0 = actor.size * 64 + 128 * actor.forceMoveStartY;
+            int x1 = actor.size * 64 + 128 * actor.forceMoveEndX;
+            int y1 = 128 * actor.forceMoveEndY + actor.size * 64;
+            actor.worldX = ((duration - deltaTime) * x0 + deltaTime * x1) / duration;
+            actor.worldY = (y0 * (duration + -deltaTime) + deltaTime * y1) / duration;
         }
-        if(arg1.anInt3073 == 0)
-            arg1.initialFaceDirection = 1024;
-        arg1.anInt3074 = 0;
-        if(arg1.anInt3073 == 1)
-            arg1.initialFaceDirection = 1536;
-        if(arg1.anInt3073 == 2)
-            arg1.initialFaceDirection = 0;
-        if(arg1.anInt3073 == 3)
-            arg1.initialFaceDirection = 512;
-        arg1.anInt3118 = arg1.initialFaceDirection;
+        if(actor.forceMoveFaceDirection == 0)
+            actor.initialFaceDirection = 1024;
+        actor.anInt3074 = 0;
+        if(actor.forceMoveFaceDirection == 1)
+            actor.initialFaceDirection = 1536;
+        if(actor.forceMoveFaceDirection == 2)
+            actor.initialFaceDirection = 0;
+        if(actor.forceMoveFaceDirection == 3)
+            actor.initialFaceDirection = 512;
+        actor.anInt3118 = actor.initialFaceDirection;
     }
 
 

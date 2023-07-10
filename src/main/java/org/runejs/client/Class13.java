@@ -26,30 +26,30 @@ public class Class13 {
     public static void handleActorAnimation(Actor actor) {
         if(actor.worldX < 128 || actor.worldY < 128 || actor.worldX >= 13184 || actor.worldY >= 13184) {
             actor.playingAnimation = -1;
-            actor.anInt3112 = 0;
-            actor.anInt3107 = 0;
+            actor.forceMoveEndCycle = 0;
+            actor.forceMoveStartCycle = 0;
             actor.graphicId = -1;
-            actor.worldX = actor.anInt3096 * 64 + 128 * actor.pathY[0];
-            actor.worldY = actor.pathX[0] * 128 + 64 * actor.anInt3096;
+            actor.worldX = actor.size * 64 + 128 * actor.pathY[0];
+            actor.worldY = actor.pathX[0] * 128 + 64 * actor.size;
             actor.method790(0);
         }
         if(actor == Player.localPlayer && (actor.worldX < 1536 || actor.worldY < 1536 || actor.worldX >= 11776 || actor.worldY >= 11776)) {
             actor.graphicId = -1;
-            actor.anInt3107 = 0;
-            actor.anInt3112 = 0;
+            actor.forceMoveStartCycle = 0;
+            actor.forceMoveEndCycle = 0;
             actor.playingAnimation = -1;
-            actor.worldX = actor.pathY[0] * 128 + actor.anInt3096 * 64;
-            actor.worldY = 64 * actor.anInt3096 + actor.pathX[0] * 128;
+            actor.worldX = actor.pathY[0] * 128 + actor.size * 64;
+            actor.worldY = 64 * actor.size + actor.pathX[0] * 128;
             actor.method790(0);
         }
-        if(actor.anInt3112 > MovedStatics.pulseCycle)
-            method631(actor);
-        else if(actor.anInt3107 < MovedStatics.pulseCycle)
-            Class44.method898(255, actor);
+        if(actor.forceMoveEndCycle > MovedStatics.pulseCycle)
+            updateForcedMovement(actor);
+        else if(actor.forceMoveStartCycle < MovedStatics.pulseCycle)
+            Class44.processWalkingStep(255, actor);
         else
-            PlayerAppearance.method381(actor);
-        Projectile.method762(actor);
-        Class40_Sub5_Sub15.method736(true, actor);
+            PlayerAppearance.startForcedMovement(actor);
+        Projectile.updateFacingDirection(actor);
+        Class40_Sub5_Sub15.updateAnimation(actor);
     }
 
     public static void handleRequests() {
@@ -136,20 +136,20 @@ public class Class13 {
         }
     }
 
-    public static void method631(Actor actor) {
-        int i = actor.anInt3125 * 128 + 64 * actor.anInt3096;
-        int i_0_ = actor.anInt3112 + -MovedStatics.pulseCycle;
-        if(actor.anInt3073 == 0)
+    public static void updateForcedMovement(Actor actor) {
+        int deltaTime = actor.forceMoveEndCycle - MovedStatics.pulseCycle;
+        int destX = actor.forceMoveStartX * 128 + 64 * actor.size;
+        if(actor.forceMoveFaceDirection == 0)
             actor.initialFaceDirection = 1024;
-        if(actor.anInt3073 == 1)
+        if(actor.forceMoveFaceDirection == 1)
             actor.initialFaceDirection = 1536;
-        if(actor.anInt3073 == 2)
+        if(actor.forceMoveFaceDirection == 2)
             actor.initialFaceDirection = 0;
-        int i_1_ = actor.anInt3096 * 64 + 128 * actor.anInt3081;
-        actor.worldX += (i - actor.worldX) / i_0_;
-        if(actor.anInt3073 == 3)
+        int destY = actor.size * 64 + 128 * actor.forceMoveStartY;
+        actor.worldX += (destX - actor.worldX) / deltaTime;
+        if(actor.forceMoveFaceDirection == 3)
             actor.initialFaceDirection = 512;
         actor.anInt3074 = 0;
-        actor.worldY += (-actor.worldY + i_1_) / i_0_;
+        actor.worldY += (-actor.worldY + destY) / deltaTime;
     }
 }
