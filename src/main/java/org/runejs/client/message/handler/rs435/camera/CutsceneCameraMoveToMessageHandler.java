@@ -1,11 +1,11 @@
 package org.runejs.client.message.handler.rs435.camera;
 
-import org.runejs.client.Class37;
 import org.runejs.client.Main;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.camera.CutsceneCameraMoveToInboundMessage;
 import org.runejs.client.scene.Point3d;
+import org.runejs.client.scene.Scene;
 
 public class CutsceneCameraMoveToMessageHandler implements MessageHandler<CutsceneCameraMoveToInboundMessage> {
     @Override
@@ -25,7 +25,7 @@ public class CutsceneCameraMoveToMessageHandler implements MessageHandler<Cutsce
         if(message.speedScale >= 100) {
             int x = Main.cutsceneCamera.getMoveTo().x;
             int y = Main.cutsceneCamera.getMoveTo().y;
-            int z = Class37.getFloorDrawHeight(Player.worldLevel, x, y) - Main.cutsceneCamera.getMoveTo().z;
+            int z = Scene.getFloorDrawHeight(Player.worldLevel, x, y) - Main.cutsceneCamera.getMoveTo().z;
 
             Main.cutsceneCamera.setPosition(new Point3d(x, y, z));
         }

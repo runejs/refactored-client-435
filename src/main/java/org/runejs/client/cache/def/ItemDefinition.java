@@ -18,6 +18,7 @@ import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.*;
+import org.runejs.client.scene.Scene;
 
 import java.awt.*;
 
@@ -111,7 +112,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
                 MovedStatics.chatboxRight.drawGraphics(0, 357, graphics);
                 Class39.mapbackLeft.drawGraphics(722, 4, graphics);
                 GameObject.tabPieceLeft.drawGraphics(743, 205, graphics);
-                Class40_Sub5_Sub17_Sub6.framePieceTop.drawGraphics(0, 0, graphics);
+                SpotAnim.framePieceTop.drawGraphics(0, 0, graphics);
                 Class40_Sub7.mapBackRight.drawGraphics(516, 4, graphics);
                 MovedStatics.tabPieceUpperRight.drawGraphics(516, 205, graphics);
                 PlayerAppearance.tabPieveLowerRight.drawGraphics(496, 357, graphics);
@@ -157,7 +158,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         return true;
     }
 
-    public static void method749(boolean arg0) {
+    public static void renderNPCs(boolean arg0) {
         for(int i = 0; Player.npcCount > i; i++) {
             Npc npc = Player.npcs[Player.npcIds[i]];
             int i_15_ = 536870912 + (Player.npcIds[i] << 14);
@@ -174,7 +175,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
                     if(!npc.actorDefinition.isClickable) {
                         i_15_ += -2147483648;
                     }
-                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, Class37.getFloorDrawHeight(Player.worldLevel, npc.worldX + (-1 + npc.anInt3096) * 64, npc.anInt3096 * 64 + -64 + npc.worldY), -64 + npc.anInt3096 * 64 + 60, npc, npc.anInt3118, i_15_, npc.aBoolean3105);
+                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, Scene.getFloorDrawHeight(Player.worldLevel, npc.worldX + (-1 + npc.anInt3096) * 64, npc.anInt3096 * 64 + -64 + npc.worldY), -64 + npc.anInt3096 * 64 + 60, npc, npc.anInt3118, i_15_, npc.aBoolean3105);
                 }
             }
         }
@@ -247,7 +248,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         int i_9_ = Rasterizer3D.viewportRx;
         ImageRGB rendered = new ImageRGB(32, 32);
         Rasterizer.prepare(rendered.pixels, 32, 32);
-        Class40_Sub5_Sub17_Sub6.anIntArray3253 = Rasterizer3D.setLineOffsets(Class40_Sub5_Sub17_Sub6.anIntArray3253);
+        SpotAnim.anIntArray3253 = Rasterizer3D.setLineOffsets(SpotAnim.anIntArray3253);
         Rasterizer.drawFilledRectangle(0, 0, 32, 32, 0);
         int i_11_ = definition.zoom2d;
         if(backColour == -1)

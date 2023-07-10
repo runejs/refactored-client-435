@@ -13,8 +13,6 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.IncomingPackets;
-import org.runejs.client.scene.GroundItemTile;
-import org.runejs.client.scene.SceneCamera;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.SceneTile;
@@ -29,22 +27,6 @@ public class Class37 {
     static {
         anInt874 = 0;
     }
-
-    public static int getFloorDrawHeight(int plane, int x, int y) {
-        int groundX = x >> 7;
-        int groundY = y >> 7;
-        if(groundX < 0 || groundY < 0 || groundX > 103 || groundY > 103)
-            return 0;
-        int groundZ = plane;
-        if(groundZ < 3 && (OverlayDefinition.tile_flags[1][groundX][groundY] & 0x2) == 2)
-            groundZ++;
-        int _x = 0x7f & x;
-        int _y = y & 0x7f;
-        int i2 = (-_x + 128) * MovedStatics.tile_height[groundZ][groundX][groundY] + _x * MovedStatics.tile_height[groundZ][groundX + 1][groundY] >> 7;
-        int j2 = _x * MovedStatics.tile_height[groundZ][1 + groundX][1 + groundY] + MovedStatics.tile_height[groundZ][groundX][1 + groundY] * (128 + -_x) >> 7;
-        return (128 + -_y) * i2 + j2 * _y >> 7;
-    }
-
 
     public static void method434() {
         MovedStatics.menuOpen = false;

@@ -10,8 +10,8 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
+import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.tile.Wall;
-import org.runejs.client.Class37;
 
 public class FramemapDefinition extends Node {
     public static boolean aBoolean2177 = false;
@@ -121,7 +121,7 @@ public class FramemapDefinition extends Node {
                     }
                 }
                 int i_37_ = 1610612736 + (arg1 << 7) + arg2;
-                Npc.currentScene.addGroundItemTile(arg2, arg1, Player.worldLevel, Class37.getFloorDrawHeight(Player.worldLevel, 64 + 128 * arg2, 64 + 128 * arg1), i_37_, item, item_35_, item_34_);
+                Npc.currentScene.addGroundItemTile(arg2, arg1, Player.worldLevel, Scene.getFloorDrawHeight(Player.worldLevel, 64 + 128 * arg2, 64 + 128 * arg1), i_37_, item, item_35_, item_34_);
             }
         }
 

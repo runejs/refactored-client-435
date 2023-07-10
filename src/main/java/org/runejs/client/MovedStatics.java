@@ -185,7 +185,7 @@ public class MovedStatics {
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631 = null;
             Class51.aProducingGraphicsBuffer_1206 = null;
             Landscape.anIntArray1168 = null;
-            Class40_Sub5_Sub17_Sub6.anIntArray3255 = null;
+            SpotAnim.anIntArray3255 = null;
             Class59.imgLoginScreenButton = null;
             anIntArray1445 = null;
             Class40_Sub5_Sub15.loginScreenBox = null;
@@ -195,7 +195,7 @@ public class MovedStatics {
             GameObjectDefinition.aProducingGraphicsBuffer_2524 = null;
             Class39.aClass40_Sub5_Sub14_Sub4_918 = null;
             MovedStatics.aClass40_Sub5_Sub14_Sub2Array535 = null;
-            Class40_Sub5_Sub17_Sub6.anIntArray3248 = null;
+            SpotAnim.anIntArray3248 = null;
             MovedStatics.loginBoxGraphics = null;
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = null;
             anIntArray178 = null;
@@ -334,18 +334,18 @@ public class MovedStatics {
         }
     }
 
-    public static void method1000() {
-        for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.peekFirst(); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.pollFirst()) {
-            if (Player.worldLevel == class40_sub5_sub17_sub6.anInt3239 && !class40_sub5_sub17_sub6.aBoolean3237) {
-                if (pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
-                    class40_sub5_sub17_sub6.method834(anInt199);
-                    if (class40_sub5_sub17_sub6.aBoolean3237)
-                        class40_sub5_sub17_sub6.unlink();
+    public static void renderSpotAnims() {
+        for (SpotAnim spotAnim = (SpotAnim) Class57.aLinkedList_1332.peekFirst(); spotAnim != null; spotAnim = (SpotAnim) Class57.aLinkedList_1332.pollFirst()) {
+            if (Player.worldLevel == spotAnim.plane && !spotAnim.animationFinished) {
+                if (pulseCycle >= spotAnim.startCycle) {
+                    spotAnim.method834(anInt199);
+                    if (spotAnim.animationFinished)
+                        spotAnim.unlink();
                     else
-                        Npc.currentScene.method134(class40_sub5_sub17_sub6.anInt3239, class40_sub5_sub17_sub6.anInt3244, class40_sub5_sub17_sub6.anInt3235, class40_sub5_sub17_sub6.anInt3231, 60, class40_sub5_sub17_sub6, 0, -1, false);
+                        Npc.currentScene.method134(spotAnim.plane, spotAnim.x, spotAnim.y, spotAnim.z, 60, spotAnim, 0, -1, false);
                 }
             } else
-                class40_sub5_sub17_sub6.unlink();
+                spotAnim.unlink();
         }
     }
 
@@ -359,7 +359,7 @@ public class MovedStatics {
 
         Point3d cameraPos = Main.cutsceneCamera.getPosition();
 
-        int i = Class37.getFloorDrawHeight(Player.worldLevel, cameraPos.x, cameraPos.y);
+        int i = Scene.getFloorDrawHeight(Player.worldLevel, cameraPos.x, cameraPos.y);
         if (i + -cameraPos.z < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][cameraPos.x >> 7][cameraPos.y >> 7] & 0x4) != 0)
             return Player.worldLevel;
         return 3;
@@ -435,7 +435,7 @@ public class MovedStatics {
         return PacketBuffer.method521(false, 10, arg0);
     }
 
-    public static void method335() {
+    public static void renderProjectiles() {
         Projectile projectile = (Projectile) Class43.projectileQueue.peekFirst();
         for (/**/; projectile != null; projectile = (Projectile) Class43.projectileQueue.pollFirst()) {
             if (Player.worldLevel == projectile.anInt2981 && pulseCycle <= projectile.endCycle) {
@@ -443,7 +443,7 @@ public class MovedStatics {
                     if (projectile.entityIndex > 0) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[-1 + projectile.entityIndex];
                         if (class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.worldX >= 0 && class40_sub5_sub17_sub4_sub2.worldX < 13312 && class40_sub5_sub17_sub4_sub2.worldY >= 0 && class40_sub5_sub17_sub4_sub2.worldY < 13312)
-                            projectile.trackTarget(pulseCycle, 61 + -61, class40_sub5_sub17_sub4_sub2.worldY, Class37.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub2.worldX, class40_sub5_sub17_sub4_sub2.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub2.worldX);
+                            projectile.trackTarget(pulseCycle, 61 + -61, class40_sub5_sub17_sub4_sub2.worldY, Scene.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub2.worldX, class40_sub5_sub17_sub4_sub2.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub2.worldX);
                     }
                     if (projectile.entityIndex < 0) {
                         int i = -1 + -projectile.entityIndex;
@@ -453,7 +453,7 @@ public class MovedStatics {
                         else
                             class40_sub5_sub17_sub4_sub1 = Player.localPlayer;
                         if (class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.worldX >= 0 && class40_sub5_sub17_sub4_sub1.worldX < 13312 && class40_sub5_sub17_sub4_sub1.worldY >= 0 && class40_sub5_sub17_sub4_sub1.worldY < 13312)
-                            projectile.trackTarget(pulseCycle, 0, class40_sub5_sub17_sub4_sub1.worldY, Class37.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub1.worldX, class40_sub5_sub17_sub4_sub1.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub1.worldX);
+                            projectile.trackTarget(pulseCycle, 0, class40_sub5_sub17_sub4_sub1.worldY, Scene.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub1.worldX, class40_sub5_sub17_sub4_sub1.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub1.worldX);
                     }
                     projectile.move(anInt199);
                     Npc.currentScene.method134(Player.worldLevel, (int) projectile.currentX, (int) projectile.currentY, (int) projectile.currentHeight, 60, projectile, projectile.anInt3013, -1, false);
@@ -518,7 +518,7 @@ public class MovedStatics {
         OverlayDefinition.tile_underlay_path = null;
         MouseHandler.tile_overlayids = null;
         tile_underlayids = null;
-        Class40_Sub5_Sub17_Sub6.blendedHue = null;
+        SpotAnim.blendedHue = null;
     }
 
     public static void printException(String arg0, Throwable exception) {
@@ -622,7 +622,7 @@ public class MovedStatics {
         for (int i_6_ = 1; i_6_ < i - 1; i_6_++) {
             for (int i_7_ = 1; i_7_ < 127; i_7_++) {
                 int i_8_ = i_7_ + (i_6_ << 7);
-                Class40_Sub5_Sub17_Sub6.anIntArray3255[i_8_] = (anIntArray178[i_8_ + 1] + anIntArray178[i_8_ - 1] - (-anIntArray178[-128 + i_8_] - anIntArray178[128 + i_8_])) / 4;
+                SpotAnim.anIntArray3255[i_8_] = (anIntArray178[i_8_ + 1] + anIntArray178[i_8_ - 1] - (-anIntArray178[-128 + i_8_] - anIntArray178[128 + i_8_])) / 4;
             }
         }
         RSRuntimeException.anInt1641 += 128;
@@ -634,7 +634,7 @@ public class MovedStatics {
         for (int i_10_ = 1; i_10_ < -1 + i; i_10_++) {
             for (int i_11_ = 1; i_11_ < 127; i_11_++) {
                 int i_12_ = i_11_ + (i_10_ << 7);
-                int i_13_ = -(Landscape.anIntArray1168[i_12_ + RSRuntimeException.anInt1641 & -1 + Landscape.anIntArray1168.length] / 5) + Class40_Sub5_Sub17_Sub6.anIntArray3255[i_12_ + 128];
+                int i_13_ = -(Landscape.anIntArray1168[i_12_ + RSRuntimeException.anInt1641 & -1 + Landscape.anIntArray1168.length] / 5) + SpotAnim.anIntArray3255[i_12_ + 128];
                 if (i_13_ < 0)
                     i_13_ = 0;
                 anIntArray178[i_12_] = i_13_;
@@ -1960,7 +1960,7 @@ public class MovedStatics {
 	        Class44.anInt1048 = -1;
 	        ISAAC.anInt522 = -1;
 	    } else {
-	        int i = Class37.getFloorDrawHeight(Player.worldLevel, arg2, arg1) + -arg0;
+	        int i = Scene.getFloorDrawHeight(Player.worldLevel, arg2, arg1) + -arg0;
 
             Point3d cameraPos = Main.getActiveCamera().getPosition();
             CameraRotation rotation = Main.getActiveCamera().getRotation();

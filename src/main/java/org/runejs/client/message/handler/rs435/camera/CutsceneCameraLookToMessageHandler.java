@@ -5,6 +5,7 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.camera.CutsceneCameraLookToInboundMessage;
 import org.runejs.client.scene.Point3d;
+import org.runejs.client.scene.Scene;
 
 public class CutsceneCameraLookToMessageHandler implements MessageHandler<CutsceneCameraLookToInboundMessage> {
     @Override
@@ -25,7 +26,7 @@ public class CutsceneCameraLookToMessageHandler implements MessageHandler<Cutsce
         if(message.speedScale >= 100) {
             int x = Main.cutsceneCamera.getLookAt().x;
             int y = Main.cutsceneCamera.getLookAt().y;
-            int z = Class37.getFloorDrawHeight(Player.worldLevel, x, y) - Main.cutsceneCamera.getLookAt().z;
+            int z = Scene.getFloorDrawHeight(Player.worldLevel, x, y) - Main.cutsceneCamera.getLookAt().z;
 
             Point3d cameraPos = Main.cutsceneCamera.getPosition();
 

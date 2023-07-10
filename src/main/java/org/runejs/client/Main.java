@@ -590,11 +590,11 @@ public class Main extends GameShell {
             if (IdentityKit.anInt2613 > 0) {
                 for (int i = 0; i < 256; i++) {
                     if (IdentityKit.anInt2613 > 768)
-                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Class51.anIntArray1198[i], Class40_Sub5_Sub17_Sub6.anIntArray3248[i], -IdentityKit.anInt2613 + 1024);
+                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Class51.anIntArray1198[i], SpotAnim.anIntArray3248[i], -IdentityKit.anInt2613 + 1024);
                     else if (IdentityKit.anInt2613 > 256)
-                        MovedStatics.anIntArray1013[i] = Class40_Sub5_Sub17_Sub6.anIntArray3248[i];
+                        MovedStatics.anIntArray1013[i] = SpotAnim.anIntArray3248[i];
                     else
-                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Class40_Sub5_Sub17_Sub6.anIntArray3248[i], Class51.anIntArray1198[i], -IdentityKit.anInt2613 + 256);
+                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(SpotAnim.anIntArray3248[i], Class51.anIntArray1198[i], -IdentityKit.anInt2613 + 256);
                 }
             } else {
                 System.arraycopy(Class51.anIntArray1198, 0, MovedStatics.anIntArray1013, 0, 256);
@@ -803,12 +803,12 @@ public class Main extends GameShell {
 
     public static void method353() {
         MovedStatics.anInt2628++;
-        Class40_Sub5_Sub17_Sub6.method833(0, true);
-        ItemDefinition.method749(true);
-        Class40_Sub5_Sub17_Sub6.method833(0, false);
-        ItemDefinition.method749(false);
-        MovedStatics.method335();
-        MovedStatics.method1000();
+        SpotAnim.renderPlayers(0, true);
+        ItemDefinition.renderNPCs(true);
+        SpotAnim.renderPlayers(0, false);
+        ItemDefinition.renderNPCs(false);
+        MovedStatics.renderProjectiles();
+        MovedStatics.renderSpotAnims();
         if(!Player.cutsceneActive) {
             int pitch = Main.playerCamera.getPitch();
             if(SceneCamera.cameraTerrainMinScaledPitch / 256 > pitch) {
@@ -834,23 +834,23 @@ public class Main extends GameShell {
         Point3d shakeOffsetPosition = new Point3d(0, 0, 0);
         CameraRotation shakeOffsetRotation = new CameraRotation(0, 0);
 
-        for(int i_6_ = 0; i_6_ < 5; i_6_++) {
-            if(SceneCamera.customCameraActive[i_6_]) {
-                int i_7_ = (int) ((double) (SceneCamera.customCameraJitter[i_6_] * 2 + 1) * Math.random() - (double) SceneCamera.customCameraJitter[i_6_] + Math.sin((double) SceneCamera.customCameraTimer[i_6_] * ((double) SceneCamera.customCameraFrequency[i_6_] / 100.0)) * (double) SceneCamera.customCameraAmplitude[i_6_]);
-                if(i_6_ == 1) {
-                    shakeOffsetPosition = shakeOffsetPosition.addZ(i_7_);
+        for(int cameraType = 0; cameraType < 5; cameraType++) {
+            if(SceneCamera.customCameraActive[cameraType]) {
+                int shakeAmount = (int) ((double) (SceneCamera.customCameraJitter[cameraType] * 2 + 1) * Math.random() - (double) SceneCamera.customCameraJitter[cameraType] + Math.sin((double) SceneCamera.customCameraTimer[cameraType] * ((double) SceneCamera.customCameraFrequency[cameraType] / 100.0)) * (double) SceneCamera.customCameraAmplitude[cameraType]);
+                if(cameraType == 1) {
+                    shakeOffsetPosition = shakeOffsetPosition.addZ(shakeAmount);
                 }
-                if(i_6_ == 0) {
-                    shakeOffsetPosition = shakeOffsetPosition.addX(i_7_);
+                if(cameraType == 0) {
+                    shakeOffsetPosition = shakeOffsetPosition.addX(shakeAmount);
                 }
-                if(i_6_ == 2) {
-                    shakeOffsetPosition = shakeOffsetPosition.addY(i_7_);
+                if(cameraType == 2) {
+                    shakeOffsetPosition = shakeOffsetPosition.addY(shakeAmount);
                 }
-                if(i_6_ == 4) {
-                    shakeOffsetRotation = shakeOffsetRotation.addPitch(i_7_);
+                if(cameraType == 4) {
+                    shakeOffsetRotation = shakeOffsetRotation.addPitch(shakeAmount);
                 }
-                if(i_6_ == 3) {
-                    shakeOffsetRotation = shakeOffsetRotation.addYaw(i_7_);
+                if(cameraType == 3) {
+                    shakeOffsetRotation = shakeOffsetRotation.addYaw(shakeAmount);
                 }
             }
         }
@@ -1189,13 +1189,13 @@ public class Main extends GameShell {
         }
     }
 
-    public static void method165() {
+    public static void moveTowardsTarget() {
         // TODO (James) this moves the cutscene camera towards its target, we should move this into the CutsceneCamera class
         CutsceneCamera camera = Main.cutsceneCamera;
 
         int i = camera.getMoveTo().y;
         int i_3_ = camera.getMoveTo().x;
-        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) - camera.getMoveTo().z;
+        int i_4_ = Scene.getFloorDrawHeight(Player.worldLevel, i_3_, i) - camera.getMoveTo().z;
 
         int newX = camera.getPosition().x;
         int newY = camera.getPosition().y;
@@ -1238,7 +1238,7 @@ public class Main extends GameShell {
 
         i_3_ = camera.getLookAt().x;
         i = camera.getLookAt().y;
-        i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) - camera.getLookAt().z;
+        i_4_ = Scene.getFloorDrawHeight(Player.worldLevel, i_3_, i) - camera.getLookAt().z;
         int i_5_ = -newZ + i_4_;
         int i_6_ = i - newY;
         int i_7_ = i_3_ - newX;
@@ -1586,7 +1586,7 @@ public class Main extends GameShell {
                             WallDecoration.durationHoveredOverWidget--;
                         Item.calculateCameraPosition();
                         if(Player.cutsceneActive)
-                            method165();
+                            moveTowardsTarget();
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
                             SceneCamera.customCameraTimer[i_19_]++;
                         MovedStatics.manageTextInputs();

@@ -1005,14 +1005,14 @@ public class Model extends Renderable {
         return method820(arg0, aClass40_Sub5_Sub17_Sub5_3195, anIntArray3214);
     }
 
-    public boolean method807(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
-        if(arg1 < arg2 && arg1 < arg3 && arg1 < arg4)
+    public boolean isPointWithinTriangle(int x, int y, int yA, int yB, int yC, int xA, int xB, int xC) {
+        if(y < yA && y < yB && y < yC)
             return false;
-        if(arg1 > arg2 && arg1 > arg3 && arg1 > arg4)
+        if(y > yA && y > yB && y > yC)
             return false;
-        if(arg0 < arg5 && arg0 < arg6 && arg0 < arg7)
+        if(x < xA && x < xB && x < xC)
             return false;
-        return arg0 <= arg5 || arg0 <= arg6 || arg0 <= arg7;
+        return x <= xA || x <= xB || x <= xC;
     }
 
     public void handleShading(int arg0, int arg1, int arg2, int arg3, int arg4) {
@@ -1520,7 +1520,7 @@ public class Model extends Renderable {
                             anIntArrayArray3210[i_214_][anIntArray3200[i_214_]++] = i;
                         }
                     } else {
-                        if(arg1 && method807(cursorX, cursorY, vertexScreenY[i_196_], vertexScreenY[i_197_], vertexScreenY[i_198_], i_199_, i_200_, i_201_)) {
+                        if(arg1 && isPointWithinTriangle(cursorX, cursorY, vertexScreenY[i_196_], vertexScreenY[i_197_], vertexScreenY[i_198_], i_199_, i_200_, i_201_)) {
                             hoveredHash[resourceCount++] = arg2;
                             arg1 = false;
                         }

@@ -349,7 +349,7 @@ public class Player extends Actor {
         animatedModel.method799();
         anInt3117 = animatedModel.modelHeight;
         if(!aBoolean3287 && graphicId != -1 && anInt3140 != -1) {
-            Model model = SpotAnimDefinition.forId(graphicId).method549(anInt3140);
+            Model model = SpotAnimDefinition.forId(graphicId).getModel(anInt3140);
             if(model != null) {
                 model.translate(0, -graphicHeight, 0);
                 Model[] models = {animatedModel, model};

@@ -13,6 +13,7 @@ import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.UpdateServer;
+import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCamera;
 import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.sound.MusicSystem;
@@ -49,7 +50,7 @@ public class Item extends Renderable {
             originY += (-originY + localPlayer3dPosY) / 16;
 
         // update the camera's Z origin - this wasn't originally here, but it makes sense to do it with the other origins
-        int cameraOriginZ = Class37.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY) - 50;
+        int cameraOriginZ = Scene.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY) - 50;
 
         Main.playerCamera.setOrigin(originX, originY, cameraOriginZ);
 
@@ -82,7 +83,7 @@ public class Item extends Renderable {
         int i_3_ = 0;
         int i_1_ = originY >> 7;
         int i_2_ = originX >> 7;
-        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, originX, originY);
+        int i_4_ = Scene.getFloorDrawHeight(Player.worldLevel, originX, originY);
         if (i_2_ > 3 && i_1_ > 3 && i_2_ < 100 && i_1_ < 100) {
             for (int i_5_ = -4 + i_2_; i_5_ <= 4 + i_2_; i_5_++) {
                 for (int i_6_ = -4 + i_1_; 4 + i_1_ >= i_6_; i_6_++) {
@@ -212,20 +213,20 @@ public class Item extends Renderable {
                 Renderable.anIntArray2865[128 + i] = i * 262144 + 65535;
             for (int i = 0; i < 64; i++)
                 Renderable.anIntArray2865[i + 192] = 16777215;
-            Class40_Sub5_Sub17_Sub6.anIntArray3248 = new int[256];
+            SpotAnim.anIntArray3248 = new int[256];
             for (int i = 0; i < 64; i++)
-                Class40_Sub5_Sub17_Sub6.anIntArray3248[i] = i * 4;
+                SpotAnim.anIntArray3248[i] = i * 4;
             for (int i = 0; i < 64; i++)
-                Class40_Sub5_Sub17_Sub6.anIntArray3248[64 + i] = 255 + i * 262144;
+                SpotAnim.anIntArray3248[64 + i] = 255 + i * 262144;
             for (int i = 0; i < 64; i++)
-                Class40_Sub5_Sub17_Sub6.anIntArray3248[128 + i] = i * 1024 + 16711935;
+                SpotAnim.anIntArray3248[128 + i] = i * 1024 + 16711935;
             for (int i = 0; i < 64; i++)
-                Class40_Sub5_Sub17_Sub6.anIntArray3248[192 + i] = 16777215;
+                SpotAnim.anIntArray3248[192 + i] = 16777215;
             MovedStatics.anIntArray1013 = new int[256];
             MovedStatics.anIntArray1445 = new int[32768];
             Landscape.anIntArray1168 = new int[32768];
             FramemapDefinition.method879(null);
-            Class40_Sub5_Sub17_Sub6.anIntArray3255 = new int[32768];
+            SpotAnim.anIntArray3255 = new int[32768];
             Native.username = Configuration.getUsername();
             Native.password = Configuration.getPassword();
             MovedStatics.anIntArray178 = new int[32768];
