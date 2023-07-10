@@ -8,13 +8,24 @@ import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.renderable.GameObject;
 
 public class Texture extends Node {
-    public static int[] anIntArray2141;
-    public int anInt2136;
+    /**
+     * Temporary array used while animating textures.
+     */
+    public static int[] animationPixels;
+    /**
+     * Which direction should the texture move in?
+     *
+     * 1: down
+     * 2: left
+     * 3: up
+     * 4: right
+     */
+    public int animateDirection;
     public int anInt2137;
     public int[] anIntArray2138;
-    public int[] pixels_maybe;
+    public int[] pixels;
     public int[] anIntArray2140;
-    public int anInt2142;
+    public int animateSpeed;
     public boolean opaque;
     public int[] spriteIds;
     public int[] colors;
@@ -42,63 +53,65 @@ public class Texture extends Node {
         colors = new int[i];
         for(int i_33_ = 0; i_33_ < i; i_33_++)
             colors[i_33_] = textureBuffer.getIntBE();
-        anInt2136 = textureBuffer.getUnsignedByte();
-        anInt2142 = textureBuffer.getUnsignedByte();
-        pixels_maybe = null;
+        animateDirection = textureBuffer.getUnsignedByte();
+        animateSpeed = textureBuffer.getUnsignedByte();
+        pixels = null;
     }
 
-    public void method868(int arg0) {
-        if(pixels_maybe != null) {
-            if(anInt2136 == 1 || anInt2136 == 3) {
-                if(anIntArray2141 == null || anIntArray2141.length < pixels_maybe.length)
-                    anIntArray2141 = new int[pixels_maybe.length];
-                int i;
-                if(pixels_maybe.length == 16384)
-                    i = 64;
+    public void animate(int deltaT) {
+        if(pixels != null) {
+            // up or down
+            if(animateDirection == 1 || animateDirection == 3) {
+                if(animationPixels == null || animationPixels.length < pixels.length)
+                    animationPixels = new int[pixels.length];
+                int dimension;
+                if(pixels.length == 16384)
+                    dimension = 64;
                 else
-                    i = 128;
-                int i_0_ = pixels_maybe.length / 4;
-                int i_1_ = i * arg0 * anInt2142;
-                int i_2_ = i_0_ - 1;
-                if(anInt2136 == 1)
-                    i_1_ = -i_1_;
-                for(int i_3_ = 0; i_3_ < i_0_; i_3_++) {
-                    int i_4_ = i_3_ + i_1_ & i_2_;
-                    anIntArray2141[i_3_] = pixels_maybe[i_4_];
-                    anIntArray2141[i_3_ + i_0_] = pixels_maybe[i_4_ + i_0_];
-                    anIntArray2141[i_3_ + i_0_ + i_0_] = pixels_maybe[i_4_ + i_0_ + i_0_];
-                    anIntArray2141[i_3_ + i_0_ + i_0_ + i_0_] = pixels_maybe[i_4_ + i_0_ + i_0_ + i_0_];
+                    dimension = 128;
+                int quarterLength = pixels.length / 4;
+                int offset = dimension * deltaT * animateSpeed;
+                int i_2_ = quarterLength - 1;
+                if(animateDirection == 1)
+                    offset = -offset;
+                for(int counter = 0; counter < quarterLength; counter++) {
+                    int index = counter + offset & i_2_;
+                    animationPixels[counter] = pixels[index];
+                    animationPixels[counter + quarterLength] = pixels[index + quarterLength];
+                    animationPixels[counter + quarterLength + quarterLength] = pixels[index + quarterLength + quarterLength];
+                    animationPixels[counter + quarterLength + quarterLength + quarterLength] = pixels[index + quarterLength + quarterLength + quarterLength];
                 }
-                int[] is = pixels_maybe;
-                pixels_maybe = anIntArray2141;
-                anIntArray2141 = is;
+                int[] tmp = pixels;
+                pixels = animationPixels;
+                animationPixels = tmp;
             }
-            if(anInt2136 == 2 || anInt2136 == 4) {
-                if(anIntArray2141 == null || anIntArray2141.length < pixels_maybe.length)
-                    anIntArray2141 = new int[pixels_maybe.length];
-                int i;
-                if(pixels_maybe.length == 16384)
-                    i = 64;
+            // left or right
+            if(animateDirection == 2 || animateDirection == 4) {
+                if(animationPixels == null || animationPixels.length < pixels.length)
+                    animationPixels = new int[pixels.length];
+                int dimension;
+                if(pixels.length == 16384)
+                    dimension = 64;
                 else
-                    i = 128;
-                int i_5_ = pixels_maybe.length / 4;
-                int i_6_ = arg0 * anInt2142;
-                int i_7_ = i - 1;
-                if(anInt2136 == 2)
-                    i_6_ = -i_6_;
-                for(int i_8_ = 0; i_8_ < i_5_; i_8_ += i) {
-                    for(int i_9_ = 0; i_9_ < i; i_9_++) {
-                        int i_10_ = i_8_ + i_9_;
-                        int i_11_ = i_8_ + (i_9_ + i_6_ & i_7_);
-                        anIntArray2141[i_10_] = pixels_maybe[i_11_];
-                        anIntArray2141[i_10_ + i_5_] = pixels_maybe[i_11_ + i_5_];
-                        anIntArray2141[i_10_ + i_5_ + i_5_] = pixels_maybe[i_11_ + i_5_ + i_5_];
-                        anIntArray2141[i_10_ + i_5_ + i_5_ + i_5_] = pixels_maybe[i_11_ + i_5_ + i_5_ + i_5_];
+                    dimension = 128;
+                int quarterLength = pixels.length / 4;
+                int offset = deltaT * animateSpeed;
+                int i_7_ = dimension - 1;
+                if(animateDirection == 2)
+                    offset = -offset;
+                for(int counter = 0; counter < quarterLength; counter += dimension) {
+                    for(int d = 0; d < dimension; d++) {
+                        int index = counter + d;
+                        int otherIndex = counter + (d + offset & i_7_);
+                        animationPixels[index] = pixels[otherIndex];
+                        animationPixels[index + quarterLength] = pixels[otherIndex + quarterLength];
+                        animationPixels[index + quarterLength + quarterLength] = pixels[otherIndex + quarterLength + quarterLength];
+                        animationPixels[index + quarterLength + quarterLength + quarterLength] = pixels[otherIndex + quarterLength + quarterLength + quarterLength];
                     }
                 }
-                int[] is = pixels_maybe;
-                pixels_maybe = anIntArray2141;
-                anIntArray2141 = is;
+                int[] tmp = pixels;
+                pixels = animationPixels;
+                animationPixels = tmp;
             }
         }
     }
@@ -109,7 +122,7 @@ public class Texture extends Node {
                 return false;
         }
         int i = textureSize * textureSize;
-        pixels_maybe = new int[i * 4];
+        pixels = new int[i * 4];
         for(int i_12_ = 0; i_12_ < spriteIds.length; i_12_++) {
             IndexedImage image = GameObject.method769(2, imageArchive, spriteIds[i_12_]);
             image.resizeToLibSize();
@@ -137,34 +150,34 @@ public class Texture extends Node {
             if(i_20_ == 0) {
                 if(image.imgWidth == textureSize) {
                     for(int i_21_ = 0; i_21_ < i; i_21_++)
-                        pixels_maybe[i_21_] = imgPalette[imgPixels[i_21_] & 0xff];
+                        pixels[i_21_] = imgPalette[imgPixels[i_21_] & 0xff];
                 } else if(image.imgWidth == 64 && textureSize == 128) {
                     int i_22_ = 0;
                     for(int i_23_ = 0; i_23_ < textureSize; i_23_++) {
                         for(int i_24_ = 0; i_24_ < textureSize; i_24_++)
-                            pixels_maybe[i_22_++] = imgPalette[imgPixels[(i_24_ >> 1) + (i_23_ >> 1 << 6)] & 0xff];
+                            pixels[i_22_++] = imgPalette[imgPixels[(i_24_ >> 1) + (i_23_ >> 1 << 6)] & 0xff];
                     }
                 } else if(image.imgWidth == 128 && textureSize == 64) {
                     int i_25_ = 0;
                     for(int i_26_ = 0; i_26_ < textureSize; i_26_++) {
                         for(int i_27_ = 0; i_27_ < textureSize; i_27_++)
-                            pixels_maybe[i_25_++] = imgPalette[imgPixels[(i_27_ << 1) + (i_26_ << 1 << 7)] & 0xff];
+                            pixels[i_25_++] = imgPalette[imgPixels[(i_27_ << 1) + (i_26_ << 1 << 7)] & 0xff];
                     }
                 } else
                     throw new RuntimeException();
             }
         }
         for(int pixelIndex = 0; pixelIndex < i; pixelIndex++) {
-            pixels_maybe[pixelIndex] &= 0xf8f8ff;
-            int pixel = pixels_maybe[pixelIndex];
-            pixels_maybe[pixelIndex + i] = pixel - (pixel >>> 3) & 0xf8f8ff;
-            pixels_maybe[pixelIndex + i + i] = pixel - (pixel >>> 2) & 0xf8f8ff;
-            pixels_maybe[pixelIndex + i + i + i] = pixel - (pixel >>> 2) - (pixel >>> 3) & 0xf8f8ff;
+            pixels[pixelIndex] &= 0xf8f8ff;
+            int pixel = pixels[pixelIndex];
+            pixels[pixelIndex + i] = pixel - (pixel >>> 3) & 0xf8f8ff;
+            pixels[pixelIndex + i + i] = pixel - (pixel >>> 2) & 0xf8f8ff;
+            pixels[pixelIndex + i + i + i] = pixel - (pixel >>> 2) - (pixel >>> 3) & 0xf8f8ff;
         }
         return true;
     }
 
     public void clearPixels() {
-        pixels_maybe = null;
+        pixels = null;
     }
 }
