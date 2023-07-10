@@ -12,8 +12,6 @@ import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.scene.GroundItemTile;
-import org.runejs.client.scene.SceneCamera;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.*;
 
@@ -181,8 +179,8 @@ public class Minimap extends FramePieceRenderer {
                 }
             }
             if(Player.headIconDrawType == 2) {
-                int hintY = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + MovedStatics.anInt175);
-                int hintX = 4 * (ProducingGraphicsBuffer.anInt1637 - MovedStatics.baseX) - (-2 + Player.localPlayer.worldX / 32);
+                int hintY = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + MovedStatics.hintIconPosY);
+                int hintX = 4 * (ProducingGraphicsBuffer.hintIconPosX - MovedStatics.baseX) - (-2 + Player.localPlayer.worldX / 32);
                 drawMinimapMark(Class40_Sub3.aClass40_Sub5_Sub14_Sub4Array2019[1], hintX, hintY);
             }
             if(Player.headIconDrawType == 10 && ProducingGraphicsBuffer.anInt1623 >= 0 && Player.trackedPlayers.length > ProducingGraphicsBuffer.anInt1623) {

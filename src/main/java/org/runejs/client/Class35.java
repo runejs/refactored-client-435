@@ -5,7 +5,10 @@ import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.io.Buffer;
 
 public class Class35 implements Interface3 {
-    public static int anInt1730 = 0;
+    /**
+     * Position of the hint icon within the specific tile.
+     */
+    public static int hintIconInnerPosY = 0;
     public static boolean aBoolean1734 = false;
     public static boolean aBoolean1735 = true;
     /**

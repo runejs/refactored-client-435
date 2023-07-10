@@ -32,10 +32,6 @@ public class FloorDecoration {
     public int y;
     public int z;
 
-    public static void method342(int arg1, Actor arg2) {
-        MovedStatics.method312(arg1, arg2.worldY, arg2.worldX, 4976905);
-    }
-
     public static void constructMapRegion(boolean generatedMap) {
 
         GroundItemTile.loadGeneratedMap = generatedMap;

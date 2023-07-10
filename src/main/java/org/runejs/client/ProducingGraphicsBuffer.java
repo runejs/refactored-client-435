@@ -13,7 +13,11 @@ public abstract class ProducingGraphicsBuffer {
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1631;
     public static SignlinkNode updateServerSignlinkNode;
     public static int anInt1634 = 0;
-    public static int anInt1637 = 0;
+
+    /**
+     * Position of the hint icon in world coordinates (e.g. 3222,3222)
+     */
+    public static int hintIconPosX = 0;
     public static ProducingGraphicsBuffer muteButton;
 
     public int height;

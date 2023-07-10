@@ -23,7 +23,11 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
 
     public static int[] sidebarOffsets;
     public static int menuActionRow = 0;
-    public static int anInt2404 = 0;
+
+    /**
+     * Draw height of the icon in 3d positions.
+     */
+    public static int hintIconPosZ = 0;
     public static int count;
 
     public boolean isClickable = true;
