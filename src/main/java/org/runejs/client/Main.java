@@ -590,11 +590,11 @@ public class Main extends GameShell {
             if (IdentityKit.anInt2613 > 0) {
                 for (int i = 0; i < 256; i++) {
                     if (IdentityKit.anInt2613 > 768)
-                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Class51.anIntArray1198[i], Class40_Sub5_Sub17_Sub6.anIntArray3248[i], -IdentityKit.anInt2613 + 1024);
+                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Class51.anIntArray1198[i], SpotAnim.anIntArray3248[i], -IdentityKit.anInt2613 + 1024);
                     else if (IdentityKit.anInt2613 > 256)
-                        MovedStatics.anIntArray1013[i] = Class40_Sub5_Sub17_Sub6.anIntArray3248[i];
+                        MovedStatics.anIntArray1013[i] = SpotAnim.anIntArray3248[i];
                     else
-                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Class40_Sub5_Sub17_Sub6.anIntArray3248[i], Class51.anIntArray1198[i], -IdentityKit.anInt2613 + 256);
+                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(SpotAnim.anIntArray3248[i], Class51.anIntArray1198[i], -IdentityKit.anInt2613 + 256);
                 }
             } else {
                 System.arraycopy(Class51.anIntArray1198, 0, MovedStatics.anIntArray1013, 0, 256);
@@ -803,9 +803,9 @@ public class Main extends GameShell {
 
     public static void method353() {
         MovedStatics.anInt2628++;
-        Class40_Sub5_Sub17_Sub6.method833(0, true);
+        SpotAnim.method833(0, true);
         ItemDefinition.method749(true);
-        Class40_Sub5_Sub17_Sub6.method833(0, false);
+        SpotAnim.method833(0, false);
         ItemDefinition.method749(false);
         MovedStatics.method335();
         MovedStatics.method1000();

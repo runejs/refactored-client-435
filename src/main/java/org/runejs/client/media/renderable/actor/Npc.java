@@ -5,7 +5,6 @@ import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.def.SpotAnimDefinition;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.net.IncomingPackets;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
@@ -121,7 +120,7 @@ public class Npc extends Actor {
         model.method799();
         anInt3117 = model.modelHeight;
         if(graphicId != -1 && anInt3140 != -1) {
-            Model model1 = SpotAnimDefinition.forId(graphicId).method549(anInt3140);
+            Model model1 = SpotAnimDefinition.forId(graphicId).getModel(anInt3140);
             if(model1 != null) {
                 model1.translate(0, -graphicHeight, 0);
                 Model[] models = {model, model1};

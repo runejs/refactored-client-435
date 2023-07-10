@@ -94,7 +94,7 @@ public class ISAAC {
                 }
             }
             for(int i_15_ = 0; i_15_ < 104; i_15_++) {
-                Class40_Sub5_Sub17_Sub6.blendedHue[i_15_] = 0;
+                SpotAnim.blendedHue[i_15_] = 0;
                 Class59.blendedSaturation[i_15_] = 0;
                 SceneTile.blendedLightness[i_15_] = 0;
                 MovedStatics.blendedHueMultiplier[i_15_] = 0;
@@ -107,7 +107,7 @@ public class ISAAC {
                         int underlayId = 0xff & MovedStatics.tile_underlayids[_plane][positiveX][y];
                         if(underlayId > 0) {
                             UnderlayDefinition underlayDefinition = UnderlayDefinition.getDefinition(underlayId - 1);
-                            Class40_Sub5_Sub17_Sub6.blendedHue[y] += underlayDefinition.hue;
+                            SpotAnim.blendedHue[y] += underlayDefinition.hue;
                             Class59.blendedSaturation[y] += underlayDefinition.saturation;
                             SceneTile.blendedLightness[y] += underlayDefinition.lightness;
                             MovedStatics.blendedHueMultiplier[y] += underlayDefinition.hueMultiplier;
@@ -119,7 +119,7 @@ public class ISAAC {
                         int underlayId = 0xff & MovedStatics.tile_underlayids[_plane][negativeX][y];
                         if(underlayId > 0) {
                             UnderlayDefinition underlayDefinition = UnderlayDefinition.getDefinition(underlayId - 1);
-                            Class40_Sub5_Sub17_Sub6.blendedHue[y] -= underlayDefinition.hue;
+                            SpotAnim.blendedHue[y] -= underlayDefinition.hue;
                             Class59.blendedSaturation[y] -= underlayDefinition.saturation;
                             SceneTile.blendedLightness[y] -= underlayDefinition.lightness;
                             MovedStatics.blendedHueMultiplier[y] -= underlayDefinition.hueMultiplier;
@@ -141,7 +141,7 @@ public class ISAAC {
                             saturation += Class59.blendedSaturation[positiveY];
                             direction += FloorDecoration.blendDirectionTracker[positiveY];
                             lightness += SceneTile.blendedLightness[positiveY];
-                            hue += Class40_Sub5_Sub17_Sub6.blendedHue[positiveY];
+                            hue += SpotAnim.blendedHue[positiveY];
                         }
 
                         if(negativeY >= 0 && negativeY < 104) {
@@ -149,7 +149,7 @@ public class ISAAC {
                             direction -= FloorDecoration.blendDirectionTracker[negativeY];
                             lightness -= SceneTile.blendedLightness[negativeY];
                             hueMultiplier -= MovedStatics.blendedHueMultiplier[negativeY];
-                            hue -= Class40_Sub5_Sub17_Sub6.blendedHue[negativeY];
+                            hue -= SpotAnim.blendedHue[negativeY];
                         }
                         if(y >= 1 && y < 103 && (!VertexNormal.lowMemory || (0x2 & OverlayDefinition.tile_flags[0][x][y]) != 0 || (0x10 & OverlayDefinition.tile_flags[_plane][x][y]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(_plane, y, 0, x))) {
                             if(MovedStatics.lowestPlane > _plane)
@@ -192,7 +192,7 @@ public class ISAAC {
                                 }
                                 int underlayMinimapColour = 0;
                                 if(hslBitsetRandomised != -1)
-                                    underlayMinimapColour = Rasterizer3D.hsl2rgb[Class40_Sub5_Sub17_Sub6.mixLightness(hslBitsetRandomised, 96)];
+                                    underlayMinimapColour = Rasterizer3D.hsl2rgb[SpotAnim.mixLightness(hslBitsetRandomised, 96)];
                                 if(overlayId != 0) {
                                     int shape = 1 + OverlayDefinition.tile_underlay_path[_plane][x][y];
                                     byte rotation = Class35.tile_overlay_rotation[_plane][x][y];
@@ -231,9 +231,9 @@ public class ISAAC {
                                         overlayMinimapColour = Class13.generateHslBitset(overlayDefinition.otherLightness, i_55_, i_54_);
                                         rgb = Rasterizer3D.hsl2rgb[MovedStatics.mixLightnessSigned(overlayMinimapColour, 96)];
                                     }
-                                    scene.addTile(_plane, x, y, shape, rotation, textureId, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, Class40_Sub5_Sub17_Sub6.mixLightness(hslBitsetOriginal, lightIntensitySW), Class40_Sub5_Sub17_Sub6.mixLightness(hslBitsetOriginal, lightIntensitySE), Class40_Sub5_Sub17_Sub6.mixLightness(hslBitsetOriginal, lightIntensityNE), Class40_Sub5_Sub17_Sub6.mixLightness(hslBitsetOriginal, lightIntensityNW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNW), underlayMinimapColour, rgb);
+                                    scene.addTile(_plane, x, y, shape, rotation, textureId, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, SpotAnim.mixLightness(hslBitsetOriginal, lightIntensitySW), SpotAnim.mixLightness(hslBitsetOriginal, lightIntensitySE), SpotAnim.mixLightness(hslBitsetOriginal, lightIntensityNE), SpotAnim.mixLightness(hslBitsetOriginal, lightIntensityNW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNW), underlayMinimapColour, rgb);
                                 } else
-                                    scene.addTile(_plane, x, y, 0, 0, -1, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, Class40_Sub5_Sub17_Sub6.mixLightness(hslBitsetOriginal, lightIntensitySW), Class40_Sub5_Sub17_Sub6.mixLightness(hslBitsetOriginal, lightIntensitySE), Class40_Sub5_Sub17_Sub6.mixLightness(hslBitsetOriginal, lightIntensityNE), Class40_Sub5_Sub17_Sub6.mixLightness(hslBitsetOriginal, lightIntensityNW), 0, 0, 0, 0, underlayMinimapColour, 0);
+                                    scene.addTile(_plane, x, y, 0, 0, -1, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, SpotAnim.mixLightness(hslBitsetOriginal, lightIntensitySW), SpotAnim.mixLightness(hslBitsetOriginal, lightIntensitySE), SpotAnim.mixLightness(hslBitsetOriginal, lightIntensityNE), SpotAnim.mixLightness(hslBitsetOriginal, lightIntensityNW), 0, 0, 0, 0, underlayMinimapColour, 0);
                             }
                         }
                     }

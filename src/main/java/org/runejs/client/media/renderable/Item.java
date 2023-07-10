@@ -213,20 +213,20 @@ public class Item extends Renderable {
                 Renderable.anIntArray2865[128 + i] = i * 262144 + 65535;
             for (int i = 0; i < 64; i++)
                 Renderable.anIntArray2865[i + 192] = 16777215;
-            Class40_Sub5_Sub17_Sub6.anIntArray3248 = new int[256];
+            SpotAnim.anIntArray3248 = new int[256];
             for (int i = 0; i < 64; i++)
-                Class40_Sub5_Sub17_Sub6.anIntArray3248[i] = i * 4;
+                SpotAnim.anIntArray3248[i] = i * 4;
             for (int i = 0; i < 64; i++)
-                Class40_Sub5_Sub17_Sub6.anIntArray3248[64 + i] = 255 + i * 262144;
+                SpotAnim.anIntArray3248[64 + i] = 255 + i * 262144;
             for (int i = 0; i < 64; i++)
-                Class40_Sub5_Sub17_Sub6.anIntArray3248[128 + i] = i * 1024 + 16711935;
+                SpotAnim.anIntArray3248[128 + i] = i * 1024 + 16711935;
             for (int i = 0; i < 64; i++)
-                Class40_Sub5_Sub17_Sub6.anIntArray3248[192 + i] = 16777215;
+                SpotAnim.anIntArray3248[192 + i] = 16777215;
             MovedStatics.anIntArray1013 = new int[256];
             MovedStatics.anIntArray1445 = new int[32768];
             Landscape.anIntArray1168 = new int[32768];
             FramemapDefinition.method879(null);
-            Class40_Sub5_Sub17_Sub6.anIntArray3255 = new int[32768];
+            SpotAnim.anIntArray3255 = new int[32768];
             Native.username = Configuration.getUsername();
             Native.password = Configuration.getPassword();
             MovedStatics.anIntArray178 = new int[32768];

@@ -185,7 +185,7 @@ public class MovedStatics {
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631 = null;
             Class51.aProducingGraphicsBuffer_1206 = null;
             Landscape.anIntArray1168 = null;
-            Class40_Sub5_Sub17_Sub6.anIntArray3255 = null;
+            SpotAnim.anIntArray3255 = null;
             Class59.imgLoginScreenButton = null;
             anIntArray1445 = null;
             Class40_Sub5_Sub15.loginScreenBox = null;
@@ -195,7 +195,7 @@ public class MovedStatics {
             GameObjectDefinition.aProducingGraphicsBuffer_2524 = null;
             Class39.aClass40_Sub5_Sub14_Sub4_918 = null;
             MovedStatics.aClass40_Sub5_Sub14_Sub2Array535 = null;
-            Class40_Sub5_Sub17_Sub6.anIntArray3248 = null;
+            SpotAnim.anIntArray3248 = null;
             MovedStatics.loginBoxGraphics = null;
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = null;
             anIntArray178 = null;
@@ -335,17 +335,17 @@ public class MovedStatics {
     }
 
     public static void method1000() {
-        for (Class40_Sub5_Sub17_Sub6 class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.peekFirst(); class40_sub5_sub17_sub6 != null; class40_sub5_sub17_sub6 = (Class40_Sub5_Sub17_Sub6) Class57.aLinkedList_1332.pollFirst()) {
-            if (Player.worldLevel == class40_sub5_sub17_sub6.anInt3239 && !class40_sub5_sub17_sub6.aBoolean3237) {
-                if (pulseCycle >= class40_sub5_sub17_sub6.anInt3230) {
-                    class40_sub5_sub17_sub6.method834(anInt199);
-                    if (class40_sub5_sub17_sub6.aBoolean3237)
-                        class40_sub5_sub17_sub6.unlink();
+        for (SpotAnim spotAnim = (SpotAnim) Class57.aLinkedList_1332.peekFirst(); spotAnim != null; spotAnim = (SpotAnim) Class57.aLinkedList_1332.pollFirst()) {
+            if (Player.worldLevel == spotAnim.plane && !spotAnim.animationFinished) {
+                if (pulseCycle >= spotAnim.startCycle) {
+                    spotAnim.method834(anInt199);
+                    if (spotAnim.animationFinished)
+                        spotAnim.unlink();
                     else
-                        Npc.currentScene.method134(class40_sub5_sub17_sub6.anInt3239, class40_sub5_sub17_sub6.anInt3244, class40_sub5_sub17_sub6.anInt3235, class40_sub5_sub17_sub6.anInt3231, 60, class40_sub5_sub17_sub6, 0, -1, false);
+                        Npc.currentScene.method134(spotAnim.plane, spotAnim.x, spotAnim.y, spotAnim.z, 60, spotAnim, 0, -1, false);
                 }
             } else
-                class40_sub5_sub17_sub6.unlink();
+                spotAnim.unlink();
         }
     }
 
@@ -518,7 +518,7 @@ public class MovedStatics {
         OverlayDefinition.tile_underlay_path = null;
         MouseHandler.tile_overlayids = null;
         tile_underlayids = null;
-        Class40_Sub5_Sub17_Sub6.blendedHue = null;
+        SpotAnim.blendedHue = null;
     }
 
     public static void printException(String arg0, Throwable exception) {
@@ -622,7 +622,7 @@ public class MovedStatics {
         for (int i_6_ = 1; i_6_ < i - 1; i_6_++) {
             for (int i_7_ = 1; i_7_ < 127; i_7_++) {
                 int i_8_ = i_7_ + (i_6_ << 7);
-                Class40_Sub5_Sub17_Sub6.anIntArray3255[i_8_] = (anIntArray178[i_8_ + 1] + anIntArray178[i_8_ - 1] - (-anIntArray178[-128 + i_8_] - anIntArray178[128 + i_8_])) / 4;
+                SpotAnim.anIntArray3255[i_8_] = (anIntArray178[i_8_ + 1] + anIntArray178[i_8_ - 1] - (-anIntArray178[-128 + i_8_] - anIntArray178[128 + i_8_])) / 4;
             }
         }
         RSRuntimeException.anInt1641 += 128;
@@ -634,7 +634,7 @@ public class MovedStatics {
         for (int i_10_ = 1; i_10_ < -1 + i; i_10_++) {
             for (int i_11_ = 1; i_11_ < 127; i_11_++) {
                 int i_12_ = i_11_ + (i_10_ << 7);
-                int i_13_ = -(Landscape.anIntArray1168[i_12_ + RSRuntimeException.anInt1641 & -1 + Landscape.anIntArray1168.length] / 5) + Class40_Sub5_Sub17_Sub6.anIntArray3255[i_12_ + 128];
+                int i_13_ = -(Landscape.anIntArray1168[i_12_ + RSRuntimeException.anInt1641 & -1 + Landscape.anIntArray1168.length] / 5) + SpotAnim.anIntArray3255[i_12_ + 128];
                 if (i_13_ < 0)
                     i_13_ = 0;
                 anIntArray178[i_12_] = i_13_;

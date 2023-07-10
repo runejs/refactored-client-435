@@ -25,7 +25,7 @@ public class Class65 {
         SceneTile.blendedLightness = new int[104];
         AnimationSequence.tileLightIntensity = new int[105][105];
         MouseHandler.tile_overlayids = new byte[4][104][104];
-        Class40_Sub5_Sub17_Sub6.blendedHue = new int[104];
+        SpotAnim.blendedHue = new int[104];
         Class35.tile_overlay_rotation = new byte[4][104][104];
         MovedStatics.tile_underlayids = new byte[4][104][104];
     }

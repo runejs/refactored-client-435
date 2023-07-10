@@ -112,7 +112,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
                 MovedStatics.chatboxRight.drawGraphics(0, 357, graphics);
                 Class39.mapbackLeft.drawGraphics(722, 4, graphics);
                 GameObject.tabPieceLeft.drawGraphics(743, 205, graphics);
-                Class40_Sub5_Sub17_Sub6.framePieceTop.drawGraphics(0, 0, graphics);
+                SpotAnim.framePieceTop.drawGraphics(0, 0, graphics);
                 Class40_Sub7.mapBackRight.drawGraphics(516, 4, graphics);
                 MovedStatics.tabPieceUpperRight.drawGraphics(516, 205, graphics);
                 PlayerAppearance.tabPieveLowerRight.drawGraphics(496, 357, graphics);
@@ -248,7 +248,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         int i_9_ = Rasterizer3D.viewportRx;
         ImageRGB rendered = new ImageRGB(32, 32);
         Rasterizer.prepare(rendered.pixels, 32, 32);
-        Class40_Sub5_Sub17_Sub6.anIntArray3253 = Rasterizer3D.setLineOffsets(Class40_Sub5_Sub17_Sub6.anIntArray3253);
+        SpotAnim.anIntArray3253 = Rasterizer3D.setLineOffsets(SpotAnim.anIntArray3253);
         Rasterizer.drawFilledRectangle(0, 0, 32, 32, 0);
         int i_11_ = definition.zoom2d;
         if(backColour == -1)

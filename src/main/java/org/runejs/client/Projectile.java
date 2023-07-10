@@ -189,7 +189,7 @@ public class Projectile extends Renderable {
             GameObject.tabPieceLeft = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = HuffmanEncoding.method1028(arg2, Native.imgBacktop1, Native.aClass1_305);
-            Class40_Sub5_Sub17_Sub6.framePieceTop = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            SpotAnim.framePieceTop = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = HuffmanEncoding.method1028(arg2, Native.imgBackvmid1, Native.aClass1_305);
             Class40_Sub7.mapBackRight = MovedStatics.createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
@@ -627,7 +627,7 @@ public class Projectile extends Renderable {
 
     public Model getRotatedModel() {
         SpotAnimDefinition spotAnimDefinition = SpotAnimDefinition.forId(graphicsId);
-        Model class40_sub5_sub17_sub5 = spotAnimDefinition.method549(animationFrame);
+        Model class40_sub5_sub17_sub5 = spotAnimDefinition.getModel(animationFrame);
         if(class40_sub5_sub17_sub5 == null)
             return null;
         class40_sub5_sub17_sub5.method804(anInt2976);

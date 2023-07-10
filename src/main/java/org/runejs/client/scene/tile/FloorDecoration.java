@@ -190,7 +190,7 @@ public class FloorDecoration {
                 Renderable.tabHighlightImageBottomLeftEdge = null;
                 Class24.fullScreenTextureArray = null;
                 PlayerAppearance.tabPieveLowerRight = null;
-                Class40_Sub5_Sub17_Sub6.framePieceTop = null;
+                SpotAnim.framePieceTop = null;
                 Class44.chatboxBackgroundImage = null;
             }
         }

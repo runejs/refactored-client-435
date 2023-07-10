@@ -82,7 +82,7 @@ public class SpotAnimDefinition extends CachedNode {
         }
     }
 
-    public Model method549(int arg0) {
+    public Model getModel(int arg0) {
         Model model = (Model) modelCache.get((long) id);
         if (model == null) {
             model = Model.getModel(MovedStatics. aCacheArchive_2582, modelId);
