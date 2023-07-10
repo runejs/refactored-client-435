@@ -1189,7 +1189,7 @@ public class Main extends GameShell {
         }
     }
 
-    public static void method165() {
+    public static void moveTowardsTarget() {
         // TODO (James) this moves the cutscene camera towards its target, we should move this into the CutsceneCamera class
         CutsceneCamera camera = Main.cutsceneCamera;
 
@@ -1586,7 +1586,7 @@ public class Main extends GameShell {
                             WallDecoration.durationHoveredOverWidget--;
                         Item.calculateCameraPosition();
                         if(Player.cutsceneActive)
-                            method165();
+                            moveTowardsTarget();
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
                             SceneCamera.customCameraTimer[i_19_]++;
                         MovedStatics.manageTextInputs();
