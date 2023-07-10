@@ -1951,7 +1951,10 @@ public class MovedStatics {
 	    arg1.removeFocusListener(Class59.keyFocusListener);
 	}
 
-    public static void method450() {
+    /**
+     * Draws the 2d yellow arrow hint icon in the world.
+     */
+    public static void drawPositionHintIcon() {
         if (Player.headIconDrawType != 2) {
             return;
         }

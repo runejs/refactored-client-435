@@ -867,8 +867,8 @@ public class Main extends GameShell {
 
         Npc.currentScene.render(activeCamera, i);
         Npc.currentScene.clearInteractiveObjectCache();
-        Class33.method404();
-        MovedStatics.method450();
+        Class33.draw2DActorAttachments();
+        MovedStatics.drawPositionHintIcon();
         ((Class35) Rasterizer3D.interface3).method425(MovedStatics.anInt199);
         KeyFocusListener.draw3dScreen();
 

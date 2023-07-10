@@ -21,7 +21,12 @@ public class Class33 {
     public static int[] selectedMenuActions = new int[500];
 
 
-    public static void method404() {
+    /**
+     * Renders headicons, chat, healthbar, hitsplats, etc.
+     *
+     * Anything that is a 2D item attached to an actor in the world.
+     */
+    public static void draw2DActorAttachments() {
         SceneCluster.anInt770 = 0;
         for(int i = -1; Player.localPlayerCount + Player.npcCount > i; i++) {
             Actor actor;
