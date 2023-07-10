@@ -30,19 +30,23 @@ public class Class37 {
         anInt874 = 0;
     }
 
-    public static int getFloorDrawHeight(int plane, int x, int y) {
+    public static int getFloorDrawHeight(int plane, int x, int y, int[][][] tileHeights, byte[][][] tileFlags) {
         int groundX = x >> 7;
         int groundY = y >> 7;
         if(groundX < 0 || groundY < 0 || groundX > 103 || groundY > 103)
             return 0;
         int groundZ = plane;
-        if(groundZ < 3 && (OverlayDefinition.tile_flags[1][groundX][groundY] & 0x2) == 2)
+        if(groundZ < 3 && (tileFlags[1][groundX][groundY] & 0x2) == 2)
             groundZ++;
         int _x = 0x7f & x;
         int _y = y & 0x7f;
-        int i2 = (-_x + 128) * MovedStatics.tile_height[groundZ][groundX][groundY] + _x * MovedStatics.tile_height[groundZ][groundX + 1][groundY] >> 7;
-        int j2 = _x * MovedStatics.tile_height[groundZ][1 + groundX][1 + groundY] + MovedStatics.tile_height[groundZ][groundX][1 + groundY] * (128 + -_x) >> 7;
+        int i2 = (-_x + 128) * tileHeights[groundZ][groundX][groundY] + _x * tileHeights[groundZ][groundX + 1][groundY] >> 7;
+        int j2 = _x * tileHeights[groundZ][1 + groundX][1 + groundY] + tileHeights[groundZ][groundX][1 + groundY] * (128 + -_x) >> 7;
         return (128 + -_y) * i2 + j2 * _y >> 7;
+    }
+
+    public static int getFloorDrawHeight(int plane, int x, int y) {
+        return getFloorDrawHeight(plane, x, y, MovedStatics.tile_height, OverlayDefinition.tile_flags);
     }
 
 
