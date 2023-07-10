@@ -58,15 +58,18 @@ public class DebugTools {
         }
     }
 
-    public static boolean clippingEnabled = false;
+    public static int clippingRenderDistance = 0;
 
     public static void drawClipping() {
-        if (!clippingEnabled) {
+        if (clippingRenderDistance == 0) {
             return;
         }
 
-        for (int x = 0; x < 104; x++) {
-            for (int y = 0; y < 104; y++) {
+        int tileX = Player.localPlayer.worldX >> 7;
+        int tileY = Player.localPlayer.worldY >> 7;
+
+        for (int x = Math.max(0, tileX - clippingRenderDistance); x < Math.min(104, tileX + clippingRenderDistance); x++) {
+            for (int y = Math.max(0, tileY - clippingRenderDistance); y < Math.min(104, tileY + clippingRenderDistance); y++) {
                 int data = Landscape.currentCollisionMap[Player.worldLevel].clippingData[x][y];
 
                 Point2d screenPos = MovedStatics.getProjectedScreenPosition(0, y * 128 + 64, x * 128 + 64);
