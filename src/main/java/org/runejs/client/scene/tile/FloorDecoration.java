@@ -15,6 +15,7 @@ import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.IncomingPackets;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
+import org.runejs.client.scene.Point2d;
 import org.runejs.client.util.SignlinkNode;
 import org.runejs.client.*;
 
@@ -33,7 +34,16 @@ public class FloorDecoration {
     public int z;
 
     public static void method342(int arg1, Actor arg2) {
-        MovedStatics.getProjectedScreenPosition(arg1, arg2.worldY, arg2.worldX);
+        Point2d screenPos = MovedStatics.getProjectedScreenPosition(arg1, arg2.worldY, arg2.worldX);
+
+        if (screenPos == null) {
+            Class44.anInt1048 = -1;
+            ISAAC.anInt522 = -1;
+            return;
+        }
+
+        Class44.anInt1048 = screenPos.y;
+        ISAAC.anInt522 = screenPos.x;
     }
 
     public static void constructMapRegion(boolean generatedMap) {

@@ -1951,22 +1951,27 @@ public class MovedStatics {
 	    arg1.removeFocusListener(Class59.keyFocusListener);
 	}
 
-	public static void method450() {
-	    if (Player.headIconDrawType == 2) {
-	        MovedStatics.getProjectedScreenPosition(2 * ActorDefinition.hintIconPosZ, Class35.hintIconInnerPosY + (-Class26.baseY + hintIconPosY << 7), (ProducingGraphicsBuffer.hintIconPosX + -baseX << 7) + Landscape.hintIconInnerPosX);
-	        if (ISAAC.anInt522 > -1 && pulseCycle % 20 < 10)
-	            hintIconSprites[0].drawImage(ISAAC.anInt522 + -12, -28 + Class44.anInt1048);
-	    }
-	}
+    public static void method450() {
+        if (Player.headIconDrawType != 2) {
+            return;
+        }
+
+        Point2d screenPos = MovedStatics.getProjectedScreenPosition(2 * ActorDefinition.hintIconPosZ, Class35.hintIconInnerPosY + (-Class26.baseY + hintIconPosY << 7), (ProducingGraphicsBuffer.hintIconPosX + -baseX << 7) + Landscape.hintIconInnerPosX);
+
+        if (screenPos == null) {
+            return;
+        }
+
+        if (pulseCycle % 20 < 10)
+            hintIconSprites[0].drawImage(screenPos.x - 12, screenPos.y - 28);
+    }
 
     /**
      * Project 3d pos to 3d
      */
-    public static void getProjectedScreenPosition(int z, int y, int x) {
+    public static Point2d getProjectedScreenPosition(int z, int y, int x) {
         if (x < 128 || y < 128 || x > 13056 || y > 13056) {
-            Class44.anInt1048 = -1;
-            ISAAC.anInt522 = -1;
-            return;
+            return null;
         }
 
         int drawHeight = Scene.getFloorDrawHeight(Player.worldLevel, x, y) - z;
@@ -1990,19 +1995,20 @@ public class MovedStatics {
         y = y * cosinePitch + drawHeight * sinePitch >> 16;
         drawHeight = tmp;
 
-        // statics to hold entity draw location
+        // TODO (jkm) why don't we draw below y=50?
         if (y < 50) {
-            Class44.anInt1048 = -1;
-            ISAAC.anInt522 = -1;
-        } else {
-            if (ScreenController.frameMode == ScreenMode.FIXED) {
-                ISAAC.anInt522 = 256 + (x << 9) / y;
-                Class44.anInt1048 = (drawHeight << 9) / y + 167;
-            } else {
-                ISAAC.anInt522 = ScreenController.drawWidth / 2 + (x << 9) / y;
-                Class44.anInt1048 = (drawHeight << 9) / y + ScreenController.drawHeight / 2;
-            }
+            return null;
+        }
 
+        return new Point2d((x << 9) / y, (drawHeight << 9) / y)
+            .add(getScreenMidpoint());
+    }
+
+    public static Point2d getScreenMidpoint() {
+        if (ScreenController.frameMode == ScreenMode.FIXED) {
+            return new Point2d(256, 167);
+        } else {
+            return new Point2d(ScreenController.drawWidth / 2, ScreenController.drawHeight / 2);
         }
     }
 
