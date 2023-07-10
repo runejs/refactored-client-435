@@ -13,6 +13,7 @@ import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.UpdateServer;
+import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCamera;
 import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.sound.MusicSystem;
@@ -49,7 +50,7 @@ public class Item extends Renderable {
             originY += (-originY + localPlayer3dPosY) / 16;
 
         // update the camera's Z origin - this wasn't originally here, but it makes sense to do it with the other origins
-        int cameraOriginZ = Class37.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY) - 50;
+        int cameraOriginZ = Scene.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY) - 50;
 
         Main.playerCamera.setOrigin(originX, originY, cameraOriginZ);
 
@@ -82,7 +83,7 @@ public class Item extends Renderable {
         int i_3_ = 0;
         int i_1_ = originY >> 7;
         int i_2_ = originX >> 7;
-        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, originX, originY);
+        int i_4_ = Scene.getFloorDrawHeight(Player.worldLevel, originX, originY);
         if (i_2_ > 3 && i_1_ > 3 && i_2_ < 100 && i_1_ < 100) {
             for (int i_5_ = -4 + i_2_; i_5_ <= 4 + i_2_; i_5_++) {
                 for (int i_6_ = -4 + i_1_; 4 + i_1_ >= i_6_; i_6_++) {

@@ -1,6 +1,5 @@
 package org.runejs.client.message.handler.rs435.misc;
 
-import org.runejs.client.Class37;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;
@@ -10,6 +9,7 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.misc.TransformPlayerToObjectInboundMessage;
+import org.runejs.client.scene.Scene;
 
 public class TransformPlayerToObjectMessageHandler implements MessageHandler<TransformPlayerToObjectInboundMessage> {
     @Override
@@ -60,7 +60,7 @@ public class TransformPlayerToObjectMessageHandler implements MessageHandler<Tra
                 }
                 player.anInt3271 = x * 128 + 64 * sizeX;
                 player.anInt3291 = y * 128 + 64 * sizeY;
-                player.anInt3272 = Class37.getFloorDrawHeight(Player.worldLevel, player.anInt3271, player.anInt3291);
+                player.anInt3272 = Scene.getFloorDrawHeight(Player.worldLevel, player.anInt3271, player.anInt3291);
                 player.anInt3281 = unknownYMin + y;
                 player.anInt3258 = x + unknownXMin;
                 player.anInt3262 = x + unknownXMax;

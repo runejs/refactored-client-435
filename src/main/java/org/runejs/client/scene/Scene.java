@@ -3,6 +3,8 @@ package org.runejs.client.scene;
 import org.runejs.client.Class13;
 import org.runejs.client.Landscape;
 import org.runejs.client.LinkedList;
+import org.runejs.client.MovedStatics;
+import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Model;
@@ -2074,5 +2076,27 @@ public class Scene {
         int b2 = (mouseY - pointCY) * (pointAX - pointCX) - (mouseX - pointCX) * (pointAY - pointCY);
         int b3 = (mouseY - pointBY) * (pointCX - pointBX) - (mouseX - pointBX) * (pointCY - pointBY);
         return b1 * b3 > 0 && b3 * b2 > 0;
+    }
+
+    /**
+     * Get the floor height at a given x,y coordinate in 3d space
+     */
+    public static int getFloorDrawHeight(int plane, int x, int y, int[][][] tileHeights, byte[][][] tileFlags) {
+        int groundX = x >> 7;
+        int groundY = y >> 7;
+        if(groundX < 0 || groundY < 0 || groundX > 103 || groundY > 103)
+            return 0;
+        int groundZ = plane;
+        if(groundZ < 3 && (tileFlags[1][groundX][groundY] & 0x2) == 2) // bridge tile
+            groundZ++;
+        int _x = 0x7f & x;
+        int _y = y & 0x7f;
+        int i2 = (-_x + 128) * tileHeights[groundZ][groundX][groundY] + _x * tileHeights[groundZ][groundX + 1][groundY] >> 7;
+        int j2 = _x * tileHeights[groundZ][1 + groundX][1 + groundY] + tileHeights[groundZ][groundX][1 + groundY] * (128 + -_x) >> 7;
+        return (128 + -_y) * i2 + j2 * _y >> 7;
+    }
+
+    public static int getFloorDrawHeight(int plane, int x, int y) {
+        return getFloorDrawHeight(plane, x, y, MovedStatics.tile_height, OverlayDefinition.tile_flags);
     }
 }

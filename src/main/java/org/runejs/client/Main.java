@@ -1195,7 +1195,7 @@ public class Main extends GameShell {
 
         int i = camera.getMoveTo().y;
         int i_3_ = camera.getMoveTo().x;
-        int i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) - camera.getMoveTo().z;
+        int i_4_ = Scene.getFloorDrawHeight(Player.worldLevel, i_3_, i) - camera.getMoveTo().z;
 
         int newX = camera.getPosition().x;
         int newY = camera.getPosition().y;
@@ -1238,7 +1238,7 @@ public class Main extends GameShell {
 
         i_3_ = camera.getLookAt().x;
         i = camera.getLookAt().y;
-        i_4_ = Class37.getFloorDrawHeight(Player.worldLevel, i_3_, i) - camera.getLookAt().z;
+        i_4_ = Scene.getFloorDrawHeight(Player.worldLevel, i_3_, i) - camera.getLookAt().z;
         int i_5_ = -newZ + i_4_;
         int i_6_ = i - newY;
         int i_7_ = i_3_ - newX;

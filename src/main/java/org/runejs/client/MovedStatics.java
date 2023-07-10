@@ -359,7 +359,7 @@ public class MovedStatics {
 
         Point3d cameraPos = Main.cutsceneCamera.getPosition();
 
-        int i = Class37.getFloorDrawHeight(Player.worldLevel, cameraPos.x, cameraPos.y);
+        int i = Scene.getFloorDrawHeight(Player.worldLevel, cameraPos.x, cameraPos.y);
         if (i + -cameraPos.z < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][cameraPos.x >> 7][cameraPos.y >> 7] & 0x4) != 0)
             return Player.worldLevel;
         return 3;
@@ -443,7 +443,7 @@ public class MovedStatics {
                     if (projectile.entityIndex > 0) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[-1 + projectile.entityIndex];
                         if (class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.worldX >= 0 && class40_sub5_sub17_sub4_sub2.worldX < 13312 && class40_sub5_sub17_sub4_sub2.worldY >= 0 && class40_sub5_sub17_sub4_sub2.worldY < 13312)
-                            projectile.trackTarget(pulseCycle, 61 + -61, class40_sub5_sub17_sub4_sub2.worldY, Class37.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub2.worldX, class40_sub5_sub17_sub4_sub2.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub2.worldX);
+                            projectile.trackTarget(pulseCycle, 61 + -61, class40_sub5_sub17_sub4_sub2.worldY, Scene.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub2.worldX, class40_sub5_sub17_sub4_sub2.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub2.worldX);
                     }
                     if (projectile.entityIndex < 0) {
                         int i = -1 + -projectile.entityIndex;
@@ -453,7 +453,7 @@ public class MovedStatics {
                         else
                             class40_sub5_sub17_sub4_sub1 = Player.localPlayer;
                         if (class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.worldX >= 0 && class40_sub5_sub17_sub4_sub1.worldX < 13312 && class40_sub5_sub17_sub4_sub1.worldY >= 0 && class40_sub5_sub17_sub4_sub1.worldY < 13312)
-                            projectile.trackTarget(pulseCycle, 0, class40_sub5_sub17_sub4_sub1.worldY, Class37.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub1.worldX, class40_sub5_sub17_sub4_sub1.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub1.worldX);
+                            projectile.trackTarget(pulseCycle, 0, class40_sub5_sub17_sub4_sub1.worldY, Scene.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub1.worldX, class40_sub5_sub17_sub4_sub1.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub1.worldX);
                     }
                     projectile.move(anInt199);
                     Npc.currentScene.method134(Player.worldLevel, (int) projectile.currentX, (int) projectile.currentY, (int) projectile.currentHeight, 60, projectile, projectile.anInt3013, -1, false);
@@ -1960,7 +1960,7 @@ public class MovedStatics {
 	        Class44.anInt1048 = -1;
 	        ISAAC.anInt522 = -1;
 	    } else {
-	        int i = Class37.getFloorDrawHeight(Player.worldLevel, arg2, arg1) + -arg0;
+	        int i = Scene.getFloorDrawHeight(Player.worldLevel, arg2, arg1) + -arg0;
 
             Point3d cameraPos = Main.getActiveCamera().getPosition();
             CameraRotation rotation = Main.getActiveCamera().getRotation();

@@ -18,6 +18,7 @@ import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.*;
+import org.runejs.client.scene.Scene;
 
 import java.awt.*;
 
@@ -174,7 +175,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
                     if(!npc.actorDefinition.isClickable) {
                         i_15_ += -2147483648;
                     }
-                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, Class37.getFloorDrawHeight(Player.worldLevel, npc.worldX + (-1 + npc.anInt3096) * 64, npc.anInt3096 * 64 + -64 + npc.worldY), -64 + npc.anInt3096 * 64 + 60, npc, npc.anInt3118, i_15_, npc.aBoolean3105);
+                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, Scene.getFloorDrawHeight(Player.worldLevel, npc.worldX + (-1 + npc.anInt3096) * 64, npc.anInt3096 * 64 + -64 + npc.worldY), -64 + npc.anInt3096 * 64 + 60, npc, npc.anInt3118, i_15_, npc.aBoolean3105);
                 }
             }
         }
