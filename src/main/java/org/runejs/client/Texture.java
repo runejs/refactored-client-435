@@ -59,61 +59,57 @@ public class Texture extends Node {
     }
 
     public void animate(int deltaT) {
-        if(pixels != null) {
-            // up or down
-            if(animateDirection == 1 || animateDirection == 3) {
-                if(animationPixels == null || animationPixels.length < pixels.length)
-                    animationPixels = new int[pixels.length];
-                int dimension;
-                if(pixels.length == 16384)
-                    dimension = 64;
-                else
-                    dimension = 128;
-                int quarterLength = pixels.length / 4;
-                int offset = dimension * deltaT * animateSpeed;
-                int i_2_ = quarterLength - 1;
-                if(animateDirection == 1)
-                    offset = -offset;
-                for(int counter = 0; counter < quarterLength; counter++) {
-                    int index = counter + offset & i_2_;
-                    animationPixels[counter] = pixels[index];
-                    animationPixels[counter + quarterLength] = pixels[index + quarterLength];
-                    animationPixels[counter + quarterLength + quarterLength] = pixels[index + quarterLength + quarterLength];
-                    animationPixels[counter + quarterLength + quarterLength + quarterLength] = pixels[index + quarterLength + quarterLength + quarterLength];
-                }
-                int[] tmp = pixels;
-                pixels = animationPixels;
-                animationPixels = tmp;
-            }
-            // left or right
-            if(animateDirection == 2 || animateDirection == 4) {
-                if(animationPixels == null || animationPixels.length < pixels.length)
-                    animationPixels = new int[pixels.length];
-                int dimension;
-                if(pixels.length == 16384)
-                    dimension = 64;
-                else
-                    dimension = 128;
-                int quarterLength = pixels.length / 4;
-                int offset = deltaT * animateSpeed;
-                int i_7_ = dimension - 1;
-                if(animateDirection == 2)
-                    offset = -offset;
-                for(int counter = 0; counter < quarterLength; counter += dimension) {
-                    for(int d = 0; d < dimension; d++) {
-                        int index = counter + d;
-                        int otherIndex = counter + (d + offset & i_7_);
-                        animationPixels[index] = pixels[otherIndex];
-                        animationPixels[index + quarterLength] = pixels[otherIndex + quarterLength];
-                        animationPixels[index + quarterLength + quarterLength] = pixels[otherIndex + quarterLength + quarterLength];
-                        animationPixels[index + quarterLength + quarterLength + quarterLength] = pixels[otherIndex + quarterLength + quarterLength + quarterLength];
-                    }
-                }
-                int[] tmp = pixels;
-                pixels = animationPixels;
-                animationPixels = tmp;
+        if (pixels == null) {
+            return;
+        }
+
+        if (animationPixels == null || animationPixels.length < pixels.length)
+            animationPixels = new int[pixels.length];
+
+        int dimension;
+        if (pixels.length == 16384)
+            dimension = 64;
+        else
+            dimension = 128;
+
+        // TODO (jkm) what is this quarterLength? Are there 4 "channels" (i.e. rgb (a?)) in the pixel array?
+        int quarterLength = pixels.length / 4;
+
+        // up or down
+        if (animateDirection == 1 || animateDirection == 3) {
+            int offset = dimension * deltaT * animateSpeed;
+            int i_2_ = quarterLength - 1;
+            if (animateDirection == 1)
+                offset = -offset;
+            for (int counter = 0; counter < quarterLength; counter++) {
+                int index = counter + offset & i_2_;
+                animationPixels[counter] = pixels[index];
+                animationPixels[counter + quarterLength] = pixels[index + quarterLength];
+                animationPixels[counter + quarterLength + quarterLength] = pixels[index + quarterLength + quarterLength];
+                animationPixels[counter + quarterLength + quarterLength + quarterLength] = pixels[index + quarterLength + quarterLength + quarterLength];
             }
         }
+        // left or right
+        if (animateDirection == 2 || animateDirection == 4) {
+            int offset = deltaT * animateSpeed;
+            int i_7_ = dimension - 1;
+            if (animateDirection == 2)
+                offset = -offset;
+            for (int counter = 0; counter < quarterLength; counter += dimension) {
+                for (int d = 0; d < dimension; d++) {
+                    int index = counter + d;
+                    int otherIndex = counter + (d + offset & i_7_);
+                    animationPixels[index] = pixels[otherIndex];
+                    animationPixels[index + quarterLength] = pixels[otherIndex + quarterLength];
+                    animationPixels[index + quarterLength + quarterLength] = pixels[otherIndex + quarterLength + quarterLength];
+                    animationPixels[index + quarterLength + quarterLength + quarterLength] = pixels[otherIndex + quarterLength + quarterLength + quarterLength];
+                }
+            }
+        }
+
+        int[] tmp = pixels;
+        pixels = animationPixels;
+        animationPixels = tmp;
     }
 
     public boolean method869(double arg0, int textureSize, CacheArchive imageArchive) {
