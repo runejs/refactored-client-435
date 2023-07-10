@@ -71,7 +71,7 @@ public class SphericalCamera extends GameCamera {
     }
 
     public void setZoom(int zoom) {
-        this.zoom = zoom;
+        this.zoom = Math.max(150, Math.min(zoom, 1600));
     }
 
     /**
