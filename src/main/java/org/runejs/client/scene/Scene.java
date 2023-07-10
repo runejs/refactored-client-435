@@ -52,21 +52,19 @@ public class Scene {
     public static SceneCluster[][] cullingClusters = new SceneCluster[anInt90][500];
     public static boolean clicked = false;
     public static int[] anIntArray117 = new int[]{160, 192, 80, 96, 0, 144, 80, 48, 160};
-    public static int anInt118;
     public static int[] anIntArray119 = new int[]{0, 0, 2, 0, 0, 2, 1, 1, 0};
     public static int[] anIntArray120 = new int[]{19, 55, 38, 155, 255, 110, 137, 205, 76};
-    public static int anInt122;
-    public static int anInt124;
+    public static int drawWidthMidpoint;
     public static int[] anIntArray125 = new int[]{2, 0, 0, 2, 0, 0, 0, 4, 4};
-    public static int anInt128;
+    public static int drawHeight;
     public static int[] anIntArray130 = new int[]{76, 8, 137, 4, 0, 1, 38, 2, 19};
     public static int[] anIntArray131 = new int[]{1, 1, 0, 0, 0, 8, 0, 0, 8};
     public static int[] anIntArray132 = new int[]{0, 4, 4, 8, 0, 0, 8, 0, 0};
     private static final int TILE_DRAW_DISTANCE = 75;
     public static boolean[][] TILE_VISIBILITY_MAP;
     public static boolean[][][][] TILE_VISIBILITY_MAPS = new boolean[8][32][(TILE_DRAW_DISTANCE * 2) + 1][(TILE_DRAW_DISTANCE * 2) + 1];
-    public static int anInt135;
-    public static int anInt136;
+    public static int drawHeightMidpoint;
+    public static int drawWidth;
 
     public SceneTile[][][] tileArray;
     public int[][][] anIntArrayArrayArray83;
@@ -102,13 +100,11 @@ public class Scene {
         initToNull();
     }
 
-    public static void method95(int arg1, int arg2, int arg3, int arg4, int[] arg0) {
-        anInt118 = 0;
-        anInt124 = 0;
-        anInt136 = arg3;
-        anInt128 = arg4;
-        anInt122 = arg3 / 2;
-        anInt135 = arg4 / 2;
+    public static void method95(int arg1, int arg2, int width, int height, int[] arg0) {
+        drawWidth = width;
+        drawHeight = height;
+        drawWidthMidpoint = width / 2;
+        drawHeightMidpoint = height / 2;
         boolean[][][][] bools = new boolean[9][32][(TILE_DRAW_DISTANCE * 2) + 3][(TILE_DRAW_DISTANCE * 2) + 3];
         for (int i = 128; i <= 384; i += 32) {
             for (int i_2_ = 0; i_2_ < 2048; i_2_ += 64) {
@@ -124,7 +120,7 @@ public class Scene {
                         int i_8_ = i_6_ * 128;
                         boolean bool = false;
                         for (int i_9_ = -arg1; i_9_ <= arg2; i_9_ += 128) {
-                            if (method113(i_7_, arg0[i_3_] + i_9_, i_8_)) {
+                            if (isPointVisibleOnScreen(i_7_, arg0[i_3_] + i_9_, i_8_)) {
                                 bool = true;
                                 break;
                             }
@@ -177,17 +173,34 @@ public class Scene {
         return (arg0 & 0xff80) + arg1;
     }
 
-    public static boolean method113(int arg0, int arg1, int arg2) {
-        int i = arg2 * curveSineX + arg0 * curveCosineX >> 16;
-        int i_145_ = arg2 * curveCosineX - arg0 * curveSineX >> 16;
-        int i_146_ = arg1 * curveSineY + i_145_ * curveCosineY >> 16;
-        int i_147_ = arg1 * curveCosineY - i_145_ * curveSineY >> 16;
-        if (i_146_ < 50/* || i_146_ > 3500*/) {
+    /**
+     * Checks if a point in 3D space projects onto the screen, after rotation and perspective transformation.
+     *
+     * @param x The x-coordinate of the point in 3D space.
+     * @param y The y-coordinate of the point in 3D space.
+     * @param z The z-coordinate of the point in 3D space.
+     * @return Returns true if the projected point falls within the screen boundaries; otherwise false.
+     */
+    public static boolean isPointVisibleOnScreen(int x, int y, int z) {
+        // Rotate around the X axis
+        int rotatedX = z * curveSineX + x * curveCosineX >> 16;
+        int rotatedZ = z * curveCosineX - x * curveSineX >> 16;
+
+        // Rotate around the Y axis
+        int rotatedY = y * curveSineY + rotatedZ * curveCosineY >> 16;
+        int finalZ = y * curveCosineY - rotatedZ * curveSineY >> 16;
+
+        // Check if the point is behind the near clipping plane (too close to the camera)
+        if (rotatedY < 50/* || rotatedY > 3500*/) {
             return false;
         }
-        int i_148_ = anInt122 + (i << 9) / i_146_;
-        int i_149_ = anInt135 + (i_147_ << 9) / i_146_;
-        return i_148_ >= anInt118 && i_148_ <= anInt136 && i_149_ >= anInt124 && i_149_ <= anInt128;
+
+        // Apply perspective division and translate to screen space
+        int screenX = drawWidthMidpoint + (rotatedX << 9) / rotatedY;
+        int screenY = drawHeightMidpoint + (finalZ << 9) / rotatedY;
+
+        // Check if the point is within the screen bounds
+        return screenX >= 0 && screenX <= drawWidth && screenY >= 0 && screenY <= drawHeight;
     }
 
 
@@ -330,6 +343,7 @@ public class Scene {
         int yaw = cameraRotation.yaw;
         int pitch = cameraRotation.pitch;
 
+        // keep the camera within bounds
         if (cameraPosX < 0) {
             cameraPosX = 0;
         } else if (cameraPosX >= mapSizeX * 128) {
@@ -340,6 +354,7 @@ public class Scene {
         } else if (cameraPosY >= mapSizeY * 128) {
             cameraPosY = mapSizeY * 128 - 1;
         }
+
         cycle++;
         curveSineY = Model.SINE[pitch];
         curveCosineY = Model.COSINE[pitch];
