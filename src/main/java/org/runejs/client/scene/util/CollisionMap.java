@@ -515,7 +515,7 @@ public class CollisionMap {
     public void markBlocked(int y, int x) {
         x -= insetX;
         y -= insetY;
-        clippingData[x][y] = BitUtils.bitWiseOR(clippingData[x][y], 2097152);
+        clippingData[x][y] = BitUtils.bitWiseOR(clippingData[x][y], 0x200000);
     }
 
     public boolean reachedFacingObject(int currentX, int currentY, int goalX, int goalY, int goalDX, int goalDY, int surroundings) {
@@ -643,7 +643,7 @@ public class CollisionMap {
     }
 
     public void orClipTable(int x, int y, int flag) {
-        clippingData[x][y] = BitUtils.bitWiseAND(clippingData[x][y], -flag + 16777215);
+        clippingData[x][y] = BitUtils.bitWiseAND(clippingData[x][y], -flag + 0xffffff);
     }
 
     public boolean reachedWallDecoration(int currentX, int currentY, int goalX, int goalY, int goalPosition, int goalOrientation) {
