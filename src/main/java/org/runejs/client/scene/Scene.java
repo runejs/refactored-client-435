@@ -24,9 +24,8 @@ public class Scene {
     public static int clickedTileY = -1;
     public static int hoveredTileY = -1;
     public static int hoveredTileX = -1;
-    public static int curveSineY;
+    public static int renderCameraPitchSine;
     public static int mapBoundsX;
-    public static int anInt85 = 0;
     public static int cycle;
     public static int currentPositionY;
     public static boolean lowMemory = true;
@@ -37,16 +36,16 @@ public class Scene {
     public static int currentPositionX;
     public static int anInt96 = 0;
     public static int cameraPosY;
-    public static int curveCosineX;
+    public static int renderCameraYawCosine;
     public static int cameraPositionTileY;
     public static int[] cullingClusterPointer = new int[anInt90];
     public static int[] faceOffsetY3 = new int[]{45, 45, -45, -45};
-    public static int curveSineX;
+    public static int renderCameraYawSine;
     public static InteractiveObject[] interactiveObjects = new InteractiveObject[100];
     public static SceneCluster[] processedCullingClusters = new SceneCluster[500];
     public static LinkedList tileList = new LinkedList();
     public static int anInt109 = 0;
-    public static int curveCosineY;
+    public static int renderCameraPitchCosine;
     public static int mapBoundsY;
     public static int[] faceOffsetY2 = new int[]{-53, -53, 53, 53};
     public static SceneCluster[][] cullingClusters = new SceneCluster[anInt90][500];
@@ -129,10 +128,10 @@ public class Scene {
         for (int pitch = 128; pitch <= 384; pitch += 32) {
             // Iterating over different camera yaw angles (from 0 to 2048)
             for (int yaw = 0; yaw < 2048; yaw += 64) {
-                curveSineY = Model.SINE[pitch];
-                curveCosineY = Model.COSINE[pitch];
-                curveSineX = Model.SINE[yaw];
-                curveCosineX = Model.COSINE[yaw];
+                renderCameraPitchSine = Model.SINE[pitch];
+                renderCameraPitchCosine = Model.COSINE[pitch];
+                renderCameraYawSine = Model.SINE[yaw];
+                renderCameraYawCosine = Model.COSINE[yaw];
 
                 int pitchIndex = (pitch - 128) / 32;
                 int yawIndex = yaw / 64;
@@ -219,12 +218,12 @@ public class Scene {
      */
     public static boolean isPointVisibleOnScreen(int x, int y, int z) {
         // Rotate around the X axis
-        int rotatedX = z * curveSineX + x * curveCosineX >> 16;
-        int rotatedZ = z * curveCosineX - x * curveSineX >> 16;
+        int rotatedX = z * renderCameraYawSine + x * renderCameraYawCosine >> 16;
+        int rotatedZ = z * renderCameraYawCosine - x * renderCameraYawSine >> 16;
 
         // Rotate around the Y axis
-        int rotatedY = y * curveSineY + rotatedZ * curveCosineY >> 16;
-        int finalZ = y * curveCosineY - rotatedZ * curveSineY >> 16;
+        int rotatedY = y * renderCameraPitchSine + rotatedZ * renderCameraPitchCosine >> 16;
+        int finalZ = y * renderCameraPitchCosine - rotatedZ * renderCameraPitchSine >> 16;
 
         // Check if the point is behind the near clipping plane (too close to the camera)
         if (rotatedY < 50/* || rotatedY > 3500*/) {
@@ -392,17 +391,16 @@ public class Scene {
         }
 
         cycle++;
-        curveSineY = Model.SINE[pitch];
-        curveCosineY = Model.COSINE[pitch];
-        curveSineX = Model.SINE[yaw];
-        curveCosineX = Model.COSINE[yaw];
+        renderCameraPitchSine = Model.SINE[pitch];
+        renderCameraPitchCosine = Model.COSINE[pitch];
+        renderCameraYawSine = Model.SINE[yaw];
+        renderCameraYawCosine = Model.COSINE[yaw];
         TILE_VISIBILITY_MAP = TILE_VISIBILITY_MAPS[(pitch - 128) / 32][yaw / 64];
         Scene.cameraPosX = cameraPosX;
         Scene.cameraPosZ = cameraPosZ;
         Scene.cameraPosY = cameraPosY;
         cameraPositionTileX = cameraPosX / 128;
         cameraPositionTileY = cameraPosY / 128;
-        anInt85 = plane;
         currentPositionX = cameraPositionTileX - TILE_DRAW_DISTANCE;
         if (currentPositionX < 0) {
             currentPositionX = 0;
@@ -419,7 +417,7 @@ public class Scene {
         if (mapBoundsY > mapSizeY) {
             mapBoundsY = mapSizeY;
         }
-        processCulling();
+        processCulling(plane);
         anInt109 = 0;
         for (int z = currentPositionZ; z < mapSizeZ; z++) {
             SceneTile[][] sceneTiles = tileArray[z];
@@ -877,19 +875,19 @@ public class Scene {
                         SceneTile sceneTile_84_ = groundTile.aSceneTile_2058;
                         if (sceneTile_84_.plainTile != null) {
                             if (!isTileOccluded(i, i_76_, 0)) {
-                                renderPlainTile(sceneTile_84_.plainTile, 0, curveSineY, curveCosineY, curveSineX, curveCosineX, i, i_76_);
+                                renderPlainTile(sceneTile_84_.plainTile, 0, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, i, i_76_);
                             }
                         } else if (sceneTile_84_.shapedTile != null && !isTileOccluded(i, i_76_, 0)) {
-                            renderShapedTile(sceneTile_84_.shapedTile, i, i_76_, curveSineX, curveCosineX, curveSineY, curveCosineY);
+                            renderShapedTile(sceneTile_84_.shapedTile, i, i_76_, renderCameraYawSine, renderCameraYawCosine, renderCameraPitchSine, renderCameraPitchCosine);
                         }
                         Wall wall = sceneTile_84_.wall;
                         if (wall != null) {
-                            wall.primary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
+                            wall.primary.renderAtPoint(0, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                         }
                         for (int i_85_ = 0; i_85_ < sceneTile_84_.entityCount; i_85_++) {
                             InteractiveObject interactiveObject = sceneTile_84_.interactiveObjects[i_85_];
                             if (interactiveObject != null) {
-                                interactiveObject.renderable.renderAtPoint(interactiveObject.rotation, curveSineY, curveCosineY, curveSineX, curveCosineX, interactiveObject.worldX - cameraPosX, interactiveObject.worldZ - cameraPosZ, interactiveObject.worldY - cameraPosY, interactiveObject.hash);
+                                interactiveObject.renderable.renderAtPoint(interactiveObject.rotation, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, interactiveObject.worldX - cameraPosX, interactiveObject.worldZ - cameraPosZ, interactiveObject.worldY - cameraPosY, interactiveObject.hash);
                             }
                         }
                     }
@@ -898,14 +896,14 @@ public class Scene {
                         if (!isTileOccluded(i, i_76_, i_78_)) {
                             bool = true;
                             try {
-                                renderPlainTile(groundTile.plainTile, i_78_, curveSineY, curveCosineY, curveSineX, curveCosineX, i, i_76_);
+                                renderPlainTile(groundTile.plainTile, i_78_, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, i, i_76_);
                             } catch (Exception e) {
 
                             }
                         }
                     } else if (groundTile.shapedTile != null && !isTileOccluded(i, i_76_, i_78_)) {
                         bool = true;
-                        renderShapedTile(groundTile.shapedTile, i, i_76_, curveSineX, curveCosineX, curveSineY, curveCosineY);
+                        renderShapedTile(groundTile.shapedTile, i, i_76_, renderCameraYawSine, renderCameraYawCosine, renderCameraPitchSine, renderCameraPitchCosine);
                     }
                     int i_86_ = 0;
                     int i_87_ = 0;
@@ -948,15 +946,15 @@ public class Scene {
                             groundTile.wallCullDirection = 0;
                         }
                         if ((wall.orientationA & i_87_) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientationA)) {
-                            wall.primary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
+                            wall.primary.renderAtPoint(0, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                         }
                         if ((wall.orientationB & i_87_) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientationB)) {
-                            wall.secondary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
+                            wall.secondary.renderAtPoint(0, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                         }
                     }
                     if (wallDecoration != null && !isOccluded(i_78_, i, i_76_, wallDecoration.renderable.modelHeight)) {
                         if ((wallDecoration.configBits & i_87_) != 0) {
-                            wallDecoration.renderable.renderAtPoint(wallDecoration.face, curveSineY, curveCosineY, curveSineX, curveCosineX, wallDecoration.x - cameraPosX, wallDecoration.z - cameraPosZ, wallDecoration.y - cameraPosY, wallDecoration.hash);
+                            wallDecoration.renderable.renderAtPoint(wallDecoration.face, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, wallDecoration.x - cameraPosX, wallDecoration.z - cameraPosZ, wallDecoration.y - cameraPosY, wallDecoration.hash);
                         } else if ((wallDecoration.configBits & 0x300) != 0) {
                             int i_88_ = wallDecoration.x - cameraPosX;
                             int i_89_ = wallDecoration.z - cameraPosZ;
@@ -977,30 +975,30 @@ public class Scene {
                             if ((wallDecoration.configBits & 0x100) != 0 && i_93_ < i_92_) {
                                 int i_94_ = i_88_ + faceOffsetX2[i_91_];
                                 int i_95_ = i_90_ + faceOffsetY2[i_91_];
-                                wallDecoration.renderable.renderAtPoint(i_91_ * 512 + 256, curveSineY, curveCosineY, curveSineX, curveCosineX, i_94_, i_89_, i_95_, wallDecoration.hash);
+                                wallDecoration.renderable.renderAtPoint(i_91_ * 512 + 256, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, i_94_, i_89_, i_95_, wallDecoration.hash);
                             }
                             if ((wallDecoration.configBits & 0x200) != 0 && i_93_ > i_92_) {
                                 int i_96_ = i_88_ + faceOffsetX3[i_91_];
                                 int i_97_ = i_90_ + faceOffsetY3[i_91_];
-                                wallDecoration.renderable.renderAtPoint(i_91_ * 512 + 1280 & 0x7ff, curveSineY, curveCosineY, curveSineX, curveCosineX, i_96_, i_89_, i_97_, wallDecoration.hash);
+                                wallDecoration.renderable.renderAtPoint(i_91_ * 512 + 1280 & 0x7ff, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, i_96_, i_89_, i_97_, wallDecoration.hash);
                             }
                         }
                     }
                     if (bool) {
                         FloorDecoration floorDecoration = groundTile.floorDecoration;
                         if (floorDecoration != null) {
-                            floorDecoration.renderable.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, floorDecoration.x - cameraPosX, floorDecoration.z - cameraPosZ, floorDecoration.y - cameraPosY, floorDecoration.hash);
+                            floorDecoration.renderable.renderAtPoint(0, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, floorDecoration.x - cameraPosX, floorDecoration.z - cameraPosZ, floorDecoration.y - cameraPosY, floorDecoration.hash);
                         }
                         GroundItemTile groundItemTile = groundTile.groundItemTile;
                         if (groundItemTile != null && groundItemTile.anInt1371 == 0) {
                             if (groundItemTile.secondGroundItem != null) {
-                                groundItemTile.secondGroundItem.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ, groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.secondGroundItem.renderAtPoint(0, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ, groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                             if (groundItemTile.thirdGroundItem != null) {
-                                groundItemTile.thirdGroundItem.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ, groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.thirdGroundItem.renderAtPoint(0, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ, groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                             if (groundItemTile.firstGroundItem != null) {
-                                groundItemTile.firstGroundItem.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ, groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.firstGroundItem.renderAtPoint(0, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ, groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                         }
                     }
@@ -1043,7 +1041,7 @@ public class Scene {
                     if (bool) {
                         Wall wall = groundTile.wall;
                         if (!isWallOccluded(i_78_, i, i_76_, wall.orientationA)) {
-                            wall.primary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
+                            wall.primary.renderAtPoint(0, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                         }
                         groundTile.wallCullDirection = 0;
                     }
@@ -1126,7 +1124,7 @@ public class Scene {
                             InteractiveObject interactiveObject = interactiveObjects[i_116_];
                             interactiveObject.cycle = cycle;
                             if (!isAreaOccluded(i_78_, interactiveObject.tileLeft, interactiveObject.tileRight, interactiveObject.tileTop, interactiveObject.tileBottom, interactiveObject.renderable.modelHeight)) {
-                                interactiveObject.renderable.renderAtPoint(interactiveObject.rotation, curveSineY, curveCosineY, curveSineX, curveCosineX, interactiveObject.worldX - cameraPosX, interactiveObject.worldZ - cameraPosZ, interactiveObject.worldY - cameraPosY, interactiveObject.hash);
+                                interactiveObject.renderable.renderAtPoint(interactiveObject.rotation, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, interactiveObject.worldX - cameraPosX, interactiveObject.worldZ - cameraPosZ, interactiveObject.worldY - cameraPosY, interactiveObject.hash);
                             }
                             for (int i_122_ = interactiveObject.tileLeft; i_122_ <= interactiveObject.tileRight; i_122_++) {
                                 for (int i_123_ = interactiveObject.tileTop; i_123_ <= interactiveObject.tileBottom; i_123_++) {
@@ -1177,20 +1175,20 @@ public class Scene {
                         GroundItemTile groundItemTile = groundTile.groundItemTile;
                         if (groundItemTile != null && groundItemTile.anInt1371 != 0) {
                             if (groundItemTile.secondGroundItem != null) {
-                                groundItemTile.secondGroundItem.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ - groundItemTile.anInt1371, groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.secondGroundItem.renderAtPoint(0, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ - groundItemTile.anInt1371, groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                             if (groundItemTile.thirdGroundItem != null) {
-                                groundItemTile.thirdGroundItem.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ - groundItemTile.anInt1371, groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.thirdGroundItem.renderAtPoint(0, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ - groundItemTile.anInt1371, groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                             if (groundItemTile.firstGroundItem != null) {
-                                groundItemTile.firstGroundItem.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ - groundItemTile.anInt1371, groundItemTile.y - cameraPosY, groundItemTile.hash);
+                                groundItemTile.firstGroundItem.renderAtPoint(0, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, groundItemTile.x - cameraPosX, groundItemTile.z - cameraPosZ - groundItemTile.anInt1371, groundItemTile.y - cameraPosY, groundItemTile.hash);
                             }
                         }
                         if (groundTile.anInt2064 != 0) {
                             WallDecoration wallDecoration = groundTile.wallDecoration;
                             if (wallDecoration != null && !isOccluded(i_78_, i, i_76_, wallDecoration.renderable.modelHeight)) {
                                 if ((wallDecoration.configBits & groundTile.anInt2064) != 0) {
-                                    wallDecoration.renderable.renderAtPoint(wallDecoration.face, curveSineY, curveCosineY, curveSineX, curveCosineX, wallDecoration.x - cameraPosX, wallDecoration.z - cameraPosZ, wallDecoration.y - cameraPosY, wallDecoration.hash);
+                                    wallDecoration.renderable.renderAtPoint(wallDecoration.face, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, wallDecoration.x - cameraPosX, wallDecoration.z - cameraPosZ, wallDecoration.y - cameraPosY, wallDecoration.hash);
                                 } else if ((wallDecoration.configBits & 0x300) != 0) {
                                     int i_129_ = wallDecoration.x - cameraPosX;
                                     int i_130_ = wallDecoration.z - cameraPosZ;
@@ -1211,22 +1209,22 @@ public class Scene {
                                     if ((wallDecoration.configBits & 0x100) != 0 && i_134_ >= i_133_) {
                                         int i_135_ = i_129_ + faceOffsetX2[i_132_];
                                         int i_136_ = i_131_ + faceOffsetY2[i_132_];
-                                        wallDecoration.renderable.renderAtPoint(i_132_ * 512 + 256, curveSineY, curveCosineY, curveSineX, curveCosineX, i_135_, i_130_, i_136_, wallDecoration.hash);
+                                        wallDecoration.renderable.renderAtPoint(i_132_ * 512 + 256, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, i_135_, i_130_, i_136_, wallDecoration.hash);
                                     }
                                     if ((wallDecoration.configBits & 0x200) != 0 && i_134_ <= i_133_) {
                                         int i_137_ = i_129_ + faceOffsetX3[i_132_];
                                         int i_138_ = i_131_ + faceOffsetY3[i_132_];
-                                        wallDecoration.renderable.renderAtPoint(i_132_ * 512 + 1280 & 0x7ff, curveSineY, curveCosineY, curveSineX, curveCosineX, i_137_, i_130_, i_138_, wallDecoration.hash);
+                                        wallDecoration.renderable.renderAtPoint(i_132_ * 512 + 1280 & 0x7ff, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, i_137_, i_130_, i_138_, wallDecoration.hash);
                                     }
                                 }
                             }
                             Wall wall = groundTile.wall;
                             if (wall != null) {
                                 if ((wall.orientationB & groundTile.anInt2064) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientationB)) {
-                                    wall.secondary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
+                                    wall.secondary.renderAtPoint(0, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                                 }
                                 if ((wall.orientationA & groundTile.anInt2064) != 0 && !isWallOccluded(i_78_, i, i_76_, wall.orientationA)) {
-                                    wall.primary.renderAtPoint(0, curveSineY, curveCosineY, curveSineX, curveCosineX, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
+                                    wall.primary.renderAtPoint(0, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, wall.x - cameraPosX, wall.z - cameraPosZ, wall.y - cameraPosY, wall.hash);
                                 }
                             }
                         }
@@ -1529,9 +1527,9 @@ public class Scene {
         return sceneTile.wall.hash;
     }
 
-    public void processCulling() {
-        int i = cullingClusterPointer[anInt85];
-        SceneCluster[] sceneClusters = cullingClusters[anInt85];
+    public void processCulling(int plane) {
+        int i = cullingClusterPointer[plane];
+        SceneCluster[] sceneClusters = cullingClusters[plane];
         anInt96 = 0;
         for (int i_172_ = 0; i_172_ < i; i_172_++) {
             SceneCluster sceneCluster = sceneClusters[i_172_];
