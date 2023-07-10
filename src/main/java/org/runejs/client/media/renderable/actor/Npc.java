@@ -67,7 +67,7 @@ public class Npc extends Actor {
                 npc.idleAnimation = npc.actorDefinition.stanceAnimation;
                 npc.walkAnimationId = npc.actorDefinition.walkAnimation;
                 npc.standTurnAnimationId = npc.actorDefinition.rotateLeftAnimation;
-                npc.anInt3096 = npc.actorDefinition.boundaryDimension;
+                npc.size = npc.actorDefinition.boundaryDimension;
                 npc.turnLeftAnimationId = npc.actorDefinition.rotate90LeftAnimation;
                 npc.turnAroundAnimationId = npc.actorDefinition.rotate180Animation;
             }

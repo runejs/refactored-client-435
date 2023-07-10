@@ -89,34 +89,34 @@ public class Projectile extends Renderable {
     }
 
 
-    public static void method762(Actor actor) {
+    public static void updateFacingDirection(Actor actor) {
         if(actor.anInt3113 != 0) {
             if(actor.facingActorIndex != -1 && actor.facingActorIndex < 32768) {
-                Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[actor.facingActorIndex];
-                if(class40_sub5_sub17_sub4_sub2 != null) {
-                    int i = -class40_sub5_sub17_sub4_sub2.worldY + actor.worldY;
-                    int i_10_ = -class40_sub5_sub17_sub4_sub2.worldX + actor.worldX;
-                    if(i_10_ != 0 || i != 0)
-                        actor.initialFaceDirection = 0x7ff & (int) (325.949 * Math.atan2((double) i_10_, (double) i));
+                Npc npc = Player.npcs[actor.facingActorIndex];
+                if(npc != null) {
+                    int deltaY = -npc.worldY + actor.worldY;
+                    int deltaX = -npc.worldX + actor.worldX;
+                    if(deltaX != 0 || deltaY != 0)
+                        actor.initialFaceDirection = 0x7ff & (int) (325.949 * Math.atan2((double) deltaX, (double) deltaY));
                 }
             }
             if(actor.facingActorIndex >= 32768) {
                 int i = -32768 + actor.facingActorIndex;
                 if(i == PlayerAppearance.anInt708)
                     i = 2047;
-                Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i];
-                if(class40_sub5_sub17_sub4_sub1 != null) {
-                    int i_11_ = actor.worldX - class40_sub5_sub17_sub4_sub1.worldX;
-                    int i_12_ = -class40_sub5_sub17_sub4_sub1.worldY + actor.worldY;
-                    if(i_11_ != 0 || i_12_ != 0)
-                        actor.initialFaceDirection = (int) (Math.atan2((double) i_11_, (double) i_12_) * 325.949) & 0x7ff;
+                Player player = Player.trackedPlayers[i];
+                if(player != null) {
+                    int deltaX = actor.worldX - player.worldX;
+                    int deltaY = -player.worldY + actor.worldY;
+                    if(deltaX != 0 || deltaY != 0)
+                        actor.initialFaceDirection = (int) (Math.atan2((double) deltaX, (double) deltaY) * 325.949) & 0x7ff;
                 }
             }
             if((actor.facePositionX != 0 || actor.facePositionY != 0) && (actor.anInt3109 == 0 || actor.anInt3074 > 0)) {
-                int i = actor.worldY - 64 * (actor.facePositionY - Class26.baseY - Class26.baseY);
-                int i_13_ = -((-MovedStatics.baseX + actor.facePositionX + -MovedStatics.baseX) * 64) + actor.worldX;
-                if(i_13_ != 0 || i != 0)
-                    actor.initialFaceDirection = 0x7ff & (int) (325.949 * Math.atan2((double) i_13_, (double) i));
+                int deltaY = actor.worldY - 64 * (actor.facePositionY - Class26.baseY - Class26.baseY);
+                int deltaX = -((-MovedStatics.baseX + actor.facePositionX + -MovedStatics.baseX) * 64) + actor.worldX;
+                if(deltaX != 0 || deltaY != 0)
+                    actor.initialFaceDirection = 0x7ff & (int) (325.949 * Math.atan2((double) deltaX, (double) deltaY));
                 actor.facePositionY = 0;
                 actor.facePositionX = 0;
             }

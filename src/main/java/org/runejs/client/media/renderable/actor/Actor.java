@@ -23,14 +23,14 @@ public abstract class Actor extends Renderable {
     public static int actorUpdatingIndex = 0;
 
     public boolean[] aBooleanArray3072;
-    public int anInt3073;
+    public int forceMoveFaceDirection;
     public int anInt3074;
     public int turnRightAnimationId;
     public int anInt3077;
     public int anInt3078;
     public int turnAroundAnimationId;
     public int initialFaceDirection;
-    public int anInt3081;
+    public int forceMoveStartY;
     public int runAnimationId;
     public int anInt3083;
     public int[] anIntArray3086;
@@ -45,23 +45,23 @@ public abstract class Actor extends Renderable {
     public int graphicDelay;
     public int anInt3094;
     public int anInt3095 = 0;
-    public int anInt3096;
+    public int size;
     public int anInt3097;
 
     /**
      * TODO rename this, maybe to `sceneX`
      */
     public int worldX;
-    public int anInt3099;
+    public int forceMoveEndX;
     public int facePositionY;
     public int maximumHitpoints;
     public int chatcolor;
     public int anInt3104;
     public boolean aBoolean3105;
-    public int anInt3107;
+    public int forceMoveStartCycle;
     public int anInt3109;
     public int graphicHeight;
-    public int anInt3112;
+    public int forceMoveEndCycle;
     public int anInt3113;
     public int anInt3115;
     public int anInt3116;
@@ -70,9 +70,9 @@ public abstract class Actor extends Renderable {
     public int anInt3120;
     public int playingAnimationDelay;
     public int chatEffects;
-    public int anInt3125;
+    public int forceMoveStartX;
     public int idleAnimation;
-    public int anInt3127;
+    public int forceMoveEndY;
     public int anInt3129;
     public int remainingHitpoints;
     public int walkAnimationId;
@@ -93,7 +93,7 @@ public abstract class Actor extends Renderable {
         runAnimationId = -1;
         turnAroundAnimationId = -1;
         aBoolean3105 = false;
-        anInt3096 = 1;
+        size = 1;
         forcedChatMessage = null;
         turnRightAnimationId = -1;
         anIntArray3086 = new int[4];
@@ -459,8 +459,8 @@ public abstract class Actor extends Renderable {
         anInt3094 = 0;
         pathY[0] = arg3;
         pathX[0] = arg0;
-        worldX = anInt3096 * 64 + pathY[0] * 128;
-        worldY = anInt3096 * 64 + pathX[0] * 128;
+        worldX = size * 64 + pathY[0] * 128;
+        worldY = size * 64 + pathX[0] * 128;
     }
 
     public void method790(int arg0) {
