@@ -2,6 +2,7 @@ package org.runejs.client;
 
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.def.SpotAnimDefinition;
+import org.runejs.client.frame.DebugTools;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.Renderable;
@@ -59,8 +60,12 @@ public class SpotAnim extends Renderable {
     }
 
     public static void renderPlayers(int arg0, boolean arg1) {
-        if(Player.localPlayer.worldX >> 7 == MovedStatics.destinationX && Player.localPlayer.worldY >> 7 == Class55.destinationY)
+        if(Player.localPlayer.worldX >> 7 == MovedStatics.destinationX && Player.localPlayer.worldY >> 7 == Class55.destinationY) {
             MovedStatics.destinationX = 0;
+
+            DebugTools.walkpathX = null;
+            DebugTools.walkpathY = null;
+        }
         int i = Player.localPlayerCount;
         if(arg1)
             i = 1;

@@ -62,6 +62,7 @@ public class Console {
         commands.add(new ClearCommand());
         commands.add(new DebugCommand());
         commands.add(new DebugViewCommand());
+        commands.add(new DebugWalkCommand());
         commands.add(new DebugWidgetsCommand());
         commands.add(new EchoCommand());
         commands.add(new PlayerRightsCommand());

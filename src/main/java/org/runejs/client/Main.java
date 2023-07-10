@@ -4,6 +4,7 @@ import org.runejs.client.cache.CacheIndex;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.CacheFileChannel;
 import org.runejs.client.frame.ChatBox;
+import org.runejs.client.frame.DebugTools;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.frame.console.Console;
@@ -871,6 +872,8 @@ public class Main extends GameShell {
         MovedStatics.drawPositionHintIcon();
         ((Class35) Rasterizer3D.interface3).animateTextures(MovedStatics.anInt199);
         KeyFocusListener.draw3dScreen();
+
+        DebugTools.drawWalkPath();
 
         if(ScreenController.frameMode == ScreenMode.FIXED) {
             Console.console.drawConsole(512, 334);
