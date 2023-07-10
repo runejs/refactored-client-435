@@ -12,7 +12,7 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
-import org.runejs.client.net.ISAAC;
+import org.runejs.client.scene.Point2d;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.FloorDecoration;
 
@@ -21,7 +21,12 @@ public class Class33 {
     public static int[] selectedMenuActions = new int[500];
 
 
-    public static void method404() {
+    /**
+     * Renders headicons, chat, healthbar, hitsplats, etc.
+     *
+     * Anything that is a 2D item attached to an actor in the world.
+     */
+    public static void draw2DActorAttachments() {
         SceneCluster.anInt770 = 0;
         for(int i = -1; Player.localPlayerCount + Player.npcCount > i; i++) {
             Actor actor;
@@ -33,53 +38,58 @@ public class Class33 {
                 actor = Player.npcs[Player.npcIds[i + -Player.localPlayerCount]];
             if(actor != null && actor.isInitialized()) {
                 if(actor instanceof Npc) {
-                    ActorDefinition actorDefinition = ((Npc) actor).actorDefinition;
-                    if(actorDefinition.childIds != null)
-                        actorDefinition = actorDefinition.getChildDefinition();
-                    if(actorDefinition == null)
+                    ActorDefinition npcDefinition = ((Npc) actor).actorDefinition;
+                    if(npcDefinition.childIds != null)
+                        npcDefinition = npcDefinition.getChildDefinition();
+                    if(npcDefinition == null)
                         continue;
                 }
                 if(Player.localPlayerCount <= i) {
-                    ActorDefinition class40_sub5_sub5 = ((Npc) actor).actorDefinition;
-                    if(class40_sub5_sub5.headIcon >= 0 && class40_sub5_sub5.headIcon < ProducingGraphicsBuffer_Sub1.headIconSprites.length) {
-                        FloorDecoration.method342(actor.anInt3117 + 15, actor);
-                        if(ISAAC.anInt522 > -1)
-                            ProducingGraphicsBuffer_Sub1.headIconSprites[class40_sub5_sub5.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -30);
+                    ActorDefinition npcDefinition = ((Npc) actor).actorDefinition;
+                    if(npcDefinition.headIcon >= 0 && npcDefinition.headIcon < ProducingGraphicsBuffer_Sub1.headIconSprites.length) {
+                        Point2d screenPos = MovedStatics.getProjectedScreenPosition(actor.anInt3117 + 15, actor.worldY, actor.worldX);
+
+                        if(screenPos != null)
+                            ProducingGraphicsBuffer_Sub1.headIconSprites[npcDefinition.headIcon].drawImage(-12 + screenPos.x, screenPos.y + -30);
                     }
                     if(Player.headIconDrawType == 1 && HuffmanEncoding.anInt1545 == Player.npcIds[-Player.localPlayerCount + i] && MovedStatics.pulseCycle % 20 < 10) {
-                        FloorDecoration.method342(15 + actor.anInt3117, actor);
-                        if(ISAAC.anInt522 > -1)
-                            MovedStatics.hintIconSprites[0].drawImage(ISAAC.anInt522 + -12, Class44.anInt1048 + -28);
+                        Point2d screenPos = MovedStatics.getProjectedScreenPosition(actor.anInt3117 + 15, actor.worldY, actor.worldX);
+                        if(screenPos != null)
+                            MovedStatics.hintIconSprites[0].drawImage(screenPos.x + -12, screenPos.y + -28);
                     }
                 } else {
-                    Player class40_sub5_sub17_sub4_sub1 = (Player) actor;
-                    int i_0_ = 30;
-                    if(class40_sub5_sub17_sub4_sub1.isSkulled != -1 || class40_sub5_sub17_sub4_sub1.headIcon != -1) {
-                        FloorDecoration.method342(15 + actor.anInt3117, actor);
-                        if(ISAAC.anInt522 > -1) {
-                            if(class40_sub5_sub17_sub4_sub1.isSkulled != -1) {
-                                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603[class40_sub5_sub17_sub4_sub1.isSkulled].drawImage(ISAAC.anInt522 - 12, Class44.anInt1048 - i_0_);
-                                i_0_ += 25;
+                    Player targetPlayer = (Player) actor;
+                    int drawHeight = 30;
+                    if(targetPlayer.isSkulled != -1 || targetPlayer.headIcon != -1) {
+                        Point2d screenPos = MovedStatics.getProjectedScreenPosition(actor.anInt3117 + 15, actor.worldY, actor.worldX);
+
+                        if (screenPos != null) {
+                            if(targetPlayer.isSkulled != -1) {
+                                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603[targetPlayer.isSkulled].drawImage(screenPos.x - 12, screenPos.y - drawHeight);
+                                drawHeight += 25;
                             }
-                            if(class40_sub5_sub17_sub4_sub1.headIcon != -1) {
-                                ProducingGraphicsBuffer_Sub1.headIconSprites[class40_sub5_sub17_sub4_sub1.headIcon].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
-                                i_0_ += 25;
+                            if(targetPlayer.headIcon != -1) {
+                                ProducingGraphicsBuffer_Sub1.headIconSprites[targetPlayer.headIcon].drawImage(screenPos.x - 12, screenPos.y - drawHeight);
+                                drawHeight += 25;
                             }
                         }
                     }
                     if(i >= 0 && Player.headIconDrawType == 10 && ProducingGraphicsBuffer.anInt1623 == Player.trackedPlayerIndices[i]) {
-                        FloorDecoration.method342(actor.anInt3117 + 15, actor);
-                        if(ISAAC.anInt522 > -1)
-                            MovedStatics.hintIconSprites[1].drawImage(-12 + ISAAC.anInt522, Class44.anInt1048 + -i_0_);
+                        Point2d screenPos = MovedStatics.getProjectedScreenPosition(actor.anInt3117 + 15, actor.worldY, actor.worldX);
+
+                        if (screenPos != null) {
+                            MovedStatics.hintIconSprites[1].drawImage(screenPos.x - 12, screenPos.y - drawHeight);
+                        }
                     }
                 }
                 if(actor.forcedChatMessage != null && (i >= Player.localPlayerCount || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 3 || ChatBox.publicChatMode == 1 && Player.hasFriend(((Player) actor).playerName))) {
-                    FloorDecoration.method342(actor.anInt3117, actor);
-                    if(ISAAC.anInt522 > -1 && 50 > SceneCluster.anInt770) {
+                    Point2d screenPos = MovedStatics.getProjectedScreenPosition(actor.anInt3117, actor.worldY, actor.worldX);
+
+                    if(screenPos != null && 50 > SceneCluster.anInt770) {
                         PlayerAppearance.anIntArray680[SceneCluster.anInt770] = TypeFace.fontBold.getStringWidth(actor.forcedChatMessage) / 2;
                         PlayerAppearance.anIntArray688[SceneCluster.anInt770] = TypeFace.fontBold.characterDefaultHeight;
-                        PlayerAppearance.anIntArray715[SceneCluster.anInt770] = ISAAC.anInt522;
-                        PlayerAppearance.anIntArray685[SceneCluster.anInt770] = Class44.anInt1048;
+                        PlayerAppearance.anIntArray715[SceneCluster.anInt770] = screenPos.x;
+                        PlayerAppearance.anIntArray685[SceneCluster.anInt770] = screenPos.y;
                         PlayerAppearance.overheadChatColor[SceneCluster.anInt770] = actor.chatcolor;
                         PlayerAppearance.overheadChatShape[SceneCluster.anInt770] = actor.chatEffects;
                         PlayerAppearance.anIntArray684[SceneCluster.anInt770] = actor.anInt3078;
@@ -88,32 +98,32 @@ public class Class33 {
                     }
                 }
                 if(MovedStatics.pulseCycle < actor.anInt3139) {
-                    FloorDecoration.method342(actor.anInt3117 + 15, actor);
-                    if(ISAAC.anInt522 > -1) {
+                    Point2d screenPos = MovedStatics.getProjectedScreenPosition(actor.anInt3117 + 15, actor.worldY, actor.worldX);
+
+                    if(screenPos != null) {
                         int i_1_ = 30 * actor.remainingHitpoints / actor.maximumHitpoints;
                         if(i_1_ > 30)
                             i_1_ = 30;
-                        Rasterizer.drawFilledRectangle(-15 + ISAAC.anInt522, Class44.anInt1048 + -3, i_1_, 5, 65280);
-                        Rasterizer.drawFilledRectangle(-15 + ISAAC.anInt522 + i_1_, Class44.anInt1048 + -3, 30 + -i_1_, 5, 16711680);
+                        Rasterizer.drawFilledRectangle(-15 + screenPos.x, screenPos.y + -3, i_1_, 5, 65280);
+                        Rasterizer.drawFilledRectangle(-15 + screenPos.x + i_1_, screenPos.y + -3, 30 + -i_1_, 5, 16711680);
                     }
                 }
                 for(int i_2_ = 0; i_2_ < 4; i_2_++) {
                     if(MovedStatics.pulseCycle < actor.anIntArray3136[i_2_]) {
-                        FloorDecoration.method342(actor.anInt3117 / 2, actor);
-                        if(ISAAC.anInt522 > -1) {
-                            if(i_2_ == 1)
-                                Class44.anInt1048 -= 20;
+                        Point2d screenPos = MovedStatics.getProjectedScreenPosition(actor.anInt3117 / 2, actor.worldY, actor.worldX);
+                        if(screenPos != null) {
+                            if(i_2_ == 1) {
+                                screenPos = screenPos.addY(-20);
+                            }
                             if(i_2_ == 2) {
-                                ISAAC.anInt522 -= 15;
-                                Class44.anInt1048 -= 10;
+                                screenPos = screenPos.add(new Point2d(-15, -10));
                             }
                             if(i_2_ == 3) {
-                                ISAAC.anInt522 += 15;
-                                Class44.anInt1048 -= 10;
+                                screenPos = screenPos.add(new Point2d(15, -10));
                             }
-                            AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474[actor.anIntArray3086[i_2_]].drawImage(ISAAC.anInt522 + -12, -12 + Class44.anInt1048);
-                            TypeFace.fontSmall.drawStringLeft(Integer.toString(actor.anIntArray3087[i_2_]), ISAAC.anInt522, 4 + Class44.anInt1048, 0);
-                            TypeFace.fontSmall.drawStringLeft(Integer.toString(actor.anIntArray3087[i_2_]), ISAAC.anInt522 - 1, Class44.anInt1048 + 3, 16777215);
+                            AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474[actor.anIntArray3086[i_2_]].drawImage(screenPos.x + -12, -12 + screenPos.y);
+                            TypeFace.fontSmall.drawStringLeft(Integer.toString(actor.anIntArray3087[i_2_]), screenPos.x, 4 + screenPos.y, 0);
+                            TypeFace.fontSmall.drawStringLeft(Integer.toString(actor.anIntArray3087[i_2_]), screenPos.x - 1, screenPos.y + 3, 16777215);
                         }
                     }
                 }
@@ -134,8 +144,9 @@ public class Class33 {
                     }
                 }
             }
-            ISAAC.anInt522 = PlayerAppearance.anIntArray715[i];
-            Class44.anInt1048 = PlayerAppearance.anIntArray685[i] = i_4_;
+            PlayerAppearance.anIntArray685[i] = i_4_;
+
+            Point2d screenPos = new Point2d(PlayerAppearance.anIntArray715[i], PlayerAppearance.anIntArray685[i]);
             String message = PlayerAppearance.overheadChatMessage[i];
             if(MovedStatics.chatEffectsDisabled == 0) {
                 int textColor = MovedStatics.OVERHEAD_CHAT_COLORS[0];
@@ -181,45 +192,45 @@ public class Class33 {
                         textColor = -(327685 * i_11_) + MovedStatics.OVERHEAD_CHAT_COLORS[5];
                 }
                 if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.NONE.getNetworkCode()) {
-                    TypeFace.fontBold.drawStringLeft(message, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
-                    TypeFace.fontBold.drawStringLeft(message, ISAAC.anInt522, Class44.anInt1048, textColor);
+                    TypeFace.fontBold.drawStringLeft(message, screenPos.x, screenPos.y + 1, 0);
+                    TypeFace.fontBold.drawStringLeft(message, screenPos.x, screenPos.y, textColor);
                 }
                 if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.WAVE.getNetworkCode()) {
-                    TypeFace.fontBold.drawCenteredStringWaveY(message, ISAAC.anInt522, Class44.anInt1048 + 1, MovedStatics.anInt2628, 0);
-                    TypeFace.fontBold.drawCenteredStringWaveY(message, ISAAC.anInt522, Class44.anInt1048, MovedStatics.anInt2628, textColor);
+                    TypeFace.fontBold.drawCenteredStringWaveY(message, screenPos.x, screenPos.y + 1, MovedStatics.anInt2628, 0);
+                    TypeFace.fontBold.drawCenteredStringWaveY(message, screenPos.x, screenPos.y, MovedStatics.anInt2628, textColor);
                 }
                 if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.WAVE2.getNetworkCode()) {
-                    TypeFace.fontBold.drawCenteredStringWaveXY(message, ISAAC.anInt522, 1 + Class44.anInt1048, MovedStatics.anInt2628, 0);
-                    TypeFace.fontBold.drawCenteredStringWaveXY(message, ISAAC.anInt522, Class44.anInt1048, MovedStatics.anInt2628, textColor);
+                    TypeFace.fontBold.drawCenteredStringWaveXY(message, screenPos.x, 1 + screenPos.y, MovedStatics.anInt2628, 0);
+                    TypeFace.fontBold.drawCenteredStringWaveXY(message, screenPos.x, screenPos.y, MovedStatics.anInt2628, textColor);
                 }
                 if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.SHAKE.getNetworkCode()) {
-                    TypeFace.fontBold.drawCenteredStringWaveXYMove(message, ISAAC.anInt522, Class44.anInt1048 + 1, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150, 0);
-                    TypeFace.fontBold.drawCenteredStringWaveXYMove(message, ISAAC.anInt522, Class44.anInt1048, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150, textColor);
+                    TypeFace.fontBold.drawCenteredStringWaveXYMove(message, screenPos.x, screenPos.y + 1, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150, 0);
+                    TypeFace.fontBold.drawCenteredStringWaveXYMove(message, screenPos.x, screenPos.y, MovedStatics.anInt2628, -PlayerAppearance.anIntArray684[i] + 150, textColor);
                 }
                 if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.SCROLL.getNetworkCode()) {
                     int i_12_ = TypeFace.fontBold.getStringWidth(message);
                     int i_13_ = (i_12_ + 100) * (150 + -PlayerAppearance.anIntArray684[i]) / 150;
-                    Rasterizer.setBounds(ISAAC.anInt522 + -50, 0, 50 + ISAAC.anInt522, 334);
-                    TypeFace.fontBold.drawString(message, -i_13_ + ISAAC.anInt522 + 50, Class44.anInt1048 + 1, 0);
-                    TypeFace.fontBold.drawString(message, 50 + ISAAC.anInt522 + -i_13_, Class44.anInt1048, textColor);
+                    Rasterizer.setBounds(screenPos.x + -50, 0, 50 + screenPos.x, 334);
+                    TypeFace.fontBold.drawString(message, -i_13_ + screenPos.x + 50, screenPos.y + 1, 0);
+                    TypeFace.fontBold.drawString(message, 50 + screenPos.x + -i_13_, screenPos.y, textColor);
                     Rasterizer.resetBounds();
                 }
                 if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.SLIDE.getNetworkCode()) {
                     int i_14_ = 0;
                     int i_15_ = 150 + -PlayerAppearance.anIntArray684[i];
-                    Rasterizer.setBounds(0, -1 + -TypeFace.fontBold.characterDefaultHeight + Class44.anInt1048, 512, 5 + Class44.anInt1048);
+                    Rasterizer.setBounds(0, -1 + -TypeFace.fontBold.characterDefaultHeight + screenPos.y, 512, 5 + screenPos.y);
                     if(i_15_ >= 25) {
                         if(i_15_ > 125)
                             i_14_ = i_15_ + -125;
                     } else
                         i_14_ = i_15_ + -25;
-                    TypeFace.fontBold.drawStringLeft(message, ISAAC.anInt522, i_14_ + Class44.anInt1048 + 1, 0);
-                    TypeFace.fontBold.drawStringLeft(message, ISAAC.anInt522, i_14_ + Class44.anInt1048, textColor);
+                    TypeFace.fontBold.drawStringLeft(message, screenPos.x, i_14_ + screenPos.y + 1, 0);
+                    TypeFace.fontBold.drawStringLeft(message, screenPos.x, i_14_ + screenPos.y, textColor);
                     Rasterizer.resetBounds();
                 }
             } else {
-                TypeFace.fontBold.drawStringLeft(message, ISAAC.anInt522, Class44.anInt1048 + 1, 0);
-                TypeFace.fontBold.drawStringLeft(message, ISAAC.anInt522, Class44.anInt1048, MovedStatics.OVERHEAD_CHAT_COLORS[0]);
+                TypeFace.fontBold.drawStringLeft(message, screenPos.x, screenPos.y + 1, 0);
+                TypeFace.fontBold.drawStringLeft(message, screenPos.x, screenPos.y, MovedStatics.OVERHEAD_CHAT_COLORS[0]);
             }
         }
     }

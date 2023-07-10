@@ -28,7 +28,6 @@ public class ISAAC {
     public static boolean aBoolean512;
     public static NodeCache aClass9_516 = new NodeCache(64);
     public static boolean aBoolean519 = true;
-    public static int anInt522 = -1;
     /**
      * The image used for the highlighted (selected) tab button,
      * for the furthest-right tab on the bottom.

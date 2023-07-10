@@ -14,7 +14,6 @@ public class Class44 implements Runnable {
     public static byte[][] aByteArrayArray1039 = new byte[250][];
     public static int modewhere = 0;
     public static IndexedImage chatboxBackgroundImage;
-    public static int anInt1048 = -1;
     public static int anInt1049 = 0;
 
 
