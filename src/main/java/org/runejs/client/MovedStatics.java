@@ -63,10 +63,6 @@ public class MovedStatics {
     public static int[] anIntArray1445;
     public static ProducingGraphicsBuffer chatboxRight;
     public static int anInt2280 = 0;
-    /**
-     * The fill colour of the scroll indicator chip.
-     */
-    public static int SCROLLBAR_COLOR_CHIP_FILL = 0x4D4233;
     public static int chatEffectsDisabled = 0;
     public static int anInt321 = 5063219;
     public static boolean redrawChatbox = false;
@@ -109,10 +105,6 @@ public class MovedStatics {
      * for the furthest-left tab on the top row.
      */
     public static IndexedImage tabHighlightImageTopLeftEdge;
-    /**
-     * The darkened edge (bottom and right) color of the scroll indicator chip.
-     */
-    public static int SCROLLBAR_COLOR_CHIP_EDGE_DARK = 0x332D25;
     public static IndexedImage tabBottomBack;
     /**
      * Up/down arrow images for the scrollbar.
