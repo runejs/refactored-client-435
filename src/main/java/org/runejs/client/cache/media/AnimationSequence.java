@@ -16,7 +16,6 @@ import org.runejs.client.node.CachedNode;
 public class AnimationSequence extends CachedNode {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
     public static int anInt2480 = 0;
-    public static ImageRGB minimapCompass;
     public static CacheArchive aCacheArchive_2484;
 
     public int[] frameLengths;

@@ -3,10 +3,7 @@ package org.runejs.client;
 import org.runejs.client.cache.CacheIndex;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.CacheFileChannel;
-import org.runejs.client.frame.ChatBox;
-import org.runejs.client.frame.DebugTools;
-import org.runejs.client.frame.ScreenController;
-import org.runejs.client.frame.ScreenMode;
+import org.runejs.client.frame.*;
 import org.runejs.client.frame.console.Console;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
@@ -765,7 +762,7 @@ public class Main extends GameShell {
         widgetSelected = 0;
         // TODO is this necessary? or should it be removed alongside other randomisation
         Main.playerCamera.setYaw(0x7ff & -10 + (int) (20.0 * Math.random()));
-        MovedStatics.minimapState = 0;
+        Minimap.minimapState = 0;
         Player.localPlayerCount = 0;
         Class55.destinationY = 0;
         for (int i = 0; i < 2048; i++) {
@@ -1054,7 +1051,7 @@ public class Main extends GameShell {
                 //            Console.console.drawConsoleArea();
             }
 
-            Class37.renderMinimap();
+            Minimap.renderMinimap();
 
 
             if(Class51.anInt1205 != -1) {
@@ -1097,7 +1094,7 @@ public class Main extends GameShell {
 
             Class43.drawTabArea();
 
-            Class37.renderMinimap();
+            Minimap.renderMinimap();
 
 
             if(Class51.anInt1205 != -1) {

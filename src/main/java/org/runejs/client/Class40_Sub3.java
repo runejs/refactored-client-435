@@ -7,6 +7,7 @@ import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
+import org.runejs.client.frame.Minimap;
 import org.runejs.client.node.Node;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.console.Console;
@@ -26,7 +27,6 @@ import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
 
 public class Class40_Sub3 extends Node {
-    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2019;
     public static int ticksPerLoop;
     public static int anInt2024 = 1;
     public static boolean showIconsRedrawnText = false;
@@ -49,7 +49,7 @@ public class Class40_Sub3 extends Node {
             Npc.currentScene = new Scene(MovedStatics.tile_height);
             for (int i = 0; i < 4; i++)
                 Landscape.currentCollisionMap[i] = new CollisionMap(104, 104);
-            MovedStatics.minimapImage = new ImageRGB(512, 512);
+            Minimap.minimapImage = new ImageRGB(512, 512);
             MovedStatics.anInt1607 = 5;
             MovedStatics.loadingPercent = 20;
             Native.currentLoadingText = English.startingGameEngine;
@@ -170,10 +170,10 @@ public class Class40_Sub3 extends Node {
             }
         } else if (MovedStatics.loadingPercent == 80) {
             int i = 0;
-            if (AnimationSequence.minimapCompass != null)
+            if (Minimap.minimapCompass != null)
                 i++;
             else
-                AnimationSequence.minimapCompass = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.compass, "");
+                Minimap.minimapCompass = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.compass, "");
             if (MovedStatics.minimapEdge == null)
                 MovedStatics.minimapEdge = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.mapEdge, "");
             else
@@ -206,16 +206,16 @@ public class Class40_Sub3 extends Node {
                 LinkedList.aClass40_Sub5_Sub14_Sub4_1057 = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.overlayMultiway, "");
             else
                 i++;
-            if (aClass40_Sub5_Sub14_Sub4Array2019 == null)
-                aClass40_Sub5_Sub14_Sub4Array2019 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapMarker, "");
+            if (Minimap.minimapMarkers == null)
+                Minimap.minimapMarkers = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapMarker, "");
             else
                 i++;
             if (Class37.cursorCross != null)
                 i++;
             else
                 Class37.cursorCross = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.cursorCross, "");
-            if (MovedStatics.mapDots == null)
-                MovedStatics.mapDots = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapDots, "");
+            if (Minimap.mapDots == null)
+                Minimap.mapDots = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapDots, "");
             else
                 i++;
             if (MovedStatics.scrollbarArrowImages == null)

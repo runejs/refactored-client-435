@@ -16,7 +16,6 @@ import java.awt.*;
 
 public class GameObject extends Renderable {
     public static MouseHandler frame = new MouseHandler();
-    public static int minimapHintCount = 0;
     public static ProducingGraphicsBuffer flameRightBackground;
     public static ProducingGraphicsBuffer tabPieceLeft;
     public static int anInt3048 = 1;

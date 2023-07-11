@@ -4,6 +4,7 @@ import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.TypeFace;
+import org.runejs.client.frame.Minimap;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.media.VertexNormal;
@@ -17,7 +18,6 @@ import org.runejs.client.*;
 public abstract class Actor extends Renderable {
 
     public static int[] anIntArray3111;
-    public static int[] minimapHintX = new int[1000];
     public static int randomiserLightness = -16 + (int) (Math.random() * 33.0);
     public static Signlink signlink;
     public static int actorUpdatingIndex = 0;
@@ -143,7 +143,7 @@ public abstract class Actor extends Renderable {
                     i_3_ = arg4;
                 int i_4_ = 4 * (-arg5 + 103) * 512 + 24624 + 4 * arg2;
                 int i_5_ = i >> 14 & 0x7fff;
-                int[] is = MovedStatics.minimapImage.pixels;
+                int[] is = Minimap.minimapImage.pixels;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_5_);
                 if(gameObjectDefinition.mapSceneID == -1) {
                     if(i_1_ == 0 || i_1_ == 2) {
@@ -229,7 +229,7 @@ public abstract class Actor extends Renderable {
                         class40_sub5_sub14_sub2.drawImage(i_13_ + arg2 * 4 + 48, 48 - (-(4 * (-arg5 + 104 + -gameObjectDefinition.sizeY)) + -i_12_));
                     }
                 } else if(i_11_ == 9) {
-                    int[] is = MovedStatics.minimapImage.pixels;
+                    int[] is = Minimap.minimapImage.pixels;
                     int i_14_ = 15658734;
                     if(i > 0)
                         i_14_ = 15597568;

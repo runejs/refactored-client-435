@@ -4,7 +4,6 @@ import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;
-import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.frame.ScreenController;
@@ -27,7 +26,6 @@ import java.awt.event.*;
 
 public class MouseHandler implements MouseListener, MouseMotionListener, FocusListener, MouseWheelListener {
     public static NodeCache modelCache = new NodeCache(50);
-    public static ImageRGB[] minimapHint = new ImageRGB[1000];
     public static int currentTickSample;
     public static Canvas gameCanvas;
     public static int clickType = 0;

@@ -9,7 +9,6 @@ import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.node.Node;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
-import org.runejs.client.media.renderable.Model;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
 
@@ -100,29 +99,6 @@ public class SceneTile extends Node {
             }
         }
         return arg2;
-    }
-
-    public static void drawOnMinimap(int x, int y, ImageRGB sprite) {
-        if (sprite == null) {
-            return;
-        }
-        int angle = 0x7ff & Main.getMinimapRotation();
-        int l = x * x + y * y;
-        if (l > 6400) {
-            return;
-        }
-        int sine = Model.SINE[angle];
-        int cosine = Model.COSINE[angle];
-        int zoom = 0;
-
-        sine = sine * 256 / (zoom + 256);
-        cosine = cosine * 256 / (zoom + 256);
-        int i_3_ = cosine * y + x * sine >> 16;
-        int i_4_ = -(y * sine) + cosine * x >> 16;
-        if (l > 2500)
-            sprite.drawTo(MovedStatics.minimapBackgroundImage, 98 + i_3_ + -(sprite.maxWidth / 2), -(sprite.maxHeight / 2) + -i_4_ + 79);
-        else
-            sprite.drawImage(4 + -(sprite.maxWidth / 2) + i_3_ + 94, -4 + -i_4_ + 83 + -(sprite.maxHeight / 2));
     }
 
     public static String getCombatLevelColour(int arg0, int arg1) {

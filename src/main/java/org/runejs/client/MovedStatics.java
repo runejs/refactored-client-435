@@ -6,6 +6,7 @@ import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
 import org.runejs.client.chat.ChatColorEffect;
 import org.runejs.client.chat.ChatShapeEffect;
+import org.runejs.client.frame.Minimap;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.frame.console.Console;
@@ -66,9 +67,7 @@ public class MovedStatics {
     public static int chatEffectsDisabled = 0;
     public static int anInt321 = 5063219;
     public static boolean redrawChatbox = false;
-    public static ImageRGB[] mapDots;
     public static CacheArchive aCacheArchive_654;
-    public static int minimapState = 0;
     public static int[] anIntArray666 = new int[]{1, 0, -1, 0};
     public static int pulseCycle = 0;
     public static int anInt938 = 500;
@@ -137,7 +136,6 @@ public class MovedStatics {
     public static int[] anIntArray852;
     public static long aLong853;
     public static int anInt854 = -1;
-    public static IndexedImage minimapBackgroundImage;
     public static int anInt2621 = 0;
     public static volatile int eventClickY = 0;
     public static int anInt2628 = 0;
@@ -166,7 +164,6 @@ public class MovedStatics {
     public static int[] anIntArray1013;
     public static IndexedImage[] moderatorIcon;
     public static int[] anIntArray2764 = new int[128];
-    public static ImageRGB minimapImage;
     public static int imageMaxHeight;
     public static IndexedImage inventoryBackgroundImage;
     public static int hoveredWidgetId = -1;
@@ -921,7 +918,7 @@ public class MovedStatics {
             int drawY = (int) (57.0 * Math.cos(angle));
             minimapEdge.drawRotated(-10 + 94 + drawX + 4, 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
         } else {
-            SceneTile.drawOnMinimap(mapY, mapX, sprite);
+            Minimap.drawOnMinimap(mapY, mapX, sprite);
         }
     }
 
@@ -1703,7 +1700,7 @@ public class MovedStatics {
 	    }
 
 	public static void method299(int arg1) {
-	    int[] is = minimapImage.pixels;
+	    int[] is = Minimap.minimapImage.pixels;
 	    int i = is.length;
 	    for(int i_0_ = 0; i > i_0_; i_0_++)
 	        is[i_0_] = 0;
@@ -1717,7 +1714,7 @@ public class MovedStatics {
 	            i_2_ += 4;
 	        }
 	    }
-	    minimapImage.method723();
+	    Minimap.minimapImage.method723();
 	    int i_4_ = (-10 + (int) (Math.random() * 20.0) + 238 << 8) + (228 + (int) (Math.random() * 20.0) << 16) + 238 + (int) (20.0 * Math.random()) + -10;
 	    int i_5_ = -10 + (int) (20.0 * Math.random()) + 238 << 16;
 	    for(int i_6_ = 1; i_6_ < 103; i_6_++) {
@@ -1728,7 +1725,7 @@ public class MovedStatics {
 	                Actor.method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
 	        }
 	    }
-	    GameObject.minimapHintCount = 0;
+	    Minimap.minimapHintCount = 0;
 	    for(int i_8_ = 0; i_8_ < 104; i_8_++) {
 	        for(int i_9_ = 0; i_9_ < 104; i_9_++) {
 	            int i_10_ = Npc.currentScene.getFloorDecorationHash(Player.worldLevel, i_8_, i_9_);
@@ -1752,10 +1749,10 @@ public class MovedStatics {
 	                                i_12_++;
 	                        }
 	                    }
-	                    MouseHandler.minimapHint[GameObject.minimapHintCount] = mapFunctionIcons[i_11_];
-	                    Actor.minimapHintX[GameObject.minimapHintCount] = i_13_;
-	                    LinkedList.minimapHintY[GameObject.minimapHintCount] = i_12_;
-	                    GameObject.minimapHintCount++;
+	                    Minimap.minimapHint[Minimap.minimapHintCount] = mapFunctionIcons[i_11_];
+	                    Minimap.minimapHintX[Minimap.minimapHintCount] = i_13_;
+	                    Minimap.minimapHintY[Minimap.minimapHintCount] = i_12_;
+	                    Minimap.minimapHintCount++;
 	                }
 	            }
 	        }
@@ -1898,7 +1895,7 @@ public class MovedStatics {
             chatboxLineOffsets = null;
             aBoolean2083 = false;
             RSCanvas.anIntArray66 = null;
-            minimapBackgroundImage = null;
+            Minimap.minimapBackgroundImage = null;
             Landscape.anIntArray1186 = null;
             Class17.chatboxTop = null;
             RSCanvas.tabBottom = null;
@@ -1908,7 +1905,7 @@ public class MovedStatics {
             WallDecoration.tabHighlightImageTopRight = null;
             Class40_Sub5_Sub15.tabIcons = null;
             Class13.tabHighlightImageBottomRight = null;
-            RSString.mapbackProducingGraphicsBuffer = null;
+            Minimap.mapbackProducingGraphicsBuffer = null;
             RSCanvas.anIntArray62 = null;
             ActorDefinition.sidebarOffsets = null;
             Class39.mapbackLeft = null;

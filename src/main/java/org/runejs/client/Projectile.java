@@ -8,6 +8,7 @@ import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.def.SpotAnimDefinition;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
+import org.runejs.client.frame.Minimap;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.io.Buffer;
@@ -160,15 +161,15 @@ public class Projectile extends Renderable {
         if(!MovedStatics.aBoolean2083) {
             MovedStatics.inventoryBackgroundImage = Main.method359(Native.invback, Native.aClass1_305, arg2);
             Class44.chatboxBackgroundImage = Main.method359(Native.chatback, Native.aClass1_305, arg2);
-            MovedStatics.minimapBackgroundImage = Main.method359(Native.mapBack, Native.aClass1_305, arg2);
+            Minimap.minimapBackgroundImage = Main.method359(Native.mapBack, Native.aClass1_305, arg2);
             Class57.bottomChatBack = Main.method359(Native.imgBackbase1, Native.aClass1_305, arg2);
             MovedStatics.tabBottomBack = Main.method359(Native.imgBackbase2, Native.aClass1_305, arg2);
             Buffer.tabTopBack = Main.method359(Native.imgBackhmid1, Native.aClass1_305, arg2);
             RSCanvas.chatBoxImageProducer = MovedStatics.createGraphicsBuffer(479, 96, arg0);
             Class44.chatboxBackgroundImage.drawImage(0, 0);
-            RSString.mapbackProducingGraphicsBuffer = MovedStatics.createGraphicsBuffer(172, 156, arg0);
+            Minimap.mapbackProducingGraphicsBuffer = MovedStatics.createGraphicsBuffer(172, 156, arg0);
             Rasterizer.resetPixels();
-            MovedStatics.minimapBackgroundImage.drawImage(0, 0);
+            Minimap.minimapBackgroundImage.drawImage(0, 0);
             MovedStatics.tabImageProducer = MovedStatics.createGraphicsBuffer(190, 261, arg0);
             MovedStatics.inventoryBackgroundImage.drawImage(0, 0);
             MovedStatics.gameScreenImageProducer = MovedStatics.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, arg0);
@@ -231,7 +232,7 @@ public class Projectile extends Renderable {
                 int i_15_ = 0;
                 int i_16_ = 999;
                 for(int x = 0; x < 34; x++) {
-                    if(MovedStatics.minimapBackgroundImage.imgPixels[MovedStatics.minimapBackgroundImage.imgWidth * y + x] == 0) {
+                    if(Minimap.minimapBackgroundImage.imgPixels[Minimap.minimapBackgroundImage.imgWidth * y + x] == 0) {
                         if(i_16_ == 999)
                             i_16_ = x;
                     } else if(i_16_ != 999) {
@@ -246,7 +247,7 @@ public class Projectile extends Renderable {
                 int maxWidth = 0;
                 int minWidth = 999;
                 for(int x = 25; x < 172; x++) {
-                    if(MovedStatics.minimapBackgroundImage.imgPixels[x + MovedStatics.minimapBackgroundImage.imgWidth * y] != 0 || x <= 34 && y <= 34) {
+                    if(Minimap.minimapBackgroundImage.imgPixels[x + Minimap.minimapBackgroundImage.imgWidth * y] != 0 || x <= 34 && y <= 34) {
                         if(minWidth != 999) {
                             maxWidth = x;
                             break;

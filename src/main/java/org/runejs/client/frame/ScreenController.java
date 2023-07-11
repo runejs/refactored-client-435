@@ -350,7 +350,7 @@ public class ScreenController {
 
 
     public static void handleMinimapMouse() {
-        if (MovedStatics.minimapState != 0) {
+        if (Minimap.minimapState != 0) {
             return;
         }
         if (MouseHandler.clickType == 1) {

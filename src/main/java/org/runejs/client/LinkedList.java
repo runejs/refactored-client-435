@@ -19,7 +19,6 @@ public class LinkedList {
     public static int[] terrainDataIds;
     public static volatile int anInt1073 = 0;
     public static int crossType = 0;
-    public static int[] minimapHintY = new int[1000];
 
     /**
      * The last element in the LinkedList
