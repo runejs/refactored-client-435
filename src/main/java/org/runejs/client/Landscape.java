@@ -94,7 +94,7 @@ public class Landscape {
                             OverlayDefinition.tile_flags[z][x][y] = (byte) 0;
                     }
                 }
-                Class65.method1020();
+                method1020();
                 int dataLength = RSString.terrainData.length;
                 SoundSystem.clearObjectSounds();
                 Main.method364(true);
@@ -237,7 +237,7 @@ public class Landscape {
                     MovedStatics.processGameStatus(35);
                 else
                     MovedStatics.processGameStatus(30);
-                MovedStatics.method973();
+                method973();
                 SceneCluster.packetBuffer.putPacket(178);
                 RSRuntimeException.method1057(126);
             } else
@@ -705,5 +705,36 @@ public class Landscape {
             } else
                 class40_sub3.unlink();
         }
+    }
+
+    public static void method973() {
+        blendedHueMultiplier = null;
+        blendedLightness = null;
+        blendDirectionTracker = null;
+        MovedStatics.tileCullingBitsets = null;
+        AnimationSequence.tileLightIntensity = null;
+        Class35.tile_overlay_rotation = null;
+        blendedSaturation = null;
+        InteractiveObject.tileShadowIntensity = null;
+        OverlayDefinition.tile_underlay_path = null;
+        MouseHandler.tile_overlayids = null;
+        MovedStatics.tile_underlayids = null;
+        blendedHue = null;
+    }
+
+    public static void method1020() {
+        blendedSaturation = new int[104];
+        OverlayDefinition.tile_underlay_path = new byte[4][104][104];
+        MovedStatics.tileCullingBitsets = new int[4][105][105];
+        MovedStatics.lowestPlane = 99;
+        InteractiveObject.tileShadowIntensity = new byte[4][105][105];
+        blendDirectionTracker = new int[104];
+        blendedHueMultiplier = new int[104];
+        blendedLightness = new int[104];
+        AnimationSequence.tileLightIntensity = new int[105][105];
+        MouseHandler.tile_overlayids = new byte[4][104][104];
+        blendedHue = new int[104];
+        Class35.tile_overlay_rotation = new byte[4][104][104];
+        MovedStatics.tile_underlayids = new byte[4][104][104];
     }
 }

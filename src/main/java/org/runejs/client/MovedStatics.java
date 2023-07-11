@@ -509,21 +509,6 @@ public class MovedStatics {
         return allOptions;
     }
 
-    public static void method973() {
-        Landscape.blendedHueMultiplier = null;
-        Landscape.blendedLightness = null;
-        Landscape.blendDirectionTracker = null;
-        tileCullingBitsets = null;
-        AnimationSequence.tileLightIntensity = null;
-        Class35.tile_overlay_rotation = null;
-        Landscape.blendedSaturation = null;
-        InteractiveObject.tileShadowIntensity = null;
-        OverlayDefinition.tile_underlay_path = null;
-        MouseHandler.tile_overlayids = null;
-        tile_underlayids = null;
-        Landscape.blendedHue = null;
-    }
-
     public static void printException(String arg0, Throwable exception) {
             try {
                 String string = "";
