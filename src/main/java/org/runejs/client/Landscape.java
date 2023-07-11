@@ -88,7 +88,7 @@ public class Landscape {
             }
             if(bool) {
                 if(ProducingGraphicsBuffer.anInt1634 != 0)
-                    Class51.method940(English.loadingPleaseWait, true, Native.percent100Parentheses);
+                    MovedStatics.method940(English.loadingPleaseWait, true, Native.percent100Parentheses);
                 RSCanvas.clearCaches();
                 Npc.currentScene.initToNull();
                 System.gc();

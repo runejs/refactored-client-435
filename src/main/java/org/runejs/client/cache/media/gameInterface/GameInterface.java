@@ -35,7 +35,6 @@ import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.util.Signlink;
@@ -248,7 +247,7 @@ public class GameInterface extends CachedNode {
 
     public static void method639() {
         synchronized(Class59.keyFocusListener) {
-            Class59.anInt1389 = GenericTile.anInt1214;
+            Class59.anInt1389 = MovedStatics.anInt1214;
             if(GameObjectDefinition.anInt2543 < 0) {
                 for(int i = 0; i < 112; i++) {
                     Item.obfuscatedKeyStatus[i] = false;
@@ -265,7 +264,7 @@ public class GameInterface extends CachedNode {
                     }
                 }
             }
-            GenericTile.anInt1214 = MovedStatics.anInt2598;
+            MovedStatics.anInt1214 = MovedStatics.anInt2598;
         }
     }
 

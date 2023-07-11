@@ -15,7 +15,6 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.PacketBuffer;
-import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.util.CollisionMap;
 
 import java.awt.*;
@@ -274,7 +273,7 @@ public class Player extends Actor {
         if (localPlayer != player && MovedStatics.menuActionRow < 400) {
             String playerDisplayName;
             if (player.skillLevel == 0)
-                playerDisplayName = player.playerName + SceneTile.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + player.combatLevel + Native.rightParenthesis;
+                playerDisplayName = player.playerName + MovedStatics.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + player.combatLevel + Native.rightParenthesis;
             else
                 playerDisplayName = player.playerName + Native.leftParenthesisWithSpacePrefix + English.prefixSkill + player.skillLevel + Native.rightParenthesis;
             if (MovedStatics.itemSelected == 1) {

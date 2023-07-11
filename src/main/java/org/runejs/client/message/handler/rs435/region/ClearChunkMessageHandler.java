@@ -6,7 +6,6 @@ import org.runejs.client.MovedStatics;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.region.ClearChunkInboundMessage;
-import org.runejs.client.scene.tile.Wall;
 
 /**
  * Clears a chunk of the map.
@@ -18,8 +17,8 @@ public class ClearChunkMessageHandler implements MessageHandler<ClearChunkInboun
         MovedStatics.placementY = message.y;
         for(int i_51_ = MovedStatics.placementX; i_51_ < 8 + MovedStatics.placementX; i_51_++) {
             for(int i_52_ = MovedStatics.placementY; 8 + MovedStatics.placementY > i_52_; i_52_++) {
-                if(Wall.groundItems[Player.worldLevel][i_51_][i_52_] != null) {
-                    Wall.groundItems[Player.worldLevel][i_51_][i_52_] = null;
+                if(MovedStatics.groundItems[Player.worldLevel][i_51_][i_52_] != null) {
+                    MovedStatics.groundItems[Player.worldLevel][i_51_][i_52_] = null;
                     MovedStatics.spawnGroundItem(i_52_, i_51_);
                 }
             }

@@ -10,7 +10,6 @@ import org.runejs.client.media.RasterizerInstanced;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.*;
 
 public class Minimap extends FramePieceRenderer {
@@ -99,7 +98,7 @@ public class Minimap extends FramePieceRenderer {
         }
         for(int x = 0; x < 104; x++) {
             for(int y = 0; y < 104; y++) {
-                LinkedList linkedList = Wall.groundItems[Player.worldLevel][x][y];
+                LinkedList linkedList = MovedStatics.groundItems[Player.worldLevel][x][y];
                 if(linkedList != null) {
                     int itemX = -(Player.localPlayer.worldY / 32) + 2 + y * 4;
                     int itemY = -(Player.localPlayer.worldX / 32) + 2 + x * 4;
@@ -294,7 +293,7 @@ public class Minimap extends FramePieceRenderer {
         }
         for(int x = 0; x < 104; x++) {
             for(int y = 0; y < 104; y++) {
-                LinkedList linkedList = Wall.groundItems[Player.worldLevel][x][y];
+                LinkedList linkedList = MovedStatics.groundItems[Player.worldLevel][x][y];
                 if(linkedList != null) {
                     int itemY = -(Player.localPlayer.worldY / 32) + 2 + y * 4;
                     int itemX = -(Player.localPlayer.worldX / 32) + 2 + x * 4;

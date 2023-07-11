@@ -9,7 +9,6 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Renderable;
-import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.Signlink;
@@ -279,7 +278,7 @@ public abstract class Actor extends Renderable {
                 MovedStatics.onBuildTimePlane = 0;
             Class17.regionY = chunkY;
             MovedStatics.processGameStatus(25);
-            Class51.method940(English.loadingPleaseWait, false, null);
+            MovedStatics.method940(English.loadingPleaseWait, false, null);
             int i = Class26.baseY;
             int i_33_ = MovedStatics.baseX;
             MovedStatics.baseX = (chunkX - 6) * 8;
@@ -336,9 +335,9 @@ public abstract class Actor extends Renderable {
                     int i_49_ = i_35_ + i_47_;
                     for(int i_50_ = 0; i_50_ < 4; i_50_++) {
                         if(i_48_ < 0 || i_49_ < 0 || i_48_ >= 104 || i_49_ >= 104)
-                            Wall.groundItems[i_50_][i_46_][i_47_] = null;
+                            MovedStatics.groundItems[i_50_][i_46_][i_47_] = null;
                         else
-                            Wall.groundItems[i_50_][i_46_][i_47_] = Wall.groundItems[i_50_][i_48_][i_49_];
+                            MovedStatics.groundItems[i_50_][i_46_][i_47_] = MovedStatics.groundItems[i_50_][i_48_][i_49_];
                     }
                 }
             }
@@ -355,7 +354,7 @@ public abstract class Actor extends Renderable {
             }
             Player.cutsceneActive = false;
             SoundSystem.reset();
-            Class57.aLinkedList_1332.clear();
+            MovedStatics.aLinkedList_1332.clear();
             Class43.projectileQueue.clear();
         }
     }

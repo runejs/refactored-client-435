@@ -1,5 +1,6 @@
 package org.runejs.client;
 
+import org.runejs.client.cache.cs.ClientScript;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
@@ -40,12 +41,12 @@ import org.runejs.client.util.Signlink;
 import org.runejs.client.util.SignlinkNode;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.media.renderable.actor.*;
-import org.runejs.client.scene.tile.*;
 import org.runejs.Configuration;
 
 import java.awt.*;
 import java.io.DataInputStream;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
 import java.util.Calendar;
 
@@ -202,6 +203,25 @@ public class MovedStatics {
     public static int[] anIntArray3253;
     public static int[] anIntArray3255;
     public static int[] anIntArray3248;
+    public static TypeFace fontNormal;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for one of the tabs on the right-hand side of the top,
+     * but not the furthest-right (see `tabHighlightImageTopRightEdge` for that).
+     */
+    public static IndexedImage tabHighlightImageTopRight;
+    public static int durationHoveredOverWidget = 0;
+    public static IndexedImage bottomChatBack;
+    public static int[] anIntArray1347;
+    public static LinkedList aLinkedList_1332 = new LinkedList();
+    public static int carryWeight = 0;
+    public static int anInt1214 = 0;
+    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
+    public static SignlinkNode gameServerSignlinkNode;
+    public static int anInt614 = -1;
+    public static ImageRGB aClass40_Sub5_Sub14_Sub4_2043;
+    public static int activeInterfaceType = 0;
+    public static LinkedList[][][] groundItems = new LinkedList[4][104][104];
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -222,7 +242,7 @@ public class MovedStatics {
             MovedStatics.aClass40_Sub5_Sub14_Sub2Array535 = null;
             anIntArray3248 = null;
             MovedStatics.loginBoxGraphics = null;
-            SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = null;
+            aClass40_Sub5_Sub14_Sub4_2043 = null;
             anIntArray178 = null;
             KeyFocusListener.aProducingGraphicsBuffer_1285 = null;
             Class17.aProducingGraphicsBuffer_463 = null;
@@ -259,7 +279,7 @@ public class MovedStatics {
                         int i_3_ = 329 + -(13 * i);
                         i++;
                         if (MouseHandler.mouseX > 4 && i_3_ + -10 < MouseHandler.mouseY + -4 && -4 + MouseHandler.mouseY <= i_3_ + 3) {
-                            int i_4_ = 25 + WallDecoration.fontNormal.getStringWidth(English.from + Native.prefixColon + username + ChatBox.chatMessages[i_1_]);
+                            int i_4_ = 25 + fontNormal.getStringWidth(English.from + Native.prefixColon + username + ChatBox.chatMessages[i_1_]);
                             if (i_4_ > 450)
                                 i_4_ = 450;
                             if (MouseHandler.mouseX < 4 + i_4_) {
@@ -360,7 +380,7 @@ public class MovedStatics {
     }
 
     public static void renderSpotAnims() {
-        for (SpotAnim spotAnim = (SpotAnim) Class57.aLinkedList_1332.peekFirst(); spotAnim != null; spotAnim = (SpotAnim) Class57.aLinkedList_1332.pollFirst()) {
+        for (SpotAnim spotAnim = (SpotAnim) aLinkedList_1332.peekFirst(); spotAnim != null; spotAnim = (SpotAnim) aLinkedList_1332.pollFirst()) {
             if (Player.worldLevel == spotAnim.plane && !spotAnim.animationFinished) {
                 if (pulseCycle >= spotAnim.startCycle) {
                     spotAnim.method834(anInt199);
@@ -434,7 +454,7 @@ public class MovedStatics {
         IndexedImage class40_sub5_sub14_sub2 = new IndexedImage();
         class40_sub5_sub14_sub2.maxWidth = imageMaxWidth;
         class40_sub5_sub14_sub2.maxHeight = imageMaxHeight;
-        class40_sub5_sub14_sub2.xDrawOffset = Class57.anIntArray1347[0];
+        class40_sub5_sub14_sub2.xDrawOffset = anIntArray1347[0];
         class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[0];
         class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[0];
         class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[0];
@@ -565,14 +585,14 @@ public class MovedStatics {
         GroundItemTile.aByteArrayArray1370 = new byte[anInt2581][];
         Class17.anIntArray456 = new int[anInt2581];
         Npc.anIntArray3312 = new int[anInt2581];
-        Class57.anIntArray1347 = new int[anInt2581];
+        anIntArray1347 = new int[anInt2581];
 
         buffer.currentPosition = data.length + -7 + -(anInt2581 * 8);
         imageMaxWidth = buffer.getUnsignedShortBE();
         imageMaxHeight = buffer.getUnsignedShortBE();
         int i = 1 + (buffer.getUnsignedByte() & 0xff);
         for (int i_34_ = 0; i_34_ < anInt2581; i_34_++)
-            Class57.anIntArray1347[i_34_] = buffer.getUnsignedShortBE();
+            anIntArray1347[i_34_] = buffer.getUnsignedShortBE();
         for (int i_35_ = arg1; i_35_ < anInt2581; i_35_++)
             Actor.anIntArray3111[i_35_] = buffer.getUnsignedShortBE();
         for (int i_36_ = 0; i_36_ < anInt2581; i_36_++)
@@ -630,9 +650,9 @@ public class MovedStatics {
                 if (currentTabId == 3)
                     Class35.tabHighlightImageTopMiddle.drawImage(110, 8);
                 if (currentTabId == 4)
-                    WallDecoration.tabHighlightImageTopRight.drawImage(153, 8);
+                    tabHighlightImageTopRight.drawImage(153, 8);
                 if (currentTabId == 5)
-                    WallDecoration.tabHighlightImageTopRight.drawImage(181, 8);
+                    tabHighlightImageTopRight.drawImage(181, 8);
                 if (currentTabId == 6)
                     tabHighlightImageTopRightEdge.drawImage(209, 9);
             }
@@ -698,7 +718,7 @@ public class MovedStatics {
 
     public static boolean method416() {
         synchronized (Class59.keyFocusListener) {
-            if (Class59.anInt1389 == GenericTile.anInt1214)
+            if (Class59.anInt1389 == anInt1214)
                 return false;
             anInt2854 = anIntArray2113[Class59.anInt1389];
             Class59.anInt1388 = anIntArray2764[Class59.anInt1389];
@@ -835,7 +855,7 @@ public class MovedStatics {
                     Player.processPlayerMenuOptions(player1, x, y, index);
                 }
                 if (type == 3) {
-                    LinkedList itemList = Wall.groundItems[Player.worldLevel][x][y];
+                    LinkedList itemList = groundItems[Player.worldLevel][x][y];
                     if (itemList != null) {
                         for (Item item = (Item) itemList.peekLast(); item != null; item = (Item) itemList.pollLast()) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
@@ -1633,9 +1653,9 @@ public class MovedStatics {
             Class17.chatboxTop = null;
             RSCanvas.tabBottom = null;
             GameObject.tabPieceLeft = null;
-            Class57.bottomChatBack = null;
+            bottomChatBack = null;
             inventoryBackgroundImage = null;
-            WallDecoration.tabHighlightImageTopRight = null;
+            tabHighlightImageTopRight = null;
             Class40_Sub5_Sub15.tabIcons = null;
             Class13.tabHighlightImageBottomRight = null;
             Minimap.mapbackProducingGraphicsBuffer = null;
@@ -1673,7 +1693,7 @@ public class MovedStatics {
 
     private static void method945(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
         if(arg5 != 103)
-            GenericTile.anInt1214 = -81;
+            anInt1214 = -81;
         if(arg2 >= 1 && arg0 >= 1 && arg2 <= 102 && arg0 <= 102) {
             if(!VertexNormal.lowMemory || Player.worldLevel == arg7) {
                 int i = -1;
@@ -1728,7 +1748,7 @@ public class MovedStatics {
 
     public static void renderSplitPrivateMessages() {
         if(CollisionMap.anInt165 != 0) {
-            TypeFace class40_sub5_sub14_sub1 = WallDecoration.fontNormal;
+            TypeFace class40_sub5_sub14_sub1 = fontNormal;
             int i = 0;
             if(Class40_Sub5_Sub15.systemUpdateTime != 0)
                 i = 1;
@@ -1811,7 +1831,7 @@ public class MovedStatics {
         Player.setTutorialIslandFlag();
         if (!menuOpen) {
             Class43.processRightClick();
-            SceneTile.drawMenuTooltip(4);
+            drawMenuTooltip(4);
         } else  {
             if(ScreenController.frameMode == ScreenMode.FIXED && menuScreenArea == 0){
                 drawMenu(4,4);
@@ -1834,7 +1854,7 @@ public class MovedStatics {
             if (GameShell.fps < 20 && !VertexNormal.lowMemory) {
                 colour = 0xff0000;
             }
-            WallDecoration.fontNormal.drawStringRight("Fps: " + GameShell.fps, x, y, colour);
+            fontNormal.drawStringRight("Fps: " + GameShell.fps, x, y, colour);
             colour = 0xffff00;
             y += 15;
             Runtime runtime = Runtime.getRuntime();
@@ -1845,31 +1865,31 @@ public class MovedStatics {
             if (memoryUsed < 65536 && !VertexNormal.lowMemory) {
                 colour = 0xff0000;
             }
-            WallDecoration.fontNormal.drawStringRight("Mem: " + memoryUsed + "k", x, y, colour);
+            fontNormal.drawStringRight("Mem: " + memoryUsed + "k", x, y, colour);
             y += 15;
 
-            WallDecoration.fontNormal.drawStringRight("MouseX: " + MouseHandler.mouseX, x, y ,0xffff00);
+            fontNormal.drawStringRight("MouseX: " + MouseHandler.mouseX, x, y ,0xffff00);
             y += 15;
 
-            WallDecoration.fontNormal.drawStringRight("MouseY: " + MouseHandler.mouseY, x, y ,0xffff00);
+            fontNormal.drawStringRight("MouseY: " + MouseHandler.mouseY, x, y ,0xffff00);
             y += 15;
-            WallDecoration.fontNormal.drawStringRight("ClickX: " + MouseHandler.clickX, x, y ,0xffff00);
+            fontNormal.drawStringRight("ClickX: " + MouseHandler.clickX, x, y ,0xffff00);
             y += 15;
 
-            WallDecoration.fontNormal.drawStringRight("ClickY: " + MouseHandler.clickY, x, y ,0xffff00);
+            fontNormal.drawStringRight("ClickY: " + MouseHandler.clickY, x, y ,0xffff00);
             y += 15;
             if (showSidePanelRedrawnText) {
-                WallDecoration.fontNormal.drawStringRight(English.sidePanelRedrawn, x, y, 16711680);
+                fontNormal.drawStringRight(English.sidePanelRedrawn, x, y, 16711680);
                 y += 15;
                 showSidePanelRedrawnText = false;
             }
             if (showChatPanelRedrawnText) {
-                WallDecoration.fontNormal.drawStringRight(English.chatPanelRedrawn, x, y, 16711680);
+                fontNormal.drawStringRight(English.chatPanelRedrawn, x, y, 16711680);
                 y += 15;
                 showChatPanelRedrawnText = false;
             }
             if (Class40_Sub3.showIconsRedrawnText) {
-                WallDecoration.fontNormal.drawStringRight(English.iconsRedrawn, x, y, 16711680);
+                fontNormal.drawStringRight(English.iconsRedrawn, x, y, 16711680);
                 Class40_Sub3.showIconsRedrawnText = false;
                 y += 15;
             }
@@ -1929,12 +1949,12 @@ public class MovedStatics {
                 }
             }
 
-            WallDecoration.fontNormal.drawStringRight("Widget " + widgetParentId + ":" + widgetChildId, x, y, 0xffff00);
+            fontNormal.drawStringRight("Widget " + widgetParentId + ":" + widgetChildId, x, y, 0xffff00);
             y+= 15;
             if (childInterface != null) {
-                WallDecoration.fontNormal.drawStringRight("Parent ID: " + childInterface.parentId, x, y, 0xffff00);
+                fontNormal.drawStringRight("Parent ID: " + childInterface.parentId, x, y, 0xffff00);
                 y+= 15;
-                WallDecoration.fontNormal.drawStringRight("Type: " + typeAsString, x, y, 0xffff00);
+                fontNormal.drawStringRight("Type: " + typeAsString, x, y, 0xffff00);
                 y+= 15;
             }
 
@@ -1944,9 +1964,9 @@ public class MovedStatics {
             int minutes = seconds / 60;
             seconds %= 60;
             if (seconds < 10) {
-                WallDecoration.fontNormal.drawString(English.systemUpdateIn + minutes + Native.prefixColonZero + seconds, 4, 329, 16776960);
+                fontNormal.drawString(English.systemUpdateIn + minutes + Native.prefixColonZero + seconds, 4, 329, 16776960);
             } else {
-                WallDecoration.fontNormal.drawString(English.systemUpdateIn + minutes + Native.colon + seconds, 4, 329, 16776960);
+                fontNormal.drawString(English.systemUpdateIn + minutes + Native.colon + seconds, 4, 329, 16776960);
             }
         }
     }
@@ -1959,7 +1979,7 @@ public class MovedStatics {
             if (actorDefinition != null && actorDefinition.isClickable) {
                 String npcDisplayName = actorDefinition.name;
                 if (actorDefinition.combatLevel != 0) {
-                    npcDisplayName = npcDisplayName + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthesis;
+                    npcDisplayName = npcDisplayName + getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthesis;
                 }
                 if (itemSelected == 1) {
                     addActionRow(English.use, index, x, y, ActionRowType.USE_ITEM_ON_NPC.getId(), Native.selectedItemName + Native.toYellow + npcDisplayName);
@@ -2034,7 +2054,7 @@ public class MovedStatics {
 
                     if(actorDefinition.combatLevel != 0) {
                         String combatLevel = " " +
-                            SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel)
+                            getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel)
                                 + Native.leftParenthesis + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthesis;
                         examineText.append(combatLevel);
                     }
@@ -2071,7 +2091,7 @@ public class MovedStatics {
     }
 
     public static void spawnGroundItem(int arg1, int arg2) {
-        LinkedList linkedList = Wall.groundItems[Player.worldLevel][arg2][arg1];
+        LinkedList linkedList = groundItems[Player.worldLevel][arg2][arg1];
         if(linkedList == null)
             Npc.currentScene.method125(Player.worldLevel, arg2, arg1);
         else {
@@ -2141,7 +2161,7 @@ public class MovedStatics {
             inventoryBackgroundImage = Main.method359(Native.invback, Native.aClass1_305, arg2);
             Class44.chatboxBackgroundImage = Main.method359(Native.chatback, Native.aClass1_305, arg2);
             Minimap.minimapBackgroundImage = Main.method359(Native.mapBack, Native.aClass1_305, arg2);
-            Class57.bottomChatBack = Main.method359(Native.imgBackbase1, Native.aClass1_305, arg2);
+            bottomChatBack = Main.method359(Native.imgBackbase1, Native.aClass1_305, arg2);
             tabBottomBack = Main.method359(Native.imgBackbase2, Native.aClass1_305, arg2);
             Buffer.tabTopBack = Main.method359(Native.imgBackhmid1, Native.aClass1_305, arg2);
             RSCanvas.chatBoxImageProducer = createGraphicsBuffer(479, 96, arg0);
@@ -2188,8 +2208,8 @@ public class MovedStatics {
             Class35.tabHighlightImageTopMiddle = Main.method359(Native.redstone3, Native.aClass1_305, arg2);
             tabHighlightImageTopRightEdge = tabHighlightImageTopLeftEdge.cloneImage();
             tabHighlightImageTopRightEdge.flipHorizontal();
-            WallDecoration.tabHighlightImageTopRight = GameInterface.tabHighlightImageTopLeft.cloneImage();
-            WallDecoration.tabHighlightImageTopRight.flipHorizontal();
+            tabHighlightImageTopRight = GameInterface.tabHighlightImageTopLeft.cloneImage();
+            tabHighlightImageTopRight.flipHorizontal();
             Renderable.tabHighlightImageBottomLeftEdge = tabHighlightImageTopLeftEdge.cloneImage();
             Renderable.tabHighlightImageBottomLeftEdge.flipVertical();
             tabHighlightImageBottomLeft = GameInterface.tabHighlightImageTopLeft.cloneImage();
@@ -2603,5 +2623,123 @@ public class MovedStatics {
             }
         }
 
+    }
+
+    public static void method940(String arg1, boolean arg2, String arg3) {
+        if(clearScreen) {
+            clearScreen = false;
+            drawWelcomeScreenGraphics();
+            LinkedList.drawChatBoxGraphics();
+            Class55.drawTabGraphics();
+            ActorDefinition.drawMapBack();
+            Main.method943(ChatBox.tradeMode, fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
+            method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
+            showSidePanelRedrawnText = true;
+            Class40_Sub3.showIconsRedrawnText = true;
+            showChatPanelRedrawnText = true;
+        }
+        int i = 151;
+        Class65.method1018();
+        i -= 3;
+        fontNormal.drawStringLeft(arg1, 257, i, 0);
+        fontNormal.drawStringLeft(arg1, 256, i + -1, 16777215);
+        if(arg3 != null) {
+            i += 15;
+            if(arg2) {
+                int i_0_ = 4 + fontNormal.getStringWidth(arg3);
+                Rasterizer.drawFilledRectangle(257 - i_0_ / 2, -11 + i, i_0_, 11, 0);
+            }
+            fontNormal.drawStringLeft(arg3, 257, i, 0);
+            fontNormal.drawStringLeft(arg3, 256, i - 1, 16777215);
+        }
+        Player.drawGameScreenGraphics();
+    }
+
+    public static String method532(GameInterface gameInterface, String arg2) {
+        if (arg2.contains(Native.percent)) {
+            for (; ; ) {
+                int i = arg2.indexOf(Native.percentOne);
+                if (i == -1)
+                    break;
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(0, gameInterface)) + arg2.substring(2 + i);
+            }
+            for (; ; ) {
+                int i = arg2.indexOf(Native.percentTwo);
+                if (i == -1)
+                    break;
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(1, gameInterface)) + arg2.substring(i + 2);
+            }
+            for (; ; ) {
+                int i = arg2.indexOf(Native.percentThree);
+                if (i == -1)
+                    break;
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(2, gameInterface)) + arg2.substring(2 + i);
+            }
+            for (; ; ) {
+                int i = arg2.indexOf(Native.percentFour);
+                if (i == -1)
+                    break;
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(3, gameInterface)) + arg2.substring(i + 2);
+            }
+            for (; ; ) {
+                int i = arg2.indexOf(Native.percentFive);
+                if (i == -1)
+                    break;
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(4, gameInterface)) + arg2.substring(i + 2);
+            }
+            for (; ; ) {
+                // check client script results for value
+                int i = arg2.indexOf(Native.percentDns);
+                if (i == -1)
+                    break;
+                String str = "";
+                if (Class12.aSignlinkNode_394 != null) {
+                    str = method204(Class12.aSignlinkNode_394.integerData);
+                    if (Class12.aSignlinkNode_394.value != null) {
+                        byte[] is = ((String) Class12.aSignlinkNode_394.value).getBytes(StandardCharsets.ISO_8859_1);
+                        str = InteractiveObject.method279(is, 0, is.length).toString();
+                    }
+                }
+                arg2 = arg2.substring(0, i) + str + arg2.substring(i + 4);
+            }
+        }
+        return arg2;
+    }
+
+    public static String getCombatLevelColour(int arg0, int arg1) {
+        int diff = -arg1 + arg0;
+        if (diff < -9)
+            return Native.red;
+        if (diff < -6)
+            return Native.orange3;
+        if (diff < -3)
+            return Native.orange2;
+        if (diff < 0)
+            return Native.orange1;
+        if (diff > 9)
+            return Native.green;
+        if (diff > 6)
+            return Native.green3;
+        if (diff > 3)
+            return Native.green2;
+        if (diff > 0)
+            return Native.green1;
+        return Native.yellow;
+    }
+
+    public static void drawMenuTooltip(int arg0) {
+        if (menuActionRow >= 2 || itemSelected != 0 || Main.widgetSelected != 0) {
+            String class1;
+            if (itemSelected == 1 && menuActionRow < 2)
+                class1 = English.use + Native.whitespace + Native.selectedItemName + Native.targetThingArrow;
+            else if (Main.widgetSelected != 1 || menuActionRow >= 2)
+                class1 = Landscape.menuActionTexts[-1 + menuActionRow];
+            else
+                class1 = Native.selectedSpellVerb + Native.whitespace + Native.selectedSpellName + Native.targetThingArrow;
+            if (menuActionRow > 2)
+                class1 = class1 + Native.whiteSlash + (menuActionRow + -2) + English.suffixMoreOptions;
+            if (arg0 == 4)
+                TypeFace.fontBold.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, pulseCycle / 1000);
+        }
     }
 }

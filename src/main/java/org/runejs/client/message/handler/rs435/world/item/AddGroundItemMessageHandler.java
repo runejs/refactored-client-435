@@ -7,7 +7,6 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.world.item.AddGroundItemInboundMessage;
-import org.runejs.client.scene.tile.Wall;
 
 public class AddGroundItemMessageHandler implements MessageHandler<AddGroundItemInboundMessage> {
     @Override
@@ -23,9 +22,9 @@ public class AddGroundItemMessageHandler implements MessageHandler<AddGroundItem
             Item item = new Item();
             item.itemCount = message.amount;
             item.itemId = message.itemId;
-            if (Wall.groundItems[Player.worldLevel][x][y] == null)
-                Wall.groundItems[Player.worldLevel][x][y] = new LinkedList();
-            Wall.groundItems[Player.worldLevel][x][y].addLast(item);
+            if (MovedStatics.groundItems[Player.worldLevel][x][y] == null)
+                MovedStatics.groundItems[Player.worldLevel][x][y] = new LinkedList();
+            MovedStatics.groundItems[Player.worldLevel][x][y].addLast(item);
             MovedStatics.spawnGroundItem(y, x);
         }
     }

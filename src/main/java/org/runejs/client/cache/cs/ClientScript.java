@@ -11,7 +11,6 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.node.CachedNode;
-import org.runejs.client.scene.tile.GenericTile;
 
 public class ClientScript extends CachedNode {
 
@@ -161,7 +160,7 @@ public class ClientScript extends CachedNode {
                     operand = ClientScriptRunner.runEnergy;
                 }
                 if (opcode == 12) {
-                    operand = GenericTile.carryWeight;
+                    operand = MovedStatics.carryWeight;
                 }
                 if (opcode == 13) {
                     int varPlayerValue = VarPlayerDefinition.varPlayers[opcodes[scriptDataIndex++]];

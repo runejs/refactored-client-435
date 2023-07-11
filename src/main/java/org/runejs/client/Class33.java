@@ -13,7 +13,6 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.scene.Point2d;
 import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.scene.tile.FloorDecoration;
 
 public class Class33 {
     public static int[] selectedMenuActions = new int[500];
@@ -63,7 +62,7 @@ public class Class33 {
 
                         if (screenPos != null) {
                             if(targetPlayer.isSkulled != -1) {
-                                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603[targetPlayer.isSkulled].drawImage(screenPos.x - 12, screenPos.y - drawHeight);
+                                MovedStatics.aClass40_Sub5_Sub14_Sub4Array603[targetPlayer.isSkulled].drawImage(screenPos.x - 12, screenPos.y - drawHeight);
                                 drawHeight += 25;
                             }
                             if(targetPlayer.headIcon != -1) {

@@ -23,8 +23,6 @@ import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.Scene;
-import org.runejs.client.scene.tile.FloorDecoration;
-import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
@@ -123,10 +121,10 @@ public class Class40_Sub3 extends Node {
                 i++;
             else
                 TypeFace.fontSmall = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontP11Full);
-            if (WallDecoration.fontNormal != null)
+            if (MovedStatics.fontNormal != null)
                 i++;
             else
-                WallDecoration.fontNormal = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontP12Full);
+                MovedStatics.fontNormal = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontP12Full);
             if (TypeFace.fontBold != null)
                 i++;
             else
@@ -194,8 +192,8 @@ public class Class40_Sub3 extends Node {
                 i++;
             else
                 AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = method526(CacheArchive.gameImageCacheArchive, Native.hitmarks, "");
-            if (FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 == null)
-                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = method526(CacheArchive.gameImageCacheArchive, Native.headiconsPK, "");
+            if (MovedStatics.aClass40_Sub5_Sub14_Sub4Array603 == null)
+                MovedStatics.aClass40_Sub5_Sub14_Sub4Array603 = method526(CacheArchive.gameImageCacheArchive, Native.headiconsPK, "");
             else
                 i++;
             if (ProducingGraphicsBuffer_Sub1.headIconSprites != null)
@@ -328,7 +326,7 @@ public class Class40_Sub3 extends Node {
 	        ImageRGB class40_sub5_sub14_sub4 = class40_sub5_sub14_sub4s[i] = new ImageRGB();
 	        class40_sub5_sub14_sub4.maxWidth = MovedStatics.imageMaxWidth;
 	        class40_sub5_sub14_sub4.maxHeight = MovedStatics.imageMaxHeight;
-	        class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[i];
+	        class40_sub5_sub14_sub4.offsetX = MovedStatics.anIntArray1347[i];
 	        class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[i];
 	        class40_sub5_sub14_sub4.imageWidth = Class17.anIntArray456[i];
 	        class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[i];

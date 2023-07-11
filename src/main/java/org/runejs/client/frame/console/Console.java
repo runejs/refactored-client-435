@@ -10,7 +10,6 @@ import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.outbound.console.ConsoleCommandOutboundMessage;
 import org.runejs.client.net.OutgoingPackets;
-import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.frame.console.Commands.*;
 import org.runejs.Configuration;
 
@@ -110,7 +109,7 @@ public class Console {
 
     public void drawConsoleArea(int width, int height) {
         if (consoleOpen) {
-            WallDecoration.fontNormal.setEffectsAlpha(0xffffff, -1, 178);
+            MovedStatics.fontNormal.setEffectsAlpha(0xffffff, -1, 178);
             for (int i = messageCount, j = 308; i > 0; i--, j -= 18) {
                 if (consoleMessages[i] == null) {
                     break;
@@ -120,7 +119,7 @@ public class Console {
                     y = 290 - (messageCount - i) * 18 + 18 + currentScroll;
                 }
                 if (y > 2 && y < 315)
-                    WallDecoration.fontNormal.drawBasicString(consoleMessages[i], 9, y);
+                    MovedStatics.fontNormal.drawBasicString(consoleMessages[i], 9, y);
             }
         }
     }

@@ -5,7 +5,6 @@ import org.runejs.client.frame.Minimap;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.IncomingPackets;
 import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.scene.tile.FloorDecoration;
 
 public class Class37 {
     public static int anInt876 = 0;
@@ -44,7 +43,7 @@ public class Class37 {
         // (Jameskmonger) something to do with right clicking
         if(areaId == 0 && arg1 == MovedStatics.anInt573)
             return true;
-        if(areaId == 1 && FloorDecoration.anInt614 == arg1)
+        if(areaId == 1 && MovedStatics.anInt614 == arg1)
             return true;
         if((areaId == 2 || areaId == 3) && MovedStatics.anInt1586 == arg1)
             return true;

@@ -20,7 +20,6 @@ import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.Configuration;
@@ -607,11 +606,11 @@ public class Class60 {
             MovedStatics.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(gameImageCacheArchive, Native.runes, "");
 
             Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
-            SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);
+            MovedStatics.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);
             for (int i = 0; i < 33920; i++)
                 Class39.aClass40_Sub5_Sub14_Sub4_918.pixels[i] = MovedStatics.flameLeftBackground.pixels[i];
             for (int i = 0; i < 33920; i++)
-                SceneTile.aClass40_Sub5_Sub14_Sub4_2043.pixels[i] = GameObject.flameRightBackground.pixels[i];
+                MovedStatics.aClass40_Sub5_Sub14_Sub4_2043.pixels[i] = GameObject.flameRightBackground.pixels[i];
             Class51.anIntArray1198 = new int[256];
             for (int i = 0; i < 64; i++)
                 Class51.anIntArray1198[i] = i * 262144;

@@ -1,7 +1,6 @@
 package org.runejs.client.message.handler.rs435.world;
 
 import org.runejs.client.SpotAnim;
-import org.runejs.client.Class57;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
@@ -17,7 +16,7 @@ public class CreateStationaryGFXMessageHandler implements MessageHandler<CreateS
             y = 128 * y + 64;
             x = x * 128 + 64;
             SpotAnim gfx = new SpotAnim(message.id, Player.worldLevel, x, y, -message.drawHeight + Scene.getFloorDrawHeight(Player.worldLevel, x, y), message.delay, MovedStatics.pulseCycle);
-            Class57.aLinkedList_1332.addLast(gfx);
+            MovedStatics.aLinkedList_1332.addLast(gfx);
         }
     }
 }

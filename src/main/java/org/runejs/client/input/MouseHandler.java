@@ -14,7 +14,6 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCamera;
-import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.*;
 
@@ -47,7 +46,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
 
     public static void processMenuClick() {
-        if(SceneTile.activeInterfaceType != 0) {
+        if(MovedStatics.activeInterfaceType != 0) {
             return;
         }
         int meta = clickType;
@@ -132,14 +131,14 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     if(gameInterface.itemSwapable || gameInterface.itemDeletesDraged) {
                         Renderable.anInt2869 = clickX;
                         Class40_Sub5_Sub15.lastItemDragged = false;
-                        SceneTile.activeInterfaceType = 2;
+                        MovedStatics.activeInterfaceType = 2;
                         MovedStatics.modifiedWidgetId = id;
                         MovedStatics.anInt2798 = clickY;
                         GroundItemTile.selectedInventorySlot = item;
                         if(id >> 16 == GameInterface.gameScreenInterfaceId)
-                            SceneTile.activeInterfaceType = 1;
+                            MovedStatics.activeInterfaceType = 1;
                         if(GameInterface.chatboxInterfaceId == id >> 16)
-                            SceneTile.activeInterfaceType = 3;
+                            MovedStatics.activeInterfaceType = 3;
                         Buffer.lastItemDragTime = 0;
                         return;
                     }

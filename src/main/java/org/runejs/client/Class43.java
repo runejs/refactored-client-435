@@ -14,8 +14,6 @@ import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.InteractiveObject;
-import org.runejs.client.scene.tile.FloorDecoration;
-import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.util.CollisionMap;
 
 public class Class43 {
@@ -60,7 +58,7 @@ public class Class43 {
 
 
     public static void processRightClick() {
-        if(SceneTile.activeInterfaceType == 0) {
+        if(MovedStatics.activeInterfaceType == 0) {
             Landscape.menuActionTexts[0] = English.cancel;
             MovedStatics.menuActionTypes[0] = ActionRowType.CANCEL.getId();
             MovedStatics.menuActionRow = 1;
@@ -97,8 +95,8 @@ public class Class43 {
                     CollisionMap.currentHoveredWidgetChildId = MovedStatics.hoveredWidgetChildId;
                 }
                 MovedStatics.hoveredWidgetChildId = -1;
-                if(Item.anInt3065 != FloorDecoration.anInt614) {
-                    FloorDecoration.anInt614 = Item.anInt3065;
+                if(Item.anInt3065 != MovedStatics.anInt614) {
+                    MovedStatics.anInt614 = Item.anInt3065;
                     GameInterface.redrawTabArea = true;
                 }
                 Item.anInt3065 = -1;

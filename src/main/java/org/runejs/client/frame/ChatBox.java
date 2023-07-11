@@ -9,7 +9,6 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.scene.util.CollisionMap;
 
 public class ChatBox {
@@ -55,7 +54,7 @@ public class ChatBox {
                 itemSearch(inputMessage);
                 lastItemSearchInput = inputMessage;
             }
-            TypeFace font = WallDecoration.fontNormal;
+            TypeFace font = MovedStatics.fontNormal;
             Rasterizer.setBounds(0, 0, 463, 77);
             for(int index = 0; index < itemSearchResultCount; index++) {
                 int y = index * 14 + 18 - itemSearchScroll;
@@ -79,7 +78,7 @@ public class ChatBox {
             redrawChatbox = !Main.drawParentInterface(2, 0, 0, 479, 96, GameInterface.chatboxInterfaceId);
         } else if(dialogueId == -1) {
             int line = 0;
-            TypeFace typeFace = WallDecoration.fontNormal;
+            TypeFace typeFace = MovedStatics.fontNormal;
             Rasterizer.setBounds(0, 0, 463, 77);
             for(int i = 0; i < 100; i++) {
                 if(chatMessages[i] != null) {
