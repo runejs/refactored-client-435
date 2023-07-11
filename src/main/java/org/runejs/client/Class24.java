@@ -18,17 +18,6 @@ public class Class24 {
         return MovedStatics.method315();
     }
 
-    public static int getRotatedTileX(int rotation, int x, int y) {
-        rotation &= 0x3;
-        if(rotation == 0)
-            return x;
-        if(rotation == 1)
-            return y;
-        if(rotation == 2)
-            return -x + 7;
-        return 7 + -y;
-    }
-
 
     public static void constructMapRegionObjects(int drawX, int drawY, int drawingPlane, int orientation, int x, int y, int plane, Scene scene, byte[] objectData, CollisionMap[] collisionMaps) {
         Buffer objectBuffer = new Buffer(objectData);

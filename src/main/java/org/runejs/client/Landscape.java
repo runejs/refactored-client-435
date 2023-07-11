@@ -253,11 +253,34 @@ public class Landscape {
             for(int tileX = 0; tileX < 64; tileX++) {
                 for(int tileY = 0; tileY < 64; tileY++) {
                     if(plane == drawingPlane && tileX >= drawX && 8 + drawX > tileX && tileY >= drawY && 8 + drawY > tileY)
-                        MovedStatics.method922(x + Class24.getRotatedTileX(rotation, tileX & 0x7, tileY & 0x7), rotation, class40_sub1, y + Class33.getRotatedTileY(tileX & 0x7, 0x7 & tileY, rotation), 0, 0, currentPlane);
+                        MovedStatics.method922(x + getRotatedTileX(rotation, tileX & 0x7, tileY & 0x7), rotation, class40_sub1, y + getRotatedTileY(tileX & 0x7, 0x7 & tileY, rotation), 0, 0, currentPlane);
                     else
                         MovedStatics.method922(-1, 0, class40_sub1, -1, 0, 0, 0);
                 }
             }
         }
+    }
+
+    private static int getRotatedTileX(int rotation, int x, int y) {
+        rotation &= 0x3;
+        if(rotation == 0)
+            return x;
+        if(rotation == 1)
+            return y;
+        if(rotation == 2)
+            return -x + 7;
+        return 7 + -y;
+    }
+
+    private static int getRotatedTileY(int x, int y, int rotation) {
+        rotation &= 0x3;
+        if(rotation == 0)
+            return y;
+        if(rotation == 1)
+            return 7 + -x;
+        if(rotation == 2)
+            return -y + 7;
+        return x;
+
     }
 }

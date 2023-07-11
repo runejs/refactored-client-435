@@ -294,16 +294,4 @@ public class Class33 {
         return i == ActionRowType.ADD_FRIEND.getId();
     }
 
-    public static int getRotatedTileY(int x, int y, int rotation) {
-        rotation &= 0x3;
-        if(rotation == 0)
-            return y;
-        if(rotation == 1)
-            return 7 + -x;
-        if(rotation == 2)
-            return -y + 7;
-        return x;
-
-    }
-
 }
