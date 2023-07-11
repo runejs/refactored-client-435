@@ -1,7 +1,6 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.def.ItemDefinition;
-import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
@@ -66,7 +65,7 @@ public class Class43 {
         if(SceneTile.activeInterfaceType == 0) {
             Landscape.menuActionTexts[0] = English.cancel;
             MovedStatics.menuActionTypes[0] = ActionRowType.CANCEL.getId();
-            ActorDefinition.menuActionRow = 1;
+            MovedStatics.menuActionRow = 1;
             if(GameInterface.fullscreenInterfaceId == -1) {
                 MovedStatics.method445();
                 Item.anInt3065 = -1;
@@ -122,7 +121,7 @@ public class Class43 {
                 }
                 while(!bool) {
                     bool = true;
-                    for(int i = 0; -1 + ActorDefinition.menuActionRow > i; i++) {
+                    for(int i = 0; -1 + MovedStatics.menuActionRow > i; i++) {
                         if(MovedStatics.menuActionTypes[i] < 1000 && MovedStatics.menuActionTypes[1 + i] > 1000) {
                             bool = false;
                             String class1 = Landscape.menuActionTexts[i];
@@ -155,7 +154,7 @@ public class Class43 {
 
     public static void method398() {
         String class1 = null;
-        for(int i = 0; ActorDefinition.menuActionRow > i; i++) {
+        for(int i = 0; MovedStatics.menuActionRow > i; i++) {
             if(Landscape.menuActionTexts[i].contains(Native.lightRed)) {
                 class1 = Landscape.menuActionTexts[i].substring(Landscape.menuActionTexts[i].indexOf(Native.lightRed));
                 break;
@@ -191,8 +190,8 @@ public class Class43 {
                 i_5_ -= 357;
                 i_4_ -= 17;
             }
-            for(int i_6_ = 0; i_6_ < ActorDefinition.menuActionRow; i_6_++) {
-                int i_7_ = 31 + i_2_ + (ActorDefinition.menuActionRow + -1 + -i_6_) * 15;
+            for(int i_6_ = 0; i_6_ < MovedStatics.menuActionRow; i_6_++) {
+                int i_7_ = 31 + i_2_ + (MovedStatics.menuActionRow + -1 + -i_6_) * 15;
                 String class1_8_ = Landscape.menuActionTexts[i_6_];
                 int i_9_ = 16777215;
                 if(class1_8_.endsWith(class1)) {

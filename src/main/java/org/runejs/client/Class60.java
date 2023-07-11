@@ -56,17 +56,17 @@ public class Class60 {
 
     public static void determineMenuSize() {
         int width = TypeFace.fontBold.getStringWidth(English.chooseOption);
-        for(int i = 0; i < ActorDefinition.menuActionRow; i++) {
+        for(int i = 0; i < MovedStatics.menuActionRow; i++) {
             int rowWidth = TypeFace.fontBold.getTextDisplayedWidth(Landscape.menuActionTexts[i]);
             if(width < rowWidth)
                 width = rowWidth;
         }
         width += 8;
-        int height = ActorDefinition.menuActionRow * 15 + 21;
+        int height = MovedStatics.menuActionRow * 15 + 21;
         if(ScreenController.frameMode == ScreenMode.FIXED){
             if(MouseHandler.clickX > 4 && MouseHandler.clickY > 4 && MouseHandler.clickX < 516 && MouseHandler.clickY < 338) {
                 Projectile.menuScreenArea = 0;
-                CollisionMap.menuHeight = ActorDefinition.menuActionRow * 15 + 22;
+                CollisionMap.menuHeight = MovedStatics.menuActionRow * 15 + 22;
                 MovedStatics.menuOpen = true;
                 int x = -(width / 2) + -4 + MouseHandler.clickX;
                 VertexNormal.menuWidth = width;
@@ -83,7 +83,7 @@ public class Class60 {
                 Main.menuOffsetY = y;
             }
             if(MouseHandler.clickX > 553 && MouseHandler.clickY > 205 && MouseHandler.clickX < 743 && MouseHandler.clickY < 466) {
-                CollisionMap.menuHeight = 22 + 15 * ActorDefinition.menuActionRow;
+                CollisionMap.menuHeight = 22 + 15 * MovedStatics.menuActionRow;
                 Projectile.menuScreenArea = 1;
                 int y = -205 + MouseHandler.clickY;
                 int x = -(width / 2) + -553 + MouseHandler.clickX;
@@ -104,7 +104,7 @@ public class Class60 {
             if(MouseHandler.clickX > 17 && MouseHandler.clickY > 357 && MouseHandler.clickX < 496 && MouseHandler.clickY < 453) {
                 VertexNormal.menuWidth = width;
                 Projectile.menuScreenArea = 2;
-                CollisionMap.menuHeight = ActorDefinition.menuActionRow * 15 + 22;
+                CollisionMap.menuHeight = MovedStatics.menuActionRow * 15 + 22;
                 int y = MouseHandler.clickY + -357;
                 if(y >= 0) {
                     if(height + y > 96)
@@ -141,7 +141,7 @@ public class Class60 {
             InteractiveObject.menuOffsetX = x;
             Main.menuOffsetY = y;
             VertexNormal.menuWidth = width;
-            CollisionMap.menuHeight = ActorDefinition.menuActionRow * 15 + 22;
+            CollisionMap.menuHeight = MovedStatics.menuActionRow * 15 + 22;
         }
 //        if(Class57.clickX > 553 && RSString.clickY > 205 && Class57.clickX < 743 && RSString.clickY < 466) {
 //            CollisionMap.menuHeight = 22 + 15 * ActorDefinition.menuActionRow;
@@ -455,7 +455,7 @@ public class Class60 {
             Class51.aProducingGraphicsBuffer_1206.drawGraphics(offsetX + 202, offsetY + 371, graphics);
             Class17.aProducingGraphicsBuffer_463.drawGraphics(offsetX, offsetY + 265, graphics);
             KeyFocusListener.aProducingGraphicsBuffer_1285.drawGraphics(offsetX + 562, offsetY + 265, graphics);
-            GameObjectDefinition.aProducingGraphicsBuffer_2524.drawGraphics(offsetX + 128, offsetY + 171, graphics);
+            MovedStatics.aProducingGraphicsBuffer_2524.drawGraphics(offsetX + 128, offsetY + 171, graphics);
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.drawGraphics(offsetX + 562, offsetY + 171, graphics);
             ProducingGraphicsBuffer.muteButton.drawGraphics(ScreenController.drawWidth-42, ScreenController.drawHeight-42, graphics);
         } catch (Exception exception) {
@@ -495,7 +495,7 @@ public class Class60 {
         if (RSRuntimeException.anInt1641 > Landscape.anIntArray1168.length) {
             RSRuntimeException.anInt1641 -= Landscape.anIntArray1168.length;
             int i_9_ = (int) (12.0 * Math.random());
-            FramemapDefinition.method879(MovedStatics.aClass40_Sub5_Sub14_Sub2Array535[i_9_]);
+            method879(MovedStatics.aClass40_Sub5_Sub14_Sub2Array535[i_9_]);
         }
         for (int i_10_ = 1; i_10_ < -1 + i; i_10_++) {
             for (int i_11_ = 1; i_11_ < 127; i_11_++) {
@@ -538,7 +538,7 @@ public class Class60 {
             Rasterizer.resetPixels();
             KeyFocusListener.aProducingGraphicsBuffer_1285 = MovedStatics.createGraphicsBuffer(203, 238, arg0);
             Rasterizer.resetPixels();
-            GameObjectDefinition.aProducingGraphicsBuffer_2524 = MovedStatics.createGraphicsBuffer(74, 94, arg0);
+            MovedStatics.aProducingGraphicsBuffer_2524 = MovedStatics.createGraphicsBuffer(74, 94, arg0);
             Rasterizer.resetPixels();
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631 = MovedStatics.createGraphicsBuffer(75, 94, arg0);
             Rasterizer.resetPixels();
@@ -560,7 +560,7 @@ public class Class60 {
             titleImg.drawInverse(0, -265);
             KeyFocusListener.aProducingGraphicsBuffer_1285.prepareRasterizer();
             titleImg.drawInverse(-562, -265);
-            GameObjectDefinition.aProducingGraphicsBuffer_2524.prepareRasterizer();
+            MovedStatics.aProducingGraphicsBuffer_2524.prepareRasterizer();
             titleImg.drawInverse(-128, -171);
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.prepareRasterizer();
             titleImg.drawInverse(-562, -171);
@@ -585,7 +585,7 @@ public class Class60 {
             titleImg.drawInverse(382, -265);
             KeyFocusListener.aProducingGraphicsBuffer_1285.prepareRasterizer();
             titleImg.drawInverse(-180, -265);
-            GameObjectDefinition.aProducingGraphicsBuffer_2524.prepareRasterizer();
+            MovedStatics.aProducingGraphicsBuffer_2524.prepareRasterizer();
             titleImg.drawInverse(254, -171);
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.prepareRasterizer();
             titleImg.drawInverse(-180, -171);
@@ -643,7 +643,7 @@ public class Class60 {
             MovedStatics.anIntArray1013 = new int[256];
             MovedStatics.anIntArray1445 = new int[32768];
             Landscape.anIntArray1168 = new int[32768];
-            FramemapDefinition.method879(null);
+            method879(null);
             SpotAnim.anIntArray3255 = new int[32768];
             Native.username = Configuration.getUsername();
             Native.password = Configuration.getPassword();
@@ -656,6 +656,41 @@ public class Class60 {
             UpdateServer.resetUpdateServerRequests(false);
             MovedStatics.clearScreen = true;
             ISAAC.aBoolean512 = true;
+        }
+    }
+
+    public static void method879(IndexedImage arg1) {
+        int i = 0;
+        for(/**/; i < Landscape.anIntArray1168.length; i++)
+            Landscape.anIntArray1168[i] = 0;
+        int i_19_ = 256;
+        for(int i_20_ = 0; i_20_ < 5000; i_20_++) {
+            int i_21_ = (int) ((double) i_19_ * (128.0 * Math.random()));
+            Landscape.anIntArray1168[i_21_] = (int) (256.0 * Math.random());
+        }
+        for(int i_22_ = 0; i_22_ < 20; i_22_++) {
+            for(int i_23_ = 1; -1 + i_19_ > i_23_; i_23_++) {
+                for(int i_24_ = 1; i_24_ < 127; i_24_++) {
+                    int i_25_ = (i_23_ << 7) + i_24_;
+                    MovedStatics.anIntArray1445[i_25_] = (Landscape.anIntArray1168[i_25_ - 128] + Landscape.anIntArray1168[i_25_ + -1] + Landscape.anIntArray1168[i_25_ + 1] + Landscape.anIntArray1168[128 + i_25_]) / 4;
+                }
+            }
+            int[] is = Landscape.anIntArray1168;
+            Landscape.anIntArray1168 = MovedStatics.anIntArray1445;
+            MovedStatics.anIntArray1445 = is;
+        }
+        if(arg1 != null) {
+            int i_26_ = 0;
+            for(int i_27_ = 0; arg1.imgHeight > i_27_; i_27_++) {
+                for(int i_28_ = 0; i_28_ < arg1.imgWidth; i_28_++) {
+                    if(arg1.imgPixels[i_26_++] != 0) {
+                        int i_29_ = arg1.yDrawOffset + i_27_ + 16;
+                        int i_30_ = arg1.xDrawOffset + i_28_ + 16;
+                        int i_31_ = i_30_ + (i_29_ << 7);
+                        Landscape.anIntArray1168[i_31_] = 0;
+                    }
+                }
+            }
         }
     }
 }

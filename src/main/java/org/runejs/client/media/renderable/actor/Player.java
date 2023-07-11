@@ -271,7 +271,7 @@ public class Player extends Actor {
     }
 
     public static void processPlayerMenuOptions(Player player, int x, int y, int index) {
-        if (localPlayer != player && ActorDefinition.menuActionRow < 400) {
+        if (localPlayer != player && MovedStatics.menuActionRow < 400) {
             String playerDisplayName;
             if (player.skillLevel == 0)
                 playerDisplayName = player.playerName + SceneTile.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + player.combatLevel + Native.rightParenthesis;
@@ -318,7 +318,7 @@ public class Player extends Actor {
                     }
                 }
             }
-            for (int i = 0; i < ActorDefinition.menuActionRow; i++) {
+            for (int i = 0; i < MovedStatics.menuActionRow; i++) {
                 if (MovedStatics.menuActionTypes[i] == 7) {
                     Landscape.menuActionTexts[i] = English.walkHere + Native.whitespace + Native.white + playerDisplayName;
                     break;

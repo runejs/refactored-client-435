@@ -162,6 +162,14 @@ public class MovedStatics {
     public static int[] anIntArray1564 = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, 85, 80, 84, -1, 91, -1, -1, -1, 81, 82, 86, -1, -1, -1, -1, -1, -1, -1, -1, 0, -1, -1, -1, -1, 83, 104, 105, 103, 102, 96, 98, 97, 99, -1, -1, -1, -1, -1, -1, -1, 25, 16, 17, 18, 19, 20, 21, 22, 23, 24, -1, -1, -1, -1, -1, -1, -1, 48, 68, 66, 50, 34, 51, 52, 53, 39, 54, 55, 56, 70, 69, 40, 41, 32, 35, 49, 36, 38, 67, 33, 65, 37, 64, -1, -1, -1, -1, -1, 228, 231, 227, 233, 224, 219, 225, 230, 226, 232, 89, 87, -1, 88, 229, 90, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, -1, -1, -1, 101, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     public static ProducingGraphicsBuffer chatModes;
     public static int anInt1545 = 0;
+    public static int[] sidebarOffsets;
+    public static int menuActionRow = 0;
+    /**
+     * Draw height of the icon in 3d positions.
+     */
+    public static int hintIconPosZ = 0;
+    public static int anInt2183 = 0;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2524;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -177,7 +185,7 @@ public class MovedStatics {
             Renderable.anIntArray2865 = null;
             MovedStatics.flameLeftBackground = null;
             Class39.aProducingGraphicsBuffer_907 = null;
-            GameObjectDefinition.aProducingGraphicsBuffer_2524 = null;
+            aProducingGraphicsBuffer_2524 = null;
             Class39.aClass40_Sub5_Sub14_Sub4_918 = null;
             MovedStatics.aClass40_Sub5_Sub14_Sub2Array535 = null;
             SpotAnim.anIntArray3248 = null;
@@ -261,7 +269,7 @@ public class MovedStatics {
         }
 
 
-        ActorDefinition.sidebarOffsets = Rasterizer3D.setLineOffsets(ActorDefinition.sidebarOffsets);
+        sidebarOffsets = Rasterizer3D.setLineOffsets(sidebarOffsets);
     }
 
     public static void method997() {
@@ -900,16 +908,16 @@ public class MovedStatics {
     }
 
     public static void addActionRow(String string, int menuAction, int firstMenuOperand, int secondMenuOperand, int actionType, String arg6) {
-        if (ActorDefinition.menuActionRow < 500) {
+        if (menuActionRow < 500) {
             if (arg6.length() <= 0)
-                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string;
+                Landscape.menuActionTexts[menuActionRow] = string;
             else
-                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string + Native.whitespace + arg6;
-            menuActionTypes[ActorDefinition.menuActionRow] = actionType;
-            Class33.selectedMenuActions[ActorDefinition.menuActionRow] = menuAction;
-            InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow] = firstMenuOperand;
-            Class59.secondMenuOperand[ActorDefinition.menuActionRow] = secondMenuOperand;
-            ActorDefinition.menuActionRow++;
+                Landscape.menuActionTexts[menuActionRow] = string + Native.whitespace + arg6;
+            menuActionTypes[menuActionRow] = actionType;
+            Class33.selectedMenuActions[menuActionRow] = menuAction;
+            InteractiveObject.firstMenuOperand[menuActionRow] = firstMenuOperand;
+            Class59.secondMenuOperand[menuActionRow] = secondMenuOperand;
+            menuActionRow++;
         }
     }
 
@@ -1287,8 +1295,8 @@ public class MovedStatics {
 	        y -= 357;
 	        x -= 17;
 	    }
-	    for(int action = 0; action < ActorDefinition.menuActionRow; action++) {
-	        int actionY = 15 * (-action + ActorDefinition.menuActionRow + -1) + offsetY + 31;
+	    for(int action = 0; action < menuActionRow; action++) {
+	        int actionY = 15 * (-action + menuActionRow + -1) + offsetY + 31;
 	        int actionColour = 16777215;
 	        if(x > offsetX && offsetX + width > x && y > -13 + actionY && actionY + 3 > y)
 	            actionColour = 16776960;
@@ -1479,7 +1487,6 @@ public class MovedStatics {
 	public static boolean membersWorld = false;
 	public static boolean accountFlagged = false;
 	public static GameInterface aGameInterface_1887;
-	public static int duplicateClickCount = 0;
 
     public static void method311(Component arg1) {
 	    arg1.removeKeyListener(Class59.keyFocusListener);
@@ -1494,7 +1501,7 @@ public class MovedStatics {
             return;
         }
 
-        Point2d screenPos = MovedStatics.getProjectedScreenPosition(2 * ActorDefinition.hintIconPosZ, Class35.hintIconInnerPosY + (-Class26.baseY + hintIconPosY << 7), (ProducingGraphicsBuffer.hintIconPosX + -baseX << 7) + Landscape.hintIconInnerPosX);
+        Point2d screenPos = MovedStatics.getProjectedScreenPosition(2 * hintIconPosZ, Class35.hintIconInnerPosY + (-Class26.baseY + hintIconPosY << 7), (ProducingGraphicsBuffer.hintIconPosX + -baseX << 7) + Landscape.hintIconInnerPosX);
 
         if (screenPos == null) {
             return;
@@ -1601,7 +1608,7 @@ public class MovedStatics {
             Class13.tabHighlightImageBottomRight = null;
             Minimap.mapbackProducingGraphicsBuffer = null;
             RSCanvas.anIntArray62 = null;
-            ActorDefinition.sidebarOffsets = null;
+            sidebarOffsets = null;
             Class39.mapbackLeft = null;
             tabHighlightImageBottomMiddle = null;
             tabBottomBack = null;
@@ -1913,7 +1920,7 @@ public class MovedStatics {
     }
 
     public static void processNpcMenuOptions(ActorDefinition actorDefinition, int x, int y, int index) {
-        if (ActorDefinition.menuActionRow < 400) {
+        if (menuActionRow < 400) {
             if (actorDefinition.childIds != null) {
                 actorDefinition = actorDefinition.getChildDefinition();
             }
@@ -2029,5 +2036,43 @@ public class MovedStatics {
         int i = arg0.getHash(arg1);
         int i_13_ = arg0.method179(i, arg3);
         return method927(i_13_, arg0, i);
+    }
+
+    public static void spawnGroundItem(int arg1, int arg2) {
+        LinkedList linkedList = Wall.groundItems[Player.worldLevel][arg2][arg1];
+        if(linkedList == null)
+            Npc.currentScene.method125(Player.worldLevel, arg2, arg1);
+        else {
+            int i = -99999999;
+            Item item = null;
+            for(Item item_32_ = (Item) linkedList.peekFirst(); item_32_ != null; item_32_ = (Item) linkedList.pollFirst()) {
+                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(item_32_.itemId, 10);
+                int i_33_ = class40_sub5_sub16.cost;
+                if(class40_sub5_sub16.stackable == 1)
+                    i_33_ *= item_32_.itemCount + 1;
+                if(i_33_ > i) {
+                    i = i_33_;
+                    item = item_32_;
+                }
+            }
+            if(item == null)
+                Npc.currentScene.method125(Player.worldLevel, arg2, arg1);
+            else {
+                Item item_34_ = null;
+                Item item_35_ = null;
+                linkedList.addFirst(item);
+                for(Item item_36_ = (Item) linkedList.peekFirst(); item_36_ != null; item_36_ = (Item) linkedList.pollFirst()) {
+                    if(item.itemId != item_36_.itemId) {
+                        if(item_35_ == null)
+                            item_35_ = item_36_;
+                        if(item_35_.itemId != item_36_.itemId && item_34_ == null)
+                            item_34_ = item_36_;
+                    }
+                }
+                int i_37_ = 1610612736 + (arg1 << 7) + arg2;
+                Npc.currentScene.addGroundItemTile(arg2, arg1, Player.worldLevel, Scene.getFloorDrawHeight(Player.worldLevel, 64 + 128 * arg2, 64 + 128 * arg1), i_37_, item, item_35_, item_34_);
+            }
+        }
+
     }
 }

@@ -1,6 +1,5 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.frame.Minimap;
 import org.runejs.client.media.renderable.actor.Player;
@@ -19,7 +18,7 @@ public class Class37 {
     public static void method434() {
         MovedStatics.menuOpen = false;
         IncomingPackets.opcode = -1;
-        ActorDefinition.menuActionRow = 0;
+        MovedStatics.menuActionRow = 0;
         IncomingPackets.incomingPacketSize = 0;
         SceneCluster.packetBuffer.currentPosition = 0;
         IncomingPackets.lastOpcode = -1;

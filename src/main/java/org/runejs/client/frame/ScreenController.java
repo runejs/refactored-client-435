@@ -1,6 +1,5 @@
 package org.runejs.client.frame;
 
-import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
@@ -101,7 +100,7 @@ public class ScreenController {
         // TODO rethink this, maybe its way easier than this
 //        MovedStatics.chatboxLineOffsets = Rasterizer3D.setLineOffsets(null);
 //        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 190 : drawWidth, frameMode == ScreenMode.FIXED ? 261 : drawHeight);
-        ActorDefinition.sidebarOffsets = Rasterizer3D.setLineOffsets(null);
+        MovedStatics.sidebarOffsets = Rasterizer3D.setLineOffsets(null);
         Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 765 : drawWidth, frameMode == ScreenMode.FIXED ? 503 : drawHeight);
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(null);
 

@@ -5,7 +5,6 @@ import org.runejs.client.frame.console.Console;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.Native;
 import org.runejs.client.*;
-import org.runejs.client.cache.def.FramemapDefinition;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.def.IdentityKit;
 
@@ -142,7 +141,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             if (GameObjectDefinition.anInt2543 >= 0 && obfuscatedKeyCode >= 0) {
                 RSString.keyCodes[GameObjectDefinition.anInt2543] = obfuscatedKeyCode;
                 GameObjectDefinition.anInt2543 = 0x7f & GameObjectDefinition.anInt2543 + 1;
-                if (GameObjectDefinition.anInt2543 == FramemapDefinition.anInt2183) {
+                if (GameObjectDefinition.anInt2543 == MovedStatics.anInt2183) {
                     GameObjectDefinition.anInt2543 = -1;
                 }
             }
@@ -171,7 +170,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             if (GameObjectDefinition.anInt2543 >= 0 && i >= 0) {
                 RSString.keyCodes[GameObjectDefinition.anInt2543] = i ^ 0xffffffff;
                 GameObjectDefinition.anInt2543 = 0x7f & 1 + GameObjectDefinition.anInt2543;
-                if (FramemapDefinition.anInt2183 == GameObjectDefinition.anInt2543) {
+                if (MovedStatics.anInt2183 == GameObjectDefinition.anInt2543) {
                     GameObjectDefinition.anInt2543 = -1;
                 }
             }

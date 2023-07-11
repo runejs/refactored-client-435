@@ -66,6 +66,7 @@ public class GameInterface extends CachedNode {
     public static int crossX = 0;
     public static int crossY = 0;
     public static int reportAbuseInterfaceID = -1;
+    public static boolean aBoolean2177 = false;
     /**
      * The lightened edge (top and left) color of the scroll indicator chip.
      */
@@ -250,11 +251,11 @@ public class GameInterface extends CachedNode {
                 for(int i = 0; i < 112; i++) {
                     Item.obfuscatedKeyStatus[i] = false;
                 }
-                GameObjectDefinition.anInt2543 = FramemapDefinition.anInt2183;
+                GameObjectDefinition.anInt2543 = MovedStatics.anInt2183;
             } else {
-                while(GameObjectDefinition.anInt2543 != FramemapDefinition.anInt2183) {
-                    int i = RSString.keyCodes[FramemapDefinition.anInt2183];
-                    FramemapDefinition.anInt2183 = 0x7f & FramemapDefinition.anInt2183 + 1;
+                while(GameObjectDefinition.anInt2543 != MovedStatics.anInt2183) {
+                    int i = RSString.keyCodes[MovedStatics.anInt2183];
+                    MovedStatics.anInt2183 = 0x7f & MovedStatics.anInt2183 + 1;
                     if(i < 0) {
                         Item.obfuscatedKeyStatus[i ^ 0xffffffff] = false;
                     } else {
@@ -1584,7 +1585,7 @@ public class GameInterface extends CachedNode {
 
         if(aGameInterface_353 != null) {
             GameInterface gameInterface = aGameInterface_353;
-            GameInterface gameInterface_24_ = FramemapDefinition.method878(gameInterface);
+            GameInterface gameInterface_24_ = method878(gameInterface);
             if(gameInterface_24_ != null) {
                 int[] is = Class13.method247(gameInterface_24_);
                 int[] is_25_ = Class13.method247(gameInterface);
@@ -2158,6 +2159,20 @@ ChatBox.tradeMode
         return arg0 >= 48 && arg0 <= 57;
     }
 
+    public static GameInterface method878(GameInterface arg1) {
+        int i;
+        if(arg1.id < 0)
+            i = arg1.parentId >> 16;
+        else
+            i = arg1.id >> 16;
+        if(!decodeGameInterface(i))
+            return null;
+        if(arg1.anInt2738 >= 0)
+            return cachedInterfaces[i][0xffff & arg1.anInt2738];
+        GameInterface gameInterface = cachedInterfaces[i][(0x7fff99d9 & arg1.anInt2738) >> 15];
+        return gameInterface.children[arg1.anInt2738 & 0x7fff];
+    }
+
     public void swapItems(int arg0, boolean arg1, int arg2) {
         int i = items[arg2];
         items[arg2] = items[arg0];
@@ -2345,7 +2360,7 @@ ChatBox.tradeMode
     }
 
     public ImageRGB method638(int arg1) {
-        FramemapDefinition.aBoolean2177 = false;
+        aBoolean2177 = false;
         if(arg1 < 0 || imageY.length <= arg1) {
             return null;
         }
@@ -2359,7 +2374,7 @@ ChatBox.tradeMode
         }
         class40_sub5_sub14_sub4 = MovedStatics.method927(0, CacheArchive.gameImageCacheArchive, i);
         if(class40_sub5_sub14_sub4 == null) {
-            FramemapDefinition.aBoolean2177 = true;
+            aBoolean2177 = true;
         } else {
             ImageRGB.imageRgbCache.put((long) i, class40_sub5_sub14_sub4);
         }
@@ -2367,7 +2382,7 @@ ChatBox.tradeMode
     }
 
     public ImageRGB getImageRgb(boolean useAlternateImage) {
-        FramemapDefinition.aBoolean2177 = false;
+        aBoolean2177 = false;
 
         int i;
         if(useAlternateImage) {
@@ -2402,7 +2417,7 @@ ChatBox.tradeMode
         }
         imageRGB = MovedStatics.method927(0, CacheArchive.gameImageCacheArchive, i);
         if(imageRGB == null) {
-            FramemapDefinition.aBoolean2177 = true;
+            aBoolean2177 = true;
         } else {
             ImageRGB.imageRgbCache.put((long) i, imageRGB);
         }
@@ -2509,7 +2524,7 @@ ChatBox.tradeMode
     }
 
     public Model getModelForInterface(AnimationSequence animationSequence, int animationFrame, boolean applyAlternateAction, PlayerAppearance playerAppearance) {
-        FramemapDefinition.aBoolean2177 = false;
+        aBoolean2177 = false;
         InterfaceModelType modelType;
         int modelId;
         if(applyAlternateAction) {
@@ -2531,7 +2546,7 @@ ChatBox.tradeMode
             if(modelType == InterfaceModelType.MODEL) {
                 model = Model.getModel(CacheArchive.modelCacheArchive, modelId);
                 if(model == null) {
-                    FramemapDefinition.aBoolean2177 = true;
+                    aBoolean2177 = true;
                     return null;
                 }
                 model.createBones();
@@ -2540,7 +2555,7 @@ ChatBox.tradeMode
             if(modelType == InterfaceModelType.NPC_CHATHEAD) {
                 model = ActorDefinition.getDefinition(modelId).getHeadModel();
                 if(model == null) {
-                    FramemapDefinition.aBoolean2177 = true;
+                    aBoolean2177 = true;
                     return null;
                 }
                 model.createBones();
@@ -2552,7 +2567,7 @@ ChatBox.tradeMode
                 }
                 model = playerAppearance.getStaticModel();
                 if(model == null) {
-                    FramemapDefinition.aBoolean2177 = true;
+                    aBoolean2177 = true;
                     return null;
                 }
                 model.createBones();
@@ -2562,7 +2577,7 @@ ChatBox.tradeMode
                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(modelId, 10);
                 model = class40_sub5_sub16.asGroundStack(false, 10);
                 if(model == null) {
-                    FramemapDefinition.aBoolean2177 = true;
+                    aBoolean2177 = true;
                     return null;
                 }
                 model.createBones();
@@ -2582,7 +2597,7 @@ ChatBox.tradeMode
     }
 
     public TypeFace getTypeFace() {
-        FramemapDefinition.aBoolean2177 = false;
+        aBoolean2177 = false;
         if(fontId == 65535) {
             return null;
         }
@@ -2595,7 +2610,7 @@ ChatBox.tradeMode
         typeFace = TypeFace.getFont(CacheArchive.gameImageCacheArchive, 0, fontId);
 
         if(typeFace == null) {
-            FramemapDefinition.aBoolean2177 = true;
+            aBoolean2177 = true;
         } else {
             TypeFace.typeFaceCache.put(fontId, typeFace);
         }

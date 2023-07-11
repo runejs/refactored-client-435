@@ -3,10 +3,10 @@ package org.runejs.client.cache.def;
 import org.runejs.client.io.Buffer;
 
 public class FrameDefinition {
-    public static int[] scratchTranslatorY = new int[500];
-    public static int[] indexFrameIds = new int[500];
-    public static int[] scratchTranslatorX = new int[500];
-    public static int[] scratchTranslatorZ = new int[500];
+    private static int[] scratchTranslatorY = new int[500];
+    private static int[] indexFrameIds = new int[500];
+    private static int[] scratchTranslatorX = new int[500];
+    private static int[] scratchTranslatorZ = new int[500];
 
     public int translatorCount;
     public int[] translator_x;

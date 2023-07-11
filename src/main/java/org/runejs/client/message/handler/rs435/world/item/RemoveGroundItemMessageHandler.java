@@ -2,7 +2,6 @@ package org.runejs.client.message.handler.rs435.world.item;
 
 import org.runejs.client.LinkedList;
 import org.runejs.client.MovedStatics;
-import org.runejs.client.cache.def.FramemapDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Player;
@@ -27,7 +26,7 @@ public class RemoveGroundItemMessageHandler implements MessageHandler<RemoveGrou
                 }
                 if (linkedList.peekFirst() == null)
                     Wall.groundItems[Player.worldLevel][x][y] = null;
-                FramemapDefinition.spawnGroundItem(y, x);
+                MovedStatics.spawnGroundItem(y, x);
             }
         }
     }

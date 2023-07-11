@@ -1,7 +1,6 @@
 package org.runejs.client.scene.tile;
 
 import org.runejs.client.*;
-import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.cs.ClientScript;
@@ -123,16 +122,16 @@ public class SceneTile extends Node {
     }
 
     public static void drawMenuTooltip(int arg0) {
-        if (ActorDefinition.menuActionRow >= 2 || MovedStatics.itemSelected != 0 || Main.widgetSelected != 0) {
+        if (MovedStatics.menuActionRow >= 2 || MovedStatics.itemSelected != 0 || Main.widgetSelected != 0) {
             String class1;
-            if (MovedStatics.itemSelected == 1 && ActorDefinition.menuActionRow < 2)
+            if (MovedStatics.itemSelected == 1 && MovedStatics.menuActionRow < 2)
                 class1 = English.use + Native.whitespace + Native.selectedItemName + Native.targetThingArrow;
-            else if (Main.widgetSelected != 1 || ActorDefinition.menuActionRow >= 2)
-                class1 = Landscape.menuActionTexts[-1 + ActorDefinition.menuActionRow];
+            else if (Main.widgetSelected != 1 || MovedStatics.menuActionRow >= 2)
+                class1 = Landscape.menuActionTexts[-1 + MovedStatics.menuActionRow];
             else
                 class1 = Native.selectedSpellVerb + Native.whitespace + Native.selectedSpellName + Native.targetThingArrow;
-            if (ActorDefinition.menuActionRow > 2)
-                class1 = class1 + Native.whiteSlash + (ActorDefinition.menuActionRow + -2) + English.suffixMoreOptions;
+            if (MovedStatics.menuActionRow > 2)
+                class1 = class1 + Native.whiteSlash + (MovedStatics.menuActionRow + -2) + English.suffixMoreOptions;
             if (arg0 == 4)
                 TypeFace.fontBold.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, MovedStatics.pulseCycle / 1000);
         }

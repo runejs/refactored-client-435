@@ -216,7 +216,7 @@ public class Landscape {
                     Npc.currentScene.setHeightLevel(MovedStatics.lowestPlane);
                 for(int x = 0; x < 104; x++) {
                     for(int y = 0; y < 104; y++)
-                        FramemapDefinition.spawnGroundItem(y, x);
+                        MovedStatics.spawnGroundItem(y, x);
                 }
                 method285((byte) 118);
                 GameObjectDefinition.objectModelCache.clear();

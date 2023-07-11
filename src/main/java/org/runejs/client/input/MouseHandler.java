@@ -1,7 +1,6 @@
 package org.runejs.client.input;
 
 import org.runejs.client.node.NodeCache;
-import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
@@ -98,8 +97,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     y -= 357;
                 }
                 int id = -1;
-                for(int row = 0; row < ActorDefinition.menuActionRow; row++) {
-                    int k3 = 31 + menuY + 15 * (ActorDefinition.menuActionRow + -1 - row);
+                for(int row = 0; row < MovedStatics.menuActionRow; row++) {
+                    int k3 = 31 + menuY + 15 * (MovedStatics.menuActionRow + -1 - row);
                     if(x > menuX && x < dx + menuX && y > -13 + k3 && y < 3 + k3)
                         id = row;
                 }
@@ -112,8 +111,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     ChatBox.redrawChatbox = true;
             }
         } else {
-            if(meta == 1 && ActorDefinition.menuActionRow > 0) {
-                int action = MovedStatics.menuActionTypes[ActorDefinition.menuActionRow - 1];
+            if(meta == 1 && MovedStatics.menuActionRow > 0) {
+                int action = MovedStatics.menuActionTypes[MovedStatics.menuActionRow - 1];
                 if(
                     action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_1.getId()
                         || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_2.getId()
@@ -128,8 +127,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                         || action == ActionRowType.SELECT_ITEM_ON_WIDGET.getId()
                         || action == ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId()
                 ) {
-                    int item = InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow - 1];
-                    int id = Class59.secondMenuOperand[-1 + ActorDefinition.menuActionRow];
+                    int item = InteractiveObject.firstMenuOperand[MovedStatics.menuActionRow - 1];
+                    int id = Class59.secondMenuOperand[-1 + MovedStatics.menuActionRow];
                     GameInterface gameInterface = GameInterface.getInterface(id);
                     if(gameInterface.itemSwapable || gameInterface.itemDeletesDraged) {
                         Renderable.anInt2869 = clickX;
@@ -147,11 +146,11 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     }
                 }
             }
-            if(meta == 1 && (ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend(-1 + ActorDefinition.menuActionRow)) && ActorDefinition.menuActionRow > 2)
+            if(meta == 1 && (ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend(-1 + MovedStatics.menuActionRow)) && MovedStatics.menuActionRow > 2)
                 meta = 2;
-            if(meta == 1 && ActorDefinition.menuActionRow > 0)
-                GameInterface.processMenuActions(ActorDefinition.menuActionRow - 1);
-            if(meta == 2 && ActorDefinition.menuActionRow > 0)
+            if(meta == 1 && MovedStatics.menuActionRow > 0)
+                GameInterface.processMenuActions(MovedStatics.menuActionRow - 1);
+            if(meta == 2 && MovedStatics.menuActionRow > 0)
                 Class60.determineMenuSize();
         }
     }

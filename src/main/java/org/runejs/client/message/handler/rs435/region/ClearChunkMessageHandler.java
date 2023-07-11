@@ -3,7 +3,6 @@ package org.runejs.client.message.handler.rs435.region;
 import org.runejs.client.Class40_Sub3;
 import org.runejs.client.LinkedList;
 import org.runejs.client.MovedStatics;
-import org.runejs.client.cache.def.FramemapDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
@@ -22,7 +21,7 @@ public class ClearChunkMessageHandler implements MessageHandler<ClearChunkInboun
             for(int i_52_ = OverlayDefinition.placementY; 8 + OverlayDefinition.placementY > i_52_; i_52_++) {
                 if(Wall.groundItems[Player.worldLevel][i_51_][i_52_] != null) {
                     Wall.groundItems[Player.worldLevel][i_51_][i_52_] = null;
-                    FramemapDefinition.spawnGroundItem(i_52_, i_51_);
+                    MovedStatics.spawnGroundItem(i_52_, i_51_);
                 }
             }
         }

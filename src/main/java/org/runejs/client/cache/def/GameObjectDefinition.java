@@ -15,15 +15,13 @@ import org.runejs.OldEngine.ObjectDecompressor;
 import java.io.IOException;
 
 public class GameObjectDefinition extends CachedNode implements EntityDefinition {
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2524;
     public static int anInt2543 = 0;
-    public static int lastClickY = 0;
     public static int count;
-    public static NodeCache objectDefinitionCache = new NodeCache(64);
+    private static NodeCache objectDefinitionCache = new NodeCache(64);
     public static NodeCache objectModelCache = new NodeCache(500);
-    public static Model[] objectModelHolder = new Model[4];
-    public static NodeCache terrainObjectModelCache = new NodeCache(10);
-    public static NodeCache animatedObjectModelCache = new NodeCache(30);
+    private static Model[] objectModelHolder = new Model[4];
+    private static NodeCache terrainObjectModelCache = new NodeCache(10);
+    private static NodeCache animatedObjectModelCache = new NodeCache(30);
 
     public int unkn1;
     public int offsetX;
