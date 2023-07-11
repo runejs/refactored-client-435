@@ -13,10 +13,6 @@ public class Class17 {
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_463;
     public static int[] anIntArray466 = new int[256];
 
-    public static int method274() {
-        return Class49.anInt1147++;
-    }
-
     public static void animatePlayers(int playerIndex) {
         for(int currentPlayerIndex = playerIndex; Player.localPlayerCount > currentPlayerIndex; currentPlayerIndex++) {
             int actualIndex;

@@ -7,7 +7,6 @@ import org.runejs.client.cache.def.SpotAnimDefinition;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.Scene;
-import org.runejs.client.scene.SceneCluster;
 
 public class Npc extends Actor {
     public static int anInt3294 = 0;
@@ -100,13 +99,6 @@ public class Npc extends Actor {
                 }
             }
         }
-    }
-
-    public static int method400(int arg0) {
-        if(arg0 != -1)
-            SceneCluster.packetBuffer = null;
-        return LinkedList.anInt1073++;
-
     }
 
     public Model getRotatedModel() {

@@ -35,6 +35,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public static int cursorY;
     public static int cursorX;
     public static boolean gameScreenClickable;
+    public static volatile int framesSinceMouseInput = 0;
     private static volatile int eventClickX = 0;
     private static volatile long lastClick = 0L;
     public boolean mouseWheelDown;
@@ -177,9 +178,13 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         arg0.addMouseWheelListener(GameObject.frame);
     }
 
+    public static int resetFramesSinceMouseInput() {
+        return framesSinceMouseInput++;
+    }
+
     public synchronized void mouseEntered(MouseEvent arg0) {
         if(GameObject.frame != null) {
-            LinkedList.anInt1073 = 0;
+            framesSinceMouseInput = 0;
             eventMouseX = arg0.getX();
             eventMouseY = arg0.getY();
         }
@@ -187,7 +192,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
     public synchronized void mouseExited(MouseEvent arg0) {
         if(GameObject.frame != null) {
-            LinkedList.anInt1073 = 0;
+            framesSinceMouseInput = 0;
             eventMouseX = -1;
             eventMouseY = -1;
         }
@@ -202,7 +207,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         int mouseX = mouseEvent.getX();
         int mouseY = mouseEvent.getY();
         if(GameObject.frame != null) {
-            LinkedList.anInt1073 = 0;
+            framesSinceMouseInput = 0;
         }
         if(mouseWheelDown) {
             mouseY = mouseWheelX - mouseEvent.getX();
@@ -217,7 +222,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     }
 
     private void mouseWheelDragged(int i, int j) {
-        LinkedList.anInt1073 = 0;
+        framesSinceMouseInput = 0;
 
         if(!mouseWheelDown)
             return;
@@ -232,7 +237,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         if(GameObject.frame != null) {
             int mouseX = event.getX();
             int mouseY = event.getY();
-            LinkedList.anInt1073 = 0;
+            framesSinceMouseInput = 0;
             eventClickX = mouseX;
             MovedStatics.eventClickY = mouseY;
             lastClick = System.currentTimeMillis();
@@ -256,7 +261,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
     public void mouseWheelMoved(MouseWheelEvent event) {
         int rotation = event.getWheelRotation();
-        LinkedList.anInt1073 = 0;
+        framesSinceMouseInput = 0;
 
         if(!handleInterfaceScrolling(event)) {
             int currentZoom = Game.playerCamera.getZoom();
@@ -382,7 +387,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
     public synchronized void mouseMoved(MouseEvent arg0) {
         if(GameObject.frame != null) {
-            LinkedList.anInt1073 = 0;
+            framesSinceMouseInput = 0;
             eventMouseX = arg0.getX();
             eventMouseY = arg0.getY();
         }
@@ -390,7 +395,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
     public synchronized void mouseReleased(MouseEvent arg0) {
         if(GameObject.frame != null) {
-            LinkedList.anInt1073 = 0;
+            framesSinceMouseInput = 0;
             mouseButtonPressed = 0;
             mouseWheelDown = false;
         }

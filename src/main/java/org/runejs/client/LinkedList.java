@@ -17,7 +17,6 @@ public class LinkedList {
     public static int selectedInventorySlot;
     public static LinkedList aLinkedList_1064 = new LinkedList();
     public static int[] terrainDataIds;
-    public static volatile int anInt1073 = 0;
     public static int crossType = 0;
 
     /**

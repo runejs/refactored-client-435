@@ -1550,8 +1550,8 @@ public class Game {
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
                             SceneCamera.customCameraTimer[i_19_]++;
                         GameInterface.manageTextInputs();
-                        int i_20_ = Npc.method400(-1);
-                        int i_21_ = Class17.method274();
+                        int i_20_ = MouseHandler.resetFramesSinceMouseInput();
+                        int i_21_ = KeyFocusListener.resetFramesSinceKeyboardInput();
                         if(i_20_ > 4500 && i_21_ > 4500) {
                             SceneCluster.idleLogout = 250;
                             MovedStatics.method650(4000);
