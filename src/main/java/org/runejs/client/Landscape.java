@@ -30,7 +30,6 @@ import org.runejs.OldEngine.MapDecompressor;
 import java.io.IOException;
 
 public class Landscape {
-    public static int mouseY = 0;
     public static CollisionMap[] currentCollisionMap = new CollisionMap[4];
     public static int[] anIntArray1168;
     /**

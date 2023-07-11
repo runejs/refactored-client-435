@@ -64,29 +64,29 @@ public class Class60 {
         width += 8;
         int height = ActorDefinition.menuActionRow * 15 + 21;
         if(ScreenController.frameMode == ScreenMode.FIXED){
-            if(Class57.clickX > 4 && RSString.clickY > 4 && Class57.clickX < 516 && RSString.clickY < 338) {
+            if(MouseHandler.clickX > 4 && MouseHandler.clickY > 4 && MouseHandler.clickX < 516 && MouseHandler.clickY < 338) {
                 Projectile.menuScreenArea = 0;
                 CollisionMap.menuHeight = ActorDefinition.menuActionRow * 15 + 22;
                 MovedStatics.menuOpen = true;
-                int x = -(width / 2) + -4 + Class57.clickX;
+                int x = -(width / 2) + -4 + MouseHandler.clickX;
                 VertexNormal.menuWidth = width;
                 if(width + x > 512)
                     x = 512 - width;
                 if(x < 0)
                     x = 0;
                 InteractiveObject.menuOffsetX = x;
-                int y = RSString.clickY + -4;
+                int y = MouseHandler.clickY + -4;
                 if(y + height > 334)
                     y = 334 - height;
                 if(y < 0)
                     y = 0;
                 Main.menuOffsetY = y;
             }
-            if(Class57.clickX > 553 && RSString.clickY > 205 && Class57.clickX < 743 && RSString.clickY < 466) {
+            if(MouseHandler.clickX > 553 && MouseHandler.clickY > 205 && MouseHandler.clickX < 743 && MouseHandler.clickY < 466) {
                 CollisionMap.menuHeight = 22 + 15 * ActorDefinition.menuActionRow;
                 Projectile.menuScreenArea = 1;
-                int y = -205 + RSString.clickY;
-                int x = -(width / 2) + -553 + Class57.clickX;
+                int y = -205 + MouseHandler.clickY;
+                int x = -(width / 2) + -553 + MouseHandler.clickX;
                 if(x < 0)
                     x = 0;
                 else if(width + x > 190)
@@ -101,17 +101,17 @@ public class Class60 {
                 VertexNormal.menuWidth = width;
                 Main.menuOffsetY = y;
             }
-            if(Class57.clickX > 17 && RSString.clickY > 357 && Class57.clickX < 496 && RSString.clickY < 453) {
+            if(MouseHandler.clickX > 17 && MouseHandler.clickY > 357 && MouseHandler.clickX < 496 && MouseHandler.clickY < 453) {
                 VertexNormal.menuWidth = width;
                 Projectile.menuScreenArea = 2;
                 CollisionMap.menuHeight = ActorDefinition.menuActionRow * 15 + 22;
-                int y = RSString.clickY + -357;
+                int y = MouseHandler.clickY + -357;
                 if(y >= 0) {
                     if(height + y > 96)
                         y = -height + 96;
                 } else
                     y = 0;
-                int x = -(width / 2) + -17 + Class57.clickX;
+                int x = -(width / 2) + -17 + MouseHandler.clickX;
                 MovedStatics.menuOpen = true;
                 Main.menuOffsetY = y;
                 if(x < 0)
@@ -121,14 +121,14 @@ public class Class60 {
                 InteractiveObject.menuOffsetX = x;
             }
 
-        } else if(Class57.clickX > 0 && RSString.clickY > 0 && Class57.clickX < GameShell.clientFrame.getWidth() && RSString.clickY < GameShell.clientFrame.getHeight()) {
+        } else if(MouseHandler.clickX > 0 && MouseHandler.clickY > 0 && MouseHandler.clickX < GameShell.clientFrame.getWidth() && MouseHandler.clickY < GameShell.clientFrame.getHeight()) {
                         Projectile.menuScreenArea = 0;
-            int x = -(width / 2) + -4 + Class57.clickX;
+            int x = -(width / 2) + -4 + MouseHandler.clickX;
             if(width + x > GameShell.clientFrame.getWidth() - 4)
                 x = GameShell.clientFrame.getWidth() - 4;
             if(x < 0)
                 x = 0;
-            int y = RSString.clickY + -4;
+            int y = MouseHandler.clickY + -4;
             if(y + height > GameShell.clientFrame.getHeight() - 4)
                 y = GameShell.clientFrame.getHeight() - 4;
             if(y + height > ScreenController.frameHeight-22)
@@ -195,7 +195,7 @@ public class Class60 {
     public static void updateLogin() {
         method836(1);
 
-        if(MouseHandler.clickType == 1 && RSString.clickY >= ScreenController.drawHeight-42 && Class57.clickX>=ScreenController.drawWidth-42 ){
+        if(MouseHandler.clickType == 1 && MouseHandler.clickY >= ScreenController.drawHeight-42 && MouseHandler.clickX>=ScreenController.drawWidth-42 ){
             int newVolume = 0;
             if(MusicSystem.musicVolume == 0) {
                 newVolume = 255;
@@ -220,9 +220,9 @@ public class Class60 {
         }
 
         if(Class51.gameStatusCode == 10) {
-            int i = Class57.clickX + -202;
+            int i = MouseHandler.clickX + -202;
             int clickType = MouseHandler.clickType;
-            int clickY = -171 + RSString.clickY;
+            int clickY = -171 + MouseHandler.clickY;
             if(loginScreenState == 0) {
                 /*int i_14_ = 100;
                 int i_15_ = 120;

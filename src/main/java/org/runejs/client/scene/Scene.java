@@ -1,10 +1,9 @@
 package org.runejs.client.scene;
 
-import org.runejs.client.Class13;
-import org.runejs.client.Landscape;
 import org.runejs.client.LinkedList;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.def.OverlayDefinition;
+import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Model;
@@ -1754,7 +1753,7 @@ public class Scene {
                 clickedTileX = tileX;
                 clickedTileY = tileY;
             }
-            if (isMouseWithinTriangle(Class13.mouseX, Landscape.mouseY, screenYD, screenYC, screenYB, screenXD, screenXC, screenXB)) {
+            if (isMouseWithinTriangle(MouseHandler.mouseX, MouseHandler.mouseY, screenYD, screenYC, screenYB, screenXD, screenXC, screenXB)) {
                 hoveredTileX = tileX;
                 hoveredTileY = tileY;
             }
@@ -1778,7 +1777,7 @@ public class Scene {
                 clickedTileY = tileY;
             }
 
-            if (isMouseWithinTriangle(Class13.mouseX, Landscape.mouseY, screenYA, screenYB, screenYC, screenXA, screenXB, screenXC)) {
+            if (isMouseWithinTriangle(MouseHandler.mouseX, MouseHandler.mouseY, screenYA, screenYB, screenYC, screenXA, screenXB, screenXC)) {
                 hoveredTileX = tileX;
                 hoveredTileY = tileY;
             }
@@ -1990,7 +1989,7 @@ public class Scene {
                     clickedTileY = tileY;
                 }
 
-                if (isMouseWithinTriangle(Class13.mouseX, Landscape.mouseY, screenYA, screenYB, screenYC, screenXA, screenXB, screenXC)) {
+                if (isMouseWithinTriangle(MouseHandler.mouseX, MouseHandler.mouseY, screenYA, screenYB, screenYC, screenXA, screenXB, screenXC)) {
                     hoveredTileX = tileX;
                     hoveredTileY = tileY;
                 }

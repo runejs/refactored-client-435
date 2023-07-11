@@ -35,6 +35,16 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public static int currentMouseButtonPressed = 0;
     public static volatile int mouseButtonPressed = 0;
     public static volatile int eventMouseButtonPressed = 0;
+    public static volatile int eventMouseX = -1;
+    public static volatile int eventMouseY = -1;
+    public static int mouseX = 0;
+    public static int mouseY = 0;
+    public static int clickX = 0;
+    public static int clickY = 0;
+    public static long aLong2561 = 0L;
+    public static int cursorY;
+    public static int cursorX;
+    public static boolean gameScreenClickable;
     public boolean mouseWheelDown;
     public int mouseWheelX;
     public int mouseWheelY;
@@ -46,12 +56,12 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             return;
         }
         int meta = clickType;
-        if(Main.widgetSelected == 1 && Class57.clickX >= 516 && RSString.clickY >= 160 && Class57.clickX <= 765 && RSString.clickY <= 205)
+        if(Main.widgetSelected == 1 && clickX >= 516 && clickY >= 160 && clickX <= 765 && clickY <= 205)
             meta = 0;
         if(MovedStatics.menuOpen) {
             if(meta != 1) {
-                int x = Class13.mouseX;
-                int y = Landscape.mouseY;
+                int x = mouseX;
+                int y = mouseY;
                 if(Projectile.menuScreenArea == 0) {
                     x -= 4;
                     y -= 4;
@@ -76,8 +86,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 int menuX = InteractiveObject.menuOffsetX;
                 int menuY = Main.menuOffsetY;
                 int dx = VertexNormal.menuWidth;
-                int x = Class57.clickX;
-                int y = RSString.clickY;
+                int x = clickX;
+                int y = clickY;
                 if(Projectile.menuScreenArea == 0) {
                     x -= 4;
                     y -= 4;
@@ -125,11 +135,11 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     int id = Class59.secondMenuOperand[-1 + ActorDefinition.menuActionRow];
                     GameInterface gameInterface = GameInterface.getInterface(id);
                     if(gameInterface.itemSwapable || gameInterface.itemDeletesDraged) {
-                        Renderable.anInt2869 = Class57.clickX;
+                        Renderable.anInt2869 = clickX;
                         Class40_Sub5_Sub15.lastItemDragged = false;
                         SceneTile.activeInterfaceType = 2;
                         MovedStatics.modifiedWidgetId = id;
-                        ItemDefinition.anInt2798 = RSString.clickY;
+                        ItemDefinition.anInt2798 = clickY;
                         GroundItemTile.selectedInventorySlot = item;
                         if(id >> 16 == GameInterface.gameScreenInterfaceId)
                             SceneTile.activeInterfaceType = 1;
@@ -149,19 +159,32 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         }
     }
 
+    public static void method1015() {
+        synchronized (GameObject.frame) {
+            currentMouseButtonPressed = mouseButtonPressed;
+            mouseX = eventMouseX;
+            mouseY = eventMouseY;
+            clickType = eventMouseButtonPressed;
+            clickX = Class55.eventClickX;
+            clickY = MovedStatics.eventClickY;
+            aLong2561 = OverlayDefinition.lastClick;
+            eventMouseButtonPressed = 0;
+        }
+    }
+
     public synchronized void mouseEntered(MouseEvent arg0) {
         if(GameObject.frame != null) {
             LinkedList.anInt1073 = 0;
-            Class12.eventMouseX = arg0.getX();
-            MovedStatics.eventMouseY = arg0.getY();
+            eventMouseX = arg0.getX();
+            eventMouseY = arg0.getY();
         }
     }
 
     public synchronized void mouseExited(MouseEvent arg0) {
         if(GameObject.frame != null) {
             LinkedList.anInt1073 = 0;
-            Class12.eventMouseX = -1;
-            MovedStatics.eventMouseY = -1;
+            eventMouseX = -1;
+            eventMouseY = -1;
         }
     }
 
@@ -184,8 +207,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             mouseWheelY = mouseEvent.getY();
             return;
         }
-        Class12.eventMouseX = mouseX;
-        MovedStatics.eventMouseY = mouseY;
+        eventMouseX = mouseX;
+        eventMouseY = mouseY;
     }
 
     private void mouseWheelDragged(int i, int j) {
@@ -247,8 +270,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
     public boolean handleInterfaceScrolling(MouseWheelEvent event) {
         int rotation = event.getWheelRotation();
-        int mouseX = Class12.eventMouseX;
-        int mouseY = MovedStatics.eventMouseY;
+        int mouseX = eventMouseX;
+        int mouseY = eventMouseY;
         if(ScreenController.isCoordinatesInExtendedChatArea(mouseX, mouseY) && GameInterface.chatboxInterfaceId == -1) {
             if(rotation < 0) {
                 if(Main.chatboxInterface.scrollPosition >= 1) {
@@ -355,8 +378,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public synchronized void mouseMoved(MouseEvent arg0) {
         if(GameObject.frame != null) {
             LinkedList.anInt1073 = 0;
-            Class12.eventMouseX = arg0.getX();
-            MovedStatics.eventMouseY = arg0.getY();
+            eventMouseX = arg0.getX();
+            eventMouseY = arg0.getY();
         }
     }
 

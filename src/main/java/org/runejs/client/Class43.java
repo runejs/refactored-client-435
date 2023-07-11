@@ -9,6 +9,7 @@ import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
+import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
@@ -72,7 +73,7 @@ public class Class43 {
                 OverlayDefinition.hoveredWidgetChildId = -1;
                 boolean bool = false;
                 // Right game screen
-                if(ScreenController.isCoordinatesIn3dScreen(Class13.mouseX ,Landscape.mouseY )) {
+                if(ScreenController.isCoordinatesIn3dScreen(MouseHandler.mouseX , MouseHandler.mouseY )) {
                     if(GameInterface.gameScreenInterfaceId == -1) {
                         MovedStatics.method1013();
                     } else {
@@ -82,7 +83,7 @@ public class Class43 {
                             yOffset = 0;
                             xOffset = 0;
                         }
-                        Class13.handleInterfaceActions(GameInterfaceArea.GAME_AREA, Class13.mouseX - xOffset, Landscape.mouseY - yOffset, 4, 4, 516, 338, GameInterface.gameScreenInterfaceId);
+                        Class13.handleInterfaceActions(GameInterfaceArea.GAME_AREA, MouseHandler.mouseX - xOffset, MouseHandler.mouseY - yOffset, 4, 4, 516, 338, GameInterface.gameScreenInterfaceId);
                     }
                 }
 
@@ -91,8 +92,8 @@ public class Class43 {
                 Item.anInt3065 = -1;
                 OverlayDefinition.hoveredWidgetChildId = -1;
                 // Right click tab
-                if(ScreenController.isCoordinatesInTabArea(Class13.mouseX, Landscape.mouseY)) {
-                    ScreenController.handleTabClick(Class13.mouseX, Landscape.mouseY);
+                if(ScreenController.isCoordinatesInTabArea(MouseHandler.mouseX, MouseHandler.mouseY)) {
+                    ScreenController.handleTabClick(MouseHandler.mouseX, MouseHandler.mouseY);
                 }
                 if(OverlayDefinition.hoveredWidgetChildId != CollisionMap.currentHoveredWidgetChildId) {
                     GameInterface.redrawTabArea = true;
@@ -105,8 +106,8 @@ public class Class43 {
                 }
                 Item.anInt3065 = -1;
                 // right click chatbox
-                if(ScreenController.isCoordinatesInChatArea(Class13.mouseX ,Landscape.mouseY)) {
-                    ScreenController.handleChatBoxMouse(Class13.mouseX ,Landscape.mouseY);
+                if(ScreenController.isCoordinatesInChatArea(MouseHandler.mouseX , MouseHandler.mouseY)) {
+                    ScreenController.handleChatBoxMouse(MouseHandler.mouseX , MouseHandler.mouseY);
                 }
 
                 // Set hovering for chat widgets
@@ -145,7 +146,7 @@ public class Class43 {
             } else {
                 Item.anInt3065 = -1;
                 OverlayDefinition.hoveredWidgetChildId = -1;
-                Class13.handleInterfaceActions(GameInterfaceArea.GAME_AREA, Class13.mouseX, Landscape.mouseY, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
+                Class13.handleInterfaceActions(GameInterfaceArea.GAME_AREA, MouseHandler.mouseX, MouseHandler.mouseY, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
                 ItemDefinition.anInt2850 = OverlayDefinition.hoveredWidgetChildId;
                 MovedStatics.anInt573 = Item.anInt3065;
             }
@@ -176,8 +177,8 @@ public class Class43 {
             Rasterizer.drawFilledRectangle(i_0_ + 1, i_2_ + 1, -2 + i, 16, 0);
             Rasterizer.drawUnfilledRectangle(i_0_ + 1, 18 + i_2_, -2 + i, i_1_ + -19, 0);
             TypeFace.fontBold.drawShadowedString(class1, 3 + i_0_, 14 + i_2_, false, i_3_);
-            int i_4_ = Class13.mouseX;
-            int i_5_ = Landscape.mouseY;
+            int i_4_ = MouseHandler.mouseX;
+            int i_5_ = MouseHandler.mouseY;
             if(Projectile.menuScreenArea == 0) {
                 i_4_ -= 4;
                 i_5_ -= 4;

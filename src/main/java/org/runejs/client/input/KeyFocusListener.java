@@ -109,15 +109,15 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             WallDecoration.fontNormal.drawStringRight("Mem: " + memoryUsed + "k", x, y, colour);
             y += 15;
 
-            WallDecoration.fontNormal.drawStringRight("MouseX: " + Class13.mouseX, x, y ,0xffff00);
+            WallDecoration.fontNormal.drawStringRight("MouseX: " + MouseHandler.mouseX, x, y ,0xffff00);
             y += 15;
 
-            WallDecoration.fontNormal.drawStringRight("MouseY: " + Landscape.mouseY, x, y ,0xffff00);
+            WallDecoration.fontNormal.drawStringRight("MouseY: " + MouseHandler.mouseY, x, y ,0xffff00);
             y += 15;
-            WallDecoration.fontNormal.drawStringRight("ClickX: " + Class57.clickX, x, y ,0xffff00);
+            WallDecoration.fontNormal.drawStringRight("ClickX: " + MouseHandler.clickX, x, y ,0xffff00);
             y += 15;
 
-            WallDecoration.fontNormal.drawStringRight("ClickY: " + RSString.clickY, x, y ,0xffff00);
+            WallDecoration.fontNormal.drawStringRight("ClickY: " + MouseHandler.clickY, x, y ,0xffff00);
             y += 15;
             if (MovedStatics.showSidePanelRedrawnText) {
                 WallDecoration.fontNormal.drawStringRight(English.sidePanelRedrawn, x, y, 16711680);

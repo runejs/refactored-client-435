@@ -71,7 +71,6 @@ public class MovedStatics {
     public static int SCROLLBAR_COLOR_CHIP_FILL = 0x4D4233;
     public static int chatEffectsDisabled = 0;
     public static int anInt321 = 5063219;
-    public static volatile int eventMouseY = -1;
     public static boolean redrawChatbox = false;
     public static ImageRGB[] mapDots;
     public static CacheArchive aCacheArchive_654;
@@ -238,11 +237,11 @@ public class MovedStatics {
                     if ((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(username))) {
                         int i_3_ = 329 + -(13 * i);
                         i++;
-                        if (Class13.mouseX > 4 && i_3_ + -10 < Landscape.mouseY + -4 && -4 + Landscape.mouseY <= i_3_ + 3) {
+                        if (MouseHandler.mouseX > 4 && i_3_ + -10 < MouseHandler.mouseY + -4 && -4 + MouseHandler.mouseY <= i_3_ + 3) {
                             int i_4_ = 25 + WallDecoration.fontNormal.getStringWidth(English.from + Native.prefixColon + username + ChatBox.chatMessages[i_1_]);
                             if (i_4_ > 450)
                                 i_4_ = 450;
-                            if (Class13.mouseX < 4 + i_4_) {
+                            if (MouseHandler.mouseX < 4 + i_4_) {
                                 int actionRowOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
                                 if (InteractiveObject.playerRights >= 1) {
                                     addActionRow(English.reportAbuse, 0, 0, 0, actionRowOffset + ActionRowType.REPORT_ABUSE.getId(), Native.white + username);
@@ -784,7 +783,7 @@ public class MovedStatics {
                 tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
             }
 
-            addActionRow(English.walkHere, 0, Class13.mouseX, Landscape.mouseY, ActionRowType.WALK_HERE.getId(), tileCoords);
+            addActionRow(English.walkHere, 0, MouseHandler.mouseX, MouseHandler.mouseY, ActionRowType.WALK_HERE.getId(), tileCoords);
         }
 
         for (int idx = 0; Model.resourceCount > idx; idx++) {
@@ -924,19 +923,6 @@ public class MovedStatics {
             }
         }
 
-    }
-
-    public static void method1015() {
-        synchronized (GameObject.frame) {
-            MouseHandler.currentMouseButtonPressed = MouseHandler.mouseButtonPressed;
-            Class13.mouseX = Class12.eventMouseX;
-            Landscape.mouseY = eventMouseY;
-            MouseHandler.clickType = MouseHandler.eventMouseButtonPressed;
-            Class57.clickX = Class55.eventClickX;
-            RSString.clickY = eventClickY;
-            GameObjectDefinition.aLong2561 = OverlayDefinition.lastClick;
-            MouseHandler.eventMouseButtonPressed = 0;
-        }
     }
 
     public static int method614(int arg1, int arg2, int arg3) {
@@ -1445,8 +1431,8 @@ public class MovedStatics {
 	    Rasterizer.drawFilledRectangle(1 + offsetX, 1 + offsetY, -2 + width, 16, 0);
 	    Rasterizer.drawUnfilledRectangle(offsetX + 1, 18 + offsetY, -2 + width, -19 + height, 0);
 	    TypeFace.fontBold.drawString(English.chooseOption, offsetX + 3, 14 + offsetY, colour);
-	    int x = Class13.mouseX - (xOffSet);
-	    int y = (-yOffSet) + Landscape.mouseY;
+	    int x = MouseHandler.mouseX - (xOffSet);
+	    int y = (-yOffSet) + MouseHandler.mouseY;
 	    if(Projectile.menuScreenArea == 0) {
 	        x -= 4;
 	        y -= 4;

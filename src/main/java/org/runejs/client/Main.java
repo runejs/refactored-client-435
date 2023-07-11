@@ -92,6 +92,7 @@ public class Main extends GameShell {
     public static int mouseInvInterfaceIndex = 0;
     public static int anInt509 = 0;
     public static boolean aBoolean519 = true;
+    public static Class39 mouseCapturer;
 
     /**
      * Minimap rotation is always based on game camera
@@ -181,13 +182,13 @@ public class Main extends GameShell {
                     GameInterface gameInterface_3_ = FramemapDefinition.method878(gameInterface);
                     int[] is = Class13.method247(gameInterface_3_);
                     int[] is_4_ = Class13.method247(gameInterface);
-                    int i_5_ = Landscape.mouseY + -MovedStatics.anInt2621 + is_4_[1] - is[1];
+                    int i_5_ = MouseHandler.mouseY + -MovedStatics.anInt2621 + is_4_[1] - is[1];
                     if (i_5_ < 0)
                         i_5_ = 0;
                     if (i_5_ + gameInterface.originalHeight > gameInterface_3_.originalHeight)
                         i_5_ = gameInterface_3_.originalHeight + -gameInterface.originalHeight;
                     absoluteY = i_5_ + is[1];
-                    int i_6_ = Class13.mouseX + -MovedStatics.anInt1996 + -is[0] + is_4_[0];
+                    int i_6_ = MouseHandler.mouseX + -MovedStatics.anInt1996 + -is[0] + is_4_[0];
                     if (i_6_ < 0)
                         i_6_ = 0;
                     if (i_6_ + gameInterface.originalWidth > gameInterface_3_.originalWidth)
@@ -246,8 +247,8 @@ public class Main extends GameShell {
                                             result = false;
                                         else {
                                             if (SceneTile.activeInterfaceType != 0 && GroundItemTile.selectedInventorySlot == i_7_ && gameInterface.id == MovedStatics.modifiedWidgetId) {
-                                                i_14_ = Landscape.mouseY + -ItemDefinition.anInt2798;
-                                                i_12_ = Class13.mouseX + -Renderable.anInt2869;
+                                                i_14_ = MouseHandler.mouseY + -ItemDefinition.anInt2798;
+                                                i_12_ = MouseHandler.mouseX + -Renderable.anInt2869;
                                                 if (i_12_ < 5 && i_12_ > -5)
                                                     i_12_ = 0;
                                                 if (i_14_ < 5 && i_14_ > -5)
@@ -735,7 +736,7 @@ public class Main extends GameShell {
 
     public static void setConfigToDefaults() {
         aLong1203 = 0L;
-        Class12.mouseCapturer.coord = 0;
+        mouseCapturer.coord = 0;
         MovedStatics.duplicateClickCount = 0;
         aBoolean1735 = true;
         MovedStatics.aBoolean571 = true;
@@ -872,9 +873,9 @@ public class Main extends GameShell {
         activeCamera.setOffsetRotation(shakeOffsetRotation);
 
         Class65.method1018();
-        Model.cursorY = Landscape.mouseY - 4;
-        Model.gameScreenClickable = true;
-        Model.cursorX = Class13.mouseX - 4;
+        MouseHandler.cursorY = MouseHandler.mouseY - 4;
+        MouseHandler.gameScreenClickable = true;
+        MouseHandler.cursorX = MouseHandler.mouseX - 4;
         Model.resourceCount = 0;
         Rasterizer.resetPixels();
 
@@ -968,8 +969,8 @@ public class Main extends GameShell {
         }
         if(GameInterface.chatboxInterfaceId == -1) {
             chatboxInterface.scrollPosition = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
-            if(Class13.mouseX > 448 && Class13.mouseX < 560 && Landscape.mouseY > 332) {
-                GameInterface.scrollInterface(77, Landscape.mouseY + -357, -17 + Class13.mouseX, ChatBox.chatboxScrollMax, chatboxInterface, 463, -1, 0);
+            if(MouseHandler.mouseX > 448 && MouseHandler.mouseX < 560 && MouseHandler.mouseY > 332) {
+                GameInterface.scrollInterface(77, MouseHandler.mouseY + -357, -17 + MouseHandler.mouseX, ChatBox.chatboxScrollMax, chatboxInterface, 463, -1, 0);
             }
             int currentScroll = ChatBox.chatboxScrollMax - 77 - chatboxInterface.scrollPosition;
             if(currentScroll < 0) {
@@ -986,8 +987,8 @@ public class Main extends GameShell {
         if(GameInterface.chatboxInterfaceId == -1 && ChatBox.inputType == 3) {
             chatboxInterface.scrollPosition = ChatBox.itemSearchScroll;
             int scrollMax = 14 * ChatBox.itemSearchResultCount + 7;
-            if(Class13.mouseX > 448 && Class13.mouseX < 560 && Landscape.mouseY > 332) {
-                GameInterface.scrollInterface(77, Landscape.mouseY - 357, -17 + Class13.mouseX, scrollMax, chatboxInterface, 463, -1, 0);
+            if(MouseHandler.mouseX > 448 && MouseHandler.mouseX < 560 && MouseHandler.mouseY > 332) {
+                GameInterface.scrollInterface(77, MouseHandler.mouseY - 357, -17 + MouseHandler.mouseX, scrollMax, chatboxInterface, 463, -1, 0);
             }
             int currentScroll = chatboxInterface.scrollPosition;
             if(currentScroll < 0) {
@@ -1329,30 +1330,30 @@ public class Main extends GameShell {
                         Item.obfuscatedKeyStatus[i] = false;
                 }
                 ClientScriptRunner.createClientScriptCheckPacket(205, SceneCluster.packetBuffer);
-                synchronized(Class12.mouseCapturer.objectLock) {
+                synchronized(mouseCapturer.objectLock) {
                     if(MovedStatics.accountFlagged) {
-                        if(MouseHandler.clickType != 0 || Class12.mouseCapturer.coord >= 40) {
+                        if(MouseHandler.clickType != 0 || mouseCapturer.coord >= 40) {
                             int coordinateCount = 0;
                             SceneCluster.packetBuffer.putPacket(210);
                             SceneCluster.packetBuffer.putByte(0);
                             int originalOffset = SceneCluster.packetBuffer.currentPosition;
-                            for(int c = 0; c < Class12.mouseCapturer.coord; c++) {
+                            for(int c = 0; c < mouseCapturer.coord; c++) {
                                 if(-originalOffset + SceneCluster.packetBuffer.currentPosition >= 240)
                                     break;
                                 coordinateCount++;
-                                int pixelOffset = Class12.mouseCapturer.coordsY[c];
+                                int pixelOffset = mouseCapturer.coordsY[c];
                                 if(pixelOffset >= 0) {
                                     if(pixelOffset > 502)
                                         pixelOffset = 502;
                                 } else
                                     pixelOffset = 0;
-                                int x = Class12.mouseCapturer.coordsX[c];
+                                int x = mouseCapturer.coordsX[c];
                                 if(x < 0)
                                     x = 0;
                                 else if(x > 764)
                                     x = 764;
                                 int y = pixelOffset * 765 + x;
-                                if(Class12.mouseCapturer.coordsY[c] == -1 && Class12.mouseCapturer.coordsX[c] == -1) {
+                                if(mouseCapturer.coordsY[c] == -1 && mouseCapturer.coordsX[c] == -1) {
                                     x = -1;
                                     y = -1;
                                     pixelOffset = 0x7ffff;
@@ -1380,24 +1381,24 @@ public class Main extends GameShell {
                                 }
                             }
                             SceneCluster.packetBuffer.finishVarByte(SceneCluster.packetBuffer.currentPosition + -originalOffset);
-                            if(coordinateCount < Class12.mouseCapturer.coord) {
-                                Class12.mouseCapturer.coord -= coordinateCount;
-                                for(int i_9_ = 0; Class12.mouseCapturer.coord > i_9_; i_9_++) {
-                                    Class12.mouseCapturer.coordsX[i_9_] = Class12.mouseCapturer.coordsX[coordinateCount + i_9_];
-                                    Class12.mouseCapturer.coordsY[i_9_] = Class12.mouseCapturer.coordsY[i_9_ + coordinateCount];
+                            if(coordinateCount < mouseCapturer.coord) {
+                                mouseCapturer.coord -= coordinateCount;
+                                for(int i_9_ = 0; mouseCapturer.coord > i_9_; i_9_++) {
+                                    mouseCapturer.coordsX[i_9_] = mouseCapturer.coordsX[coordinateCount + i_9_];
+                                    mouseCapturer.coordsY[i_9_] = mouseCapturer.coordsY[i_9_ + coordinateCount];
                                 }
                             } else
-                                Class12.mouseCapturer.coord = 0;
+                                mouseCapturer.coord = 0;
                         }
                     } else {
-                        Class12.mouseCapturer.coord = 0;
+                        mouseCapturer.coord = 0;
                     }
                 }
                 if(MouseHandler.clickType != 0) {
-                    long l = (GameObjectDefinition.aLong2561 - aLong1203) / 50L;
-                    int i = Class57.clickX;
-                    int i_10_ = RSString.clickY;
-                    aLong1203 = GameObjectDefinition.aLong2561;
+                    long l = (MouseHandler.aLong2561 - aLong1203) / 50L;
+                    int i = MouseHandler.clickX;
+                    int i_10_ = MouseHandler.clickY;
+                    aLong1203 = MouseHandler.aLong2561;
                     if(i >= 0) {
                         if(i > 764)
                             i = 764;
@@ -1469,7 +1470,7 @@ public class Main extends GameShell {
                         MovedStatics.anInt199++;
                         if(SceneTile.activeInterfaceType != 0) {
                             Buffer.lastItemDragTime++;
-                            if(Class13.mouseX > Renderable.anInt2869 + 5 || Renderable.anInt2869 + -5 > Class13.mouseX || ItemDefinition.anInt2798 + 5 < Landscape.mouseY || ItemDefinition.anInt2798 - 5 > Landscape.mouseY)
+                            if(MouseHandler.mouseX > Renderable.anInt2869 + 5 || Renderable.anInt2869 + -5 > MouseHandler.mouseX || ItemDefinition.anInt2798 + 5 < MouseHandler.mouseY || ItemDefinition.anInt2798 - 5 > MouseHandler.mouseY)
                                 Class40_Sub5_Sub15.lastItemDragged = true;
                             if(MouseHandler.currentMouseButtonPressed == 0) {
                                 if(SceneTile.activeInterfaceType == 3)
@@ -1534,9 +1535,9 @@ public class Main extends GameShell {
                             int i_18_ = Scene.clickedTileY;
                             boolean bool = Pathfinding.doTileWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_18_);
                             if(bool) {
-                                MovedStatics.crossY = RSString.clickY;
+                                MovedStatics.crossY = MouseHandler.clickY;
                                 OverlayDefinition.crossIndex = 0;
-                                ClientScriptRunner.crossX = Class57.clickX;
+                                ClientScriptRunner.crossX = MouseHandler.clickX;
                                 LinkedList.crossType = 1;
                             }
                             Scene.clickedTileX = -1;
@@ -1897,7 +1898,7 @@ public class Main extends GameShell {
         MusicSystem.handleMusic();
         SoundSystem.handleSounds();
         GameInterface.method639();
-        MovedStatics.method1015();
+        MouseHandler.method1015();
 
         if (Class51.gameStatusCode == 0) {
             Class40_Sub3.startup();
@@ -2049,9 +2050,9 @@ public class Main extends GameShell {
     }
 
     public void method24() {
-        if (Class12.mouseCapturer != null)
-            Class12.mouseCapturer.aBoolean913 = false;
-        Class12.mouseCapturer = null;
+        if (mouseCapturer != null)
+            mouseCapturer.aBoolean913 = false;
+        mouseCapturer = null;
         if (MovedStatics.gameServerSocket != null) {
             MovedStatics.gameServerSocket.kill();
             MovedStatics.gameServerSocket = null;

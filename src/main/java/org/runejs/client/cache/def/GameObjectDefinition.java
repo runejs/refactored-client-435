@@ -18,7 +18,6 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2524;
     public static int anInt2543 = 0;
     public static int lastClickY = 0;
-    public static long aLong2561 = 0L;
     public static int count;
     public static NodeCache objectDefinitionCache = new NodeCache(64);
     public static NodeCache objectModelCache = new NodeCache(500);

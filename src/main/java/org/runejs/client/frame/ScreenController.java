@@ -144,8 +144,8 @@ public class ScreenController {
         tabProducer.drawResizableSideBarArea(drawWidth - 241, drawHeight - (334));
 
         if (DebugView) {
-            int mX = Class13.mouseX;
-            int mY = Landscape.mouseY;
+            int mX = MouseHandler.mouseX;
+            int mY = MouseHandler.mouseY;
 
             int[] tabInterFaceCoords= tabProducer.getTabInterfaceCoordSize(drawWidth - 241, drawHeight - (334));
             int[] tabInterFaceTop = tabProducer.getTopBarCoordSize(drawWidth - 241, drawHeight - (334));
@@ -184,7 +184,7 @@ public class ScreenController {
             }
 
 
-            Rasterizer.drawFilledRectangle(Class13.mouseX - 4, Landscape.mouseY - 4, 4, 4, 0xFF0000);
+            Rasterizer.drawFilledRectangle(MouseHandler.mouseX - 4, MouseHandler.mouseY - 4, 4, 4, 0xFF0000);
         }
 
         if (MovedStatics.menuOpen) {
@@ -357,8 +357,8 @@ public class ScreenController {
             int minimapClickX;
             int minimapClickY;
             if (frameMode == ScreenMode.FIXED) {
-                minimapClickX = -575 + Class57.clickX;
-                minimapClickY = -5 + RSString.clickY - 4;
+                minimapClickX = -575 + MouseHandler.clickX;
+                minimapClickY = -5 + MouseHandler.clickY - 4;
                 if (minimapClickX >= 0 && minimapClickY >= 0 && minimapClickX < 146 && minimapClickY < 151) {
                     minimapClickX -= 73;
                     minimapClickY -= 75;
@@ -367,8 +367,8 @@ public class ScreenController {
                 }
 
             } else {
-                minimapClickX = -(frameWidth - 210) + Class57.clickX;
-                minimapClickY = -5 + RSString.clickY - 4;
+                minimapClickX = -(frameWidth - 210) + MouseHandler.clickX;
+                minimapClickY = -5 + MouseHandler.clickY - 4;
                 if (minimapClickX >= 0 && minimapClickY >= 0 && minimapClickX < 204 && minimapClickY < 200) {
                     minimapClickX -= 107;
                     minimapClickY -= 100;
@@ -419,8 +419,8 @@ public class ScreenController {
     }
 
     public static void handleChatButtonsClick() {
-        int x = Class57.clickX;
-        int y = RSString.clickY;
+        int x = MouseHandler.clickX;
+        int y = MouseHandler.clickY;
         if (frameMode == ScreenMode.FIXED) {
             x -= 6;
             y -= 467;
@@ -477,8 +477,8 @@ public class ScreenController {
     }
 
     public static void handleTabClick() {
-        int x = Class57.clickX;
-        int y = RSString.clickY;
+        int x = MouseHandler.clickX;
+        int y = MouseHandler.clickY;
 
 
         if (MouseHandler.clickType == 1) {

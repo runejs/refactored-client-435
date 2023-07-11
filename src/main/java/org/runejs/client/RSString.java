@@ -9,7 +9,6 @@ import java.nio.charset.StandardCharsets;
 
 public class RSString {
     public static ProducingGraphicsBuffer mapbackProducingGraphicsBuffer;
-    public static int clickY = 0;
     public static CacheArchive aCacheArchive_1705;
     public static int[] keyCodes = new int[128];
     public static int tooltipDelay = 50;
