@@ -179,7 +179,7 @@ public class Main extends GameShell {
                 if (!gameInterface.lockScroll)
                     absoluteY -= scrollPosition;
                 int opacity = gameInterface.opacity;
-                if (gameInterface == Wall.aGameInterface_353) {
+                if (gameInterface == GameInterface.aGameInterface_353) {
                     opacity = 128;
                     GameInterface gameInterface_3_ = FramemapDefinition.method878(gameInterface);
                     int[] is = Class13.method247(gameInterface_3_);

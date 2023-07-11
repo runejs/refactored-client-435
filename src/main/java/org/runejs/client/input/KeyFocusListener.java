@@ -14,7 +14,6 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.tile.SceneTile;
-import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.*;
 import org.runejs.client.cache.def.FramemapDefinition;
@@ -48,7 +47,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     }
 
     public static void draw3dScreen() {
-        Wall.renderSplitPrivateMessages();
+        MovedStatics.renderSplitPrivateMessages();
         if (LinkedList.crossType == 1) {
             Class37.cursorCross[OverlayDefinition.crossIndex / 100].drawImage(ClientScriptRunner.crossX - 8 - 4, MovedStatics.crossY - 8 - 4);
         }
