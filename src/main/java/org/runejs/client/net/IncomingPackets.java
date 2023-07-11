@@ -1,30 +1,10 @@
 package org.runejs.client.net;
 
 import org.runejs.client.*;
-import org.runejs.client.cache.def.*;
-import org.runejs.client.cache.media.gameInterface.GameInterface;
-import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
-import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
-import org.runejs.client.frame.ChatBox;
-import org.runejs.client.io.Buffer;
-import org.runejs.client.media.renderable.GameObject;
-import org.runejs.client.media.renderable.Item;
-import org.runejs.client.media.renderable.Model;
-import org.runejs.client.media.renderable.actor.Actor;
-import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.InboundMessage;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.net.codec.MessageDecoder;
-import org.runejs.client.scene.GroundItemTile;
-import org.runejs.client.scene.InteractiveObject;
-import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.scene.tile.FloorDecoration;
-import org.runejs.client.scene.tile.GenericTile;
-import org.runejs.client.scene.tile.Wall;
-import org.runejs.client.scene.tile.WallDecoration;
-import org.runejs.client.sound.SoundSystem;
 
 public class IncomingPackets {
     public static int incomingPacketSize = 0;
@@ -51,7 +31,7 @@ public class IncomingPackets {
                 incomingPacketBuffer.currentPosition = 0;
                 availableBytes--;
                 opcode = incomingPacketBuffer.getPacket();
-                incomingPacketSize = Main.packetCodec.getPacketLength(opcode);
+                incomingPacketSize = Game.packetCodec.getPacketLength(opcode);
             }
 
             if(incomingPacketSize == -1) {
@@ -87,7 +67,7 @@ public class IncomingPackets {
             lastOpcode = opcode;
 
             // find the correct decoder for this packet
-            MessageDecoder decoder = Main.packetCodec.getMessageDecoder(opcode);
+            MessageDecoder decoder = Game.packetCodec.getMessageDecoder(opcode);
 
             if (decoder != null) {
                 // create a new packet buffer with the correct size, and read the data into it
@@ -96,7 +76,7 @@ public class IncomingPackets {
 
                 // decode the packet and handle it
                 InboundMessage message = decoder.decode(packetBuffer);
-                MessageHandler handler = Main.handlerRegistry.getMessageHandler(message.getClass());
+                MessageHandler handler = Game.handlerRegistry.getMessageHandler(message.getClass());
 
                 if (handler == null)
                     throw new RuntimeException("No handler for message: " + message.getClass().getName());
@@ -113,13 +93,13 @@ public class IncomingPackets {
             MovedStatics.gameServerSocket.readDataToBuffer(0, incomingPacketSize, incomingPacketBuffer.buffer);
 
             if(opcode == 240) {
-                ClientScriptRunner.parseClientScriptPacket(Main.signlink, incomingPacketBuffer);
+                ClientScriptRunner.parseClientScriptPacket(Game.signlink, incomingPacketBuffer);
                 opcode = -1;
                 return true;
             }
             if(opcode == 58) {
                 int i_106_ = incomingPacketBuffer.getIntME2();
-                Class12.aSignlinkNode_394 = Main.signlink.createExceptionNode(i_106_); // TODO this just ends up throwing an exception? wot
+                Class12.aSignlinkNode_394 = Game.signlink.createExceptionNode(i_106_); // TODO this just ends up throwing an exception? wot
                 opcode = -1;
                 return true;
             }

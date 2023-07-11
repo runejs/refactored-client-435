@@ -402,7 +402,7 @@ public class MovedStatics {
             return Player.worldLevel;
         }
 
-        Point3d cameraPos = Main.cutsceneCamera.getPosition();
+        Point3d cameraPos = Game.cutsceneCamera.getPosition();
 
         int i = Scene.getFloorDrawHeight(Player.worldLevel, cameraPos.x, cameraPos.y);
         if (i + -cameraPos.z < 800 && (tile_flags[Player.worldLevel][cameraPos.x >> 7][cameraPos.y >> 7] & 0x4) != 0)
@@ -471,7 +471,7 @@ public class MovedStatics {
     public static void method332(int arg0) {
         synchronized (CollisionMap.anObject162) {
             if (Buffer.anInt1987 == 0)
-                Main.signlink.createThreadNode(5, new Class44());
+                Game.signlink.createThreadNode(5, new Class44());
             Buffer.anInt1987 = arg0;
         }
     }
@@ -750,7 +750,7 @@ public class MovedStatics {
 
     public static void method1013() {
         int lasthash = -1;
-        if (MovedStatics.itemSelected == 0 && Main.widgetSelected == 0) {
+        if (MovedStatics.itemSelected == 0 && Game.widgetSelected == 0) {
             String tileCoords = "";
             if (Configuration.DEBUG_CONTEXT) {
                 tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
@@ -775,7 +775,7 @@ public class MovedStatics {
                         continue;
                     if (MovedStatics.itemSelected == 1) {
                         addActionRow(English.use, hash, x, y, ActionRowType.USE_ITEM_ON_OBJECT.getId(), Native.selectedItemName + Native.toCyan + gameObjectDefinition.name);
-                    } else if (Main.widgetSelected != 1) {
+                    } else if (Game.widgetSelected != 1) {
                         String[] options = gameObjectDefinition.actions;
                         if (Class60.DEBUG_DISPLAY_ALL_ACTION_ROWS)
                             options = getAllOptionsWithIndices(options);
@@ -861,7 +861,7 @@ public class MovedStatics {
                             ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
                             if (MovedStatics.itemSelected == 1) {
                                 addActionRow(English.use, item.itemId, x, y, ActionRowType.USE_ITEM_ON_WORLD_ITEM.getId(), Native.selectedItemName + Native.toLightRed + itemDefinition.name);
-                            } else if (Main.widgetSelected != 1) {
+                            } else if (Game.widgetSelected != 1) {
                                 String[] class1s = itemDefinition.groundOptions;
                                 if (Class60.DEBUG_DISPLAY_ALL_ACTION_ROWS)
                                     class1s = getAllOptionsWithIndices(class1s);
@@ -919,9 +919,9 @@ public class MovedStatics {
             if (Class51.gameStatusCode == 0)
                 CollisionMap.method144(12433);
             if (statusCode == 20 || statusCode == 40) {
-                Main.anInt1756 = 0;
+                Game.anInt1756 = 0;
                 anInt2321 = 0;
-                Main.loginStatus = 0;
+                Game.loginStatus = 0;
             }
             if (statusCode != 20 && statusCode != 40 && PlayerAppearance.lostConnectionSocket != null) {
                 PlayerAppearance.lostConnectionSocket.kill();
@@ -932,9 +932,9 @@ public class MovedStatics {
                 Rasterizer.resetPixels();
             }
             if (Class51.gameStatusCode == 25) {
-                Main.anInt874 = 0;
+                Game.anInt874 = 0;
                 PacketBuffer.anInt2231 = 1;
-                Main.anInt2591 = 0;
+                Game.anInt2591 = 0;
                 GameObject.anInt3048 = 1;
                 ProducingGraphicsBuffer.anInt1634 = 0;
             }
@@ -1111,7 +1111,7 @@ public class MovedStatics {
 	                    }
 
                         // spells
-	                    if(gameInterface.actionType == 2 && Main.widgetSelected == 0 && mouseX >= i_2_ && mouseY >= i_1_ && mouseX < gameInterface.originalWidth + i_2_ && mouseY < i_1_ + gameInterface.originalHeight) {
+	                    if(gameInterface.actionType == 2 && Game.widgetSelected == 0 && mouseX >= i_2_ && mouseY >= i_1_ && mouseX < gameInterface.originalWidth + i_2_ && mouseY < i_1_ + gameInterface.originalHeight) {
 	                        addActionRow(gameInterface.targetVerb, 0, 0, gameInterface.id, ActionRowType.SELECT_SPELL_ON_WIDGET.getId(), Native.green + gameInterface.spellName);
 	                    }
 
@@ -1152,11 +1152,11 @@ public class MovedStatics {
 	                                }
 	                                if(mouseX >= i_7_ && i_8_ <= mouseY && i_7_ + 32 > mouseX && mouseY < 32 + i_8_) {
 	                                    RSRuntimeException.lastActiveInvInterface = gameInterface.id;
-	                                    Main.mouseInvInterfaceIndex = i_4_;
+	                                    Game.mouseInvInterfaceIndex = i_4_;
 	                                    if(gameInterface.items[i_4_] > 0) {
 	                                        ItemDefinition itemDefinition = ItemDefinition.forId(-1 + gameInterface.items[i_4_], 10);
 	                                        if(MovedStatics.itemSelected != 1 || !gameInterface.isInventory) {
-	                                            if(Main.widgetSelected == 1 && gameInterface.isInventory) {
+	                                            if(Game.widgetSelected == 1 && gameInterface.isInventory) {
 	                                                if((selectedMask & 0x10) == 16) {
 	                                                    addActionRow(Native.selectedSpellVerb, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.CAST_MAGIC_ON_WIDGET_ITEM.getId(), Native.selectedSpellName + Native.toLightRed + itemDefinition.name);
 	                                                }
@@ -1325,7 +1325,7 @@ public class MovedStatics {
 	    int height = CollisionMap.menuHeight;
 	    int width = VertexNormal.menuWidth;
 	    int offsetX = InteractiveObject.menuOffsetX - (xOffSet);
-	    int offsetY = (-yOffSet) + Main.menuOffsetY;
+	    int offsetY = (-yOffSet) + Game.menuOffsetY;
 	    int colour = 0x5d5447;
 	    ChatBox.redrawChatbox = true;
 	    GameInterface.redrawTabArea = true;
@@ -1573,8 +1573,8 @@ public class MovedStatics {
 
         int drawHeight = Scene.getFloorDrawHeight(Player.worldLevel, x, y) - z;
 
-        Point3d cameraPos = Main.getActiveCamera().getPosition();
-        CameraRotation rotation = Main.getActiveCamera().getRotation();
+        Point3d cameraPos = Game.getActiveCamera().getPosition();
+        CameraRotation rotation = Game.getActiveCamera().getRotation();
 
         x -= cameraPos.x;
         y -= cameraPos.y;
@@ -1825,7 +1825,7 @@ public class MovedStatics {
                     yOffset = 0;
                     xOffset = 0;
                 }
-                Main.drawParentInterface(areaId, xOffset, yOffset, 512+ xOffset, 334 + yOffset, id);
+                Game.drawParentInterface(areaId, xOffset, yOffset, 512+ xOffset, 334 + yOffset, id);
         }
         Class65.method1018();
         Player.setTutorialIslandFlag();
@@ -1983,7 +1983,7 @@ public class MovedStatics {
                 }
                 if (itemSelected == 1) {
                     addActionRow(English.use, index, x, y, ActionRowType.USE_ITEM_ON_NPC.getId(), Native.selectedItemName + Native.toYellow + npcDisplayName);
-                } else if (Main.widgetSelected == 1) {
+                } else if (Game.widgetSelected == 1) {
                     if ((0x2 & selectedMask) == 2) {
                         addActionRow(Native.selectedSpellVerb, index, x, y, ActionRowType.CAST_MAGIC_ON_NPC.getId(), Native.selectedSpellName + Native.toYellow + npcDisplayName);
                     }
@@ -2158,12 +2158,12 @@ public class MovedStatics {
 
     public static void method763(Component arg0, CacheArchive arg2) {
         if(!aBoolean2083) {
-            inventoryBackgroundImage = Main.method359(Native.invback, Native.aClass1_305, arg2);
-            Class44.chatboxBackgroundImage = Main.method359(Native.chatback, Native.aClass1_305, arg2);
-            Minimap.minimapBackgroundImage = Main.method359(Native.mapBack, Native.aClass1_305, arg2);
-            bottomChatBack = Main.method359(Native.imgBackbase1, Native.aClass1_305, arg2);
-            tabBottomBack = Main.method359(Native.imgBackbase2, Native.aClass1_305, arg2);
-            Buffer.tabTopBack = Main.method359(Native.imgBackhmid1, Native.aClass1_305, arg2);
+            inventoryBackgroundImage = Game.method359(Native.invback, Native.aClass1_305, arg2);
+            Class44.chatboxBackgroundImage = Game.method359(Native.chatback, Native.aClass1_305, arg2);
+            Minimap.minimapBackgroundImage = Game.method359(Native.mapBack, Native.aClass1_305, arg2);
+            bottomChatBack = Game.method359(Native.imgBackbase1, Native.aClass1_305, arg2);
+            tabBottomBack = Game.method359(Native.imgBackbase2, Native.aClass1_305, arg2);
+            Buffer.tabTopBack = Game.method359(Native.imgBackhmid1, Native.aClass1_305, arg2);
             RSCanvas.chatBoxImageProducer = createGraphicsBuffer(479, 96, arg0);
             Class44.chatboxBackgroundImage.drawImage(0, 0);
             Minimap.mapbackProducingGraphicsBuffer = createGraphicsBuffer(172, 156, arg0);
@@ -2203,9 +2203,9 @@ public class MovedStatics {
             image = method1028(arg2, Native.imgBackhmid2, Native.aClass1_305);
             Class17.chatboxTop = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
-            tabHighlightImageTopLeftEdge = Main.method359(Native.redstone1, Native.aClass1_305, arg2);
-            GameInterface.tabHighlightImageTopLeft = Main.method359(Native.redstone2, Native.aClass1_305, arg2);
-            Class35.tabHighlightImageTopMiddle = Main.method359(Native.redstone3, Native.aClass1_305, arg2);
+            tabHighlightImageTopLeftEdge = Game.method359(Native.redstone1, Native.aClass1_305, arg2);
+            GameInterface.tabHighlightImageTopLeft = Game.method359(Native.redstone2, Native.aClass1_305, arg2);
+            Class35.tabHighlightImageTopMiddle = Game.method359(Native.redstone3, Native.aClass1_305, arg2);
             tabHighlightImageTopRightEdge = tabHighlightImageTopLeftEdge.cloneImage();
             tabHighlightImageTopRightEdge.flipHorizontal();
             tabHighlightImageTopRight = GameInterface.tabHighlightImageTopLeft.cloneImage();
@@ -2270,8 +2270,8 @@ public class MovedStatics {
             return Player.worldLevel;
         }
         int i = 3;
-        if(Main.playerCamera.getPitch() < 310) {
-            Point3d cameraPos = Main.playerCamera.getPosition();
+        if(Game.playerCamera.getPitch() < 310) {
+            Point3d cameraPos = Game.playerCamera.getPosition();
             int i_22_ = cameraPos.y >> 7;
             int i_23_ = cameraPos.x >> 7;
             if(i_22_ > 103) {
@@ -2632,7 +2632,7 @@ public class MovedStatics {
             LinkedList.drawChatBoxGraphics();
             Class55.drawTabGraphics();
             ActorDefinition.drawMapBack();
-            Main.method943(ChatBox.tradeMode, fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
+            Game.method943(ChatBox.tradeMode, fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
             showSidePanelRedrawnText = true;
             Class40_Sub3.showIconsRedrawnText = true;
@@ -2728,11 +2728,11 @@ public class MovedStatics {
     }
 
     public static void drawMenuTooltip(int arg0) {
-        if (menuActionRow >= 2 || itemSelected != 0 || Main.widgetSelected != 0) {
+        if (menuActionRow >= 2 || itemSelected != 0 || Game.widgetSelected != 0) {
             String class1;
             if (itemSelected == 1 && menuActionRow < 2)
                 class1 = English.use + Native.whitespace + Native.selectedItemName + Native.targetThingArrow;
-            else if (Main.widgetSelected != 1 || menuActionRow >= 2)
+            else if (Game.widgetSelected != 1 || menuActionRow >= 2)
                 class1 = Landscape.menuActionTexts[-1 + menuActionRow];
             else
                 class1 = Native.selectedSpellVerb + Native.whitespace + Native.selectedSpellName + Native.targetThingArrow;

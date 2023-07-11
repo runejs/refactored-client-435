@@ -11,7 +11,7 @@ public class Class37 {
     public static ImageRGB[] cursorCross;
 
     static {
-        Main.anInt874 = 0;
+        Game.anInt874 = 0;
     }
 
     public static void method434() {

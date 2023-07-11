@@ -1,6 +1,6 @@
 package org.runejs.client.message.handler.rs435.camera;
 
-import org.runejs.client.Main;
+import org.runejs.client.Game;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.camera.CutsceneCameraMoveToInboundMessage;
@@ -12,7 +12,7 @@ public class CutsceneCameraMoveToMessageHandler implements MessageHandler<Cutsce
     public void handle(CutsceneCameraMoveToInboundMessage message) {
         Player.cutsceneActive = true;
 
-        Main.cutsceneCamera.setMoveTo(
+        Game.cutsceneCamera.setMoveTo(
             new Point3d(
                 // convert tile coordinates to 3d coordinates
                 64 + 128 * message.targetX,
@@ -20,14 +20,14 @@ public class CutsceneCameraMoveToMessageHandler implements MessageHandler<Cutsce
                 message.height
             )
         );
-        Main.cutsceneCamera.setMovementSpeed(message.speedBase, message.speedScale);
+        Game.cutsceneCamera.setMovementSpeed(message.speedBase, message.speedScale);
 
         if(message.speedScale >= 100) {
-            int x = Main.cutsceneCamera.getMoveTo().x;
-            int y = Main.cutsceneCamera.getMoveTo().y;
-            int z = Scene.getFloorDrawHeight(Player.worldLevel, x, y) - Main.cutsceneCamera.getMoveTo().z;
+            int x = Game.cutsceneCamera.getMoveTo().x;
+            int y = Game.cutsceneCamera.getMoveTo().y;
+            int z = Scene.getFloorDrawHeight(Player.worldLevel, x, y) - Game.cutsceneCamera.getMoveTo().z;
 
-            Main.cutsceneCamera.setPosition(new Point3d(x, y, z));
+            Game.cutsceneCamera.setPosition(new Point3d(x, y, z));
         }
     }
 }

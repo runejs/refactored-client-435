@@ -1,6 +1,6 @@
 package org.runejs.client.net;
 
-import org.runejs.client.Main;
+import org.runejs.client.Game;
 import org.runejs.client.message.OutboundMessage;
 import org.runejs.client.net.codec.MessageEncoder;
 import org.runejs.client.scene.SceneCluster;
@@ -47,7 +47,7 @@ public class OutgoingPackets {
      * Sends an OutboundMessage to the server.
      */
     public static <TMessage extends OutboundMessage> void sendMessage(TMessage message) {
-        MessageEncoder<TMessage> encoder = (MessageEncoder<TMessage>) Main.packetCodec.getMessageEncoder(message.getClass());
+        MessageEncoder<TMessage> encoder = (MessageEncoder<TMessage>) Game.packetCodec.getMessageEncoder(message.getClass());
 
         if (encoder == null) {
             throw new RuntimeException();

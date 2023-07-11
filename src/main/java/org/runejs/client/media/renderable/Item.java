@@ -15,8 +15,8 @@ public class Item extends Renderable {
     public int itemId;
 
     public static void calculateCameraPosition() {
-        int originX = Main.playerCamera.getOriginX();
-        int originY = Main.playerCamera.getOriginY();
+        int originX = Game.playerCamera.getOriginX();
+        int originY = Game.playerCamera.getOriginY();
 
         int localPlayer3dPosX = Player.localPlayer.worldX;
         int localPlayer3dPosY = Player.localPlayer.worldY;
@@ -36,7 +36,7 @@ public class Item extends Renderable {
         // update the camera's Z origin - this wasn't originally here, but it makes sense to do it with the other origins
         int cameraOriginZ = Scene.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY) - 50;
 
-        Main.playerCamera.setOrigin(originX, originY, cameraOriginZ);
+        Game.playerCamera.setOrigin(originX, originY, cameraOriginZ);
 
         // increase rotational velocity if key pressed, otherwise fall off
         if (obfuscatedKeyStatus[96] && !Console.console.consoleOpen)
@@ -56,12 +56,12 @@ public class Item extends Renderable {
         SceneCamera.cameraVelocityZoom /= 1.5;
 
         // apply velocities to camera's target position
-        int yaw = 0x7ff & (SceneCamera.cameraVelocityYaw / 2 + Main.playerCamera.getYaw() & 0x7ff);
-        int pitch = Main.playerCamera.getPitch() + SceneCamera.cameraVelocityPitch / 2;
-        int zoom = Main.playerCamera.getZoom() + zoomVelocity;
+        int yaw = 0x7ff & (SceneCamera.cameraVelocityYaw / 2 + Game.playerCamera.getYaw() & 0x7ff);
+        int pitch = Game.playerCamera.getPitch() + SceneCamera.cameraVelocityPitch / 2;
+        int zoom = Game.playerCamera.getZoom() + zoomVelocity;
 
-        Main.playerCamera.rotate(yaw, pitch);
-        Main.playerCamera.setZoom(zoom);
+        Game.playerCamera.rotate(yaw, pitch);
+        Game.playerCamera.setZoom(zoom);
 
         // figure out minimum allowed pitch based on surrounding heights
         int i_3_ = 0;

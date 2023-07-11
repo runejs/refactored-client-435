@@ -52,7 +52,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 
-public class Main extends GameShell {
+public class Game {
 
     /**
      * The codec currently in use to encode and decode packets.
@@ -115,6 +115,8 @@ public class Main extends GameShell {
     public static CacheFileChannel[] indexChannels = new CacheFileChannel[13];
     public static int currentPort;
     private static int drawCount = 0;
+
+    private GameErrorHandler errorHandler;
 
     /**
      * This method is used to draw interfaces on the client. It uses the parent of -1,
@@ -673,67 +675,6 @@ public class Main extends GameShell {
         }
     }
 
-    public static void main(String[] args) {
-        Configuration.read();
-        Native.username = Configuration.getUsername();
-        Native.password = Configuration.getPassword();
-        String[] params = new String[]{"1", "live", "live", "highmem", "members"};
-        if(args.length != 0) {
-            params = args;
-        }
-        try {
-            if (params.length != 5)
-                printHelp();
-
-            Player.worldId = Integer.parseInt(params[0]);
-
-            // Location argument (to set server IP based on JMod location?)
-            if (params[1].equals("live")) {
-                modewhere = 0;
-            } else if (params[1].equals("office")) {
-                modewhere = 1;
-            } else if (params[1].equals("local")) {
-                modewhere = 2;
-            } else {
-                printHelp();
-            }
-
-            if (params[2].equals("live"))
-                modewhat = 0;
-            else if (!params[2].equals("rc")) {
-                if (params[2].equals("wip"))
-                    modewhat = 2;
-                else
-                    printHelp();
-            } else
-                modewhat = 1;
-
-            // Memory argument
-            if (params[3].equals("lowmem")) {
-                Class59.setLowMemory();
-            } else if (params[3].equals("highmem")) {
-                MovedStatics.setHighMemory();
-            } else {
-                printHelp();
-            }
-
-            // Player membership argument
-            if (params[4].equals("free")) {
-                MovedStatics.membersWorld = false;
-            } else if (params[4].equals("members")) {
-                MovedStatics.membersWorld = true;
-            } else {
-                printHelp();
-            }
-
-            Main main = new Main();
-            main.openClientApplet("client435", 13, 32 + modewhat, InetAddress.getByName(Configuration.SERVER_ADDRESS), 435);
-
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-    }
-
 
     public static void setConfigToDefaults() {
         aLong1203 = 0L;
@@ -764,7 +705,7 @@ public class Main extends GameShell {
         SoundSystem.reset();
         widgetSelected = 0;
         // TODO is this necessary? or should it be removed alongside other randomisation
-        Main.playerCamera.setYaw(0x7ff & -10 + (int) (20.0 * Math.random()));
+        Game.playerCamera.setYaw(0x7ff & -10 + (int) (20.0 * Math.random()));
         Minimap.minimapState = 0;
         Player.localPlayerCount = 0;
         Class55.destinationY = 0;
@@ -825,7 +766,7 @@ public class Main extends GameShell {
         MovedStatics.renderProjectiles();
         MovedStatics.renderSpotAnims();
         if(!Player.cutsceneActive) {
-            int pitch = Main.playerCamera.getPitch();
+            int pitch = Game.playerCamera.getPitch();
             if(SceneCamera.cameraTerrainMinScaledPitch / 256 > pitch) {
                 pitch = SceneCamera.cameraTerrainMinScaledPitch / 256;
             }
@@ -834,7 +775,7 @@ public class Main extends GameShell {
                 pitch = 128 + SceneCamera.customCameraAmplitude[4];
             }
 
-            Main.playerCamera.setPitch(pitch);
+            Game.playerCamera.setPitch(pitch);
         }
 
         int i;
@@ -916,7 +857,7 @@ public class Main extends GameShell {
      * Get the currently active camera.
      */
     public static Camera getActiveCamera() {
-        return Player.cutsceneActive ? Main.cutsceneCamera : Main.playerCamera;
+        return Player.cutsceneActive ? Game.cutsceneCamera : Game.playerCamera;
     }
 
     public static void method357(CacheArchive arg0, CacheArchive arg2) {
@@ -1209,7 +1150,7 @@ public class Main extends GameShell {
 
     public static void moveTowardsTarget() {
         // TODO (James) this moves the cutscene camera towards its target, we should move this into the CutsceneCamera class
-        CutsceneCamera camera = Main.cutsceneCamera;
+        CutsceneCamera camera = Game.cutsceneCamera;
 
         int i = camera.getMoveTo().y;
         int i_3_ = camera.getMoveTo().x;
@@ -1428,8 +1369,8 @@ public class Main extends GameShell {
                     InteractiveObject.anInt487 = 20;
                     MovedStatics.aBoolean565 = false;
                     SceneCluster.packetBuffer.putPacket(58);
-                    SceneCluster.packetBuffer.putShortBE(Main.playerCamera.getYaw());
-                    SceneCluster.packetBuffer.putShortBE(Main.playerCamera.getPitch());
+                    SceneCluster.packetBuffer.putShortBE(Game.playerCamera.getYaw());
+                    SceneCluster.packetBuffer.putShortBE(Game.playerCamera.getPitch());
                 }
                 if(MovedStatics.aBoolean571 && !aBoolean1735) {
                     aBoolean1735 = true;
@@ -2061,7 +2002,7 @@ public class Main extends GameShell {
         if (MovedStatics.aBoolean1575) {
             MovedStatics.method311(MouseHandler.gameCanvas);
             Class55.method965(32, MouseHandler.gameCanvas);
-            this.setCanvas();
+//            this.setCanvas();
             GameInterface.method642(MouseHandler.gameCanvas);
             RSRuntimeException.method1056(MouseHandler.gameCanvas);
         }
@@ -2170,7 +2111,19 @@ public class Main extends GameShell {
         }
     }
 
-    public void method24() {
+    public void setErrorHandler(GameErrorHandler errorHandler) {
+        this.errorHandler = errorHandler;
+    }
+
+    private void openErrorPage(String error) {
+        if (this.errorHandler == null) {
+            return;
+        }
+
+        this.errorHandler.handleGameError(error);
+    }
+
+    public void close() {
         if (mouseCapturer != null)
             mouseCapturer.aBoolean913 = false;
         mouseCapturer = null;

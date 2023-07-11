@@ -397,19 +397,19 @@ public class GameInterface extends CachedNode {
         } else if(type == 324) {
             if(MovedStatics.anInt1511 == -1) {
                 MovedStatics.anInt1511 = gameInterface.spriteId;
-                Main.anInt1769 = gameInterface.alternateSpriteId;
+                Game.anInt1769 = gameInterface.alternateSpriteId;
             }
             if(!Player.activePlayerAppearance.gender)
-                gameInterface.spriteId = Main.anInt1769;
+                gameInterface.spriteId = Game.anInt1769;
             else
                 gameInterface.spriteId = MovedStatics.anInt1511;
         } else if(type == 325) {
             if(MovedStatics.anInt1511 == -1) {
-                Main.anInt1769 = gameInterface.alternateSpriteId;
+                Game.anInt1769 = gameInterface.alternateSpriteId;
                 MovedStatics.anInt1511 = gameInterface.spriteId;
             }
             if(Player.activePlayerAppearance.gender)
-                gameInterface.spriteId = Main.anInt1769;
+                gameInterface.spriteId = Game.anInt1769;
             else
                 gameInterface.spriteId = MovedStatics.anInt1511;
         } else if(type == 327) {
@@ -869,7 +869,7 @@ public class GameInterface extends CachedNode {
                 ISAAC.anInt525 = i_10_;
                 MovedStatics.itemSelected = 1;
                 Native.selectedItemName = Native.lightRed + ItemDefinition.forId(npcIdx, 10).name + Native.white;
-                Main.widgetSelected = 0;
+                Game.widgetSelected = 0;
                 if(Native.selectedItemName == null) {
                     Native.selectedItemName = "null";
                 }
@@ -1090,7 +1090,7 @@ public class GameInterface extends CachedNode {
                 if(action == ActionRowType.SELECT_SPELL_ON_WIDGET.getId()) {
                     GameInterface gameInterface = getInterface(i_10_);
                     redrawTabArea = true;
-                    Main.widgetSelected = 1;
+                    Game.widgetSelected = 1;
                     Native.selectedSpellVerb = gameInterface.targetVerb;
                     MovedStatics.selectedMask = gameInterface.clickMask;
                     MovedStatics.itemSelected = 0;
@@ -1568,9 +1568,9 @@ public class GameInterface extends CachedNode {
                         MovedStatics.itemSelected = 0;
                         redrawTabArea = true;
                     }
-                    if(Main.widgetSelected != 0) {
+                    if(Game.widgetSelected != 0) {
                         redrawTabArea = true;
-                        Main.widgetSelected = 0;
+                        Game.widgetSelected = 0;
                     }
                 }
             }
@@ -2027,7 +2027,7 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name
                                 }
                             }
                         }
-                        if(ChatBox.chatboxInput.equals(English.commandErrorTest) && Main.modewhere == 2)
+                        if(ChatBox.chatboxInput.equals(English.commandErrorTest) && Game.modewhere == 2)
                             throw new RuntimeException();
                         if(ChatBox.chatboxInput.equals(Native.cmd_hiddenbuttontest))
                             PacketBuffer.hiddenButtonTest = true;

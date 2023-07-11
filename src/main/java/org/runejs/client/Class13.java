@@ -86,9 +86,9 @@ public class Class13 {
             GroundItemTile.aByteArrayArray1377[anInt356] = null;
             return is;
         }
-        if(arg1 == 5000 && Main.anInt1764 > 0) {
-            byte[] is = Class44.aByteArrayArray1039[--Main.anInt1764];
-            Class44.aByteArrayArray1039[Main.anInt1764] = null;
+        if(arg1 == 5000 && Game.anInt1764 > 0) {
+            byte[] is = Class44.aByteArrayArray1039[--Game.anInt1764];
+            Class44.aByteArrayArray1039[Game.anInt1764] = null;
             return is;
         }
         if(arg1 == 30000 && MovedStatics.anInt2359 > 0) {

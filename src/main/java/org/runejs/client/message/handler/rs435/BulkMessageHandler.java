@@ -1,6 +1,6 @@
 package org.runejs.client.message.handler.rs435;
 
-import org.runejs.client.Main;
+import org.runejs.client.Game;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.message.InboundMessage;
 import org.runejs.client.message.handler.MessageHandler;
@@ -18,7 +18,7 @@ public class BulkMessageHandler implements MessageHandler<BulkInboundMessage> {
         MovedStatics.placementY = message.y;
 
         for (InboundMessage childMessage : message.messages) {
-            MessageHandler handler = Main.handlerRegistry.getMessageHandler(childMessage.getClass());
+            MessageHandler handler = Game.handlerRegistry.getMessageHandler(childMessage.getClass());
 
             if (handler == null)
                 throw new RuntimeException("No handler for message: " + childMessage.getClass().getName());

@@ -1,6 +1,6 @@
 package org.runejs.client.net.codec.runejs435.decoder;
 
-import org.runejs.client.Main;
+import org.runejs.client.Game;
 import org.runejs.client.message.InboundMessage;
 import org.runejs.client.message.inbound.BulkInboundMessage;
 import org.runejs.client.net.PacketBuffer;
@@ -30,13 +30,13 @@ public class BulkMessageDecoder implements MessageDecoder<BulkInboundMessage> {
                 throw new RuntimeException("Attempted to bulk non-bulkable opcode: " + opcode);
             }
 
-            int length = Main.packetCodec.getPacketLength(opcode);
+            int length = Game.packetCodec.getPacketLength(opcode);
 
             PacketBuffer childBuffer = new PacketBuffer(length);
 
             buffer.getBytes(length, 0, childBuffer.buffer);
 
-            MessageDecoder decoder = Main.packetCodec.getMessageDecoder(opcode);
+            MessageDecoder decoder = Game.packetCodec.getMessageDecoder(opcode);
 
             if (decoder == null) {
                 throw new RuntimeException("Could not find decoder for bulk opcode: " + opcode);
