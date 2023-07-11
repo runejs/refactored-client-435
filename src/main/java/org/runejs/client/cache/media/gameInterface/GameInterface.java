@@ -60,6 +60,7 @@ public class GameInterface extends CachedNode {
      * but not the furthest-left (see `tabHighlightImageTopLeftEdge` for that).
      */
     public static IndexedImage tabHighlightImageTopLeft;
+    public static int anInt1233 = 0;
 
     public boolean isNewInterfaceFormat = false;
     public int contentType;
@@ -575,7 +576,7 @@ public class GameInterface extends CachedNode {
                 );
 
                 Projectile.atInventoryInterfaceType = 2;
-                GenericTile.anInt1233 = i;
+                anInt1233 = i;
                 RSRuntimeException.anInt1651 = 0;
                 if(gameScreenInterfaceId == i_10_ >> 16) {
                     Projectile.atInventoryInterfaceType = 1;
@@ -700,7 +701,7 @@ public class GameInterface extends CachedNode {
 
                 PlayerAppearance.anInt704 = i_10_;
                 RSRuntimeException.anInt1651 = 0;
-                GenericTile.anInt1233 = i;
+                anInt1233 = i;
                 Projectile.atInventoryInterfaceType = 2;
                 if(i_10_ >> 16 == gameScreenInterfaceId) {
                     Projectile.atInventoryInterfaceType = 1;
@@ -723,7 +724,7 @@ public class GameInterface extends CachedNode {
                     )
                 );
 
-                GenericTile.anInt1233 = i;
+                anInt1233 = i;
                 Projectile.atInventoryInterfaceType = 2;
                 RSRuntimeException.anInt1651 = 0;
                 PlayerAppearance.anInt704 = i_10_;
@@ -764,7 +765,7 @@ public class GameInterface extends CachedNode {
                     )
                 );
 
-                GenericTile.anInt1233 = i;
+                anInt1233 = i;
                 PlayerAppearance.anInt704 = i_10_;
                 RSRuntimeException.anInt1651 = 0;
                 Projectile.atInventoryInterfaceType = 2;
@@ -895,7 +896,7 @@ public class GameInterface extends CachedNode {
                     );
 
                     Projectile.atInventoryInterfaceType = 2;
-                    GenericTile.anInt1233 = i;
+                    anInt1233 = i;
                     PlayerAppearance.anInt704 = i_10_;
                     if(gameScreenInterfaceId == i_10_ >> 16) {
                         Projectile.atInventoryInterfaceType = 1;
@@ -1053,7 +1054,7 @@ public class GameInterface extends CachedNode {
 
                     PlayerAppearance.anInt704 = i_10_;
                     RSRuntimeException.anInt1651 = 0;
-                    GenericTile.anInt1233 = i;
+                    anInt1233 = i;
                     Projectile.atInventoryInterfaceType = 2;
                     if(gameScreenInterfaceId == i_10_ >> 16) {
                         Projectile.atInventoryInterfaceType = 1;
@@ -1115,7 +1116,7 @@ public class GameInterface extends CachedNode {
                             )
                         );
 
-                        GenericTile.anInt1233 = i;
+                        anInt1233 = i;
                         Projectile.atInventoryInterfaceType = 2;
                         PlayerAppearance.anInt704 = i_10_;
                         RSRuntimeException.anInt1651 = 0;
@@ -1232,7 +1233,7 @@ public class GameInterface extends CachedNode {
                         } else {
                             ChatBox.addChatMessage("", gameInterface.itemAmounts[i] + Native.amountSeparatorX + ItemDefinition.forId(npcIdx, 10).name, 0);
                         }
-                        GenericTile.anInt1233 = i;
+                        anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
                         PlayerAppearance.anInt704 = i_10_;
                         Projectile.atInventoryInterfaceType = 2;
@@ -1300,7 +1301,7 @@ public class GameInterface extends CachedNode {
                             Projectile.atInventoryInterfaceType = 3;
                         }
                         PlayerAppearance.anInt704 = i_10_;
-                        GenericTile.anInt1233 = i;
+                        anInt1233 = i;
                     }
                     if(action == ActionRowType.DROP_ITEM.getId()) {
                         int widgetId = (i_10_ >> 16) & 0xFFFF;
@@ -1313,7 +1314,7 @@ public class GameInterface extends CachedNode {
                             i
                         ));
 
-                        GenericTile.anInt1233 = i;
+                        anInt1233 = i;
                         PlayerAppearance.anInt704 = i_10_;
                         Projectile.atInventoryInterfaceType = 2;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
@@ -1394,7 +1395,7 @@ public class GameInterface extends CachedNode {
                         if(gameScreenInterfaceId == i_10_ >> 16) {
                             Projectile.atInventoryInterfaceType = 1;
                         }
-                        GenericTile.anInt1233 = i;
+                        anInt1233 = i;
                         PlayerAppearance.anInt704 = i_10_;
                         if(i_10_ >> 16 == chatboxInterfaceId) {
                             Projectile.atInventoryInterfaceType = 3;
@@ -1444,7 +1445,7 @@ public class GameInterface extends CachedNode {
 
                         PlayerAppearance.anInt704 = i_10_;
                         RSRuntimeException.anInt1651 = 0;
-                        GenericTile.anInt1233 = i;
+                        anInt1233 = i;
                         Projectile.atInventoryInterfaceType = 2;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
                             Projectile.atInventoryInterfaceType = 1;
@@ -1516,7 +1517,7 @@ public class GameInterface extends CachedNode {
                             )
                         );
 
-                        GenericTile.anInt1233 = i;
+                        anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
                         Projectile.atInventoryInterfaceType = 2;
                         PlayerAppearance.anInt704 = i_10_;

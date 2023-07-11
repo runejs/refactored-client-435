@@ -281,7 +281,7 @@ public class Main extends GameShell {
                                                         gameInterface_16_.scrollPosition += i_18_;
                                                     }
                                                 }
-                                            } else if (Projectile.atInventoryInterfaceType == 0 || GenericTile.anInt1233 != i_7_ || gameInterface.id != PlayerAppearance.anInt704)
+                                            } else if (Projectile.atInventoryInterfaceType == 0 || GameInterface.anInt1233 != i_7_ || gameInterface.id != PlayerAppearance.anInt704)
                                                 imageRGB.drawImage(i_10_, i_11_);
                                             else
                                                 imageRGB.drawImageWithOpacity(i_10_, i_11_, 128);
@@ -592,7 +592,7 @@ public class Main extends GameShell {
                     }
 
                     // Draw debug information for non layer widgets and non tooltip widgets
-                    if (Configuration.DEBUG_WIDGETS && gameInterface.type != GameInterfaceType.LAYER && gameInterface.type != GameInterfaceType.IF1_TOOLTIP && GenericTile.hoveredWidgetId == gameInterface.id) {
+                    if (Configuration.DEBUG_WIDGETS && gameInterface.type != GameInterfaceType.LAYER && gameInterface.type != GameInterfaceType.IF1_TOOLTIP && MovedStatics.hoveredWidgetId == gameInterface.id) {
                         Rasterizer.drawUnfilledRectangle(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, 0xffff00);
                     }
                 }
@@ -1863,6 +1863,19 @@ public class Main extends GameShell {
         }
     }
 
+    private static void method947(int arg0) {
+        synchronized(CollisionMap.anObject162) {
+            if((Buffer.anInt1987 ^ 0xffffffff) != arg0) {
+                Buffer.anInt1987 = 1;
+                try {
+                    CollisionMap.anObject162.wait();
+                } catch(InterruptedException interruptedexception) {
+                    /* empty */
+                }
+            }
+        }
+    }
+
     public void method35(int arg1) {
         if (currentPort != OverlayDefinition.gameServerPort)
             currentPort = OverlayDefinition.gameServerPort;
@@ -2064,7 +2077,7 @@ public class Main extends GameShell {
         MusicSystem.syncedStop(false);
         SoundSystem.stop();
         UpdateServer.killUpdateServerSocket();
-        GenericTile.method947(-1);
+        method947(-1);
         do {
             try {
                 if (dataChannel != null)

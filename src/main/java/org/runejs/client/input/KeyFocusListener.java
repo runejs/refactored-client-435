@@ -13,7 +13,6 @@ import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
-import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.tile.WallDecoration;
@@ -89,13 +88,13 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             }
 
             int colour = 0xffff00;
-            if (GenericTile.fps < 30 && VertexNormal.lowMemory) {
+            if (GameShell.fps < 30 && VertexNormal.lowMemory) {
                 colour = 0xff0000;
             }
-            if (GenericTile.fps < 20 && !VertexNormal.lowMemory) {
+            if (GameShell.fps < 20 && !VertexNormal.lowMemory) {
                 colour = 0xff0000;
             }
-            WallDecoration.fontNormal.drawStringRight("Fps: " + GenericTile.fps, x, y, colour);
+            WallDecoration.fontNormal.drawStringRight("Fps: " + GameShell.fps, x, y, colour);
             colour = 0xffff00;
             y += 15;
             Runtime runtime = Runtime.getRuntime();
@@ -141,8 +140,8 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             if(ScreenController.frameMode != ScreenMode.FIXED) {
                 x = ScreenController.drawWidth - 220;
             }
-            int widgetParentId = GenericTile.hoveredWidgetId >> 16;
-            int widgetChildId = GenericTile.hoveredWidgetId & 0x7fff;
+            int widgetParentId = MovedStatics.hoveredWidgetId >> 16;
+            int widgetChildId = MovedStatics.hoveredWidgetId & 0x7fff;
             String typeAsString = "";
 
             // Gather widget metadata from the cached interfaces

@@ -179,6 +179,7 @@ public class MovedStatics {
     public static ImageRGB minimapImage;
     public static int imageMaxHeight;
     public static IndexedImage inventoryBackgroundImage;
+    public static int hoveredWidgetId = -1;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -611,7 +612,7 @@ public class MovedStatics {
     public static ImageRGB[] method526(CacheArchive arg0, String arg2, String arg3) {
         int i = arg0.getHash(arg2);
         int i_4_ = arg0.method179(i, arg3);
-        return GenericTile.method944((byte) -3, i, arg0, i_4_);
+        return method944((byte) -3, i, arg0, i_4_);
     }
 
     public static void method527(int currentTabId, int[] tabWidgetIds, boolean arg3, int arg4) {
@@ -1054,14 +1055,14 @@ public class MovedStatics {
                 class40_sub3.anInt2031--;
             if(class40_sub3.anInt2031 == 0) {
                 if(class40_sub3.anInt2028 < 0 || method459(class40_sub3.anInt2036, class40_sub3.anInt2028)) {
-                    GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039, class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
+                    method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039, class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
                     class40_sub3.unlink();
                 }
             } else {
                 if(class40_sub3.anInt2033 > 0)
                     class40_sub3.anInt2033--;
                 if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 && class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 && (class40_sub3.anInt2017 < 0 || method459(class40_sub3.anInt2030, class40_sub3.anInt2017))) {
-                    GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
+                    method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
                     class40_sub3.anInt2033 = -1;
                     if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2028 == -1)
                         class40_sub3.unlink();
@@ -1124,7 +1125,7 @@ public class MovedStatics {
 	                    }
 	                } else {
 	                    if (Configuration.DEBUG_WIDGETS && gameInterface.type != GameInterfaceType.IF1_TOOLTIP && i_2_ <= mouseX && i_1_ <= mouseY && gameInterface.originalWidth + i_2_ > mouseX && gameInterface.originalHeight + i_1_ > mouseY) {
-	                        GenericTile.hoveredWidgetId = gameInterface.id;
+	                        hoveredWidgetId = gameInterface.id;
 	                    }
 
                         // standard button type? this is used for 'Open House Options'
@@ -1895,14 +1896,14 @@ public class MovedStatics {
 	public static int[] anIntArray1847 = new int[2000];
 	public static long aLong1841;
 
-    public static int interpolateForPerlin(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
+    private static int interpolateForPerlin(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
         if (!arg3)
             return -109;
         int i = 65536 + -Rasterizer3D.cosinetable[1024 * arg4 / arg1] >> 1;
         return ((65536 + -i) * arg0 >> 16) + (arg2 * i >> 16);
     }
 
-    public static void method344(int arg0) {
+    private static void method344(int arg0) {
         if(aBoolean2083) {
             chatboxLineOffsets = null;
             aBoolean2083 = false;
@@ -1946,6 +1947,68 @@ public class MovedStatics {
                 PlayerAppearance.tabPieveLowerRight = null;
                 SpotAnim.framePieceTop = null;
                 Class44.chatboxBackgroundImage = null;
+            }
+        }
+    }
+
+    private static ImageRGB[] method944(byte arg0, int arg1, CacheArchive arg2, int arg3) {
+        if(!ImageRGB.spriteExists(arg3, arg1, arg2))
+            return null;
+        int i = -59 % ((-60 - arg0) / 34);
+        return method319();
+    }
+
+    private static void method945(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+        if(arg5 != 103)
+            GenericTile.anInt1214 = -81;
+        if(arg2 >= 1 && arg0 >= 1 && arg2 <= 102 && arg0 <= 102) {
+            if(!VertexNormal.lowMemory || Player.worldLevel == arg7) {
+                int i = -1;
+                int i_0_ = 0;
+                boolean bool = false;
+                boolean bool_1_ = false;
+                if(arg6 == 0)
+                    i_0_ = Npc.currentScene.method122(arg7, arg2, arg0);
+                if(arg6 == 1)
+                    i_0_ = Npc.currentScene.method91(arg7, arg2, arg0);
+                if(arg6 == 2)
+                    i_0_ = Npc.currentScene.getLocationHash(arg7, arg2, arg0);
+                if(arg6 == 3)
+                    i_0_ = Npc.currentScene.getFloorDecorationHash(arg7, arg2, arg0);
+                if(i_0_ != 0) {
+                    i = (i_0_ & 0x1ffff138) >> 14;
+                    int i_2_ = Npc.currentScene.getArrangement(arg7, arg2, arg0, i_0_);
+                    int i_3_ = i_2_ >> 6 & 0x3;
+                    int i_4_ = 0x1f & i_2_;
+                    if(arg6 == 0) {
+                        Npc.currentScene.method124(arg7, arg2, arg0);
+                        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+                        if(gameObjectDefinition.solid)
+                            Landscape.currentCollisionMap[arg7].markWall(arg2, i_3_, gameObjectDefinition.walkable, arg0, i_4_);
+                    }
+                    if(arg6 == 1)
+                        Npc.currentScene.method127(arg7, arg2, arg0);
+                    if(arg6 == 2) {
+                        Npc.currentScene.removeInteractiveObject(arg7, arg2, arg0);
+                        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+                        if(arg2 + gameObjectDefinition.sizeX > 103 || arg0 + gameObjectDefinition.sizeX > 103 || arg2 + gameObjectDefinition.sizeY > 103 || gameObjectDefinition.sizeY + arg0 > 103)
+                            return;
+                        if(gameObjectDefinition.solid)
+                            Landscape.currentCollisionMap[arg7].markSolidOccupant(arg2, arg0, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, i_3_, gameObjectDefinition.walkable);
+                    }
+                    if(arg6 == 3) {
+                        Npc.currentScene.method131(arg7, arg2, arg0);
+                        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+                        if(gameObjectDefinition.solid && gameObjectDefinition.hasActions == 1)
+                            Landscape.currentCollisionMap[arg7].unmarkConcealed(arg2, arg0);
+                    }
+                }
+                if(arg1 >= 0) {
+                    int i_5_ = arg7;
+                    if(i_5_ < 3 && (OverlayDefinition.tile_flags[1][arg2][arg0] & 0x2) == 2)
+                        i_5_++;
+                    CollisionMap.method543(Landscape.currentCollisionMap[arg7], arg1, i_5_, arg7, arg3, Npc.currentScene, -22078, arg4, arg0, arg2);
+                }
             }
         }
     }

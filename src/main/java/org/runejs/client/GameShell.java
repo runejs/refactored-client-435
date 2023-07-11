@@ -8,7 +8,6 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.Timer;
 
@@ -27,6 +26,8 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public static long exitTimeInMillis = 0L;
     public static Frame clientFrame;
     public static GameShell currentGameShell = null;
+    public static int fps = 0;
+    private static volatile boolean clientFocused = true;
     private final int millisPerTick = 20;
     public boolean gameShellError = false;
 
@@ -77,7 +78,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                 MouseHandler.currentTickSample = 0x1f & MouseHandler.currentTickSample + 1;
 
                 synchronized (this) {
-                    MovedStatics.aBoolean571 = GenericTile.clientFocused;
+                    MovedStatics.aBoolean571 = clientFocused;
                 }
 
                 processGameLoop();
@@ -163,7 +164,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public abstract void processGameLoop();
 
     public void focusLost(FocusEvent arg0) {
-        GenericTile.clientFocused = false;
+        clientFocused = false;
     }
 
     public abstract void method24();
@@ -189,7 +190,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     }
 
     public void focusGained(FocusEvent arg0) {
-        GenericTile.clientFocused = true;
+        clientFocused = true;
         MovedStatics.clearScreen = true;
     }
 
@@ -235,7 +236,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         if (lastTickInMillis != 0 && currentTimeMillis > lastTickInMillis) {
             int i = (int) (currentTimeMillis - lastTickInMillis);
             int maxSamples = tickSamples.length;
-            GenericTile.fps = ((i >> 1) + (maxSamples * 1000)) / i;
+            fps = ((i >> 1) + (maxSamples * 1000)) / i;
         }
 
         // Increases the current tick identifier by 1, looping at 31 back to 0 (including 31)
