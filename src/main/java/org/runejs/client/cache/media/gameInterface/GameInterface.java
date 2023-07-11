@@ -35,6 +35,7 @@ import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.tile.WallDecoration;
+import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.TextUtils;
 import org.runejs.client.*;
@@ -1832,6 +1833,19 @@ public class GameInterface extends CachedNode {
                 }
             }
         }
+    }
+
+    public static boolean isHovering(int areaId, int widgetChildId) {
+        if(areaId == 0 && ItemDefinition.anInt2850 == widgetChildId)
+            return true;
+
+        if(areaId == 1 && widgetChildId == CollisionMap.currentHoveredWidgetChildId)
+            return true;
+
+        if((areaId == 2 || areaId == 3) && Class55.currentHoveredChatboxWidgetChildId == widgetChildId)
+            return true;
+
+        return false;
     }
 
     public void swapItems(int arg0, boolean arg1, int arg2) {

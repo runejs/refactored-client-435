@@ -184,7 +184,7 @@ public class Main extends GameShell {
                 }
                 if (!gameInterface.isNewInterfaceFormat || Rasterizer.viewportRight >= absoluteX && Rasterizer.viewportBottom >= absoluteY && Rasterizer.viewportLeft <= absoluteX + gameInterface.originalWidth && absoluteY + gameInterface.originalHeight >= Rasterizer.viewportTop) {
                     if (gameInterface.type == GameInterfaceType.LAYER) {
-                        if (gameInterface.isHidden && !Class29.isHovering(areaId, i))
+                        if (gameInterface.isHidden && !GameInterface.isHovering(areaId, i))
                             continue;
                         if (!gameInterface.isNewInterfaceFormat) {
                             if (-gameInterface.originalHeight + gameInterface.scrollHeight < gameInterface.scrollPosition)
@@ -285,11 +285,11 @@ public class Main extends GameShell {
                         int rectangleColor;
                         if (ItemDefinition.checkForAlternateAction(gameInterface)) {
                             rectangleColor = gameInterface.alternateTextColor;
-                            if (Class29.isHovering(areaId, i) && gameInterface.alternateHoveredTextColor != 0)
+                            if (GameInterface.isHovering(areaId, i) && gameInterface.alternateHoveredTextColor != 0)
                                 rectangleColor = gameInterface.alternateHoveredTextColor;
                         } else {
                             rectangleColor = gameInterface.textColor;
-                            if (Class29.isHovering(areaId, i) && gameInterface.hoveredTextColor != 0)
+                            if (GameInterface.isHovering(areaId, i) && gameInterface.hoveredTextColor != 0)
                                 rectangleColor = gameInterface.hoveredTextColor;
                         }
                         if (opacity == 0) {
@@ -311,13 +311,13 @@ public class Main extends GameShell {
                             int textColor;
                             if (ItemDefinition.checkForAlternateAction(gameInterface)) {
                                 textColor = gameInterface.alternateTextColor;
-                                if (Class29.isHovering(areaId, i) && gameInterface.alternateHoveredTextColor != 0)
+                                if (GameInterface.isHovering(areaId, i) && gameInterface.alternateHoveredTextColor != 0)
                                     textColor = gameInterface.alternateHoveredTextColor;
                                 if (gameInterface.alternateText.length() > 0)
                                     text = gameInterface.alternateText;
                             } else {
                                 textColor = gameInterface.textColor;
-                                if (Class29.isHovering(areaId, i) && gameInterface.hoveredTextColor != 0)
+                                if (GameInterface.isHovering(areaId, i) && gameInterface.hoveredTextColor != 0)
                                     textColor = gameInterface.hoveredTextColor;
                             }
                             if (gameInterface.isNewInterfaceFormat && gameInterface.itemId != -1) {

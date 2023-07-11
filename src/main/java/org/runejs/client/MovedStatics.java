@@ -1247,7 +1247,7 @@ public class MovedStatics {
 	                if(gameInterface.type == GameInterfaceType.LAYER) {
                         int areaId = area.getId();
 
-	                    if(!gameInterface.isHidden || Class29.isHovering(areaId, i) || PacketBuffer.hiddenButtonTest) {
+	                    if(!gameInterface.isHidden || GameInterface.isHovering(areaId, i) || PacketBuffer.hiddenButtonTest) {
 	                        handleInterfaceActions(area, mouseX, mouseY, i_2_, i_1_, i_2_ + gameInterface.originalWidth, i_1_ + gameInterface.originalHeight, gameInterfaces, i, gameInterface.scrollPosition, gameInterface.scrollWidth);
 	                        if(gameInterface.children != null)
 	                            handleInterfaceActions(area, mouseX, mouseY, i_2_, i_1_, gameInterface.originalWidth + i_2_, i_1_ + gameInterface.originalHeight, gameInterface.children, gameInterface.id, gameInterface.scrollPosition, gameInterface.scrollWidth);
