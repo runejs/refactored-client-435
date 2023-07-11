@@ -983,7 +983,7 @@ public class MovedStatics {
             if (statusCode == 20 || statusCode == 40) {
                 Main.anInt1756 = 0;
                 OverlayDefinition.anInt2321 = 0;
-                Class40_Sub3.loginStatus = 0;
+                Main.loginStatus = 0;
             }
             if (statusCode != 20 && statusCode != 40 && PlayerAppearance.lostConnectionSocket != null) {
                 PlayerAppearance.lostConnectionSocket.kill();
@@ -1264,7 +1264,7 @@ public class MovedStatics {
 	                                }
 	                                if(mouseX >= i_7_ && i_8_ <= mouseY && i_7_ + 32 > mouseX && mouseY < 32 + i_8_) {
 	                                    RSRuntimeException.lastActiveInvInterface = gameInterface.id;
-	                                    Class55.mouseInvInterfaceIndex = i_4_;
+	                                    Main.mouseInvInterfaceIndex = i_4_;
 	                                    if(gameInterface.items[i_4_] > 0) {
 	                                        ItemDefinition itemDefinition = ItemDefinition.forId(-1 + gameInterface.items[i_4_], 10);
 	                                        if(MovedStatics.itemSelected != 1 || !gameInterface.isInventory) {
@@ -1622,7 +1622,7 @@ public class MovedStatics {
 	                            }
 	                        }
 	                    }
-	                    if(ChatBox.chatboxInput.equals(English.commandErrorTest) && Class44.modewhere == 2)
+	                    if(ChatBox.chatboxInput.equals(English.commandErrorTest) && Main.modewhere == 2)
 	                        throw new RuntimeException();
 	                    if(ChatBox.chatboxInput.equals(Native.cmd_hiddenbuttontest))
 	                        PacketBuffer.hiddenButtonTest = true;

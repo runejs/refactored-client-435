@@ -9,7 +9,6 @@ import java.awt.*;
 import java.io.*;
 
 public class Class55 {
-    public static int mouseInvInterfaceIndex = 0;
     public static volatile int eventClickX = 0;
     public static int currentHoveredChatboxWidgetChildId = -1;
     /**

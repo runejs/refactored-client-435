@@ -80,6 +80,16 @@ public class Main extends GameShell {
      * A customisable cutscene camera.
      */
     public static final CutsceneCamera cutsceneCamera = new CutsceneCamera();
+    public static int anInt784 = 0;
+    public static GameInterface chatboxInterface;
+    public static GameSocket updateServerSocket;
+    public static boolean aBoolean1735 = true;
+    public static boolean aBoolean871 = false;
+    public static int loginStatus = 0;
+    public static int modewhat = 0;
+    public static int modewhere = 0;
+    public static long aLong1203 = 0L;
+    public static int mouseInvInterfaceIndex = 0;
 
     /**
      * Minimap rotation is always based on game camera
@@ -675,24 +685,24 @@ public class Main extends GameShell {
 
             // Location argument (to set server IP based on JMod location?)
             if (params[1].equals("live")) {
-                Class44.modewhere = 0;
+                modewhere = 0;
             } else if (params[1].equals("office")) {
-                Class44.modewhere = 1;
+                modewhere = 1;
             } else if (params[1].equals("local")) {
-                Class44.modewhere = 2;
+                modewhere = 2;
             } else {
                 printHelp();
             }
 
             if (params[2].equals("live"))
-                Class44.modewhat = 0;
+                modewhat = 0;
             else if (!params[2].equals("rc")) {
                 if (params[2].equals("wip"))
-                    Class44.modewhat = 2;
+                    modewhat = 2;
                 else
                     printHelp();
             } else
-                Class44.modewhat = 1;
+                modewhat = 1;
 
             // Memory argument
             if (params[3].equals("lowmem")) {
@@ -713,7 +723,7 @@ public class Main extends GameShell {
             }
 
             Main main = new Main();
-            main.openClientApplet("client435", 13, 32 + Class44.modewhat, InetAddress.getByName(Configuration.SERVER_ADDRESS), 435);
+            main.openClientApplet("client435", 13, 32 + modewhat, InetAddress.getByName(Configuration.SERVER_ADDRESS), 435);
 
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -722,10 +732,10 @@ public class Main extends GameShell {
 
 
     public static void setConfigToDefaults() {
-        Class51.aLong1203 = 0L;
+        aLong1203 = 0L;
         Class12.mouseCapturer.coord = 0;
         MovedStatics.duplicateClickCount = 0;
-        Class35.aBoolean1735 = true;
+        aBoolean1735 = true;
         MovedStatics.aBoolean571 = true;
         MovedStatics.method540();
         IncomingPackets.secondLastOpcode = -1;
@@ -930,13 +940,13 @@ public class Main extends GameShell {
         MovedStatics.anInt537++;
         if(MovedStatics.anInt537 >= 50 || arg1) {
             MovedStatics.anInt537 = 0;
-            if(!Class37.aBoolean871 && MovedStatics.gameServerSocket != null) {
+            if(!aBoolean871 && MovedStatics.gameServerSocket != null) {
                 SceneCluster.packetBuffer.putPacket(13);
                 try {
                     MovedStatics.gameServerSocket.sendDataFromBuffer(SceneCluster.packetBuffer.currentPosition, 0, SceneCluster.packetBuffer.buffer);
                     SceneCluster.packetBuffer.currentPosition = 0;
                 } catch(java.io.IOException ioexception) {
-                    Class37.aBoolean871 = true;
+                    aBoolean871 = true;
                 }
             }
         }
@@ -955,11 +965,11 @@ public class Main extends GameShell {
             Projectile.method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
         }
         if(GameInterface.chatboxInterfaceId == -1) {
-            Class12.chatboxInterface.scrollPosition = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
+            chatboxInterface.scrollPosition = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
             if(Class13.mouseX > 448 && Class13.mouseX < 560 && Landscape.mouseY > 332) {
-                GameInterface.scrollInterface(77, Landscape.mouseY + -357, -17 + Class13.mouseX, ChatBox.chatboxScrollMax, Class12.chatboxInterface, 463, -1, 0);
+                GameInterface.scrollInterface(77, Landscape.mouseY + -357, -17 + Class13.mouseX, ChatBox.chatboxScrollMax, chatboxInterface, 463, -1, 0);
             }
-            int currentScroll = ChatBox.chatboxScrollMax - 77 - Class12.chatboxInterface.scrollPosition;
+            int currentScroll = ChatBox.chatboxScrollMax - 77 - chatboxInterface.scrollPosition;
             if(currentScroll < 0) {
                 currentScroll = 0;
             }
@@ -972,12 +982,12 @@ public class Main extends GameShell {
             }
         }
         if(GameInterface.chatboxInterfaceId == -1 && ChatBox.inputType == 3) {
-            Class12.chatboxInterface.scrollPosition = ChatBox.itemSearchScroll;
+            chatboxInterface.scrollPosition = ChatBox.itemSearchScroll;
             int scrollMax = 14 * ChatBox.itemSearchResultCount + 7;
             if(Class13.mouseX > 448 && Class13.mouseX < 560 && Landscape.mouseY > 332) {
-                GameInterface.scrollInterface(77, Landscape.mouseY - 357, -17 + Class13.mouseX, scrollMax, Class12.chatboxInterface, 463, -1, 0);
+                GameInterface.scrollInterface(77, Landscape.mouseY - 357, -17 + Class13.mouseX, scrollMax, chatboxInterface, 463, -1, 0);
             }
-            int currentScroll = Class12.chatboxInterface.scrollPosition;
+            int currentScroll = chatboxInterface.scrollPosition;
             if(currentScroll < 0) {
                 currentScroll = 0;
             }
@@ -1298,8 +1308,8 @@ public class Main extends GameShell {
             Class40_Sub5_Sub15.systemUpdateTime--;
         if(SceneCluster.idleLogout > 0)
             SceneCluster.idleLogout--;
-        if(Class37.aBoolean871) {
-            Class37.aBoolean871 = false;
+        if(aBoolean871) {
+            aBoolean871 = false;
             Class59.dropClient();
         } else {
             for(int i = 0; i < 100; i++) {
@@ -1382,10 +1392,10 @@ public class Main extends GameShell {
                     }
                 }
                 if(MouseHandler.clickType != 0) {
-                    long l = (GameObjectDefinition.aLong2561 - Class51.aLong1203) / 50L;
+                    long l = (GameObjectDefinition.aLong2561 - aLong1203) / 50L;
                     int i = Class57.clickX;
                     int i_10_ = RSString.clickY;
-                    Class51.aLong1203 = GameObjectDefinition.aLong2561;
+                    aLong1203 = GameObjectDefinition.aLong2561;
                     if(i >= 0) {
                         if(i > 764)
                             i = 764;
@@ -1417,13 +1427,13 @@ public class Main extends GameShell {
                     SceneCluster.packetBuffer.putShortBE(Main.playerCamera.getYaw());
                     SceneCluster.packetBuffer.putShortBE(Main.playerCamera.getPitch());
                 }
-                if(MovedStatics.aBoolean571 && !Class35.aBoolean1735) {
-                    Class35.aBoolean1735 = true;
+                if(MovedStatics.aBoolean571 && !aBoolean1735) {
+                    aBoolean1735 = true;
                     SceneCluster.packetBuffer.putPacket(160);
                     SceneCluster.packetBuffer.putByte(1);
                 }
-                if(!MovedStatics.aBoolean571 && Class35.aBoolean1735) {
-                    Class35.aBoolean1735 = false;
+                if(!MovedStatics.aBoolean571 && aBoolean1735) {
+                    aBoolean1735 = false;
                     SceneCluster.packetBuffer.putPacket(160);
                     SceneCluster.packetBuffer.putByte(0);
                 }
@@ -1468,15 +1478,15 @@ public class Main extends GameShell {
                                 if(Class40_Sub5_Sub15.lastItemDragged && Buffer.lastItemDragTime >= 5) {
                                     RSRuntimeException.lastActiveInvInterface = -1;
                                     Class43.processRightClick();
-                                    if(RSRuntimeException.lastActiveInvInterface == MovedStatics.modifiedWidgetId && Class55.mouseInvInterfaceIndex != GroundItemTile.selectedInventorySlot) {
+                                    if(RSRuntimeException.lastActiveInvInterface == MovedStatics.modifiedWidgetId && mouseInvInterfaceIndex != GroundItemTile.selectedInventorySlot) {
                                         GameInterface childInterface = GameInterface.getInterface(MovedStatics.modifiedWidgetId);
                                         int moveItemInsertionMode = 0;
                                         if(Class43.bankInsertMode == 1 && childInterface.contentType == 206)
                                             moveItemInsertionMode = 1;
-                                        if(childInterface.items[Class55.mouseInvInterfaceIndex] <= 0)
+                                        if(childInterface.items[mouseInvInterfaceIndex] <= 0)
                                             moveItemInsertionMode = 0;
                                         if(childInterface.itemDeletesDraged) {
-                                            int i_16_ = Class55.mouseInvInterfaceIndex;
+                                            int i_16_ = mouseInvInterfaceIndex;
                                             int i_17_ = GroundItemTile.selectedInventorySlot;
                                             childInterface.items[i_16_] = childInterface.items[i_17_];
                                             childInterface.itemAmounts[i_16_] = childInterface.itemAmounts[i_17_];
@@ -1484,7 +1494,7 @@ public class Main extends GameShell {
                                             childInterface.itemAmounts[i_17_] = 0;
                                         } else if(moveItemInsertionMode == 1) {
                                             int slotStart = GroundItemTile.selectedInventorySlot;
-                                            int slotEnd = Class55.mouseInvInterfaceIndex;
+                                            int slotEnd = mouseInvInterfaceIndex;
                                             while(slotEnd != slotStart) {
                                                 if(slotStart <= slotEnd) {
                                                     if(slotStart < slotEnd) {
@@ -1497,13 +1507,13 @@ public class Main extends GameShell {
                                                 }
                                             }
                                         } else
-                                            childInterface.swapItems(Class55.mouseInvInterfaceIndex, false, GroundItemTile.selectedInventorySlot);
+                                            childInterface.swapItems(mouseInvInterfaceIndex, false, GroundItemTile.selectedInventorySlot);
 
                                         OutgoingPackets.sendMessage(new DragWidgetItemOutboundMessage(
                                             moveItemInsertionMode,
                                             MovedStatics.modifiedWidgetId,
                                             GroundItemTile.selectedInventorySlot,
-                                            Class55.mouseInvInterfaceIndex
+                                            mouseInvInterfaceIndex
                                         ));
                                     }
                                 } else {
@@ -1634,17 +1644,17 @@ public class Main extends GameShell {
 
     public static void handleLoginScreenActions() {
         try {
-            if (Class40_Sub3.loginStatus == 0) { // Initialize
+            if (loginStatus == 0) { // Initialize
                 if (MovedStatics.gameServerSocket != null) {
                     MovedStatics.gameServerSocket.kill();
                     MovedStatics.gameServerSocket = null;
                 }
-                Class37.aBoolean871 = false;
-                Class40_Sub3.loginStatus = 1;
+                aBoolean871 = false;
+                loginStatus = 1;
                 anInt1756 = 0;
                 FloorDecoration.gameServerSignlinkNode = null;
             }
-            if (Class40_Sub3.loginStatus == 1) { // Create connection to server, and wait for it to become available
+            if (loginStatus == 1) { // Create connection to server, and wait for it to become available
                 if (FloorDecoration.gameServerSignlinkNode == null) {
                     FloorDecoration.gameServerSignlinkNode = signlink.createSocketNode(currentPort);
                 }
@@ -1653,30 +1663,30 @@ public class Main extends GameShell {
                 }
                 if (FloorDecoration.gameServerSignlinkNode.status == 1) {
                     MovedStatics.gameServerSocket = new GameSocket((Socket) FloorDecoration.gameServerSignlinkNode.value, signlink);
-                    Class40_Sub3.loginStatus = 2;
+                    loginStatus = 2;
                     FloorDecoration.gameServerSignlinkNode = null;
                 }
             }
-            if (Class40_Sub3.loginStatus == 2) {
+            if (loginStatus == 2) {
                 long l = MovedStatics.aLong853 = RSString.nameToLong(Native.username.toString());
                 SceneCluster.packetBuffer.currentPosition = 0;
                 SceneCluster.packetBuffer.putByte(14);
                 int i = (int) (0x1fL & l >> 16);
                 SceneCluster.packetBuffer.putByte(i);
                 MovedStatics.gameServerSocket.sendDataFromBuffer(2, 0, SceneCluster.packetBuffer.buffer);
-                Class40_Sub3.loginStatus = 3;
+                loginStatus = 3;
                 IncomingPackets.incomingPacketBuffer.currentPosition = 0;
             }
-            if (Class40_Sub3.loginStatus == 3) {
+            if (loginStatus == 3) {
                 int i = MovedStatics.gameServerSocket.read();
                 if (i != 0) {
                     displayMessageForResponseCode(i);
                     return;
                 }
                 IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                Class40_Sub3.loginStatus = 4;
+                loginStatus = 4;
             }
-            if (Class40_Sub3.loginStatus == 4) {
+            if (loginStatus == 4) {
 
                 if (IncomingPackets.incomingPacketBuffer.currentPosition < 8) {
                     int i = MovedStatics.gameServerSocket.inputStreamAvailable();
@@ -1691,10 +1701,10 @@ public class Main extends GameShell {
                 if (IncomingPackets.incomingPacketBuffer.currentPosition == 8) {
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                     Renderable.aLong2858 = IncomingPackets.incomingPacketBuffer.getLongBE();
-                    Class40_Sub3.loginStatus = 5;
+                    loginStatus = 5;
                 }
             }
-            if (Class40_Sub3.loginStatus == 5) {
+            if (loginStatus == 5) {
                 int[] seeds = new int[4];
                 seeds[0] = (int) (Math.random() * 9.9999999E7);
                 seeds[1] = (int) (Math.random() * 9.9999999E7);
@@ -1751,16 +1761,16 @@ public class Main extends GameShell {
                     seeds[i] += 50;
                 }
                 IncomingPackets.incomingPacketBuffer.initInCipher(seeds);
-                Class40_Sub3.loginStatus = 6;
+                loginStatus = 6;
             }
 
 
 
-            if (Class40_Sub3.loginStatus == 6 && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) {
+            if (loginStatus == 6 && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) {
                 int responseCode = MovedStatics.gameServerSocket.read();
                 if (responseCode != 21 || Class51.gameStatusCode != 20) {
                     if (responseCode == 2) {
-                        Class40_Sub3.loginStatus = 9;
+                        loginStatus = 9;
                     } else {
                         if (responseCode == 15 && Class51.gameStatusCode == 40) {
                             Class37.method434();
@@ -1768,29 +1778,29 @@ public class Main extends GameShell {
                         }
                         if (responseCode == 23 && OverlayDefinition.anInt2321 < 1) {
                             OverlayDefinition.anInt2321++;
-                            Class40_Sub3.loginStatus = 0;
+                            loginStatus = 0;
                         } else {
                             displayMessageForResponseCode(responseCode);
                             return;
                         }
                     }
                 } else {
-                    Class40_Sub3.loginStatus = 7;
+                    loginStatus = 7;
                 }
             }
-            if (Class40_Sub3.loginStatus == 7 && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) {
-                Class33.anInt784 = 180 + MovedStatics.gameServerSocket.read() * 60;
-                Class40_Sub3.loginStatus = 8;
+            if (loginStatus == 7 && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) {
+                anInt784 = 180 + MovedStatics.gameServerSocket.read() * 60;
+                loginStatus = 8;
 
             }
-            if (Class40_Sub3.loginStatus == 8) {
+            if (loginStatus == 8) {
                 anInt1756 = 0;
-                Class60.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld, English.yourProfileWillBeTransferredIn, (Class33.anInt784 / 60) + English.suffixSeconds);
-                if (--Class33.anInt784 <= 0) {
-                    Class40_Sub3.loginStatus = 0;
+                Class60.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld, English.yourProfileWillBeTransferredIn, (anInt784 / 60) + English.suffixSeconds);
+                if (--anInt784 <= 0) {
+                    loginStatus = 0;
                 }
             } else {
-                if (Class40_Sub3.loginStatus == 9 && MovedStatics.gameServerSocket.inputStreamAvailable() >= 8) {
+                if (loginStatus == 9 && MovedStatics.gameServerSocket.inputStreamAvailable() >= 8) {
                     Configuration.USERNAME = Native.username.toString();
                     Configuration.PASSWORD = Native.password.toString();
                     InteractiveObject.playerRights = MovedStatics.gameServerSocket.read();
@@ -1805,9 +1815,9 @@ public class Main extends GameShell {
                     MovedStatics.gameServerSocket.readDataToBuffer(0, 2, IncomingPackets.incomingPacketBuffer.buffer);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                     IncomingPackets.incomingPacketSize = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
-                    Class40_Sub3.loginStatus = 10;
+                    loginStatus = 10;
                 }
-                if (Class40_Sub3.loginStatus == 10) {
+                if (loginStatus == 10) {
                     if (MovedStatics.gameServerSocket.inputStreamAvailable() >= IncomingPackets.incomingPacketSize) {
                         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                         MovedStatics.gameServerSocket.readDataToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
@@ -1826,7 +1836,7 @@ public class Main extends GameShell {
                             } else {
                                 currentPort = OverlayDefinition.gameServerPort;
                             }
-                            Class40_Sub3.loginStatus = 0;
+                            loginStatus = 0;
                         } else {
                             displayMessageForResponseCode(-3);
                         }
@@ -1841,7 +1851,7 @@ public class Main extends GameShell {
                     currentPort = OverlayDefinition.gameServerPort;
                 }
                 OverlayDefinition.anInt2321++;
-                Class40_Sub3.loginStatus = 0;
+                loginStatus = 0;
             } else {
                 displayMessageForResponseCode(-2);
             }
@@ -1853,7 +1863,7 @@ public class Main extends GameShell {
             currentPort = OverlayDefinition.gameServerPort;
         else
             currentPort = CollisionMap.someOtherPort;
-        Class29.updateServerSocket = null;
+        updateServerSocket = null;
         ProducingGraphicsBuffer.updateServerSignlinkNode = null;
         MovedStatics.anInt292++;
         MovedStatics.connectionStage = 0;
@@ -1993,22 +2003,22 @@ public class Main extends GameShell {
                                 MovedStatics.connectionStage++;
                         }
                         if (MovedStatics.connectionStage == 2) {
-                            Class29.updateServerSocket = new GameSocket((Socket) ProducingGraphicsBuffer.updateServerSignlinkNode.value, signlink);
+                            updateServerSocket = new GameSocket((Socket) ProducingGraphicsBuffer.updateServerSignlinkNode.value, signlink);
                             Buffer buffer = new Buffer(5);
                             buffer.putByte(15);
                             buffer.putIntBE(435); // Cache revision
-                            Class29.updateServerSocket.sendDataFromBuffer(5, 0, buffer.buffer);
+                            updateServerSocket.sendDataFromBuffer(5, 0, buffer.buffer);
                             MovedStatics.connectionStage++;
                             MovedStatics.aLong1841 = System.currentTimeMillis();
                         }
                         if (MovedStatics.connectionStage == 3) {
-                            if (Class51.gameStatusCode > 5 && Class29.updateServerSocket.inputStreamAvailable() <= 0) {
+                            if (Class51.gameStatusCode > 5 && updateServerSocket.inputStreamAvailable() <= 0) {
                                 if (System.currentTimeMillis() + -MovedStatics.aLong1841 > 30000L) {
                                     method35(-2);
                                     break;
                                 }
                             } else {
-                                int i = Class29.updateServerSocket.read();
+                                int i = updateServerSocket.read();
                                 if (i != 0) {
                                     method35(i);
                                     break;
@@ -2019,11 +2029,11 @@ public class Main extends GameShell {
                         if (MovedStatics.connectionStage != 4)
                             break;
 
-                        UpdateServer.handleUpdateServerConnection(Class29.updateServerSocket, Class51.gameStatusCode > 20);
+                        UpdateServer.handleUpdateServerConnection(updateServerSocket, Class51.gameStatusCode > 20);
 
                         ProducingGraphicsBuffer.updateServerSignlinkNode = null;
                         MovedStatics.connectionStage = 0;
-                        Class29.updateServerSocket = null;
+                        updateServerSocket = null;
                         MovedStatics.anInt292 = 0;
                     } catch (java.io.IOException ioexception) {
                         ioexception.printStackTrace();
@@ -2073,8 +2083,8 @@ public class Main extends GameShell {
 
     public void startup() {
         // Define ports
-        CollisionMap.someOtherPort = Class44.modewhere == 0 ? 443 : 50000 + Player.worldId;
-        OverlayDefinition.gameServerPort = Class44.modewhere != 0 ? Player.worldId + 40000 : Configuration.GAME_PORT;
+        CollisionMap.someOtherPort = modewhere == 0 ? 443 : 50000 + Player.worldId;
+        OverlayDefinition.gameServerPort = modewhere != 0 ? Player.worldId + 40000 : Configuration.GAME_PORT;
         currentPort = OverlayDefinition.gameServerPort;
 
         MovedStatics.method997();
@@ -2097,8 +2107,8 @@ public class Main extends GameShell {
             dataChannel = null;
             metaChannel = null;
         }
-        if (Class44.modewhere != 0)
+        if (modewhere != 0)
             InteractiveObject.showFps = true;
-        Class12.chatboxInterface = new GameInterface();
+        chatboxInterface = new GameInterface();
     }
 }

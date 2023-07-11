@@ -10,9 +10,7 @@ import org.runejs.client.scene.util.CollisionMap;
 
 public class Class44 implements Runnable {
     public static int[][] xteaKeys;
-    public static int modewhat = 0;
     public static byte[][] aByteArrayArray1039 = new byte[250][];
-    public static int modewhere = 0;
     public static IndexedImage chatboxBackgroundImage;
     public static int anInt1049 = 0;
 

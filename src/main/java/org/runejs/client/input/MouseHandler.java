@@ -251,7 +251,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         int mouseY = MovedStatics.eventMouseY;
         if(ScreenController.isCoordinatesInExtendedChatArea(mouseX, mouseY) && GameInterface.chatboxInterfaceId == -1) {
             if(rotation < 0) {
-                if(Class12.chatboxInterface.scrollPosition >= 1) {
+                if(Main.chatboxInterface.scrollPosition >= 1) {
 
                     if(ChatBox.inputType == 3) {
                         ChatBox.itemSearchScroll = ChatBox.itemSearchScroll - 30;

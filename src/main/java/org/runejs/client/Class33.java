@@ -16,7 +16,6 @@ import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.FloorDecoration;
 
 public class Class33 {
-    public static int anInt784 = 0;
     public static int[] selectedMenuActions = new int[500];
 
 

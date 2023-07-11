@@ -31,7 +31,6 @@ public class Class40_Sub3 extends Node {
     public static int ticksPerLoop;
     public static int anInt2024 = 1;
     public static boolean showIconsRedrawnText = false;
-    public static int loginStatus = 0;
     public int anInt2017;
     public int anInt2018;
     public int anInt2025;
