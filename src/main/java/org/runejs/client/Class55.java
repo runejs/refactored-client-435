@@ -1,7 +1,5 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.cache.def.SpotAnimDefinition;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.renderable.GameObject;
 
@@ -80,8 +78,4 @@ public class Class55 {
         }
     }
 
-    public static void method966(CacheArchive arg1, CacheArchive arg2) {
-        MovedStatics.aCacheArchive_2582 = arg1;
-        SpotAnimDefinition.gameDefinitionsCacheArchive = arg2;
-    }
 }
