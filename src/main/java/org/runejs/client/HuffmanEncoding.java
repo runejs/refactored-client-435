@@ -221,7 +221,7 @@ public class HuffmanEncoding {
     public static ImageRGB method1028(CacheArchive arg0, String arg1, String arg3) {
         int i = arg0.getHash(arg1);
         int i_13_ = arg0.method179(i, arg3);
-        return MovedStatics.method927(i_13_, arg0, true, i);
+        return MovedStatics.method927(i_13_, arg0, i);
     }
 
     public int method1023(byte[] arg0, int arg1, int arg2, byte[] arg3, int arg4, int arg5) {

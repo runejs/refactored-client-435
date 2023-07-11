@@ -1089,11 +1089,9 @@ public class MovedStatics {
 	    processGameStatus(10);
 	}
 
-	public static ImageRGB method927(int arg0, CacheArchive arg1, boolean arg2, int arg3) {
+	public static ImageRGB method927(int arg0, CacheArchive arg1, int arg3) {
 	    if(!ImageRGB.spriteExists(arg0, arg3, arg1))
 	        return null;
-	    if(!arg2)
-	        MovedStatics.method922(3, -92, null, -119, -82, -28, -32);
 	    return ActorDefinition.method578();
 	}
 
