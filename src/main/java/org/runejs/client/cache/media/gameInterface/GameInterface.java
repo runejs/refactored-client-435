@@ -36,13 +36,9 @@ import org.runejs.client.node.CachedNode;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.WallDecoration;
-import org.runejs.client.util.Signlink;
 import org.runejs.client.util.TextUtils;
 import org.runejs.client.*;
 import org.runejs.Configuration;
-
-import java.awt.*;
-import java.lang.reflect.Method;
 
 public class GameInterface extends CachedNode {
     public static GameInterface[][] cachedInterfaces;
@@ -271,19 +267,6 @@ public class GameInterface extends CachedNode {
         ProducingGraphicsBuffer.aClass9_1615.clear();
     }
 
-
-    public static void method642(Component arg0) {
-        Method method = Signlink.aMethod729;
-        if(method != null) {
-            try {
-                method.invoke(arg0, Boolean.FALSE);
-            } catch(Throwable throwable) {
-                /* empty */
-            }
-        }
-        arg0.addKeyListener(Class59.keyFocusListener);
-        arg0.addFocusListener(Class59.keyFocusListener);
-    }
 
     public static String getShortenedAmountText(int amount) {
         if(amount < 100000) {

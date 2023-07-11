@@ -5,6 +5,7 @@ import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.CacheFileChannel;
 import org.runejs.client.frame.*;
 import org.runejs.client.frame.console.Console;
+import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
@@ -49,7 +50,6 @@ import org.runejs.Configuration;
 
 import java.awt.*;
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.Socket;
 
 public class Game {
@@ -2000,11 +2000,11 @@ public class Game {
      */
     public void updateStatusText() {
         if (MovedStatics.aBoolean1575) {
-            MovedStatics.method311(MouseHandler.gameCanvas);
-            Class55.method965(32, MouseHandler.gameCanvas);
+            KeyFocusListener.removeListeners(MouseHandler.gameCanvas);
+            MouseHandler.removeListeners(MouseHandler.gameCanvas);
 //            this.setCanvas();
-            GameInterface.method642(MouseHandler.gameCanvas);
-            RSRuntimeException.method1056(MouseHandler.gameCanvas);
+            KeyFocusListener.addListeners(MouseHandler.gameCanvas);
+            MouseHandler.addListeners(MouseHandler.gameCanvas);
         }
         if (Class51.gameStatusCode == 0)
             GameObject.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
@@ -2165,8 +2165,8 @@ public class Game {
         currentPort = gameServerPort;
 
         MovedStatics.method997();
-        GameInterface.method642(MouseHandler.gameCanvas);
-        RSRuntimeException.method1056(MouseHandler.gameCanvas);
+        KeyFocusListener.addListeners(MouseHandler.gameCanvas);
+        MouseHandler.addListeners(MouseHandler.gameCanvas);
         RSCanvas.anInt57 = Signlink.anInt737;
         try {
             if (signlink.cacheDataAccessFile != null) {

@@ -6,11 +6,14 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.language.Native;
 import org.runejs.client.*;
 import org.runejs.client.cache.def.GameObjectDefinition;
+import org.runejs.client.util.Signlink;
 
+import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.lang.reflect.Method;
 
 public class KeyFocusListener implements KeyListener, FocusListener {
     public static LinkedList aLinkedList_1278 = new LinkedList();
@@ -97,6 +100,24 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     public static String method956(Buffer arg1) {
         return MovedStatics.method307(arg1, -1, 32767);
     }
+
+    public static void addListeners(Component arg0) {
+        Method method = Signlink.aMethod729;
+        if(method != null) {
+            try {
+                method.invoke(arg0, Boolean.FALSE);
+            } catch(Throwable throwable) {
+                /* empty */
+            }
+        }
+        arg0.addKeyListener(Class59.keyFocusListener);
+        arg0.addFocusListener(Class59.keyFocusListener);
+    }
+
+    public static void removeListeners(Component arg1) {
+	    arg1.removeKeyListener(Class59.keyFocusListener);
+	    arg1.removeFocusListener(Class59.keyFocusListener);
+	}
 
     public void keyTyped(KeyEvent arg0) {
         arg0.consume();

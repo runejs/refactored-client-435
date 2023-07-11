@@ -1,7 +1,6 @@
 package org.runejs.client;
 
 import org.runejs.client.input.MouseHandler;
-import org.runejs.client.media.renderable.GameObject;
 
 import java.awt.*;
 import java.io.*;
@@ -67,14 +66,6 @@ public class Class55 {
             MovedStatics.tabImageProducer.drawGraphics(553, 205, graphics);
         } catch(Exception exception) {
             MouseHandler.gameCanvas.repaint();
-        }
-    }
-
-    public static void method965(int arg0, Component arg1) {
-        if(arg0 == 32) {
-            arg1.removeMouseListener(GameObject.frame);
-            arg1.removeMouseMotionListener(GameObject.frame);
-            arg1.removeFocusListener(GameObject.frame);
         }
     }
 

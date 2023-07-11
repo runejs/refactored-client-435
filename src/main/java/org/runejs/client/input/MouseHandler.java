@@ -163,6 +163,19 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         }
     }
 
+    public static void removeListeners(Component arg1) {
+        arg1.removeMouseListener(GameObject.frame);
+        arg1.removeMouseMotionListener(GameObject.frame);
+        arg1.removeFocusListener(GameObject.frame);
+    }
+
+    public static void addListeners(Component arg0) {
+        arg0.addMouseListener(GameObject.frame);
+        arg0.addMouseMotionListener(GameObject.frame);
+        arg0.addFocusListener(GameObject.frame);
+        arg0.addMouseWheelListener(GameObject.frame);
+    }
+
     public synchronized void mouseEntered(MouseEvent arg0) {
         if(GameObject.frame != null) {
             LinkedList.anInt1073 = 0;

@@ -1550,11 +1550,6 @@ public class MovedStatics {
 	public static boolean accountFlagged = false;
 	public static GameInterface aGameInterface_1887;
 
-    public static void method311(Component arg1) {
-	    arg1.removeKeyListener(Class59.keyFocusListener);
-	    arg1.removeFocusListener(Class59.keyFocusListener);
-	}
-
     /**
      * Draws the 2d yellow arrow hint icon in the world.
      */
