@@ -150,20 +150,20 @@ public class Minimap extends FramePieceRenderer {
                 if(npc != null) {
                     int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
                     int npcY = npc.worldY / 32 - Player.localPlayer.worldY / 32;
-                    MovedStatics.drawMinimapMark(minimapMarkers[1], npcX, npcY);
+                    drawMinimapIcon(minimapMarkers[1], npcX, npcY);
                 }
             }
             if(Player.headIconDrawType == 2) {
                 int hintX = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + MovedStatics.hintIconPosY);
                 int hintY = 4 * (ProducingGraphicsBuffer.hintIconPosX - MovedStatics.baseX) - (-2 + Player.localPlayer.worldX / 32);
-                MovedStatics.drawMinimapMark(minimapMarkers[1], hintY, hintX);
+                drawMinimapIcon(minimapMarkers[1], hintY, hintX);
             }
             if(Player.headIconDrawType == 10 && ProducingGraphicsBuffer.anInt1623 >= 0 && Player.trackedPlayers.length > ProducingGraphicsBuffer.anInt1623) {
                 Player player = Player.trackedPlayers[ProducingGraphicsBuffer.anInt1623];
                 if(player != null) {
                     int playerX = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
                     int playerY = player.worldX / 32 - Player.localPlayer.worldX / 32;
-                    MovedStatics.drawMinimapMark(minimapMarkers[1], playerY, playerX);
+                    drawMinimapIcon(minimapMarkers[1], playerY, playerX);
                 }
             }
         }
@@ -185,6 +185,27 @@ public class Minimap extends FramePieceRenderer {
 
     public static void createMinimapRaster() {
         mapbackProducingGraphicsBuffer.prepareRasterizer();
+    }
+
+    private static void drawMinimapIcon(ImageRGB sprite, int mapX, int mapY) {
+        int len = mapX * mapX + mapY * mapY;
+        if (len > 4225 && len < 90000) {
+            int theta = 0x7ff & Main.playerCamera.getYaw();
+            int sine = Model.SINE[theta];
+            int cosine = Model.COSINE[theta];
+            int zoom = 0;
+
+            sine = sine * 256 / (zoom + 256);
+            cosine = cosine * 256 / (zoom + 256);
+            int y = cosine * mapY - sine * mapX >> 16;
+            int x = mapX * cosine + mapY * sine >> 16;
+            double angle = Math.atan2(x, y);
+            int drawX = (int) (Math.sin(angle) * 63.0);
+            int drawY = (int) (57.0 * Math.cos(angle));
+            MovedStatics.minimapEdge.drawRotated(-10 + 94 + drawX + 4, 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
+        } else {
+            drawOnMinimap(mapY, mapX, sprite);
+        }
     }
 
     public void drawResizableMiniMapArea(int x, int y) {

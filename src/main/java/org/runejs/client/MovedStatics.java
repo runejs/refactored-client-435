@@ -901,27 +901,6 @@ public class MovedStatics {
         return (arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) + (~0xff00ff & (0xff00ff & arg1) * i_7_ + arg3 * (0xff00ff & arg2)) >> 8;
     }
 
-    public static void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
-        int len = mapX * mapX + mapY * mapY;
-        if (len > 4225 && len < 90000) {
-            int theta = 0x7ff & Main.playerCamera.getYaw();
-            int sine = Model.SINE[theta];
-            int cosine = Model.COSINE[theta];
-            int zoom = 0;
-
-            sine = sine * 256 / (zoom + 256);
-            cosine = cosine * 256 / (zoom + 256);
-            int y = cosine * mapY - sine * mapX >> 16;
-            int x = mapX * cosine + mapY * sine >> 16;
-            double angle = Math.atan2(x, y);
-            int drawX = (int) (Math.sin(angle) * 63.0);
-            int drawY = (int) (57.0 * Math.cos(angle));
-            minimapEdge.drawRotated(-10 + 94 + drawX + 4, 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
-        } else {
-            Minimap.drawOnMinimap(mapY, mapX, sprite);
-        }
-    }
-
     /**
      * Processes a new status code
      * @param statusCode Can be one of these values:
