@@ -4,20 +4,15 @@ import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
-import org.runejs.client.chat.ChatColorEffect;
-import org.runejs.client.chat.ChatShapeEffect;
 import org.runejs.client.frame.Minimap;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
-import org.runejs.client.frame.console.Console;
 import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.message.outbound.chat.*;
-import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.node.NodeCache;
@@ -34,7 +29,6 @@ import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.net.ISAAC;
-import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.*;
 import org.runejs.client.scene.camera.CameraRotation;
@@ -44,7 +38,6 @@ import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.SignlinkNode;
-import org.runejs.client.util.TextUtils;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.media.renderable.actor.*;
 import org.runejs.client.scene.tile.*;
@@ -581,21 +574,6 @@ public class MovedStatics {
         return (0xff & arg0 >> 24) + Native.period + ((arg0 & 0xffca88) >> 16) + Native.period + ((0xfff8 & arg0) >> 8) + Native.period + (0xff & arg0);
     }
 
-    public static void method838(long arg1) {
-        for (int i = 0; i < anInt1008; i++) {
-            if (Player.ignores[i] == arg1) {
-                GameInterface.redrawTabArea = true;
-                anInt1008--;
-                for (int i_16_ = i; anInt1008 > i_16_; i_16_++)
-                    Player.ignores[i_16_] = Player.ignores[1 + i_16_];
-
-                OutgoingPackets.sendMessage(
-                    new ModifySocialListOutboundMessage(arg1, ModifySocialListOutboundMessage.SocialList.IGNORE, ModifySocialListOutboundMessage.SocialListAction.REMOVE));
-                break;
-            }
-        }
-    }
-
     public static ImageRGB[] method526(CacheArchive arg0, String arg2, String arg3) {
         int i = arg0.getHash(arg2);
         int i_4_ = arg0.method179(i, arg3);
@@ -712,38 +690,6 @@ public class MovedStatics {
         else if (lightness > 126)
             lightness = 126;
         return (0xff80 & hsl) + lightness;
-    }
-
-    public static void addFriend(long name) {
-        if(name != 0L) {
-            if(Player.friendsCount >= 100 && Class44.anInt1049 != 1 || Player.friendsCount >= 200) {
-                ChatBox.addChatMessage("", English.friendsListIsFull, 0);
-            } else {
-                String username = TextUtils.formatName(TextUtils.longToName(name));
-                for(int i = 0; Player.friendsCount > i; i++) {
-                    if(Class59.friends[i] == name) {
-                        ChatBox.addChatMessage("", username + English.isAlreadyOnYourFriendList, 0);
-                        return;
-                    }
-                }
-                for(int i = 0; anInt1008 > i; i++) {
-                    if(Player.ignores[i] == name) {
-                        ChatBox.addChatMessage("", English.pleaseRemove + username + English.suffixFromYourIgnoreListFirst, 0);
-                        return;
-                    }
-                }
-                if(!username.equals(Player.localPlayer.playerName)) {
-                    Player.friendUsernames[Player.friendsCount] = username;
-                    Class59.friends[Player.friendsCount] = name;
-                    Player.friendWorlds[Player.friendsCount] = 0;
-                    Player.friendsCount++;
-                    GameInterface.redrawTabArea = true;
-
-                    OutgoingPackets.sendMessage(
-                        new ModifySocialListOutboundMessage(name, ModifySocialListOutboundMessage.SocialList.FRIEND, ModifySocialListOutboundMessage.SocialListAction.ADD));
-                }
-            }
-        }
     }
 
     public static void method1013() {
@@ -1354,214 +1300,7 @@ public class MovedStatics {
 	    }
 	}
 
-	public static void manageTextInputs() {
-	    while(method416()) {
-	        if(ItemDefinition.anInt2854 == 28) {
-	            break;
-	        }
-	        if(Console.console.consoleOpen) {
-	            Console.console.handleInput();
-	            break;
-	        }
-	        if(GameInterface.gameScreenInterfaceId != -1 && HuffmanEncoding.reportAbuseInterfaceID == GameInterface.gameScreenInterfaceId) {
-	            if(ItemDefinition.anInt2854 == 85 && Native.reportedName.length() > 0)
-	                Native.reportedName = Native.reportedName.substring(0, -1 + Native.reportedName.length());
-	            if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && Native.reportedName.length() < 12)
-	                Native.reportedName = Native.reportedName + (char) Class59.anInt1388;
-	        } else if(ChatBox.messagePromptRaised) {
-	            if(ItemDefinition.anInt2854 == 85 && ChatBox.chatMessage.length() > 0) {
-	                ChatBox.chatMessage = ChatBox.chatMessage.substring(0, -1 + ChatBox.chatMessage.length());
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if(Player.method793(Class59.anInt1388) && ChatBox.chatMessage.length() < 80) {
-	                ChatBox.chatMessage = ChatBox.chatMessage + (char) Class59.anInt1388;
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if(ItemDefinition.anInt2854 == 84) {
-	                ChatBox.messagePromptRaised = false;
-	                ChatBox.redrawChatbox = true;
-	                if(Class37.anInt876 == 1) {
-	                    long l = RSString.nameToLong(ChatBox.chatMessage);
-	                    addFriend(l);
-	                }
-	                if(Class37.anInt876 == 2 && Player.friendsCount > 0) {
-	                    long l = RSString.nameToLong(ChatBox.chatMessage);
-	                    GameInterface.removeFriend(l);
-	                }
-	                if(Class37.anInt876 == 3 && ChatBox.chatMessage.length() > 0) {
-                        // private messages
-	                    ChatBox.filterInput();
-
-                        OutgoingPackets.sendMessage(new SendPrivateMessageOutboundMessage(PacketBuffer.aLong2241, ChatBox.chatboxInput));
-                        
-	                    if(ChatBox.privateChatMode == 2) {
-	                        ChatBox.privateChatMode = 1;
-	                        redrawChatbox = true;
-
-                            OutgoingPackets.sendMessage(new SetChatOptionsOutboundMessage(
-                                ChatBox.publicChatMode,
-                                ChatBox.privateChatMode,
-                                ChatBox.tradeMode
-                            ));
-	                    }
-	                }
-	                if(Class37.anInt876 == 4 && anInt1008 < 100) {
-	                    long l = RSString.nameToLong(ChatBox.chatMessage);
-	                    Class17.method275(l);
-	                }
-	                if(Class37.anInt876 == 5 && anInt1008 > 0) {
-	                    long l = RSString.nameToLong(ChatBox.chatMessage);
-	                    method838(l);
-	                }
-	            }
-	        } else if(ChatBox.inputType == 1) {
-	            if(ItemDefinition.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
-	                ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 1);
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if(HuffmanEncoding.method1027(Class59.anInt1388) && ChatBox.inputMessage.length() < 10) {
-	                ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if(ItemDefinition.anInt2854 == 84) {
-	                if(ChatBox.inputMessage.length() > 0) {
-	                    int inputValue = 0;
-	                    try {
-	                        inputValue = Integer.parseInt(ChatBox.inputMessage);
-	                    } catch(Exception _ex) {
-	                        /* empty */
-	                    }
-
-                        OutgoingPackets.sendMessage(new SubmitChatboxWidgetNumericInputOutboundMessage(inputValue));
-	                }
-	                ChatBox.redrawChatbox = true;
-	                ChatBox.inputType = 0;
-	            }
-	        } else if(ChatBox.inputType == 2) {
-	            if(ItemDefinition.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
-	                ChatBox.inputMessage = ChatBox.inputMessage.substring(0, -1 + ChatBox.inputMessage.length());
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && ChatBox.inputMessage.length() < 12) {
-	                ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if(ItemDefinition.anInt2854 == 84) {
-	                if(ChatBox.inputMessage.length() > 0) {
-                        long name = RSString.nameToLong(ChatBox.inputMessage);
-
-                        OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name));
-	                }
-	                ChatBox.inputType = 0;
-	                ChatBox.redrawChatbox = true;
-	            }
-	        } else if(ChatBox.inputType == 3) {
-	            if(ItemDefinition.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
-	                ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 10);
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if(Player.method793(Class59.anInt1388) && ChatBox.inputMessage.length() < 40) {
-	                ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
-	                ChatBox.redrawChatbox = true;
-	            }
-	        } else if(GameInterface.chatboxInterfaceId == -1 && GameInterface.fullscreenInterfaceId == -1) {
-	            if(ItemDefinition.anInt2854 == 85 && ChatBox.chatboxInput.length() > 0) {
-	                ChatBox.chatboxInput = ChatBox.chatboxInput.substring(0, ChatBox.chatboxInput.length() - 1);
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if(Player.method793(Class59.anInt1388) && ChatBox.chatboxInput.length() < 80) {
-	                ChatBox.chatboxInput = ChatBox.chatboxInput + (char) Class59.anInt1388;
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if(ItemDefinition.anInt2854 == 84 && ChatBox.chatboxInput.length() > 0) {
-	                if(InteractiveObject.playerRights > 1) {
-	                    if(ChatBox.chatboxInput.equals(English.commandClientDrop))
-	                        Class59.dropClient();
-	                    if(ChatBox.chatboxInput.equals(English.commandFpson)) {
-	                        InteractiveObject.showFps = true;
-	                        ChatBox.inputType = 3;
-	                    }
-	                    if(ChatBox.chatboxInput.startsWith("::region")) {
-	                        for(int qq = 0; qq < 469; qq++) {
-	                            if(GameInterface.decodeGameInterface(qq)) {
-	                                GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[qq];
-	                                for(int y = 0; gameInterfaces.length > y; y++) {
-	                                    GameInterface gameInterface = gameInterfaces[y];
-	                                    if(gameInterface.disabledText != null) {
-	                                        String text = gameInterface.disabledText.toString().toLowerCase();
-	                                        if(gameInterface.disabledText.toString().toLowerCase().contains("bank")) {
-	                                            System.out.println(qq + " contains " + text);
-	                                        }
-	                                    }
-	                                }
-	                            }
-	                        }
-	                    }
-	
-	                    if(ChatBox.chatboxInput.equals(Native.cmd_fpsoff))
-	                        InteractiveObject.showFps = false;
-	                    if(ChatBox.chatboxInput.equals(English.commandNoclip)) {
-	                        for(int i = 0; i < 4; i++) {
-	                            for(int i_9_ = 1; i_9_ < 103; i_9_++) {
-	                                for(int i_10_ = 1; i_10_ < 103; i_10_++)
-	                                    Landscape.currentCollisionMap[i].clippingData[i_9_][i_10_] = 0;
-	                            }
-	                        }
-	                    }
-	                    if(ChatBox.chatboxInput.equals(English.commandErrorTest) && Main.modewhere == 2)
-	                        throw new RuntimeException();
-	                    if(ChatBox.chatboxInput.equals(Native.cmd_hiddenbuttontest))
-	                        PacketBuffer.hiddenButtonTest = true;
-	                }
-	                if(ChatBox.chatboxInput.startsWith(Native.cmd_prefix)) {
-                        // remove the :: prefix
-                        String command = ChatBox.chatboxInput.substring(2);
-
-                        OutgoingPackets.sendMessage(new ChatCommandOutboundMessage(command));
-	                } else {
-	                    ChatColorEffect chatColorEffect = ChatColorEffect.fromString(ChatBox.chatboxInput.toLowerCase());
-
-                        if (chatColorEffect != null) {
-                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(chatColorEffect.getPrefixLength());
-                        }
-
-                        ChatShapeEffect chatShapeEffect = ChatShapeEffect.fromString(ChatBox.chatboxInput.toLowerCase());
-
-                        if (chatShapeEffect != null) {
-                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(chatShapeEffect.getPrefixLength());
-                        }
-
-	                    ChatBox.filterInput();
-
-                        SendChatMessageOutboundMessage message = new SendChatMessageOutboundMessage(
-                            chatColorEffect != null ? chatColorEffect : ChatColorEffect.YELLOW,
-                            chatShapeEffect != null ? chatShapeEffect : ChatShapeEffect.NONE,
-                            ChatBox.chatboxInput
-                        );
-
-                        OutgoingPackets.sendMessage(message);
-
-                        // I guess resets from 'off' to... 'friends'? public?
-	                    if(ChatBox.publicChatMode == 2) {
-	                        redrawChatbox = true;
-	                        ChatBox.publicChatMode = 3;
-
-                            OutgoingPackets.sendMessage(new SetChatOptionsOutboundMessage(
-                                ChatBox.publicChatMode,
-                                ChatBox.privateChatMode,
-                                ChatBox.tradeMode
-                            ));
-	                    }
-	                }
-	                ChatBox.redrawChatbox = true;
-	                ChatBox.chatboxInput = "";
-	            }
-	        }
-	    }
-	
-	}
-
-	private static char VALID_CHARACTERS[] = {' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w',
+    private static char VALID_CHARACTERS[] = {' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w',
 	'c', 'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8',
 	'9', ' ', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243',
 	'$', '%', '"', '[', ']'};

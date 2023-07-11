@@ -1604,7 +1604,7 @@ public class Main extends GameShell {
                             moveTowardsTarget();
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
                             SceneCamera.customCameraTimer[i_19_]++;
-                        MovedStatics.manageTextInputs();
+                        GameInterface.manageTextInputs();
                         int i_20_ = Npc.method400(-1);
                         int i_21_ = Class17.method274();
                         if(i_20_ > 4500 && i_21_ > 4500) {

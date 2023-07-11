@@ -1,13 +1,6 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.media.gameInterface.GameInterface;
-import org.runejs.client.frame.ChatBox;
-import org.runejs.client.language.English;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.message.outbound.chat.ModifySocialListOutboundMessage;
-import org.runejs.client.net.OutgoingPackets;
-import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.util.TextUtils;
 
 import java.awt.*;
 
@@ -22,35 +15,6 @@ public class Class17 {
 
     public static int method274() {
         return Class49.anInt1147++;
-    }
-
-    public static void method275(long arg1) {
-        if(arg1 != 0L) {
-            if(MovedStatics.anInt1008 >= 100)
-                ChatBox.addChatMessage("", English.yourIgnoreListIsFull.toString(), 0);
-            else {
-                String class1 = TextUtils.formatName(TextUtils.longToName(arg1));
-                for(int i = 0; i < MovedStatics.anInt1008; i++) {
-                    if(arg1 == Player.ignores[i]) {
-                        ChatBox.addChatMessage("", class1 + English.suffixIsAlreadyOnYourIgnoreList, 0);
-                        return;
-                    }
-                }
-                for(int i = 0; Player.friendsCount > i; i++) {
-                    if(Class59.friends[i] == arg1) {
-                        ChatBox.addChatMessage("", English.pleaseRemove + class1 + English.fromYourFriendListFirst, 0);
-                        return;
-                    }
-                }
-                if(!class1.equals(Player.localPlayer.playerName)) {
-                    Player.ignores[MovedStatics.anInt1008++] = arg1;
-                    GameInterface.redrawTabArea = true;
-
-                    OutgoingPackets.sendMessage(
-                        new ModifySocialListOutboundMessage(arg1, ModifySocialListOutboundMessage.SocialList.IGNORE, ModifySocialListOutboundMessage.SocialListAction.ADD));
-                }
-            }
-        }
     }
 
     public static void animatePlayers(int playerIndex) {
