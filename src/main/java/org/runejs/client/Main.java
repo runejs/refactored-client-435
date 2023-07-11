@@ -93,6 +93,8 @@ public class Main extends GameShell {
     public static int anInt509 = 0;
     public static boolean aBoolean519 = true;
     public static Class39 mouseCapturer;
+    public static int anInt2591 = 0;
+    public static int anInt874;
 
     /**
      * Minimap rotation is always based on game camera
@@ -1954,14 +1956,14 @@ public class Main extends GameShell {
             Class60.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
         } else if (Class51.gameStatusCode == 25) {
             if (ProducingGraphicsBuffer.anInt1634 == 1) {
-                if (Class37.anInt874 > PacketBuffer.anInt2231)
-                    PacketBuffer.anInt2231 = Class37.anInt874;
-                int i = (-Class37.anInt874 + PacketBuffer.anInt2231) * 50 / PacketBuffer.anInt2231;
+                if (anInt874 > PacketBuffer.anInt2231)
+                    PacketBuffer.anInt2231 = anInt874;
+                int i = (-anInt874 + PacketBuffer.anInt2231) * 50 / PacketBuffer.anInt2231;
                 Class51.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.percent_b);
             } else if (ProducingGraphicsBuffer.anInt1634 == 2) {
-                if (IdentityKit.anInt2591 > GameObject.anInt3048)
-                    GameObject.anInt3048 = IdentityKit.anInt2591;
-                int i = 50 * (-IdentityKit.anInt2591 + GameObject.anInt3048) / GameObject.anInt3048 + 50;
+                if (anInt2591 > GameObject.anInt3048)
+                    GameObject.anInt3048 = anInt2591;
+                int i = 50 * (-anInt2591 + GameObject.anInt3048) / GameObject.anInt3048 + 50;
                 Class51.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.percent_b);
             } else
                 Class51.method940(English.loadingPleaseWait, false, null);

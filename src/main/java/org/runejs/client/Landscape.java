@@ -47,27 +47,27 @@ public class Landscape {
 
     public static void loadRegion() {
         Main.method364(false);
-        Class37.anInt874 = 0;
+        Main.anInt874 = 0;
         boolean bool = true;
         for(int i = 0; i < RSString.terrainData.length; i++) {
             if(LinkedList.terrainDataIds[i] != -1 && RSString.terrainData[i] == null) {
                 RSString.terrainData[i] = CacheArchive.gameWorldMapCacheArchive.getFile(LinkedList.terrainDataIds[i], 0);
                 if(RSString.terrainData[i] == null) {
-                    Class37.anInt874++;
+                    Main.anInt874++;
                     bool = false;
                 }
             }
             if(Class13.objectDataIds[i] != -1 && GenericTile.objectData[i] == null) {
                 GenericTile.objectData[i] = CacheArchive.gameWorldMapCacheArchive.method176(Class13.objectDataIds[i], 0, Class44.xteaKeys[i]);
                 if(GenericTile.objectData[i] == null) {
-                    Class37.anInt874++;
+                    Main.anInt874++;
                     bool = false;
                 }
             }
         }
         if(bool) {
             bool = true;
-            IdentityKit.anInt2591 = 0;
+            Main.anInt2591 = 0;
             for(int i = 0; RSString.terrainData.length > i; i++) {
                 byte[] is = GenericTile.objectData[i];
                 if(is != null) {

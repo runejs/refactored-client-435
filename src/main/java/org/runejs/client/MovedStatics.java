@@ -979,9 +979,9 @@ public class MovedStatics {
                 Rasterizer.resetPixels();
             }
             if (Class51.gameStatusCode == 25) {
-                Class37.anInt874 = 0;
+                Main.anInt874 = 0;
                 PacketBuffer.anInt2231 = 1;
-                IdentityKit.anInt2591 = 0;
+                Main.anInt2591 = 0;
                 GameObject.anInt3048 = 1;
                 ProducingGraphicsBuffer.anInt1634 = 0;
             }

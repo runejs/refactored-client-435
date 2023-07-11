@@ -18,12 +18,11 @@ import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.tile.Wall;
 
 public class Class37 {
-    public static int anInt874;
     public static int anInt876 = 0;
     public static ImageRGB[] cursorCross;
 
     static {
-        anInt874 = 0;
+        Main.anInt874 = 0;
     }
 
     public static void method434() {
