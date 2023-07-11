@@ -9,7 +9,6 @@ public class InteractiveObject {
     public static ProducingGraphicsBuffer tabTop;
     public static int[] firstMenuOperand = new int[500];
     public static int anInt487 = 0;
-    public static byte[][][] tileShadowIntensity;
     public static int playerRights = 0;
     public static boolean showFps = false;
 

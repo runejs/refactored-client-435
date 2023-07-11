@@ -12,7 +12,6 @@ public class OverlayDefinition extends CachedNode {
     public static byte[][][] tile_flags = new byte[4][104][104];
     public static int hoveredWidgetChildId = -1;
     public static int[][][] constructMapTiles = new int[4][13][13];
-    public static byte[][][] tile_underlay_path;
     public static int gameServerPort;
     public static volatile long lastClick = 0L;
 

@@ -31,7 +31,6 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public static int currentTickSample;
     public static Canvas gameCanvas;
     public static int clickType = 0;
-    public static byte[][][] tile_overlayids;
     public static int currentMouseButtonPressed = 0;
     public static volatile int mouseButtonPressed = 0;
     public static volatile int eventMouseButtonPressed = 0;

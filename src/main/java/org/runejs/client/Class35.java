@@ -15,7 +15,6 @@ public class Class35 implements Interface3 {
      * for the central tab on the top row.
      */
     public static IndexedImage tabHighlightImageTopMiddle;
-    public static byte[][][] tile_overlay_rotation;
 
     public LinkedList textureCache = new LinkedList();
     public Texture[] textures;

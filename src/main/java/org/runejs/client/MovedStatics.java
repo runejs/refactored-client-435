@@ -122,7 +122,6 @@ public class MovedStatics {
     public static IndexedImage[] scrollbarArrowImages;
     public static NodeCache modelCache = new NodeCache(260);
     public static boolean showChatPanelRedrawnText = false;
-    public static int[][][] tileCullingBitsets;
     public static int lastContinueTextWidgetId = -1;
     public static GameSocket gameServerSocket;
     public static int[][][] tile_height = new int[4][105][105];
@@ -172,7 +171,6 @@ public class MovedStatics {
      */
     public static IndexedImage[] mapSceneIcons;
     public static int baseX;
-    public static byte[][][] tile_underlayids;
     public static NodeCache aClass9_998 = new NodeCache(100);
     public static int anInt1008 = 0;
     public static int[] anIntArray1013;
@@ -323,7 +321,7 @@ public class MovedStatics {
         for (int y = offsetY; y <= offsetY + sizeY; y++) {
             for (int x = offsetX; sizeX + offsetX >= x; x++) {
                 if (x >= 0 && x < 104 && y >= 0 && y < 104) {
-                    InteractiveObject.tileShadowIntensity[0][x][y] = (byte) 127;
+                    Landscape.tileShadowIntensity[0][x][y] = (byte) 127;
                     if (offsetX == x && x > 0)
                         tile_height[0][x][y] = tile_height[0][-1 + x][y];
                     if (offsetX + sizeX == x && x < 103)
@@ -1124,13 +1122,13 @@ public class MovedStatics {
 	                break;
 	            }
 	            if(opcode <= 49) {
-	                MouseHandler.tile_overlayids[level][x][y] = fileData.getByte();
-	                OverlayDefinition.tile_underlay_path[level][x][y] = (byte) ((opcode + -2) / 4);
-	                Class35.tile_overlay_rotation[level][x][y] = (byte) BitUtils.bitWiseAND(arg1 + -2 + opcode, 3);
+	                Landscape.tile_overlayids[level][x][y] = fileData.getByte();
+	                Landscape.tile_underlay_path[level][x][y] = (byte) ((opcode + -2) / 4);
+	                Landscape.tile_overlay_rotation[level][x][y] = (byte) BitUtils.bitWiseAND(arg1 + -2 + opcode, 3);
 	            } else if(opcode <= 81)
 	                OverlayDefinition.tile_flags[level][x][y] = (byte) (-49 + opcode);
 	            else
-	                tile_underlayids[level][x][y] = (byte) (-81 + opcode);
+	                Landscape.tile_underlayids[level][x][y] = (byte) (-81 + opcode);
 	        }
 	    } else {
 	        for(; ; ) {
