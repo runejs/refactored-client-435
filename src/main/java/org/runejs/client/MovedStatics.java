@@ -101,7 +101,6 @@ public class MovedStatics {
     public static int anInt199 = 0;
     public static volatile boolean aBoolean1575 = false;
     public static CacheArchive aCacheArchive_1577;
-    public static int[] blendedHueMultiplier;
     public static int anInt1586 = -1;
     public static boolean reportMutePlayer = false;
     public static int anInt1607 = 10;
@@ -511,18 +510,18 @@ public class MovedStatics {
     }
 
     public static void method973() {
-        blendedHueMultiplier = null;
-        SceneTile.blendedLightness = null;
-        FloorDecoration.blendDirectionTracker = null;
+        Landscape.blendedHueMultiplier = null;
+        Landscape.blendedLightness = null;
+        Landscape.blendDirectionTracker = null;
         tileCullingBitsets = null;
         AnimationSequence.tileLightIntensity = null;
         Class35.tile_overlay_rotation = null;
-        Class59.blendedSaturation = null;
+        Landscape.blendedSaturation = null;
         InteractiveObject.tileShadowIntensity = null;
         OverlayDefinition.tile_underlay_path = null;
         MouseHandler.tile_overlayids = null;
         tile_underlayids = null;
-        SpotAnim.blendedHue = null;
+        Landscape.blendedHue = null;
     }
 
     public static void printException(String arg0, Throwable exception) {

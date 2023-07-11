@@ -12,13 +12,11 @@ import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
-import org.runejs.client.scene.SceneCamera;
 
 import java.nio.charset.StandardCharsets;
 
 public class SceneTile extends Node {
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_2043;
-    public static int[] blendedLightness;
     public static int activeInterfaceType = 0;
 
     public SceneTile aSceneTile_2058;

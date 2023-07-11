@@ -23,7 +23,6 @@ public class FloorDecoration {
     public static IndexedImage inventoryBackgroundImage;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
     public static SignlinkNode gameServerSignlinkNode;
-    public static int[] blendDirectionTracker;
     public static int anInt614 = -1;
 
     public int config;

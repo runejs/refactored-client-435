@@ -13,7 +13,6 @@ import org.runejs.client.scene.Scene;
 public class SpotAnim extends Renderable {
     public static ProducingGraphicsBuffer framePieceTop;
     public static int[] anIntArray3248;
-    public static int[] blendedHue;
     public static int[] anIntArray3253;
     public static int[] anIntArray3255;
 

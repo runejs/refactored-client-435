@@ -19,9 +19,7 @@ import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.GenericTile;
-import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
@@ -41,6 +39,11 @@ public class Landscape {
     public static ProducingGraphicsBuffer framePieceRight;
     public static int[] anIntArray1186;
     public static int[] mapCoordinates;
+    public static int[] blendedHue;
+    public static int[] blendedSaturation;
+    public static int[] blendedLightness;
+    public static int[] blendedHueMultiplier;
+    public static int[] blendDirectionTracker;
 
     public static void loadRegion() {
         Main.method364(false);
@@ -399,11 +402,11 @@ public class Landscape {
                 }
             }
             for(int i_15_ = 0; i_15_ < 104; i_15_++) {
-                SpotAnim.blendedHue[i_15_] = 0;
-                Class59.blendedSaturation[i_15_] = 0;
-                SceneTile.blendedLightness[i_15_] = 0;
-                MovedStatics.blendedHueMultiplier[i_15_] = 0;
-                FloorDecoration.blendDirectionTracker[i_15_] = 0;
+                blendedHue[i_15_] = 0;
+                blendedSaturation[i_15_] = 0;
+                blendedLightness[i_15_] = 0;
+                blendedHueMultiplier[i_15_] = 0;
+                blendDirectionTracker[i_15_] = 0;
             }
             for(int x = -5; x < 109; x++) {
                 for(int y = 0; y < 104; y++) {
@@ -412,11 +415,11 @@ public class Landscape {
                         int underlayId = 0xff & MovedStatics.tile_underlayids[_plane][positiveX][y];
                         if(underlayId > 0) {
                             UnderlayDefinition underlayDefinition = UnderlayDefinition.getDefinition(underlayId - 1);
-                            SpotAnim.blendedHue[y] += underlayDefinition.hue;
-                            Class59.blendedSaturation[y] += underlayDefinition.saturation;
-                            SceneTile.blendedLightness[y] += underlayDefinition.lightness;
-                            MovedStatics.blendedHueMultiplier[y] += underlayDefinition.hueMultiplier;
-                            FloorDecoration.blendDirectionTracker[y]++;
+                            blendedHue[y] += underlayDefinition.hue;
+                            blendedSaturation[y] += underlayDefinition.saturation;
+                            blendedLightness[y] += underlayDefinition.lightness;
+                            blendedHueMultiplier[y] += underlayDefinition.hueMultiplier;
+                            blendDirectionTracker[y]++;
                         }
                     }
                     int negativeX = x - 5;
@@ -424,11 +427,11 @@ public class Landscape {
                         int underlayId = 0xff & MovedStatics.tile_underlayids[_plane][negativeX][y];
                         if(underlayId > 0) {
                             UnderlayDefinition underlayDefinition = UnderlayDefinition.getDefinition(underlayId - 1);
-                            SpotAnim.blendedHue[y] -= underlayDefinition.hue;
-                            Class59.blendedSaturation[y] -= underlayDefinition.saturation;
-                            SceneTile.blendedLightness[y] -= underlayDefinition.lightness;
-                            MovedStatics.blendedHueMultiplier[y] -= underlayDefinition.hueMultiplier;
-                            FloorDecoration.blendDirectionTracker[y]--;
+                            blendedHue[y] -= underlayDefinition.hue;
+                            blendedSaturation[y] -= underlayDefinition.saturation;
+                            blendedLightness[y] -= underlayDefinition.lightness;
+                            blendedHueMultiplier[y] -= underlayDefinition.hueMultiplier;
+                            blendDirectionTracker[y]--;
                         }
                     }
                 }
@@ -442,19 +445,19 @@ public class Landscape {
                         int positiveY = y + 5;
                         int negativeY = y - 5;
                         if(positiveY >= 0 && positiveY < 104) {
-                            hueMultiplier += MovedStatics.blendedHueMultiplier[positiveY];
-                            saturation += Class59.blendedSaturation[positiveY];
-                            direction += FloorDecoration.blendDirectionTracker[positiveY];
-                            lightness += SceneTile.blendedLightness[positiveY];
-                            hue += SpotAnim.blendedHue[positiveY];
+                            hueMultiplier += blendedHueMultiplier[positiveY];
+                            saturation += blendedSaturation[positiveY];
+                            direction += blendDirectionTracker[positiveY];
+                            lightness += blendedLightness[positiveY];
+                            hue += blendedHue[positiveY];
                         }
 
                         if(negativeY >= 0 && negativeY < 104) {
-                            saturation -= Class59.blendedSaturation[negativeY];
-                            direction -= FloorDecoration.blendDirectionTracker[negativeY];
-                            lightness -= SceneTile.blendedLightness[negativeY];
-                            hueMultiplier -= MovedStatics.blendedHueMultiplier[negativeY];
-                            hue -= SpotAnim.blendedHue[negativeY];
+                            saturation -= blendedSaturation[negativeY];
+                            direction -= blendDirectionTracker[negativeY];
+                            lightness -= blendedLightness[negativeY];
+                            hueMultiplier -= blendedHueMultiplier[negativeY];
+                            hue -= blendedHue[negativeY];
                         }
                         if(y >= 1 && y < 103 && (!VertexNormal.lowMemory || (0x2 & OverlayDefinition.tile_flags[0][x][y]) != 0 || (0x10 & OverlayDefinition.tile_flags[_plane][x][y]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(_plane, y, 0, x))) {
                             if(MovedStatics.lowestPlane > _plane)
