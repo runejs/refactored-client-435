@@ -52,7 +52,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 
-public class Game extends GameShell {
+public class Game {
 
     /**
      * The codec currently in use to encode and decode packets.
@@ -115,6 +115,8 @@ public class Game extends GameShell {
     public static CacheFileChannel[] indexChannels = new CacheFileChannel[13];
     public static int currentPort;
     private static int drawCount = 0;
+
+    private GameErrorHandler errorHandler;
 
     /**
      * This method is used to draw interfaces on the client. It uses the parent of -1,
@@ -670,67 +672,6 @@ public class Game extends GameShell {
             }
             i_62_ += 128 - (i_74_ + i_73_);
             i_61_ += -i_74_ + 128;
-        }
-    }
-
-    public static void main(String[] args) {
-        Configuration.read();
-        Native.username = Configuration.getUsername();
-        Native.password = Configuration.getPassword();
-        String[] params = new String[]{"1", "live", "live", "highmem", "members"};
-        if(args.length != 0) {
-            params = args;
-        }
-        try {
-            if (params.length != 5)
-                printHelp();
-
-            Player.worldId = Integer.parseInt(params[0]);
-
-            // Location argument (to set server IP based on JMod location?)
-            if (params[1].equals("live")) {
-                modewhere = 0;
-            } else if (params[1].equals("office")) {
-                modewhere = 1;
-            } else if (params[1].equals("local")) {
-                modewhere = 2;
-            } else {
-                printHelp();
-            }
-
-            if (params[2].equals("live"))
-                modewhat = 0;
-            else if (!params[2].equals("rc")) {
-                if (params[2].equals("wip"))
-                    modewhat = 2;
-                else
-                    printHelp();
-            } else
-                modewhat = 1;
-
-            // Memory argument
-            if (params[3].equals("lowmem")) {
-                Class59.setLowMemory();
-            } else if (params[3].equals("highmem")) {
-                MovedStatics.setHighMemory();
-            } else {
-                printHelp();
-            }
-
-            // Player membership argument
-            if (params[4].equals("free")) {
-                MovedStatics.membersWorld = false;
-            } else if (params[4].equals("members")) {
-                MovedStatics.membersWorld = true;
-            } else {
-                printHelp();
-            }
-
-            Game game = new Game();
-            game.openClientApplet("client435", 13, 32 + modewhat, InetAddress.getByName(Configuration.SERVER_ADDRESS), 435);
-
-        } catch (Exception exception) {
-            exception.printStackTrace();
         }
     }
 
@@ -2061,7 +2002,7 @@ public class Game extends GameShell {
         if (MovedStatics.aBoolean1575) {
             MovedStatics.method311(MouseHandler.gameCanvas);
             Class55.method965(32, MouseHandler.gameCanvas);
-            this.setCanvas();
+//            this.setCanvas();
             GameInterface.method642(MouseHandler.gameCanvas);
             RSRuntimeException.method1056(MouseHandler.gameCanvas);
         }
@@ -2168,6 +2109,18 @@ public class Game extends GameShell {
                 } while (false);
             }
         }
+    }
+
+    public void setErrorHandler(GameErrorHandler errorHandler) {
+        this.errorHandler = errorHandler;
+    }
+
+    private void openErrorPage(String error) {
+        if (this.errorHandler == null) {
+            return;
+        }
+
+        this.errorHandler.handleGameError(error);
     }
 
     public void close() {

@@ -3,7 +3,9 @@ package org.runejs.client;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.input.MouseHandler;
+import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Actor;
+import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.SceneCluster;
@@ -19,7 +21,7 @@ import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.URL;
 
-public abstract class GameShell extends Canvas implements Runnable, FocusListener, WindowListener {
+public class GameShell extends Canvas implements GameErrorHandler, Runnable, FocusListener, WindowListener {
     public static long[] tickSamples = new long[32];
 
     public static long exitTimeInMillis = 0L;
@@ -30,6 +32,74 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     private final int millisPerTick = 20;
     public boolean gameShellError = false;
 
+    private Game game;
+
+    public GameShell(Game game) {
+        this.game = game;
+    }
+
+    public static void main(String[] args) {
+        Configuration.read();
+        Native.username = Configuration.getUsername();
+        Native.password = Configuration.getPassword();
+        String[] params = new String[]{"1", "live", "live", "highmem", "members"};
+        if(args.length != 0) {
+            params = args;
+        }
+        try {
+            if (params.length != 5)
+                Game.printHelp();
+
+            Player.worldId = Integer.parseInt(params[0]);
+
+            // Location argument (to set server IP based on JMod location?)
+            if (params[1].equals("live")) {
+                Game.modewhere = 0;
+            } else if (params[1].equals("office")) {
+                Game.modewhere = 1;
+            } else if (params[1].equals("local")) {
+                Game.modewhere = 2;
+            } else {
+                Game.printHelp();
+            }
+
+            if (params[2].equals("live"))
+                Game.modewhat = 0;
+            else if (!params[2].equals("rc")) {
+                if (params[2].equals("wip"))
+                    Game.modewhat = 2;
+                else
+                    Game.printHelp();
+            } else
+                Game.modewhat = 1;
+
+            // Memory argument
+            if (params[3].equals("lowmem")) {
+                Class59.setLowMemory();
+            } else if (params[3].equals("highmem")) {
+                MovedStatics.setHighMemory();
+            } else {
+                Game.printHelp();
+            }
+
+            // Player membership argument
+            if (params[4].equals("free")) {
+                MovedStatics.membersWorld = false;
+            } else if (params[4].equals("members")) {
+                MovedStatics.membersWorld = true;
+            } else {
+                Game.printHelp();
+            }
+
+            Game game = new Game();
+            GameShell shell = new GameShell(game);
+            game.setErrorHandler(shell);
+            shell.openClientApplet("client435", 13, 32 + Game.modewhat, InetAddress.getByName(Configuration.SERVER_ADDRESS), 435);
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
 
     public void run() {
         if (Signlink.javaVendor != null) {
@@ -59,7 +129,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         }
         setCanvas();
         ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = MovedStatics.createGraphicsBuffer(Class12.width, MovedStatics.height, MouseHandler.gameCanvas);
-        startup();
+        this.game.startup();
         SceneCluster.gameTimer = Timer.create();
         SceneCluster.gameTimer.start();
 
@@ -80,7 +150,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                     MovedStatics.aBoolean571 = clientFocused;
                 }
 
-                processGameLoop();
+                this.game.processGameLoop();
             }
 
             runAfterGameLoop();
@@ -99,7 +169,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                 /* empty */
             }
             try {
-                close();
+                this.game.close();
             } catch (Exception exception) {
                 /* empty */
             }
@@ -160,13 +230,9 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             exitTimeInMillis = 0L;
     }
 
-    public abstract void processGameLoop();
-
     public void focusLost(FocusEvent arg0) {
         clientFocused = false;
     }
-
-    public abstract void close();
 
     public synchronized void paint(Graphics arg0) {
         if (this == currentGameShell && !PacketBuffer.closedClient) {
@@ -255,7 +321,10 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                 MouseHandler.gameCanvas.setLocation(insets.left, insets.top);
             }
         }
-        updateStatusText();
+        if (MovedStatics.aBoolean1575) {
+            this.setCanvas();
+        }
+        this.game.updateStatusText();
     }
 
 //    public AppletContext getAppletContext() {
@@ -296,8 +365,6 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public URL getCodeBase() {
         return this.getDocumentBase();
     }
-
-    public abstract void startup();
 
     public void update(Graphics graphics) {
         paint(graphics);
@@ -342,8 +409,6 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         MovedStatics.aLong174 = System.currentTimeMillis();
     }
 
-    public abstract void updateStatusText();
-
     public void windowDeiconified(WindowEvent windowEvent) {
     }
 
@@ -351,5 +416,10 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     }
 
     public void windowActivated(WindowEvent windowEvent) {
+    }
+
+    @Override
+    public void handleGameError(String errorMessage) {
+        this.openErrorPage(errorMessage);
     }
 }
