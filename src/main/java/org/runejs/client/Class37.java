@@ -4,7 +4,7 @@ import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.frame.Minimap;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.IncomingPackets;
-import org.runejs.client.scene.SceneCluster;
+import org.runejs.client.net.OutgoingPackets;
 
 public class Class37 {
     public static int anInt876 = 0;
@@ -19,7 +19,7 @@ public class Class37 {
         IncomingPackets.opcode = -1;
         MovedStatics.menuActionRow = 0;
         IncomingPackets.incomingPacketSize = 0;
-        SceneCluster.packetBuffer.currentPosition = 0;
+        OutgoingPackets.buffer.currentPosition = 0;
         IncomingPackets.lastOpcode = -1;
         IncomingPackets.secondLastOpcode = -1;
         IncomingPackets.cyclesSinceLastPacket = 0;

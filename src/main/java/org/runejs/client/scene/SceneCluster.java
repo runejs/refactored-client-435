@@ -1,10 +1,8 @@
 package org.runejs.client.scene;
 
-import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.util.Timer;
 
 public class SceneCluster {
-    public static PacketBuffer packetBuffer = new PacketBuffer(5000);
     public static int[] anIntArray761 = {1, 2, 4, 8};
     public static Timer gameTimer;
     public static int anInt770 = 0;

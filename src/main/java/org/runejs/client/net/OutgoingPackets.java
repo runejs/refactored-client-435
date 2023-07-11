@@ -3,12 +3,12 @@ package org.runejs.client.net;
 import org.runejs.client.Game;
 import org.runejs.client.message.OutboundMessage;
 import org.runejs.client.net.codec.MessageEncoder;
-import org.runejs.client.scene.SceneCluster;
 
 /**
  * Responsible for sending packets to the server.
  */
 public class OutgoingPackets {
+    public static PacketBuffer buffer = new PacketBuffer(5000);
     private static ISAAC outCipher;
 
     public static void init(ISAAC outCipher) {
@@ -55,7 +55,6 @@ public class OutgoingPackets {
 
         PacketBuffer buffer = encoder.encode(message);
 
-        // TODO (Jameskmonger) this shouldn't live on SceneCluster
-        SceneCluster.packetBuffer.putBytes(0, buffer.getSize(), buffer.buffer);
+        OutgoingPackets.buffer.putBytes(0, buffer.getSize(), buffer.buffer);
     }
 }
