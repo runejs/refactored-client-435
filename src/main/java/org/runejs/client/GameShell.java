@@ -99,7 +99,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                 /* empty */
             }
             try {
-                method24();
+                close();
             } catch (Exception exception) {
                 /* empty */
             }
@@ -166,7 +166,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         clientFocused = false;
     }
 
-    public abstract void method24();
+    public abstract void close();
 
     public synchronized void paint(Graphics arg0) {
         if (this == currentGameShell && !PacketBuffer.closedClient) {

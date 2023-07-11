@@ -2170,7 +2170,7 @@ public class Game extends GameShell {
         }
     }
 
-    public void method24() {
+    public void close() {
         if (mouseCapturer != null)
             mouseCapturer.aBoolean913 = false;
         mouseCapturer = null;
