@@ -1860,24 +1860,7 @@ public class MovedStatics {
 	public static GameInterface aGameInterface_1887;
 	public static int duplicateClickCount = 0;
 
-	public static IndexedImage[] method315() {
-	    IndexedImage[] class40_sub5_sub14_sub2s = new IndexedImage[anInt2581];
-	    for(int i = 0; anInt2581 > i; i++) {
-	        IndexedImage class40_sub5_sub14_sub2 = class40_sub5_sub14_sub2s[i] = new IndexedImage();
-	        class40_sub5_sub14_sub2.maxWidth = ItemDefinition.imageMaxWidth;
-	        class40_sub5_sub14_sub2.maxHeight = imageMaxHeight;
-	        class40_sub5_sub14_sub2.xDrawOffset = Class57.anIntArray1347[i];
-	        class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[i];
-	        class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[i];
-	        class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[i];
-	        class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
-	        class40_sub5_sub14_sub2.imgPixels = GroundItemTile.aByteArrayArray1370[i];
-	    }
-	    ActorDefinition.method569();
-	    return class40_sub5_sub14_sub2s;
-	}
-
-	public static ImageRGB[] method319() {
+    public static ImageRGB[] method319() {
 	    ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[anInt2581];
 	    for(int i = 0; i < anInt2581; i++) {
 	        ImageRGB class40_sub5_sub14_sub4 = class40_sub5_sub14_sub4s[i] = new ImageRGB();

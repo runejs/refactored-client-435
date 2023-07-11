@@ -1,8 +1,16 @@
 package org.runejs.client.cache.media;
 
-import org.runejs.client.Class24;
+import org.runejs.client.Class17;
+import org.runejs.client.Class57;
+import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.cache.def.ActorDefinition;
+import org.runejs.client.cache.def.ItemDefinition;
+import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
+import org.runejs.client.media.renderable.actor.Actor;
+import org.runejs.client.media.renderable.actor.Npc;
+import org.runejs.client.scene.GroundItemTile;
 
 public class IndexedImage extends Rasterizer {
     public int imgWidth;
@@ -29,7 +37,30 @@ public class IndexedImage extends Rasterizer {
     public static IndexedImage[] getMultipleIndexedImages(CacheArchive arg0, String arg2, String arg3) {
         int i = arg0.getHash(arg2);
         int i_1_ = arg0.method179(i, arg3);
-        return Class24.method337(arg0, i_1_, i);
+        return method337(arg0, i_1_, i);
+    }
+
+    private static IndexedImage[] method337(CacheArchive arg1, int arg2, int arg3) {
+        if(!ImageRGB.spriteExists(arg2, arg3, arg1))
+            return null;
+        return method315();
+    }
+
+    public static IndexedImage[] method315() {
+        IndexedImage[] class40_sub5_sub14_sub2s = new IndexedImage[MovedStatics.anInt2581];
+        for(int i = 0; MovedStatics.anInt2581 > i; i++) {
+            IndexedImage class40_sub5_sub14_sub2 = class40_sub5_sub14_sub2s[i] = new IndexedImage();
+            class40_sub5_sub14_sub2.maxWidth = ItemDefinition.imageMaxWidth;
+            class40_sub5_sub14_sub2.maxHeight = MovedStatics.imageMaxHeight;
+            class40_sub5_sub14_sub2.xDrawOffset = Class57.anIntArray1347[i];
+            class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[i];
+            class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[i];
+            class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[i];
+            class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
+            class40_sub5_sub14_sub2.imgPixels = GroundItemTile.aByteArrayArray1370[i];
+        }
+        ActorDefinition.method569();
+        return class40_sub5_sub14_sub2s;
     }
 
     public IndexedImage cloneImage() {
