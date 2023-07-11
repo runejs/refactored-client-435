@@ -8,6 +8,8 @@ import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.Minimap;
+import org.runejs.client.io.Buffer;
+import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.node.Node;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.console.Console;
@@ -19,12 +21,14 @@ import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
+import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
+import org.runejs.client.util.BitUtils;
 
 public class Class40_Sub3 extends Node {
     public static int ticksPerLoop;
@@ -183,23 +187,23 @@ public class Class40_Sub3 extends Node {
             else
                 MovedStatics.mapSceneIcons = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.mapScene, "");
             if (MovedStatics.mapFunctionIcons == null)
-                MovedStatics.mapFunctionIcons = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
+                MovedStatics.mapFunctionIcons = method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
             else
                 i++;
             if (AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 != null)
                 i++;
             else
-                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.hitmarks, "");
+                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = method526(CacheArchive.gameImageCacheArchive, Native.hitmarks, "");
             if (FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 == null)
-                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPK, "");
+                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603 = method526(CacheArchive.gameImageCacheArchive, Native.headiconsPK, "");
             else
                 i++;
             if (ProducingGraphicsBuffer_Sub1.headIconSprites != null)
                 i++;
             else
-                ProducingGraphicsBuffer_Sub1.headIconSprites = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
+                ProducingGraphicsBuffer_Sub1.headIconSprites = method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
             if (MovedStatics.hintIconSprites == null)
-                MovedStatics.hintIconSprites = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.headiconsHint, "");
+                MovedStatics.hintIconSprites = method526(CacheArchive.gameImageCacheArchive, Native.headiconsHint, "");
             else
                 i++;
             if (LinkedList.aClass40_Sub5_Sub14_Sub4_1057 == null)
@@ -207,15 +211,15 @@ public class Class40_Sub3 extends Node {
             else
                 i++;
             if (Minimap.minimapMarkers == null)
-                Minimap.minimapMarkers = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapMarker, "");
+                Minimap.minimapMarkers = method526(CacheArchive.gameImageCacheArchive, Native.mapMarker, "");
             else
                 i++;
             if (Class37.cursorCross != null)
                 i++;
             else
-                Class37.cursorCross = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.cursorCross, "");
+                Class37.cursorCross = method526(CacheArchive.gameImageCacheArchive, Native.cursorCross, "");
             if (Minimap.mapDots == null)
-                Minimap.mapDots = MovedStatics.method526(CacheArchive.gameImageCacheArchive, Native.mapDots, "");
+                Minimap.mapDots = method526(CacheArchive.gameImageCacheArchive, Native.mapDots, "");
             else
                 i++;
             if (MovedStatics.scrollbarArrowImages == null)
@@ -300,13 +304,13 @@ public class Class40_Sub3 extends Node {
         }
     }
 
-    public static void initializeIdentityKitDefinitionCache(CacheArchive definitionCache, CacheArchive arg2) {
+    private static void initializeIdentityKitDefinitionCache(CacheArchive definitionCache, CacheArchive arg2) {
         MovedStatics.aCacheArchive_654 = arg2;
         Class49.definitionCache = definitionCache;
         PlayerAppearance.identityKitLength = Class49.definitionCache.fileLength(3);
     }
 
-    public static void initializeGameObjectDefinitionCache(CacheArchive arg1, boolean arg2, CacheArchive definitionCache) {
+    private static void initializeGameObjectDefinitionCache(CacheArchive arg1, boolean arg2, CacheArchive definitionCache) {
         CacheArchive.definitionCache = definitionCache;
         GameObjectDefinition.count = CacheArchive.definitionCache.fileLength(6);
 
@@ -314,7 +318,40 @@ public class Class40_Sub3 extends Node {
         RSString.aCacheArchive_1705 = arg1;
     }
 
-    public static int method288() {
+    private static int method288() {
         return 5;
+    }
+
+    private static ImageRGB[] method319() {
+	    ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[MovedStatics.anInt2581];
+	    for(int i = 0; i < MovedStatics.anInt2581; i++) {
+	        ImageRGB class40_sub5_sub14_sub4 = class40_sub5_sub14_sub4s[i] = new ImageRGB();
+	        class40_sub5_sub14_sub4.maxWidth = ItemDefinition.imageMaxWidth;
+	        class40_sub5_sub14_sub4.maxHeight = MovedStatics.imageMaxHeight;
+	        class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[i];
+	        class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[i];
+	        class40_sub5_sub14_sub4.imageWidth = Class17.anIntArray456[i];
+	        class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[i];
+	        byte[] is = GroundItemTile.aByteArrayArray1370[i];
+	        int i_4_ = class40_sub5_sub14_sub4.imageHeight * class40_sub5_sub14_sub4.imageWidth;
+	        class40_sub5_sub14_sub4.pixels = new int[i_4_];
+	        for(int i_5_ = 0; i_5_ < i_4_; i_5_++)
+	            class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
+	    }
+	    ActorDefinition.method569();
+	    return class40_sub5_sub14_sub4s;
+	}
+
+    private static ImageRGB[] method944(byte arg0, int arg1, CacheArchive arg2, int arg3) {
+        if(!ImageRGB.spriteExists(arg3, arg1, arg2))
+            return null;
+        int i = -59 % ((-60 - arg0) / 34);
+        return method319();
+    }
+
+    private static ImageRGB[] method526(CacheArchive arg0, String arg2, String arg3) {
+        int i = arg0.getHash(arg2);
+        int i_4_ = arg0.method179(i, arg3);
+        return method944((byte) -3, i, arg0, i_4_);
     }
 }

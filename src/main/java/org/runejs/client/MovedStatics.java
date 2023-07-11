@@ -35,7 +35,6 @@ import org.runejs.client.scene.camera.CameraRotation;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
-import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.SignlinkNode;
 import org.runejs.client.cache.def.*;
@@ -572,12 +571,6 @@ public class MovedStatics {
 
     public static String method204(int arg0) {
         return (0xff & arg0 >> 24) + Native.period + ((arg0 & 0xffca88) >> 16) + Native.period + ((0xfff8 & arg0) >> 8) + Native.period + (0xff & arg0);
-    }
-
-    public static ImageRGB[] method526(CacheArchive arg0, String arg2, String arg3) {
-        int i = arg0.getHash(arg2);
-        int i_4_ = arg0.method179(i, arg3);
-        return method944((byte) -3, i, arg0, i_4_);
     }
 
     public static void method527(int currentTabId, int[] tabWidgetIds, boolean arg3, int arg4) {
@@ -1485,27 +1478,7 @@ public class MovedStatics {
 	public static GameInterface aGameInterface_1887;
 	public static int duplicateClickCount = 0;
 
-    public static ImageRGB[] method319() {
-	    ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[anInt2581];
-	    for(int i = 0; i < anInt2581; i++) {
-	        ImageRGB class40_sub5_sub14_sub4 = class40_sub5_sub14_sub4s[i] = new ImageRGB();
-	        class40_sub5_sub14_sub4.maxWidth = ItemDefinition.imageMaxWidth;
-	        class40_sub5_sub14_sub4.maxHeight = imageMaxHeight;
-	        class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[i];
-	        class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[i];
-	        class40_sub5_sub14_sub4.imageWidth = Class17.anIntArray456[i];
-	        class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[i];
-	        byte[] is = GroundItemTile.aByteArrayArray1370[i];
-	        int i_4_ = class40_sub5_sub14_sub4.imageHeight * class40_sub5_sub14_sub4.imageWidth;
-	        class40_sub5_sub14_sub4.pixels = new int[i_4_];
-	        for(int i_5_ = 0; i_5_ < i_4_; i_5_++)
-	            class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
-	    }
-	    ActorDefinition.method569();
-	    return class40_sub5_sub14_sub4s;
-	}
-
-	public static void method311(Component arg1) {
+    public static void method311(Component arg1) {
 	    arg1.removeKeyListener(Class59.keyFocusListener);
 	    arg1.removeFocusListener(Class59.keyFocusListener);
 	}
@@ -1654,13 +1627,6 @@ public class MovedStatics {
                 Class44.chatboxBackgroundImage = null;
             }
         }
-    }
-
-    private static ImageRGB[] method944(byte arg0, int arg1, CacheArchive arg2, int arg3) {
-        if(!ImageRGB.spriteExists(arg3, arg1, arg2))
-            return null;
-        int i = -59 % ((-60 - arg0) / 34);
-        return method319();
     }
 
     private static void method945(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
