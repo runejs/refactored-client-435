@@ -23,7 +23,6 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.scene.*;
-import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.SoundSystem;
@@ -159,7 +158,7 @@ public class Projectile extends Renderable {
 
     public static void method763(Component arg0, CacheArchive arg2) {
         if(!MovedStatics.aBoolean2083) {
-            FloorDecoration.inventoryBackgroundImage = Main.method359(Native.invback, Native.aClass1_305, arg2);
+            MovedStatics.inventoryBackgroundImage = Main.method359(Native.invback, Native.aClass1_305, arg2);
             Class44.chatboxBackgroundImage = Main.method359(Native.chatback, Native.aClass1_305, arg2);
             MovedStatics.minimapBackgroundImage = Main.method359(Native.mapBack, Native.aClass1_305, arg2);
             Class57.bottomChatBack = Main.method359(Native.imgBackbase1, Native.aClass1_305, arg2);
@@ -171,7 +170,7 @@ public class Projectile extends Renderable {
             Rasterizer.resetPixels();
             MovedStatics.minimapBackgroundImage.drawImage(0, 0);
             MovedStatics.tabImageProducer = MovedStatics.createGraphicsBuffer(190, 261, arg0);
-            FloorDecoration.inventoryBackgroundImage.drawImage(0, 0);
+            MovedStatics.inventoryBackgroundImage.drawImage(0, 0);
             MovedStatics.gameScreenImageProducer = MovedStatics.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, arg0);
             Rasterizer.resetPixels();
             HuffmanEncoding.chatModes = MovedStatics.createGraphicsBuffer(496, 50, arg0);

@@ -178,6 +178,7 @@ public class MovedStatics {
     public static int[] anIntArray2764 = new int[128];
     public static ImageRGB minimapImage;
     public static int imageMaxHeight;
+    public static IndexedImage inventoryBackgroundImage;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -260,7 +261,7 @@ public class MovedStatics {
     public static void method996() {
         tabImageProducer.prepareRasterizer();
         if (ScreenController.frameMode == ScreenMode.FIXED) {
-            FloorDecoration.inventoryBackgroundImage.drawImage(0, 0);
+            inventoryBackgroundImage.drawImage(0, 0);
 
         } else {
             int currentX = 0;
@@ -969,14 +970,14 @@ public class MovedStatics {
                 ProducingGraphicsBuffer.anInt1634 = 0;
             }
             if (statusCode == 0 || statusCode == 35) {
-                FloorDecoration.method344(-40);
+                method344(-40);
                 method440();
                 if (ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 == null)
                     ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = createGraphicsBuffer(765, 503, MouseHandler.gameCanvas);
             }
             if (statusCode == 5 || statusCode == 10 || statusCode == 20) {
                 ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
-                FloorDecoration.method344(-69);
+                method344(-69);
                 Class60.renderLoginScreen(MouseHandler.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
             }
             if (statusCode == 25 || statusCode == 30 || statusCode == 40) {
@@ -1899,5 +1900,53 @@ public class MovedStatics {
             return -109;
         int i = 65536 + -Rasterizer3D.cosinetable[1024 * arg4 / arg1] >> 1;
         return ((65536 + -i) * arg0 >> 16) + (arg2 * i >> 16);
+    }
+
+    public static void method344(int arg0) {
+        if(aBoolean2083) {
+            chatboxLineOffsets = null;
+            aBoolean2083 = false;
+            RSCanvas.anIntArray66 = null;
+            minimapBackgroundImage = null;
+            Landscape.anIntArray1186 = null;
+            Class17.chatboxTop = null;
+            RSCanvas.tabBottom = null;
+            GameObject.tabPieceLeft = null;
+            Class57.bottomChatBack = null;
+            inventoryBackgroundImage = null;
+            WallDecoration.tabHighlightImageTopRight = null;
+            Class40_Sub5_Sub15.tabIcons = null;
+            Class13.tabHighlightImageBottomRight = null;
+            RSString.mapbackProducingGraphicsBuffer = null;
+            RSCanvas.anIntArray62 = null;
+            ActorDefinition.sidebarOffsets = null;
+            Class39.mapbackLeft = null;
+            tabHighlightImageBottomMiddle = null;
+            tabBottomBack = null;
+            Landscape.framePieceRight = null;
+            GameInterface.tabHighlightImageTopLeft = null;
+            tabHighlightImageTopRightEdge = null;
+            anIntArray852 = null;
+            HuffmanEncoding.chatModes = null;
+            Buffer.tabTopBack = null;
+            tabImageProducer = null;
+            tabHighlightImageTopLeftEdge = null;
+            gameScreenImageProducer = null;
+            ISAAC.tabHighlightImageBottomRightEdge = null;
+            RSCanvas.chatBoxImageProducer = null;
+            Class40_Sub7.mapBackRight = null;
+            InteractiveObject.tabTop = null;
+            if(arg0 < -28) {
+                chatboxRight = null;
+                tabPieceUpperRight = null;
+                Class35.tabHighlightImageTopMiddle = null;
+                tabHighlightImageBottomLeft = null;
+                Renderable.tabHighlightImageBottomLeftEdge = null;
+                Class24.fullScreenTextureArray = null;
+                PlayerAppearance.tabPieveLowerRight = null;
+                SpotAnim.framePieceTop = null;
+                Class44.chatboxBackgroundImage = null;
+            }
+        }
     }
 }
