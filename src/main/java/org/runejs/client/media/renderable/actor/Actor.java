@@ -4,11 +4,11 @@ import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.TypeFace;
+import org.runejs.client.frame.Minimap;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Renderable;
-import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.Signlink;
@@ -17,7 +17,6 @@ import org.runejs.client.*;
 public abstract class Actor extends Renderable {
 
     public static int[] anIntArray3111;
-    public static int[] minimapHintX = new int[1000];
     public static int randomiserLightness = -16 + (int) (Math.random() * 33.0);
     public static Signlink signlink;
     public static int actorUpdatingIndex = 0;
@@ -143,7 +142,7 @@ public abstract class Actor extends Renderable {
                     i_3_ = arg4;
                 int i_4_ = 4 * (-arg5 + 103) * 512 + 24624 + 4 * arg2;
                 int i_5_ = i >> 14 & 0x7fff;
-                int[] is = MovedStatics.minimapImage.pixels;
+                int[] is = Minimap.minimapImage.pixels;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_5_);
                 if(gameObjectDefinition.mapSceneID == -1) {
                     if(i_1_ == 0 || i_1_ == 2) {
@@ -229,7 +228,7 @@ public abstract class Actor extends Renderable {
                         class40_sub5_sub14_sub2.drawImage(i_13_ + arg2 * 4 + 48, 48 - (-(4 * (-arg5 + 104 + -gameObjectDefinition.sizeY)) + -i_12_));
                     }
                 } else if(i_11_ == 9) {
-                    int[] is = MovedStatics.minimapImage.pixels;
+                    int[] is = Minimap.minimapImage.pixels;
                     int i_14_ = 15658734;
                     if(i > 0)
                         i_14_ = 15597568;
@@ -279,7 +278,7 @@ public abstract class Actor extends Renderable {
                 MovedStatics.onBuildTimePlane = 0;
             Class17.regionY = chunkY;
             MovedStatics.processGameStatus(25);
-            Class51.method940(English.loadingPleaseWait, false, null);
+            MovedStatics.method940(English.loadingPleaseWait, false, null);
             int i = Class26.baseY;
             int i_33_ = MovedStatics.baseX;
             MovedStatics.baseX = (chunkX - 6) * 8;
@@ -336,9 +335,9 @@ public abstract class Actor extends Renderable {
                     int i_49_ = i_35_ + i_47_;
                     for(int i_50_ = 0; i_50_ < 4; i_50_++) {
                         if(i_48_ < 0 || i_49_ < 0 || i_48_ >= 104 || i_49_ >= 104)
-                            Wall.groundItems[i_50_][i_46_][i_47_] = null;
+                            MovedStatics.groundItems[i_50_][i_46_][i_47_] = null;
                         else
-                            Wall.groundItems[i_50_][i_46_][i_47_] = Wall.groundItems[i_50_][i_48_][i_49_];
+                            MovedStatics.groundItems[i_50_][i_46_][i_47_] = MovedStatics.groundItems[i_50_][i_48_][i_49_];
                     }
                 }
             }
@@ -355,7 +354,7 @@ public abstract class Actor extends Renderable {
             }
             Player.cutsceneActive = false;
             SoundSystem.reset();
-            Class57.aLinkedList_1332.clear();
+            MovedStatics.aLinkedList_1332.clear();
             Class43.projectileQueue.clear();
         }
     }

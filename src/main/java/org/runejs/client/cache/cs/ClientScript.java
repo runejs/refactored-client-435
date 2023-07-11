@@ -11,7 +11,6 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.node.CachedNode;
-import org.runejs.client.scene.tile.GenericTile;
 
 public class ClientScript extends CachedNode {
 
@@ -75,8 +74,7 @@ public class ClientScript extends CachedNode {
     }
 
 
-    // TODO remove arg1 after checking its safe
-    public static int parseClientScripts(int scriptIndex, boolean arg1, GameInterface gameInterface1) {
+    public static int parseClientScripts(int scriptIndex, GameInterface gameInterface1) {
         if (gameInterface1.clientScripts == null || scriptIndex >= gameInterface1.clientScripts.length) {
             return -2;
         }
@@ -84,9 +82,6 @@ public class ClientScript extends CachedNode {
             int[] opcodes = gameInterface1.clientScripts[scriptIndex];
             int i = 0;
             int scriptDataIndex = 0;
-            if (arg1) {
-                HuffmanEncoding.SCROLLBAR_COLOR_CHIP_EDGE_LIGHT = -63;
-            }
             int operator = 0;
             while (true) {
                 int operand = 0;
@@ -165,7 +160,7 @@ public class ClientScript extends CachedNode {
                     operand = ClientScriptRunner.runEnergy;
                 }
                 if (opcode == 12) {
-                    operand = GenericTile.carryWeight;
+                    operand = MovedStatics.carryWeight;
                 }
                 if (opcode == 13) {
                     int varPlayerValue = VarPlayerDefinition.varPlayers[opcodes[scriptDataIndex++]];

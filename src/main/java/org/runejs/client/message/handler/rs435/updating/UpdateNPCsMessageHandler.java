@@ -2,7 +2,6 @@ package org.runejs.client.message.handler.rs435.updating;
 
 import org.runejs.client.Class17;
 import org.runejs.client.MovedStatics;
-import org.runejs.client.Projectile;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
@@ -130,7 +129,7 @@ public class UpdateNPCsMessageHandler implements MessageHandler<UpdateNPCsInboun
             npc.anInt3134 = MovedStatics.pulseCycle;
 
             int initialFaceDirection = playerUpdate.faceDirection;
-            int faceDirection = Projectile.directions[initialFaceDirection];
+            int faceDirection = MovedStatics.directions[initialFaceDirection];
             if(initializing)
                 npc.initialFaceDirection = faceDirection;
 

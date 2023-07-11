@@ -29,10 +29,6 @@ public class RSCanvas extends Canvas {
 //        super.repaint();
     }
 
-    public static void createMinimapRaster() {
-        RSString.mapbackProducingGraphicsBuffer.prepareRasterizer();
-    }
-
     public static void clearCaches() {
         MovedStatics.method233();
         UnderlayDefinition.clearUnderlayDefinitionCache();

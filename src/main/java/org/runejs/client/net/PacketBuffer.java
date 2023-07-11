@@ -11,14 +11,12 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.message.outbound.widget.CloseWidgetsOutboundMessage;
 import org.runejs.client.message.outbound.widget.input.ClickPleaseWaitWidgetOutboundMessage;
 import org.runejs.client.node.Class40_Sub6;
-import org.runejs.client.scene.SceneCluster;
 
 public class PacketBuffer extends Buffer {
     public static int anInt2231 = 1;
     public static boolean hiddenButtonTest = false;
     public static long aLong2241 = 0L;
     public static boolean closedClient = false;
-    public static int lastClickX = 0;
     public ISAAC inCipher;
     public ISAAC outCipher;
     public int bitoffset;

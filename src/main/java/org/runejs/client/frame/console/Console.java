@@ -2,7 +2,6 @@ package org.runejs.client.frame.console;
 
 import org.runejs.client.Class59;
 import org.runejs.client.MovedStatics;
-import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
@@ -11,7 +10,6 @@ import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.outbound.console.ConsoleCommandOutboundMessage;
 import org.runejs.client.net.OutgoingPackets;
-import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.frame.console.Commands.*;
 import org.runejs.Configuration;
 
@@ -111,7 +109,7 @@ public class Console {
 
     public void drawConsoleArea(int width, int height) {
         if (consoleOpen) {
-            WallDecoration.fontNormal.setEffectsAlpha(0xffffff, -1, 178);
+            MovedStatics.fontNormal.setEffectsAlpha(0xffffff, -1, 178);
             for (int i = messageCount, j = 308; i > 0; i--, j -= 18) {
                 if (consoleMessages[i] == null) {
                     break;
@@ -121,7 +119,7 @@ public class Console {
                     y = 290 - (messageCount - i) * 18 + 18 + currentScroll;
                 }
                 if (y > 2 && y < 315)
-                    WallDecoration.fontNormal.drawBasicString(consoleMessages[i], 9, y);
+                    MovedStatics.fontNormal.drawBasicString(consoleMessages[i], 9, y);
             }
         }
     }
@@ -199,7 +197,7 @@ public class Console {
     public void handleInput() {
 //        console.log(ItemDefinition.anInt2854);
         if (Item.obfuscatedKeyStatus[82]) { //CTRL DOWN
-            if(ItemDefinition.anInt2854 == 67) { // key v
+            if(MovedStatics.anInt2854 == 67) { // key v
                 String result = "";
                 Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
                 Transferable contents = clipboard.getContents(null);
@@ -218,7 +216,7 @@ public class Console {
             ChatBox.redrawChatbox = true;
             return;
         }
-        if (ItemDefinition.anInt2854 == 80) { // key tab
+        if (MovedStatics.anInt2854 == 80) { // key tab
             tabCount++;
             if (tabCount >= 1) {
                 if (tabCount == 1) {
@@ -236,40 +234,40 @@ public class Console {
         } else {
             tabCount = 0;
         }
-        if (ItemDefinition.anInt2854 == 98) { // key up
+        if (MovedStatics.anInt2854 == 98) { // key up
             loadPrev();
         }
-        if (ItemDefinition.anInt2854 == 99) { // key down
+        if (MovedStatics.anInt2854 == 99) { // key down
             loadNext();
         }
-        if (ItemDefinition.anInt2854 == 96) { // key right
+        if (MovedStatics.anInt2854 == 96) { // key right
             currentChatIndex--;
             if (currentChatIndex < 0) {
                 currentChatIndex = 0;
             }
         }
-        if (ItemDefinition.anInt2854 == 97) { // key left
+        if (MovedStatics.anInt2854 == 97) { // key left
             currentChatIndex++;
             if (currentChatIndex > consoleInput.length()) {
                 currentChatIndex = consoleInput.length();
             }
         }
-        if (ItemDefinition.anInt2854 == 0) { // Key esc
+        if (MovedStatics.anInt2854 == 0) { // Key esc
             resetToCurrent();
         }
-        if (ItemDefinition.anInt2854 == 101) { // key delete
+        if (MovedStatics.anInt2854 == 101) { // key delete
             if (consoleInput.length() != currentChatIndex) {
                 consoleInput = consoleInput.substring(0, currentChatIndex) + consoleInput.substring(currentChatIndex + 1);
             }
         }
-        if (ItemDefinition.anInt2854 == 102) { // Key home
+        if (MovedStatics.anInt2854 == 102) { // Key home
             currentChatIndex = 0;
         }
-        if (ItemDefinition.anInt2854 == 103) { // Key end
+        if (MovedStatics.anInt2854 == 103) { // Key end
             currentChatIndex = consoleInput.length();
         }
 
-        if (ItemDefinition.anInt2854 == 85 && consoleInput.length() > 0) { // key backspace
+        if (MovedStatics.anInt2854 == 85 && consoleInput.length() > 0) { // key backspace
             consoleInput = consoleInput.substring(0, currentChatIndex - 1) + consoleInput.substring(currentChatIndex);
             currentChatIndex--;
         }
@@ -277,7 +275,7 @@ public class Console {
             consoleInput = consoleInput.substring(0, currentChatIndex) + (char) Class59.anInt1388 + consoleInput.substring(currentChatIndex);
             currentChatIndex++;
         }
-        if (ItemDefinition.anInt2854 == 84 && consoleInput.length() > 0) { // key enter
+        if (MovedStatics.anInt2854 == 84 && consoleInput.length() > 0) { // key enter
             log(consoleInput, true);
             parseConsoleCommand(consoleInput);
             consoleInput = "";

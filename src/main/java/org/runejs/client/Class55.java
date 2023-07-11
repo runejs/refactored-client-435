@@ -9,13 +9,8 @@ import java.awt.*;
 import java.io.*;
 
 public class Class55 {
-    public static int mouseInvInterfaceIndex = 0;
     public static volatile int eventClickX = 0;
     public static int currentHoveredChatboxWidgetChildId = -1;
-    /**
-     * The background color of the scrollbar.
-     */
-    public static int SCROLLBAR_COLOR_BACKGROUND = 0x23201B;
     public static int destinationY = 0;
 
     public static String parseException(Throwable exception) throws IOException {

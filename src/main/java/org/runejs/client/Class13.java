@@ -1,7 +1,6 @@
 package org.runejs.client;
 
 import org.runejs.client.node.Class40_Sub6;
-import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
@@ -10,7 +9,6 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.scene.GroundItemTile;
-import org.runejs.client.scene.tile.Wall;
 
 public class Class13 {
     public static boolean[] playerArray = new boolean[5];
@@ -20,8 +18,8 @@ public class Class13 {
      * but not the furthest-right (see `tabHighlightImageBottomRightEdge` for that).
      */
     public static IndexedImage tabHighlightImageBottomRight;
-    public static int mouseX = 0;
     public static int[] objectDataIds;
+    private static int anInt356 = 0;
 
     public static void handleActorAnimation(Actor actor) {
         if(actor.worldX < 128 || actor.worldY < 128 || actor.worldX >= 13184 || actor.worldY >= 13184) {
@@ -56,7 +54,7 @@ public class Class13 {
         for(; ; ) {
             Class40_Sub6 class40_sub6;
             synchronized(RSCanvas.aLinkedList_53) {
-                class40_sub6 = (Class40_Sub6) IdentityKit.aLinkedList_2604.removeFirst();
+                class40_sub6 = (Class40_Sub6) MovedStatics.aLinkedList_2604.removeFirst();
             }
             if(class40_sub6 == null)
                 break;
@@ -83,9 +81,9 @@ public class Class13 {
     }
 
     public static synchronized byte[] method246(int arg1) {
-        if(arg1 == 100 && Wall.anInt356 > 0) {
-            byte[] is = GroundItemTile.aByteArrayArray1377[--Wall.anInt356];
-            GroundItemTile.aByteArrayArray1377[Wall.anInt356] = null;
+        if(arg1 == 100 && anInt356 > 0) {
+            byte[] is = GroundItemTile.aByteArrayArray1377[--anInt356];
+            GroundItemTile.aByteArrayArray1377[anInt356] = null;
             return is;
         }
         if(arg1 == 5000 && Main.anInt1764 > 0) {

@@ -1,7 +1,6 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.def.GameObjectDefinition;
-import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.node.Node;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.VertexNormal;
@@ -45,7 +44,7 @@ public class Class40_Sub7 extends Node {
                             bool_2_ = true;
                             if(!gameObjectDefinition.method612()) {
                                 bool = false;
-                                IdentityKit.anInt2591++;
+                                Main.anInt2591++;
                             }
                         }
                     }

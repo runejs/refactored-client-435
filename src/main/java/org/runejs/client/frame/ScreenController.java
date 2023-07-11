@@ -1,7 +1,5 @@
 package org.runejs.client.frame;
 
-import org.runejs.client.cache.def.ActorDefinition;
-import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
 import org.runejs.client.frame.tab.TabProducer;
@@ -75,7 +73,7 @@ public class ScreenController {
             MovedStatics.clearScreen = true;
         }
         Class12.width = drawWidth;
-        IdentityKit.height = drawHeight;
+        MovedStatics.height = drawHeight;
         if (frameMode != ScreenMode.FIXED) {
             if (frameWidth != GameShell.clientFrame.getWidth()) {
                 frameWidth = GameShell.clientFrame.getWidth();
@@ -101,7 +99,7 @@ public class ScreenController {
         // TODO rethink this, maybe its way easier than this
 //        MovedStatics.chatboxLineOffsets = Rasterizer3D.setLineOffsets(null);
 //        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 190 : drawWidth, frameMode == ScreenMode.FIXED ? 261 : drawHeight);
-        ActorDefinition.sidebarOffsets = Rasterizer3D.setLineOffsets(null);
+        MovedStatics.sidebarOffsets = Rasterizer3D.setLineOffsets(null);
         Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 765 : drawWidth, frameMode == ScreenMode.FIXED ? 503 : drawHeight);
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(null);
 
@@ -120,7 +118,7 @@ public class ScreenController {
         if (Class51.gameStatusCode <= 35 && Class51.gameStatusCode >= 30) {
             MovedStatics.gameScreenImageProducer = MovedStatics.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, GameShell.clientFrame);
         } else {
-            MouseHandler.gameCanvas.setSize(Class12.width, IdentityKit.height);
+            MouseHandler.gameCanvas.setSize(Class12.width, MovedStatics.height);
             MouseHandler.gameCanvas.setVisible(true);
             if (GameShell.clientFrame == null)
                 MouseHandler.gameCanvas.setLocation(0, 0);
@@ -144,8 +142,8 @@ public class ScreenController {
         tabProducer.drawResizableSideBarArea(drawWidth - 241, drawHeight - (334));
 
         if (DebugView) {
-            int mX = Class13.mouseX;
-            int mY = Landscape.mouseY;
+            int mX = MouseHandler.mouseX;
+            int mY = MouseHandler.mouseY;
 
             int[] tabInterFaceCoords= tabProducer.getTabInterfaceCoordSize(drawWidth - 241, drawHeight - (334));
             int[] tabInterFaceTop = tabProducer.getTopBarCoordSize(drawWidth - 241, drawHeight - (334));
@@ -184,7 +182,7 @@ public class ScreenController {
             }
 
 
-            Rasterizer.drawFilledRectangle(Class13.mouseX - 4, Landscape.mouseY - 4, 4, 4, 0xFF0000);
+            Rasterizer.drawFilledRectangle(MouseHandler.mouseX - 4, MouseHandler.mouseY - 4, 4, 4, 0xFF0000);
         }
 
         if (MovedStatics.menuOpen) {
@@ -222,7 +220,7 @@ public class ScreenController {
         //width 516
         //height 184
         drawFramePiece(RSCanvas.chatBoxImageProducer, x + 17, y + 16);
-        drawFramePiece(HuffmanEncoding.chatModes, x, y + 112);
+        drawFramePiece(MovedStatics.chatModes, x, y + 112);
         drawFramePieceCutout(RSCanvas.tabBottom, x + 496, y + 125, 20, RSCanvas.tabBottom.height, 0, 0);
         drawFramePiece(MovedStatics.chatboxRight, x, y + 16);
         drawFramePieceCutout(Class17.chatboxTop, x, y, Class17.chatboxTop.width - 37, Class17.chatboxTop.height - 3, 0, 3);
@@ -350,15 +348,15 @@ public class ScreenController {
 
 
     public static void handleMinimapMouse() {
-        if (MovedStatics.minimapState != 0) {
+        if (Minimap.minimapState != 0) {
             return;
         }
         if (MouseHandler.clickType == 1) {
             int minimapClickX;
             int minimapClickY;
             if (frameMode == ScreenMode.FIXED) {
-                minimapClickX = -575 + Class57.clickX;
-                minimapClickY = -5 + RSString.clickY - 4;
+                minimapClickX = -575 + MouseHandler.clickX;
+                minimapClickY = -5 + MouseHandler.clickY - 4;
                 if (minimapClickX >= 0 && minimapClickY >= 0 && minimapClickX < 146 && minimapClickY < 151) {
                     minimapClickX -= 73;
                     minimapClickY -= 75;
@@ -367,8 +365,8 @@ public class ScreenController {
                 }
 
             } else {
-                minimapClickX = -(frameWidth - 210) + Class57.clickX;
-                minimapClickY = -5 + RSString.clickY - 4;
+                minimapClickX = -(frameWidth - 210) + MouseHandler.clickX;
+                minimapClickY = -5 + MouseHandler.clickY - 4;
                 if (minimapClickX >= 0 && minimapClickY >= 0 && minimapClickX < 204 && minimapClickY < 200) {
                     minimapClickX -= 107;
                     minimapClickY -= 100;
@@ -419,8 +417,8 @@ public class ScreenController {
     }
 
     public static void handleChatButtonsClick() {
-        int x = Class57.clickX;
-        int y = RSString.clickY;
+        int x = MouseHandler.clickX;
+        int y = MouseHandler.clickY;
         if (frameMode == ScreenMode.FIXED) {
             x -= 6;
             y -= 467;
@@ -467,7 +465,7 @@ public class ScreenController {
                     PacketBuffer.closeAllWidgets();
                     if (MovedStatics.anInt854 != -1) {
                         MovedStatics.reportMutePlayer = false;
-                        HuffmanEncoding.reportAbuseInterfaceID = GameInterface.gameScreenInterfaceId = MovedStatics.anInt854;
+                        GameInterface.reportAbuseInterfaceID = GameInterface.gameScreenInterfaceId = MovedStatics.anInt854;
                         Native.reportedName = "";
                     }
                 } else
@@ -477,8 +475,8 @@ public class ScreenController {
     }
 
     public static void handleTabClick() {
-        int x = Class57.clickX;
-        int y = RSString.clickY;
+        int x = MouseHandler.clickX;
+        int y = MouseHandler.clickY;
 
 
         if (MouseHandler.clickType == 1) {

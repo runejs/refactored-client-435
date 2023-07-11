@@ -1,12 +1,16 @@
 package org.runejs.client.cache.media.gameInterface;
 
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.cache.cs.ClientScript;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.TypeFace;
+import org.runejs.client.chat.ChatColorEffect;
+import org.runejs.client.chat.ChatShapeEffect;
 import org.runejs.client.frame.ChatBox;
+import org.runejs.client.frame.console.Console;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
@@ -18,8 +22,7 @@ import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
-import org.runejs.client.message.outbound.chat.AcceptRequestOutboundMessage;
-import org.runejs.client.message.outbound.chat.ModifySocialListOutboundMessage;
+import org.runejs.client.message.outbound.chat.*;
 import org.runejs.client.message.outbound.examine.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
@@ -32,9 +35,8 @@ import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.scene.tile.GenericTile;
-import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.tile.WallDecoration;
+import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.TextUtils;
 import org.runejs.client.*;
@@ -59,6 +61,30 @@ public class GameInterface extends CachedNode {
      * but not the furthest-left (see `tabHighlightImageTopLeftEdge` for that).
      */
     public static IndexedImage tabHighlightImageTopLeft;
+    public static int anInt1233 = 0;
+    public static GameInterface aGameInterface_353 = null;
+    public static int crossX = 0;
+    public static int crossY = 0;
+    public static int reportAbuseInterfaceID = -1;
+    public static boolean aBoolean2177 = false;
+    public static int atInventoryInterfaceType = 0;
+    /**
+     * The lightened edge (top and left) color of the scroll indicator chip.
+     */
+    private static int SCROLLBAR_COLOR_CHIP_EDGE_LIGHT = 0x766654;
+    /**
+     * The darkened edge (bottom and right) color of the scroll indicator chip.
+     */
+    private static int SCROLLBAR_COLOR_CHIP_EDGE_DARK = 0x332D25;
+    /**
+     * The background color of the scrollbar.
+     */
+    private static int SCROLLBAR_COLOR_BACKGROUND = 0x23201B;
+    /**
+     * The fill colour of the scroll indicator chip.
+     */
+    private static int SCROLLBAR_COLOR_CHIP_FILL = 0x4D4233;
+    private static boolean aBoolean1444 = false;
 
     public boolean isNewInterfaceFormat = false;
     public int contentType;
@@ -221,16 +247,16 @@ public class GameInterface extends CachedNode {
 
     public static void method639() {
         synchronized(Class59.keyFocusListener) {
-            Class59.anInt1389 = GenericTile.anInt1214;
+            Class59.anInt1389 = MovedStatics.anInt1214;
             if(GameObjectDefinition.anInt2543 < 0) {
                 for(int i = 0; i < 112; i++) {
                     Item.obfuscatedKeyStatus[i] = false;
                 }
-                GameObjectDefinition.anInt2543 = FramemapDefinition.anInt2183;
+                GameObjectDefinition.anInt2543 = MovedStatics.anInt2183;
             } else {
-                while(GameObjectDefinition.anInt2543 != FramemapDefinition.anInt2183) {
-                    int i = RSString.keyCodes[FramemapDefinition.anInt2183];
-                    FramemapDefinition.anInt2183 = 0x7f & FramemapDefinition.anInt2183 + 1;
+                while(GameObjectDefinition.anInt2543 != MovedStatics.anInt2183) {
+                    int i = RSString.keyCodes[MovedStatics.anInt2183];
+                    MovedStatics.anInt2183 = 0x7f & MovedStatics.anInt2183 + 1;
                     if(i < 0) {
                         Item.obfuscatedKeyStatus[i ^ 0xffffffff] = false;
                     } else {
@@ -238,7 +264,7 @@ public class GameInterface extends CachedNode {
                     }
                 }
             }
-            GenericTile.anInt1214 = IdentityKit.anInt2598;
+            MovedStatics.anInt1214 = MovedStatics.anInt2598;
         }
     }
 
@@ -416,19 +442,19 @@ public class GameInterface extends CachedNode {
         int length = (-32 + height) * height / scrollMaximum;
         MovedStatics.scrollbarArrowImages[0].drawImage(x, y);
         MovedStatics.scrollbarArrowImages[1].drawImage(x, y - (-height + 16));
-        Rasterizer.drawFilledRectangle(x, y + 16, 16, height + -32, Class55.SCROLLBAR_COLOR_BACKGROUND);
+        Rasterizer.drawFilledRectangle(x, y + 16, 16, height + -32, SCROLLBAR_COLOR_BACKGROUND);
         if(length < 8)
             length = 8;
         int scrollCurrent = (-32 + height - length) * scrollPosition / (-height + scrollMaximum);
-        Rasterizer.drawFilledRectangle(x, 16 + y + scrollCurrent, 16, length, MovedStatics.SCROLLBAR_COLOR_CHIP_FILL);
-        Rasterizer.drawVerticalLine(x, 16 + y + scrollCurrent, length, HuffmanEncoding.SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
-        Rasterizer.drawVerticalLine(1 + x, scrollCurrent + y + 16, length, HuffmanEncoding.SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
-        Rasterizer.drawHorizontalLine(x, scrollCurrent + y + 16, 16, HuffmanEncoding.SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
-        Rasterizer.drawHorizontalLine(x, 17 + y + scrollCurrent, 16, HuffmanEncoding.SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
-        Rasterizer.drawVerticalLine(x + 15, y + 16 + scrollCurrent, length, MovedStatics.SCROLLBAR_COLOR_CHIP_EDGE_DARK);
-        Rasterizer.drawVerticalLine(x + 14, scrollCurrent + 17 + y, length - 1, MovedStatics.SCROLLBAR_COLOR_CHIP_EDGE_DARK);
-        Rasterizer.drawHorizontalLine(x, length + scrollCurrent + 15 + y, 16, MovedStatics.SCROLLBAR_COLOR_CHIP_EDGE_DARK);
-        Rasterizer.drawHorizontalLine(x + 1, 14 + y + scrollCurrent + length, 15, MovedStatics.SCROLLBAR_COLOR_CHIP_EDGE_DARK);
+        Rasterizer.drawFilledRectangle(x, 16 + y + scrollCurrent, 16, length, SCROLLBAR_COLOR_CHIP_FILL);
+        Rasterizer.drawVerticalLine(x, 16 + y + scrollCurrent, length, SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
+        Rasterizer.drawVerticalLine(1 + x, scrollCurrent + y + 16, length, SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
+        Rasterizer.drawHorizontalLine(x, scrollCurrent + y + 16, 16, SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
+        Rasterizer.drawHorizontalLine(x, 17 + y + scrollCurrent, 16, SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
+        Rasterizer.drawVerticalLine(x + 15, y + 16 + scrollCurrent, length, SCROLLBAR_COLOR_CHIP_EDGE_DARK);
+        Rasterizer.drawVerticalLine(x + 14, scrollCurrent + 17 + y, length - 1, SCROLLBAR_COLOR_CHIP_EDGE_DARK);
+        Rasterizer.drawHorizontalLine(x, length + scrollCurrent + 15 + y, 16, SCROLLBAR_COLOR_CHIP_EDGE_DARK);
+        Rasterizer.drawHorizontalLine(x + 1, 14 + y + scrollCurrent + length, 15, SCROLLBAR_COLOR_CHIP_EDGE_DARK);
     }
 
     public static boolean decodeGameInterface(int interfaceId) {
@@ -573,22 +599,22 @@ public class GameInterface extends CachedNode {
                     )
                 );
 
-                Projectile.atInventoryInterfaceType = 2;
-                GenericTile.anInt1233 = i;
+                atInventoryInterfaceType = 2;
+                anInt1233 = i;
                 RSRuntimeException.anInt1651 = 0;
                 if(gameScreenInterfaceId == i_10_ >> 16) {
-                    Projectile.atInventoryInterfaceType = 1;
+                    atInventoryInterfaceType = 1;
                 }
                 PlayerAppearance.anInt704 = i_10_;
                 if(i_10_ >> 16 == chatboxInterfaceId) {
-                    Projectile.atInventoryInterfaceType = 3;
+                    atInventoryInterfaceType = 3;
                 }
             }
             if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_2.getId()) {
                 Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
-                OverlayDefinition.crossIndex = 0;
-                MovedStatics.crossY = RSString.clickY;
-                ClientScriptRunner.crossX = Class57.clickX;
+                MovedStatics.crossIndex = 0;
+                crossY = MouseHandler.clickY;
+                crossX = MouseHandler.clickX;
                 LinkedList.crossType = 2;
 
                 OutgoingPackets.sendMessage(
@@ -601,10 +627,10 @@ public class GameInterface extends CachedNode {
                 );
             }
             if(action == ActionRowType.EXAMINE_OBJECT.getId()) { // examine object
-                MovedStatics.crossY = RSString.clickY;
-                ClientScriptRunner.crossX = Class57.clickX;
+                crossY = MouseHandler.clickY;
+                crossX = MouseHandler.clickX;
                 LinkedList.crossType = 2;
-                OverlayDefinition.crossIndex = 0;
+                MovedStatics.crossIndex = 0;
 
                 int objectId = npcIdx >> 14 & 0x7fff;
 
@@ -630,10 +656,10 @@ public class GameInterface extends CachedNode {
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[npcIdx];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathY[0], class40_sub5_sub17_sub4_sub1.pathX[0], 1, 1);
-                    ClientScriptRunner.crossX = Class57.clickX;
-                    OverlayDefinition.crossIndex = 0;
+                    crossX = MouseHandler.clickX;
+                    MovedStatics.crossIndex = 0;
                     LinkedList.crossType = 2;
-                    MovedStatics.crossY = RSString.clickY;
+                    crossY = MouseHandler.clickY;
 
                     OutgoingPackets.sendMessage(
                         new CastMagicOnPlayerOutboundMessage(
@@ -699,13 +725,13 @@ public class GameInterface extends CachedNode {
 
                 PlayerAppearance.anInt704 = i_10_;
                 RSRuntimeException.anInt1651 = 0;
-                GenericTile.anInt1233 = i;
-                Projectile.atInventoryInterfaceType = 2;
+                anInt1233 = i;
+                atInventoryInterfaceType = 2;
                 if(i_10_ >> 16 == gameScreenInterfaceId) {
-                    Projectile.atInventoryInterfaceType = 1;
+                    atInventoryInterfaceType = 1;
                 }
                 if(i_10_ >> 16 == chatboxInterfaceId) {
-                    Projectile.atInventoryInterfaceType = 3;
+                    atInventoryInterfaceType = 3;
                 }
             }
             if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_1.getId()) {
@@ -722,15 +748,15 @@ public class GameInterface extends CachedNode {
                     )
                 );
 
-                GenericTile.anInt1233 = i;
-                Projectile.atInventoryInterfaceType = 2;
+                anInt1233 = i;
+                atInventoryInterfaceType = 2;
                 RSRuntimeException.anInt1651 = 0;
                 PlayerAppearance.anInt704 = i_10_;
                 if(i_10_ >> 16 == gameScreenInterfaceId) {
-                    Projectile.atInventoryInterfaceType = 1;
+                    atInventoryInterfaceType = 1;
                 }
                 if(i_10_ >> 16 == chatboxInterfaceId) {
-                    Projectile.atInventoryInterfaceType = 3;
+                    atInventoryInterfaceType = 3;
                 }
             }
             if(action == ActionRowType.BUTTON_SET_VARP_VALUE.getId()) {
@@ -763,25 +789,25 @@ public class GameInterface extends CachedNode {
                     )
                 );
 
-                GenericTile.anInt1233 = i;
+                anInt1233 = i;
                 PlayerAppearance.anInt704 = i_10_;
                 RSRuntimeException.anInt1651 = 0;
-                Projectile.atInventoryInterfaceType = 2;
+                atInventoryInterfaceType = 2;
                 if(i_10_ >> 16 == gameScreenInterfaceId) {
-                    Projectile.atInventoryInterfaceType = 1;
+                    atInventoryInterfaceType = 1;
                 }
                 if(i_10_ >> 16 == chatboxInterfaceId) {
-                    Projectile.atInventoryInterfaceType = 3;
+                    atInventoryInterfaceType = 3;
                 }
             }
             if(action == ActionRowType.INTERACT_WITH_PLAYER_OPTION_1.getId()) {
                 Player otherPlayer = Player.trackedPlayers[npcIdx];
                 if(otherPlayer != null) {
                     Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
-                    ClientScriptRunner.crossX = Class57.clickX;
+                    crossX = MouseHandler.clickX;
                     LinkedList.crossType = 2;
-                    MovedStatics.crossY = RSString.clickY;
-                    OverlayDefinition.crossIndex = 0;
+                    crossY = MouseHandler.clickY;
+                    MovedStatics.crossIndex = 0;
 
                     OutgoingPackets.sendMessage(new PlayerInteractionOutboundMessage(1, npcIdx));
                 }
@@ -790,19 +816,19 @@ public class GameInterface extends CachedNode {
                 Player otherPlayer = Player.trackedPlayers[npcIdx];
                 if(otherPlayer != null) {
                     Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
-                    OverlayDefinition.crossIndex = 0;
+                    MovedStatics.crossIndex = 0;
                     LinkedList.crossType = 2;
-                    MovedStatics.crossY = RSString.clickY;
-                    ClientScriptRunner.crossX = Class57.clickX;
+                    crossY = MouseHandler.clickY;
+                    crossX = MouseHandler.clickX;
 
                     OutgoingPackets.sendMessage(new PlayerInteractionOutboundMessage(4, npcIdx));
                 }
             }
             if(action == ActionRowType.EXAMINE_NPC.getId()) {
-                ClientScriptRunner.crossX = Class57.clickX;
+                crossX = MouseHandler.clickX;
                 LinkedList.crossType = 2;
-                MovedStatics.crossY = RSString.clickY;
-                OverlayDefinition.crossIndex = 0;
+                crossY = MouseHandler.clickY;
+                MovedStatics.crossIndex = 0;
                 Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                 if(class40_sub5_sub17_sub4_sub2 != null) {
                     ActorDefinition class40_sub5_sub5 = class40_sub5_sub17_sub4_sub2.actorDefinition;
@@ -818,10 +844,10 @@ public class GameInterface extends CachedNode {
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[npcIdx];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathY[0], class40_sub5_sub17_sub4_sub1.pathX[0], 1, 1);
-                    ClientScriptRunner.crossX = Class57.clickX;
+                    crossX = MouseHandler.clickX;
                     LinkedList.crossType = 2;
-                    MovedStatics.crossY = RSString.clickY;
-                    OverlayDefinition.crossIndex = 0;
+                    crossY = MouseHandler.clickY;
+                    MovedStatics.crossIndex = 0;
                     
                     int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
                     int containerId = ISAAC.anInt525 & 0xFFFF;
@@ -851,10 +877,10 @@ public class GameInterface extends CachedNode {
             } else {
                 if(action == ActionRowType.CAST_MAGIC_ON_WORLD_ITEM.getId()) {
                     Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
-                    OverlayDefinition.crossIndex = 0;
+                    MovedStatics.crossIndex = 0;
                     LinkedList.crossType = 2;
-                    MovedStatics.crossY = RSString.clickY;
-                    ClientScriptRunner.crossX = Class57.clickX;
+                    crossY = MouseHandler.clickY;
+                    crossX = MouseHandler.clickX;
 
                     OutgoingPackets.sendMessage(
                         new CastMagicOnWorldItemOutboundMessage(
@@ -893,14 +919,14 @@ public class GameInterface extends CachedNode {
                         )
                     );
 
-                    Projectile.atInventoryInterfaceType = 2;
-                    GenericTile.anInt1233 = i;
+                    atInventoryInterfaceType = 2;
+                    anInt1233 = i;
                     PlayerAppearance.anInt704 = i_10_;
                     if(gameScreenInterfaceId == i_10_ >> 16) {
-                        Projectile.atInventoryInterfaceType = 1;
+                        atInventoryInterfaceType = 1;
                     }
                     if(chatboxInterfaceId == i_10_ >> 16) {
-                        Projectile.atInventoryInterfaceType = 3;
+                        atInventoryInterfaceType = 3;
                     }
                     RSRuntimeException.anInt1651 = 0;
                 }
@@ -928,10 +954,10 @@ public class GameInterface extends CachedNode {
                     }
                 }
                 if(action == ActionRowType.EXAMINE_ITEM.getId()) { // examine item
-                    OverlayDefinition.crossIndex = 0;
+                    MovedStatics.crossIndex = 0;
                     LinkedList.crossType = 2;
-                    MovedStatics.crossY = RSString.clickY;
-                    ClientScriptRunner.crossX = Class57.clickX;
+                    crossY = MouseHandler.clickY;
+                    crossX = MouseHandler.clickX;
 
                     OutgoingPackets.sendMessage(new ExamineItemOutboundMessage(npcIdx));
                 }
@@ -955,9 +981,9 @@ public class GameInterface extends CachedNode {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
-                        OverlayDefinition.crossIndex = 0;
-                        ClientScriptRunner.crossX = Class57.clickX;
-                        MovedStatics.crossY = RSString.clickY;
+                        MovedStatics.crossIndex = 0;
+                        crossX = MouseHandler.clickX;
+                        crossY = MouseHandler.clickY;
                         LinkedList.crossType = 2;
 
                         OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(2, npcIdx));
@@ -967,9 +993,9 @@ public class GameInterface extends CachedNode {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
-                        ClientScriptRunner.crossX = Class57.clickX;
-                        MovedStatics.crossY = RSString.clickY;
-                        OverlayDefinition.crossIndex = 0;
+                        crossX = MouseHandler.clickX;
+                        crossY = MouseHandler.clickY;
+                        MovedStatics.crossIndex = 0;
                         LinkedList.crossType = 2;
 
                         int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
@@ -1022,10 +1048,10 @@ public class GameInterface extends CachedNode {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
-                        OverlayDefinition.crossIndex = 0;
+                        MovedStatics.crossIndex = 0;
                         LinkedList.crossType = 2;
-                        ClientScriptRunner.crossX = Class57.clickX;
-                        MovedStatics.crossY = RSString.clickY;
+                        crossX = MouseHandler.clickX;
+                        crossY = MouseHandler.clickY;
 
                         OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(4, npcIdx));
                     }
@@ -1052,13 +1078,13 @@ public class GameInterface extends CachedNode {
 
                     PlayerAppearance.anInt704 = i_10_;
                     RSRuntimeException.anInt1651 = 0;
-                    GenericTile.anInt1233 = i;
-                    Projectile.atInventoryInterfaceType = 2;
+                    anInt1233 = i;
+                    atInventoryInterfaceType = 2;
                     if(gameScreenInterfaceId == i_10_ >> 16) {
-                        Projectile.atInventoryInterfaceType = 1;
+                        atInventoryInterfaceType = 1;
                     }
                     if(chatboxInterfaceId == i_10_ >> 16) {
-                        Projectile.atInventoryInterfaceType = 3;
+                        atInventoryInterfaceType = 3;
                     }
                 }
                 if(action == ActionRowType.SELECT_SPELL_ON_WIDGET.getId()) {
@@ -1066,11 +1092,11 @@ public class GameInterface extends CachedNode {
                     redrawTabArea = true;
                     Main.widgetSelected = 1;
                     Native.selectedSpellVerb = gameInterface.targetVerb;
-                    ItemDefinition.selectedMask = gameInterface.clickMask;
+                    MovedStatics.selectedMask = gameInterface.clickMask;
                     MovedStatics.itemSelected = 0;
                     Class60.anInt1417 = i_10_;
                     Native.selectedSpellName = Native.green + gameInterface.spellName + Native.white;
-                    if(ItemDefinition.selectedMask == 16) {
+                    if(MovedStatics.selectedMask == 16) {
                         drawTabIcons = true;
                         Player.currentTabId = 3;
                         redrawTabArea = true;
@@ -1114,24 +1140,24 @@ public class GameInterface extends CachedNode {
                             )
                         );
 
-                        GenericTile.anInt1233 = i;
-                        Projectile.atInventoryInterfaceType = 2;
+                        anInt1233 = i;
+                        atInventoryInterfaceType = 2;
                         PlayerAppearance.anInt704 = i_10_;
                         RSRuntimeException.anInt1651 = 0;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
-                            Projectile.atInventoryInterfaceType = 1;
+                            atInventoryInterfaceType = 1;
                         }
                         if(i_10_ >> 16 == chatboxInterfaceId) {
-                            Projectile.atInventoryInterfaceType = 3;
+                            atInventoryInterfaceType = 3;
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_NPC_OPTION_1.getId()) {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
-                            ClientScriptRunner.crossX = Class57.clickX;
-                            MovedStatics.crossY = RSString.clickY;
-                            OverlayDefinition.crossIndex = 0;
+                            crossX = MouseHandler.clickX;
+                            crossY = MouseHandler.clickY;
+                            MovedStatics.crossIndex = 0;
                             LinkedList.crossType = 2;
 
                             OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(1, npcIdx));
@@ -1140,9 +1166,9 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_1.getId()) {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                         LinkedList.crossType = 2;
-                        OverlayDefinition.crossIndex = 0;
-                        ClientScriptRunner.crossX = Class57.clickX;
-                        MovedStatics.crossY = RSString.clickY;
+                        MovedStatics.crossIndex = 0;
+                        crossX = MouseHandler.clickX;
+                        crossY = MouseHandler.clickY;
 
                         OutgoingPackets.sendMessage(
                             new WorldItemInteractionOutboundMessage(
@@ -1155,10 +1181,10 @@ public class GameInterface extends CachedNode {
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_3.getId()) {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
-                        OverlayDefinition.crossIndex = 0;
-                        ClientScriptRunner.crossX = Class57.clickX;
+                        MovedStatics.crossIndex = 0;
+                        crossX = MouseHandler.clickX;
                         LinkedList.crossType = 2;
-                        MovedStatics.crossY = RSString.clickY;
+                        crossY = MouseHandler.clickY;
 
                         OutgoingPackets.sendMessage(
                             new WorldItemInteractionOutboundMessage(
@@ -1173,9 +1199,9 @@ public class GameInterface extends CachedNode {
                         Npc npc = Player.npcs[npcIdx];
                         if(npc != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], npc.pathY[0], npc.pathX[0], 1, 1);
-                            ClientScriptRunner.crossX = Class57.clickX;
-                            MovedStatics.crossY = RSString.clickY;
-                            OverlayDefinition.crossIndex = 0;
+                            crossX = MouseHandler.clickX;
+                            crossY = MouseHandler.clickY;
+                            MovedStatics.crossIndex = 0;
                             LinkedList.crossType = 2;
 
                             OutgoingPackets.sendMessage(
@@ -1192,16 +1218,16 @@ public class GameInterface extends CachedNode {
                         if(l1 != -1) {
                             long l = TextUtils.nameToLong(s.substring(l1 + 5).trim());
                             if(action == ActionRowType.ADD_FRIEND.getId()) {
-                                MovedStatics.addFriend(l);
+                                addFriend(l);
                             }
                             if(action == ActionRowType.ADD_IGNORE.getId()) {
-                                Class17.method275(l);
+                                addIgnore(l);
                             }
                             if(action == ActionRowType.REMOVE_FRIEND.getId()) {
                                 removeFriend(l);
                             }
                             if(action == ActionRowType.REMOVE_IGNORE.getId()) {
-                                MovedStatics.method838(l);
+                                removeIgnore(l);
                             }
                         }
                     }
@@ -1210,9 +1236,9 @@ public class GameInterface extends CachedNode {
                         if(otherPlayer != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
                             LinkedList.crossType = 2;
-                            OverlayDefinition.crossIndex = 0;
-                            ClientScriptRunner.crossX = Class57.clickX;
-                            MovedStatics.crossY = RSString.clickY;
+                            MovedStatics.crossIndex = 0;
+                            crossX = MouseHandler.clickX;
+                            crossY = MouseHandler.clickY;
 
                             OutgoingPackets.sendMessage(new PlayerInteractionOutboundMessage(3, npcIdx));
                         }
@@ -1221,7 +1247,7 @@ public class GameInterface extends CachedNode {
                         if(MovedStatics.menuOpen) {
                             Npc.currentScene.method120(-4 + i, -4 + i_10_);
                         } else {
-                            Npc.currentScene.method120(Class57.clickX - 4, -4 + RSString.clickY);
+                            Npc.currentScene.method120(MouseHandler.clickX - 4, -4 + MouseHandler.clickY);
                         }
                     }
                     if(action == ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId()) {
@@ -1231,15 +1257,15 @@ public class GameInterface extends CachedNode {
                         } else {
                             ChatBox.addChatMessage("", gameInterface.itemAmounts[i] + Native.amountSeparatorX + ItemDefinition.forId(npcIdx, 10).name, 0);
                         }
-                        GenericTile.anInt1233 = i;
+                        anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
                         PlayerAppearance.anInt704 = i_10_;
-                        Projectile.atInventoryInterfaceType = 2;
+                        atInventoryInterfaceType = 2;
                         if(i_10_ >> 16 == gameScreenInterfaceId) {
-                            Projectile.atInventoryInterfaceType = 1;
+                            atInventoryInterfaceType = 1;
                         }
                         if(i_10_ >> 16 == chatboxInterfaceId) {
-                            Projectile.atInventoryInterfaceType = 3;
+                            atInventoryInterfaceType = 3;
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_3.getId()) {
@@ -1291,15 +1317,15 @@ public class GameInterface extends CachedNode {
                         );
 
                         RSRuntimeException.anInt1651 = 0;
-                        Projectile.atInventoryInterfaceType = 2;
+                        atInventoryInterfaceType = 2;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
-                            Projectile.atInventoryInterfaceType = 1;
+                            atInventoryInterfaceType = 1;
                         }
                         if(i_10_ >> 16 == chatboxInterfaceId) {
-                            Projectile.atInventoryInterfaceType = 3;
+                            atInventoryInterfaceType = 3;
                         }
                         PlayerAppearance.anInt704 = i_10_;
-                        GenericTile.anInt1233 = i;
+                        anInt1233 = i;
                     }
                     if(action == ActionRowType.DROP_ITEM.getId()) {
                         int widgetId = (i_10_ >> 16) & 0xFFFF;
@@ -1312,14 +1338,14 @@ public class GameInterface extends CachedNode {
                             i
                         ));
 
-                        GenericTile.anInt1233 = i;
+                        anInt1233 = i;
                         PlayerAppearance.anInt704 = i_10_;
-                        Projectile.atInventoryInterfaceType = 2;
+                        atInventoryInterfaceType = 2;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
-                            Projectile.atInventoryInterfaceType = 1;
+                            atInventoryInterfaceType = 1;
                         }
                         if(i_10_ >> 16 == chatboxInterfaceId) {
-                            Projectile.atInventoryInterfaceType = 3;
+                            atInventoryInterfaceType = 3;
                         }
                         RSRuntimeException.anInt1651 = 0;
                     }
@@ -1328,9 +1354,9 @@ public class GameInterface extends CachedNode {
                         if(otherPlayer != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
                             LinkedList.crossType = 2;
-                            MovedStatics.crossY = RSString.clickY;
-                            ClientScriptRunner.crossX = Class57.clickX;
-                            OverlayDefinition.crossIndex = 0;
+                            crossY = MouseHandler.clickY;
+                            crossX = MouseHandler.clickX;
+                            MovedStatics.crossIndex = 0;
 
                             OutgoingPackets.sendMessage(new PlayerInteractionOutboundMessage(5, npcIdx));
                         }
@@ -1343,7 +1369,7 @@ public class GameInterface extends CachedNode {
                                 PacketBuffer.closeAllWidgets();
                                 if(MovedStatics.anInt854 != -1) {
                                     Native.reportedName = class1.substring(i_22_ + 5).trim();
-                                    HuffmanEncoding.reportAbuseInterfaceID = gameScreenInterfaceId = MovedStatics.anInt854;
+                                    reportAbuseInterfaceID = gameScreenInterfaceId = MovedStatics.anInt854;
                                     MovedStatics.reportMutePlayer = false;
                                 }
                             } else {
@@ -1353,10 +1379,10 @@ public class GameInterface extends CachedNode {
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_4.getId()) {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
-                        ClientScriptRunner.crossX = Class57.clickX;
-                        OverlayDefinition.crossIndex = 0;
+                        crossX = MouseHandler.clickX;
+                        MovedStatics.crossIndex = 0;
                         LinkedList.crossType = 2;
-                        MovedStatics.crossY = RSString.clickY;
+                        crossY = MouseHandler.clickY;
 
                         OutgoingPackets.sendMessage(
                             new WorldItemInteractionOutboundMessage(
@@ -1389,22 +1415,22 @@ public class GameInterface extends CachedNode {
                         );
 
                         RSRuntimeException.anInt1651 = 0;
-                        Projectile.atInventoryInterfaceType = 2;
+                        atInventoryInterfaceType = 2;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
-                            Projectile.atInventoryInterfaceType = 1;
+                            atInventoryInterfaceType = 1;
                         }
-                        GenericTile.anInt1233 = i;
+                        anInt1233 = i;
                         PlayerAppearance.anInt704 = i_10_;
                         if(i_10_ >> 16 == chatboxInterfaceId) {
-                            Projectile.atInventoryInterfaceType = 3;
+                            atInventoryInterfaceType = 3;
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_5.getId()) {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
-                        MovedStatics.crossY = RSString.clickY;
+                        crossY = MouseHandler.clickY;
                         LinkedList.crossType = 2;
-                        OverlayDefinition.crossIndex = 0;
-                        ClientScriptRunner.crossX = Class57.clickX;
+                        MovedStatics.crossIndex = 0;
+                        crossX = MouseHandler.clickX;
 
                         OutgoingPackets.sendMessage(
                             new WorldItemInteractionOutboundMessage(
@@ -1419,10 +1445,10 @@ public class GameInterface extends CachedNode {
                         Player otherPlayer = Player.trackedPlayers[npcIdx];
                         if(otherPlayer != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
-                            OverlayDefinition.crossIndex = 0;
-                            ClientScriptRunner.crossX = Class57.clickX;
+                            MovedStatics.crossIndex = 0;
+                            crossX = MouseHandler.clickX;
                             LinkedList.crossType = 2;
-                            MovedStatics.crossY = RSString.clickY;
+                            crossY = MouseHandler.clickY;
 
                             OutgoingPackets.sendMessage(new PlayerInteractionOutboundMessage(2, npcIdx));
                         }
@@ -1443,13 +1469,13 @@ public class GameInterface extends CachedNode {
 
                         PlayerAppearance.anInt704 = i_10_;
                         RSRuntimeException.anInt1651 = 0;
-                        GenericTile.anInt1233 = i;
-                        Projectile.atInventoryInterfaceType = 2;
+                        anInt1233 = i;
+                        atInventoryInterfaceType = 2;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
-                            Projectile.atInventoryInterfaceType = 1;
+                            atInventoryInterfaceType = 1;
                         }
                         if(chatboxInterfaceId == i_10_ >> 16) {
-                            Projectile.atInventoryInterfaceType = 3;
+                            atInventoryInterfaceType = 3;
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_1.getId()) {
@@ -1472,18 +1498,18 @@ public class GameInterface extends CachedNode {
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
                             LinkedList.crossType = 2;
-                            ClientScriptRunner.crossX = Class57.clickX;
-                            MovedStatics.crossY = RSString.clickY;
-                            OverlayDefinition.crossIndex = 0;
+                            crossX = MouseHandler.clickX;
+                            crossY = MouseHandler.clickY;
+                            MovedStatics.crossIndex = 0;
 
                             OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(5, npcIdx));
                         }
                     }
                     if(action == ActionRowType.USE_ITEM_ON_WORLD_ITEM.getId()) {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
-                        ClientScriptRunner.crossX = Class57.clickX;
-                        MovedStatics.crossY = RSString.clickY;
-                        OverlayDefinition.crossIndex = 0;
+                        crossX = MouseHandler.clickX;
+                        crossY = MouseHandler.clickY;
+                        MovedStatics.crossIndex = 0;
                         LinkedList.crossType = 2;
 
                         int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
@@ -1515,15 +1541,15 @@ public class GameInterface extends CachedNode {
                             )
                         );
 
-                        GenericTile.anInt1233 = i;
+                        anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
-                        Projectile.atInventoryInterfaceType = 2;
+                        atInventoryInterfaceType = 2;
                         PlayerAppearance.anInt704 = i_10_;
                         if(i_10_ >> 16 == gameScreenInterfaceId) {
-                            Projectile.atInventoryInterfaceType = 1;
+                            atInventoryInterfaceType = 1;
                         }
                         if(i_10_ >> 16 == chatboxInterfaceId) {
-                            Projectile.atInventoryInterfaceType = 3;
+                            atInventoryInterfaceType = 3;
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_NPC_OPTION_3.getId()) {
@@ -1531,9 +1557,9 @@ public class GameInterface extends CachedNode {
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
                             LinkedList.crossType = 2;
-                            ClientScriptRunner.crossX = Class57.clickX;
-                            OverlayDefinition.crossIndex = 0;
-                            MovedStatics.crossY = RSString.clickY;
+                            crossX = MouseHandler.clickX;
+                            MovedStatics.crossIndex = 0;
+                            crossY = MouseHandler.clickY;
 
                             OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(3, npcIdx));
                         }
@@ -1558,14 +1584,14 @@ public class GameInterface extends CachedNode {
 
         runClientScriptsForInterface(arg5, arg3, 0, arg2, arg6, -1, cachedInterfaces[widgetId], arg1, 0);
 
-        if(Wall.aGameInterface_353 != null) {
-            GameInterface gameInterface = Wall.aGameInterface_353;
-            GameInterface gameInterface_24_ = FramemapDefinition.method878(gameInterface);
+        if(aGameInterface_353 != null) {
+            GameInterface gameInterface = aGameInterface_353;
+            GameInterface gameInterface_24_ = method878(gameInterface);
             if(gameInterface_24_ != null) {
                 int[] is = Class13.method247(gameInterface_24_);
                 int[] is_25_ = Class13.method247(gameInterface);
-                int i = is_25_[1] - is[1] + -MovedStatics.anInt2621 + Landscape.mouseY;
-                int i_26_ = -is[0] + is_25_[0] + Class13.mouseX + -MovedStatics.anInt1996;
+                int i = is_25_[1] - is[1] + -MovedStatics.anInt2621 + MouseHandler.mouseY;
+                int i_26_ = -is[0] + is_25_[0] + MouseHandler.mouseX + -MovedStatics.anInt1996;
                 if(i < 0) {
                     i = 0;
                 }
@@ -1578,14 +1604,14 @@ public class GameInterface extends CachedNode {
                 if(gameInterface_24_.originalWidth < gameInterface.originalWidth + i_26_) {
                     i_26_ = gameInterface_24_.originalWidth - gameInterface.originalWidth;
                 }
-                if(Wall.aGameInterface_353.anObjectArray2669 != null && (arg2 & 0x200) != 0) {
+                if(aGameInterface_353.anObjectArray2669 != null && (arg2 & 0x200) != 0) {
                     ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2669, 0, i, gameInterface, i_26_);
                 }
                 if(MouseHandler.currentMouseButtonPressed == 0 && (arg2 & 0x400) != 0) {
-                    if(Wall.aGameInterface_353.anObjectArray2695 != null) {
+                    if(aGameInterface_353.anObjectArray2695 != null) {
                         ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2695, 0, i, gameInterface, i_26_);
                     }
-                    Wall.aGameInterface_353 = null;
+                    aGameInterface_353 = null;
                 }
             }
         }
@@ -1627,11 +1653,11 @@ public class GameInterface extends CachedNode {
     }
 
     public static void scrollInterface(int arg0, int arg1, int arg2, int arg3, GameInterface arg5, int arg6, int arg7, int arg8) {
-        if(MovedStatics.aBoolean1444)
+        if(aBoolean1444)
             Landscape.anInt1171 = 32;
         else
             Landscape.anInt1171 = 0;
-        MovedStatics.aBoolean1444 = false;
+        aBoolean1444 = false;
         if(arg2 >= arg6 && arg2 < arg6 + 16 && arg1 >= arg8 && 16 + arg8 > arg1) {
             arg5.scrollPosition -= Npc.anInt3294 * 4;
             if(arg7 == 1)
@@ -1640,7 +1666,7 @@ public class GameInterface extends CachedNode {
                 ChatBox.redrawChatbox = true;
         } else if(arg6 > arg2 || arg6 + 16 <= arg2 || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
             if(-Landscape.anInt1171 + arg6 <= arg2 && 16 + arg6 + Landscape.anInt1171 > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
-                MovedStatics.aBoolean1444 = true;
+                aBoolean1444 = true;
                 int i = (-32 + arg0) * arg0 / arg3;
                 if(arg7 == 2 || arg7 == 3)
                     ChatBox.redrawChatbox = true;
@@ -1760,19 +1786,19 @@ public class GameInterface extends CachedNode {
                 }
                 if (gameInterface.hasListeners) {
                     boolean bool;
-                    bool = Class13.mouseX >= i_6_ && i_4_ <= Landscape.mouseY && i_8_ > Class13.mouseX && i_7_ > Landscape.mouseY;
+                    bool = MouseHandler.mouseX >= i_6_ && i_4_ <= MouseHandler.mouseY && i_8_ > MouseHandler.mouseX && i_7_ > MouseHandler.mouseY;
                     boolean bool_9_ = false;
                     if (MouseHandler.currentMouseButtonPressed == 1 && bool)
                         bool_9_ = true;
                     boolean bool_10_ = false;
-                    if (gameInterface.anInt2738 != -1 && bool_9_ && Wall.aGameInterface_353 == null) {
-                        MovedStatics.anInt1996 = Class13.mouseX;
-                        Wall.aGameInterface_353 = gameInterface;
-                        MovedStatics.anInt2621 = Landscape.mouseY;
+                    if (gameInterface.anInt2738 != -1 && bool_9_ && aGameInterface_353 == null) {
+                        MovedStatics.anInt1996 = MouseHandler.mouseX;
+                        aGameInterface_353 = gameInterface;
+                        MovedStatics.anInt2621 = MouseHandler.mouseY;
                     }
-                    if (MouseHandler.clickType == 1 && i_6_ <= Class57.clickX && RSString.clickY >= i_4_ && Class57.clickX < i_8_ && RSString.clickY < i_7_)
+                    if (MouseHandler.clickType == 1 && i_6_ <= MouseHandler.clickX && MouseHandler.clickY >= i_4_ && MouseHandler.clickX < i_8_ && MouseHandler.clickY < i_7_)
                         bool_10_ = true;
-                    if (Wall.aGameInterface_353 != null) {
+                    if (aGameInterface_353 != null) {
                         bool_9_ = false;
                         bool = false;
                         bool_10_ = false;
@@ -1780,28 +1806,28 @@ public class GameInterface extends CachedNode {
                     if (!gameInterface.aBoolean2730 && bool_10_ && (0x1 & arg3) != 0) {
                         gameInterface.aBoolean2730 = true;
                         if (gameInterface.anObjectArray2681 != null)
-                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2681, 0, RSString.clickY + -absoluteY, gameInterface, Class57.clickX - absoluteX);
+                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2681, 0, MouseHandler.clickY + -absoluteY, gameInterface, MouseHandler.clickX - absoluteX);
                     }
                     if (gameInterface.aBoolean2730 && bool_9_ && (arg3 & 0x4) != 0 && gameInterface.anObjectArray2747 != null)
-                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2747, 0, -absoluteY + Landscape.mouseY, gameInterface, -absoluteX + Class13.mouseX);
+                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2747, 0, -absoluteY + MouseHandler.mouseY, gameInterface, -absoluteX + MouseHandler.mouseX);
                     if (gameInterface.aBoolean2730 && !bool_9_ && (0x2 & arg3) != 0) {
                         gameInterface.aBoolean2730 = false;
                         if (gameInterface.anObjectArray2707 != null)
-                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2707, 0, Landscape.mouseY - absoluteY, gameInterface, Class13.mouseX - absoluteX);
+                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2707, 0, MouseHandler.mouseY - absoluteY, gameInterface, MouseHandler.mouseX - absoluteX);
                     }
                     if (bool_9_ && (arg3 & 0x8) != 0 && gameInterface.anObjectArray2644 != null)
-                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2644, 0, -absoluteY + Landscape.mouseY, gameInterface, -absoluteX + Class13.mouseX);
+                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2644, 0, -absoluteY + MouseHandler.mouseY, gameInterface, -absoluteX + MouseHandler.mouseX);
                     if (!gameInterface.aBoolean2682 && bool && (0x10 & arg3) != 0) {
                         gameInterface.aBoolean2682 = true;
                         if (gameInterface.anObjectArray2658 != null)
-                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2658, 0, Landscape.mouseY - absoluteY, gameInterface, Class13.mouseX - absoluteX);
+                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2658, 0, MouseHandler.mouseY - absoluteY, gameInterface, MouseHandler.mouseX - absoluteX);
                     }
                     if (gameInterface.aBoolean2682 && bool && (0x40 & arg3) != 0 && gameInterface.anObjectArray2680 != null)
-                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2680, 0, -absoluteY + Landscape.mouseY, gameInterface, -absoluteX + Class13.mouseX);
+                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2680, 0, -absoluteY + MouseHandler.mouseY, gameInterface, -absoluteX + MouseHandler.mouseX);
                     if (gameInterface.aBoolean2682 && !bool && (arg3 & 0x20) != 0) {
                         gameInterface.aBoolean2682 = false;
                         if (gameInterface.anObjectArray2672 != null)
-                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2672, 0, -absoluteY + Landscape.mouseY, gameInterface, -absoluteX + Class13.mouseX);
+                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2672, 0, -absoluteY + MouseHandler.mouseY, gameInterface, -absoluteX + MouseHandler.mouseX);
                     }
                     if (gameInterface.anObjectArray2712 != null && (arg3 & 0x80) != 0)
                         ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2712, 0, 0, gameInterface, 0);
@@ -1832,6 +1858,346 @@ public class GameInterface extends CachedNode {
                 }
             }
         }
+    }
+
+    public static boolean isHovering(int areaId, int widgetChildId) {
+        if(areaId == 0 && MovedStatics.anInt2850 == widgetChildId)
+            return true;
+
+        if(areaId == 1 && widgetChildId == CollisionMap.currentHoveredWidgetChildId)
+            return true;
+
+        if((areaId == 2 || areaId == 3) && Class55.currentHoveredChatboxWidgetChildId == widgetChildId)
+            return true;
+
+        return false;
+    }
+
+    public static void manageTextInputs() {
+        while(MovedStatics.method416()) {
+            if(MovedStatics.anInt2854 == 28) {
+                break;
+            }
+            if(Console.console.consoleOpen) {
+                Console.console.handleInput();
+                break;
+            }
+            if(gameScreenInterfaceId != -1 && reportAbuseInterfaceID == gameScreenInterfaceId) {
+                if(MovedStatics.anInt2854 == 85 && Native.reportedName.length() > 0)
+                    Native.reportedName = Native.reportedName.substring(0, -1 + Native.reportedName.length());
+                if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && Native.reportedName.length() < 12)
+                    Native.reportedName = Native.reportedName + (char) Class59.anInt1388;
+            } else if(ChatBox.messagePromptRaised) {
+                if(MovedStatics.anInt2854 == 85 && ChatBox.chatMessage.length() > 0) {
+                    ChatBox.chatMessage = ChatBox.chatMessage.substring(0, -1 + ChatBox.chatMessage.length());
+                    ChatBox.redrawChatbox = true;
+                }
+                if(Player.method793(Class59.anInt1388) && ChatBox.chatMessage.length() < 80) {
+                    ChatBox.chatMessage = ChatBox.chatMessage + (char) Class59.anInt1388;
+                    ChatBox.redrawChatbox = true;
+                }
+                if(MovedStatics.anInt2854 == 84) {
+                    ChatBox.messagePromptRaised = false;
+                    ChatBox.redrawChatbox = true;
+                    if(Class37.anInt876 == 1) {
+                        long l = RSString.nameToLong(ChatBox.chatMessage);
+                        addFriend(l);
+                    }
+                    if(Class37.anInt876 == 2 && Player.friendsCount > 0) {
+                        long l = RSString.nameToLong(ChatBox.chatMessage);
+                        removeFriend(l);
+                    }
+                    if(Class37.anInt876 == 3 && ChatBox.chatMessage.length() > 0) {
+// private messages
+                        ChatBox.filterInput();
+
+OutgoingPackets.sendMessage(new SendPrivateMessageOutboundMessage(PacketBuffer.aLong2241, ChatBox.chatboxInput));
+
+                        if(ChatBox.privateChatMode == 2) {
+                            ChatBox.privateChatMode = 1;
+                            MovedStatics.redrawChatbox = true;
+
+OutgoingPackets.sendMessage(new SetChatOptionsOutboundMessage(
+ChatBox.publicChatMode,
+ChatBox.privateChatMode,
+ChatBox.tradeMode
+));
+                        }
+                    }
+                    if(Class37.anInt876 == 4 && MovedStatics.anInt1008 < 100) {
+                        long l = RSString.nameToLong(ChatBox.chatMessage);
+                        addIgnore(l);
+                    }
+                    if(Class37.anInt876 == 5 && MovedStatics.anInt1008 > 0) {
+                        long l = RSString.nameToLong(ChatBox.chatMessage);
+                        removeIgnore(l);
+                    }
+                }
+            } else if(ChatBox.inputType == 1) {
+                if(MovedStatics.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
+                    ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 1);
+                    ChatBox.redrawChatbox = true;
+                }
+                if(method1027(Class59.anInt1388) && ChatBox.inputMessage.length() < 10) {
+                    ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
+                    ChatBox.redrawChatbox = true;
+                }
+                if(MovedStatics.anInt2854 == 84) {
+                    if(ChatBox.inputMessage.length() > 0) {
+                        int inputValue = 0;
+                        try {
+                            inputValue = Integer.parseInt(ChatBox.inputMessage);
+                        } catch(Exception _ex) {
+                            /* empty */
+                        }
+
+OutgoingPackets.sendMessage(new SubmitChatboxWidgetNumericInputOutboundMessage(inputValue));
+                    }
+                    ChatBox.redrawChatbox = true;
+                    ChatBox.inputType = 0;
+                }
+            } else if(ChatBox.inputType == 2) {
+                if(MovedStatics.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
+                    ChatBox.inputMessage = ChatBox.inputMessage.substring(0, -1 + ChatBox.inputMessage.length());
+                    ChatBox.redrawChatbox = true;
+                }
+                if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && ChatBox.inputMessage.length() < 12) {
+                    ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
+                    ChatBox.redrawChatbox = true;
+                }
+                if(MovedStatics.anInt2854 == 84) {
+                    if(ChatBox.inputMessage.length() > 0) {
+long name = RSString.nameToLong(ChatBox.inputMessage);
+
+OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name));
+                    }
+                    ChatBox.inputType = 0;
+                    ChatBox.redrawChatbox = true;
+                }
+            } else if(ChatBox.inputType == 3) {
+                if(MovedStatics.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
+                    ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 10);
+                    ChatBox.redrawChatbox = true;
+                }
+                if(Player.method793(Class59.anInt1388) && ChatBox.inputMessage.length() < 40) {
+                    ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
+                    ChatBox.redrawChatbox = true;
+                }
+            } else if(chatboxInterfaceId == -1 && fullscreenInterfaceId == -1) {
+                if(MovedStatics.anInt2854 == 85 && ChatBox.chatboxInput.length() > 0) {
+                    ChatBox.chatboxInput = ChatBox.chatboxInput.substring(0, ChatBox.chatboxInput.length() - 1);
+                    ChatBox.redrawChatbox = true;
+                }
+                if(Player.method793(Class59.anInt1388) && ChatBox.chatboxInput.length() < 80) {
+                    ChatBox.chatboxInput = ChatBox.chatboxInput + (char) Class59.anInt1388;
+                    ChatBox.redrawChatbox = true;
+                }
+                if(MovedStatics.anInt2854 == 84 && ChatBox.chatboxInput.length() > 0) {
+                    if(InteractiveObject.playerRights > 1) {
+                        if(ChatBox.chatboxInput.equals(English.commandClientDrop))
+                            Class59.dropClient();
+                        if(ChatBox.chatboxInput.equals(English.commandFpson)) {
+                            InteractiveObject.showFps = true;
+                            ChatBox.inputType = 3;
+                        }
+                        if(ChatBox.chatboxInput.startsWith("::region")) {
+                            for(int qq = 0; qq < 469; qq++) {
+                                if(decodeGameInterface(qq)) {
+                                    GameInterface[] gameInterfaces = cachedInterfaces[qq];
+                                    for(int y = 0; gameInterfaces.length > y; y++) {
+                                        GameInterface gameInterface = gameInterfaces[y];
+                                        if(gameInterface.disabledText != null) {
+                                            String text = gameInterface.disabledText.toString().toLowerCase();
+                                            if(gameInterface.disabledText.toString().toLowerCase().contains("bank")) {
+                                                System.out.println(qq + " contains " + text);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        if(ChatBox.chatboxInput.equals(Native.cmd_fpsoff))
+                            InteractiveObject.showFps = false;
+                        if(ChatBox.chatboxInput.equals(English.commandNoclip)) {
+                            for(int i = 0; i < 4; i++) {
+                                for(int i_9_ = 1; i_9_ < 103; i_9_++) {
+                                    for(int i_10_ = 1; i_10_ < 103; i_10_++)
+                                        Landscape.currentCollisionMap[i].clippingData[i_9_][i_10_] = 0;
+                                }
+                            }
+                        }
+                        if(ChatBox.chatboxInput.equals(English.commandErrorTest) && Main.modewhere == 2)
+                            throw new RuntimeException();
+                        if(ChatBox.chatboxInput.equals(Native.cmd_hiddenbuttontest))
+                            PacketBuffer.hiddenButtonTest = true;
+                    }
+                    if(ChatBox.chatboxInput.startsWith(Native.cmd_prefix)) {
+// remove the :: prefix
+String command = ChatBox.chatboxInput.substring(2);
+
+OutgoingPackets.sendMessage(new ChatCommandOutboundMessage(command));
+                    } else {
+                        ChatColorEffect chatColorEffect = ChatColorEffect.fromString(ChatBox.chatboxInput.toLowerCase());
+
+if (chatColorEffect != null) {
+ChatBox.chatboxInput = ChatBox.chatboxInput.substring(chatColorEffect.getPrefixLength());
+}
+
+ChatShapeEffect chatShapeEffect = ChatShapeEffect.fromString(ChatBox.chatboxInput.toLowerCase());
+
+if (chatShapeEffect != null) {
+ChatBox.chatboxInput = ChatBox.chatboxInput.substring(chatShapeEffect.getPrefixLength());
+}
+
+                        ChatBox.filterInput();
+
+SendChatMessageOutboundMessage message = new SendChatMessageOutboundMessage(
+chatColorEffect != null ? chatColorEffect : ChatColorEffect.YELLOW,
+chatShapeEffect != null ? chatShapeEffect : ChatShapeEffect.NONE,
+ChatBox.chatboxInput
+);
+
+OutgoingPackets.sendMessage(message);
+
+// I guess resets from 'off' to... 'friends'? public?
+                        if(ChatBox.publicChatMode == 2) {
+                            MovedStatics.redrawChatbox = true;
+                            ChatBox.publicChatMode = 3;
+
+OutgoingPackets.sendMessage(new SetChatOptionsOutboundMessage(
+ChatBox.publicChatMode,
+ChatBox.privateChatMode,
+ChatBox.tradeMode
+));
+                        }
+                    }
+                    ChatBox.redrawChatbox = true;
+                    ChatBox.chatboxInput = "";
+                }
+            }
+        }
+
+    }
+
+    private static void addFriend(long name) {
+        if(name != 0L) {
+            if(Player.friendsCount >= 100 && Class44.anInt1049 != 1 || Player.friendsCount >= 200) {
+                ChatBox.addChatMessage("", English.friendsListIsFull, 0);
+            } else {
+                String username = TextUtils.formatName(TextUtils.longToName(name));
+                for(int i = 0; Player.friendsCount > i; i++) {
+                    if(Class59.friends[i] == name) {
+                        ChatBox.addChatMessage("", username + English.isAlreadyOnYourFriendList, 0);
+                        return;
+                    }
+                }
+                for(int i = 0; MovedStatics.anInt1008 > i; i++) {
+                    if(Player.ignores[i] == name) {
+                        ChatBox.addChatMessage("", English.pleaseRemove + username + English.suffixFromYourIgnoreListFirst, 0);
+                        return;
+                    }
+                }
+                if(!username.equals(Player.localPlayer.playerName)) {
+                    Player.friendUsernames[Player.friendsCount] = username;
+                    Class59.friends[Player.friendsCount] = name;
+                    Player.friendWorlds[Player.friendsCount] = 0;
+                    Player.friendsCount++;
+                    redrawTabArea = true;
+
+                    OutgoingPackets.sendMessage(
+                        new ModifySocialListOutboundMessage(name, ModifySocialListOutboundMessage.SocialList.FRIEND, ModifySocialListOutboundMessage.SocialListAction.ADD));
+                }
+            }
+        }
+    }
+
+    private static void removeIgnore(long arg1) {
+        for (int i = 0; i < MovedStatics.anInt1008; i++) {
+            if (Player.ignores[i] == arg1) {
+                redrawTabArea = true;
+                MovedStatics.anInt1008--;
+                for (int i_16_ = i; MovedStatics.anInt1008 > i_16_; i_16_++)
+                    Player.ignores[i_16_] = Player.ignores[1 + i_16_];
+
+                OutgoingPackets.sendMessage(
+                    new ModifySocialListOutboundMessage(arg1, ModifySocialListOutboundMessage.SocialList.IGNORE, ModifySocialListOutboundMessage.SocialListAction.REMOVE));
+                break;
+            }
+        }
+    }
+
+    private static void addIgnore(long arg1) {
+        if(arg1 != 0L) {
+            if(MovedStatics.anInt1008 >= 100)
+                ChatBox.addChatMessage("", English.yourIgnoreListIsFull.toString(), 0);
+            else {
+                String class1 = TextUtils.formatName(TextUtils.longToName(arg1));
+                for(int i = 0; i < MovedStatics.anInt1008; i++) {
+                    if(arg1 == Player.ignores[i]) {
+                        ChatBox.addChatMessage("", class1 + English.suffixIsAlreadyOnYourIgnoreList, 0);
+                        return;
+                    }
+                }
+                for(int i = 0; Player.friendsCount > i; i++) {
+                    if(Class59.friends[i] == arg1) {
+                        ChatBox.addChatMessage("", English.pleaseRemove + class1 + English.fromYourFriendListFirst, 0);
+                        return;
+                    }
+                }
+                if(!class1.equals(Player.localPlayer.playerName)) {
+                    Player.ignores[MovedStatics.anInt1008++] = arg1;
+                    redrawTabArea = true;
+
+                    OutgoingPackets.sendMessage(
+                        new ModifySocialListOutboundMessage(arg1, ModifySocialListOutboundMessage.SocialList.IGNORE, ModifySocialListOutboundMessage.SocialListAction.ADD));
+                }
+            }
+        }
+    }
+
+    private static boolean method1027(int arg0) {
+        return arg0 >= 48 && arg0 <= 57;
+    }
+
+    public static GameInterface method878(GameInterface arg1) {
+        int i;
+        if(arg1.id < 0)
+            i = arg1.parentId >> 16;
+        else
+            i = arg1.id >> 16;
+        if(!decodeGameInterface(i))
+            return null;
+        if(arg1.anInt2738 >= 0)
+            return cachedInterfaces[i][0xffff & arg1.anInt2738];
+        GameInterface gameInterface = cachedInterfaces[i][(0x7fff99d9 & arg1.anInt2738) >> 15];
+        return gameInterface.children[arg1.anInt2738 & 0x7fff];
+    }
+
+    public static boolean checkForAlternateAction(GameInterface gameInterface) {
+        if(gameInterface.alternateOperators == null) {
+            return false;
+        }
+        for(int scriptIndex = 0; gameInterface.alternateOperators.length > scriptIndex; scriptIndex++) {
+            int i_10_ = ClientScript.parseClientScripts(scriptIndex, gameInterface);
+            int rhsValue = gameInterface.alternateRhs[scriptIndex]; // 1
+            if(gameInterface.alternateOperators[scriptIndex] == 2) {
+                if(rhsValue <= i_10_) {
+                    return false;
+                }
+            } else if(gameInterface.alternateOperators[scriptIndex] == 3) {
+                if(rhsValue >= i_10_) {
+                    return false;
+                }
+            } else if(gameInterface.alternateOperators[scriptIndex] == 4) {
+                if(rhsValue == i_10_) {
+                    return false;
+                }
+            } else if(i_10_ != rhsValue) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void swapItems(int arg0, boolean arg1, int arg2) {
@@ -2021,7 +2387,7 @@ public class GameInterface extends CachedNode {
     }
 
     public ImageRGB method638(int arg1) {
-        FramemapDefinition.aBoolean2177 = false;
+        aBoolean2177 = false;
         if(arg1 < 0 || imageY.length <= arg1) {
             return null;
         }
@@ -2033,9 +2399,9 @@ public class GameInterface extends CachedNode {
         if(class40_sub5_sub14_sub4 != null) {
             return class40_sub5_sub14_sub4;
         }
-        class40_sub5_sub14_sub4 = MovedStatics.method927(0, CacheArchive.gameImageCacheArchive, true, i);
+        class40_sub5_sub14_sub4 = MovedStatics.method927(0, CacheArchive.gameImageCacheArchive, i);
         if(class40_sub5_sub14_sub4 == null) {
-            FramemapDefinition.aBoolean2177 = true;
+            aBoolean2177 = true;
         } else {
             ImageRGB.imageRgbCache.put((long) i, class40_sub5_sub14_sub4);
         }
@@ -2043,7 +2409,7 @@ public class GameInterface extends CachedNode {
     }
 
     public ImageRGB getImageRgb(boolean useAlternateImage) {
-        FramemapDefinition.aBoolean2177 = false;
+        aBoolean2177 = false;
 
         int i;
         if(useAlternateImage) {
@@ -2076,9 +2442,9 @@ public class GameInterface extends CachedNode {
         if(imageRGB != null) {
             return imageRGB;
         }
-        imageRGB = MovedStatics.method927(0, CacheArchive.gameImageCacheArchive, true, i);
+        imageRGB = MovedStatics.method927(0, CacheArchive.gameImageCacheArchive, i);
         if(imageRGB == null) {
-            FramemapDefinition.aBoolean2177 = true;
+            aBoolean2177 = true;
         } else {
             ImageRGB.imageRgbCache.put((long) i, imageRGB);
         }
@@ -2185,7 +2551,7 @@ public class GameInterface extends CachedNode {
     }
 
     public Model getModelForInterface(AnimationSequence animationSequence, int animationFrame, boolean applyAlternateAction, PlayerAppearance playerAppearance) {
-        FramemapDefinition.aBoolean2177 = false;
+        aBoolean2177 = false;
         InterfaceModelType modelType;
         int modelId;
         if(applyAlternateAction) {
@@ -2207,7 +2573,7 @@ public class GameInterface extends CachedNode {
             if(modelType == InterfaceModelType.MODEL) {
                 model = Model.getModel(CacheArchive.modelCacheArchive, modelId);
                 if(model == null) {
-                    FramemapDefinition.aBoolean2177 = true;
+                    aBoolean2177 = true;
                     return null;
                 }
                 model.createBones();
@@ -2216,7 +2582,7 @@ public class GameInterface extends CachedNode {
             if(modelType == InterfaceModelType.NPC_CHATHEAD) {
                 model = ActorDefinition.getDefinition(modelId).getHeadModel();
                 if(model == null) {
-                    FramemapDefinition.aBoolean2177 = true;
+                    aBoolean2177 = true;
                     return null;
                 }
                 model.createBones();
@@ -2228,7 +2594,7 @@ public class GameInterface extends CachedNode {
                 }
                 model = playerAppearance.getStaticModel();
                 if(model == null) {
-                    FramemapDefinition.aBoolean2177 = true;
+                    aBoolean2177 = true;
                     return null;
                 }
                 model.createBones();
@@ -2238,7 +2604,7 @@ public class GameInterface extends CachedNode {
                 ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(modelId, 10);
                 model = class40_sub5_sub16.asGroundStack(false, 10);
                 if(model == null) {
-                    FramemapDefinition.aBoolean2177 = true;
+                    aBoolean2177 = true;
                     return null;
                 }
                 model.createBones();
@@ -2258,7 +2624,7 @@ public class GameInterface extends CachedNode {
     }
 
     public TypeFace getTypeFace() {
-        FramemapDefinition.aBoolean2177 = false;
+        aBoolean2177 = false;
         if(fontId == 65535) {
             return null;
         }
@@ -2271,7 +2637,7 @@ public class GameInterface extends CachedNode {
         typeFace = TypeFace.getFont(CacheArchive.gameImageCacheArchive, 0, fontId);
 
         if(typeFace == null) {
-            FramemapDefinition.aBoolean2177 = true;
+            aBoolean2177 = true;
         } else {
             TypeFace.typeFaceCache.put(fontId, typeFace);
         }

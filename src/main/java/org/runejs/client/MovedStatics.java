@@ -1,22 +1,19 @@
 package org.runejs.client;
 
+import org.runejs.client.cache.cs.ClientScript;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
-import org.runejs.client.chat.ChatColorEffect;
-import org.runejs.client.chat.ChatShapeEffect;
+import org.runejs.client.frame.Minimap;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
-import org.runejs.client.frame.console.Console;
 import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.message.outbound.chat.*;
-import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.node.NodeCache;
@@ -33,7 +30,6 @@ import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.net.ISAAC;
-import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.*;
 import org.runejs.client.scene.camera.CameraRotation;
@@ -43,15 +39,14 @@ import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.SignlinkNode;
-import org.runejs.client.util.TextUtils;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.media.renderable.actor.*;
-import org.runejs.client.scene.tile.*;
 import org.runejs.Configuration;
 
 import java.awt.*;
 import java.io.DataInputStream;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
 import java.util.Calendar;
 
@@ -60,26 +55,16 @@ public class MovedStatics {
     public static PacketBuffer packetBuffer = new PacketBuffer(5000);
     public static int[][] anIntArrayArray1435 = new int[104][104];
     public static ProducingGraphicsBuffer tabPieceUpperRight;
-    public static boolean aBoolean1444 = false;
     public static int[] anIntArray1445;
     public static ProducingGraphicsBuffer chatboxRight;
-    public static int crossY = 0;
     public static int anInt2280 = 0;
-    /**
-     * The fill colour of the scroll indicator chip.
-     */
-    public static int SCROLLBAR_COLOR_CHIP_FILL = 0x4D4233;
     public static int chatEffectsDisabled = 0;
     public static int anInt321 = 5063219;
-    public static volatile int eventMouseY = -1;
     public static boolean redrawChatbox = false;
-    public static ImageRGB[] mapDots;
     public static CacheArchive aCacheArchive_654;
-    public static int minimapState = 0;
     public static int[] anIntArray666 = new int[]{1, 0, -1, 0};
     public static int pulseCycle = 0;
     public static int anInt938 = 500;
-    public static int loginScreenFocus = 0;
     public static boolean aBoolean2083 = false;
     public static ProducingGraphicsBuffer tabImageProducer;
     /**
@@ -103,7 +88,6 @@ public class MovedStatics {
     public static int anInt199 = 0;
     public static volatile boolean aBoolean1575 = false;
     public static CacheArchive aCacheArchive_1577;
-    public static int[] blendedHueMultiplier;
     public static int anInt1586 = -1;
     public static boolean reportMutePlayer = false;
     public static int anInt1607 = 10;
@@ -114,10 +98,6 @@ public class MovedStatics {
      * for the furthest-left tab on the top row.
      */
     public static IndexedImage tabHighlightImageTopLeftEdge;
-    /**
-     * The darkened edge (bottom and right) color of the scroll indicator chip.
-     */
-    public static int SCROLLBAR_COLOR_CHIP_EDGE_DARK = 0x332D25;
     public static IndexedImage tabBottomBack;
     /**
      * Up/down arrow images for the scrollbar.
@@ -125,7 +105,6 @@ public class MovedStatics {
     public static IndexedImage[] scrollbarArrowImages;
     public static NodeCache modelCache = new NodeCache(260);
     public static boolean showChatPanelRedrawnText = false;
-    public static int[][][] tileCullingBitsets;
     public static int lastContinueTextWidgetId = -1;
     public static GameSocket gameServerSocket;
     public static int[][][] tile_height = new int[4][105][105];
@@ -151,7 +130,6 @@ public class MovedStatics {
     public static int[] anIntArray852;
     public static long aLong853;
     public static int anInt854 = -1;
-    public static IndexedImage minimapBackgroundImage;
     public static int anInt2621 = 0;
     public static volatile int eventClickY = 0;
     public static int anInt2628 = 0;
@@ -175,14 +153,75 @@ public class MovedStatics {
      */
     public static IndexedImage[] mapSceneIcons;
     public static int baseX;
-    public static byte[][][] tile_underlayids;
     public static NodeCache aClass9_998 = new NodeCache(100);
     public static int anInt1008 = 0;
     public static int[] anIntArray1013;
     public static IndexedImage[] moderatorIcon;
     public static int[] anIntArray2764 = new int[128];
-    public static ImageRGB minimapImage;
     public static int imageMaxHeight;
+    public static IndexedImage inventoryBackgroundImage;
+    public static int hoveredWidgetId = -1;
+    public static int[] anIntArray1564 = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, 85, 80, 84, -1, 91, -1, -1, -1, 81, 82, 86, -1, -1, -1, -1, -1, -1, -1, -1, 0, -1, -1, -1, -1, 83, 104, 105, 103, 102, 96, 98, 97, 99, -1, -1, -1, -1, -1, -1, -1, 25, 16, 17, 18, 19, 20, 21, 22, 23, 24, -1, -1, -1, -1, -1, -1, -1, 48, 68, 66, 50, 34, 51, 52, 53, 39, 54, 55, 56, 70, 69, 40, 41, 32, 35, 49, 36, 38, 67, 33, 65, 37, 64, -1, -1, -1, -1, -1, 228, 231, 227, 233, 224, 219, 225, 230, 226, 232, 89, 87, -1, 88, 229, 90, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, -1, -1, -1, 101, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+    public static ProducingGraphicsBuffer chatModes;
+    public static int anInt1545 = 0;
+    public static int[] sidebarOffsets;
+    public static int menuActionRow = 0;
+    /**
+     * Draw height of the icon in 3d positions.
+     */
+    public static int hintIconPosZ = 0;
+    public static int anInt2183 = 0;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2524;
+    public static boolean membersServer;
+    public static HuffmanEncoding aHuffmanEncoding_2590;
+    public static int anInt2598 = 0;
+    public static LinkedList aLinkedList_2604 = new LinkedList();
+    public static int anInt2613 = 0;
+    public static int height;
+    public static int anInt2798 = 0;
+    public static int selectedMask;
+    public static int imageMaxWidth;
+    /**
+     * Something to do with widgets.
+     */
+    public static int anInt2850 = -1;
+    /**
+     * Something to do with key presses.
+     */
+    public static int anInt2854;
+    public static int placementY;
+    public static int crossIndex = 0;
+    /**
+     * Related to login errors
+     */
+    public static int anInt2321 = 0;
+    public static byte[][][] tile_flags = new byte[4][104][104];
+    public static int hoveredWidgetChildId = -1;
+    public static int[] directions = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
+    public static int menuScreenArea;
+    public static ProducingGraphicsBuffer framePieceTop;
+    public static int[] anIntArray3253;
+    public static int[] anIntArray3255;
+    public static int[] anIntArray3248;
+    public static TypeFace fontNormal;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for one of the tabs on the right-hand side of the top,
+     * but not the furthest-right (see `tabHighlightImageTopRightEdge` for that).
+     */
+    public static IndexedImage tabHighlightImageTopRight;
+    public static int durationHoveredOverWidget = 0;
+    public static IndexedImage bottomChatBack;
+    public static int[] anIntArray1347;
+    public static LinkedList aLinkedList_1332 = new LinkedList();
+    public static int carryWeight = 0;
+    public static int anInt1214 = 0;
+    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
+    public static SignlinkNode gameServerSignlinkNode;
+    public static int anInt614 = -1;
+    public static ImageRGB aClass40_Sub5_Sub14_Sub4_2043;
+    public static int activeInterfaceType = 0;
+    public static LinkedList[][][] groundItems = new LinkedList[4][104][104];
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -191,19 +230,19 @@ public class MovedStatics {
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631 = null;
             Class51.aProducingGraphicsBuffer_1206 = null;
             Landscape.anIntArray1168 = null;
-            SpotAnim.anIntArray3255 = null;
+            anIntArray3255 = null;
             Class59.imgLoginScreenButton = null;
             anIntArray1445 = null;
             Class40_Sub5_Sub15.loginScreenBox = null;
             Renderable.anIntArray2865 = null;
             MovedStatics.flameLeftBackground = null;
             Class39.aProducingGraphicsBuffer_907 = null;
-            GameObjectDefinition.aProducingGraphicsBuffer_2524 = null;
+            aProducingGraphicsBuffer_2524 = null;
             Class39.aClass40_Sub5_Sub14_Sub4_918 = null;
             MovedStatics.aClass40_Sub5_Sub14_Sub2Array535 = null;
-            SpotAnim.anIntArray3248 = null;
+            anIntArray3248 = null;
             MovedStatics.loginBoxGraphics = null;
-            SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = null;
+            aClass40_Sub5_Sub14_Sub4_2043 = null;
             anIntArray178 = null;
             KeyFocusListener.aProducingGraphicsBuffer_1285 = null;
             Class17.aProducingGraphicsBuffer_463 = null;
@@ -239,11 +278,11 @@ public class MovedStatics {
                     if ((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(username))) {
                         int i_3_ = 329 + -(13 * i);
                         i++;
-                        if (Class13.mouseX > 4 && i_3_ + -10 < Landscape.mouseY + -4 && -4 + Landscape.mouseY <= i_3_ + 3) {
-                            int i_4_ = 25 + WallDecoration.fontNormal.getStringWidth(English.from + Native.prefixColon + username + ChatBox.chatMessages[i_1_]);
+                        if (MouseHandler.mouseX > 4 && i_3_ + -10 < MouseHandler.mouseY + -4 && -4 + MouseHandler.mouseY <= i_3_ + 3) {
+                            int i_4_ = 25 + fontNormal.getStringWidth(English.from + Native.prefixColon + username + ChatBox.chatMessages[i_1_]);
                             if (i_4_ > 450)
                                 i_4_ = 450;
-                            if (Class13.mouseX < 4 + i_4_) {
+                            if (MouseHandler.mouseX < 4 + i_4_) {
                                 int actionRowOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
                                 if (InteractiveObject.playerRights >= 1) {
                                     addActionRow(English.reportAbuse, 0, 0, 0, actionRowOffset + ActionRowType.REPORT_ABUSE.getId(), Native.white + username);
@@ -265,7 +304,7 @@ public class MovedStatics {
     public static void method996() {
         tabImageProducer.prepareRasterizer();
         if (ScreenController.frameMode == ScreenMode.FIXED) {
-            FloorDecoration.inventoryBackgroundImage.drawImage(0, 0);
+            inventoryBackgroundImage.drawImage(0, 0);
 
         } else {
             int currentX = 0;
@@ -282,42 +321,42 @@ public class MovedStatics {
         }
 
 
-        ActorDefinition.sidebarOffsets = Rasterizer3D.setLineOffsets(ActorDefinition.sidebarOffsets);
+        sidebarOffsets = Rasterizer3D.setLineOffsets(sidebarOffsets);
     }
 
     public static void method997() {
         // (Jameskmonger) I think this is something to do with keycode remapping, though Im not sure
         if (Signlink.javaVendor.toLowerCase().indexOf("microsoft") == -1) {
-            HuffmanEncoding.anIntArray1564[44] = 71;
-            HuffmanEncoding.anIntArray1564[45] = 26;
-            HuffmanEncoding.anIntArray1564[46] = 72;
-            HuffmanEncoding.anIntArray1564[47] = 73;
-            HuffmanEncoding.anIntArray1564[59] = 57;
-            HuffmanEncoding.anIntArray1564[61] = 27;
-            HuffmanEncoding.anIntArray1564[91] = 42;
-            HuffmanEncoding.anIntArray1564[92] = 74;
-            HuffmanEncoding.anIntArray1564[93] = 43;
+            anIntArray1564[44] = 71;
+            anIntArray1564[45] = 26;
+            anIntArray1564[46] = 72;
+            anIntArray1564[47] = 73;
+            anIntArray1564[59] = 57;
+            anIntArray1564[61] = 27;
+            anIntArray1564[91] = 42;
+            anIntArray1564[92] = 74;
+            anIntArray1564[93] = 43;
             if (Signlink.aMethod729 == null) {
-                HuffmanEncoding.anIntArray1564[192] = 58;
-                HuffmanEncoding.anIntArray1564[222] = 59;
+                anIntArray1564[192] = 58;
+                anIntArray1564[222] = 59;
             } else {
-                HuffmanEncoding.anIntArray1564[192] = 28;
-                HuffmanEncoding.anIntArray1564[222] = 58;
-                HuffmanEncoding.anIntArray1564[520] = 59;
+                anIntArray1564[192] = 28;
+                anIntArray1564[222] = 58;
+                anIntArray1564[520] = 59;
             }
         } else {
-            HuffmanEncoding.anIntArray1564[186] = 57;
-            HuffmanEncoding.anIntArray1564[187] = 27;
-            HuffmanEncoding.anIntArray1564[188] = 71;
-            HuffmanEncoding.anIntArray1564[189] = 26;
-            HuffmanEncoding.anIntArray1564[190] = 72;
-            HuffmanEncoding.anIntArray1564[191] = 73;
-            HuffmanEncoding.anIntArray1564[192] = 58;
-            HuffmanEncoding.anIntArray1564[219] = 42;
-            HuffmanEncoding.anIntArray1564[220] = 74;
-            HuffmanEncoding.anIntArray1564[221] = 43;
-            HuffmanEncoding.anIntArray1564[222] = 59;
-            HuffmanEncoding.anIntArray1564[223] = 28;
+            anIntArray1564[186] = 57;
+            anIntArray1564[187] = 27;
+            anIntArray1564[188] = 71;
+            anIntArray1564[189] = 26;
+            anIntArray1564[190] = 72;
+            anIntArray1564[191] = 73;
+            anIntArray1564[192] = 58;
+            anIntArray1564[219] = 42;
+            anIntArray1564[220] = 74;
+            anIntArray1564[221] = 43;
+            anIntArray1564[222] = 59;
+            anIntArray1564[223] = 28;
         }
 
     }
@@ -326,7 +365,7 @@ public class MovedStatics {
         for (int y = offsetY; y <= offsetY + sizeY; y++) {
             for (int x = offsetX; sizeX + offsetX >= x; x++) {
                 if (x >= 0 && x < 104 && y >= 0 && y < 104) {
-                    InteractiveObject.tileShadowIntensity[0][x][y] = (byte) 127;
+                    Landscape.tileShadowIntensity[0][x][y] = (byte) 127;
                     if (offsetX == x && x > 0)
                         tile_height[0][x][y] = tile_height[0][-1 + x][y];
                     if (offsetX + sizeX == x && x < 103)
@@ -341,7 +380,7 @@ public class MovedStatics {
     }
 
     public static void renderSpotAnims() {
-        for (SpotAnim spotAnim = (SpotAnim) Class57.aLinkedList_1332.peekFirst(); spotAnim != null; spotAnim = (SpotAnim) Class57.aLinkedList_1332.pollFirst()) {
+        for (SpotAnim spotAnim = (SpotAnim) aLinkedList_1332.peekFirst(); spotAnim != null; spotAnim = (SpotAnim) aLinkedList_1332.pollFirst()) {
             if (Player.worldLevel == spotAnim.plane && !spotAnim.animationFinished) {
                 if (pulseCycle >= spotAnim.startCycle) {
                     spotAnim.method834(anInt199);
@@ -366,7 +405,7 @@ public class MovedStatics {
         Point3d cameraPos = Main.cutsceneCamera.getPosition();
 
         int i = Scene.getFloorDrawHeight(Player.worldLevel, cameraPos.x, cameraPos.y);
-        if (i + -cameraPos.z < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][cameraPos.x >> 7][cameraPos.y >> 7] & 0x4) != 0)
+        if (i + -cameraPos.z < 800 && (tile_flags[Player.worldLevel][cameraPos.x >> 7][cameraPos.y >> 7] & 0x4) != 0)
             return Player.worldLevel;
         return 3;
     }
@@ -413,9 +452,9 @@ public class MovedStatics {
 
     public static IndexedImage method538() {
         IndexedImage class40_sub5_sub14_sub2 = new IndexedImage();
-        class40_sub5_sub14_sub2.maxWidth = ItemDefinition.imageMaxWidth;
+        class40_sub5_sub14_sub2.maxWidth = imageMaxWidth;
         class40_sub5_sub14_sub2.maxHeight = imageMaxHeight;
-        class40_sub5_sub14_sub2.xDrawOffset = Class57.anIntArray1347[0];
+        class40_sub5_sub14_sub2.xDrawOffset = anIntArray1347[0];
         class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[0];
         class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[0];
         class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[0];
@@ -512,21 +551,6 @@ public class MovedStatics {
         return allOptions;
     }
 
-    public static void method973() {
-        blendedHueMultiplier = null;
-        SceneTile.blendedLightness = null;
-        FloorDecoration.blendDirectionTracker = null;
-        tileCullingBitsets = null;
-        AnimationSequence.tileLightIntensity = null;
-        Class35.tile_overlay_rotation = null;
-        Class59.blendedSaturation = null;
-        InteractiveObject.tileShadowIntensity = null;
-        OverlayDefinition.tile_underlay_path = null;
-        MouseHandler.tile_overlayids = null;
-        tile_underlayids = null;
-        SpotAnim.blendedHue = null;
-    }
-
     public static void printException(String arg0, Throwable exception) {
             try {
                 String string = "";
@@ -561,14 +585,14 @@ public class MovedStatics {
         GroundItemTile.aByteArrayArray1370 = new byte[anInt2581][];
         Class17.anIntArray456 = new int[anInt2581];
         Npc.anIntArray3312 = new int[anInt2581];
-        Class57.anIntArray1347 = new int[anInt2581];
+        anIntArray1347 = new int[anInt2581];
 
         buffer.currentPosition = data.length + -7 + -(anInt2581 * 8);
-        ItemDefinition.imageMaxWidth = buffer.getUnsignedShortBE();
+        imageMaxWidth = buffer.getUnsignedShortBE();
         imageMaxHeight = buffer.getUnsignedShortBE();
         int i = 1 + (buffer.getUnsignedByte() & 0xff);
         for (int i_34_ = 0; i_34_ < anInt2581; i_34_++)
-            Class57.anIntArray1347[i_34_] = buffer.getUnsignedShortBE();
+            anIntArray1347[i_34_] = buffer.getUnsignedShortBE();
         for (int i_35_ = arg1; i_35_ < anInt2581; i_35_++)
             Actor.anIntArray3111[i_35_] = buffer.getUnsignedShortBE();
         for (int i_36_ = 0; i_36_ < anInt2581; i_36_++)
@@ -612,77 +636,6 @@ public class MovedStatics {
         return (0xff & arg0 >> 24) + Native.period + ((arg0 & 0xffca88) >> 16) + Native.period + ((0xfff8 & arg0) >> 8) + Native.period + (0xff & arg0);
     }
 
-    public static void method836(int arg0) {
-        int i = 256;
-        for (int i_0_ = 10; i_0_ < 117; i_0_++) {
-            int i_1_ = (int) (Math.random() * 100.0);
-            if (i_1_ < 50)
-                anIntArray178[(i - 2 << 7) + i_0_] = 255;
-        }
-        for (int i_2_ = 0; i_2_ < 100; i_2_++) {
-            int i_3_ = (int) (Math.random() * 124.0) + 2;
-            int i_4_ = 128 + (int) (Math.random() * 128.0);
-            int i_5_ = i_3_ + (i_4_ << 7);
-            anIntArray178[i_5_] = 192;
-        }
-        for (int i_6_ = 1; i_6_ < i - 1; i_6_++) {
-            for (int i_7_ = 1; i_7_ < 127; i_7_++) {
-                int i_8_ = i_7_ + (i_6_ << 7);
-                SpotAnim.anIntArray3255[i_8_] = (anIntArray178[i_8_ + 1] + anIntArray178[i_8_ - 1] - (-anIntArray178[-128 + i_8_] - anIntArray178[128 + i_8_])) / 4;
-            }
-        }
-        RSRuntimeException.anInt1641 += 128;
-        if (RSRuntimeException.anInt1641 > Landscape.anIntArray1168.length) {
-            RSRuntimeException.anInt1641 -= Landscape.anIntArray1168.length;
-            int i_9_ = (int) (12.0 * Math.random());
-            FramemapDefinition.method879(MovedStatics.aClass40_Sub5_Sub14_Sub2Array535[i_9_]);
-        }
-        for (int i_10_ = 1; i_10_ < -1 + i; i_10_++) {
-            for (int i_11_ = 1; i_11_ < 127; i_11_++) {
-                int i_12_ = i_11_ + (i_10_ << 7);
-                int i_13_ = -(Landscape.anIntArray1168[i_12_ + RSRuntimeException.anInt1641 & -1 + Landscape.anIntArray1168.length] / 5) + SpotAnim.anIntArray3255[i_12_ + 128];
-                if (i_13_ < 0)
-                    i_13_ = 0;
-                anIntArray178[i_12_] = i_13_;
-            }
-        }
-        for (int i_14_ = 0; i_14_ < i + -1; i_14_++)
-            Class17.anIntArray466[i_14_] = Class17.anIntArray466[i_14_ + 1];
-        Class17.anIntArray466[i - arg0] = (int) (16.0 * Math.sin((double) pulseCycle / 14.0) + 14.0 * Math.sin((double) pulseCycle / 15.0) + 12.0 * Math.sin((double) pulseCycle / 16.0));
-        if (MovedStatics.anInt2452 > 0)
-            MovedStatics.anInt2452 -= 4;
-        if (IdentityKit.anInt2613 > 0)
-            IdentityKit.anInt2613 -= 4;
-        if (MovedStatics.anInt2452 == 0 && IdentityKit.anInt2613 == 0) {
-            int i_15_ = (int) (2000.0 * Math.random());
-            if (i_15_ == 0)
-                MovedStatics.anInt2452 = 1024;
-            if (i_15_ == 1)
-                IdentityKit.anInt2613 = 1024;
-        }
-    }
-
-    public static void method838(long arg1) {
-        for (int i = 0; i < anInt1008; i++) {
-            if (Player.ignores[i] == arg1) {
-                GameInterface.redrawTabArea = true;
-                anInt1008--;
-                for (int i_16_ = i; anInt1008 > i_16_; i_16_++)
-                    Player.ignores[i_16_] = Player.ignores[1 + i_16_];
-
-                OutgoingPackets.sendMessage(
-                    new ModifySocialListOutboundMessage(arg1, ModifySocialListOutboundMessage.SocialList.IGNORE, ModifySocialListOutboundMessage.SocialListAction.REMOVE));
-                break;
-            }
-        }
-    }
-
-    public static ImageRGB[] method526(CacheArchive arg0, String arg2, String arg3) {
-        int i = arg0.getHash(arg2);
-        int i_4_ = arg0.method179(i, arg3);
-        return GenericTile.method944((byte) -3, i, arg0, i_4_);
-    }
-
     public static void method527(int currentTabId, int[] tabWidgetIds, boolean arg3, int arg4) {
         InteractiveObject.tabTop.prepareRasterizer();
         Buffer.tabTopBack.drawImage(0, 0);
@@ -697,9 +650,9 @@ public class MovedStatics {
                 if (currentTabId == 3)
                     Class35.tabHighlightImageTopMiddle.drawImage(110, 8);
                 if (currentTabId == 4)
-                    WallDecoration.tabHighlightImageTopRight.drawImage(153, 8);
+                    tabHighlightImageTopRight.drawImage(153, 8);
                 if (currentTabId == 5)
-                    WallDecoration.tabHighlightImageTopRight.drawImage(181, 8);
+                    tabHighlightImageTopRight.drawImage(181, 8);
                 if (currentTabId == 6)
                     tabHighlightImageTopRightEdge.drawImage(209, 9);
             }
@@ -765,9 +718,9 @@ public class MovedStatics {
 
     public static boolean method416() {
         synchronized (Class59.keyFocusListener) {
-            if (Class59.anInt1389 == GenericTile.anInt1214)
+            if (Class59.anInt1389 == anInt1214)
                 return false;
-            ItemDefinition.anInt2854 = anIntArray2113[Class59.anInt1389];
+            anInt2854 = anIntArray2113[Class59.anInt1389];
             Class59.anInt1388 = anIntArray2764[Class59.anInt1389];
             Class59.anInt1389 = Class59.anInt1389 + 1 & 0x7f;
             return true;
@@ -795,38 +748,6 @@ public class MovedStatics {
         return (0xff80 & hsl) + lightness;
     }
 
-    public static void addFriend(long name) {
-        if(name != 0L) {
-            if(Player.friendsCount >= 100 && Class44.anInt1049 != 1 || Player.friendsCount >= 200) {
-                ChatBox.addChatMessage("", English.friendsListIsFull, 0);
-            } else {
-                String username = TextUtils.formatName(TextUtils.longToName(name));
-                for(int i = 0; Player.friendsCount > i; i++) {
-                    if(Class59.friends[i] == name) {
-                        ChatBox.addChatMessage("", username + English.isAlreadyOnYourFriendList, 0);
-                        return;
-                    }
-                }
-                for(int i = 0; anInt1008 > i; i++) {
-                    if(Player.ignores[i] == name) {
-                        ChatBox.addChatMessage("", English.pleaseRemove + username + English.suffixFromYourIgnoreListFirst, 0);
-                        return;
-                    }
-                }
-                if(!username.equals(Player.localPlayer.playerName)) {
-                    Player.friendUsernames[Player.friendsCount] = username;
-                    Class59.friends[Player.friendsCount] = name;
-                    Player.friendWorlds[Player.friendsCount] = 0;
-                    Player.friendsCount++;
-                    GameInterface.redrawTabArea = true;
-
-                    OutgoingPackets.sendMessage(
-                        new ModifySocialListOutboundMessage(name, ModifySocialListOutboundMessage.SocialList.FRIEND, ModifySocialListOutboundMessage.SocialListAction.ADD));
-                }
-            }
-        }
-    }
-
     public static void method1013() {
         int lasthash = -1;
         if (MovedStatics.itemSelected == 0 && Main.widgetSelected == 0) {
@@ -835,7 +756,7 @@ public class MovedStatics {
                 tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
             }
 
-            addActionRow(English.walkHere, 0, Class13.mouseX, Landscape.mouseY, ActionRowType.WALK_HERE.getId(), tileCoords);
+            addActionRow(English.walkHere, 0, MouseHandler.mouseX, MouseHandler.mouseY, ActionRowType.WALK_HERE.getId(), tileCoords);
         }
 
         for (int idx = 0; Model.resourceCount > idx; idx++) {
@@ -897,7 +818,7 @@ public class MovedStatics {
 
                         }
                         addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, ActionRowType.EXAMINE_OBJECT.getId(), examineText.toString());
-                    } else if ((ItemDefinition.selectedMask & 0x4) == 4) {
+                    } else if ((selectedMask & 0x4) == 4) {
                         addActionRow(Native.selectedSpellVerb, hash, x, y, ActionRowType.CAST_MAGIC_ON_OBJECT.getId(), Native.selectedSpellName + Native.toCyan + gameObjectDefinition.name);
                     }
                 }
@@ -907,7 +828,7 @@ public class MovedStatics {
                         for (int i_9_ = 0; Player.npcCount > i_9_; i_9_++) {
                             Npc npc1 = Player.npcs[Player.npcIds[i_9_]];
                             if (npc1 != null && npc1 != npc && npc1.actorDefinition.boundaryDimension == 1 && npc1.worldX == npc.worldX && npc1.worldY == npc.worldY)
-                                HuffmanEncoding.processNpcMenuOptions(npc1.actorDefinition, x, y, Player.npcIds[i_9_]);
+                                processNpcMenuOptions(npc1.actorDefinition, x, y, Player.npcIds[i_9_]);
                         }
                         for (int i_11_ = 0; i_11_ < Player.localPlayerCount; i_11_++) {
                             Player player = Player.trackedPlayers[Player.trackedPlayerIndices[i_11_]];
@@ -915,7 +836,7 @@ public class MovedStatics {
                                 Player.processPlayerMenuOptions(player, x, y, Player.trackedPlayerIndices[i_11_]);
                         }
                     }
-                    HuffmanEncoding.processNpcMenuOptions(npc.actorDefinition, x, y, index);
+                    processNpcMenuOptions(npc.actorDefinition, x, y, index);
                 }
                 if (type == 0) {
                     Player player1 = Player.trackedPlayers[index];
@@ -923,7 +844,7 @@ public class MovedStatics {
                         for (int i_12_ = 0; i_12_ < Player.npcCount; i_12_++) {
                             Npc npc = Player.npcs[Player.npcIds[i_12_]];
                             if (npc != null && npc.actorDefinition.boundaryDimension == 1 && npc.worldX == player1.worldX && npc.worldY == player1.worldY)
-                                HuffmanEncoding.processNpcMenuOptions(npc.actorDefinition, x, y, Player.npcIds[i_12_]);
+                                processNpcMenuOptions(npc.actorDefinition, x, y, Player.npcIds[i_12_]);
                         }
                         for (int i_13_ = 0; i_13_ < Player.localPlayerCount; i_13_++) {
                             Player player = Player.trackedPlayers[Player.trackedPlayerIndices[i_13_]];
@@ -934,7 +855,7 @@ public class MovedStatics {
                     Player.processPlayerMenuOptions(player1, x, y, index);
                 }
                 if (type == 3) {
-                    LinkedList itemList = Wall.groundItems[Player.worldLevel][x][y];
+                    LinkedList itemList = groundItems[Player.worldLevel][x][y];
                     if (itemList != null) {
                         for (Item item = (Item) itemList.peekLast(); item != null; item = (Item) itemList.pollLast()) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
@@ -966,7 +887,7 @@ public class MovedStatics {
                                     }
                                 }
                                 addActionRow(English.examine, item.itemId, x, y, ActionRowType.EXAMINE_ITEM.getId(), Native.lightRed + itemDefinition.name);
-                            } else if ((0x1 & ItemDefinition.selectedMask) == 1) {
+                            } else if ((0x1 & selectedMask) == 1) {
                                 addActionRow(Native.selectedSpellVerb, item.itemId, x, y, ActionRowType.CAST_MAGIC_ON_WORLD_ITEM.getId(), Native.selectedSpellName + Native.toLightRed + itemDefinition.name);
                             }
                         }
@@ -977,43 +898,9 @@ public class MovedStatics {
 
     }
 
-    public static void method1015() {
-        synchronized (GameObject.frame) {
-            MouseHandler.currentMouseButtonPressed = MouseHandler.mouseButtonPressed;
-            Class13.mouseX = Class12.eventMouseX;
-            Landscape.mouseY = eventMouseY;
-            MouseHandler.clickType = MouseHandler.eventMouseButtonPressed;
-            Class57.clickX = Class55.eventClickX;
-            RSString.clickY = eventClickY;
-            GameObjectDefinition.aLong2561 = OverlayDefinition.lastClick;
-            MouseHandler.eventMouseButtonPressed = 0;
-        }
-    }
-
     public static int method614(int arg1, int arg2, int arg3) {
         int i_7_ = 256 + -arg3;
         return (arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) + (~0xff00ff & (0xff00ff & arg1) * i_7_ + arg3 * (0xff00ff & arg2)) >> 8;
-    }
-
-    public static void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
-        int len = mapX * mapX + mapY * mapY;
-        if (len > 4225 && len < 90000) {
-            int theta = 0x7ff & Main.playerCamera.getYaw();
-            int sine = Model.SINE[theta];
-            int cosine = Model.COSINE[theta];
-            int zoom = 0;
-
-            sine = sine * 256 / (zoom + 256);
-            cosine = cosine * 256 / (zoom + 256);
-            int y = cosine * mapY - sine * mapX >> 16;
-            int x = mapX * cosine + mapY * sine >> 16;
-            double angle = Math.atan2(x, y);
-            int drawX = (int) (Math.sin(angle) * 63.0);
-            int drawY = (int) (57.0 * Math.cos(angle));
-            minimapEdge.drawRotated(-10 + 94 + drawX + 4, 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
-        } else {
-            SceneTile.drawOnMinimap(mapY, mapX, sprite);
-        }
     }
 
     /**
@@ -1033,8 +920,8 @@ public class MovedStatics {
                 CollisionMap.method144(12433);
             if (statusCode == 20 || statusCode == 40) {
                 Main.anInt1756 = 0;
-                OverlayDefinition.anInt2321 = 0;
-                Class40_Sub3.loginStatus = 0;
+                anInt2321 = 0;
+                Main.loginStatus = 0;
             }
             if (statusCode != 20 && statusCode != 40 && PlayerAppearance.lostConnectionSocket != null) {
                 PlayerAppearance.lostConnectionSocket.kill();
@@ -1045,27 +932,27 @@ public class MovedStatics {
                 Rasterizer.resetPixels();
             }
             if (Class51.gameStatusCode == 25) {
-                Class37.anInt874 = 0;
+                Main.anInt874 = 0;
                 PacketBuffer.anInt2231 = 1;
-                IdentityKit.anInt2591 = 0;
+                Main.anInt2591 = 0;
                 GameObject.anInt3048 = 1;
                 ProducingGraphicsBuffer.anInt1634 = 0;
             }
             if (statusCode == 0 || statusCode == 35) {
-                FloorDecoration.method344(-40);
+                method344(-40);
                 method440();
                 if (ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 == null)
                     ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = createGraphicsBuffer(765, 503, MouseHandler.gameCanvas);
             }
             if (statusCode == 5 || statusCode == 10 || statusCode == 20) {
                 ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
-                FloorDecoration.method344(-69);
-                Item.renderLoginScreen(MouseHandler.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
+                method344(-69);
+                Class60.renderLoginScreen(MouseHandler.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
             }
             if (statusCode == 25 || statusCode == 30 || statusCode == 40) {
                 ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
                 method440();
-                Projectile.method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
+                method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
             }
             Class51.gameStatusCode = statusCode;
             clearScreen = true;
@@ -1073,16 +960,16 @@ public class MovedStatics {
     }
 
     public static void addActionRow(String string, int menuAction, int firstMenuOperand, int secondMenuOperand, int actionType, String arg6) {
-        if (ActorDefinition.menuActionRow < 500) {
+        if (menuActionRow < 500) {
             if (arg6.length() <= 0)
-                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string;
+                Landscape.menuActionTexts[menuActionRow] = string;
             else
-                Landscape.menuActionTexts[ActorDefinition.menuActionRow] = string + Native.whitespace + arg6;
-            menuActionTypes[ActorDefinition.menuActionRow] = actionType;
-            Class33.selectedMenuActions[ActorDefinition.menuActionRow] = menuAction;
-            InteractiveObject.firstMenuOperand[ActorDefinition.menuActionRow] = firstMenuOperand;
-            Class59.secondMenuOperand[ActorDefinition.menuActionRow] = secondMenuOperand;
-            ActorDefinition.menuActionRow++;
+                Landscape.menuActionTexts[menuActionRow] = string + Native.whitespace + arg6;
+            menuActionTypes[menuActionRow] = actionType;
+            Class33.selectedMenuActions[menuActionRow] = menuAction;
+            InteractiveObject.firstMenuOperand[menuActionRow] = firstMenuOperand;
+            Class59.secondMenuOperand[menuActionRow] = secondMenuOperand;
+            menuActionRow++;
         }
     }
 
@@ -1095,7 +982,7 @@ public class MovedStatics {
 
 
     public static void initializeItemDefinitionCache(CacheArchive definitionCache, boolean arg1, CacheArchive arg2) {
-        IdentityKit.membersServer = arg1;
+        membersServer = arg1;
         MovedStatics.aCacheArchive_284 = arg2;
         Class26.aCacheArchive_632 = definitionCache;
         ItemDefinition.count = Class26.aCacheArchive_632.fileLength(10);
@@ -1136,14 +1023,14 @@ public class MovedStatics {
                 class40_sub3.anInt2031--;
             if(class40_sub3.anInt2031 == 0) {
                 if(class40_sub3.anInt2028 < 0 || method459(class40_sub3.anInt2036, class40_sub3.anInt2028)) {
-                    GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039, class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
+                    method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039, class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
                     class40_sub3.unlink();
                 }
             } else {
                 if(class40_sub3.anInt2033 > 0)
                     class40_sub3.anInt2033--;
                 if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 && class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 && (class40_sub3.anInt2017 < 0 || method459(class40_sub3.anInt2030, class40_sub3.anInt2017))) {
-                    GenericTile.method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
+                    method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
                     class40_sub3.anInt2033 = -1;
                     if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2028 == -1)
                         class40_sub3.unlink();
@@ -1172,63 +1059,13 @@ public class MovedStatics {
 	    processGameStatus(10);
 	}
 
-	public static ImageRGB method927(int arg0, CacheArchive arg1, boolean arg2, int arg3) {
+	public static ImageRGB method927(int arg0, CacheArchive arg1, int arg3) {
 	    if(!ImageRGB.spriteExists(arg0, arg3, arg1))
 	        return null;
-	    if(!arg2)
-	        MovedStatics.method922(3, -92, null, -119, -82, -28, -32);
 	    return ActorDefinition.method578();
 	}
 
-	public static void method922(int x, int arg1, Buffer fileData, int y, int regionY, int regionX, int level) {
-	    if(x >= 0 && x < 104 && y >= 0 && y < 104) {
-	        OverlayDefinition.tile_flags[level][x][y] = (byte) 0;
-	        for(; ; ) {
-	            int opcode = fileData.getUnsignedByte();
-	            if(opcode == 0) {
-	                if(level == 0) {
-                        tile_height[0][x][y] = -method888(regionX + x + 932731, regionY + 556238 + y) * 8;
-                    } else {
-                        tile_height[level][x][y] = -240 + tile_height[level + -1][x][y];
-                    }
-
-	                break;
-	            }
-	            if(opcode == 1) {
-	                int tileHeight = fileData.getUnsignedByte();
-	                if(tileHeight == 1)
-	                    tileHeight = 0;
-	                if(level != 0)
-	                    tile_height[level][x][y] = tile_height[-1 + level][x][y] + -(8 * tileHeight);
-	                else
-	                    tile_height[0][x][y] = 8 * -tileHeight;
-	                break;
-	            }
-	            if(opcode <= 49) {
-	                MouseHandler.tile_overlayids[level][x][y] = fileData.getByte();
-	                OverlayDefinition.tile_underlay_path[level][x][y] = (byte) ((opcode + -2) / 4);
-	                Class35.tile_overlay_rotation[level][x][y] = (byte) BitUtils.bitWiseAND(arg1 + -2 + opcode, 3);
-	            } else if(opcode <= 81)
-	                OverlayDefinition.tile_flags[level][x][y] = (byte) (-49 + opcode);
-	            else
-	                tile_underlayids[level][x][y] = (byte) (-81 + opcode);
-	        }
-	    } else {
-	        for(; ; ) {
-	            int i = fileData.getUnsignedByte();
-	            if(i == 0)
-	                break;
-	            if(i == 1) {
-	                fileData.getUnsignedByte();
-	                break;
-	            }
-	            if(i <= 49)
-	                fileData.getUnsignedByte();
-	        }
-	    }
-	}
-
-	public static void handleInterfaceActions(GameInterfaceArea area, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, GameInterface[] gameInterfaces, int parentId, int scrollPosition, int scrollWidth) {
+    public static void handleInterfaceActions(GameInterfaceArea area, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, GameInterface[] gameInterfaces, int parentId, int scrollPosition, int scrollWidth) {
         // Only try to handle actions if mouse is within this widget's boundaries
 	    if(minX <= mouseX && mouseY >= minY && maxX > mouseX && maxY > mouseY) {
 	        for(int i = 0; gameInterfaces.length > i; i++) {
@@ -1240,14 +1077,14 @@ public class MovedStatics {
 	                    Item.anInt3065 = i;
 	                if((gameInterface.hoveredSiblingId >= 0 || gameInterface.hoveredTextColor != 0) && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_) {
 	                    if(gameInterface.hoveredSiblingId >= 0)
-	                        OverlayDefinition.hoveredWidgetChildId = gameInterface.hoveredSiblingId;
+	                        hoveredWidgetChildId = gameInterface.hoveredSiblingId;
 	                    else
-	                        OverlayDefinition.hoveredWidgetChildId = i;
+	                        hoveredWidgetChildId = i;
 	                }
 	                if(gameInterface.type == GameInterfaceType.LAYER) {
                         int areaId = area.getId();
 
-	                    if(!gameInterface.isHidden || Class29.isHovering(areaId, i) || PacketBuffer.hiddenButtonTest) {
+	                    if(!gameInterface.isHidden || GameInterface.isHovering(areaId, i) || PacketBuffer.hiddenButtonTest) {
 	                        handleInterfaceActions(area, mouseX, mouseY, i_2_, i_1_, i_2_ + gameInterface.originalWidth, i_1_ + gameInterface.originalHeight, gameInterfaces, i, gameInterface.scrollPosition, gameInterface.scrollWidth);
 	                        if(gameInterface.children != null)
 	                            handleInterfaceActions(area, mouseX, mouseY, i_2_, i_1_, gameInterface.originalWidth + i_2_, i_1_ + gameInterface.originalHeight, gameInterface.children, gameInterface.id, gameInterface.scrollPosition, gameInterface.scrollWidth);
@@ -1256,7 +1093,7 @@ public class MovedStatics {
 	                    }
 	                } else {
 	                    if (Configuration.DEBUG_WIDGETS && gameInterface.type != GameInterfaceType.IF1_TOOLTIP && i_2_ <= mouseX && i_1_ <= mouseY && gameInterface.originalWidth + i_2_ > mouseX && gameInterface.originalHeight + i_1_ > mouseY) {
-	                        GenericTile.hoveredWidgetId = gameInterface.id;
+	                        hoveredWidgetId = gameInterface.id;
 	                    }
 
                         // standard button type? this is used for 'Open House Options'
@@ -1315,12 +1152,12 @@ public class MovedStatics {
 	                                }
 	                                if(mouseX >= i_7_ && i_8_ <= mouseY && i_7_ + 32 > mouseX && mouseY < 32 + i_8_) {
 	                                    RSRuntimeException.lastActiveInvInterface = gameInterface.id;
-	                                    Class55.mouseInvInterfaceIndex = i_4_;
+	                                    Main.mouseInvInterfaceIndex = i_4_;
 	                                    if(gameInterface.items[i_4_] > 0) {
 	                                        ItemDefinition itemDefinition = ItemDefinition.forId(-1 + gameInterface.items[i_4_], 10);
 	                                        if(MovedStatics.itemSelected != 1 || !gameInterface.isInventory) {
 	                                            if(Main.widgetSelected == 1 && gameInterface.isInventory) {
-	                                                if((ItemDefinition.selectedMask & 0x10) == 16) {
+	                                                if((selectedMask & 0x10) == 16) {
 	                                                    addActionRow(Native.selectedSpellVerb, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.CAST_MAGIC_ON_WIDGET_ITEM.getId(), Native.selectedSpellName + Native.toLightRed + itemDefinition.name);
 	                                                }
 	                                            } else {
@@ -1496,22 +1333,22 @@ public class MovedStatics {
 	    Rasterizer.drawFilledRectangle(1 + offsetX, 1 + offsetY, -2 + width, 16, 0);
 	    Rasterizer.drawUnfilledRectangle(offsetX + 1, 18 + offsetY, -2 + width, -19 + height, 0);
 	    TypeFace.fontBold.drawString(English.chooseOption, offsetX + 3, 14 + offsetY, colour);
-	    int x = Class13.mouseX - (xOffSet);
-	    int y = (-yOffSet) + Landscape.mouseY;
-	    if(Projectile.menuScreenArea == 0) {
+	    int x = MouseHandler.mouseX - (xOffSet);
+	    int y = (-yOffSet) + MouseHandler.mouseY;
+	    if(menuScreenArea == 0) {
 	        x -= 4;
 	        y -= 4;
 	    }
-	    if(Projectile.menuScreenArea == 1) {
+	    if(menuScreenArea == 1) {
 	        y -= 205;
 	        x -= 553;
 	    }
-	    if(Projectile.menuScreenArea == 2) {
+	    if(menuScreenArea == 2) {
 	        y -= 357;
 	        x -= 17;
 	    }
-	    for(int action = 0; action < ActorDefinition.menuActionRow; action++) {
-	        int actionY = 15 * (-action + ActorDefinition.menuActionRow + -1) + offsetY + 31;
+	    for(int action = 0; action < menuActionRow; action++) {
+	        int actionY = 15 * (-action + menuActionRow + -1) + offsetY + 31;
 	        int actionColour = 16777215;
 	        if(x > offsetX && offsetX + width > x && y > -13 + actionY && actionY + 3 > y)
 	            actionColour = 16776960;
@@ -1519,214 +1356,7 @@ public class MovedStatics {
 	    }
 	}
 
-	public static void manageTextInputs() {
-	    while(method416()) {
-	        if(ItemDefinition.anInt2854 == 28) {
-	            break;
-	        }
-	        if(Console.console.consoleOpen) {
-	            Console.console.handleInput();
-	            break;
-	        }
-	        if(GameInterface.gameScreenInterfaceId != -1 && HuffmanEncoding.reportAbuseInterfaceID == GameInterface.gameScreenInterfaceId) {
-	            if(ItemDefinition.anInt2854 == 85 && Native.reportedName.length() > 0)
-	                Native.reportedName = Native.reportedName.substring(0, -1 + Native.reportedName.length());
-	            if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && Native.reportedName.length() < 12)
-	                Native.reportedName = Native.reportedName + (char) Class59.anInt1388;
-	        } else if(ChatBox.messagePromptRaised) {
-	            if(ItemDefinition.anInt2854 == 85 && ChatBox.chatMessage.length() > 0) {
-	                ChatBox.chatMessage = ChatBox.chatMessage.substring(0, -1 + ChatBox.chatMessage.length());
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if(Player.method793(Class59.anInt1388) && ChatBox.chatMessage.length() < 80) {
-	                ChatBox.chatMessage = ChatBox.chatMessage + (char) Class59.anInt1388;
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if(ItemDefinition.anInt2854 == 84) {
-	                ChatBox.messagePromptRaised = false;
-	                ChatBox.redrawChatbox = true;
-	                if(Class37.anInt876 == 1) {
-	                    long l = RSString.nameToLong(ChatBox.chatMessage);
-	                    addFriend(l);
-	                }
-	                if(Class37.anInt876 == 2 && Player.friendsCount > 0) {
-	                    long l = RSString.nameToLong(ChatBox.chatMessage);
-	                    GameInterface.removeFriend(l);
-	                }
-	                if(Class37.anInt876 == 3 && ChatBox.chatMessage.length() > 0) {
-                        // private messages
-	                    ChatBox.filterInput();
-
-                        OutgoingPackets.sendMessage(new SendPrivateMessageOutboundMessage(PacketBuffer.aLong2241, ChatBox.chatboxInput));
-                        
-	                    if(ChatBox.privateChatMode == 2) {
-	                        ChatBox.privateChatMode = 1;
-	                        redrawChatbox = true;
-
-                            OutgoingPackets.sendMessage(new SetChatOptionsOutboundMessage(
-                                ChatBox.publicChatMode,
-                                ChatBox.privateChatMode,
-                                ChatBox.tradeMode
-                            ));
-	                    }
-	                }
-	                if(Class37.anInt876 == 4 && anInt1008 < 100) {
-	                    long l = RSString.nameToLong(ChatBox.chatMessage);
-	                    Class17.method275(l);
-	                }
-	                if(Class37.anInt876 == 5 && anInt1008 > 0) {
-	                    long l = RSString.nameToLong(ChatBox.chatMessage);
-	                    method838(l);
-	                }
-	            }
-	        } else if(ChatBox.inputType == 1) {
-	            if(ItemDefinition.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
-	                ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 1);
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if(HuffmanEncoding.method1027(Class59.anInt1388) && ChatBox.inputMessage.length() < 10) {
-	                ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if(ItemDefinition.anInt2854 == 84) {
-	                if(ChatBox.inputMessage.length() > 0) {
-	                    int inputValue = 0;
-	                    try {
-	                        inputValue = Integer.parseInt(ChatBox.inputMessage);
-	                    } catch(Exception _ex) {
-	                        /* empty */
-	                    }
-
-                        OutgoingPackets.sendMessage(new SubmitChatboxWidgetNumericInputOutboundMessage(inputValue));
-	                }
-	                ChatBox.redrawChatbox = true;
-	                ChatBox.inputType = 0;
-	            }
-	        } else if(ChatBox.inputType == 2) {
-	            if(ItemDefinition.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
-	                ChatBox.inputMessage = ChatBox.inputMessage.substring(0, -1 + ChatBox.inputMessage.length());
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && ChatBox.inputMessage.length() < 12) {
-	                ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if(ItemDefinition.anInt2854 == 84) {
-	                if(ChatBox.inputMessage.length() > 0) {
-                        long name = RSString.nameToLong(ChatBox.inputMessage);
-
-                        OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name));
-	                }
-	                ChatBox.inputType = 0;
-	                ChatBox.redrawChatbox = true;
-	            }
-	        } else if(ChatBox.inputType == 3) {
-	            if(ItemDefinition.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
-	                ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 10);
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if(Player.method793(Class59.anInt1388) && ChatBox.inputMessage.length() < 40) {
-	                ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
-	                ChatBox.redrawChatbox = true;
-	            }
-	        } else if(GameInterface.chatboxInterfaceId == -1 && GameInterface.fullscreenInterfaceId == -1) {
-	            if(ItemDefinition.anInt2854 == 85 && ChatBox.chatboxInput.length() > 0) {
-	                ChatBox.chatboxInput = ChatBox.chatboxInput.substring(0, ChatBox.chatboxInput.length() - 1);
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if(Player.method793(Class59.anInt1388) && ChatBox.chatboxInput.length() < 80) {
-	                ChatBox.chatboxInput = ChatBox.chatboxInput + (char) Class59.anInt1388;
-	                ChatBox.redrawChatbox = true;
-	            }
-	            if(ItemDefinition.anInt2854 == 84 && ChatBox.chatboxInput.length() > 0) {
-	                if(InteractiveObject.playerRights > 1) {
-	                    if(ChatBox.chatboxInput.equals(English.commandClientDrop))
-	                        Class59.dropClient();
-	                    if(ChatBox.chatboxInput.equals(English.commandFpson)) {
-	                        InteractiveObject.showFps = true;
-	                        ChatBox.inputType = 3;
-	                    }
-	                    if(ChatBox.chatboxInput.startsWith("::region")) {
-	                        for(int qq = 0; qq < 469; qq++) {
-	                            if(GameInterface.decodeGameInterface(qq)) {
-	                                GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[qq];
-	                                for(int y = 0; gameInterfaces.length > y; y++) {
-	                                    GameInterface gameInterface = gameInterfaces[y];
-	                                    if(gameInterface.disabledText != null) {
-	                                        String text = gameInterface.disabledText.toString().toLowerCase();
-	                                        if(gameInterface.disabledText.toString().toLowerCase().contains("bank")) {
-	                                            System.out.println(qq + " contains " + text);
-	                                        }
-	                                    }
-	                                }
-	                            }
-	                        }
-	                    }
-	
-	                    if(ChatBox.chatboxInput.equals(Native.cmd_fpsoff))
-	                        InteractiveObject.showFps = false;
-	                    if(ChatBox.chatboxInput.equals(English.commandNoclip)) {
-	                        for(int i = 0; i < 4; i++) {
-	                            for(int i_9_ = 1; i_9_ < 103; i_9_++) {
-	                                for(int i_10_ = 1; i_10_ < 103; i_10_++)
-	                                    Landscape.currentCollisionMap[i].clippingData[i_9_][i_10_] = 0;
-	                            }
-	                        }
-	                    }
-	                    if(ChatBox.chatboxInput.equals(English.commandErrorTest) && Class44.modewhere == 2)
-	                        throw new RuntimeException();
-	                    if(ChatBox.chatboxInput.equals(Native.cmd_hiddenbuttontest))
-	                        PacketBuffer.hiddenButtonTest = true;
-	                }
-	                if(ChatBox.chatboxInput.startsWith(Native.cmd_prefix)) {
-                        // remove the :: prefix
-                        String command = ChatBox.chatboxInput.substring(2);
-
-                        OutgoingPackets.sendMessage(new ChatCommandOutboundMessage(command));
-	                } else {
-	                    ChatColorEffect chatColorEffect = ChatColorEffect.fromString(ChatBox.chatboxInput.toLowerCase());
-
-                        if (chatColorEffect != null) {
-                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(chatColorEffect.getPrefixLength());
-                        }
-
-                        ChatShapeEffect chatShapeEffect = ChatShapeEffect.fromString(ChatBox.chatboxInput.toLowerCase());
-
-                        if (chatShapeEffect != null) {
-                            ChatBox.chatboxInput = ChatBox.chatboxInput.substring(chatShapeEffect.getPrefixLength());
-                        }
-
-	                    ChatBox.filterInput();
-
-                        SendChatMessageOutboundMessage message = new SendChatMessageOutboundMessage(
-                            chatColorEffect != null ? chatColorEffect : ChatColorEffect.YELLOW,
-                            chatShapeEffect != null ? chatShapeEffect : ChatShapeEffect.NONE,
-                            ChatBox.chatboxInput
-                        );
-
-                        OutgoingPackets.sendMessage(message);
-
-                        // I guess resets from 'off' to... 'friends'? public?
-	                    if(ChatBox.publicChatMode == 2) {
-	                        redrawChatbox = true;
-	                        ChatBox.publicChatMode = 3;
-
-                            OutgoingPackets.sendMessage(new SetChatOptionsOutboundMessage(
-                                ChatBox.publicChatMode,
-                                ChatBox.privateChatMode,
-                                ChatBox.tradeMode
-                            ));
-	                    }
-	                }
-	                ChatBox.redrawChatbox = true;
-	                ChatBox.chatboxInput = "";
-	            }
-	        }
-	    }
-	
-	}
-
-	private static char VALID_CHARACTERS[] = {' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w',
+    private static char VALID_CHARACTERS[] = {' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w',
 	'c', 'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8',
 	'9', ' ', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243',
 	'$', '%', '"', '[', ']'};
@@ -1827,7 +1457,7 @@ public class MovedStatics {
 	        if(length > arg2)
 	            length = arg2;
 	        byte[] chars = new byte[length];
-	        arg0.currentPosition += IdentityKit.aHuffmanEncoding_2590.method1023(arg0.buffer, length, 0, chars, arg0.currentPosition, -1);
+	        arg0.currentPosition += aHuffmanEncoding_2590.method1023(arg0.buffer, length, 0, chars, arg0.currentPosition, -1);
 	        return new String(chars);
 	    } catch(Exception exception) {
 	        return English.cabbage;
@@ -1844,32 +1474,32 @@ public class MovedStatics {
 	    }
 
 	public static void method299(int arg1) {
-	    int[] is = minimapImage.pixels;
+	    int[] is = Minimap.minimapImage.pixels;
 	    int i = is.length;
 	    for(int i_0_ = 0; i > i_0_; i_0_++)
 	        is[i_0_] = 0;
 	    for(int i_1_ = 1; i_1_ < 103; i_1_++) {
 	        int i_2_ = 24628 + (-(512 * i_1_) + 52736) * 4;
 	        for(int i_3_ = 1; i_3_ < 103; i_3_++) {
-	            if((0x18 & OverlayDefinition.tile_flags[arg1][i_3_][i_1_]) == 0)
+	            if((0x18 & tile_flags[arg1][i_3_][i_1_]) == 0)
 	                Npc.currentScene.method96(is, i_2_, 512, arg1, i_3_, i_1_);
-	            if(arg1 < 3 && (OverlayDefinition.tile_flags[1 + arg1][i_3_][i_1_] & 0x8) != 0)
+	            if(arg1 < 3 && (tile_flags[1 + arg1][i_3_][i_1_] & 0x8) != 0)
 	                Npc.currentScene.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
 	            i_2_ += 4;
 	        }
 	    }
-	    minimapImage.method723();
+	    Minimap.minimapImage.method723();
 	    int i_4_ = (-10 + (int) (Math.random() * 20.0) + 238 << 8) + (228 + (int) (Math.random() * 20.0) << 16) + 238 + (int) (20.0 * Math.random()) + -10;
 	    int i_5_ = -10 + (int) (20.0 * Math.random()) + 238 << 16;
 	    for(int i_6_ = 1; i_6_ < 103; i_6_++) {
 	        for(int i_7_ = 1; i_7_ < 103; i_7_++) {
-	            if((OverlayDefinition.tile_flags[arg1][i_7_][i_6_] & 0x18) == 0)
+	            if((tile_flags[arg1][i_7_][i_6_] & 0x18) == 0)
 	                Actor.method781(1850, arg1, i_7_, i_4_, i_5_, i_6_);
-	            if(arg1 < 3 && (0x8 & OverlayDefinition.tile_flags[1 + arg1][i_7_][i_6_]) != 0)
+	            if(arg1 < 3 && (0x8 & tile_flags[1 + arg1][i_7_][i_6_]) != 0)
 	                Actor.method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
 	        }
 	    }
-	    GameObject.minimapHintCount = 0;
+	    Minimap.minimapHintCount = 0;
 	    for(int i_8_ = 0; i_8_ < 104; i_8_++) {
 	        for(int i_9_ = 0; i_9_ < 104; i_9_++) {
 	            int i_10_ = Npc.currentScene.getFloorDecorationHash(Player.worldLevel, i_8_, i_9_);
@@ -1893,10 +1523,10 @@ public class MovedStatics {
 	                                i_12_++;
 	                        }
 	                    }
-	                    MouseHandler.minimapHint[GameObject.minimapHintCount] = mapFunctionIcons[i_11_];
-	                    Actor.minimapHintX[GameObject.minimapHintCount] = i_13_;
-	                    LinkedList.minimapHintY[GameObject.minimapHintCount] = i_12_;
-	                    GameObject.minimapHintCount++;
+	                    Minimap.minimapHint[Minimap.minimapHintCount] = mapFunctionIcons[i_11_];
+	                    Minimap.minimapHintX[Minimap.minimapHintCount] = i_13_;
+	                    Minimap.minimapHintY[Minimap.minimapHintCount] = i_12_;
+	                    Minimap.minimapHintCount++;
 	                }
 	            }
 	        }
@@ -1909,46 +1539,8 @@ public class MovedStatics {
 	public static boolean membersWorld = false;
 	public static boolean accountFlagged = false;
 	public static GameInterface aGameInterface_1887;
-	public static int duplicateClickCount = 0;
 
-	public static IndexedImage[] method315() {
-	    IndexedImage[] class40_sub5_sub14_sub2s = new IndexedImage[anInt2581];
-	    for(int i = 0; anInt2581 > i; i++) {
-	        IndexedImage class40_sub5_sub14_sub2 = class40_sub5_sub14_sub2s[i] = new IndexedImage();
-	        class40_sub5_sub14_sub2.maxWidth = ItemDefinition.imageMaxWidth;
-	        class40_sub5_sub14_sub2.maxHeight = imageMaxHeight;
-	        class40_sub5_sub14_sub2.xDrawOffset = Class57.anIntArray1347[i];
-	        class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[i];
-	        class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[i];
-	        class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[i];
-	        class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
-	        class40_sub5_sub14_sub2.imgPixels = GroundItemTile.aByteArrayArray1370[i];
-	    }
-	    ActorDefinition.method569();
-	    return class40_sub5_sub14_sub2s;
-	}
-
-	public static ImageRGB[] method319() {
-	    ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[anInt2581];
-	    for(int i = 0; i < anInt2581; i++) {
-	        ImageRGB class40_sub5_sub14_sub4 = class40_sub5_sub14_sub4s[i] = new ImageRGB();
-	        class40_sub5_sub14_sub4.maxWidth = ItemDefinition.imageMaxWidth;
-	        class40_sub5_sub14_sub4.maxHeight = imageMaxHeight;
-	        class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[i];
-	        class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[i];
-	        class40_sub5_sub14_sub4.imageWidth = Class17.anIntArray456[i];
-	        class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[i];
-	        byte[] is = GroundItemTile.aByteArrayArray1370[i];
-	        int i_4_ = class40_sub5_sub14_sub4.imageHeight * class40_sub5_sub14_sub4.imageWidth;
-	        class40_sub5_sub14_sub4.pixels = new int[i_4_];
-	        for(int i_5_ = 0; i_5_ < i_4_; i_5_++)
-	            class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
-	    }
-	    ActorDefinition.method569();
-	    return class40_sub5_sub14_sub4s;
-	}
-
-	public static void method311(Component arg1) {
+    public static void method311(Component arg1) {
 	    arg1.removeKeyListener(Class59.keyFocusListener);
 	    arg1.removeFocusListener(Class59.keyFocusListener);
 	}
@@ -1961,7 +1553,7 @@ public class MovedStatics {
             return;
         }
 
-        Point2d screenPos = MovedStatics.getProjectedScreenPosition(2 * ActorDefinition.hintIconPosZ, Class35.hintIconInnerPosY + (-Class26.baseY + hintIconPosY << 7), (ProducingGraphicsBuffer.hintIconPosX + -baseX << 7) + Landscape.hintIconInnerPosX);
+        Point2d screenPos = MovedStatics.getProjectedScreenPosition(2 * hintIconPosZ, Class35.hintIconInnerPosY + (-Class26.baseY + hintIconPosY << 7), (ProducingGraphicsBuffer.hintIconPosX + -baseX << 7) + Landscape.hintIconInnerPosX);
 
         if (screenPos == null) {
             return;
@@ -2044,10 +1636,1110 @@ public class MovedStatics {
 	public static int[] anIntArray1847 = new int[2000];
 	public static long aLong1841;
 
-    public static int interpolateForPerlin(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
+    private static int interpolateForPerlin(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
         if (!arg3)
             return -109;
         int i = 65536 + -Rasterizer3D.cosinetable[1024 * arg4 / arg1] >> 1;
         return ((65536 + -i) * arg0 >> 16) + (arg2 * i >> 16);
+    }
+
+    private static void method344(int arg0) {
+        if(aBoolean2083) {
+            chatboxLineOffsets = null;
+            aBoolean2083 = false;
+            RSCanvas.anIntArray66 = null;
+            Minimap.minimapBackgroundImage = null;
+            Landscape.anIntArray1186 = null;
+            Class17.chatboxTop = null;
+            RSCanvas.tabBottom = null;
+            GameObject.tabPieceLeft = null;
+            bottomChatBack = null;
+            inventoryBackgroundImage = null;
+            tabHighlightImageTopRight = null;
+            Class40_Sub5_Sub15.tabIcons = null;
+            Class13.tabHighlightImageBottomRight = null;
+            Minimap.mapbackProducingGraphicsBuffer = null;
+            RSCanvas.anIntArray62 = null;
+            sidebarOffsets = null;
+            Class39.mapbackLeft = null;
+            tabHighlightImageBottomMiddle = null;
+            tabBottomBack = null;
+            Landscape.framePieceRight = null;
+            GameInterface.tabHighlightImageTopLeft = null;
+            tabHighlightImageTopRightEdge = null;
+            anIntArray852 = null;
+            chatModes = null;
+            Buffer.tabTopBack = null;
+            tabImageProducer = null;
+            tabHighlightImageTopLeftEdge = null;
+            gameScreenImageProducer = null;
+            ISAAC.tabHighlightImageBottomRightEdge = null;
+            RSCanvas.chatBoxImageProducer = null;
+            Class40_Sub7.mapBackRight = null;
+            InteractiveObject.tabTop = null;
+            if(arg0 < -28) {
+                chatboxRight = null;
+                tabPieceUpperRight = null;
+                Class35.tabHighlightImageTopMiddle = null;
+                tabHighlightImageBottomLeft = null;
+                Renderable.tabHighlightImageBottomLeftEdge = null;
+                Class24.fullScreenTextureArray = null;
+                PlayerAppearance.tabPieveLowerRight = null;
+                framePieceTop = null;
+                Class44.chatboxBackgroundImage = null;
+            }
+        }
+    }
+
+    private static void method945(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+        if(arg5 != 103)
+            anInt1214 = -81;
+        if(arg2 >= 1 && arg0 >= 1 && arg2 <= 102 && arg0 <= 102) {
+            if(!VertexNormal.lowMemory || Player.worldLevel == arg7) {
+                int i = -1;
+                int i_0_ = 0;
+                boolean bool = false;
+                boolean bool_1_ = false;
+                if(arg6 == 0)
+                    i_0_ = Npc.currentScene.method122(arg7, arg2, arg0);
+                if(arg6 == 1)
+                    i_0_ = Npc.currentScene.method91(arg7, arg2, arg0);
+                if(arg6 == 2)
+                    i_0_ = Npc.currentScene.getLocationHash(arg7, arg2, arg0);
+                if(arg6 == 3)
+                    i_0_ = Npc.currentScene.getFloorDecorationHash(arg7, arg2, arg0);
+                if(i_0_ != 0) {
+                    i = (i_0_ & 0x1ffff138) >> 14;
+                    int i_2_ = Npc.currentScene.getArrangement(arg7, arg2, arg0, i_0_);
+                    int i_3_ = i_2_ >> 6 & 0x3;
+                    int i_4_ = 0x1f & i_2_;
+                    if(arg6 == 0) {
+                        Npc.currentScene.method124(arg7, arg2, arg0);
+                        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+                        if(gameObjectDefinition.solid)
+                            Landscape.currentCollisionMap[arg7].markWall(arg2, i_3_, gameObjectDefinition.walkable, arg0, i_4_);
+                    }
+                    if(arg6 == 1)
+                        Npc.currentScene.method127(arg7, arg2, arg0);
+                    if(arg6 == 2) {
+                        Npc.currentScene.removeInteractiveObject(arg7, arg2, arg0);
+                        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+                        if(arg2 + gameObjectDefinition.sizeX > 103 || arg0 + gameObjectDefinition.sizeX > 103 || arg2 + gameObjectDefinition.sizeY > 103 || gameObjectDefinition.sizeY + arg0 > 103)
+                            return;
+                        if(gameObjectDefinition.solid)
+                            Landscape.currentCollisionMap[arg7].markSolidOccupant(arg2, arg0, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, i_3_, gameObjectDefinition.walkable);
+                    }
+                    if(arg6 == 3) {
+                        Npc.currentScene.method131(arg7, arg2, arg0);
+                        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+                        if(gameObjectDefinition.solid && gameObjectDefinition.hasActions == 1)
+                            Landscape.currentCollisionMap[arg7].unmarkConcealed(arg2, arg0);
+                    }
+                }
+                if(arg1 >= 0) {
+                    int i_5_ = arg7;
+                    if(i_5_ < 3 && (tile_flags[1][arg2][arg0] & 0x2) == 2)
+                        i_5_++;
+                    CollisionMap.method543(Landscape.currentCollisionMap[arg7], arg1, i_5_, arg7, arg3, Npc.currentScene, -22078, arg4, arg0, arg2);
+                }
+            }
+        }
+    }
+
+    public static void renderSplitPrivateMessages() {
+        if(CollisionMap.anInt165 != 0) {
+            TypeFace class40_sub5_sub14_sub1 = fontNormal;
+            int i = 0;
+            if(Class40_Sub5_Sub15.systemUpdateTime != 0)
+                i = 1;
+            for(int i_0_ = 0; i_0_ < 100; i_0_++) {
+                if(ChatBox.chatMessages[i_0_] != null) {
+                    String class1 = ChatBox.chatPlayerNames[i_0_];
+                    int i_1_ = 0;
+                    int i_2_ = ChatBox.chatTypes[i_0_];
+                    if(class1 != null && class1.startsWith(Native.whiteCrown)) {
+                        class1 = class1.substring(5);
+                        i_1_ = 1;
+                    }
+                    if(class1 != null && class1.startsWith(Native.goldCrown)) {
+                        class1 = class1.substring(5);
+                        i_1_ = 2;
+                    }
+                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(class1))) {
+                        int i_3_ = 329 - 13 * i;
+                        int i_4_ = 4;
+                        i++;
+                        class40_sub5_sub14_sub1.drawString(English.from, i_4_, i_3_, 0);
+                        class40_sub5_sub14_sub1.drawString(English.from, i_4_, -1 + i_3_, 65535);
+                        i_4_ += class40_sub5_sub14_sub1.getStringWidth(English.from);
+                        i_4_ += class40_sub5_sub14_sub1.method689(32);
+                        if(i_1_ == 1) {
+                            moderatorIcon[0].drawImage(i_4_, i_3_ - 12);
+                            i_4_ += 14;
+                        }
+                        if(i_1_ == 2) {
+                            moderatorIcon[1].drawImage(i_4_, -12 + i_3_);
+                            i_4_ += 14;
+                        }
+                        class40_sub5_sub14_sub1.drawString(class1 + Native.COLON_CHARACTER + ChatBox.chatMessages[i_0_], i_4_, i_3_, 0);
+                        class40_sub5_sub14_sub1.drawString(class1 + Native.COLON_CHARACTER + ChatBox.chatMessages[i_0_], i_4_, -1 + i_3_, 65535);
+                        if(i >= 5)
+                            return;
+                    }
+                    if(i_2_ == 5 && ChatBox.privateChatMode < 2) {
+                        int i_5_ = -(i * 13) + 329;
+                        i++;
+                        class40_sub5_sub14_sub1.drawString(ChatBox.chatMessages[i_0_], 4, i_5_, 0);
+                        class40_sub5_sub14_sub1.drawString(ChatBox.chatMessages[i_0_], 4, i_5_ - 1, 65535);
+                        if(i >= 5)
+                            return;
+                    }
+                    if(i_2_ == 6 && ChatBox.privateChatMode < 2) {
+                        int i_6_ = -(13 * i) + 329;
+                        i++;
+                        class40_sub5_sub14_sub1.drawString(English.to + Native.whitespace_b + class1 + Native.COLON_CHARACTER + ChatBox.chatMessages[i_0_], 4, i_6_, 0);
+                        class40_sub5_sub14_sub1.drawString(English.to + Native.whitespace_b + class1 + Native.COLON_CHARACTER + ChatBox.chatMessages[i_0_], 4, i_6_ + -1, 65535);
+                        if(i >= 5)
+                            return;
+                    }
+                }
+            }
+        }
+    }
+
+    public static void draw3dScreen() {
+        renderSplitPrivateMessages();
+        if (LinkedList.crossType == 1) {
+            Class37.cursorCross[crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
+        }
+        if (LinkedList.crossType == 2) {
+            Class37.cursorCross[4 + crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
+        }
+        if (GameInterface.gameScreenInterfaceId != -1 || GroundItemTile.walkableWidgetId != -1) {
+                int areaId = GameInterface.gameScreenInterfaceId != -1 ? 0 : 4;
+                int id = GameInterface.gameScreenInterfaceId != -1 ? GameInterface.gameScreenInterfaceId : GroundItemTile.walkableWidgetId;
+                Renderable.handleSequences(id);
+                int yOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);
+                int xOffset = (ScreenController.drawWidth /2) - (512/2) - (234/3);
+                if(ScreenController.frameMode == ScreenMode.FIXED) {
+                    yOffset = 0;
+                    xOffset = 0;
+                }
+                Main.drawParentInterface(areaId, xOffset, yOffset, 512+ xOffset, 334 + yOffset, id);
+        }
+        Class65.method1018();
+        Player.setTutorialIslandFlag();
+        if (!menuOpen) {
+            Class43.processRightClick();
+            drawMenuTooltip(4);
+        } else  {
+            if(ScreenController.frameMode == ScreenMode.FIXED && menuScreenArea == 0){
+                drawMenu(4,4);
+            }
+        }
+        if (anInt2118 == 1) {
+            LinkedList.aClass40_Sub5_Sub14_Sub4_1057.drawImage(472, 296);
+        }
+        if (InteractiveObject.showFps) {
+            int y = 20;
+            int x = 507;
+            if(ScreenController.frameMode != ScreenMode.FIXED) {
+                x = ScreenController.drawWidth - 220;
+            }
+
+            int colour = 0xffff00;
+            if (GameShell.fps < 30 && VertexNormal.lowMemory) {
+                colour = 0xff0000;
+            }
+            if (GameShell.fps < 20 && !VertexNormal.lowMemory) {
+                colour = 0xff0000;
+            }
+            fontNormal.drawStringRight("Fps: " + GameShell.fps, x, y, colour);
+            colour = 0xffff00;
+            y += 15;
+            Runtime runtime = Runtime.getRuntime();
+            int memoryUsed = (int) ((runtime.totalMemory() + -runtime.freeMemory()) / 1024L);
+            if (memoryUsed > 32768 && VertexNormal.lowMemory) {
+                colour = 0xff0000;
+            }
+            if (memoryUsed < 65536 && !VertexNormal.lowMemory) {
+                colour = 0xff0000;
+            }
+            fontNormal.drawStringRight("Mem: " + memoryUsed + "k", x, y, colour);
+            y += 15;
+
+            fontNormal.drawStringRight("MouseX: " + MouseHandler.mouseX, x, y ,0xffff00);
+            y += 15;
+
+            fontNormal.drawStringRight("MouseY: " + MouseHandler.mouseY, x, y ,0xffff00);
+            y += 15;
+            fontNormal.drawStringRight("ClickX: " + MouseHandler.clickX, x, y ,0xffff00);
+            y += 15;
+
+            fontNormal.drawStringRight("ClickY: " + MouseHandler.clickY, x, y ,0xffff00);
+            y += 15;
+            if (showSidePanelRedrawnText) {
+                fontNormal.drawStringRight(English.sidePanelRedrawn, x, y, 16711680);
+                y += 15;
+                showSidePanelRedrawnText = false;
+            }
+            if (showChatPanelRedrawnText) {
+                fontNormal.drawStringRight(English.chatPanelRedrawn, x, y, 16711680);
+                y += 15;
+                showChatPanelRedrawnText = false;
+            }
+            if (Class40_Sub3.showIconsRedrawnText) {
+                fontNormal.drawStringRight(English.iconsRedrawn, x, y, 16711680);
+                Class40_Sub3.showIconsRedrawnText = false;
+                y += 15;
+            }
+        }
+        if (Configuration.DEBUG_WIDGETS) {
+            int y = 20;
+            int x = 507;
+            if(ScreenController.frameMode != ScreenMode.FIXED) {
+                x = ScreenController.drawWidth - 220;
+            }
+            int widgetParentId = hoveredWidgetId >> 16;
+            int widgetChildId = hoveredWidgetId & 0x7fff;
+            String typeAsString = "";
+
+            // Gather widget metadata from the cached interfaces
+            GameInterface[] parentInterface;
+            GameInterface childInterface = null;
+            if (widgetParentId >= 0 && widgetChildId < 469) {
+                parentInterface = GameInterface.cachedInterfaces[widgetParentId];
+
+                if (parentInterface != null) {
+                    childInterface = parentInterface[widgetChildId];
+                }
+
+                if (childInterface != null) {
+                    switch (childInterface.type) {
+                        case TEXT:
+                            typeAsString = "TEXT";
+                            break;
+                        case GRAPHIC:
+                            typeAsString = "GRAPHIC";
+                            break;
+                        case MODEL:
+                            typeAsString = "MODEL";
+                            break;
+                        case RECTANGLE:
+                            typeAsString = "RECTANGLE";
+                            break;
+                        case INVENTORY:
+                            typeAsString = "INVENTORY";
+                            break;
+                        case LINE:
+                            typeAsString = "LINE";
+                            break;
+                        case TEXT_INVENTORY:
+                            typeAsString = "TEXT_INVENTORY";
+                            break;
+                        case LAYER:
+                            typeAsString = "LAYER";
+                            break;
+                        case IF1_TOOLTIP:
+                            typeAsString = "IF1_TOOLTIP";
+                            break;
+                        default:
+                            typeAsString = "UNKNOWN";
+                    }
+                }
+            }
+
+            fontNormal.drawStringRight("Widget " + widgetParentId + ":" + widgetChildId, x, y, 0xffff00);
+            y+= 15;
+            if (childInterface != null) {
+                fontNormal.drawStringRight("Parent ID: " + childInterface.parentId, x, y, 0xffff00);
+                y+= 15;
+                fontNormal.drawStringRight("Type: " + typeAsString, x, y, 0xffff00);
+                y+= 15;
+            }
+
+        }
+        if (Class40_Sub5_Sub15.systemUpdateTime != 0) {
+            int seconds = Class40_Sub5_Sub15.systemUpdateTime / 50;
+            int minutes = seconds / 60;
+            seconds %= 60;
+            if (seconds < 10) {
+                fontNormal.drawString(English.systemUpdateIn + minutes + Native.prefixColonZero + seconds, 4, 329, 16776960);
+            } else {
+                fontNormal.drawString(English.systemUpdateIn + minutes + Native.colon + seconds, 4, 329, 16776960);
+            }
+        }
+    }
+
+    public static void processNpcMenuOptions(ActorDefinition actorDefinition, int x, int y, int index) {
+        if (menuActionRow < 400) {
+            if (actorDefinition.childIds != null) {
+                actorDefinition = actorDefinition.getChildDefinition();
+            }
+            if (actorDefinition != null && actorDefinition.isClickable) {
+                String npcDisplayName = actorDefinition.name;
+                if (actorDefinition.combatLevel != 0) {
+                    npcDisplayName = npcDisplayName + getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthesis;
+                }
+                if (itemSelected == 1) {
+                    addActionRow(English.use, index, x, y, ActionRowType.USE_ITEM_ON_NPC.getId(), Native.selectedItemName + Native.toYellow + npcDisplayName);
+                } else if (Main.widgetSelected == 1) {
+                    if ((0x2 & selectedMask) == 2) {
+                        addActionRow(Native.selectedSpellVerb, index, x, y, ActionRowType.CAST_MAGIC_ON_NPC.getId(), Native.selectedSpellName + Native.toYellow + npcDisplayName);
+                    }
+                } else {
+                    String[] options = actorDefinition.options;
+                    if (Class60.DEBUG_DISPLAY_ALL_ACTION_ROWS) {
+                        options = getAllOptionsWithIndices(options);
+                    }
+
+                    // add non-attack options to NPC
+                    if (options != null) {
+                        for (int i = 4; i >= 0; i--) {
+                            if (options[i] != null && !options[i].equalsIgnoreCase(English.attack)) {
+                                int actionType = 0;
+                                if (i == 0) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_1.getId();
+                                }
+                                if (i == 1) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_2.getId();
+                                }
+                                if (i == 2) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_3.getId();
+                                }
+                                if (i == 3) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_4.getId();
+                                }
+                                if (i == 4) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_5.getId();
+                                }
+                                addActionRow(options[i], index, x, y, actionType, Native.yellow + npcDisplayName);
+                            }
+                        }
+                    }
+
+                    // add 'Attack' option to NPC
+                    if (options != null) {
+                        for (int i = 4; i >= 0; i--) {
+                            if (options[i] != null && options[i].equalsIgnoreCase(English.attack)) {
+                                int actionTypeOffset = 0;
+
+                                // deprioritise the action in the list if the NPC is higher level than the player
+                                if (Player.localPlayer.combatLevel < actorDefinition.combatLevel) {
+                                    actionTypeOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
+                                }
+
+                                int actionType = 0;
+                                if (i == 0) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_1.getId() + actionTypeOffset;
+                                }
+                                if (i == 1) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_2.getId() + actionTypeOffset;
+                                }
+                                if (i == 2) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_3.getId() + actionTypeOffset;
+                                }
+                                if (i == 3) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_4.getId() + actionTypeOffset;
+                                }
+                                if (i == 4) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_5.getId() + actionTypeOffset;
+                                }
+                                addActionRow(options[i], index, x, y, actionType, Native.yellow +npcDisplayName);
+                            }
+                        }
+                    }
+                    StringBuilder examineText = new StringBuilder();
+                    examineText.append(MessageFormat.format("<col=ffff00>{0}</col>", actorDefinition.name));
+
+                    if(actorDefinition.combatLevel != 0) {
+                        String combatLevel = " " +
+                            getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel)
+                                + Native.leftParenthesis + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthesis;
+                        examineText.append(combatLevel);
+                    }
+
+
+                    if (Configuration.DEBUG_CONTEXT) {
+                        examineText.append(" <col=00ff00>(</col>");
+                        examineText.append(
+                                MessageFormat.format("<col=ffffff>{0}</col>",
+                                        Integer.toString(actorDefinition.id)
+                                )
+                        );
+                        examineText.append("<col=00ff00>) (</col>");
+                        examineText.append(
+                                MessageFormat.format("<col=ffffff>{0}, {1}</col>",
+                                        Integer.toString(x + baseX),
+                                        Integer.toString(y + Class26.baseY)
+                                )
+                        );
+                        examineText.append("<col=00ff00>)</col>");
+
+
+                    }
+                    addActionRow(English.examine, index, x, y, ActionRowType.EXAMINE_NPC.getId(), examineText.toString());
+                }
+            }
+        }
+    }
+
+    public static ImageRGB method1028(CacheArchive arg0, String arg1, String arg3) {
+        int i = arg0.getHash(arg1);
+        int i_13_ = arg0.method179(i, arg3);
+        return method927(i_13_, arg0, i);
+    }
+
+    public static void spawnGroundItem(int arg1, int arg2) {
+        LinkedList linkedList = groundItems[Player.worldLevel][arg2][arg1];
+        if(linkedList == null)
+            Npc.currentScene.method125(Player.worldLevel, arg2, arg1);
+        else {
+            int i = -99999999;
+            Item item = null;
+            for(Item item_32_ = (Item) linkedList.peekFirst(); item_32_ != null; item_32_ = (Item) linkedList.pollFirst()) {
+                ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(item_32_.itemId, 10);
+                int i_33_ = class40_sub5_sub16.cost;
+                if(class40_sub5_sub16.stackable == 1)
+                    i_33_ *= item_32_.itemCount + 1;
+                if(i_33_ > i) {
+                    i = i_33_;
+                    item = item_32_;
+                }
+            }
+            if(item == null)
+                Npc.currentScene.method125(Player.worldLevel, arg2, arg1);
+            else {
+                Item item_34_ = null;
+                Item item_35_ = null;
+                linkedList.addFirst(item);
+                for(Item item_36_ = (Item) linkedList.peekFirst(); item_36_ != null; item_36_ = (Item) linkedList.pollFirst()) {
+                    if(item.itemId != item_36_.itemId) {
+                        if(item_35_ == null)
+                            item_35_ = item_36_;
+                        if(item_35_.itemId != item_36_.itemId && item_34_ == null)
+                            item_34_ = item_36_;
+                    }
+                }
+                int i_37_ = 1610612736 + (arg1 << 7) + arg2;
+                Npc.currentScene.addGroundItemTile(arg2, arg1, Player.worldLevel, Scene.getFloorDrawHeight(Player.worldLevel, 64 + 128 * arg2, 64 + 128 * arg1), i_37_, item, item_35_, item_34_);
+            }
+        }
+
+    }
+
+    public static void method744() {
+        if(Class59.keyFocusListener != null) {
+            synchronized(Class59.keyFocusListener) {
+                Class59.keyFocusListener = null;
+            }
+        }
+    }
+
+    public static void drawWelcomeScreenGraphics() {
+        try {
+            if(ScreenController.frameMode == ScreenMode.FIXED) {
+                Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+
+                Landscape.framePieceRight.drawGraphics(0, 4, graphics);
+                chatboxRight.drawGraphics(0, 357, graphics);
+                Class39.mapbackLeft.drawGraphics(722, 4, graphics);
+                GameObject.tabPieceLeft.drawGraphics(743, 205, graphics);
+                framePieceTop.drawGraphics(0, 0, graphics);
+                Class40_Sub7.mapBackRight.drawGraphics(516, 4, graphics);
+                tabPieceUpperRight.drawGraphics(516, 205, graphics);
+                PlayerAppearance.tabPieveLowerRight.drawGraphics(496, 357, graphics);
+                Class17.chatboxTop.drawGraphics(0, 338, graphics);
+            }
+        } catch(Exception exception) {
+            MouseHandler.gameCanvas.repaint();
+        }
+    }
+
+    public static void method763(Component arg0, CacheArchive arg2) {
+        if(!aBoolean2083) {
+            inventoryBackgroundImage = Main.method359(Native.invback, Native.aClass1_305, arg2);
+            Class44.chatboxBackgroundImage = Main.method359(Native.chatback, Native.aClass1_305, arg2);
+            Minimap.minimapBackgroundImage = Main.method359(Native.mapBack, Native.aClass1_305, arg2);
+            bottomChatBack = Main.method359(Native.imgBackbase1, Native.aClass1_305, arg2);
+            tabBottomBack = Main.method359(Native.imgBackbase2, Native.aClass1_305, arg2);
+            Buffer.tabTopBack = Main.method359(Native.imgBackhmid1, Native.aClass1_305, arg2);
+            RSCanvas.chatBoxImageProducer = createGraphicsBuffer(479, 96, arg0);
+            Class44.chatboxBackgroundImage.drawImage(0, 0);
+            Minimap.mapbackProducingGraphicsBuffer = createGraphicsBuffer(172, 156, arg0);
+            Rasterizer.resetPixels();
+            Minimap.minimapBackgroundImage.drawImage(0, 0);
+            tabImageProducer = createGraphicsBuffer(190, 261, arg0);
+            inventoryBackgroundImage.drawImage(0, 0);
+            gameScreenImageProducer = createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, arg0);
+            Rasterizer.resetPixels();
+            chatModes = createGraphicsBuffer(496, 50, arg0);
+            RSCanvas.tabBottom = createGraphicsBuffer(269, 37, arg0);
+            InteractiveObject.tabTop = createGraphicsBuffer(249, 45, arg0);
+            ImageRGB image = method1028(arg2, Native.imgBackleft1, Native.aClass1_305);
+            Landscape.framePieceRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            image = method1028(arg2, Native.imgBackleft2, Native.aClass1_305);
+            chatboxRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            image = method1028(arg2, Native.imgBackright1, Native.aClass1_305);
+            Class39.mapbackLeft = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            image = method1028(arg2, Native.imgBackright2, Native.aClass1_305);
+            GameObject.tabPieceLeft = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            image = method1028(arg2, Native.imgBacktop1, Native.aClass1_305);
+            framePieceTop = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            image = method1028(arg2, Native.imgBackvmid1, Native.aClass1_305);
+            Class40_Sub7.mapBackRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            image = method1028(arg2, Native.imgBackvmid2, Native.aClass1_305);
+            tabPieceUpperRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            image = method1028(arg2, Native.imgBackvmid3, Native.aClass1_305);
+            PlayerAppearance.tabPieveLowerRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            image = method1028(arg2, Native.imgBackhmid2, Native.aClass1_305);
+            Class17.chatboxTop = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            image.drawInverse(0, 0);
+            tabHighlightImageTopLeftEdge = Main.method359(Native.redstone1, Native.aClass1_305, arg2);
+            GameInterface.tabHighlightImageTopLeft = Main.method359(Native.redstone2, Native.aClass1_305, arg2);
+            Class35.tabHighlightImageTopMiddle = Main.method359(Native.redstone3, Native.aClass1_305, arg2);
+            tabHighlightImageTopRightEdge = tabHighlightImageTopLeftEdge.cloneImage();
+            tabHighlightImageTopRightEdge.flipHorizontal();
+            tabHighlightImageTopRight = GameInterface.tabHighlightImageTopLeft.cloneImage();
+            tabHighlightImageTopRight.flipHorizontal();
+            Renderable.tabHighlightImageBottomLeftEdge = tabHighlightImageTopLeftEdge.cloneImage();
+            Renderable.tabHighlightImageBottomLeftEdge.flipVertical();
+            tabHighlightImageBottomLeft = GameInterface.tabHighlightImageTopLeft.cloneImage();
+            tabHighlightImageBottomLeft.flipVertical();
+            tabHighlightImageBottomMiddle = Class35.tabHighlightImageTopMiddle.cloneImage();
+            tabHighlightImageBottomMiddle.flipVertical();
+            ISAAC.tabHighlightImageBottomRightEdge = tabHighlightImageTopLeftEdge.cloneImage();
+            ISAAC.tabHighlightImageBottomRightEdge.flipHorizontal();
+            ISAAC.tabHighlightImageBottomRightEdge.flipVertical();
+            Class13.tabHighlightImageBottomRight = GameInterface.tabHighlightImageTopLeft.cloneImage();
+            Class13.tabHighlightImageBottomRight.flipHorizontal();
+            Class13.tabHighlightImageBottomRight.flipVertical();
+            Class40_Sub5_Sub15.tabIcons = IndexedImage.getMultipleIndexedImages(arg2, Native.sideIcons, Native.aClass1_305);
+            Landscape.anIntArray1186 = new int[151];
+            anIntArray852 = new int[151];
+            RSCanvas.anIntArray66 = new int[33];
+            RSCanvas.anIntArray62 = new int[33];
+            for(int y = 0; y < 33; y++) {
+                int i_15_ = 0;
+                int i_16_ = 999;
+                for(int x = 0; x < 34; x++) {
+                    if(Minimap.minimapBackgroundImage.imgPixels[Minimap.minimapBackgroundImage.imgWidth * y + x] == 0) {
+                        if(i_16_ == 999)
+                            i_16_ = x;
+                    } else if(i_16_ != 999) {
+                        i_15_ = x;
+                        break;
+                    }
+                }
+                RSCanvas.anIntArray62[y] = i_16_;
+                RSCanvas.anIntArray66[y] = -i_16_ + i_15_;
+            }
+            for(int y = 5; y < 156; y++) {
+                int maxWidth = 0;
+                int minWidth = 999;
+                for(int x = 25; x < 172; x++) {
+                    if(Minimap.minimapBackgroundImage.imgPixels[x + Minimap.minimapBackgroundImage.imgWidth * y] != 0 || x <= 34 && y <= 34) {
+                        if(minWidth != 999) {
+                            maxWidth = x;
+                            break;
+                        }
+                    } else if(minWidth == 999)
+                        minWidth = x;
+                }
+                Landscape.anIntArray1186[-5 + y] = minWidth - 25;
+                anIntArray852[-5 + y] = maxWidth + -minWidth;
+            }
+            aBoolean2083 = true;
+        }
+    }
+
+    /**
+     * get game camera plane?
+     * @return
+     */
+    public static int method764() {
+        if(!Configuration.ROOFS_ENABLED) {
+            return Player.worldLevel;
+        }
+        int i = 3;
+        if(Main.playerCamera.getPitch() < 310) {
+            Point3d cameraPos = Main.playerCamera.getPosition();
+            int i_22_ = cameraPos.y >> 7;
+            int i_23_ = cameraPos.x >> 7;
+            if(i_22_ > 103) {
+                i_22_ = 103;
+            }
+            if(i_23_ > 103) {
+                i_23_ = 103;
+            }
+            if((tile_flags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
+                i = Player.worldLevel;
+            int i_24_ = Player.localPlayer.worldX >> 7;
+            int i_25_ = Player.localPlayer.worldY >> 7;
+            int i_26_;
+            if(i_24_ <= i_23_)
+                i_26_ = -i_24_ + i_23_;
+            else
+                i_26_ = -i_23_ + i_24_;
+            int i_27_;
+            if(i_22_ < i_25_)
+                i_27_ = i_25_ + -i_22_;
+            else
+                i_27_ = -i_25_ + i_22_;
+            if(i_26_ <= i_27_) {
+                int i_28_ = i_26_ * 65536 / i_27_;
+                int i_29_ = 32768;
+                while(i_22_ != i_25_) {
+                    if(i_25_ <= i_22_) {
+                        if(i_22_ > i_25_)
+                            i_22_--;
+                    } else
+                        i_22_++;
+                    if(i_22_ > 103) {
+                        i_22_ = 103;
+                    }
+                    if(i_23_ > 103) {
+                        i_23_ = 103;
+                    }
+                    i_29_ += i_28_;
+                    if((tile_flags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
+                        i = Player.worldLevel;
+                    if(i_29_ >= 65536) {
+                        if(i_23_ < i_24_)
+                            i_23_++;
+                        else if(i_24_ < i_23_)
+                            i_23_--;
+                        i_29_ -= 65536;
+                        if(i_22_ > 103) {
+                            i_22_ = 103;
+                        }
+                        if(i_23_ > 103) {
+                            i_23_ = 103;
+                        }
+                        if((0x4 & tile_flags[Player.worldLevel][i_23_][i_22_]) != 0)
+                            i = Player.worldLevel;
+                    }
+                }
+            } else {
+                int i_30_ = i_27_ * 65536 / i_26_;
+                int i_31_ = 32768;
+                while(i_23_ != i_24_) {
+                    if(i_23_ >= i_24_) {
+                        if(i_24_ < i_23_)
+                            i_23_--;
+                    } else
+                        i_23_++;
+                    if((tile_flags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
+                        i = Player.worldLevel;
+                    i_31_ += i_30_;
+                    if(i_31_ >= 65536) {
+                        i_31_ -= 65536;
+                        if(i_25_ > i_22_)
+                            i_22_++;
+                        else if(i_22_ > i_25_)
+                            i_22_--;
+                        if((tile_flags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
+                            i = Player.worldLevel;
+                    }
+                }
+            }
+        }
+        if((tile_flags[Player.worldLevel][Player.localPlayer.worldX >> 7][Player.localPlayer.worldY >> 7] & 0x4) != 0)
+            i = Player.worldLevel;
+        return i;
+
+    }
+
+    public static void addObject(int objectId, int localX, int localY, int plane, int face, int type, Scene scene, CollisionMap collisionMap) {
+        if(!VertexNormal.lowMemory || (0x2 & tile_flags[0][localX][localY]) != 0 || (0x10 & tile_flags[plane][localX][localY]) == 0 && onBuildTimePlane == Class59.getVisibilityPlaneFor(plane, localY, 0, localX)) {
+            if(lowestPlane > plane)
+                lowestPlane = plane;
+            int vertexHeight = tile_height[plane][localX][localY];
+            int vertexHeightRight = tile_height[plane][localX + 1][localY];
+            int vertexHeightTopRight = tile_height[plane][localX + 1][localY + 1];
+            int vertexHeightTop = tile_height[plane][localX][localY + 1];
+            int vertexMix = vertexHeight + vertexHeightRight + vertexHeightTopRight + vertexHeightTop >> 2;
+            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(objectId);
+            int hash = localX + (localY << 7) + (objectId << 14) + 1073741824;
+            int objectConfig = (byte) ((face << 6) + type);
+            if(gameObjectDefinition.supportsItems == 1)
+                objectConfig += 256;
+            if(gameObjectDefinition.hasActions == 0)
+                hash += -2147483648;
+            if(gameObjectDefinition.hasSounds())
+                SoundSystem.addObjectSounds(localY, plane, face, localX, gameObjectDefinition);
+            if(type == 22) {
+                if(!VertexNormal.lowMemory || gameObjectDefinition.hasActions != 0 || gameObjectDefinition.obstructsGround) {
+                    Renderable renderable;
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 22, vertexHeightRight);
+                    else
+                        renderable = new GameObject(objectId, 22, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                    scene.addGroundDecoration(localX, localY, plane, vertexMix, hash, renderable, objectConfig);
+                    if(gameObjectDefinition.solid && gameObjectDefinition.hasActions == 1 && collisionMap != null)
+                        collisionMap.markBlocked(localY, localX);
+                }
+            } else if(type == 10 || type == 11) {
+                Renderable renderable;
+                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 10, vertexHeightRight);
+                else
+                    renderable = new GameObject(objectId, 10, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                if(renderable != null) {
+                    int i_40_;
+                    int i_41_;
+                    if(face == 1 || face == 3) {
+                        i_40_ = gameObjectDefinition.sizeX;
+                        i_41_ = gameObjectDefinition.sizeY;
+                    } else {
+                        i_41_ = gameObjectDefinition.sizeX;
+                        i_40_ = gameObjectDefinition.sizeY;
+                    }
+                    int i_42_ = 0;
+                    if(type == 11)
+                        i_42_ += 256;
+                    if(scene.addEntityB(localX, localY, plane, vertexMix, i_42_, i_40_, i_41_, hash, renderable, objectConfig) && gameObjectDefinition.castsShadow) {
+                        Model class40_sub5_sub17_sub5;
+                        if(renderable instanceof Model)
+                            class40_sub5_sub17_sub5 = (Model) renderable;
+                        else
+                            class40_sub5_sub17_sub5 = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 10, vertexHeightRight);
+                        if(class40_sub5_sub17_sub5 != null) {
+                            for(int i_43_ = 0; i_43_ <= i_41_; i_43_++) {
+                                for(int i_44_ = 0; i_40_ >= i_44_; i_44_++) {
+                                    int i_45_ = class40_sub5_sub17_sub5.method805() / 4;
+                                    if(i_45_ > 30)
+                                        i_45_ = 30;
+                                    if(i_45_ > Landscape.tileShadowIntensity[plane][localX + i_43_][localY + i_44_])
+                                        Landscape.tileShadowIntensity[plane][i_43_ + localX][localY + i_44_] = (byte) i_45_;
+                                }
+                            }
+                        }
+                    }
+                }
+                if(gameObjectDefinition.solid && collisionMap != null)
+                    collisionMap.unmarkSolidOccupant(localX, localY, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, face, gameObjectDefinition.walkable);
+            } else if(type >= 12) {
+                Renderable renderable;
+                if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
+                    renderable = new GameObject(objectId, type, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                else
+                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, vertexHeightRight);
+                scene.addEntityB(localX, localY, plane, vertexMix, 0, 1, 1, hash, renderable, objectConfig);
+                if(type >= 12 && type <= 17 && type != 13 && plane > 0)
+                    Landscape.tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY], 2340);
+                if(gameObjectDefinition.solid && collisionMap != null)
+                    collisionMap.unmarkSolidOccupant(localX, localY, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, face, gameObjectDefinition.walkable);
+            } else if(type == 0) {
+                Renderable renderable;
+                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 0, vertexHeightRight);
+                else
+                    renderable = new GameObject(objectId, 0, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                scene.addWall(localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face], 0, hash, renderable, null, objectConfig);
+                if(face == 0) {
+                    if(gameObjectDefinition.castsShadow) {
+                        Landscape.tileShadowIntensity[plane][localX][localY] = (byte) 50;
+                        Landscape.tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
+                    }
+                    if(gameObjectDefinition.wall)
+                        Landscape.tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY], 585);
+                } else if(face == 1) {
+                    if(gameObjectDefinition.castsShadow) {
+                        Landscape.tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
+                        Landscape.tileShadowIntensity[plane][localX + 1][1 + localY] = (byte) 50;
+                    }
+                    if(gameObjectDefinition.wall)
+                        Landscape.tileCullingBitsets[plane][localX][localY + 1] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY + 1], 1170);
+                } else if(face == 2) {
+                    if(gameObjectDefinition.castsShadow) {
+                        Landscape.tileShadowIntensity[plane][1 + localX][localY] = (byte) 50;
+                        Landscape.tileShadowIntensity[plane][localX + 1][1 + localY] = (byte) 50;
+                    }
+                    if(gameObjectDefinition.wall)
+                        Landscape.tileCullingBitsets[plane][localX + 1][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX + 1][localY], 585);
+                } else if(face == 3) {
+                    if(gameObjectDefinition.castsShadow) {
+                        Landscape.tileShadowIntensity[plane][localX][localY] = (byte) 50;
+                        Landscape.tileShadowIntensity[plane][localX + 1][localY] = (byte) 50;
+                    }
+                    if(gameObjectDefinition.wall)
+                        Landscape.tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY], 1170);
+                }
+                if(gameObjectDefinition.solid && collisionMap != null)
+                    collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
+                if(gameObjectDefinition.setDecorDisplacement != 16)
+                    scene.method115(plane, localX, localY, gameObjectDefinition.setDecorDisplacement);
+            } else if(type == 1) {
+                Renderable renderable;
+                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 1, vertexHeightRight);
+                else
+                    renderable = new GameObject(objectId, 1, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                scene.addWall(localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
+                if(gameObjectDefinition.castsShadow) {
+                    if(face == 0)
+                        Landscape.tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
+                    else if(face == 1)
+                        Landscape.tileShadowIntensity[plane][localX + 1][1 + localY] = (byte) 50;
+                    else if(face == 2)
+                        Landscape.tileShadowIntensity[plane][localX + 1][localY] = (byte) 50;
+                    else if(face == 3)
+                        Landscape.tileShadowIntensity[plane][localX][localY] = (byte) 50;
+                }
+                if(gameObjectDefinition.solid && collisionMap != null)
+                    collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
+            } else if(type == 2) {
+                int i_46_ = 0x3 & face + 1;
+                Renderable renderable;
+                Renderable renderable_47_;
+                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null) {
+                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face + 4, vertexHeight, 2, vertexHeightRight);
+                    renderable_47_ = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, i_46_, vertexHeight, 2, vertexHeightRight);
+                } else {
+                    renderable = new GameObject(objectId, 2, 4 + face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                    renderable_47_ = new GameObject(objectId, 2, i_46_, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                }
+                scene.addWall(localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face], SceneCluster.anIntArray761[i_46_], hash, renderable, renderable_47_, objectConfig);
+                if(gameObjectDefinition.wall) {
+                    if(face == 0) {
+                        Landscape.tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY], 585);
+                        Landscape.tileCullingBitsets[plane][localX][localY + 1] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY + 1], 1170);
+                    } else if(face == 1) {
+                        Landscape.tileCullingBitsets[plane][localX][1 + localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][1 + localY], 1170);
+                        Landscape.tileCullingBitsets[plane][1 + localX][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][1 + localX][localY], 585);
+                    } else if(face == 2) {
+                        Landscape.tileCullingBitsets[plane][localX + 1][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX + 1][localY], 585);
+                        Landscape.tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY], 1170);
+                    } else if(face == 3) {
+                        Landscape.tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY], 1170);
+                        Landscape.tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY], 585);
+                    }
+                }
+                if(gameObjectDefinition.solid && collisionMap != null)
+                    collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
+                if(gameObjectDefinition.setDecorDisplacement != 16)
+                    scene.method115(plane, localX, localY, gameObjectDefinition.setDecorDisplacement);
+            } else if(type == 3) {
+                Renderable renderable;
+                if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
+                    renderable = new GameObject(objectId, 3, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                else
+                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 3, vertexHeightRight);
+                scene.addWall(localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
+                if(gameObjectDefinition.castsShadow) {
+                    if(face != 0) {
+                        if(face == 1)
+                            Landscape.tileShadowIntensity[plane][1 + localX][localY + 1] = (byte) 50;
+                        else if(face == 2)
+                            Landscape.tileShadowIntensity[plane][localX + 1][localY] = (byte) 50;
+                        else if(face == 3)
+                            Landscape.tileShadowIntensity[plane][localX][localY] = (byte) 50;
+                    } else
+                        Landscape.tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
+                }
+                if(gameObjectDefinition.solid && collisionMap != null)
+                    collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
+            } else if(type == 9) {
+                Renderable renderable;
+                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, vertexHeightRight);
+                else
+                    renderable = new GameObject(objectId, type, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                scene.addEntityB(localX, localY, plane, vertexMix, 0, 1, 1, hash, renderable, objectConfig);
+                if(gameObjectDefinition.solid && collisionMap != null)
+                    collisionMap.unmarkSolidOccupant(localX, localY, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, face, gameObjectDefinition.walkable);
+            } else {
+                if(gameObjectDefinition.adjustToTerrain) {
+                    if(face == 1) {
+                        int i_48_ = vertexHeightTop;
+                        vertexHeightTop = vertexHeightTopRight;
+                        vertexHeightTopRight = vertexHeightRight;
+                        vertexHeightRight = vertexHeight;
+                        vertexHeight = i_48_;
+                    } else if(face == 2) {
+                        int i_49_ = vertexHeightTop;
+                        vertexHeightTop = vertexHeightRight;
+                        vertexHeightRight = i_49_;
+                        i_49_ = vertexHeightTopRight;
+                        vertexHeightTopRight = vertexHeight;
+                        vertexHeight = i_49_;
+                    } else if(face == 3) {
+                        int i_50_ = vertexHeightTop;
+                        vertexHeightTop = vertexHeight;
+                        vertexHeight = vertexHeightRight;
+                        vertexHeightRight = vertexHeightTopRight;
+                        vertexHeightTopRight = i_50_;
+                    }
+                }
+                if(type == 4) {
+                    Renderable renderable;
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
+                    else
+                        renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, 512 * face, hash, renderable, objectConfig, SceneCluster.anIntArray761[face]);
+                } else if(type == 5) {
+                    int i_51_ = scene.method122(plane, localX, localY);
+                    int i_52_ = 16;
+                    if(i_51_ > 0)
+                        i_52_ = GameObjectDefinition.getDefinition((0x1fffedf2 & i_51_) >> 14).setDecorDisplacement;
+                    Renderable renderable;
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
+                    else
+                        renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, i_52_ * anIntArray666[face], ProducingGraphicsBuffer_Sub1.anIntArray2207[face] * i_52_, face * 512, hash, renderable, objectConfig, SceneCluster.anIntArray761[face]);
+                } else if(type == 6) {
+                    Renderable renderable;
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
+                    else
+                        renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, face, hash, renderable, objectConfig, 256);
+                } else if(type == 7) {
+                    Renderable renderable;
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
+                    else
+                        renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, face, hash, renderable, objectConfig, 512);
+                } else if(type == 8) {
+                    Renderable renderable;
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
+                    else
+                        renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, face, hash, renderable, objectConfig, 768);
+                }
+            }
+        }
+
+    }
+
+    public static void method940(String arg1, boolean arg2, String arg3) {
+        if(clearScreen) {
+            clearScreen = false;
+            drawWelcomeScreenGraphics();
+            LinkedList.drawChatBoxGraphics();
+            Class55.drawTabGraphics();
+            ActorDefinition.drawMapBack();
+            Main.method943(ChatBox.tradeMode, fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
+            method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
+            showSidePanelRedrawnText = true;
+            Class40_Sub3.showIconsRedrawnText = true;
+            showChatPanelRedrawnText = true;
+        }
+        int i = 151;
+        Class65.method1018();
+        i -= 3;
+        fontNormal.drawStringLeft(arg1, 257, i, 0);
+        fontNormal.drawStringLeft(arg1, 256, i + -1, 16777215);
+        if(arg3 != null) {
+            i += 15;
+            if(arg2) {
+                int i_0_ = 4 + fontNormal.getStringWidth(arg3);
+                Rasterizer.drawFilledRectangle(257 - i_0_ / 2, -11 + i, i_0_, 11, 0);
+            }
+            fontNormal.drawStringLeft(arg3, 257, i, 0);
+            fontNormal.drawStringLeft(arg3, 256, i - 1, 16777215);
+        }
+        Player.drawGameScreenGraphics();
+    }
+
+    public static String method532(GameInterface gameInterface, String arg2) {
+        if (arg2.contains(Native.percent)) {
+            for (; ; ) {
+                int i = arg2.indexOf(Native.percentOne);
+                if (i == -1)
+                    break;
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(0, gameInterface)) + arg2.substring(2 + i);
+            }
+            for (; ; ) {
+                int i = arg2.indexOf(Native.percentTwo);
+                if (i == -1)
+                    break;
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(1, gameInterface)) + arg2.substring(i + 2);
+            }
+            for (; ; ) {
+                int i = arg2.indexOf(Native.percentThree);
+                if (i == -1)
+                    break;
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(2, gameInterface)) + arg2.substring(2 + i);
+            }
+            for (; ; ) {
+                int i = arg2.indexOf(Native.percentFour);
+                if (i == -1)
+                    break;
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(3, gameInterface)) + arg2.substring(i + 2);
+            }
+            for (; ; ) {
+                int i = arg2.indexOf(Native.percentFive);
+                if (i == -1)
+                    break;
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(4, gameInterface)) + arg2.substring(i + 2);
+            }
+            for (; ; ) {
+                // check client script results for value
+                int i = arg2.indexOf(Native.percentDns);
+                if (i == -1)
+                    break;
+                String str = "";
+                if (Class12.aSignlinkNode_394 != null) {
+                    str = method204(Class12.aSignlinkNode_394.integerData);
+                    if (Class12.aSignlinkNode_394.value != null) {
+                        byte[] is = ((String) Class12.aSignlinkNode_394.value).getBytes(StandardCharsets.ISO_8859_1);
+                        str = InteractiveObject.method279(is, 0, is.length).toString();
+                    }
+                }
+                arg2 = arg2.substring(0, i) + str + arg2.substring(i + 4);
+            }
+        }
+        return arg2;
+    }
+
+    public static String getCombatLevelColour(int arg0, int arg1) {
+        int diff = -arg1 + arg0;
+        if (diff < -9)
+            return Native.red;
+        if (diff < -6)
+            return Native.orange3;
+        if (diff < -3)
+            return Native.orange2;
+        if (diff < 0)
+            return Native.orange1;
+        if (diff > 9)
+            return Native.green;
+        if (diff > 6)
+            return Native.green3;
+        if (diff > 3)
+            return Native.green2;
+        if (diff > 0)
+            return Native.green1;
+        return Native.yellow;
+    }
+
+    public static void drawMenuTooltip(int arg0) {
+        if (menuActionRow >= 2 || itemSelected != 0 || Main.widgetSelected != 0) {
+            String class1;
+            if (itemSelected == 1 && menuActionRow < 2)
+                class1 = English.use + Native.whitespace + Native.selectedItemName + Native.targetThingArrow;
+            else if (Main.widgetSelected != 1 || menuActionRow >= 2)
+                class1 = Landscape.menuActionTexts[-1 + menuActionRow];
+            else
+                class1 = Native.selectedSpellVerb + Native.whitespace + Native.selectedSpellName + Native.targetThingArrow;
+            if (menuActionRow > 2)
+                class1 = class1 + Native.whiteSlash + (menuActionRow + -2) + English.suffixMoreOptions;
+            if (arg0 == 4)
+                TypeFace.fontBold.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, pulseCycle / 1000);
+        }
     }
 }

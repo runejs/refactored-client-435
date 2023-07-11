@@ -1,6 +1,5 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.input.MouseHandler;
@@ -8,7 +7,6 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.Timer;
 
@@ -27,6 +25,8 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public static long exitTimeInMillis = 0L;
     public static Frame clientFrame;
     public static GameShell currentGameShell = null;
+    public static int fps = 0;
+    private static volatile boolean clientFocused = true;
     private final int millisPerTick = 20;
     public boolean gameShellError = false;
 
@@ -58,7 +58,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             }
         }
         setCanvas();
-        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = MovedStatics.createGraphicsBuffer(Class12.width, IdentityKit.height, MouseHandler.gameCanvas);
+        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = MovedStatics.createGraphicsBuffer(Class12.width, MovedStatics.height, MouseHandler.gameCanvas);
         startup();
         SceneCluster.gameTimer = Timer.create();
         SceneCluster.gameTimer.start();
@@ -77,7 +77,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                 MouseHandler.currentTickSample = 0x1f & MouseHandler.currentTickSample + 1;
 
                 synchronized (this) {
-                    MovedStatics.aBoolean571 = GenericTile.clientFocused;
+                    MovedStatics.aBoolean571 = clientFocused;
                 }
 
                 processGameLoop();
@@ -163,7 +163,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     public abstract void processGameLoop();
 
     public void focusLost(FocusEvent arg0) {
-        GenericTile.clientFocused = false;
+        clientFocused = false;
     }
 
     public abstract void method24();
@@ -174,7 +174,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             if (Signlink.javaVersion == null || !Signlink.javaVersion.startsWith("1.5") || -MovedStatics.aLong174 + System.currentTimeMillis() <= 1000L)
                 return;
             Rectangle rectangle = arg0.getClipBounds();
-            if (rectangle == null || rectangle.width >= Class12.width && rectangle.height >= IdentityKit.height)
+            if (rectangle == null || rectangle.width >= Class12.width && rectangle.height >= MovedStatics.height)
                 MovedStatics.aBoolean1575 = true;
         }
     }
@@ -189,7 +189,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
     }
 
     public void focusGained(FocusEvent arg0) {
-        GenericTile.clientFocused = true;
+        clientFocused = true;
         MovedStatics.clearScreen = true;
     }
 
@@ -209,7 +209,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         }
         Class12.width = height;
         Class39.anInt901 = clientVersion;
-        IdentityKit.height = width;
+        MovedStatics.height = width;
         currentGameShell = this;
         if (Main.signlink == null) {
             try {
@@ -235,7 +235,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         if (lastTickInMillis != 0 && currentTimeMillis > lastTickInMillis) {
             int i = (int) (currentTimeMillis - lastTickInMillis);
             int maxSamples = tickSamples.length;
-            GenericTile.fps = ((i >> 1) + (maxSamples * 1000)) / i;
+            fps = ((i >> 1) + (maxSamples * 1000)) / i;
         }
 
         // Increases the current tick identifier by 1, looping at 31 back to 0 (including 31)
@@ -245,7 +245,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         if (MovedStatics.anInt938++ > 50) {
             MovedStatics.anInt938 -= 50;
             MovedStatics.clearScreen = true;
-            MouseHandler.gameCanvas.setSize(Class12.width, IdentityKit.height);
+            MouseHandler.gameCanvas.setSize(Class12.width, MovedStatics.height);
             MouseHandler.gameCanvas.setVisible(true);
             MouseHandler.gameCanvas.setBackground(Color.BLACK);
             if (clientFrame == null)
@@ -272,7 +272,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             int width = 765;
             Class39.anInt901 = clientVersion;
             Class12.width = width;
-            IdentityKit.height = height;
+            MovedStatics.height = height;
             currentGameShell = this;
             clientFrame = new Frame();
             clientFrame.setTitle(Configuration.SERVER_DISPLAY_NAME);
@@ -328,7 +328,7 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         }
         MouseHandler.gameCanvas = new RSCanvas(this);
         container.add(MouseHandler.gameCanvas);
-        MouseHandler.gameCanvas.setSize(Class12.width, IdentityKit.height);
+        MouseHandler.gameCanvas.setSize(Class12.width, MovedStatics.height);
         MouseHandler.gameCanvas.setVisible(true);
         if (clientFrame != null) {
             Insets insets = clientFrame.getInsets();

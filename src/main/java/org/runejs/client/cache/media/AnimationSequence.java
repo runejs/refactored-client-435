@@ -3,22 +3,19 @@ package org.runejs.client.cache.media;
 import org.runejs.client.*;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.GameObjectDefinition;
-import org.runejs.client.cache.def.OverlayDefinition;
+import org.runejs.client.cache.media.gameInterface.GameInterface;
+import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.node.CachedNode;
-import org.runejs.client.scene.util.CollisionMap;
-import org.runejs.client.util.BitUtils;
 
 public class AnimationSequence extends CachedNode {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
     public static int anInt2480 = 0;
-    public static ImageRGB minimapCompass;
     public static CacheArchive aCacheArchive_2484;
-    public static int[][] tileLightIntensity;
 
     public int[] frameLengths;
     public int precedenceAnimating = -1;
@@ -41,26 +38,6 @@ public class AnimationSequence extends CachedNode {
         maxLoops = 99;
         frameStep = -1;
         stretches = false;
-    }
-
-    public static void loadTerrainBlock(CollisionMap[] collisions, int regionX_maybe, byte[] blockData, int offsetX, int offsetY, int regionY_maybe) {
-        for(int i = 0; i < 4; i++) {
-            for(int i_1_ = 0; i_1_ < 64; i_1_++) {
-                for(int i_2_ = 0; i_2_ < 64; i_2_++) {
-                    if(offsetX + i_1_ > 0 && i_1_ + offsetX < 103 && offsetY + i_2_ > 0 && i_2_ + offsetY < 103)
-                        collisions[i].clippingData[i_1_ + offsetX][i_2_ + offsetY] = BitUtils.bitWiseAND(collisions[i].clippingData[i_1_ + offsetX][i_2_ + offsetY], -16777217);
-                }
-            }
-        }
-        Buffer class40_sub1 = new Buffer(blockData);
-        if(true) {
-            for(int plane = 0; plane < 4; plane++) {
-                for(int tileX = 0; tileX < 64; tileX++) {
-                    for(int tileY = 0; tileY < 64; tileY++)
-                        MovedStatics.method922(tileX + offsetX, 0, class40_sub1, tileY + offsetY, regionY_maybe, regionX_maybe, plane);
-                }
-            }
-        }
     }
 
     public static boolean method596(int arg0, int arg1, byte junk, int arg3) {
@@ -88,10 +65,10 @@ public class AnimationSequence extends CachedNode {
             }
             Pathfinding.doObjectWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], arg0, arg3, i_18_, i_19_, i_17_, 0, 0);
         }
-        ClientScriptRunner.crossX = Class57.clickX;
+        GameInterface.crossX = MouseHandler.clickX;
         LinkedList.crossType = 2;
-        MovedStatics.crossY = RSString.clickY;
-        OverlayDefinition.crossIndex = 0;
+        GameInterface.crossY = MouseHandler.clickY;
+        MovedStatics.crossIndex = 0;
         return true;
     }
 

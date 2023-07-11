@@ -1,10 +1,8 @@
 package org.runejs.client.scene;
 
-import org.runejs.client.Class13;
-import org.runejs.client.Landscape;
 import org.runejs.client.LinkedList;
 import org.runejs.client.MovedStatics;
-import org.runejs.client.cache.def.OverlayDefinition;
+import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Model;
@@ -64,6 +62,11 @@ public class Scene {
     public static boolean[][][][] TILE_VISIBILITY_MAPS = new boolean[8][32][(TILE_DRAW_DISTANCE * 2) + 1][(TILE_DRAW_DISTANCE * 2) + 1];
     public static int drawHeightMidpoint;
     public static int drawWidth;
+    public static int[] screenY = new int[6];
+    public static int[] viewspaceZ = new int[6];
+    public static int[] screenX = new int[6];
+    public static int[] viewspaceX = new int[6];
+    public static int[] viewspaceY = new int[6];
 
     public SceneTile[][][] tileArray;
     public int[][][] anIntArrayArrayArray83;
@@ -1754,7 +1757,7 @@ public class Scene {
                 clickedTileX = tileX;
                 clickedTileY = tileY;
             }
-            if (isMouseWithinTriangle(Class13.mouseX, Landscape.mouseY, screenYD, screenYC, screenYB, screenXD, screenXC, screenXB)) {
+            if (isMouseWithinTriangle(MouseHandler.mouseX, MouseHandler.mouseY, screenYD, screenYC, screenYB, screenXD, screenXC, screenXB)) {
                 hoveredTileX = tileX;
                 hoveredTileY = tileY;
             }
@@ -1778,7 +1781,7 @@ public class Scene {
                 clickedTileY = tileY;
             }
 
-            if (isMouseWithinTriangle(Class13.mouseX, Landscape.mouseY, screenYA, screenYB, screenYC, screenXA, screenXB, screenXC)) {
+            if (isMouseWithinTriangle(MouseHandler.mouseX, MouseHandler.mouseY, screenYA, screenYB, screenYC, screenXA, screenXB, screenXC)) {
                 hoveredTileX = tileX;
                 hoveredTileY = tileY;
             }
@@ -1951,25 +1954,25 @@ public class Scene {
     public void renderShapedTile(ComplexTile shapedTile, int tileX, int tileY, int sineX, int cosineX, int sineY, int cosineY) {
         int triangleCount = shapedTile.originalVertexX.length;
         for (int triangle = 0; triangle < triangleCount; triangle++) {
-            int viewspaceX = shapedTile.originalVertexX[triangle] - cameraPosX;
-            int viewspaceY = shapedTile.originalVertexY[triangle] - cameraPosZ;
-            int viewspaceZ = shapedTile.originalVertexZ[triangle] - cameraPosY;
-            int temp = viewspaceZ * sineX + viewspaceX * cosineX >> 16;
-            viewspaceZ = viewspaceZ * cosineX - viewspaceX * sineX >> 16;
-            viewspaceX = temp;
-            temp = viewspaceY * cosineY - viewspaceZ * sineY >> 16;
-            viewspaceZ = viewspaceY * sineY + viewspaceZ * cosineY >> 16;
-            viewspaceY = temp;
-            if (viewspaceZ < 50) {
+            int viewX = shapedTile.originalVertexX[triangle] - cameraPosX;
+            int viewY = shapedTile.originalVertexY[triangle] - cameraPosZ;
+            int viewZ = shapedTile.originalVertexZ[triangle] - cameraPosY;
+            int temp = viewZ * sineX + viewX * cosineX >> 16;
+            viewZ = viewZ * cosineX - viewX * sineX >> 16;
+            viewX = temp;
+            temp = viewY * cosineY - viewZ * sineY >> 16;
+            viewZ = viewY * sineY + viewZ * cosineY >> 16;
+            viewY = temp;
+            if (viewZ < 50) {
                 return;
             }
             if (shapedTile.triangleTexture != null) {
-                ComplexTile.viewspaceX[triangle] = viewspaceX;
-                ComplexTile.viewspaceY[triangle] = viewspaceY;
-                ComplexTile.viewspaceZ[triangle] = viewspaceZ;
+                viewspaceX[triangle] = viewX;
+                viewspaceY[triangle] = viewY;
+                viewspaceZ[triangle] = viewZ;
             }
-            ComplexTile.screenX[triangle] = Rasterizer3D.center_x + (viewspaceX << 9) / viewspaceZ;
-            ComplexTile.screenY[triangle] = Rasterizer3D.center_y + (viewspaceY << 9) / viewspaceZ;
+            screenX[triangle] = Rasterizer3D.center_x + (viewX << 9) / viewZ;
+            screenY[triangle] = Rasterizer3D.center_y + (viewY << 9) / viewZ;
         }
         Rasterizer3D.alpha = 0;
         triangleCount = shapedTile.triangleA.length;
@@ -1977,12 +1980,12 @@ public class Scene {
             int a = shapedTile.triangleA[triangle];
             int b = shapedTile.triangleB[triangle];
             int c = shapedTile.triangleC[triangle];
-            int screenXA = ComplexTile.screenX[a];
-            int screenXB = ComplexTile.screenX[b];
-            int screenXC = ComplexTile.screenX[c];
-            int screenYA = ComplexTile.screenY[a];
-            int screenYB = ComplexTile.screenY[b];
-            int screenYC = ComplexTile.screenY[c];
+            int screenXA = screenX[a];
+            int screenXB = screenX[b];
+            int screenXC = screenX[c];
+            int screenYA = screenY[a];
+            int screenYB = screenY[b];
+            int screenYC = screenY[c];
             if ((screenXA - screenXB) * (screenYC - screenYB) - (screenYA - screenYB) * (screenXC - screenXB) > 0) {
                 Rasterizer3D.restrict_edges = screenXA < 0 || screenXB < 0 || screenXC < 0 || screenXA > Rasterizer3D.viewportRx || screenXB > Rasterizer3D.viewportRx || screenXC > Rasterizer3D.viewportRx;
                 if (clicked && isMouseWithinTriangle(clickX, clickY, screenYA, screenYB, screenYC, screenXA, screenXB, screenXC)) {
@@ -1990,7 +1993,7 @@ public class Scene {
                     clickedTileY = tileY;
                 }
 
-                if (isMouseWithinTriangle(Class13.mouseX, Landscape.mouseY, screenYA, screenYB, screenYC, screenXA, screenXB, screenXC)) {
+                if (isMouseWithinTriangle(MouseHandler.mouseX, MouseHandler.mouseY, screenYA, screenYB, screenYC, screenXA, screenXB, screenXC)) {
                     hoveredTileX = tileX;
                     hoveredTileY = tileY;
                 }
@@ -2003,9 +2006,9 @@ public class Scene {
                     int i_240_ = Rasterizer3D.interface3.getAverageTextureColour(shapedTile.triangleTexture[triangle]);
                     Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, method108(i_240_, shapedTile.triangleHSLA[triangle]), method108(i_240_, shapedTile.triangleHSLB[triangle]), method108(i_240_, shapedTile.triangleHSLC[triangle]));
                 } else if (shapedTile.flat) {
-                    Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, shapedTile.triangleHSLA[triangle], shapedTile.triangleHSLB[triangle], shapedTile.triangleHSLC[triangle], ComplexTile.viewspaceX[0], ComplexTile.viewspaceX[1], ComplexTile.viewspaceX[3], ComplexTile.viewspaceY[0], ComplexTile.viewspaceY[1], ComplexTile.viewspaceY[3], ComplexTile.viewspaceZ[0], ComplexTile.viewspaceZ[1], ComplexTile.viewspaceZ[3], shapedTile.triangleTexture[triangle]);
+                    Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, shapedTile.triangleHSLA[triangle], shapedTile.triangleHSLB[triangle], shapedTile.triangleHSLC[triangle], viewspaceX[0], viewspaceX[1], viewspaceX[3], viewspaceY[0], viewspaceY[1], viewspaceY[3], viewspaceZ[0], viewspaceZ[1], viewspaceZ[3], shapedTile.triangleTexture[triangle]);
                 } else {
-                    Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, shapedTile.triangleHSLA[triangle], shapedTile.triangleHSLB[triangle], shapedTile.triangleHSLC[triangle], ComplexTile.viewspaceX[a], ComplexTile.viewspaceX[b], ComplexTile.viewspaceX[c], ComplexTile.viewspaceY[a], ComplexTile.viewspaceY[b], ComplexTile.viewspaceY[c], ComplexTile.viewspaceZ[a], ComplexTile.viewspaceZ[b], ComplexTile.viewspaceZ[c], shapedTile.triangleTexture[triangle]);
+                    Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, shapedTile.triangleHSLA[triangle], shapedTile.triangleHSLB[triangle], shapedTile.triangleHSLC[triangle], viewspaceX[a], viewspaceX[b], viewspaceX[c], viewspaceY[a], viewspaceY[b], viewspaceY[c], viewspaceZ[a], viewspaceZ[b], viewspaceZ[c], shapedTile.triangleTexture[triangle]);
                 }
             }
         }
@@ -2187,6 +2190,6 @@ public class Scene {
     }
 
     public static int getFloorDrawHeight(int plane, int x, int y) {
-        return getFloorDrawHeight(plane, x, y, MovedStatics.tile_height, OverlayDefinition.tile_flags);
+        return getFloorDrawHeight(plane, x, y, MovedStatics.tile_height, MovedStatics.tile_flags);
     }
 }

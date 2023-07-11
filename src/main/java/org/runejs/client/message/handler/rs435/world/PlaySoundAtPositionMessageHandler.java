@@ -1,7 +1,6 @@
 package org.runejs.client.message.handler.rs435.world;
 
 import org.runejs.client.MovedStatics;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.world.PlaySoundAtPositionInboundMessage;
@@ -10,7 +9,7 @@ import org.runejs.client.sound.SoundSystem;
 public class PlaySoundAtPositionMessageHandler implements MessageHandler<PlaySoundAtPositionInboundMessage> {
     @Override
     public void handle(PlaySoundAtPositionInboundMessage message) {
-        int localY = message.y + OverlayDefinition.placementY;
+        int localY = message.y + MovedStatics.placementY;
         int localX = message.x + MovedStatics.placementX;
 
         if (localX >= 0 && localY >= 0 && localX < 104 && localY < 104) {

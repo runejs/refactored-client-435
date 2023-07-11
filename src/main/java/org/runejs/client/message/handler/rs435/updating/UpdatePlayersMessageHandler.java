@@ -2,7 +2,6 @@ package org.runejs.client.message.handler.rs435.updating;
 
 import org.runejs.client.Class17;
 import org.runejs.client.MovedStatics;
-import org.runejs.client.Projectile;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
@@ -211,7 +210,7 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
 
             // parse and apply direction
             int initialFaceDirection = playerUpdate.faceDirection;
-            int faceDirection = Projectile.directions[initialFaceDirection];
+            int faceDirection = MovedStatics.directions[initialFaceDirection];
             if(bool)
                 player.initialFaceDirection = faceDirection;
 

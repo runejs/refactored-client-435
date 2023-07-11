@@ -1,6 +1,5 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.io.Buffer;
@@ -10,9 +9,7 @@ import org.runejs.client.scene.util.CollisionMap;
 
 public class Class44 implements Runnable {
     public static int[][] xteaKeys;
-    public static int modewhat = 0;
     public static byte[][] aByteArrayArray1039 = new byte[250][];
-    public static int modewhere = 0;
     public static IndexedImage chatboxBackgroundImage;
     public static int anInt1049 = 0;
 
@@ -143,7 +140,7 @@ public class Class44 implements Runnable {
                     } else if(class40_sub6.anInt2112 == 1) {
                         class40_sub6.aByteArray2102 = class40_sub6.cacheIndex.get((int) class40_sub6.key);
                         synchronized(RSCanvas.aLinkedList_53) {
-                            IdentityKit.aLinkedList_2604.addLast(class40_sub6);
+                            MovedStatics.aLinkedList_2604.addLast(class40_sub6);
                         }
                     }
                     synchronized(CollisionMap.anObject162) {

@@ -1,7 +1,6 @@
 package org.runejs.client.message.handler.rs435.world.object;
 
 import org.runejs.client.MovedStatics;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
@@ -16,7 +15,7 @@ public class RotateAnimateObjectMessageHandler implements MessageHandler<RotateA
     @Override
     public void handle(RotateAnimateObjectInboundMessage message) {
         int x = message.x + MovedStatics.placementX;
-        int y = message.y + OverlayDefinition.placementY;
+        int y = message.y + MovedStatics.placementY;
         int objectTypeKey = message.type;
         int objectType = Npc.anIntArray3304[objectTypeKey];
         int orientation = message.orientation;

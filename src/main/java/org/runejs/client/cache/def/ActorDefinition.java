@@ -3,6 +3,7 @@ package org.runejs.client.cache.def;
 import org.runejs.client.*;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.ImageRGB;
+import org.runejs.client.frame.Minimap;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.input.MouseHandler;
@@ -21,13 +22,6 @@ import java.awt.*;
 
 public class ActorDefinition extends CachedNode implements EntityDefinition {
 
-    public static int[] sidebarOffsets;
-    public static int menuActionRow = 0;
-
-    /**
-     * Draw height of the icon in 3d positions.
-     */
-    public static int hintIconPosZ = 0;
     public static int count;
 
     public boolean isClickable = true;
@@ -65,7 +59,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         Npc.anIntArray3312 = null;
         Actor.anIntArray3111 = null;
         Buffer.anIntArray1972 = null;
-        Class57.anIntArray1347 = null;
+        MovedStatics.anIntArray1347 = null;
     }
 
     public static void playAnimation(int animationId, int animationDelay, Player player) {
@@ -94,7 +88,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         try {
             if(ScreenController.frameMode == ScreenMode.FIXED) {
                 Graphics graphics = MouseHandler.gameCanvas.getGraphics();
-                RSString.mapbackProducingGraphicsBuffer.drawGraphics(550, 4, graphics);
+                Minimap.mapbackProducingGraphicsBuffer.drawGraphics(550, 4, graphics);
             }
         } catch(Exception exception) {
             MouseHandler.gameCanvas.repaint();
@@ -107,9 +101,9 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
 
     public static ImageRGB method578() {
         ImageRGB class40_sub5_sub14_sub4 = new ImageRGB();
-        class40_sub5_sub14_sub4.maxWidth = ItemDefinition.imageMaxWidth;
+        class40_sub5_sub14_sub4.maxWidth = MovedStatics.imageMaxWidth;
         class40_sub5_sub14_sub4.maxHeight = MovedStatics.imageMaxHeight;
-        class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[0];
+        class40_sub5_sub14_sub4.offsetX = MovedStatics.anIntArray1347[0];
         class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[0];
         class40_sub5_sub14_sub4.imageWidth = Class17.anIntArray456[0];
         class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[0];

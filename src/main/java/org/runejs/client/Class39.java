@@ -1,6 +1,7 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.media.ImageRGB;
+import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.renderable.actor.Npc;
 
 public class Class39 implements Runnable {
@@ -49,8 +50,8 @@ public class Class39 implements Runnable {
         while(aBoolean913) {
             synchronized(objectLock) {
                 if(coord < 500) {
-                    coordsX[coord] = Class13.mouseX;
-                    coordsY[coord] = Landscape.mouseY;
+                    coordsX[coord] = MouseHandler.mouseX;
+                    coordsY[coord] = MouseHandler.mouseY;
                     coord++;
                 }
             }

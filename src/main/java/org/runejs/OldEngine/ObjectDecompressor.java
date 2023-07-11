@@ -5,10 +5,8 @@ package org.runejs.OldEngine;/*
  */
 
 import org.runejs.client.Class26;
-import org.runejs.client.Projectile;
 import org.runejs.client.Landscape;
 import org.runejs.client.MovedStatics;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.scene.util.CollisionMap;
@@ -128,7 +126,7 @@ public class ObjectDecompressor {
         int localY = y - Class26.baseY; // ??? is this correct?
         int plane = z;
         if(localX > -1 && localY > -1) {
-            if((OverlayDefinition.tile_flags[1][localY][localX] & 2) == 2) {
+            if((MovedStatics.tile_flags[1][localY][localX] & 2) == 2) {
                 plane--;
             }
         }
@@ -138,7 +136,7 @@ public class ObjectDecompressor {
             class20 = groundData[plane];
         }
         if(localY > 0 && localX > 0 && localY < 103 && localX < 103) {
-            Projectile.addObject(objectId, localX, localY, z, rotation, type, Npc.currentScene, class20);
+            MovedStatics.addObject(objectId, localX, localY, z, rotation, type, Npc.currentScene, class20);
         }
     }
 

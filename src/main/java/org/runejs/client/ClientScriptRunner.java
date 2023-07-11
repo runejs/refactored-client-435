@@ -37,12 +37,12 @@ public class ClientScriptRunner extends Node {
     public static String[] scriptStringValues = new String[1000];
     public static int runEnergy = 0;
     public static CacheArchive aCacheArchive_2162;
-    public static int crossX = 0;
     public static String[] localStrings;
     public static int[] localInts;
     public static int[] scriptIntValues = new int[1000];
     public static InvokedScript[] invokedScripts = new InvokedScript[50];
     public static int invokedScriptIndex = 0;
+    private static String[] aClass1Array2964 = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
     public int[] opcodes;
     public int[] errorCodes;
@@ -145,7 +145,7 @@ public class ClientScriptRunner extends Node {
                     }
                     clientScriptRunner.opcodes[i] = opcode;
                     clientScriptRunner.values[i] = val;
-                    clientScriptRunner.valueNodes[i] = signlink.createType10Node(Class26.stringToType(typeString), valName);
+                    clientScriptRunner.valueNodes[i] = signlink.createType10Node(stringToType(typeString), valName);
                 } else if(opcode == 3 || opcode == 4) {
                     String typeString = new String(buffer.getRSString().method80());
                     String functionName = new String(buffer.getRSString().method80());
@@ -165,10 +165,10 @@ public class ClientScriptRunner extends Node {
                     clientScriptRunner.opcodes[i] = opcode;
                     Class[] argTypes = new Class[argCount];
                     for(int j = 0; j < argCount; j++) {
-                        argTypes[j] = Class26.stringToType(argNames[j]);
+                        argTypes[j] = stringToType(argNames[j]);
                     }
 
-                    clientScriptRunner.functionNodes[i] = signlink.method386(argTypes, functionName, Class26.stringToType(typeString));
+                    clientScriptRunner.functionNodes[i] = signlink.method386(argTypes, functionName, stringToType(typeString));
                     clientScriptRunner.argumentValues[i] = argValueData;
                 }
             } catch(ClassNotFoundException classnotfoundexception) {
@@ -879,7 +879,7 @@ public class ClientScriptRunner extends Node {
                                             } else if(scriptOpcode == 4102) {
                                                 String class1 = scriptStringValues[--stringValueIndex];
                                                 int i_77_ = scriptIntValues[--intValueIndex];
-                                                scriptStringValues[stringValueIndex++] = class1 + HuffmanEncoding.method1024(true, i_77_);
+                                                scriptStringValues[stringValueIndex++] = class1 + method1024(true, i_77_);
                                             } else if(scriptOpcode == 4103) {
                                                 String class1 = scriptStringValues[--stringValueIndex];
                                                 scriptStringValues[stringValueIndex++] = class1.toLowerCase();
@@ -890,7 +890,7 @@ public class ClientScriptRunner extends Node {
                                                 int i_79_ = MovedStatics.aCalendar279.get(Calendar.DATE);
                                                 int i_80_ = MovedStatics.aCalendar279.get(Calendar.MONTH);
                                                 int i_81_ = MovedStatics.aCalendar279.get(Calendar.YEAR);
-                                                scriptStringValues[stringValueIndex++] = i_79_ + "-" + Projectile.aClass1Array2964[i_80_] + "-" + i_81_;
+                                                scriptStringValues[stringValueIndex++] = i_79_ + "-" + aClass1Array2964[i_80_] + "-" + i_81_;
                                             } else if(scriptOpcode == 4105) {
                                                 stringValueIndex -= 2;
                                                 String class1 = scriptStringValues[stringValueIndex];
@@ -1078,5 +1078,29 @@ public class ClientScriptRunner extends Node {
             /* empty */
         }
 
+    }
+
+    private static Class stringToType(String typeCode) throws ClassNotFoundException {
+        if(typeCode.equals("B"))
+            return Byte.TYPE;
+        if(typeCode.equals("I"))
+            return Integer.TYPE;
+        if(typeCode.equals("S"))
+            return Short.TYPE;
+        if(typeCode.equals("J"))
+            return Long.TYPE;
+        if(typeCode.equals("Z"))
+            return Boolean.TYPE;
+        if(typeCode.equals("F"))
+            return Float.TYPE;
+        if(typeCode.equals("D"))
+            return Double.TYPE;
+        if(typeCode.equals("C"))
+            return Character.TYPE;
+        return Class.forName(typeCode);
+    }
+
+    private static RSString method1024(boolean arg0, int arg2) {
+        return PacketBuffer.method521(arg0, 10, arg2);
     }
 }

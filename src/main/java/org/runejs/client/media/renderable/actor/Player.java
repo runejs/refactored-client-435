@@ -15,7 +15,6 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.PacketBuffer;
-import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.util.CollisionMap;
 
 import java.awt.*;
@@ -271,16 +270,16 @@ public class Player extends Actor {
     }
 
     public static void processPlayerMenuOptions(Player player, int x, int y, int index) {
-        if (localPlayer != player && ActorDefinition.menuActionRow < 400) {
+        if (localPlayer != player && MovedStatics.menuActionRow < 400) {
             String playerDisplayName;
             if (player.skillLevel == 0)
-                playerDisplayName = player.playerName + SceneTile.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + player.combatLevel + Native.rightParenthesis;
+                playerDisplayName = player.playerName + MovedStatics.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + player.combatLevel + Native.rightParenthesis;
             else
                 playerDisplayName = player.playerName + Native.leftParenthesisWithSpacePrefix + English.prefixSkill + player.skillLevel + Native.rightParenthesis;
             if (MovedStatics.itemSelected == 1) {
                 MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.USE_ITEM_ON_PLAYER.getId(), Native.selectedItemName + Native.arrowActionOnOther + playerDisplayName);
             } else if (Main.widgetSelected == 1) {
-                if ((ItemDefinition.selectedMask & 0x8) == 8) {
+                if ((MovedStatics.selectedMask & 0x8) == 8) {
                     MovedStatics.addActionRow(Native.selectedSpellVerb, index, x, y, ActionRowType.CAST_MAGIC_ON_PLAYER.getId(), Native.selectedSpellName + Native.arrowActionOnOther + playerDisplayName);
                 }
             } else {
@@ -318,7 +317,7 @@ public class Player extends Actor {
                     }
                 }
             }
-            for (int i = 0; i < ActorDefinition.menuActionRow; i++) {
+            for (int i = 0; i < MovedStatics.menuActionRow; i++) {
                 if (MovedStatics.menuActionTypes[i] == 7) {
                     Landscape.menuActionTexts[i] = English.walkHere + Native.whitespace + Native.white + playerDisplayName;
                     break;

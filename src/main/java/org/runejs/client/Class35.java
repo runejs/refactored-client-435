@@ -10,13 +10,11 @@ public class Class35 implements Interface3 {
      */
     public static int hintIconInnerPosY = 0;
     public static boolean aBoolean1734 = false;
-    public static boolean aBoolean1735 = true;
     /**
      * The image used for the highlighted (selected) tab button,
      * for the central tab on the top row.
      */
     public static IndexedImage tabHighlightImageTopMiddle;
-    public static byte[][][] tile_overlay_rotation;
 
     public LinkedList textureCache = new LinkedList();
     public Texture[] textures;

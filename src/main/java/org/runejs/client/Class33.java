@@ -6,7 +6,6 @@ import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.chat.ChatColorEffect;
 import org.runejs.client.chat.ChatShapeEffect;
 import org.runejs.client.frame.ChatBox;
-import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
@@ -14,10 +13,8 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.scene.Point2d;
 import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.scene.tile.FloorDecoration;
 
 public class Class33 {
-    public static int anInt784 = 0;
     public static int[] selectedMenuActions = new int[500];
 
 
@@ -52,7 +49,7 @@ public class Class33 {
                         if(screenPos != null)
                             ProducingGraphicsBuffer_Sub1.headIconSprites[npcDefinition.headIcon].drawImage(-12 + screenPos.x, screenPos.y + -30);
                     }
-                    if(Player.headIconDrawType == 1 && HuffmanEncoding.anInt1545 == Player.npcIds[-Player.localPlayerCount + i] && MovedStatics.pulseCycle % 20 < 10) {
+                    if(Player.headIconDrawType == 1 && MovedStatics.anInt1545 == Player.npcIds[-Player.localPlayerCount + i] && MovedStatics.pulseCycle % 20 < 10) {
                         Point2d screenPos = MovedStatics.getProjectedScreenPosition(actor.anInt3117 + 15, actor.worldY, actor.worldX);
                         if(screenPos != null)
                             MovedStatics.hintIconSprites[0].drawImage(screenPos.x + -12, screenPos.y + -28);
@@ -65,7 +62,7 @@ public class Class33 {
 
                         if (screenPos != null) {
                             if(targetPlayer.isSkulled != -1) {
-                                FloorDecoration.aClass40_Sub5_Sub14_Sub4Array603[targetPlayer.isSkulled].drawImage(screenPos.x - 12, screenPos.y - drawHeight);
+                                MovedStatics.aClass40_Sub5_Sub14_Sub4Array603[targetPlayer.isSkulled].drawImage(screenPos.x - 12, screenPos.y - drawHeight);
                                 drawHeight += 25;
                             }
                             if(targetPlayer.headIcon != -1) {
@@ -295,21 +292,4 @@ public class Class33 {
         return i == ActionRowType.ADD_FRIEND.getId();
     }
 
-    public static int getRotatedTileY(int x, int y, int rotation) {
-        rotation &= 0x3;
-        if(rotation == 0)
-            return y;
-        if(rotation == 1)
-            return 7 + -x;
-        if(rotation == 2)
-            return -y + 7;
-        return x;
-
-    }
-
-    public static void setLoginScreenMessage(String line1, String line2, String line3) {
-        Native.loginScreenMessageLineOne = line1;
-        Native.loginScreenMessageLineTwo = line2;
-        Native.loginScreenMessageLineThree = line3;
-    }
 }
