@@ -5,7 +5,6 @@ package org.runejs.OldEngine;/*
  */
 
 import org.runejs.client.Class26;
-import org.runejs.client.Projectile;
 import org.runejs.client.Landscape;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.io.Buffer;
@@ -137,7 +136,7 @@ public class ObjectDecompressor {
             class20 = groundData[plane];
         }
         if(localY > 0 && localX > 0 && localY < 103 && localX < 103) {
-            Projectile.addObject(objectId, localX, localY, z, rotation, type, Npc.currentScene, class20);
+            MovedStatics.addObject(objectId, localX, localY, z, rotation, type, Npc.currentScene, class20);
         }
     }
 

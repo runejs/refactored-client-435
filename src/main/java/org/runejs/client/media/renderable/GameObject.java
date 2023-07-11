@@ -86,7 +86,7 @@ public class GameObject extends Renderable {
                         logic_y--;
                     if(logic_y >= 0)
                         collisionMap = collisionMaps[logic_y];
-                    Projectile.addObject(object_id, object_x, object_z, tile_y, object_orientation, object_type, scene, collisionMap);
+                    MovedStatics.addObject(object_id, object_x, object_z, tile_y, object_orientation, object_type, scene, collisionMap);
                 }
             }
         }

@@ -176,7 +176,7 @@ public class Minimap extends FramePieceRenderer {
         minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Main.getMinimapRotation(), 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
         minimapBackgroundImage.drawImage(0, 0);
 
-        if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && Projectile.menuScreenArea == 1) {
+        if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && MovedStatics.menuScreenArea == 1) {
             MovedStatics.drawMenu(550, 4);
         }
         ActorDefinition.drawMapBack();

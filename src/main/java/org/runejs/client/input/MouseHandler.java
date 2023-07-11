@@ -57,23 +57,23 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             if(meta != 1) {
                 int x = mouseX;
                 int y = mouseY;
-                if(Projectile.menuScreenArea == 0) {
+                if(MovedStatics.menuScreenArea == 0) {
                     x -= 4;
                     y -= 4;
                 }
-                if(Projectile.menuScreenArea == 1) {
+                if(MovedStatics.menuScreenArea == 1) {
                     y -= 205;
                     x -= 553;
                 }
-                if(Projectile.menuScreenArea == 2) {
+                if(MovedStatics.menuScreenArea == 2) {
                     y -= 357;
                     x -= 17;
                 }
                 if(-10 + InteractiveObject.menuOffsetX > x || 10 + VertexNormal.menuWidth + InteractiveObject.menuOffsetX < x || y < Main.menuOffsetY + -10 || y > Main.menuOffsetY + CollisionMap.menuHeight + 10) {
-                    if(Projectile.menuScreenArea == 1)
+                    if(MovedStatics.menuScreenArea == 1)
                         GameInterface.redrawTabArea = true;
                     MovedStatics.menuOpen = false;
-                    if(Projectile.menuScreenArea == 2)
+                    if(MovedStatics.menuScreenArea == 2)
                         ChatBox.redrawChatbox = true;
                 }
             }
@@ -83,15 +83,15 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 int dx = VertexNormal.menuWidth;
                 int x = clickX;
                 int y = clickY;
-                if(Projectile.menuScreenArea == 0) {
+                if(MovedStatics.menuScreenArea == 0) {
                     x -= 4;
                     y -= 4;
                 }
-                if(Projectile.menuScreenArea == 1) {
+                if(MovedStatics.menuScreenArea == 1) {
                     x -= 553;
                     y -= 205;
                 }
-                if(Projectile.menuScreenArea == 2) {
+                if(MovedStatics.menuScreenArea == 2) {
                     x -= 17;
                     y -= 357;
                 }
@@ -103,10 +103,10 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 }
                 if(id != -1)
                     GameInterface.processMenuActions(id);
-                if(Projectile.menuScreenArea == 1)
+                if(MovedStatics.menuScreenArea == 1)
                     GameInterface.redrawTabArea = true;
                 MovedStatics.menuOpen = false;
-                if(Projectile.menuScreenArea == 2)
+                if(MovedStatics.menuScreenArea == 2)
                     ChatBox.redrawChatbox = true;
             }
         } else {

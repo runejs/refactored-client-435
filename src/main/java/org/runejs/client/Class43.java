@@ -46,7 +46,7 @@ public class Class43 {
             if(!bool)
                 GameInterface.redrawTabArea = true;
         }
-        if(MovedStatics.menuOpen && Projectile.menuScreenArea == 1) {
+        if(MovedStatics.menuOpen && MovedStatics.menuScreenArea == 1) {
             if(MovedStatics.anInt848 == 1)
                 method398();
             else if(ScreenController.frameMode == ScreenMode.FIXED)
@@ -176,15 +176,15 @@ public class Class43 {
             TypeFace.fontBold.drawShadowedString(class1, 3 + i_0_, 14 + i_2_, false, i_3_);
             int i_4_ = MouseHandler.mouseX;
             int i_5_ = MouseHandler.mouseY;
-            if(Projectile.menuScreenArea == 0) {
+            if(MovedStatics.menuScreenArea == 0) {
                 i_4_ -= 4;
                 i_5_ -= 4;
             }
-            if(Projectile.menuScreenArea == 1) {
+            if(MovedStatics.menuScreenArea == 1) {
                 i_4_ -= 553;
                 i_5_ -= 205;
             }
-            if(Projectile.menuScreenArea == 2) {
+            if(MovedStatics.menuScreenArea == 2) {
                 i_5_ -= 357;
                 i_4_ -= 17;
             }

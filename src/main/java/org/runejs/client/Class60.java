@@ -64,7 +64,7 @@ public class Class60 {
         int height = MovedStatics.menuActionRow * 15 + 21;
         if(ScreenController.frameMode == ScreenMode.FIXED){
             if(MouseHandler.clickX > 4 && MouseHandler.clickY > 4 && MouseHandler.clickX < 516 && MouseHandler.clickY < 338) {
-                Projectile.menuScreenArea = 0;
+                MovedStatics.menuScreenArea = 0;
                 CollisionMap.menuHeight = MovedStatics.menuActionRow * 15 + 22;
                 MovedStatics.menuOpen = true;
                 int x = -(width / 2) + -4 + MouseHandler.clickX;
@@ -83,7 +83,7 @@ public class Class60 {
             }
             if(MouseHandler.clickX > 553 && MouseHandler.clickY > 205 && MouseHandler.clickX < 743 && MouseHandler.clickY < 466) {
                 CollisionMap.menuHeight = 22 + 15 * MovedStatics.menuActionRow;
-                Projectile.menuScreenArea = 1;
+                MovedStatics.menuScreenArea = 1;
                 int y = -205 + MouseHandler.clickY;
                 int x = -(width / 2) + -553 + MouseHandler.clickX;
                 if(x < 0)
@@ -102,7 +102,7 @@ public class Class60 {
             }
             if(MouseHandler.clickX > 17 && MouseHandler.clickY > 357 && MouseHandler.clickX < 496 && MouseHandler.clickY < 453) {
                 VertexNormal.menuWidth = width;
-                Projectile.menuScreenArea = 2;
+                MovedStatics.menuScreenArea = 2;
                 CollisionMap.menuHeight = MovedStatics.menuActionRow * 15 + 22;
                 int y = MouseHandler.clickY + -357;
                 if(y >= 0) {
@@ -121,7 +121,7 @@ public class Class60 {
             }
 
         } else if(MouseHandler.clickX > 0 && MouseHandler.clickY > 0 && MouseHandler.clickX < GameShell.clientFrame.getWidth() && MouseHandler.clickY < GameShell.clientFrame.getHeight()) {
-                        Projectile.menuScreenArea = 0;
+                        MovedStatics.menuScreenArea = 0;
             int x = -(width / 2) + -4 + MouseHandler.clickX;
             if(width + x > GameShell.clientFrame.getWidth() - 4)
                 x = GameShell.clientFrame.getWidth() - 4;

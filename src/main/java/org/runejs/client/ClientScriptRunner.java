@@ -42,6 +42,7 @@ public class ClientScriptRunner extends Node {
     public static int[] scriptIntValues = new int[1000];
     public static InvokedScript[] invokedScripts = new InvokedScript[50];
     public static int invokedScriptIndex = 0;
+    private static String[] aClass1Array2964 = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
     public int[] opcodes;
     public int[] errorCodes;
@@ -889,7 +890,7 @@ public class ClientScriptRunner extends Node {
                                                 int i_79_ = MovedStatics.aCalendar279.get(Calendar.DATE);
                                                 int i_80_ = MovedStatics.aCalendar279.get(Calendar.MONTH);
                                                 int i_81_ = MovedStatics.aCalendar279.get(Calendar.YEAR);
-                                                scriptStringValues[stringValueIndex++] = i_79_ + "-" + Projectile.aClass1Array2964[i_80_] + "-" + i_81_;
+                                                scriptStringValues[stringValueIndex++] = i_79_ + "-" + aClass1Array2964[i_80_] + "-" + i_81_;
                                             } else if(scriptOpcode == 4105) {
                                                 stringValueIndex -= 2;
                                                 String class1 = scriptStringValues[stringValueIndex];

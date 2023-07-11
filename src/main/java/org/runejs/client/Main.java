@@ -281,7 +281,7 @@ public class Main extends GameShell {
                                                         gameInterface_16_.scrollPosition += i_18_;
                                                     }
                                                 }
-                                            } else if (Projectile.atInventoryInterfaceType == 0 || GameInterface.anInt1233 != i_7_ || gameInterface.id != PlayerAppearance.anInt704)
+                                            } else if (GameInterface.atInventoryInterfaceType == 0 || GameInterface.anInt1233 != i_7_ || gameInterface.id != PlayerAppearance.anInt704)
                                                 imageRGB.drawImage(i_10_, i_11_);
                                             else
                                                 imageRGB.drawImageWithOpacity(i_10_, i_11_, 128);
@@ -840,7 +840,7 @@ public class Main extends GameShell {
 
         int i;
         if(!Player.cutsceneActive) {
-            i = Projectile.method764();
+            i = MovedStatics.method764();
         } else {
             i = MovedStatics.method546();
         }
@@ -967,7 +967,7 @@ public class Main extends GameShell {
             MovedStatics.redrawChatbox = true;
             drawCount++;
         } else if(drawCount != 0) {
-            Projectile.method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
+            MovedStatics.method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
         }
         if(GameInterface.chatboxInterfaceId == -1) {
             chatboxInterface.scrollPosition = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
@@ -1006,7 +1006,7 @@ public class Main extends GameShell {
         }
         if(ScreenController.frameMode == ScreenMode.FIXED) {
 
-            if(MovedStatics.menuOpen && Projectile.menuScreenArea == 1) {
+            if(MovedStatics.menuOpen && MovedStatics.menuScreenArea == 1) {
                 GameInterface.redrawTabArea = true;
             }
             if(GameInterface.tabAreaInterfaceId != -1) {
@@ -1017,7 +1017,7 @@ public class Main extends GameShell {
             }
             method353();
 
-            if(Projectile.atInventoryInterfaceType == -3) {
+            if(GameInterface.atInventoryInterfaceType == -3) {
                 GameInterface.redrawTabArea = true;
             }
             if(SceneTile.activeInterfaceType == 2) {
@@ -1037,7 +1037,7 @@ public class Main extends GameShell {
                     ChatBox.redrawChatbox = true;
                 }
             }
-            if(Projectile.atInventoryInterfaceType == 3) {
+            if(GameInterface.atInventoryInterfaceType == 3) {
                 ChatBox.redrawChatbox = true;
             }
             if(SceneTile.activeInterfaceType == 3) {
@@ -1046,7 +1046,7 @@ public class Main extends GameShell {
             if(Native.clickToContinueString != null) {
                 ChatBox.redrawChatbox = true;
             }
-            if(MovedStatics.menuOpen && Projectile.menuScreenArea == 2) {
+            if(MovedStatics.menuOpen && MovedStatics.menuScreenArea == 2) {
                 ChatBox.redrawChatbox = true;
             }
             if(ChatBox.redrawChatbox) {
@@ -1197,7 +1197,7 @@ public class Main extends GameShell {
             Class43.processRightClick();
             SceneTile.drawMenuTooltip(4);
         } else
-            if(ScreenController.frameMode == ScreenMode.FIXED && Projectile.menuScreenArea == 0){
+            if(ScreenController.frameMode == ScreenMode.FIXED && MovedStatics.menuScreenArea == 0){
                 MovedStatics.drawMenu(4,4); // might be 0,0
             }
         try {
@@ -1459,14 +1459,14 @@ public class Main extends GameShell {
                             if(MovedStatics.crossIndex >= 400)
                                 LinkedList.crossType = 0;
                         }
-                        if(Projectile.atInventoryInterfaceType != 0) {
+                        if(GameInterface.atInventoryInterfaceType != 0) {
                             RSRuntimeException.anInt1651++;
                             if(RSRuntimeException.anInt1651 >= 15) {
-                                if(Projectile.atInventoryInterfaceType == 2)
+                                if(GameInterface.atInventoryInterfaceType == 2)
                                     GameInterface.redrawTabArea = true;
-                                if(Projectile.atInventoryInterfaceType == 3)
+                                if(GameInterface.atInventoryInterfaceType == 3)
                                     ChatBox.redrawChatbox = true;
-                                Projectile.atInventoryInterfaceType = 0;
+                                GameInterface.atInventoryInterfaceType = 0;
                             }
                         }
                         MovedStatics.anInt199++;

@@ -179,7 +179,7 @@ public class ChatBox {
             if(!bool)
                 redrawChatbox = true;
         }
-        if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && Projectile.menuScreenArea == 2)
+        if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && MovedStatics.menuScreenArea == 2)
             MovedStatics.drawMenu(0, 0);
         if(ScreenController.frameMode == ScreenMode.FIXED) {
             LinkedList.drawChatBoxGraphics();
