@@ -24,7 +24,6 @@ import java.awt.*;
 public class GenericTile {
     public static int anInt1214 = 0;
     public static volatile boolean clientFocused = true;
-    public static byte[][] objectData;
     public static int fps = 0;
     public static int carryWeight = 0;
     public static int anInt1233 = 0;

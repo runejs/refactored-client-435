@@ -1095,55 +1095,7 @@ public class MovedStatics {
 	    return ActorDefinition.method578();
 	}
 
-	public static void method922(int x, int arg1, Buffer fileData, int y, int regionY, int regionX, int level) {
-	    if(x >= 0 && x < 104 && y >= 0 && y < 104) {
-	        OverlayDefinition.tile_flags[level][x][y] = (byte) 0;
-	        for(; ; ) {
-	            int opcode = fileData.getUnsignedByte();
-	            if(opcode == 0) {
-	                if(level == 0) {
-                        tile_height[0][x][y] = -method888(regionX + x + 932731, regionY + 556238 + y) * 8;
-                    } else {
-                        tile_height[level][x][y] = -240 + tile_height[level + -1][x][y];
-                    }
-
-	                break;
-	            }
-	            if(opcode == 1) {
-	                int tileHeight = fileData.getUnsignedByte();
-	                if(tileHeight == 1)
-	                    tileHeight = 0;
-	                if(level != 0)
-	                    tile_height[level][x][y] = tile_height[-1 + level][x][y] + -(8 * tileHeight);
-	                else
-	                    tile_height[0][x][y] = 8 * -tileHeight;
-	                break;
-	            }
-	            if(opcode <= 49) {
-	                Landscape.tile_overlayids[level][x][y] = fileData.getByte();
-	                Landscape.tile_underlay_path[level][x][y] = (byte) ((opcode + -2) / 4);
-	                Landscape.tile_overlay_rotation[level][x][y] = (byte) BitUtils.bitWiseAND(arg1 + -2 + opcode, 3);
-	            } else if(opcode <= 81)
-	                OverlayDefinition.tile_flags[level][x][y] = (byte) (-49 + opcode);
-	            else
-	                Landscape.tile_underlayids[level][x][y] = (byte) (-81 + opcode);
-	        }
-	    } else {
-	        for(; ; ) {
-	            int i = fileData.getUnsignedByte();
-	            if(i == 0)
-	                break;
-	            if(i == 1) {
-	                fileData.getUnsignedByte();
-	                break;
-	            }
-	            if(i <= 49)
-	                fileData.getUnsignedByte();
-	        }
-	    }
-	}
-
-	public static void handleInterfaceActions(GameInterfaceArea area, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, GameInterface[] gameInterfaces, int parentId, int scrollPosition, int scrollWidth) {
+    public static void handleInterfaceActions(GameInterfaceArea area, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, GameInterface[] gameInterfaces, int parentId, int scrollPosition, int scrollWidth) {
         // Only try to handle actions if mouse is within this widget's boundaries
 	    if(minX <= mouseX && mouseY >= minY && maxX > mouseX && maxY > mouseY) {
 	        for(int i = 0; gameInterfaces.length > i; i++) {

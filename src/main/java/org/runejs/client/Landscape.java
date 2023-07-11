@@ -3,7 +3,6 @@ package org.runejs.client;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.FileOperations;
 import org.runejs.client.cache.def.*;
-import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
@@ -14,10 +13,10 @@ import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
+import org.runejs.client.net.IncomingPackets;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
@@ -49,6 +48,7 @@ public class Landscape {
     public static byte[][][] tile_underlay_path;
     public static byte[][][] tile_overlayids;
     public static byte[][][] tile_underlayids;
+    public static byte[][] objectData;
 
     public static void loadRegion() {
         Main.method364(false);
@@ -62,9 +62,9 @@ public class Landscape {
                     bool = false;
                 }
             }
-            if(Class13.objectDataIds[i] != -1 && GenericTile.objectData[i] == null) {
-                GenericTile.objectData[i] = CacheArchive.gameWorldMapCacheArchive.method176(Class13.objectDataIds[i], 0, Class44.xteaKeys[i]);
-                if(GenericTile.objectData[i] == null) {
+            if(Class13.objectDataIds[i] != -1 && objectData[i] == null) {
+                objectData[i] = CacheArchive.gameWorldMapCacheArchive.method176(Class13.objectDataIds[i], 0, Class44.xteaKeys[i]);
+                if(objectData[i] == null) {
                     Main.anInt874++;
                     bool = false;
                 }
@@ -74,7 +74,7 @@ public class Landscape {
             bool = true;
             Main.anInt2591 = 0;
             for(int i = 0; RSString.terrainData.length > i; i++) {
-                byte[] is = GenericTile.objectData[i];
+                byte[] is = objectData[i];
                 if(is != null) {
                     int i_2_ = (mapCoordinates[i] & 0xff) * 64 - Class26.baseY;
                     int i_3_ = (mapCoordinates[i] >> 8) * 64 - MovedStatics.baseX;
@@ -113,7 +113,7 @@ public class Landscape {
                             is = FileOperations.ReadFile("./data/maps/" + LinkedList.terrainDataIds[pointer] + ".dat");
                         }
                         if(is != null)
-                            AnimationSequence.loadTerrainBlock(currentCollisionMap, (Class51.regionX - 6) * 8, is, offsetX, offsetY, 8 * (-6 + Class17.regionY));
+                            loadTerrainBlock(currentCollisionMap, (Class51.regionX - 6) * 8, is, offsetX, offsetY, 8 * (-6 + Class17.regionY));
                     }
                     for(int pointer = 0; dataLength > pointer; pointer++) {
                         int offsetX = -MovedStatics.baseX + (mapCoordinates[pointer] >> 8) * 64;
@@ -126,7 +126,7 @@ public class Landscape {
                     for(int region = 0; dataLength > region; region++) {
                         //                        System.out.println("Requesting map: "+Class13.anIntArray421[i_12_]);
                         // load maps in here
-                        byte[] data = GenericTile.objectData[region];
+                        byte[] data = objectData[region];
                         if(FileOperations.FileExists("./data/maps/" + Class13.objectDataIds[region] + ".cmap")) {
                             MapDecompressor.objectLoader("./data/maps/" + Class13.objectDataIds[region] + ".cmap");
                         } else if(FileOperations.FileExists("./data/maps/" + Class13.objectDataIds[region] + ".dat")) {
@@ -191,8 +191,8 @@ public class Landscape {
                                     int tileY = bits >> 3 & 0x7ff;
                                     int tileCoordinates = (tileX / 8 << 8) + tileY / 8;
                                     for(int i_38_ = 0; i_38_ < mapCoordinates.length; i_38_++) {
-                                        if(tileCoordinates == mapCoordinates[i_38_] && GenericTile.objectData[i_38_] != null) {
-                                            constructMapRegionObjects(8 * (tileX & 0x7), 8 * (tileY & 0x7), tileZ, tileRotation, x * 8, 8 * y, z, Npc.currentScene, GenericTile.objectData[i_38_], currentCollisionMap);
+                                        if(tileCoordinates == mapCoordinates[i_38_] && objectData[i_38_] != null) {
+                                            constructMapRegionObjects(8 * (tileX & 0x7), 8 * (tileY & 0x7), tileZ, tileRotation, x * 8, 8 * y, z, Npc.currentScene, objectData[i_38_], currentCollisionMap);
                                             break;
                                         }
                                     }
@@ -264,9 +264,9 @@ public class Landscape {
             for(int tileX = 0; tileX < 64; tileX++) {
                 for(int tileY = 0; tileY < 64; tileY++) {
                     if(plane == drawingPlane && tileX >= drawX && 8 + drawX > tileX && tileY >= drawY && 8 + drawY > tileY)
-                        MovedStatics.method922(x + getRotatedTileX(rotation, tileX & 0x7, tileY & 0x7), rotation, class40_sub1, y + getRotatedTileY(tileX & 0x7, 0x7 & tileY, rotation), 0, 0, currentPlane);
+                        method922(x + getRotatedTileX(rotation, tileX & 0x7, tileY & 0x7), rotation, class40_sub1, y + getRotatedTileY(tileX & 0x7, 0x7 & tileY, rotation), 0, 0, currentPlane);
                     else
-                        MovedStatics.method922(-1, 0, class40_sub1, -1, 0, 0, 0);
+                        method922(-1, 0, class40_sub1, -1, 0, 0, 0);
                 }
             }
         }
@@ -741,5 +741,185 @@ public class Landscape {
         blendedHue = new int[104];
         tile_overlay_rotation = new byte[4][104][104];
         tile_underlayids = new byte[4][104][104];
+    }
+
+    public static void loadTerrainBlock(CollisionMap[] collisions, int regionX_maybe, byte[] blockData, int offsetX, int offsetY, int regionY_maybe) {
+        for(int i = 0; i < 4; i++) {
+            for(int i_1_ = 0; i_1_ < 64; i_1_++) {
+                for(int i_2_ = 0; i_2_ < 64; i_2_++) {
+                    if(offsetX + i_1_ > 0 && i_1_ + offsetX < 103 && offsetY + i_2_ > 0 && i_2_ + offsetY < 103)
+                        collisions[i].clippingData[i_1_ + offsetX][i_2_ + offsetY] = BitUtils.bitWiseAND(collisions[i].clippingData[i_1_ + offsetX][i_2_ + offsetY], -16777217);
+                }
+            }
+        }
+        Buffer class40_sub1 = new Buffer(blockData);
+        if(true) {
+            for(int plane = 0; plane < 4; plane++) {
+                for(int tileX = 0; tileX < 64; tileX++) {
+                    for(int tileY = 0; tileY < 64; tileY++)
+                        method922(tileX + offsetX, 0, class40_sub1, tileY + offsetY, regionY_maybe, regionX_maybe, plane);
+                }
+            }
+        }
+    }
+
+    public static void method922(int x, int arg1, Buffer fileData, int y, int regionY, int regionX, int level) {
+        if(x >= 0 && x < 104 && y >= 0 && y < 104) {
+            OverlayDefinition.tile_flags[level][x][y] = (byte) 0;
+            for(; ; ) {
+                int opcode = fileData.getUnsignedByte();
+                if(opcode == 0) {
+                    if(level == 0) {
+MovedStatics.tile_height[0][x][y] = -MovedStatics.method888(regionX + x + 932731, regionY + 556238 + y) * 8;
+} else {
+MovedStatics.tile_height[level][x][y] = -240 + MovedStatics.tile_height[level + -1][x][y];
+}
+
+                    break;
+                }
+                if(opcode == 1) {
+                    int tileHeight = fileData.getUnsignedByte();
+                    if(tileHeight == 1)
+                        tileHeight = 0;
+                    if(level != 0)
+                        MovedStatics.tile_height[level][x][y] = MovedStatics.tile_height[-1 + level][x][y] + -(8 * tileHeight);
+                    else
+                        MovedStatics.tile_height[0][x][y] = 8 * -tileHeight;
+                    break;
+                }
+                if(opcode <= 49) {
+                    tile_overlayids[level][x][y] = fileData.getByte();
+                    tile_underlay_path[level][x][y] = (byte) ((opcode + -2) / 4);
+                    tile_overlay_rotation[level][x][y] = (byte) BitUtils.bitWiseAND(arg1 + -2 + opcode, 3);
+                } else if(opcode <= 81)
+                    OverlayDefinition.tile_flags[level][x][y] = (byte) (-49 + opcode);
+                else
+                    tile_underlayids[level][x][y] = (byte) (-81 + opcode);
+            }
+        } else {
+            for(; ; ) {
+                int i = fileData.getUnsignedByte();
+                if(i == 0)
+                    break;
+                if(i == 1) {
+                    fileData.getUnsignedByte();
+                    break;
+                }
+                if(i <= 49)
+                    fileData.getUnsignedByte();
+            }
+        }
+    }
+
+    public static void constructMapRegion(boolean generatedMap) {
+
+        GroundItemTile.loadGeneratedMap = generatedMap;
+        if(GroundItemTile.loadGeneratedMap) {
+            int chunkLocalY = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            int chunkLocalX = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
+            int chunkX = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            int level = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            int chunkY = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            IncomingPackets.incomingPacketBuffer.initBitAccess();
+            for(int _level = 0; _level < 4; _level++) {
+                for(int _x = 0; _x < 13; _x++) {
+                    for(int _y = 0; _y < 13; _y++) {
+                        int isConstructedChunk = IncomingPackets.incomingPacketBuffer.getBits(1);
+                        if(isConstructedChunk != 1) {
+                            OverlayDefinition.constructMapTiles[_level][_x][_y] = -1;
+                        } else {
+                            OverlayDefinition.constructMapTiles[_level][_x][_y] = IncomingPackets.incomingPacketBuffer.getBits(26);
+                        }
+                    }
+                }
+            }
+            IncomingPackets.incomingPacketBuffer.finishBitAccess();
+            int i_8_ = (-IncomingPackets.incomingPacketBuffer.currentPosition + IncomingPackets.incomingPacketSize) / 16;
+            Class44.xteaKeys = new int[i_8_][4];
+            for(int i_9_ = 0; i_8_ > i_9_; i_9_++) {
+                for(int i_10_ = 0; i_10_ < 4; i_10_++) {
+                    Class44.xteaKeys[i_9_][i_10_] = IncomingPackets.incomingPacketBuffer.getIntBE();
+                }
+
+            }
+
+            LinkedList.terrainDataIds = new int[i_8_];
+            RSString.terrainData = new byte[i_8_][];
+            Class13.objectDataIds = new int[i_8_];
+            objectData = new byte[i_8_][];
+            mapCoordinates = new int[i_8_];
+            i_8_ = 0;
+            for(int i_11_ = 0; i_11_ < 4; i_11_++) {
+                for(int i_12_ = 0; i_12_ < 13; i_12_++) {
+                    for(int i_13_ = 0; i_13_ < 13; i_13_++) {
+                        int i_14_ = OverlayDefinition.constructMapTiles[i_11_][i_12_][i_13_];
+                        if(i_14_ != -1) {
+                            int i_15_ = i_14_ >> 14 & 0x3ff;
+                            int i_16_ = i_14_ >> 3 & 0x7ff;
+                            int i_17_ = i_16_ / 8 + (i_15_ / 8 << 8);
+                            for(int i_18_ = 0; i_8_ > i_18_; i_18_++) {
+                                if(mapCoordinates[i_18_] == i_17_) {
+                                    i_17_ = -1;
+                                    break;
+                                }
+                            }
+                            if(i_17_ != -1) {
+                                mapCoordinates[i_8_] = i_17_;
+                                int i_19_ = i_17_ & 0xff;
+                                int i_20_ = (0xffbe & i_17_) >> 8;
+                                LinkedList.terrainDataIds[i_8_] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.MAP_NAME_PREFIX_M +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
+                                Class13.objectDataIds[i_8_] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.MAP_NAME_PREFIX_L +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
+                                i_8_++;
+                            }
+                        }
+                    }
+                }
+            }
+            Actor.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
+        } else {
+            int chunkLocalY = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            int chunkX = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
+            int chunkLocalX = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+            int chunkY = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
+            int level = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
+            int regionCount = (IncomingPackets.incomingPacketSize - IncomingPackets.incomingPacketBuffer.currentPosition) / 16;
+            Class44.xteaKeys = new int[regionCount][4];
+            for(int r = 0; regionCount > r; r++) {
+                for(int seed = 0; seed < 4; seed++) {
+                    Class44.xteaKeys[r][seed] = IncomingPackets.incomingPacketBuffer.getIntBE();
+                }
+            }
+            mapCoordinates = new int[regionCount];
+            RSString.terrainData = new byte[regionCount][];
+            boolean inTutorialIsland_maybe = false;
+            objectData = new byte[regionCount][];
+            if((chunkX / 8 == 48 || chunkX / 8 == 49) && chunkY / 8 == 48) {
+                inTutorialIsland_maybe = true;
+            }
+            LinkedList.terrainDataIds = new int[regionCount];
+            if(chunkX / 8 == 48 && chunkY / 8 == 148) {
+                inTutorialIsland_maybe = true;
+            }
+            Class13.objectDataIds = new int[regionCount];
+            regionCount = 0;
+            for(int x = (-6 + chunkX) / 8; x <= (6 + chunkX) / 8; x++) {
+                for(int y = (-6 + chunkY) / 8; (6 + chunkY) / 8 >= y; y++) {
+                    int coords = y + (x << 8);
+                    if(!inTutorialIsland_maybe || y != 49 && y != 149 && y != 147 && x != 50 && (x != 49 || y != 47)) {
+                        mapCoordinates[regionCount] = coords;
+
+                        String mapKey = x + Native.MAP_NAME_UNDERSCORE + y;
+                        String mapKeyM = Native.MAP_NAME_PREFIX_M + mapKey;
+                        String mapKeyL = Native.MAP_NAME_PREFIX_L + mapKey;
+
+                        LinkedList.terrainDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(mapKeyM);
+                        Class13.objectDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(mapKeyL);
+                        regionCount++;
+                    }
+                }
+            }
+
+            Actor.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
+        }
     }
 }

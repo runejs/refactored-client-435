@@ -7,7 +7,6 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.region.LoadStandardRegionInboundMessage;
 import org.runejs.client.scene.GroundItemTile;
-import org.runejs.client.scene.tile.GenericTile;
 
 /**
  * Loads a standard map region (i.e from terrain files)
@@ -27,7 +26,7 @@ public class LoadStandardRegionMessageHandler implements MessageHandler<LoadStan
         Landscape.mapCoordinates = new int[regionCount];
         RSString.terrainData = new byte[regionCount][];
         boolean inTutorialIsland_maybe = false;
-        GenericTile.objectData = new byte[regionCount][];
+        Landscape.objectData = new byte[regionCount][];
         if((chunkX / 8 == 48 || chunkX / 8 == 49) && chunkY / 8 == 48) {
             inTutorialIsland_maybe = true;
         }

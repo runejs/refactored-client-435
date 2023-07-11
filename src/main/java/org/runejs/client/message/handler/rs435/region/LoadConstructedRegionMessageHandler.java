@@ -8,7 +8,6 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.region.LoadConstructedRegionInboundMessage;
 import org.runejs.client.scene.GroundItemTile;
-import org.runejs.client.scene.tile.GenericTile;
 
 /**
  * Loads a construction map region (i.e composed from chunks)
@@ -31,7 +30,7 @@ public class LoadConstructedRegionMessageHandler implements MessageHandler<LoadC
         LinkedList.terrainDataIds = new int[regionCount];
         RSString.terrainData = new byte[regionCount][];
         Class13.objectDataIds = new int[regionCount];
-        GenericTile.objectData = new byte[regionCount][];
+        Landscape.objectData = new byte[regionCount][];
         Landscape.mapCoordinates = new int[regionCount];
         regionCount = 0;
         for(int i_11_ = 0; i_11_ < 4; i_11_++) {
