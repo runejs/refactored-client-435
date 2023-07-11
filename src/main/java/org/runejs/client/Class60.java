@@ -18,9 +18,7 @@ import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.UpdateServer;
-import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.Configuration;
 import org.runejs.whitelabel.Images;
@@ -55,7 +53,7 @@ public class Class60 {
     public static void determineMenuSize() {
         int width = TypeFace.fontBold.getStringWidth(English.chooseOption);
         for(int i = 0; i < MovedStatics.menuActionRow; i++) {
-            int rowWidth = TypeFace.fontBold.getTextDisplayedWidth(Landscape.menuActionTexts[i]);
+            int rowWidth = TypeFace.fontBold.getTextDisplayedWidth(MovedStatics.menuActionTexts[i]);
             if(width < rowWidth)
                 width = rowWidth;
         }
@@ -64,15 +62,15 @@ public class Class60 {
         if(ScreenController.frameMode == ScreenMode.FIXED){
             if(MouseHandler.clickX > 4 && MouseHandler.clickY > 4 && MouseHandler.clickX < 516 && MouseHandler.clickY < 338) {
                 MovedStatics.menuScreenArea = 0;
-                CollisionMap.menuHeight = MovedStatics.menuActionRow * 15 + 22;
+                MovedStatics.menuHeight = MovedStatics.menuActionRow * 15 + 22;
                 MovedStatics.menuOpen = true;
                 int x = -(width / 2) + -4 + MouseHandler.clickX;
-                VertexNormal.menuWidth = width;
+                MovedStatics.menuWidth = width;
                 if(width + x > 512)
                     x = 512 - width;
                 if(x < 0)
                     x = 0;
-                InteractiveObject.menuOffsetX = x;
+                MovedStatics.menuOffsetX = x;
                 int y = MouseHandler.clickY + -4;
                 if(y + height > 334)
                     y = 334 - height;
@@ -81,7 +79,7 @@ public class Class60 {
                 Game.menuOffsetY = y;
             }
             if(MouseHandler.clickX > 553 && MouseHandler.clickY > 205 && MouseHandler.clickX < 743 && MouseHandler.clickY < 466) {
-                CollisionMap.menuHeight = 22 + 15 * MovedStatics.menuActionRow;
+                MovedStatics.menuHeight = 22 + 15 * MovedStatics.menuActionRow;
                 MovedStatics.menuScreenArea = 1;
                 int y = -205 + MouseHandler.clickY;
                 int x = -(width / 2) + -553 + MouseHandler.clickX;
@@ -90,19 +88,19 @@ public class Class60 {
                 else if(width + x > 190)
                     x = 190 - width;
                 MovedStatics.menuOpen = true;
-                InteractiveObject.menuOffsetX = x;
+                MovedStatics.menuOffsetX = x;
                 if(y >= 0) {
                     if(height + y > 261)
                         y = -height + 261;
                 } else
                     y = 0;
-                VertexNormal.menuWidth = width;
+                MovedStatics.menuWidth = width;
                 Game.menuOffsetY = y;
             }
             if(MouseHandler.clickX > 17 && MouseHandler.clickY > 357 && MouseHandler.clickX < 496 && MouseHandler.clickY < 453) {
-                VertexNormal.menuWidth = width;
+                MovedStatics.menuWidth = width;
                 MovedStatics.menuScreenArea = 2;
-                CollisionMap.menuHeight = MovedStatics.menuActionRow * 15 + 22;
+                MovedStatics.menuHeight = MovedStatics.menuActionRow * 15 + 22;
                 int y = MouseHandler.clickY + -357;
                 if(y >= 0) {
                     if(height + y > 96)
@@ -116,7 +114,7 @@ public class Class60 {
                     x = 0;
                 else if(x + width > 479)
                     x = -width + 479;
-                InteractiveObject.menuOffsetX = x;
+                MovedStatics.menuOffsetX = x;
             }
 
         } else if(MouseHandler.clickX > 0 && MouseHandler.clickY > 0 && MouseHandler.clickX < GameShell.clientFrame.getWidth() && MouseHandler.clickY < GameShell.clientFrame.getHeight()) {
@@ -136,10 +134,10 @@ public class Class60 {
             if(width + x > ScreenController.drawWidth)
                 x = ScreenController.drawWidth - width;
             MovedStatics.menuOpen = true;
-            InteractiveObject.menuOffsetX = x;
+            MovedStatics.menuOffsetX = x;
             Game.menuOffsetY = y;
-            VertexNormal.menuWidth = width;
-            CollisionMap.menuHeight = MovedStatics.menuActionRow * 15 + 22;
+            MovedStatics.menuWidth = width;
+            MovedStatics.menuHeight = MovedStatics.menuActionRow * 15 + 22;
         }
 //        if(Class57.clickX > 553 && RSString.clickY > 205 && Class57.clickX < 743 && RSString.clickY < 466) {
 //            CollisionMap.menuHeight = 22 + 15 * ActorDefinition.menuActionRow;

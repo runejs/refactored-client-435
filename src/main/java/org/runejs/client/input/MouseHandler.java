@@ -7,14 +7,11 @@ import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.frame.console.Console;
 import org.runejs.client.io.Buffer;
-import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.GroundItemTile;
-import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCamera;
-import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.*;
 
 import java.awt.*;
@@ -68,7 +65,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     y -= 357;
                     x -= 17;
                 }
-                if(-10 + InteractiveObject.menuOffsetX > x || 10 + VertexNormal.menuWidth + InteractiveObject.menuOffsetX < x || y < Game.menuOffsetY + -10 || y > Game.menuOffsetY + CollisionMap.menuHeight + 10) {
+                if(-10 + MovedStatics.menuOffsetX > x || 10 + MovedStatics.menuWidth + MovedStatics.menuOffsetX < x || y < Game.menuOffsetY + -10 || y > Game.menuOffsetY + MovedStatics.menuHeight + 10) {
                     if(MovedStatics.menuScreenArea == 1)
                         GameInterface.redrawTabArea = true;
                     MovedStatics.menuOpen = false;
@@ -77,9 +74,9 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                 }
             }
             if(meta == 1) {
-                int menuX = InteractiveObject.menuOffsetX;
+                int menuX = MovedStatics.menuOffsetX;
                 int menuY = Game.menuOffsetY;
-                int dx = VertexNormal.menuWidth;
+                int dx = MovedStatics.menuWidth;
                 int x = clickX;
                 int y = clickY;
                 if(MovedStatics.menuScreenArea == 0) {
@@ -125,8 +122,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                         || action == ActionRowType.SELECT_ITEM_ON_WIDGET.getId()
                         || action == ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId()
                 ) {
-                    int item = InteractiveObject.firstMenuOperand[MovedStatics.menuActionRow - 1];
-                    int id = Class59.secondMenuOperand[-1 + MovedStatics.menuActionRow];
+                    int item = MovedStatics.firstMenuOperand[MovedStatics.menuActionRow - 1];
+                    int id = MovedStatics.secondMenuOperand[-1 + MovedStatics.menuActionRow];
                     GameInterface gameInterface = GameInterface.getInterface(id);
                     if(gameInterface.itemSwapable || gameInterface.itemDeletesDraged) {
                         Renderable.anInt2869 = clickX;

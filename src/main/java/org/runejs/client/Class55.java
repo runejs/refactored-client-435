@@ -10,7 +10,6 @@ import java.io.*;
 
 public class Class55 {
     public static volatile int eventClickX = 0;
-    public static int currentHoveredChatboxWidgetChildId = -1;
     public static int destinationY = 0;
 
     public static String parseException(Throwable exception) throws IOException {

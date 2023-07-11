@@ -5,9 +5,7 @@ import org.runejs.client.RSString;
 import org.runejs.client.media.renderable.Renderable;
 
 public class InteractiveObject {
-    public static int menuOffsetX;
     public static ProducingGraphicsBuffer tabTop;
-    public static int[] firstMenuOperand = new int[500];
     public static int anInt487 = 0;
     public static int playerRights = 0;
     public static boolean showFps = false;

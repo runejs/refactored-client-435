@@ -12,11 +12,10 @@ public class Class59 {
     public static int anInt1388;
     public static int anInt1389 = 0;
     public static KeyFocusListener keyFocusListener;
-    public static int[] secondMenuOperand;
     public static long[] friends;
 
     static {
-        secondMenuOperand = new int[500];
+        MovedStatics.secondMenuOperand = new int[500];
         friends = new long[200];
         keyFocusListener = new KeyFocusListener();
     }

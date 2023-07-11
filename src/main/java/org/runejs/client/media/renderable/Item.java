@@ -9,7 +9,6 @@ import org.runejs.client.*;
 
 public class Item extends Renderable {
     public static boolean[] obfuscatedKeyStatus = new boolean[112];
-    public static int anInt3065 = -1;
 
     public int itemCount;
     public int itemId;

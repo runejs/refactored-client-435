@@ -15,7 +15,6 @@ import org.runejs.client.scene.Point2d;
 import org.runejs.client.scene.SceneCluster;
 
 public class Class33 {
-    public static int[] selectedMenuActions = new int[500];
 
 
     /**

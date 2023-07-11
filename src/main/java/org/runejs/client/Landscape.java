@@ -32,7 +32,6 @@ public class Landscape {
      */
     public static int hintIconInnerPosX = 0;
     public static int anInt1171 = 0;
-    public static String[] menuActionTexts = new String[500];
     public static ProducingGraphicsBuffer framePieceRight;
     public static int[] anIntArray1186;
     public static int[] mapCoordinates;

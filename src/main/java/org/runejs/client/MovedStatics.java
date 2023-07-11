@@ -222,6 +222,16 @@ public class MovedStatics {
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_2043;
     public static int activeInterfaceType = 0;
     public static LinkedList[][][] groundItems = new LinkedList[4][104][104];
+    public static String[] menuActionTexts = new String[500];
+    public static int anInt3065 = -1;
+    public static int currentHoveredWidgetChildId = -1;
+    public static int currentHoveredChatboxWidgetChildId = -1;
+    public static int[] firstMenuOperand = new int[500];
+    public static int[] secondMenuOperand;
+    public static int[] selectedMenuActions = new int[500];
+    public static int menuWidth;
+    public static int menuOffsetX;
+    public static int menuHeight;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -959,16 +969,16 @@ public class MovedStatics {
         }
     }
 
-    public static void addActionRow(String string, int menuAction, int firstMenuOperand, int secondMenuOperand, int actionType, String arg6) {
+    public static void addActionRow(String string, int menuAction, int firstOperand, int secondOperand, int actionType, String arg6) {
         if (menuActionRow < 500) {
             if (arg6.length() <= 0)
-                Landscape.menuActionTexts[menuActionRow] = string;
+                menuActionTexts[menuActionRow] = string;
             else
-                Landscape.menuActionTexts[menuActionRow] = string + Native.whitespace + arg6;
+                menuActionTexts[menuActionRow] = string + Native.whitespace + arg6;
             menuActionTypes[menuActionRow] = actionType;
-            Class33.selectedMenuActions[menuActionRow] = menuAction;
-            InteractiveObject.firstMenuOperand[menuActionRow] = firstMenuOperand;
-            Class59.secondMenuOperand[menuActionRow] = secondMenuOperand;
+            selectedMenuActions[menuActionRow] = menuAction;
+            firstMenuOperand[menuActionRow] = firstOperand;
+            secondMenuOperand[menuActionRow] = secondOperand;
             menuActionRow++;
         }
     }
@@ -1074,7 +1084,7 @@ public class MovedStatics {
 	                int i_1_ = gameInterface.currentY - (-minY + scrollPosition);
 	                int i_2_ = -scrollWidth + gameInterface.currentX + minX;
 	                if(gameInterface.type == GameInterfaceType.IF1_TOOLTIP && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_)
-	                    Item.anInt3065 = i;
+	                    anInt3065 = i;
 	                if((gameInterface.hoveredSiblingId >= 0 || gameInterface.hoveredTextColor != 0) && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_) {
 	                    if(gameInterface.hoveredSiblingId >= 0)
 	                        hoveredWidgetChildId = gameInterface.hoveredSiblingId;
@@ -1322,9 +1332,9 @@ public class MovedStatics {
 	public static int anInt292 = 0;
 
 	public static void drawMenu(int xOffSet, int yOffSet) {
-	    int height = CollisionMap.menuHeight;
-	    int width = VertexNormal.menuWidth;
-	    int offsetX = InteractiveObject.menuOffsetX - (xOffSet);
+	    int height = menuHeight;
+	    int width = menuWidth;
+	    int offsetX = menuOffsetX - (xOffSet);
 	    int offsetY = (-yOffSet) + Game.menuOffsetY;
 	    int colour = 0x5d5447;
 	    ChatBox.redrawChatbox = true;
@@ -1352,7 +1362,7 @@ public class MovedStatics {
 	        int actionColour = 16777215;
 	        if(x > offsetX && offsetX + width > x && y > -13 + actionY && actionY + 3 > y)
 	            actionColour = 16776960;
-	        TypeFace.fontBold.drawShadowedString(Landscape.menuActionTexts[action], offsetX + 3, actionY, true, actionColour);
+	        TypeFace.fontBold.drawShadowedString(menuActionTexts[action], offsetX + 3, actionY, true, actionColour);
 	    }
 	}
 
@@ -2733,7 +2743,7 @@ public class MovedStatics {
             if (itemSelected == 1 && menuActionRow < 2)
                 class1 = English.use + Native.whitespace + Native.selectedItemName + Native.targetThingArrow;
             else if (Game.widgetSelected != 1 || menuActionRow >= 2)
-                class1 = Landscape.menuActionTexts[-1 + menuActionRow];
+                class1 = menuActionTexts[-1 + menuActionRow];
             else
                 class1 = Native.selectedSpellVerb + Native.whitespace + Native.selectedSpellName + Native.targetThingArrow;
             if (menuActionRow > 2)
