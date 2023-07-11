@@ -23,11 +23,9 @@ public class ISAAC {
      */
     private static final int GOLDEN_RATIO = 0x9e3779b9;
 
-    public static int anInt509 = 0;
     public static NodeCache cachedActorDefinitions = new NodeCache(64);
     public static boolean aBoolean512;
     public static NodeCache aClass9_516 = new NodeCache(64);
-    public static boolean aBoolean519 = true;
     /**
      * The image used for the highlighted (selected) tab button,
      * for the furthest-right tab on the bottom.
@@ -388,7 +386,7 @@ public class ISAAC {
 
     public static void method285(byte arg0) {
         if(arg0 != 118)
-            aBoolean519 = true;
+            Main.aBoolean519 = true;
         for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst()) {
             if(class40_sub3.anInt2031 == -1) {
                 class40_sub3.anInt2033 = 0;

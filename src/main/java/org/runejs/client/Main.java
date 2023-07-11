@@ -90,6 +90,8 @@ public class Main extends GameShell {
     public static int modewhere = 0;
     public static long aLong1203 = 0L;
     public static int mouseInvInterfaceIndex = 0;
+    public static int anInt509 = 0;
+    public static boolean aBoolean519 = true;
 
     /**
      * Minimap rotation is always based on game camera
@@ -809,7 +811,7 @@ public class Main extends GameShell {
             playerActions[i] = null;
             Class13.playerArray[i] = false;
         }
-        ISAAC.aBoolean519 = true;
+        aBoolean519 = true;
     }
 
     public static void method353() {
@@ -896,10 +898,10 @@ public class Main extends GameShell {
         }
 
 
-        if(ISAAC.aBoolean519 && UpdateServer.getActiveCount(false, true) == 0) {
-            ISAAC.aBoolean519 = false;
+        if(aBoolean519 && UpdateServer.getActiveCount(false, true) == 0) {
+            aBoolean519 = false;
         }
-        if(ISAAC.aBoolean519) {
+        if(aBoolean519) {
             Class65.method1018();
             Rasterizer.resetPixels();
             Class51.method940(English.loadingPleaseWait, false, null);
@@ -1317,7 +1319,7 @@ public class Main extends GameShell {
                     break;
             }
             if(Class51.gameStatusCode == 30 || Class51.gameStatusCode == 35) {
-                if(ISAAC.aBoolean519 && Class51.gameStatusCode == 30) {
+                if(aBoolean519 && Class51.gameStatusCode == 30) {
                     MouseHandler.currentMouseButtonPressed = 0;
                     MouseHandler.clickType = 0;
                     while(MovedStatics.method416()) {
@@ -1872,16 +1874,16 @@ public class Main extends GameShell {
                 if (MovedStatics.anInt292 >= 4) {
                     if (Class51.gameStatusCode <= 5) {
                         this.openErrorPage("js5connect");
-                        ISAAC.anInt509 = 3000;
+                        anInt509 = 3000;
                     } else
-                        ISAAC.anInt509 = 3000;
+                        anInt509 = 3000;
                 }
             } else {
                 this.openErrorPage("js5connect_outofdate");
                 Class51.gameStatusCode = 1000;
             }
         } else if (Class51.gameStatusCode > 5)
-            ISAAC.anInt509 = 3000;
+            anInt509 = 3000;
         else {
             this.openErrorPage("js5connect_full");
             Class51.gameStatusCode = 1000;
@@ -1980,14 +1982,14 @@ public class Main extends GameShell {
             if (UpdateServer.ioExceptions >= 4) {
                 if (Class51.gameStatusCode > 5) {
                     UpdateServer.ioExceptions = 3;
-                    ISAAC.anInt509 = 3000;
+                    anInt509 = 3000;
                 } else {
                     this.openErrorPage("js5io");
                     Class51.gameStatusCode = 1000;
                     return;
                 }
             }
-            if (ISAAC.anInt509-- <= 0) {
+            if (anInt509-- <= 0) {
                 do {
                     try {
                         if (MovedStatics.connectionStage == 0) {
