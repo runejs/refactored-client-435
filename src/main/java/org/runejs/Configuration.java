@@ -57,6 +57,7 @@ public class Configuration {
             }
 
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("Unable to load client config - using defaults.");
             Map<String, Object> net = new HashMap<String, Object>();
 
@@ -64,7 +65,7 @@ public class Configuration {
             net.put("game_port", GAME_PORT);
 
             Map<String, Object> cache = new HashMap<String, Object>();
-            cache.put("cacheDir", GAME_PORT);
+            cache.put("cacheDir", CACHE_NAME);
 
             Map<String, Object> rsa = new HashMap<String, Object>();
             rsa.put("rsaPub", RSA_PUBLIC_KEY);
