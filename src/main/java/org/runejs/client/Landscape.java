@@ -13,6 +13,7 @@ import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.scene.GroundItemTile;
+import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.util.CollisionMap;
@@ -181,7 +182,7 @@ public class Landscape {
                                     int tileCoordinates = (tileX / 8 << 8) + tileY / 8;
                                     for(int i_38_ = 0; i_38_ < ISAAC.mapCoordinates.length; i_38_++) {
                                         if(tileCoordinates == ISAAC.mapCoordinates[i_38_] && GenericTile.objectData[i_38_] != null) {
-                                            Class24.constructMapRegionObjects(8 * (tileX & 0x7), 8 * (tileY & 0x7), tileZ, tileRotation, x * 8, 8 * y, z, Npc.currentScene, GenericTile.objectData[i_38_], currentCollisionMap);
+                                            constructMapRegionObjects(8 * (tileX & 0x7), 8 * (tileY & 0x7), tileZ, tileRotation, x * 8, 8 * y, z, Npc.currentScene, GenericTile.objectData[i_38_], currentCollisionMap);
                                             break;
                                         }
                                     }
@@ -282,5 +283,75 @@ public class Landscape {
             return -y + 7;
         return x;
 
+    }
+
+    public static void constructMapRegionObjects(int drawX, int drawY, int drawingPlane, int orientation, int x, int y, int plane, Scene scene, byte[] objectData, CollisionMap[] collisionMaps) {
+        Buffer objectBuffer = new Buffer(objectData);
+        int i = -1;
+        for(; ; ) {
+            int idOffset = objectBuffer.getSmart();
+            if(idOffset == 0)
+                break;
+            int objectPositionInfo = 0;
+            i += idOffset;
+            for(; ; ) {
+                int objectInfoOffset = objectBuffer.getSmart();
+                if(objectInfoOffset == 0)
+                    break;
+                objectPositionInfo += -1 + objectInfoOffset;
+                int objectPlane = objectPositionInfo >> 12;
+                int objectX = 0x3f & objectPositionInfo >> 6;
+                int objectMetadata = objectBuffer.getUnsignedByte();
+                int objectType = objectMetadata >> 2;
+                int objectY = objectPositionInfo & 0x3f;
+                int originalOrientation = objectMetadata & 0x3;
+                if(objectPlane == drawingPlane && drawX <= objectX && objectX < 8 + drawX && drawY <= objectY && drawY + 8 > objectY) {
+                    GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+                    int tileX = getRotatedObjectX(objectX & 0x7, 0x7 & objectY, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, orientation, originalOrientation) + x;
+                    int tileY = getRotatedObjectY(objectX & 0x7, objectY & 0x7, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, orientation, originalOrientation) + y;
+                    if(tileX > 0 && tileY > 0 && tileX < 103 && tileY < 103) {
+                        CollisionMap collisionMap = null;
+                        int collisionMapPlane = plane;
+                        if((OverlayDefinition.tile_flags[1][tileX][tileY] & 0x2) == 2) // bridge tile, go down 1 level
+                            collisionMapPlane--;
+                        if(collisionMapPlane >= 0)
+                            collisionMap = collisionMaps[collisionMapPlane];
+                        Projectile.addObject(i, tileX, tileY, plane, originalOrientation + orientation & 0x3, objectType, scene, collisionMap);
+                    }
+                }
+            }
+        }
+    }
+
+    private static int getRotatedObjectX(int x, int y, int sizeX, int sizeY, int orientation, int originalOrientation) {
+        orientation &= 0x3;
+        if ((originalOrientation & 0x1) == 1) {
+            int i = sizeX;
+            sizeX = sizeY;
+            sizeY = i;
+        }
+        if (orientation == 0)
+            return x;
+        if (orientation == 1)
+            return y;
+        if (orientation == 2)
+            return 7 - (x + sizeX) + 1;
+        return 7 + -y + 1 + -sizeY;
+    }
+
+    private static int getRotatedObjectY(int x, int y, int sizeX, int sizeY, int orientation, int originalOrientation) {
+        orientation &= 0x3;
+        if((originalOrientation & 0x1) == 1) {
+            int i = sizeX;
+            sizeX = sizeY;
+            sizeY = i;
+        }
+        if(orientation == 0)
+            return y;
+        if(orientation == 1)
+            return 1 + -sizeX + 7 - x;
+        if(orientation == 2)
+            return -sizeY + 1 + -y + 7;
+        return x;
     }
 }
