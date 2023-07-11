@@ -79,7 +79,6 @@ public class MovedStatics {
     public static int[] anIntArray666 = new int[]{1, 0, -1, 0};
     public static int pulseCycle = 0;
     public static int anInt938 = 500;
-    public static int loginScreenFocus = 0;
     public static boolean aBoolean2083 = false;
     public static ProducingGraphicsBuffer tabImageProducer;
     /**
@@ -612,56 +611,6 @@ public class MovedStatics {
         return (0xff & arg0 >> 24) + Native.period + ((arg0 & 0xffca88) >> 16) + Native.period + ((0xfff8 & arg0) >> 8) + Native.period + (0xff & arg0);
     }
 
-    public static void method836(int arg0) {
-        int i = 256;
-        for (int i_0_ = 10; i_0_ < 117; i_0_++) {
-            int i_1_ = (int) (Math.random() * 100.0);
-            if (i_1_ < 50)
-                anIntArray178[(i - 2 << 7) + i_0_] = 255;
-        }
-        for (int i_2_ = 0; i_2_ < 100; i_2_++) {
-            int i_3_ = (int) (Math.random() * 124.0) + 2;
-            int i_4_ = 128 + (int) (Math.random() * 128.0);
-            int i_5_ = i_3_ + (i_4_ << 7);
-            anIntArray178[i_5_] = 192;
-        }
-        for (int i_6_ = 1; i_6_ < i - 1; i_6_++) {
-            for (int i_7_ = 1; i_7_ < 127; i_7_++) {
-                int i_8_ = i_7_ + (i_6_ << 7);
-                SpotAnim.anIntArray3255[i_8_] = (anIntArray178[i_8_ + 1] + anIntArray178[i_8_ - 1] - (-anIntArray178[-128 + i_8_] - anIntArray178[128 + i_8_])) / 4;
-            }
-        }
-        RSRuntimeException.anInt1641 += 128;
-        if (RSRuntimeException.anInt1641 > Landscape.anIntArray1168.length) {
-            RSRuntimeException.anInt1641 -= Landscape.anIntArray1168.length;
-            int i_9_ = (int) (12.0 * Math.random());
-            FramemapDefinition.method879(MovedStatics.aClass40_Sub5_Sub14_Sub2Array535[i_9_]);
-        }
-        for (int i_10_ = 1; i_10_ < -1 + i; i_10_++) {
-            for (int i_11_ = 1; i_11_ < 127; i_11_++) {
-                int i_12_ = i_11_ + (i_10_ << 7);
-                int i_13_ = -(Landscape.anIntArray1168[i_12_ + RSRuntimeException.anInt1641 & -1 + Landscape.anIntArray1168.length] / 5) + SpotAnim.anIntArray3255[i_12_ + 128];
-                if (i_13_ < 0)
-                    i_13_ = 0;
-                anIntArray178[i_12_] = i_13_;
-            }
-        }
-        for (int i_14_ = 0; i_14_ < i + -1; i_14_++)
-            Class17.anIntArray466[i_14_] = Class17.anIntArray466[i_14_ + 1];
-        Class17.anIntArray466[i - arg0] = (int) (16.0 * Math.sin((double) pulseCycle / 14.0) + 14.0 * Math.sin((double) pulseCycle / 15.0) + 12.0 * Math.sin((double) pulseCycle / 16.0));
-        if (MovedStatics.anInt2452 > 0)
-            MovedStatics.anInt2452 -= 4;
-        if (IdentityKit.anInt2613 > 0)
-            IdentityKit.anInt2613 -= 4;
-        if (MovedStatics.anInt2452 == 0 && IdentityKit.anInt2613 == 0) {
-            int i_15_ = (int) (2000.0 * Math.random());
-            if (i_15_ == 0)
-                MovedStatics.anInt2452 = 1024;
-            if (i_15_ == 1)
-                IdentityKit.anInt2613 = 1024;
-        }
-    }
-
     public static void method838(long arg1) {
         for (int i = 0; i < anInt1008; i++) {
             if (Player.ignores[i] == arg1) {
@@ -1060,7 +1009,7 @@ public class MovedStatics {
             if (statusCode == 5 || statusCode == 10 || statusCode == 20) {
                 ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
                 FloorDecoration.method344(-69);
-                Item.renderLoginScreen(MouseHandler.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
+                Class60.renderLoginScreen(MouseHandler.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
             }
             if (statusCode == 25 || statusCode == 30 || statusCode == 40) {
                 ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;

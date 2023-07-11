@@ -6,7 +6,6 @@ import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.chat.ChatColorEffect;
 import org.runejs.client.chat.ChatShapeEffect;
 import org.runejs.client.frame.ChatBox;
-import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
@@ -307,9 +306,4 @@ public class Class33 {
 
     }
 
-    public static void setLoginScreenMessage(String line1, String line2, String line3) {
-        Native.loginScreenMessageLineOne = line1;
-        Native.loginScreenMessageLineTwo = line2;
-        Native.loginScreenMessageLineThree = line3;
-    }
 }

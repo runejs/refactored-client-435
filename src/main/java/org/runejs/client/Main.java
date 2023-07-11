@@ -1112,57 +1112,57 @@ public class Main extends GameShell {
 
     public static void displayMessageForResponseCode(int responseCode) {
         if(responseCode == -3) {
-            Class33.setLoginScreenMessage(English.connectionTimedOut, English.pleaseTryUsingDifferentWorld, "");
+            Class60.setLoginScreenMessage(English.connectionTimedOut, English.pleaseTryUsingDifferentWorld, "");
         } else if(responseCode == -2) {
-            Class33.setLoginScreenMessage("", English.errorConnectingToServer, "");
+            Class60.setLoginScreenMessage("", English.errorConnectingToServer, "");
         } else if(responseCode == -1) {
-            Class33.setLoginScreenMessage(English.noResponseFromServer, English.pleaseTryUsingDifferentWorld, "");
+            Class60.setLoginScreenMessage(English.noResponseFromServer, English.pleaseTryUsingDifferentWorld, "");
         } else if(responseCode == 3) {
-            Class33.setLoginScreenMessage("", English.invalidUsernameOrPassword, "");
+            Class60.setLoginScreenMessage("", English.invalidUsernameOrPassword, "");
         } else if(responseCode == 4) {
-            Class33.setLoginScreenMessage(English.yourAccountHasBeenDisabled, English.pleaseCheckYourMessageCenterForDetails, "");
+            Class60.setLoginScreenMessage(English.yourAccountHasBeenDisabled, English.pleaseCheckYourMessageCenterForDetails, "");
         } else if(responseCode == 5) {
-            Class33.setLoginScreenMessage(English.yourAccountIsAlreadyLoggedIn, English.tryAgainIn60Secs, "");
+            Class60.setLoginScreenMessage(English.yourAccountIsAlreadyLoggedIn, English.tryAgainIn60Secs, "");
         } else if(responseCode == 6) {
-            Class33.setLoginScreenMessage(English.gameHasBeenUpdated, English.pleaseReloadThisPage, "");
+            Class60.setLoginScreenMessage(English.gameHasBeenUpdated, English.pleaseReloadThisPage, "");
         } else if(responseCode == 7) {
-            Class33.setLoginScreenMessage(English.theWorldIsFull, English.pleaseUseADifferentWorld, "");
+            Class60.setLoginScreenMessage(English.theWorldIsFull, English.pleaseUseADifferentWorld, "");
         } else if(responseCode == 8) {
-            Class33.setLoginScreenMessage(English.unableToConnect, English.loginServerOffline, "");
+            Class60.setLoginScreenMessage(English.unableToConnect, English.loginServerOffline, "");
         } else if(responseCode == 9) {
-            Class33.setLoginScreenMessage(English.loginLimitExceeded, English.tooManyConnectionsFromYourAddress, "");
+            Class60.setLoginScreenMessage(English.loginLimitExceeded, English.tooManyConnectionsFromYourAddress, "");
         } else if(responseCode == 10) {
-            Class33.setLoginScreenMessage(English.unableToConnect, English.badSessionId, "");
+            Class60.setLoginScreenMessage(English.unableToConnect, English.badSessionId, "");
         } else if(responseCode == 11) {
-            Class33.setLoginScreenMessage(English.weSuspectSomeoneKnowsYourPassword, English.pressChangeYourPasswordOnFrontPage, "");
+            Class60.setLoginScreenMessage(English.weSuspectSomeoneKnowsYourPassword, English.pressChangeYourPasswordOnFrontPage, "");
         } else if(responseCode == 12) {
-            Class33.setLoginScreenMessage(English.youNeedMembersAccountToLoginToThisWorld, English.pleaseSubscribeOrUseDifferentWorld, "");
+            Class60.setLoginScreenMessage(English.youNeedMembersAccountToLoginToThisWorld, English.pleaseSubscribeOrUseDifferentWorld, "");
         } else if(responseCode == 13) {
-            Class33.setLoginScreenMessage(English.couldNotCompleteLogin, English.pleaseTryUsingDifferentWorld, "");
+            Class60.setLoginScreenMessage(English.couldNotCompleteLogin, English.pleaseTryUsingDifferentWorld, "");
         } else if(responseCode == 14) {
-            Class33.setLoginScreenMessage(English.theServerIsBeingUpdated, English.pleaseWait1MinuteAndTryAgain, "");
+            Class60.setLoginScreenMessage(English.theServerIsBeingUpdated, English.pleaseWait1MinuteAndTryAgain, "");
         } else if(responseCode == 16) {
-            Class33.setLoginScreenMessage(English.tooManyIncorrectLoginsFromYourAddress, English.pleaseWait5MinutesBeforeTryingAgain, "");
+            Class60.setLoginScreenMessage(English.tooManyIncorrectLoginsFromYourAddress, English.pleaseWait5MinutesBeforeTryingAgain, "");
         } else if(responseCode == 17) {
-            Class33.setLoginScreenMessage(English.youAreStandingInMembersOnlyArea, English.toPlayOnThisWorldMoveToFreeArea, "");
+            Class60.setLoginScreenMessage(English.youAreStandingInMembersOnlyArea, English.toPlayOnThisWorldMoveToFreeArea, "");
         } else if(responseCode == 18) {
-            Class33.setLoginScreenMessage(English.accountLockedAsWeSuspectItHasBeenStolen, English.pressRecoverLockedAccountOnFrontPage, "");
+            Class60.setLoginScreenMessage(English.accountLockedAsWeSuspectItHasBeenStolen, English.pressRecoverLockedAccountOnFrontPage, "");
         } else if(responseCode == 20) {
-            Class33.setLoginScreenMessage(English.invalidLoginserverRequested, English.pleaseTryUsingDifferentWorld, "");
+            Class60.setLoginScreenMessage(English.invalidLoginserverRequested, English.pleaseTryUsingDifferentWorld, "");
         } else if(responseCode == 22) {
-            Class33.setLoginScreenMessage(English.malformedLoginPacket, English.pleaseTryAgain, "");
+            Class60.setLoginScreenMessage(English.malformedLoginPacket, English.pleaseTryAgain, "");
         } else if(responseCode == 23) {
-            Class33.setLoginScreenMessage(English.noReplyFromLoginserver, English.pleaseWait1MinuteAndTryAgain, "");
+            Class60.setLoginScreenMessage(English.noReplyFromLoginserver, English.pleaseWait1MinuteAndTryAgain, "");
         } else if(responseCode == 24) {
-            Class33.setLoginScreenMessage(English.errorLoadingYourProfile, English.pleaseContactCustomerSupport, "");
+            Class60.setLoginScreenMessage(English.errorLoadingYourProfile, English.pleaseContactCustomerSupport, "");
         } else if(responseCode == 25) {
-            Class33.setLoginScreenMessage(English.unexpectedLoginserverResponse, English.pleaseTryUsingDifferentWorld, "");
+            Class60.setLoginScreenMessage(English.unexpectedLoginserverResponse, English.pleaseTryUsingDifferentWorld, "");
         } else if(responseCode == 26) {
-            Class33.setLoginScreenMessage(English.thisComputersAddressHasBeenBlocked, English.asItWasUsedToBreakOurRules, "");
+            Class60.setLoginScreenMessage(English.thisComputersAddressHasBeenBlocked, English.asItWasUsedToBreakOurRules, "");
         } else if(responseCode == 27) {
-            Class33.setLoginScreenMessage("", English.serviceUnavailable, "");
+            Class60.setLoginScreenMessage("", English.serviceUnavailable, "");
         } else {
-            Class33.setLoginScreenMessage(English.unexpectedServerResponse, English.pleaseTryUsingDifferentWorld, "");
+            Class60.setLoginScreenMessage(English.unexpectedServerResponse, English.pleaseTryUsingDifferentWorld, "");
         }
         MovedStatics.processGameStatus(10);
     }
@@ -1785,7 +1785,7 @@ public class Main extends GameShell {
             }
             if (Class40_Sub3.loginStatus == 8) {
                 anInt1756 = 0;
-                Class33.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld, English.yourProfileWillBeTransferredIn, (Class33.anInt784 / 60) + English.suffixSeconds);
+                Class60.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld, English.yourProfileWillBeTransferredIn, (Class33.anInt784 / 60) + English.suffixSeconds);
                 if (--Class33.anInt784 <= 0) {
                     Class40_Sub3.loginStatus = 0;
                 }
@@ -1934,11 +1934,11 @@ public class Main extends GameShell {
         if (Class51.gameStatusCode == 0)
             GameObject.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
         else if (Class51.gameStatusCode == 5) {
-            WallDecoration.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
+            Class60.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
         } else if (Class51.gameStatusCode == 10) {
-            WallDecoration.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
+            Class60.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
         } else if (Class51.gameStatusCode == 20) {
-            WallDecoration.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
+            Class60.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
         } else if (Class51.gameStatusCode == 25) {
             if (ProducingGraphicsBuffer.anInt1634 == 1) {
                 if (Class37.anInt874 > PacketBuffer.anInt2231)
