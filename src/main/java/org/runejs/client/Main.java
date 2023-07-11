@@ -8,7 +8,6 @@ import org.runejs.client.frame.DebugTools;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.frame.console.Console;
-import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
@@ -886,7 +885,7 @@ public class Main extends GameShell {
         Class33.draw2DActorAttachments();
         MovedStatics.drawPositionHintIcon();
         ((Class35) Rasterizer3D.interface3).animateTextures(MovedStatics.anInt199);
-        KeyFocusListener.draw3dScreen();
+        MovedStatics.draw3dScreen();
 
         DebugTools.drawWalkPath();
         DebugTools.drawClipping();

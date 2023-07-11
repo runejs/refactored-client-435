@@ -2073,4 +2073,168 @@ public class MovedStatics {
             }
         }
     }
+
+    public static void draw3dScreen() {
+        renderSplitPrivateMessages();
+        if (LinkedList.crossType == 1) {
+            Class37.cursorCross[OverlayDefinition.crossIndex / 100].drawImage(ClientScriptRunner.crossX - 8 - 4, crossY - 8 - 4);
+        }
+        if (LinkedList.crossType == 2) {
+            Class37.cursorCross[4 + OverlayDefinition.crossIndex / 100].drawImage(ClientScriptRunner.crossX - 8 - 4, crossY - 8 - 4);
+        }
+        if (GameInterface.gameScreenInterfaceId != -1 || GroundItemTile.walkableWidgetId != -1) {
+                int areaId = GameInterface.gameScreenInterfaceId != -1 ? 0 : 4;
+                int id = GameInterface.gameScreenInterfaceId != -1 ? GameInterface.gameScreenInterfaceId : GroundItemTile.walkableWidgetId;
+                Renderable.handleSequences(id);
+                int yOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);
+                int xOffset = (ScreenController.drawWidth /2) - (512/2) - (234/3);
+                if(ScreenController.frameMode == ScreenMode.FIXED) {
+                    yOffset = 0;
+                    xOffset = 0;
+                }
+                Main.drawParentInterface(areaId, xOffset, yOffset, 512+ xOffset, 334 + yOffset, id);
+        }
+        Class65.method1018();
+        Player.setTutorialIslandFlag();
+        if (!menuOpen) {
+            Class43.processRightClick();
+            SceneTile.drawMenuTooltip(4);
+        } else  {
+            if(ScreenController.frameMode == ScreenMode.FIXED && Projectile.menuScreenArea == 0){
+                drawMenu(4,4);
+            }
+        }
+        if (anInt2118 == 1) {
+            LinkedList.aClass40_Sub5_Sub14_Sub4_1057.drawImage(472, 296);
+        }
+        if (InteractiveObject.showFps) {
+            int y = 20;
+            int x = 507;
+            if(ScreenController.frameMode != ScreenMode.FIXED) {
+                x = ScreenController.drawWidth - 220;
+            }
+
+            int colour = 0xffff00;
+            if (GameShell.fps < 30 && VertexNormal.lowMemory) {
+                colour = 0xff0000;
+            }
+            if (GameShell.fps < 20 && !VertexNormal.lowMemory) {
+                colour = 0xff0000;
+            }
+            WallDecoration.fontNormal.drawStringRight("Fps: " + GameShell.fps, x, y, colour);
+            colour = 0xffff00;
+            y += 15;
+            Runtime runtime = Runtime.getRuntime();
+            int memoryUsed = (int) ((runtime.totalMemory() + -runtime.freeMemory()) / 1024L);
+            if (memoryUsed > 32768 && VertexNormal.lowMemory) {
+                colour = 0xff0000;
+            }
+            if (memoryUsed < 65536 && !VertexNormal.lowMemory) {
+                colour = 0xff0000;
+            }
+            WallDecoration.fontNormal.drawStringRight("Mem: " + memoryUsed + "k", x, y, colour);
+            y += 15;
+
+            WallDecoration.fontNormal.drawStringRight("MouseX: " + MouseHandler.mouseX, x, y ,0xffff00);
+            y += 15;
+
+            WallDecoration.fontNormal.drawStringRight("MouseY: " + MouseHandler.mouseY, x, y ,0xffff00);
+            y += 15;
+            WallDecoration.fontNormal.drawStringRight("ClickX: " + MouseHandler.clickX, x, y ,0xffff00);
+            y += 15;
+
+            WallDecoration.fontNormal.drawStringRight("ClickY: " + MouseHandler.clickY, x, y ,0xffff00);
+            y += 15;
+            if (showSidePanelRedrawnText) {
+                WallDecoration.fontNormal.drawStringRight(English.sidePanelRedrawn, x, y, 16711680);
+                y += 15;
+                showSidePanelRedrawnText = false;
+            }
+            if (showChatPanelRedrawnText) {
+                WallDecoration.fontNormal.drawStringRight(English.chatPanelRedrawn, x, y, 16711680);
+                y += 15;
+                showChatPanelRedrawnText = false;
+            }
+            if (Class40_Sub3.showIconsRedrawnText) {
+                WallDecoration.fontNormal.drawStringRight(English.iconsRedrawn, x, y, 16711680);
+                Class40_Sub3.showIconsRedrawnText = false;
+                y += 15;
+            }
+        }
+        if (Configuration.DEBUG_WIDGETS) {
+            int y = 20;
+            int x = 507;
+            if(ScreenController.frameMode != ScreenMode.FIXED) {
+                x = ScreenController.drawWidth - 220;
+            }
+            int widgetParentId = hoveredWidgetId >> 16;
+            int widgetChildId = hoveredWidgetId & 0x7fff;
+            String typeAsString = "";
+
+            // Gather widget metadata from the cached interfaces
+            GameInterface[] parentInterface;
+            GameInterface childInterface = null;
+            if (widgetParentId >= 0 && widgetChildId < 469) {
+                parentInterface = GameInterface.cachedInterfaces[widgetParentId];
+
+                if (parentInterface != null) {
+                    childInterface = parentInterface[widgetChildId];
+                }
+
+                if (childInterface != null) {
+                    switch (childInterface.type) {
+                        case TEXT:
+                            typeAsString = "TEXT";
+                            break;
+                        case GRAPHIC:
+                            typeAsString = "GRAPHIC";
+                            break;
+                        case MODEL:
+                            typeAsString = "MODEL";
+                            break;
+                        case RECTANGLE:
+                            typeAsString = "RECTANGLE";
+                            break;
+                        case INVENTORY:
+                            typeAsString = "INVENTORY";
+                            break;
+                        case LINE:
+                            typeAsString = "LINE";
+                            break;
+                        case TEXT_INVENTORY:
+                            typeAsString = "TEXT_INVENTORY";
+                            break;
+                        case LAYER:
+                            typeAsString = "LAYER";
+                            break;
+                        case IF1_TOOLTIP:
+                            typeAsString = "IF1_TOOLTIP";
+                            break;
+                        default:
+                            typeAsString = "UNKNOWN";
+                    }
+                }
+            }
+
+            WallDecoration.fontNormal.drawStringRight("Widget " + widgetParentId + ":" + widgetChildId, x, y, 0xffff00);
+            y+= 15;
+            if (childInterface != null) {
+                WallDecoration.fontNormal.drawStringRight("Parent ID: " + childInterface.parentId, x, y, 0xffff00);
+                y+= 15;
+                WallDecoration.fontNormal.drawStringRight("Type: " + typeAsString, x, y, 0xffff00);
+                y+= 15;
+            }
+
+        }
+        if (Class40_Sub5_Sub15.systemUpdateTime != 0) {
+            int seconds = Class40_Sub5_Sub15.systemUpdateTime / 50;
+            int minutes = seconds / 60;
+            seconds %= 60;
+            if (seconds < 10) {
+                WallDecoration.fontNormal.drawString(English.systemUpdateIn + minutes + Native.prefixColonZero + seconds, 4, 329, 16776960);
+            } else {
+                WallDecoration.fontNormal.drawString(English.systemUpdateIn + minutes + Native.colon + seconds, 4, 329, 16776960);
+            }
+        }
+    }
 }
