@@ -5,6 +5,7 @@ import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.IndexedImage;
+import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.GameObject;
@@ -166,7 +167,7 @@ public class FloorDecoration {
             MovedStatics.tabHighlightImageBottomMiddle = null;
             MovedStatics.tabBottomBack = null;
             Landscape.framePieceRight = null;
-            GameShell.tabHighlightImageTopLeft = null;
+            GameInterface.tabHighlightImageTopLeft = null;
             MovedStatics.tabHighlightImageTopRightEdge = null;
             MovedStatics.anIntArray852 = null;
             HuffmanEncoding.chatModes = null;

@@ -107,8 +107,8 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
 
     public static ImageRGB method578() {
         ImageRGB class40_sub5_sub14_sub4 = new ImageRGB();
-        class40_sub5_sub14_sub4.maxWidth = ItemDefinition.anInt2846;
-        class40_sub5_sub14_sub4.maxHeight = GameShell.anInt31;
+        class40_sub5_sub14_sub4.maxWidth = ItemDefinition.imageMaxWidth;
+        class40_sub5_sub14_sub4.maxHeight = MovedStatics.imageMaxHeight;
         class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[0];
         class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[0];
         class40_sub5_sub14_sub4.imageWidth = Class17.anIntArray456[0];
