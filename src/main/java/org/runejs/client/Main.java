@@ -606,11 +606,11 @@ public class Main extends GameShell {
             if (MovedStatics.anInt2613 > 0) {
                 for (int i = 0; i < 256; i++) {
                     if (MovedStatics.anInt2613 > 768)
-                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Class51.anIntArray1198[i], SpotAnim.anIntArray3248[i], -MovedStatics.anInt2613 + 1024);
+                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Class51.anIntArray1198[i], MovedStatics.anIntArray3248[i], -MovedStatics.anInt2613 + 1024);
                     else if (MovedStatics.anInt2613 > 256)
-                        MovedStatics.anIntArray1013[i] = SpotAnim.anIntArray3248[i];
+                        MovedStatics.anIntArray1013[i] = MovedStatics.anIntArray3248[i];
                     else
-                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(SpotAnim.anIntArray3248[i], Class51.anIntArray1198[i], -MovedStatics.anInt2613 + 256);
+                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(MovedStatics.anIntArray3248[i], Class51.anIntArray1198[i], -MovedStatics.anInt2613 + 256);
                 }
             } else {
                 System.arraycopy(Class51.anIntArray1198, 0, MovedStatics.anIntArray1013, 0, 256);
@@ -819,9 +819,9 @@ public class Main extends GameShell {
 
     public static void method353() {
         MovedStatics.anInt2628++;
-        SpotAnim.renderPlayers(0, true);
+        renderPlayers(0, true);
         renderNPCs(true);
-        SpotAnim.renderPlayers(0, false);
+        renderPlayers(0, false);
         renderNPCs(false);
         MovedStatics.renderProjectiles();
         MovedStatics.renderSpotAnims();
@@ -1876,7 +1876,7 @@ public class Main extends GameShell {
         }
     }
 
-    public static void renderNPCs(boolean arg0) {
+    private static void renderNPCs(boolean arg0) {
         for(int i = 0; Player.npcCount > i; i++) {
             Npc npc = Player.npcs[Player.npcIds[i]];
             int i_15_ = 536870912 + (Player.npcIds[i] << 14);
@@ -1897,6 +1897,53 @@ public class Main extends GameShell {
                 }
             }
         }
+    }
+
+    private static void renderPlayers(int arg0, boolean arg1) {
+        if(Player.localPlayer.worldX >> 7 == MovedStatics.destinationX && Player.localPlayer.worldY >> 7 == Class55.destinationY) {
+            MovedStatics.destinationX = 0;
+
+            DebugTools.walkpathX = null;
+            DebugTools.walkpathY = null;
+        }
+        int i = Player.localPlayerCount;
+        if(arg1)
+            i = 1;
+        int i_0_ = arg0;
+        for(/**/; i > i_0_; i_0_++) {
+            int i_1_;
+            Player player;
+            if(arg1) {
+                i_1_ = 33538048;
+                player = Player.localPlayer;
+            } else {
+                i_1_ = Player.trackedPlayerIndices[i_0_] << 14;
+                player = Player.trackedPlayers[Player.trackedPlayerIndices[i_0_]];
+            }
+            if(player != null && player.isInitialized()) {
+                player.aBoolean3287 = false;
+                int tileX = player.worldX >> 7;
+                int tileY = player.worldY >> 7;
+                if((VertexNormal.lowMemory && Player.localPlayerCount > 50 || Player.localPlayerCount > 200) && !arg1 && player.anInt3077 == player.idleAnimation)
+                    player.aBoolean3287 = true;
+                if(tileX >= 0 && tileX < 104 && tileY >= 0 && tileY < 104) {
+                    if(player.playerModel != null && player.anInt3283 <= MovedStatics.pulseCycle && MovedStatics.pulseCycle < player.anInt3274) {
+                        player.aBoolean3287 = false;
+                        player.anInt3276 = Scene.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
+                        Npc.currentScene.method112(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.anInt3258, player.anInt3281, player.anInt3262, player.anInt3289);
+                    } else {
+                        if((0x7f & player.worldX) == 64 && (player.worldY & 0x7f) == 64) {
+                            if(MovedStatics.anInt2628 == MovedStatics.anIntArrayArray1435[tileX][tileY])
+                                continue;
+                            MovedStatics.anIntArrayArray1435[tileX][tileY] = MovedStatics.anInt2628;
+                        }
+                        player.anInt3276 = Scene.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
+                        Npc.currentScene.method134(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.aBoolean3105);
+                    }
+                }
+            }
+        }
+
     }
 
     public void method35(int arg1) {

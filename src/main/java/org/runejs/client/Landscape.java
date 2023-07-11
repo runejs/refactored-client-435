@@ -506,7 +506,7 @@ public class Landscape {
                                 }
                                 int underlayMinimapColour = 0;
                                 if(hslBitsetRandomised != -1)
-                                    underlayMinimapColour = Rasterizer3D.hsl2rgb[SpotAnim.mixLightness(hslBitsetRandomised, 96)];
+                                    underlayMinimapColour = Rasterizer3D.hsl2rgb[mixLightness(hslBitsetRandomised, 96)];
                                 if(overlayId != 0) {
                                     int shape = 1 + tile_underlay_path[_plane][x][y];
                                     byte rotation = tile_overlay_rotation[_plane][x][y];
@@ -545,9 +545,9 @@ public class Landscape {
                                         overlayMinimapColour = Class13.generateHslBitset(overlayDefinition.otherLightness, i_55_, i_54_);
                                         rgb = Rasterizer3D.hsl2rgb[MovedStatics.mixLightnessSigned(overlayMinimapColour, 96)];
                                     }
-                                    scene.addTile(_plane, x, y, shape, rotation, textureId, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, SpotAnim.mixLightness(hslBitsetOriginal, lightIntensitySW), SpotAnim.mixLightness(hslBitsetOriginal, lightIntensitySE), SpotAnim.mixLightness(hslBitsetOriginal, lightIntensityNE), SpotAnim.mixLightness(hslBitsetOriginal, lightIntensityNW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNW), underlayMinimapColour, rgb);
+                                    scene.addTile(_plane, x, y, shape, rotation, textureId, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, mixLightness(hslBitsetOriginal, lightIntensitySW), mixLightness(hslBitsetOriginal, lightIntensitySE), mixLightness(hslBitsetOriginal, lightIntensityNE), mixLightness(hslBitsetOriginal, lightIntensityNW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNW), underlayMinimapColour, rgb);
                                 } else
-                                    scene.addTile(_plane, x, y, 0, 0, -1, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, SpotAnim.mixLightness(hslBitsetOriginal, lightIntensitySW), SpotAnim.mixLightness(hslBitsetOriginal, lightIntensitySE), SpotAnim.mixLightness(hslBitsetOriginal, lightIntensityNE), SpotAnim.mixLightness(hslBitsetOriginal, lightIntensityNW), 0, 0, 0, 0, underlayMinimapColour, 0);
+                                    scene.addTile(_plane, x, y, 0, 0, -1, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, mixLightness(hslBitsetOriginal, lightIntensitySW), mixLightness(hslBitsetOriginal, lightIntensitySE), mixLightness(hslBitsetOriginal, lightIntensityNE), mixLightness(hslBitsetOriginal, lightIntensityNW), 0, 0, 0, 0, underlayMinimapColour, 0);
                             }
                         }
                     }
@@ -922,5 +922,18 @@ MovedStatics.tile_height[level][x][y] = -240 + MovedStatics.tile_height[level + 
 
             Actor.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
         }
+    }
+
+    private static int mixLightness(int hsl, int lightness) {
+        if(hsl == -1)
+            return 12345678;
+
+        lightness = (0x7f & hsl) * lightness / 128;
+        if(lightness < 2)
+            lightness = 2;
+        else if(lightness > 126)
+            lightness = 126;
+
+        return lightness + (hsl & 0xff80);
     }
 }

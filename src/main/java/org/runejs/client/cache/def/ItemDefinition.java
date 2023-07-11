@@ -155,7 +155,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         int i_9_ = Rasterizer3D.viewportRx;
         ImageRGB rendered = new ImageRGB(32, 32);
         Rasterizer.prepare(rendered.pixels, 32, 32);
-        SpotAnim.anIntArray3253 = Rasterizer3D.setLineOffsets(SpotAnim.anIntArray3253);
+        MovedStatics.anIntArray3253 = Rasterizer3D.setLineOffsets(MovedStatics.anIntArray3253);
         Rasterizer.drawFilledRectangle(0, 0, 32, 32, 0);
         int i_11_ = definition.zoom2d;
         if(backColour == -1)

@@ -487,7 +487,7 @@ public class Class60 {
         for (int i_6_ = 1; i_6_ < i - 1; i_6_++) {
             for (int i_7_ = 1; i_7_ < 127; i_7_++) {
                 int i_8_ = i_7_ + (i_6_ << 7);
-                SpotAnim.anIntArray3255[i_8_] = (MovedStatics.anIntArray178[i_8_ + 1] + MovedStatics.anIntArray178[i_8_ - 1] - (-MovedStatics.anIntArray178[-128 + i_8_] - MovedStatics.anIntArray178[128 + i_8_])) / 4;
+                MovedStatics.anIntArray3255[i_8_] = (MovedStatics.anIntArray178[i_8_ + 1] + MovedStatics.anIntArray178[i_8_ - 1] - (-MovedStatics.anIntArray178[-128 + i_8_] - MovedStatics.anIntArray178[128 + i_8_])) / 4;
             }
         }
         RSRuntimeException.anInt1641 += 128;
@@ -499,7 +499,7 @@ public class Class60 {
         for (int i_10_ = 1; i_10_ < -1 + i; i_10_++) {
             for (int i_11_ = 1; i_11_ < 127; i_11_++) {
                 int i_12_ = i_11_ + (i_10_ << 7);
-                int i_13_ = -(Landscape.anIntArray1168[i_12_ + RSRuntimeException.anInt1641 & -1 + Landscape.anIntArray1168.length] / 5) + SpotAnim.anIntArray3255[i_12_ + 128];
+                int i_13_ = -(Landscape.anIntArray1168[i_12_ + RSRuntimeException.anInt1641 & -1 + Landscape.anIntArray1168.length] / 5) + MovedStatics.anIntArray3255[i_12_ + 128];
                 if (i_13_ < 0)
                     i_13_ = 0;
                 MovedStatics.anIntArray178[i_12_] = i_13_;
@@ -630,20 +630,20 @@ public class Class60 {
                 Renderable.anIntArray2865[128 + i] = i * 262144 + 65535;
             for (int i = 0; i < 64; i++)
                 Renderable.anIntArray2865[i + 192] = 16777215;
-            SpotAnim.anIntArray3248 = new int[256];
+            MovedStatics.anIntArray3248 = new int[256];
             for (int i = 0; i < 64; i++)
-                SpotAnim.anIntArray3248[i] = i * 4;
+                MovedStatics.anIntArray3248[i] = i * 4;
             for (int i = 0; i < 64; i++)
-                SpotAnim.anIntArray3248[64 + i] = 255 + i * 262144;
+                MovedStatics.anIntArray3248[64 + i] = 255 + i * 262144;
             for (int i = 0; i < 64; i++)
-                SpotAnim.anIntArray3248[128 + i] = i * 1024 + 16711935;
+                MovedStatics.anIntArray3248[128 + i] = i * 1024 + 16711935;
             for (int i = 0; i < 64; i++)
-                SpotAnim.anIntArray3248[192 + i] = 16777215;
+                MovedStatics.anIntArray3248[192 + i] = 16777215;
             MovedStatics.anIntArray1013 = new int[256];
             MovedStatics.anIntArray1445 = new int[32768];
             Landscape.anIntArray1168 = new int[32768];
             method879(null);
-            SpotAnim.anIntArray3255 = new int[32768];
+            MovedStatics.anIntArray3255 = new int[32768];
             Native.username = Configuration.getUsername();
             Native.password = Configuration.getPassword();
             MovedStatics.anIntArray178 = new int[32768];

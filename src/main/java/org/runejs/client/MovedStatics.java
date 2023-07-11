@@ -198,6 +198,10 @@ public class MovedStatics {
     public static int hoveredWidgetChildId = -1;
     public static int[] directions = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
     public static int menuScreenArea;
+    public static ProducingGraphicsBuffer framePieceTop;
+    public static int[] anIntArray3253;
+    public static int[] anIntArray3255;
+    public static int[] anIntArray3248;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -206,7 +210,7 @@ public class MovedStatics {
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631 = null;
             Class51.aProducingGraphicsBuffer_1206 = null;
             Landscape.anIntArray1168 = null;
-            SpotAnim.anIntArray3255 = null;
+            anIntArray3255 = null;
             Class59.imgLoginScreenButton = null;
             anIntArray1445 = null;
             Class40_Sub5_Sub15.loginScreenBox = null;
@@ -216,7 +220,7 @@ public class MovedStatics {
             aProducingGraphicsBuffer_2524 = null;
             Class39.aClass40_Sub5_Sub14_Sub4_918 = null;
             MovedStatics.aClass40_Sub5_Sub14_Sub2Array535 = null;
-            SpotAnim.anIntArray3248 = null;
+            anIntArray3248 = null;
             MovedStatics.loginBoxGraphics = null;
             SceneTile.aClass40_Sub5_Sub14_Sub4_2043 = null;
             anIntArray178 = null;
@@ -1661,7 +1665,7 @@ public class MovedStatics {
                 Renderable.tabHighlightImageBottomLeftEdge = null;
                 Class24.fullScreenTextureArray = null;
                 PlayerAppearance.tabPieveLowerRight = null;
-                SpotAnim.framePieceTop = null;
+                framePieceTop = null;
                 Class44.chatboxBackgroundImage = null;
             }
         }
@@ -2121,7 +2125,7 @@ public class MovedStatics {
                 chatboxRight.drawGraphics(0, 357, graphics);
                 Class39.mapbackLeft.drawGraphics(722, 4, graphics);
                 GameObject.tabPieceLeft.drawGraphics(743, 205, graphics);
-                SpotAnim.framePieceTop.drawGraphics(0, 0, graphics);
+                framePieceTop.drawGraphics(0, 0, graphics);
                 Class40_Sub7.mapBackRight.drawGraphics(516, 4, graphics);
                 tabPieceUpperRight.drawGraphics(516, 205, graphics);
                 PlayerAppearance.tabPieveLowerRight.drawGraphics(496, 357, graphics);
@@ -2165,7 +2169,7 @@ public class MovedStatics {
             GameObject.tabPieceLeft = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = method1028(arg2, Native.imgBacktop1, Native.aClass1_305);
-            SpotAnim.framePieceTop = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            framePieceTop = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = method1028(arg2, Native.imgBackvmid1, Native.aClass1_305);
             Class40_Sub7.mapBackRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
