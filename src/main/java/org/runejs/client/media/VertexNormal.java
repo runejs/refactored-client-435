@@ -1,7 +1,6 @@
 package org.runejs.client.media;
 
 public class VertexNormal {
-    public static int menuWidth;
     public static boolean lowMemory = false;
 
     public int y;

@@ -168,7 +168,7 @@ public class Minimap extends FramePieceRenderer {
         }
         if(MovedStatics.destinationX != 0) {
             int flagX = 2 + MovedStatics.destinationX * 4 + -(Player.localPlayer.worldX / 32);
-            int flagY = 2 + 4 * Class55.destinationY + -(Player.localPlayer.worldY / 32);
+            int flagY = 2 + 4 * Game.destinationY + -(Player.localPlayer.worldY / 32);
             drawOnMinimap(flagY, flagX, minimapMarkers[0]);
         }
         Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
@@ -363,7 +363,7 @@ public class Minimap extends FramePieceRenderer {
         }
         if(MovedStatics.destinationX != 0) {
             int flagX = 2 + MovedStatics.destinationX * 4 + -(Player.localPlayer.worldX / 32);
-            int flagY = 2 + 4 * Class55.destinationY + -(Player.localPlayer.worldY / 32);
+            int flagY = 2 + 4 * Game.destinationY + -(Player.localPlayer.worldY / 32);
             drawOnResizableMinimap(flagX, flagY, minimapMarkers[0]);
         }
     }

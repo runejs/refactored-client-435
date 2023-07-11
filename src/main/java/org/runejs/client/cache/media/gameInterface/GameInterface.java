@@ -36,14 +36,9 @@ import org.runejs.client.node.CachedNode;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.tile.WallDecoration;
-import org.runejs.client.scene.util.CollisionMap;
-import org.runejs.client.util.Signlink;
 import org.runejs.client.util.TextUtils;
 import org.runejs.client.*;
 import org.runejs.Configuration;
-
-import java.awt.*;
-import java.lang.reflect.Method;
 
 public class GameInterface extends CachedNode {
     public static GameInterface[][] cachedInterfaces;
@@ -272,19 +267,6 @@ public class GameInterface extends CachedNode {
         ProducingGraphicsBuffer.aClass9_1615.clear();
     }
 
-
-    public static void method642(Component arg0) {
-        Method method = Signlink.aMethod729;
-        if(method != null) {
-            try {
-                method.invoke(arg0, Boolean.FALSE);
-            } catch(Throwable throwable) {
-                /* empty */
-            }
-        }
-        arg0.addKeyListener(Class59.keyFocusListener);
-        arg0.addFocusListener(Class59.keyFocusListener);
-    }
 
     public static String getShortenedAmountText(int amount) {
         if(amount < 100000) {
@@ -573,14 +555,14 @@ public class GameInterface extends CachedNode {
         // TODO (Jameskmonger) there used to be a dummy here, but it was removed.
         //     if (true) kept to make the diff smaller.
         if(true) {
-            int i = InteractiveObject.firstMenuOperand[arg1];
-            int i_10_ = Class59.secondMenuOperand[arg1];
+            int i = MovedStatics.firstMenuOperand[arg1];
+            int i_10_ = MovedStatics.secondMenuOperand[arg1];
             int action = MovedStatics.menuActionTypes[arg1];
             if(action >= ActionRowType.LOW_PRIORITY_MODIFIER) {
                 action -= ActionRowType.LOW_PRIORITY_MODIFIER;
             }
 
-            int npcIdx = Class33.selectedMenuActions[arg1];
+            int npcIdx = MovedStatics.selectedMenuActions[arg1];
             if(ChatBox.inputType != 0 && action != ActionRowType.CANCEL.getId()) {
                 ChatBox.inputType = 0;
                 ChatBox.redrawChatbox = true;
@@ -670,7 +652,7 @@ public class GameInterface extends CachedNode {
                 }
             }
             if(action == ActionRowType.ACCEPT_TRADE.getId() || action == ActionRowType.ACCEPT_CHALLENGE.getId()) {
-                String name = Landscape.menuActionTexts[arg1];
+                String name = MovedStatics.menuActionTexts[arg1];
                 int i_13_ = name.indexOf(Native.white);
                 if(i_13_ != -1) {
                     name = name.substring(i_13_ + 5).trim();
@@ -931,7 +913,7 @@ public class GameInterface extends CachedNode {
                     RSRuntimeException.anInt1651 = 0;
                 }
                 if(action == ActionRowType.MESSAGE_FRIEND.getId()) {
-                    String class1 = Landscape.menuActionTexts[arg1];
+                    String class1 = MovedStatics.menuActionTexts[arg1];
                     int i_18_ = class1.indexOf(Native.white);
                     if(i_18_ != -1) {
                         long l = TextUtils.nameToLong(class1.substring(i_18_ + 5).trim());
@@ -1213,7 +1195,7 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.ADD_FRIEND.getId() || action == ActionRowType.ADD_IGNORE.getId() || action == ActionRowType.REMOVE_FRIEND.getId() || action == ActionRowType.REMOVE_IGNORE.getId()) {
-                        String s = Landscape.menuActionTexts[arg1];
+                        String s = MovedStatics.menuActionTexts[arg1];
                         int l1 = s.indexOf(Native.white);
                         if(l1 != -1) {
                             long l = TextUtils.nameToLong(s.substring(l1 + 5).trim());
@@ -1362,7 +1344,7 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.REPORT_ABUSE.getId()) {
-                        String class1 = Landscape.menuActionTexts[arg1];
+                        String class1 = MovedStatics.menuActionTexts[arg1];
                         int i_22_ = class1.indexOf(Native.white);
                         if(i_22_ != -1) {
                             if(gameScreenInterfaceId == -1) {
@@ -1864,10 +1846,10 @@ public class GameInterface extends CachedNode {
         if(areaId == 0 && MovedStatics.anInt2850 == widgetChildId)
             return true;
 
-        if(areaId == 1 && widgetChildId == CollisionMap.currentHoveredWidgetChildId)
+        if(areaId == 1 && widgetChildId == MovedStatics.currentHoveredWidgetChildId)
             return true;
 
-        if((areaId == 2 || areaId == 3) && Class55.currentHoveredChatboxWidgetChildId == widgetChildId)
+        if((areaId == 2 || areaId == 3) && MovedStatics.currentHoveredChatboxWidgetChildId == widgetChildId)
             return true;
 
         return false;

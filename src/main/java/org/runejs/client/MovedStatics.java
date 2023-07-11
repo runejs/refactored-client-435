@@ -44,7 +44,7 @@ import org.runejs.client.media.renderable.actor.*;
 import org.runejs.Configuration;
 
 import java.awt.*;
-import java.io.DataInputStream;
+import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
@@ -222,6 +222,16 @@ public class MovedStatics {
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_2043;
     public static int activeInterfaceType = 0;
     public static LinkedList[][][] groundItems = new LinkedList[4][104][104];
+    public static String[] menuActionTexts = new String[500];
+    public static int anInt3065 = -1;
+    public static int currentHoveredWidgetChildId = -1;
+    public static int currentHoveredChatboxWidgetChildId = -1;
+    public static int[] firstMenuOperand = new int[500];
+    public static int[] secondMenuOperand;
+    public static int[] selectedMenuActions = new int[500];
+    public static int menuWidth;
+    public static int menuOffsetX;
+    public static int menuHeight;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -555,7 +565,7 @@ public class MovedStatics {
             try {
                 String string = "";
                 if (exception != null)
-                    string = Class55.parseException(exception);
+                    string = parseException(exception);
                 if (arg0 != null) {
                     if (exception != null)
                         string += " | ";
@@ -959,16 +969,16 @@ public class MovedStatics {
         }
     }
 
-    public static void addActionRow(String string, int menuAction, int firstMenuOperand, int secondMenuOperand, int actionType, String arg6) {
+    public static void addActionRow(String string, int menuAction, int firstOperand, int secondOperand, int actionType, String arg6) {
         if (menuActionRow < 500) {
             if (arg6.length() <= 0)
-                Landscape.menuActionTexts[menuActionRow] = string;
+                menuActionTexts[menuActionRow] = string;
             else
-                Landscape.menuActionTexts[menuActionRow] = string + Native.whitespace + arg6;
+                menuActionTexts[menuActionRow] = string + Native.whitespace + arg6;
             menuActionTypes[menuActionRow] = actionType;
-            Class33.selectedMenuActions[menuActionRow] = menuAction;
-            InteractiveObject.firstMenuOperand[menuActionRow] = firstMenuOperand;
-            Class59.secondMenuOperand[menuActionRow] = secondMenuOperand;
+            selectedMenuActions[menuActionRow] = menuAction;
+            firstMenuOperand[menuActionRow] = firstOperand;
+            secondMenuOperand[menuActionRow] = secondOperand;
             menuActionRow++;
         }
     }
@@ -1074,7 +1084,7 @@ public class MovedStatics {
 	                int i_1_ = gameInterface.currentY - (-minY + scrollPosition);
 	                int i_2_ = -scrollWidth + gameInterface.currentX + minX;
 	                if(gameInterface.type == GameInterfaceType.IF1_TOOLTIP && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_)
-	                    Item.anInt3065 = i;
+	                    anInt3065 = i;
 	                if((gameInterface.hoveredSiblingId >= 0 || gameInterface.hoveredTextColor != 0) && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_) {
 	                    if(gameInterface.hoveredSiblingId >= 0)
 	                        hoveredWidgetChildId = gameInterface.hoveredSiblingId;
@@ -1322,9 +1332,9 @@ public class MovedStatics {
 	public static int anInt292 = 0;
 
 	public static void drawMenu(int xOffSet, int yOffSet) {
-	    int height = CollisionMap.menuHeight;
-	    int width = VertexNormal.menuWidth;
-	    int offsetX = InteractiveObject.menuOffsetX - (xOffSet);
+	    int height = menuHeight;
+	    int width = menuWidth;
+	    int offsetX = menuOffsetX - (xOffSet);
 	    int offsetY = (-yOffSet) + Game.menuOffsetY;
 	    int colour = 0x5d5447;
 	    ChatBox.redrawChatbox = true;
@@ -1352,7 +1362,7 @@ public class MovedStatics {
 	        int actionColour = 16777215;
 	        if(x > offsetX && offsetX + width > x && y > -13 + actionY && actionY + 3 > y)
 	            actionColour = 16776960;
-	        TypeFace.fontBold.drawShadowedString(Landscape.menuActionTexts[action], offsetX + 3, actionY, true, actionColour);
+	        TypeFace.fontBold.drawShadowedString(menuActionTexts[action], offsetX + 3, actionY, true, actionColour);
 	    }
 	}
 
@@ -1539,11 +1549,6 @@ public class MovedStatics {
 	public static boolean membersWorld = false;
 	public static boolean accountFlagged = false;
 	public static GameInterface aGameInterface_1887;
-
-    public static void method311(Component arg1) {
-	    arg1.removeKeyListener(Class59.keyFocusListener);
-	    arg1.removeFocusListener(Class59.keyFocusListener);
-	}
 
     /**
      * Draws the 2d yellow arrow hint icon in the world.
@@ -2630,7 +2635,7 @@ public class MovedStatics {
             clearScreen = false;
             drawWelcomeScreenGraphics();
             LinkedList.drawChatBoxGraphics();
-            Class55.drawTabGraphics();
+            drawTabGraphics();
             ActorDefinition.drawMapBack();
             Game.method943(ChatBox.tradeMode, fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
@@ -2733,7 +2738,7 @@ public class MovedStatics {
             if (itemSelected == 1 && menuActionRow < 2)
                 class1 = English.use + Native.whitespace + Native.selectedItemName + Native.targetThingArrow;
             else if (Game.widgetSelected != 1 || menuActionRow >= 2)
-                class1 = Landscape.menuActionTexts[-1 + menuActionRow];
+                class1 = menuActionTexts[-1 + menuActionRow];
             else
                 class1 = Native.selectedSpellVerb + Native.whitespace + Native.selectedSpellName + Native.targetThingArrow;
             if (menuActionRow > 2)
@@ -2741,5 +2746,54 @@ public class MovedStatics {
             if (arg0 == 4)
                 TypeFace.fontBold.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, pulseCycle / 1000);
         }
+    }
+
+    public static void drawTabGraphics() {
+        try {
+            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+            tabImageProducer.drawGraphics(553, 205, graphics);
+        } catch(Exception exception) {
+            MouseHandler.gameCanvas.repaint();
+        }
+    }
+
+    public static String parseException(Throwable exception) throws IOException {
+        String string;
+        if(exception instanceof RSRuntimeException) {
+            RSRuntimeException runtimeexception_sub1 = (RSRuntimeException) exception;
+            string = runtimeexception_sub1.aString1653 + " | ";
+            exception = runtimeexception_sub1.aThrowable1652;
+        } else
+            string = "";
+        StringWriter stringwriter = new StringWriter();
+        PrintWriter printwriter = new PrintWriter(stringwriter);
+        exception.printStackTrace(printwriter);
+        printwriter.close();
+        String string_0_ = stringwriter.toString();
+        BufferedReader bufferedreader = new BufferedReader(new StringReader(string_0_));
+        String string_1_ = bufferedreader.readLine();
+        for(; ; ) {
+            String string_2_ = bufferedreader.readLine();
+            if(string_2_ == null)
+                break;
+            int i = string_2_.indexOf('(');
+            int i_3_ = string_2_.indexOf(')', i + 1);
+            if(i >= 0 && i_3_ >= 0) {
+                String string_4_ = string_2_.substring(1 + i, i_3_);
+                int i_5_ = string_4_.indexOf(".java:");
+                if(i_5_ >= 0) {
+                    string_4_ = string_4_.substring(0, i_5_) + string_4_.substring(5 + i_5_);
+                    string += string_4_ + ' ';
+                    continue;
+                }
+                string_2_ = string_2_.substring(0, i);
+            }
+            string_2_ = string_2_.trim();
+            string_2_ = string_2_.substring(1 + string_2_.lastIndexOf(' '));
+            string_2_ = string_2_.substring(1 + string_2_.lastIndexOf('\t'));
+            string += string_2_ + ' ';
+        }
+        string += "| " + string_1_;
+        return string;
     }
 }

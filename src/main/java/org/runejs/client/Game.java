@@ -5,6 +5,7 @@ import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.CacheFileChannel;
 import org.runejs.client.frame.*;
 import org.runejs.client.frame.console.Console;
+import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
@@ -49,7 +50,6 @@ import org.runejs.Configuration;
 
 import java.awt.*;
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.Socket;
 
 public class Game {
@@ -90,6 +90,7 @@ public class Game {
     public static Class39 mouseCapturer;
     public static int anInt2591 = 0;
     public static int anInt874;
+    public static int destinationY = 0;
     private static int gameServerPort;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
@@ -708,7 +709,7 @@ public class Game {
         Game.playerCamera.setYaw(0x7ff & -10 + (int) (20.0 * Math.random()));
         Minimap.minimapState = 0;
         Player.localPlayerCount = 0;
-        Class55.destinationY = 0;
+        destinationY = 0;
         for (int i = 0; i < 2048; i++) {
             Player.trackedPlayers[i] = null;
             Player.trackedPlayerAppearanceCache[i] = null;
@@ -1840,7 +1841,7 @@ public class Game {
     }
 
     private static void renderPlayers(int arg0, boolean arg1) {
-        if(Player.localPlayer.worldX >> 7 == MovedStatics.destinationX && Player.localPlayer.worldY >> 7 == Class55.destinationY) {
+        if(Player.localPlayer.worldX >> 7 == MovedStatics.destinationX && Player.localPlayer.worldY >> 7 == destinationY) {
             MovedStatics.destinationX = 0;
 
             DebugTools.walkpathX = null;
@@ -2000,11 +2001,11 @@ public class Game {
      */
     public void updateStatusText() {
         if (MovedStatics.aBoolean1575) {
-            MovedStatics.method311(MouseHandler.gameCanvas);
-            Class55.method965(32, MouseHandler.gameCanvas);
+            KeyFocusListener.removeListeners(MouseHandler.gameCanvas);
+            MouseHandler.removeListeners(MouseHandler.gameCanvas);
 //            this.setCanvas();
-            GameInterface.method642(MouseHandler.gameCanvas);
-            RSRuntimeException.method1056(MouseHandler.gameCanvas);
+            KeyFocusListener.addListeners(MouseHandler.gameCanvas);
+            MouseHandler.addListeners(MouseHandler.gameCanvas);
         }
         if (Class51.gameStatusCode == 0)
             GameObject.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
@@ -2165,8 +2166,8 @@ public class Game {
         currentPort = gameServerPort;
 
         MovedStatics.method997();
-        GameInterface.method642(MouseHandler.gameCanvas);
-        RSRuntimeException.method1056(MouseHandler.gameCanvas);
+        KeyFocusListener.addListeners(MouseHandler.gameCanvas);
+        MouseHandler.addListeners(MouseHandler.gameCanvas);
         RSCanvas.anInt57 = Signlink.anInt737;
         try {
             if (signlink.cacheDataAccessFile != null) {

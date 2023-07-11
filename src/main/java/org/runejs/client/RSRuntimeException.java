@@ -1,9 +1,6 @@
 package org.runejs.client;
 
-import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.scene.SceneCluster;
-
-import java.awt.*;
 
 public class RSRuntimeException extends RuntimeException {
     public static int anInt1641 = 0;
@@ -15,13 +12,6 @@ public class RSRuntimeException extends RuntimeException {
     public RSRuntimeException(Throwable arg0, String arg1) {
         aString1653 = arg1;
         aThrowable1652 = arg0;
-    }
-
-    public static void method1056(Component arg0) {
-        arg0.addMouseListener(GameObject.frame);
-        arg0.addMouseMotionListener(GameObject.frame);
-        arg0.addFocusListener(GameObject.frame);
-        arg0.addMouseWheelListener(GameObject.frame);
     }
 
     public static void method1057(int arg0) {

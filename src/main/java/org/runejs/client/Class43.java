@@ -10,11 +10,7 @@ import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
-import org.runejs.client.media.VertexNormal;
-import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.scene.InteractiveObject;
-import org.runejs.client.scene.util.CollisionMap;
 
 public class Class43 {
     public static LinkedList projectileQueue = new LinkedList();
@@ -52,19 +48,19 @@ public class Class43 {
         }
 
         if(ScreenController.frameMode == ScreenMode.FIXED) {
-            Class55.drawTabGraphics();
+            MovedStatics.drawTabGraphics();
         }
     }
 
 
     public static void processRightClick() {
         if(MovedStatics.activeInterfaceType == 0) {
-            Landscape.menuActionTexts[0] = English.cancel;
+            MovedStatics.menuActionTexts[0] = English.cancel;
             MovedStatics.menuActionTypes[0] = ActionRowType.CANCEL.getId();
             MovedStatics.menuActionRow = 1;
             if(GameInterface.fullscreenInterfaceId == -1) {
                 MovedStatics.method445();
-                Item.anInt3065 = -1;
+                MovedStatics.anInt3065 = -1;
                 MovedStatics.hoveredWidgetChildId = -1;
                 boolean bool = false;
                 // Right game screen
@@ -82,68 +78,68 @@ public class Class43 {
                     }
                 }
 
-                MovedStatics.anInt573 = Item.anInt3065;
+                MovedStatics.anInt573 = MovedStatics.anInt3065;
                 MovedStatics.anInt2850 = MovedStatics.hoveredWidgetChildId;
-                Item.anInt3065 = -1;
+                MovedStatics.anInt3065 = -1;
                 MovedStatics.hoveredWidgetChildId = -1;
                 // Right click tab
                 if(ScreenController.isCoordinatesInTabArea(MouseHandler.mouseX, MouseHandler.mouseY)) {
                     ScreenController.handleTabClick(MouseHandler.mouseX, MouseHandler.mouseY);
                 }
-                if(MovedStatics.hoveredWidgetChildId != CollisionMap.currentHoveredWidgetChildId) {
+                if(MovedStatics.hoveredWidgetChildId != MovedStatics.currentHoveredWidgetChildId) {
                     GameInterface.redrawTabArea = true;
-                    CollisionMap.currentHoveredWidgetChildId = MovedStatics.hoveredWidgetChildId;
+                    MovedStatics.currentHoveredWidgetChildId = MovedStatics.hoveredWidgetChildId;
                 }
                 MovedStatics.hoveredWidgetChildId = -1;
-                if(Item.anInt3065 != MovedStatics.anInt614) {
-                    MovedStatics.anInt614 = Item.anInt3065;
+                if(MovedStatics.anInt3065 != MovedStatics.anInt614) {
+                    MovedStatics.anInt614 = MovedStatics.anInt3065;
                     GameInterface.redrawTabArea = true;
                 }
-                Item.anInt3065 = -1;
+                MovedStatics.anInt3065 = -1;
                 // right click chatbox
                 if(ScreenController.isCoordinatesInChatArea(MouseHandler.mouseX , MouseHandler.mouseY)) {
                     ScreenController.handleChatBoxMouse(MouseHandler.mouseX , MouseHandler.mouseY);
                 }
 
                 // Set hovering for chat widgets
-                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && Class55.currentHoveredChatboxWidgetChildId != MovedStatics.hoveredWidgetChildId) {
+                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && MovedStatics.currentHoveredChatboxWidgetChildId != MovedStatics.hoveredWidgetChildId) {
                     ChatBox.redrawChatbox = true;
-                    Class55.currentHoveredChatboxWidgetChildId = MovedStatics.hoveredWidgetChildId;
+                    MovedStatics.currentHoveredChatboxWidgetChildId = MovedStatics.hoveredWidgetChildId;
                 }
 
-                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && Item.anInt3065 != MovedStatics.anInt1586) {
+                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && MovedStatics.anInt3065 != MovedStatics.anInt1586) {
                     ChatBox.redrawChatbox = true;
-                    MovedStatics.anInt1586 = Item.anInt3065;
+                    MovedStatics.anInt1586 = MovedStatics.anInt3065;
                 }
                 while(!bool) {
                     bool = true;
                     for(int i = 0; -1 + MovedStatics.menuActionRow > i; i++) {
                         if(MovedStatics.menuActionTypes[i] < 1000 && MovedStatics.menuActionTypes[1 + i] > 1000) {
                             bool = false;
-                            String class1 = Landscape.menuActionTexts[i];
-                            Landscape.menuActionTexts[i] = Landscape.menuActionTexts[i + 1];
-                            Landscape.menuActionTexts[i + 1] = class1;
+                            String class1 = MovedStatics.menuActionTexts[i];
+                            MovedStatics.menuActionTexts[i] = MovedStatics.menuActionTexts[i + 1];
+                            MovedStatics.menuActionTexts[i + 1] = class1;
                             int i_90_ = MovedStatics.menuActionTypes[i];
                             MovedStatics.menuActionTypes[i] = MovedStatics.menuActionTypes[i + 1];
                             MovedStatics.menuActionTypes[i + 1] = i_90_;
-                            i_90_ = InteractiveObject.firstMenuOperand[i];
-                            InteractiveObject.firstMenuOperand[i] = InteractiveObject.firstMenuOperand[1 + i];
-                            InteractiveObject.firstMenuOperand[1 + i] = i_90_;
-                            i_90_ = Class59.secondMenuOperand[i];
-                            Class59.secondMenuOperand[i] = Class59.secondMenuOperand[1 + i];
-                            Class59.secondMenuOperand[i + 1] = i_90_;
-                            i_90_ = Class33.selectedMenuActions[i];
-                            Class33.selectedMenuActions[i] = Class33.selectedMenuActions[i + 1];
-                            Class33.selectedMenuActions[1 + i] = i_90_;
+                            i_90_ = MovedStatics.firstMenuOperand[i];
+                            MovedStatics.firstMenuOperand[i] = MovedStatics.firstMenuOperand[1 + i];
+                            MovedStatics.firstMenuOperand[1 + i] = i_90_;
+                            i_90_ = MovedStatics.secondMenuOperand[i];
+                            MovedStatics.secondMenuOperand[i] = MovedStatics.secondMenuOperand[1 + i];
+                            MovedStatics.secondMenuOperand[i + 1] = i_90_;
+                            i_90_ = MovedStatics.selectedMenuActions[i];
+                            MovedStatics.selectedMenuActions[i] = MovedStatics.selectedMenuActions[i + 1];
+                            MovedStatics.selectedMenuActions[1 + i] = i_90_;
                         }
                     }
                 }
             } else {
-                Item.anInt3065 = -1;
+                MovedStatics.anInt3065 = -1;
                 MovedStatics.hoveredWidgetChildId = -1;
                 Class13.handleInterfaceActions(GameInterfaceArea.GAME_AREA, MouseHandler.mouseX, MouseHandler.mouseY, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
                 MovedStatics.anInt2850 = MovedStatics.hoveredWidgetChildId;
-                MovedStatics.anInt573 = Item.anInt3065;
+                MovedStatics.anInt573 = MovedStatics.anInt3065;
             }
         }
     }
@@ -151,19 +147,19 @@ public class Class43 {
     public static void method398() {
         String class1 = null;
         for(int i = 0; MovedStatics.menuActionRow > i; i++) {
-            if(Landscape.menuActionTexts[i].contains(Native.lightRed)) {
-                class1 = Landscape.menuActionTexts[i].substring(Landscape.menuActionTexts[i].indexOf(Native.lightRed));
+            if(MovedStatics.menuActionTexts[i].contains(Native.lightRed)) {
+                class1 = MovedStatics.menuActionTexts[i].substring(MovedStatics.menuActionTexts[i].indexOf(Native.lightRed));
                 break;
             }
         }
         if(class1 == null)
             MovedStatics.drawMenu(0,0);
         else {
-            int i = VertexNormal.menuWidth;
-            int i_0_ = InteractiveObject.menuOffsetX;
+            int i = MovedStatics.menuWidth;
+            int i_0_ = MovedStatics.menuOffsetX;
             if(i > 190)
                 i = 190;
-            int i_1_ = CollisionMap.menuHeight;
+            int i_1_ = MovedStatics.menuHeight;
             int i_2_ = Game.menuOffsetY;
             if(i_0_ < 0)
                 i_0_ = 0;
@@ -188,7 +184,7 @@ public class Class43 {
             }
             for(int i_6_ = 0; i_6_ < MovedStatics.menuActionRow; i_6_++) {
                 int i_7_ = 31 + i_2_ + (MovedStatics.menuActionRow + -1 + -i_6_) * 15;
-                String class1_8_ = Landscape.menuActionTexts[i_6_];
+                String class1_8_ = MovedStatics.menuActionTexts[i_6_];
                 int i_9_ = 16777215;
                 if(class1_8_.endsWith(class1)) {
                     class1_8_ = class1_8_.substring(0, class1_8_.length() - class1.length());

@@ -50,6 +50,11 @@ public class SpotAnimDefinition extends CachedNode {
         modelCache.clear();
     }
 
+    public static void initializeSpotAnimCache(CacheArchive arg1, CacheArchive arg2) {
+        MovedStatics.aCacheArchive_2582 = arg1;
+        gameDefinitionsCacheArchive = arg2;
+    }
+
     public void readValues(Buffer buffer) {
         for (; ; ) {
             int opcode = buffer.getUnsignedByte();

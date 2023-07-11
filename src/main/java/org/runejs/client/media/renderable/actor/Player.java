@@ -319,7 +319,7 @@ public class Player extends Actor {
             }
             for (int i = 0; i < MovedStatics.menuActionRow; i++) {
                 if (MovedStatics.menuActionTypes[i] == 7) {
-                    Landscape.menuActionTexts[i] = English.walkHere + Native.whitespace + Native.white + playerDisplayName;
+                    MovedStatics.menuActionTexts[i] = English.walkHere + Native.whitespace + Native.white + playerDisplayName;
                     break;
                 }
             }

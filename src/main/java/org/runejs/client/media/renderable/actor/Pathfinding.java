@@ -298,7 +298,7 @@ public class Pathfinding {
             );
 
             MovedStatics.destinationX = walkingQueueX[0];
-            Class55.destinationY = walkingQueueY[0];
+            Game.destinationY = walkingQueueY[0];
 
             return true;
         }
