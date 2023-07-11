@@ -69,7 +69,7 @@ public class FloorDecoration {
             RSString.terrainData = new byte[i_8_][];
             Class13.objectDataIds = new int[i_8_];
             GenericTile.objectData = new byte[i_8_][];
-            ISAAC.mapCoordinates = new int[i_8_];
+            Landscape.mapCoordinates = new int[i_8_];
             i_8_ = 0;
             for(int i_11_ = 0; i_11_ < 4; i_11_++) {
                 for(int i_12_ = 0; i_12_ < 13; i_12_++) {
@@ -80,13 +80,13 @@ public class FloorDecoration {
                             int i_16_ = i_14_ >> 3 & 0x7ff;
                             int i_17_ = i_16_ / 8 + (i_15_ / 8 << 8);
                             for(int i_18_ = 0; i_8_ > i_18_; i_18_++) {
-                                if(ISAAC.mapCoordinates[i_18_] == i_17_) {
+                                if(Landscape.mapCoordinates[i_18_] == i_17_) {
                                     i_17_ = -1;
                                     break;
                                 }
                             }
                             if(i_17_ != -1) {
-                                ISAAC.mapCoordinates[i_8_] = i_17_;
+                                Landscape.mapCoordinates[i_8_] = i_17_;
                                 int i_19_ = i_17_ & 0xff;
                                 int i_20_ = (0xffbe & i_17_) >> 8;
                                 LinkedList.terrainDataIds[i_8_] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.MAP_NAME_PREFIX_M +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
@@ -111,7 +111,7 @@ public class FloorDecoration {
                     Class44.xteaKeys[r][seed] = IncomingPackets.incomingPacketBuffer.getIntBE();
                 }
             }
-            ISAAC.mapCoordinates = new int[regionCount];
+            Landscape.mapCoordinates = new int[regionCount];
             RSString.terrainData = new byte[regionCount][];
             boolean inTutorialIsland_maybe = false;
             GenericTile.objectData = new byte[regionCount][];
@@ -128,7 +128,7 @@ public class FloorDecoration {
                 for(int y = (-6 + chunkY) / 8; (6 + chunkY) / 8 >= y; y++) {
                     int coords = y + (x << 8);
                     if(!inTutorialIsland_maybe || y != 49 && y != 149 && y != 147 && x != 50 && (x != 49 || y != 47)) {
-                        ISAAC.mapCoordinates[regionCount] = coords;
+                        Landscape.mapCoordinates[regionCount] = coords;
 
                         String mapKey = x + Native.MAP_NAME_UNDERSCORE + y;
                         String mapKeyM = Native.MAP_NAME_PREFIX_M + mapKey;

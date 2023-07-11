@@ -1,16 +1,12 @@
 package org.runejs.client.message.handler.rs435.region;
 
-import org.runejs.client.Class13;
-import org.runejs.client.Class44;
-import org.runejs.client.LinkedList;
-import org.runejs.client.RSString;
+import org.runejs.client.*;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.region.LoadConstructedRegionInboundMessage;
-import org.runejs.client.net.ISAAC;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.tile.GenericTile;
 
@@ -36,7 +32,7 @@ public class LoadConstructedRegionMessageHandler implements MessageHandler<LoadC
         RSString.terrainData = new byte[regionCount][];
         Class13.objectDataIds = new int[regionCount];
         GenericTile.objectData = new byte[regionCount][];
-        ISAAC.mapCoordinates = new int[regionCount];
+        Landscape.mapCoordinates = new int[regionCount];
         regionCount = 0;
         for(int i_11_ = 0; i_11_ < 4; i_11_++) {
             for(int i_12_ = 0; i_12_ < 13; i_12_++) {
@@ -47,13 +43,13 @@ public class LoadConstructedRegionMessageHandler implements MessageHandler<LoadC
                         int i_16_ = i_14_ >> 3 & 0x7ff;
                         int i_17_ = i_16_ / 8 + (i_15_ / 8 << 8);
                         for(int i_18_ = 0; regionCount > i_18_; i_18_++) {
-                            if(ISAAC.mapCoordinates[i_18_] == i_17_) {
+                            if(Landscape.mapCoordinates[i_18_] == i_17_) {
                                 i_17_ = -1;
                                 break;
                             }
                         }
                         if(i_17_ != -1) {
-                            ISAAC.mapCoordinates[regionCount] = i_17_;
+                            Landscape.mapCoordinates[regionCount] = i_17_;
                             int i_19_ = i_17_ & 0xff;
                             int i_20_ = (0xffbe & i_17_) >> 8;
                             LinkedList.terrainDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.MAP_NAME_PREFIX_M +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);

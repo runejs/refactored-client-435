@@ -18,7 +18,6 @@ import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
-import org.runejs.client.net.ISAAC;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.tile.FloorDecoration;
 import org.runejs.client.scene.tile.WallDecoration;
@@ -138,7 +137,7 @@ public class Class40_Sub3 extends Node {
             }
         } else if (MovedStatics.loadingPercent == 60) {
             int i = Class60.method988(CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
-            int i_3_ = ISAAC.method288();
+            int i_3_ = method288();
             if (i < i_3_) {
                 Native.currentLoadingText = English.loadingTitleScreen + (100 * i / i_3_) + Native.percent;
                 MovedStatics.anInt1607 = 50;
@@ -313,5 +312,9 @@ public class Class40_Sub3 extends Node {
 
         Class35.aBoolean1734 = arg2;
         RSString.aCacheArchive_1705 = arg1;
+    }
+
+    public static int method288() {
+        return 5;
     }
 }

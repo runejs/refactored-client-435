@@ -1,15 +1,11 @@
 package org.runejs.client.message.handler.rs435.region;
 
-import org.runejs.client.Class13;
-import org.runejs.client.Class44;
-import org.runejs.client.LinkedList;
-import org.runejs.client.RSString;
+import org.runejs.client.*;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.region.LoadStandardRegionInboundMessage;
-import org.runejs.client.net.ISAAC;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.tile.GenericTile;
 
@@ -28,7 +24,7 @@ public class LoadStandardRegionMessageHandler implements MessageHandler<LoadStan
         int level = message.level;
         int regionCount = message.regionCount;
         Class44.xteaKeys = message.xteaKeys;
-        ISAAC.mapCoordinates = new int[regionCount];
+        Landscape.mapCoordinates = new int[regionCount];
         RSString.terrainData = new byte[regionCount][];
         boolean inTutorialIsland_maybe = false;
         GenericTile.objectData = new byte[regionCount][];
@@ -45,7 +41,7 @@ public class LoadStandardRegionMessageHandler implements MessageHandler<LoadStan
             for(int y = (-6 + chunkY) / 8; (6 + chunkY) / 8 >= y; y++) {
                 int coords = y + (x << 8);
                 if(!inTutorialIsland_maybe || y != 49 && y != 149 && y != 147 && x != 50 && (x != 49 || y != 47)) {
-                    ISAAC.mapCoordinates[regionCount] = coords;
+                    Landscape.mapCoordinates[regionCount] = coords;
 
                     String mapKey = x + Native.MAP_NAME_UNDERSCORE + y;
                     String mapKeyM = Native.MAP_NAME_PREFIX_M + mapKey;
