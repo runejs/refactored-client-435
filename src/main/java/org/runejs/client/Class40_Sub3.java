@@ -111,7 +111,7 @@ public class Class40_Sub3 extends Node {
             }
         } else if (MovedStatics.loadingPercent == 45) {
             MusicSystem.initialiseMusic(0);
-            SoundSystem.initialiseSound(Main.signlink);
+            SoundSystem.initialiseSound(Game.signlink);
             MovedStatics.loadingPercent = 50;
             Native.currentLoadingText = English.preparedSoundEngine;
             MovedStatics.anInt1607 = 35;
@@ -156,7 +156,7 @@ public class Class40_Sub3 extends Node {
                 UnderlayDefinition.initializeUnderlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 initializeIdentityKitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
                 initializeGameObjectDefinitionCache(CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
-                Main.method357(CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
+                Game.method357(CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
                 MovedStatics.initializeItemDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, MovedStatics.membersWorld, CacheArchive.modelCacheArchive);
                 MovedStatics.initializeAnimationCaches(CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.skeletonCacheArchive);
                 Class55.method966(CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
@@ -268,8 +268,8 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.anInt1607 = 90;
             }
         } else if (MovedStatics.loadingPercent == 110) {
-            Main.mouseCapturer = new Class39();
-            Main.signlink.createThreadNode(10, Main.mouseCapturer);
+            Game.mouseCapturer = new Class39();
+            Game.signlink.createThreadNode(10, Game.mouseCapturer);
             Native.currentLoadingText = English.loadedInputHandler;
             MovedStatics.loadingPercent = 120;
             MovedStatics.anInt1607 = 94;

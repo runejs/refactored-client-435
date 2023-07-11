@@ -75,7 +75,7 @@ public class ChatBox {
             TypeFace.fontBold.drawStringLeft(Native.clickToContinueString, 239, 40, 0);
             TypeFace.fontBold.drawStringLeft(English.clickToContinue, 239, 60, 128);
         } else if(GameInterface.chatboxInterfaceId != -1) {
-            redrawChatbox = !Main.drawParentInterface(2, 0, 0, 479, 96, GameInterface.chatboxInterfaceId);
+            redrawChatbox = !Game.drawParentInterface(2, 0, 0, 479, 96, GameInterface.chatboxInterfaceId);
         } else if(dialogueId == -1) {
             int line = 0;
             TypeFace typeFace = MovedStatics.fontNormal;
@@ -174,7 +174,7 @@ public class ChatBox {
             typeFace.drawBasicStringLegacy("@blu@" + chatboxInput + Native.asterisk, typeFace.getStringWidth(name + Native.COLON_CHARACTER) + 6, 90);
             Rasterizer.drawHorizontalLine(0, 77, 479, 0);
         } else {
-            boolean bool = Main.drawParentInterface(3, 0, 0, 479, 96, dialogueId);
+            boolean bool = Game.drawParentInterface(3, 0, 0, 479, 96, dialogueId);
             if(!bool)
                 redrawChatbox = true;
         }

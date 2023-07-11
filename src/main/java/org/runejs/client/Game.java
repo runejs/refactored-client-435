@@ -52,7 +52,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 
-public class Main extends GameShell {
+public class Game extends GameShell {
 
     /**
      * The codec currently in use to encode and decode packets.
@@ -726,8 +726,8 @@ public class Main extends GameShell {
                 printHelp();
             }
 
-            Main main = new Main();
-            main.openClientApplet("client435", 13, 32 + modewhat, InetAddress.getByName(Configuration.SERVER_ADDRESS), 435);
+            Game game = new Game();
+            game.openClientApplet("client435", 13, 32 + modewhat, InetAddress.getByName(Configuration.SERVER_ADDRESS), 435);
 
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -764,7 +764,7 @@ public class Main extends GameShell {
         SoundSystem.reset();
         widgetSelected = 0;
         // TODO is this necessary? or should it be removed alongside other randomisation
-        Main.playerCamera.setYaw(0x7ff & -10 + (int) (20.0 * Math.random()));
+        Game.playerCamera.setYaw(0x7ff & -10 + (int) (20.0 * Math.random()));
         Minimap.minimapState = 0;
         Player.localPlayerCount = 0;
         Class55.destinationY = 0;
@@ -825,7 +825,7 @@ public class Main extends GameShell {
         MovedStatics.renderProjectiles();
         MovedStatics.renderSpotAnims();
         if(!Player.cutsceneActive) {
-            int pitch = Main.playerCamera.getPitch();
+            int pitch = Game.playerCamera.getPitch();
             if(SceneCamera.cameraTerrainMinScaledPitch / 256 > pitch) {
                 pitch = SceneCamera.cameraTerrainMinScaledPitch / 256;
             }
@@ -834,7 +834,7 @@ public class Main extends GameShell {
                 pitch = 128 + SceneCamera.customCameraAmplitude[4];
             }
 
-            Main.playerCamera.setPitch(pitch);
+            Game.playerCamera.setPitch(pitch);
         }
 
         int i;
@@ -916,7 +916,7 @@ public class Main extends GameShell {
      * Get the currently active camera.
      */
     public static Camera getActiveCamera() {
-        return Player.cutsceneActive ? Main.cutsceneCamera : Main.playerCamera;
+        return Player.cutsceneActive ? Game.cutsceneCamera : Game.playerCamera;
     }
 
     public static void method357(CacheArchive arg0, CacheArchive arg2) {
@@ -1209,7 +1209,7 @@ public class Main extends GameShell {
 
     public static void moveTowardsTarget() {
         // TODO (James) this moves the cutscene camera towards its target, we should move this into the CutsceneCamera class
-        CutsceneCamera camera = Main.cutsceneCamera;
+        CutsceneCamera camera = Game.cutsceneCamera;
 
         int i = camera.getMoveTo().y;
         int i_3_ = camera.getMoveTo().x;
@@ -1428,8 +1428,8 @@ public class Main extends GameShell {
                     InteractiveObject.anInt487 = 20;
                     MovedStatics.aBoolean565 = false;
                     SceneCluster.packetBuffer.putPacket(58);
-                    SceneCluster.packetBuffer.putShortBE(Main.playerCamera.getYaw());
-                    SceneCluster.packetBuffer.putShortBE(Main.playerCamera.getPitch());
+                    SceneCluster.packetBuffer.putShortBE(Game.playerCamera.getYaw());
+                    SceneCluster.packetBuffer.putShortBE(Game.playerCamera.getPitch());
                 }
                 if(MovedStatics.aBoolean571 && !aBoolean1735) {
                     aBoolean1735 = true;

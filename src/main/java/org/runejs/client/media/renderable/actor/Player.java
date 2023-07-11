@@ -278,17 +278,17 @@ public class Player extends Actor {
                 playerDisplayName = player.playerName + Native.leftParenthesisWithSpacePrefix + English.prefixSkill + player.skillLevel + Native.rightParenthesis;
             if (MovedStatics.itemSelected == 1) {
                 MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.USE_ITEM_ON_PLAYER.getId(), Native.selectedItemName + Native.arrowActionOnOther + playerDisplayName);
-            } else if (Main.widgetSelected == 1) {
+            } else if (Game.widgetSelected == 1) {
                 if ((MovedStatics.selectedMask & 0x8) == 8) {
                     MovedStatics.addActionRow(Native.selectedSpellVerb, index, x, y, ActionRowType.CAST_MAGIC_ON_PLAYER.getId(), Native.selectedSpellName + Native.arrowActionOnOther + playerDisplayName);
                 }
             } else {
                 for (int i = 4; i >= 0; i--) {
-                    if (Main.playerActions[i] != null) {
+                    if (Game.playerActions[i] != null) {
                         int actionType = 0;
                         int actionRowOffset = 0;
 
-                        if (Main.playerActions[i].equalsIgnoreCase(English.attack)) {
+                        if (Game.playerActions[i].equalsIgnoreCase(English.attack)) {
                             // offset attack actions so that they are lower priority for players of higher combat lvl or the same team
                             if (localPlayer.combatLevel < player.combatLevel)
                                 actionRowOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
@@ -313,7 +313,7 @@ public class Player extends Actor {
                             actionType = ActionRowType.INTERACT_WITH_PLAYER_OPTION_4.getId() + actionRowOffset;
                         if (i == 4)
                             actionType = ActionRowType.INTERACT_WITH_PLAYER_OPTION_5.getId() + actionRowOffset;
-                        MovedStatics.addActionRow(Main.playerActions[i], index, x, y, actionType, Native.white + playerDisplayName);
+                        MovedStatics.addActionRow(Game.playerActions[i], index, x, y, actionType, Native.white + playerDisplayName);
                     }
                 }
             }

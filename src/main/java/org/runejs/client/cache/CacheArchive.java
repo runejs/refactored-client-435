@@ -74,10 +74,10 @@ public class CacheArchive {
 
     public static CacheArchive loadArchive(int cacheIndexId, boolean arg1, boolean arg2, boolean arg4) {
         CacheIndex dataIndex = null;
-        if(Main.dataChannel != null) {
-            dataIndex = new CacheIndex(cacheIndexId, Main.dataChannel, Main.indexChannels[cacheIndexId], 1000000);
+        if(Game.dataChannel != null) {
+            dataIndex = new CacheIndex(cacheIndexId, Game.dataChannel, Game.indexChannels[cacheIndexId], 1000000);
         }
-        return new CacheArchive(dataIndex, Main.metaIndex, cacheIndexId, arg2, arg4, arg1);
+        return new CacheArchive(dataIndex, Game.metaIndex, cacheIndexId, arg2, arg4, arg1);
     }
 
     public static byte[] decompress(byte[] cacheData) {

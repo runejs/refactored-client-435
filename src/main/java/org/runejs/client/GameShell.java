@@ -48,11 +48,11 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                 Class40_Sub3.anInt2024 = 5;
             }
         }
-        if (Main.signlink.gameShell != null) {
+        if (Game.signlink.gameShell != null) {
             Method method = Signlink.aMethod724;
             if (method != null) {
                 try {
-                    method.invoke(Main.signlink.gameShell, Boolean.TRUE);
+                    method.invoke(Game.signlink.gameShell, Boolean.TRUE);
                 } catch (Throwable throwable) {
                 }
             }
@@ -110,9 +110,9 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
                     /* empty */
                 }
             }
-            if (Main.signlink != null) {
+            if (Game.signlink != null) {
                 try {
-                    Main.signlink.killSignlinkThread();
+                    Game.signlink.killSignlinkThread();
                 } catch (Exception exception) {
                     /* empty */
                 }
@@ -211,14 +211,14 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
         Class39.anInt901 = clientVersion;
         MovedStatics.height = width;
         currentGameShell = this;
-        if (Main.signlink == null) {
+        if (Game.signlink == null) {
             try {
-                Actor.signlink = Main.signlink = new Signlink(false, this, InetAddress.getByName(getCodeBase().getHost()), fileStoreId, null, 0);
+                Actor.signlink = Game.signlink = new Signlink(false, this, InetAddress.getByName(getCodeBase().getHost()), fileStoreId, null, 0);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        Main.signlink.createThreadNode(1, this);
+        Game.signlink.createThreadNode(1, this);
         windowActivated(null);
     }
 
@@ -286,8 +286,8 @@ public abstract class GameShell extends Canvas implements Runnable, FocusListene
             Insets insets = clientFrame.getInsets();
             clientFrame.setSize(insets.right + width + insets.left, insets.bottom + insets.top + height);
 //            Class35.aFrame1732.setLocationRelativeTo(null);
-            Actor.signlink = Main.signlink = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
-            Main.signlink.createThreadNode(1, this);
+            Actor.signlink = Game.signlink = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
+            Game.signlink.createThreadNode(1, this);
         } catch (Exception exception) {
             MovedStatics.printException(null, exception);
         }

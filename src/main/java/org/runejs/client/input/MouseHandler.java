@@ -50,7 +50,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             return;
         }
         int meta = clickType;
-        if(Main.widgetSelected == 1 && clickX >= 516 && clickY >= 160 && clickX <= 765 && clickY <= 205)
+        if(Game.widgetSelected == 1 && clickX >= 516 && clickY >= 160 && clickX <= 765 && clickY <= 205)
             meta = 0;
         if(MovedStatics.menuOpen) {
             if(meta != 1) {
@@ -68,7 +68,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     y -= 357;
                     x -= 17;
                 }
-                if(-10 + InteractiveObject.menuOffsetX > x || 10 + VertexNormal.menuWidth + InteractiveObject.menuOffsetX < x || y < Main.menuOffsetY + -10 || y > Main.menuOffsetY + CollisionMap.menuHeight + 10) {
+                if(-10 + InteractiveObject.menuOffsetX > x || 10 + VertexNormal.menuWidth + InteractiveObject.menuOffsetX < x || y < Game.menuOffsetY + -10 || y > Game.menuOffsetY + CollisionMap.menuHeight + 10) {
                     if(MovedStatics.menuScreenArea == 1)
                         GameInterface.redrawTabArea = true;
                     MovedStatics.menuOpen = false;
@@ -78,7 +78,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             }
             if(meta == 1) {
                 int menuX = InteractiveObject.menuOffsetX;
-                int menuY = Main.menuOffsetY;
+                int menuY = Game.menuOffsetY;
                 int dx = VertexNormal.menuWidth;
                 int x = clickX;
                 int y = clickY;
@@ -248,7 +248,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         LinkedList.anInt1073 = 0;
 
         if(!handleInterfaceScrolling(event)) {
-            int currentZoom = Main.playerCamera.getZoom();
+            int currentZoom = Game.playerCamera.getZoom();
             if(currentZoom <= 150 && rotation <= 0 || currentZoom >= 1600 && rotation >= 0) {
                 return;
             }
@@ -268,7 +268,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         int mouseY = eventMouseY;
         if(ScreenController.isCoordinatesInExtendedChatArea(mouseX, mouseY) && GameInterface.chatboxInterfaceId == -1) {
             if(rotation < 0) {
-                if(Main.chatboxInterface.scrollPosition >= 1) {
+                if(Game.chatboxInterface.scrollPosition >= 1) {
 
                     if(ChatBox.inputType == 3) {
                         ChatBox.itemSearchScroll = ChatBox.itemSearchScroll - 30;

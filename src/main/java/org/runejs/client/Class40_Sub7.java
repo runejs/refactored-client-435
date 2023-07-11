@@ -44,7 +44,7 @@ public class Class40_Sub7 extends Node {
                             bool_2_ = true;
                             if(!gameObjectDefinition.method612()) {
                                 bool = false;
-                                Main.anInt2591++;
+                                Game.anInt2591++;
                             }
                         }
                     }

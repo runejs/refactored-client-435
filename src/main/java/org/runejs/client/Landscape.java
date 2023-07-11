@@ -52,28 +52,28 @@ public class Landscape {
     public static int[][][] constructMapTiles = new int[4][13][13];
 
     public static void loadRegion() {
-        Main.method364(false);
-        Main.anInt874 = 0;
+        Game.method364(false);
+        Game.anInt874 = 0;
         boolean bool = true;
         for(int i = 0; i < RSString.terrainData.length; i++) {
             if(LinkedList.terrainDataIds[i] != -1 && RSString.terrainData[i] == null) {
                 RSString.terrainData[i] = CacheArchive.gameWorldMapCacheArchive.getFile(LinkedList.terrainDataIds[i], 0);
                 if(RSString.terrainData[i] == null) {
-                    Main.anInt874++;
+                    Game.anInt874++;
                     bool = false;
                 }
             }
             if(Class13.objectDataIds[i] != -1 && objectData[i] == null) {
                 objectData[i] = CacheArchive.gameWorldMapCacheArchive.method176(Class13.objectDataIds[i], 0, Class44.xteaKeys[i]);
                 if(objectData[i] == null) {
-                    Main.anInt874++;
+                    Game.anInt874++;
                     bool = false;
                 }
             }
         }
         if(bool) {
             bool = true;
-            Main.anInt2591 = 0;
+            Game.anInt2591 = 0;
             for(int i = 0; RSString.terrainData.length > i; i++) {
                 byte[] is = objectData[i];
                 if(is != null) {
@@ -103,7 +103,7 @@ public class Landscape {
                 method1020();
                 int dataLength = RSString.terrainData.length;
                 SoundSystem.clearObjectSounds();
-                Main.method364(true);
+                Game.method364(true);
                 if(!GroundItemTile.loadGeneratedMap) {
                     for(int pointer = 0; dataLength > pointer; pointer++) {
                         int offsetY = -Class26.baseY + (0xff & mapCoordinates[pointer]) * 64;
@@ -123,7 +123,7 @@ public class Landscape {
                         if(data == null && Class17.regionY < 800)
                             MovedStatics.initiateVertexHeights(offsetY, 64, 64, offsetX);
                     }
-                    Main.method364(true);
+                    Game.method364(true);
                     for(int region = 0; dataLength > region; region++) {
                         //                        System.out.println("Requesting map: "+Class13.anIntArray421[i_12_]);
                         // load maps in here
@@ -180,7 +180,7 @@ public class Landscape {
                                 MovedStatics.initiateVertexHeights(y * 8, 8, 8, 8 * x);
                         }
                     }
-                    Main.method364(true);
+                    Game.method364(true);
                     for(int z = 0; z < 4; z++) {
                         for(int x = 0; x < 13; x++) {
                             for(int y = 0; y < 13; y++) {
@@ -202,10 +202,10 @@ public class Landscape {
                         }
                     }
                 }
-                Main.method364(true);
+                Game.method364(true);
                 RSCanvas.clearCaches();
                 createRegion(Npc.currentScene, currentCollisionMap);
-                Main.method364(true);
+                Game.method364(true);
                 int z = MovedStatics.lowestPlane;
                 if(Player.worldLevel < z)
                     z = Player.worldLevel;
@@ -703,7 +703,7 @@ public class Landscape {
 
     private static void method285(byte arg0) {
         if(arg0 != 118)
-            Main.aBoolean519 = true;
+            Game.aBoolean519 = true;
         for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst()) {
             if(class40_sub3.anInt2031 == -1) {
                 class40_sub3.anInt2033 = 0;

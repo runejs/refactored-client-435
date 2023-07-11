@@ -12,7 +12,7 @@ public class CutsceneCameraLookToMessageHandler implements MessageHandler<Cutsce
     public void handle(CutsceneCameraLookToInboundMessage message) {
         Player.cutsceneActive = true;
 
-        Main.cutsceneCamera.setLookAt(
+        Game.cutsceneCamera.setLookAt(
             new Point3d(
                 // convert tile coordinates to 3d coordinates
                 64 + 128 * message.targetX,
@@ -20,15 +20,15 @@ public class CutsceneCameraLookToMessageHandler implements MessageHandler<Cutsce
                 message.height
             )
         );
-        Main.cutsceneCamera.setTurnSpeed(message.speedBase, message.speedScale);
+        Game.cutsceneCamera.setTurnSpeed(message.speedBase, message.speedScale);
 
         // apply immediately
         if(message.speedScale >= 100) {
-            int x = Main.cutsceneCamera.getLookAt().x;
-            int y = Main.cutsceneCamera.getLookAt().y;
-            int z = Scene.getFloorDrawHeight(Player.worldLevel, x, y) - Main.cutsceneCamera.getLookAt().z;
+            int x = Game.cutsceneCamera.getLookAt().x;
+            int y = Game.cutsceneCamera.getLookAt().y;
+            int z = Scene.getFloorDrawHeight(Player.worldLevel, x, y) - Game.cutsceneCamera.getLookAt().z;
 
-            Point3d cameraPos = Main.cutsceneCamera.getPosition();
+            Point3d cameraPos = Game.cutsceneCamera.getPosition();
 
             int deltaX = x - cameraPos.x;
             int deltaY = y - cameraPos.y;
@@ -37,8 +37,8 @@ public class CutsceneCameraLookToMessageHandler implements MessageHandler<Cutsce
             int horizontalDistance = (int) Math.sqrt((double) (deltaY * deltaY + deltaX * deltaX));
 
             // (maybe) convert radians to 2048-step rotational unit
-            Main.cutsceneCamera.setPitch((int) (325.949 * Math.atan2((double) deltaZ, (double) horizontalDistance)) & 0x7ff);
-            Main.cutsceneCamera.setYaw((int) (-325.949 * Math.atan2((double) deltaX, (double) deltaY)) & 0x7ff);
+            Game.cutsceneCamera.setPitch((int) (325.949 * Math.atan2((double) deltaZ, (double) horizontalDistance)) & 0x7ff);
+            Game.cutsceneCamera.setYaw((int) (-325.949 * Math.atan2((double) deltaX, (double) deltaY)) & 0x7ff);
         }
     }
 }

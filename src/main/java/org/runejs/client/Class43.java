@@ -36,11 +36,11 @@ public class Class43 {
         MovedStatics.showSidePanelRedrawnText = true;
         MovedStatics.method996();
         if(GameInterface.tabAreaInterfaceId != -1) {
-            boolean bool = Main.drawParentInterface(1, 0, 0, 190, 261, GameInterface.tabAreaInterfaceId);
+            boolean bool = Game.drawParentInterface(1, 0, 0, 190, 261, GameInterface.tabAreaInterfaceId);
             if(!bool)
                 GameInterface.redrawTabArea = true;
         } else if(Player.tabWidgetIds[Player.currentTabId] != -1) {
-            boolean bool = Main.drawParentInterface(1, 0, 0, 190, 261, Player.tabWidgetIds[Player.currentTabId]);
+            boolean bool = Game.drawParentInterface(1, 0, 0, 190, 261, Player.tabWidgetIds[Player.currentTabId]);
             if(!bool)
                 GameInterface.redrawTabArea = true;
         }
@@ -164,7 +164,7 @@ public class Class43 {
             if(i > 190)
                 i = 190;
             int i_1_ = CollisionMap.menuHeight;
-            int i_2_ = Main.menuOffsetY;
+            int i_2_ = Game.menuOffsetY;
             if(i_0_ < 0)
                 i_0_ = 0;
             int i_3_ = 6116423;

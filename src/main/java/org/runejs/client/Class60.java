@@ -78,7 +78,7 @@ public class Class60 {
                     y = 334 - height;
                 if(y < 0)
                     y = 0;
-                Main.menuOffsetY = y;
+                Game.menuOffsetY = y;
             }
             if(MouseHandler.clickX > 553 && MouseHandler.clickY > 205 && MouseHandler.clickX < 743 && MouseHandler.clickY < 466) {
                 CollisionMap.menuHeight = 22 + 15 * MovedStatics.menuActionRow;
@@ -97,7 +97,7 @@ public class Class60 {
                 } else
                     y = 0;
                 VertexNormal.menuWidth = width;
-                Main.menuOffsetY = y;
+                Game.menuOffsetY = y;
             }
             if(MouseHandler.clickX > 17 && MouseHandler.clickY > 357 && MouseHandler.clickX < 496 && MouseHandler.clickY < 453) {
                 VertexNormal.menuWidth = width;
@@ -111,7 +111,7 @@ public class Class60 {
                     y = 0;
                 int x = -(width / 2) + -17 + MouseHandler.clickX;
                 MovedStatics.menuOpen = true;
-                Main.menuOffsetY = y;
+                Game.menuOffsetY = y;
                 if(x < 0)
                     x = 0;
                 else if(x + width > 479)
@@ -137,7 +137,7 @@ public class Class60 {
                 x = ScreenController.drawWidth - width;
             MovedStatics.menuOpen = true;
             InteractiveObject.menuOffsetX = x;
-            Main.menuOffsetY = y;
+            Game.menuOffsetY = y;
             VertexNormal.menuWidth = width;
             CollisionMap.menuHeight = MovedStatics.menuActionRow * 15 + 22;
         }
@@ -158,7 +158,7 @@ public class Class60 {
 //            } else
 //                y = 0;
 //            VertexNormal.menuWidth = width;
-//            Main.menuOffsetY = y;
+//            Game.menuOffsetY = y;
 //        }
 //        if(Class57.clickX > 17 && RSString.clickY > 357 && Class57.clickX < 496 && RSString.clickY < 453) {
 //            VertexNormal.menuWidth = width;
@@ -172,7 +172,7 @@ public class Class60 {
 //                y = 0;
 //            int x = -(width / 2) + -17 + Class57.clickX;
 //            Class4.menuOpen = true;
-//            Main.menuOffsetY = y;
+//            Game.menuOffsetY = y;
 //            if(x < 0)
 //                x = 0;
 //            else if(x + width > 479)
@@ -423,7 +423,7 @@ public class Class60 {
             Rasterizer.drawDiagonalLine(0,0, 42,42, 0xFF0000);
         }
 
-        Main.renderFlames();
+        Game.renderFlames();
 
         try {
             int offsetX = 0;
@@ -601,8 +601,8 @@ public class Class60 {
 
             logo.drawImage(-128 + 382 + -(logo.imageWidth / 2), 18);
 
-            Class40_Sub5_Sub15.loginScreenBox = Main.method359(Native.titleBox, "", gameImageCacheArchive);
-            Class59.imgLoginScreenButton = Main.method359(Native.titleButton, "", gameImageCacheArchive);
+            Class40_Sub5_Sub15.loginScreenBox = Game.method359(Native.titleBox, "", gameImageCacheArchive);
+            Class59.imgLoginScreenButton = Game.method359(Native.titleButton, "", gameImageCacheArchive);
             MovedStatics.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(gameImageCacheArchive, Native.runes, "");
 
             Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
