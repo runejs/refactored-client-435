@@ -145,7 +145,7 @@ public class ClientScriptRunner extends Node {
                     }
                     clientScriptRunner.opcodes[i] = opcode;
                     clientScriptRunner.values[i] = val;
-                    clientScriptRunner.valueNodes[i] = signlink.createType10Node(Class26.stringToType(typeString), valName);
+                    clientScriptRunner.valueNodes[i] = signlink.createType10Node(stringToType(typeString), valName);
                 } else if(opcode == 3 || opcode == 4) {
                     String typeString = new String(buffer.getRSString().method80());
                     String functionName = new String(buffer.getRSString().method80());
@@ -165,10 +165,10 @@ public class ClientScriptRunner extends Node {
                     clientScriptRunner.opcodes[i] = opcode;
                     Class[] argTypes = new Class[argCount];
                     for(int j = 0; j < argCount; j++) {
-                        argTypes[j] = Class26.stringToType(argNames[j]);
+                        argTypes[j] = stringToType(argNames[j]);
                     }
 
-                    clientScriptRunner.functionNodes[i] = signlink.method386(argTypes, functionName, Class26.stringToType(typeString));
+                    clientScriptRunner.functionNodes[i] = signlink.method386(argTypes, functionName, stringToType(typeString));
                     clientScriptRunner.argumentValues[i] = argValueData;
                 }
             } catch(ClassNotFoundException classnotfoundexception) {
@@ -1078,5 +1078,25 @@ public class ClientScriptRunner extends Node {
             /* empty */
         }
 
+    }
+
+    private static Class stringToType(String typeCode) throws ClassNotFoundException {
+        if(typeCode.equals("B"))
+            return Byte.TYPE;
+        if(typeCode.equals("I"))
+            return Integer.TYPE;
+        if(typeCode.equals("S"))
+            return Short.TYPE;
+        if(typeCode.equals("J"))
+            return Long.TYPE;
+        if(typeCode.equals("Z"))
+            return Boolean.TYPE;
+        if(typeCode.equals("F"))
+            return Float.TYPE;
+        if(typeCode.equals("D"))
+            return Double.TYPE;
+        if(typeCode.equals("C"))
+            return Character.TYPE;
+        return Class.forName(typeCode);
     }
 }
