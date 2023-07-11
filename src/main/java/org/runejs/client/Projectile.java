@@ -2,7 +2,6 @@ package org.runejs.client;
 
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.GameObjectDefinition;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.IndexedImage;
@@ -281,7 +280,7 @@ public class Projectile extends Renderable {
             if(i_23_ > 103) {
                 i_23_ = 103;
             }
-            if((OverlayDefinition.tile_flags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
+            if((MovedStatics.tile_flags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
                 i = Player.worldLevel;
             int i_24_ = Player.localPlayer.worldX >> 7;
             int i_25_ = Player.localPlayer.worldY >> 7;
@@ -311,7 +310,7 @@ public class Projectile extends Renderable {
                         i_23_ = 103;
                     }
                     i_29_ += i_28_;
-                    if((OverlayDefinition.tile_flags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
+                    if((MovedStatics.tile_flags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
                         i = Player.worldLevel;
                     if(i_29_ >= 65536) {
                         if(i_23_ < i_24_)
@@ -325,7 +324,7 @@ public class Projectile extends Renderable {
                         if(i_23_ > 103) {
                             i_23_ = 103;
                         }
-                        if((0x4 & OverlayDefinition.tile_flags[Player.worldLevel][i_23_][i_22_]) != 0)
+                        if((0x4 & MovedStatics.tile_flags[Player.worldLevel][i_23_][i_22_]) != 0)
                             i = Player.worldLevel;
                     }
                 }
@@ -338,7 +337,7 @@ public class Projectile extends Renderable {
                             i_23_--;
                     } else
                         i_23_++;
-                    if((OverlayDefinition.tile_flags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
+                    if((MovedStatics.tile_flags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
                         i = Player.worldLevel;
                     i_31_ += i_30_;
                     if(i_31_ >= 65536) {
@@ -347,20 +346,20 @@ public class Projectile extends Renderable {
                             i_22_++;
                         else if(i_22_ > i_25_)
                             i_22_--;
-                        if((OverlayDefinition.tile_flags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
+                        if((MovedStatics.tile_flags[Player.worldLevel][i_23_][i_22_] & 0x4) != 0)
                             i = Player.worldLevel;
                     }
                 }
             }
         }
-        if((OverlayDefinition.tile_flags[Player.worldLevel][Player.localPlayer.worldX >> 7][Player.localPlayer.worldY >> 7] & 0x4) != 0)
+        if((MovedStatics.tile_flags[Player.worldLevel][Player.localPlayer.worldX >> 7][Player.localPlayer.worldY >> 7] & 0x4) != 0)
             i = Player.worldLevel;
         return i;
 
     }
 
     public static void addObject(int objectId, int localX, int localY, int plane, int face, int type, Scene scene, CollisionMap collisionMap) {
-        if(!VertexNormal.lowMemory || (0x2 & OverlayDefinition.tile_flags[0][localX][localY]) != 0 || (0x10 & OverlayDefinition.tile_flags[plane][localX][localY]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(plane, localY, 0, localX)) {
+        if(!VertexNormal.lowMemory || (0x2 & MovedStatics.tile_flags[0][localX][localY]) != 0 || (0x10 & MovedStatics.tile_flags[plane][localX][localY]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(plane, localY, 0, localX)) {
             if(MovedStatics.lowestPlane > plane)
                 MovedStatics.lowestPlane = plane;
             int vertexHeight = MovedStatics.tile_height[plane][localX][localY];

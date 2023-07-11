@@ -326,7 +326,7 @@ public class Class40_Sub3 extends Node {
 	    ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[MovedStatics.anInt2581];
 	    for(int i = 0; i < MovedStatics.anInt2581; i++) {
 	        ImageRGB class40_sub5_sub14_sub4 = class40_sub5_sub14_sub4s[i] = new ImageRGB();
-	        class40_sub5_sub14_sub4.maxWidth = ItemDefinition.imageMaxWidth;
+	        class40_sub5_sub14_sub4.maxWidth = MovedStatics.imageMaxWidth;
 	        class40_sub5_sub14_sub4.maxHeight = MovedStatics.imageMaxHeight;
 	        class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[i];
 	        class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[i];

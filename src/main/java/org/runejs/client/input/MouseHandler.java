@@ -1,8 +1,6 @@
 package org.runejs.client.input;
 
 import org.runejs.client.node.NodeCache;
-import org.runejs.client.cache.def.ItemDefinition;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.frame.ScreenController;
@@ -41,6 +39,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public static int cursorY;
     public static int cursorX;
     public static boolean gameScreenClickable;
+    private static volatile long lastClick = 0L;
     public boolean mouseWheelDown;
     public int mouseWheelX;
     public int mouseWheelY;
@@ -135,7 +134,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                         Class40_Sub5_Sub15.lastItemDragged = false;
                         SceneTile.activeInterfaceType = 2;
                         MovedStatics.modifiedWidgetId = id;
-                        ItemDefinition.anInt2798 = clickY;
+                        MovedStatics.anInt2798 = clickY;
                         GroundItemTile.selectedInventorySlot = item;
                         if(id >> 16 == GameInterface.gameScreenInterfaceId)
                             SceneTile.activeInterfaceType = 1;
@@ -163,7 +162,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             clickType = eventMouseButtonPressed;
             clickX = Class55.eventClickX;
             clickY = MovedStatics.eventClickY;
-            aLong2561 = OverlayDefinition.lastClick;
+            aLong2561 = lastClick;
             eventMouseButtonPressed = 0;
         }
     }
@@ -226,7 +225,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             LinkedList.anInt1073 = 0;
             Class55.eventClickX = mouseX;
             MovedStatics.eventClickY = mouseY;
-            OverlayDefinition.lastClick = System.currentTimeMillis();
+            lastClick = System.currentTimeMillis();
             if(event.getButton() == MouseEvent.BUTTON2) {
                 mouseWheelDown = true;
                 mouseWheelX = mouseX;

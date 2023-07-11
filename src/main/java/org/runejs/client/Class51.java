@@ -1,6 +1,5 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
@@ -31,7 +30,7 @@ public class Class51 {
     public static void method940(String arg1, boolean arg2, String arg3) {
         if(MovedStatics.clearScreen) {
             MovedStatics.clearScreen = false;
-            ItemDefinition.drawWelcomeScreenGraphics();
+            MovedStatics.drawWelcomeScreenGraphics();
             LinkedList.drawChatBoxGraphics();
             Class55.drawTabGraphics();
             ActorDefinition.drawMapBack();

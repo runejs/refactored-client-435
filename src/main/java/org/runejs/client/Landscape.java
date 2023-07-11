@@ -49,6 +49,7 @@ public class Landscape {
     public static byte[][][] tile_overlayids;
     public static byte[][][] tile_underlayids;
     public static byte[][] objectData;
+    public static int[][][] constructMapTiles = new int[4][13][13];
 
     public static void loadRegion() {
         Main.method364(false);
@@ -96,7 +97,7 @@ public class Landscape {
                 for(int z = 0; z < 4; z++) {
                     for(int x = 0; x < 104; x++) {
                         for(int y = 0; y < 104; y++)
-                            OverlayDefinition.tile_flags[z][x][y] = (byte) 0;
+                            MovedStatics.tile_flags[z][x][y] = (byte) 0;
                     }
                 }
                 method1020();
@@ -151,7 +152,7 @@ public class Landscape {
                     for(int z = 0; z < 4; z++) {
                         for(int x = 0; x < 13; x++) {
                             for(int y = 0; y < 13; y++) {
-                                int data = OverlayDefinition.constructMapTiles[z][x][y];
+                                int data = constructMapTiles[z][x][y];
                                 boolean bool_19_ = false;
                                 if(data != -1) {
                                     int tileRotation = (0x6 & data) >> 1;
@@ -174,7 +175,7 @@ public class Landscape {
                     }
                     for(int x = 0; x < 13; x++) {
                         for(int y = 0; y < 13; y++) {
-                            int displayMap = OverlayDefinition.constructMapTiles[0][x][y];
+                            int displayMap = constructMapTiles[0][x][y];
                             if(displayMap == -1)
                                 MovedStatics.initiateVertexHeights(y * 8, 8, 8, 8 * x);
                         }
@@ -183,7 +184,7 @@ public class Landscape {
                     for(int z = 0; z < 4; z++) {
                         for(int x = 0; x < 13; x++) {
                             for(int y = 0; y < 13; y++) {
-                                int bits = OverlayDefinition.constructMapTiles[z][x][y];
+                                int bits = constructMapTiles[z][x][y];
                                 if(bits != -1) {
                                     int tileZ = (bits & 0x3ba82fb) >> 24;
                                     int tileX = 0x3ff & bits >> 14;
@@ -322,7 +323,7 @@ public class Landscape {
                     if(tileX > 0 && tileY > 0 && tileX < 103 && tileY < 103) {
                         CollisionMap collisionMap = null;
                         int collisionMapPlane = plane;
-                        if((OverlayDefinition.tile_flags[1][tileX][tileY] & 0x2) == 2) // bridge tile, go down 1 level
+                        if((MovedStatics.tile_flags[1][tileX][tileY] & 0x2) == 2) // bridge tile, go down 1 level
                             collisionMapPlane--;
                         if(collisionMapPlane >= 0)
                             collisionMap = collisionMaps[collisionMapPlane];
@@ -369,9 +370,9 @@ public class Landscape {
         for(int plane = 0; plane < 4; plane++) {
             for(int x = 0; x < 104; x++) {
                 for(int y = 0; y < 104; y++) {
-                    if((0x1 & OverlayDefinition.tile_flags[plane][x][y]) == 1) {
+                    if((0x1 & MovedStatics.tile_flags[plane][x][y]) == 1) {
                         int markingPlane = plane;
-                        if((0x2 & OverlayDefinition.tile_flags[1][x][y]) == 2)
+                        if((0x2 & MovedStatics.tile_flags[1][x][y]) == 2)
                             markingPlane--;
                         if(markingPlane >= 0)
                             collisionMaps[markingPlane].markBlocked(y, x);
@@ -464,7 +465,7 @@ public class Landscape {
                             hueMultiplier -= blendedHueMultiplier[negativeY];
                             hue -= blendedHue[negativeY];
                         }
-                        if(y >= 1 && y < 103 && (!VertexNormal.lowMemory || (0x2 & OverlayDefinition.tile_flags[0][x][y]) != 0 || (0x10 & OverlayDefinition.tile_flags[_plane][x][y]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(_plane, y, 0, x))) {
+                        if(y >= 1 && y < 103 && (!VertexNormal.lowMemory || (0x2 & MovedStatics.tile_flags[0][x][y]) != 0 || (0x10 & MovedStatics.tile_flags[_plane][x][y]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(_plane, y, 0, x))) {
                             if(MovedStatics.lowestPlane > _plane)
                                 MovedStatics.lowestPlane = _plane;
                             int underlayId = tile_underlayids[_plane][x][y] & 0xff;
@@ -565,7 +566,7 @@ public class Landscape {
         scene.method118(-50, -10, -50);
         for(int i = 0; i < 104; i++) {
             for(int i_58_ = 0; i_58_ < 104; i_58_++) {
-                if((OverlayDefinition.tile_flags[1][i][i_58_] & 0x2) == 2)
+                if((MovedStatics.tile_flags[1][i][i_58_] & 0x2) == 2)
                     scene.setTileBridge(i, i_58_);
             }
         }
@@ -765,7 +766,7 @@ public class Landscape {
 
     public static void method922(int x, int arg1, Buffer fileData, int y, int regionY, int regionX, int level) {
         if(x >= 0 && x < 104 && y >= 0 && y < 104) {
-            OverlayDefinition.tile_flags[level][x][y] = (byte) 0;
+            MovedStatics.tile_flags[level][x][y] = (byte) 0;
             for(; ; ) {
                 int opcode = fileData.getUnsignedByte();
                 if(opcode == 0) {
@@ -792,7 +793,7 @@ MovedStatics.tile_height[level][x][y] = -240 + MovedStatics.tile_height[level + 
                     tile_underlay_path[level][x][y] = (byte) ((opcode + -2) / 4);
                     tile_overlay_rotation[level][x][y] = (byte) BitUtils.bitWiseAND(arg1 + -2 + opcode, 3);
                 } else if(opcode <= 81)
-                    OverlayDefinition.tile_flags[level][x][y] = (byte) (-49 + opcode);
+                    MovedStatics.tile_flags[level][x][y] = (byte) (-49 + opcode);
                 else
                     tile_underlayids[level][x][y] = (byte) (-81 + opcode);
             }
@@ -826,9 +827,9 @@ MovedStatics.tile_height[level][x][y] = -240 + MovedStatics.tile_height[level + 
                     for(int _y = 0; _y < 13; _y++) {
                         int isConstructedChunk = IncomingPackets.incomingPacketBuffer.getBits(1);
                         if(isConstructedChunk != 1) {
-                            OverlayDefinition.constructMapTiles[_level][_x][_y] = -1;
+                            constructMapTiles[_level][_x][_y] = -1;
                         } else {
-                            OverlayDefinition.constructMapTiles[_level][_x][_y] = IncomingPackets.incomingPacketBuffer.getBits(26);
+                            constructMapTiles[_level][_x][_y] = IncomingPackets.incomingPacketBuffer.getBits(26);
                         }
                     }
                 }
@@ -852,7 +853,7 @@ MovedStatics.tile_height[level][x][y] = -240 + MovedStatics.tile_height[level + 
             for(int i_11_ = 0; i_11_ < 4; i_11_++) {
                 for(int i_12_ = 0; i_12_ < 13; i_12_++) {
                     for(int i_13_ = 0; i_13_ < 13; i_13_++) {
-                        int i_14_ = OverlayDefinition.constructMapTiles[i_11_][i_12_][i_13_];
+                        int i_14_ = constructMapTiles[i_11_][i_12_][i_13_];
                         if(i_14_ != -1) {
                             int i_15_ = i_14_ >> 14 & 0x3ff;
                             int i_16_ = i_14_ >> 3 & 0x7ff;

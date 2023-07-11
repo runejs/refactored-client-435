@@ -2,7 +2,6 @@ package org.runejs.client.message.handler.rs435.misc;
 
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.def.GameObjectDefinition;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
@@ -15,7 +14,7 @@ public class TransformPlayerToObjectMessageHandler implements MessageHandler<Tra
     @Override
     public void handle(TransformPlayerToObjectInboundMessage message) {
         int x = message.x + MovedStatics.placementX;
-        int y = message.y + OverlayDefinition.placementY;
+        int y = message.y + MovedStatics.placementY;
 
         int unknownXMin = message.unknownXMin;
         int unknownXMax = message.unknownXMax;

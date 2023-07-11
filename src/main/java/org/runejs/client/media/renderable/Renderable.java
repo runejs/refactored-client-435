@@ -2,7 +2,6 @@ package org.runejs.client.media.renderable;
 
 import org.runejs.client.MovedStatics;
 import org.runejs.client.ProducingGraphicsBuffer_Sub1;
-import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
@@ -34,7 +33,7 @@ public abstract class Renderable extends CachedNode {
             GameInterface gameInterface = gameInterfaces[i];
             if(gameInterface != null && gameInterface.type == GameInterfaceType.MODEL) {
                 if(gameInterface.animation != -1 || gameInterface.alternateAnimation != -1) {
-                    boolean bool_0_ = ItemDefinition.checkForAlternateAction(gameInterface);
+                    boolean bool_0_ = GameInterface.checkForAlternateAction(gameInterface);
                     int i_1_;
                     if(bool_0_)
                         i_1_ = gameInterface.alternateAnimation;

@@ -3,8 +3,6 @@ package org.runejs.client.media.renderable;
 import org.runejs.client.*;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.GameObjectDefinition;
-import org.runejs.client.cache.def.IdentityKit;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.input.MouseHandler;
@@ -84,7 +82,7 @@ public class GameObject extends Renderable {
                 if(object_x > 0 && object_z > 0 && object_x < 103 && object_z < 103) {
                     CollisionMap collisionMap = null;
                     int logic_y = tile_y;
-                    if((OverlayDefinition.tile_flags[1][object_x][object_z] & 2) == 2)
+                    if((MovedStatics.tile_flags[1][object_x][object_z] & 2) == 2)
                         logic_y--;
                     if(logic_y >= 0)
                         collisionMap = collisionMaps[logic_y];
@@ -104,7 +102,7 @@ public class GameObject extends Renderable {
             if(MovedStatics.clearScreen) {
                 MovedStatics.clearScreen = false;
                 graphics.setColor(Color.black);
-                graphics.fillRect(0, 0, Class12.width, IdentityKit.height);
+                graphics.fillRect(0, 0, Class12.width, MovedStatics.height);
             }
             if(color == null)
                 color = new Color(140, 17, 17);
@@ -121,10 +119,10 @@ public class GameObject extends Renderable {
                 loadingBoxGraphics.setFont(Class17.helveticaBold);
                 loadingBoxGraphics.setColor(Color.white);
                 loadingBoxGraphics.drawString(desc, (304 - (MovedStatics.fontMetrics.stringWidth(desc))) / 2, 22);
-                graphics.drawImage(Class26.loadingBoxImage, Class12.width / 2 - 152, IdentityKit.height / 2 - 18, null);
+                graphics.drawImage(Class26.loadingBoxImage, Class12.width / 2 - 152, MovedStatics.height / 2 - 18, null);
             } catch(Exception exception) {
                 int centerWidth = Class12.width / 2 - 152;
-                int centerHeight = IdentityKit.height / 2 - 18;
+                int centerHeight = MovedStatics.height / 2 - 18;
                 graphics.setColor(color);
                 graphics.drawRect(centerWidth, centerHeight, 303, 33);
                 graphics.fillRect(2 + centerWidth, centerHeight + 2, 3 * percent, 30);

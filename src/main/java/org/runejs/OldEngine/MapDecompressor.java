@@ -8,7 +8,6 @@ import org.runejs.client.Class26;
 import org.runejs.client.Projectile;
 import org.runejs.client.Landscape;
 import org.runejs.client.MovedStatics;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.scene.util.CollisionMap;
 
@@ -125,7 +124,7 @@ public class MapDecompressor {
         int localY = y - Class26.baseY; // ??? is this correct?
         int plane = z;
         if(localX > -1 && localY > -1) {
-            if((OverlayDefinition.tile_flags[1][localY][localX] & 2) == 2) {
+            if((MovedStatics.tile_flags[1][localY][localX] & 2) == 2) {
                 plane--;
             }
         }

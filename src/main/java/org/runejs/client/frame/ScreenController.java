@@ -1,6 +1,5 @@
 package org.runejs.client.frame;
 
-import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
 import org.runejs.client.frame.tab.TabProducer;
@@ -74,7 +73,7 @@ public class ScreenController {
             MovedStatics.clearScreen = true;
         }
         Class12.width = drawWidth;
-        IdentityKit.height = drawHeight;
+        MovedStatics.height = drawHeight;
         if (frameMode != ScreenMode.FIXED) {
             if (frameWidth != GameShell.clientFrame.getWidth()) {
                 frameWidth = GameShell.clientFrame.getWidth();
@@ -119,7 +118,7 @@ public class ScreenController {
         if (Class51.gameStatusCode <= 35 && Class51.gameStatusCode >= 30) {
             MovedStatics.gameScreenImageProducer = MovedStatics.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, GameShell.clientFrame);
         } else {
-            MouseHandler.gameCanvas.setSize(Class12.width, IdentityKit.height);
+            MouseHandler.gameCanvas.setSize(Class12.width, MovedStatics.height);
             MouseHandler.gameCanvas.setVisible(true);
             if (GameShell.clientFrame == null)
                 MouseHandler.gameCanvas.setLocation(0, 0);

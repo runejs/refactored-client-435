@@ -91,6 +91,7 @@ public class Main extends GameShell {
     public static Class39 mouseCapturer;
     public static int anInt2591 = 0;
     public static int anInt874;
+    private static int gameServerPort;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
     private static int lastClickX = 0;
@@ -248,7 +249,7 @@ public class Main extends GameShell {
                                             result = false;
                                         else {
                                             if (SceneTile.activeInterfaceType != 0 && GroundItemTile.selectedInventorySlot == i_7_ && gameInterface.id == MovedStatics.modifiedWidgetId) {
-                                                i_14_ = MouseHandler.mouseY + -ItemDefinition.anInt2798;
+                                                i_14_ = MouseHandler.mouseY + -MovedStatics.anInt2798;
                                                 i_12_ = MouseHandler.mouseX + -Renderable.anInt2869;
                                                 if (i_12_ < 5 && i_12_ > -5)
                                                     i_12_ = 0;
@@ -268,7 +269,7 @@ public class Main extends GameShell {
                                                         if (gameInterface_16_.scrollPosition < i_17_)
                                                             i_17_ = gameInterface_16_.scrollPosition;
                                                         gameInterface_16_.scrollPosition -= i_17_;
-                                                        ItemDefinition.anInt2798 += i_17_;
+                                                        MovedStatics.anInt2798 += i_17_;
                                                     }
                                                     if (32 + i_11_ + i_14_ > Rasterizer.viewportBottom && -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight > gameInterface_16_.scrollPosition) {
                                                         int i_18_ = MovedStatics.anInt199 * (-Rasterizer.viewportBottom + 32 + i_11_ + i_14_) / 3;
@@ -276,7 +277,7 @@ public class Main extends GameShell {
                                                             i_18_ = 10 * MovedStatics.anInt199;
                                                         if (-gameInterface_16_.scrollPosition + gameInterface_16_.scrollHeight + -gameInterface_16_.originalHeight < i_18_)
                                                             i_18_ = -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight + -gameInterface_16_.scrollPosition;
-                                                        ItemDefinition.anInt2798 -= i_18_;
+                                                        MovedStatics.anInt2798 -= i_18_;
                                                         gameInterface_16_.scrollPosition += i_18_;
                                                     }
                                                 }
@@ -297,7 +298,7 @@ public class Main extends GameShell {
                         }
                     } else if (gameInterface.type == GameInterfaceType.RECTANGLE) {
                         int rectangleColor;
-                        if (ItemDefinition.checkForAlternateAction(gameInterface)) {
+                        if (GameInterface.checkForAlternateAction(gameInterface)) {
                             rectangleColor = gameInterface.alternateTextColor;
                             if (GameInterface.isHovering(areaId, i) && gameInterface.alternateHoveredTextColor != 0)
                                 rectangleColor = gameInterface.alternateHoveredTextColor;
@@ -323,7 +324,7 @@ public class Main extends GameShell {
                         } else {
                             String text = gameInterface.disabledText;
                             int textColor;
-                            if (ItemDefinition.checkForAlternateAction(gameInterface)) {
+                            if (GameInterface.checkForAlternateAction(gameInterface)) {
                                 textColor = gameInterface.alternateTextColor;
                                 if (GameInterface.isHovering(areaId, i) && gameInterface.alternateHoveredTextColor != 0)
                                     textColor = gameInterface.alternateHoveredTextColor;
@@ -436,14 +437,14 @@ public class Main extends GameShell {
                                 spriteRgb.maxHeight = maxHeight;
                             }
                         } else {
-                            ImageRGB imageRGB = gameInterface.getImageRgb(ItemDefinition.checkForAlternateAction(gameInterface));
+                            ImageRGB imageRGB = gameInterface.getImageRgb(GameInterface.checkForAlternateAction(gameInterface));
                             if (imageRGB != null)
                                 imageRGB.drawImage(absoluteX, absoluteY);
                             else if (GameInterface.aBoolean2177)
                                 result = false;
                         }
                     } else if (gameInterface.type == GameInterfaceType.MODEL) {
-                        boolean applyAlternateAction = ItemDefinition.checkForAlternateAction(gameInterface);
+                        boolean applyAlternateAction = GameInterface.checkForAlternateAction(gameInterface);
                         int animationId;
                         if (!applyAlternateAction)
                             animationId = gameInterface.animation;
@@ -602,14 +603,14 @@ public class Main extends GameShell {
 
     public static void renderFlames() {
         if (MovedStatics.anInt2452 <= 0) {
-            if (IdentityKit.anInt2613 > 0) {
+            if (MovedStatics.anInt2613 > 0) {
                 for (int i = 0; i < 256; i++) {
-                    if (IdentityKit.anInt2613 > 768)
-                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Class51.anIntArray1198[i], SpotAnim.anIntArray3248[i], -IdentityKit.anInt2613 + 1024);
-                    else if (IdentityKit.anInt2613 > 256)
+                    if (MovedStatics.anInt2613 > 768)
+                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Class51.anIntArray1198[i], SpotAnim.anIntArray3248[i], -MovedStatics.anInt2613 + 1024);
+                    else if (MovedStatics.anInt2613 > 256)
                         MovedStatics.anIntArray1013[i] = SpotAnim.anIntArray3248[i];
                     else
-                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(SpotAnim.anIntArray3248[i], Class51.anIntArray1198[i], -IdentityKit.anInt2613 + 256);
+                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(SpotAnim.anIntArray3248[i], Class51.anIntArray1198[i], -MovedStatics.anInt2613 + 256);
                 }
             } else {
                 System.arraycopy(Class51.anIntArray1198, 0, MovedStatics.anIntArray1013, 0, 256);
@@ -819,9 +820,9 @@ public class Main extends GameShell {
     public static void method353() {
         MovedStatics.anInt2628++;
         SpotAnim.renderPlayers(0, true);
-        ItemDefinition.renderNPCs(true);
+        renderNPCs(true);
         SpotAnim.renderPlayers(0, false);
-        ItemDefinition.renderNPCs(false);
+        renderNPCs(false);
         MovedStatics.renderProjectiles();
         MovedStatics.renderSpotAnims();
         if(!Player.cutsceneActive) {
@@ -959,7 +960,7 @@ public class Main extends GameShell {
     public static void drawGameScreen() {
         if(MovedStatics.clearScreen) {
             MovedStatics.clearScreen = false;
-            ItemDefinition.drawWelcomeScreenGraphics();
+            MovedStatics.drawWelcomeScreenGraphics();
             GameInterface.drawTabIcons = true;
             ChatBox.redrawChatbox = true;
             GameInterface.redrawTabArea = true;
@@ -1454,8 +1455,8 @@ public class Main extends GameShell {
                         MovedStatics.animateNpcs();
                         MovedStatics.method313();
                         if(LinkedList.crossType != 0) {
-                            OverlayDefinition.crossIndex += 20;
-                            if(OverlayDefinition.crossIndex >= 400)
+                            MovedStatics.crossIndex += 20;
+                            if(MovedStatics.crossIndex >= 400)
                                 LinkedList.crossType = 0;
                         }
                         if(Projectile.atInventoryInterfaceType != 0) {
@@ -1471,7 +1472,7 @@ public class Main extends GameShell {
                         MovedStatics.anInt199++;
                         if(SceneTile.activeInterfaceType != 0) {
                             Buffer.lastItemDragTime++;
-                            if(MouseHandler.mouseX > Renderable.anInt2869 + 5 || Renderable.anInt2869 + -5 > MouseHandler.mouseX || ItemDefinition.anInt2798 + 5 < MouseHandler.mouseY || ItemDefinition.anInt2798 - 5 > MouseHandler.mouseY)
+                            if(MouseHandler.mouseX > Renderable.anInt2869 + 5 || Renderable.anInt2869 + -5 > MouseHandler.mouseX || MovedStatics.anInt2798 + 5 < MouseHandler.mouseY || MovedStatics.anInt2798 - 5 > MouseHandler.mouseY)
                                 Class40_Sub5_Sub15.lastItemDragged = true;
                             if(MouseHandler.currentMouseButtonPressed == 0) {
                                 if(SceneTile.activeInterfaceType == 3)
@@ -1537,7 +1538,7 @@ public class Main extends GameShell {
                             boolean bool = Pathfinding.doTileWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_18_);
                             if(bool) {
                                 GameInterface.crossY = MouseHandler.clickY;
-                                OverlayDefinition.crossIndex = 0;
+                                MovedStatics.crossIndex = 0;
                                 GameInterface.crossX = MouseHandler.clickX;
                                 LinkedList.crossType = 1;
                             }
@@ -1780,8 +1781,8 @@ public class Main extends GameShell {
                             Class37.method434();
                             return;
                         }
-                        if (responseCode == 23 && OverlayDefinition.anInt2321 < 1) {
-                            OverlayDefinition.anInt2321++;
+                        if (responseCode == 23 && MovedStatics.anInt2321 < 1) {
+                            MovedStatics.anInt2321++;
                             loginStatus = 0;
                         } else {
                             displayMessageForResponseCode(responseCode);
@@ -1833,12 +1834,12 @@ public class Main extends GameShell {
                 } else {
                     anInt1756++;
                     if (anInt1756 > 2000) {
-                        if (OverlayDefinition.anInt2321 < 1) {
-                            OverlayDefinition.anInt2321++;
-                            if (OverlayDefinition.gameServerPort == currentPort) {
+                        if (MovedStatics.anInt2321 < 1) {
+                            MovedStatics.anInt2321++;
+                            if (gameServerPort == currentPort) {
                                 currentPort = CollisionMap.someOtherPort;
                             } else {
-                                currentPort = OverlayDefinition.gameServerPort;
+                                currentPort = gameServerPort;
                             }
                             loginStatus = 0;
                         } else {
@@ -1848,13 +1849,13 @@ public class Main extends GameShell {
                 }
             }
         } catch (IOException ioexception) {
-            if (OverlayDefinition.anInt2321 < 1) {
-                if (currentPort == OverlayDefinition.gameServerPort) {
+            if (MovedStatics.anInt2321 < 1) {
+                if (currentPort == gameServerPort) {
                     currentPort = CollisionMap.someOtherPort;
                 } else {
-                    currentPort = OverlayDefinition.gameServerPort;
+                    currentPort = gameServerPort;
                 }
-                OverlayDefinition.anInt2321++;
+                MovedStatics.anInt2321++;
                 loginStatus = 0;
             } else {
                 displayMessageForResponseCode(-2);
@@ -1875,9 +1876,32 @@ public class Main extends GameShell {
         }
     }
 
+    public static void renderNPCs(boolean arg0) {
+        for(int i = 0; Player.npcCount > i; i++) {
+            Npc npc = Player.npcs[Player.npcIds[i]];
+            int i_15_ = 536870912 + (Player.npcIds[i] << 14);
+            if(npc != null && npc.isInitialized() && arg0 == npc.actorDefinition.hasRenderPriority && npc.actorDefinition.isVisible()) {
+                int i_16_ = npc.worldX >> 7;
+                int i_17_ = npc.worldY >> 7;
+                if(i_16_ >= 0 && i_16_ < 104 && i_17_ >= 0 && i_17_ < 104) {
+                    if(npc.size == 1 && (npc.worldX & 0x7f) == 64 && (npc.worldY & 0x7f) == 64) {
+                        if(MovedStatics.anIntArrayArray1435[i_16_][i_17_] == MovedStatics.anInt2628) {
+                            continue;
+                        }
+                        MovedStatics.anIntArrayArray1435[i_16_][i_17_] = MovedStatics.anInt2628;
+                    }
+                    if(!npc.actorDefinition.isClickable) {
+                        i_15_ += -2147483648;
+                    }
+                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, Scene.getFloorDrawHeight(Player.worldLevel, npc.worldX + (-1 + npc.size) * 64, npc.size * 64 + -64 + npc.worldY), -64 + npc.size * 64 + 60, npc, npc.anInt3118, i_15_, npc.aBoolean3105);
+                }
+            }
+        }
+    }
+
     public void method35(int arg1) {
-        if (currentPort != OverlayDefinition.gameServerPort)
-            currentPort = OverlayDefinition.gameServerPort;
+        if (currentPort != gameServerPort)
+            currentPort = gameServerPort;
         else
             currentPort = CollisionMap.someOtherPort;
         updateServerSocket = null;
@@ -2071,7 +2095,7 @@ public class Main extends GameShell {
             MovedStatics.gameServerSocket.kill();
             MovedStatics.gameServerSocket = null;
         }
-        ItemDefinition.method744();
+        MovedStatics.method744();
         Class13.method249();
         MusicSystem.syncedStop(false);
         SoundSystem.stop();
@@ -2101,8 +2125,8 @@ public class Main extends GameShell {
     public void startup() {
         // Define ports
         CollisionMap.someOtherPort = modewhere == 0 ? 443 : 50000 + Player.worldId;
-        OverlayDefinition.gameServerPort = modewhere != 0 ? Player.worldId + 40000 : Configuration.GAME_PORT;
-        currentPort = OverlayDefinition.gameServerPort;
+        gameServerPort = modewhere != 0 ? Player.worldId + 40000 : Configuration.GAME_PORT;
+        currentPort = gameServerPort;
 
         MovedStatics.method997();
         GameInterface.method642(MouseHandler.gameCanvas);

@@ -1,7 +1,5 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.def.ItemDefinition;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
@@ -69,7 +67,7 @@ public class Class43 {
             if(GameInterface.fullscreenInterfaceId == -1) {
                 MovedStatics.method445();
                 Item.anInt3065 = -1;
-                OverlayDefinition.hoveredWidgetChildId = -1;
+                MovedStatics.hoveredWidgetChildId = -1;
                 boolean bool = false;
                 // Right game screen
                 if(ScreenController.isCoordinatesIn3dScreen(MouseHandler.mouseX , MouseHandler.mouseY )) {
@@ -87,18 +85,18 @@ public class Class43 {
                 }
 
                 MovedStatics.anInt573 = Item.anInt3065;
-                ItemDefinition.anInt2850 = OverlayDefinition.hoveredWidgetChildId;
+                MovedStatics.anInt2850 = MovedStatics.hoveredWidgetChildId;
                 Item.anInt3065 = -1;
-                OverlayDefinition.hoveredWidgetChildId = -1;
+                MovedStatics.hoveredWidgetChildId = -1;
                 // Right click tab
                 if(ScreenController.isCoordinatesInTabArea(MouseHandler.mouseX, MouseHandler.mouseY)) {
                     ScreenController.handleTabClick(MouseHandler.mouseX, MouseHandler.mouseY);
                 }
-                if(OverlayDefinition.hoveredWidgetChildId != CollisionMap.currentHoveredWidgetChildId) {
+                if(MovedStatics.hoveredWidgetChildId != CollisionMap.currentHoveredWidgetChildId) {
                     GameInterface.redrawTabArea = true;
-                    CollisionMap.currentHoveredWidgetChildId = OverlayDefinition.hoveredWidgetChildId;
+                    CollisionMap.currentHoveredWidgetChildId = MovedStatics.hoveredWidgetChildId;
                 }
-                OverlayDefinition.hoveredWidgetChildId = -1;
+                MovedStatics.hoveredWidgetChildId = -1;
                 if(Item.anInt3065 != FloorDecoration.anInt614) {
                     FloorDecoration.anInt614 = Item.anInt3065;
                     GameInterface.redrawTabArea = true;
@@ -110,9 +108,9 @@ public class Class43 {
                 }
 
                 // Set hovering for chat widgets
-                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && Class55.currentHoveredChatboxWidgetChildId != OverlayDefinition.hoveredWidgetChildId) {
+                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && Class55.currentHoveredChatboxWidgetChildId != MovedStatics.hoveredWidgetChildId) {
                     ChatBox.redrawChatbox = true;
-                    Class55.currentHoveredChatboxWidgetChildId = OverlayDefinition.hoveredWidgetChildId;
+                    Class55.currentHoveredChatboxWidgetChildId = MovedStatics.hoveredWidgetChildId;
                 }
 
                 if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && Item.anInt3065 != MovedStatics.anInt1586) {
@@ -144,9 +142,9 @@ public class Class43 {
                 }
             } else {
                 Item.anInt3065 = -1;
-                OverlayDefinition.hoveredWidgetChildId = -1;
+                MovedStatics.hoveredWidgetChildId = -1;
                 Class13.handleInterfaceActions(GameInterfaceArea.GAME_AREA, MouseHandler.mouseX, MouseHandler.mouseY, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
-                ItemDefinition.anInt2850 = OverlayDefinition.hoveredWidgetChildId;
+                MovedStatics.anInt2850 = MovedStatics.hoveredWidgetChildId;
                 MovedStatics.anInt573 = Item.anInt3065;
             }
         }

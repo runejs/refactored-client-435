@@ -3,7 +3,6 @@ package org.runejs.client.cache.media;
 import org.runejs.client.*;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.GameObjectDefinition;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
@@ -69,7 +68,7 @@ public class AnimationSequence extends CachedNode {
         GameInterface.crossX = MouseHandler.clickX;
         LinkedList.crossType = 2;
         GameInterface.crossY = MouseHandler.clickY;
-        OverlayDefinition.crossIndex = 0;
+        MovedStatics.crossIndex = 0;
         return true;
     }
 

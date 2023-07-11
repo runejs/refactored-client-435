@@ -280,7 +280,7 @@ public class Player extends Actor {
             if (MovedStatics.itemSelected == 1) {
                 MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.USE_ITEM_ON_PLAYER.getId(), Native.selectedItemName + Native.arrowActionOnOther + playerDisplayName);
             } else if (Main.widgetSelected == 1) {
-                if ((ItemDefinition.selectedMask & 0x8) == 8) {
+                if ((MovedStatics.selectedMask & 0x8) == 8) {
                     MovedStatics.addActionRow(Native.selectedSpellVerb, index, x, y, ActionRowType.CAST_MAGIC_ON_PLAYER.getId(), Native.selectedSpellName + Native.arrowActionOnOther + playerDisplayName);
                 }
             } else {

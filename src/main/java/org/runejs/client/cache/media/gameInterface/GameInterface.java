@@ -1,6 +1,7 @@
 package org.runejs.client.cache.media.gameInterface;
 
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.cache.cs.ClientScript;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.ImageRGB;
@@ -263,7 +264,7 @@ public class GameInterface extends CachedNode {
                     }
                 }
             }
-            GenericTile.anInt1214 = IdentityKit.anInt2598;
+            GenericTile.anInt1214 = MovedStatics.anInt2598;
         }
     }
 
@@ -611,7 +612,7 @@ public class GameInterface extends CachedNode {
             }
             if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_2.getId()) {
                 Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
-                OverlayDefinition.crossIndex = 0;
+                MovedStatics.crossIndex = 0;
                 crossY = MouseHandler.clickY;
                 crossX = MouseHandler.clickX;
                 LinkedList.crossType = 2;
@@ -629,7 +630,7 @@ public class GameInterface extends CachedNode {
                 crossY = MouseHandler.clickY;
                 crossX = MouseHandler.clickX;
                 LinkedList.crossType = 2;
-                OverlayDefinition.crossIndex = 0;
+                MovedStatics.crossIndex = 0;
 
                 int objectId = npcIdx >> 14 & 0x7fff;
 
@@ -656,7 +657,7 @@ public class GameInterface extends CachedNode {
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathY[0], class40_sub5_sub17_sub4_sub1.pathX[0], 1, 1);
                     crossX = MouseHandler.clickX;
-                    OverlayDefinition.crossIndex = 0;
+                    MovedStatics.crossIndex = 0;
                     LinkedList.crossType = 2;
                     crossY = MouseHandler.clickY;
 
@@ -806,7 +807,7 @@ public class GameInterface extends CachedNode {
                     crossX = MouseHandler.clickX;
                     LinkedList.crossType = 2;
                     crossY = MouseHandler.clickY;
-                    OverlayDefinition.crossIndex = 0;
+                    MovedStatics.crossIndex = 0;
 
                     OutgoingPackets.sendMessage(new PlayerInteractionOutboundMessage(1, npcIdx));
                 }
@@ -815,7 +816,7 @@ public class GameInterface extends CachedNode {
                 Player otherPlayer = Player.trackedPlayers[npcIdx];
                 if(otherPlayer != null) {
                     Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
-                    OverlayDefinition.crossIndex = 0;
+                    MovedStatics.crossIndex = 0;
                     LinkedList.crossType = 2;
                     crossY = MouseHandler.clickY;
                     crossX = MouseHandler.clickX;
@@ -827,7 +828,7 @@ public class GameInterface extends CachedNode {
                 crossX = MouseHandler.clickX;
                 LinkedList.crossType = 2;
                 crossY = MouseHandler.clickY;
-                OverlayDefinition.crossIndex = 0;
+                MovedStatics.crossIndex = 0;
                 Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                 if(class40_sub5_sub17_sub4_sub2 != null) {
                     ActorDefinition class40_sub5_sub5 = class40_sub5_sub17_sub4_sub2.actorDefinition;
@@ -846,7 +847,7 @@ public class GameInterface extends CachedNode {
                     crossX = MouseHandler.clickX;
                     LinkedList.crossType = 2;
                     crossY = MouseHandler.clickY;
-                    OverlayDefinition.crossIndex = 0;
+                    MovedStatics.crossIndex = 0;
                     
                     int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
                     int containerId = ISAAC.anInt525 & 0xFFFF;
@@ -876,7 +877,7 @@ public class GameInterface extends CachedNode {
             } else {
                 if(action == ActionRowType.CAST_MAGIC_ON_WORLD_ITEM.getId()) {
                     Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
-                    OverlayDefinition.crossIndex = 0;
+                    MovedStatics.crossIndex = 0;
                     LinkedList.crossType = 2;
                     crossY = MouseHandler.clickY;
                     crossX = MouseHandler.clickX;
@@ -953,7 +954,7 @@ public class GameInterface extends CachedNode {
                     }
                 }
                 if(action == ActionRowType.EXAMINE_ITEM.getId()) { // examine item
-                    OverlayDefinition.crossIndex = 0;
+                    MovedStatics.crossIndex = 0;
                     LinkedList.crossType = 2;
                     crossY = MouseHandler.clickY;
                     crossX = MouseHandler.clickX;
@@ -980,7 +981,7 @@ public class GameInterface extends CachedNode {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
-                        OverlayDefinition.crossIndex = 0;
+                        MovedStatics.crossIndex = 0;
                         crossX = MouseHandler.clickX;
                         crossY = MouseHandler.clickY;
                         LinkedList.crossType = 2;
@@ -994,7 +995,7 @@ public class GameInterface extends CachedNode {
                         Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
                         crossX = MouseHandler.clickX;
                         crossY = MouseHandler.clickY;
-                        OverlayDefinition.crossIndex = 0;
+                        MovedStatics.crossIndex = 0;
                         LinkedList.crossType = 2;
 
                         int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
@@ -1047,7 +1048,7 @@ public class GameInterface extends CachedNode {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
-                        OverlayDefinition.crossIndex = 0;
+                        MovedStatics.crossIndex = 0;
                         LinkedList.crossType = 2;
                         crossX = MouseHandler.clickX;
                         crossY = MouseHandler.clickY;
@@ -1091,11 +1092,11 @@ public class GameInterface extends CachedNode {
                     redrawTabArea = true;
                     Main.widgetSelected = 1;
                     Native.selectedSpellVerb = gameInterface.targetVerb;
-                    ItemDefinition.selectedMask = gameInterface.clickMask;
+                    MovedStatics.selectedMask = gameInterface.clickMask;
                     MovedStatics.itemSelected = 0;
                     Class60.anInt1417 = i_10_;
                     Native.selectedSpellName = Native.green + gameInterface.spellName + Native.white;
-                    if(ItemDefinition.selectedMask == 16) {
+                    if(MovedStatics.selectedMask == 16) {
                         drawTabIcons = true;
                         Player.currentTabId = 3;
                         redrawTabArea = true;
@@ -1156,7 +1157,7 @@ public class GameInterface extends CachedNode {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
                             crossX = MouseHandler.clickX;
                             crossY = MouseHandler.clickY;
-                            OverlayDefinition.crossIndex = 0;
+                            MovedStatics.crossIndex = 0;
                             LinkedList.crossType = 2;
 
                             OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(1, npcIdx));
@@ -1165,7 +1166,7 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_1.getId()) {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                         LinkedList.crossType = 2;
-                        OverlayDefinition.crossIndex = 0;
+                        MovedStatics.crossIndex = 0;
                         crossX = MouseHandler.clickX;
                         crossY = MouseHandler.clickY;
 
@@ -1180,7 +1181,7 @@ public class GameInterface extends CachedNode {
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_3.getId()) {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
-                        OverlayDefinition.crossIndex = 0;
+                        MovedStatics.crossIndex = 0;
                         crossX = MouseHandler.clickX;
                         LinkedList.crossType = 2;
                         crossY = MouseHandler.clickY;
@@ -1200,7 +1201,7 @@ public class GameInterface extends CachedNode {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], npc.pathY[0], npc.pathX[0], 1, 1);
                             crossX = MouseHandler.clickX;
                             crossY = MouseHandler.clickY;
-                            OverlayDefinition.crossIndex = 0;
+                            MovedStatics.crossIndex = 0;
                             LinkedList.crossType = 2;
 
                             OutgoingPackets.sendMessage(
@@ -1235,7 +1236,7 @@ public class GameInterface extends CachedNode {
                         if(otherPlayer != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
                             LinkedList.crossType = 2;
-                            OverlayDefinition.crossIndex = 0;
+                            MovedStatics.crossIndex = 0;
                             crossX = MouseHandler.clickX;
                             crossY = MouseHandler.clickY;
 
@@ -1355,7 +1356,7 @@ public class GameInterface extends CachedNode {
                             LinkedList.crossType = 2;
                             crossY = MouseHandler.clickY;
                             crossX = MouseHandler.clickX;
-                            OverlayDefinition.crossIndex = 0;
+                            MovedStatics.crossIndex = 0;
 
                             OutgoingPackets.sendMessage(new PlayerInteractionOutboundMessage(5, npcIdx));
                         }
@@ -1379,7 +1380,7 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_4.getId()) {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                         crossX = MouseHandler.clickX;
-                        OverlayDefinition.crossIndex = 0;
+                        MovedStatics.crossIndex = 0;
                         LinkedList.crossType = 2;
                         crossY = MouseHandler.clickY;
 
@@ -1428,7 +1429,7 @@ public class GameInterface extends CachedNode {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                         crossY = MouseHandler.clickY;
                         LinkedList.crossType = 2;
-                        OverlayDefinition.crossIndex = 0;
+                        MovedStatics.crossIndex = 0;
                         crossX = MouseHandler.clickX;
 
                         OutgoingPackets.sendMessage(
@@ -1444,7 +1445,7 @@ public class GameInterface extends CachedNode {
                         Player otherPlayer = Player.trackedPlayers[npcIdx];
                         if(otherPlayer != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
-                            OverlayDefinition.crossIndex = 0;
+                            MovedStatics.crossIndex = 0;
                             crossX = MouseHandler.clickX;
                             LinkedList.crossType = 2;
                             crossY = MouseHandler.clickY;
@@ -1499,7 +1500,7 @@ public class GameInterface extends CachedNode {
                             LinkedList.crossType = 2;
                             crossX = MouseHandler.clickX;
                             crossY = MouseHandler.clickY;
-                            OverlayDefinition.crossIndex = 0;
+                            MovedStatics.crossIndex = 0;
 
                             OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(5, npcIdx));
                         }
@@ -1508,7 +1509,7 @@ public class GameInterface extends CachedNode {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                         crossX = MouseHandler.clickX;
                         crossY = MouseHandler.clickY;
-                        OverlayDefinition.crossIndex = 0;
+                        MovedStatics.crossIndex = 0;
                         LinkedList.crossType = 2;
 
                         int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
@@ -1557,7 +1558,7 @@ public class GameInterface extends CachedNode {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
                             LinkedList.crossType = 2;
                             crossX = MouseHandler.clickX;
-                            OverlayDefinition.crossIndex = 0;
+                            MovedStatics.crossIndex = 0;
                             crossY = MouseHandler.clickY;
 
                             OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(3, npcIdx));
@@ -1860,7 +1861,7 @@ public class GameInterface extends CachedNode {
     }
 
     public static boolean isHovering(int areaId, int widgetChildId) {
-        if(areaId == 0 && ItemDefinition.anInt2850 == widgetChildId)
+        if(areaId == 0 && MovedStatics.anInt2850 == widgetChildId)
             return true;
 
         if(areaId == 1 && widgetChildId == CollisionMap.currentHoveredWidgetChildId)
@@ -1874,7 +1875,7 @@ public class GameInterface extends CachedNode {
 
     public static void manageTextInputs() {
         while(MovedStatics.method416()) {
-            if(ItemDefinition.anInt2854 == 28) {
+            if(MovedStatics.anInt2854 == 28) {
                 break;
             }
             if(Console.console.consoleOpen) {
@@ -1882,12 +1883,12 @@ public class GameInterface extends CachedNode {
                 break;
             }
             if(gameScreenInterfaceId != -1 && reportAbuseInterfaceID == gameScreenInterfaceId) {
-                if(ItemDefinition.anInt2854 == 85 && Native.reportedName.length() > 0)
+                if(MovedStatics.anInt2854 == 85 && Native.reportedName.length() > 0)
                     Native.reportedName = Native.reportedName.substring(0, -1 + Native.reportedName.length());
                 if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && Native.reportedName.length() < 12)
                     Native.reportedName = Native.reportedName + (char) Class59.anInt1388;
             } else if(ChatBox.messagePromptRaised) {
-                if(ItemDefinition.anInt2854 == 85 && ChatBox.chatMessage.length() > 0) {
+                if(MovedStatics.anInt2854 == 85 && ChatBox.chatMessage.length() > 0) {
                     ChatBox.chatMessage = ChatBox.chatMessage.substring(0, -1 + ChatBox.chatMessage.length());
                     ChatBox.redrawChatbox = true;
                 }
@@ -1895,7 +1896,7 @@ public class GameInterface extends CachedNode {
                     ChatBox.chatMessage = ChatBox.chatMessage + (char) Class59.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
-                if(ItemDefinition.anInt2854 == 84) {
+                if(MovedStatics.anInt2854 == 84) {
                     ChatBox.messagePromptRaised = false;
                     ChatBox.redrawChatbox = true;
                     if(Class37.anInt876 == 1) {
@@ -1933,7 +1934,7 @@ ChatBox.tradeMode
                     }
                 }
             } else if(ChatBox.inputType == 1) {
-                if(ItemDefinition.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
+                if(MovedStatics.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
                     ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 1);
                     ChatBox.redrawChatbox = true;
                 }
@@ -1941,7 +1942,7 @@ ChatBox.tradeMode
                     ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
-                if(ItemDefinition.anInt2854 == 84) {
+                if(MovedStatics.anInt2854 == 84) {
                     if(ChatBox.inputMessage.length() > 0) {
                         int inputValue = 0;
                         try {
@@ -1956,7 +1957,7 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNumericInputOutboundMessage(i
                     ChatBox.inputType = 0;
                 }
             } else if(ChatBox.inputType == 2) {
-                if(ItemDefinition.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
+                if(MovedStatics.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
                     ChatBox.inputMessage = ChatBox.inputMessage.substring(0, -1 + ChatBox.inputMessage.length());
                     ChatBox.redrawChatbox = true;
                 }
@@ -1964,7 +1965,7 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNumericInputOutboundMessage(i
                     ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
-                if(ItemDefinition.anInt2854 == 84) {
+                if(MovedStatics.anInt2854 == 84) {
                     if(ChatBox.inputMessage.length() > 0) {
 long name = RSString.nameToLong(ChatBox.inputMessage);
 
@@ -1974,7 +1975,7 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name
                     ChatBox.redrawChatbox = true;
                 }
             } else if(ChatBox.inputType == 3) {
-                if(ItemDefinition.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
+                if(MovedStatics.anInt2854 == 85 && ChatBox.inputMessage.length() > 0) {
                     ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 10);
                     ChatBox.redrawChatbox = true;
                 }
@@ -1983,7 +1984,7 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name
                     ChatBox.redrawChatbox = true;
                 }
             } else if(chatboxInterfaceId == -1 && fullscreenInterfaceId == -1) {
-                if(ItemDefinition.anInt2854 == 85 && ChatBox.chatboxInput.length() > 0) {
+                if(MovedStatics.anInt2854 == 85 && ChatBox.chatboxInput.length() > 0) {
                     ChatBox.chatboxInput = ChatBox.chatboxInput.substring(0, ChatBox.chatboxInput.length() - 1);
                     ChatBox.redrawChatbox = true;
                 }
@@ -1991,7 +1992,7 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name
                     ChatBox.chatboxInput = ChatBox.chatboxInput + (char) Class59.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
-                if(ItemDefinition.anInt2854 == 84 && ChatBox.chatboxInput.length() > 0) {
+                if(MovedStatics.anInt2854 == 84 && ChatBox.chatboxInput.length() > 0) {
                     if(InteractiveObject.playerRights > 1) {
                         if(ChatBox.chatboxInput.equals(English.commandClientDrop))
                             Class59.dropClient();
@@ -2171,6 +2172,32 @@ ChatBox.tradeMode
             return cachedInterfaces[i][0xffff & arg1.anInt2738];
         GameInterface gameInterface = cachedInterfaces[i][(0x7fff99d9 & arg1.anInt2738) >> 15];
         return gameInterface.children[arg1.anInt2738 & 0x7fff];
+    }
+
+    public static boolean checkForAlternateAction(GameInterface gameInterface) {
+        if(gameInterface.alternateOperators == null) {
+            return false;
+        }
+        for(int scriptIndex = 0; gameInterface.alternateOperators.length > scriptIndex; scriptIndex++) {
+            int i_10_ = ClientScript.parseClientScripts(scriptIndex, gameInterface);
+            int rhsValue = gameInterface.alternateRhs[scriptIndex]; // 1
+            if(gameInterface.alternateOperators[scriptIndex] == 2) {
+                if(rhsValue <= i_10_) {
+                    return false;
+                }
+            } else if(gameInterface.alternateOperators[scriptIndex] == 3) {
+                if(rhsValue >= i_10_) {
+                    return false;
+                }
+            } else if(gameInterface.alternateOperators[scriptIndex] == 4) {
+                if(rhsValue == i_10_) {
+                    return false;
+                }
+            } else if(i_10_ != rhsValue) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void swapItems(int arg0, boolean arg1, int arg2) {

@@ -72,7 +72,7 @@ public class Item extends Renderable {
             for (int i_5_ = -4 + i_2_; i_5_ <= 4 + i_2_; i_5_++) {
                 for (int i_6_ = -4 + i_1_; 4 + i_1_ >= i_6_; i_6_++) {
                     int i_7_ = Player.worldLevel;
-                    if (i_7_ < 3 && (0x2 & OverlayDefinition.tile_flags[1][i_5_][i_6_]) == 2)
+                    if (i_7_ < 3 && (0x2 & MovedStatics.tile_flags[1][i_5_][i_6_]) == 2)
                         i_7_++;
                     int i_8_ = i_4_ + -MovedStatics.tile_height[i_7_][i_5_][i_6_];
                     if (i_8_ > i_3_)
@@ -85,7 +85,7 @@ public class Item extends Renderable {
     }
 
     public static void method778(HuffmanEncoding arg1) {
-        IdentityKit.aHuffmanEncoding_2590 = arg1;
+        MovedStatics.aHuffmanEncoding_2590 = arg1;
     }
 
 

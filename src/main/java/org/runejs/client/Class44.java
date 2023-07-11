@@ -1,6 +1,5 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.io.Buffer;
@@ -141,7 +140,7 @@ public class Class44 implements Runnable {
                     } else if(class40_sub6.anInt2112 == 1) {
                         class40_sub6.aByteArray2102 = class40_sub6.cacheIndex.get((int) class40_sub6.key);
                         synchronized(RSCanvas.aLinkedList_53) {
-                            IdentityKit.aLinkedList_2604.addLast(class40_sub6);
+                            MovedStatics.aLinkedList_2604.addLast(class40_sub6);
                         }
                     }
                     synchronized(CollisionMap.anObject162) {

@@ -2,7 +2,6 @@ package org.runejs.client.message.handler.rs435.world.item;
 
 import org.runejs.client.LinkedList;
 import org.runejs.client.MovedStatics;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
@@ -12,7 +11,7 @@ import org.runejs.client.scene.tile.Wall;
 public class RemoveGroundItemMessageHandler implements MessageHandler<RemoveGroundItemInboundMessage> {
     @Override
     public void handle(RemoveGroundItemInboundMessage message) {
-        int y = OverlayDefinition.placementY + message.y;
+        int y = MovedStatics.placementY + message.y;
         int x = MovedStatics.placementX + message.x;
 
         if (x >= 0 && y >= 0 && x < 104 && y < 104) {

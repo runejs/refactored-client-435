@@ -1,6 +1,5 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
@@ -68,7 +67,7 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
         int startingPosition = buffer.currentPosition;
         byte[] strBytes = value.getBytes(StandardCharsets.UTF_8);
         buffer.putSmart(strBytes.length);
-        buffer.currentPosition += IdentityKit.aHuffmanEncoding_2590.encrypt(0, buffer.currentPosition, strBytes.length, strBytes, buffer.buffer);
+        buffer.currentPosition += MovedStatics.aHuffmanEncoding_2590.encrypt(0, buffer.currentPosition, strBytes.length, strBytes, buffer.buffer);
         return buffer.currentPosition - startingPosition;
 
     }

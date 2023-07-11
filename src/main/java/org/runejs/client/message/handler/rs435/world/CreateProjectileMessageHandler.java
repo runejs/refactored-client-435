@@ -3,7 +3,6 @@ package org.runejs.client.message.handler.rs435.world;
 import org.runejs.client.Class43;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.Projectile;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.world.CreateProjectileInboundMessage;
@@ -12,7 +11,7 @@ import org.runejs.client.scene.Scene;
 public class CreateProjectileMessageHandler implements MessageHandler<CreateProjectileInboundMessage> {
     @Override
     public void handle(CreateProjectileInboundMessage message) {
-        int startY = message.y + OverlayDefinition.placementY;
+        int startY = message.y + MovedStatics.placementY;
         int startX = message.x + MovedStatics.placementX;
         int endX = startX + message.endX;
         int endY = startY + message.endY;

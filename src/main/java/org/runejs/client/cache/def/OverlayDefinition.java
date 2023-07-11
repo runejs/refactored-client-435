@@ -6,14 +6,6 @@ import org.runejs.client.node.CachedNode;
 import org.runejs.client.node.NodeCache;
 
 public class OverlayDefinition extends CachedNode {
-    public static int placementY;
-    public static int crossIndex = 0;
-    public static int anInt2321 = 0;
-    public static byte[][][] tile_flags = new byte[4][104][104];
-    public static int hoveredWidgetChildId = -1;
-    public static int[][][] constructMapTiles = new int[4][13][13];
-    public static int gameServerPort;
-    public static volatile long lastClick = 0L;
 
     public static NodeCache overlayDefinitionCache = new NodeCache(64);
     public static CacheArchive gameDefinitionsCacheArchive;

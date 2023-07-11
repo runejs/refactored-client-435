@@ -1,7 +1,6 @@
 package org.runejs.client;
 
 import org.runejs.client.node.Class40_Sub6;
-import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
@@ -55,7 +54,7 @@ public class Class13 {
         for(; ; ) {
             Class40_Sub6 class40_sub6;
             synchronized(RSCanvas.aLinkedList_53) {
-                class40_sub6 = (Class40_Sub6) IdentityKit.aLinkedList_2604.removeFirst();
+                class40_sub6 = (Class40_Sub6) MovedStatics.aLinkedList_2604.removeFirst();
             }
             if(class40_sub6 == null)
                 break;

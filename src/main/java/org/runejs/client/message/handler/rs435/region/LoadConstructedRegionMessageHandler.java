@@ -2,7 +2,6 @@ package org.runejs.client.message.handler.rs435.region;
 
 import org.runejs.client.*;
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.message.handler.MessageHandler;
@@ -25,7 +24,7 @@ public class LoadConstructedRegionMessageHandler implements MessageHandler<LoadC
         int regionCount = message.regionCount;
 
         Class44.xteaKeys = message.xteaKeys;
-        OverlayDefinition.constructMapTiles = message.mapTiles;
+        Landscape.constructMapTiles = message.mapTiles;
 
         LinkedList.terrainDataIds = new int[regionCount];
         RSString.terrainData = new byte[regionCount][];
@@ -36,7 +35,7 @@ public class LoadConstructedRegionMessageHandler implements MessageHandler<LoadC
         for(int i_11_ = 0; i_11_ < 4; i_11_++) {
             for(int i_12_ = 0; i_12_ < 13; i_12_++) {
                 for(int i_13_ = 0; i_13_ < 13; i_13_++) {
-                    int i_14_ = OverlayDefinition.constructMapTiles[i_11_][i_12_][i_13_];
+                    int i_14_ = Landscape.constructMapTiles[i_11_][i_12_][i_13_];
                     if(i_14_ != -1) {
                         int i_15_ = i_14_ >> 14 & 0x3ff;
                         int i_16_ = i_14_ >> 3 & 0x7ff;

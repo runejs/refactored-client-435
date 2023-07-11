@@ -1,33 +1,17 @@
 package org.runejs.client.cache.def;
 
 import org.runejs.client.cache.media.ImageRGB;
-import org.runejs.client.cache.cs.ClientScript;
-import org.runejs.client.cache.media.gameInterface.GameInterface;
-import org.runejs.client.frame.ScreenController;
-import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
-import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.media.renderable.actor.Npc;
-import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.*;
-import org.runejs.client.scene.Scene;
-
-import java.awt.*;
 
 public class ItemDefinition extends CachedNode implements EntityDefinition {
-    public static int anInt2798 = 0;
-    public static int selectedMask;
-    public static int imageMaxWidth;
-    public static int anInt2850 = -1;
-    public static int anInt2854;
     public static int count;
 
     public int stackable;
@@ -103,83 +87,6 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         maleModel0 = -1;
     }
 
-    public static void drawWelcomeScreenGraphics() {
-        try {
-            if(ScreenController.frameMode == ScreenMode.FIXED) {
-                Graphics graphics = MouseHandler.gameCanvas.getGraphics();
-
-                Landscape.framePieceRight.drawGraphics(0, 4, graphics);
-                MovedStatics.chatboxRight.drawGraphics(0, 357, graphics);
-                Class39.mapbackLeft.drawGraphics(722, 4, graphics);
-                GameObject.tabPieceLeft.drawGraphics(743, 205, graphics);
-                SpotAnim.framePieceTop.drawGraphics(0, 0, graphics);
-                Class40_Sub7.mapBackRight.drawGraphics(516, 4, graphics);
-                MovedStatics.tabPieceUpperRight.drawGraphics(516, 205, graphics);
-                PlayerAppearance.tabPieveLowerRight.drawGraphics(496, 357, graphics);
-                Class17.chatboxTop.drawGraphics(0, 338, graphics);
-            }
-        } catch(Exception exception) {
-            MouseHandler.gameCanvas.repaint();
-        }
-    }
-
-    public static void method744() {
-        if(Class59.keyFocusListener != null) {
-            synchronized(Class59.keyFocusListener) {
-                Class59.keyFocusListener = null;
-            }
-        }
-    }
-
-
-    public static boolean checkForAlternateAction(GameInterface gameInterface) {
-        if(gameInterface.alternateOperators == null) {
-            return false;
-        }
-        for(int scriptIndex = 0; gameInterface.alternateOperators.length > scriptIndex; scriptIndex++) {
-            int i_10_ = ClientScript.parseClientScripts(scriptIndex, gameInterface);
-            int rhsValue = gameInterface.alternateRhs[scriptIndex]; // 1
-            if(gameInterface.alternateOperators[scriptIndex] == 2) {
-                if(rhsValue <= i_10_) {
-                    return false;
-                }
-            } else if(gameInterface.alternateOperators[scriptIndex] == 3) {
-                if(rhsValue >= i_10_) {
-                    return false;
-                }
-            } else if(gameInterface.alternateOperators[scriptIndex] == 4) {
-                if(rhsValue == i_10_) {
-                    return false;
-                }
-            } else if(i_10_ != rhsValue) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public static void renderNPCs(boolean arg0) {
-        for(int i = 0; Player.npcCount > i; i++) {
-            Npc npc = Player.npcs[Player.npcIds[i]];
-            int i_15_ = 536870912 + (Player.npcIds[i] << 14);
-            if(npc != null && npc.isInitialized() && arg0 == npc.actorDefinition.hasRenderPriority && npc.actorDefinition.isVisible()) {
-                int i_16_ = npc.worldX >> 7;
-                int i_17_ = npc.worldY >> 7;
-                if(i_16_ >= 0 && i_16_ < 104 && i_17_ >= 0 && i_17_ < 104) {
-                    if(npc.size == 1 && (npc.worldX & 0x7f) == 64 && (npc.worldY & 0x7f) == 64) {
-                        if(MovedStatics.anIntArrayArray1435[i_16_][i_17_] == MovedStatics.anInt2628) {
-                            continue;
-                        }
-                        MovedStatics.anIntArrayArray1435[i_16_][i_17_] = MovedStatics.anInt2628;
-                    }
-                    if(!npc.actorDefinition.isClickable) {
-                        i_15_ += -2147483648;
-                    }
-                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, Scene.getFloorDrawHeight(Player.worldLevel, npc.worldX + (-1 + npc.size) * 64, npc.size * 64 + -64 + npc.worldY), -64 + npc.size * 64 + 60, npc, npc.anInt3118, i_15_, npc.aBoolean3105);
-                }
-            }
-        }
-    }
 
     public static ItemDefinition forId(int id, int arg1) {
         ItemDefinition definition = (ItemDefinition) ISAAC.aClass9_516.get(id);
@@ -195,7 +102,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(definition.noteTemplateId != -1) {
             definition.itemToNote(forId(definition.noteTemplateId, 10), forId(definition.notedId, 10));
         }
-        if(!IdentityKit.membersServer && definition.members) {
+        if(!MovedStatics.membersServer && definition.members) {
             definition.interfaceOptions = null;
             definition.teamIndex = 0;
             definition.groundOptions = null;

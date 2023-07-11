@@ -2,7 +2,6 @@ package org.runejs.client.message.handler.rs435.world.item;
 
 import org.runejs.client.LinkedList;
 import org.runejs.client.MovedStatics;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
@@ -13,7 +12,7 @@ import org.runejs.client.scene.tile.Wall;
 public class AddGroundItemMessageHandler implements MessageHandler<AddGroundItemInboundMessage> {
     @Override
     public void handle(AddGroundItemInboundMessage message) {
-        int y = OverlayDefinition.placementY + message.y;
+        int y = MovedStatics.placementY + message.y;
         int x = MovedStatics.placementX + message.x;
 
         if (message.excludePlayer != -1 && message.excludePlayer != PlayerAppearance.anInt708) {

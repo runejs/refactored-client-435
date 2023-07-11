@@ -2,7 +2,6 @@ package org.runejs.client.scene;
 
 import org.runejs.client.LinkedList;
 import org.runejs.client.MovedStatics;
-import org.runejs.client.cache.def.OverlayDefinition;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
@@ -2191,6 +2190,6 @@ public class Scene {
     }
 
     public static int getFloorDrawHeight(int plane, int x, int y) {
-        return getFloorDrawHeight(plane, x, y, MovedStatics.tile_height, OverlayDefinition.tile_flags);
+        return getFloorDrawHeight(plane, x, y, MovedStatics.tile_height, MovedStatics.tile_flags);
     }
 }

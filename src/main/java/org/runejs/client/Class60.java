@@ -1,7 +1,6 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.cache.def.*;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.TypeFace;
@@ -278,18 +277,18 @@ public class Class60 {
                             }
                         }
                         if(loginScreenFocus == 0) {
-                            if(ItemDefinition.anInt2854 == 85 && Native.username.length() > 0)
+                            if(MovedStatics.anInt2854 == 85 && Native.username.length() > 0)
                                 Native.username = Native.username.substring(0, -1 + Native.username.length());
-                            if(ItemDefinition.anInt2854 == 84 || ItemDefinition.anInt2854 == 80)
+                            if(MovedStatics.anInt2854 == 84 || MovedStatics.anInt2854 == 80)
                                 loginScreenFocus = 1;
                             if(bool && Native.username.length() < 18)
                                 Native.username = Native.username.addChar(Class59.anInt1388);
                         } else if(loginScreenFocus == 1) {
-                            if(ItemDefinition.anInt2854 == 85 && Native.password.length() > 0)
+                            if(MovedStatics.anInt2854 == 85 && Native.password.length() > 0)
                                 Native.password = Native.password.substring(0, Native.password.length() + -1);
-                            if(ItemDefinition.anInt2854 == 80)
+                            if(MovedStatics.anInt2854 == 80)
                                 loginScreenFocus = 0;
-                            if(ItemDefinition.anInt2854 == 84) {
+                            if(MovedStatics.anInt2854 == 84) {
                                 Native.username = Native.username.method62().method85();
                                 setLoginScreenMessage("", English.connectingToServer, "");
                                 MovedStatics.processGameStatus(20);
@@ -511,14 +510,14 @@ public class Class60 {
         Class17.anIntArray466[i - arg0] = (int) (16.0 * Math.sin((double) MovedStatics.pulseCycle / 14.0) + 14.0 * Math.sin((double) MovedStatics.pulseCycle / 15.0) + 12.0 * Math.sin((double) MovedStatics.pulseCycle / 16.0));
         if (MovedStatics.anInt2452 > 0)
             MovedStatics.anInt2452 -= 4;
-        if (IdentityKit.anInt2613 > 0)
-            IdentityKit.anInt2613 -= 4;
-        if (MovedStatics.anInt2452 == 0 && IdentityKit.anInt2613 == 0) {
+        if (MovedStatics.anInt2613 > 0)
+            MovedStatics.anInt2613 -= 4;
+        if (MovedStatics.anInt2452 == 0 && MovedStatics.anInt2613 == 0) {
             int i_15_ = (int) (2000.0 * Math.random());
             if (i_15_ == 0)
                 MovedStatics.anInt2452 = 1024;
             if (i_15_ == 1)
-                IdentityKit.anInt2613 = 1024;
+                MovedStatics.anInt2613 = 1024;
         }
     }
 

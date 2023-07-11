@@ -170,6 +170,31 @@ public class MovedStatics {
     public static int hintIconPosZ = 0;
     public static int anInt2183 = 0;
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2524;
+    public static boolean membersServer;
+    public static HuffmanEncoding aHuffmanEncoding_2590;
+    public static int anInt2598 = 0;
+    public static LinkedList aLinkedList_2604 = new LinkedList();
+    public static int anInt2613 = 0;
+    public static int height;
+    public static int anInt2798 = 0;
+    public static int selectedMask;
+    public static int imageMaxWidth;
+    /**
+     * Something to do with widgets.
+     */
+    public static int anInt2850 = -1;
+    /**
+     * Something to do with key presses.
+     */
+    public static int anInt2854;
+    public static int placementY;
+    public static int crossIndex = 0;
+    /**
+     * Related to login errors
+     */
+    public static int anInt2321 = 0;
+    public static byte[][][] tile_flags = new byte[4][104][104];
+    public static int hoveredWidgetChildId = -1;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -353,7 +378,7 @@ public class MovedStatics {
         Point3d cameraPos = Main.cutsceneCamera.getPosition();
 
         int i = Scene.getFloorDrawHeight(Player.worldLevel, cameraPos.x, cameraPos.y);
-        if (i + -cameraPos.z < 800 && (OverlayDefinition.tile_flags[Player.worldLevel][cameraPos.x >> 7][cameraPos.y >> 7] & 0x4) != 0)
+        if (i + -cameraPos.z < 800 && (tile_flags[Player.worldLevel][cameraPos.x >> 7][cameraPos.y >> 7] & 0x4) != 0)
             return Player.worldLevel;
         return 3;
     }
@@ -400,7 +425,7 @@ public class MovedStatics {
 
     public static IndexedImage method538() {
         IndexedImage class40_sub5_sub14_sub2 = new IndexedImage();
-        class40_sub5_sub14_sub2.maxWidth = ItemDefinition.imageMaxWidth;
+        class40_sub5_sub14_sub2.maxWidth = imageMaxWidth;
         class40_sub5_sub14_sub2.maxHeight = imageMaxHeight;
         class40_sub5_sub14_sub2.xDrawOffset = Class57.anIntArray1347[0];
         class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[0];
@@ -536,7 +561,7 @@ public class MovedStatics {
         Class57.anIntArray1347 = new int[anInt2581];
 
         buffer.currentPosition = data.length + -7 + -(anInt2581 * 8);
-        ItemDefinition.imageMaxWidth = buffer.getUnsignedShortBE();
+        imageMaxWidth = buffer.getUnsignedShortBE();
         imageMaxHeight = buffer.getUnsignedShortBE();
         int i = 1 + (buffer.getUnsignedByte() & 0xff);
         for (int i_34_ = 0; i_34_ < anInt2581; i_34_++)
@@ -668,7 +693,7 @@ public class MovedStatics {
         synchronized (Class59.keyFocusListener) {
             if (Class59.anInt1389 == GenericTile.anInt1214)
                 return false;
-            ItemDefinition.anInt2854 = anIntArray2113[Class59.anInt1389];
+            anInt2854 = anIntArray2113[Class59.anInt1389];
             Class59.anInt1388 = anIntArray2764[Class59.anInt1389];
             Class59.anInt1389 = Class59.anInt1389 + 1 & 0x7f;
             return true;
@@ -766,7 +791,7 @@ public class MovedStatics {
 
                         }
                         addActionRow(English.examine, gameObjectDefinition.id << 14, x, y, ActionRowType.EXAMINE_OBJECT.getId(), examineText.toString());
-                    } else if ((ItemDefinition.selectedMask & 0x4) == 4) {
+                    } else if ((selectedMask & 0x4) == 4) {
                         addActionRow(Native.selectedSpellVerb, hash, x, y, ActionRowType.CAST_MAGIC_ON_OBJECT.getId(), Native.selectedSpellName + Native.toCyan + gameObjectDefinition.name);
                     }
                 }
@@ -835,7 +860,7 @@ public class MovedStatics {
                                     }
                                 }
                                 addActionRow(English.examine, item.itemId, x, y, ActionRowType.EXAMINE_ITEM.getId(), Native.lightRed + itemDefinition.name);
-                            } else if ((0x1 & ItemDefinition.selectedMask) == 1) {
+                            } else if ((0x1 & selectedMask) == 1) {
                                 addActionRow(Native.selectedSpellVerb, item.itemId, x, y, ActionRowType.CAST_MAGIC_ON_WORLD_ITEM.getId(), Native.selectedSpellName + Native.toLightRed + itemDefinition.name);
                             }
                         }
@@ -868,7 +893,7 @@ public class MovedStatics {
                 CollisionMap.method144(12433);
             if (statusCode == 20 || statusCode == 40) {
                 Main.anInt1756 = 0;
-                OverlayDefinition.anInt2321 = 0;
+                anInt2321 = 0;
                 Main.loginStatus = 0;
             }
             if (statusCode != 20 && statusCode != 40 && PlayerAppearance.lostConnectionSocket != null) {
@@ -930,7 +955,7 @@ public class MovedStatics {
 
 
     public static void initializeItemDefinitionCache(CacheArchive definitionCache, boolean arg1, CacheArchive arg2) {
-        IdentityKit.membersServer = arg1;
+        membersServer = arg1;
         MovedStatics.aCacheArchive_284 = arg2;
         Class26.aCacheArchive_632 = definitionCache;
         ItemDefinition.count = Class26.aCacheArchive_632.fileLength(10);
@@ -1025,9 +1050,9 @@ public class MovedStatics {
 	                    Item.anInt3065 = i;
 	                if((gameInterface.hoveredSiblingId >= 0 || gameInterface.hoveredTextColor != 0) && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_) {
 	                    if(gameInterface.hoveredSiblingId >= 0)
-	                        OverlayDefinition.hoveredWidgetChildId = gameInterface.hoveredSiblingId;
+	                        hoveredWidgetChildId = gameInterface.hoveredSiblingId;
 	                    else
-	                        OverlayDefinition.hoveredWidgetChildId = i;
+	                        hoveredWidgetChildId = i;
 	                }
 	                if(gameInterface.type == GameInterfaceType.LAYER) {
                         int areaId = area.getId();
@@ -1105,7 +1130,7 @@ public class MovedStatics {
 	                                        ItemDefinition itemDefinition = ItemDefinition.forId(-1 + gameInterface.items[i_4_], 10);
 	                                        if(MovedStatics.itemSelected != 1 || !gameInterface.isInventory) {
 	                                            if(Main.widgetSelected == 1 && gameInterface.isInventory) {
-	                                                if((ItemDefinition.selectedMask & 0x10) == 16) {
+	                                                if((selectedMask & 0x10) == 16) {
 	                                                    addActionRow(Native.selectedSpellVerb, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.CAST_MAGIC_ON_WIDGET_ITEM.getId(), Native.selectedSpellName + Native.toLightRed + itemDefinition.name);
 	                                                }
 	                                            } else {
@@ -1405,7 +1430,7 @@ public class MovedStatics {
 	        if(length > arg2)
 	            length = arg2;
 	        byte[] chars = new byte[length];
-	        arg0.currentPosition += IdentityKit.aHuffmanEncoding_2590.method1023(arg0.buffer, length, 0, chars, arg0.currentPosition, -1);
+	        arg0.currentPosition += aHuffmanEncoding_2590.method1023(arg0.buffer, length, 0, chars, arg0.currentPosition, -1);
 	        return new String(chars);
 	    } catch(Exception exception) {
 	        return English.cabbage;
@@ -1429,9 +1454,9 @@ public class MovedStatics {
 	    for(int i_1_ = 1; i_1_ < 103; i_1_++) {
 	        int i_2_ = 24628 + (-(512 * i_1_) + 52736) * 4;
 	        for(int i_3_ = 1; i_3_ < 103; i_3_++) {
-	            if((0x18 & OverlayDefinition.tile_flags[arg1][i_3_][i_1_]) == 0)
+	            if((0x18 & tile_flags[arg1][i_3_][i_1_]) == 0)
 	                Npc.currentScene.method96(is, i_2_, 512, arg1, i_3_, i_1_);
-	            if(arg1 < 3 && (OverlayDefinition.tile_flags[1 + arg1][i_3_][i_1_] & 0x8) != 0)
+	            if(arg1 < 3 && (tile_flags[1 + arg1][i_3_][i_1_] & 0x8) != 0)
 	                Npc.currentScene.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
 	            i_2_ += 4;
 	        }
@@ -1441,9 +1466,9 @@ public class MovedStatics {
 	    int i_5_ = -10 + (int) (20.0 * Math.random()) + 238 << 16;
 	    for(int i_6_ = 1; i_6_ < 103; i_6_++) {
 	        for(int i_7_ = 1; i_7_ < 103; i_7_++) {
-	            if((OverlayDefinition.tile_flags[arg1][i_7_][i_6_] & 0x18) == 0)
+	            if((tile_flags[arg1][i_7_][i_6_] & 0x18) == 0)
 	                Actor.method781(1850, arg1, i_7_, i_4_, i_5_, i_6_);
-	            if(arg1 < 3 && (0x8 & OverlayDefinition.tile_flags[1 + arg1][i_7_][i_6_]) != 0)
+	            if(arg1 < 3 && (0x8 & tile_flags[1 + arg1][i_7_][i_6_]) != 0)
 	                Actor.method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
 	        }
 	    }
@@ -1686,7 +1711,7 @@ public class MovedStatics {
                 }
                 if(arg1 >= 0) {
                     int i_5_ = arg7;
-                    if(i_5_ < 3 && (OverlayDefinition.tile_flags[1][arg2][arg0] & 0x2) == 2)
+                    if(i_5_ < 3 && (tile_flags[1][arg2][arg0] & 0x2) == 2)
                         i_5_++;
                     CollisionMap.method543(Landscape.currentCollisionMap[arg7], arg1, i_5_, arg7, arg3, Npc.currentScene, -22078, arg4, arg0, arg2);
                 }
@@ -1758,10 +1783,10 @@ public class MovedStatics {
     public static void draw3dScreen() {
         renderSplitPrivateMessages();
         if (LinkedList.crossType == 1) {
-            Class37.cursorCross[OverlayDefinition.crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
+            Class37.cursorCross[crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
         }
         if (LinkedList.crossType == 2) {
-            Class37.cursorCross[4 + OverlayDefinition.crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
+            Class37.cursorCross[4 + crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
         }
         if (GameInterface.gameScreenInterfaceId != -1 || GroundItemTile.walkableWidgetId != -1) {
                 int areaId = GameInterface.gameScreenInterfaceId != -1 ? 0 : 4;
@@ -1932,7 +1957,7 @@ public class MovedStatics {
                 if (itemSelected == 1) {
                     addActionRow(English.use, index, x, y, ActionRowType.USE_ITEM_ON_NPC.getId(), Native.selectedItemName + Native.toYellow + npcDisplayName);
                 } else if (Main.widgetSelected == 1) {
-                    if ((0x2 & ItemDefinition.selectedMask) == 2) {
+                    if ((0x2 & selectedMask) == 2) {
                         addActionRow(Native.selectedSpellVerb, index, x, y, ActionRowType.CAST_MAGIC_ON_NPC.getId(), Native.selectedSpellName + Native.toYellow + npcDisplayName);
                     }
                 } else {
@@ -2074,5 +2099,33 @@ public class MovedStatics {
             }
         }
 
+    }
+
+    public static void method744() {
+        if(Class59.keyFocusListener != null) {
+            synchronized(Class59.keyFocusListener) {
+                Class59.keyFocusListener = null;
+            }
+        }
+    }
+
+    public static void drawWelcomeScreenGraphics() {
+        try {
+            if(ScreenController.frameMode == ScreenMode.FIXED) {
+                Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+
+                Landscape.framePieceRight.drawGraphics(0, 4, graphics);
+                chatboxRight.drawGraphics(0, 357, graphics);
+                Class39.mapbackLeft.drawGraphics(722, 4, graphics);
+                GameObject.tabPieceLeft.drawGraphics(743, 205, graphics);
+                SpotAnim.framePieceTop.drawGraphics(0, 0, graphics);
+                Class40_Sub7.mapBackRight.drawGraphics(516, 4, graphics);
+                tabPieceUpperRight.drawGraphics(516, 205, graphics);
+                PlayerAppearance.tabPieveLowerRight.drawGraphics(496, 357, graphics);
+                Class17.chatboxTop.drawGraphics(0, 338, graphics);
+            }
+        } catch(Exception exception) {
+            MouseHandler.gameCanvas.repaint();
+        }
     }
 }

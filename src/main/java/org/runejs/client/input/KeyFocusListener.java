@@ -6,7 +6,6 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.language.Native;
 import org.runejs.client.*;
 import org.runejs.client.cache.def.GameObjectDefinition;
-import org.runejs.client.cache.def.IdentityKit;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -146,11 +145,11 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 }
             }
             if (obfuscatedKeyCode >= 0 || keyChar >= 0) {
-                int i_5_ = 0x7f & 1 + IdentityKit.anInt2598;
+                int i_5_ = 0x7f & 1 + MovedStatics.anInt2598;
                 if (Class59.anInt1389 != i_5_) {
-                    MovedStatics.anIntArray2113[IdentityKit.anInt2598] = obfuscatedKeyCode;
-                    MovedStatics.anIntArray2764[IdentityKit.anInt2598] = keyChar;
-                    IdentityKit.anInt2598 = i_5_;
+                    MovedStatics.anIntArray2113[MovedStatics.anInt2598] = obfuscatedKeyCode;
+                    MovedStatics.anIntArray2764[MovedStatics.anInt2598] = keyChar;
+                    MovedStatics.anInt2598 = i_5_;
                 }
             }
         }
