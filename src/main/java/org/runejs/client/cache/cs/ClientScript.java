@@ -75,8 +75,7 @@ public class ClientScript extends CachedNode {
     }
 
 
-    // TODO remove arg1 after checking its safe
-    public static int parseClientScripts(int scriptIndex, boolean arg1, GameInterface gameInterface1) {
+    public static int parseClientScripts(int scriptIndex, GameInterface gameInterface1) {
         if (gameInterface1.clientScripts == null || scriptIndex >= gameInterface1.clientScripts.length) {
             return -2;
         }
@@ -84,9 +83,6 @@ public class ClientScript extends CachedNode {
             int[] opcodes = gameInterface1.clientScripts[scriptIndex];
             int i = 0;
             int scriptDataIndex = 0;
-            if (arg1) {
-                HuffmanEncoding.SCROLLBAR_COLOR_CHIP_EDGE_LIGHT = -63;
-            }
             int operator = 0;
             while (true) {
                 int operand = 0;

@@ -137,7 +137,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
             return false;
         }
         for(int scriptIndex = 0; gameInterface.alternateOperators.length > scriptIndex; scriptIndex++) {
-            int i_10_ = ClientScript.parseClientScripts(scriptIndex, false, gameInterface);
+            int i_10_ = ClientScript.parseClientScripts(scriptIndex, gameInterface);
             int rhsValue = gameInterface.alternateRhs[scriptIndex]; // 1
             if(gameInterface.alternateOperators[scriptIndex] == 2) {
                 if(rhsValue <= i_10_) {

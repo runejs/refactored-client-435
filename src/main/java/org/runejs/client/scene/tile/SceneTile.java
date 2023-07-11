@@ -57,31 +57,31 @@ public class SceneTile extends Node {
                 int i = arg2.indexOf(Native.percentOne);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(0, false, gameInterface)) + arg2.substring(2 + i);
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(0, gameInterface)) + arg2.substring(2 + i);
             }
             for (; ; ) {
                 int i = arg2.indexOf(Native.percentTwo);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(1, false, gameInterface)) + arg2.substring(i + 2);
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(1, gameInterface)) + arg2.substring(i + 2);
             }
             for (; ; ) {
                 int i = arg2.indexOf(Native.percentThree);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(2, false, gameInterface)) + arg2.substring(2 + i);
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(2, gameInterface)) + arg2.substring(2 + i);
             }
             for (; ; ) {
                 int i = arg2.indexOf(Native.percentFour);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(3, false, gameInterface)) + arg2.substring(i + 2);
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(3, gameInterface)) + arg2.substring(i + 2);
             }
             for (; ; ) {
                 int i = arg2.indexOf(Native.percentFive);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(4, false, gameInterface)) + arg2.substring(i + 2);
+                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(4, gameInterface)) + arg2.substring(i + 2);
             }
             for (; ; ) {
                 // check client script results for value
