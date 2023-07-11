@@ -37,7 +37,6 @@ public class ClientScriptRunner extends Node {
     public static String[] scriptStringValues = new String[1000];
     public static int runEnergy = 0;
     public static CacheArchive aCacheArchive_2162;
-    public static int crossX = 0;
     public static String[] localStrings;
     public static int[] localInts;
     public static int[] scriptIntValues = new int[1000];

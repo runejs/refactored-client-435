@@ -1536,9 +1536,9 @@ public class Main extends GameShell {
                             int i_18_ = Scene.clickedTileY;
                             boolean bool = Pathfinding.doTileWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_18_);
                             if(bool) {
-                                MovedStatics.crossY = MouseHandler.clickY;
+                                GameInterface.crossY = MouseHandler.clickY;
                                 OverlayDefinition.crossIndex = 0;
-                                ClientScriptRunner.crossX = MouseHandler.clickX;
+                                GameInterface.crossX = MouseHandler.clickX;
                                 LinkedList.crossType = 1;
                             }
                             Scene.clickedTileX = -1;

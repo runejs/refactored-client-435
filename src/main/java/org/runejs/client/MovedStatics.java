@@ -60,10 +60,8 @@ public class MovedStatics {
     public static PacketBuffer packetBuffer = new PacketBuffer(5000);
     public static int[][] anIntArrayArray1435 = new int[104][104];
     public static ProducingGraphicsBuffer tabPieceUpperRight;
-    public static boolean aBoolean1444 = false;
     public static int[] anIntArray1445;
     public static ProducingGraphicsBuffer chatboxRight;
-    public static int crossY = 0;
     public static int anInt2280 = 0;
     /**
      * The fill colour of the scroll indicator chip.
@@ -2077,10 +2075,10 @@ public class MovedStatics {
     public static void draw3dScreen() {
         renderSplitPrivateMessages();
         if (LinkedList.crossType == 1) {
-            Class37.cursorCross[OverlayDefinition.crossIndex / 100].drawImage(ClientScriptRunner.crossX - 8 - 4, crossY - 8 - 4);
+            Class37.cursorCross[OverlayDefinition.crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
         }
         if (LinkedList.crossType == 2) {
-            Class37.cursorCross[4 + OverlayDefinition.crossIndex / 100].drawImage(ClientScriptRunner.crossX - 8 - 4, crossY - 8 - 4);
+            Class37.cursorCross[4 + OverlayDefinition.crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
         }
         if (GameInterface.gameScreenInterfaceId != -1 || GroundItemTile.walkableWidgetId != -1) {
                 int areaId = GameInterface.gameScreenInterfaceId != -1 ? 0 : 4;

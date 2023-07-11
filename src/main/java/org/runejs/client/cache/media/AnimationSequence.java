@@ -4,6 +4,7 @@ import org.runejs.client.*;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.def.OverlayDefinition;
+import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.Model;
@@ -66,9 +67,9 @@ public class AnimationSequence extends CachedNode {
             }
             Pathfinding.doObjectWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], arg0, arg3, i_18_, i_19_, i_17_, 0, 0);
         }
-        ClientScriptRunner.crossX = MouseHandler.clickX;
+        GameInterface.crossX = MouseHandler.clickX;
         LinkedList.crossType = 2;
-        MovedStatics.crossY = MouseHandler.clickY;
+        GameInterface.crossY = MouseHandler.clickY;
         OverlayDefinition.crossIndex = 0;
         return true;
     }

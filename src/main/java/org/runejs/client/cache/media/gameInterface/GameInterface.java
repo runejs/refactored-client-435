@@ -61,6 +61,9 @@ public class GameInterface extends CachedNode {
     public static IndexedImage tabHighlightImageTopLeft;
     public static int anInt1233 = 0;
     public static GameInterface aGameInterface_353 = null;
+    public static int crossX = 0;
+    public static int crossY = 0;
+    private static boolean aBoolean1444 = false;
 
     public boolean isNewInterfaceFormat = false;
     public int contentType;
@@ -589,8 +592,8 @@ public class GameInterface extends CachedNode {
             if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_2.getId()) {
                 Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                 OverlayDefinition.crossIndex = 0;
-                MovedStatics.crossY = MouseHandler.clickY;
-                ClientScriptRunner.crossX = MouseHandler.clickX;
+                crossY = MouseHandler.clickY;
+                crossX = MouseHandler.clickX;
                 LinkedList.crossType = 2;
 
                 OutgoingPackets.sendMessage(
@@ -603,8 +606,8 @@ public class GameInterface extends CachedNode {
                 );
             }
             if(action == ActionRowType.EXAMINE_OBJECT.getId()) { // examine object
-                MovedStatics.crossY = MouseHandler.clickY;
-                ClientScriptRunner.crossX = MouseHandler.clickX;
+                crossY = MouseHandler.clickY;
+                crossX = MouseHandler.clickX;
                 LinkedList.crossType = 2;
                 OverlayDefinition.crossIndex = 0;
 
@@ -632,10 +635,10 @@ public class GameInterface extends CachedNode {
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[npcIdx];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathY[0], class40_sub5_sub17_sub4_sub1.pathX[0], 1, 1);
-                    ClientScriptRunner.crossX = MouseHandler.clickX;
+                    crossX = MouseHandler.clickX;
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
-                    MovedStatics.crossY = MouseHandler.clickY;
+                    crossY = MouseHandler.clickY;
 
                     OutgoingPackets.sendMessage(
                         new CastMagicOnPlayerOutboundMessage(
@@ -780,9 +783,9 @@ public class GameInterface extends CachedNode {
                 Player otherPlayer = Player.trackedPlayers[npcIdx];
                 if(otherPlayer != null) {
                     Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
-                    ClientScriptRunner.crossX = MouseHandler.clickX;
+                    crossX = MouseHandler.clickX;
                     LinkedList.crossType = 2;
-                    MovedStatics.crossY = MouseHandler.clickY;
+                    crossY = MouseHandler.clickY;
                     OverlayDefinition.crossIndex = 0;
 
                     OutgoingPackets.sendMessage(new PlayerInteractionOutboundMessage(1, npcIdx));
@@ -794,16 +797,16 @@ public class GameInterface extends CachedNode {
                     Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
-                    MovedStatics.crossY = MouseHandler.clickY;
-                    ClientScriptRunner.crossX = MouseHandler.clickX;
+                    crossY = MouseHandler.clickY;
+                    crossX = MouseHandler.clickX;
 
                     OutgoingPackets.sendMessage(new PlayerInteractionOutboundMessage(4, npcIdx));
                 }
             }
             if(action == ActionRowType.EXAMINE_NPC.getId()) {
-                ClientScriptRunner.crossX = MouseHandler.clickX;
+                crossX = MouseHandler.clickX;
                 LinkedList.crossType = 2;
-                MovedStatics.crossY = MouseHandler.clickY;
+                crossY = MouseHandler.clickY;
                 OverlayDefinition.crossIndex = 0;
                 Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                 if(class40_sub5_sub17_sub4_sub2 != null) {
@@ -820,9 +823,9 @@ public class GameInterface extends CachedNode {
                 Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[npcIdx];
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathY[0], class40_sub5_sub17_sub4_sub1.pathX[0], 1, 1);
-                    ClientScriptRunner.crossX = MouseHandler.clickX;
+                    crossX = MouseHandler.clickX;
                     LinkedList.crossType = 2;
-                    MovedStatics.crossY = MouseHandler.clickY;
+                    crossY = MouseHandler.clickY;
                     OverlayDefinition.crossIndex = 0;
                     
                     int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
@@ -855,8 +858,8 @@ public class GameInterface extends CachedNode {
                     Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
-                    MovedStatics.crossY = MouseHandler.clickY;
-                    ClientScriptRunner.crossX = MouseHandler.clickX;
+                    crossY = MouseHandler.clickY;
+                    crossX = MouseHandler.clickX;
 
                     OutgoingPackets.sendMessage(
                         new CastMagicOnWorldItemOutboundMessage(
@@ -932,8 +935,8 @@ public class GameInterface extends CachedNode {
                 if(action == ActionRowType.EXAMINE_ITEM.getId()) { // examine item
                     OverlayDefinition.crossIndex = 0;
                     LinkedList.crossType = 2;
-                    MovedStatics.crossY = MouseHandler.clickY;
-                    ClientScriptRunner.crossX = MouseHandler.clickX;
+                    crossY = MouseHandler.clickY;
+                    crossX = MouseHandler.clickX;
 
                     OutgoingPackets.sendMessage(new ExamineItemOutboundMessage(npcIdx));
                 }
@@ -958,8 +961,8 @@ public class GameInterface extends CachedNode {
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
                         OverlayDefinition.crossIndex = 0;
-                        ClientScriptRunner.crossX = MouseHandler.clickX;
-                        MovedStatics.crossY = MouseHandler.clickY;
+                        crossX = MouseHandler.clickX;
+                        crossY = MouseHandler.clickY;
                         LinkedList.crossType = 2;
 
                         OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(2, npcIdx));
@@ -969,8 +972,8 @@ public class GameInterface extends CachedNode {
                     Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
-                        ClientScriptRunner.crossX = MouseHandler.clickX;
-                        MovedStatics.crossY = MouseHandler.clickY;
+                        crossX = MouseHandler.clickX;
+                        crossY = MouseHandler.clickY;
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
 
@@ -1026,8 +1029,8 @@ public class GameInterface extends CachedNode {
                         Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
-                        ClientScriptRunner.crossX = MouseHandler.clickX;
-                        MovedStatics.crossY = MouseHandler.clickY;
+                        crossX = MouseHandler.clickX;
+                        crossY = MouseHandler.clickY;
 
                         OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(4, npcIdx));
                     }
@@ -1131,8 +1134,8 @@ public class GameInterface extends CachedNode {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
-                            ClientScriptRunner.crossX = MouseHandler.clickX;
-                            MovedStatics.crossY = MouseHandler.clickY;
+                            crossX = MouseHandler.clickX;
+                            crossY = MouseHandler.clickY;
                             OverlayDefinition.crossIndex = 0;
                             LinkedList.crossType = 2;
 
@@ -1143,8 +1146,8 @@ public class GameInterface extends CachedNode {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                         LinkedList.crossType = 2;
                         OverlayDefinition.crossIndex = 0;
-                        ClientScriptRunner.crossX = MouseHandler.clickX;
-                        MovedStatics.crossY = MouseHandler.clickY;
+                        crossX = MouseHandler.clickX;
+                        crossY = MouseHandler.clickY;
 
                         OutgoingPackets.sendMessage(
                             new WorldItemInteractionOutboundMessage(
@@ -1158,9 +1161,9 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_3.getId()) {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                         OverlayDefinition.crossIndex = 0;
-                        ClientScriptRunner.crossX = MouseHandler.clickX;
+                        crossX = MouseHandler.clickX;
                         LinkedList.crossType = 2;
-                        MovedStatics.crossY = MouseHandler.clickY;
+                        crossY = MouseHandler.clickY;
 
                         OutgoingPackets.sendMessage(
                             new WorldItemInteractionOutboundMessage(
@@ -1175,8 +1178,8 @@ public class GameInterface extends CachedNode {
                         Npc npc = Player.npcs[npcIdx];
                         if(npc != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], npc.pathY[0], npc.pathX[0], 1, 1);
-                            ClientScriptRunner.crossX = MouseHandler.clickX;
-                            MovedStatics.crossY = MouseHandler.clickY;
+                            crossX = MouseHandler.clickX;
+                            crossY = MouseHandler.clickY;
                             OverlayDefinition.crossIndex = 0;
                             LinkedList.crossType = 2;
 
@@ -1213,8 +1216,8 @@ public class GameInterface extends CachedNode {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
                             LinkedList.crossType = 2;
                             OverlayDefinition.crossIndex = 0;
-                            ClientScriptRunner.crossX = MouseHandler.clickX;
-                            MovedStatics.crossY = MouseHandler.clickY;
+                            crossX = MouseHandler.clickX;
+                            crossY = MouseHandler.clickY;
 
                             OutgoingPackets.sendMessage(new PlayerInteractionOutboundMessage(3, npcIdx));
                         }
@@ -1330,8 +1333,8 @@ public class GameInterface extends CachedNode {
                         if(otherPlayer != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
                             LinkedList.crossType = 2;
-                            MovedStatics.crossY = MouseHandler.clickY;
-                            ClientScriptRunner.crossX = MouseHandler.clickX;
+                            crossY = MouseHandler.clickY;
+                            crossX = MouseHandler.clickX;
                             OverlayDefinition.crossIndex = 0;
 
                             OutgoingPackets.sendMessage(new PlayerInteractionOutboundMessage(5, npcIdx));
@@ -1355,10 +1358,10 @@ public class GameInterface extends CachedNode {
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_4.getId()) {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
-                        ClientScriptRunner.crossX = MouseHandler.clickX;
+                        crossX = MouseHandler.clickX;
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
-                        MovedStatics.crossY = MouseHandler.clickY;
+                        crossY = MouseHandler.clickY;
 
                         OutgoingPackets.sendMessage(
                             new WorldItemInteractionOutboundMessage(
@@ -1403,10 +1406,10 @@ public class GameInterface extends CachedNode {
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_5.getId()) {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
-                        MovedStatics.crossY = MouseHandler.clickY;
+                        crossY = MouseHandler.clickY;
                         LinkedList.crossType = 2;
                         OverlayDefinition.crossIndex = 0;
-                        ClientScriptRunner.crossX = MouseHandler.clickX;
+                        crossX = MouseHandler.clickX;
 
                         OutgoingPackets.sendMessage(
                             new WorldItemInteractionOutboundMessage(
@@ -1422,9 +1425,9 @@ public class GameInterface extends CachedNode {
                         if(otherPlayer != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
                             OverlayDefinition.crossIndex = 0;
-                            ClientScriptRunner.crossX = MouseHandler.clickX;
+                            crossX = MouseHandler.clickX;
                             LinkedList.crossType = 2;
-                            MovedStatics.crossY = MouseHandler.clickY;
+                            crossY = MouseHandler.clickY;
 
                             OutgoingPackets.sendMessage(new PlayerInteractionOutboundMessage(2, npcIdx));
                         }
@@ -1474,8 +1477,8 @@ public class GameInterface extends CachedNode {
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
                             LinkedList.crossType = 2;
-                            ClientScriptRunner.crossX = MouseHandler.clickX;
-                            MovedStatics.crossY = MouseHandler.clickY;
+                            crossX = MouseHandler.clickX;
+                            crossY = MouseHandler.clickY;
                             OverlayDefinition.crossIndex = 0;
 
                             OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(5, npcIdx));
@@ -1483,8 +1486,8 @@ public class GameInterface extends CachedNode {
                     }
                     if(action == ActionRowType.USE_ITEM_ON_WORLD_ITEM.getId()) {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
-                        ClientScriptRunner.crossX = MouseHandler.clickX;
-                        MovedStatics.crossY = MouseHandler.clickY;
+                        crossX = MouseHandler.clickX;
+                        crossY = MouseHandler.clickY;
                         OverlayDefinition.crossIndex = 0;
                         LinkedList.crossType = 2;
 
@@ -1533,9 +1536,9 @@ public class GameInterface extends CachedNode {
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
                             LinkedList.crossType = 2;
-                            ClientScriptRunner.crossX = MouseHandler.clickX;
+                            crossX = MouseHandler.clickX;
                             OverlayDefinition.crossIndex = 0;
-                            MovedStatics.crossY = MouseHandler.clickY;
+                            crossY = MouseHandler.clickY;
 
                             OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(3, npcIdx));
                         }
@@ -1629,11 +1632,11 @@ public class GameInterface extends CachedNode {
     }
 
     public static void scrollInterface(int arg0, int arg1, int arg2, int arg3, GameInterface arg5, int arg6, int arg7, int arg8) {
-        if(MovedStatics.aBoolean1444)
+        if(aBoolean1444)
             Landscape.anInt1171 = 32;
         else
             Landscape.anInt1171 = 0;
-        MovedStatics.aBoolean1444 = false;
+        aBoolean1444 = false;
         if(arg2 >= arg6 && arg2 < arg6 + 16 && arg1 >= arg8 && 16 + arg8 > arg1) {
             arg5.scrollPosition -= Npc.anInt3294 * 4;
             if(arg7 == 1)
@@ -1642,7 +1645,7 @@ public class GameInterface extends CachedNode {
                 ChatBox.redrawChatbox = true;
         } else if(arg6 > arg2 || arg6 + 16 <= arg2 || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
             if(-Landscape.anInt1171 + arg6 <= arg2 && 16 + arg6 + Landscape.anInt1171 > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
-                MovedStatics.aBoolean1444 = true;
+                aBoolean1444 = true;
                 int i = (-32 + arg0) * arg0 / arg3;
                 if(arg7 == 2 || arg7 == 3)
                     ChatBox.redrawChatbox = true;
