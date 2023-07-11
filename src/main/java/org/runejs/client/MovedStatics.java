@@ -2635,7 +2635,7 @@ public class MovedStatics {
             clearScreen = false;
             drawWelcomeScreenGraphics();
             LinkedList.drawChatBoxGraphics();
-            Class55.drawTabGraphics();
+            drawTabGraphics();
             ActorDefinition.drawMapBack();
             Game.method943(ChatBox.tradeMode, fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
@@ -2745,6 +2745,15 @@ public class MovedStatics {
                 class1 = class1 + Native.whiteSlash + (menuActionRow + -2) + English.suffixMoreOptions;
             if (arg0 == 4)
                 TypeFace.fontBold.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, pulseCycle / 1000);
+        }
+    }
+
+    public static void drawTabGraphics() {
+        try {
+            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+            tabImageProducer.drawGraphics(553, 205, graphics);
+        } catch(Exception exception) {
+            MouseHandler.gameCanvas.repaint();
         }
     }
 }

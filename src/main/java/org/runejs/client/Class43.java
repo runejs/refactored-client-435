@@ -48,7 +48,7 @@ public class Class43 {
         }
 
         if(ScreenController.frameMode == ScreenMode.FIXED) {
-            Class55.drawTabGraphics();
+            MovedStatics.drawTabGraphics();
         }
     }
 

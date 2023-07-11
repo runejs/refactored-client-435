@@ -1,8 +1,5 @@
 package org.runejs.client;
 
-import org.runejs.client.input.MouseHandler;
-
-import java.awt.*;
 import java.io.*;
 
 public class Class55 {
@@ -59,14 +56,5 @@ public class Class55 {
         return class40_sub5_sub15;
     }
 
-
-    public static void drawTabGraphics() {
-        try {
-            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
-            MovedStatics.tabImageProducer.drawGraphics(553, 205, graphics);
-        } catch(Exception exception) {
-            MouseHandler.gameCanvas.repaint();
-        }
-    }
 
 }
