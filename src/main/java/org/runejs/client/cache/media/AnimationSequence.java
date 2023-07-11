@@ -72,14 +72,24 @@ public class AnimationSequence extends CachedNode {
         return true;
     }
 
+    private static Class40_Sub5_Sub15 method960(int arg1) {
+        Class40_Sub5_Sub15 class40_sub5_sub15 = (Class40_Sub5_Sub15) MovedStatics.aClass9_998.get((long) arg1);
+        if(class40_sub5_sub15 != null)
+            return class40_sub5_sub15;
+        class40_sub5_sub15 = Class35.method421(MovedStatics.aCacheArchive_2364, arg1, ClientScriptRunner.aCacheArchive_2162, false);
+        if(class40_sub5_sub15 != null)
+            MovedStatics.aClass9_998.put((long) arg1, class40_sub5_sub15);
+        return class40_sub5_sub15;
+    }
+
     public Model method590(Model arg0, AnimationSequence animationSequence, int arg2, int arg3, byte arg4) {
         arg2 = frameIds[arg2];
-        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960(arg2 >> 16);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = method960(arg2 >> 16);
         arg2 &= 0xffff;
         if(class40_sub5_sub15 == null)
             return animationSequence.method599(arg3, arg0, false);
         arg3 = animationSequence.frameIds[arg3];
-        Class40_Sub5_Sub15 class40_sub5_sub15_0_ = Class55.method960(arg3 >> 16);
+        Class40_Sub5_Sub15 class40_sub5_sub15_0_ = method960(arg3 >> 16);
         arg3 &= 0xffff;
         if(class40_sub5_sub15_0_ == null) {
             Model model = arg0.method817(!class40_sub5_sub15.method737(arg2));
@@ -110,7 +120,7 @@ public class AnimationSequence extends CachedNode {
 
     public Model method593(int arg0, boolean arg1, Model model, int arg3) {
         arg0 = frameIds[arg0];
-        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960(arg0 >> 16);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = method960(arg0 >> 16);
         if(arg1)
             unknownArray1 = null;
         arg0 &= 0xffff;
@@ -200,7 +210,7 @@ public class AnimationSequence extends CachedNode {
 
     public Model method597(byte arg0, Model arg1, int arg2) {
         arg2 = frameIds[arg2];
-        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960(arg2 >> 16);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = method960(arg2 >> 16);
         arg2 &= 0xffff;
         if(class40_sub5_sub15 == null)
             return arg1.method806(true);
@@ -213,7 +223,7 @@ public class AnimationSequence extends CachedNode {
 
     public Model method598(int arg0, Model arg1, boolean arg2) {
         int i = frameIds[arg0];
-        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960(i >> 16);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = method960(i >> 16);
         i &= 0xffff;
         if(class40_sub5_sub15 == null)
             return arg1.method817(true);
@@ -223,7 +233,7 @@ public class AnimationSequence extends CachedNode {
         int i_21_ = 0;
         if(unknownArray1 != null && arg0 < unknownArray1.length) {
             i_21_ = unknownArray1[arg0];
-            class40_sub5_sub15_20_ = Class55.method960(i_21_ >> 16);
+            class40_sub5_sub15_20_ = method960(i_21_ >> 16);
             i_21_ &= 0xffff;
         }
         if(class40_sub5_sub15_20_ == null || i_21_ == 65535) {
@@ -241,7 +251,7 @@ public class AnimationSequence extends CachedNode {
         if(arg2)
             method591();
         arg0 = frameIds[arg0];
-        Class40_Sub5_Sub15 class40_sub5_sub15 = Class55.method960(arg0 >> 16);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = method960(arg0 >> 16);
         arg0 &= 0xffff;
         if(class40_sub5_sub15 == null)
             return arg1.method817(true);
