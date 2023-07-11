@@ -182,6 +182,8 @@ public class MovedStatics {
     public static IndexedImage[] moderatorIcon;
     public static int[] anIntArray2764 = new int[128];
     public static ImageRGB minimapImage;
+    public static int imageMaxHeight;
+
     public static void method440() {
         if (ISAAC.aBoolean512) {
             Class51.anIntArray1198 = null;
@@ -411,8 +413,8 @@ public class MovedStatics {
 
     public static IndexedImage method538() {
         IndexedImage class40_sub5_sub14_sub2 = new IndexedImage();
-        class40_sub5_sub14_sub2.maxWidth = ItemDefinition.anInt2846;
-        class40_sub5_sub14_sub2.maxHeight = GameShell.anInt31;
+        class40_sub5_sub14_sub2.maxWidth = ItemDefinition.imageMaxWidth;
+        class40_sub5_sub14_sub2.maxHeight = imageMaxHeight;
         class40_sub5_sub14_sub2.xDrawOffset = Class57.anIntArray1347[0];
         class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[0];
         class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[0];
@@ -476,9 +478,9 @@ public class MovedStatics {
         int b = CollisionMap.randomNoiseWeightedSum(1 + scaledX, scaledY);
         int c = CollisionMap.randomNoiseWeightedSum(scaledX, 1 + scaledY);
         int d = CollisionMap.randomNoiseWeightedSum(1 + scaledX, 1 + scaledY);
-        int i1 = GameShell.interpolate(a, scale, b, true, muX);
-        int i2 = GameShell.interpolate(c, scale, d, true, muX);
-        return GameShell.interpolate(i1, scale, i2, true, muY);
+        int i1 = interpolateForPerlin(a, scale, b, true, muX);
+        int i2 = interpolateForPerlin(c, scale, d, true, muX);
+        return interpolateForPerlin(i1, scale, i2, true, muY);
     }
 
     public static int calculateCrc8(int offset, int size, byte[] data) {
@@ -562,8 +564,8 @@ public class MovedStatics {
         Class57.anIntArray1347 = new int[anInt2581];
 
         buffer.currentPosition = data.length + -7 + -(anInt2581 * 8);
-        ItemDefinition.anInt2846 = buffer.getUnsignedShortBE();
-        GameShell.anInt31 = buffer.getUnsignedShortBE();
+        ItemDefinition.imageMaxWidth = buffer.getUnsignedShortBE();
+        imageMaxHeight = buffer.getUnsignedShortBE();
         int i = 1 + (buffer.getUnsignedByte() & 0xff);
         for (int i_34_ = 0; i_34_ < anInt2581; i_34_++)
             Class57.anIntArray1347[i_34_] = buffer.getUnsignedShortBE();
@@ -689,9 +691,9 @@ public class MovedStatics {
                 if (currentTabId == 0)
                     tabHighlightImageTopLeftEdge.drawImage(22, 10);
                 if (currentTabId == 1)
-                    GameShell.tabHighlightImageTopLeft.drawImage(54, 8);
+                    GameInterface.tabHighlightImageTopLeft.drawImage(54, 8);
                 if (currentTabId == 2)
-                    GameShell.tabHighlightImageTopLeft.drawImage(82, 8);
+                    GameInterface.tabHighlightImageTopLeft.drawImage(82, 8);
                 if (currentTabId == 3)
                     Class35.tabHighlightImageTopMiddle.drawImage(110, 8);
                 if (currentTabId == 4)
@@ -1549,7 +1551,7 @@ public class MovedStatics {
 	                }
 	                if(Class37.anInt876 == 2 && Player.friendsCount > 0) {
 	                    long l = RSString.nameToLong(ChatBox.chatMessage);
-	                    GameShell.method28(l);
+	                    GameInterface.removeFriend(l);
 	                }
 	                if(Class37.anInt876 == 3 && ChatBox.chatMessage.length() > 0) {
                         // private messages
@@ -1913,8 +1915,8 @@ public class MovedStatics {
 	    IndexedImage[] class40_sub5_sub14_sub2s = new IndexedImage[anInt2581];
 	    for(int i = 0; anInt2581 > i; i++) {
 	        IndexedImage class40_sub5_sub14_sub2 = class40_sub5_sub14_sub2s[i] = new IndexedImage();
-	        class40_sub5_sub14_sub2.maxWidth = ItemDefinition.anInt2846;
-	        class40_sub5_sub14_sub2.maxHeight = GameShell.anInt31;
+	        class40_sub5_sub14_sub2.maxWidth = ItemDefinition.imageMaxWidth;
+	        class40_sub5_sub14_sub2.maxHeight = imageMaxHeight;
 	        class40_sub5_sub14_sub2.xDrawOffset = Class57.anIntArray1347[i];
 	        class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[i];
 	        class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[i];
@@ -1930,8 +1932,8 @@ public class MovedStatics {
 	    ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[anInt2581];
 	    for(int i = 0; i < anInt2581; i++) {
 	        ImageRGB class40_sub5_sub14_sub4 = class40_sub5_sub14_sub4s[i] = new ImageRGB();
-	        class40_sub5_sub14_sub4.maxWidth = ItemDefinition.anInt2846;
-	        class40_sub5_sub14_sub4.maxHeight = GameShell.anInt31;
+	        class40_sub5_sub14_sub4.maxWidth = ItemDefinition.imageMaxWidth;
+	        class40_sub5_sub14_sub4.maxHeight = imageMaxHeight;
 	        class40_sub5_sub14_sub4.offsetX = Class57.anIntArray1347[i];
 	        class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[i];
 	        class40_sub5_sub14_sub4.imageWidth = Class17.anIntArray456[i];
@@ -2041,4 +2043,11 @@ public class MovedStatics {
 	}
 	public static int[] anIntArray1847 = new int[2000];
 	public static long aLong1841;
+
+    public static int interpolateForPerlin(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
+        if (!arg3)
+            return -109;
+        int i = 65536 + -Rasterizer3D.cosinetable[1024 * arg4 / arg1] >> 1;
+        return ((65536 + -i) * arg0 >> 16) + (arg2 * i >> 16);
+    }
 }

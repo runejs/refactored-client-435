@@ -4,6 +4,7 @@ import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.ImageRGB;
+import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.input.MouseHandler;
@@ -18,6 +19,7 @@ import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.outbound.chat.AcceptRequestOutboundMessage;
+import org.runejs.client.message.outbound.chat.ModifySocialListOutboundMessage;
 import org.runejs.client.message.outbound.examine.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
@@ -27,7 +29,6 @@ import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.PacketBuffer;
-import org.runejs.client.net.codec.runejs435.encoder.widget.input.ClickWidgetButtonMessageEncoder;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
@@ -52,6 +53,12 @@ public class GameInterface extends CachedNode {
     public static boolean[] loadedInterfaces;
     public static boolean drawTabIcons = false;
     public static boolean redrawTabArea = false;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for one of the tabs on the left-hand side of the top,
+     * but not the furthest-left (see `tabHighlightImageTopLeftEdge` for that).
+     */
+    public static IndexedImage tabHighlightImageTopLeft;
 
     public boolean isNewInterfaceFormat = false;
     public int contentType;
@@ -1191,7 +1198,7 @@ public class GameInterface extends CachedNode {
                                 Class17.method275(l);
                             }
                             if(action == ActionRowType.REMOVE_FRIEND.getId()) {
-                                GameShell.method28(l);
+                                removeFriend(l);
                             }
                             if(action == ActionRowType.REMOVE_IGNORE.getId()) {
                                 MovedStatics.method838(l);
@@ -1549,7 +1556,7 @@ public class GameInterface extends CachedNode {
             return;
         }
 
-        GameShell.runClientScriptsForInterface(arg5, arg3, 0, arg2, arg6, -1, cachedInterfaces[widgetId], arg1, 0);
+        runClientScriptsForInterface(arg5, arg3, 0, arg2, arg6, -1, cachedInterfaces[widgetId], arg1, 0);
 
         if(Wall.aGameInterface_353 != null) {
             GameInterface gameInterface = Wall.aGameInterface_353;
@@ -1728,6 +1735,103 @@ public class GameInterface extends CachedNode {
             }
         }
         return false;
+    }
+
+    public static void runClientScriptsForInterface(int minY, int arg1, int scrollWidth, int arg3, int minX, int parentId, GameInterface[] interfaceCollection, int arg8, int scrollHeight) {
+        for (int i = 0; i < interfaceCollection.length; i++) {
+            GameInterface gameInterface = interfaceCollection[i];
+            if (gameInterface != null && (gameInterface.type == GameInterfaceType.LAYER || gameInterface.hasListeners) && parentId == gameInterface.parentId && (!gameInterface.isHidden || PacketBuffer.hiddenButtonTest)) {
+                int absoluteX = minX + gameInterface.currentX;
+                int absoluteY = minY + gameInterface.currentY;
+                if (!gameInterface.lockScroll)
+                    absoluteY -= scrollHeight;
+                int bottomLeftY = absoluteY + gameInterface.originalHeight;
+                int i_4_ = Math.max(minY, absoluteY);
+                if (!gameInterface.lockScroll)
+                    absoluteX -= scrollWidth;
+                int topRightX = absoluteX + gameInterface.originalWidth;
+                int i_6_ = Math.max(minX, absoluteX);
+                int i_7_ = Math.min(arg1, bottomLeftY);
+                int i_8_ = Math.min(topRightX, arg8);
+                if (gameInterface.type == GameInterfaceType.LAYER) {
+                    runClientScriptsForInterface(i_4_, i_7_, gameInterface.scrollWidth, arg3, i_6_, i, interfaceCollection, i_8_, gameInterface.scrollPosition);
+                    if (gameInterface.children != null)
+                        runClientScriptsForInterface(i_4_, i_7_, gameInterface.scrollWidth, arg3, i_6_, gameInterface.id, gameInterface.children, i_8_, gameInterface.scrollPosition);
+                }
+                if (gameInterface.hasListeners) {
+                    boolean bool;
+                    bool = Class13.mouseX >= i_6_ && i_4_ <= Landscape.mouseY && i_8_ > Class13.mouseX && i_7_ > Landscape.mouseY;
+                    boolean bool_9_ = false;
+                    if (MouseHandler.currentMouseButtonPressed == 1 && bool)
+                        bool_9_ = true;
+                    boolean bool_10_ = false;
+                    if (gameInterface.anInt2738 != -1 && bool_9_ && Wall.aGameInterface_353 == null) {
+                        MovedStatics.anInt1996 = Class13.mouseX;
+                        Wall.aGameInterface_353 = gameInterface;
+                        MovedStatics.anInt2621 = Landscape.mouseY;
+                    }
+                    if (MouseHandler.clickType == 1 && i_6_ <= Class57.clickX && RSString.clickY >= i_4_ && Class57.clickX < i_8_ && RSString.clickY < i_7_)
+                        bool_10_ = true;
+                    if (Wall.aGameInterface_353 != null) {
+                        bool_9_ = false;
+                        bool = false;
+                        bool_10_ = false;
+                    }
+                    if (!gameInterface.aBoolean2730 && bool_10_ && (0x1 & arg3) != 0) {
+                        gameInterface.aBoolean2730 = true;
+                        if (gameInterface.anObjectArray2681 != null)
+                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2681, 0, RSString.clickY + -absoluteY, gameInterface, Class57.clickX - absoluteX);
+                    }
+                    if (gameInterface.aBoolean2730 && bool_9_ && (arg3 & 0x4) != 0 && gameInterface.anObjectArray2747 != null)
+                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2747, 0, -absoluteY + Landscape.mouseY, gameInterface, -absoluteX + Class13.mouseX);
+                    if (gameInterface.aBoolean2730 && !bool_9_ && (0x2 & arg3) != 0) {
+                        gameInterface.aBoolean2730 = false;
+                        if (gameInterface.anObjectArray2707 != null)
+                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2707, 0, Landscape.mouseY - absoluteY, gameInterface, Class13.mouseX - absoluteX);
+                    }
+                    if (bool_9_ && (arg3 & 0x8) != 0 && gameInterface.anObjectArray2644 != null)
+                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2644, 0, -absoluteY + Landscape.mouseY, gameInterface, -absoluteX + Class13.mouseX);
+                    if (!gameInterface.aBoolean2682 && bool && (0x10 & arg3) != 0) {
+                        gameInterface.aBoolean2682 = true;
+                        if (gameInterface.anObjectArray2658 != null)
+                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2658, 0, Landscape.mouseY - absoluteY, gameInterface, Class13.mouseX - absoluteX);
+                    }
+                    if (gameInterface.aBoolean2682 && bool && (0x40 & arg3) != 0 && gameInterface.anObjectArray2680 != null)
+                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2680, 0, -absoluteY + Landscape.mouseY, gameInterface, -absoluteX + Class13.mouseX);
+                    if (gameInterface.aBoolean2682 && !bool && (arg3 & 0x20) != 0) {
+                        gameInterface.aBoolean2682 = false;
+                        if (gameInterface.anObjectArray2672 != null)
+                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2672, 0, -absoluteY + Landscape.mouseY, gameInterface, -absoluteX + Class13.mouseX);
+                    }
+                    if (gameInterface.anObjectArray2712 != null && (arg3 & 0x80) != 0)
+                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2712, 0, 0, gameInterface, 0);
+                    if (AnimationSequence.anInt2480 == MovedStatics.pulseCycle && gameInterface.anObjectArray2650 != null && (arg3 & 0x100) != 0)
+                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2650, 0, 0, gameInterface, 0);
+                }
+            }
+        }
+
+    }
+
+    public static void removeFriend(long nameAsLong) {
+        if (nameAsLong != 0) {
+            int i = 0;
+            for (/**/; Player.friendsCount > i; i++) {
+                if (Class59.friends[i] == nameAsLong) {
+                    Player.friendsCount--;
+                    redrawTabArea = true;
+                    for (int i_13_ = i; i_13_ < Player.friendsCount; i_13_++) {
+                        Player.friendUsernames[i_13_] = Player.friendUsernames[1 + i_13_];
+                        Player.friendWorlds[i_13_] = Player.friendWorlds[i_13_ + 1];
+                        Class59.friends[i_13_] = Class59.friends[1 + i_13_];
+                    }
+
+                    OutgoingPackets.sendMessage(
+                        new ModifySocialListOutboundMessage(nameAsLong, ModifySocialListOutboundMessage.SocialList.FRIEND, ModifySocialListOutboundMessage.SocialListAction.REMOVE));
+                    break;
+                }
+            }
+        }
     }
 
     public void swapItems(int arg0, boolean arg1, int arg2) {

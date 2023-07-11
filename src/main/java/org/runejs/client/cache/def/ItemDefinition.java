@@ -25,7 +25,7 @@ import java.awt.*;
 public class ItemDefinition extends CachedNode implements EntityDefinition {
     public static int anInt2798 = 0;
     public static int selectedMask;
-    public static int anInt2846;
+    public static int imageMaxWidth;
     public static int anInt2850 = -1;
     public static int anInt2854;
     public static int count;
