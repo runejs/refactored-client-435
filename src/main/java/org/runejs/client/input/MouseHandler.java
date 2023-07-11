@@ -35,6 +35,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public static int cursorY;
     public static int cursorX;
     public static boolean gameScreenClickable;
+    private static volatile int eventClickX = 0;
     private static volatile long lastClick = 0L;
     public boolean mouseWheelDown;
     public int mouseWheelX;
@@ -156,7 +157,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             mouseX = eventMouseX;
             mouseY = eventMouseY;
             clickType = eventMouseButtonPressed;
-            clickX = Class55.eventClickX;
+            clickX = eventClickX;
             clickY = MovedStatics.eventClickY;
             aLong2561 = lastClick;
             eventMouseButtonPressed = 0;
@@ -232,7 +233,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             int mouseX = event.getX();
             int mouseY = event.getY();
             LinkedList.anInt1073 = 0;
-            Class55.eventClickX = mouseX;
+            eventClickX = mouseX;
             MovedStatics.eventClickY = mouseY;
             lastClick = System.currentTimeMillis();
             if(event.getButton() == MouseEvent.BUTTON2) {

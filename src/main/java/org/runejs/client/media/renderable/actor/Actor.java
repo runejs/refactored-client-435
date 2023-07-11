@@ -350,7 +350,7 @@ public abstract class Actor extends Renderable {
             Buffer.anInt1985 = -1;
             if(MovedStatics.destinationX != 0) {
                 MovedStatics.destinationX -= i_34_;
-                Class55.destinationY -= i_35_;
+                Game.destinationY -= i_35_;
             }
             Player.cutsceneActive = false;
             SoundSystem.reset();

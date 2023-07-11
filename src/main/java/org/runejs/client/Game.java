@@ -90,6 +90,7 @@ public class Game {
     public static Class39 mouseCapturer;
     public static int anInt2591 = 0;
     public static int anInt874;
+    public static int destinationY = 0;
     private static int gameServerPort;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
@@ -708,7 +709,7 @@ public class Game {
         Game.playerCamera.setYaw(0x7ff & -10 + (int) (20.0 * Math.random()));
         Minimap.minimapState = 0;
         Player.localPlayerCount = 0;
-        Class55.destinationY = 0;
+        destinationY = 0;
         for (int i = 0; i < 2048; i++) {
             Player.trackedPlayers[i] = null;
             Player.trackedPlayerAppearanceCache[i] = null;
@@ -1840,7 +1841,7 @@ public class Game {
     }
 
     private static void renderPlayers(int arg0, boolean arg1) {
-        if(Player.localPlayer.worldX >> 7 == MovedStatics.destinationX && Player.localPlayer.worldY >> 7 == Class55.destinationY) {
+        if(Player.localPlayer.worldX >> 7 == MovedStatics.destinationX && Player.localPlayer.worldY >> 7 == destinationY) {
             MovedStatics.destinationX = 0;
 
             DebugTools.walkpathX = null;
