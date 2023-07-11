@@ -64,6 +64,10 @@ public class GameInterface extends CachedNode {
     public static int crossX = 0;
     public static int crossY = 0;
     /**
+     * The lightened edge (top and left) color of the scroll indicator chip.
+     */
+    private static int SCROLLBAR_COLOR_CHIP_EDGE_LIGHT = 0x766654;
+    /**
      * The darkened edge (bottom and right) color of the scroll indicator chip.
      */
     private static int SCROLLBAR_COLOR_CHIP_EDGE_DARK = 0x332D25;
@@ -438,10 +442,10 @@ public class GameInterface extends CachedNode {
             length = 8;
         int scrollCurrent = (-32 + height - length) * scrollPosition / (-height + scrollMaximum);
         Rasterizer.drawFilledRectangle(x, 16 + y + scrollCurrent, 16, length, SCROLLBAR_COLOR_CHIP_FILL);
-        Rasterizer.drawVerticalLine(x, 16 + y + scrollCurrent, length, HuffmanEncoding.SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
-        Rasterizer.drawVerticalLine(1 + x, scrollCurrent + y + 16, length, HuffmanEncoding.SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
-        Rasterizer.drawHorizontalLine(x, scrollCurrent + y + 16, 16, HuffmanEncoding.SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
-        Rasterizer.drawHorizontalLine(x, 17 + y + scrollCurrent, 16, HuffmanEncoding.SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
+        Rasterizer.drawVerticalLine(x, 16 + y + scrollCurrent, length, SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
+        Rasterizer.drawVerticalLine(1 + x, scrollCurrent + y + 16, length, SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
+        Rasterizer.drawHorizontalLine(x, scrollCurrent + y + 16, 16, SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
+        Rasterizer.drawHorizontalLine(x, 17 + y + scrollCurrent, 16, SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
         Rasterizer.drawVerticalLine(x + 15, y + 16 + scrollCurrent, length, SCROLLBAR_COLOR_CHIP_EDGE_DARK);
         Rasterizer.drawVerticalLine(x + 14, scrollCurrent + 17 + y, length - 1, SCROLLBAR_COLOR_CHIP_EDGE_DARK);
         Rasterizer.drawHorizontalLine(x, length + scrollCurrent + 15 + y, 16, SCROLLBAR_COLOR_CHIP_EDGE_DARK);
