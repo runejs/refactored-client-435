@@ -691,7 +691,7 @@ public class Game {
         Class40_Sub5_Sub15.systemUpdateTime = 0;
         IncomingPackets.cyclesSinceLastPacket = 0;
         Player.headIconDrawType = 0;
-        SceneCluster.packetBuffer.currentPosition = 0;
+        OutgoingPackets.buffer.currentPosition = 0;
         SceneCluster.idleLogout = 0;
         IncomingPackets.thirdLastOpcode = -1;
         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
@@ -887,10 +887,10 @@ public class Game {
         if(MovedStatics.anInt537 >= 50 || arg1) {
             MovedStatics.anInt537 = 0;
             if(!aBoolean871 && MovedStatics.gameServerSocket != null) {
-                SceneCluster.packetBuffer.putPacket(13);
+                OutgoingPackets.buffer.putPacket(13);
                 try {
-                    MovedStatics.gameServerSocket.sendDataFromBuffer(SceneCluster.packetBuffer.currentPosition, 0, SceneCluster.packetBuffer.buffer);
-                    SceneCluster.packetBuffer.currentPosition = 0;
+                    MovedStatics.gameServerSocket.sendDataFromBuffer(OutgoingPackets.buffer.currentPosition, 0, OutgoingPackets.buffer.buffer);
+                    OutgoingPackets.buffer.currentPosition = 0;
                 } catch(java.io.IOException ioexception) {
                     aBoolean871 = true;
                 }
@@ -1272,16 +1272,16 @@ public class Game {
                     for(int i = 0; i < Item.obfuscatedKeyStatus.length; i++)
                         Item.obfuscatedKeyStatus[i] = false;
                 }
-                ClientScriptRunner.createClientScriptCheckPacket(205, SceneCluster.packetBuffer);
+                ClientScriptRunner.createClientScriptCheckPacket(205, OutgoingPackets.buffer);
                 synchronized(mouseCapturer.objectLock) {
                     if(MovedStatics.accountFlagged) {
                         if(MouseHandler.clickType != 0 || mouseCapturer.coord >= 40) {
                             int coordinateCount = 0;
-                            SceneCluster.packetBuffer.putPacket(210);
-                            SceneCluster.packetBuffer.putByte(0);
-                            int originalOffset = SceneCluster.packetBuffer.currentPosition;
+                            OutgoingPackets.buffer.putPacket(210);
+                            OutgoingPackets.buffer.putByte(0);
+                            int originalOffset = OutgoingPackets.buffer.currentPosition;
                             for(int c = 0; c < mouseCapturer.coord; c++) {
-                                if(-originalOffset + SceneCluster.packetBuffer.currentPosition >= 240)
+                                if(-originalOffset + OutgoingPackets.buffer.currentPosition >= 240)
                                     break;
                                 coordinateCount++;
                                 int pixelOffset = mouseCapturer.coordsY[c];
@@ -1312,18 +1312,18 @@ public class Game {
                                     if(duplicateClickCount < 8 && differenceX >= -32 && differenceX <= 31 && differenceY >= -32 && differenceY <= 31) {
                                         differenceX += 32;
                                         differenceY += 32;
-                                        SceneCluster.packetBuffer.putShortBE(differenceY + (differenceX << 6) + (duplicateClickCount << 12));
+                                        OutgoingPackets.buffer.putShortBE(differenceY + (differenceX << 6) + (duplicateClickCount << 12));
                                         duplicateClickCount = 0;
                                     } else if(duplicateClickCount < 8) {
-                                        SceneCluster.packetBuffer.putMediumBE(y + 8388608 + (duplicateClickCount << 19));
+                                        OutgoingPackets.buffer.putMediumBE(y + 8388608 + (duplicateClickCount << 19));
                                         duplicateClickCount = 0;
                                     } else {
-                                        SceneCluster.packetBuffer.putIntBE((duplicateClickCount << 19) + -1073741824 + y);
+                                        OutgoingPackets.buffer.putIntBE((duplicateClickCount << 19) + -1073741824 + y);
                                         duplicateClickCount = 0;
                                     }
                                 }
                             }
-                            SceneCluster.packetBuffer.finishVarByte(SceneCluster.packetBuffer.currentPosition + -originalOffset);
+                            OutgoingPackets.buffer.finishVarByte(OutgoingPackets.buffer.currentPosition + -originalOffset);
                             if(coordinateCount < mouseCapturer.coord) {
                                 mouseCapturer.coord -= coordinateCount;
                                 for(int i_9_ = 0; mouseCapturer.coord > i_9_; i_9_++) {
@@ -1358,9 +1358,9 @@ public class Game {
                     if(l > 4095)
                         l = 4095L;
                     int i_12_ = (int) l;
-                    SceneCluster.packetBuffer.putPacket(234);
+                    OutgoingPackets.buffer.putPacket(234);
                     int i_13_ = i_10_ * 765 + i;
-                    SceneCluster.packetBuffer.putIntLE((i_11_ << 19) + (i_12_ << 20) + i_13_);
+                    OutgoingPackets.buffer.putIntLE((i_11_ << 19) + (i_12_ << 20) + i_13_);
                 }
                 if(InteractiveObject.anInt487 > 0)
                     InteractiveObject.anInt487--;
@@ -1369,19 +1369,19 @@ public class Game {
                 if(MovedStatics.aBoolean565 && InteractiveObject.anInt487 <= 0) {
                     InteractiveObject.anInt487 = 20;
                     MovedStatics.aBoolean565 = false;
-                    SceneCluster.packetBuffer.putPacket(58);
-                    SceneCluster.packetBuffer.putShortBE(Game.playerCamera.getYaw());
-                    SceneCluster.packetBuffer.putShortBE(Game.playerCamera.getPitch());
+                    OutgoingPackets.buffer.putPacket(58);
+                    OutgoingPackets.buffer.putShortBE(Game.playerCamera.getYaw());
+                    OutgoingPackets.buffer.putShortBE(Game.playerCamera.getPitch());
                 }
                 if(MovedStatics.aBoolean571 && !aBoolean1735) {
                     aBoolean1735 = true;
-                    SceneCluster.packetBuffer.putPacket(160);
-                    SceneCluster.packetBuffer.putByte(1);
+                    OutgoingPackets.buffer.putPacket(160);
+                    OutgoingPackets.buffer.putByte(1);
                 }
                 if(!MovedStatics.aBoolean571 && aBoolean1735) {
                     aBoolean1735 = false;
-                    SceneCluster.packetBuffer.putPacket(160);
-                    SceneCluster.packetBuffer.putByte(0);
+                    OutgoingPackets.buffer.putPacket(160);
+                    OutgoingPackets.buffer.putByte(0);
                 }
                 LinkedList.method910();
                 if(Class51.gameStatusCode == 30 || Class51.gameStatusCode == 35) {
@@ -1550,27 +1550,27 @@ public class Game {
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
                             SceneCamera.customCameraTimer[i_19_]++;
                         GameInterface.manageTextInputs();
-                        int i_20_ = Npc.method400(-1);
-                        int i_21_ = Class17.method274();
+                        int i_20_ = MouseHandler.resetFramesSinceMouseInput();
+                        int i_21_ = KeyFocusListener.resetFramesSinceKeyboardInput();
                         if(i_20_ > 4500 && i_21_ > 4500) {
                             SceneCluster.idleLogout = 250;
                             MovedStatics.method650(4000);
-                            SceneCluster.packetBuffer.putPacket(216);
+                            OutgoingPackets.buffer.putPacket(216);
                         }
 
                         // antibot camera/minimap randomisation used to happen here
 
                         MovedStatics.anInt537++;
                         if(MovedStatics.anInt537 > 50) {
-                            SceneCluster.packetBuffer.putPacket(13);
+                            OutgoingPackets.buffer.putPacket(13);
                         }
                         do {
                             try {
-                                if(MovedStatics.gameServerSocket == null || SceneCluster.packetBuffer.currentPosition <= 0)
+                                if(MovedStatics.gameServerSocket == null || OutgoingPackets.buffer.currentPosition <= 0)
                                     break;
-                                MovedStatics.gameServerSocket.sendDataFromBuffer(SceneCluster.packetBuffer.currentPosition, 0, SceneCluster.packetBuffer.buffer);
+                                MovedStatics.gameServerSocket.sendDataFromBuffer(OutgoingPackets.buffer.currentPosition, 0, OutgoingPackets.buffer.buffer);
                                 MovedStatics.anInt537 = 0;
-                                SceneCluster.packetBuffer.currentPosition = 0;
+                                OutgoingPackets.buffer.currentPosition = 0;
                             } catch(java.io.IOException ioexception) {
                                 Class59.dropClient();
                                 break;
@@ -1615,11 +1615,11 @@ public class Game {
             }
             if (loginStatus == 2) {
                 long l = MovedStatics.aLong853 = RSString.nameToLong(Native.username.toString());
-                SceneCluster.packetBuffer.currentPosition = 0;
-                SceneCluster.packetBuffer.putByte(14);
+                OutgoingPackets.buffer.currentPosition = 0;
+                OutgoingPackets.buffer.putByte(14);
                 int i = (int) (0x1fL & l >> 16);
-                SceneCluster.packetBuffer.putByte(i);
-                MovedStatics.gameServerSocket.sendDataFromBuffer(2, 0, SceneCluster.packetBuffer.buffer);
+                OutgoingPackets.buffer.putByte(i);
+                MovedStatics.gameServerSocket.sendDataFromBuffer(2, 0, OutgoingPackets.buffer.buffer);
                 loginStatus = 3;
                 IncomingPackets.incomingPacketBuffer.currentPosition = 0;
             }
@@ -1656,17 +1656,17 @@ public class Game {
                 seeds[1] = (int) (Math.random() * 9.9999999E7);
                 seeds[2] = (int) (Renderable.aLong2858 >> 32);
                 seeds[3] = (int) Renderable.aLong2858;
-                SceneCluster.packetBuffer.currentPosition = 0;
-                SceneCluster.packetBuffer.putByte(10);
-                SceneCluster.packetBuffer.putIntBE(seeds[0]);
-                SceneCluster.packetBuffer.putIntBE(seeds[1]);
-                SceneCluster.packetBuffer.putIntBE(seeds[2]);
-                SceneCluster.packetBuffer.putIntBE(seeds[3]);
-                SceneCluster.packetBuffer.putIntBE(signlink.uid);
-                SceneCluster.packetBuffer.putLongBE(RSString.nameToLong(Native.username.toString()));
-                SceneCluster.packetBuffer.method505(Native.password);
+                OutgoingPackets.buffer.currentPosition = 0;
+                OutgoingPackets.buffer.putByte(10);
+                OutgoingPackets.buffer.putIntBE(seeds[0]);
+                OutgoingPackets.buffer.putIntBE(seeds[1]);
+                OutgoingPackets.buffer.putIntBE(seeds[2]);
+                OutgoingPackets.buffer.putIntBE(seeds[3]);
+                OutgoingPackets.buffer.putIntBE(signlink.uid);
+                OutgoingPackets.buffer.putLongBE(RSString.nameToLong(Native.username.toString()));
+                OutgoingPackets.buffer.method505(Native.password);
                 if (Configuration.RSA_ENABLED) {
-                    SceneCluster.packetBuffer.applyRSA(Configuration.RSA_MODULUS, Configuration.RSA_PUBLIC_KEY);
+                    OutgoingPackets.buffer.applyRSA(Configuration.RSA_MODULUS, Configuration.RSA_PUBLIC_KEY);
                 }
 
 
@@ -1680,7 +1680,7 @@ public class Game {
                     // New session
                     MovedStatics.packetBuffer.putByte(16);
                 }
-                MovedStatics.packetBuffer.putByte(57 + SceneCluster.packetBuffer.currentPosition);
+                MovedStatics.packetBuffer.putByte(57 + OutgoingPackets.buffer.currentPosition);
                 MovedStatics.packetBuffer.putIntBE(435);
                 MovedStatics.packetBuffer.putByte(VertexNormal.lowMemory ? 1 : 0);
                 MovedStatics.packetBuffer.putIntBE(CacheArchive.skeletonCacheArchive.crc8);
@@ -1696,12 +1696,12 @@ public class Game {
                 MovedStatics.packetBuffer.putIntBE(CacheArchive.huffmanCacheArchive.crc8);
                 MovedStatics.packetBuffer.putIntBE(CacheArchive.jingleCacheArchive.crc8);
                 MovedStatics.packetBuffer.putIntBE(CacheArchive.clientScriptCacheArchive.crc8);
-                MovedStatics.packetBuffer.putBytes(0, SceneCluster.packetBuffer.currentPosition, SceneCluster.packetBuffer.buffer);
+                MovedStatics.packetBuffer.putBytes(0, OutgoingPackets.buffer.currentPosition, OutgoingPackets.buffer.buffer);
                 MovedStatics.gameServerSocket.sendDataFromBuffer(MovedStatics.packetBuffer.currentPosition, 0, MovedStatics.packetBuffer.buffer);
-                SceneCluster.packetBuffer.initOutCipher(seeds);
+                OutgoingPackets.buffer.initOutCipher(seeds);
 
                 // TODO (Jameskmonger) this allows the OutgoingPackets to access the ISAAC cipher. This is a hack and should be fixed.
-                OutgoingPackets.init(SceneCluster.packetBuffer.outCipher);
+                OutgoingPackets.init(OutgoingPackets.buffer.outCipher);
                 
                 for (int i = 0; i < 4; i++) {
                     seeds[i] += 50;

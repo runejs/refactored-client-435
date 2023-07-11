@@ -19,6 +19,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     public static LinkedList aLinkedList_1278 = new LinkedList();
     public static int[] crc8LookupTable = new int[256];
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1285;
+    public static volatile int framesSinceKeyboardInput = 0;
 
     static {
         for (int divident = 0; divident < 256; divident++) {
@@ -119,6 +120,10 @@ public class KeyFocusListener implements KeyListener, FocusListener {
 	    arg1.removeFocusListener(Class59.keyFocusListener);
 	}
 
+    public static int resetFramesSinceKeyboardInput() {
+        return framesSinceKeyboardInput++;
+    }
+
     public void keyTyped(KeyEvent arg0) {
         arg0.consume();
     }
@@ -134,7 +139,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
 
     public synchronized void keyPressed(KeyEvent keyEvent) {
         if (Class59.keyFocusListener != null) {
-            Class49.anInt1147 = 0;
+            framesSinceKeyboardInput = 0;
             int obfuscatedKeyCode = keyEvent.getKeyCode();
             int eventKeyCode = keyEvent.getKeyCode();
             if (obfuscatedKeyCode >= 0 && MovedStatics.anIntArray1564.length > obfuscatedKeyCode) {
@@ -179,7 +184,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
 
     public synchronized void keyReleased(KeyEvent arg0) {
         if (Class59.keyFocusListener != null) {
-            Class49.anInt1147 = 0;
+            framesSinceKeyboardInput = 0;
             int i = arg0.getKeyCode();
 
             if (i < 0 || MovedStatics.anIntArray1564.length <= i) {

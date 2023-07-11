@@ -388,8 +388,8 @@ public class ScreenController {
             int destY = -i_15_ + Player.localPlayer.worldY >> 7;
 
             if (Item.obfuscatedKeyStatus[81] && InteractiveObject.playerRights > 1) {
-                SceneCluster.packetBuffer.putPacket(246);
-                SceneCluster.packetBuffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + MovedStatics.baseX), Integer.toString(destY + Class26.baseY)));
+                OutgoingPackets.buffer.putPacket(246);
+                OutgoingPackets.buffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + MovedStatics.baseX), Integer.toString(destY + Class26.baseY)));
             } else {
                 Pathfinding.MinimapWalkAnalytics analytics = new Pathfinding.MinimapWalkAnalytics(
                     minimapClickX,

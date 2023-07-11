@@ -1024,7 +1024,7 @@ public class MovedStatics {
     }
 
     public static void method650(int arg1) {
-        LinkedList.anInt1073 = arg1;
+        MouseHandler.framesSinceMouseInput = arg1;
     }
 
     public static void method652() {

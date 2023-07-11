@@ -11,6 +11,7 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
+import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.scene.Point2d;
 import org.runejs.client.scene.SceneCluster;
 
@@ -233,54 +234,54 @@ public class Class33 {
 
     public static void method406(int arg0, int arg1, int arg2) {
         if(arg1 == 1) {
-            SceneCluster.packetBuffer.putPacket(111);
-            SceneCluster.packetBuffer.putIntBE(arg2);
-            SceneCluster.packetBuffer.putShortBE(arg0);
+            OutgoingPackets.buffer.putPacket(111);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
         }
         if(arg1 == 2) {
-            SceneCluster.packetBuffer.putPacket(9);
-            SceneCluster.packetBuffer.putIntBE(arg2);
-            SceneCluster.packetBuffer.putShortBE(arg0);
+            OutgoingPackets.buffer.putPacket(9);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
         }
         if(arg1 == 3) {
-            SceneCluster.packetBuffer.putPacket(193);
-            SceneCluster.packetBuffer.putIntBE(arg2);
-            SceneCluster.packetBuffer.putShortBE(arg0);
+            OutgoingPackets.buffer.putPacket(193);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
         }
         if(arg1 == 4) {
-            SceneCluster.packetBuffer.putPacket(53);
-            SceneCluster.packetBuffer.putIntBE(arg2);
-            SceneCluster.packetBuffer.putShortBE(arg0);
+            OutgoingPackets.buffer.putPacket(53);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
         }
         if(arg1 == 5) {
-            SceneCluster.packetBuffer.putPacket(94);
-            SceneCluster.packetBuffer.putIntBE(arg2);
-            SceneCluster.packetBuffer.putShortBE(arg0);
+            OutgoingPackets.buffer.putPacket(94);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
         }
         if(arg1 == 6) {
-            SceneCluster.packetBuffer.putPacket(213);
-            SceneCluster.packetBuffer.putIntBE(arg2);
-            SceneCluster.packetBuffer.putShortBE(arg0);
+            OutgoingPackets.buffer.putPacket(213);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
         }
         if(arg1 == 7) {
-            SceneCluster.packetBuffer.putPacket(46);
-            SceneCluster.packetBuffer.putIntBE(arg2);
-            SceneCluster.packetBuffer.putShortBE(arg0);
+            OutgoingPackets.buffer.putPacket(46);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
         }
         if(arg1 == 8) {
-            SceneCluster.packetBuffer.putPacket(130);
-            SceneCluster.packetBuffer.putIntBE(arg2);
-            SceneCluster.packetBuffer.putShortBE(arg0);
+            OutgoingPackets.buffer.putPacket(130);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
         }
         if(arg1 == 9) {
-            SceneCluster.packetBuffer.putPacket(157);
-            SceneCluster.packetBuffer.putIntBE(arg2);
-            SceneCluster.packetBuffer.putShortBE(arg0);
+            OutgoingPackets.buffer.putPacket(157);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
         }
         if(arg1 == 10) {
-            SceneCluster.packetBuffer.putPacket(84);
-            SceneCluster.packetBuffer.putIntBE(arg2);
-            SceneCluster.packetBuffer.putShortBE(arg0);
+            OutgoingPackets.buffer.putPacket(84);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
         }
     }
 

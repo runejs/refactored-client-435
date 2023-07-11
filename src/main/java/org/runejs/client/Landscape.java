@@ -14,9 +14,9 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.IncomingPackets;
+import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.Scene;
-import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
@@ -221,8 +221,8 @@ public class Landscape {
                 method285((byte) 118);
                 GameObjectDefinition.objectModelCache.clear();
                 if(GameShell.clientFrame != null) {
-                    SceneCluster.packetBuffer.putPacket(121);
-                    SceneCluster.packetBuffer.putIntBE(1057001181);
+                    OutgoingPackets.buffer.putPacket(121);
+                    OutgoingPackets.buffer.putIntBE(1057001181);
                 }
                 if(!GroundItemTile.loadGeneratedMap) {
                     int i_42_ = (-6 + Class51.regionX) / 8;
@@ -243,7 +243,7 @@ public class Landscape {
                 else
                     MovedStatics.processGameStatus(30);
                 method973();
-                SceneCluster.packetBuffer.putPacket(178);
+                OutgoingPackets.buffer.putPacket(178);
                 RSRuntimeException.method1057(126);
             } else
                 ProducingGraphicsBuffer.anInt1634 = 2;
