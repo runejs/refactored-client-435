@@ -1,6 +1,6 @@
 package org.runejs.client.scene.tile;
 
-import org.runejs.client.HuffmanEncoding;
+import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
@@ -33,7 +33,7 @@ public class GenericTile {
     }
 
     public static void method943(int arg0, TypeFace arg2, int arg3, int arg4) {
-        HuffmanEncoding.chatModes.prepareRasterizer();
+        MovedStatics.chatModes.prepareRasterizer();
         Class57.bottomChatBack.drawImage(0, 0);
         arg2.drawShadowedStringCenter(English.publicChat, 55, 28, 16777215, true);
         if(arg4 == 0)
@@ -62,7 +62,7 @@ public class GenericTile {
         try {
             Graphics graphics = MouseHandler.gameCanvas.getGraphics();
             if(ScreenController.frameMode == ScreenMode.FIXED) {
-                HuffmanEncoding.chatModes.drawGraphics(0, 453, graphics);
+                MovedStatics.chatModes.drawGraphics(0, 453, graphics);
             }
         } catch(Exception exception) {
             MouseHandler.gameCanvas.repaint();

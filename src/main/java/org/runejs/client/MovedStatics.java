@@ -159,6 +159,9 @@ public class MovedStatics {
     public static int imageMaxHeight;
     public static IndexedImage inventoryBackgroundImage;
     public static int hoveredWidgetId = -1;
+    public static int[] anIntArray1564 = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, 85, 80, 84, -1, 91, -1, -1, -1, 81, 82, 86, -1, -1, -1, -1, -1, -1, -1, -1, 0, -1, -1, -1, -1, 83, 104, 105, 103, 102, 96, 98, 97, 99, -1, -1, -1, -1, -1, -1, -1, 25, 16, 17, 18, 19, 20, 21, 22, 23, 24, -1, -1, -1, -1, -1, -1, -1, 48, 68, 66, 50, 34, 51, 52, 53, 39, 54, 55, 56, 70, 69, 40, 41, 32, 35, 49, 36, 38, 67, 33, 65, 37, 64, -1, -1, -1, -1, -1, 228, 231, 227, 233, 224, 219, 225, 230, 226, 232, 89, 87, -1, 88, 229, 90, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, -1, -1, -1, 101, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+    public static ProducingGraphicsBuffer chatModes;
+    public static int anInt1545 = 0;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -264,36 +267,36 @@ public class MovedStatics {
     public static void method997() {
         // (Jameskmonger) I think this is something to do with keycode remapping, though Im not sure
         if (Signlink.javaVendor.toLowerCase().indexOf("microsoft") == -1) {
-            HuffmanEncoding.anIntArray1564[44] = 71;
-            HuffmanEncoding.anIntArray1564[45] = 26;
-            HuffmanEncoding.anIntArray1564[46] = 72;
-            HuffmanEncoding.anIntArray1564[47] = 73;
-            HuffmanEncoding.anIntArray1564[59] = 57;
-            HuffmanEncoding.anIntArray1564[61] = 27;
-            HuffmanEncoding.anIntArray1564[91] = 42;
-            HuffmanEncoding.anIntArray1564[92] = 74;
-            HuffmanEncoding.anIntArray1564[93] = 43;
+            anIntArray1564[44] = 71;
+            anIntArray1564[45] = 26;
+            anIntArray1564[46] = 72;
+            anIntArray1564[47] = 73;
+            anIntArray1564[59] = 57;
+            anIntArray1564[61] = 27;
+            anIntArray1564[91] = 42;
+            anIntArray1564[92] = 74;
+            anIntArray1564[93] = 43;
             if (Signlink.aMethod729 == null) {
-                HuffmanEncoding.anIntArray1564[192] = 58;
-                HuffmanEncoding.anIntArray1564[222] = 59;
+                anIntArray1564[192] = 58;
+                anIntArray1564[222] = 59;
             } else {
-                HuffmanEncoding.anIntArray1564[192] = 28;
-                HuffmanEncoding.anIntArray1564[222] = 58;
-                HuffmanEncoding.anIntArray1564[520] = 59;
+                anIntArray1564[192] = 28;
+                anIntArray1564[222] = 58;
+                anIntArray1564[520] = 59;
             }
         } else {
-            HuffmanEncoding.anIntArray1564[186] = 57;
-            HuffmanEncoding.anIntArray1564[187] = 27;
-            HuffmanEncoding.anIntArray1564[188] = 71;
-            HuffmanEncoding.anIntArray1564[189] = 26;
-            HuffmanEncoding.anIntArray1564[190] = 72;
-            HuffmanEncoding.anIntArray1564[191] = 73;
-            HuffmanEncoding.anIntArray1564[192] = 58;
-            HuffmanEncoding.anIntArray1564[219] = 42;
-            HuffmanEncoding.anIntArray1564[220] = 74;
-            HuffmanEncoding.anIntArray1564[221] = 43;
-            HuffmanEncoding.anIntArray1564[222] = 59;
-            HuffmanEncoding.anIntArray1564[223] = 28;
+            anIntArray1564[186] = 57;
+            anIntArray1564[187] = 27;
+            anIntArray1564[188] = 71;
+            anIntArray1564[189] = 26;
+            anIntArray1564[190] = 72;
+            anIntArray1564[191] = 73;
+            anIntArray1564[192] = 58;
+            anIntArray1564[219] = 42;
+            anIntArray1564[220] = 74;
+            anIntArray1564[221] = 43;
+            anIntArray1564[222] = 59;
+            anIntArray1564[223] = 28;
         }
 
     }
@@ -765,7 +768,7 @@ public class MovedStatics {
                         for (int i_9_ = 0; Player.npcCount > i_9_; i_9_++) {
                             Npc npc1 = Player.npcs[Player.npcIds[i_9_]];
                             if (npc1 != null && npc1 != npc && npc1.actorDefinition.boundaryDimension == 1 && npc1.worldX == npc.worldX && npc1.worldY == npc.worldY)
-                                HuffmanEncoding.processNpcMenuOptions(npc1.actorDefinition, x, y, Player.npcIds[i_9_]);
+                                processNpcMenuOptions(npc1.actorDefinition, x, y, Player.npcIds[i_9_]);
                         }
                         for (int i_11_ = 0; i_11_ < Player.localPlayerCount; i_11_++) {
                             Player player = Player.trackedPlayers[Player.trackedPlayerIndices[i_11_]];
@@ -773,7 +776,7 @@ public class MovedStatics {
                                 Player.processPlayerMenuOptions(player, x, y, Player.trackedPlayerIndices[i_11_]);
                         }
                     }
-                    HuffmanEncoding.processNpcMenuOptions(npc.actorDefinition, x, y, index);
+                    processNpcMenuOptions(npc.actorDefinition, x, y, index);
                 }
                 if (type == 0) {
                     Player player1 = Player.trackedPlayers[index];
@@ -781,7 +784,7 @@ public class MovedStatics {
                         for (int i_12_ = 0; i_12_ < Player.npcCount; i_12_++) {
                             Npc npc = Player.npcs[Player.npcIds[i_12_]];
                             if (npc != null && npc.actorDefinition.boundaryDimension == 1 && npc.worldX == player1.worldX && npc.worldY == player1.worldY)
-                                HuffmanEncoding.processNpcMenuOptions(npc.actorDefinition, x, y, Player.npcIds[i_12_]);
+                                processNpcMenuOptions(npc.actorDefinition, x, y, Player.npcIds[i_12_]);
                         }
                         for (int i_13_ = 0; i_13_ < Player.localPlayerCount; i_13_++) {
                             Player player = Player.trackedPlayers[Player.trackedPlayerIndices[i_13_]];
@@ -1606,7 +1609,7 @@ public class MovedStatics {
             GameInterface.tabHighlightImageTopLeft = null;
             tabHighlightImageTopRightEdge = null;
             anIntArray852 = null;
-            HuffmanEncoding.chatModes = null;
+            chatModes = null;
             Buffer.tabTopBack = null;
             tabImageProducer = null;
             tabHighlightImageTopLeftEdge = null;
@@ -1907,5 +1910,124 @@ public class MovedStatics {
                 WallDecoration.fontNormal.drawString(English.systemUpdateIn + minutes + Native.colon + seconds, 4, 329, 16776960);
             }
         }
+    }
+
+    public static void processNpcMenuOptions(ActorDefinition actorDefinition, int x, int y, int index) {
+        if (ActorDefinition.menuActionRow < 400) {
+            if (actorDefinition.childIds != null) {
+                actorDefinition = actorDefinition.getChildDefinition();
+            }
+            if (actorDefinition != null && actorDefinition.isClickable) {
+                String npcDisplayName = actorDefinition.name;
+                if (actorDefinition.combatLevel != 0) {
+                    npcDisplayName = npcDisplayName + SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthesis;
+                }
+                if (itemSelected == 1) {
+                    addActionRow(English.use, index, x, y, ActionRowType.USE_ITEM_ON_NPC.getId(), Native.selectedItemName + Native.toYellow + npcDisplayName);
+                } else if (Main.widgetSelected == 1) {
+                    if ((0x2 & ItemDefinition.selectedMask) == 2) {
+                        addActionRow(Native.selectedSpellVerb, index, x, y, ActionRowType.CAST_MAGIC_ON_NPC.getId(), Native.selectedSpellName + Native.toYellow + npcDisplayName);
+                    }
+                } else {
+                    String[] options = actorDefinition.options;
+                    if (Class60.DEBUG_DISPLAY_ALL_ACTION_ROWS) {
+                        options = getAllOptionsWithIndices(options);
+                    }
+
+                    // add non-attack options to NPC
+                    if (options != null) {
+                        for (int i = 4; i >= 0; i--) {
+                            if (options[i] != null && !options[i].equalsIgnoreCase(English.attack)) {
+                                int actionType = 0;
+                                if (i == 0) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_1.getId();
+                                }
+                                if (i == 1) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_2.getId();
+                                }
+                                if (i == 2) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_3.getId();
+                                }
+                                if (i == 3) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_4.getId();
+                                }
+                                if (i == 4) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_5.getId();
+                                }
+                                addActionRow(options[i], index, x, y, actionType, Native.yellow + npcDisplayName);
+                            }
+                        }
+                    }
+
+                    // add 'Attack' option to NPC
+                    if (options != null) {
+                        for (int i = 4; i >= 0; i--) {
+                            if (options[i] != null && options[i].equalsIgnoreCase(English.attack)) {
+                                int actionTypeOffset = 0;
+
+                                // deprioritise the action in the list if the NPC is higher level than the player
+                                if (Player.localPlayer.combatLevel < actorDefinition.combatLevel) {
+                                    actionTypeOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
+                                }
+
+                                int actionType = 0;
+                                if (i == 0) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_1.getId() + actionTypeOffset;
+                                }
+                                if (i == 1) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_2.getId() + actionTypeOffset;
+                                }
+                                if (i == 2) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_3.getId() + actionTypeOffset;
+                                }
+                                if (i == 3) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_4.getId() + actionTypeOffset;
+                                }
+                                if (i == 4) {
+                                    actionType = ActionRowType.INTERACT_WITH_NPC_OPTION_5.getId() + actionTypeOffset;
+                                }
+                                addActionRow(options[i], index, x, y, actionType, Native.yellow +npcDisplayName);
+                            }
+                        }
+                    }
+                    StringBuilder examineText = new StringBuilder();
+                    examineText.append(MessageFormat.format("<col=ffff00>{0}</col>", actorDefinition.name));
+
+                    if(actorDefinition.combatLevel != 0) {
+                        String combatLevel = " " +
+                            SceneTile.getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel)
+                                + Native.leftParenthesis + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthesis;
+                        examineText.append(combatLevel);
+                    }
+
+
+                    if (Configuration.DEBUG_CONTEXT) {
+                        examineText.append(" <col=00ff00>(</col>");
+                        examineText.append(
+                                MessageFormat.format("<col=ffffff>{0}</col>",
+                                        Integer.toString(actorDefinition.id)
+                                )
+                        );
+                        examineText.append("<col=00ff00>) (</col>");
+                        examineText.append(
+                                MessageFormat.format("<col=ffffff>{0}, {1}</col>",
+                                        Integer.toString(x + baseX),
+                                        Integer.toString(y + Class26.baseY)
+                                )
+                        );
+                        examineText.append("<col=00ff00>)</col>");
+
+
+                    }
+                    addActionRow(English.examine, index, x, y, ActionRowType.EXAMINE_NPC.getId(), examineText.toString());
+                }
+            }
+        }
+    }
+
+    public static ImageRGB method1028(CacheArchive arg0, String arg1, String arg3) {
+        int i = arg0.getHash(arg1);
+        int i_13_ = arg0.method179(i, arg3);
+        return method927(i_13_, arg0, i);
     }
 }

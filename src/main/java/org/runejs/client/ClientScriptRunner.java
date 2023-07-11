@@ -878,7 +878,7 @@ public class ClientScriptRunner extends Node {
                                             } else if(scriptOpcode == 4102) {
                                                 String class1 = scriptStringValues[--stringValueIndex];
                                                 int i_77_ = scriptIntValues[--intValueIndex];
-                                                scriptStringValues[stringValueIndex++] = class1 + HuffmanEncoding.method1024(true, i_77_);
+                                                scriptStringValues[stringValueIndex++] = class1 + method1024(true, i_77_);
                                             } else if(scriptOpcode == 4103) {
                                                 String class1 = scriptStringValues[--stringValueIndex];
                                                 scriptStringValues[stringValueIndex++] = class1.toLowerCase();
@@ -1097,5 +1097,9 @@ public class ClientScriptRunner extends Node {
         if(typeCode.equals("C"))
             return Character.TYPE;
         return Class.forName(typeCode);
+    }
+
+    private static RSString method1024(boolean arg0, int arg2) {
+        return PacketBuffer.method521(arg0, 10, arg2);
     }
 }

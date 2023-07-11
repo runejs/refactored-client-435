@@ -50,7 +50,7 @@ public class Class33 {
                         if(screenPos != null)
                             ProducingGraphicsBuffer_Sub1.headIconSprites[npcDefinition.headIcon].drawImage(-12 + screenPos.x, screenPos.y + -30);
                     }
-                    if(Player.headIconDrawType == 1 && HuffmanEncoding.anInt1545 == Player.npcIds[-Player.localPlayerCount + i] && MovedStatics.pulseCycle % 20 < 10) {
+                    if(Player.headIconDrawType == 1 && MovedStatics.anInt1545 == Player.npcIds[-Player.localPlayerCount + i] && MovedStatics.pulseCycle % 20 < 10) {
                         Point2d screenPos = MovedStatics.getProjectedScreenPosition(actor.anInt3117 + 15, actor.worldY, actor.worldX);
                         if(screenPos != null)
                             MovedStatics.hintIconSprites[0].drawImage(screenPos.x + -12, screenPos.y + -28);

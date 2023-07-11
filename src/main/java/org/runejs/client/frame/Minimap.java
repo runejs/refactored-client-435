@@ -145,8 +145,8 @@ public class Minimap extends FramePieceRenderer {
             }
         }
         if(Player.headIconDrawType != 0 && MovedStatics.pulseCycle % 20 < 10) {
-            if(Player.headIconDrawType == 1 && HuffmanEncoding.anInt1545 >= 0 && Player.npcs.length > HuffmanEncoding.anInt1545) {
-                Npc npc = Player.npcs[HuffmanEncoding.anInt1545];
+            if(Player.headIconDrawType == 1 && MovedStatics.anInt1545 >= 0 && Player.npcs.length > MovedStatics.anInt1545) {
+                Npc npc = Player.npcs[MovedStatics.anInt1545];
                 if(npc != null) {
                     int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
                     int npcY = npc.worldY / 32 - Player.localPlayer.worldY / 32;
@@ -340,8 +340,8 @@ public class Minimap extends FramePieceRenderer {
             }
         }
         if(Player.headIconDrawType != 0 && MovedStatics.pulseCycle % 20 < 10) {
-            if(Player.headIconDrawType == 1 && HuffmanEncoding.anInt1545 >= 0 && Player.npcs.length > HuffmanEncoding.anInt1545) {
-                Npc npc = Player.npcs[HuffmanEncoding.anInt1545];
+            if(Player.headIconDrawType == 1 && MovedStatics.anInt1545 >= 0 && Player.npcs.length > MovedStatics.anInt1545) {
+                Npc npc = Player.npcs[MovedStatics.anInt1545];
                 if(npc != null) {
                     int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
                     int npcY = npc.worldY / 32 - Player.localPlayer.worldY / 32;

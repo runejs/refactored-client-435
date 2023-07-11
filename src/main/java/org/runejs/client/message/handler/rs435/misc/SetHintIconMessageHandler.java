@@ -42,7 +42,7 @@ public class SetHintIconMessageHandler implements MessageHandler<SetHintIconInbo
 
     private void handleNPCType(SetHintIconInboundMessage message) {
         Player.headIconDrawType = 1;
-        HuffmanEncoding.anInt1545 = message.actorInfo.id;
+        MovedStatics.anInt1545 = message.actorInfo.id;
     }
 
     private void handlePlayerType(SetHintIconInboundMessage message) {

@@ -65,6 +65,7 @@ public class GameInterface extends CachedNode {
     public static GameInterface aGameInterface_353 = null;
     public static int crossX = 0;
     public static int crossY = 0;
+    public static int reportAbuseInterfaceID = -1;
     /**
      * The lightened edge (top and left) color of the scroll indicator chip.
      */
@@ -1366,7 +1367,7 @@ public class GameInterface extends CachedNode {
                                 PacketBuffer.closeAllWidgets();
                                 if(MovedStatics.anInt854 != -1) {
                                     Native.reportedName = class1.substring(i_22_ + 5).trim();
-                                    HuffmanEncoding.reportAbuseInterfaceID = gameScreenInterfaceId = MovedStatics.anInt854;
+                                    reportAbuseInterfaceID = gameScreenInterfaceId = MovedStatics.anInt854;
                                     MovedStatics.reportMutePlayer = false;
                                 }
                             } else {
@@ -1879,7 +1880,7 @@ public class GameInterface extends CachedNode {
                 Console.console.handleInput();
                 break;
             }
-            if(gameScreenInterfaceId != -1 && HuffmanEncoding.reportAbuseInterfaceID == gameScreenInterfaceId) {
+            if(gameScreenInterfaceId != -1 && reportAbuseInterfaceID == gameScreenInterfaceId) {
                 if(ItemDefinition.anInt2854 == 85 && Native.reportedName.length() > 0)
                     Native.reportedName = Native.reportedName.substring(0, -1 + Native.reportedName.length());
                 if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && Native.reportedName.length() < 12)
@@ -1935,7 +1936,7 @@ ChatBox.tradeMode
                     ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 1);
                     ChatBox.redrawChatbox = true;
                 }
-                if(HuffmanEncoding.method1027(Class59.anInt1388) && ChatBox.inputMessage.length() < 10) {
+                if(method1027(Class59.anInt1388) && ChatBox.inputMessage.length() < 10) {
                     ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
@@ -2151,6 +2152,10 @@ ChatBox.tradeMode
                 }
             }
         }
+    }
+
+    private static boolean method1027(int arg0) {
+        return arg0 >= 48 && arg0 <= 57;
     }
 
     public void swapItems(int arg0, boolean arg1, int arg2) {

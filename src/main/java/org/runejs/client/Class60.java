@@ -594,7 +594,7 @@ public class Class60 {
             Rasterizer.drawFilledRectangle(0, 0, 42, 42, 0x4d4431);
             Rasterizer.drawUnfilledRectangle(0, 0, 42, 42, 0x242017);
             musicIcon.drawImage(4, 3);
-            titleImg = HuffmanEncoding.method1028(gameImageCacheArchive, Native.logo, "");
+            titleImg = MovedStatics.method1028(gameImageCacheArchive, Native.logo, "");
             Class39.aProducingGraphicsBuffer_907.prepareRasterizer();
             // UNCOMMENT LINE UNDER FOR LOGO
             // class40_sub5_sub14_sub4.drawImage(-128 + 382 + -(class40_sub5_sub14_sub4.imageWidth / 2), 18);

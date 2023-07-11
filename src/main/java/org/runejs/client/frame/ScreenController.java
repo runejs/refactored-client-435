@@ -222,7 +222,7 @@ public class ScreenController {
         //width 516
         //height 184
         drawFramePiece(RSCanvas.chatBoxImageProducer, x + 17, y + 16);
-        drawFramePiece(HuffmanEncoding.chatModes, x, y + 112);
+        drawFramePiece(MovedStatics.chatModes, x, y + 112);
         drawFramePieceCutout(RSCanvas.tabBottom, x + 496, y + 125, 20, RSCanvas.tabBottom.height, 0, 0);
         drawFramePiece(MovedStatics.chatboxRight, x, y + 16);
         drawFramePieceCutout(Class17.chatboxTop, x, y, Class17.chatboxTop.width - 37, Class17.chatboxTop.height - 3, 0, 3);
@@ -467,7 +467,7 @@ public class ScreenController {
                     PacketBuffer.closeAllWidgets();
                     if (MovedStatics.anInt854 != -1) {
                         MovedStatics.reportMutePlayer = false;
-                        HuffmanEncoding.reportAbuseInterfaceID = GameInterface.gameScreenInterfaceId = MovedStatics.anInt854;
+                        GameInterface.reportAbuseInterfaceID = GameInterface.gameScreenInterfaceId = MovedStatics.anInt854;
                         Native.reportedName = "";
                     }
                 } else

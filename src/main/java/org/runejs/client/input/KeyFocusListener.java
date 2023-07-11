@@ -118,8 +118,8 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             Class49.anInt1147 = 0;
             int obfuscatedKeyCode = keyEvent.getKeyCode();
             int eventKeyCode = keyEvent.getKeyCode();
-            if (obfuscatedKeyCode >= 0 && HuffmanEncoding.anIntArray1564.length > obfuscatedKeyCode) {
-                obfuscatedKeyCode = HuffmanEncoding.anIntArray1564[obfuscatedKeyCode];
+            if (obfuscatedKeyCode >= 0 && MovedStatics.anIntArray1564.length > obfuscatedKeyCode) {
+                obfuscatedKeyCode = MovedStatics.anIntArray1564[obfuscatedKeyCode];
                 if ((0x80 & obfuscatedKeyCode) != 0) {
                     obfuscatedKeyCode = -1;
                 }
@@ -163,10 +163,10 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             Class49.anInt1147 = 0;
             int i = arg0.getKeyCode();
 
-            if (i < 0 || HuffmanEncoding.anIntArray1564.length <= i) {
+            if (i < 0 || MovedStatics.anIntArray1564.length <= i) {
                 i = -1;
             } else {
-                i = ~0x80 & HuffmanEncoding.anIntArray1564[i];
+                i = ~0x80 & MovedStatics.anIntArray1564[i];
             }
             if (GameObjectDefinition.anInt2543 >= 0 && i >= 0) {
                 RSString.keyCodes[GameObjectDefinition.anInt2543] = i ^ 0xffffffff;

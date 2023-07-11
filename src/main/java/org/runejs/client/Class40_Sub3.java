@@ -177,9 +177,9 @@ public class Class40_Sub3 extends Node {
             if (Minimap.minimapCompass != null)
                 i++;
             else
-                Minimap.minimapCompass = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.compass, "");
+                Minimap.minimapCompass = MovedStatics.method1028(CacheArchive.gameImageCacheArchive, Native.compass, "");
             if (MovedStatics.minimapEdge == null)
-                MovedStatics.minimapEdge = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.mapEdge, "");
+                MovedStatics.minimapEdge = MovedStatics.method1028(CacheArchive.gameImageCacheArchive, Native.mapEdge, "");
             else
                 i++;
             if (MovedStatics.mapSceneIcons != null)
@@ -207,7 +207,7 @@ public class Class40_Sub3 extends Node {
             else
                 i++;
             if (LinkedList.aClass40_Sub5_Sub14_Sub4_1057 == null)
-                LinkedList.aClass40_Sub5_Sub14_Sub4_1057 = HuffmanEncoding.method1028(CacheArchive.gameImageCacheArchive, Native.overlayMultiway, "");
+                LinkedList.aClass40_Sub5_Sub14_Sub4_1057 = MovedStatics.method1028(CacheArchive.gameImageCacheArchive, Native.overlayMultiway, "");
             else
                 i++;
             if (Minimap.minimapMarkers == null)
