@@ -51,6 +51,6 @@ public class LoadStandardRegionMessageHandler implements MessageHandler<LoadStan
             }
         }
 
-        Landscape.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
+        MovedStatics.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
     }
 }

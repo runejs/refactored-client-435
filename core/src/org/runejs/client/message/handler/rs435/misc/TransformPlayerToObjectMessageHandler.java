@@ -1,5 +1,6 @@
 package org.runejs.client.message.handler.rs435.misc;
 
+import org.runejs.client.Game;
 import org.runejs.client.Landscape;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.def.GameObjectDefinition;
@@ -30,10 +31,10 @@ public class TransformPlayerToObjectMessageHandler implements MessageHandler<Tra
             player = Player.localPlayer;
         if (player != null) {
             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(message.objectId);
-            int tileHeightX0Y0 = Landscape.tile_height[Player.worldLevel][x][y];
-            int tileHeightX0Y1 = Landscape.tile_height[Player.worldLevel][x][1 + y];
-            int tileHeightX1Y1 = Landscape.tile_height[Player.worldLevel][1 + x][1 + y];
-            int tileHeightX1Y0 = Landscape.tile_height[Player.worldLevel][x + 1][y];
+            int tileHeightX0Y0 = Game.currentScene.landscape.tile_height[Player.worldLevel][x][y];
+            int tileHeightX0Y1 = Game.currentScene.landscape.tile_height[Player.worldLevel][x][1 + y];
+            int tileHeightX1Y1 = Game.currentScene.landscape.tile_height[Player.worldLevel][1 + x][1 + y];
+            int tileHeightX1Y0 = Game.currentScene.landscape.tile_height[Player.worldLevel][x + 1][y];
             Model model = gameObjectDefinition.createTerrainObjectModel(tileHeightX1Y1, tileHeightX0Y1, message.orientation, tileHeightX0Y0, typeKey, tileHeightX1Y0);
             if (model != null) {
                 if (unknownXMax < unknownXMin) {
@@ -58,7 +59,7 @@ public class TransformPlayerToObjectMessageHandler implements MessageHandler<Tra
                 }
                 player.anInt3271 = x * 128 + 64 * sizeX;
                 player.anInt3291 = y * 128 + 64 * sizeY;
-                player.anInt3272 = Scene.getFloorDrawHeight(Player.worldLevel, player.anInt3271, player.anInt3291);
+                player.anInt3272 = Game.currentScene.getFloorDrawHeight(Player.worldLevel, player.anInt3271, player.anInt3291);
                 player.anInt3281 = unknownYMin + y;
                 player.anInt3258 = x + unknownXMin;
                 player.anInt3262 = x + unknownXMax;

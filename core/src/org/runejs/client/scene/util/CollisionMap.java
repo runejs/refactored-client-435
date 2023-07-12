@@ -28,10 +28,10 @@ public class CollisionMap {
     public void addObject(int arg1, int arg2, int arg3, int arg4, Scene arg5, int arg7, int arg8, int arg9) {
         CollisionMap arg0 = this;
 
-        int i = Landscape.tile_height[arg2][arg9][arg8];
-        int i_0_ = Landscape.tile_height[arg2][1 + arg9][arg8];
-        int i_1_ = Landscape.tile_height[arg2][arg9][1 + arg8];
-        int i_2_ = Landscape.tile_height[arg2][arg9 + 1][arg8 + 1];
+        int i = Game.currentScene.landscape.tile_height[arg2][arg9][arg8];
+        int i_0_ = Game.currentScene.landscape.tile_height[arg2][1 + arg9][arg8];
+        int i_1_ = Game.currentScene.landscape.tile_height[arg2][arg9][1 + arg8];
+        int i_2_ = Game.currentScene.landscape.tile_height[arg2][arg9 + 1][arg8 + 1];
         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
         int i_3_ = i_2_ + i_0_ + i + i_1_ >> 2;
         int i_4_ = (arg7 << 6) + arg4;
