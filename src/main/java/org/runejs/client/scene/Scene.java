@@ -43,10 +43,7 @@ public class Scene {
     public static int cameraPosX;
     public static int cameraPositionTileX;
     public static int renderCameraPitchSine;
-    public static int mapBoundsX;
-    public static int currentPositionY;
     public static int cameraPosZ;
-    public static int currentPositionX;
     public static int activeOccluderCount = 0;
     public static int cameraPosY;
     public static int renderCameraYawCosine;
@@ -57,7 +54,6 @@ public class Scene {
     public static LinkedList tileList = new LinkedList();
     public static int anInt109 = 0;
     public static int renderCameraPitchCosine;
-    public static int mapBoundsY;
     public static int drawWidthMidpoint;
     public static int drawHeight;
     public static int drawHeightMidpoint;
@@ -100,6 +96,12 @@ public class Scene {
      * Currently hovered tile Y coordinate
      */
     public int hoveredTileY = -1;
+
+    private int drawFromTileX;
+    private int drawFromTileY;
+
+    private int drawToTileX;
+    private int drawToTileY;
 
     public int mapSizeX = 104;
     public int mapSizeY = 104;
@@ -429,28 +431,28 @@ public class Scene {
         Scene.cameraPosY = cameraPosY;
         cameraPositionTileX = cameraPosX / 128;
         cameraPositionTileY = cameraPosY / 128;
-        currentPositionX = cameraPositionTileX - TILE_DRAW_DISTANCE;
-        if (currentPositionX < 0) {
-            currentPositionX = 0;
+        drawFromTileX = cameraPositionTileX - TILE_DRAW_DISTANCE;
+        if (drawFromTileX < 0) {
+            drawFromTileX = 0;
         }
-        currentPositionY = cameraPositionTileY - TILE_DRAW_DISTANCE;
-        if (currentPositionY < 0) {
-            currentPositionY = 0;
+        drawFromTileY = cameraPositionTileY - TILE_DRAW_DISTANCE;
+        if (drawFromTileY < 0) {
+            drawFromTileY = 0;
         }
-        mapBoundsX = cameraPositionTileX + TILE_DRAW_DISTANCE;
-        if (mapBoundsX > mapSizeX) {
-            mapBoundsX = mapSizeX;
+        drawToTileX = cameraPositionTileX + TILE_DRAW_DISTANCE;
+        if (drawToTileX > mapSizeX) {
+            drawToTileX = mapSizeX;
         }
-        mapBoundsY = cameraPositionTileY + TILE_DRAW_DISTANCE;
-        if (mapBoundsY > mapSizeY) {
-            mapBoundsY = mapSizeY;
+        drawToTileY = cameraPositionTileY + TILE_DRAW_DISTANCE;
+        if (drawToTileY > mapSizeY) {
+            drawToTileY = mapSizeY;
         }
         processCulling(plane);
         anInt109 = 0;
         for (int z = this.plane; z < mapSizeZ; z++) {
             SceneTile[][] sceneTiles = tileArray[z];
-            for (int x = currentPositionX; x < mapBoundsX; x++) {
-                for (int y = currentPositionY; y < mapBoundsY; y++) {
+            for (int x = drawFromTileX; x < drawToTileX; x++) {
+                for (int y = drawFromTileY; y < drawToTileY; y++) {
                     SceneTile sceneTile = sceneTiles[x][y];
                     if (sceneTile != null) {
                         if (sceneTile.drawLevel > plane || !TILE_VISIBILITY_MAP[x - cameraPositionTileX + TILE_DRAW_DISTANCE][y - cameraPositionTileY + TILE_DRAW_DISTANCE] && heightMap[z][x][y] - cameraPosZ < 70000) {
@@ -472,32 +474,32 @@ public class Scene {
             for (int i_25_ = -TILE_DRAW_DISTANCE; i_25_ <= 0; i_25_++) {
                 int i_26_ = cameraPositionTileX + i_25_;
                 int i_27_ = cameraPositionTileX - i_25_;
-                if (i_26_ >= currentPositionX || i_27_ < mapBoundsX) {
+                if (i_26_ >= drawFromTileX || i_27_ < drawToTileX) {
                     for (int i_28_ = -TILE_DRAW_DISTANCE; i_28_ <= 0; i_28_++) {
                         int i_29_ = cameraPositionTileY + i_28_;
                         int i_30_ = cameraPositionTileY - i_28_;
-                        if (i_26_ >= currentPositionX) {
-                            if (i_29_ >= currentPositionY) {
+                        if (i_26_ >= drawFromTileX) {
+                            if (i_29_ >= drawFromTileY) {
                                 SceneTile sceneTile = sceneTiles[i_26_][i_29_];
                                 if (sceneTile != null && sceneTile.draw) {
                                     renderTile(sceneTile, true);
                                 }
                             }
-                            if (i_30_ < mapBoundsY) {
+                            if (i_30_ < drawToTileY) {
                                 SceneTile sceneTile = sceneTiles[i_26_][i_30_];
                                 if (sceneTile != null && sceneTile.draw) {
                                     renderTile(sceneTile, true);
                                 }
                             }
                         }
-                        if (i_27_ < mapBoundsX) {
-                            if (i_29_ >= currentPositionY) {
+                        if (i_27_ < drawToTileX) {
+                            if (i_29_ >= drawFromTileY) {
                                 SceneTile sceneTile = sceneTiles[i_27_][i_29_];
                                 if (sceneTile != null && sceneTile.draw) {
                                     renderTile(sceneTile, true);
                                 }
                             }
-                            if (i_30_ < mapBoundsY) {
+                            if (i_30_ < drawToTileY) {
                                 SceneTile sceneTile = sceneTiles[i_27_][i_30_];
                                 if (sceneTile != null && sceneTile.draw) {
                                     renderTile(sceneTile, true);
@@ -517,32 +519,32 @@ public class Scene {
             for (int i_31_ = -TILE_DRAW_DISTANCE; i_31_ <= 0; i_31_++) {
                 int i_32_ = cameraPositionTileX + i_31_;
                 int i_33_ = cameraPositionTileX - i_31_;
-                if (i_32_ >= currentPositionX || i_33_ < mapBoundsX) {
+                if (i_32_ >= drawFromTileX || i_33_ < drawToTileX) {
                     for (int i_34_ = -TILE_DRAW_DISTANCE; i_34_ <= 0; i_34_++) {
                         int i_35_ = cameraPositionTileY + i_34_;
                         int i_36_ = cameraPositionTileY - i_34_;
-                        if (i_32_ >= currentPositionX) {
-                            if (i_35_ >= currentPositionY) {
+                        if (i_32_ >= drawFromTileX) {
+                            if (i_35_ >= drawFromTileY) {
                                 SceneTile sceneTile = sceneTiles[i_32_][i_35_];
                                 if (sceneTile != null && sceneTile.draw) {
                                     renderTile(sceneTile, false);
                                 }
                             }
-                            if (i_36_ < mapBoundsY) {
+                            if (i_36_ < drawToTileY) {
                                 SceneTile sceneTile = sceneTiles[i_32_][i_36_];
                                 if (sceneTile != null && sceneTile.draw) {
                                     renderTile(sceneTile, false);
                                 }
                             }
                         }
-                        if (i_33_ < mapBoundsX) {
-                            if (i_35_ >= currentPositionY) {
+                        if (i_33_ < drawToTileX) {
+                            if (i_35_ >= drawFromTileY) {
                                 SceneTile sceneTile = sceneTiles[i_33_][i_35_];
                                 if (sceneTile != null && sceneTile.draw) {
                                     renderTile(sceneTile, false);
                                 }
                             }
-                            if (i_36_ < mapBoundsY) {
+                            if (i_36_ < drawToTileY) {
                                 SceneTile sceneTile = sceneTiles[i_33_][i_36_];
                                 if (sceneTile != null && sceneTile.draw) {
                                     renderTile(sceneTile, false);
@@ -871,25 +873,25 @@ public class Scene {
                                 continue;
                             }
                         }
-                        if (x <= cameraPositionTileX && x > currentPositionX) {
+                        if (x <= cameraPositionTileX && x > drawFromTileX) {
                             SceneTile tile = sceneTiles[x - 1][y];
                             if (tile != null && tile.visible && (tile.draw || (groundTile.interactiveObjectsSizeOR & 0x1) == 0)) {
                                 continue;
                             }
                         }
-                        if (x >= cameraPositionTileX && x < mapBoundsX - 1) {
+                        if (x >= cameraPositionTileX && x < drawToTileX - 1) {
                             SceneTile tile = sceneTiles[x + 1][y];
                             if (tile != null && tile.visible && (tile.draw || (groundTile.interactiveObjectsSizeOR & 0x4) == 0)) {
                                 continue;
                             }
                         }
-                        if (y <= cameraPositionTileY && y > currentPositionY) {
+                        if (y <= cameraPositionTileY && y > drawFromTileY) {
                             SceneTile tile = sceneTiles[x][y - 1];
                             if (tile != null && tile.visible && (tile.draw || (groundTile.interactiveObjectsSizeOR & 0x8) == 0)) {
                                 continue;
                             }
                         }
-                        if (y >= cameraPositionTileY && y < mapBoundsY - 1) {
+                        if (y >= cameraPositionTileY && y < drawToTileY - 1) {
                             SceneTile tile = sceneTiles[x][y + 1];
                             if (tile != null && tile.visible && (tile.draw || (groundTile.interactiveObjectsSizeOR & 0x2) == 0)) {
                                 continue;
@@ -1174,25 +1176,25 @@ public class Scene {
                 }
                 if (groundTile.visible) {
                     if (groundTile.wallCullDirection == 0) {
-                        if (x <= cameraPositionTileX && x > currentPositionX) {
+                        if (x <= cameraPositionTileX && x > drawFromTileX) {
                             SceneTile sceneTile_125_ = sceneTiles[x - 1][y];
                             if (sceneTile_125_ != null && sceneTile_125_.visible) {
                                 continue;
                             }
                         }
-                        if (x >= cameraPositionTileX && x < mapBoundsX - 1) {
+                        if (x >= cameraPositionTileX && x < drawToTileX - 1) {
                             SceneTile sceneTile_126_ = sceneTiles[x + 1][y];
                             if (sceneTile_126_ != null && sceneTile_126_.visible) {
                                 continue;
                             }
                         }
-                        if (y <= cameraPositionTileY && y > currentPositionY) {
+                        if (y <= cameraPositionTileY && y > drawFromTileY) {
                             SceneTile sceneTile_127_ = sceneTiles[x][y - 1];
                             if (sceneTile_127_ != null && sceneTile_127_.visible) {
                                 continue;
                             }
                         }
-                        if (y >= cameraPositionTileY && y < mapBoundsY - 1) {
+                        if (y >= cameraPositionTileY && y < drawToTileY - 1) {
                             SceneTile sceneTile_128_ = sceneTiles[x][y + 1];
                             if (sceneTile_128_ != null && sceneTile_128_.visible) {
                                 continue;
