@@ -2286,7 +2286,7 @@ public class Game {
         gameServerPort = modewhere != 0 ? Player.worldId + 40000 : Configuration.GAME_PORT;
         currentPort = gameServerPort;
 
-        MovedStatics.method997();
+        KeyFocusListener.method997();
         KeyFocusListener.addListeners(gameCanvas);
         MouseHandler.addListeners(gameCanvas);
         MovedStatics.anInt57 = Signlink.anInt737;
