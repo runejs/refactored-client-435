@@ -31,13 +31,14 @@ public class Scene {
     public static int[] WALL_CORNER_TYPE_64_BLOCK_OBJ_SPANS = new int[]{0, 4, 4, 8, 0, 0, 8, 0, 0};
     public static int[] WALL_CORNER_TYPE_128_BLOCK_OBJ_SPANS = new int[]{1, 1, 0, 0, 0, 8, 0, 0, 8};
 
+    public static boolean lowMemory = true;
+    public static int cycle;
+
     public static int cameraPosX;
     public static int cameraPositionTileX;
     public static int renderCameraPitchSine;
     public static int mapBoundsX;
-    public static int cycle;
     public static int currentPositionY;
-    public static boolean lowMemory = true;
     public static int cameraPosZ;
     public static int anInt90 = 4;
     public static int currentPositionX;
@@ -68,17 +69,14 @@ public class Scene {
     public static int[] viewspaceY = new int[6];
 
     public SceneTile[][][] tileArray;
-    public int[][][] anIntArrayArrayArray83;
-    public int sceneSpawnRequestsCacheCurrentPos;
+    public int[][][] tileOcclusionCycles;
+    public int sceneSpawnRequestsCacheCurrentPos = 0;
     public InteractiveObject[] sceneSpawnRequestsCache = new InteractiveObject[5000];
-    public int mapSizeX;
     public int currentPositionZ = 0;
     public int[][][] heightMap;
-    public int mapSizeZ;
-    public int mapSizeY;
-    public int[] mergeIndexB;
-    public int anInt126;
-    public int[] mergeIndexA;
+    public int anInt126 = 0;
+    public int[] mergeIndexA = new int[10000];
+    public int[] mergeIndexB = new int[10000];
 
     private boolean clicked = false;
     private int clickX = 0;
@@ -102,19 +100,13 @@ public class Scene {
      */
     public int hoveredTileY = -1;
 
+    public int mapSizeX = 104;
+    public int mapSizeY = 104;
+    public int mapSizeZ = 4;
+
     public Scene(int[][][] heightMap) {
-        final int length = 104;// was parameter
-        final int width = 104;// was parameter
-        final int height = 4;// was parameter
-        sceneSpawnRequestsCacheCurrentPos = 0;
-        mergeIndexB = new int[10000];
-        anInt126 = 0;
-        mergeIndexA = new int[10000];
-        mapSizeZ = height;
-        mapSizeX = width;
-        mapSizeY = length;
-        tileArray = new SceneTile[height][width][length];
-        anIntArrayArrayArray83 = new int[height][width + 1][length + 1];
+        tileArray = new SceneTile[mapSizeZ][mapSizeX][mapSizeY];
+        tileOcclusionCycles = new int[mapSizeZ][mapSizeX + 1][mapSizeY + 1];
         this.heightMap = heightMap;
         initToNull();
     }
@@ -622,7 +614,7 @@ public class Scene {
     }
 
     public boolean isTileOccluded(int x, int y, int z) {
-        int i = anIntArrayArrayArray83[z][x][y];
+        int i = tileOcclusionCycles[z][x][y];
         if (i == -cycle) {
             return false;
         }
@@ -632,10 +624,10 @@ public class Scene {
         int worldX = x << 7;
         int worldY = y << 7;
         if (isPointOccluded(worldX + 1, heightMap[z][x][y], worldY + 1) && isPointOccluded(worldX + 128 - 1, heightMap[z][x + 1][y], worldY + 1) && isPointOccluded(worldX + 128 - 1, heightMap[z][x + 1][y + 1], worldY + 128 - 1) && isPointOccluded(worldX + 1, heightMap[z][x][y + 1], worldY + 128 - 1)) {
-            anIntArrayArrayArray83[z][x][y] = cycle;
+            tileOcclusionCycles[z][x][y] = cycle;
             return true;
         }
-        anIntArrayArrayArray83[z][x][y] = -cycle;
+        tileOcclusionCycles[z][x][y] = -cycle;
         return false;
     }
 
@@ -1469,7 +1461,7 @@ public class Scene {
         }
         for (int x = minimumX; x <= maximumX; x++) {
             for (int y = minimumY; y <= maximumY; y++) {
-                if (anIntArrayArrayArray83[z][x][y] == -cycle) {
+                if (tileOcclusionCycles[z][x][y] == -cycle) {
                     return false;
                 }
             }
