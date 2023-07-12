@@ -1,7 +1,6 @@
 package org.runejs.client.net;
 
 import org.runejs.client.node.NodeCache;
-import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.util.BitUtils;
 
 public class ISAAC {
@@ -13,11 +12,6 @@ public class ISAAC {
     public static NodeCache cachedActorDefinitions = new NodeCache(64);
     public static boolean aBoolean512;
     public static NodeCache aClass9_516 = new NodeCache(64);
-    /**
-     * The image used for the highlighted (selected) tab button,
-     * for the furthest-right tab on the bottom.
-     */
-    public static IndexedImage tabHighlightImageBottomRightEdge;
     public static int anInt525;
 
     public int count;

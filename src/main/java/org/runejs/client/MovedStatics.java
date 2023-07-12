@@ -366,6 +366,11 @@ public class MovedStatics {
     public static int[] keyCodes = new int[128];
     public static int tooltipDelay = 50;
     public static int anInt2231 = 1;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for the furthest-right tab on the bottom.
+     */
+    public static IndexedImage tabHighlightImageBottomRightEdge;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -795,7 +800,7 @@ public class MovedStatics {
                 if (currentTabId == 12)
                     tabHighlightImageBottomRight.drawImage(201, 0);
                 if (currentTabId == 13)
-                    ISAAC.tabHighlightImageBottomRightEdge.drawImage(229, 0);
+                    tabHighlightImageBottomRightEdge.drawImage(229, 0);
             }
             if (tabWidgetIds[8] != -1 && arg4 != 8)
                 tabIcons[7].drawImage(74, 2);
@@ -1758,7 +1763,7 @@ public class MovedStatics {
             tabImageProducer = null;
             tabHighlightImageTopLeftEdge = null;
             gameScreenImageProducer = null;
-            ISAAC.tabHighlightImageBottomRightEdge = null;
+            tabHighlightImageBottomRightEdge = null;
             ChatBox.chatBoxImageProducer = null;
             mapBackRight = null;
             InteractiveObject.tabTop = null;
@@ -2301,9 +2306,9 @@ public class MovedStatics {
             tabHighlightImageBottomLeft.flipVertical();
             tabHighlightImageBottomMiddle = tabHighlightImageTopMiddle.cloneImage();
             tabHighlightImageBottomMiddle.flipVertical();
-            ISAAC.tabHighlightImageBottomRightEdge = tabHighlightImageTopLeftEdge.cloneImage();
-            ISAAC.tabHighlightImageBottomRightEdge.flipHorizontal();
-            ISAAC.tabHighlightImageBottomRightEdge.flipVertical();
+            tabHighlightImageBottomRightEdge = tabHighlightImageTopLeftEdge.cloneImage();
+            tabHighlightImageBottomRightEdge.flipHorizontal();
+            tabHighlightImageBottomRightEdge.flipVertical();
             tabHighlightImageBottomRight = GameInterface.tabHighlightImageTopLeft.cloneImage();
             tabHighlightImageBottomRight.flipHorizontal();
             tabHighlightImageBottomRight.flipVertical();
