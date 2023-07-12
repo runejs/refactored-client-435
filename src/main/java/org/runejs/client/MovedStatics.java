@@ -315,10 +315,6 @@ public class MovedStatics {
      */
     public static int[] anIntArray1198;
     public static int regionX;
-    /**
-     * Part of login screen
-     */
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1206;
     public static IndexedImage imgLoginScreenButton;
     /**
      * Last pressed key? maybe
@@ -335,13 +331,17 @@ public class MovedStatics {
      * Something to do with minimap
      */
     public static int[] anIntArray1186;
+    /**
+     * Loading state? maybe
+     */
+    public static int anInt1634 = 0;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
             anIntArray1198 = null;
             GameObject.flameRightBackground = null;
-            ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631 = null;
-            aProducingGraphicsBuffer_1206 = null;
+            Class60.aProducingGraphicsBuffer_1631 = null;
+            Class60.aProducingGraphicsBuffer_1206 = null;
             anIntArray1168 = null;
             anIntArray3255 = null;
             imgLoginScreenButton = null;
@@ -1010,7 +1010,7 @@ public class MovedStatics {
                 PacketBuffer.anInt2231 = 1;
                 Game.anInt2591 = 0;
                 GameObject.anInt3048 = 1;
-                ProducingGraphicsBuffer.anInt1634 = 0;
+                anInt1634 = 0;
             }
             if (statusCode == 0 || statusCode == 35) {
                 method344(-40);
@@ -1501,7 +1501,7 @@ public class MovedStatics {
 	                chatEffectsDisabled = varPlayerValue;
 	            if(varPlayerType != 5)
 	                break;
-	            ProducingGraphicsBuffer.oneMouseButton = varPlayerValue;
+	            Game.oneMouseButton = varPlayerValue;
 	        }
 	
 	        break;

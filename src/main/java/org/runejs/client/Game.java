@@ -44,6 +44,7 @@ import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
 import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
 import org.runejs.Configuration;
+import org.runejs.client.util.SignlinkNode;
 
 import java.awt.*;
 import java.io.IOException;
@@ -91,6 +92,8 @@ public class Game {
     public static Scene currentScene;
     public static int gameStatusCode = 0;
     public static KeyFocusListener keyFocusListener = new KeyFocusListener();
+    public static SignlinkNode updateServerSignlinkNode;
+    public static int oneMouseButton = 0;
     private static int gameServerPort;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
@@ -1445,7 +1448,7 @@ public class Game {
                                         ));
                                     }
                                 } else {
-                                    if((ProducingGraphicsBuffer.oneMouseButton == 1 || MovedStatics.menuHasAddFriend(MovedStatics.menuActionRow - 1)) && MovedStatics.menuActionRow > 2)
+                                    if((oneMouseButton == 1 || MovedStatics.menuHasAddFriend(MovedStatics.menuActionRow - 1)) && MovedStatics.menuActionRow > 2)
                                         MovedStatics.determineMenuSize();
                                     else if(MovedStatics.menuActionRow > 0)
                                         GameInterface.processMenuActions(MovedStatics.menuActionRow - 1);
@@ -1975,7 +1978,7 @@ public class Game {
         else
             currentPort = CollisionMap.someOtherPort;
         updateServerSocket = null;
-        ProducingGraphicsBuffer.updateServerSignlinkNode = null;
+        updateServerSignlinkNode = null;
         MovedStatics.anInt292++;
         MovedStatics.connectionStage = 0;
         if (MovedStatics.anInt292 < 2 || arg1 != 7 && arg1 != 9) {
@@ -2061,12 +2064,12 @@ public class Game {
         } else if (gameStatusCode == 20) {
             Class60.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
         } else if (gameStatusCode == 25) {
-            if (ProducingGraphicsBuffer.anInt1634 == 1) {
+            if (MovedStatics.anInt1634 == 1) {
                 if (anInt874 > PacketBuffer.anInt2231)
                     PacketBuffer.anInt2231 = anInt874;
                 int i = (-anInt874 + PacketBuffer.anInt2231) * 50 / PacketBuffer.anInt2231;
                 MovedStatics.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.percent_b);
-            } else if (ProducingGraphicsBuffer.anInt1634 == 2) {
+            } else if (MovedStatics.anInt1634 == 2) {
                 if (anInt2591 > GameObject.anInt3048)
                     GameObject.anInt3048 = anInt2591;
                 int i = 50 * (-anInt2591 + GameObject.anInt3048) / GameObject.anInt3048 + 50;
@@ -2102,19 +2105,19 @@ public class Game {
                 do {
                     try {
                         if (MovedStatics.connectionStage == 0) {
-                            ProducingGraphicsBuffer.updateServerSignlinkNode = signlink.createSocketNode(currentPort);
+                            updateServerSignlinkNode = signlink.createSocketNode(currentPort);
                             MovedStatics.connectionStage++;
                         }
                         if (MovedStatics.connectionStage == 1) {
-                            if (ProducingGraphicsBuffer.updateServerSignlinkNode.status == 2) {
+                            if (updateServerSignlinkNode.status == 2) {
                                 method35(-1);
                                 break;
                             }
-                            if (ProducingGraphicsBuffer.updateServerSignlinkNode.status == 1)
+                            if (updateServerSignlinkNode.status == 1)
                                 MovedStatics.connectionStage++;
                         }
                         if (MovedStatics.connectionStage == 2) {
-                            updateServerSocket = new GameSocket((Socket) ProducingGraphicsBuffer.updateServerSignlinkNode.value, signlink);
+                            updateServerSocket = new GameSocket((Socket) updateServerSignlinkNode.value, signlink);
                             Buffer buffer = new Buffer(5);
                             buffer.putByte(15);
                             buffer.putIntBE(435); // Cache revision
@@ -2142,7 +2145,7 @@ public class Game {
 
                         UpdateServer.handleUpdateServerConnection(updateServerSocket, gameStatusCode > 20);
 
-                        ProducingGraphicsBuffer.updateServerSignlinkNode = null;
+                        updateServerSignlinkNode = null;
                         MovedStatics.connectionStage = 0;
                         updateServerSocket = null;
                         MovedStatics.anInt292 = 0;

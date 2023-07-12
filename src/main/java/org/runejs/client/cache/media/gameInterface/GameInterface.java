@@ -269,7 +269,7 @@ public class GameInterface extends CachedNode {
     }
 
     public static void method640() {
-        ProducingGraphicsBuffer.aClass9_1615.clear();
+        IdentityKit.identityKitNodeCache.clear();
     }
 
 

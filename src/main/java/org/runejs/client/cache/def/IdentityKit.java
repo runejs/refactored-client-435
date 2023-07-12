@@ -5,9 +5,11 @@ import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.node.CachedNode;
+import org.runejs.client.node.NodeCache;
 
 public class IdentityKit extends CachedNode {
     public static CacheArchive identityKitCache;
+    public static NodeCache identityKitNodeCache = new NodeCache(64);
     public int[] recolorToFind = new int[6];
     public int[] recolorToReplace;
     public int bodyPartId = -1;
@@ -21,7 +23,7 @@ public class IdentityKit extends CachedNode {
 
     // ???
     public static IdentityKit cache(int arg1) {
-        IdentityKit identityKit = (IdentityKit) ProducingGraphicsBuffer.aClass9_1615.get(arg1);
+        IdentityKit identityKit = (IdentityKit) identityKitNodeCache.get(arg1);
         if(identityKit != null) {
             return identityKit;
         }
@@ -30,7 +32,7 @@ public class IdentityKit extends CachedNode {
         if(is != null) {
             identityKit.readValues(new Buffer(is));
         }
-        ProducingGraphicsBuffer.aClass9_1615.put(arg1, identityKit);
+        identityKitNodeCache.put(arg1, identityKit);
         return identityKit;
     }
 

@@ -86,7 +86,7 @@ public class Landscape {
                 }
             }
             if(bool) {
-                if(ProducingGraphicsBuffer.anInt1634 != 0)
+                if(MovedStatics.anInt1634 != 0)
                     MovedStatics.method940(English.loadingPleaseWait, true, Native.percent100Parentheses);
                 RSCanvas.clearCaches();
                 Game.currentScene.initToNull();
@@ -246,9 +246,9 @@ public class Landscape {
                 OutgoingPackets.buffer.putPacket(178);
                 RSRuntimeException.method1057(126);
             } else
-                ProducingGraphicsBuffer.anInt1634 = 2;
+                MovedStatics.anInt1634 = 2;
         } else
-            ProducingGraphicsBuffer.anInt1634 = 1;
+            MovedStatics.anInt1634 = 1;
 
     }
 

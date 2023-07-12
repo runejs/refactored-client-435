@@ -26,6 +26,15 @@ import java.awt.*;
 public class Class60 {
     public static int loginScreenState = 0;
     public static int loginScreenFocus = 0;
+    public static ProducingGraphicsBuffer muteButton;
+    /**
+     * Part of login screen
+     */
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1631;
+    /**
+     * Part of login screen
+     */
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1206;
 
     public static void updateLogin() {
         method836(1);
@@ -245,7 +254,7 @@ public class Class60 {
             }
         }
 
-        ProducingGraphicsBuffer.muteButton.prepareRasterizer();
+        muteButton.prepareRasterizer();
         ImageRGB musicIcon = TabParts.GetPart("music");
 
         if(ScreenController.frameMode == ScreenMode.RESIZABLE) {
@@ -276,7 +285,7 @@ public class Class60 {
                 offsetY = middleY - loginScreenOffsetY;
             }
             Graphics graphics = MouseHandler.gameCanvas.getGraphics();
-            ProducingGraphicsBuffer.muteButton.drawGraphics(ScreenController.drawWidth-42, ScreenController.drawHeight-42, graphics);
+            muteButton.drawGraphics(ScreenController.drawWidth-42, ScreenController.drawHeight-42, graphics);
 
             MovedStatics.loginBoxGraphics.drawGraphics(offsetX + 202, offsetY + 171, graphics);
             MovedStatics.flameLeftBackground.drawGraphics(offsetX, offsetY, graphics);
@@ -287,12 +296,12 @@ public class Class60 {
             MovedStatics.clearScreen = false;
 
             MovedStatics.aProducingGraphicsBuffer_907.drawGraphics(offsetX + 128, offsetY, graphics);
-            MovedStatics.aProducingGraphicsBuffer_1206.drawGraphics(offsetX + 202, offsetY + 371, graphics);
+            aProducingGraphicsBuffer_1206.drawGraphics(offsetX + 202, offsetY + 371, graphics);
             MovedStatics.aProducingGraphicsBuffer_463.drawGraphics(offsetX, offsetY + 265, graphics);
             KeyFocusListener.aProducingGraphicsBuffer_1285.drawGraphics(offsetX + 562, offsetY + 265, graphics);
             MovedStatics.aProducingGraphicsBuffer_2524.drawGraphics(offsetX + 128, offsetY + 171, graphics);
-            ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.drawGraphics(offsetX + 562, offsetY + 171, graphics);
-            ProducingGraphicsBuffer.muteButton.drawGraphics(ScreenController.drawWidth-42, ScreenController.drawHeight-42, graphics);
+            aProducingGraphicsBuffer_1631.drawGraphics(offsetX + 562, offsetY + 171, graphics);
+            muteButton.drawGraphics(ScreenController.drawWidth-42, ScreenController.drawHeight-42, graphics);
         } catch (Exception exception) {
             MouseHandler.gameCanvas.repaint();
         }
@@ -365,7 +374,7 @@ public class Class60 {
             Rasterizer.resetPixels();
             MovedStatics.aProducingGraphicsBuffer_907 = MovedStatics.createGraphicsBuffer(509, 171, arg0);
             Rasterizer.resetPixels();
-            MovedStatics.aProducingGraphicsBuffer_1206 = MovedStatics.createGraphicsBuffer(360, 132, arg0);
+            aProducingGraphicsBuffer_1206 = MovedStatics.createGraphicsBuffer(360, 132, arg0);
             Rasterizer.resetPixels();
             MovedStatics.loginBoxGraphics = MovedStatics.createGraphicsBuffer(360, 200, arg0);
             Rasterizer.resetPixels();
@@ -375,9 +384,9 @@ public class Class60 {
             Rasterizer.resetPixels();
             MovedStatics.aProducingGraphicsBuffer_2524 = MovedStatics.createGraphicsBuffer(74, 94, arg0);
             Rasterizer.resetPixels();
-            ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631 = MovedStatics.createGraphicsBuffer(75, 94, arg0);
+            aProducingGraphicsBuffer_1631 = MovedStatics.createGraphicsBuffer(75, 94, arg0);
             Rasterizer.resetPixels();
-            ProducingGraphicsBuffer.muteButton = MovedStatics.createGraphicsBuffer(42, 42, arg0);
+            muteButton = MovedStatics.createGraphicsBuffer(42, 42, arg0);
             Rasterizer.resetPixels();
             byte[] is = huffmanCacheArchive.method170("", Native.titleImage);
             ImageRGB titleImg = new ImageRGB(is, arg0);
@@ -387,7 +396,7 @@ public class Class60 {
             titleImg.drawInverse(-637, 0);
             MovedStatics.aProducingGraphicsBuffer_907.prepareRasterizer();
             titleImg.drawInverse(-128, 0);
-            MovedStatics.aProducingGraphicsBuffer_1206.prepareRasterizer();
+            aProducingGraphicsBuffer_1206.prepareRasterizer();
             titleImg.drawInverse(-202, -371);
             MovedStatics.loginBoxGraphics.prepareRasterizer();
             titleImg.drawInverse(-202, -171);
@@ -397,7 +406,7 @@ public class Class60 {
             titleImg.drawInverse(-562, -265);
             MovedStatics.aProducingGraphicsBuffer_2524.prepareRasterizer();
             titleImg.drawInverse(-128, -171);
-            ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.prepareRasterizer();
+            aProducingGraphicsBuffer_1631.prepareRasterizer();
             titleImg.drawInverse(-562, -171);
             int[] is_18_ = new int[titleImg.imageWidth];
             for (int i = 0; i < titleImg.imageHeight; i++) {
@@ -412,7 +421,7 @@ public class Class60 {
             titleImg.drawInverse(-255, 0);
             MovedStatics.aProducingGraphicsBuffer_907.prepareRasterizer();
             titleImg.drawInverse(254, 0);
-            MovedStatics.aProducingGraphicsBuffer_1206.prepareRasterizer();
+            aProducingGraphicsBuffer_1206.prepareRasterizer();
             titleImg.drawInverse(180, -371);
             MovedStatics.loginBoxGraphics.prepareRasterizer();
             titleImg.drawInverse(180, -171);
@@ -422,9 +431,9 @@ public class Class60 {
             titleImg.drawInverse(-180, -265);
             MovedStatics.aProducingGraphicsBuffer_2524.prepareRasterizer();
             titleImg.drawInverse(254, -171);
-            ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.prepareRasterizer();
+            aProducingGraphicsBuffer_1631.prepareRasterizer();
             titleImg.drawInverse(-180, -171);
-            ProducingGraphicsBuffer.muteButton.prepareRasterizer();
+            muteButton.prepareRasterizer();
             ImageRGB musicIcon = TabParts.GetPart("music");
             Rasterizer.drawFilledRectangle(0, 0, 42, 42, 0x4d4431);
             Rasterizer.drawUnfilledRectangle(0, 0, 42, 42, 0x242017);
