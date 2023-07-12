@@ -1229,9 +1229,9 @@ public class GameInterface extends CachedNode {
                     }
                     if(action == ActionRowType.WALK_HERE.getId()) {
                         if(MovedStatics.menuOpen) {
-                            Npc.currentScene.method120(-4 + i, -4 + i_10_);
+                            Game.currentScene.method120(-4 + i, -4 + i_10_);
                         } else {
-                            Npc.currentScene.method120(MouseHandler.clickX - 4, -4 + MouseHandler.clickY);
+                            Game.currentScene.method120(MouseHandler.clickX - 4, -4 + MouseHandler.clickY);
                         }
                     }
                     if(action == ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId()) {

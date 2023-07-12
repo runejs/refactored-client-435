@@ -391,7 +391,7 @@ public class MovedStatics {
                     if (spotAnim.animationFinished)
                         spotAnim.unlink();
                     else
-                        Npc.currentScene.method134(spotAnim.plane, spotAnim.x, spotAnim.y, spotAnim.z, 60, spotAnim, 0, -1, false);
+                        Game.currentScene.method134(spotAnim.plane, spotAnim.x, spotAnim.y, spotAnim.z, 60, spotAnim, 0, -1, false);
                 }
             } else
                 spotAnim.unlink();
@@ -484,7 +484,7 @@ public class MovedStatics {
                             projectile.trackTarget(pulseCycle, 0, class40_sub5_sub17_sub4_sub1.worldY, Scene.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub1.worldX, class40_sub5_sub17_sub4_sub1.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub1.worldX);
                     }
                     projectile.move(anInt199);
-                    Npc.currentScene.method134(Player.worldLevel, (int) projectile.currentX, (int) projectile.currentY, (int) projectile.currentHeight, 60, projectile, projectile.anInt3013, -1, false);
+                    Game.currentScene.method134(Player.worldLevel, (int) projectile.currentX, (int) projectile.currentY, (int) projectile.currentHeight, 60, projectile, projectile.anInt3013, -1, false);
                 }
             } else
                 projectile.unlink();
@@ -750,7 +750,7 @@ public class MovedStatics {
             int index = (hash & 0x1fffcccc) >> 14;
             if (lasthash != hash) {
                 lasthash = hash;
-                if (type == 2 && Npc.currentScene.getArrangement(Player.worldLevel, x, y, hash) >= 0) {
+                if (type == 2 && Game.currentScene.getArrangement(Player.worldLevel, x, y, hash) >= 0) {
                     GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(index);
                     if (gameObjectDefinition.childIds != null)
                         gameObjectDefinition = gameObjectDefinition.getChildDefinition();
@@ -1447,9 +1447,9 @@ public class MovedStatics {
 	        int i_2_ = 24628 + (-(512 * i_1_) + 52736) * 4;
 	        for(int i_3_ = 1; i_3_ < 103; i_3_++) {
 	            if((0x18 & tile_flags[arg1][i_3_][i_1_]) == 0)
-	                Npc.currentScene.method96(is, i_2_, 512, arg1, i_3_, i_1_);
+	                Game.currentScene.method96(is, i_2_, 512, arg1, i_3_, i_1_);
 	            if(arg1 < 3 && (tile_flags[1 + arg1][i_3_][i_1_] & 0x8) != 0)
-	                Npc.currentScene.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
+	                Game.currentScene.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
 	            i_2_ += 4;
 	        }
 	    }
@@ -1467,7 +1467,7 @@ public class MovedStatics {
 	    Minimap.minimapHintCount = 0;
 	    for(int i_8_ = 0; i_8_ < 104; i_8_++) {
 	        for(int i_9_ = 0; i_9_ < 104; i_9_++) {
-	            int i_10_ = Npc.currentScene.getFloorDecorationHash(Player.worldLevel, i_8_, i_9_);
+	            int i_10_ = Game.currentScene.getFloorDecorationHash(Player.worldLevel, i_8_, i_9_);
 	            if(i_10_ != 0) {
 	                i_10_ = 0x7fff & i_10_ >> 14;
 	                int i_11_ = GameObjectDefinition.getDefinition(i_10_).icon;
@@ -1661,28 +1661,28 @@ public class MovedStatics {
                 boolean bool = false;
                 boolean bool_1_ = false;
                 if(arg6 == 0)
-                    i_0_ = Npc.currentScene.method122(arg7, arg2, arg0);
+                    i_0_ = Game.currentScene.method122(arg7, arg2, arg0);
                 if(arg6 == 1)
-                    i_0_ = Npc.currentScene.method91(arg7, arg2, arg0);
+                    i_0_ = Game.currentScene.method91(arg7, arg2, arg0);
                 if(arg6 == 2)
-                    i_0_ = Npc.currentScene.getLocationHash(arg7, arg2, arg0);
+                    i_0_ = Game.currentScene.getLocationHash(arg7, arg2, arg0);
                 if(arg6 == 3)
-                    i_0_ = Npc.currentScene.getFloorDecorationHash(arg7, arg2, arg0);
+                    i_0_ = Game.currentScene.getFloorDecorationHash(arg7, arg2, arg0);
                 if(i_0_ != 0) {
                     i = (i_0_ & 0x1ffff138) >> 14;
-                    int i_2_ = Npc.currentScene.getArrangement(arg7, arg2, arg0, i_0_);
+                    int i_2_ = Game.currentScene.getArrangement(arg7, arg2, arg0, i_0_);
                     int i_3_ = i_2_ >> 6 & 0x3;
                     int i_4_ = 0x1f & i_2_;
                     if(arg6 == 0) {
-                        Npc.currentScene.method124(arg7, arg2, arg0);
+                        Game.currentScene.method124(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         if(gameObjectDefinition.solid)
                             Landscape.currentCollisionMap[arg7].markWall(arg2, i_3_, gameObjectDefinition.walkable, arg0, i_4_);
                     }
                     if(arg6 == 1)
-                        Npc.currentScene.method127(arg7, arg2, arg0);
+                        Game.currentScene.method127(arg7, arg2, arg0);
                     if(arg6 == 2) {
-                        Npc.currentScene.removeInteractiveObject(arg7, arg2, arg0);
+                        Game.currentScene.removeInteractiveObject(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         if(arg2 + gameObjectDefinition.sizeX > 103 || arg0 + gameObjectDefinition.sizeX > 103 || arg2 + gameObjectDefinition.sizeY > 103 || gameObjectDefinition.sizeY + arg0 > 103)
                             return;
@@ -1690,7 +1690,7 @@ public class MovedStatics {
                             Landscape.currentCollisionMap[arg7].markSolidOccupant(arg2, arg0, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, i_3_, gameObjectDefinition.walkable);
                     }
                     if(arg6 == 3) {
-                        Npc.currentScene.method131(arg7, arg2, arg0);
+                        Game.currentScene.method131(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         if(gameObjectDefinition.solid && gameObjectDefinition.hasActions == 1)
                             Landscape.currentCollisionMap[arg7].unmarkConcealed(arg2, arg0);
@@ -1700,7 +1700,7 @@ public class MovedStatics {
                     int i_5_ = arg7;
                     if(i_5_ < 3 && (tile_flags[1][arg2][arg0] & 0x2) == 2)
                         i_5_++;
-                    CollisionMap.method543(Landscape.currentCollisionMap[arg7], arg1, i_5_, arg7, arg3, Npc.currentScene, -22078, arg4, arg0, arg2);
+                    CollisionMap.method543(Landscape.currentCollisionMap[arg7], arg1, i_5_, arg7, arg3, Game.currentScene, -22078, arg4, arg0, arg2);
                 }
             }
         }
@@ -2053,7 +2053,7 @@ public class MovedStatics {
     public static void spawnGroundItem(int arg1, int arg2) {
         LinkedList linkedList = groundItems[Player.worldLevel][arg2][arg1];
         if(linkedList == null)
-            Npc.currentScene.method125(Player.worldLevel, arg2, arg1);
+            Game.currentScene.method125(Player.worldLevel, arg2, arg1);
         else {
             int i = -99999999;
             Item item = null;
@@ -2068,7 +2068,7 @@ public class MovedStatics {
                 }
             }
             if(item == null)
-                Npc.currentScene.method125(Player.worldLevel, arg2, arg1);
+                Game.currentScene.method125(Player.worldLevel, arg2, arg1);
             else {
                 Item item_34_ = null;
                 Item item_35_ = null;
@@ -2082,7 +2082,7 @@ public class MovedStatics {
                     }
                 }
                 int i_37_ = 1610612736 + (arg1 << 7) + arg2;
-                Npc.currentScene.addGroundItemTile(arg2, arg1, Player.worldLevel, Scene.getFloorDrawHeight(Player.worldLevel, 64 + 128 * arg2, 64 + 128 * arg1), i_37_, item, item_35_, item_34_);
+                Game.currentScene.addGroundItemTile(arg2, arg1, Player.worldLevel, Scene.getFloorDrawHeight(Player.worldLevel, 64 + 128 * arg2, 64 + 128 * arg1), i_37_, item, item_35_, item_34_);
             }
         }
 

@@ -132,9 +132,9 @@ public abstract class Actor extends Renderable {
 
     public static void method781(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         if(arg0 == 1850) {
-            int i = Npc.currentScene.method122(arg1, arg2, arg5);
+            int i = Game.currentScene.method122(arg1, arg2, arg5);
             if(i != 0) {
-                int i_0_ = Npc.currentScene.getArrangement(arg1, arg2, arg5, i);
+                int i_0_ = Game.currentScene.getArrangement(arg1, arg2, arg5, i);
                 int i_1_ = 0x1f & i_0_;
                 int i_2_ = 0x3 & i_0_ >> 6;
                 int i_3_ = arg3;
@@ -213,9 +213,9 @@ public abstract class Actor extends Renderable {
                     }
                 }
             }
-            i = Npc.currentScene.getLocationHash(arg1, arg2, arg5);
+            i = Game.currentScene.getLocationHash(arg1, arg2, arg5);
             if(i != 0) {
-                int i_8_ = Npc.currentScene.getArrangement(arg1, arg2, arg5, i);
+                int i_8_ = Game.currentScene.getArrangement(arg1, arg2, arg5, i);
                 int i_9_ = 0x7fff & i >> 14;
                 int i_10_ = (i_8_ & 0xf4) >> 6;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
@@ -246,7 +246,7 @@ public abstract class Actor extends Renderable {
                     }
                 }
             }
-            i = Npc.currentScene.getFloorDecorationHash(arg1, arg2, arg5);
+            i = Game.currentScene.getFloorDecorationHash(arg1, arg2, arg5);
             if(i != 0) {
                 int i_16_ = (i & 0x1fffd9fb) >> 14;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);

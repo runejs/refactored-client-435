@@ -5,10 +5,10 @@ package org.runejs.OldEngine;/*
  */
 
 import org.runejs.client.Class26;
+import org.runejs.client.Game;
 import org.runejs.client.Landscape;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.io.Buffer;
-import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.scene.util.CollisionMap;
 
 import java.io.*;
@@ -136,7 +136,7 @@ public class ObjectDecompressor {
             class20 = groundData[plane];
         }
         if(localY > 0 && localX > 0 && localY < 103 && localX < 103) {
-            Landscape.addObject(objectId, localX, localY, z, rotation, type, Npc.currentScene, class20);
+            Landscape.addObject(objectId, localX, localY, z, rotation, type, Game.currentScene, class20);
         }
     }
 

@@ -88,6 +88,7 @@ public class Game {
     public static int anInt2591 = 0;
     public static int anInt874;
     public static int destinationY = 0;
+    public static Scene currentScene;
     private static int gameServerPort;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
@@ -818,8 +819,8 @@ public class Game {
         Model.resourceCount = 0;
         Rasterizer.resetPixels();
 
-        Npc.currentScene.render(activeCamera, i);
-        Npc.currentScene.clearInteractiveObjectCache();
+        currentScene.render(activeCamera, i);
+        currentScene.clearInteractiveObjectCache();
         Class33.draw2DActorAttachments();
         MovedStatics.drawPositionHintIcon();
         ((Class35) Rasterizer3D.interface3).animateTextures(MovedStatics.anInt199);
@@ -1814,7 +1815,7 @@ public class Game {
                     if(!npc.actorDefinition.isClickable) {
                         i_15_ += -2147483648;
                     }
-                    Npc.currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, Scene.getFloorDrawHeight(Player.worldLevel, npc.worldX + (-1 + npc.size) * 64, npc.size * 64 + -64 + npc.worldY), -64 + npc.size * 64 + 60, npc, npc.anInt3118, i_15_, npc.aBoolean3105);
+                    currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, Scene.getFloorDrawHeight(Player.worldLevel, npc.worldX + (-1 + npc.size) * 64, npc.size * 64 + -64 + npc.worldY), -64 + npc.size * 64 + 60, npc, npc.anInt3118, i_15_, npc.aBoolean3105);
                 }
             }
         }
@@ -1851,7 +1852,7 @@ public class Game {
                     if(player.playerModel != null && player.anInt3283 <= MovedStatics.pulseCycle && MovedStatics.pulseCycle < player.anInt3274) {
                         player.aBoolean3287 = false;
                         player.anInt3276 = Scene.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
-                        Npc.currentScene.method112(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.anInt3258, player.anInt3281, player.anInt3262, player.anInt3289);
+                        currentScene.method112(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.anInt3258, player.anInt3281, player.anInt3262, player.anInt3289);
                     } else {
                         if((0x7f & player.worldX) == 64 && (player.worldY & 0x7f) == 64) {
                             if(MovedStatics.anInt2628 == MovedStatics.anIntArrayArray1435[tileX][tileY])
@@ -1859,7 +1860,7 @@ public class Game {
                             MovedStatics.anIntArrayArray1435[tileX][tileY] = MovedStatics.anInt2628;
                         }
                         player.anInt3276 = Scene.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
-                        Npc.currentScene.method134(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.aBoolean3105);
+                        currentScene.method134(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.aBoolean3105);
                     }
                 }
             }
@@ -1921,7 +1922,7 @@ public class Game {
             MovedStatics.gameServerSocket = null;
         }
         RSCanvas.clearCaches();
-        Npc.currentScene.initToNull();
+        currentScene.initToNull();
         int i = 0;
         for(/**/; i < 4; i++)
             Landscape.currentCollisionMap[i].reset();

@@ -6,11 +6,9 @@ import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.def.SpotAnimDefinition;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.PacketBuffer;
-import org.runejs.client.scene.Scene;
 
 public class Npc extends Actor {
     public static int anInt3294 = 0;
-    public static Scene currentScene;
     public static int[] anIntArray3312;
     public ActorDefinition actorDefinition;
 

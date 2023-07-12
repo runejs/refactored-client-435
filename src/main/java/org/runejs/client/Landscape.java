@@ -13,7 +13,6 @@ import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.Actor;
-import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.IncomingPackets;
 import org.runejs.client.net.OutgoingPackets;
@@ -94,7 +93,7 @@ public class Landscape {
                 if(ProducingGraphicsBuffer.anInt1634 != 0)
                     MovedStatics.method940(English.loadingPleaseWait, true, Native.percent100Parentheses);
                 RSCanvas.clearCaches();
-                Npc.currentScene.initToNull();
+                Game.currentScene.initToNull();
                 System.gc();
                 for(int z = 0; z < 4; z++)
                     currentCollisionMap[z].reset();
@@ -146,7 +145,7 @@ public class Landscape {
                         if(data != null) {
                             int offsetX = -MovedStatics.baseX + (mapCoordinates[region] >> 8) * 64;
                             int offsetY = 64 * (0xff & mapCoordinates[region]) - Class26.baseY;
-                            loadObjectBlock(offsetX, Npc.currentScene, currentCollisionMap, data, offsetY);
+                            loadObjectBlock(offsetX, Game.currentScene, currentCollisionMap, data, offsetY);
                         } else {
                             System.out.println("Missing map: " + objectDataIds[region]);
                         }
@@ -197,7 +196,7 @@ public class Landscape {
                                     int tileCoordinates = (tileX / 8 << 8) + tileY / 8;
                                     for(int i_38_ = 0; i_38_ < mapCoordinates.length; i_38_++) {
                                         if(tileCoordinates == mapCoordinates[i_38_] && objectData[i_38_] != null) {
-                                            constructMapRegionObjects(8 * (tileX & 0x7), 8 * (tileY & 0x7), tileZ, tileRotation, x * 8, 8 * y, z, Npc.currentScene, objectData[i_38_], currentCollisionMap);
+                                            constructMapRegionObjects(8 * (tileX & 0x7), 8 * (tileY & 0x7), tileZ, tileRotation, x * 8, 8 * y, z, Game.currentScene, objectData[i_38_], currentCollisionMap);
                                             break;
                                         }
                                     }
@@ -208,7 +207,7 @@ public class Landscape {
                 }
                 method364(true);
                 RSCanvas.clearCaches();
-                createRegion(Npc.currentScene, currentCollisionMap);
+                createRegion(Game.currentScene, currentCollisionMap);
                 method364(true);
                 int z = lowestPlane;
                 if(Player.worldLevel < z)
@@ -216,9 +215,9 @@ public class Landscape {
                 if(z < -1 + Player.worldLevel)
                     z = -1 + Player.worldLevel;
                 if(!VertexNormal.lowMemory)
-                    Npc.currentScene.setHeightLevel(0);
+                    Game.currentScene.setHeightLevel(0);
                 else
-                    Npc.currentScene.setHeightLevel(lowestPlane);
+                    Game.currentScene.setHeightLevel(lowestPlane);
                 for(int x = 0; x < 104; x++) {
                     for(int y = 0; y < 104; y++)
                         MovedStatics.spawnGroundItem(y, x);

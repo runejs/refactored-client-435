@@ -7,7 +7,6 @@ import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.node.CachedNode;
@@ -42,7 +41,7 @@ public class AnimationSequence extends CachedNode {
 
     public static boolean method596(int arg0, int arg1, byte junk, int arg3) {
         int i = 0x7fff & arg1 >> 14;
-        int i_14_ = Npc.currentScene.getArrangement(Player.worldLevel, arg0, arg3, arg1);
+        int i_14_ = Game.currentScene.getArrangement(Player.worldLevel, arg0, arg3, arg1);
         if(i_14_ == -1)
             return false;
         int orientation = 0x3 & i_14_ >> 6;
