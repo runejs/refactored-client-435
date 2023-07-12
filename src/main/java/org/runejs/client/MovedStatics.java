@@ -979,26 +979,6 @@ public class MovedStatics {
         }
     }
 
-    public static int randomNoise(int x, int y) {
-        int i = 57 * y + x;
-        i ^= i << 13;
-        int i_2_ = 1376312589 + (i * i * 15731 + 789221) * i & 0x7fffffff;
-        return i_2_ >> 19 & 0xff;
-    }
-
-
-    public static int method888(int x, int y) {
-        int vertexHeight = -128 + perlinNoise(x + 45365, 91923 + y, 4) - (-(perlinNoise(x + 10294, 37821 + y, 2) - 128 >> 1) + -(-128 + perlinNoise(x, y, 1) >> 2));
-        vertexHeight = 35 + (int) (0.3 * (double) vertexHeight);
-
-        if(vertexHeight >= 10) {
-            if(vertexHeight > 60)
-                vertexHeight = 60;
-        } else
-            vertexHeight = 10;
-
-        return vertexHeight;
-    }
 
     public static ProducingGraphicsBuffer createGraphicsBuffer(int width, int height, Component component) {
         try {

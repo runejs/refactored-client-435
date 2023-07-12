@@ -770,7 +770,7 @@ public class Landscape {
                 int opcode = fileData.getUnsignedByte();
                 if(opcode == 0) {
                     if(level == 0) {
-                        tile_height[0][x][y] = -MovedStatics.method888(regionX + x + 932731, regionY + 556238 + y) * 8;
+                        tile_height[0][x][y] = -method888(regionX + x + 932731, regionY + 556238 + y) * 8;
                     } else {
                         tile_height[level][x][y] = -240 + tile_height[level + -1][x][y];
                     }
@@ -1433,5 +1433,18 @@ public class Landscape {
             MovedStatics.spotAnimQueue.clear();
             MovedStatics.projectileQueue.clear();
         }
+    }
+
+    public static int method888(int x, int y) {
+        int vertexHeight = -128 + MovedStatics.perlinNoise(x + 45365, 91923 + y, 4) - (-(MovedStatics.perlinNoise(x + 10294, 37821 + y, 2) - 128 >> 1) + -(-128 + MovedStatics.perlinNoise(x, y, 1) >> 2));
+        vertexHeight = 35 + (int) (0.3 * (double) vertexHeight);
+
+        if(vertexHeight >= 10) {
+            if(vertexHeight > 60)
+                vertexHeight = 60;
+        } else
+            vertexHeight = 10;
+
+        return vertexHeight;
     }
 }

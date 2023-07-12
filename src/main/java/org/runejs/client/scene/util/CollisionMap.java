@@ -42,9 +42,9 @@ public class CollisionMap {
 
 
     public static int randomNoiseWeightedSum(int arg1, int arg2) {
-        int i = MovedStatics.randomNoise(-1 + arg1, -1 + arg2) + MovedStatics.randomNoise(1 + arg1, arg2 - 1) + MovedStatics.randomNoise(-1 + arg1, 1 + arg2) + MovedStatics.randomNoise(1 + arg1, arg2 + 1);
-        int i_126_ = MovedStatics.randomNoise(arg1 - 1, arg2) + MovedStatics.randomNoise(arg1 + 1, arg2) - (-MovedStatics.randomNoise(arg1, arg2 - 1) + -MovedStatics.randomNoise(arg1, 1 + arg2));
-        int i_127_ = MovedStatics.randomNoise(arg1, arg2);
+        int i = randomNoise(-1 + arg1, -1 + arg2) + randomNoise(1 + arg1, arg2 - 1) + randomNoise(-1 + arg1, 1 + arg2) + randomNoise(1 + arg1, arg2 + 1);
+        int i_126_ = randomNoise(arg1 - 1, arg2) + randomNoise(arg1 + 1, arg2) - (-randomNoise(arg1, arg2 - 1) + -randomNoise(arg1, 1 + arg2));
+        int i_127_ = randomNoise(arg1, arg2);
         return i / 16 - (-(i_126_ / 8) - i_127_ / 4);
     }
 
@@ -219,6 +219,13 @@ public class CollisionMap {
             }
         }
 
+    }
+
+    public static int randomNoise(int x, int y) {
+        int i = 57 * y + x;
+        i ^= i << 13;
+        int i_2_ = 1376312589 + (i * i * 15731 + 789221) * i & 0x7fffffff;
+        return i_2_ >> 19 & 0xff;
     }
 
     public void unset(int x, int y, int i) {
