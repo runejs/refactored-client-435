@@ -52,7 +52,7 @@ public class Projectile extends Renderable {
         this.startSlope = startSlope;
         int i = SpotAnimDefinition.forId(this.graphicsId).animationId;
         if(i != -1)
-            animationSequences = ProducingGraphicsBuffer_Sub1.getAnimationSequence(i);
+            animationSequences = AnimationSequence.getAnimationSequence(i);
         else
             animationSequences = null;
 

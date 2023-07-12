@@ -30,7 +30,7 @@ public class SpotAnim extends Renderable {
         int animationId = SpotAnimDefinition.forId(this.id).animationId;
         if(animationId != -1) {
             animationFinished = false;
-            animation = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId);
+            animation = AnimationSequence.getAnimationSequence(animationId);
         } else
             animationFinished = true;
 

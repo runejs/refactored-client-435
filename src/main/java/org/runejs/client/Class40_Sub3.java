@@ -193,10 +193,10 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.aClass40_Sub5_Sub14_Sub4Array603 = method526(CacheArchive.gameImageCacheArchive, Native.headiconsPK, "");
             else
                 i++;
-            if (ProducingGraphicsBuffer_Sub1.headIconSprites != null)
+            if (MovedStatics.headIconSprites != null)
                 i++;
             else
-                ProducingGraphicsBuffer_Sub1.headIconSprites = method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
+                MovedStatics.headIconSprites = method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
             if (MovedStatics.hintIconSprites == null)
                 MovedStatics.hintIconSprites = method526(CacheArchive.gameImageCacheArchive, Native.headiconsHint, "");
             else

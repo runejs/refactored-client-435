@@ -128,7 +128,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
             }
         }
         setCanvas();
-        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = MovedStatics.createGraphicsBuffer(MovedStatics.width, MovedStatics.height, MouseHandler.gameCanvas);
+        MovedStatics.aProducingGraphicsBuffer_2213 = MovedStatics.createGraphicsBuffer(MovedStatics.width, MovedStatics.height, MouseHandler.gameCanvas);
         this.game.startup();
         SceneCluster.gameTimer = Timer.create();
         SceneCluster.gameTimer.start();

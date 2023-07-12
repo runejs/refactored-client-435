@@ -108,6 +108,20 @@ public class AnimationSequence extends CachedNode {
         }
     }
 
+    public static AnimationSequence getAnimationSequence(int animationId) {
+        AnimationSequence animationSequence = (AnimationSequence) MovedStatics.aClass9_2439.get((long) animationId);
+
+        if(animationSequence != null)
+            return animationSequence;
+        byte[] is = aCacheArchive_2484.getFile(12, animationId);
+        animationSequence = new AnimationSequence();
+        if(is != null)
+            animationSequence.decodeAllAnimationSequences(new Buffer(is));
+        animationSequence.method591();
+        MovedStatics.aClass9_2439.put((long) animationId, animationSequence);
+        return animationSequence;
+    }
+
     public Model method590(Model arg0, AnimationSequence animationSequence, int arg2, int arg3, byte arg4) {
         arg2 = frameIds[arg2];
         Class40_Sub5_Sub15 class40_sub5_sub15 = method960(arg2 >> 16);

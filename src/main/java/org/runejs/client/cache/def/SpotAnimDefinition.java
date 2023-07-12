@@ -1,8 +1,8 @@
 package org.runejs.client.cache.def;
 
 import org.runejs.client.MovedStatics;
-import org.runejs.client.ProducingGraphicsBuffer_Sub1;
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.node.CachedNode;
@@ -107,7 +107,7 @@ public class SpotAnimDefinition extends CachedNode {
         if (animationId == -1 || arg0 == -1) {
             class40_sub5_sub17_sub5_0_ = model.method806(true);
         } else {
-            class40_sub5_sub17_sub5_0_ = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).method597((byte) -87, model, arg0);
+            class40_sub5_sub17_sub5_0_ = AnimationSequence.getAnimationSequence(animationId).method597((byte) -87, model, arg0);
         }
         if (resizeX != 128 || resizeY != 128) {
             class40_sub5_sub17_sub5_0_.scaleT(resizeX, resizeY, resizeX);

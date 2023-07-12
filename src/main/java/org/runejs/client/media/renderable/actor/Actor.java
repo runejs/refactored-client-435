@@ -412,7 +412,7 @@ public abstract class Actor extends Renderable {
             actor.anInt3074 = 0;
         else {
             if(actor.playingAnimation != -1 && actor.playingAnimationDelay == 0) {
-                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(actor.playingAnimation);
+                AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(actor.playingAnimation);
                 if(actor.anInt3094 > 0 && animationSequence.precedenceAnimating == 0) {
                     actor.anInt3074++;
                     return;
@@ -510,7 +510,7 @@ public abstract class Actor extends Renderable {
         int i = pathY[0];
         int i_19_ = pathX[0];
 
-        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation).priority == 1)
+        if(playingAnimation != -1 && AnimationSequence.getAnimationSequence(playingAnimation).priority == 1)
             playingAnimation = -1;
         if(anInt3109 < 9)
             anInt3109++;
@@ -581,7 +581,7 @@ public abstract class Actor extends Renderable {
     }
 
     public void method787(int arg0, boolean arg2, int arg3) {
-        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation).priority == 1)
+        if(playingAnimation != -1 && AnimationSequence.getAnimationSequence(playingAnimation).priority == 1)
             playingAnimation = -1;
         if(!arg2) {
             int i = -pathY[0] + arg3;

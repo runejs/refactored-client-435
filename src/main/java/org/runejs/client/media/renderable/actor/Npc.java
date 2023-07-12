@@ -77,7 +77,7 @@ public class Npc extends Actor {
                     animationId = -1;
                 int animationDelay = buffer.getUnsignedByte();
                 if(animationId == npc.playingAnimation && animationId != -1) {
-                    int i_10_ = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).replyMode;
+                    int i_10_ = AnimationSequence.getAnimationSequence(animationId).replyMode;
                     if(i_10_ == 1) {
                         npc.anInt3115 = 0;
                         npc.anInt3095 = 0;
@@ -86,7 +86,7 @@ public class Npc extends Actor {
                     }
                     if(i_10_ == 2)
                         npc.anInt3095 = 0;
-                } else if(animationId == -1 || npc.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).forcedPriority >= ProducingGraphicsBuffer_Sub1.getAnimationSequence(npc.playingAnimation).forcedPriority) {
+                } else if(animationId == -1 || npc.playingAnimation == -1 || AnimationSequence.getAnimationSequence(animationId).forcedPriority >= AnimationSequence.getAnimationSequence(npc.playingAnimation).forcedPriority) {
                     npc.playingAnimation = animationId;
                     npc.anInt3115 = 0;
                     npc.playingAnimationDelay = animationDelay;
@@ -101,8 +101,8 @@ public class Npc extends Actor {
     public Model getRotatedModel() {
         if(actorDefinition == null)
             return null;
-        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation);
-        AnimationSequence animationSequence_0_ = anInt3077 != -1 && (anInt3077 != idleAnimation || animationSequence == null) ? ProducingGraphicsBuffer_Sub1.getAnimationSequence(anInt3077) : null;
+        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : AnimationSequence.getAnimationSequence(playingAnimation);
+        AnimationSequence animationSequence_0_ = anInt3077 != -1 && (anInt3077 != idleAnimation || animationSequence == null) ? AnimationSequence.getAnimationSequence(anInt3077) : null;
         Model model = actorDefinition.getChildModel(animationSequence, animationSequence_0_, anInt3116, anInt3104);
         if(model == null)
             return null;

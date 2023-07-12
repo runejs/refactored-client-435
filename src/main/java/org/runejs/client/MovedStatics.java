@@ -335,6 +335,15 @@ public class MovedStatics {
      * Loading state? maybe
      */
     public static int anInt1634 = 0;
+    /**
+     * Overhead icon sprites, e.g. overhead prayers
+     */
+    public static ImageRGB[] headIconSprites;
+    /**
+     * Something to do with orientations?
+     */
+    public static int[] anIntArray2207 = {0, -1, 0, 1};
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2213;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -1015,16 +1024,16 @@ public class MovedStatics {
             if (statusCode == 0 || statusCode == 35) {
                 method344(-40);
                 method440();
-                if (ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 == null)
-                    ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = createGraphicsBuffer(765, 503, MouseHandler.gameCanvas);
+                if (aProducingGraphicsBuffer_2213 == null)
+                    aProducingGraphicsBuffer_2213 = createGraphicsBuffer(765, 503, MouseHandler.gameCanvas);
             }
             if (statusCode == 5 || statusCode == 10 || statusCode == 20) {
-                ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
+                aProducingGraphicsBuffer_2213 = null;
                 method344(-69);
                 Class60.renderLoginScreen(MouseHandler.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
             }
             if (statusCode == 25 || statusCode == 30 || statusCode == 40) {
-                ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = null;
+                aProducingGraphicsBuffer_2213 = null;
                 method440();
                 method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
             }
@@ -1159,7 +1168,7 @@ public class MovedStatics {
 
                             // is this text vs not text? contentType is definitely 0 for text on music player
 	                        if(gameInterface.contentType != 0)
-	                            bool = ProducingGraphicsBuffer_Sub1.method1051(300, gameInterface);
+	                            bool = method1051(300, gameInterface);
 
 	                        if(!bool) {
 	                            addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 42, "");
@@ -2877,11 +2886,11 @@ public class MovedStatics {
                 }
                 if(Player.localPlayerCount <= i) {
                     ActorDefinition npcDefinition = ((Npc) actor).actorDefinition;
-                    if(npcDefinition.headIcon >= 0 && npcDefinition.headIcon < ProducingGraphicsBuffer_Sub1.headIconSprites.length) {
+                    if(npcDefinition.headIcon >= 0 && npcDefinition.headIcon < headIconSprites.length) {
                         Point2d screenPos = getProjectedScreenPosition(actor.anInt3117 + 15, actor.worldY, actor.worldX);
 
                         if(screenPos != null)
-                            ProducingGraphicsBuffer_Sub1.headIconSprites[npcDefinition.headIcon].drawImage(-12 + screenPos.x, screenPos.y + -30);
+                            headIconSprites[npcDefinition.headIcon].drawImage(-12 + screenPos.x, screenPos.y + -30);
                     }
                     if(Player.headIconDrawType == 1 && hintIconNpcTarget == Player.npcIds[-Player.localPlayerCount + i] && pulseCycle % 20 < 10) {
                         Point2d screenPos = getProjectedScreenPosition(actor.anInt3117 + 15, actor.worldY, actor.worldX);
@@ -2900,7 +2909,7 @@ public class MovedStatics {
                                 drawHeight += 25;
                             }
                             if(targetPlayer.headIcon != -1) {
-                                ProducingGraphicsBuffer_Sub1.headIconSprites[targetPlayer.headIcon].drawImage(screenPos.x - 12, screenPos.y - drawHeight);
+                                headIconSprites[targetPlayer.headIcon].drawImage(screenPos.x - 12, screenPos.y - drawHeight);
                                 drawHeight += 25;
                             }
                         }
@@ -3297,5 +3306,38 @@ public class MovedStatics {
     public static void method1018() {
         gameScreenImageProducer.prepareRasterizer();
         fullScreenTextureArray = Rasterizer3D.setLineOffsets(fullScreenTextureArray);
+    }
+
+    public static boolean method1051(int arg0, GameInterface gameInterface) {
+        if(arg0 != 300)
+            return false;
+        int i = gameInterface.contentType;
+        if(i >= 1 && i <= 200 || i >= 701 && i <= 900) {
+            if(i >= 801)
+                i -= 701;
+            else if(i >= 701)
+                i -= 601;
+            else if(i < 101)
+                i--;
+            else
+                i -= 101;
+            addActionRow(English.remove, 0, 0, 0, ActionRowType.REMOVE_FRIEND.getId(), Native.white + Player.friendUsernames[i]);
+            addActionRow(English.message, 0, 0, 0, ActionRowType.MESSAGE_FRIEND.getId(), Native.white + Player.friendUsernames[i]);
+            return true;
+        }
+        if(i >= 401 && i <= 500) {
+            addActionRow(English.remove, 0, 0, 0, ActionRowType.REMOVE_IGNORE.getId(), Native.white + gameInterface.disabledText);
+            return true;
+        }
+        return false;
+    }
+
+    public static int method1052(String value, Buffer buffer) {
+        int startingPosition = buffer.currentPosition;
+        byte[] strBytes = value.getBytes(StandardCharsets.UTF_8);
+        buffer.putSmart(strBytes.length);
+        buffer.currentPosition += aHuffmanEncoding_2590.encrypt(0, buffer.currentPosition, strBytes.length, strBytes, buffer.buffer);
+        return buffer.currentPosition - startingPosition;
+
     }
 }

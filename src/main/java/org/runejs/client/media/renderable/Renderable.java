@@ -1,7 +1,6 @@
 package org.runejs.client.media.renderable;
 
 import org.runejs.client.MovedStatics;
-import org.runejs.client.ProducingGraphicsBuffer_Sub1;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
@@ -36,7 +35,7 @@ public abstract class Renderable extends CachedNode {
                     else
                         i_1_ = gameInterface.animation;
                     if(i_1_ != -1) {
-                        AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(i_1_);
+                        AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(i_1_);
                         gameInterface.remainingAnimationTime += MovedStatics.anInt199;
                         while(animationSequence.frameLengths[gameInterface.animationFrame] < gameInterface.remainingAnimationTime) {
                             bool = true;

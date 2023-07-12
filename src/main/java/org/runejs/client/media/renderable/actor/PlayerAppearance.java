@@ -3,7 +3,6 @@ package org.runejs.client.media.renderable.actor;
 import org.runejs.client.GameSocket;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.ProducingGraphicsBuffer;
-import org.runejs.client.ProducingGraphicsBuffer_Sub1;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.def.ItemDefinition;
@@ -43,7 +42,7 @@ public class PlayerAppearance {
 
     public static void startForcedMovement(Actor actor) {
         if(MovedStatics.pulseCycle == actor.forceMoveStartCycle || actor.playingAnimation == -1 || actor.playingAnimationDelay != 0 ||
-                actor.anInt3115 + 1 > ProducingGraphicsBuffer_Sub1.getAnimationSequence(actor.playingAnimation).frameLengths[actor.anInt3104]) {
+                actor.anInt3115 + 1 > AnimationSequence.getAnimationSequence(actor.playingAnimation).frameLengths[actor.anInt3104]) {
             int duration = -actor.forceMoveEndCycle + actor.forceMoveStartCycle;
             int deltaTime = -actor.forceMoveEndCycle + MovedStatics.pulseCycle;
             int x0 = actor.forceMoveStartX * 128 + 64 * actor.size;

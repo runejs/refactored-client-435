@@ -64,7 +64,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
 
     public static void playAnimation(int animationId, int animationDelay, Player player) {
         if(player.playingAnimation == animationId && animationId != -1) {
-            int i = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).replyMode;
+            int i = AnimationSequence.getAnimationSequence(animationId).replyMode;
             if(i == 1) {
                 player.anInt3104 = 0;
                 player.anInt3095 = 0;
@@ -74,7 +74,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
             if(i == 2) {
                 player.anInt3095 = 0;
             }
-        } else if(animationId == -1 || player.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).forcedPriority >= ProducingGraphicsBuffer_Sub1.getAnimationSequence(player.playingAnimation).forcedPriority) {
+        } else if(animationId == -1 || player.playingAnimation == -1 || AnimationSequence.getAnimationSequence(animationId).forcedPriority >= AnimationSequence.getAnimationSequence(player.playingAnimation).forcedPriority) {
             player.anInt3094 = player.anInt3109;
             player.anInt3104 = 0;
             player.anInt3115 = 0;

@@ -346,8 +346,8 @@ public class Player extends Actor {
     public Model getRotatedModel() {
         if(playerAppearance == null)
             return null;
-        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation);
-        AnimationSequence animationSequence_0_ = anInt3077 != -1 && !aBoolean3287 && (idleAnimation != anInt3077 || animationSequence == null) ? ProducingGraphicsBuffer_Sub1.getAnimationSequence(anInt3077) : null;
+        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : AnimationSequence.getAnimationSequence(playingAnimation);
+        AnimationSequence animationSequence_0_ = anInt3077 != -1 && !aBoolean3287 && (idleAnimation != anInt3077 || animationSequence == null) ? AnimationSequence.getAnimationSequence(anInt3077) : null;
         Model animatedModel = playerAppearance.getAnimatedModel(animationSequence, animationSequence_0_, anInt3116, anInt3104);
         if(animatedModel == null)
             return null;

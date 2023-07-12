@@ -43,7 +43,7 @@ public class Class40_Sub5_Sub15 extends CachedNode {
     public static void updateAnimation(Actor actor) {
         actor.aBoolean3105 = false;
         if(actor.anInt3077 != -1) {
-            AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(actor.anInt3077);
+            AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(actor.anInt3077);
             if(animationSequence == null || animationSequence.frameIds == null)
                 actor.anInt3077 = -1;
             else {
@@ -65,7 +65,7 @@ public class Class40_Sub5_Sub15 extends CachedNode {
             if(i == -1)
                 actor.graphicId = -1;
             else {
-                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(i);
+                AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(i);
                 if(animationSequence == null || animationSequence.frameIds == null)
                     actor.graphicId = -1;
                 else {
@@ -81,14 +81,14 @@ public class Class40_Sub5_Sub15 extends CachedNode {
         }
         if(true) {
             if(actor.playingAnimation != -1 && actor.playingAnimationDelay <= 1) {
-                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(actor.playingAnimation);
+                AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(actor.playingAnimation);
                 if(animationSequence.precedenceAnimating == 1 && actor.anInt3094 > 0 && actor.forceMoveEndCycle <= MovedStatics.pulseCycle && MovedStatics.pulseCycle > actor.forceMoveStartCycle) {
                     actor.playingAnimationDelay = 1;
                     return;
                 }
             }
             if(actor.playingAnimation != -1 && actor.playingAnimationDelay == 0) {
-                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(actor.playingAnimation);
+                AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(actor.playingAnimation);
                 if(animationSequence != null && animationSequence.frameIds != null) {
                     actor.anInt3115++;
                     if(animationSequence.frameIds.length > actor.anInt3104 && animationSequence.frameLengths[actor.anInt3104] < actor.anInt3115) {

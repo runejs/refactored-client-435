@@ -459,7 +459,7 @@ public class Game {
                             if (animationId == -1) {
                                 model = gameInterface.getModelForInterface(null, -1, applyAlternateAction, Player.localPlayer.playerAppearance);
                             } else {
-                                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId);
+                                AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(animationId);
                                 model = gameInterface.getModelForInterface(animationSequence, gameInterface.animationFrame, applyAlternateAction, Player.localPlayer.playerAppearance);
                             }
                             // TODO FramemapDefinition.aBoolean2177 might be object/model/sprite doesnt exist
@@ -1113,7 +1113,7 @@ public class Game {
         if(GameInterface.fullscreenSiblingInterfaceId != -1)
             Renderable.handleSequences(GameInterface.fullscreenSiblingInterfaceId);
         MovedStatics.anInt199 = 0;
-        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.prepareRasterizer();
+        MovedStatics.aProducingGraphicsBuffer_2213.prepareRasterizer();
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(Player.viewportOffsets);
         Rasterizer.resetPixels();
         drawParentInterface(0, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
@@ -1128,7 +1128,7 @@ public class Game {
             }
         try {
             Graphics graphics = MouseHandler.gameCanvas.getGraphics();
-            ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213.drawGraphics(0, 0, graphics);
+            MovedStatics.aProducingGraphicsBuffer_2213.drawGraphics(0, 0, graphics);
         } catch(Exception exception) {
             MouseHandler.gameCanvas.repaint();
         }
