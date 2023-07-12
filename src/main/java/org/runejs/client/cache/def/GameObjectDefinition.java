@@ -18,6 +18,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     public static int anInt2543 = 0;
     public static int count;
     public static int[] OBJECT_TYPES = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
+    public static boolean lowMemory = false;
     private static NodeCache objectDefinitionCache = new NodeCache(64);
     public static NodeCache objectModelCache = new NodeCache(500);
     private static Model[] objectModelHolder = new Model[4];
@@ -392,7 +393,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         if(opcode == 1) {
             int length = buffer.getUnsignedByte();
             if(length > 0) {
-                if(objectModels == null || Class35.aBoolean1734) {
+                if(objectModels == null || lowMemory) {
                     objectTypes = new int[length];
                     objectModels = new int[length];
                     for(int index = 0; length > index; index++) {
@@ -408,7 +409,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         } else if(opcode == 5) {
             int length = buffer.getUnsignedByte();
             if(length > 0) {
-                if(objectModels == null || Class35.aBoolean1734) {
+                if(objectModels == null || lowMemory) {
                     objectTypes = null;
                     objectModels = new int[length];
                     for(int index = 0; length > index; index++) {

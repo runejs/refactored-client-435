@@ -308,11 +308,11 @@ public class Class40_Sub3 extends Node {
         PlayerAppearance.identityKitLength = Class49.definitionCache.fileLength(3);
     }
 
-    private static void initializeGameObjectDefinitionCache(CacheArchive arg1, boolean arg2, CacheArchive definitionCache) {
+    private static void initializeGameObjectDefinitionCache(CacheArchive arg1, boolean lowMemory, CacheArchive definitionCache) {
         CacheArchive.definitionCache = definitionCache;
         GameObjectDefinition.count = CacheArchive.definitionCache.fileLength(6);
 
-        Class35.aBoolean1734 = arg2;
+        GameObjectDefinition.lowMemory = lowMemory;
         RSString.aCacheArchive_1705 = arg1;
     }
 

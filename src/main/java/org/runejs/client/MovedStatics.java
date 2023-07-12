@@ -278,6 +278,11 @@ public class MovedStatics {
     public static int[] fullScreenTextureArray;
     public static Image loadingBoxImage;
     public static int baseY;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for the central tab on the top row.
+     */
+    public static IndexedImage tabHighlightImageTopMiddle;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -665,7 +670,7 @@ public class MovedStatics {
                 if (currentTabId == 2)
                     GameInterface.tabHighlightImageTopLeft.drawImage(82, 8);
                 if (currentTabId == 3)
-                    Class35.tabHighlightImageTopMiddle.drawImage(110, 8);
+                    tabHighlightImageTopMiddle.drawImage(110, 8);
                 if (currentTabId == 4)
                     tabHighlightImageTopRight.drawImage(153, 8);
                 if (currentTabId == 5)
@@ -1677,7 +1682,7 @@ public class MovedStatics {
             if(arg0 < -28) {
                 chatboxRight = null;
                 tabPieceUpperRight = null;
-                Class35.tabHighlightImageTopMiddle = null;
+                tabHighlightImageTopMiddle = null;
                 tabHighlightImageBottomLeft = null;
                 Renderable.tabHighlightImageBottomLeftEdge = null;
                 fullScreenTextureArray = null;
@@ -2202,7 +2207,7 @@ public class MovedStatics {
             image.drawInverse(0, 0);
             tabHighlightImageTopLeftEdge = Game.method359(Native.redstone1, Native.aClass1_305, arg2);
             GameInterface.tabHighlightImageTopLeft = Game.method359(Native.redstone2, Native.aClass1_305, arg2);
-            Class35.tabHighlightImageTopMiddle = Game.method359(Native.redstone3, Native.aClass1_305, arg2);
+            tabHighlightImageTopMiddle = Game.method359(Native.redstone3, Native.aClass1_305, arg2);
             tabHighlightImageTopRightEdge = tabHighlightImageTopLeftEdge.cloneImage();
             tabHighlightImageTopRightEdge.flipHorizontal();
             tabHighlightImageTopRight = GameInterface.tabHighlightImageTopLeft.cloneImage();
@@ -2211,7 +2216,7 @@ public class MovedStatics {
             Renderable.tabHighlightImageBottomLeftEdge.flipVertical();
             tabHighlightImageBottomLeft = GameInterface.tabHighlightImageTopLeft.cloneImage();
             tabHighlightImageBottomLeft.flipVertical();
-            tabHighlightImageBottomMiddle = Class35.tabHighlightImageTopMiddle.cloneImage();
+            tabHighlightImageBottomMiddle = tabHighlightImageTopMiddle.cloneImage();
             tabHighlightImageBottomMiddle.flipVertical();
             ISAAC.tabHighlightImageBottomRightEdge = tabHighlightImageTopLeftEdge.cloneImage();
             ISAAC.tabHighlightImageBottomRightEdge.flipHorizontal();

@@ -75,10 +75,37 @@ public class AnimationSequence extends CachedNode {
         Class40_Sub5_Sub15 class40_sub5_sub15 = (Class40_Sub5_Sub15) MovedStatics.aClass9_998.get((long) arg1);
         if(class40_sub5_sub15 != null)
             return class40_sub5_sub15;
-        class40_sub5_sub15 = Class35.method421(MovedStatics.aCacheArchive_2364, arg1, ClientScriptRunner.aCacheArchive_2162, false);
+        class40_sub5_sub15 = method421(MovedStatics.aCacheArchive_2364, arg1, ClientScriptRunner.aCacheArchive_2162, false);
         if(class40_sub5_sub15 != null)
             MovedStatics.aClass9_998.put((long) arg1, class40_sub5_sub15);
         return class40_sub5_sub15;
+    }
+
+    private static Class40_Sub5_Sub15 method421(CacheArchive skeletonArchive, int arg2, CacheArchive skinArchive, boolean arg4) {
+        boolean bool = true;
+        int[] is = skeletonArchive.method192(arg2, true);
+        for(int i = 0; is.length > i; i++) {
+            byte[] is_0_ = skeletonArchive.method182(is[i], arg2);
+            if(is_0_ == null)
+                bool = false;
+            else {
+                int i_1_ = 0xff & is_0_[1] | (0xff & is_0_[0]) << 8;
+                byte[] is_2_;
+                if(arg4)
+                    is_2_ = skinArchive.method182(i_1_, 0);
+                else
+                    is_2_ = skinArchive.method182(0, i_1_);
+                if(is_2_ == null)
+                    bool = false;
+            }
+        }
+        if(!bool)
+            return null;
+        try {
+            return new Class40_Sub5_Sub15(skeletonArchive, skinArchive, arg2, arg4);
+        } catch(Exception exception) {
+            return null;
+        }
     }
 
     public Model method590(Model arg0, AnimationSequence animationSequence, int arg2, int arg3, byte arg4) {
