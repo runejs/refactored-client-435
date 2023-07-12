@@ -156,11 +156,11 @@ public class Landscape {
                     }
                 }
                 if(loadGeneratedMap) {
-                    for(int z = 0; z < 4; z++) {
-                        for(int x = 0; x < 13; x++) {
-                            for(int y = 0; y < 13; y++) {
-                                int data = constructMapTiles[z][x][y];
-                                boolean bool_19_ = false;
+                    for(int plane = 0; plane < 4; plane++) {
+                        for(int chunkX = 0; chunkX < 13; chunkX++) {
+                            for(int chunkY = 0; chunkY < 13; chunkY++) {
+                                int data = constructMapTiles[plane][chunkX][chunkY];
+                                boolean chunkLoaded = false;
                                 if(data != -1) {
                                     int tileRotation = (0x6 & data) >> 1;
                                     int tileX = (data & 0xffd2c2) >> 14;
@@ -169,14 +169,14 @@ public class Landscape {
                                     int tileCoordinates = (tileX / 8 << 8) + tileY / 8;
                                     for(int pointer = 0; pointer < mapCoordinates.length; pointer++) {
                                         if(mapCoordinates[pointer] == tileCoordinates && terrainData[pointer] != null) {
-                                            loadTerrainSubblock(y * 8, 8 * (tileX & 0x7), tileZ, z, x * 8, (0x7 & tileY) * 8, tileRotation, terrainData[pointer], currentCollisionMap);
-                                            bool_19_ = true;
+                                            loadTerrainSubblock(chunkY * 8, 8 * (tileX & 0x7), tileZ, plane, chunkX * 8, (0x7 & tileY) * 8, tileRotation, terrainData[pointer], currentCollisionMap);
+                                            chunkLoaded = true;
                                             break;
                                         }
                                     }
                                 }
-                                if(!bool_19_)
-                                    method455(8 * y, z, x * 8);
+                                if(!chunkLoaded)
+                                    matchChunkHeightmapWithSurroundings(plane, chunkX * 8, chunkY * 8);
                             }
                         }
                     }
@@ -1320,25 +1320,29 @@ public class Landscape {
         }
     }
 
-    private void method455(int arg0, int arg1, int arg3) {
-        for (int i = 0; i < 8; i++) {
-            for (int i_0_ = 0; i_0_ < 8; i_0_++)
-                tile_height[arg1][arg3 + i][arg0 + i_0_] = 0;
+    /**
+     * Adjusts the height of tiles around a chunk's perimeter
+     */
+    private void matchChunkHeightmapWithSurroundings(int plane, int tileX, int tileY) {
+        // clear the chunk's height values
+        for (int x = 0; x < 8; x++) {
+            for (int y = 0; y < 8; y++)
+                tile_height[plane][tileX + x][tileY + y] = 0;
         }
-        if (arg3 > 0) {
-            for (int i = 1; i < 8; i++)
-                tile_height[arg1][arg3][arg0 + i] = tile_height[arg1][-1 + arg3][i + arg0];
+        if (tileX > 0) {
+            for (int y = 1; y < 8; y++)
+                tile_height[plane][tileX][tileY + y] = tile_height[plane][tileX - 1][y + tileY];
         }
-        if (arg0 > 0) {
-            for (int i = 1; i < 8; i++)
-                tile_height[arg1][i + arg3][arg0] = tile_height[arg1][i + arg3][-1 + arg0];
+        if (tileY > 0) {
+            for (int x = 1; x < 8; x++)
+                tile_height[plane][tileX + x][tileY] = tile_height[plane][tileX + x][tileY - 1];
         }
-        if (arg3 > 0 && tile_height[arg1][-1 + arg3][arg0] != 0)
-            tile_height[arg1][arg3][arg0] = tile_height[arg1][arg3 - 1][arg0];
-        else if (arg0 > 0 && tile_height[arg1][arg3][arg0 - 1] != 0)
-            tile_height[arg1][arg3][arg0] = tile_height[arg1][arg3][-1 + arg0];
-        else if (arg3 > 0 && arg0 > 0 && tile_height[arg1][arg3 + -1][-1 + arg0] != 0)
-            tile_height[arg1][arg3][arg0] = tile_height[arg1][-1 + arg3][arg0 - 1];
+        if (tileX > 0 && tile_height[plane][tileX - 1][tileY] != 0)
+            tile_height[plane][tileX][tileY] = tile_height[plane][tileX - 1][tileY];
+        else if (tileY > 0 && tile_height[plane][tileX][tileY - 1] != 0)
+            tile_height[plane][tileX][tileY] = tile_height[plane][tileX][tileY - 1];
+        else if (tileX > 0 && tileY > 0 && tile_height[plane][tileX - 1][tileY - 1] != 0)
+            tile_height[plane][tileX][tileY] = tile_height[plane][tileX - 1][tileY - 1];
     }
 
     private static int generateHslBitset(int s, int l, int h) {
