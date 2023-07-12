@@ -7,8 +7,8 @@ import org.runejs.client.node.NodeCache;
 
 public class OverlayDefinition extends CachedNode {
 
-    public static NodeCache overlayDefinitionCache = new NodeCache(64);
-    public static CacheArchive gameDefinitionsCacheArchive;
+    private static NodeCache definitionCache = new NodeCache(64);
+    private static CacheArchive definitionArchive;
 
     public int saturation;
     public int texture;
@@ -28,24 +28,24 @@ public class OverlayDefinition extends CachedNode {
     }
 
     public static OverlayDefinition getDefinition(int arg0, int arg1) {
-        OverlayDefinition overlayDefinition = (OverlayDefinition) overlayDefinitionCache.get(arg0);
+        OverlayDefinition overlayDefinition = (OverlayDefinition) definitionCache.get(arg0);
         if(overlayDefinition != null)
             return overlayDefinition;
-        byte[] is = gameDefinitionsCacheArchive.getFile(arg1, arg0);
+        byte[] is = definitionArchive.getFile(arg1, arg0);
         overlayDefinition = new OverlayDefinition();
         if(is != null)
             overlayDefinition.readValues(new Buffer(is));
         overlayDefinition.calculateHsl();
-        overlayDefinitionCache.put(arg0, overlayDefinition);
+        definitionCache.put(arg0, overlayDefinition);
         return overlayDefinition;
     }
 
     public static void initializeOverlayDefinitionCache(CacheArchive cacheArchive) {
-        gameDefinitionsCacheArchive = cacheArchive;
+        definitionArchive = cacheArchive;
     }
 
     public static void clearOverlayDefinitionCache() {
-        overlayDefinitionCache.clear();
+        definitionCache.clear();
     }
 
     public void readValues(Buffer buffer) {
