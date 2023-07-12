@@ -90,7 +90,7 @@ public class Minimap extends FramePieceRenderer {
         int angle = Game.getMinimapRotation() & 0x7ff;
         int minimapZoom = 0;
 
-        minimapImage.shapeImageToPixels(25, 5, 146, 151, centerX, centerY, angle, minimapZoom + 256, Landscape.anIntArray1186, MovedStatics.anIntArray852);
+        minimapImage.shapeImageToPixels(25, 5, 146, 151, centerX, centerY, angle, minimapZoom + 256, MovedStatics.anIntArray1186, MovedStatics.anIntArray852);
         for(int i = 0; minimapHintCount > i; i++) {
             int hintX = 2 + 4 * minimapHintX[i] + -(Player.localPlayer.worldX / 32);
             int hintY = 2 + 4 * minimapHintY[i] - Player.localPlayer.worldY / 32;

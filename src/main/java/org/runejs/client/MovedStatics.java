@@ -329,6 +329,12 @@ public class MovedStatics {
      */
     public static int anInt1389 = 0;
     public static boolean DEBUG_DISPLAY_ALL_ACTION_ROWS = false;
+    public static int[] anIntArray1168;
+    public static ProducingGraphicsBuffer framePieceRight;
+    /**
+     * Something to do with minimap
+     */
+    public static int[] anIntArray1186;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -336,7 +342,7 @@ public class MovedStatics {
             GameObject.flameRightBackground = null;
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631 = null;
             aProducingGraphicsBuffer_1206 = null;
-            Landscape.anIntArray1168 = null;
+            anIntArray1168 = null;
             anIntArray3255 = null;
             imgLoginScreenButton = null;
             anIntArray1445 = null;
@@ -1697,7 +1703,7 @@ public class MovedStatics {
             aBoolean2083 = false;
             RSCanvas.anIntArray66 = null;
             Minimap.minimapBackgroundImage = null;
-            Landscape.anIntArray1186 = null;
+            anIntArray1186 = null;
             chatboxTop = null;
             RSCanvas.tabBottom = null;
             GameObject.tabPieceLeft = null;
@@ -1712,7 +1718,7 @@ public class MovedStatics {
             mapbackLeft = null;
             tabHighlightImageBottomMiddle = null;
             tabBottomBack = null;
-            Landscape.framePieceRight = null;
+            framePieceRight = null;
             GameInterface.tabHighlightImageTopLeft = null;
             tabHighlightImageTopRightEdge = null;
             anIntArray852 = null;
@@ -2189,7 +2195,7 @@ public class MovedStatics {
             if(ScreenController.frameMode == ScreenMode.FIXED) {
                 Graphics graphics = MouseHandler.gameCanvas.getGraphics();
 
-                Landscape.framePieceRight.drawGraphics(0, 4, graphics);
+                framePieceRight.drawGraphics(0, 4, graphics);
                 chatboxRight.drawGraphics(0, 357, graphics);
                 mapbackLeft.drawGraphics(722, 4, graphics);
                 GameObject.tabPieceLeft.drawGraphics(743, 205, graphics);
@@ -2225,7 +2231,7 @@ public class MovedStatics {
             RSCanvas.tabBottom = createGraphicsBuffer(269, 37, arg0);
             InteractiveObject.tabTop = createGraphicsBuffer(249, 45, arg0);
             ImageRGB image = method1028(arg2, Native.imgBackleft1, Native.aClass1_305);
-            Landscape.framePieceRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            framePieceRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = method1028(arg2, Native.imgBackleft2, Native.aClass1_305);
             chatboxRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
@@ -2271,7 +2277,7 @@ public class MovedStatics {
             tabHighlightImageBottomRight.flipHorizontal();
             tabHighlightImageBottomRight.flipVertical();
             tabIcons = IndexedImage.getMultipleIndexedImages(arg2, Native.sideIcons, Native.aClass1_305);
-            Landscape.anIntArray1186 = new int[151];
+            anIntArray1186 = new int[151];
             anIntArray852 = new int[151];
             RSCanvas.anIntArray66 = new int[33];
             RSCanvas.anIntArray62 = new int[33];
@@ -2302,7 +2308,7 @@ public class MovedStatics {
                     } else if(minWidth == 999)
                         minWidth = x;
                 }
-                Landscape.anIntArray1186[-5 + y] = minWidth - 25;
+                anIntArray1186[-5 + y] = minWidth - 25;
                 anIntArray852[-5 + y] = maxWidth + -minWidth;
             }
             aBoolean2083 = true;

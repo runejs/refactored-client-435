@@ -27,10 +27,6 @@ import java.io.IOException;
 
 public class Landscape {
     public static CollisionMap[] currentCollisionMap = new CollisionMap[4];
-    public static int[] anIntArray1168;
-    public static int anInt1171 = 0;
-    public static ProducingGraphicsBuffer framePieceRight;
-    public static int[] anIntArray1186;
     public static int[] mapCoordinates;
     public static int[] blendedHue;
     public static int[] blendedSaturation;

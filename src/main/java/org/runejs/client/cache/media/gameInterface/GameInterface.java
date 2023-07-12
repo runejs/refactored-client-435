@@ -67,6 +67,7 @@ public class GameInterface extends CachedNode {
     public static int reportAbuseWidgetId = -1;
     public static int anInt876 = 0;
     public static int selectedSpell;
+    public static int anInt1171 = 0;
     /**
      * The lightened edge (top and left) color of the scroll indicator chip.
      */
@@ -1640,9 +1641,9 @@ public class GameInterface extends CachedNode {
 
     public static void scrollInterface(int arg0, int arg1, int arg2, int arg3, GameInterface arg5, int arg6, int arg7, int arg8) {
         if(aBoolean1444)
-            Landscape.anInt1171 = 32;
+            anInt1171 = 32;
         else
-            Landscape.anInt1171 = 0;
+            anInt1171 = 0;
         aBoolean1444 = false;
         if(arg2 >= arg6 && arg2 < arg6 + 16 && arg1 >= arg8 && 16 + arg8 > arg1) {
             arg5.scrollPosition -= Npc.anInt3294 * 4;
@@ -1651,7 +1652,7 @@ public class GameInterface extends CachedNode {
             if(arg7 == 2 || arg7 == 3)
                 ChatBox.redrawChatbox = true;
         } else if(arg6 > arg2 || arg6 + 16 <= arg2 || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
-            if(-Landscape.anInt1171 + arg6 <= arg2 && 16 + arg6 + Landscape.anInt1171 > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
+            if(-anInt1171 + arg6 <= arg2 && 16 + arg6 + anInt1171 > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
                 aBoolean1444 = true;
                 int i = (-32 + arg0) * arg0 / arg3;
                 if(arg7 == 2 || arg7 == 3)

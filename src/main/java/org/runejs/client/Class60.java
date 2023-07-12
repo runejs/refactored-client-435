@@ -327,15 +327,15 @@ public class Class60 {
             }
         }
         RSRuntimeException.anInt1641 += 128;
-        if (RSRuntimeException.anInt1641 > Landscape.anIntArray1168.length) {
-            RSRuntimeException.anInt1641 -= Landscape.anIntArray1168.length;
+        if (RSRuntimeException.anInt1641 > MovedStatics.anIntArray1168.length) {
+            RSRuntimeException.anInt1641 -= MovedStatics.anIntArray1168.length;
             int i_9_ = (int) (12.0 * Math.random());
             method879(MovedStatics.aClass40_Sub5_Sub14_Sub2Array535[i_9_]);
         }
         for (int i_10_ = 1; i_10_ < -1 + i; i_10_++) {
             for (int i_11_ = 1; i_11_ < 127; i_11_++) {
                 int i_12_ = i_11_ + (i_10_ << 7);
-                int i_13_ = -(Landscape.anIntArray1168[i_12_ + RSRuntimeException.anInt1641 & -1 + Landscape.anIntArray1168.length] / 5) + MovedStatics.anIntArray3255[i_12_ + 128];
+                int i_13_ = -(MovedStatics.anIntArray1168[i_12_ + RSRuntimeException.anInt1641 & -1 + MovedStatics.anIntArray1168.length] / 5) + MovedStatics.anIntArray3255[i_12_ + 128];
                 if (i_13_ < 0)
                     i_13_ = 0;
                 MovedStatics.anIntArray178[i_12_] = i_13_;
@@ -477,7 +477,7 @@ public class Class60 {
                 MovedStatics.anIntArray3248[192 + i] = 16777215;
             MovedStatics.anIntArray1013 = new int[256];
             MovedStatics.anIntArray1445 = new int[32768];
-            Landscape.anIntArray1168 = new int[32768];
+            MovedStatics.anIntArray1168 = new int[32768];
             method879(null);
             MovedStatics.anIntArray3255 = new int[32768];
             Native.username = Configuration.getUsername();
@@ -496,22 +496,22 @@ public class Class60 {
 
     public static void method879(IndexedImage arg1) {
         int i = 0;
-        for(/**/; i < Landscape.anIntArray1168.length; i++)
-            Landscape.anIntArray1168[i] = 0;
+        for(/**/; i < MovedStatics.anIntArray1168.length; i++)
+            MovedStatics.anIntArray1168[i] = 0;
         int i_19_ = 256;
         for(int i_20_ = 0; i_20_ < 5000; i_20_++) {
             int i_21_ = (int) ((double) i_19_ * (128.0 * Math.random()));
-            Landscape.anIntArray1168[i_21_] = (int) (256.0 * Math.random());
+            MovedStatics.anIntArray1168[i_21_] = (int) (256.0 * Math.random());
         }
         for(int i_22_ = 0; i_22_ < 20; i_22_++) {
             for(int i_23_ = 1; -1 + i_19_ > i_23_; i_23_++) {
                 for(int i_24_ = 1; i_24_ < 127; i_24_++) {
                     int i_25_ = (i_23_ << 7) + i_24_;
-                    MovedStatics.anIntArray1445[i_25_] = (Landscape.anIntArray1168[i_25_ - 128] + Landscape.anIntArray1168[i_25_ + -1] + Landscape.anIntArray1168[i_25_ + 1] + Landscape.anIntArray1168[128 + i_25_]) / 4;
+                    MovedStatics.anIntArray1445[i_25_] = (MovedStatics.anIntArray1168[i_25_ - 128] + MovedStatics.anIntArray1168[i_25_ + -1] + MovedStatics.anIntArray1168[i_25_ + 1] + MovedStatics.anIntArray1168[128 + i_25_]) / 4;
                 }
             }
-            int[] is = Landscape.anIntArray1168;
-            Landscape.anIntArray1168 = MovedStatics.anIntArray1445;
+            int[] is = MovedStatics.anIntArray1168;
+            MovedStatics.anIntArray1168 = MovedStatics.anIntArray1445;
             MovedStatics.anIntArray1445 = is;
         }
         if(arg1 != null) {
@@ -522,7 +522,7 @@ public class Class60 {
                         int i_29_ = arg1.yDrawOffset + i_27_ + 16;
                         int i_30_ = arg1.xDrawOffset + i_28_ + 16;
                         int i_31_ = i_30_ + (i_29_ << 7);
-                        Landscape.anIntArray1168[i_31_] = 0;
+                        MovedStatics.anIntArray1168[i_31_] = 0;
                     }
                 }
             }
