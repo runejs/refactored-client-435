@@ -25,7 +25,7 @@ public class CutsceneCameraMoveToMessageHandler implements MessageHandler<Cutsce
         if(message.speedScale >= 100) {
             int x = Game.cutsceneCamera.getMoveTo().x;
             int y = Game.cutsceneCamera.getMoveTo().y;
-            int z = Scene.getFloorDrawHeight(Player.worldLevel, x, y) - Game.cutsceneCamera.getMoveTo().z;
+            int z = Game.currentScene.getFloorDrawHeight(Player.worldLevel, x, y) - Game.cutsceneCamera.getMoveTo().z;
 
             Game.cutsceneCamera.setPosition(new Point3d(x, y, z));
         }

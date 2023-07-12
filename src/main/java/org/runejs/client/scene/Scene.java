@@ -125,7 +125,7 @@ public class Scene {
      * @param height The height of the viewport.
      * @param arg0 An array containing height values for each camera pitch angle.
      */
-    public static void computeTileVisibilityMaps(int minHeight, int maxHeight, int width, int height, int[] arg0) {
+    public void computeTileVisibilityMaps(int minHeight, int maxHeight, int width, int height, int[] arg0) {
         drawWidth = width;
         drawHeight = height;
         drawWidthMidpoint = width / 2;
@@ -228,7 +228,7 @@ public class Scene {
      * @param z The z-coordinate of the point in 3D space.
      * @return Returns true if the projected point falls within the screen boundaries; otherwise false.
      */
-    public static boolean isPointVisibleOnScreen(int x, int y, int z) {
+    public boolean isPointVisibleOnScreen(int x, int y, int z) {
         // Rotate around the X axis
         int rotatedX = z * renderCameraYawSine + x * renderCameraYawCosine >> 16;
         int rotatedZ = z * renderCameraYawCosine - x * renderCameraYawSine >> 16;
@@ -2163,7 +2163,7 @@ public class Scene {
      * @param tileFlags A 3D array containing the flags for each tile (e.g. whether it's a bridge)
      * @return The height of the floor at the given x,y coordinate
      */
-    public static int getFloorDrawHeight(int plane, int x, int y, int[][][] tileHeights, byte[][][] tileFlags) {
+    public int getFloorDrawHeight(int plane, int x, int y, int[][][] tileHeights, byte[][][] tileFlags) {
         // Convert x and y into 'tile space' by dividing by 128 (right shifting by 7 bits)
         int groundX = x >> 7;
         int groundY = y >> 7;
@@ -2198,7 +2198,7 @@ public class Scene {
 
     }
 
-    public static int getFloorDrawHeight(int plane, int x, int y) {
+    public int getFloorDrawHeight(int plane, int x, int y) {
         return getFloorDrawHeight(plane, x, y, Landscape.tile_height, MovedStatics.tile_flags);
     }
 }
