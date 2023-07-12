@@ -146,10 +146,7 @@ public class Scene {
         for (int pitch = 128; pitch <= 384; pitch += 32) {
             // Iterating over different camera yaw angles (from 0 to 2048)
             for (int yaw = 0; yaw < 2048; yaw += 64) {
-                currentPitchSine = Model.SINE[pitch];
-                currentPitchCosine = Model.COSINE[pitch];
-                currentYawSine = Model.SINE[yaw];
-                currentYawCosine = Model.COSINE[yaw];
+                CameraRotation camera = new CameraRotation(yaw, pitch);
 
                 int pitchIndex = (pitch - 128) / 32;
                 int yawIndex = yaw / 64;
@@ -163,7 +160,7 @@ public class Scene {
 
                         // Checking visibility at different heights
                         for (int h = -minHeight; h <= maxHeight; h += 128) {
-                            if (isPointVisibleOnScreen(absoluteTileX, arg0[pitchIndex] + h, absoluteTileY)) {
+                            if (isPointVisibleOnScreen(absoluteTileX, arg0[pitchIndex] + h, absoluteTileY, camera)) {
                                 isVisible = true;
                                 break;
                             }
@@ -234,14 +231,14 @@ public class Scene {
      * @param z The z-coordinate of the point in 3D space.
      * @return Returns true if the projected point falls within the screen boundaries; otherwise false.
      */
-    public boolean isPointVisibleOnScreen(int x, int y, int z) {
+    public boolean isPointVisibleOnScreen(int x, int y, int z, CameraRotation cameraRotation) {
         // Rotate around the X axis
-        int rotatedX = z * currentYawSine + x * currentYawCosine >> 16;
-        int rotatedZ = z * currentYawCosine - x * currentYawSine >> 16;
+        int rotatedX = z * cameraRotation.yawSine + x * cameraRotation.yawCosine >> 16;
+        int rotatedZ = z * cameraRotation.yawCosine - x * cameraRotation.yawSine >> 16;
 
         // Rotate around the Y axis
-        int rotatedY = y * currentPitchSine + rotatedZ * currentPitchCosine >> 16;
-        int finalZ = y * currentPitchCosine - rotatedZ * currentPitchSine >> 16;
+        int rotatedY = y * cameraRotation.pitchSine + rotatedZ * cameraRotation.pitchCosine >> 16;
+        int finalZ = y * cameraRotation.pitchCosine - rotatedZ * cameraRotation.pitchSine >> 16;
 
         // Check if the point is behind the near clipping plane (too close to the camera)
         if (rotatedY < 50/* || rotatedY > 3500*/) {
