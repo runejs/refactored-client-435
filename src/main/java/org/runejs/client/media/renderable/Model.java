@@ -49,7 +49,6 @@ public class Model extends Renderable {
 
     static {
         anIntArray3199 = new int[128];
-        MouseHandler.cursorY = 0;
         anIntArray3205 = new int[10];
         anIntArray3203 = new int[4096];
         hoveredHash = new int[1000];
@@ -59,7 +58,6 @@ public class Model extends Renderable {
         aBooleanArray3201 = new boolean[4096];
         vertexScreenZ = new int[4096];
         anIntArray3214 = new int[1];
-        MouseHandler.gameScreenClickable = false;
         anIntArray3216 = new int[2000];
         anIntArray3202 = Rasterizer3D.hsl2rgb;
         vertexScreenX = new int[4096];
@@ -74,7 +72,6 @@ public class Model extends Renderable {
         COSINE = Rasterizer3D.cosinetable;
         aBooleanArray3224 = new boolean[4096];
         anIntArray3228 = Rasterizer3D.anIntArray2929;
-        MouseHandler.cursorX = 0;
         anIntArray3226 = new int[12];
         int i = 0;
         int i_322_ = 248;
