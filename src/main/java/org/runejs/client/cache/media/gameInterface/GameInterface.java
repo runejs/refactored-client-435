@@ -1105,7 +1105,7 @@ public class GameInterface extends CachedNode {
                     Native.selectedSpellName = Native.green + gameInterface.spellName + Native.white;
                     if(MovedStatics.selectedMask == 16) {
                         drawTabIcons = true;
-                        Player.currentTabId = 3;
+                        Game.currentTabId = 3;
                         redrawTabArea = true;
                     }
                 } else {
@@ -1899,7 +1899,7 @@ public class GameInterface extends CachedNode {
                     ChatBox.chatMessage = ChatBox.chatMessage.substring(0, -1 + ChatBox.chatMessage.length());
                     ChatBox.redrawChatbox = true;
                 }
-                if(Player.method793(MovedStatics.anInt1388) && ChatBox.chatMessage.length() < 80) {
+                if(MovedStatics.method793(MovedStatics.anInt1388) && ChatBox.chatMessage.length() < 80) {
                     ChatBox.chatMessage = ChatBox.chatMessage + (char) MovedStatics.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
@@ -1986,7 +1986,7 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name
                     ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 10);
                     ChatBox.redrawChatbox = true;
                 }
-                if(Player.method793(MovedStatics.anInt1388) && ChatBox.inputMessage.length() < 40) {
+                if(MovedStatics.method793(MovedStatics.anInt1388) && ChatBox.inputMessage.length() < 40) {
                     ChatBox.inputMessage = ChatBox.inputMessage + (char) MovedStatics.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
@@ -1995,7 +1995,7 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name
                     ChatBox.chatboxInput = ChatBox.chatboxInput.substring(0, ChatBox.chatboxInput.length() - 1);
                     ChatBox.redrawChatbox = true;
                 }
-                if(Player.method793(MovedStatics.anInt1388) && ChatBox.chatboxInput.length() < 80) {
+                if(MovedStatics.method793(MovedStatics.anInt1388) && ChatBox.chatboxInput.length() < 80) {
                     ChatBox.chatboxInput = ChatBox.chatboxInput + (char) MovedStatics.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }

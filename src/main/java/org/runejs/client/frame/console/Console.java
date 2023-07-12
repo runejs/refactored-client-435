@@ -6,7 +6,6 @@ import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
-import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.outbound.console.ConsoleCommandOutboundMessage;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.frame.console.Commands.*;
@@ -270,7 +269,7 @@ public class Console {
             consoleInput = consoleInput.substring(0, currentChatIndex - 1) + consoleInput.substring(currentChatIndex);
             currentChatIndex--;
         }
-        if (Player.method793(MovedStatics.anInt1388) && consoleInput.length() < 80) { // any character
+        if (MovedStatics.method793(MovedStatics.anInt1388) && consoleInput.length() < 80) { // any character
             consoleInput = consoleInput.substring(0, currentChatIndex) + (char) MovedStatics.anInt1388 + consoleInput.substring(currentChatIndex);
             currentChatIndex++;
         }

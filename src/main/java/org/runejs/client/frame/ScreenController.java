@@ -299,16 +299,16 @@ public class ScreenController {
         if (frameMode == ScreenMode.FIXED) {
             if (GameInterface.tabAreaInterfaceId != -1)
                 MovedStatics.handleInterfaceActions(GameInterfaceArea.TAB_AREA, mouseX, mouseY, 553, 205, 743, 466, GameInterface.tabAreaInterfaceId);
-            else if (Player.tabWidgetIds[Player.currentTabId] != -1) {
-                MovedStatics.handleInterfaceActions(GameInterfaceArea.TAB_AREA, mouseX, mouseY, 553, 205, 743, 466, Player.tabWidgetIds[Player.currentTabId]);
+            else if (Game.tabWidgetIds[Game.currentTabId] != -1) {
+                MovedStatics.handleInterfaceActions(GameInterfaceArea.TAB_AREA, mouseX, mouseY, 553, 205, 743, 466, Game.tabWidgetIds[Game.currentTabId]);
             }
         } else {
             int[] tabInterFaceCoords= tabProducer.getTabInterfaceCoordSize(drawWidth - 241, drawHeight - (334));
 
             if (GameInterface.tabAreaInterfaceId != -1)
                 MovedStatics.handleInterfaceActions(GameInterfaceArea.TAB_AREA, mouseX, mouseY, tabInterFaceCoords[0], tabInterFaceCoords[1], tabInterFaceCoords[0]+tabInterFaceCoords[2],tabInterFaceCoords[1]+tabInterFaceCoords[3], GameInterface.tabAreaInterfaceId);
-            else if (Player.tabWidgetIds[Player.currentTabId] != -1) {
-                MovedStatics.handleInterfaceActions(GameInterfaceArea.TAB_AREA, mouseX, mouseY, tabInterFaceCoords[0], tabInterFaceCoords[1], tabInterFaceCoords[0]+tabInterFaceCoords[2],tabInterFaceCoords[1]+tabInterFaceCoords[3], Player.tabWidgetIds[Player.currentTabId]);
+            else if (Game.tabWidgetIds[Game.currentTabId] != -1) {
+                MovedStatics.handleInterfaceActions(GameInterfaceArea.TAB_AREA, mouseX, mouseY, tabInterFaceCoords[0], tabInterFaceCoords[1], tabInterFaceCoords[0]+tabInterFaceCoords[2],tabInterFaceCoords[1]+tabInterFaceCoords[3], Game.tabWidgetIds[Game.currentTabId]);
             }
         }
     }
@@ -481,73 +481,73 @@ public class ScreenController {
             if(frameMode == ScreenMode.FIXED) {
                 x -= 539;
                 y -= 168;
-            if (x >= 0 && x <= 34 && y >= 1 && y < 37 && Player.tabWidgetIds[0] != -1) {
+            if (x >= 0 && x <= 34 && y >= 1 && y < 37 && Game.tabWidgetIds[0] != -1) {
                 GameInterface.drawTabIcons = true;
                 GameInterface.redrawTabArea = true;
-                Player.currentTabId = 0;
+                Game.currentTabId = 0;
             }
-            if (x >= 30 && x <= 60 && y >= 0 && y < 37 && Player.tabWidgetIds[1] != -1) {
-                Player.currentTabId = 1;
-                GameInterface.redrawTabArea = true;
-                GameInterface.drawTabIcons = true;
-            }
-            if (x >= 58 && x <= 88 && y >= 0 && y < 37 && Player.tabWidgetIds[2] != -1) {
-                GameInterface.drawTabIcons = true;
-                Player.currentTabId = 2;
-                GameInterface.redrawTabArea = true;
-            }
-            if (x >= 86 && x <= 130 && y >= 0 && y < 35 && Player.tabWidgetIds[3] != -1) {
-                GameInterface.drawTabIcons = true;
-                GameInterface.redrawTabArea = true;
-                Player.currentTabId = 3;
-            }
-            if (x >= 127 && x <= 157 && y >= 0 && y < 37 && Player.tabWidgetIds[4] != -1) {
-                Player.currentTabId = 4;
+            if (x >= 30 && x <= 60 && y >= 0 && y < 37 && Game.tabWidgetIds[1] != -1) {
+                Game.currentTabId = 1;
                 GameInterface.redrawTabArea = true;
                 GameInterface.drawTabIcons = true;
             }
-            if (x >= 155 && x <= 185 && y >= 0 && y < 37 && Player.tabWidgetIds[5] != -1) {
+            if (x >= 58 && x <= 88 && y >= 0 && y < 37 && Game.tabWidgetIds[2] != -1) {
                 GameInterface.drawTabIcons = true;
-                GameInterface.redrawTabArea = true;
-                Player.currentTabId = 5;
-            }
-            if (x >= 183 && x <= 217 && y >= 1 && y < 37 && Player.tabWidgetIds[6] != -1) {
-                GameInterface.redrawTabArea = true;
-                Player.currentTabId = 6;
-                GameInterface.drawTabIcons = true;
-            }
-            if (x >= 1 && x <= 35 && y >= 298 && y < 334 && Player.tabWidgetIds[7] != -1) {
-                Player.currentTabId = 7;
-                GameInterface.drawTabIcons = true;
+                Game.currentTabId = 2;
                 GameInterface.redrawTabArea = true;
             }
-            if (x >= 33 && x <= 63 && y >= 298 && y < 335 && Player.tabWidgetIds[8] != -1) {
-                GameInterface.redrawTabArea = true;
-                GameInterface.drawTabIcons = true;
-                Player.currentTabId = 8;
-            }
-            if (x >= 60 && x <= 90 && y >= 298 && y < 335 && Player.tabWidgetIds[9] != -1) {
-                GameInterface.drawTabIcons = true;
-                Player.currentTabId = 9;
-                GameInterface.redrawTabArea = true;
-            }
-            if (x >= 88 && x <= 132 && y >= 299 && y < 334 && Player.tabWidgetIds[10] != -1) {
-                Player.currentTabId = 10;
+            if (x >= 86 && x <= 130 && y >= 0 && y < 35 && Game.tabWidgetIds[3] != -1) {
                 GameInterface.drawTabIcons = true;
                 GameInterface.redrawTabArea = true;
+                Game.currentTabId = 3;
             }
-            if (x >= 130 && x <= 160 && y >= 298 && y < 335 && Player.tabWidgetIds[11] != -1) {
-                Player.currentTabId = 11;
+            if (x >= 127 && x <= 157 && y >= 0 && y < 37 && Game.tabWidgetIds[4] != -1) {
+                Game.currentTabId = 4;
                 GameInterface.redrawTabArea = true;
                 GameInterface.drawTabIcons = true;
             }
-            if (x >= 157 && x <= 187 && y >= 298 && y < 335 && Player.tabWidgetIds[12] != -1) {
+            if (x >= 155 && x <= 185 && y >= 0 && y < 37 && Game.tabWidgetIds[5] != -1) {
+                GameInterface.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
+                Game.currentTabId = 5;
+            }
+            if (x >= 183 && x <= 217 && y >= 1 && y < 37 && Game.tabWidgetIds[6] != -1) {
+                GameInterface.redrawTabArea = true;
+                Game.currentTabId = 6;
+                GameInterface.drawTabIcons = true;
+            }
+            if (x >= 1 && x <= 35 && y >= 298 && y < 334 && Game.tabWidgetIds[7] != -1) {
+                Game.currentTabId = 7;
+                GameInterface.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
+            }
+            if (x >= 33 && x <= 63 && y >= 298 && y < 335 && Game.tabWidgetIds[8] != -1) {
                 GameInterface.redrawTabArea = true;
                 GameInterface.drawTabIcons = true;
-                Player.currentTabId = 12;
+                Game.currentTabId = 8;
             }
-            if (x >= 185 && x <= 219 && y >= 298 && y < 334 && Player.tabWidgetIds[13] != -1) {
-                Player.currentTabId = 13;
+            if (x >= 60 && x <= 90 && y >= 298 && y < 335 && Game.tabWidgetIds[9] != -1) {
+                GameInterface.drawTabIcons = true;
+                Game.currentTabId = 9;
+                GameInterface.redrawTabArea = true;
+            }
+            if (x >= 88 && x <= 132 && y >= 299 && y < 334 && Game.tabWidgetIds[10] != -1) {
+                Game.currentTabId = 10;
+                GameInterface.drawTabIcons = true;
+                GameInterface.redrawTabArea = true;
+            }
+            if (x >= 130 && x <= 160 && y >= 298 && y < 335 && Game.tabWidgetIds[11] != -1) {
+                Game.currentTabId = 11;
+                GameInterface.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
+            }
+            if (x >= 157 && x <= 187 && y >= 298 && y < 335 && Game.tabWidgetIds[12] != -1) {
+                GameInterface.redrawTabArea = true;
+                GameInterface.drawTabIcons = true;
+                Game.currentTabId = 12;
+            }
+            if (x >= 185 && x <= 219 && y >= 298 && y < 334 && Game.tabWidgetIds[13] != -1) {
+                Game.currentTabId = 13;
                 GameInterface.redrawTabArea = true;
                 GameInterface.drawTabIcons = true;
             }

@@ -9,7 +9,6 @@ import org.runejs.client.frame.console.Console;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
-import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.SceneCamera;
 import org.runejs.client.*;
@@ -314,7 +313,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             int offsetY = 0;
             int childID = 0;
             /* Tab interface scrolling */
-            int tabInterfaceID = Player.tabWidgetIds[Player.currentTabId];
+            int tabInterfaceID = Game.tabWidgetIds[Game.currentTabId];
             if(tabInterfaceID != -1) {
                 if(ScreenController.frameMode == ScreenMode.FIXED) {
                     offsetX = 765 - 218;

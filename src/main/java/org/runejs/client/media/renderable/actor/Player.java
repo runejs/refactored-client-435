@@ -7,18 +7,13 @@ import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.def.SpotAnimDefinition;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
-import org.runejs.client.frame.ScreenController;
-import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.input.KeyFocusListener;
-import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.util.CollisionMap;
-
-import java.awt.*;
 
 public class Player extends Actor {
 
@@ -50,12 +45,9 @@ public class Player extends Actor {
     public static int worldId = 1;
     public static int friendsCount = 0;
     public static PlayerAppearance activePlayerAppearance = new PlayerAppearance();
-    public static int[] tabWidgetIds = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-    public static int currentTabId = 3;
     public static String[] friendUsernames = new String[200];
     public static long[] friends = new long[200];
     public static int ignoresCount = 0;
-    public static int flashingTabId = -1;
     public static int localPlayerId = -1;
     public static String[] playerActions = new String[5];
     public static boolean[] playerActionsLowPriority = new boolean[5];
@@ -97,26 +89,6 @@ public class Player extends Actor {
         anInt3283 = 0;
         aBoolean3287 = false;
     }
-
-    public static void drawGameScreenGraphics() {
-        try {
-            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
-            MovedStatics.gameScreenImageProducer.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
-        } catch(Exception exception) {
-            MouseHandler.gameCanvas.repaint();
-        }
-    }
-
-    public static boolean method793(int arg1) {
-        // something to do with checking for valid (typable?) keycodes
-        if(arg1 < 32)
-            return false;
-        if(arg1 == 127)
-            return false;
-        return arg1 < 129 || arg1 > 159;
-    }
-
-
 
     public static void parsePlayerUpdateMasks(PacketBuffer appearanceBuffer, Player player, int mask, int playerIndex) {
         if((0x100 & mask) != 0) { // damage/hitsplat 1

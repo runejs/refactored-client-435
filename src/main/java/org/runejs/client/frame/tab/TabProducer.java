@@ -1,5 +1,6 @@
 package org.runejs.client.frame.tab;
 
+import org.runejs.client.Game;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.ProducingGraphicsBuffer;
 import org.runejs.client.cache.media.ImageRGB;
@@ -9,7 +10,6 @@ import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.RasterizerInstanced;
-import org.runejs.client.media.renderable.actor.Player;
 
 // TODO: DONT RUN NORMAL TAB RENDERER WHEN THIS IS RUNNING
 public class TabProducer extends FramePieceRenderer {
@@ -260,8 +260,8 @@ public class TabProducer extends FramePieceRenderer {
         drawImage(bottomRow, x - 4, y + workingHeight - bottomRow.imageHeight);
         int currentX = x;
         int currentY = y + workingHeight - bottomRow.imageHeight;
-        if (6 < Player.currentTabId) {
-            this.drawActiveTab(Player.currentTabId, currentY);
+        if (6 < Game.currentTabId) {
+            this.drawActiveTab(Game.currentTabId, currentY);
 
         }
         currentX += combat.imageWidth;
@@ -282,8 +282,8 @@ public class TabProducer extends FramePieceRenderer {
 
     private void drawTopRow(int x, int y, int workingWidth, int workingHeight) {
         drawImage(topRow, x - 4, y);
-        if (Player.currentTabId < 7) {
-            this.drawActiveTab(Player.currentTabId, y);
+        if (Game.currentTabId < 7) {
+            this.drawActiveTab(Game.currentTabId, y);
         }
         int currentX = x;
         drawImage(combat, currentX, y);
@@ -322,7 +322,7 @@ public class TabProducer extends FramePieceRenderer {
             int[] bounds = getTabButtonBox(i);
 
             if(x > baseX + bounds[0] && x < baseX+bounds[2]&& y > baseY+bounds[1] && y < baseY + bounds[3] && i != 7) {
-                Player.currentTabId = i;
+                Game.currentTabId = i;
 
 
                 GameInterface.redrawTabArea = true;

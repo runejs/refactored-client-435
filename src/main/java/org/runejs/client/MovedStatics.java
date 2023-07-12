@@ -2456,7 +2456,7 @@ public class MovedStatics {
             drawTabGraphics();
             ActorDefinition.drawMapBack();
             Game.method943(ChatBox.tradeMode, fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
-            method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
+            method527(Game.currentTabId, Game.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
             showSidePanelRedrawnText = true;
             showIconsRedrawnText = true;
             showChatPanelRedrawnText = true;
@@ -2475,7 +2475,7 @@ public class MovedStatics {
             fontNormal.drawStringLeft(arg3, 257, i, 0);
             fontNormal.drawStringLeft(arg3, 256, i - 1, 16777215);
         }
-        Player.drawGameScreenGraphics();
+        drawGameScreenGraphics();
     }
 
     public static String method532(GameInterface gameInterface, String arg2) {
@@ -2645,8 +2645,8 @@ public class MovedStatics {
             boolean bool = Game.drawParentInterface(1, 0, 0, 190, 261, GameInterface.tabAreaInterfaceId);
             if(!bool)
                 GameInterface.redrawTabArea = true;
-        } else if(Player.tabWidgetIds[Player.currentTabId] != -1) {
-            boolean bool = Game.drawParentInterface(1, 0, 0, 190, 261, Player.tabWidgetIds[Player.currentTabId]);
+        } else if(Game.tabWidgetIds[Game.currentTabId] != -1) {
+            boolean bool = Game.drawParentInterface(1, 0, 0, 190, 261, Game.tabWidgetIds[Game.currentTabId]);
             if(!bool)
                 GameInterface.redrawTabArea = true;
         }
@@ -3461,5 +3461,25 @@ public class MovedStatics {
         class1.chars = is;
         class1.length = i_3_;
         return class1;
+    }
+
+    public static void drawGameScreenGraphics() {
+        try {
+            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+            gameScreenImageProducer.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
+        } catch(Exception exception) {
+            MouseHandler.gameCanvas.repaint();
+        }
+    }
+
+    /**
+     * something to do with checking for valid (typable?) keycodes
+     */
+    public static boolean method793(int arg1) {
+        if(arg1 < 32)
+            return false;
+        if(arg1 == 127)
+            return false;
+        return arg1 < 129 || arg1 > 159;
     }
 }
