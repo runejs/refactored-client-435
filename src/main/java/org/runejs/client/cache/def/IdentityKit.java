@@ -7,10 +7,10 @@ import org.runejs.client.node.CachedNode;
 import org.runejs.client.node.NodeCache;
 
 public class IdentityKit extends CachedNode {
-    public static CacheArchive identityKitCache;
-    public static NodeCache identityKitNodeCache = new NodeCache(64);
-    public static int identityKitLength;
-    public static CacheArchive aCacheArchive_654;
+    private static CacheArchive identityKitArchive;
+    private static NodeCache identityKitCache = new NodeCache(64);
+    public static int count;
+    private static CacheArchive modelArchive;
     public int[] recolorToFind = new int[6];
     public int[] recolorToReplace;
     public int bodyPartId = -1;
@@ -24,27 +24,27 @@ public class IdentityKit extends CachedNode {
 
     // ???
     public static IdentityKit cache(int arg1) {
-        IdentityKit identityKit = (IdentityKit) identityKitNodeCache.get(arg1);
+        IdentityKit identityKit = (IdentityKit) identityKitCache.get(arg1);
         if(identityKit != null) {
             return identityKit;
         }
-        byte[] is = identityKitCache.getFile(3, arg1);
+        byte[] is = identityKitArchive.getFile(3, arg1);
         identityKit = new IdentityKit();
         if(is != null) {
             identityKit.readValues(new Buffer(is));
         }
-        identityKitNodeCache.put(arg1, identityKit);
+        identityKitCache.put(arg1, identityKit);
         return identityKit;
     }
 
     public static void clearIdentityKitCache() {
-        identityKitNodeCache.clear();
+        identityKitCache.clear();
     }
 
     public static void initializeIdentityKitDefinitionCache(CacheArchive definitionCache, CacheArchive arg2) {
-        aCacheArchive_654 = arg2;
-        identityKitCache = definitionCache;
-        identityKitLength = identityKitCache.fileLength(3);
+        modelArchive = arg2;
+        identityKitArchive = definitionCache;
+        count = identityKitArchive.fileLength(3);
     }
 
     public void readValues(Buffer buffer) {
@@ -63,7 +63,7 @@ public class IdentityKit extends CachedNode {
         }
         boolean isCached = true;
         for(int i = 0; modelId.length > i; i++) {
-            if(!aCacheArchive_654.loaded(modelId[i], 0)) {
+            if(!modelArchive.loaded(modelId[i], 0)) {
                 isCached = false;
             }
         }
@@ -74,7 +74,7 @@ public class IdentityKit extends CachedNode {
         boolean bool = true;
         int i = 0;
         for(/**/; i < 5; i++) {
-            if(models[i] != -1 && !aCacheArchive_654.loaded(models[i], 0)) {
+            if(models[i] != -1 && !modelArchive.loaded(models[i], 0)) {
                 bool = false;
             }
         }
@@ -106,7 +106,7 @@ public class IdentityKit extends CachedNode {
         int i = 0;
         for(int i_7_ = 0; i_7_ < 5; i_7_++) {
             if(models[i_7_] != -1) {
-                class40_sub5_sub17_sub5s[i++] = Model.getModel(aCacheArchive_654, models[i_7_]);
+                class40_sub5_sub17_sub5s[i++] = Model.getModel(modelArchive, models[i_7_]);
             }
         }
         Model class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, i);
@@ -125,7 +125,7 @@ public class IdentityKit extends CachedNode {
         }
         Model[] models = new Model[modelId.length];
         for(int i = 0; i < modelId.length; i++) {
-            models[i] = Model.getModel(aCacheArchive_654, modelId[i]);
+            models[i] = Model.getModel(modelArchive, modelId[i]);
         }
         Model model;
         if(models.length == 1) {
