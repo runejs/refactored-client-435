@@ -19,7 +19,6 @@ import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Npc;
-import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.util.CollisionMap;
@@ -301,7 +300,7 @@ public class Class40_Sub3 extends Node {
     private static void initializeIdentityKitDefinitionCache(CacheArchive definitionCache, CacheArchive arg2) {
         MovedStatics.aCacheArchive_654 = arg2;
         IdentityKit.identityKitCache = definitionCache;
-        PlayerAppearance.identityKitLength = IdentityKit.identityKitCache.fileLength(3);
+        IdentityKit.identityKitLength = IdentityKit.identityKitCache.fileLength(3);
     }
 
     private static void initializeGameObjectDefinitionCache(CacheArchive arg1, boolean lowMemory, CacheArchive definitionCache) {

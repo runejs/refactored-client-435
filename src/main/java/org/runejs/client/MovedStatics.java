@@ -370,6 +370,8 @@ public class MovedStatics {
     public static boolean aBoolean512;
     public static int[] anIntArray3111;
     public static Signlink signlink;
+    public static ProducingGraphicsBuffer tabPieveLowerRight;
+    public static GameSocket lostConnectionSocket;
 
     public static void method440() {
         if (aBoolean512) {
@@ -1032,9 +1034,9 @@ public class MovedStatics {
                 anInt2321 = 0;
                 Game.loginStatus = 0;
             }
-            if (statusCode != 20 && statusCode != 40 && PlayerAppearance.lostConnectionSocket != null) {
-                PlayerAppearance.lostConnectionSocket.kill();
-                PlayerAppearance.lostConnectionSocket = null;
+            if (statusCode != 20 && statusCode != 40 && lostConnectionSocket != null) {
+                lostConnectionSocket.kill();
+                lostConnectionSocket = null;
             }
             if (Game.gameStatusCode == 25 || Game.gameStatusCode == 40) {
                 method1018();
@@ -1772,7 +1774,7 @@ public class MovedStatics {
                 tabHighlightImageBottomLeft = null;
                 Renderable.tabHighlightImageBottomLeftEdge = null;
                 fullScreenTextureArray = null;
-                PlayerAppearance.tabPieveLowerRight = null;
+                tabPieveLowerRight = null;
                 framePieceTop = null;
                 chatboxBackgroundImage = null;
             }
@@ -2236,7 +2238,7 @@ public class MovedStatics {
                 framePieceTop.drawGraphics(0, 0, graphics);
                 mapBackRight.drawGraphics(516, 4, graphics);
                 tabPieceUpperRight.drawGraphics(516, 205, graphics);
-                PlayerAppearance.tabPieveLowerRight.drawGraphics(496, 357, graphics);
+                tabPieveLowerRight.drawGraphics(496, 357, graphics);
                 chatboxTop.drawGraphics(0, 338, graphics);
             }
         } catch(Exception exception) {
@@ -2286,7 +2288,7 @@ public class MovedStatics {
             tabPieceUpperRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = method1028(arg2, Native.imgBackvmid3, Native.aClass1_305);
-            PlayerAppearance.tabPieveLowerRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            tabPieveLowerRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = method1028(arg2, Native.imgBackhmid2, Native.aClass1_305);
             chatboxTop = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);

@@ -12,7 +12,6 @@ import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.outbound.chat.SetChatOptionsOutboundMessage;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.scene.*;
@@ -206,7 +205,7 @@ public class ScreenController {
         // width 234
         drawFramePiece(GameObject.tabPieceLeft, x + 212, y + 39);
         drawFramePieceCutout(MovedStatics.tabPieceUpperRight, x, y + 39, MovedStatics.tabPieceUpperRight.width - 15, MovedStatics.tabPieceUpperRight.height, 15, 0);
-        drawFramePieceCutout(PlayerAppearance.tabPieveLowerRight, x, y + 191, PlayerAppearance.tabPieveLowerRight.width - 35, PlayerAppearance.tabPieveLowerRight.height, 35, 0);
+        drawFramePieceCutout(MovedStatics.tabPieveLowerRight, x, y + 191, MovedStatics.tabPieveLowerRight.width - 35, MovedStatics.tabPieveLowerRight.height, 35, 0);
         drawFramePieceCutout(MovedStatics.chatboxTop, x, y + 172, MovedStatics.chatboxTop.width - 531, MovedStatics.chatboxTop.height, 531, 0);
         drawFramePieceCutout(MovedStatics.tabBottom, x, y + 300, MovedStatics.tabBottom.width - 35, MovedStatics.tabBottom.height, 35, 0);
         drawFramePieceCutout(InteractiveObject.tabTop, x, y, InteractiveObject.tabTop.width - 15, InteractiveObject.tabTop.height - 6, 15, 6);
@@ -225,7 +224,7 @@ public class ScreenController {
         drawFramePieceCutout(MovedStatics.chatboxTop, x, y, MovedStatics.chatboxTop.width - 37, MovedStatics.chatboxTop.height - 3, 0, 3);
         //        System.out.println(Class40_Sub5_Sub1.chatboxRight.height + (Class17.chatboxTop.height-3) + HuffmanEncoding.aProducingGraphicsBuffer_1541.height);
 
-        drawFramePieceCutout(PlayerAppearance.tabPieveLowerRight, x + 496, y + 16, 20, PlayerAppearance.tabPieveLowerRight.height, 0, 0);
+        drawFramePieceCutout(MovedStatics.tabPieveLowerRight, x + 496, y + 16, 20, MovedStatics.tabPieveLowerRight.height, 0, 0);
 
 
     }

@@ -150,7 +150,7 @@ public abstract class Actor extends Renderable {
         else if(actor.forceMoveStartCycle < MovedStatics.pulseCycle)
             processWalkingStep(255, actor);
         else
-            PlayerAppearance.startForcedMovement(actor);
+            startForcedMovement(actor);
         updateFacingDirection(actor);
         Class40_Sub5_Sub15.updateAnimation(actor);
     }
@@ -337,6 +337,30 @@ public abstract class Actor extends Renderable {
             } else
                 actor.anInt3097 = 0;
         }
+    }
+
+    public static void startForcedMovement(Actor actor) {
+        if(MovedStatics.pulseCycle == actor.forceMoveStartCycle || actor.playingAnimation == -1 || actor.playingAnimationDelay != 0 ||
+                actor.anInt3115 + 1 > AnimationSequence.getAnimationSequence(actor.playingAnimation).frameLengths[actor.anInt3104]) {
+            int duration = -actor.forceMoveEndCycle + actor.forceMoveStartCycle;
+            int deltaTime = -actor.forceMoveEndCycle + MovedStatics.pulseCycle;
+            int x0 = actor.forceMoveStartX * 128 + 64 * actor.size;
+            int y0 = actor.size * 64 + 128 * actor.forceMoveStartY;
+            int x1 = actor.size * 64 + 128 * actor.forceMoveEndX;
+            int y1 = 128 * actor.forceMoveEndY + actor.size * 64;
+            actor.worldX = ((duration - deltaTime) * x0 + deltaTime * x1) / duration;
+            actor.worldY = (y0 * (duration + -deltaTime) + deltaTime * y1) / duration;
+        }
+        if(actor.forceMoveFaceDirection == 0)
+            actor.initialFaceDirection = 1024;
+        actor.anInt3074 = 0;
+        if(actor.forceMoveFaceDirection == 1)
+            actor.initialFaceDirection = 1536;
+        if(actor.forceMoveFaceDirection == 2)
+            actor.initialFaceDirection = 0;
+        if(actor.forceMoveFaceDirection == 3)
+            actor.initialFaceDirection = 512;
+        actor.anInt3118 = actor.initialFaceDirection;
     }
 
     public void move(int moveDirection, boolean isRunning) {

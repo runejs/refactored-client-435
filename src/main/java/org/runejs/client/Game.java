@@ -284,7 +284,7 @@ public class Game {
                                                         gameInterface_16_.scrollPosition += i_18_;
                                                     }
                                                 }
-                                            } else if (GameInterface.atInventoryInterfaceType == 0 || GameInterface.anInt1233 != i_7_ || gameInterface.id != PlayerAppearance.anInt704)
+                                            } else if (GameInterface.atInventoryInterfaceType == 0 || GameInterface.anInt1233 != i_7_ || gameInterface.id != GameInterface.anInt704)
                                                 imageRGB.drawImage(i_10_, i_11_);
                                             else
                                                 imageRGB.drawImageWithOpacity(i_10_, i_11_, 128);
@@ -1953,7 +1953,7 @@ public class Game {
         } else {
             // Connection lost
             MovedStatics.processGameStatus(40);
-            PlayerAppearance.lostConnectionSocket = MovedStatics.gameServerSocket;
+            MovedStatics.lostConnectionSocket = MovedStatics.gameServerSocket;
             MovedStatics.gameServerSocket = null;
         }
     }

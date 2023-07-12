@@ -5,7 +5,6 @@ import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.Timer;
@@ -27,6 +26,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
     public static GameShell currentGameShell = null;
     public static int fps = 0;
     public static boolean closedClient = false;
+    public static int currentTickSample;
     private static volatile boolean clientFocused = true;
     private final int millisPerTick = 20;
     public boolean gameShellError = false;
@@ -292,10 +292,10 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
 
     public void runAfterGameLoop() {
         long currentTimeMillis = System.currentTimeMillis();
-        long lastTickInMillis = tickSamples[PlayerAppearance.currentTickSample];
+        long lastTickInMillis = tickSamples[currentTickSample];
 
         // Saves the time this particular tick is being processed on
-        tickSamples[PlayerAppearance.currentTickSample] = currentTimeMillis;
+        tickSamples[currentTickSample] = currentTimeMillis;
 
         if (lastTickInMillis != 0 && currentTimeMillis > lastTickInMillis) {
             int i = (int) (currentTimeMillis - lastTickInMillis);
@@ -305,7 +305,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
 
         // Increases the current tick identifier by 1, looping at 31 back to 0 (including 31)
         // This means the client stores the last 32 tick times to do some other calculations
-        PlayerAppearance.currentTickSample = PlayerAppearance.currentTickSample + 1 & 0x1f;
+        currentTickSample = currentTickSample + 1 & 0x1f;
 
         if (MovedStatics.anInt938++ > 50) {
             MovedStatics.anInt938 -= 50;

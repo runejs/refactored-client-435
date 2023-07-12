@@ -10,6 +10,7 @@ import org.runejs.client.node.NodeCache;
 public class IdentityKit extends CachedNode {
     public static CacheArchive identityKitCache;
     public static NodeCache identityKitNodeCache = new NodeCache(64);
+    public static int identityKitLength;
     public int[] recolorToFind = new int[6];
     public int[] recolorToReplace;
     public int bodyPartId = -1;
