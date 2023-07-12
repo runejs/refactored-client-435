@@ -614,7 +614,7 @@ public class Game {
         duplicateClickCount = 0;
         aBoolean1735 = true;
         MovedStatics.aBoolean571 = true;
-        MovedStatics.method540();
+        ClientScriptRunner.clearClientScriptRunnerCache();
         IncomingPackets.secondLastOpcode = -1;
         MovedStatics.menuOpen = false;
         IncomingPackets.lastOpcode = -1;

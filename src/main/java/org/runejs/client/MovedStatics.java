@@ -467,10 +467,6 @@ public class MovedStatics {
         return class40_sub5_sub14_sub2;
     }
 
-    public static void method540() {
-        ClientScriptRunner.aLinkedList_1278 = new LinkedList();
-    }
-
     public static void method332(int arg0) {
         synchronized (CollisionMap.anObject162) {
             if (Buffer.anInt1987 == 0)

@@ -40,7 +40,7 @@ public class ClientScriptRunner extends Node {
     public static int[] scriptIntValues = new int[1000];
     public static InvokedScript[] invokedScripts = new InvokedScript[50];
     public static int invokedScriptIndex = 0;
-    public static LinkedList aLinkedList_1278 = new LinkedList();
+    public static LinkedList clientScriptRunnerCache = new LinkedList();
     private static String[] aClass1Array2964 = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
     public int[] opcodes;
@@ -183,12 +183,12 @@ public class ClientScriptRunner extends Node {
             }
         }
 
-        aLinkedList_1278.addLast(clientScriptRunner);
+        clientScriptRunnerCache.addLast(clientScriptRunner);
     }
 
     public static void createClientScriptCheckPacket(int packetId, PacketBuffer buffer) {
         for(; ; ) {
-            ClientScriptRunner clientScriptRunner = (ClientScriptRunner) aLinkedList_1278.peekFirst();
+            ClientScriptRunner clientScriptRunner = (ClientScriptRunner) clientScriptRunnerCache.peekFirst();
             if(clientScriptRunner == null) {
                 break;
             }
@@ -1205,5 +1205,9 @@ public class ClientScriptRunner extends Node {
             }
         }
         return arg2;
+    }
+
+    public static void clearClientScriptRunnerCache() {
+        clientScriptRunnerCache = new LinkedList();
     }
 }
