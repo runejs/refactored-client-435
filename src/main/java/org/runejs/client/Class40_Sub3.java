@@ -204,8 +204,8 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.hintIconSprites = method526(CacheArchive.gameImageCacheArchive, Native.headiconsHint, "");
             else
                 i++;
-            if (MovedStatics.aClass40_Sub5_Sub14_Sub4_1057 == null)
-                MovedStatics.aClass40_Sub5_Sub14_Sub4_1057 = MovedStatics.method1028(CacheArchive.gameImageCacheArchive, Native.overlayMultiway, "");
+            if (MovedStatics.multiCombatIcon == null)
+                MovedStatics.multiCombatIcon = MovedStatics.method1028(CacheArchive.gameImageCacheArchive, Native.overlayMultiway, "");
             else
                 i++;
             if (Minimap.minimapMarkers == null)

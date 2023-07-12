@@ -119,7 +119,7 @@ public class MovedStatics {
     public static int[] OVERHEAD_CHAT_COLORS = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
     public static int[] anIntArray2113 = new int[128];
     public static GameInterface aGameInterface_2116;
-    public static int anInt2118 = 0;
+    public static int multiCombatState = 0;
     public static int placementX;
     public static int onBuildTimePlane = 0;
     public static int anInt1996 = 0;
@@ -228,7 +228,7 @@ public class MovedStatics {
     public static int menuWidth;
     public static int menuOffsetX;
     public static int menuHeight;
-    public static ImageRGB aClass40_Sub5_Sub14_Sub4_1057;
+    public static ImageRGB multiCombatIcon;
     public static LinkedList aLinkedList_1064 = new LinkedList();
     public static int crossType = 0;
     public static int hintIconPlayerTarget = 0;
@@ -1797,8 +1797,8 @@ public class MovedStatics {
                 drawMenu(4,4);
             }
         }
-        if (anInt2118 == 1) {
-            aClass40_Sub5_Sub14_Sub4_1057.drawImage(472, 296);
+        if (multiCombatState == 1) {
+            multiCombatIcon.drawImage(472, 296);
         }
         if (InteractiveObject.showFps) {
             int y = 20;

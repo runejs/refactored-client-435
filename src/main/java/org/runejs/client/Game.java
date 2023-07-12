@@ -745,7 +745,7 @@ public class Game {
         Native.clickToContinueString = null;
         MovedStatics.lastContinueTextWidgetId = -1;
         Player.flashingTabId = -1;
-        MovedStatics.anInt2118 = 0;
+        MovedStatics.multiCombatState = 0;
         Player.currentTabId = 3;
         Player.activePlayerAppearance.setPlayerAppearance(null, false, new int[5], -1);
         for (int i = 0; i < 5; i++) {

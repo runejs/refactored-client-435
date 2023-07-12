@@ -7,6 +7,6 @@ import org.runejs.client.message.inbound.misc.SetMultiCombatStateInboundMessage;
 public class SetMultiCombatStateMessageHandler implements MessageHandler<SetMultiCombatStateInboundMessage> {
     @Override
     public void handle(SetMultiCombatStateInboundMessage message) {
-        MovedStatics.anInt2118 = message.state;
+        MovedStatics.multiCombatState = message.state;
     }
 }
