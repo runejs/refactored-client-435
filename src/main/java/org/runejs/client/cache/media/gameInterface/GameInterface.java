@@ -11,6 +11,7 @@ import org.runejs.client.chat.ChatColorEffect;
 import org.runejs.client.chat.ChatShapeEffect;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.frame.console.Console;
+import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
@@ -278,13 +279,13 @@ public class GameInterface extends CachedNode {
     public static void method639() {
         synchronized(Game.keyFocusListener) {
             MovedStatics.anInt1389 = MovedStatics.anInt1214;
-            if(GameObjectDefinition.anInt2543 < 0) {
+            if(KeyFocusListener.anInt2543 < 0) {
                 for(int i = 0; i < 112; i++) {
                     MovedStatics.obfuscatedKeyStatus[i] = false;
                 }
-                GameObjectDefinition.anInt2543 = MovedStatics.anInt2183;
+                KeyFocusListener.anInt2543 = MovedStatics.anInt2183;
             } else {
-                while(GameObjectDefinition.anInt2543 != MovedStatics.anInt2183) {
+                while(KeyFocusListener.anInt2543 != MovedStatics.anInt2183) {
                     int i = MovedStatics.keyCodes[MovedStatics.anInt2183];
                     MovedStatics.anInt2183 = 0x7f & MovedStatics.anInt2183 + 1;
                     if(i < 0) {

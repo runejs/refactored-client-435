@@ -2,7 +2,6 @@ package org.runejs.client.cache;
 
 import org.runejs.client.*;
 import org.runejs.client.cache.bzip.BZip;
-import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.node.Class40_Sub6;
@@ -119,6 +118,24 @@ public class CacheArchive {
         return MovedStatics.calculateCrc8(0, size, data);
     }
 
+    private static void method602(CacheArchive arg0, int arg1, CacheIndex arg2) {
+        byte[] is = null;
+        synchronized(MovedStatics.aLinkedList_53) {
+            for(Class40_Sub6 class40_sub6 = (Class40_Sub6) MovedStatics.aLinkedList_53.peekFirst(); class40_sub6 != null; class40_sub6 = (Class40_Sub6) MovedStatics.aLinkedList_53.pollFirst()) {
+                if((long) arg1 == class40_sub6.key && arg2 == class40_sub6.cacheIndex && class40_sub6.anInt2112 == 0) {
+                    is = class40_sub6.aByteArray2102;
+                    break;
+                }
+            }
+        }
+        if(is == null) {
+            byte[] is_6_ = arg2.get(arg1);
+            arg0.method198(true, is_6_, arg1, arg2);
+        } else {
+            arg0.method198(true, is, arg1, arg2);
+        }
+    }
+
     public void method196(boolean arg0, int arg2, boolean arg3, byte[] data) {
         if(arg0) {
             if(aBoolean1800) {
@@ -201,7 +218,7 @@ public class CacheArchive {
 
     public void method177(int arg1) {
         if(dataIndex != null && aBooleanArray1796 != null && aBooleanArray1796[arg1])
-            GameObjectDefinition.method602(this, arg1, dataIndex);
+            method602(this, arg1, dataIndex);
         else
             UpdateServer.method327(true, this, cacheIndexId, arg1, (byte) 2, anIntArray252[arg1]);
     }
@@ -234,7 +251,7 @@ public class CacheArchive {
         if(metaIndex == null)
             UpdateServer.method327(true, this, 255, cacheIndexId, (byte) 0, archiveCrcValue);
         else
-            GameObjectDefinition.method602(this, cacheIndexId, metaIndex);
+            method602(this, cacheIndexId, metaIndex);
     }
 
     public int method201(int arg0) {
