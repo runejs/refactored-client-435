@@ -17,6 +17,7 @@ import java.io.IOException;
 public class GameObjectDefinition extends CachedNode implements EntityDefinition {
     public static int anInt2543 = 0;
     public static int count;
+    public static int[] OBJECT_TYPES = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
     private static NodeCache objectDefinitionCache = new NodeCache(64);
     public static NodeCache objectModelCache = new NodeCache(500);
     private static Model[] objectModelHolder = new Model[4];

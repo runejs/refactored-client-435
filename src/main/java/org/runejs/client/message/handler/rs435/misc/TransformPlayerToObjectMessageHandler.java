@@ -4,7 +4,6 @@ import org.runejs.client.Landscape;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.handler.MessageHandler;
@@ -23,7 +22,7 @@ public class TransformPlayerToObjectMessageHandler implements MessageHandler<Tra
         int unknownYMax = message.unknownYMax;
 
         int typeKey = message.type;
-        int type = Npc.anIntArray3304[typeKey];
+        int type = GameObjectDefinition.OBJECT_TYPES[typeKey];
 
         Player player;
         if (message.playerId != PlayerAppearance.anInt708)
