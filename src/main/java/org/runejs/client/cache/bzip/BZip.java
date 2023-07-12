@@ -299,7 +299,7 @@ public class BZip {
             bzip2Context.tPos >>= 8;
             bzip2Context.nBlockUsed++;
             bzip2Context.nBlock = nblock;
-            method291(bzip2Context);
+            finalDecompressionStep(bzip2Context);
             flag19 = bzip2Context.nBlockUsed == bzip2Context.nBlock + 1 && bzip2Context.stateOutLen == 0;
         }
     }
@@ -335,110 +335,110 @@ public class BZip {
         }
     }
 
-    public static void method291(BZipContext arg0) {
-        byte i = arg0.stateOutCh;
-        int i_0_ = arg0.stateOutLen;
-        int i_1_ = arg0.nBlockUsed;
-        int i_2_ = arg0.anInt811;
-        int[] is = BZipContext.tt;
-        int i_3_ = arg0.tPos;
-        byte[] is_4_ = arg0.aByteArray837;
-        int i_5_ = arg0.anInt825;
-        int i_6_ = arg0.anInt823;
-        int i_7_ = i_6_;
-        int i_8_ = arg0.nBlock + 1;
-        while_10_:
+    public static void finalDecompressionStep(BZipContext bz) {
+        byte currentByte = bz.stateOutCh;
+        int remainingBytes = bz.stateOutLen;
+        int blockUsed = bz.nBlockUsed;
+        int lastByte = bz.anInt811;
+        int[] tt = BZipContext.tt;
+        int tPos = bz.tPos;
+        byte[] output = bz.aByteArray837;
+        int outputPos = bz.anInt825;
+        int outputRemaining = bz.anInt823;
+        int outputStart = outputRemaining;
+        int blockEnd = bz.nBlock + 1;
+        outerLoop:
         for(; ; ) {
-            if(i_0_ > 0) {
+            if(remainingBytes > 0) {
                 for(; ; ) {
-                    if(i_6_ == 0)
-                        break while_10_;
-                    if(i_0_ == 1)
+                    if(outputRemaining == 0)
+                        break outerLoop;
+                    if(remainingBytes == 1)
                         break;
-                    is_4_[i_5_] = i;
-                    i_0_--;
-                    i_5_++;
-                    i_6_--;
+                    output[outputPos] = currentByte;
+                    remainingBytes--;
+                    outputPos++;
+                    outputRemaining--;
                 }
-                if(i_6_ == 0) {
-                    i_0_ = 1;
+                if(outputRemaining == 0) {
+                    remainingBytes = 1;
                     break;
                 }
-                is_4_[i_5_] = i;
-                i_5_++;
-                i_6_--;
+                output[outputPos] = currentByte;
+                outputPos++;
+                outputRemaining--;
             }
             boolean bool = true;
             while(bool) {
                 bool = false;
-                if(i_1_ == i_8_) {
-                    i_0_ = 0;
-                    break while_10_;
+                if(blockUsed == blockEnd) {
+                    remainingBytes = 0;
+                    break outerLoop;
                 }
-                i = (byte) i_2_;
-                i_3_ = is[i_3_];
-                int i_9_ = (byte) (i_3_ & 0xff);
-                i_3_ >>= 8;
-                i_1_++;
-                if(i_9_ != i_2_) {
-                    i_2_ = i_9_;
-                    if(i_6_ == 0) {
-                        i_0_ = 1;
-                        break while_10_;
+                currentByte = (byte) lastByte;
+                tPos = tt[tPos];
+                int nextByte = (byte) (tPos & 0xff);
+                tPos >>= 8;
+                blockUsed++;
+                if(nextByte != lastByte) {
+                    lastByte = nextByte;
+                    if(outputRemaining == 0) {
+                        remainingBytes = 1;
+                        break outerLoop;
                     }
-                    is_4_[i_5_] = i;
-                    i_5_++;
-                    i_6_--;
+                    output[outputPos] = currentByte;
+                    outputPos++;
+                    outputRemaining--;
                     bool = true;
-                } else if(i_1_ == i_8_) {
-                    if(i_6_ == 0) {
-                        i_0_ = 1;
-                        break while_10_;
+                } else if(blockUsed == blockEnd) {
+                    if(outputRemaining == 0) {
+                        remainingBytes = 1;
+                        break outerLoop;
                     }
-                    is_4_[i_5_] = i;
-                    i_5_++;
-                    i_6_--;
+                    output[outputPos] = currentByte;
+                    outputPos++;
+                    outputRemaining--;
                     bool = true;
                 }
             }
-            i_0_ = 2;
-            i_3_ = is[i_3_];
-            int i_10_ = (byte) (i_3_ & 0xff);
-            i_3_ >>= 8;
-            if(++i_1_ != i_8_) {
-                if(i_10_ == i_2_) {
-                    i_0_ = 3;
-                    i_3_ = is[i_3_];
-                    i_10_ = (byte) (i_3_ & 0xff);
-                    i_3_ >>= 8;
-                    if(++i_1_ != i_8_) {
-                        if(i_10_ == i_2_) {
-                            i_3_ = is[i_3_];
-                            i_10_ = (byte) (i_3_ & 0xff);
-                            i_3_ >>= 8;
-                            i_1_++;
-                            i_0_ = (i_10_ & 0xff) + 4;
-                            i_3_ = is[i_3_];
-                            i_2_ = (byte) (i_3_ & 0xff);
-                            i_3_ >>= 8;
-                            i_1_++;
+            remainingBytes = 2;
+            tPos = tt[tPos];
+            int nextByte = (byte) (tPos & 0xff);
+            tPos >>= 8;
+            if(++blockUsed != blockEnd) {
+                if(nextByte == lastByte) {
+                    remainingBytes = 3;
+                    tPos = tt[tPos];
+                    nextByte = (byte) (tPos & 0xff);
+                    tPos >>= 8;
+                    if(++blockUsed != blockEnd) {
+                        if(nextByte == lastByte) {
+                            tPos = tt[tPos];
+                            nextByte = (byte) (tPos & 0xff);
+                            tPos >>= 8;
+                            blockUsed++;
+                            remainingBytes = (nextByte & 0xff) + 4;
+                            tPos = tt[tPos];
+                            lastByte = (byte) (tPos & 0xff);
+                            tPos >>= 8;
+                            blockUsed++;
                         } else
-                            i_2_ = i_10_;
+                            lastByte = nextByte;
                     }
                 } else
-                    i_2_ = i_10_;
+                    lastByte = nextByte;
             }
         }
-        arg0.anInt846 += i_7_ - i_6_;
-        arg0.stateOutCh = i;
-        arg0.stateOutLen = i_0_;
-        arg0.nBlockUsed = i_1_;
-        arg0.anInt811 = i_2_;
-        BZipContext.tt = is;
-        arg0.tPos = i_3_;
-        arg0.aByteArray837 = is_4_;
-        arg0.anInt825 = i_5_;
-        arg0.anInt823 = i_6_;
+        bz.anInt846 += outputStart - outputRemaining;
+        bz.stateOutCh = currentByte;
+        bz.stateOutLen = remainingBytes;
+        bz.nBlockUsed = blockUsed;
+        bz.anInt811 = lastByte;
+        BZipContext.tt = tt;
+        bz.tPos = tPos;
+        bz.aByteArray837 = output;
+        bz.anInt825 = outputPos;
+        bz.anInt823 = outputRemaining;
     }
 
     public static byte getBit(BZipContext context) {
