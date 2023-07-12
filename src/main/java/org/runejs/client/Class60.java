@@ -25,7 +25,6 @@ import org.runejs.whitelabel.Images;
 import java.awt.*;
 
 public class Class60 {
-    public static int anInt1417;
     public static int loginScreenState = 0;
     public static int loginScreenFocus = 0;
 

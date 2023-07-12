@@ -66,6 +66,7 @@ public class GameInterface extends CachedNode {
     public static int selectedInventorySlot;
     public static int reportAbuseWidgetId = -1;
     public static int anInt876 = 0;
+    public static int selectedSpell;
     /**
      * The lightened edge (top and left) color of the scroll indicator chip.
      */
@@ -576,7 +577,7 @@ public class GameInterface extends CachedNode {
 
                 OutgoingPackets.sendMessage(
                     new CastMagicOnWidgetItemOutboundMessage(
-                        Class60.anInt1417,
+                        selectedSpell,
                         npcIdx,
                         widgetId,
                         containerId,
@@ -648,7 +649,7 @@ public class GameInterface extends CachedNode {
 
                     OutgoingPackets.sendMessage(
                         new CastMagicOnPlayerOutboundMessage(
-                            Class60.anInt1417,
+                            selectedSpell,
                             npcIdx
                         )
                     );
@@ -869,7 +870,7 @@ public class GameInterface extends CachedNode {
 
                     OutgoingPackets.sendMessage(
                         new CastMagicOnWorldItemOutboundMessage(
-                            Class60.anInt1417,
+                            selectedSpell,
                             npcIdx,
                             MovedStatics.baseX + i,
                             MovedStatics.baseY + i_10_
@@ -1079,7 +1080,7 @@ public class GameInterface extends CachedNode {
                     Native.selectedSpellVerb = gameInterface.targetVerb;
                     MovedStatics.selectedMask = gameInterface.clickMask;
                     MovedStatics.itemSelected = 0;
-                    Class60.anInt1417 = i_10_;
+                    selectedSpell = i_10_;
                     Native.selectedSpellName = Native.green + gameInterface.spellName + Native.white;
                     if(MovedStatics.selectedMask == 16) {
                         drawTabIcons = true;
@@ -1191,7 +1192,7 @@ public class GameInterface extends CachedNode {
 
                             OutgoingPackets.sendMessage(
                                 new CastMagicOnNPCOutboundMessage(
-                                    Class60.anInt1417,
+                                    selectedSpell,
                                     npcIdx
                                 )
                             );
@@ -1280,7 +1281,7 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.CAST_MAGIC_ON_OBJECT.getId() && AnimationSequence.method596(i, npcIdx, (byte) -27, i_10_)) {
                         OutgoingPackets.sendMessage(
                             new CastMagicOnObjectOutboundMessage(
-                                Class60.anInt1417,
+                                selectedSpell,
                                 npcIdx >> 14 & 0x7fff,
                                 i + MovedStatics.baseX,
                                 i_10_ + MovedStatics.baseY
