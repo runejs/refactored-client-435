@@ -28,12 +28,12 @@ public class Player extends Actor {
     public static int[] actorUpdatingIndices = new int[2048];
     public static Buffer[] trackedPlayerAppearanceCache = new Buffer[2048];
     public static int[] deregisterActorIndices = new int[1000];
-    public static Npc[] npcs;
+    public static Npc[] npcs = new Npc[32768];
     public static Player[] trackedPlayers = new Player[2048];
     public static int[] npcIds = new int[32768];
     public static int[] trackedPlayerIndices = new int[2048];
     public static int npcCount = 0;
-    public static int localPlayerCount;
+    public static int localPlayerCount = 0;
     public static boolean inTutorialIsland = false;
     public static Buffer chatBuffer = new Buffer(new byte[5000]);
     public static boolean cutsceneActive = false;
@@ -52,7 +52,7 @@ public class Player extends Actor {
     public static int[] tabWidgetIds = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     public static int currentTabId = 3;
     public static String[] friendUsernames = new String[200];
-    public static long[] friends;
+    public static long[] friends = new long[200];
     public static int ignoresCount = 0;
     public static int flashingTabId = -1;
     public static int localPlayerId = -1;

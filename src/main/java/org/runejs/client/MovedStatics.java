@@ -231,7 +231,7 @@ public class MovedStatics {
     public static int currentHoveredWidgetChildId = -1;
     public static int currentHoveredChatboxWidgetChildId = -1;
     public static int[] firstMenuOperand = new int[500];
-    public static int[] secondMenuOperand;
+    public static int[] secondMenuOperand = new int[500];
     public static int[] selectedMenuActions = new int[500];
     public static int menuWidth;
     public static int menuOffsetX;

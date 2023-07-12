@@ -59,10 +59,6 @@ public class CacheArchive {
     public boolean aBoolean1811;
     public CacheIndex dataIndex;
 
-    static {
-        Player.npcs = new Npc[32768];
-    }
-
     public CacheArchive(CacheIndex dataIndex, CacheIndex metaIndex, int cacheIndexId, boolean arg3, boolean arg4, boolean arg5) {
         aBoolean220 = arg4;
         aBoolean233 = arg3;

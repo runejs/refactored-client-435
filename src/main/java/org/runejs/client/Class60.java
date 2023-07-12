@@ -31,10 +31,6 @@ public class Class60 {
     public static int loginScreenState = 0;
     public static int loginScreenFocus = 0;
 
-    static {
-        Player.localPlayerCount = 0;
-    }
-
     public static int method988(CacheArchive arg0, CacheArchive arg1) {
         int i = 0;
         if(arg0.method194(Native.titleImage, ""))

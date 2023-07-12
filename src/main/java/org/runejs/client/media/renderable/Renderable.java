@@ -16,11 +16,7 @@ public abstract class Renderable extends CachedNode {
      */
     public static IndexedImage tabHighlightImageBottomLeftEdge;
     public static int[] anIntArray2865;
-    public static int anInt2869;
-
-    static {
-        anInt2869 = 0;
-    }
+    public static int anInt2869 = 0;
 
     public int modelHeight = 1000;
 

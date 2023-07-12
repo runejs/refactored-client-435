@@ -12,13 +12,7 @@ public class Class59 {
     public static IndexedImage imgLoginScreenButton;
     public static int anInt1388;
     public static int anInt1389 = 0;
-    public static KeyFocusListener keyFocusListener;
-
-    static {
-        MovedStatics.secondMenuOperand = new int[500];
-        Player.friends = new long[200];
-        keyFocusListener = new KeyFocusListener();
-    }
+    public static KeyFocusListener keyFocusListener = new KeyFocusListener();
 
     public static void dropClient() {
         if(SceneCluster.idleLogout > 0) {
