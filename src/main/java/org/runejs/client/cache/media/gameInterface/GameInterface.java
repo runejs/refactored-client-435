@@ -11,6 +11,7 @@ import org.runejs.client.chat.ChatColorEffect;
 import org.runejs.client.chat.ChatShapeEffect;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.frame.console.Console;
+import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
@@ -98,6 +99,7 @@ public class GameInterface extends CachedNode {
      * Some kind of timer for item-on-widget clicks (e.g. triggered when taking items from bank)
      */
     public static int anInt1651 = 0;
+    public static int lastItemDragTime = 0;
     /**
      * The lightened edge (top and left) color of the scroll indicator chip.
      */
@@ -278,13 +280,13 @@ public class GameInterface extends CachedNode {
     public static void method639() {
         synchronized(Game.keyFocusListener) {
             MovedStatics.anInt1389 = MovedStatics.anInt1214;
-            if(GameObjectDefinition.anInt2543 < 0) {
+            if(KeyFocusListener.anInt2543 < 0) {
                 for(int i = 0; i < 112; i++) {
                     MovedStatics.obfuscatedKeyStatus[i] = false;
                 }
-                GameObjectDefinition.anInt2543 = MovedStatics.anInt2183;
+                KeyFocusListener.anInt2543 = MovedStatics.anInt2183;
             } else {
-                while(GameObjectDefinition.anInt2543 != MovedStatics.anInt2183) {
+                while(KeyFocusListener.anInt2543 != MovedStatics.anInt2183) {
                     int i = MovedStatics.keyCodes[MovedStatics.anInt2183];
                     MovedStatics.anInt2183 = 0x7f & MovedStatics.anInt2183 + 1;
                     if(i < 0) {
@@ -650,7 +652,7 @@ public class GameInterface extends CachedNode {
                 OutgoingPackets.sendMessage(new ExamineObjectOutboundMessage(objectId));
             }
             if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_4.getId()) {
-                AnimationSequence.method596(i, npcIdx, (byte) -79, i_10_);
+                MovedStatics.method596(i, npcIdx, (byte) -79, i_10_);
 
                 int objectX = MovedStatics.baseX + i;
                 int objectId = (0x1ffffd20 & npcIdx) >> 14;
@@ -975,7 +977,7 @@ public class GameInterface extends CachedNode {
                     OutgoingPackets.sendMessage(new ExamineItemOutboundMessage(npcIdx));
                 }
                 if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_5.getId()) {
-                    AnimationSequence.method596(i, npcIdx, (byte) -11, i_10_);
+                    MovedStatics.method596(i, npcIdx, (byte) -11, i_10_);
 
                     int objectId = (0x1ffffd20 & npcIdx) >> 14;
                     int objectY = i_10_ + MovedStatics.baseY;
@@ -1026,7 +1028,7 @@ public class GameInterface extends CachedNode {
                     }
                 }
                 if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_2.getId()) {
-                    AnimationSequence.method596(i, npcIdx, (byte) -77, i_10_);
+                    MovedStatics.method596(i, npcIdx, (byte) -77, i_10_);
 
                     int objectX = i + MovedStatics.baseX;
                     int objectY = i_10_ + MovedStatics.baseY;
@@ -1041,7 +1043,7 @@ public class GameInterface extends CachedNode {
                         )
                     );
                 }
-                if(action == ActionRowType.USE_ITEM_ON_OBJECT.getId() && AnimationSequence.method596(i, npcIdx, (byte) -104, i_10_)) {
+                if(action == ActionRowType.USE_ITEM_ON_OBJECT.getId() && MovedStatics.method596(i, npcIdx, (byte) -104, i_10_)) {
                     int widgetId = (itemSelectedWidgetId >> 16) & 0xFFFF;
                     int containerId = itemSelectedWidgetId & 0xFFFF;
 
@@ -1282,7 +1284,7 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_3.getId()) {
-                        AnimationSequence.method596(i, npcIdx, (byte) -104, i_10_);
+                        MovedStatics.method596(i, npcIdx, (byte) -104, i_10_);
 
                         int objectY = i_10_ + MovedStatics.baseY;
                         int objectId = npcIdx >> 14 & 0x7fff;
@@ -1305,7 +1307,7 @@ public class GameInterface extends CachedNode {
                         ChatBox.dialogueId = -1;
                         ChatBox.redrawChatbox = true;
                     }
-                    if(action == ActionRowType.CAST_MAGIC_ON_OBJECT.getId() && AnimationSequence.method596(i, npcIdx, (byte) -27, i_10_)) {
+                    if(action == ActionRowType.CAST_MAGIC_ON_OBJECT.getId() && MovedStatics.method596(i, npcIdx, (byte) -27, i_10_)) {
                         OutgoingPackets.sendMessage(
                             new CastMagicOnObjectOutboundMessage(
                                 selectedSpell,
@@ -1492,7 +1494,7 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_1.getId()) {
-                        AnimationSequence.method596(i, npcIdx, (byte) -47, i_10_);
+                        MovedStatics.method596(i, npcIdx, (byte) -47, i_10_);
                         int objectId = 0x7fff & npcIdx >> 14;
                         int objectX = i + MovedStatics.baseX;
                         int objectY = i_10_ + MovedStatics.baseY;
@@ -1672,13 +1674,13 @@ public class GameInterface extends CachedNode {
             anInt1171 = 0;
         aBoolean1444 = false;
         if(arg2 >= arg6 && arg2 < arg6 + 16 && arg1 >= arg8 && 16 + arg8 > arg1) {
-            arg5.scrollPosition -= Npc.anInt3294 * 4;
+            arg5.scrollPosition -= MovedStatics.anInt3294 * 4;
             if(arg7 == 1)
                 redrawTabArea = true;
             if(arg7 == 2 || arg7 == 3)
                 ChatBox.redrawChatbox = true;
         } else if(arg6 > arg2 || arg6 + 16 <= arg2 || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
-            if(-anInt1171 + arg6 <= arg2 && 16 + arg6 + anInt1171 > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
+            if(-anInt1171 + arg6 <= arg2 && 16 + arg6 + anInt1171 > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && MovedStatics.anInt3294 > 0) {
                 aBoolean1444 = true;
                 int i = (-32 + arg0) * arg0 / arg3;
                 if(arg7 == 2 || arg7 == 3)
@@ -1692,7 +1694,7 @@ public class GameInterface extends CachedNode {
                 arg5.scrollPosition = (arg3 + -arg0) * i_18_ / i_17_;
             }
         } else {
-            arg5.scrollPosition += 4 * Npc.anInt3294;
+            arg5.scrollPosition += 4 * MovedStatics.anInt3294;
             if(arg7 == 2 || arg7 == 3)
                 ChatBox.redrawChatbox = true;
             if(arg7 == 1)
@@ -1844,7 +1846,7 @@ public class GameInterface extends CachedNode {
                     }
                     if (gameInterface.anObjectArray2712 != null && (arg3 & 0x80) != 0)
                         ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2712, 0, 0, gameInterface, 0);
-                    if (AnimationSequence.anInt2480 == MovedStatics.pulseCycle && gameInterface.anObjectArray2650 != null && (arg3 & 0x100) != 0)
+                    if (MovedStatics.anInt2480 == MovedStatics.pulseCycle && gameInterface.anObjectArray2650 != null && (arg3 & 0x100) != 0)
                         ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2650, 0, 0, gameInterface, 0);
                 }
             }

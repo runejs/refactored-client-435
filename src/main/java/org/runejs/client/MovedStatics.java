@@ -1,6 +1,7 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.CacheIndex;
+import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
@@ -10,6 +11,7 @@ import org.runejs.client.chat.ChatShapeEffect;
 import org.runejs.client.frame.Minimap;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
+import org.runejs.client.frame.console.Console;
 import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
@@ -20,7 +22,6 @@ import org.runejs.client.net.*;
 import org.runejs.client.node.Class40_Sub6;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.frame.ChatBox;
@@ -34,6 +35,7 @@ import org.runejs.client.scene.camera.CameraRotation;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
+import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.SignlinkNode;
 import org.runejs.client.cache.def.*;
@@ -328,6 +330,27 @@ public class MovedStatics {
      */
     public static ProducingGraphicsBuffer tabTop;
     public static byte[][] aByteArrayArray1370;
+    public static Object anObject162 = new Object();
+    /**
+     * Last varp handle cycle?
+     */
+    public static int anInt2480 = 0;
+    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
+    public static int anInt1985 = -1;
+    public static int anInt1987 = 0;
+    public static IndexedImage tabTopBack;
+    /**
+     * Some kind of colour palette
+     */
+    public static int[] anIntArray1972;
+    /**
+     * Sprite heights?
+     */
+    public static int[] anIntArray3312;
+    /**
+     * Some kind of mouse information
+     */
+    public static int anInt3294 = 0;
 
     public static void method440() {
         if (aBoolean512) {
@@ -449,18 +472,18 @@ public class MovedStatics {
         class40_sub5_sub14_sub2.xDrawOffset = anIntArray1347[0];
         class40_sub5_sub14_sub2.yDrawOffset = anIntArray3111[0];
         class40_sub5_sub14_sub2.imgWidth = anIntArray456[0];
-        class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[0];
-        class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
+        class40_sub5_sub14_sub2.imgHeight = anIntArray3312[0];
+        class40_sub5_sub14_sub2.palette = anIntArray1972;
         class40_sub5_sub14_sub2.imgPixels = aByteArrayArray1370[0];
-        ActorDefinition.method569();
+        method569();
         return class40_sub5_sub14_sub2;
     }
 
     public static void method332(int arg0) {
-        synchronized (CollisionMap.anObject162) {
-            if (Buffer.anInt1987 == 0)
+        synchronized (anObject162) {
+            if (anInt1987 == 0)
                 Game.signlink.createThreadNode(5, new Class44());
-            Buffer.anInt1987 = arg0;
+            anInt1987 = arg0;
         }
     }
 
@@ -530,7 +553,7 @@ public class MovedStatics {
         anIntArray3111 = new int[anInt2581];
         aByteArrayArray1370 = new byte[anInt2581][];
         anIntArray456 = new int[anInt2581];
-        Npc.anIntArray3312 = new int[anInt2581];
+        anIntArray3312 = new int[anInt2581];
         anIntArray1347 = new int[anInt2581];
 
         buffer.currentPosition = data.length + -7 + -(anInt2581 * 8);
@@ -544,18 +567,18 @@ public class MovedStatics {
         for (int i_36_ = 0; i_36_ < anInt2581; i_36_++)
             anIntArray456[i_36_] = buffer.getUnsignedShortBE();
         for (int i_37_ = 0; anInt2581 > i_37_; i_37_++)
-            Npc.anIntArray3312[i_37_] = buffer.getUnsignedShortBE();
+            anIntArray3312[i_37_] = buffer.getUnsignedShortBE();
 
         buffer.currentPosition = data.length - (7 + anInt2581 * 8 + -3 + i * 3);
-        Buffer.anIntArray1972 = new int[i];
+        anIntArray1972 = new int[i];
         for (int i_38_ = 1; i > i_38_; i_38_++) {
-            Buffer.anIntArray1972[i_38_] = buffer.getMediumBE();
-            if (Buffer.anIntArray1972[i_38_] == 0)
-                Buffer.anIntArray1972[i_38_] = 1;
+            anIntArray1972[i_38_] = buffer.getMediumBE();
+            if (anIntArray1972[i_38_] == 0)
+                anIntArray1972[i_38_] = 1;
         }
         buffer.currentPosition = 0;
         for (int i_39_ = 0; anInt2581 > i_39_; i_39_++) {
-            int i_40_ = Npc.anIntArray3312[i_39_];
+            int i_40_ = anIntArray3312[i_39_];
             int i_41_ = anIntArray456[i_39_];
             int i_42_ = i_40_ * i_41_;
             byte[] is = new byte[i_42_];
@@ -579,7 +602,7 @@ public class MovedStatics {
 
     public static void method527(int currentTabId, int[] tabWidgetIds, boolean arg3, int arg4) {
         tabTop.prepareRasterizer();
-        Buffer.tabTopBack.drawImage(0, 0);
+        tabTopBack.drawImage(0, 0);
         if (arg3) {
             if (tabWidgetIds[currentTabId] != -1) {
                 if (currentTabId == 0)
@@ -853,7 +876,7 @@ public class MovedStatics {
     public static void processGameStatus(int statusCode) {
         if (statusCode != Game.gameStatusCode) {
             if (Game.gameStatusCode == 0)
-                CollisionMap.method144(12433);
+                method144(12433);
             if (statusCode == 20 || statusCode == 40) {
                 Game.anInt1756 = 0;
                 anInt2321 = 0;
@@ -952,7 +975,7 @@ public class MovedStatics {
     public static ImageRGB method927(int arg0, CacheArchive arg1, int arg3) {
 	    if(!ImageRGB.spriteExists(arg0, arg3, arg1))
 	        return null;
-	    return ActorDefinition.method578();
+	    return method578();
 	}
 
     public static void handleInterfaceActions(GameInterfaceArea area, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, GameInterface[] gameInterfaces, int parentId, int scrollPosition, int scrollWidth) {
@@ -1231,7 +1254,7 @@ public class MovedStatics {
 
 	public static void handleVarPlayers(int varPlayerIndex) {
 	    do {
-	        AnimationSequence.anInt2480 = pulseCycle;
+	        anInt2480 = pulseCycle;
 	        SoundSystem.setObjectSounds();
 	        int varPlayerType = VarPlayerDefinition.getDefinition(varPlayerIndex).type;
 	        if(varPlayerType != 0) {
@@ -1412,7 +1435,7 @@ public class MovedStatics {
             tabHighlightImageTopRightEdge = null;
             anIntArray852 = null;
             chatModes = null;
-            Buffer.tabTopBack = null;
+            tabTopBack = null;
             tabImageProducer = null;
             tabHighlightImageTopLeftEdge = null;
             gameScreenImageProducer = null;
@@ -1481,7 +1504,7 @@ public class MovedStatics {
                     int i_5_ = arg7;
                     if(i_5_ < 3 && (tile_flags[1][arg2][arg0] & 0x2) == 2)
                         i_5_++;
-                    CollisionMap.addObject(Landscape.currentCollisionMap[arg7], arg1, i_5_, arg7, arg3, Game.currentScene,  arg4, arg0, arg2);
+                    Landscape.currentCollisionMap[arg7].addObject(arg1, i_5_, arg7, arg3, Game.currentScene,  arg4, arg0, arg2);
                 }
             }
         }
@@ -1904,7 +1927,7 @@ public class MovedStatics {
             Minimap.minimapBackgroundImage = Game.method359(Native.mapBack, Native.aClass1_305, arg2);
             bottomChatBack = Game.method359(Native.imgBackbase1, Native.aClass1_305, arg2);
             tabBottomBack = Game.method359(Native.imgBackbase2, Native.aClass1_305, arg2);
-            Buffer.tabTopBack = Game.method359(Native.imgBackhmid1, Native.aClass1_305, arg2);
+            tabTopBack = Game.method359(Native.imgBackhmid1, Native.aClass1_305, arg2);
             ChatBox.chatBoxImageProducer = createGraphicsBuffer(479, 96, arg0);
             chatboxBackgroundImage.drawImage(0, 0);
             Minimap.mapbackProducingGraphicsBuffer = createGraphicsBuffer(172, 156, arg0);
@@ -2101,7 +2124,7 @@ public class MovedStatics {
             drawWelcomeScreenGraphics();
             ChatBox.drawChatBoxGraphics();
             drawTabGraphics();
-            ActorDefinition.drawMapBack();
+            Minimap.drawMapBack();
             Game.method943(ChatBox.tradeMode, fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             method527(Game.currentTabId, Game.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
             showSidePanelRedrawnText = true;
@@ -2584,7 +2607,7 @@ public class MovedStatics {
                             if(i_2_ == 3) {
                                 screenPos = screenPos.add(new Point2d(15, -10));
                             }
-                            AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474[actor.anIntArray3086[i_2_]].drawImage(screenPos.x + -12, -12 + screenPos.y);
+                            aClass40_Sub5_Sub14_Sub4Array2474[actor.anIntArray3086[i_2_]].drawImage(screenPos.x + -12, -12 + screenPos.y);
                             TypeFace.fontSmall.drawStringLeft(Integer.toString(actor.anIntArray3087[i_2_]), screenPos.x, 4 + screenPos.y, 0);
                             TypeFace.fontSmall.drawStringLeft(Integer.toString(actor.anIntArray3087[i_2_]), screenPos.x - 1, screenPos.y + 3, 16777215);
                         }
@@ -3047,7 +3070,7 @@ public class MovedStatics {
     }
 
     public static IndexedImage method769(int arg0, CacheArchive imageArchive, int arg2) {
-        if(!Buffer.method472(imageArchive, arg2))
+        if(!method472(imageArchive, arg2))
             return null;
         return method538();
     }
@@ -3259,7 +3282,7 @@ public class MovedStatics {
                             GameInterface.activeInterfaceType = 1;
                         if(GameInterface.chatboxInterfaceId == id >> 16)
                             GameInterface.activeInterfaceType = 3;
-                        Buffer.lastItemDragTime = 0;
+                        GameInterface.lastItemDragTime = 0;
                         return;
                     }
                 }
@@ -3280,5 +3303,346 @@ public class MovedStatics {
         for(int i = 0; i < 32; i++)
             tickSamples[i] = 0L;
         ticksPerLoop = 0;
+    }
+
+    public static void method144(int arg0) {
+
+        fontMetrics = null;
+        helveticaBold = null;
+        if(arg0 == 12433)
+            loadingBoxImage = null;
+
+    }
+
+    public static ImageRGB method578() {
+        ImageRGB class40_sub5_sub14_sub4 = new ImageRGB();
+        class40_sub5_sub14_sub4.maxWidth = imageMaxWidth;
+        class40_sub5_sub14_sub4.maxHeight = imageMaxHeight;
+        class40_sub5_sub14_sub4.offsetX = anIntArray1347[0];
+        class40_sub5_sub14_sub4.offsetY = anIntArray3111[0];
+        class40_sub5_sub14_sub4.imageWidth = anIntArray456[0];
+        class40_sub5_sub14_sub4.imageHeight = anIntArray3312[0];
+        byte[] is = aByteArrayArray1370[0];
+        int i = class40_sub5_sub14_sub4.imageWidth * class40_sub5_sub14_sub4.imageHeight;
+        class40_sub5_sub14_sub4.pixels = new int[i];
+        for(int i_5_ = 0; i_5_ < i; i_5_++) {
+            class40_sub5_sub14_sub4.pixels[i_5_] = anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
+        }
+        method569();
+        return class40_sub5_sub14_sub4;
+    }
+
+    public static void method569() {
+        anIntArray456 = null;
+        aByteArrayArray1370 = null;
+        anIntArray3312 = null;
+        anIntArray3111 = null;
+        anIntArray1972 = null;
+        anIntArray1347 = null;
+    }
+
+    /**
+     * walk to object
+     */
+    public static boolean method596(int arg0, int arg1, byte junk, int arg3) {
+        int i = 0x7fff & arg1 >> 14;
+        int i_14_ = Game.currentScene.getArrangement(Player.worldLevel, arg0, arg3, arg1);
+        if(i_14_ == -1)
+            return false;
+        int orientation = 0x3 & i_14_ >> 6;
+        int type = 0x1f & i_14_;
+        if(type != 10 && type != 11 && type != 22)
+            Pathfinding.doObjectWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], arg0, arg3, 0, 0, 0, 1 + type, orientation);
+        else {
+            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+            int i_17_ = gameObjectDefinition.blockingMask;
+            if(orientation != 0)
+                i_17_ = (i_17_ >> 4 + -orientation) + (0xf & i_17_ << orientation);
+            int i_18_;
+            int i_19_;
+            if(orientation == 0 || orientation == 2) {
+                i_19_ = gameObjectDefinition.sizeY;
+                i_18_ = gameObjectDefinition.sizeX;
+            } else {
+                i_18_ = gameObjectDefinition.sizeY;
+                i_19_ = gameObjectDefinition.sizeX;
+            }
+            Pathfinding.doObjectWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], arg0, arg3, i_18_, i_19_, i_17_, 0, 0);
+        }
+        GameInterface.crossX = MouseHandler.clickX;
+        crossType = 2;
+        GameInterface.crossY = MouseHandler.clickY;
+        crossIndex = 0;
+        return true;
+    }
+
+    public static void startup() {
+        if (loadingPercent == 0) {
+            Game.currentScene = new Scene(Landscape.tile_height);
+            for (int i = 0; i < 4; i++)
+                Landscape.currentCollisionMap[i] = new CollisionMap(104, 104);
+            Minimap.minimapImage = new ImageRGB(512, 512);
+            anInt1607 = 5;
+            loadingPercent = 20;
+            Native.currentLoadingText = English.startingGameEngine;
+        } else if (loadingPercent == 20) {
+//            int[] is = new int[9];
+//            for (int i = 0; i < 9; i++) {
+//                int i_0_ = 15 + 32 * i + 128;
+//                int i_1_ = 3 * i_0_ + 600;
+//                int i_2_ = Rasterizer3D.sinetable[i_0_];
+//                is[i] = i_2_ * i_1_ >> 16;
+//            }
+//            Scene.method95(500, 800, 512, 334, is);
+            ScreenController.setBounds();
+            anInt1607 = 10;
+            Native.currentLoadingText = English.preparedVisibilityMap;
+            loadingPercent = 30;
+        } else if (loadingPercent == 30) {
+            CacheArchive.skeletonCacheArchive = CacheArchive.loadArchive(0, true, false, true);
+            CacheArchive.skinDefinitionCacheArchive = CacheArchive.loadArchive(1, true, false, true);
+            CacheArchive.gameDefinitionsCacheArchive = CacheArchive.loadArchive(2, true, true, false);
+            CacheArchive.gameInterfaceCacheArchive = CacheArchive.loadArchive(3, true, false, true);
+            CacheArchive.soundEffectCacheArchive = CacheArchive.loadArchive(4, true, false, true);
+            CacheArchive.gameWorldMapCacheArchive = CacheArchive.loadArchive(5, true, true, true);
+            CacheArchive.musicCacheArchive = CacheArchive.loadArchive(6, false, true, true);
+            CacheArchive.modelCacheArchive = CacheArchive.loadArchive(7, true, false, true);
+            CacheArchive.gameImageCacheArchive = CacheArchive.loadArchive(8, true, false, true);
+            CacheArchive.gameTextureCacheArchive = CacheArchive.loadArchive(9, true, false, true);
+            CacheArchive.huffmanCacheArchive = CacheArchive.loadArchive(10, true, false, true);
+            CacheArchive.jingleCacheArchive = CacheArchive.loadArchive(11, true, false, true);
+            CacheArchive.clientScriptCacheArchive = CacheArchive.loadArchive(12, true, false, true);
+            loadingPercent = 40;
+            Native.currentLoadingText = English.connectingToUpdateServer;
+            anInt1607 = 20;
+        } else if (loadingPercent == 40) {
+            int i = 0;
+            i += CacheArchive.skeletonCacheArchive.getPercentLoaded() * 5 / 100;
+            i += 5 * CacheArchive.skinDefinitionCacheArchive.getPercentLoaded() / 100;
+            i += 5 * CacheArchive.gameDefinitionsCacheArchive.getPercentLoaded() / 100;
+            i += 5 * CacheArchive.gameInterfaceCacheArchive.getPercentLoaded() / 100;
+            i += 5 * CacheArchive.soundEffectCacheArchive.getPercentLoaded() / 100;
+            i += 5 * CacheArchive.gameWorldMapCacheArchive.getPercentLoaded() / 100;
+            i += CacheArchive.musicCacheArchive.getPercentLoaded() * 5 / 100;
+            i += 40 * CacheArchive.modelCacheArchive.getPercentLoaded() / 100;
+            i += CacheArchive.gameImageCacheArchive.getPercentLoaded() * 5 / 100;
+            i += CacheArchive.gameTextureCacheArchive.getPercentLoaded() * 5 / 100;
+            i += 5 * CacheArchive.huffmanCacheArchive.getPercentLoaded() / 100;
+            i += 5 * CacheArchive.jingleCacheArchive.getPercentLoaded() / 100;
+            i += 5 * CacheArchive.clientScriptCacheArchive.getPercentLoaded() / 100;
+            if (i == 100) {
+                loadingPercent = 45;
+                Native.currentLoadingText = English.loadedUpdateList;
+                anInt1607 = 30;
+            } else {
+                if (i != 0)
+                    Native.currentLoadingText = English.checkingForUpdates + i + Native.percent;
+                anInt1607 = 30;
+            }
+        } else if (loadingPercent == 45) {
+            MusicSystem.initialiseMusic(0);
+            SoundSystem.initialiseSound(Game.signlink);
+            loadingPercent = 50;
+            Native.currentLoadingText = English.preparedSoundEngine;
+            anInt1607 = 35;
+        } else if (loadingPercent == 50) {
+            int i = 0;
+            if (TypeFace.fontSmall != null)
+                i++;
+            else
+                TypeFace.fontSmall = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontP11Full);
+            if (fontNormal != null)
+                i++;
+            else
+                fontNormal = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontP12Full);
+            if (TypeFace.fontBold != null)
+                i++;
+            else
+                TypeFace.fontBold = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontB12Full);
+            if (i < 3) {
+                Native.currentLoadingText = English.loadingFonts + (i * 100 / 3) + Native.percent;
+                anInt1607 = 40;
+            } else {
+                loadingPercent = 60;
+                anInt1607 = 40;
+                Native.currentLoadingText = English.loadedFonts;
+            }
+        } else if (loadingPercent == 60) {
+            int i = method988(CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
+            int i_3_ = 5;
+            if (i < 5) {
+                Native.currentLoadingText = English.loadingTitleScreen + (100 * i / 5) + Native.percent;
+                anInt1607 = 50;
+            } else {
+                org.runejs.client.frame.console.Console.console = new Console();
+                Native.currentLoadingText = English.loadedTitleScreen;
+                anInt1607 = 50;
+                processGameStatus(5);
+                loadingPercent = 70;
+            }
+        } else if (loadingPercent == 70) {
+            if (CacheArchive.gameDefinitionsCacheArchive.method185()) {
+                OverlayDefinition.initializeOverlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
+                UnderlayDefinition.initializeUnderlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
+                IdentityKit.initializeIdentityKitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
+                GameObjectDefinition.initializeGameObjectDefinitionCache(CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
+                ActorDefinition.initializeActorCache(CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
+                ItemDefinition.initializeItemDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, membersWorld, CacheArchive.modelCacheArchive);
+                AnimationSequence.initializeAnimationCaches(CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.skeletonCacheArchive);
+                SpotAnimDefinition.initializeSpotAnimCache(CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
+                VarbitDefinition.initializeVarbitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
+                VarPlayerDefinition.initializeVarPlayerDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
+                GameInterface.createInterfaceMemoryBuffers();
+                loadingPercent = 80;
+                anInt1607 = 60;
+                Native.currentLoadingText = English.loadedConfig;
+            } else {
+                Native.currentLoadingText = English.loadingConfig + CacheArchive.gameDefinitionsCacheArchive.method202() + Native.percent;
+                anInt1607 = 60;
+            }
+        } else if (loadingPercent == 80) {
+            int i = 0;
+            if (Minimap.minimapCompass != null)
+                i++;
+            else
+                Minimap.minimapCompass = method1028(CacheArchive.gameImageCacheArchive, Native.compass, "");
+            if (minimapEdge == null)
+                minimapEdge = method1028(CacheArchive.gameImageCacheArchive, Native.mapEdge, "");
+            else
+                i++;
+            if (mapSceneIcons != null)
+                i++;
+            else
+                mapSceneIcons = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.mapScene, "");
+            if (Minimap.mapFunctionIcons == null)
+                Minimap.mapFunctionIcons = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
+            else
+                i++;
+            if (aClass40_Sub5_Sub14_Sub4Array2474 != null)
+                i++;
+            else
+                aClass40_Sub5_Sub14_Sub4Array2474 = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.hitmarks, "");
+            if (aClass40_Sub5_Sub14_Sub4Array603 == null)
+                aClass40_Sub5_Sub14_Sub4Array603 = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPK, "");
+            else
+                i++;
+            if (headIconSprites != null)
+                i++;
+            else
+                headIconSprites = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
+            if (hintIconSprites == null)
+                hintIconSprites = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.headiconsHint, "");
+            else
+                i++;
+            if (multiCombatIcon == null)
+                multiCombatIcon = method1028(CacheArchive.gameImageCacheArchive, Native.overlayMultiway, "");
+            else
+                i++;
+            if (Minimap.minimapMarkers == null)
+                Minimap.minimapMarkers = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.mapMarker, "");
+            else
+                i++;
+            if (cursorCross != null)
+                i++;
+            else
+                cursorCross = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.cursorCross, "");
+            if (Minimap.mapDots == null)
+                Minimap.mapDots = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.mapDots, "");
+            else
+                i++;
+            if (scrollbarArrowImages == null)
+                scrollbarArrowImages = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.scrollbar, "");
+            else
+                i++;
+            if (moderatorIcon != null)
+                i++;
+            else
+                moderatorIcon = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.modIcons, "");
+            if (i < 14) {
+                Native.currentLoadingText = English.loadingSprites + (100 * i / 14) + Native.percent;
+                anInt1607 = 70;
+            } else {
+                minimapEdge.trim();
+                int i_4_ = (int) (Math.random() * 21.0) - 10;
+                int i_5_ = (int) (21.0 * Math.random()) - 10;
+                int i_6_ = (int) (41.0 * Math.random()) - 20;
+                int i_7_ = -10 + (int) (21.0 * Math.random());
+                for (int i_8_ = 0; Minimap.mapFunctionIcons.length > i_8_; i_8_++)
+                    Minimap.mapFunctionIcons[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
+                mapSceneIcons[0].mixPalette(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
+                Native.currentLoadingText = English.loadedSprites;
+                anInt1607 = 70;
+                loadingPercent = 85;
+            }
+        } else if (loadingPercent == 85) {
+            int i = method955(CacheArchive.gameImageCacheArchive);
+            if (i < 19) {
+                Native.currentLoadingText = English.loadingGameScreen + (i * 100 / 19) + Native.percent;
+                anInt1607 = 80;
+            } else {
+                Native.currentLoadingText = English.loadedGamescreen;
+                loadingPercent = 90;
+                anInt1607 = 80;
+            }
+        } else if (loadingPercent == 90) {
+            if (CacheArchive.gameTextureCacheArchive.method185()) {
+                Class35 class35 = new Class35(CacheArchive.gameTextureCacheArchive, CacheArchive.gameImageCacheArchive, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
+                Rasterizer3D.method703(class35);
+                Rasterizer3D.createPalette(0.8);
+                loadingPercent = 110;
+                anInt1607 = 90;
+                Native.currentLoadingText = English.loadedTextures;
+            } else {
+                Native.currentLoadingText = English.loadingTextures + CacheArchive.gameTextureCacheArchive.method202() + Native.percent;
+                anInt1607 = 90;
+            }
+        } else if (loadingPercent == 110) {
+            Game.mouseCapturer = new MouseCapturer();
+            Game.signlink.createThreadNode(10, Game.mouseCapturer);
+            Native.currentLoadingText = English.loadedInputHandler;
+            loadingPercent = 120;
+            anInt1607 = 94;
+        } else if (loadingPercent == 120) {
+            if (CacheArchive.huffmanCacheArchive.method194(Native.huffman, "")) {
+                HuffmanEncoding huffmanEncoding = new HuffmanEncoding(CacheArchive.huffmanCacheArchive.method170("", Native.huffman));
+                method778(huffmanEncoding);
+                loadingPercent = 130;
+                Native.currentLoadingText = English.loadedWordpack;
+                anInt1607 = 96;
+            } else {
+                Native.currentLoadingText = English.loadingWordPack + Native.zeroPercent;
+                anInt1607 = 96;
+            }
+        } else if (loadingPercent == 130) {
+            if (!CacheArchive.gameInterfaceCacheArchive.method185()) {
+                Native.currentLoadingText = English.loadingInterfaces + (4 * CacheArchive.gameInterfaceCacheArchive.method202() / 5) + Native.percent;
+                anInt1607 = 100;
+            } else if (CacheArchive.clientScriptCacheArchive.method185()) {
+                Native.currentLoadingText = English.loadedInterfaces;
+                loadingPercent = 140;
+                anInt1607 = 100;
+            } else {
+                Native.currentLoadingText = English.loadingInterfaces + (80 + CacheArchive.clientScriptCacheArchive.method202() / 5) + Native.percent;
+                anInt1607 = 100;
+            }
+        } else {
+            if (loadingPercent == 140)
+                processGameStatus(10);
+        }
+    }
+
+    /**
+     * Reading some kind of cache
+     *
+     * TODO what is this? sprites?
+     */
+    public static boolean method472(CacheArchive arg1, int arg2) {
+        byte[] is = arg1.method187(arg2);
+        if(is == null) {
+            return false;
+        }
+        method184(is, 0);
+        return true;
+
     }
 }

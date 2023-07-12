@@ -1,9 +1,7 @@
 package org.runejs.client.cache.def;
 
 import org.runejs.client.*;
-import org.runejs.client.cache.CacheIndex;
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.node.Class40_Sub6;
 import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.io.Buffer;
@@ -16,10 +14,9 @@ import org.runejs.client.scene.InteractiveObjectTemporary;
 import java.io.IOException;
 
 public class GameObjectDefinition extends CachedNode implements EntityDefinition {
-    public static int anInt2543 = 0;
     public static int count;
     public static int[] OBJECT_TYPES = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
-    public static boolean lowMemory = false;
+    private static boolean lowMemory = false;
     private static CacheArchive definitionArchive;
     private static CacheArchive modelArchive;
     private static NodeCache definitionCache = new NodeCache(64);
@@ -104,24 +101,6 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         hasActions = -1;
         ambient = 0;
         modelSizeY = 128;
-    }
-
-    public static void method602(CacheArchive arg0, int arg1, CacheIndex arg2) {
-        byte[] is = null;
-        synchronized(MovedStatics.aLinkedList_53) {
-            for(Class40_Sub6 class40_sub6 = (Class40_Sub6) MovedStatics.aLinkedList_53.peekFirst(); class40_sub6 != null; class40_sub6 = (Class40_Sub6) MovedStatics.aLinkedList_53.pollFirst()) {
-                if((long) arg1 == class40_sub6.key && arg2 == class40_sub6.cacheIndex && class40_sub6.anInt2112 == 0) {
-                    is = class40_sub6.aByteArray2102;
-                    break;
-                }
-            }
-        }
-        if(is == null) {
-            byte[] is_6_ = arg2.get(arg1);
-            arg0.method198(true, is_6_, arg1, arg2);
-        } else {
-            arg0.method198(true, is, arg1, arg2);
-        }
     }
 
 

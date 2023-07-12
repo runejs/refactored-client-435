@@ -1423,7 +1423,7 @@ public class Landscape {
                 if(obj.x < 0 || obj.y < 0 || obj.x >= 104 || obj.y >= 104)
                     obj.unlink();
             }
-            Buffer.anInt1985 = -1;
+            MovedStatics.anInt1985 = -1;
             if(MovedStatics.destinationX != 0) {
                 MovedStatics.destinationX -= i_34_;
                 Game.destinationY -= i_35_;

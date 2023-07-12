@@ -1,22 +1,12 @@
 package org.runejs.client.cache.def;
 
-import org.runejs.client.*;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.AnimationSequence;
-import org.runejs.client.cache.media.ImageRGB;
-import org.runejs.client.frame.Minimap;
-import org.runejs.client.frame.ScreenController;
-import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.media.renderable.actor.Npc;
-import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.node.NodeCache;
-import org.runejs.client.util.BitUtils;
-
-import java.awt.*;
 
 public class ActorDefinition extends CachedNode implements EntityDefinition {
 
@@ -54,66 +44,6 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     public int id;
     public int[] modifiedModelColors;
     public boolean renderOnMinimap = true;
-
-    public static void method569() {
-        MovedStatics.anIntArray456 = null;
-        MovedStatics.aByteArrayArray1370 = null;
-        Npc.anIntArray3312 = null;
-        MovedStatics.anIntArray3111 = null;
-        Buffer.anIntArray1972 = null;
-        MovedStatics.anIntArray1347 = null;
-    }
-
-    public static void playAnimation(int animationId, int animationDelay, Player player) {
-        if(player.playingAnimation == animationId && animationId != -1) {
-            int i = AnimationSequence.getAnimationSequence(animationId).replyMode;
-            if(i == 1) {
-                player.anInt3104 = 0;
-                player.anInt3095 = 0;
-                player.playingAnimationDelay = animationDelay;
-                player.anInt3115 = 0;
-            }
-            if(i == 2) {
-                player.anInt3095 = 0;
-            }
-        } else if(animationId == -1 || player.playingAnimation == -1 || AnimationSequence.getAnimationSequence(animationId).forcedPriority >= AnimationSequence.getAnimationSequence(player.playingAnimation).forcedPriority) {
-            player.anInt3094 = player.anInt3109;
-            player.anInt3104 = 0;
-            player.anInt3115 = 0;
-            player.anInt3095 = 0;
-            player.playingAnimationDelay = animationDelay;
-            player.playingAnimation = animationId;
-        }
-    }
-
-    public static void drawMapBack() {
-        try {
-            if(ScreenController.frameMode == ScreenMode.FIXED) {
-                Graphics graphics = Game.gameCanvas.getGraphics();
-                Minimap.mapbackProducingGraphicsBuffer.drawGraphics(550, 4, graphics);
-            }
-        } catch(Exception exception) {
-            Game.gameCanvas.repaint();
-        }
-    }
-
-    public static ImageRGB method578() {
-        ImageRGB class40_sub5_sub14_sub4 = new ImageRGB();
-        class40_sub5_sub14_sub4.maxWidth = MovedStatics.imageMaxWidth;
-        class40_sub5_sub14_sub4.maxHeight = MovedStatics.imageMaxHeight;
-        class40_sub5_sub14_sub4.offsetX = MovedStatics.anIntArray1347[0];
-        class40_sub5_sub14_sub4.offsetY = MovedStatics.anIntArray3111[0];
-        class40_sub5_sub14_sub4.imageWidth = MovedStatics.anIntArray456[0];
-        class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[0];
-        byte[] is = MovedStatics.aByteArrayArray1370[0];
-        int i = class40_sub5_sub14_sub4.imageWidth * class40_sub5_sub14_sub4.imageHeight;
-        class40_sub5_sub14_sub4.pixels = new int[i];
-        for(int i_5_ = 0; i_5_ < i; i_5_++) {
-            class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
-        }
-        method569();
-        return class40_sub5_sub14_sub4;
-    }
 
     public static ActorDefinition getDefinition(int id) {
         ActorDefinition definition = (ActorDefinition) actorDefinitionCache.get(id);

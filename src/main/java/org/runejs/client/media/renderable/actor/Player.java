@@ -1,7 +1,6 @@
 package org.runejs.client.media.renderable.actor;
 
 import org.runejs.client.*;
-import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.def.SpotAnimDefinition;
@@ -12,7 +11,6 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.PacketBuffer;
-import org.runejs.client.scene.util.CollisionMap;
 
 public class Player extends Actor {
 
@@ -50,6 +48,10 @@ public class Player extends Actor {
     public static int localPlayerId = -1;
     public static String[] playerActions = new String[5];
     public static boolean[] playerActionsLowPriority = new boolean[5];
+    /**
+     * Relates to converting longs to Player usernames
+     */
+    private static byte[] aByteArray169 = new byte[]{95, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57};
     public int skillLevel;
     public int anInt3258;
     public int combatLevel = 0;
@@ -107,7 +109,7 @@ public class Player extends Actor {
             if(animationId == 65535)
                 animationId = -1;
             int animationDelay = appearanceBuffer.getUnsignedByte();
-            ActorDefinition.playAnimation(animationId, animationDelay, player);
+            playAnimation(animationId, animationDelay, player);
         }
         if((mask & 0x4) != 0) { // face actor
             player.facingActorIndex = appearanceBuffer.getUnsignedShortBE();
@@ -239,7 +241,7 @@ public class Player extends Actor {
         while(arg1 != 0) {
             long l_10_ = arg1;
             arg1 /= 37L;
-            is[--i] = CollisionMap.aByteArray169[(int) (-(arg1 * 37L) + l_10_)];
+            is[--i] = aByteArray169[(int) (-(arg1 * 37L) + l_10_)];
         }
         RSString class1 = new RSString();
         class1.chars = is;
@@ -313,6 +315,28 @@ public class Player extends Actor {
                 return true;
         }
         return arg0.equalsIgnoreCase(localPlayer.playerName);
+    }
+
+    public static void playAnimation(int animationId, int animationDelay, Player player) {
+        if(player.playingAnimation == animationId && animationId != -1) {
+            int i = AnimationSequence.getAnimationSequence(animationId).replyMode;
+            if(i == 1) {
+                player.anInt3104 = 0;
+                player.anInt3095 = 0;
+                player.playingAnimationDelay = animationDelay;
+                player.anInt3115 = 0;
+            }
+            if(i == 2) {
+                player.anInt3095 = 0;
+            }
+        } else if(animationId == -1 || player.playingAnimation == -1 || AnimationSequence.getAnimationSequence(animationId).forcedPriority >= AnimationSequence.getAnimationSequence(player.playingAnimation).forcedPriority) {
+            player.anInt3094 = player.anInt3109;
+            player.anInt3104 = 0;
+            player.anInt3115 = 0;
+            player.anInt3095 = 0;
+            player.playingAnimationDelay = animationDelay;
+            player.playingAnimation = animationId;
+        }
     }
 
     public Model getRotatedModel() {

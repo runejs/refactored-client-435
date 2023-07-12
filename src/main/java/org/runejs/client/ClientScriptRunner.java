@@ -15,7 +15,6 @@ import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.SignlinkNode;
-import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.cache.def.VarPlayerDefinition;
 import org.runejs.client.cache.def.VarbitDefinition;
@@ -921,7 +920,7 @@ public class ClientScriptRunner extends Node {
                                             break;
                                         }
                                         intValueIndex -= 2;
-                                        ActorDefinition.playAnimation(scriptIntValues[intValueIndex], scriptIntValues[intValueIndex + 1], Player.localPlayer);
+                                        Player.playAnimation(scriptIntValues[intValueIndex], scriptIntValues[intValueIndex + 1], Player.localPlayer);
                                     }
                                 }
                             } else {

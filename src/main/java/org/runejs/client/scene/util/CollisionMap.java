@@ -8,11 +8,6 @@ import org.runejs.client.scene.Scene;
 import org.runejs.client.util.BitUtils;
 
 public class CollisionMap {
-    public static Object anObject162 = new Object();
-    public static byte[] aByteArray169 = new byte[]{95, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57};
-    public static int someOtherPort;
-
-
     public int insetX;
     public int height;
     public int[][] clippingData;
@@ -30,17 +25,9 @@ public class CollisionMap {
 
     }
 
-    public static void method144(int arg0) {
+    public void addObject(int arg1, int arg2, int arg3, int arg4, Scene arg5, int arg7, int arg8, int arg9) {
+        CollisionMap arg0 = this;
 
-        MovedStatics.fontMetrics = null;
-        MovedStatics.helveticaBold = null;
-        if(arg0 == 12433)
-            MovedStatics.loadingBoxImage = null;
-
-    }
-
-
-    public static void addObject(CollisionMap arg0, int arg1, int arg2, int arg3, int arg4, Scene arg5, int arg7, int arg8, int arg9) {
         int i = Landscape.tile_height[arg2][arg9][arg8];
         int i_0_ = Landscape.tile_height[arg2][1 + arg9][arg8];
         int i_1_ = Landscape.tile_height[arg2][arg9][1 + arg8];

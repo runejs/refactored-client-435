@@ -8,6 +8,9 @@ import org.runejs.client.cache.def.SpotAnimDefinition;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.node.CachedNode;
 
+/**
+ * anim skeleton?
+ */
 public class Class40_Sub5_Sub15 extends CachedNode {
     public FrameDefinition[] aFrameDefinitionArray2794;
 

@@ -29,7 +29,6 @@ import org.runejs.client.scene.camera.Camera;
 import org.runejs.client.scene.camera.CameraRotation;
 import org.runejs.client.scene.camera.CutsceneCamera;
 import org.runejs.client.scene.camera.SphericalCamera;
-import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.Signlink;
@@ -79,7 +78,7 @@ public class Game {
     public static int loginStatus = 0;
     public static int modewhat = 0;
     public static int modewhere = 0;
-    public static long aLong1203 = 0L;
+    public static long lastClickTime = 0L;
     public static int mouseInvInterfaceIndex = 0;
     public static int anInt509 = 0;
     public static boolean aBoolean519 = true;
@@ -103,6 +102,10 @@ public class Game {
     public static long aLong1841;
     public static int clientVersion;
     public static int playerRights = 0;
+    /**
+     * Backup port if the first one fails?
+     */
+    private static int someOtherPort;
     private static int gameServerPort;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
@@ -267,7 +270,7 @@ public class Game {
                                                     i_12_ = 0;
                                                 if (i_14_ < 5 && i_14_ > -5)
                                                     i_14_ = 0;
-                                                if (Buffer.lastItemDragTime < 5) {
+                                                if (GameInterface.lastItemDragTime < 5) {
                                                     i_14_ = 0;
                                                     i_12_ = 0;
                                                 }
@@ -615,7 +618,7 @@ public class Game {
 
 
     public static void setConfigToDefaults() {
-        aLong1203 = 0L;
+        lastClickTime = 0L;
         mouseCapturer.coord = 0;
         duplicateClickCount = 0;
         aBoolean1735 = true;
@@ -633,12 +636,12 @@ public class Game {
         IncomingPackets.thirdLastOpcode = -1;
         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
         MovedStatics.menuActionRow = 0;
-        MouseHandler.method650(0);
+        MouseHandler.setFramesSinceMouseInput(0);
         for (int i = 0; i < 100; i++)
             ChatBox.chatMessages[i] = null;
         GameInterface.itemCurrentlySelected = 0;
         MovedStatics.destinationX = 0;
-        Buffer.anInt1985 = -1;
+        MovedStatics.anInt1985 = -1;
         Player.npcCount = 0;
         SoundSystem.reset();
         widgetSelected = 0;
@@ -1324,10 +1327,10 @@ public class Game {
                     }
                 }
                 if(MouseHandler.clickType != 0) {
-                    long l = (MouseHandler.aLong2561 - aLong1203) / 50L;
+                    long delta = (MouseHandler.clickTime - lastClickTime) / 50L;
                     int i = MouseHandler.clickX;
                     int i_10_ = MouseHandler.clickY;
-                    aLong1203 = MouseHandler.aLong2561;
+                    lastClickTime = MouseHandler.clickTime;
                     if(i >= 0) {
                         if(i > 764)
                             i = 764;
@@ -1341,9 +1344,9 @@ public class Game {
                     int i_11_ = 0;
                     if(MouseHandler.clickType == 2)
                         i_11_ = 1;
-                    if(l > 4095)
-                        l = 4095L;
-                    int i_12_ = (int) l;
+                    if(delta > 4095)
+                        delta = 4095L;
+                    int i_12_ = (int) delta;
                     OutgoingPackets.buffer.putPacket(234);
                     int i_13_ = i_10_ * 765 + i;
                     OutgoingPackets.buffer.putIntLE((i_11_ << 19) + (i_12_ << 20) + i_13_);
@@ -1398,7 +1401,7 @@ public class Game {
                         }
                         MovedStatics.anInt199++;
                         if(GameInterface.activeInterfaceType != 0) {
-                            Buffer.lastItemDragTime++;
+                            GameInterface.lastItemDragTime++;
                             if(MouseHandler.mouseX > Renderable.anInt2869 + 5 || Renderable.anInt2869 + -5 > MouseHandler.mouseX || MovedStatics.anInt2798 + 5 < MouseHandler.mouseY || MovedStatics.anInt2798 - 5 > MouseHandler.mouseY)
                                 MovedStatics.lastItemDragged = true;
                             if(MouseHandler.currentMouseButtonPressed == 0) {
@@ -1407,7 +1410,7 @@ public class Game {
                                 if(GameInterface.activeInterfaceType == 2)
                                     GameInterface.redrawTabArea = true;
                                 GameInterface.activeInterfaceType = 0;
-                                if(MovedStatics.lastItemDragged && Buffer.lastItemDragTime >= 5) {
+                                if(MovedStatics.lastItemDragged && GameInterface.lastItemDragTime >= 5) {
                                     GameInterface.lastActiveInvInterface = -1;
                                     MovedStatics.processRightClick();
                                     if(GameInterface.lastActiveInvInterface == GameInterface.modifiedWidgetId && mouseInvInterfaceIndex != GameInterface.selectedInventorySlot) {
@@ -1486,7 +1489,7 @@ public class Game {
                         }
 
                         if(MouseHandler.currentMouseButtonPressed == 1 || MouseHandler.clickType == 1)
-                            Npc.anInt3294++;
+                            MovedStatics.anInt3294++;
 
                         int i = 34;
                         if(GameInterface.gameScreenInterfaceId != -1)
@@ -1540,7 +1543,7 @@ public class Game {
                         int i_21_ = KeyFocusListener.resetFramesSinceKeyboardInput();
                         if(i_20_ > 4500 && i_21_ > 4500) {
                             SceneCluster.idleLogout = 250;
-                            MouseHandler.method650(4000);
+                            MouseHandler.setFramesSinceMouseInput(4000);
                             OutgoingPackets.buffer.putPacket(216);
                         }
 
@@ -1764,7 +1767,7 @@ public class Game {
                         if (MovedStatics.anInt2321 < 1) {
                             MovedStatics.anInt2321++;
                             if (gameServerPort == currentPort) {
-                                currentPort = CollisionMap.someOtherPort;
+                                currentPort = someOtherPort;
                             } else {
                                 currentPort = gameServerPort;
                             }
@@ -1778,7 +1781,7 @@ public class Game {
         } catch (IOException ioexception) {
             if (MovedStatics.anInt2321 < 1) {
                 if (currentPort == gameServerPort) {
-                    currentPort = CollisionMap.someOtherPort;
+                    currentPort = someOtherPort;
                 } else {
                     currentPort = gameServerPort;
                 }
@@ -1791,11 +1794,11 @@ public class Game {
     }
 
     private static void method947(int arg0) {
-        synchronized(CollisionMap.anObject162) {
-            if((Buffer.anInt1987 ^ 0xffffffff) != arg0) {
-                Buffer.anInt1987 = 1;
+        synchronized(MovedStatics.anObject162) {
+            if((MovedStatics.anInt1987 ^ 0xffffffff) != arg0) {
+                MovedStatics.anInt1987 = 1;
                 try {
-                    CollisionMap.anObject162.wait();
+                    MovedStatics.anObject162.wait();
                 } catch(InterruptedException interruptedexception) {
                     /* empty */
                 }
@@ -1914,8 +1917,8 @@ public class Game {
         if(true) {
             if (VertexNormal.lowMemory && MovedStatics.onBuildTimePlane != Player.worldLevel)
                 Landscape.method789(Player.localPlayer.pathY[0], MovedStatics.regionY, MovedStatics.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
-            else if (Buffer.anInt1985 != Player.worldLevel) {
-                Buffer.anInt1985 = Player.worldLevel;
+            else if (MovedStatics.anInt1985 != Player.worldLevel) {
+                MovedStatics.anInt1985 = Player.worldLevel;
                 Minimap.method299(Player.worldLevel);
             }
         }
@@ -2119,7 +2122,7 @@ public class Game {
         if (currentPort != gameServerPort)
             currentPort = gameServerPort;
         else
-            currentPort = CollisionMap.someOtherPort;
+            currentPort = someOtherPort;
         updateServerSocket = null;
         updateServerSignlinkNode = null;
         anInt292++;
@@ -2155,10 +2158,10 @@ public class Game {
         MouseHandler.method1015();
 
         if (gameStatusCode == 0) {
-            InteractiveObjectTemporary.startup();
+            MovedStatics.startup();
             method992();
         } else if (gameStatusCode == 5) {
-            InteractiveObjectTemporary.startup();
+            MovedStatics.startup();
             method992();
         } else if (gameStatusCode == 10) {
             Class60.updateLogin();
@@ -2226,7 +2229,7 @@ public class Game {
             method164();
         } else if (gameStatusCode == 40)
             MovedStatics.method940(English.connectionLost, false, English.pleaseWaitAttemptingToReestablish);
-        Npc.anInt3294 = 0;
+        MovedStatics.anInt3294 = 0;
     }
 
     public void connectUpdateServer() {
@@ -2352,7 +2355,7 @@ public class Game {
 
     public void startup() {
         // Define ports
-        CollisionMap.someOtherPort = modewhere == 0 ? 443 : 50000 + Player.worldId;
+        someOtherPort = modewhere == 0 ? 443 : 50000 + Player.worldId;
         gameServerPort = modewhere != 0 ? Player.worldId + 40000 : Configuration.GAME_PORT;
         currentPort = gameServerPort;
 
