@@ -1,5 +1,6 @@
 package org.runejs.client.message.handler.rs435.misc;
 
+import org.runejs.client.Game;
 import org.runejs.client.Landscape;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.def.GameObjectDefinition;
@@ -58,7 +59,7 @@ public class TransformPlayerToObjectMessageHandler implements MessageHandler<Tra
                 }
                 player.anInt3271 = x * 128 + 64 * sizeX;
                 player.anInt3291 = y * 128 + 64 * sizeY;
-                player.anInt3272 = Scene.getFloorDrawHeight(Player.worldLevel, player.anInt3271, player.anInt3291);
+                player.anInt3272 = Game.currentScene.getFloorDrawHeight(Player.worldLevel, player.anInt3271, player.anInt3291);
                 player.anInt3281 = unknownYMin + y;
                 player.anInt3258 = x + unknownXMin;
                 player.anInt3262 = x + unknownXMax;

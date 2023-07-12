@@ -471,7 +471,7 @@ public class MovedStatics {
 
         Point3d cameraPos = Game.cutsceneCamera.getPosition();
 
-        int i = Scene.getFloorDrawHeight(Player.worldLevel, cameraPos.x, cameraPos.y);
+        int i = Game.currentScene.getFloorDrawHeight(Player.worldLevel, cameraPos.x, cameraPos.y);
         if (i + -cameraPos.z < 800 && (tile_flags[Player.worldLevel][cameraPos.x >> 7][cameraPos.y >> 7] & 0x4) != 0)
             return Player.worldLevel;
         return 3;
@@ -729,7 +729,7 @@ public class MovedStatics {
         if (GameInterface.itemCurrentlySelected == 0 && Game.widgetSelected == 0) {
             String tileCoords = "";
             if (Configuration.DEBUG_CONTEXT) {
-                tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + baseX), Integer.toString(Scene.hoveredTileY + baseY));
+                tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Game.currentScene.hoveredTileX + baseX), Integer.toString(Game.currentScene.hoveredTileY + baseY));
             }
 
             addActionRow(English.walkHere, 0, MouseHandler.mouseX, MouseHandler.mouseY, ActionRowType.WALK_HERE.getId(), tileCoords);
@@ -1383,7 +1383,7 @@ public class MovedStatics {
             return null;
         }
 
-        int drawHeight = Scene.getFloorDrawHeight(Player.worldLevel, x, y) - z;
+        int drawHeight = Game.currentScene.getFloorDrawHeight(Player.worldLevel, x, y) - z;
 
         Point3d cameraPos = Game.getActiveCamera().getPosition();
         CameraRotation rotation = Game.getActiveCamera().getRotation();
@@ -1898,7 +1898,7 @@ public class MovedStatics {
                     }
                 }
                 int i_37_ = 1610612736 + (arg1 << 7) + arg2;
-                Game.currentScene.addGroundItemTile(arg2, arg1, Player.worldLevel, Scene.getFloorDrawHeight(Player.worldLevel, 64 + 128 * arg2, 64 + 128 * arg1), i_37_, item, item_35_, item_34_);
+                Game.currentScene.addGroundItemTile(arg2, arg1, Player.worldLevel, Game.currentScene.getFloorDrawHeight(Player.worldLevel, 64 + 128 * arg2, 64 + 128 * arg1), i_37_, item, item_35_, item_34_);
             }
         }
 

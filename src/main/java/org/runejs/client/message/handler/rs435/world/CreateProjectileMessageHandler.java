@@ -1,5 +1,6 @@
 package org.runejs.client.message.handler.rs435.world;
 
+import org.runejs.client.Game;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.Projectile;
 import org.runejs.client.media.renderable.actor.Player;
@@ -19,9 +20,9 @@ public class CreateProjectileMessageHandler implements MessageHandler<CreateProj
             endX = 64 + 128 * endX;
             startX = 64 + 128 * startX;
             startY = startY * 128 + 64;
-            Projectile projectile = new Projectile(message.gfxId, Player.worldLevel, startX, startY, Scene.getFloorDrawHeight(Player.worldLevel, startX, startY) - message.startHeight, message.delay + MovedStatics.pulseCycle, message.speed + MovedStatics.pulseCycle, message.startSlope, message.startDistance, message.entityIndex, message.endHeight);
+            Projectile projectile = new Projectile(message.gfxId, Player.worldLevel, startX, startY, Game.currentScene.getFloorDrawHeight(Player.worldLevel, startX, startY) - message.startHeight, message.delay + MovedStatics.pulseCycle, message.speed + MovedStatics.pulseCycle, message.startSlope, message.startDistance, message.entityIndex, message.endHeight);
             endY = 128 * endY + 64;
-            projectile.trackTarget(message.delay + MovedStatics.pulseCycle, 0, endY, Scene.getFloorDrawHeight(Player.worldLevel, endX, endY) - message.endHeight, endX);
+            projectile.trackTarget(message.delay + MovedStatics.pulseCycle, 0, endY, Game.currentScene.getFloorDrawHeight(Player.worldLevel, endX, endY) - message.endHeight, endX);
             MovedStatics.projectileQueue.addLast(projectile);
         }
     }
