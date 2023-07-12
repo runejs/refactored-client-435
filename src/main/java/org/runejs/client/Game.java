@@ -17,10 +17,7 @@ import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.Renderable;
-import org.runejs.client.media.renderable.actor.Npc;
-import org.runejs.client.media.renderable.actor.Pathfinding;
-import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.media.renderable.actor.PlayerAppearance;
+import org.runejs.client.media.renderable.actor.*;
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.handler.rs435.RS435HandlerRegistry;
 import org.runejs.client.message.outbound.misc.ClickFlashingTabIconOutboundMessage;
@@ -1367,7 +1364,7 @@ public class Game {
                     OutgoingPackets.buffer.putPacket(160);
                     OutgoingPackets.buffer.putByte(0);
                 }
-                LinkedList.method910();
+                method910();
                 if(Class51.gameStatusCode == 30 || Class51.gameStatusCode == 35) {
                     MovedStatics.method652();
                     SoundSystem.processSounds();
@@ -1905,6 +1902,17 @@ public class Game {
             }
         } catch(Exception exception) {
             MouseHandler.gameCanvas.repaint();
+        }
+    }
+
+    public static void method910() {
+        if(true) {
+            if (VertexNormal.lowMemory && MovedStatics.onBuildTimePlane != Player.worldLevel)
+                Actor.method789(Player.localPlayer.pathY[0], Class17.regionY, Class51.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
+            else if (Buffer.anInt1985 != Player.worldLevel) {
+                Buffer.anInt1985 = Player.worldLevel;
+                MovedStatics.method299(Player.worldLevel);
+            }
         }
     }
 

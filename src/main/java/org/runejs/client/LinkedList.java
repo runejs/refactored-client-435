@@ -3,12 +3,8 @@ package org.runejs.client;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.node.Node;
 import org.runejs.client.input.MouseHandler;
-import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
-import org.runejs.client.media.VertexNormal;
-import org.runejs.client.media.renderable.actor.Actor;
-import org.runejs.client.media.renderable.actor.Player;
 
 import java.awt.*;
 
@@ -51,17 +47,6 @@ public class LinkedList {
 
         } catch(Exception exception) {
             MouseHandler.gameCanvas.repaint();
-        }
-    }
-
-    public static void method910() {
-        if(true) {
-            if (VertexNormal.lowMemory && MovedStatics.onBuildTimePlane != Player.worldLevel)
-                Actor.method789(Player.localPlayer.pathY[0], Class17.regionY, Class51.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
-            else if (Buffer.anInt1985 != Player.worldLevel) {
-                Buffer.anInt1985 = Player.worldLevel;
-                MovedStatics.method299(Player.worldLevel);
-            }
         }
     }
 
