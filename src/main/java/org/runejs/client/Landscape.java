@@ -488,7 +488,7 @@ public class Landscape {
                                     int h = 256 * hue / hueMultiplier;
                                     int s = saturation / direction;
                                     int l = lightness / direction;
-                                    hslBitsetOriginal = Class13.generateHslBitset(s, l, h);
+                                    hslBitsetOriginal = generateHslBitset(s, l, h);
                                     l += Actor.randomiserLightness;
                                     h = h + Class40_Sub5_Sub15.randomiserHue & 0xff;
                                     if(l >= 0) {
@@ -496,7 +496,7 @@ public class Landscape {
                                             l = 255;
                                     } else
                                         l = 0;
-                                    hslBitsetRandomised = Class13.generateHslBitset(s, l, h);
+                                    hslBitsetRandomised = generateHslBitset(s, l, h);
                                 }
                                 if(_plane > 0) {
                                     boolean hideUnderlay = true;
@@ -525,14 +525,14 @@ public class Landscape {
                                         textureId = -1;
                                         overlayMinimapColour = -2;
                                     } else {
-                                        hslBitset = Class13.generateHslBitset(overlayDefinition.lightness, overlayDefinition.saturation, overlayDefinition.hue);
+                                        hslBitset = generateHslBitset(overlayDefinition.lightness, overlayDefinition.saturation, overlayDefinition.hue);
                                         int h = Class40_Sub5_Sub15.randomiserHue + overlayDefinition.hue & 0xff;
                                         int s = Actor.randomiserLightness + overlayDefinition.saturation;
                                         if(s < 0)
                                             s = 0;
                                         else if(s > 255)
                                             s = 255;
-                                        overlayMinimapColour = Class13.generateHslBitset(overlayDefinition.lightness, s, h);
+                                        overlayMinimapColour = generateHslBitset(overlayDefinition.lightness, s, h);
                                     }
                                     int rgb = 0;
                                     if(overlayMinimapColour != -2)
@@ -545,7 +545,7 @@ public class Landscape {
                                                 i_55_ = 255;
                                         } else
                                             i_55_ = 0;
-                                        overlayMinimapColour = Class13.generateHslBitset(overlayDefinition.otherLightness, i_55_, i_54_);
+                                        overlayMinimapColour = generateHslBitset(overlayDefinition.otherLightness, i_55_, i_54_);
                                         rgb = Rasterizer3D.hsl2rgb[MovedStatics.mixLightnessSigned(overlayMinimapColour, 96)];
                                     }
                                     scene.addTile(_plane, x, y, shape, rotation, textureId, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, mixLightness(hslBitsetOriginal, lightIntensitySW), mixLightness(hslBitsetOriginal, lightIntensitySE), mixLightness(hslBitsetOriginal, lightIntensityNE), mixLightness(hslBitsetOriginal, lightIntensityNW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNW), underlayMinimapColour, rgb);
@@ -1338,5 +1338,17 @@ public class Landscape {
             tile_height[arg1][arg3][arg0] = tile_height[arg1][arg3][-1 + arg0];
         else if (arg3 > 0 && arg0 > 0 && tile_height[arg1][arg3 + -1][-1 + arg0] != 0)
             tile_height[arg1][arg3][arg0] = tile_height[arg1][-1 + arg3][arg0 - 1];
+    }
+
+    private static int generateHslBitset(int s, int l, int h) {
+        if(l > 179)
+            s /= 2;
+        if(l > 192)
+            s /= 2;
+        if(l > 217)
+            s /= 2;
+        if(l > 243)
+            s /= 2;
+        return l / 2 + (s / 32 << 7) + (h / 4 << 10);
     }
 }

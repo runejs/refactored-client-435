@@ -8,7 +8,6 @@ import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
-import org.runejs.client.scene.GroundItemTile;
 
 public class Class13 {
     /**
@@ -63,18 +62,6 @@ public class Class13 {
         if(GameInterface.decodeGameInterface(widgetId)) {
             MovedStatics.handleInterfaceActions(area, mouseX, mouseY, minX, minY, maxX, maxY, GameInterface.cachedInterfaces[widgetId], -1, 0, 0);
         }
-    }
-
-    public static int generateHslBitset(int s, int l, int h) {
-        if(l > 179)
-            s /= 2;
-        if(l > 192)
-            s /= 2;
-        if(l > 217)
-            s /= 2;
-        if(l > 243)
-            s /= 2;
-        return l / 2 + (s / 32 << 7) + (h / 4 << 10);
     }
 
     public static int[] method247(GameInterface arg0) {
