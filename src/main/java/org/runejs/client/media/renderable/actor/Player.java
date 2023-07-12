@@ -12,7 +12,6 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.PacketBuffer;
-import org.runejs.client.scene.util.CollisionMap;
 
 public class Player extends Actor {
 
@@ -50,6 +49,10 @@ public class Player extends Actor {
     public static int localPlayerId = -1;
     public static String[] playerActions = new String[5];
     public static boolean[] playerActionsLowPriority = new boolean[5];
+    /**
+     * Relates to converting longs to Player usernames
+     */
+    private static byte[] aByteArray169 = new byte[]{95, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57};
     public int skillLevel;
     public int anInt3258;
     public int combatLevel = 0;
@@ -239,7 +242,7 @@ public class Player extends Actor {
         while(arg1 != 0) {
             long l_10_ = arg1;
             arg1 /= 37L;
-            is[--i] = CollisionMap.aByteArray169[(int) (-(arg1 * 37L) + l_10_)];
+            is[--i] = aByteArray169[(int) (-(arg1 * 37L) + l_10_)];
         }
         RSString class1 = new RSString();
         class1.chars = is;

@@ -328,6 +328,7 @@ public class MovedStatics {
      */
     public static ProducingGraphicsBuffer tabTop;
     public static byte[][] aByteArrayArray1370;
+    public static Object anObject162 = new Object();
 
     public static void method440() {
         if (aBoolean512) {
@@ -457,7 +458,7 @@ public class MovedStatics {
     }
 
     public static void method332(int arg0) {
-        synchronized (CollisionMap.anObject162) {
+        synchronized (anObject162) {
             if (Buffer.anInt1987 == 0)
                 Game.signlink.createThreadNode(5, new Class44());
             Buffer.anInt1987 = arg0;
@@ -853,7 +854,7 @@ public class MovedStatics {
     public static void processGameStatus(int statusCode) {
         if (statusCode != Game.gameStatusCode) {
             if (Game.gameStatusCode == 0)
-                CollisionMap.method144(12433);
+                method144(12433);
             if (statusCode == 20 || statusCode == 40) {
                 Game.anInt1756 = 0;
                 anInt2321 = 0;
@@ -1481,7 +1482,7 @@ public class MovedStatics {
                     int i_5_ = arg7;
                     if(i_5_ < 3 && (tile_flags[1][arg2][arg0] & 0x2) == 2)
                         i_5_++;
-                    CollisionMap.addObject(Landscape.currentCollisionMap[arg7], arg1, i_5_, arg7, arg3, Game.currentScene,  arg4, arg0, arg2);
+                    Landscape.currentCollisionMap[arg7].addObject(arg1, i_5_, arg7, arg3, Game.currentScene,  arg4, arg0, arg2);
                 }
             }
         }
@@ -3280,5 +3281,14 @@ public class MovedStatics {
         for(int i = 0; i < 32; i++)
             tickSamples[i] = 0L;
         ticksPerLoop = 0;
+    }
+
+    public static void method144(int arg0) {
+
+        fontMetrics = null;
+        helveticaBold = null;
+        if(arg0 == 12433)
+            loadingBoxImage = null;
+
     }
 }

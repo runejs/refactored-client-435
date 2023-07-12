@@ -2,7 +2,6 @@ package org.runejs.client;
 
 import org.runejs.client.io.Buffer;
 import org.runejs.client.node.Class40_Sub6;
-import org.runejs.client.scene.util.CollisionMap;
 
 public class Class44 implements Runnable {
     public void run() {
@@ -14,10 +13,10 @@ public class Class44 implements Runnable {
                 }
                 if(class40_sub6 == null) {
                     MovedStatics.threadSleep(100L);
-                    synchronized(CollisionMap.anObject162) {
+                    synchronized(MovedStatics.anObject162) {
                         if(Buffer.anInt1987 <= 1) {
                             Buffer.anInt1987 = 0;
-                            CollisionMap.anObject162.notifyAll();
+                            MovedStatics.anObject162.notifyAll();
                             break;
                         }
                         Buffer.anInt1987--;
@@ -34,10 +33,10 @@ public class Class44 implements Runnable {
                             MovedStatics.aLinkedList_2604.addLast(class40_sub6);
                         }
                     }
-                    synchronized(CollisionMap.anObject162) {
+                    synchronized(MovedStatics.anObject162) {
                         if(Buffer.anInt1987 <= 1) {
                             Buffer.anInt1987 = 0;
-                            CollisionMap.anObject162.notifyAll();
+                            MovedStatics.anObject162.notifyAll();
                             break;
                         }
                         Buffer.anInt1987 = 600;

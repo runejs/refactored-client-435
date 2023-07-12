@@ -29,7 +29,6 @@ import org.runejs.client.scene.camera.Camera;
 import org.runejs.client.scene.camera.CameraRotation;
 import org.runejs.client.scene.camera.CutsceneCamera;
 import org.runejs.client.scene.camera.SphericalCamera;
-import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.Signlink;
@@ -103,6 +102,10 @@ public class Game {
     public static long aLong1841;
     public static int clientVersion;
     public static int playerRights = 0;
+    /**
+     * Backup port if the first one fails?
+     */
+    private static int someOtherPort;
     private static int gameServerPort;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
@@ -1692,7 +1695,7 @@ public class Game {
                         if (MovedStatics.anInt2321 < 1) {
                             MovedStatics.anInt2321++;
                             if (gameServerPort == currentPort) {
-                                currentPort = CollisionMap.someOtherPort;
+                                currentPort = someOtherPort;
                             } else {
                                 currentPort = gameServerPort;
                             }
@@ -1706,7 +1709,7 @@ public class Game {
         } catch (IOException ioexception) {
             if (MovedStatics.anInt2321 < 1) {
                 if (currentPort == gameServerPort) {
-                    currentPort = CollisionMap.someOtherPort;
+                    currentPort = someOtherPort;
                 } else {
                     currentPort = gameServerPort;
                 }
@@ -1719,11 +1722,11 @@ public class Game {
     }
 
     private static void method947(int arg0) {
-        synchronized(CollisionMap.anObject162) {
+        synchronized(MovedStatics.anObject162) {
             if((Buffer.anInt1987 ^ 0xffffffff) != arg0) {
                 Buffer.anInt1987 = 1;
                 try {
-                    CollisionMap.anObject162.wait();
+                    MovedStatics.anObject162.wait();
                 } catch(InterruptedException interruptedexception) {
                     /* empty */
                 }
@@ -2047,7 +2050,7 @@ public class Game {
         if (currentPort != gameServerPort)
             currentPort = gameServerPort;
         else
-            currentPort = CollisionMap.someOtherPort;
+            currentPort = someOtherPort;
         updateServerSocket = null;
         updateServerSignlinkNode = null;
         anInt292++;
@@ -2280,7 +2283,7 @@ public class Game {
 
     public void startup() {
         // Define ports
-        CollisionMap.someOtherPort = modewhere == 0 ? 443 : 50000 + Player.worldId;
+        someOtherPort = modewhere == 0 ? 443 : 50000 + Player.worldId;
         gameServerPort = modewhere != 0 ? Player.worldId + 40000 : Configuration.GAME_PORT;
         currentPort = gameServerPort;
 
