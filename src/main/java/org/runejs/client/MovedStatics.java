@@ -20,7 +20,6 @@ import org.runejs.client.net.*;
 import org.runejs.client.node.Class40_Sub6;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.frame.ChatBox;
@@ -329,6 +328,11 @@ public class MovedStatics {
     public static ProducingGraphicsBuffer tabTop;
     public static byte[][] aByteArrayArray1370;
     public static Object anObject162 = new Object();
+    /**
+     * Last varp handle cycle?
+     */
+    public static int anInt2480 = 0;
+    public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
 
     public static void method440() {
         if (aBoolean512) {
@@ -1232,7 +1236,7 @@ public class MovedStatics {
 
 	public static void handleVarPlayers(int varPlayerIndex) {
 	    do {
-	        AnimationSequence.anInt2480 = pulseCycle;
+	        anInt2480 = pulseCycle;
 	        SoundSystem.setObjectSounds();
 	        int varPlayerType = VarPlayerDefinition.getDefinition(varPlayerIndex).type;
 	        if(varPlayerType != 0) {
@@ -2585,7 +2589,7 @@ public class MovedStatics {
                             if(i_2_ == 3) {
                                 screenPos = screenPos.add(new Point2d(15, -10));
                             }
-                            AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474[actor.anIntArray3086[i_2_]].drawImage(screenPos.x + -12, -12 + screenPos.y);
+                            aClass40_Sub5_Sub14_Sub4Array2474[actor.anIntArray3086[i_2_]].drawImage(screenPos.x + -12, -12 + screenPos.y);
                             TypeFace.fontSmall.drawStringLeft(Integer.toString(actor.anIntArray3087[i_2_]), screenPos.x, 4 + screenPos.y, 0);
                             TypeFace.fontSmall.drawStringLeft(Integer.toString(actor.anIntArray3087[i_2_]), screenPos.x - 1, screenPos.y + 3, 16777215);
                         }
@@ -3317,5 +3321,40 @@ public class MovedStatics {
         anIntArray3111 = null;
         Buffer.anIntArray1972 = null;
         anIntArray1347 = null;
+    }
+
+    /**
+     * walk to object
+     */
+    public static boolean method596(int arg0, int arg1, byte junk, int arg3) {
+        int i = 0x7fff & arg1 >> 14;
+        int i_14_ = Game.currentScene.getArrangement(Player.worldLevel, arg0, arg3, arg1);
+        if(i_14_ == -1)
+            return false;
+        int orientation = 0x3 & i_14_ >> 6;
+        int type = 0x1f & i_14_;
+        if(type != 10 && type != 11 && type != 22)
+            Pathfinding.doObjectWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], arg0, arg3, 0, 0, 0, 1 + type, orientation);
+        else {
+            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+            int i_17_ = gameObjectDefinition.blockingMask;
+            if(orientation != 0)
+                i_17_ = (i_17_ >> 4 + -orientation) + (0xf & i_17_ << orientation);
+            int i_18_;
+            int i_19_;
+            if(orientation == 0 || orientation == 2) {
+                i_19_ = gameObjectDefinition.sizeY;
+                i_18_ = gameObjectDefinition.sizeX;
+            } else {
+                i_18_ = gameObjectDefinition.sizeY;
+                i_19_ = gameObjectDefinition.sizeX;
+            }
+            Pathfinding.doObjectWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], arg0, arg3, i_18_, i_19_, i_17_, 0, 0);
+        }
+        GameInterface.crossX = MouseHandler.clickX;
+        crossType = 2;
+        GameInterface.crossY = MouseHandler.clickY;
+        crossIndex = 0;
+        return true;
     }
 }

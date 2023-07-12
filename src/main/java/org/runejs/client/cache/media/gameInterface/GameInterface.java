@@ -651,7 +651,7 @@ public class GameInterface extends CachedNode {
                 OutgoingPackets.sendMessage(new ExamineObjectOutboundMessage(objectId));
             }
             if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_4.getId()) {
-                AnimationSequence.method596(i, npcIdx, (byte) -79, i_10_);
+                MovedStatics.method596(i, npcIdx, (byte) -79, i_10_);
 
                 int objectX = MovedStatics.baseX + i;
                 int objectId = (0x1ffffd20 & npcIdx) >> 14;
@@ -976,7 +976,7 @@ public class GameInterface extends CachedNode {
                     OutgoingPackets.sendMessage(new ExamineItemOutboundMessage(npcIdx));
                 }
                 if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_5.getId()) {
-                    AnimationSequence.method596(i, npcIdx, (byte) -11, i_10_);
+                    MovedStatics.method596(i, npcIdx, (byte) -11, i_10_);
 
                     int objectId = (0x1ffffd20 & npcIdx) >> 14;
                     int objectY = i_10_ + MovedStatics.baseY;
@@ -1027,7 +1027,7 @@ public class GameInterface extends CachedNode {
                     }
                 }
                 if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_2.getId()) {
-                    AnimationSequence.method596(i, npcIdx, (byte) -77, i_10_);
+                    MovedStatics.method596(i, npcIdx, (byte) -77, i_10_);
 
                     int objectX = i + MovedStatics.baseX;
                     int objectY = i_10_ + MovedStatics.baseY;
@@ -1042,7 +1042,7 @@ public class GameInterface extends CachedNode {
                         )
                     );
                 }
-                if(action == ActionRowType.USE_ITEM_ON_OBJECT.getId() && AnimationSequence.method596(i, npcIdx, (byte) -104, i_10_)) {
+                if(action == ActionRowType.USE_ITEM_ON_OBJECT.getId() && MovedStatics.method596(i, npcIdx, (byte) -104, i_10_)) {
                     int widgetId = (itemSelectedWidgetId >> 16) & 0xFFFF;
                     int containerId = itemSelectedWidgetId & 0xFFFF;
 
@@ -1283,7 +1283,7 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_3.getId()) {
-                        AnimationSequence.method596(i, npcIdx, (byte) -104, i_10_);
+                        MovedStatics.method596(i, npcIdx, (byte) -104, i_10_);
 
                         int objectY = i_10_ + MovedStatics.baseY;
                         int objectId = npcIdx >> 14 & 0x7fff;
@@ -1306,7 +1306,7 @@ public class GameInterface extends CachedNode {
                         ChatBox.dialogueId = -1;
                         ChatBox.redrawChatbox = true;
                     }
-                    if(action == ActionRowType.CAST_MAGIC_ON_OBJECT.getId() && AnimationSequence.method596(i, npcIdx, (byte) -27, i_10_)) {
+                    if(action == ActionRowType.CAST_MAGIC_ON_OBJECT.getId() && MovedStatics.method596(i, npcIdx, (byte) -27, i_10_)) {
                         OutgoingPackets.sendMessage(
                             new CastMagicOnObjectOutboundMessage(
                                 selectedSpell,
@@ -1493,7 +1493,7 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_1.getId()) {
-                        AnimationSequence.method596(i, npcIdx, (byte) -47, i_10_);
+                        MovedStatics.method596(i, npcIdx, (byte) -47, i_10_);
                         int objectId = 0x7fff & npcIdx >> 14;
                         int objectX = i + MovedStatics.baseX;
                         int objectY = i_10_ + MovedStatics.baseY;
@@ -1845,7 +1845,7 @@ public class GameInterface extends CachedNode {
                     }
                     if (gameInterface.anObjectArray2712 != null && (arg3 & 0x80) != 0)
                         ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2712, 0, 0, gameInterface, 0);
-                    if (AnimationSequence.anInt2480 == MovedStatics.pulseCycle && gameInterface.anObjectArray2650 != null && (arg3 & 0x100) != 0)
+                    if (MovedStatics.anInt2480 == MovedStatics.pulseCycle && gameInterface.anObjectArray2650 != null && (arg3 & 0x100) != 0)
                         ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2650, 0, 0, gameInterface, 0);
                 }
             }

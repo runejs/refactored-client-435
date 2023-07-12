@@ -180,10 +180,10 @@ public class InteractiveObjectTemporary extends Node {
                 Minimap.mapFunctionIcons = method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
             else
                 i++;
-            if (AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 != null)
+            if (MovedStatics.aClass40_Sub5_Sub14_Sub4Array2474 != null)
                 i++;
             else
-                AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 = method526(CacheArchive.gameImageCacheArchive, Native.hitmarks, "");
+                MovedStatics.aClass40_Sub5_Sub14_Sub4Array2474 = method526(CacheArchive.gameImageCacheArchive, Native.hitmarks, "");
             if (MovedStatics.aClass40_Sub5_Sub14_Sub4Array603 == null)
                 MovedStatics.aClass40_Sub5_Sub14_Sub4Array603 = method526(CacheArchive.gameImageCacheArchive, Native.headiconsPK, "");
             else
