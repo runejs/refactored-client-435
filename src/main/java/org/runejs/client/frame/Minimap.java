@@ -252,7 +252,7 @@ public class Minimap extends FramePieceRenderer {
             minimapCompass.shapeImageToPixels(5, 5, 33, 33, 25, 25, Game.getMinimapRotation(), 256, resizableCompasOffsets2, resizableCompasOffsets1);
 
 
-            Class65.method1018();
+            MovedStatics.method1018();
 
             ScreenController.drawFramePiece(resizableMiniMapimage, x, y);
             return;

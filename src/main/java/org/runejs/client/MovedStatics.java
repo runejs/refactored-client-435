@@ -996,7 +996,7 @@ public class MovedStatics {
                 PlayerAppearance.lostConnectionSocket = null;
             }
             if (Game.gameStatusCode == 25 || Game.gameStatusCode == 40) {
-                Class65.method1018();
+                method1018();
                 Rasterizer.resetPixels();
             }
             if (Game.gameStatusCode == 25) {
@@ -1875,7 +1875,7 @@ public class MovedStatics {
                 }
                 Game.drawParentInterface(areaId, xOffset, yOffset, 512+ xOffset, 334 + yOffset, id);
         }
-        Class65.method1018();
+        method1018();
         Player.setTutorialIslandFlag();
         if (!menuOpen) {
             processRightClick();
@@ -2420,7 +2420,7 @@ public class MovedStatics {
             showChatPanelRedrawnText = true;
         }
         int i = 151;
-        Class65.method1018();
+        method1018();
         i -= 3;
         fontNormal.drawStringLeft(arg1, 257, i, 0);
         fontNormal.drawStringLeft(arg1, 256, i + -1, 16777215);
@@ -3286,5 +3286,10 @@ public class MovedStatics {
         if(arg1.method194(Native.runes, ""))
             i++;
         return i;
+    }
+
+    public static void method1018() {
+        gameScreenImageProducer.prepareRasterizer();
+        fullScreenTextureArray = Rasterizer3D.setLineOffsets(fullScreenTextureArray);
     }
 }

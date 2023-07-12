@@ -813,7 +813,7 @@ public class Game {
         activeCamera.setOffsetPosition(shakeOffsetPosition);
         activeCamera.setOffsetRotation(shakeOffsetRotation);
 
-        Class65.method1018();
+        MovedStatics.method1018();
         MouseHandler.cursorY = MouseHandler.mouseY - 4;
         MouseHandler.gameScreenClickable = true;
         MouseHandler.cursorX = MouseHandler.mouseX - 4;
@@ -844,7 +844,7 @@ public class Game {
             aBoolean519 = false;
         }
         if(aBoolean519) {
-            Class65.method1018();
+            MovedStatics.method1018();
             Rasterizer.resetPixels();
             MovedStatics.method940(English.loadingPleaseWait, false, null);
         }
