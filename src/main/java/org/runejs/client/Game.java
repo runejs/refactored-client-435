@@ -2065,9 +2065,9 @@ public class Game {
             Class60.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
         } else if (gameStatusCode == 25) {
             if (MovedStatics.anInt1634 == 1) {
-                if (anInt874 > PacketBuffer.anInt2231)
-                    PacketBuffer.anInt2231 = anInt874;
-                int i = (-anInt874 + PacketBuffer.anInt2231) * 50 / PacketBuffer.anInt2231;
+                if (anInt874 > MovedStatics.anInt2231)
+                    MovedStatics.anInt2231 = anInt874;
+                int i = (-anInt874 + MovedStatics.anInt2231) * 50 / MovedStatics.anInt2231;
                 MovedStatics.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.percent_b);
             } else if (MovedStatics.anInt1634 == 2) {
                 if (anInt2591 > GameObject.anInt3048)

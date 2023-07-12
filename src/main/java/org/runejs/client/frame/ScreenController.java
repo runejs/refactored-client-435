@@ -15,7 +15,6 @@ import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.outbound.chat.SetChatOptionsOutboundMessage;
 import org.runejs.client.net.OutgoingPackets;
-import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.*;
 import org.runejs.client.*;
 
@@ -462,7 +461,7 @@ public class ScreenController {
             }
             if (x >= 406 && x <= 506 && y >= 0 && y <= 32) {
                 if (GameInterface.gameScreenInterfaceId == -1) {
-                    PacketBuffer.closeAllWidgets();
+                    GameInterface.closeAllWidgets();
                     if (GameInterface.reportAbuseWidgetId != -1) {
                         MovedStatics.reportMutePlayer = false;
                         GameInterface.reportAbuseInterfaceID = GameInterface.gameScreenInterfaceId = GameInterface.reportAbuseWidgetId;

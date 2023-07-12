@@ -739,7 +739,7 @@ public class ClientScriptRunner extends Node {
                                         if(scriptOpcode == 3000) {
                                             int i_42_ = scriptIntValues[--intValueIndex];
                                             if(MovedStatics.lastContinueTextWidgetId == -1) {
-                                                PacketBuffer.method517(0, i_42_);
+                                                GameInterface.method517(0, i_42_);
                                                 MovedStatics.lastContinueTextWidgetId = i_42_;
                                             }
                                         } else if(scriptOpcode == 3001 || scriptOpcode == 3003) {
@@ -750,7 +750,7 @@ public class ClientScriptRunner extends Node {
                                         } else if(scriptOpcode == 3002) {
                                             GameInterface gameInterface = !bool ? MovedStatics.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                                             if(MovedStatics.lastContinueTextWidgetId == -1) {
-                                                PacketBuffer.method517(gameInterface.id & 0x7fff, gameInterface.parentId);
+                                                GameInterface.method517(gameInterface.id & 0x7fff, gameInterface.parentId);
                                                 MovedStatics.lastContinueTextWidgetId = gameInterface.id;
                                             }
                                         } else {
@@ -1102,7 +1102,7 @@ public class ClientScriptRunner extends Node {
     }
 
     private static RSString method1024(boolean arg0, int arg2) {
-        return PacketBuffer.method521(arg0, 10, arg2);
+        return MovedStatics.method521(arg0, 10, arg2);
     }
 
     public static void method406(int arg0, int arg1, int arg2) {

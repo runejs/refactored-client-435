@@ -1,5 +1,6 @@
 package org.runejs.client;
 
+import org.runejs.client.cache.CacheIndex;
 import org.runejs.client.cache.cs.ClientScript;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
@@ -136,6 +137,9 @@ public class MovedStatics {
     public static int anInt2628 = 0;
     public static volatile boolean clearScreen = true;
     public static ProducingGraphicsBuffer gameScreenImageProducer;
+    /**
+     * Bit masks for packet buffer
+     */
     public static int[] anIntArray2361 = new int[]{0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, 2147483647, -1};
     public static CacheArchive aCacheArchive_2364;
     public static int destinationX = 0;
@@ -361,6 +365,7 @@ public class MovedStatics {
     public static CacheArchive aCacheArchive_1705;
     public static int[] keyCodes = new int[128];
     public static int tooltipDelay = 50;
+    public static int anInt2231 = 1;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -577,7 +582,7 @@ public class MovedStatics {
     }
 
     public static RSString intToStr(int arg0) {
-        return PacketBuffer.method521(false, 10, arg0);
+        return method521(false, 10, arg0);
     }
 
     public static void renderProjectiles() {
@@ -1033,7 +1038,7 @@ public class MovedStatics {
             }
             if (Game.gameStatusCode == 25) {
                 Game.anInt874 = 0;
-                PacketBuffer.anInt2231 = 1;
+                anInt2231 = 1;
                 Game.anInt2591 = 0;
                 GameObject.anInt3048 = 1;
                 anInt1634 = 0;
@@ -1166,7 +1171,7 @@ public class MovedStatics {
 	                if(gameInterface.type == GameInterfaceType.LAYER) {
                         int areaId = area.getId();
 
-	                    if(!gameInterface.isHidden || GameInterface.isHovering(areaId, i) || PacketBuffer.hiddenButtonTest) {
+	                    if(!gameInterface.isHidden || GameInterface.isHovering(areaId, i) || GameInterface.hiddenButtonTest) {
 	                        handleInterfaceActions(area, mouseX, mouseY, i_2_, i_1_, i_2_ + gameInterface.originalWidth, i_1_ + gameInterface.originalHeight, gameInterfaces, i, gameInterface.scrollPosition, gameInterface.scrollWidth);
 	                        if(gameInterface.children != null)
 	                            handleInterfaceActions(area, mouseX, mouseY, i_2_, i_1_, gameInterface.originalWidth + i_2_, i_1_ + gameInterface.originalHeight, gameInterface.children, gameInterface.id, gameInterface.scrollPosition, gameInterface.scrollWidth);
@@ -3405,5 +3410,51 @@ public class MovedStatics {
             /* empty */
         }
         return l;
+    }
+
+    public static void method513(int arg0, CacheArchive arg1, CacheIndex arg2, byte arg3) {
+        Class40_Sub6 class40_sub6 = new Class40_Sub6();
+        class40_sub6.anInt2112 = 1;
+        class40_sub6.key = (long) arg0;
+        class40_sub6.cacheIndex = arg2;
+        class40_sub6.cacheArchive = arg1;
+        synchronized(aLinkedList_53) {
+            if(arg3 != -28)
+                method521(false, -84, -120);
+            aLinkedList_53.addLast(class40_sub6);
+        }
+        method332(600);
+    }
+
+    public static RSString method521(boolean arg0, int arg2, int arg3) {
+        if(arg2 < 1 || arg2 > 36)
+            arg2 = 10;
+        int i = 1;
+        int i_2_ = arg3 / arg2;
+        while(i_2_ != 0) {
+            i_2_ /= arg2;
+            i++;
+        }
+        int i_3_ = i;
+        if(arg3 < 0 || arg0)
+            i_3_++;
+        byte[] is = new byte[i_3_];
+        if(arg3 < 0)
+            is[0] = (byte) 45;
+        else if(arg0)
+            is[0] = (byte) 43;
+        for(int i_4_ = 0; i > i_4_; i_4_++) {
+            int i_5_ = arg3 % arg2;
+            arg3 /= arg2;
+            if(i_5_ < 0)
+                i_5_ = -i_5_;
+            if(i_5_ > 9)
+                i_5_ += 39;
+            is[-1 + i_3_ - i_4_] = (byte) (48 + i_5_);
+        }
+        RSString class1 = new RSString();
+        class1.chars = is;
+        class1.length = i_3_;
+        return class1;
     }
 }

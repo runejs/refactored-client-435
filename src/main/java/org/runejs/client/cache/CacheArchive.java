@@ -4,9 +4,6 @@ import org.runejs.client.*;
 import org.runejs.client.cache.bzip.BZip;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.io.Buffer;
-import org.runejs.client.media.renderable.actor.Npc;
-import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.node.Class40_Sub6;
 
@@ -225,7 +222,7 @@ public class CacheArchive {
             anInt1797 = -1;
             for(int i_2_ = 0; aBooleanArray1796.length > i_2_; i_2_++) {
                 if(anIntArray261[i_2_] > 0) {
-                    PacketBuffer.method513(i_2_, this, dataIndex, (byte) -28);
+                    MovedStatics.method513(i_2_, this, dataIndex, (byte) -28);
                     anInt1797 = i_2_;
                 }
             }

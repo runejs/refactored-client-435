@@ -27,11 +27,11 @@ import org.runejs.client.message.outbound.examine.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
 import org.runejs.client.message.outbound.useitem.*;
+import org.runejs.client.message.outbound.widget.CloseWidgetsOutboundMessage;
 import org.runejs.client.message.outbound.widget.container.DropWidgetItemOutboundMessage;
 import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.OutgoingPackets;
-import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
@@ -68,6 +68,11 @@ public class GameInterface extends CachedNode {
     public static int anInt876 = 0;
     public static int selectedSpell;
     public static int anInt1171 = 0;
+    public static boolean hiddenButtonTest = false;
+    /**
+     * The player that the local player is sending a PM to.
+     */
+    public static long sendingMessageTo = 0L;
     /**
      * The lightened edge (top and left) color of the scroll indicator chip.
      */
@@ -935,7 +940,7 @@ public class GameInterface extends CachedNode {
                             ChatBox.inputType = 0;
                             ChatBox.chatMessage = "";
                             ChatBox.messagePromptRaised = true;
-                            PacketBuffer.aLong2241 = Player.friends[i_19_];
+                            sendingMessageTo = Player.friends[i_19_];
                             Native.enterPlayerNameHeader = English.prefixEnterMessageToSendTo + Player.friendUsernames[i_19_];
                         }
                     }
@@ -1353,7 +1358,7 @@ public class GameInterface extends CachedNode {
                         int i_22_ = class1.indexOf(Native.white);
                         if(i_22_ != -1) {
                             if(gameScreenInterfaceId == -1) {
-                                PacketBuffer.closeAllWidgets();
+                                closeAllWidgets();
                                 if(reportAbuseWidgetId != -1) {
                                     Native.reportedName = class1.substring(i_22_ + 5).trim();
                                     reportAbuseInterfaceID = gameScreenInterfaceId = reportAbuseWidgetId;
@@ -1381,10 +1386,10 @@ public class GameInterface extends CachedNode {
                         );
                     }
                     if(action == ActionRowType.CLOSE_WIDGET.getId()) {
-                        PacketBuffer.closeAllWidgets();
+                        closeAllWidgets();
                     }
                     if(action == 54 && MovedStatics.lastContinueTextWidgetId == -1) { // Click to continue
-                        PacketBuffer.method517(0, i_10_);
+                        method517(0, i_10_);
                         MovedStatics.lastContinueTextWidgetId = i_10_;
                     }
                     if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_4.getId()) {
@@ -1736,7 +1741,7 @@ public class GameInterface extends CachedNode {
         if(i == 620)
             MovedStatics.reportMutePlayer = !MovedStatics.reportMutePlayer;
         if(i >= 601 && i <= 613) {
-            PacketBuffer.closeAllWidgets();
+            closeAllWidgets();
             if(Native.reportedName.length() > 0) {
                 OutgoingPackets.sendMessage(
                     new SubmitReportAbuseOutboundMessage(
@@ -1753,7 +1758,7 @@ public class GameInterface extends CachedNode {
     public static void runClientScriptsForInterface(int minY, int arg1, int scrollWidth, int arg3, int minX, int parentId, GameInterface[] interfaceCollection, int arg8, int scrollHeight) {
         for (int i = 0; i < interfaceCollection.length; i++) {
             GameInterface gameInterface = interfaceCollection[i];
-            if (gameInterface != null && (gameInterface.type == GameInterfaceType.LAYER || gameInterface.hasListeners) && parentId == gameInterface.parentId && (!gameInterface.isHidden || PacketBuffer.hiddenButtonTest)) {
+            if (gameInterface != null && (gameInterface.type == GameInterfaceType.LAYER || gameInterface.hasListeners) && parentId == gameInterface.parentId && (!gameInterface.isHidden || hiddenButtonTest)) {
                 int absoluteX = minX + gameInterface.currentX;
                 int absoluteY = minY + gameInterface.currentY;
                 if (!gameInterface.lockScroll)
@@ -1898,7 +1903,7 @@ public class GameInterface extends CachedNode {
 // private messages
                         ChatBox.filterInput();
 
-OutgoingPackets.sendMessage(new SendPrivateMessageOutboundMessage(PacketBuffer.aLong2241, ChatBox.chatboxInput));
+OutgoingPackets.sendMessage(new SendPrivateMessageOutboundMessage(sendingMessageTo, ChatBox.chatboxInput));
 
                         if(ChatBox.privateChatMode == 2) {
                             ChatBox.privateChatMode = 1;
@@ -2017,7 +2022,7 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name
                         if(ChatBox.chatboxInput.equals(English.commandErrorTest) && Game.modewhere == 2)
                             throw new RuntimeException();
                         if(ChatBox.chatboxInput.equals(Native.cmd_hiddenbuttontest))
-                            PacketBuffer.hiddenButtonTest = true;
+                            hiddenButtonTest = true;
                     }
                     if(ChatBox.chatboxInput.startsWith(Native.cmd_prefix)) {
 // remove the :: prefix
@@ -2212,6 +2217,51 @@ ChatBox.tradeMode
         is[0] = i_11_;
         is[1] = i_12_;
         return is;
+    }
+
+    public static void closeAllWidgets() {
+        OutgoingPackets.sendMessage(new CloseWidgetsOutboundMessage());
+
+        if(tabAreaInterfaceId != -1) {
+            resetInterface(tabAreaInterfaceId);
+            MovedStatics.lastContinueTextWidgetId = -1;
+            drawTabIcons = true;
+            redrawTabArea = true;
+            tabAreaInterfaceId = -1;
+        }
+        if(chatboxInterfaceId != -1) {
+            resetInterface(chatboxInterfaceId);
+            MovedStatics.lastContinueTextWidgetId = -1;
+            ChatBox.redrawChatbox = true;
+            chatboxInterfaceId = -1;
+        }
+        if(fullscreenInterfaceId != -1) {
+            resetInterface(fullscreenInterfaceId);
+            fullscreenInterfaceId = -1;
+            MovedStatics.processGameStatus(30);
+        }
+        if(fullscreenSiblingInterfaceId != -1) {
+            resetInterface(fullscreenSiblingInterfaceId);
+            fullscreenSiblingInterfaceId = -1;
+        }
+        if(gameScreenInterfaceId != -1) {
+            resetInterface(gameScreenInterfaceId);
+            gameScreenInterfaceId = -1;
+            MovedStatics.lastContinueTextWidgetId = -1;
+        }
+    }
+
+    public static void method517(int option, int interfaceData) {
+        int widgetId = (interfaceData >> 16) & 0xFFFF;
+        int childId = interfaceData & 0xFFFF;
+
+        OutgoingPackets.sendMessage(
+            new ClickPleaseWaitWidgetOutboundMessage(
+                widgetId,
+                childId,
+                option
+            )
+        );
     }
 
     public void swapItems(int arg0, boolean arg1, int arg2) {

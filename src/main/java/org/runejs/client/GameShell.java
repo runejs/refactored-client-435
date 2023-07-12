@@ -7,7 +7,6 @@ import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
-import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.Timer;
@@ -28,6 +27,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
     public static Frame clientFrame;
     public static GameShell currentGameShell = null;
     public static int fps = 0;
+    public static boolean closedClient = false;
     private static volatile boolean clientFocused = true;
     private final int millisPerTick = 20;
     public boolean gameShellError = false;
@@ -161,8 +161,8 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
     }
 
     public synchronized void closeGameShell() {
-        if (!PacketBuffer.closedClient) {
-            PacketBuffer.closedClient = true;
+        if (!closedClient) {
+            closedClient = true;
             try {
                 MouseHandler.gameCanvas.removeFocusListener(this);
             } catch (Exception exception) {
@@ -191,7 +191,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
     }
 
     public void stop() {
-        if (this == currentGameShell && !PacketBuffer.closedClient)
+        if (this == currentGameShell && !closedClient)
             exitTimeInMillis = System.currentTimeMillis() + 4000L;
     }
 
@@ -226,7 +226,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
     }
 
     public void start() {
-        if (this == currentGameShell && !PacketBuffer.closedClient)
+        if (this == currentGameShell && !closedClient)
             exitTimeInMillis = 0L;
     }
 
@@ -235,7 +235,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
     }
 
     public synchronized void paint(Graphics arg0) {
-        if (this == currentGameShell && !PacketBuffer.closedClient) {
+        if (this == currentGameShell && !closedClient) {
             MovedStatics.clearScreen = true;
             if (Signlink.javaVersion == null || !Signlink.javaVersion.startsWith("1.5") || -MovedStatics.aLong174 + System.currentTimeMillis() <= 1000L)
                 return;
@@ -246,7 +246,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
     }
 
     public void destroy() {
-        if (currentGameShell == this && !PacketBuffer.closedClient) {
+        if (currentGameShell == this && !closedClient) {
             exitTimeInMillis = System.currentTimeMillis();
             MovedStatics.threadSleep(5000L);
             Actor.signlink = null;
