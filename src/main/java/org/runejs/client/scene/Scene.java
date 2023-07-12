@@ -37,7 +37,7 @@ public class Scene {
 
     public static boolean lowMemory = true;
 
-    public final Landscape landscape = new Landscape();
+    public final Landscape landscape;
 
     public SceneTile[][][] tileArray;
     public int[][][] tileOcclusionCycles;
@@ -103,6 +103,7 @@ public class Scene {
     private CameraTileVisibility tileVisibilityInfo;
 
     public Scene() {
+        this.landscape = new Landscape(this);
         tileArray = new SceneTile[mapSizeZ][mapSizeX][mapSizeY];
         tileOcclusionCycles = new int[mapSizeZ][mapSizeX + 1][mapSizeY + 1];
         this.heightMap = this.landscape.tile_height;
