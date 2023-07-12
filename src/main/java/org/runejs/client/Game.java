@@ -1916,6 +1916,24 @@ public class Game {
         }
     }
 
+    public static void logout() {
+        if(MovedStatics.gameServerSocket != null) {
+            MovedStatics.gameServerSocket.kill();
+            MovedStatics.gameServerSocket = null;
+        }
+        RSCanvas.clearCaches();
+        Npc.currentScene.initToNull();
+        int i = 0;
+        for(/**/; i < 4; i++)
+            Landscape.currentCollisionMap[i].reset();
+        System.gc();
+        MusicSystem.method405(10);
+        MusicSystem.songTimeout = 0;
+        MusicSystem.currentSongId = -1;
+        SoundSystem.clearObjectSounds();
+        MovedStatics.processGameStatus(10);
+    }
+
     public void method35(int arg1) {
         if (currentPort != gameServerPort)
             currentPort = gameServerPort;

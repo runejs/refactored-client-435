@@ -1024,25 +1024,7 @@ public class MovedStatics {
         }
     }
 
-	public static void logout() {
-	    if(gameServerSocket != null) {
-	        gameServerSocket.kill();
-	        gameServerSocket = null;
-	    }
-	    RSCanvas.clearCaches();
-	    Npc.currentScene.initToNull();
-	    int i = 0;
-	    for(/**/; i < 4; i++)
-	        Landscape.currentCollisionMap[i].reset();
-	    System.gc();
-	    MusicSystem.method405(10);
-	    MusicSystem.songTimeout = 0;
-	    MusicSystem.currentSongId = -1;
-	    SoundSystem.clearObjectSounds();
-	    processGameStatus(10);
-	}
-
-	public static ImageRGB method927(int arg0, CacheArchive arg1, int arg3) {
+    public static ImageRGB method927(int arg0, CacheArchive arg1, int arg3) {
 	    if(!ImageRGB.spriteExists(arg0, arg3, arg1))
 	        return null;
 	    return ActorDefinition.method578();

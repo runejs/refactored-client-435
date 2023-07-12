@@ -104,7 +104,7 @@ public class IncomingPackets {
                 return true;
             }
             MovedStatics.printException("T1 - " + opcode + "," + secondLastOpcode + "," + thirdLastOpcode + " - " + incomingPacketSize, null);
-            MovedStatics.logout();
+            Game.logout();
         } catch(java.io.IOException ioexception) {
             Class59.dropClient();
         } catch(Exception exception) {
@@ -112,7 +112,7 @@ public class IncomingPackets {
             for(int i = 0; incomingPacketSize > i && i < 50; i++)
                 string += incomingPacketBuffer.buffer[i] + ",";
             MovedStatics.printException(string, exception);
-            MovedStatics.logout();
+            Game.logout();
             exception.printStackTrace();
         }
         return true;

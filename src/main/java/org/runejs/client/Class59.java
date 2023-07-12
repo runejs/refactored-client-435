@@ -23,7 +23,7 @@ public class Class59 {
     public static void dropClient() {
         if(SceneCluster.idleLogout > 0) {
             // Instant logout
-            MovedStatics.logout();
+            Game.logout();
         } else {
             // Connection lost
             MovedStatics.processGameStatus(40);
