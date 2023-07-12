@@ -89,10 +89,14 @@ public class MyGdxGame extends ApplicationAdapter {
 		batch.begin();
 		batch.draw(bucketImage, bucket.x, bucket.y);
 		batch.end();
-		game.processGameLoop();
-		System.out.println("Status Text");
-		game.updateStatusText();
-		System.out.println("Finished loop");
+		try {
+			game.processGameLoop();
+			System.out.println("Status Text");
+			game.updateStatusText();
+			System.out.println("Finished loop");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     }
 
     @Override
