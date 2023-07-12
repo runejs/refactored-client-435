@@ -31,6 +31,12 @@ public class Scene {
     public static int[] WALL_CORNER_TYPE_64_BLOCK_OBJ_SPANS = new int[]{0, 4, 4, 8, 0, 0, 8, 0, 0};
     public static int[] WALL_CORNER_TYPE_128_BLOCK_OBJ_SPANS = new int[]{1, 1, 0, 0, 0, 8, 0, 0, 8};
 
+    
+    private static final int TILE_DRAW_DISTANCE = 75;
+    public static boolean[][] TILE_VISIBILITY_MAP;
+    public static boolean[][][][] TILE_VISIBILITY_MAPS = new boolean[8][32][(TILE_DRAW_DISTANCE * 2) + 1][(TILE_DRAW_DISTANCE * 2) + 1];
+
+
     public static boolean lowMemory = true;
     public static int cycle;
 
@@ -57,9 +63,6 @@ public class Scene {
     public static SceneCluster[][] cullingClusters = new SceneCluster[anInt90][500];
     public static int drawWidthMidpoint;
     public static int drawHeight;
-    private static final int TILE_DRAW_DISTANCE = 75;
-    public static boolean[][] TILE_VISIBILITY_MAP;
-    public static boolean[][][][] TILE_VISIBILITY_MAPS = new boolean[8][32][(TILE_DRAW_DISTANCE * 2) + 1][(TILE_DRAW_DISTANCE * 2) + 1];
     public static int drawHeightMidpoint;
     public static int drawWidth;
     public static int[] screenY = new int[6];
