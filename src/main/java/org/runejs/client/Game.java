@@ -1985,7 +1985,7 @@ public class Game {
         PlayerAppearance.clearPlayerModelCache();
         GameInterface.clearInterfaceCaches();
         ((Class35) Rasterizer3D.interface3).clearTextures();
-        ClientScript.clientScriptCache.clear();
+        ClientScript.clearClientScriptCache();
         CacheArchive.skeletonCacheArchive.clearCache();
         CacheArchive.skinDefinitionCacheArchive.clearCache();
         CacheArchive.gameInterfaceCacheArchive.clearCache();
