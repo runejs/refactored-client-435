@@ -54,10 +54,10 @@ public abstract class Renderable extends CachedNode {
                         }
                     }
                 }
-                if(gameInterface.anInt2722 != 0) {
+                if(gameInterface.rotationSpeed != 0) {
                     bool = true;
-                    int i_2_ = gameInterface.anInt2722 >> 16;
-                    int i_3_ = gameInterface.anInt2722 << 16 >> 16;
+                    int i_2_ = gameInterface.rotationSpeed >> 16;
+                    int i_3_ = gameInterface.rotationSpeed << 16 >> 16;
                     i_2_ *= MovedStatics.anInt199;
                     gameInterface.rotationX = 0x7ff & i_2_ + gameInterface.rotationX;
                     i_3_ *= MovedStatics.anInt199;

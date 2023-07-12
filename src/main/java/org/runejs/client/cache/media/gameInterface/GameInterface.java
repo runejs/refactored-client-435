@@ -149,7 +149,7 @@ public class GameInterface extends CachedNode {
     public int hoveredTextColor;
     public int scrollHeight;
     public int hoveredSiblingId;
-    public int anInt2722;
+    public int rotationSpeed;
     public boolean itemDeletesDraged;
     public int rotationY;
     public int alternateTextColor;
@@ -218,7 +218,7 @@ public class GameInterface extends CachedNode {
         anInt2738 = -1;
         modelZoom = 100;
         itemDeletesDraged = false;
-        anInt2722 = 0;
+        rotationSpeed = 0;
         yTextAlignment = 0;
         currentX = 0;
         orthogonal = false;
