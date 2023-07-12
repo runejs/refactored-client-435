@@ -11,7 +11,6 @@ import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.scene.GroundItemTile;
 
 public class Class13 {
-    public static boolean[] playerArray = new boolean[5];
     /**
      * The image used for the highlighted (selected) tab button,
      * for one of the tabs on the right-hand side of the bottom,

@@ -1,7 +1,6 @@
 package org.runejs.client.message.handler.rs435.misc;
 
-import org.runejs.client.Class13;
-import org.runejs.client.Game;
+import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.misc.UpdatePlayerOptionsInboundMessage;
 
@@ -12,8 +11,8 @@ public class UpdatePlayerOptionsMessageHandler implements MessageHandler<UpdateP
             String option = message.option;
             if(option.equalsIgnoreCase("null"))
                 option = null;
-            Game.playerActions[message.index - 1] = option;
-            Class13.playerArray[message.index - 1] = message.lowPriority;
+            Player.playerActions[message.index - 1] = option;
+            Player.playerActionsLowPriority[message.index - 1] = message.lowPriority;
         }
     }
 }

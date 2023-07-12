@@ -56,6 +56,8 @@ public class Player extends Actor {
     public static int ignoresCount = 0;
     public static int flashingTabId = -1;
     public static int localPlayerId = -1;
+    public static String[] playerActions = new String[5];
+    public static boolean[] playerActionsLowPriority = new boolean[5];
     public int skillLevel;
     public int anInt3258;
     public int combatLevel = 0;
@@ -288,11 +290,11 @@ public class Player extends Actor {
                 }
             } else {
                 for (int i = 4; i >= 0; i--) {
-                    if (Game.playerActions[i] != null) {
+                    if (playerActions[i] != null) {
                         int actionType = 0;
                         int actionRowOffset = 0;
 
-                        if (Game.playerActions[i].equalsIgnoreCase(English.attack)) {
+                        if (playerActions[i].equalsIgnoreCase(English.attack)) {
                             // offset attack actions so that they are lower priority for players of higher combat lvl or the same team
                             if (localPlayer.combatLevel < player.combatLevel)
                                 actionRowOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
@@ -302,7 +304,7 @@ public class Player extends Actor {
                                 else
                                     actionRowOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
                             }
-                        } else if (Class13.playerArray[i]) {
+                        } else if (playerActionsLowPriority[i]) {
                             // what is this for?
                             actionRowOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
                         }
@@ -317,7 +319,7 @@ public class Player extends Actor {
                             actionType = ActionRowType.INTERACT_WITH_PLAYER_OPTION_4.getId() + actionRowOffset;
                         if (i == 4)
                             actionType = ActionRowType.INTERACT_WITH_PLAYER_OPTION_5.getId() + actionRowOffset;
-                        MovedStatics.addActionRow(Game.playerActions[i], index, x, y, actionType, Native.white + playerDisplayName);
+                        MovedStatics.addActionRow(playerActions[i], index, x, y, actionType, Native.white + playerDisplayName);
                     }
                 }
             }

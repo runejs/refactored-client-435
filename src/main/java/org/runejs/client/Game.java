@@ -105,7 +105,6 @@ public class Game {
     public static int anInt1764 = 0;
     public static int anInt1769 = -1;
     public static int widgetSelected = 0;
-    public static String[] playerActions = new String[5];
     public static Signlink signlink;
     public static CacheIndex metaIndex;
     public static CacheFileChannel dataChannel;
@@ -749,8 +748,8 @@ public class Game {
         Player.currentTabId = 3;
         Player.activePlayerAppearance.setPlayerAppearance(null, false, new int[5], -1);
         for (int i = 0; i < 5; i++) {
-            playerActions[i] = null;
-            Class13.playerArray[i] = false;
+            Player.playerActions[i] = null;
+            Player.playerActionsLowPriority[i] = false;
         }
         aBoolean519 = true;
     }
