@@ -26,7 +26,7 @@ public class CutsceneCameraLookToMessageHandler implements MessageHandler<Cutsce
         if(message.speedScale >= 100) {
             int x = Game.cutsceneCamera.getLookAt().x;
             int y = Game.cutsceneCamera.getLookAt().y;
-            int z = Scene.getFloorDrawHeight(Player.worldLevel, x, y) - Game.cutsceneCamera.getLookAt().z;
+            int z = Game.currentScene.getFloorDrawHeight(Player.worldLevel, x, y) - Game.cutsceneCamera.getLookAt().z;
 
             Point3d cameraPos = Game.cutsceneCamera.getPosition();
 

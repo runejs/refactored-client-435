@@ -15,7 +15,6 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.*;
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.handler.rs435.RS435HandlerRegistry;
@@ -42,6 +41,7 @@ import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
 import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
 import org.runejs.Configuration;
 import org.runejs.client.util.SignlinkNode;
+import org.runejs.client.util.Timer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -86,6 +86,7 @@ public class Game {
     public static int anInt2591 = 0;
     public static int anInt874 = 0;
     public static int destinationY = 0;
+    public static SceneRenderer sceneRenderer;
     public static Scene currentScene;
     public static int gameStatusCode = 0;
     public static KeyFocusListener keyFocusListener = new KeyFocusListener();
@@ -102,6 +103,8 @@ public class Game {
     public static long aLong1841;
     public static int clientVersion;
     public static int playerRights = 0;
+    public static Timer gameTimer;
+    public static int idleLogout = 0;
     /**
      * Backup port if the first one fails?
      */
@@ -265,7 +268,7 @@ public class Game {
                                         else {
                                             if (GameInterface.activeInterfaceType != 0 && GameInterface.selectedInventorySlot == i_7_ && gameInterface.id == GameInterface.modifiedWidgetId) {
                                                 i_14_ = MouseHandler.mouseY + -MovedStatics.anInt2798;
-                                                i_12_ = MouseHandler.mouseX + -Renderable.anInt2869;
+                                                i_12_ = MouseHandler.mouseX + -MovedStatics.anInt2869;
                                                 if (i_12_ < 5 && i_12_ > -5)
                                                     i_12_ = 0;
                                                 if (i_14_ < 5 && i_14_ > -5)
@@ -632,7 +635,7 @@ public class Game {
         IncomingPackets.cyclesSinceLastPacket = 0;
         Player.headIconDrawType = 0;
         OutgoingPackets.buffer.currentPosition = 0;
-        SceneCluster.idleLogout = 0;
+        idleLogout = 0;
         IncomingPackets.thirdLastOpcode = -1;
         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
         MovedStatics.menuActionRow = 0;
@@ -834,7 +837,7 @@ public class Game {
         Model.resourceCount = 0;
         Rasterizer.resetPixels();
 
-        currentScene.render(activeCamera, plane);
+        sceneRenderer.render(activeCamera, plane);
         currentScene.clearInteractiveObjectCache();
         MovedStatics.draw2DActorAttachments();
         MovedStatics.drawPositionHintIcon();
@@ -940,7 +943,7 @@ public class Game {
                 GameInterface.redrawTabArea = true;
             }
             if(GameInterface.tabAreaInterfaceId != -1) {
-                boolean bool = Renderable.handleSequences(GameInterface.tabAreaInterfaceId);
+                boolean bool = GameInterface.handleSequences(GameInterface.tabAreaInterfaceId);
                 if(bool) {
                     GameInterface.redrawTabArea = true;
                 }
@@ -956,13 +959,13 @@ public class Game {
             MovedStatics.drawTabArea();
 
             if(GameInterface.chatboxInterfaceId != -1) {
-                boolean bool = Renderable.handleSequences(GameInterface.chatboxInterfaceId);
+                boolean bool = GameInterface.handleSequences(GameInterface.chatboxInterfaceId);
                 if(bool) {
                     ChatBox.redrawChatbox = true;
                 }
             }
             if(ChatBox.dialogueId != -1) {
-                boolean bool = Renderable.handleSequences(ChatBox.dialogueId);
+                boolean bool = GameInterface.handleSequences(ChatBox.dialogueId);
                 if(bool) {
                     ChatBox.redrawChatbox = true;
                 }
@@ -1013,15 +1016,15 @@ public class Game {
 
 
             if(GameInterface.tabAreaInterfaceId != -1) {
-                Renderable.handleSequences(GameInterface.tabAreaInterfaceId);
+                GameInterface.handleSequences(GameInterface.tabAreaInterfaceId);
             }
 
             if(GameInterface.chatboxInterfaceId != -1) {
-                Renderable.handleSequences(GameInterface.chatboxInterfaceId);
+                GameInterface.handleSequences(GameInterface.chatboxInterfaceId);
             }
 
             if(ChatBox.dialogueId != -1) {
-                Renderable.handleSequences(ChatBox.dialogueId);
+                GameInterface.handleSequences(ChatBox.dialogueId);
             }
             method353();
             ChatBox.renderChatbox();
@@ -1113,9 +1116,9 @@ public class Game {
     }
 
     public static void method164() {
-        Renderable.handleSequences(GameInterface.fullscreenInterfaceId);
+        GameInterface.handleSequences(GameInterface.fullscreenInterfaceId);
         if(GameInterface.fullscreenSiblingInterfaceId != -1)
-            Renderable.handleSequences(GameInterface.fullscreenSiblingInterfaceId);
+            GameInterface.handleSequences(GameInterface.fullscreenSiblingInterfaceId);
         MovedStatics.anInt199 = 0;
         MovedStatics.aProducingGraphicsBuffer_2213.prepareRasterizer();
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(Player.viewportOffsets);
@@ -1144,7 +1147,7 @@ public class Game {
 
         int i = camera.getMoveTo().y;
         int i_3_ = camera.getMoveTo().x;
-        int i_4_ = Scene.getFloorDrawHeight(Player.worldLevel, i_3_, i) - camera.getMoveTo().z;
+        int i_4_ = Game.currentScene.getFloorDrawHeight(Player.worldLevel, i_3_, i) - camera.getMoveTo().z;
 
         int newX = camera.getPosition().x;
         int newY = camera.getPosition().y;
@@ -1187,7 +1190,7 @@ public class Game {
 
         i_3_ = camera.getLookAt().x;
         i = camera.getLookAt().y;
-        i_4_ = Scene.getFloorDrawHeight(Player.worldLevel, i_3_, i) - camera.getLookAt().z;
+        i_4_ = Game.currentScene.getFloorDrawHeight(Player.worldLevel, i_3_, i) - camera.getLookAt().z;
         int i_5_ = -newZ + i_4_;
         int i_6_ = i - newY;
         int i_7_ = i_3_ - newX;
@@ -1241,8 +1244,8 @@ public class Game {
     public static void updateGame() {
         if(MovedStatics.systemUpdateTime > 1)
             MovedStatics.systemUpdateTime--;
-        if(SceneCluster.idleLogout > 0)
-            SceneCluster.idleLogout--;
+        if(idleLogout > 0)
+            idleLogout--;
         if(aBoolean871) {
             aBoolean871 = false;
             dropClient();
@@ -1402,7 +1405,7 @@ public class Game {
                         MovedStatics.anInt199++;
                         if(GameInterface.activeInterfaceType != 0) {
                             GameInterface.lastItemDragTime++;
-                            if(MouseHandler.mouseX > Renderable.anInt2869 + 5 || Renderable.anInt2869 + -5 > MouseHandler.mouseX || MovedStatics.anInt2798 + 5 < MouseHandler.mouseY || MovedStatics.anInt2798 - 5 > MouseHandler.mouseY)
+                            if(MouseHandler.mouseX > MovedStatics.anInt2869 + 5 || MovedStatics.anInt2869 + -5 > MouseHandler.mouseX || MovedStatics.anInt2798 + 5 < MouseHandler.mouseY || MovedStatics.anInt2798 - 5 > MouseHandler.mouseY)
                                 MovedStatics.lastItemDragged = true;
                             if(MouseHandler.currentMouseButtonPressed == 0) {
                                 if(GameInterface.activeInterfaceType == 3)
@@ -1462,9 +1465,9 @@ public class Game {
                             }
                         }
 
-                        if(Scene.clickedTileX != -1) {
-                            int i = Scene.clickedTileX;
-                            int i_18_ = Scene.clickedTileY;
+                        if(currentScene.clickedTileX != -1) {
+                            int i = currentScene.clickedTileX;
+                            int i_18_ = currentScene.clickedTileY;
                             boolean bool = Pathfinding.doTileWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_18_);
                             if(bool) {
                                 GameInterface.crossY = MouseHandler.clickY;
@@ -1472,7 +1475,7 @@ public class Game {
                                 GameInterface.crossX = MouseHandler.clickX;
                                 MovedStatics.crossType = 1;
                             }
-                            Scene.clickedTileX = -1;
+                            currentScene.clickedTileX = -1;
                         }
 
                         if(MouseHandler.clickType == 1 && Native.clickToContinueString != null) {
@@ -1542,7 +1545,7 @@ public class Game {
                         int i_20_ = MouseHandler.resetFramesSinceMouseInput();
                         int i_21_ = KeyFocusListener.resetFramesSinceKeyboardInput();
                         if(i_20_ > 4500 && i_21_ > 4500) {
-                            SceneCluster.idleLogout = 250;
+                            idleLogout = 250;
                             MouseHandler.setFramesSinceMouseInput(4000);
                             OutgoingPackets.buffer.putPacket(216);
                         }
@@ -1635,7 +1638,7 @@ public class Game {
                 }
                 if (IncomingPackets.incomingPacketBuffer.currentPosition == 8) {
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                    Renderable.aLong2858 = IncomingPackets.incomingPacketBuffer.getLongBE();
+                    MovedStatics.aLong2858 = IncomingPackets.incomingPacketBuffer.getLongBE();
                     loginStatus = 5;
                 }
             }
@@ -1643,8 +1646,8 @@ public class Game {
                 int[] seeds = new int[4];
                 seeds[0] = (int) (Math.random() * 9.9999999E7);
                 seeds[1] = (int) (Math.random() * 9.9999999E7);
-                seeds[2] = (int) (Renderable.aLong2858 >> 32);
-                seeds[3] = (int) Renderable.aLong2858;
+                seeds[2] = (int) (MovedStatics.aLong2858 >> 32);
+                seeds[3] = (int) MovedStatics.aLong2858;
                 OutgoingPackets.buffer.currentPosition = 0;
                 OutgoingPackets.buffer.putByte(10);
                 OutgoingPackets.buffer.putIntBE(seeds[0]);
@@ -1758,7 +1761,7 @@ public class Game {
                         MovedStatics.gameServerSocket.readDataToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
                         setConfigToDefaults();
                         MovedStatics.regionX = -1;
-                        Landscape.constructMapRegion(false);
+                        currentScene.landscape.constructMapRegion(false);
                         IncomingPackets.opcode = -1;
                     }
                 } else {
@@ -1823,7 +1826,7 @@ public class Game {
                     if(!npc.actorDefinition.isClickable) {
                         i_15_ += -2147483648;
                     }
-                    currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, Scene.getFloorDrawHeight(Player.worldLevel, npc.worldX + (-1 + npc.size) * 64, npc.size * 64 + -64 + npc.worldY), -64 + npc.size * 64 + 60, npc, npc.anInt3118, i_15_, npc.aBoolean3105);
+                    currentScene.method134(Player.worldLevel, npc.worldX, npc.worldY, Game.currentScene.getFloorDrawHeight(Player.worldLevel, npc.worldX + (-1 + npc.size) * 64, npc.size * 64 + -64 + npc.worldY), -64 + npc.size * 64 + 60, npc, npc.anInt3118, i_15_, npc.aBoolean3105);
                 }
             }
         }
@@ -1859,7 +1862,7 @@ public class Game {
                 if(tileX >= 0 && tileX < 104 && tileY >= 0 && tileY < 104) {
                     if(player.playerModel != null && player.anInt3283 <= MovedStatics.pulseCycle && MovedStatics.pulseCycle < player.anInt3274) {
                         player.aBoolean3287 = false;
-                        player.anInt3276 = Scene.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
+                        player.anInt3276 = Game.currentScene.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
                         currentScene.method112(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.anInt3258, player.anInt3281, player.anInt3262, player.anInt3289);
                     } else {
                         if((0x7f & player.worldX) == 64 && (player.worldY & 0x7f) == 64) {
@@ -1867,7 +1870,7 @@ public class Game {
                                 continue;
                             MovedStatics.anIntArrayArray1435[tileX][tileY] = MovedStatics.anInt2628;
                         }
-                        player.anInt3276 = Scene.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
+                        player.anInt3276 = Game.currentScene.getFloorDrawHeight(Player.worldLevel, player.worldX, player.worldY);
                         currentScene.method134(Player.worldLevel, player.worldX, player.worldY, player.anInt3276, 60, player, player.anInt3118, i_1_, player.aBoolean3105);
                     }
                 }
@@ -1916,7 +1919,7 @@ public class Game {
     public static void method910() {
         if(true) {
             if (VertexNormal.lowMemory && MovedStatics.onBuildTimePlane != Player.worldLevel)
-                Landscape.method789(Player.localPlayer.pathY[0], MovedStatics.regionY, MovedStatics.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
+                MovedStatics.method789(Player.localPlayer.pathY[0], MovedStatics.regionY, MovedStatics.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
             else if (MovedStatics.anInt1985 != Player.worldLevel) {
                 MovedStatics.anInt1985 = Player.worldLevel;
                 Minimap.method299(Player.worldLevel);
@@ -1951,7 +1954,7 @@ public class Game {
     }
 
     public static void dropClient() {
-        if(SceneCluster.idleLogout > 0) {
+        if(idleLogout > 0) {
             // Instant logout
             logout();
         } else {
@@ -1968,7 +1971,7 @@ public class Game {
     }
 
     public static void method992() {
-        SceneCluster.gameTimer.start();
+        gameTimer.start();
         for(int i = 0; i < 32; i++)
             GameShell.tickSamples[i] = 0L;
         for(int i = 0; i < 32; i++)
@@ -1996,7 +1999,7 @@ public class Game {
             originY += (-originY + localPlayer3dPosY) / 16;
 
         // update the camera's Z origin - this wasn't originally here, but it makes sense to do it with the other origins
-        int cameraOriginZ = Scene.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY) - 50;
+        int cameraOriginZ = Game.currentScene.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY) - 50;
 
         playerCamera.setOrigin(originX, originY, cameraOriginZ);
 
@@ -2029,14 +2032,14 @@ public class Game {
         int i_3_ = 0;
         int i_1_ = originY >> 7;
         int i_2_ = originX >> 7;
-        int i_4_ = Scene.getFloorDrawHeight(Player.worldLevel, originX, originY);
+        int i_4_ = Game.currentScene.getFloorDrawHeight(Player.worldLevel, originX, originY);
         if (i_2_ > 3 && i_1_ > 3 && i_2_ < 100 && i_1_ < 100) {
             for (int i_5_ = -4 + i_2_; i_5_ <= 4 + i_2_; i_5_++) {
                 for (int i_6_ = -4 + i_1_; 4 + i_1_ >= i_6_; i_6_++) {
                     int i_7_ = Player.worldLevel;
                     if (i_7_ < 3 && (0x2 & MovedStatics.tile_flags[1][i_5_][i_6_]) == 2)
                         i_7_++;
-                    int i_8_ = i_4_ + -Landscape.tile_height[i_7_][i_5_][i_6_];
+                    int i_8_ = i_4_ + -currentScene.landscape.tile_height[i_7_][i_5_][i_6_];
                     if (i_8_ > i_3_)
                         i_3_ = i_8_;
                 }
@@ -2083,7 +2086,7 @@ public class Game {
                     if (projectile.entityIndex > 0) {
                         Npc npc = Player.npcs[-1 + projectile.entityIndex];
                         if (npc != null && npc.worldX >= 0 && npc.worldX < 13312 && npc.worldY >= 0 && npc.worldY < 13312)
-                            projectile.trackTarget(MovedStatics.pulseCycle, 61 + -61, npc.worldY, Scene.getFloorDrawHeight(projectile.anInt2981, npc.worldX, npc.worldY) - projectile.endHeight, npc.worldX);
+                            projectile.trackTarget(MovedStatics.pulseCycle, 61 + -61, npc.worldY, Game.currentScene.getFloorDrawHeight(projectile.anInt2981, npc.worldX, npc.worldY) - projectile.endHeight, npc.worldX);
                     }
                     if (projectile.entityIndex < 0) {
                         int i = -1 + -projectile.entityIndex;
@@ -2093,7 +2096,7 @@ public class Game {
                         else
                             player = Player.localPlayer;
                         if (player != null && player.worldX >= 0 && player.worldX < 13312 && player.worldY >= 0 && player.worldY < 13312)
-                            projectile.trackTarget(MovedStatics.pulseCycle, 0, player.worldY, Scene.getFloorDrawHeight(projectile.anInt2981, player.worldX, player.worldY) - projectile.endHeight, player.worldX);
+                            projectile.trackTarget(MovedStatics.pulseCycle, 0, player.worldY, Game.currentScene.getFloorDrawHeight(projectile.anInt2981, player.worldX, player.worldY) - projectile.endHeight, player.worldX);
                     }
                     projectile.move(MovedStatics.anInt199);
                     currentScene.method134(Player.worldLevel, (int) projectile.currentX, (int) projectile.currentY, (int) projectile.currentHeight, 60, projectile, projectile.anInt3013, -1, false);
@@ -2169,7 +2172,7 @@ public class Game {
             Class60.updateLogin();
             handleLoginScreenActions();
         } else if (gameStatusCode == 25)
-            Landscape.loadRegion();
+            currentScene.landscape.loadRegion();
         if (gameStatusCode == 30) {
             ScreenController.refreshFrameSize();
             updateGame();

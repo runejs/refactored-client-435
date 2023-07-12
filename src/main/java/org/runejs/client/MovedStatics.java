@@ -29,7 +29,6 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
-import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.scene.*;
 import org.runejs.client.scene.camera.CameraRotation;
 import org.runejs.client.scene.util.CollisionMap;
@@ -351,6 +350,19 @@ public class MovedStatics {
      * Some kind of mouse information
      */
     public static int anInt3294 = 0;
+    /**
+     * ISAAC key?
+     */
+    public static long aLong2858 = 0L;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for the furthest-left tab on the bottom.
+     */
+    public static IndexedImage tabHighlightImageBottomLeftEdge;
+    /**
+     * Something to do with item drag tracking
+     */
+    public static int anInt2869 = 0;
 
     public static void method440() {
         if (aBoolean512) {
@@ -459,7 +471,7 @@ public class MovedStatics {
 
         Point3d cameraPos = Game.cutsceneCamera.getPosition();
 
-        int i = Scene.getFloorDrawHeight(Player.worldLevel, cameraPos.x, cameraPos.y);
+        int i = Game.currentScene.getFloorDrawHeight(Player.worldLevel, cameraPos.x, cameraPos.y);
         if (i + -cameraPos.z < 800 && (tile_flags[Player.worldLevel][cameraPos.x >> 7][cameraPos.y >> 7] & 0x4) != 0)
             return Player.worldLevel;
         return 3;
@@ -642,7 +654,7 @@ public class MovedStatics {
         if (arg3) {
             if (tabWidgetIds[currentTabId] != -1) {
                 if (currentTabId == 7)
-                    Renderable.tabHighlightImageBottomLeftEdge.drawImage(42, 0);
+                    tabHighlightImageBottomLeftEdge.drawImage(42, 0);
                 if (currentTabId == 8)
                     tabHighlightImageBottomLeft.drawImage(74, 0);
                 if (currentTabId == 9)
@@ -717,7 +729,7 @@ public class MovedStatics {
         if (GameInterface.itemCurrentlySelected == 0 && Game.widgetSelected == 0) {
             String tileCoords = "";
             if (Configuration.DEBUG_CONTEXT) {
-                tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + baseX), Integer.toString(Scene.hoveredTileY + baseY));
+                tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Game.currentScene.hoveredTileX + baseX), Integer.toString(Game.currentScene.hoveredTileY + baseY));
             }
 
             addActionRow(English.walkHere, 0, MouseHandler.mouseX, MouseHandler.mouseY, ActionRowType.WALK_HERE.getId(), tileCoords);
@@ -1371,7 +1383,7 @@ public class MovedStatics {
             return null;
         }
 
-        int drawHeight = Scene.getFloorDrawHeight(Player.worldLevel, x, y) - z;
+        int drawHeight = Game.currentScene.getFloorDrawHeight(Player.worldLevel, x, y) - z;
 
         Point3d cameraPos = Game.getActiveCamera().getPosition();
         CameraRotation rotation = Game.getActiveCamera().getRotation();
@@ -1448,7 +1460,7 @@ public class MovedStatics {
                 tabPieceUpperRight = null;
                 tabHighlightImageTopMiddle = null;
                 tabHighlightImageBottomLeft = null;
-                Renderable.tabHighlightImageBottomLeftEdge = null;
+                tabHighlightImageBottomLeftEdge = null;
                 fullScreenTextureArray = null;
                 tabPieveLowerRight = null;
                 framePieceTop = null;
@@ -1582,7 +1594,7 @@ public class MovedStatics {
         if (GameInterface.gameScreenInterfaceId != -1 || GameInterface.walkableWidgetId != -1) {
                 int areaId = GameInterface.gameScreenInterfaceId != -1 ? 0 : 4;
                 int id = GameInterface.gameScreenInterfaceId != -1 ? GameInterface.gameScreenInterfaceId : GameInterface.walkableWidgetId;
-                Renderable.handleSequences(id);
+                GameInterface.handleSequences(id);
                 int yOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);
                 int xOffset = (ScreenController.drawWidth /2) - (512/2) - (234/3);
                 if(ScreenController.frameMode == ScreenMode.FIXED) {
@@ -1886,7 +1898,7 @@ public class MovedStatics {
                     }
                 }
                 int i_37_ = 1610612736 + (arg1 << 7) + arg2;
-                Game.currentScene.addGroundItemTile(arg2, arg1, Player.worldLevel, Scene.getFloorDrawHeight(Player.worldLevel, 64 + 128 * arg2, 64 + 128 * arg1), i_37_, item, item_35_, item_34_);
+                Game.currentScene.addGroundItemTile(arg2, arg1, Player.worldLevel, Game.currentScene.getFloorDrawHeight(Player.worldLevel, 64 + 128 * arg2, 64 + 128 * arg1), i_37_, item, item_35_, item_34_);
             }
         }
 
@@ -1974,8 +1986,8 @@ public class MovedStatics {
             tabHighlightImageTopRightEdge.flipHorizontal();
             tabHighlightImageTopRight = GameInterface.tabHighlightImageTopLeft.cloneImage();
             tabHighlightImageTopRight.flipHorizontal();
-            Renderable.tabHighlightImageBottomLeftEdge = tabHighlightImageTopLeftEdge.cloneImage();
-            Renderable.tabHighlightImageBottomLeftEdge.flipVertical();
+            tabHighlightImageBottomLeftEdge = tabHighlightImageTopLeftEdge.cloneImage();
+            tabHighlightImageBottomLeftEdge.flipVertical();
             tabHighlightImageBottomLeft = GameInterface.tabHighlightImageTopLeft.cloneImage();
             tabHighlightImageBottomLeft.flipVertical();
             tabHighlightImageBottomMiddle = tabHighlightImageTopMiddle.cloneImage();
@@ -2513,7 +2525,7 @@ public class MovedStatics {
      * Anything that is a 2D item attached to an actor in the world.
      */
     public static void draw2DActorAttachments() {
-        SceneCluster.anInt770 = 0;
+        int overheadChatMessageCount = 0;
         for(int i = -1; Player.localPlayerCount + Player.npcCount > i; i++) {
             Actor actor;
             if(i == -1)
@@ -2571,16 +2583,16 @@ public class MovedStatics {
                 if(actor.forcedChatMessage != null && (i >= Player.localPlayerCount || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 3 || ChatBox.publicChatMode == 1 && Player.hasFriend(((Player) actor).playerName))) {
                     Point2d screenPos = getProjectedScreenPosition(actor.anInt3117, actor.worldY, actor.worldX);
 
-                    if(screenPos != null && 50 > SceneCluster.anInt770) {
-                        PlayerAppearance.anIntArray680[SceneCluster.anInt770] = TypeFace.fontBold.getStringWidth(actor.forcedChatMessage) / 2;
-                        PlayerAppearance.anIntArray688[SceneCluster.anInt770] = TypeFace.fontBold.characterDefaultHeight;
-                        PlayerAppearance.anIntArray715[SceneCluster.anInt770] = screenPos.x;
-                        PlayerAppearance.anIntArray685[SceneCluster.anInt770] = screenPos.y;
-                        PlayerAppearance.overheadChatColor[SceneCluster.anInt770] = actor.chatcolor;
-                        PlayerAppearance.overheadChatShape[SceneCluster.anInt770] = actor.chatEffects;
-                        PlayerAppearance.anIntArray684[SceneCluster.anInt770] = actor.chatTimer;
-                        PlayerAppearance.overheadChatMessage[SceneCluster.anInt770] = actor.forcedChatMessage;
-                        SceneCluster.anInt770++;
+                    if(screenPos != null && 50 > overheadChatMessageCount) {
+                        Actor.overheadChatHalfWidth[overheadChatMessageCount] = TypeFace.fontBold.getStringWidth(actor.forcedChatMessage) / 2;
+                        Actor.overheadChatLetterHeight[overheadChatMessageCount] = TypeFace.fontBold.characterDefaultHeight;
+                        Actor.overheadChatX[overheadChatMessageCount] = screenPos.x;
+                        Actor.overheadChatY[overheadChatMessageCount] = screenPos.y;
+                        Actor.overheadChatColor[overheadChatMessageCount] = actor.chatcolor;
+                        Actor.overheadChatShape[overheadChatMessageCount] = actor.chatEffects;
+                        Actor.overheadChatTimer[overheadChatMessageCount] = actor.chatTimer;
+                        Actor.overheadChatMessage[overheadChatMessageCount] = actor.forcedChatMessage;
+                        overheadChatMessageCount++;
                     }
                 }
                 if(pulseCycle < actor.anInt3139) {
@@ -2615,39 +2627,39 @@ public class MovedStatics {
                 }
             }
         }
-        for(int i = 0; SceneCluster.anInt770 > i; i++) {
-            int i_3_ = PlayerAppearance.anIntArray715[i];
-            int i_4_ = PlayerAppearance.anIntArray685[i];
-            int i_5_ = PlayerAppearance.anIntArray680[i];
-            int i_6_ = PlayerAppearance.anIntArray688[i];
+        for(int i = 0; overheadChatMessageCount > i; i++) {
+            int i_3_ = Actor.overheadChatX[i];
+            int i_4_ = Actor.overheadChatY[i];
+            int i_5_ = Actor.overheadChatHalfWidth[i];
+            int i_6_ = Actor.overheadChatLetterHeight[i];
             boolean bool = true;
             while(bool) {
                 bool = false;
                 for(int i_7_ = 0; i > i_7_; i_7_++) {
-                    if(-PlayerAppearance.anIntArray688[i_7_] + PlayerAppearance.anIntArray685[i_7_] < i_4_ + 2 && -i_6_ + i_4_ < 2 + PlayerAppearance.anIntArray685[i_7_] && PlayerAppearance.anIntArray715[i_7_] + PlayerAppearance.anIntArray680[i_7_] > -i_5_ + i_3_ && i_5_ + i_3_ > -PlayerAppearance.anIntArray680[i_7_] + PlayerAppearance.anIntArray715[i_7_] && -PlayerAppearance.anIntArray688[i_7_] + PlayerAppearance.anIntArray685[i_7_] < i_4_) {
+                    if(-Actor.overheadChatLetterHeight[i_7_] + Actor.overheadChatY[i_7_] < i_4_ + 2 && -i_6_ + i_4_ < 2 + Actor.overheadChatY[i_7_] && Actor.overheadChatX[i_7_] + Actor.overheadChatHalfWidth[i_7_] > -i_5_ + i_3_ && i_5_ + i_3_ > -Actor.overheadChatHalfWidth[i_7_] + Actor.overheadChatX[i_7_] && -Actor.overheadChatLetterHeight[i_7_] + Actor.overheadChatY[i_7_] < i_4_) {
                         bool = true;
-                        i_4_ = -PlayerAppearance.anIntArray688[i_7_] + PlayerAppearance.anIntArray685[i_7_];
+                        i_4_ = -Actor.overheadChatLetterHeight[i_7_] + Actor.overheadChatY[i_7_];
                     }
                 }
             }
-            PlayerAppearance.anIntArray685[i] = i_4_;
+            Actor.overheadChatY[i] = i_4_;
 
-            Point2d screenPos = new Point2d(PlayerAppearance.anIntArray715[i], PlayerAppearance.anIntArray685[i]);
-            String message = PlayerAppearance.overheadChatMessage[i];
+            Point2d screenPos = new Point2d(Actor.overheadChatX[i], Actor.overheadChatY[i]);
+            String message = Actor.overheadChatMessage[i];
             if(chatEffectsDisabled == 0) {
                 int textColor = OVERHEAD_CHAT_COLORS[0];
                 // standard 6 colors (yellow, red, green, cyan, purple, white)
                 // TODO (James) tie this into the ChatColorEffect enum
-                if(PlayerAppearance.overheadChatColor[i] < 6)
-                    textColor = OVERHEAD_CHAT_COLORS[PlayerAppearance.overheadChatColor[i]];
-                if(PlayerAppearance.overheadChatColor[i] == ChatColorEffect.FLASH1.getNetworkCode())
+                if(Actor.overheadChatColor[i] < 6)
+                    textColor = OVERHEAD_CHAT_COLORS[Actor.overheadChatColor[i]];
+                if(Actor.overheadChatColor[i] == ChatColorEffect.FLASH1.getNetworkCode())
                     textColor = anInt2628 % 20 >= 10 ? OVERHEAD_CHAT_COLORS[0] : OVERHEAD_CHAT_COLORS[1];
-                if(PlayerAppearance.overheadChatColor[i] == ChatColorEffect.FLASH2.getNetworkCode())
+                if(Actor.overheadChatColor[i] == ChatColorEffect.FLASH2.getNetworkCode())
                     textColor = anInt2628 % 20 < 10 ? 255 : OVERHEAD_CHAT_COLORS[3];
-                if(PlayerAppearance.overheadChatColor[i] == ChatColorEffect.FLASH3.getNetworkCode())
+                if(Actor.overheadChatColor[i] == ChatColorEffect.FLASH3.getNetworkCode())
                     textColor = anInt2628 % 20 >= 10 ? 8454016 : 45056;
-                if(PlayerAppearance.overheadChatColor[i] == ChatColorEffect.GLOW1.getNetworkCode()) {
-                    int i_9_ = 150 - PlayerAppearance.anIntArray684[i];
+                if(Actor.overheadChatColor[i] == ChatColorEffect.GLOW1.getNetworkCode()) {
+                    int i_9_ = 150 - Actor.overheadChatTimer[i];
                     if(i_9_ >= 50) {
                         if(i_9_ < 100)
                             textColor = -((-50 + i_9_) * 327680) + OVERHEAD_CHAT_COLORS[0];
@@ -2656,8 +2668,8 @@ public class MovedStatics {
                     } else
                         textColor = OVERHEAD_CHAT_COLORS[1] + 1280 * i_9_;
                 }
-                if(PlayerAppearance.overheadChatColor[i] == ChatColorEffect.GLOW2.getNetworkCode()) {
-                    int i_10_ = 150 + -PlayerAppearance.anIntArray684[i];
+                if(Actor.overheadChatColor[i] == ChatColorEffect.GLOW2.getNetworkCode()) {
+                    int i_10_ = 150 + -Actor.overheadChatTimer[i];
                     if(i_10_ >= 50) {
                         if(i_10_ >= 100) {
                             if(i_10_ < 150)
@@ -2667,8 +2679,8 @@ public class MovedStatics {
                     } else
                         textColor = 5 * i_10_ + OVERHEAD_CHAT_COLORS[1];
                 }
-                if(PlayerAppearance.overheadChatColor[i] == ChatColorEffect.GLOW3.getNetworkCode()) {
-                    int i_11_ = -PlayerAppearance.anIntArray684[i] + 150;
+                if(Actor.overheadChatColor[i] == ChatColorEffect.GLOW3.getNetworkCode()) {
+                    int i_11_ = -Actor.overheadChatTimer[i] + 150;
                     if(i_11_ >= 50) {
                         if(i_11_ < 100)
                             textColor = 327685 * (i_11_ - 50) + OVERHEAD_CHAT_COLORS[2];
@@ -2677,33 +2689,33 @@ public class MovedStatics {
                     } else
                         textColor = -(327685 * i_11_) + OVERHEAD_CHAT_COLORS[5];
                 }
-                if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.NONE.getNetworkCode()) {
+                if(Actor.overheadChatShape[i] == ChatShapeEffect.NONE.getNetworkCode()) {
                     TypeFace.fontBold.drawStringLeft(message, screenPos.x, screenPos.y + 1, 0);
                     TypeFace.fontBold.drawStringLeft(message, screenPos.x, screenPos.y, textColor);
                 }
-                if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.WAVE.getNetworkCode()) {
+                if(Actor.overheadChatShape[i] == ChatShapeEffect.WAVE.getNetworkCode()) {
                     TypeFace.fontBold.drawCenteredStringWaveY(message, screenPos.x, screenPos.y + 1, anInt2628, 0);
                     TypeFace.fontBold.drawCenteredStringWaveY(message, screenPos.x, screenPos.y, anInt2628, textColor);
                 }
-                if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.WAVE2.getNetworkCode()) {
+                if(Actor.overheadChatShape[i] == ChatShapeEffect.WAVE2.getNetworkCode()) {
                     TypeFace.fontBold.drawCenteredStringWaveXY(message, screenPos.x, 1 + screenPos.y, anInt2628, 0);
                     TypeFace.fontBold.drawCenteredStringWaveXY(message, screenPos.x, screenPos.y, anInt2628, textColor);
                 }
-                if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.SHAKE.getNetworkCode()) {
-                    TypeFace.fontBold.drawCenteredStringWaveXYMove(message, screenPos.x, screenPos.y + 1, anInt2628, -PlayerAppearance.anIntArray684[i] + 150, 0);
-                    TypeFace.fontBold.drawCenteredStringWaveXYMove(message, screenPos.x, screenPos.y, anInt2628, -PlayerAppearance.anIntArray684[i] + 150, textColor);
+                if(Actor.overheadChatShape[i] == ChatShapeEffect.SHAKE.getNetworkCode()) {
+                    TypeFace.fontBold.drawCenteredStringWaveXYMove(message, screenPos.x, screenPos.y + 1, anInt2628, -Actor.overheadChatTimer[i] + 150, 0);
+                    TypeFace.fontBold.drawCenteredStringWaveXYMove(message, screenPos.x, screenPos.y, anInt2628, -Actor.overheadChatTimer[i] + 150, textColor);
                 }
-                if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.SCROLL.getNetworkCode()) {
+                if(Actor.overheadChatShape[i] == ChatShapeEffect.SCROLL.getNetworkCode()) {
                     int i_12_ = TypeFace.fontBold.getStringWidth(message);
-                    int i_13_ = (i_12_ + 100) * (150 + -PlayerAppearance.anIntArray684[i]) / 150;
+                    int i_13_ = (i_12_ + 100) * (150 + -Actor.overheadChatTimer[i]) / 150;
                     Rasterizer.setBounds(screenPos.x + -50, 0, 50 + screenPos.x, 334);
                     TypeFace.fontBold.drawString(message, -i_13_ + screenPos.x + 50, screenPos.y + 1, 0);
                     TypeFace.fontBold.drawString(message, 50 + screenPos.x + -i_13_, screenPos.y, textColor);
                     Rasterizer.resetBounds();
                 }
-                if(PlayerAppearance.overheadChatShape[i] == ChatShapeEffect.SLIDE.getNetworkCode()) {
+                if(Actor.overheadChatShape[i] == ChatShapeEffect.SLIDE.getNetworkCode()) {
                     int i_14_ = 0;
-                    int i_15_ = 150 + -PlayerAppearance.anIntArray684[i];
+                    int i_15_ = 150 + -Actor.overheadChatTimer[i];
                     Rasterizer.setBounds(0, -1 + -TypeFace.fontBold.characterDefaultHeight + screenPos.y, 512, 5 + screenPos.y);
                     if(i_15_ >= 25) {
                         if(i_15_ > 125)
@@ -3272,7 +3284,7 @@ public class MovedStatics {
                     int id = secondMenuOperand[-1 + menuActionRow];
                     GameInterface gameInterface = GameInterface.getInterface(id);
                     if(gameInterface.itemSwapable || gameInterface.itemDeletesDraged) {
-                        Renderable.anInt2869 = MouseHandler.clickX;
+                        anInt2869 = MouseHandler.clickX;
                         lastItemDragged = false;
                         GameInterface.activeInterfaceType = 2;
                         GameInterface.modifiedWidgetId = id;
@@ -3297,7 +3309,7 @@ public class MovedStatics {
     }
 
     public static void method1057() {
-        SceneCluster.gameTimer.reset();
+        Game.gameTimer.reset();
         for(int i = 0; i < 32; i++)
             GameShell.tickSamples[i] = 0L;
         for(int i = 0; i < 32; i++)
@@ -3378,7 +3390,8 @@ public class MovedStatics {
 
     public static void startup() {
         if (loadingPercent == 0) {
-            Game.currentScene = new Scene(Landscape.tile_height);
+            Game.currentScene = new Scene();
+            Game.sceneRenderer = new SceneRenderer(Game.currentScene);
             for (int i = 0; i < 4; i++)
                 Landscape.currentCollisionMap[i] = new CollisionMap(104, 104);
             Minimap.minimapImage = new ImageRGB(512, 512);
@@ -3644,5 +3657,92 @@ public class MovedStatics {
         method184(is, 0);
         return true;
 
+    }
+
+    public static void method789(int chunkLocalX, int chunkY, int chunkX, int chunkLocalY, int level) {
+        if(chunkX != regionX || chunkY != regionY || onBuildTimePlane != level && VertexNormal.lowMemory) {
+            onBuildTimePlane = level;
+            regionX = chunkX;
+            if(!VertexNormal.lowMemory)
+                onBuildTimePlane = 0;
+            regionY = chunkY;
+            processGameStatus(25);
+            method940(English.loadingPleaseWait, false, null);
+            int i = baseY;
+            int i_33_ = baseX;
+            baseX = (chunkX - 6) * 8;
+            int i_34_ = baseX + -i_33_;
+            i_33_ = baseX;
+            baseY = (-6 + chunkY) * 8;
+            int i_35_ = baseY + -i;
+            i = baseY;
+            for(int i_36_ = 0; i_36_ < 32768; i_36_++) {
+                Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_36_];
+                if(class40_sub5_sub17_sub4_sub2 != null) {
+                    for(int i_37_ = 0; i_37_ < 10; i_37_++) {
+                        class40_sub5_sub17_sub4_sub2.pathY[i_37_] -= i_34_;
+                        class40_sub5_sub17_sub4_sub2.pathX[i_37_] -= i_35_;
+                    }
+                    class40_sub5_sub17_sub4_sub2.worldX -= 128 * i_34_;
+                    class40_sub5_sub17_sub4_sub2.worldY -= i_35_ * 128;
+                }
+            }
+            for(int i_38_ = 0; i_38_ < 2048; i_38_++) {
+                Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_38_];
+                if(class40_sub5_sub17_sub4_sub1 != null) {
+                    for(int i_39_ = 0; i_39_ < 10; i_39_++) {
+                        class40_sub5_sub17_sub4_sub1.pathY[i_39_] -= i_34_;
+                        class40_sub5_sub17_sub4_sub1.pathX[i_39_] -= i_35_;
+                    }
+                    class40_sub5_sub17_sub4_sub1.worldY -= 128 * i_35_;
+                    class40_sub5_sub17_sub4_sub1.worldX -= 128 * i_34_;
+                }
+            }
+            Player.worldLevel = level;
+            int i_40_ = 0;
+            Player.localPlayer.method787(chunkLocalY, false, chunkLocalX);
+            int i_41_ = 104;
+            int i_42_ = 1;
+            if(i_34_ < 0) {
+                i_41_ = -1;
+                i_40_ = 103;
+                i_42_ = -1;
+            }
+            int i_43_ = 104;
+            int i_44_ = 0;
+            int i_45_ = 1;
+            if(i_35_ < 0) {
+                i_44_ = 103;
+                i_43_ = -1;
+                i_45_ = -1;
+            }
+            for(int i_46_ = i_40_; i_41_ != i_46_; i_46_ += i_42_) {
+                for(int i_47_ = i_44_; i_43_ != i_47_; i_47_ += i_45_) {
+                    int i_48_ = i_34_ + i_46_;
+                    int i_49_ = i_35_ + i_47_;
+                    for(int i_50_ = 0; i_50_ < 4; i_50_++) {
+                        if(i_48_ < 0 || i_49_ < 0 || i_48_ >= 104 || i_49_ >= 104)
+                            groundItems[i_50_][i_46_][i_47_] = null;
+                        else
+                            groundItems[i_50_][i_46_][i_47_] = groundItems[i_50_][i_48_][i_49_];
+                    }
+                }
+            }
+            for(InteractiveObjectTemporary obj = (InteractiveObjectTemporary) interactiveObjectTemporaryNodeCache.peekFirst(); obj != null; obj = (InteractiveObjectTemporary) interactiveObjectTemporaryNodeCache.pollFirst()) {
+                obj.y -= i_35_;
+                obj.x -= i_34_;
+                if(obj.x < 0 || obj.y < 0 || obj.x >= 104 || obj.y >= 104)
+                    obj.unlink();
+            }
+            anInt1985 = -1;
+            if(destinationX != 0) {
+                destinationX -= i_34_;
+                Game.destinationY -= i_35_;
+            }
+            Player.cutsceneActive = false;
+            SoundSystem.reset();
+            spotAnimQueue.clear();
+            projectileQueue.clear();
+        }
     }
 }

@@ -9,6 +9,7 @@ import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.Class40_Sub5_Sub15;
 import org.runejs.OldEngine.ModelLoader;
+import org.runejs.client.scene.camera.CameraRotation;
 
 public class Model extends Renderable {
     public static Model aClass40_Sub5_Sub17_Sub5_3170 = new Model();
@@ -42,11 +43,13 @@ public class Model extends Renderable {
     public static int[] anIntArray3225;
     public static int[] anIntArray3226;
     public static int[] anIntArray3227;
-    public static int[] anIntArray3228;
+    /**
+     * Some kind of colour information
+     */
+    private static int[] anIntArray3228;
 
     static {
         anIntArray3199 = new int[128];
-        MouseHandler.cursorY = 0;
         anIntArray3205 = new int[10];
         anIntArray3203 = new int[4096];
         hoveredHash = new int[1000];
@@ -56,7 +59,6 @@ public class Model extends Renderable {
         aBooleanArray3201 = new boolean[4096];
         vertexScreenZ = new int[4096];
         anIntArray3214 = new int[1];
-        MouseHandler.gameScreenClickable = false;
         anIntArray3216 = new int[2000];
         anIntArray3202 = Rasterizer3D.hsl2rgb;
         vertexScreenX = new int[4096];
@@ -71,7 +73,6 @@ public class Model extends Renderable {
         COSINE = Rasterizer3D.cosinetable;
         aBooleanArray3224 = new boolean[4096];
         anIntArray3228 = Rasterizer3D.anIntArray2929;
-        MouseHandler.cursorX = 0;
         anIntArray3226 = new int[12];
         int i = 0;
         int i_322_ = 248;
@@ -734,17 +735,23 @@ public class Model extends Renderable {
         }
     }
 
-    public void renderAtPoint(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public void renderAtPoint(int arg0, CameraRotation cameraRotation, int x, int z, int y, int arg8) {
         if(anInt3169 != 1)
             method799();
-        int i = arg7 * arg4 - arg5 * arg3 >> 16;
-        int i_4_ = arg6 * arg1 + i * arg2 >> 16;
-        int i_5_ = diagonal2DAboveOrigin * arg2 >> 16;
+
+        int yawSine = cameraRotation.yawSine;
+        int yawCosine = cameraRotation.yawCosine;
+        int pitchSine = cameraRotation.pitchSine;
+        int pitchCosine = cameraRotation.pitchCosine;
+
+        int i = y * yawCosine - x * yawSine >> 16;
+        int i_4_ = z * pitchSine + i * pitchCosine >> 16;
+        int i_5_ = diagonal2DAboveOrigin * pitchCosine >> 16;
         int i_6_ = i_4_ + i_5_;
         if(i_6_ <= 50/* || i_4_ >= 3500*/) {
             return;
         }
-        int i_7_ = arg7 * arg3 + arg5 * arg4 >> 16;
+        int i_7_ = y * yawSine + x * yawCosine >> 16;
         int i_8_ = i_7_ - diagonal2DAboveOrigin << 9;
         if(i_8_ / i_6_ >= Rasterizer3D.anInt2934) {
             return;
@@ -753,18 +760,18 @@ public class Model extends Renderable {
         if(i_9_ / i_6_ <= Rasterizer3D.anInt2942) {
             return;
         }
-        int i_10_ = arg6 * arg2 - i * arg1 >> 16;
-        int i_11_ = diagonal2DAboveOrigin * arg1 >> 16;
+        int i_10_ = z * pitchCosine - i * pitchSine >> 16;
+        int i_11_ = diagonal2DAboveOrigin * pitchSine >> 16;
         int i_12_ = i_10_ + i_11_ << 9;
         if(i_12_ / i_6_ <= Rasterizer3D.anInt2935) {
             return;
         }
-        int i_13_ = i_11_ + (modelHeight * arg2 >> 16);
+        int i_13_ = i_11_ + (modelHeight * pitchCosine >> 16);
         int i_14_ = i_10_ - i_13_ << 9;
         if(i_14_ / i_6_ >= Rasterizer3D.anInt2941) {
             return;
         }
-        int i_15_ = i_5_ + (modelHeight * arg1 >> 16);
+        int i_15_ = i_5_ + (modelHeight * pitchSine >> 16);
         boolean bool = false;
         boolean bool_16_ = false;
         if(i_4_ - i_15_ <= 50)
@@ -815,14 +822,14 @@ public class Model extends Renderable {
                 i_29_ = i_29_ * i_25_ - i_27_ * i_24_ >> 16;
                 i_27_ = i_30_;
             }
-            i_27_ += arg5;
-            i_28_ += arg6;
-            i_29_ += arg7;
-            int i_31_ = i_29_ * arg3 + i_27_ * arg4 >> 16;
-            i_29_ = i_29_ * arg4 - i_27_ * arg3 >> 16;
+            i_27_ += x;
+            i_28_ += z;
+            i_29_ += y;
+            int i_31_ = i_29_ * yawSine + i_27_ * yawCosine >> 16;
+            i_29_ = i_29_ * yawCosine - i_27_ * yawSine >> 16;
             i_27_ = i_31_;
-            i_31_ = i_28_ * arg2 - i_29_ * arg1 >> 16;
-            i_29_ = i_28_ * arg1 + i_29_ * arg2 >> 16;
+            i_31_ = i_28_ * pitchCosine - i_29_ * pitchSine >> 16;
+            i_29_ = i_28_ * pitchSine + i_29_ * pitchCosine >> 16;
             i_28_ = i_31_;
             vertexScreenZ[i_26_] = i_29_ - i_4_;
             if(i_29_ >= 50) {

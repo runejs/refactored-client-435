@@ -1,12 +1,6 @@
 package org.runejs.client.scene;
 
-import org.runejs.client.util.Timer;
-
 public class SceneCluster {
-    public static Timer gameTimer;
-    public static int anInt770 = 0;
-    public static int idleLogout = 0;
-
     public int worldDistanceFromCameraStartX;
     public int worldDistanceFromCameraEndY;
     public int tileStartY;
@@ -25,6 +19,4 @@ public class SceneCluster {
     public int tileEndX;
     public int worldEndZ;
     public int worldDistanceFromCameraEndX;
-
-
 }

@@ -56,6 +56,6 @@ public class LoadConstructedRegionMessageHandler implements MessageHandler<LoadC
                 }
             }
         }
-        Landscape.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
+        MovedStatics.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
     }
 }
