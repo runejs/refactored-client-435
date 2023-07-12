@@ -1,25 +1,13 @@
 package org.runejs.client.media.renderable.actor;
 
-import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.ImageRGB;
-import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.TypeFace;
-import org.runejs.client.frame.Minimap;
-import org.runejs.client.io.Buffer;
-import org.runejs.client.language.English;
-import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.scene.tile.WallDecoration;
-import org.runejs.client.sound.SoundSystem;
-import org.runejs.client.util.Signlink;
 import org.runejs.client.*;
 
 public abstract class Actor extends Renderable {
-
-    public static int[] anIntArray3111;
-    public static int randomiserLightness = -16 + (int) (Math.random() * 33.0);
-    public static Signlink signlink;
     public static int actorUpdatingIndex = 0;
 
     public boolean[] aBooleanArray3072;
@@ -131,234 +119,12 @@ public abstract class Actor extends Renderable {
         playingAnimation = -1;
     }
 
-    public static void method781(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        if(arg0 == 1850) {
-            int i = Game.currentScene.method122(arg1, arg2, arg5);
-            if(i != 0) {
-                int i_0_ = Game.currentScene.getArrangement(arg1, arg2, arg5, i);
-                int i_1_ = 0x1f & i_0_;
-                int i_2_ = 0x3 & i_0_ >> 6;
-                int i_3_ = arg3;
-                if(i > 0)
-                    i_3_ = arg4;
-                int i_4_ = 4 * (-arg5 + 103) * 512 + 24624 + 4 * arg2;
-                int i_5_ = i >> 14 & 0x7fff;
-                int[] is = Minimap.minimapImage.pixels;
-                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_5_);
-                if(gameObjectDefinition.mapSceneID == -1) {
-                    if(i_1_ == 0 || i_1_ == 2) {
-                        if(i_2_ == 0) {
-                            is[i_4_] = i_3_;
-                            is[512 + i_4_] = i_3_;
-                            is[1024 + i_4_] = i_3_;
-                            is[1536 + i_4_] = i_3_;
-                        } else if(i_2_ == 1) {
-                            is[i_4_] = i_3_;
-                            is[i_4_ + 1] = i_3_;
-                            is[2 + i_4_] = i_3_;
-                            is[i_4_ + 3] = i_3_;
-                        } else if(i_2_ == 2) {
-                            is[3 + i_4_] = i_3_;
-                            is[3 + i_4_ + 512] = i_3_;
-                            is[1024 + i_4_ + 3] = i_3_;
-                            is[i_4_ + 1539] = i_3_;
-                        } else if(i_2_ == 3) {
-                            is[i_4_ + 1536] = i_3_;
-                            is[1536 + i_4_ + 1] = i_3_;
-                            is[1536 + i_4_ + 2] = i_3_;
-                            is[3 + i_4_ + 1536] = i_3_;
-                        }
-                    }
-                    if(i_1_ == 3) {
-                        if(i_2_ != 0) {
-                            if(i_2_ != 1) {
-                                if(i_2_ != 2) {
-                                    if(i_2_ == 3)
-                                        is[i_4_ + 1536] = i_3_;
-                                } else
-                                    is[3 + i_4_ + 1536] = i_3_;
-                            } else
-                                is[i_4_ + 3] = i_3_;
-                        } else
-                            is[i_4_] = i_3_;
-                    }
-                    if(i_1_ == 2) {
-                        if(i_2_ == 3) {
-                            is[i_4_] = i_3_;
-                            is[512 + i_4_] = i_3_;
-                            is[i_4_ + 1024] = i_3_;
-                            is[1536 + i_4_] = i_3_;
-                        } else if(i_2_ == 0) {
-                            is[i_4_] = i_3_;
-                            is[1 + i_4_] = i_3_;
-                            is[i_4_ + 2] = i_3_;
-                            is[3 + i_4_] = i_3_;
-                        } else if(i_2_ == 1) {
-                            is[i_4_ + 3] = i_3_;
-                            is[512 + 3 + i_4_] = i_3_;
-                            is[i_4_ + 1027] = i_3_;
-                            is[1536 + 3 + i_4_] = i_3_;
-                        } else if(i_2_ == 2) {
-                            is[1536 + i_4_] = i_3_;
-                            is[1537 + i_4_] = i_3_;
-                            is[i_4_ + 1538] = i_3_;
-                            is[1536 + i_4_ + 3] = i_3_;
-                        }
-                    }
-                } else {
-                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
-                    if(class40_sub5_sub14_sub2 != null) {
-                        int i_6_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
-                        int i_7_ = (gameObjectDefinition.sizeY * 4 + -class40_sub5_sub14_sub2.imgHeight) / 2;
-                        class40_sub5_sub14_sub2.drawImage(48 + 4 * arg2 + i_6_, i_7_ + 48 + (104 + -arg5 - gameObjectDefinition.sizeY) * 4);
-                    }
-                }
-            }
-            i = Game.currentScene.getLocationHash(arg1, arg2, arg5);
-            if(i != 0) {
-                int i_8_ = Game.currentScene.getArrangement(arg1, arg2, arg5, i);
-                int i_9_ = 0x7fff & i >> 14;
-                int i_10_ = (i_8_ & 0xf4) >> 6;
-                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
-                int i_11_ = i_8_ & 0x1f;
-                if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
-                    if(class40_sub5_sub14_sub2 != null) {
-                        int i_12_ = (-class40_sub5_sub14_sub2.imgHeight + gameObjectDefinition.sizeY * 4) / 2;
-                        int i_13_ = (gameObjectDefinition.sizeX * 4 + -class40_sub5_sub14_sub2.imgWidth) / 2;
-                        class40_sub5_sub14_sub2.drawImage(i_13_ + arg2 * 4 + 48, 48 - (-(4 * (-arg5 + 104 + -gameObjectDefinition.sizeY)) + -i_12_));
-                    }
-                } else if(i_11_ == 9) {
-                    int[] is = Minimap.minimapImage.pixels;
-                    int i_14_ = 15658734;
-                    if(i > 0)
-                        i_14_ = 15597568;
-                    int i_15_ = (-(arg5 * 512) + 52736) * 4 + arg2 * 4 + 24624;
-                    if(i_10_ == 0 || i_10_ == 2) {
-                        is[1536 + i_15_] = i_14_;
-                        is[1024 + i_15_ + 1] = i_14_;
-                        is[514 + i_15_] = i_14_;
-                        is[3 + i_15_] = i_14_;
-                    } else {
-                        is[i_15_] = i_14_;
-                        is[513 + i_15_] = i_14_;
-                        is[2 + i_15_ + 1024] = i_14_;
-                        is[1536 + i_15_ + 3] = i_14_;
-                    }
-                }
-            }
-            i = Game.currentScene.getFloorDecorationHash(arg1, arg2, arg5);
-            if(i != 0) {
-                int i_16_ = (i & 0x1fffd9fb) >> 14;
-                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);
-                if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
-                    if(class40_sub5_sub14_sub2 != null) {
-                        int i_17_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
-                        int i_18_ = (-class40_sub5_sub14_sub2.imgHeight + 4 * gameObjectDefinition.sizeY) / 2;
-                        class40_sub5_sub14_sub2.drawImage(4 * arg2 + 48 + i_17_, i_18_ + (104 - (arg5 + gameObjectDefinition.sizeY)) * 4 + 48);
-                    }
-                }
-            }
-        }
-    }
-
     public static void clearCaches() {
         ImageRGB.imageRgbCache.clear();
         WallDecoration.modelCache.clear();
         TypeFace.typeFaceCache.clear();
     }
 
-
-
-    public static void method789(int chunkLocalX, int chunkY, int chunkX, int chunkLocalY, int level) {
-        if(chunkX != MovedStatics.regionX || chunkY != MovedStatics.regionY || MovedStatics.onBuildTimePlane != level && VertexNormal.lowMemory) {
-            MovedStatics.onBuildTimePlane = level;
-            MovedStatics.regionX = chunkX;
-            if(!VertexNormal.lowMemory)
-                MovedStatics.onBuildTimePlane = 0;
-            MovedStatics.regionY = chunkY;
-            MovedStatics.processGameStatus(25);
-            MovedStatics.method940(English.loadingPleaseWait, false, null);
-            int i = MovedStatics.baseY;
-            int i_33_ = MovedStatics.baseX;
-            MovedStatics.baseX = (chunkX - 6) * 8;
-            int i_34_ = MovedStatics.baseX + -i_33_;
-            if(-1000 != -1000)
-                method781(14, 98, 96, -85, -118, 89);
-            i_33_ = MovedStatics.baseX;
-            MovedStatics.baseY = (-6 + chunkY) * 8;
-            int i_35_ = MovedStatics.baseY + -i;
-            i = MovedStatics.baseY;
-            for(int i_36_ = 0; i_36_ < 32768; i_36_++) {
-                Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_36_];
-                if(class40_sub5_sub17_sub4_sub2 != null) {
-                    for(int i_37_ = 0; i_37_ < 10; i_37_++) {
-                        class40_sub5_sub17_sub4_sub2.pathY[i_37_] -= i_34_;
-                        class40_sub5_sub17_sub4_sub2.pathX[i_37_] -= i_35_;
-                    }
-                    class40_sub5_sub17_sub4_sub2.worldX -= 128 * i_34_;
-                    class40_sub5_sub17_sub4_sub2.worldY -= i_35_ * 128;
-                }
-            }
-            for(int i_38_ = 0; i_38_ < 2048; i_38_++) {
-                Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_38_];
-                if(class40_sub5_sub17_sub4_sub1 != null) {
-                    for(int i_39_ = 0; i_39_ < 10; i_39_++) {
-                        class40_sub5_sub17_sub4_sub1.pathY[i_39_] -= i_34_;
-                        class40_sub5_sub17_sub4_sub1.pathX[i_39_] -= i_35_;
-                    }
-                    class40_sub5_sub17_sub4_sub1.worldY -= 128 * i_35_;
-                    class40_sub5_sub17_sub4_sub1.worldX -= 128 * i_34_;
-                }
-            }
-            Player.worldLevel = level;
-            int i_40_ = 0;
-            Player.localPlayer.method787(chunkLocalY, false, chunkLocalX);
-            int i_41_ = 104;
-            int i_42_ = 1;
-            if(i_34_ < 0) {
-                i_41_ = -1;
-                i_40_ = 103;
-                i_42_ = -1;
-            }
-            int i_43_ = 104;
-            int i_44_ = 0;
-            int i_45_ = 1;
-            if(i_35_ < 0) {
-                i_44_ = 103;
-                i_43_ = -1;
-                i_45_ = -1;
-            }
-            for(int i_46_ = i_40_; i_41_ != i_46_; i_46_ += i_42_) {
-                for(int i_47_ = i_44_; i_43_ != i_47_; i_47_ += i_45_) {
-                    int i_48_ = i_34_ + i_46_;
-                    int i_49_ = i_35_ + i_47_;
-                    for(int i_50_ = 0; i_50_ < 4; i_50_++) {
-                        if(i_48_ < 0 || i_49_ < 0 || i_48_ >= 104 || i_49_ >= 104)
-                            MovedStatics.groundItems[i_50_][i_46_][i_47_] = null;
-                        else
-                            MovedStatics.groundItems[i_50_][i_46_][i_47_] = MovedStatics.groundItems[i_50_][i_48_][i_49_];
-                    }
-                }
-            }
-            for(Class40_Sub3 class40_sub3 = (Class40_Sub3) MovedStatics.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) MovedStatics.aLinkedList_1064.pollFirst()) {
-                class40_sub3.anInt2038 -= i_35_;
-                class40_sub3.anInt2039 -= i_34_;
-                if(class40_sub3.anInt2039 < 0 || class40_sub3.anInt2038 < 0 || class40_sub3.anInt2039 >= 104 || class40_sub3.anInt2038 >= 104)
-                    class40_sub3.unlink();
-            }
-            Buffer.anInt1985 = -1;
-            if(MovedStatics.destinationX != 0) {
-                MovedStatics.destinationX -= i_34_;
-                Game.destinationY -= i_35_;
-            }
-            Player.cutsceneActive = false;
-            SoundSystem.reset();
-            MovedStatics.spotAnimQueue.clear();
-            MovedStatics.projectileQueue.clear();
-        }
-    }
 
     public static void handleActorAnimation(Actor actor) {
         if(actor.worldX < 128 || actor.worldY < 128 || actor.worldX >= 13184 || actor.worldY >= 13184) {

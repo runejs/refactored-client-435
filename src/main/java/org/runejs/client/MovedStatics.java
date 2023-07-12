@@ -368,6 +368,8 @@ public class MovedStatics {
      */
     public static IndexedImage tabHighlightImageBottomRightEdge;
     public static boolean aBoolean512;
+    public static int[] anIntArray3111;
+    public static Signlink signlink;
 
     public static void method440() {
         if (aBoolean512) {
@@ -562,7 +564,7 @@ public class MovedStatics {
         class40_sub5_sub14_sub2.maxWidth = imageMaxWidth;
         class40_sub5_sub14_sub2.maxHeight = imageMaxHeight;
         class40_sub5_sub14_sub2.xDrawOffset = anIntArray1347[0];
-        class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[0];
+        class40_sub5_sub14_sub2.yDrawOffset = anIntArray3111[0];
         class40_sub5_sub14_sub2.imgWidth = anIntArray456[0];
         class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[0];
         class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
@@ -673,7 +675,7 @@ public class MovedStatics {
                 string = string.replace('@', '_');
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
-                SignlinkNode signlinkNode = Actor.signlink.addType4Node(new URL(Actor.signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + clientVersion + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
+                SignlinkNode signlinkNode = signlink.addType4Node(new URL(signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + clientVersion + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
                 while (signlinkNode.status == 0)
                     threadSleep(1L);
                 if (signlinkNode.status != 1)
@@ -688,7 +690,7 @@ public class MovedStatics {
         Buffer buffer = new Buffer(data);
         buffer.currentPosition = -2 + data.length;
         anInt2581 = buffer.getUnsignedShortBE();
-        Actor.anIntArray3111 = new int[anInt2581];
+        anIntArray3111 = new int[anInt2581];
         GroundItemTile.aByteArrayArray1370 = new byte[anInt2581][];
         anIntArray456 = new int[anInt2581];
         Npc.anIntArray3312 = new int[anInt2581];
@@ -701,7 +703,7 @@ public class MovedStatics {
         for (int i_34_ = 0; i_34_ < anInt2581; i_34_++)
             anIntArray1347[i_34_] = buffer.getUnsignedShortBE();
         for (int i_35_ = arg1; i_35_ < anInt2581; i_35_++)
-            Actor.anIntArray3111[i_35_] = buffer.getUnsignedShortBE();
+            anIntArray3111[i_35_] = buffer.getUnsignedShortBE();
         for (int i_36_ = 0; i_36_ < anInt2581; i_36_++)
             anIntArray456[i_36_] = buffer.getUnsignedShortBE();
         for (int i_37_ = 0; anInt2581 > i_37_; i_37_++)
@@ -1585,9 +1587,9 @@ public class MovedStatics {
 	    for(int i_6_ = 1; i_6_ < 103; i_6_++) {
 	        for(int i_7_ = 1; i_7_ < 103; i_7_++) {
 	            if((tile_flags[arg1][i_7_][i_6_] & 0x18) == 0)
-	                Actor.method781(1850, arg1, i_7_, i_4_, i_5_, i_6_);
+	                Minimap.method781(1850, arg1, i_7_, i_4_, i_5_, i_6_);
 	            if(arg1 < 3 && (0x8 & tile_flags[1 + arg1][i_7_][i_6_]) != 0)
-	                Actor.method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
+	                Minimap.method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
 	        }
 	    }
 	    Minimap.minimapHintCount = 0;

@@ -3,7 +3,6 @@ package org.runejs.client.message.handler.rs435.region;
 import org.runejs.client.*;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.language.Native;
-import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.region.LoadStandardRegionInboundMessage;
 
@@ -52,6 +51,6 @@ public class LoadStandardRegionMessageHandler implements MessageHandler<LoadStan
             }
         }
 
-        Actor.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
+        Landscape.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
     }
 }

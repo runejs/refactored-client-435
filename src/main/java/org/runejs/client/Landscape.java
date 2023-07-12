@@ -12,7 +12,7 @@ import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.Renderable;
-import org.runejs.client.media.renderable.actor.Actor;
+import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.IncomingPackets;
 import org.runejs.client.net.OutgoingPackets;
@@ -48,6 +48,7 @@ public class Landscape {
     public static boolean loadGeneratedMap = false;
     public static int[] terrainDataIds;
     public static int[][][] tile_height = new int[4][105][105];
+    public static int randomiserLightness = -16 + (int) (Math.random() * 33.0);
     private static int lowestPlane = 99;
 
     public static void loadRegion() {
@@ -380,15 +381,15 @@ public class Landscape {
             }
         }
         MovedStatics.randomiserHue += (int) (5.0 * Math.random()) + -2;
-        Actor.randomiserLightness += -2 + (int) (5.0 * Math.random());
+        randomiserLightness += -2 + (int) (5.0 * Math.random());
         if(MovedStatics.randomiserHue < -8)
             MovedStatics.randomiserHue = -8;
         if(MovedStatics.randomiserHue > 8)
             MovedStatics.randomiserHue = 8;
-        if(Actor.randomiserLightness < -16)
-            Actor.randomiserLightness = -16;
-        if(Actor.randomiserLightness > 16)
-            Actor.randomiserLightness = 16;
+        if(randomiserLightness < -16)
+            randomiserLightness = -16;
+        if(randomiserLightness > 16)
+            randomiserLightness = 16;
         for(int _plane = 0; _plane < 4; _plane++) {
             byte[][] shadowIntensity = tileShadowIntensity[_plane];
             int directionalLightLength = (int) Math.sqrt(5100.0);
@@ -485,7 +486,7 @@ public class Landscape {
                                     int s = saturation / direction;
                                     int l = lightness / direction;
                                     hslBitsetOriginal = generateHslBitset(s, l, h);
-                                    l += Actor.randomiserLightness;
+                                    l += randomiserLightness;
                                     h = h + MovedStatics.randomiserHue & 0xff;
                                     if(l >= 0) {
                                         if(l > 255)
@@ -523,7 +524,7 @@ public class Landscape {
                                     } else {
                                         hslBitset = generateHslBitset(overlayDefinition.lightness, overlayDefinition.saturation, overlayDefinition.hue);
                                         int h = MovedStatics.randomiserHue + overlayDefinition.hue & 0xff;
-                                        int s = Actor.randomiserLightness + overlayDefinition.saturation;
+                                        int s = randomiserLightness + overlayDefinition.saturation;
                                         if(s < 0)
                                             s = 0;
                                         else if(s > 255)
@@ -535,7 +536,7 @@ public class Landscape {
                                         rgb = Rasterizer3D.hsl2rgb[MovedStatics.mixLightnessSigned(overlayMinimapColour, 96)];
                                     if(overlayDefinition.secondaryColor != -1) {
                                         int i_54_ = 0xff & MovedStatics.randomiserHue + overlayDefinition.otherHue;
-                                        int i_55_ = overlayDefinition.otherSaturation + Actor.randomiserLightness;
+                                        int i_55_ = overlayDefinition.otherSaturation + randomiserLightness;
                                         if(i_55_ >= 0) {
                                             if(i_55_ > 255)
                                                 i_55_ = 255;
@@ -875,7 +876,7 @@ public class Landscape {
                     }
                 }
             }
-            Actor.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
+            method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
         } else {
             int chunkLocalY = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
             int chunkX = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
@@ -919,7 +920,7 @@ public class Landscape {
                 }
             }
 
-            Actor.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
+            method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
         }
     }
 
@@ -1346,5 +1347,92 @@ public class Landscape {
         if(l > 243)
             s /= 2;
         return l / 2 + (s / 32 << 7) + (h / 4 << 10);
+    }
+
+    public static void method789(int chunkLocalX, int chunkY, int chunkX, int chunkLocalY, int level) {
+        if(chunkX != MovedStatics.regionX || chunkY != MovedStatics.regionY || MovedStatics.onBuildTimePlane != level && VertexNormal.lowMemory) {
+            MovedStatics.onBuildTimePlane = level;
+            MovedStatics.regionX = chunkX;
+            if(!VertexNormal.lowMemory)
+                MovedStatics.onBuildTimePlane = 0;
+            MovedStatics.regionY = chunkY;
+            MovedStatics.processGameStatus(25);
+            MovedStatics.method940(English.loadingPleaseWait, false, null);
+            int i = MovedStatics.baseY;
+            int i_33_ = MovedStatics.baseX;
+            MovedStatics.baseX = (chunkX - 6) * 8;
+            int i_34_ = MovedStatics.baseX + -i_33_;
+            i_33_ = MovedStatics.baseX;
+            MovedStatics.baseY = (-6 + chunkY) * 8;
+            int i_35_ = MovedStatics.baseY + -i;
+            i = MovedStatics.baseY;
+            for(int i_36_ = 0; i_36_ < 32768; i_36_++) {
+                Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_36_];
+                if(class40_sub5_sub17_sub4_sub2 != null) {
+                    for(int i_37_ = 0; i_37_ < 10; i_37_++) {
+                        class40_sub5_sub17_sub4_sub2.pathY[i_37_] -= i_34_;
+                        class40_sub5_sub17_sub4_sub2.pathX[i_37_] -= i_35_;
+                    }
+                    class40_sub5_sub17_sub4_sub2.worldX -= 128 * i_34_;
+                    class40_sub5_sub17_sub4_sub2.worldY -= i_35_ * 128;
+                }
+            }
+            for(int i_38_ = 0; i_38_ < 2048; i_38_++) {
+                Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_38_];
+                if(class40_sub5_sub17_sub4_sub1 != null) {
+                    for(int i_39_ = 0; i_39_ < 10; i_39_++) {
+                        class40_sub5_sub17_sub4_sub1.pathY[i_39_] -= i_34_;
+                        class40_sub5_sub17_sub4_sub1.pathX[i_39_] -= i_35_;
+                    }
+                    class40_sub5_sub17_sub4_sub1.worldY -= 128 * i_35_;
+                    class40_sub5_sub17_sub4_sub1.worldX -= 128 * i_34_;
+                }
+            }
+            Player.worldLevel = level;
+            int i_40_ = 0;
+            Player.localPlayer.method787(chunkLocalY, false, chunkLocalX);
+            int i_41_ = 104;
+            int i_42_ = 1;
+            if(i_34_ < 0) {
+                i_41_ = -1;
+                i_40_ = 103;
+                i_42_ = -1;
+            }
+            int i_43_ = 104;
+            int i_44_ = 0;
+            int i_45_ = 1;
+            if(i_35_ < 0) {
+                i_44_ = 103;
+                i_43_ = -1;
+                i_45_ = -1;
+            }
+            for(int i_46_ = i_40_; i_41_ != i_46_; i_46_ += i_42_) {
+                for(int i_47_ = i_44_; i_43_ != i_47_; i_47_ += i_45_) {
+                    int i_48_ = i_34_ + i_46_;
+                    int i_49_ = i_35_ + i_47_;
+                    for(int i_50_ = 0; i_50_ < 4; i_50_++) {
+                        if(i_48_ < 0 || i_49_ < 0 || i_48_ >= 104 || i_49_ >= 104)
+                            MovedStatics.groundItems[i_50_][i_46_][i_47_] = null;
+                        else
+                            MovedStatics.groundItems[i_50_][i_46_][i_47_] = MovedStatics.groundItems[i_50_][i_48_][i_49_];
+                    }
+                }
+            }
+            for(Class40_Sub3 class40_sub3 = (Class40_Sub3) MovedStatics.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) MovedStatics.aLinkedList_1064.pollFirst()) {
+                class40_sub3.anInt2038 -= i_35_;
+                class40_sub3.anInt2039 -= i_34_;
+                if(class40_sub3.anInt2039 < 0 || class40_sub3.anInt2038 < 0 || class40_sub3.anInt2039 >= 104 || class40_sub3.anInt2038 >= 104)
+                    class40_sub3.unlink();
+            }
+            Buffer.anInt1985 = -1;
+            if(MovedStatics.destinationX != 0) {
+                MovedStatics.destinationX -= i_34_;
+                Game.destinationY -= i_35_;
+            }
+            Player.cutsceneActive = false;
+            SoundSystem.reset();
+            MovedStatics.spotAnimQueue.clear();
+            MovedStatics.projectileQueue.clear();
+        }
     }
 }

@@ -10,7 +10,6 @@ import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.node.CachedNode;
@@ -58,7 +57,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         MovedStatics.anIntArray456 = null;
         GroundItemTile.aByteArrayArray1370 = null;
         Npc.anIntArray3312 = null;
-        Actor.anIntArray3111 = null;
+        MovedStatics.anIntArray3111 = null;
         Buffer.anIntArray1972 = null;
         MovedStatics.anIntArray1347 = null;
     }
@@ -105,7 +104,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         class40_sub5_sub14_sub4.maxWidth = MovedStatics.imageMaxWidth;
         class40_sub5_sub14_sub4.maxHeight = MovedStatics.imageMaxHeight;
         class40_sub5_sub14_sub4.offsetX = MovedStatics.anIntArray1347[0];
-        class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[0];
+        class40_sub5_sub14_sub4.offsetY = MovedStatics.anIntArray3111[0];
         class40_sub5_sub14_sub4.imageWidth = MovedStatics.anIntArray456[0];
         class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[0];
         byte[] is = GroundItemTile.aByteArrayArray1370[0];

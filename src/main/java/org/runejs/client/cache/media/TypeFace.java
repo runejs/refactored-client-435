@@ -11,7 +11,6 @@ import org.runejs.client.cache.media.textUtils.TextTagNode;
 import org.runejs.client.cache.media.textUtils.TextTagQueue;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
-import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.scene.GroundItemTile;
 
@@ -102,7 +101,7 @@ public class TypeFace extends Rasterizer {
     }
 
     public static TypeFace constructFont() {
-        TypeFace class40_sub5_sub14_sub1 = new TypeFace(Actor.anIntArray3111, MovedStatics.anIntArray456, Npc.anIntArray3312, Buffer.anIntArray1972, GroundItemTile.aByteArrayArray1370);
+        TypeFace class40_sub5_sub14_sub1 = new TypeFace(MovedStatics.anIntArray3111, MovedStatics.anIntArray456, Npc.anIntArray3312, Buffer.anIntArray1972, GroundItemTile.aByteArrayArray1370);
         ActorDefinition.method569();
         return class40_sub5_sub14_sub1;
     }

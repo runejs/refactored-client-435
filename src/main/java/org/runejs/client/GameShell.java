@@ -4,7 +4,6 @@ import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.Native;
-import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.scene.SceneCluster;
@@ -249,7 +248,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         if (currentGameShell == this && !closedClient) {
             exitTimeInMillis = System.currentTimeMillis();
             MovedStatics.threadSleep(5000L);
-            Actor.signlink = null;
+            MovedStatics.signlink = null;
             closeGameShell();
         }
     }
@@ -279,7 +278,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         currentGameShell = this;
         if (Game.signlink == null) {
             try {
-                Actor.signlink = Game.signlink = new Signlink(false, this, InetAddress.getByName(getCodeBase().getHost()), fileStoreId, null, 0);
+                MovedStatics.signlink = Game.signlink = new Signlink(false, this, InetAddress.getByName(getCodeBase().getHost()), fileStoreId, null, 0);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -355,7 +354,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
             Insets insets = clientFrame.getInsets();
             clientFrame.setSize(insets.right + width + insets.left, insets.bottom + insets.top + height);
 //            Class35.aFrame1732.setLocationRelativeTo(null);
-            Actor.signlink = Game.signlink = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
+            MovedStatics.signlink = Game.signlink = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
             Game.signlink.createThreadNode(1, this);
         } catch (Exception exception) {
             MovedStatics.printException(null, exception);

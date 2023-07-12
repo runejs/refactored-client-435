@@ -9,7 +9,6 @@ import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.Minimap;
 import org.runejs.client.io.Buffer;
-import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.node.Node;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.console.Console;
@@ -324,7 +323,7 @@ public class Class40_Sub3 extends Node {
 	        class40_sub5_sub14_sub4.maxWidth = MovedStatics.imageMaxWidth;
 	        class40_sub5_sub14_sub4.maxHeight = MovedStatics.imageMaxHeight;
 	        class40_sub5_sub14_sub4.offsetX = MovedStatics.anIntArray1347[i];
-	        class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[i];
+	        class40_sub5_sub14_sub4.offsetY = MovedStatics.anIntArray3111[i];
 	        class40_sub5_sub14_sub4.imageWidth = MovedStatics.anIntArray456[i];
 	        class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[i];
 	        byte[] is = GroundItemTile.aByteArrayArray1370[i];
