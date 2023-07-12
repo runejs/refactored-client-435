@@ -1481,7 +1481,7 @@ public class MovedStatics {
                     int i_5_ = arg7;
                     if(i_5_ < 3 && (tile_flags[1][arg2][arg0] & 0x2) == 2)
                         i_5_++;
-                    CollisionMap.addObject(Landscape.currentCollisionMap[arg7], arg1, i_5_, arg7, arg3, Game.currentScene, -22078, arg4, arg0, arg2);
+                    CollisionMap.addObject(Landscape.currentCollisionMap[arg7], arg1, i_5_, arg7, arg3, Game.currentScene,  arg4, arg0, arg2);
                 }
             }
         }

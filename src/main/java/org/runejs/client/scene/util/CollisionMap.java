@@ -41,7 +41,7 @@ public class CollisionMap {
     }
 
 
-    public static void addObject(CollisionMap arg0, int arg1, int arg2, int arg3, int arg4, Scene arg5, int arg6, int arg7, int arg8, int arg9) {
+    public static void addObject(CollisionMap arg0, int arg1, int arg2, int arg3, int arg4, Scene arg5, int arg7, int arg8, int arg9) {
         int i = Landscape.tile_height[arg2][arg9][arg8];
         int i_0_ = Landscape.tile_height[arg2][1 + arg9][arg8];
         int i_1_ = Landscape.tile_height[arg2][arg9][1 + arg8];
@@ -186,29 +186,27 @@ public class CollisionMap {
                 else
                     renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
                 arg5.addWallDecoration(arg9, arg8, arg3, i_3_, MovedStatics.anIntArray666[arg7] * i_14_, MovedStatics.anIntArray2207[arg7] * i_14_, 512 * arg7, i_5_, renderable, i_4_, SceneCluster.anIntArray761[arg7]);
-            } else if (arg6 == -22078) {
-                if (arg4 == 6) {
-                    Renderable renderable;
-                    if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
-                        renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
-                    else
-                        renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
-                    arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 256);
-                } else if (arg4 == 7) {
-                    Renderable renderable;
-                    if (gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
-                        renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
-                    else
-                        renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
-                    arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 512);
-                } else if (arg4 == 8) {
-                    Renderable renderable;
-                    if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
-                        renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
-                    else
-                        renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
-                    arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 768);
-                }
+            } else if (arg4 == 6) {
+                Renderable renderable;
+                if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
+                    renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
+                else
+                    renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
+                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 256);
+            } else if (arg4 == 7) {
+                Renderable renderable;
+                if (gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                    renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
+                else
+                    renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
+                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 512);
+            } else if (arg4 == 8) {
+                Renderable renderable;
+                if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
+                    renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
+                else
+                    renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
+                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 768);
             }
         }
 
