@@ -713,7 +713,7 @@ public class Scene {
         }
     }
 
-    public void renderTile(SceneTile _tile, boolean arg1) {
+    private void renderTile(SceneTile _tile, boolean arg1) {
         tileList.addLast(_tile);
         for (; ; ) {
             SceneTile groundTile = (SceneTile) tileList.removeFirst();

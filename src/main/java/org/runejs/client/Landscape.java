@@ -52,6 +52,12 @@ public class Landscape {
     public static int randomiserHue = -8 + (int) (17.0 * Math.random());
     private static int lowestPlane = 99;
 
+    private final Scene scene;
+
+    public Landscape(Scene scene) {
+        this.scene = scene;
+    }
+
     public void loadRegion() {
         method364(false);
         Game.anInt874 = 0;
@@ -91,7 +97,7 @@ public class Landscape {
                 if(MovedStatics.anInt1634 != 0)
                     MovedStatics.method940(English.loadingPleaseWait, true, Native.percent100Parentheses);
                 Game.clearCaches();
-                Game.currentScene.initToNull();
+                this.scene.initToNull();
                 System.gc();
                 for(int z = 0; z < 4; z++)
                     currentCollisionMap[z].reset();
@@ -143,7 +149,7 @@ public class Landscape {
                         if(data != null) {
                             int offsetX = -MovedStatics.baseX + (mapCoordinates[region] >> 8) * 64;
                             int offsetY = 64 * (0xff & mapCoordinates[region]) - MovedStatics.baseY;
-                            loadObjectBlock(offsetX, Game.currentScene, currentCollisionMap, data, offsetY);
+                            loadObjectBlock(offsetX, currentCollisionMap, data, offsetY);
                         } else {
                             System.out.println("Missing map: " + objectDataIds[region]);
                         }
@@ -194,7 +200,7 @@ public class Landscape {
                                     int tileCoordinates = (tileX / 8 << 8) + tileY / 8;
                                     for(int i_38_ = 0; i_38_ < mapCoordinates.length; i_38_++) {
                                         if(tileCoordinates == mapCoordinates[i_38_] && objectData[i_38_] != null) {
-                                            constructMapRegionObjects(8 * (tileX & 0x7), 8 * (tileY & 0x7), tileZ, tileRotation, x * 8, 8 * y, z, Game.currentScene, objectData[i_38_], currentCollisionMap);
+                                            constructMapRegionObjects(8 * (tileX & 0x7), 8 * (tileY & 0x7), tileZ, tileRotation, x * 8, 8 * y, z, objectData[i_38_], currentCollisionMap);
                                             break;
                                         }
                                     }
@@ -205,7 +211,7 @@ public class Landscape {
                 }
                 method364(true);
                 Game.clearCaches();
-                createRegion(Game.currentScene, currentCollisionMap);
+                createRegion(currentCollisionMap);
                 method364(true);
                 int z = lowestPlane;
                 if(Player.worldLevel < z)
@@ -213,9 +219,9 @@ public class Landscape {
                 if(z < -1 + Player.worldLevel)
                     z = -1 + Player.worldLevel;
                 if(!VertexNormal.lowMemory)
-                    Game.currentScene.setPlane(0);
+                    this.scene.setPlane(0);
                 else
-                    Game.currentScene.setPlane(lowestPlane);
+                    this.scene.setPlane(lowestPlane);
                 for(int x = 0; x < 104; x++) {
                     for(int y = 0; y < 104; y++)
                         MovedStatics.spawnGroundItem(y, x);
@@ -297,7 +303,7 @@ public class Landscape {
 
     }
 
-    private void constructMapRegionObjects(int drawX, int drawY, int drawingPlane, int orientation, int x, int y, int plane, Scene scene, byte[] objectData, CollisionMap[] collisionMaps) {
+    private void constructMapRegionObjects(int drawX, int drawY, int drawingPlane, int orientation, int x, int y, int plane, byte[] objectData, CollisionMap[] collisionMaps) {
         Buffer objectBuffer = new Buffer(objectData);
         int i = -1;
         for(; ; ) {
@@ -328,7 +334,7 @@ public class Landscape {
                             collisionMapPlane--;
                         if(collisionMapPlane >= 0)
                             collisionMap = collisionMaps[collisionMapPlane];
-                        addObject(i, tileX, tileY, plane, originalOrientation + orientation & 0x3, objectType, scene, collisionMap);
+                        addObject(i, tileX, tileY, plane, originalOrientation + orientation & 0x3, objectType, collisionMap);
                     }
                 }
             }
@@ -367,7 +373,7 @@ public class Landscape {
         return x;
     }
 
-    private void createRegion(Scene scene, CollisionMap[] collisionMaps) {
+    private void createRegion(CollisionMap[] collisionMaps) {
         for(int plane = 0; plane < 4; plane++) {
             for(int x = 0; x < 104; x++) {
                 for(int y = 0; y < 104; y++) {
@@ -546,9 +552,9 @@ public class Landscape {
                                         overlayMinimapColour = generateHslBitset(overlayDefinition.otherLightness, i_55_, i_54_);
                                         rgb = Rasterizer3D.hsl2rgb[MovedStatics.mixLightnessSigned(overlayMinimapColour, 96)];
                                     }
-                                    scene.addTile(_plane, x, y, shape, rotation, textureId, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, mixLightness(hslBitsetOriginal, lightIntensitySW), mixLightness(hslBitsetOriginal, lightIntensitySE), mixLightness(hslBitsetOriginal, lightIntensityNE), mixLightness(hslBitsetOriginal, lightIntensityNW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNW), underlayMinimapColour, rgb);
+                                    this.scene.addTile(_plane, x, y, shape, rotation, textureId, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, mixLightness(hslBitsetOriginal, lightIntensitySW), mixLightness(hslBitsetOriginal, lightIntensitySE), mixLightness(hslBitsetOriginal, lightIntensityNE), mixLightness(hslBitsetOriginal, lightIntensityNW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNW), underlayMinimapColour, rgb);
                                 } else
-                                    scene.addTile(_plane, x, y, 0, 0, -1, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, mixLightness(hslBitsetOriginal, lightIntensitySW), mixLightness(hslBitsetOriginal, lightIntensitySE), mixLightness(hslBitsetOriginal, lightIntensityNE), mixLightness(hslBitsetOriginal, lightIntensityNW), 0, 0, 0, 0, underlayMinimapColour, 0);
+                                    this.scene.addTile(_plane, x, y, 0, 0, -1, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, mixLightness(hslBitsetOriginal, lightIntensitySW), mixLightness(hslBitsetOriginal, lightIntensitySE), mixLightness(hslBitsetOriginal, lightIntensityNE), mixLightness(hslBitsetOriginal, lightIntensityNW), 0, 0, 0, 0, underlayMinimapColour, 0);
                             }
                         }
                     }
@@ -556,7 +562,7 @@ public class Landscape {
             }
             for(int i_56_ = 1; i_56_ < 103; i_56_++) {
                 for(int i_57_ = 1; i_57_ < 103; i_57_++)
-                    scene.setDrawLevel(_plane, i_57_, i_56_, MovedStatics.getVisibilityPlaneFor(_plane, i_56_, 0, i_57_));
+                    this.scene.setDrawLevel(_plane, i_57_, i_56_, MovedStatics.getVisibilityPlaneFor(_plane, i_56_, 0, i_57_));
             }
             tile_underlayids[_plane] = null;
             tile_overlayids[_plane] = null;
@@ -564,11 +570,11 @@ public class Landscape {
             tile_overlay_rotation[_plane] = null;
             tileShadowIntensity[_plane] = null;
         }
-        scene.buildModels(-50, -10, -50);
+        this.scene.buildModels(-50, -10, -50);
         for(int i = 0; i < 104; i++) {
             for(int i_58_ = 0; i_58_ < 104; i_58_++) {
                 if((MovedStatics.tile_flags[1][i][i_58_] & 0x2) == 2)
-                    scene.setTileBridge(i, i_58_);
+                    this.scene.setTileBridge(i, i_58_);
             }
         }
         int renderRule1 = 1;
@@ -613,7 +619,7 @@ public class Landscape {
                                 int i_72_ = 240;
                                 int i_73_ = -i_72_ + tile_height[i_68_][x][i_65_];
                                 int i_74_ = tile_height[i_67_][x][i_65_];
-                                Game.currentScene.createOccluder(plane, 1, 128 * x, 128 * x, 128 * i_65_, 128 + 128 * i_66_, i_73_, i_74_);
+                                this.scene.createOccluder(plane, 1, 128 * x, 128 * x, 128 * i_65_, 128 + 128 * i_66_, i_73_, i_74_);
                                 for(int i_75_ = i_67_; i_75_ <= i_68_; i_75_++) {
                                     for(int i_76_ = i_65_; i_76_ <= i_66_; i_76_++)
                                         tileCullingBitsets[i_75_][x][i_76_] = BitUtils.bitWiseAND(tileCullingBitsets[i_75_][x][i_76_], renderRule1 ^ 0xffffffff);
@@ -652,7 +658,7 @@ public class Landscape {
                                 int lowestOcclusionVertexHeight = tile_height[lowestOcclusionPlane][lowestOcclusionX][y];
                                 int highestOcclusionVertexHeightOffset = 240;
                                 int highestOcclusionVertexHeight = tile_height[highestOcclusionPlane][lowestOcclusionX][y] - highestOcclusionVertexHeightOffset;
-                                Game.currentScene.createOccluder(plane, 2, 128 * lowestOcclusionX, 128 * highestOcclusionX + 128, 128 * y, y * 128, highestOcclusionVertexHeight, lowestOcclusionVertexHeight);
+                                this.scene.createOccluder(plane, 2, 128 * lowestOcclusionX, 128 * highestOcclusionX + 128, 128 * y, y * 128, highestOcclusionVertexHeight, lowestOcclusionVertexHeight);
                                 for(int occludedPlane = lowestOcclusionPlane; highestOcclusionPlane >= occludedPlane; occludedPlane++) {
                                     for(int occludedX = lowestOcclusionX; occludedX <= highestOcclusionX; occludedX++)
                                         tileCullingBitsets[occludedPlane][occludedX][y] = BitUtils.bitWiseAND(tileCullingBitsets[occludedPlane][occludedX][y], i_59_ ^ 0xffffffff);
@@ -688,7 +694,7 @@ public class Landscape {
                             }
                             if((-i_89_ + i_90_ + 1) * (1 + i_92_ - i_91_) >= 4) {
                                 int i_95_ = tile_height[_plane][i_89_][i_91_];
-                                Game.currentScene.createOccluder(plane, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_, i_92_ * 128 + 128, i_95_, i_95_);
+                                this.scene.createOccluder(plane, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_, i_92_ * 128 + 128, i_95_, i_95_);
                                 for(int i_96_ = i_89_; i_96_ <= i_90_; i_96_++) {
                                     for(int i_97_ = i_91_; i_92_ >= i_97_; i_97_++)
                                         tileCullingBitsets[_plane][i_96_][i_97_] = BitUtils.bitWiseAND(tileCullingBitsets[_plane][i_96_][i_97_], i_60_ ^ 0xffffffff);
@@ -770,7 +776,7 @@ public class Landscape {
                 int opcode = fileData.getUnsignedByte();
                 if(opcode == 0) {
                     if(level == 0) {
-                        tile_height[0][x][y] = -method888(regionX + x + 932731, regionY + 556238 + y) * 8;
+                        tile_height[0][x][y] = -getPerlinVertexHeight(regionX + x + 932731, regionY + 556238 + y) * 8;
                     } else {
                         tile_height[level][x][y] = -240 + tile_height[level + -1][x][y];
                     }
@@ -811,8 +817,7 @@ public class Landscape {
         }
     }
 
-    public static void constructMapRegion(boolean generatedMap) {
-
+    public void constructMapRegion(boolean generatedMap) {
         loadGeneratedMap = generatedMap;
         if(loadGeneratedMap) {
             int chunkLocalY = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
@@ -936,7 +941,7 @@ public class Landscape {
         return lightness + (hsl & 0xff80);
     }
 
-    private void loadObjectBlock(int block_x, Scene scene, CollisionMap[] collisionMaps, byte[] block_data, int block_z) {
+    private void loadObjectBlock(int block_x, CollisionMap[] collisionMaps, byte[] block_data, int block_z) {
         Buffer buffer = new Buffer(block_data);
         int object_id = -1;
         for(; ; ) {
@@ -965,13 +970,13 @@ public class Landscape {
                         logic_y--;
                     if(logic_y >= 0)
                         collisionMap = collisionMaps[logic_y];
-                    addObject(object_id, object_x, object_z, tile_y, object_orientation, object_type, scene, collisionMap);
+                    addObject(object_id, object_x, object_z, tile_y, object_orientation, object_type, collisionMap);
                 }
             }
         }
     }
 
-    public void addObject(int objectId, int localX, int localY, int plane, int face, int type, Scene scene, CollisionMap collisionMap) {
+    public void addObject(int objectId, int localX, int localY, int plane, int face, int type, CollisionMap collisionMap) {
         if(!VertexNormal.lowMemory || (0x2 & MovedStatics.tile_flags[0][localX][localY]) != 0 || (0x10 & MovedStatics.tile_flags[plane][localX][localY]) == 0 && MovedStatics.onBuildTimePlane == MovedStatics.getVisibilityPlaneFor(plane, localY, 0, localX)) {
             if(lowestPlane > plane)
                 lowestPlane = plane;
@@ -1238,7 +1243,7 @@ public class Landscape {
 
     }
 
-    public static boolean method840(byte[] arg1, int arg2, int arg3) {
+    private boolean method840(byte[] arg1, int arg2, int arg3) {
         boolean bool = true;
         Buffer class40_sub1 = new Buffer(arg1);
         int i = -1;
@@ -1435,7 +1440,7 @@ public class Landscape {
         }
     }
 
-    public static int method888(int x, int y) {
+    private static int getPerlinVertexHeight(int x, int y) {
         int vertexHeight = -128 + perlinNoise(x + 45365, 91923 + y, 4) - (-(perlinNoise(x + 10294, 37821 + y, 2) - 128 >> 1) + -(-128 + perlinNoise(x, y, 1) >> 2));
         vertexHeight = 35 + (int) (0.3 * (double) vertexHeight);
 
@@ -1448,21 +1453,21 @@ public class Landscape {
         return vertexHeight;
     }
 
-    public static int interpolateForPerlin(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
+    private static int interpolateForPerlin(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
         if (!arg3)
             return -109;
         int i = 65536 + -Rasterizer3D.cosinetable[1024 * arg4 / arg1] >> 1;
         return ((65536 + -i) * arg0 >> 16) + (arg2 * i >> 16);
     }
 
-    public static int randomNoiseWeightedSum(int arg1, int arg2) {
+    private static int randomNoiseWeightedSum(int arg1, int arg2) {
         int i = randomNoise(-1 + arg1, -1 + arg2) + randomNoise(1 + arg1, arg2 - 1) + randomNoise(-1 + arg1, 1 + arg2) + randomNoise(1 + arg1, arg2 + 1);
         int i_126_ = randomNoise(arg1 - 1, arg2) + randomNoise(arg1 + 1, arg2) - (-randomNoise(arg1, arg2 - 1) + -randomNoise(arg1, 1 + arg2));
         int i_127_ = randomNoise(arg1, arg2);
         return i / 16 - (-(i_126_ / 8) - i_127_ / 4);
     }
 
-    public static int perlinNoise(int x, int y, int scale) {
+    private static int perlinNoise(int x, int y, int scale) {
         int muX = x & -1 + scale;
         int scaledY = y / scale;
         int muY = scale - 1 & y;
@@ -1476,7 +1481,7 @@ public class Landscape {
         return interpolateForPerlin(i1, scale, i2, true, muY);
     }
 
-    public static int randomNoise(int x, int y) {
+    private static int randomNoise(int x, int y) {
         int i = 57 * y + x;
         i ^= i << 13;
         int i_2_ = 1376312589 + (i * i * 15731 + 789221) * i & 0x7fffffff;

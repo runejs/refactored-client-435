@@ -1760,7 +1760,7 @@ public class Game {
                         MovedStatics.gameServerSocket.readDataToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
                         setConfigToDefaults();
                         MovedStatics.regionX = -1;
-                        Landscape.constructMapRegion(false);
+                        currentScene.landscape.constructMapRegion(false);
                         IncomingPackets.opcode = -1;
                     }
                 } else {
