@@ -1834,7 +1834,7 @@ public class MovedStatics {
     public static void spawnGroundItem(int arg1, int arg2) {
         LinkedList linkedList = groundItems[Player.worldLevel][arg2][arg1];
         if(linkedList == null)
-            Game.currentScene.method125(Player.worldLevel, arg2, arg1);
+            Game.currentScene.removeGroundItems(Player.worldLevel, arg2, arg1);
         else {
             int i = -99999999;
             Item item = null;
@@ -1849,7 +1849,7 @@ public class MovedStatics {
                 }
             }
             if(item == null)
-                Game.currentScene.method125(Player.worldLevel, arg2, arg1);
+                Game.currentScene.removeGroundItems(Player.worldLevel, arg2, arg1);
             else {
                 Item item_34_ = null;
                 Item item_35_ = null;

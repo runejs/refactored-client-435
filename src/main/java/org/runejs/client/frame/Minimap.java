@@ -352,9 +352,9 @@ public class Minimap extends FramePieceRenderer {
 	        int i_2_ = 24628 + (-(512 * i_1_) + 52736) * 4;
 	        for(int i_3_ = 1; i_3_ < 103; i_3_++) {
 	            if((0x18 & MovedStatics.tile_flags[arg1][i_3_][i_1_]) == 0)
-	                Game.currentScene.method96(is, i_2_, 512, arg1, i_3_, i_1_);
+	                Game.currentScene.drawMinimapTile(is, i_2_, 512, arg1, i_3_, i_1_);
 	            if(arg1 < 3 && (MovedStatics.tile_flags[1 + arg1][i_3_][i_1_] & 0x8) != 0)
-	                Game.currentScene.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
+	                Game.currentScene.drawMinimapTile(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
 	            i_2_ += 4;
 	        }
 	    }

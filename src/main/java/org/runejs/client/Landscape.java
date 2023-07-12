@@ -556,7 +556,7 @@ public class Landscape {
             }
             for(int i_56_ = 1; i_56_ < 103; i_56_++) {
                 for(int i_57_ = 1; i_57_ < 103; i_57_++)
-                    scene.method130(_plane, i_57_, i_56_, MovedStatics.getVisibilityPlaneFor(_plane, i_56_, 0, i_57_));
+                    scene.setDrawLevel(_plane, i_57_, i_56_, MovedStatics.getVisibilityPlaneFor(_plane, i_56_, 0, i_57_));
             }
             tile_underlayids[_plane] = null;
             tile_overlayids[_plane] = null;
@@ -564,7 +564,7 @@ public class Landscape {
             tile_overlay_rotation[_plane] = null;
             tileShadowIntensity[_plane] = null;
         }
-        scene.method118(-50, -10, -50);
+        scene.buildModels(-50, -10, -50);
         for(int i = 0; i < 104; i++) {
             for(int i_58_ = 0; i_58_ < 104; i_58_++) {
                 if((MovedStatics.tile_flags[1][i][i_58_] & 0x2) == 2)
@@ -1090,7 +1090,7 @@ public class Landscape {
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
                 if(gameObjectDefinition.setDecorDisplacement != 16)
-                    scene.method115(plane, localX, localY, gameObjectDefinition.setDecorDisplacement);
+                    scene.setWallDecorationOffset(plane, localX, localY, gameObjectDefinition.setDecorDisplacement);
             } else if(type == 1) {
                 Renderable renderable;
                 if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
@@ -1140,7 +1140,7 @@ public class Landscape {
                 if(gameObjectDefinition.solid && collisionMap != null)
                     collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
                 if(gameObjectDefinition.setDecorDisplacement != 16)
-                    scene.method115(plane, localX, localY, gameObjectDefinition.setDecorDisplacement);
+                    scene.setWallDecorationOffset(plane, localX, localY, gameObjectDefinition.setDecorDisplacement);
             } else if(type == 3) {
                 Renderable renderable;
                 if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)

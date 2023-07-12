@@ -29,7 +29,7 @@ public class RotateAnimateObjectMessageHandler implements MessageHandler<RotateA
             int tileHeightX1Y1 = Landscape.tile_height[Player.worldLevel][1 + x][1 + y];
             int tileHeightX0Y1 = Landscape.tile_height[Player.worldLevel][x][y + 1];
             if (objectType == 0) {
-                Wall wall = Game.currentScene.method126(Player.worldLevel, x, y);
+                Wall wall = Game.currentScene.getWall(Player.worldLevel, x, y);
                 if (wall != null) {
                     int i_11_ = 0x7fff & wall.hash >> 14;
                     if (objectTypeKey == 2) {
@@ -45,7 +45,7 @@ public class RotateAnimateObjectMessageHandler implements MessageHandler<RotateA
                     wallDecoration.renderable = new GameObject((0x1fffe268 & wallDecoration.hash) >> 14, 4, 0, tileHeightX0Y0, tileHeightX1Y0, tileHeightX1Y1, tileHeightX0Y1, animationId, false);
             }
             if (objectType == 2) {
-                InteractiveObject interactiveObject = Game.currentScene.method107(Player.worldLevel, x, y);
+                InteractiveObject interactiveObject = Game.currentScene.getObject(Player.worldLevel, x, y);
                 if (objectTypeKey == 11)
                     objectTypeKey = 10;
                 if (interactiveObject != null)

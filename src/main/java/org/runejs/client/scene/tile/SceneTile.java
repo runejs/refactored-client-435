@@ -10,7 +10,7 @@ public class SceneTile extends Node {
     public GroundItemTile groundItemTile;
     public int anInt2061;
     public boolean drawEntities;
-    public int anInt2063;
+    public int drawLevel;
     public int anInt2064;
     public InteractiveObject[] interactiveObjects = new InteractiveObject[5];
     public int anInt2066;
