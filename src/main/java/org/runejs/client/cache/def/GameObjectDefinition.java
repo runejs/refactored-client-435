@@ -20,10 +20,10 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     public static int count;
     public static int[] OBJECT_TYPES = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
     public static boolean lowMemory = false;
-    public static CacheArchive definitionArchive;
-    public static CacheArchive modelArchive;
+    private static CacheArchive definitionArchive;
+    private static CacheArchive modelArchive;
     private static NodeCache definitionCache = new NodeCache(64);
-    public static NodeCache modelCacheStatic = new NodeCache(500);
+    private static NodeCache modelCacheStatic = new NodeCache(500);
     private static Model[] objectModelHolder = new Model[4];
     private static NodeCache modelCacheDynamic = new NodeCache(10);
     private static NodeCache animatedObjectModelCache = new NodeCache(30);
@@ -184,6 +184,10 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         modelCacheStatic.clear();
         modelCacheDynamic.clear();
         animatedObjectModelCache.clear();
+    }
+
+    public static void clearStaticModelCache() {
+        modelCacheStatic.clear();
     }
 
     public static void initializeGameObjectDefinitionCache(CacheArchive modelCache, boolean lowMemory, CacheArchive definitionCache) {

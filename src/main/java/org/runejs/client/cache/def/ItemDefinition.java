@@ -13,11 +13,11 @@ import org.runejs.client.node.NodeCache;
 
 public class ItemDefinition extends CachedNode implements EntityDefinition {
     public static int count;
-    public static CacheArchive definitionArchive;
-    public static NodeCache definitionCache = new NodeCache(64);
-    public static NodeCache modelCache = new NodeCache(50);
-    public static NodeCache imageCache = new NodeCache(100);
-    public static CacheArchive modelArchive;
+    private static CacheArchive definitionArchive;
+    private static NodeCache definitionCache = new NodeCache(64);
+    private static NodeCache modelCache = new NodeCache(50);
+    private static NodeCache imageCache = new NodeCache(100);
+    private static CacheArchive modelArchive;
 
     public int stackable;
     public String name;

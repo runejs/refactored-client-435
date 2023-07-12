@@ -6,8 +6,8 @@ import org.runejs.client.node.CachedNode;
 import org.runejs.client.node.NodeCache;
 
 public class VarPlayerDefinition extends CachedNode {
-    public static NodeCache varPlayerDefinitionCache = new NodeCache(64);
-    public static CacheArchive gameDefinitionsCacheArchive;
+    private static NodeCache varPlayerDefinitionCache = new NodeCache(64);
+    private static CacheArchive gameDefinitionsCacheArchive;
     public static int varPlayerDefinitionsSize;
     public static int[] varpCache = new int[2000];
     public int type = 0;

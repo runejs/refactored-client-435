@@ -7,8 +7,8 @@ import org.runejs.client.node.NodeCache;
 import org.runejs.client.util.BitUtils;
 
 public class VarbitDefinition extends CachedNode {
-    public static NodeCache varbitDefinitionCache = new NodeCache(64);
-    public static CacheArchive gameDefinitionsCacheArchive;
+    private static NodeCache varbitDefinitionCache = new NodeCache(64);
+    private static CacheArchive gameDefinitionsCacheArchive;
 
     /**
      * Contains information on the bit mask to use per specified bits.
