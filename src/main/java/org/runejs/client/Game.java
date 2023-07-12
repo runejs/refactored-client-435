@@ -1760,7 +1760,7 @@ public class Game {
                         MovedStatics.gameServerSocket.readDataToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
                         setConfigToDefaults();
                         MovedStatics.regionX = -1;
-                        Landscape.constructMapRegion(false);
+                        currentScene.landscape.constructMapRegion(false);
                         IncomingPackets.opcode = -1;
                     }
                 } else {
@@ -1918,7 +1918,7 @@ public class Game {
     public static void method910() {
         if(true) {
             if (VertexNormal.lowMemory && MovedStatics.onBuildTimePlane != Player.worldLevel)
-                Landscape.method789(Player.localPlayer.pathY[0], MovedStatics.regionY, MovedStatics.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
+                MovedStatics.method789(Player.localPlayer.pathY[0], MovedStatics.regionY, MovedStatics.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
             else if (MovedStatics.anInt1985 != Player.worldLevel) {
                 MovedStatics.anInt1985 = Player.worldLevel;
                 Minimap.method299(Player.worldLevel);

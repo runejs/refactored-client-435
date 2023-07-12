@@ -12,7 +12,6 @@ import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.Renderable;
-import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.IncomingPackets;
 import org.runejs.client.net.OutgoingPackets;
@@ -22,6 +21,7 @@ import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
 import org.runejs.OldEngine.MapDecompressor;
+import org.runejs.client.util.PerlinNoise;
 
 import java.io.IOException;
 
@@ -51,6 +51,12 @@ public class Landscape {
     public static int randomiserLightness = -16 + (int) (Math.random() * 33.0);
     public static int randomiserHue = -8 + (int) (17.0 * Math.random());
     private static int lowestPlane = 99;
+
+    private final Scene scene;
+
+    public Landscape(Scene scene) {
+        this.scene = scene;
+    }
 
     public void loadRegion() {
         method364(false);
@@ -84,14 +90,14 @@ public class Landscape {
                         i_3_ = 10;
                         i_2_ = 10;
                     }
-                    bool &= method840(is, i_3_, i_2_);
+                    bool &= decodeChunkObjects(is, i_3_, i_2_);
                 }
             }
             if(bool) {
                 if(MovedStatics.anInt1634 != 0)
                     MovedStatics.method940(English.loadingPleaseWait, true, Native.percent100Parentheses);
                 Game.clearCaches();
-                Game.currentScene.initToNull();
+                this.scene.initToNull();
                 System.gc();
                 for(int z = 0; z < 4; z++)
                     currentCollisionMap[z].reset();
@@ -143,18 +149,18 @@ public class Landscape {
                         if(data != null) {
                             int offsetX = -MovedStatics.baseX + (mapCoordinates[region] >> 8) * 64;
                             int offsetY = 64 * (0xff & mapCoordinates[region]) - MovedStatics.baseY;
-                            loadObjectBlock(offsetX, Game.currentScene, currentCollisionMap, data, offsetY);
+                            loadObjectBlock(offsetX, currentCollisionMap, data, offsetY);
                         } else {
                             System.out.println("Missing map: " + objectDataIds[region]);
                         }
                     }
                 }
                 if(loadGeneratedMap) {
-                    for(int z = 0; z < 4; z++) {
-                        for(int x = 0; x < 13; x++) {
-                            for(int y = 0; y < 13; y++) {
-                                int data = constructMapTiles[z][x][y];
-                                boolean bool_19_ = false;
+                    for(int plane = 0; plane < 4; plane++) {
+                        for(int chunkX = 0; chunkX < 13; chunkX++) {
+                            for(int chunkY = 0; chunkY < 13; chunkY++) {
+                                int data = constructMapTiles[plane][chunkX][chunkY];
+                                boolean chunkLoaded = false;
                                 if(data != -1) {
                                     int tileRotation = (0x6 & data) >> 1;
                                     int tileX = (data & 0xffd2c2) >> 14;
@@ -163,14 +169,14 @@ public class Landscape {
                                     int tileCoordinates = (tileX / 8 << 8) + tileY / 8;
                                     for(int pointer = 0; pointer < mapCoordinates.length; pointer++) {
                                         if(mapCoordinates[pointer] == tileCoordinates && terrainData[pointer] != null) {
-                                            loadTerrainSubblock(y * 8, 8 * (tileX & 0x7), tileZ, z, x * 8, (0x7 & tileY) * 8, tileRotation, terrainData[pointer], currentCollisionMap);
-                                            bool_19_ = true;
+                                            loadTerrainSubblock(chunkY * 8, 8 * (tileX & 0x7), tileZ, plane, chunkX * 8, (0x7 & tileY) * 8, tileRotation, terrainData[pointer], currentCollisionMap);
+                                            chunkLoaded = true;
                                             break;
                                         }
                                     }
                                 }
-                                if(!bool_19_)
-                                    method455(8 * y, z, x * 8);
+                                if(!chunkLoaded)
+                                    matchChunkHeightmapWithSurroundings(plane, chunkX * 8, chunkY * 8);
                             }
                         }
                     }
@@ -194,7 +200,7 @@ public class Landscape {
                                     int tileCoordinates = (tileX / 8 << 8) + tileY / 8;
                                     for(int i_38_ = 0; i_38_ < mapCoordinates.length; i_38_++) {
                                         if(tileCoordinates == mapCoordinates[i_38_] && objectData[i_38_] != null) {
-                                            constructMapRegionObjects(8 * (tileX & 0x7), 8 * (tileY & 0x7), tileZ, tileRotation, x * 8, 8 * y, z, Game.currentScene, objectData[i_38_], currentCollisionMap);
+                                            constructMapRegionObjects(8 * (tileX & 0x7), 8 * (tileY & 0x7), tileZ, tileRotation, x * 8, 8 * y, z, objectData[i_38_], currentCollisionMap);
                                             break;
                                         }
                                     }
@@ -205,7 +211,7 @@ public class Landscape {
                 }
                 method364(true);
                 Game.clearCaches();
-                createRegion(Game.currentScene, currentCollisionMap);
+                createRegion(currentCollisionMap);
                 method364(true);
                 int z = lowestPlane;
                 if(Player.worldLevel < z)
@@ -213,9 +219,9 @@ public class Landscape {
                 if(z < -1 + Player.worldLevel)
                     z = -1 + Player.worldLevel;
                 if(!VertexNormal.lowMemory)
-                    Game.currentScene.setPlane(0);
+                    this.scene.setPlane(0);
                 else
-                    Game.currentScene.setPlane(lowestPlane);
+                    this.scene.setPlane(lowestPlane);
                 for(int x = 0; x < 104; x++) {
                     for(int y = 0; y < 104; y++)
                         MovedStatics.spawnGroundItem(y, x);
@@ -297,7 +303,7 @@ public class Landscape {
 
     }
 
-    private void constructMapRegionObjects(int drawX, int drawY, int drawingPlane, int orientation, int x, int y, int plane, Scene scene, byte[] objectData, CollisionMap[] collisionMaps) {
+    private void constructMapRegionObjects(int drawX, int drawY, int drawingPlane, int orientation, int x, int y, int plane, byte[] objectData, CollisionMap[] collisionMaps) {
         Buffer objectBuffer = new Buffer(objectData);
         int i = -1;
         for(; ; ) {
@@ -328,7 +334,7 @@ public class Landscape {
                             collisionMapPlane--;
                         if(collisionMapPlane >= 0)
                             collisionMap = collisionMaps[collisionMapPlane];
-                        addObject(i, tileX, tileY, plane, originalOrientation + orientation & 0x3, objectType, scene, collisionMap);
+                        addObject(i, tileX, tileY, plane, originalOrientation + orientation & 0x3, objectType, collisionMap);
                     }
                 }
             }
@@ -367,7 +373,7 @@ public class Landscape {
         return x;
     }
 
-    private void createRegion(Scene scene, CollisionMap[] collisionMaps) {
+    private void createRegion(CollisionMap[] collisionMaps) {
         for(int plane = 0; plane < 4; plane++) {
             for(int x = 0; x < 104; x++) {
                 for(int y = 0; y < 104; y++) {
@@ -546,9 +552,9 @@ public class Landscape {
                                         overlayMinimapColour = generateHslBitset(overlayDefinition.otherLightness, i_55_, i_54_);
                                         rgb = Rasterizer3D.hsl2rgb[MovedStatics.mixLightnessSigned(overlayMinimapColour, 96)];
                                     }
-                                    scene.addTile(_plane, x, y, shape, rotation, textureId, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, mixLightness(hslBitsetOriginal, lightIntensitySW), mixLightness(hslBitsetOriginal, lightIntensitySE), mixLightness(hslBitsetOriginal, lightIntensityNE), mixLightness(hslBitsetOriginal, lightIntensityNW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNW), underlayMinimapColour, rgb);
+                                    this.scene.addTile(_plane, x, y, shape, rotation, textureId, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, mixLightness(hslBitsetOriginal, lightIntensitySW), mixLightness(hslBitsetOriginal, lightIntensitySE), mixLightness(hslBitsetOriginal, lightIntensityNE), mixLightness(hslBitsetOriginal, lightIntensityNW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNW), underlayMinimapColour, rgb);
                                 } else
-                                    scene.addTile(_plane, x, y, 0, 0, -1, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, mixLightness(hslBitsetOriginal, lightIntensitySW), mixLightness(hslBitsetOriginal, lightIntensitySE), mixLightness(hslBitsetOriginal, lightIntensityNE), mixLightness(hslBitsetOriginal, lightIntensityNW), 0, 0, 0, 0, underlayMinimapColour, 0);
+                                    this.scene.addTile(_plane, x, y, 0, 0, -1, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, mixLightness(hslBitsetOriginal, lightIntensitySW), mixLightness(hslBitsetOriginal, lightIntensitySE), mixLightness(hslBitsetOriginal, lightIntensityNE), mixLightness(hslBitsetOriginal, lightIntensityNW), 0, 0, 0, 0, underlayMinimapColour, 0);
                             }
                         }
                     }
@@ -556,7 +562,7 @@ public class Landscape {
             }
             for(int i_56_ = 1; i_56_ < 103; i_56_++) {
                 for(int i_57_ = 1; i_57_ < 103; i_57_++)
-                    scene.setDrawLevel(_plane, i_57_, i_56_, MovedStatics.getVisibilityPlaneFor(_plane, i_56_, 0, i_57_));
+                    this.scene.setDrawLevel(_plane, i_57_, i_56_, MovedStatics.getVisibilityPlaneFor(_plane, i_56_, 0, i_57_));
             }
             tile_underlayids[_plane] = null;
             tile_overlayids[_plane] = null;
@@ -564,11 +570,11 @@ public class Landscape {
             tile_overlay_rotation[_plane] = null;
             tileShadowIntensity[_plane] = null;
         }
-        scene.buildModels(-50, -10, -50);
+        this.scene.buildModels(-50, -10, -50);
         for(int i = 0; i < 104; i++) {
             for(int i_58_ = 0; i_58_ < 104; i_58_++) {
                 if((MovedStatics.tile_flags[1][i][i_58_] & 0x2) == 2)
-                    scene.setTileBridge(i, i_58_);
+                    this.scene.setTileBridge(i, i_58_);
             }
         }
         int renderRule1 = 1;
@@ -613,7 +619,7 @@ public class Landscape {
                                 int i_72_ = 240;
                                 int i_73_ = -i_72_ + tile_height[i_68_][x][i_65_];
                                 int i_74_ = tile_height[i_67_][x][i_65_];
-                                Game.currentScene.createOccluder(plane, 1, 128 * x, 128 * x, 128 * i_65_, 128 + 128 * i_66_, i_73_, i_74_);
+                                this.scene.createOccluder(plane, 1, 128 * x, 128 * x, 128 * i_65_, 128 + 128 * i_66_, i_73_, i_74_);
                                 for(int i_75_ = i_67_; i_75_ <= i_68_; i_75_++) {
                                     for(int i_76_ = i_65_; i_76_ <= i_66_; i_76_++)
                                         tileCullingBitsets[i_75_][x][i_76_] = BitUtils.bitWiseAND(tileCullingBitsets[i_75_][x][i_76_], renderRule1 ^ 0xffffffff);
@@ -652,7 +658,7 @@ public class Landscape {
                                 int lowestOcclusionVertexHeight = tile_height[lowestOcclusionPlane][lowestOcclusionX][y];
                                 int highestOcclusionVertexHeightOffset = 240;
                                 int highestOcclusionVertexHeight = tile_height[highestOcclusionPlane][lowestOcclusionX][y] - highestOcclusionVertexHeightOffset;
-                                Game.currentScene.createOccluder(plane, 2, 128 * lowestOcclusionX, 128 * highestOcclusionX + 128, 128 * y, y * 128, highestOcclusionVertexHeight, lowestOcclusionVertexHeight);
+                                this.scene.createOccluder(plane, 2, 128 * lowestOcclusionX, 128 * highestOcclusionX + 128, 128 * y, y * 128, highestOcclusionVertexHeight, lowestOcclusionVertexHeight);
                                 for(int occludedPlane = lowestOcclusionPlane; highestOcclusionPlane >= occludedPlane; occludedPlane++) {
                                     for(int occludedX = lowestOcclusionX; occludedX <= highestOcclusionX; occludedX++)
                                         tileCullingBitsets[occludedPlane][occludedX][y] = BitUtils.bitWiseAND(tileCullingBitsets[occludedPlane][occludedX][y], i_59_ ^ 0xffffffff);
@@ -688,7 +694,7 @@ public class Landscape {
                             }
                             if((-i_89_ + i_90_ + 1) * (1 + i_92_ - i_91_) >= 4) {
                                 int i_95_ = tile_height[_plane][i_89_][i_91_];
-                                Game.currentScene.createOccluder(plane, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_, i_92_ * 128 + 128, i_95_, i_95_);
+                                this.scene.createOccluder(plane, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_, i_92_ * 128 + 128, i_95_, i_95_);
                                 for(int i_96_ = i_89_; i_96_ <= i_90_; i_96_++) {
                                     for(int i_97_ = i_91_; i_92_ >= i_97_; i_97_++)
                                         tileCullingBitsets[_plane][i_96_][i_97_] = BitUtils.bitWiseAND(tileCullingBitsets[_plane][i_96_][i_97_], i_60_ ^ 0xffffffff);
@@ -770,7 +776,7 @@ public class Landscape {
                 int opcode = fileData.getUnsignedByte();
                 if(opcode == 0) {
                     if(level == 0) {
-                        tile_height[0][x][y] = -method888(regionX + x + 932731, regionY + 556238 + y) * 8;
+                        tile_height[0][x][y] = -getPerlinVertexHeight(regionX + x + 932731, regionY + 556238 + y) * 8;
                     } else {
                         tile_height[level][x][y] = -240 + tile_height[level + -1][x][y];
                     }
@@ -811,8 +817,7 @@ public class Landscape {
         }
     }
 
-    public static void constructMapRegion(boolean generatedMap) {
-
+    public void constructMapRegion(boolean generatedMap) {
         loadGeneratedMap = generatedMap;
         if(loadGeneratedMap) {
             int chunkLocalY = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
@@ -875,7 +880,7 @@ public class Landscape {
                     }
                 }
             }
-            method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
+            MovedStatics.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
         } else {
             int chunkLocalY = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
             int chunkX = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
@@ -919,7 +924,7 @@ public class Landscape {
                 }
             }
 
-            method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
+            MovedStatics.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
         }
     }
 
@@ -936,7 +941,7 @@ public class Landscape {
         return lightness + (hsl & 0xff80);
     }
 
-    private void loadObjectBlock(int block_x, Scene scene, CollisionMap[] collisionMaps, byte[] block_data, int block_z) {
+    private void loadObjectBlock(int block_x, CollisionMap[] collisionMaps, byte[] block_data, int block_z) {
         Buffer buffer = new Buffer(block_data);
         int object_id = -1;
         for(; ; ) {
@@ -965,13 +970,13 @@ public class Landscape {
                         logic_y--;
                     if(logic_y >= 0)
                         collisionMap = collisionMaps[logic_y];
-                    addObject(object_id, object_x, object_z, tile_y, object_orientation, object_type, scene, collisionMap);
+                    addObject(object_id, object_x, object_z, tile_y, object_orientation, object_type, collisionMap);
                 }
             }
         }
     }
 
-    public void addObject(int objectId, int localX, int localY, int plane, int face, int type, Scene scene, CollisionMap collisionMap) {
+    public void addObject(int objectId, int localX, int localY, int plane, int face, int type, CollisionMap collisionMap) {
         if(!VertexNormal.lowMemory || (0x2 & MovedStatics.tile_flags[0][localX][localY]) != 0 || (0x10 & MovedStatics.tile_flags[plane][localX][localY]) == 0 && MovedStatics.onBuildTimePlane == MovedStatics.getVisibilityPlaneFor(plane, localY, 0, localX)) {
             if(lowestPlane > plane)
                 lowestPlane = plane;
@@ -1238,35 +1243,35 @@ public class Landscape {
 
     }
 
-    public static boolean method840(byte[] arg1, int arg2, int arg3) {
+    private boolean decodeChunkObjects(byte[] data, int arg2, int arg3) {
         boolean bool = true;
-        Buffer class40_sub1 = new Buffer(arg1);
-        int i = -1;
+        Buffer buffer = new Buffer(data);
+        int objectId = -1;
         for(; ; ) {
-            int i_0_ = class40_sub1.getSmart();
-            if(i_0_ == 0)
+            int deltaId = buffer.getSmart();
+            if(deltaId == 0)
                 break;
-            i += i_0_;
-            int i_1_ = 0;
+            objectId += deltaId;
+            int objectData = 0;
             boolean bool_2_ = false;
             for(; ; ) {
                 if(bool_2_) {
-                    int i_3_ = class40_sub1.getSmart();
+                    int i_3_ = buffer.getSmart();
                     if(i_3_ == 0)
                         break;
-                    class40_sub1.getUnsignedByte();
+                    buffer.getUnsignedByte();
                 } else {
-                    int i_4_ = class40_sub1.getSmart();
+                    int i_4_ = buffer.getSmart();
                     if(i_4_ == 0)
                         break;
-                    i_1_ += i_4_ + -1;
-                    int i_5_ = i_1_ & 0x3f;
-                    int i_6_ = class40_sub1.getUnsignedByte() >> 2;
-                    int i_7_ = 0x3f & i_1_ >> 6;
+                    objectData += i_4_ + -1;
+                    int i_5_ = objectData & 0x3f;
+                    int i_6_ = buffer.getUnsignedByte() >> 2;
+                    int i_7_ = 0x3f & objectData >> 6;
                     int i_8_ = i_7_ + arg2;
                     int i_9_ = i_5_ + arg3;
                     if(i_8_ > 0 && i_9_ > 0 && i_8_ < 103 && i_9_ < 103) {
-                        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+                        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(objectId);
                         if(i_6_ != 22 || !VertexNormal.lowMemory || gameObjectDefinition.hasActions != 0 || gameObjectDefinition.obstructsGround) {
                             bool_2_ = true;
                             if(!gameObjectDefinition.method612()) {
@@ -1315,25 +1320,29 @@ public class Landscape {
         }
     }
 
-    private void method455(int arg0, int arg1, int arg3) {
-        for (int i = 0; i < 8; i++) {
-            for (int i_0_ = 0; i_0_ < 8; i_0_++)
-                tile_height[arg1][arg3 + i][arg0 + i_0_] = 0;
+    /**
+     * Adjusts the height of tiles around a chunk's perimeter
+     */
+    private void matchChunkHeightmapWithSurroundings(int plane, int tileX, int tileY) {
+        // clear the chunk's height values
+        for (int x = 0; x < 8; x++) {
+            for (int y = 0; y < 8; y++)
+                tile_height[plane][tileX + x][tileY + y] = 0;
         }
-        if (arg3 > 0) {
-            for (int i = 1; i < 8; i++)
-                tile_height[arg1][arg3][arg0 + i] = tile_height[arg1][-1 + arg3][i + arg0];
+        if (tileX > 0) {
+            for (int y = 1; y < 8; y++)
+                tile_height[plane][tileX][tileY + y] = tile_height[plane][tileX - 1][y + tileY];
         }
-        if (arg0 > 0) {
-            for (int i = 1; i < 8; i++)
-                tile_height[arg1][i + arg3][arg0] = tile_height[arg1][i + arg3][-1 + arg0];
+        if (tileY > 0) {
+            for (int x = 1; x < 8; x++)
+                tile_height[plane][tileX + x][tileY] = tile_height[plane][tileX + x][tileY - 1];
         }
-        if (arg3 > 0 && tile_height[arg1][-1 + arg3][arg0] != 0)
-            tile_height[arg1][arg3][arg0] = tile_height[arg1][arg3 - 1][arg0];
-        else if (arg0 > 0 && tile_height[arg1][arg3][arg0 - 1] != 0)
-            tile_height[arg1][arg3][arg0] = tile_height[arg1][arg3][-1 + arg0];
-        else if (arg3 > 0 && arg0 > 0 && tile_height[arg1][arg3 + -1][-1 + arg0] != 0)
-            tile_height[arg1][arg3][arg0] = tile_height[arg1][-1 + arg3][arg0 - 1];
+        if (tileX > 0 && tile_height[plane][tileX - 1][tileY] != 0)
+            tile_height[plane][tileX][tileY] = tile_height[plane][tileX - 1][tileY];
+        else if (tileY > 0 && tile_height[plane][tileX][tileY - 1] != 0)
+            tile_height[plane][tileX][tileY] = tile_height[plane][tileX][tileY - 1];
+        else if (tileX > 0 && tileY > 0 && tile_height[plane][tileX - 1][tileY - 1] != 0)
+            tile_height[plane][tileX][tileY] = tile_height[plane][tileX - 1][tileY - 1];
     }
 
     private static int generateHslBitset(int s, int l, int h) {
@@ -1348,95 +1357,8 @@ public class Landscape {
         return l / 2 + (s / 32 << 7) + (h / 4 << 10);
     }
 
-    public static void method789(int chunkLocalX, int chunkY, int chunkX, int chunkLocalY, int level) {
-        if(chunkX != MovedStatics.regionX || chunkY != MovedStatics.regionY || MovedStatics.onBuildTimePlane != level && VertexNormal.lowMemory) {
-            MovedStatics.onBuildTimePlane = level;
-            MovedStatics.regionX = chunkX;
-            if(!VertexNormal.lowMemory)
-                MovedStatics.onBuildTimePlane = 0;
-            MovedStatics.regionY = chunkY;
-            MovedStatics.processGameStatus(25);
-            MovedStatics.method940(English.loadingPleaseWait, false, null);
-            int i = MovedStatics.baseY;
-            int i_33_ = MovedStatics.baseX;
-            MovedStatics.baseX = (chunkX - 6) * 8;
-            int i_34_ = MovedStatics.baseX + -i_33_;
-            i_33_ = MovedStatics.baseX;
-            MovedStatics.baseY = (-6 + chunkY) * 8;
-            int i_35_ = MovedStatics.baseY + -i;
-            i = MovedStatics.baseY;
-            for(int i_36_ = 0; i_36_ < 32768; i_36_++) {
-                Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_36_];
-                if(class40_sub5_sub17_sub4_sub2 != null) {
-                    for(int i_37_ = 0; i_37_ < 10; i_37_++) {
-                        class40_sub5_sub17_sub4_sub2.pathY[i_37_] -= i_34_;
-                        class40_sub5_sub17_sub4_sub2.pathX[i_37_] -= i_35_;
-                    }
-                    class40_sub5_sub17_sub4_sub2.worldX -= 128 * i_34_;
-                    class40_sub5_sub17_sub4_sub2.worldY -= i_35_ * 128;
-                }
-            }
-            for(int i_38_ = 0; i_38_ < 2048; i_38_++) {
-                Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_38_];
-                if(class40_sub5_sub17_sub4_sub1 != null) {
-                    for(int i_39_ = 0; i_39_ < 10; i_39_++) {
-                        class40_sub5_sub17_sub4_sub1.pathY[i_39_] -= i_34_;
-                        class40_sub5_sub17_sub4_sub1.pathX[i_39_] -= i_35_;
-                    }
-                    class40_sub5_sub17_sub4_sub1.worldY -= 128 * i_35_;
-                    class40_sub5_sub17_sub4_sub1.worldX -= 128 * i_34_;
-                }
-            }
-            Player.worldLevel = level;
-            int i_40_ = 0;
-            Player.localPlayer.method787(chunkLocalY, false, chunkLocalX);
-            int i_41_ = 104;
-            int i_42_ = 1;
-            if(i_34_ < 0) {
-                i_41_ = -1;
-                i_40_ = 103;
-                i_42_ = -1;
-            }
-            int i_43_ = 104;
-            int i_44_ = 0;
-            int i_45_ = 1;
-            if(i_35_ < 0) {
-                i_44_ = 103;
-                i_43_ = -1;
-                i_45_ = -1;
-            }
-            for(int i_46_ = i_40_; i_41_ != i_46_; i_46_ += i_42_) {
-                for(int i_47_ = i_44_; i_43_ != i_47_; i_47_ += i_45_) {
-                    int i_48_ = i_34_ + i_46_;
-                    int i_49_ = i_35_ + i_47_;
-                    for(int i_50_ = 0; i_50_ < 4; i_50_++) {
-                        if(i_48_ < 0 || i_49_ < 0 || i_48_ >= 104 || i_49_ >= 104)
-                            MovedStatics.groundItems[i_50_][i_46_][i_47_] = null;
-                        else
-                            MovedStatics.groundItems[i_50_][i_46_][i_47_] = MovedStatics.groundItems[i_50_][i_48_][i_49_];
-                    }
-                }
-            }
-            for(InteractiveObjectTemporary obj = (InteractiveObjectTemporary) MovedStatics.interactiveObjectTemporaryNodeCache.peekFirst(); obj != null; obj = (InteractiveObjectTemporary) MovedStatics.interactiveObjectTemporaryNodeCache.pollFirst()) {
-                obj.y -= i_35_;
-                obj.x -= i_34_;
-                if(obj.x < 0 || obj.y < 0 || obj.x >= 104 || obj.y >= 104)
-                    obj.unlink();
-            }
-            MovedStatics.anInt1985 = -1;
-            if(MovedStatics.destinationX != 0) {
-                MovedStatics.destinationX -= i_34_;
-                Game.destinationY -= i_35_;
-            }
-            Player.cutsceneActive = false;
-            SoundSystem.reset();
-            MovedStatics.spotAnimQueue.clear();
-            MovedStatics.projectileQueue.clear();
-        }
-    }
-
-    public static int method888(int x, int y) {
-        int vertexHeight = -128 + perlinNoise(x + 45365, 91923 + y, 4) - (-(perlinNoise(x + 10294, 37821 + y, 2) - 128 >> 1) + -(-128 + perlinNoise(x, y, 1) >> 2));
+    private static int getPerlinVertexHeight(int x, int y) {
+        int vertexHeight = -128 + PerlinNoise.get(x + 45365, 91923 + y, 4) - (-(PerlinNoise.get(x + 10294, 37821 + y, 2) - 128 >> 1) + -(-128 + PerlinNoise.get(x, y, 1) >> 2));
         vertexHeight = 35 + (int) (0.3 * (double) vertexHeight);
 
         if(vertexHeight >= 10) {
@@ -1446,40 +1368,5 @@ public class Landscape {
             vertexHeight = 10;
 
         return vertexHeight;
-    }
-
-    public static int interpolateForPerlin(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
-        if (!arg3)
-            return -109;
-        int i = 65536 + -Rasterizer3D.cosinetable[1024 * arg4 / arg1] >> 1;
-        return ((65536 + -i) * arg0 >> 16) + (arg2 * i >> 16);
-    }
-
-    public static int randomNoiseWeightedSum(int arg1, int arg2) {
-        int i = randomNoise(-1 + arg1, -1 + arg2) + randomNoise(1 + arg1, arg2 - 1) + randomNoise(-1 + arg1, 1 + arg2) + randomNoise(1 + arg1, arg2 + 1);
-        int i_126_ = randomNoise(arg1 - 1, arg2) + randomNoise(arg1 + 1, arg2) - (-randomNoise(arg1, arg2 - 1) + -randomNoise(arg1, 1 + arg2));
-        int i_127_ = randomNoise(arg1, arg2);
-        return i / 16 - (-(i_126_ / 8) - i_127_ / 4);
-    }
-
-    public static int perlinNoise(int x, int y, int scale) {
-        int muX = x & -1 + scale;
-        int scaledY = y / scale;
-        int muY = scale - 1 & y;
-        int scaledX = x / scale;
-        int a = randomNoiseWeightedSum(scaledX, scaledY);
-        int b = randomNoiseWeightedSum(1 + scaledX, scaledY);
-        int c = randomNoiseWeightedSum(scaledX, 1 + scaledY);
-        int d = randomNoiseWeightedSum(1 + scaledX, 1 + scaledY);
-        int i1 = interpolateForPerlin(a, scale, b, true, muX);
-        int i2 = interpolateForPerlin(c, scale, d, true, muX);
-        return interpolateForPerlin(i1, scale, i2, true, muY);
-    }
-
-    public static int randomNoise(int x, int y) {
-        int i = 57 * y + x;
-        i ^= i << 13;
-        int i_2_ = 1376312589 + (i * i * 15731 + 789221) * i & 0x7fffffff;
-        return i_2_ >> 19 & 0xff;
     }
 }
