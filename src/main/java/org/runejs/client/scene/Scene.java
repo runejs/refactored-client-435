@@ -3,6 +3,7 @@ package org.runejs.client.scene;
 import org.runejs.client.Landscape;
 import org.runejs.client.LinkedList;
 import org.runejs.client.MovedStatics;
+import org.runejs.client.frame.Minimap;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
@@ -75,17 +76,9 @@ public class Scene {
     public int[][][] heightMap;
     public int mapSizeZ;
     public int mapSizeY;
-    /**
-     * Minimap tile rotations (move to Minimap class)
-     */
-    public int[][] anIntArrayArray121;
     public int[] mergeIndexB;
     public int anInt126;
     public int[] mergeIndexA;
-    /**
-     * Minimap tile masks (move to Minimap class)
-     */
-    public int[][] anIntArrayArray129;
 
     private boolean clicked = false;
     private int clickX = 0;
@@ -114,11 +107,9 @@ public class Scene {
         final int width = 104;// was parameter
         final int height = 4;// was parameter
         sceneSpawnRequestsCacheCurrentPos = 0;
-        anIntArrayArray121 = new int[][]{{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, {12, 8, 4, 0, 13, 9, 5, 1, 14, 10, 6, 2, 15, 11, 7, 3}, {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0}, {3, 7, 11, 15, 2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12}};
         mergeIndexB = new int[10000];
         anInt126 = 0;
         mergeIndexA = new int[10000];
-        anIntArrayArray129 = new int[][]{new int[16], {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1}, {0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1}, {1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1}};
         mapSizeZ = height;
         mapSizeX = width;
         mapSizeY = length;
@@ -365,8 +356,8 @@ public class Scene {
                     int rotation = complexTile.rotation;
                     int underlayColor = complexTile.underlayRGB;
                     int overlayColor = complexTile.overlayRGB;
-                    int[] is = anIntArrayArray129[shape];
-                    int[] is_19_ = anIntArrayArray121[rotation];
+                    int[] is = Minimap.anIntArrayArray129[shape];
+                    int[] is_19_ = Minimap.anIntArrayArray121[rotation];
                     int pointer = 0;
                     if (underlayColor == 0) {
                         for (int i_22_ = 0; i_22_ < 4; i_22_++) {
