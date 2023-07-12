@@ -1253,7 +1253,7 @@ public class MovedStatics {
 	                    Rasterizer3D.createPalette(0.6);
 	                    ((Class35) Rasterizer3D.interface3).setBrightness(0.6);
 	                }
-	                clearImageCache();
+	                ItemDefinition.clearImageCache();
 	                clearScreen = true;
 	            }
 	            if(varPlayerType == 3) {
@@ -3096,10 +3096,6 @@ public class MovedStatics {
         } catch(Exception exception) {
             Game.gameCanvas.repaint();
         }
-    }
-
-    public static void clearImageCache() {
-        ItemDefinition.itemImageCache.clear();
     }
 
     public static void method778(HuffmanEncoding arg1) {
