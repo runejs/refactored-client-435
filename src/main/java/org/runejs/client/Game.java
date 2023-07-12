@@ -2086,10 +2086,10 @@ public class Game {
         MouseHandler.method1015();
 
         if (gameStatusCode == 0) {
-            InteractiveObjectTemporary.startup();
+            MovedStatics.startup();
             method992();
         } else if (gameStatusCode == 5) {
-            InteractiveObjectTemporary.startup();
+            MovedStatics.startup();
             method992();
         } else if (gameStatusCode == 10) {
             Class60.updateLogin();
