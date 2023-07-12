@@ -10,7 +10,6 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.PacketBuffer;
-import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
@@ -79,7 +78,7 @@ public class ClientScriptRunner extends Node {
                     username = username.substring(5);
                 if((chatType == 1 || chatType == 2) && (chatType == 1 || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 1 && Player.hasFriend(username))) {
                     if(arg1 > i_2_ - 14 && arg1 <= i_2_ && !username.equals(Player.localPlayer.playerName)) {
-                        if(InteractiveObject.playerRights >= 1) {
+                        if(Game.playerRights >= 1) {
                             MovedStatics.addActionRow(English.reportAbuse, 0, 0, 0, ActionRowType.REPORT_ABUSE.getId(), Native.white + username);
                         }
 
@@ -91,7 +90,7 @@ public class ClientScriptRunner extends Node {
                 if((chatType == 3 || chatType == 7) && ChatBox.splitPrivateChat == 0 && (chatType == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(username))) {
                     offset++;
                     if(arg1 > -14 + i_2_ && arg1 <= i_2_) {
-                        if(InteractiveObject.playerRights >= 1) {
+                        if(Game.playerRights >= 1) {
                             MovedStatics.addActionRow(English.reportAbuse, 0, 0, 0, ActionRowType.REPORT_ABUSE.getId(), Native.white + username);
                         }
 
@@ -1202,7 +1201,7 @@ public class ClientScriptRunner extends Node {
                     str = MovedStatics.method204(MovedStatics.aSignlinkNode_394.integerData);
                     if (MovedStatics.aSignlinkNode_394.value != null) {
                         byte[] is = ((String) MovedStatics.aSignlinkNode_394.value).getBytes(StandardCharsets.ISO_8859_1);
-                        str = InteractiveObject.method279(is, 0, is.length).toString();
+                        str = RSString.method279(is, 0, is.length).toString();
                     }
                 }
                 arg2 = arg2.substring(0, i) + str + arg2.substring(i + 4);

@@ -49,6 +49,17 @@ public class RSString {
         return string;
     }
 
+    public static RSString method279(byte[] arg0, int arg2, int arg3) {
+        RSString class1 = new RSString();
+        class1.length = 0;
+        class1.chars = new byte[arg3];
+        for(int i = arg2; arg3 + arg2 > i; i++) {
+            if(arg0[i] != 0)
+                class1.chars[class1.length++] = arg0[i];
+        }
+        return class1;
+    }
+
 
     public RSString substring(int arg1) {
         return substring(arg1, length);

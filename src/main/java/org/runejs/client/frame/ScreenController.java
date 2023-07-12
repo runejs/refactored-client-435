@@ -206,7 +206,7 @@ public class ScreenController {
         drawFramePieceCutout(MovedStatics.tabPieveLowerRight, x, y + 191, MovedStatics.tabPieveLowerRight.width - 35, MovedStatics.tabPieveLowerRight.height, 35, 0);
         drawFramePieceCutout(MovedStatics.chatboxTop, x, y + 172, MovedStatics.chatboxTop.width - 531, MovedStatics.chatboxTop.height, 531, 0);
         drawFramePieceCutout(MovedStatics.tabBottom, x, y + 300, MovedStatics.tabBottom.width - 35, MovedStatics.tabBottom.height, 35, 0);
-        drawFramePieceCutout(InteractiveObject.tabTop, x, y, InteractiveObject.tabTop.width - 15, InteractiveObject.tabTop.height - 6, 15, 6);
+        drawFramePieceCutout(MovedStatics.tabTop, x, y, MovedStatics.tabTop.width - 15, MovedStatics.tabTop.height - 6, 15, 6);
         drawFramePiece(MovedStatics.tabImageProducer, x + 22, y + 39);
 
 
@@ -383,7 +383,7 @@ public class ScreenController {
             int destX = Player.localPlayer.worldX + i_14_ >> 7;
             int destY = -i_15_ + Player.localPlayer.worldY >> 7;
 
-            if (MovedStatics.obfuscatedKeyStatus[81] && InteractiveObject.playerRights > 1) {
+            if (MovedStatics.obfuscatedKeyStatus[81] && Game.playerRights > 1) {
                 OutgoingPackets.buffer.putPacket(246);
                 OutgoingPackets.buffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + MovedStatics.baseX), Integer.toString(destY + MovedStatics.baseY)));
             } else {

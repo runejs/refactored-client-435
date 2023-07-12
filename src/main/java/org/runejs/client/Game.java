@@ -101,6 +101,8 @@ public class Game {
     public static int anInt292 = 0;
     public static boolean accountFlagged = false;
     public static long aLong1841;
+    public static int clientVersion;
+    public static int playerRights = 0;
     private static int gameServerPort;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
@@ -675,11 +677,11 @@ public class Game {
         GameInterface.fullscreenSiblingInterfaceId = -1;
         GameInterface.resetInterface(GameInterface.tabAreaInterfaceId);
         GameInterface.tabAreaInterfaceId = -1;
-        GameInterface.resetInterface(GroundItemTile.walkableWidgetId);
+        GameInterface.resetInterface(GameInterface.walkableWidgetId);
         ChatBox.inputType = 0;
         ChatBox.messagePromptRaised = false;
         MovedStatics.menuOpen = false;
-        GroundItemTile.walkableWidgetId = -1;
+        GameInterface.walkableWidgetId = -1;
         Native.clickToContinueString = null;
         MovedStatics.lastContinueTextWidgetId = -1;
         flashingTabId = -1;
@@ -1274,12 +1276,12 @@ public class Game {
                     int i_13_ = i_10_ * 765 + i;
                     OutgoingPackets.buffer.putIntLE((i_11_ << 19) + (i_12_ << 20) + i_13_);
                 }
-                if(InteractiveObject.anInt487 > 0)
-                    InteractiveObject.anInt487--;
+                if(MovedStatics.anInt487 > 0)
+                    MovedStatics.anInt487--;
                 if(MovedStatics.obfuscatedKeyStatus[96] || MovedStatics.obfuscatedKeyStatus[97] || MovedStatics.obfuscatedKeyStatus[98] || MovedStatics.obfuscatedKeyStatus[99])
                     MovedStatics.aBoolean565 = true;
-                if(MovedStatics.aBoolean565 && InteractiveObject.anInt487 <= 0) {
-                    InteractiveObject.anInt487 = 20;
+                if(MovedStatics.aBoolean565 && MovedStatics.anInt487 <= 0) {
+                    MovedStatics.anInt487 = 20;
                     MovedStatics.aBoolean565 = false;
                     OutgoingPackets.buffer.putPacket(58);
                     OutgoingPackets.buffer.putShortBE(Game.playerCamera.getYaw());
@@ -1313,8 +1315,8 @@ public class Game {
                                 MovedStatics.crossType = 0;
                         }
                         if(GameInterface.atInventoryInterfaceType != 0) {
-                            RSRuntimeException.anInt1651++;
-                            if(RSRuntimeException.anInt1651 >= 15) {
+                            GameInterface.anInt1651++;
+                            if(GameInterface.anInt1651 >= 15) {
                                 if(GameInterface.atInventoryInterfaceType == 2)
                                     GameInterface.redrawTabArea = true;
                                 if(GameInterface.atInventoryInterfaceType == 3)
@@ -1334,9 +1336,9 @@ public class Game {
                                     GameInterface.redrawTabArea = true;
                                 GameInterface.activeInterfaceType = 0;
                                 if(MovedStatics.lastItemDragged && Buffer.lastItemDragTime >= 5) {
-                                    RSRuntimeException.lastActiveInvInterface = -1;
+                                    GameInterface.lastActiveInvInterface = -1;
                                     MovedStatics.processRightClick();
-                                    if(RSRuntimeException.lastActiveInvInterface == GameInterface.modifiedWidgetId && mouseInvInterfaceIndex != GameInterface.selectedInventorySlot) {
+                                    if(GameInterface.lastActiveInvInterface == GameInterface.modifiedWidgetId && mouseInvInterfaceIndex != GameInterface.selectedInventorySlot) {
                                         GameInterface childInterface = GameInterface.getInterface(GameInterface.modifiedWidgetId);
                                         int moveItemInsertionMode = 0;
                                         if(MovedStatics.bankInsertMode == 1 && childInterface.contentType == 206)
@@ -1380,7 +1382,7 @@ public class Game {
                                     else if(MovedStatics.menuActionRow > 0)
                                         GameInterface.processMenuActions(MovedStatics.menuActionRow - 1);
                                 }
-                                RSRuntimeException.anInt1651 = 10;
+                                GameInterface.anInt1651 = 10;
                                 MouseHandler.clickType = 0;
                             }
                         }
@@ -1661,7 +1663,7 @@ public class Game {
                 if (loginStatus == 9 && MovedStatics.gameServerSocket.inputStreamAvailable() >= 8) {
                     Configuration.USERNAME = Native.username.toString();
                     Configuration.PASSWORD = Native.password.toString();
-                    InteractiveObject.playerRights = MovedStatics.gameServerSocket.read();
+                    playerRights = MovedStatics.gameServerSocket.read();
                     accountFlagged = MovedStatics.gameServerSocket.read() == 1;
                     Player.localPlayerId = MovedStatics.gameServerSocket.read();
                     Player.localPlayerId <<= 8;
@@ -2303,7 +2305,7 @@ public class Game {
             metaChannel = null;
         }
         if (modewhere != 0)
-            InteractiveObject.showFps = true;
+            MovedStatics.showFps = true;
         chatboxInterface = new GameInterface();
     }
 }

@@ -49,6 +49,7 @@ public class Landscape {
     public static int[] terrainDataIds;
     public static int[][][] tile_height = new int[4][105][105];
     public static int randomiserLightness = -16 + (int) (Math.random() * 33.0);
+    public static int randomiserHue = -8 + (int) (17.0 * Math.random());
     private static int lowestPlane = 99;
 
     public static void loadRegion() {
@@ -245,7 +246,7 @@ public class Landscape {
                     MovedStatics.processGameStatus(30);
                 method973();
                 OutgoingPackets.buffer.putPacket(178);
-                RSRuntimeException.method1057(126);
+                MovedStatics.method1057();
             } else
                 MovedStatics.anInt1634 = 2;
         } else
@@ -380,12 +381,12 @@ public class Landscape {
                 }
             }
         }
-        MovedStatics.randomiserHue += (int) (5.0 * Math.random()) + -2;
+        randomiserHue += (int) (5.0 * Math.random()) + -2;
         randomiserLightness += -2 + (int) (5.0 * Math.random());
-        if(MovedStatics.randomiserHue < -8)
-            MovedStatics.randomiserHue = -8;
-        if(MovedStatics.randomiserHue > 8)
-            MovedStatics.randomiserHue = 8;
+        if(randomiserHue < -8)
+            randomiserHue = -8;
+        if(randomiserHue > 8)
+            randomiserHue = 8;
         if(randomiserLightness < -16)
             randomiserLightness = -16;
         if(randomiserLightness > 16)
@@ -487,7 +488,7 @@ public class Landscape {
                                     int l = lightness / direction;
                                     hslBitsetOriginal = generateHslBitset(s, l, h);
                                     l += randomiserLightness;
-                                    h = h + MovedStatics.randomiserHue & 0xff;
+                                    h = h + randomiserHue & 0xff;
                                     if(l >= 0) {
                                         if(l > 255)
                                             l = 255;
@@ -523,7 +524,7 @@ public class Landscape {
                                         overlayMinimapColour = -2;
                                     } else {
                                         hslBitset = generateHslBitset(overlayDefinition.lightness, overlayDefinition.saturation, overlayDefinition.hue);
-                                        int h = MovedStatics.randomiserHue + overlayDefinition.hue & 0xff;
+                                        int h = randomiserHue + overlayDefinition.hue & 0xff;
                                         int s = randomiserLightness + overlayDefinition.saturation;
                                         if(s < 0)
                                             s = 0;
@@ -535,7 +536,7 @@ public class Landscape {
                                     if(overlayMinimapColour != -2)
                                         rgb = Rasterizer3D.hsl2rgb[MovedStatics.mixLightnessSigned(overlayMinimapColour, 96)];
                                     if(overlayDefinition.secondaryColor != -1) {
-                                        int i_54_ = 0xff & MovedStatics.randomiserHue + overlayDefinition.otherHue;
+                                        int i_54_ = 0xff & randomiserHue + overlayDefinition.otherHue;
                                         int i_55_ = overlayDefinition.otherSaturation + randomiserLightness;
                                         if(i_55_ >= 0) {
                                             if(i_55_ > 255)

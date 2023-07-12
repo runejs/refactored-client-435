@@ -251,16 +251,10 @@ public class MovedStatics {
     public static IndexedImage tabHighlightImageTopMiddle;
     public static ImageRGB[] cursorCross;
     public static ProducingGraphicsBuffer mapbackLeft;
-    public static int clientVersion;
     public static int ticksPerLoop;
-    /**
-     * Something to do with timing.. sleep time maybe? Not sure
-     */
-    public static int anInt2024 = 1;
     public static boolean showIconsRedrawnText = false;
     public static IndexedImage[] tabIcons;
     public static boolean lastItemDragged = false;
-    public static int randomiserHue = -8 + (int) (17.0 * Math.random());
     public static ProducingGraphicsBuffer mapBackRight;
     public static IndexedImage chatboxBackgroundImage;
     /**
@@ -327,6 +321,13 @@ public class MovedStatics {
     public static boolean[] obfuscatedKeyStatus = new boolean[112];
     public static int[] crc8LookupTable = new int[256];
     public static int currentTickSample;
+    public static boolean showFps = false;
+    public static int anInt487 = 0;
+    /**
+     * Top row of sideicon tabs
+     */
+    public static ProducingGraphicsBuffer tabTop;
+    public static byte[][] aByteArrayArray1370;
 
     public static void method440() {
         if (aBoolean512) {
@@ -388,7 +389,7 @@ public class MovedStatics {
                                 x = 450;
                             if (MouseHandler.mouseX < 4 + x) {
                                 int actionRowOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
-                                if (InteractiveObject.playerRights >= 1) {
+                                if (Game.playerRights >= 1) {
                                     addActionRow(English.reportAbuse, 0, 0, 0, actionRowOffset + ActionRowType.REPORT_ABUSE.getId(), Native.white + username);
                                 }
                                 addActionRow(English.addIgnore, 0, 0, 0, actionRowOffset + ActionRowType.ADD_IGNORE.getId(), Native.white + username);
@@ -450,7 +451,7 @@ public class MovedStatics {
         class40_sub5_sub14_sub2.imgWidth = anIntArray456[0];
         class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[0];
         class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
-        class40_sub5_sub14_sub2.imgPixels = GroundItemTile.aByteArrayArray1370[0];
+        class40_sub5_sub14_sub2.imgPixels = aByteArrayArray1370[0];
         ActorDefinition.method569();
         return class40_sub5_sub14_sub2;
     }
@@ -511,7 +512,7 @@ public class MovedStatics {
                 string = string.replace('@', '_');
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
-                SignlinkNode signlinkNode = signlink.addType4Node(new URL(signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + clientVersion + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
+                SignlinkNode signlinkNode = signlink.addType4Node(new URL(signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + Game.clientVersion + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
                 while (signlinkNode.status == 0)
                     threadSleep(1L);
                 if (signlinkNode.status != 1)
@@ -527,7 +528,7 @@ public class MovedStatics {
         buffer.currentPosition = -2 + data.length;
         anInt2581 = buffer.getUnsignedShortBE();
         anIntArray3111 = new int[anInt2581];
-        GroundItemTile.aByteArrayArray1370 = new byte[anInt2581][];
+        aByteArrayArray1370 = new byte[anInt2581][];
         anIntArray456 = new int[anInt2581];
         Npc.anIntArray3312 = new int[anInt2581];
         anIntArray1347 = new int[anInt2581];
@@ -558,7 +559,7 @@ public class MovedStatics {
             int i_41_ = anIntArray456[i_39_];
             int i_42_ = i_40_ * i_41_;
             byte[] is = new byte[i_42_];
-            GroundItemTile.aByteArrayArray1370[i_39_] = is;
+            aByteArrayArray1370[i_39_] = is;
             int i_43_ = buffer.getUnsignedByte();
             if (i_43_ == 0) {
                 for (int i_46_ = 0; i_42_ > i_46_; i_46_++)
@@ -577,7 +578,7 @@ public class MovedStatics {
     }
 
     public static void method527(int currentTabId, int[] tabWidgetIds, boolean arg3, int arg4) {
-        InteractiveObject.tabTop.prepareRasterizer();
+        tabTop.prepareRasterizer();
         Buffer.tabTopBack.drawImage(0, 0);
         if (arg3) {
             if (tabWidgetIds[currentTabId] != -1) {
@@ -648,7 +649,7 @@ public class MovedStatics {
         try {
             Graphics graphics = Game.gameCanvas.getGraphics();
             if (ScreenController.frameMode == ScreenMode.FIXED) {
-                InteractiveObject.tabTop.drawGraphics(516, 160, graphics);
+                tabTop.drawGraphics(516, 160, graphics);
                 tabBottom.drawGraphics(496, 466, graphics);
             }
         } catch (Exception exception) {
@@ -1040,7 +1041,7 @@ public class MovedStatics {
 	                                    i_8_ += gameInterface.imageX[i_4_];
 	                                }
 	                                if(mouseX >= i_7_ && i_8_ <= mouseY && i_7_ + 32 > mouseX && mouseY < 32 + i_8_) {
-	                                    RSRuntimeException.lastActiveInvInterface = gameInterface.id;
+	                                    GameInterface.lastActiveInvInterface = gameInterface.id;
 	                                    Game.mouseInvInterfaceIndex = i_4_;
 	                                    if(gameInterface.items[i_4_] > 0) {
 	                                        ItemDefinition itemDefinition = ItemDefinition.forId(-1 + gameInterface.items[i_4_], 10);
@@ -1418,7 +1419,7 @@ public class MovedStatics {
             tabHighlightImageBottomRightEdge = null;
             ChatBox.chatBoxImageProducer = null;
             mapBackRight = null;
-            InteractiveObject.tabTop = null;
+            tabTop = null;
             if(arg0 < -28) {
                 chatboxRight = null;
                 tabPieceUpperRight = null;
@@ -1555,9 +1556,9 @@ public class MovedStatics {
         if (crossType == 2) {
             cursorCross[4 + crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
         }
-        if (GameInterface.gameScreenInterfaceId != -1 || GroundItemTile.walkableWidgetId != -1) {
+        if (GameInterface.gameScreenInterfaceId != -1 || GameInterface.walkableWidgetId != -1) {
                 int areaId = GameInterface.gameScreenInterfaceId != -1 ? 0 : 4;
-                int id = GameInterface.gameScreenInterfaceId != -1 ? GameInterface.gameScreenInterfaceId : GroundItemTile.walkableWidgetId;
+                int id = GameInterface.gameScreenInterfaceId != -1 ? GameInterface.gameScreenInterfaceId : GameInterface.walkableWidgetId;
                 Renderable.handleSequences(id);
                 int yOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);
                 int xOffset = (ScreenController.drawWidth /2) - (512/2) - (234/3);
@@ -1580,7 +1581,7 @@ public class MovedStatics {
         if (multiCombatState == 1) {
             multiCombatIcon.drawImage(472, 296);
         }
-        if (InteractiveObject.showFps) {
+        if (showFps) {
             int y = 20;
             int x = 507;
             if(ScreenController.frameMode != ScreenMode.FIXED) {
@@ -1915,7 +1916,7 @@ public class MovedStatics {
             Rasterizer.resetPixels();
             chatModes = createGraphicsBuffer(496, 50, arg0);
             tabBottom = createGraphicsBuffer(269, 37, arg0);
-            InteractiveObject.tabTop = createGraphicsBuffer(249, 45, arg0);
+            tabTop = createGraphicsBuffer(249, 45, arg0);
             ImageRGB image = method1028(arg2, Native.imgBackleft1, Native.aClass1_305);
             framePieceRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
@@ -3274,5 +3275,14 @@ public class MovedStatics {
             if(meta == 2 && menuActionRow > 0)
                 determineMenuSize();
         }
+    }
+
+    public static void method1057() {
+        SceneCluster.gameTimer.reset();
+        for(int i = 0; i < 32; i++)
+            GameShell.tickSamples[i] = 0L;
+        for(int i = 0; i < 32; i++)
+            tickSamples[i] = 0L;
+        ticksPerLoop = 0;
     }
 }

@@ -5,7 +5,6 @@ import org.runejs.client.RSString;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.node.Node;
-import org.runejs.client.scene.InteractiveObject;
 
 import java.math.BigInteger;
 
@@ -65,7 +64,7 @@ public class Buffer extends Node {
         while(buffer[currentPosition++] != 0) {
             /* empty */
         }
-        return InteractiveObject.method279(buffer, i, -1 + currentPosition + -i);
+        return RSString.method279(buffer, i, -1 + currentPosition + -i);
     }
 
     public String getString() {
