@@ -86,7 +86,7 @@ public class Game {
     public static boolean aBoolean519 = true;
     public static Class39 mouseCapturer;
     public static int anInt2591 = 0;
-    public static int anInt874;
+    public static int anInt874 = 0;
     public static int destinationY = 0;
     public static Scene currentScene;
     private static int gameServerPort;
@@ -533,7 +533,7 @@ public class Game {
                                 }
                             }
                         }
-                        if (gameInterface.type == GameInterfaceType.IF1_TOOLTIP && Class37.method438(areaId, i) && RSString.tooltipDelay == MovedStatics.durationHoveredOverWidget) {
+                        if (gameInterface.type == GameInterfaceType.IF1_TOOLTIP && MovedStatics.method438(areaId, i) && RSString.tooltipDelay == MovedStatics.durationHoveredOverWidget) {
                             int textWidth = 0;
                             int textHeight = 0;
                             TypeFace class40_sub5_sub14_sub1 = MovedStatics.fontNormal;
@@ -1699,7 +1699,7 @@ public class Game {
                         loginStatus = 9;
                     } else {
                         if (responseCode == 15 && Class51.gameStatusCode == 40) {
-                            Class37.method434();
+                            MovedStatics.method434();
                             return;
                         }
                         if (responseCode == 23 && MovedStatics.anInt2321 < 1) {

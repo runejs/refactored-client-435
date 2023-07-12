@@ -29,7 +29,7 @@ public class Class35 implements Interface3 {
         }
 
     }
-    
+
     public void clearTextures() {
         for(int i = 0; textures.length > i; i++) {
             if(textures[i] != null)

@@ -16,7 +16,7 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.net.UpdateServer;
+import org.runejs.client.net.*;
 import org.runejs.client.node.Class40_Sub6;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.node.NodeCache;
@@ -32,8 +32,6 @@ import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
-import org.runejs.client.net.ISAAC;
-import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.*;
 import org.runejs.client.scene.camera.CameraRotation;
 import org.runejs.client.scene.util.CollisionMap;
@@ -283,6 +281,7 @@ public class MovedStatics {
      * for the central tab on the top row.
      */
     public static IndexedImage tabHighlightImageTopMiddle;
+    public static ImageRGB[] cursorCross;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -1812,10 +1811,10 @@ public class MovedStatics {
     public static void draw3dScreen() {
         renderSplitPrivateMessages();
         if (crossType == 1) {
-            Class37.cursorCross[crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
+            cursorCross[crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
         }
         if (crossType == 2) {
-            Class37.cursorCross[4 + crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
+            cursorCross[4 + crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
         }
         if (GameInterface.gameScreenInterfaceId != -1 || GroundItemTile.walkableWidgetId != -1) {
                 int areaId = GameInterface.gameScreenInterfaceId != -1 ? 0 : 4;
@@ -3012,5 +3011,41 @@ public class MovedStatics {
                 TypeFace.fontBold.drawStringLeft(message, screenPos.x, screenPos.y, OVERHEAD_CHAT_COLORS[0]);
             }
         }
+    }
+
+    public static boolean method438(int areaId, int arg1) {
+        // (Jameskmonger) something to do with right clicking
+        if(areaId == 0 && arg1 == anInt573)
+            return true;
+        if(areaId == 1 && anInt614 == arg1)
+            return true;
+        if((areaId == 2 || areaId == 3) && anInt1586 == arg1)
+            return true;
+        return false;
+    }
+
+    public static void method434() {
+        menuOpen = false;
+        IncomingPackets.opcode = -1;
+        menuActionRow = 0;
+        IncomingPackets.incomingPacketSize = 0;
+        OutgoingPackets.buffer.currentPosition = 0;
+        IncomingPackets.lastOpcode = -1;
+        IncomingPackets.secondLastOpcode = -1;
+        IncomingPackets.cyclesSinceLastPacket = 0;
+        IncomingPackets.thirdLastOpcode = -1;
+        destinationX = 0;
+        Minimap.minimapState = 0;
+        systemUpdateTime = 0;
+        IncomingPackets.incomingPacketBuffer.currentPosition = 0;
+        for(int i = 0; Player.trackedPlayers.length > i; i++) {
+            if(Player.trackedPlayers[i] != null)
+                Player.trackedPlayers[i].facingActorIndex = -1;
+        }
+        for(int i = 0; Player.npcs.length > i; i++) {
+            if(Player.npcs[i] != null)
+                Player.npcs[i].facingActorIndex = -1;
+        }
+        processGameStatus(30);
     }
 }

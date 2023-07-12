@@ -212,10 +212,10 @@ public class Class40_Sub3 extends Node {
                 Minimap.minimapMarkers = method526(CacheArchive.gameImageCacheArchive, Native.mapMarker, "");
             else
                 i++;
-            if (Class37.cursorCross != null)
+            if (MovedStatics.cursorCross != null)
                 i++;
             else
-                Class37.cursorCross = method526(CacheArchive.gameImageCacheArchive, Native.cursorCross, "");
+                MovedStatics.cursorCross = method526(CacheArchive.gameImageCacheArchive, Native.cursorCross, "");
             if (Minimap.mapDots == null)
                 Minimap.mapDots = method526(CacheArchive.gameImageCacheArchive, Native.mapDots, "");
             else

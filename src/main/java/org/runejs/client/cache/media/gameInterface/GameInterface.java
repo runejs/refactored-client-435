@@ -65,6 +65,7 @@ public class GameInterface extends CachedNode {
     public static int atInventoryInterfaceType = 0;
     public static int selectedInventorySlot;
     public static int reportAbuseWidgetId = -1;
+    public static int anInt876 = 0;
     /**
      * The lightened edge (top and left) color of the scroll indicator chip.
      */
@@ -927,7 +928,7 @@ public class GameInterface extends CachedNode {
                             }
                         }
                         if(i_19_ != -1 && Player.friendWorlds[i_19_] > 0) {
-                            Class37.anInt876 = 3;
+                            anInt876 = 3;
                             ChatBox.redrawChatbox = true;
                             ChatBox.inputType = 0;
                             ChatBox.chatMessage = "";
@@ -1675,7 +1676,7 @@ public class GameInterface extends CachedNode {
         int i = arg1.contentType;
         if(Player.friendListStatus == 2) {
             if(i == 201) {
-                Class37.anInt876 = 1;
+                anInt876 = 1;
                 Native.enterPlayerNameHeader = English.enterNameOfFriendToAddToList;
                 ChatBox.messagePromptRaised = true;
                 ChatBox.inputType = 0;
@@ -1683,7 +1684,7 @@ public class GameInterface extends CachedNode {
                 ChatBox.redrawChatbox = true;
             }
             if(i == 202) {
-                Class37.anInt876 = 2;
+                anInt876 = 2;
                 Native.enterPlayerNameHeader = English.enterNameOfFriendToDeleteFromList;
                 ChatBox.redrawChatbox = true;
                 ChatBox.inputType = 0;
@@ -1697,7 +1698,7 @@ public class GameInterface extends CachedNode {
         }
         if(i == 501) {
             ChatBox.inputType = 0;
-            Class37.anInt876 = 4;
+            anInt876 = 4;
             ChatBox.redrawChatbox = true;
             Native.enterPlayerNameHeader = English.enterNameOfPlayerToAddToList;
             ChatBox.chatMessage = "";
@@ -1706,7 +1707,7 @@ public class GameInterface extends CachedNode {
         if(i == 502) {
             ChatBox.redrawChatbox = true;
             ChatBox.inputType = 0;
-            Class37.anInt876 = 5;
+            anInt876 = 5;
             ChatBox.messagePromptRaised = true;
             ChatBox.chatMessage = "";
             Native.enterPlayerNameHeader = English.enterNameOfPlayerToDeleteFromList;
@@ -1883,15 +1884,15 @@ public class GameInterface extends CachedNode {
                 if(MovedStatics.anInt2854 == 84) {
                     ChatBox.messagePromptRaised = false;
                     ChatBox.redrawChatbox = true;
-                    if(Class37.anInt876 == 1) {
+                    if(anInt876 == 1) {
                         long l = RSString.nameToLong(ChatBox.chatMessage);
                         addFriend(l);
                     }
-                    if(Class37.anInt876 == 2 && Player.friendsCount > 0) {
+                    if(anInt876 == 2 && Player.friendsCount > 0) {
                         long l = RSString.nameToLong(ChatBox.chatMessage);
                         removeFriend(l);
                     }
-                    if(Class37.anInt876 == 3 && ChatBox.chatMessage.length() > 0) {
+                    if(anInt876 == 3 && ChatBox.chatMessage.length() > 0) {
 // private messages
                         ChatBox.filterInput();
 
@@ -1908,11 +1909,11 @@ ChatBox.tradeMode
 ));
                         }
                     }
-                    if(Class37.anInt876 == 4 && Player.ignoresCount < 100) {
+                    if(anInt876 == 4 && Player.ignoresCount < 100) {
                         long l = RSString.nameToLong(ChatBox.chatMessage);
                         addIgnore(l);
                     }
-                    if(Class37.anInt876 == 5 && Player.ignoresCount > 0) {
+                    if(anInt876 == 5 && Player.ignoresCount > 0) {
                         long l = RSString.nameToLong(ChatBox.chatMessage);
                         removeIgnore(l);
                     }
