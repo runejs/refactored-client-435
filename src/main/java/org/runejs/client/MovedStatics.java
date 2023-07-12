@@ -1041,7 +1041,7 @@ public class MovedStatics {
 	                                    i_8_ += gameInterface.imageX[i_4_];
 	                                }
 	                                if(mouseX >= i_7_ && i_8_ <= mouseY && i_7_ + 32 > mouseX && mouseY < 32 + i_8_) {
-	                                    RSRuntimeException.lastActiveInvInterface = gameInterface.id;
+	                                    GameInterface.lastActiveInvInterface = gameInterface.id;
 	                                    Game.mouseInvInterfaceIndex = i_4_;
 	                                    if(gameInterface.items[i_4_] > 0) {
 	                                        ItemDefinition itemDefinition = ItemDefinition.forId(-1 + gameInterface.items[i_4_], 10);
@@ -3275,5 +3275,14 @@ public class MovedStatics {
             if(meta == 2 && menuActionRow > 0)
                 determineMenuSize();
         }
+    }
+
+    public static void method1057() {
+        SceneCluster.gameTimer.reset();
+        for(int i = 0; i < 32; i++)
+            GameShell.tickSamples[i] = 0L;
+        for(int i = 0; i < 32; i++)
+            tickSamples[i] = 0L;
+        ticksPerLoop = 0;
     }
 }

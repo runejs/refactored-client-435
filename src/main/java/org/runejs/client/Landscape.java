@@ -246,7 +246,7 @@ public class Landscape {
                     MovedStatics.processGameStatus(30);
                 method973();
                 OutgoingPackets.buffer.putPacket(178);
-                RSRuntimeException.method1057(126);
+                MovedStatics.method1057();
             } else
                 MovedStatics.anInt1634 = 2;
         } else

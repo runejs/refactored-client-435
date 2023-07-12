@@ -93,6 +93,11 @@ public class GameInterface extends CachedNode {
     public static int activeInterfaceType = 0;
     public static int modifiedWidgetId = 0;
     public static int walkableWidgetId = -1;
+    public static int lastActiveInvInterface = 0;
+    /**
+     * Some kind of timer for item-on-widget clicks (e.g. triggered when taking items from bank)
+     */
+    public static int anInt1651 = 0;
     /**
      * The lightened edge (top and left) color of the scroll indicator chip.
      */
@@ -609,7 +614,7 @@ public class GameInterface extends CachedNode {
 
                 atInventoryInterfaceType = 2;
                 anInt1233 = i;
-                RSRuntimeException.anInt1651 = 0;
+                anInt1651 = 0;
                 if(gameScreenInterfaceId == i_10_ >> 16) {
                     atInventoryInterfaceType = 1;
                 }
@@ -732,7 +737,7 @@ public class GameInterface extends CachedNode {
                 );
 
                 anInt704 = i_10_;
-                RSRuntimeException.anInt1651 = 0;
+                anInt1651 = 0;
                 anInt1233 = i;
                 atInventoryInterfaceType = 2;
                 if(i_10_ >> 16 == gameScreenInterfaceId) {
@@ -758,7 +763,7 @@ public class GameInterface extends CachedNode {
 
                 anInt1233 = i;
                 atInventoryInterfaceType = 2;
-                RSRuntimeException.anInt1651 = 0;
+                anInt1651 = 0;
                 anInt704 = i_10_;
                 if(i_10_ >> 16 == gameScreenInterfaceId) {
                     atInventoryInterfaceType = 1;
@@ -799,7 +804,7 @@ public class GameInterface extends CachedNode {
 
                 anInt1233 = i;
                 anInt704 = i_10_;
-                RSRuntimeException.anInt1651 = 0;
+                anInt1651 = 0;
                 atInventoryInterfaceType = 2;
                 if(i_10_ >> 16 == gameScreenInterfaceId) {
                     atInventoryInterfaceType = 1;
@@ -936,7 +941,7 @@ public class GameInterface extends CachedNode {
                     if(chatboxInterfaceId == i_10_ >> 16) {
                         atInventoryInterfaceType = 3;
                     }
-                    RSRuntimeException.anInt1651 = 0;
+                    anInt1651 = 0;
                 }
                 if(action == ActionRowType.MESSAGE_FRIEND.getId()) {
                     String class1 = MovedStatics.menuActionTexts[arg1];
@@ -1085,7 +1090,7 @@ public class GameInterface extends CachedNode {
                     );
 
                     anInt704 = i_10_;
-                    RSRuntimeException.anInt1651 = 0;
+                    anInt1651 = 0;
                     anInt1233 = i;
                     atInventoryInterfaceType = 2;
                     if(gameScreenInterfaceId == i_10_ >> 16) {
@@ -1151,7 +1156,7 @@ public class GameInterface extends CachedNode {
                         anInt1233 = i;
                         atInventoryInterfaceType = 2;
                         anInt704 = i_10_;
-                        RSRuntimeException.anInt1651 = 0;
+                        anInt1651 = 0;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
                             atInventoryInterfaceType = 1;
                         }
@@ -1266,7 +1271,7 @@ public class GameInterface extends CachedNode {
                             ChatBox.addChatMessage("", gameInterface.itemAmounts[i] + Native.amountSeparatorX + ItemDefinition.forId(npcIdx, 10).name, 0);
                         }
                         anInt1233 = i;
-                        RSRuntimeException.anInt1651 = 0;
+                        anInt1651 = 0;
                         anInt704 = i_10_;
                         atInventoryInterfaceType = 2;
                         if(i_10_ >> 16 == gameScreenInterfaceId) {
@@ -1324,7 +1329,7 @@ public class GameInterface extends CachedNode {
                             )
                         );
 
-                        RSRuntimeException.anInt1651 = 0;
+                        anInt1651 = 0;
                         atInventoryInterfaceType = 2;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
                             atInventoryInterfaceType = 1;
@@ -1355,7 +1360,7 @@ public class GameInterface extends CachedNode {
                         if(i_10_ >> 16 == chatboxInterfaceId) {
                             atInventoryInterfaceType = 3;
                         }
-                        RSRuntimeException.anInt1651 = 0;
+                        anInt1651 = 0;
                     }
                     if(action == ActionRowType.INTERACT_WITH_PLAYER_OPTION_5.getId()) {
                         Player otherPlayer = Player.trackedPlayers[npcIdx];
@@ -1422,7 +1427,7 @@ public class GameInterface extends CachedNode {
                             )
                         );
 
-                        RSRuntimeException.anInt1651 = 0;
+                        anInt1651 = 0;
                         atInventoryInterfaceType = 2;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
                             atInventoryInterfaceType = 1;
@@ -1476,7 +1481,7 @@ public class GameInterface extends CachedNode {
                         );
 
                         anInt704 = i_10_;
-                        RSRuntimeException.anInt1651 = 0;
+                        anInt1651 = 0;
                         anInt1233 = i;
                         atInventoryInterfaceType = 2;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
@@ -1550,7 +1555,7 @@ public class GameInterface extends CachedNode {
                         );
 
                         anInt1233 = i;
-                        RSRuntimeException.anInt1651 = 0;
+                        anInt1651 = 0;
                         atInventoryInterfaceType = 2;
                         anInt704 = i_10_;
                         if(i_10_ >> 16 == gameScreenInterfaceId) {

@@ -1315,8 +1315,8 @@ public class Game {
                                 MovedStatics.crossType = 0;
                         }
                         if(GameInterface.atInventoryInterfaceType != 0) {
-                            RSRuntimeException.anInt1651++;
-                            if(RSRuntimeException.anInt1651 >= 15) {
+                            GameInterface.anInt1651++;
+                            if(GameInterface.anInt1651 >= 15) {
                                 if(GameInterface.atInventoryInterfaceType == 2)
                                     GameInterface.redrawTabArea = true;
                                 if(GameInterface.atInventoryInterfaceType == 3)
@@ -1336,9 +1336,9 @@ public class Game {
                                     GameInterface.redrawTabArea = true;
                                 GameInterface.activeInterfaceType = 0;
                                 if(MovedStatics.lastItemDragged && Buffer.lastItemDragTime >= 5) {
-                                    RSRuntimeException.lastActiveInvInterface = -1;
+                                    GameInterface.lastActiveInvInterface = -1;
                                     MovedStatics.processRightClick();
-                                    if(RSRuntimeException.lastActiveInvInterface == GameInterface.modifiedWidgetId && mouseInvInterfaceIndex != GameInterface.selectedInventorySlot) {
+                                    if(GameInterface.lastActiveInvInterface == GameInterface.modifiedWidgetId && mouseInvInterfaceIndex != GameInterface.selectedInventorySlot) {
                                         GameInterface childInterface = GameInterface.getInterface(GameInterface.modifiedWidgetId);
                                         int moveItemInsertionMode = 0;
                                         if(MovedStatics.bankInsertMode == 1 && childInterface.contentType == 206)
@@ -1382,7 +1382,7 @@ public class Game {
                                     else if(MovedStatics.menuActionRow > 0)
                                         GameInterface.processMenuActions(MovedStatics.menuActionRow - 1);
                                 }
-                                RSRuntimeException.anInt1651 = 10;
+                                GameInterface.anInt1651 = 10;
                                 MouseHandler.clickType = 0;
                             }
                         }
