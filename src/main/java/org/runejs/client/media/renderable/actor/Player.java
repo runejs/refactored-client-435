@@ -52,6 +52,8 @@ public class Player extends Actor {
     public static int[] tabWidgetIds = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     public static int currentTabId = 3;
     public static String[] friendUsernames = new String[200];
+    public static long[] friends;
+    public static int ignoresCount = 0;
     public int skillLevel;
     public int anInt3258;
     public int combatLevel = 0;
@@ -163,7 +165,7 @@ public class Player extends Actor {
                 long l = RSString.nameToLong(player.playerName);
                 boolean bool = false;
                 if(playerRights <= 1) {
-                    for(int i = 0; i < MovedStatics.anInt1008; i++) {
+                    for(int i = 0; i < ignoresCount; i++) {
                         if(l == ignores[i]) {
                             bool = true;
                             break;

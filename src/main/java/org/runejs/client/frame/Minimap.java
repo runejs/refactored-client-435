@@ -127,7 +127,7 @@ public class Minimap extends FramePieceRenderer {
                 boolean isFriend = false;
                 long name = RSString.nameToLong(player.playerName);
                 for(int friend = 0; Player.friendsCount > friend; friend++) {
-                    if(name == Class59.friends[friend] && Player.friendWorlds[friend] != 0) {
+                    if(name == Player.friends[friend] && Player.friendWorlds[friend] != 0) {
                         isFriend = true;
                         break;
                     }
@@ -322,7 +322,7 @@ public class Minimap extends FramePieceRenderer {
                 boolean isFriend = false;
                 long name = RSString.nameToLong(player.playerName);
                 for(int friend = 0; Player.friendsCount > friend; friend++) {
-                    if(name == Class59.friends[friend] && Player.friendWorlds[friend] != 0) {
+                    if(name == Player.friends[friend] && Player.friendWorlds[friend] != 0) {
                         isFriend = true;
                         break;
                     }

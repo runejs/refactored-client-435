@@ -3,6 +3,7 @@ package org.runejs.client;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.media.VertexNormal;
+import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
@@ -12,11 +13,10 @@ public class Class59 {
     public static int anInt1388;
     public static int anInt1389 = 0;
     public static KeyFocusListener keyFocusListener;
-    public static long[] friends;
 
     static {
         MovedStatics.secondMenuOperand = new int[500];
-        friends = new long[200];
+        Player.friends = new long[200];
         keyFocusListener = new KeyFocusListener();
     }
 

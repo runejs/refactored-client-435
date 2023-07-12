@@ -151,7 +151,6 @@ public class MovedStatics {
     public static IndexedImage[] mapSceneIcons;
     public static int baseX;
     public static NodeCache aClass9_998 = new NodeCache(100);
-    public static int anInt1008 = 0;
     public static int[] anIntArray1013;
     public static IndexedImage[] moderatorIcon;
     public static int[] anIntArray2764 = new int[128];

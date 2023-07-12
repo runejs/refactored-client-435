@@ -1,6 +1,5 @@
 package org.runejs.client.message.handler.rs435.chat;
 
-import org.runejs.client.MovedStatics;
 import org.runejs.client.RSString;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.language.English;
@@ -23,8 +22,8 @@ public class ReceiveChatboxMessageHandler implements MessageHandler<ReceiveChatb
             String username = chatMessage.substring(0, chatMessage.indexOf(Native.colon));
             long l = RSString.nameToLong(username);
             boolean bool = false;
-            for(int i_33_ = 0; i_33_ < MovedStatics.anInt1008; i_33_++) {
-                if(l == Player.ignores[i_33_]) {
+            for(int i = 0; i < Player.ignoresCount; i++) {
+                if(l == Player.ignores[i]) {
                     bool = true;
                     break;
                 }
@@ -35,8 +34,8 @@ public class ReceiveChatboxMessageHandler implements MessageHandler<ReceiveChatb
             String username = chatMessage.substring(0, chatMessage.indexOf(Native.colon));
             long l = RSString.nameToLong(username);
             boolean bool = false;
-            for(int i_31_ = 0; MovedStatics.anInt1008 > i_31_; i_31_++) {
-                if(l == Player.ignores[i_31_]) {
+            for(int i = 0; Player.ignoresCount > i; i++) {
+                if(l == Player.ignores[i]) {
                     bool = true;
                     break;
                 }
@@ -47,8 +46,8 @@ public class ReceiveChatboxMessageHandler implements MessageHandler<ReceiveChatb
             String username = chatMessage.substring(0, chatMessage.indexOf(Native.colon));
             long l = RSString.nameToLong(username);
             boolean bool = false;
-            for(int i_28_ = 0; i_28_ < MovedStatics.anInt1008; i_28_++) {
-                if(l == Player.ignores[i_28_]) {
+            for(int i = 0; i < Player.ignoresCount; i++) {
+                if(l == Player.ignores[i]) {
                     bool = true;
                     break;
                 }
