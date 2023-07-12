@@ -695,6 +695,9 @@ public class Game {
         aBoolean519 = true;
     }
 
+    public Game() {
+        new Game(new String[]{});
+    }
     public Game(String[] args) {
         Configuration.read();
         Native.username = Configuration.getUsername();
