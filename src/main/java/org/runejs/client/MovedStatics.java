@@ -3391,6 +3391,7 @@ public class MovedStatics {
     public static void startup() {
         if (loadingPercent == 0) {
             Game.currentScene = new Scene();
+            Game.sceneRenderer = new SceneRenderer(Game.currentScene);
             for (int i = 0; i < 4; i++)
                 Landscape.currentCollisionMap[i] = new CollisionMap(104, 104);
             Minimap.minimapImage = new ImageRGB(512, 512);
