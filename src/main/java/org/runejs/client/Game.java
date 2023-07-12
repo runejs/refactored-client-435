@@ -270,7 +270,7 @@ public class Game {
                                                     i_12_ = 0;
                                                 if (i_14_ < 5 && i_14_ > -5)
                                                     i_14_ = 0;
-                                                if (Buffer.lastItemDragTime < 5) {
+                                                if (GameInterface.lastItemDragTime < 5) {
                                                     i_14_ = 0;
                                                     i_12_ = 0;
                                                 }
@@ -641,7 +641,7 @@ public class Game {
             ChatBox.chatMessages[i] = null;
         GameInterface.itemCurrentlySelected = 0;
         MovedStatics.destinationX = 0;
-        Buffer.anInt1985 = -1;
+        MovedStatics.anInt1985 = -1;
         Player.npcCount = 0;
         SoundSystem.reset();
         widgetSelected = 0;
@@ -1329,7 +1329,7 @@ public class Game {
                         }
                         MovedStatics.anInt199++;
                         if(GameInterface.activeInterfaceType != 0) {
-                            Buffer.lastItemDragTime++;
+                            GameInterface.lastItemDragTime++;
                             if(MouseHandler.mouseX > Renderable.anInt2869 + 5 || Renderable.anInt2869 + -5 > MouseHandler.mouseX || MovedStatics.anInt2798 + 5 < MouseHandler.mouseY || MovedStatics.anInt2798 - 5 > MouseHandler.mouseY)
                                 MovedStatics.lastItemDragged = true;
                             if(MouseHandler.currentMouseButtonPressed == 0) {
@@ -1338,7 +1338,7 @@ public class Game {
                                 if(GameInterface.activeInterfaceType == 2)
                                     GameInterface.redrawTabArea = true;
                                 GameInterface.activeInterfaceType = 0;
-                                if(MovedStatics.lastItemDragged && Buffer.lastItemDragTime >= 5) {
+                                if(MovedStatics.lastItemDragged && GameInterface.lastItemDragTime >= 5) {
                                     GameInterface.lastActiveInvInterface = -1;
                                     MovedStatics.processRightClick();
                                     if(GameInterface.lastActiveInvInterface == GameInterface.modifiedWidgetId && mouseInvInterfaceIndex != GameInterface.selectedInventorySlot) {
@@ -1417,7 +1417,7 @@ public class Game {
                         }
 
                         if(MouseHandler.currentMouseButtonPressed == 1 || MouseHandler.clickType == 1)
-                            Npc.anInt3294++;
+                            MovedStatics.anInt3294++;
 
                         int i = 34;
                         if(GameInterface.gameScreenInterfaceId != -1)
@@ -1723,8 +1723,8 @@ public class Game {
 
     private static void method947(int arg0) {
         synchronized(MovedStatics.anObject162) {
-            if((Buffer.anInt1987 ^ 0xffffffff) != arg0) {
-                Buffer.anInt1987 = 1;
+            if((MovedStatics.anInt1987 ^ 0xffffffff) != arg0) {
+                MovedStatics.anInt1987 = 1;
                 try {
                     MovedStatics.anObject162.wait();
                 } catch(InterruptedException interruptedexception) {
@@ -1845,8 +1845,8 @@ public class Game {
         if(true) {
             if (VertexNormal.lowMemory && MovedStatics.onBuildTimePlane != Player.worldLevel)
                 Landscape.method789(Player.localPlayer.pathY[0], MovedStatics.regionY, MovedStatics.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
-            else if (Buffer.anInt1985 != Player.worldLevel) {
-                Buffer.anInt1985 = Player.worldLevel;
+            else if (MovedStatics.anInt1985 != Player.worldLevel) {
+                MovedStatics.anInt1985 = Player.worldLevel;
                 Minimap.method299(Player.worldLevel);
             }
         }
@@ -2157,7 +2157,7 @@ public class Game {
             method164();
         } else if (gameStatusCode == 40)
             MovedStatics.method940(English.connectionLost, false, English.pleaseWaitAttemptingToReestablish);
-        Npc.anInt3294 = 0;
+        MovedStatics.anInt3294 = 0;
     }
 
     public void connectUpdateServer() {

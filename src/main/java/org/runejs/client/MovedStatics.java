@@ -336,6 +336,21 @@ public class MovedStatics {
      */
     public static int anInt2480 = 0;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
+    public static int anInt1985 = -1;
+    public static int anInt1987 = 0;
+    public static IndexedImage tabTopBack;
+    /**
+     * Some kind of colour palette
+     */
+    public static int[] anIntArray1972;
+    /**
+     * Sprite heights?
+     */
+    public static int[] anIntArray3312;
+    /**
+     * Some kind of mouse information
+     */
+    public static int anInt3294 = 0;
 
     public static void method440() {
         if (aBoolean512) {
@@ -457,8 +472,8 @@ public class MovedStatics {
         class40_sub5_sub14_sub2.xDrawOffset = anIntArray1347[0];
         class40_sub5_sub14_sub2.yDrawOffset = anIntArray3111[0];
         class40_sub5_sub14_sub2.imgWidth = anIntArray456[0];
-        class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[0];
-        class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
+        class40_sub5_sub14_sub2.imgHeight = anIntArray3312[0];
+        class40_sub5_sub14_sub2.palette = anIntArray1972;
         class40_sub5_sub14_sub2.imgPixels = aByteArrayArray1370[0];
         method569();
         return class40_sub5_sub14_sub2;
@@ -466,9 +481,9 @@ public class MovedStatics {
 
     public static void method332(int arg0) {
         synchronized (anObject162) {
-            if (Buffer.anInt1987 == 0)
+            if (anInt1987 == 0)
                 Game.signlink.createThreadNode(5, new Class44());
-            Buffer.anInt1987 = arg0;
+            anInt1987 = arg0;
         }
     }
 
@@ -538,7 +553,7 @@ public class MovedStatics {
         anIntArray3111 = new int[anInt2581];
         aByteArrayArray1370 = new byte[anInt2581][];
         anIntArray456 = new int[anInt2581];
-        Npc.anIntArray3312 = new int[anInt2581];
+        anIntArray3312 = new int[anInt2581];
         anIntArray1347 = new int[anInt2581];
 
         buffer.currentPosition = data.length + -7 + -(anInt2581 * 8);
@@ -552,18 +567,18 @@ public class MovedStatics {
         for (int i_36_ = 0; i_36_ < anInt2581; i_36_++)
             anIntArray456[i_36_] = buffer.getUnsignedShortBE();
         for (int i_37_ = 0; anInt2581 > i_37_; i_37_++)
-            Npc.anIntArray3312[i_37_] = buffer.getUnsignedShortBE();
+            anIntArray3312[i_37_] = buffer.getUnsignedShortBE();
 
         buffer.currentPosition = data.length - (7 + anInt2581 * 8 + -3 + i * 3);
-        Buffer.anIntArray1972 = new int[i];
+        anIntArray1972 = new int[i];
         for (int i_38_ = 1; i > i_38_; i_38_++) {
-            Buffer.anIntArray1972[i_38_] = buffer.getMediumBE();
-            if (Buffer.anIntArray1972[i_38_] == 0)
-                Buffer.anIntArray1972[i_38_] = 1;
+            anIntArray1972[i_38_] = buffer.getMediumBE();
+            if (anIntArray1972[i_38_] == 0)
+                anIntArray1972[i_38_] = 1;
         }
         buffer.currentPosition = 0;
         for (int i_39_ = 0; anInt2581 > i_39_; i_39_++) {
-            int i_40_ = Npc.anIntArray3312[i_39_];
+            int i_40_ = anIntArray3312[i_39_];
             int i_41_ = anIntArray456[i_39_];
             int i_42_ = i_40_ * i_41_;
             byte[] is = new byte[i_42_];
@@ -587,7 +602,7 @@ public class MovedStatics {
 
     public static void method527(int currentTabId, int[] tabWidgetIds, boolean arg3, int arg4) {
         tabTop.prepareRasterizer();
-        Buffer.tabTopBack.drawImage(0, 0);
+        tabTopBack.drawImage(0, 0);
         if (arg3) {
             if (tabWidgetIds[currentTabId] != -1) {
                 if (currentTabId == 0)
@@ -1420,7 +1435,7 @@ public class MovedStatics {
             tabHighlightImageTopRightEdge = null;
             anIntArray852 = null;
             chatModes = null;
-            Buffer.tabTopBack = null;
+            tabTopBack = null;
             tabImageProducer = null;
             tabHighlightImageTopLeftEdge = null;
             gameScreenImageProducer = null;
@@ -1912,7 +1927,7 @@ public class MovedStatics {
             Minimap.minimapBackgroundImage = Game.method359(Native.mapBack, Native.aClass1_305, arg2);
             bottomChatBack = Game.method359(Native.imgBackbase1, Native.aClass1_305, arg2);
             tabBottomBack = Game.method359(Native.imgBackbase2, Native.aClass1_305, arg2);
-            Buffer.tabTopBack = Game.method359(Native.imgBackhmid1, Native.aClass1_305, arg2);
+            tabTopBack = Game.method359(Native.imgBackhmid1, Native.aClass1_305, arg2);
             ChatBox.chatBoxImageProducer = createGraphicsBuffer(479, 96, arg0);
             chatboxBackgroundImage.drawImage(0, 0);
             Minimap.mapbackProducingGraphicsBuffer = createGraphicsBuffer(172, 156, arg0);
@@ -3055,7 +3070,7 @@ public class MovedStatics {
     }
 
     public static IndexedImage method769(int arg0, CacheArchive imageArchive, int arg2) {
-        if(!Buffer.method472(imageArchive, arg2))
+        if(!method472(imageArchive, arg2))
             return null;
         return method538();
     }
@@ -3267,7 +3282,7 @@ public class MovedStatics {
                             GameInterface.activeInterfaceType = 1;
                         if(GameInterface.chatboxInterfaceId == id >> 16)
                             GameInterface.activeInterfaceType = 3;
-                        Buffer.lastItemDragTime = 0;
+                        GameInterface.lastItemDragTime = 0;
                         return;
                     }
                 }
@@ -3306,12 +3321,12 @@ public class MovedStatics {
         class40_sub5_sub14_sub4.offsetX = anIntArray1347[0];
         class40_sub5_sub14_sub4.offsetY = anIntArray3111[0];
         class40_sub5_sub14_sub4.imageWidth = anIntArray456[0];
-        class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[0];
+        class40_sub5_sub14_sub4.imageHeight = anIntArray3312[0];
         byte[] is = aByteArrayArray1370[0];
         int i = class40_sub5_sub14_sub4.imageWidth * class40_sub5_sub14_sub4.imageHeight;
         class40_sub5_sub14_sub4.pixels = new int[i];
         for(int i_5_ = 0; i_5_ < i; i_5_++) {
-            class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
+            class40_sub5_sub14_sub4.pixels[i_5_] = anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
         }
         method569();
         return class40_sub5_sub14_sub4;
@@ -3320,9 +3335,9 @@ public class MovedStatics {
     public static void method569() {
         anIntArray456 = null;
         aByteArrayArray1370 = null;
-        Npc.anIntArray3312 = null;
+        anIntArray3312 = null;
         anIntArray3111 = null;
-        Buffer.anIntArray1972 = null;
+        anIntArray1972 = null;
         anIntArray1347 = null;
     }
 
@@ -3614,5 +3629,20 @@ public class MovedStatics {
             if (loadingPercent == 140)
                 processGameStatus(10);
         }
+    }
+
+    /**
+     * Reading some kind of cache
+     *
+     * TODO what is this? sprites?
+     */
+    public static boolean method472(CacheArchive arg1, int arg2) {
+        byte[] is = arg1.method187(arg2);
+        if(is == null) {
+            return false;
+        }
+        method184(is, 0);
+        return true;
+
     }
 }

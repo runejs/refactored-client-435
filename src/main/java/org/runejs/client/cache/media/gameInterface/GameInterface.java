@@ -99,6 +99,7 @@ public class GameInterface extends CachedNode {
      * Some kind of timer for item-on-widget clicks (e.g. triggered when taking items from bank)
      */
     public static int anInt1651 = 0;
+    public static int lastItemDragTime = 0;
     /**
      * The lightened edge (top and left) color of the scroll indicator chip.
      */
@@ -1673,13 +1674,13 @@ public class GameInterface extends CachedNode {
             anInt1171 = 0;
         aBoolean1444 = false;
         if(arg2 >= arg6 && arg2 < arg6 + 16 && arg1 >= arg8 && 16 + arg8 > arg1) {
-            arg5.scrollPosition -= Npc.anInt3294 * 4;
+            arg5.scrollPosition -= MovedStatics.anInt3294 * 4;
             if(arg7 == 1)
                 redrawTabArea = true;
             if(arg7 == 2 || arg7 == 3)
                 ChatBox.redrawChatbox = true;
         } else if(arg6 > arg2 || arg6 + 16 <= arg2 || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
-            if(-anInt1171 + arg6 <= arg2 && 16 + arg6 + anInt1171 > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
+            if(-anInt1171 + arg6 <= arg2 && 16 + arg6 + anInt1171 > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && MovedStatics.anInt3294 > 0) {
                 aBoolean1444 = true;
                 int i = (-32 + arg0) * arg0 / arg3;
                 if(arg7 == 2 || arg7 == 3)
@@ -1693,7 +1694,7 @@ public class GameInterface extends CachedNode {
                 arg5.scrollPosition = (arg3 + -arg0) * i_18_ / i_17_;
             }
         } else {
-            arg5.scrollPosition += 4 * Npc.anInt3294;
+            arg5.scrollPosition += 4 * MovedStatics.anInt3294;
             if(arg7 == 2 || arg7 == 3)
                 ChatBox.redrawChatbox = true;
             if(arg7 == 1)

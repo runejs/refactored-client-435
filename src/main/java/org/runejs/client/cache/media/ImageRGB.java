@@ -2,9 +2,7 @@ package org.runejs.client.cache.media;
 
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
-import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.util.BitUtils;
 
 import java.awt.*;
@@ -252,12 +250,12 @@ public class ImageRGB extends Rasterizer {
 	        class40_sub5_sub14_sub4.offsetX = MovedStatics.anIntArray1347[i];
 	        class40_sub5_sub14_sub4.offsetY = MovedStatics.anIntArray3111[i];
 	        class40_sub5_sub14_sub4.imageWidth = MovedStatics.anIntArray456[i];
-	        class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[i];
+	        class40_sub5_sub14_sub4.imageHeight = MovedStatics.anIntArray3312[i];
 	        byte[] is = MovedStatics.aByteArrayArray1370[i];
 	        int i_4_ = class40_sub5_sub14_sub4.imageHeight * class40_sub5_sub14_sub4.imageWidth;
 	        class40_sub5_sub14_sub4.pixels = new int[i_4_];
 	        for(int i_5_ = 0; i_5_ < i_4_; i_5_++)
-	            class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
+	            class40_sub5_sub14_sub4.pixels[i_5_] = MovedStatics.anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
 	    }
 	    MovedStatics.method569();
 	    return class40_sub5_sub14_sub4s;

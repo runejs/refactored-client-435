@@ -8,11 +8,8 @@ import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.PacketBuffer;
 
 public class Npc extends Actor {
-    public static int anInt3294 = 0;
-    public static int[] anIntArray3312;
     public ActorDefinition actorDefinition;
-
-
+    
     public static void parseNpcUpdateMasks(PacketBuffer buffer) {
         for(int i = 0; i < actorUpdatingIndex; i++) {
             int npcIndex = Player.actorUpdatingIndices[i];

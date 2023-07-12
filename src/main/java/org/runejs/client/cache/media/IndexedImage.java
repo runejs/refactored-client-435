@@ -2,9 +2,7 @@ package org.runejs.client.cache.media;
 
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
-import org.runejs.client.media.renderable.actor.Npc;
 
 public class IndexedImage extends Rasterizer {
     public int imgWidth;
@@ -49,8 +47,8 @@ public class IndexedImage extends Rasterizer {
             class40_sub5_sub14_sub2.xDrawOffset = MovedStatics.anIntArray1347[i];
             class40_sub5_sub14_sub2.yDrawOffset = MovedStatics.anIntArray3111[i];
             class40_sub5_sub14_sub2.imgWidth = MovedStatics.anIntArray456[i];
-            class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[i];
-            class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
+            class40_sub5_sub14_sub2.imgHeight = MovedStatics.anIntArray3312[i];
+            class40_sub5_sub14_sub2.palette = MovedStatics.anIntArray1972;
             class40_sub5_sub14_sub2.imgPixels = MovedStatics.aByteArrayArray1370[i];
         }
         MovedStatics.method569();

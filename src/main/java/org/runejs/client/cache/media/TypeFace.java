@@ -7,9 +7,7 @@ import org.runejs.client.cache.media.textUtils.TextColourNode;
 import org.runejs.client.cache.media.textUtils.TextColourQueue;
 import org.runejs.client.cache.media.textUtils.TextTagNode;
 import org.runejs.client.cache.media.textUtils.TextTagQueue;
-import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
-import org.runejs.client.media.renderable.actor.Npc;
 
 import java.awt.*;
 import java.util.Random;
@@ -97,7 +95,7 @@ public class TypeFace extends Rasterizer {
     }
 
     public static TypeFace constructFont() {
-        TypeFace class40_sub5_sub14_sub1 = new TypeFace(MovedStatics.anIntArray3111, MovedStatics.anIntArray456, Npc.anIntArray3312, Buffer.anIntArray1972, MovedStatics.aByteArrayArray1370);
+        TypeFace class40_sub5_sub14_sub1 = new TypeFace(MovedStatics.anIntArray3111, MovedStatics.anIntArray456, MovedStatics.anIntArray3312, MovedStatics.anIntArray1972, MovedStatics.aByteArrayArray1370);
         MovedStatics.method569();
         return class40_sub5_sub14_sub1;
     }
