@@ -11,6 +11,7 @@ import org.runejs.client.language.English;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.node.CachedNode;
 import org.runejs.OldEngine.ObjectDecompressor;
+import org.runejs.client.scene.InteractiveObjectTemporary;
 
 import java.io.IOException;
 
@@ -122,28 +123,28 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     }
 
 
-    public static void method609(int objectId, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
-        Class40_Sub3 class40_sub3 = null;
-        for(Class40_Sub3 class40_sub3_24_ = (Class40_Sub3) MovedStatics.aLinkedList_1064.peekFirst(); class40_sub3_24_ != null; class40_sub3_24_ = (Class40_Sub3) MovedStatics.aLinkedList_1064.pollFirst()) {
-            if(class40_sub3_24_.anInt2018 == arg5 && arg2 == class40_sub3_24_.anInt2039 && class40_sub3_24_.anInt2038 == arg6 && class40_sub3_24_.anInt2027 == arg7) {
-                class40_sub3 = class40_sub3_24_;
+    public static void addTemporaryObject(int objectId, int x, int orientation, int duration, int plane, int y, int typeKey, int type, int delay) {
+        InteractiveObjectTemporary obj = null;
+        for(InteractiveObjectTemporary other = (InteractiveObjectTemporary) MovedStatics.interactiveObjectTemporaryNodeCache.peekFirst(); other != null; other = (InteractiveObjectTemporary) MovedStatics.interactiveObjectTemporaryNodeCache.pollFirst()) {
+            if(other.plane == plane && x == other.x && other.y == y && other.typeKey == typeKey) {
+                obj = other;
                 break;
             }
         }
-        if(class40_sub3 == null) {
-            class40_sub3 = new Class40_Sub3();
-            class40_sub3.anInt2039 = arg2;
-            class40_sub3.anInt2027 = arg7;
-            class40_sub3.anInt2018 = arg5;
-            class40_sub3.anInt2038 = arg6;
-            MovedStatics.method451(class40_sub3);
-            MovedStatics.aLinkedList_1064.addLast(class40_sub3);
+        if(obj == null) {
+            obj = new InteractiveObjectTemporary();
+            obj.x = x;
+            obj.typeKey = typeKey;
+            obj.plane = plane;
+            obj.y = y;
+            MovedStatics.storeTemporaryObject(obj);
+            MovedStatics.interactiveObjectTemporaryNodeCache.addLast(obj);
         }
-        class40_sub3.anInt2017 = objectId;
-        class40_sub3.anInt2031 = arg4;
-        class40_sub3.anInt2033 = arg9;
-        class40_sub3.anInt2035 = arg3;
-        class40_sub3.anInt2030 = arg8;
+        obj.id = objectId;
+        obj.duration = duration;
+        obj.delay = delay;
+        obj.orientation = orientation;
+        obj.type = type;
     }
 
     public static GameObjectDefinition getDefinition(int objectId) {

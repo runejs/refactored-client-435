@@ -729,7 +729,7 @@ public class Game {
                     MovedStatics.groundItems[i][i_82_][i_83_] = null;
             }
         }
-        MovedStatics.aLinkedList_1064 = new LinkedList();
+        MovedStatics.interactiveObjectTemporaryNodeCache = new LinkedList();
         Player.friendsCount = 0;
         Player.friendListStatus = 0;
         GameInterface.resetInterface(ChatBox.dialogueId);
@@ -2085,10 +2085,10 @@ public class Game {
         MouseHandler.method1015();
 
         if (gameStatusCode == 0) {
-            Class40_Sub3.startup();
+            InteractiveObjectTemporary.startup();
             method992();
         } else if (gameStatusCode == 5) {
-            Class40_Sub3.startup();
+            InteractiveObjectTemporary.startup();
             method992();
         } else if (gameStatusCode == 10) {
             Class60.updateLogin();

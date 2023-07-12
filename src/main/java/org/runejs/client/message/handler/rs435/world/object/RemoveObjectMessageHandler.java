@@ -19,6 +19,6 @@ public class RemoveObjectMessageHandler implements MessageHandler<RemoveObjectIn
         int y = message.y + MovedStatics.placementY;
 
         if (x >= 0 && y >= 0 && x < 104 && y < 104)
-            GameObjectDefinition.method609(-1, x, message.orientation, -1, Player.worldLevel, y, GameObjectDefinition.OBJECT_TYPES[message.type], message.type, 0);
+            GameObjectDefinition.addTemporaryObject(-1, x, message.orientation, -1, Player.worldLevel, y, GameObjectDefinition.OBJECT_TYPES[message.type], message.type, 0);
     }
 }

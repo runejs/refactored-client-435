@@ -1,5 +1,6 @@
-package org.runejs.client;
+package org.runejs.client.scene;
 
+import org.runejs.client.*;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.cache.media.AnimationSequence;
@@ -17,26 +18,24 @@ import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.actor.Npc;
-import org.runejs.client.scene.GroundItemTile;
-import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
 
-public class Class40_Sub3 extends Node {
-    public int anInt2017;
-    public int anInt2018;
-    public int anInt2025;
-    public int anInt2027;
-    public int anInt2028;
-    public int anInt2030;
-    public int anInt2031 = -1;
-    public int anInt2033 = 0;
-    public int anInt2035;
-    public int anInt2036;
-    public int anInt2038;
-    public int anInt2039;
+public class InteractiveObjectTemporary extends Node {
+    public int id;
+    public int plane;
+    public int previousOrientation;
+    public int typeKey;
+    public int previousId;
+    public int type;
+    public int duration = -1;
+    public int delay = 0;
+    public int orientation;
+    public int previousType;
+    public int y;
+    public int x;
 
 
     public static void startup() {

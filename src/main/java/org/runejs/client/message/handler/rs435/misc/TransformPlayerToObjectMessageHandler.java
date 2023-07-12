@@ -46,7 +46,7 @@ public class TransformPlayerToObjectMessageHandler implements MessageHandler<Tra
                     unknownYMin = unknownYMax;
                     unknownYMax = temp;
                 }
-                GameObjectDefinition.method609(-1, x, 0, 1 + message.duration, Player.worldLevel, y, type, 0, 1 + message.delay);
+                GameObjectDefinition.addTemporaryObject(-1, x, 0, 1 + message.duration, Player.worldLevel, y, type, 0, 1 + message.delay);
                 player.anInt3274 = message.duration + MovedStatics.pulseCycle;
                 int sizeX = gameObjectDefinition.sizeX;
                 player.playerModel = model;

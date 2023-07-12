@@ -239,7 +239,7 @@ public class MovedStatics {
     public static int menuOffsetX;
     public static int menuHeight;
     public static ImageRGB multiCombatIcon;
-    public static LinkedList aLinkedList_1064 = new LinkedList();
+    public static LinkedList interactiveObjectTemporaryNodeCache = new LinkedList();
     public static int crossType = 0;
     public static int hintIconPlayerTarget = 0;
     /**
@@ -1132,24 +1132,24 @@ public class MovedStatics {
     }
 
     public static void method652() {
-        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) aLinkedList_1064.pollFirst()) {
-            if(class40_sub3.anInt2031 > 0)
-                class40_sub3.anInt2031--;
-            if(class40_sub3.anInt2031 == 0) {
-                if(class40_sub3.anInt2028 < 0 || method459(class40_sub3.anInt2036, class40_sub3.anInt2028)) {
-                    method945(class40_sub3.anInt2038, class40_sub3.anInt2028, class40_sub3.anInt2039, class40_sub3.anInt2036, class40_sub3.anInt2025, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
-                    class40_sub3.unlink();
+        for(InteractiveObjectTemporary interactiveObjectTemporary = (InteractiveObjectTemporary) interactiveObjectTemporaryNodeCache.peekFirst(); interactiveObjectTemporary != null; interactiveObjectTemporary = (InteractiveObjectTemporary) interactiveObjectTemporaryNodeCache.pollFirst()) {
+            if(interactiveObjectTemporary.duration > 0)
+                interactiveObjectTemporary.duration--;
+            if(interactiveObjectTemporary.duration == 0) {
+                if(interactiveObjectTemporary.previousId < 0 || method459(interactiveObjectTemporary.previousType, interactiveObjectTemporary.previousId)) {
+                    method945(interactiveObjectTemporary.y, interactiveObjectTemporary.previousId, interactiveObjectTemporary.x, interactiveObjectTemporary.previousType, interactiveObjectTemporary.previousOrientation, 103, interactiveObjectTemporary.typeKey, interactiveObjectTemporary.plane);
+                    interactiveObjectTemporary.unlink();
                 }
             } else {
-                if(class40_sub3.anInt2033 > 0)
-                    class40_sub3.anInt2033--;
-                if(class40_sub3.anInt2033 == 0 && class40_sub3.anInt2039 >= 1 && class40_sub3.anInt2038 >= 1 && class40_sub3.anInt2039 <= 102 && class40_sub3.anInt2038 <= 102 && (class40_sub3.anInt2017 < 0 || method459(class40_sub3.anInt2030, class40_sub3.anInt2017))) {
-                    method945(class40_sub3.anInt2038, class40_sub3.anInt2017, class40_sub3.anInt2039, class40_sub3.anInt2030, class40_sub3.anInt2035, 103, class40_sub3.anInt2027, class40_sub3.anInt2018);
-                    class40_sub3.anInt2033 = -1;
-                    if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2028 == -1)
-                        class40_sub3.unlink();
-                    else if(class40_sub3.anInt2028 == class40_sub3.anInt2017 && class40_sub3.anInt2025 == class40_sub3.anInt2035 && class40_sub3.anInt2030 == class40_sub3.anInt2036)
-                        class40_sub3.unlink();
+                if(interactiveObjectTemporary.delay > 0)
+                    interactiveObjectTemporary.delay--;
+                if(interactiveObjectTemporary.delay == 0 && interactiveObjectTemporary.x >= 1 && interactiveObjectTemporary.y >= 1 && interactiveObjectTemporary.x <= 102 && interactiveObjectTemporary.y <= 102 && (interactiveObjectTemporary.id < 0 || method459(interactiveObjectTemporary.type, interactiveObjectTemporary.id))) {
+                    method945(interactiveObjectTemporary.y, interactiveObjectTemporary.id, interactiveObjectTemporary.x, interactiveObjectTemporary.type, interactiveObjectTemporary.orientation, 103, interactiveObjectTemporary.typeKey, interactiveObjectTemporary.plane);
+                    interactiveObjectTemporary.delay = -1;
+                    if(interactiveObjectTemporary.previousId == interactiveObjectTemporary.id && interactiveObjectTemporary.previousId == -1)
+                        interactiveObjectTemporary.unlink();
+                    else if(interactiveObjectTemporary.previousId == interactiveObjectTemporary.id && interactiveObjectTemporary.previousOrientation == interactiveObjectTemporary.orientation && interactiveObjectTemporary.type == interactiveObjectTemporary.previousType)
+                        interactiveObjectTemporary.unlink();
                 }
             }
         }
@@ -3141,28 +3141,28 @@ public class MovedStatics {
         processGameStatus(30);
     }
 
-    public static void method451(Class40_Sub3 arg0) {
+    public static void storeTemporaryObject(InteractiveObjectTemporary obj) {
         int i = 0;
-        int i_0_ = -1;
-        int i_1_ = 0;
-        if(arg0.anInt2027 == 0)
-            i = Game.currentScene.method122(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
-        int i_2_ = 0;
-        if(arg0.anInt2027 == 1)
-            i = Game.currentScene.method91(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
-        if(arg0.anInt2027 == 2)
-            i = Game.currentScene.getLocationHash(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
-        if(arg0.anInt2027 == 3)
-            i = Game.currentScene.getFloorDecorationHash(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
+        int id = -1;
+        int type = 0;
+        if(obj.typeKey == 0)
+            i = Game.currentScene.method122(obj.plane, obj.x, obj.y);
+        int orientation = 0;
+        if(obj.typeKey == 1)
+            i = Game.currentScene.method91(obj.plane, obj.x, obj.y);
+        if(obj.typeKey == 2)
+            i = Game.currentScene.getLocationHash(obj.plane, obj.x, obj.y);
+        if(obj.typeKey == 3)
+            i = Game.currentScene.getFloorDecorationHash(obj.plane, obj.x, obj.y);
         if (i != 0) {
-            int i_3_ = Game.currentScene.getArrangement(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i);
-            i_0_ = (0x1fffe692 & i) >> 14;
-            i_2_ = (i_3_ & 0xde) >> 6;
-            i_1_ = i_3_ & 0x1f;
+            int i_3_ = Game.currentScene.getArrangement(obj.plane, obj.x, obj.y, i);
+            id = (0x1fffe692 & i) >> 14;
+            orientation = (i_3_ & 0xde) >> 6;
+            type = i_3_ & 0x1f;
         }
-        arg0.anInt2025 = i_2_;
-        arg0.anInt2028 = i_0_;
-        arg0.anInt2036 = i_1_;
+        obj.previousOrientation = orientation;
+        obj.previousId = id;
+        obj.previousType = type;
     }
 
     public static boolean method735(int arg1) {

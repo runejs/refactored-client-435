@@ -16,6 +16,7 @@ import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.IncomingPackets;
 import org.runejs.client.net.OutgoingPackets;
+import org.runejs.client.scene.InteractiveObjectTemporary;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.util.CollisionMap;
@@ -219,7 +220,7 @@ public class Landscape {
                     for(int y = 0; y < 104; y++)
                         MovedStatics.spawnGroundItem(y, x);
                 }
-                method285((byte) 118);
+                clearTemporaryObjects();
                 GameObjectDefinition.objectModelCache.clear();
                 if(GameShell.clientFrame != null) {
                     OutgoingPackets.buffer.putPacket(121);
@@ -701,15 +702,13 @@ public class Landscape {
 
     }
 
-    private static void method285(byte arg0) {
-        if(arg0 != 118)
-            Game.aBoolean519 = true;
-        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) MovedStatics.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) MovedStatics.aLinkedList_1064.pollFirst()) {
-            if(class40_sub3.anInt2031 == -1) {
-                class40_sub3.anInt2033 = 0;
-                MovedStatics.method451(class40_sub3);
+    private static void clearTemporaryObjects() {
+        for(InteractiveObjectTemporary interactiveObjectTemporary = (InteractiveObjectTemporary) MovedStatics.interactiveObjectTemporaryNodeCache.peekFirst(); interactiveObjectTemporary != null; interactiveObjectTemporary = (InteractiveObjectTemporary) MovedStatics.interactiveObjectTemporaryNodeCache.pollFirst()) {
+            if(interactiveObjectTemporary.duration == -1) {
+                interactiveObjectTemporary.delay = 0;
+                MovedStatics.storeTemporaryObject(interactiveObjectTemporary);
             } else
-                class40_sub3.unlink();
+                interactiveObjectTemporary.unlink();
         }
     }
 
@@ -1418,11 +1417,11 @@ public class Landscape {
                     }
                 }
             }
-            for(Class40_Sub3 class40_sub3 = (Class40_Sub3) MovedStatics.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) MovedStatics.aLinkedList_1064.pollFirst()) {
-                class40_sub3.anInt2038 -= i_35_;
-                class40_sub3.anInt2039 -= i_34_;
-                if(class40_sub3.anInt2039 < 0 || class40_sub3.anInt2038 < 0 || class40_sub3.anInt2039 >= 104 || class40_sub3.anInt2038 >= 104)
-                    class40_sub3.unlink();
+            for(InteractiveObjectTemporary obj = (InteractiveObjectTemporary) MovedStatics.interactiveObjectTemporaryNodeCache.peekFirst(); obj != null; obj = (InteractiveObjectTemporary) MovedStatics.interactiveObjectTemporaryNodeCache.pollFirst()) {
+                obj.y -= i_35_;
+                obj.x -= i_34_;
+                if(obj.x < 0 || obj.y < 0 || obj.x >= 104 || obj.y >= 104)
+                    obj.unlink();
             }
             Buffer.anInt1985 = -1;
             if(MovedStatics.destinationX != 0) {

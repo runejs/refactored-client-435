@@ -19,6 +19,6 @@ public class CreateObjectMessageHandler implements MessageHandler<CreateObjectIn
         int y = message.y + MovedStatics.placementY;
 
         if (x >= 0 && y >= 0 && x < 104 && y < 104)
-            GameObjectDefinition.method609(message.id, x, message.orientation, -1, Player.worldLevel, y, GameObjectDefinition.OBJECT_TYPES[message.type], message.type, 0);
+            GameObjectDefinition.addTemporaryObject(message.id, x, message.orientation, -1, Player.worldLevel, y, GameObjectDefinition.OBJECT_TYPES[message.type], message.type, 0);
     }
 }
