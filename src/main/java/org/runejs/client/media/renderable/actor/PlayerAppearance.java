@@ -9,16 +9,6 @@ import org.runejs.client.media.renderable.Model;
 import org.runejs.client.node.NodeCache;
 
 public class PlayerAppearance {
-
-    public static int[] anIntArray680 = new int[50];
-    public static int[] anIntArray684 = new int[50];
-    public static int[] anIntArray685 = new int[50];
-    public static int[] anIntArray688 = new int[50];
-    public static int[] overheadChatShape = new int[50];
-    public static String[] overheadChatMessage = new String[50];
-    public static int[] overheadChatColor = new int[50];
-    public static int[] anIntArray715 = new int[50];
-
     public static int[][] playerColours = {{6798, 107, 10283, 16, 4797, 7744, 5799, 4634, 33697, 22433, 2983, 54193}, {8741, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003, 25239}, {25238, 8742, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003}, {4626, 11146, 6439, 12, 4758, 10270}, {4550, 4537, 5681, 5673, 5790, 6806, 8076, 4574}};
     public static int[] playerSkinColors = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
 
