@@ -11,9 +11,12 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.util.CollisionMap;
 
+import java.awt.*;
+
 public class ChatBox {
     public static boolean redrawChatbox = false;
     public static boolean messagePromptRaised = false;
+    public static ProducingGraphicsBuffer chatBoxImageProducer;
     private static String lastItemSearchInput = "";
     public static String inputMessage = "";
     public static int itemSearchResultCount = 0;
@@ -181,7 +184,7 @@ public class ChatBox {
         if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && MovedStatics.menuScreenArea == 2)
             MovedStatics.drawMenu(0, 0);
         if(ScreenController.frameMode == ScreenMode.FIXED) {
-            LinkedList.drawChatBoxGraphics();
+            drawChatBoxGraphics();
         }
 
     }
@@ -270,5 +273,15 @@ public class ChatBox {
         chatTypes[0] = type;
         chatPlayerNames[0] = name;
         chatMessages[0] = message;
+    }
+
+    public static void drawChatBoxGraphics() {
+        try {
+            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+            chatBoxImageProducer.drawGraphics(17, 357, graphics);
+
+        } catch(Exception exception) {
+            MouseHandler.gameCanvas.repaint();
+        }
     }
 }

@@ -171,9 +171,9 @@ public class ScreenController {
                 Rasterizer.drawFilledRectangleAlpha(0, drawHeight - (162), 516, drawHeight, 0x0000FF, 90);
             }
             if (isCoordinatesInChatArea(mX, mY)) {
-                Rasterizer.drawFilledRectangleAlpha(17, drawHeight - (162) + 16, RSCanvas.chatBoxImageProducer.width, RSCanvas.chatBoxImageProducer.height, 0x00FF00, 90);
+                Rasterizer.drawFilledRectangleAlpha(17, drawHeight - (162) + 16, ChatBox.chatBoxImageProducer.width, ChatBox.chatBoxImageProducer.height, 0x00FF00, 90);
             } else {
-                Rasterizer.drawFilledRectangleAlpha(17, drawHeight - (162) + 16, RSCanvas.chatBoxImageProducer.width, RSCanvas.chatBoxImageProducer.height, 0x0000FF, 90);
+                Rasterizer.drawFilledRectangleAlpha(17, drawHeight - (162) + 16, ChatBox.chatBoxImageProducer.width, ChatBox.chatBoxImageProducer.height, 0x0000FF, 90);
             }
             if (isCoordinatesInMinimapArea(mX, mY)) {
                 Rasterizer.drawFilledRectangleAlpha(drawWidth - 210, 0, 210, 210, 0x00FF00, 90);
@@ -219,7 +219,7 @@ public class ScreenController {
     public static void RenderChatArea(int x, int y) {
         //width 516
         //height 184
-        drawFramePiece(RSCanvas.chatBoxImageProducer, x + 17, y + 16);
+        drawFramePiece(ChatBox.chatBoxImageProducer, x + 17, y + 16);
         drawFramePiece(MovedStatics.chatModes, x, y + 112);
         drawFramePieceCutout(RSCanvas.tabBottom, x + 496, y + 125, 20, RSCanvas.tabBottom.height, 0, 0);
         drawFramePiece(MovedStatics.chatboxRight, x, y + 16);
@@ -282,8 +282,8 @@ public class ScreenController {
         } else {
             int minX = 17;
             int minY = drawHeight - (162) + 16;
-            int maxX = minX + RSCanvas.chatBoxImageProducer.width;
-            int maxY = minY + RSCanvas.chatBoxImageProducer.height;
+            int maxX = minX + ChatBox.chatBoxImageProducer.width;
+            int maxY = minY + ChatBox.chatBoxImageProducer.height;
             return x > minX && y > minY && x < maxX && y < maxY;
         }
 

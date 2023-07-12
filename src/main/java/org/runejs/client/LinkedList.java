@@ -2,11 +2,8 @@ package org.runejs.client;
 
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.node.Node;
-import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
-
-import java.awt.*;
 
 public class LinkedList {
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_1057;
@@ -38,16 +35,6 @@ public class LinkedList {
         else if(class1.length() > 4)
             class1 = Native.cyan + class1.substring(0, class1.length() + -4) + Native.suffixK + Native.whiteOpeningParenthesis + class1 + Native.rightParenthesis;
         return Native.whitespace_b + class1;
-    }
-
-    public static void drawChatBoxGraphics() {
-        try {
-            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
-            RSCanvas.chatBoxImageProducer.drawGraphics(17, 357, graphics);
-
-        } catch(Exception exception) {
-            MouseHandler.gameCanvas.repaint();
-        }
     }
 
     public Node removeLast() {

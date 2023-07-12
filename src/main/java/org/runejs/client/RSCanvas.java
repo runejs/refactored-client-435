@@ -15,7 +15,6 @@ public class RSCanvas extends Canvas {
     public static int anInt57;
     public static ProducingGraphicsBuffer tabBottom;
     public static int[] anIntArray62;
-    public static ProducingGraphicsBuffer chatBoxImageProducer;
     public static int[] anIntArray66;
 
     public Component aComponent49;

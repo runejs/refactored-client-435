@@ -1435,7 +1435,7 @@ public class MovedStatics {
 	public static void method305() {
 	//        if(ScreenController.frameMode == ScreenMode.FIXED){
 	
-	            RSCanvas.chatBoxImageProducer.prepareRasterizer();
+	            ChatBox.chatBoxImageProducer.prepareRasterizer();
 	//        }
 	        Class44.chatboxBackgroundImage.drawImage(0, 0);
 	        chatboxLineOffsets = Rasterizer3D.setLineOffsets(chatboxLineOffsets);
@@ -1637,7 +1637,7 @@ public class MovedStatics {
             tabHighlightImageTopLeftEdge = null;
             gameScreenImageProducer = null;
             ISAAC.tabHighlightImageBottomRightEdge = null;
-            RSCanvas.chatBoxImageProducer = null;
+            ChatBox.chatBoxImageProducer = null;
             Class40_Sub7.mapBackRight = null;
             InteractiveObject.tabTop = null;
             if(arg0 < -28) {
@@ -2127,7 +2127,7 @@ public class MovedStatics {
             bottomChatBack = Game.method359(Native.imgBackbase1, Native.aClass1_305, arg2);
             tabBottomBack = Game.method359(Native.imgBackbase2, Native.aClass1_305, arg2);
             Buffer.tabTopBack = Game.method359(Native.imgBackhmid1, Native.aClass1_305, arg2);
-            RSCanvas.chatBoxImageProducer = createGraphicsBuffer(479, 96, arg0);
+            ChatBox.chatBoxImageProducer = createGraphicsBuffer(479, 96, arg0);
             Class44.chatboxBackgroundImage.drawImage(0, 0);
             Minimap.mapbackProducingGraphicsBuffer = createGraphicsBuffer(172, 156, arg0);
             Rasterizer.resetPixels();
@@ -2325,7 +2325,7 @@ public class MovedStatics {
         if(clearScreen) {
             clearScreen = false;
             drawWelcomeScreenGraphics();
-            LinkedList.drawChatBoxGraphics();
+            ChatBox.drawChatBoxGraphics();
             drawTabGraphics();
             ActorDefinition.drawMapBack();
             Game.method943(ChatBox.tradeMode, fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
