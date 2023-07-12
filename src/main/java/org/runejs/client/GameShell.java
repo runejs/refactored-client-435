@@ -26,6 +26,10 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
     public static int fps = 0;
     public static boolean closedClient = false;
     public static int currentTickSample;
+    /**
+     * Something to do with timing.. sleep time maybe? Not sure
+     */
+    public static int anInt2024 = 1;
     private static volatile boolean clientFocused = true;
     private final int millisPerTick = 20;
     public boolean gameShellError = false;
@@ -113,7 +117,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
                     openErrorPage("wrongjava");
                     return;
                 }
-                MovedStatics.anInt2024 = 5;
+                anInt2024 = 5;
             }
         }
         if (Game.signlink.gameShell != null) {
@@ -133,7 +137,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
 
         // Initialize client loop
         while (exitTimeInMillis == 0L || System.currentTimeMillis() < exitTimeInMillis) {
-            MovedStatics.ticksPerLoop = SceneCluster.gameTimer.getTicks(millisPerTick, MovedStatics.anInt2024);
+            MovedStatics.ticksPerLoop = SceneCluster.gameTimer.getTicks(millisPerTick, anInt2024);
             for (int currentTick = 0; currentTick < MovedStatics.ticksPerLoop; currentTick++) {
                 long currentTimeMillis = System.currentTimeMillis();
 
@@ -272,7 +276,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
             return;
         }
         MovedStatics.width = height;
-        MovedStatics.clientVersion = clientVersion;
+        Game.clientVersion = clientVersion;
         MovedStatics.height = width;
         currentGameShell = this;
         if (Game.signlink == null) {
@@ -337,7 +341,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         try {
             int height = 503;
             int width = 765;
-            MovedStatics.clientVersion = clientVersion;
+            Game.clientVersion = clientVersion;
             MovedStatics.width = width;
             MovedStatics.height = height;
             currentGameShell = this;

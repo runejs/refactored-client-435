@@ -6,7 +6,6 @@ import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.actor.Npc;
-import org.runejs.client.scene.GroundItemTile;
 
 public class IndexedImage extends Rasterizer {
     public int imgWidth;
@@ -53,7 +52,7 @@ public class IndexedImage extends Rasterizer {
             class40_sub5_sub14_sub2.imgWidth = MovedStatics.anIntArray456[i];
             class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[i];
             class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
-            class40_sub5_sub14_sub2.imgPixels = GroundItemTile.aByteArrayArray1370[i];
+            class40_sub5_sub14_sub2.imgPixels = MovedStatics.aByteArrayArray1370[i];
         }
         ActorDefinition.method569();
         return class40_sub5_sub14_sub2s;
