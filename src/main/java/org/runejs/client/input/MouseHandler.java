@@ -7,7 +7,6 @@ import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.frame.console.Console;
 import org.runejs.client.io.Buffer;
-import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.SceneCamera;
@@ -152,7 +151,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     }
 
     public static void method1015() {
-        synchronized (GameObject.frame) {
+        synchronized (Game.mouseHandler) {
             currentMouseButtonPressed = mouseButtonPressed;
             mouseX = eventMouseX;
             mouseY = eventMouseY;
@@ -165,16 +164,16 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     }
 
     public static void removeListeners(Component arg1) {
-        arg1.removeMouseListener(GameObject.frame);
-        arg1.removeMouseMotionListener(GameObject.frame);
-        arg1.removeFocusListener(GameObject.frame);
+        arg1.removeMouseListener(Game.mouseHandler);
+        arg1.removeMouseMotionListener(Game.mouseHandler);
+        arg1.removeFocusListener(Game.mouseHandler);
     }
 
     public static void addListeners(Component arg0) {
-        arg0.addMouseListener(GameObject.frame);
-        arg0.addMouseMotionListener(GameObject.frame);
-        arg0.addFocusListener(GameObject.frame);
-        arg0.addMouseWheelListener(GameObject.frame);
+        arg0.addMouseListener(Game.mouseHandler);
+        arg0.addMouseMotionListener(Game.mouseHandler);
+        arg0.addFocusListener(Game.mouseHandler);
+        arg0.addMouseWheelListener(Game.mouseHandler);
     }
 
     public static int resetFramesSinceMouseInput() {
@@ -182,7 +181,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     }
 
     public synchronized void mouseEntered(MouseEvent arg0) {
-        if(GameObject.frame != null) {
+        if(Game.mouseHandler != null) {
             framesSinceMouseInput = 0;
             eventMouseX = arg0.getX();
             eventMouseY = arg0.getY();
@@ -190,7 +189,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     }
 
     public synchronized void mouseExited(MouseEvent arg0) {
-        if(GameObject.frame != null) {
+        if(Game.mouseHandler != null) {
             framesSinceMouseInput = 0;
             eventMouseX = -1;
             eventMouseY = -1;
@@ -198,14 +197,14 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     }
 
     public synchronized void focusLost(FocusEvent arg0) {
-        if(GameObject.frame != null)
+        if(Game.mouseHandler != null)
             mouseButtonPressed = 0;
     }
 
     public synchronized void mouseDragged(MouseEvent mouseEvent) {
         int mouseX = mouseEvent.getX();
         int mouseY = mouseEvent.getY();
-        if(GameObject.frame != null) {
+        if(Game.mouseHandler != null) {
             framesSinceMouseInput = 0;
         }
         if(mouseWheelDown) {
@@ -233,7 +232,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     }
 
     public synchronized void mousePressed(MouseEvent event) {
-        if(GameObject.frame != null) {
+        if(Game.mouseHandler != null) {
             int mouseX = event.getX();
             int mouseY = event.getY();
             framesSinceMouseInput = 0;
@@ -385,7 +384,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 
 
     public synchronized void mouseMoved(MouseEvent arg0) {
-        if(GameObject.frame != null) {
+        if(Game.mouseHandler != null) {
             framesSinceMouseInput = 0;
             eventMouseX = arg0.getX();
             eventMouseY = arg0.getY();
@@ -393,7 +392,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     }
 
     public synchronized void mouseReleased(MouseEvent arg0) {
-        if(GameObject.frame != null) {
+        if(Game.mouseHandler != null) {
             framesSinceMouseInput = 0;
             mouseButtonPressed = 0;
             mouseWheelDown = false;

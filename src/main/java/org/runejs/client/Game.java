@@ -97,6 +97,7 @@ public class Game {
     public static int currentTabId = 3;
     public static int[] tabWidgetIds = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     public static int flashingTabId = -1;
+    public static MouseHandler mouseHandler = new MouseHandler();
     private static int gameServerPort;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
@@ -1942,9 +1943,9 @@ public class Game {
     }
 
     public static void method249() {
-        if(GameObject.frame != null) {
-            synchronized(GameObject.frame) {
-                GameObject.frame = null;
+        if(mouseHandler != null) {
+            synchronized(mouseHandler) {
+                mouseHandler = null;
             }
         }
     }
