@@ -300,6 +300,7 @@ public class MovedStatics {
     public static boolean lastItemDragged = false;
     public static int[] anIntArray2788 = new int[]{16, 32, 64, 128};
     public static int randomiserHue = -8 + (int) (17.0 * Math.random());
+    public static ProducingGraphicsBuffer mapBackRight;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -1694,7 +1695,7 @@ public class MovedStatics {
             gameScreenImageProducer = null;
             ISAAC.tabHighlightImageBottomRightEdge = null;
             ChatBox.chatBoxImageProducer = null;
-            Class40_Sub7.mapBackRight = null;
+            mapBackRight = null;
             InteractiveObject.tabTop = null;
             if(arg0 < -28) {
                 chatboxRight = null;
@@ -2165,7 +2166,7 @@ public class MovedStatics {
                 mapbackLeft.drawGraphics(722, 4, graphics);
                 GameObject.tabPieceLeft.drawGraphics(743, 205, graphics);
                 framePieceTop.drawGraphics(0, 0, graphics);
-                Class40_Sub7.mapBackRight.drawGraphics(516, 4, graphics);
+                mapBackRight.drawGraphics(516, 4, graphics);
                 tabPieceUpperRight.drawGraphics(516, 205, graphics);
                 PlayerAppearance.tabPieveLowerRight.drawGraphics(496, 357, graphics);
                 chatboxTop.drawGraphics(0, 338, graphics);
@@ -2211,7 +2212,7 @@ public class MovedStatics {
             framePieceTop = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = method1028(arg2, Native.imgBackvmid1, Native.aClass1_305);
-            Class40_Sub7.mapBackRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            mapBackRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = method1028(arg2, Native.imgBackvmid2, Native.aClass1_305);
             tabPieceUpperRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
