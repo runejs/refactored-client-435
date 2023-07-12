@@ -12,6 +12,8 @@ import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.*;
 
+import java.awt.*;
+
 public class Minimap extends FramePieceRenderer {
     public static ImageRGB minimapCompass;
     public static int minimapState = 0;
@@ -85,7 +87,7 @@ public class Minimap extends FramePieceRenderer {
                     rasterPixels[i] = 0;
             }
             minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, MovedStatics.anIntArray62, MovedStatics.anIntArray66);
-            ActorDefinition.drawMapBack();
+            drawMapBack();
             return;
         }
 
@@ -182,7 +184,7 @@ public class Minimap extends FramePieceRenderer {
         if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && MovedStatics.menuScreenArea == 1) {
             MovedStatics.drawMenu(550, 4);
         }
-        ActorDefinition.drawMapBack();
+        drawMapBack();
 
     }
 
@@ -402,6 +404,17 @@ public class Minimap extends FramePieceRenderer {
 	        }
 	    }
 	}
+
+    public static void drawMapBack() {
+        try {
+            if(ScreenController.frameMode == ScreenMode.FIXED) {
+                Graphics graphics = Game.gameCanvas.getGraphics();
+                mapbackProducingGraphicsBuffer.drawGraphics(550, 4, graphics);
+            }
+        } catch(Exception exception) {
+            Game.gameCanvas.repaint();
+        }
+    }
 
     public void drawResizableMiniMapArea(int x, int y) {
         ScreenController.drawFramePiece(resizableMiniMapimage, x, y);

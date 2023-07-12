@@ -3,7 +3,6 @@ package org.runejs.client.cache.media;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.RSString;
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.media.textUtils.TextColourNode;
 import org.runejs.client.cache.media.textUtils.TextColourQueue;
 import org.runejs.client.cache.media.textUtils.TextTagNode;
@@ -99,7 +98,7 @@ public class TypeFace extends Rasterizer {
 
     public static TypeFace constructFont() {
         TypeFace class40_sub5_sub14_sub1 = new TypeFace(MovedStatics.anIntArray3111, MovedStatics.anIntArray456, Npc.anIntArray3312, Buffer.anIntArray1972, MovedStatics.aByteArrayArray1370);
-        ActorDefinition.method569();
+        MovedStatics.method569();
         return class40_sub5_sub14_sub1;
     }
 

@@ -31,9 +31,9 @@ import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.scene.*;
 import org.runejs.client.scene.camera.CameraRotation;
-import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
+import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.SignlinkNode;
 import org.runejs.client.cache.def.*;
@@ -453,7 +453,7 @@ public class MovedStatics {
         class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[0];
         class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
         class40_sub5_sub14_sub2.imgPixels = aByteArrayArray1370[0];
-        ActorDefinition.method569();
+        method569();
         return class40_sub5_sub14_sub2;
     }
 
@@ -953,7 +953,7 @@ public class MovedStatics {
     public static ImageRGB method927(int arg0, CacheArchive arg1, int arg3) {
 	    if(!ImageRGB.spriteExists(arg0, arg3, arg1))
 	        return null;
-	    return ActorDefinition.method578();
+	    return method578();
 	}
 
     public static void handleInterfaceActions(GameInterfaceArea area, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, GameInterface[] gameInterfaces, int parentId, int scrollPosition, int scrollWidth) {
@@ -2102,7 +2102,7 @@ public class MovedStatics {
             drawWelcomeScreenGraphics();
             ChatBox.drawChatBoxGraphics();
             drawTabGraphics();
-            ActorDefinition.drawMapBack();
+            Minimap.drawMapBack();
             Game.method943(ChatBox.tradeMode, fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             method527(Game.currentTabId, Game.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
             showSidePanelRedrawnText = true;
@@ -3290,5 +3290,32 @@ public class MovedStatics {
         if(arg0 == 12433)
             loadingBoxImage = null;
 
+    }
+
+    public static ImageRGB method578() {
+        ImageRGB class40_sub5_sub14_sub4 = new ImageRGB();
+        class40_sub5_sub14_sub4.maxWidth = imageMaxWidth;
+        class40_sub5_sub14_sub4.maxHeight = imageMaxHeight;
+        class40_sub5_sub14_sub4.offsetX = anIntArray1347[0];
+        class40_sub5_sub14_sub4.offsetY = anIntArray3111[0];
+        class40_sub5_sub14_sub4.imageWidth = anIntArray456[0];
+        class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[0];
+        byte[] is = aByteArrayArray1370[0];
+        int i = class40_sub5_sub14_sub4.imageWidth * class40_sub5_sub14_sub4.imageHeight;
+        class40_sub5_sub14_sub4.pixels = new int[i];
+        for(int i_5_ = 0; i_5_ < i; i_5_++) {
+            class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
+        }
+        method569();
+        return class40_sub5_sub14_sub4;
+    }
+
+    public static void method569() {
+        anIntArray456 = null;
+        aByteArrayArray1370 = null;
+        Npc.anIntArray3312 = null;
+        anIntArray3111 = null;
+        Buffer.anIntArray1972 = null;
+        anIntArray1347 = null;
     }
 }

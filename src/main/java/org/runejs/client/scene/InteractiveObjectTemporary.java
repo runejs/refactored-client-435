@@ -313,7 +313,7 @@ public class InteractiveObjectTemporary extends Node {
 	        for(int i_5_ = 0; i_5_ < i_4_; i_5_++)
 	            class40_sub5_sub14_sub4.pixels[i_5_] = Buffer.anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
 	    }
-	    ActorDefinition.method569();
+	    MovedStatics.method569();
 	    return class40_sub5_sub14_sub4s;
 	}
 
