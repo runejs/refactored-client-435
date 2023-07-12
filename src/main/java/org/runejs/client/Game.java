@@ -32,7 +32,6 @@ import org.runejs.client.scene.camera.SphericalCamera;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
-import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.cache.media.AnimationSequence;
@@ -606,79 +605,6 @@ public class Game {
             }
         }
         return result;
-    }
-
-    public static void renderFlames() {
-        if (MovedStatics.anInt2452 <= 0) {
-            if (MovedStatics.anInt2613 > 0) {
-                for (int i = 0; i < 256; i++) {
-                    if (MovedStatics.anInt2613 > 768)
-                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(MovedStatics.anIntArray1198[i], MovedStatics.anIntArray3248[i], -MovedStatics.anInt2613 + 1024);
-                    else if (MovedStatics.anInt2613 > 256)
-                        MovedStatics.anIntArray1013[i] = MovedStatics.anIntArray3248[i];
-                    else
-                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(MovedStatics.anIntArray3248[i], MovedStatics.anIntArray1198[i], -MovedStatics.anInt2613 + 256);
-                }
-            } else {
-                System.arraycopy(MovedStatics.anIntArray1198, 0, MovedStatics.anIntArray1013, 0, 256);
-            }
-        } else {
-            for (int i = 0; i < 256; i++) {
-                if (MovedStatics.anInt2452 <= 768) {
-                    if (MovedStatics.anInt2452 > 256)
-                        MovedStatics.anIntArray1013[i] = Renderable.anIntArray2865[i];
-                    else
-                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Renderable.anIntArray2865[i], MovedStatics.anIntArray1198[i], -MovedStatics.anInt2452 + 256);
-                } else
-                    MovedStatics.anIntArray1013[i] = MovedStatics.method614(MovedStatics.anIntArray1198[i], Renderable.anIntArray2865[i], -MovedStatics.anInt2452 + 1024);
-            }
-        }
-        int i = 256;
-        System.arraycopy(MovedStatics.aClass40_Sub5_Sub14_Sub4_918.pixels, 0, MovedStatics.flameLeftBackground.pixels, 0, 33920);
-        int i_61_ = 0;
-        int i_62_ = 1152;
-        for (int i_63_ = 1; i - 1 > i_63_; i_63_++) {
-            int i_64_ = (-i_63_ + i) * MovedStatics.anIntArray466[i_63_] / i;
-            int i_65_ = i_64_ + 22;
-            if (i_65_ < 0)
-                i_65_ = 0;
-            i_61_ += i_65_;
-            for (int i_66_ = i_65_; i_66_ < 128; i_66_++) {
-                int i_67_ = MovedStatics.anIntArray178[i_61_++];
-                if (i_67_ != 0) {
-                    int i_68_ = -i_67_ + 256;
-                    int i_69_ = i_67_;
-                    i_67_ = MovedStatics.anIntArray1013[i_67_];
-                    int i_70_ = MovedStatics.flameLeftBackground.pixels[i_62_];
-                    MovedStatics.flameLeftBackground.pixels[i_62_++] = BitUtils.bitWiseAND(-16711936, BitUtils.bitWiseAND(i_67_, 16711935) * i_69_ + i_68_ * BitUtils.bitWiseAND(i_70_, 16711935)) + BitUtils.bitWiseAND(BitUtils.bitWiseAND(65280, i_70_) * i_68_ + i_69_ * BitUtils.bitWiseAND(65280, i_67_), 16711680) >> 8;
-                } else
-                    i_62_++;
-            }
-            i_62_ += i_65_;
-        }
-        i_62_ = 1176;
-        i_61_ = 0;
-
-        for (int i_71_ = 0; i_71_ < 33920; i_71_++)
-            Class60.flameRightBackground.pixels[i_71_] = MovedStatics.aClass40_Sub5_Sub14_Sub4_2043.pixels[i_71_];
-        for (int i_72_ = 1; i_72_ < -1 + i; i_72_++) {
-            int i_73_ = (-i_72_ + i) * MovedStatics.anIntArray466[i_72_] / i;
-            int i_74_ = 103 + -i_73_;
-            i_62_ += i_73_;
-            for (int i_75_ = 0; i_75_ < i_74_; i_75_++) {
-                int i_76_ = MovedStatics.anIntArray178[i_61_++];
-                if (i_76_ != 0) {
-                    int i_77_ = i_76_;
-                    int i_78_ = Class60.flameRightBackground.pixels[i_62_];
-                    int i_79_ = 256 + -i_76_;
-                    i_76_ = MovedStatics.anIntArray1013[i_76_];
-                    Class60.flameRightBackground.pixels[i_62_++] = BitUtils.bitWiseAND(i_77_ * BitUtils.bitWiseAND(65280, i_76_) + i_79_ * BitUtils.bitWiseAND(65280, i_78_), 16711680) + BitUtils.bitWiseAND(i_79_ * BitUtils.bitWiseAND(16711935, i_78_) + BitUtils.bitWiseAND(16711935, i_76_) * i_77_, -16711936) >> 8;
-                } else
-                    i_62_++;
-            }
-            i_62_ += 128 - (i_74_ + i_73_);
-            i_61_ += -i_74_ + 128;
-        }
     }
 
 

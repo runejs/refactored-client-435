@@ -53,7 +53,6 @@ public class MovedStatics {
     public static PacketBuffer packetBuffer = new PacketBuffer(5000);
     public static int[][] anIntArrayArray1435 = new int[104][104];
     public static ProducingGraphicsBuffer tabPieceUpperRight;
-    public static int[] anIntArray1445;
     public static ProducingGraphicsBuffer chatboxRight;
     public static int anInt2280 = 0;
     public static int chatEffectsDisabled = 0;
@@ -80,10 +79,6 @@ public class MovedStatics {
      * Position of the hint icon in world coordinates (e.g. 3222,3222).
      */
     public static int hintIconPosY = 0;
-    /**
-     * Something to do with flames, maybe
-     */
-    public static int[] anIntArray178;
     public static int[] chatboxLineOffsets;
     public static int anInt199 = 0;
     public static volatile boolean aBoolean1575 = false;
@@ -147,10 +142,6 @@ public class MovedStatics {
      */
     public static IndexedImage[] mapSceneIcons;
     public static int baseX;
-    /**
-     * Something to do with flames, maybe
-     */
-    public static int[] anIntArray1013;
     public static IndexedImage[] moderatorIcon;
     public static int[] anIntArray2764 = new int[128];
     public static int imageMaxHeight;
@@ -165,15 +156,10 @@ public class MovedStatics {
      */
     public static int hintIconPosZ = 0;
     public static int anInt2183 = 0;
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2524;
     public static boolean membersServer;
     public static HuffmanEncoding aHuffmanEncoding_2590;
     public static int anInt2598 = 0;
     public static LinkedList aLinkedList_2604 = new LinkedList();
-    /**
-     * Something to do with flames, maybe
-     */
-    public static int anInt2613 = 0;
     public static int height;
     public static int anInt2798 = 0;
     public static int selectedMask;
@@ -198,8 +184,6 @@ public class MovedStatics {
     public static int menuScreenArea;
     public static ProducingGraphicsBuffer framePieceTop;
     public static int[] anIntArray3253;
-    public static int[] anIntArray3255;
-    public static int[] anIntArray3248;
     public static TypeFace fontNormal;
     /**
      * The image used for the highlighted (selected) tab button,
@@ -216,7 +200,6 @@ public class MovedStatics {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
     public static SignlinkNode gameServerSignlinkNode;
     public static int anInt614 = -1;
-    public static ImageRGB aClass40_Sub5_Sub14_Sub4_2043;
     public static int activeInterfaceType = 0;
     public static LinkedList[][][] groundItems = new LinkedList[4][104][104];
     public static String[] menuActionTexts = new String[500];
@@ -256,11 +239,6 @@ public class MovedStatics {
      * but not the furthest-right (see `tabHighlightImageBottomRightEdge` for that).
      */
     public static IndexedImage tabHighlightImageBottomRight;
-    /**
-     * Something to do with flames, maybe
-     */
-    public static int[] anIntArray466 = new int[256];
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_463;
     public static ProducingGraphicsBuffer chatboxTop;
     public static Font helveticaBold;
     public static int deregisterActorCount = 0;
@@ -275,12 +253,7 @@ public class MovedStatics {
      */
     public static IndexedImage tabHighlightImageTopMiddle;
     public static ImageRGB[] cursorCross;
-    /**
-     * Something to do with flames, maybe
-     */
-    public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;
     public static ProducingGraphicsBuffer mapbackLeft;
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_907;
     public static int clientVersion;
     public static int ticksPerLoop;
     /**
@@ -288,7 +261,6 @@ public class MovedStatics {
      */
     public static int anInt2024 = 1;
     public static boolean showIconsRedrawnText = false;
-    public static IndexedImage loginScreenBox;
     public static IndexedImage[] tabIcons;
     public static boolean lastItemDragged = false;
     public static int[] anIntArray2788 = new int[]{16, 32, 64, 128};
@@ -299,12 +271,7 @@ public class MovedStatics {
      * Membership status?
      */
     public static int anInt1049 = 0;
-    /**
-     * Something to do with flames, maybe
-     */
-    public static int[] anIntArray1198;
     public static int regionX;
-    public static IndexedImage imgLoginScreenButton;
     /**
      * Last pressed key? maybe
      */
@@ -314,7 +281,6 @@ public class MovedStatics {
      */
     public static int anInt1389 = 0;
     public static boolean DEBUG_DISPLAY_ALL_ACTION_ROWS = false;
-    public static int[] anIntArray1168;
     public static ProducingGraphicsBuffer framePieceRight;
     /**
      * Something to do with minimap
@@ -368,28 +334,28 @@ public class MovedStatics {
 
     public static void method440() {
         if (aBoolean512) {
-            anIntArray1198 = null;
+            Class60.anIntArray1198 = null;
             Class60.flameRightBackground = null;
             Class60.aProducingGraphicsBuffer_1631 = null;
             Class60.aProducingGraphicsBuffer_1206 = null;
-            anIntArray1168 = null;
-            anIntArray3255 = null;
-            imgLoginScreenButton = null;
-            anIntArray1445 = null;
-            loginScreenBox = null;
-            Renderable.anIntArray2865 = null;
-            MovedStatics.flameLeftBackground = null;
-            aProducingGraphicsBuffer_907 = null;
-            aProducingGraphicsBuffer_2524 = null;
-            aClass40_Sub5_Sub14_Sub4_918 = null;
-            MovedStatics.aClass40_Sub5_Sub14_Sub2Array535 = null;
-            anIntArray3248 = null;
-            MovedStatics.loginBoxGraphics = null;
-            aClass40_Sub5_Sub14_Sub4_2043 = null;
-            anIntArray178 = null;
+            Class60.anIntArray1168 = null;
+            Class60.anIntArray3255 = null;
+            Class60.imgLoginScreenButton = null;
+            Class60.anIntArray1445 = null;
+            Class60.loginScreenBox = null;
+            Class60.anIntArray2865 = null;
+            Class60.flameLeftBackground = null;
+            Class60.aProducingGraphicsBuffer_907 = null;
+            Class60.aProducingGraphicsBuffer_2524 = null;
+            Class60.aClass40_Sub5_Sub14_Sub4_918 = null;
+            Class60.aClass40_Sub5_Sub14_Sub2Array535 = null;
+            Class60.anIntArray3248 = null;
+            Class60.loginBoxGraphics = null;
+            Class60.aClass40_Sub5_Sub14_Sub4_2043 = null;
+            Class60.anIntArray178 = null;
             Class60.aProducingGraphicsBuffer_1285 = null;
-            aProducingGraphicsBuffer_463 = null;
-            anIntArray1013 = null;
+            Class60.aProducingGraphicsBuffer_463 = null;
+            Class60.anIntArray1013 = null;
             MusicSystem.method405(10);
             UpdateServer.resetUpdateServerRequests(true);
             aBoolean512 = false;
@@ -397,7 +363,6 @@ public class MovedStatics {
     }
 
     public static int[] menuActionTypes = new int[500];
-    public static ProducingGraphicsBuffer loginBoxGraphics;
     public static boolean showSidePanelRedrawnText = false;
     /**
      * The image used for the highlighted (selected) tab button,
@@ -904,11 +869,6 @@ public class MovedStatics {
 
     }
 
-    public static int method614(int arg1, int arg2, int arg3) {
-        int i_7_ = 256 + -arg3;
-        return (arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) + (~0xff00ff & (0xff00ff & arg1) * i_7_ + arg3 * (0xff00ff & arg2)) >> 8;
-    }
-
     /**
      * Processes a new status code
      * @param statusCode Can be one of these values:
@@ -1263,7 +1223,6 @@ public class MovedStatics {
 	
 	}
 
-    public static ProducingGraphicsBuffer flameLeftBackground;
     /**
      * Images for function icons on the minimap (e.g. quests, instructors)
      */
@@ -1313,11 +1272,7 @@ public class MovedStatics {
 	'9', ' ', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243',
 	'$', '%', '"', '[', ']'};
 
-    /**
-     * Something to do with flames, maybe
-     */
-	public static int anInt2452 = 0;
-	public static int loadingPercent = 0;
+    public static int loadingPercent = 0;
 
 	public static void handleVarPlayers(int varPlayerIndex) {
 	    do {
@@ -1481,8 +1436,7 @@ public class MovedStatics {
 	}
 
 	public static boolean[] aBooleanArray548 = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, false, false};
-	public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array535;
-	public static int anInt537 = 0;
+    public static int anInt537 = 0;
 	public static boolean membersWorld = false;
 	public static boolean accountFlagged = false;
 	public static GameInterface aGameInterface_1887;
