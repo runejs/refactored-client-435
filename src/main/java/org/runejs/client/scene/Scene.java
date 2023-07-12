@@ -37,6 +37,8 @@ public class Scene {
 
     public static boolean lowMemory = true;
 
+    public final Landscape landscape = new Landscape();
+
     public SceneTile[][][] tileArray;
     public int[][][] tileOcclusionCycles;
     public int sceneSpawnRequestsCacheCurrentPos = 0;
@@ -100,10 +102,10 @@ public class Scene {
     private Camera currentCamera;
     private CameraTileVisibility tileVisibilityInfo;
 
-    public Scene(int[][][] heightMap) {
+    public Scene() {
         tileArray = new SceneTile[mapSizeZ][mapSizeX][mapSizeY];
         tileOcclusionCycles = new int[mapSizeZ][mapSizeX + 1][mapSizeY + 1];
-        this.heightMap = heightMap;
+        this.heightMap = this.landscape.tile_height;
         initToNull();
     }
 
@@ -2036,11 +2038,10 @@ public class Scene {
      * @param plane The current plane (or level) within the 3D space
      * @param x The x coordinate in the 3D space
      * @param y The y coordinate in the 3D space
-     * @param tileHeights A 3D array containing the heights of each tile
      * @param tileFlags A 3D array containing the flags for each tile (e.g. whether it's a bridge)
      * @return The height of the floor at the given x,y coordinate
      */
-    public int getFloorDrawHeight(int plane, int x, int y, int[][][] tileHeights, byte[][][] tileFlags) {
+    public int getFloorDrawHeight(int plane, int x, int y, byte[][][] tileFlags) {
         // Convert x and y into 'tile space' by dividing by 128 (right shifting by 7 bits)
         int groundX = x >> 7;
         int groundY = y >> 7;
@@ -2063,11 +2064,11 @@ public class Scene {
 
         // Interpolate the height for the X-axis at Y position 'groundY' based on tile position X
         // It's a weighted average between the height at groundX and groundX+1
-        int interpolatedHeightX1 = ((128 - tilePositionX) * tileHeights[groundZ][groundX][groundY] + tilePositionX * tileHeights[groundZ][groundX + 1][groundY]) >> 7;
+        int interpolatedHeightX1 = ((128 - tilePositionX) * landscape.tile_height[groundZ][groundX][groundY] + tilePositionX * landscape.tile_height[groundZ][groundX + 1][groundY]) >> 7;
 
         // Interpolate the height for the X-axis at Y position 'groundY+1' based on tile position X
         // Similar to above, but one step forward in the Y-axis
-        int interpolatedHeightX2 = (tilePositionX * tileHeights[groundZ][groundX + 1][groundY + 1] + tileHeights[groundZ][groundX][groundY + 1] * (128 - tilePositionX)) >> 7;
+        int interpolatedHeightX2 = (tilePositionX * landscape.tile_height[groundZ][groundX + 1][groundY + 1] + landscape.tile_height[groundZ][groundX][groundY + 1] * (128 - tilePositionX)) >> 7;
 
         // Interpolate between the two interpolated X-axis heights, based on the tile position Y
         // This results in a height that takes into account the position within the tile in both the X and Y directions
@@ -2076,6 +2077,6 @@ public class Scene {
     }
 
     public int getFloorDrawHeight(int plane, int x, int y) {
-        return getFloorDrawHeight(plane, x, y, Landscape.tile_height, MovedStatics.tile_flags);
+        return getFloorDrawHeight(plane, x, y, MovedStatics.tile_flags);
     }
 }
