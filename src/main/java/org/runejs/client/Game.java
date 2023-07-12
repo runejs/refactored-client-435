@@ -1925,7 +1925,7 @@ public class Game {
             MovedStatics.gameServerSocket.kill();
             MovedStatics.gameServerSocket = null;
         }
-        RSCanvas.clearCaches();
+        MovedStatics.clearCaches();
         currentScene.initToNull();
         int i = 0;
         for(/**/; i < 4; i++)
@@ -2216,7 +2216,7 @@ public class Game {
         MovedStatics.method997();
         KeyFocusListener.addListeners(MouseHandler.gameCanvas);
         MouseHandler.addListeners(MouseHandler.gameCanvas);
-        RSCanvas.anInt57 = Signlink.anInt737;
+        MovedStatics.anInt57 = Signlink.anInt737;
         try {
             if (signlink.cacheDataAccessFile != null) {
                 dataChannel = new CacheFileChannel(signlink.cacheDataAccessFile, 5200);

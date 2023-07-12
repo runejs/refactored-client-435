@@ -88,7 +88,7 @@ public class Landscape {
             if(bool) {
                 if(MovedStatics.anInt1634 != 0)
                     MovedStatics.method940(English.loadingPleaseWait, true, Native.percent100Parentheses);
-                RSCanvas.clearCaches();
+                MovedStatics.clearCaches();
                 Game.currentScene.initToNull();
                 System.gc();
                 for(int z = 0; z < 4; z++)
@@ -202,7 +202,7 @@ public class Landscape {
                     }
                 }
                 method364(true);
-                RSCanvas.clearCaches();
+                MovedStatics.clearCaches();
                 createRegion(Game.currentScene, currentCollisionMap);
                 method364(true);
                 int z = lowestPlane;

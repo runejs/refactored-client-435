@@ -1,7 +1,6 @@
 package org.runejs.client.net;
 
 import org.runejs.client.MovedStatics;
-import org.runejs.client.RSCanvas;
 import org.runejs.client.RSString;
 import org.runejs.client.cache.CacheIndex;
 import org.runejs.client.cache.CacheArchive;
@@ -48,10 +47,10 @@ public class PacketBuffer extends Buffer {
         class40_sub6.key = (long) arg0;
         class40_sub6.cacheIndex = arg2;
         class40_sub6.cacheArchive = arg1;
-        synchronized(RSCanvas.aLinkedList_53) {
+        synchronized(MovedStatics.aLinkedList_53) {
             if(arg3 != -28)
                 method521(false, -84, -120);
-            RSCanvas.aLinkedList_53.addLast(class40_sub6);
+            MovedStatics.aLinkedList_53.addLast(class40_sub6);
         }
         MovedStatics.method332(600);
     }

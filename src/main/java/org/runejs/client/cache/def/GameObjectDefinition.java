@@ -105,8 +105,8 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
 
     public static void method602(CacheArchive arg0, int arg1, CacheIndex arg2) {
         byte[] is = null;
-        synchronized(RSCanvas.aLinkedList_53) {
-            for(Class40_Sub6 class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.peekFirst(); class40_sub6 != null; class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.pollFirst()) {
+        synchronized(MovedStatics.aLinkedList_53) {
+            for(Class40_Sub6 class40_sub6 = (Class40_Sub6) MovedStatics.aLinkedList_53.peekFirst(); class40_sub6 != null; class40_sub6 = (Class40_Sub6) MovedStatics.aLinkedList_53.pollFirst()) {
                 if((long) arg1 == class40_sub6.key && arg2 == class40_sub6.cacheIndex && class40_sub6.anInt2112 == 0) {
                     is = class40_sub6.aByteArray2102;
                     break;

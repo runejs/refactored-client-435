@@ -344,6 +344,20 @@ public class MovedStatics {
      */
     public static int[] anIntArray2207 = {0, -1, 0, 1};
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2213;
+    /**
+     * Cache archive cache?
+     */
+    public static LinkedList aLinkedList_53 = new LinkedList();
+    public static int anInt57;
+    public static ProducingGraphicsBuffer tabBottom;
+    /**
+     * Relates to minimap
+     */
+    public static int[] anIntArray62;
+    /**
+     * Relates to minimap
+     */
+    public static int[] anIntArray66;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -754,7 +768,7 @@ public class MovedStatics {
             if (tabWidgetIds[6] != -1 && arg4 != 6)
                 tabIcons[6].drawImage(208, 13);
         }
-        RSCanvas.tabBottom.prepareRasterizer();
+        tabBottom.prepareRasterizer();
         tabBottomBack.drawImage(0, 0);
         if (4 != 4)
             Player.hasFriend(null);
@@ -792,7 +806,7 @@ public class MovedStatics {
             Graphics graphics = MouseHandler.gameCanvas.getGraphics();
             if (ScreenController.frameMode == ScreenMode.FIXED) {
                 InteractiveObject.tabTop.drawGraphics(516, 160, graphics);
-                RSCanvas.tabBottom.drawGraphics(496, 466, graphics);
+                tabBottom.drawGraphics(496, 466, graphics);
             }
         } catch (Exception exception) {
             MouseHandler.gameCanvas.repaint();
@@ -1710,11 +1724,11 @@ public class MovedStatics {
         if(aBoolean2083) {
             chatboxLineOffsets = null;
             aBoolean2083 = false;
-            RSCanvas.anIntArray66 = null;
+            anIntArray66 = null;
             Minimap.minimapBackgroundImage = null;
             anIntArray1186 = null;
             chatboxTop = null;
-            RSCanvas.tabBottom = null;
+            tabBottom = null;
             GameObject.tabPieceLeft = null;
             bottomChatBack = null;
             inventoryBackgroundImage = null;
@@ -1722,7 +1736,7 @@ public class MovedStatics {
             tabIcons = null;
             tabHighlightImageBottomRight = null;
             Minimap.mapbackProducingGraphicsBuffer = null;
-            RSCanvas.anIntArray62 = null;
+            anIntArray62 = null;
             sidebarOffsets = null;
             mapbackLeft = null;
             tabHighlightImageBottomMiddle = null;
@@ -2237,7 +2251,7 @@ public class MovedStatics {
             gameScreenImageProducer = createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, arg0);
             Rasterizer.resetPixels();
             chatModes = createGraphicsBuffer(496, 50, arg0);
-            RSCanvas.tabBottom = createGraphicsBuffer(269, 37, arg0);
+            tabBottom = createGraphicsBuffer(269, 37, arg0);
             InteractiveObject.tabTop = createGraphicsBuffer(249, 45, arg0);
             ImageRGB image = method1028(arg2, Native.imgBackleft1, Native.aClass1_305);
             framePieceRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
@@ -2288,8 +2302,8 @@ public class MovedStatics {
             tabIcons = IndexedImage.getMultipleIndexedImages(arg2, Native.sideIcons, Native.aClass1_305);
             anIntArray1186 = new int[151];
             anIntArray852 = new int[151];
-            RSCanvas.anIntArray66 = new int[33];
-            RSCanvas.anIntArray62 = new int[33];
+            anIntArray66 = new int[33];
+            anIntArray62 = new int[33];
             for(int y = 0; y < 33; y++) {
                 int i_15_ = 0;
                 int i_16_ = 999;
@@ -2302,8 +2316,8 @@ public class MovedStatics {
                         break;
                     }
                 }
-                RSCanvas.anIntArray62[y] = i_16_;
-                RSCanvas.anIntArray66[y] = -i_16_ + i_15_;
+                anIntArray62[y] = i_16_;
+                anIntArray66[y] = -i_16_ + i_15_;
             }
             for(int y = 5; y < 156; y++) {
                 int maxWidth = 0;
@@ -2789,7 +2803,7 @@ public class MovedStatics {
     public static void handleRequests() {
         for(; ; ) {
             Class40_Sub6 class40_sub6;
-            synchronized(RSCanvas.aLinkedList_53) {
+            synchronized(aLinkedList_53) {
                 class40_sub6 = (Class40_Sub6) aLinkedList_2604.removeFirst();
             }
             if(class40_sub6 == null)
@@ -3339,5 +3353,34 @@ public class MovedStatics {
         buffer.currentPosition += aHuffmanEncoding_2590.encrypt(0, buffer.currentPosition, strBytes.length, strBytes, buffer.buffer);
         return buffer.currentPosition - startingPosition;
 
+    }
+
+    public static void clearCaches() {
+        method233();
+        UnderlayDefinition.clearUnderlayDefinitionCache();
+        GameInterface.method640();
+        GameObjectDefinition.clearGameObjectModelCache();
+        method586(64);
+        method211();
+        method188();
+        SpotAnimDefinition.clearSpotAnimDefinitionCache();
+        VarbitDefinition.clearVarbitDefinitionCache();
+        VarPlayerDefinition.clearVarPlayerDefinitionCache();
+        clearModelCache();
+        Actor.clearCaches();
+        ((Class35) Rasterizer3D.interface3).clearTextures();
+        ClientScript.clientScriptCache.clear();
+        CacheArchive.skeletonCacheArchive.clearCache();
+        CacheArchive.skinDefinitionCacheArchive.clearCache();
+        CacheArchive.gameInterfaceCacheArchive.clearCache();
+        CacheArchive.soundEffectCacheArchive.clearCache();
+        CacheArchive.gameWorldMapCacheArchive.clearCache();
+        CacheArchive.musicCacheArchive.clearCache();
+        CacheArchive.modelCacheArchive.clearCache();
+        CacheArchive.gameImageCacheArchive.clearCache();
+        CacheArchive.gameTextureCacheArchive.clearCache();
+        CacheArchive.huffmanCacheArchive.clearCache();
+        CacheArchive.jingleCacheArchive.clearCache();
+        CacheArchive.clientScriptCacheArchive.clearCache();
     }
 }

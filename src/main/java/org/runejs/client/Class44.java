@@ -9,8 +9,8 @@ public class Class44 implements Runnable {
         try {
             for(; ; ) {
                 Class40_Sub6 class40_sub6;
-                synchronized(RSCanvas.aLinkedList_53) {
-                    class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.peekFirst();
+                synchronized(MovedStatics.aLinkedList_53) {
+                    class40_sub6 = (Class40_Sub6) MovedStatics.aLinkedList_53.peekFirst();
                 }
                 if(class40_sub6 == null) {
                     MovedStatics.threadSleep(100L);
@@ -25,12 +25,12 @@ public class Class44 implements Runnable {
                 } else {
                     if(class40_sub6.anInt2112 == 0) {
                         class40_sub6.cacheIndex.put(class40_sub6.aByteArray2102, class40_sub6.aByteArray2102.length, (int) class40_sub6.key);
-                        synchronized(RSCanvas.aLinkedList_53) {
+                        synchronized(MovedStatics.aLinkedList_53) {
                             class40_sub6.unlink();
                         }
                     } else if(class40_sub6.anInt2112 == 1) {
                         class40_sub6.aByteArray2102 = class40_sub6.cacheIndex.get((int) class40_sub6.key);
-                        synchronized(RSCanvas.aLinkedList_53) {
+                        synchronized(MovedStatics.aLinkedList_53) {
                             MovedStatics.aLinkedList_2604.addLast(class40_sub6);
                         }
                     }
