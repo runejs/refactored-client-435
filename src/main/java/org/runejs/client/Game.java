@@ -1446,7 +1446,7 @@ public class Game {
                                     }
                                 } else {
                                     if((ProducingGraphicsBuffer.oneMouseButton == 1 || MovedStatics.menuHasAddFriend(MovedStatics.menuActionRow - 1)) && MovedStatics.menuActionRow > 2)
-                                        Class60.determineMenuSize();
+                                        MovedStatics.determineMenuSize();
                                     else if(MovedStatics.menuActionRow > 0)
                                         GameInterface.processMenuActions(MovedStatics.menuActionRow - 1);
                                 }
@@ -1960,6 +1960,15 @@ public class Game {
         VertexNormal.lowMemory = true;
     }
 
+    public static void method992() {
+        SceneCluster.gameTimer.start();
+        for(int i = 0; i < 32; i++)
+            GameShell.tickSamples[i] = 0L;
+        for(int i = 0; i < 32; i++)
+            MovedStatics.tickSamples[i] = 0L;
+        MovedStatics.ticksPerLoop = 0;
+    }
+
     public void method35(int arg1) {
         if (currentPort != gameServerPort)
             currentPort = gameServerPort;
@@ -2001,10 +2010,10 @@ public class Game {
 
         if (gameStatusCode == 0) {
             Class40_Sub3.startup();
-            Class60.method992();
+            method992();
         } else if (gameStatusCode == 5) {
             Class40_Sub3.startup();
-            Class60.method992();
+            method992();
         } else if (gameStatusCode == 10) {
             Class60.updateLogin();
         } else if (gameStatusCode == 20) {

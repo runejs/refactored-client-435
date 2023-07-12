@@ -3143,4 +3143,148 @@ public class MovedStatics {
             return -1 + arg0;
         return arg0;
     }
+
+    public static void determineMenuSize() {
+        int width = TypeFace.fontBold.getStringWidth(English.chooseOption);
+        for(int i = 0; i < menuActionRow; i++) {
+            int rowWidth = TypeFace.fontBold.getTextDisplayedWidth(menuActionTexts[i]);
+            if(width < rowWidth)
+                width = rowWidth;
+        }
+        width += 8;
+        int height = menuActionRow * 15 + 21;
+        if(ScreenController.frameMode == ScreenMode.FIXED){
+            if(MouseHandler.clickX > 4 && MouseHandler.clickY > 4 && MouseHandler.clickX < 516 && MouseHandler.clickY < 338) {
+                menuScreenArea = 0;
+                menuHeight = menuActionRow * 15 + 22;
+                menuOpen = true;
+                int x = -(width / 2) + -4 + MouseHandler.clickX;
+                menuWidth = width;
+                if(width + x > 512)
+                    x = 512 - width;
+                if(x < 0)
+                    x = 0;
+                menuOffsetX = x;
+                int y = MouseHandler.clickY + -4;
+                if(y + height > 334)
+                    y = 334 - height;
+                if(y < 0)
+                    y = 0;
+                Game.menuOffsetY = y;
+            }
+            if(MouseHandler.clickX > 553 && MouseHandler.clickY > 205 && MouseHandler.clickX < 743 && MouseHandler.clickY < 466) {
+                menuHeight = 22 + 15 * menuActionRow;
+                menuScreenArea = 1;
+                int y = -205 + MouseHandler.clickY;
+                int x = -(width / 2) + -553 + MouseHandler.clickX;
+                if(x < 0)
+                    x = 0;
+                else if(width + x > 190)
+                    x = 190 - width;
+                menuOpen = true;
+                menuOffsetX = x;
+                if(y >= 0) {
+                    if(height + y > 261)
+                        y = -height + 261;
+                } else
+                    y = 0;
+                menuWidth = width;
+                Game.menuOffsetY = y;
+            }
+            if(MouseHandler.clickX > 17 && MouseHandler.clickY > 357 && MouseHandler.clickX < 496 && MouseHandler.clickY < 453) {
+                menuWidth = width;
+                menuScreenArea = 2;
+                menuHeight = menuActionRow * 15 + 22;
+                int y = MouseHandler.clickY + -357;
+                if(y >= 0) {
+                    if(height + y > 96)
+                        y = -height + 96;
+                } else
+                    y = 0;
+                int x = -(width / 2) + -17 + MouseHandler.clickX;
+                menuOpen = true;
+                Game.menuOffsetY = y;
+                if(x < 0)
+                    x = 0;
+                else if(x + width > 479)
+                    x = -width + 479;
+                menuOffsetX = x;
+            }
+
+        } else if(MouseHandler.clickX > 0 && MouseHandler.clickY > 0 && MouseHandler.clickX < GameShell.clientFrame.getWidth() && MouseHandler.clickY < GameShell.clientFrame.getHeight()) {
+                        menuScreenArea = 0;
+            int x = -(width / 2) + -4 + MouseHandler.clickX;
+            if(width + x > GameShell.clientFrame.getWidth() - 4)
+                x = GameShell.clientFrame.getWidth() - 4;
+            if(x < 0)
+                x = 0;
+            int y = MouseHandler.clickY + -4;
+            if(y + height > GameShell.clientFrame.getHeight() - 4)
+                y = GameShell.clientFrame.getHeight() - 4;
+            if(y + height > ScreenController.frameHeight-22)
+                y = ScreenController.frameHeight-22 - height;
+            if(y < 0)
+                y = 0;
+            if(width + x > ScreenController.drawWidth)
+                x = ScreenController.drawWidth - width;
+            menuOpen = true;
+            menuOffsetX = x;
+            Game.menuOffsetY = y;
+            menuWidth = width;
+            menuHeight = menuActionRow * 15 + 22;
+        }
+//        if(Class57.clickX > 553 && RSString.clickY > 205 && Class57.clickX < 743 && RSString.clickY < 466) {
+//            CollisionMap.menuHeight = 22 + 15 * ActorDefinition.menuActionRow;
+//            Class40_Sub5_Sub17_Sub1.menuScreenArea = 1;
+//            int y = -205 + RSString.clickY;
+//            int x = -(width / 2) + -553 + Class57.clickX;
+//            if(x < 0)
+//                x = 0;
+//            else if(width + x > 190)
+//                x = 190 - width;
+//            Class4.menuOpen = true;
+//            InteractiveObject.menuOffsetX = x;
+//            if(y >= 0) {
+//                if(height + y > 261)
+//                    y = -height + 261;
+//            } else
+//                y = 0;
+//            VertexNormal.menuWidth = width;
+//            Game.menuOffsetY = y;
+//        }
+//        if(Class57.clickX > 17 && RSString.clickY > 357 && Class57.clickX < 496 && RSString.clickY < 453) {
+//            VertexNormal.menuWidth = width;
+//            Class40_Sub5_Sub17_Sub1.menuScreenArea = 2;
+//            CollisionMap.menuHeight = ActorDefinition.menuActionRow * 15 + 22;
+//            int y = RSString.clickY + -357;
+//            if(y >= 0) {
+//                if(height + y > 96)
+//                    y = -height + 96;
+//            } else
+//                y = 0;
+//            int x = -(width / 2) + -17 + Class57.clickX;
+//            Class4.menuOpen = true;
+//            Game.menuOffsetY = y;
+//            if(x < 0)
+//                x = 0;
+//            else if(x + width > 479)
+//                x = -width + 479;
+//            InteractiveObject.menuOffsetX = x;
+//        }
+    }
+
+    public static int method988(CacheArchive arg0, CacheArchive arg1) {
+        int i = 0;
+        if(arg0.method194(Native.titleImage, ""))
+            i++;
+        if(arg1.method194(Native.logo, ""))
+            i++;
+        if(arg1.method194(Native.titleBox, ""))
+            i++;
+        if(arg1.method194(Native.titleButton, ""))
+            i++;
+        if(arg1.method194(Native.runes, ""))
+            i++;
+        return i;
+    }
 }

@@ -135,7 +135,7 @@ public class Class40_Sub3 extends Node {
                 Native.currentLoadingText = English.loadedFonts;
             }
         } else if (MovedStatics.loadingPercent == 60) {
-            int i = Class60.method988(CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
+            int i = MovedStatics.method988(CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
             int i_3_ = method288();
             if (i < i_3_) {
                 Native.currentLoadingText = English.loadingTitleScreen + (100 * i / i_3_) + Native.percent;
