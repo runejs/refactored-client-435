@@ -11,9 +11,9 @@ import java.net.Socket;
 import java.net.URL;
 
 public class Signlink implements Runnable {
-    public static Method aMethod724;
+    public static Method setFocusCycleRoot;
     private static String homeDirectory;
-    public static Method aMethod729;
+    public static Method setFocusTraversalKeysEnabled;
     public static String javaVendor;
     public static int anInt737 = 3;
     public static String javaVersion;
@@ -47,17 +47,17 @@ public class Signlink implements Runnable {
         }
         try {
             if(gameShell == null)
-                aMethod729 = Class.forName("java.awt.Component").getDeclaredMethod("setFocusTraversalKeysEnabled", Boolean.TYPE);
+                setFocusTraversalKeysEnabled = Class.forName("java.awt.Component").getDeclaredMethod("setFocusTraversalKeysEnabled", Boolean.TYPE);
             else
-                aMethod729 = gameShell.getClass().getMethod("setFocusTraversalKeysEnabled", Boolean.TYPE);
+                setFocusTraversalKeysEnabled = gameShell.getClass().getMethod("setFocusTraversalKeysEnabled", Boolean.TYPE);
         } catch(Exception exception) {
             /* empty */
         }
         try {
             if(gameShell != null)
-                aMethod724 = gameShell.getClass().getMethod("setFocusCycleRoot", Boolean.TYPE);
+                setFocusCycleRoot = gameShell.getClass().getMethod("setFocusCycleRoot", Boolean.TYPE);
             else
-                aMethod724 = Class.forName("java.awt.Container").getDeclaredMethod("setFocusCycleRoot", Boolean.TYPE);
+                setFocusCycleRoot = Class.forName("java.awt.Container").getDeclaredMethod("setFocusCycleRoot", Boolean.TYPE);
         } catch(Exception exception) {
             /* empty */
         }

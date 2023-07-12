@@ -120,7 +120,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
             }
         }
         if (Game.signlink.gameShell != null) {
-            Method method = Signlink.aMethod724;
+            Method method = Signlink.setFocusCycleRoot;
             if (method != null) {
                 try {
                     method.invoke(Game.signlink.gameShell, Boolean.TRUE);
