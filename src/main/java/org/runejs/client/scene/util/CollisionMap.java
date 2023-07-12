@@ -35,7 +35,7 @@ public class CollisionMap {
     public static void method144(int arg0) {
 
         MovedStatics.fontMetrics = null;
-        Class17.helveticaBold = null;
+        MovedStatics.helveticaBold = null;
         if(arg0 == 12433)
             Class26.loadingBoxImage = null;
 

@@ -58,9 +58,9 @@ public class GameObject extends Renderable {
     public static void drawLoadingText(int percent, Color color, String desc) {
         try {
             Graphics graphics = MouseHandler.gameCanvas.getGraphics();
-            if(Class17.helveticaBold == null) {
-                Class17.helveticaBold = new Font("Helvetica", Font.BOLD, 13);
-                MovedStatics.fontMetrics = MouseHandler.gameCanvas.getFontMetrics(Class17.helveticaBold);
+            if(MovedStatics.helveticaBold == null) {
+                MovedStatics.helveticaBold = new Font("Helvetica", Font.BOLD, 13);
+                MovedStatics.fontMetrics = MouseHandler.gameCanvas.getFontMetrics(MovedStatics.helveticaBold);
             }
             if(MovedStatics.clearScreen) {
                 MovedStatics.clearScreen = false;
@@ -79,7 +79,7 @@ public class GameObject extends Renderable {
                 loadingBoxGraphics.setColor(Color.black);
                 loadingBoxGraphics.drawRect(1, 1, 301, 31);
                 loadingBoxGraphics.fillRect(2 + 3 * percent, 2, 300 - 3 * percent, 30);
-                loadingBoxGraphics.setFont(Class17.helveticaBold);
+                loadingBoxGraphics.setFont(MovedStatics.helveticaBold);
                 loadingBoxGraphics.setColor(Color.white);
                 loadingBoxGraphics.drawString(desc, (304 - (MovedStatics.fontMetrics.stringWidth(desc))) / 2, 22);
                 graphics.drawImage(Class26.loadingBoxImage, MovedStatics.width / 2 - 152, MovedStatics.height / 2 - 18, null);
@@ -92,7 +92,7 @@ public class GameObject extends Renderable {
                 graphics.setColor(Color.black);
                 graphics.drawRect(centerWidth + 1, 1 + centerHeight, 301, 31);
                 graphics.fillRect(percent * 3 + 2 + centerWidth, 2 + centerHeight, 300 + -(3 * percent), 30);
-                graphics.setFont(Class17.helveticaBold);
+                graphics.setFont(MovedStatics.helveticaBold);
                 graphics.setColor(Color.white);
                 graphics.drawString(desc, (304 - (MovedStatics.fontMetrics.stringWidth(desc))) / 2+ centerWidth, 22 + centerHeight);
             }

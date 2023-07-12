@@ -7,6 +7,9 @@ public class Class39 implements Runnable {
     public static int anInt901;
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_907;
     public static ProducingGraphicsBuffer mapbackLeft;
+    /**
+     * Something to do with flames, maybe
+     */
     public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;
     public Object objectLock;
     public boolean aBoolean913 = true;

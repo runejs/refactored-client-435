@@ -5,6 +5,9 @@ import java.awt.event.KeyEvent;
 public class Class51 {
     public static int anInt1195 = 0;
     public static int gameStatusCode = 0;
+    /**
+     * Something to do with flames, maybe
+     */
     public static int[] anIntArray1198;
     public static int regionX;
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1206;

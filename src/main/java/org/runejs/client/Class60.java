@@ -449,7 +449,7 @@ public class Class60 {
 
             Class39.aProducingGraphicsBuffer_907.drawGraphics(offsetX + 128, offsetY, graphics);
             Class51.aProducingGraphicsBuffer_1206.drawGraphics(offsetX + 202, offsetY + 371, graphics);
-            Class17.aProducingGraphicsBuffer_463.drawGraphics(offsetX, offsetY + 265, graphics);
+            MovedStatics.aProducingGraphicsBuffer_463.drawGraphics(offsetX, offsetY + 265, graphics);
             KeyFocusListener.aProducingGraphicsBuffer_1285.drawGraphics(offsetX + 562, offsetY + 265, graphics);
             MovedStatics.aProducingGraphicsBuffer_2524.drawGraphics(offsetX + 128, offsetY + 171, graphics);
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631.drawGraphics(offsetX + 562, offsetY + 171, graphics);
@@ -503,8 +503,8 @@ public class Class60 {
             }
         }
         for (int i_14_ = 0; i_14_ < i + -1; i_14_++)
-            Class17.anIntArray466[i_14_] = Class17.anIntArray466[i_14_ + 1];
-        Class17.anIntArray466[i - arg0] = (int) (16.0 * Math.sin((double) MovedStatics.pulseCycle / 14.0) + 14.0 * Math.sin((double) MovedStatics.pulseCycle / 15.0) + 12.0 * Math.sin((double) MovedStatics.pulseCycle / 16.0));
+            MovedStatics.anIntArray466[i_14_] = MovedStatics.anIntArray466[i_14_ + 1];
+        MovedStatics.anIntArray466[i - arg0] = (int) (16.0 * Math.sin((double) MovedStatics.pulseCycle / 14.0) + 14.0 * Math.sin((double) MovedStatics.pulseCycle / 15.0) + 12.0 * Math.sin((double) MovedStatics.pulseCycle / 16.0));
         if (MovedStatics.anInt2452 > 0)
             MovedStatics.anInt2452 -= 4;
         if (MovedStatics.anInt2613 > 0)
@@ -530,7 +530,7 @@ public class Class60 {
             Rasterizer.resetPixels();
             MovedStatics.loginBoxGraphics = MovedStatics.createGraphicsBuffer(360, 200, arg0);
             Rasterizer.resetPixels();
-            Class17.aProducingGraphicsBuffer_463 = MovedStatics.createGraphicsBuffer(202, 238, arg0);
+            MovedStatics.aProducingGraphicsBuffer_463 = MovedStatics.createGraphicsBuffer(202, 238, arg0);
             Rasterizer.resetPixels();
             KeyFocusListener.aProducingGraphicsBuffer_1285 = MovedStatics.createGraphicsBuffer(203, 238, arg0);
             Rasterizer.resetPixels();
@@ -552,7 +552,7 @@ public class Class60 {
             titleImg.drawInverse(-202, -371);
             MovedStatics.loginBoxGraphics.prepareRasterizer();
             titleImg.drawInverse(-202, -171);
-            Class17.aProducingGraphicsBuffer_463.prepareRasterizer();
+            MovedStatics.aProducingGraphicsBuffer_463.prepareRasterizer();
             titleImg.drawInverse(0, -265);
             KeyFocusListener.aProducingGraphicsBuffer_1285.prepareRasterizer();
             titleImg.drawInverse(-562, -265);
@@ -577,7 +577,7 @@ public class Class60 {
             titleImg.drawInverse(180, -371);
             MovedStatics.loginBoxGraphics.prepareRasterizer();
             titleImg.drawInverse(180, -171);
-            Class17.aProducingGraphicsBuffer_463.prepareRasterizer();
+            MovedStatics.aProducingGraphicsBuffer_463.prepareRasterizer();
             titleImg.drawInverse(382, -265);
             KeyFocusListener.aProducingGraphicsBuffer_1285.prepareRasterizer();
             titleImg.drawInverse(-180, -265);

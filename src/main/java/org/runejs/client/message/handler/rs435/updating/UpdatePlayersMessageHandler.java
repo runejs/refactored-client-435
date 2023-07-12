@@ -1,6 +1,5 @@
 package org.runejs.client.message.handler.rs435.updating;
 
-import org.runejs.client.Class17;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Player;
@@ -23,7 +22,7 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
     public void handle(UpdatePlayersInboundMessage message) {
         // initialisation steps for player updating
         Actor.actorUpdatingIndex = 0;
-        Class17.deregisterActorCount = 0;
+        MovedStatics.deregisterActorCount = 0;
         
         // handle the different types of update within the message
         handleLocalPlayerMovement(message.localPlayerMovement);
@@ -39,7 +38,7 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
         Player.parseTrackedPlayerUpdateMasks(message.appearanceUpdates);
 
         // handle any deregistrations
-        for(int i = 0; Class17.deregisterActorCount > i; i++) {
+        for(int i = 0; MovedStatics.deregisterActorCount > i; i++) {
             int trackedPlayerIndex = Player.deregisterActorIndices[i];
             if(MovedStatics.pulseCycle != Player.trackedPlayers[trackedPlayerIndex].anInt3134)
                 Player.trackedPlayers[trackedPlayerIndex] = null;
@@ -119,7 +118,7 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
         int trackedPlayerCount = update.actorCount;
         if(trackedPlayerCount < Player.localPlayerCount) {
             for(int i = trackedPlayerCount; Player.localPlayerCount > i; i++)
-                Player.deregisterActorIndices[Class17.deregisterActorCount++] = Player.trackedPlayerIndices[i];
+                Player.deregisterActorIndices[MovedStatics.deregisterActorCount++] = Player.trackedPlayerIndices[i];
         }
         
         if(Player.localPlayerCount < trackedPlayerCount) {
@@ -144,7 +143,7 @@ public class UpdatePlayersMessageHandler implements MessageHandler<UpdatePlayers
 
             // deregister player if necessary
             if (playerUpdate.shouldDeregister) {
-                Player.deregisterActorIndices[Class17.deregisterActorCount++] = trackedPlayerIndex;
+                Player.deregisterActorIndices[MovedStatics.deregisterActorCount++] = trackedPlayerIndex;
                 continue;
             }
             

@@ -1,6 +1,5 @@
 package org.runejs.client.cache.media;
 
-import org.runejs.client.Class17;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.RSString;
 import org.runejs.client.cache.CacheArchive;
@@ -103,7 +102,7 @@ public class TypeFace extends Rasterizer {
     }
 
     public static TypeFace constructFont() {
-        TypeFace class40_sub5_sub14_sub1 = new TypeFace(Actor.anIntArray3111, Class17.anIntArray456, Npc.anIntArray3312, Buffer.anIntArray1972, GroundItemTile.aByteArrayArray1370);
+        TypeFace class40_sub5_sub14_sub1 = new TypeFace(Actor.anIntArray3111, MovedStatics.anIntArray456, Npc.anIntArray3312, Buffer.anIntArray1972, GroundItemTile.aByteArrayArray1370);
         ActorDefinition.method569();
         return class40_sub5_sub14_sub1;
     }

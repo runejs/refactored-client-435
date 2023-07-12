@@ -117,13 +117,13 @@ public class Landscape {
                             is = FileOperations.ReadFile("./data/maps/" + terrainDataIds[pointer] + ".dat");
                         }
                         if(is != null)
-                            loadTerrainBlock(currentCollisionMap, (Class51.regionX - 6) * 8, is, offsetX, offsetY, 8 * (-6 + Class17.regionY));
+                            loadTerrainBlock(currentCollisionMap, (Class51.regionX - 6) * 8, is, offsetX, offsetY, 8 * (-6 + MovedStatics.regionY));
                     }
                     for(int pointer = 0; dataLength > pointer; pointer++) {
                         int offsetX = -MovedStatics.baseX + (mapCoordinates[pointer] >> 8) * 64;
                         int offsetY = -Class26.baseY + 64 * (mapCoordinates[pointer] & 0xff);
                         byte[] data = terrainData[pointer];
-                        if(data == null && Class17.regionY < 800)
+                        if(data == null && MovedStatics.regionY < 800)
                             initiateVertexHeights(offsetY, 64, 64, offsetX);
                     }
                     method364(true);
@@ -230,8 +230,8 @@ public class Landscape {
                 }
                 if(!loadGeneratedMap) {
                     int i_42_ = (-6 + Class51.regionX) / 8;
-                    int i_43_ = (Class17.regionY - 6) / 8;
-                    int i_44_ = (6 + Class17.regionY) / 8;
+                    int i_43_ = (MovedStatics.regionY - 6) / 8;
+                    int i_44_ = (6 + MovedStatics.regionY) / 8;
                     int i_45_ = (Class51.regionX + 6) / 8;
                     for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
                         for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {

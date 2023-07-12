@@ -1,6 +1,5 @@
 package org.runejs.client.message.handler.rs435.updating;
 
-import org.runejs.client.Class17;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.media.renderable.actor.Actor;
@@ -17,7 +16,7 @@ public class UpdateNPCsMessageHandler implements MessageHandler<UpdateNPCsInboun
     @Override
     public void handle(UpdateNPCsInboundMessage message) {
         // initialisation steps
-        Class17.deregisterActorCount = 0;
+        MovedStatics.deregisterActorCount = 0;
         Actor.actorUpdatingIndex = 0;
 
         handleTrackedMovement(message.trackedNPCMovement);
@@ -25,7 +24,7 @@ public class UpdateNPCsMessageHandler implements MessageHandler<UpdateNPCsInboun
 
         Npc.parseNpcUpdateMasks(message.appearanceUpdates);
 
-        for(int i = 0; i < Class17.deregisterActorCount; i++) {
+        for(int i = 0; i < MovedStatics.deregisterActorCount; i++) {
             int trackedNpcIndex = Player.deregisterActorIndices[i];
             if(MovedStatics.pulseCycle != Player.npcs[trackedNpcIndex].anInt3134) {
                 Player.npcs[trackedNpcIndex].actorDefinition = null;
@@ -49,7 +48,7 @@ public class UpdateNPCsMessageHandler implements MessageHandler<UpdateNPCsInboun
         int trackedNpcCount = update.actorCount;
         if(Player.npcCount > trackedNpcCount) {
             for(int i = trackedNpcCount; i < Player.npcCount; i++)
-                Player.deregisterActorIndices[Class17.deregisterActorCount++] = Player.npcIds[i];
+                Player.deregisterActorIndices[MovedStatics.deregisterActorCount++] = Player.npcIds[i];
         }
 
         if(Player.npcCount < trackedNpcCount) {
@@ -75,7 +74,7 @@ public class UpdateNPCsMessageHandler implements MessageHandler<UpdateNPCsInboun
 
             // deregister npc if necessary
             if (npcUpdate.shouldDeregister) {
-                Player.deregisterActorIndices[Class17.deregisterActorCount++] = trackedNpcIndex;
+                Player.deregisterActorIndices[MovedStatics.deregisterActorCount++] = trackedNpcIndex;
                 continue;
             }
 

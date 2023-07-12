@@ -629,7 +629,7 @@ public class Game {
         int i_61_ = 0;
         int i_62_ = 1152;
         for (int i_63_ = 1; i - 1 > i_63_; i_63_++) {
-            int i_64_ = (-i_63_ + i) * Class17.anIntArray466[i_63_] / i;
+            int i_64_ = (-i_63_ + i) * MovedStatics.anIntArray466[i_63_] / i;
             int i_65_ = i_64_ + 22;
             if (i_65_ < 0)
                 i_65_ = 0;
@@ -653,7 +653,7 @@ public class Game {
         for (int i_71_ = 0; i_71_ < 33920; i_71_++)
             GameObject.flameRightBackground.pixels[i_71_] = MovedStatics.aClass40_Sub5_Sub14_Sub4_2043.pixels[i_71_];
         for (int i_72_ = 1; i_72_ < -1 + i; i_72_++) {
-            int i_73_ = (-i_72_ + i) * Class17.anIntArray466[i_72_] / i;
+            int i_73_ = (-i_72_ + i) * MovedStatics.anIntArray466[i_72_] / i;
             int i_74_ = 103 + -i_73_;
             i_62_ += i_73_;
             for (int i_75_ = 0; i_75_ < i_74_; i_75_++) {
@@ -1372,7 +1372,7 @@ public class Game {
                     if (IncomingPackets.cyclesSinceLastPacket > 750) {
                         Class59.dropClient();
                     } else {
-                        Class17.animatePlayers(-1);
+                        MovedStatics.animatePlayers(-1);
                         MovedStatics.animateNpcs();
                         MovedStatics.method313();
                         if(MovedStatics.crossType != 0) {
@@ -1907,7 +1907,7 @@ public class Game {
     public static void method910() {
         if(true) {
             if (VertexNormal.lowMemory && MovedStatics.onBuildTimePlane != Player.worldLevel)
-                Actor.method789(Player.localPlayer.pathY[0], Class17.regionY, Class51.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
+                Actor.method789(Player.localPlayer.pathY[0], MovedStatics.regionY, Class51.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
             else if (Buffer.anInt1985 != Player.worldLevel) {
                 Buffer.anInt1985 = Player.worldLevel;
                 MovedStatics.method299(Player.worldLevel);

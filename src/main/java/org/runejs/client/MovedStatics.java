@@ -83,6 +83,9 @@ public class MovedStatics {
      * Position of the hint icon in world coordinates (e.g. 3222,3222).
      */
     public static int hintIconPosY = 0;
+    /**
+     * Something to do with flames, maybe
+     */
     public static int[] anIntArray178;
     public static int[] chatboxLineOffsets;
     public static int anInt199 = 0;
@@ -150,6 +153,9 @@ public class MovedStatics {
     public static IndexedImage[] mapSceneIcons;
     public static int baseX;
     public static NodeCache aClass9_998 = new NodeCache(100);
+    /**
+     * Something to do with flames, maybe
+     */
     public static int[] anIntArray1013;
     public static IndexedImage[] moderatorIcon;
     public static int[] anIntArray2764 = new int[128];
@@ -171,6 +177,9 @@ public class MovedStatics {
     public static HuffmanEncoding aHuffmanEncoding_2590;
     public static int anInt2598 = 0;
     public static LinkedList aLinkedList_2604 = new LinkedList();
+    /**
+     * Something to do with flames, maybe
+     */
     public static int anInt2613 = 0;
     public static int height;
     public static int anInt2798 = 0;
@@ -254,6 +263,16 @@ public class MovedStatics {
      * but not the furthest-right (see `tabHighlightImageBottomRightEdge` for that).
      */
     public static IndexedImage tabHighlightImageBottomRight;
+    /**
+     * Something to do with flames, maybe
+     */
+    public static int[] anIntArray466 = new int[256];
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_463;
+    public static ProducingGraphicsBuffer chatboxTop;
+    public static Font helveticaBold;
+    public static int deregisterActorCount = 0;
+    public static int[] anIntArray456;
+    public static int regionY;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -277,7 +296,7 @@ public class MovedStatics {
             aClass40_Sub5_Sub14_Sub4_2043 = null;
             anIntArray178 = null;
             KeyFocusListener.aProducingGraphicsBuffer_1285 = null;
-            Class17.aProducingGraphicsBuffer_463 = null;
+            aProducingGraphicsBuffer_463 = null;
             anIntArray1013 = null;
             MusicSystem.method405(10);
             UpdateServer.resetUpdateServerRequests(true);
@@ -449,7 +468,7 @@ public class MovedStatics {
         class40_sub5_sub14_sub2.maxHeight = imageMaxHeight;
         class40_sub5_sub14_sub2.xDrawOffset = anIntArray1347[0];
         class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[0];
-        class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[0];
+        class40_sub5_sub14_sub2.imgWidth = anIntArray456[0];
         class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[0];
         class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
         class40_sub5_sub14_sub2.imgPixels = GroundItemTile.aByteArrayArray1370[0];
@@ -576,7 +595,7 @@ public class MovedStatics {
         anInt2581 = buffer.getUnsignedShortBE();
         Actor.anIntArray3111 = new int[anInt2581];
         GroundItemTile.aByteArrayArray1370 = new byte[anInt2581][];
-        Class17.anIntArray456 = new int[anInt2581];
+        anIntArray456 = new int[anInt2581];
         Npc.anIntArray3312 = new int[anInt2581];
         anIntArray1347 = new int[anInt2581];
 
@@ -589,7 +608,7 @@ public class MovedStatics {
         for (int i_35_ = arg1; i_35_ < anInt2581; i_35_++)
             Actor.anIntArray3111[i_35_] = buffer.getUnsignedShortBE();
         for (int i_36_ = 0; i_36_ < anInt2581; i_36_++)
-            Class17.anIntArray456[i_36_] = buffer.getUnsignedShortBE();
+            anIntArray456[i_36_] = buffer.getUnsignedShortBE();
         for (int i_37_ = 0; anInt2581 > i_37_; i_37_++)
             Npc.anIntArray3312[i_37_] = buffer.getUnsignedShortBE();
 
@@ -603,7 +622,7 @@ public class MovedStatics {
         buffer.currentPosition = 0;
         for (int i_39_ = 0; anInt2581 > i_39_; i_39_++) {
             int i_40_ = Npc.anIntArray3312[i_39_];
-            int i_41_ = Class17.anIntArray456[i_39_];
+            int i_41_ = anIntArray456[i_39_];
             int i_42_ = i_40_ * i_41_;
             byte[] is = new byte[i_42_];
             GroundItemTile.aByteArrayArray1370[i_39_] = is;
@@ -1344,6 +1363,9 @@ public class MovedStatics {
 	}
 
 	public static NodeCache aClass9_2439 = new NodeCache(64);
+    /**
+     * Something to do with flames, maybe
+     */
 	public static int anInt2452 = 0;
 	public static int loadingPercent = 0;
 
@@ -1620,7 +1642,7 @@ public class MovedStatics {
             RSCanvas.anIntArray66 = null;
             Minimap.minimapBackgroundImage = null;
             Landscape.anIntArray1186 = null;
-            Class17.chatboxTop = null;
+            chatboxTop = null;
             RSCanvas.tabBottom = null;
             GameObject.tabPieceLeft = null;
             bottomChatBack = null;
@@ -2119,7 +2141,7 @@ public class MovedStatics {
                 Class40_Sub7.mapBackRight.drawGraphics(516, 4, graphics);
                 tabPieceUpperRight.drawGraphics(516, 205, graphics);
                 PlayerAppearance.tabPieveLowerRight.drawGraphics(496, 357, graphics);
-                Class17.chatboxTop.drawGraphics(0, 338, graphics);
+                chatboxTop.drawGraphics(0, 338, graphics);
             }
         } catch(Exception exception) {
             MouseHandler.gameCanvas.repaint();
@@ -2171,7 +2193,7 @@ public class MovedStatics {
             PlayerAppearance.tabPieveLowerRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = method1028(arg2, Native.imgBackhmid2, Native.aClass1_305);
-            Class17.chatboxTop = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            chatboxTop = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             tabHighlightImageTopLeftEdge = Game.method359(Native.redstone1, Native.aClass1_305, arg2);
             GameInterface.tabHighlightImageTopLeft = Game.method359(Native.redstone2, Native.aClass1_305, arg2);
@@ -2702,6 +2724,19 @@ public class MovedStatics {
             if(class40_sub6 == null)
                 break;
             class40_sub6.cacheArchive.method198(false, class40_sub6.aByteArray2102, (int) class40_sub6.key, class40_sub6.cacheIndex);
+        }
+    }
+
+    public static void animatePlayers(int playerIndex) {
+        for(int currentPlayerIndex = playerIndex; Player.localPlayerCount > currentPlayerIndex; currentPlayerIndex++) {
+            int actualIndex;
+            if(currentPlayerIndex == -1)
+                actualIndex = 2047;
+            else
+                actualIndex = Player.trackedPlayerIndices[currentPlayerIndex];
+            Player player = Player.trackedPlayers[actualIndex];
+            if(player != null)
+                Actor.handleActorAnimation(player);
         }
     }
 }

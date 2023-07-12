@@ -54,7 +54,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     public boolean renderOnMinimap = true;
 
     public static void method569() {
-        Class17.anIntArray456 = null;
+        MovedStatics.anIntArray456 = null;
         GroundItemTile.aByteArrayArray1370 = null;
         Npc.anIntArray3312 = null;
         Actor.anIntArray3111 = null;
@@ -105,7 +105,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         class40_sub5_sub14_sub4.maxHeight = MovedStatics.imageMaxHeight;
         class40_sub5_sub14_sub4.offsetX = MovedStatics.anIntArray1347[0];
         class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[0];
-        class40_sub5_sub14_sub4.imageWidth = Class17.anIntArray456[0];
+        class40_sub5_sub14_sub4.imageWidth = MovedStatics.anIntArray456[0];
         class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[0];
         byte[] is = GroundItemTile.aByteArrayArray1370[0];
         int i = class40_sub5_sub14_sub4.imageWidth * class40_sub5_sub14_sub4.imageHeight;

@@ -328,7 +328,7 @@ public class Class40_Sub3 extends Node {
 	        class40_sub5_sub14_sub4.maxHeight = MovedStatics.imageMaxHeight;
 	        class40_sub5_sub14_sub4.offsetX = MovedStatics.anIntArray1347[i];
 	        class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[i];
-	        class40_sub5_sub14_sub4.imageWidth = Class17.anIntArray456[i];
+	        class40_sub5_sub14_sub4.imageWidth = MovedStatics.anIntArray456[i];
 	        class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[i];
 	        byte[] is = GroundItemTile.aByteArrayArray1370[i];
 	        int i_4_ = class40_sub5_sub14_sub4.imageHeight * class40_sub5_sub14_sub4.imageWidth;
