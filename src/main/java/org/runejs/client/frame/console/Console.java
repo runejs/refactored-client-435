@@ -1,6 +1,5 @@
 package org.runejs.client.frame.console;
 
-import org.runejs.client.Class59;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
@@ -271,8 +270,8 @@ public class Console {
             consoleInput = consoleInput.substring(0, currentChatIndex - 1) + consoleInput.substring(currentChatIndex);
             currentChatIndex--;
         }
-        if (Player.method793(Class59.anInt1388) && consoleInput.length() < 80) { // any character
-            consoleInput = consoleInput.substring(0, currentChatIndex) + (char) Class59.anInt1388 + consoleInput.substring(currentChatIndex);
+        if (Player.method793(MovedStatics.anInt1388) && consoleInput.length() < 80) { // any character
+            consoleInput = consoleInput.substring(0, currentChatIndex) + (char) MovedStatics.anInt1388 + consoleInput.substring(currentChatIndex);
             currentChatIndex++;
         }
         if (MovedStatics.anInt2854 == 84 && consoleInput.length() > 0) { // key enter

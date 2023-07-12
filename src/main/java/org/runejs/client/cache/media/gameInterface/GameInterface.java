@@ -244,8 +244,8 @@ public class GameInterface extends CachedNode {
     }
 
     public static void method639() {
-        synchronized(Class59.keyFocusListener) {
-            Class59.anInt1389 = MovedStatics.anInt1214;
+        synchronized(Game.keyFocusListener) {
+            MovedStatics.anInt1389 = MovedStatics.anInt1214;
             if(GameObjectDefinition.anInt2543 < 0) {
                 for(int i = 0; i < 112; i++) {
                     Item.obfuscatedKeyStatus[i] = false;
@@ -1870,15 +1870,15 @@ public class GameInterface extends CachedNode {
             if(gameScreenInterfaceId != -1 && reportAbuseInterfaceID == gameScreenInterfaceId) {
                 if(MovedStatics.anInt2854 == 85 && Native.reportedName.length() > 0)
                     Native.reportedName = Native.reportedName.substring(0, -1 + Native.reportedName.length());
-                if((MovedStatics.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && Native.reportedName.length() < 12)
-                    Native.reportedName = Native.reportedName + (char) Class59.anInt1388;
+                if((MovedStatics.method735(MovedStatics.anInt1388) || MovedStatics.anInt1388 == 32) && Native.reportedName.length() < 12)
+                    Native.reportedName = Native.reportedName + (char) MovedStatics.anInt1388;
             } else if(ChatBox.messagePromptRaised) {
                 if(MovedStatics.anInt2854 == 85 && ChatBox.chatMessage.length() > 0) {
                     ChatBox.chatMessage = ChatBox.chatMessage.substring(0, -1 + ChatBox.chatMessage.length());
                     ChatBox.redrawChatbox = true;
                 }
-                if(Player.method793(Class59.anInt1388) && ChatBox.chatMessage.length() < 80) {
-                    ChatBox.chatMessage = ChatBox.chatMessage + (char) Class59.anInt1388;
+                if(Player.method793(MovedStatics.anInt1388) && ChatBox.chatMessage.length() < 80) {
+                    ChatBox.chatMessage = ChatBox.chatMessage + (char) MovedStatics.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
                 if(MovedStatics.anInt2854 == 84) {
@@ -1923,8 +1923,8 @@ ChatBox.tradeMode
                     ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 1);
                     ChatBox.redrawChatbox = true;
                 }
-                if(method1027(Class59.anInt1388) && ChatBox.inputMessage.length() < 10) {
-                    ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
+                if(method1027(MovedStatics.anInt1388) && ChatBox.inputMessage.length() < 10) {
+                    ChatBox.inputMessage = ChatBox.inputMessage + (char) MovedStatics.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
                 if(MovedStatics.anInt2854 == 84) {
@@ -1946,8 +1946,8 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNumericInputOutboundMessage(i
                     ChatBox.inputMessage = ChatBox.inputMessage.substring(0, -1 + ChatBox.inputMessage.length());
                     ChatBox.redrawChatbox = true;
                 }
-                if((MovedStatics.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && ChatBox.inputMessage.length() < 12) {
-                    ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
+                if((MovedStatics.method735(MovedStatics.anInt1388) || MovedStatics.anInt1388 == 32) && ChatBox.inputMessage.length() < 12) {
+                    ChatBox.inputMessage = ChatBox.inputMessage + (char) MovedStatics.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
                 if(MovedStatics.anInt2854 == 84) {
@@ -1964,8 +1964,8 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name
                     ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 10);
                     ChatBox.redrawChatbox = true;
                 }
-                if(Player.method793(Class59.anInt1388) && ChatBox.inputMessage.length() < 40) {
-                    ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
+                if(Player.method793(MovedStatics.anInt1388) && ChatBox.inputMessage.length() < 40) {
+                    ChatBox.inputMessage = ChatBox.inputMessage + (char) MovedStatics.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
             } else if(chatboxInterfaceId == -1 && fullscreenInterfaceId == -1) {
@@ -1973,14 +1973,14 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name
                     ChatBox.chatboxInput = ChatBox.chatboxInput.substring(0, ChatBox.chatboxInput.length() - 1);
                     ChatBox.redrawChatbox = true;
                 }
-                if(Player.method793(Class59.anInt1388) && ChatBox.chatboxInput.length() < 80) {
-                    ChatBox.chatboxInput = ChatBox.chatboxInput + (char) Class59.anInt1388;
+                if(Player.method793(MovedStatics.anInt1388) && ChatBox.chatboxInput.length() < 80) {
+                    ChatBox.chatboxInput = ChatBox.chatboxInput + (char) MovedStatics.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
                 if(MovedStatics.anInt2854 == 84 && ChatBox.chatboxInput.length() > 0) {
                     if(InteractiveObject.playerRights > 1) {
                         if(ChatBox.chatboxInput.equals(English.commandClientDrop))
-                            Class59.dropClient();
+                            Game.dropClient();
                         if(ChatBox.chatboxInput.equals(English.commandFpson)) {
                             InteractiveObject.showFps = true;
                             ChatBox.inputType = 3;

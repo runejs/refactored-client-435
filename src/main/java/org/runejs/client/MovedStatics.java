@@ -319,6 +319,15 @@ public class MovedStatics {
      * Part of login screen
      */
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1206;
+    public static IndexedImage imgLoginScreenButton;
+    /**
+     * Last pressed key? maybe
+     */
+    public static int anInt1388;
+    /**
+     * Something to do with keyboard input
+     */
+    public static int anInt1389 = 0;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -328,7 +337,7 @@ public class MovedStatics {
             aProducingGraphicsBuffer_1206 = null;
             Landscape.anIntArray1168 = null;
             anIntArray3255 = null;
-            Class59.imgLoginScreenButton = null;
+            imgLoginScreenButton = null;
             anIntArray1445 = null;
             loginScreenBox = null;
             Renderable.anIntArray2865 = null;
@@ -775,12 +784,12 @@ public class MovedStatics {
     }
 
     public static boolean method416() {
-        synchronized (Class59.keyFocusListener) {
-            if (Class59.anInt1389 == anInt1214)
+        synchronized (Game.keyFocusListener) {
+            if (anInt1389 == anInt1214)
                 return false;
-            anInt2854 = anIntArray2113[Class59.anInt1389];
-            Class59.anInt1388 = anIntArray2764[Class59.anInt1389];
-            Class59.anInt1389 = Class59.anInt1389 + 1 & 0x7f;
+            anInt2854 = anIntArray2113[anInt1389];
+            anInt1388 = anIntArray2764[anInt1389];
+            anInt1389 = anInt1389 + 1 & 0x7f;
             return true;
         }
     }
@@ -2167,9 +2176,9 @@ public class MovedStatics {
     }
 
     public static void method744() {
-        if(Class59.keyFocusListener != null) {
-            synchronized(Class59.keyFocusListener) {
-                Class59.keyFocusListener = null;
+        if(Game.keyFocusListener != null) {
+            synchronized(Game.keyFocusListener) {
+                Game.keyFocusListener = null;
             }
         }
     }
@@ -3122,5 +3131,15 @@ public class MovedStatics {
 
     public static void clearModelCache() {
         modelCache.clear();
+    }
+
+    public static int getVisibilityPlaneFor(int arg0, int arg1, int arg2, int arg3) {
+        if(arg2 != 0)
+            getVisibilityPlaneFor(-73, 123, 115, 98);
+        if((tile_flags[arg0][arg3][arg1] & 0x8) != 0)
+            return 0;
+        if(arg0 > 0 && (tile_flags[1][arg3][arg1] & 0x2) != 0)
+            return -1 + arg0;
+        return arg0;
     }
 }

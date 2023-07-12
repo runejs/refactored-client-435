@@ -75,7 +75,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
 
             // Memory argument
             if (params[3].equals("lowmem")) {
-                Class59.setLowMemory();
+                Game.setLowMemory();
             } else if (params[3].equals("highmem")) {
                 MovedStatics.setHighMemory();
             } else {

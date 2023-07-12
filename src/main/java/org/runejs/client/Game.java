@@ -90,6 +90,7 @@ public class Game {
     public static int destinationY = 0;
     public static Scene currentScene;
     public static int gameStatusCode = 0;
+    public static KeyFocusListener keyFocusListener = new KeyFocusListener();
     private static int gameServerPort;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
@@ -1237,7 +1238,7 @@ public class Game {
             SceneCluster.idleLogout--;
         if(aBoolean871) {
             aBoolean871 = false;
-            Class59.dropClient();
+            dropClient();
         } else {
             for(int i = 0; i < 100; i++) {
                 if(!IncomingPackets.parseIncomingPackets())
@@ -1371,7 +1372,7 @@ public class Game {
                     MusicSystem.processMusic();
                     IncomingPackets.cyclesSinceLastPacket++;
                     if (IncomingPackets.cyclesSinceLastPacket > 750) {
-                        Class59.dropClient();
+                        dropClient();
                     } else {
                         MovedStatics.animatePlayers(-1);
                         MovedStatics.animateNpcs();
@@ -1553,7 +1554,7 @@ public class Game {
                                 MovedStatics.anInt537 = 0;
                                 OutgoingPackets.buffer.currentPosition = 0;
                             } catch(java.io.IOException ioexception) {
-                                Class59.dropClient();
+                                dropClient();
                                 break;
                             }
                             break;
@@ -1940,6 +1941,23 @@ public class Game {
                 GameObject.frame = null;
             }
         }
+    }
+
+    public static void dropClient() {
+        if(SceneCluster.idleLogout > 0) {
+            // Instant logout
+            logout();
+        } else {
+            // Connection lost
+            MovedStatics.processGameStatus(40);
+            PlayerAppearance.lostConnectionSocket = MovedStatics.gameServerSocket;
+            MovedStatics.gameServerSocket = null;
+        }
+    }
+
+    public static void setLowMemory() {
+        Scene.lowMemory = true;
+        VertexNormal.lowMemory = true;
     }
 
     public void method35(int arg1) {

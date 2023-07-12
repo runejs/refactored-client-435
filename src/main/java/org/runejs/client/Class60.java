@@ -15,7 +15,6 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
-import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.scene.SceneCluster;
@@ -264,7 +263,7 @@ public class Class60 {
                     while(MovedStatics.method416()) {
                         boolean bool = false;
                         for(int i_19_ = 0; Native.supportedCharacters.length() > i_19_; i_19_++) {
-                            if(Native.supportedCharacters.charAt(i_19_) == Class59.anInt1388) {
+                            if(Native.supportedCharacters.charAt(i_19_) == MovedStatics.anInt1388) {
                                 bool = true;
                                 break;
                             }
@@ -275,7 +274,7 @@ public class Class60 {
                             if(MovedStatics.anInt2854 == 84 || MovedStatics.anInt2854 == 80)
                                 loginScreenFocus = 1;
                             if(bool && Native.username.length() < 18)
-                                Native.username = Native.username.addChar(Class59.anInt1388);
+                                Native.username = Native.username.addChar(MovedStatics.anInt1388);
                         } else if(loginScreenFocus == 1) {
                             if(MovedStatics.anInt2854 == 85 && Native.password.length() > 0)
                                 Native.password = Native.password.substring(0, Native.password.length() + -1);
@@ -287,7 +286,7 @@ public class Class60 {
                                 MovedStatics.processGameStatus(20);
                             }
                             if(bool && Native.password.length() < 20)
-                                Native.password = Native.password.addChar(Class59.anInt1388);
+                                Native.password = Native.password.addChar(MovedStatics.anInt1388);
                         }
                     }
                 }
@@ -350,7 +349,7 @@ public class Class60 {
                     i_93_ += 15;
                 }
 
-                Class59.imgLoginScreenButton.drawImage(-73 + i, i_92_ - 20);
+                MovedStatics.imgLoginScreenButton.drawImage(-73 + i, i_92_ - 20);
                 fontBold.drawShadowedStringCenter(English.login, i, 5 + i_92_, 16777215, true);
 
             } else if (loginScreenState == 2) {
@@ -380,11 +379,11 @@ public class Class60 {
                     width = fontBold.getStringWidth(English.password + starredPassword.substring(offset) + Native.justAnotherYellowBar);
                 }
                 fontBold.drawShadowedString(English.password + starredPassword.substring(offset) + (MovedStatics.pulseCycle % 40 < 20 & loginScreenFocus == 1 ? Native.justAnotherYellowBar : ""), 92, y1, true, 16777215);
-                Class59.imgLoginScreenButton.drawImage(-73 + drawX, y2 + -20);
+                MovedStatics.imgLoginScreenButton.drawImage(-73 + drawX, y2 + -20);
                 y1 += 15;
                 fontBold.drawShadowedStringCenter(English.login, drawX, y2 + 5, 16777215, true);
                 drawX = 260;
-                Class59.imgLoginScreenButton.drawImage(-73 + drawX, y2 + -20);
+                MovedStatics.imgLoginScreenButton.drawImage(-73 + drawX, y2 + -20);
                 fontBold.drawShadowedStringCenter(English.cancel, drawX, 5 + y2, 16777215, true);
             } else if (loginScreenState == 3) {
                 fontBold.drawShadowedStringCenter(English.createAFreeAccount, 180, 40, 16776960, true);
@@ -397,7 +396,7 @@ public class Class60 {
                     i_93_ += 15;
                 }
 
-                Class59.imgLoginScreenButton.drawImage(-73 + i, i_92_ - 20);
+                MovedStatics.imgLoginScreenButton.drawImage(-73 + i, i_92_ - 20);
                 fontBold.drawShadowedStringCenter(English.cancel, i, 5 + i_92_, 16777215, true);
             }
         }
@@ -596,7 +595,7 @@ public class Class60 {
             logo.drawImage(-128 + 382 + -(logo.imageWidth / 2), 18);
 
             MovedStatics.loginScreenBox = Game.method359(Native.titleBox, "", gameImageCacheArchive);
-            Class59.imgLoginScreenButton = Game.method359(Native.titleButton, "", gameImageCacheArchive);
+            MovedStatics.imgLoginScreenButton = Game.method359(Native.titleButton, "", gameImageCacheArchive);
             MovedStatics.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(gameImageCacheArchive, Native.runes, "");
 
             MovedStatics.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);

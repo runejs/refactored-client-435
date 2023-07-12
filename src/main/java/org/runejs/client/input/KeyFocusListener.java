@@ -111,13 +111,13 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 /* empty */
             }
         }
-        arg0.addKeyListener(Class59.keyFocusListener);
-        arg0.addFocusListener(Class59.keyFocusListener);
+        arg0.addKeyListener(Game.keyFocusListener);
+        arg0.addFocusListener(Game.keyFocusListener);
     }
 
     public static void removeListeners(Component arg1) {
-	    arg1.removeKeyListener(Class59.keyFocusListener);
-	    arg1.removeFocusListener(Class59.keyFocusListener);
+	    arg1.removeKeyListener(Game.keyFocusListener);
+	    arg1.removeFocusListener(Game.keyFocusListener);
 	}
 
     public static int resetFramesSinceKeyboardInput() {
@@ -139,13 +139,13 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     }
 
     public synchronized void focusLost(FocusEvent arg0) {
-        if (Class59.keyFocusListener != null) {
+        if (Game.keyFocusListener != null) {
             GameObjectDefinition.anInt2543 = -1;
         }
     }
 
     public synchronized void keyPressed(KeyEvent keyEvent) {
-        if (Class59.keyFocusListener != null) {
+        if (Game.keyFocusListener != null) {
             framesSinceKeyboardInput = 0;
             int obfuscatedKeyCode = keyEvent.getKeyCode();
             int eventKeyCode = keyEvent.getKeyCode();
@@ -179,7 +179,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             }
             if (obfuscatedKeyCode >= 0 || keyChar >= 0) {
                 int i_5_ = 0x7f & 1 + MovedStatics.anInt2598;
-                if (Class59.anInt1389 != i_5_) {
+                if (MovedStatics.anInt1389 != i_5_) {
                     MovedStatics.anIntArray2113[MovedStatics.anInt2598] = obfuscatedKeyCode;
                     MovedStatics.anIntArray2764[MovedStatics.anInt2598] = keyChar;
                     MovedStatics.anInt2598 = i_5_;
@@ -190,7 +190,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     }
 
     public synchronized void keyReleased(KeyEvent arg0) {
-        if (Class59.keyFocusListener != null) {
+        if (Game.keyFocusListener != null) {
             framesSinceKeyboardInput = 0;
             int i = arg0.getKeyCode();
 
