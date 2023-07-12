@@ -744,7 +744,7 @@ public class Game {
         GroundItemTile.walkableWidgetId = -1;
         Native.clickToContinueString = null;
         MovedStatics.lastContinueTextWidgetId = -1;
-        Class51.anInt1205 = -1;
+        Player.flashingTabId = -1;
         MovedStatics.anInt2118 = 0;
         Player.currentTabId = 3;
         Player.activePlayerAppearance.setPlayerAppearance(null, false, new int[5], -1);
@@ -980,17 +980,17 @@ public class Game {
             Minimap.renderMinimap();
 
 
-            if(Class51.anInt1205 != -1) {
+            if(Player.flashingTabId != -1) {
                 GameInterface.drawTabIcons = true;
             }
             if(GameInterface.drawTabIcons) {
-                if(Class51.anInt1205 != -1 && Class51.anInt1205 == Player.currentTabId) {
-                    Class51.anInt1205 = -1;
+                if(Player.flashingTabId != -1 && Player.flashingTabId == Player.currentTabId) {
+                    Player.flashingTabId = -1;
                     OutgoingPackets.sendMessage(new ClickFlashingTabIconOutboundMessage(Player.currentTabId));
                 }
                 GameInterface.drawTabIcons = false;
                 Class40_Sub3.showIconsRedrawnText = true;
-                MovedStatics.method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
+                MovedStatics.method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Player.flashingTabId : -1);
             }
             if(MovedStatics.redrawChatbox) {
                 Class40_Sub3.showIconsRedrawnText = true;
@@ -1023,17 +1023,17 @@ public class Game {
             Minimap.renderMinimap();
 
 
-            if(Class51.anInt1205 != -1) {
+            if(Player.flashingTabId != -1) {
                 GameInterface.drawTabIcons = true;
             }
             if(GameInterface.drawTabIcons) {
-                if(Class51.anInt1205 != -1 && Class51.anInt1205 == Player.currentTabId) {
-                    Class51.anInt1205 = -1;
+                if(Player.flashingTabId != -1 && Player.flashingTabId == Player.currentTabId) {
+                    Player.flashingTabId = -1;
                     OutgoingPackets.sendMessage(new ClickFlashingTabIconOutboundMessage(Player.currentTabId));
                 }
                 GameInterface.drawTabIcons = false;
                 Class40_Sub3.showIconsRedrawnText = true;
-                MovedStatics.method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Class51.anInt1205 : -1);
+                MovedStatics.method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Player.flashingTabId : -1);
             }
             if(MovedStatics.redrawChatbox) {
                 Class40_Sub3.showIconsRedrawnText = true;
