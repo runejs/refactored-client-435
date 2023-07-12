@@ -274,7 +274,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
             return;
         }
         MovedStatics.width = height;
-        Class39.anInt901 = clientVersion;
+        MovedStatics.clientVersion = clientVersion;
         MovedStatics.height = width;
         currentGameShell = this;
         if (Game.signlink == null) {
@@ -339,7 +339,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         try {
             int height = 503;
             int width = 765;
-            Class39.anInt901 = clientVersion;
+            MovedStatics.clientVersion = clientVersion;
             MovedStatics.width = width;
             MovedStatics.height = height;
             currentGameShell = this;

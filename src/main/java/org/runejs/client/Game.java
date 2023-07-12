@@ -625,7 +625,7 @@ public class Game {
             }
         }
         int i = 256;
-        System.arraycopy(Class39.aClass40_Sub5_Sub14_Sub4_918.pixels, 0, MovedStatics.flameLeftBackground.pixels, 0, 33920);
+        System.arraycopy(MovedStatics.aClass40_Sub5_Sub14_Sub4_918.pixels, 0, MovedStatics.flameLeftBackground.pixels, 0, 33920);
         int i_61_ = 0;
         int i_62_ = 1152;
         for (int i_63_ = 1; i - 1 > i_63_; i_63_++) {

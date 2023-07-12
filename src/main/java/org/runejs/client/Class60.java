@@ -447,7 +447,7 @@ public class Class60 {
                 return;
             MovedStatics.clearScreen = false;
 
-            Class39.aProducingGraphicsBuffer_907.drawGraphics(offsetX + 128, offsetY, graphics);
+            MovedStatics.aProducingGraphicsBuffer_907.drawGraphics(offsetX + 128, offsetY, graphics);
             Class51.aProducingGraphicsBuffer_1206.drawGraphics(offsetX + 202, offsetY + 371, graphics);
             MovedStatics.aProducingGraphicsBuffer_463.drawGraphics(offsetX, offsetY + 265, graphics);
             KeyFocusListener.aProducingGraphicsBuffer_1285.drawGraphics(offsetX + 562, offsetY + 265, graphics);
@@ -524,7 +524,7 @@ public class Class60 {
             Rasterizer.resetPixels();
             GameObject.flameRightBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
             Rasterizer.resetPixels();
-            Class39.aProducingGraphicsBuffer_907 = MovedStatics.createGraphicsBuffer(509, 171, arg0);
+            MovedStatics.aProducingGraphicsBuffer_907 = MovedStatics.createGraphicsBuffer(509, 171, arg0);
             Rasterizer.resetPixels();
             Class51.aProducingGraphicsBuffer_1206 = MovedStatics.createGraphicsBuffer(360, 132, arg0);
             Rasterizer.resetPixels();
@@ -546,7 +546,7 @@ public class Class60 {
             titleImg.drawInverse(0, 0);
             GameObject.flameRightBackground.prepareRasterizer();
             titleImg.drawInverse(-637, 0);
-            Class39.aProducingGraphicsBuffer_907.prepareRasterizer();
+            MovedStatics.aProducingGraphicsBuffer_907.prepareRasterizer();
             titleImg.drawInverse(-128, 0);
             Class51.aProducingGraphicsBuffer_1206.prepareRasterizer();
             titleImg.drawInverse(-202, -371);
@@ -571,7 +571,7 @@ public class Class60 {
             titleImg.drawInverse(382, 0);
             GameObject.flameRightBackground.prepareRasterizer();
             titleImg.drawInverse(-255, 0);
-            Class39.aProducingGraphicsBuffer_907.prepareRasterizer();
+            MovedStatics.aProducingGraphicsBuffer_907.prepareRasterizer();
             titleImg.drawInverse(254, 0);
             Class51.aProducingGraphicsBuffer_1206.prepareRasterizer();
             titleImg.drawInverse(180, -371);
@@ -591,7 +591,7 @@ public class Class60 {
             Rasterizer.drawUnfilledRectangle(0, 0, 42, 42, 0x242017);
             musicIcon.drawImage(4, 3);
             titleImg = MovedStatics.method1028(gameImageCacheArchive, Native.logo, "");
-            Class39.aProducingGraphicsBuffer_907.prepareRasterizer();
+            MovedStatics.aProducingGraphicsBuffer_907.prepareRasterizer();
             // UNCOMMENT LINE UNDER FOR LOGO
             // class40_sub5_sub14_sub4.drawImage(-128 + 382 + -(class40_sub5_sub14_sub4.imageWidth / 2), 18);
             // Comment line under to remove custom logo:
@@ -603,10 +603,10 @@ public class Class60 {
             Class59.imgLoginScreenButton = Game.method359(Native.titleButton, "", gameImageCacheArchive);
             MovedStatics.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(gameImageCacheArchive, Native.runes, "");
 
-            Class39.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
+            MovedStatics.aClass40_Sub5_Sub14_Sub4_918 = new ImageRGB(128, 265);
             MovedStatics.aClass40_Sub5_Sub14_Sub4_2043 = new ImageRGB(128, 265);
             for (int i = 0; i < 33920; i++)
-                Class39.aClass40_Sub5_Sub14_Sub4_918.pixels[i] = MovedStatics.flameLeftBackground.pixels[i];
+                MovedStatics.aClass40_Sub5_Sub14_Sub4_918.pixels[i] = MovedStatics.flameLeftBackground.pixels[i];
             for (int i = 0; i < 33920; i++)
                 MovedStatics.aClass40_Sub5_Sub14_Sub4_2043.pixels[i] = GameObject.flameRightBackground.pixels[i];
             Class51.anIntArray1198 = new int[256];

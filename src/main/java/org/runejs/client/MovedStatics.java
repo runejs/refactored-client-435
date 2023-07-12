@@ -282,6 +282,13 @@ public class MovedStatics {
      */
     public static IndexedImage tabHighlightImageTopMiddle;
     public static ImageRGB[] cursorCross;
+    /**
+     * Something to do with flames, maybe
+     */
+    public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;
+    public static ProducingGraphicsBuffer mapbackLeft;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_907;
+    public static int clientVersion;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -296,9 +303,9 @@ public class MovedStatics {
             Class40_Sub5_Sub15.loginScreenBox = null;
             Renderable.anIntArray2865 = null;
             MovedStatics.flameLeftBackground = null;
-            Class39.aProducingGraphicsBuffer_907 = null;
+            aProducingGraphicsBuffer_907 = null;
             aProducingGraphicsBuffer_2524 = null;
-            Class39.aClass40_Sub5_Sub14_Sub4_918 = null;
+            aClass40_Sub5_Sub14_Sub4_918 = null;
             MovedStatics.aClass40_Sub5_Sub14_Sub2Array535 = null;
             anIntArray3248 = null;
             MovedStatics.loginBoxGraphics = null;
@@ -587,7 +594,7 @@ public class MovedStatics {
                 string = string.replace('@', '_');
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
-                SignlinkNode signlinkNode = Actor.signlink.addType4Node(new URL(Actor.signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + Class39.anInt901 + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
+                SignlinkNode signlinkNode = Actor.signlink.addType4Node(new URL(Actor.signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + clientVersion + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
                 while (signlinkNode.status == 0)
                     threadSleep(1L);
                 if (signlinkNode.status != 1)
@@ -1662,7 +1669,7 @@ public class MovedStatics {
             Minimap.mapbackProducingGraphicsBuffer = null;
             RSCanvas.anIntArray62 = null;
             sidebarOffsets = null;
-            Class39.mapbackLeft = null;
+            mapbackLeft = null;
             tabHighlightImageBottomMiddle = null;
             tabBottomBack = null;
             Landscape.framePieceRight = null;
@@ -2144,7 +2151,7 @@ public class MovedStatics {
 
                 Landscape.framePieceRight.drawGraphics(0, 4, graphics);
                 chatboxRight.drawGraphics(0, 357, graphics);
-                Class39.mapbackLeft.drawGraphics(722, 4, graphics);
+                mapbackLeft.drawGraphics(722, 4, graphics);
                 GameObject.tabPieceLeft.drawGraphics(743, 205, graphics);
                 framePieceTop.drawGraphics(0, 0, graphics);
                 Class40_Sub7.mapBackRight.drawGraphics(516, 4, graphics);
@@ -2184,7 +2191,7 @@ public class MovedStatics {
             chatboxRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = method1028(arg2, Native.imgBackright1, Native.aClass1_305);
-            Class39.mapbackLeft = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            mapbackLeft = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = method1028(arg2, Native.imgBackright2, Native.aClass1_305);
             GameObject.tabPieceLeft = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
@@ -3047,5 +3054,29 @@ public class MovedStatics {
                 Player.npcs[i].facingActorIndex = -1;
         }
         processGameStatus(30);
+    }
+
+    public static void method451(Class40_Sub3 arg0) {
+        int i = 0;
+        int i_0_ = -1;
+        int i_1_ = 0;
+        if(arg0.anInt2027 == 0)
+            i = Game.currentScene.method122(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
+        int i_2_ = 0;
+        if(arg0.anInt2027 == 1)
+            i = Game.currentScene.method91(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
+        if(arg0.anInt2027 == 2)
+            i = Game.currentScene.getLocationHash(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
+        if(arg0.anInt2027 == 3)
+            i = Game.currentScene.getFloorDecorationHash(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038);
+        if (i != 0) {
+            int i_3_ = Game.currentScene.getArrangement(arg0.anInt2018, arg0.anInt2039, arg0.anInt2038, i);
+            i_0_ = (0x1fffe692 & i) >> 14;
+            i_2_ = (i_3_ & 0xde) >> 6;
+            i_1_ = i_3_ & 0x1f;
+        }
+        arg0.anInt2025 = i_2_;
+        arg0.anInt2028 = i_0_;
+        arg0.anInt2036 = i_1_;
     }
 }
