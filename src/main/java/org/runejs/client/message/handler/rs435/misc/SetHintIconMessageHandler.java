@@ -32,20 +32,20 @@ public class SetHintIconMessageHandler implements MessageHandler<SetHintIconInbo
 
     private void handlePositionType(SetHintIconInboundMessage message) {
         Player.headIconDrawType = 2;
-        ProducingGraphicsBuffer.hintIconPosX = message.positionInfo.x;
+        MovedStatics.hintIconPosX = message.positionInfo.x;
         MovedStatics.hintIconPosY = message.positionInfo.y;
         MovedStatics.hintIconPosZ = message.positionInfo.drawHeight;
-        Landscape.hintIconInnerPosX = message.positionInfo.drawOffsetX;
-        Class35.hintIconInnerPosY = message.positionInfo.drawOffsetY;
+        MovedStatics.hintIconInnerPosX = message.positionInfo.drawOffsetX;
+        MovedStatics.hintIconInnerPosY = message.positionInfo.drawOffsetY;
     }
 
     private void handleNPCType(SetHintIconInboundMessage message) {
         Player.headIconDrawType = 1;
-        MovedStatics.anInt1545 = message.actorInfo.id;
+        MovedStatics.hintIconNpcTarget = message.actorInfo.id;
     }
 
     private void handlePlayerType(SetHintIconInboundMessage message) {
         Player.headIconDrawType = 10;
-        ProducingGraphicsBuffer.anInt1623 = message.actorInfo.id;
+        MovedStatics.hintIconPlayerTarget = message.actorInfo.id;
     }
 }

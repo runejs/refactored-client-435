@@ -4,9 +4,6 @@ import org.runejs.client.*;
 import org.runejs.client.cache.bzip.BZip;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.io.Buffer;
-import org.runejs.client.media.renderable.actor.Npc;
-import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.node.Class40_Sub6;
 
@@ -32,7 +29,7 @@ public class CacheArchive {
     public static CacheArchive huffmanCacheArchive;
     public static CacheArchive jingleCacheArchive;
     public static CacheArchive clientScriptCacheArchive;
-    public static CacheArchive definitionCache;
+    public static int anInt1195 = 0;
 
     public byte[][] aByteArrayArray212;
     public int crc8;
@@ -58,10 +55,6 @@ public class CacheArchive {
     public boolean aBoolean1811;
     public CacheIndex dataIndex;
 
-    static {
-        Player.npcs = new Npc[32768];
-    }
-
     public CacheArchive(CacheIndex dataIndex, CacheIndex metaIndex, int cacheIndexId, boolean arg3, boolean arg4, boolean arg5) {
         aBoolean220 = arg4;
         aBoolean233 = arg3;
@@ -85,13 +78,13 @@ public class CacheArchive {
         int type = buffer.getUnsignedByte();
         int length = buffer.getIntBE();
 
-        if(length < 0 || Class51.anInt1195 != 0 && Class51.anInt1195 < length) {
+        if(length < 0 || anInt1195 != 0 && anInt1195 < length) {
             throw new RuntimeException();
         }
 
         if(type != 0) {
             int decompressedLength = buffer.getIntBE();
-            if(decompressedLength < 0 || Class51.anInt1195 != 0 && decompressedLength > Class51.anInt1195) {
+            if(decompressedLength < 0 || anInt1195 != 0 && decompressedLength > anInt1195) {
                 return new byte[100];
                 //throw new RuntimeException();
             }
@@ -228,7 +221,7 @@ public class CacheArchive {
             anInt1797 = -1;
             for(int i_2_ = 0; aBooleanArray1796.length > i_2_; i_2_++) {
                 if(anIntArray261[i_2_] > 0) {
-                    PacketBuffer.method513(i_2_, this, dataIndex, (byte) -28);
+                    MovedStatics.method513(i_2_, this, dataIndex, (byte) -28);
                     anInt1797 = i_2_;
                 }
             }
@@ -416,7 +409,7 @@ public class CacheArchive {
             is_21_ = aByteArrayArray212[arg0];
         else {
             is_21_ = new byte[aByteArrayArray212[arg0].length];
-            Class18.method278(aByteArrayArray212[arg0], 0, is_21_, 0, is_21_.length);
+            MovedStatics.method278(aByteArrayArray212[arg0], 0, is_21_, 0, is_21_.length);
             Buffer class40_sub1 = new Buffer(is_21_);
             class40_sub1.method483(arg2, class40_sub1.buffer.length, 5);
         }
@@ -449,7 +442,7 @@ public class CacheArchive {
                 int i_32_ = 0;
                 for(int i_33_ = 0; i_33_ < i; i_33_++) {
                     i_32_ += class40_sub1.getIntBE();
-                    Class18.method278(is_22_, i_30_, is[is_19_[i_33_]], is_25_[i_33_], i_32_);
+                    MovedStatics.method278(is_22_, i_30_, is[is_19_[i_33_]], is_25_[i_33_], i_32_);
                     is_25_[i_33_] += i_32_;
                     i_30_ += i_32_;
                 }

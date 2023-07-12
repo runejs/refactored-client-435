@@ -10,7 +10,6 @@ import org.runejs.client.util.BitUtils;
 
 public class CollisionMap {
     public static Object anObject162 = new Object();
-    public static int anInt165 = 0;
     public static byte[] aByteArray169 = new byte[]{95, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57};
     public static int someOtherPort;
 
@@ -35,25 +34,18 @@ public class CollisionMap {
     public static void method144(int arg0) {
 
         MovedStatics.fontMetrics = null;
-        Class17.helveticaBold = null;
+        MovedStatics.helveticaBold = null;
         if(arg0 == 12433)
-            Class26.loadingBoxImage = null;
+            MovedStatics.loadingBoxImage = null;
 
     }
 
 
-    public static int randomNoiseWeightedSum(int arg1, int arg2) {
-        int i = MovedStatics.randomNoise(-1 + arg1, -1 + arg2) + MovedStatics.randomNoise(1 + arg1, arg2 - 1) + MovedStatics.randomNoise(-1 + arg1, 1 + arg2) + MovedStatics.randomNoise(1 + arg1, arg2 + 1);
-        int i_126_ = MovedStatics.randomNoise(arg1 - 1, arg2) + MovedStatics.randomNoise(arg1 + 1, arg2) - (-MovedStatics.randomNoise(arg1, arg2 - 1) + -MovedStatics.randomNoise(arg1, 1 + arg2));
-        int i_127_ = MovedStatics.randomNoise(arg1, arg2);
-        return i / 16 - (-(i_126_ / 8) - i_127_ / 4);
-    }
-
-    public static void method543(CollisionMap arg0, int arg1, int arg2, int arg3, int arg4, Scene arg5, int arg6, int arg7, int arg8, int arg9) {
-        int i = MovedStatics.tile_height[arg2][arg9][arg8];
-        int i_0_ = MovedStatics.tile_height[arg2][1 + arg9][arg8];
-        int i_1_ = MovedStatics.tile_height[arg2][arg9][1 + arg8];
-        int i_2_ = MovedStatics.tile_height[arg2][arg9 + 1][arg8 + 1];
+    public static void addObject(CollisionMap arg0, int arg1, int arg2, int arg3, int arg4, Scene arg5, int arg7, int arg8, int arg9) {
+        int i = Landscape.tile_height[arg2][arg9][arg8];
+        int i_0_ = Landscape.tile_height[arg2][1 + arg9][arg8];
+        int i_1_ = Landscape.tile_height[arg2][arg9][1 + arg8];
+        int i_2_ = Landscape.tile_height[arg2][arg9 + 1][arg8 + 1];
         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
         int i_3_ = i_2_ + i_0_ + i + i_1_ >> 2;
         int i_4_ = (arg7 << 6) + arg4;
@@ -118,7 +110,7 @@ public class CollisionMap {
                 renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, arg7, i, 1, i_0_);
             else
                 renderable = new GameObject(arg1, 1, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
-            arg5.addWall(arg9, arg8, arg3, i_3_, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
+            arg5.addWall(arg9, arg8, arg3, i_3_, MovedStatics.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
             if (gameObjectDefinition.solid)
                 arg0.unmarkWall(arg9, arg8, arg4, arg7, gameObjectDefinition.walkable);
         } else if (arg4 == 2) {
@@ -141,7 +133,7 @@ public class CollisionMap {
                 renderable = new GameObject(arg1, 3, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             else
                 renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, arg7, i, 3, i_0_);
-            arg5.addWall(arg9, arg8, arg3, i_3_, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
+            arg5.addWall(arg9, arg8, arg3, i_3_, MovedStatics.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
             if (gameObjectDefinition.solid)
                 arg0.unmarkWall(arg9, arg8, arg4, arg7, gameObjectDefinition.walkable);
         } else if (arg4 == 9) {
@@ -185,7 +177,7 @@ public class CollisionMap {
                 arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, 512 * arg7, i_5_, renderable, i_4_, SceneCluster.anIntArray761[arg7]);
             } else if (arg4 == 5) {
                 int i_14_ = 16;
-                int i_15_ = arg5.method122(arg3, arg9, arg8);
+                int i_15_ = arg5.getWallHash(arg3, arg9, arg8);
                 if (i_15_ > 0)
                     i_14_ = GameObjectDefinition.getDefinition(i_15_ >> 14 & 0x7fff).setDecorDisplacement;
                 Renderable renderable;
@@ -193,30 +185,28 @@ public class CollisionMap {
                     renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
                 else
                     renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
-                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, MovedStatics.anIntArray666[arg7] * i_14_, ProducingGraphicsBuffer_Sub1.anIntArray2207[arg7] * i_14_, 512 * arg7, i_5_, renderable, i_4_, SceneCluster.anIntArray761[arg7]);
-            } else if (arg6 == -22078) {
-                if (arg4 == 6) {
-                    Renderable renderable;
-                    if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
-                        renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
-                    else
-                        renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
-                    arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 256);
-                } else if (arg4 == 7) {
-                    Renderable renderable;
-                    if (gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
-                        renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
-                    else
-                        renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
-                    arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 512);
-                } else if (arg4 == 8) {
-                    Renderable renderable;
-                    if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
-                        renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
-                    else
-                        renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
-                    arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 768);
-                }
+                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, MovedStatics.anIntArray666[arg7] * i_14_, MovedStatics.anIntArray2207[arg7] * i_14_, 512 * arg7, i_5_, renderable, i_4_, SceneCluster.anIntArray761[arg7]);
+            } else if (arg4 == 6) {
+                Renderable renderable;
+                if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
+                    renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
+                else
+                    renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
+                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 256);
+            } else if (arg4 == 7) {
+                Renderable renderable;
+                if (gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                    renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
+                else
+                    renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
+                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 512);
+            } else if (arg4 == 8) {
+                Renderable renderable;
+                if (gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
+                    renderable = new GameObject(arg1, 4, 0, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
+                else
+                    renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, 0, i, 4, i_0_);
+                arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, arg7, i_5_, renderable, i_4_, 768);
             }
         }
 

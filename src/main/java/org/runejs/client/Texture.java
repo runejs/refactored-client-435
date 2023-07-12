@@ -5,7 +5,6 @@ import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.node.Node;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer3D;
-import org.runejs.client.media.renderable.GameObject;
 
 public class Texture extends Node {
     /**
@@ -120,7 +119,7 @@ public class Texture extends Node {
         int i = textureSize * textureSize;
         pixels = new int[i * 4];
         for(int i_12_ = 0; i_12_ < spriteIds.length; i_12_++) {
-            IndexedImage image = GameObject.method769(2, imageArchive, spriteIds[i_12_]);
+            IndexedImage image = MovedStatics.method769(2, imageArchive, spriteIds[i_12_]);
             image.resizeToLibSize();
             byte[] imgPixels = image.imgPixels;
             int[] imgPalette = image.palette;

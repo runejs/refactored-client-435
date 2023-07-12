@@ -1,9 +1,6 @@
 package org.runejs.client.input;
 
-import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.frame.console.Console;
-import org.runejs.client.io.Buffer;
-import org.runejs.client.language.Native;
 import org.runejs.client.*;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.util.Signlink;
@@ -16,10 +13,8 @@ import java.awt.event.KeyListener;
 import java.lang.reflect.Method;
 
 public class KeyFocusListener implements KeyListener, FocusListener {
-    public static LinkedList aLinkedList_1278 = new LinkedList();
-    public static int[] crc8LookupTable = new int[256];
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1285;
     public static volatile int framesSinceKeyboardInput = 0;
+    public static int[] anIntArray1564 = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, 85, 80, 84, -1, 91, -1, -1, -1, 81, 82, 86, -1, -1, -1, -1, -1, -1, -1, -1, 0, -1, -1, -1, -1, 83, 104, 105, 103, 102, 96, 98, 97, 99, -1, -1, -1, -1, -1, -1, -1, 25, 16, 17, 18, 19, 20, 21, 22, 23, 24, -1, -1, -1, -1, -1, -1, -1, 48, 68, 66, 50, 34, 51, 52, 53, 39, 54, 55, 56, 70, 69, 40, 41, 32, 35, 49, 36, 38, 67, 33, 65, 37, 64, -1, -1, -1, -1, -1, 228, 231, 227, 233, 224, 219, 225, 230, 226, 232, 89, 87, -1, 88, 229, 90, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, -1, -1, -1, 101, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
 
     static {
         for (int divident = 0; divident < 256; divident++) {
@@ -31,75 +26,8 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                     currentByte = -306674912 ^ currentByte >>> 1;
                 }
             }
-            crc8LookupTable[divident] = currentByte;
+            MovedStatics.crc8LookupTable[divident] = currentByte;
         }
-    }
-
-    public static int method955(CacheArchive arg0) {
-        int i = 0;
-        if (arg0.method194(Native.invback, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.chatback, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.mapBack, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackbase1, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackbase2, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackhmid1, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackleft1, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackleft2, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackright1, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackright2, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBacktop1, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackvmid1, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackvmid2, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackvmid3, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackhmid2, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.redstone1, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.redstone2, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.redstone3, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.sideIcons, Native.aClass1_305)) {
-            i++;
-        }
-        return i;
-
-    }
-
-    public static String method956(Buffer arg1) {
-        return MovedStatics.method307(arg1, -1, 32767);
     }
 
     public static void addListeners(Component arg0) {
@@ -111,17 +39,61 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                 /* empty */
             }
         }
-        arg0.addKeyListener(Class59.keyFocusListener);
-        arg0.addFocusListener(Class59.keyFocusListener);
+        arg0.addKeyListener(Game.keyFocusListener);
+        arg0.addFocusListener(Game.keyFocusListener);
     }
 
     public static void removeListeners(Component arg1) {
-	    arg1.removeKeyListener(Class59.keyFocusListener);
-	    arg1.removeFocusListener(Class59.keyFocusListener);
+	    arg1.removeKeyListener(Game.keyFocusListener);
+	    arg1.removeFocusListener(Game.keyFocusListener);
 	}
 
     public static int resetFramesSinceKeyboardInput() {
         return framesSinceKeyboardInput++;
+    }
+
+    public static int getKeyChar(KeyEvent arg1) {
+        int keyChar = arg1.getKeyChar();
+        if(keyChar <= 0 || keyChar >= 256)
+            keyChar = -1;
+        return keyChar;
+    }
+
+    public static void method997() {
+        // (Jameskmonger) I think this is something to do with keycode remapping, though Im not sure
+        if (Signlink.javaVendor.toLowerCase().indexOf("microsoft") == -1) {
+            anIntArray1564[44] = 71;
+            anIntArray1564[45] = 26;
+            anIntArray1564[46] = 72;
+            anIntArray1564[47] = 73;
+            anIntArray1564[59] = 57;
+            anIntArray1564[61] = 27;
+            anIntArray1564[91] = 42;
+            anIntArray1564[92] = 74;
+            anIntArray1564[93] = 43;
+            if (Signlink.aMethod729 == null) {
+                anIntArray1564[192] = 58;
+                anIntArray1564[222] = 59;
+            } else {
+                anIntArray1564[192] = 28;
+                anIntArray1564[222] = 58;
+                anIntArray1564[520] = 59;
+            }
+        } else {
+            anIntArray1564[186] = 57;
+            anIntArray1564[187] = 27;
+            anIntArray1564[188] = 71;
+            anIntArray1564[189] = 26;
+            anIntArray1564[190] = 72;
+            anIntArray1564[191] = 73;
+            anIntArray1564[192] = 58;
+            anIntArray1564[219] = 42;
+            anIntArray1564[220] = 74;
+            anIntArray1564[221] = 43;
+            anIntArray1564[222] = 59;
+            anIntArray1564[223] = 28;
+        }
+
     }
 
     public void keyTyped(KeyEvent arg0) {
@@ -132,18 +104,18 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     }
 
     public synchronized void focusLost(FocusEvent arg0) {
-        if (Class59.keyFocusListener != null) {
+        if (Game.keyFocusListener != null) {
             GameObjectDefinition.anInt2543 = -1;
         }
     }
 
     public synchronized void keyPressed(KeyEvent keyEvent) {
-        if (Class59.keyFocusListener != null) {
+        if (Game.keyFocusListener != null) {
             framesSinceKeyboardInput = 0;
             int obfuscatedKeyCode = keyEvent.getKeyCode();
             int eventKeyCode = keyEvent.getKeyCode();
-            if (obfuscatedKeyCode >= 0 && MovedStatics.anIntArray1564.length > obfuscatedKeyCode) {
-                obfuscatedKeyCode = MovedStatics.anIntArray1564[obfuscatedKeyCode];
+            if (obfuscatedKeyCode >= 0 && anIntArray1564.length > obfuscatedKeyCode) {
+                obfuscatedKeyCode = anIntArray1564[obfuscatedKeyCode];
                 if ((0x80 & obfuscatedKeyCode) != 0) {
                     obfuscatedKeyCode = -1;
                 }
@@ -158,13 +130,13 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             if (eventKeyCode == KeyEvent.VK_BACK_SPACE || eventKeyCode == KeyEvent.VK_TAB || eventKeyCode == 0xA /* Unused key */ || eventKeyCode == KeyEvent.VK_ESCAPE || eventKeyCode == KeyEvent.VK_DELETE) {
                 keyChar = -1;
             } else {
-                keyChar = Class51.getKeyChar(keyEvent);
+                keyChar = getKeyChar(keyEvent);
             }
             if (eventKeyCode == 192 || eventKeyCode == 129) {
                 Console.console.consoleOpen = !Console.console.consoleOpen;
             }
             if (GameObjectDefinition.anInt2543 >= 0 && obfuscatedKeyCode >= 0) {
-                RSString.keyCodes[GameObjectDefinition.anInt2543] = obfuscatedKeyCode;
+                MovedStatics.keyCodes[GameObjectDefinition.anInt2543] = obfuscatedKeyCode;
                 GameObjectDefinition.anInt2543 = 0x7f & GameObjectDefinition.anInt2543 + 1;
                 if (GameObjectDefinition.anInt2543 == MovedStatics.anInt2183) {
                     GameObjectDefinition.anInt2543 = -1;
@@ -172,7 +144,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             }
             if (obfuscatedKeyCode >= 0 || keyChar >= 0) {
                 int i_5_ = 0x7f & 1 + MovedStatics.anInt2598;
-                if (Class59.anInt1389 != i_5_) {
+                if (MovedStatics.anInt1389 != i_5_) {
                     MovedStatics.anIntArray2113[MovedStatics.anInt2598] = obfuscatedKeyCode;
                     MovedStatics.anIntArray2764[MovedStatics.anInt2598] = keyChar;
                     MovedStatics.anInt2598 = i_5_;
@@ -183,17 +155,17 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     }
 
     public synchronized void keyReleased(KeyEvent arg0) {
-        if (Class59.keyFocusListener != null) {
+        if (Game.keyFocusListener != null) {
             framesSinceKeyboardInput = 0;
             int i = arg0.getKeyCode();
 
-            if (i < 0 || MovedStatics.anIntArray1564.length <= i) {
+            if (i < 0 || anIntArray1564.length <= i) {
                 i = -1;
             } else {
-                i = ~0x80 & MovedStatics.anIntArray1564[i];
+                i = ~0x80 & anIntArray1564[i];
             }
             if (GameObjectDefinition.anInt2543 >= 0 && i >= 0) {
-                RSString.keyCodes[GameObjectDefinition.anInt2543] = i ^ 0xffffffff;
+                MovedStatics.keyCodes[GameObjectDefinition.anInt2543] = i ^ 0xffffffff;
                 GameObjectDefinition.anInt2543 = 0x7f & 1 + GameObjectDefinition.anInt2543;
                 if (MovedStatics.anInt2183 == GameObjectDefinition.anInt2543) {
                     GameObjectDefinition.anInt2543 = -1;

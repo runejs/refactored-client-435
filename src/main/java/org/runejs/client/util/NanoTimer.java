@@ -1,6 +1,6 @@
 package org.runejs.client.util;
 
-import org.runejs.client.Class43;
+import org.runejs.client.MovedStatics;
 
 public class NanoTimer extends Timer {
     public long nextUpdate;
@@ -35,7 +35,7 @@ public class NanoTimer extends Timer {
             sleepNano = minSleepNano;
 
         // Sleeps the thread till the next due update
-        Class43.threadSleep(sleepNano / 1000000L);
+        MovedStatics.threadSleep(sleepNano / 1000000L);
 
         long currentNanoTime = System.nanoTime();
 

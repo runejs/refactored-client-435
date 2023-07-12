@@ -1,24 +1,10 @@
 package org.runejs.client.media.renderable.actor;
 
-import org.runejs.client.cache.def.GameObjectDefinition;
-import org.runejs.client.cache.media.ImageRGB;
-import org.runejs.client.cache.media.IndexedImage;
-import org.runejs.client.cache.media.TypeFace;
-import org.runejs.client.frame.Minimap;
-import org.runejs.client.io.Buffer;
-import org.runejs.client.language.English;
-import org.runejs.client.media.VertexNormal;
+import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.media.renderable.Renderable;
-import org.runejs.client.scene.tile.WallDecoration;
-import org.runejs.client.sound.SoundSystem;
-import org.runejs.client.util.Signlink;
 import org.runejs.client.*;
 
 public abstract class Actor extends Renderable {
-
-    public static int[] anIntArray3111;
-    public static int randomiserLightness = -16 + (int) (Math.random() * 33.0);
-    public static Signlink signlink;
     public static int actorUpdatingIndex = 0;
 
     public boolean[] aBooleanArray3072;
@@ -26,7 +12,7 @@ public abstract class Actor extends Renderable {
     public int anInt3074;
     public int turnRightAnimationId;
     public int anInt3077;
-    public int anInt3078;
+    public int chatTimer;
     public int turnAroundAnimationId;
     public int initialFaceDirection;
     public int forceMoveStartY;
@@ -103,7 +89,7 @@ public abstract class Actor extends Renderable {
         anInt3104 = 0;
         graphicId = -1;
         anInt3117 = 200;
-        anInt3078 = 100;
+        chatTimer = 100;
         anInt3120 = 0;
         playingAnimationDelay = 0;
         anInt3077 = -1;
@@ -130,240 +116,277 @@ public abstract class Actor extends Renderable {
         playingAnimation = -1;
     }
 
-    public static void method781(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        if(arg0 == 1850) {
-            int i = Npc.currentScene.method122(arg1, arg2, arg5);
+
+    public static void handleActorAnimation(Actor actor) {
+        if(actor.worldX < 128 || actor.worldY < 128 || actor.worldX >= 13184 || actor.worldY >= 13184) {
+            actor.playingAnimation = -1;
+            actor.forceMoveEndCycle = 0;
+            actor.forceMoveStartCycle = 0;
+            actor.graphicId = -1;
+            actor.worldX = actor.size * 64 + 128 * actor.pathY[0];
+            actor.worldY = actor.pathX[0] * 128 + 64 * actor.size;
+            actor.method790(0);
+        }
+        if(actor == Player.localPlayer && (actor.worldX < 1536 || actor.worldY < 1536 || actor.worldX >= 11776 || actor.worldY >= 11776)) {
+            actor.graphicId = -1;
+            actor.forceMoveStartCycle = 0;
+            actor.forceMoveEndCycle = 0;
+            actor.playingAnimation = -1;
+            actor.worldX = actor.pathY[0] * 128 + actor.size * 64;
+            actor.worldY = 64 * actor.size + actor.pathX[0] * 128;
+            actor.method790(0);
+        }
+        if(actor.forceMoveEndCycle > MovedStatics.pulseCycle)
+            updateForcedMovement(actor);
+        else if(actor.forceMoveStartCycle < MovedStatics.pulseCycle)
+            processWalkingStep(255, actor);
+        else
+            startForcedMovement(actor);
+        updateFacingDirection(actor);
+        Class40_Sub5_Sub15.updateAnimation(actor);
+    }
+
+    public static void updateForcedMovement(Actor actor) {
+        int deltaTime = actor.forceMoveEndCycle - MovedStatics.pulseCycle;
+        int destX = actor.forceMoveStartX * 128 + 64 * actor.size;
+        if(actor.forceMoveFaceDirection == 0)
+            actor.initialFaceDirection = 1024;
+        if(actor.forceMoveFaceDirection == 1)
+            actor.initialFaceDirection = 1536;
+        if(actor.forceMoveFaceDirection == 2)
+            actor.initialFaceDirection = 0;
+        int destY = actor.size * 64 + 128 * actor.forceMoveStartY;
+        actor.worldX += (destX - actor.worldX) / deltaTime;
+        if(actor.forceMoveFaceDirection == 3)
+            actor.initialFaceDirection = 512;
+        actor.anInt3074 = 0;
+        actor.worldY += (-actor.worldY + destY) / deltaTime;
+    }
+
+    public static void processWalkingStep(int arg0, Actor actor) {
+        actor.anInt3077 = actor.idleAnimation;
+        if(actor.anInt3109 == 0)
+            actor.anInt3074 = 0;
+        else {
+            if(actor.playingAnimation != -1 && actor.playingAnimationDelay == 0) {
+                AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(actor.playingAnimation);
+                if(actor.anInt3094 > 0 && animationSequence.precedenceAnimating == 0) {
+                    actor.anInt3074++;
+                    return;
+                }
+                if(actor.anInt3094 <= 0 && animationSequence.priority == 0) {
+                    actor.anInt3074++;
+                    return;
+                }
+            }
+            int i = actor.worldX;
+            int i_0_ = actor.pathY[-1 + actor.anInt3109] * 128 + 64 * actor.size;
+            int i_1_ = actor.worldY;
+            int i_2_ = 64 * actor.size + actor.pathX[actor.anInt3109 + -1] * 128;
+            if(-i + i_0_ > 256 || -i + i_0_ < -256 || -i_1_ + i_2_ > 256 || i_2_ + -i_1_ < -256) {
+                actor.worldX = i_0_;
+                actor.worldY = i_2_;
+            } else {
+                if(i < i_0_) {
+                    if(i_1_ < i_2_)
+                        actor.initialFaceDirection = 1280;
+                    else if(i_2_ < i_1_)
+                        actor.initialFaceDirection = 1792;
+                    else
+                        actor.initialFaceDirection = 1536;
+                } else if(i <= i_0_) {
+                    if(i_2_ <= i_1_) {
+                        if(i_2_ < i_1_)
+                            actor.initialFaceDirection = 0;
+                    } else
+                        actor.initialFaceDirection = 1024;
+                } else if(i_1_ < i_2_)
+                    actor.initialFaceDirection = 768;
+                else if(i_2_ < i_1_)
+                    actor.initialFaceDirection = 256;
+                else
+                    actor.initialFaceDirection = 512;
+                int i_3_ = actor.turnAroundAnimationId;
+                int i_4_ = 4;
+                if(actor.initialFaceDirection != actor.anInt3118 && actor.facingActorIndex == -1 && actor.anInt3113 != 0)
+                    i_4_ = 2;
+                if(actor.anInt3109 > 2)
+                    i_4_ = 6;
+                if(actor.anInt3109 > 3)
+                    i_4_ = 8;
+                int i_5_ = 0x7ff & -actor.anInt3118 + actor.initialFaceDirection;
+                if(i_5_ > 1024)
+                    i_5_ -= 2048;
+                if((i_5_ ^ 0xffffffff) > arg0 || i_5_ > 256) {
+                    if(i_5_ < 256 || i_5_ >= 768) {
+                        if(i_5_ >= -768 && i_5_ <= -256)
+                            i_3_ = actor.turnRightAnimationId;
+                    } else
+                        i_3_ = actor.turnLeftAnimationId;
+                } else
+                    i_3_ = actor.walkAnimationId;
+                if(i_3_ == -1)
+                    i_3_ = actor.walkAnimationId;
+                actor.anInt3077 = i_3_;
+                if(actor.anInt3074 > 0 && actor.anInt3109 > 1) {
+                    actor.anInt3074--;
+                    i_4_ = 8;
+                }
+                if(actor.aBooleanArray3072[-1 + actor.anInt3109])
+                    i_4_ <<= 1;
+                if(i_1_ < i_2_) {
+                    actor.worldY += i_4_;
+                    if(actor.worldY > i_2_)
+                        actor.worldY = i_2_;
+                } else if(i_1_ > i_2_) {
+                    actor.worldY -= i_4_;
+                    if(actor.worldY < i_2_)
+                        actor.worldY = i_2_;
+                }
+                if(i_4_ >= 8 && actor.anInt3077 == actor.walkAnimationId && actor.runAnimationId != -1)
+                    actor.anInt3077 = actor.runAnimationId;
+                if(i < i_0_) {
+                    actor.worldX += i_4_;
+                    if(i_0_ < actor.worldX)
+                        actor.worldX = i_0_;
+                } else if(i_0_ < i) {
+                    actor.worldX -= i_4_;
+                    if(i_0_ > actor.worldX)
+                        actor.worldX = i_0_;
+                }
+                if(actor.worldX == i_0_ && i_2_ == actor.worldY) {
+                    if(actor.anInt3094 > 0)
+                        actor.anInt3094--;
+                    actor.anInt3109--;
+                }
+            }
+        }
+    }
+
+    public static void updateFacingDirection(Actor actor) {
+        if(actor.anInt3113 != 0) {
+            if(actor.facingActorIndex != -1 && actor.facingActorIndex < 32768) {
+                Npc npc = Player.npcs[actor.facingActorIndex];
+                if(npc != null) {
+                    int deltaY = -npc.worldY + actor.worldY;
+                    int deltaX = -npc.worldX + actor.worldX;
+                    if(deltaX != 0 || deltaY != 0)
+                        actor.initialFaceDirection = 0x7ff & (int) (325.949 * Math.atan2((double) deltaX, (double) deltaY));
+                }
+            }
+            if(actor.facingActorIndex >= 32768) {
+                int i = -32768 + actor.facingActorIndex;
+                if(i == Player.localPlayerId)
+                    i = 2047;
+                Player player = Player.trackedPlayers[i];
+                if(player != null) {
+                    int deltaX = actor.worldX - player.worldX;
+                    int deltaY = -player.worldY + actor.worldY;
+                    if(deltaX != 0 || deltaY != 0)
+                        actor.initialFaceDirection = (int) (Math.atan2((double) deltaX, (double) deltaY) * 325.949) & 0x7ff;
+                }
+            }
+            if((actor.facePositionX != 0 || actor.facePositionY != 0) && (actor.anInt3109 == 0 || actor.anInt3074 > 0)) {
+                int deltaY = actor.worldY - 64 * (actor.facePositionY - MovedStatics.baseY - MovedStatics.baseY);
+                int deltaX = -((-MovedStatics.baseX + actor.facePositionX + -MovedStatics.baseX) * 64) + actor.worldX;
+                if(deltaX != 0 || deltaY != 0)
+                    actor.initialFaceDirection = 0x7ff & (int) (325.949 * Math.atan2((double) deltaX, (double) deltaY));
+                actor.facePositionY = 0;
+                actor.facePositionX = 0;
+            }
+            int i = 0x7ff & actor.initialFaceDirection + -actor.anInt3118;
             if(i != 0) {
-                int i_0_ = Npc.currentScene.getArrangement(arg1, arg2, arg5, i);
-                int i_1_ = 0x1f & i_0_;
-                int i_2_ = 0x3 & i_0_ >> 6;
-                int i_3_ = arg3;
-                if(i > 0)
-                    i_3_ = arg4;
-                int i_4_ = 4 * (-arg5 + 103) * 512 + 24624 + 4 * arg2;
-                int i_5_ = i >> 14 & 0x7fff;
-                int[] is = Minimap.minimapImage.pixels;
-                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_5_);
-                if(gameObjectDefinition.mapSceneID == -1) {
-                    if(i_1_ == 0 || i_1_ == 2) {
-                        if(i_2_ == 0) {
-                            is[i_4_] = i_3_;
-                            is[512 + i_4_] = i_3_;
-                            is[1024 + i_4_] = i_3_;
-                            is[1536 + i_4_] = i_3_;
-                        } else if(i_2_ == 1) {
-                            is[i_4_] = i_3_;
-                            is[i_4_ + 1] = i_3_;
-                            is[2 + i_4_] = i_3_;
-                            is[i_4_ + 3] = i_3_;
-                        } else if(i_2_ == 2) {
-                            is[3 + i_4_] = i_3_;
-                            is[3 + i_4_ + 512] = i_3_;
-                            is[1024 + i_4_ + 3] = i_3_;
-                            is[i_4_ + 1539] = i_3_;
-                        } else if(i_2_ == 3) {
-                            is[i_4_ + 1536] = i_3_;
-                            is[1536 + i_4_ + 1] = i_3_;
-                            is[1536 + i_4_ + 2] = i_3_;
-                            is[3 + i_4_ + 1536] = i_3_;
-                        }
+                actor.anInt3097++;
+                if(i > 1024) {
+                    actor.anInt3118 -= actor.anInt3113;
+                    boolean bool = true;
+                    if(actor.anInt3113 > i || 2048 + -actor.anInt3113 < i) {
+                        bool = false;
+                        actor.anInt3118 = actor.initialFaceDirection;
                     }
-                    if(i_1_ == 3) {
-                        if(i_2_ != 0) {
-                            if(i_2_ != 1) {
-                                if(i_2_ != 2) {
-                                    if(i_2_ == 3)
-                                        is[i_4_ + 1536] = i_3_;
-                                } else
-                                    is[3 + i_4_ + 1536] = i_3_;
-                            } else
-                                is[i_4_ + 3] = i_3_;
-                        } else
-                            is[i_4_] = i_3_;
-                    }
-                    if(i_1_ == 2) {
-                        if(i_2_ == 3) {
-                            is[i_4_] = i_3_;
-                            is[512 + i_4_] = i_3_;
-                            is[i_4_ + 1024] = i_3_;
-                            is[1536 + i_4_] = i_3_;
-                        } else if(i_2_ == 0) {
-                            is[i_4_] = i_3_;
-                            is[1 + i_4_] = i_3_;
-                            is[i_4_ + 2] = i_3_;
-                            is[3 + i_4_] = i_3_;
-                        } else if(i_2_ == 1) {
-                            is[i_4_ + 3] = i_3_;
-                            is[512 + 3 + i_4_] = i_3_;
-                            is[i_4_ + 1027] = i_3_;
-                            is[1536 + 3 + i_4_] = i_3_;
-                        } else if(i_2_ == 2) {
-                            is[1536 + i_4_] = i_3_;
-                            is[1537 + i_4_] = i_3_;
-                            is[i_4_ + 1538] = i_3_;
-                            is[1536 + i_4_ + 3] = i_3_;
-                        }
+                    if(actor.idleAnimation == actor.anInt3077 && (actor.anInt3097 > 25 || bool)) {
+                        if(actor.standTurnAnimationId != -1)
+                            actor.anInt3077 = actor.standTurnAnimationId;
+                        else
+                            actor.anInt3077 = actor.walkAnimationId;
                     }
                 } else {
-                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
-                    if(class40_sub5_sub14_sub2 != null) {
-                        int i_6_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
-                        int i_7_ = (gameObjectDefinition.sizeY * 4 + -class40_sub5_sub14_sub2.imgHeight) / 2;
-                        class40_sub5_sub14_sub2.drawImage(48 + 4 * arg2 + i_6_, i_7_ + 48 + (104 + -arg5 - gameObjectDefinition.sizeY) * 4);
+                    actor.anInt3118 += actor.anInt3113;
+                    boolean bool = true;
+                    if(i < actor.anInt3113 || i > -actor.anInt3113 + 2048) {
+                        actor.anInt3118 = actor.initialFaceDirection;
+                        bool = false;
                     }
-                }
-            }
-            i = Npc.currentScene.getLocationHash(arg1, arg2, arg5);
-            if(i != 0) {
-                int i_8_ = Npc.currentScene.getArrangement(arg1, arg2, arg5, i);
-                int i_9_ = 0x7fff & i >> 14;
-                int i_10_ = (i_8_ & 0xf4) >> 6;
-                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
-                int i_11_ = i_8_ & 0x1f;
-                if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
-                    if(class40_sub5_sub14_sub2 != null) {
-                        int i_12_ = (-class40_sub5_sub14_sub2.imgHeight + gameObjectDefinition.sizeY * 4) / 2;
-                        int i_13_ = (gameObjectDefinition.sizeX * 4 + -class40_sub5_sub14_sub2.imgWidth) / 2;
-                        class40_sub5_sub14_sub2.drawImage(i_13_ + arg2 * 4 + 48, 48 - (-(4 * (-arg5 + 104 + -gameObjectDefinition.sizeY)) + -i_12_));
-                    }
-                } else if(i_11_ == 9) {
-                    int[] is = Minimap.minimapImage.pixels;
-                    int i_14_ = 15658734;
-                    if(i > 0)
-                        i_14_ = 15597568;
-                    int i_15_ = (-(arg5 * 512) + 52736) * 4 + arg2 * 4 + 24624;
-                    if(i_10_ == 0 || i_10_ == 2) {
-                        is[1536 + i_15_] = i_14_;
-                        is[1024 + i_15_ + 1] = i_14_;
-                        is[514 + i_15_] = i_14_;
-                        is[3 + i_15_] = i_14_;
-                    } else {
-                        is[i_15_] = i_14_;
-                        is[513 + i_15_] = i_14_;
-                        is[2 + i_15_ + 1024] = i_14_;
-                        is[1536 + i_15_ + 3] = i_14_;
-                    }
-                }
-            }
-            i = Npc.currentScene.getFloorDecorationHash(arg1, arg2, arg5);
-            if(i != 0) {
-                int i_16_ = (i & 0x1fffd9fb) >> 14;
-                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);
-                if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
-                    if(class40_sub5_sub14_sub2 != null) {
-                        int i_17_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
-                        int i_18_ = (-class40_sub5_sub14_sub2.imgHeight + 4 * gameObjectDefinition.sizeY) / 2;
-                        class40_sub5_sub14_sub2.drawImage(4 * arg2 + 48 + i_17_, i_18_ + (104 - (arg5 + gameObjectDefinition.sizeY)) * 4 + 48);
-                    }
-                }
-            }
-        }
-    }
-
-    public static void clearCaches() {
-        ImageRGB.imageRgbCache.clear();
-        WallDecoration.modelCache.clear();
-        TypeFace.typeFaceCache.clear();
-    }
-
-
-
-    public static void method789(int chunkLocalX, int chunkY, int chunkX, int chunkLocalY, int level) {
-        if(chunkX != Class51.regionX || chunkY != Class17.regionY || MovedStatics.onBuildTimePlane != level && VertexNormal.lowMemory) {
-            MovedStatics.onBuildTimePlane = level;
-            Class51.regionX = chunkX;
-            if(!VertexNormal.lowMemory)
-                MovedStatics.onBuildTimePlane = 0;
-            Class17.regionY = chunkY;
-            MovedStatics.processGameStatus(25);
-            MovedStatics.method940(English.loadingPleaseWait, false, null);
-            int i = Class26.baseY;
-            int i_33_ = MovedStatics.baseX;
-            MovedStatics.baseX = (chunkX - 6) * 8;
-            int i_34_ = MovedStatics.baseX + -i_33_;
-            if(-1000 != -1000)
-                method781(14, 98, 96, -85, -118, 89);
-            i_33_ = MovedStatics.baseX;
-            Class26.baseY = (-6 + chunkY) * 8;
-            int i_35_ = Class26.baseY + -i;
-            i = Class26.baseY;
-            for(int i_36_ = 0; i_36_ < 32768; i_36_++) {
-                Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_36_];
-                if(class40_sub5_sub17_sub4_sub2 != null) {
-                    for(int i_37_ = 0; i_37_ < 10; i_37_++) {
-                        class40_sub5_sub17_sub4_sub2.pathY[i_37_] -= i_34_;
-                        class40_sub5_sub17_sub4_sub2.pathX[i_37_] -= i_35_;
-                    }
-                    class40_sub5_sub17_sub4_sub2.worldX -= 128 * i_34_;
-                    class40_sub5_sub17_sub4_sub2.worldY -= i_35_ * 128;
-                }
-            }
-            for(int i_38_ = 0; i_38_ < 2048; i_38_++) {
-                Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_38_];
-                if(class40_sub5_sub17_sub4_sub1 != null) {
-                    for(int i_39_ = 0; i_39_ < 10; i_39_++) {
-                        class40_sub5_sub17_sub4_sub1.pathY[i_39_] -= i_34_;
-                        class40_sub5_sub17_sub4_sub1.pathX[i_39_] -= i_35_;
-                    }
-                    class40_sub5_sub17_sub4_sub1.worldY -= 128 * i_35_;
-                    class40_sub5_sub17_sub4_sub1.worldX -= 128 * i_34_;
-                }
-            }
-            Player.worldLevel = level;
-            int i_40_ = 0;
-            Player.localPlayer.method787(chunkLocalY, false, chunkLocalX);
-            int i_41_ = 104;
-            int i_42_ = 1;
-            if(i_34_ < 0) {
-                i_41_ = -1;
-                i_40_ = 103;
-                i_42_ = -1;
-            }
-            int i_43_ = 104;
-            int i_44_ = 0;
-            int i_45_ = 1;
-            if(i_35_ < 0) {
-                i_44_ = 103;
-                i_43_ = -1;
-                i_45_ = -1;
-            }
-            for(int i_46_ = i_40_; i_41_ != i_46_; i_46_ += i_42_) {
-                for(int i_47_ = i_44_; i_43_ != i_47_; i_47_ += i_45_) {
-                    int i_48_ = i_34_ + i_46_;
-                    int i_49_ = i_35_ + i_47_;
-                    for(int i_50_ = 0; i_50_ < 4; i_50_++) {
-                        if(i_48_ < 0 || i_49_ < 0 || i_48_ >= 104 || i_49_ >= 104)
-                            MovedStatics.groundItems[i_50_][i_46_][i_47_] = null;
+                    if(actor.anInt3077 == actor.idleAnimation && (actor.anInt3097 > 25 || bool)) {
+                        if(actor.anInt3083 != -1)
+                            actor.anInt3077 = actor.anInt3083;
                         else
-                            MovedStatics.groundItems[i_50_][i_46_][i_47_] = MovedStatics.groundItems[i_50_][i_48_][i_49_];
+                            actor.anInt3077 = actor.walkAnimationId;
                     }
                 }
-            }
-            for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst()) {
-                class40_sub3.anInt2038 -= i_35_;
-                class40_sub3.anInt2039 -= i_34_;
-                if(class40_sub3.anInt2039 < 0 || class40_sub3.anInt2038 < 0 || class40_sub3.anInt2039 >= 104 || class40_sub3.anInt2038 >= 104)
-                    class40_sub3.unlink();
-            }
-            Buffer.anInt1985 = -1;
-            if(MovedStatics.destinationX != 0) {
-                MovedStatics.destinationX -= i_34_;
-                Game.destinationY -= i_35_;
-            }
-            Player.cutsceneActive = false;
-            SoundSystem.reset();
-            MovedStatics.aLinkedList_1332.clear();
-            Class43.projectileQueue.clear();
+                actor.anInt3118 &= 0x7ff;
+            } else
+                actor.anInt3097 = 0;
         }
     }
+
+    public static void startForcedMovement(Actor actor) {
+        if(MovedStatics.pulseCycle == actor.forceMoveStartCycle || actor.playingAnimation == -1 || actor.playingAnimationDelay != 0 ||
+                actor.anInt3115 + 1 > AnimationSequence.getAnimationSequence(actor.playingAnimation).frameLengths[actor.anInt3104]) {
+            int duration = -actor.forceMoveEndCycle + actor.forceMoveStartCycle;
+            int deltaTime = -actor.forceMoveEndCycle + MovedStatics.pulseCycle;
+            int x0 = actor.forceMoveStartX * 128 + 64 * actor.size;
+            int y0 = actor.size * 64 + 128 * actor.forceMoveStartY;
+            int x1 = actor.size * 64 + 128 * actor.forceMoveEndX;
+            int y1 = 128 * actor.forceMoveEndY + actor.size * 64;
+            actor.worldX = ((duration - deltaTime) * x0 + deltaTime * x1) / duration;
+            actor.worldY = (y0 * (duration + -deltaTime) + deltaTime * y1) / duration;
+        }
+        if(actor.forceMoveFaceDirection == 0)
+            actor.initialFaceDirection = 1024;
+        actor.anInt3074 = 0;
+        if(actor.forceMoveFaceDirection == 1)
+            actor.initialFaceDirection = 1536;
+        if(actor.forceMoveFaceDirection == 2)
+            actor.initialFaceDirection = 0;
+        if(actor.forceMoveFaceDirection == 3)
+            actor.initialFaceDirection = 512;
+        actor.anInt3118 = actor.initialFaceDirection;
+    }
+
+    /**
+     * Decrease the time remaining for all actor chats.
+     */
+	public static void tickChatTimers() {
+	    for(int i = -1; Player.localPlayerCount > i; i++) {
+	        int pid;
+	        if(i == -1)
+	            pid = 2047;
+	        else
+	            pid = Player.trackedPlayerIndices[i];
+	        Player player = Player.trackedPlayers[pid];
+	        if(player != null && player.chatTimer > 0) {
+	            player.chatTimer--;
+	            if(player.chatTimer == 0)
+	                player.forcedChatMessage = null;
+	        }
+	    }
+	    for(int i = 0; i < Player.npcCount; i++) {
+	        int nid = Player.npcIds[i];
+	        Npc npc = Player.npcs[nid];
+	        if(npc != null && npc.chatTimer > 0) {
+	            npc.chatTimer--;
+	            if(npc.chatTimer == 0)
+	                npc.forcedChatMessage = null;
+	        }
+	    }
+	}
 
     public void move(int moveDirection, boolean isRunning) {
         int i = pathY[0];
         int i_19_ = pathX[0];
 
-        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation).priority == 1)
+        if(playingAnimation != -1 && AnimationSequence.getAnimationSequence(playingAnimation).priority == 1)
             playingAnimation = -1;
         if(anInt3109 < 9)
             anInt3109++;
@@ -434,7 +457,7 @@ public abstract class Actor extends Renderable {
     }
 
     public void method787(int arg0, boolean arg2, int arg3) {
-        if(playingAnimation != -1 && ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation).priority == 1)
+        if(playingAnimation != -1 && AnimationSequence.getAnimationSequence(playingAnimation).priority == 1)
             playingAnimation = -1;
         if(!arg2) {
             int i = -pathY[0] + arg3;

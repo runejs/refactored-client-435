@@ -1,6 +1,6 @@
 package org.runejs.client.cache;
 
-import org.runejs.client.Class18;
+import org.runejs.client.MovedStatics;
 import org.runejs.client.SizedAccessFile;
 
 import java.io.EOFException;
@@ -53,7 +53,7 @@ public class CacheFileChannel {
             if(aLong1593 != -1L && aLong1593 + (long) aByteArray1592.length < (long) arg2 + readIndex) {
                 int i = (int) (aLong1593 - (readIndex - (long) aByteArray1592.length));
                 arg2 -= i;
-                Class18.method278(arg3, arg0, aByteArray1592, (int) (-aLong1593 + readIndex), i);
+                MovedStatics.method278(arg3, arg0, aByteArray1592, (int) (-aLong1593 + readIndex), i);
                 readIndex += (long) i;
                 anInt1595 = aByteArray1592.length;
                 arg0 += i;
@@ -81,13 +81,13 @@ public class CacheFileChannel {
                     l = (long) anInt1589 + aLong1596;
                 if(l_0_ > -1 && l_0_ < l) {
                     int i = (int) (l - l_0_);
-                    Class18.method278(arg3, (int) ((long) arg0 + l_0_ - readIndex), aByteArray1583, (int) (l_0_ + -aLong1596), i);
+                    MovedStatics.method278(arg3, (int) ((long) arg0 + l_0_ - readIndex), aByteArray1583, (int) (l_0_ + -aLong1596), i);
                 }
                 readIndex += (long) arg2;
             } else if(arg2 > 0) {
                 if(aLong1593 == -1)
                     aLong1593 = readIndex;
-                Class18.method278(arg3, arg0, aByteArray1592, (int) (readIndex + -aLong1593), arg2);
+                MovedStatics.method278(arg3, arg0, aByteArray1592, (int) (readIndex + -aLong1593), arg2);
                 readIndex += (long) arg2;
                 if((long) anInt1595 < -aLong1593 + readIndex)
                     anInt1595 = (int) (-aLong1593 + readIndex);
@@ -103,7 +103,7 @@ public class CacheFileChannel {
             if(offset + length > b.length)
                 throw new ArrayIndexOutOfBoundsException(length + offset - b.length);
             if(aLong1593 != -1 && aLong1593 <= readIndex && (long) length + readIndex <= (long) anInt1595 + aLong1593) {
-                Class18.method278(aByteArray1592, (int) (readIndex - aLong1593), b, offset, length);
+                MovedStatics.method278(aByteArray1592, (int) (readIndex - aLong1593), b, offset, length);
                 readIndex += (long) length;
                 return;
             }
@@ -114,7 +114,7 @@ public class CacheFileChannel {
                 int i_3_ = (int) ((long) anInt1589 + -readIndex + aLong1596);
                 if(i_3_ > length)
                     i_3_ = length;
-                Class18.method278(aByteArray1583, (int) (-aLong1596 + readIndex), b, offset, i_3_);
+                MovedStatics.method278(aByteArray1583, (int) (-aLong1596 + readIndex), b, offset, i_3_);
                 offset += i_3_;
                 readIndex += (long) i_3_;
                 length -= i_3_;
@@ -125,7 +125,7 @@ public class CacheFileChannel {
                     readRemaining();
                     if(i_4_ > anInt1589)
                         i_4_ = anInt1589;
-                    Class18.method278(aByteArray1583, 0, b, offset, i_4_);
+                    MovedStatics.method278(aByteArray1583, 0, b, offset, i_4_);
                     readIndex += (long) i_4_;
                     offset += i_4_;
                     length -= i_4_;
@@ -167,7 +167,7 @@ public class CacheFileChannel {
                     l_8_ = aLong1593;
                 if(l_8_ > -1L && l_7_ > l_8_) {
                     int i_9_ = (int) (-l_8_ + l_7_);
-                    Class18.method278(aByteArray1592, (int) (l_8_ - aLong1593), b, (int) (-l + l_8_) + i_2_, i_9_);
+                    MovedStatics.method278(aByteArray1592, (int) (l_8_ - aLong1593), b, (int) (-l + l_8_) + i_2_, i_9_);
                     if(readIndex < l_7_) {
                         length -= l_7_ - readIndex;
                         readIndex = l_7_;
@@ -240,7 +240,7 @@ public class CacheFileChannel {
 
             if(l > -1L && l < l_10_) {
                 int i = (int) (-l + l_10_);
-                Class18.method278(aByteArray1592, (int) (-aLong1593 + l), aByteArray1583, (int) (l - aLong1596), i);
+                MovedStatics.method278(aByteArray1592, (int) (-aLong1593 + l), aByteArray1583, (int) (l - aLong1596), i);
             }
 
             anInt1595 = 0;

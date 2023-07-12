@@ -7,15 +7,19 @@ import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.node.CachedNode;
+import org.runejs.client.node.NodeCache;
 
 public class AnimationSequence extends CachedNode {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
     public static int anInt2480 = 0;
     public static CacheArchive aCacheArchive_2484;
+    public static NodeCache animationSequenceCache = new NodeCache(64);
+    public static NodeCache aClass9_998 = new NodeCache(100);
+    public static CacheArchive aCacheArchive_2162;
+    public static CacheArchive aCacheArchive_2364;
 
     public int[] frameLengths;
     public int precedenceAnimating = -1;
@@ -42,7 +46,7 @@ public class AnimationSequence extends CachedNode {
 
     public static boolean method596(int arg0, int arg1, byte junk, int arg3) {
         int i = 0x7fff & arg1 >> 14;
-        int i_14_ = Npc.currentScene.getArrangement(Player.worldLevel, arg0, arg3, arg1);
+        int i_14_ = Game.currentScene.getArrangement(Player.worldLevel, arg0, arg3, arg1);
         if(i_14_ == -1)
             return false;
         int orientation = 0x3 & i_14_ >> 6;
@@ -66,20 +70,72 @@ public class AnimationSequence extends CachedNode {
             Pathfinding.doObjectWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], arg0, arg3, i_18_, i_19_, i_17_, 0, 0);
         }
         GameInterface.crossX = MouseHandler.clickX;
-        LinkedList.crossType = 2;
+        MovedStatics.crossType = 2;
         GameInterface.crossY = MouseHandler.clickY;
         MovedStatics.crossIndex = 0;
         return true;
     }
 
     private static Class40_Sub5_Sub15 method960(int arg1) {
-        Class40_Sub5_Sub15 class40_sub5_sub15 = (Class40_Sub5_Sub15) MovedStatics.aClass9_998.get((long) arg1);
+        Class40_Sub5_Sub15 class40_sub5_sub15 = (Class40_Sub5_Sub15) aClass9_998.get((long) arg1);
         if(class40_sub5_sub15 != null)
             return class40_sub5_sub15;
-        class40_sub5_sub15 = Class35.method421(MovedStatics.aCacheArchive_2364, arg1, ClientScriptRunner.aCacheArchive_2162, false);
+        class40_sub5_sub15 = method421(aCacheArchive_2364, arg1, aCacheArchive_2162, false);
         if(class40_sub5_sub15 != null)
-            MovedStatics.aClass9_998.put((long) arg1, class40_sub5_sub15);
+            aClass9_998.put((long) arg1, class40_sub5_sub15);
         return class40_sub5_sub15;
+    }
+
+    private static Class40_Sub5_Sub15 method421(CacheArchive skeletonArchive, int arg2, CacheArchive skinArchive, boolean arg4) {
+        boolean bool = true;
+        int[] is = skeletonArchive.method192(arg2, true);
+        for(int i = 0; is.length > i; i++) {
+            byte[] is_0_ = skeletonArchive.method182(is[i], arg2);
+            if(is_0_ == null)
+                bool = false;
+            else {
+                int i_1_ = 0xff & is_0_[1] | (0xff & is_0_[0]) << 8;
+                byte[] is_2_;
+                if(arg4)
+                    is_2_ = skinArchive.method182(i_1_, 0);
+                else
+                    is_2_ = skinArchive.method182(0, i_1_);
+                if(is_2_ == null)
+                    bool = false;
+            }
+        }
+        if(!bool)
+            return null;
+        try {
+            return new Class40_Sub5_Sub15(skeletonArchive, skinArchive, arg2, arg4);
+        } catch(Exception exception) {
+            return null;
+        }
+    }
+
+    public static AnimationSequence getAnimationSequence(int animationId) {
+        AnimationSequence animationSequence = (AnimationSequence) animationSequenceCache.get((long) animationId);
+
+        if(animationSequence != null)
+            return animationSequence;
+        byte[] is = aCacheArchive_2484.getFile(12, animationId);
+        animationSequence = new AnimationSequence();
+        if(is != null)
+            animationSequence.decodeAllAnimationSequences(new Buffer(is));
+        animationSequence.method591();
+        animationSequenceCache.put((long) animationId, animationSequence);
+        return animationSequence;
+    }
+
+    public static void clearAnimationCache() {
+        animationSequenceCache.clear();
+        aClass9_998.clear();
+    }
+
+    public static void initializeAnimationCaches(CacheArchive skinArchive, CacheArchive definitionArchive, CacheArchive skeletonArchive) {
+        aCacheArchive_2162 = skinArchive;
+        aCacheArchive_2364 = skeletonArchive;
+        aCacheArchive_2484 = definitionArchive;
     }
 
     public Model method590(Model arg0, AnimationSequence animationSequence, int arg2, int arg3, byte arg4) {
@@ -221,14 +277,12 @@ public class AnimationSequence extends CachedNode {
         return class40_sub5_sub17_sub5;
     }
 
-    public Model method598(int arg0, Model arg1, boolean arg2) {
+    public Model method598(int arg0, Model arg1) {
         int i = frameIds[arg0];
         Class40_Sub5_Sub15 class40_sub5_sub15 = method960(i >> 16);
         i &= 0xffff;
         if(class40_sub5_sub15 == null)
             return arg1.method817(true);
-        if(!arg2)
-            decodeAllAnimationSequences(null);
         Class40_Sub5_Sub15 class40_sub5_sub15_20_ = null;
         int i_21_ = 0;
         if(unknownArray1 != null && arg0 < unknownArray1.length) {

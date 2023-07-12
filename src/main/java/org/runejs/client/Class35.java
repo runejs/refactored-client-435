@@ -1,21 +1,9 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.io.Buffer;
 
 public class Class35 implements Interface3 {
-    /**
-     * Position of the hint icon within the specific tile.
-     */
-    public static int hintIconInnerPosY = 0;
-    public static boolean aBoolean1734 = false;
-    /**
-     * The image used for the highlighted (selected) tab button,
-     * for the central tab on the top row.
-     */
-    public static IndexedImage tabHighlightImageTopMiddle;
-
     public LinkedList textureCache = new LinkedList();
     public Texture[] textures;
     public int textureSize;
@@ -41,34 +29,6 @@ public class Class35 implements Interface3 {
         }
 
     }
-
-    public static Class40_Sub5_Sub15 method421(CacheArchive skeletonArchive, int arg2, CacheArchive skinArchive, boolean arg4) {
-        boolean bool = true;
-        int[] is = skeletonArchive.method192(arg2, true);
-        for(int i = 0; is.length > i; i++) {
-            byte[] is_0_ = skeletonArchive.method182(is[i], arg2);
-            if(is_0_ == null)
-                bool = false;
-            else {
-                int i_1_ = 0xff & is_0_[1] | (0xff & is_0_[0]) << 8;
-                byte[] is_2_;
-                if(arg4)
-                    is_2_ = skinArchive.method182(i_1_, 0);
-                else
-                    is_2_ = skinArchive.method182(0, i_1_);
-                if(is_2_ == null)
-                    bool = false;
-            }
-        }
-        if(!bool)
-            return null;
-        try {
-            return new Class40_Sub5_Sub15(skeletonArchive, skinArchive, arg2, arg4);
-        } catch(Exception exception) {
-            return null;
-        }
-    }
-
 
     public void clearTextures() {
         for(int i = 0; textures.length > i; i++) {

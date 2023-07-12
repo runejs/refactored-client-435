@@ -1,37 +1,29 @@
 package org.runejs.client.media.renderable.actor;
 
-import org.runejs.client.GameSocket;
-import org.runejs.client.MovedStatics;
-import org.runejs.client.ProducingGraphicsBuffer;
-import org.runejs.client.ProducingGraphicsBuffer_Sub1;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.Model;
+import org.runejs.client.node.NodeCache;
 
 public class PlayerAppearance {
 
     public static int[] anIntArray680 = new int[50];
-    public static int currentTickSample;
     public static int[] anIntArray684 = new int[50];
     public static int[] anIntArray685 = new int[50];
     public static int[] anIntArray688 = new int[50];
     public static int[] overheadChatShape = new int[50];
     public static String[] overheadChatMessage = new String[50];
-    public static int anInt704 = 0;
-    public static int anInt708 = -1;
     public static int[] overheadChatColor = new int[50];
-    public static ProducingGraphicsBuffer tabPieveLowerRight;
     public static int[] anIntArray715 = new int[50];
-    public static GameSocket lostConnectionSocket;
 
-    public static int identityKitLength;
     public static int[][] playerColours = {{6798, 107, 10283, 16, 4797, 7744, 5799, 4634, 33697, 22433, 2983, 54193}, {8741, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003, 25239}, {25238, 8742, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003}, {4626, 11146, 6439, 12, 4758, 10270}, {4550, 4537, 5681, 5673, 5790, 6806, 8076, 4574}};
     public static int[] playerSkinColors = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
 
     public static int[] APPEARANCE_INDICES = {8, 11, 4, 6, 9, 7, 10};
+    public static NodeCache playerModelCache = new NodeCache(260);
 
     public boolean gender;
     public int[] appearance;
@@ -40,32 +32,9 @@ public class PlayerAppearance {
     public long appearanceHash;
     public long cachedModel;
 
-
-
-    public static void startForcedMovement(Actor actor) {
-        if(MovedStatics.pulseCycle == actor.forceMoveStartCycle || actor.playingAnimation == -1 || actor.playingAnimationDelay != 0 ||
-                actor.anInt3115 + 1 > ProducingGraphicsBuffer_Sub1.getAnimationSequence(actor.playingAnimation).frameLengths[actor.anInt3104]) {
-            int duration = -actor.forceMoveEndCycle + actor.forceMoveStartCycle;
-            int deltaTime = -actor.forceMoveEndCycle + MovedStatics.pulseCycle;
-            int x0 = actor.forceMoveStartX * 128 + 64 * actor.size;
-            int y0 = actor.size * 64 + 128 * actor.forceMoveStartY;
-            int x1 = actor.size * 64 + 128 * actor.forceMoveEndX;
-            int y1 = 128 * actor.forceMoveEndY + actor.size * 64;
-            actor.worldX = ((duration - deltaTime) * x0 + deltaTime * x1) / duration;
-            actor.worldY = (y0 * (duration + -deltaTime) + deltaTime * y1) / duration;
-        }
-        if(actor.forceMoveFaceDirection == 0)
-            actor.initialFaceDirection = 1024;
-        actor.anInt3074 = 0;
-        if(actor.forceMoveFaceDirection == 1)
-            actor.initialFaceDirection = 1536;
-        if(actor.forceMoveFaceDirection == 2)
-            actor.initialFaceDirection = 0;
-        if(actor.forceMoveFaceDirection == 3)
-            actor.initialFaceDirection = 512;
-        actor.anInt3118 = actor.initialFaceDirection;
+    public static void clearPlayerModelCache() {
+        playerModelCache.clear();
     }
-
 
 
     public int getHeadModelId() {
@@ -108,7 +77,7 @@ public class PlayerAppearance {
             }
         }
 
-        Model cachedModel = (Model) MovedStatics.modelCache.get(hash);
+        Model cachedModel = (Model) playerModelCache.get(hash);
         if(cachedModel == null) {
             boolean invalid = false;
             for(int bodyPart = 0; bodyPart < 12; bodyPart++) {
@@ -120,7 +89,7 @@ public class PlayerAppearance {
             }
             if(invalid) {
                 if(this.cachedModel != -1L)
-                    cachedModel = (Model) MovedStatics.modelCache.get(this.cachedModel);
+                    cachedModel = (Model) playerModelCache.get(this.cachedModel);
                 if(cachedModel == null)
                     return null;
             }
@@ -151,7 +120,7 @@ public class PlayerAppearance {
                 }
                 cachedModel.createBones();
                 cachedModel.applyLighting(64, 850, -30, -50, -30, true);
-                MovedStatics.modelCache.put(hash, cachedModel);
+                playerModelCache.put(hash, cachedModel);
                 this.cachedModel = hash;
             }
         }
@@ -203,7 +172,7 @@ public class PlayerAppearance {
         appearance[9] = appearance9;
 
         if(originalAppearanceHash != 0L && originalAppearanceHash != appearanceHash) {
-            MovedStatics.modelCache.remove(originalAppearanceHash);
+            playerModelCache.remove(originalAppearanceHash);
         }
     }
 
@@ -260,7 +229,7 @@ public class PlayerAppearance {
         if(appearance == null) {
             appearance = new int[12];
             for(int appearanceIndex = 0; appearanceIndex < 7; appearanceIndex++) {
-                for(int identityKitIndex = 0; identityKitLength > identityKitIndex; identityKitIndex++) {
+                for(int identityKitIndex = 0; IdentityKit.identityKitLength > identityKitIndex; identityKitIndex++) {
                     IdentityKit identityKit = IdentityKit.cache(identityKitIndex);
                     if(!identityKit.nonSelectable && identityKit.bodyPartId == appearanceIndex + (!gender ? 0 : 7)) {
                         appearance[APPEARANCE_INDICES[appearanceIndex]] = identityKitIndex + 256;
@@ -287,10 +256,10 @@ public class PlayerAppearance {
                 do {
                     if(unknown2) {
                         i++;
-                        if(i >= identityKitLength)
+                        if(i >= IdentityKit.identityKitLength)
                             i = 0;
                     } else if(--i < 0)
-                        i = -1 + identityKitLength;
+                        i = -1 + IdentityKit.identityKitLength;
                     identityKit = IdentityKit.cache(i);
                 } while(identityKit == null || identityKit.nonSelectable || identityKit.bodyPartId != unknown1 + (!gender ? 0 : 7));
                 appearance[APPEARANCE_INDICES[unknown1]] = i + 256;

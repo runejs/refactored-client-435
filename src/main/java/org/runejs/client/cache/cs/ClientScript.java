@@ -137,7 +137,7 @@ public class ClientScript extends CachedNode {
                 }
                 if (opcode == 9) {
                     for (int i_22_ = 0; i_22_ < 25; i_22_++) {
-                        if (MovedStatics.aBooleanArray548[i_22_]) {
+                        if (ClientScriptRunner.aBooleanArray548[i_22_]) {
                             operand += Player.nextLevels[i_22_];
                         }
                     }
@@ -175,7 +175,7 @@ public class ClientScript extends CachedNode {
                     operand = (Player.localPlayer.worldX >> 7) + MovedStatics.baseX;
                 }
                 if (opcode == 19) {
-                    operand = (Player.localPlayer.worldY >> 7) + Class26.baseY;
+                    operand = (Player.localPlayer.worldY >> 7) + MovedStatics.baseY;
                 }
                 if (opcode == 20) {
                     operand = opcodes[scriptDataIndex++];

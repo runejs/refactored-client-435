@@ -1,7 +1,6 @@
 package org.runejs.client.media.renderable.actor;
 
 import org.runejs.client.frame.DebugTools;
-import org.runejs.client.media.renderable.Item;
 import org.runejs.client.message.outbound.WalkOutboundMessage;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.*;
@@ -290,8 +289,8 @@ public class Pathfinding {
                 new WalkOutboundMessage(
                     walkType,
                     MovedStatics.baseX + x,
-                    Class26.baseY + y,
-                    Item.obfuscatedKeyStatus[82],
+                    MovedStatics.baseY + y,
+                    MovedStatics.obfuscatedKeyStatus[82],
                     steps.toArray(new WalkOutboundMessage.WalkStep[steps.size()]),
                     analytics
                 )

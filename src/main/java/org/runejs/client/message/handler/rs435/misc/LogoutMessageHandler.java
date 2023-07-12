@@ -1,6 +1,6 @@
 package org.runejs.client.message.handler.rs435.misc;
 
-import org.runejs.client.MovedStatics;
+import org.runejs.client.Game;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.misc.LogoutMessage;
 
@@ -10,6 +10,6 @@ import org.runejs.client.message.inbound.misc.LogoutMessage;
 public class LogoutMessageHandler implements MessageHandler<LogoutMessage> {
     @Override
     public void handle(LogoutMessage message) {
-        MovedStatics.logout();
+        Game.logout();
     }
 }

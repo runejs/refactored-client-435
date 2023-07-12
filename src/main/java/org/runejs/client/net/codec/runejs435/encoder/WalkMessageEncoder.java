@@ -1,7 +1,5 @@
 package org.runejs.client.net.codec.runejs435.encoder;
 
-import org.runejs.client.Class43;
-import org.runejs.client.Class51;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.outbound.WalkOutboundMessage;

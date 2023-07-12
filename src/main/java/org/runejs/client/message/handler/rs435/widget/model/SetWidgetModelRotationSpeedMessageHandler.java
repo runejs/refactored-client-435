@@ -9,6 +9,6 @@ public class SetWidgetModelRotationSpeedMessageHandler implements MessageHandler
     public void handle(SetWidgetModelRotationSpeedInboundMessage message) {
         GameInterface gameInterface = GameInterface.getInterface((message.widgetId << 16) | message.childId);
 
-        gameInterface.anInt2722 = message.speed;
+        gameInterface.rotationSpeed = message.speed;
     }
 }

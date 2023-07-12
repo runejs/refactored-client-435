@@ -4,19 +4,11 @@ import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.FrameDefinition;
 import org.runejs.client.cache.def.FramemapDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
-import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.def.SpotAnimDefinition;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.node.CachedNode;
 
 public class Class40_Sub5_Sub15 extends CachedNode {
-    public static IndexedImage loginScreenBox;
-    public static IndexedImage[] tabIcons;
-    public static int systemUpdateTime = 0;
-    public static boolean lastItemDragged = false;
-    public static int[] anIntArray2788 = new int[]{16, 32, 64, 128};
-    public static int randomiserHue = -8 + (int) (17.0 * Math.random());
-
     public FrameDefinition[] aFrameDefinitionArray2794;
 
     public Class40_Sub5_Sub15(CacheArchive arg0, CacheArchive arg1, int arg2, boolean arg3) {
@@ -48,21 +40,10 @@ public class Class40_Sub5_Sub15 extends CachedNode {
     }
 
 
-
-    public static boolean method735(int arg1) {
-        if(arg1 >= 97 && arg1 <= 122)
-            return true;
-        if(arg1 >= 65 && arg1 <= 90)
-            return true;
-        if(arg1 >= 48 && arg1 <= 57)
-            return true;
-        return false;
-    }
-
     public static void updateAnimation(Actor actor) {
         actor.aBoolean3105 = false;
         if(actor.anInt3077 != -1) {
-            AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(actor.anInt3077);
+            AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(actor.anInt3077);
             if(animationSequence == null || animationSequence.frameIds == null)
                 actor.anInt3077 = -1;
             else {
@@ -84,7 +65,7 @@ public class Class40_Sub5_Sub15 extends CachedNode {
             if(i == -1)
                 actor.graphicId = -1;
             else {
-                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(i);
+                AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(i);
                 if(animationSequence == null || animationSequence.frameIds == null)
                     actor.graphicId = -1;
                 else {
@@ -100,14 +81,14 @@ public class Class40_Sub5_Sub15 extends CachedNode {
         }
         if(true) {
             if(actor.playingAnimation != -1 && actor.playingAnimationDelay <= 1) {
-                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(actor.playingAnimation);
+                AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(actor.playingAnimation);
                 if(animationSequence.precedenceAnimating == 1 && actor.anInt3094 > 0 && actor.forceMoveEndCycle <= MovedStatics.pulseCycle && MovedStatics.pulseCycle > actor.forceMoveStartCycle) {
                     actor.playingAnimationDelay = 1;
                     return;
                 }
             }
             if(actor.playingAnimation != -1 && actor.playingAnimationDelay == 0) {
-                AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(actor.playingAnimation);
+                AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(actor.playingAnimation);
                 if(animationSequence != null && animationSequence.frameIds != null) {
                     actor.anInt3115++;
                     if(animationSequence.frameIds.length > actor.anInt3104 && animationSequence.frameLengths[actor.anInt3104] < actor.anInt3115) {

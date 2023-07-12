@@ -14,6 +14,8 @@ public class SetChatModesMessageHandler implements MessageHandler<SetChatModesIn
         ChatBox.publicChatMode = message.publicChatMode;
         ChatBox.privateChatMode = message.privateChatMode;
         ChatBox.tradeMode = message.tradeMode;
+
+        // TODO (jkm) investigate this and see why there are two
         ChatBox.redrawChatbox = true;
         MovedStatics.redrawChatbox = true;
     }

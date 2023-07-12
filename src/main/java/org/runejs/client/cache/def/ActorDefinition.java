@@ -1,20 +1,19 @@
 package org.runejs.client.cache.def;
 
 import org.runejs.client.*;
+import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.frame.Minimap;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
-import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.net.ISAAC;
 import org.runejs.client.node.CachedNode;
+import org.runejs.client.node.NodeCache;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.util.BitUtils;
 
@@ -23,6 +22,10 @@ import java.awt.*;
 public class ActorDefinition extends CachedNode implements EntityDefinition {
 
     public static int count;
+    public static NodeCache actorDefinitionNodeCache = new NodeCache(64);
+    public static NodeCache actorChildModelCache = new NodeCache(50);
+    public static CacheArchive aCacheArchive_1375;
+    public static CacheArchive aCacheArchive_1577;
 
     public boolean isClickable = true;
     public int boundaryDimension = 1;
@@ -54,17 +57,17 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     public boolean renderOnMinimap = true;
 
     public static void method569() {
-        Class17.anIntArray456 = null;
+        MovedStatics.anIntArray456 = null;
         GroundItemTile.aByteArrayArray1370 = null;
         Npc.anIntArray3312 = null;
-        Actor.anIntArray3111 = null;
+        MovedStatics.anIntArray3111 = null;
         Buffer.anIntArray1972 = null;
         MovedStatics.anIntArray1347 = null;
     }
 
     public static void playAnimation(int animationId, int animationDelay, Player player) {
         if(player.playingAnimation == animationId && animationId != -1) {
-            int i = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).replyMode;
+            int i = AnimationSequence.getAnimationSequence(animationId).replyMode;
             if(i == 1) {
                 player.anInt3104 = 0;
                 player.anInt3095 = 0;
@@ -74,7 +77,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
             if(i == 2) {
                 player.anInt3095 = 0;
             }
-        } else if(animationId == -1 || player.playingAnimation == -1 || ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).forcedPriority >= ProducingGraphicsBuffer_Sub1.getAnimationSequence(player.playingAnimation).forcedPriority) {
+        } else if(animationId == -1 || player.playingAnimation == -1 || AnimationSequence.getAnimationSequence(animationId).forcedPriority >= AnimationSequence.getAnimationSequence(player.playingAnimation).forcedPriority) {
             player.anInt3094 = player.anInt3109;
             player.anInt3104 = 0;
             player.anInt3115 = 0;
@@ -87,16 +90,12 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     public static void drawMapBack() {
         try {
             if(ScreenController.frameMode == ScreenMode.FIXED) {
-                Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+                Graphics graphics = Game.gameCanvas.getGraphics();
                 Minimap.mapbackProducingGraphicsBuffer.drawGraphics(550, 4, graphics);
             }
         } catch(Exception exception) {
-            MouseHandler.gameCanvas.repaint();
+            Game.gameCanvas.repaint();
         }
-    }
-
-    public static int method576() {
-        return 19;
     }
 
     public static ImageRGB method578() {
@@ -104,8 +103,8 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         class40_sub5_sub14_sub4.maxWidth = MovedStatics.imageMaxWidth;
         class40_sub5_sub14_sub4.maxHeight = MovedStatics.imageMaxHeight;
         class40_sub5_sub14_sub4.offsetX = MovedStatics.anIntArray1347[0];
-        class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[0];
-        class40_sub5_sub14_sub4.imageWidth = Class17.anIntArray456[0];
+        class40_sub5_sub14_sub4.offsetY = MovedStatics.anIntArray3111[0];
+        class40_sub5_sub14_sub4.imageWidth = MovedStatics.anIntArray456[0];
         class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[0];
         byte[] is = GroundItemTile.aByteArrayArray1370[0];
         int i = class40_sub5_sub14_sub4.imageWidth * class40_sub5_sub14_sub4.imageHeight;
@@ -118,16 +117,28 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     }
 
     public static ActorDefinition getDefinition(int id) {
-        ActorDefinition definition = (ActorDefinition) ISAAC.cachedActorDefinitions.get(id);
+        ActorDefinition definition = (ActorDefinition) actorDefinitionNodeCache.get(id);
         if(definition != null)
             return definition;
-        byte[] data = GroundItemTile.aCacheArchive_1375.getFile(9, id);
+        byte[] data = aCacheArchive_1375.getFile(9, id);
         definition = new ActorDefinition();
         definition.id = id;
         if(data != null)
             definition.readValues(new Buffer(data));
-        ISAAC.cachedActorDefinitions.put(id, definition);
+        actorDefinitionNodeCache.put(id, definition);
         return definition;
+    }
+
+    public static void clearActorCache() {
+        actorDefinitionNodeCache.clear();
+        actorChildModelCache.clear();
+    }
+
+    public static void initializeActorCache(CacheArchive arg0, CacheArchive arg2) {
+        aCacheArchive_1375 = arg2;
+        count = aCacheArchive_1375.fileLength(9);
+
+        aCacheArchive_1577 = arg0;
     }
 
     public Model getChildModel(AnimationSequence animation1, AnimationSequence animation2, int arg3, int arg4) {
@@ -138,11 +149,11 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
             }
             return actorDefinition.getChildModel(animation1, animation2, arg3, arg4);
         }
-        Model model1 = (Model) MovedStatics.aClass9_1611.get(id);
+        Model model1 = (Model) actorChildModelCache.get(id);
         if(model1 == null) {
             boolean bool = false;
             for(int model : models) {
-                if(!MovedStatics.aCacheArchive_1577.loaded(model, 0)) {
+                if(!aCacheArchive_1577.loaded(model, 0)) {
                     bool = true;
                 }
             }
@@ -151,7 +162,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
             }
             Model[] class40_sub5_sub17_sub5s = new Model[models.length];
             for(int i = 0; models.length > i; i++) {
-                class40_sub5_sub17_sub5s[i] = Model.getModel(MovedStatics.aCacheArchive_1577, models[i]);
+                class40_sub5_sub17_sub5s[i] = Model.getModel(aCacheArchive_1577, models[i]);
             }
             if(class40_sub5_sub17_sub5s.length == 1) {
                 model1 = class40_sub5_sub17_sub5s[0];
@@ -167,7 +178,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
             assert model1 != null;
             model1.createBones();
             model1.applyLighting(ambient + 64, 850 + contrast, -30, -50, -30, true);
-            MovedStatics.aClass9_1611.put(id, model1);
+            actorChildModelCache.put(id, model1);
         }
         Model class40_sub5_sub17_sub5_0_;
         if(animation1 != null && animation2 != null) {
@@ -305,7 +316,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         }
         boolean cached = false;
         for(int headModelIndex : headModelIndexes) {
-            if(!MovedStatics.aCacheArchive_1577.loaded(headModelIndex, 0)) {
+            if(!aCacheArchive_1577.loaded(headModelIndex, 0)) {
                 cached = true;
             }
         }
@@ -314,7 +325,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         }
         Model[] models = new Model[headModelIndexes.length];
         for(int i = 0; i < headModelIndexes.length; i++) {
-            models[i] = Model.getModel(MovedStatics.aCacheArchive_1577, headModelIndexes[i]);
+            models[i] = Model.getModel(aCacheArchive_1577, headModelIndexes[i]);
         }
         Model headModel;
         if(models.length == 1) {

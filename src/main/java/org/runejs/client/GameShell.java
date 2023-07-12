@@ -2,12 +2,8 @@ package org.runejs.client;
 
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
-import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.Native;
-import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.media.renderable.actor.PlayerAppearance;
-import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.Timer;
@@ -28,6 +24,8 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
     public static Frame clientFrame;
     public static GameShell currentGameShell = null;
     public static int fps = 0;
+    public static boolean closedClient = false;
+    public static int currentTickSample;
     private static volatile boolean clientFocused = true;
     private final int millisPerTick = 20;
     public boolean gameShellError = false;
@@ -75,7 +73,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
 
             // Memory argument
             if (params[3].equals("lowmem")) {
-                Class59.setLowMemory();
+                Game.setLowMemory();
             } else if (params[3].equals("highmem")) {
                 MovedStatics.setHighMemory();
             } else {
@@ -115,7 +113,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
                     openErrorPage("wrongjava");
                     return;
                 }
-                Class40_Sub3.anInt2024 = 5;
+                MovedStatics.anInt2024 = 5;
             }
         }
         if (Game.signlink.gameShell != null) {
@@ -128,23 +126,23 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
             }
         }
         setCanvas();
-        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = MovedStatics.createGraphicsBuffer(Class12.width, MovedStatics.height, MouseHandler.gameCanvas);
+        MovedStatics.aProducingGraphicsBuffer_2213 = MovedStatics.createGraphicsBuffer(MovedStatics.width, MovedStatics.height, Game.gameCanvas);
         this.game.startup();
         SceneCluster.gameTimer = Timer.create();
         SceneCluster.gameTimer.start();
 
         // Initialize client loop
         while (exitTimeInMillis == 0L || System.currentTimeMillis() < exitTimeInMillis) {
-            Class40_Sub3.ticksPerLoop = SceneCluster.gameTimer.getTicks(millisPerTick, Class40_Sub3.anInt2024);
-            for (int currentTick = 0; currentTick < Class40_Sub3.ticksPerLoop; currentTick++) {
+            MovedStatics.ticksPerLoop = SceneCluster.gameTimer.getTicks(millisPerTick, MovedStatics.anInt2024);
+            for (int currentTick = 0; currentTick < MovedStatics.ticksPerLoop; currentTick++) {
                 long currentTimeMillis = System.currentTimeMillis();
 
                 // Saves the time this particular tick is being processed on
-                MovedStatics.tickSamples[MouseHandler.currentTickSample] = currentTimeMillis;
+                MovedStatics.tickSamples[MovedStatics.currentTickSample] = currentTimeMillis;
 
                 // Increases the current tick identifier by 1, looping at 31 back to 0 (including 31)
                 // This means the client stores the last 32 tick times to do some other calculations
-                MouseHandler.currentTickSample = 0x1f & MouseHandler.currentTickSample + 1;
+                MovedStatics.currentTickSample = 0x1f & MovedStatics.currentTickSample + 1;
 
                 synchronized (this) {
                     MovedStatics.aBoolean571 = clientFocused;
@@ -161,10 +159,10 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
     }
 
     public synchronized void closeGameShell() {
-        if (!PacketBuffer.closedClient) {
-            PacketBuffer.closedClient = true;
+        if (!closedClient) {
+            closedClient = true;
             try {
-                MouseHandler.gameCanvas.removeFocusListener(this);
+                Game.gameCanvas.removeFocusListener(this);
             } catch (Exception exception) {
                 /* empty */
             }
@@ -191,7 +189,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
     }
 
     public void stop() {
-        if (this == currentGameShell && !PacketBuffer.closedClient)
+        if (this == currentGameShell && !closedClient)
             exitTimeInMillis = System.currentTimeMillis() + 4000L;
     }
 
@@ -226,7 +224,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
     }
 
     public void start() {
-        if (this == currentGameShell && !PacketBuffer.closedClient)
+        if (this == currentGameShell && !closedClient)
             exitTimeInMillis = 0L;
     }
 
@@ -235,21 +233,21 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
     }
 
     public synchronized void paint(Graphics arg0) {
-        if (this == currentGameShell && !PacketBuffer.closedClient) {
+        if (this == currentGameShell && !closedClient) {
             MovedStatics.clearScreen = true;
             if (Signlink.javaVersion == null || !Signlink.javaVersion.startsWith("1.5") || -MovedStatics.aLong174 + System.currentTimeMillis() <= 1000L)
                 return;
             Rectangle rectangle = arg0.getClipBounds();
-            if (rectangle == null || rectangle.width >= Class12.width && rectangle.height >= MovedStatics.height)
+            if (rectangle == null || rectangle.width >= MovedStatics.width && rectangle.height >= MovedStatics.height)
                 MovedStatics.aBoolean1575 = true;
         }
     }
 
     public void destroy() {
-        if (currentGameShell == this && !PacketBuffer.closedClient) {
+        if (currentGameShell == this && !closedClient) {
             exitTimeInMillis = System.currentTimeMillis();
-            Class43.threadSleep(5000L);
-            Actor.signlink = null;
+            MovedStatics.threadSleep(5000L);
+            MovedStatics.signlink = null;
             closeGameShell();
         }
     }
@@ -273,13 +271,13 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
             openErrorPage("alreadyloaded");
             return;
         }
-        Class12.width = height;
-        Class39.anInt901 = clientVersion;
+        MovedStatics.width = height;
+        MovedStatics.clientVersion = clientVersion;
         MovedStatics.height = width;
         currentGameShell = this;
         if (Game.signlink == null) {
             try {
-                Actor.signlink = Game.signlink = new Signlink(false, this, InetAddress.getByName(getCodeBase().getHost()), fileStoreId, null, 0);
+                MovedStatics.signlink = Game.signlink = new Signlink(false, this, InetAddress.getByName(getCodeBase().getHost()), fileStoreId, null, 0);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -293,10 +291,10 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
 
     public void runAfterGameLoop() {
         long currentTimeMillis = System.currentTimeMillis();
-        long lastTickInMillis = tickSamples[PlayerAppearance.currentTickSample];
+        long lastTickInMillis = tickSamples[currentTickSample];
 
         // Saves the time this particular tick is being processed on
-        tickSamples[PlayerAppearance.currentTickSample] = currentTimeMillis;
+        tickSamples[currentTickSample] = currentTimeMillis;
 
         if (lastTickInMillis != 0 && currentTimeMillis > lastTickInMillis) {
             int i = (int) (currentTimeMillis - lastTickInMillis);
@@ -306,19 +304,19 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
 
         // Increases the current tick identifier by 1, looping at 31 back to 0 (including 31)
         // This means the client stores the last 32 tick times to do some other calculations
-        PlayerAppearance.currentTickSample = PlayerAppearance.currentTickSample + 1 & 0x1f;
+        currentTickSample = currentTickSample + 1 & 0x1f;
 
         if (MovedStatics.anInt938++ > 50) {
             MovedStatics.anInt938 -= 50;
             MovedStatics.clearScreen = true;
-            MouseHandler.gameCanvas.setSize(Class12.width, MovedStatics.height);
-            MouseHandler.gameCanvas.setVisible(true);
-            MouseHandler.gameCanvas.setBackground(Color.BLACK);
+            Game.gameCanvas.setSize(MovedStatics.width, MovedStatics.height);
+            Game.gameCanvas.setVisible(true);
+            Game.gameCanvas.setBackground(Color.BLACK);
             if (clientFrame == null)
-                MouseHandler.gameCanvas.setLocation(0, 0);
+                Game.gameCanvas.setLocation(0, 0);
             else {
                 Insets insets = clientFrame.getInsets();
-                MouseHandler.gameCanvas.setLocation(insets.left, insets.top);
+                Game.gameCanvas.setLocation(insets.left, insets.top);
             }
         }
         if (MovedStatics.aBoolean1575) {
@@ -339,8 +337,8 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         try {
             int height = 503;
             int width = 765;
-            Class39.anInt901 = clientVersion;
-            Class12.width = width;
+            MovedStatics.clientVersion = clientVersion;
+            MovedStatics.width = width;
             MovedStatics.height = height;
             currentGameShell = this;
             clientFrame = new Frame();
@@ -355,7 +353,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
             Insets insets = clientFrame.getInsets();
             clientFrame.setSize(insets.right + width + insets.left, insets.bottom + insets.top + height);
 //            Class35.aFrame1732.setLocationRelativeTo(null);
-            Actor.signlink = Game.signlink = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
+            MovedStatics.signlink = Game.signlink = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
             Game.signlink.createThreadNode(1, this);
         } catch (Exception exception) {
             MovedStatics.printException(null, exception);
@@ -389,21 +387,21 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         Container container = clientFrame;
 //        else
 //            container = ISAAC.aClass31_521.anApplet740;
-        if (MouseHandler.gameCanvas != null) {
-            MouseHandler.gameCanvas.removeFocusListener(this);
-            container.remove(MouseHandler.gameCanvas);
+        if (Game.gameCanvas != null) {
+            Game.gameCanvas.removeFocusListener(this);
+            container.remove(Game.gameCanvas);
         }
-        MouseHandler.gameCanvas = new RSCanvas(this);
-        container.add(MouseHandler.gameCanvas);
-        MouseHandler.gameCanvas.setSize(Class12.width, MovedStatics.height);
-        MouseHandler.gameCanvas.setVisible(true);
+        Game.gameCanvas = new RSCanvas(this);
+        container.add(Game.gameCanvas);
+        Game.gameCanvas.setSize(MovedStatics.width, MovedStatics.height);
+        Game.gameCanvas.setVisible(true);
         if (clientFrame != null) {
             Insets insets = clientFrame.getInsets();
-            MouseHandler.gameCanvas.setLocation(insets.left, insets.top);
+            Game.gameCanvas.setLocation(insets.left, insets.top);
         } else
-            MouseHandler.gameCanvas.setLocation(0, 0);
-        MouseHandler.gameCanvas.addFocusListener(this);
-        MouseHandler.gameCanvas.requestFocus();
+            Game.gameCanvas.setLocation(0, 0);
+        Game.gameCanvas.addFocusListener(this);
+        Game.gameCanvas.requestFocus();
         MovedStatics.clearScreen = true;
         MovedStatics.aBoolean1575 = false;
         MovedStatics.aLong174 = System.currentTimeMillis();

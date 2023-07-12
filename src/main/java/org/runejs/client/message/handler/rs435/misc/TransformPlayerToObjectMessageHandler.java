@@ -1,11 +1,10 @@
 package org.runejs.client.message.handler.rs435.misc;
 
+import org.runejs.client.Landscape;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.misc.TransformPlayerToObjectInboundMessage;
 import org.runejs.client.scene.Scene;
@@ -22,19 +21,19 @@ public class TransformPlayerToObjectMessageHandler implements MessageHandler<Tra
         int unknownYMax = message.unknownYMax;
 
         int typeKey = message.type;
-        int type = Npc.anIntArray3304[typeKey];
+        int type = GameObjectDefinition.OBJECT_TYPES[typeKey];
 
         Player player;
-        if (message.playerId != PlayerAppearance.anInt708)
+        if (message.playerId != Player.localPlayerId)
             player = Player.trackedPlayers[message.playerId];
         else
             player = Player.localPlayer;
         if (player != null) {
             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(message.objectId);
-            int tileHeightX0Y0 = MovedStatics.tile_height[Player.worldLevel][x][y];
-            int tileHeightX0Y1 = MovedStatics.tile_height[Player.worldLevel][x][1 + y];
-            int tileHeightX1Y1 = MovedStatics.tile_height[Player.worldLevel][1 + x][1 + y];
-            int tileHeightX1Y0 = MovedStatics.tile_height[Player.worldLevel][x + 1][y];
+            int tileHeightX0Y0 = Landscape.tile_height[Player.worldLevel][x][y];
+            int tileHeightX0Y1 = Landscape.tile_height[Player.worldLevel][x][1 + y];
+            int tileHeightX1Y1 = Landscape.tile_height[Player.worldLevel][1 + x][1 + y];
+            int tileHeightX1Y0 = Landscape.tile_height[Player.worldLevel][x + 1][y];
             Model model = gameObjectDefinition.createTerrainObjectModel(tileHeightX1Y1, tileHeightX0Y1, message.orientation, tileHeightX0Y0, typeKey, tileHeightX1Y0);
             if (model != null) {
                 if (unknownXMax < unknownXMin) {
@@ -47,7 +46,7 @@ public class TransformPlayerToObjectMessageHandler implements MessageHandler<Tra
                     unknownYMin = unknownYMax;
                     unknownYMax = temp;
                 }
-                GameObjectDefinition.method609(-1, x, 0, 1 + message.duration, Player.worldLevel, y, type, 0, 1 + message.delay);
+                GameObjectDefinition.addTemporaryObject(-1, x, 0, 1 + message.duration, Player.worldLevel, y, type, 0, 1 + message.delay);
                 player.anInt3274 = message.duration + MovedStatics.pulseCycle;
                 int sizeX = gameObjectDefinition.sizeX;
                 player.playerModel = model;

@@ -99,20 +99,20 @@ public class IncomingPackets {
             }
             if(opcode == 58) {
                 int i_106_ = incomingPacketBuffer.getIntME2();
-                Class12.aSignlinkNode_394 = Game.signlink.createExceptionNode(i_106_); // TODO this just ends up throwing an exception? wot
+                MovedStatics.aSignlinkNode_394 = Game.signlink.createExceptionNode(i_106_); // TODO this just ends up throwing an exception? wot
                 opcode = -1;
                 return true;
             }
             MovedStatics.printException("T1 - " + opcode + "," + secondLastOpcode + "," + thirdLastOpcode + " - " + incomingPacketSize, null);
-            MovedStatics.logout();
+            Game.logout();
         } catch(java.io.IOException ioexception) {
-            Class59.dropClient();
+            Game.dropClient();
         } catch(Exception exception) {
-            String string = "T2 - " + opcode + "," + secondLastOpcode + "," + thirdLastOpcode + " - " + incomingPacketSize + "," + (MovedStatics.baseX + Player.localPlayer.pathY[0]) + "," + (Player.localPlayer.pathX[0] + Class26.baseY) + " - ";
+            String string = "T2 - " + opcode + "," + secondLastOpcode + "," + thirdLastOpcode + " - " + incomingPacketSize + "," + (MovedStatics.baseX + Player.localPlayer.pathY[0]) + "," + (Player.localPlayer.pathX[0] + MovedStatics.baseY) + " - ";
             for(int i = 0; incomingPacketSize > i && i < 50; i++)
                 string += incomingPacketBuffer.buffer[i] + ",";
             MovedStatics.printException(string, exception);
-            MovedStatics.logout();
+            Game.logout();
             exception.printStackTrace();
         }
         return true;

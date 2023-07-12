@@ -1,10 +1,8 @@
 package org.runejs.client.cache.media;
 
-import org.runejs.client.Class17;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.RSString;
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.media.textUtils.TextColourNode;
 import org.runejs.client.cache.media.textUtils.TextColourQueue;
@@ -12,7 +10,6 @@ import org.runejs.client.cache.media.textUtils.TextTagNode;
 import org.runejs.client.cache.media.textUtils.TextTagQueue;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
-import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.scene.GroundItemTile;
 
@@ -23,7 +20,6 @@ public class TypeFace extends Rasterizer {
 
     public static TypeFace fontBold;
     public static TypeFace fontSmall;
-    public static NodeCache typeFaceCache = new NodeCache(20);
     private static String greaterThan = "gt";
     private static String lessThan = "lt";
     private static String euroSymbol = "euro";
@@ -103,7 +99,7 @@ public class TypeFace extends Rasterizer {
     }
 
     public static TypeFace constructFont() {
-        TypeFace class40_sub5_sub14_sub1 = new TypeFace(Actor.anIntArray3111, Class17.anIntArray456, Npc.anIntArray3312, Buffer.anIntArray1972, GroundItemTile.aByteArrayArray1370);
+        TypeFace class40_sub5_sub14_sub1 = new TypeFace(MovedStatics.anIntArray3111, MovedStatics.anIntArray456, Npc.anIntArray3312, Buffer.anIntArray1972, GroundItemTile.aByteArrayArray1370);
         ActorDefinition.method569();
         return class40_sub5_sub14_sub1;
     }

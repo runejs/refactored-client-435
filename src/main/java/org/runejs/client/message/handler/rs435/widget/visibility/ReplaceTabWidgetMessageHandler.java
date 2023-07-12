@@ -1,7 +1,7 @@
 package org.runejs.client.message.handler.rs435.widget.visibility;
 
+import org.runejs.client.Game;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
-import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.widget.visibility.ReplaceTabWidgetInboundMessage;
 import org.runejs.client.message.inbound.widget.visibility.ShowTabWidgetInboundMessage;
@@ -20,9 +20,9 @@ public class ReplaceTabWidgetMessageHandler implements MessageHandler<ReplaceTab
         int interfaceId = message.widgetId;
         int tabIndex = message.tabIndex;
 
-        if(interfaceId != Player.tabWidgetIds[tabIndex]) {
-            GameInterface.resetInterface(Player.tabWidgetIds[tabIndex]);
-            Player.tabWidgetIds[tabIndex] = interfaceId;
+        if(interfaceId != Game.tabWidgetIds[tabIndex]) {
+            GameInterface.resetInterface(Game.tabWidgetIds[tabIndex]);
+            Game.tabWidgetIds[tabIndex] = interfaceId;
         }
         GameInterface.drawTabIcons = true;
         GameInterface.redrawTabArea = true;

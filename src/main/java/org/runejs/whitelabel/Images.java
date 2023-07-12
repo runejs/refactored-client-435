@@ -1,17 +1,11 @@
 package org.runejs.whitelabel;
 
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferByte;
-import java.awt.image.WritableRaster;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
-import java.net.URL;
-import java.util.Base64;
 
+import org.runejs.client.Game;
 import org.runejs.client.cache.media.ImageRGB;
-import org.runejs.client.input.MouseHandler;
 
 import javax.imageio.ImageIO;
 
@@ -45,7 +39,7 @@ public class Images {
             ImageIO.write(bufferedImage, "png", baos);
             byte[] data = baos.toByteArray();
 
-            Images.logo = new ImageRGB(data, MouseHandler.gameCanvas);
+            Images.logo = new ImageRGB(data, Game.gameCanvas);
 
             Images.setup = true;
         } catch(Exception e) {

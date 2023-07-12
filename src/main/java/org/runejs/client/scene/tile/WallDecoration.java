@@ -1,10 +1,8 @@
 package org.runejs.client.scene.tile;
 
-import org.runejs.client.node.NodeCache;
 import org.runejs.client.media.renderable.Renderable;
 
 public class WallDecoration {
-    public static NodeCache modelCache = new NodeCache(50);
 
     public int configBits;
     public int z;

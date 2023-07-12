@@ -3,7 +3,6 @@ package org.runejs.client;
 import org.runejs.client.scene.SceneCluster;
 
 public class RSRuntimeException extends RuntimeException {
-    public static int anInt1641 = 0;
     public static int lastActiveInvInterface = 0;
     public static int anInt1651 = 0;
     public Throwable aThrowable1652;
@@ -22,6 +21,6 @@ public class RSRuntimeException extends RuntimeException {
             MovedStatics.tickSamples[i] = 0L;
         if(arg0 <= 67)
             lastActiveInvInterface = -3;
-        Class40_Sub3.ticksPerLoop = 0;
+        MovedStatics.ticksPerLoop = 0;
     }
 }

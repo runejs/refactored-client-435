@@ -4,7 +4,6 @@ import org.runejs.client.LinkedList;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.world.item.AddGroundItemInboundMessage;
 
@@ -14,7 +13,7 @@ public class AddGroundItemMessageHandler implements MessageHandler<AddGroundItem
         int y = MovedStatics.placementY + message.y;
         int x = MovedStatics.placementX + message.x;
 
-        if (message.excludePlayer != -1 && message.excludePlayer != PlayerAppearance.anInt708) {
+        if (message.excludePlayer != -1 && message.excludePlayer != Player.localPlayerId) {
             return;
         }
 

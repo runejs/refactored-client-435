@@ -16,7 +16,6 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
-import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Pathfinding;
@@ -27,15 +26,14 @@ import org.runejs.client.message.outbound.examine.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
 import org.runejs.client.message.outbound.useitem.*;
+import org.runejs.client.message.outbound.widget.CloseWidgetsOutboundMessage;
 import org.runejs.client.message.outbound.widget.container.DropWidgetItemOutboundMessage;
 import org.runejs.client.message.outbound.widget.input.*;
-import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.OutgoingPackets;
-import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.node.CachedNode;
+import org.runejs.client.node.NodeCache;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.util.TextUtils;
 import org.runejs.client.*;
 import org.runejs.Configuration;
@@ -63,6 +61,38 @@ public class GameInterface extends CachedNode {
     public static int reportAbuseInterfaceID = -1;
     public static boolean aBoolean2177 = false;
     public static int atInventoryInterfaceType = 0;
+    public static int reportAbuseWidgetId = -1;
+    public static int anInt876 = 0;
+    public static int selectedSpell;
+    public static int anInt1171 = 0;
+    public static boolean hiddenButtonTest = false;
+    /**
+     * The player that the local player is sending a PM to.
+     */
+    public static long sendingMessageTo = 0L;
+    /**
+     * The widget ID on which the item was selected.
+     */
+    public static int itemSelectedWidgetId;
+    /**
+     * The item ID currently selected on a widget.
+     */
+    public static int itemSelectedItemId;
+    /**
+     * The slot within the container of the currently selected item.
+     */
+    public static int itemSelectedContainerSlot;
+    /**
+     * Is an item currently selected?
+     */
+    public static int itemCurrentlySelected = 0;
+    public static int anInt704 = 0;
+    public static NodeCache interfaceItemImageCache = new NodeCache(200);
+    public static NodeCache interfaceModelCache = new NodeCache(50);
+    public static NodeCache interfaceTypefaceCache = new NodeCache(20);
+    public static int selectedInventorySlot = 0;
+    public static int activeInterfaceType = 0;
+    public static int modifiedWidgetId = 0;
     /**
      * The lightened edge (top and left) color of the scroll indicator chip.
      */
@@ -148,7 +178,7 @@ public class GameInterface extends CachedNode {
     public int hoveredTextColor;
     public int scrollHeight;
     public int hoveredSiblingId;
-    public int anInt2722;
+    public int rotationSpeed;
     public boolean itemDeletesDraged;
     public int rotationY;
     public int alternateTextColor;
@@ -217,7 +247,7 @@ public class GameInterface extends CachedNode {
         anInt2738 = -1;
         modelZoom = 100;
         itemDeletesDraged = false;
-        anInt2722 = 0;
+        rotationSpeed = 0;
         yTextAlignment = 0;
         currentX = 0;
         orthogonal = false;
@@ -241,30 +271,26 @@ public class GameInterface extends CachedNode {
     }
 
     public static void method639() {
-        synchronized(Class59.keyFocusListener) {
-            Class59.anInt1389 = MovedStatics.anInt1214;
+        synchronized(Game.keyFocusListener) {
+            MovedStatics.anInt1389 = MovedStatics.anInt1214;
             if(GameObjectDefinition.anInt2543 < 0) {
                 for(int i = 0; i < 112; i++) {
-                    Item.obfuscatedKeyStatus[i] = false;
+                    MovedStatics.obfuscatedKeyStatus[i] = false;
                 }
                 GameObjectDefinition.anInt2543 = MovedStatics.anInt2183;
             } else {
                 while(GameObjectDefinition.anInt2543 != MovedStatics.anInt2183) {
-                    int i = RSString.keyCodes[MovedStatics.anInt2183];
+                    int i = MovedStatics.keyCodes[MovedStatics.anInt2183];
                     MovedStatics.anInt2183 = 0x7f & MovedStatics.anInt2183 + 1;
                     if(i < 0) {
-                        Item.obfuscatedKeyStatus[i ^ 0xffffffff] = false;
+                        MovedStatics.obfuscatedKeyStatus[i ^ 0xffffffff] = false;
                     } else {
-                        Item.obfuscatedKeyStatus[i] = true;
+                        MovedStatics.obfuscatedKeyStatus[i] = true;
                     }
                 }
             }
             MovedStatics.anInt1214 = MovedStatics.anInt2598;
         }
-    }
-
-    public static void method640() {
-        ProducingGraphicsBuffer.aClass9_1615.clear();
     }
 
 
@@ -361,7 +387,7 @@ public class GameInterface extends CachedNode {
                 gameInterface.disabledText = English.pleaseWait;
                 gameInterface.actionType = 0;
             } else {
-                int i_4_ = MovedStatics.anInt1008;
+                int i_4_ = Player.ignoresCount;
                 if(Player.friendListStatus == 0)
                     i_4_ = 0;
                 if(i_4_ <= type) {
@@ -373,7 +399,7 @@ public class GameInterface extends CachedNode {
                 }
             }
         } else if(type == 503) {
-            gameInterface.scrollHeight = 15 * MovedStatics.anInt1008 + 20;
+            gameInterface.scrollHeight = 15 * Player.ignoresCount + 20;
             if(gameInterface.scrollHeight <= gameInterface.originalHeight)
                 gameInterface.scrollHeight = gameInterface.originalHeight + 1;
         } else if(type == 324) {
@@ -573,7 +599,7 @@ public class GameInterface extends CachedNode {
 
                 OutgoingPackets.sendMessage(
                     new CastMagicOnWidgetItemOutboundMessage(
-                        Class60.anInt1417,
+                        selectedSpell,
                         npcIdx,
                         widgetId,
                         containerId,
@@ -587,7 +613,7 @@ public class GameInterface extends CachedNode {
                 if(gameScreenInterfaceId == i_10_ >> 16) {
                     atInventoryInterfaceType = 1;
                 }
-                PlayerAppearance.anInt704 = i_10_;
+                anInt704 = i_10_;
                 if(i_10_ >> 16 == chatboxInterfaceId) {
                     atInventoryInterfaceType = 3;
                 }
@@ -597,21 +623,21 @@ public class GameInterface extends CachedNode {
                 MovedStatics.crossIndex = 0;
                 crossY = MouseHandler.clickY;
                 crossX = MouseHandler.clickX;
-                LinkedList.crossType = 2;
+                MovedStatics.crossType = 2;
 
                 OutgoingPackets.sendMessage(
                     new WorldItemInteractionOutboundMessage(
                         2,
                         npcIdx,
                         MovedStatics.baseX + i,
-                        Class26.baseY + i_10_
+                        MovedStatics.baseY + i_10_
                     )
                 );
             }
             if(action == ActionRowType.EXAMINE_OBJECT.getId()) { // examine object
                 crossY = MouseHandler.clickY;
                 crossX = MouseHandler.clickX;
-                LinkedList.crossType = 2;
+                MovedStatics.crossType = 2;
                 MovedStatics.crossIndex = 0;
 
                 int objectId = npcIdx >> 14 & 0x7fff;
@@ -623,7 +649,7 @@ public class GameInterface extends CachedNode {
 
                 int objectX = MovedStatics.baseX + i;
                 int objectId = (0x1ffffd20 & npcIdx) >> 14;
-                int objectY = Class26.baseY + i_10_;
+                int objectY = MovedStatics.baseY + i_10_;
 
                 OutgoingPackets.sendMessage(
                     new ObjectInteractionOutboundMessage(
@@ -640,12 +666,12 @@ public class GameInterface extends CachedNode {
                     Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathY[0], class40_sub5_sub17_sub4_sub1.pathX[0], 1, 1);
                     crossX = MouseHandler.clickX;
                     MovedStatics.crossIndex = 0;
-                    LinkedList.crossType = 2;
+                    MovedStatics.crossType = 2;
                     crossY = MouseHandler.clickY;
 
                     OutgoingPackets.sendMessage(
                         new CastMagicOnPlayerOutboundMessage(
-                            Class60.anInt1417,
+                            selectedSpell,
                             npcIdx
                         )
                     );
@@ -705,7 +731,7 @@ public class GameInterface extends CachedNode {
                     )
                 );
 
-                PlayerAppearance.anInt704 = i_10_;
+                anInt704 = i_10_;
                 RSRuntimeException.anInt1651 = 0;
                 anInt1233 = i;
                 atInventoryInterfaceType = 2;
@@ -733,7 +759,7 @@ public class GameInterface extends CachedNode {
                 anInt1233 = i;
                 atInventoryInterfaceType = 2;
                 RSRuntimeException.anInt1651 = 0;
-                PlayerAppearance.anInt704 = i_10_;
+                anInt704 = i_10_;
                 if(i_10_ >> 16 == gameScreenInterfaceId) {
                     atInventoryInterfaceType = 1;
                 }
@@ -772,7 +798,7 @@ public class GameInterface extends CachedNode {
                 );
 
                 anInt1233 = i;
-                PlayerAppearance.anInt704 = i_10_;
+                anInt704 = i_10_;
                 RSRuntimeException.anInt1651 = 0;
                 atInventoryInterfaceType = 2;
                 if(i_10_ >> 16 == gameScreenInterfaceId) {
@@ -787,7 +813,7 @@ public class GameInterface extends CachedNode {
                 if(otherPlayer != null) {
                     Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
                     crossX = MouseHandler.clickX;
-                    LinkedList.crossType = 2;
+                    MovedStatics.crossType = 2;
                     crossY = MouseHandler.clickY;
                     MovedStatics.crossIndex = 0;
 
@@ -799,7 +825,7 @@ public class GameInterface extends CachedNode {
                 if(otherPlayer != null) {
                     Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
                     MovedStatics.crossIndex = 0;
-                    LinkedList.crossType = 2;
+                    MovedStatics.crossType = 2;
                     crossY = MouseHandler.clickY;
                     crossX = MouseHandler.clickX;
 
@@ -808,7 +834,7 @@ public class GameInterface extends CachedNode {
             }
             if(action == ActionRowType.EXAMINE_NPC.getId()) {
                 crossX = MouseHandler.clickX;
-                LinkedList.crossType = 2;
+                MovedStatics.crossType = 2;
                 crossY = MouseHandler.clickY;
                 MovedStatics.crossIndex = 0;
                 Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
@@ -827,29 +853,29 @@ public class GameInterface extends CachedNode {
                 if(class40_sub5_sub17_sub4_sub1 != null) {
                     Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub1.pathY[0], class40_sub5_sub17_sub4_sub1.pathX[0], 1, 1);
                     crossX = MouseHandler.clickX;
-                    LinkedList.crossType = 2;
+                    MovedStatics.crossType = 2;
                     crossY = MouseHandler.clickY;
                     MovedStatics.crossIndex = 0;
                     
-                    int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
-                    int containerId = ISAAC.anInt525 & 0xFFFF;
+                    int widgetId = (itemSelectedWidgetId >> 16) & 0xFFFF;
+                    int containerId = itemSelectedWidgetId & 0xFFFF;
 
                     OutgoingPackets.sendMessage(
                         new UseItemOnPlayerOutboundMessage(
-                            Class49.anInt1154,
+                            itemSelectedItemId,
                             widgetId,
                             containerId,
-                            LinkedList.selectedInventorySlot,
+                            itemSelectedContainerSlot,
                             npcIdx
                         )
                     );
                 }
             }
             if(action == ActionRowType.SELECT_ITEM_ON_WIDGET.getId()) {
-                Class49.anInt1154 = npcIdx;
-                LinkedList.selectedInventorySlot = i;
-                ISAAC.anInt525 = i_10_;
-                MovedStatics.itemSelected = 1;
+                itemSelectedItemId = npcIdx;
+                itemSelectedContainerSlot = i;
+                itemSelectedWidgetId = i_10_;
+                itemCurrentlySelected = 1;
                 Native.selectedItemName = Native.lightRed + ItemDefinition.forId(npcIdx, 10).name + Native.white;
                 Game.widgetSelected = 0;
                 if(Native.selectedItemName == null) {
@@ -860,16 +886,16 @@ public class GameInterface extends CachedNode {
                 if(action == ActionRowType.CAST_MAGIC_ON_WORLD_ITEM.getId()) {
                     Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                     MovedStatics.crossIndex = 0;
-                    LinkedList.crossType = 2;
+                    MovedStatics.crossType = 2;
                     crossY = MouseHandler.clickY;
                     crossX = MouseHandler.clickX;
 
                     OutgoingPackets.sendMessage(
                         new CastMagicOnWorldItemOutboundMessage(
-                            Class60.anInt1417,
+                            selectedSpell,
                             npcIdx,
                             MovedStatics.baseX + i,
-                            Class26.baseY + i_10_
+                            MovedStatics.baseY + i_10_
                         )
                     );
                 }
@@ -903,7 +929,7 @@ public class GameInterface extends CachedNode {
 
                     atInventoryInterfaceType = 2;
                     anInt1233 = i;
-                    PlayerAppearance.anInt704 = i_10_;
+                    anInt704 = i_10_;
                     if(gameScreenInterfaceId == i_10_ >> 16) {
                         atInventoryInterfaceType = 1;
                     }
@@ -919,25 +945,25 @@ public class GameInterface extends CachedNode {
                         long l = TextUtils.nameToLong(class1.substring(i_18_ + 5).trim());
                         int i_19_ = -1;
                         for(int i_20_ = 0; i_20_ < Player.friendsCount; i_20_++) {
-                            if(Class59.friends[i_20_] == l) {
+                            if(Player.friends[i_20_] == l) {
                                 i_19_ = i_20_;
                                 break;
                             }
                         }
                         if(i_19_ != -1 && Player.friendWorlds[i_19_] > 0) {
-                            Class37.anInt876 = 3;
+                            anInt876 = 3;
                             ChatBox.redrawChatbox = true;
                             ChatBox.inputType = 0;
                             ChatBox.chatMessage = "";
                             ChatBox.messagePromptRaised = true;
-                            PacketBuffer.aLong2241 = Class59.friends[i_19_];
+                            sendingMessageTo = Player.friends[i_19_];
                             Native.enterPlayerNameHeader = English.prefixEnterMessageToSendTo + Player.friendUsernames[i_19_];
                         }
                     }
                 }
                 if(action == ActionRowType.EXAMINE_ITEM.getId()) { // examine item
                     MovedStatics.crossIndex = 0;
-                    LinkedList.crossType = 2;
+                    MovedStatics.crossType = 2;
                     crossY = MouseHandler.clickY;
                     crossX = MouseHandler.clickX;
 
@@ -947,7 +973,7 @@ public class GameInterface extends CachedNode {
                     AnimationSequence.method596(i, npcIdx, (byte) -11, i_10_);
 
                     int objectId = (0x1ffffd20 & npcIdx) >> 14;
-                    int objectY = i_10_ + Class26.baseY;
+                    int objectY = i_10_ + MovedStatics.baseY;
                     int objectX = i + MovedStatics.baseX;
 
                     OutgoingPackets.sendMessage(
@@ -966,7 +992,7 @@ public class GameInterface extends CachedNode {
                         MovedStatics.crossIndex = 0;
                         crossX = MouseHandler.clickX;
                         crossY = MouseHandler.clickY;
-                        LinkedList.crossType = 2;
+                        MovedStatics.crossType = 2;
 
                         OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(2, npcIdx));
                     }
@@ -978,17 +1004,17 @@ public class GameInterface extends CachedNode {
                         crossX = MouseHandler.clickX;
                         crossY = MouseHandler.clickY;
                         MovedStatics.crossIndex = 0;
-                        LinkedList.crossType = 2;
+                        MovedStatics.crossType = 2;
 
-                        int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
-                        int containerId = ISAAC.anInt525 & 0xFFFF;
+                        int widgetId = (itemSelectedWidgetId >> 16) & 0xFFFF;
+                        int containerId = itemSelectedWidgetId & 0xFFFF;
 
                         OutgoingPackets.sendMessage(
                             new UseItemOnPlayerOutboundMessage(
-                                Class49.anInt1154,
+                                itemSelectedItemId,
                                 widgetId,
                                 containerId,
-                                LinkedList.selectedInventorySlot,
+                                itemSelectedContainerSlot,
                                 npcIdx
                             )
                         );
@@ -998,7 +1024,7 @@ public class GameInterface extends CachedNode {
                     AnimationSequence.method596(i, npcIdx, (byte) -77, i_10_);
 
                     int objectX = i + MovedStatics.baseX;
-                    int objectY = i_10_ + Class26.baseY;
+                    int objectY = i_10_ + MovedStatics.baseY;
                     int objectId = npcIdx >> 14 & 0x7fff;
 
                     OutgoingPackets.sendMessage(
@@ -1011,18 +1037,18 @@ public class GameInterface extends CachedNode {
                     );
                 }
                 if(action == ActionRowType.USE_ITEM_ON_OBJECT.getId() && AnimationSequence.method596(i, npcIdx, (byte) -104, i_10_)) {
-                    int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
-                    int containerId = ISAAC.anInt525 & 0xFFFF;
+                    int widgetId = (itemSelectedWidgetId >> 16) & 0xFFFF;
+                    int containerId = itemSelectedWidgetId & 0xFFFF;
 
                     OutgoingPackets.sendMessage(
                         new UseItemOnObjectOutboundMessage(
-                            Class49.anInt1154,
+                            itemSelectedItemId,
                             widgetId,
                             containerId,
-                            LinkedList.selectedInventorySlot,
+                            itemSelectedContainerSlot,
                             (npcIdx & 0x1fffccf7) >> 14,
                             i + MovedStatics.baseX,
-                            i_10_ + Class26.baseY
+                            i_10_ + MovedStatics.baseY
                         )
                     );
                 }
@@ -1031,7 +1057,7 @@ public class GameInterface extends CachedNode {
                     if(class40_sub5_sub17_sub4_sub2 != null) {
                         Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
                         MovedStatics.crossIndex = 0;
-                        LinkedList.crossType = 2;
+                        MovedStatics.crossType = 2;
                         crossX = MouseHandler.clickX;
                         crossY = MouseHandler.clickY;
 
@@ -1039,18 +1065,18 @@ public class GameInterface extends CachedNode {
                     }
                 }
                 if(action == ActionRowType.USE_ITEM_ON_INVENTORY_ITEM.getId()) {
-                    int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
-                    int containerId = ISAAC.anInt525 & 0xFFFF;
+                    int widgetId = (itemSelectedWidgetId >> 16) & 0xFFFF;
+                    int containerId = itemSelectedWidgetId & 0xFFFF;
 
                     int targetWidgetId = (i_10_ >> 16) & 0xFFFF;
                     int targetContainerId = i_10_ & 0xFFFF;
 
                     OutgoingPackets.sendMessage(
                         new UseItemOnWidgetItemOutboundMessage(
-                            Class49.anInt1154,
+                            itemSelectedItemId,
                             widgetId,
                             containerId,
-                            LinkedList.selectedInventorySlot,
+                            itemSelectedContainerSlot,
                             npcIdx,
                             targetWidgetId,
                             targetContainerId,
@@ -1058,7 +1084,7 @@ public class GameInterface extends CachedNode {
                         )
                     );
 
-                    PlayerAppearance.anInt704 = i_10_;
+                    anInt704 = i_10_;
                     RSRuntimeException.anInt1651 = 0;
                     anInt1233 = i;
                     atInventoryInterfaceType = 2;
@@ -1075,12 +1101,12 @@ public class GameInterface extends CachedNode {
                     Game.widgetSelected = 1;
                     Native.selectedSpellVerb = gameInterface.targetVerb;
                     MovedStatics.selectedMask = gameInterface.clickMask;
-                    MovedStatics.itemSelected = 0;
-                    Class60.anInt1417 = i_10_;
+                    itemCurrentlySelected = 0;
+                    selectedSpell = i_10_;
                     Native.selectedSpellName = Native.green + gameInterface.spellName + Native.white;
                     if(MovedStatics.selectedMask == 16) {
                         drawTabIcons = true;
-                        Player.currentTabId = 3;
+                        Game.currentTabId = 3;
                         redrawTabArea = true;
                     }
                 } else {
@@ -1124,7 +1150,7 @@ public class GameInterface extends CachedNode {
 
                         anInt1233 = i;
                         atInventoryInterfaceType = 2;
-                        PlayerAppearance.anInt704 = i_10_;
+                        anInt704 = i_10_;
                         RSRuntimeException.anInt1651 = 0;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
                             atInventoryInterfaceType = 1;
@@ -1140,14 +1166,14 @@ public class GameInterface extends CachedNode {
                             crossX = MouseHandler.clickX;
                             crossY = MouseHandler.clickY;
                             MovedStatics.crossIndex = 0;
-                            LinkedList.crossType = 2;
+                            MovedStatics.crossType = 2;
 
                             OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(1, npcIdx));
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_1.getId()) {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
-                        LinkedList.crossType = 2;
+                        MovedStatics.crossType = 2;
                         MovedStatics.crossIndex = 0;
                         crossX = MouseHandler.clickX;
                         crossY = MouseHandler.clickY;
@@ -1157,7 +1183,7 @@ public class GameInterface extends CachedNode {
                                 1,
                                 npcIdx,
                                 MovedStatics.baseX + i,
-                                Class26.baseY + i_10_
+                                MovedStatics.baseY + i_10_
                             )
                         );
                     }
@@ -1165,7 +1191,7 @@ public class GameInterface extends CachedNode {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                         MovedStatics.crossIndex = 0;
                         crossX = MouseHandler.clickX;
-                        LinkedList.crossType = 2;
+                        MovedStatics.crossType = 2;
                         crossY = MouseHandler.clickY;
 
                         OutgoingPackets.sendMessage(
@@ -1173,7 +1199,7 @@ public class GameInterface extends CachedNode {
                                 3,
                                 npcIdx,
                                 MovedStatics.baseX + i,
-                                Class26.baseY + i_10_
+                                MovedStatics.baseY + i_10_
                             )
                         );
                     }
@@ -1184,11 +1210,11 @@ public class GameInterface extends CachedNode {
                             crossX = MouseHandler.clickX;
                             crossY = MouseHandler.clickY;
                             MovedStatics.crossIndex = 0;
-                            LinkedList.crossType = 2;
+                            MovedStatics.crossType = 2;
 
                             OutgoingPackets.sendMessage(
                                 new CastMagicOnNPCOutboundMessage(
-                                    Class60.anInt1417,
+                                    selectedSpell,
                                     npcIdx
                                 )
                             );
@@ -1217,7 +1243,7 @@ public class GameInterface extends CachedNode {
                         Player otherPlayer = Player.trackedPlayers[npcIdx];
                         if(otherPlayer != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
-                            LinkedList.crossType = 2;
+                            MovedStatics.crossType = 2;
                             MovedStatics.crossIndex = 0;
                             crossX = MouseHandler.clickX;
                             crossY = MouseHandler.clickY;
@@ -1227,9 +1253,9 @@ public class GameInterface extends CachedNode {
                     }
                     if(action == ActionRowType.WALK_HERE.getId()) {
                         if(MovedStatics.menuOpen) {
-                            Npc.currentScene.method120(-4 + i, -4 + i_10_);
+                            Game.currentScene.method120(-4 + i, -4 + i_10_);
                         } else {
-                            Npc.currentScene.method120(MouseHandler.clickX - 4, -4 + MouseHandler.clickY);
+                            Game.currentScene.method120(MouseHandler.clickX - 4, -4 + MouseHandler.clickY);
                         }
                     }
                     if(action == ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId()) {
@@ -1241,7 +1267,7 @@ public class GameInterface extends CachedNode {
                         }
                         anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
-                        PlayerAppearance.anInt704 = i_10_;
+                        anInt704 = i_10_;
                         atInventoryInterfaceType = 2;
                         if(i_10_ >> 16 == gameScreenInterfaceId) {
                             atInventoryInterfaceType = 1;
@@ -1253,7 +1279,7 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_3.getId()) {
                         AnimationSequence.method596(i, npcIdx, (byte) -104, i_10_);
 
-                        int objectY = i_10_ + Class26.baseY;
+                        int objectY = i_10_ + MovedStatics.baseY;
                         int objectId = npcIdx >> 14 & 0x7fff;
                         int objectX = i + MovedStatics.baseX;
 
@@ -1267,7 +1293,7 @@ public class GameInterface extends CachedNode {
                         );
                     }
                     if(action == 50) {
-                        Class33.method406(i, npcIdx, i_10_);
+                        ClientScriptRunner.method406(i, npcIdx, i_10_);
                     }
                     if(action == ActionRowType.CLOSE_PERMANENT_CHATBOX_WIDGET.getId()) {
                         resetInterface(ChatBox.dialogueId);
@@ -1277,10 +1303,10 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.CAST_MAGIC_ON_OBJECT.getId() && AnimationSequence.method596(i, npcIdx, (byte) -27, i_10_)) {
                         OutgoingPackets.sendMessage(
                             new CastMagicOnObjectOutboundMessage(
-                                Class60.anInt1417,
+                                selectedSpell,
                                 npcIdx >> 14 & 0x7fff,
                                 i + MovedStatics.baseX,
-                                i_10_ + Class26.baseY
+                                i_10_ + MovedStatics.baseY
                             )
                         );
                     }
@@ -1306,7 +1332,7 @@ public class GameInterface extends CachedNode {
                         if(i_10_ >> 16 == chatboxInterfaceId) {
                             atInventoryInterfaceType = 3;
                         }
-                        PlayerAppearance.anInt704 = i_10_;
+                        anInt704 = i_10_;
                         anInt1233 = i;
                     }
                     if(action == ActionRowType.DROP_ITEM.getId()) {
@@ -1321,7 +1347,7 @@ public class GameInterface extends CachedNode {
                         ));
 
                         anInt1233 = i;
-                        PlayerAppearance.anInt704 = i_10_;
+                        anInt704 = i_10_;
                         atInventoryInterfaceType = 2;
                         if(gameScreenInterfaceId == i_10_ >> 16) {
                             atInventoryInterfaceType = 1;
@@ -1335,7 +1361,7 @@ public class GameInterface extends CachedNode {
                         Player otherPlayer = Player.trackedPlayers[npcIdx];
                         if(otherPlayer != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
-                            LinkedList.crossType = 2;
+                            MovedStatics.crossType = 2;
                             crossY = MouseHandler.clickY;
                             crossX = MouseHandler.clickX;
                             MovedStatics.crossIndex = 0;
@@ -1348,10 +1374,10 @@ public class GameInterface extends CachedNode {
                         int i_22_ = class1.indexOf(Native.white);
                         if(i_22_ != -1) {
                             if(gameScreenInterfaceId == -1) {
-                                PacketBuffer.closeAllWidgets();
-                                if(MovedStatics.anInt854 != -1) {
+                                closeAllWidgets();
+                                if(reportAbuseWidgetId != -1) {
                                     Native.reportedName = class1.substring(i_22_ + 5).trim();
-                                    reportAbuseInterfaceID = gameScreenInterfaceId = MovedStatics.anInt854;
+                                    reportAbuseInterfaceID = gameScreenInterfaceId = reportAbuseWidgetId;
                                     MovedStatics.reportMutePlayer = false;
                                 }
                             } else {
@@ -1363,7 +1389,7 @@ public class GameInterface extends CachedNode {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                         crossX = MouseHandler.clickX;
                         MovedStatics.crossIndex = 0;
-                        LinkedList.crossType = 2;
+                        MovedStatics.crossType = 2;
                         crossY = MouseHandler.clickY;
 
                         OutgoingPackets.sendMessage(
@@ -1371,15 +1397,15 @@ public class GameInterface extends CachedNode {
                                 4,
                                 npcIdx,
                                 MovedStatics.baseX + i,
-                                Class26.baseY + i_10_
+                                MovedStatics.baseY + i_10_
                             )
                         );
                     }
                     if(action == ActionRowType.CLOSE_WIDGET.getId()) {
-                        PacketBuffer.closeAllWidgets();
+                        closeAllWidgets();
                     }
                     if(action == 54 && MovedStatics.lastContinueTextWidgetId == -1) { // Click to continue
-                        PacketBuffer.method517(0, i_10_);
+                        method517(0, i_10_);
                         MovedStatics.lastContinueTextWidgetId = i_10_;
                     }
                     if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_4.getId()) {
@@ -1402,7 +1428,7 @@ public class GameInterface extends CachedNode {
                             atInventoryInterfaceType = 1;
                         }
                         anInt1233 = i;
-                        PlayerAppearance.anInt704 = i_10_;
+                        anInt704 = i_10_;
                         if(i_10_ >> 16 == chatboxInterfaceId) {
                             atInventoryInterfaceType = 3;
                         }
@@ -1410,7 +1436,7 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_5.getId()) {
                         Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                         crossY = MouseHandler.clickY;
-                        LinkedList.crossType = 2;
+                        MovedStatics.crossType = 2;
                         MovedStatics.crossIndex = 0;
                         crossX = MouseHandler.clickX;
 
@@ -1419,7 +1445,7 @@ public class GameInterface extends CachedNode {
                                 5,
                                 npcIdx,
                                 MovedStatics.baseX + i,
-                                Class26.baseY + i_10_
+                                MovedStatics.baseY + i_10_
                             )
                         );
                     }
@@ -1429,7 +1455,7 @@ public class GameInterface extends CachedNode {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], otherPlayer.pathY[0], otherPlayer.pathX[0], 1, 1);
                             MovedStatics.crossIndex = 0;
                             crossX = MouseHandler.clickX;
-                            LinkedList.crossType = 2;
+                            MovedStatics.crossType = 2;
                             crossY = MouseHandler.clickY;
 
                             OutgoingPackets.sendMessage(new PlayerInteractionOutboundMessage(2, npcIdx));
@@ -1449,7 +1475,7 @@ public class GameInterface extends CachedNode {
                             )
                         );
 
-                        PlayerAppearance.anInt704 = i_10_;
+                        anInt704 = i_10_;
                         RSRuntimeException.anInt1651 = 0;
                         anInt1233 = i;
                         atInventoryInterfaceType = 2;
@@ -1464,7 +1490,7 @@ public class GameInterface extends CachedNode {
                         AnimationSequence.method596(i, npcIdx, (byte) -47, i_10_);
                         int objectId = 0x7fff & npcIdx >> 14;
                         int objectX = i + MovedStatics.baseX;
-                        int objectY = i_10_ + Class26.baseY;
+                        int objectY = i_10_ + MovedStatics.baseY;
 
                         OutgoingPackets.sendMessage(
                             new ObjectInteractionOutboundMessage(
@@ -1479,7 +1505,7 @@ public class GameInterface extends CachedNode {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
-                            LinkedList.crossType = 2;
+                            MovedStatics.crossType = 2;
                             crossX = MouseHandler.clickX;
                             crossY = MouseHandler.clickY;
                             MovedStatics.crossIndex = 0;
@@ -1492,20 +1518,20 @@ public class GameInterface extends CachedNode {
                         crossX = MouseHandler.clickX;
                         crossY = MouseHandler.clickY;
                         MovedStatics.crossIndex = 0;
-                        LinkedList.crossType = 2;
+                        MovedStatics.crossType = 2;
 
-                        int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
-                        int containerId = ISAAC.anInt525 & 0xFFFF;
+                        int widgetId = (itemSelectedWidgetId >> 16) & 0xFFFF;
+                        int containerId = itemSelectedWidgetId & 0xFFFF;
 
                         OutgoingPackets.sendMessage(
                             new UseItemOnWorldItemOutboundMessage(
-                                Class49.anInt1154,
+                                itemSelectedItemId,
                                 widgetId,
                                 containerId,
-                                LinkedList.selectedInventorySlot,
+                                itemSelectedContainerSlot,
                                 npcIdx,
                                 i + MovedStatics.baseX,
-                                Class26.baseY + i_10_
+                                MovedStatics.baseY + i_10_
                             )
                         );
                     }
@@ -1526,7 +1552,7 @@ public class GameInterface extends CachedNode {
                         anInt1233 = i;
                         RSRuntimeException.anInt1651 = 0;
                         atInventoryInterfaceType = 2;
-                        PlayerAppearance.anInt704 = i_10_;
+                        anInt704 = i_10_;
                         if(i_10_ >> 16 == gameScreenInterfaceId) {
                             atInventoryInterfaceType = 1;
                         }
@@ -1538,7 +1564,7 @@ public class GameInterface extends CachedNode {
                         Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[npcIdx];
                         if(class40_sub5_sub17_sub4_sub2 != null) {
                             Pathfinding.doEntityWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], class40_sub5_sub17_sub4_sub2.pathY[0], class40_sub5_sub17_sub4_sub2.pathX[0], 1, 1);
-                            LinkedList.crossType = 2;
+                            MovedStatics.crossType = 2;
                             crossX = MouseHandler.clickX;
                             MovedStatics.crossIndex = 0;
                             crossY = MouseHandler.clickY;
@@ -1546,8 +1572,8 @@ public class GameInterface extends CachedNode {
                             OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(3, npcIdx));
                         }
                     }
-                    if(MovedStatics.itemSelected != 0) {
-                        MovedStatics.itemSelected = 0;
+                    if(itemCurrentlySelected != 0) {
+                        itemCurrentlySelected = 0;
                         redrawTabArea = true;
                     }
                     if(Game.widgetSelected != 0) {
@@ -1570,8 +1596,8 @@ public class GameInterface extends CachedNode {
             GameInterface gameInterface = aGameInterface_353;
             GameInterface gameInterface_24_ = method878(gameInterface);
             if(gameInterface_24_ != null) {
-                int[] is = Class13.method247(gameInterface_24_);
-                int[] is_25_ = Class13.method247(gameInterface);
+                int[] is = method247(gameInterface_24_);
+                int[] is_25_ = method247(gameInterface);
                 int i = is_25_[1] - is[1] + -MovedStatics.anInt2621 + MouseHandler.mouseY;
                 int i_26_ = -is[0] + is_25_[0] + MouseHandler.mouseX + -MovedStatics.anInt1996;
                 if(i < 0) {
@@ -1636,9 +1662,9 @@ public class GameInterface extends CachedNode {
 
     public static void scrollInterface(int arg0, int arg1, int arg2, int arg3, GameInterface arg5, int arg6, int arg7, int arg8) {
         if(aBoolean1444)
-            Landscape.anInt1171 = 32;
+            anInt1171 = 32;
         else
-            Landscape.anInt1171 = 0;
+            anInt1171 = 0;
         aBoolean1444 = false;
         if(arg2 >= arg6 && arg2 < arg6 + 16 && arg1 >= arg8 && 16 + arg8 > arg1) {
             arg5.scrollPosition -= Npc.anInt3294 * 4;
@@ -1647,7 +1673,7 @@ public class GameInterface extends CachedNode {
             if(arg7 == 2 || arg7 == 3)
                 ChatBox.redrawChatbox = true;
         } else if(arg6 > arg2 || arg6 + 16 <= arg2 || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
-            if(-Landscape.anInt1171 + arg6 <= arg2 && 16 + arg6 + Landscape.anInt1171 > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
+            if(-anInt1171 + arg6 <= arg2 && 16 + arg6 + anInt1171 > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Npc.anInt3294 > 0) {
                 aBoolean1444 = true;
                 int i = (-32 + arg0) * arg0 / arg3;
                 if(arg7 == 2 || arg7 == 3)
@@ -1673,7 +1699,7 @@ public class GameInterface extends CachedNode {
         int i = arg1.contentType;
         if(Player.friendListStatus == 2) {
             if(i == 201) {
-                Class37.anInt876 = 1;
+                anInt876 = 1;
                 Native.enterPlayerNameHeader = English.enterNameOfFriendToAddToList;
                 ChatBox.messagePromptRaised = true;
                 ChatBox.inputType = 0;
@@ -1681,7 +1707,7 @@ public class GameInterface extends CachedNode {
                 ChatBox.redrawChatbox = true;
             }
             if(i == 202) {
-                Class37.anInt876 = 2;
+                anInt876 = 2;
                 Native.enterPlayerNameHeader = English.enterNameOfFriendToDeleteFromList;
                 ChatBox.redrawChatbox = true;
                 ChatBox.inputType = 0;
@@ -1695,7 +1721,7 @@ public class GameInterface extends CachedNode {
         }
         if(i == 501) {
             ChatBox.inputType = 0;
-            Class37.anInt876 = 4;
+            anInt876 = 4;
             ChatBox.redrawChatbox = true;
             Native.enterPlayerNameHeader = English.enterNameOfPlayerToAddToList;
             ChatBox.chatMessage = "";
@@ -1704,7 +1730,7 @@ public class GameInterface extends CachedNode {
         if(i == 502) {
             ChatBox.redrawChatbox = true;
             ChatBox.inputType = 0;
-            Class37.anInt876 = 5;
+            anInt876 = 5;
             ChatBox.messagePromptRaised = true;
             ChatBox.chatMessage = "";
             Native.enterPlayerNameHeader = English.enterNameOfPlayerToDeleteFromList;
@@ -1731,7 +1757,7 @@ public class GameInterface extends CachedNode {
         if(i == 620)
             MovedStatics.reportMutePlayer = !MovedStatics.reportMutePlayer;
         if(i >= 601 && i <= 613) {
-            PacketBuffer.closeAllWidgets();
+            closeAllWidgets();
             if(Native.reportedName.length() > 0) {
                 OutgoingPackets.sendMessage(
                     new SubmitReportAbuseOutboundMessage(
@@ -1748,7 +1774,7 @@ public class GameInterface extends CachedNode {
     public static void runClientScriptsForInterface(int minY, int arg1, int scrollWidth, int arg3, int minX, int parentId, GameInterface[] interfaceCollection, int arg8, int scrollHeight) {
         for (int i = 0; i < interfaceCollection.length; i++) {
             GameInterface gameInterface = interfaceCollection[i];
-            if (gameInterface != null && (gameInterface.type == GameInterfaceType.LAYER || gameInterface.hasListeners) && parentId == gameInterface.parentId && (!gameInterface.isHidden || PacketBuffer.hiddenButtonTest)) {
+            if (gameInterface != null && (gameInterface.type == GameInterfaceType.LAYER || gameInterface.hasListeners) && parentId == gameInterface.parentId && (!gameInterface.isHidden || hiddenButtonTest)) {
                 int absoluteX = minX + gameInterface.currentX;
                 int absoluteY = minY + gameInterface.currentY;
                 if (!gameInterface.lockScroll)
@@ -1825,13 +1851,13 @@ public class GameInterface extends CachedNode {
         if (nameAsLong != 0) {
             int i = 0;
             for (/**/; Player.friendsCount > i; i++) {
-                if (Class59.friends[i] == nameAsLong) {
+                if (Player.friends[i] == nameAsLong) {
                     Player.friendsCount--;
                     redrawTabArea = true;
                     for (int i_13_ = i; i_13_ < Player.friendsCount; i_13_++) {
                         Player.friendUsernames[i_13_] = Player.friendUsernames[1 + i_13_];
                         Player.friendWorlds[i_13_] = Player.friendWorlds[i_13_ + 1];
-                        Class59.friends[i_13_] = Class59.friends[1 + i_13_];
+                        Player.friends[i_13_] = Player.friends[1 + i_13_];
                     }
 
                     OutgoingPackets.sendMessage(
@@ -1867,33 +1893,33 @@ public class GameInterface extends CachedNode {
             if(gameScreenInterfaceId != -1 && reportAbuseInterfaceID == gameScreenInterfaceId) {
                 if(MovedStatics.anInt2854 == 85 && Native.reportedName.length() > 0)
                     Native.reportedName = Native.reportedName.substring(0, -1 + Native.reportedName.length());
-                if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && Native.reportedName.length() < 12)
-                    Native.reportedName = Native.reportedName + (char) Class59.anInt1388;
+                if((MovedStatics.method735(MovedStatics.anInt1388) || MovedStatics.anInt1388 == 32) && Native.reportedName.length() < 12)
+                    Native.reportedName = Native.reportedName + (char) MovedStatics.anInt1388;
             } else if(ChatBox.messagePromptRaised) {
                 if(MovedStatics.anInt2854 == 85 && ChatBox.chatMessage.length() > 0) {
                     ChatBox.chatMessage = ChatBox.chatMessage.substring(0, -1 + ChatBox.chatMessage.length());
                     ChatBox.redrawChatbox = true;
                 }
-                if(Player.method793(Class59.anInt1388) && ChatBox.chatMessage.length() < 80) {
-                    ChatBox.chatMessage = ChatBox.chatMessage + (char) Class59.anInt1388;
+                if(MovedStatics.method793(MovedStatics.anInt1388) && ChatBox.chatMessage.length() < 80) {
+                    ChatBox.chatMessage = ChatBox.chatMessage + (char) MovedStatics.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
                 if(MovedStatics.anInt2854 == 84) {
                     ChatBox.messagePromptRaised = false;
                     ChatBox.redrawChatbox = true;
-                    if(Class37.anInt876 == 1) {
-                        long l = RSString.nameToLong(ChatBox.chatMessage);
+                    if(anInt876 == 1) {
+                        long l = MovedStatics.nameToLong(ChatBox.chatMessage);
                         addFriend(l);
                     }
-                    if(Class37.anInt876 == 2 && Player.friendsCount > 0) {
-                        long l = RSString.nameToLong(ChatBox.chatMessage);
+                    if(anInt876 == 2 && Player.friendsCount > 0) {
+                        long l = MovedStatics.nameToLong(ChatBox.chatMessage);
                         removeFriend(l);
                     }
-                    if(Class37.anInt876 == 3 && ChatBox.chatMessage.length() > 0) {
+                    if(anInt876 == 3 && ChatBox.chatMessage.length() > 0) {
 // private messages
                         ChatBox.filterInput();
 
-OutgoingPackets.sendMessage(new SendPrivateMessageOutboundMessage(PacketBuffer.aLong2241, ChatBox.chatboxInput));
+OutgoingPackets.sendMessage(new SendPrivateMessageOutboundMessage(sendingMessageTo, ChatBox.chatboxInput));
 
                         if(ChatBox.privateChatMode == 2) {
                             ChatBox.privateChatMode = 1;
@@ -1906,12 +1932,12 @@ ChatBox.tradeMode
 ));
                         }
                     }
-                    if(Class37.anInt876 == 4 && MovedStatics.anInt1008 < 100) {
-                        long l = RSString.nameToLong(ChatBox.chatMessage);
+                    if(anInt876 == 4 && Player.ignoresCount < 100) {
+                        long l = MovedStatics.nameToLong(ChatBox.chatMessage);
                         addIgnore(l);
                     }
-                    if(Class37.anInt876 == 5 && MovedStatics.anInt1008 > 0) {
-                        long l = RSString.nameToLong(ChatBox.chatMessage);
+                    if(anInt876 == 5 && Player.ignoresCount > 0) {
+                        long l = MovedStatics.nameToLong(ChatBox.chatMessage);
                         removeIgnore(l);
                     }
                 }
@@ -1920,8 +1946,8 @@ ChatBox.tradeMode
                     ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 1);
                     ChatBox.redrawChatbox = true;
                 }
-                if(method1027(Class59.anInt1388) && ChatBox.inputMessage.length() < 10) {
-                    ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
+                if(method1027(MovedStatics.anInt1388) && ChatBox.inputMessage.length() < 10) {
+                    ChatBox.inputMessage = ChatBox.inputMessage + (char) MovedStatics.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
                 if(MovedStatics.anInt2854 == 84) {
@@ -1943,13 +1969,13 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNumericInputOutboundMessage(i
                     ChatBox.inputMessage = ChatBox.inputMessage.substring(0, -1 + ChatBox.inputMessage.length());
                     ChatBox.redrawChatbox = true;
                 }
-                if((Class40_Sub5_Sub15.method735(Class59.anInt1388) || Class59.anInt1388 == 32) && ChatBox.inputMessage.length() < 12) {
-                    ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
+                if((MovedStatics.method735(MovedStatics.anInt1388) || MovedStatics.anInt1388 == 32) && ChatBox.inputMessage.length() < 12) {
+                    ChatBox.inputMessage = ChatBox.inputMessage + (char) MovedStatics.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
                 if(MovedStatics.anInt2854 == 84) {
                     if(ChatBox.inputMessage.length() > 0) {
-long name = RSString.nameToLong(ChatBox.inputMessage);
+long name = MovedStatics.nameToLong(ChatBox.inputMessage);
 
 OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name));
                     }
@@ -1961,8 +1987,8 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name
                     ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 10);
                     ChatBox.redrawChatbox = true;
                 }
-                if(Player.method793(Class59.anInt1388) && ChatBox.inputMessage.length() < 40) {
-                    ChatBox.inputMessage = ChatBox.inputMessage + (char) Class59.anInt1388;
+                if(MovedStatics.method793(MovedStatics.anInt1388) && ChatBox.inputMessage.length() < 40) {
+                    ChatBox.inputMessage = ChatBox.inputMessage + (char) MovedStatics.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
             } else if(chatboxInterfaceId == -1 && fullscreenInterfaceId == -1) {
@@ -1970,14 +1996,14 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name
                     ChatBox.chatboxInput = ChatBox.chatboxInput.substring(0, ChatBox.chatboxInput.length() - 1);
                     ChatBox.redrawChatbox = true;
                 }
-                if(Player.method793(Class59.anInt1388) && ChatBox.chatboxInput.length() < 80) {
-                    ChatBox.chatboxInput = ChatBox.chatboxInput + (char) Class59.anInt1388;
+                if(MovedStatics.method793(MovedStatics.anInt1388) && ChatBox.chatboxInput.length() < 80) {
+                    ChatBox.chatboxInput = ChatBox.chatboxInput + (char) MovedStatics.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
                 if(MovedStatics.anInt2854 == 84 && ChatBox.chatboxInput.length() > 0) {
                     if(InteractiveObject.playerRights > 1) {
                         if(ChatBox.chatboxInput.equals(English.commandClientDrop))
-                            Class59.dropClient();
+                            Game.dropClient();
                         if(ChatBox.chatboxInput.equals(English.commandFpson)) {
                             InteractiveObject.showFps = true;
                             ChatBox.inputType = 3;
@@ -2012,7 +2038,7 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name
                         if(ChatBox.chatboxInput.equals(English.commandErrorTest) && Game.modewhere == 2)
                             throw new RuntimeException();
                         if(ChatBox.chatboxInput.equals(Native.cmd_hiddenbuttontest))
-                            PacketBuffer.hiddenButtonTest = true;
+                            hiddenButtonTest = true;
                     }
                     if(ChatBox.chatboxInput.startsWith(Native.cmd_prefix)) {
 // remove the :: prefix
@@ -2064,17 +2090,17 @@ ChatBox.tradeMode
 
     private static void addFriend(long name) {
         if(name != 0L) {
-            if(Player.friendsCount >= 100 && Class44.anInt1049 != 1 || Player.friendsCount >= 200) {
+            if(Player.friendsCount >= 100 && MovedStatics.anInt1049 != 1 || Player.friendsCount >= 200) {
                 ChatBox.addChatMessage("", English.friendsListIsFull, 0);
             } else {
                 String username = TextUtils.formatName(TextUtils.longToName(name));
                 for(int i = 0; Player.friendsCount > i; i++) {
-                    if(Class59.friends[i] == name) {
+                    if(Player.friends[i] == name) {
                         ChatBox.addChatMessage("", username + English.isAlreadyOnYourFriendList, 0);
                         return;
                     }
                 }
-                for(int i = 0; MovedStatics.anInt1008 > i; i++) {
+                for(int i = 0; Player.ignoresCount > i; i++) {
                     if(Player.ignores[i] == name) {
                         ChatBox.addChatMessage("", English.pleaseRemove + username + English.suffixFromYourIgnoreListFirst, 0);
                         return;
@@ -2082,7 +2108,7 @@ ChatBox.tradeMode
                 }
                 if(!username.equals(Player.localPlayer.playerName)) {
                     Player.friendUsernames[Player.friendsCount] = username;
-                    Class59.friends[Player.friendsCount] = name;
+                    Player.friends[Player.friendsCount] = name;
                     Player.friendWorlds[Player.friendsCount] = 0;
                     Player.friendsCount++;
                     redrawTabArea = true;
@@ -2095,11 +2121,11 @@ ChatBox.tradeMode
     }
 
     private static void removeIgnore(long arg1) {
-        for (int i = 0; i < MovedStatics.anInt1008; i++) {
+        for (int i = 0; i < Player.ignoresCount; i++) {
             if (Player.ignores[i] == arg1) {
                 redrawTabArea = true;
-                MovedStatics.anInt1008--;
-                for (int i_16_ = i; MovedStatics.anInt1008 > i_16_; i_16_++)
+                Player.ignoresCount--;
+                for (int i_16_ = i; Player.ignoresCount > i_16_; i_16_++)
                     Player.ignores[i_16_] = Player.ignores[1 + i_16_];
 
                 OutgoingPackets.sendMessage(
@@ -2111,24 +2137,24 @@ ChatBox.tradeMode
 
     private static void addIgnore(long arg1) {
         if(arg1 != 0L) {
-            if(MovedStatics.anInt1008 >= 100)
+            if(Player.ignoresCount >= 100)
                 ChatBox.addChatMessage("", English.yourIgnoreListIsFull.toString(), 0);
             else {
                 String class1 = TextUtils.formatName(TextUtils.longToName(arg1));
-                for(int i = 0; i < MovedStatics.anInt1008; i++) {
+                for(int i = 0; i < Player.ignoresCount; i++) {
                     if(arg1 == Player.ignores[i]) {
                         ChatBox.addChatMessage("", class1 + English.suffixIsAlreadyOnYourIgnoreList, 0);
                         return;
                     }
                 }
                 for(int i = 0; Player.friendsCount > i; i++) {
-                    if(Class59.friends[i] == arg1) {
+                    if(Player.friends[i] == arg1) {
                         ChatBox.addChatMessage("", English.pleaseRemove + class1 + English.fromYourFriendListFirst, 0);
                         return;
                     }
                 }
                 if(!class1.equals(Player.localPlayer.playerName)) {
-                    Player.ignores[MovedStatics.anInt1008++] = arg1;
+                    Player.ignores[Player.ignoresCount++] = arg1;
                     redrawTabArea = true;
 
                     OutgoingPackets.sendMessage(
@@ -2180,6 +2206,84 @@ ChatBox.tradeMode
             }
         }
         return true;
+    }
+
+    public static int[] method247(GameInterface arg0) {
+        int i;
+        if(arg0.id < 0)
+            i = arg0.parentId >> 16;
+        else
+            i = arg0.id >> 16;
+        if(!decodeGameInterface(i))
+            return null;
+        int i_11_ = arg0.currentX;
+        int i_12_ = arg0.currentY;
+        int i_13_ = arg0.parentId;
+        while(i_13_ != -1) {
+            GameInterface gameInterface = cachedInterfaces[i][i_13_ & 0xffff];
+            i_11_ += gameInterface.currentX;
+            if(!arg0.lockScroll)
+                i_11_ -= gameInterface.scrollWidth;
+            i_12_ += gameInterface.currentY;
+            i_13_ = gameInterface.parentId;
+            if(!arg0.lockScroll)
+                i_12_ -= gameInterface.scrollPosition;
+        }
+        int[] is = new int[2];
+        is[0] = i_11_;
+        is[1] = i_12_;
+        return is;
+    }
+
+    public static void closeAllWidgets() {
+        OutgoingPackets.sendMessage(new CloseWidgetsOutboundMessage());
+
+        if(tabAreaInterfaceId != -1) {
+            resetInterface(tabAreaInterfaceId);
+            MovedStatics.lastContinueTextWidgetId = -1;
+            drawTabIcons = true;
+            redrawTabArea = true;
+            tabAreaInterfaceId = -1;
+        }
+        if(chatboxInterfaceId != -1) {
+            resetInterface(chatboxInterfaceId);
+            MovedStatics.lastContinueTextWidgetId = -1;
+            ChatBox.redrawChatbox = true;
+            chatboxInterfaceId = -1;
+        }
+        if(fullscreenInterfaceId != -1) {
+            resetInterface(fullscreenInterfaceId);
+            fullscreenInterfaceId = -1;
+            MovedStatics.processGameStatus(30);
+        }
+        if(fullscreenSiblingInterfaceId != -1) {
+            resetInterface(fullscreenSiblingInterfaceId);
+            fullscreenSiblingInterfaceId = -1;
+        }
+        if(gameScreenInterfaceId != -1) {
+            resetInterface(gameScreenInterfaceId);
+            gameScreenInterfaceId = -1;
+            MovedStatics.lastContinueTextWidgetId = -1;
+        }
+    }
+
+    public static void method517(int option, int interfaceData) {
+        int widgetId = (interfaceData >> 16) & 0xFFFF;
+        int childId = interfaceData & 0xFFFF;
+
+        OutgoingPackets.sendMessage(
+            new ClickPleaseWaitWidgetOutboundMessage(
+                widgetId,
+                childId,
+                option
+            )
+        );
+    }
+
+    public static void clearInterfaceCaches() {
+        interfaceItemImageCache.clear();
+        interfaceModelCache.clear();
+        interfaceTypefaceCache.clear();
     }
 
     public void swapItems(int arg0, boolean arg1, int arg2) {
@@ -2377,7 +2481,7 @@ ChatBox.tradeMode
         if(i == -1) {
             return null;
         }
-        ImageRGB class40_sub5_sub14_sub4 = (ImageRGB) ImageRGB.imageRgbCache.get((long) i);
+        ImageRGB class40_sub5_sub14_sub4 = (ImageRGB) interfaceItemImageCache.get((long) i);
         if(class40_sub5_sub14_sub4 != null) {
             return class40_sub5_sub14_sub4;
         }
@@ -2385,7 +2489,7 @@ ChatBox.tradeMode
         if(class40_sub5_sub14_sub4 == null) {
             aBoolean2177 = true;
         } else {
-            ImageRGB.imageRgbCache.put((long) i, class40_sub5_sub14_sub4);
+            interfaceItemImageCache.put((long) i, class40_sub5_sub14_sub4);
         }
         return class40_sub5_sub14_sub4;
     }
@@ -2419,7 +2523,7 @@ ChatBox.tradeMode
         if(i == -1) {
             return null;
         }
-        ImageRGB imageRGB = (ImageRGB) ImageRGB.imageRgbCache.get((long) i);
+        ImageRGB imageRGB = (ImageRGB) interfaceItemImageCache.get((long) i);
 
         if(imageRGB != null) {
             return imageRGB;
@@ -2428,7 +2532,7 @@ ChatBox.tradeMode
         if(imageRGB == null) {
             aBoolean2177 = true;
         } else {
-            ImageRGB.imageRgbCache.put((long) i, imageRGB);
+            interfaceItemImageCache.put((long) i, imageRGB);
         }
         return imageRGB;
     }
@@ -2550,7 +2654,7 @@ ChatBox.tradeMode
             return null;
         }
 
-        Model model = (Model) WallDecoration.modelCache.get((long) ((modelType.ordinal() << 16) + modelId));
+        Model model = (Model) interfaceModelCache.get((long) ((modelType.ordinal() << 16) + modelId));
         if(model == null) {
             if(modelType == InterfaceModelType.MODEL) {
                 model = Model.getModel(CacheArchive.modelCacheArchive, modelId);
@@ -2597,10 +2701,10 @@ ChatBox.tradeMode
                     e.printStackTrace();
                 }
             }
-            WallDecoration.modelCache.put((long) ((modelType.ordinal() << 16) + modelId), model);
+            interfaceModelCache.put((long) ((modelType.ordinal() << 16) + modelId), model);
         }
         if(animationSequence != null) {
-            model = animationSequence.method598(animationFrame, model, true);
+            model = animationSequence.method598(animationFrame, model);
         }
         return model;
     }
@@ -2610,7 +2714,7 @@ ChatBox.tradeMode
         if(fontId == 65535) {
             return null;
         }
-        TypeFace typeFace = (TypeFace) TypeFace.typeFaceCache.get(fontId);
+        TypeFace typeFace = (TypeFace) interfaceTypefaceCache.get(fontId);
 
         if(typeFace != null) {
             return typeFace;
@@ -2621,7 +2725,7 @@ ChatBox.tradeMode
         if(typeFace == null) {
             aBoolean2177 = true;
         } else {
-            TypeFace.typeFaceCache.put(fontId, typeFace);
+            interfaceTypefaceCache.put(fontId, typeFace);
         }
 
         return typeFace;

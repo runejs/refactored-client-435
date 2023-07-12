@@ -1,9 +1,9 @@
 package org.runejs.client.frame;
 
 import org.runejs.client.cache.def.ActorDefinition;
+import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.IndexedImage;
-import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.RasterizerInstanced;
@@ -24,6 +24,10 @@ public class Minimap extends FramePieceRenderer {
     public static ImageRGB[] minimapHint = new ImageRGB[1000];
     public static ImageRGB[] mapDots;
     public static ImageRGB[] minimapMarkers;
+    /**
+     * Images for function icons on the minimap (e.g. quests, instructors)
+     */
+	public static ImageRGB[] mapFunctionIcons;
     private static int[] resizableMinimapOffsets1;
     private static int[] resizableMinimapOffsets2;
     private static ProducingGraphicsBuffer resizableMiniMapimage;
@@ -33,7 +37,7 @@ public class Minimap extends FramePieceRenderer {
     private static int[] resizableMinimapLineOffsets;
 
     public Minimap() {
-        this.tempResizableMiniMapimage = MovedStatics.createGraphicsBuffer(210, 210, MouseHandler.gameCanvas);
+        this.tempResizableMiniMapimage = MovedStatics.createGraphicsBuffer(210, 210, Game.gameCanvas);
         resizableMinimapOffsets1 = new int[200];
         resizableMinimapOffsets2 = new int[200];
         for(int i = 0; i < resizableMinimapOffsets2.length; i++) {
@@ -41,7 +45,7 @@ public class Minimap extends FramePieceRenderer {
             resizableMinimapOffsets2[i] = 0;
         }
 
-        resizableMiniMapimage = MovedStatics.createGraphicsBuffer(210, 210, MouseHandler.gameCanvas);
+        resizableMiniMapimage = MovedStatics.createGraphicsBuffer(210, 210, Game.gameCanvas);
         rasterizerInstanced = new RasterizerInstanced(this.tempResizableMiniMapimage);
 
     }
@@ -80,7 +84,7 @@ public class Minimap extends FramePieceRenderer {
                 if(mmBackgroundPixels[i] == 0)
                     rasterPixels[i] = 0;
             }
-            minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
+            minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, MovedStatics.anIntArray62, MovedStatics.anIntArray66);
             ActorDefinition.drawMapBack();
             return;
         }
@@ -90,7 +94,7 @@ public class Minimap extends FramePieceRenderer {
         int angle = Game.getMinimapRotation() & 0x7ff;
         int minimapZoom = 0;
 
-        minimapImage.shapeImageToPixels(25, 5, 146, 151, centerX, centerY, angle, minimapZoom + 256, Landscape.anIntArray1186, MovedStatics.anIntArray852);
+        minimapImage.shapeImageToPixels(25, 5, 146, 151, centerX, centerY, angle, minimapZoom + 256, MovedStatics.anIntArray1186, MovedStatics.anIntArray852);
         for(int i = 0; minimapHintCount > i; i++) {
             int hintX = 2 + 4 * minimapHintX[i] + -(Player.localPlayer.worldX / 32);
             int hintY = 2 + 4 * minimapHintY[i] - Player.localPlayer.worldY / 32;
@@ -125,9 +129,9 @@ public class Minimap extends FramePieceRenderer {
                 int playerX = player.worldX / 32 + -(Player.localPlayer.worldX / 32);
                 int playerY = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
                 boolean isFriend = false;
-                long name = RSString.nameToLong(player.playerName);
+                long name = MovedStatics.nameToLong(player.playerName);
                 for(int friend = 0; Player.friendsCount > friend; friend++) {
-                    if(name == Class59.friends[friend] && Player.friendWorlds[friend] != 0) {
+                    if(name == Player.friends[friend] && Player.friendWorlds[friend] != 0) {
                         isFriend = true;
                         break;
                     }
@@ -144,8 +148,8 @@ public class Minimap extends FramePieceRenderer {
             }
         }
         if(Player.headIconDrawType != 0 && MovedStatics.pulseCycle % 20 < 10) {
-            if(Player.headIconDrawType == 1 && MovedStatics.anInt1545 >= 0 && Player.npcs.length > MovedStatics.anInt1545) {
-                Npc npc = Player.npcs[MovedStatics.anInt1545];
+            if(Player.headIconDrawType == 1 && MovedStatics.hintIconNpcTarget >= 0 && Player.npcs.length > MovedStatics.hintIconNpcTarget) {
+                Npc npc = Player.npcs[MovedStatics.hintIconNpcTarget];
                 if(npc != null) {
                     int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
                     int npcY = npc.worldY / 32 - Player.localPlayer.worldY / 32;
@@ -153,12 +157,12 @@ public class Minimap extends FramePieceRenderer {
                 }
             }
             if(Player.headIconDrawType == 2) {
-                int hintX = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + MovedStatics.hintIconPosY);
-                int hintY = 4 * (ProducingGraphicsBuffer.hintIconPosX - MovedStatics.baseX) - (-2 + Player.localPlayer.worldX / 32);
+                int hintX = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-MovedStatics.baseY + MovedStatics.hintIconPosY);
+                int hintY = 4 * (MovedStatics.hintIconPosX - MovedStatics.baseX) - (-2 + Player.localPlayer.worldX / 32);
                 drawMinimapIcon(minimapMarkers[1], hintY, hintX);
             }
-            if(Player.headIconDrawType == 10 && ProducingGraphicsBuffer.anInt1623 >= 0 && Player.trackedPlayers.length > ProducingGraphicsBuffer.anInt1623) {
-                Player player = Player.trackedPlayers[ProducingGraphicsBuffer.anInt1623];
+            if(Player.headIconDrawType == 10 && MovedStatics.hintIconPlayerTarget >= 0 && Player.trackedPlayers.length > MovedStatics.hintIconPlayerTarget) {
+                Player player = Player.trackedPlayers[MovedStatics.hintIconPlayerTarget];
                 if(player != null) {
                     int playerX = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
                     int playerY = player.worldX / 32 - Player.localPlayer.worldX / 32;
@@ -172,7 +176,7 @@ public class Minimap extends FramePieceRenderer {
             drawOnMinimap(flagY, flagX, minimapMarkers[0]);
         }
         Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
-        minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, RSCanvas.anIntArray62, RSCanvas.anIntArray66);
+        minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, MovedStatics.anIntArray62, MovedStatics.anIntArray66);
         minimapBackgroundImage.drawImage(0, 0);
 
         if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && MovedStatics.menuScreenArea == 1) {
@@ -206,6 +210,198 @@ public class Minimap extends FramePieceRenderer {
             drawOnMinimap(mapY, mapX, sprite);
         }
     }
+
+    public static void method781(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+        if(arg0 == 1850) {
+            int i = Game.currentScene.getWallHash(arg1, arg2, arg5);
+            if(i != 0) {
+                int i_0_ = Game.currentScene.getArrangement(arg1, arg2, arg5, i);
+                int i_1_ = 0x1f & i_0_;
+                int i_2_ = 0x3 & i_0_ >> 6;
+                int i_3_ = arg3;
+                if(i > 0)
+                    i_3_ = arg4;
+                int i_4_ = 4 * (-arg5 + 103) * 512 + 24624 + 4 * arg2;
+                int i_5_ = i >> 14 & 0x7fff;
+                int[] is = minimapImage.pixels;
+                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_5_);
+                if(gameObjectDefinition.mapSceneID == -1) {
+                    if(i_1_ == 0 || i_1_ == 2) {
+                        if(i_2_ == 0) {
+                            is[i_4_] = i_3_;
+                            is[512 + i_4_] = i_3_;
+                            is[1024 + i_4_] = i_3_;
+                            is[1536 + i_4_] = i_3_;
+                        } else if(i_2_ == 1) {
+                            is[i_4_] = i_3_;
+                            is[i_4_ + 1] = i_3_;
+                            is[2 + i_4_] = i_3_;
+                            is[i_4_ + 3] = i_3_;
+                        } else if(i_2_ == 2) {
+                            is[3 + i_4_] = i_3_;
+                            is[3 + i_4_ + 512] = i_3_;
+                            is[1024 + i_4_ + 3] = i_3_;
+                            is[i_4_ + 1539] = i_3_;
+                        } else if(i_2_ == 3) {
+                            is[i_4_ + 1536] = i_3_;
+                            is[1536 + i_4_ + 1] = i_3_;
+                            is[1536 + i_4_ + 2] = i_3_;
+                            is[3 + i_4_ + 1536] = i_3_;
+                        }
+                    }
+                    if(i_1_ == 3) {
+                        if(i_2_ != 0) {
+                            if(i_2_ != 1) {
+                                if(i_2_ != 2) {
+                                    if(i_2_ == 3)
+                                        is[i_4_ + 1536] = i_3_;
+                                } else
+                                    is[3 + i_4_ + 1536] = i_3_;
+                            } else
+                                is[i_4_ + 3] = i_3_;
+                        } else
+                            is[i_4_] = i_3_;
+                    }
+                    if(i_1_ == 2) {
+                        if(i_2_ == 3) {
+                            is[i_4_] = i_3_;
+                            is[512 + i_4_] = i_3_;
+                            is[i_4_ + 1024] = i_3_;
+                            is[1536 + i_4_] = i_3_;
+                        } else if(i_2_ == 0) {
+                            is[i_4_] = i_3_;
+                            is[1 + i_4_] = i_3_;
+                            is[i_4_ + 2] = i_3_;
+                            is[3 + i_4_] = i_3_;
+                        } else if(i_2_ == 1) {
+                            is[i_4_ + 3] = i_3_;
+                            is[512 + 3 + i_4_] = i_3_;
+                            is[i_4_ + 1027] = i_3_;
+                            is[1536 + 3 + i_4_] = i_3_;
+                        } else if(i_2_ == 2) {
+                            is[1536 + i_4_] = i_3_;
+                            is[1537 + i_4_] = i_3_;
+                            is[i_4_ + 1538] = i_3_;
+                            is[1536 + i_4_ + 3] = i_3_;
+                        }
+                    }
+                } else {
+                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
+                    if(class40_sub5_sub14_sub2 != null) {
+                        int i_6_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
+                        int i_7_ = (gameObjectDefinition.sizeY * 4 + -class40_sub5_sub14_sub2.imgHeight) / 2;
+                        class40_sub5_sub14_sub2.drawImage(48 + 4 * arg2 + i_6_, i_7_ + 48 + (104 + -arg5 - gameObjectDefinition.sizeY) * 4);
+                    }
+                }
+            }
+            i = Game.currentScene.getLocationHash(arg1, arg2, arg5);
+            if(i != 0) {
+                int i_8_ = Game.currentScene.getArrangement(arg1, arg2, arg5, i);
+                int i_9_ = 0x7fff & i >> 14;
+                int i_10_ = (i_8_ & 0xf4) >> 6;
+                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
+                int i_11_ = i_8_ & 0x1f;
+                if(gameObjectDefinition.mapSceneID != -1) {
+                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
+                    if(class40_sub5_sub14_sub2 != null) {
+                        int i_12_ = (-class40_sub5_sub14_sub2.imgHeight + gameObjectDefinition.sizeY * 4) / 2;
+                        int i_13_ = (gameObjectDefinition.sizeX * 4 + -class40_sub5_sub14_sub2.imgWidth) / 2;
+                        class40_sub5_sub14_sub2.drawImage(i_13_ + arg2 * 4 + 48, 48 - (-(4 * (-arg5 + 104 + -gameObjectDefinition.sizeY)) + -i_12_));
+                    }
+                } else if(i_11_ == 9) {
+                    int[] is = minimapImage.pixels;
+                    int i_14_ = 15658734;
+                    if(i > 0)
+                        i_14_ = 15597568;
+                    int i_15_ = (-(arg5 * 512) + 52736) * 4 + arg2 * 4 + 24624;
+                    if(i_10_ == 0 || i_10_ == 2) {
+                        is[1536 + i_15_] = i_14_;
+                        is[1024 + i_15_ + 1] = i_14_;
+                        is[514 + i_15_] = i_14_;
+                        is[3 + i_15_] = i_14_;
+                    } else {
+                        is[i_15_] = i_14_;
+                        is[513 + i_15_] = i_14_;
+                        is[2 + i_15_ + 1024] = i_14_;
+                        is[1536 + i_15_ + 3] = i_14_;
+                    }
+                }
+            }
+            i = Game.currentScene.getFloorDecorationHash(arg1, arg2, arg5);
+            if(i != 0) {
+                int i_16_ = (i & 0x1fffd9fb) >> 14;
+                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);
+                if(gameObjectDefinition.mapSceneID != -1) {
+                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
+                    if(class40_sub5_sub14_sub2 != null) {
+                        int i_17_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
+                        int i_18_ = (-class40_sub5_sub14_sub2.imgHeight + 4 * gameObjectDefinition.sizeY) / 2;
+                        class40_sub5_sub14_sub2.drawImage(4 * arg2 + 48 + i_17_, i_18_ + (104 - (arg5 + gameObjectDefinition.sizeY)) * 4 + 48);
+                    }
+                }
+            }
+        }
+    }
+
+    public static void method299(int arg1) {
+	    int[] is = minimapImage.pixels;
+	    int i = is.length;
+	    for(int i_0_ = 0; i > i_0_; i_0_++)
+	        is[i_0_] = 0;
+	    for(int i_1_ = 1; i_1_ < 103; i_1_++) {
+	        int i_2_ = 24628 + (-(512 * i_1_) + 52736) * 4;
+	        for(int i_3_ = 1; i_3_ < 103; i_3_++) {
+	            if((0x18 & MovedStatics.tile_flags[arg1][i_3_][i_1_]) == 0)
+	                Game.currentScene.method96(is, i_2_, 512, arg1, i_3_, i_1_);
+	            if(arg1 < 3 && (MovedStatics.tile_flags[1 + arg1][i_3_][i_1_] & 0x8) != 0)
+	                Game.currentScene.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
+	            i_2_ += 4;
+	        }
+	    }
+	    minimapImage.method723();
+	    int i_4_ = (-10 + (int) (Math.random() * 20.0) + 238 << 8) + (228 + (int) (Math.random() * 20.0) << 16) + 238 + (int) (20.0 * Math.random()) + -10;
+	    int i_5_ = -10 + (int) (20.0 * Math.random()) + 238 << 16;
+	    for(int i_6_ = 1; i_6_ < 103; i_6_++) {
+	        for(int i_7_ = 1; i_7_ < 103; i_7_++) {
+	            if((MovedStatics.tile_flags[arg1][i_7_][i_6_] & 0x18) == 0)
+	                method781(1850, arg1, i_7_, i_4_, i_5_, i_6_);
+	            if(arg1 < 3 && (0x8 & MovedStatics.tile_flags[1 + arg1][i_7_][i_6_]) != 0)
+	                method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
+	        }
+	    }
+	    minimapHintCount = 0;
+	    for(int i_8_ = 0; i_8_ < 104; i_8_++) {
+	        for(int i_9_ = 0; i_9_ < 104; i_9_++) {
+	            int i_10_ = Game.currentScene.getFloorDecorationHash(Player.worldLevel, i_8_, i_9_);
+	            if(i_10_ != 0) {
+	                i_10_ = 0x7fff & i_10_ >> 14;
+	                int i_11_ = GameObjectDefinition.getDefinition(i_10_).icon;
+	                if(i_11_ >= 0) {
+	                    int i_12_ = i_9_;
+	                    int i_13_ = i_8_;
+	                    if(i_11_ != 22 && i_11_ != 29 && i_11_ != 34 && i_11_ != 36 && i_11_ != 46 && i_11_ != 47 && i_11_ != 48) {
+	                        int[][] is_14_ = Landscape.currentCollisionMap[Player.worldLevel].clippingData;
+	                        for(int i_15_ = 0; i_15_ < 10; i_15_++) {
+	                            int i_16_ = (int) (Math.random() * 4.0);
+	                            if(i_16_ == 0 && i_13_ > 0 && i_13_ > -3 + i_8_ && (is_14_[-1 + i_13_][i_12_] & 0x1280108) == 0)
+	                                i_13_--;
+	                            if(i_16_ == 1 && i_13_ < 103 && i_13_ < i_8_ + 3 && (is_14_[i_13_ + 1][i_12_] & 0x1280180) == 0)
+	                                i_13_++;
+	                            if(i_16_ == 2 && i_12_ > 0 && i_12_ > -3 + i_9_ && (is_14_[i_13_][i_12_ - 1] & 0x1280102) == 0)
+	                                i_12_--;
+	                            if(i_16_ == 3 && i_12_ < 103 && 3 + i_9_ > i_12_ && (0x1280120 & is_14_[i_13_][1 + i_12_]) == 0)
+	                                i_12_++;
+	                        }
+	                    }
+	                    minimapHint[minimapHintCount] = mapFunctionIcons[i_11_];
+	                    minimapHintX[minimapHintCount] = i_13_;
+	                    minimapHintY[minimapHintCount] = i_12_;
+	                    minimapHintCount++;
+	                }
+	            }
+	        }
+	    }
+	}
 
     public void drawResizableMiniMapArea(int x, int y) {
         ScreenController.drawFramePiece(resizableMiniMapimage, x, y);
@@ -252,7 +448,7 @@ public class Minimap extends FramePieceRenderer {
             minimapCompass.shapeImageToPixels(5, 5, 33, 33, 25, 25, Game.getMinimapRotation(), 256, resizableCompasOffsets2, resizableCompasOffsets1);
 
 
-            Class65.method1018();
+            MovedStatics.method1018();
 
             ScreenController.drawFramePiece(resizableMiniMapimage, x, y);
             return;
@@ -320,9 +516,9 @@ public class Minimap extends FramePieceRenderer {
                 int playerX = player.worldX / 32 + -(Player.localPlayer.worldX / 32);
                 int playerY = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
                 boolean isFriend = false;
-                long name = RSString.nameToLong(player.playerName);
+                long name = MovedStatics.nameToLong(player.playerName);
                 for(int friend = 0; Player.friendsCount > friend; friend++) {
-                    if(name == Class59.friends[friend] && Player.friendWorlds[friend] != 0) {
+                    if(name == Player.friends[friend] && Player.friendWorlds[friend] != 0) {
                         isFriend = true;
                         break;
                     }
@@ -339,8 +535,8 @@ public class Minimap extends FramePieceRenderer {
             }
         }
         if(Player.headIconDrawType != 0 && MovedStatics.pulseCycle % 20 < 10) {
-            if(Player.headIconDrawType == 1 && MovedStatics.anInt1545 >= 0 && Player.npcs.length > MovedStatics.anInt1545) {
-                Npc npc = Player.npcs[MovedStatics.anInt1545];
+            if(Player.headIconDrawType == 1 && MovedStatics.hintIconNpcTarget >= 0 && Player.npcs.length > MovedStatics.hintIconNpcTarget) {
+                Npc npc = Player.npcs[MovedStatics.hintIconNpcTarget];
                 if(npc != null) {
                     int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
                     int npcY = npc.worldY / 32 - Player.localPlayer.worldY / 32;
@@ -348,12 +544,12 @@ public class Minimap extends FramePieceRenderer {
                 }
             }
             if(Player.headIconDrawType == 2) {
-                int hintY = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + MovedStatics.hintIconPosY);
-                int hintX = 4 * (ProducingGraphicsBuffer.hintIconPosX - MovedStatics.baseX) - (-2 + Player.localPlayer.worldX / 32);
+                int hintY = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-MovedStatics.baseY + MovedStatics.hintIconPosY);
+                int hintX = 4 * (MovedStatics.hintIconPosX - MovedStatics.baseX) - (-2 + Player.localPlayer.worldX / 32);
                 drawMinimapMark(minimapMarkers[1], hintX, hintY);
             }
-            if(Player.headIconDrawType == 10 && ProducingGraphicsBuffer.anInt1623 >= 0 && Player.trackedPlayers.length > ProducingGraphicsBuffer.anInt1623) {
-                Player player = Player.trackedPlayers[ProducingGraphicsBuffer.anInt1623];
+            if(Player.headIconDrawType == 10 && MovedStatics.hintIconPlayerTarget >= 0 && Player.trackedPlayers.length > MovedStatics.hintIconPlayerTarget) {
+                Player player = Player.trackedPlayers[MovedStatics.hintIconPlayerTarget];
                 if(player != null) {
                     int playerY = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
                     int playerX = player.worldX / 32 - Player.localPlayer.worldX / 32;

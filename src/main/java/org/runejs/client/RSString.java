@@ -1,17 +1,12 @@
 package org.runejs.client;
 
 import org.runejs.client.node.HashTable;
-import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.util.BitUtils;
 
 import java.awt.*;
 import java.nio.charset.StandardCharsets;
 
 public class RSString {
-    public static CacheArchive aCacheArchive_1705;
-    public static int[] keyCodes = new int[128];
-    public static int tooltipDelay = 50;
-    public static byte[][] terrainData;
     /*synthetic*/ public static Class aClass1718;
     public boolean aBoolean1675 = true;
     public int length;
@@ -60,10 +55,9 @@ public class RSString {
     }
 
     public int method51(int arg0, int arg1, byte[] buffer, int arg3) {
-        Class18.method278(chars, arg0, buffer, arg3, arg1 - arg0);
+        MovedStatics.method278(chars, arg0, buffer, arg3, arg1 - arg0);
         return -arg0 + arg1;
     }
-
 
     public static String formatChatString(String str) {
         char[] chars = str.toCharArray();
@@ -118,26 +112,6 @@ public class RSString {
 
     public int indexOf(int arg1) {
         return method64(0, arg1);
-    }
-
-    public static long nameToLong(String arg0) {
-        long l = 0L;
-        for(int i = 0; i < arg0.length(); i++) {
-            if(i >= 12)
-                break;
-            l *= 37L;
-            int i_1_ = arg0.charAt(i);
-            if(i_1_ >= 65 && i_1_ <= 90)
-                l += (long) (i_1_ + 1 + -65);
-            else if(i_1_ >= 97 && i_1_ <= 122)
-                l += (long) (1 + i_1_ + -97);
-            else if(i_1_ >= 48 && i_1_ <= 57)
-                l += (long) (27 - (-i_1_ + 48));
-        }
-        for(/**/; l % 37L == 0 && l != 0; l /= 37L) {
-            /* empty */
-        }
-        return l;
     }
 
     public int length() {
@@ -276,7 +250,7 @@ public class RSString {
         RSString class1 = new RSString();
         class1.chars = new byte[arg2 - arg1];
         class1.length = -arg1 + arg2;
-        Class18.method278(chars, arg1, class1.chars, 0, class1.length);
+        MovedStatics.method278(chars, arg1, class1.chars, 0, class1.length);
         return class1;
     }
 
@@ -292,10 +266,10 @@ public class RSString {
                 /* empty */
             }
             byte[] is = new byte[i];
-            Class18.method278(chars, 0, is, 0, length);
+            MovedStatics.method278(chars, 0, is, 0, length);
             chars = is;
         }
-        Class18.method278(arg0.chars, 0, chars, arg2, arg0.length);
+        MovedStatics.method278(arg0.chars, 0, chars, arg2, arg0.length);
         if(length < arg2 + arg0.length)
             length = arg0.length + arg2;
         return this;
@@ -312,10 +286,10 @@ public class RSString {
                 /* empty */
             }
             byte[] is = new byte[i];
-            Class18.method278(sourceba, 0, is, 0, arg0.length());
+            MovedStatics.method278(sourceba, 0, is, 0, arg0.length());
             sourceba = is;
         }
-        Class18.method278(arg0ba, 0, sourceba, arg2, arg0.length());
+        MovedStatics.method278(arg0ba, 0, sourceba, arg2, arg0.length());
         return new String(sourceba);
     }
 
@@ -325,7 +299,7 @@ public class RSString {
         RSString class1 = new RSString();
         class1.chars = new byte[length + 1];
         class1.length = length + 1;
-        Class18.method278(chars, 0, class1.chars, 0, length);
+        MovedStatics.method278(chars, 0, class1.chars, 0, length);
         class1.chars[length] = (byte) arg0;
         return class1;
     }
@@ -341,10 +315,10 @@ public class RSString {
                 i += i;
             }
             byte[] newChars = new byte[i];
-            Class18.method278(chars, 0, newChars, 0, length);
+            MovedStatics.method278(chars, 0, newChars, 0, length);
             chars = newChars;
         }
-        Class18.method278(arg0.chars, 0, chars, length, arg0.length);
+        MovedStatics.method278(arg0.chars, 0, chars, length, arg0.length);
         length += arg0.length;
         return this;
     }
@@ -389,7 +363,7 @@ public class RSString {
         anInt1696 = 0;
         if(length != chars.length) {
             byte[] is = new byte[length];
-            Class18.method278(chars, 0, is, 0, length);
+            MovedStatics.method278(chars, 0, is, 0, length);
             chars = is;
         }
         return this;
@@ -407,7 +381,7 @@ public class RSString {
                 /* empty */
             }
             byte[] is = new byte[i];
-            Class18.method278(chars, 0, is, 0, length);
+            MovedStatics.method278(chars, 0, is, 0, length);
             chars = is;
         }
         chars[length++] = (byte) arg1;
@@ -429,7 +403,7 @@ public class RSString {
 
     public byte[] method80() {
         byte[] is = new byte[length];
-        Class18.method278(chars, 0, is, 0, length);
+        MovedStatics.method278(chars, 0, is, 0, length);
         return is;
     }
 

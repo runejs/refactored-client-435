@@ -8,12 +8,16 @@ import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
+import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.scene.util.CollisionMap;
+
+import java.awt.*;
 
 public class ChatBox {
     public static boolean redrawChatbox = false;
     public static boolean messagePromptRaised = false;
+    public static ProducingGraphicsBuffer chatBoxImageProducer;
+    public static int splitPrivateChat = 0;
     private static String lastItemSearchInput = "";
     public static String inputMessage = "";
     public static int itemSearchResultCount = 0;
@@ -39,7 +43,7 @@ public class ChatBox {
             '$', '%', '"', '[', ']', '_', '{', '}', '/', '|'};
     public static void renderChatbox() {
         MovedStatics.showChatPanelRedrawnText = true;
-        MovedStatics.method305();
+        method305();
         if(messagePromptRaised) {
             TypeFace.fontBold.drawStringLeft(Native.enterPlayerNameHeader, 239, 40, 0);
             TypeFace.fontBold.drawStringLeft(chatMessage + "*", 239, 60, 128);
@@ -116,7 +120,7 @@ public class ChatBox {
                         }
                         line++;
                     }
-                    if((type == 3 || type == 7) && CollisionMap.anInt165 == 0 && (type == 7 || privateChatMode == 0 || privateChatMode == 1 && Player.hasFriend(name))) {
+                    if((type == 3 || type == 7) && splitPrivateChat == 0 && (type == 7 || privateChatMode == 0 || privateChatMode == 1 && Player.hasFriend(name))) {
                         line++;
                         if(y > 0 && y < 110) {
                             int i_13_ = 4;
@@ -141,12 +145,12 @@ public class ChatBox {
                         if(y > 0 && y < 110)
                             typeFace.drawString(name + " " + chatMessages[i], 4, y, 8388736);
                     }
-                    if(type == 5 && CollisionMap.anInt165 == 0 && privateChatMode < 2) {
+                    if(type == 5 && splitPrivateChat == 0 && privateChatMode < 2) {
                         if(y > 0 && y < 110)
                             typeFace.drawString(chatMessages[i], 4, y, 8388608);
                         line++;
                     }
-                    if(type == 6 && CollisionMap.anInt165 == 0 && privateChatMode < 2) {
+                    if(type == 6 && splitPrivateChat == 0 && privateChatMode < 2) {
                         if(y > 0 && y < 110) {
                             typeFace.drawString(English.to + Native.whitespace_b + name + Native.colon, 4, y, 0);
                             typeFace.drawString(chatMessages[i], typeFace.getStringWidth(English.to + Native.whitespace_b + name) + 12, y, 8388608);
@@ -181,7 +185,7 @@ public class ChatBox {
         if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && MovedStatics.menuScreenArea == 2)
             MovedStatics.drawMenu(0, 0);
         if(ScreenController.frameMode == ScreenMode.FIXED) {
-            LinkedList.drawChatBoxGraphics();
+            drawChatBoxGraphics();
         }
 
     }
@@ -271,4 +275,23 @@ public class ChatBox {
         chatPlayerNames[0] = name;
         chatMessages[0] = message;
     }
+
+    public static void drawChatBoxGraphics() {
+        try {
+            Graphics graphics = Game.gameCanvas.getGraphics();
+            chatBoxImageProducer.drawGraphics(17, 357, graphics);
+
+        } catch(Exception exception) {
+            Game.gameCanvas.repaint();
+        }
+    }
+
+    public static void method305() {
+    //        if(ScreenController.frameMode == ScreenMode.FIXED){
+
+                chatBoxImageProducer.prepareRasterizer();
+    //        }
+            MovedStatics.chatboxBackgroundImage.drawImage(0, 0);
+            MovedStatics.chatboxLineOffsets = Rasterizer3D.setLineOffsets(MovedStatics.chatboxLineOffsets);
+        }
 }

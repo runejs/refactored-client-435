@@ -1,18 +1,16 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.cs.InvokedScript;
 import org.runejs.client.cache.cs.ClientScript;
+import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.node.Node;
 import org.runejs.client.frame.ChatBox;
-import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.InteractiveObject;
-import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
@@ -30,18 +28,23 @@ import java.io.ByteArrayInputStream;
 import java.io.ObjectInputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
 import java.util.Date;
 
 public class ClientScriptRunner extends Node {
     public static String[] scriptStringValues = new String[1000];
     public static int runEnergy = 0;
-    public static CacheArchive aCacheArchive_2162;
     public static String[] localStrings;
     public static int[] localInts;
     public static int[] scriptIntValues = new int[1000];
     public static InvokedScript[] invokedScripts = new InvokedScript[50];
     public static int invokedScriptIndex = 0;
+    public static LinkedList clientScriptRunnerCache = new LinkedList();
+    public static Calendar aCalendar279 = Calendar.getInstance();
+    public static boolean[] aBooleanArray548 = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, false, false};
+    public static GameInterface aGameInterface_1887;
+    public static int[] anIntArray1847 = new int[2000];
     private static String[] aClass1Array2964 = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
     public int[] opcodes;
@@ -85,7 +88,7 @@ public class ClientScriptRunner extends Node {
                     }
                     offset++;
                 }
-                if((chatType == 3 || chatType == 7) && CollisionMap.anInt165 == 0 && (chatType == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(username))) {
+                if((chatType == 3 || chatType == 7) && ChatBox.splitPrivateChat == 0 && (chatType == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(username))) {
                     offset++;
                     if(arg1 > -14 + i_2_ && arg1 <= i_2_) {
                         if(InteractiveObject.playerRights >= 1) {
@@ -102,7 +105,7 @@ public class ClientScriptRunner extends Node {
                     }
                     offset++;
                 }
-                if((chatType == 5 || chatType == 6) && CollisionMap.anInt165 == 0 && ChatBox.privateChatMode < 2)
+                if((chatType == 5 || chatType == 6) && ChatBox.splitPrivateChat == 0 && ChatBox.privateChatMode < 2)
                     offset++;
                 if(chatType == 8 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Player.hasFriend(username))) {
                     if(i_2_ + -14 < arg1 && arg1 <= i_2_) {
@@ -184,12 +187,12 @@ public class ClientScriptRunner extends Node {
             }
         }
 
-        KeyFocusListener.aLinkedList_1278.addLast(clientScriptRunner);
+        clientScriptRunnerCache.addLast(clientScriptRunner);
     }
 
     public static void createClientScriptCheckPacket(int packetId, PacketBuffer buffer) {
         for(; ; ) {
-            ClientScriptRunner clientScriptRunner = (ClientScriptRunner) KeyFocusListener.aLinkedList_1278.peekFirst();
+            ClientScriptRunner clientScriptRunner = (ClientScriptRunner) clientScriptRunnerCache.peekFirst();
             if(clientScriptRunner == null) {
                 break;
             }
@@ -487,11 +490,11 @@ public class ClientScriptRunner extends Node {
                         continue;
                     }
                     if(scriptOpcode == 42) {
-                        scriptIntValues[intValueIndex++] = MovedStatics.anIntArray1847[intOperands[scriptIndex]];
+                        scriptIntValues[intValueIndex++] = anIntArray1847[intOperands[scriptIndex]];
                         continue;
                     }
                     if(scriptOpcode == 43) {
-                        MovedStatics.anIntArray1847[intOperands[scriptIndex]] = scriptIntValues[--intValueIndex];
+                        anIntArray1847[intOperands[scriptIndex]] = scriptIntValues[--intValueIndex];
                         continue;
                     }
                 }
@@ -522,10 +525,10 @@ public class ClientScriptRunner extends Node {
                         if(bool) {
                             MovedStatics.aGameInterface_2116 = childInterface;
                         } else {
-                            MovedStatics.aGameInterface_1887 = childInterface;
+                            aGameInterface_1887 = childInterface;
                         }
                     } else if(scriptOpcode == 101) {
-                        GameInterface gameInterface = !bool ? MovedStatics.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
+                        GameInterface gameInterface = !bool ? aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                         GameInterface childInterface = GameInterface.getInterface(gameInterface.parentId);
                         childInterface.children[BitUtils.bitWiseAND(gameInterface.id, 32767)] = null;
                     } else {
@@ -541,7 +544,7 @@ public class ClientScriptRunner extends Node {
                         gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                         scriptOpcode -= 1000;
                     } else {
-                        gameInterface = bool ? MovedStatics.aGameInterface_2116 : MovedStatics.aGameInterface_1887;
+                        gameInterface = bool ? MovedStatics.aGameInterface_2116 : aGameInterface_1887;
                     }
                     if(scriptOpcode == 1000) {
                         intValueIndex -= 2;
@@ -562,7 +565,7 @@ public class ClientScriptRunner extends Node {
                 } else if(scriptOpcode >= 1100 && scriptOpcode < 1200 || scriptOpcode >= 2100 && scriptOpcode < 2200) {
                     GameInterface gameInterface;
                     if(scriptOpcode < 2000) {
-                        gameInterface = !bool ? MovedStatics.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
+                        gameInterface = !bool ? aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                     } else {
                         gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                         scriptOpcode -= 1000;
@@ -634,7 +637,7 @@ public class ClientScriptRunner extends Node {
                                     if(bool) {
                                         MovedStatics.aGameInterface_2116 = gameInterface.children[i_28_];
                                     } else {
-                                        MovedStatics.aGameInterface_1887 = gameInterface.children[i_28_];
+                                        aGameInterface_1887 = gameInterface.children[i_28_];
                                     }
                                 }
                             } else if(scriptOpcode == 1401) {
@@ -650,7 +653,7 @@ public class ClientScriptRunner extends Node {
                                     if(bool) {
                                         MovedStatics.aGameInterface_2116 = gameInterface;
                                     } else {
-                                        MovedStatics.aGameInterface_1887 = gameInterface;
+                                        aGameInterface_1887 = gameInterface;
                                     }
                                 }
                             } else {
@@ -669,12 +672,12 @@ public class ClientScriptRunner extends Node {
                                     if(bool) {
                                         MovedStatics.aGameInterface_2116 = gameInterface_35_;
                                     } else {
-                                        MovedStatics.aGameInterface_1887 = gameInterface_35_;
+                                        aGameInterface_1887 = gameInterface_35_;
                                     }
                                 }
                             }
                         } else if(scriptOpcode < 1600) {
-                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : MovedStatics.aGameInterface_1887;
+                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : aGameInterface_1887;
                             if(scriptOpcode == 1500) {
                                 scriptIntValues[intValueIndex++] = gameInterface.currentX;
                             } else if(scriptOpcode == 1501) {
@@ -738,27 +741,27 @@ public class ClientScriptRunner extends Node {
                                         if(scriptOpcode == 3000) {
                                             int i_42_ = scriptIntValues[--intValueIndex];
                                             if(MovedStatics.lastContinueTextWidgetId == -1) {
-                                                PacketBuffer.method517(0, i_42_);
+                                                GameInterface.method517(0, i_42_);
                                                 MovedStatics.lastContinueTextWidgetId = i_42_;
                                             }
                                         } else if(scriptOpcode == 3001 || scriptOpcode == 3003) {
                                             intValueIndex -= 2;
                                             int i_43_ = scriptIntValues[intValueIndex];
                                             int i_44_ = scriptIntValues[intValueIndex + 1];
-                                            Class33.method406(0, i_44_, i_43_);
+                                            method406(0, i_44_, i_43_);
                                         } else if(scriptOpcode == 3002) {
-                                            GameInterface gameInterface = !bool ? MovedStatics.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
+                                            GameInterface gameInterface = !bool ? aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                                             if(MovedStatics.lastContinueTextWidgetId == -1) {
-                                                PacketBuffer.method517(gameInterface.id & 0x7fff, gameInterface.parentId);
+                                                GameInterface.method517(gameInterface.id & 0x7fff, gameInterface.parentId);
                                                 MovedStatics.lastContinueTextWidgetId = gameInterface.id;
                                             }
                                         } else {
                                             if(scriptOpcode != 3003) {
                                                 break;
                                             }
-                                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : MovedStatics.aGameInterface_1887;
+                                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : aGameInterface_1887;
                                             int i_45_ = scriptIntValues[--intValueIndex];
-                                            Class33.method406(0x7fff & gameInterface.id, i_45_, gameInterface.parentId);
+                                            method406(0x7fff & gameInterface.id, i_45_, gameInterface.parentId);
                                         }
                                     } else if(scriptOpcode >= 3200) {
                                         if(scriptOpcode < 3300) {
@@ -886,10 +889,10 @@ public class ClientScriptRunner extends Node {
                                             } else if(scriptOpcode == 4104) {
                                                 int i_78_ = scriptIntValues[--intValueIndex];
                                                 long l = 86400000L * ((long) i_78_ + 11745L);
-                                                MovedStatics.aCalendar279.setTime(new Date(l));
-                                                int i_79_ = MovedStatics.aCalendar279.get(Calendar.DATE);
-                                                int i_80_ = MovedStatics.aCalendar279.get(Calendar.MONTH);
-                                                int i_81_ = MovedStatics.aCalendar279.get(Calendar.YEAR);
+                                                aCalendar279.setTime(new Date(l));
+                                                int i_79_ = aCalendar279.get(Calendar.DATE);
+                                                int i_80_ = aCalendar279.get(Calendar.MONTH);
+                                                int i_81_ = aCalendar279.get(Calendar.YEAR);
                                                 scriptStringValues[stringValueIndex++] = i_79_ + "-" + aClass1Array2964[i_80_] + "-" + i_81_;
                                             } else if(scriptOpcode == 4105) {
                                                 stringValueIndex -= 2;
@@ -942,7 +945,7 @@ public class ClientScriptRunner extends Node {
                                 }
                             }
                         } else {
-                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : MovedStatics.aGameInterface_1887;
+                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : aGameInterface_1887;
                             if(scriptOpcode == 1600) {
                                 scriptIntValues[intValueIndex++] = gameInterface.scrollWidth;
                             } else {
@@ -958,7 +961,7 @@ public class ClientScriptRunner extends Node {
                             gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                             scriptOpcode -= 1000;
                         } else {
-                            gameInterface = !bool ? MovedStatics.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
+                            gameInterface = !bool ? aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                         }
                         if(scriptOpcode >= 1300 && scriptOpcode <= 1309 || scriptOpcode >= 1314 && scriptOpcode <= 1317) {
                             String class1 = scriptStringValues[--stringValueIndex];
@@ -1037,7 +1040,7 @@ public class ClientScriptRunner extends Node {
                 } else {
                     GameInterface gameInterface;
                     if(scriptOpcode < 2000) {
-                        gameInterface = !bool ? MovedStatics.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
+                        gameInterface = !bool ? aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                     } else {
                         gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
                         scriptOpcode -= 1000;
@@ -1069,7 +1072,7 @@ public class ClientScriptRunner extends Node {
                         if(scriptOpcode != 1203) {
                             break;
                         }
-                        GameInterface desiredInterface = !bool ? MovedStatics.aGameInterface_2116 : MovedStatics.aGameInterface_1887;
+                        GameInterface desiredInterface = !bool ? MovedStatics.aGameInterface_2116 : aGameInterface_1887;
                         gameInterface.anInt2738 = desiredInterface.id;
                     }
                 }
@@ -1101,6 +1104,114 @@ public class ClientScriptRunner extends Node {
     }
 
     private static RSString method1024(boolean arg0, int arg2) {
-        return PacketBuffer.method521(arg0, 10, arg2);
+        return MovedStatics.method521(arg0, 10, arg2);
+    }
+
+    public static void method406(int arg0, int arg1, int arg2) {
+        if(arg1 == 1) {
+            OutgoingPackets.buffer.putPacket(111);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 2) {
+            OutgoingPackets.buffer.putPacket(9);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 3) {
+            OutgoingPackets.buffer.putPacket(193);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 4) {
+            OutgoingPackets.buffer.putPacket(53);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 5) {
+            OutgoingPackets.buffer.putPacket(94);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 6) {
+            OutgoingPackets.buffer.putPacket(213);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 7) {
+            OutgoingPackets.buffer.putPacket(46);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 8) {
+            OutgoingPackets.buffer.putPacket(130);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 9) {
+            OutgoingPackets.buffer.putPacket(157);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 10) {
+            OutgoingPackets.buffer.putPacket(84);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+    }
+
+    public static String method532(GameInterface gameInterface, String arg2) {
+        if (arg2.contains(Native.percent)) {
+            for (; ; ) {
+                int i = arg2.indexOf(Native.percentOne);
+                if (i == -1)
+                    break;
+                arg2 = arg2.substring(0, i) + method872(999999999, ClientScript.parseClientScripts(0, gameInterface)) + arg2.substring(2 + i);
+            }
+            for (; ; ) {
+                int i = arg2.indexOf(Native.percentTwo);
+                if (i == -1)
+                    break;
+                arg2 = arg2.substring(0, i) + method872(999999999, ClientScript.parseClientScripts(1, gameInterface)) + arg2.substring(i + 2);
+            }
+            for (; ; ) {
+                int i = arg2.indexOf(Native.percentThree);
+                if (i == -1)
+                    break;
+                arg2 = arg2.substring(0, i) + method872(999999999, ClientScript.parseClientScripts(2, gameInterface)) + arg2.substring(2 + i);
+            }
+            for (; ; ) {
+                int i = arg2.indexOf(Native.percentFour);
+                if (i == -1)
+                    break;
+                arg2 = arg2.substring(0, i) + method872(999999999, ClientScript.parseClientScripts(3, gameInterface)) + arg2.substring(i + 2);
+            }
+            for (; ; ) {
+                int i = arg2.indexOf(Native.percentFive);
+                if (i == -1)
+                    break;
+                arg2 = arg2.substring(0, i) + method872(999999999, ClientScript.parseClientScripts(4, gameInterface)) + arg2.substring(i + 2);
+            }
+            for (; ; ) {
+                // check client script results for value
+                int i = arg2.indexOf(Native.percentDns);
+                if (i == -1)
+                    break;
+                String str = "";
+                if (MovedStatics.aSignlinkNode_394 != null) {
+                    str = MovedStatics.method204(MovedStatics.aSignlinkNode_394.integerData);
+                    if (MovedStatics.aSignlinkNode_394.value != null) {
+                        byte[] is = ((String) MovedStatics.aSignlinkNode_394.value).getBytes(StandardCharsets.ISO_8859_1);
+                        str = InteractiveObject.method279(is, 0, is.length).toString();
+                    }
+                }
+                arg2 = arg2.substring(0, i) + str + arg2.substring(i + 4);
+            }
+        }
+        return arg2;
+    }
+
+    public static void clearClientScriptRunnerCache() {
+        clientScriptRunnerCache = new LinkedList();
     }
 }

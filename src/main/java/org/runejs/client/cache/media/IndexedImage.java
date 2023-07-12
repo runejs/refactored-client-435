@@ -1,12 +1,10 @@
 package org.runejs.client.cache.media;
 
-import org.runejs.client.Class17;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
-import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.scene.GroundItemTile;
 
@@ -51,8 +49,8 @@ public class IndexedImage extends Rasterizer {
             class40_sub5_sub14_sub2.maxWidth = MovedStatics.imageMaxWidth;
             class40_sub5_sub14_sub2.maxHeight = MovedStatics.imageMaxHeight;
             class40_sub5_sub14_sub2.xDrawOffset = MovedStatics.anIntArray1347[i];
-            class40_sub5_sub14_sub2.yDrawOffset = Actor.anIntArray3111[i];
-            class40_sub5_sub14_sub2.imgWidth = Class17.anIntArray456[i];
+            class40_sub5_sub14_sub2.yDrawOffset = MovedStatics.anIntArray3111[i];
+            class40_sub5_sub14_sub2.imgWidth = MovedStatics.anIntArray456[i];
             class40_sub5_sub14_sub2.imgHeight = Npc.anIntArray3312[i];
             class40_sub5_sub14_sub2.palette = Buffer.anIntArray1972;
             class40_sub5_sub14_sub2.imgPixels = GroundItemTile.aByteArrayArray1370[i];

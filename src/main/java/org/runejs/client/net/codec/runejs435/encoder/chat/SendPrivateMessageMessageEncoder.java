@@ -1,6 +1,6 @@
 package org.runejs.client.net.codec.runejs435.encoder.chat;
 
-import org.runejs.client.ProducingGraphicsBuffer_Sub1;
+import org.runejs.client.MovedStatics;
 import org.runejs.client.message.outbound.chat.SendChatMessageOutboundMessage;
 import org.runejs.client.message.outbound.chat.SendPrivateMessageOutboundMessage;
 import org.runejs.client.net.OutgoingPackets;
@@ -21,7 +21,7 @@ public class SendPrivateMessageMessageEncoder implements MessageEncoder<SendPriv
         buffer.putLongBE(message.recipient);
 
         // probably putString?
-        ProducingGraphicsBuffer_Sub1.method1052(message.message, buffer);
+        MovedStatics.method1052(message.message, buffer);
 
         buffer.writePacketLength();
 

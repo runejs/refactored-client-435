@@ -1,7 +1,6 @@
 package org.runejs.client.media.renderable;
 
 import org.runejs.client.MovedStatics;
-import org.runejs.client.ProducingGraphicsBuffer_Sub1;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
@@ -15,12 +14,7 @@ public abstract class Renderable extends CachedNode {
      * for the furthest-left tab on the bottom.
      */
     public static IndexedImage tabHighlightImageBottomLeftEdge;
-    public static int[] anIntArray2865;
-    public static int anInt2869;
-
-    static {
-        anInt2869 = 0;
-    }
+    public static int anInt2869 = 0;
 
     public int modelHeight = 1000;
 
@@ -40,7 +34,7 @@ public abstract class Renderable extends CachedNode {
                     else
                         i_1_ = gameInterface.animation;
                     if(i_1_ != -1) {
-                        AnimationSequence animationSequence = ProducingGraphicsBuffer_Sub1.getAnimationSequence(i_1_);
+                        AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(i_1_);
                         gameInterface.remainingAnimationTime += MovedStatics.anInt199;
                         while(animationSequence.frameLengths[gameInterface.animationFrame] < gameInterface.remainingAnimationTime) {
                             bool = true;
@@ -54,10 +48,10 @@ public abstract class Renderable extends CachedNode {
                         }
                     }
                 }
-                if(gameInterface.anInt2722 != 0) {
+                if(gameInterface.rotationSpeed != 0) {
                     bool = true;
-                    int i_2_ = gameInterface.anInt2722 >> 16;
-                    int i_3_ = gameInterface.anInt2722 << 16 >> 16;
+                    int i_2_ = gameInterface.rotationSpeed >> 16;
+                    int i_3_ = gameInterface.rotationSpeed << 16 >> 16;
                     i_2_ *= MovedStatics.anInt199;
                     gameInterface.rotationX = 0x7ff & i_2_ + gameInterface.rotationX;
                     i_3_ *= MovedStatics.anInt199;

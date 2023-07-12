@@ -4,11 +4,10 @@ package org.runejs.OldEngine;/*
  * @ Author: Zee best
  */
 
-import org.runejs.client.Class26;
+import org.runejs.client.Game;
 import org.runejs.client.Landscape;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.io.Buffer;
-import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.scene.util.CollisionMap;
 
 import java.io.*;
@@ -123,7 +122,7 @@ public class ObjectDecompressor {
     public static void spawnObject(int objectId, int x, int y, int z, int rotation, int type) {
         final CollisionMap[] groundData = Landscape.currentCollisionMap;
         int localX = x - MovedStatics.baseX;
-        int localY = y - Class26.baseY; // ??? is this correct?
+        int localY = y - MovedStatics.baseY; // ??? is this correct?
         int plane = z;
         if(localX > -1 && localY > -1) {
             if((MovedStatics.tile_flags[1][localY][localX] & 2) == 2) {
@@ -136,7 +135,7 @@ public class ObjectDecompressor {
             class20 = groundData[plane];
         }
         if(localY > 0 && localX > 0 && localY < 103 && localX < 103) {
-            MovedStatics.addObject(objectId, localX, localY, z, rotation, type, Npc.currentScene, class20);
+            Landscape.addObject(objectId, localX, localY, z, rotation, type, Game.currentScene, class20);
         }
     }
 

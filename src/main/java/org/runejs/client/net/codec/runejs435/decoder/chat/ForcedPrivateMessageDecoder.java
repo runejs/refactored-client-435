@@ -1,7 +1,7 @@
 package org.runejs.client.net.codec.runejs435.decoder.chat;
 
+import org.runejs.client.MovedStatics;
 import org.runejs.client.RSString;
-import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.message.inbound.chat.ForcedPrivateMessageInboundMessage;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.net.codec.MessageDecoder;
@@ -13,7 +13,7 @@ public class ForcedPrivateMessageDecoder implements MessageDecoder<ForcedPrivate
     @Override
     public ForcedPrivateMessageInboundMessage decode(PacketBuffer buffer) {
         long username = buffer.getLongBE();
-        String message = RSString.formatChatString(KeyFocusListener.method956(buffer));
+        String message = RSString.formatChatString(MovedStatics.method956(buffer));
 
         return new ForcedPrivateMessageInboundMessage(username, message);
     }

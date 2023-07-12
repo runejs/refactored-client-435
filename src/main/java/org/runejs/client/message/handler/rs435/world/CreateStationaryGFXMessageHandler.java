@@ -16,7 +16,7 @@ public class CreateStationaryGFXMessageHandler implements MessageHandler<CreateS
             y = 128 * y + 64;
             x = x * 128 + 64;
             SpotAnim gfx = new SpotAnim(message.id, Player.worldLevel, x, y, -message.drawHeight + Scene.getFloorDrawHeight(Player.worldLevel, x, y), message.delay, MovedStatics.pulseCycle);
-            MovedStatics.aLinkedList_1332.addLast(gfx);
+            MovedStatics.spotAnimQueue.addLast(gfx);
         }
     }
 }

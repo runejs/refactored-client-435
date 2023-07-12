@@ -1,5 +1,6 @@
-package org.runejs.client;
+package org.runejs.client.scene;
 
+import org.runejs.client.*;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.cache.media.AnimationSequence;
@@ -9,46 +10,37 @@ import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.Minimap;
 import org.runejs.client.io.Buffer;
-import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.node.Node;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.console.Console;
-import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
-import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Npc;
-import org.runejs.client.media.renderable.actor.PlayerAppearance;
-import org.runejs.client.scene.GroundItemTile;
-import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
 
-public class Class40_Sub3 extends Node {
-    public static int ticksPerLoop;
-    public static int anInt2024 = 1;
-    public static boolean showIconsRedrawnText = false;
-    public int anInt2017;
-    public int anInt2018;
-    public int anInt2025;
-    public int anInt2027;
-    public int anInt2028;
-    public int anInt2030;
-    public int anInt2031 = -1;
-    public int anInt2033 = 0;
-    public int anInt2035;
-    public int anInt2036;
-    public int anInt2038;
-    public int anInt2039;
+public class InteractiveObjectTemporary extends Node {
+    public int id;
+    public int plane;
+    public int previousOrientation;
+    public int typeKey;
+    public int previousId;
+    public int type;
+    public int duration = -1;
+    public int delay = 0;
+    public int orientation;
+    public int previousType;
+    public int y;
+    public int x;
 
 
     public static void startup() {
         if (MovedStatics.loadingPercent == 0) {
-            Npc.currentScene = new Scene(MovedStatics.tile_height);
+            Game.currentScene = new Scene(Landscape.tile_height);
             for (int i = 0; i < 4; i++)
                 Landscape.currentCollisionMap[i] = new CollisionMap(104, 104);
             Minimap.minimapImage = new ImageRGB(512, 512);
@@ -138,7 +130,7 @@ public class Class40_Sub3 extends Node {
                 Native.currentLoadingText = English.loadedFonts;
             }
         } else if (MovedStatics.loadingPercent == 60) {
-            int i = Class60.method988(CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
+            int i = MovedStatics.method988(CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
             int i_3_ = method288();
             if (i < i_3_) {
                 Native.currentLoadingText = English.loadingTitleScreen + (100 * i / i_3_) + Native.percent;
@@ -154,11 +146,11 @@ public class Class40_Sub3 extends Node {
             if (CacheArchive.gameDefinitionsCacheArchive.method185()) {
                 OverlayDefinition.initializeOverlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 UnderlayDefinition.initializeUnderlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
-                initializeIdentityKitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
-                initializeGameObjectDefinitionCache(CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
-                Game.method357(CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
-                MovedStatics.initializeItemDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, MovedStatics.membersWorld, CacheArchive.modelCacheArchive);
-                MovedStatics.initializeAnimationCaches(CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.skeletonCacheArchive);
+                IdentityKit.initializeIdentityKitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
+                GameObjectDefinition.initializeGameObjectDefinitionCache(CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
+                ActorDefinition.initializeActorCache(CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
+                ItemDefinition.initializeItemDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, MovedStatics.membersWorld, CacheArchive.modelCacheArchive);
+                AnimationSequence.initializeAnimationCaches(CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.skeletonCacheArchive);
                 SpotAnimDefinition.initializeSpotAnimCache(CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
                 VarbitDefinition.initializeVarbitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 VarPlayerDefinition.initializeVarPlayerDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
@@ -184,8 +176,8 @@ public class Class40_Sub3 extends Node {
                 i++;
             else
                 MovedStatics.mapSceneIcons = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.mapScene, "");
-            if (MovedStatics.mapFunctionIcons == null)
-                MovedStatics.mapFunctionIcons = method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
+            if (Minimap.mapFunctionIcons == null)
+                Minimap.mapFunctionIcons = method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
             else
                 i++;
             if (AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 != null)
@@ -196,26 +188,26 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.aClass40_Sub5_Sub14_Sub4Array603 = method526(CacheArchive.gameImageCacheArchive, Native.headiconsPK, "");
             else
                 i++;
-            if (ProducingGraphicsBuffer_Sub1.headIconSprites != null)
+            if (MovedStatics.headIconSprites != null)
                 i++;
             else
-                ProducingGraphicsBuffer_Sub1.headIconSprites = method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
+                MovedStatics.headIconSprites = method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
             if (MovedStatics.hintIconSprites == null)
                 MovedStatics.hintIconSprites = method526(CacheArchive.gameImageCacheArchive, Native.headiconsHint, "");
             else
                 i++;
-            if (LinkedList.aClass40_Sub5_Sub14_Sub4_1057 == null)
-                LinkedList.aClass40_Sub5_Sub14_Sub4_1057 = MovedStatics.method1028(CacheArchive.gameImageCacheArchive, Native.overlayMultiway, "");
+            if (MovedStatics.multiCombatIcon == null)
+                MovedStatics.multiCombatIcon = MovedStatics.method1028(CacheArchive.gameImageCacheArchive, Native.overlayMultiway, "");
             else
                 i++;
             if (Minimap.minimapMarkers == null)
                 Minimap.minimapMarkers = method526(CacheArchive.gameImageCacheArchive, Native.mapMarker, "");
             else
                 i++;
-            if (Class37.cursorCross != null)
+            if (MovedStatics.cursorCross != null)
                 i++;
             else
-                Class37.cursorCross = method526(CacheArchive.gameImageCacheArchive, Native.cursorCross, "");
+                MovedStatics.cursorCross = method526(CacheArchive.gameImageCacheArchive, Native.cursorCross, "");
             if (Minimap.mapDots == null)
                 Minimap.mapDots = method526(CacheArchive.gameImageCacheArchive, Native.mapDots, "");
             else
@@ -237,18 +229,17 @@ public class Class40_Sub3 extends Node {
                 int i_5_ = (int) (21.0 * Math.random()) - 10;
                 int i_6_ = (int) (41.0 * Math.random()) - 20;
                 int i_7_ = -10 + (int) (21.0 * Math.random());
-                for (int i_8_ = 0; MovedStatics.mapFunctionIcons.length > i_8_; i_8_++)
-                    MovedStatics.mapFunctionIcons[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
+                for (int i_8_ = 0; Minimap.mapFunctionIcons.length > i_8_; i_8_++)
+                    Minimap.mapFunctionIcons[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
                 MovedStatics.mapSceneIcons[0].mixPalette(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
                 Native.currentLoadingText = English.loadedSprites;
                 MovedStatics.anInt1607 = 70;
                 MovedStatics.loadingPercent = 85;
             }
         } else if (MovedStatics.loadingPercent == 85) {
-            int i = KeyFocusListener.method955(CacheArchive.gameImageCacheArchive);
-            int i_9_ = ActorDefinition.method576();
-            if (i < i_9_) {
-                Native.currentLoadingText = English.loadingGameScreen + (i * 100 / i_9_) + Native.percent;
+            int i = MovedStatics.method955(CacheArchive.gameImageCacheArchive);
+            if (i < 19) {
+                Native.currentLoadingText = English.loadingGameScreen + (i * 100 / 19) + Native.percent;
                 MovedStatics.anInt1607 = 80;
             } else {
                 Native.currentLoadingText = English.loadedGamescreen;
@@ -268,7 +259,7 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.anInt1607 = 90;
             }
         } else if (MovedStatics.loadingPercent == 110) {
-            Game.mouseCapturer = new Class39();
+            Game.mouseCapturer = new MouseCapturer();
             Game.signlink.createThreadNode(10, Game.mouseCapturer);
             Native.currentLoadingText = English.loadedInputHandler;
             MovedStatics.loadingPercent = 120;
@@ -276,7 +267,7 @@ public class Class40_Sub3 extends Node {
         } else if (MovedStatics.loadingPercent == 120) {
             if (CacheArchive.huffmanCacheArchive.method194(Native.huffman, "")) {
                 HuffmanEncoding huffmanEncoding = new HuffmanEncoding(CacheArchive.huffmanCacheArchive.method170("", Native.huffman));
-                Item.method778(huffmanEncoding);
+                MovedStatics.method778(huffmanEncoding);
                 MovedStatics.loadingPercent = 130;
                 Native.currentLoadingText = English.loadedWordpack;
                 MovedStatics.anInt1607 = 96;
@@ -302,20 +293,6 @@ public class Class40_Sub3 extends Node {
         }
     }
 
-    private static void initializeIdentityKitDefinitionCache(CacheArchive definitionCache, CacheArchive arg2) {
-        MovedStatics.aCacheArchive_654 = arg2;
-        Class49.definitionCache = definitionCache;
-        PlayerAppearance.identityKitLength = Class49.definitionCache.fileLength(3);
-    }
-
-    private static void initializeGameObjectDefinitionCache(CacheArchive arg1, boolean arg2, CacheArchive definitionCache) {
-        CacheArchive.definitionCache = definitionCache;
-        GameObjectDefinition.count = CacheArchive.definitionCache.fileLength(6);
-
-        Class35.aBoolean1734 = arg2;
-        RSString.aCacheArchive_1705 = arg1;
-    }
-
     private static int method288() {
         return 5;
     }
@@ -327,8 +304,8 @@ public class Class40_Sub3 extends Node {
 	        class40_sub5_sub14_sub4.maxWidth = MovedStatics.imageMaxWidth;
 	        class40_sub5_sub14_sub4.maxHeight = MovedStatics.imageMaxHeight;
 	        class40_sub5_sub14_sub4.offsetX = MovedStatics.anIntArray1347[i];
-	        class40_sub5_sub14_sub4.offsetY = Actor.anIntArray3111[i];
-	        class40_sub5_sub14_sub4.imageWidth = Class17.anIntArray456[i];
+	        class40_sub5_sub14_sub4.offsetY = MovedStatics.anIntArray3111[i];
+	        class40_sub5_sub14_sub4.imageWidth = MovedStatics.anIntArray456[i];
 	        class40_sub5_sub14_sub4.imageHeight = Npc.anIntArray3312[i];
 	        byte[] is = GroundItemTile.aByteArrayArray1370[i];
 	        int i_4_ = class40_sub5_sub14_sub4.imageHeight * class40_sub5_sub14_sub4.imageWidth;

@@ -1,8 +1,7 @@
 package org.runejs.client.cache.def;
 
-import org.runejs.client.MovedStatics;
-import org.runejs.client.ProducingGraphicsBuffer_Sub1;
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.node.CachedNode;
@@ -12,7 +11,8 @@ public class SpotAnimDefinition extends CachedNode {
 
     public static CacheArchive gameDefinitionsCacheArchive;
     public static NodeCache spotAnimDefinitionCache = new NodeCache(64);
-    public static NodeCache modelCache = new NodeCache(30);
+    public static NodeCache spotAnimModelCache = new NodeCache(30);
+    public static CacheArchive aCacheArchive_2582;
     public int animationId;
     public int modelId;
     public int contrast = 0;
@@ -45,13 +45,13 @@ public class SpotAnimDefinition extends CachedNode {
         return spotAnimDefinition;
     }
 
-    public static void clearSpotAnimDefinitionCache() {
+    public static void clearSpotAnimCache() {
         spotAnimDefinitionCache.clear();
-        modelCache.clear();
+        spotAnimModelCache.clear();
     }
 
     public static void initializeSpotAnimCache(CacheArchive arg1, CacheArchive arg2) {
-        MovedStatics.aCacheArchive_2582 = arg1;
+        aCacheArchive_2582 = arg1;
         gameDefinitionsCacheArchive = arg2;
     }
 
@@ -88,9 +88,9 @@ public class SpotAnimDefinition extends CachedNode {
     }
 
     public Model getModel(int arg0) {
-        Model model = (Model) modelCache.get((long) id);
+        Model model = (Model) spotAnimModelCache.get((long) id);
         if (model == null) {
-            model = Model.getModel(MovedStatics. aCacheArchive_2582, modelId);
+            model = Model.getModel(aCacheArchive_2582, modelId);
             if (model == null) {
                 return null;
             }
@@ -101,13 +101,13 @@ public class SpotAnimDefinition extends CachedNode {
             }
             model.createBones();
             model.applyLighting(64 + ambient, contrast + 850, -30, -50, -30, true);
-            modelCache.put((long) id, model);
+            spotAnimModelCache.put((long) id, model);
         }
         Model class40_sub5_sub17_sub5_0_;
         if (animationId == -1 || arg0 == -1) {
             class40_sub5_sub17_sub5_0_ = model.method806(true);
         } else {
-            class40_sub5_sub17_sub5_0_ = ProducingGraphicsBuffer_Sub1.getAnimationSequence(animationId).method597((byte) -87, model, arg0);
+            class40_sub5_sub17_sub5_0_ = AnimationSequence.getAnimationSequence(animationId).method597((byte) -87, model, arg0);
         }
         if (resizeX != 128 || resizeY != 128) {
             class40_sub5_sub17_sub5_0_.scaleT(resizeX, resizeY, resizeX);

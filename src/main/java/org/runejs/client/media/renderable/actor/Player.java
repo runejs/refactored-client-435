@@ -5,19 +5,14 @@ import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.def.SpotAnimDefinition;
+import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
-import org.runejs.client.frame.ScreenController;
-import org.runejs.client.frame.ScreenMode;
-import org.runejs.client.input.KeyFocusListener;
-import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.util.CollisionMap;
-
-import java.awt.*;
 
 public class Player extends Actor {
 
@@ -28,12 +23,12 @@ public class Player extends Actor {
     public static int[] actorUpdatingIndices = new int[2048];
     public static Buffer[] trackedPlayerAppearanceCache = new Buffer[2048];
     public static int[] deregisterActorIndices = new int[1000];
-    public static Npc[] npcs;
+    public static Npc[] npcs = new Npc[32768];
     public static Player[] trackedPlayers = new Player[2048];
     public static int[] npcIds = new int[32768];
     public static int[] trackedPlayerIndices = new int[2048];
     public static int npcCount = 0;
-    public static int localPlayerCount;
+    public static int localPlayerCount = 0;
     public static boolean inTutorialIsland = false;
     public static Buffer chatBuffer = new Buffer(new byte[5000]);
     public static boolean cutsceneActive = false;
@@ -49,9 +44,12 @@ public class Player extends Actor {
     public static int worldId = 1;
     public static int friendsCount = 0;
     public static PlayerAppearance activePlayerAppearance = new PlayerAppearance();
-    public static int[] tabWidgetIds = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-    public static int currentTabId = 3;
     public static String[] friendUsernames = new String[200];
+    public static long[] friends = new long[200];
+    public static int ignoresCount = 0;
+    public static int localPlayerId = -1;
+    public static String[] playerActions = new String[5];
+    public static boolean[] playerActionsLowPriority = new boolean[5];
     public int skillLevel;
     public int anInt3258;
     public int combatLevel = 0;
@@ -90,26 +88,6 @@ public class Player extends Actor {
         anInt3283 = 0;
         aBoolean3287 = false;
     }
-
-    public static void drawGameScreenGraphics() {
-        try {
-            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
-            MovedStatics.gameScreenImageProducer.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
-        } catch(Exception exception) {
-            MouseHandler.gameCanvas.repaint();
-        }
-    }
-
-    public static boolean method793(int arg1) {
-        // something to do with checking for valid (typable?) keycodes
-        if(arg1 < 32)
-            return false;
-        if(arg1 == 127)
-            return false;
-        return arg1 < 129 || arg1 > 159;
-    }
-
-
 
     public static void parsePlayerUpdateMasks(PacketBuffer appearanceBuffer, Player player, int mask, int playerIndex) {
         if((0x100 & mask) != 0) { // damage/hitsplat 1
@@ -160,10 +138,10 @@ public class Player extends Actor {
             int messageLength = appearanceBuffer.getUnsignedByte();
             int bufferPosition = appearanceBuffer.currentPosition;
             if(player.playerName != null && player.playerAppearance != null) {
-                long l = RSString.nameToLong(player.playerName);
+                long l = MovedStatics.nameToLong(player.playerName);
                 boolean bool = false;
                 if(playerRights <= 1) {
-                    for(int i = 0; i < MovedStatics.anInt1008; i++) {
+                    for(int i = 0; i < ignoresCount; i++) {
                         if(l == ignores[i]) {
                             bool = true;
                             break;
@@ -174,10 +152,10 @@ public class Player extends Actor {
                     chatBuffer.currentPosition = 0;
                     appearanceBuffer.getBytes(0, messageLength, chatBuffer.buffer);
                     chatBuffer.currentPosition = 0;
-                    String incomming = KeyFocusListener.method956(appearanceBuffer);
+                    String incomming = MovedStatics.method956(appearanceBuffer);
                     String class1 = RSString.formatChatString(incomming);
                     player.forcedChatMessage = class1.trim();
-                    player.anInt3078 = 150;
+                    player.chatTimer = 150;
                     player.chatEffects = chatEffectsAndColors & 0xff;
                     player.chatcolor = chatEffectsAndColors >> 8;
                     if(playerRights == 2 || playerRights == 3)
@@ -217,7 +195,7 @@ public class Player extends Actor {
                 ChatBox.addChatMessage(player.playerName, player.forcedChatMessage, 2);
             } else if(player == localPlayer)
                 ChatBox.addChatMessage(player.playerName, player.forcedChatMessage, 2);
-            player.anInt3078 = 150;
+            player.chatTimer = 150;
             player.chatcolor = 0;
             player.chatEffects = 0;
         }
@@ -237,7 +215,7 @@ public class Player extends Actor {
     public static void setTutorialIslandFlag() {
         inTutorialIsland = false;
         int xPos = (localPlayer.worldX >> 7) + MovedStatics.baseX;
-        int yPos = Class26.baseY + (localPlayer.worldY >> 7);
+        int yPos = MovedStatics.baseY + (localPlayer.worldY >> 7);
         if(xPos >= 3053 && xPos <= 3156 && yPos >= 3056 && yPos <= 3136)
             inTutorialIsland = true;
         if(xPos >= 3072 && xPos <= 3118 && yPos >= 9492 && yPos <= 9535)
@@ -276,7 +254,7 @@ public class Player extends Actor {
                 playerDisplayName = player.playerName + MovedStatics.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + player.combatLevel + Native.rightParenthesis;
             else
                 playerDisplayName = player.playerName + Native.leftParenthesisWithSpacePrefix + English.prefixSkill + player.skillLevel + Native.rightParenthesis;
-            if (MovedStatics.itemSelected == 1) {
+            if (GameInterface.itemCurrentlySelected == 1) {
                 MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.USE_ITEM_ON_PLAYER.getId(), Native.selectedItemName + Native.arrowActionOnOther + playerDisplayName);
             } else if (Game.widgetSelected == 1) {
                 if ((MovedStatics.selectedMask & 0x8) == 8) {
@@ -284,11 +262,11 @@ public class Player extends Actor {
                 }
             } else {
                 for (int i = 4; i >= 0; i--) {
-                    if (Game.playerActions[i] != null) {
+                    if (playerActions[i] != null) {
                         int actionType = 0;
                         int actionRowOffset = 0;
 
-                        if (Game.playerActions[i].equalsIgnoreCase(English.attack)) {
+                        if (playerActions[i].equalsIgnoreCase(English.attack)) {
                             // offset attack actions so that they are lower priority for players of higher combat lvl or the same team
                             if (localPlayer.combatLevel < player.combatLevel)
                                 actionRowOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
@@ -298,7 +276,7 @@ public class Player extends Actor {
                                 else
                                     actionRowOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
                             }
-                        } else if (Class13.playerArray[i]) {
+                        } else if (playerActionsLowPriority[i]) {
                             // what is this for?
                             actionRowOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
                         }
@@ -313,7 +291,7 @@ public class Player extends Actor {
                             actionType = ActionRowType.INTERACT_WITH_PLAYER_OPTION_4.getId() + actionRowOffset;
                         if (i == 4)
                             actionType = ActionRowType.INTERACT_WITH_PLAYER_OPTION_5.getId() + actionRowOffset;
-                        MovedStatics.addActionRow(Game.playerActions[i], index, x, y, actionType, Native.white + playerDisplayName);
+                        MovedStatics.addActionRow(playerActions[i], index, x, y, actionType, Native.white + playerDisplayName);
                     }
                 }
             }
@@ -340,8 +318,8 @@ public class Player extends Actor {
     public Model getRotatedModel() {
         if(playerAppearance == null)
             return null;
-        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : ProducingGraphicsBuffer_Sub1.getAnimationSequence(playingAnimation);
-        AnimationSequence animationSequence_0_ = anInt3077 != -1 && !aBoolean3287 && (idleAnimation != anInt3077 || animationSequence == null) ? ProducingGraphicsBuffer_Sub1.getAnimationSequence(anInt3077) : null;
+        AnimationSequence animationSequence = playingAnimation == -1 || playingAnimationDelay != 0 ? null : AnimationSequence.getAnimationSequence(playingAnimation);
+        AnimationSequence animationSequence_0_ = anInt3077 != -1 && !aBoolean3287 && (idleAnimation != anInt3077 || animationSequence == null) ? AnimationSequence.getAnimationSequence(anInt3077) : null;
         Model animatedModel = playerAppearance.getAnimatedModel(animationSequence, animationSequence_0_, anInt3116, anInt3104);
         if(animatedModel == null)
             return null;

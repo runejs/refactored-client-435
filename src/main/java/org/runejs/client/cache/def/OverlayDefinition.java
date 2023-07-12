@@ -44,6 +44,10 @@ public class OverlayDefinition extends CachedNode {
         gameDefinitionsCacheArchive = cacheArchive;
     }
 
+    public static void clearOverlayDefinitionCache() {
+        overlayDefinitionCache.clear();
+    }
+
     public void readValues(Buffer buffer) {
         while (true) {
             int opcode = buffer.getUnsignedByte();

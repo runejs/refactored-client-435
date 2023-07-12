@@ -1,13 +1,10 @@
 package org.runejs.client.frame.console;
 
-import org.runejs.client.Class59;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.media.Rasterizer;
-import org.runejs.client.media.renderable.Item;
-import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.outbound.console.ConsoleCommandOutboundMessage;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.frame.console.Commands.*;
@@ -196,7 +193,7 @@ public class Console {
 
     public void handleInput() {
 //        console.log(ItemDefinition.anInt2854);
-        if (Item.obfuscatedKeyStatus[82]) { //CTRL DOWN
+        if (MovedStatics.obfuscatedKeyStatus[82]) { //CTRL DOWN
             if(MovedStatics.anInt2854 == 67) { // key v
                 String result = "";
                 Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -271,8 +268,8 @@ public class Console {
             consoleInput = consoleInput.substring(0, currentChatIndex - 1) + consoleInput.substring(currentChatIndex);
             currentChatIndex--;
         }
-        if (Player.method793(Class59.anInt1388) && consoleInput.length() < 80) { // any character
-            consoleInput = consoleInput.substring(0, currentChatIndex) + (char) Class59.anInt1388 + consoleInput.substring(currentChatIndex);
+        if (MovedStatics.method793(MovedStatics.anInt1388) && consoleInput.length() < 80) { // any character
+            consoleInput = consoleInput.substring(0, currentChatIndex) + (char) MovedStatics.anInt1388 + consoleInput.substring(currentChatIndex);
             currentChatIndex++;
         }
         if (MovedStatics.anInt2854 == 84 && consoleInput.length() > 0) { // key enter

@@ -11,12 +11,17 @@ import org.runejs.client.language.English;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.node.CachedNode;
 import org.runejs.OldEngine.ObjectDecompressor;
+import org.runejs.client.scene.InteractiveObjectTemporary;
 
 import java.io.IOException;
 
 public class GameObjectDefinition extends CachedNode implements EntityDefinition {
     public static int anInt2543 = 0;
     public static int count;
+    public static int[] OBJECT_TYPES = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
+    public static boolean lowMemory = false;
+    public static CacheArchive definitionCache;
+    public static CacheArchive modelCache;
     private static NodeCache objectDefinitionCache = new NodeCache(64);
     public static NodeCache objectModelCache = new NodeCache(500);
     private static Model[] objectModelHolder = new Model[4];
@@ -103,8 +108,8 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
 
     public static void method602(CacheArchive arg0, int arg1, CacheIndex arg2) {
         byte[] is = null;
-        synchronized(RSCanvas.aLinkedList_53) {
-            for(Class40_Sub6 class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.peekFirst(); class40_sub6 != null; class40_sub6 = (Class40_Sub6) RSCanvas.aLinkedList_53.pollFirst()) {
+        synchronized(MovedStatics.aLinkedList_53) {
+            for(Class40_Sub6 class40_sub6 = (Class40_Sub6) MovedStatics.aLinkedList_53.peekFirst(); class40_sub6 != null; class40_sub6 = (Class40_Sub6) MovedStatics.aLinkedList_53.pollFirst()) {
                 if((long) arg1 == class40_sub6.key && arg2 == class40_sub6.cacheIndex && class40_sub6.anInt2112 == 0) {
                     is = class40_sub6.aByteArray2102;
                     break;
@@ -120,28 +125,28 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     }
 
 
-    public static void method609(int objectId, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
-        Class40_Sub3 class40_sub3 = null;
-        for(Class40_Sub3 class40_sub3_24_ = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst(); class40_sub3_24_ != null; class40_sub3_24_ = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst()) {
-            if(class40_sub3_24_.anInt2018 == arg5 && arg2 == class40_sub3_24_.anInt2039 && class40_sub3_24_.anInt2038 == arg6 && class40_sub3_24_.anInt2027 == arg7) {
-                class40_sub3 = class40_sub3_24_;
+    public static void addTemporaryObject(int objectId, int x, int orientation, int duration, int plane, int y, int typeKey, int type, int delay) {
+        InteractiveObjectTemporary obj = null;
+        for(InteractiveObjectTemporary other = (InteractiveObjectTemporary) MovedStatics.interactiveObjectTemporaryNodeCache.peekFirst(); other != null; other = (InteractiveObjectTemporary) MovedStatics.interactiveObjectTemporaryNodeCache.pollFirst()) {
+            if(other.plane == plane && x == other.x && other.y == y && other.typeKey == typeKey) {
+                obj = other;
                 break;
             }
         }
-        if(class40_sub3 == null) {
-            class40_sub3 = new Class40_Sub3();
-            class40_sub3.anInt2039 = arg2;
-            class40_sub3.anInt2027 = arg7;
-            class40_sub3.anInt2018 = arg5;
-            class40_sub3.anInt2038 = arg6;
-            Class39.method451(class40_sub3);
-            LinkedList.aLinkedList_1064.addLast(class40_sub3);
+        if(obj == null) {
+            obj = new InteractiveObjectTemporary();
+            obj.x = x;
+            obj.typeKey = typeKey;
+            obj.plane = plane;
+            obj.y = y;
+            MovedStatics.storeTemporaryObject(obj);
+            MovedStatics.interactiveObjectTemporaryNodeCache.addLast(obj);
         }
-        class40_sub3.anInt2017 = objectId;
-        class40_sub3.anInt2031 = arg4;
-        class40_sub3.anInt2033 = arg9;
-        class40_sub3.anInt2035 = arg3;
-        class40_sub3.anInt2030 = arg8;
+        obj.id = objectId;
+        obj.duration = duration;
+        obj.delay = delay;
+        obj.orientation = orientation;
+        obj.type = type;
     }
 
     public static GameObjectDefinition getDefinition(int objectId) {
@@ -149,7 +154,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         if(gameObjectDefinition != null) {
             return gameObjectDefinition;
         }
-        byte[] is = CacheArchive.definitionCache.getFile(6, objectId);
+        byte[] is = definitionCache.getFile(6, objectId);
         gameObjectDefinition = new GameObjectDefinition();
         gameObjectDefinition.id = objectId;
         if(is == null) {
@@ -179,6 +184,22 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         objectModelCache.clear();
         terrainObjectModelCache.clear();
         animatedObjectModelCache.clear();
+    }
+
+    public static void initializeGameObjectDefinitionCache(CacheArchive modelCache, boolean lowMemory, CacheArchive definitionCache) {
+        GameObjectDefinition.definitionCache = definitionCache;
+        count = GameObjectDefinition.definitionCache.fileLength(6);
+        GameObjectDefinition.lowMemory = lowMemory;
+        GameObjectDefinition.modelCache = modelCache;
+    }
+
+    public static boolean isObjectLoaded(int type, int id) {
+        GameObjectDefinition gameObjectDefinition = getDefinition(id);
+        if (type == 11)
+            type = 10;
+        if (type >= 5 && type <= 8)
+            type = 4;
+        return gameObjectDefinition.isTypeModelLoaded(type);
     }
 
     public Model createTerrainObjectModel(int arg0, int arg1, int arg2, int arg3, int arg4, int arg6) {
@@ -274,7 +295,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
                 }
                 model = (Model) objectModelCache.get(modelId);
                 if(model == null) {
-                    model = Model.getModel(RSString.aCacheArchive_1705, modelId & 0xffff);
+                    model = Model.getModel(modelCache, modelId & 0xffff);
                     if(model == null) {
                         return null;
                     }
@@ -308,7 +329,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
             }
             model = (Model) objectModelCache.get(modelId);
             if(model == null) {
-                model = Model.getModel(RSString.aCacheArchive_1705, 0xffff & modelId);
+                model = Model.getModel(modelCache, 0xffff & modelId);
                 if(model == null) {
                     return null;
                 }
@@ -391,7 +412,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         if(opcode == 1) {
             int length = buffer.getUnsignedByte();
             if(length > 0) {
-                if(objectModels == null || Class35.aBoolean1734) {
+                if(objectModels == null || lowMemory) {
                     objectTypes = new int[length];
                     objectModels = new int[length];
                     for(int index = 0; length > index; index++) {
@@ -407,7 +428,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         } else if(opcode == 5) {
             int length = buffer.getUnsignedByte();
             if(length > 0) {
-                if(objectModels == null || Class35.aBoolean1734) {
+                if(objectModels == null || lowMemory) {
                     objectTypes = null;
                     objectModels = new int[length];
                     for(int index = 0; length > index; index++) {
@@ -517,11 +538,11 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         }
     }
 
-    public boolean method610(int arg0) {
+    public boolean isTypeModelLoaded(int type) {
         if(objectTypes != null) {
             for(int i = 0; objectTypes.length > i; i++) {
-                if(objectTypes[i] == arg0) {
-                    return RSString.aCacheArchive_1705.loaded(objectModels[i] & 0xffff, 0);
+                if(objectTypes[i] == type) {
+                    return modelCache.loaded(objectModels[i] & 0xffff, 0);
                 }
             }
             return true;
@@ -529,12 +550,12 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         if(objectModels == null) {
             return true;
         }
-        if(arg0 != 10) {
+        if(type != 10) {
             return true;
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= RSString.aCacheArchive_1705.loaded(0xffff & objectModels[i], 0);
+            bool &= modelCache.loaded(0xffff & objectModels[i], 0);
         }
         return bool;
     }
@@ -561,7 +582,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= RSString.aCacheArchive_1705.loaded(0xffff & objectModels[i], 0);
+            bool &= modelCache.loaded(0xffff & objectModels[i], 0);
         }
         return bool;
     }

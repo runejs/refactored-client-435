@@ -2,22 +2,18 @@ package org.runejs.client.io;
 
 import org.runejs.client.MovedStatics;
 import org.runejs.client.RSString;
-import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.node.Node;
 import org.runejs.client.scene.InteractiveObject;
-import org.runejs.client.Class13;
 
 import java.math.BigInteger;
 
 public class Buffer extends Node {
-    public static NodeCache rgbImageCache = new NodeCache(100);
     public static IndexedImage tabTopBack;
     public static int[] anIntArray1972;
     public static int lastItemDragTime = 0;
 
-    public static int[] anIntArray1984 = new int[2000];
     public static int anInt1985 = -1;
     public static int anInt1987 = 0;
 
@@ -25,7 +21,7 @@ public class Buffer extends Node {
     public byte[] buffer;
 
     public Buffer(int size) {
-        buffer = Class13.method246(size);
+        buffer = new byte[size];
         currentPosition = 0;
     }
 
