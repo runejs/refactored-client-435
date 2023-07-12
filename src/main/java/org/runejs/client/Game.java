@@ -86,6 +86,7 @@ public class Game {
     public static int anInt2591 = 0;
     public static int anInt874 = 0;
     public static int destinationY = 0;
+    public static SceneRenderer sceneRenderer;
     public static Scene currentScene;
     public static int gameStatusCode = 0;
     public static KeyFocusListener keyFocusListener = new KeyFocusListener();
@@ -836,7 +837,7 @@ public class Game {
         Model.resourceCount = 0;
         Rasterizer.resetPixels();
 
-        currentScene.render(activeCamera, plane);
+        sceneRenderer.render(activeCamera, plane);
         currentScene.clearInteractiveObjectCache();
         MovedStatics.draw2DActorAttachments();
         MovedStatics.drawPositionHintIcon();

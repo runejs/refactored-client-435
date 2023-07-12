@@ -108,7 +108,7 @@ public class ScreenController {
         }
 
 
-        Game.currentScene.precalculateTileVisibility(frameMode == ScreenMode.FIXED ? 512 : drawWidth, frameMode == ScreenMode.FIXED ? 334 : drawHeight, 500, 800, is);
+        Game.sceneRenderer.precalculateTileVisibility(frameMode == ScreenMode.FIXED ? 512 : drawWidth, frameMode == ScreenMode.FIXED ? 334 : drawHeight, 500, 800, is);
         Game.gameCanvas.setSize(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight);
 
         if (Game.gameStatusCode <= 35 && Game.gameStatusCode >= 30) {
