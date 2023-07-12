@@ -273,6 +273,7 @@ public class MovedStatics {
     public static int deregisterActorCount = 0;
     public static int[] anIntArray456;
     public static int regionY;
+    public static int[] fullScreenTextureArray;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -1675,7 +1676,7 @@ public class MovedStatics {
                 Class35.tabHighlightImageTopMiddle = null;
                 tabHighlightImageBottomLeft = null;
                 Renderable.tabHighlightImageBottomLeftEdge = null;
-                Class24.fullScreenTextureArray = null;
+                fullScreenTextureArray = null;
                 PlayerAppearance.tabPieveLowerRight = null;
                 framePieceTop = null;
                 Class44.chatboxBackgroundImage = null;
