@@ -1,5 +1,6 @@
 package org.runejs.client;
 
+import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Player;
 
 import java.awt.*;
@@ -22,7 +23,7 @@ public class Class17 {
                 actualIndex = Player.trackedPlayerIndices[currentPlayerIndex];
             Player player = Player.trackedPlayers[actualIndex];
             if(player != null)
-                Class13.handleActorAnimation(player);
+                Actor.handleActorAnimation(player);
         }
     }
 

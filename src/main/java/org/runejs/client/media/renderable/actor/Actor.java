@@ -359,6 +359,52 @@ public abstract class Actor extends Renderable {
         }
     }
 
+    public static void handleActorAnimation(Actor actor) {
+        if(actor.worldX < 128 || actor.worldY < 128 || actor.worldX >= 13184 || actor.worldY >= 13184) {
+            actor.playingAnimation = -1;
+            actor.forceMoveEndCycle = 0;
+            actor.forceMoveStartCycle = 0;
+            actor.graphicId = -1;
+            actor.worldX = actor.size * 64 + 128 * actor.pathY[0];
+            actor.worldY = actor.pathX[0] * 128 + 64 * actor.size;
+            actor.method790(0);
+        }
+        if(actor == Player.localPlayer && (actor.worldX < 1536 || actor.worldY < 1536 || actor.worldX >= 11776 || actor.worldY >= 11776)) {
+            actor.graphicId = -1;
+            actor.forceMoveStartCycle = 0;
+            actor.forceMoveEndCycle = 0;
+            actor.playingAnimation = -1;
+            actor.worldX = actor.pathY[0] * 128 + actor.size * 64;
+            actor.worldY = 64 * actor.size + actor.pathX[0] * 128;
+            actor.method790(0);
+        }
+        if(actor.forceMoveEndCycle > MovedStatics.pulseCycle)
+            updateForcedMovement(actor);
+        else if(actor.forceMoveStartCycle < MovedStatics.pulseCycle)
+            Class44.processWalkingStep(255, actor);
+        else
+            PlayerAppearance.startForcedMovement(actor);
+        Projectile.updateFacingDirection(actor);
+        Class40_Sub5_Sub15.updateAnimation(actor);
+    }
+
+    public static void updateForcedMovement(Actor actor) {
+        int deltaTime = actor.forceMoveEndCycle - MovedStatics.pulseCycle;
+        int destX = actor.forceMoveStartX * 128 + 64 * actor.size;
+        if(actor.forceMoveFaceDirection == 0)
+            actor.initialFaceDirection = 1024;
+        if(actor.forceMoveFaceDirection == 1)
+            actor.initialFaceDirection = 1536;
+        if(actor.forceMoveFaceDirection == 2)
+            actor.initialFaceDirection = 0;
+        int destY = actor.size * 64 + 128 * actor.forceMoveStartY;
+        actor.worldX += (destX - actor.worldX) / deltaTime;
+        if(actor.forceMoveFaceDirection == 3)
+            actor.initialFaceDirection = 512;
+        actor.anInt3074 = 0;
+        actor.worldY += (-actor.worldY + destY) / deltaTime;
+    }
+
     public void move(int moveDirection, boolean isRunning) {
         int i = pathY[0];
         int i_19_ = pathX[0];

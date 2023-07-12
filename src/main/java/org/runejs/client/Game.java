@@ -180,8 +180,8 @@ public class Game {
                 if (gameInterface == GameInterface.aGameInterface_353) {
                     opacity = 128;
                     GameInterface gameInterface_3_ = GameInterface.method878(gameInterface);
-                    int[] is = Class13.method247(gameInterface_3_);
-                    int[] is_4_ = Class13.method247(gameInterface);
+                    int[] is = GameInterface.method247(gameInterface_3_);
+                    int[] is_4_ = GameInterface.method247(gameInterface);
                     int i_5_ = MouseHandler.mouseY + -MovedStatics.anInt2621 + is_4_[1] - is[1];
                     if (i_5_ < 0)
                         i_5_ = 0;
@@ -1933,6 +1933,14 @@ public class Game {
         MovedStatics.processGameStatus(10);
     }
 
+    public static void method249() {
+        if(GameObject.frame != null) {
+            synchronized(GameObject.frame) {
+                GameObject.frame = null;
+            }
+        }
+    }
+
     public void method35(int arg1) {
         if (currentPort != gameServerPort)
             currentPort = gameServerPort;
@@ -1966,7 +1974,7 @@ public class Game {
     public void processGameLoop() {
         MovedStatics.pulseCycle++;
         handleUpdateServer();
-        Class13.handleRequests();
+        MovedStatics.handleRequests();
         MusicSystem.handleMusic();
         SoundSystem.handleSounds();
         GameInterface.method639();
@@ -2142,7 +2150,7 @@ public class Game {
             MovedStatics.gameServerSocket = null;
         }
         MovedStatics.method744();
-        Class13.method249();
+        method249();
         MusicSystem.syncedStop(false);
         SoundSystem.stop();
         UpdateServer.killUpdateServerSocket();

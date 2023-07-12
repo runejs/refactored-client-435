@@ -7,7 +7,6 @@ import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.node.Node;
 import org.runejs.client.scene.InteractiveObject;
-import org.runejs.client.Class13;
 
 import java.math.BigInteger;
 

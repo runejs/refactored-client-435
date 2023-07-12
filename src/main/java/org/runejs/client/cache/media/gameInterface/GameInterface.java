@@ -1572,8 +1572,8 @@ public class GameInterface extends CachedNode {
             GameInterface gameInterface = aGameInterface_353;
             GameInterface gameInterface_24_ = method878(gameInterface);
             if(gameInterface_24_ != null) {
-                int[] is = Class13.method247(gameInterface_24_);
-                int[] is_25_ = Class13.method247(gameInterface);
+                int[] is = method247(gameInterface_24_);
+                int[] is_25_ = method247(gameInterface);
                 int i = is_25_[1] - is[1] + -MovedStatics.anInt2621 + MouseHandler.mouseY;
                 int i_26_ = -is[0] + is_25_[0] + MouseHandler.mouseX + -MovedStatics.anInt1996;
                 if(i < 0) {
@@ -2182,6 +2182,33 @@ ChatBox.tradeMode
             }
         }
         return true;
+    }
+
+    public static int[] method247(GameInterface arg0) {
+        int i;
+        if(arg0.id < 0)
+            i = arg0.parentId >> 16;
+        else
+            i = arg0.id >> 16;
+        if(!decodeGameInterface(i))
+            return null;
+        int i_11_ = arg0.currentX;
+        int i_12_ = arg0.currentY;
+        int i_13_ = arg0.parentId;
+        while(i_13_ != -1) {
+            GameInterface gameInterface = cachedInterfaces[i][i_13_ & 0xffff];
+            i_11_ += gameInterface.currentX;
+            if(!arg0.lockScroll)
+                i_11_ -= gameInterface.scrollWidth;
+            i_12_ += gameInterface.currentY;
+            i_13_ = gameInterface.parentId;
+            if(!arg0.lockScroll)
+                i_12_ -= gameInterface.scrollPosition;
+        }
+        int[] is = new int[2];
+        is[0] = i_11_;
+        is[1] = i_12_;
+        return is;
     }
 
     public void swapItems(int arg0, boolean arg1, int arg2) {

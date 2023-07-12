@@ -15,6 +15,7 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.UpdateServer;
+import org.runejs.client.node.Class40_Sub6;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.CacheArchive;
@@ -247,6 +248,12 @@ public class MovedStatics {
     public static int bankInsertMode = 0;
     public static int width;
     public static SignlinkNode aSignlinkNode_394;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for one of the tabs on the right-hand side of the bottom,
+     * but not the furthest-right (see `tabHighlightImageBottomRightEdge` for that).
+     */
+    public static IndexedImage tabHighlightImageBottomRight;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -672,9 +679,9 @@ public class MovedStatics {
                 if (currentTabId == 10)
                     tabHighlightImageBottomMiddle.drawImage(130, 1);
                 if (currentTabId == 11)
-                    Class13.tabHighlightImageBottomRight.drawImage(173, 0);
+                    tabHighlightImageBottomRight.drawImage(173, 0);
                 if (currentTabId == 12)
-                    Class13.tabHighlightImageBottomRight.drawImage(201, 0);
+                    tabHighlightImageBottomRight.drawImage(201, 0);
                 if (currentTabId == 13)
                     ISAAC.tabHighlightImageBottomRightEdge.drawImage(229, 0);
             }
@@ -1272,7 +1279,7 @@ public class MovedStatics {
 	        int i_0_ = Player.npcIds[i];
 	        Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_0_];
 	        if(class40_sub5_sub17_sub4_sub2 != null)
-	            Class13.handleActorAnimation(class40_sub5_sub17_sub4_sub2);
+	            Actor.handleActorAnimation(class40_sub5_sub17_sub4_sub2);
 	    }
 	
 	}
@@ -1620,7 +1627,7 @@ public class MovedStatics {
             inventoryBackgroundImage = null;
             tabHighlightImageTopRight = null;
             Class40_Sub5_Sub15.tabIcons = null;
-            Class13.tabHighlightImageBottomRight = null;
+            tabHighlightImageBottomRight = null;
             Minimap.mapbackProducingGraphicsBuffer = null;
             RSCanvas.anIntArray62 = null;
             sidebarOffsets = null;
@@ -2182,9 +2189,9 @@ public class MovedStatics {
             ISAAC.tabHighlightImageBottomRightEdge = tabHighlightImageTopLeftEdge.cloneImage();
             ISAAC.tabHighlightImageBottomRightEdge.flipHorizontal();
             ISAAC.tabHighlightImageBottomRightEdge.flipVertical();
-            Class13.tabHighlightImageBottomRight = GameInterface.tabHighlightImageTopLeft.cloneImage();
-            Class13.tabHighlightImageBottomRight.flipHorizontal();
-            Class13.tabHighlightImageBottomRight.flipVertical();
+            tabHighlightImageBottomRight = GameInterface.tabHighlightImageTopLeft.cloneImage();
+            tabHighlightImageBottomRight.flipHorizontal();
+            tabHighlightImageBottomRight.flipVertical();
             Class40_Sub5_Sub15.tabIcons = IndexedImage.getMultipleIndexedImages(arg2, Native.sideIcons, Native.aClass1_305);
             Landscape.anIntArray1186 = new int[151];
             anIntArray852 = new int[151];
@@ -2556,7 +2563,7 @@ public class MovedStatics {
                             yOffset = 0;
                             xOffset = 0;
                         }
-                        Class13.handleInterfaceActions(GameInterfaceArea.GAME_AREA, MouseHandler.mouseX - xOffset, MouseHandler.mouseY - yOffset, 4, 4, 516, 338, GameInterface.gameScreenInterfaceId);
+                        handleInterfaceActions(GameInterfaceArea.GAME_AREA, MouseHandler.mouseX - xOffset, MouseHandler.mouseY - yOffset, 4, 4, 516, 338, GameInterface.gameScreenInterfaceId);
                     }
                 }
 
@@ -2619,7 +2626,7 @@ public class MovedStatics {
             } else {
                 anInt3065 = -1;
                 hoveredWidgetChildId = -1;
-                Class13.handleInterfaceActions(GameInterfaceArea.GAME_AREA, MouseHandler.mouseX, MouseHandler.mouseY, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
+                handleInterfaceActions(GameInterfaceArea.GAME_AREA, MouseHandler.mouseX, MouseHandler.mouseY, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
                 anInt2850 = hoveredWidgetChildId;
                 anInt573 = anInt3065;
             }
@@ -2677,6 +2684,24 @@ public class MovedStatics {
                     i_9_ = 16776960;
                 TypeFace.fontBold.drawShadowedString(class1_8_, 3 + i_0_, i_7_, true, i_9_);
             }
+        }
+    }
+
+    public static void handleInterfaceActions(GameInterfaceArea area, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, int widgetId) {
+        if(GameInterface.decodeGameInterface(widgetId)) {
+            handleInterfaceActions(area, mouseX, mouseY, minX, minY, maxX, maxY, GameInterface.cachedInterfaces[widgetId], -1, 0, 0);
+        }
+    }
+
+    public static void handleRequests() {
+        for(; ; ) {
+            Class40_Sub6 class40_sub6;
+            synchronized(RSCanvas.aLinkedList_53) {
+                class40_sub6 = (Class40_Sub6) aLinkedList_2604.removeFirst();
+            }
+            if(class40_sub6 == null)
+                break;
+            class40_sub6.cacheArchive.method198(false, class40_sub6.aByteArray2102, (int) class40_sub6.key, class40_sub6.cacheIndex);
         }
     }
 }
