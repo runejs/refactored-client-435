@@ -279,16 +279,16 @@ public abstract class Actor extends Renderable {
             MovedStatics.regionY = chunkY;
             MovedStatics.processGameStatus(25);
             MovedStatics.method940(English.loadingPleaseWait, false, null);
-            int i = Class26.baseY;
+            int i = MovedStatics.baseY;
             int i_33_ = MovedStatics.baseX;
             MovedStatics.baseX = (chunkX - 6) * 8;
             int i_34_ = MovedStatics.baseX + -i_33_;
             if(-1000 != -1000)
                 method781(14, 98, 96, -85, -118, 89);
             i_33_ = MovedStatics.baseX;
-            Class26.baseY = (-6 + chunkY) * 8;
-            int i_35_ = Class26.baseY + -i;
-            i = Class26.baseY;
+            MovedStatics.baseY = (-6 + chunkY) * 8;
+            int i_35_ = MovedStatics.baseY + -i;
+            i = MovedStatics.baseY;
             for(int i_36_ = 0; i_36_ < 32768; i_36_++) {
                 Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_36_];
                 if(class40_sub5_sub17_sub4_sub2 != null) {

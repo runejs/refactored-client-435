@@ -1,5 +1,6 @@
 package org.runejs.client.cache.def;
 
+import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
@@ -13,6 +14,7 @@ import org.runejs.client.*;
 
 public class ItemDefinition extends CachedNode implements EntityDefinition {
     public static int count;
+    public static CacheArchive itemDefinitionCache;
 
     public int stackable;
     public String name;
@@ -93,7 +95,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(definition != null) {
             return definition;
         }
-        byte[] is = Class26.aCacheArchive_632.getFile(arg1, id);
+        byte[] is = itemDefinitionCache.getFile(arg1, id);
         definition = new ItemDefinition();
         definition.id = id;
         if(is != null) {

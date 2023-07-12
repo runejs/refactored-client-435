@@ -153,7 +153,7 @@ public class Minimap extends FramePieceRenderer {
                 }
             }
             if(Player.headIconDrawType == 2) {
-                int hintX = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + MovedStatics.hintIconPosY);
+                int hintX = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-MovedStatics.baseY + MovedStatics.hintIconPosY);
                 int hintY = 4 * (MovedStatics.hintIconPosX - MovedStatics.baseX) - (-2 + Player.localPlayer.worldX / 32);
                 drawMinimapIcon(minimapMarkers[1], hintY, hintX);
             }
@@ -348,7 +348,7 @@ public class Minimap extends FramePieceRenderer {
                 }
             }
             if(Player.headIconDrawType == 2) {
-                int hintY = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-Class26.baseY + MovedStatics.hintIconPosY);
+                int hintY = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-MovedStatics.baseY + MovedStatics.hintIconPosY);
                 int hintX = 4 * (MovedStatics.hintIconPosX - MovedStatics.baseX) - (-2 + Player.localPlayer.worldX / 32);
                 drawMinimapMark(minimapMarkers[1], hintX, hintY);
             }

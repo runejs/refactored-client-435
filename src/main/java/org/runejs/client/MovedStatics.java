@@ -274,6 +274,8 @@ public class MovedStatics {
     public static int[] anIntArray456;
     public static int regionY;
     public static int[] fullScreenTextureArray;
+    public static Image loadingBoxImage;
+    public static int baseY;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -766,7 +768,7 @@ public class MovedStatics {
         if (MovedStatics.itemSelected == 0 && Game.widgetSelected == 0) {
             String tileCoords = "";
             if (Configuration.DEBUG_CONTEXT) {
-                tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + baseX), Integer.toString(Scene.hoveredTileY + Class26.baseY));
+                tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + baseX), Integer.toString(Scene.hoveredTileY + baseY));
             }
 
             addActionRow(English.walkHere, 0, MouseHandler.mouseX, MouseHandler.mouseY, ActionRowType.WALK_HERE.getId(), tileCoords);
@@ -823,7 +825,7 @@ public class MovedStatics {
                             examineText.append(
                                     MessageFormat.format("<col=ffffff>{0}, {1}</col>",
                                             Integer.toString(x + baseX),
-                                            Integer.toString(y + Class26.baseY)
+                                            Integer.toString(y + baseY)
                                     )
                             );
                             examineText.append("<col=00ff00>)</col>");
@@ -997,8 +999,8 @@ public class MovedStatics {
     public static void initializeItemDefinitionCache(CacheArchive definitionCache, boolean arg1, CacheArchive arg2) {
         membersServer = arg1;
         MovedStatics.aCacheArchive_284 = arg2;
-        Class26.aCacheArchive_632 = definitionCache;
-        ItemDefinition.count = Class26.aCacheArchive_632.fileLength(10);
+        ItemDefinition.itemDefinitionCache = definitionCache;
+        ItemDefinition.count = ItemDefinition.itemDefinitionCache.fileLength(10);
     }
 
     public static int method888(int x, int y) {
@@ -1546,7 +1548,7 @@ public class MovedStatics {
             return;
         }
 
-        Point2d screenPos = MovedStatics.getProjectedScreenPosition(2 * hintIconPosZ, hintIconInnerPosY + (-Class26.baseY + hintIconPosY << 7), (hintIconPosX + -baseX << 7) + hintIconInnerPosX);
+        Point2d screenPos = MovedStatics.getProjectedScreenPosition(2 * hintIconPosZ, hintIconInnerPosY + (-baseY + hintIconPosY << 7), (hintIconPosX + -baseX << 7) + hintIconInnerPosX);
 
         if (screenPos == null) {
             return;
@@ -2064,7 +2066,7 @@ public class MovedStatics {
                         examineText.append(
                                 MessageFormat.format("<col=ffffff>{0}, {1}</col>",
                                         Integer.toString(x + baseX),
-                                        Integer.toString(y + Class26.baseY)
+                                        Integer.toString(y + baseY)
                                 )
                         );
                         examineText.append("<col=00ff00>)</col>");

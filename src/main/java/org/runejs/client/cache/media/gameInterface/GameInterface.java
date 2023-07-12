@@ -606,7 +606,7 @@ public class GameInterface extends CachedNode {
                         2,
                         npcIdx,
                         MovedStatics.baseX + i,
-                        Class26.baseY + i_10_
+                        MovedStatics.baseY + i_10_
                     )
                 );
             }
@@ -625,7 +625,7 @@ public class GameInterface extends CachedNode {
 
                 int objectX = MovedStatics.baseX + i;
                 int objectId = (0x1ffffd20 & npcIdx) >> 14;
-                int objectY = Class26.baseY + i_10_;
+                int objectY = MovedStatics.baseY + i_10_;
 
                 OutgoingPackets.sendMessage(
                     new ObjectInteractionOutboundMessage(
@@ -871,7 +871,7 @@ public class GameInterface extends CachedNode {
                             Class60.anInt1417,
                             npcIdx,
                             MovedStatics.baseX + i,
-                            Class26.baseY + i_10_
+                            MovedStatics.baseY + i_10_
                         )
                     );
                 }
@@ -949,7 +949,7 @@ public class GameInterface extends CachedNode {
                     AnimationSequence.method596(i, npcIdx, (byte) -11, i_10_);
 
                     int objectId = (0x1ffffd20 & npcIdx) >> 14;
-                    int objectY = i_10_ + Class26.baseY;
+                    int objectY = i_10_ + MovedStatics.baseY;
                     int objectX = i + MovedStatics.baseX;
 
                     OutgoingPackets.sendMessage(
@@ -1000,7 +1000,7 @@ public class GameInterface extends CachedNode {
                     AnimationSequence.method596(i, npcIdx, (byte) -77, i_10_);
 
                     int objectX = i + MovedStatics.baseX;
-                    int objectY = i_10_ + Class26.baseY;
+                    int objectY = i_10_ + MovedStatics.baseY;
                     int objectId = npcIdx >> 14 & 0x7fff;
 
                     OutgoingPackets.sendMessage(
@@ -1024,7 +1024,7 @@ public class GameInterface extends CachedNode {
                             selectedInventorySlot,
                             (npcIdx & 0x1fffccf7) >> 14,
                             i + MovedStatics.baseX,
-                            i_10_ + Class26.baseY
+                            i_10_ + MovedStatics.baseY
                         )
                     );
                 }
@@ -1159,7 +1159,7 @@ public class GameInterface extends CachedNode {
                                 1,
                                 npcIdx,
                                 MovedStatics.baseX + i,
-                                Class26.baseY + i_10_
+                                MovedStatics.baseY + i_10_
                             )
                         );
                     }
@@ -1175,7 +1175,7 @@ public class GameInterface extends CachedNode {
                                 3,
                                 npcIdx,
                                 MovedStatics.baseX + i,
-                                Class26.baseY + i_10_
+                                MovedStatics.baseY + i_10_
                             )
                         );
                     }
@@ -1255,7 +1255,7 @@ public class GameInterface extends CachedNode {
                     if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_3.getId()) {
                         AnimationSequence.method596(i, npcIdx, (byte) -104, i_10_);
 
-                        int objectY = i_10_ + Class26.baseY;
+                        int objectY = i_10_ + MovedStatics.baseY;
                         int objectId = npcIdx >> 14 & 0x7fff;
                         int objectX = i + MovedStatics.baseX;
 
@@ -1282,7 +1282,7 @@ public class GameInterface extends CachedNode {
                                 Class60.anInt1417,
                                 npcIdx >> 14 & 0x7fff,
                                 i + MovedStatics.baseX,
-                                i_10_ + Class26.baseY
+                                i_10_ + MovedStatics.baseY
                             )
                         );
                     }
@@ -1373,7 +1373,7 @@ public class GameInterface extends CachedNode {
                                 4,
                                 npcIdx,
                                 MovedStatics.baseX + i,
-                                Class26.baseY + i_10_
+                                MovedStatics.baseY + i_10_
                             )
                         );
                     }
@@ -1421,7 +1421,7 @@ public class GameInterface extends CachedNode {
                                 5,
                                 npcIdx,
                                 MovedStatics.baseX + i,
-                                Class26.baseY + i_10_
+                                MovedStatics.baseY + i_10_
                             )
                         );
                     }
@@ -1466,7 +1466,7 @@ public class GameInterface extends CachedNode {
                         AnimationSequence.method596(i, npcIdx, (byte) -47, i_10_);
                         int objectId = 0x7fff & npcIdx >> 14;
                         int objectX = i + MovedStatics.baseX;
-                        int objectY = i_10_ + Class26.baseY;
+                        int objectY = i_10_ + MovedStatics.baseY;
 
                         OutgoingPackets.sendMessage(
                             new ObjectInteractionOutboundMessage(
@@ -1507,7 +1507,7 @@ public class GameInterface extends CachedNode {
                                 selectedInventorySlot,
                                 npcIdx,
                                 i + MovedStatics.baseX,
-                                Class26.baseY + i_10_
+                                MovedStatics.baseY + i_10_
                             )
                         );
                     }

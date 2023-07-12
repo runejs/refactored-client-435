@@ -80,7 +80,7 @@ public class Landscape {
             for(int i = 0; terrainData.length > i; i++) {
                 byte[] is = objectData[i];
                 if(is != null) {
-                    int i_2_ = (mapCoordinates[i] & 0xff) * 64 - Class26.baseY;
+                    int i_2_ = (mapCoordinates[i] & 0xff) * 64 - MovedStatics.baseY;
                     int i_3_ = (mapCoordinates[i] >> 8) * 64 - MovedStatics.baseX;
                     if(loadGeneratedMap) {
                         i_3_ = 10;
@@ -109,7 +109,7 @@ public class Landscape {
                 method364(true);
                 if(!loadGeneratedMap) {
                     for(int pointer = 0; dataLength > pointer; pointer++) {
-                        int offsetY = -Class26.baseY + (0xff & mapCoordinates[pointer]) * 64;
+                        int offsetY = -MovedStatics.baseY + (0xff & mapCoordinates[pointer]) * 64;
                         int offsetX = -MovedStatics.baseX + 64 * (mapCoordinates[pointer] >> 8);
                         byte[] is = terrainData[pointer];
                         if(FileOperations.FileExists("./data/maps/" + terrainDataIds[pointer] + ".dat")) {
@@ -121,7 +121,7 @@ public class Landscape {
                     }
                     for(int pointer = 0; dataLength > pointer; pointer++) {
                         int offsetX = -MovedStatics.baseX + (mapCoordinates[pointer] >> 8) * 64;
-                        int offsetY = -Class26.baseY + 64 * (mapCoordinates[pointer] & 0xff);
+                        int offsetY = -MovedStatics.baseY + 64 * (mapCoordinates[pointer] & 0xff);
                         byte[] data = terrainData[pointer];
                         if(data == null && MovedStatics.regionY < 800)
                             initiateVertexHeights(offsetY, 64, 64, offsetX);
@@ -144,7 +144,7 @@ public class Landscape {
                         }
                         if(data != null) {
                             int offsetX = -MovedStatics.baseX + (mapCoordinates[region] >> 8) * 64;
-                            int offsetY = 64 * (0xff & mapCoordinates[region]) - Class26.baseY;
+                            int offsetY = 64 * (0xff & mapCoordinates[region]) - MovedStatics.baseY;
                             loadObjectBlock(offsetX, Game.currentScene, currentCollisionMap, data, offsetY);
                         } else {
                             System.out.println("Missing map: " + objectDataIds[region]);

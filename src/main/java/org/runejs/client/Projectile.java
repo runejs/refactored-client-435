@@ -83,7 +83,7 @@ public class Projectile extends Renderable {
                 }
             }
             if((actor.facePositionX != 0 || actor.facePositionY != 0) && (actor.anInt3109 == 0 || actor.anInt3074 > 0)) {
-                int deltaY = actor.worldY - 64 * (actor.facePositionY - Class26.baseY - Class26.baseY);
+                int deltaY = actor.worldY - 64 * (actor.facePositionY - MovedStatics.baseY - MovedStatics.baseY);
                 int deltaX = -((-MovedStatics.baseX + actor.facePositionX + -MovedStatics.baseX) * 64) + actor.worldX;
                 if(deltaX != 0 || deltaY != 0)
                     actor.initialFaceDirection = 0x7ff & (int) (325.949 * Math.atan2((double) deltaX, (double) deltaY));

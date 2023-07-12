@@ -290,7 +290,7 @@ public class Pathfinding {
                 new WalkOutboundMessage(
                     walkType,
                     MovedStatics.baseX + x,
-                    Class26.baseY + y,
+                    MovedStatics.baseY + y,
                     Item.obfuscatedKeyStatus[82],
                     steps.toArray(new WalkOutboundMessage.WalkStep[steps.size()]),
                     analytics

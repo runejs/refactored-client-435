@@ -70,9 +70,9 @@ public class GameObject extends Renderable {
             if(color == null)
                 color = new Color(140, 17, 17);
             try {
-                if(Class26.loadingBoxImage == null)
-                    Class26.loadingBoxImage = MouseHandler.gameCanvas.createImage(304, 34);
-                Graphics loadingBoxGraphics = Class26.loadingBoxImage.getGraphics();
+                if(MovedStatics.loadingBoxImage == null)
+                    MovedStatics.loadingBoxImage = MouseHandler.gameCanvas.createImage(304, 34);
+                Graphics loadingBoxGraphics = MovedStatics.loadingBoxImage.getGraphics();
                 loadingBoxGraphics.setColor(color);
                 loadingBoxGraphics.drawRect(0, 0, 303, 33);
                 loadingBoxGraphics.fillRect(2, 2, percent * 3, 30);
@@ -82,7 +82,7 @@ public class GameObject extends Renderable {
                 loadingBoxGraphics.setFont(MovedStatics.helveticaBold);
                 loadingBoxGraphics.setColor(Color.white);
                 loadingBoxGraphics.drawString(desc, (304 - (MovedStatics.fontMetrics.stringWidth(desc))) / 2, 22);
-                graphics.drawImage(Class26.loadingBoxImage, MovedStatics.width / 2 - 152, MovedStatics.height / 2 - 18, null);
+                graphics.drawImage(MovedStatics.loadingBoxImage, MovedStatics.width / 2 - 152, MovedStatics.height / 2 - 18, null);
             } catch(Exception exception) {
                 int centerWidth = MovedStatics.width / 2 - 152;
                 int centerHeight = MovedStatics.height / 2 - 18;

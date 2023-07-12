@@ -243,7 +243,7 @@ public class Player extends Actor {
     public static void setTutorialIslandFlag() {
         inTutorialIsland = false;
         int xPos = (localPlayer.worldX >> 7) + MovedStatics.baseX;
-        int yPos = Class26.baseY + (localPlayer.worldY >> 7);
+        int yPos = MovedStatics.baseY + (localPlayer.worldY >> 7);
         if(xPos >= 3053 && xPos <= 3156 && yPos >= 3056 && yPos <= 3136)
             inTutorialIsland = true;
         if(xPos >= 3072 && xPos <= 3118 && yPos >= 9492 && yPos <= 9535)
