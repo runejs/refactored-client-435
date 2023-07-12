@@ -37,9 +37,7 @@ public class Scene {
 
     public static boolean lowMemory = true;
     public static int cycle;
-    public static int activeOccluderCount = 0;
     public static InteractiveObject[] interactiveObjects = new InteractiveObject[100];
-    public static SceneCluster[] processedCullingClusters = new SceneCluster[500];
     public static LinkedList tileList = new LinkedList();
     public static int anInt109 = 0;
 
@@ -91,7 +89,9 @@ public class Scene {
     public int mapSizeY = 104;
     public int mapSizeZ = 4;
 
+    private int activeOccluderCount = 0;
     private SceneCluster[][] cullingClusters = new SceneCluster[mapSizeZ][500];
+    private SceneCluster[] processedCullingClusters = new SceneCluster[500];
     private int[] cullingClusterPointer = new int[mapSizeZ];
     private boolean[][] currentTileVisibilityMap;
     private int currentCameraY;
