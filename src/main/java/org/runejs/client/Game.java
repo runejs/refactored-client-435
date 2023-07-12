@@ -769,8 +769,8 @@ public class Game {
         renderNPCs(true);
         renderPlayers(0, false);
         renderNPCs(false);
-        MovedStatics.renderProjectiles();
-        MovedStatics.renderSpotAnims();
+        renderProjectiles();
+        renderSpotAnims();
         if(!Player.cutsceneActive) {
             int pitch = Game.playerCamera.getPitch();
             if(SceneCamera.cameraTerrainMinScaledPitch / 256 > pitch) {
@@ -2073,6 +2073,49 @@ public class Game {
         CacheArchive.huffmanCacheArchive.clearCache();
         CacheArchive.jingleCacheArchive.clearCache();
         CacheArchive.clientScriptCacheArchive.clearCache();
+    }
+
+    public static void renderProjectiles() {
+        Projectile projectile = (Projectile) MovedStatics.projectileQueue.peekFirst();
+        for (/**/; projectile != null; projectile = (Projectile) MovedStatics.projectileQueue.pollFirst()) {
+            if (Player.worldLevel == projectile.anInt2981 && MovedStatics.pulseCycle <= projectile.endCycle) {
+                if (projectile.delay <= MovedStatics.pulseCycle) {
+                    if (projectile.entityIndex > 0) {
+                        Npc npc = Player.npcs[-1 + projectile.entityIndex];
+                        if (npc != null && npc.worldX >= 0 && npc.worldX < 13312 && npc.worldY >= 0 && npc.worldY < 13312)
+                            projectile.trackTarget(MovedStatics.pulseCycle, 61 + -61, npc.worldY, Scene.getFloorDrawHeight(projectile.anInt2981, npc.worldX, npc.worldY) - projectile.endHeight, npc.worldX);
+                    }
+                    if (projectile.entityIndex < 0) {
+                        int i = -1 + -projectile.entityIndex;
+                        Player player;
+                        if (i != Player.localPlayerId)
+                            player = Player.trackedPlayers[i];
+                        else
+                            player = Player.localPlayer;
+                        if (player != null && player.worldX >= 0 && player.worldX < 13312 && player.worldY >= 0 && player.worldY < 13312)
+                            projectile.trackTarget(MovedStatics.pulseCycle, 0, player.worldY, Scene.getFloorDrawHeight(projectile.anInt2981, player.worldX, player.worldY) - projectile.endHeight, player.worldX);
+                    }
+                    projectile.move(MovedStatics.anInt199);
+                    currentScene.method134(Player.worldLevel, (int) projectile.currentX, (int) projectile.currentY, (int) projectile.currentHeight, 60, projectile, projectile.anInt3013, -1, false);
+                }
+            } else
+                projectile.unlink();
+        }
+    }
+
+    public static void renderSpotAnims() {
+        for (SpotAnim spotAnim = (SpotAnim) MovedStatics.spotAnimQueue.peekFirst(); spotAnim != null; spotAnim = (SpotAnim) MovedStatics.spotAnimQueue.pollFirst()) {
+            if (Player.worldLevel == spotAnim.plane && !spotAnim.animationFinished) {
+                if (MovedStatics.pulseCycle >= spotAnim.startCycle) {
+                    spotAnim.method834(MovedStatics.anInt199);
+                    if (spotAnim.animationFinished)
+                        spotAnim.unlink();
+                    else
+                        currentScene.method134(spotAnim.plane, spotAnim.x, spotAnim.y, spotAnim.z, 60, spotAnim, 0, -1, false);
+                }
+            } else
+                spotAnim.unlink();
+        }
     }
 
     public void method35(int arg1) {

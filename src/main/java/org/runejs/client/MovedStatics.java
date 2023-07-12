@@ -472,21 +472,6 @@ public class MovedStatics {
         sidebarOffsets = Rasterizer3D.setLineOffsets(sidebarOffsets);
     }
 
-    public static void renderSpotAnims() {
-        for (SpotAnim spotAnim = (SpotAnim) spotAnimQueue.peekFirst(); spotAnim != null; spotAnim = (SpotAnim) spotAnimQueue.pollFirst()) {
-            if (Player.worldLevel == spotAnim.plane && !spotAnim.animationFinished) {
-                if (pulseCycle >= spotAnim.startCycle) {
-                    spotAnim.method834(anInt199);
-                    if (spotAnim.animationFinished)
-                        spotAnim.unlink();
-                    else
-                        Game.currentScene.method134(spotAnim.plane, spotAnim.x, spotAnim.y, spotAnim.z, 60, spotAnim, 0, -1, false);
-                }
-            } else
-                spotAnim.unlink();
-        }
-    }
-
     public static int getCutsceneCameraPlane() {
         if (!Configuration.ROOFS_ENABLED) {
             return Player.worldLevel;
@@ -543,34 +528,6 @@ public class MovedStatics {
 
     public static RSString intToStr(int arg0) {
         return method521(false, 10, arg0);
-    }
-
-    public static void renderProjectiles() {
-        Projectile projectile = (Projectile) projectileQueue.peekFirst();
-        for (/**/; projectile != null; projectile = (Projectile) projectileQueue.pollFirst()) {
-            if (Player.worldLevel == projectile.anInt2981 && pulseCycle <= projectile.endCycle) {
-                if (projectile.delay <= pulseCycle) {
-                    if (projectile.entityIndex > 0) {
-                        Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[-1 + projectile.entityIndex];
-                        if (class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.worldX >= 0 && class40_sub5_sub17_sub4_sub2.worldX < 13312 && class40_sub5_sub17_sub4_sub2.worldY >= 0 && class40_sub5_sub17_sub4_sub2.worldY < 13312)
-                            projectile.trackTarget(pulseCycle, 61 + -61, class40_sub5_sub17_sub4_sub2.worldY, Scene.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub2.worldX, class40_sub5_sub17_sub4_sub2.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub2.worldX);
-                    }
-                    if (projectile.entityIndex < 0) {
-                        int i = -1 + -projectile.entityIndex;
-                        Player class40_sub5_sub17_sub4_sub1;
-                        if (i != Player.localPlayerId)
-                            class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i];
-                        else
-                            class40_sub5_sub17_sub4_sub1 = Player.localPlayer;
-                        if (class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.worldX >= 0 && class40_sub5_sub17_sub4_sub1.worldX < 13312 && class40_sub5_sub17_sub4_sub1.worldY >= 0 && class40_sub5_sub17_sub4_sub1.worldY < 13312)
-                            projectile.trackTarget(pulseCycle, 0, class40_sub5_sub17_sub4_sub1.worldY, Scene.getFloorDrawHeight(projectile.anInt2981, class40_sub5_sub17_sub4_sub1.worldX, class40_sub5_sub17_sub4_sub1.worldY) - projectile.endHeight, class40_sub5_sub17_sub4_sub1.worldX);
-                    }
-                    projectile.move(anInt199);
-                    Game.currentScene.method134(Player.worldLevel, (int) projectile.currentX, (int) projectile.currentY, (int) projectile.currentHeight, 60, projectile, projectile.anInt3013, -1, false);
-                }
-            } else
-                projectile.unlink();
-        }
     }
 
     public static int perlinNoise(int x, int y, int scale) {
