@@ -8,7 +8,6 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
-import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.outbound.chat.SetChatOptionsOutboundMessage;
@@ -384,7 +383,7 @@ public class ScreenController {
             int destX = Player.localPlayer.worldX + i_14_ >> 7;
             int destY = -i_15_ + Player.localPlayer.worldY >> 7;
 
-            if (Item.obfuscatedKeyStatus[81] && InteractiveObject.playerRights > 1) {
+            if (MovedStatics.obfuscatedKeyStatus[81] && InteractiveObject.playerRights > 1) {
                 OutgoingPackets.buffer.putPacket(246);
                 OutgoingPackets.buffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + MovedStatics.baseX), Integer.toString(destY + MovedStatics.baseY)));
             } else {

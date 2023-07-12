@@ -13,7 +13,6 @@ import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
-import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.*;
@@ -1257,8 +1256,8 @@ public class Game {
                     while(MovedStatics.method416()) {
                         /* empty */
                     }
-                    for(int i = 0; i < Item.obfuscatedKeyStatus.length; i++)
-                        Item.obfuscatedKeyStatus[i] = false;
+                    for(int i = 0; i < MovedStatics.obfuscatedKeyStatus.length; i++)
+                        MovedStatics.obfuscatedKeyStatus[i] = false;
                 }
                 ClientScriptRunner.createClientScriptCheckPacket(205, OutgoingPackets.buffer);
                 synchronized(mouseCapturer.objectLock) {
@@ -1352,7 +1351,7 @@ public class Game {
                 }
                 if(InteractiveObject.anInt487 > 0)
                     InteractiveObject.anInt487--;
-                if(Item.obfuscatedKeyStatus[96] || Item.obfuscatedKeyStatus[97] || Item.obfuscatedKeyStatus[98] || Item.obfuscatedKeyStatus[99])
+                if(MovedStatics.obfuscatedKeyStatus[96] || MovedStatics.obfuscatedKeyStatus[97] || MovedStatics.obfuscatedKeyStatus[98] || MovedStatics.obfuscatedKeyStatus[99])
                     MovedStatics.aBoolean565 = true;
                 if(MovedStatics.aBoolean565 && InteractiveObject.anInt487 <= 0) {
                     InteractiveObject.anInt487 = 20;
@@ -1532,7 +1531,7 @@ public class Game {
                             }
                         } else if(MovedStatics.durationHoveredOverWidget > 0)
                             MovedStatics.durationHoveredOverWidget--;
-                        Item.calculateCameraPosition();
+                        calculateCameraPosition();
                         if(Player.cutsceneActive)
                             moveTowardsTarget();
                         for(int i_19_ = 0; i_19_ < 5; i_19_++)
@@ -1973,6 +1972,76 @@ public class Game {
         for(int i = 0; i < 32; i++)
             MovedStatics.tickSamples[i] = 0L;
         MovedStatics.ticksPerLoop = 0;
+    }
+
+    public static void calculateCameraPosition() {
+        int originX = playerCamera.getOriginX();
+        int originY = playerCamera.getOriginY();
+
+        int localPlayer3dPosX = Player.localPlayer.worldX;
+        int localPlayer3dPosY = Player.localPlayer.worldY;
+
+        // if the local player's position in 3d space is too far from the camera's origin, snap it
+        if (originX - localPlayer3dPosX < -500 || -localPlayer3dPosX + originX > 500 || originY + -localPlayer3dPosY < -500 || -localPlayer3dPosY + originY > 500) {
+            originY = localPlayer3dPosY;
+            originX = localPlayer3dPosX;
+        }
+
+        // otherwise, slowly move the camera origin towards local player pos
+        if (originX != localPlayer3dPosX)
+            originX += (-originX + localPlayer3dPosX) / 16;
+        if (originY != localPlayer3dPosY)
+            originY += (-originY + localPlayer3dPosY) / 16;
+
+        // update the camera's Z origin - this wasn't originally here, but it makes sense to do it with the other origins
+        int cameraOriginZ = Scene.getFloorDrawHeight(Player.worldLevel, Player.localPlayer.worldX, Player.localPlayer.worldY) - 50;
+
+        playerCamera.setOrigin(originX, originY, cameraOriginZ);
+
+        // increase rotational velocity if key pressed, otherwise fall off
+        if (MovedStatics.obfuscatedKeyStatus[96] && !Console.console.consoleOpen)
+            SceneCamera.cameraVelocityYaw += (-24 - SceneCamera.cameraVelocityYaw) / 2;
+        else if (MovedStatics.obfuscatedKeyStatus[97] && !Console.console.consoleOpen)
+            SceneCamera.cameraVelocityYaw += (24 - SceneCamera.cameraVelocityYaw) / 2;
+        else
+            SceneCamera.cameraVelocityYaw /= 2;
+        if (MovedStatics.obfuscatedKeyStatus[98] && !Console.console.consoleOpen)
+            SceneCamera.cameraVelocityPitch += (12 + -SceneCamera.cameraVelocityPitch) / 2;
+        else if (MovedStatics.obfuscatedKeyStatus[99] && !Console.console.consoleOpen)
+            SceneCamera.cameraVelocityPitch += (-12 - SceneCamera.cameraVelocityPitch) / 2;
+        else
+            SceneCamera.cameraVelocityPitch /= 2;
+
+        int zoomVelocity = SceneCamera.cameraVelocityZoom;
+        SceneCamera.cameraVelocityZoom /= 1.5;
+
+        // apply velocities to camera's target position
+        int yaw = 0x7ff & (SceneCamera.cameraVelocityYaw / 2 + playerCamera.getYaw() & 0x7ff);
+        int pitch = playerCamera.getPitch() + SceneCamera.cameraVelocityPitch / 2;
+        int zoom = playerCamera.getZoom() + zoomVelocity;
+
+        playerCamera.rotate(yaw, pitch);
+        playerCamera.setZoom(zoom);
+
+        // figure out minimum allowed pitch based on surrounding heights
+        int i_3_ = 0;
+        int i_1_ = originY >> 7;
+        int i_2_ = originX >> 7;
+        int i_4_ = Scene.getFloorDrawHeight(Player.worldLevel, originX, originY);
+        if (i_2_ > 3 && i_1_ > 3 && i_2_ < 100 && i_1_ < 100) {
+            for (int i_5_ = -4 + i_2_; i_5_ <= 4 + i_2_; i_5_++) {
+                for (int i_6_ = -4 + i_1_; 4 + i_1_ >= i_6_; i_6_++) {
+                    int i_7_ = Player.worldLevel;
+                    if (i_7_ < 3 && (0x2 & MovedStatics.tile_flags[1][i_5_][i_6_]) == 2)
+                        i_7_++;
+                    int i_8_ = i_4_ + -Landscape.tile_height[i_7_][i_5_][i_6_];
+                    if (i_8_ > i_3_)
+                        i_3_ = i_8_;
+                }
+            }
+        }
+
+        SceneCamera.setMaxSurroundingTerrainHeight(i_3_);
     }
 
     public void method35(int arg1) {

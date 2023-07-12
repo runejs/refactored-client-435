@@ -16,7 +16,6 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
-import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Pathfinding;
@@ -270,7 +269,7 @@ public class GameInterface extends CachedNode {
             MovedStatics.anInt1389 = MovedStatics.anInt1214;
             if(GameObjectDefinition.anInt2543 < 0) {
                 for(int i = 0; i < 112; i++) {
-                    Item.obfuscatedKeyStatus[i] = false;
+                    MovedStatics.obfuscatedKeyStatus[i] = false;
                 }
                 GameObjectDefinition.anInt2543 = MovedStatics.anInt2183;
             } else {
@@ -278,9 +277,9 @@ public class GameInterface extends CachedNode {
                     int i = MovedStatics.keyCodes[MovedStatics.anInt2183];
                     MovedStatics.anInt2183 = 0x7f & MovedStatics.anInt2183 + 1;
                     if(i < 0) {
-                        Item.obfuscatedKeyStatus[i ^ 0xffffffff] = false;
+                        MovedStatics.obfuscatedKeyStatus[i ^ 0xffffffff] = false;
                     } else {
-                        Item.obfuscatedKeyStatus[i] = true;
+                        MovedStatics.obfuscatedKeyStatus[i] = true;
                     }
                 }
             }

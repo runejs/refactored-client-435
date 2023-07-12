@@ -373,6 +373,7 @@ public class MovedStatics {
     public static GameSocket lostConnectionSocket;
     public static ProducingGraphicsBuffer tabPieceLeft;
     public static int anInt3048 = 1;
+    public static boolean[] obfuscatedKeyStatus = new boolean[112];
 
     public static void method440() {
         if (aBoolean512) {
@@ -3538,5 +3539,9 @@ public class MovedStatics {
 
     public static void clearImageCache() {
         Buffer.rgbImageCache.clear();
+    }
+
+    public static void method778(HuffmanEncoding arg1) {
+        aHuffmanEncoding_2590 = arg1;
     }
 }

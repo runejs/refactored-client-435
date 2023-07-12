@@ -17,7 +17,6 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
-import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.Scene;
@@ -271,7 +270,7 @@ public class Class40_Sub3 extends Node {
         } else if (MovedStatics.loadingPercent == 120) {
             if (CacheArchive.huffmanCacheArchive.method194(Native.huffman, "")) {
                 HuffmanEncoding huffmanEncoding = new HuffmanEncoding(CacheArchive.huffmanCacheArchive.method170("", Native.huffman));
-                Item.method778(huffmanEncoding);
+                MovedStatics.method778(huffmanEncoding);
                 MovedStatics.loadingPercent = 130;
                 Native.currentLoadingText = English.loadedWordpack;
                 MovedStatics.anInt1607 = 96;
