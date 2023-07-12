@@ -328,6 +328,7 @@ public class MovedStatics {
      * Something to do with keyboard input
      */
     public static int anInt1389 = 0;
+    public static boolean DEBUG_DISPLAY_ALL_ACTION_ROWS = false;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -844,7 +845,7 @@ public class MovedStatics {
                         addActionRow(English.use, hash, x, y, ActionRowType.USE_ITEM_ON_OBJECT.getId(), Native.selectedItemName + Native.toCyan + gameObjectDefinition.name);
                     } else if (Game.widgetSelected != 1) {
                         String[] options = gameObjectDefinition.actions;
-                        if (Class60.DEBUG_DISPLAY_ALL_ACTION_ROWS)
+                        if (DEBUG_DISPLAY_ALL_ACTION_ROWS)
                             options = getAllOptionsWithIndices(options);
                         if (options != null) {
                             for (int i_7_ = 4; i_7_ >= 0; i_7_--) {
@@ -930,7 +931,7 @@ public class MovedStatics {
                                 addActionRow(English.use, item.itemId, x, y, ActionRowType.USE_ITEM_ON_WORLD_ITEM.getId(), Native.selectedItemName + Native.toLightRed + itemDefinition.name);
                             } else if (Game.widgetSelected != 1) {
                                 String[] class1s = itemDefinition.groundOptions;
-                                if (Class60.DEBUG_DISPLAY_ALL_ACTION_ROWS)
+                                if (DEBUG_DISPLAY_ALL_ACTION_ROWS)
                                     class1s = getAllOptionsWithIndices(class1s);
                                 for (int i_15_ = 4; i_15_ >= 0; i_15_--) {
                                     if (class1s == null || class1s[i_15_] == null) {
@@ -1211,7 +1212,7 @@ public class MovedStatics {
 	                                                }
 	                                            } else {
 	                                                String[] class1s = itemDefinition.interfaceOptions;
-	                                                if(Class60.DEBUG_DISPLAY_ALL_ACTION_ROWS)
+	                                                if(DEBUG_DISPLAY_ALL_ACTION_ROWS)
 	                                                    class1s = getAllOptionsWithIndices(class1s);
 	                                                if(gameInterface.isInventory) {
 	                                                    for(int i_9_ = 4; i_9_ >= 3; i_9_--) {
@@ -1245,7 +1246,7 @@ public class MovedStatics {
 	                                                    }
 	                                                }
 	                                                class1s = gameInterface.configActions;
-	                                                if(Class60.DEBUG_DISPLAY_ALL_ACTION_ROWS)
+	                                                if(DEBUG_DISPLAY_ALL_ACTION_ROWS)
 	                                                    class1s = getAllOptionsWithIndices(class1s);
 	                                                if(class1s != null) {
 	                                                    for(int i_13_ = 4; i_13_ >= 0; i_13_--) {
@@ -1291,7 +1292,7 @@ public class MovedStatics {
 	                        ItemDefinition itemDefinition = ItemDefinition.forId(gameInterface.itemId, 10);
 	                        if(gameInterface.isInventory) {
 	                            String[] class1s = itemDefinition.interfaceOptions;
-	                            if(Class60.DEBUG_DISPLAY_ALL_ACTION_ROWS)
+	                            if(DEBUG_DISPLAY_ALL_ACTION_ROWS)
 	                                class1s = getAllOptionsWithIndices(class1s);
 	                            if(class1s == null || class1s[4] == null)
 	                                addActionRow(English.drop, itemDefinition.id, gameInterface.anInt2736 - 1, gameInterface.id, ActionRowType.DROP_ITEM.getId(), Native.lightRed +itemDefinition.name);
@@ -2036,7 +2037,7 @@ public class MovedStatics {
                     }
                 } else {
                     String[] options = actorDefinition.options;
-                    if (Class60.DEBUG_DISPLAY_ALL_ACTION_ROWS) {
+                    if (DEBUG_DISPLAY_ALL_ACTION_ROWS) {
                         options = getAllOptionsWithIndices(options);
                     }
 
