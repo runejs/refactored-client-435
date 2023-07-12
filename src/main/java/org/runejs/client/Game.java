@@ -97,6 +97,10 @@ public class Game {
     public static int flashingTabId = -1;
     public static MouseHandler mouseHandler = new MouseHandler();
     public static Canvas gameCanvas;
+    public static int connectionStage = 0;
+    public static int anInt292 = 0;
+    public static boolean accountFlagged = false;
+    public static long aLong1841;
     private static int gameServerPort;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
@@ -246,7 +250,7 @@ public class Game {
                                     int i_12_ = 0;
                                     int i_13_ = -1 + gameInterface.items[i_7_];
                                     int i_14_ = 0;
-                                    if (-32 + Rasterizer.viewportLeft < i_10_ && Rasterizer.viewportRight > i_10_ && Rasterizer.viewportTop + -32 < i_11_ && Rasterizer.viewportBottom > i_11_ || MovedStatics.activeInterfaceType != 0 && GroundItemTile.selectedInventorySlot == i_7_) {
+                                    if (-32 + Rasterizer.viewportLeft < i_10_ && Rasterizer.viewportRight > i_10_ && Rasterizer.viewportTop + -32 < i_11_ && Rasterizer.viewportBottom > i_11_ || GameInterface.activeInterfaceType != 0 && GameInterface.selectedInventorySlot == i_7_) {
                                         int i_15_ = 0;
                                         if (GameInterface.itemCurrentlySelected == 1 && i_7_ == GameInterface.itemSelectedContainerSlot && gameInterface.id == GameInterface.itemSelectedWidgetId)
                                             i_15_ = 16777215;
@@ -254,7 +258,7 @@ public class Game {
                                         if (imageRGB == null)
                                             result = false;
                                         else {
-                                            if (MovedStatics.activeInterfaceType != 0 && GroundItemTile.selectedInventorySlot == i_7_ && gameInterface.id == MovedStatics.modifiedWidgetId) {
+                                            if (GameInterface.activeInterfaceType != 0 && GameInterface.selectedInventorySlot == i_7_ && gameInterface.id == GameInterface.modifiedWidgetId) {
                                                 i_14_ = MouseHandler.mouseY + -MovedStatics.anInt2798;
                                                 i_12_ = MouseHandler.mouseX + -Renderable.anInt2869;
                                                 if (i_12_ < 5 && i_12_ > -5)
@@ -627,7 +631,7 @@ public class Game {
         IncomingPackets.thirdLastOpcode = -1;
         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
         MovedStatics.menuActionRow = 0;
-        MovedStatics.method650(0);
+        MouseHandler.method650(0);
         for (int i = 0; i < 100; i++)
             ChatBox.chatMessages[i] = null;
         GameInterface.itemCurrentlySelected = 0;
@@ -869,7 +873,7 @@ public class Game {
             if(GameInterface.atInventoryInterfaceType == -3) {
                 GameInterface.redrawTabArea = true;
             }
-            if(MovedStatics.activeInterfaceType == 2) {
+            if(GameInterface.activeInterfaceType == 2) {
                 GameInterface.redrawTabArea = true;
             }
             MovedStatics.drawTabArea();
@@ -889,7 +893,7 @@ public class Game {
             if(GameInterface.atInventoryInterfaceType == 3) {
                 ChatBox.redrawChatbox = true;
             }
-            if(MovedStatics.activeInterfaceType == 3) {
+            if(GameInterface.activeInterfaceType == 3) {
                 ChatBox.redrawChatbox = true;
             }
             if(Native.clickToContinueString != null) {
@@ -1182,7 +1186,7 @@ public class Game {
                 }
                 ClientScriptRunner.createClientScriptCheckPacket(205, OutgoingPackets.buffer);
                 synchronized(mouseCapturer.objectLock) {
-                    if(MovedStatics.accountFlagged) {
+                    if(accountFlagged) {
                         if(MouseHandler.clickType != 0 || mouseCapturer.coord >= 40) {
                             int coordinateCount = 0;
                             OutgoingPackets.buffer.putPacket(210);
@@ -1293,7 +1297,7 @@ public class Game {
                 }
                 method910();
                 if(gameStatusCode == 30 || gameStatusCode == 35) {
-                    MovedStatics.method652();
+                    MovedStatics.tickTemporaryObjects();
                     SoundSystem.processSounds();
                     MusicSystem.processMusic();
                     IncomingPackets.cyclesSinceLastPacket++;
@@ -1319,21 +1323,21 @@ public class Game {
                             }
                         }
                         MovedStatics.anInt199++;
-                        if(MovedStatics.activeInterfaceType != 0) {
+                        if(GameInterface.activeInterfaceType != 0) {
                             Buffer.lastItemDragTime++;
                             if(MouseHandler.mouseX > Renderable.anInt2869 + 5 || Renderable.anInt2869 + -5 > MouseHandler.mouseX || MovedStatics.anInt2798 + 5 < MouseHandler.mouseY || MovedStatics.anInt2798 - 5 > MouseHandler.mouseY)
                                 MovedStatics.lastItemDragged = true;
                             if(MouseHandler.currentMouseButtonPressed == 0) {
-                                if(MovedStatics.activeInterfaceType == 3)
+                                if(GameInterface.activeInterfaceType == 3)
                                     ChatBox.redrawChatbox = true;
-                                if(MovedStatics.activeInterfaceType == 2)
+                                if(GameInterface.activeInterfaceType == 2)
                                     GameInterface.redrawTabArea = true;
-                                MovedStatics.activeInterfaceType = 0;
+                                GameInterface.activeInterfaceType = 0;
                                 if(MovedStatics.lastItemDragged && Buffer.lastItemDragTime >= 5) {
                                     RSRuntimeException.lastActiveInvInterface = -1;
                                     MovedStatics.processRightClick();
-                                    if(RSRuntimeException.lastActiveInvInterface == MovedStatics.modifiedWidgetId && mouseInvInterfaceIndex != GroundItemTile.selectedInventorySlot) {
-                                        GameInterface childInterface = GameInterface.getInterface(MovedStatics.modifiedWidgetId);
+                                    if(RSRuntimeException.lastActiveInvInterface == GameInterface.modifiedWidgetId && mouseInvInterfaceIndex != GameInterface.selectedInventorySlot) {
+                                        GameInterface childInterface = GameInterface.getInterface(GameInterface.modifiedWidgetId);
                                         int moveItemInsertionMode = 0;
                                         if(MovedStatics.bankInsertMode == 1 && childInterface.contentType == 206)
                                             moveItemInsertionMode = 1;
@@ -1341,13 +1345,13 @@ public class Game {
                                             moveItemInsertionMode = 0;
                                         if(childInterface.itemDeletesDraged) {
                                             int i_16_ = mouseInvInterfaceIndex;
-                                            int i_17_ = GroundItemTile.selectedInventorySlot;
+                                            int i_17_ = GameInterface.selectedInventorySlot;
                                             childInterface.items[i_16_] = childInterface.items[i_17_];
                                             childInterface.itemAmounts[i_16_] = childInterface.itemAmounts[i_17_];
                                             childInterface.items[i_17_] = -1;
                                             childInterface.itemAmounts[i_17_] = 0;
                                         } else if(moveItemInsertionMode == 1) {
-                                            int slotStart = GroundItemTile.selectedInventorySlot;
+                                            int slotStart = GameInterface.selectedInventorySlot;
                                             int slotEnd = mouseInvInterfaceIndex;
                                             while(slotEnd != slotStart) {
                                                 if(slotStart <= slotEnd) {
@@ -1361,12 +1365,12 @@ public class Game {
                                                 }
                                             }
                                         } else
-                                            childInterface.swapItems(mouseInvInterfaceIndex, false, GroundItemTile.selectedInventorySlot);
+                                            childInterface.swapItems(mouseInvInterfaceIndex, false, GameInterface.selectedInventorySlot);
 
                                         OutgoingPackets.sendMessage(new DragWidgetItemOutboundMessage(
                                             moveItemInsertionMode,
-                                            MovedStatics.modifiedWidgetId,
-                                            GroundItemTile.selectedInventorySlot,
+                                            GameInterface.modifiedWidgetId,
+                                            GameInterface.selectedInventorySlot,
                                             mouseInvInterfaceIndex
                                         ));
                                     }
@@ -1462,7 +1466,7 @@ public class Game {
                         int i_21_ = KeyFocusListener.resetFramesSinceKeyboardInput();
                         if(i_20_ > 4500 && i_21_ > 4500) {
                             SceneCluster.idleLogout = 250;
-                            MovedStatics.method650(4000);
+                            MouseHandler.method650(4000);
                             OutgoingPackets.buffer.putPacket(216);
                         }
 
@@ -1658,7 +1662,7 @@ public class Game {
                     Configuration.USERNAME = Native.username.toString();
                     Configuration.PASSWORD = Native.password.toString();
                     InteractiveObject.playerRights = MovedStatics.gameServerSocket.read();
-                    MovedStatics.accountFlagged = MovedStatics.gameServerSocket.read() == 1;
+                    accountFlagged = MovedStatics.gameServerSocket.read() == 1;
                     Player.localPlayerId = MovedStatics.gameServerSocket.read();
                     Player.localPlayerId <<= 8;
                     Player.localPlayerId += MovedStatics.gameServerSocket.read();
@@ -1838,7 +1842,7 @@ public class Game {
                 Landscape.method789(Player.localPlayer.pathY[0], MovedStatics.regionY, MovedStatics.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
             else if (Buffer.anInt1985 != Player.worldLevel) {
                 Buffer.anInt1985 = Player.worldLevel;
-                MovedStatics.method299(Player.worldLevel);
+                Minimap.method299(Player.worldLevel);
             }
         }
     }
@@ -2044,11 +2048,11 @@ public class Game {
             currentPort = CollisionMap.someOtherPort;
         updateServerSocket = null;
         updateServerSignlinkNode = null;
-        MovedStatics.anInt292++;
-        MovedStatics.connectionStage = 0;
-        if (MovedStatics.anInt292 < 2 || arg1 != 7 && arg1 != 9) {
-            if (MovedStatics.anInt292 < 2 || arg1 != 6) {
-                if (MovedStatics.anInt292 >= 4) {
+        anInt292++;
+        connectionStage = 0;
+        if (anInt292 < 2 || arg1 != 7 && arg1 != 9) {
+            if (anInt292 < 2 || arg1 != 6) {
+                if (anInt292 >= 4) {
                     if (gameStatusCode <= 5) {
                         this.openErrorPage("js5connect");
                         anInt509 = 3000;
@@ -2169,30 +2173,30 @@ public class Game {
             if (anInt509-- <= 0) {
                 do {
                     try {
-                        if (MovedStatics.connectionStage == 0) {
+                        if (connectionStage == 0) {
                             updateServerSignlinkNode = signlink.createSocketNode(currentPort);
-                            MovedStatics.connectionStage++;
+                            connectionStage++;
                         }
-                        if (MovedStatics.connectionStage == 1) {
+                        if (connectionStage == 1) {
                             if (updateServerSignlinkNode.status == 2) {
                                 method35(-1);
                                 break;
                             }
                             if (updateServerSignlinkNode.status == 1)
-                                MovedStatics.connectionStage++;
+                                connectionStage++;
                         }
-                        if (MovedStatics.connectionStage == 2) {
+                        if (connectionStage == 2) {
                             updateServerSocket = new GameSocket((Socket) updateServerSignlinkNode.value, signlink);
                             Buffer buffer = new Buffer(5);
                             buffer.putByte(15);
                             buffer.putIntBE(435); // Cache revision
                             updateServerSocket.sendDataFromBuffer(5, 0, buffer.buffer);
-                            MovedStatics.connectionStage++;
-                            MovedStatics.aLong1841 = System.currentTimeMillis();
+                            connectionStage++;
+                            aLong1841 = System.currentTimeMillis();
                         }
-                        if (MovedStatics.connectionStage == 3) {
+                        if (connectionStage == 3) {
                             if (gameStatusCode > 5 && updateServerSocket.inputStreamAvailable() <= 0) {
-                                if (System.currentTimeMillis() + -MovedStatics.aLong1841 > 30000L) {
+                                if (System.currentTimeMillis() + -aLong1841 > 30000L) {
                                     method35(-2);
                                     break;
                                 }
@@ -2202,18 +2206,18 @@ public class Game {
                                     method35(i);
                                     break;
                                 }
-                                MovedStatics.connectionStage++;
+                                connectionStage++;
                             }
                         }
-                        if (MovedStatics.connectionStage != 4)
+                        if (connectionStage != 4)
                             break;
 
                         UpdateServer.handleUpdateServerConnection(updateServerSocket, gameStatusCode > 20);
 
                         updateServerSignlinkNode = null;
-                        MovedStatics.connectionStage = 0;
+                        connectionStage = 0;
                         updateServerSocket = null;
-                        MovedStatics.anInt292 = 0;
+                        anInt292 = 0;
                     } catch (java.io.IOException ioexception) {
                         ioexception.printStackTrace();
                         method35(-3);

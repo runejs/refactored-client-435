@@ -41,7 +41,7 @@ public class CollisionMap {
     }
 
 
-    public static void method543(CollisionMap arg0, int arg1, int arg2, int arg3, int arg4, Scene arg5, int arg6, int arg7, int arg8, int arg9) {
+    public static void addObject(CollisionMap arg0, int arg1, int arg2, int arg3, int arg4, Scene arg5, int arg6, int arg7, int arg8, int arg9) {
         int i = Landscape.tile_height[arg2][arg9][arg8];
         int i_0_ = Landscape.tile_height[arg2][1 + arg9][arg8];
         int i_1_ = Landscape.tile_height[arg2][arg9][1 + arg8];
@@ -177,7 +177,7 @@ public class CollisionMap {
                 arg5.addWallDecoration(arg9, arg8, arg3, i_3_, 0, 0, 512 * arg7, i_5_, renderable, i_4_, SceneCluster.anIntArray761[arg7]);
             } else if (arg4 == 5) {
                 int i_14_ = 16;
-                int i_15_ = arg5.method122(arg3, arg9, arg8);
+                int i_15_ = arg5.getWallHash(arg3, arg9, arg8);
                 if (i_15_ > 0)
                     i_14_ = GameObjectDefinition.getDefinition(i_15_ >> 14 & 0x7fff).setDecorDisplacement;
                 Renderable renderable;

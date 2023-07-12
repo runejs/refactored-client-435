@@ -21,7 +21,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     public static int[] OBJECT_TYPES = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
     public static boolean lowMemory = false;
     public static CacheArchive definitionCache;
-    public static CacheArchive aCacheArchive_1705;
+    public static CacheArchive modelCache;
     private static NodeCache objectDefinitionCache = new NodeCache(64);
     public static NodeCache objectModelCache = new NodeCache(500);
     private static Model[] objectModelHolder = new Model[4];
@@ -186,11 +186,20 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         animatedObjectModelCache.clear();
     }
 
-    public static void initializeGameObjectDefinitionCache(CacheArchive arg1, boolean lowMemory, CacheArchive definitionCache) {
+    public static void initializeGameObjectDefinitionCache(CacheArchive modelCache, boolean lowMemory, CacheArchive definitionCache) {
         GameObjectDefinition.definitionCache = definitionCache;
         count = GameObjectDefinition.definitionCache.fileLength(6);
         GameObjectDefinition.lowMemory = lowMemory;
-        aCacheArchive_1705 = arg1;
+        GameObjectDefinition.modelCache = modelCache;
+    }
+
+    public static boolean isObjectLoaded(int type, int id) {
+        GameObjectDefinition gameObjectDefinition = getDefinition(id);
+        if (type == 11)
+            type = 10;
+        if (type >= 5 && type <= 8)
+            type = 4;
+        return gameObjectDefinition.isTypeModelLoaded(type);
     }
 
     public Model createTerrainObjectModel(int arg0, int arg1, int arg2, int arg3, int arg4, int arg6) {
@@ -286,7 +295,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
                 }
                 model = (Model) objectModelCache.get(modelId);
                 if(model == null) {
-                    model = Model.getModel(aCacheArchive_1705, modelId & 0xffff);
+                    model = Model.getModel(modelCache, modelId & 0xffff);
                     if(model == null) {
                         return null;
                     }
@@ -320,7 +329,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
             }
             model = (Model) objectModelCache.get(modelId);
             if(model == null) {
-                model = Model.getModel(aCacheArchive_1705, 0xffff & modelId);
+                model = Model.getModel(modelCache, 0xffff & modelId);
                 if(model == null) {
                     return null;
                 }
@@ -529,11 +538,11 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         }
     }
 
-    public boolean method610(int arg0) {
+    public boolean isTypeModelLoaded(int type) {
         if(objectTypes != null) {
             for(int i = 0; objectTypes.length > i; i++) {
-                if(objectTypes[i] == arg0) {
-                    return aCacheArchive_1705.loaded(objectModels[i] & 0xffff, 0);
+                if(objectTypes[i] == type) {
+                    return modelCache.loaded(objectModels[i] & 0xffff, 0);
                 }
             }
             return true;
@@ -541,12 +550,12 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         if(objectModels == null) {
             return true;
         }
-        if(arg0 != 10) {
+        if(type != 10) {
             return true;
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= aCacheArchive_1705.loaded(0xffff & objectModels[i], 0);
+            bool &= modelCache.loaded(0xffff & objectModels[i], 0);
         }
         return bool;
     }
@@ -573,7 +582,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= aCacheArchive_1705.loaded(0xffff & objectModels[i], 0);
+            bool &= modelCache.loaded(0xffff & objectModels[i], 0);
         }
         return bool;
     }

@@ -45,7 +45,6 @@ import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
-import java.util.Calendar;
 
 public class MovedStatics {
 
@@ -199,7 +198,6 @@ public class MovedStatics {
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
     public static SignlinkNode gameServerSignlinkNode;
     public static int anInt614 = -1;
-    public static int activeInterfaceType = 0;
     public static LinkedList[][][] groundItems = new LinkedList[4][104][104];
     public static String[] menuActionTexts = new String[500];
     public static int anInt3065 = -1;
@@ -442,15 +440,6 @@ public class MovedStatics {
         if (i + -cameraPos.z < 800 && (tile_flags[Player.worldLevel][cameraPos.x >> 7][cameraPos.y >> 7] & 0x4) != 0)
             return Player.worldLevel;
         return 3;
-    }
-
-    public static boolean method459(int arg0, int arg1) {
-        if (arg0 == 11)
-            arg0 = 10;
-        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(arg1);
-        if (arg0 >= 5 && arg0 <= 8)
-            arg0 = 4;
-        return gameObjectDefinition.method610(arg0);
     }
 
     public static IndexedImage method538() {
@@ -933,24 +922,23 @@ public class MovedStatics {
         }
     }
 
-    public static void method650(int arg1) {
-        MouseHandler.framesSinceMouseInput = arg1;
-    }
-
-    public static void method652() {
+    /**
+     * Count down any temporary scene objects and remove them if necessary.
+     */
+    public static void tickTemporaryObjects() {
         for(InteractiveObjectTemporary interactiveObjectTemporary = (InteractiveObjectTemporary) interactiveObjectTemporaryNodeCache.peekFirst(); interactiveObjectTemporary != null; interactiveObjectTemporary = (InteractiveObjectTemporary) interactiveObjectTemporaryNodeCache.pollFirst()) {
             if(interactiveObjectTemporary.duration > 0)
                 interactiveObjectTemporary.duration--;
             if(interactiveObjectTemporary.duration == 0) {
-                if(interactiveObjectTemporary.previousId < 0 || method459(interactiveObjectTemporary.previousType, interactiveObjectTemporary.previousId)) {
-                    method945(interactiveObjectTemporary.y, interactiveObjectTemporary.previousId, interactiveObjectTemporary.x, interactiveObjectTemporary.previousType, interactiveObjectTemporary.previousOrientation, 103, interactiveObjectTemporary.typeKey, interactiveObjectTemporary.plane);
+                if(interactiveObjectTemporary.previousId < 0 || GameObjectDefinition.isObjectLoaded(interactiveObjectTemporary.previousType, interactiveObjectTemporary.previousId)) {
+                    addObject(interactiveObjectTemporary.y, interactiveObjectTemporary.previousId, interactiveObjectTemporary.x, interactiveObjectTemporary.previousType, interactiveObjectTemporary.previousOrientation, interactiveObjectTemporary.typeKey, interactiveObjectTemporary.plane);
                     interactiveObjectTemporary.unlink();
                 }
             } else {
                 if(interactiveObjectTemporary.delay > 0)
                     interactiveObjectTemporary.delay--;
-                if(interactiveObjectTemporary.delay == 0 && interactiveObjectTemporary.x >= 1 && interactiveObjectTemporary.y >= 1 && interactiveObjectTemporary.x <= 102 && interactiveObjectTemporary.y <= 102 && (interactiveObjectTemporary.id < 0 || method459(interactiveObjectTemporary.type, interactiveObjectTemporary.id))) {
-                    method945(interactiveObjectTemporary.y, interactiveObjectTemporary.id, interactiveObjectTemporary.x, interactiveObjectTemporary.type, interactiveObjectTemporary.orientation, 103, interactiveObjectTemporary.typeKey, interactiveObjectTemporary.plane);
+                if(interactiveObjectTemporary.delay == 0 && interactiveObjectTemporary.x >= 1 && interactiveObjectTemporary.y >= 1 && interactiveObjectTemporary.x <= 102 && interactiveObjectTemporary.y <= 102 && (interactiveObjectTemporary.id < 0 || GameObjectDefinition.isObjectLoaded(interactiveObjectTemporary.type, interactiveObjectTemporary.id))) {
+                    addObject(interactiveObjectTemporary.y, interactiveObjectTemporary.id, interactiveObjectTemporary.x, interactiveObjectTemporary.type, interactiveObjectTemporary.orientation, interactiveObjectTemporary.typeKey, interactiveObjectTemporary.plane);
                     interactiveObjectTemporary.delay = -1;
                     if(interactiveObjectTemporary.previousId == interactiveObjectTemporary.id && interactiveObjectTemporary.previousId == -1)
                         interactiveObjectTemporary.unlink();
@@ -1186,8 +1174,6 @@ public class MovedStatics {
 	
 	}
 
-	public static int modifiedWidgetId = 0;
-
     public static void setHighMemory() {
 	    VertexNormal.lowMemory = false;
 	    Scene.lowMemory = false;
@@ -1204,16 +1190,9 @@ public class MovedStatics {
 	
 	}
 
-    /**
-     * Images for function icons on the minimap (e.g. quests, instructors)
-     */
-	public static ImageRGB[] mapFunctionIcons;
-	public static FontMetrics fontMetrics;
-    public static Calendar aCalendar279 = Calendar.getInstance();
-	public static int connectionStage = 0;
-	public static int anInt292 = 0;
+    public static FontMetrics fontMetrics;
 
-	public static void drawMenu(int xOffSet, int yOffSet) {
+    public static void drawMenu(int xOffSet, int yOffSet) {
 	    int height = menuHeight;
 	    int width = menuWidth;
 	    int offsetX = menuOffsetX - (xOffSet);
@@ -1247,11 +1226,6 @@ public class MovedStatics {
 	        TypeFace.fontBold.drawShadowedString(menuActionTexts[action], offsetX + 3, actionY, true, actionColour);
 	    }
 	}
-
-    private static char VALID_CHARACTERS[] = {' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w',
-	'c', 'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8',
-	'9', ' ', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243',
-	'$', '%', '"', '[', ']'};
 
     public static int loadingPercent = 0;
 
@@ -1332,13 +1306,11 @@ public class MovedStatics {
 	    } while(false);
 	}
 
-	public static String method307(Buffer arg0, int arg1, int arg2) {
+	public static String method956(Buffer arg0) {
 	    try {
-	        if(arg1 != -1)
-	            MovedStatics.aBooleanArray548 = null;
 	        int length = arg0.getSmart();
-	        if(length > arg2)
-	            length = arg2;
+	        if(length > 32767)
+	            length = 32767;
 	        byte[] chars = new byte[length];
 	        arg0.currentPosition += aHuffmanEncoding_2590.method1023(arg0.buffer, length, 0, chars, arg0.currentPosition, -1);
 	        return new String(chars);
@@ -1347,80 +1319,8 @@ public class MovedStatics {
 	    }
 	}
 
-	public static void method305() {
-	//        if(ScreenController.frameMode == ScreenMode.FIXED){
-	
-	            ChatBox.chatBoxImageProducer.prepareRasterizer();
-	//        }
-	        chatboxBackgroundImage.drawImage(0, 0);
-	        chatboxLineOffsets = Rasterizer3D.setLineOffsets(chatboxLineOffsets);
-	    }
-
-	public static void method299(int arg1) {
-	    int[] is = Minimap.minimapImage.pixels;
-	    int i = is.length;
-	    for(int i_0_ = 0; i > i_0_; i_0_++)
-	        is[i_0_] = 0;
-	    for(int i_1_ = 1; i_1_ < 103; i_1_++) {
-	        int i_2_ = 24628 + (-(512 * i_1_) + 52736) * 4;
-	        for(int i_3_ = 1; i_3_ < 103; i_3_++) {
-	            if((0x18 & tile_flags[arg1][i_3_][i_1_]) == 0)
-	                Game.currentScene.method96(is, i_2_, 512, arg1, i_3_, i_1_);
-	            if(arg1 < 3 && (tile_flags[1 + arg1][i_3_][i_1_] & 0x8) != 0)
-	                Game.currentScene.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
-	            i_2_ += 4;
-	        }
-	    }
-	    Minimap.minimapImage.method723();
-	    int i_4_ = (-10 + (int) (Math.random() * 20.0) + 238 << 8) + (228 + (int) (Math.random() * 20.0) << 16) + 238 + (int) (20.0 * Math.random()) + -10;
-	    int i_5_ = -10 + (int) (20.0 * Math.random()) + 238 << 16;
-	    for(int i_6_ = 1; i_6_ < 103; i_6_++) {
-	        for(int i_7_ = 1; i_7_ < 103; i_7_++) {
-	            if((tile_flags[arg1][i_7_][i_6_] & 0x18) == 0)
-	                Minimap.method781(1850, arg1, i_7_, i_4_, i_5_, i_6_);
-	            if(arg1 < 3 && (0x8 & tile_flags[1 + arg1][i_7_][i_6_]) != 0)
-	                Minimap.method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
-	        }
-	    }
-	    Minimap.minimapHintCount = 0;
-	    for(int i_8_ = 0; i_8_ < 104; i_8_++) {
-	        for(int i_9_ = 0; i_9_ < 104; i_9_++) {
-	            int i_10_ = Game.currentScene.getFloorDecorationHash(Player.worldLevel, i_8_, i_9_);
-	            if(i_10_ != 0) {
-	                i_10_ = 0x7fff & i_10_ >> 14;
-	                int i_11_ = GameObjectDefinition.getDefinition(i_10_).icon;
-	                if(i_11_ >= 0) {
-	                    int i_12_ = i_9_;
-	                    int i_13_ = i_8_;
-	                    if(i_11_ != 22 && i_11_ != 29 && i_11_ != 34 && i_11_ != 36 && i_11_ != 46 && i_11_ != 47 && i_11_ != 48) {
-	                        int[][] is_14_ = Landscape.currentCollisionMap[Player.worldLevel].clippingData;
-	                        for(int i_15_ = 0; i_15_ < 10; i_15_++) {
-	                            int i_16_ = (int) (Math.random() * 4.0);
-	                            if(i_16_ == 0 && i_13_ > 0 && i_13_ > -3 + i_8_ && (is_14_[-1 + i_13_][i_12_] & 0x1280108) == 0)
-	                                i_13_--;
-	                            if(i_16_ == 1 && i_13_ < 103 && i_13_ < i_8_ + 3 && (is_14_[i_13_ + 1][i_12_] & 0x1280180) == 0)
-	                                i_13_++;
-	                            if(i_16_ == 2 && i_12_ > 0 && i_12_ > -3 + i_9_ && (is_14_[i_13_][i_12_ - 1] & 0x1280102) == 0)
-	                                i_12_--;
-	                            if(i_16_ == 3 && i_12_ < 103 && 3 + i_9_ > i_12_ && (0x1280120 & is_14_[i_13_][1 + i_12_]) == 0)
-	                                i_12_++;
-	                        }
-	                    }
-	                    Minimap.minimapHint[Minimap.minimapHintCount] = mapFunctionIcons[i_11_];
-	                    Minimap.minimapHintX[Minimap.minimapHintCount] = i_13_;
-	                    Minimap.minimapHintY[Minimap.minimapHintCount] = i_12_;
-	                    Minimap.minimapHintCount++;
-	                }
-	            }
-	        }
-	    }
-	}
-
-	public static boolean[] aBooleanArray548 = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, false, false};
     public static int anInt537 = 0;
 	public static boolean membersWorld = false;
-	public static boolean accountFlagged = false;
-	public static GameInterface aGameInterface_1887;
 
     /**
      * Draws the 2d yellow arrow hint icon in the world.
@@ -1486,9 +1386,6 @@ public class MovedStatics {
         }
     }
 
-    public static int[] anIntArray1847 = new int[2000];
-	public static long aLong1841;
-
     private static void method344(int arg0) {
         if(aBoolean2083) {
             chatboxLineOffsets = null;
@@ -1537,9 +1434,7 @@ public class MovedStatics {
         }
     }
 
-    private static void method945(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
-        if(arg5 != 103)
-            anInt1214 = -81;
+    private static void addObject(int arg0, int arg1, int arg2, int arg3, int arg4, int arg6, int arg7) {
         if(arg2 >= 1 && arg0 >= 1 && arg2 <= 102 && arg0 <= 102) {
             if(!VertexNormal.lowMemory || Player.worldLevel == arg7) {
                 int i = -1;
@@ -1547,9 +1442,9 @@ public class MovedStatics {
                 boolean bool = false;
                 boolean bool_1_ = false;
                 if(arg6 == 0)
-                    i_0_ = Game.currentScene.method122(arg7, arg2, arg0);
+                    i_0_ = Game.currentScene.getWallHash(arg7, arg2, arg0);
                 if(arg6 == 1)
-                    i_0_ = Game.currentScene.method91(arg7, arg2, arg0);
+                    i_0_ = Game.currentScene.getWallDecorationHash(arg7, arg2, arg0);
                 if(arg6 == 2)
                     i_0_ = Game.currentScene.getLocationHash(arg7, arg2, arg0);
                 if(arg6 == 3)
@@ -1560,13 +1455,13 @@ public class MovedStatics {
                     int i_3_ = i_2_ >> 6 & 0x3;
                     int i_4_ = 0x1f & i_2_;
                     if(arg6 == 0) {
-                        Game.currentScene.method124(arg7, arg2, arg0);
+                        Game.currentScene.removeWall(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         if(gameObjectDefinition.solid)
                             Landscape.currentCollisionMap[arg7].markWall(arg2, i_3_, gameObjectDefinition.walkable, arg0, i_4_);
                     }
                     if(arg6 == 1)
-                        Game.currentScene.method127(arg7, arg2, arg0);
+                        Game.currentScene.removeWallDecoration(arg7, arg2, arg0);
                     if(arg6 == 2) {
                         Game.currentScene.removeInteractiveObject(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
@@ -1576,7 +1471,7 @@ public class MovedStatics {
                             Landscape.currentCollisionMap[arg7].markSolidOccupant(arg2, arg0, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, i_3_, gameObjectDefinition.walkable);
                     }
                     if(arg6 == 3) {
-                        Game.currentScene.method131(arg7, arg2, arg0);
+                        Game.currentScene.removeFloorDecoration(arg7, arg2, arg0);
                         GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
                         if(gameObjectDefinition.solid && gameObjectDefinition.hasActions == 1)
                             Landscape.currentCollisionMap[arg7].unmarkConcealed(arg2, arg0);
@@ -1586,7 +1481,7 @@ public class MovedStatics {
                     int i_5_ = arg7;
                     if(i_5_ < 3 && (tile_flags[1][arg2][arg0] & 0x2) == 2)
                         i_5_++;
-                    CollisionMap.method543(Landscape.currentCollisionMap[arg7], arg1, i_5_, arg7, arg3, Game.currentScene, -22078, arg4, arg0, arg2);
+                    CollisionMap.addObject(Landscape.currentCollisionMap[arg7], arg1, i_5_, arg7, arg3, Game.currentScene, -22078, arg4, arg0, arg2);
                 }
             }
         }
@@ -2364,7 +2259,7 @@ public class MovedStatics {
     }
 
     public static void processRightClick() {
-        if(activeInterfaceType == 0) {
+        if(GameInterface.activeInterfaceType == 0) {
             menuActionTexts[0] = English.cancel;
             menuActionTypes[0] = ActionRowType.CANCEL.getId();
             menuActionRow = 1;
@@ -2844,10 +2739,10 @@ public class MovedStatics {
         int id = -1;
         int type = 0;
         if(obj.typeKey == 0)
-            i = Game.currentScene.method122(obj.plane, obj.x, obj.y);
+            i = Game.currentScene.getWallHash(obj.plane, obj.x, obj.y);
         int orientation = 0;
         if(obj.typeKey == 1)
-            i = Game.currentScene.method91(obj.plane, obj.x, obj.y);
+            i = Game.currentScene.getWallDecorationHash(obj.plane, obj.x, obj.y);
         if(obj.typeKey == 2)
             i = Game.currentScene.getLocationHash(obj.plane, obj.x, obj.y);
         if(obj.typeKey == 3)
@@ -3274,12 +3169,8 @@ public class MovedStatics {
 
     }
 
-    public static String method956(Buffer arg1) {
-        return method307(arg1, -1, 32767);
-    }
-
     public static void processMenuClick() {
-        if(activeInterfaceType != 0) {
+        if(GameInterface.activeInterfaceType != 0) {
             return;
         }
         int meta = MouseHandler.clickType;
@@ -3364,14 +3255,14 @@ public class MovedStatics {
                     if(gameInterface.itemSwapable || gameInterface.itemDeletesDraged) {
                         Renderable.anInt2869 = MouseHandler.clickX;
                         lastItemDragged = false;
-                        activeInterfaceType = 2;
-                        modifiedWidgetId = id;
+                        GameInterface.activeInterfaceType = 2;
+                        GameInterface.modifiedWidgetId = id;
                         anInt2798 = MouseHandler.clickY;
-                        GroundItemTile.selectedInventorySlot = item;
+                        GameInterface.selectedInventorySlot = item;
                         if(id >> 16 == GameInterface.gameScreenInterfaceId)
-                            activeInterfaceType = 1;
+                            GameInterface.activeInterfaceType = 1;
                         if(GameInterface.chatboxInterfaceId == id >> 16)
-                            activeInterfaceType = 3;
+                            GameInterface.activeInterfaceType = 3;
                         Buffer.lastItemDragTime = 0;
                         return;
                     }

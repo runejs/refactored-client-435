@@ -259,7 +259,7 @@ public class Scene {
         cullingClusters[z][cullingClusterPointer[z]++] = sceneCluster;
     }
 
-    public int method91(int arg0, int arg1, int arg2) {
+    public int getWallDecorationHash(int arg0, int arg1, int arg2) {
         SceneTile sceneTile = tileArray[arg0][arg1][arg2];
         if (sceneTile == null || sceneTile.wallDecoration == null) {
             return 0;
@@ -1535,7 +1535,7 @@ public class Scene {
         }
     }
 
-    public int method122(int arg0, int arg1, int arg2) {
+    public int getWallHash(int arg0, int arg1, int arg2) {
         SceneTile sceneTile = tileArray[arg0][arg1][arg2];
         if (sceneTile == null || sceneTile.wall == null) {
             return 0;
@@ -1665,7 +1665,7 @@ public class Scene {
         }
     }
 
-    public void method124(int arg0, int arg1, int arg2) {
+    public void removeWall(int arg0, int arg1, int arg2) {
         SceneTile sceneTile = tileArray[arg0][arg1][arg2];
         if (sceneTile != null) {
             sceneTile.wall = null;
@@ -1687,7 +1687,7 @@ public class Scene {
         return sceneTile.wall;
     }
 
-    public void method127(int arg0, int arg1, int arg2) {
+    public void removeWallDecoration(int arg0, int arg1, int arg2) {
         SceneTile sceneTile = tileArray[arg0][arg1][arg2];
         if (sceneTile != null) {
             sceneTile.wallDecoration = null;
@@ -1858,7 +1858,7 @@ public class Scene {
         }
     }
 
-    public void method131(int level, int x, int y) {
+    public void removeFloorDecoration(int level, int x, int y) {
         SceneTile sceneTile = tileArray[level][x][y];
         if (sceneTile != null) {
             sceneTile.floorDecoration = null;

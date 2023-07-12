@@ -90,6 +90,9 @@ public class GameInterface extends CachedNode {
     public static NodeCache interfaceItemImageCache = new NodeCache(200);
     public static NodeCache interfaceModelCache = new NodeCache(50);
     public static NodeCache interfaceTypefaceCache = new NodeCache(20);
+    public static int selectedInventorySlot = 0;
+    public static int activeInterfaceType = 0;
+    public static int modifiedWidgetId = 0;
     /**
      * The lightened edge (top and left) color of the scroll indicator chip.
      */

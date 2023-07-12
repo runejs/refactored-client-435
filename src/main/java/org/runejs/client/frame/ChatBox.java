@@ -8,6 +8,7 @@ import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
+import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.renderable.actor.Player;
 
 import java.awt.*;
@@ -42,7 +43,7 @@ public class ChatBox {
             '$', '%', '"', '[', ']', '_', '{', '}', '/', '|'};
     public static void renderChatbox() {
         MovedStatics.showChatPanelRedrawnText = true;
-        MovedStatics.method305();
+        method305();
         if(messagePromptRaised) {
             TypeFace.fontBold.drawStringLeft(Native.enterPlayerNameHeader, 239, 40, 0);
             TypeFace.fontBold.drawStringLeft(chatMessage + "*", 239, 60, 128);
@@ -284,4 +285,13 @@ public class ChatBox {
             Game.gameCanvas.repaint();
         }
     }
+
+    public static void method305() {
+    //        if(ScreenController.frameMode == ScreenMode.FIXED){
+
+                chatBoxImageProducer.prepareRasterizer();
+    //        }
+            MovedStatics.chatboxBackgroundImage.drawImage(0, 0);
+            MovedStatics.chatboxLineOffsets = Rasterizer3D.setLineOffsets(MovedStatics.chatboxLineOffsets);
+        }
 }

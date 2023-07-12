@@ -24,6 +24,10 @@ public class Minimap extends FramePieceRenderer {
     public static ImageRGB[] minimapHint = new ImageRGB[1000];
     public static ImageRGB[] mapDots;
     public static ImageRGB[] minimapMarkers;
+    /**
+     * Images for function icons on the minimap (e.g. quests, instructors)
+     */
+	public static ImageRGB[] mapFunctionIcons;
     private static int[] resizableMinimapOffsets1;
     private static int[] resizableMinimapOffsets2;
     private static ProducingGraphicsBuffer resizableMiniMapimage;
@@ -209,7 +213,7 @@ public class Minimap extends FramePieceRenderer {
 
     public static void method781(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         if(arg0 == 1850) {
-            int i = Game.currentScene.method122(arg1, arg2, arg5);
+            int i = Game.currentScene.getWallHash(arg1, arg2, arg5);
             if(i != 0) {
                 int i_0_ = Game.currentScene.getArrangement(arg1, arg2, arg5, i);
                 int i_1_ = 0x1f & i_0_;
@@ -338,6 +342,66 @@ public class Minimap extends FramePieceRenderer {
             }
         }
     }
+
+    public static void method299(int arg1) {
+	    int[] is = minimapImage.pixels;
+	    int i = is.length;
+	    for(int i_0_ = 0; i > i_0_; i_0_++)
+	        is[i_0_] = 0;
+	    for(int i_1_ = 1; i_1_ < 103; i_1_++) {
+	        int i_2_ = 24628 + (-(512 * i_1_) + 52736) * 4;
+	        for(int i_3_ = 1; i_3_ < 103; i_3_++) {
+	            if((0x18 & MovedStatics.tile_flags[arg1][i_3_][i_1_]) == 0)
+	                Game.currentScene.method96(is, i_2_, 512, arg1, i_3_, i_1_);
+	            if(arg1 < 3 && (MovedStatics.tile_flags[1 + arg1][i_3_][i_1_] & 0x8) != 0)
+	                Game.currentScene.method96(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
+	            i_2_ += 4;
+	        }
+	    }
+	    minimapImage.method723();
+	    int i_4_ = (-10 + (int) (Math.random() * 20.0) + 238 << 8) + (228 + (int) (Math.random() * 20.0) << 16) + 238 + (int) (20.0 * Math.random()) + -10;
+	    int i_5_ = -10 + (int) (20.0 * Math.random()) + 238 << 16;
+	    for(int i_6_ = 1; i_6_ < 103; i_6_++) {
+	        for(int i_7_ = 1; i_7_ < 103; i_7_++) {
+	            if((MovedStatics.tile_flags[arg1][i_7_][i_6_] & 0x18) == 0)
+	                method781(1850, arg1, i_7_, i_4_, i_5_, i_6_);
+	            if(arg1 < 3 && (0x8 & MovedStatics.tile_flags[1 + arg1][i_7_][i_6_]) != 0)
+	                method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
+	        }
+	    }
+	    minimapHintCount = 0;
+	    for(int i_8_ = 0; i_8_ < 104; i_8_++) {
+	        for(int i_9_ = 0; i_9_ < 104; i_9_++) {
+	            int i_10_ = Game.currentScene.getFloorDecorationHash(Player.worldLevel, i_8_, i_9_);
+	            if(i_10_ != 0) {
+	                i_10_ = 0x7fff & i_10_ >> 14;
+	                int i_11_ = GameObjectDefinition.getDefinition(i_10_).icon;
+	                if(i_11_ >= 0) {
+	                    int i_12_ = i_9_;
+	                    int i_13_ = i_8_;
+	                    if(i_11_ != 22 && i_11_ != 29 && i_11_ != 34 && i_11_ != 36 && i_11_ != 46 && i_11_ != 47 && i_11_ != 48) {
+	                        int[][] is_14_ = Landscape.currentCollisionMap[Player.worldLevel].clippingData;
+	                        for(int i_15_ = 0; i_15_ < 10; i_15_++) {
+	                            int i_16_ = (int) (Math.random() * 4.0);
+	                            if(i_16_ == 0 && i_13_ > 0 && i_13_ > -3 + i_8_ && (is_14_[-1 + i_13_][i_12_] & 0x1280108) == 0)
+	                                i_13_--;
+	                            if(i_16_ == 1 && i_13_ < 103 && i_13_ < i_8_ + 3 && (is_14_[i_13_ + 1][i_12_] & 0x1280180) == 0)
+	                                i_13_++;
+	                            if(i_16_ == 2 && i_12_ > 0 && i_12_ > -3 + i_9_ && (is_14_[i_13_][i_12_ - 1] & 0x1280102) == 0)
+	                                i_12_--;
+	                            if(i_16_ == 3 && i_12_ < 103 && 3 + i_9_ > i_12_ && (0x1280120 & is_14_[i_13_][1 + i_12_]) == 0)
+	                                i_12_++;
+	                        }
+	                    }
+	                    minimapHint[minimapHintCount] = mapFunctionIcons[i_11_];
+	                    minimapHintX[minimapHintCount] = i_13_;
+	                    minimapHintY[minimapHintCount] = i_12_;
+	                    minimapHintCount++;
+	                }
+	            }
+	        }
+	    }
+	}
 
     public void drawResizableMiniMapArea(int x, int y) {
         ScreenController.drawFramePiece(resizableMiniMapimage, x, y);

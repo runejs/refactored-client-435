@@ -98,10 +98,6 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         }
     }
 
-    public static int method576() {
-        return 19;
-    }
-
     public static ImageRGB method578() {
         ImageRGB class40_sub5_sub14_sub4 = new ImageRGB();
         class40_sub5_sub14_sub4.maxWidth = MovedStatics.imageMaxWidth;

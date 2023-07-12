@@ -63,6 +63,10 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         return framesSinceMouseInput++;
     }
 
+    public static void method650(int arg1) {
+        framesSinceMouseInput = arg1;
+    }
+
     public synchronized void mouseEntered(MouseEvent arg0) {
         if(Game.mouseHandler != null) {
             framesSinceMouseInput = 0;

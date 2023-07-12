@@ -176,8 +176,8 @@ public class InteractiveObjectTemporary extends Node {
                 i++;
             else
                 MovedStatics.mapSceneIcons = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.mapScene, "");
-            if (MovedStatics.mapFunctionIcons == null)
-                MovedStatics.mapFunctionIcons = method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
+            if (Minimap.mapFunctionIcons == null)
+                Minimap.mapFunctionIcons = method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
             else
                 i++;
             if (AnimationSequence.aClass40_Sub5_Sub14_Sub4Array2474 != null)
@@ -229,8 +229,8 @@ public class InteractiveObjectTemporary extends Node {
                 int i_5_ = (int) (21.0 * Math.random()) - 10;
                 int i_6_ = (int) (41.0 * Math.random()) - 20;
                 int i_7_ = -10 + (int) (21.0 * Math.random());
-                for (int i_8_ = 0; MovedStatics.mapFunctionIcons.length > i_8_; i_8_++)
-                    MovedStatics.mapFunctionIcons[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
+                for (int i_8_ = 0; Minimap.mapFunctionIcons.length > i_8_; i_8_++)
+                    Minimap.mapFunctionIcons[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
                 MovedStatics.mapSceneIcons[0].mixPalette(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
                 Native.currentLoadingText = English.loadedSprites;
                 MovedStatics.anInt1607 = 70;
@@ -238,9 +238,8 @@ public class InteractiveObjectTemporary extends Node {
             }
         } else if (MovedStatics.loadingPercent == 85) {
             int i = MovedStatics.method955(CacheArchive.gameImageCacheArchive);
-            int i_9_ = ActorDefinition.method576();
-            if (i < i_9_) {
-                Native.currentLoadingText = English.loadingGameScreen + (i * 100 / i_9_) + Native.percent;
+            if (i < 19) {
+                Native.currentLoadingText = English.loadingGameScreen + (i * 100 / 19) + Native.percent;
                 MovedStatics.anInt1607 = 80;
             } else {
                 Native.currentLoadingText = English.loadedGamescreen;

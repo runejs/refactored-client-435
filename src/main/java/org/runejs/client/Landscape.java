@@ -1201,7 +1201,7 @@ public class Landscape {
                         renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
                     scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, 512 * face, hash, renderable, objectConfig, SceneCluster.anIntArray761[face]);
                 } else if(type == 5) {
-                    int i_51_ = scene.method122(plane, localX, localY);
+                    int i_51_ = scene.getWallHash(plane, localX, localY);
                     int i_52_ = 16;
                     if(i_51_ > 0)
                         i_52_ = GameObjectDefinition.getDefinition((0x1fffedf2 & i_51_) >> 14).setDecorDisplacement;
