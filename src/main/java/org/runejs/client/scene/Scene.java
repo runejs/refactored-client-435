@@ -49,15 +49,15 @@ public class Scene {
     public static int[] faceOffsetY2 = new int[]{-53, -53, 53, 53};
     public static SceneCluster[][] cullingClusters = new SceneCluster[anInt90][500];
     public static boolean clicked = false;
-    public static int[] anIntArray117 = new int[]{160, 192, 80, 96, 0, 144, 80, 48, 160};
-    public static int[] anIntArray119 = new int[]{0, 0, 2, 0, 0, 2, 1, 1, 0};
-    public static int[] anIntArray120 = new int[]{19, 55, 38, 155, 255, 110, 137, 205, 76};
+    public static int[] DIRECTION_ALLOW_WALL_CORNER_TYPE = new int[]{160, 192, 80, 96, 0, 144, 80, 48, 160};
+    public static int[] WALL_CORNER_TYPE_16_BLOCK_OBJ_SPANS = new int[]{0, 0, 2, 0, 0, 2, 1, 1, 0};
+    public static int[] FRONT_WALL_TYPES = new int[]{19, 55, 38, 155, 255, 110, 137, 205, 76};
     public static int drawWidthMidpoint;
-    public static int[] anIntArray125 = new int[]{2, 0, 0, 2, 0, 0, 0, 4, 4};
+    public static int[] WALL_CORNER_TYPE_32_BLOCK_OBJ_SPANS = new int[]{2, 0, 0, 2, 0, 0, 0, 4, 4};
     public static int drawHeight;
-    public static int[] anIntArray130 = new int[]{76, 8, 137, 4, 0, 1, 38, 2, 19};
-    public static int[] anIntArray131 = new int[]{1, 1, 0, 0, 0, 8, 0, 0, 8};
-    public static int[] anIntArray132 = new int[]{0, 4, 4, 8, 0, 0, 8, 0, 0};
+    public static int[] BACK_WALL_TYPES = new int[]{76, 8, 137, 4, 0, 1, 38, 2, 19};
+    public static int[] WALL_CORNER_TYPE_128_BLOCK_OBJ_SPANS = new int[]{1, 1, 0, 0, 0, 8, 0, 0, 8};
+    public static int[] WALL_CORNER_TYPE_64_BLOCK_OBJ_SPANS = new int[]{0, 4, 4, 8, 0, 0, 8, 0, 0};
     private static final int TILE_DRAW_DISTANCE = 75;
     public static boolean[][] TILE_VISIBILITY_MAP;
     public static boolean[][][][] TILE_VISIBILITY_MAPS = new boolean[8][32][(TILE_DRAW_DISTANCE * 2) + 1][(TILE_DRAW_DISTANCE * 2) + 1];
@@ -68,6 +68,8 @@ public class Scene {
     public static int[] screenX = new int[6];
     public static int[] viewspaceX = new int[6];
     public static int[] viewspaceY = new int[6];
+    public static int[] ROTATION_WALL_CORNER_TYPE = new int[]{16, 32, 64, 128};
+    public static int[] ROTATION_WALL_TYPE = {1, 2, 4, 8};
 
     public SceneTile[][][] tileArray;
     public int[][][] anIntArrayArrayArray83;
@@ -78,10 +80,16 @@ public class Scene {
     public int[][][] heightMap;
     public int mapSizeZ;
     public int mapSizeY;
+    /**
+     * Minimap tile rotations (move to Minimap class)
+     */
     public int[][] anIntArrayArray121;
-    public int[] anIntArray123;
+    public int[] mergeIndexB;
     public int anInt126;
-    public int[] anIntArray127;
+    public int[] mergeIndexA;
+    /**
+     * Minimap tile masks (move to Minimap class)
+     */
     public int[][] anIntArrayArray129;
 
     public Scene(int[][][] heightMap) {
@@ -90,9 +98,9 @@ public class Scene {
         final int height = 4;// was parameter
         sceneSpawnRequestsCacheCurrentPos = 0;
         anIntArrayArray121 = new int[][]{{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, {12, 8, 4, 0, 13, 9, 5, 1, 14, 10, 6, 2, 15, 11, 7, 3}, {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0}, {3, 7, 11, 15, 2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12}};
-        anIntArray123 = new int[10000];
+        mergeIndexB = new int[10000];
         anInt126 = 0;
-        anIntArray127 = new int[10000];
+        mergeIndexA = new int[10000];
         anIntArrayArray129 = new int[][]{new int[16], {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1}, {0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1}, {1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1}};
         mapSizeZ = height;
         mapSizeX = width;
@@ -202,14 +210,14 @@ public class Scene {
         }
     }
 
-    public static int method108(int arg0, int arg1) {
-        arg1 = (127 - arg1) * (arg0 & 0x7f) >> 7;
-        if (arg1 < 2) {
-            arg1 = 2;
-        } else if (arg1 > 126) {
-            arg1 = 126;
+    public static int adjustLightness(int hsl, int lightness) {
+        lightness = (127 - lightness) * (hsl & 0x7f) >> 7;
+        if (lightness < 2) {
+            lightness = 2;
+        } else if (lightness > 126) {
+            lightness = 126;
         }
-        return (arg0 & 0xff80) + arg1;
+        return (hsl & 0xff80) + lightness;
     }
 
     /**
@@ -329,55 +337,55 @@ public class Scene {
         }
     }
 
-    public void method96(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        SceneTile sceneTile = tileArray[arg3][arg4][arg5];
+    public void drawMinimapTile(int[] destPixels, int offset, int step, int plane, int tileX, int tileY) {
+        SceneTile sceneTile = tileArray[plane][tileX][tileY];
         if (sceneTile != null) {
             GenericTile genericTile = sceneTile.plainTile;
             if (genericTile == null) {
                 ComplexTile complexTile = sceneTile.shapedTile;
                 if (complexTile != null) {
-                    int i = complexTile.shape;
-                    int i_16_ = complexTile.rotation;
-                    int i_17_ = complexTile.underlayRGB;
-                    int i_18_ = complexTile.overlayRGB;
-                    int[] is = anIntArrayArray129[i];
-                    int[] is_19_ = anIntArrayArray121[i_16_];
-                    int i_20_ = 0;
-                    if (i_17_ == 0) {
+                    int shape = complexTile.shape;
+                    int rotation = complexTile.rotation;
+                    int underlayColor = complexTile.underlayRGB;
+                    int overlayColor = complexTile.overlayRGB;
+                    int[] is = anIntArrayArray129[shape];
+                    int[] is_19_ = anIntArrayArray121[rotation];
+                    int pointer = 0;
+                    if (underlayColor == 0) {
                         for (int i_22_ = 0; i_22_ < 4; i_22_++) {
-                            if (is[is_19_[i_20_++]] != 0) {
-                                arg0[arg1] = i_18_;
+                            if (is[is_19_[pointer++]] != 0) {
+                                destPixels[offset] = overlayColor;
                             }
-                            if (is[is_19_[i_20_++]] != 0) {
-                                arg0[arg1 + 1] = i_18_;
+                            if (is[is_19_[pointer++]] != 0) {
+                                destPixels[offset + 1] = overlayColor;
                             }
-                            if (is[is_19_[i_20_++]] != 0) {
-                                arg0[arg1 + 2] = i_18_;
+                            if (is[is_19_[pointer++]] != 0) {
+                                destPixels[offset + 2] = overlayColor;
                             }
-                            if (is[is_19_[i_20_++]] != 0) {
-                                arg0[arg1 + 3] = i_18_;
+                            if (is[is_19_[pointer++]] != 0) {
+                                destPixels[offset + 3] = overlayColor;
                             }
-                            arg1 += arg2;
+                            offset += step;
                         }
                     } else {
-                        for (int i_21_ = 0; i_21_ < 4; i_21_++) {
-                            arg0[arg1] = is[is_19_[i_20_++]] == 0 ? i_17_ : i_18_;
-                            arg0[arg1 + 1] = is[is_19_[i_20_++]] == 0 ? i_17_ : i_18_;
-                            arg0[arg1 + 2] = is[is_19_[i_20_++]] == 0 ? i_17_ : i_18_;
-                            arg0[arg1 + 3] = is[is_19_[i_20_++]] == 0 ? i_17_ : i_18_;
-                            arg1 += arg2;
+                        for (int i = 0; i < 4; i++) {
+                            destPixels[offset] = is[is_19_[pointer++]] == 0 ? underlayColor : overlayColor;
+                            destPixels[offset + 1] = is[is_19_[pointer++]] == 0 ? underlayColor : overlayColor;
+                            destPixels[offset + 2] = is[is_19_[pointer++]] == 0 ? underlayColor : overlayColor;
+                            destPixels[offset + 3] = is[is_19_[pointer++]] == 0 ? underlayColor : overlayColor;
+                            offset += step;
                         }
                     }
                 }
             } else {
-                int i = genericTile.rgbColor;
-                if (i != 0) {
-                    for (int i_15_ = 0; i_15_ < 4; i_15_++) {
-                        arg0[arg1] = i;
-                        arg0[arg1 + 1] = i;
-                        arg0[arg1 + 2] = i;
-                        arg0[arg1 + 3] = i;
-                        arg1 += arg2;
+                int color = genericTile.rgbColor;
+                if (color != 0) {
+                    for (int i = 0; i < 4; i++) {
+                        destPixels[offset] = color;
+                        destPixels[offset + 1] = color;
+                        destPixels[offset + 2] = color;
+                        destPixels[offset + 3] = color;
+                        offset += step;
                     }
                 }
             }
@@ -441,7 +449,7 @@ public class Scene {
                 for (int y = currentPositionY; y < mapBoundsY; y++) {
                     SceneTile sceneTile = sceneTiles[x][y];
                     if (sceneTile != null) {
-                        if (sceneTile.anInt2063 > plane || !TILE_VISIBILITY_MAP[x - cameraPositionTileX + TILE_DRAW_DISTANCE][y - cameraPositionTileY + TILE_DRAW_DISTANCE] && heightMap[z][x][y] - cameraPosZ < 70000) {
+                        if (sceneTile.drawLevel > plane || !TILE_VISIBILITY_MAP[x - cameraPositionTileX + TILE_DRAW_DISTANCE][y - cameraPositionTileY + TILE_DRAW_DISTANCE] && heightMap[z][x][y] - cameraPosZ < 70000) {
                             sceneTile.draw = false;
                             sceneTile.visible = false;
                             sceneTile.wallCullDirection = 0;
@@ -468,13 +476,13 @@ public class Scene {
                             if (i_29_ >= currentPositionY) {
                                 SceneTile sceneTile = sceneTiles[i_26_][i_29_];
                                 if (sceneTile != null && sceneTile.draw) {
-                                    method106(sceneTile, true);
+                                    renderTile(sceneTile, true);
                                 }
                             }
                             if (i_30_ < mapBoundsY) {
                                 SceneTile sceneTile = sceneTiles[i_26_][i_30_];
                                 if (sceneTile != null && sceneTile.draw) {
-                                    method106(sceneTile, true);
+                                    renderTile(sceneTile, true);
                                 }
                             }
                         }
@@ -482,13 +490,13 @@ public class Scene {
                             if (i_29_ >= currentPositionY) {
                                 SceneTile sceneTile = sceneTiles[i_27_][i_29_];
                                 if (sceneTile != null && sceneTile.draw) {
-                                    method106(sceneTile, true);
+                                    renderTile(sceneTile, true);
                                 }
                             }
                             if (i_30_ < mapBoundsY) {
                                 SceneTile sceneTile = sceneTiles[i_27_][i_30_];
                                 if (sceneTile != null && sceneTile.draw) {
-                                    method106(sceneTile, true);
+                                    renderTile(sceneTile, true);
                                 }
                             }
                         }
@@ -513,13 +521,13 @@ public class Scene {
                             if (i_35_ >= currentPositionY) {
                                 SceneTile sceneTile = sceneTiles[i_32_][i_35_];
                                 if (sceneTile != null && sceneTile.draw) {
-                                    method106(sceneTile, false);
+                                    renderTile(sceneTile, false);
                                 }
                             }
                             if (i_36_ < mapBoundsY) {
                                 SceneTile sceneTile = sceneTiles[i_32_][i_36_];
                                 if (sceneTile != null && sceneTile.draw) {
-                                    method106(sceneTile, false);
+                                    renderTile(sceneTile, false);
                                 }
                             }
                         }
@@ -527,13 +535,13 @@ public class Scene {
                             if (i_35_ >= currentPositionY) {
                                 SceneTile sceneTile = sceneTiles[i_33_][i_35_];
                                 if (sceneTile != null && sceneTile.draw) {
-                                    method106(sceneTile, false);
+                                    renderTile(sceneTile, false);
                                 }
                             }
                             if (i_36_ < mapBoundsY) {
                                 SceneTile sceneTile = sceneTiles[i_33_][i_36_];
                                 if (sceneTile != null && sceneTile.draw) {
-                                    method106(sceneTile, false);
+                                    renderTile(sceneTile, false);
                                 }
                             }
                         }
@@ -838,7 +846,7 @@ public class Scene {
         }
     }
 
-    public void method106(SceneTile _tile, boolean arg1) {
+    public void renderTile(SceneTile _tile, boolean arg1) {
         tileList.addLast(_tile);
         for (; ; ) {
             SceneTile groundTile = (SceneTile) tileList.removeFirst();
@@ -936,26 +944,26 @@ public class Scene {
                         } else if (cameraPositionTileY > y) {
                             i_86_ += 6;
                         }
-                        i_87_ = anIntArray120[i_86_];
-                        groundTile.anInt2064 = anIntArray130[i_86_];
+                        i_87_ = FRONT_WALL_TYPES[i_86_];
+                        groundTile.anInt2064 = BACK_WALL_TYPES[i_86_];
                     }
                     if (wall != null) {
-                        if ((wall.orientationA & anIntArray117[i_86_]) != 0) {
+                        if ((wall.orientationA & DIRECTION_ALLOW_WALL_CORNER_TYPE[i_86_]) != 0) {
                             if (wall.orientationA == 16) {
                                 groundTile.wallCullDirection = 3;
-                                groundTile.wallUncullDirection = anIntArray119[i_86_];
+                                groundTile.wallUncullDirection = WALL_CORNER_TYPE_16_BLOCK_OBJ_SPANS[i_86_];
                                 groundTile.wallCullOppositeDirection = 3 - groundTile.wallUncullDirection;
                             } else if (wall.orientationA == 32) {
                                 groundTile.wallCullDirection = 6;
-                                groundTile.wallUncullDirection = anIntArray125[i_86_];
+                                groundTile.wallUncullDirection = WALL_CORNER_TYPE_32_BLOCK_OBJ_SPANS[i_86_];
                                 groundTile.wallCullOppositeDirection = 6 - groundTile.wallUncullDirection;
                             } else if (wall.orientationA == 64) {
                                 groundTile.wallCullDirection = 12;
-                                groundTile.wallUncullDirection = anIntArray132[i_86_];
+                                groundTile.wallUncullDirection = WALL_CORNER_TYPE_64_BLOCK_OBJ_SPANS[i_86_];
                                 groundTile.wallCullOppositeDirection = 12 - groundTile.wallUncullDirection;
                             } else {
                                 groundTile.wallCullDirection = 9;
-                                groundTile.wallUncullDirection = anIntArray131[i_86_];
+                                groundTile.wallUncullDirection = WALL_CORNER_TYPE_128_BLOCK_OBJ_SPANS[i_86_];
                                 groundTile.wallCullOppositeDirection = 9 - groundTile.wallUncullDirection;
                             }
                         } else {
@@ -1280,7 +1288,7 @@ public class Scene {
         }
     }
 
-    public InteractiveObject method107(int arg0, int arg1, int arg2) {
+    public InteractiveObject getObject(int arg0, int arg1, int arg2) {
         SceneTile sceneTile = tileArray[arg0][arg1][arg2];
         if (sceneTile == null) {
             return null;
@@ -1344,20 +1352,20 @@ public class Scene {
         return addRenderableC(arg8, arg9, arg0, arg1, arg2, arg3, arg6, arg11 - arg9 + 1, arg10 - arg8 + 1, arg7, arg5, true, 0);
     }
 
-    public void method115(int arg0, int arg1, int arg2, int arg3) {
-        SceneTile sceneTile = tileArray[arg0][arg1][arg2];
+    public void setWallDecorationOffset(int plane, int tileX, int tileY, int offset) {
+        SceneTile sceneTile = tileArray[plane][tileX][tileY];
         if (sceneTile != null) {
             WallDecoration wallDecoration = sceneTile.wallDecoration;
             if (wallDecoration != null) {
-                int i = arg1 * 128 + 64;
-                int i_150_ = arg2 * 128 + 64;
-                wallDecoration.x = i + (wallDecoration.x - i) * arg3 / 16;
-                wallDecoration.y = i_150_ + (wallDecoration.y - i_150_) * arg3 / 16;
+                int sceneX = tileX * 128 + 64;
+                int sceneY = tileY * 128 + 64;
+                wallDecoration.x = sceneX + (wallDecoration.x - sceneX) * offset / 16;
+                wallDecoration.y = sceneY + (wallDecoration.y - sceneY) * offset / 16;
             }
         }
     }
 
-    public void method117(Model model, int z, int x, int y) {
+    public void mergeFloorDecorationNormals(Model model, int z, int x, int y) {
         if (x < mapSizeX) {
             SceneTile sceneTile = tileArray[z][x + 1][y];
             if (sceneTile != null && sceneTile.floorDecoration != null && sceneTile.floorDecoration.renderable instanceof Model) {
@@ -1396,7 +1404,7 @@ public class Scene {
         }
     }
 
-    public void method118(int arg0, int arg1, int arg2) {
+    public void buildModels(int arg0, int arg1, int arg2) {
         for (int _z = 0; _z < mapSizeZ; _z++) {
             for (int _x = 0; _x < mapSizeX; _x++) {
                 for (int _y = 0; _y < mapSizeY; _y++) {
@@ -1406,11 +1414,11 @@ public class Scene {
                         if (wall != null && wall.primary instanceof Model) {
                             Model model = (Model) wall.primary;
                             if (model.verticesNormal != null) {
-                                method129(model, _z, _x, _y, 1, 1);
+                                mergeObjectNormals(model, _z, _x, _y, 1, 1);
                                 if (wall.secondary instanceof Model) {
                                     Model _model = (Model) wall.secondary;
                                     if (_model.verticesNormal != null) {
-                                        method129(_model, _z, _x, _y, 1, 1);
+                                        mergeObjectNormals(_model, _z, _x, _y, 1, 1);
                                         mergeNormals(model, _model, 0, 0, 0, false);
                                         _model.handleShading(arg0, arg1, arg2);
                                     }
@@ -1423,7 +1431,7 @@ public class Scene {
                             if (interactiveObject != null && interactiveObject.renderable instanceof Model) {
                                 Model model = (Model) interactiveObject.renderable;
                                 if (model.verticesNormal != null) {
-                                    method129(model, _z, _x, _y, interactiveObject.tileRight - interactiveObject.tileLeft + 1, interactiveObject.tileBottom - interactiveObject.tileTop + 1);
+                                    mergeObjectNormals(model, _z, _x, _y, interactiveObject.tileRight - interactiveObject.tileLeft + 1, interactiveObject.tileBottom - interactiveObject.tileTop + 1);
                                     model.handleShading(arg0, arg1, arg2);
                                 }
                             }
@@ -1432,7 +1440,7 @@ public class Scene {
                         if (floorDecoration != null && floorDecoration.renderable instanceof Model) {
                             Model model = (Model) floorDecoration.renderable;
                             if (model.verticesNormal != null) {
-                                method117(model, _z, _x, _y);
+                                mergeFloorDecorationNormals(model, _z, _x, _y);
                                 model.handleShading(arg0, arg1, arg2);
                             }
                         }
@@ -1475,7 +1483,7 @@ public class Scene {
         return isPointOccluded(i_159_, _z, i_160_);
     }
 
-    public void method120(int arg0, int arg1) {
+    public void click(int arg0, int arg1) {
         clicked = true;
         clickX = arg0;
         clickY = arg1;
@@ -1512,8 +1520,8 @@ public class Scene {
                                     _vertexNormal.z += offsetVertexNormal.z;
                                     _vertexNormal.magnitude += offsetVertexNormal.magnitude;
                                     count++;
-                                    anIntArray127[vertex] = anInt126;
-                                    anIntArray123[v] = anInt126;
+                                    mergeIndexA[vertex] = anInt126;
+                                    mergeIndexB[v] = anInt126;
                                 }
                             }
                         }
@@ -1522,14 +1530,14 @@ public class Scene {
             }
         }
         if (count >= 3 && arg5) {
-            for (int i_170_ = 0; i_170_ < modelA.triangleCount; i_170_++) {
-                if (anIntArray127[modelA.trianglePointsX[i_170_]] == anInt126 && anIntArray127[modelA.trianglePointsY[i_170_]] == anInt126 && anIntArray127[modelA.trianglePointsZ[i_170_]] == anInt126) {
-                    modelA.triangleDrawType[i_170_] = -1;
+            for (int tri = 0; tri < modelA.triangleCount; tri++) {
+                if (mergeIndexA[modelA.trianglePointsX[tri]] == anInt126 && mergeIndexA[modelA.trianglePointsY[tri]] == anInt126 && mergeIndexA[modelA.trianglePointsZ[tri]] == anInt126) {
+                    modelA.triangleDrawType[tri] = -1;
                 }
             }
-            for (int i_171_ = 0; i_171_ < modelB.triangleCount; i_171_++) {
-                if (anIntArray123[modelB.trianglePointsX[i_171_]] == anInt126 && anIntArray123[modelB.trianglePointsY[i_171_]] == anInt126 && anIntArray123[modelB.trianglePointsZ[i_171_]] == anInt126) {
-                    modelB.triangleDrawType[i_171_] = -1;
+            for (int tri = 0; tri < modelB.triangleCount; tri++) {
+                if (mergeIndexB[modelB.trianglePointsX[tri]] == anInt126 && mergeIndexB[modelB.trianglePointsY[tri]] == anInt126 && mergeIndexB[modelB.trianglePointsZ[tri]] == anInt126) {
+                    modelB.triangleDrawType[tri] = -1;
                 }
             }
         }
@@ -1672,14 +1680,14 @@ public class Scene {
         }
     }
 
-    public void method125(int arg0, int arg1, int arg2) {
+    public void removeGroundItems(int arg0, int arg1, int arg2) {
         SceneTile sceneTile = tileArray[arg0][arg1][arg2];
         if (sceneTile != null) {
             sceneTile.groundItemTile = null;
         }
     }
 
-    public Wall method126(int arg0, int arg1, int arg2) {
+    public Wall getWall(int arg0, int arg1, int arg2) {
         SceneTile sceneTile = tileArray[arg0][arg1][arg2];
         if (sceneTile == null) {
             return null;
@@ -1768,7 +1776,7 @@ public class Scene {
                 }
             } else if (lowMemory) {
                 int rgb = Rasterizer3D.interface3.getAverageTextureColour(plainTile.texture);
-                Rasterizer3D.drawShadedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, method108(rgb, plainTile.colourD), method108(rgb, plainTile.colourC), method108(rgb, plainTile.colourB));
+                Rasterizer3D.drawShadedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, adjustLightness(rgb, plainTile.colourD), adjustLightness(rgb, plainTile.colourC), adjustLightness(rgb, plainTile.colourB));
             } else if (plainTile.flat) {
                 Rasterizer3D.drawTexturedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, plainTile.colourD, plainTile.colourC, plainTile.colourB, xA, xB, xC, zA, zB, zD, yA, yB, yC, plainTile.texture);
             } else {
@@ -1792,14 +1800,14 @@ public class Scene {
                 }
             } else if (lowMemory) {
                 int i_209_ = Rasterizer3D.interface3.getAverageTextureColour(plainTile.texture);
-                Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, method108(i_209_, plainTile.colourA), method108(i_209_, plainTile.colourB), method108(i_209_, plainTile.colourC));
+                Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, adjustLightness(i_209_, plainTile.colourA), adjustLightness(i_209_, plainTile.colourB), adjustLightness(i_209_, plainTile.colourC));
             } else {
                 Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, plainTile.colourA, plainTile.colourB, plainTile.colourC, xA, xB, xC, zA, zB, zD, yA, yB, yC, plainTile.texture);
             }
         }
     }
 
-    public void method129(Model arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public void mergeObjectNormals(Model arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
         boolean bool = true;
         int i = arg2;
         int i_210_ = arg2 + arg4;
@@ -1851,10 +1859,10 @@ public class Scene {
         }
     }
 
-    public void method130(int arg0, int arg1, int arg2, int arg3) {
+    public void setDrawLevel(int arg0, int arg1, int arg2, int arg3) {
         SceneTile sceneTile = tileArray[arg0][arg1][arg2];
         if (sceneTile != null) {
-            tileArray[arg0][arg1][arg2].anInt2063 = arg3;
+            tileArray[arg0][arg1][arg2].drawLevel = arg3;
         }
     }
 
@@ -2005,7 +2013,7 @@ public class Scene {
                     }
                 } else if (lowMemory) {
                     int i_240_ = Rasterizer3D.interface3.getAverageTextureColour(shapedTile.triangleTexture[triangle]);
-                    Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, method108(i_240_, shapedTile.triangleHSLA[triangle]), method108(i_240_, shapedTile.triangleHSLB[triangle]), method108(i_240_, shapedTile.triangleHSLC[triangle]));
+                    Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, adjustLightness(i_240_, shapedTile.triangleHSLA[triangle]), adjustLightness(i_240_, shapedTile.triangleHSLB[triangle]), adjustLightness(i_240_, shapedTile.triangleHSLC[triangle]));
                 } else if (shapedTile.flat) {
                     Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, shapedTile.triangleHSLA[triangle], shapedTile.triangleHSLB[triangle], shapedTile.triangleHSLC[triangle], viewspaceX[0], viewspaceX[1], viewspaceX[3], viewspaceY[0], viewspaceY[1], viewspaceY[3], viewspaceZ[0], viewspaceZ[1], viewspaceZ[3], shapedTile.triangleTexture[triangle]);
                 } else {
