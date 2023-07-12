@@ -491,10 +491,7 @@ public class MovedStatics {
         }
     }
 
-    /**
-     * get cutscene camera plane?
-     */
-    public static int method546() {
+    public static int getCutsceneCameraPlane() {
         if (!Configuration.ROOFS_ENABLED) {
             return Player.worldLevel;
         }
@@ -2316,11 +2313,7 @@ public class MovedStatics {
         }
     }
 
-    /**
-     * get game camera plane?
-     * @return
-     */
-    public static int method764() {
+    public static int getGameCameraPlane() {
         if(!Configuration.ROOFS_ENABLED) {
             return Player.worldLevel;
         }

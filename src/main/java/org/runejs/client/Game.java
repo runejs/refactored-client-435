@@ -783,11 +783,11 @@ public class Game {
             Game.playerCamera.setPitch(pitch);
         }
 
-        int i;
+        int plane;
         if(!Player.cutsceneActive) {
-            i = MovedStatics.method764();
+            plane = MovedStatics.getGameCameraPlane();
         } else {
-            i = MovedStatics.method546();
+            plane = MovedStatics.getCutsceneCameraPlane();
         }
 
         Camera activeCamera = getActiveCamera();
@@ -826,7 +826,7 @@ public class Game {
         Model.resourceCount = 0;
         Rasterizer.resetPixels();
 
-        currentScene.render(activeCamera, i);
+        currentScene.render(activeCamera, plane);
         currentScene.clearInteractiveObjectCache();
         MovedStatics.draw2DActorAttachments();
         MovedStatics.drawPositionHintIcon();
