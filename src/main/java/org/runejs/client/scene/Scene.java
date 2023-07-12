@@ -31,7 +31,7 @@ public class Scene {
     public static int[] WALL_CORNER_TYPE_64_BLOCK_OBJ_SPANS = new int[]{0, 4, 4, 8, 0, 0, 8, 0, 0};
     public static int[] WALL_CORNER_TYPE_128_BLOCK_OBJ_SPANS = new int[]{1, 1, 0, 0, 0, 8, 0, 0, 8};
 
-    
+
     private static final int TILE_DRAW_DISTANCE = 75;
     public static boolean[][] TILE_VISIBILITY_MAP;
     public static boolean[][][][] TILE_VISIBILITY_MAPS = new boolean[8][32][(TILE_DRAW_DISTANCE * 2) + 1][(TILE_DRAW_DISTANCE * 2) + 1];
@@ -65,11 +65,6 @@ public class Scene {
     public static int drawHeight;
     public static int drawHeightMidpoint;
     public static int drawWidth;
-    public static int[] screenY = new int[6];
-    public static int[] viewspaceZ = new int[6];
-    public static int[] screenX = new int[6];
-    public static int[] viewspaceX = new int[6];
-    public static int[] viewspaceY = new int[6];
 
     public SceneTile[][][] tileArray;
     public int[][][] tileOcclusionCycles;
@@ -80,6 +75,12 @@ public class Scene {
     public int mergeIndexTmp = 0;
     public int[] mergeIndexA = new int[10000];
     public int[] mergeIndexB = new int[10000];
+
+    private int[] screenX = new int[6];
+    private int[] screenY = new int[6];
+    private int[] viewspaceX = new int[6];
+    private int[] viewspaceZ = new int[6];
+    private int[] viewspaceY = new int[6];
 
     private boolean clicked = false;
     private int clickX = 0;
