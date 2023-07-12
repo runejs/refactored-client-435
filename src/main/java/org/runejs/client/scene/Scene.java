@@ -74,7 +74,7 @@ public class Scene {
     public InteractiveObject[] sceneSpawnRequestsCache = new InteractiveObject[5000];
     public int currentPositionZ = 0;
     public int[][][] heightMap;
-    public int anInt126 = 0;
+    public int mergeIndexTmp = 0;
     public int[] mergeIndexA = new int[10000];
     public int[] mergeIndexB = new int[10000];
 
@@ -1493,7 +1493,7 @@ public class Scene {
 
     public void mergeNormals(Model modelA, Model modelB, int i, int j, int k, boolean arg5) {
         modelB.method822();
-        anInt126++;
+        mergeIndexTmp++;
         int count = 0;
         int[] vertices = modelB.verticesX;
         int vertexCount = modelB.vertexCount;
@@ -1520,8 +1520,8 @@ public class Scene {
                                     _vertexNormal.z += offsetVertexNormal.z;
                                     _vertexNormal.magnitude += offsetVertexNormal.magnitude;
                                     count++;
-                                    mergeIndexA[vertex] = anInt126;
-                                    mergeIndexB[v] = anInt126;
+                                    mergeIndexA[vertex] = mergeIndexTmp;
+                                    mergeIndexB[v] = mergeIndexTmp;
                                 }
                             }
                         }
@@ -1531,12 +1531,12 @@ public class Scene {
         }
         if (count >= 3 && arg5) {
             for (int tri = 0; tri < modelA.triangleCount; tri++) {
-                if (mergeIndexA[modelA.trianglePointsX[tri]] == anInt126 && mergeIndexA[modelA.trianglePointsY[tri]] == anInt126 && mergeIndexA[modelA.trianglePointsZ[tri]] == anInt126) {
+                if (mergeIndexA[modelA.trianglePointsX[tri]] == mergeIndexTmp && mergeIndexA[modelA.trianglePointsY[tri]] == mergeIndexTmp && mergeIndexA[modelA.trianglePointsZ[tri]] == mergeIndexTmp) {
                     modelA.triangleDrawType[tri] = -1;
                 }
             }
             for (int tri = 0; tri < modelB.triangleCount; tri++) {
-                if (mergeIndexB[modelB.trianglePointsX[tri]] == anInt126 && mergeIndexB[modelB.trianglePointsY[tri]] == anInt126 && mergeIndexB[modelB.trianglePointsZ[tri]] == anInt126) {
+                if (mergeIndexB[modelB.trianglePointsX[tri]] == mergeIndexTmp && mergeIndexB[modelB.trianglePointsY[tri]] == mergeIndexTmp && mergeIndexB[modelB.trianglePointsZ[tri]] == mergeIndexTmp) {
                     modelB.triangleDrawType[tri] = -1;
                 }
             }
