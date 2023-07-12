@@ -23,9 +23,9 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public static int clickX = 0;
     public static int clickY = 0;
     public static long clickTime = 0L;
-    public static int cursorY;
-    public static int cursorX;
-    public static boolean gameScreenClickable;
+    public static int cursorY = 0;
+    public static int cursorX = 0;
+    public static boolean gameScreenClickable = false;
     public static volatile int framesSinceMouseInput = 0;
     private static volatile int eventClickX = 0;
     private static volatile long lastClick = 0L;

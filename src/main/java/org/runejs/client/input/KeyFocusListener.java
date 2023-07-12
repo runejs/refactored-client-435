@@ -31,7 +31,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     }
 
     public static void addListeners(Component arg0) {
-        Method method = Signlink.aMethod729;
+        Method method = Signlink.setFocusTraversalKeysEnabled;
         if(method != null) {
             try {
                 method.invoke(arg0, Boolean.FALSE);
@@ -71,7 +71,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             anIntArray1564[91] = 42;
             anIntArray1564[92] = 74;
             anIntArray1564[93] = 43;
-            if (Signlink.aMethod729 == null) {
+            if (Signlink.setFocusTraversalKeysEnabled == null) {
                 anIntArray1564[192] = 58;
                 anIntArray1564[222] = 59;
             } else {

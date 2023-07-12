@@ -6,6 +6,14 @@ import org.runejs.client.*;
 
 public abstract class Actor extends Renderable {
     public static int actorUpdatingIndex = 0;
+    public static int[] overheadChatHalfWidth = new int[50];
+    public static int[] overheadChatTimer = new int[50];
+    public static int[] overheadChatY = new int[50];
+    public static int[] overheadChatLetterHeight = new int[50];
+    public static int[] overheadChatShape = new int[50];
+    public static String[] overheadChatMessage = new String[50];
+    public static int[] overheadChatColor = new int[50];
+    public static int[] overheadChatX = new int[50];
 
     public boolean[] aBooleanArray3072;
     public int forceMoveFaceDirection;

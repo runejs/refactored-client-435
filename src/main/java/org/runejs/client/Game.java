@@ -15,7 +15,6 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.*;
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.handler.rs435.RS435HandlerRegistry;
@@ -42,6 +41,7 @@ import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
 import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
 import org.runejs.Configuration;
 import org.runejs.client.util.SignlinkNode;
+import org.runejs.client.util.Timer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -102,6 +102,8 @@ public class Game {
     public static long aLong1841;
     public static int clientVersion;
     public static int playerRights = 0;
+    public static Timer gameTimer;
+    public static int idleLogout = 0;
     /**
      * Backup port if the first one fails?
      */
@@ -265,7 +267,7 @@ public class Game {
                                         else {
                                             if (GameInterface.activeInterfaceType != 0 && GameInterface.selectedInventorySlot == i_7_ && gameInterface.id == GameInterface.modifiedWidgetId) {
                                                 i_14_ = MouseHandler.mouseY + -MovedStatics.anInt2798;
-                                                i_12_ = MouseHandler.mouseX + -Renderable.anInt2869;
+                                                i_12_ = MouseHandler.mouseX + -MovedStatics.anInt2869;
                                                 if (i_12_ < 5 && i_12_ > -5)
                                                     i_12_ = 0;
                                                 if (i_14_ < 5 && i_14_ > -5)
@@ -632,7 +634,7 @@ public class Game {
         IncomingPackets.cyclesSinceLastPacket = 0;
         Player.headIconDrawType = 0;
         OutgoingPackets.buffer.currentPosition = 0;
-        SceneCluster.idleLogout = 0;
+        idleLogout = 0;
         IncomingPackets.thirdLastOpcode = -1;
         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
         MovedStatics.menuActionRow = 0;
@@ -940,7 +942,7 @@ public class Game {
                 GameInterface.redrawTabArea = true;
             }
             if(GameInterface.tabAreaInterfaceId != -1) {
-                boolean bool = Renderable.handleSequences(GameInterface.tabAreaInterfaceId);
+                boolean bool = GameInterface.handleSequences(GameInterface.tabAreaInterfaceId);
                 if(bool) {
                     GameInterface.redrawTabArea = true;
                 }
@@ -956,13 +958,13 @@ public class Game {
             MovedStatics.drawTabArea();
 
             if(GameInterface.chatboxInterfaceId != -1) {
-                boolean bool = Renderable.handleSequences(GameInterface.chatboxInterfaceId);
+                boolean bool = GameInterface.handleSequences(GameInterface.chatboxInterfaceId);
                 if(bool) {
                     ChatBox.redrawChatbox = true;
                 }
             }
             if(ChatBox.dialogueId != -1) {
-                boolean bool = Renderable.handleSequences(ChatBox.dialogueId);
+                boolean bool = GameInterface.handleSequences(ChatBox.dialogueId);
                 if(bool) {
                     ChatBox.redrawChatbox = true;
                 }
@@ -1013,15 +1015,15 @@ public class Game {
 
 
             if(GameInterface.tabAreaInterfaceId != -1) {
-                Renderable.handleSequences(GameInterface.tabAreaInterfaceId);
+                GameInterface.handleSequences(GameInterface.tabAreaInterfaceId);
             }
 
             if(GameInterface.chatboxInterfaceId != -1) {
-                Renderable.handleSequences(GameInterface.chatboxInterfaceId);
+                GameInterface.handleSequences(GameInterface.chatboxInterfaceId);
             }
 
             if(ChatBox.dialogueId != -1) {
-                Renderable.handleSequences(ChatBox.dialogueId);
+                GameInterface.handleSequences(ChatBox.dialogueId);
             }
             method353();
             ChatBox.renderChatbox();
@@ -1113,9 +1115,9 @@ public class Game {
     }
 
     public static void method164() {
-        Renderable.handleSequences(GameInterface.fullscreenInterfaceId);
+        GameInterface.handleSequences(GameInterface.fullscreenInterfaceId);
         if(GameInterface.fullscreenSiblingInterfaceId != -1)
-            Renderable.handleSequences(GameInterface.fullscreenSiblingInterfaceId);
+            GameInterface.handleSequences(GameInterface.fullscreenSiblingInterfaceId);
         MovedStatics.anInt199 = 0;
         MovedStatics.aProducingGraphicsBuffer_2213.prepareRasterizer();
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(Player.viewportOffsets);
@@ -1241,8 +1243,8 @@ public class Game {
     public static void updateGame() {
         if(MovedStatics.systemUpdateTime > 1)
             MovedStatics.systemUpdateTime--;
-        if(SceneCluster.idleLogout > 0)
-            SceneCluster.idleLogout--;
+        if(idleLogout > 0)
+            idleLogout--;
         if(aBoolean871) {
             aBoolean871 = false;
             dropClient();
@@ -1402,7 +1404,7 @@ public class Game {
                         MovedStatics.anInt199++;
                         if(GameInterface.activeInterfaceType != 0) {
                             GameInterface.lastItemDragTime++;
-                            if(MouseHandler.mouseX > Renderable.anInt2869 + 5 || Renderable.anInt2869 + -5 > MouseHandler.mouseX || MovedStatics.anInt2798 + 5 < MouseHandler.mouseY || MovedStatics.anInt2798 - 5 > MouseHandler.mouseY)
+                            if(MouseHandler.mouseX > MovedStatics.anInt2869 + 5 || MovedStatics.anInt2869 + -5 > MouseHandler.mouseX || MovedStatics.anInt2798 + 5 < MouseHandler.mouseY || MovedStatics.anInt2798 - 5 > MouseHandler.mouseY)
                                 MovedStatics.lastItemDragged = true;
                             if(MouseHandler.currentMouseButtonPressed == 0) {
                                 if(GameInterface.activeInterfaceType == 3)
@@ -1542,7 +1544,7 @@ public class Game {
                         int i_20_ = MouseHandler.resetFramesSinceMouseInput();
                         int i_21_ = KeyFocusListener.resetFramesSinceKeyboardInput();
                         if(i_20_ > 4500 && i_21_ > 4500) {
-                            SceneCluster.idleLogout = 250;
+                            idleLogout = 250;
                             MouseHandler.setFramesSinceMouseInput(4000);
                             OutgoingPackets.buffer.putPacket(216);
                         }
@@ -1635,7 +1637,7 @@ public class Game {
                 }
                 if (IncomingPackets.incomingPacketBuffer.currentPosition == 8) {
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                    Renderable.aLong2858 = IncomingPackets.incomingPacketBuffer.getLongBE();
+                    MovedStatics.aLong2858 = IncomingPackets.incomingPacketBuffer.getLongBE();
                     loginStatus = 5;
                 }
             }
@@ -1643,8 +1645,8 @@ public class Game {
                 int[] seeds = new int[4];
                 seeds[0] = (int) (Math.random() * 9.9999999E7);
                 seeds[1] = (int) (Math.random() * 9.9999999E7);
-                seeds[2] = (int) (Renderable.aLong2858 >> 32);
-                seeds[3] = (int) Renderable.aLong2858;
+                seeds[2] = (int) (MovedStatics.aLong2858 >> 32);
+                seeds[3] = (int) MovedStatics.aLong2858;
                 OutgoingPackets.buffer.currentPosition = 0;
                 OutgoingPackets.buffer.putByte(10);
                 OutgoingPackets.buffer.putIntBE(seeds[0]);
@@ -1951,7 +1953,7 @@ public class Game {
     }
 
     public static void dropClient() {
-        if(SceneCluster.idleLogout > 0) {
+        if(idleLogout > 0) {
             // Instant logout
             logout();
         } else {
@@ -1968,7 +1970,7 @@ public class Game {
     }
 
     public static void method992() {
-        SceneCluster.gameTimer.start();
+        gameTimer.start();
         for(int i = 0; i < 32; i++)
             GameShell.tickSamples[i] = 0L;
         for(int i = 0; i < 32; i++)
