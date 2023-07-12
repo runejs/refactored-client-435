@@ -3657,4 +3657,91 @@ public class MovedStatics {
         return true;
 
     }
+
+    public static void method789(int chunkLocalX, int chunkY, int chunkX, int chunkLocalY, int level) {
+        if(chunkX != regionX || chunkY != regionY || onBuildTimePlane != level && VertexNormal.lowMemory) {
+            onBuildTimePlane = level;
+            regionX = chunkX;
+            if(!VertexNormal.lowMemory)
+                onBuildTimePlane = 0;
+            regionY = chunkY;
+            processGameStatus(25);
+            method940(English.loadingPleaseWait, false, null);
+            int i = baseY;
+            int i_33_ = baseX;
+            baseX = (chunkX - 6) * 8;
+            int i_34_ = baseX + -i_33_;
+            i_33_ = baseX;
+            baseY = (-6 + chunkY) * 8;
+            int i_35_ = baseY + -i;
+            i = baseY;
+            for(int i_36_ = 0; i_36_ < 32768; i_36_++) {
+                Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_36_];
+                if(class40_sub5_sub17_sub4_sub2 != null) {
+                    for(int i_37_ = 0; i_37_ < 10; i_37_++) {
+                        class40_sub5_sub17_sub4_sub2.pathY[i_37_] -= i_34_;
+                        class40_sub5_sub17_sub4_sub2.pathX[i_37_] -= i_35_;
+                    }
+                    class40_sub5_sub17_sub4_sub2.worldX -= 128 * i_34_;
+                    class40_sub5_sub17_sub4_sub2.worldY -= i_35_ * 128;
+                }
+            }
+            for(int i_38_ = 0; i_38_ < 2048; i_38_++) {
+                Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_38_];
+                if(class40_sub5_sub17_sub4_sub1 != null) {
+                    for(int i_39_ = 0; i_39_ < 10; i_39_++) {
+                        class40_sub5_sub17_sub4_sub1.pathY[i_39_] -= i_34_;
+                        class40_sub5_sub17_sub4_sub1.pathX[i_39_] -= i_35_;
+                    }
+                    class40_sub5_sub17_sub4_sub1.worldY -= 128 * i_35_;
+                    class40_sub5_sub17_sub4_sub1.worldX -= 128 * i_34_;
+                }
+            }
+            Player.worldLevel = level;
+            int i_40_ = 0;
+            Player.localPlayer.method787(chunkLocalY, false, chunkLocalX);
+            int i_41_ = 104;
+            int i_42_ = 1;
+            if(i_34_ < 0) {
+                i_41_ = -1;
+                i_40_ = 103;
+                i_42_ = -1;
+            }
+            int i_43_ = 104;
+            int i_44_ = 0;
+            int i_45_ = 1;
+            if(i_35_ < 0) {
+                i_44_ = 103;
+                i_43_ = -1;
+                i_45_ = -1;
+            }
+            for(int i_46_ = i_40_; i_41_ != i_46_; i_46_ += i_42_) {
+                for(int i_47_ = i_44_; i_43_ != i_47_; i_47_ += i_45_) {
+                    int i_48_ = i_34_ + i_46_;
+                    int i_49_ = i_35_ + i_47_;
+                    for(int i_50_ = 0; i_50_ < 4; i_50_++) {
+                        if(i_48_ < 0 || i_49_ < 0 || i_48_ >= 104 || i_49_ >= 104)
+                            groundItems[i_50_][i_46_][i_47_] = null;
+                        else
+                            groundItems[i_50_][i_46_][i_47_] = groundItems[i_50_][i_48_][i_49_];
+                    }
+                }
+            }
+            for(InteractiveObjectTemporary obj = (InteractiveObjectTemporary) interactiveObjectTemporaryNodeCache.peekFirst(); obj != null; obj = (InteractiveObjectTemporary) interactiveObjectTemporaryNodeCache.pollFirst()) {
+                obj.y -= i_35_;
+                obj.x -= i_34_;
+                if(obj.x < 0 || obj.y < 0 || obj.x >= 104 || obj.y >= 104)
+                    obj.unlink();
+            }
+            anInt1985 = -1;
+            if(destinationX != 0) {
+                destinationX -= i_34_;
+                Game.destinationY -= i_35_;
+            }
+            Player.cutsceneActive = false;
+            SoundSystem.reset();
+            spotAnimQueue.clear();
+            projectileQueue.clear();
+        }
+    }
 }

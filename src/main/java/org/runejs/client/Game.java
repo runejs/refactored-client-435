@@ -1918,7 +1918,7 @@ public class Game {
     public static void method910() {
         if(true) {
             if (VertexNormal.lowMemory && MovedStatics.onBuildTimePlane != Player.worldLevel)
-                Landscape.method789(Player.localPlayer.pathY[0], MovedStatics.regionY, MovedStatics.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
+                MovedStatics.method789(Player.localPlayer.pathY[0], MovedStatics.regionY, MovedStatics.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
             else if (MovedStatics.anInt1985 != Player.worldLevel) {
                 MovedStatics.anInt1985 = Player.worldLevel;
                 Minimap.method299(Player.worldLevel);
