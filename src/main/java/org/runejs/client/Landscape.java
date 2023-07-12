@@ -712,7 +712,7 @@ public class Landscape {
     private static void method285(byte arg0) {
         if(arg0 != 118)
             Game.aBoolean519 = true;
-        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst()) {
+        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) MovedStatics.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) MovedStatics.aLinkedList_1064.pollFirst()) {
             if(class40_sub3.anInt2031 == -1) {
                 class40_sub3.anInt2033 = 0;
                 Class39.method451(class40_sub3);

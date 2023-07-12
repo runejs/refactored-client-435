@@ -1,15 +1,8 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.node.Node;
-import org.runejs.client.language.English;
-import org.runejs.client.language.Native;
 
 public class LinkedList {
-    public static ImageRGB aClass40_Sub5_Sub14_Sub4_1057;
-    public static int selectedInventorySlot;
-    public static LinkedList aLinkedList_1064 = new LinkedList();
-    public static int crossType = 0;
 
     /**
      * The last element in the LinkedList
@@ -24,17 +17,6 @@ public class LinkedList {
     public LinkedList() {
         last.previous = last;
         last.next = last;
-    }
-
-    public static String method903(int arg0) {
-        String class1 = Integer.toString(arg0);
-        for(int i = -3 + class1.length(); i > 0; i -= 3)
-            class1 = class1.substring(0, i) + Native.comma_b + class1.substring(i);
-        if(class1.length() > 8)
-            class1 = Native.green + class1.substring(0, -8 + class1.length()) + English.suffixMillion + Native.whiteOpeningParenthesis + class1 + Native.rightParenthesis;
-        else if(class1.length() > 4)
-            class1 = Native.cyan + class1.substring(0, class1.length() + -4) + Native.suffixK + Native.whiteOpeningParenthesis + class1 + Native.rightParenthesis;
-        return Native.whitespace_b + class1;
     }
 
     public Node removeLast() {

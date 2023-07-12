@@ -122,7 +122,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
 
     public static void method609(int objectId, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
         Class40_Sub3 class40_sub3 = null;
-        for(Class40_Sub3 class40_sub3_24_ = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst(); class40_sub3_24_ != null; class40_sub3_24_ = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst()) {
+        for(Class40_Sub3 class40_sub3_24_ = (Class40_Sub3) MovedStatics.aLinkedList_1064.peekFirst(); class40_sub3_24_ != null; class40_sub3_24_ = (Class40_Sub3) MovedStatics.aLinkedList_1064.pollFirst()) {
             if(class40_sub3_24_.anInt2018 == arg5 && arg2 == class40_sub3_24_.anInt2039 && class40_sub3_24_.anInt2038 == arg6 && class40_sub3_24_.anInt2027 == arg7) {
                 class40_sub3 = class40_sub3_24_;
                 break;
@@ -135,7 +135,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
             class40_sub3.anInt2018 = arg5;
             class40_sub3.anInt2038 = arg6;
             Class39.method451(class40_sub3);
-            LinkedList.aLinkedList_1064.addLast(class40_sub3);
+            MovedStatics.aLinkedList_1064.addLast(class40_sub3);
         }
         class40_sub3.anInt2017 = objectId;
         class40_sub3.anInt2031 = arg4;

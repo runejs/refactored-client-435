@@ -66,7 +66,7 @@ public class AnimationSequence extends CachedNode {
             Pathfinding.doObjectWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], arg0, arg3, i_18_, i_19_, i_17_, 0, 0);
         }
         GameInterface.crossX = MouseHandler.clickX;
-        LinkedList.crossType = 2;
+        MovedStatics.crossType = 2;
         GameInterface.crossY = MouseHandler.clickY;
         MovedStatics.crossIndex = 0;
         return true;

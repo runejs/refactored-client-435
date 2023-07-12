@@ -241,7 +241,7 @@ public class Game {
                                     int i_14_ = 0;
                                     if (-32 + Rasterizer.viewportLeft < i_10_ && Rasterizer.viewportRight > i_10_ && Rasterizer.viewportTop + -32 < i_11_ && Rasterizer.viewportBottom > i_11_ || MovedStatics.activeInterfaceType != 0 && GroundItemTile.selectedInventorySlot == i_7_) {
                                         int i_15_ = 0;
-                                        if (MovedStatics.itemSelected == 1 && i_7_ == LinkedList.selectedInventorySlot && gameInterface.id == ISAAC.anInt525)
+                                        if (MovedStatics.itemSelected == 1 && i_7_ == GameInterface.selectedInventorySlot && gameInterface.id == ISAAC.anInt525)
                                             i_15_ = 16777215;
                                         ImageRGB imageRGB = ItemDefinition.sprite(gameInterface.itemAmounts[i_7_], i_13_, i_15_);
                                         if (imageRGB == null)
@@ -340,7 +340,7 @@ public class Game {
                                 if (text == null)
                                     text = "null";
                                 if (itemDefinition.stackable == 1 || gameInterface.itemAmount != 1)
-                                    text = text + Native.amountPrefixX + LinkedList.method903(gameInterface.itemAmount);
+                                    text = text + Native.amountPrefixX + MovedStatics.method903(gameInterface.itemAmount);
                             }
                             if (gameInterface.actionType == 6 && MovedStatics.lastContinueTextWidgetId == gameInterface.id) {
                                 textColor = gameInterface.textColor;
@@ -520,7 +520,7 @@ public class Game {
                                         if (itemName == null)
                                             itemName = "null";
                                         if (itemDefinition.stackable == 1 || gameInterface.itemAmounts[itemSlot] != 1)
-                                            itemName = itemName + Native.amountPrefixX + LinkedList.method903(gameInterface.itemAmounts[itemSlot]);
+                                            itemName = itemName + Native.amountPrefixX + MovedStatics.method903(gameInterface.itemAmounts[itemSlot]);
                                         int itemX = col * (gameInterface.itemSpritePadsX + 115) + absoluteX;
                                         int itemY = row * (gameInterface.itemSpritePadsY + 12) + absoluteY;
                                         if (gameInterface.xTextAlignment == 0)
@@ -722,7 +722,7 @@ public class Game {
                     MovedStatics.groundItems[i][i_82_][i_83_] = null;
             }
         }
-        LinkedList.aLinkedList_1064 = new LinkedList();
+        MovedStatics.aLinkedList_1064 = new LinkedList();
         Player.friendsCount = 0;
         Player.friendListStatus = 0;
         GameInterface.resetInterface(ChatBox.dialogueId);
@@ -1376,10 +1376,10 @@ public class Game {
                         Class17.animatePlayers(-1);
                         MovedStatics.animateNpcs();
                         MovedStatics.method313();
-                        if(LinkedList.crossType != 0) {
+                        if(MovedStatics.crossType != 0) {
                             MovedStatics.crossIndex += 20;
                             if(MovedStatics.crossIndex >= 400)
-                                LinkedList.crossType = 0;
+                                MovedStatics.crossType = 0;
                         }
                         if(GameInterface.atInventoryInterfaceType != 0) {
                             RSRuntimeException.anInt1651++;
@@ -1462,7 +1462,7 @@ public class Game {
                                 GameInterface.crossY = MouseHandler.clickY;
                                 MovedStatics.crossIndex = 0;
                                 GameInterface.crossX = MouseHandler.clickX;
-                                LinkedList.crossType = 1;
+                                MovedStatics.crossType = 1;
                             }
                             Scene.clickedTileX = -1;
                         }

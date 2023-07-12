@@ -1,7 +1,6 @@
 package org.runejs.client.message.handler.rs435.region;
 
 import org.runejs.client.Class40_Sub3;
-import org.runejs.client.LinkedList;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
@@ -23,7 +22,7 @@ public class ClearChunkMessageHandler implements MessageHandler<ClearChunkInboun
                 }
             }
         }
-        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst()) {
+        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) MovedStatics.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) MovedStatics.aLinkedList_1064.pollFirst()) {
             if(class40_sub3.anInt2039 >= MovedStatics.placementX && MovedStatics.placementX + 8 > class40_sub3.anInt2039 && class40_sub3.anInt2038 >= MovedStatics.placementY && MovedStatics.placementY + 8 > class40_sub3.anInt2038 && Player.worldLevel == class40_sub3.anInt2018)
                 class40_sub3.anInt2031 = 0;
         }

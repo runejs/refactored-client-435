@@ -229,6 +229,9 @@ public class MovedStatics {
     public static int menuWidth;
     public static int menuOffsetX;
     public static int menuHeight;
+    public static ImageRGB aClass40_Sub5_Sub14_Sub4_1057;
+    public static LinkedList aLinkedList_1064 = new LinkedList();
+    public static int crossType = 0;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -986,7 +989,7 @@ public class MovedStatics {
     }
 
     public static void method652() {
-        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) LinkedList.aLinkedList_1064.pollFirst()) {
+        for(Class40_Sub3 class40_sub3 = (Class40_Sub3) aLinkedList_1064.peekFirst(); class40_sub3 != null; class40_sub3 = (Class40_Sub3) aLinkedList_1064.pollFirst()) {
             if(class40_sub3.anInt2031 > 0)
                 class40_sub3.anInt2031--;
             if(class40_sub3.anInt2031 == 0) {
@@ -1197,7 +1200,7 @@ public class MovedStatics {
 	                                                }
 	                                                addActionRow(English.examine, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId(), examineText.toString());
 	                                            }
-	                                        } else if(ISAAC.anInt525 != gameInterface.id || i_4_ != LinkedList.selectedInventorySlot) {
+	                                        } else if(ISAAC.anInt525 != gameInterface.id || i_4_ != GameInterface.selectedInventorySlot) {
 	                                            addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.USE_ITEM_ON_INVENTORY_ITEM.getId(), Native.selectedItemName + Native.toLightRed + itemDefinition.name);
 	                                        }
 	                                    }
@@ -1772,10 +1775,10 @@ public class MovedStatics {
 
     public static void draw3dScreen() {
         renderSplitPrivateMessages();
-        if (LinkedList.crossType == 1) {
+        if (crossType == 1) {
             Class37.cursorCross[crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
         }
-        if (LinkedList.crossType == 2) {
+        if (crossType == 2) {
             Class37.cursorCross[4 + crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
         }
         if (GameInterface.gameScreenInterfaceId != -1 || GroundItemTile.walkableWidgetId != -1) {
@@ -1801,7 +1804,7 @@ public class MovedStatics {
             }
         }
         if (anInt2118 == 1) {
-            LinkedList.aClass40_Sub5_Sub14_Sub4_1057.drawImage(472, 296);
+            aClass40_Sub5_Sub14_Sub4_1057.drawImage(472, 296);
         }
         if (InteractiveObject.showFps) {
             int y = 20;
@@ -2486,5 +2489,16 @@ public class MovedStatics {
         }
         string += "| " + string_1_;
         return string;
+    }
+
+    public static String method903(int arg0) {
+        String class1 = Integer.toString(arg0);
+        for(int i = -3 + class1.length(); i > 0; i -= 3)
+            class1 = class1.substring(0, i) + Native.comma_b + class1.substring(i);
+        if(class1.length() > 8)
+            class1 = Native.green + class1.substring(0, -8 + class1.length()) + English.suffixMillion + Native.whiteOpeningParenthesis + class1 + Native.rightParenthesis;
+        else if(class1.length() > 4)
+            class1 = Native.cyan + class1.substring(0, class1.length() + -4) + Native.suffixK + Native.whiteOpeningParenthesis + class1 + Native.rightParenthesis;
+        return Native.whitespace_b + class1;
     }
 }
