@@ -44,7 +44,7 @@ public class OverlayDefinition extends CachedNode {
         gameDefinitionsCacheArchive = cacheArchive;
     }
 
-    public static void method233() {
+    public static void clearOverlayDefinitionCache() {
         overlayDefinitionCache.clear();
     }
 

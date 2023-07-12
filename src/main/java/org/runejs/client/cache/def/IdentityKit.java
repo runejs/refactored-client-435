@@ -37,6 +37,10 @@ public class IdentityKit extends CachedNode {
         return identityKit;
     }
 
+    public static void clearIdentityKitCache() {
+        identityKitNodeCache.clear();
+    }
+
     public void readValues(Buffer buffer) {
         while(true) {
             int opcode = buffer.getUnsignedByte();

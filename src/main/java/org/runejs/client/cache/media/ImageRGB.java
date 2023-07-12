@@ -2,14 +2,12 @@ package org.runejs.client.cache.media;
 
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.node.NodeCache;
 import org.runejs.client.media.Rasterizer;
 
 import java.awt.*;
 import java.awt.image.PixelGrabber;
 
 public class ImageRGB extends Rasterizer {
-    public static NodeCache imageRgbCache = new NodeCache(200);
     public int offsetY;
     public int imageHeight;
     public int imageWidth;

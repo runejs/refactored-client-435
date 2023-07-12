@@ -3,7 +3,6 @@ package org.runejs.client.cache.media;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.RSString;
 import org.runejs.client.cache.CacheArchive;
-import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.media.textUtils.TextColourNode;
 import org.runejs.client.cache.media.textUtils.TextColourQueue;
@@ -21,7 +20,6 @@ public class TypeFace extends Rasterizer {
 
     public static TypeFace fontBold;
     public static TypeFace fontSmall;
-    public static NodeCache typeFaceCache = new NodeCache(20);
     private static String greaterThan = "gt";
     private static String lessThan = "lt";
     private static String euroSymbol = "euro";

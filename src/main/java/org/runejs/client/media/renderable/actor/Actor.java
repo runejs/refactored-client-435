@@ -1,10 +1,7 @@
 package org.runejs.client.media.renderable.actor;
 
 import org.runejs.client.cache.media.AnimationSequence;
-import org.runejs.client.cache.media.ImageRGB;
-import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.media.renderable.Renderable;
-import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.*;
 
 public abstract class Actor extends Renderable {
@@ -117,12 +114,6 @@ public abstract class Actor extends Renderable {
         standTurnAnimationId = -1;
         facePositionX = 0;
         playingAnimation = -1;
-    }
-
-    public static void clearCaches() {
-        ImageRGB.imageRgbCache.clear();
-        WallDecoration.modelCache.clear();
-        TypeFace.typeFaceCache.clear();
     }
 
 

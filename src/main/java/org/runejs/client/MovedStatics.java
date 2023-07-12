@@ -20,7 +20,6 @@ import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.*;
 import org.runejs.client.node.Class40_Sub6;
 import org.runejs.client.node.HashTable;
-import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.IndexedImage;
@@ -93,7 +92,6 @@ public class MovedStatics {
     public static int anInt1586 = -1;
     public static boolean reportMutePlayer = false;
     public static int anInt1607 = 10;
-    public static NodeCache aClass9_1611 = new NodeCache(50);
     public static long[] tickSamples = new long[32];
     /**
      * The image used for the highlighted (selected) tab button,
@@ -105,7 +103,6 @@ public class MovedStatics {
      * Up/down arrow images for the scrollbar.
      */
     public static IndexedImage[] scrollbarArrowImages;
-    public static NodeCache modelCache = new NodeCache(260);
     public static boolean showChatPanelRedrawnText = false;
     public static int lastContinueTextWidgetId = -1;
     public static GameSocket gameServerSocket;
@@ -154,7 +151,6 @@ public class MovedStatics {
      */
     public static IndexedImage[] mapSceneIcons;
     public static int baseX;
-    public static NodeCache aClass9_998 = new NodeCache(100);
     /**
      * Something to do with flames, maybe
      */
@@ -694,11 +690,6 @@ public class MovedStatics {
                 }
             }
         }
-    }
-
-    public static void method188() {
-        MovedStatics.aClass9_2439.clear();
-        aClass9_998.clear();
     }
 
     public static String method204(int arg0) {
@@ -1337,14 +1328,7 @@ public class MovedStatics {
 
 	public static int modifiedWidgetId = 0;
 
-	public static void method211() {
-	    ItemDefinition.itemDefinitionNodeCache.clear();
-	    ItemDefinition.groundItemModelNodeCache.clear();
-	    Buffer.rgbImageCache.clear();
-	
-	}
-
-	public static void setHighMemory() {
+    public static void setHighMemory() {
 	    VertexNormal.lowMemory = false;
 	    Scene.lowMemory = false;
 	
@@ -1411,14 +1395,6 @@ public class MovedStatics {
 	'9', ' ', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243',
 	'$', '%', '"', '[', ']'};
 
-	public static void method586(int arg0) {
-	    ActorDefinition.actorDefinitionNodeCache.clear();
-	    aClass9_1611.clear();
-	    if(arg0 <= 63)
-	        English.errorConnectingToServer = null;
-	}
-
-	public static NodeCache aClass9_2439 = new NodeCache(64);
     /**
      * Something to do with flames, maybe
      */
@@ -3126,10 +3102,6 @@ public class MovedStatics {
         return false;
     }
 
-    public static void clearModelCache() {
-        modelCache.clear();
-    }
-
     public static int getVisibilityPlaneFor(int arg0, int arg1, int arg2, int arg3) {
         if(arg2 != 0)
             getVisibilityPlaneFor(-73, 123, 115, 98);
@@ -3322,35 +3294,6 @@ public class MovedStatics {
 
     }
 
-    public static void clearCaches() {
-        OverlayDefinition.method233();
-        UnderlayDefinition.clearUnderlayDefinitionCache();
-        GameInterface.method640();
-        GameObjectDefinition.clearGameObjectModelCache();
-        method586(64);
-        method211();
-        method188();
-        SpotAnimDefinition.clearSpotAnimDefinitionCache();
-        VarbitDefinition.clearVarbitDefinitionCache();
-        VarPlayerDefinition.clearVarPlayerDefinitionCache();
-        clearModelCache();
-        Actor.clearCaches();
-        ((Class35) Rasterizer3D.interface3).clearTextures();
-        ClientScript.clientScriptCache.clear();
-        CacheArchive.skeletonCacheArchive.clearCache();
-        CacheArchive.skinDefinitionCacheArchive.clearCache();
-        CacheArchive.gameInterfaceCacheArchive.clearCache();
-        CacheArchive.soundEffectCacheArchive.clearCache();
-        CacheArchive.gameWorldMapCacheArchive.clearCache();
-        CacheArchive.musicCacheArchive.clearCache();
-        CacheArchive.modelCacheArchive.clearCache();
-        CacheArchive.gameImageCacheArchive.clearCache();
-        CacheArchive.gameTextureCacheArchive.clearCache();
-        CacheArchive.huffmanCacheArchive.clearCache();
-        CacheArchive.jingleCacheArchive.clearCache();
-        CacheArchive.clientScriptCacheArchive.clearCache();
-    }
-
     public static long nameToLong(String arg0) {
         long l = 0L;
         for(int i = 0; i < arg0.length(); i++) {
@@ -3490,7 +3433,7 @@ public class MovedStatics {
     }
 
     public static void clearImageCache() {
-        Buffer.rgbImageCache.clear();
+        ItemDefinition.itemImageCache.clear();
     }
 
     public static void method778(HuffmanEncoding arg1) {

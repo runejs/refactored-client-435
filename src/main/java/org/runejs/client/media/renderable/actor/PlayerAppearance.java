@@ -1,12 +1,12 @@
 package org.runejs.client.media.renderable.actor;
 
-import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.IdentityKit;
 import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.Model;
+import org.runejs.client.node.NodeCache;
 
 public class PlayerAppearance {
 
@@ -23,6 +23,7 @@ public class PlayerAppearance {
     public static int[] playerSkinColors = new int[]{9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486};
 
     public static int[] APPEARANCE_INDICES = {8, 11, 4, 6, 9, 7, 10};
+    public static NodeCache playerModelCache = new NodeCache(260);
 
     public boolean gender;
     public int[] appearance;
@@ -30,6 +31,10 @@ public class PlayerAppearance {
     public int[] appearanceColors;
     public long appearanceHash;
     public long cachedModel;
+
+    public static void clearPlayerModelCache() {
+        playerModelCache.clear();
+    }
 
 
     public int getHeadModelId() {
@@ -72,7 +77,7 @@ public class PlayerAppearance {
             }
         }
 
-        Model cachedModel = (Model) MovedStatics.modelCache.get(hash);
+        Model cachedModel = (Model) playerModelCache.get(hash);
         if(cachedModel == null) {
             boolean invalid = false;
             for(int bodyPart = 0; bodyPart < 12; bodyPart++) {
@@ -84,7 +89,7 @@ public class PlayerAppearance {
             }
             if(invalid) {
                 if(this.cachedModel != -1L)
-                    cachedModel = (Model) MovedStatics.modelCache.get(this.cachedModel);
+                    cachedModel = (Model) playerModelCache.get(this.cachedModel);
                 if(cachedModel == null)
                     return null;
             }
@@ -115,7 +120,7 @@ public class PlayerAppearance {
                 }
                 cachedModel.createBones();
                 cachedModel.applyLighting(64, 850, -30, -50, -30, true);
-                MovedStatics.modelCache.put(hash, cachedModel);
+                playerModelCache.put(hash, cachedModel);
                 this.cachedModel = hash;
             }
         }
@@ -167,7 +172,7 @@ public class PlayerAppearance {
         appearance[9] = appearance9;
 
         if(originalAppearanceHash != 0L && originalAppearanceHash != appearanceHash) {
-            MovedStatics.modelCache.remove(originalAppearanceHash);
+            playerModelCache.remove(originalAppearanceHash);
         }
     }
 

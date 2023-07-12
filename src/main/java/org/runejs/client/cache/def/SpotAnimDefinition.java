@@ -12,7 +12,7 @@ public class SpotAnimDefinition extends CachedNode {
 
     public static CacheArchive gameDefinitionsCacheArchive;
     public static NodeCache spotAnimDefinitionCache = new NodeCache(64);
-    public static NodeCache modelCache = new NodeCache(30);
+    public static NodeCache spotAnimModelCache = new NodeCache(30);
     public int animationId;
     public int modelId;
     public int contrast = 0;
@@ -45,9 +45,9 @@ public class SpotAnimDefinition extends CachedNode {
         return spotAnimDefinition;
     }
 
-    public static void clearSpotAnimDefinitionCache() {
+    public static void clearSpotAnimCache() {
         spotAnimDefinitionCache.clear();
-        modelCache.clear();
+        spotAnimModelCache.clear();
     }
 
     public static void initializeSpotAnimCache(CacheArchive arg1, CacheArchive arg2) {
@@ -88,7 +88,7 @@ public class SpotAnimDefinition extends CachedNode {
     }
 
     public Model getModel(int arg0) {
-        Model model = (Model) modelCache.get((long) id);
+        Model model = (Model) spotAnimModelCache.get((long) id);
         if (model == null) {
             model = Model.getModel(MovedStatics. aCacheArchive_2582, modelId);
             if (model == null) {
@@ -101,7 +101,7 @@ public class SpotAnimDefinition extends CachedNode {
             }
             model.createBones();
             model.applyLighting(64 + ambient, contrast + 850, -30, -50, -30, true);
-            modelCache.put((long) id, model);
+            spotAnimModelCache.put((long) id, model);
         }
         Model class40_sub5_sub17_sub5_0_;
         if (animationId == -1 || arg0 == -1) {

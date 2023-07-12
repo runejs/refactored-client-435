@@ -3,6 +3,7 @@ package org.runejs.client;
 import org.runejs.client.cache.CacheIndex;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.CacheFileChannel;
+import org.runejs.client.cache.cs.ClientScript;
 import org.runejs.client.frame.*;
 import org.runejs.client.frame.console.Console;
 import org.runejs.client.input.KeyFocusListener;
@@ -1928,7 +1929,7 @@ public class Game {
             MovedStatics.gameServerSocket.kill();
             MovedStatics.gameServerSocket = null;
         }
-        MovedStatics.clearCaches();
+        clearCaches();
         currentScene.initToNull();
         int i = 0;
         for(/**/; i < 4; i++)
@@ -2043,6 +2044,35 @@ public class Game {
         }
 
         SceneCamera.setMaxSurroundingTerrainHeight(i_3_);
+    }
+
+    public static void clearCaches() {
+        OverlayDefinition.clearOverlayDefinitionCache();
+        UnderlayDefinition.clearUnderlayDefinitionCache();
+        IdentityKit.clearIdentityKitCache();
+        GameObjectDefinition.clearGameObjectModelCache();
+        ActorDefinition.clearActorCache();
+        ItemDefinition.clearItemCache();
+        AnimationSequence.clearAnimationCache();
+        SpotAnimDefinition.clearSpotAnimCache();
+        VarbitDefinition.clearVarbitDefinitionCache();
+        VarPlayerDefinition.clearVarPlayerDefinitionCache();
+        PlayerAppearance.clearPlayerModelCache();
+        GameInterface.clearInterfaceCaches();
+        ((Class35) Rasterizer3D.interface3).clearTextures();
+        ClientScript.clientScriptCache.clear();
+        CacheArchive.skeletonCacheArchive.clearCache();
+        CacheArchive.skinDefinitionCacheArchive.clearCache();
+        CacheArchive.gameInterfaceCacheArchive.clearCache();
+        CacheArchive.soundEffectCacheArchive.clearCache();
+        CacheArchive.gameWorldMapCacheArchive.clearCache();
+        CacheArchive.musicCacheArchive.clearCache();
+        CacheArchive.modelCacheArchive.clearCache();
+        CacheArchive.gameImageCacheArchive.clearCache();
+        CacheArchive.gameTextureCacheArchive.clearCache();
+        CacheArchive.huffmanCacheArchive.clearCache();
+        CacheArchive.jingleCacheArchive.clearCache();
+        CacheArchive.clientScriptCacheArchive.clearCache();
     }
 
     public void method35(int arg1) {

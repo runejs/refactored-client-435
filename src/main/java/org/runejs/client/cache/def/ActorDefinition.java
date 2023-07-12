@@ -22,6 +22,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
 
     public static int count;
     public static NodeCache actorDefinitionNodeCache = new NodeCache(64);
+    public static NodeCache actorChildModelCache = new NodeCache(50);
 
     public boolean isClickable = true;
     public int boundaryDimension = 1;
@@ -129,6 +130,11 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         return definition;
     }
 
+    public static void clearActorCache() {
+        actorDefinitionNodeCache.clear();
+        actorChildModelCache.clear();
+    }
+
     public Model getChildModel(AnimationSequence animation1, AnimationSequence animation2, int arg3, int arg4) {
         if(childIds != null) {
             ActorDefinition actorDefinition = getChildDefinition();
@@ -137,7 +143,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
             }
             return actorDefinition.getChildModel(animation1, animation2, arg3, arg4);
         }
-        Model model1 = (Model) MovedStatics.aClass9_1611.get(id);
+        Model model1 = (Model) actorChildModelCache.get(id);
         if(model1 == null) {
             boolean bool = false;
             for(int model : models) {
@@ -166,7 +172,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
             assert model1 != null;
             model1.createBones();
             model1.applyLighting(ambient + 64, 850 + contrast, -30, -50, -30, true);
-            MovedStatics.aClass9_1611.put(id, model1);
+            actorChildModelCache.put(id, model1);
         }
         Model class40_sub5_sub17_sub5_0_;
         if(animation1 != null && animation2 != null) {

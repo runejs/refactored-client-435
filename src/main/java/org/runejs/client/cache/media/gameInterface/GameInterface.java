@@ -31,9 +31,9 @@ import org.runejs.client.message.outbound.widget.container.DropWidgetItemOutboun
 import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.node.CachedNode;
+import org.runejs.client.node.NodeCache;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.SceneCluster;
-import org.runejs.client.scene.tile.WallDecoration;
 import org.runejs.client.util.TextUtils;
 import org.runejs.client.*;
 import org.runejs.Configuration;
@@ -87,6 +87,9 @@ public class GameInterface extends CachedNode {
      */
     public static int itemCurrentlySelected = 0;
     public static int anInt704 = 0;
+    public static NodeCache interfaceItemImageCache = new NodeCache(200);
+    public static NodeCache interfaceModelCache = new NodeCache(50);
+    public static NodeCache interfaceTypefaceCache = new NodeCache(20);
     /**
      * The lightened edge (top and left) color of the scroll indicator chip.
      */
@@ -285,10 +288,6 @@ public class GameInterface extends CachedNode {
             }
             MovedStatics.anInt1214 = MovedStatics.anInt2598;
         }
-    }
-
-    public static void method640() {
-        IdentityKit.identityKitNodeCache.clear();
     }
 
 
@@ -2278,6 +2277,12 @@ ChatBox.tradeMode
         );
     }
 
+    public static void clearInterfaceCaches() {
+        interfaceItemImageCache.clear();
+        interfaceModelCache.clear();
+        interfaceTypefaceCache.clear();
+    }
+
     public void swapItems(int arg0, boolean arg1, int arg2) {
         int i = items[arg2];
         items[arg2] = items[arg0];
@@ -2473,7 +2478,7 @@ ChatBox.tradeMode
         if(i == -1) {
             return null;
         }
-        ImageRGB class40_sub5_sub14_sub4 = (ImageRGB) ImageRGB.imageRgbCache.get((long) i);
+        ImageRGB class40_sub5_sub14_sub4 = (ImageRGB) interfaceItemImageCache.get((long) i);
         if(class40_sub5_sub14_sub4 != null) {
             return class40_sub5_sub14_sub4;
         }
@@ -2481,7 +2486,7 @@ ChatBox.tradeMode
         if(class40_sub5_sub14_sub4 == null) {
             aBoolean2177 = true;
         } else {
-            ImageRGB.imageRgbCache.put((long) i, class40_sub5_sub14_sub4);
+            interfaceItemImageCache.put((long) i, class40_sub5_sub14_sub4);
         }
         return class40_sub5_sub14_sub4;
     }
@@ -2515,7 +2520,7 @@ ChatBox.tradeMode
         if(i == -1) {
             return null;
         }
-        ImageRGB imageRGB = (ImageRGB) ImageRGB.imageRgbCache.get((long) i);
+        ImageRGB imageRGB = (ImageRGB) interfaceItemImageCache.get((long) i);
 
         if(imageRGB != null) {
             return imageRGB;
@@ -2524,7 +2529,7 @@ ChatBox.tradeMode
         if(imageRGB == null) {
             aBoolean2177 = true;
         } else {
-            ImageRGB.imageRgbCache.put((long) i, imageRGB);
+            interfaceItemImageCache.put((long) i, imageRGB);
         }
         return imageRGB;
     }
@@ -2646,7 +2651,7 @@ ChatBox.tradeMode
             return null;
         }
 
-        Model model = (Model) WallDecoration.modelCache.get((long) ((modelType.ordinal() << 16) + modelId));
+        Model model = (Model) interfaceModelCache.get((long) ((modelType.ordinal() << 16) + modelId));
         if(model == null) {
             if(modelType == InterfaceModelType.MODEL) {
                 model = Model.getModel(CacheArchive.modelCacheArchive, modelId);
@@ -2693,10 +2698,10 @@ ChatBox.tradeMode
                     e.printStackTrace();
                 }
             }
-            WallDecoration.modelCache.put((long) ((modelType.ordinal() << 16) + modelId), model);
+            interfaceModelCache.put((long) ((modelType.ordinal() << 16) + modelId), model);
         }
         if(animationSequence != null) {
-            model = animationSequence.method598(animationFrame, model, true);
+            model = animationSequence.method598(animationFrame, model);
         }
         return model;
     }
@@ -2706,7 +2711,7 @@ ChatBox.tradeMode
         if(fontId == 65535) {
             return null;
         }
-        TypeFace typeFace = (TypeFace) TypeFace.typeFaceCache.get(fontId);
+        TypeFace typeFace = (TypeFace) interfaceTypefaceCache.get(fontId);
 
         if(typeFace != null) {
             return typeFace;
@@ -2717,7 +2722,7 @@ ChatBox.tradeMode
         if(typeFace == null) {
             aBoolean2177 = true;
         } else {
-            TypeFace.typeFaceCache.put(fontId, typeFace);
+            interfaceTypefaceCache.put(fontId, typeFace);
         }
 
         return typeFace;

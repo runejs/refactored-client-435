@@ -16,6 +16,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
     public static CacheArchive itemDefinitionCache;
     public static NodeCache itemDefinitionNodeCache = new NodeCache(64);
     public static NodeCache groundItemModelNodeCache = new NodeCache(50);
+    public static NodeCache itemImageCache = new NodeCache(100);
 
     public int stackable;
     public String name;
@@ -117,7 +118,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
 
     public static ImageRGB sprite(int stackSize, int id, int backColour) {
         if(backColour == 0) {
-            ImageRGB sprite = (ImageRGB) Buffer.rgbImageCache.get((long) id);
+            ImageRGB sprite = (ImageRGB) itemImageCache.get((long) id);
             if(sprite != null && sprite.maxHeight != stackSize && sprite.maxHeight != -1) {
                 sprite.unlink();
                 sprite = null;
@@ -219,7 +220,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
             notedSprite.maxHeight = i_17_;
         }
         if(backColour == 0)
-            Buffer.rgbImageCache.put((long) id, rendered);
+            itemImageCache.put((long) id, rendered);
         Rasterizer.prepare(pixels, i_1_, i);
         Rasterizer.setBounds(i_2_, i_5_, i_4_, i_6_);
         Rasterizer3D.setLineOffsets(lineOffsets);
@@ -234,6 +235,12 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         rendered.maxHeight = stackSize;
         return rendered;
 
+    }
+
+    public static void clearItemCache() {
+        itemDefinitionNodeCache.clear();
+        groundItemModelNodeCache.clear();
+        itemImageCache.clear();
     }
 
     public boolean headPieceReady(boolean female) {
