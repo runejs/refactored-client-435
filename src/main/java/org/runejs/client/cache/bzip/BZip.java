@@ -113,7 +113,7 @@ public class BZip {
                         else
                             curr--;
                     } while (true);
-                    bzip2Context.aByteArrayArray822[t][i] = (byte) curr;
+                    bzip2Context.codeLengths[t][i] = (byte) curr;
                 }
 
             }
@@ -122,14 +122,14 @@ public class BZip {
                 byte minLen = 32;
                 int maxLen = 0;
                 for (int i = 0; i < alphaSize; i++) {
-                    if (bzip2Context.aByteArrayArray822[t][i] > maxLen)
-                        maxLen = bzip2Context.aByteArrayArray822[t][i];
-                    if (bzip2Context.aByteArrayArray822[t][i] < minLen)
-                        minLen = bzip2Context.aByteArrayArray822[t][i];
+                    if (bzip2Context.codeLengths[t][i] > maxLen)
+                        maxLen = bzip2Context.codeLengths[t][i];
+                    if (bzip2Context.codeLengths[t][i] < minLen)
+                        minLen = bzip2Context.codeLengths[t][i];
                 }
 
-                method294(bzip2Context.limit[t], bzip2Context.base[t], bzip2Context.perm[t],
-                        bzip2Context.aByteArrayArray822[t], minLen, maxLen, alphaSize);
+                createHuffmanDecodingTables(bzip2Context.limit[t], bzip2Context.base[t], bzip2Context.perm[t],
+                        bzip2Context.codeLengths[t], minLen, maxLen, alphaSize);
                 bzip2Context.minLens[t] = minLen;
             }
 
@@ -445,31 +445,42 @@ public class BZip {
         return (byte) getBits(1, context);
     }
 
-    public static void method294(int[] arg0, int[] arg1, int[] arg2, byte[] arg3, int arg4, int arg5, int arg6) {
+    private static void createHuffmanDecodingTables(int[] limit, int[] base, int[] perm, byte[] codeLengths, int minLen, int maxLen, int alphabetSize) {
         int i = 0;
-        for(int i_84_ = arg4; i_84_ <= arg5; i_84_++) {
-            for(int i_85_ = 0; i_85_ < arg6; i_85_++) {
-                if(arg3[i_85_] == i_84_) {
-                    arg2[i] = i_85_;
+
+        // Populate the mapping from canonical code index to output symbol
+        for(int len = minLen; len <= maxLen; len++) {
+            for(int symIndex = 0; symIndex < alphabetSize; symIndex++) {
+                if(codeLengths[symIndex] == len) {
+                    perm[i] = symIndex;
                     i++;
                 }
             }
         }
-        for(int i_86_ = 0; i_86_ < 23; i_86_++)
-            arg1[i_86_] = 0;
-        for(int i_87_ = 0; i_87_ < arg6; i_87_++)
-            arg1[arg3[i_87_] + 1]++;
-        for(int i_88_ = 1; i_88_ < 23; i_88_++)
-            arg1[i_88_] += arg1[i_88_ - 1];
-        for(int i_89_ = 0; i_89_ < 23; i_89_++)
-            arg0[i_89_] = 0;
-        int i_90_ = 0;
-        for(int i_91_ = arg4; i_91_ <= arg5; i_91_++) {
-            i_90_ += arg1[i_91_ + 1] - arg1[i_91_];
-            arg0[i_91_] = i_90_ - 1;
-            i_90_ <<= 1;
+
+        // reset base arrays
+        for(int index = 0; index < 23; index++)
+            base[index] = 0;
+        for(int index = 0; index < alphabetSize; index++)
+            base[codeLengths[index] + 1]++;
+        for(int index = 1; index < 23; index++)
+            base[index] += base[index - 1];
+
+        // reset limit array
+        for(int index = 0; index < 23; index++)
+            limit[index] = 0;
+
+        // Calculate the first and last Huffman code for each code length (codes at a given
+        // length are sequential in value)
+        int code = 0;
+        for(int len = minLen; len <= maxLen; len++) {
+            code += base[len + 1] - base[len];
+            limit[len] = code - 1;
+            code <<= 1;
         }
-        for(int i_92_ = arg4 + 1; i_92_ <= arg5; i_92_++)
-            arg1[i_92_] = (arg0[i_92_ - 1] + 1 << 1) - arg1[i_92_];
+
+        // Update base array with appropriate values for decoding
+        for(int len = minLen + 1; len <= maxLen; len++)
+            base[len] = (limit[len - 1] + 1 << 1) - base[len];
     }
 }

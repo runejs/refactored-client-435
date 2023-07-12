@@ -15,7 +15,7 @@ public class BZipContext {
     public int[] mtfbase = new int[16];
     public byte stateOutCh;
     public int tPos;
-    public byte[][] aByteArrayArray822;
+    public byte[][] codeLengths;
     public int anInt823;
     public boolean[] inUse16;
     public int anInt825;
@@ -41,7 +41,7 @@ public class BZipContext {
         anInt825 = 0;
         inUse16 = new boolean[16];
         cftab = new int[257];
-        aByteArrayArray822 = new byte[6][258];
+        codeLengths = new byte[6][258];
         nextIn = 0;
         minLens = new int[6];
         perm = new int[6][258];
