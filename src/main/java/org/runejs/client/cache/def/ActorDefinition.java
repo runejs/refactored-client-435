@@ -13,8 +13,8 @@ import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.net.ISAAC;
 import org.runejs.client.node.CachedNode;
+import org.runejs.client.node.NodeCache;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.util.BitUtils;
 
@@ -23,6 +23,7 @@ import java.awt.*;
 public class ActorDefinition extends CachedNode implements EntityDefinition {
 
     public static int count;
+    public static NodeCache actorDefinitionNodeCache = new NodeCache(64);
 
     public boolean isClickable = true;
     public int boundaryDimension = 1;
@@ -118,7 +119,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     }
 
     public static ActorDefinition getDefinition(int id) {
-        ActorDefinition definition = (ActorDefinition) ISAAC.cachedActorDefinitions.get(id);
+        ActorDefinition definition = (ActorDefinition) actorDefinitionNodeCache.get(id);
         if(definition != null)
             return definition;
         byte[] data = GroundItemTile.aCacheArchive_1375.getFile(9, id);
@@ -126,7 +127,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         definition.id = id;
         if(data != null)
             definition.readValues(new Buffer(data));
-        ISAAC.cachedActorDefinitions.put(id, definition);
+        actorDefinitionNodeCache.put(id, definition);
         return definition;
     }
 

@@ -1,6 +1,5 @@
 package org.runejs.client.net;
 
-import org.runejs.client.node.NodeCache;
 import org.runejs.client.util.BitUtils;
 
 public class ISAAC {
@@ -8,10 +7,6 @@ public class ISAAC {
      * The golden ratio.
      */
     private static final int GOLDEN_RATIO = 0x9e3779b9;
-
-    public static NodeCache cachedActorDefinitions = new NodeCache(64);
-    public static boolean aBoolean512;
-    public static NodeCache aClass9_516 = new NodeCache(64);
 
     public int count;
     public int accumulator;
@@ -25,7 +20,7 @@ public class ISAAC {
         rsl = new int[256];
         for(int i = 0; seed.length > i; i++)
             rsl[i] = seed[i];
-        init(true);
+        init();
     }
 
     public void isaac() {
@@ -61,7 +56,7 @@ public class ISAAC {
         return rsl[count];
     }
 
-    public void init(boolean arg0) {
+    public void init() {
         int b;
         int c;
         int d;
@@ -143,8 +138,6 @@ public class ISAAC {
             mem[i + 6] = g;
             mem[7 + i] = h;
         }
-        if(!arg0)
-            aClass9_516 = null;
         /* second pass makes all of seed affect all of mem */
         for(int i = 0; i < 256; i += 8) {
             h += mem[7 + i];

@@ -8,13 +8,14 @@ import org.runejs.client.language.English;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.net.ISAAC;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.*;
+import org.runejs.client.node.NodeCache;
 
 public class ItemDefinition extends CachedNode implements EntityDefinition {
     public static int count;
     public static CacheArchive itemDefinitionCache;
+    public static NodeCache itemDefinitionNodeCache = new NodeCache(64);
 
     public int stackable;
     public String name;
@@ -91,7 +92,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
 
 
     public static ItemDefinition forId(int id, int arg1) {
-        ItemDefinition definition = (ItemDefinition) ISAAC.aClass9_516.get(id);
+        ItemDefinition definition = (ItemDefinition) itemDefinitionNodeCache.get(id);
         if(definition != null) {
             return definition;
         }
@@ -110,7 +111,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
             definition.groundOptions = null;
             definition.name = English.membersObject;
         }
-        ISAAC.aClass9_516.put(id, definition);
+        itemDefinitionNodeCache.put(id, definition);
         return definition;
     }
 

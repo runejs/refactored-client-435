@@ -15,7 +15,6 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
-import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.Configuration;
@@ -367,7 +366,7 @@ public class Class60 {
     }
 
     public static void renderLoginScreen(Component arg0, CacheArchive huffmanCacheArchive, CacheArchive gameImageCacheArchive) {
-        if (!ISAAC.aBoolean512) {
+        if (!MovedStatics.aBoolean512) {
             MovedStatics.flameLeftBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
             Rasterizer.resetPixels();
             GameObject.flameRightBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
@@ -499,7 +498,7 @@ public class Class60 {
                 MusicSystem.method405(10);
             UpdateServer.resetUpdateServerRequests(false);
             MovedStatics.clearScreen = true;
-            ISAAC.aBoolean512 = true;
+            MovedStatics.aBoolean512 = true;
         }
     }
 

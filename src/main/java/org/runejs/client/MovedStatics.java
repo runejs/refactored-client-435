@@ -367,9 +367,10 @@ public class MovedStatics {
      * for the furthest-right tab on the bottom.
      */
     public static IndexedImage tabHighlightImageBottomRightEdge;
+    public static boolean aBoolean512;
 
     public static void method440() {
-        if (ISAAC.aBoolean512) {
+        if (aBoolean512) {
             anIntArray1198 = null;
             GameObject.flameRightBackground = null;
             Class60.aProducingGraphicsBuffer_1631 = null;
@@ -394,7 +395,7 @@ public class MovedStatics {
             anIntArray1013 = null;
             MusicSystem.method405(10);
             UpdateServer.resetUpdateServerRequests(true);
-            ISAAC.aBoolean512 = false;
+            aBoolean512 = false;
         }
     }
 
@@ -1375,7 +1376,7 @@ public class MovedStatics {
 	public static int modifiedWidgetId = 0;
 
 	public static void method211() {
-	    ISAAC.aClass9_516.clear();
+	    ItemDefinition.itemDefinitionNodeCache.clear();
 	    MouseHandler.modelCache.clear();
 	    Buffer.rgbImageCache.clear();
 	
@@ -1449,7 +1450,7 @@ public class MovedStatics {
 	'$', '%', '"', '[', ']'};
 
 	public static void method586(int arg0) {
-	    ISAAC.cachedActorDefinitions.clear();
+	    ActorDefinition.actorDefinitionNodeCache.clear();
 	    aClass9_1611.clear();
 	    if(arg0 <= 63)
 	        English.errorConnectingToServer = null;
