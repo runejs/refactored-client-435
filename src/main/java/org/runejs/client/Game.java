@@ -245,7 +245,7 @@ public class Game {
                                     int i_14_ = 0;
                                     if (-32 + Rasterizer.viewportLeft < i_10_ && Rasterizer.viewportRight > i_10_ && Rasterizer.viewportTop + -32 < i_11_ && Rasterizer.viewportBottom > i_11_ || MovedStatics.activeInterfaceType != 0 && GroundItemTile.selectedInventorySlot == i_7_) {
                                         int i_15_ = 0;
-                                        if (MovedStatics.itemSelected == 1 && i_7_ == GameInterface.selectedInventorySlot && gameInterface.id == ISAAC.anInt525)
+                                        if (GameInterface.itemCurrentlySelected == 1 && i_7_ == GameInterface.itemSelectedContainerSlot && gameInterface.id == GameInterface.itemSelectedWidgetId)
                                             i_15_ = 16777215;
                                         ImageRGB imageRGB = ItemDefinition.sprite(gameInterface.itemAmounts[i_7_], i_13_, i_15_);
                                         if (imageRGB == null)
@@ -700,7 +700,7 @@ public class Game {
         MovedStatics.method650(0);
         for (int i = 0; i < 100; i++)
             ChatBox.chatMessages[i] = null;
-        MovedStatics.itemSelected = 0;
+        GameInterface.itemCurrentlySelected = 0;
         MovedStatics.destinationX = 0;
         Buffer.anInt1985 = -1;
         Player.npcCount = 0;

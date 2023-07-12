@@ -30,7 +30,6 @@ import org.runejs.client.message.outbound.useitem.*;
 import org.runejs.client.message.outbound.widget.CloseWidgetsOutboundMessage;
 import org.runejs.client.message.outbound.widget.container.DropWidgetItemOutboundMessage;
 import org.runejs.client.message.outbound.widget.input.*;
-import org.runejs.client.net.ISAAC;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.scene.InteractiveObject;
@@ -63,7 +62,6 @@ public class GameInterface extends CachedNode {
     public static int reportAbuseInterfaceID = -1;
     public static boolean aBoolean2177 = false;
     public static int atInventoryInterfaceType = 0;
-    public static int selectedInventorySlot;
     public static int reportAbuseWidgetId = -1;
     public static int anInt876 = 0;
     public static int selectedSpell;
@@ -73,6 +71,22 @@ public class GameInterface extends CachedNode {
      * The player that the local player is sending a PM to.
      */
     public static long sendingMessageTo = 0L;
+    /**
+     * The widget ID on which the item was selected.
+     */
+    public static int itemSelectedWidgetId;
+    /**
+     * The item ID currently selected on a widget.
+     */
+    public static int itemSelectedItemId;
+    /**
+     * The slot within the container of the currently selected item.
+     */
+    public static int itemSelectedContainerSlot;
+    /**
+     * Is an item currently selected?
+     */
+    public static int itemCurrentlySelected = 0;
     /**
      * The lightened edge (top and left) color of the scroll indicator chip.
      */
@@ -841,25 +855,25 @@ public class GameInterface extends CachedNode {
                     crossY = MouseHandler.clickY;
                     MovedStatics.crossIndex = 0;
                     
-                    int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
-                    int containerId = ISAAC.anInt525 & 0xFFFF;
+                    int widgetId = (itemSelectedWidgetId >> 16) & 0xFFFF;
+                    int containerId = itemSelectedWidgetId & 0xFFFF;
 
                     OutgoingPackets.sendMessage(
                         new UseItemOnPlayerOutboundMessage(
-                            MovedStatics.anInt1154,
+                            itemSelectedItemId,
                             widgetId,
                             containerId,
-                            selectedInventorySlot,
+                            itemSelectedContainerSlot,
                             npcIdx
                         )
                     );
                 }
             }
             if(action == ActionRowType.SELECT_ITEM_ON_WIDGET.getId()) {
-                MovedStatics.anInt1154 = npcIdx;
-                selectedInventorySlot = i;
-                ISAAC.anInt525 = i_10_;
-                MovedStatics.itemSelected = 1;
+                itemSelectedItemId = npcIdx;
+                itemSelectedContainerSlot = i;
+                itemSelectedWidgetId = i_10_;
+                itemCurrentlySelected = 1;
                 Native.selectedItemName = Native.lightRed + ItemDefinition.forId(npcIdx, 10).name + Native.white;
                 Game.widgetSelected = 0;
                 if(Native.selectedItemName == null) {
@@ -990,15 +1004,15 @@ public class GameInterface extends CachedNode {
                         MovedStatics.crossIndex = 0;
                         MovedStatics.crossType = 2;
 
-                        int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
-                        int containerId = ISAAC.anInt525 & 0xFFFF;
+                        int widgetId = (itemSelectedWidgetId >> 16) & 0xFFFF;
+                        int containerId = itemSelectedWidgetId & 0xFFFF;
 
                         OutgoingPackets.sendMessage(
                             new UseItemOnPlayerOutboundMessage(
-                                MovedStatics.anInt1154,
+                                itemSelectedItemId,
                                 widgetId,
                                 containerId,
-                                selectedInventorySlot,
+                                itemSelectedContainerSlot,
                                 npcIdx
                             )
                         );
@@ -1021,15 +1035,15 @@ public class GameInterface extends CachedNode {
                     );
                 }
                 if(action == ActionRowType.USE_ITEM_ON_OBJECT.getId() && AnimationSequence.method596(i, npcIdx, (byte) -104, i_10_)) {
-                    int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
-                    int containerId = ISAAC.anInt525 & 0xFFFF;
+                    int widgetId = (itemSelectedWidgetId >> 16) & 0xFFFF;
+                    int containerId = itemSelectedWidgetId & 0xFFFF;
 
                     OutgoingPackets.sendMessage(
                         new UseItemOnObjectOutboundMessage(
-                            MovedStatics.anInt1154,
+                            itemSelectedItemId,
                             widgetId,
                             containerId,
-                            selectedInventorySlot,
+                            itemSelectedContainerSlot,
                             (npcIdx & 0x1fffccf7) >> 14,
                             i + MovedStatics.baseX,
                             i_10_ + MovedStatics.baseY
@@ -1049,18 +1063,18 @@ public class GameInterface extends CachedNode {
                     }
                 }
                 if(action == ActionRowType.USE_ITEM_ON_INVENTORY_ITEM.getId()) {
-                    int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
-                    int containerId = ISAAC.anInt525 & 0xFFFF;
+                    int widgetId = (itemSelectedWidgetId >> 16) & 0xFFFF;
+                    int containerId = itemSelectedWidgetId & 0xFFFF;
 
                     int targetWidgetId = (i_10_ >> 16) & 0xFFFF;
                     int targetContainerId = i_10_ & 0xFFFF;
 
                     OutgoingPackets.sendMessage(
                         new UseItemOnWidgetItemOutboundMessage(
-                            MovedStatics.anInt1154,
+                            itemSelectedItemId,
                             widgetId,
                             containerId,
-                            selectedInventorySlot,
+                            itemSelectedContainerSlot,
                             npcIdx,
                             targetWidgetId,
                             targetContainerId,
@@ -1085,7 +1099,7 @@ public class GameInterface extends CachedNode {
                     Game.widgetSelected = 1;
                     Native.selectedSpellVerb = gameInterface.targetVerb;
                     MovedStatics.selectedMask = gameInterface.clickMask;
-                    MovedStatics.itemSelected = 0;
+                    itemCurrentlySelected = 0;
                     selectedSpell = i_10_;
                     Native.selectedSpellName = Native.green + gameInterface.spellName + Native.white;
                     if(MovedStatics.selectedMask == 16) {
@@ -1504,15 +1518,15 @@ public class GameInterface extends CachedNode {
                         MovedStatics.crossIndex = 0;
                         MovedStatics.crossType = 2;
 
-                        int widgetId = (ISAAC.anInt525 >> 16) & 0xFFFF;
-                        int containerId = ISAAC.anInt525 & 0xFFFF;
+                        int widgetId = (itemSelectedWidgetId >> 16) & 0xFFFF;
+                        int containerId = itemSelectedWidgetId & 0xFFFF;
 
                         OutgoingPackets.sendMessage(
                             new UseItemOnWorldItemOutboundMessage(
-                                MovedStatics.anInt1154,
+                                itemSelectedItemId,
                                 widgetId,
                                 containerId,
-                                selectedInventorySlot,
+                                itemSelectedContainerSlot,
                                 npcIdx,
                                 i + MovedStatics.baseX,
                                 MovedStatics.baseY + i_10_
@@ -1556,8 +1570,8 @@ public class GameInterface extends CachedNode {
                             OutgoingPackets.sendMessage(new NPCInteractionOutboundMessage(3, npcIdx));
                         }
                     }
-                    if(MovedStatics.itemSelected != 0) {
-                        MovedStatics.itemSelected = 0;
+                    if(itemCurrentlySelected != 0) {
+                        itemCurrentlySelected = 0;
                         redrawTabArea = true;
                     }
                     if(Game.widgetSelected != 0) {

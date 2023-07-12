@@ -5,6 +5,7 @@ import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.ItemDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.def.SpotAnimDefinition;
+import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
@@ -282,7 +283,7 @@ public class Player extends Actor {
                 playerDisplayName = player.playerName + MovedStatics.getCombatLevelColour(localPlayer.combatLevel, player.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + player.combatLevel + Native.rightParenthesis;
             else
                 playerDisplayName = player.playerName + Native.leftParenthesisWithSpacePrefix + English.prefixSkill + player.skillLevel + Native.rightParenthesis;
-            if (MovedStatics.itemSelected == 1) {
+            if (GameInterface.itemCurrentlySelected == 1) {
                 MovedStatics.addActionRow(English.use, index, x, y, ActionRowType.USE_ITEM_ON_PLAYER.getId(), Native.selectedItemName + Native.arrowActionOnOther + playerDisplayName);
             } else if (Game.widgetSelected == 1) {
                 if ((MovedStatics.selectedMask & 0x8) == 8) {

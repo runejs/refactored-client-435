@@ -311,10 +311,6 @@ public class MovedStatics {
      */
     public static int anInt1049 = 0;
     /**
-     * Currently selected item ID within a widget ?
-     */
-    public static int anInt1154;
-    /**
      * Something to do with flames, maybe
      */
     public static int[] anIntArray1198;
@@ -860,7 +856,7 @@ public class MovedStatics {
 
     public static void method1013() {
         int lasthash = -1;
-        if (MovedStatics.itemSelected == 0 && Game.widgetSelected == 0) {
+        if (GameInterface.itemCurrentlySelected == 0 && Game.widgetSelected == 0) {
             String tileCoords = "";
             if (Configuration.DEBUG_CONTEXT) {
                 tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Scene.hoveredTileX + baseX), Integer.toString(Scene.hoveredTileY + baseY));
@@ -883,7 +879,7 @@ public class MovedStatics {
                         gameObjectDefinition = gameObjectDefinition.getChildDefinition();
                     if (gameObjectDefinition == null)
                         continue;
-                    if (MovedStatics.itemSelected == 1) {
+                    if (GameInterface.itemCurrentlySelected == 1) {
                         addActionRow(English.use, hash, x, y, ActionRowType.USE_ITEM_ON_OBJECT.getId(), Native.selectedItemName + Native.toCyan + gameObjectDefinition.name);
                     } else if (Game.widgetSelected != 1) {
                         String[] options = gameObjectDefinition.actions;
@@ -969,7 +965,7 @@ public class MovedStatics {
                     if (itemList != null) {
                         for (Item item = (Item) itemList.peekLast(); item != null; item = (Item) itemList.pollLast()) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(item.itemId, 10);
-                            if (MovedStatics.itemSelected == 1) {
+                            if (GameInterface.itemCurrentlySelected == 1) {
                                 addActionRow(English.use, item.itemId, x, y, ActionRowType.USE_ITEM_ON_WORLD_ITEM.getId(), Native.selectedItemName + Native.toLightRed + itemDefinition.name);
                             } else if (Game.widgetSelected != 1) {
                                 String[] class1s = itemDefinition.groundOptions;
@@ -1247,7 +1243,7 @@ public class MovedStatics {
 	                                    Game.mouseInvInterfaceIndex = i_4_;
 	                                    if(gameInterface.items[i_4_] > 0) {
 	                                        ItemDefinition itemDefinition = ItemDefinition.forId(-1 + gameInterface.items[i_4_], 10);
-	                                        if(MovedStatics.itemSelected != 1 || !gameInterface.isInventory) {
+	                                        if(GameInterface.itemCurrentlySelected != 1 || !gameInterface.isInventory) {
 	                                            if(Game.widgetSelected == 1 && gameInterface.isInventory) {
 	                                                if((selectedMask & 0x10) == 16) {
 	                                                    addActionRow(Native.selectedSpellVerb, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.CAST_MAGIC_ON_WIDGET_ITEM.getId(), Native.selectedSpellName + Native.toLightRed + itemDefinition.name);
@@ -1321,7 +1317,7 @@ public class MovedStatics {
 	                                                }
 	                                                addActionRow(English.examine, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId(), examineText.toString());
 	                                            }
-	                                        } else if(ISAAC.anInt525 != gameInterface.id || i_4_ != GameInterface.selectedInventorySlot) {
+	                                        } else if(GameInterface.itemSelectedWidgetId != gameInterface.id || i_4_ != GameInterface.itemSelectedContainerSlot) {
 	                                            addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.USE_ITEM_ON_INVENTORY_ITEM.getId(), Native.selectedItemName + Native.toLightRed + itemDefinition.name);
 	                                        }
 	                                    }
@@ -1401,8 +1397,7 @@ public class MovedStatics {
 	
 	}
 
-	public static int itemSelected = 0;
-	public static ProducingGraphicsBuffer flameLeftBackground;
+    public static ProducingGraphicsBuffer flameLeftBackground;
     /**
      * Images for function icons on the minimap (e.g. quests, instructors)
      */
@@ -2071,7 +2066,7 @@ public class MovedStatics {
                 if (actorDefinition.combatLevel != 0) {
                     npcDisplayName = npcDisplayName + getCombatLevelColour(Player.localPlayer.combatLevel, actorDefinition.combatLevel) + Native.leftParenthesisWithSpacePrefix + English.prefixLevel + actorDefinition.combatLevel + Native.rightParenthesis;
                 }
-                if (itemSelected == 1) {
+                if (GameInterface.itemCurrentlySelected == 1) {
                     addActionRow(English.use, index, x, y, ActionRowType.USE_ITEM_ON_NPC.getId(), Native.selectedItemName + Native.toYellow + npcDisplayName);
                 } else if (Game.widgetSelected == 1) {
                     if ((0x2 & selectedMask) == 2) {
@@ -2551,9 +2546,9 @@ public class MovedStatics {
     }
 
     public static void drawMenuTooltip(int arg0) {
-        if (menuActionRow >= 2 || itemSelected != 0 || Game.widgetSelected != 0) {
+        if (menuActionRow >= 2 || GameInterface.itemCurrentlySelected != 0 || Game.widgetSelected != 0) {
             String class1;
-            if (itemSelected == 1 && menuActionRow < 2)
+            if (GameInterface.itemCurrentlySelected == 1 && menuActionRow < 2)
                 class1 = English.use + Native.whitespace + Native.selectedItemName + Native.targetThingArrow;
             else if (Game.widgetSelected != 1 || menuActionRow >= 2)
                 class1 = menuActionTexts[-1 + menuActionRow];

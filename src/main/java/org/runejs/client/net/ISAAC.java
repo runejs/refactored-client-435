@@ -12,7 +12,6 @@ public class ISAAC {
     public static NodeCache cachedActorDefinitions = new NodeCache(64);
     public static boolean aBoolean512;
     public static NodeCache aClass9_516 = new NodeCache(64);
-    public static int anInt525;
 
     public int count;
     public int accumulator;
