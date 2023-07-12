@@ -945,7 +945,7 @@ public class Game {
             if(MovedStatics.activeInterfaceType == 2) {
                 GameInterface.redrawTabArea = true;
             }
-            Class43.drawTabArea();
+            MovedStatics.drawTabArea();
 
             if(GameInterface.chatboxInterfaceId != -1) {
                 boolean bool = Renderable.handleSequences(GameInterface.chatboxInterfaceId);
@@ -1018,7 +1018,7 @@ public class Game {
             method353();
             ChatBox.renderChatbox();
 
-            Class43.drawTabArea();
+            MovedStatics.drawTabArea();
 
             Minimap.renderMinimap();
 
@@ -1116,7 +1116,7 @@ public class Game {
         if(GameInterface.fullscreenSiblingInterfaceId != -1)
             drawParentInterface(0, 0, 0, 765, 503, GameInterface.fullscreenSiblingInterfaceId);
         if(!MovedStatics.menuOpen) {
-            Class43.processRightClick();
+            MovedStatics.processRightClick();
             MovedStatics.drawMenuTooltip(4);
         } else
             if(ScreenController.frameMode == ScreenMode.FIXED && MovedStatics.menuScreenArea == 0){
@@ -1404,11 +1404,11 @@ public class Game {
                                 MovedStatics.activeInterfaceType = 0;
                                 if(Class40_Sub5_Sub15.lastItemDragged && Buffer.lastItemDragTime >= 5) {
                                     RSRuntimeException.lastActiveInvInterface = -1;
-                                    Class43.processRightClick();
+                                    MovedStatics.processRightClick();
                                     if(RSRuntimeException.lastActiveInvInterface == MovedStatics.modifiedWidgetId && mouseInvInterfaceIndex != GroundItemTile.selectedInventorySlot) {
                                         GameInterface childInterface = GameInterface.getInterface(MovedStatics.modifiedWidgetId);
                                         int moveItemInsertionMode = 0;
-                                        if(Class43.bankInsertMode == 1 && childInterface.contentType == 206)
+                                        if(MovedStatics.bankInsertMode == 1 && childInterface.contentType == 206)
                                             moveItemInsertionMode = 1;
                                         if(childInterface.items[mouseInvInterfaceIndex] <= 0)
                                             moveItemInsertionMode = 0;

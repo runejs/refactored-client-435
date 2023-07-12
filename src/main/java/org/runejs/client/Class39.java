@@ -54,7 +54,7 @@ public class Class39 implements Runnable {
                     coord++;
                 }
             }
-            Class43.threadSleep(50L);
+            MovedStatics.threadSleep(50L);
         }
     }
 }

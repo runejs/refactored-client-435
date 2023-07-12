@@ -55,7 +55,7 @@ public class GameSocket implements Runnable {
 
             if (signLinkNode != null) {
                 while (signLinkNode.status == 0) {
-                    Class43.threadSleep(1L);
+                    MovedStatics.threadSleep(1L);
                 }
 
                 if (signLinkNode.status == 1) {

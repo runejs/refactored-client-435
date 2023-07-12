@@ -1,6 +1,6 @@
 package org.runejs.client.util;
 
-import org.runejs.client.Class43;
+import org.runejs.client.MovedStatics;
 
 public class MillisTimer extends Timer {
     public int pos;
@@ -57,7 +57,7 @@ public class MillisTimer extends Timer {
         }
         if(sleep < arg1)
             sleep = arg1;
-        Class43.threadSleep(sleep);
+        MovedStatics.threadSleep(sleep);
         int i_7_ = 0;
         for(/**/; anInt1903 < 256; anInt1903 += anInt1915)
             i_7_++;

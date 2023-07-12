@@ -245,6 +245,7 @@ public class MovedStatics {
     public static int hintIconPosX = 0;
     public static int systemUpdateTime = 0;
     public static LinkedList projectileQueue = new LinkedList();
+    public static int bankInsertMode = 0;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -552,7 +553,7 @@ public class MovedStatics {
                 string = string.replace('#', '_');
                 SignlinkNode signlinkNode = Actor.signlink.addType4Node(new URL(Actor.signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + Class39.anInt901 + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
                 while (signlinkNode.status == 0)
-                    Class43.threadSleep(1L);
+                    threadSleep(1L);
                 if (signlinkNode.status != 1)
                     return;
                 DataInputStream datainputstream = (DataInputStream) signlinkNode.value;
@@ -1393,7 +1394,7 @@ public class MovedStatics {
 	                }
 	            }
 	            if(varPlayerType == 9)
-	                Class43.bankInsertMode = varPlayerValue;
+	                bankInsertMode = varPlayerValue;
 	            if(varPlayerType == 10) {
 	            	SoundSystem.updateAreaSoundEffectVolume(varPlayerValue);
 	            }
@@ -1791,7 +1792,7 @@ public class MovedStatics {
         Class65.method1018();
         Player.setTutorialIslandFlag();
         if (!menuOpen) {
-            Class43.processRightClick();
+            processRightClick();
             drawMenuTooltip(4);
         } else  {
             if(ScreenController.frameMode == ScreenMode.FIXED && menuScreenArea == 0){
@@ -2495,5 +2496,186 @@ public class MovedStatics {
         else if(class1.length() > 4)
             class1 = Native.cyan + class1.substring(0, class1.length() + -4) + Native.suffixK + Native.whiteOpeningParenthesis + class1 + Native.rightParenthesis;
         return Native.whitespace_b + class1;
+    }
+
+    public static void threadSleep(long ms) {
+        if (ms <= 0L) {
+            return;
+        }
+
+        try {
+            Thread.sleep(ms);
+        } catch(InterruptedException interruptedexception) {
+            /* empty */
+        }
+    }
+
+    public static void drawTabArea() {
+        showSidePanelRedrawnText = true;
+        method996();
+        if(GameInterface.tabAreaInterfaceId != -1) {
+            boolean bool = Game.drawParentInterface(1, 0, 0, 190, 261, GameInterface.tabAreaInterfaceId);
+            if(!bool)
+                GameInterface.redrawTabArea = true;
+        } else if(Player.tabWidgetIds[Player.currentTabId] != -1) {
+            boolean bool = Game.drawParentInterface(1, 0, 0, 190, 261, Player.tabWidgetIds[Player.currentTabId]);
+            if(!bool)
+                GameInterface.redrawTabArea = true;
+        }
+        if(menuOpen && menuScreenArea == 1) {
+            if(anInt848 == 1)
+                method398();
+            else if(ScreenController.frameMode == ScreenMode.FIXED)
+                drawMenu(0,0);
+        }
+
+        if(ScreenController.frameMode == ScreenMode.FIXED) {
+            drawTabGraphics();
+        }
+    }
+
+    public static void processRightClick() {
+        if(activeInterfaceType == 0) {
+            menuActionTexts[0] = English.cancel;
+            menuActionTypes[0] = ActionRowType.CANCEL.getId();
+            menuActionRow = 1;
+            if(GameInterface.fullscreenInterfaceId == -1) {
+                method445();
+                anInt3065 = -1;
+                hoveredWidgetChildId = -1;
+                boolean bool = false;
+                // Right game screen
+                if(ScreenController.isCoordinatesIn3dScreen(MouseHandler.mouseX , MouseHandler.mouseY )) {
+                    if(GameInterface.gameScreenInterfaceId == -1) {
+                        method1013();
+                    } else {
+                        int yOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);
+                        int xOffset = (ScreenController.drawWidth /2) - (512/2) - (234/3);
+                        if(ScreenController.frameMode == ScreenMode.FIXED) {
+                            yOffset = 0;
+                            xOffset = 0;
+                        }
+                        Class13.handleInterfaceActions(GameInterfaceArea.GAME_AREA, MouseHandler.mouseX - xOffset, MouseHandler.mouseY - yOffset, 4, 4, 516, 338, GameInterface.gameScreenInterfaceId);
+                    }
+                }
+
+                anInt573 = anInt3065;
+                anInt2850 = hoveredWidgetChildId;
+                anInt3065 = -1;
+                hoveredWidgetChildId = -1;
+                // Right click tab
+                if(ScreenController.isCoordinatesInTabArea(MouseHandler.mouseX, MouseHandler.mouseY)) {
+                    ScreenController.handleTabClick(MouseHandler.mouseX, MouseHandler.mouseY);
+                }
+                if(hoveredWidgetChildId != currentHoveredWidgetChildId) {
+                    GameInterface.redrawTabArea = true;
+                    currentHoveredWidgetChildId = hoveredWidgetChildId;
+                }
+                hoveredWidgetChildId = -1;
+                if(anInt3065 != anInt614) {
+                    anInt614 = anInt3065;
+                    GameInterface.redrawTabArea = true;
+                }
+                anInt3065 = -1;
+                // right click chatbox
+                if(ScreenController.isCoordinatesInChatArea(MouseHandler.mouseX , MouseHandler.mouseY)) {
+                    ScreenController.handleChatBoxMouse(MouseHandler.mouseX , MouseHandler.mouseY);
+                }
+
+                // Set hovering for chat widgets
+                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && currentHoveredChatboxWidgetChildId != hoveredWidgetChildId) {
+                    ChatBox.redrawChatbox = true;
+                    currentHoveredChatboxWidgetChildId = hoveredWidgetChildId;
+                }
+
+                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && anInt3065 != anInt1586) {
+                    ChatBox.redrawChatbox = true;
+                    anInt1586 = anInt3065;
+                }
+                while(!bool) {
+                    bool = true;
+                    for(int i = 0; -1 + menuActionRow > i; i++) {
+                        if(menuActionTypes[i] < 1000 && menuActionTypes[1 + i] > 1000) {
+                            bool = false;
+                            String class1 = menuActionTexts[i];
+                            menuActionTexts[i] = menuActionTexts[i + 1];
+                            menuActionTexts[i + 1] = class1;
+                            int i_90_ = menuActionTypes[i];
+                            menuActionTypes[i] = menuActionTypes[i + 1];
+                            menuActionTypes[i + 1] = i_90_;
+                            i_90_ = firstMenuOperand[i];
+                            firstMenuOperand[i] = firstMenuOperand[1 + i];
+                            firstMenuOperand[1 + i] = i_90_;
+                            i_90_ = secondMenuOperand[i];
+                            secondMenuOperand[i] = secondMenuOperand[1 + i];
+                            secondMenuOperand[i + 1] = i_90_;
+                            i_90_ = selectedMenuActions[i];
+                            selectedMenuActions[i] = selectedMenuActions[i + 1];
+                            selectedMenuActions[1 + i] = i_90_;
+                        }
+                    }
+                }
+            } else {
+                anInt3065 = -1;
+                hoveredWidgetChildId = -1;
+                Class13.handleInterfaceActions(GameInterfaceArea.GAME_AREA, MouseHandler.mouseX, MouseHandler.mouseY, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
+                anInt2850 = hoveredWidgetChildId;
+                anInt573 = anInt3065;
+            }
+        }
+    }
+
+    public static void method398() {
+        String class1 = null;
+        for(int i = 0; menuActionRow > i; i++) {
+            if(menuActionTexts[i].contains(Native.lightRed)) {
+                class1 = menuActionTexts[i].substring(menuActionTexts[i].indexOf(Native.lightRed));
+                break;
+            }
+        }
+        if(class1 == null)
+            drawMenu(0,0);
+        else {
+            int i = menuWidth;
+            int i_0_ = menuOffsetX;
+            if(i > 190)
+                i = 190;
+            int i_1_ = menuHeight;
+            int i_2_ = Game.menuOffsetY;
+            if(i_0_ < 0)
+                i_0_ = 0;
+            int i_3_ = 6116423;
+            Rasterizer.drawFilledRectangle(i_0_, i_2_, i, i_1_, i_3_);
+            Rasterizer.drawFilledRectangle(i_0_ + 1, i_2_ + 1, -2 + i, 16, 0);
+            Rasterizer.drawUnfilledRectangle(i_0_ + 1, 18 + i_2_, -2 + i, i_1_ + -19, 0);
+            TypeFace.fontBold.drawShadowedString(class1, 3 + i_0_, 14 + i_2_, false, i_3_);
+            int i_4_ = MouseHandler.mouseX;
+            int i_5_ = MouseHandler.mouseY;
+            if(menuScreenArea == 0) {
+                i_4_ -= 4;
+                i_5_ -= 4;
+            }
+            if(menuScreenArea == 1) {
+                i_4_ -= 553;
+                i_5_ -= 205;
+            }
+            if(menuScreenArea == 2) {
+                i_5_ -= 357;
+                i_4_ -= 17;
+            }
+            for(int i_6_ = 0; i_6_ < menuActionRow; i_6_++) {
+                int i_7_ = 31 + i_2_ + (menuActionRow + -1 + -i_6_) * 15;
+                String class1_8_ = menuActionTexts[i_6_];
+                int i_9_ = 16777215;
+                if(class1_8_.endsWith(class1)) {
+                    class1_8_ = class1_8_.substring(0, class1_8_.length() - class1.length());
+                    if(class1_8_.endsWith(Native.whitespace))
+                        class1_8_ = class1_8_.substring(0, class1_8_.length() + -Native.whitespace.length());
+                }
+                if(i_0_ < i_4_ && i_4_ < i_0_ + i && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)
+                    i_9_ = 16776960;
+                TypeFace.fontBold.drawShadowedString(class1_8_, 3 + i_0_, i_7_, true, i_9_);
+            }
+        }
     }
 }

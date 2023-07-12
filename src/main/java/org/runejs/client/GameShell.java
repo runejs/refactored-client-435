@@ -248,7 +248,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
     public void destroy() {
         if (currentGameShell == this && !PacketBuffer.closedClient) {
             exitTimeInMillis = System.currentTimeMillis();
-            Class43.threadSleep(5000L);
+            MovedStatics.threadSleep(5000L);
             Actor.signlink = null;
             closeGameShell();
         }
