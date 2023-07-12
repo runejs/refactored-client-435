@@ -360,7 +360,7 @@ public class Game {
                                     textColor = 16777215;
                             }
 
-                            text = MovedStatics.method532(gameInterface, text);
+                            text = ClientScriptRunner.method532(gameInterface, text);
                             font.drawText(text, absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, textColor, gameInterface.textShadowed, gameInterface.xTextAlignment, gameInterface.yTextAlignment, gameInterface.lineHeight);
                         }
                     } else if (gameInterface.type == GameInterfaceType.GRAPHIC) {
@@ -546,7 +546,7 @@ public class Game {
                             int textHeight = 0;
                             TypeFace class40_sub5_sub14_sub1 = MovedStatics.fontNormal;
                             String text = gameInterface.disabledText;
-                            text = MovedStatics.method532(gameInterface, text);
+                            text = ClientScriptRunner.method532(gameInterface, text);
                             while (text.length() > 0) {
                                 int lineBreakCharacter = text.indexOf(Native.lineBreak);
                                 String textLine;
@@ -578,7 +578,7 @@ public class Game {
                             Rasterizer.drawUnfilledRectangle(tooltipX, tooltipY, textWidth, textHeight, 0);
                             text = gameInterface.disabledText;
                             int tooltipTitleY = 2 + tooltipY + class40_sub5_sub14_sub1.characterDefaultHeight;
-                            text = MovedStatics.method532(gameInterface, text);
+                            text = ClientScriptRunner.method532(gameInterface, text);
                             while (text.length() > 0) {
                                 int lineBreakCharacter = text.indexOf(Native.lineBreak);
                                 String textLine;

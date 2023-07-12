@@ -1,7 +1,6 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.CacheIndex;
-import org.runejs.client.cache.cs.ClientScript;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
@@ -2278,57 +2277,6 @@ public class MovedStatics {
             fontNormal.drawStringLeft(arg3, 256, i - 1, 16777215);
         }
         drawGameScreenGraphics();
-    }
-
-    public static String method532(GameInterface gameInterface, String arg2) {
-        if (arg2.contains(Native.percent)) {
-            for (; ; ) {
-                int i = arg2.indexOf(Native.percentOne);
-                if (i == -1)
-                    break;
-                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(0, gameInterface)) + arg2.substring(2 + i);
-            }
-            for (; ; ) {
-                int i = arg2.indexOf(Native.percentTwo);
-                if (i == -1)
-                    break;
-                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(1, gameInterface)) + arg2.substring(i + 2);
-            }
-            for (; ; ) {
-                int i = arg2.indexOf(Native.percentThree);
-                if (i == -1)
-                    break;
-                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(2, gameInterface)) + arg2.substring(2 + i);
-            }
-            for (; ; ) {
-                int i = arg2.indexOf(Native.percentFour);
-                if (i == -1)
-                    break;
-                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(3, gameInterface)) + arg2.substring(i + 2);
-            }
-            for (; ; ) {
-                int i = arg2.indexOf(Native.percentFive);
-                if (i == -1)
-                    break;
-                arg2 = arg2.substring(0, i) + ClientScriptRunner.method872(999999999, ClientScript.parseClientScripts(4, gameInterface)) + arg2.substring(i + 2);
-            }
-            for (; ; ) {
-                // check client script results for value
-                int i = arg2.indexOf(Native.percentDns);
-                if (i == -1)
-                    break;
-                String str = "";
-                if (aSignlinkNode_394 != null) {
-                    str = method204(aSignlinkNode_394.integerData);
-                    if (aSignlinkNode_394.value != null) {
-                        byte[] is = ((String) aSignlinkNode_394.value).getBytes(StandardCharsets.ISO_8859_1);
-                        str = InteractiveObject.method279(is, 0, is.length).toString();
-                    }
-                }
-                arg2 = arg2.substring(0, i) + str + arg2.substring(i + 4);
-            }
-        }
-        return arg2;
     }
 
     public static String getCombatLevelColour(int arg0, int arg1) {
