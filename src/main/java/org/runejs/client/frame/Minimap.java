@@ -125,7 +125,7 @@ public class Minimap extends FramePieceRenderer {
                 int playerX = player.worldX / 32 + -(Player.localPlayer.worldX / 32);
                 int playerY = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
                 boolean isFriend = false;
-                long name = RSString.nameToLong(player.playerName);
+                long name = MovedStatics.nameToLong(player.playerName);
                 for(int friend = 0; Player.friendsCount > friend; friend++) {
                     if(name == Player.friends[friend] && Player.friendWorlds[friend] != 0) {
                         isFriend = true;
@@ -320,7 +320,7 @@ public class Minimap extends FramePieceRenderer {
                 int playerX = player.worldX / 32 + -(Player.localPlayer.worldX / 32);
                 int playerY = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
                 boolean isFriend = false;
-                long name = RSString.nameToLong(player.playerName);
+                long name = MovedStatics.nameToLong(player.playerName);
                 for(int friend = 0; Player.friendsCount > friend; friend++) {
                     if(name == Player.friends[friend] && Player.friendWorlds[friend] != 0) {
                         isFriend = true;

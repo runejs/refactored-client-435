@@ -255,7 +255,7 @@ public class GameInterface extends CachedNode {
                 GameObjectDefinition.anInt2543 = MovedStatics.anInt2183;
             } else {
                 while(GameObjectDefinition.anInt2543 != MovedStatics.anInt2183) {
-                    int i = RSString.keyCodes[MovedStatics.anInt2183];
+                    int i = MovedStatics.keyCodes[MovedStatics.anInt2183];
                     MovedStatics.anInt2183 = 0x7f & MovedStatics.anInt2183 + 1;
                     if(i < 0) {
                         Item.obfuscatedKeyStatus[i ^ 0xffffffff] = false;
@@ -1887,11 +1887,11 @@ public class GameInterface extends CachedNode {
                     ChatBox.messagePromptRaised = false;
                     ChatBox.redrawChatbox = true;
                     if(anInt876 == 1) {
-                        long l = RSString.nameToLong(ChatBox.chatMessage);
+                        long l = MovedStatics.nameToLong(ChatBox.chatMessage);
                         addFriend(l);
                     }
                     if(anInt876 == 2 && Player.friendsCount > 0) {
-                        long l = RSString.nameToLong(ChatBox.chatMessage);
+                        long l = MovedStatics.nameToLong(ChatBox.chatMessage);
                         removeFriend(l);
                     }
                     if(anInt876 == 3 && ChatBox.chatMessage.length() > 0) {
@@ -1912,11 +1912,11 @@ ChatBox.tradeMode
                         }
                     }
                     if(anInt876 == 4 && Player.ignoresCount < 100) {
-                        long l = RSString.nameToLong(ChatBox.chatMessage);
+                        long l = MovedStatics.nameToLong(ChatBox.chatMessage);
                         addIgnore(l);
                     }
                     if(anInt876 == 5 && Player.ignoresCount > 0) {
-                        long l = RSString.nameToLong(ChatBox.chatMessage);
+                        long l = MovedStatics.nameToLong(ChatBox.chatMessage);
                         removeIgnore(l);
                     }
                 }
@@ -1954,7 +1954,7 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNumericInputOutboundMessage(i
                 }
                 if(MovedStatics.anInt2854 == 84) {
                     if(ChatBox.inputMessage.length() > 0) {
-long name = RSString.nameToLong(ChatBox.inputMessage);
+long name = MovedStatics.nameToLong(ChatBox.inputMessage);
 
 OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name));
                     }

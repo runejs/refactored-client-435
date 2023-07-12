@@ -538,7 +538,7 @@ public class Game {
                                 }
                             }
                         }
-                        if (gameInterface.type == GameInterfaceType.IF1_TOOLTIP && MovedStatics.method438(areaId, i) && RSString.tooltipDelay == MovedStatics.durationHoveredOverWidget) {
+                        if (gameInterface.type == GameInterfaceType.IF1_TOOLTIP && MovedStatics.method438(areaId, i) && MovedStatics.tooltipDelay == MovedStatics.durationHoveredOverWidget) {
                             int textWidth = 0;
                             int textHeight = 0;
                             TypeFace class40_sub5_sub14_sub1 = MovedStatics.fontNormal;
@@ -1518,9 +1518,9 @@ public class Game {
 
                         // If hovering over a widget
                         if(MovedStatics.anInt1586 != -1 || MovedStatics.anInt614 != -1 || MovedStatics.anInt573 != -1) {
-                            if(RSString.tooltipDelay > MovedStatics.durationHoveredOverWidget) {
+                            if(MovedStatics.tooltipDelay > MovedStatics.durationHoveredOverWidget) {
                                 MovedStatics.durationHoveredOverWidget++;
-                                if(RSString.tooltipDelay == MovedStatics.durationHoveredOverWidget) {
+                                if(MovedStatics.tooltipDelay == MovedStatics.durationHoveredOverWidget) {
                                     if(MovedStatics.anInt1586 != -1)
                                         ChatBox.redrawChatbox = true;
                                     if(MovedStatics.anInt614 != -1)
@@ -1599,7 +1599,7 @@ public class Game {
                 }
             }
             if (loginStatus == 2) {
-                long l = MovedStatics.aLong853 = RSString.nameToLong(Native.username.toString());
+                long l = MovedStatics.aLong853 = MovedStatics.nameToLong(Native.username.toString());
                 OutgoingPackets.buffer.currentPosition = 0;
                 OutgoingPackets.buffer.putByte(14);
                 int i = (int) (0x1fL & l >> 16);
@@ -1648,7 +1648,7 @@ public class Game {
                 OutgoingPackets.buffer.putIntBE(seeds[2]);
                 OutgoingPackets.buffer.putIntBE(seeds[3]);
                 OutgoingPackets.buffer.putIntBE(signlink.uid);
-                OutgoingPackets.buffer.putLongBE(RSString.nameToLong(Native.username.toString()));
+                OutgoingPackets.buffer.putLongBE(MovedStatics.nameToLong(Native.username.toString()));
                 OutgoingPackets.buffer.method505(Native.password);
                 if (Configuration.RSA_ENABLED) {
                     OutgoingPackets.buffer.applyRSA(Configuration.RSA_MODULUS, Configuration.RSA_PUBLIC_KEY);

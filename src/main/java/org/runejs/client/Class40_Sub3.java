@@ -310,7 +310,7 @@ public class Class40_Sub3 extends Node {
         GameObjectDefinition.count = CacheArchive.definitionCache.fileLength(6);
 
         GameObjectDefinition.lowMemory = lowMemory;
-        RSString.aCacheArchive_1705 = arg1;
+        MovedStatics.aCacheArchive_1705 = arg1;
     }
 
     private static int method288() {

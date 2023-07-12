@@ -1,16 +1,12 @@
 package org.runejs.client;
 
 import org.runejs.client.node.HashTable;
-import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.util.BitUtils;
 
 import java.awt.*;
 import java.nio.charset.StandardCharsets;
 
 public class RSString {
-    public static CacheArchive aCacheArchive_1705;
-    public static int[] keyCodes = new int[128];
-    public static int tooltipDelay = 50;
     /*synthetic*/ public static Class aClass1718;
     public boolean aBoolean1675 = true;
     public int length;
@@ -62,7 +58,6 @@ public class RSString {
         MovedStatics.method278(chars, arg0, buffer, arg3, arg1 - arg0);
         return -arg0 + arg1;
     }
-
 
     public static String formatChatString(String str) {
         char[] chars = str.toCharArray();
@@ -117,26 +112,6 @@ public class RSString {
 
     public int indexOf(int arg1) {
         return method64(0, arg1);
-    }
-
-    public static long nameToLong(String arg0) {
-        long l = 0L;
-        for(int i = 0; i < arg0.length(); i++) {
-            if(i >= 12)
-                break;
-            l *= 37L;
-            int i_1_ = arg0.charAt(i);
-            if(i_1_ >= 65 && i_1_ <= 90)
-                l += (long) (i_1_ + 1 + -65);
-            else if(i_1_ >= 97 && i_1_ <= 122)
-                l += (long) (1 + i_1_ + -97);
-            else if(i_1_ >= 48 && i_1_ <= 57)
-                l += (long) (27 - (-i_1_ + 48));
-        }
-        for(/**/; l % 37L == 0 && l != 0; l /= 37L) {
-            /* empty */
-        }
-        return l;
     }
 
     public int length() {

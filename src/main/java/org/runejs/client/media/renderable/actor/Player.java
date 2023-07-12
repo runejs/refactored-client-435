@@ -166,7 +166,7 @@ public class Player extends Actor {
             int messageLength = appearanceBuffer.getUnsignedByte();
             int bufferPosition = appearanceBuffer.currentPosition;
             if(player.playerName != null && player.playerAppearance != null) {
-                long l = RSString.nameToLong(player.playerName);
+                long l = MovedStatics.nameToLong(player.playerName);
                 boolean bool = false;
                 if(playerRights <= 1) {
                     for(int i = 0; i < ignoresCount; i++) {

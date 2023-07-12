@@ -276,7 +276,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
                 }
                 model = (Model) objectModelCache.get(modelId);
                 if(model == null) {
-                    model = Model.getModel(RSString.aCacheArchive_1705, modelId & 0xffff);
+                    model = Model.getModel(MovedStatics.aCacheArchive_1705, modelId & 0xffff);
                     if(model == null) {
                         return null;
                     }
@@ -310,7 +310,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
             }
             model = (Model) objectModelCache.get(modelId);
             if(model == null) {
-                model = Model.getModel(RSString.aCacheArchive_1705, 0xffff & modelId);
+                model = Model.getModel(MovedStatics.aCacheArchive_1705, 0xffff & modelId);
                 if(model == null) {
                     return null;
                 }
@@ -523,7 +523,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         if(objectTypes != null) {
             for(int i = 0; objectTypes.length > i; i++) {
                 if(objectTypes[i] == arg0) {
-                    return RSString.aCacheArchive_1705.loaded(objectModels[i] & 0xffff, 0);
+                    return MovedStatics.aCacheArchive_1705.loaded(objectModels[i] & 0xffff, 0);
                 }
             }
             return true;
@@ -536,7 +536,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= RSString.aCacheArchive_1705.loaded(0xffff & objectModels[i], 0);
+            bool &= MovedStatics.aCacheArchive_1705.loaded(0xffff & objectModels[i], 0);
         }
         return bool;
     }
@@ -563,7 +563,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= RSString.aCacheArchive_1705.loaded(0xffff & objectModels[i], 0);
+            bool &= MovedStatics.aCacheArchive_1705.loaded(0xffff & objectModels[i], 0);
         }
         return bool;
     }

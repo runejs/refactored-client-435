@@ -358,6 +358,9 @@ public class MovedStatics {
      * Relates to minimap
      */
     public static int[] anIntArray66;
+    public static CacheArchive aCacheArchive_1705;
+    public static int[] keyCodes = new int[128];
+    public static int tooltipDelay = 50;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -3382,5 +3385,25 @@ public class MovedStatics {
         CacheArchive.huffmanCacheArchive.clearCache();
         CacheArchive.jingleCacheArchive.clearCache();
         CacheArchive.clientScriptCacheArchive.clearCache();
+    }
+
+    public static long nameToLong(String arg0) {
+        long l = 0L;
+        for(int i = 0; i < arg0.length(); i++) {
+            if(i >= 12)
+                break;
+            l *= 37L;
+            int i_1_ = arg0.charAt(i);
+            if(i_1_ >= 65 && i_1_ <= 90)
+                l += (long) (i_1_ + 1 + -65);
+            else if(i_1_ >= 97 && i_1_ <= 122)
+                l += (long) (1 + i_1_ + -97);
+            else if(i_1_ >= 48 && i_1_ <= 57)
+                l += (long) (27 - (-i_1_ + 48));
+        }
+        for(/**/; l % 37L == 0 && l != 0; l /= 37L) {
+            /* empty */
+        }
+        return l;
     }
 }
