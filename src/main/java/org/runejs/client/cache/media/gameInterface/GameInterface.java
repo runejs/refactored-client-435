@@ -2067,7 +2067,7 @@ ChatBox.tradeMode
 
     private static void addFriend(long name) {
         if(name != 0L) {
-            if(Player.friendsCount >= 100 && Class44.anInt1049 != 1 || Player.friendsCount >= 200) {
+            if(Player.friendsCount >= 100 && MovedStatics.anInt1049 != 1 || Player.friendsCount >= 200) {
                 ChatBox.addChatMessage("", English.friendsListIsFull, 0);
             } else {
                 String username = TextUtils.formatName(TextUtils.longToName(name));

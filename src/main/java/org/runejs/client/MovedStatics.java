@@ -301,6 +301,11 @@ public class MovedStatics {
     public static int[] anIntArray2788 = new int[]{16, 32, 64, 128};
     public static int randomiserHue = -8 + (int) (17.0 * Math.random());
     public static ProducingGraphicsBuffer mapBackRight;
+    public static IndexedImage chatboxBackgroundImage;
+    /**
+     * Membership status?
+     */
+    public static int anInt1049 = 0;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -1494,7 +1499,7 @@ public class MovedStatics {
 	
 	            ChatBox.chatBoxImageProducer.prepareRasterizer();
 	//        }
-	        Class44.chatboxBackgroundImage.drawImage(0, 0);
+	        chatboxBackgroundImage.drawImage(0, 0);
 	        chatboxLineOffsets = Rasterizer3D.setLineOffsets(chatboxLineOffsets);
 	    }
 
@@ -1706,7 +1711,7 @@ public class MovedStatics {
                 fullScreenTextureArray = null;
                 PlayerAppearance.tabPieveLowerRight = null;
                 framePieceTop = null;
-                Class44.chatboxBackgroundImage = null;
+                chatboxBackgroundImage = null;
             }
         }
     }
@@ -2179,13 +2184,13 @@ public class MovedStatics {
     public static void method763(Component arg0, CacheArchive arg2) {
         if(!aBoolean2083) {
             inventoryBackgroundImage = Game.method359(Native.invback, Native.aClass1_305, arg2);
-            Class44.chatboxBackgroundImage = Game.method359(Native.chatback, Native.aClass1_305, arg2);
+            chatboxBackgroundImage = Game.method359(Native.chatback, Native.aClass1_305, arg2);
             Minimap.minimapBackgroundImage = Game.method359(Native.mapBack, Native.aClass1_305, arg2);
             bottomChatBack = Game.method359(Native.imgBackbase1, Native.aClass1_305, arg2);
             tabBottomBack = Game.method359(Native.imgBackbase2, Native.aClass1_305, arg2);
             Buffer.tabTopBack = Game.method359(Native.imgBackhmid1, Native.aClass1_305, arg2);
             ChatBox.chatBoxImageProducer = createGraphicsBuffer(479, 96, arg0);
-            Class44.chatboxBackgroundImage.drawImage(0, 0);
+            chatboxBackgroundImage.drawImage(0, 0);
             Minimap.mapbackProducingGraphicsBuffer = createGraphicsBuffer(172, 156, arg0);
             Rasterizer.resetPixels();
             Minimap.minimapBackgroundImage.drawImage(0, 0);

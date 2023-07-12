@@ -1734,7 +1734,7 @@ public class Game {
                     Player.localPlayerId = MovedStatics.gameServerSocket.read();
                     Player.localPlayerId <<= 8;
                     Player.localPlayerId += MovedStatics.gameServerSocket.read();
-                    Class44.anInt1049 = MovedStatics.gameServerSocket.read();
+                    MovedStatics.anInt1049 = MovedStatics.gameServerSocket.read();
                     MovedStatics.gameServerSocket.readDataToBuffer(0, 1, IncomingPackets.incomingPacketBuffer.buffer);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                     IncomingPackets.opcode = IncomingPackets.incomingPacketBuffer.getPacket();
