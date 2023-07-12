@@ -208,7 +208,7 @@ public class MovedStatics {
     public static int durationHoveredOverWidget = 0;
     public static IndexedImage bottomChatBack;
     public static int[] anIntArray1347;
-    public static LinkedList aLinkedList_1332 = new LinkedList();
+    public static LinkedList spotAnimQueue = new LinkedList();
     public static int carryWeight = 0;
     public static int anInt1214 = 0;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
@@ -244,6 +244,7 @@ public class MovedStatics {
      */
     public static int hintIconPosX = 0;
     public static int systemUpdateTime = 0;
+    public static LinkedList projectileQueue = new LinkedList();
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -384,7 +385,7 @@ public class MovedStatics {
     }
 
     public static void renderSpotAnims() {
-        for (SpotAnim spotAnim = (SpotAnim) aLinkedList_1332.peekFirst(); spotAnim != null; spotAnim = (SpotAnim) aLinkedList_1332.pollFirst()) {
+        for (SpotAnim spotAnim = (SpotAnim) spotAnimQueue.peekFirst(); spotAnim != null; spotAnim = (SpotAnim) spotAnimQueue.pollFirst()) {
             if (Player.worldLevel == spotAnim.plane && !spotAnim.animationFinished) {
                 if (pulseCycle >= spotAnim.startCycle) {
                     spotAnim.method834(anInt199);
@@ -464,8 +465,8 @@ public class MovedStatics {
     }
 
     public static void renderProjectiles() {
-        Projectile projectile = (Projectile) Class43.projectileQueue.peekFirst();
-        for (/**/; projectile != null; projectile = (Projectile) Class43.projectileQueue.pollFirst()) {
+        Projectile projectile = (Projectile) projectileQueue.peekFirst();
+        for (/**/; projectile != null; projectile = (Projectile) projectileQueue.pollFirst()) {
             if (Player.worldLevel == projectile.anInt2981 && pulseCycle <= projectile.endCycle) {
                 if (projectile.delay <= pulseCycle) {
                     if (projectile.entityIndex > 0) {

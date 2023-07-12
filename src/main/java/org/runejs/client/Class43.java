@@ -13,7 +13,6 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.actor.Player;
 
 public class Class43 {
-    public static LinkedList projectileQueue = new LinkedList();
     public static int bankInsertMode = 0;
 
     public static void threadSleep(long ms) {

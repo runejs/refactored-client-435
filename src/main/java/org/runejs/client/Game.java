@@ -714,8 +714,8 @@ public class Game {
         for (int i = 0; i < 32768; i++)
             Player.npcs[i] = null;
         Player.localPlayer = Player.trackedPlayers[2047] = new Player();
-        Class43.projectileQueue.clear();
-        MovedStatics.aLinkedList_1332.clear();
+        MovedStatics.projectileQueue.clear();
+        MovedStatics.spotAnimQueue.clear();
         for (int i = 0; i < 4; i++) {
             for (int i_82_ = 0; i_82_ < 104; i_82_++) {
                 for (int i_83_ = 0; i_83_ < 104; i_83_++)

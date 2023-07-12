@@ -354,8 +354,8 @@ public abstract class Actor extends Renderable {
             }
             Player.cutsceneActive = false;
             SoundSystem.reset();
-            MovedStatics.aLinkedList_1332.clear();
-            Class43.projectileQueue.clear();
+            MovedStatics.spotAnimQueue.clear();
+            MovedStatics.projectileQueue.clear();
         }
     }
 
