@@ -17,7 +17,6 @@ public class Class13 {
      * but not the furthest-right (see `tabHighlightImageBottomRightEdge` for that).
      */
     public static IndexedImage tabHighlightImageBottomRight;
-    private static int anInt356 = 0;
 
     public static void handleActorAnimation(Actor actor) {
         if(actor.worldX < 128 || actor.worldY < 128 || actor.worldX >= 13184 || actor.worldY >= 13184) {
@@ -76,25 +75,6 @@ public class Class13 {
         if(l > 243)
             s /= 2;
         return l / 2 + (s / 32 << 7) + (h / 4 << 10);
-    }
-
-    public static synchronized byte[] method246(int arg1) {
-        if(arg1 == 100 && anInt356 > 0) {
-            byte[] is = GroundItemTile.aByteArrayArray1377[--anInt356];
-            GroundItemTile.aByteArrayArray1377[anInt356] = null;
-            return is;
-        }
-        if(arg1 == 5000 && Game.anInt1764 > 0) {
-            byte[] is = Class44.aByteArrayArray1039[--Game.anInt1764];
-            Class44.aByteArrayArray1039[Game.anInt1764] = null;
-            return is;
-        }
-        if(arg1 == 30000 && MovedStatics.anInt2359 > 0) {
-            byte[] is = RSCanvas.aByteArrayArray47[--MovedStatics.anInt2359];
-            RSCanvas.aByteArrayArray47[MovedStatics.anInt2359] = null;
-            return is;
-        }
-        return new byte[arg1];
     }
 
     public static int[] method247(GameInterface arg0) {

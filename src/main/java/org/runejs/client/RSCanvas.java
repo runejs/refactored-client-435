@@ -10,7 +10,6 @@ import org.runejs.client.cache.def.*;
 import java.awt.*;
 
 public class RSCanvas extends Canvas {
-    public static byte[][] aByteArrayArray47 = new byte[50][];
     public static LinkedList aLinkedList_53 = new LinkedList();
     public static int anInt57;
     public static ProducingGraphicsBuffer tabBottom;

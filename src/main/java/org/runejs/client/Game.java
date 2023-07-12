@@ -103,7 +103,6 @@ public class Game {
 
     public static int anInt1756 = 0;
     public static int menuOffsetY;
-    public static int anInt1764 = 0;
     public static int anInt1769 = -1;
     public static int widgetSelected = 0;
     public static Signlink signlink;

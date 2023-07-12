@@ -8,7 +8,6 @@ import org.runejs.client.node.Class40_Sub6;
 import org.runejs.client.scene.util.CollisionMap;
 
 public class Class44 implements Runnable {
-    public static byte[][] aByteArrayArray1039 = new byte[250][];
     public static IndexedImage chatboxBackgroundImage;
     public static int anInt1049 = 0;
 

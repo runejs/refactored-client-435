@@ -24,7 +24,7 @@ public class Buffer extends Node {
     public byte[] buffer;
 
     public Buffer(int size) {
-        buffer = Class13.method246(size);
+        buffer = new byte[size];
         currentPosition = 0;
     }
 
