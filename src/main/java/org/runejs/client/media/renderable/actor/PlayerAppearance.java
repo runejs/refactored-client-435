@@ -229,7 +229,7 @@ public class PlayerAppearance {
         if(appearance == null) {
             appearance = new int[12];
             for(int appearanceIndex = 0; appearanceIndex < 7; appearanceIndex++) {
-                for(int identityKitIndex = 0; IdentityKit.identityKitLength > identityKitIndex; identityKitIndex++) {
+                for(int identityKitIndex = 0; IdentityKit.count > identityKitIndex; identityKitIndex++) {
                     IdentityKit identityKit = IdentityKit.cache(identityKitIndex);
                     if(!identityKit.nonSelectable && identityKit.bodyPartId == appearanceIndex + (!gender ? 0 : 7)) {
                         appearance[APPEARANCE_INDICES[appearanceIndex]] = identityKitIndex + 256;
@@ -256,10 +256,10 @@ public class PlayerAppearance {
                 do {
                     if(unknown2) {
                         i++;
-                        if(i >= IdentityKit.identityKitLength)
+                        if(i >= IdentityKit.count)
                             i = 0;
                     } else if(--i < 0)
-                        i = -1 + IdentityKit.identityKitLength;
+                        i = -1 + IdentityKit.count;
                     identityKit = IdentityKit.cache(i);
                 } while(identityKit == null || identityKit.nonSelectable || identityKit.bodyPartId != unknown1 + (!gender ? 0 : 7));
                 appearance[APPEARANCE_INDICES[unknown1]] = i + 256;

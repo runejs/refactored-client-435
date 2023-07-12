@@ -6,8 +6,8 @@ import org.runejs.client.node.CachedNode;
 import org.runejs.client.node.NodeCache;
 
 public class UnderlayDefinition extends CachedNode {
-    public static NodeCache underlayDefinitionCache = new NodeCache(64);
-    public static CacheArchive gameDefinitionsCacheArchive;
+    private static NodeCache definitionCache = new NodeCache(64);
+    private static CacheArchive definitionArchive;
 
     public int lightness;
     public int hue;
@@ -16,24 +16,24 @@ public class UnderlayDefinition extends CachedNode {
     public int color = 0;
 
     public static void initializeUnderlayDefinitionCache(CacheArchive cacheArchive) {
-        gameDefinitionsCacheArchive = cacheArchive;
+        definitionArchive = cacheArchive;
     }
 
     public static UnderlayDefinition getDefinition(int underlayId) {
-        UnderlayDefinition underlayDefinition = (UnderlayDefinition) underlayDefinitionCache.get(underlayId);
+        UnderlayDefinition underlayDefinition = (UnderlayDefinition) definitionCache.get(underlayId);
         if (underlayDefinition != null)
             return underlayDefinition;
-        byte[] is = gameDefinitionsCacheArchive.getFile(1, underlayId);
+        byte[] is = definitionArchive.getFile(1, underlayId);
         underlayDefinition = new UnderlayDefinition();
         if (is != null)
             underlayDefinition.readValues(new Buffer(is));
         underlayDefinition.calculateHsl();
-        underlayDefinitionCache.put(underlayId, underlayDefinition);
+        definitionCache.put(underlayId, underlayDefinition);
         return underlayDefinition;
     }
 
     public static void clearUnderlayDefinitionCache() {
-        underlayDefinitionCache.clear();
+        definitionCache.clear();
     }
 
 

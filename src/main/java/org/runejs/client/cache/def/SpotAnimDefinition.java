@@ -9,10 +9,10 @@ import org.runejs.client.node.NodeCache;
 
 public class SpotAnimDefinition extends CachedNode {
 
-    public static CacheArchive gameDefinitionsCacheArchive;
-    public static NodeCache spotAnimDefinitionCache = new NodeCache(64);
-    public static NodeCache spotAnimModelCache = new NodeCache(30);
-    public static CacheArchive aCacheArchive_2582;
+    private static CacheArchive definitionArchive;
+    private static NodeCache definitionCache = new NodeCache(64);
+    private static NodeCache modelCache = new NodeCache(30);
+    private static CacheArchive modelArchive;
     public int animationId;
     public int modelId;
     public int contrast = 0;
@@ -33,26 +33,26 @@ public class SpotAnimDefinition extends CachedNode {
     }
 
     public static SpotAnimDefinition forId(int id) {
-        SpotAnimDefinition spotAnimDefinition = (SpotAnimDefinition) spotAnimDefinitionCache.get(id);
+        SpotAnimDefinition spotAnimDefinition = (SpotAnimDefinition) definitionCache.get(id);
         if (spotAnimDefinition != null)
             return spotAnimDefinition;
-        byte[] is = gameDefinitionsCacheArchive.getFile(13, id);
+        byte[] is = definitionArchive.getFile(13, id);
         spotAnimDefinition = new SpotAnimDefinition();
         spotAnimDefinition.id = id;
         if (is != null)
             spotAnimDefinition.readValues(new Buffer(is));
-        spotAnimDefinitionCache.put(id, spotAnimDefinition);
+        definitionCache.put(id, spotAnimDefinition);
         return spotAnimDefinition;
     }
 
     public static void clearSpotAnimCache() {
-        spotAnimDefinitionCache.clear();
-        spotAnimModelCache.clear();
+        definitionCache.clear();
+        modelCache.clear();
     }
 
     public static void initializeSpotAnimCache(CacheArchive arg1, CacheArchive arg2) {
-        aCacheArchive_2582 = arg1;
-        gameDefinitionsCacheArchive = arg2;
+        modelArchive = arg1;
+        definitionArchive = arg2;
     }
 
     public void readValues(Buffer buffer) {
@@ -88,9 +88,9 @@ public class SpotAnimDefinition extends CachedNode {
     }
 
     public Model getModel(int arg0) {
-        Model model = (Model) spotAnimModelCache.get((long) id);
+        Model model = (Model) modelCache.get((long) id);
         if (model == null) {
-            model = Model.getModel(aCacheArchive_2582, modelId);
+            model = Model.getModel(modelArchive, modelId);
             if (model == null) {
                 return null;
             }
@@ -101,7 +101,7 @@ public class SpotAnimDefinition extends CachedNode {
             }
             model.createBones();
             model.applyLighting(64 + ambient, contrast + 850, -30, -50, -30, true);
-            spotAnimModelCache.put((long) id, model);
+            modelCache.put((long) id, model);
         }
         Model class40_sub5_sub17_sub5_0_;
         if (animationId == -1 || arg0 == -1) {

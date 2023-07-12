@@ -221,7 +221,7 @@ public class Landscape {
                         MovedStatics.spawnGroundItem(y, x);
                 }
                 clearTemporaryObjects();
-                GameObjectDefinition.objectModelCache.clear();
+                GameObjectDefinition.clearStaticModelCache();
                 if(GameShell.clientFrame != null) {
                     OutgoingPackets.buffer.putPacket(121);
                     OutgoingPackets.buffer.putIntBE(1057001181);

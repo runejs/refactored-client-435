@@ -14,7 +14,7 @@ import org.runejs.client.node.CachedNode;
 
 public class ClientScript extends CachedNode {
 
-    public static NodeCache clientScriptCache = new NodeCache(128);
+    private static NodeCache clientScriptCache = new NodeCache(128);
 
     public int[] intOperands;
     public int intStackCount;
@@ -23,6 +23,10 @@ public class ClientScript extends CachedNode {
     public String[] stringOperands;
     public int localIntCount;
     public int[] opcodes;
+
+    public static void clearClientScriptCache() {
+        clientScriptCache.clear();
+    }
 
 
     public static void clientScriptDebugger() {

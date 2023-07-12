@@ -13,11 +13,11 @@ import org.runejs.client.node.NodeCache;
 
 public class ItemDefinition extends CachedNode implements EntityDefinition {
     public static int count;
-    public static CacheArchive itemDefinitionCache;
-    public static NodeCache itemDefinitionNodeCache = new NodeCache(64);
-    public static NodeCache groundItemModelNodeCache = new NodeCache(50);
-    public static NodeCache itemImageCache = new NodeCache(100);
-    public static CacheArchive aCacheArchive_284;
+    private static CacheArchive definitionArchive;
+    private static NodeCache definitionCache = new NodeCache(64);
+    private static NodeCache modelCache = new NodeCache(50);
+    private static NodeCache imageCache = new NodeCache(100);
+    private static CacheArchive modelArchive;
 
     public int stackable;
     public String name;
@@ -94,11 +94,11 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
 
 
     public static ItemDefinition forId(int id, int arg1) {
-        ItemDefinition definition = (ItemDefinition) itemDefinitionNodeCache.get(id);
+        ItemDefinition definition = (ItemDefinition) definitionCache.get(id);
         if(definition != null) {
             return definition;
         }
-        byte[] is = itemDefinitionCache.getFile(arg1, id);
+        byte[] is = definitionArchive.getFile(arg1, id);
         definition = new ItemDefinition();
         definition.id = id;
         if(is != null) {
@@ -113,13 +113,13 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
             definition.groundOptions = null;
             definition.name = English.membersObject;
         }
-        itemDefinitionNodeCache.put(id, definition);
+        definitionCache.put(id, definition);
         return definition;
     }
 
     public static ImageRGB sprite(int stackSize, int id, int backColour) {
         if(backColour == 0) {
-            ImageRGB sprite = (ImageRGB) itemImageCache.get((long) id);
+            ImageRGB sprite = (ImageRGB) imageCache.get((long) id);
             if(sprite != null && sprite.maxHeight != stackSize && sprite.maxHeight != -1) {
                 sprite.unlink();
                 sprite = null;
@@ -221,7 +221,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
             notedSprite.maxHeight = i_17_;
         }
         if(backColour == 0)
-            itemImageCache.put((long) id, rendered);
+            imageCache.put((long) id, rendered);
         Rasterizer.prepare(pixels, i_1_, i);
         Rasterizer.setBounds(i_2_, i_5_, i_4_, i_6_);
         Rasterizer3D.setLineOffsets(lineOffsets);
@@ -239,16 +239,20 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
     }
 
     public static void clearItemCache() {
-        itemDefinitionNodeCache.clear();
-        groundItemModelNodeCache.clear();
-        itemImageCache.clear();
+        definitionCache.clear();
+        modelCache.clear();
+        imageCache.clear();
     }
 
     public static void initializeItemDefinitionCache(CacheArchive definitionCache, boolean arg1, CacheArchive arg2) {
         MovedStatics.membersServer = arg1;
-        aCacheArchive_284 = arg2;
-        itemDefinitionCache = definitionCache;
-        count = itemDefinitionCache.fileLength(10);
+        modelArchive = arg2;
+        definitionArchive = definitionCache;
+        count = definitionArchive.fileLength(10);
+    }
+
+    public static void clearImageCache() {
+        imageCache.clear();
     }
 
     public boolean headPieceReady(boolean female) {
@@ -262,10 +266,10 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
             return true;
         }
         boolean ready = true;
-        if(!aCacheArchive_284.loaded(primaryId, 0)) {
+        if(!modelArchive.loaded(primaryId, 0)) {
             ready = false;
         }
-        if(secondaryId != -1 && !aCacheArchive_284.loaded(secondaryId, 0)) {
+        if(secondaryId != -1 && !modelArchive.loaded(secondaryId, 0)) {
             ready = false;
         }
         return ready;
@@ -284,13 +288,13 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
             return true;
         }
         boolean bool = true;
-        if(!aCacheArchive_284.loaded(i, 0)) {
+        if(!modelArchive.loaded(i, 0)) {
             bool = false;
         }
-        if(i_1_ != -1 && !aCacheArchive_284.loaded(i_1_, 0)) {
+        if(i_1_ != -1 && !modelArchive.loaded(i_1_, 0)) {
             bool = false;
         }
-        if(i_2_ != -1 && !aCacheArchive_284.loaded(i_2_, 0)) {
+        if(i_2_ != -1 && !modelArchive.loaded(i_2_, 0)) {
             bool = false;
         }
         return bool;
@@ -308,14 +312,14 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(primaryId == -1) {
             return null;
         }
-        Model primary = Model.getModel(aCacheArchive_284, primaryId);
+        Model primary = Model.getModel(modelArchive, primaryId);
         if(secondaryId != -1) {
-            Model secondary = Model.getModel(aCacheArchive_284, secondaryId);
+            Model secondary = Model.getModel(modelArchive, secondaryId);
             if(tertiaryId == -1) {
                 Model[] tertiary = {primary, secondary};
                 primary = new Model(tertiary, 2);
             } else {
-                Model model3 = Model.getModel(aCacheArchive_284, tertiaryId);
+                Model model3 = Model.getModel(modelArchive, tertiaryId);
                 Model[] models = {primary, secondary, model3};
                 primary = new Model(models, 3);
             }
@@ -362,9 +366,9 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(primaryId == -1) {
             return null;
         }
-        Model primary = Model.getModel(aCacheArchive_284, primaryId);
+        Model primary = Model.getModel(modelArchive, primaryId);
         if(secondaryId != -1) {
-            Model secondary = Model.getModel(aCacheArchive_284, secondaryId);
+            Model secondary = Model.getModel(modelArchive, secondaryId);
             Model[] models = {primary, secondary};
             primary = new Model(models, 2);
         }
@@ -509,11 +513,11 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
                 return forId(id, 10).asGroundStack(arg0, 1);
             }
         }
-        Model model = (Model) groundItemModelNodeCache.get(id);
+        Model model = (Model) modelCache.get(id);
         if(model != null) {
             return model;
         }
-        model = Model.getModel(aCacheArchive_284, inventoryModelId);
+        model = Model.getModel(modelArchive, inventoryModelId);
         if(model == null) {
             return null;
         }
@@ -528,7 +532,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(arg0) {
             model.applyLighting(ambient + 64, 768 + contrast, -50, -10, -50, true);
             model.singleTile = true;
-            groundItemModelNodeCache.put(id, model);
+            modelCache.put(id, model);
         }
         return model;
 
