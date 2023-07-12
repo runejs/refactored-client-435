@@ -1269,7 +1269,7 @@ public class GameInterface extends CachedNode {
                         );
                     }
                     if(action == 50) {
-                        Class33.method406(i, npcIdx, i_10_);
+                        ClientScriptRunner.method406(i, npcIdx, i_10_);
                     }
                     if(action == ActionRowType.CLOSE_PERMANENT_CHATBOX_WIDGET.getId()) {
                         resetInterface(ChatBox.dialogueId);

@@ -3,6 +3,7 @@ package org.runejs.client;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.cs.InvokedScript;
 import org.runejs.client.cache.cs.ClientScript;
+import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.node.Node;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.input.KeyFocusListener;
@@ -745,7 +746,7 @@ public class ClientScriptRunner extends Node {
                                             intValueIndex -= 2;
                                             int i_43_ = scriptIntValues[intValueIndex];
                                             int i_44_ = scriptIntValues[intValueIndex + 1];
-                                            Class33.method406(0, i_44_, i_43_);
+                                            method406(0, i_44_, i_43_);
                                         } else if(scriptOpcode == 3002) {
                                             GameInterface gameInterface = !bool ? MovedStatics.aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                                             if(MovedStatics.lastContinueTextWidgetId == -1) {
@@ -758,7 +759,7 @@ public class ClientScriptRunner extends Node {
                                             }
                                             GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : MovedStatics.aGameInterface_1887;
                                             int i_45_ = scriptIntValues[--intValueIndex];
-                                            Class33.method406(0x7fff & gameInterface.id, i_45_, gameInterface.parentId);
+                                            method406(0x7fff & gameInterface.id, i_45_, gameInterface.parentId);
                                         }
                                     } else if(scriptOpcode >= 3200) {
                                         if(scriptOpcode < 3300) {
@@ -1102,5 +1103,58 @@ public class ClientScriptRunner extends Node {
 
     private static RSString method1024(boolean arg0, int arg2) {
         return PacketBuffer.method521(arg0, 10, arg2);
+    }
+
+    public static void method406(int arg0, int arg1, int arg2) {
+        if(arg1 == 1) {
+            OutgoingPackets.buffer.putPacket(111);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 2) {
+            OutgoingPackets.buffer.putPacket(9);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 3) {
+            OutgoingPackets.buffer.putPacket(193);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 4) {
+            OutgoingPackets.buffer.putPacket(53);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 5) {
+            OutgoingPackets.buffer.putPacket(94);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 6) {
+            OutgoingPackets.buffer.putPacket(213);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 7) {
+            OutgoingPackets.buffer.putPacket(46);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 8) {
+            OutgoingPackets.buffer.putPacket(130);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 9) {
+            OutgoingPackets.buffer.putPacket(157);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
+        if(arg1 == 10) {
+            OutgoingPackets.buffer.putPacket(84);
+            OutgoingPackets.buffer.putIntBE(arg2);
+            OutgoingPackets.buffer.putShortBE(arg0);
+        }
     }
 }

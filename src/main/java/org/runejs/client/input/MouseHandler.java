@@ -143,7 +143,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     }
                 }
             }
-            if(meta == 1 && (ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend(-1 + MovedStatics.menuActionRow)) && MovedStatics.menuActionRow > 2)
+            if(meta == 1 && (ProducingGraphicsBuffer.oneMouseButton == 1 || MovedStatics.menuHasAddFriend(-1 + MovedStatics.menuActionRow)) && MovedStatics.menuActionRow > 2)
                 meta = 2;
             if(meta == 1 && MovedStatics.menuActionRow > 0)
                 GameInterface.processMenuActions(MovedStatics.menuActionRow - 1);

@@ -820,7 +820,7 @@ public class Game {
 
         currentScene.render(activeCamera, i);
         currentScene.clearInteractiveObjectCache();
-        Class33.draw2DActorAttachments();
+        MovedStatics.draw2DActorAttachments();
         MovedStatics.drawPositionHintIcon();
         ((Class35) Rasterizer3D.interface3).animateTextures(MovedStatics.anInt199);
         MovedStatics.draw3dScreen();
@@ -1443,7 +1443,7 @@ public class Game {
                                         ));
                                     }
                                 } else {
-                                    if((ProducingGraphicsBuffer.oneMouseButton == 1 || Class33.menuHasAddFriend(MovedStatics.menuActionRow - 1)) && MovedStatics.menuActionRow > 2)
+                                    if((ProducingGraphicsBuffer.oneMouseButton == 1 || MovedStatics.menuHasAddFriend(MovedStatics.menuActionRow - 1)) && MovedStatics.menuActionRow > 2)
                                         Class60.determineMenuSize();
                                     else if(MovedStatics.menuActionRow > 0)
                                         GameInterface.processMenuActions(MovedStatics.menuActionRow - 1);
