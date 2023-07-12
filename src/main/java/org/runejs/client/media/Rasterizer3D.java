@@ -3,19 +3,42 @@ package org.runejs.client.media;
 import org.runejs.client.Interface3;
 
 public class Rasterizer3D extends Rasterizer {
+    /**
+     * Some kind of colour information, Dane calls this "reciprocal16"
+     */
     public static int[] anIntArray2929 = new int[2048];
     public static int bottomY;
     public static int center_y;
     public static int[] hsl2rgb = new int[65536];
     public static int alpha = 0;
+    /**
+     * x position/size info of some kind
+     *
+     * TODO rename
+     */
     public static int anInt2934;
+    /**
+     * negative center_y?
+     *
+     * TODO rename
+     */
     public static int anInt2935;
     public static boolean opaque = false;
     public static int center_x;
     public static int[] lineOffsets;
     public static Interface3 interface3;
     public static int[] shadowDecay = new int[512];
+    /**
+     * y position/size info of some kind
+     *
+     * TODO rename
+     */
     public static int anInt2941;
+    /**
+     * negative center_y?
+     *
+     * TODO rename
+     */
     public static int anInt2942;
     public static int[] sinetable = new int[2048];
     public static boolean notTextured = true;

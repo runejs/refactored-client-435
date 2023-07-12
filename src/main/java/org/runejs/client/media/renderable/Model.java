@@ -42,7 +42,10 @@ public class Model extends Renderable {
     public static int[] anIntArray3225;
     public static int[] anIntArray3226;
     public static int[] anIntArray3227;
-    public static int[] anIntArray3228;
+    /**
+     * Some kind of colour information
+     */
+    private static int[] anIntArray3228;
 
     static {
         anIntArray3199 = new int[128];
