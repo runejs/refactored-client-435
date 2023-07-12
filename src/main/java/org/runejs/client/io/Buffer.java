@@ -17,7 +17,6 @@ public class Buffer extends Node {
     public static int[] anIntArray1972;
     public static int lastItemDragTime = 0;
 
-    public static int[] anIntArray1984 = new int[2000];
     public static int anInt1985 = -1;
     public static int anInt1987 = 0;
 
