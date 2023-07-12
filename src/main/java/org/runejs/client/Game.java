@@ -15,7 +15,6 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Model;
-import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.*;
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.handler.rs435.RS435HandlerRegistry;
@@ -265,7 +264,7 @@ public class Game {
                                         else {
                                             if (GameInterface.activeInterfaceType != 0 && GameInterface.selectedInventorySlot == i_7_ && gameInterface.id == GameInterface.modifiedWidgetId) {
                                                 i_14_ = MouseHandler.mouseY + -MovedStatics.anInt2798;
-                                                i_12_ = MouseHandler.mouseX + -Renderable.anInt2869;
+                                                i_12_ = MouseHandler.mouseX + -MovedStatics.anInt2869;
                                                 if (i_12_ < 5 && i_12_ > -5)
                                                     i_12_ = 0;
                                                 if (i_14_ < 5 && i_14_ > -5)
@@ -868,7 +867,7 @@ public class Game {
                 GameInterface.redrawTabArea = true;
             }
             if(GameInterface.tabAreaInterfaceId != -1) {
-                boolean bool = Renderable.handleSequences(GameInterface.tabAreaInterfaceId);
+                boolean bool = GameInterface.handleSequences(GameInterface.tabAreaInterfaceId);
                 if(bool) {
                     GameInterface.redrawTabArea = true;
                 }
@@ -884,13 +883,13 @@ public class Game {
             MovedStatics.drawTabArea();
 
             if(GameInterface.chatboxInterfaceId != -1) {
-                boolean bool = Renderable.handleSequences(GameInterface.chatboxInterfaceId);
+                boolean bool = GameInterface.handleSequences(GameInterface.chatboxInterfaceId);
                 if(bool) {
                     ChatBox.redrawChatbox = true;
                 }
             }
             if(ChatBox.dialogueId != -1) {
-                boolean bool = Renderable.handleSequences(ChatBox.dialogueId);
+                boolean bool = GameInterface.handleSequences(ChatBox.dialogueId);
                 if(bool) {
                     ChatBox.redrawChatbox = true;
                 }
@@ -941,15 +940,15 @@ public class Game {
 
 
             if(GameInterface.tabAreaInterfaceId != -1) {
-                Renderable.handleSequences(GameInterface.tabAreaInterfaceId);
+                GameInterface.handleSequences(GameInterface.tabAreaInterfaceId);
             }
 
             if(GameInterface.chatboxInterfaceId != -1) {
-                Renderable.handleSequences(GameInterface.chatboxInterfaceId);
+                GameInterface.handleSequences(GameInterface.chatboxInterfaceId);
             }
 
             if(ChatBox.dialogueId != -1) {
-                Renderable.handleSequences(ChatBox.dialogueId);
+                GameInterface.handleSequences(ChatBox.dialogueId);
             }
             method353();
             ChatBox.renderChatbox();
@@ -1041,9 +1040,9 @@ public class Game {
     }
 
     public static void method164() {
-        Renderable.handleSequences(GameInterface.fullscreenInterfaceId);
+        GameInterface.handleSequences(GameInterface.fullscreenInterfaceId);
         if(GameInterface.fullscreenSiblingInterfaceId != -1)
-            Renderable.handleSequences(GameInterface.fullscreenSiblingInterfaceId);
+            GameInterface.handleSequences(GameInterface.fullscreenSiblingInterfaceId);
         MovedStatics.anInt199 = 0;
         MovedStatics.aProducingGraphicsBuffer_2213.prepareRasterizer();
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(Player.viewportOffsets);
@@ -1330,7 +1329,7 @@ public class Game {
                         MovedStatics.anInt199++;
                         if(GameInterface.activeInterfaceType != 0) {
                             GameInterface.lastItemDragTime++;
-                            if(MouseHandler.mouseX > Renderable.anInt2869 + 5 || Renderable.anInt2869 + -5 > MouseHandler.mouseX || MovedStatics.anInt2798 + 5 < MouseHandler.mouseY || MovedStatics.anInt2798 - 5 > MouseHandler.mouseY)
+                            if(MouseHandler.mouseX > MovedStatics.anInt2869 + 5 || MovedStatics.anInt2869 + -5 > MouseHandler.mouseX || MovedStatics.anInt2798 + 5 < MouseHandler.mouseY || MovedStatics.anInt2798 - 5 > MouseHandler.mouseY)
                                 MovedStatics.lastItemDragged = true;
                             if(MouseHandler.currentMouseButtonPressed == 0) {
                                 if(GameInterface.activeInterfaceType == 3)
@@ -1563,7 +1562,7 @@ public class Game {
                 }
                 if (IncomingPackets.incomingPacketBuffer.currentPosition == 8) {
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                    Renderable.aLong2858 = IncomingPackets.incomingPacketBuffer.getLongBE();
+                    MovedStatics.aLong2858 = IncomingPackets.incomingPacketBuffer.getLongBE();
                     loginStatus = 5;
                 }
             }
@@ -1571,8 +1570,8 @@ public class Game {
                 int[] seeds = new int[4];
                 seeds[0] = (int) (Math.random() * 9.9999999E7);
                 seeds[1] = (int) (Math.random() * 9.9999999E7);
-                seeds[2] = (int) (Renderable.aLong2858 >> 32);
-                seeds[3] = (int) Renderable.aLong2858;
+                seeds[2] = (int) (MovedStatics.aLong2858 >> 32);
+                seeds[3] = (int) MovedStatics.aLong2858;
                 OutgoingPackets.buffer.currentPosition = 0;
                 OutgoingPackets.buffer.putByte(10);
                 OutgoingPackets.buffer.putIntBE(seeds[0]);

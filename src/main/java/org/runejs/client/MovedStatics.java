@@ -29,7 +29,6 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
-import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.scene.*;
 import org.runejs.client.scene.camera.CameraRotation;
 import org.runejs.client.scene.util.CollisionMap;
@@ -351,6 +350,19 @@ public class MovedStatics {
      * Some kind of mouse information
      */
     public static int anInt3294 = 0;
+    /**
+     * ISAAC key?
+     */
+    public static long aLong2858 = 0L;
+    /**
+     * The image used for the highlighted (selected) tab button,
+     * for the furthest-left tab on the bottom.
+     */
+    public static IndexedImage tabHighlightImageBottomLeftEdge;
+    /**
+     * Something to do with item drag tracking
+     */
+    public static int anInt2869 = 0;
 
     public static void method440() {
         if (aBoolean512) {
@@ -642,7 +654,7 @@ public class MovedStatics {
         if (arg3) {
             if (tabWidgetIds[currentTabId] != -1) {
                 if (currentTabId == 7)
-                    Renderable.tabHighlightImageBottomLeftEdge.drawImage(42, 0);
+                    tabHighlightImageBottomLeftEdge.drawImage(42, 0);
                 if (currentTabId == 8)
                     tabHighlightImageBottomLeft.drawImage(74, 0);
                 if (currentTabId == 9)
@@ -1448,7 +1460,7 @@ public class MovedStatics {
                 tabPieceUpperRight = null;
                 tabHighlightImageTopMiddle = null;
                 tabHighlightImageBottomLeft = null;
-                Renderable.tabHighlightImageBottomLeftEdge = null;
+                tabHighlightImageBottomLeftEdge = null;
                 fullScreenTextureArray = null;
                 tabPieveLowerRight = null;
                 framePieceTop = null;
@@ -1582,7 +1594,7 @@ public class MovedStatics {
         if (GameInterface.gameScreenInterfaceId != -1 || GameInterface.walkableWidgetId != -1) {
                 int areaId = GameInterface.gameScreenInterfaceId != -1 ? 0 : 4;
                 int id = GameInterface.gameScreenInterfaceId != -1 ? GameInterface.gameScreenInterfaceId : GameInterface.walkableWidgetId;
-                Renderable.handleSequences(id);
+                GameInterface.handleSequences(id);
                 int yOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);
                 int xOffset = (ScreenController.drawWidth /2) - (512/2) - (234/3);
                 if(ScreenController.frameMode == ScreenMode.FIXED) {
@@ -1974,8 +1986,8 @@ public class MovedStatics {
             tabHighlightImageTopRightEdge.flipHorizontal();
             tabHighlightImageTopRight = GameInterface.tabHighlightImageTopLeft.cloneImage();
             tabHighlightImageTopRight.flipHorizontal();
-            Renderable.tabHighlightImageBottomLeftEdge = tabHighlightImageTopLeftEdge.cloneImage();
-            Renderable.tabHighlightImageBottomLeftEdge.flipVertical();
+            tabHighlightImageBottomLeftEdge = tabHighlightImageTopLeftEdge.cloneImage();
+            tabHighlightImageBottomLeftEdge.flipVertical();
             tabHighlightImageBottomLeft = GameInterface.tabHighlightImageTopLeft.cloneImage();
             tabHighlightImageBottomLeft.flipVertical();
             tabHighlightImageBottomMiddle = tabHighlightImageTopMiddle.cloneImage();
@@ -3272,7 +3284,7 @@ public class MovedStatics {
                     int id = secondMenuOperand[-1 + menuActionRow];
                     GameInterface gameInterface = GameInterface.getInterface(id);
                     if(gameInterface.itemSwapable || gameInterface.itemDeletesDraged) {
-                        Renderable.anInt2869 = MouseHandler.clickX;
+                        anInt2869 = MouseHandler.clickX;
                         lastItemDragged = false;
                         GameInterface.activeInterfaceType = 2;
                         GameInterface.modifiedWidgetId = id;
