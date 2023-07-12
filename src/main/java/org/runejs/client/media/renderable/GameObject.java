@@ -7,8 +7,6 @@ import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
-import org.runejs.client.scene.Scene;
-import org.runejs.client.scene.util.CollisionMap;
 
 import java.awt.*;
 
@@ -56,41 +54,6 @@ public class GameObject extends Renderable {
         return MovedStatics.method538();
     }
 
-
-    public static void loadObjectBlock(int block_x, Scene scene, CollisionMap[] collisionMaps, byte[] block_data, int block_z) {
-        Buffer buffer = new Buffer(block_data);
-        int object_id = -1;
-        for(; ; ) {
-            int delta_id = buffer.getSmart();
-            if(delta_id == 0)
-                break;
-            int pos = 0;
-            object_id += delta_id;
-            for(; ; ) {
-                int delta_pos = buffer.getSmart();
-                if(delta_pos == 0)
-                    break;
-                pos += -1 + delta_pos;
-                int tile_z = pos & 0x3f;
-                int tile_x = pos >> 6 & 0x3f;
-                int tile_y = pos >> 12;
-                int object_info = buffer.getUnsignedByte();
-                int object_type = object_info >> 2;
-                int object_orientation = 0x3 & object_info;
-                int object_x = tile_x + block_x;
-                int object_z = tile_z + block_z;
-                if(object_x > 0 && object_z > 0 && object_x < 103 && object_z < 103) {
-                    CollisionMap collisionMap = null;
-                    int logic_y = tile_y;
-                    if((MovedStatics.tile_flags[1][object_x][object_z] & 2) == 2)
-                        logic_y--;
-                    if(logic_y >= 0)
-                        collisionMap = collisionMaps[logic_y];
-                    MovedStatics.addObject(object_id, object_x, object_z, tile_y, object_orientation, object_type, scene, collisionMap);
-                }
-            }
-        }
-    }
 
     public static void drawLoadingText(int percent, Color color, String desc) {
         try {

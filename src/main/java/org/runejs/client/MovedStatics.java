@@ -36,7 +36,6 @@ import org.runejs.client.scene.camera.CameraRotation;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
-import org.runejs.client.util.BitUtils;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.SignlinkNode;
 import org.runejs.client.cache.def.*;
@@ -107,7 +106,6 @@ public class MovedStatics {
     public static boolean showChatPanelRedrawnText = false;
     public static int lastContinueTextWidgetId = -1;
     public static GameSocket gameServerSocket;
-    public static int[][][] tile_height = new int[4][105][105];
     /**
      * The image used for the highlighted (selected) tab button,
      * for the furthest-right tab on the top row.
@@ -140,7 +138,6 @@ public class MovedStatics {
     public static CacheArchive aCacheArchive_2364;
     public static int destinationX = 0;
     public static int anInt1511 = -1;
-    public static int lowestPlane = 99;
     /**
      * The hint (arrow) icon sprites.
      */
@@ -371,24 +368,6 @@ public class MovedStatics {
 
     }
 
-    public static void initiateVertexHeights(int offsetY, int sizeY, int sizeX, int offsetX) {
-        for (int y = offsetY; y <= offsetY + sizeY; y++) {
-            for (int x = offsetX; sizeX + offsetX >= x; x++) {
-                if (x >= 0 && x < 104 && y >= 0 && y < 104) {
-                    Landscape.tileShadowIntensity[0][x][y] = (byte) 127;
-                    if (offsetX == x && x > 0)
-                        tile_height[0][x][y] = tile_height[0][-1 + x][y];
-                    if (offsetX + sizeX == x && x < 103)
-                        tile_height[0][x][y] = tile_height[0][x + 1][y];
-                    if (y == offsetY && y > 0)
-                        tile_height[0][x][y] = tile_height[0][x][y + -1];
-                    if (y == offsetY + sizeY && y < 103)
-                        tile_height[0][x][y] = tile_height[0][x][1 + y];
-                }
-            }
-        }
-    }
-
     public static void renderSpotAnims() {
         for (SpotAnim spotAnim = (SpotAnim) aLinkedList_1332.peekFirst(); spotAnim != null; spotAnim = (SpotAnim) aLinkedList_1332.pollFirst()) {
             if (Player.worldLevel == spotAnim.plane && !spotAnim.animationFinished) {
@@ -428,27 +407,6 @@ public class MovedStatics {
         ClientScriptRunner.aCacheArchive_2162 = skinArchive;
         aCacheArchive_2364 = skeletonArchive;
         AnimationSequence.aCacheArchive_2484 = definitionArchive;
-    }
-
-    public static void method455(int arg0, int arg1, int arg3) {
-        for (int i = 0; i < 8; i++) {
-            for (int i_0_ = 0; i_0_ < 8; i_0_++)
-                tile_height[arg1][arg3 + i][arg0 + i_0_] = 0;
-        }
-        if (arg3 > 0) {
-            for (int i = 1; i < 8; i++)
-                tile_height[arg1][arg3][arg0 + i] = tile_height[arg1][-1 + arg3][i + arg0];
-        }
-        if (arg0 > 0) {
-            for (int i = 1; i < 8; i++)
-                tile_height[arg1][i + arg3][arg0] = tile_height[arg1][i + arg3][-1 + arg0];
-        }
-        if (arg3 > 0 && tile_height[arg1][-1 + arg3][arg0] != 0)
-            tile_height[arg1][arg3][arg0] = tile_height[arg1][arg3 - 1][arg0];
-        else if (arg0 > 0 && tile_height[arg1][arg3][arg0 - 1] != 0)
-            tile_height[arg1][arg3][arg0] = tile_height[arg1][arg3][-1 + arg0];
-        else if (arg3 > 0 && arg0 > 0 && tile_height[arg1][arg3 + -1][-1 + arg0] != 0)
-            tile_height[arg1][arg3][arg0] = tile_height[arg1][-1 + arg3][arg0 - 1];
     }
 
     public static boolean method459(int arg0, int arg1) {
@@ -2360,273 +2318,6 @@ public class MovedStatics {
         if((tile_flags[Player.worldLevel][Player.localPlayer.worldX >> 7][Player.localPlayer.worldY >> 7] & 0x4) != 0)
             i = Player.worldLevel;
         return i;
-
-    }
-
-    public static void addObject(int objectId, int localX, int localY, int plane, int face, int type, Scene scene, CollisionMap collisionMap) {
-        if(!VertexNormal.lowMemory || (0x2 & tile_flags[0][localX][localY]) != 0 || (0x10 & tile_flags[plane][localX][localY]) == 0 && onBuildTimePlane == Class59.getVisibilityPlaneFor(plane, localY, 0, localX)) {
-            if(lowestPlane > plane)
-                lowestPlane = plane;
-            int vertexHeight = tile_height[plane][localX][localY];
-            int vertexHeightRight = tile_height[plane][localX + 1][localY];
-            int vertexHeightTopRight = tile_height[plane][localX + 1][localY + 1];
-            int vertexHeightTop = tile_height[plane][localX][localY + 1];
-            int vertexMix = vertexHeight + vertexHeightRight + vertexHeightTopRight + vertexHeightTop >> 2;
-            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(objectId);
-            int hash = localX + (localY << 7) + (objectId << 14) + 1073741824;
-            int objectConfig = (byte) ((face << 6) + type);
-            if(gameObjectDefinition.supportsItems == 1)
-                objectConfig += 256;
-            if(gameObjectDefinition.hasActions == 0)
-                hash += -2147483648;
-            if(gameObjectDefinition.hasSounds())
-                SoundSystem.addObjectSounds(localY, plane, face, localX, gameObjectDefinition);
-            if(type == 22) {
-                if(!VertexNormal.lowMemory || gameObjectDefinition.hasActions != 0 || gameObjectDefinition.obstructsGround) {
-                    Renderable renderable;
-                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
-                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 22, vertexHeightRight);
-                    else
-                        renderable = new GameObject(objectId, 22, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                    scene.addGroundDecoration(localX, localY, plane, vertexMix, hash, renderable, objectConfig);
-                    if(gameObjectDefinition.solid && gameObjectDefinition.hasActions == 1 && collisionMap != null)
-                        collisionMap.markBlocked(localY, localX);
-                }
-            } else if(type == 10 || type == 11) {
-                Renderable renderable;
-                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
-                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 10, vertexHeightRight);
-                else
-                    renderable = new GameObject(objectId, 10, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                if(renderable != null) {
-                    int i_40_;
-                    int i_41_;
-                    if(face == 1 || face == 3) {
-                        i_40_ = gameObjectDefinition.sizeX;
-                        i_41_ = gameObjectDefinition.sizeY;
-                    } else {
-                        i_41_ = gameObjectDefinition.sizeX;
-                        i_40_ = gameObjectDefinition.sizeY;
-                    }
-                    int i_42_ = 0;
-                    if(type == 11)
-                        i_42_ += 256;
-                    if(scene.addEntityB(localX, localY, plane, vertexMix, i_42_, i_40_, i_41_, hash, renderable, objectConfig) && gameObjectDefinition.castsShadow) {
-                        Model class40_sub5_sub17_sub5;
-                        if(renderable instanceof Model)
-                            class40_sub5_sub17_sub5 = (Model) renderable;
-                        else
-                            class40_sub5_sub17_sub5 = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 10, vertexHeightRight);
-                        if(class40_sub5_sub17_sub5 != null) {
-                            for(int i_43_ = 0; i_43_ <= i_41_; i_43_++) {
-                                for(int i_44_ = 0; i_40_ >= i_44_; i_44_++) {
-                                    int i_45_ = class40_sub5_sub17_sub5.method805() / 4;
-                                    if(i_45_ > 30)
-                                        i_45_ = 30;
-                                    if(i_45_ > Landscape.tileShadowIntensity[plane][localX + i_43_][localY + i_44_])
-                                        Landscape.tileShadowIntensity[plane][i_43_ + localX][localY + i_44_] = (byte) i_45_;
-                                }
-                            }
-                        }
-                    }
-                }
-                if(gameObjectDefinition.solid && collisionMap != null)
-                    collisionMap.unmarkSolidOccupant(localX, localY, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, face, gameObjectDefinition.walkable);
-            } else if(type >= 12) {
-                Renderable renderable;
-                if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
-                    renderable = new GameObject(objectId, type, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                else
-                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, vertexHeightRight);
-                scene.addEntityB(localX, localY, plane, vertexMix, 0, 1, 1, hash, renderable, objectConfig);
-                if(type >= 12 && type <= 17 && type != 13 && plane > 0)
-                    Landscape.tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY], 2340);
-                if(gameObjectDefinition.solid && collisionMap != null)
-                    collisionMap.unmarkSolidOccupant(localX, localY, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, face, gameObjectDefinition.walkable);
-            } else if(type == 0) {
-                Renderable renderable;
-                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
-                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 0, vertexHeightRight);
-                else
-                    renderable = new GameObject(objectId, 0, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                scene.addWall(localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face], 0, hash, renderable, null, objectConfig);
-                if(face == 0) {
-                    if(gameObjectDefinition.castsShadow) {
-                        Landscape.tileShadowIntensity[plane][localX][localY] = (byte) 50;
-                        Landscape.tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
-                    }
-                    if(gameObjectDefinition.wall)
-                        Landscape.tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY], 585);
-                } else if(face == 1) {
-                    if(gameObjectDefinition.castsShadow) {
-                        Landscape.tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
-                        Landscape.tileShadowIntensity[plane][localX + 1][1 + localY] = (byte) 50;
-                    }
-                    if(gameObjectDefinition.wall)
-                        Landscape.tileCullingBitsets[plane][localX][localY + 1] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY + 1], 1170);
-                } else if(face == 2) {
-                    if(gameObjectDefinition.castsShadow) {
-                        Landscape.tileShadowIntensity[plane][1 + localX][localY] = (byte) 50;
-                        Landscape.tileShadowIntensity[plane][localX + 1][1 + localY] = (byte) 50;
-                    }
-                    if(gameObjectDefinition.wall)
-                        Landscape.tileCullingBitsets[plane][localX + 1][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX + 1][localY], 585);
-                } else if(face == 3) {
-                    if(gameObjectDefinition.castsShadow) {
-                        Landscape.tileShadowIntensity[plane][localX][localY] = (byte) 50;
-                        Landscape.tileShadowIntensity[plane][localX + 1][localY] = (byte) 50;
-                    }
-                    if(gameObjectDefinition.wall)
-                        Landscape.tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY], 1170);
-                }
-                if(gameObjectDefinition.solid && collisionMap != null)
-                    collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
-                if(gameObjectDefinition.setDecorDisplacement != 16)
-                    scene.method115(plane, localX, localY, gameObjectDefinition.setDecorDisplacement);
-            } else if(type == 1) {
-                Renderable renderable;
-                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
-                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 1, vertexHeightRight);
-                else
-                    renderable = new GameObject(objectId, 1, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                scene.addWall(localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
-                if(gameObjectDefinition.castsShadow) {
-                    if(face == 0)
-                        Landscape.tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
-                    else if(face == 1)
-                        Landscape.tileShadowIntensity[plane][localX + 1][1 + localY] = (byte) 50;
-                    else if(face == 2)
-                        Landscape.tileShadowIntensity[plane][localX + 1][localY] = (byte) 50;
-                    else if(face == 3)
-                        Landscape.tileShadowIntensity[plane][localX][localY] = (byte) 50;
-                }
-                if(gameObjectDefinition.solid && collisionMap != null)
-                    collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
-            } else if(type == 2) {
-                int i_46_ = 0x3 & face + 1;
-                Renderable renderable;
-                Renderable renderable_47_;
-                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null) {
-                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face + 4, vertexHeight, 2, vertexHeightRight);
-                    renderable_47_ = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, i_46_, vertexHeight, 2, vertexHeightRight);
-                } else {
-                    renderable = new GameObject(objectId, 2, 4 + face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                    renderable_47_ = new GameObject(objectId, 2, i_46_, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                }
-                scene.addWall(localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face], SceneCluster.anIntArray761[i_46_], hash, renderable, renderable_47_, objectConfig);
-                if(gameObjectDefinition.wall) {
-                    if(face == 0) {
-                        Landscape.tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY], 585);
-                        Landscape.tileCullingBitsets[plane][localX][localY + 1] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY + 1], 1170);
-                    } else if(face == 1) {
-                        Landscape.tileCullingBitsets[plane][localX][1 + localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][1 + localY], 1170);
-                        Landscape.tileCullingBitsets[plane][1 + localX][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][1 + localX][localY], 585);
-                    } else if(face == 2) {
-                        Landscape.tileCullingBitsets[plane][localX + 1][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX + 1][localY], 585);
-                        Landscape.tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY], 1170);
-                    } else if(face == 3) {
-                        Landscape.tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY], 1170);
-                        Landscape.tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(Landscape.tileCullingBitsets[plane][localX][localY], 585);
-                    }
-                }
-                if(gameObjectDefinition.solid && collisionMap != null)
-                    collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
-                if(gameObjectDefinition.setDecorDisplacement != 16)
-                    scene.method115(plane, localX, localY, gameObjectDefinition.setDecorDisplacement);
-            } else if(type == 3) {
-                Renderable renderable;
-                if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
-                    renderable = new GameObject(objectId, 3, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                else
-                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 3, vertexHeightRight);
-                scene.addWall(localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
-                if(gameObjectDefinition.castsShadow) {
-                    if(face != 0) {
-                        if(face == 1)
-                            Landscape.tileShadowIntensity[plane][1 + localX][localY + 1] = (byte) 50;
-                        else if(face == 2)
-                            Landscape.tileShadowIntensity[plane][localX + 1][localY] = (byte) 50;
-                        else if(face == 3)
-                            Landscape.tileShadowIntensity[plane][localX][localY] = (byte) 50;
-                    } else
-                        Landscape.tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
-                }
-                if(gameObjectDefinition.solid && collisionMap != null)
-                    collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
-            } else if(type == 9) {
-                Renderable renderable;
-                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
-                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, vertexHeightRight);
-                else
-                    renderable = new GameObject(objectId, type, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                scene.addEntityB(localX, localY, plane, vertexMix, 0, 1, 1, hash, renderable, objectConfig);
-                if(gameObjectDefinition.solid && collisionMap != null)
-                    collisionMap.unmarkSolidOccupant(localX, localY, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, face, gameObjectDefinition.walkable);
-            } else {
-                if(gameObjectDefinition.adjustToTerrain) {
-                    if(face == 1) {
-                        int i_48_ = vertexHeightTop;
-                        vertexHeightTop = vertexHeightTopRight;
-                        vertexHeightTopRight = vertexHeightRight;
-                        vertexHeightRight = vertexHeight;
-                        vertexHeight = i_48_;
-                    } else if(face == 2) {
-                        int i_49_ = vertexHeightTop;
-                        vertexHeightTop = vertexHeightRight;
-                        vertexHeightRight = i_49_;
-                        i_49_ = vertexHeightTopRight;
-                        vertexHeightTopRight = vertexHeight;
-                        vertexHeight = i_49_;
-                    } else if(face == 3) {
-                        int i_50_ = vertexHeightTop;
-                        vertexHeightTop = vertexHeight;
-                        vertexHeight = vertexHeightRight;
-                        vertexHeightRight = vertexHeightTopRight;
-                        vertexHeightTopRight = i_50_;
-                    }
-                }
-                if(type == 4) {
-                    Renderable renderable;
-                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
-                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
-                    else
-                        renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                    scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, 512 * face, hash, renderable, objectConfig, SceneCluster.anIntArray761[face]);
-                } else if(type == 5) {
-                    int i_51_ = scene.method122(plane, localX, localY);
-                    int i_52_ = 16;
-                    if(i_51_ > 0)
-                        i_52_ = GameObjectDefinition.getDefinition((0x1fffedf2 & i_51_) >> 14).setDecorDisplacement;
-                    Renderable renderable;
-                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
-                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
-                    else
-                        renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                    scene.addWallDecoration(localX, localY, plane, vertexMix, i_52_ * anIntArray666[face], ProducingGraphicsBuffer_Sub1.anIntArray2207[face] * i_52_, face * 512, hash, renderable, objectConfig, SceneCluster.anIntArray761[face]);
-                } else if(type == 6) {
-                    Renderable renderable;
-                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
-                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
-                    else
-                        renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                    scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, face, hash, renderable, objectConfig, 256);
-                } else if(type == 7) {
-                    Renderable renderable;
-                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
-                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
-                    else
-                        renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                    scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, face, hash, renderable, objectConfig, 512);
-                } else if(type == 8) {
-                    Renderable renderable;
-                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
-                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
-                    else
-                        renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                    scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, face, hash, renderable, objectConfig, 768);
-                }
-            }
-        }
 
     }
 

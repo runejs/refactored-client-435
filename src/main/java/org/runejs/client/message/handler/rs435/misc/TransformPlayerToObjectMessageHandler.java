@@ -1,5 +1,6 @@
 package org.runejs.client.message.handler.rs435.misc;
 
+import org.runejs.client.Landscape;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.media.renderable.Model;
@@ -31,10 +32,10 @@ public class TransformPlayerToObjectMessageHandler implements MessageHandler<Tra
             player = Player.localPlayer;
         if (player != null) {
             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(message.objectId);
-            int tileHeightX0Y0 = MovedStatics.tile_height[Player.worldLevel][x][y];
-            int tileHeightX0Y1 = MovedStatics.tile_height[Player.worldLevel][x][1 + y];
-            int tileHeightX1Y1 = MovedStatics.tile_height[Player.worldLevel][1 + x][1 + y];
-            int tileHeightX1Y0 = MovedStatics.tile_height[Player.worldLevel][x + 1][y];
+            int tileHeightX0Y0 = Landscape.tile_height[Player.worldLevel][x][y];
+            int tileHeightX0Y1 = Landscape.tile_height[Player.worldLevel][x][1 + y];
+            int tileHeightX1Y1 = Landscape.tile_height[Player.worldLevel][1 + x][1 + y];
+            int tileHeightX1Y0 = Landscape.tile_height[Player.worldLevel][x + 1][y];
             Model model = gameObjectDefinition.createTerrainObjectModel(tileHeightX1Y1, tileHeightX0Y1, message.orientation, tileHeightX0Y0, typeKey, tileHeightX1Y0);
             if (model != null) {
                 if (unknownXMax < unknownXMin) {

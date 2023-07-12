@@ -48,7 +48,7 @@ public class Class40_Sub3 extends Node {
 
     public static void startup() {
         if (MovedStatics.loadingPercent == 0) {
-            Npc.currentScene = new Scene(MovedStatics.tile_height);
+            Npc.currentScene = new Scene(Landscape.tile_height);
             for (int i = 0; i < 4; i++)
                 Landscape.currentCollisionMap[i] = new CollisionMap(104, 104);
             Minimap.minimapImage = new ImageRGB(512, 512);

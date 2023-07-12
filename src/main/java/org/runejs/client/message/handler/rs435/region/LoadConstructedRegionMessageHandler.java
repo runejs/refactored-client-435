@@ -6,7 +6,6 @@ import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.region.LoadConstructedRegionInboundMessage;
-import org.runejs.client.scene.GroundItemTile;
 
 /**
  * Loads a construction map region (i.e composed from chunks)
@@ -14,7 +13,7 @@ import org.runejs.client.scene.GroundItemTile;
 public class LoadConstructedRegionMessageHandler implements MessageHandler<LoadConstructedRegionInboundMessage> {
     @Override
     public void handle(LoadConstructedRegionInboundMessage message) {
-        GroundItemTile.loadGeneratedMap = true;
+        Landscape.loadGeneratedMap = true;
 
         int chunkLocalY = message.chunkLocalY;
         int chunkX = message.chunkX;
@@ -23,12 +22,12 @@ public class LoadConstructedRegionMessageHandler implements MessageHandler<LoadC
         int level = message.level;
         int regionCount = message.regionCount;
 
-        Class44.xteaKeys = message.xteaKeys;
+        Landscape.xteaKeys = message.xteaKeys;
         Landscape.constructMapTiles = message.mapTiles;
 
-        LinkedList.terrainDataIds = new int[regionCount];
-        RSString.terrainData = new byte[regionCount][];
-        Class13.objectDataIds = new int[regionCount];
+        Landscape.terrainDataIds = new int[regionCount];
+        Landscape.terrainData = new byte[regionCount][];
+        Landscape.objectDataIds = new int[regionCount];
         Landscape.objectData = new byte[regionCount][];
         Landscape.mapCoordinates = new int[regionCount];
         regionCount = 0;
@@ -50,8 +49,8 @@ public class LoadConstructedRegionMessageHandler implements MessageHandler<LoadC
                             Landscape.mapCoordinates[regionCount] = i_17_;
                             int i_19_ = i_17_ & 0xff;
                             int i_20_ = (0xffbe & i_17_) >> 8;
-                            LinkedList.terrainDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.MAP_NAME_PREFIX_M +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
-                            Class13.objectDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.MAP_NAME_PREFIX_L +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
+                            Landscape.terrainDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.MAP_NAME_PREFIX_M +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
+                            Landscape.objectDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.MAP_NAME_PREFIX_L +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
                             regionCount++;
                         }
                     }

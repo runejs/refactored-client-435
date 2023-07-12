@@ -1,5 +1,6 @@
 package org.runejs.client.message.handler.rs435.world.object;
 
+import org.runejs.client.Landscape;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.actor.Npc;
@@ -22,10 +23,10 @@ public class RotateAnimateObjectMessageHandler implements MessageHandler<RotateA
         int animationId = message.animationId;
 
         if (x >= 0 && y >= 0 && x < 103 && y < 103) {
-            int tileHeightX0Y0 = MovedStatics.tile_height[Player.worldLevel][x][y];
-            int tileHeightX1Y0 = MovedStatics.tile_height[Player.worldLevel][x + 1][y];
-            int tileHeightX1Y1 = MovedStatics.tile_height[Player.worldLevel][1 + x][1 + y];
-            int tileHeightX0Y1 = MovedStatics.tile_height[Player.worldLevel][x][y + 1];
+            int tileHeightX0Y0 = Landscape.tile_height[Player.worldLevel][x][y];
+            int tileHeightX1Y0 = Landscape.tile_height[Player.worldLevel][x + 1][y];
+            int tileHeightX1Y1 = Landscape.tile_height[Player.worldLevel][1 + x][1 + y];
+            int tileHeightX0Y1 = Landscape.tile_height[Player.worldLevel][x][y + 1];
             if (objectType == 0) {
                 Wall wall = Npc.currentScene.method126(Player.worldLevel, x, y);
                 if (wall != null) {

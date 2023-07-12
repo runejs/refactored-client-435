@@ -136,7 +136,7 @@ public class ObjectDecompressor {
             class20 = groundData[plane];
         }
         if(localY > 0 && localX > 0 && localY < 103 && localX < 103) {
-            MovedStatics.addObject(objectId, localX, localY, z, rotation, type, Npc.currentScene, class20);
+            Landscape.addObject(objectId, localX, localY, z, rotation, type, Npc.currentScene, class20);
         }
     }
 

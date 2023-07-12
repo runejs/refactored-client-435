@@ -10,13 +10,15 @@ import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.GameObject;
+import org.runejs.client.media.renderable.Model;
+import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.IncomingPackets;
 import org.runejs.client.net.OutgoingPackets;
-import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.Scene;
+import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
@@ -49,21 +51,28 @@ public class Landscape {
     public static byte[][][] tile_underlayids;
     public static byte[][] objectData;
     public static int[][][] constructMapTiles = new int[4][13][13];
+    public static int[] objectDataIds;
+    public static int[][] xteaKeys;
+    public static byte[][] terrainData;
+    public static boolean loadGeneratedMap = false;
+    public static int[] terrainDataIds;
+    public static int[][][] tile_height = new int[4][105][105];
+    private static int lowestPlane = 99;
 
     public static void loadRegion() {
-        Game.method364(false);
+        method364(false);
         Game.anInt874 = 0;
         boolean bool = true;
-        for(int i = 0; i < RSString.terrainData.length; i++) {
-            if(LinkedList.terrainDataIds[i] != -1 && RSString.terrainData[i] == null) {
-                RSString.terrainData[i] = CacheArchive.gameWorldMapCacheArchive.getFile(LinkedList.terrainDataIds[i], 0);
-                if(RSString.terrainData[i] == null) {
+        for(int i = 0; i < terrainData.length; i++) {
+            if(terrainDataIds[i] != -1 && terrainData[i] == null) {
+                terrainData[i] = CacheArchive.gameWorldMapCacheArchive.getFile(terrainDataIds[i], 0);
+                if(terrainData[i] == null) {
                     Game.anInt874++;
                     bool = false;
                 }
             }
-            if(Class13.objectDataIds[i] != -1 && objectData[i] == null) {
-                objectData[i] = CacheArchive.gameWorldMapCacheArchive.method176(Class13.objectDataIds[i], 0, Class44.xteaKeys[i]);
+            if(objectDataIds[i] != -1 && objectData[i] == null) {
+                objectData[i] = CacheArchive.gameWorldMapCacheArchive.method176(objectDataIds[i], 0, xteaKeys[i]);
                 if(objectData[i] == null) {
                     Game.anInt874++;
                     bool = false;
@@ -73,16 +82,16 @@ public class Landscape {
         if(bool) {
             bool = true;
             Game.anInt2591 = 0;
-            for(int i = 0; RSString.terrainData.length > i; i++) {
+            for(int i = 0; terrainData.length > i; i++) {
                 byte[] is = objectData[i];
                 if(is != null) {
                     int i_2_ = (mapCoordinates[i] & 0xff) * 64 - Class26.baseY;
                     int i_3_ = (mapCoordinates[i] >> 8) * 64 - MovedStatics.baseX;
-                    if(GroundItemTile.loadGeneratedMap) {
+                    if(loadGeneratedMap) {
                         i_3_ = 10;
                         i_2_ = 10;
                     }
-                    bool &= Class40_Sub7.method840(is, i_3_, i_2_);
+                    bool &= method840(is, i_3_, i_2_);
                 }
             }
             if(bool) {
@@ -100,17 +109,17 @@ public class Landscape {
                     }
                 }
                 method1020();
-                int dataLength = RSString.terrainData.length;
+                int dataLength = terrainData.length;
                 SoundSystem.clearObjectSounds();
-                Game.method364(true);
-                if(!GroundItemTile.loadGeneratedMap) {
+                method364(true);
+                if(!loadGeneratedMap) {
                     for(int pointer = 0; dataLength > pointer; pointer++) {
                         int offsetY = -Class26.baseY + (0xff & mapCoordinates[pointer]) * 64;
                         int offsetX = -MovedStatics.baseX + 64 * (mapCoordinates[pointer] >> 8);
-                        byte[] is = RSString.terrainData[pointer];
-                        if(FileOperations.FileExists("./data/maps/" + LinkedList.terrainDataIds[pointer] + ".dat")) {
-                            System.out.println("reading file: " + "./data/maps/" + LinkedList.terrainDataIds[pointer] + ".dat");
-                            is = FileOperations.ReadFile("./data/maps/" + LinkedList.terrainDataIds[pointer] + ".dat");
+                        byte[] is = terrainData[pointer];
+                        if(FileOperations.FileExists("./data/maps/" + terrainDataIds[pointer] + ".dat")) {
+                            System.out.println("reading file: " + "./data/maps/" + terrainDataIds[pointer] + ".dat");
+                            is = FileOperations.ReadFile("./data/maps/" + terrainDataIds[pointer] + ".dat");
                         }
                         if(is != null)
                             loadTerrainBlock(currentCollisionMap, (Class51.regionX - 6) * 8, is, offsetX, offsetY, 8 * (-6 + Class17.regionY));
@@ -118,36 +127,36 @@ public class Landscape {
                     for(int pointer = 0; dataLength > pointer; pointer++) {
                         int offsetX = -MovedStatics.baseX + (mapCoordinates[pointer] >> 8) * 64;
                         int offsetY = -Class26.baseY + 64 * (mapCoordinates[pointer] & 0xff);
-                        byte[] data = RSString.terrainData[pointer];
+                        byte[] data = terrainData[pointer];
                         if(data == null && Class17.regionY < 800)
-                            MovedStatics.initiateVertexHeights(offsetY, 64, 64, offsetX);
+                            initiateVertexHeights(offsetY, 64, 64, offsetX);
                     }
-                    Game.method364(true);
+                    method364(true);
                     for(int region = 0; dataLength > region; region++) {
                         //                        System.out.println("Requesting map: "+Class13.anIntArray421[i_12_]);
                         // load maps in here
                         byte[] data = objectData[region];
-                        if(FileOperations.FileExists("./data/maps/" + Class13.objectDataIds[region] + ".cmap")) {
-                            MapDecompressor.objectLoader("./data/maps/" + Class13.objectDataIds[region] + ".cmap");
-                        } else if(FileOperations.FileExists("./data/maps/" + Class13.objectDataIds[region] + ".dat")) {
-                            System.out.println("reading file: " + "./data/maps/" + Class13.objectDataIds[region] + ".dat");
-                            data = FileOperations.ReadFile("./data/maps/" + Class13.objectDataIds[region] + ".dat");
+                        if(FileOperations.FileExists("./data/maps/" + objectDataIds[region] + ".cmap")) {
+                            MapDecompressor.objectLoader("./data/maps/" + objectDataIds[region] + ".cmap");
+                        } else if(FileOperations.FileExists("./data/maps/" + objectDataIds[region] + ".dat")) {
+                            System.out.println("reading file: " + "./data/maps/" + objectDataIds[region] + ".dat");
+                            data = FileOperations.ReadFile("./data/maps/" + objectDataIds[region] + ".dat");
                         } else {
                             try {
-                                data = MapDecompressor.grabMap(Class13.objectDataIds[region]);
+                                data = MapDecompressor.grabMap(objectDataIds[region]);
                             } catch(IOException e) {
                             }
                         }
                         if(data != null) {
                             int offsetX = -MovedStatics.baseX + (mapCoordinates[region] >> 8) * 64;
                             int offsetY = 64 * (0xff & mapCoordinates[region]) - Class26.baseY;
-                            GameObject.loadObjectBlock(offsetX, Npc.currentScene, currentCollisionMap, data, offsetY);
+                            loadObjectBlock(offsetX, Npc.currentScene, currentCollisionMap, data, offsetY);
                         } else {
-                            System.out.println("Missing map: " + Class13.objectDataIds[region]);
+                            System.out.println("Missing map: " + objectDataIds[region]);
                         }
                     }
                 }
-                if(GroundItemTile.loadGeneratedMap) {
+                if(loadGeneratedMap) {
                     for(int z = 0; z < 4; z++) {
                         for(int x = 0; x < 13; x++) {
                             for(int y = 0; y < 13; y++) {
@@ -160,15 +169,15 @@ public class Landscape {
                                     int tileY = (data & 0x3ffb) >> 3;
                                     int tileCoordinates = (tileX / 8 << 8) + tileY / 8;
                                     for(int pointer = 0; pointer < mapCoordinates.length; pointer++) {
-                                        if(mapCoordinates[pointer] == tileCoordinates && RSString.terrainData[pointer] != null) {
-                                            loadTerrainSubblock(y * 8, 8 * (tileX & 0x7), tileZ, z, x * 8, (0x7 & tileY) * 8, tileRotation, RSString.terrainData[pointer], currentCollisionMap);
+                                        if(mapCoordinates[pointer] == tileCoordinates && terrainData[pointer] != null) {
+                                            loadTerrainSubblock(y * 8, 8 * (tileX & 0x7), tileZ, z, x * 8, (0x7 & tileY) * 8, tileRotation, terrainData[pointer], currentCollisionMap);
                                             bool_19_ = true;
                                             break;
                                         }
                                     }
                                 }
                                 if(!bool_19_)
-                                    MovedStatics.method455(8 * y, z, x * 8);
+                                    method455(8 * y, z, x * 8);
                             }
                         }
                     }
@@ -176,10 +185,10 @@ public class Landscape {
                         for(int y = 0; y < 13; y++) {
                             int displayMap = constructMapTiles[0][x][y];
                             if(displayMap == -1)
-                                MovedStatics.initiateVertexHeights(y * 8, 8, 8, 8 * x);
+                                initiateVertexHeights(y * 8, 8, 8, 8 * x);
                         }
                     }
-                    Game.method364(true);
+                    method364(true);
                     for(int z = 0; z < 4; z++) {
                         for(int x = 0; x < 13; x++) {
                             for(int y = 0; y < 13; y++) {
@@ -201,11 +210,11 @@ public class Landscape {
                         }
                     }
                 }
-                Game.method364(true);
+                method364(true);
                 RSCanvas.clearCaches();
                 createRegion(Npc.currentScene, currentCollisionMap);
-                Game.method364(true);
-                int z = MovedStatics.lowestPlane;
+                method364(true);
+                int z = lowestPlane;
                 if(Player.worldLevel < z)
                     z = Player.worldLevel;
                 if(z < -1 + Player.worldLevel)
@@ -213,7 +222,7 @@ public class Landscape {
                 if(!VertexNormal.lowMemory)
                     Npc.currentScene.setHeightLevel(0);
                 else
-                    Npc.currentScene.setHeightLevel(MovedStatics.lowestPlane);
+                    Npc.currentScene.setHeightLevel(lowestPlane);
                 for(int x = 0; x < 104; x++) {
                     for(int y = 0; y < 104; y++)
                         MovedStatics.spawnGroundItem(y, x);
@@ -224,7 +233,7 @@ public class Landscape {
                     OutgoingPackets.buffer.putPacket(121);
                     OutgoingPackets.buffer.putIntBE(1057001181);
                 }
-                if(!GroundItemTile.loadGeneratedMap) {
+                if(!loadGeneratedMap) {
                     int i_42_ = (-6 + Class51.regionX) / 8;
                     int i_43_ = (Class17.regionY - 6) / 8;
                     int i_44_ = (6 + Class17.regionY) / 8;
@@ -252,7 +261,7 @@ public class Landscape {
 
     }
 
-    public static void loadTerrainSubblock(int y, int drawX, int drawingPlane, int currentPlane, int x, int drawY, int rotation, byte[] terrainData, CollisionMap[] collisionMaps) {
+    private static void loadTerrainSubblock(int y, int drawX, int drawingPlane, int currentPlane, int x, int drawY, int rotation, byte[] terrainData, CollisionMap[] collisionMaps) {
         for(int i = 0; i < 8; i++) {
             for(int yIdx = 0; yIdx < 8; yIdx++) {
                 if(x + i > 0 && i + x < 103 && y + yIdx > 0 && yIdx + y < 103)
@@ -295,7 +304,7 @@ public class Landscape {
 
     }
 
-    public static void constructMapRegionObjects(int drawX, int drawY, int drawingPlane, int orientation, int x, int y, int plane, Scene scene, byte[] objectData, CollisionMap[] collisionMaps) {
+    private static void constructMapRegionObjects(int drawX, int drawY, int drawingPlane, int orientation, int x, int y, int plane, Scene scene, byte[] objectData, CollisionMap[] collisionMaps) {
         Buffer objectBuffer = new Buffer(objectData);
         int i = -1;
         for(; ; ) {
@@ -326,7 +335,7 @@ public class Landscape {
                             collisionMapPlane--;
                         if(collisionMapPlane >= 0)
                             collisionMap = collisionMaps[collisionMapPlane];
-                        MovedStatics.addObject(i, tileX, tileY, plane, originalOrientation + orientation & 0x3, objectType, scene, collisionMap);
+                        addObject(i, tileX, tileY, plane, originalOrientation + orientation & 0x3, objectType, scene, collisionMap);
                     }
                 }
             }
@@ -395,8 +404,8 @@ public class Landscape {
             int specularDistribution = directionalLightLength * 768 >> 8;
             for(int y = 1; y < 103; y++) {
                 for(int x = 1; x < 103; x++) {
-                    int heightDifferenceX = -MovedStatics.tile_height[_plane][x - 1][y] + MovedStatics.tile_height[_plane][1 + x][y];
-                    int heightDifferenceY = MovedStatics.tile_height[_plane][x][y + 1] + -MovedStatics.tile_height[_plane][x][y + -1];
+                    int heightDifferenceX = -tile_height[_plane][x - 1][y] + tile_height[_plane][1 + x][y];
+                    int heightDifferenceY = tile_height[_plane][x][y + 1] + -tile_height[_plane][x][y + -1];
                     int normalisedLength = (int) Math.sqrt(heightDifferenceY * heightDifferenceY + heightDifferenceX * heightDifferenceX + 65536);
                     int normalisedZ = 65536 / normalisedLength;
                     int weightedShadowIntensity = (shadowIntensity[x][y] >> 1) + (shadowIntensity[x][-1 + y] >> 2) + (shadowIntensity[1 + x][y] >> 3) + (shadowIntensity[x - 1][y] >> 2) + (shadowIntensity[x][1 + y] >> 3);
@@ -465,15 +474,15 @@ public class Landscape {
                             hue -= blendedHue[negativeY];
                         }
                         if(y >= 1 && y < 103 && (!VertexNormal.lowMemory || (0x2 & MovedStatics.tile_flags[0][x][y]) != 0 || (0x10 & MovedStatics.tile_flags[_plane][x][y]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(_plane, y, 0, x))) {
-                            if(MovedStatics.lowestPlane > _plane)
-                                MovedStatics.lowestPlane = _plane;
+                            if(lowestPlane > _plane)
+                                lowestPlane = _plane;
                             int underlayId = tile_underlayids[_plane][x][y] & 0xff;
                             int overlayId = tile_overlayids[_plane][x][y] & 0xff;
                             if(underlayId > 0 || overlayId > 0) {
-                                int vertexHeightSW = MovedStatics.tile_height[_plane][x][y];
-                                int vertexHeightSE = MovedStatics.tile_height[_plane][x + 1][y];
-                                int vertexHeightNE = MovedStatics.tile_height[_plane][x + 1][1 + y];
-                                int vertexHeightNW = MovedStatics.tile_height[_plane][x][y + 1];
+                                int vertexHeightSW = tile_height[_plane][x][y];
+                                int vertexHeightSE = tile_height[_plane][x + 1][y];
+                                int vertexHeightNE = tile_height[_plane][x + 1][1 + y];
+                                int vertexHeightNW = tile_height[_plane][x][y + 1];
                                 int lightIntensitySW = tileLightIntensity[x][y];
                                 int lightIntensitySE = tileLightIntensity[x + 1][y];
                                 int lightIntensityNE = tileLightIntensity[x + 1][y + 1];
@@ -609,8 +618,8 @@ public class Landscape {
                             int i_71_ = (-i_65_ + i_66_ + 1) * (-i_67_ + i_68_ + 1);
                             if(i_71_ >= 8) {
                                 int i_72_ = 240;
-                                int i_73_ = -i_72_ + MovedStatics.tile_height[i_68_][x][i_65_];
-                                int i_74_ = MovedStatics.tile_height[i_67_][x][i_65_];
+                                int i_73_ = -i_72_ + tile_height[i_68_][x][i_65_];
+                                int i_74_ = tile_height[i_67_][x][i_65_];
                                 Scene.createOccluder(plane, 1, 128 * x, 128 * x, 128 * i_65_, 128 + 128 * i_66_, i_73_, i_74_);
                                 for(int i_75_ = i_67_; i_75_ <= i_68_; i_75_++) {
                                     for(int i_76_ = i_65_; i_76_ <= i_66_; i_76_++)
@@ -647,9 +656,9 @@ public class Landscape {
 
                             int occlusionSurface = (highestOcclusionX - lowestOcclusionX + 1) * (-lowestOcclusionPlane + 1 + highestOcclusionPlane);
                             if(occlusionSurface >= 8) {
-                                int lowestOcclusionVertexHeight = MovedStatics.tile_height[lowestOcclusionPlane][lowestOcclusionX][y];
+                                int lowestOcclusionVertexHeight = tile_height[lowestOcclusionPlane][lowestOcclusionX][y];
                                 int highestOcclusionVertexHeightOffset = 240;
-                                int highestOcclusionVertexHeight = MovedStatics.tile_height[highestOcclusionPlane][lowestOcclusionX][y] - highestOcclusionVertexHeightOffset;
+                                int highestOcclusionVertexHeight = tile_height[highestOcclusionPlane][lowestOcclusionX][y] - highestOcclusionVertexHeightOffset;
                                 Scene.createOccluder(plane, 2, 128 * lowestOcclusionX, 128 * highestOcclusionX + 128, 128 * y, y * 128, highestOcclusionVertexHeight, lowestOcclusionVertexHeight);
                                 for(int occludedPlane = lowestOcclusionPlane; highestOcclusionPlane >= occludedPlane; occludedPlane++) {
                                     for(int occludedX = lowestOcclusionX; occludedX <= highestOcclusionX; occludedX++)
@@ -685,7 +694,7 @@ public class Landscape {
                                 }
                             }
                             if((-i_89_ + i_90_ + 1) * (1 + i_92_ - i_91_) >= 4) {
-                                int i_95_ = MovedStatics.tile_height[_plane][i_89_][i_91_];
+                                int i_95_ = tile_height[_plane][i_89_][i_91_];
                                 Scene.createOccluder(plane, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_, i_92_ * 128 + 128, i_95_, i_95_);
                                 for(int i_96_ = i_89_; i_96_ <= i_90_; i_96_++) {
                                     for(int i_97_ = i_91_; i_92_ >= i_97_; i_97_++)
@@ -712,7 +721,7 @@ public class Landscape {
         }
     }
 
-    public static void method973() {
+    private static void method973() {
         blendedHueMultiplier = null;
         blendedLightness = null;
         blendDirectionTracker = null;
@@ -727,11 +736,11 @@ public class Landscape {
         blendedHue = null;
     }
 
-    public static void method1020() {
+    private static void method1020() {
         blendedSaturation = new int[104];
         tile_underlay_path = new byte[4][104][104];
         tileCullingBitsets = new int[4][105][105];
-        MovedStatics.lowestPlane = 99;
+        lowestPlane = 99;
         tileShadowIntensity = new byte[4][105][105];
         blendDirectionTracker = new int[104];
         blendedHueMultiplier = new int[104];
@@ -743,7 +752,7 @@ public class Landscape {
         tile_underlayids = new byte[4][104][104];
     }
 
-    public static void loadTerrainBlock(CollisionMap[] collisions, int regionX_maybe, byte[] blockData, int offsetX, int offsetY, int regionY_maybe) {
+    private static void loadTerrainBlock(CollisionMap[] collisions, int regionX_maybe, byte[] blockData, int offsetX, int offsetY, int regionY_maybe) {
         for(int i = 0; i < 4; i++) {
             for(int i_1_ = 0; i_1_ < 64; i_1_++) {
                 for(int i_2_ = 0; i_2_ < 64; i_2_++) {
@@ -763,17 +772,17 @@ public class Landscape {
         }
     }
 
-    public static void method922(int x, int arg1, Buffer fileData, int y, int regionY, int regionX, int level) {
+    private static void method922(int x, int arg1, Buffer fileData, int y, int regionY, int regionX, int level) {
         if(x >= 0 && x < 104 && y >= 0 && y < 104) {
             MovedStatics.tile_flags[level][x][y] = (byte) 0;
             for(; ; ) {
                 int opcode = fileData.getUnsignedByte();
                 if(opcode == 0) {
                     if(level == 0) {
-MovedStatics.tile_height[0][x][y] = -MovedStatics.method888(regionX + x + 932731, regionY + 556238 + y) * 8;
-} else {
-MovedStatics.tile_height[level][x][y] = -240 + MovedStatics.tile_height[level + -1][x][y];
-}
+                        tile_height[0][x][y] = -MovedStatics.method888(regionX + x + 932731, regionY + 556238 + y) * 8;
+                    } else {
+                        tile_height[level][x][y] = -240 + tile_height[level + -1][x][y];
+                    }
 
                     break;
                 }
@@ -782,9 +791,9 @@ MovedStatics.tile_height[level][x][y] = -240 + MovedStatics.tile_height[level + 
                     if(tileHeight == 1)
                         tileHeight = 0;
                     if(level != 0)
-                        MovedStatics.tile_height[level][x][y] = MovedStatics.tile_height[-1 + level][x][y] + -(8 * tileHeight);
+                        tile_height[level][x][y] = tile_height[-1 + level][x][y] + -(8 * tileHeight);
                     else
-                        MovedStatics.tile_height[0][x][y] = 8 * -tileHeight;
+                        tile_height[0][x][y] = 8 * -tileHeight;
                     break;
                 }
                 if(opcode <= 49) {
@@ -813,8 +822,8 @@ MovedStatics.tile_height[level][x][y] = -240 + MovedStatics.tile_height[level + 
 
     public static void constructMapRegion(boolean generatedMap) {
 
-        GroundItemTile.loadGeneratedMap = generatedMap;
-        if(GroundItemTile.loadGeneratedMap) {
+        loadGeneratedMap = generatedMap;
+        if(loadGeneratedMap) {
             int chunkLocalY = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
             int chunkLocalX = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
             int chunkX = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
@@ -835,17 +844,17 @@ MovedStatics.tile_height[level][x][y] = -240 + MovedStatics.tile_height[level + 
             }
             IncomingPackets.incomingPacketBuffer.finishBitAccess();
             int i_8_ = (-IncomingPackets.incomingPacketBuffer.currentPosition + IncomingPackets.incomingPacketSize) / 16;
-            Class44.xteaKeys = new int[i_8_][4];
+            xteaKeys = new int[i_8_][4];
             for(int i_9_ = 0; i_8_ > i_9_; i_9_++) {
                 for(int i_10_ = 0; i_10_ < 4; i_10_++) {
-                    Class44.xteaKeys[i_9_][i_10_] = IncomingPackets.incomingPacketBuffer.getIntBE();
+                    xteaKeys[i_9_][i_10_] = IncomingPackets.incomingPacketBuffer.getIntBE();
                 }
 
             }
 
-            LinkedList.terrainDataIds = new int[i_8_];
-            RSString.terrainData = new byte[i_8_][];
-            Class13.objectDataIds = new int[i_8_];
+            terrainDataIds = new int[i_8_];
+            terrainData = new byte[i_8_][];
+            objectDataIds = new int[i_8_];
             objectData = new byte[i_8_][];
             mapCoordinates = new int[i_8_];
             i_8_ = 0;
@@ -867,8 +876,8 @@ MovedStatics.tile_height[level][x][y] = -240 + MovedStatics.tile_height[level + 
                                 mapCoordinates[i_8_] = i_17_;
                                 int i_19_ = i_17_ & 0xff;
                                 int i_20_ = (0xffbe & i_17_) >> 8;
-                                LinkedList.terrainDataIds[i_8_] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.MAP_NAME_PREFIX_M +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
-                                Class13.objectDataIds[i_8_] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.MAP_NAME_PREFIX_L +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
+                                terrainDataIds[i_8_] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.MAP_NAME_PREFIX_M +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
+                                objectDataIds[i_8_] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.MAP_NAME_PREFIX_L +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
                                 i_8_++;
                             }
                         }
@@ -883,24 +892,24 @@ MovedStatics.tile_height[level][x][y] = -240 + MovedStatics.tile_height[level + 
             int chunkY = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
             int level = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
             int regionCount = (IncomingPackets.incomingPacketSize - IncomingPackets.incomingPacketBuffer.currentPosition) / 16;
-            Class44.xteaKeys = new int[regionCount][4];
+            xteaKeys = new int[regionCount][4];
             for(int r = 0; regionCount > r; r++) {
                 for(int seed = 0; seed < 4; seed++) {
-                    Class44.xteaKeys[r][seed] = IncomingPackets.incomingPacketBuffer.getIntBE();
+                    xteaKeys[r][seed] = IncomingPackets.incomingPacketBuffer.getIntBE();
                 }
             }
             mapCoordinates = new int[regionCount];
-            RSString.terrainData = new byte[regionCount][];
+            terrainData = new byte[regionCount][];
             boolean inTutorialIsland_maybe = false;
             objectData = new byte[regionCount][];
             if((chunkX / 8 == 48 || chunkX / 8 == 49) && chunkY / 8 == 48) {
                 inTutorialIsland_maybe = true;
             }
-            LinkedList.terrainDataIds = new int[regionCount];
+            terrainDataIds = new int[regionCount];
             if(chunkX / 8 == 48 && chunkY / 8 == 148) {
                 inTutorialIsland_maybe = true;
             }
-            Class13.objectDataIds = new int[regionCount];
+            objectDataIds = new int[regionCount];
             regionCount = 0;
             for(int x = (-6 + chunkX) / 8; x <= (6 + chunkX) / 8; x++) {
                 for(int y = (-6 + chunkY) / 8; (6 + chunkY) / 8 >= y; y++) {
@@ -912,8 +921,8 @@ MovedStatics.tile_height[level][x][y] = -240 + MovedStatics.tile_height[level + 
                         String mapKeyM = Native.MAP_NAME_PREFIX_M + mapKey;
                         String mapKeyL = Native.MAP_NAME_PREFIX_L + mapKey;
 
-                        LinkedList.terrainDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(mapKeyM);
-                        Class13.objectDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(mapKeyL);
+                        terrainDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(mapKeyM);
+                        objectDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(mapKeyL);
                         regionCount++;
                     }
                 }
@@ -934,5 +943,405 @@ MovedStatics.tile_height[level][x][y] = -240 + MovedStatics.tile_height[level + 
             lightness = 126;
 
         return lightness + (hsl & 0xff80);
+    }
+
+    private static void loadObjectBlock(int block_x, Scene scene, CollisionMap[] collisionMaps, byte[] block_data, int block_z) {
+        Buffer buffer = new Buffer(block_data);
+        int object_id = -1;
+        for(; ; ) {
+            int delta_id = buffer.getSmart();
+            if(delta_id == 0)
+                break;
+            int pos = 0;
+            object_id += delta_id;
+            for(; ; ) {
+                int delta_pos = buffer.getSmart();
+                if(delta_pos == 0)
+                    break;
+                pos += -1 + delta_pos;
+                int tile_z = pos & 0x3f;
+                int tile_x = pos >> 6 & 0x3f;
+                int tile_y = pos >> 12;
+                int object_info = buffer.getUnsignedByte();
+                int object_type = object_info >> 2;
+                int object_orientation = 0x3 & object_info;
+                int object_x = tile_x + block_x;
+                int object_z = tile_z + block_z;
+                if(object_x > 0 && object_z > 0 && object_x < 103 && object_z < 103) {
+                    CollisionMap collisionMap = null;
+                    int logic_y = tile_y;
+                    if((MovedStatics.tile_flags[1][object_x][object_z] & 2) == 2)
+                        logic_y--;
+                    if(logic_y >= 0)
+                        collisionMap = collisionMaps[logic_y];
+                    addObject(object_id, object_x, object_z, tile_y, object_orientation, object_type, scene, collisionMap);
+                }
+            }
+        }
+    }
+
+    public static void addObject(int objectId, int localX, int localY, int plane, int face, int type, Scene scene, CollisionMap collisionMap) {
+        if(!VertexNormal.lowMemory || (0x2 & MovedStatics.tile_flags[0][localX][localY]) != 0 || (0x10 & MovedStatics.tile_flags[plane][localX][localY]) == 0 && MovedStatics.onBuildTimePlane == Class59.getVisibilityPlaneFor(plane, localY, 0, localX)) {
+            if(lowestPlane > plane)
+                lowestPlane = plane;
+            int vertexHeight = tile_height[plane][localX][localY];
+            int vertexHeightRight = tile_height[plane][localX + 1][localY];
+            int vertexHeightTopRight = tile_height[plane][localX + 1][localY + 1];
+            int vertexHeightTop = tile_height[plane][localX][localY + 1];
+            int vertexMix = vertexHeight + vertexHeightRight + vertexHeightTopRight + vertexHeightTop >> 2;
+            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(objectId);
+            int hash = localX + (localY << 7) + (objectId << 14) + 1073741824;
+            int objectConfig = (byte) ((face << 6) + type);
+            if(gameObjectDefinition.supportsItems == 1)
+                objectConfig += 256;
+            if(gameObjectDefinition.hasActions == 0)
+                hash += -2147483648;
+            if(gameObjectDefinition.hasSounds())
+                SoundSystem.addObjectSounds(localY, plane, face, localX, gameObjectDefinition);
+            if(type == 22) {
+                if(!VertexNormal.lowMemory || gameObjectDefinition.hasActions != 0 || gameObjectDefinition.obstructsGround) {
+                    Renderable renderable;
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 22, vertexHeightRight);
+                    else
+                        renderable = new GameObject(objectId, 22, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                    scene.addGroundDecoration(localX, localY, plane, vertexMix, hash, renderable, objectConfig);
+                    if(gameObjectDefinition.solid && gameObjectDefinition.hasActions == 1 && collisionMap != null)
+                        collisionMap.markBlocked(localY, localX);
+                }
+            } else if(type == 10 || type == 11) {
+                Renderable renderable;
+                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 10, vertexHeightRight);
+                else
+                    renderable = new GameObject(objectId, 10, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                if(renderable != null) {
+                    int i_40_;
+                    int i_41_;
+                    if(face == 1 || face == 3) {
+                        i_40_ = gameObjectDefinition.sizeX;
+                        i_41_ = gameObjectDefinition.sizeY;
+                    } else {
+                        i_41_ = gameObjectDefinition.sizeX;
+                        i_40_ = gameObjectDefinition.sizeY;
+                    }
+                    int i_42_ = 0;
+                    if(type == 11)
+                        i_42_ += 256;
+                    if(scene.addEntityB(localX, localY, plane, vertexMix, i_42_, i_40_, i_41_, hash, renderable, objectConfig) && gameObjectDefinition.castsShadow) {
+                        Model class40_sub5_sub17_sub5;
+                        if(renderable instanceof Model)
+                            class40_sub5_sub17_sub5 = (Model) renderable;
+                        else
+                            class40_sub5_sub17_sub5 = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 10, vertexHeightRight);
+                        if(class40_sub5_sub17_sub5 != null) {
+                            for(int i_43_ = 0; i_43_ <= i_41_; i_43_++) {
+                                for(int i_44_ = 0; i_40_ >= i_44_; i_44_++) {
+                                    int i_45_ = class40_sub5_sub17_sub5.method805() / 4;
+                                    if(i_45_ > 30)
+                                        i_45_ = 30;
+                                    if(i_45_ > tileShadowIntensity[plane][localX + i_43_][localY + i_44_])
+                                        tileShadowIntensity[plane][i_43_ + localX][localY + i_44_] = (byte) i_45_;
+                                }
+                            }
+                        }
+                    }
+                }
+                if(gameObjectDefinition.solid && collisionMap != null)
+                    collisionMap.unmarkSolidOccupant(localX, localY, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, face, gameObjectDefinition.walkable);
+            } else if(type >= 12) {
+                Renderable renderable;
+                if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
+                    renderable = new GameObject(objectId, type, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                else
+                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, vertexHeightRight);
+                scene.addEntityB(localX, localY, plane, vertexMix, 0, 1, 1, hash, renderable, objectConfig);
+                if(type >= 12 && type <= 17 && type != 13 && plane > 0)
+                    tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(tileCullingBitsets[plane][localX][localY], 2340);
+                if(gameObjectDefinition.solid && collisionMap != null)
+                    collisionMap.unmarkSolidOccupant(localX, localY, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, face, gameObjectDefinition.walkable);
+            } else if(type == 0) {
+                Renderable renderable;
+                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 0, vertexHeightRight);
+                else
+                    renderable = new GameObject(objectId, 0, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                scene.addWall(localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face], 0, hash, renderable, null, objectConfig);
+                if(face == 0) {
+                    if(gameObjectDefinition.castsShadow) {
+                        tileShadowIntensity[plane][localX][localY] = (byte) 50;
+                        tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
+                    }
+                    if(gameObjectDefinition.wall)
+                        tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(tileCullingBitsets[plane][localX][localY], 585);
+                } else if(face == 1) {
+                    if(gameObjectDefinition.castsShadow) {
+                        tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
+                        tileShadowIntensity[plane][localX + 1][1 + localY] = (byte) 50;
+                    }
+                    if(gameObjectDefinition.wall)
+                        tileCullingBitsets[plane][localX][localY + 1] = BitUtils.bitWiseOR(tileCullingBitsets[plane][localX][localY + 1], 1170);
+                } else if(face == 2) {
+                    if(gameObjectDefinition.castsShadow) {
+                        tileShadowIntensity[plane][1 + localX][localY] = (byte) 50;
+                        tileShadowIntensity[plane][localX + 1][1 + localY] = (byte) 50;
+                    }
+                    if(gameObjectDefinition.wall)
+                        tileCullingBitsets[plane][localX + 1][localY] = BitUtils.bitWiseOR(tileCullingBitsets[plane][localX + 1][localY], 585);
+                } else if(face == 3) {
+                    if(gameObjectDefinition.castsShadow) {
+                        tileShadowIntensity[plane][localX][localY] = (byte) 50;
+                        tileShadowIntensity[plane][localX + 1][localY] = (byte) 50;
+                    }
+                    if(gameObjectDefinition.wall)
+                        tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(tileCullingBitsets[plane][localX][localY], 1170);
+                }
+                if(gameObjectDefinition.solid && collisionMap != null)
+                    collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
+                if(gameObjectDefinition.setDecorDisplacement != 16)
+                    scene.method115(plane, localX, localY, gameObjectDefinition.setDecorDisplacement);
+            } else if(type == 1) {
+                Renderable renderable;
+                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 1, vertexHeightRight);
+                else
+                    renderable = new GameObject(objectId, 1, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                scene.addWall(localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
+                if(gameObjectDefinition.castsShadow) {
+                    if(face == 0)
+                        tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
+                    else if(face == 1)
+                        tileShadowIntensity[plane][localX + 1][1 + localY] = (byte) 50;
+                    else if(face == 2)
+                        tileShadowIntensity[plane][localX + 1][localY] = (byte) 50;
+                    else if(face == 3)
+                        tileShadowIntensity[plane][localX][localY] = (byte) 50;
+                }
+                if(gameObjectDefinition.solid && collisionMap != null)
+                    collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
+            } else if(type == 2) {
+                int i_46_ = 0x3 & face + 1;
+                Renderable renderable;
+                Renderable renderable_47_;
+                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null) {
+                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face + 4, vertexHeight, 2, vertexHeightRight);
+                    renderable_47_ = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, i_46_, vertexHeight, 2, vertexHeightRight);
+                } else {
+                    renderable = new GameObject(objectId, 2, 4 + face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                    renderable_47_ = new GameObject(objectId, 2, i_46_, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                }
+                scene.addWall(localX, localY, plane, vertexMix, SceneCluster.anIntArray761[face], SceneCluster.anIntArray761[i_46_], hash, renderable, renderable_47_, objectConfig);
+                if(gameObjectDefinition.wall) {
+                    if(face == 0) {
+                        tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(tileCullingBitsets[plane][localX][localY], 585);
+                        tileCullingBitsets[plane][localX][localY + 1] = BitUtils.bitWiseOR(tileCullingBitsets[plane][localX][localY + 1], 1170);
+                    } else if(face == 1) {
+                        tileCullingBitsets[plane][localX][1 + localY] = BitUtils.bitWiseOR(tileCullingBitsets[plane][localX][1 + localY], 1170);
+                        tileCullingBitsets[plane][1 + localX][localY] = BitUtils.bitWiseOR(tileCullingBitsets[plane][1 + localX][localY], 585);
+                    } else if(face == 2) {
+                        tileCullingBitsets[plane][localX + 1][localY] = BitUtils.bitWiseOR(tileCullingBitsets[plane][localX + 1][localY], 585);
+                        tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(tileCullingBitsets[plane][localX][localY], 1170);
+                    } else if(face == 3) {
+                        tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(tileCullingBitsets[plane][localX][localY], 1170);
+                        tileCullingBitsets[plane][localX][localY] = BitUtils.bitWiseOR(tileCullingBitsets[plane][localX][localY], 585);
+                    }
+                }
+                if(gameObjectDefinition.solid && collisionMap != null)
+                    collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
+                if(gameObjectDefinition.setDecorDisplacement != 16)
+                    scene.method115(plane, localX, localY, gameObjectDefinition.setDecorDisplacement);
+            } else if(type == 3) {
+                Renderable renderable;
+                if(gameObjectDefinition.animationId != -1 || gameObjectDefinition.childIds != null)
+                    renderable = new GameObject(objectId, 3, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                else
+                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 3, vertexHeightRight);
+                scene.addWall(localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
+                if(gameObjectDefinition.castsShadow) {
+                    if(face != 0) {
+                        if(face == 1)
+                            tileShadowIntensity[plane][1 + localX][localY + 1] = (byte) 50;
+                        else if(face == 2)
+                            tileShadowIntensity[plane][localX + 1][localY] = (byte) 50;
+                        else if(face == 3)
+                            tileShadowIntensity[plane][localX][localY] = (byte) 50;
+                    } else
+                        tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
+                }
+                if(gameObjectDefinition.solid && collisionMap != null)
+                    collisionMap.unmarkWall(localX, localY, type, face, gameObjectDefinition.walkable);
+            } else if(type == 9) {
+                Renderable renderable;
+                if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                    renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, type, vertexHeightRight);
+                else
+                    renderable = new GameObject(objectId, type, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                scene.addEntityB(localX, localY, plane, vertexMix, 0, 1, 1, hash, renderable, objectConfig);
+                if(gameObjectDefinition.solid && collisionMap != null)
+                    collisionMap.unmarkSolidOccupant(localX, localY, gameObjectDefinition.sizeX, gameObjectDefinition.sizeY, face, gameObjectDefinition.walkable);
+            } else {
+                if(gameObjectDefinition.adjustToTerrain) {
+                    if(face == 1) {
+                        int i_48_ = vertexHeightTop;
+                        vertexHeightTop = vertexHeightTopRight;
+                        vertexHeightTopRight = vertexHeightRight;
+                        vertexHeightRight = vertexHeight;
+                        vertexHeight = i_48_;
+                    } else if(face == 2) {
+                        int i_49_ = vertexHeightTop;
+                        vertexHeightTop = vertexHeightRight;
+                        vertexHeightRight = i_49_;
+                        i_49_ = vertexHeightTopRight;
+                        vertexHeightTopRight = vertexHeight;
+                        vertexHeight = i_49_;
+                    } else if(face == 3) {
+                        int i_50_ = vertexHeightTop;
+                        vertexHeightTop = vertexHeight;
+                        vertexHeight = vertexHeightRight;
+                        vertexHeightRight = vertexHeightTopRight;
+                        vertexHeightTopRight = i_50_;
+                    }
+                }
+                if(type == 4) {
+                    Renderable renderable;
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
+                    else
+                        renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, 512 * face, hash, renderable, objectConfig, SceneCluster.anIntArray761[face]);
+                } else if(type == 5) {
+                    int i_51_ = scene.method122(plane, localX, localY);
+                    int i_52_ = 16;
+                    if(i_51_ > 0)
+                        i_52_ = GameObjectDefinition.getDefinition((0x1fffedf2 & i_51_) >> 14).setDecorDisplacement;
+                    Renderable renderable;
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
+                    else
+                        renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, i_52_ * MovedStatics.anIntArray666[face], ProducingGraphicsBuffer_Sub1.anIntArray2207[face] * i_52_, face * 512, hash, renderable, objectConfig, SceneCluster.anIntArray761[face]);
+                } else if(type == 6) {
+                    Renderable renderable;
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
+                    else
+                        renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, face, hash, renderable, objectConfig, 256);
+                } else if(type == 7) {
+                    Renderable renderable;
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
+                    else
+                        renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, face, hash, renderable, objectConfig, 512);
+                } else if(type == 8) {
+                    Renderable renderable;
+                    if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
+                        renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
+                    else
+                        renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, 0, 0, face, hash, renderable, objectConfig, 768);
+                }
+            }
+        }
+
+    }
+
+    public static boolean method840(byte[] arg1, int arg2, int arg3) {
+        boolean bool = true;
+        Buffer class40_sub1 = new Buffer(arg1);
+        int i = -1;
+        for(; ; ) {
+            int i_0_ = class40_sub1.getSmart();
+            if(i_0_ == 0)
+                break;
+            i += i_0_;
+            int i_1_ = 0;
+            boolean bool_2_ = false;
+            for(; ; ) {
+                if(bool_2_) {
+                    int i_3_ = class40_sub1.getSmart();
+                    if(i_3_ == 0)
+                        break;
+                    class40_sub1.getUnsignedByte();
+                } else {
+                    int i_4_ = class40_sub1.getSmart();
+                    if(i_4_ == 0)
+                        break;
+                    i_1_ += i_4_ + -1;
+                    int i_5_ = i_1_ & 0x3f;
+                    int i_6_ = class40_sub1.getUnsignedByte() >> 2;
+                    int i_7_ = 0x3f & i_1_ >> 6;
+                    int i_8_ = i_7_ + arg2;
+                    int i_9_ = i_5_ + arg3;
+                    if(i_8_ > 0 && i_9_ > 0 && i_8_ < 103 && i_9_ < 103) {
+                        GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
+                        if(i_6_ != 22 || !VertexNormal.lowMemory || gameObjectDefinition.hasActions != 0 || gameObjectDefinition.obstructsGround) {
+                            bool_2_ = true;
+                            if(!gameObjectDefinition.method612()) {
+                                bool = false;
+                                Game.anInt2591++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return bool;
+    }
+
+    private static void method364(boolean arg1) {
+        MovedStatics.anInt537++;
+        if(MovedStatics.anInt537 >= 50 || arg1) {
+            MovedStatics.anInt537 = 0;
+            if(!Game.aBoolean871 && MovedStatics.gameServerSocket != null) {
+                OutgoingPackets.buffer.putPacket(13);
+                try {
+                    MovedStatics.gameServerSocket.sendDataFromBuffer(OutgoingPackets.buffer.currentPosition, 0, OutgoingPackets.buffer.buffer);
+                    OutgoingPackets.buffer.currentPosition = 0;
+                } catch(IOException ioexception) {
+                    Game.aBoolean871 = true;
+                }
+            }
+        }
+    }
+
+    private static void initiateVertexHeights(int offsetY, int sizeY, int sizeX, int offsetX) {
+        for (int y = offsetY; y <= offsetY + sizeY; y++) {
+            for (int x = offsetX; sizeX + offsetX >= x; x++) {
+                if (x >= 0 && x < 104 && y >= 0 && y < 104) {
+                    tileShadowIntensity[0][x][y] = (byte) 127;
+                    if (offsetX == x && x > 0)
+                        tile_height[0][x][y] = tile_height[0][-1 + x][y];
+                    if (offsetX + sizeX == x && x < 103)
+                        tile_height[0][x][y] = tile_height[0][x + 1][y];
+                    if (y == offsetY && y > 0)
+                        tile_height[0][x][y] = tile_height[0][x][y + -1];
+                    if (y == offsetY + sizeY && y < 103)
+                        tile_height[0][x][y] = tile_height[0][x][1 + y];
+                }
+            }
+        }
+    }
+
+    private static void method455(int arg0, int arg1, int arg3) {
+        for (int i = 0; i < 8; i++) {
+            for (int i_0_ = 0; i_0_ < 8; i_0_++)
+                tile_height[arg1][arg3 + i][arg0 + i_0_] = 0;
+        }
+        if (arg3 > 0) {
+            for (int i = 1; i < 8; i++)
+                tile_height[arg1][arg3][arg0 + i] = tile_height[arg1][-1 + arg3][i + arg0];
+        }
+        if (arg0 > 0) {
+            for (int i = 1; i < 8; i++)
+                tile_height[arg1][i + arg3][arg0] = tile_height[arg1][i + arg3][-1 + arg0];
+        }
+        if (arg3 > 0 && tile_height[arg1][-1 + arg3][arg0] != 0)
+            tile_height[arg1][arg3][arg0] = tile_height[arg1][arg3 - 1][arg0];
+        else if (arg0 > 0 && tile_height[arg1][arg3][arg0 - 1] != 0)
+            tile_height[arg1][arg3][arg0] = tile_height[arg1][arg3][-1 + arg0];
+        else if (arg3 > 0 && arg0 > 0 && tile_height[arg1][arg3 + -1][-1 + arg0] != 0)
+            tile_height[arg1][arg3][arg0] = tile_height[arg1][-1 + arg3][arg0 - 1];
     }
 }

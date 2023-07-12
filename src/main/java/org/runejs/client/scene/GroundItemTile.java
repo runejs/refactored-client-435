@@ -4,7 +4,6 @@ import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.media.renderable.Renderable;
 
 public class GroundItemTile {
-    public static boolean loadGeneratedMap = false;
     public static int selectedInventorySlot = 0;
     public static byte[][] aByteArrayArray1370;
     public static CacheArchive aCacheArchive_1375;

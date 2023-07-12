@@ -882,22 +882,6 @@ public class Game {
 
     }
 
-    public static void method364(boolean arg1) {
-        MovedStatics.anInt537++;
-        if(MovedStatics.anInt537 >= 50 || arg1) {
-            MovedStatics.anInt537 = 0;
-            if(!aBoolean871 && MovedStatics.gameServerSocket != null) {
-                OutgoingPackets.buffer.putPacket(13);
-                try {
-                    MovedStatics.gameServerSocket.sendDataFromBuffer(OutgoingPackets.buffer.currentPosition, 0, OutgoingPackets.buffer.buffer);
-                    OutgoingPackets.buffer.currentPosition = 0;
-                } catch(java.io.IOException ioexception) {
-                    aBoolean871 = true;
-                }
-            }
-        }
-    }
-
     public static void drawGameScreen() {
         if(MovedStatics.clearScreen) {
             MovedStatics.clearScreen = false;

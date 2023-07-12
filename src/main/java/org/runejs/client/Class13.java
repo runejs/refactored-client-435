@@ -18,7 +18,6 @@ public class Class13 {
      * but not the furthest-right (see `tabHighlightImageBottomRightEdge` for that).
      */
     public static IndexedImage tabHighlightImageBottomRight;
-    public static int[] objectDataIds;
     private static int anInt356 = 0;
 
     public static void handleActorAnimation(Actor actor) {
