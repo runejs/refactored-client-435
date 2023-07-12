@@ -22,6 +22,7 @@ import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
 import org.runejs.OldEngine.MapDecompressor;
+import org.runejs.client.util.PerlinNoise;
 
 import java.io.IOException;
 
@@ -1441,7 +1442,7 @@ public class Landscape {
     }
 
     private static int getPerlinVertexHeight(int x, int y) {
-        int vertexHeight = -128 + perlinNoise(x + 45365, 91923 + y, 4) - (-(perlinNoise(x + 10294, 37821 + y, 2) - 128 >> 1) + -(-128 + perlinNoise(x, y, 1) >> 2));
+        int vertexHeight = -128 + PerlinNoise.get(x + 45365, 91923 + y, 4) - (-(PerlinNoise.get(x + 10294, 37821 + y, 2) - 128 >> 1) + -(-128 + PerlinNoise.get(x, y, 1) >> 2));
         vertexHeight = 35 + (int) (0.3 * (double) vertexHeight);
 
         if(vertexHeight >= 10) {
@@ -1451,40 +1452,5 @@ public class Landscape {
             vertexHeight = 10;
 
         return vertexHeight;
-    }
-
-    private static int interpolateForPerlin(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
-        if (!arg3)
-            return -109;
-        int i = 65536 + -Rasterizer3D.cosinetable[1024 * arg4 / arg1] >> 1;
-        return ((65536 + -i) * arg0 >> 16) + (arg2 * i >> 16);
-    }
-
-    private static int randomNoiseWeightedSum(int arg1, int arg2) {
-        int i = randomNoise(-1 + arg1, -1 + arg2) + randomNoise(1 + arg1, arg2 - 1) + randomNoise(-1 + arg1, 1 + arg2) + randomNoise(1 + arg1, arg2 + 1);
-        int i_126_ = randomNoise(arg1 - 1, arg2) + randomNoise(arg1 + 1, arg2) - (-randomNoise(arg1, arg2 - 1) + -randomNoise(arg1, 1 + arg2));
-        int i_127_ = randomNoise(arg1, arg2);
-        return i / 16 - (-(i_126_ / 8) - i_127_ / 4);
-    }
-
-    private static int perlinNoise(int x, int y, int scale) {
-        int muX = x & -1 + scale;
-        int scaledY = y / scale;
-        int muY = scale - 1 & y;
-        int scaledX = x / scale;
-        int a = randomNoiseWeightedSum(scaledX, scaledY);
-        int b = randomNoiseWeightedSum(1 + scaledX, scaledY);
-        int c = randomNoiseWeightedSum(scaledX, 1 + scaledY);
-        int d = randomNoiseWeightedSum(1 + scaledX, 1 + scaledY);
-        int i1 = interpolateForPerlin(a, scale, b, true, muX);
-        int i2 = interpolateForPerlin(c, scale, d, true, muX);
-        return interpolateForPerlin(i1, scale, i2, true, muY);
-    }
-
-    private static int randomNoise(int x, int y) {
-        int i = 57 * y + x;
-        i ^= i << 13;
-        int i_2_ = 1376312589 + (i * i * 15731 + 789221) * i & 0x7fffffff;
-        return i_2_ >> 19 & 0xff;
     }
 }
