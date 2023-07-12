@@ -128,7 +128,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
             }
         }
         setCanvas();
-        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = MovedStatics.createGraphicsBuffer(Class12.width, MovedStatics.height, MouseHandler.gameCanvas);
+        ProducingGraphicsBuffer_Sub1.aProducingGraphicsBuffer_2213 = MovedStatics.createGraphicsBuffer(MovedStatics.width, MovedStatics.height, MouseHandler.gameCanvas);
         this.game.startup();
         SceneCluster.gameTimer = Timer.create();
         SceneCluster.gameTimer.start();
@@ -240,7 +240,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
             if (Signlink.javaVersion == null || !Signlink.javaVersion.startsWith("1.5") || -MovedStatics.aLong174 + System.currentTimeMillis() <= 1000L)
                 return;
             Rectangle rectangle = arg0.getClipBounds();
-            if (rectangle == null || rectangle.width >= Class12.width && rectangle.height >= MovedStatics.height)
+            if (rectangle == null || rectangle.width >= MovedStatics.width && rectangle.height >= MovedStatics.height)
                 MovedStatics.aBoolean1575 = true;
         }
     }
@@ -273,7 +273,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
             openErrorPage("alreadyloaded");
             return;
         }
-        Class12.width = height;
+        MovedStatics.width = height;
         Class39.anInt901 = clientVersion;
         MovedStatics.height = width;
         currentGameShell = this;
@@ -311,7 +311,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         if (MovedStatics.anInt938++ > 50) {
             MovedStatics.anInt938 -= 50;
             MovedStatics.clearScreen = true;
-            MouseHandler.gameCanvas.setSize(Class12.width, MovedStatics.height);
+            MouseHandler.gameCanvas.setSize(MovedStatics.width, MovedStatics.height);
             MouseHandler.gameCanvas.setVisible(true);
             MouseHandler.gameCanvas.setBackground(Color.BLACK);
             if (clientFrame == null)
@@ -340,7 +340,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
             int height = 503;
             int width = 765;
             Class39.anInt901 = clientVersion;
-            Class12.width = width;
+            MovedStatics.width = width;
             MovedStatics.height = height;
             currentGameShell = this;
             clientFrame = new Frame();
@@ -395,7 +395,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         }
         MouseHandler.gameCanvas = new RSCanvas(this);
         container.add(MouseHandler.gameCanvas);
-        MouseHandler.gameCanvas.setSize(Class12.width, MovedStatics.height);
+        MouseHandler.gameCanvas.setSize(MovedStatics.width, MovedStatics.height);
         MouseHandler.gameCanvas.setVisible(true);
         if (clientFrame != null) {
             Insets insets = clientFrame.getInsets();

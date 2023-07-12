@@ -99,7 +99,7 @@ public class IncomingPackets {
             }
             if(opcode == 58) {
                 int i_106_ = incomingPacketBuffer.getIntME2();
-                Class12.aSignlinkNode_394 = Game.signlink.createExceptionNode(i_106_); // TODO this just ends up throwing an exception? wot
+                MovedStatics.aSignlinkNode_394 = Game.signlink.createExceptionNode(i_106_); // TODO this just ends up throwing an exception? wot
                 opcode = -1;
                 return true;
             }

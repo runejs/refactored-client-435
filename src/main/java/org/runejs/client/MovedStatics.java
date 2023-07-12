@@ -246,6 +246,8 @@ public class MovedStatics {
     public static int systemUpdateTime = 0;
     public static LinkedList projectileQueue = new LinkedList();
     public static int bankInsertMode = 0;
+    public static int width;
+    public static SignlinkNode aSignlinkNode_394;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -2388,10 +2390,10 @@ public class MovedStatics {
                 if (i == -1)
                     break;
                 String str = "";
-                if (Class12.aSignlinkNode_394 != null) {
-                    str = method204(Class12.aSignlinkNode_394.integerData);
-                    if (Class12.aSignlinkNode_394.value != null) {
-                        byte[] is = ((String) Class12.aSignlinkNode_394.value).getBytes(StandardCharsets.ISO_8859_1);
+                if (aSignlinkNode_394 != null) {
+                    str = method204(aSignlinkNode_394.integerData);
+                    if (aSignlinkNode_394.value != null) {
+                        byte[] is = ((String) aSignlinkNode_394.value).getBytes(StandardCharsets.ISO_8859_1);
                         str = InteractiveObject.method279(is, 0, is.length).toString();
                     }
                 }

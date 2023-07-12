@@ -65,7 +65,7 @@ public class GameObject extends Renderable {
             if(MovedStatics.clearScreen) {
                 MovedStatics.clearScreen = false;
                 graphics.setColor(Color.black);
-                graphics.fillRect(0, 0, Class12.width, MovedStatics.height);
+                graphics.fillRect(0, 0, MovedStatics.width, MovedStatics.height);
             }
             if(color == null)
                 color = new Color(140, 17, 17);
@@ -82,9 +82,9 @@ public class GameObject extends Renderable {
                 loadingBoxGraphics.setFont(Class17.helveticaBold);
                 loadingBoxGraphics.setColor(Color.white);
                 loadingBoxGraphics.drawString(desc, (304 - (MovedStatics.fontMetrics.stringWidth(desc))) / 2, 22);
-                graphics.drawImage(Class26.loadingBoxImage, Class12.width / 2 - 152, MovedStatics.height / 2 - 18, null);
+                graphics.drawImage(Class26.loadingBoxImage, MovedStatics.width / 2 - 152, MovedStatics.height / 2 - 18, null);
             } catch(Exception exception) {
-                int centerWidth = Class12.width / 2 - 152;
+                int centerWidth = MovedStatics.width / 2 - 152;
                 int centerHeight = MovedStatics.height / 2 - 18;
                 graphics.setColor(color);
                 graphics.drawRect(centerWidth, centerHeight, 303, 33);
