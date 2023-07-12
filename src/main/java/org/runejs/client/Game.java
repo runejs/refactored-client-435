@@ -78,7 +78,7 @@ public class Game {
     public static int loginStatus = 0;
     public static int modewhat = 0;
     public static int modewhere = 0;
-    public static long aLong1203 = 0L;
+    public static long lastClickTime = 0L;
     public static int mouseInvInterfaceIndex = 0;
     public static int anInt509 = 0;
     public static boolean aBoolean519 = true;
@@ -618,7 +618,7 @@ public class Game {
 
 
     public static void setConfigToDefaults() {
-        aLong1203 = 0L;
+        lastClickTime = 0L;
         mouseCapturer.coord = 0;
         duplicateClickCount = 0;
         aBoolean1735 = true;
@@ -636,7 +636,7 @@ public class Game {
         IncomingPackets.thirdLastOpcode = -1;
         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
         MovedStatics.menuActionRow = 0;
-        MouseHandler.method650(0);
+        MouseHandler.setFramesSinceMouseInput(0);
         for (int i = 0; i < 100; i++)
             ChatBox.chatMessages[i] = null;
         GameInterface.itemCurrentlySelected = 0;
@@ -1255,10 +1255,10 @@ public class Game {
                     }
                 }
                 if(MouseHandler.clickType != 0) {
-                    long l = (MouseHandler.aLong2561 - aLong1203) / 50L;
+                    long delta = (MouseHandler.clickTime - lastClickTime) / 50L;
                     int i = MouseHandler.clickX;
                     int i_10_ = MouseHandler.clickY;
-                    aLong1203 = MouseHandler.aLong2561;
+                    lastClickTime = MouseHandler.clickTime;
                     if(i >= 0) {
                         if(i > 764)
                             i = 764;
@@ -1272,9 +1272,9 @@ public class Game {
                     int i_11_ = 0;
                     if(MouseHandler.clickType == 2)
                         i_11_ = 1;
-                    if(l > 4095)
-                        l = 4095L;
-                    int i_12_ = (int) l;
+                    if(delta > 4095)
+                        delta = 4095L;
+                    int i_12_ = (int) delta;
                     OutgoingPackets.buffer.putPacket(234);
                     int i_13_ = i_10_ * 765 + i;
                     OutgoingPackets.buffer.putIntLE((i_11_ << 19) + (i_12_ << 20) + i_13_);
@@ -1471,7 +1471,7 @@ public class Game {
                         int i_21_ = KeyFocusListener.resetFramesSinceKeyboardInput();
                         if(i_20_ > 4500 && i_21_ > 4500) {
                             SceneCluster.idleLogout = 250;
-                            MouseHandler.method650(4000);
+                            MouseHandler.setFramesSinceMouseInput(4000);
                             OutgoingPackets.buffer.putPacket(216);
                         }
 

@@ -22,7 +22,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public static int mouseY = 0;
     public static int clickX = 0;
     public static int clickY = 0;
-    public static long aLong2561 = 0L;
+    public static long clickTime = 0L;
     public static int cursorY;
     public static int cursorX;
     public static boolean gameScreenClickable;
@@ -41,7 +41,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             clickType = eventMouseButtonPressed;
             clickX = eventClickX;
             clickY = MovedStatics.eventClickY;
-            aLong2561 = lastClick;
+            clickTime = lastClick;
             eventMouseButtonPressed = 0;
         }
     }
@@ -63,7 +63,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         return framesSinceMouseInput++;
     }
 
-    public static void method650(int arg1) {
+    public static void setFramesSinceMouseInput(int arg1) {
         framesSinceMouseInput = arg1;
     }
 
