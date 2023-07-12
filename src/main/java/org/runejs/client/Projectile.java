@@ -4,9 +4,6 @@ import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.def.SpotAnimDefinition;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.Renderable;
-import org.runejs.client.media.renderable.actor.Actor;
-import org.runejs.client.media.renderable.actor.Npc;
-import org.runejs.client.media.renderable.actor.Player;
 
 public class Projectile extends Renderable {
     public int startHeight;
@@ -58,73 +55,6 @@ public class Projectile extends Renderable {
 
     }
 
-
-    public static void updateFacingDirection(Actor actor) {
-        if(actor.anInt3113 != 0) {
-            if(actor.facingActorIndex != -1 && actor.facingActorIndex < 32768) {
-                Npc npc = Player.npcs[actor.facingActorIndex];
-                if(npc != null) {
-                    int deltaY = -npc.worldY + actor.worldY;
-                    int deltaX = -npc.worldX + actor.worldX;
-                    if(deltaX != 0 || deltaY != 0)
-                        actor.initialFaceDirection = 0x7ff & (int) (325.949 * Math.atan2((double) deltaX, (double) deltaY));
-                }
-            }
-            if(actor.facingActorIndex >= 32768) {
-                int i = -32768 + actor.facingActorIndex;
-                if(i == Player.localPlayerId)
-                    i = 2047;
-                Player player = Player.trackedPlayers[i];
-                if(player != null) {
-                    int deltaX = actor.worldX - player.worldX;
-                    int deltaY = -player.worldY + actor.worldY;
-                    if(deltaX != 0 || deltaY != 0)
-                        actor.initialFaceDirection = (int) (Math.atan2((double) deltaX, (double) deltaY) * 325.949) & 0x7ff;
-                }
-            }
-            if((actor.facePositionX != 0 || actor.facePositionY != 0) && (actor.anInt3109 == 0 || actor.anInt3074 > 0)) {
-                int deltaY = actor.worldY - 64 * (actor.facePositionY - MovedStatics.baseY - MovedStatics.baseY);
-                int deltaX = -((-MovedStatics.baseX + actor.facePositionX + -MovedStatics.baseX) * 64) + actor.worldX;
-                if(deltaX != 0 || deltaY != 0)
-                    actor.initialFaceDirection = 0x7ff & (int) (325.949 * Math.atan2((double) deltaX, (double) deltaY));
-                actor.facePositionY = 0;
-                actor.facePositionX = 0;
-            }
-            int i = 0x7ff & actor.initialFaceDirection + -actor.anInt3118;
-            if(i != 0) {
-                actor.anInt3097++;
-                if(i > 1024) {
-                    actor.anInt3118 -= actor.anInt3113;
-                    boolean bool = true;
-                    if(actor.anInt3113 > i || 2048 + -actor.anInt3113 < i) {
-                        bool = false;
-                        actor.anInt3118 = actor.initialFaceDirection;
-                    }
-                    if(actor.idleAnimation == actor.anInt3077 && (actor.anInt3097 > 25 || bool)) {
-                        if(actor.standTurnAnimationId != -1)
-                            actor.anInt3077 = actor.standTurnAnimationId;
-                        else
-                            actor.anInt3077 = actor.walkAnimationId;
-                    }
-                } else {
-                    actor.anInt3118 += actor.anInt3113;
-                    boolean bool = true;
-                    if(i < actor.anInt3113 || i > -actor.anInt3113 + 2048) {
-                        actor.anInt3118 = actor.initialFaceDirection;
-                        bool = false;
-                    }
-                    if(actor.anInt3077 == actor.idleAnimation && (actor.anInt3097 > 25 || bool)) {
-                        if(actor.anInt3083 != -1)
-                            actor.anInt3077 = actor.anInt3083;
-                        else
-                            actor.anInt3077 = actor.walkAnimationId;
-                    }
-                }
-                actor.anInt3118 &= 0x7ff;
-            } else
-                actor.anInt3097 = 0;
-        }
-    }
 
     public Model getRotatedModel() {
         SpotAnimDefinition spotAnimDefinition = SpotAnimDefinition.forId(graphicsId);
