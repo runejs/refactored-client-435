@@ -215,7 +215,7 @@ public class Class60 {
 
         }
 
-        if(Class51.gameStatusCode == 10) {
+        if(Game.gameStatusCode == 10) {
             int i = MouseHandler.clickX + -202;
             int clickType = MouseHandler.clickType;
             int clickY = -171 + MouseHandler.clickY;
@@ -307,7 +307,7 @@ public class Class60 {
     public static void drawLoadingScreen(TypeFace fontBold, TypeFace fontSmall) {
         MovedStatics.loginBoxGraphics.prepareRasterizer();
 //            Rasterizer.drawFilledRectangle(0,0, ScreenController.frameWidth, ScreenController.frameHeight, 0);
-        if (Class51.gameStatusCode == 0 || Class51.gameStatusCode == 5) {
+        if (Game.gameStatusCode == 0 || Game.gameStatusCode == 5) {
             int i = 20;
             fontBold.drawStringLeft(English.gameIsLoadingPleaseWait, 180, 74 + -i, 16777215);
             int i_89_ = -i + 82;
@@ -317,7 +317,7 @@ public class Class60 {
             Rasterizer.drawFilledRectangle(3 * MovedStatics.anInt1607 + 30, i_89_ + 2, -(MovedStatics.anInt1607 * 3) + 300, 30, 0);
             fontBold.drawStringLeft(Native.currentLoadingText, 180, -i + 105, 16777215);
         }
-        if (Class51.gameStatusCode == 20) {
+        if (Game.gameStatusCode == 20) {
             int drawY = 40;
             MovedStatics.loginScreenBox.drawImage(0, 0);
             fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineOne, 180, drawY, 16776960, true);
@@ -332,7 +332,7 @@ public class Class60 {
             fontBold.drawShadowedString(English.password + Native.password.method61(), 92, drawY, true, 16777215);
             drawY += 15;
         }
-        if (Class51.gameStatusCode == 10) {
+        if (Game.gameStatusCode == 10) {
             MovedStatics.loginScreenBox.drawImage(0, 0);
             if (loginScreenState == 0) {
                 /*fontBold.drawShadowedStringCenter(English.welcomeTo, 180, 80, 16776960, true);
@@ -448,7 +448,7 @@ public class Class60 {
             MovedStatics.clearScreen = false;
 
             MovedStatics.aProducingGraphicsBuffer_907.drawGraphics(offsetX + 128, offsetY, graphics);
-            Class51.aProducingGraphicsBuffer_1206.drawGraphics(offsetX + 202, offsetY + 371, graphics);
+            MovedStatics.aProducingGraphicsBuffer_1206.drawGraphics(offsetX + 202, offsetY + 371, graphics);
             MovedStatics.aProducingGraphicsBuffer_463.drawGraphics(offsetX, offsetY + 265, graphics);
             KeyFocusListener.aProducingGraphicsBuffer_1285.drawGraphics(offsetX + 562, offsetY + 265, graphics);
             MovedStatics.aProducingGraphicsBuffer_2524.drawGraphics(offsetX + 128, offsetY + 171, graphics);
@@ -526,7 +526,7 @@ public class Class60 {
             Rasterizer.resetPixels();
             MovedStatics.aProducingGraphicsBuffer_907 = MovedStatics.createGraphicsBuffer(509, 171, arg0);
             Rasterizer.resetPixels();
-            Class51.aProducingGraphicsBuffer_1206 = MovedStatics.createGraphicsBuffer(360, 132, arg0);
+            MovedStatics.aProducingGraphicsBuffer_1206 = MovedStatics.createGraphicsBuffer(360, 132, arg0);
             Rasterizer.resetPixels();
             MovedStatics.loginBoxGraphics = MovedStatics.createGraphicsBuffer(360, 200, arg0);
             Rasterizer.resetPixels();
@@ -548,7 +548,7 @@ public class Class60 {
             titleImg.drawInverse(-637, 0);
             MovedStatics.aProducingGraphicsBuffer_907.prepareRasterizer();
             titleImg.drawInverse(-128, 0);
-            Class51.aProducingGraphicsBuffer_1206.prepareRasterizer();
+            MovedStatics.aProducingGraphicsBuffer_1206.prepareRasterizer();
             titleImg.drawInverse(-202, -371);
             MovedStatics.loginBoxGraphics.prepareRasterizer();
             titleImg.drawInverse(-202, -171);
@@ -573,7 +573,7 @@ public class Class60 {
             titleImg.drawInverse(-255, 0);
             MovedStatics.aProducingGraphicsBuffer_907.prepareRasterizer();
             titleImg.drawInverse(254, 0);
-            Class51.aProducingGraphicsBuffer_1206.prepareRasterizer();
+            MovedStatics.aProducingGraphicsBuffer_1206.prepareRasterizer();
             titleImg.drawInverse(180, -371);
             MovedStatics.loginBoxGraphics.prepareRasterizer();
             titleImg.drawInverse(180, -171);
@@ -609,15 +609,15 @@ public class Class60 {
                 MovedStatics.aClass40_Sub5_Sub14_Sub4_918.pixels[i] = MovedStatics.flameLeftBackground.pixels[i];
             for (int i = 0; i < 33920; i++)
                 MovedStatics.aClass40_Sub5_Sub14_Sub4_2043.pixels[i] = GameObject.flameRightBackground.pixels[i];
-            Class51.anIntArray1198 = new int[256];
+            MovedStatics.anIntArray1198 = new int[256];
             for (int i = 0; i < 64; i++)
-                Class51.anIntArray1198[i] = i * 262144;
+                MovedStatics.anIntArray1198[i] = i * 262144;
             for (int i = 0; i < 64; i++)
-                Class51.anIntArray1198[64 + i] = 1024 * i + 16711680;
+                MovedStatics.anIntArray1198[64 + i] = 1024 * i + 16711680;
             for (int i = 0; i < 64; i++)
-                Class51.anIntArray1198[128 + i] = 16776960 + i * 4;
+                MovedStatics.anIntArray1198[128 + i] = 16776960 + i * 4;
             for (int i = 0; i < 64; i++)
-                Class51.anIntArray1198[i + 192] = 16777215;
+                MovedStatics.anIntArray1198[i + 192] = 16777215;
             Renderable.anIntArray2865 = new int[256];
             for (int i = 0; i < 64; i++)
                 Renderable.anIntArray2865[i] = i * 1024;

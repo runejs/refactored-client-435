@@ -89,6 +89,7 @@ public class Game {
     public static int anInt874 = 0;
     public static int destinationY = 0;
     public static Scene currentScene;
+    public static int gameStatusCode = 0;
     private static int gameServerPort;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
@@ -604,14 +605,14 @@ public class Game {
             if (MovedStatics.anInt2613 > 0) {
                 for (int i = 0; i < 256; i++) {
                     if (MovedStatics.anInt2613 > 768)
-                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Class51.anIntArray1198[i], MovedStatics.anIntArray3248[i], -MovedStatics.anInt2613 + 1024);
+                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(MovedStatics.anIntArray1198[i], MovedStatics.anIntArray3248[i], -MovedStatics.anInt2613 + 1024);
                     else if (MovedStatics.anInt2613 > 256)
                         MovedStatics.anIntArray1013[i] = MovedStatics.anIntArray3248[i];
                     else
-                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(MovedStatics.anIntArray3248[i], Class51.anIntArray1198[i], -MovedStatics.anInt2613 + 256);
+                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(MovedStatics.anIntArray3248[i], MovedStatics.anIntArray1198[i], -MovedStatics.anInt2613 + 256);
                 }
             } else {
-                System.arraycopy(Class51.anIntArray1198, 0, MovedStatics.anIntArray1013, 0, 256);
+                System.arraycopy(MovedStatics.anIntArray1198, 0, MovedStatics.anIntArray1013, 0, 256);
             }
         } else {
             for (int i = 0; i < 256; i++) {
@@ -619,9 +620,9 @@ public class Game {
                     if (MovedStatics.anInt2452 > 256)
                         MovedStatics.anIntArray1013[i] = Renderable.anIntArray2865[i];
                     else
-                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Renderable.anIntArray2865[i], Class51.anIntArray1198[i], -MovedStatics.anInt2452 + 256);
+                        MovedStatics.anIntArray1013[i] = MovedStatics.method614(Renderable.anIntArray2865[i], MovedStatics.anIntArray1198[i], -MovedStatics.anInt2452 + 256);
                 } else
-                    MovedStatics.anIntArray1013[i] = MovedStatics.method614(Class51.anIntArray1198[i], Renderable.anIntArray2865[i], -MovedStatics.anInt2452 + 1024);
+                    MovedStatics.anIntArray1013[i] = MovedStatics.method614(MovedStatics.anIntArray1198[i], Renderable.anIntArray2865[i], -MovedStatics.anInt2452 + 1024);
             }
         }
         int i = 256;
@@ -1242,8 +1243,8 @@ public class Game {
                 if(!IncomingPackets.parseIncomingPackets())
                     break;
             }
-            if(Class51.gameStatusCode == 30 || Class51.gameStatusCode == 35) {
-                if(aBoolean519 && Class51.gameStatusCode == 30) {
+            if(gameStatusCode == 30 || gameStatusCode == 35) {
+                if(aBoolean519 && gameStatusCode == 30) {
                     MouseHandler.currentMouseButtonPressed = 0;
                     MouseHandler.clickType = 0;
                     while(MovedStatics.method416()) {
@@ -1364,7 +1365,7 @@ public class Game {
                     OutgoingPackets.buffer.putByte(0);
                 }
                 method910();
-                if(Class51.gameStatusCode == 30 || Class51.gameStatusCode == 35) {
+                if(gameStatusCode == 30 || gameStatusCode == 35) {
                     MovedStatics.method652();
                     SoundSystem.processSounds();
                     MusicSystem.processMusic();
@@ -1653,7 +1654,7 @@ public class Game {
                 // The actual login packet starts here
 
                 MovedStatics.packetBuffer.currentPosition = 0;
-                if (Class51.gameStatusCode == 40) {
+                if (gameStatusCode == 40) {
                     // Reconnecting session
                     MovedStatics.packetBuffer.putByte(18);
                 } else {
@@ -1694,11 +1695,11 @@ public class Game {
 
             if (loginStatus == 6 && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) {
                 int responseCode = MovedStatics.gameServerSocket.read();
-                if (responseCode != 21 || Class51.gameStatusCode != 20) {
+                if (responseCode != 21 || gameStatusCode != 20) {
                     if (responseCode == 2) {
                         loginStatus = 9;
                     } else {
-                        if (responseCode == 15 && Class51.gameStatusCode == 40) {
+                        if (responseCode == 15 && gameStatusCode == 40) {
                             MovedStatics.method434();
                             return;
                         }
@@ -1748,7 +1749,7 @@ public class Game {
                         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                         MovedStatics.gameServerSocket.readDataToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
                         setConfigToDefaults();
-                        Class51.regionX = -1;
+                        MovedStatics.regionX = -1;
                         Landscape.constructMapRegion(false);
                         IncomingPackets.opcode = -1;
                     }
@@ -1907,7 +1908,7 @@ public class Game {
     public static void method910() {
         if(true) {
             if (VertexNormal.lowMemory && MovedStatics.onBuildTimePlane != Player.worldLevel)
-                Actor.method789(Player.localPlayer.pathY[0], MovedStatics.regionY, Class51.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
+                Actor.method789(Player.localPlayer.pathY[0], MovedStatics.regionY, MovedStatics.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
             else if (Buffer.anInt1985 != Player.worldLevel) {
                 Buffer.anInt1985 = Player.worldLevel;
                 MovedStatics.method299(Player.worldLevel);
@@ -1953,7 +1954,7 @@ public class Game {
         if (MovedStatics.anInt292 < 2 || arg1 != 7 && arg1 != 9) {
             if (MovedStatics.anInt292 < 2 || arg1 != 6) {
                 if (MovedStatics.anInt292 >= 4) {
-                    if (Class51.gameStatusCode <= 5) {
+                    if (gameStatusCode <= 5) {
                         this.openErrorPage("js5connect");
                         anInt509 = 3000;
                     } else
@@ -1961,13 +1962,13 @@ public class Game {
                 }
             } else {
                 this.openErrorPage("js5connect_outofdate");
-                Class51.gameStatusCode = 1000;
+                gameStatusCode = 1000;
             }
-        } else if (Class51.gameStatusCode > 5)
+        } else if (gameStatusCode > 5)
             anInt509 = 3000;
         else {
             this.openErrorPage("js5connect_full");
-            Class51.gameStatusCode = 1000;
+            gameStatusCode = 1000;
         }
     }
 
@@ -1980,33 +1981,33 @@ public class Game {
         GameInterface.method639();
         MouseHandler.method1015();
 
-        if (Class51.gameStatusCode == 0) {
+        if (gameStatusCode == 0) {
             Class40_Sub3.startup();
             Class60.method992();
-        } else if (Class51.gameStatusCode == 5) {
+        } else if (gameStatusCode == 5) {
             Class40_Sub3.startup();
             Class60.method992();
-        } else if (Class51.gameStatusCode == 10) {
+        } else if (gameStatusCode == 10) {
             Class60.updateLogin();
-        } else if (Class51.gameStatusCode == 20) {
+        } else if (gameStatusCode == 20) {
             Class60.updateLogin();
             handleLoginScreenActions();
-        } else if (Class51.gameStatusCode == 25)
+        } else if (gameStatusCode == 25)
             Landscape.loadRegion();
-        if (Class51.gameStatusCode == 30) {
+        if (gameStatusCode == 30) {
             ScreenController.refreshFrameSize();
             updateGame();
-        } else if (Class51.gameStatusCode == 35) {
+        } else if (gameStatusCode == 35) {
             ScreenController.refreshFrameSize();
             updateGame();
-        } else if (Class51.gameStatusCode == 40) {
+        } else if (gameStatusCode == 40) {
             // Connection lost
             handleLoginScreenActions();
         }
     }
 
     public void handleUpdateServer() {
-        if (Class51.gameStatusCode != 1000) {
+        if (gameStatusCode != 1000) {
             boolean bool = UpdateServer.processUpdateServerResponse();
             if (!bool)
                 connectUpdateServer();
@@ -2024,15 +2025,15 @@ public class Game {
             KeyFocusListener.addListeners(MouseHandler.gameCanvas);
             MouseHandler.addListeners(MouseHandler.gameCanvas);
         }
-        if (Class51.gameStatusCode == 0)
+        if (gameStatusCode == 0)
             GameObject.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
-        else if (Class51.gameStatusCode == 5) {
+        else if (gameStatusCode == 5) {
             Class60.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
-        } else if (Class51.gameStatusCode == 10) {
+        } else if (gameStatusCode == 10) {
             Class60.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
-        } else if (Class51.gameStatusCode == 20) {
+        } else if (gameStatusCode == 20) {
             Class60.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
-        } else if (Class51.gameStatusCode == 25) {
+        } else if (gameStatusCode == 25) {
             if (ProducingGraphicsBuffer.anInt1634 == 1) {
                 if (anInt874 > PacketBuffer.anInt2231)
                     PacketBuffer.anInt2231 = anInt874;
@@ -2045,12 +2046,12 @@ public class Game {
                 MovedStatics.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.percent_b);
             } else
                 MovedStatics.method940(English.loadingPleaseWait, false, null);
-        } else if (Class51.gameStatusCode == 30) {
+        } else if (gameStatusCode == 30) {
             drawGameScreen();
 
-        } else if (Class51.gameStatusCode == 35) {
+        } else if (gameStatusCode == 35) {
             method164();
-        } else if (Class51.gameStatusCode == 40)
+        } else if (gameStatusCode == 40)
             MovedStatics.method940(English.connectionLost, false, English.pleaseWaitAttemptingToReestablish);
         Npc.anInt3294 = 0;
     }
@@ -2058,15 +2059,15 @@ public class Game {
     public void connectUpdateServer() {
         if (UpdateServer.crcMismatches >= 4) {
             this.openErrorPage("js5crc");
-            Class51.gameStatusCode = 1000;
+            gameStatusCode = 1000;
         } else {
             if (UpdateServer.ioExceptions >= 4) {
-                if (Class51.gameStatusCode > 5) {
+                if (gameStatusCode > 5) {
                     UpdateServer.ioExceptions = 3;
                     anInt509 = 3000;
                 } else {
                     this.openErrorPage("js5io");
-                    Class51.gameStatusCode = 1000;
+                    gameStatusCode = 1000;
                     return;
                 }
             }
@@ -2095,7 +2096,7 @@ public class Game {
                             MovedStatics.aLong1841 = System.currentTimeMillis();
                         }
                         if (MovedStatics.connectionStage == 3) {
-                            if (Class51.gameStatusCode > 5 && updateServerSocket.inputStreamAvailable() <= 0) {
+                            if (gameStatusCode > 5 && updateServerSocket.inputStreamAvailable() <= 0) {
                                 if (System.currentTimeMillis() + -MovedStatics.aLong1841 > 30000L) {
                                     method35(-2);
                                     break;
@@ -2112,7 +2113,7 @@ public class Game {
                         if (MovedStatics.connectionStage != 4)
                             break;
 
-                        UpdateServer.handleUpdateServerConnection(updateServerSocket, Class51.gameStatusCode > 20);
+                        UpdateServer.handleUpdateServerConnection(updateServerSocket, gameStatusCode > 20);
 
                         ProducingGraphicsBuffer.updateServerSignlinkNode = null;
                         MovedStatics.connectionStage = 0;

@@ -310,13 +310,22 @@ public class MovedStatics {
      * Currently selected item ID within a widget ?
      */
     public static int anInt1154;
+    /**
+     * Something to do with flames, maybe
+     */
+    public static int[] anIntArray1198;
+    public static int regionX;
+    /**
+     * Part of login screen
+     */
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1206;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
-            Class51.anIntArray1198 = null;
+            anIntArray1198 = null;
             GameObject.flameRightBackground = null;
             ProducingGraphicsBuffer.aProducingGraphicsBuffer_1631 = null;
-            Class51.aProducingGraphicsBuffer_1206 = null;
+            aProducingGraphicsBuffer_1206 = null;
             Landscape.anIntArray1168 = null;
             anIntArray3255 = null;
             Class59.imgLoginScreenButton = null;
@@ -964,8 +973,8 @@ public class MovedStatics {
      *                 1000 = Client fatal error
      */
     public static void processGameStatus(int statusCode) {
-        if (statusCode != Class51.gameStatusCode) {
-            if (Class51.gameStatusCode == 0)
+        if (statusCode != Game.gameStatusCode) {
+            if (Game.gameStatusCode == 0)
                 CollisionMap.method144(12433);
             if (statusCode == 20 || statusCode == 40) {
                 Game.anInt1756 = 0;
@@ -976,11 +985,11 @@ public class MovedStatics {
                 PlayerAppearance.lostConnectionSocket.kill();
                 PlayerAppearance.lostConnectionSocket = null;
             }
-            if (Class51.gameStatusCode == 25 || Class51.gameStatusCode == 40) {
+            if (Game.gameStatusCode == 25 || Game.gameStatusCode == 40) {
                 Class65.method1018();
                 Rasterizer.resetPixels();
             }
-            if (Class51.gameStatusCode == 25) {
+            if (Game.gameStatusCode == 25) {
                 Game.anInt874 = 0;
                 PacketBuffer.anInt2231 = 1;
                 Game.anInt2591 = 0;
@@ -1003,7 +1012,7 @@ public class MovedStatics {
                 method440();
                 method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
             }
-            Class51.gameStatusCode = statusCode;
+            Game.gameStatusCode = statusCode;
             clearScreen = true;
         }
     }
@@ -3109,5 +3118,9 @@ public class MovedStatics {
         if(arg1 >= 48 && arg1 <= 57)
             return true;
         return false;
+    }
+
+    public static void clearModelCache() {
+        modelCache.clear();
     }
 }

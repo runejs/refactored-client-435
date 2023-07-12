@@ -1,6 +1,6 @@
 package org.runejs.client.frame;
 
-import org.runejs.client.Class51;
+import org.runejs.client.Game;
 import org.runejs.client.frame.tab.TabProducer;
 
 public class FrameRenderer implements Runnable {
@@ -17,10 +17,10 @@ public class FrameRenderer implements Runnable {
         while(true){
 //            System.out.println("Rendering");
 
-            if(Class51.gameStatusCode <= 35 && Class51.gameStatusCode >= 30){
+            if(Game.gameStatusCode <= 35 && Game.gameStatusCode >= 30){
                 minimap.RenderResizableMiniMapArea(ScreenController.drawWidth - 210, 0);
             }
-            if(Class51.gameStatusCode <= 35 && Class51.gameStatusCode >= 30){
+            if(Game.gameStatusCode <= 35 && Game.gameStatusCode >= 30){
                 tabProducer.RenderResizableSideBarArea();
             }
             try {

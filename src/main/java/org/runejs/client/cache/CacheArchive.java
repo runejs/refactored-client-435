@@ -33,6 +33,7 @@ public class CacheArchive {
     public static CacheArchive jingleCacheArchive;
     public static CacheArchive clientScriptCacheArchive;
     public static CacheArchive definitionCache;
+    public static int anInt1195 = 0;
 
     public byte[][] aByteArrayArray212;
     public int crc8;
@@ -85,13 +86,13 @@ public class CacheArchive {
         int type = buffer.getUnsignedByte();
         int length = buffer.getIntBE();
 
-        if(length < 0 || Class51.anInt1195 != 0 && Class51.anInt1195 < length) {
+        if(length < 0 || anInt1195 != 0 && anInt1195 < length) {
             throw new RuntimeException();
         }
 
         if(type != 0) {
             int decompressedLength = buffer.getIntBE();
-            if(decompressedLength < 0 || Class51.anInt1195 != 0 && decompressedLength > Class51.anInt1195) {
+            if(decompressedLength < 0 || anInt1195 != 0 && decompressedLength > anInt1195) {
                 return new byte[100];
                 //throw new RuntimeException();
             }

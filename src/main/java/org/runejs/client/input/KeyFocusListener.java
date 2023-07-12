@@ -124,6 +124,13 @@ public class KeyFocusListener implements KeyListener, FocusListener {
         return framesSinceKeyboardInput++;
     }
 
+    public static int getKeyChar(KeyEvent arg1) {
+        int keyChar = arg1.getKeyChar();
+        if(keyChar <= 0 || keyChar >= 256)
+            keyChar = -1;
+        return keyChar;
+    }
+
     public void keyTyped(KeyEvent arg0) {
         arg0.consume();
     }
@@ -158,7 +165,7 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             if (eventKeyCode == KeyEvent.VK_BACK_SPACE || eventKeyCode == KeyEvent.VK_TAB || eventKeyCode == 0xA /* Unused key */ || eventKeyCode == KeyEvent.VK_ESCAPE || eventKeyCode == KeyEvent.VK_DELETE) {
                 keyChar = -1;
             } else {
-                keyChar = Class51.getKeyChar(keyEvent);
+                keyChar = getKeyChar(keyEvent);
             }
             if (eventKeyCode == 192 || eventKeyCode == 129) {
                 Console.console.consoleOpen = !Console.console.consoleOpen;

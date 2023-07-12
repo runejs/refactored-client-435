@@ -38,7 +38,7 @@ public class RSCanvas extends Canvas {
         SpotAnimDefinition.clearSpotAnimDefinitionCache();
         VarbitDefinition.clearVarbitDefinitionCache();
         VarPlayerDefinition.clearVarPlayerDefinitionCache();
-        Class51.clearModelCache();
+        MovedStatics.clearModelCache();
         Actor.clearCaches();
         ((Class35) Rasterizer3D.interface3).clearTextures();
         ClientScript.clientScriptCache.clear();
