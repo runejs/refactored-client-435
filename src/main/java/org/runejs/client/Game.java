@@ -13,7 +13,6 @@ import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
-import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.Renderable;
@@ -660,7 +659,7 @@ public class Game {
         i_61_ = 0;
 
         for (int i_71_ = 0; i_71_ < 33920; i_71_++)
-            GameObject.flameRightBackground.pixels[i_71_] = MovedStatics.aClass40_Sub5_Sub14_Sub4_2043.pixels[i_71_];
+            Class60.flameRightBackground.pixels[i_71_] = MovedStatics.aClass40_Sub5_Sub14_Sub4_2043.pixels[i_71_];
         for (int i_72_ = 1; i_72_ < -1 + i; i_72_++) {
             int i_73_ = (-i_72_ + i) * MovedStatics.anIntArray466[i_72_] / i;
             int i_74_ = 103 + -i_73_;
@@ -669,10 +668,10 @@ public class Game {
                 int i_76_ = MovedStatics.anIntArray178[i_61_++];
                 if (i_76_ != 0) {
                     int i_77_ = i_76_;
-                    int i_78_ = GameObject.flameRightBackground.pixels[i_62_];
+                    int i_78_ = Class60.flameRightBackground.pixels[i_62_];
                     int i_79_ = 256 + -i_76_;
                     i_76_ = MovedStatics.anIntArray1013[i_76_];
-                    GameObject.flameRightBackground.pixels[i_62_++] = BitUtils.bitWiseAND(i_77_ * BitUtils.bitWiseAND(65280, i_76_) + i_79_ * BitUtils.bitWiseAND(65280, i_78_), 16711680) + BitUtils.bitWiseAND(i_79_ * BitUtils.bitWiseAND(16711935, i_78_) + BitUtils.bitWiseAND(16711935, i_76_) * i_77_, -16711936) >> 8;
+                    Class60.flameRightBackground.pixels[i_62_++] = BitUtils.bitWiseAND(i_77_ * BitUtils.bitWiseAND(65280, i_76_) + i_79_ * BitUtils.bitWiseAND(65280, i_78_), 16711680) + BitUtils.bitWiseAND(i_79_ * BitUtils.bitWiseAND(16711935, i_78_) + BitUtils.bitWiseAND(16711935, i_76_) * i_77_, -16711936) >> 8;
                 } else
                     i_62_++;
             }
@@ -2060,7 +2059,7 @@ public class Game {
             MouseHandler.addListeners(MouseHandler.gameCanvas);
         }
         if (gameStatusCode == 0)
-            GameObject.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
+            MovedStatics.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
         else if (gameStatusCode == 5) {
             Class60.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
         } else if (gameStatusCode == 10) {
@@ -2074,9 +2073,9 @@ public class Game {
                 int i = (-anInt874 + MovedStatics.anInt2231) * 50 / MovedStatics.anInt2231;
                 MovedStatics.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.percent_b);
             } else if (MovedStatics.anInt1634 == 2) {
-                if (anInt2591 > GameObject.anInt3048)
-                    GameObject.anInt3048 = anInt2591;
-                int i = 50 * (-anInt2591 + GameObject.anInt3048) / GameObject.anInt3048 + 50;
+                if (anInt2591 > MovedStatics.anInt3048)
+                    MovedStatics.anInt3048 = anInt2591;
+                int i = 50 * (-anInt2591 + MovedStatics.anInt3048) / MovedStatics.anInt3048 + 50;
                 MovedStatics.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.percent_b);
             } else
                 MovedStatics.method940(English.loadingPleaseWait, false, null);

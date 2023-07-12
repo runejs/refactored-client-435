@@ -13,7 +13,6 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.VertexNormal;
-import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.sound.MusicSystem;
@@ -34,6 +33,7 @@ public class Class60 {
      * Part of login screen
      */
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1206;
+    public static ProducingGraphicsBuffer flameRightBackground;
 
     public static void updateLogin() {
         method836(1);
@@ -288,7 +288,7 @@ public class Class60 {
 
             MovedStatics.loginBoxGraphics.drawGraphics(offsetX + 202, offsetY + 171, graphics);
             MovedStatics.flameLeftBackground.drawGraphics(offsetX, offsetY, graphics);
-            GameObject.flameRightBackground.drawGraphics(offsetX + 637, offsetY, graphics);
+            flameRightBackground.drawGraphics(offsetX + 637, offsetY, graphics);
 
             if (!MovedStatics.clearScreen)
                 return;
@@ -369,7 +369,7 @@ public class Class60 {
         if (!MovedStatics.aBoolean512) {
             MovedStatics.flameLeftBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
             Rasterizer.resetPixels();
-            GameObject.flameRightBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
+            flameRightBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
             Rasterizer.resetPixels();
             MovedStatics.aProducingGraphicsBuffer_907 = MovedStatics.createGraphicsBuffer(509, 171, arg0);
             Rasterizer.resetPixels();
@@ -391,7 +391,7 @@ public class Class60 {
             ImageRGB titleImg = new ImageRGB(is, arg0);
             MovedStatics.flameLeftBackground.prepareRasterizer();
             titleImg.drawInverse(0, 0);
-            GameObject.flameRightBackground.prepareRasterizer();
+            flameRightBackground.prepareRasterizer();
             titleImg.drawInverse(-637, 0);
             MovedStatics.aProducingGraphicsBuffer_907.prepareRasterizer();
             titleImg.drawInverse(-128, 0);
@@ -416,7 +416,7 @@ public class Class60 {
             }
             MovedStatics.flameLeftBackground.prepareRasterizer();
             titleImg.drawInverse(382, 0);
-            GameObject.flameRightBackground.prepareRasterizer();
+            flameRightBackground.prepareRasterizer();
             titleImg.drawInverse(-255, 0);
             MovedStatics.aProducingGraphicsBuffer_907.prepareRasterizer();
             titleImg.drawInverse(254, 0);
@@ -455,7 +455,7 @@ public class Class60 {
             for (int i = 0; i < 33920; i++)
                 MovedStatics.aClass40_Sub5_Sub14_Sub4_918.pixels[i] = MovedStatics.flameLeftBackground.pixels[i];
             for (int i = 0; i < 33920; i++)
-                MovedStatics.aClass40_Sub5_Sub14_Sub4_2043.pixels[i] = GameObject.flameRightBackground.pixels[i];
+                MovedStatics.aClass40_Sub5_Sub14_Sub4_2043.pixels[i] = flameRightBackground.pixels[i];
             MovedStatics.anIntArray1198 = new int[256];
             for (int i = 0; i < 64; i++)
                 MovedStatics.anIntArray1198[i] = i * 262144;

@@ -8,7 +8,6 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
-import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
@@ -203,7 +202,7 @@ public class ScreenController {
     public static void RenderTabArea(int x, int y) {
         // height 337
         // width 234
-        drawFramePiece(GameObject.tabPieceLeft, x + 212, y + 39);
+        drawFramePiece(MovedStatics.tabPieceLeft, x + 212, y + 39);
         drawFramePieceCutout(MovedStatics.tabPieceUpperRight, x, y + 39, MovedStatics.tabPieceUpperRight.width - 15, MovedStatics.tabPieceUpperRight.height, 15, 0);
         drawFramePieceCutout(MovedStatics.tabPieveLowerRight, x, y + 191, MovedStatics.tabPieveLowerRight.width - 35, MovedStatics.tabPieveLowerRight.height, 35, 0);
         drawFramePieceCutout(MovedStatics.chatboxTop, x, y + 172, MovedStatics.chatboxTop.width - 531, MovedStatics.chatboxTop.height, 531, 0);

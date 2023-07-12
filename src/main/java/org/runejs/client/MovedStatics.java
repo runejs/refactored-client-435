@@ -31,7 +31,6 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
-import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.scene.*;
 import org.runejs.client.scene.camera.CameraRotation;
@@ -372,11 +371,13 @@ public class MovedStatics {
     public static Signlink signlink;
     public static ProducingGraphicsBuffer tabPieveLowerRight;
     public static GameSocket lostConnectionSocket;
+    public static ProducingGraphicsBuffer tabPieceLeft;
+    public static int anInt3048 = 1;
 
     public static void method440() {
         if (aBoolean512) {
             anIntArray1198 = null;
-            GameObject.flameRightBackground = null;
+            Class60.flameRightBackground = null;
             Class60.aProducingGraphicsBuffer_1631 = null;
             Class60.aProducingGraphicsBuffer_1206 = null;
             anIntArray1168 = null;
@@ -1046,7 +1047,7 @@ public class MovedStatics {
                 Game.anInt874 = 0;
                 anInt2231 = 1;
                 Game.anInt2591 = 0;
-                GameObject.anInt3048 = 1;
+                anInt3048 = 1;
                 anInt1634 = 0;
             }
             if (statusCode == 0 || statusCode == 35) {
@@ -1491,7 +1492,7 @@ public class MovedStatics {
 	                    Rasterizer3D.createPalette(0.6);
 	                    ((Class35) Rasterizer3D.interface3).setBrightness(0.6);
 	                }
-	                GameObject.clearImageCache();
+	                clearImageCache();
 	                clearScreen = true;
 	            }
 	            if(varPlayerType == 3) {
@@ -1742,7 +1743,7 @@ public class MovedStatics {
             anIntArray1186 = null;
             chatboxTop = null;
             tabBottom = null;
-            GameObject.tabPieceLeft = null;
+            tabPieceLeft = null;
             bottomChatBack = null;
             inventoryBackgroundImage = null;
             tabHighlightImageTopRight = null;
@@ -2234,7 +2235,7 @@ public class MovedStatics {
                 framePieceRight.drawGraphics(0, 4, graphics);
                 chatboxRight.drawGraphics(0, 357, graphics);
                 mapbackLeft.drawGraphics(722, 4, graphics);
-                GameObject.tabPieceLeft.drawGraphics(743, 205, graphics);
+                tabPieceLeft.drawGraphics(743, 205, graphics);
                 framePieceTop.drawGraphics(0, 0, graphics);
                 mapBackRight.drawGraphics(516, 4, graphics);
                 tabPieceUpperRight.drawGraphics(516, 205, graphics);
@@ -2276,7 +2277,7 @@ public class MovedStatics {
             mapbackLeft = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = method1028(arg2, Native.imgBackright2, Native.aClass1_305);
-            GameObject.tabPieceLeft = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            tabPieceLeft = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = method1028(arg2, Native.imgBacktop1, Native.aClass1_305);
             framePieceTop = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
@@ -3481,5 +3482,61 @@ public class MovedStatics {
         if(arg1 == 127)
             return false;
         return arg1 < 129 || arg1 > 159;
+    }
+
+    public static IndexedImage method769(int arg0, CacheArchive imageArchive, int arg2) {
+        if(!Buffer.method472(imageArchive, arg2))
+            return null;
+        return method538();
+    }
+
+    public static void drawLoadingText(int percent, Color color, String desc) {
+        try {
+            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+            if(helveticaBold == null) {
+                helveticaBold = new Font("Helvetica", Font.BOLD, 13);
+                fontMetrics = MouseHandler.gameCanvas.getFontMetrics(helveticaBold);
+            }
+            if(clearScreen) {
+                clearScreen = false;
+                graphics.setColor(Color.black);
+                graphics.fillRect(0, 0, width, height);
+            }
+            if(color == null)
+                color = new Color(140, 17, 17);
+            try {
+                if(loadingBoxImage == null)
+                    loadingBoxImage = MouseHandler.gameCanvas.createImage(304, 34);
+                Graphics loadingBoxGraphics = loadingBoxImage.getGraphics();
+                loadingBoxGraphics.setColor(color);
+                loadingBoxGraphics.drawRect(0, 0, 303, 33);
+                loadingBoxGraphics.fillRect(2, 2, percent * 3, 30);
+                loadingBoxGraphics.setColor(Color.black);
+                loadingBoxGraphics.drawRect(1, 1, 301, 31);
+                loadingBoxGraphics.fillRect(2 + 3 * percent, 2, 300 - 3 * percent, 30);
+                loadingBoxGraphics.setFont(helveticaBold);
+                loadingBoxGraphics.setColor(Color.white);
+                loadingBoxGraphics.drawString(desc, (304 - (fontMetrics.stringWidth(desc))) / 2, 22);
+                graphics.drawImage(loadingBoxImage, width / 2 - 152, height / 2 - 18, null);
+            } catch(Exception exception) {
+                int centerWidth = width / 2 - 152;
+                int centerHeight = height / 2 - 18;
+                graphics.setColor(color);
+                graphics.drawRect(centerWidth, centerHeight, 303, 33);
+                graphics.fillRect(2 + centerWidth, centerHeight + 2, 3 * percent, 30);
+                graphics.setColor(Color.black);
+                graphics.drawRect(centerWidth + 1, 1 + centerHeight, 301, 31);
+                graphics.fillRect(percent * 3 + 2 + centerWidth, 2 + centerHeight, 300 + -(3 * percent), 30);
+                graphics.setFont(helveticaBold);
+                graphics.setColor(Color.white);
+                graphics.drawString(desc, (304 - (fontMetrics.stringWidth(desc))) / 2+ centerWidth, 22 + centerHeight);
+            }
+        } catch(Exception exception) {
+            MouseHandler.gameCanvas.repaint();
+        }
+    }
+
+    public static void clearImageCache() {
+        Buffer.rgbImageCache.clear();
     }
 }
