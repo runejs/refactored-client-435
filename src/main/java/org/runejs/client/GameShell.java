@@ -11,7 +11,6 @@ import org.runejs.Configuration;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.URL;
@@ -139,39 +138,16 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         }
     }
 
-    public void stop() {
-        if (this == currentGameShell && !closedClient)
-            exitTimeInMillis = System.currentTimeMillis() + 4000L;
-    }
-
-    public boolean verifyHost(int arg0) {
-        String string = getDocumentBase().getHost().toLowerCase();
-        if (arg0 != 31)
-            return false;
-        if (string.endsWith("127.0.0.1"))
-            return true;
-        for (/**/; string.length() > 0 && string.charAt(string.length() - 1) >= '0' && string.charAt(string.length() + -1) <= 57; string = string.substring(0, string.length() - 1)) {
-            /* empty */
-        }
-        if (string.endsWith("192.168.1."))
-            return true;
-        openErrorPage("invalidhost");
-        return false;
-    }
-
     public void windowOpened(WindowEvent arg0) {
     }
 
     public void openErrorPage(String gameError) {
+        // Previously opened an error page in a browser
+        // getAppletContext().showDocument(new URL(getCodeBase(), ("error_game_" + gameError + ".ws")));
         if (!gameShellError) {
             gameShellError = true;
             System.out.println("error_game_" + gameError);
-            try {
-//                getAppletContext().showDocument(new URL(getCodeBase(), ("error_game_" + gameError + ".ws")));
-            } catch (Exception exception) {
-            }
         }
-
     }
 
     public void start() {
@@ -216,27 +192,6 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         }
         return null;
     }
-
-    public void displayClientFrame(int clientVersion, int width, int height, int fileStoreId) {
-        if (currentGameShell != null) {
-            openErrorPage("alreadyloaded");
-            return;
-        }
-        MovedStatics.width = height;
-        Game.clientVersion = clientVersion;
-        MovedStatics.height = width;
-        currentGameShell = this;
-        if (Game.signlink == null) {
-            try {
-                MovedStatics.signlink = Game.signlink = new Signlink(false, this, InetAddress.getByName(getCodeBase().getHost()), fileStoreId, null, 0);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        Game.signlink.createThreadNode(1, this);
-        windowActivated(null);
-    }
-
     public void windowIconified(WindowEvent arg0) {
     }
 
@@ -276,14 +231,6 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         this.game.updateStatusText();
     }
 
-//    public AppletContext getAppletContext() {
-//        if(Class35.aFrame1732 != null)
-//            return null;
-//        if(ISAAC.aClass31_521 != null && ISAAC.aClass31_521.anApplet740 != this)
-//            return ISAAC.aClass31_521.anApplet740.getAppletContext();
-//        return super.getAppletContext();
-//    }
-
     public void openClientApplet(String cacheFolder, int cacheIndexes, int fileStoreId, InetAddress inetAddress, int clientVersion) {
         try {
             int height = 503;
@@ -294,7 +241,6 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
             currentGameShell = this;
             clientFrame = new Frame();
             clientFrame.setTitle(Configuration.SERVER_DISPLAY_NAME);
-//            Class35.aFrame1732.setResizable(false);
             ScreenController.frameMode(ScreenMode.FIXED);
             clientFrame.setPreferredSize(new Dimension(width, height));
             clientFrame.setResizable(ScreenController.frameMode == ScreenMode.RESIZABLE);
@@ -303,7 +249,6 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
             clientFrame.toFront();
             Insets insets = clientFrame.getInsets();
             clientFrame.setSize(insets.right + width + insets.left, insets.bottom + insets.top + height);
-//            Class35.aFrame1732.setLocationRelativeTo(null);
             MovedStatics.signlink = Game.signlink = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
             Game.signlink.createThreadNode(1, this);
         } catch (Exception exception) {
@@ -323,21 +268,11 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         destroy();
     }
 
-//    public String getParameter(String parameter) {
-//        if(Class35.aFrame1732 != null)
-//            return null;
-//        if(ISAAC.aClass31_521 != null && this != ISAAC.aClass31_521.anApplet740)
-//            return ISAAC.aClass31_521.anApplet740.getParameter(parameter);
-//        return super.getParameter(parameter);
-//    }
-
     public void windowDeactivated(WindowEvent windowEvent) {
     }
 
     public synchronized void setCanvas() {
         Container container = clientFrame;
-//        else
-//            container = ISAAC.aClass31_521.anApplet740;
         if (Game.gameCanvas != null) {
             Game.gameCanvas.removeFocusListener(this);
             container.remove(Game.gameCanvas);
