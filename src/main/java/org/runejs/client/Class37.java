@@ -26,7 +26,7 @@ public class Class37 {
         IncomingPackets.thirdLastOpcode = -1;
         MovedStatics.destinationX = 0;
         Minimap.minimapState = 0;
-        Class40_Sub5_Sub15.systemUpdateTime = 0;
+        MovedStatics.systemUpdateTime = 0;
         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
         for(int i = 0; Player.trackedPlayers.length > i; i++) {
             if(Player.trackedPlayers[i] != null)

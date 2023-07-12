@@ -244,6 +244,7 @@ public class MovedStatics {
      * Position of the hint icon in world coordinates (e.g. 3222,3222)
      */
     public static int hintIconPosX = 0;
+    public static int systemUpdateTime = 0;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -287,7 +288,7 @@ public class MovedStatics {
     public static void method445() {
         if (CollisionMap.anInt165 != 0) {
             int i = 0;
-            if (Class40_Sub5_Sub15.systemUpdateTime != 0)
+            if (systemUpdateTime != 0)
                 i = 1;
             for (int i_1_ = 0; i_1_ < 100; i_1_++) {
                 if (ChatBox.chatMessages[i_1_] != null) {
@@ -1710,7 +1711,7 @@ public class MovedStatics {
         if(CollisionMap.anInt165 != 0) {
             TypeFace class40_sub5_sub14_sub1 = fontNormal;
             int i = 0;
-            if(Class40_Sub5_Sub15.systemUpdateTime != 0)
+            if(systemUpdateTime != 0)
                 i = 1;
             for(int i_0_ = 0; i_0_ < 100; i_0_++) {
                 if(ChatBox.chatMessages[i_0_] != null) {
@@ -1919,8 +1920,8 @@ public class MovedStatics {
             }
 
         }
-        if (Class40_Sub5_Sub15.systemUpdateTime != 0) {
-            int seconds = Class40_Sub5_Sub15.systemUpdateTime / 50;
+        if (systemUpdateTime != 0) {
+            int seconds = systemUpdateTime / 50;
             int minutes = seconds / 60;
             seconds %= 60;
             if (seconds < 10) {

@@ -685,7 +685,7 @@ public class Game {
         MovedStatics.menuOpen = false;
         IncomingPackets.lastOpcode = -1;
         IncomingPackets.opcode = -1;
-        Class40_Sub5_Sub15.systemUpdateTime = 0;
+        MovedStatics.systemUpdateTime = 0;
         IncomingPackets.cyclesSinceLastPacket = 0;
         Player.headIconDrawType = 0;
         OutgoingPackets.buffer.currentPosition = 0;
@@ -1231,8 +1231,8 @@ public class Game {
     }
 
     public static void updateGame() {
-        if(Class40_Sub5_Sub15.systemUpdateTime > 1)
-            Class40_Sub5_Sub15.systemUpdateTime--;
+        if(MovedStatics.systemUpdateTime > 1)
+            MovedStatics.systemUpdateTime--;
         if(SceneCluster.idleLogout > 0)
             SceneCluster.idleLogout--;
         if(aBoolean871) {

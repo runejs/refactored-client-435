@@ -12,7 +12,6 @@ import org.runejs.client.node.CachedNode;
 public class Class40_Sub5_Sub15 extends CachedNode {
     public static IndexedImage loginScreenBox;
     public static IndexedImage[] tabIcons;
-    public static int systemUpdateTime = 0;
     public static boolean lastItemDragged = false;
     public static int[] anIntArray2788 = new int[]{16, 32, 64, 128};
     public static int randomiserHue = -8 + (int) (17.0 * Math.random());
