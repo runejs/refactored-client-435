@@ -83,7 +83,7 @@ public class ScreenController {
     }
 
     public static void setBounds() {
-        if (MouseHandler.gameCanvas == null) {
+        if (Game.gameCanvas == null) {
             return;
         }
         Dimension innerSize = getInnerSize(GameShell.clientFrame);
@@ -109,18 +109,18 @@ public class ScreenController {
 
 
         Scene.computeTileVisibilityMaps(500, 800, frameMode == ScreenMode.FIXED ? 512 : drawWidth, frameMode == ScreenMode.FIXED ? 334 : drawHeight, is);
-        MouseHandler.gameCanvas.setSize(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight);
+        Game.gameCanvas.setSize(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight);
 
         if (Game.gameStatusCode <= 35 && Game.gameStatusCode >= 30) {
             MovedStatics.gameScreenImageProducer = MovedStatics.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, GameShell.clientFrame);
         } else {
-            MouseHandler.gameCanvas.setSize(MovedStatics.width, MovedStatics.height);
-            MouseHandler.gameCanvas.setVisible(true);
+            Game.gameCanvas.setSize(MovedStatics.width, MovedStatics.height);
+            Game.gameCanvas.setVisible(true);
             if (GameShell.clientFrame == null)
-                MouseHandler.gameCanvas.setLocation(0, 0);
+                Game.gameCanvas.setLocation(0, 0);
             else {
                 Insets insets = GameShell.clientFrame.getInsets();
-                MouseHandler.gameCanvas.setLocation(insets.left, insets.top);
+                Game.gameCanvas.setLocation(insets.left, insets.top);
             }//            Class38.loginBoxGraphics = Class40_Sub5_Sub13.createGraphicsBuffer(frameWidth, frameHeight, Class35.aFrame1732);
         }
     }

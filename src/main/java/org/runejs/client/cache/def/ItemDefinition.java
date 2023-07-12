@@ -2,7 +2,6 @@ package org.runejs.client.cache.def;
 
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.ImageRGB;
-import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.media.Rasterizer;
@@ -16,6 +15,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
     public static int count;
     public static CacheArchive itemDefinitionCache;
     public static NodeCache itemDefinitionNodeCache = new NodeCache(64);
+    public static NodeCache groundItemModelNodeCache = new NodeCache(50);
 
     public int stackable;
     public String name;
@@ -494,7 +494,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
                 return forId(id, 10).asGroundStack(arg0, 1);
             }
         }
-        Model model = (Model) MouseHandler.modelCache.get(id);
+        Model model = (Model) groundItemModelNodeCache.get(id);
         if(model != null) {
             return model;
         }
@@ -513,7 +513,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(arg0) {
             model.applyLighting(ambient + 64, 768 + contrast, -50, -10, -50, true);
             model.singleTile = true;
-            MouseHandler.modelCache.put(id, model);
+            groundItemModelNodeCache.put(id, model);
         }
         return model;
 

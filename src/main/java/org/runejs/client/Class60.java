@@ -283,7 +283,7 @@ public class Class60 {
                 offsetX = middleX - loginScreenOffsetX;
                 offsetY = middleY - loginScreenOffsetY;
             }
-            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+            Graphics graphics = Game.gameCanvas.getGraphics();
             muteButton.drawGraphics(ScreenController.drawWidth-42, ScreenController.drawHeight-42, graphics);
 
             MovedStatics.loginBoxGraphics.drawGraphics(offsetX + 202, offsetY + 171, graphics);
@@ -302,7 +302,7 @@ public class Class60 {
             aProducingGraphicsBuffer_1631.drawGraphics(offsetX + 562, offsetY + 171, graphics);
             muteButton.drawGraphics(ScreenController.drawWidth-42, ScreenController.drawHeight-42, graphics);
         } catch (Exception exception) {
-            MouseHandler.gameCanvas.repaint();
+            Game.gameCanvas.repaint();
         }
     }
 

@@ -1,14 +1,10 @@
 package org.runejs.client.input;
 
-import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.frame.console.Console;
-import org.runejs.client.io.Buffer;
-import org.runejs.client.media.renderable.Renderable;
-import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.SceneCamera;
 import org.runejs.client.*;
 
@@ -16,9 +12,6 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class MouseHandler implements MouseListener, MouseMotionListener, FocusListener, MouseWheelListener {
-    public static NodeCache modelCache = new NodeCache(50);
-    public static int currentTickSample;
-    public static Canvas gameCanvas;
     public static int clickType = 0;
     public static int currentMouseButtonPressed = 0;
     public static volatile int mouseButtonPressed = 0;
@@ -39,116 +32,6 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
     public boolean mouseWheelDown;
     public int mouseWheelX;
     public int mouseWheelY;
-
-
-
-    public static void processMenuClick() {
-        if(MovedStatics.activeInterfaceType != 0) {
-            return;
-        }
-        int meta = clickType;
-        if(Game.widgetSelected == 1 && clickX >= 516 && clickY >= 160 && clickX <= 765 && clickY <= 205)
-            meta = 0;
-        if(MovedStatics.menuOpen) {
-            if(meta != 1) {
-                int x = mouseX;
-                int y = mouseY;
-                if(MovedStatics.menuScreenArea == 0) {
-                    x -= 4;
-                    y -= 4;
-                }
-                if(MovedStatics.menuScreenArea == 1) {
-                    y -= 205;
-                    x -= 553;
-                }
-                if(MovedStatics.menuScreenArea == 2) {
-                    y -= 357;
-                    x -= 17;
-                }
-                if(-10 + MovedStatics.menuOffsetX > x || 10 + MovedStatics.menuWidth + MovedStatics.menuOffsetX < x || y < Game.menuOffsetY + -10 || y > Game.menuOffsetY + MovedStatics.menuHeight + 10) {
-                    if(MovedStatics.menuScreenArea == 1)
-                        GameInterface.redrawTabArea = true;
-                    MovedStatics.menuOpen = false;
-                    if(MovedStatics.menuScreenArea == 2)
-                        ChatBox.redrawChatbox = true;
-                }
-            }
-            if(meta == 1) {
-                int menuX = MovedStatics.menuOffsetX;
-                int menuY = Game.menuOffsetY;
-                int dx = MovedStatics.menuWidth;
-                int x = clickX;
-                int y = clickY;
-                if(MovedStatics.menuScreenArea == 0) {
-                    x -= 4;
-                    y -= 4;
-                }
-                if(MovedStatics.menuScreenArea == 1) {
-                    x -= 553;
-                    y -= 205;
-                }
-                if(MovedStatics.menuScreenArea == 2) {
-                    x -= 17;
-                    y -= 357;
-                }
-                int id = -1;
-                for(int row = 0; row < MovedStatics.menuActionRow; row++) {
-                    int k3 = 31 + menuY + 15 * (MovedStatics.menuActionRow + -1 - row);
-                    if(x > menuX && x < dx + menuX && y > -13 + k3 && y < 3 + k3)
-                        id = row;
-                }
-                if(id != -1)
-                    GameInterface.processMenuActions(id);
-                if(MovedStatics.menuScreenArea == 1)
-                    GameInterface.redrawTabArea = true;
-                MovedStatics.menuOpen = false;
-                if(MovedStatics.menuScreenArea == 2)
-                    ChatBox.redrawChatbox = true;
-            }
-        } else {
-            if(meta == 1 && MovedStatics.menuActionRow > 0) {
-                int action = MovedStatics.menuActionTypes[MovedStatics.menuActionRow - 1];
-                if(
-                    action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_1.getId()
-                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_2.getId()
-                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_3.getId()
-                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_4.getId()
-                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_5.getId()
-                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_1.getId()
-                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_2.getId()
-                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_3.getId()
-                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_4.getId()
-                        || action == ActionRowType.DROP_ITEM.getId()
-                        || action == ActionRowType.SELECT_ITEM_ON_WIDGET.getId()
-                        || action == ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId()
-                ) {
-                    int item = MovedStatics.firstMenuOperand[MovedStatics.menuActionRow - 1];
-                    int id = MovedStatics.secondMenuOperand[-1 + MovedStatics.menuActionRow];
-                    GameInterface gameInterface = GameInterface.getInterface(id);
-                    if(gameInterface.itemSwapable || gameInterface.itemDeletesDraged) {
-                        Renderable.anInt2869 = clickX;
-                        MovedStatics.lastItemDragged = false;
-                        MovedStatics.activeInterfaceType = 2;
-                        MovedStatics.modifiedWidgetId = id;
-                        MovedStatics.anInt2798 = clickY;
-                        GroundItemTile.selectedInventorySlot = item;
-                        if(id >> 16 == GameInterface.gameScreenInterfaceId)
-                            MovedStatics.activeInterfaceType = 1;
-                        if(GameInterface.chatboxInterfaceId == id >> 16)
-                            MovedStatics.activeInterfaceType = 3;
-                        Buffer.lastItemDragTime = 0;
-                        return;
-                    }
-                }
-            }
-            if(meta == 1 && (Game.oneMouseButton == 1 || MovedStatics.menuHasAddFriend(-1 + MovedStatics.menuActionRow)) && MovedStatics.menuActionRow > 2)
-                meta = 2;
-            if(meta == 1 && MovedStatics.menuActionRow > 0)
-                GameInterface.processMenuActions(MovedStatics.menuActionRow - 1);
-            if(meta == 2 && MovedStatics.menuActionRow > 0)
-                MovedStatics.determineMenuSize();
-        }
-    }
 
     public static void method1015() {
         synchronized (Game.mouseHandler) {

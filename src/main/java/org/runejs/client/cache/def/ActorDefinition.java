@@ -6,7 +6,6 @@ import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.frame.Minimap;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
-import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.media.renderable.Model;
@@ -87,11 +86,11 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     public static void drawMapBack() {
         try {
             if(ScreenController.frameMode == ScreenMode.FIXED) {
-                Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+                Graphics graphics = Game.gameCanvas.getGraphics();
                 Minimap.mapbackProducingGraphicsBuffer.drawGraphics(550, 4, graphics);
             }
         } catch(Exception exception) {
-            MouseHandler.gameCanvas.repaint();
+            Game.gameCanvas.repaint();
         }
     }
 

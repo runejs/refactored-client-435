@@ -4,7 +4,6 @@ import org.runejs.client.cache.def.ActorDefinition;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.IndexedImage;
-import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.RasterizerInstanced;
@@ -34,7 +33,7 @@ public class Minimap extends FramePieceRenderer {
     private static int[] resizableMinimapLineOffsets;
 
     public Minimap() {
-        this.tempResizableMiniMapimage = MovedStatics.createGraphicsBuffer(210, 210, MouseHandler.gameCanvas);
+        this.tempResizableMiniMapimage = MovedStatics.createGraphicsBuffer(210, 210, Game.gameCanvas);
         resizableMinimapOffsets1 = new int[200];
         resizableMinimapOffsets2 = new int[200];
         for(int i = 0; i < resizableMinimapOffsets2.length; i++) {
@@ -42,7 +41,7 @@ public class Minimap extends FramePieceRenderer {
             resizableMinimapOffsets2[i] = 0;
         }
 
-        resizableMiniMapimage = MovedStatics.createGraphicsBuffer(210, 210, MouseHandler.gameCanvas);
+        resizableMiniMapimage = MovedStatics.createGraphicsBuffer(210, 210, Game.gameCanvas);
         rasterizerInstanced = new RasterizerInstanced(this.tempResizableMiniMapimage);
 
     }

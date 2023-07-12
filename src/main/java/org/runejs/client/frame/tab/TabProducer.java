@@ -8,7 +8,6 @@ import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.FramePieceRenderer;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.tab.parts.TabParts;
-import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.RasterizerInstanced;
 
 // TODO: DONT RUN NORMAL TAB RENDERER WHEN THIS IS RUNNING
@@ -45,8 +44,8 @@ public class TabProducer extends FramePieceRenderer {
 
 
     public TabProducer() {
-        this.tempResizableSideBar = MovedStatics.createGraphicsBuffer(241, 334, MouseHandler.gameCanvas);
-        resizableSideBarImage = MovedStatics.createGraphicsBuffer(241, 334, MouseHandler.gameCanvas);
+        this.tempResizableSideBar = MovedStatics.createGraphicsBuffer(241, 334, Game.gameCanvas);
+        resizableSideBarImage = MovedStatics.createGraphicsBuffer(241, 334, Game.gameCanvas);
         rasterizerInstanced = new RasterizerInstanced(this.tempResizableSideBar);
         rasterizerInstanced.drawFilledRectangle(0, 0, 241, 334, Integer.MAX_VALUE);
     }

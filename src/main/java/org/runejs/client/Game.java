@@ -96,6 +96,7 @@ public class Game {
     public static int[] tabWidgetIds = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     public static int flashingTabId = -1;
     public static MouseHandler mouseHandler = new MouseHandler();
+    public static Canvas gameCanvas;
     private static int gameServerPort;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
@@ -895,7 +896,7 @@ public class Game {
             MovedStatics.redrawChatbox = true;
             drawCount++;
         } else if(drawCount != 0) {
-            MovedStatics.method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
+            MovedStatics.method763(gameCanvas, CacheArchive.gameImageCacheArchive);
         }
         if(GameInterface.chatboxInterfaceId == -1) {
             chatboxInterface.scrollPosition = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
@@ -1129,10 +1130,10 @@ public class Game {
                 MovedStatics.drawMenu(4,4); // might be 0,0
             }
         try {
-            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+            Graphics graphics = gameCanvas.getGraphics();
             MovedStatics.aProducingGraphicsBuffer_2213.drawGraphics(0, 0, graphics);
         } catch(Exception exception) {
-            MouseHandler.gameCanvas.repaint();
+            gameCanvas.repaint();
         }
     }
 
@@ -1479,7 +1480,7 @@ public class Game {
                             Native.clickToContinueString = null;
                         }
 
-                        MouseHandler.processMenuClick();
+                        MovedStatics.processMenuClick();
                         if(GameInterface.fullscreenInterfaceId == -1) {
                             ScreenController.handleMinimapMouse();
                             ScreenController.handleTabClick();
@@ -1902,12 +1903,12 @@ public class Game {
             arg2.drawShadowedStringCenter(English.off, 324, 41, 16711680, true);
         arg2.drawText(English.reportAbuse, 417, 17, 85, 25, 16777215, true, 1, 1, 0);
         try {
-            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+            Graphics graphics = gameCanvas.getGraphics();
             if(ScreenController.frameMode == ScreenMode.FIXED) {
                 MovedStatics.chatModes.drawGraphics(0, 453, graphics);
             }
         } catch(Exception exception) {
-            MouseHandler.gameCanvas.repaint();
+            gameCanvas.repaint();
         }
     }
 
@@ -2121,11 +2122,11 @@ public class Game {
      */
     public void updateStatusText() {
         if (MovedStatics.aBoolean1575) {
-            KeyFocusListener.removeListeners(MouseHandler.gameCanvas);
-            MouseHandler.removeListeners(MouseHandler.gameCanvas);
+            KeyFocusListener.removeListeners(gameCanvas);
+            MouseHandler.removeListeners(gameCanvas);
 //            this.setCanvas();
-            KeyFocusListener.addListeners(MouseHandler.gameCanvas);
-            MouseHandler.addListeners(MouseHandler.gameCanvas);
+            KeyFocusListener.addListeners(gameCanvas);
+            MouseHandler.addListeners(gameCanvas);
         }
         if (gameStatusCode == 0)
             MovedStatics.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
@@ -2286,8 +2287,8 @@ public class Game {
         currentPort = gameServerPort;
 
         MovedStatics.method997();
-        KeyFocusListener.addListeners(MouseHandler.gameCanvas);
-        MouseHandler.addListeners(MouseHandler.gameCanvas);
+        KeyFocusListener.addListeners(gameCanvas);
+        MouseHandler.addListeners(gameCanvas);
         MovedStatics.anInt57 = Signlink.anInt737;
         try {
             if (signlink.cacheDataAccessFile != null) {

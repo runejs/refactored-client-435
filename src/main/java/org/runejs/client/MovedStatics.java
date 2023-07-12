@@ -374,6 +374,7 @@ public class MovedStatics {
     public static int anInt3048 = 1;
     public static boolean[] obfuscatedKeyStatus = new boolean[112];
     public static int[] crc8LookupTable = new int[256];
+    public static int currentTickSample;
 
     public static void method440() {
         if (aBoolean512) {
@@ -819,13 +820,13 @@ public class MovedStatics {
                 tabIcons[12].drawImage(226, 2);
         }
         try {
-            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+            Graphics graphics = Game.gameCanvas.getGraphics();
             if (ScreenController.frameMode == ScreenMode.FIXED) {
                 InteractiveObject.tabTop.drawGraphics(516, 160, graphics);
                 tabBottom.drawGraphics(496, 466, graphics);
             }
         } catch (Exception exception) {
-            MouseHandler.gameCanvas.repaint();
+            Game.gameCanvas.repaint();
         }
     }
 
@@ -1055,17 +1056,17 @@ public class MovedStatics {
                 method344(-40);
                 method440();
                 if (aProducingGraphicsBuffer_2213 == null)
-                    aProducingGraphicsBuffer_2213 = createGraphicsBuffer(765, 503, MouseHandler.gameCanvas);
+                    aProducingGraphicsBuffer_2213 = createGraphicsBuffer(765, 503, Game.gameCanvas);
             }
             if (statusCode == 5 || statusCode == 10 || statusCode == 20) {
                 aProducingGraphicsBuffer_2213 = null;
                 method344(-69);
-                Class60.renderLoginScreen(MouseHandler.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
+                Class60.renderLoginScreen(Game.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
             }
             if (statusCode == 25 || statusCode == 30 || statusCode == 40) {
                 aProducingGraphicsBuffer_2213 = null;
                 method440();
-                method763(MouseHandler.gameCanvas, CacheArchive.gameImageCacheArchive);
+                method763(Game.gameCanvas, CacheArchive.gameImageCacheArchive);
             }
             Game.gameStatusCode = statusCode;
             clearScreen = true;
@@ -1383,7 +1384,7 @@ public class MovedStatics {
 
 	public static void method211() {
 	    ItemDefinition.itemDefinitionNodeCache.clear();
-	    MouseHandler.modelCache.clear();
+	    ItemDefinition.groundItemModelNodeCache.clear();
 	    Buffer.rgbImageCache.clear();
 	
 	}
@@ -2231,7 +2232,7 @@ public class MovedStatics {
     public static void drawWelcomeScreenGraphics() {
         try {
             if(ScreenController.frameMode == ScreenMode.FIXED) {
-                Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+                Graphics graphics = Game.gameCanvas.getGraphics();
 
                 framePieceRight.drawGraphics(0, 4, graphics);
                 chatboxRight.drawGraphics(0, 357, graphics);
@@ -2244,7 +2245,7 @@ public class MovedStatics {
                 chatboxTop.drawGraphics(0, 338, graphics);
             }
         } catch(Exception exception) {
-            MouseHandler.gameCanvas.repaint();
+            Game.gameCanvas.repaint();
         }
     }
 
@@ -2570,10 +2571,10 @@ public class MovedStatics {
 
     public static void drawTabGraphics() {
         try {
-            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+            Graphics graphics = Game.gameCanvas.getGraphics();
             tabImageProducer.drawGraphics(553, 205, graphics);
         } catch(Exception exception) {
-            MouseHandler.gameCanvas.repaint();
+            Game.gameCanvas.repaint();
         }
     }
 
@@ -3467,10 +3468,10 @@ public class MovedStatics {
 
     public static void drawGameScreenGraphics() {
         try {
-            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+            Graphics graphics = Game.gameCanvas.getGraphics();
             gameScreenImageProducer.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
         } catch(Exception exception) {
-            MouseHandler.gameCanvas.repaint();
+            Game.gameCanvas.repaint();
         }
     }
 
@@ -3493,10 +3494,10 @@ public class MovedStatics {
 
     public static void drawLoadingText(int percent, Color color, String desc) {
         try {
-            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+            Graphics graphics = Game.gameCanvas.getGraphics();
             if(helveticaBold == null) {
                 helveticaBold = new Font("Helvetica", Font.BOLD, 13);
-                fontMetrics = MouseHandler.gameCanvas.getFontMetrics(helveticaBold);
+                fontMetrics = Game.gameCanvas.getFontMetrics(helveticaBold);
             }
             if(clearScreen) {
                 clearScreen = false;
@@ -3507,7 +3508,7 @@ public class MovedStatics {
                 color = new Color(140, 17, 17);
             try {
                 if(loadingBoxImage == null)
-                    loadingBoxImage = MouseHandler.gameCanvas.createImage(304, 34);
+                    loadingBoxImage = Game.gameCanvas.createImage(304, 34);
                 Graphics loadingBoxGraphics = loadingBoxImage.getGraphics();
                 loadingBoxGraphics.setColor(color);
                 loadingBoxGraphics.drawRect(0, 0, 303, 33);
@@ -3533,7 +3534,7 @@ public class MovedStatics {
                 graphics.drawString(desc, (304 - (fontMetrics.stringWidth(desc))) / 2+ centerWidth, 22 + centerHeight);
             }
         } catch(Exception exception) {
-            MouseHandler.gameCanvas.repaint();
+            Game.gameCanvas.repaint();
         }
     }
 
@@ -3610,5 +3611,113 @@ public class MovedStatics {
 
     public static String method956(Buffer arg1) {
         return method307(arg1, -1, 32767);
+    }
+
+    public static void processMenuClick() {
+        if(activeInterfaceType != 0) {
+            return;
+        }
+        int meta = MouseHandler.clickType;
+        if(Game.widgetSelected == 1 && MouseHandler.clickX >= 516 && MouseHandler.clickY >= 160 && MouseHandler.clickX <= 765 && MouseHandler.clickY <= 205)
+            meta = 0;
+        if(menuOpen) {
+            if(meta != 1) {
+                int x = MouseHandler.mouseX;
+                int y = MouseHandler.mouseY;
+                if(menuScreenArea == 0) {
+                    x -= 4;
+                    y -= 4;
+                }
+                if(menuScreenArea == 1) {
+                    y -= 205;
+                    x -= 553;
+                }
+                if(menuScreenArea == 2) {
+                    y -= 357;
+                    x -= 17;
+                }
+                if(-10 + menuOffsetX > x || 10 + menuWidth + menuOffsetX < x || y < Game.menuOffsetY + -10 || y > Game.menuOffsetY + menuHeight + 10) {
+                    if(menuScreenArea == 1)
+                        GameInterface.redrawTabArea = true;
+                    menuOpen = false;
+                    if(menuScreenArea == 2)
+                        ChatBox.redrawChatbox = true;
+                }
+            }
+            if(meta == 1) {
+                int menuX = menuOffsetX;
+                int menuY = Game.menuOffsetY;
+                int dx = menuWidth;
+                int x = MouseHandler.clickX;
+                int y = MouseHandler.clickY;
+                if(menuScreenArea == 0) {
+                    x -= 4;
+                    y -= 4;
+                }
+                if(menuScreenArea == 1) {
+                    x -= 553;
+                    y -= 205;
+                }
+                if(menuScreenArea == 2) {
+                    x -= 17;
+                    y -= 357;
+                }
+                int id = -1;
+                for(int row = 0; row < menuActionRow; row++) {
+                    int k3 = 31 + menuY + 15 * (menuActionRow + -1 - row);
+                    if(x > menuX && x < dx + menuX && y > -13 + k3 && y < 3 + k3)
+                        id = row;
+                }
+                if(id != -1)
+                    GameInterface.processMenuActions(id);
+                if(menuScreenArea == 1)
+                    GameInterface.redrawTabArea = true;
+                menuOpen = false;
+                if(menuScreenArea == 2)
+                    ChatBox.redrawChatbox = true;
+            }
+        } else {
+            if(meta == 1 && menuActionRow > 0) {
+                int action = menuActionTypes[menuActionRow - 1];
+                if(
+                    action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_1.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_2.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_3.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_4.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_5.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_1.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_2.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_3.getId()
+                        || action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_4.getId()
+                        || action == ActionRowType.DROP_ITEM.getId()
+                        || action == ActionRowType.SELECT_ITEM_ON_WIDGET.getId()
+                        || action == ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId()
+                ) {
+                    int item = firstMenuOperand[menuActionRow - 1];
+                    int id = secondMenuOperand[-1 + menuActionRow];
+                    GameInterface gameInterface = GameInterface.getInterface(id);
+                    if(gameInterface.itemSwapable || gameInterface.itemDeletesDraged) {
+                        Renderable.anInt2869 = MouseHandler.clickX;
+                        lastItemDragged = false;
+                        activeInterfaceType = 2;
+                        modifiedWidgetId = id;
+                        anInt2798 = MouseHandler.clickY;
+                        GroundItemTile.selectedInventorySlot = item;
+                        if(id >> 16 == GameInterface.gameScreenInterfaceId)
+                            activeInterfaceType = 1;
+                        if(GameInterface.chatboxInterfaceId == id >> 16)
+                            activeInterfaceType = 3;
+                        Buffer.lastItemDragTime = 0;
+                        return;
+                    }
+                }
+            }
+            if(meta == 1 && (Game.oneMouseButton == 1 || menuHasAddFriend(-1 + menuActionRow)) && menuActionRow > 2)
+                meta = 2;
+            if(meta == 1 && menuActionRow > 0)
+                GameInterface.processMenuActions(menuActionRow - 1);
+            if(meta == 2 && menuActionRow > 0)
+                determineMenuSize();
+        }
     }
 }

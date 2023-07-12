@@ -277,11 +277,11 @@ public class ChatBox {
 
     public static void drawChatBoxGraphics() {
         try {
-            Graphics graphics = MouseHandler.gameCanvas.getGraphics();
+            Graphics graphics = Game.gameCanvas.getGraphics();
             chatBoxImageProducer.drawGraphics(17, 357, graphics);
 
         } catch(Exception exception) {
-            MouseHandler.gameCanvas.repaint();
+            Game.gameCanvas.repaint();
         }
     }
 }
