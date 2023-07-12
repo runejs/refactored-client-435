@@ -41,6 +41,7 @@ import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
 import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
 import org.runejs.Configuration;
 import org.runejs.client.util.SignlinkNode;
+import org.runejs.client.util.Timer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -101,6 +102,8 @@ public class Game {
     public static long aLong1841;
     public static int clientVersion;
     public static int playerRights = 0;
+    public static Timer gameTimer;
+    public static int idleLogout = 0;
     /**
      * Backup port if the first one fails?
      */
@@ -631,7 +634,7 @@ public class Game {
         IncomingPackets.cyclesSinceLastPacket = 0;
         Player.headIconDrawType = 0;
         OutgoingPackets.buffer.currentPosition = 0;
-        SceneCluster.idleLogout = 0;
+        idleLogout = 0;
         IncomingPackets.thirdLastOpcode = -1;
         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
         MovedStatics.menuActionRow = 0;
@@ -1168,8 +1171,8 @@ public class Game {
     public static void updateGame() {
         if(MovedStatics.systemUpdateTime > 1)
             MovedStatics.systemUpdateTime--;
-        if(SceneCluster.idleLogout > 0)
-            SceneCluster.idleLogout--;
+        if(idleLogout > 0)
+            idleLogout--;
         if(aBoolean871) {
             aBoolean871 = false;
             dropClient();
@@ -1469,7 +1472,7 @@ public class Game {
                         int i_20_ = MouseHandler.resetFramesSinceMouseInput();
                         int i_21_ = KeyFocusListener.resetFramesSinceKeyboardInput();
                         if(i_20_ > 4500 && i_21_ > 4500) {
-                            SceneCluster.idleLogout = 250;
+                            idleLogout = 250;
                             MouseHandler.setFramesSinceMouseInput(4000);
                             OutgoingPackets.buffer.putPacket(216);
                         }
@@ -1878,7 +1881,7 @@ public class Game {
     }
 
     public static void dropClient() {
-        if(SceneCluster.idleLogout > 0) {
+        if(idleLogout > 0) {
             // Instant logout
             logout();
         } else {
@@ -1895,7 +1898,7 @@ public class Game {
     }
 
     public static void method992() {
-        SceneCluster.gameTimer.start();
+        gameTimer.start();
         for(int i = 0; i < 32; i++)
             GameShell.tickSamples[i] = 0L;
         for(int i = 0; i < 32; i++)

@@ -33,7 +33,6 @@ import org.runejs.client.message.outbound.widget.input.*;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.node.NodeCache;
-import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.util.TextUtils;
 import org.runejs.client.*;
 import org.runejs.Configuration;
@@ -1723,7 +1722,7 @@ public class GameInterface extends CachedNode {
             }
         }
         if(i == 205) {
-            SceneCluster.idleLogout = 250;
+            Game.idleLogout = 250;
             return true;
         }
         if(i == 501) {

@@ -2525,7 +2525,7 @@ public class MovedStatics {
      * Anything that is a 2D item attached to an actor in the world.
      */
     public static void draw2DActorAttachments() {
-        SceneCluster.anInt770 = 0;
+        int overheadChatMessageCount = 0;
         for(int i = -1; Player.localPlayerCount + Player.npcCount > i; i++) {
             Actor actor;
             if(i == -1)
@@ -2583,16 +2583,16 @@ public class MovedStatics {
                 if(actor.forcedChatMessage != null && (i >= Player.localPlayerCount || ChatBox.publicChatMode == 0 || ChatBox.publicChatMode == 3 || ChatBox.publicChatMode == 1 && Player.hasFriend(((Player) actor).playerName))) {
                     Point2d screenPos = getProjectedScreenPosition(actor.anInt3117, actor.worldY, actor.worldX);
 
-                    if(screenPos != null && 50 > SceneCluster.anInt770) {
-                        Actor.overheadChatHalfWidth[SceneCluster.anInt770] = TypeFace.fontBold.getStringWidth(actor.forcedChatMessage) / 2;
-                        Actor.overheadChatLetterHeight[SceneCluster.anInt770] = TypeFace.fontBold.characterDefaultHeight;
-                        Actor.overheadChatX[SceneCluster.anInt770] = screenPos.x;
-                        Actor.overheadChatY[SceneCluster.anInt770] = screenPos.y;
-                        Actor.overheadChatColor[SceneCluster.anInt770] = actor.chatcolor;
-                        Actor.overheadChatShape[SceneCluster.anInt770] = actor.chatEffects;
-                        Actor.overheadChatTimer[SceneCluster.anInt770] = actor.chatTimer;
-                        Actor.overheadChatMessage[SceneCluster.anInt770] = actor.forcedChatMessage;
-                        SceneCluster.anInt770++;
+                    if(screenPos != null && 50 > overheadChatMessageCount) {
+                        Actor.overheadChatHalfWidth[overheadChatMessageCount] = TypeFace.fontBold.getStringWidth(actor.forcedChatMessage) / 2;
+                        Actor.overheadChatLetterHeight[overheadChatMessageCount] = TypeFace.fontBold.characterDefaultHeight;
+                        Actor.overheadChatX[overheadChatMessageCount] = screenPos.x;
+                        Actor.overheadChatY[overheadChatMessageCount] = screenPos.y;
+                        Actor.overheadChatColor[overheadChatMessageCount] = actor.chatcolor;
+                        Actor.overheadChatShape[overheadChatMessageCount] = actor.chatEffects;
+                        Actor.overheadChatTimer[overheadChatMessageCount] = actor.chatTimer;
+                        Actor.overheadChatMessage[overheadChatMessageCount] = actor.forcedChatMessage;
+                        overheadChatMessageCount++;
                     }
                 }
                 if(pulseCycle < actor.anInt3139) {
@@ -2627,7 +2627,7 @@ public class MovedStatics {
                 }
             }
         }
-        for(int i = 0; SceneCluster.anInt770 > i; i++) {
+        for(int i = 0; overheadChatMessageCount > i; i++) {
             int i_3_ = Actor.overheadChatX[i];
             int i_4_ = Actor.overheadChatY[i];
             int i_5_ = Actor.overheadChatHalfWidth[i];
@@ -3309,7 +3309,7 @@ public class MovedStatics {
     }
 
     public static void method1057() {
-        SceneCluster.gameTimer.reset();
+        Game.gameTimer.reset();
         for(int i = 0; i < 32; i++)
             GameShell.tickSamples[i] = 0L;
         for(int i = 0; i < 32; i++)

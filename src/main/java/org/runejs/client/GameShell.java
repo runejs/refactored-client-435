@@ -4,7 +4,6 @@ import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.scene.SceneCluster;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.Timer;
 
@@ -132,12 +131,12 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         setCanvas();
         MovedStatics.aProducingGraphicsBuffer_2213 = MovedStatics.createGraphicsBuffer(MovedStatics.width, MovedStatics.height, Game.gameCanvas);
         this.game.startup();
-        SceneCluster.gameTimer = Timer.create();
-        SceneCluster.gameTimer.start();
+        Game.gameTimer = Timer.create();
+        Game.gameTimer.start();
 
         // Initialize client loop
         while (exitTimeInMillis == 0L || System.currentTimeMillis() < exitTimeInMillis) {
-            MovedStatics.ticksPerLoop = SceneCluster.gameTimer.getTicks(millisPerTick, anInt2024);
+            MovedStatics.ticksPerLoop = Game.gameTimer.getTicks(millisPerTick, anInt2024);
             for (int currentTick = 0; currentTick < MovedStatics.ticksPerLoop; currentTick++) {
                 long currentTimeMillis = System.currentTimeMillis();
 
