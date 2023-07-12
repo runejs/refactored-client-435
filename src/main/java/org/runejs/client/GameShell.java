@@ -41,63 +41,11 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
     }
 
     public static void main(String[] args) {
-        Configuration.read();
-        Native.username = Configuration.getUsername();
-        Native.password = Configuration.getPassword();
-        String[] params = new String[]{"1", "live", "live", "highmem", "members"};
-        if(args.length != 0) {
-            params = args;
-        }
+        Game game = new Game(args);
+        GameShell shell = new GameShell(game);
+        game.setErrorHandler(shell);
         try {
-            if (params.length != 5)
-                Game.printHelp();
-
-            Player.worldId = Integer.parseInt(params[0]);
-
-            // Location argument (to set server IP based on JMod location?)
-            if (params[1].equals("live")) {
-                Game.modewhere = 0;
-            } else if (params[1].equals("office")) {
-                Game.modewhere = 1;
-            } else if (params[1].equals("local")) {
-                Game.modewhere = 2;
-            } else {
-                Game.printHelp();
-            }
-
-            if (params[2].equals("live"))
-                Game.modewhat = 0;
-            else if (!params[2].equals("rc")) {
-                if (params[2].equals("wip"))
-                    Game.modewhat = 2;
-                else
-                    Game.printHelp();
-            } else
-                Game.modewhat = 1;
-
-            // Memory argument
-            if (params[3].equals("lowmem")) {
-                Game.setLowMemory();
-            } else if (params[3].equals("highmem")) {
-                MovedStatics.setHighMemory();
-            } else {
-                Game.printHelp();
-            }
-
-            // Player membership argument
-            if (params[4].equals("free")) {
-                MovedStatics.membersWorld = false;
-            } else if (params[4].equals("members")) {
-                MovedStatics.membersWorld = true;
-            } else {
-                Game.printHelp();
-            }
-
-            Game game = new Game();
-            GameShell shell = new GameShell(game);
-            game.setErrorHandler(shell);
             shell.openClientApplet("client435", 13, 32 + Game.modewhat, InetAddress.getByName(Configuration.SERVER_ADDRESS), 435);
-
         } catch (Exception exception) {
             exception.printStackTrace();
         }

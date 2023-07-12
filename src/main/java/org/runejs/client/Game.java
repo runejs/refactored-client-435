@@ -52,11 +52,11 @@ public class Game {
 
     /**
      * The codec currently in use to encode and decode packets.
-     * 
+     *
      * TODO (Jameskmonger) add a clear way to use different codecs
      */
     public static final MessagePacketCodec packetCodec = new RuneJS435PacketCodec();
-    
+
     /**
      * The registry that holds all the InboundMessage handlers.
      */
@@ -693,6 +693,78 @@ public class Game {
             Player.playerActionsLowPriority[i] = false;
         }
         aBoolean519 = true;
+    }
+
+    public Game(String[] args) {
+        Configuration.read();
+        Native.username = Configuration.getUsername();
+        Native.password = Configuration.getPassword();
+        String[] params = new String[]{"1", "live", "live", "highmem", "members"};
+        if (args.length != 0) {
+            params = args;
+        }
+        if (params.length != 5) {
+            Game.printHelp();
+        }
+
+        Player.worldId = Integer.parseInt(params[0]);
+
+        // Location argument (to set server IP based on JMod location?)
+        switch (params[1]) {
+            case "live":
+                Game.modewhere = 0;
+                break;
+            case "office":
+                Game.modewhere = 1;
+                break;
+            case "local":
+                Game.modewhere = 2;
+                break;
+            default:
+                Game.printHelp();
+                break;
+        }
+
+        switch (params[2]) {
+            case "live":
+                Game.modewhat = 0;
+                break;
+            case "rc":
+                Game.modewhat = 1;
+                break;
+            case "wip":
+                Game.modewhat = 2;
+                break;
+            default:
+                Game.printHelp();
+                break;
+        }
+        // Memory argument
+        switch (params[3]) {
+            case "lowmem":
+                Game.setLowMemory();
+                break;
+            case "highmem":
+                MovedStatics.setHighMemory();
+                break;
+            default:
+                Game.printHelp();
+                break;
+        }
+
+        // Memory argument
+        switch (params[4]) {
+            case "free":
+                MovedStatics.membersWorld = false;
+                break;
+            case "members":
+                MovedStatics.membersWorld = true;
+
+                break;
+            default:
+                Game.printHelp();
+                break;
+        }
     }
 
     public static void method353() {
@@ -1616,7 +1688,7 @@ public class Game {
 
                 // TODO (Jameskmonger) this allows the OutgoingPackets to access the ISAAC cipher. This is a hack and should be fixed.
                 OutgoingPackets.init(OutgoingPackets.buffer.outCipher);
-                
+
                 for (int i = 0; i < 4; i++) {
                     seeds[i] += 50;
                 }
