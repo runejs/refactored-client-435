@@ -41,13 +41,6 @@ public class CollisionMap {
     }
 
 
-    public static int randomNoiseWeightedSum(int arg1, int arg2) {
-        int i = randomNoise(-1 + arg1, -1 + arg2) + randomNoise(1 + arg1, arg2 - 1) + randomNoise(-1 + arg1, 1 + arg2) + randomNoise(1 + arg1, arg2 + 1);
-        int i_126_ = randomNoise(arg1 - 1, arg2) + randomNoise(arg1 + 1, arg2) - (-randomNoise(arg1, arg2 - 1) + -randomNoise(arg1, 1 + arg2));
-        int i_127_ = randomNoise(arg1, arg2);
-        return i / 16 - (-(i_126_ / 8) - i_127_ / 4);
-    }
-
     public static void method543(CollisionMap arg0, int arg1, int arg2, int arg3, int arg4, Scene arg5, int arg6, int arg7, int arg8, int arg9) {
         int i = Landscape.tile_height[arg2][arg9][arg8];
         int i_0_ = Landscape.tile_height[arg2][1 + arg9][arg8];
@@ -219,13 +212,6 @@ public class CollisionMap {
             }
         }
 
-    }
-
-    public static int randomNoise(int x, int y) {
-        int i = 57 * y + x;
-        i ^= i << 13;
-        int i_2_ = 1376312589 + (i * i * 15731 + 789221) * i & 0x7fffffff;
-        return i_2_ >> 19 & 0xff;
     }
 
     public void unset(int x, int y, int i) {

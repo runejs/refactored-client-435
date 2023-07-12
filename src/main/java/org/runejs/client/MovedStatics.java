@@ -483,20 +483,6 @@ public class MovedStatics {
         return method521(false, 10, arg0);
     }
 
-    public static int perlinNoise(int x, int y, int scale) {
-        int muX = x & -1 + scale;
-        int scaledY = y / scale;
-        int muY = scale - 1 & y;
-        int scaledX = x / scale;
-        int a = CollisionMap.randomNoiseWeightedSum(scaledX, scaledY);
-        int b = CollisionMap.randomNoiseWeightedSum(1 + scaledX, scaledY);
-        int c = CollisionMap.randomNoiseWeightedSum(scaledX, 1 + scaledY);
-        int d = CollisionMap.randomNoiseWeightedSum(1 + scaledX, 1 + scaledY);
-        int i1 = interpolateForPerlin(a, scale, b, true, muX);
-        int i2 = interpolateForPerlin(c, scale, d, true, muX);
-        return interpolateForPerlin(i1, scale, i2, true, muY);
-    }
-
     public static int calculateCrc8(int offset, int size, byte[] data) {
         int crc = -1;
         for (int currentByte = offset; currentByte < size; currentByte++) {
@@ -1506,13 +1492,6 @@ public class MovedStatics {
 
     public static int[] anIntArray1847 = new int[2000];
 	public static long aLong1841;
-
-    private static int interpolateForPerlin(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
-        if (!arg3)
-            return -109;
-        int i = 65536 + -Rasterizer3D.cosinetable[1024 * arg4 / arg1] >> 1;
-        return ((65536 + -i) * arg0 >> 16) + (arg2 * i >> 16);
-    }
 
     private static void method344(int arg0) {
         if(aBoolean2083) {
