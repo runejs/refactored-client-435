@@ -96,11 +96,8 @@ public class Scene {
 
     private InteractiveObject[] interactiveObjects = new InteractiveObject[100];
     private LinkedList tileList = new LinkedList();
-    private int currentCameraY;
     private int currentCameraTileY;
-    private int currentCameraX;
     private int currentCameraTileX;
-    private int currentCameraZ;
 
     private Camera currentCamera;
     private CameraRotation currentCameraRotation;
@@ -279,8 +276,6 @@ public class Scene {
         int cameraPosX = cameraPos.x;
         int cameraPosY = cameraPos.y;
         int cameraPosZ = cameraPos.z;
-        int yaw = cameraRotation.yaw;
-        int pitch = cameraRotation.pitch;
 
         // keep the camera within bounds
         if (cameraPosX < 0) {
@@ -294,11 +289,11 @@ public class Scene {
             cameraPosY = mapSizeY * 128 - 1;
         }
 
+        int yaw = cameraRotation.yaw;
+        int pitch = cameraRotation.pitch;
+
         cycle++;
         currentTileVisibilityMap = tileVisibilityInfo.visibilityInfo[(pitch - 128) / 32][yaw / 64];
-        currentCameraX = cameraPosX;
-        currentCameraZ = cameraPosZ;
-        currentCameraY = cameraPosY;
         currentCameraTileX = cameraPosX / 128;
         currentCameraTileY = cameraPosY / 128;
         drawFromTileX = currentCameraTileX - TILE_DRAW_DISTANCE;
@@ -519,7 +514,7 @@ public class Scene {
         int z3 = posZ - 238;
         if (wallType < 16) {
             if (wallType == 1) {
-                if (posX > currentCameraX) {
+                if (posX > currentCamera.getPosition().x) {
                     if (!isPointOccluded(posX, posZ, posY)) {
                         return false;
                     }
@@ -541,7 +536,7 @@ public class Scene {
                 return isPointOccluded(posX, z2, posY + 128);
             }
             if (wallType == 2) {
-                if (posY < currentCameraY) {
+                if (posY < currentCamera.getPosition().y) {
                     if (!isPointOccluded(posX, posZ, posY + 128)) {
                         return false;
                     }
@@ -563,7 +558,7 @@ public class Scene {
                 return isPointOccluded(posX + 128, z2, posY + 128);
             }
             if (wallType == 4) {
-                if (posX < currentCameraX) {
+                if (posX < currentCamera.getPosition().x) {
                     if (!isPointOccluded(posX + 128, posZ, posY)) {
                         return false;
                     }
@@ -585,7 +580,7 @@ public class Scene {
                 return isPointOccluded(posX + 128, z2, posY + 128);
             }
             if (wallType == 8) {
-                if (posY > currentCameraY) {
+                if (posY > currentCamera.getPosition().y) {
                     if (!isPointOccluded(posX, posZ, posY)) {
                         return false;
                     }
@@ -782,12 +777,12 @@ public class Scene {
                         }
                         Wall wall = tile.wall;
                         if (wall != null) {
-                            wall.primary.renderAtPoint(0, currentCameraRotation, wall.x - currentCameraX, wall.z - currentCameraZ, wall.y - currentCameraY, wall.hash);
+                            wall.primary.renderAtPoint(0, currentCameraRotation, wall.x - currentCamera.getPosition().x, wall.z - currentCamera.getPosition().z, wall.y - currentCamera.getPosition().y, wall.hash);
                         }
                         for (int e = 0; e < tile.entityCount; e++) {
                             InteractiveObject interactiveObject = tile.interactiveObjects[e];
                             if (interactiveObject != null) {
-                                interactiveObject.renderable.renderAtPoint(interactiveObject.rotation, currentCameraRotation, interactiveObject.worldX - currentCameraX, interactiveObject.worldZ - currentCameraZ, interactiveObject.worldY - currentCameraY, interactiveObject.hash);
+                                interactiveObject.renderable.renderAtPoint(interactiveObject.rotation, currentCameraRotation, interactiveObject.worldX - currentCamera.getPosition().x, interactiveObject.worldZ - currentCamera.getPosition().z, interactiveObject.worldY - currentCamera.getPosition().y, interactiveObject.hash);
                             }
                         }
                     }
@@ -846,19 +841,19 @@ public class Scene {
                             groundTile.wallCullDirection = 0;
                         }
                         if ((wall.orientationA & i_87_) != 0 && !isWallOccluded(i_78_, x, y, wall.orientationA)) {
-                            wall.primary.renderAtPoint(0, currentCameraRotation, wall.x - currentCameraX, wall.z - currentCameraZ, wall.y - currentCameraY, wall.hash);
+                            wall.primary.renderAtPoint(0, currentCameraRotation, wall.x - currentCamera.getPosition().x, wall.z - currentCamera.getPosition().z, wall.y - currentCamera.getPosition().y, wall.hash);
                         }
                         if ((wall.orientationB & i_87_) != 0 && !isWallOccluded(i_78_, x, y, wall.orientationB)) {
-                            wall.secondary.renderAtPoint(0, currentCameraRotation, wall.x - currentCameraX, wall.z - currentCameraZ, wall.y - currentCameraY, wall.hash);
+                            wall.secondary.renderAtPoint(0, currentCameraRotation, wall.x - currentCamera.getPosition().x, wall.z - currentCamera.getPosition().z, wall.y - currentCamera.getPosition().y, wall.hash);
                         }
                     }
                     if (wallDecoration != null && !isOccluded(i_78_, x, y, wallDecoration.renderable.modelHeight)) {
                         if ((wallDecoration.configBits & i_87_) != 0) {
-                            wallDecoration.renderable.renderAtPoint(wallDecoration.face, currentCameraRotation, wallDecoration.x - currentCameraX, wallDecoration.z - currentCameraZ, wallDecoration.y - currentCameraY, wallDecoration.hash);
+                            wallDecoration.renderable.renderAtPoint(wallDecoration.face, currentCameraRotation, wallDecoration.x - currentCamera.getPosition().x, wallDecoration.z - currentCamera.getPosition().z, wallDecoration.y - currentCamera.getPosition().y, wallDecoration.hash);
                         } else if ((wallDecoration.configBits & 0x300) != 0) {
-                            int i_88_ = wallDecoration.x - currentCameraX;
-                            int i_89_ = wallDecoration.z - currentCameraZ;
-                            int i_90_ = wallDecoration.y - currentCameraY;
+                            int i_88_ = wallDecoration.x - currentCamera.getPosition().x;
+                            int i_89_ = wallDecoration.z - currentCamera.getPosition().z;
+                            int i_90_ = wallDecoration.y - currentCamera.getPosition().y;
                             int i_91_ = wallDecoration.face;
                             int i_92_;
                             if (i_91_ == 1 || i_91_ == 2) {
@@ -887,18 +882,18 @@ public class Scene {
                     if (bool) {
                         FloorDecoration floorDecoration = groundTile.floorDecoration;
                         if (floorDecoration != null) {
-                            floorDecoration.renderable.renderAtPoint(0, currentCameraRotation, floorDecoration.x - currentCameraX, floorDecoration.z - currentCameraZ, floorDecoration.y - currentCameraY, floorDecoration.hash);
+                            floorDecoration.renderable.renderAtPoint(0, currentCameraRotation, floorDecoration.x - currentCamera.getPosition().x, floorDecoration.z - currentCamera.getPosition().z, floorDecoration.y - currentCamera.getPosition().y, floorDecoration.hash);
                         }
                         GroundItemTile groundItemTile = groundTile.groundItemTile;
                         if (groundItemTile != null && groundItemTile.anInt1371 == 0) {
                             if (groundItemTile.secondGroundItem != null) {
-                                groundItemTile.secondGroundItem.renderAtPoint(0, currentCameraRotation, groundItemTile.x - currentCameraX, groundItemTile.z - currentCameraZ, groundItemTile.y - currentCameraY, groundItemTile.hash);
+                                groundItemTile.secondGroundItem.renderAtPoint(0, currentCameraRotation, groundItemTile.x - currentCamera.getPosition().x, groundItemTile.z - currentCamera.getPosition().z, groundItemTile.y - currentCamera.getPosition().y, groundItemTile.hash);
                             }
                             if (groundItemTile.thirdGroundItem != null) {
-                                groundItemTile.thirdGroundItem.renderAtPoint(0, currentCameraRotation, groundItemTile.x - currentCameraX, groundItemTile.z - currentCameraZ, groundItemTile.y - currentCameraY, groundItemTile.hash);
+                                groundItemTile.thirdGroundItem.renderAtPoint(0, currentCameraRotation, groundItemTile.x - currentCamera.getPosition().x, groundItemTile.z - currentCamera.getPosition().z, groundItemTile.y - currentCamera.getPosition().y, groundItemTile.hash);
                             }
                             if (groundItemTile.firstGroundItem != null) {
-                                groundItemTile.firstGroundItem.renderAtPoint(0, currentCameraRotation, groundItemTile.x - currentCameraX, groundItemTile.z - currentCameraZ, groundItemTile.y - currentCameraY, groundItemTile.hash);
+                                groundItemTile.firstGroundItem.renderAtPoint(0, currentCameraRotation, groundItemTile.x - currentCamera.getPosition().x, groundItemTile.z - currentCamera.getPosition().z, groundItemTile.y - currentCamera.getPosition().y, groundItemTile.hash);
                             }
                         }
                     }
@@ -941,7 +936,7 @@ public class Scene {
                     if (bool) {
                         Wall wall = groundTile.wall;
                         if (!isWallOccluded(i_78_, x, y, wall.orientationA)) {
-                            wall.primary.renderAtPoint(0, currentCameraRotation, wall.x - currentCameraX, wall.z - currentCameraZ, wall.y - currentCameraY, wall.hash);
+                            wall.primary.renderAtPoint(0, currentCameraRotation, wall.x - currentCamera.getPosition().x, wall.z - currentCamera.getPosition().z, wall.y - currentCamera.getPosition().y, wall.hash);
                         }
                         groundTile.wallCullDirection = 0;
                     }
@@ -1008,10 +1003,10 @@ public class Scene {
                                         i_115_ = interactiveObject.anInt491;
                                         i_116_ = i_117_;
                                     } else if (interactiveObject.anInt491 == i_115_) {
-                                        int i_118_ = interactiveObject.worldX - currentCameraX;
-                                        int i_119_ = interactiveObject.worldY - currentCameraY;
-                                        int i_120_ = interactiveObjects[i_116_].worldX - currentCameraX;
-                                        int i_121_ = interactiveObjects[i_116_].worldY - currentCameraY;
+                                        int i_118_ = interactiveObject.worldX - currentCamera.getPosition().x;
+                                        int i_119_ = interactiveObject.worldY - currentCamera.getPosition().y;
+                                        int i_120_ = interactiveObjects[i_116_].worldX - currentCamera.getPosition().x;
+                                        int i_121_ = interactiveObjects[i_116_].worldY - currentCamera.getPosition().y;
                                         if (i_118_ * i_118_ + i_119_ * i_119_ > i_120_ * i_120_ + i_121_ * i_121_) {
                                             i_116_ = i_117_;
                                         }
@@ -1024,7 +1019,7 @@ public class Scene {
                             InteractiveObject interactiveObject = interactiveObjects[i_116_];
                             interactiveObject.cycle = cycle;
                             if (!isAreaOccluded(i_78_, interactiveObject.tileLeft, interactiveObject.tileRight, interactiveObject.tileTop, interactiveObject.tileBottom, interactiveObject.renderable.modelHeight)) {
-                                interactiveObject.renderable.renderAtPoint(interactiveObject.rotation, currentCameraRotation, interactiveObject.worldX - currentCameraX, interactiveObject.worldZ - currentCameraZ, interactiveObject.worldY - currentCameraY, interactiveObject.hash);
+                                interactiveObject.renderable.renderAtPoint(interactiveObject.rotation, currentCameraRotation, interactiveObject.worldX - currentCamera.getPosition().x, interactiveObject.worldZ - currentCamera.getPosition().z, interactiveObject.worldY - currentCamera.getPosition().y, interactiveObject.hash);
                             }
                             for (int i_122_ = interactiveObject.tileLeft; i_122_ <= interactiveObject.tileRight; i_122_++) {
                                 for (int i_123_ = interactiveObject.tileTop; i_123_ <= interactiveObject.tileBottom; i_123_++) {
@@ -1075,24 +1070,24 @@ public class Scene {
                         GroundItemTile groundItemTile = groundTile.groundItemTile;
                         if (groundItemTile != null && groundItemTile.anInt1371 != 0) {
                             if (groundItemTile.secondGroundItem != null) {
-                                groundItemTile.secondGroundItem.renderAtPoint(0, currentCameraRotation, groundItemTile.x - currentCameraX, groundItemTile.z - currentCameraZ - groundItemTile.anInt1371, groundItemTile.y - currentCameraY, groundItemTile.hash);
+                                groundItemTile.secondGroundItem.renderAtPoint(0, currentCameraRotation, groundItemTile.x - currentCamera.getPosition().x, groundItemTile.z - currentCamera.getPosition().z - groundItemTile.anInt1371, groundItemTile.y - currentCamera.getPosition().y, groundItemTile.hash);
                             }
                             if (groundItemTile.thirdGroundItem != null) {
-                                groundItemTile.thirdGroundItem.renderAtPoint(0, currentCameraRotation, groundItemTile.x - currentCameraX, groundItemTile.z - currentCameraZ - groundItemTile.anInt1371, groundItemTile.y - currentCameraY, groundItemTile.hash);
+                                groundItemTile.thirdGroundItem.renderAtPoint(0, currentCameraRotation, groundItemTile.x - currentCamera.getPosition().x, groundItemTile.z - currentCamera.getPosition().z - groundItemTile.anInt1371, groundItemTile.y - currentCamera.getPosition().y, groundItemTile.hash);
                             }
                             if (groundItemTile.firstGroundItem != null) {
-                                groundItemTile.firstGroundItem.renderAtPoint(0, currentCameraRotation, groundItemTile.x - currentCameraX, groundItemTile.z - currentCameraZ - groundItemTile.anInt1371, groundItemTile.y - currentCameraY, groundItemTile.hash);
+                                groundItemTile.firstGroundItem.renderAtPoint(0, currentCameraRotation, groundItemTile.x - currentCamera.getPosition().x, groundItemTile.z - currentCamera.getPosition().z - groundItemTile.anInt1371, groundItemTile.y - currentCamera.getPosition().y, groundItemTile.hash);
                             }
                         }
                         if (groundTile.anInt2064 != 0) {
                             WallDecoration wallDecoration = groundTile.wallDecoration;
                             if (wallDecoration != null && !isOccluded(i_78_, x, y, wallDecoration.renderable.modelHeight)) {
                                 if ((wallDecoration.configBits & groundTile.anInt2064) != 0) {
-                                    wallDecoration.renderable.renderAtPoint(wallDecoration.face, currentCameraRotation, wallDecoration.x - currentCameraX, wallDecoration.z - currentCameraZ, wallDecoration.y - currentCameraY, wallDecoration.hash);
+                                    wallDecoration.renderable.renderAtPoint(wallDecoration.face, currentCameraRotation, wallDecoration.x - currentCamera.getPosition().x, wallDecoration.z - currentCamera.getPosition().z, wallDecoration.y - currentCamera.getPosition().y, wallDecoration.hash);
                                 } else if ((wallDecoration.configBits & 0x300) != 0) {
-                                    int i_129_ = wallDecoration.x - currentCameraX;
-                                    int i_130_ = wallDecoration.z - currentCameraZ;
-                                    int i_131_ = wallDecoration.y - currentCameraY;
+                                    int i_129_ = wallDecoration.x - currentCamera.getPosition().x;
+                                    int i_130_ = wallDecoration.z - currentCamera.getPosition().z;
+                                    int i_131_ = wallDecoration.y - currentCamera.getPosition().y;
                                     int i_132_ = wallDecoration.face;
                                     int i_133_;
                                     if (i_132_ == 1 || i_132_ == 2) {
@@ -1121,10 +1116,10 @@ public class Scene {
                             Wall wall = groundTile.wall;
                             if (wall != null) {
                                 if ((wall.orientationB & groundTile.anInt2064) != 0 && !isWallOccluded(i_78_, x, y, wall.orientationB)) {
-                                    wall.secondary.renderAtPoint(0, currentCameraRotation, wall.x - currentCameraX, wall.z - currentCameraZ, wall.y - currentCameraY, wall.hash);
+                                    wall.secondary.renderAtPoint(0, currentCameraRotation, wall.x - currentCamera.getPosition().x, wall.z - currentCamera.getPosition().z, wall.y - currentCamera.getPosition().y, wall.hash);
                                 }
                                 if ((wall.orientationA & groundTile.anInt2064) != 0 && !isWallOccluded(i_78_, x, y, wall.orientationA)) {
-                                    wall.primary.renderAtPoint(0, currentCameraRotation, wall.x - currentCameraX, wall.z - currentCameraZ, wall.y - currentCameraY, wall.hash);
+                                    wall.primary.renderAtPoint(0, currentCameraRotation, wall.x - currentCamera.getPosition().x, wall.z - currentCamera.getPosition().z, wall.y - currentCamera.getPosition().y, wall.hash);
                                 }
                             }
                         }
@@ -1452,7 +1447,7 @@ public class Scene {
                         }
                     }
                     if (bool) {
-                        int i_176_ = currentCameraX - sceneCluster.worldStartX;
+                        int i_176_ = currentCamera.getPosition().x - sceneCluster.worldStartX;
                         if (i_176_ > 32) {
                             sceneCluster.tileDistanceEnum = 1;
                         } else {
@@ -1462,10 +1457,10 @@ public class Scene {
                             sceneCluster.tileDistanceEnum = 2;
                             i_176_ = -i_176_;
                         }
-                        sceneCluster.worldDistanceFromCameraStartY = (sceneCluster.worldStartY - currentCameraY << 8) / i_176_;
-                        sceneCluster.worldDistanceFromCameraEndY = (sceneCluster.worldEndY - currentCameraY << 8) / i_176_;
-                        sceneCluster.worldDistanceFromCameraStartZ = (sceneCluster.worldEndZ - currentCameraZ << 8) / i_176_;
-                        sceneCluster.worldDistanceFromCameraEndZ = (sceneCluster.worldStartZ - currentCameraZ << 8) / i_176_;
+                        sceneCluster.worldDistanceFromCameraStartY = (sceneCluster.worldStartY - currentCamera.getPosition().y << 8) / i_176_;
+                        sceneCluster.worldDistanceFromCameraEndY = (sceneCluster.worldEndY - currentCamera.getPosition().y << 8) / i_176_;
+                        sceneCluster.worldDistanceFromCameraStartZ = (sceneCluster.worldEndZ - currentCamera.getPosition().z << 8) / i_176_;
+                        sceneCluster.worldDistanceFromCameraEndZ = (sceneCluster.worldStartZ - currentCamera.getPosition().z << 8) / i_176_;
                         processedCullingClusters[activeOccluderCount++] = sceneCluster;
                     }
                 }
@@ -1488,7 +1483,7 @@ public class Scene {
                         }
                     }
                     if (bool) {
-                        int i_180_ = currentCameraY - sceneCluster.worldStartY;
+                        int i_180_ = currentCamera.getPosition().y - sceneCluster.worldStartY;
                         if (i_180_ > 32) {
                             sceneCluster.tileDistanceEnum = 3;
                         } else {
@@ -1498,15 +1493,15 @@ public class Scene {
                             sceneCluster.tileDistanceEnum = 4;
                             i_180_ = -i_180_;
                         }
-                        sceneCluster.worldDistanceFromCameraStartX = (sceneCluster.worldStartX - currentCameraX << 8) / i_180_;
-                        sceneCluster.worldDistanceFromCameraEndX = (sceneCluster.worldEndX - currentCameraX << 8) / i_180_;
-                        sceneCluster.worldDistanceFromCameraStartZ = (sceneCluster.worldEndZ - currentCameraZ << 8) / i_180_;
-                        sceneCluster.worldDistanceFromCameraEndZ = (sceneCluster.worldStartZ - currentCameraZ << 8) / i_180_;
+                        sceneCluster.worldDistanceFromCameraStartX = (sceneCluster.worldStartX - currentCamera.getPosition().x << 8) / i_180_;
+                        sceneCluster.worldDistanceFromCameraEndX = (sceneCluster.worldEndX - currentCamera.getPosition().x << 8) / i_180_;
+                        sceneCluster.worldDistanceFromCameraStartZ = (sceneCluster.worldEndZ - currentCamera.getPosition().z << 8) / i_180_;
+                        sceneCluster.worldDistanceFromCameraEndZ = (sceneCluster.worldStartZ - currentCamera.getPosition().z << 8) / i_180_;
                         processedCullingClusters[activeOccluderCount++] = sceneCluster;
                     }
                 }
             } else if (sceneCluster.searchMask == 4) {
-                int i_181_ = sceneCluster.worldEndZ - currentCameraZ;
+                int i_181_ = sceneCluster.worldEndZ - currentCamera.getPosition().z;
                 if (i_181_ > 128) {
                     int i_182_ = sceneCluster.tileStartY - currentCameraTileY + TILE_DRAW_DISTANCE;
                     if (i_182_ < 0) {
@@ -1537,10 +1532,10 @@ public class Scene {
                         }
                         if (bool) {
                             sceneCluster.tileDistanceEnum = 5;
-                            sceneCluster.worldDistanceFromCameraStartX = (sceneCluster.worldStartX - currentCameraX << 8) / i_181_;
-                            sceneCluster.worldDistanceFromCameraEndX = (sceneCluster.worldEndX - currentCameraX << 8) / i_181_;
-                            sceneCluster.worldDistanceFromCameraStartY = (sceneCluster.worldStartY - currentCameraY << 8) / i_181_;
-                            sceneCluster.worldDistanceFromCameraEndY = (sceneCluster.worldEndY - currentCameraY << 8) / i_181_;
+                            sceneCluster.worldDistanceFromCameraStartX = (sceneCluster.worldStartX - currentCamera.getPosition().x << 8) / i_181_;
+                            sceneCluster.worldDistanceFromCameraEndX = (sceneCluster.worldEndX - currentCamera.getPosition().x << 8) / i_181_;
+                            sceneCluster.worldDistanceFromCameraStartY = (sceneCluster.worldStartY - currentCamera.getPosition().y << 8) / i_181_;
+                            sceneCluster.worldDistanceFromCameraEndY = (sceneCluster.worldEndY - currentCamera.getPosition().y << 8) / i_181_;
                             processedCullingClusters[activeOccluderCount++] = sceneCluster;
                         }
                     }
@@ -1580,17 +1575,17 @@ public class Scene {
 
     public void renderPlainTile(GenericTile plainTile, int arg1, int tileX, int tileY) {
         int xC;
-        int xA = xC = (tileX << 7) - currentCameraX;
+        int xA = xC = (tileX << 7) - currentCamera.getPosition().x;
         int yB;
-        int yA = yB = (tileY << 7) - currentCameraY;
+        int yA = yB = (tileY << 7) - currentCamera.getPosition().y;
         int xD;
         int xB = xD = xA + 128;
         int yC;
         int yD = yC = yA + 128;
-        int zA = heightMap[arg1][tileX][tileY] - currentCameraZ;
-        int zB = heightMap[arg1][tileX + 1][tileY] - currentCameraZ;
-        int zC = heightMap[arg1][tileX + 1][tileY + 1] - currentCameraZ;
-        int zD = heightMap[arg1][tileX][tileY + 1] - currentCameraZ;
+        int zA = heightMap[arg1][tileX][tileY] - currentCamera.getPosition().z;
+        int zB = heightMap[arg1][tileX + 1][tileY] - currentCamera.getPosition().z;
+        int zC = heightMap[arg1][tileX + 1][tileY + 1] - currentCamera.getPosition().z;
+        int zD = heightMap[arg1][tileX][tileY + 1] - currentCamera.getPosition().z;
 
         int sinX = currentCameraRotation.yawSine;
         int cosineX = currentCameraRotation.yawCosine;
@@ -1851,9 +1846,9 @@ public class Scene {
 
         int triangleCount = shapedTile.originalVertexX.length;
         for (int triangle = 0; triangle < triangleCount; triangle++) {
-            int viewX = shapedTile.originalVertexX[triangle] - currentCameraX;
-            int viewY = shapedTile.originalVertexY[triangle] - currentCameraZ;
-            int viewZ = shapedTile.originalVertexZ[triangle] - currentCameraY;
+            int viewX = shapedTile.originalVertexX[triangle] - currentCamera.getPosition().x;
+            int viewY = shapedTile.originalVertexY[triangle] - currentCamera.getPosition().z;
+            int viewZ = shapedTile.originalVertexZ[triangle] - currentCamera.getPosition().y;
             int temp = viewZ * sineX + viewX * cosineX >> 16;
             viewZ = viewZ * cosineX - viewX * sineX >> 16;
             viewX = temp;
