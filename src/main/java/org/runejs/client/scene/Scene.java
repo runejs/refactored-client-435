@@ -36,8 +36,6 @@ public class Scene {
 
 
     public static boolean lowMemory = true;
-    public static int cycle;
-    public static int anInt109 = 0;
 
     public SceneTile[][][] tileArray;
     public int[][][] tileOcclusionCycles;
@@ -54,6 +52,9 @@ public class Scene {
     private int[] viewspaceX = new int[6];
     private int[] viewspaceZ = new int[6];
     private int[] viewspaceY = new int[6];
+
+    private int anInt109 = 0;
+    private int cycle;
 
     private boolean clicked = false;
     private int clickX = 0;
