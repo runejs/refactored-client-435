@@ -83,7 +83,7 @@ public class Game {
     public static int mouseInvInterfaceIndex = 0;
     public static int anInt509 = 0;
     public static boolean aBoolean519 = true;
-    public static Class39 mouseCapturer;
+    public static MouseCapturer mouseCapturer;
     public static int anInt2591 = 0;
     public static int anInt874 = 0;
     public static int destinationY = 0;

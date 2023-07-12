@@ -2,14 +2,14 @@ package org.runejs.client;
 
 import org.runejs.client.input.MouseHandler;
 
-public class Class39 implements Runnable {
+public class MouseCapturer implements Runnable {
     public Object objectLock;
     public boolean aBoolean913 = true;
     public int[] coordsY;
     public int coord;
     public int[] coordsX;
 
-    public Class39() {
+    public MouseCapturer() {
         objectLock = new Object();
         coord = 0;
         coordsY = new int[500];
