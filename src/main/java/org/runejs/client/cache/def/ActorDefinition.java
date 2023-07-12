@@ -21,10 +21,10 @@ import java.awt.*;
 public class ActorDefinition extends CachedNode implements EntityDefinition {
 
     public static int count;
-    public static NodeCache actorDefinitionNodeCache = new NodeCache(64);
-    public static NodeCache actorChildModelCache = new NodeCache(50);
-    public static CacheArchive aCacheArchive_1375;
-    public static CacheArchive aCacheArchive_1577;
+    private static NodeCache actorDefinitionCache = new NodeCache(64);
+    private static NodeCache actorModelCache = new NodeCache(50);
+    private static CacheArchive actorDefinitionArchive;
+    private static CacheArchive actorModelArchive;
 
     public boolean isClickable = true;
     public int boundaryDimension = 1;
@@ -116,28 +116,28 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     }
 
     public static ActorDefinition getDefinition(int id) {
-        ActorDefinition definition = (ActorDefinition) actorDefinitionNodeCache.get(id);
+        ActorDefinition definition = (ActorDefinition) actorDefinitionCache.get(id);
         if(definition != null)
             return definition;
-        byte[] data = aCacheArchive_1375.getFile(9, id);
+        byte[] data = actorDefinitionArchive.getFile(9, id);
         definition = new ActorDefinition();
         definition.id = id;
         if(data != null)
             definition.readValues(new Buffer(data));
-        actorDefinitionNodeCache.put(id, definition);
+        actorDefinitionCache.put(id, definition);
         return definition;
     }
 
     public static void clearActorCache() {
-        actorDefinitionNodeCache.clear();
-        actorChildModelCache.clear();
+        actorDefinitionCache.clear();
+        actorModelCache.clear();
     }
 
-    public static void initializeActorCache(CacheArchive arg0, CacheArchive arg2) {
-        aCacheArchive_1375 = arg2;
-        count = aCacheArchive_1375.fileLength(9);
+    public static void initializeActorCache(CacheArchive models, CacheArchive definitions) {
+        actorDefinitionArchive = definitions;
+        count = actorDefinitionArchive.fileLength(9);
 
-        aCacheArchive_1577 = arg0;
+        actorModelArchive = models;
     }
 
     public Model getChildModel(AnimationSequence animation1, AnimationSequence animation2, int arg3, int arg4) {
@@ -148,11 +148,11 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
             }
             return actorDefinition.getChildModel(animation1, animation2, arg3, arg4);
         }
-        Model model1 = (Model) actorChildModelCache.get(id);
+        Model model1 = (Model) actorModelCache.get(id);
         if(model1 == null) {
             boolean bool = false;
             for(int model : models) {
-                if(!aCacheArchive_1577.loaded(model, 0)) {
+                if(!actorModelArchive.loaded(model, 0)) {
                     bool = true;
                 }
             }
@@ -161,7 +161,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
             }
             Model[] class40_sub5_sub17_sub5s = new Model[models.length];
             for(int i = 0; models.length > i; i++) {
-                class40_sub5_sub17_sub5s[i] = Model.getModel(aCacheArchive_1577, models[i]);
+                class40_sub5_sub17_sub5s[i] = Model.getModel(actorModelArchive, models[i]);
             }
             if(class40_sub5_sub17_sub5s.length == 1) {
                 model1 = class40_sub5_sub17_sub5s[0];
@@ -177,7 +177,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
             assert model1 != null;
             model1.createBones();
             model1.applyLighting(ambient + 64, 850 + contrast, -30, -50, -30, true);
-            actorChildModelCache.put(id, model1);
+            actorModelCache.put(id, model1);
         }
         Model class40_sub5_sub17_sub5_0_;
         if(animation1 != null && animation2 != null) {
@@ -315,7 +315,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         }
         boolean cached = false;
         for(int headModelIndex : headModelIndexes) {
-            if(!aCacheArchive_1577.loaded(headModelIndex, 0)) {
+            if(!actorModelArchive.loaded(headModelIndex, 0)) {
                 cached = true;
             }
         }
@@ -324,7 +324,7 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         }
         Model[] models = new Model[headModelIndexes.length];
         for(int i = 0; i < headModelIndexes.length; i++) {
-            models[i] = Model.getModel(aCacheArchive_1577, headModelIndexes[i]);
+            models[i] = Model.getModel(actorModelArchive, headModelIndexes[i]);
         }
         Model headModel;
         if(models.length == 1) {
