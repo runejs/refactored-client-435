@@ -42,10 +42,6 @@ public class Scene {
     public static SceneCluster[] processedCullingClusters = new SceneCluster[500];
     public static LinkedList tileList = new LinkedList();
     public static int anInt109 = 0;
-    public static int drawWidthMidpoint;
-    public static int drawHeight;
-    public static int drawHeightMidpoint;
-    public static int drawWidth;
 
     public SceneTile[][][] tileArray;
     public int[][][] tileOcclusionCycles;
