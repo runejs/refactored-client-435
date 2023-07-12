@@ -415,27 +415,27 @@ public class MovedStatics {
      */
     public static IndexedImage tabHighlightImageBottomMiddle;
 
-    public static void method445() {
-        if (CollisionMap.anInt165 != 0) {
-            int i = 0;
+    public static void addSplitPrivateChatActionRows() {
+        if (ChatBox.splitPrivateChat != 0) {
+            int currentRow = 0;
             if (systemUpdateTime != 0)
-                i = 1;
-            for (int i_1_ = 0; i_1_ < 100; i_1_++) {
-                if (ChatBox.chatMessages[i_1_] != null) {
-                    int i_2_ = ChatBox.chatTypes[i_1_];
-                    String username = ChatBox.chatPlayerNames[i_1_];
+                currentRow = 1;
+            for (int i = 0; i < 100; i++) {
+                if (ChatBox.chatMessages[i] != null) {
+                    int type = ChatBox.chatTypes[i];
+                    String username = ChatBox.chatPlayerNames[i];
                     if (username != null && username.startsWith(Native.whiteCrown))
                         username = username.substring(5);
                     if (username != null && username.startsWith(Native.goldCrown))
                         username = username.substring(5);
-                    if ((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(username))) {
-                        int i_3_ = 329 + -(13 * i);
-                        i++;
-                        if (MouseHandler.mouseX > 4 && i_3_ + -10 < MouseHandler.mouseY + -4 && -4 + MouseHandler.mouseY <= i_3_ + 3) {
-                            int i_4_ = 25 + fontNormal.getStringWidth(English.from + Native.prefixColon + username + ChatBox.chatMessages[i_1_]);
-                            if (i_4_ > 450)
-                                i_4_ = 450;
-                            if (MouseHandler.mouseX < 4 + i_4_) {
+                    if ((type == 3 || type == 7) && (type == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(username))) {
+                        int y = 329 + -(13 * currentRow);
+                        currentRow++;
+                        if (MouseHandler.mouseX > 4 && y + -10 < MouseHandler.mouseY + -4 && -4 + MouseHandler.mouseY <= y + 3) {
+                            int x = 25 + fontNormal.getStringWidth(English.from + Native.prefixColon + username + ChatBox.chatMessages[i]);
+                            if (x > 450)
+                                x = 450;
+                            if (MouseHandler.mouseX < 4 + x) {
                                 int actionRowOffset = ActionRowType.LOW_PRIORITY_MODIFIER;
                                 if (InteractiveObject.playerRights >= 1) {
                                     addActionRow(English.reportAbuse, 0, 0, 0, actionRowOffset + ActionRowType.REPORT_ABUSE.getId(), Native.white + username);
@@ -444,10 +444,10 @@ public class MovedStatics {
                                 addActionRow(English.addFriend, 0, 0, 0, actionRowOffset + ActionRowType.ADD_FRIEND.getId(), Native.white + username);
                             }
                         }
-                        if (i >= 5)
+                        if (currentRow >= 5)
                             return;
                     }
-                    if ((i_2_ == 5 || i_2_ == 6) && ChatBox.privateChatMode < 2 && ++i >= 5)
+                    if ((type == 5 || type == 6) && ChatBox.privateChatMode < 2 && ++currentRow >= 5)
                         return;
                 }
             }
@@ -1531,7 +1531,7 @@ public class MovedStatics {
 	            }
 	            if(varPlayerType == 8) {
 	                ChatBox.redrawChatbox = true;
-	                CollisionMap.anInt165 = varPlayerValue;
+	                ChatBox.splitPrivateChat = varPlayerValue;
 	            }
 	            if(varPlayerType == 4) {
 	            	SoundSystem.updateSoundEffectVolume(varPlayerValue);
@@ -1840,7 +1840,7 @@ public class MovedStatics {
     }
 
     public static void renderSplitPrivateMessages() {
-        if(CollisionMap.anInt165 != 0) {
+        if(ChatBox.splitPrivateChat != 0) {
             TypeFace class40_sub5_sub14_sub1 = fontNormal;
             int i = 0;
             if(systemUpdateTime != 0)
@@ -2671,7 +2671,7 @@ public class MovedStatics {
             menuActionTypes[0] = ActionRowType.CANCEL.getId();
             menuActionRow = 1;
             if(GameInterface.fullscreenInterfaceId == -1) {
-                method445();
+                addSplitPrivateChatActionRows();
                 anInt3065 = -1;
                 hoveredWidgetChildId = -1;
                 boolean bool = false;

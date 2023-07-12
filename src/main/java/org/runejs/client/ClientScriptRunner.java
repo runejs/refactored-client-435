@@ -12,7 +12,6 @@ import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.scene.InteractiveObject;
-import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
@@ -86,7 +85,7 @@ public class ClientScriptRunner extends Node {
                     }
                     offset++;
                 }
-                if((chatType == 3 || chatType == 7) && CollisionMap.anInt165 == 0 && (chatType == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(username))) {
+                if((chatType == 3 || chatType == 7) && ChatBox.splitPrivateChat == 0 && (chatType == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(username))) {
                     offset++;
                     if(arg1 > -14 + i_2_ && arg1 <= i_2_) {
                         if(InteractiveObject.playerRights >= 1) {
@@ -103,7 +102,7 @@ public class ClientScriptRunner extends Node {
                     }
                     offset++;
                 }
-                if((chatType == 5 || chatType == 6) && CollisionMap.anInt165 == 0 && ChatBox.privateChatMode < 2)
+                if((chatType == 5 || chatType == 6) && ChatBox.splitPrivateChat == 0 && ChatBox.privateChatMode < 2)
                     offset++;
                 if(chatType == 8 && (ChatBox.tradeMode == 0 || ChatBox.tradeMode == 1 && Player.hasFriend(username))) {
                     if(i_2_ + -14 < arg1 && arg1 <= i_2_) {
