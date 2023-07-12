@@ -260,7 +260,6 @@ public class MovedStatics {
     public static boolean showIconsRedrawnText = false;
     public static IndexedImage[] tabIcons;
     public static boolean lastItemDragged = false;
-    public static int[] anIntArray2788 = new int[]{16, 32, 64, 128};
     public static int randomiserHue = -8 + (int) (17.0 * Math.random());
     public static ProducingGraphicsBuffer mapBackRight;
     public static IndexedImage chatboxBackgroundImage;

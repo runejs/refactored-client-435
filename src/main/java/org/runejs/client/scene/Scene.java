@@ -49,15 +49,15 @@ public class Scene {
     public static int[] faceOffsetY2 = new int[]{-53, -53, 53, 53};
     public static SceneCluster[][] cullingClusters = new SceneCluster[anInt90][500];
     public static boolean clicked = false;
-    public static int[] anIntArray117 = new int[]{160, 192, 80, 96, 0, 144, 80, 48, 160};
-    public static int[] anIntArray119 = new int[]{0, 0, 2, 0, 0, 2, 1, 1, 0};
-    public static int[] anIntArray120 = new int[]{19, 55, 38, 155, 255, 110, 137, 205, 76};
+    public static int[] DIRECTION_ALLOW_WALL_CORNER_TYPE = new int[]{160, 192, 80, 96, 0, 144, 80, 48, 160};
+    public static int[] WALL_CORNER_TYPE_16_BLOCK_OBJ_SPANS = new int[]{0, 0, 2, 0, 0, 2, 1, 1, 0};
+    public static int[] FRONT_WALL_TYPES = new int[]{19, 55, 38, 155, 255, 110, 137, 205, 76};
     public static int drawWidthMidpoint;
-    public static int[] anIntArray125 = new int[]{2, 0, 0, 2, 0, 0, 0, 4, 4};
+    public static int[] WALL_CORNER_TYPE_32_BLOCK_OBJ_SPANS = new int[]{2, 0, 0, 2, 0, 0, 0, 4, 4};
     public static int drawHeight;
-    public static int[] anIntArray130 = new int[]{76, 8, 137, 4, 0, 1, 38, 2, 19};
-    public static int[] anIntArray131 = new int[]{1, 1, 0, 0, 0, 8, 0, 0, 8};
-    public static int[] anIntArray132 = new int[]{0, 4, 4, 8, 0, 0, 8, 0, 0};
+    public static int[] BACK_WALL_TYPES = new int[]{76, 8, 137, 4, 0, 1, 38, 2, 19};
+    public static int[] WALL_CORNER_TYPE_128_BLOCK_OBJ_SPANS = new int[]{1, 1, 0, 0, 0, 8, 0, 0, 8};
+    public static int[] WALL_CORNER_TYPE_64_BLOCK_OBJ_SPANS = new int[]{0, 4, 4, 8, 0, 0, 8, 0, 0};
     private static final int TILE_DRAW_DISTANCE = 75;
     public static boolean[][] TILE_VISIBILITY_MAP;
     public static boolean[][][][] TILE_VISIBILITY_MAPS = new boolean[8][32][(TILE_DRAW_DISTANCE * 2) + 1][(TILE_DRAW_DISTANCE * 2) + 1];
@@ -68,6 +68,8 @@ public class Scene {
     public static int[] screenX = new int[6];
     public static int[] viewspaceX = new int[6];
     public static int[] viewspaceY = new int[6];
+    public static int[] ROTATION_WALL_CORNER_TYPE = new int[]{16, 32, 64, 128};
+    public static int[] ROTATION_WALL_TYPE = {1, 2, 4, 8};
 
     public SceneTile[][][] tileArray;
     public int[][][] anIntArrayArrayArray83;
@@ -942,26 +944,26 @@ public class Scene {
                         } else if (cameraPositionTileY > y) {
                             i_86_ += 6;
                         }
-                        i_87_ = anIntArray120[i_86_];
-                        groundTile.anInt2064 = anIntArray130[i_86_];
+                        i_87_ = FRONT_WALL_TYPES[i_86_];
+                        groundTile.anInt2064 = BACK_WALL_TYPES[i_86_];
                     }
                     if (wall != null) {
-                        if ((wall.orientationA & anIntArray117[i_86_]) != 0) {
+                        if ((wall.orientationA & DIRECTION_ALLOW_WALL_CORNER_TYPE[i_86_]) != 0) {
                             if (wall.orientationA == 16) {
                                 groundTile.wallCullDirection = 3;
-                                groundTile.wallUncullDirection = anIntArray119[i_86_];
+                                groundTile.wallUncullDirection = WALL_CORNER_TYPE_16_BLOCK_OBJ_SPANS[i_86_];
                                 groundTile.wallCullOppositeDirection = 3 - groundTile.wallUncullDirection;
                             } else if (wall.orientationA == 32) {
                                 groundTile.wallCullDirection = 6;
-                                groundTile.wallUncullDirection = anIntArray125[i_86_];
+                                groundTile.wallUncullDirection = WALL_CORNER_TYPE_32_BLOCK_OBJ_SPANS[i_86_];
                                 groundTile.wallCullOppositeDirection = 6 - groundTile.wallUncullDirection;
                             } else if (wall.orientationA == 64) {
                                 groundTile.wallCullDirection = 12;
-                                groundTile.wallUncullDirection = anIntArray132[i_86_];
+                                groundTile.wallUncullDirection = WALL_CORNER_TYPE_64_BLOCK_OBJ_SPANS[i_86_];
                                 groundTile.wallCullOppositeDirection = 12 - groundTile.wallUncullDirection;
                             } else {
                                 groundTile.wallCullDirection = 9;
-                                groundTile.wallUncullDirection = anIntArray131[i_86_];
+                                groundTile.wallUncullDirection = WALL_CORNER_TYPE_128_BLOCK_OBJ_SPANS[i_86_];
                                 groundTile.wallCullOppositeDirection = 9 - groundTile.wallUncullDirection;
                             }
                         } else {
