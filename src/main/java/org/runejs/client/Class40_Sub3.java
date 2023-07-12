@@ -301,8 +301,8 @@ public class Class40_Sub3 extends Node {
 
     private static void initializeIdentityKitDefinitionCache(CacheArchive definitionCache, CacheArchive arg2) {
         MovedStatics.aCacheArchive_654 = arg2;
-        Class49.definitionCache = definitionCache;
-        PlayerAppearance.identityKitLength = Class49.definitionCache.fileLength(3);
+        IdentityKit.identityKitCache = definitionCache;
+        PlayerAppearance.identityKitLength = IdentityKit.identityKitCache.fileLength(3);
     }
 
     private static void initializeGameObjectDefinitionCache(CacheArchive arg1, boolean lowMemory, CacheArchive definitionCache) {

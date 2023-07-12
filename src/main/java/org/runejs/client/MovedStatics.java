@@ -306,6 +306,10 @@ public class MovedStatics {
      * Membership status?
      */
     public static int anInt1049 = 0;
+    /**
+     * Currently selected item ID within a widget ?
+     */
+    public static int anInt1154;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {

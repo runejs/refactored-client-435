@@ -839,7 +839,7 @@ public class GameInterface extends CachedNode {
 
                     OutgoingPackets.sendMessage(
                         new UseItemOnPlayerOutboundMessage(
-                            Class49.anInt1154,
+                            MovedStatics.anInt1154,
                             widgetId,
                             containerId,
                             selectedInventorySlot,
@@ -849,7 +849,7 @@ public class GameInterface extends CachedNode {
                 }
             }
             if(action == ActionRowType.SELECT_ITEM_ON_WIDGET.getId()) {
-                Class49.anInt1154 = npcIdx;
+                MovedStatics.anInt1154 = npcIdx;
                 selectedInventorySlot = i;
                 ISAAC.anInt525 = i_10_;
                 MovedStatics.itemSelected = 1;
@@ -988,7 +988,7 @@ public class GameInterface extends CachedNode {
 
                         OutgoingPackets.sendMessage(
                             new UseItemOnPlayerOutboundMessage(
-                                Class49.anInt1154,
+                                MovedStatics.anInt1154,
                                 widgetId,
                                 containerId,
                                 selectedInventorySlot,
@@ -1019,7 +1019,7 @@ public class GameInterface extends CachedNode {
 
                     OutgoingPackets.sendMessage(
                         new UseItemOnObjectOutboundMessage(
-                            Class49.anInt1154,
+                            MovedStatics.anInt1154,
                             widgetId,
                             containerId,
                             selectedInventorySlot,
@@ -1050,7 +1050,7 @@ public class GameInterface extends CachedNode {
 
                     OutgoingPackets.sendMessage(
                         new UseItemOnWidgetItemOutboundMessage(
-                            Class49.anInt1154,
+                            MovedStatics.anInt1154,
                             widgetId,
                             containerId,
                             selectedInventorySlot,
@@ -1502,7 +1502,7 @@ public class GameInterface extends CachedNode {
 
                         OutgoingPackets.sendMessage(
                             new UseItemOnWorldItemOutboundMessage(
-                                Class49.anInt1154,
+                                MovedStatics.anInt1154,
                                 widgetId,
                                 containerId,
                                 selectedInventorySlot,
