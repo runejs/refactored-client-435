@@ -734,17 +734,17 @@ public class Model extends Renderable {
         }
     }
 
-    public void renderAtPoint(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public void renderAtPoint(int arg0, int arg1, int arg2, int arg3, int arg4, int x, int z, int y, int arg8) {
         if(anInt3169 != 1)
             method799();
-        int i = arg7 * arg4 - arg5 * arg3 >> 16;
-        int i_4_ = arg6 * arg1 + i * arg2 >> 16;
+        int i = y * arg4 - x * arg3 >> 16;
+        int i_4_ = z * arg1 + i * arg2 >> 16;
         int i_5_ = diagonal2DAboveOrigin * arg2 >> 16;
         int i_6_ = i_4_ + i_5_;
         if(i_6_ <= 50/* || i_4_ >= 3500*/) {
             return;
         }
-        int i_7_ = arg7 * arg3 + arg5 * arg4 >> 16;
+        int i_7_ = y * arg3 + x * arg4 >> 16;
         int i_8_ = i_7_ - diagonal2DAboveOrigin << 9;
         if(i_8_ / i_6_ >= Rasterizer3D.anInt2934) {
             return;
@@ -753,7 +753,7 @@ public class Model extends Renderable {
         if(i_9_ / i_6_ <= Rasterizer3D.anInt2942) {
             return;
         }
-        int i_10_ = arg6 * arg2 - i * arg1 >> 16;
+        int i_10_ = z * arg2 - i * arg1 >> 16;
         int i_11_ = diagonal2DAboveOrigin * arg1 >> 16;
         int i_12_ = i_10_ + i_11_ << 9;
         if(i_12_ / i_6_ <= Rasterizer3D.anInt2935) {
@@ -815,9 +815,9 @@ public class Model extends Renderable {
                 i_29_ = i_29_ * i_25_ - i_27_ * i_24_ >> 16;
                 i_27_ = i_30_;
             }
-            i_27_ += arg5;
-            i_28_ += arg6;
-            i_29_ += arg7;
+            i_27_ += x;
+            i_28_ += z;
+            i_29_ += y;
             int i_31_ = i_29_ * arg3 + i_27_ * arg4 >> 16;
             i_29_ = i_29_ * arg4 - i_27_ * arg3 >> 16;
             i_27_ = i_31_;

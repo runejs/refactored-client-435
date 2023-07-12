@@ -15,11 +15,25 @@ import org.runejs.client.scene.tile.*;
 import java.util.Arrays;
 
 public class Scene {
+    public static int[] WALL_DECORATION_INSET_X = new int[]{53, -53, -53, 53};
+    public static int[] WALL_DECORATION_INSET_Y = new int[]{-53, -53, 53, 53};
+    public static int[] WALL_DECORATION_OUTSET_X = new int[]{-45, 45, 45, -45};
+    public static int[] WALL_DECORATION_OUTSET_Y = new int[]{45, 45, -45, -45};
+
+    public static int[] ROTATION_WALL_TYPE = {1, 2, 4, 8};
+    public static int[] ROTATION_WALL_CORNER_TYPE = new int[]{16, 32, 64, 128};
+    public static int[] FRONT_WALL_TYPES = new int[]{19, 55, 38, 155, 255, 110, 137, 205, 76};
+    public static int[] DIRECTION_ALLOW_WALL_CORNER_TYPE = new int[]{160, 192, 80, 96, 0, 144, 80, 48, 160};
+    public static int[] BACK_WALL_TYPES = new int[]{76, 8, 137, 4, 0, 1, 38, 2, 19};
+    public static int[] WALL_CORNER_TYPE_16_BLOCK_OBJ_SPANS = new int[]{0, 0, 2, 0, 0, 2, 1, 1, 0};
+    public static int[] WALL_CORNER_TYPE_32_BLOCK_OBJ_SPANS = new int[]{2, 0, 0, 2, 0, 0, 0, 4, 4};
+    public static int[] WALL_CORNER_TYPE_64_BLOCK_OBJ_SPANS = new int[]{0, 4, 4, 8, 0, 0, 8, 0, 0};
+    public static int[] WALL_CORNER_TYPE_128_BLOCK_OBJ_SPANS = new int[]{1, 1, 0, 0, 0, 8, 0, 0, 8};
+
     public static int cameraPosX;
     public static int clickY = 0;
     public static int clickedTileX = -1;
     public static int cameraPositionTileX;
-    public static int[] faceOffsetX2 = new int[]{53, -53, -53, 53};
     public static int clickedTileY = -1;
     public static int hoveredTileY = -1;
     public static int hoveredTileX = -1;
@@ -31,14 +45,12 @@ public class Scene {
     public static int cameraPosZ;
     public static int anInt90 = 4;
     public static int clickX = 0;
-    public static int[] faceOffsetX3 = new int[]{-45, 45, 45, -45};
     public static int currentPositionX;
     public static int activeOccluderCount = 0;
     public static int cameraPosY;
     public static int renderCameraYawCosine;
     public static int cameraPositionTileY;
     public static int[] cullingClusterPointer = new int[anInt90];
-    public static int[] faceOffsetY3 = new int[]{45, 45, -45, -45};
     public static int renderCameraYawSine;
     public static InteractiveObject[] interactiveObjects = new InteractiveObject[100];
     public static SceneCluster[] processedCullingClusters = new SceneCluster[500];
@@ -46,18 +58,10 @@ public class Scene {
     public static int anInt109 = 0;
     public static int renderCameraPitchCosine;
     public static int mapBoundsY;
-    public static int[] faceOffsetY2 = new int[]{-53, -53, 53, 53};
     public static SceneCluster[][] cullingClusters = new SceneCluster[anInt90][500];
     public static boolean clicked = false;
-    public static int[] DIRECTION_ALLOW_WALL_CORNER_TYPE = new int[]{160, 192, 80, 96, 0, 144, 80, 48, 160};
-    public static int[] WALL_CORNER_TYPE_16_BLOCK_OBJ_SPANS = new int[]{0, 0, 2, 0, 0, 2, 1, 1, 0};
-    public static int[] FRONT_WALL_TYPES = new int[]{19, 55, 38, 155, 255, 110, 137, 205, 76};
     public static int drawWidthMidpoint;
-    public static int[] WALL_CORNER_TYPE_32_BLOCK_OBJ_SPANS = new int[]{2, 0, 0, 2, 0, 0, 0, 4, 4};
     public static int drawHeight;
-    public static int[] BACK_WALL_TYPES = new int[]{76, 8, 137, 4, 0, 1, 38, 2, 19};
-    public static int[] WALL_CORNER_TYPE_128_BLOCK_OBJ_SPANS = new int[]{1, 1, 0, 0, 0, 8, 0, 0, 8};
-    public static int[] WALL_CORNER_TYPE_64_BLOCK_OBJ_SPANS = new int[]{0, 4, 4, 8, 0, 0, 8, 0, 0};
     private static final int TILE_DRAW_DISTANCE = 75;
     public static boolean[][] TILE_VISIBILITY_MAP;
     public static boolean[][][][] TILE_VISIBILITY_MAPS = new boolean[8][32][(TILE_DRAW_DISTANCE * 2) + 1][(TILE_DRAW_DISTANCE * 2) + 1];
@@ -68,8 +72,6 @@ public class Scene {
     public static int[] screenX = new int[6];
     public static int[] viewspaceX = new int[6];
     public static int[] viewspaceY = new int[6];
-    public static int[] ROTATION_WALL_CORNER_TYPE = new int[]{16, 32, 64, 128};
-    public static int[] ROTATION_WALL_TYPE = {1, 2, 4, 8};
 
     public SceneTile[][][] tileArray;
     public int[][][] anIntArrayArrayArray83;
@@ -997,13 +999,13 @@ public class Scene {
                                 i_93_ = i_90_;
                             }
                             if ((wallDecoration.configBits & 0x100) != 0 && i_93_ < i_92_) {
-                                int i_94_ = i_88_ + faceOffsetX2[i_91_];
-                                int i_95_ = i_90_ + faceOffsetY2[i_91_];
+                                int i_94_ = i_88_ + WALL_DECORATION_INSET_X[i_91_];
+                                int i_95_ = i_90_ + WALL_DECORATION_INSET_Y[i_91_];
                                 wallDecoration.renderable.renderAtPoint(i_91_ * 512 + 256, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, i_94_, i_89_, i_95_, wallDecoration.hash);
                             }
                             if ((wallDecoration.configBits & 0x200) != 0 && i_93_ > i_92_) {
-                                int i_96_ = i_88_ + faceOffsetX3[i_91_];
-                                int i_97_ = i_90_ + faceOffsetY3[i_91_];
+                                int i_96_ = i_88_ + WALL_DECORATION_OUTSET_X[i_91_];
+                                int i_97_ = i_90_ + WALL_DECORATION_OUTSET_Y[i_91_];
                                 wallDecoration.renderable.renderAtPoint(i_91_ * 512 + 1280 & 0x7ff, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, i_96_, i_89_, i_97_, wallDecoration.hash);
                             }
                         }
@@ -1231,13 +1233,13 @@ public class Scene {
                                         i_134_ = i_131_;
                                     }
                                     if ((wallDecoration.configBits & 0x100) != 0 && i_134_ >= i_133_) {
-                                        int i_135_ = i_129_ + faceOffsetX2[i_132_];
-                                        int i_136_ = i_131_ + faceOffsetY2[i_132_];
+                                        int i_135_ = i_129_ + WALL_DECORATION_INSET_X[i_132_];
+                                        int i_136_ = i_131_ + WALL_DECORATION_INSET_Y[i_132_];
                                         wallDecoration.renderable.renderAtPoint(i_132_ * 512 + 256, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, i_135_, i_130_, i_136_, wallDecoration.hash);
                                     }
                                     if ((wallDecoration.configBits & 0x200) != 0 && i_134_ <= i_133_) {
-                                        int i_137_ = i_129_ + faceOffsetX3[i_132_];
-                                        int i_138_ = i_131_ + faceOffsetY3[i_132_];
+                                        int i_137_ = i_129_ + WALL_DECORATION_OUTSET_X[i_132_];
+                                        int i_138_ = i_131_ + WALL_DECORATION_OUTSET_Y[i_132_];
                                         wallDecoration.renderable.renderAtPoint(i_132_ * 512 + 1280 & 0x7ff, renderCameraPitchSine, renderCameraPitchCosine, renderCameraYawSine, renderCameraYawCosine, i_137_, i_130_, i_138_, wallDecoration.hash);
                                     }
                                 }
