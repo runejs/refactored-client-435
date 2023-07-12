@@ -31,12 +31,7 @@ public class Scene {
     public static int[] WALL_CORNER_TYPE_128_BLOCK_OBJ_SPANS = new int[]{1, 1, 0, 0, 0, 8, 0, 0, 8};
 
     public static int cameraPosX;
-    public static int clickY = 0;
-    public static int clickedTileX = -1;
     public static int cameraPositionTileX;
-    public static int clickedTileY = -1;
-    public static int hoveredTileY = -1;
-    public static int hoveredTileX = -1;
     public static int renderCameraPitchSine;
     public static int mapBoundsX;
     public static int cycle;
@@ -44,7 +39,6 @@ public class Scene {
     public static boolean lowMemory = true;
     public static int cameraPosZ;
     public static int anInt90 = 4;
-    public static int clickX = 0;
     public static int currentPositionX;
     public static int activeOccluderCount = 0;
     public static int cameraPosY;
@@ -59,7 +53,6 @@ public class Scene {
     public static int renderCameraPitchCosine;
     public static int mapBoundsY;
     public static SceneCluster[][] cullingClusters = new SceneCluster[anInt90][500];
-    public static boolean clicked = false;
     public static int drawWidthMidpoint;
     public static int drawHeight;
     private static final int TILE_DRAW_DISTANCE = 75;
@@ -93,6 +86,28 @@ public class Scene {
      * Minimap tile masks (move to Minimap class)
      */
     public int[][] anIntArrayArray129;
+
+    private boolean clicked = false;
+    private int clickX = 0;
+    private int clickY = 0;
+
+    /**
+     * Clicked tile X coordinate
+     */
+    public int clickedTileX = -1;
+    /**
+     * Clicked tile Y coordinate
+     */
+    public int clickedTileY = -1;
+
+    /**
+     * Currently hovered tile X coordinate
+     */
+    public int hoveredTileX = -1;
+    /**
+     * Currently hovered tile Y coordinate
+     */
+    public int hoveredTileY = -1;
 
     public Scene(int[][][] heightMap) {
         final int length = 104;// was parameter

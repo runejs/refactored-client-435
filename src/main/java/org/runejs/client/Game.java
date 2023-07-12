@@ -1464,9 +1464,9 @@ public class Game {
                             }
                         }
 
-                        if(Scene.clickedTileX != -1) {
-                            int i = Scene.clickedTileX;
-                            int i_18_ = Scene.clickedTileY;
+                        if(currentScene.clickedTileX != -1) {
+                            int i = currentScene.clickedTileX;
+                            int i_18_ = currentScene.clickedTileY;
                             boolean bool = Pathfinding.doTileWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_18_);
                             if(bool) {
                                 GameInterface.crossY = MouseHandler.clickY;
@@ -1474,7 +1474,7 @@ public class Game {
                                 GameInterface.crossX = MouseHandler.clickX;
                                 MovedStatics.crossType = 1;
                             }
-                            Scene.clickedTileX = -1;
+                            currentScene.clickedTileX = -1;
                         }
 
                         if(MouseHandler.clickType == 1 && Native.clickToContinueString != null) {
