@@ -12,7 +12,7 @@ public abstract class Actor extends Renderable {
     public int anInt3074;
     public int turnRightAnimationId;
     public int anInt3077;
-    public int anInt3078;
+    public int chatTimer;
     public int turnAroundAnimationId;
     public int initialFaceDirection;
     public int forceMoveStartY;
@@ -89,7 +89,7 @@ public abstract class Actor extends Renderable {
         anInt3104 = 0;
         graphicId = -1;
         anInt3117 = 200;
-        anInt3078 = 100;
+        chatTimer = 100;
         anInt3120 = 0;
         playingAnimationDelay = 0;
         anInt3077 = -1;
@@ -353,6 +353,34 @@ public abstract class Actor extends Renderable {
             actor.initialFaceDirection = 512;
         actor.anInt3118 = actor.initialFaceDirection;
     }
+
+    /**
+     * Decrease the time remaining for all actor chats.
+     */
+	public static void tickChatTimers() {
+	    for(int i = -1; Player.localPlayerCount > i; i++) {
+	        int pid;
+	        if(i == -1)
+	            pid = 2047;
+	        else
+	            pid = Player.trackedPlayerIndices[i];
+	        Player player = Player.trackedPlayers[pid];
+	        if(player != null && player.chatTimer > 0) {
+	            player.chatTimer--;
+	            if(player.chatTimer == 0)
+	                player.forcedChatMessage = null;
+	        }
+	    }
+	    for(int i = 0; i < Player.npcCount; i++) {
+	        int nid = Player.npcIds[i];
+	        Npc npc = Player.npcs[nid];
+	        if(npc != null && npc.chatTimer > 0) {
+	            npc.chatTimer--;
+	            if(npc.chatTimer == 0)
+	                npc.forcedChatMessage = null;
+	        }
+	    }
+	}
 
     public void move(int moveDirection, boolean isRunning) {
         int i = pathY[0];

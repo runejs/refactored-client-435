@@ -155,7 +155,7 @@ public class Player extends Actor {
                     String incomming = MovedStatics.method956(appearanceBuffer);
                     String class1 = RSString.formatChatString(incomming);
                     player.forcedChatMessage = class1.trim();
-                    player.anInt3078 = 150;
+                    player.chatTimer = 150;
                     player.chatEffects = chatEffectsAndColors & 0xff;
                     player.chatcolor = chatEffectsAndColors >> 8;
                     if(playerRights == 2 || playerRights == 3)
@@ -195,7 +195,7 @@ public class Player extends Actor {
                 ChatBox.addChatMessage(player.playerName, player.forcedChatMessage, 2);
             } else if(player == localPlayer)
                 ChatBox.addChatMessage(player.playerName, player.forcedChatMessage, 2);
-            player.anInt3078 = 150;
+            player.chatTimer = 150;
             player.chatcolor = 0;
             player.chatEffects = 0;
         }

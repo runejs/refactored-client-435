@@ -1504,31 +1504,7 @@ public class MovedStatics {
         }
     }
 
-	public static void method313() {
-	    for(int i = -1; Player.localPlayerCount > i; i++) {
-	        int i_6_;
-	        if(i == -1)
-	            i_6_ = 2047;
-	        else
-	            i_6_ = Player.trackedPlayerIndices[i];
-	        Player class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i_6_];
-	        if(class40_sub5_sub17_sub4_sub1 != null && class40_sub5_sub17_sub4_sub1.anInt3078 > 0) {
-	            class40_sub5_sub17_sub4_sub1.anInt3078--;
-	            if(class40_sub5_sub17_sub4_sub1.anInt3078 == 0)
-	                class40_sub5_sub17_sub4_sub1.forcedChatMessage = null;
-	        }
-	    }
-	    for(int i_7_ = 0; i_7_ < Player.npcCount; i_7_++) {
-	        int i_8_ = Player.npcIds[i_7_];
-	        Npc class40_sub5_sub17_sub4_sub2 = Player.npcs[i_8_];
-	        if(class40_sub5_sub17_sub4_sub2 != null && class40_sub5_sub17_sub4_sub2.anInt3078 > 0) {
-	            class40_sub5_sub17_sub4_sub2.anInt3078--;
-	            if(class40_sub5_sub17_sub4_sub2.anInt3078 == 0)
-	                class40_sub5_sub17_sub4_sub2.forcedChatMessage = null;
-	        }
-	    }
-	}
-	public static int[] anIntArray1847 = new int[2000];
+    public static int[] anIntArray1847 = new int[2000];
 	public static long aLong1841;
 
     private static int interpolateForPerlin(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
@@ -2709,7 +2685,7 @@ public class MovedStatics {
                         PlayerAppearance.anIntArray685[SceneCluster.anInt770] = screenPos.y;
                         PlayerAppearance.overheadChatColor[SceneCluster.anInt770] = actor.chatcolor;
                         PlayerAppearance.overheadChatShape[SceneCluster.anInt770] = actor.chatEffects;
-                        PlayerAppearance.anIntArray684[SceneCluster.anInt770] = actor.anInt3078;
+                        PlayerAppearance.anIntArray684[SceneCluster.anInt770] = actor.chatTimer;
                         PlayerAppearance.overheadChatMessage[SceneCluster.anInt770] = actor.forcedChatMessage;
                         SceneCluster.anInt770++;
                     }

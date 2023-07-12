@@ -1302,7 +1302,7 @@ public class Game {
                     } else {
                         MovedStatics.animatePlayers(-1);
                         MovedStatics.animateNpcs();
-                        MovedStatics.method313();
+                        Actor.tickChatTimers();
                         if(MovedStatics.crossType != 0) {
                             MovedStatics.crossIndex += 20;
                             if(MovedStatics.crossIndex >= 400)

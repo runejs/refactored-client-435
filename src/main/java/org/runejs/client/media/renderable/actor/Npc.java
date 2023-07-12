@@ -53,7 +53,7 @@ public class Npc extends Actor {
             }
             if((0x40 & mask) != 0) {
                 npc.forcedChatMessage = buffer.getString();
-                npc.anInt3078 = 100;
+                npc.chatTimer = 100;
             }
             if((mask & 0x80) != 0) {
                 npc.actorDefinition = ActorDefinition.getDefinition(buffer.getUnsignedShortBE());
