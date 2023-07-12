@@ -613,7 +613,7 @@ public class Landscape {
                                 int i_72_ = 240;
                                 int i_73_ = -i_72_ + tile_height[i_68_][x][i_65_];
                                 int i_74_ = tile_height[i_67_][x][i_65_];
-                                Scene.createOccluder(plane, 1, 128 * x, 128 * x, 128 * i_65_, 128 + 128 * i_66_, i_73_, i_74_);
+                                Game.currentScene.createOccluder(plane, 1, 128 * x, 128 * x, 128 * i_65_, 128 + 128 * i_66_, i_73_, i_74_);
                                 for(int i_75_ = i_67_; i_75_ <= i_68_; i_75_++) {
                                     for(int i_76_ = i_65_; i_76_ <= i_66_; i_76_++)
                                         tileCullingBitsets[i_75_][x][i_76_] = BitUtils.bitWiseAND(tileCullingBitsets[i_75_][x][i_76_], renderRule1 ^ 0xffffffff);
@@ -652,7 +652,7 @@ public class Landscape {
                                 int lowestOcclusionVertexHeight = tile_height[lowestOcclusionPlane][lowestOcclusionX][y];
                                 int highestOcclusionVertexHeightOffset = 240;
                                 int highestOcclusionVertexHeight = tile_height[highestOcclusionPlane][lowestOcclusionX][y] - highestOcclusionVertexHeightOffset;
-                                Scene.createOccluder(plane, 2, 128 * lowestOcclusionX, 128 * highestOcclusionX + 128, 128 * y, y * 128, highestOcclusionVertexHeight, lowestOcclusionVertexHeight);
+                                Game.currentScene.createOccluder(plane, 2, 128 * lowestOcclusionX, 128 * highestOcclusionX + 128, 128 * y, y * 128, highestOcclusionVertexHeight, lowestOcclusionVertexHeight);
                                 for(int occludedPlane = lowestOcclusionPlane; highestOcclusionPlane >= occludedPlane; occludedPlane++) {
                                     for(int occludedX = lowestOcclusionX; occludedX <= highestOcclusionX; occludedX++)
                                         tileCullingBitsets[occludedPlane][occludedX][y] = BitUtils.bitWiseAND(tileCullingBitsets[occludedPlane][occludedX][y], i_59_ ^ 0xffffffff);
@@ -688,7 +688,7 @@ public class Landscape {
                             }
                             if((-i_89_ + i_90_ + 1) * (1 + i_92_ - i_91_) >= 4) {
                                 int i_95_ = tile_height[_plane][i_89_][i_91_];
-                                Scene.createOccluder(plane, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_, i_92_ * 128 + 128, i_95_, i_95_);
+                                Game.currentScene.createOccluder(plane, 4, i_89_ * 128, i_90_ * 128 + 128, 128 * i_91_, i_92_ * 128 + 128, i_95_, i_95_);
                                 for(int i_96_ = i_89_; i_96_ <= i_90_; i_96_++) {
                                     for(int i_97_ = i_91_; i_92_ >= i_97_; i_97_++)
                                         tileCullingBitsets[_plane][i_96_][i_97_] = BitUtils.bitWiseAND(tileCullingBitsets[_plane][i_96_][i_97_], i_60_ ^ 0xffffffff);

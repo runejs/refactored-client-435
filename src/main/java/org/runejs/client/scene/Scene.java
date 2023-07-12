@@ -46,13 +46,11 @@ public class Scene {
     public static int mapBoundsX;
     public static int currentPositionY;
     public static int cameraPosZ;
-    public static int anInt90 = 4;
     public static int currentPositionX;
     public static int activeOccluderCount = 0;
     public static int cameraPosY;
     public static int renderCameraYawCosine;
     public static int cameraPositionTileY;
-    public static int[] cullingClusterPointer = new int[anInt90];
     public static int renderCameraYawSine;
     public static InteractiveObject[] interactiveObjects = new InteractiveObject[100];
     public static SceneCluster[] processedCullingClusters = new SceneCluster[500];
@@ -60,7 +58,6 @@ public class Scene {
     public static int anInt109 = 0;
     public static int renderCameraPitchCosine;
     public static int mapBoundsY;
-    public static SceneCluster[][] cullingClusters = new SceneCluster[anInt90][500];
     public static int drawWidthMidpoint;
     public static int drawHeight;
     public static int drawHeightMidpoint;
@@ -107,6 +104,9 @@ public class Scene {
     public int mapSizeX = 104;
     public int mapSizeY = 104;
     public int mapSizeZ = 4;
+
+    private SceneCluster[][] cullingClusters = new SceneCluster[mapSizeZ][500];
+    private int[] cullingClusterPointer = new int[mapSizeZ];
 
     public Scene(int[][][] heightMap) {
         tileArray = new SceneTile[mapSizeZ][mapSizeX][mapSizeY];
@@ -255,7 +255,7 @@ public class Scene {
     }
 
 
-    public static void createOccluder(int z, int searchMask, int lowestX, int highestX, int lowestY, int highestY, int highestZ, int lowestZ) {
+    public void createOccluder(int z, int searchMask, int lowestX, int highestX, int lowestY, int highestY, int highestZ, int lowestZ) {
         SceneCluster sceneCluster = new SceneCluster();
         sceneCluster.tileStartX = lowestX / 128;
         sceneCluster.tileEndX = highestX / 128;
@@ -568,7 +568,7 @@ public class Scene {
                 }
             }
         }
-        for (int i = 0; i < anInt90; i++) {
+        for (int i = 0; i < mapSizeZ; i++) {
             for (int i_39_ = 0; i_39_ < cullingClusterPointer[i]; i_39_++) {
                 cullingClusters[i][i_39_] = null;
             }
