@@ -463,9 +463,9 @@ public class ScreenController {
             if (x >= 406 && x <= 506 && y >= 0 && y <= 32) {
                 if (GameInterface.gameScreenInterfaceId == -1) {
                     PacketBuffer.closeAllWidgets();
-                    if (MovedStatics.anInt854 != -1) {
+                    if (GameInterface.reportAbuseWidgetId != -1) {
                         MovedStatics.reportMutePlayer = false;
-                        GameInterface.reportAbuseInterfaceID = GameInterface.gameScreenInterfaceId = MovedStatics.anInt854;
+                        GameInterface.reportAbuseInterfaceID = GameInterface.gameScreenInterfaceId = GameInterface.reportAbuseWidgetId;
                         Native.reportedName = "";
                     }
                 } else

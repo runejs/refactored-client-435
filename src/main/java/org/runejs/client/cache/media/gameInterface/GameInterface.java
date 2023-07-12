@@ -64,6 +64,7 @@ public class GameInterface extends CachedNode {
     public static boolean aBoolean2177 = false;
     public static int atInventoryInterfaceType = 0;
     public static int selectedInventorySlot;
+    public static int reportAbuseWidgetId = -1;
     /**
      * The lightened edge (top and left) color of the scroll indicator chip.
      */
@@ -1350,9 +1351,9 @@ public class GameInterface extends CachedNode {
                         if(i_22_ != -1) {
                             if(gameScreenInterfaceId == -1) {
                                 PacketBuffer.closeAllWidgets();
-                                if(MovedStatics.anInt854 != -1) {
+                                if(reportAbuseWidgetId != -1) {
                                     Native.reportedName = class1.substring(i_22_ + 5).trim();
-                                    reportAbuseInterfaceID = gameScreenInterfaceId = MovedStatics.anInt854;
+                                    reportAbuseInterfaceID = gameScreenInterfaceId = reportAbuseWidgetId;
                                     MovedStatics.reportMutePlayer = false;
                                 }
                             } else {

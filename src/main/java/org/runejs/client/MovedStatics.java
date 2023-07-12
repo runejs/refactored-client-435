@@ -127,7 +127,6 @@ public class MovedStatics {
     public static int anInt848 = 0;
     public static int[] anIntArray852;
     public static long aLong853;
-    public static int anInt854 = -1;
     public static int anInt2621 = 0;
     public static volatile int eventClickY = 0;
     public static int anInt2628 = 0;
