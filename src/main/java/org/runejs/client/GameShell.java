@@ -115,7 +115,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
                     openErrorPage("wrongjava");
                     return;
                 }
-                Class40_Sub3.anInt2024 = 5;
+                MovedStatics.anInt2024 = 5;
             }
         }
         if (Game.signlink.gameShell != null) {
@@ -135,8 +135,8 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
 
         // Initialize client loop
         while (exitTimeInMillis == 0L || System.currentTimeMillis() < exitTimeInMillis) {
-            Class40_Sub3.ticksPerLoop = SceneCluster.gameTimer.getTicks(millisPerTick, Class40_Sub3.anInt2024);
-            for (int currentTick = 0; currentTick < Class40_Sub3.ticksPerLoop; currentTick++) {
+            MovedStatics.ticksPerLoop = SceneCluster.gameTimer.getTicks(millisPerTick, MovedStatics.anInt2024);
+            for (int currentTick = 0; currentTick < MovedStatics.ticksPerLoop; currentTick++) {
                 long currentTimeMillis = System.currentTimeMillis();
 
                 // Saves the time this particular tick is being processed on

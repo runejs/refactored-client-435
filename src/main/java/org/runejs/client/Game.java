@@ -988,11 +988,11 @@ public class Game {
                     OutgoingPackets.sendMessage(new ClickFlashingTabIconOutboundMessage(Player.currentTabId));
                 }
                 GameInterface.drawTabIcons = false;
-                Class40_Sub3.showIconsRedrawnText = true;
+                MovedStatics.showIconsRedrawnText = true;
                 MovedStatics.method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Player.flashingTabId : -1);
             }
             if(MovedStatics.redrawChatbox) {
-                Class40_Sub3.showIconsRedrawnText = true;
+                MovedStatics.showIconsRedrawnText = true;
                 MovedStatics.redrawChatbox = false;
                 method943(ChatBox.tradeMode, MovedStatics.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             }
@@ -1031,11 +1031,11 @@ public class Game {
                     OutgoingPackets.sendMessage(new ClickFlashingTabIconOutboundMessage(Player.currentTabId));
                 }
                 GameInterface.drawTabIcons = false;
-                Class40_Sub3.showIconsRedrawnText = true;
+                MovedStatics.showIconsRedrawnText = true;
                 MovedStatics.method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? Player.flashingTabId : -1);
             }
             if(MovedStatics.redrawChatbox) {
-                Class40_Sub3.showIconsRedrawnText = true;
+                MovedStatics.showIconsRedrawnText = true;
                 MovedStatics.redrawChatbox = false;
                 method943(ChatBox.tradeMode, MovedStatics.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             }

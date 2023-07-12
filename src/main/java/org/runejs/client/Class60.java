@@ -185,7 +185,7 @@ public class Class60 {
             GameShell.tickSamples[i] = 0L;
         for(int i = 0; i < 32; i++)
             MovedStatics.tickSamples[i] = 0L;
-        Class40_Sub3.ticksPerLoop = 0;
+        MovedStatics.ticksPerLoop = 0;
     }
 
     public static void updateLogin() {

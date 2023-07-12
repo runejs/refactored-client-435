@@ -289,6 +289,12 @@ public class MovedStatics {
     public static ProducingGraphicsBuffer mapbackLeft;
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_907;
     public static int clientVersion;
+    public static int ticksPerLoop;
+    /**
+     * Something to do with timing.. sleep time maybe? Not sure
+     */
+    public static int anInt2024 = 1;
+    public static boolean showIconsRedrawnText = false;
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -1896,9 +1902,9 @@ public class MovedStatics {
                 y += 15;
                 showChatPanelRedrawnText = false;
             }
-            if (Class40_Sub3.showIconsRedrawnText) {
+            if (showIconsRedrawnText) {
                 fontNormal.drawStringRight(English.iconsRedrawn, x, y, 16711680);
-                Class40_Sub3.showIconsRedrawnText = false;
+                showIconsRedrawnText = false;
                 y += 15;
             }
         }
@@ -2376,7 +2382,7 @@ public class MovedStatics {
             Game.method943(ChatBox.tradeMode, fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             method527(Player.currentTabId, Player.tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, -1);
             showSidePanelRedrawnText = true;
-            Class40_Sub3.showIconsRedrawnText = true;
+            showIconsRedrawnText = true;
             showChatPanelRedrawnText = true;
         }
         int i = 151;

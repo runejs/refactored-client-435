@@ -22,6 +22,6 @@ public class RSRuntimeException extends RuntimeException {
             MovedStatics.tickSamples[i] = 0L;
         if(arg0 <= 67)
             lastActiveInvInterface = -3;
-        Class40_Sub3.ticksPerLoop = 0;
+        MovedStatics.ticksPerLoop = 0;
     }
 }
