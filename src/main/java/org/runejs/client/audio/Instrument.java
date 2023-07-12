@@ -128,25 +128,25 @@ public class Instrument {
         return 0;
     }
 
-    public static void method776(int[] arg0, int arg1, int arg2) {
-        arg2 = arg1 + arg2 - 7;
-        while(arg1 < arg2) {
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
-            arg0[arg1++] = 0;
+    private static void resetOutput(int[] dest, int counter, int length) {
+        length = counter + length - 7;
+        while(counter < length) {
+            dest[counter++] = 0;
+            dest[counter++] = 0;
+            dest[counter++] = 0;
+            dest[counter++] = 0;
+            dest[counter++] = 0;
+            dest[counter++] = 0;
+            dest[counter++] = 0;
+            dest[counter++] = 0;
         }
-        arg2 += 7;
-        while(arg1 < arg2)
-            arg0[arg1++] = 0;
+        length += 7;
+        while(counter < length)
+            dest[counter++] = 0;
     }
 
     public int[] synthesize(int n_s, int dt) {
-        method776(output, 0, n_s);
+        resetOutput(output, 0, n_s);
         if(dt < 10) {
             return output;
         }
