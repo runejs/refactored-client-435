@@ -24,10 +24,10 @@ public class RotateAnimateObjectMessageHandler implements MessageHandler<RotateA
         int animationId = message.animationId;
 
         if (x >= 0 && y >= 0 && x < 103 && y < 103) {
-            int tileHeightX0Y0 = Landscape.tile_height[Player.worldLevel][x][y];
-            int tileHeightX1Y0 = Landscape.tile_height[Player.worldLevel][x + 1][y];
-            int tileHeightX1Y1 = Landscape.tile_height[Player.worldLevel][1 + x][1 + y];
-            int tileHeightX0Y1 = Landscape.tile_height[Player.worldLevel][x][y + 1];
+            int tileHeightX0Y0 = Game.currentScene.landscape.tile_height[Player.worldLevel][x][y];
+            int tileHeightX1Y0 = Game.currentScene.landscape.tile_height[Player.worldLevel][x + 1][y];
+            int tileHeightX1Y1 = Game.currentScene.landscape.tile_height[Player.worldLevel][1 + x][1 + y];
+            int tileHeightX0Y1 = Game.currentScene.landscape.tile_height[Player.worldLevel][x][y + 1];
             if (objectType == 0) {
                 Wall wall = Game.currentScene.getWall(Player.worldLevel, x, y);
                 if (wall != null) {

@@ -47,12 +47,12 @@ public class Landscape {
     public static byte[][] terrainData;
     public static boolean loadGeneratedMap = false;
     public static int[] terrainDataIds;
-    public static int[][][] tile_height = new int[4][105][105];
+    public int[][][] tile_height = new int[4][105][105];
     public static int randomiserLightness = -16 + (int) (Math.random() * 33.0);
     public static int randomiserHue = -8 + (int) (17.0 * Math.random());
     private static int lowestPlane = 99;
 
-    public static void loadRegion() {
+    public void loadRegion() {
         method364(false);
         Game.anInt874 = 0;
         boolean bool = true;
@@ -254,7 +254,7 @@ public class Landscape {
 
     }
 
-    private static void loadTerrainSubblock(int y, int drawX, int drawingPlane, int currentPlane, int x, int drawY, int rotation, byte[] terrainData, CollisionMap[] collisionMaps) {
+    private void loadTerrainSubblock(int y, int drawX, int drawingPlane, int currentPlane, int x, int drawY, int rotation, byte[] terrainData, CollisionMap[] collisionMaps) {
         for(int i = 0; i < 8; i++) {
             for(int yIdx = 0; yIdx < 8; yIdx++) {
                 if(x + i > 0 && i + x < 103 && y + yIdx > 0 && yIdx + y < 103)
@@ -297,7 +297,7 @@ public class Landscape {
 
     }
 
-    private static void constructMapRegionObjects(int drawX, int drawY, int drawingPlane, int orientation, int x, int y, int plane, Scene scene, byte[] objectData, CollisionMap[] collisionMaps) {
+    private void constructMapRegionObjects(int drawX, int drawY, int drawingPlane, int orientation, int x, int y, int plane, Scene scene, byte[] objectData, CollisionMap[] collisionMaps) {
         Buffer objectBuffer = new Buffer(objectData);
         int i = -1;
         for(; ; ) {
@@ -367,7 +367,7 @@ public class Landscape {
         return x;
     }
 
-    private static void createRegion(Scene scene, CollisionMap[] collisionMaps) {
+    private void createRegion(Scene scene, CollisionMap[] collisionMaps) {
         for(int plane = 0; plane < 4; plane++) {
             for(int x = 0; x < 104; x++) {
                 for(int y = 0; y < 104; y++) {
@@ -743,7 +743,7 @@ public class Landscape {
         tile_underlayids = new byte[4][104][104];
     }
 
-    private static void loadTerrainBlock(CollisionMap[] collisions, int regionX_maybe, byte[] blockData, int offsetX, int offsetY, int regionY_maybe) {
+    private void loadTerrainBlock(CollisionMap[] collisions, int regionX_maybe, byte[] blockData, int offsetX, int offsetY, int regionY_maybe) {
         for(int i = 0; i < 4; i++) {
             for(int i_1_ = 0; i_1_ < 64; i_1_++) {
                 for(int i_2_ = 0; i_2_ < 64; i_2_++) {
@@ -763,7 +763,7 @@ public class Landscape {
         }
     }
 
-    private static void method922(int x, int arg1, Buffer fileData, int y, int regionY, int regionX, int level) {
+    private void method922(int x, int arg1, Buffer fileData, int y, int regionY, int regionX, int level) {
         if(x >= 0 && x < 104 && y >= 0 && y < 104) {
             MovedStatics.tile_flags[level][x][y] = (byte) 0;
             for(; ; ) {
@@ -936,7 +936,7 @@ public class Landscape {
         return lightness + (hsl & 0xff80);
     }
 
-    private static void loadObjectBlock(int block_x, Scene scene, CollisionMap[] collisionMaps, byte[] block_data, int block_z) {
+    private void loadObjectBlock(int block_x, Scene scene, CollisionMap[] collisionMaps, byte[] block_data, int block_z) {
         Buffer buffer = new Buffer(block_data);
         int object_id = -1;
         for(; ; ) {
@@ -971,7 +971,7 @@ public class Landscape {
         }
     }
 
-    public static void addObject(int objectId, int localX, int localY, int plane, int face, int type, Scene scene, CollisionMap collisionMap) {
+    public void addObject(int objectId, int localX, int localY, int plane, int face, int type, Scene scene, CollisionMap collisionMap) {
         if(!VertexNormal.lowMemory || (0x2 & MovedStatics.tile_flags[0][localX][localY]) != 0 || (0x10 & MovedStatics.tile_flags[plane][localX][localY]) == 0 && MovedStatics.onBuildTimePlane == MovedStatics.getVisibilityPlaneFor(plane, localY, 0, localX)) {
             if(lowestPlane > plane)
                 lowestPlane = plane;
@@ -1297,7 +1297,7 @@ public class Landscape {
         }
     }
 
-    private static void initiateVertexHeights(int offsetY, int sizeY, int sizeX, int offsetX) {
+    private void initiateVertexHeights(int offsetY, int sizeY, int sizeX, int offsetX) {
         for (int y = offsetY; y <= offsetY + sizeY; y++) {
             for (int x = offsetX; sizeX + offsetX >= x; x++) {
                 if (x >= 0 && x < 104 && y >= 0 && y < 104) {
@@ -1315,7 +1315,7 @@ public class Landscape {
         }
     }
 
-    private static void method455(int arg0, int arg1, int arg3) {
+    private void method455(int arg0, int arg1, int arg3) {
         for (int i = 0; i < 8; i++) {
             for (int i_0_ = 0; i_0_ < 8; i_0_++)
                 tile_height[arg1][arg3 + i][arg0 + i_0_] = 0;

@@ -31,10 +31,10 @@ public class TransformPlayerToObjectMessageHandler implements MessageHandler<Tra
             player = Player.localPlayer;
         if (player != null) {
             GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(message.objectId);
-            int tileHeightX0Y0 = Landscape.tile_height[Player.worldLevel][x][y];
-            int tileHeightX0Y1 = Landscape.tile_height[Player.worldLevel][x][1 + y];
-            int tileHeightX1Y1 = Landscape.tile_height[Player.worldLevel][1 + x][1 + y];
-            int tileHeightX1Y0 = Landscape.tile_height[Player.worldLevel][x + 1][y];
+            int tileHeightX0Y0 = Game.currentScene.landscape.tile_height[Player.worldLevel][x][y];
+            int tileHeightX0Y1 = Game.currentScene.landscape.tile_height[Player.worldLevel][x][1 + y];
+            int tileHeightX1Y1 = Game.currentScene.landscape.tile_height[Player.worldLevel][1 + x][1 + y];
+            int tileHeightX1Y0 = Game.currentScene.landscape.tile_height[Player.worldLevel][x + 1][y];
             Model model = gameObjectDefinition.createTerrainObjectModel(tileHeightX1Y1, tileHeightX0Y1, message.orientation, tileHeightX0Y0, typeKey, tileHeightX1Y0);
             if (model != null) {
                 if (unknownXMax < unknownXMin) {

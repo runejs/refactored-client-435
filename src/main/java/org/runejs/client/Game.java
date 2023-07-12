@@ -2038,7 +2038,7 @@ public class Game {
                     int i_7_ = Player.worldLevel;
                     if (i_7_ < 3 && (0x2 & MovedStatics.tile_flags[1][i_5_][i_6_]) == 2)
                         i_7_++;
-                    int i_8_ = i_4_ + -Landscape.tile_height[i_7_][i_5_][i_6_];
+                    int i_8_ = i_4_ + -currentScene.landscape.tile_height[i_7_][i_5_][i_6_];
                     if (i_8_ > i_3_)
                         i_3_ = i_8_;
                 }
@@ -2171,7 +2171,7 @@ public class Game {
             Class60.updateLogin();
             handleLoginScreenActions();
         } else if (gameStatusCode == 25)
-            Landscape.loadRegion();
+            currentScene.landscape.loadRegion();
         if (gameStatusCode == 30) {
             ScreenController.refreshFrameSize();
             updateGame();
