@@ -37,8 +37,6 @@ public class Scene {
 
     public static boolean lowMemory = true;
     public static int cycle;
-    public static InteractiveObject[] interactiveObjects = new InteractiveObject[100];
-    public static LinkedList tileList = new LinkedList();
     public static int anInt109 = 0;
 
     public SceneTile[][][] tileArray;
@@ -94,6 +92,9 @@ public class Scene {
     private SceneCluster[] processedCullingClusters = new SceneCluster[500];
     private int[] cullingClusterPointer = new int[mapSizeZ];
     private boolean[][] currentTileVisibilityMap;
+
+    private InteractiveObject[] interactiveObjects = new InteractiveObject[100];
+    private LinkedList tileList = new LinkedList();
     private int currentCameraY;
     private int currentCameraTileY;
     private int currentCameraX;
