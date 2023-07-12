@@ -1,6 +1,5 @@
 package org.runejs.client.cache.def;
 
-import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.io.Buffer;
@@ -13,6 +12,7 @@ public class SpotAnimDefinition extends CachedNode {
     public static CacheArchive gameDefinitionsCacheArchive;
     public static NodeCache spotAnimDefinitionCache = new NodeCache(64);
     public static NodeCache spotAnimModelCache = new NodeCache(30);
+    public static CacheArchive aCacheArchive_2582;
     public int animationId;
     public int modelId;
     public int contrast = 0;
@@ -51,7 +51,7 @@ public class SpotAnimDefinition extends CachedNode {
     }
 
     public static void initializeSpotAnimCache(CacheArchive arg1, CacheArchive arg2) {
-        MovedStatics.aCacheArchive_2582 = arg1;
+        aCacheArchive_2582 = arg1;
         gameDefinitionsCacheArchive = arg2;
     }
 
@@ -90,7 +90,7 @@ public class SpotAnimDefinition extends CachedNode {
     public Model getModel(int arg0) {
         Model model = (Model) spotAnimModelCache.get((long) id);
         if (model == null) {
-            model = Model.getModel(MovedStatics. aCacheArchive_2582, modelId);
+            model = Model.getModel(aCacheArchive_2582, modelId);
             if (model == null) {
                 return null;
             }

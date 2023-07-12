@@ -29,7 +29,6 @@ public class CacheArchive {
     public static CacheArchive huffmanCacheArchive;
     public static CacheArchive jingleCacheArchive;
     public static CacheArchive clientScriptCacheArchive;
-    public static CacheArchive definitionCache;
     public static int anInt1195 = 0;
 
     public byte[][] aByteArrayArray212;

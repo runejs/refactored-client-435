@@ -866,13 +866,6 @@ public class Game {
         return Player.cutsceneActive ? Game.cutsceneCamera : Game.playerCamera;
     }
 
-    public static void method357(CacheArchive arg0, CacheArchive arg2) {
-        GroundItemTile.aCacheArchive_1375 = arg2;
-        ActorDefinition.count = GroundItemTile.aCacheArchive_1375.fileLength(9);
-
-        MovedStatics.aCacheArchive_1577 = arg0;
-    }
-
     public static IndexedImage method359(String arg0, String arg1, CacheArchive arg2) {
         int i = arg2.getHash(arg0);
         int i_23_ = arg2.method179(i, arg1);

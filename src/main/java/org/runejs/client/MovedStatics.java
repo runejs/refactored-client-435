@@ -59,7 +59,6 @@ public class MovedStatics {
     public static int chatEffectsDisabled = 0;
     public static int anInt321 = 5063219;
     public static boolean redrawChatbox = false;
-    public static CacheArchive aCacheArchive_654;
     public static int[] anIntArray666 = new int[]{1, 0, -1, 0};
     public static int pulseCycle = 0;
     public static int anInt938 = 500;
@@ -88,7 +87,6 @@ public class MovedStatics {
     public static int[] chatboxLineOffsets;
     public static int anInt199 = 0;
     public static volatile boolean aBoolean1575 = false;
-    public static CacheArchive aCacheArchive_1577;
     public static int anInt1586 = -1;
     public static boolean reportMutePlayer = false;
     public static int anInt1607 = 10;
@@ -136,7 +134,6 @@ public class MovedStatics {
      * Bit masks for packet buffer
      */
     public static int[] anIntArray2361 = new int[]{0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, 2147483647, -1};
-    public static CacheArchive aCacheArchive_2364;
     public static int destinationX = 0;
     public static int anInt1511 = -1;
     /**
@@ -144,7 +141,6 @@ public class MovedStatics {
      */
     public static ImageRGB[] hintIconSprites;
     public static int anInt2581;
-    public static CacheArchive aCacheArchive_2582;
     public static ImageRGB minimapEdge;
     /**
      * Images for scenery on the minimap (e.g. trees, ladders, etc)
@@ -351,7 +347,6 @@ public class MovedStatics {
      * Relates to minimap
      */
     public static int[] anIntArray66;
-    public static CacheArchive aCacheArchive_1705;
     public static int[] keyCodes = new int[128];
     public static int tooltipDelay = 50;
     public static int anInt2231 = 1;
@@ -483,12 +478,6 @@ public class MovedStatics {
         if (i + -cameraPos.z < 800 && (tile_flags[Player.worldLevel][cameraPos.x >> 7][cameraPos.y >> 7] & 0x4) != 0)
             return Player.worldLevel;
         return 3;
-    }
-
-    public static void initializeAnimationCaches(CacheArchive skinArchive, CacheArchive definitionArchive, CacheArchive skeletonArchive) {
-        ClientScriptRunner.aCacheArchive_2162 = skinArchive;
-        aCacheArchive_2364 = skeletonArchive;
-        AnimationSequence.aCacheArchive_2484 = definitionArchive;
     }
 
     public static boolean method459(int arg0, int arg1) {
@@ -998,13 +987,6 @@ public class MovedStatics {
     }
 
 
-    public static void initializeItemDefinitionCache(CacheArchive definitionCache, boolean arg1, CacheArchive arg2) {
-        membersServer = arg1;
-        MovedStatics.aCacheArchive_284 = arg2;
-        ItemDefinition.itemDefinitionCache = definitionCache;
-        ItemDefinition.count = ItemDefinition.itemDefinitionCache.fileLength(10);
-    }
-
     public static int method888(int x, int y) {
         int vertexHeight = -128 + perlinNoise(x + 45365, 91923 + y, 4) - (-(perlinNoise(x + 10294, 37821 + y, 2) - 128 >> 1) + -(-128 + perlinNoise(x, y, 1) >> 2));
         vertexHeight = 35 + (int) (0.3 * (double) vertexHeight);
@@ -1307,8 +1289,7 @@ public class MovedStatics {
      */
 	public static ImageRGB[] mapFunctionIcons;
 	public static FontMetrics fontMetrics;
-	public static CacheArchive aCacheArchive_284;
-	public static Calendar aCalendar279 = Calendar.getInstance();
+    public static Calendar aCalendar279 = Calendar.getInstance();
 	public static int connectionStage = 0;
 	public static int anInt292 = 0;
 

@@ -1,6 +1,5 @@
 package org.runejs.client.cache.def;
 
-import org.runejs.client.*;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.Model;
@@ -11,6 +10,7 @@ public class IdentityKit extends CachedNode {
     public static CacheArchive identityKitCache;
     public static NodeCache identityKitNodeCache = new NodeCache(64);
     public static int identityKitLength;
+    public static CacheArchive aCacheArchive_654;
     public int[] recolorToFind = new int[6];
     public int[] recolorToReplace;
     public int bodyPartId = -1;
@@ -41,6 +41,12 @@ public class IdentityKit extends CachedNode {
         identityKitNodeCache.clear();
     }
 
+    public static void initializeIdentityKitDefinitionCache(CacheArchive definitionCache, CacheArchive arg2) {
+        aCacheArchive_654 = arg2;
+        identityKitCache = definitionCache;
+        identityKitLength = identityKitCache.fileLength(3);
+    }
+
     public void readValues(Buffer buffer) {
         while(true) {
             int opcode = buffer.getUnsignedByte();
@@ -57,7 +63,7 @@ public class IdentityKit extends CachedNode {
         }
         boolean isCached = true;
         for(int i = 0; modelId.length > i; i++) {
-            if(!MovedStatics.aCacheArchive_654.loaded(modelId[i], 0)) {
+            if(!aCacheArchive_654.loaded(modelId[i], 0)) {
                 isCached = false;
             }
         }
@@ -68,7 +74,7 @@ public class IdentityKit extends CachedNode {
         boolean bool = true;
         int i = 0;
         for(/**/; i < 5; i++) {
-            if(models[i] != -1 && !MovedStatics.aCacheArchive_654.loaded(models[i], 0)) {
+            if(models[i] != -1 && !aCacheArchive_654.loaded(models[i], 0)) {
                 bool = false;
             }
         }
@@ -100,7 +106,7 @@ public class IdentityKit extends CachedNode {
         int i = 0;
         for(int i_7_ = 0; i_7_ < 5; i_7_++) {
             if(models[i_7_] != -1) {
-                class40_sub5_sub17_sub5s[i++] = Model.getModel(MovedStatics.aCacheArchive_654, models[i_7_]);
+                class40_sub5_sub17_sub5s[i++] = Model.getModel(aCacheArchive_654, models[i_7_]);
             }
         }
         Model class40_sub5_sub17_sub5 = new Model(class40_sub5_sub17_sub5s, i);
@@ -119,7 +125,7 @@ public class IdentityKit extends CachedNode {
         }
         Model[] models = new Model[modelId.length];
         for(int i = 0; i < modelId.length; i++) {
-            models[i] = Model.getModel(MovedStatics.aCacheArchive_654, modelId[i]);
+            models[i] = Model.getModel(aCacheArchive_654, modelId[i]);
         }
         Model model;
         if(models.length == 1) {

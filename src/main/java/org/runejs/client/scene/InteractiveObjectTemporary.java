@@ -146,11 +146,11 @@ public class InteractiveObjectTemporary extends Node {
             if (CacheArchive.gameDefinitionsCacheArchive.method185()) {
                 OverlayDefinition.initializeOverlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 UnderlayDefinition.initializeUnderlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
-                initializeIdentityKitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
-                initializeGameObjectDefinitionCache(CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
-                Game.method357(CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
-                MovedStatics.initializeItemDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, MovedStatics.membersWorld, CacheArchive.modelCacheArchive);
-                MovedStatics.initializeAnimationCaches(CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.skeletonCacheArchive);
+                IdentityKit.initializeIdentityKitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
+                GameObjectDefinition.initializeGameObjectDefinitionCache(CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
+                ActorDefinition.initializeActorCache(CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
+                ItemDefinition.initializeItemDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, MovedStatics.membersWorld, CacheArchive.modelCacheArchive);
+                AnimationSequence.initializeAnimationCaches(CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.skeletonCacheArchive);
                 SpotAnimDefinition.initializeSpotAnimCache(CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
                 VarbitDefinition.initializeVarbitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 VarPlayerDefinition.initializeVarPlayerDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
@@ -292,20 +292,6 @@ public class InteractiveObjectTemporary extends Node {
             if (MovedStatics.loadingPercent == 140)
                 MovedStatics.processGameStatus(10);
         }
-    }
-
-    private static void initializeIdentityKitDefinitionCache(CacheArchive definitionCache, CacheArchive arg2) {
-        MovedStatics.aCacheArchive_654 = arg2;
-        IdentityKit.identityKitCache = definitionCache;
-        IdentityKit.identityKitLength = IdentityKit.identityKitCache.fileLength(3);
-    }
-
-    private static void initializeGameObjectDefinitionCache(CacheArchive arg1, boolean lowMemory, CacheArchive definitionCache) {
-        CacheArchive.definitionCache = definitionCache;
-        GameObjectDefinition.count = CacheArchive.definitionCache.fileLength(6);
-
-        GameObjectDefinition.lowMemory = lowMemory;
-        MovedStatics.aCacheArchive_1705 = arg1;
     }
 
     private static int method288() {

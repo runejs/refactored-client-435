@@ -20,6 +20,8 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
     public static int count;
     public static int[] OBJECT_TYPES = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
     public static boolean lowMemory = false;
+    public static CacheArchive definitionCache;
+    public static CacheArchive aCacheArchive_1705;
     private static NodeCache objectDefinitionCache = new NodeCache(64);
     public static NodeCache objectModelCache = new NodeCache(500);
     private static Model[] objectModelHolder = new Model[4];
@@ -152,7 +154,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         if(gameObjectDefinition != null) {
             return gameObjectDefinition;
         }
-        byte[] is = CacheArchive.definitionCache.getFile(6, objectId);
+        byte[] is = definitionCache.getFile(6, objectId);
         gameObjectDefinition = new GameObjectDefinition();
         gameObjectDefinition.id = objectId;
         if(is == null) {
@@ -182,6 +184,13 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         objectModelCache.clear();
         terrainObjectModelCache.clear();
         animatedObjectModelCache.clear();
+    }
+
+    public static void initializeGameObjectDefinitionCache(CacheArchive arg1, boolean lowMemory, CacheArchive definitionCache) {
+        GameObjectDefinition.definitionCache = definitionCache;
+        count = GameObjectDefinition.definitionCache.fileLength(6);
+        GameObjectDefinition.lowMemory = lowMemory;
+        aCacheArchive_1705 = arg1;
     }
 
     public Model createTerrainObjectModel(int arg0, int arg1, int arg2, int arg3, int arg4, int arg6) {
@@ -277,7 +286,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
                 }
                 model = (Model) objectModelCache.get(modelId);
                 if(model == null) {
-                    model = Model.getModel(MovedStatics.aCacheArchive_1705, modelId & 0xffff);
+                    model = Model.getModel(aCacheArchive_1705, modelId & 0xffff);
                     if(model == null) {
                         return null;
                     }
@@ -311,7 +320,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
             }
             model = (Model) objectModelCache.get(modelId);
             if(model == null) {
-                model = Model.getModel(MovedStatics.aCacheArchive_1705, 0xffff & modelId);
+                model = Model.getModel(aCacheArchive_1705, 0xffff & modelId);
                 if(model == null) {
                     return null;
                 }
@@ -524,7 +533,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         if(objectTypes != null) {
             for(int i = 0; objectTypes.length > i; i++) {
                 if(objectTypes[i] == arg0) {
-                    return MovedStatics.aCacheArchive_1705.loaded(objectModels[i] & 0xffff, 0);
+                    return aCacheArchive_1705.loaded(objectModels[i] & 0xffff, 0);
                 }
             }
             return true;
@@ -537,7 +546,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= MovedStatics.aCacheArchive_1705.loaded(0xffff & objectModels[i], 0);
+            bool &= aCacheArchive_1705.loaded(0xffff & objectModels[i], 0);
         }
         return bool;
     }
@@ -564,7 +573,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         }
         boolean bool = true;
         for(int i = 0; objectModels.length > i; i++) {
-            bool &= MovedStatics.aCacheArchive_1705.loaded(0xffff & objectModels[i], 0);
+            bool &= aCacheArchive_1705.loaded(0xffff & objectModels[i], 0);
         }
         return bool;
     }

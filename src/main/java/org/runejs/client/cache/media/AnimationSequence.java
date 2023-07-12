@@ -18,6 +18,8 @@ public class AnimationSequence extends CachedNode {
     public static CacheArchive aCacheArchive_2484;
     public static NodeCache animationSequenceCache = new NodeCache(64);
     public static NodeCache aClass9_998 = new NodeCache(100);
+    public static CacheArchive aCacheArchive_2162;
+    public static CacheArchive aCacheArchive_2364;
 
     public int[] frameLengths;
     public int precedenceAnimating = -1;
@@ -78,7 +80,7 @@ public class AnimationSequence extends CachedNode {
         Class40_Sub5_Sub15 class40_sub5_sub15 = (Class40_Sub5_Sub15) aClass9_998.get((long) arg1);
         if(class40_sub5_sub15 != null)
             return class40_sub5_sub15;
-        class40_sub5_sub15 = method421(MovedStatics.aCacheArchive_2364, arg1, ClientScriptRunner.aCacheArchive_2162, false);
+        class40_sub5_sub15 = method421(aCacheArchive_2364, arg1, aCacheArchive_2162, false);
         if(class40_sub5_sub15 != null)
             aClass9_998.put((long) arg1, class40_sub5_sub15);
         return class40_sub5_sub15;
@@ -128,6 +130,12 @@ public class AnimationSequence extends CachedNode {
     public static void clearAnimationCache() {
         animationSequenceCache.clear();
         aClass9_998.clear();
+    }
+
+    public static void initializeAnimationCaches(CacheArchive skinArchive, CacheArchive definitionArchive, CacheArchive skeletonArchive) {
+        aCacheArchive_2162 = skinArchive;
+        aCacheArchive_2364 = skeletonArchive;
+        aCacheArchive_2484 = definitionArchive;
     }
 
     public Model method590(Model arg0, AnimationSequence animationSequence, int arg2, int arg3, byte arg4) {

@@ -17,6 +17,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
     public static NodeCache itemDefinitionNodeCache = new NodeCache(64);
     public static NodeCache groundItemModelNodeCache = new NodeCache(50);
     public static NodeCache itemImageCache = new NodeCache(100);
+    public static CacheArchive aCacheArchive_284;
 
     public int stackable;
     public String name;
@@ -243,6 +244,13 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         itemImageCache.clear();
     }
 
+    public static void initializeItemDefinitionCache(CacheArchive definitionCache, boolean arg1, CacheArchive arg2) {
+        MovedStatics.membersServer = arg1;
+        aCacheArchive_284 = arg2;
+        itemDefinitionCache = definitionCache;
+        count = itemDefinitionCache.fileLength(10);
+    }
+
     public boolean headPieceReady(boolean female) {
         int primaryId = primaryMaleHeadPiece;
         int secondaryId = secondaryMaleHeadPiece;
@@ -254,10 +262,10 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
             return true;
         }
         boolean ready = true;
-        if(!MovedStatics.aCacheArchive_284.loaded(primaryId, 0)) {
+        if(!aCacheArchive_284.loaded(primaryId, 0)) {
             ready = false;
         }
-        if(secondaryId != -1 && !MovedStatics.aCacheArchive_284.loaded(secondaryId, 0)) {
+        if(secondaryId != -1 && !aCacheArchive_284.loaded(secondaryId, 0)) {
             ready = false;
         }
         return ready;
@@ -276,13 +284,13 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
             return true;
         }
         boolean bool = true;
-        if(!MovedStatics.aCacheArchive_284.loaded(i, 0)) {
+        if(!aCacheArchive_284.loaded(i, 0)) {
             bool = false;
         }
-        if(i_1_ != -1 && !MovedStatics.aCacheArchive_284.loaded(i_1_, 0)) {
+        if(i_1_ != -1 && !aCacheArchive_284.loaded(i_1_, 0)) {
             bool = false;
         }
-        if(i_2_ != -1 && !MovedStatics.aCacheArchive_284.loaded(i_2_, 0)) {
+        if(i_2_ != -1 && !aCacheArchive_284.loaded(i_2_, 0)) {
             bool = false;
         }
         return bool;
@@ -300,14 +308,14 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(primaryId == -1) {
             return null;
         }
-        Model primary = Model.getModel(MovedStatics.aCacheArchive_284, primaryId);
+        Model primary = Model.getModel(aCacheArchive_284, primaryId);
         if(secondaryId != -1) {
-            Model secondary = Model.getModel(MovedStatics.aCacheArchive_284, secondaryId);
+            Model secondary = Model.getModel(aCacheArchive_284, secondaryId);
             if(tertiaryId == -1) {
                 Model[] tertiary = {primary, secondary};
                 primary = new Model(tertiary, 2);
             } else {
-                Model model3 = Model.getModel(MovedStatics.aCacheArchive_284, tertiaryId);
+                Model model3 = Model.getModel(aCacheArchive_284, tertiaryId);
                 Model[] models = {primary, secondary, model3};
                 primary = new Model(models, 3);
             }
@@ -354,9 +362,9 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(primaryId == -1) {
             return null;
         }
-        Model primary = Model.getModel(MovedStatics.aCacheArchive_284, primaryId);
+        Model primary = Model.getModel(aCacheArchive_284, primaryId);
         if(secondaryId != -1) {
-            Model secondary = Model.getModel(MovedStatics.aCacheArchive_284, secondaryId);
+            Model secondary = Model.getModel(aCacheArchive_284, secondaryId);
             Model[] models = {primary, secondary};
             primary = new Model(models, 2);
         }
@@ -505,7 +513,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(model != null) {
             return model;
         }
-        model = Model.getModel(MovedStatics.aCacheArchive_284, inventoryModelId);
+        model = Model.getModel(aCacheArchive_284, inventoryModelId);
         if(model == null) {
             return null;
         }
