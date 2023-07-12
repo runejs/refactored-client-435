@@ -7,7 +7,6 @@ import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.frame.tab.parts.TabParts;
-import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
@@ -34,6 +33,7 @@ public class Class60 {
      */
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1206;
     public static ProducingGraphicsBuffer flameRightBackground;
+    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1285;
 
     public static void updateLogin() {
         method836(1);
@@ -297,7 +297,7 @@ public class Class60 {
             MovedStatics.aProducingGraphicsBuffer_907.drawGraphics(offsetX + 128, offsetY, graphics);
             aProducingGraphicsBuffer_1206.drawGraphics(offsetX + 202, offsetY + 371, graphics);
             MovedStatics.aProducingGraphicsBuffer_463.drawGraphics(offsetX, offsetY + 265, graphics);
-            KeyFocusListener.aProducingGraphicsBuffer_1285.drawGraphics(offsetX + 562, offsetY + 265, graphics);
+            aProducingGraphicsBuffer_1285.drawGraphics(offsetX + 562, offsetY + 265, graphics);
             MovedStatics.aProducingGraphicsBuffer_2524.drawGraphics(offsetX + 128, offsetY + 171, graphics);
             aProducingGraphicsBuffer_1631.drawGraphics(offsetX + 562, offsetY + 171, graphics);
             muteButton.drawGraphics(ScreenController.drawWidth-42, ScreenController.drawHeight-42, graphics);
@@ -379,7 +379,7 @@ public class Class60 {
             Rasterizer.resetPixels();
             MovedStatics.aProducingGraphicsBuffer_463 = MovedStatics.createGraphicsBuffer(202, 238, arg0);
             Rasterizer.resetPixels();
-            KeyFocusListener.aProducingGraphicsBuffer_1285 = MovedStatics.createGraphicsBuffer(203, 238, arg0);
+            aProducingGraphicsBuffer_1285 = MovedStatics.createGraphicsBuffer(203, 238, arg0);
             Rasterizer.resetPixels();
             MovedStatics.aProducingGraphicsBuffer_2524 = MovedStatics.createGraphicsBuffer(74, 94, arg0);
             Rasterizer.resetPixels();
@@ -401,7 +401,7 @@ public class Class60 {
             titleImg.drawInverse(-202, -171);
             MovedStatics.aProducingGraphicsBuffer_463.prepareRasterizer();
             titleImg.drawInverse(0, -265);
-            KeyFocusListener.aProducingGraphicsBuffer_1285.prepareRasterizer();
+            aProducingGraphicsBuffer_1285.prepareRasterizer();
             titleImg.drawInverse(-562, -265);
             MovedStatics.aProducingGraphicsBuffer_2524.prepareRasterizer();
             titleImg.drawInverse(-128, -171);
@@ -426,7 +426,7 @@ public class Class60 {
             titleImg.drawInverse(180, -171);
             MovedStatics.aProducingGraphicsBuffer_463.prepareRasterizer();
             titleImg.drawInverse(382, -265);
-            KeyFocusListener.aProducingGraphicsBuffer_1285.prepareRasterizer();
+            aProducingGraphicsBuffer_1285.prepareRasterizer();
             titleImg.drawInverse(-180, -265);
             MovedStatics.aProducingGraphicsBuffer_2524.prepareRasterizer();
             titleImg.drawInverse(254, -171);

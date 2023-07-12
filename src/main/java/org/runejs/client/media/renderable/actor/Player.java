@@ -7,7 +7,6 @@ import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.def.SpotAnimDefinition;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
-import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
@@ -153,7 +152,7 @@ public class Player extends Actor {
                     chatBuffer.currentPosition = 0;
                     appearanceBuffer.getBytes(0, messageLength, chatBuffer.buffer);
                     chatBuffer.currentPosition = 0;
-                    String incomming = KeyFocusListener.method956(appearanceBuffer);
+                    String incomming = MovedStatics.method956(appearanceBuffer);
                     String class1 = RSString.formatChatString(incomming);
                     player.forcedChatMessage = class1.trim();
                     player.anInt3078 = 150;

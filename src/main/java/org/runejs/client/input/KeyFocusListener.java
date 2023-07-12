@@ -1,9 +1,6 @@
 package org.runejs.client.input;
 
-import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.frame.console.Console;
-import org.runejs.client.io.Buffer;
-import org.runejs.client.language.Native;
 import org.runejs.client.*;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.util.Signlink;
@@ -16,9 +13,6 @@ import java.awt.event.KeyListener;
 import java.lang.reflect.Method;
 
 public class KeyFocusListener implements KeyListener, FocusListener {
-    public static LinkedList aLinkedList_1278 = new LinkedList();
-    public static int[] crc8LookupTable = new int[256];
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1285;
     public static volatile int framesSinceKeyboardInput = 0;
 
     static {
@@ -31,75 +25,8 @@ public class KeyFocusListener implements KeyListener, FocusListener {
                     currentByte = -306674912 ^ currentByte >>> 1;
                 }
             }
-            crc8LookupTable[divident] = currentByte;
+            MovedStatics.crc8LookupTable[divident] = currentByte;
         }
-    }
-
-    public static int method955(CacheArchive arg0) {
-        int i = 0;
-        if (arg0.method194(Native.invback, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.chatback, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.mapBack, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackbase1, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackbase2, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackhmid1, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackleft1, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackleft2, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackright1, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackright2, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBacktop1, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackvmid1, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackvmid2, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackvmid3, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.imgBackhmid2, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.redstone1, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.redstone2, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.redstone3, Native.aClass1_305)) {
-            i++;
-        }
-        if (arg0.method194(Native.sideIcons, Native.aClass1_305)) {
-            i++;
-        }
-        return i;
-
-    }
-
-    public static String method956(Buffer arg1) {
-        return MovedStatics.method307(arg1, -1, 32767);
     }
 
     public static void addListeners(Component arg0) {

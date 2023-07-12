@@ -6,7 +6,6 @@ import org.runejs.client.cache.cs.ClientScript;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.node.Node;
 import org.runejs.client.frame.ChatBox;
-import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
@@ -43,6 +42,7 @@ public class ClientScriptRunner extends Node {
     public static int[] scriptIntValues = new int[1000];
     public static InvokedScript[] invokedScripts = new InvokedScript[50];
     public static int invokedScriptIndex = 0;
+    public static LinkedList aLinkedList_1278 = new LinkedList();
     private static String[] aClass1Array2964 = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
     public int[] opcodes;
@@ -185,12 +185,12 @@ public class ClientScriptRunner extends Node {
             }
         }
 
-        KeyFocusListener.aLinkedList_1278.addLast(clientScriptRunner);
+        aLinkedList_1278.addLast(clientScriptRunner);
     }
 
     public static void createClientScriptCheckPacket(int packetId, PacketBuffer buffer) {
         for(; ; ) {
-            ClientScriptRunner clientScriptRunner = (ClientScriptRunner) KeyFocusListener.aLinkedList_1278.peekFirst();
+            ClientScriptRunner clientScriptRunner = (ClientScriptRunner) aLinkedList_1278.peekFirst();
             if(clientScriptRunner == null) {
                 break;
             }

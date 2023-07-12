@@ -26,7 +26,6 @@ import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.frame.ChatBox;
-import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer3D;
@@ -374,6 +373,7 @@ public class MovedStatics {
     public static ProducingGraphicsBuffer tabPieceLeft;
     public static int anInt3048 = 1;
     public static boolean[] obfuscatedKeyStatus = new boolean[112];
+    public static int[] crc8LookupTable = new int[256];
 
     public static void method440() {
         if (aBoolean512) {
@@ -396,7 +396,7 @@ public class MovedStatics {
             MovedStatics.loginBoxGraphics = null;
             aClass40_Sub5_Sub14_Sub4_2043 = null;
             anIntArray178 = null;
-            KeyFocusListener.aProducingGraphicsBuffer_1285 = null;
+            Class60.aProducingGraphicsBuffer_1285 = null;
             aProducingGraphicsBuffer_463 = null;
             anIntArray1013 = null;
             MusicSystem.method405(10);
@@ -578,7 +578,7 @@ public class MovedStatics {
     }
 
     public static void method540() {
-        KeyFocusListener.aLinkedList_1278 = new LinkedList();
+        ClientScriptRunner.aLinkedList_1278 = new LinkedList();
     }
 
     public static void method332(int arg0) {
@@ -639,7 +639,7 @@ public class MovedStatics {
         int crc = -1;
         for (int currentByte = offset; currentByte < size; currentByte++) {
             int tableIndex = 0xff & (crc ^ data[currentByte]);
-            crc = KeyFocusListener.crc8LookupTable[tableIndex] ^ crc >>> 8;
+            crc = crc8LookupTable[tableIndex] ^ crc >>> 8;
         }
         crc ^= 0xffffffff;
         return crc;
@@ -3543,5 +3543,72 @@ public class MovedStatics {
 
     public static void method778(HuffmanEncoding arg1) {
         aHuffmanEncoding_2590 = arg1;
+    }
+
+    public static int method955(CacheArchive arg0) {
+        int i = 0;
+        if (arg0.method194(Native.invback, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.chatback, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.mapBack, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.imgBackbase1, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.imgBackbase2, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.imgBackhmid1, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.imgBackleft1, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.imgBackleft2, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.imgBackright1, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.imgBackright2, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.imgBacktop1, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.imgBackvmid1, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.imgBackvmid2, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.imgBackvmid3, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.imgBackhmid2, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.redstone1, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.redstone2, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.redstone3, Native.aClass1_305)) {
+            i++;
+        }
+        if (arg0.method194(Native.sideIcons, Native.aClass1_305)) {
+            i++;
+        }
+        return i;
+
+    }
+
+    public static String method956(Buffer arg1) {
+        return method307(arg1, -1, 32767);
     }
 }

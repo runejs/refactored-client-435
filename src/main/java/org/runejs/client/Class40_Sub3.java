@@ -12,7 +12,6 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.node.Node;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.console.Console;
-import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer3D;
@@ -239,7 +238,7 @@ public class Class40_Sub3 extends Node {
                 MovedStatics.loadingPercent = 85;
             }
         } else if (MovedStatics.loadingPercent == 85) {
-            int i = KeyFocusListener.method955(CacheArchive.gameImageCacheArchive);
+            int i = MovedStatics.method955(CacheArchive.gameImageCacheArchive);
             int i_9_ = ActorDefinition.method576();
             if (i < i_9_) {
                 Native.currentLoadingText = English.loadingGameScreen + (i * 100 / i_9_) + Native.percent;
