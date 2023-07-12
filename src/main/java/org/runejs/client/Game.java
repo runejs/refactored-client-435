@@ -1732,9 +1732,9 @@ public class Game {
                     Configuration.PASSWORD = Native.password.toString();
                     InteractiveObject.playerRights = MovedStatics.gameServerSocket.read();
                     MovedStatics.accountFlagged = MovedStatics.gameServerSocket.read() == 1;
-                    PlayerAppearance.anInt708 = MovedStatics.gameServerSocket.read();
-                    PlayerAppearance.anInt708 <<= 8;
-                    PlayerAppearance.anInt708 += MovedStatics.gameServerSocket.read();
+                    Player.localPlayerId = MovedStatics.gameServerSocket.read();
+                    Player.localPlayerId <<= 8;
+                    Player.localPlayerId += MovedStatics.gameServerSocket.read();
                     Class44.anInt1049 = MovedStatics.gameServerSocket.read();
                     MovedStatics.gameServerSocket.readDataToBuffer(0, 1, IncomingPackets.incomingPacketBuffer.buffer);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;

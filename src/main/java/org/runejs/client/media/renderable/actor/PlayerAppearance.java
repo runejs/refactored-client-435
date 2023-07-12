@@ -21,7 +21,6 @@ public class PlayerAppearance {
     public static int[] overheadChatShape = new int[50];
     public static String[] overheadChatMessage = new String[50];
     public static int anInt704 = 0;
-    public static int anInt708 = -1;
     public static int[] overheadChatColor = new int[50];
     public static ProducingGraphicsBuffer tabPieveLowerRight;
     public static int[] anIntArray715 = new int[50];

@@ -5,7 +5,6 @@ import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.misc.TransformPlayerToObjectInboundMessage;
 import org.runejs.client.scene.Scene;
@@ -25,7 +24,7 @@ public class TransformPlayerToObjectMessageHandler implements MessageHandler<Tra
         int type = GameObjectDefinition.OBJECT_TYPES[typeKey];
 
         Player player;
-        if (message.playerId != PlayerAppearance.anInt708)
+        if (message.playerId != Player.localPlayerId)
             player = Player.trackedPlayers[message.playerId];
         else
             player = Player.localPlayer;

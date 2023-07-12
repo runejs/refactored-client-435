@@ -55,6 +55,7 @@ public class Player extends Actor {
     public static long[] friends;
     public static int ignoresCount = 0;
     public static int flashingTabId = -1;
+    public static int localPlayerId = -1;
     public int skillLevel;
     public int anInt3258;
     public int combatLevel = 0;

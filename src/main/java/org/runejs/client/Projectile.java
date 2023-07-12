@@ -7,7 +7,6 @@ import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.media.renderable.actor.PlayerAppearance;
 
 public class Projectile extends Renderable {
     public int startHeight;
@@ -73,7 +72,7 @@ public class Projectile extends Renderable {
             }
             if(actor.facingActorIndex >= 32768) {
                 int i = -32768 + actor.facingActorIndex;
-                if(i == PlayerAppearance.anInt708)
+                if(i == Player.localPlayerId)
                     i = 2047;
                 Player player = Player.trackedPlayers[i];
                 if(player != null) {

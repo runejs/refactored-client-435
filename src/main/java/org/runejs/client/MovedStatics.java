@@ -477,7 +477,7 @@ public class MovedStatics {
                     if (projectile.entityIndex < 0) {
                         int i = -1 + -projectile.entityIndex;
                         Player class40_sub5_sub17_sub4_sub1;
-                        if (i != PlayerAppearance.anInt708)
+                        if (i != Player.localPlayerId)
                             class40_sub5_sub17_sub4_sub1 = Player.trackedPlayers[i];
                         else
                             class40_sub5_sub17_sub4_sub1 = Player.localPlayer;
