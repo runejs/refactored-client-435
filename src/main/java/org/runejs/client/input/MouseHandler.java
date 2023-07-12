@@ -129,7 +129,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     GameInterface gameInterface = GameInterface.getInterface(id);
                     if(gameInterface.itemSwapable || gameInterface.itemDeletesDraged) {
                         Renderable.anInt2869 = clickX;
-                        Class40_Sub5_Sub15.lastItemDragged = false;
+                        MovedStatics.lastItemDragged = false;
                         MovedStatics.activeInterfaceType = 2;
                         MovedStatics.modifiedWidgetId = id;
                         MovedStatics.anInt2798 = clickY;

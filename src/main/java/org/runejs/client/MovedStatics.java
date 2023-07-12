@@ -295,6 +295,11 @@ public class MovedStatics {
      */
     public static int anInt2024 = 1;
     public static boolean showIconsRedrawnText = false;
+    public static IndexedImage loginScreenBox;
+    public static IndexedImage[] tabIcons;
+    public static boolean lastItemDragged = false;
+    public static int[] anIntArray2788 = new int[]{16, 32, 64, 128};
+    public static int randomiserHue = -8 + (int) (17.0 * Math.random());
 
     public static void method440() {
         if (ISAAC.aBoolean512) {
@@ -306,7 +311,7 @@ public class MovedStatics {
             anIntArray3255 = null;
             Class59.imgLoginScreenButton = null;
             anIntArray1445 = null;
-            Class40_Sub5_Sub15.loginScreenBox = null;
+            loginScreenBox = null;
             Renderable.anIntArray2865 = null;
             MovedStatics.flameLeftBackground = null;
             aProducingGraphicsBuffer_907 = null;
@@ -691,19 +696,19 @@ public class MovedStatics {
                     tabHighlightImageTopRightEdge.drawImage(209, 9);
             }
             if (tabWidgetIds[0] != -1 && arg4 != 0)
-                Class40_Sub5_Sub15.tabIcons[0].drawImage(29, 13);
+                tabIcons[0].drawImage(29, 13);
             if (tabWidgetIds[1] != -1 && arg4 != 1)
-                Class40_Sub5_Sub15.tabIcons[1].drawImage(53, 11);
+                tabIcons[1].drawImage(53, 11);
             if (tabWidgetIds[2] != -1 && arg4 != 2)
-                Class40_Sub5_Sub15.tabIcons[2].drawImage(82, 11);
+                tabIcons[2].drawImage(82, 11);
             if (tabWidgetIds[3] != -1 && arg4 != 3)
-                Class40_Sub5_Sub15.tabIcons[3].drawImage(115, 12);
+                tabIcons[3].drawImage(115, 12);
             if (tabWidgetIds[4] != -1 && arg4 != 4)
-                Class40_Sub5_Sub15.tabIcons[4].drawImage(153, 13);
+                tabIcons[4].drawImage(153, 13);
             if (tabWidgetIds[5] != -1 && arg4 != 5)
-                Class40_Sub5_Sub15.tabIcons[5].drawImage(180, 11);
+                tabIcons[5].drawImage(180, 11);
             if (tabWidgetIds[6] != -1 && arg4 != 6)
-                Class40_Sub5_Sub15.tabIcons[6].drawImage(208, 13);
+                tabIcons[6].drawImage(208, 13);
         }
         RSCanvas.tabBottom.prepareRasterizer();
         tabBottomBack.drawImage(0, 0);
@@ -727,17 +732,17 @@ public class MovedStatics {
                     ISAAC.tabHighlightImageBottomRightEdge.drawImage(229, 0);
             }
             if (tabWidgetIds[8] != -1 && arg4 != 8)
-                Class40_Sub5_Sub15.tabIcons[7].drawImage(74, 2);
+                tabIcons[7].drawImage(74, 2);
             if (tabWidgetIds[9] != -1 && arg4 != 9)
-                Class40_Sub5_Sub15.tabIcons[8].drawImage(102, 3);
+                tabIcons[8].drawImage(102, 3);
             if (tabWidgetIds[10] != -1 && arg4 != 10)
-                Class40_Sub5_Sub15.tabIcons[9].drawImage(137, 4);
+                tabIcons[9].drawImage(137, 4);
             if (tabWidgetIds[11] != -1 && arg4 != 11)
-                Class40_Sub5_Sub15.tabIcons[10].drawImage(174, 2);
+                tabIcons[10].drawImage(174, 2);
             if (tabWidgetIds[12] != -1 && arg4 != 12)
-                Class40_Sub5_Sub15.tabIcons[11].drawImage(201, 2);
+                tabIcons[11].drawImage(201, 2);
             if (tabWidgetIds[13] != -1 && arg4 != 13)
-                Class40_Sub5_Sub15.tabIcons[12].drawImage(226, 2);
+                tabIcons[12].drawImage(226, 2);
         }
         try {
             Graphics graphics = MouseHandler.gameCanvas.getGraphics();
@@ -1670,7 +1675,7 @@ public class MovedStatics {
             bottomChatBack = null;
             inventoryBackgroundImage = null;
             tabHighlightImageTopRight = null;
-            Class40_Sub5_Sub15.tabIcons = null;
+            tabIcons = null;
             tabHighlightImageBottomRight = null;
             Minimap.mapbackProducingGraphicsBuffer = null;
             RSCanvas.anIntArray62 = null;
@@ -2236,7 +2241,7 @@ public class MovedStatics {
             tabHighlightImageBottomRight = GameInterface.tabHighlightImageTopLeft.cloneImage();
             tabHighlightImageBottomRight.flipHorizontal();
             tabHighlightImageBottomRight.flipVertical();
-            Class40_Sub5_Sub15.tabIcons = IndexedImage.getMultipleIndexedImages(arg2, Native.sideIcons, Native.aClass1_305);
+            tabIcons = IndexedImage.getMultipleIndexedImages(arg2, Native.sideIcons, Native.aClass1_305);
             Landscape.anIntArray1186 = new int[151];
             anIntArray852 = new int[151];
             RSCanvas.anIntArray66 = new int[33];
@@ -3084,5 +3089,15 @@ public class MovedStatics {
         arg0.anInt2025 = i_2_;
         arg0.anInt2028 = i_0_;
         arg0.anInt2036 = i_1_;
+    }
+
+    public static boolean method735(int arg1) {
+        if(arg1 >= 97 && arg1 <= 122)
+            return true;
+        if(arg1 >= 65 && arg1 <= 90)
+            return true;
+        if(arg1 >= 48 && arg1 <= 57)
+            return true;
+        return false;
     }
 }

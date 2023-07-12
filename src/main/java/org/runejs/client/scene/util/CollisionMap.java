@@ -118,7 +118,7 @@ public class CollisionMap {
                 renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, arg7, i, 1, i_0_);
             else
                 renderable = new GameObject(arg1, 1, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
-            arg5.addWall(arg9, arg8, arg3, i_3_, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
+            arg5.addWall(arg9, arg8, arg3, i_3_, MovedStatics.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
             if (gameObjectDefinition.solid)
                 arg0.unmarkWall(arg9, arg8, arg4, arg7, gameObjectDefinition.walkable);
         } else if (arg4 == 2) {
@@ -141,7 +141,7 @@ public class CollisionMap {
                 renderable = new GameObject(arg1, 3, arg7, i, i_0_, i_2_, i_1_, gameObjectDefinition.animationId, true);
             else
                 renderable = gameObjectDefinition.createTerrainObjectModel(i_2_, i_1_, arg7, i, 3, i_0_);
-            arg5.addWall(arg9, arg8, arg3, i_3_, Class40_Sub5_Sub15.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
+            arg5.addWall(arg9, arg8, arg3, i_3_, MovedStatics.anIntArray2788[arg7], 0, i_5_, renderable, null, i_4_);
             if (gameObjectDefinition.solid)
                 arg0.unmarkWall(arg9, arg8, arg4, arg7, gameObjectDefinition.walkable);
         } else if (arg4 == 9) {

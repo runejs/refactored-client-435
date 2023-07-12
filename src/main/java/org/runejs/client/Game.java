@@ -1394,14 +1394,14 @@ public class Game {
                         if(MovedStatics.activeInterfaceType != 0) {
                             Buffer.lastItemDragTime++;
                             if(MouseHandler.mouseX > Renderable.anInt2869 + 5 || Renderable.anInt2869 + -5 > MouseHandler.mouseX || MovedStatics.anInt2798 + 5 < MouseHandler.mouseY || MovedStatics.anInt2798 - 5 > MouseHandler.mouseY)
-                                Class40_Sub5_Sub15.lastItemDragged = true;
+                                MovedStatics.lastItemDragged = true;
                             if(MouseHandler.currentMouseButtonPressed == 0) {
                                 if(MovedStatics.activeInterfaceType == 3)
                                     ChatBox.redrawChatbox = true;
                                 if(MovedStatics.activeInterfaceType == 2)
                                     GameInterface.redrawTabArea = true;
                                 MovedStatics.activeInterfaceType = 0;
-                                if(Class40_Sub5_Sub15.lastItemDragged && Buffer.lastItemDragTime >= 5) {
+                                if(MovedStatics.lastItemDragged && Buffer.lastItemDragTime >= 5) {
                                     RSRuntimeException.lastActiveInvInterface = -1;
                                     MovedStatics.processRightClick();
                                     if(RSRuntimeException.lastActiveInvInterface == MovedStatics.modifiedWidgetId && mouseInvInterfaceIndex != GroundItemTile.selectedInventorySlot) {

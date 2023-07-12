@@ -4,18 +4,11 @@ import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.FrameDefinition;
 import org.runejs.client.cache.def.FramemapDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
-import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.cache.def.SpotAnimDefinition;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.node.CachedNode;
 
 public class Class40_Sub5_Sub15 extends CachedNode {
-    public static IndexedImage loginScreenBox;
-    public static IndexedImage[] tabIcons;
-    public static boolean lastItemDragged = false;
-    public static int[] anIntArray2788 = new int[]{16, 32, 64, 128};
-    public static int randomiserHue = -8 + (int) (17.0 * Math.random());
-
     public FrameDefinition[] aFrameDefinitionArray2794;
 
     public Class40_Sub5_Sub15(CacheArchive arg0, CacheArchive arg1, int arg2, boolean arg3) {
@@ -46,17 +39,6 @@ public class Class40_Sub5_Sub15 extends CachedNode {
         }
     }
 
-
-
-    public static boolean method735(int arg1) {
-        if(arg1 >= 97 && arg1 <= 122)
-            return true;
-        if(arg1 >= 65 && arg1 <= 90)
-            return true;
-        if(arg1 >= 48 && arg1 <= 57)
-            return true;
-        return false;
-    }
 
     public static void updateAnimation(Actor actor) {
         actor.aBoolean3105 = false;

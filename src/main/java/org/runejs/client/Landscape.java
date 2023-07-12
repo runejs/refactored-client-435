@@ -383,12 +383,12 @@ public class Landscape {
                 }
             }
         }
-        Class40_Sub5_Sub15.randomiserHue += (int) (5.0 * Math.random()) + -2;
+        MovedStatics.randomiserHue += (int) (5.0 * Math.random()) + -2;
         Actor.randomiserLightness += -2 + (int) (5.0 * Math.random());
-        if(Class40_Sub5_Sub15.randomiserHue < -8)
-            Class40_Sub5_Sub15.randomiserHue = -8;
-        if(Class40_Sub5_Sub15.randomiserHue > 8)
-            Class40_Sub5_Sub15.randomiserHue = 8;
+        if(MovedStatics.randomiserHue < -8)
+            MovedStatics.randomiserHue = -8;
+        if(MovedStatics.randomiserHue > 8)
+            MovedStatics.randomiserHue = 8;
         if(Actor.randomiserLightness < -16)
             Actor.randomiserLightness = -16;
         if(Actor.randomiserLightness > 16)
@@ -490,7 +490,7 @@ public class Landscape {
                                     int l = lightness / direction;
                                     hslBitsetOriginal = generateHslBitset(s, l, h);
                                     l += Actor.randomiserLightness;
-                                    h = h + Class40_Sub5_Sub15.randomiserHue & 0xff;
+                                    h = h + MovedStatics.randomiserHue & 0xff;
                                     if(l >= 0) {
                                         if(l > 255)
                                             l = 255;
@@ -526,7 +526,7 @@ public class Landscape {
                                         overlayMinimapColour = -2;
                                     } else {
                                         hslBitset = generateHslBitset(overlayDefinition.lightness, overlayDefinition.saturation, overlayDefinition.hue);
-                                        int h = Class40_Sub5_Sub15.randomiserHue + overlayDefinition.hue & 0xff;
+                                        int h = MovedStatics.randomiserHue + overlayDefinition.hue & 0xff;
                                         int s = Actor.randomiserLightness + overlayDefinition.saturation;
                                         if(s < 0)
                                             s = 0;
@@ -538,7 +538,7 @@ public class Landscape {
                                     if(overlayMinimapColour != -2)
                                         rgb = Rasterizer3D.hsl2rgb[MovedStatics.mixLightnessSigned(overlayMinimapColour, 96)];
                                     if(overlayDefinition.secondaryColor != -1) {
-                                        int i_54_ = 0xff & Class40_Sub5_Sub15.randomiserHue + overlayDefinition.otherHue;
+                                        int i_54_ = 0xff & MovedStatics.randomiserHue + overlayDefinition.otherHue;
                                         int i_55_ = overlayDefinition.otherSaturation + Actor.randomiserLightness;
                                         if(i_55_ >= 0) {
                                             if(i_55_ > 255)
@@ -1101,7 +1101,7 @@ public class Landscape {
                     renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 1, vertexHeightRight);
                 else
                     renderable = new GameObject(objectId, 1, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                scene.addWall(localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
+                scene.addWall(localX, localY, plane, vertexMix, MovedStatics.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
                 if(gameObjectDefinition.castsShadow) {
                     if(face == 0)
                         tileShadowIntensity[plane][localX][localY + 1] = (byte) 50;
@@ -1151,7 +1151,7 @@ public class Landscape {
                     renderable = new GameObject(objectId, 3, face, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
                 else
                     renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, face, vertexHeight, 3, vertexHeightRight);
-                scene.addWall(localX, localY, plane, vertexMix, Class40_Sub5_Sub15.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
+                scene.addWall(localX, localY, plane, vertexMix, MovedStatics.anIntArray2788[face], 0, hash, renderable, null, objectConfig);
                 if(gameObjectDefinition.castsShadow) {
                     if(face != 0) {
                         if(face == 1)

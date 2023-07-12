@@ -319,7 +319,7 @@ public class Class60 {
         }
         if (Class51.gameStatusCode == 20) {
             int drawY = 40;
-            Class40_Sub5_Sub15.loginScreenBox.drawImage(0, 0);
+            MovedStatics.loginScreenBox.drawImage(0, 0);
             fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineOne, 180, drawY, 16776960, true);
             drawY += 15;
             fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineTwo, 180, drawY, 16776960, true);
@@ -333,7 +333,7 @@ public class Class60 {
             drawY += 15;
         }
         if (Class51.gameStatusCode == 10) {
-            Class40_Sub5_Sub15.loginScreenBox.drawImage(0, 0);
+            MovedStatics.loginScreenBox.drawImage(0, 0);
             if (loginScreenState == 0) {
                 /*fontBold.drawShadowedStringCenter(English.welcomeTo, 180, 80, 16776960, true);
                 int drawX = 100;
@@ -599,7 +599,7 @@ public class Class60 {
 
             logo.drawImage(-128 + 382 + -(logo.imageWidth / 2), 18);
 
-            Class40_Sub5_Sub15.loginScreenBox = Game.method359(Native.titleBox, "", gameImageCacheArchive);
+            MovedStatics.loginScreenBox = Game.method359(Native.titleBox, "", gameImageCacheArchive);
             Class59.imgLoginScreenButton = Game.method359(Native.titleButton, "", gameImageCacheArchive);
             MovedStatics.aClass40_Sub5_Sub14_Sub2Array535 = IndexedImage.getMultipleIndexedImages(gameImageCacheArchive, Native.runes, "");
 
