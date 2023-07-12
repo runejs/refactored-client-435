@@ -1,36 +1,81 @@
-plugins {
-    id 'java'
-    id 'application'
-}
+buildscript {
+    
 
-group = 'tech.henning'
-version = '0.3'
-
-sourceCompatibility = 8
-targetCompatibility = 8
-
-repositories {
-    mavenCentral()
-}
-
-application {
-    mainClassName 'org.runejs.client.GameShell'
-}
-
-jar {
-    dependsOn configurations.runtimeClasspath
-
-    manifest {
-        attributes("MAIN-CLASS": application.mainClassName)
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        google()
     }
-
-    from {
-        sourceSets.main.output
-        sourceSets.main.resources
-        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    dependencies {
+        classpath 'org.wisepersist:gwt-gradle-plugin:1.1.16'
+        classpath 'org.gretty:gretty:3.0.7'
     }
 }
 
-dependencies {
-    implementation group: 'org.yaml', name: 'snakeyaml', version:'1.26'
+allprojects {
+    apply plugin: "eclipse"
+
+    version = '1.0'
+    ext {
+        appName = "Refactored Client 435 GDX"
+        gdxVersion = '1.12.0'
+        roboVMVersion = '2.3.19'
+        box2DLightsVersion = '1.5'
+        ashleyVersion = '1.7.4'
+        aiVersion = '1.8.2'
+        gdxControllersVersion = '2.2.1'
+        sourceCompatibility = 8
+        targetCompatibility = 8
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        maven { url "https://jitpack.io" }
+    }
+}
+
+project(":desktop") {
+    apply plugin: "java-library"
+
+
+    dependencies {
+        implementation project(":core")
+        api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        
+    }
+}
+
+project(":html") {
+    apply plugin: "java-library"
+    apply plugin: "gwt"
+    apply plugin: "war"
+    apply plugin: "org.gretty"
+
+
+    dependencies {
+        implementation project(":core")
+        api "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
+        api "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
+        
+    }
+}
+
+project(":core") {
+    apply plugin: "java-library"
+
+
+    dependencies {
+        implementation group: 'org.yaml', name: 'snakeyaml', version:'1.26'
+        api "com.badlogicgames.gdx:gdx:$gdxVersion"
+
+    }
 }

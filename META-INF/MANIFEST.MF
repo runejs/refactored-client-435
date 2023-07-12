@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: Main
-Class-Path: snakeyaml-1.26.jar
-
