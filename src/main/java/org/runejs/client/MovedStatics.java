@@ -504,10 +504,6 @@ public class MovedStatics {
         return 3;
     }
 
-    public static void method233() {
-        OverlayDefinition.overlayDefinitionCache.clear();
-    }
-
     public static void initializeAnimationCaches(CacheArchive skinArchive, CacheArchive definitionArchive, CacheArchive skeletonArchive) {
         ClientScriptRunner.aCacheArchive_2162 = skinArchive;
         aCacheArchive_2364 = skeletonArchive;
@@ -3327,7 +3323,7 @@ public class MovedStatics {
     }
 
     public static void clearCaches() {
-        method233();
+        OverlayDefinition.method233();
         UnderlayDefinition.clearUnderlayDefinitionCache();
         GameInterface.method640();
         GameObjectDefinition.clearGameObjectModelCache();
