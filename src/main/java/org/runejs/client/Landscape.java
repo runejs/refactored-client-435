@@ -29,10 +29,6 @@ import java.io.IOException;
 public class Landscape {
     public static CollisionMap[] currentCollisionMap = new CollisionMap[4];
     public static int[] anIntArray1168;
-    /**
-     * Position of the hint icon within the specific tile.
-     */
-    public static int hintIconInnerPosX = 0;
     public static int anInt1171 = 0;
     public static ProducingGraphicsBuffer framePieceRight;
     public static int[] anIntArray1186;

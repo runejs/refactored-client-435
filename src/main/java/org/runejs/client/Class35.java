@@ -5,10 +5,6 @@ import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.io.Buffer;
 
 public class Class35 implements Interface3 {
-    /**
-     * Position of the hint icon within the specific tile.
-     */
-    public static int hintIconInnerPosY = 0;
     public static boolean aBoolean1734 = false;
     /**
      * The image used for the highlighted (selected) tab button,
