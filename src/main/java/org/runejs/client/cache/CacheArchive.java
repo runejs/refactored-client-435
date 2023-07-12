@@ -416,7 +416,7 @@ public class CacheArchive {
             is_21_ = aByteArrayArray212[arg0];
         else {
             is_21_ = new byte[aByteArrayArray212[arg0].length];
-            Class18.method278(aByteArrayArray212[arg0], 0, is_21_, 0, is_21_.length);
+            MovedStatics.method278(aByteArrayArray212[arg0], 0, is_21_, 0, is_21_.length);
             Buffer class40_sub1 = new Buffer(is_21_);
             class40_sub1.method483(arg2, class40_sub1.buffer.length, 5);
         }
@@ -449,7 +449,7 @@ public class CacheArchive {
                 int i_32_ = 0;
                 for(int i_33_ = 0; i_33_ < i; i_33_++) {
                     i_32_ += class40_sub1.getIntBE();
-                    Class18.method278(is_22_, i_30_, is[is_19_[i_33_]], is_25_[i_33_], i_32_);
+                    MovedStatics.method278(is_22_, i_30_, is[is_19_[i_33_]], is_25_[i_33_], i_32_);
                     is_25_[i_33_] += i_32_;
                     i_30_ += i_32_;
                 }
