@@ -213,9 +213,9 @@ public class Landscape {
                 if(z < -1 + Player.worldLevel)
                     z = -1 + Player.worldLevel;
                 if(!VertexNormal.lowMemory)
-                    Game.currentScene.setHeightLevel(0);
+                    Game.currentScene.setPlane(0);
                 else
-                    Game.currentScene.setHeightLevel(lowestPlane);
+                    Game.currentScene.setPlane(lowestPlane);
                 for(int x = 0; x < 104; x++) {
                     for(int y = 0; y < 104; y++)
                         MovedStatics.spawnGroundItem(y, x);

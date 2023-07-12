@@ -72,7 +72,7 @@ public class Scene {
     public int[][][] tileOcclusionCycles;
     public int sceneSpawnRequestsCacheCurrentPos = 0;
     public InteractiveObject[] sceneSpawnRequestsCache = new InteractiveObject[5000];
-    public int currentPositionZ = 0;
+    public int plane = 0;
     public int[][][] heightMap;
     public int mergeIndexTmp = 0;
     public int[] mergeIndexA = new int[10000];
@@ -443,7 +443,7 @@ public class Scene {
         }
         processCulling(plane);
         anInt109 = 0;
-        for (int z = currentPositionZ; z < mapSizeZ; z++) {
+        for (int z = this.plane; z < mapSizeZ; z++) {
             SceneTile[][] sceneTiles = tileArray[z];
             for (int x = currentPositionX; x < mapBoundsX; x++) {
                 for (int y = currentPositionY; y < mapBoundsY; y++) {
@@ -463,7 +463,7 @@ public class Scene {
                 }
             }
         }
-        for (int i = currentPositionZ; i < mapSizeZ; i++) {
+        for (int i = this.plane; i < mapSizeZ; i++) {
             SceneTile[][] sceneTiles = tileArray[i];
             for (int i_25_ = -TILE_DRAW_DISTANCE; i_25_ <= 0; i_25_++) {
                 int i_26_ = cameraPositionTileX + i_25_;
@@ -508,7 +508,7 @@ public class Scene {
                 }
             }
         }
-        for (int i = currentPositionZ; i < mapSizeZ; i++) {
+        for (int i = this.plane; i < mapSizeZ; i++) {
             SceneTile[][] sceneTiles = tileArray[i];
             for (int i_31_ = -TILE_DRAW_DISTANCE; i_31_ <= 0; i_31_++) {
                 int i_32_ = cameraPositionTileX + i_31_;
@@ -1940,12 +1940,12 @@ public class Scene {
         }
     }
 
-    public void setHeightLevel(int z) {
-        currentPositionZ = z;
+    public void setPlane(int plane) {
+        this.plane = plane;
         for (int x = 0; x < mapSizeX; x++) {
             for (int y = 0; y < mapSizeY; y++) {
-                if (tileArray[z][x][y] == null) {
-                    tileArray[z][x][y] = new SceneTile(z, x, y);
+                if (tileArray[plane][x][y] == null) {
+                    tileArray[plane][x][y] = new SceneTile(plane, x, y);
                 }
             }
         }
