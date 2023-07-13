@@ -937,16 +937,36 @@ public class Game {
                 ChatBox.redrawChatbox = true;
             }
         }
+
+        if(GameInterface.tabAreaInterfaceId != -1) {
+            boolean bool = GameInterface.handleSequences(GameInterface.tabAreaInterfaceId);
+            if(bool) {
+                GameInterface.redrawTabArea = true;
+            }
+        }
+
+        if(GameInterface.chatboxInterfaceId != -1) {
+            boolean bool = GameInterface.handleSequences(GameInterface.chatboxInterfaceId);
+            if(bool) {
+                ChatBox.redrawChatbox = true;
+            }
+        }
+
+        if(ChatBox.dialogueId != -1) {
+            boolean bool = GameInterface.handleSequences(ChatBox.dialogueId);
+            if(bool) {
+                ChatBox.redrawChatbox = true;
+            }
+        }
+        
+        if(flashingTabId != -1) {
+            GameInterface.drawTabIcons = true;
+        }
+
         if(ScreenController.frameMode == ScreenMode.FIXED) {
 
             if(MovedStatics.menuOpen && MovedStatics.menuScreenArea == 1) {
                 GameInterface.redrawTabArea = true;
-            }
-            if(GameInterface.tabAreaInterfaceId != -1) {
-                boolean bool = GameInterface.handleSequences(GameInterface.tabAreaInterfaceId);
-                if(bool) {
-                    GameInterface.redrawTabArea = true;
-                }
             }
             method353();
 
@@ -958,18 +978,6 @@ public class Game {
             }
             MovedStatics.drawTabArea();
 
-            if(GameInterface.chatboxInterfaceId != -1) {
-                boolean bool = GameInterface.handleSequences(GameInterface.chatboxInterfaceId);
-                if(bool) {
-                    ChatBox.redrawChatbox = true;
-                }
-            }
-            if(ChatBox.dialogueId != -1) {
-                boolean bool = GameInterface.handleSequences(ChatBox.dialogueId);
-                if(bool) {
-                    ChatBox.redrawChatbox = true;
-                }
-            }
             if(GameInterface.atInventoryInterfaceType == 3) {
                 ChatBox.redrawChatbox = true;
             }
@@ -990,10 +998,6 @@ public class Game {
 
             Minimap.renderMinimap();
 
-
-            if(flashingTabId != -1) {
-                GameInterface.drawTabIcons = true;
-            }
             if(GameInterface.drawTabIcons) {
                 if(flashingTabId != -1 && flashingTabId == currentTabId) {
                     flashingTabId = -1;
@@ -1013,19 +1017,6 @@ public class Game {
             MovedStatics.anInt199 = 0;
 
         } else {
-
-
-            if(GameInterface.tabAreaInterfaceId != -1) {
-                GameInterface.handleSequences(GameInterface.tabAreaInterfaceId);
-            }
-
-            if(GameInterface.chatboxInterfaceId != -1) {
-                GameInterface.handleSequences(GameInterface.chatboxInterfaceId);
-            }
-
-            if(ChatBox.dialogueId != -1) {
-                GameInterface.handleSequences(ChatBox.dialogueId);
-            }
             method353();
             ChatBox.renderChatbox();
 
@@ -1034,10 +1025,6 @@ public class Game {
             // this render is  handled in `ResizableFrameRenderer`
             //Minimap.renderMinimap();
 
-
-            if(flashingTabId != -1) {
-                GameInterface.drawTabIcons = true;
-            }
             if(GameInterface.drawTabIcons) {
                 if(flashingTabId != -1 && flashingTabId == currentTabId) {
                     flashingTabId = -1;
