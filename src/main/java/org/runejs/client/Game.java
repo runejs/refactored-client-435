@@ -644,7 +644,7 @@ public class Game {
             ChatBox.chatMessages[i] = null;
         GameInterface.itemCurrentlySelected = 0;
         MovedStatics.destinationX = 0;
-        MovedStatics.anInt1985 = -1;
+        Minimap.minimapLevel = -1;
         Player.npcCount = 0;
         SoundSystem.reset();
         widgetSelected = 0;
@@ -1920,9 +1920,9 @@ public class Game {
         if(true) {
             if (VertexNormal.lowMemory && MovedStatics.onBuildTimePlane != Player.worldLevel)
                 MovedStatics.method789(Player.localPlayer.pathY[0], MovedStatics.regionY, MovedStatics.regionX, Player.localPlayer.pathX[0], Player.worldLevel);
-            else if (MovedStatics.anInt1985 != Player.worldLevel) {
-                MovedStatics.anInt1985 = Player.worldLevel;
-                Minimap.method299(Player.worldLevel);
+            else if (Minimap.minimapLevel != Player.worldLevel) {
+                Minimap.minimapLevel = Player.worldLevel;
+                Minimap.createMinimap(Player.worldLevel);
             }
         }
     }

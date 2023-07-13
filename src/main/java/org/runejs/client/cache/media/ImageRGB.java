@@ -782,7 +782,7 @@ public class ImageRGB extends Rasterizer {
         }
     }
 
-    public void method723() {
+    public void prepareRasterizer() {
         Rasterizer.prepare(pixels, imageWidth, imageHeight);
     }
 

@@ -335,7 +335,6 @@ public class MovedStatics {
      */
     public static int anInt2480 = 0;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
-    public static int anInt1985 = -1;
     public static int anInt1987 = 0;
     public static IndexedImage tabTopBack;
     /**
@@ -3734,7 +3733,7 @@ public class MovedStatics {
                 if(obj.x < 0 || obj.y < 0 || obj.x >= 104 || obj.y >= 104)
                     obj.unlink();
             }
-            anInt1985 = -1;
+            Minimap.minimapLevel = -1;
             if(destinationX != 0) {
                 destinationX -= i_34_;
                 Game.destinationY -= i_35_;

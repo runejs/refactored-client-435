@@ -38,6 +38,7 @@ public class Minimap extends FramePieceRenderer {
      * Minimap tile masks (move to Minimap class)
      */
     public static int[][] anIntArrayArray129 = new int[][]{new int[16], {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1}, {0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1}, {1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1}};
+    public static int minimapLevel = -1;
     private static int[] resizableMinimapOffsets1;
     private static int[] resizableMinimapOffsets2;
     private static ProducingGraphicsBuffer resizableMiniMapimage;
@@ -221,191 +222,195 @@ public class Minimap extends FramePieceRenderer {
         }
     }
 
-    public static void method781(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-        if(arg0 == 1850) {
-            int i = Game.currentScene.getWallHash(arg1, arg2, arg5);
-            if(i != 0) {
-                int i_0_ = Game.currentScene.getArrangement(arg1, arg2, arg5, i);
-                int i_1_ = 0x1f & i_0_;
-                int i_2_ = 0x3 & i_0_ >> 6;
-                int i_3_ = arg3;
-                if(i > 0)
-                    i_3_ = arg4;
-                int i_4_ = 4 * (-arg5 + 103) * 512 + 24624 + 4 * arg2;
-                int i_5_ = i >> 14 & 0x7fff;
-                int[] is = minimapImage.pixels;
-                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_5_);
+    private static void drawObject(int plane, int tileX, int wallRGB, int doorRGB, int tileY) {
+        if(true) {
+            int hash = Game.currentScene.getWallHash(plane, tileX, tileY);
+            if(hash != 0) {
+                int info = Game.currentScene.getArrangement(plane, tileX, tileY, hash);
+                int type = 0x1f & info;
+                int orientation = 0x3 & info >> 6;
+                int rgb = wallRGB;
+                if(hash > 0)
+                    rgb = doorRGB;
+                int offset = 4 * (-tileY + 103) * 512 + 24624 + 4 * tileX;
+                int id = hash >> 14 & 0x7fff;
+                int[] dest = minimapImage.pixels;
+                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(id);
                 if(gameObjectDefinition.mapSceneID == -1) {
-                    if(i_1_ == 0 || i_1_ == 2) {
-                        if(i_2_ == 0) {
-                            is[i_4_] = i_3_;
-                            is[512 + i_4_] = i_3_;
-                            is[1024 + i_4_] = i_3_;
-                            is[1536 + i_4_] = i_3_;
-                        } else if(i_2_ == 1) {
-                            is[i_4_] = i_3_;
-                            is[i_4_ + 1] = i_3_;
-                            is[2 + i_4_] = i_3_;
-                            is[i_4_ + 3] = i_3_;
-                        } else if(i_2_ == 2) {
-                            is[3 + i_4_] = i_3_;
-                            is[3 + i_4_ + 512] = i_3_;
-                            is[1024 + i_4_ + 3] = i_3_;
-                            is[i_4_ + 1539] = i_3_;
-                        } else if(i_2_ == 3) {
-                            is[i_4_ + 1536] = i_3_;
-                            is[1536 + i_4_ + 1] = i_3_;
-                            is[1536 + i_4_ + 2] = i_3_;
-                            is[3 + i_4_ + 1536] = i_3_;
+                    if(type == 0 || type == 2) {
+                        if(orientation == 0) {
+                            dest[offset] = rgb;
+                            dest[512 + offset] = rgb;
+                            dest[1024 + offset] = rgb;
+                            dest[1536 + offset] = rgb;
+                        } else if(orientation == 1) {
+                            dest[offset] = rgb;
+                            dest[offset + 1] = rgb;
+                            dest[2 + offset] = rgb;
+                            dest[offset + 3] = rgb;
+                        } else if(orientation == 2) {
+                            dest[3 + offset] = rgb;
+                            dest[3 + offset + 512] = rgb;
+                            dest[1024 + offset + 3] = rgb;
+                            dest[offset + 1539] = rgb;
+                        } else if(orientation == 3) {
+                            dest[offset + 1536] = rgb;
+                            dest[1536 + offset + 1] = rgb;
+                            dest[1536 + offset + 2] = rgb;
+                            dest[3 + offset + 1536] = rgb;
                         }
                     }
-                    if(i_1_ == 3) {
-                        if(i_2_ != 0) {
-                            if(i_2_ != 1) {
-                                if(i_2_ != 2) {
-                                    if(i_2_ == 3)
-                                        is[i_4_ + 1536] = i_3_;
+                    if(type == 3) {
+                        if(orientation != 0) {
+                            if(orientation != 1) {
+                                if(orientation != 2) {
+                                    if(orientation == 3)
+                                        dest[offset + 1536] = rgb;
                                 } else
-                                    is[3 + i_4_ + 1536] = i_3_;
+                                    dest[3 + offset + 1536] = rgb;
                             } else
-                                is[i_4_ + 3] = i_3_;
+                                dest[offset + 3] = rgb;
                         } else
-                            is[i_4_] = i_3_;
+                            dest[offset] = rgb;
                     }
-                    if(i_1_ == 2) {
-                        if(i_2_ == 3) {
-                            is[i_4_] = i_3_;
-                            is[512 + i_4_] = i_3_;
-                            is[i_4_ + 1024] = i_3_;
-                            is[1536 + i_4_] = i_3_;
-                        } else if(i_2_ == 0) {
-                            is[i_4_] = i_3_;
-                            is[1 + i_4_] = i_3_;
-                            is[i_4_ + 2] = i_3_;
-                            is[3 + i_4_] = i_3_;
-                        } else if(i_2_ == 1) {
-                            is[i_4_ + 3] = i_3_;
-                            is[512 + 3 + i_4_] = i_3_;
-                            is[i_4_ + 1027] = i_3_;
-                            is[1536 + 3 + i_4_] = i_3_;
-                        } else if(i_2_ == 2) {
-                            is[1536 + i_4_] = i_3_;
-                            is[1537 + i_4_] = i_3_;
-                            is[i_4_ + 1538] = i_3_;
-                            is[1536 + i_4_ + 3] = i_3_;
+                    if(type == 2) {
+                        if(orientation == 3) {
+                            dest[offset] = rgb;
+                            dest[512 + offset] = rgb;
+                            dest[offset + 1024] = rgb;
+                            dest[1536 + offset] = rgb;
+                        } else if(orientation == 0) {
+                            dest[offset] = rgb;
+                            dest[1 + offset] = rgb;
+                            dest[offset + 2] = rgb;
+                            dest[3 + offset] = rgb;
+                        } else if(orientation == 1) {
+                            dest[offset + 3] = rgb;
+                            dest[512 + 3 + offset] = rgb;
+                            dest[offset + 1027] = rgb;
+                            dest[1536 + 3 + offset] = rgb;
+                        } else if(orientation == 2) {
+                            dest[1536 + offset] = rgb;
+                            dest[1537 + offset] = rgb;
+                            dest[offset + 1538] = rgb;
+                            dest[1536 + offset + 3] = rgb;
                         }
                     }
                 } else {
-                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
-                    if(class40_sub5_sub14_sub2 != null) {
-                        int i_6_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
-                        int i_7_ = (gameObjectDefinition.sizeY * 4 + -class40_sub5_sub14_sub2.imgHeight) / 2;
-                        class40_sub5_sub14_sub2.drawImage(48 + 4 * arg2 + i_6_, i_7_ + 48 + (104 + -arg5 - gameObjectDefinition.sizeY) * 4);
+                    IndexedImage iconSprite = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
+                    if(iconSprite != null) {
+                        int offsetX = (-iconSprite.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
+                        int offsetY = (gameObjectDefinition.sizeY * 4 + -iconSprite.imgHeight) / 2;
+                        iconSprite.drawImage(48 + 4 * tileX + offsetX, offsetY + 48 + (104 + -tileY - gameObjectDefinition.sizeY) * 4);
                     }
                 }
             }
-            i = Game.currentScene.getLocationHash(arg1, arg2, arg5);
-            if(i != 0) {
-                int i_8_ = Game.currentScene.getArrangement(arg1, arg2, arg5, i);
-                int i_9_ = 0x7fff & i >> 14;
-                int i_10_ = (i_8_ & 0xf4) >> 6;
-                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_9_);
-                int i_11_ = i_8_ & 0x1f;
+            hash = Game.currentScene.getLocationHash(plane, tileX, tileY);
+            if(hash != 0) {
+                int objectInfo = Game.currentScene.getArrangement(plane, tileX, tileY, hash);
+                int id = 0x7fff & hash >> 14;
+                int orientation = (objectInfo & 0xf4) >> 6;
+                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(id);
+                int type = objectInfo & 0x1f;
                 if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
-                    if(class40_sub5_sub14_sub2 != null) {
-                        int i_12_ = (-class40_sub5_sub14_sub2.imgHeight + gameObjectDefinition.sizeY * 4) / 2;
-                        int i_13_ = (gameObjectDefinition.sizeX * 4 + -class40_sub5_sub14_sub2.imgWidth) / 2;
-                        class40_sub5_sub14_sub2.drawImage(i_13_ + arg2 * 4 + 48, 48 - (-(4 * (-arg5 + 104 + -gameObjectDefinition.sizeY)) + -i_12_));
+                    IndexedImage iconSprite = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
+                    if(iconSprite != null) {
+                        int offsetY = (-iconSprite.imgHeight + gameObjectDefinition.sizeY * 4) / 2;
+                        int offsetX = (gameObjectDefinition.sizeX * 4 + -iconSprite.imgWidth) / 2;
+                        iconSprite.drawImage(offsetX + tileX * 4 + 48, 48 - (-(4 * (-tileY + 104 + -gameObjectDefinition.sizeY)) + -offsetY));
                     }
-                } else if(i_11_ == 9) {
-                    int[] is = minimapImage.pixels;
-                    int i_14_ = 15658734;
-                    if(i > 0)
-                        i_14_ = 15597568;
-                    int i_15_ = (-(arg5 * 512) + 52736) * 4 + arg2 * 4 + 24624;
-                    if(i_10_ == 0 || i_10_ == 2) {
-                        is[1536 + i_15_] = i_14_;
-                        is[1024 + i_15_ + 1] = i_14_;
-                        is[514 + i_15_] = i_14_;
-                        is[3 + i_15_] = i_14_;
+                } else if(type == 9) {
+                    int[] dest = minimapImage.pixels;
+                    int color = 15658734; // wall
+                    if(hash > 0)
+                        color = 15597568; // door
+                    int offset = (-(tileY * 512) + 52736) * 4 + tileX * 4 + 24624;
+                    if(orientation == 0 || orientation == 2) {
+                        dest[1536 + offset] = color;
+                        dest[1024 + offset + 1] = color;
+                        dest[514 + offset] = color;
+                        dest[3 + offset] = color;
                     } else {
-                        is[i_15_] = i_14_;
-                        is[513 + i_15_] = i_14_;
-                        is[2 + i_15_ + 1024] = i_14_;
-                        is[1536 + i_15_ + 3] = i_14_;
+                        dest[offset] = color;
+                        dest[513 + offset] = color;
+                        dest[2 + offset + 1024] = color;
+                        dest[1536 + offset + 3] = color;
                     }
                 }
             }
-            i = Game.currentScene.getFloorDecorationHash(arg1, arg2, arg5);
-            if(i != 0) {
-                int i_16_ = (i & 0x1fffd9fb) >> 14;
-                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i_16_);
+            hash = Game.currentScene.getFloorDecorationHash(plane, tileX, tileY);
+            if(hash != 0) {
+                int id = (hash & 0x1fffd9fb) >> 14;
+                GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(id);
                 if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage class40_sub5_sub14_sub2 = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
-                    if(class40_sub5_sub14_sub2 != null) {
-                        int i_17_ = (-class40_sub5_sub14_sub2.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
-                        int i_18_ = (-class40_sub5_sub14_sub2.imgHeight + 4 * gameObjectDefinition.sizeY) / 2;
-                        class40_sub5_sub14_sub2.drawImage(4 * arg2 + 48 + i_17_, i_18_ + (104 - (arg5 + gameObjectDefinition.sizeY)) * 4 + 48);
+                    IndexedImage iconSprite = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
+                    if(iconSprite != null) {
+                        int i_17_ = (-iconSprite.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
+                        int i_18_ = (-iconSprite.imgHeight + 4 * gameObjectDefinition.sizeY) / 2;
+                        iconSprite.drawImage(4 * tileX + 48 + i_17_, i_18_ + (104 - (tileY + gameObjectDefinition.sizeY)) * 4 + 48);
                     }
                 }
             }
         }
     }
 
-    public static void method299(int arg1) {
-	    int[] is = minimapImage.pixels;
-	    int i = is.length;
-	    for(int i_0_ = 0; i > i_0_; i_0_++)
-	        is[i_0_] = 0;
-	    for(int i_1_ = 1; i_1_ < 103; i_1_++) {
-	        int i_2_ = 24628 + (-(512 * i_1_) + 52736) * 4;
-	        for(int i_3_ = 1; i_3_ < 103; i_3_++) {
-	            if((0x18 & MovedStatics.tile_flags[arg1][i_3_][i_1_]) == 0)
-	                Game.currentScene.drawMinimapTile(is, i_2_, 512, arg1, i_3_, i_1_);
-	            if(arg1 < 3 && (MovedStatics.tile_flags[1 + arg1][i_3_][i_1_] & 0x8) != 0)
-	                Game.currentScene.drawMinimapTile(is, i_2_, 512, 1 + arg1, i_3_, i_1_);
-	            i_2_ += 4;
+    public static void createMinimap(int plane) {
+	    int[] pixels = minimapImage.pixels;
+	    for(int i = 0; pixels.length > i; i++)
+	        pixels[i] = 0;
+	    for(int y = 1; y < 103; y++) {
+	        int offset = 24628 + (-(512 * y) + 52736) * 4;
+	        for(int x = 1; x < 103; x++) {
+	            if((0x18 & MovedStatics.tile_flags[plane][x][y]) == 0)
+	                Game.currentScene.drawMinimapTile(pixels, offset, 512, plane, x, y);
+	            if(plane < 3 && (MovedStatics.tile_flags[1 + plane][x][y] & 0x8) != 0)
+	                Game.currentScene.drawMinimapTile(pixels, offset, 512, 1 + plane, x, y);
+	            offset += 4;
 	        }
 	    }
-	    minimapImage.method723();
-	    int i_4_ = (-10 + (int) (Math.random() * 20.0) + 238 << 8) + (228 + (int) (Math.random() * 20.0) << 16) + 238 + (int) (20.0 * Math.random()) + -10;
-	    int i_5_ = -10 + (int) (20.0 * Math.random()) + 238 << 16;
-	    for(int i_6_ = 1; i_6_ < 103; i_6_++) {
-	        for(int i_7_ = 1; i_7_ < 103; i_7_++) {
-	            if((MovedStatics.tile_flags[arg1][i_7_][i_6_] & 0x18) == 0)
-	                method781(1850, arg1, i_7_, i_4_, i_5_, i_6_);
-	            if(arg1 < 3 && (0x8 & MovedStatics.tile_flags[1 + arg1][i_7_][i_6_]) != 0)
-	                method781(1850, 1 + arg1, i_7_, i_4_, i_5_, i_6_);
+	    minimapImage.prepareRasterizer();
+
+        // generate slightly random offset door and wall colors
+        // door: (228, 228, 228) to (248, 248, 248)
+	    int doorRGB = (-10 + (int) (Math.random() * 20.0) + 238 << 8) + (228 + (int) (Math.random() * 20.0) << 16) + 238 + (int) (20.0 * Math.random()) + -10;
+	    // wall: (228, 0, 0) to (248, 0, 0)
+        int wallRGB = -10 + (int) (20.0 * Math.random()) + 238 << 16;
+
+	    for(int tileY = 1; tileY < 103; tileY++) {
+	        for(int tileX = 1; tileX < 103; tileX++) {
+	            if((MovedStatics.tile_flags[plane][tileX][tileY] & 0x18) == 0)
+	                drawObject(plane, tileX, doorRGB, wallRGB, tileY);
+	            if(plane < 3 && (0x8 & MovedStatics.tile_flags[1 + plane][tileX][tileY]) != 0)
+	                drawObject(1 + plane, tileX, doorRGB, wallRGB, tileY);
 	        }
 	    }
 	    minimapHintCount = 0;
-	    for(int i_8_ = 0; i_8_ < 104; i_8_++) {
-	        for(int i_9_ = 0; i_9_ < 104; i_9_++) {
-	            int i_10_ = Game.currentScene.getFloorDecorationHash(Player.worldLevel, i_8_, i_9_);
-	            if(i_10_ != 0) {
-	                i_10_ = 0x7fff & i_10_ >> 14;
-	                int i_11_ = GameObjectDefinition.getDefinition(i_10_).icon;
-	                if(i_11_ >= 0) {
-	                    int i_12_ = i_9_;
-	                    int i_13_ = i_8_;
-	                    if(i_11_ != 22 && i_11_ != 29 && i_11_ != 34 && i_11_ != 36 && i_11_ != 46 && i_11_ != 47 && i_11_ != 48) {
-	                        int[][] is_14_ = Landscape.currentCollisionMap[Player.worldLevel].clippingData;
-	                        for(int i_15_ = 0; i_15_ < 10; i_15_++) {
-	                            int i_16_ = (int) (Math.random() * 4.0);
-	                            if(i_16_ == 0 && i_13_ > 0 && i_13_ > -3 + i_8_ && (is_14_[-1 + i_13_][i_12_] & 0x1280108) == 0)
-	                                i_13_--;
-	                            if(i_16_ == 1 && i_13_ < 103 && i_13_ < i_8_ + 3 && (is_14_[i_13_ + 1][i_12_] & 0x1280180) == 0)
-	                                i_13_++;
-	                            if(i_16_ == 2 && i_12_ > 0 && i_12_ > -3 + i_9_ && (is_14_[i_13_][i_12_ - 1] & 0x1280102) == 0)
-	                                i_12_--;
-	                            if(i_16_ == 3 && i_12_ < 103 && 3 + i_9_ > i_12_ && (0x1280120 & is_14_[i_13_][1 + i_12_]) == 0)
-	                                i_12_++;
+	    for(int tileX = 0; tileX < 104; tileX++) {
+	        for(int tileY = 0; tileY < 104; tileY++) {
+	            int hash = Game.currentScene.getFloorDecorationHash(Player.worldLevel, tileX, tileY);
+	            if(hash != 0) {
+	                int objectId = 0x7fff & hash >> 14;
+	                int icon = GameObjectDefinition.getDefinition(objectId).icon;
+	                if(icon >= 0) {
+	                    int y = tileY;
+	                    int x = tileX;
+	                    if(icon != 22 && icon != 29 && icon != 34 && icon != 36 && icon != 46 && icon != 47 && icon != 48) {
+	                        int[][] clipping = Landscape.currentCollisionMap[Player.worldLevel].clippingData;
+	                        for(int pass = 0; pass < 10; pass++) {
+	                            int rand = (int) (Math.random() * 4.0);
+	                            if(rand == 0 && x > 0 && x > -3 + tileX && (clipping[-1 + x][y] & 0x1280108) == 0)
+	                                x--;
+	                            if(rand == 1 && x < 103 && x < tileX + 3 && (clipping[x + 1][y] & 0x1280180) == 0)
+	                                x++;
+	                            if(rand == 2 && y > 0 && y > -3 + tileY && (clipping[x][y - 1] & 0x1280102) == 0)
+	                                y--;
+	                            if(rand == 3 && y < 103 && 3 + tileY > y && (0x1280120 & clipping[x][1 + y]) == 0)
+	                                y++;
 	                        }
 	                    }
-	                    minimapHint[minimapHintCount] = mapFunctionIcons[i_11_];
-	                    minimapHintX[minimapHintCount] = i_13_;
-	                    minimapHintY[minimapHintCount] = i_12_;
+	                    minimapHint[minimapHintCount] = mapFunctionIcons[icon];
+	                    minimapHintX[minimapHintCount] = x;
+	                    minimapHintY[minimapHintCount] = y;
 	                    minimapHintCount++;
 	                }
 	            }
