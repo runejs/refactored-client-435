@@ -777,113 +777,108 @@ public class SceneRenderer {
         }
     }
 
-    private void renderPlainTile(GenericTile plainTile, int arg1, int tileX, int tileY) {
-        int xC;
-        int xA = xC = (tileX << 7) - currentCamera.getPosition().x;
-        int yB;
-        int yA = yB = (tileY << 7) - currentCamera.getPosition().y;
-        int xD;
-        int xB = xD = xA + 128;
-        int yC;
-        int yD = yC = yA + 128;
-        int zA = this.scene.landscape.tile_height[arg1][tileX][tileY] - currentCamera.getPosition().z;
-        int zB = this.scene.landscape.tile_height[arg1][tileX + 1][tileY] - currentCamera.getPosition().z;
-        int zC = this.scene.landscape.tile_height[arg1][tileX + 1][tileY + 1] - currentCamera.getPosition().z;
-        int zD = this.scene.landscape.tile_height[arg1][tileX][tileY + 1] - currentCamera.getPosition().z;
+    private void renderPlainTile(GenericTile plainTile, int plane, int tileX, int tileY) {
+        int nwX;
+        int swX = nwX = (tileX << 7) - currentCamera.getPosition().x;
+        int seY;
+        int swY = seY = (tileY << 7) - currentCamera.getPosition().y;
+        int neX;
+        int seX = neX = swX + 128;
+        int nwY;
+        int neY = nwY = swY + 128;
+        int swZ = this.scene.landscape.tile_height[plane][tileX][tileY] - currentCamera.getPosition().z;
+        int seZ = this.scene.landscape.tile_height[plane][tileX + 1][tileY] - currentCamera.getPosition().z;
+        int neZ = this.scene.landscape.tile_height[plane][tileX + 1][tileY + 1] - currentCamera.getPosition().z;
+        int nwZ = this.scene.landscape.tile_height[plane][tileX][tileY + 1] - currentCamera.getPosition().z;
 
-        int sinX = currentCamera.getRotation().yawSine;
-        int cosineX = currentCamera.getRotation().yawCosine;
-        int sinY = currentCamera.getRotation().pitchSine;
-        int cosineY = currentCamera.getRotation().pitchCosine;
+        int[] resultA = Util3d.getProjectedPoint(currentCamera, swX, swY, swZ);
+        if (resultA == null) {
+            return;
+        }
 
-        int temp = yA * sinX + xA * cosineX >> 16;
-        yA = yA * cosineX - xA * sinX >> 16;
-        xA = temp;
-        temp = zA * cosineY - yA * sinY >> 16;
-        yA = zA * sinY + yA * cosineY >> 16;
-        zA = temp;
-        if (yA < 50) {
+        swX = resultA[0];
+        swY = resultA[1];
+        swZ = resultA[2];
+
+        int[] resultB = Util3d.getProjectedPoint(currentCamera, seX, seY, seZ);
+        if (resultB == null) {
             return;
         }
-        temp = yB * sinX + xB * cosineX >> 16;
-        yB = yB * cosineX - xB * sinX >> 16;
-        xB = temp;
-        temp = zB * cosineY - yB * sinY >> 16;
-        yB = zB * sinY + yB * cosineY >> 16;
-        zB = temp;
-        if (yB < 50) {
+
+        seX = resultB[0];
+        seY = resultB[1];
+        seZ = resultB[2];
+
+        int[] resultNE = Util3d.getProjectedPoint(currentCamera, neX, neY, neZ);
+        if (resultNE == null) {
             return;
         }
-        temp = yD * sinX + xD * cosineX >> 16;
-        yD = yD * cosineX - xD * sinX >> 16;
-        xD = temp;
-        temp = zC * cosineY - yD * sinY >> 16;
-        yD = zC * sinY + yD * cosineY >> 16;
-        zC = temp;
-        if (yD < 50) {
+
+        neX = resultNE[0];
+        neY = resultNE[1];
+        neZ = resultNE[2];
+
+        int[] resultC = Util3d.getProjectedPoint(currentCamera, nwX, nwY, nwZ);
+        if (resultC == null) {
             return;
         }
-        temp = yC * sinX + xC * cosineX >> 16;
-        yC = yC * cosineX - xC * sinX >> 16;
-        xC = temp;
-        temp = zD * cosineY - yC * sinY >> 16;
-        yC = zD * sinY + yC * cosineY >> 16;
-        zD = temp;
-        if (yC < 50) {
-            return;
-        }
-        int screenXA = Rasterizer3D.center_x + (xA << 9) / yA;
-        int screenYA = Rasterizer3D.center_y + (zA << 9) / yA;
-        int screenXB = Rasterizer3D.center_x + (xB << 9) / yB;
-        int screenYB = Rasterizer3D.center_y + (zB << 9) / yB;
-        int screenXD = Rasterizer3D.center_x + (xD << 9) / yD;
-        int screenYD = Rasterizer3D.center_y + (zC << 9) / yD;
-        int screenXC = Rasterizer3D.center_x + (xC << 9) / yC;
-        int screenYC = Rasterizer3D.center_y + (zD << 9) / yC;
+
+        nwX = resultC[0];
+        nwY = resultC[1];
+        nwZ = resultC[2];
+
+        int screenXSW = Rasterizer3D.center_x + (swX << 9) / swY;
+        int screenYSW = Rasterizer3D.center_y + (swZ << 9) / swY;
+        int screenXSE = Rasterizer3D.center_x + (seX << 9) / seY;
+        int screenYSE = Rasterizer3D.center_y + (seZ << 9) / seY;
+        int screenXNE = Rasterizer3D.center_x + (neX << 9) / neY;
+        int screenYNE = Rasterizer3D.center_y + (neZ << 9) / neY;
+        int screenXNW = Rasterizer3D.center_x + (nwX << 9) / nwY;
+        int screenYNW = Rasterizer3D.center_y + (nwZ << 9) / nwY;
         Rasterizer3D.alpha = 0;
-        if ((screenXD - screenXC) * (screenYB - screenYC) - (screenYD - screenYC) * (screenXB - screenXC) > 0) {
-            Rasterizer3D.restrict_edges = screenXD < 0 || screenXC < 0 || screenXB < 0 || screenXD > Rasterizer3D.viewportRx || screenXC > Rasterizer3D.viewportRx || screenXB > Rasterizer3D.viewportRx;
-            if (this.scene.clicked && isMouseWithinTriangle(this.scene.clickX, this.scene.clickY, screenYD, screenYC, screenYB, screenXD, screenXC, screenXB)) {
+        if ((screenXNE - screenXNW) * (screenYSE - screenYNW) - (screenYNE - screenYNW) * (screenXSE - screenXNW) > 0) {
+            Rasterizer3D.restrict_edges = screenXNE < 0 || screenXNW < 0 || screenXSE < 0 || screenXNE > Rasterizer3D.viewportRx || screenXNW > Rasterizer3D.viewportRx || screenXSE > Rasterizer3D.viewportRx;
+            if (this.scene.clicked && isMouseWithinTriangle(this.scene.clickX, this.scene.clickY, screenYNE, screenYNW, screenYSE, screenXNE, screenXNW, screenXSE)) {
                 this.scene.clickedTileX = tileX;
                 this.scene.clickedTileY = tileY;
             }
-            if (isMouseWithinTriangle(MouseHandler.mouseX, MouseHandler.mouseY, screenYD, screenYC, screenYB, screenXD, screenXC, screenXB)) {
+            if (isMouseWithinTriangle(MouseHandler.mouseX, MouseHandler.mouseY, screenYNE, screenYNW, screenYSE, screenXNE, screenXNW, screenXSE)) {
                 this.scene.hoveredTileX = tileX;
                 this.scene.hoveredTileY = tileY;
             }
             if (plainTile.texture == -1) {
-                if (plainTile.colourD != 12345678) {
-                    Rasterizer3D.drawShadedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, plainTile.colourD, plainTile.colourC, plainTile.colourB);
+                if (plainTile.colourNE != 12345678) {
+                    Rasterizer3D.drawShadedTriangle(screenYNE, screenYNW, screenYSE, screenXNE, screenXNW, screenXSE, plainTile.colourNE, plainTile.colourNW, plainTile.colourSE);
                 }
             } else if (Scene.lowMemory) {
                 int rgb = Rasterizer3D.interface3.getAverageTextureColour(plainTile.texture);
-                Rasterizer3D.drawShadedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, Scene.adjustLightness(rgb, plainTile.colourD), Scene.adjustLightness(rgb, plainTile.colourC), Scene.adjustLightness(rgb, plainTile.colourB));
+                Rasterizer3D.drawShadedTriangle(screenYNE, screenYNW, screenYSE, screenXNE, screenXNW, screenXSE, Scene.adjustLightness(rgb, plainTile.colourNE), Scene.adjustLightness(rgb, plainTile.colourNW), Scene.adjustLightness(rgb, plainTile.colourSE));
             } else if (plainTile.flat) {
-                Rasterizer3D.drawTexturedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, plainTile.colourD, plainTile.colourC, plainTile.colourB, xA, xB, xC, zA, zB, zD, yA, yB, yC, plainTile.texture);
+                Rasterizer3D.drawTexturedTriangle(screenYNE, screenYNW, screenYSE, screenXNE, screenXNW, screenXSE, plainTile.colourNE, plainTile.colourNW, plainTile.colourSE, swX, seX, nwX, swZ, seZ, nwZ, swY, seY, nwY, plainTile.texture);
             } else {
-                Rasterizer3D.drawTexturedTriangle(screenYD, screenYC, screenYB, screenXD, screenXC, screenXB, plainTile.colourD, plainTile.colourC, plainTile.colourB, xD, xC, xB, zC, zD, zB, yD, yC, yB, plainTile.texture);
+                Rasterizer3D.drawTexturedTriangle(screenYNE, screenYNW, screenYSE, screenXNE, screenXNW, screenXSE, plainTile.colourNE, plainTile.colourNW, plainTile.colourSE, neX, nwX, seX, neZ, nwZ, seZ, neY, nwY, seY, plainTile.texture);
             }
         }
-        if ((screenXA - screenXB) * (screenYC - screenYB) - (screenYA - screenYB) * (screenXC - screenXB) > 0) {
-            Rasterizer3D.restrict_edges = screenXA < 0 || screenXB < 0 || screenXC < 0 || screenXA > Rasterizer3D.viewportRx || screenXB > Rasterizer3D.viewportRx || screenXC > Rasterizer3D.viewportRx;
-            if (this.scene.clicked && isMouseWithinTriangle(this.scene.clickX, this.scene.clickY, screenYA, screenYB, screenYC, screenXA, screenXB, screenXC)) {
+        if ((screenXSW - screenXSE) * (screenYNW - screenYSE) - (screenYSW - screenYSE) * (screenXNW - screenXSE) > 0) {
+            Rasterizer3D.restrict_edges = screenXSW < 0 || screenXSE < 0 || screenXNW < 0 || screenXSW > Rasterizer3D.viewportRx || screenXSE > Rasterizer3D.viewportRx || screenXNW > Rasterizer3D.viewportRx;
+            if (this.scene.clicked && isMouseWithinTriangle(this.scene.clickX, this.scene.clickY, screenYSW, screenYSE, screenYNW, screenXSW, screenXSE, screenXNW)) {
                 this.scene.clickedTileX = tileX;
                 this.scene.clickedTileY = tileY;
             }
 
-            if (isMouseWithinTriangle(MouseHandler.mouseX, MouseHandler.mouseY, screenYA, screenYB, screenYC, screenXA, screenXB, screenXC)) {
+            if (isMouseWithinTriangle(MouseHandler.mouseX, MouseHandler.mouseY, screenYSW, screenYSE, screenYNW, screenXSW, screenXSE, screenXNW)) {
                 this.scene.hoveredTileX = tileX;
                 this.scene.hoveredTileY = tileY;
             }
             if (plainTile.texture == -1) {
-                if (plainTile.colourA != 12345678) {
-                    Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, plainTile.colourA, plainTile.colourB, plainTile.colourC);
+                if (plainTile.colourSW != 12345678) {
+                    Rasterizer3D.drawShadedTriangle(screenYSW, screenYSE, screenYNW, screenXSW, screenXSE, screenXNW, plainTile.colourSW, plainTile.colourSE, plainTile.colourNW);
                 }
             } else if (Scene.lowMemory) {
                 int i_209_ = Rasterizer3D.interface3.getAverageTextureColour(plainTile.texture);
-                Rasterizer3D.drawShadedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, Scene.adjustLightness(i_209_, plainTile.colourA), Scene.adjustLightness(i_209_, plainTile.colourB), Scene.adjustLightness(i_209_, plainTile.colourC));
+                Rasterizer3D.drawShadedTriangle(screenYSW, screenYSE, screenYNW, screenXSW, screenXSE, screenXNW, Scene.adjustLightness(i_209_, plainTile.colourSW), Scene.adjustLightness(i_209_, plainTile.colourSE), Scene.adjustLightness(i_209_, plainTile.colourNW));
             } else {
-                Rasterizer3D.drawTexturedTriangle(screenYA, screenYB, screenYC, screenXA, screenXB, screenXC, plainTile.colourA, plainTile.colourB, plainTile.colourC, xA, xB, xC, zA, zB, zD, yA, yB, yC, plainTile.texture);
+                Rasterizer3D.drawTexturedTriangle(screenYSW, screenYSE, screenYNW, screenXSW, screenXSE, screenXNW, plainTile.colourSW, plainTile.colourSE, plainTile.colourNW, swX, seX, nwX, swZ, seZ, nwZ, swY, seY, nwY, plainTile.texture);
             }
         }
     }
