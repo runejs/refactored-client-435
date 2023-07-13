@@ -41,6 +41,9 @@ public class Rasterizer3D extends Rasterizer {
      */
     public static int anInt2942;
     public static int[] sinetable = new int[2048];
+    /**
+     * TODO (jkm) investigate and rename, don't think this is accurate
+     */
     public static boolean notTextured = true;
     public static int viewportRx;
     public static int[] cosinetable = new int[2048];
@@ -1152,55 +1155,97 @@ public class Rasterizer3D extends Rasterizer {
     }
 
     public static void drawShadedLine(int[] dest, int dest_off, int start_x, int end_x, int color_index, int grad) {
-//        if(useLatestShadeLine) {//divert all calls to the new method as its better
-//            drawShadedLine562(dest, dest_off, start_x, end_x, color_index, grad);
-//            return;
-//        }
+        // the color currently being drawn
         int color;
+
+        // the number of iterations needed to draw
         int loops;
+
+        // this variable is called "nonTextured" but it actually controls whether the line is broken down
+        // into chunks of 4 pixels or not
         if(notTextured) {
-            int off;
+            // how much to increase the color by each pixel
+            int color_slope;
+
+            // When edge restrictions are applied, the line should not be drawn beyond the predefined viewport.
             if(restrict_edges) {
+                // Calculate the slope of the color gradient. If the line is longer than 3 pixels, the slope is
+                // calculated as the ratio of color difference to line length. For lines that are 3 pixels or shorter,
+                // the color slope is set to zero as there wouldn't be a noticeable gradient.
                 if(end_x - start_x > 3) {
-                    off = (grad - color_index) / (end_x - start_x);
+                    color_slope = (grad - color_index) / (end_x - start_x);
                 } else {
-                    off = 0;
+                    color_slope = 0;
                 }
+
+                // If the end point of the line exceeds the viewport, we clip it to the boundary edge of the viewport.
                 if(end_x > viewportRx) {
                     end_x = viewportRx;
                 }
+
+                // If the start point of the line is negative, we adjust the initial color index to compensate
+                // and set the start point to zero. This ensures that the color gradient starts correctly even
+                // if the line starts outside the viewport.
                 if(start_x < 0) {
-                    color_index -= start_x * off;
+                    color_index -= start_x * color_slope;
                     start_x = 0;
                 }
+
+                // If the start point is now greater than or equal to the end point, this means the line is
+                // completely outside the viewport and we return without drawing anything.
                 if(start_x >= end_x) {
                     return;
                 }
+
+                // Update the destination offset to account for the corrected start point.
+                // Calculate the number of iterations required for 4-pixel chunks in the line.
                 dest_off += start_x;
                 loops = end_x - start_x >> 2;
-                off <<= 2;
+
+                // Since we're dealing with 4-pixel chunks, we multiply the color gradient by 4.
+                color_slope <<= 2;
             } else {
+                // When there are no edge restrictions, we just proceed to draw the line if it's within the viewport.
+
+                // If start_x is greater than or equal to end_x, the line is outside of the viewport and we return.
                 if(start_x >= end_x) {
                     return;
                 }
+
+                // Calculate the destination offset and number of 4-pixel chunks.
                 dest_off += start_x;
                 loops = end_x - start_x >> 2;
+
+                // Calculate the slope of the color gradient using the shadowDecay array if the line is long enough.
+                // For very short lines (length less than or equal to 0), there is no gradient and the slope is zero.
                 if(loops > 0) {
-                    off = (grad - color_index) * shadowDecay[loops] >> 15;
+                    color_slope = (grad - color_index) * shadowDecay[loops] >> 15;
                 } else {
-                    off = 0;
+                    color_slope = 0;
                 }
             }
+
+            // If the alpha value is 0, it means the line has no transparency.
             if(alpha == 0) {
+                // Repeat for each 4-pixel chunk in the line.
                 while(--loops >= 0) {
+                    // Convert the color index to an RGB color.
                     color = hsl2rgb[color_index >> 8];
-                    color_index += off;
+
+                    // Adjust the color index for the next iteration using the color slope.
+                    color_index += color_slope;
+
+                    // Paint 4 pixels at a time with the calculated color.
                     dest[dest_off++] = color;
                     dest[dest_off++] = color;
                     dest[dest_off++] = color;
                     dest[dest_off++] = color;
                 }
+
+                // Calculate the remainder of pixels (less than 4).
                 loops = end_x - start_x & 0x3;
+
+                // If there are remaining pixels, paint them as well.
                 if(loops > 0) {
                     color = hsl2rgb[color_index >> 8];
                     do {
@@ -1208,20 +1253,39 @@ public class Rasterizer3D extends Rasterizer {
                     } while(--loops > 0);
                 }
             } else {
+                // When the alpha value is not 0, the line has some level of transparency.
+
                 int src_alpha = alpha;
                 int dest_alpha = 256 - alpha;
+
+                // Repeat for the number of 4-pixel chunks in the line.
                 while(--loops >= 0) {
+                    // Convert the color index to an RGB color.
                     color = hsl2rgb[color_index >> 8];
-                    color_index += off;
+
+                    // Adjust the color index for the next iteration using the color slope.
+                    color_index += color_slope;
+
+                    // Apply the alpha transparency to the color. This is done separately for the red/blue and green
+                    // components of the color, as indicated by the bitwise AND operations with 0xff00ff and 0xff00.
                     color = ((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00);
+
+                    // Blend the color of each pixel with the destination pixel, considering the source alpha.
+                    // This is done for each of the 4 pixels in the chunk.
                     dest[dest_off++] = color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00);
                     dest[dest_off++] = color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00);
                     dest[dest_off++] = color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00);
                     dest[dest_off++] = color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00);
                 }
+                // Calculate the remainder of pixels (less than 4).
                 loops = end_x - start_x & 0x3;
+
+
+                // If there are remaining pixels, paint them as well.
                 if(loops > 0) {
                     color = hsl2rgb[color_index >> 8];
+
+                    // Apply alpha transparency again as we just re-retrieved the color
                     color = ((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00);
                     do {
                         dest[dest_off++] = color + ((dest[dest_off] & 0xff00ff) * src_alpha >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * src_alpha >> 8 & 0xff00);
@@ -1229,36 +1293,60 @@ public class Rasterizer3D extends Rasterizer {
                 }
             }
         } else {
+            // If the start of the line is before the end.
             if(start_x < end_x) {
-                int i = (grad - color_index) / (end_x - start_x);
+                // The color slope determines the rate of change of the color across the line.
+                int color_slope = (grad - color_index) / (end_x - start_x);
+
+                // If restrict_edges is true, it means we have to clip the line to the viewport.
                 if(restrict_edges) {
+                    // Clip the line to the right edge of the viewport.
                     if(end_x > viewportRx) {
                         end_x = viewportRx;
                     }
+
+                    // If the line starts before the left edge of the viewport, clip it and adjust the starting color.
                     if(start_x < 0) {
-                        color_index -= start_x * i;
+                        color_index -= start_x * color_slope;
                         start_x = 0;
                     }
+
+                    // If the start of the line is now after the end, there is nothing to draw.
                     if(start_x >= end_x) {
                         return;
                     }
                 }
+
+                // Adjust the offset into the destination array for the new starting point.
                 dest_off += start_x;
+                // Calculate the number of pixels to draw.
                 loops = end_x - start_x;
+
+                // If the alpha is 0 (no transparency), the loop simply paints each pixel with the color.
                 if(alpha == 0) {
                     do {
+                        // Paint the pixel with the color corresponding to the current color index.
                         dest[dest_off++] = hsl2rgb[color_index >> 8];
-                        color_index += i;
-                    } while(--loops > 0);
+                        // Adjust the color index for the next pixel.
+                        color_index += color_slope;
+                    } while(--loops > 0); // Repeat for the number of pixels in the line (no chunking)
                 } else {
+                    // If alpha is not 0 (there is some transparency), the pixels need to be blended with the destination.
                     int i_43_ = alpha;
                     int i_44_ = 256 - alpha;
                     do {
+                        // Calculate the color for the current pixel.
                         color = hsl2rgb[color_index >> 8];
-                        color_index += i;
+
+                        // Adjust the color index for the next pixel.
+                        color_index += color_slope;
+
+                        // Apply the alpha transparency to the color.
                         color = ((color & 0xff00ff) * i_44_ >> 8 & 0xff00ff) + ((color & 0xff00) * i_44_ >> 8 & 0xff00);
+
+                        // Blend the color with the destination pixel.
                         dest[dest_off++] = color + ((dest[dest_off] & 0xff00ff) * i_43_ >> 8 & 0xff00ff) + ((dest[dest_off] & 0xff00) * i_43_ >> 8 & 0xff00);
-                    } while(--loops > 0);
+                    } while(--loops > 0); // Repeat for the number of pixels in the line (no chunking)
                 }
             }
         }
