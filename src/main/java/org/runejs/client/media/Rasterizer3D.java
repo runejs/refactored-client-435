@@ -1352,400 +1352,430 @@ public class Rasterizer3D extends Rasterizer {
         }
     }
 
-    public static void drawShadedTriangle(int y_a, int y_b, int y_c, int x_a, int x_b, int x_c, int color_a, int color_b, int color_c) {
-        int x_a_off = 0;
-        int z_a_off = 0;
-        if(y_b != y_a) {
-            x_a_off = (x_b - x_a << 16) / (y_b - y_a);
-            z_a_off = (color_b - color_a << 15) / (y_b - y_a);
+    public static void drawShadedTriangle(int a_y, int b_y, int c_y, int a_x, int b_x, int c_x, int color_a, int color_b, int color_c) {
+        // Calculate the slopes for each edge of the triangle
+        int a_slope_x = 0;
+        int a_slope_color = 0;
+        if(b_y != a_y) {
+            a_slope_x = (b_x - a_x << 16) / (b_y - a_y);
+            a_slope_color = (color_b - color_a << 15) / (b_y - a_y);
         }
-        int x_b_off = 0;
-        int z_b_off = 0;
-        if(y_c != y_b) {
-            x_b_off = (x_c - x_b << 16) / (y_c - y_b);
-            z_b_off = (color_c - color_b << 15) / (y_c - y_b);
+        int b_slope_x = 0;
+        int b_slope_color = 0;
+        if(c_y != b_y) {
+            b_slope_x = (c_x - b_x << 16) / (c_y - b_y);
+            b_slope_color = (color_c - color_b << 15) / (c_y - b_y);
         }
-        int x_c_off = 0;
-        int z_c_off = 0;
-        if(y_c != y_a) {
-            x_c_off = (x_a - x_c << 16) / (y_a - y_c);
-            z_c_off = (color_a - color_c << 15) / (y_a - y_c);
+        int c_slope_x = 0;
+        int c_slope_color = 0;
+        if(c_y != a_y) {
+            c_slope_x = (a_x - c_x << 16) / (a_y - c_y);
+            c_slope_color = (color_a - color_c << 15) / (a_y - c_y);
         }
-        if(y_a <= y_b && y_a <= y_c) {
-            if(y_a >= bottomY) {
+
+        // We now draw the triangle using scanline rasterization, scanning from min Y (top) to max Y (bottom).
+        // If a_y is smallest, we'll start from a_y and draw to b_y and c_y.
+        if(a_y <= b_y && a_y <= c_y) {
+            // If a_y is already below the drawable area, no point in drawing the triangle
+            if(a_y >= bottomY) {
                 return;
             }
-            if(y_b > bottomY) {
-                y_b = bottomY;
+
+            // Clamp the y-values to the bottom of the drawing area
+            if(b_y > bottomY) {
+                b_y = bottomY;
             }
-            if(y_c > bottomY) {
-                y_c = bottomY;
+            if(c_y > bottomY) {
+                c_y = bottomY;
             }
-            if(y_b < y_c) {
-                x_c = x_a <<= 16;
+
+            // Depending on whether b_y or c_y is smaller, we decide which side of the triangle to rasterize first
+            if(b_y < c_y) {
+                // Here we're shifting a_x and color_a to higher precision
+                c_x = a_x <<= 16;
                 color_c = color_a <<= 15;
-                if(y_a < 0) {
-                    x_c -= x_c_off * y_a;
-                    x_a -= x_a_off * y_a;
-                    color_c -= z_c_off * y_a;
-                    color_a -= z_a_off * y_a;
-                    y_a = 0;
+
+                // We check if a_y is negative (off the screen), if it is we calculate the "offsets" for x and color.
+                // These offsets are then subtracted from c_x, a_x, color_c and color_a to correctly position the triangle.
+                // After these corrections, we reset a_y to 0.
+                if(a_y < 0) {
+                    c_x -= c_slope_x * a_y;
+                    a_x -= a_slope_x * a_y;
+                    color_c -= c_slope_color * a_y;
+                    color_a -= a_slope_color * a_y;
+                    a_y = 0;
                 }
-                x_b <<= 16;
+
+                // Similar process as before is performed for b_x and color_b.
+                b_x <<= 16;
                 color_b <<= 15;
-                if(y_b < 0) {
-                    x_b -= x_b_off * y_b;
-                    color_b -= z_b_off * y_b;
-                    y_b = 0;
+                if(b_y < 0) {
+                    b_x -= b_slope_x * b_y;
+                    color_b -= b_slope_color * b_y;
+                    b_y = 0;
                 }
-                if(y_a != y_b && x_c_off < x_a_off || y_a == y_b && x_c_off > x_b_off) {
-                    y_c -= y_b;
-                    y_b -= y_a;
-                    y_a = lineOffsets[y_a];
-                    while(--y_b >= 0) {
-                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_c >> 16, x_a >> 16, color_c >> 7, color_a >> 7);
-                        x_c += x_c_off;
-                        x_a += x_a_off;
-                        color_c += z_c_off;
-                        color_a += z_a_off;
-                        y_a += Rasterizer.destinationWidth;
+
+                // Here we determine the scanline direction depending on the relative values of the slopes.
+                // If the slopes of a and c are smaller than a and b (or equal and c < b), we render from a to b and then from b to c.
+                if(a_y != b_y && c_slope_x < a_slope_x || a_y == b_y && c_slope_x > b_slope_x) {
+                    c_y -= b_y;
+                    b_y -= a_y;
+                    a_y = lineOffsets[a_y];
+
+                    // Draw horizontal lines (scanlines) from a to b.
+                    // It interpolates X and color along the edge of the triangle, scanning until b_y reaches 0.
+                    while(--b_y >= 0) {
+                        drawShadedLine(Rasterizer.destinationPixels, a_y, c_x >> 16, a_x >> 16, color_c >> 7, color_a >> 7);
+                        c_x += c_slope_x;
+                        a_x += a_slope_x;
+                        color_c += c_slope_color;
+                        color_a += a_slope_color;
+                        a_y += Rasterizer.destinationWidth;
                     }
-                    while(--y_c >= 0) {
-                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_c >> 16, x_b >> 16, color_c >> 7, color_b >> 7);
-                        x_c += x_c_off;
-                        x_b += x_b_off;
-                        color_c += z_c_off;
-                        color_b += z_b_off;
-                        y_a += Rasterizer.destinationWidth;
+
+                    // After finishing from a to b, we now draw lines from b to c
+                    while(--c_y >= 0) {
+                        drawShadedLine(Rasterizer.destinationPixels, a_y, c_x >> 16, b_x >> 16, color_c >> 7, color_b >> 7);
+                        c_x += c_slope_x;
+                        b_x += b_slope_x;
+                        color_c += c_slope_color;
+                        color_b += b_slope_color;
+                        a_y += Rasterizer.destinationWidth;
                     }
                 } else {
-                    y_c -= y_b;
-                    y_b -= y_a;
-                    y_a = lineOffsets[y_a];
-                    while(--y_b >= 0) {
-                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_a >> 16, x_c >> 16, color_a >> 7, color_c >> 7);
-                        x_c += x_c_off;
-                        x_a += x_a_off;
-                        color_c += z_c_off;
-                        color_a += z_a_off;
-                        y_a += Rasterizer.destinationWidth;
+                    // Similar process but here we render from a to c first, then from c to b.
+                    c_y -= b_y;
+                    b_y -= a_y;
+                    a_y = lineOffsets[a_y];
+
+                    // Drawing horizontal lines from a to c.
+                    while(--b_y >= 0) {
+                        drawShadedLine(Rasterizer.destinationPixels, a_y, a_x >> 16, c_x >> 16, color_a >> 7, color_c >> 7);
+                        c_x += c_slope_x;
+                        a_x += a_slope_x;
+                        color_c += c_slope_color;
+                        color_a += a_slope_color;
+                        a_y += Rasterizer.destinationWidth;
                     }
-                    while(--y_c >= 0) {
-                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_b >> 16, x_c >> 16, color_b >> 7, color_c >> 7);
-                        x_c += x_c_off;
-                        x_b += x_b_off;
-                        color_c += z_c_off;
-                        color_b += z_b_off;
-                        y_a += Rasterizer.destinationWidth;
+
+                    // Drawing horizontal lines from c to b.
+                    while(--c_y >= 0) {
+                        drawShadedLine(Rasterizer.destinationPixels, a_y, b_x >> 16, c_x >> 16, color_b >> 7, color_c >> 7);
+                        c_x += c_slope_x;
+                        b_x += b_slope_x;
+                        color_c += c_slope_color;
+                        color_b += b_slope_color;
+                        a_y += Rasterizer.destinationWidth;
                     }
                 }
             } else {
-                x_b = x_a <<= 16;
+                // This block would contain code for the situation where c_y < b_y, handling it similarly as above.
+                b_x = a_x <<= 16;
                 color_b = color_a <<= 15;
-                if(y_a < 0) {
-                    x_b -= x_c_off * y_a;
-                    x_a -= x_a_off * y_a;
-                    color_b -= z_c_off * y_a;
-                    color_a -= z_a_off * y_a;
-                    y_a = 0;
+                if(a_y < 0) {
+                    b_x -= c_slope_x * a_y;
+                    a_x -= a_slope_x * a_y;
+                    color_b -= c_slope_color * a_y;
+                    color_a -= a_slope_color * a_y;
+                    a_y = 0;
                 }
-                x_c <<= 16;
+                c_x <<= 16;
                 color_c <<= 15;
-                if(y_c < 0) {
-                    x_c -= x_b_off * y_c;
-                    color_c -= z_b_off * y_c;
-                    y_c = 0;
+                if(c_y < 0) {
+                    c_x -= b_slope_x * c_y;
+                    color_c -= b_slope_color * c_y;
+                    c_y = 0;
                 }
-                if(y_a != y_c && x_c_off < x_a_off || y_a == y_c && x_b_off > x_a_off) {
-                    y_b -= y_c;
-                    y_c -= y_a;
-                    y_a = lineOffsets[y_a];
-                    while(--y_c >= 0) {
-                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_b >> 16, x_a >> 16, color_b >> 7, color_a >> 7);
-                        x_b += x_c_off;
-                        x_a += x_a_off;
-                        color_b += z_c_off;
-                        color_a += z_a_off;
-                        y_a += Rasterizer.destinationWidth;
+                if(a_y != c_y && c_slope_x < a_slope_x || a_y == c_y && b_slope_x > a_slope_x) {
+                    b_y -= c_y;
+                    c_y -= a_y;
+                    a_y = lineOffsets[a_y];
+                    while(--c_y >= 0) {
+                        drawShadedLine(Rasterizer.destinationPixels, a_y, b_x >> 16, a_x >> 16, color_b >> 7, color_a >> 7);
+                        b_x += c_slope_x;
+                        a_x += a_slope_x;
+                        color_b += c_slope_color;
+                        color_a += a_slope_color;
+                        a_y += Rasterizer.destinationWidth;
                     }
-                    while(--y_b >= 0) {
-                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_c >> 16, x_a >> 16, color_c >> 7, color_a >> 7);
-                        x_c += x_b_off;
-                        x_a += x_a_off;
-                        color_c += z_b_off;
-                        color_a += z_a_off;
-                        y_a += Rasterizer.destinationWidth;
+                    while(--b_y >= 0) {
+                        drawShadedLine(Rasterizer.destinationPixels, a_y, c_x >> 16, a_x >> 16, color_c >> 7, color_a >> 7);
+                        c_x += b_slope_x;
+                        a_x += a_slope_x;
+                        color_c += b_slope_color;
+                        color_a += a_slope_color;
+                        a_y += Rasterizer.destinationWidth;
                     }
                 } else {
-                    y_b -= y_c;
-                    y_c -= y_a;
-                    y_a = lineOffsets[y_a];
-                    while(--y_c >= 0) {
-                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_a >> 16, x_b >> 16, color_a >> 7, color_b >> 7);
-                        x_b += x_c_off;
-                        x_a += x_a_off;
-                        color_b += z_c_off;
-                        color_a += z_a_off;
-                        y_a += Rasterizer.destinationWidth;
+                    b_y -= c_y;
+                    c_y -= a_y;
+                    a_y = lineOffsets[a_y];
+                    while(--c_y >= 0) {
+                        drawShadedLine(Rasterizer.destinationPixels, a_y, a_x >> 16, b_x >> 16, color_a >> 7, color_b >> 7);
+                        b_x += c_slope_x;
+                        a_x += a_slope_x;
+                        color_b += c_slope_color;
+                        color_a += a_slope_color;
+                        a_y += Rasterizer.destinationWidth;
                     }
-                    while(--y_b >= 0) {
-                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_a >> 16, x_c >> 16, color_a >> 7, color_c >> 7);
-                        x_c += x_b_off;
-                        x_a += x_a_off;
-                        color_c += z_b_off;
-                        color_a += z_a_off;
-                        y_a += Rasterizer.destinationWidth;
+                    while(--b_y >= 0) {
+                        drawShadedLine(Rasterizer.destinationPixels, a_y, a_x >> 16, c_x >> 16, color_a >> 7, color_c >> 7);
+                        c_x += b_slope_x;
+                        a_x += a_slope_x;
+                        color_c += b_slope_color;
+                        color_a += a_slope_color;
+                        a_y += Rasterizer.destinationWidth;
                     }
                 }
             }
         } else {
-            if(y_b <= y_c) {
-                if(y_b < bottomY) {
-                    if(y_c > bottomY) {
-                        y_c = bottomY;
+            if(b_y <= c_y) {
+                if(b_y < bottomY) {
+                    if(c_y > bottomY) {
+                        c_y = bottomY;
                     }
-                    if(y_a > bottomY) {
-                        y_a = bottomY;
+                    if(a_y > bottomY) {
+                        a_y = bottomY;
                     }
-                    if(y_c < y_a) {
-                        x_a = x_b <<= 16;
+                    if(c_y < a_y) {
+                        a_x = b_x <<= 16;
                         color_a = color_b <<= 15;
-                        if(y_b < 0) {
-                            x_a -= x_a_off * y_b;
-                            x_b -= x_b_off * y_b;
-                            color_a -= z_a_off * y_b;
-                            color_b -= z_b_off * y_b;
-                            y_b = 0;
+                        if(b_y < 0) {
+                            a_x -= a_slope_x * b_y;
+                            b_x -= b_slope_x * b_y;
+                            color_a -= a_slope_color * b_y;
+                            color_b -= b_slope_color * b_y;
+                            b_y = 0;
                         }
-                        x_c <<= 16;
+                        c_x <<= 16;
                         color_c <<= 15;
-                        if(y_c < 0) {
-                            x_c -= x_c_off * y_c;
-                            color_c -= z_c_off * y_c;
-                            y_c = 0;
+                        if(c_y < 0) {
+                            c_x -= c_slope_x * c_y;
+                            color_c -= c_slope_color * c_y;
+                            c_y = 0;
                         }
-                        if(y_b != y_c && x_a_off < x_b_off || y_b == y_c && x_a_off > x_c_off) {
-                            y_a -= y_c;
-                            y_c -= y_b;
-                            y_b = lineOffsets[y_b];
-                            while(--y_c >= 0) {
-                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_a >> 16, x_b >> 16, color_a >> 7, color_b >> 7);
-                                x_a += x_a_off;
-                                x_b += x_b_off;
-                                color_a += z_a_off;
-                                color_b += z_b_off;
-                                y_b += Rasterizer.destinationWidth;
+                        if(b_y != c_y && a_slope_x < b_slope_x || b_y == c_y && a_slope_x > c_slope_x) {
+                            a_y -= c_y;
+                            c_y -= b_y;
+                            b_y = lineOffsets[b_y];
+                            while(--c_y >= 0) {
+                                drawShadedLine(Rasterizer.destinationPixels, b_y, a_x >> 16, b_x >> 16, color_a >> 7, color_b >> 7);
+                                a_x += a_slope_x;
+                                b_x += b_slope_x;
+                                color_a += a_slope_color;
+                                color_b += b_slope_color;
+                                b_y += Rasterizer.destinationWidth;
                             }
-                            while(--y_a >= 0) {
-                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_a >> 16, x_c >> 16, color_a >> 7, color_c >> 7);
-                                x_a += x_a_off;
-                                x_c += x_c_off;
-                                color_a += z_a_off;
-                                color_c += z_c_off;
-                                y_b += Rasterizer.destinationWidth;
+                            while(--a_y >= 0) {
+                                drawShadedLine(Rasterizer.destinationPixels, b_y, a_x >> 16, c_x >> 16, color_a >> 7, color_c >> 7);
+                                a_x += a_slope_x;
+                                c_x += c_slope_x;
+                                color_a += a_slope_color;
+                                color_c += c_slope_color;
+                                b_y += Rasterizer.destinationWidth;
                             }
                         } else {
-                            y_a -= y_c;
-                            y_c -= y_b;
-                            y_b = lineOffsets[y_b];
-                            while(--y_c >= 0) {
-                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_b >> 16, x_a >> 16, color_b >> 7, color_a >> 7);
-                                x_a += x_a_off;
-                                x_b += x_b_off;
-                                color_a += z_a_off;
-                                color_b += z_b_off;
-                                y_b += Rasterizer.destinationWidth;
+                            a_y -= c_y;
+                            c_y -= b_y;
+                            b_y = lineOffsets[b_y];
+                            while(--c_y >= 0) {
+                                drawShadedLine(Rasterizer.destinationPixels, b_y, b_x >> 16, a_x >> 16, color_b >> 7, color_a >> 7);
+                                a_x += a_slope_x;
+                                b_x += b_slope_x;
+                                color_a += a_slope_color;
+                                color_b += b_slope_color;
+                                b_y += Rasterizer.destinationWidth;
                             }
-                            while(--y_a >= 0) {
-                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_c >> 16, x_a >> 16, color_c >> 7, color_a >> 7);
-                                x_a += x_a_off;
-                                x_c += x_c_off;
-                                color_a += z_a_off;
-                                color_c += z_c_off;
-                                y_b += Rasterizer.destinationWidth;
+                            while(--a_y >= 0) {
+                                drawShadedLine(Rasterizer.destinationPixels, b_y, c_x >> 16, a_x >> 16, color_c >> 7, color_a >> 7);
+                                a_x += a_slope_x;
+                                c_x += c_slope_x;
+                                color_a += a_slope_color;
+                                color_c += c_slope_color;
+                                b_y += Rasterizer.destinationWidth;
                             }
                         }
                     } else {
-                        x_c = x_b <<= 16;
+                        c_x = b_x <<= 16;
                         color_c = color_b <<= 15;
-                        if(y_b < 0) {
-                            x_c -= x_a_off * y_b;
-                            x_b -= x_b_off * y_b;
-                            color_c -= z_a_off * y_b;
-                            color_b -= z_b_off * y_b;
-                            y_b = 0;
+                        if(b_y < 0) {
+                            c_x -= a_slope_x * b_y;
+                            b_x -= b_slope_x * b_y;
+                            color_c -= a_slope_color * b_y;
+                            color_b -= b_slope_color * b_y;
+                            b_y = 0;
                         }
-                        x_a <<= 16;
+                        a_x <<= 16;
                         color_a <<= 15;
-                        if(y_a < 0) {
-                            x_a -= x_c_off * y_a;
-                            color_a -= z_c_off * y_a;
-                            y_a = 0;
+                        if(a_y < 0) {
+                            a_x -= c_slope_x * a_y;
+                            color_a -= c_slope_color * a_y;
+                            a_y = 0;
                         }
-                        if(x_a_off < x_b_off) {
-                            y_c -= y_a;
-                            y_a -= y_b;
-                            y_b = lineOffsets[y_b];
-                            while(--y_a >= 0) {
-                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_c >> 16, x_b >> 16, color_c >> 7, color_b >> 7);
-                                x_c += x_a_off;
-                                x_b += x_b_off;
-                                color_c += z_a_off;
-                                color_b += z_b_off;
-                                y_b += Rasterizer.destinationWidth;
+                        if(a_slope_x < b_slope_x) {
+                            c_y -= a_y;
+                            a_y -= b_y;
+                            b_y = lineOffsets[b_y];
+                            while(--a_y >= 0) {
+                                drawShadedLine(Rasterizer.destinationPixels, b_y, c_x >> 16, b_x >> 16, color_c >> 7, color_b >> 7);
+                                c_x += a_slope_x;
+                                b_x += b_slope_x;
+                                color_c += a_slope_color;
+                                color_b += b_slope_color;
+                                b_y += Rasterizer.destinationWidth;
                             }
-                            while(--y_c >= 0) {
-                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_a >> 16, x_b >> 16, color_a >> 7, color_b >> 7);
-                                x_a += x_c_off;
-                                x_b += x_b_off;
-                                color_a += z_c_off;
-                                color_b += z_b_off;
-                                y_b += Rasterizer.destinationWidth;
+                            while(--c_y >= 0) {
+                                drawShadedLine(Rasterizer.destinationPixels, b_y, a_x >> 16, b_x >> 16, color_a >> 7, color_b >> 7);
+                                a_x += c_slope_x;
+                                b_x += b_slope_x;
+                                color_a += c_slope_color;
+                                color_b += b_slope_color;
+                                b_y += Rasterizer.destinationWidth;
                             }
                         } else {
-                            y_c -= y_a;
-                            y_a -= y_b;
-                            y_b = lineOffsets[y_b];
-                            while(--y_a >= 0) {
-                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_b >> 16, x_c >> 16, color_b >> 7, color_c >> 7);
-                                x_c += x_a_off;
-                                x_b += x_b_off;
-                                color_c += z_a_off;
-                                color_b += z_b_off;
-                                y_b += Rasterizer.destinationWidth;
+                            c_y -= a_y;
+                            a_y -= b_y;
+                            b_y = lineOffsets[b_y];
+                            while(--a_y >= 0) {
+                                drawShadedLine(Rasterizer.destinationPixels, b_y, b_x >> 16, c_x >> 16, color_b >> 7, color_c >> 7);
+                                c_x += a_slope_x;
+                                b_x += b_slope_x;
+                                color_c += a_slope_color;
+                                color_b += b_slope_color;
+                                b_y += Rasterizer.destinationWidth;
                             }
-                            while(--y_c >= 0) {
-                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_b >> 16, x_a >> 16, color_b >> 7, color_a >> 7);
-                                x_a += x_c_off;
-                                x_b += x_b_off;
-                                color_a += z_c_off;
-                                color_b += z_b_off;
-                                y_b += Rasterizer.destinationWidth;
+                            while(--c_y >= 0) {
+                                drawShadedLine(Rasterizer.destinationPixels, b_y, b_x >> 16, a_x >> 16, color_b >> 7, color_a >> 7);
+                                a_x += c_slope_x;
+                                b_x += b_slope_x;
+                                color_a += c_slope_color;
+                                color_b += b_slope_color;
+                                b_y += Rasterizer.destinationWidth;
                             }
                         }
                     }
                 }
-            } else if(y_c < bottomY) {
-                if(y_a > bottomY) {
-                    y_a = bottomY;
+            } else if(c_y < bottomY) {
+                if(a_y > bottomY) {
+                    a_y = bottomY;
                 }
-                if(y_b > bottomY) {
-                    y_b = bottomY;
+                if(b_y > bottomY) {
+                    b_y = bottomY;
                 }
-                if(y_a < y_b) {
-                    x_b = x_c <<= 16;
+                if(a_y < b_y) {
+                    b_x = c_x <<= 16;
                     color_b = color_c <<= 15;
-                    if(y_c < 0) {
-                        x_b -= x_b_off * y_c;
-                        x_c -= x_c_off * y_c;
-                        color_b -= z_b_off * y_c;
-                        color_c -= z_c_off * y_c;
-                        y_c = 0;
+                    if(c_y < 0) {
+                        b_x -= b_slope_x * c_y;
+                        c_x -= c_slope_x * c_y;
+                        color_b -= b_slope_color * c_y;
+                        color_c -= c_slope_color * c_y;
+                        c_y = 0;
                     }
-                    x_a <<= 16;
+                    a_x <<= 16;
                     color_a <<= 15;
-                    if(y_a < 0) {
-                        x_a -= x_a_off * y_a;
-                        color_a -= z_a_off * y_a;
-                        y_a = 0;
+                    if(a_y < 0) {
+                        a_x -= a_slope_x * a_y;
+                        color_a -= a_slope_color * a_y;
+                        a_y = 0;
                     }
-                    if(x_b_off < x_c_off) {
-                        y_b -= y_a;
-                        y_a -= y_c;
-                        y_c = lineOffsets[y_c];
-                        while(--y_a >= 0) {
-                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_b >> 16, x_c >> 16, color_b >> 7, color_c >> 7);
-                            x_b += x_b_off;
-                            x_c += x_c_off;
-                            color_b += z_b_off;
-                            color_c += z_c_off;
-                            y_c += Rasterizer.destinationWidth;
+                    if(b_slope_x < c_slope_x) {
+                        b_y -= a_y;
+                        a_y -= c_y;
+                        c_y = lineOffsets[c_y];
+                        while(--a_y >= 0) {
+                            drawShadedLine(Rasterizer.destinationPixels, c_y, b_x >> 16, c_x >> 16, color_b >> 7, color_c >> 7);
+                            b_x += b_slope_x;
+                            c_x += c_slope_x;
+                            color_b += b_slope_color;
+                            color_c += c_slope_color;
+                            c_y += Rasterizer.destinationWidth;
                         }
-                        while(--y_b >= 0) {
-                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_b >> 16, x_a >> 16, color_b >> 7, color_a >> 7);
-                            x_b += x_b_off;
-                            x_a += x_a_off;
-                            color_b += z_b_off;
-                            color_a += z_a_off;
-                            y_c += Rasterizer.destinationWidth;
+                        while(--b_y >= 0) {
+                            drawShadedLine(Rasterizer.destinationPixels, c_y, b_x >> 16, a_x >> 16, color_b >> 7, color_a >> 7);
+                            b_x += b_slope_x;
+                            a_x += a_slope_x;
+                            color_b += b_slope_color;
+                            color_a += a_slope_color;
+                            c_y += Rasterizer.destinationWidth;
                         }
                     } else {
-                        y_b -= y_a;
-                        y_a -= y_c;
-                        y_c = lineOffsets[y_c];
-                        while(--y_a >= 0) {
-                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_c >> 16, x_b >> 16, color_c >> 7, color_b >> 7);
-                            x_b += x_b_off;
-                            x_c += x_c_off;
-                            color_b += z_b_off;
-                            color_c += z_c_off;
-                            y_c += Rasterizer.destinationWidth;
+                        b_y -= a_y;
+                        a_y -= c_y;
+                        c_y = lineOffsets[c_y];
+                        while(--a_y >= 0) {
+                            drawShadedLine(Rasterizer.destinationPixels, c_y, c_x >> 16, b_x >> 16, color_c >> 7, color_b >> 7);
+                            b_x += b_slope_x;
+                            c_x += c_slope_x;
+                            color_b += b_slope_color;
+                            color_c += c_slope_color;
+                            c_y += Rasterizer.destinationWidth;
                         }
-                        while(--y_b >= 0) {
-                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_a >> 16, x_b >> 16, color_a >> 7, color_b >> 7);
-                            x_b += x_b_off;
-                            x_a += x_a_off;
-                            color_b += z_b_off;
-                            color_a += z_a_off;
-                            y_c += Rasterizer.destinationWidth;
+                        while(--b_y >= 0) {
+                            drawShadedLine(Rasterizer.destinationPixels, c_y, a_x >> 16, b_x >> 16, color_a >> 7, color_b >> 7);
+                            b_x += b_slope_x;
+                            a_x += a_slope_x;
+                            color_b += b_slope_color;
+                            color_a += a_slope_color;
+                            c_y += Rasterizer.destinationWidth;
                         }
                     }
                 } else {
-                    x_a = x_c <<= 16;
+                    a_x = c_x <<= 16;
                     color_a = color_c <<= 15;
-                    if(y_c < 0) {
-                        x_a -= x_b_off * y_c;
-                        x_c -= x_c_off * y_c;
-                        color_a -= z_b_off * y_c;
-                        color_c -= z_c_off * y_c;
-                        y_c = 0;
+                    if(c_y < 0) {
+                        a_x -= b_slope_x * c_y;
+                        c_x -= c_slope_x * c_y;
+                        color_a -= b_slope_color * c_y;
+                        color_c -= c_slope_color * c_y;
+                        c_y = 0;
                     }
-                    x_b <<= 16;
+                    b_x <<= 16;
                     color_b <<= 15;
-                    if(y_b < 0) {
-                        x_b -= x_a_off * y_b;
-                        color_b -= z_a_off * y_b;
-                        y_b = 0;
+                    if(b_y < 0) {
+                        b_x -= a_slope_x * b_y;
+                        color_b -= a_slope_color * b_y;
+                        b_y = 0;
                     }
-                    if(x_b_off < x_c_off) {
-                        y_a -= y_b;
-                        y_b -= y_c;
-                        y_c = lineOffsets[y_c];
-                        while(--y_b >= 0) {
-                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_a >> 16, x_c >> 16, color_a >> 7, color_c >> 7);
-                            x_a += x_b_off;
-                            x_c += x_c_off;
-                            color_a += z_b_off;
-                            color_c += z_c_off;
-                            y_c += Rasterizer.destinationWidth;
+                    if(b_slope_x < c_slope_x) {
+                        a_y -= b_y;
+                        b_y -= c_y;
+                        c_y = lineOffsets[c_y];
+                        while(--b_y >= 0) {
+                            drawShadedLine(Rasterizer.destinationPixels, c_y, a_x >> 16, c_x >> 16, color_a >> 7, color_c >> 7);
+                            a_x += b_slope_x;
+                            c_x += c_slope_x;
+                            color_a += b_slope_color;
+                            color_c += c_slope_color;
+                            c_y += Rasterizer.destinationWidth;
                         }
-                        while(--y_a >= 0) {
-                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_b >> 16, x_c >> 16, color_b >> 7, color_c >> 7);
-                            x_b += x_a_off;
-                            x_c += x_c_off;
-                            color_b += z_a_off;
-                            color_c += z_c_off;
-                            y_c += Rasterizer.destinationWidth;
+                        while(--a_y >= 0) {
+                            drawShadedLine(Rasterizer.destinationPixels, c_y, b_x >> 16, c_x >> 16, color_b >> 7, color_c >> 7);
+                            b_x += a_slope_x;
+                            c_x += c_slope_x;
+                            color_b += a_slope_color;
+                            color_c += c_slope_color;
+                            c_y += Rasterizer.destinationWidth;
                         }
                     } else {
-                        y_a -= y_b;
-                        y_b -= y_c;
-                        y_c = lineOffsets[y_c];
-                        while(--y_b >= 0) {
-                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_c >> 16, x_a >> 16, color_c >> 7, color_a >> 7);
-                            x_a += x_b_off;
-                            x_c += x_c_off;
-                            color_a += z_b_off;
-                            color_c += z_c_off;
-                            y_c += Rasterizer.destinationWidth;
+                        a_y -= b_y;
+                        b_y -= c_y;
+                        c_y = lineOffsets[c_y];
+                        while(--b_y >= 0) {
+                            drawShadedLine(Rasterizer.destinationPixels, c_y, c_x >> 16, a_x >> 16, color_c >> 7, color_a >> 7);
+                            a_x += b_slope_x;
+                            c_x += c_slope_x;
+                            color_a += b_slope_color;
+                            color_c += c_slope_color;
+                            c_y += Rasterizer.destinationWidth;
                         }
-                        while(--y_a >= 0) {
-                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_c >> 16, x_b >> 16, color_c >> 7, color_b >> 7);
-                            x_b += x_a_off;
-                            x_c += x_c_off;
-                            color_b += z_a_off;
-                            color_c += z_c_off;
-                            y_c += Rasterizer.destinationWidth;
+                        while(--a_y >= 0) {
+                            drawShadedLine(Rasterizer.destinationPixels, c_y, c_x >> 16, b_x >> 16, color_c >> 7, color_b >> 7);
+                            b_x += a_slope_x;
+                            c_x += c_slope_x;
+                            color_b += a_slope_color;
+                            color_c += c_slope_color;
+                            c_y += Rasterizer.destinationWidth;
                         }
                     }
                 }
