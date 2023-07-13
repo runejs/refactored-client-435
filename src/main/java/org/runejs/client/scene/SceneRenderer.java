@@ -791,47 +791,42 @@ public class SceneRenderer {
         int zC = this.scene.landscape.tile_height[arg1][tileX + 1][tileY + 1] - currentCamera.getPosition().z;
         int zD = this.scene.landscape.tile_height[arg1][tileX][tileY + 1] - currentCamera.getPosition().z;
 
-        int sinX = currentCamera.getRotation().yawSine;
-        int cosineX = currentCamera.getRotation().yawCosine;
-        int sinY = currentCamera.getRotation().pitchSine;
-        int cosineY = currentCamera.getRotation().pitchCosine;
+        int[] resultA = Util3d.getProjectedPoint(currentCamera, xA, yA, zA);
+        if (resultA == null) {
+            return;
+        }
 
-        int temp = yA * sinX + xA * cosineX >> 16;
-        yA = yA * cosineX - xA * sinX >> 16;
-        xA = temp;
-        temp = zA * cosineY - yA * sinY >> 16;
-        yA = zA * sinY + yA * cosineY >> 16;
-        zA = temp;
-        if (yA < 50) {
+        xA = resultA[0];
+        yA = resultA[1];
+        zA = resultA[2];
+
+        int[] resultB = Util3d.getProjectedPoint(currentCamera, xB, yB, zB);
+        if (resultB == null) {
             return;
         }
-        temp = yB * sinX + xB * cosineX >> 16;
-        yB = yB * cosineX - xB * sinX >> 16;
-        xB = temp;
-        temp = zB * cosineY - yB * sinY >> 16;
-        yB = zB * sinY + yB * cosineY >> 16;
-        zB = temp;
-        if (yB < 50) {
+
+        xB = resultB[0];
+        yB = resultB[1];
+        zB = resultB[2];
+
+        int[] resultD = Util3d.getProjectedPoint(currentCamera, xD, yD, zC);
+        if (resultD == null) {
             return;
         }
-        temp = yD * sinX + xD * cosineX >> 16;
-        yD = yD * cosineX - xD * sinX >> 16;
-        xD = temp;
-        temp = zC * cosineY - yD * sinY >> 16;
-        yD = zC * sinY + yD * cosineY >> 16;
-        zC = temp;
-        if (yD < 50) {
+
+        xD = resultD[0];
+        yD = resultD[1];
+        zC = resultD[2];
+
+        int[] resultC = Util3d.getProjectedPoint(currentCamera, xC, yC, zD);
+        if (resultC == null) {
             return;
         }
-        temp = yC * sinX + xC * cosineX >> 16;
-        yC = yC * cosineX - xC * sinX >> 16;
-        xC = temp;
-        temp = zD * cosineY - yC * sinY >> 16;
-        yC = zD * sinY + yC * cosineY >> 16;
-        zD = temp;
-        if (yC < 50) {
-            return;
-        }
+
+        xC = resultC[0];
+        yC = resultC[1];
+        zD = resultC[2];
+
         int screenXA = Rasterizer3D.center_x + (xA << 9) / yA;
         int screenYA = Rasterizer3D.center_y + (zA << 9) / yA;
         int screenXB = Rasterizer3D.center_x + (xB << 9) / yB;
