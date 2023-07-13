@@ -75,45 +75,68 @@ public class Rasterizer3D extends Rasterizer {
         }
     }
 
-    public static void drawScanLine(int[] dest, int destOffset, int loops, int startX, int endX) {
+    public static void drawScanLine(int[] dest, int destOffset, int color, int startX, int endX) {
+        // restrict_edges indicates if there's a need to restrict the drawing operation within certain boundaries (viewport)
         if(restrict_edges) {
+            // If the ending point is beyond the viewport's right boundary, clip it to the boundary
             if(endX > viewportRx) {
                 endX = viewportRx;
             }
+
+            // If the starting point is before the viewport's left boundary, clip it to the boundary
             if(startX < 0) {
                 startX = 0;
             }
         }
+
+        // If the start point is after or at the end point, there's no need to draw, return
         if(startX >= endX) {
             return;
         }
+
+        // Update the destination array offset with the start point
         destOffset += startX;
-        int rgba = endX - startX >> 2;
+
+        // Calculate the number of times the loop will run for 4-pixel chunks
+        int loops = endX - startX >> 2;
+
+        // If the alpha is 0 (no transparency), the loop simply draws each pixel with the provided color.
         if(alpha == 0) {
-            while(--rgba >= 0) {
-                dest[destOffset++] = loops;
-                dest[destOffset++] = loops;
-                dest[destOffset++] = loops;
-                dest[destOffset++] = loops;
+            // Draw the color 4 times, for each pixel in the 4-pixel chunk
+            while(--loops >= 0) {
+                dest[destOffset++] = color;
+                dest[destOffset++] = color;
+                dest[destOffset++] = color;
+                dest[destOffset++] = color;
             }
-            rgba = endX - startX & 0x3;
-            while(--rgba >= 0) {
-                dest[destOffset++] = loops;
+
+            // For the remaining pixels, draw them one by one
+            loops = endX - startX & 0x3;
+            while(--loops >= 0) {
+                dest[destOffset++] = color;
             }
             return;
         }
+
+        // If alpha is not 0 (there is some transparency), the pixels need to be blended with the destination.
         int destAlpha = alpha;
         int sourceAlpha = 256 - alpha;
-        loops = ((loops & 0xff00ff) * sourceAlpha >> 8 & 0xff00ff) + ((loops & 0xff00) * sourceAlpha >> 8 & 0xff00);
-        while(--rgba >= 0) {
-            dest[destOffset++] = loops + ((dest[destOffset] & 0xff00ff) * destAlpha >> 8 & 0xff00ff) + ((dest[destOffset] & 0xff00) * destAlpha >> 8 & 0xff00);
-            dest[destOffset++] = loops + ((dest[destOffset] & 0xff00ff) * destAlpha >> 8 & 0xff00ff) + ((dest[destOffset] & 0xff00) * destAlpha >> 8 & 0xff00);
-            dest[destOffset++] = loops + ((dest[destOffset] & 0xff00ff) * destAlpha >> 8 & 0xff00ff) + ((dest[destOffset] & 0xff00) * destAlpha >> 8 & 0xff00);
-            dest[destOffset++] = loops + ((dest[destOffset] & 0xff00ff) * destAlpha >> 8 & 0xff00ff) + ((dest[destOffset] & 0xff00) * destAlpha >> 8 & 0xff00);
+
+        // Pre-calculate the source color multiplied by its alpha
+        color = ((color & 0xff00ff) * sourceAlpha >> 8 & 0xff00ff) + ((color & 0xff00) * sourceAlpha >> 8 & 0xff00);
+
+        // For each 4-pixel chunk, blend the source color with the destination color
+        while(--loops >= 0) {
+            dest[destOffset++] = color + ((dest[destOffset] & 0xff00ff) * destAlpha >> 8 & 0xff00ff) + ((dest[destOffset] & 0xff00) * destAlpha >> 8 & 0xff00);
+            dest[destOffset++] = color + ((dest[destOffset] & 0xff00ff) * destAlpha >> 8 & 0xff00ff) + ((dest[destOffset] & 0xff00) * destAlpha >> 8 & 0xff00);
+            dest[destOffset++] = color + ((dest[destOffset] & 0xff00ff) * destAlpha >> 8 & 0xff00ff) + ((dest[destOffset] & 0xff00) * destAlpha >> 8 & 0xff00);
+            dest[destOffset++] = color + ((dest[destOffset] & 0xff00ff) * destAlpha >> 8 & 0xff00ff) + ((dest[destOffset] & 0xff00) * destAlpha >> 8 & 0xff00);
         }
-        rgba = endX - startX & 0x3;
-        while(--rgba >= 0) {
-            dest[destOffset++] = loops + ((dest[destOffset] & 0xff00ff) * destAlpha >> 8 & 0xff00ff) + ((dest[destOffset] & 0xff00) * destAlpha >> 8 & 0xff00);
+
+        // For the remaining pixels, blend them one by one
+        loops = endX - startX & 0x3;
+        while(--loops >= 0) {
+            dest[destOffset++] = color + ((dest[destOffset] & 0xff00ff) * destAlpha >> 8 & 0xff00ff) + ((dest[destOffset] & 0xff00) * destAlpha >> 8 & 0xff00);
         }
     }
 
