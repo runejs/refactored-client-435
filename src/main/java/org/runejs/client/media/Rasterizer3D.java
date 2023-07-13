@@ -1241,24 +1241,24 @@ public class Rasterizer3D extends Rasterizer {
         }
     }
 
-    public static void drawShadedTriangle(int y_a, int y_b, int y_c, int x_a, int x_b, int x_c, int z_a, int z_b, int z_c) {
+    public static void drawShadedTriangle(int y_a, int y_b, int y_c, int x_a, int x_b, int x_c, int color_a, int color_b, int color_c) {
         int x_a_off = 0;
         int z_a_off = 0;
         if(y_b != y_a) {
             x_a_off = (x_b - x_a << 16) / (y_b - y_a);
-            z_a_off = (z_b - z_a << 15) / (y_b - y_a);
+            z_a_off = (color_b - color_a << 15) / (y_b - y_a);
         }
         int x_b_off = 0;
         int z_b_off = 0;
         if(y_c != y_b) {
             x_b_off = (x_c - x_b << 16) / (y_c - y_b);
-            z_b_off = (z_c - z_b << 15) / (y_c - y_b);
+            z_b_off = (color_c - color_b << 15) / (y_c - y_b);
         }
         int x_c_off = 0;
         int z_c_off = 0;
         if(y_c != y_a) {
             x_c_off = (x_a - x_c << 16) / (y_a - y_c);
-            z_c_off = (z_a - z_c << 15) / (y_a - y_c);
+            z_c_off = (color_a - color_c << 15) / (y_a - y_c);
         }
         if(y_a <= y_b && y_a <= y_c) {
             if(y_a >= bottomY) {
@@ -1272,19 +1272,19 @@ public class Rasterizer3D extends Rasterizer {
             }
             if(y_b < y_c) {
                 x_c = x_a <<= 16;
-                z_c = z_a <<= 15;
+                color_c = color_a <<= 15;
                 if(y_a < 0) {
                     x_c -= x_c_off * y_a;
                     x_a -= x_a_off * y_a;
-                    z_c -= z_c_off * y_a;
-                    z_a -= z_a_off * y_a;
+                    color_c -= z_c_off * y_a;
+                    color_a -= z_a_off * y_a;
                     y_a = 0;
                 }
                 x_b <<= 16;
-                z_b <<= 15;
+                color_b <<= 15;
                 if(y_b < 0) {
                     x_b -= x_b_off * y_b;
-                    z_b -= z_b_off * y_b;
+                    color_b -= z_b_off * y_b;
                     y_b = 0;
                 }
                 if(y_a != y_b && x_c_off < x_a_off || y_a == y_b && x_c_off > x_b_off) {
@@ -1292,19 +1292,19 @@ public class Rasterizer3D extends Rasterizer {
                     y_b -= y_a;
                     y_a = lineOffsets[y_a];
                     while(--y_b >= 0) {
-                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_c >> 16, x_a >> 16, z_c >> 7, z_a >> 7);
+                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_c >> 16, x_a >> 16, color_c >> 7, color_a >> 7);
                         x_c += x_c_off;
                         x_a += x_a_off;
-                        z_c += z_c_off;
-                        z_a += z_a_off;
+                        color_c += z_c_off;
+                        color_a += z_a_off;
                         y_a += Rasterizer.destinationWidth;
                     }
                     while(--y_c >= 0) {
-                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_c >> 16, x_b >> 16, z_c >> 7, z_b >> 7);
+                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_c >> 16, x_b >> 16, color_c >> 7, color_b >> 7);
                         x_c += x_c_off;
                         x_b += x_b_off;
-                        z_c += z_c_off;
-                        z_b += z_b_off;
+                        color_c += z_c_off;
+                        color_b += z_b_off;
                         y_a += Rasterizer.destinationWidth;
                     }
                 } else {
@@ -1312,37 +1312,37 @@ public class Rasterizer3D extends Rasterizer {
                     y_b -= y_a;
                     y_a = lineOffsets[y_a];
                     while(--y_b >= 0) {
-                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_a >> 16, x_c >> 16, z_a >> 7, z_c >> 7);
+                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_a >> 16, x_c >> 16, color_a >> 7, color_c >> 7);
                         x_c += x_c_off;
                         x_a += x_a_off;
-                        z_c += z_c_off;
-                        z_a += z_a_off;
+                        color_c += z_c_off;
+                        color_a += z_a_off;
                         y_a += Rasterizer.destinationWidth;
                     }
                     while(--y_c >= 0) {
-                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_b >> 16, x_c >> 16, z_b >> 7, z_c >> 7);
+                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_b >> 16, x_c >> 16, color_b >> 7, color_c >> 7);
                         x_c += x_c_off;
                         x_b += x_b_off;
-                        z_c += z_c_off;
-                        z_b += z_b_off;
+                        color_c += z_c_off;
+                        color_b += z_b_off;
                         y_a += Rasterizer.destinationWidth;
                     }
                 }
             } else {
                 x_b = x_a <<= 16;
-                z_b = z_a <<= 15;
+                color_b = color_a <<= 15;
                 if(y_a < 0) {
                     x_b -= x_c_off * y_a;
                     x_a -= x_a_off * y_a;
-                    z_b -= z_c_off * y_a;
-                    z_a -= z_a_off * y_a;
+                    color_b -= z_c_off * y_a;
+                    color_a -= z_a_off * y_a;
                     y_a = 0;
                 }
                 x_c <<= 16;
-                z_c <<= 15;
+                color_c <<= 15;
                 if(y_c < 0) {
                     x_c -= x_b_off * y_c;
-                    z_c -= z_b_off * y_c;
+                    color_c -= z_b_off * y_c;
                     y_c = 0;
                 }
                 if(y_a != y_c && x_c_off < x_a_off || y_a == y_c && x_b_off > x_a_off) {
@@ -1350,19 +1350,19 @@ public class Rasterizer3D extends Rasterizer {
                     y_c -= y_a;
                     y_a = lineOffsets[y_a];
                     while(--y_c >= 0) {
-                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_b >> 16, x_a >> 16, z_b >> 7, z_a >> 7);
+                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_b >> 16, x_a >> 16, color_b >> 7, color_a >> 7);
                         x_b += x_c_off;
                         x_a += x_a_off;
-                        z_b += z_c_off;
-                        z_a += z_a_off;
+                        color_b += z_c_off;
+                        color_a += z_a_off;
                         y_a += Rasterizer.destinationWidth;
                     }
                     while(--y_b >= 0) {
-                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_c >> 16, x_a >> 16, z_c >> 7, z_a >> 7);
+                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_c >> 16, x_a >> 16, color_c >> 7, color_a >> 7);
                         x_c += x_b_off;
                         x_a += x_a_off;
-                        z_c += z_b_off;
-                        z_a += z_a_off;
+                        color_c += z_b_off;
+                        color_a += z_a_off;
                         y_a += Rasterizer.destinationWidth;
                     }
                 } else {
@@ -1370,19 +1370,19 @@ public class Rasterizer3D extends Rasterizer {
                     y_c -= y_a;
                     y_a = lineOffsets[y_a];
                     while(--y_c >= 0) {
-                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_a >> 16, x_b >> 16, z_a >> 7, z_b >> 7);
+                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_a >> 16, x_b >> 16, color_a >> 7, color_b >> 7);
                         x_b += x_c_off;
                         x_a += x_a_off;
-                        z_b += z_c_off;
-                        z_a += z_a_off;
+                        color_b += z_c_off;
+                        color_a += z_a_off;
                         y_a += Rasterizer.destinationWidth;
                     }
                     while(--y_b >= 0) {
-                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_a >> 16, x_c >> 16, z_a >> 7, z_c >> 7);
+                        drawShadedLine(Rasterizer.destinationPixels, y_a, x_a >> 16, x_c >> 16, color_a >> 7, color_c >> 7);
                         x_c += x_b_off;
                         x_a += x_a_off;
-                        z_c += z_b_off;
-                        z_a += z_a_off;
+                        color_c += z_b_off;
+                        color_a += z_a_off;
                         y_a += Rasterizer.destinationWidth;
                     }
                 }
@@ -1398,19 +1398,19 @@ public class Rasterizer3D extends Rasterizer {
                     }
                     if(y_c < y_a) {
                         x_a = x_b <<= 16;
-                        z_a = z_b <<= 15;
+                        color_a = color_b <<= 15;
                         if(y_b < 0) {
                             x_a -= x_a_off * y_b;
                             x_b -= x_b_off * y_b;
-                            z_a -= z_a_off * y_b;
-                            z_b -= z_b_off * y_b;
+                            color_a -= z_a_off * y_b;
+                            color_b -= z_b_off * y_b;
                             y_b = 0;
                         }
                         x_c <<= 16;
-                        z_c <<= 15;
+                        color_c <<= 15;
                         if(y_c < 0) {
                             x_c -= x_c_off * y_c;
-                            z_c -= z_c_off * y_c;
+                            color_c -= z_c_off * y_c;
                             y_c = 0;
                         }
                         if(y_b != y_c && x_a_off < x_b_off || y_b == y_c && x_a_off > x_c_off) {
@@ -1418,19 +1418,19 @@ public class Rasterizer3D extends Rasterizer {
                             y_c -= y_b;
                             y_b = lineOffsets[y_b];
                             while(--y_c >= 0) {
-                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_a >> 16, x_b >> 16, z_a >> 7, z_b >> 7);
+                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_a >> 16, x_b >> 16, color_a >> 7, color_b >> 7);
                                 x_a += x_a_off;
                                 x_b += x_b_off;
-                                z_a += z_a_off;
-                                z_b += z_b_off;
+                                color_a += z_a_off;
+                                color_b += z_b_off;
                                 y_b += Rasterizer.destinationWidth;
                             }
                             while(--y_a >= 0) {
-                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_a >> 16, x_c >> 16, z_a >> 7, z_c >> 7);
+                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_a >> 16, x_c >> 16, color_a >> 7, color_c >> 7);
                                 x_a += x_a_off;
                                 x_c += x_c_off;
-                                z_a += z_a_off;
-                                z_c += z_c_off;
+                                color_a += z_a_off;
+                                color_c += z_c_off;
                                 y_b += Rasterizer.destinationWidth;
                             }
                         } else {
@@ -1438,37 +1438,37 @@ public class Rasterizer3D extends Rasterizer {
                             y_c -= y_b;
                             y_b = lineOffsets[y_b];
                             while(--y_c >= 0) {
-                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_b >> 16, x_a >> 16, z_b >> 7, z_a >> 7);
+                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_b >> 16, x_a >> 16, color_b >> 7, color_a >> 7);
                                 x_a += x_a_off;
                                 x_b += x_b_off;
-                                z_a += z_a_off;
-                                z_b += z_b_off;
+                                color_a += z_a_off;
+                                color_b += z_b_off;
                                 y_b += Rasterizer.destinationWidth;
                             }
                             while(--y_a >= 0) {
-                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_c >> 16, x_a >> 16, z_c >> 7, z_a >> 7);
+                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_c >> 16, x_a >> 16, color_c >> 7, color_a >> 7);
                                 x_a += x_a_off;
                                 x_c += x_c_off;
-                                z_a += z_a_off;
-                                z_c += z_c_off;
+                                color_a += z_a_off;
+                                color_c += z_c_off;
                                 y_b += Rasterizer.destinationWidth;
                             }
                         }
                     } else {
                         x_c = x_b <<= 16;
-                        z_c = z_b <<= 15;
+                        color_c = color_b <<= 15;
                         if(y_b < 0) {
                             x_c -= x_a_off * y_b;
                             x_b -= x_b_off * y_b;
-                            z_c -= z_a_off * y_b;
-                            z_b -= z_b_off * y_b;
+                            color_c -= z_a_off * y_b;
+                            color_b -= z_b_off * y_b;
                             y_b = 0;
                         }
                         x_a <<= 16;
-                        z_a <<= 15;
+                        color_a <<= 15;
                         if(y_a < 0) {
                             x_a -= x_c_off * y_a;
-                            z_a -= z_c_off * y_a;
+                            color_a -= z_c_off * y_a;
                             y_a = 0;
                         }
                         if(x_a_off < x_b_off) {
@@ -1476,19 +1476,19 @@ public class Rasterizer3D extends Rasterizer {
                             y_a -= y_b;
                             y_b = lineOffsets[y_b];
                             while(--y_a >= 0) {
-                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_c >> 16, x_b >> 16, z_c >> 7, z_b >> 7);
+                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_c >> 16, x_b >> 16, color_c >> 7, color_b >> 7);
                                 x_c += x_a_off;
                                 x_b += x_b_off;
-                                z_c += z_a_off;
-                                z_b += z_b_off;
+                                color_c += z_a_off;
+                                color_b += z_b_off;
                                 y_b += Rasterizer.destinationWidth;
                             }
                             while(--y_c >= 0) {
-                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_a >> 16, x_b >> 16, z_a >> 7, z_b >> 7);
+                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_a >> 16, x_b >> 16, color_a >> 7, color_b >> 7);
                                 x_a += x_c_off;
                                 x_b += x_b_off;
-                                z_a += z_c_off;
-                                z_b += z_b_off;
+                                color_a += z_c_off;
+                                color_b += z_b_off;
                                 y_b += Rasterizer.destinationWidth;
                             }
                         } else {
@@ -1496,19 +1496,19 @@ public class Rasterizer3D extends Rasterizer {
                             y_a -= y_b;
                             y_b = lineOffsets[y_b];
                             while(--y_a >= 0) {
-                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_b >> 16, x_c >> 16, z_b >> 7, z_c >> 7);
+                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_b >> 16, x_c >> 16, color_b >> 7, color_c >> 7);
                                 x_c += x_a_off;
                                 x_b += x_b_off;
-                                z_c += z_a_off;
-                                z_b += z_b_off;
+                                color_c += z_a_off;
+                                color_b += z_b_off;
                                 y_b += Rasterizer.destinationWidth;
                             }
                             while(--y_c >= 0) {
-                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_b >> 16, x_a >> 16, z_b >> 7, z_a >> 7);
+                                drawShadedLine(Rasterizer.destinationPixels, y_b, x_b >> 16, x_a >> 16, color_b >> 7, color_a >> 7);
                                 x_a += x_c_off;
                                 x_b += x_b_off;
-                                z_a += z_c_off;
-                                z_b += z_b_off;
+                                color_a += z_c_off;
+                                color_b += z_b_off;
                                 y_b += Rasterizer.destinationWidth;
                             }
                         }
@@ -1523,19 +1523,19 @@ public class Rasterizer3D extends Rasterizer {
                 }
                 if(y_a < y_b) {
                     x_b = x_c <<= 16;
-                    z_b = z_c <<= 15;
+                    color_b = color_c <<= 15;
                     if(y_c < 0) {
                         x_b -= x_b_off * y_c;
                         x_c -= x_c_off * y_c;
-                        z_b -= z_b_off * y_c;
-                        z_c -= z_c_off * y_c;
+                        color_b -= z_b_off * y_c;
+                        color_c -= z_c_off * y_c;
                         y_c = 0;
                     }
                     x_a <<= 16;
-                    z_a <<= 15;
+                    color_a <<= 15;
                     if(y_a < 0) {
                         x_a -= x_a_off * y_a;
-                        z_a -= z_a_off * y_a;
+                        color_a -= z_a_off * y_a;
                         y_a = 0;
                     }
                     if(x_b_off < x_c_off) {
@@ -1543,19 +1543,19 @@ public class Rasterizer3D extends Rasterizer {
                         y_a -= y_c;
                         y_c = lineOffsets[y_c];
                         while(--y_a >= 0) {
-                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_b >> 16, x_c >> 16, z_b >> 7, z_c >> 7);
+                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_b >> 16, x_c >> 16, color_b >> 7, color_c >> 7);
                             x_b += x_b_off;
                             x_c += x_c_off;
-                            z_b += z_b_off;
-                            z_c += z_c_off;
+                            color_b += z_b_off;
+                            color_c += z_c_off;
                             y_c += Rasterizer.destinationWidth;
                         }
                         while(--y_b >= 0) {
-                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_b >> 16, x_a >> 16, z_b >> 7, z_a >> 7);
+                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_b >> 16, x_a >> 16, color_b >> 7, color_a >> 7);
                             x_b += x_b_off;
                             x_a += x_a_off;
-                            z_b += z_b_off;
-                            z_a += z_a_off;
+                            color_b += z_b_off;
+                            color_a += z_a_off;
                             y_c += Rasterizer.destinationWidth;
                         }
                     } else {
@@ -1563,37 +1563,37 @@ public class Rasterizer3D extends Rasterizer {
                         y_a -= y_c;
                         y_c = lineOffsets[y_c];
                         while(--y_a >= 0) {
-                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_c >> 16, x_b >> 16, z_c >> 7, z_b >> 7);
+                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_c >> 16, x_b >> 16, color_c >> 7, color_b >> 7);
                             x_b += x_b_off;
                             x_c += x_c_off;
-                            z_b += z_b_off;
-                            z_c += z_c_off;
+                            color_b += z_b_off;
+                            color_c += z_c_off;
                             y_c += Rasterizer.destinationWidth;
                         }
                         while(--y_b >= 0) {
-                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_a >> 16, x_b >> 16, z_a >> 7, z_b >> 7);
+                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_a >> 16, x_b >> 16, color_a >> 7, color_b >> 7);
                             x_b += x_b_off;
                             x_a += x_a_off;
-                            z_b += z_b_off;
-                            z_a += z_a_off;
+                            color_b += z_b_off;
+                            color_a += z_a_off;
                             y_c += Rasterizer.destinationWidth;
                         }
                     }
                 } else {
                     x_a = x_c <<= 16;
-                    z_a = z_c <<= 15;
+                    color_a = color_c <<= 15;
                     if(y_c < 0) {
                         x_a -= x_b_off * y_c;
                         x_c -= x_c_off * y_c;
-                        z_a -= z_b_off * y_c;
-                        z_c -= z_c_off * y_c;
+                        color_a -= z_b_off * y_c;
+                        color_c -= z_c_off * y_c;
                         y_c = 0;
                     }
                     x_b <<= 16;
-                    z_b <<= 15;
+                    color_b <<= 15;
                     if(y_b < 0) {
                         x_b -= x_a_off * y_b;
-                        z_b -= z_a_off * y_b;
+                        color_b -= z_a_off * y_b;
                         y_b = 0;
                     }
                     if(x_b_off < x_c_off) {
@@ -1601,19 +1601,19 @@ public class Rasterizer3D extends Rasterizer {
                         y_b -= y_c;
                         y_c = lineOffsets[y_c];
                         while(--y_b >= 0) {
-                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_a >> 16, x_c >> 16, z_a >> 7, z_c >> 7);
+                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_a >> 16, x_c >> 16, color_a >> 7, color_c >> 7);
                             x_a += x_b_off;
                             x_c += x_c_off;
-                            z_a += z_b_off;
-                            z_c += z_c_off;
+                            color_a += z_b_off;
+                            color_c += z_c_off;
                             y_c += Rasterizer.destinationWidth;
                         }
                         while(--y_a >= 0) {
-                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_b >> 16, x_c >> 16, z_b >> 7, z_c >> 7);
+                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_b >> 16, x_c >> 16, color_b >> 7, color_c >> 7);
                             x_b += x_a_off;
                             x_c += x_c_off;
-                            z_b += z_a_off;
-                            z_c += z_c_off;
+                            color_b += z_a_off;
+                            color_c += z_c_off;
                             y_c += Rasterizer.destinationWidth;
                         }
                     } else {
@@ -1621,19 +1621,19 @@ public class Rasterizer3D extends Rasterizer {
                         y_b -= y_c;
                         y_c = lineOffsets[y_c];
                         while(--y_b >= 0) {
-                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_c >> 16, x_a >> 16, z_c >> 7, z_a >> 7);
+                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_c >> 16, x_a >> 16, color_c >> 7, color_a >> 7);
                             x_a += x_b_off;
                             x_c += x_c_off;
-                            z_a += z_b_off;
-                            z_c += z_c_off;
+                            color_a += z_b_off;
+                            color_c += z_c_off;
                             y_c += Rasterizer.destinationWidth;
                         }
                         while(--y_a >= 0) {
-                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_c >> 16, x_b >> 16, z_c >> 7, z_b >> 7);
+                            drawShadedLine(Rasterizer.destinationPixels, y_c, x_c >> 16, x_b >> 16, color_c >> 7, color_b >> 7);
                             x_b += x_a_off;
                             x_c += x_c_off;
-                            z_b += z_a_off;
-                            z_c += z_c_off;
+                            color_b += z_a_off;
+                            color_c += z_c_off;
                             y_c += Rasterizer.destinationWidth;
                         }
                     }
