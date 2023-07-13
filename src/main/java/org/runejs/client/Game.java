@@ -1031,7 +1031,8 @@ public class Game {
 
             MovedStatics.drawTabArea();
 
-            Minimap.renderMinimap();
+            // this render is  handled in `ResizableFrameRenderer`
+            //Minimap.renderMinimap();
 
 
             if(flashingTabId != -1) {
