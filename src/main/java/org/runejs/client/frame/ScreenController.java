@@ -12,7 +12,6 @@ import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.outbound.chat.SetChatOptionsOutboundMessage;
 import org.runejs.client.net.OutgoingPackets;
-import org.runejs.client.scene.*;
 import org.runejs.client.*;
 
 import java.awt.*;
@@ -125,14 +124,17 @@ public class ScreenController {
         }
     }
 
+    /**
+     * TODO (jkm) move all this to ResizableFrameRenderer
+     */
     public static void RenderResizableUI() {
         if (drawingThread == null) {
-            renderer = new FrameRenderer(minimap, tabProducer);
+            renderer = new ResizableFrameRenderer(minimap, tabProducer);
             drawingThread = new Thread(renderer);
             drawingThread.start();
         }
         minimap.drawResizableMiniMapArea(drawWidth - 210, 0);
-//        RenderTabArea(drawWidth - 234, drawHeight - (337));
+        RenderTabArea(drawWidth - 234, drawHeight - (337));
         RenderChatArea(0, drawHeight - (162));
 
         tabProducer.drawResizableSideBarArea(drawWidth - 241, drawHeight - (334));
@@ -198,6 +200,9 @@ public class ScreenController {
         return size;
     }
 
+    /**
+     * TODO (jkm) move all this to ResizableFrameRenderer
+     */
     public static void RenderTabArea(int x, int y) {
         // height 337
         // width 234
@@ -208,10 +213,11 @@ public class ScreenController {
         drawFramePieceCutout(MovedStatics.tabBottom, x, y + 300, MovedStatics.tabBottom.width - 35, MovedStatics.tabBottom.height, 35, 0);
         drawFramePieceCutout(MovedStatics.tabTop, x, y, MovedStatics.tabTop.width - 15, MovedStatics.tabTop.height - 6, 15, 6);
         drawFramePiece(MovedStatics.tabImageProducer, x + 22, y + 39);
-
-
     }
 
+    /**
+     * TODO (jkm) move all this to ResizableFrameRenderer
+     */
     public static void RenderChatArea(int x, int y) {
         //width 516
         //height 184
@@ -223,8 +229,6 @@ public class ScreenController {
         //        System.out.println(Class40_Sub5_Sub1.chatboxRight.height + (Class17.chatboxTop.height-3) + HuffmanEncoding.aProducingGraphicsBuffer_1541.height);
 
         drawFramePieceCutout(MovedStatics.tabPieveLowerRight, x + 496, y + 16, 20, MovedStatics.tabPieveLowerRight.height, 0, 0);
-
-
     }
 
     public static void drawFramePiece(ProducingGraphicsBuffer framePiece, int x, int y) {
@@ -234,7 +238,6 @@ public class ScreenController {
     public static void drawFramePieceCutout(ProducingGraphicsBuffer framePiece, int x, int y, int width, int height, int offsetX, int offsetY) {
         Rasterizer.copyPixelsCutOff(framePiece.pixels, framePiece.width, framePiece.height, x, y, width, height, offsetX, offsetY);
     }
-
 
     public static boolean isCoordinatesIn3dScreen(int x, int y) {
         if (frameMode == ScreenMode.FIXED) {
