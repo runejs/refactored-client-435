@@ -82,7 +82,7 @@ public class ScreenController {
     }
 
     public static void setBounds() {
-        if (Game.gameCanvas == null) {
+        if (Game.gameCanvas == null || Game.signlink.gameShell == null) {
             return;
         }
         Dimension innerSize = getInnerSize(GameShell.clientFrame);
