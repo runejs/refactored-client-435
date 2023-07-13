@@ -1829,316 +1829,337 @@ public class Rasterizer3D extends Rasterizer {
         createPalette(brightness, 512);
     }
 
-    public static void drawFlatTriangle(int xA, int yA, int xB, int yB, int xC, int yC, int colour) {
-        int mAB = 0;
-        if(yB != yA) {
-            mAB = (xB - xA << 16) / (yB - yA);
+    public static void drawFlatTriangle(int a_x, int a_y, int b_x, int b_y, int c_x, int c_y, int colour) {
+        // Calculate the slopes of the lines AB, BC and CA
+        int slopeAB = 0;
+        if(b_y != a_y) { // if y-coordinates are not equal, we have a slope
+            slopeAB = (b_x - a_x << 16) / (b_y - a_y);
         }
-        int mBC = 0;
-        if(yC != yB) {
-            mBC = (xC - xB << 16) / (yC - yB);
+        int slopeBC = 0;
+        if(c_y != b_y) { // if y-coordinates are not equal, we have a slope
+            slopeBC = (c_x - b_x << 16) / (c_y - b_y);
         }
-        int mCA = 0;
-        if(yC != yA) {
-            mCA = (xA - xC << 16) / (yA - yC);
+        int slopeCA = 0;
+        if(c_y != a_y) { // if y-coordinates are not equal, we have a slope
+            slopeCA = (a_x - c_x << 16) / (a_y - c_y);
         }
-        if(yA <= yB && yA <= yC) {
-            if(yA >= bottomY) {
+
+        // We now draw the triangle using scanline rasterization, scanning from min Y (top) to max Y (bottom).
+        // If a_y is smallest, we'll start from a_y and draw to b_y and c_y.
+        if(a_y <= b_y && a_y <= c_y) {
+            // If a_y is already below the drawable area, no point in drawing the triangle
+            if(a_y >= bottomY) {
                 return;
             }
-            if(yB > bottomY) {
-                yB = bottomY;
+
+            // Clamp the y-values to the bottom of the drawing area
+            if(b_y > bottomY) {
+                b_y = bottomY;
             }
-            if(yC > bottomY) {
-                yC = bottomY;
+            if(c_y > bottomY) {
+                c_y = bottomY;
             }
-            if(yB < yC) {
-                xC = xA <<= 16;
-                if(yA < 0) {
-                    xC -= mCA * yA;
-                    xA -= mAB * yA;
-                    yA = 0;
+
+            // Depending on whether b_y or c_y is smaller, we decide which side of the triangle to rasterize first
+            if(b_y < c_y) {
+                // Shift a_x to higher precision
+                c_x = a_x <<= 16;
+
+                // We check if a_y is negative (off the screen), if it is we calculate the "offsets" for x
+                // to correctly position the triangle. After this correction, we reset a_y to 0.
+                if(a_y < 0) {
+                    c_x -= slopeCA * a_y;
+                    a_x -= slopeAB * a_y;
+                    a_y = 0;
                 }
-                xB <<= 16;
-                if(yB < 0) {
-                    xB -= mBC * yB;
-                    yB = 0;
+
+                // Similar process is performed with b_y
+                b_x <<= 16;
+                if(b_y < 0) {
+                    b_x -= slopeBC * b_y;
+                    b_y = 0;
                 }
-                if(yA != yB && mCA < mAB || yA == yB && mCA > mBC) {
-                    yC -= yB;
-                    yB -= yA;
-                    yA = lineOffsets[yA];
-                    while(--yB >= 0) {
-                        drawScanLine(Rasterizer.destinationPixels, yA, colour, xC >> 16, xA >> 16);
-                        xC += mCA;
-                        xA += mAB;
-                        yA += Rasterizer.destinationWidth;
+
+                // Here we determine the scanline direction depending on the relative values of the slopes.
+                if(a_y != b_y && slopeCA < slopeAB || a_y == b_y && slopeCA > slopeBC) {
+                    c_y -= b_y;
+                    b_y -= a_y;
+                    a_y = lineOffsets[a_y];
+
+                    // Draw line segments for b_y
+                    while(--b_y >= 0) {
+                        drawScanLine(Rasterizer.destinationPixels, a_y, colour, c_x >> 16, a_x >> 16);
+                        c_x += slopeCA;
+                        a_x += slopeAB;
+                        a_y += Rasterizer.destinationWidth;
                     }
-                    while(--yC >= 0) {
-                        drawScanLine(Rasterizer.destinationPixels, yA, colour, xC >> 16, xB >> 16);
-                        xC += mCA;
-                        xB += mBC;
-                        yA += Rasterizer.destinationWidth;
+
+                    // Draw line segments for c_y
+                    while(--c_y >= 0) {
+                        drawScanLine(Rasterizer.destinationPixels, a_y, colour, c_x >> 16, b_x >> 16);
+                        c_x += slopeCA;
+                        b_x += slopeBC;
+                        a_y += Rasterizer.destinationWidth;
                     }
                 } else {
-                    yC -= yB;
-                    yB -= yA;
-                    yA = lineOffsets[yA];
-                    while(--yB >= 0) {
-                        drawScanLine(Rasterizer.destinationPixels, yA, colour, xA >> 16, xC >> 16);
-                        xC += mCA;
-                        xA += mAB;
-                        yA += Rasterizer.destinationWidth;
+                    c_y -= b_y;
+                    b_y -= a_y;
+                    a_y = lineOffsets[a_y];
+                    while(--b_y >= 0) {
+                        drawScanLine(Rasterizer.destinationPixels, a_y, colour, a_x >> 16, c_x >> 16);
+                        c_x += slopeCA;
+                        a_x += slopeAB;
+                        a_y += Rasterizer.destinationWidth;
                     }
-                    while(--yC >= 0) {
-                        drawScanLine(Rasterizer.destinationPixels, yA, colour, xB >> 16, xC >> 16);
-                        xC += mCA;
-                        xB += mBC;
-                        yA += Rasterizer.destinationWidth;
+                    while(--c_y >= 0) {
+                        drawScanLine(Rasterizer.destinationPixels, a_y, colour, b_x >> 16, c_x >> 16);
+                        c_x += slopeCA;
+                        b_x += slopeBC;
+                        a_y += Rasterizer.destinationWidth;
                     }
                 }
             } else {
-                xB = xA <<= 16;
-                if(yA < 0) {
-                    xB -= mCA * yA;
-                    xA -= mAB * yA;
-                    yA = 0;
+                b_x = a_x <<= 16;
+                if(a_y < 0) {
+                    b_x -= slopeCA * a_y;
+                    a_x -= slopeAB * a_y;
+                    a_y = 0;
                 }
-                xC <<= 16;
-                if(yC < 0) {
-                    xC -= mBC * yC;
-                    yC = 0;
+                c_x <<= 16;
+                if(c_y < 0) {
+                    c_x -= slopeBC * c_y;
+                    c_y = 0;
                 }
-                if(yA != yC && mCA < mAB || yA == yC && mBC > mAB) {
-                    yB -= yC;
-                    yC -= yA;
-                    yA = lineOffsets[yA];
-                    while(--yC >= 0) {
-                        drawScanLine(Rasterizer.destinationPixels, yA, colour, xB >> 16, xA >> 16);
-                        xB += mCA;
-                        xA += mAB;
-                        yA += Rasterizer.destinationWidth;
+                if(a_y != c_y && slopeCA < slopeAB || a_y == c_y && slopeBC > slopeAB) {
+                    b_y -= c_y;
+                    c_y -= a_y;
+                    a_y = lineOffsets[a_y];
+                    while(--c_y >= 0) {
+                        drawScanLine(Rasterizer.destinationPixels, a_y, colour, b_x >> 16, a_x >> 16);
+                        b_x += slopeCA;
+                        a_x += slopeAB;
+                        a_y += Rasterizer.destinationWidth;
                     }
-                    while(--yB >= 0) {
-                        drawScanLine(Rasterizer.destinationPixels, yA, colour, xC >> 16, xA >> 16);
-                        xC += mBC;
-                        xA += mAB;
-                        yA += Rasterizer.destinationWidth;
+                    while(--b_y >= 0) {
+                        drawScanLine(Rasterizer.destinationPixels, a_y, colour, c_x >> 16, a_x >> 16);
+                        c_x += slopeBC;
+                        a_x += slopeAB;
+                        a_y += Rasterizer.destinationWidth;
                     }
                 } else {
-                    yB -= yC;
-                    yC -= yA;
-                    yA = lineOffsets[yA];
-                    while(--yC >= 0) {
-                        drawScanLine(Rasterizer.destinationPixels, yA, colour, xA >> 16, xB >> 16);
-                        xB += mCA;
-                        xA += mAB;
-                        yA += Rasterizer.destinationWidth;
+                    b_y -= c_y;
+                    c_y -= a_y;
+                    a_y = lineOffsets[a_y];
+                    while(--c_y >= 0) {
+                        drawScanLine(Rasterizer.destinationPixels, a_y, colour, a_x >> 16, b_x >> 16);
+                        b_x += slopeCA;
+                        a_x += slopeAB;
+                        a_y += Rasterizer.destinationWidth;
                     }
-                    while(--yB >= 0) {
-                        drawScanLine(Rasterizer.destinationPixels, yA, colour, xA >> 16, xC >> 16);
-                        xC += mBC;
-                        xA += mAB;
-                        yA += Rasterizer.destinationWidth;
+                    while(--b_y >= 0) {
+                        drawScanLine(Rasterizer.destinationPixels, a_y, colour, a_x >> 16, c_x >> 16);
+                        c_x += slopeBC;
+                        a_x += slopeAB;
+                        a_y += Rasterizer.destinationWidth;
                     }
                 }
             }
         } else {
-            if(yB <= yC) {
-                if(yB < bottomY) {
-                    if(yC > bottomY) {
-                        yC = bottomY;
+            if(b_y <= c_y) {
+                if(b_y < bottomY) {
+                    if(c_y > bottomY) {
+                        c_y = bottomY;
                     }
-                    if(yA > bottomY) {
-                        yA = bottomY;
+                    if(a_y > bottomY) {
+                        a_y = bottomY;
                     }
-                    if(yC < yA) {
-                        xA = xB <<= 16;
-                        if(yB < 0) {
-                            xA -= mAB * yB;
-                            xB -= mBC * yB;
-                            yB = 0;
+                    if(c_y < a_y) {
+                        a_x = b_x <<= 16;
+                        if(b_y < 0) {
+                            a_x -= slopeAB * b_y;
+                            b_x -= slopeBC * b_y;
+                            b_y = 0;
                         }
-                        xC <<= 16;
-                        if(yC < 0) {
-                            xC -= mCA * yC;
-                            yC = 0;
+                        c_x <<= 16;
+                        if(c_y < 0) {
+                            c_x -= slopeCA * c_y;
+                            c_y = 0;
                         }
-                        if(yB != yC && mAB < mBC || yB == yC && mAB > mCA) {
-                            yA -= yC;
-                            yC -= yB;
-                            yB = lineOffsets[yB];
-                            while(--yC >= 0) {
-                                drawScanLine(Rasterizer.destinationPixels, yB, colour, xA >> 16, xB >> 16);
-                                xA += mAB;
-                                xB += mBC;
-                                yB += Rasterizer.destinationWidth;
+                        if(b_y != c_y && slopeAB < slopeBC || b_y == c_y && slopeAB > slopeCA) {
+                            a_y -= c_y;
+                            c_y -= b_y;
+                            b_y = lineOffsets[b_y];
+                            while(--c_y >= 0) {
+                                drawScanLine(Rasterizer.destinationPixels, b_y, colour, a_x >> 16, b_x >> 16);
+                                a_x += slopeAB;
+                                b_x += slopeBC;
+                                b_y += Rasterizer.destinationWidth;
                             }
-                            while(--yA >= 0) {
-                                drawScanLine(Rasterizer.destinationPixels, yB, colour, xA >> 16, xC >> 16);
-                                xA += mAB;
-                                xC += mCA;
-                                yB += Rasterizer.destinationWidth;
+                            while(--a_y >= 0) {
+                                drawScanLine(Rasterizer.destinationPixels, b_y, colour, a_x >> 16, c_x >> 16);
+                                a_x += slopeAB;
+                                c_x += slopeCA;
+                                b_y += Rasterizer.destinationWidth;
                             }
                         } else {
-                            yA -= yC;
-                            yC -= yB;
-                            yB = lineOffsets[yB];
-                            while(--yC >= 0) {
-                                drawScanLine(Rasterizer.destinationPixels, yB, colour, xB >> 16, xA >> 16);
-                                xA += mAB;
-                                xB += mBC;
-                                yB += Rasterizer.destinationWidth;
+                            a_y -= c_y;
+                            c_y -= b_y;
+                            b_y = lineOffsets[b_y];
+                            while(--c_y >= 0) {
+                                drawScanLine(Rasterizer.destinationPixels, b_y, colour, b_x >> 16, a_x >> 16);
+                                a_x += slopeAB;
+                                b_x += slopeBC;
+                                b_y += Rasterizer.destinationWidth;
                             }
-                            while(--yA >= 0) {
-                                drawScanLine(Rasterizer.destinationPixels, yB, colour, xC >> 16, xA >> 16);
-                                xA += mAB;
-                                xC += mCA;
-                                yB += Rasterizer.destinationWidth;
+                            while(--a_y >= 0) {
+                                drawScanLine(Rasterizer.destinationPixels, b_y, colour, c_x >> 16, a_x >> 16);
+                                a_x += slopeAB;
+                                c_x += slopeCA;
+                                b_y += Rasterizer.destinationWidth;
                             }
                         }
                     } else {
-                        xC = xB <<= 16;
-                        if(yB < 0) {
-                            xC -= mAB * yB;
-                            xB -= mBC * yB;
-                            yB = 0;
+                        c_x = b_x <<= 16;
+                        if(b_y < 0) {
+                            c_x -= slopeAB * b_y;
+                            b_x -= slopeBC * b_y;
+                            b_y = 0;
                         }
-                        xA <<= 16;
-                        if(yA < 0) {
-                            xA -= mCA * yA;
-                            yA = 0;
+                        a_x <<= 16;
+                        if(a_y < 0) {
+                            a_x -= slopeCA * a_y;
+                            a_y = 0;
                         }
-                        if(mAB < mBC) {
-                            yC -= yA;
-                            yA -= yB;
-                            yB = lineOffsets[yB];
-                            while(--yA >= 0) {
-                                drawScanLine(Rasterizer.destinationPixels, yB, colour, xC >> 16, xB >> 16);
-                                xC += mAB;
-                                xB += mBC;
-                                yB += Rasterizer.destinationWidth;
+                        if(slopeAB < slopeBC) {
+                            c_y -= a_y;
+                            a_y -= b_y;
+                            b_y = lineOffsets[b_y];
+                            while(--a_y >= 0) {
+                                drawScanLine(Rasterizer.destinationPixels, b_y, colour, c_x >> 16, b_x >> 16);
+                                c_x += slopeAB;
+                                b_x += slopeBC;
+                                b_y += Rasterizer.destinationWidth;
                             }
-                            while(--yC >= 0) {
-                                drawScanLine(Rasterizer.destinationPixels, yB, colour, xA >> 16, xB >> 16);
-                                xA += mCA;
-                                xB += mBC;
-                                yB += Rasterizer.destinationWidth;
+                            while(--c_y >= 0) {
+                                drawScanLine(Rasterizer.destinationPixels, b_y, colour, a_x >> 16, b_x >> 16);
+                                a_x += slopeCA;
+                                b_x += slopeBC;
+                                b_y += Rasterizer.destinationWidth;
                             }
                         } else {
-                            yC -= yA;
-                            yA -= yB;
-                            yB = lineOffsets[yB];
-                            while(--yA >= 0) {
-                                drawScanLine(Rasterizer.destinationPixels, yB, colour, xB >> 16, xC >> 16);
-                                xC += mAB;
-                                xB += mBC;
-                                yB += Rasterizer.destinationWidth;
+                            c_y -= a_y;
+                            a_y -= b_y;
+                            b_y = lineOffsets[b_y];
+                            while(--a_y >= 0) {
+                                drawScanLine(Rasterizer.destinationPixels, b_y, colour, b_x >> 16, c_x >> 16);
+                                c_x += slopeAB;
+                                b_x += slopeBC;
+                                b_y += Rasterizer.destinationWidth;
                             }
-                            while(--yC >= 0) {
-                                drawScanLine(Rasterizer.destinationPixels, yB, colour, xB >> 16, xA >> 16);
-                                xA += mCA;
-                                xB += mBC;
-                                yB += Rasterizer.destinationWidth;
+                            while(--c_y >= 0) {
+                                drawScanLine(Rasterizer.destinationPixels, b_y, colour, b_x >> 16, a_x >> 16);
+                                a_x += slopeCA;
+                                b_x += slopeBC;
+                                b_y += Rasterizer.destinationWidth;
                             }
                         }
                     }
                 }
-            } else if(yC < bottomY) {
-                if(yA > bottomY) {
-                    yA = bottomY;
+            } else if(c_y < bottomY) {
+                if(a_y > bottomY) {
+                    a_y = bottomY;
                 }
-                if(yB > bottomY) {
-                    yB = bottomY;
+                if(b_y > bottomY) {
+                    b_y = bottomY;
                 }
-                if(yA < yB) {
-                    xB = xC <<= 16;
-                    if(yC < 0) {
-                        xB -= mBC * yC;
-                        xC -= mCA * yC;
-                        yC = 0;
+                if(a_y < b_y) {
+                    b_x = c_x <<= 16;
+                    if(c_y < 0) {
+                        b_x -= slopeBC * c_y;
+                        c_x -= slopeCA * c_y;
+                        c_y = 0;
                     }
-                    xA <<= 16;
-                    if(yA < 0) {
-                        xA -= mAB * yA;
-                        yA = 0;
+                    a_x <<= 16;
+                    if(a_y < 0) {
+                        a_x -= slopeAB * a_y;
+                        a_y = 0;
                     }
-                    if(mBC < mCA) {
-                        yB -= yA;
-                        yA -= yC;
-                        yC = lineOffsets[yC];
-                        while(--yA >= 0) {
-                            drawScanLine(Rasterizer.destinationPixels, yC, colour, xB >> 16, xC >> 16);
-                            xB += mBC;
-                            xC += mCA;
-                            yC += Rasterizer.destinationWidth;
+                    if(slopeBC < slopeCA) {
+                        b_y -= a_y;
+                        a_y -= c_y;
+                        c_y = lineOffsets[c_y];
+                        while(--a_y >= 0) {
+                            drawScanLine(Rasterizer.destinationPixels, c_y, colour, b_x >> 16, c_x >> 16);
+                            b_x += slopeBC;
+                            c_x += slopeCA;
+                            c_y += Rasterizer.destinationWidth;
                         }
-                        while(--yB >= 0) {
-                            drawScanLine(Rasterizer.destinationPixels, yC, colour, xB >> 16, xA >> 16);
-                            xB += mBC;
-                            xA += mAB;
-                            yC += Rasterizer.destinationWidth;
+                        while(--b_y >= 0) {
+                            drawScanLine(Rasterizer.destinationPixels, c_y, colour, b_x >> 16, a_x >> 16);
+                            b_x += slopeBC;
+                            a_x += slopeAB;
+                            c_y += Rasterizer.destinationWidth;
                         }
                     } else {
-                        yB -= yA;
-                        yA -= yC;
-                        yC = lineOffsets[yC];
-                        while(--yA >= 0) {
-                            drawScanLine(Rasterizer.destinationPixels, yC, colour, xC >> 16, xB >> 16);
-                            xB += mBC;
-                            xC += mCA;
-                            yC += Rasterizer.destinationWidth;
+                        b_y -= a_y;
+                        a_y -= c_y;
+                        c_y = lineOffsets[c_y];
+                        while(--a_y >= 0) {
+                            drawScanLine(Rasterizer.destinationPixels, c_y, colour, c_x >> 16, b_x >> 16);
+                            b_x += slopeBC;
+                            c_x += slopeCA;
+                            c_y += Rasterizer.destinationWidth;
                         }
-                        while(--yB >= 0) {
-                            drawScanLine(Rasterizer.destinationPixels, yC, colour, xA >> 16, xB >> 16);
-                            xB += mBC;
-                            xA += mAB;
-                            yC += Rasterizer.destinationWidth;
+                        while(--b_y >= 0) {
+                            drawScanLine(Rasterizer.destinationPixels, c_y, colour, a_x >> 16, b_x >> 16);
+                            b_x += slopeBC;
+                            a_x += slopeAB;
+                            c_y += Rasterizer.destinationWidth;
                         }
                     }
                 } else {
-                    xA = xC <<= 16;
-                    if(yC < 0) {
-                        xA -= mBC * yC;
-                        xC -= mCA * yC;
-                        yC = 0;
+                    a_x = c_x <<= 16;
+                    if(c_y < 0) {
+                        a_x -= slopeBC * c_y;
+                        c_x -= slopeCA * c_y;
+                        c_y = 0;
                     }
-                    xB <<= 16;
-                    if(yB < 0) {
-                        xB -= mAB * yB;
-                        yB = 0;
+                    b_x <<= 16;
+                    if(b_y < 0) {
+                        b_x -= slopeAB * b_y;
+                        b_y = 0;
                     }
-                    if(mBC < mCA) {
-                        yA -= yB;
-                        yB -= yC;
-                        yC = lineOffsets[yC];
-                        while(--yB >= 0) {
-                            drawScanLine(Rasterizer.destinationPixels, yC, colour, xA >> 16, xC >> 16);
-                            xA += mBC;
-                            xC += mCA;
-                            yC += Rasterizer.destinationWidth;
+                    if(slopeBC < slopeCA) {
+                        a_y -= b_y;
+                        b_y -= c_y;
+                        c_y = lineOffsets[c_y];
+                        while(--b_y >= 0) {
+                            drawScanLine(Rasterizer.destinationPixels, c_y, colour, a_x >> 16, c_x >> 16);
+                            a_x += slopeBC;
+                            c_x += slopeCA;
+                            c_y += Rasterizer.destinationWidth;
                         }
-                        while(--yA >= 0) {
-                            drawScanLine(Rasterizer.destinationPixels, yC, colour, xB >> 16, xC >> 16);
-                            xB += mAB;
-                            xC += mCA;
-                            yC += Rasterizer.destinationWidth;
+                        while(--a_y >= 0) {
+                            drawScanLine(Rasterizer.destinationPixels, c_y, colour, b_x >> 16, c_x >> 16);
+                            b_x += slopeAB;
+                            c_x += slopeCA;
+                            c_y += Rasterizer.destinationWidth;
                         }
                     } else {
-                        yA -= yB;
-                        yB -= yC;
-                        yC = lineOffsets[yC];
-                        while(--yB >= 0) {
-                            drawScanLine(Rasterizer.destinationPixels, yC, colour, xC >> 16, xA >> 16);
-                            xA += mBC;
-                            xC += mCA;
-                            yC += Rasterizer.destinationWidth;
+                        a_y -= b_y;
+                        b_y -= c_y;
+                        c_y = lineOffsets[c_y];
+                        while(--b_y >= 0) {
+                            drawScanLine(Rasterizer.destinationPixels, c_y, colour, c_x >> 16, a_x >> 16);
+                            a_x += slopeBC;
+                            c_x += slopeCA;
+                            c_y += Rasterizer.destinationWidth;
                         }
-                        while(--yA >= 0) {
-                            drawScanLine(Rasterizer.destinationPixels, yC, colour, xC >> 16, xB >> 16);
-                            xB += mAB;
-                            xC += mCA;
-                            yC += Rasterizer.destinationWidth;
+                        while(--a_y >= 0) {
+                            drawScanLine(Rasterizer.destinationPixels, c_y, colour, c_x >> 16, b_x >> 16);
+                            b_x += slopeAB;
+                            c_x += slopeCA;
+                            c_y += Rasterizer.destinationWidth;
                         }
                     }
                 }
