@@ -238,7 +238,6 @@ public class MovedStatics {
      */
     public static IndexedImage tabHighlightImageBottomRight;
     public static ProducingGraphicsBuffer chatboxTop;
-    public static Font helveticaBold;
     public static int deregisterActorCount = 0;
     public static int[] anIntArray456;
     public static int regionY;
@@ -888,7 +887,7 @@ public class MovedStatics {
     public static void processGameStatus(int statusCode) {
         if (statusCode != Game.gameStatusCode) {
             if (Game.gameStatusCode == 0)
-                method144(12433);
+                Game.renderer.disposeLoadingText();
             if (statusCode == 20 || statusCode == 40) {
                 Game.anInt1756 = 0;
                 anInt2321 = 0;
@@ -1225,7 +1224,6 @@ public class MovedStatics {
 	
 	}
 
-    public static FontMetrics fontMetrics;
 
     public static void drawMenu(int xOffSet, int yOffSet) {
 	    int height = menuHeight;
@@ -3087,51 +3085,6 @@ public class MovedStatics {
         return method538();
     }
 
-    public static void drawLoadingText(int percent, Color color, String desc) {
-        try {
-            Graphics graphics = Game.gameCanvas.getGraphics();
-            if(helveticaBold == null) {
-                helveticaBold = new Font("Helvetica", Font.BOLD, 13);
-                fontMetrics = Game.gameCanvas.getFontMetrics(helveticaBold);
-            }
-            if(clearScreen) {
-                clearScreen = false;
-                graphics.setColor(Color.black);
-                graphics.fillRect(0, 0, width, height);
-            }
-            if(color == null)
-                color = new Color(140, 17, 17);
-            try {
-                if(loadingBoxImage == null)
-                    loadingBoxImage = Game.gameCanvas.createImage(304, 34);
-                Graphics loadingBoxGraphics = loadingBoxImage.getGraphics();
-                loadingBoxGraphics.setColor(color);
-                loadingBoxGraphics.drawRect(0, 0, 303, 33);
-                loadingBoxGraphics.fillRect(2, 2, percent * 3, 30);
-                loadingBoxGraphics.setColor(Color.black);
-                loadingBoxGraphics.drawRect(1, 1, 301, 31);
-                loadingBoxGraphics.fillRect(2 + 3 * percent, 2, 300 - 3 * percent, 30);
-                loadingBoxGraphics.setFont(helveticaBold);
-                loadingBoxGraphics.setColor(Color.white);
-                loadingBoxGraphics.drawString(desc, (304 - (fontMetrics.stringWidth(desc))) / 2, 22);
-                graphics.drawImage(loadingBoxImage, width / 2 - 152, height / 2 - 18, null);
-            } catch(Exception exception) {
-                int centerWidth = width / 2 - 152;
-                int centerHeight = height / 2 - 18;
-                graphics.setColor(color);
-                graphics.drawRect(centerWidth, centerHeight, 303, 33);
-                graphics.fillRect(2 + centerWidth, centerHeight + 2, 3 * percent, 30);
-                graphics.setColor(Color.black);
-                graphics.drawRect(centerWidth + 1, 1 + centerHeight, 301, 31);
-                graphics.fillRect(percent * 3 + 2 + centerWidth, 2 + centerHeight, 300 + -(3 * percent), 30);
-                graphics.setFont(helveticaBold);
-                graphics.setColor(Color.white);
-                graphics.drawString(desc, (304 - (fontMetrics.stringWidth(desc))) / 2+ centerWidth, 22 + centerHeight);
-            }
-        } catch(Exception exception) {
-            Game.gameCanvas.repaint();
-        }
-    }
 
     public static void method778(HuffmanEncoding arg1) {
         aHuffmanEncoding_2590 = arg1;
@@ -3317,14 +3270,7 @@ public class MovedStatics {
         ticksPerLoop = 0;
     }
 
-    public static void method144(int arg0) {
 
-        fontMetrics = null;
-        helveticaBold = null;
-        if(arg0 == 12433)
-            loadingBoxImage = null;
-
-    }
 
     public static ImageRGB method578() {
         ImageRGB class40_sub5_sub14_sub4 = new ImageRGB();

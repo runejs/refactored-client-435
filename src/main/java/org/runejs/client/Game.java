@@ -23,6 +23,7 @@ import org.runejs.client.message.outbound.widget.container.DragWidgetItemOutboun
 import org.runejs.client.net.*;
 import org.runejs.client.net.codec.MessagePacketCodec;
 import org.runejs.client.net.codec.runejs435.RuneJS435PacketCodec;
+import org.runejs.client.renderer.ScreenRenderer;
 import org.runejs.client.scene.*;
 import org.runejs.client.scene.camera.Camera;
 import org.runejs.client.scene.camera.CameraRotation;
@@ -48,6 +49,8 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class Game {
+
+    public static ScreenRenderer renderer;
 
     /**
      * The codec currently in use to encode and decode packets.
@@ -2205,7 +2208,7 @@ public class Game {
             MouseHandler.addListeners(gameCanvas);
         }
         if (gameStatusCode == 0)
-            MovedStatics.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
+            renderer.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
         else if (gameStatusCode == 5) {
             Class60.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
         } else if (gameStatusCode == 10) {
