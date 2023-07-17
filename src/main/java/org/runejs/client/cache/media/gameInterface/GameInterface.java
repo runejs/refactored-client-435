@@ -393,19 +393,19 @@ public class GameInterface extends CachedNode {
                 gameInterface.disabledText = English.pleaseWait;
                 gameInterface.actionType = 0;
             } else {
-                int i_4_ = Player.ignoresCount;
+                int i_4_ = Game.ignoreList.getCount();
                 if(Player.friendListStatus == 0)
                     i_4_ = 0;
                 if(i_4_ <= type) {
                     gameInterface.actionType = 0;
                     gameInterface.disabledText = "";
                 } else {
-                    gameInterface.disabledText = TextUtils.formatName(TextUtils.longToName(Player.ignores[type]));
+                    gameInterface.disabledText = TextUtils.formatName(TextUtils.longToName(Game.ignoreList.getPlayer(type)));
                     gameInterface.actionType = 1;
                 }
             }
         } else if(type == 503) {
-            gameInterface.scrollHeight = 15 * Player.ignoresCount + 20;
+            gameInterface.scrollHeight = 15 * Game.ignoreList.getCount() + 20;
             if(gameInterface.scrollHeight <= gameInterface.originalHeight)
                 gameInterface.scrollHeight = gameInterface.originalHeight + 1;
         } else if(type == 324) {
@@ -1938,11 +1938,11 @@ ChatBox.tradeMode
 ));
                         }
                     }
-                    if(anInt876 == 4 && Player.ignoresCount < 100) {
+                    if(anInt876 == 4 && !Game.ignoreList.isFull()) {
                         long l = MovedStatics.nameToLong(ChatBox.chatMessage);
                         addIgnore(l);
                     }
-                    if(anInt876 == 5 && Player.ignoresCount > 0) {
+                    if(anInt876 == 5 && !Game.ignoreList.isEmpty()) {
                         long l = MovedStatics.nameToLong(ChatBox.chatMessage);
                         removeIgnore(l);
                     }
@@ -2106,11 +2106,9 @@ ChatBox.tradeMode
                         return;
                     }
                 }
-                for(int i = 0; Player.ignoresCount > i; i++) {
-                    if(Player.ignores[i] == name) {
-                        ChatBox.addChatMessage("", English.pleaseRemove + username + English.suffixFromYourIgnoreListFirst, 0);
-                        return;
-                    }
+                if (Game.ignoreList.containsPlayer(name)) {
+                    ChatBox.addChatMessage("", English.pleaseRemove + username + English.suffixFromYourIgnoreListFirst, 0);
+                    return;
                 }
                 if(!username.equals(Player.localPlayer.playerName)) {
                     Player.friendUsernames[Player.friendsCount] = username;
@@ -2127,31 +2125,23 @@ ChatBox.tradeMode
     }
 
     private static void removeIgnore(long arg1) {
-        for (int i = 0; i < Player.ignoresCount; i++) {
-            if (Player.ignores[i] == arg1) {
-                redrawTabArea = true;
-                Player.ignoresCount--;
-                for (int i_16_ = i; Player.ignoresCount > i_16_; i_16_++)
-                    Player.ignores[i_16_] = Player.ignores[1 + i_16_];
+        if (Game.ignoreList.removePlayer(arg1) != -1) {
+            redrawTabArea = true;
 
-                OutgoingPackets.sendMessage(
-                    new ModifySocialListOutboundMessage(arg1, ModifySocialListOutboundMessage.SocialList.IGNORE, ModifySocialListOutboundMessage.SocialListAction.REMOVE));
-                break;
-            }
+            OutgoingPackets.sendMessage(
+                new ModifySocialListOutboundMessage(arg1, ModifySocialListOutboundMessage.SocialList.IGNORE, ModifySocialListOutboundMessage.SocialListAction.REMOVE));
         }
     }
 
     private static void addIgnore(long arg1) {
         if(arg1 != 0L) {
-            if(Player.ignoresCount >= 100)
+            if(Game.ignoreList.isFull())
                 ChatBox.addChatMessage("", English.yourIgnoreListIsFull.toString(), 0);
             else {
                 String class1 = TextUtils.formatName(TextUtils.longToName(arg1));
-                for(int i = 0; i < Player.ignoresCount; i++) {
-                    if(arg1 == Player.ignores[i]) {
-                        ChatBox.addChatMessage("", class1 + English.suffixIsAlreadyOnYourIgnoreList, 0);
-                        return;
-                    }
+                if (Game.ignoreList.containsPlayer(arg1)) {
+                    ChatBox.addChatMessage("", class1 + English.suffixIsAlreadyOnYourIgnoreList, 0);
+                    return;
                 }
                 for(int i = 0; Player.friendsCount > i; i++) {
                     if(Player.friends[i] == arg1) {
@@ -2160,7 +2150,8 @@ ChatBox.tradeMode
                     }
                 }
                 if(!class1.equals(Player.localPlayer.playerName)) {
-                    Player.ignores[Player.ignoresCount++] = arg1;
+                    Game.ignoreList.addPlayer(arg1);
+
                     redrawTabArea = true;
 
                     OutgoingPackets.sendMessage(

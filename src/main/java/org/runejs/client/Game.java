@@ -4,6 +4,7 @@ import org.runejs.client.cache.CacheIndex;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.CacheFileChannel;
 import org.runejs.client.cache.cs.ClientScript;
+import org.runejs.client.chat.SocialList;
 import org.runejs.client.frame.*;
 import org.runejs.client.frame.console.Console;
 import org.runejs.client.input.KeyFocusListener;
@@ -73,6 +74,9 @@ public class Game {
      * A customisable cutscene camera.
      */
     public static final CutsceneCamera cutsceneCamera = new CutsceneCamera();
+
+    public static final SocialList ignoreList = new SocialList(100);
+
     public static int anInt784 = 0;
     public static GameInterface chatboxInterface;
     public static GameSocket updateServerSocket;

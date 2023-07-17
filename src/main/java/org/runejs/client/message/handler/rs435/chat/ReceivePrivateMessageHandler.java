@@ -1,5 +1,6 @@
 package org.runejs.client.message.handler.rs435.chat;
 
+import org.runejs.client.Game;
 import org.runejs.client.frame.ChatBox;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.actor.Player;
@@ -24,11 +25,8 @@ public class ReceivePrivateMessageHandler implements MessageHandler<ReceivePriva
             }
         }
         if (message.fromPlayerRights <= 1) {
-            for (int ignoreIndex = 0; ignoreIndex < Player.ignoresCount; ignoreIndex++) {
-                if (message.fromPlayerIndex == Player.ignores[ignoreIndex]) {
-                    hideMessage = true;
-                    break;
-                }
+            if (Game.ignoreList.containsPlayer(message.fromPlayerIndex)) {
+                hideMessage = true;
             }
         }
 
