@@ -5,8 +5,8 @@ import org.runejs.client.MovedStatics;
 import org.runejs.client.ProducingGraphicsBuffer;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
+import org.runejs.client.frame.FramePieceAnchor;
 import org.runejs.client.frame.FramePieceRenderer;
-import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.media.RasterizerInstanced;
 
@@ -44,6 +44,16 @@ public class TabProducer extends FramePieceRenderer {
 
 
     public TabProducer() {
+        super(
+            new FramePieceAnchor(
+                FramePieceAnchor.Anchor.BOTTOM | FramePieceAnchor.Anchor.RIGHT,
+                0,
+                0
+            ),
+            241,
+            334
+        );
+
         this.tempResizableSideBar = MovedStatics.createGraphicsBuffer(241, 334, Game.gameCanvas);
         resizableSideBarImage = MovedStatics.createGraphicsBuffer(241, 334, Game.gameCanvas);
         rasterizerInstanced = new RasterizerInstanced(this.tempResizableSideBar);
@@ -155,8 +165,8 @@ public class TabProducer extends FramePieceRenderer {
 
 
 
-    public void drawResizableSideBarArea(int x, int y) {
-        ScreenController.drawFramePiece(resizableSideBarImage, x, y);
+    public ProducingGraphicsBuffer getDrawable() {
+        return resizableSideBarImage;
     }
 
     public int[] getTabInterfaceCoordSize(int baseX, int baseY) {

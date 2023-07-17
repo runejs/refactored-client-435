@@ -133,11 +133,11 @@ public class ScreenController {
             drawingThread = new Thread(renderer);
             drawingThread.start();
         }
-        minimap.drawResizableMiniMapArea(drawWidth - 210, 0);
         RenderTabArea(drawWidth - 234, drawHeight - (337));
         RenderChatArea(0, drawHeight - (162));
 
-        tabProducer.drawResizableSideBarArea(drawWidth - 241, drawHeight - (334));
+        minimap.draw(drawWidth, drawHeight);
+        tabProducer.draw(drawWidth, drawHeight);
 
         if (DebugView) {
             int mX = MouseHandler.mouseX;

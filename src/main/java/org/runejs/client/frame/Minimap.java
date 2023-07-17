@@ -48,6 +48,16 @@ public class Minimap extends FramePieceRenderer {
     private static int[] resizableMinimapLineOffsets;
 
     public Minimap() {
+        super(
+            new FramePieceAnchor(
+                FramePieceAnchor.Anchor.TOP | FramePieceAnchor.Anchor.RIGHT,
+                0,
+                0
+            ),
+            210,
+            210
+        );
+
         this.tempResizableMiniMapimage = MovedStatics.createGraphicsBuffer(210, 210, Game.gameCanvas);
         resizableMinimapOffsets1 = new int[200];
         resizableMinimapOffsets2 = new int[200];
@@ -422,8 +432,8 @@ public class Minimap extends FramePieceRenderer {
         }
     }
 
-    public void drawResizableMiniMapArea(int x, int y) {
-        ScreenController.drawFramePiece(resizableMiniMapimage, x, y);
+    public ProducingGraphicsBuffer getDrawable() {
+        return resizableMiniMapimage;
     }
 
     public void RenderResizableMiniMapArea(int x, int y) {

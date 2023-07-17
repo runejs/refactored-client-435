@@ -1,10 +1,40 @@
 package org.runejs.client.frame;
 
+import org.runejs.client.ProducingGraphicsBuffer;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.media.RasterizerInstanced;
 
-public class FramePieceRenderer {
+public abstract class FramePieceRenderer {
     public RasterizerInstanced rasterizerInstanced;
+
+    public final FramePieceAnchor anchor;
+    public final int width;
+    public final int height;
+
+    public FramePieceRenderer(FramePieceAnchor anchor, int width, int height) {
+        this.anchor = anchor;
+        this.width = width;
+        this.height = height;
+    }
+
+    public abstract ProducingGraphicsBuffer getDrawable();
+
+    /**
+     * Draws the piece.
+     * @param drawWidth The width of the window.
+     * @param drawHeight The height of the window.
+     * 
+     * TODO (jkm) refactor this to not use static `ScreenController`.
+     */
+    public void draw(int drawWidth, int drawHeight) {
+        int[] position = this.anchor.getPosition(drawWidth, drawHeight, this.width, this.height);
+
+        ScreenController.drawFramePiece(
+            getDrawable(),
+            position[0],
+            position[1]
+        );
+    }
 
     public void shapeImageToPixels(ImageRGB image, int x, int y, int width, int height, int arg4, int arg5, int k1, int zoom, int[] arg8, int[] arg9) {
         try {
