@@ -139,14 +139,7 @@ public class Minimap extends FramePieceRenderer {
             if(player != null && player.isInitialized()) {
                 int playerX = player.worldX / 32 + -(Player.localPlayer.worldX / 32);
                 int playerY = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
-                boolean isFriend = false;
-                long name = MovedStatics.nameToLong(player.playerName);
-                for(int friend = 0; Player.friendsCount > friend; friend++) {
-                    if(name == Player.friends[friend] && Player.friendWorlds[friend] != 0) {
-                        isFriend = true;
-                        break;
-                    }
-                }
+                boolean isFriend = Game.friendList.containsPlayerUsername(player.playerName);
                 boolean isTeammate = false;
                 if(Player.localPlayer.teamId != 0 && player.teamId != 0 && player.teamId == Player.localPlayer.teamId)
                     isTeammate = true;
@@ -541,14 +534,7 @@ public class Minimap extends FramePieceRenderer {
             if(player != null && player.isInitialized()) {
                 int playerX = player.worldX / 32 + -(Player.localPlayer.worldX / 32);
                 int playerY = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
-                boolean isFriend = false;
-                long name = MovedStatics.nameToLong(player.playerName);
-                for(int friend = 0; Player.friendsCount > friend; friend++) {
-                    if(name == Player.friends[friend] && Player.friendWorlds[friend] != 0) {
-                        isFriend = true;
-                        break;
-                    }
-                }
+                boolean isFriend = Game.friendList.containsPlayerUsername(player.playerName);
                 boolean isTeammate = false;
                 if(Player.localPlayer.teamId != 0 && player.teamId != 0 && player.teamId == Player.localPlayer.teamId)
                     isTeammate = true;

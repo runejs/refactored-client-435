@@ -7,12 +7,12 @@ public class SocialList {
     /**
      * The players in this list.
      */
-    private long[] players;
+    protected long[] players;
 
     /**
      * The amount of players currently in this list.
      */
-    private int count = 0;
+    protected int count = 0;
 
     /**
      * Creates a new social list with the specified size.
@@ -89,7 +89,7 @@ public class SocialList {
      * @param p The player to get the index of.
      * @return The index of the specified player, or {@code -1} if the player was not in this list.
      */
-    private int getPlayerIndex(long p) {
+    public int getPlayerIndex(long p) {
         for (int i = 0; i < this.count; i++) {
             if (this.players[i] == p) {
                 return i;

@@ -36,13 +36,9 @@ public class Player extends Actor {
     public static int[] experienceForLevels = new int[99];
     public static long[] privateMessageIds = new long[100];
     public static int privateMessageIndex = 0;
-    public static int[] friendWorlds = new int[200];
     public static int friendListStatus = 0;
     public static int worldId = 1;
-    public static int friendsCount = 0;
     public static PlayerAppearance activePlayerAppearance = new PlayerAppearance();
-    public static String[] friendUsernames = new String[200];
-    public static long[] friends = new long[200];
     public static int localPlayerId = -1;
     public static String[] playerActions = new String[5];
     public static boolean[] playerActionsLowPriority = new boolean[5];
@@ -300,9 +296,8 @@ public class Player extends Actor {
     public static boolean hasFriend(String arg0) {
         if(arg0 == null)
             return false;
-        for(int i = 0; i < friendsCount; i++) {
-            if(arg0.equalsIgnoreCase(friendUsernames[i]))
-                return true;
+        if(Game.friendList.containsPlayerUsername(arg0)) {
+            return true;
         }
         return arg0.equalsIgnoreCase(localPlayer.playerName);
     }

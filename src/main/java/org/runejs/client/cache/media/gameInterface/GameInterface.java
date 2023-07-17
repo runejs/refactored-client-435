@@ -335,7 +335,7 @@ public class GameInterface extends CachedNode {
                 gameInterface.actionType = 0;
                 gameInterface.disabledText = English.pleaseWait;
             } else {
-                int fCount = Player.friendsCount;
+                int fCount = Game.friendList.getCount();
                 if(type > 700)
                     type -= 601;
                 else
@@ -346,7 +346,7 @@ public class GameInterface extends CachedNode {
                     gameInterface.disabledText = "";
                     gameInterface.actionType = 0;
                 } else {
-                    gameInterface.disabledText = Player.friendUsernames[type];
+                    gameInterface.disabledText = Game.friendList.getPlayerUsername(type);
                     gameInterface.actionType = 1;
                 }
             }
@@ -355,30 +355,31 @@ public class GameInterface extends CachedNode {
                 type -= 101;
             else
                 type -= 701;
-            int count = Player.friendsCount;
+            int count = Game.friendList.getCount();
             if(Player.friendListStatus != 2)
                 count = 0;
             if(type >= count) {
                 gameInterface.disabledText = "";
                 gameInterface.actionType = 0;
             } else {
-                if(Player.friendWorlds[type] == 0) {
+                int world = Game.friendList.getPlayerWorld(type);
+                if(world == 0) {
                     gameInterface.disabledText = Native.red + English.offline;
-                } else if(Player.friendWorlds[type] < 5000) {
-                    if(Player.friendWorlds[type] == Player.worldId) {
-                        gameInterface.disabledText = Native.green + English.world + Player.friendWorlds[type];
+                } else if(world < 5000) {
+                    if(world == Player.worldId) {
+                        gameInterface.disabledText = Native.green + English.world + world;
                     } else {
-                        gameInterface.disabledText = Native.yellow + English.world + Player.friendWorlds[type];
+                        gameInterface.disabledText = Native.yellow + English.world + world;
                     }
-                } else if(Player.worldId == Player.friendWorlds[type]) {
-                    gameInterface.disabledText = Native.green + English.classic + (-5000 + Player.friendWorlds[type]);
+                } else if(Player.worldId == world) {
+                    gameInterface.disabledText = Native.green + English.classic + (-5000 + world);
                 } else {
-                    gameInterface.disabledText = Native.yellow + English.classic + (Player.friendWorlds[type] + -5000);
+                    gameInterface.disabledText = Native.yellow + English.classic + (world + -5000);
                 }
                 gameInterface.actionType = 1;
             }
         } else if(type == 203) {
-            int count = Player.friendsCount;
+            int count = Game.friendList.getCount();
             if(Player.friendListStatus != 2)
                 count = 0;
             gameInterface.scrollHeight = 20 + 15 * count;
@@ -949,21 +950,17 @@ public class GameInterface extends CachedNode {
                     int i_18_ = class1.indexOf(Native.white);
                     if(i_18_ != -1) {
                         long l = TextUtils.nameToLong(class1.substring(i_18_ + 5).trim());
-                        int i_19_ = -1;
-                        for(int i_20_ = 0; i_20_ < Player.friendsCount; i_20_++) {
-                            if(Player.friends[i_20_] == l) {
-                                i_19_ = i_20_;
-                                break;
-                            }
-                        }
-                        if(i_19_ != -1 && Player.friendWorlds[i_19_] > 0) {
+
+                        int i_19_ = Game.friendList.getPlayerIndex(l);
+
+                        if(i_19_ != -1 && Game.friendList.getPlayerWorld(i_19_) > 0) {
                             anInt876 = 3;
                             ChatBox.redrawChatbox = true;
                             ChatBox.inputType = 0;
                             ChatBox.chatMessage = "";
                             ChatBox.messagePromptRaised = true;
-                            sendingMessageTo = Player.friends[i_19_];
-                            Native.enterPlayerNameHeader = English.prefixEnterMessageToSendTo + Player.friendUsernames[i_19_];
+                            sendingMessageTo = l;
+                            Native.enterPlayerNameHeader = English.prefixEnterMessageToSendTo + Game.friendList.getPlayerUsername(i_19_);
                         }
                     }
                 }
@@ -1855,21 +1852,12 @@ public class GameInterface extends CachedNode {
 
     public static void removeFriend(long nameAsLong) {
         if (nameAsLong != 0) {
-            int i = 0;
-            for (/**/; Player.friendsCount > i; i++) {
-                if (Player.friends[i] == nameAsLong) {
-                    Player.friendsCount--;
-                    redrawTabArea = true;
-                    for (int i_13_ = i; i_13_ < Player.friendsCount; i_13_++) {
-                        Player.friendUsernames[i_13_] = Player.friendUsernames[1 + i_13_];
-                        Player.friendWorlds[i_13_] = Player.friendWorlds[i_13_ + 1];
-                        Player.friends[i_13_] = Player.friends[1 + i_13_];
-                    }
 
-                    OutgoingPackets.sendMessage(
-                        new ModifySocialListOutboundMessage(nameAsLong, ModifySocialListOutboundMessage.SocialList.FRIEND, ModifySocialListOutboundMessage.SocialListAction.REMOVE));
-                    break;
-                }
+            if (Game.friendList.removePlayer(nameAsLong) != -1) {
+                redrawTabArea = true;
+
+                OutgoingPackets.sendMessage(
+                    new ModifySocialListOutboundMessage(nameAsLong, ModifySocialListOutboundMessage.SocialList.FRIEND, ModifySocialListOutboundMessage.SocialListAction.REMOVE));
             }
         }
     }
@@ -1917,7 +1905,7 @@ public class GameInterface extends CachedNode {
                         long l = MovedStatics.nameToLong(ChatBox.chatMessage);
                         addFriend(l);
                     }
-                    if(anInt876 == 2 && Player.friendsCount > 0) {
+                    if(anInt876 == 2 && !Game.friendList.isEmpty()) {
                         long l = MovedStatics.nameToLong(ChatBox.chatMessage);
                         removeFriend(l);
                     }
@@ -2096,25 +2084,21 @@ ChatBox.tradeMode
 
     private static void addFriend(long name) {
         if(name != 0L) {
-            if(Player.friendsCount >= 100 && MovedStatics.anInt1049 != 1 || Player.friendsCount >= 200) {
+            if(Game.friendList.isFull()) {
                 ChatBox.addChatMessage("", English.friendsListIsFull, 0);
             } else {
                 String username = TextUtils.formatName(TextUtils.longToName(name));
-                for(int i = 0; Player.friendsCount > i; i++) {
-                    if(Player.friends[i] == name) {
-                        ChatBox.addChatMessage("", username + English.isAlreadyOnYourFriendList, 0);
-                        return;
-                    }
+                if(Game.friendList.containsPlayer(name)) {
+                    ChatBox.addChatMessage("", username + English.isAlreadyOnYourFriendList, 0);
+                    return;
                 }
                 if (Game.ignoreList.containsPlayer(name)) {
                     ChatBox.addChatMessage("", English.pleaseRemove + username + English.suffixFromYourIgnoreListFirst, 0);
                     return;
                 }
                 if(!username.equals(Player.localPlayer.playerName)) {
-                    Player.friendUsernames[Player.friendsCount] = username;
-                    Player.friends[Player.friendsCount] = name;
-                    Player.friendWorlds[Player.friendsCount] = 0;
-                    Player.friendsCount++;
+                    Game.friendList.addPlayer(name);
+
                     redrawTabArea = true;
 
                     OutgoingPackets.sendMessage(
@@ -2143,11 +2127,9 @@ ChatBox.tradeMode
                     ChatBox.addChatMessage("", class1 + English.suffixIsAlreadyOnYourIgnoreList, 0);
                     return;
                 }
-                for(int i = 0; Player.friendsCount > i; i++) {
-                    if(Player.friends[i] == arg1) {
-                        ChatBox.addChatMessage("", English.pleaseRemove + class1 + English.fromYourFriendListFirst, 0);
-                        return;
-                    }
+                if(Game.friendList.containsPlayer(arg1)) {
+                    ChatBox.addChatMessage("", English.pleaseRemove + class1 + English.fromYourFriendListFirst, 0);
+                    return;
                 }
                 if(!class1.equals(Player.localPlayer.playerName)) {
                     Game.ignoreList.addPlayer(arg1);
