@@ -2972,8 +2972,11 @@ public class MovedStatics {
                 i--;
             else
                 i -= 101;
-            addActionRow(English.remove, 0, 0, 0, ActionRowType.REMOVE_FRIEND.getId(), Native.white + Player.friendUsernames[i]);
-            addActionRow(English.message, 0, 0, 0, ActionRowType.MESSAGE_FRIEND.getId(), Native.white + Player.friendUsernames[i]);
+
+            String username = Game.friendList.getPlayerUsername(i);
+
+            addActionRow(English.remove, 0, 0, 0, ActionRowType.REMOVE_FRIEND.getId(), Native.white + username);
+            addActionRow(English.message, 0, 0, 0, ActionRowType.MESSAGE_FRIEND.getId(), Native.white + username);
             return true;
         }
         if(i >= 401 && i <= 500) {

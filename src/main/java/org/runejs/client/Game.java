@@ -4,6 +4,8 @@ import org.runejs.client.cache.CacheIndex;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.CacheFileChannel;
 import org.runejs.client.cache.cs.ClientScript;
+import org.runejs.client.chat.FriendList;
+import org.runejs.client.chat.SocialList;
 import org.runejs.client.frame.*;
 import org.runejs.client.frame.console.Console;
 import org.runejs.client.input.KeyFocusListener;
@@ -73,6 +75,11 @@ public class Game {
      * A customisable cutscene camera.
      */
     public static final CutsceneCamera cutsceneCamera = new CutsceneCamera();
+
+    public static FriendList friendList;
+
+    public static final SocialList ignoreList = new SocialList(100);
+
     public static int anInt784 = 0;
     public static GameInterface chatboxInterface;
     public static GameSocket updateServerSocket;
@@ -672,7 +679,11 @@ public class Game {
             }
         }
         MovedStatics.interactiveObjectTemporaryNodeCache = new LinkedList();
-        Player.friendsCount = 0;
+
+        // friends list size depends on membership status
+        int friendsListSize = MovedStatics.anInt1049 == 1 ? 200 : 100;
+        Game.friendList = new FriendList(200, friendsListSize);
+
         Player.friendListStatus = 0;
         GameInterface.resetInterface(ChatBox.dialogueId);
         ChatBox.dialogueId = -1;
