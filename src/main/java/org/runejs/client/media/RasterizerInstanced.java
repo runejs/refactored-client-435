@@ -135,7 +135,18 @@ public class RasterizerInstanced extends CachedNode {
         viewportBottom = arg0[3];
     }
 
-
+    /**
+     * Copies a given set of pixels into a destination array. This method takes the entire source array 
+     * and fits it into the viewport. If the source image is larger than the viewport, the image will be 
+     * cropped. If the source image starts at coordinates outside the viewport, the image will be adjusted 
+     * to start from the viewport edge.
+     *
+     * @param pixels  The source pixel array from which to copy pixels.
+     * @param width   The width of the source pixel array.
+     * @param height  The height of the source pixel array.
+     * @param paintX  The x-coordinate at which to start painting pixels in the destination.
+     * @param paintY  The y-coordinate at which to start painting pixels in the destination.
+     */
     public void copyPixels(int[] pixels, int width, int height, int paintX, int paintY) {
         int sourcePixel = 0;
         if(paintX < viewportLeft) {
@@ -158,7 +169,24 @@ public class RasterizerInstanced extends CachedNode {
             pixel += pixelOffset;
         }
     }
-
+    
+    /**
+     * Copies a specified region of a given set of pixels into a destination array. This method allows to define 
+     * a sub-region within the source array (offsetX, offsetY, drawWidth, drawHeight) to be copied. Similar to 
+     * the copyPixels method, this method adjusts the image position based on viewport boundaries and also crops 
+     * the image if the region is larger than the viewport. However, in contrast to copyPixels, it allows for more 
+     * flexible image manipulation by being able to define a specific region from the source image to copy.
+     *
+     * @param pixels    The source pixel array from which to copy pixels.
+     * @param srcWidth  The width of the source pixel array.
+     * @param srcHeight The height of the source pixel array.
+     * @param paintX    The x-coordinate at which to start painting pixels in the destination.
+     * @param paintY    The y-coordinate at which to start painting pixels in the destination.
+     * @param drawWidth The width of the region of the source array to be copied.
+     * @param drawHeight The height of the region of the source array to be copied.
+     * @param offsetX  The x-coordinate of the starting point of the region in the source array.
+     * @param offsetY  The y-coordinate of the starting point of the region in the source array.
+     */
     public void copyPixelsCutOff(int[] pixels, int srcWidth, int srcHeight, int paintX, int paintY, int drawWidth, int drawHeight, int offsetX, int offsetY) {
         int sourcePixel = offsetX + offsetY * srcWidth;
         if(paintX < viewportLeft) {

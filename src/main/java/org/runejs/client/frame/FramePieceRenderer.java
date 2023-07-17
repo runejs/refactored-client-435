@@ -36,6 +36,36 @@ public abstract class FramePieceRenderer {
         );
     }
 
+    /**
+     * Copies the pixels from a ProducingGraphicsBuffer to the rasterizer.
+     * 
+     * See {@link RasterizerInstanced#copyPixels} for more information.
+     * 
+     * @param producer The ProducingGraphicsBuffer to copy from.
+     * @param x The X position to copy to.
+     * @param y The Y position to copy to.
+     */
+    protected void copyProducer(ProducingGraphicsBuffer producer, int x, int y) {
+        rasterizerInstanced.copyPixels(producer.pixels, producer.width, producer.height, x, y);
+    }
+
+    /**
+     * Copies the pixels from a ProducingGraphicsBuffer to the rasterizer.
+     * 
+     * See {@link RasterizerInstanced#copyPixelsCutOff} for more information.
+     * 
+     * @param producer The ProducingGraphicsBuffer to copy from.
+     * @param x The X position to copy to.
+     * @param y The Y position to copy to.
+     * @param width The width of the area to copy.
+     * @param height The height of the area to copy.
+     * @param offsetX The X offset to copy from.
+     * @param offsetY The Y offset to copy from.
+     */
+    protected void copyProducerCutOff(ProducingGraphicsBuffer producer, int x, int y, int width, int height, int offsetX, int offsetY) {
+        rasterizerInstanced.copyPixelsCutOff(producer.pixels, producer.width, producer.height, x, y, width, height, offsetX, offsetY);
+    }
+
     public void shapeImageToPixels(ImageRGB image, int x, int y, int width, int height, int arg4, int arg5, int k1, int zoom, int[] arg8, int[] arg9) {
         try {
             int centerX = -width / 2;

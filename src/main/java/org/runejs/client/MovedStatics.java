@@ -314,7 +314,7 @@ public class MovedStatics {
     public static boolean aBoolean512;
     public static int[] anIntArray3111;
     public static Signlink signlink;
-    public static ProducingGraphicsBuffer tabPieveLowerRight;
+    public static ProducingGraphicsBuffer tabPieceLowerRight;
     public static GameSocket lostConnectionSocket;
     public static ProducingGraphicsBuffer tabPieceLeft;
     public static int anInt3048 = 1;
@@ -1459,7 +1459,7 @@ public class MovedStatics {
                 tabHighlightImageBottomLeft = null;
                 tabHighlightImageBottomLeftEdge = null;
                 fullScreenTextureArray = null;
-                tabPieveLowerRight = null;
+                tabPieceLowerRight = null;
                 framePieceTop = null;
                 chatboxBackgroundImage = null;
             }
@@ -1921,7 +1921,7 @@ public class MovedStatics {
                 framePieceTop.drawGraphics(0, 0, graphics);
                 mapBackRight.drawGraphics(516, 4, graphics);
                 tabPieceUpperRight.drawGraphics(516, 205, graphics);
-                tabPieveLowerRight.drawGraphics(496, 357, graphics);
+                tabPieceLowerRight.drawGraphics(496, 357, graphics);
                 chatboxTop.drawGraphics(0, 338, graphics);
             }
         } catch(Exception exception) {
@@ -1971,7 +1971,7 @@ public class MovedStatics {
             tabPieceUpperRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = method1028(arg2, Native.imgBackvmid3, Native.aClass1_305);
-            tabPieveLowerRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            tabPieceLowerRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = method1028(arg2, Native.imgBackhmid2, Native.aClass1_305);
             chatboxTop = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);

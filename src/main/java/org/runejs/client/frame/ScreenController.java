@@ -27,6 +27,7 @@ public class ScreenController {
     public static int drawHeight = 540;
     public static Minimap minimap = new Minimap();
     public static TabProducer tabProducer = new TabProducer();
+    public static ChatBoxRenderer chatBoxRenderer = new ChatBoxRenderer();
     private static Thread drawingThread;
     private static FrameRenderer renderer;
     public static boolean DebugView = false;
@@ -129,15 +130,15 @@ public class ScreenController {
      */
     public static void RenderResizableUI() {
         if (drawingThread == null) {
-            renderer = new ResizableFrameRenderer(minimap, tabProducer);
+            renderer = new ResizableFrameRenderer(minimap, tabProducer, chatBoxRenderer);
             drawingThread = new Thread(renderer);
             drawingThread.start();
         }
         RenderTabArea(drawWidth - 234, drawHeight - (337));
-        RenderChatArea(0, drawHeight - (162));
 
         minimap.draw(drawWidth, drawHeight);
         tabProducer.draw(drawWidth, drawHeight);
+        chatBoxRenderer.draw(drawWidth, drawHeight);
 
         if (DebugView) {
             int mX = MouseHandler.mouseX;
@@ -208,27 +209,11 @@ public class ScreenController {
         // width 234
         drawFramePiece(MovedStatics.tabPieceLeft, x + 212, y + 39);
         drawFramePieceCutout(MovedStatics.tabPieceUpperRight, x, y + 39, MovedStatics.tabPieceUpperRight.width - 15, MovedStatics.tabPieceUpperRight.height, 15, 0);
-        drawFramePieceCutout(MovedStatics.tabPieveLowerRight, x, y + 191, MovedStatics.tabPieveLowerRight.width - 35, MovedStatics.tabPieveLowerRight.height, 35, 0);
+        drawFramePieceCutout(MovedStatics.tabPieceLowerRight, x, y + 191, MovedStatics.tabPieceLowerRight.width - 35, MovedStatics.tabPieceLowerRight.height, 35, 0);
         drawFramePieceCutout(MovedStatics.chatboxTop, x, y + 172, MovedStatics.chatboxTop.width - 531, MovedStatics.chatboxTop.height, 531, 0);
         drawFramePieceCutout(MovedStatics.tabBottom, x, y + 300, MovedStatics.tabBottom.width - 35, MovedStatics.tabBottom.height, 35, 0);
         drawFramePieceCutout(MovedStatics.tabTop, x, y, MovedStatics.tabTop.width - 15, MovedStatics.tabTop.height - 6, 15, 6);
         drawFramePiece(MovedStatics.tabImageProducer, x + 22, y + 39);
-    }
-
-    /**
-     * TODO (jkm) move all this to ResizableFrameRenderer
-     */
-    public static void RenderChatArea(int x, int y) {
-        //width 516
-        //height 184
-        drawFramePiece(ChatBox.chatBoxImageProducer, x + 17, y + 16);
-        drawFramePiece(MovedStatics.chatModes, x, y + 112);
-        drawFramePieceCutout(MovedStatics.tabBottom, x + 496, y + 125, 20, MovedStatics.tabBottom.height, 0, 0);
-        drawFramePiece(MovedStatics.chatboxRight, x, y + 16);
-        drawFramePieceCutout(MovedStatics.chatboxTop, x, y, MovedStatics.chatboxTop.width - 37, MovedStatics.chatboxTop.height - 3, 0, 3);
-        //        System.out.println(Class40_Sub5_Sub1.chatboxRight.height + (Class17.chatboxTop.height-3) + HuffmanEncoding.aProducingGraphicsBuffer_1541.height);
-
-        drawFramePieceCutout(MovedStatics.tabPieveLowerRight, x + 496, y + 16, 20, MovedStatics.tabPieveLowerRight.height, 0, 0);
     }
 
     public static void drawFramePiece(ProducingGraphicsBuffer framePiece, int x, int y) {
