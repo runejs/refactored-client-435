@@ -15,7 +15,7 @@ public class ModifySocialListMessageEncoder implements MessageEncoder<ModifySoci
         // the structure is the same. This may not be the same for all revisions
         int opcode = this.getOpcode(message);
 
-        PacketBuffer buffer = OutgoingPackets.openFixedSizePacket(4, opcode);
+        PacketBuffer buffer = OutgoingPackets.openFixedSizePacket(8, opcode);
 
         buffer.putLongBE(message.target);
 
