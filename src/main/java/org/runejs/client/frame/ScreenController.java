@@ -134,7 +134,6 @@ public class ScreenController {
             drawingThread = new Thread(renderer);
             drawingThread.start();
         }
-        RenderTabArea(drawWidth - 234, drawHeight - (337));
 
         minimap.draw(drawWidth, drawHeight);
         tabProducer.draw(drawWidth, drawHeight);
@@ -199,21 +198,6 @@ public class ScreenController {
             size.width -= insets.left + insets.right;
         }
         return size;
-    }
-
-    /**
-     * TODO (jkm) move all this to ResizableFrameRenderer
-     */
-    public static void RenderTabArea(int x, int y) {
-        // height 337
-        // width 234
-        drawFramePiece(MovedStatics.tabPieceLeft, x + 212, y + 39);
-        drawFramePieceCutout(MovedStatics.tabPieceUpperRight, x, y + 39, MovedStatics.tabPieceUpperRight.width - 15, MovedStatics.tabPieceUpperRight.height, 15, 0);
-        drawFramePieceCutout(MovedStatics.tabPieceLowerRight, x, y + 191, MovedStatics.tabPieceLowerRight.width - 35, MovedStatics.tabPieceLowerRight.height, 35, 0);
-        drawFramePieceCutout(MovedStatics.chatboxTop, x, y + 172, MovedStatics.chatboxTop.width - 531, MovedStatics.chatboxTop.height, 531, 0);
-        drawFramePieceCutout(MovedStatics.tabBottom, x, y + 300, MovedStatics.tabBottom.width - 35, MovedStatics.tabBottom.height, 35, 0);
-        drawFramePieceCutout(MovedStatics.tabTop, x, y, MovedStatics.tabTop.width - 15, MovedStatics.tabTop.height - 6, 15, 6);
-        drawFramePiece(MovedStatics.tabImageProducer, x + 22, y + 39);
     }
 
     public static void drawFramePiece(ProducingGraphicsBuffer framePiece, int x, int y) {
