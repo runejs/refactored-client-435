@@ -891,6 +891,8 @@ public class MovedStatics {
             if (statusCode == 25 || statusCode == 30 || statusCode == 40) {
                 aProducingGraphicsBuffer_2213 = null;
                 Game.loginScreen.cleanUp();
+                TypeFace.fontBold.setRasterizer(null);
+                TypeFace.fontSmall.setRasterizer(null);
                 method763(Game.gameCanvas, CacheArchive.gameImageCacheArchive);
             }
             Game.gameStatusCode = statusCode;

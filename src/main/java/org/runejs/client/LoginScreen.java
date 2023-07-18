@@ -10,7 +10,6 @@ import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
-import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.RasterizerInstanced;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.net.UpdateServer;
@@ -200,6 +199,10 @@ public class LoginScreen {
 
     public void drawLoadingScreen(TypeFace fontBold, TypeFace fontSmall) {
         loginBoxGraphics.prepareRasterizer(rasterizer);
+
+        fontBold.setRasterizer(rasterizer);
+        fontSmall.setRasterizer(rasterizer);
+
 //            Rasterizer.drawFilledRectangle(0,0, ScreenController.frameWidth, ScreenController.frameHeight, 0);
         if (Game.gameStatusCode == 0 || Game.gameStatusCode == 5) {
             int i = 20;
