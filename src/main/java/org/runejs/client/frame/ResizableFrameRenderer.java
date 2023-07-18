@@ -49,9 +49,9 @@ public class ResizableFrameRenderer implements FrameRenderer {
     }
 
     private void drawToScreen() {
-        minimap.draw(drawWidth, drawHeight);
-        tabProducer.draw(drawWidth, drawHeight);
-        chatbox.draw(drawWidth, drawHeight);
+        minimap.draw(this.gameRasterizer, drawWidth, drawHeight);
+        tabProducer.draw(this.gameRasterizer, drawWidth, drawHeight);
+        chatbox.draw(this.gameRasterizer, drawWidth, drawHeight);
     }
 
     /**

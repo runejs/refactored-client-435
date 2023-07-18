@@ -3,7 +3,6 @@ package org.runejs.client.frame;
 import org.runejs.client.Game;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.ProducingGraphicsBuffer;
-import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.RasterizerInstanced;
 
 public abstract class FramePieceRenderer {
@@ -28,16 +27,14 @@ public abstract class FramePieceRenderer {
      *
      * @param drawWidth The width of the window.
      * @param drawHeight The height of the window.
-     * 
-     * TODO (jkm) refactor this to not use static `Rasterizer`.
      */
-    public void draw(int drawWidth, int drawHeight) {
+    public void draw(RasterizerInstanced destination, int drawWidth, int drawHeight) {
         int[] position = this.anchor.getPosition(drawWidth, drawHeight, width, height);
 
         int x = position[0];
         int y = position[1];
 
-        Rasterizer.copyPixels(rasterizerInstanced.destinationPixels, width, height, x, y);
+        destination.copyPixels(rasterizerInstanced.destinationPixels, width, height, x, y);
     }
 
     /**
