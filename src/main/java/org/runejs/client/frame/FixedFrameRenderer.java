@@ -1,6 +1,7 @@
 package org.runejs.client.frame;
 
 import org.runejs.client.frame.tab.TabProducer;
+import org.runejs.client.media.RasterizerInstanced;
 
 public class FixedFrameRenderer implements FrameRenderer {
     public final TabProducer tabProducer = new TabProducer();
@@ -55,6 +56,11 @@ public class FixedFrameRenderer implements FrameRenderer {
 
     @Override
     public void draw(int mouseX, int mouseY, boolean debugView) {
+
+    }
+
+    @Override
+    public void setRasterizer(RasterizerInstanced rasterizer) {
 
     }
 

@@ -36,6 +36,10 @@ public class ScreenController {
         );
 
         gameRasterizer = new RasterizerInstanced(gameScreenImageProducer);
+
+        if (renderer != null) {
+            renderer.setRasterizer(gameRasterizer);
+        }
     }
 
     public static void frameMode(ScreenMode screenMode) {
@@ -61,12 +65,12 @@ public class ScreenController {
                 GameShell.clientFrame.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
                 GameShell.clientFrame.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
 
-                renderer = new ResizableFrameRenderer();
+                renderer = new ResizableFrameRenderer(gameRasterizer);
             } else if (screenMode == ScreenMode.FULLSCREEN) {
                 frameWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
                 frameHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-                renderer = new ResizableFrameRenderer();
+                renderer = new ResizableFrameRenderer(gameRasterizer);
             }
             GameShell.clientFrame.setSize(ScreenController.frameWidth, ScreenController.frameHeight);
             Dimension innerSize = getInnerSize(GameShell.clientFrame);

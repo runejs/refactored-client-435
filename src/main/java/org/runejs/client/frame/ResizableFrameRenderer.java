@@ -4,6 +4,7 @@ import org.runejs.client.Game;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.frame.tab.TabProducer;
 import org.runejs.client.media.Rasterizer;
+import org.runejs.client.media.RasterizerInstanced;
 
 public class ResizableFrameRenderer implements FrameRenderer {
     public final MinimapRenderer minimap = new MinimapRenderer();
@@ -17,10 +18,13 @@ public class ResizableFrameRenderer implements FrameRenderer {
 
     private boolean canDraw;
     private boolean shouldStop = false;
+    private RasterizerInstanced gameRasterizer;
 
-    public ResizableFrameRenderer() {
+    public ResizableFrameRenderer(RasterizerInstanced gameRasterizer) {
         drawingThread = new Thread(this);
         drawingThread.start();
+
+        this.gameRasterizer = gameRasterizer;
     }
 
     @Override
@@ -139,6 +143,11 @@ public class ResizableFrameRenderer implements FrameRenderer {
 
     public TabProducer getTabProducer() {
         return tabProducer;
+    }
+
+    @Override
+    public void setRasterizer(RasterizerInstanced rasterizer) {
+        this.gameRasterizer = rasterizer;
     }
 
     public void draw(int mouseX, int mouseY, boolean debugView) {

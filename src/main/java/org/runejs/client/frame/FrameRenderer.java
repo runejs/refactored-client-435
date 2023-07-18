@@ -1,6 +1,7 @@
 package org.runejs.client.frame;
 
 import org.runejs.client.frame.tab.TabProducer;
+import org.runejs.client.media.RasterizerInstanced;
 
 public interface FrameRenderer extends Runnable {
     void setDrawSize(int drawWidth, int drawHeight);
@@ -13,6 +14,8 @@ public interface FrameRenderer extends Runnable {
     boolean isCoordinatesInExtendedChatArea(int x, int y);
 
     TabProducer getTabProducer();
+
+    void setRasterizer(RasterizerInstanced rasterizer);
 
     void draw(int mouseX, int mouseY, boolean debugView);
     void stop();
