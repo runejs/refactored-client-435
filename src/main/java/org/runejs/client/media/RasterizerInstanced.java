@@ -1,6 +1,7 @@
 package org.runejs.client.media;
 
 import org.runejs.client.ProducingGraphicsBuffer;
+import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.media.renderable.Model;
 
@@ -579,5 +580,40 @@ public class RasterizerInstanced extends CachedNode {
             destinationPixels[pixelOffset + pixel * destinationWidth] = colour;
     }
 
-
+    public void drawImage(ImageRGB image, int x, int y) {
+        x += image.offsetX;
+        y += image.offsetY;
+        int dest_offset = x + y * this.destinationWidth;
+        int source_offset = 0;
+        int line_count = image.imageHeight;
+        int line_width = image.imageWidth;
+        int line_offset_dest = this.destinationWidth - line_width;
+        int line_offset_source = 0;
+        if(y < this.viewportTop) {
+            int clip_height = this.viewportTop - y;
+            line_count -= clip_height;
+            y = this.viewportTop;
+            source_offset += clip_height * line_width;
+            dest_offset += clip_height * this.destinationWidth;
+        }
+        if(y + line_count > this.viewportBottom)
+            line_count -= y + line_count - this.viewportBottom;
+        if(x < this.viewportLeft) {
+            int clip_width = this.viewportLeft - x;
+            line_width -= clip_width;
+            x = this.viewportLeft;
+            source_offset += clip_width;
+            dest_offset += clip_width;
+            line_offset_source += clip_width;
+            line_offset_dest += clip_width;
+        }
+        if(x + line_width > this.viewportRight) {
+            int clip_width = x + line_width - this.viewportRight;
+            line_width -= clip_width;
+            line_offset_source += clip_width;
+            line_offset_dest += clip_width;
+        }
+        if(line_width > 0 && line_count > 0)
+            ImageRGB.blockCopyTrans(this.destinationPixels, image.pixels, 0, source_offset, dest_offset, line_width, line_count, line_offset_dest, line_offset_source);
+    }
 }

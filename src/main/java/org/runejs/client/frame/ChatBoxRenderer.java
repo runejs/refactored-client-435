@@ -1,16 +1,11 @@
 package org.runejs.client.frame;
 
-import org.runejs.client.Game;
 import org.runejs.client.MovedStatics;
-import org.runejs.client.ProducingGraphicsBuffer;
-import org.runejs.client.media.RasterizerInstanced;
 
 /**
  * Renders the chat box.
  */
 public class ChatBoxRenderer extends FramePieceRenderer {
-    private final ProducingGraphicsBuffer graphics;
-
     public ChatBoxRenderer() {
         super(
             new FramePieceAnchor(
@@ -21,13 +16,6 @@ public class ChatBoxRenderer extends FramePieceRenderer {
             516,
             184
         );
-
-        graphics = MovedStatics.createGraphicsBuffer(this.width, this.height, Game.gameCanvas);
-        rasterizerInstanced = new RasterizerInstanced(graphics);
-    }
-
-    public ProducingGraphicsBuffer getDrawable() {
-        return graphics;
     }
 
     public void render() {
