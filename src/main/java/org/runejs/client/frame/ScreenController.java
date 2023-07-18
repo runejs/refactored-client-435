@@ -26,6 +26,7 @@ public class ScreenController {
     public static int drawWidth = 765;
     public static int drawHeight = 540;
     public static Minimap minimap = new Minimap();
+    public static MinimapRenderer minimapRenderer = new MinimapRenderer();
     public static TabProducer tabProducer = new TabProducer();
     public static ChatBoxRenderer chatBoxRenderer = new ChatBoxRenderer();
     private static Thread drawingThread;
@@ -130,12 +131,12 @@ public class ScreenController {
      */
     public static void RenderResizableUI() {
         if (drawingThread == null) {
-            renderer = new ResizableFrameRenderer(minimap, tabProducer, chatBoxRenderer);
+            renderer = new ResizableFrameRenderer(minimapRenderer, tabProducer, chatBoxRenderer);
             drawingThread = new Thread(renderer);
             drawingThread.start();
         }
 
-        minimap.draw(drawWidth, drawHeight);
+        minimapRenderer.draw(drawWidth, drawHeight);
         tabProducer.draw(drawWidth, drawHeight);
         chatBoxRenderer.draw(drawWidth, drawHeight);
 

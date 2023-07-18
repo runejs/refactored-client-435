@@ -4,11 +4,11 @@ import org.runejs.client.Game;
 import org.runejs.client.frame.tab.TabProducer;
 
 public class ResizableFrameRenderer implements FrameRenderer {
-    private final Minimap minimap;
+    private final MinimapRenderer minimap;
     private final TabProducer tabProducer;
     private final ChatBoxRenderer chatbox;
 
-    public ResizableFrameRenderer(Minimap minimap, TabProducer tabProducer, ChatBoxRenderer chatbox) {
+    public ResizableFrameRenderer(MinimapRenderer minimap, TabProducer tabProducer, ChatBoxRenderer chatbox) {
         this.minimap = minimap;
         this.tabProducer = tabProducer;
         this.chatbox = chatbox;
