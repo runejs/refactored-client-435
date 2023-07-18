@@ -7,6 +7,13 @@ public class Rasterizer3D extends Rasterizer {
      * Some kind of colour information, Dane calls this "reciprocal16"
      */
     public static int[] anIntArray2929 = new int[2048];
+    public static int[] cosinetable = new int[2048];
+    public static int[] sinetable = new int[2048];
+    public static int[] shadowDecay = new int[512];
+    public static boolean lowMemory = false;
+
+
+    
     public static int bottomY;
     public static int center_y;
     public static int[] hsl2rgb = new int[65536];
@@ -27,7 +34,6 @@ public class Rasterizer3D extends Rasterizer {
     public static int center_x;
     public static int[] lineOffsets;
     public static Interface3 interface3;
-    public static int[] shadowDecay = new int[512];
     /**
      * y position/size info of some kind
      *
@@ -40,15 +46,12 @@ public class Rasterizer3D extends Rasterizer {
      * TODO rename
      */
     public static int anInt2942;
-    public static int[] sinetable = new int[2048];
     /**
      * TODO (jkm) investigate and rename, don't think this is accurate
      */
     public static boolean notTextured = true;
     public static int viewportRx;
-    public static int[] cosinetable = new int[2048];
     public static boolean restrict_edges = false;
-    public static boolean lowMemory = false;
     private static boolean useLatestShadeLine = true;
 
     static {
