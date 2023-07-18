@@ -2,11 +2,9 @@ package org.runejs.client.frame;
 
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
-import org.runejs.client.frame.tab.TabProducer;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
-import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
@@ -18,8 +16,6 @@ import java.awt.*;
 import java.text.MessageFormat;
 
 public class ScreenController {
-
-
     public static ScreenMode frameMode = null;
     public static int frameWidth = 765;
     public static int frameHeight = 540;
@@ -132,7 +128,7 @@ public class ScreenController {
         }
     }
 
-    public static void RenderResizableUI() {
+    public static void drawFrame() {
         // create the render thread if required, and draw the output to screen
         int mX = MouseHandler.mouseX;
         int mY = MouseHandler.mouseY;

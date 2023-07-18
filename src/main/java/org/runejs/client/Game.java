@@ -861,15 +861,15 @@ public class Game {
         DebugTools.drawWalkPath();
         DebugTools.drawClipping();
 
+        ScreenController.drawFrame();
+
         if(ScreenController.frameMode == ScreenMode.FIXED) {
             Console.console.drawConsole(512, 334);
             Console.console.drawConsoleArea(512, 334);
         } else {
-            ScreenController.RenderResizableUI();
             Console.console.drawConsole(ScreenController.drawWidth, 334);
             Console.console.drawConsoleArea(ScreenController.drawWidth, 334);
         }
-
 
         if(aBoolean519 && UpdateServer.getActiveCount(false, true) == 0) {
             aBoolean519 = false;
