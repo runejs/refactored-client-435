@@ -513,7 +513,7 @@ public class Landscape {
                                 }
                                 int underlayMinimapColour = 0;
                                 if(hslBitsetRandomised != -1)
-                                    underlayMinimapColour = Rasterizer3D.hsl2rgb[mixLightness(hslBitsetRandomised, 96)];
+                                    underlayMinimapColour = Rasterizer3D.palette.hsl2rgb[mixLightness(hslBitsetRandomised, 96)];
                                 if(overlayId != 0) {
                                     int shape = 1 + tile_underlay_path[_plane][x][y];
                                     byte rotation = tile_overlay_rotation[_plane][x][y];
@@ -540,7 +540,7 @@ public class Landscape {
                                     }
                                     int rgb = 0;
                                     if(overlayMinimapColour != -2)
-                                        rgb = Rasterizer3D.hsl2rgb[MovedStatics.mixLightnessSigned(overlayMinimapColour, 96)];
+                                        rgb = Rasterizer3D.palette.hsl2rgb[MovedStatics.mixLightnessSigned(overlayMinimapColour, 96)];
                                     if(overlayDefinition.secondaryColor != -1) {
                                         int i_54_ = 0xff & randomiserHue + overlayDefinition.otherHue;
                                         int i_55_ = overlayDefinition.otherSaturation + randomiserLightness;
@@ -550,7 +550,7 @@ public class Landscape {
                                         } else
                                             i_55_ = 0;
                                         overlayMinimapColour = generateHslBitset(overlayDefinition.otherLightness, i_55_, i_54_);
-                                        rgb = Rasterizer3D.hsl2rgb[MovedStatics.mixLightnessSigned(overlayMinimapColour, 96)];
+                                        rgb = Rasterizer3D.palette.hsl2rgb[MovedStatics.mixLightnessSigned(overlayMinimapColour, 96)];
                                     }
                                     this.scene.addTile(_plane, x, y, shape, rotation, textureId, vertexHeightSW, vertexHeightSE, vertexHeightNE, vertexHeightNW, mixLightness(hslBitsetOriginal, lightIntensitySW), mixLightness(hslBitsetOriginal, lightIntensitySE), mixLightness(hslBitsetOriginal, lightIntensityNE), mixLightness(hslBitsetOriginal, lightIntensityNW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySW), MovedStatics.mixLightnessSigned(hslBitset, lightIntensitySE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNE), MovedStatics.mixLightnessSigned(hslBitset, lightIntensityNW), underlayMinimapColour, rgb);
                                 } else

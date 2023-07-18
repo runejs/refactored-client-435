@@ -5,11 +5,10 @@ import org.runejs.client.Interface3;
 public class Rasterizer3D extends Rasterizer {
     public static boolean lowMemory = false;
 
-
+    public static Palette palette;
     
     public static int bottomY;
     public static int center_y;
-    public static int[] hsl2rgb = new int[65536];
     public static int alpha = 0;
     /**
      * x position/size info of some kind
@@ -1058,7 +1057,7 @@ public class Rasterizer3D extends Rasterizer {
                 if(alpha == 0) {
                     if(loops > 0) {
                         do {
-                            color = hsl2rgb[colorIndex >> 8];
+                            color = palette.hsl2rgb[colorIndex >> 8];
                             colorIndex += off;
                             dest[++dest_off] = color;
                             dest[++dest_off] = color;
@@ -1068,7 +1067,7 @@ public class Rasterizer3D extends Rasterizer {
                     }
                     loops = endX - startX & 0x3;
                     if(loops > 0) {
-                        color = hsl2rgb[colorIndex >> 8];
+                        color = palette.hsl2rgb[colorIndex >> 8];
                         do {
                             dest[++dest_off] = color;
                         } while(--loops > 0);
@@ -1078,7 +1077,7 @@ public class Rasterizer3D extends Rasterizer {
                     int dest_alpha = 256 - alpha;
                     if(loops > 0) {
                         do {
-                            color = hsl2rgb[colorIndex >> 8];
+                            color = palette.hsl2rgb[colorIndex >> 8];
                             colorIndex += off;
                             color = ((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00);
                             int i_169_ = dest[++dest_off];
@@ -1093,7 +1092,7 @@ public class Rasterizer3D extends Rasterizer {
                     }
                     loops = endX - startX & 0x3;
                     if(loops > 0) {
-                        color = hsl2rgb[colorIndex >> 8];
+                        color = palette.hsl2rgb[colorIndex >> 8];
                         color = ((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00);
                         do {
                             int i_170_ = dest[++dest_off];
@@ -1105,14 +1104,14 @@ public class Rasterizer3D extends Rasterizer {
                 loops = endX - startX;
                 if(alpha == 0) {
                     do {
-                        dest[++dest_off] = hsl2rgb[colorIndex >> 8];
+                        dest[++dest_off] = palette.hsl2rgb[colorIndex >> 8];
                         colorIndex += off;
                     } while(--loops > 0);
                 } else {
                     int i = alpha;
                     int i_171_ = 256 - alpha;
                     do {
-                        color = hsl2rgb[colorIndex >> 8];
+                        color = palette.hsl2rgb[colorIndex >> 8];
                         colorIndex += off;
                         color = ((color & 0xff00ff) * i_171_ >> 8 & 0xff00ff) + ((color & 0xff00) * i_171_ >> 8 & 0xff00);
                         int i_ = dest[++dest_off];
@@ -1199,7 +1198,7 @@ public class Rasterizer3D extends Rasterizer {
                 // Repeat for each 4-pixel chunk in the line.
                 while(--loops >= 0) {
                     // Convert the color index to an RGB color.
-                    color = hsl2rgb[color_index >> 8];
+                    color = palette.hsl2rgb[color_index >> 8];
 
                     // Adjust the color index for the next iteration using the color slope.
                     color_index += color_slope;
@@ -1216,7 +1215,7 @@ public class Rasterizer3D extends Rasterizer {
 
                 // If there are remaining pixels, paint them as well.
                 if(loops > 0) {
-                    color = hsl2rgb[color_index >> 8];
+                    color = palette.hsl2rgb[color_index >> 8];
                     do {
                         dest[dest_off++] = color;
                     } while(--loops > 0);
@@ -1230,7 +1229,7 @@ public class Rasterizer3D extends Rasterizer {
                 // Repeat for the number of 4-pixel chunks in the line.
                 while(--loops >= 0) {
                     // Convert the color index to an RGB color.
-                    color = hsl2rgb[color_index >> 8];
+                    color = palette.hsl2rgb[color_index >> 8];
 
                     // Adjust the color index for the next iteration using the color slope.
                     color_index += color_slope;
@@ -1252,7 +1251,7 @@ public class Rasterizer3D extends Rasterizer {
 
                 // If there are remaining pixels, paint them as well.
                 if(loops > 0) {
-                    color = hsl2rgb[color_index >> 8];
+                    color = palette.hsl2rgb[color_index >> 8];
 
                     // Apply alpha transparency again as we just re-retrieved the color
                     color = ((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00);
@@ -1295,7 +1294,7 @@ public class Rasterizer3D extends Rasterizer {
                 if(alpha == 0) {
                     do {
                         // Paint the pixel with the color corresponding to the current color index.
-                        dest[dest_off++] = hsl2rgb[color_index >> 8];
+                        dest[dest_off++] = palette.hsl2rgb[color_index >> 8];
                         // Adjust the color index for the next pixel.
                         color_index += color_slope;
                     } while(--loops > 0); // Repeat for the number of pixels in the line (no chunking)
@@ -1305,7 +1304,7 @@ public class Rasterizer3D extends Rasterizer {
                     int i_44_ = 256 - alpha;
                     do {
                         // Calculate the color for the current pixel.
-                        color = hsl2rgb[color_index >> 8];
+                        color = palette.hsl2rgb[color_index >> 8];
 
                         // Adjust the color index for the next pixel.
                         color_index += color_slope;
@@ -1752,22 +1751,6 @@ public class Rasterizer3D extends Rasterizer {
         }
     }
 
-    public static int adjustBrightness(int rgb, double brightness) {
-        double r = (double) (rgb >> 16) / 256.0;
-        double g = (double) (rgb >> 8 & 0xff) / 256.0;
-        double b = (double) (rgb & 0xff) / 256.0;
-
-        r = Math.pow(r, brightness);
-        g = Math.pow(g, brightness);
-        b = Math.pow(b, brightness);
-
-        int outR = (int) (r * 256.0);
-        int outG = (int) (g * 256.0);
-        int outB = (int) (b * 256.0);
-
-        return (outR << 16) + (outG << 8) + outB;
-    }
-
     public static int[] setLineOffsets(int[] arg0) {
         return method700(Rasterizer.viewportLeft, Rasterizer.viewportTop, Rasterizer.viewportRight, Rasterizer.viewportBottom, arg0);
     }
@@ -1795,7 +1778,7 @@ public class Rasterizer3D extends Rasterizer {
     }
 
     public static void createPalette(double brightness) {
-        createPalette(brightness, 512);
+        palette = Palette.create(brightness);
     }
 
     public static void drawFlatTriangle(int a_x, int a_y, int b_x, int b_y, int c_x, int c_y, int colour) {
@@ -2140,79 +2123,5 @@ public class Rasterizer3D extends Rasterizer {
         return lineOffsets;
     }
 
-    public static void createPalette(double brightness, int const_512) {
-        brightness += Math.random() * 0.03 - 0.015;
-        int index = 0;
 
-        for(int y = 0; y < const_512; y++) {
-            double hue = (double) (y >> 3) / 64.0 + 0.0078125;
-            double lightness = (double) (y & 0x7) / 8.0 + 0.0625;
-
-            for(int x = 0; x < 128; x++) {
-                double intensity = (double) x / 128.0;
-                double red = intensity;
-                double green = intensity;
-                double blue = intensity;
-
-                if(lightness != 0.0) {
-                    double a;
-                    if(intensity < 0.5) {
-                        a = intensity * (1.0 + lightness);
-                    } else {
-                        a = intensity + lightness - intensity * lightness;
-                    }
-                    double b = 2.0 * intensity - a;
-                    double fRed = hue + 0.3333333333333333;
-                    if(fRed > 1.0) {
-                        fRed--;
-                    }
-                    double fGreen = hue;
-                    double fBlue = hue - 0.3333333333333333;
-                    if(fBlue < 0.0) {
-                        fBlue++;
-                    }
-                    if(6.0 * fRed < 1.0) {
-                        red = b + (a - b) * 6.0 * fRed;
-                    } else if(2.0 * fRed < 1.0) {
-                        red = a;
-                    } else if(3.0 * fRed < 2.0) {
-                        red = b + (a - b) * (0.6666666666666666 - fRed) * 6.0;
-                    } else {
-                        red = b;
-                    }
-                    if(6.0 * fGreen < 1.0) {
-                        green = b + (a - b) * 6.0 * fGreen;
-                    } else if(2.0 * fGreen < 1.0) {
-                        green = a;
-                    } else if(3.0 * fGreen < 2.0) {
-                        green = b + (a - b) * (0.6666666666666666 - fGreen) * 6.0;
-                    } else {
-                        green = b;
-                    }
-                    if(6.0 * fBlue < 1.0) {
-                        blue = b + (a - b) * 6.0 * fBlue;
-                    } else if(2.0 * fBlue < 1.0) {
-                        blue = a;
-                    } else if(3.0 * fBlue < 2.0) {
-                        blue = b + (a - b) * (0.6666666666666666 - fBlue) * 6.0;
-                    } else {
-                        blue = b;
-                    }
-                }
-
-                int outR = ((int) (red * 256.0) << 16);
-                int outG = ((int) (green * 256.0) << 8);
-                int outB = ((int) (blue * 256.0));
-
-                int rgb = outR | outG | outB;
-                rgb = adjustBrightness(rgb, brightness);
-
-                if(rgb == 0) {
-                    rgb = 1;
-                }
-
-                hsl2rgb[index++] = rgb;
-            }
-        }
-    }
 }
