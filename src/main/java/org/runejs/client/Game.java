@@ -1034,6 +1034,7 @@ public class Game {
         SoundSystem.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
         MovedStatics.anInt199 = 0;
 
+        ScreenController.rasterizer.resetBounds();
     }
 
     public static void displayMessageForResponseCode(int responseCode) {
@@ -2205,7 +2206,6 @@ public class Game {
                 MovedStatics.method940(English.loadingPleaseWait, false, null);
         } else if (gameStatusCode == 30) {
             drawGameScreen();
-
         } else if (gameStatusCode == 35) {
             method164();
         } else if (gameStatusCode == 40)
