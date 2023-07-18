@@ -363,28 +363,28 @@ public class MovedStatics {
 
     public static void method440() {
         if (aBoolean512) {
-            Class60.anIntArray1198 = null;
-            Class60.flameRightBackground = null;
-            Class60.aProducingGraphicsBuffer_1631 = null;
-            Class60.aProducingGraphicsBuffer_1206 = null;
-            Class60.anIntArray1168 = null;
-            Class60.anIntArray3255 = null;
-            Class60.imgLoginScreenButton = null;
-            Class60.anIntArray1445 = null;
-            Class60.loginScreenBox = null;
-            Class60.anIntArray2865 = null;
-            Class60.flameLeftBackground = null;
-            Class60.aProducingGraphicsBuffer_907 = null;
-            Class60.aProducingGraphicsBuffer_2524 = null;
-            Class60.aClass40_Sub5_Sub14_Sub4_918 = null;
-            Class60.aClass40_Sub5_Sub14_Sub2Array535 = null;
-            Class60.anIntArray3248 = null;
-            Class60.loginBoxGraphics = null;
-            Class60.aClass40_Sub5_Sub14_Sub4_2043 = null;
-            Class60.anIntArray178 = null;
-            Class60.aProducingGraphicsBuffer_1285 = null;
-            Class60.aProducingGraphicsBuffer_463 = null;
-            Class60.anIntArray1013 = null;
+            LoginScreen.anIntArray1198 = null;
+            LoginScreen.flameRightBackground = null;
+            LoginScreen.aProducingGraphicsBuffer_1631 = null;
+            LoginScreen.aProducingGraphicsBuffer_1206 = null;
+            LoginScreen.anIntArray1168 = null;
+            LoginScreen.anIntArray3255 = null;
+            LoginScreen.imgLoginScreenButton = null;
+            LoginScreen.anIntArray1445 = null;
+            LoginScreen.loginScreenBox = null;
+            LoginScreen.anIntArray2865 = null;
+            LoginScreen.flameLeftBackground = null;
+            LoginScreen.aProducingGraphicsBuffer_907 = null;
+            LoginScreen.aProducingGraphicsBuffer_2524 = null;
+            LoginScreen.aClass40_Sub5_Sub14_Sub4_918 = null;
+            LoginScreen.aClass40_Sub5_Sub14_Sub2Array535 = null;
+            LoginScreen.anIntArray3248 = null;
+            LoginScreen.loginBoxGraphics = null;
+            LoginScreen.aClass40_Sub5_Sub14_Sub4_2043 = null;
+            LoginScreen.anIntArray178 = null;
+            LoginScreen.aProducingGraphicsBuffer_1285 = null;
+            LoginScreen.aProducingGraphicsBuffer_463 = null;
+            LoginScreen.anIntArray1013 = null;
             MusicSystem.method405(10);
             UpdateServer.resetUpdateServerRequests(true);
             aBoolean512 = false;
@@ -915,7 +915,7 @@ public class MovedStatics {
             if (statusCode == 5 || statusCode == 10 || statusCode == 20) {
                 aProducingGraphicsBuffer_2213 = null;
                 method344(-69);
-                Class60.renderLoginScreen(Game.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
+                LoginScreen.createLoginScreen(Game.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
             }
             if (statusCode == 25 || statusCode == 30 || statusCode == 40) {
                 aProducingGraphicsBuffer_2213 = null;

@@ -23,7 +23,7 @@ import java.awt.*;
 /**
  * The class that handles the login screen.
  */
-public class Class60 {
+public class LoginScreen {
     public static int loginScreenState = 0;
     public static int loginScreenFocus = 0;
     public static ProducingGraphicsBuffer muteButton;
@@ -411,7 +411,7 @@ public class Class60 {
         }
     }
 
-    public static void renderLoginScreen(Component arg0, CacheArchive huffmanCacheArchive, CacheArchive gameImageCacheArchive) {
+    public static void createLoginScreen(Component arg0, CacheArchive huffmanCacheArchive, CacheArchive gameImageCacheArchive) {
         if (!MovedStatics.aBoolean512) {
             flameLeftBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
             Rasterizer.resetPixels();
