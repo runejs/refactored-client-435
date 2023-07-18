@@ -26,14 +26,16 @@ public class ScreenController {
     public static int drawWidth = 765;
     public static int drawHeight = 540;
     public static Minimap minimap = new Minimap();
-    private static FrameRenderer renderer = new FixedFrameRenderer();
+    private static FrameRenderer renderer;
     public static boolean DebugView = false;
 
     public static void frameMode(ScreenMode screenMode) {
         if (frameMode != screenMode) {
             frameMode = screenMode;
 
-            renderer.stop();
+            if (renderer != null) {
+                renderer.stop();
+            }
 
             if (screenMode == ScreenMode.FIXED) {
                 frameWidth = 765;
