@@ -165,7 +165,7 @@ public class Minimap {
         minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, MovedStatics.anIntArray62, MovedStatics.anIntArray66);
         minimapBackgroundImage.drawImage(0, 0);
 
-        if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && MovedStatics.menuScreenArea == 1) {
+        if(MovedStatics.menuOpen && MovedStatics.menuScreenArea == 1) {
             MovedStatics.drawMenu(550, 4);
         }
         drawMapBack();
