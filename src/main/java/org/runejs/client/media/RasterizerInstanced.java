@@ -165,8 +165,14 @@ public class RasterizerInstanced extends CachedNode {
         int pixelOffset = this.destinationWidth - width;
         int pixel = paintX + paintY * this.destinationWidth;
         for(int heightCounter = -height; heightCounter < 0; heightCounter++) {
-            for(int widthCounter = -width; widthCounter < 0; widthCounter++)
-                destinationPixels[pixel++] = pixels[sourcePixel++];
+            for(int widthCounter = -width; widthCounter < 0; widthCounter++) {
+                // (jkm) this check wasn't in the initial RasterizerInstanced implementation, not sure why ...
+                if(pixels[sourcePixel] != Integer.MAX_VALUE) {
+                    destinationPixels[pixel] = pixels[sourcePixel];
+                }
+                pixel++;
+                sourcePixel++;
+            }
             pixel += pixelOffset;
         }
     }
