@@ -846,7 +846,7 @@ public class Model extends Renderable {
             }
         }
         try {
-            method815(bool, bool_18_, arg8);
+            draw(bool, bool_18_, arg8);
         } catch(Exception exception) {
             /* empty */
         }
@@ -901,7 +901,7 @@ public class Model extends Renderable {
             }
         }
         try {
-            method815(false, false, 0);
+            draw(false, false, 0);
         } catch(Exception exception) {
             /* empty */
         }
@@ -1329,7 +1329,7 @@ public class Model extends Renderable {
             }
         }
         try {
-            method815(false, false, 0);
+            draw(false, false, 0);
         } catch(Exception exception) {
             /* empty */
         }
@@ -1345,7 +1345,7 @@ public class Model extends Renderable {
         }
     }
 
-    public void method814(int arg0) {
+    public void drawNearClippedFace(int arg0) {
         int i = Rasterizer3D.center_x;
         int i_148_ = Rasterizer3D.center_y;
         int i_149_ = 0;
@@ -1488,7 +1488,7 @@ public class Model extends Renderable {
         }
     }
 
-    public void method815(boolean flag, boolean arg1, int arg2) {
+    public void draw(boolean flag, boolean arg1, int arg2) {
         if(diagonal3D < 1600) {
             for(int i = 0; i < diagonal3D; i++)
                 anIntArray3200[i] = 0;
@@ -1544,7 +1544,7 @@ public class Model extends Renderable {
                     if(i_216_ > 0) {
                         int[] is = anIntArrayArray3210[i];
                         for(int i_217_ = 0; i_217_ < i_216_; i_217_++)
-                            method823(is[i_217_]);
+                            drawFace(is[i_217_]);
                     }
                 }
             } else {
@@ -1598,7 +1598,7 @@ public class Model extends Renderable {
                     while(i_229_ == 0) {
                         if(i_228_ <= i)
                             break;
-                        method823(is[i_225_++]);
+                        drawFace(is[i_225_++]);
                         if(i_225_ == i_226_ && is != anIntArrayArray3208[11]) {
                             i_225_ = 0;
                             i_226_ = anIntArray3226[11];
@@ -1613,7 +1613,7 @@ public class Model extends Renderable {
                     while(i_229_ == 3) {
                         if(i_228_ <= i_223_)
                             break;
-                        method823(is[i_225_++]);
+                        drawFace(is[i_225_++]);
                         if(i_225_ == i_226_ && is != anIntArrayArray3208[11]) {
                             i_225_ = 0;
                             i_226_ = anIntArray3226[11];
@@ -1626,7 +1626,7 @@ public class Model extends Renderable {
                             i_228_ = -1000;
                     }
                     while(i_229_ == 5 && i_228_ > i_224_) {
-                        method823(is[i_225_++]);
+                        drawFace(is[i_225_++]);
                         if(i_225_ == i_226_ && is != anIntArrayArray3208[11]) {
                             i_225_ = 0;
                             i_226_ = anIntArray3226[11];
@@ -1641,10 +1641,10 @@ public class Model extends Renderable {
                     int i_230_ = anIntArray3226[i_229_];
                     int[] is_231_ = anIntArrayArray3208[i_229_];
                     for(int i_232_ = 0; i_232_ < i_230_; i_232_++)
-                        method823(is_231_[i_232_]);
+                        drawFace(is_231_[i_232_]);
                 }
                 while(i_228_ != -1000) {
-                    method823(is[i_225_++]);
+                    drawFace(is[i_225_++]);
                     if(i_225_ == i_226_ && is != anIntArrayArray3208[11]) {
                         i_225_ = 0;
                         is = anIntArrayArray3208[11];
@@ -1772,39 +1772,39 @@ public class Model extends Renderable {
         }
     }
 
-    public void method823(int arg0) {
-        if(aBooleanArray3224[arg0])
-            method814(arg0);
+    public void drawFace(int face) {
+        if(aBooleanArray3224[face])
+            drawNearClippedFace(face);
         else {
-            int i = trianglePointsX[arg0];
-            int i_237_ = trianglePointsY[arg0];
-            int i_238_ = trianglePointsZ[arg0];
-            Rasterizer3D.restrict_edges = aBooleanArray3201[arg0];
+            int i = trianglePointsX[face];
+            int i_237_ = trianglePointsY[face];
+            int i_238_ = trianglePointsZ[face];
+            Rasterizer3D.restrict_edges = aBooleanArray3201[face];
             if(triangleAlphaValues == null)
                 Rasterizer3D.alpha = 0;
             else
-                Rasterizer3D.alpha = triangleAlphaValues[arg0];
+                Rasterizer3D.alpha = triangleAlphaValues[face];
             int i_239_;
             if(triangleDrawType == null)
                 i_239_ = 0;
             else
-                i_239_ = triangleDrawType[arg0] & 0x3;
+                i_239_ = triangleDrawType[face] & 0x3;
             if(i_239_ == 0)
-                Rasterizer3D.drawShadedTriangle(vertexScreenY[i], vertexScreenY[i_237_], vertexScreenY[i_238_], vertexScreenX[i], vertexScreenX[i_237_], vertexScreenX[i_238_], triangleHSLA[arg0], triangleHSLB[arg0], triangleHSLC[arg0]);
+                Rasterizer3D.drawShadedTriangle(vertexScreenY[i], vertexScreenY[i_237_], vertexScreenY[i_238_], vertexScreenX[i], vertexScreenX[i_237_], vertexScreenX[i_238_], triangleHSLA[face], triangleHSLB[face], triangleHSLC[face]);
             else if(i_239_ == 1)
-                Rasterizer3D.drawFlatTriangle(vertexScreenX[i], vertexScreenY[i], vertexScreenX[i_237_], vertexScreenY[i_237_], vertexScreenX[i_238_], vertexScreenY[i_238_], anIntArray3202[triangleHSLA[arg0]]);
+                Rasterizer3D.drawFlatTriangle(vertexScreenX[i], vertexScreenY[i], vertexScreenX[i_237_], vertexScreenY[i_237_], vertexScreenX[i_238_], vertexScreenY[i_238_], anIntArray3202[triangleHSLA[face]]);
             else if(i_239_ == 2) {
-                int i_240_ = triangleDrawType[arg0] >> 2;
+                int i_240_ = triangleDrawType[face] >> 2;
                 int i_241_ = texturedTrianglePointsX[i_240_];
                 int i_242_ = texturedTrianglePointsY[i_240_];
                 int i_243_ = texturedTrianglePointsZ[i_240_];
-                Rasterizer3D.drawTexturedTriangle(vertexScreenY[i], vertexScreenY[i_237_], vertexScreenY[i_238_], vertexScreenX[i], vertexScreenX[i_237_], vertexScreenX[i_238_], triangleHSLA[arg0], triangleHSLB[arg0], triangleHSLC[arg0], anIntArray3225[i_241_], anIntArray3225[i_242_], anIntArray3225[i_243_], anIntArray3203[i_241_], anIntArray3203[i_242_], anIntArray3203[i_243_], anIntArray3223[i_241_], anIntArray3223[i_242_], anIntArray3223[i_243_], triangleColorValues[arg0]);
+                Rasterizer3D.drawTexturedTriangle(vertexScreenY[i], vertexScreenY[i_237_], vertexScreenY[i_238_], vertexScreenX[i], vertexScreenX[i_237_], vertexScreenX[i_238_], triangleHSLA[face], triangleHSLB[face], triangleHSLC[face], anIntArray3225[i_241_], anIntArray3225[i_242_], anIntArray3225[i_243_], anIntArray3203[i_241_], anIntArray3203[i_242_], anIntArray3203[i_243_], anIntArray3223[i_241_], anIntArray3223[i_242_], anIntArray3223[i_243_], triangleColorValues[face]);
             } else if(i_239_ == 3) {
-                int i_244_ = triangleDrawType[arg0] >> 2;
+                int i_244_ = triangleDrawType[face] >> 2;
                 int i_245_ = texturedTrianglePointsX[i_244_];
                 int i_246_ = texturedTrianglePointsY[i_244_];
                 int i_247_ = texturedTrianglePointsZ[i_244_];
-                Rasterizer3D.drawTexturedTriangle(vertexScreenY[i], vertexScreenY[i_237_], vertexScreenY[i_238_], vertexScreenX[i], vertexScreenX[i_237_], vertexScreenX[i_238_], triangleHSLA[arg0], triangleHSLA[arg0], triangleHSLA[arg0], anIntArray3225[i_245_], anIntArray3225[i_246_], anIntArray3225[i_247_], anIntArray3203[i_245_], anIntArray3203[i_246_], anIntArray3203[i_247_], anIntArray3223[i_245_], anIntArray3223[i_246_], anIntArray3223[i_247_], triangleColorValues[arg0]);
+                Rasterizer3D.drawTexturedTriangle(vertexScreenY[i], vertexScreenY[i_237_], vertexScreenY[i_238_], vertexScreenX[i], vertexScreenX[i_237_], vertexScreenX[i_238_], triangleHSLA[face], triangleHSLA[face], triangleHSLA[face], anIntArray3225[i_245_], anIntArray3225[i_246_], anIntArray3225[i_247_], anIntArray3203[i_245_], anIntArray3203[i_246_], anIntArray3203[i_247_], anIntArray3223[i_245_], anIntArray3223[i_246_], anIntArray3223[i_247_], triangleColorValues[face]);
             }
         }
     }
