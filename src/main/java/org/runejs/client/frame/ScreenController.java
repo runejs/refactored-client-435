@@ -23,7 +23,11 @@ public class ScreenController {
     public static int drawWidth = 765;
     public static int drawHeight = 540;
     public static ProducingGraphicsBuffer drawComponent;
-    public static RasterizerInstanced rasterizer;
+    public static RasterizerInstanced rasterizer = new RasterizerInstanced(
+        null,
+        ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth,
+        ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight
+    );
 
     private static FrameRenderer renderer;
     public static boolean DebugView = false;
@@ -35,11 +39,7 @@ public class ScreenController {
             component
         );
 
-        rasterizer = new RasterizerInstanced(drawComponent);
-
-        if (renderer != null) {
-            renderer.setRasterizer(rasterizer);
-        }
+        rasterizer.setGraphics(drawComponent);
     }
 
     public static void frameMode(ScreenMode screenMode) {

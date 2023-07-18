@@ -30,6 +30,10 @@ public class RasterizerInstanced extends CachedNode {
 
 
     public RasterizerInstanced(ProducingGraphicsBuffer producingGraphicsBuffer) {
+        setGraphics(producingGraphicsBuffer);
+    }
+
+    public void setGraphics(ProducingGraphicsBuffer producingGraphicsBuffer) {
         this.destinationPixels = producingGraphicsBuffer.pixels;
         this.destinationWidth = producingGraphicsBuffer.width;
         this.destinationHeight = producingGraphicsBuffer.height;

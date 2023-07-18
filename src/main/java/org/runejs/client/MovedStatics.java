@@ -1446,8 +1446,6 @@ public class MovedStatics {
             tabTopBack = null;
             tabImageProducer = null;
             tabHighlightImageTopLeftEdge = null;
-            ScreenController.drawComponent = null;
-            ScreenController.rasterizer = null;
             tabHighlightImageBottomRightEdge = null;
             ChatBox.chatBoxImageProducer = null;
             mapBackRight = null;
