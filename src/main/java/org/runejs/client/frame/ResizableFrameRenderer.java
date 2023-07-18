@@ -3,7 +3,6 @@ package org.runejs.client.frame;
 import org.runejs.client.Game;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.frame.tab.TabProducer;
-import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.RasterizerInstanced;
 
 public class ResizableFrameRenderer implements FrameRenderer {
@@ -18,13 +17,13 @@ public class ResizableFrameRenderer implements FrameRenderer {
 
     private boolean canDraw;
     private boolean shouldStop = false;
-    private RasterizerInstanced gameRasterizer;
+    private RasterizerInstanced rasterizer;
 
-    public ResizableFrameRenderer(RasterizerInstanced gameRasterizer) {
+    public ResizableFrameRenderer(RasterizerInstanced rasterizer) {
         drawingThread = new Thread(this);
         drawingThread.start();
 
-        this.gameRasterizer = gameRasterizer;
+        this.rasterizer = rasterizer;
     }
 
     @Override
@@ -49,9 +48,9 @@ public class ResizableFrameRenderer implements FrameRenderer {
     }
 
     private void drawToScreen() {
-        minimap.draw(this.gameRasterizer, drawWidth, drawHeight);
-        tabProducer.draw(this.gameRasterizer, drawWidth, drawHeight);
-        chatbox.draw(this.gameRasterizer, drawWidth, drawHeight);
+        minimap.draw(this.rasterizer, drawWidth, drawHeight);
+        tabProducer.draw(this.rasterizer, drawWidth, drawHeight);
+        chatbox.draw(this.rasterizer, drawWidth, drawHeight);
     }
 
     /**
@@ -67,39 +66,39 @@ public class ResizableFrameRenderer implements FrameRenderer {
         int[] tabInterFaceTop = tabProducer.getTopBarCoordSize(drawWidth - 241, drawHeight - (334));
         int[] tabInterFaceBottom = tabProducer.getBottomBarCoordSize(drawWidth - 241, drawHeight - (334));
         if (isCoordinatesIn3dScreen(mX, mY)) {
-            gameRasterizer.drawFilledRectangleAlpha(0, 0, drawWidth, drawHeight, 0x00FF00, 90);
+            rasterizer.drawFilledRectangleAlpha(0, 0, drawWidth, drawHeight, 0x00FF00, 90);
         } else {
-            gameRasterizer.drawFilledRectangleAlpha(0, 0, drawWidth, drawHeight, 0xFF00FF, 90);
+            rasterizer.drawFilledRectangleAlpha(0, 0, drawWidth, drawHeight, 0xFF00FF, 90);
         }
         if (isCoordinatesInExtendedTabArea(mX, mY) && !isCoordinatesInTabArea(mX, mY)) {
-            gameRasterizer.drawFilledRectangleAlpha(tabInterFaceTop[0], tabInterFaceTop[1], tabInterFaceTop[2], tabInterFaceTop[3], 0x00FF00, 90);
-            gameRasterizer.drawFilledRectangleAlpha(tabInterFaceBottom[0], tabInterFaceBottom[1], tabInterFaceBottom[2], tabInterFaceBottom[3], 0x00FF00, 90);
+            rasterizer.drawFilledRectangleAlpha(tabInterFaceTop[0], tabInterFaceTop[1], tabInterFaceTop[2], tabInterFaceTop[3], 0x00FF00, 90);
+            rasterizer.drawFilledRectangleAlpha(tabInterFaceBottom[0], tabInterFaceBottom[1], tabInterFaceBottom[2], tabInterFaceBottom[3], 0x00FF00, 90);
         } else {
-            gameRasterizer.drawFilledRectangleAlpha(tabInterFaceTop[0], tabInterFaceTop[1], tabInterFaceTop[2], tabInterFaceTop[3], 0x0000FF, 90);
-            gameRasterizer.drawFilledRectangleAlpha(tabInterFaceBottom[0], tabInterFaceBottom[1], tabInterFaceBottom[2], tabInterFaceBottom[3], 0x0000FF, 90);
+            rasterizer.drawFilledRectangleAlpha(tabInterFaceTop[0], tabInterFaceTop[1], tabInterFaceTop[2], tabInterFaceTop[3], 0x0000FF, 90);
+            rasterizer.drawFilledRectangleAlpha(tabInterFaceBottom[0], tabInterFaceBottom[1], tabInterFaceBottom[2], tabInterFaceBottom[3], 0x0000FF, 90);
         }
         if (isCoordinatesInTabArea(mX, mY)) {
-            gameRasterizer.drawFilledRectangleAlpha(tabInterFaceCoords[0], tabInterFaceCoords[1], MovedStatics.tabImageProducer.width, MovedStatics.tabImageProducer.height, 0x00FF00, 90);
+            rasterizer.drawFilledRectangleAlpha(tabInterFaceCoords[0], tabInterFaceCoords[1], MovedStatics.tabImageProducer.width, MovedStatics.tabImageProducer.height, 0x00FF00, 90);
         } else {
-            gameRasterizer.drawFilledRectangleAlpha(tabInterFaceCoords[0], tabInterFaceCoords[1], MovedStatics.tabImageProducer.width, MovedStatics.tabImageProducer.height, 0x0000FF, 90);
+            rasterizer.drawFilledRectangleAlpha(tabInterFaceCoords[0], tabInterFaceCoords[1], MovedStatics.tabImageProducer.width, MovedStatics.tabImageProducer.height, 0x0000FF, 90);
         }
         if (isCoordinatesInExtendedChatArea(mX, mY) && !isCoordinatesInChatArea(mX, mY)) {
-            gameRasterizer.drawFilledRectangleAlpha(0, drawHeight - (162), 516, drawHeight, 0x00FF00, 90);
+            rasterizer.drawFilledRectangleAlpha(0, drawHeight - (162), 516, drawHeight, 0x00FF00, 90);
         } else {
-            gameRasterizer.drawFilledRectangleAlpha(0, drawHeight - (162), 516, drawHeight, 0x0000FF, 90);
+            rasterizer.drawFilledRectangleAlpha(0, drawHeight - (162), 516, drawHeight, 0x0000FF, 90);
         }
         if (isCoordinatesInChatArea(mX, mY)) {
-            gameRasterizer.drawFilledRectangleAlpha(17, drawHeight - (162) + 16, ChatBox.chatBoxImageProducer.width, ChatBox.chatBoxImageProducer.height, 0x00FF00, 90);
+            rasterizer.drawFilledRectangleAlpha(17, drawHeight - (162) + 16, ChatBox.chatBoxImageProducer.width, ChatBox.chatBoxImageProducer.height, 0x00FF00, 90);
         } else {
-            gameRasterizer.drawFilledRectangleAlpha(17, drawHeight - (162) + 16, ChatBox.chatBoxImageProducer.width, ChatBox.chatBoxImageProducer.height, 0x0000FF, 90);
+            rasterizer.drawFilledRectangleAlpha(17, drawHeight - (162) + 16, ChatBox.chatBoxImageProducer.width, ChatBox.chatBoxImageProducer.height, 0x0000FF, 90);
         }
         if (isCoordinatesInMinimapArea(mX, mY)) {
-            gameRasterizer.drawFilledRectangleAlpha(drawWidth - 210, 0, 210, 210, 0x00FF00, 90);
+            rasterizer.drawFilledRectangleAlpha(drawWidth - 210, 0, 210, 210, 0x00FF00, 90);
         } else {
-            gameRasterizer.drawFilledRectangleAlpha(drawWidth - 210, 0, 210, 210, 0x0000FF, 90);
+            rasterizer.drawFilledRectangleAlpha(drawWidth - 210, 0, 210, 210, 0x0000FF, 90);
         }
 
-        gameRasterizer.drawFilledRectangle(mX - 4, mY - 4, 4, 4, 0xFF0000);
+        rasterizer.drawFilledRectangle(mX - 4, mY - 4, 4, 4, 0xFF0000);
     }
 
     public boolean isCoordinatesInChatArea(int x, int y) {
@@ -147,7 +146,7 @@ public class ResizableFrameRenderer implements FrameRenderer {
 
     @Override
     public void setRasterizer(RasterizerInstanced rasterizer) {
-        this.gameRasterizer = rasterizer;
+        this.rasterizer = rasterizer;
     }
 
     public void draw(int mouseX, int mouseY, boolean debugView) {

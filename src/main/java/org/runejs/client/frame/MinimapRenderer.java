@@ -26,7 +26,7 @@ public class MinimapRenderer extends FramePieceRenderer {
      * To avoid flickering, we draw to a temporary rasterizer first,
      * then flush this to the output rasterizer at once, in its entirety.
      */
-    private RasterizerInstanced tempRasterizer;
+    private RasterizerInstanced rasterizerTemp;
 
     public MinimapRenderer() {
         super(
@@ -46,7 +46,7 @@ public class MinimapRenderer extends FramePieceRenderer {
             resizableMinimapOffsets2[i] = 0;
         }
 
-        tempRasterizer = new RasterizerInstanced(
+        rasterizerTemp = new RasterizerInstanced(
             MovedStatics.createGraphicsBuffer(this.width, this.height, Game.gameCanvas)
         );
     }
@@ -81,20 +81,20 @@ public class MinimapRenderer extends FramePieceRenderer {
 
         shapeImageToPixels(Minimap.minimapImage,5, 5, 200, 200, i, i_8_, i_9_, minimapZoom + 256, resizableMinimapOffsets2, resizableMinimapOffsets1);
         drawResizableMinimapDots();
-        tempRasterizer.drawFilledRectangle(105, 105, 3, 3, 16777215);
-        tempRasterizer.drawFilledRectangle(0, 0, 210, 5, 0x242017);
-        tempRasterizer.drawFilledRectangle(0, 205, 210, 5, 0x242017);
-        tempRasterizer.drawFilledRectangle(0, 0, 5, 210, 0x242017);
-        tempRasterizer.drawFilledRectangle(205, 0, 5, 210, 0x242017);
+        rasterizerTemp.drawFilledRectangle(105, 105, 3, 3, 16777215);
+        rasterizerTemp.drawFilledRectangle(0, 0, 210, 5, 0x242017);
+        rasterizerTemp.drawFilledRectangle(0, 205, 210, 5, 0x242017);
+        rasterizerTemp.drawFilledRectangle(0, 0, 5, 210, 0x242017);
+        rasterizerTemp.drawFilledRectangle(205, 0, 5, 210, 0x242017);
 
         //        Rasterizer.drawFilledRectangle(x-43,y, 43, 43, 0x242017);
-        tempRasterizer.drawFilledRectangle(0, 0, 20, 42, 0x242017);
-        tempRasterizer.drawFilledRectangle(0, 0, 42, 20, 0x242017);
+        rasterizerTemp.drawFilledRectangle(0, 0, 20, 42, 0x242017);
+        rasterizerTemp.drawFilledRectangle(0, 0, 42, 20, 0x242017);
 
-        tempRasterizer.drawCircle(21, 21, 20, 0x242017);
+        rasterizerTemp.drawCircle(21, 21, 20, 0x242017);
         shapeImageToPixels(Minimap.minimapCompass, 5, 5, 33, 33, 25, 25, Game.getMinimapRotation(), 256, resizableCompasOffsets2, resizableCompasOffsets1);
 
-        System.arraycopy(tempRasterizer.destinationPixels, 0, rasterizerInstanced.destinationPixels,0, rasterizerInstanced.destinationPixels.length);
+        System.arraycopy(rasterizerTemp.destinationPixels, 0, rasterizerInstanced.destinationPixels,0, rasterizerInstanced.destinationPixels.length);
 //        Class65.method1018();
 
         //        ScreenController.drawFramePiece(resizableMiniMapimage, x, y);
@@ -113,7 +113,7 @@ public class MinimapRenderer extends FramePieceRenderer {
             cosine = cosine * zoom >> 8;
             int i_125_ = (arg4 << 16) + centerY * sine + centerX * cosine;
             int i_126_ = (arg5 << 16) + centerY * cosine - centerX * sine;
-            int destinationOffset = x + y * tempRasterizer.destinationWidth;
+            int destinationOffset = x + y * rasterizerTemp.destinationWidth;
 
             for(y = 0; y < height; y++) {
                 int i_128_ = arg8[y];
@@ -126,13 +126,13 @@ public class MinimapRenderer extends FramePieceRenderer {
                     if(!(image.pixels.length < pixelToGet || pixelToGet < 0)){
                         colour = image.pixels[pixelToGet];
                     }
-                    tempRasterizer.destinationPixels[i_129_++] = colour;
+                    rasterizerTemp.destinationPixels[i_129_++] = colour;
                     i_130_ += cosine;
                     i_131_ -= sine;
                 }
                 i_125_ += sine;
                 i_126_ += cosine;
-                destinationOffset += tempRasterizer.destinationWidth;
+                destinationOffset += rasterizerTemp.destinationWidth;
             }
         } catch(Exception exception) {
             /* empty */
@@ -233,7 +233,7 @@ public class MinimapRenderer extends FramePieceRenderer {
         cosine = cosine * 256 / (zoom + 256);
         int i_3_ = cosine * x + y * sine >> 16;
         int i_4_ = -(x * sine) + cosine * y >> 16;
-        tempRasterizer.drawImage(sprite, 106 + i_3_ + -(sprite.maxWidth / 2), -(sprite.maxHeight / 2) + -i_4_ + 106);
+        rasterizerTemp.drawImage(sprite, 106 + i_3_ + -(sprite.maxWidth / 2), -(sprite.maxHeight / 2) + -i_4_ + 106);
     }
 
     public void drawMinimapMark(ImageRGB sprite, int mapX, int mapY) {
@@ -267,7 +267,7 @@ public class MinimapRenderer extends FramePieceRenderer {
             cosine = cosine * zoom >> 8;
             int sourceOffsetX = (pivotX << 16) + centerY * sine + centerX * cosine;
             int sourceoffsetY = (pivotY << 16) + centerY * cosine - centerX * sine;
-            int destinationOffset = x + y * tempRasterizer.destinationWidth;
+            int destinationOffset = x + y * rasterizerTemp.destinationWidth;
             for(y = 0; y < height; y++) {
                 int i = destinationOffset;
                 int offsetX = sourceOffsetX;
@@ -275,7 +275,7 @@ public class MinimapRenderer extends FramePieceRenderer {
                 for(x = -width; x < 0; x++) {
                     int i_166_ = image.pixels[(offsetX >> 16) + (offsetY >> 16) * image.imageWidth];
                     if(i_166_ != 0)
-                        tempRasterizer.destinationPixels[i++] = i_166_;
+                        rasterizerTemp.destinationPixels[i++] = i_166_;
                     else
                         i++;
                     offsetX += cosine;
@@ -283,7 +283,7 @@ public class MinimapRenderer extends FramePieceRenderer {
                 }
                 sourceOffsetX += sine;
                 sourceoffsetY += cosine;
-                destinationOffset += tempRasterizer.destinationWidth;
+                destinationOffset += rasterizerTemp.destinationWidth;
             }
         } catch(Exception exception) {
             /* empty */
