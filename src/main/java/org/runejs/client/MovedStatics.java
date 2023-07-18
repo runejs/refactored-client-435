@@ -16,6 +16,7 @@ import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
+import org.runejs.client.media.RasterizerInstanced;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.*;
@@ -912,16 +913,20 @@ public class MovedStatics {
     }
 
 
-    public static ProducingGraphicsBuffer createGraphicsBuffer(int width, int height, Component component) {
+    public static ProducingGraphicsBuffer createGraphicsBuffer(int width, int height, Component component, RasterizerInstanced rasterizerInstance) {
         try {
             ProducingGraphicsBuffer producingGraphicsBuffer = new ProducingGraphicsBuffer_Sub2();
-            producingGraphicsBuffer.method1041(13, width, component, height);
+            producingGraphicsBuffer.method1041(13, width, component, height, rasterizerInstance);
             return producingGraphicsBuffer;
         } catch(Throwable throwable) {
             ProducingGraphicsBuffer_Sub1 class68_sub1 = new ProducingGraphicsBuffer_Sub1();
-            class68_sub1.method1041(44, width, component, height);
+            class68_sub1.method1041(44, width, component, height, rasterizerInstance);
             return class68_sub1;
         }
+    }
+
+    public static ProducingGraphicsBuffer createGraphicsBuffer(int width, int height, Component component) {
+        return createGraphicsBuffer(width, height, component, null);
     }
 
     /**

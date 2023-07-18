@@ -1,5 +1,7 @@
 package org.runejs.client;
 
+import org.runejs.client.media.RasterizerInstanced;
+
 import java.awt.*;
 import java.awt.image.*;
 import java.util.Hashtable;
@@ -14,7 +16,7 @@ public class ProducingGraphicsBuffer_Sub2 extends ProducingGraphicsBuffer {
         arg2.drawImage(image, arg1, arg3, aComponent2214);
     }
 
-    public void method1041(int arg0, int arg1, Component arg2, int arg3) {
+    public void method1041(int arg0, int arg1, Component arg2, int arg3, RasterizerInstanced rasterizerInstance) {
         width = arg1;
         if(arg0 > 4) {
             pixels = new int[1 + arg3 * arg1];
@@ -24,7 +26,11 @@ public class ProducingGraphicsBuffer_Sub2 extends ProducingGraphicsBuffer {
             WritableRaster writableraster = Raster.createWritableRaster(directcolormodel.createCompatibleSampleModel(width, height), databufferint, null);
             image = new BufferedImage(directcolormodel, writableraster, false, new Hashtable());
             aComponent2214 = arg2;
-            prepareRasterizer();
+            prepareRasterizer(rasterizerInstance);
         }
+    }
+
+    public void method1041(int arg0, int arg1, Component arg2, int arg3) {
+        method1041(arg0, arg1, arg2, arg3, null);
     }
 }
