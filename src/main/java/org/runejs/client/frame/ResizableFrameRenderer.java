@@ -16,6 +16,7 @@ public class ResizableFrameRenderer implements FrameRenderer {
     private int drawHeight;
 
     private boolean canDraw;
+    private boolean shouldStop = false;
 
     public ResizableFrameRenderer() {
         drawingThread = new Thread(this);
@@ -24,7 +25,7 @@ public class ResizableFrameRenderer implements FrameRenderer {
 
     @Override
     public void run() {
-        while(true){
+        while(!shouldStop){
             if(canDraw && Game.gameStatusCode <= 35 && Game.gameStatusCode >= 30){
                 minimap.RenderResizableMiniMapArea(ScreenController.drawWidth - 210, 0);
                 tabProducer.RenderResizableSideBarArea();
@@ -152,5 +153,10 @@ public class ResizableFrameRenderer implements FrameRenderer {
         if (MovedStatics.menuOpen) {
             MovedStatics.drawMenu(0, 0);
         }
+    }
+
+    @Override
+    public void stop() {
+        shouldStop = true;
     }
 }

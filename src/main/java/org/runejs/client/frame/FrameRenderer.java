@@ -15,4 +15,5 @@ public interface FrameRenderer extends Runnable {
     TabProducer getTabProducer();
 
     void draw(int mouseX, int mouseY, boolean debugView);
+    void stop();
 }
