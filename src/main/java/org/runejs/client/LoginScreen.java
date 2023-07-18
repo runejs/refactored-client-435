@@ -662,7 +662,7 @@ public class LoginScreen {
     }
 
 
-    public void method440() {
+    public void cleanUp() {
         if (MovedStatics.aBoolean512) {
             anIntArray1198 = null;
             flameRightBackground = null;

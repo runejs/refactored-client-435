@@ -878,7 +878,7 @@ public class MovedStatics {
             }
             if (statusCode == 0 || statusCode == 35) {
                 method344(-40);
-                Game.loginScreen.method440();
+                Game.loginScreen.cleanUp();
                 if (aProducingGraphicsBuffer_2213 == null)
                     aProducingGraphicsBuffer_2213 = createGraphicsBuffer(765, 503, Game.gameCanvas);
             }
@@ -889,7 +889,7 @@ public class MovedStatics {
             }
             if (statusCode == 25 || statusCode == 30 || statusCode == 40) {
                 aProducingGraphicsBuffer_2213 = null;
-                Game.loginScreen.method440();
+                Game.loginScreen.cleanUp();
                 method763(Game.gameCanvas, CacheArchive.gameImageCacheArchive);
             }
             Game.gameStatusCode = statusCode;
