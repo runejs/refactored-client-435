@@ -25,7 +25,6 @@ public class ScreenController {
     public static int frameHeight = 540;
     public static int drawWidth = 765;
     public static int drawHeight = 540;
-    public static Minimap minimap = new Minimap();
     private static FrameRenderer renderer;
     public static boolean DebugView = false;
 
