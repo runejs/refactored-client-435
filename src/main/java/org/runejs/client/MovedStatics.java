@@ -1446,8 +1446,8 @@ public class MovedStatics {
             tabTopBack = null;
             tabImageProducer = null;
             tabHighlightImageTopLeftEdge = null;
-            ScreenController.gameScreenImageProducer = null;
-            ScreenController.gameRasterizer = null;
+            ScreenController.drawComponent = null;
+            ScreenController.rasterizer = null;
             tabHighlightImageBottomRightEdge = null;
             ChatBox.chatBoxImageProducer = null;
             mapBackRight = null;
@@ -1944,7 +1944,7 @@ public class MovedStatics {
             Minimap.minimapBackgroundImage.drawImage(0, 0);
             tabImageProducer = createGraphicsBuffer(190, 261, arg0);
             inventoryBackgroundImage.drawImage(0, 0);
-            ScreenController.createGameRasterizer(arg0);
+            ScreenController.setDrawComponent(arg0);
             Rasterizer.resetPixels();
             chatModes = createGraphicsBuffer(496, 50, arg0);
             tabBottom = createGraphicsBuffer(269, 37, arg0);
@@ -2955,7 +2955,7 @@ public class MovedStatics {
     }
 
     public static void method1018() {
-        ScreenController.gameScreenImageProducer.prepareRasterizer();
+        ScreenController.drawComponent.prepareRasterizer();
         fullScreenTextureArray = Rasterizer3D.setLineOffsets(fullScreenTextureArray);
     }
 
@@ -3064,7 +3064,7 @@ public class MovedStatics {
     public static void drawGameScreenGraphics() {
         try {
             Graphics graphics = Game.gameCanvas.getGraphics();
-            ScreenController.gameScreenImageProducer.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
+            ScreenController.drawComponent.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
         } catch(Exception exception) {
             Game.gameCanvas.repaint();
         }

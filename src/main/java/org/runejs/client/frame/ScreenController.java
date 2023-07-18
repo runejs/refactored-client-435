@@ -22,23 +22,23 @@ public class ScreenController {
     public static int frameHeight = 540;
     public static int drawWidth = 765;
     public static int drawHeight = 540;
-    public static ProducingGraphicsBuffer gameScreenImageProducer;
-    public static RasterizerInstanced gameRasterizer;
+    public static ProducingGraphicsBuffer drawComponent;
+    public static RasterizerInstanced rasterizer;
 
     private static FrameRenderer renderer;
     public static boolean DebugView = false;
 
-    public static void createGameRasterizer(Component component) {
-        gameScreenImageProducer = MovedStatics.createGraphicsBuffer(
+    public static void setDrawComponent(Component component) {
+        drawComponent = MovedStatics.createGraphicsBuffer(
             ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth,
             ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight,
             component
         );
 
-        gameRasterizer = new RasterizerInstanced(gameScreenImageProducer);
+        rasterizer = new RasterizerInstanced(drawComponent);
 
         if (renderer != null) {
-            renderer.setRasterizer(gameRasterizer);
+            renderer.setRasterizer(rasterizer);
         }
     }
 
@@ -65,12 +65,12 @@ public class ScreenController {
                 GameShell.clientFrame.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
                 GameShell.clientFrame.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
 
-                renderer = new ResizableFrameRenderer(gameRasterizer);
+                renderer = new ResizableFrameRenderer(rasterizer);
             } else if (screenMode == ScreenMode.FULLSCREEN) {
                 frameWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
                 frameHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-                renderer = new ResizableFrameRenderer(gameRasterizer);
+                renderer = new ResizableFrameRenderer(rasterizer);
             }
             GameShell.clientFrame.setSize(ScreenController.frameWidth, ScreenController.frameHeight);
             Dimension innerSize = getInnerSize(GameShell.clientFrame);
@@ -133,7 +133,8 @@ public class ScreenController {
         Game.gameCanvas.setSize(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight);
 
         if (Game.gameStatusCode <= 35 && Game.gameStatusCode >= 30) {
-            createGameRasterizer(GameShell.clientFrame);
+            // set to resizable mode
+            setDrawComponent(GameShell.clientFrame);
         } else {
             Game.gameCanvas.setSize(MovedStatics.width, MovedStatics.height);
             Game.gameCanvas.setVisible(true);
