@@ -3,13 +3,6 @@ package org.runejs.client.media;
 import org.runejs.client.Interface3;
 
 public class Rasterizer3D extends Rasterizer {
-    /**
-     * Some kind of colour information, Dane calls this "reciprocal16"
-     */
-    public static int[] anIntArray2929 = new int[2048];
-    public static int[] cosinetable = new int[2048];
-    public static int[] sinetable = new int[2048];
-    public static int[] shadowDecay = new int[512];
     public static boolean lowMemory = false;
 
 
@@ -53,33 +46,6 @@ public class Rasterizer3D extends Rasterizer {
     public static int viewportRx;
     public static boolean restrict_edges = false;
     private static boolean useLatestShadeLine = true;
-
-    static {
-        for(int i = 1; i < 512; i++) {
-            shadowDecay[i] = 32768 / i;
-        }
-        for(int i = 1; i < 2048; i++) {
-            anIntArray2929[i] = 65536 / i;
-        }
-        for(int i = 0; i < 2048; i++) {
-            // Pre-calculate sin and cos to save memory
-            //
-            // Circumference / Cuts = Cut radians
-            // Cuts defines how many angles around the circle we want to store, so in this case:
-            // PI * 2 / 2048 = 0.0030679615 radians
-            //
-            // Furthermore, 65536 * x is something we call fixed point arithmetics. It is used to store decimals as an integer instead of a double.
-            // 65536 = 2^16, so 16 is the scaling factor
-            // The original value can be restored by dividing x by (2^scalingFactor) or just bit-shifting x right by the scaling factor
-            // Note that when bit-shifting, you lose all the decimals, and only get the whole number. This is the most common
-            // practice wherever the sin and cos tables are used in the client
-            //
-            // Also, don't forget your basic maths: sin(x) = the length of the opposite side, cos(x) = the length of the adjacent side
-            // sin(x) + cos(x) = r
-            sinetable[i] = (int) (65536.0 * Math.sin((double) i * 0.0030679615));
-            cosinetable[i] = (int) (65536.0 * Math.cos((double) i * 0.0030679615));
-        }
-    }
 
     public static void drawScanLine(int[] dest, int destOffset, int color, int startX, int endX) {
         // restrict_edges indicates if there's a need to restrict the drawing operation within certain boundaries (viewport)
@@ -706,7 +672,7 @@ public class Rasterizer3D extends Rasterizer {
             } else {
                 if(end_x - start_x > 7) {
                     k3 = end_x - start_x >> 3;
-                    j3 = (gradient - shadeValue) * shadowDecay[k3] >> 6;
+                    j3 = (gradient - shadeValue) * Constants3D.shadowDecay[k3] >> 6;
                 } else {
                     k3 = 0;
                     j3 = 0;
@@ -1085,7 +1051,7 @@ public class Rasterizer3D extends Rasterizer {
             if(notTextured) {
                 loops = endX - startX >> 2;
                 if(loops > 0) {
-                    off = (grad - colorIndex) * shadowDecay[loops] >> 15;
+                    off = (grad - colorIndex) * Constants3D.shadowDecay[loops] >> 15;
                 } else {
                     off = 0;
                 }
@@ -1222,7 +1188,7 @@ public class Rasterizer3D extends Rasterizer {
                 // Calculate the slope of the color gradient using the shadowDecay array if the line is long enough.
                 // For very short lines (length less than or equal to 0), there is no gradient and the slope is zero.
                 if(loops > 0) {
-                    color_slope = (grad - color_index) * shadowDecay[loops] >> 15;
+                    color_slope = (grad - color_index) * Constants3D.shadowDecay[loops] >> 15;
                 } else {
                     color_slope = 0;
                 }

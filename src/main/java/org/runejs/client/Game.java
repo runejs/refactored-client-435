@@ -13,6 +13,7 @@ import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
+import org.runejs.client.media.Constants3D;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Model;
@@ -518,8 +519,8 @@ public class Game {
                         }
                         Rasterizer3D.setBounds(absoluteX + gameInterface.originalWidth / 2, gameInterface.originalHeight / 2 + absoluteY);
 
-                        int camHeight = modelZoom * Rasterizer3D.sinetable[rotationX] >> 16;
-                        int camDistance = modelZoom * Rasterizer3D.cosinetable[rotationX] >> 16;
+                        int camHeight = modelZoom * Constants3D.sinetable[rotationX] >> 16;
+                        int camDistance = modelZoom * Constants3D.cosinetable[rotationX] >> 16;
                         if (model != null) {
                             if (gameInterface.isNewInterfaceFormat) {
                                 model.method799();

@@ -4,6 +4,7 @@ import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
+import org.runejs.client.media.Constants3D;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.renderable.Model;
@@ -168,8 +169,8 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         if(backColour > 0)
             i_11_ *= 1.04;
         Rasterizer3D.notTextured = false;
-        int i_12_ = Rasterizer3D.sinetable[definition.xan2d] * i_11_ >> 16;
-        int i_13_ = i_11_ * Rasterizer3D.cosinetable[definition.xan2d] >> 16;
+        int i_12_ = Constants3D.sinetable[definition.xan2d] * i_11_ >> 16;
+        int i_13_ = i_11_ * Constants3D.cosinetable[definition.xan2d] >> 16;
         model.method799();
         model.drawModel(0, definition.yan2d, definition.zan2d, definition.xan2d, definition.xOffset2d, definition.yOffset2d + model.modelHeight / 2 + i_12_, i_13_ + definition.yOffset2d);
         for(int i_14_ = 31; i_14_ >= 0; i_14_--) {

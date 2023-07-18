@@ -5,6 +5,7 @@ import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
+import org.runejs.client.media.Constants3D;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.RasterizerInstanced;
 import org.runejs.client.media.renderable.actor.Pathfinding;
@@ -124,7 +125,7 @@ public class ScreenController {
         for (int i = 0; i < 9; i++) {
             int i_0_ = 15 + 32 * i + 128;
             int i_1_ = 3 * i_0_ + 600;
-            int i_2_ = Rasterizer3D.sinetable[i_0_];
+            int i_2_ = Constants3D.sinetable[i_0_];
             is[i] = i_2_ * i_1_ >> 16;
         }
 
@@ -269,8 +270,8 @@ public class ScreenController {
                 }
             }
             int angle = 0x7ff & Game.getMinimapRotation();
-            int sin = Rasterizer3D.sinetable[angle];
-            int cos = Rasterizer3D.cosinetable[angle];
+            int sin = Constants3D.sinetable[angle];
+            int cos = Constants3D.cosinetable[angle];
 
             int zoom = 0;
 

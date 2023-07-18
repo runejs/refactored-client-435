@@ -1,6 +1,6 @@
 package org.runejs.client.util;
 
-import org.runejs.client.media.Rasterizer3D;
+import org.runejs.client.media.Constants3D;
 
 /**
  * Perlin noise, used in the client for procedural terrain heightmap.
@@ -23,7 +23,7 @@ public class PerlinNoise {
     private static int interpolateForPerlin(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
         if (!arg3)
             return -109;
-        int i = 65536 + -Rasterizer3D.cosinetable[1024 * arg4 / arg1] >> 1;
+        int i = 65536 + -Constants3D.cosinetable[1024 * arg4 / arg1] >> 1;
         return ((65536 + -i) * arg0 >> 16) + (arg2 * i >> 16);
     }
 
