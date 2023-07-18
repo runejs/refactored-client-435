@@ -40,6 +40,20 @@ public class RasterizerInstanced extends CachedNode {
         setBounds(0, 0, producingGraphicsBuffer.height, producingGraphicsBuffer.width);
     }
 
+    public void getViewportDimensions(int[] arg0) {
+        arg0[0] = viewportLeft;
+        arg0[1] = viewportTop;
+        arg0[2] = viewportRight;
+        arg0[3] = viewportBottom;
+    }
+
+    public void setViewportDimensions(int[] arg0) {
+        viewportLeft = arg0[0];
+        viewportTop = arg0[1];
+        viewportRight = arg0[2];
+        viewportBottom = arg0[3];
+    }
+
     public void prepare(int[] pixels, int width, int height) {
         this.destinationPixels = pixels;
         this.destinationWidth = width;

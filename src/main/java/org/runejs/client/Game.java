@@ -13,7 +13,6 @@ import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
-import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Model;
@@ -192,7 +191,7 @@ public class Game {
      * @return The status of the drawing cycle, true for success and false for failure
      */
     public static boolean drawInterface(int areaId, int minX, int minY, int maxX, int maxY, int scrollPosition, int scrollWidth, GameInterface[] interfaceCollection, int parentId, boolean drawSuccess) {
-        Rasterizer.setBounds(minX, minY, maxX, maxY);
+        ScreenController.rasterizer.setBounds(minX, minY, maxX, maxY);
 
         boolean result = drawSuccess;
         for (int i = 0; interfaceCollection.length > i; i++) {
@@ -225,7 +224,7 @@ public class Game {
                         i_6_ = -gameInterface.originalWidth + gameInterface_3_.originalWidth;
                     absoluteX = is[0] + i_6_;
                 }
-                if (!gameInterface.isNewInterfaceFormat || Rasterizer.viewportRight >= absoluteX && Rasterizer.viewportBottom >= absoluteY && Rasterizer.viewportLeft <= absoluteX + gameInterface.originalWidth && absoluteY + gameInterface.originalHeight >= Rasterizer.viewportTop) {
+                if (!gameInterface.isNewInterfaceFormat || ScreenController.rasterizer.viewportRight >= absoluteX && ScreenController.rasterizer.viewportBottom >= absoluteY && ScreenController.rasterizer.viewportLeft <= absoluteX + gameInterface.originalWidth && absoluteY + gameInterface.originalHeight >= ScreenController.rasterizer.viewportTop) {
                     if (gameInterface.type == GameInterfaceType.LAYER) {
                         if (gameInterface.isHidden && !GameInterface.isHovering(areaId, i))
                             continue;
@@ -238,7 +237,7 @@ public class Game {
                         result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, gameInterface.originalHeight + absoluteY, gameInterface.scrollPosition, gameInterface.scrollWidth, interfaceCollection, i, drawSuccess);
                         if (gameInterface.children != null)
                             result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, absoluteY + gameInterface.originalHeight, gameInterface.scrollPosition, gameInterface.scrollWidth, gameInterface.children, gameInterface.id, true);
-                        Rasterizer.setBounds(minX, minY, maxX, maxY);
+                        ScreenController.rasterizer.setBounds(minX, minY, maxX, maxY);
                         if (gameInterface.originalHeight < gameInterface.scrollHeight)
                             GameInterface.drawScrollBar(absoluteX + gameInterface.originalWidth, absoluteY, gameInterface.originalHeight, gameInterface.scrollPosition, gameInterface.scrollHeight);
                     }
@@ -268,7 +267,7 @@ public class Game {
                                     int i_12_ = 0;
                                     int i_13_ = -1 + gameInterface.items[i_7_];
                                     int i_14_ = 0;
-                                    if (-32 + Rasterizer.viewportLeft < i_10_ && Rasterizer.viewportRight > i_10_ && Rasterizer.viewportTop + -32 < i_11_ && Rasterizer.viewportBottom > i_11_ || GameInterface.activeInterfaceType != 0 && GameInterface.selectedInventorySlot == i_7_) {
+                                    if (-32 + ScreenController.rasterizer.viewportLeft < i_10_ && ScreenController.rasterizer.viewportRight > i_10_ && ScreenController.rasterizer.viewportTop + -32 < i_11_ && ScreenController.rasterizer.viewportBottom > i_11_ || GameInterface.activeInterfaceType != 0 && GameInterface.selectedInventorySlot == i_7_) {
                                         int i_15_ = 0;
                                         if (GameInterface.itemCurrentlySelected == 1 && i_7_ == GameInterface.itemSelectedContainerSlot && gameInterface.id == GameInterface.itemSelectedWidgetId)
                                             i_15_ = 16777215;
@@ -290,8 +289,8 @@ public class Game {
                                                 imageRGB.drawImageWithOpacity(i_12_ + i_10_, i_11_ + i_14_, 128);
                                                 if (parentId != -1) {
                                                     GameInterface gameInterface_16_ = interfaceCollection[parentId];
-                                                    if (Rasterizer.viewportTop > i_14_ + i_11_ && gameInterface_16_.scrollPosition > 0) {
-                                                        int i_17_ = MovedStatics.anInt199 * (Rasterizer.viewportTop + -i_11_ - i_14_) / 3;
+                                                    if (ScreenController.rasterizer.viewportTop > i_14_ + i_11_ && gameInterface_16_.scrollPosition > 0) {
+                                                        int i_17_ = MovedStatics.anInt199 * (ScreenController.rasterizer.viewportTop + -i_11_ - i_14_) / 3;
                                                         if (10 * MovedStatics.anInt199 < i_17_)
                                                             i_17_ = 10 * MovedStatics.anInt199;
                                                         if (gameInterface_16_.scrollPosition < i_17_)
@@ -299,8 +298,8 @@ public class Game {
                                                         gameInterface_16_.scrollPosition -= i_17_;
                                                         MovedStatics.anInt2798 += i_17_;
                                                     }
-                                                    if (32 + i_11_ + i_14_ > Rasterizer.viewportBottom && -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight > gameInterface_16_.scrollPosition) {
-                                                        int i_18_ = MovedStatics.anInt199 * (-Rasterizer.viewportBottom + 32 + i_11_ + i_14_) / 3;
+                                                    if (32 + i_11_ + i_14_ > ScreenController.rasterizer.viewportBottom && -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight > gameInterface_16_.scrollPosition) {
+                                                        int i_18_ = MovedStatics.anInt199 * (-ScreenController.rasterizer.viewportBottom + 32 + i_11_ + i_14_) / 3;
                                                         if (MovedStatics.anInt199 * 10 < i_18_)
                                                             i_18_ = 10 * MovedStatics.anInt199;
                                                         if (-gameInterface_16_.scrollPosition + gameInterface_16_.scrollHeight + -gameInterface_16_.originalHeight < i_18_)
@@ -337,13 +336,13 @@ public class Game {
                         }
                         if (opacity == 0) {
                             if (!gameInterface.filled)
-                                Rasterizer.drawUnfilledRectangle(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, rectangleColor);
+                                ScreenController.rasterizer.drawUnfilledRectangle(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, rectangleColor);
                             else
-                                Rasterizer.drawFilledRectangle(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, rectangleColor);
+                                ScreenController.rasterizer.drawFilledRectangle(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, rectangleColor);
                         } else if (!gameInterface.filled)
-                            Rasterizer.drawUnfilledRectangleAlpha(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, rectangleColor, -(0xff & opacity) + 256);
+                            ScreenController.rasterizer.drawUnfilledRectangleAlpha(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, rectangleColor, -(0xff & opacity) + 256);
                         else
-                            Rasterizer.drawFilledRectangleAlpha(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, rectangleColor, -(0xff & opacity) + 256);
+                            ScreenController.rasterizer.drawFilledRectangleAlpha(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, rectangleColor, -(0xff & opacity) + 256);
                     } else if (gameInterface.type == GameInterfaceType.TEXT) {
                         TypeFace font = gameInterface.getTypeFace();
                         if (font == null) {
@@ -375,7 +374,7 @@ public class Game {
                                 textColor = gameInterface.textColor;
                                 text = English.pleaseWait;
                             }
-                            if (Rasterizer.destinationWidth == 479) {
+                            if (ScreenController.rasterizer.destinationWidth == 479) {
                                 if (textColor == 16776960)
                                     textColor = 255;
                                 if (textColor == 49152)
@@ -409,7 +408,7 @@ public class Game {
 
                                 if (gameInterface.tiled) {
                                     int[] viewportDimensions = new int[4];
-                                    Rasterizer.getViewportDimensions(viewportDimensions);
+                                    ScreenController.rasterizer.getViewportDimensions(viewportDimensions);
 
                                     // Cap sprite to viewport dimensions
                                     int spriteTopX = absoluteX;
@@ -425,7 +424,7 @@ public class Game {
                                     if (spriteBottomY > viewportDimensions[3])
                                         spriteBottomY = viewportDimensions[3];
 
-                                    Rasterizer.setBounds(spriteTopX, spriteTopY, spriteBottomX, spriteBottomY);
+                                    ScreenController.rasterizer.setBounds(spriteTopX, spriteTopY, spriteBottomX, spriteBottomY);
                                     int i_31_ = (gameInterface.originalWidth - (1 + -spriteWidth)) / spriteWidth;
                                     int i_32_ = (gameInterface.originalHeight - (1 + -spriteHeight)) / spriteHeight;
                                     for (int row = 0; i_31_ > row; row++) {
@@ -439,7 +438,7 @@ public class Game {
                                                 spriteRgb.drawImageWithTexture(spriteWidth / 2 + row * spriteWidth + absoluteX, spriteHeight / 2 + absoluteY + spriteHeight * col, gameInterface.textureId, 4096);
                                         }
                                     }
-                                    Rasterizer.setViewportDimensions(viewportDimensions);
+                                    ScreenController.rasterizer.setViewportDimensions(viewportDimensions);
                                 } else {
                                     int i_26_ = 4096 * gameInterface.originalWidth / spriteWidth;
                                     if (gameInterface.textureId == 0) {
@@ -596,8 +595,8 @@ public class Game {
                                 tooltipX = 5 + absoluteX;
                             if (textWidth + tooltipX > maxX)
                                 tooltipX = -textWidth + maxX;
-                            Rasterizer.drawFilledRectangle(tooltipX, tooltipY, textWidth, textHeight, 16777120);
-                            Rasterizer.drawUnfilledRectangle(tooltipX, tooltipY, textWidth, textHeight, 0);
+                            ScreenController.rasterizer.drawFilledRectangle(tooltipX, tooltipY, textWidth, textHeight, 16777120);
+                            ScreenController.rasterizer.drawUnfilledRectangle(tooltipX, tooltipY, textWidth, textHeight, 0);
                             text = gameInterface.disabledText;
                             int tooltipTitleY = 2 + tooltipY + class40_sub5_sub14_sub1.characterDefaultHeight;
                             text = ClientScriptRunner.method532(gameInterface, text);
@@ -616,12 +615,12 @@ public class Game {
                             }
                         }
                         if (gameInterface.type == GameInterfaceType.LINE)
-                            Rasterizer.drawDiagonalLine(absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, gameInterface.originalHeight + absoluteY, gameInterface.textColor);
+                            ScreenController.rasterizer.drawDiagonalLine(absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, gameInterface.originalHeight + absoluteY, gameInterface.textColor);
                     }
 
                     // Draw debug information for non layer widgets and non tooltip widgets
                     if (Configuration.DEBUG_WIDGETS && gameInterface.type != GameInterfaceType.LAYER && gameInterface.type != GameInterfaceType.IF1_TOOLTIP && MovedStatics.hoveredWidgetId == gameInterface.id) {
-                        Rasterizer.drawUnfilledRectangle(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, 0xffff00);
+                        ScreenController.rasterizer.drawUnfilledRectangle(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, 0xffff00);
                     }
                 }
             }
@@ -849,7 +848,7 @@ public class Game {
         MouseHandler.gameScreenClickable = true;
         MouseHandler.cursorX = MouseHandler.mouseX - 4;
         Model.resourceCount = 0;
-        Rasterizer.resetPixels();
+        ScreenController.rasterizer.resetPixels();
 
         sceneRenderer.render(activeCamera, plane);
         currentScene.clearInteractiveObjectCache();
@@ -876,7 +875,7 @@ public class Game {
         }
         if(aBoolean519) {
             MovedStatics.method1018();
-            Rasterizer.resetPixels();
+            ScreenController.rasterizer.resetPixels();
             MovedStatics.method940(English.loadingPleaseWait, false, null);
         }
 
@@ -1099,7 +1098,7 @@ public class Game {
         MovedStatics.anInt199 = 0;
         MovedStatics.aProducingGraphicsBuffer_2213.prepareRasterizer();
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(Player.viewportOffsets);
-        Rasterizer.resetPixels();
+        ScreenController.rasterizer.resetPixels();
         drawParentInterface(0, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
         if(GameInterface.fullscreenSiblingInterfaceId != -1)
             drawParentInterface(0, 0, 0, 765, 503, GameInterface.fullscreenSiblingInterfaceId);
