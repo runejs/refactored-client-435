@@ -2,7 +2,7 @@ package org.runejs.client.media;
 
 import org.runejs.client.Interface3;
 
-public class Rasterizer3D extends Rasterizer {
+public class Rasterizer3D {
     public static boolean lowMemory = false;
 
     public static Palette palette;

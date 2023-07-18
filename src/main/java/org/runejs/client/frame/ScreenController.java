@@ -6,6 +6,7 @@ import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Constants3D;
+import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.RasterizerInstanced;
 import org.runejs.client.media.renderable.actor.Pathfinding;
@@ -111,14 +112,14 @@ public class ScreenController {
 
         renderer.setDrawSize(drawWidth, drawHeight);
 
-        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 512 : drawWidth, frameMode == ScreenMode.FIXED ? 334 : drawHeight);
+        Rasterizer.prepare(null, frameMode == ScreenMode.FIXED ? 512 : drawWidth, frameMode == ScreenMode.FIXED ? 334 : drawHeight);
         MovedStatics.fullScreenTextureArray = Rasterizer3D.setLineOffsets(null);
-        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 479 : drawWidth, frameMode == ScreenMode.FIXED ? 96 : drawHeight);
+        Rasterizer.prepare(null, frameMode == ScreenMode.FIXED ? 479 : drawWidth, frameMode == ScreenMode.FIXED ? 96 : drawHeight);
         // TODO rethink this, maybe its way easier than this
 //        MovedStatics.chatboxLineOffsets = Rasterizer3D.setLineOffsets(null);
 //        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 190 : drawWidth, frameMode == ScreenMode.FIXED ? 261 : drawHeight);
         MovedStatics.sidebarOffsets = Rasterizer3D.setLineOffsets(null);
-        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 765 : drawWidth, frameMode == ScreenMode.FIXED ? 503 : drawHeight);
+        Rasterizer.prepare(null, frameMode == ScreenMode.FIXED ? 765 : drawWidth, frameMode == ScreenMode.FIXED ? 503 : drawHeight);
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(null);
 
         int[] is = new int[9];
