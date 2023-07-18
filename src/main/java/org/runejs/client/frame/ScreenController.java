@@ -152,14 +152,6 @@ public class ScreenController {
         return size;
     }
 
-    public static void drawFramePiece(ProducingGraphicsBuffer framePiece, int x, int y) {
-        Rasterizer.copyPixels(framePiece.pixels, framePiece.width, framePiece.height, x, y);
-    }
-
-    public static void drawFramePieceCutout(ProducingGraphicsBuffer framePiece, int x, int y, int width, int height, int offsetX, int offsetY) {
-        Rasterizer.copyPixelsCutOff(framePiece.pixels, framePiece.width, framePiece.height, x, y, width, height, offsetX, offsetY);
-    }
-
     public static boolean isCoordinatesIn3dScreen(int x, int y) {
         if (frameMode == ScreenMode.FIXED) {
             return x > 4 && y > 4 && x < 516 && y < 338;

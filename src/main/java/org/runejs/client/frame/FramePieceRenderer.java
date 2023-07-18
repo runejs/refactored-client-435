@@ -2,6 +2,7 @@ package org.runejs.client.frame;
 
 import org.runejs.client.ProducingGraphicsBuffer;
 import org.runejs.client.cache.media.ImageRGB;
+import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.RasterizerInstanced;
 
 public abstract class FramePieceRenderer {
@@ -20,20 +21,22 @@ public abstract class FramePieceRenderer {
     public abstract ProducingGraphicsBuffer getDrawable();
 
     /**
-     * Draws the piece.
+     * Draws the piece to the game screen.
+     *
      * @param drawWidth The width of the window.
      * @param drawHeight The height of the window.
      * 
-     * TODO (jkm) refactor this to not use static `ScreenController`.
+     * TODO (jkm) refactor this to not use static `Rasterizer`.
      */
     public void draw(int drawWidth, int drawHeight) {
         int[] position = this.anchor.getPosition(drawWidth, drawHeight, this.width, this.height);
 
-        ScreenController.drawFramePiece(
-            getDrawable(),
-            position[0],
-            position[1]
-        );
+        ProducingGraphicsBuffer drawable = getDrawable();
+
+        int x = position[0];
+        int y = position[1];
+
+        Rasterizer.copyPixels(drawable.pixels, drawable.width, drawable.height, x, y);
     }
 
     /**
