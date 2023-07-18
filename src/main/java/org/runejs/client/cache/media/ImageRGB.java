@@ -3,6 +3,7 @@ package org.runejs.client.cache.media;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.media.Rasterizer;
+import org.runejs.client.media.RasterizerInstanced;
 import org.runejs.client.util.BitUtils;
 
 import java.awt.*;
@@ -353,6 +354,43 @@ public class ImageRGB extends Rasterizer {
 
     public void drawImageWithTexture(int x, int y, int textureId, int arg3) {
         method722(maxWidth << 3, maxHeight << 3, x << 4, y << 4, textureId, arg3);
+    }
+
+    public void drawImage(RasterizerInstanced rasterizer, int x, int y) {
+        x += offsetX;
+        y += offsetY;
+        int dest_offset = x + y * rasterizer.destinationWidth;
+        int source_offset = 0;
+        int line_count = imageHeight;
+        int line_width = imageWidth;
+        int line_offset_dest = rasterizer.destinationWidth - line_width;
+        int line_offset_source = 0;
+        if(y < rasterizer.viewportTop) {
+            int clip_height = rasterizer.viewportTop - y;
+            line_count -= clip_height;
+            y = rasterizer.viewportTop;
+            source_offset += clip_height * line_width;
+            dest_offset += clip_height * rasterizer.destinationWidth;
+        }
+        if(y + line_count > rasterizer.viewportBottom)
+            line_count -= y + line_count - rasterizer.viewportBottom;
+        if(x < rasterizer.viewportLeft) {
+            int clip_width = rasterizer.viewportLeft - x;
+            line_width -= clip_width;
+            x = rasterizer.viewportLeft;
+            source_offset += clip_width;
+            dest_offset += clip_width;
+            line_offset_source += clip_width;
+            line_offset_dest += clip_width;
+        }
+        if(x + line_width > rasterizer.viewportRight) {
+            int clip_width = x + line_width - rasterizer.viewportRight;
+            line_width -= clip_width;
+            line_offset_source += clip_width;
+            line_offset_dest += clip_width;
+        }
+        if(line_width > 0 && line_count > 0)
+            blockCopyTrans(rasterizer.destinationPixels, pixels, 0, source_offset, dest_offset, line_width, line_count, line_offset_dest, line_offset_source);
     }
 
     public void drawImage(int x, int y) {
@@ -873,6 +911,43 @@ public class ImageRGB extends Rasterizer {
             offsetX = 0;
             offsetY = 0;
         }
+    }
+
+    public void drawInverse(RasterizerInstanced rasterizer, int x, int y) {
+        x += offsetX;
+        y += offsetY;
+        int rasterizerPixel = x + y * rasterizer.destinationWidth;
+        int pixel = 0;
+        int newHeight = imageHeight;
+        int newWidth = imageWidth;
+        int rasterizerPixelOffset = rasterizer.destinationWidth - newWidth;
+        int pixelOffset = 0;
+        if(y < rasterizer.viewportTop) {
+            int yOffset = rasterizer.viewportTop - y;
+            newHeight -= yOffset;
+            y = rasterizer.viewportTop;
+            pixel += yOffset * newWidth;
+            rasterizerPixel += yOffset * rasterizer.destinationWidth;
+        }
+        if(y + newHeight > rasterizer.viewportBottom)
+            newHeight -= y + newHeight - rasterizer.viewportBottom;
+        if(x < rasterizer.viewportLeft) {
+            int xOffset = rasterizer.viewportLeft - x;
+            newWidth -= xOffset;
+            x = rasterizer.viewportLeft;
+            pixel += xOffset;
+            rasterizerPixel += xOffset;
+            pixelOffset += xOffset;
+            rasterizerPixelOffset += xOffset;
+        }
+        if(x + newWidth > rasterizer.viewportRight) {
+            int widthOffset = x + newWidth - rasterizer.viewportRight;
+            newWidth -= widthOffset;
+            pixelOffset += widthOffset;
+            rasterizerPixelOffset += widthOffset;
+        }
+        if(newWidth > 0 && newHeight > 0)
+            copyPixels(rasterizer.destinationPixels, pixels, pixel, rasterizerPixel, newWidth, newHeight, rasterizerPixelOffset, pixelOffset);
     }
 
     public void drawInverse(int x, int y) {

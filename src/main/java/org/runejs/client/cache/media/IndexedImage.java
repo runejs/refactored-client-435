@@ -3,6 +3,7 @@ package org.runejs.client.cache.media;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.media.Rasterizer;
+import org.runejs.client.media.RasterizerInstanced;
 
 public class IndexedImage extends Rasterizer {
     public int imgWidth;
@@ -69,6 +70,43 @@ public class IndexedImage extends Rasterizer {
             newImage.palette[i] = palette[i];
 
         return newImage;
+    }
+
+    public void drawImage(RasterizerInstanced rasterizer, int x, int y) {
+        x += xDrawOffset;
+        y += yDrawOffset;
+        int rasterizerOffset = x + y * rasterizer.destinationWidth;
+        int pixelOffset = 0;
+        int imageHeight = imgHeight;
+        int imageWidth = imgWidth;
+        int deviation = rasterizer.destinationWidth - imageWidth;
+        int originalDeviation = 0;
+        if(y < rasterizer.viewportTop) {
+            int yOffset = rasterizer.viewportTop - y;
+            imageHeight -= yOffset;
+            y = rasterizer.viewportTop;
+            pixelOffset += yOffset * imageWidth;
+            rasterizerOffset += yOffset * rasterizer.destinationWidth;
+        }
+        if(y + imageHeight > rasterizer.viewportBottom)
+            imageHeight -= y + imageHeight - rasterizer.viewportBottom;
+        if(x < rasterizer.viewportLeft) {
+            int xOffset = rasterizer.viewportLeft - x;
+            imageWidth -= xOffset;
+            x = rasterizer.viewportLeft;
+            pixelOffset += xOffset;
+            rasterizerOffset += xOffset;
+            originalDeviation += xOffset;
+            deviation += xOffset;
+        }
+        if(x + imageWidth > rasterizer.viewportRight) {
+            int xOffset = x + imageWidth - rasterizer.viewportRight;
+            imageWidth -= xOffset;
+            originalDeviation += xOffset;
+            deviation += xOffset;
+        }
+        if(imageWidth > 0 && imageHeight > 0)
+            ImageRGB.shapeImageToPixels(imgPixels, rasterizer.destinationPixels, pixelOffset, rasterizerOffset, imageWidth, imageHeight, deviation, originalDeviation, palette);
     }
 
     public void drawImage(int x, int y) {
