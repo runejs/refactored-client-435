@@ -361,36 +361,6 @@ public class MovedStatics {
      */
     public static int anInt2869 = 0;
 
-    public static void method440() {
-        if (aBoolean512) {
-            LoginScreen.anIntArray1198 = null;
-            LoginScreen.flameRightBackground = null;
-            LoginScreen.aProducingGraphicsBuffer_1631 = null;
-            LoginScreen.aProducingGraphicsBuffer_1206 = null;
-            LoginScreen.anIntArray1168 = null;
-            LoginScreen.anIntArray3255 = null;
-            LoginScreen.imgLoginScreenButton = null;
-            LoginScreen.anIntArray1445 = null;
-            LoginScreen.loginScreenBox = null;
-            LoginScreen.anIntArray2865 = null;
-            LoginScreen.flameLeftBackground = null;
-            LoginScreen.aProducingGraphicsBuffer_907 = null;
-            LoginScreen.aProducingGraphicsBuffer_2524 = null;
-            LoginScreen.aClass40_Sub5_Sub14_Sub4_918 = null;
-            LoginScreen.aClass40_Sub5_Sub14_Sub2Array535 = null;
-            LoginScreen.anIntArray3248 = null;
-            LoginScreen.loginBoxGraphics = null;
-            LoginScreen.aClass40_Sub5_Sub14_Sub4_2043 = null;
-            LoginScreen.anIntArray178 = null;
-            LoginScreen.aProducingGraphicsBuffer_1285 = null;
-            LoginScreen.aProducingGraphicsBuffer_463 = null;
-            LoginScreen.anIntArray1013 = null;
-            MusicSystem.method405(10);
-            UpdateServer.resetUpdateServerRequests(true);
-            aBoolean512 = false;
-        }
-    }
-
     public static int[] menuActionTypes = new int[500];
     public static boolean showSidePanelRedrawnText = false;
     /**
@@ -908,18 +878,18 @@ public class MovedStatics {
             }
             if (statusCode == 0 || statusCode == 35) {
                 method344(-40);
-                method440();
+                Game.loginScreen.method440();
                 if (aProducingGraphicsBuffer_2213 == null)
                     aProducingGraphicsBuffer_2213 = createGraphicsBuffer(765, 503, Game.gameCanvas);
             }
             if (statusCode == 5 || statusCode == 10 || statusCode == 20) {
                 aProducingGraphicsBuffer_2213 = null;
                 method344(-69);
-                LoginScreen.createLoginScreen(Game.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
+                Game.loginScreen.createLoginScreen(Game.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
             }
             if (statusCode == 25 || statusCode == 30 || statusCode == 40) {
                 aProducingGraphicsBuffer_2213 = null;
-                method440();
+                Game.loginScreen.method440();
                 method763(Game.gameCanvas, CacheArchive.gameImageCacheArchive);
             }
             Game.gameStatusCode = statusCode;
