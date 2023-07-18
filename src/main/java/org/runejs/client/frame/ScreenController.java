@@ -30,6 +30,7 @@ public class ScreenController {
         ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth,
         ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight
     );
+    public static Game3DRenderer gameRenderer = new Game3DRenderer(rasterizer);
 
     private static FrameRenderer renderer;
     public static boolean DebugView = false;

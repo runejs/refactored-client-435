@@ -83,6 +83,7 @@ public class ChatBox {
         } else if(dialogueId == -1) {
             int line = 0;
             TypeFace typeFace = MovedStatics.fontNormal;
+            typeFace.setRasterizer(null);
             Rasterizer.setBounds(0, 0, 463, 77);
             for(int i = 0; i < 100; i++) {
                 if(chatMessages[i] != null) {

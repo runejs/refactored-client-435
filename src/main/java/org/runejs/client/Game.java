@@ -858,7 +858,7 @@ public class Game {
         MovedStatics.draw2DActorAttachments();
         MovedStatics.drawPositionHintIcon();
         ((Class35) Rasterizer3D.interface3).animateTextures(MovedStatics.anInt199);
-        MovedStatics.draw3dScreen();
+        ScreenController.gameRenderer.draw3dScreenOverlays();
 
         DebugTools.drawWalkPath();
         DebugTools.drawClipping();
