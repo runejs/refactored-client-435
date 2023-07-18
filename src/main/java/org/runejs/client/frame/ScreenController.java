@@ -6,6 +6,7 @@ import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer3D;
+import org.runejs.client.media.RasterizerInstanced;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.outbound.chat.SetChatOptionsOutboundMessage;
@@ -21,8 +22,21 @@ public class ScreenController {
     public static int frameHeight = 540;
     public static int drawWidth = 765;
     public static int drawHeight = 540;
+    public static ProducingGraphicsBuffer gameScreenImageProducer;
+    public static RasterizerInstanced gameRasterizer;
+
     private static FrameRenderer renderer;
     public static boolean DebugView = false;
+
+    public static void createGameRasterizer(Component component) {
+        gameScreenImageProducer = MovedStatics.createGraphicsBuffer(
+            ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth,
+            ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight,
+            component
+        );
+
+        gameRasterizer = new RasterizerInstanced(gameScreenImageProducer);
+    }
 
     public static void frameMode(ScreenMode screenMode) {
         if (frameMode != screenMode) {
@@ -115,7 +129,7 @@ public class ScreenController {
         Game.gameCanvas.setSize(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight);
 
         if (Game.gameStatusCode <= 35 && Game.gameStatusCode >= 30) {
-            MovedStatics.gameScreenImageProducer = MovedStatics.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, GameShell.clientFrame);
+            createGameRasterizer(GameShell.clientFrame);
         } else {
             Game.gameCanvas.setSize(MovedStatics.width, MovedStatics.height);
             Game.gameCanvas.setVisible(true);

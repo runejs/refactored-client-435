@@ -123,7 +123,6 @@ public class MovedStatics {
     public static volatile int eventClickY = 0;
     public static int anInt2628 = 0;
     public static volatile boolean clearScreen = true;
-    public static ProducingGraphicsBuffer gameScreenImageProducer;
     /**
      * Bit masks for packet buffer
      */
@@ -1447,7 +1446,8 @@ public class MovedStatics {
             tabTopBack = null;
             tabImageProducer = null;
             tabHighlightImageTopLeftEdge = null;
-            gameScreenImageProducer = null;
+            ScreenController.gameScreenImageProducer = null;
+            ScreenController.gameRasterizer = null;
             tabHighlightImageBottomRightEdge = null;
             ChatBox.chatBoxImageProducer = null;
             mapBackRight = null;
@@ -1944,7 +1944,7 @@ public class MovedStatics {
             Minimap.minimapBackgroundImage.drawImage(0, 0);
             tabImageProducer = createGraphicsBuffer(190, 261, arg0);
             inventoryBackgroundImage.drawImage(0, 0);
-            gameScreenImageProducer = createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, arg0);
+            ScreenController.createGameRasterizer(arg0);
             Rasterizer.resetPixels();
             chatModes = createGraphicsBuffer(496, 50, arg0);
             tabBottom = createGraphicsBuffer(269, 37, arg0);
@@ -2955,7 +2955,7 @@ public class MovedStatics {
     }
 
     public static void method1018() {
-        gameScreenImageProducer.prepareRasterizer();
+        ScreenController.gameScreenImageProducer.prepareRasterizer();
         fullScreenTextureArray = Rasterizer3D.setLineOffsets(fullScreenTextureArray);
     }
 
@@ -3064,7 +3064,7 @@ public class MovedStatics {
     public static void drawGameScreenGraphics() {
         try {
             Graphics graphics = Game.gameCanvas.getGraphics();
-            gameScreenImageProducer.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
+            ScreenController.gameScreenImageProducer.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
         } catch(Exception exception) {
             Game.gameCanvas.repaint();
         }
