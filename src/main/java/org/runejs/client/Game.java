@@ -977,86 +977,61 @@ public class Game {
             GameInterface.drawTabIcons = true;
         }
 
-        if(ScreenController.frameMode == ScreenMode.FIXED) {
-
-            if(MovedStatics.menuOpen && MovedStatics.menuScreenArea == 1) {
-                GameInterface.redrawTabArea = true;
-            }
-            method353();
-
-            if(GameInterface.atInventoryInterfaceType == -3) {
-                GameInterface.redrawTabArea = true;
-            }
-            if(GameInterface.activeInterfaceType == 2) {
-                GameInterface.redrawTabArea = true;
-            }
-            MovedStatics.drawTabArea();
-
-            if(GameInterface.atInventoryInterfaceType == 3) {
-                ChatBox.redrawChatbox = true;
-            }
-            if(GameInterface.activeInterfaceType == 3) {
-                ChatBox.redrawChatbox = true;
-            }
-            if(Native.clickToContinueString != null) {
-                ChatBox.redrawChatbox = true;
-            }
-            if(MovedStatics.menuOpen && MovedStatics.menuScreenArea == 2) {
-                ChatBox.redrawChatbox = true;
-            }
-            if(ChatBox.redrawChatbox) {
-                ChatBox.redrawChatbox = false;
-                ChatBox.renderChatbox();
-                //            Console.console.drawConsoleArea();
-            }
-
-            Minimap.renderMinimap();
-
-            if(GameInterface.drawTabIcons) {
-                if(flashingTabId != -1 && flashingTabId == currentTabId) {
-                    flashingTabId = -1;
-                    OutgoingPackets.sendMessage(new ClickFlashingTabIconOutboundMessage(currentTabId));
-                }
-                GameInterface.drawTabIcons = false;
-                MovedStatics.showIconsRedrawnText = true;
-                MovedStatics.method527(currentTabId, tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? flashingTabId : -1);
-            }
-            if(MovedStatics.redrawChatbox) {
-                MovedStatics.showIconsRedrawnText = true;
-                MovedStatics.redrawChatbox = false;
-                method943(ChatBox.tradeMode, MovedStatics.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
-            }
-
-            SoundSystem.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
-            MovedStatics.anInt199 = 0;
-
-        } else {
-            method353();
-            ChatBox.renderChatbox();
-
-            MovedStatics.drawTabArea();
-
-            // this render is  handled in `ResizableFrameRenderer`
-            //Minimap.renderMinimap();
-
-            if(GameInterface.drawTabIcons) {
-                if(flashingTabId != -1 && flashingTabId == currentTabId) {
-                    flashingTabId = -1;
-                    OutgoingPackets.sendMessage(new ClickFlashingTabIconOutboundMessage(currentTabId));
-                }
-                GameInterface.drawTabIcons = false;
-                MovedStatics.showIconsRedrawnText = true;
-                MovedStatics.method527(currentTabId, tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? flashingTabId : -1);
-            }
-            if(MovedStatics.redrawChatbox) {
-                MovedStatics.showIconsRedrawnText = true;
-                MovedStatics.redrawChatbox = false;
-                method943(ChatBox.tradeMode, MovedStatics.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
-            }
-
-            SoundSystem.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
-            MovedStatics.anInt199 = 0;
+        if(MovedStatics.menuOpen && MovedStatics.menuScreenArea == 1) {
+            GameInterface.redrawTabArea = true;
         }
+
+        if(GameInterface.atInventoryInterfaceType == -3) {
+            GameInterface.redrawTabArea = true;
+        }
+        if(GameInterface.activeInterfaceType == 2) {
+            GameInterface.redrawTabArea = true;
+        }
+
+        if(GameInterface.atInventoryInterfaceType == 3) {
+            ChatBox.redrawChatbox = true;
+        }
+        if(GameInterface.activeInterfaceType == 3) {
+            ChatBox.redrawChatbox = true;
+        }
+        if(Native.clickToContinueString != null) {
+            ChatBox.redrawChatbox = true;
+        }
+        if(MovedStatics.menuOpen && MovedStatics.menuScreenArea == 2) {
+            ChatBox.redrawChatbox = true;
+        }
+
+        if(ScreenController.frameMode == ScreenMode.FIXED) {
+            Minimap.renderMinimap();
+        }
+
+        method353();
+
+        if(ChatBox.redrawChatbox) {
+            ChatBox.redrawChatbox = false;
+            ChatBox.renderChatbox();
+        }
+
+        MovedStatics.drawTabArea();
+
+        if(GameInterface.drawTabIcons) {
+            if(flashingTabId != -1 && flashingTabId == currentTabId) {
+                flashingTabId = -1;
+                OutgoingPackets.sendMessage(new ClickFlashingTabIconOutboundMessage(currentTabId));
+            }
+            GameInterface.drawTabIcons = false;
+            MovedStatics.showIconsRedrawnText = true;
+            MovedStatics.method527(currentTabId, tabWidgetIds, GameInterface.tabAreaInterfaceId == -1, MovedStatics.pulseCycle % 20 >= 10 ? flashingTabId : -1);
+        }
+
+        if(MovedStatics.redrawChatbox) {
+            MovedStatics.showIconsRedrawnText = true;
+            MovedStatics.redrawChatbox = false;
+            method943(ChatBox.tradeMode, MovedStatics.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
+        }
+
+        SoundSystem.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
+        MovedStatics.anInt199 = 0;
 
     }
 
