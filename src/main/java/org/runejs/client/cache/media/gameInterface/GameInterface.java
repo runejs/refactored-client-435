@@ -1910,20 +1910,20 @@ public class GameInterface extends CachedNode {
                         removeFriend(l);
                     }
                     if(anInt876 == 3 && ChatBox.chatMessage.length() > 0) {
-// private messages
+                        // private messages
                         ChatBox.filterInput();
 
-OutgoingPackets.sendMessage(new SendPrivateMessageOutboundMessage(sendingMessageTo, ChatBox.chatboxInput));
+                        OutgoingPackets.sendMessage(new SendPrivateMessageOutboundMessage(sendingMessageTo, ChatBox.chatMessage));
 
                         if(ChatBox.privateChatMode == 2) {
                             ChatBox.privateChatMode = 1;
                             MovedStatics.redrawChatbox = true;
 
-OutgoingPackets.sendMessage(new SetChatOptionsOutboundMessage(
-ChatBox.publicChatMode,
-ChatBox.privateChatMode,
-ChatBox.tradeMode
-));
+                            OutgoingPackets.sendMessage(new SetChatOptionsOutboundMessage(
+                                ChatBox.publicChatMode,
+                                ChatBox.privateChatMode,
+                                ChatBox.tradeMode
+                            ));
                         }
                     }
                     if(anInt876 == 4 && !Game.ignoreList.isFull()) {
