@@ -81,7 +81,7 @@ public class Console {
         if (consoleOpen) {
             int scrollpos = getMaxScroll() - currentScroll - 310;
             if (messageCount > 17) {
-                GameInterface.drawScrollBar(width - 18, 0, height-21, scrollpos, getMaxScroll());
+                GameInterface.drawScrollBar(ScreenController.rasterizer, width - 18, 0, height-21, scrollpos, getMaxScroll());
             }
             if (alpha) {
                 ScreenController.rasterizer.drawFilledRectangleAlpha(0, 0, width, height, 0x513092, 97);
