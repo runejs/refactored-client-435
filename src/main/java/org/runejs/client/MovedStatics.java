@@ -413,7 +413,6 @@ public class MovedStatics {
         tabImageProducer.prepareRasterizer();
         if (ScreenController.frameMode == ScreenMode.FIXED) {
             inventoryBackgroundImage.drawImage(0, 0);
-
         } else {
             int currentX = 0;
             int currentY = 0;

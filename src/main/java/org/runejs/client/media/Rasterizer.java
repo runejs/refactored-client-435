@@ -20,9 +20,9 @@ public class Rasterizer extends CachedNode {
     private static final int[] tmpY = new int[64];
 
     public static void prepare(int[] pixels, int width, int height) {
-        Rasterizer.destinationPixels = pixels;
-        Rasterizer.destinationWidth = width;
-        Rasterizer.destinationHeight = height;
+        destinationPixels = pixels;
+        destinationWidth = width;
+        destinationHeight = height;
         setBounds(0, 0, width, height);
     }
 
@@ -41,10 +41,10 @@ public class Rasterizer extends CachedNode {
             minX = 0;
         if(minY < 0)
             minY = 0;
-        if(maxX > Rasterizer.destinationWidth)
-            maxX = Rasterizer.destinationWidth;
-        if(maxY > Rasterizer.destinationHeight)
-            maxY = Rasterizer.destinationHeight;
+        if(maxX > destinationWidth)
+            maxX = destinationWidth;
+        if(maxY > destinationHeight)
+            maxY = destinationHeight;
         viewportLeft = minX;
         viewportTop = minY;
         viewportRight = maxX;
@@ -103,8 +103,8 @@ public class Rasterizer extends CachedNode {
             width = viewportRight - x;
         if(y + height > viewportBottom)
             height = viewportBottom - y;
-        int pixelOffset = Rasterizer.destinationWidth - width;
-        int pixel = x + y * Rasterizer.destinationWidth;
+        int pixelOffset = destinationWidth - width;
+        int pixel = x + y * destinationWidth;
         for(int heightCounter = -height; heightCounter < 0; heightCounter++) {
             for(int widthCounter = -width; widthCounter < 0; widthCounter++)
                 destinationPixels[pixel++] = colour;
@@ -134,8 +134,8 @@ public class Rasterizer extends CachedNode {
             width = viewportRight - paintX;
         if(paintY + height > viewportBottom)
             height = viewportBottom - paintY;
-        int pixelOffset = Rasterizer.destinationWidth - width;
-        int pixel = paintX + paintY * Rasterizer.destinationWidth;
+        int pixelOffset = destinationWidth - width;
+        int pixel = paintX + paintY * destinationWidth;
         for(int heightCounter = -height; heightCounter < 0; heightCounter++) {
             for(int widthCounter = -width; widthCounter < 0; widthCounter++) {
                 if(pixels[sourcePixel] != Integer.MAX_VALUE) {
@@ -162,8 +162,8 @@ public class Rasterizer extends CachedNode {
             drawWidth = viewportRight - paintX;
         if(paintY + drawHeight > viewportBottom)
             drawHeight = viewportBottom - paintY;
-        int pixelOffset = Rasterizer.destinationWidth - (drawWidth);
-        int pixel = paintX + paintY * Rasterizer.destinationWidth;
+        int pixelOffset = destinationWidth - (drawWidth);
+        int pixel = paintX + paintY * destinationWidth;
         for(int heightCounter = -(drawHeight); heightCounter < 0; heightCounter++) {
             for(int widthCounter = -(drawWidth); widthCounter < 0; widthCounter++)
                 destinationPixels[pixel++] = pixels[sourcePixel++];
@@ -269,12 +269,12 @@ public class Rasterizer extends CachedNode {
                 int g = (color >> 8 & 255) * alpha;
                 int b = (color & 255) * alpha;
                 int topY = y - radius;
-                if (topY < Rasterizer.viewportTop) {
-                    topY = Rasterizer.viewportTop;
+                if (topY < viewportTop) {
+                    topY = viewportTop;
                 }
                 int bottomY = y + radius + 1;
-                if (bottomY > Rasterizer.viewportBottom) {
-                    bottomY = Rasterizer.viewportBottom;
+                if (bottomY > viewportBottom) {
+                    bottomY = viewportBottom;
                 }
                 int var14 = topY;
                 int var15 = radius * radius;
@@ -306,7 +306,7 @@ public class Rasterizer extends CachedNode {
                     if (var21 > viewportRight) {
                         var21 = viewportRight;
                     }
-                    var22 = var20 + var14 * Rasterizer.destinationWidth;
+                    var22 = var20 + var14 * destinationWidth;
                     for (var23 = var20; var23 < var21; ++var23) {
                         var9 = (destinationPixels[var22] >> 16 & 255) * a;
                         var10 = (destinationPixels[var22] >> 8 & 255) * a;
@@ -335,7 +335,7 @@ public class Rasterizer extends CachedNode {
                     if (var21 > viewportRight - 1) {
                         var21 = viewportRight - 1;
                     }
-                    var22 = var20 + var14 * Rasterizer.destinationWidth;
+                    var22 = var20 + var14 * destinationWidth;
                     for (var23 = var20; var23 <= var21; ++var23) {
                         var9 = (destinationPixels[var22] >> 16 & 255) * a;
                         var10 = (destinationPixels[var22] >> 8 & 255) * a;
@@ -443,8 +443,8 @@ public class Rasterizer extends CachedNode {
         int r = (colour >> 16 & 0xff) * alpha;
         int g = (colour >> 8 & 0xff) * alpha;
         int b = (colour & 0xff) * alpha;
-        int widthOffset = Rasterizer.destinationWidth - width;
-        int pixel = x + y * Rasterizer.destinationWidth;
+        int widthOffset = destinationWidth - width;
+        int pixel = x + y * destinationWidth;
         for(int heightCounter = 0; heightCounter < height; heightCounter++) {
             for(int widthCounter = -width; widthCounter < 0; widthCounter++) {
                 int red = (destinationPixels[pixel] >> 16 & 0xff) * a;
