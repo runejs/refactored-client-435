@@ -21,6 +21,13 @@ public class RasterizerInstanced extends CachedNode {
     private static final int[] tmpX = new int[64];
     private static final int[] tmpY = new int[64];
 
+    public RasterizerInstanced() {
+        this.destinationPixels = new int[0];
+        this.destinationWidth = 0;
+        this.destinationHeight = 0;
+        setBounds(0, 0, 0, 0);
+    }
+
     public RasterizerInstanced(int[] pixels, int width, int height) {
         this.destinationPixels = pixels;
         this.destinationWidth = width;

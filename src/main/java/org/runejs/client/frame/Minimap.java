@@ -5,6 +5,7 @@ import org.runejs.client.cache.def.GameObjectDefinition;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.IndexedImage;
 import org.runejs.client.media.Rasterizer;
+import org.runejs.client.media.RasterizerInstanced;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
@@ -43,6 +44,8 @@ public class Minimap {
     public static int[][] anIntArrayArray129 = new int[][]{new int[16], {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1}, {0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1}, {1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1}};
     public static int minimapLevel = -1;
 
+    public static RasterizerInstanced rasterizer = new RasterizerInstanced();
+
     public static void drawOnMinimap(int x, int y, ImageRGB sprite) {
         if (sprite == null) {
             return;
@@ -61,9 +64,9 @@ public class Minimap {
         int i_3_ = cosine * y + x * sine >> 16;
         int i_4_ = -(y * sine) + cosine * x >> 16;
         if (l > 2500)
-            sprite.drawTo(minimapBackgroundImage, 98 + i_3_ + -(sprite.maxWidth / 2), -(sprite.maxHeight / 2) + -i_4_ + 79);
+            sprite.drawTo(rasterizer, minimapBackgroundImage, 98 + i_3_ + -(sprite.maxWidth / 2), -(sprite.maxHeight / 2) + -i_4_ + 79);
         else
-            sprite.drawImage(4 + -(sprite.maxWidth / 2) + i_3_ + 94, -4 + -i_4_ + 83 + -(sprite.maxHeight / 2));
+            sprite.drawImage(rasterizer, 4 + -(sprite.maxWidth / 2) + i_3_ + 94, -4 + -i_4_ + 83 + -(sprite.maxHeight / 2));
     }
 
     public static void renderMinimap() {
@@ -71,13 +74,13 @@ public class Minimap {
 
         if(minimapState == 2) {
             byte[] mmBackgroundPixels = minimapBackgroundImage.imgPixels;
-            int[] rasterPixels = Rasterizer.destinationPixels;
+            int[] rasterPixels = rasterizer.destinationPixels;
             int pixelCount = mmBackgroundPixels.length;
             for(int i = 0; i < pixelCount; i++) {
                 if(mmBackgroundPixels[i] == 0)
                     rasterPixels[i] = 0;
             }
-            minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, MovedStatics.anIntArray62, MovedStatics.anIntArray66);
+            minimapCompass.shapeImageToPixels(rasterizer, 0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, MovedStatics.anIntArray62, MovedStatics.anIntArray66);
             drawMapBack();
             return;
         }
@@ -87,7 +90,7 @@ public class Minimap {
         int angle = Game.getMinimapRotation() & 0x7ff;
         int minimapZoom = 0;
 
-        minimapImage.shapeImageToPixels(25, 5, 146, 151, centerX, centerY, angle, minimapZoom + 256, MovedStatics.anIntArray1186, MovedStatics.anIntArray852);
+        minimapImage.shapeImageToPixels(rasterizer, 25, 5, 146, 151, centerX, centerY, angle, minimapZoom + 256, MovedStatics.anIntArray1186, MovedStatics.anIntArray852);
         for(int i = 0; minimapHintCount > i; i++) {
             int hintX = 2 + 4 * minimapHintX[i] + -(Player.localPlayer.worldX / 32);
             int hintY = 2 + 4 * minimapHintY[i] - Player.localPlayer.worldY / 32;
@@ -161,9 +164,9 @@ public class Minimap {
             int flagY = 2 + 4 * Game.destinationY + -(Player.localPlayer.worldY / 32);
             drawOnMinimap(flagY, flagX, minimapMarkers[0]);
         }
-        Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
-        minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, MovedStatics.anIntArray62, MovedStatics.anIntArray66);
-        minimapBackgroundImage.drawImage(0, 0);
+        rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
+        minimapCompass.shapeImageToPixels(rasterizer, 0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, MovedStatics.anIntArray62, MovedStatics.anIntArray66);
+        minimapBackgroundImage.drawImage(rasterizer, 0, 0);
 
         if(MovedStatics.menuOpen && MovedStatics.menuScreenArea == 1) {
             MovedStatics.drawMenu(550, 4);
@@ -173,7 +176,7 @@ public class Minimap {
     }
 
     public static void createMinimapRaster() {
-        mapbackProducingGraphicsBuffer.prepareRasterizer();
+        mapbackProducingGraphicsBuffer.prepareRasterizer(rasterizer);
     }
 
     private static void drawMinimapIcon(ImageRGB sprite, int mapX, int mapY) {
@@ -191,7 +194,7 @@ public class Minimap {
             double angle = Math.atan2(x, y);
             int drawX = (int) (Math.sin(angle) * 63.0);
             int drawY = (int) (57.0 * Math.cos(angle));
-            MovedStatics.minimapEdge.drawRotated(-10 + 94 + drawX + 4, 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
+            MovedStatics.minimapEdge.drawRotated(rasterizer, -10 + 94 + drawX + 4, 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
         } else {
             drawOnMinimap(mapY, mapX, sprite);
         }
@@ -276,7 +279,7 @@ public class Minimap {
                     if(iconSprite != null) {
                         int offsetX = (-iconSprite.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
                         int offsetY = (gameObjectDefinition.sizeY * 4 + -iconSprite.imgHeight) / 2;
-                        iconSprite.drawImage(48 + 4 * tileX + offsetX, offsetY + 48 + (104 + -tileY - gameObjectDefinition.sizeY) * 4);
+                        iconSprite.drawImage(rasterizer, 48 + 4 * tileX + offsetX, offsetY + 48 + (104 + -tileY - gameObjectDefinition.sizeY) * 4);
                     }
                 }
             }
@@ -292,7 +295,7 @@ public class Minimap {
                     if(iconSprite != null) {
                         int offsetY = (-iconSprite.imgHeight + gameObjectDefinition.sizeY * 4) / 2;
                         int offsetX = (gameObjectDefinition.sizeX * 4 + -iconSprite.imgWidth) / 2;
-                        iconSprite.drawImage(offsetX + tileX * 4 + 48, 48 - (-(4 * (-tileY + 104 + -gameObjectDefinition.sizeY)) + -offsetY));
+                        iconSprite.drawImage(rasterizer, offsetX + tileX * 4 + 48, 48 - (-(4 * (-tileY + 104 + -gameObjectDefinition.sizeY)) + -offsetY));
                     }
                 } else if(type == 9) {
                     int[] dest = minimapImage.pixels;
@@ -322,7 +325,7 @@ public class Minimap {
                     if(iconSprite != null) {
                         int i_17_ = (-iconSprite.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
                         int i_18_ = (-iconSprite.imgHeight + 4 * gameObjectDefinition.sizeY) / 2;
-                        iconSprite.drawImage(4 * tileX + 48 + i_17_, i_18_ + (104 - (tileY + gameObjectDefinition.sizeY)) * 4 + 48);
+                        iconSprite.drawImage(rasterizer, 4 * tileX + 48 + i_17_, i_18_ + (104 - (tileY + gameObjectDefinition.sizeY)) * 4 + 48);
                     }
                 }
             }
@@ -343,7 +346,7 @@ public class Minimap {
 	            offset += 4;
 	        }
 	    }
-	    minimapImage.prepareRasterizer();
+	    minimapImage.prepareRasterizer(rasterizer);
 
         // generate slightly random offset door and wall colors
         // door: (228, 228, 228) to (248, 248, 248)
