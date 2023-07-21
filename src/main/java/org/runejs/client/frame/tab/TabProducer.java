@@ -2,18 +2,15 @@ package org.runejs.client.frame.tab;
 
 import org.runejs.client.Game;
 import org.runejs.client.MovedStatics;
-import org.runejs.client.ProducingGraphicsBuffer;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
+import org.runejs.client.frame.FramePieceAnchor;
 import org.runejs.client.frame.FramePieceRenderer;
-import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.media.RasterizerInstanced;
 
 // TODO: DONT RUN NORMAL TAB RENDERER WHEN THIS IS RUNNING
 public class TabProducer extends FramePieceRenderer {
-    private static ProducingGraphicsBuffer resizableSideBarImage;
-    private ProducingGraphicsBuffer tempResizableSideBar;
     private ImageRGB edgeLeft;
     private ImageRGB edgeRight;
     private ImageRGB combat;
@@ -42,12 +39,28 @@ public class TabProducer extends FramePieceRenderer {
     private static int workingWidth = 232;
     private static int workingHeight = 334;
 
+    /**
+     * To avoid flickering, we draw to a temporary rasterizer first,
+     * then flush this to the output rasterizer at once, in its entirety.
+     */
+    private RasterizerInstanced rasterizerTemp;
+
 
     public TabProducer() {
-        this.tempResizableSideBar = MovedStatics.createGraphicsBuffer(241, 334, Game.gameCanvas);
-        resizableSideBarImage = MovedStatics.createGraphicsBuffer(241, 334, Game.gameCanvas);
-        rasterizerInstanced = new RasterizerInstanced(this.tempResizableSideBar);
-        rasterizerInstanced.drawFilledRectangle(0, 0, 241, 334, Integer.MAX_VALUE);
+        super(
+            new FramePieceAnchor(
+                FramePieceAnchor.Anchor.BOTTOM | FramePieceAnchor.Anchor.RIGHT,
+                0,
+                0
+            ),
+            241,
+            334
+        );
+
+        rasterizerTemp = new RasterizerInstanced(
+            MovedStatics.createGraphicsBuffer(this.width, this.height, Game.gameCanvas)
+        );
+        rasterizerTemp.drawFilledRectangle(0, 0, 241, 334, Integer.MAX_VALUE);
     }
 
     private void drawActiveTab(int currentTabId, int currentY) {
@@ -99,7 +112,7 @@ public class TabProducer extends FramePieceRenderer {
                 x = 202;
                 break;
         }
-        drawImage(part, x,currentY);
+        rasterizerTemp.drawImage(part, x,currentY);
     }
 
     public int[] getTabButtonStartCoords(int tabButtonIndex) {
@@ -153,12 +166,6 @@ public class TabProducer extends FramePieceRenderer {
         return new int[] {start[0],start[1], end[0], start[1]+ topbar[3]};
     }
 
-
-
-    public void drawResizableSideBarArea(int x, int y) {
-        ScreenController.drawFramePiece(resizableSideBarImage, x, y);
-    }
-
     public int[] getTabInterfaceCoordSize(int baseX, int baseY) {
         if(MovedStatics.tabImageProducer == null) {
             return new int[]{0,0,0,0};
@@ -198,14 +205,14 @@ public class TabProducer extends FramePieceRenderer {
         if(MovedStatics.tabImageProducer == null) {
             return;
         }
-        rasterizerInstanced.copyPixels(
+        rasterizerTemp.copyPixels(
                 MovedStatics.tabImageProducer.pixels,
                 MovedStatics.tabImageProducer.width,
                 MovedStatics.tabImageProducer.height,
                 baseX + width / 2 - MovedStatics.tabImageProducer.width / 2,
                 baseY + height / 2 - MovedStatics.tabImageProducer.height / 2);
-        drawImage(edgeLeft, baseX, baseY + height / 2 - edgeLeft.imageHeight / 2);
-        drawImage(edgeRight, baseX + width - edgeRight.imageWidth, baseY + height / 2 - edgeRight.imageHeight / 2);
+        rasterizerTemp.drawImage(edgeLeft, baseX, baseY + height / 2 - edgeLeft.imageHeight / 2);
+        rasterizerTemp.drawImage(edgeRight, baseX + width - edgeRight.imageWidth, baseY + height / 2 - edgeRight.imageHeight / 2);
     }
 
     public void RenderResizableSideBarArea() {
@@ -239,24 +246,23 @@ public class TabProducer extends FramePieceRenderer {
         int y = 0;
 
 
-        drawImage(background, x + 24, y + 20);
-        drawImage(background, x + 24 + background.imageWidth, y + 20);
-        drawImage(background, x + 24 + background.imageWidth + 20, y + 20);
+        rasterizerTemp.drawImage(background, x + 24, y + 20);
+        rasterizerTemp.drawImage(background, x + 24 + background.imageWidth, y + 20);
+        rasterizerTemp.drawImage(background, x + 24 + background.imageWidth + 20, y + 20);
 
-        drawImage(background, x + 24, y + workingHeight - background.imageHeight - 20);
-        drawImage(background, x + 24 + background.imageWidth, y + workingHeight - background.imageHeight - 20);
-        drawImage(background, x + 24 + background.imageWidth + 20, y + workingHeight - background.imageHeight - 20);
+        rasterizerTemp.drawImage(background, x + 24, y + workingHeight - background.imageHeight - 20);
+        rasterizerTemp.drawImage(background, x + 24 + background.imageWidth, y + workingHeight - background.imageHeight - 20);
+        rasterizerTemp.drawImage(background, x + 24 + background.imageWidth + 20, y + workingHeight - background.imageHeight - 20);
 
         drawMiddlePiece(x, y, workingWidth, workingHeight);
         drawTopRow(x, y, workingWidth, workingHeight);
         drawBottomRow(x, y, workingWidth, workingHeight);
 
-        System.arraycopy(tempResizableSideBar.pixels, 0, resizableSideBarImage.pixels, 0, resizableSideBarImage.pixels.length);
-
+        System.arraycopy(rasterizerTemp.destinationPixels, 0, rasterizerInstanced.destinationPixels,0, rasterizerInstanced.destinationPixels.length);
     }
 
     private void drawBottomRow(int x, int y, int workingWidth, int workingHeight) {
-        drawImage(bottomRow, x - 4, y + workingHeight - bottomRow.imageHeight);
+        rasterizerTemp.drawImage(bottomRow, x - 4, y + workingHeight - bottomRow.imageHeight);
         int currentX = x;
         int currentY = y + workingHeight - bottomRow.imageHeight;
         if (6 < Game.currentTabId) {
@@ -264,40 +270,40 @@ public class TabProducer extends FramePieceRenderer {
 
         }
         currentX += combat.imageWidth;
-        drawImage(friends, currentX, currentY);
+        rasterizerTemp.drawImage(friends, currentX, currentY);
         currentX += combat.imageWidth;
-        drawImage(ignores, currentX, currentY);
+        rasterizerTemp.drawImage(ignores, currentX, currentY);
         currentX += combat.imageWidth;
-        drawImage(logout, currentX, currentY);
+        rasterizerTemp.drawImage(logout, currentX, currentY);
         currentX += combat.imageWidth;
-        drawImage(options, currentX, currentY);
+        rasterizerTemp.drawImage(options, currentX, currentY);
         currentX += combat.imageWidth;
-        drawImage(emotes, currentX, currentY);
+        rasterizerTemp.drawImage(emotes, currentX, currentY);
         currentX += combat.imageWidth;
-        drawImage(music, currentX, currentY);
+        rasterizerTemp.drawImage(music, currentX, currentY);
     }
 
 
 
     private void drawTopRow(int x, int y, int workingWidth, int workingHeight) {
-        drawImage(topRow, x - 4, y);
+        rasterizerTemp.drawImage(topRow, x - 4, y);
         if (Game.currentTabId < 7) {
             this.drawActiveTab(Game.currentTabId, y);
         }
         int currentX = x;
-        drawImage(combat, currentX, y);
+        rasterizerTemp.drawImage(combat, currentX, y);
         currentX += stats.imageWidth;
-        drawImage(stats, currentX, y);
+        rasterizerTemp.drawImage(stats, currentX, y);
         currentX += stats.imageWidth;
-        drawImage(quests, currentX, y);
+        rasterizerTemp.drawImage(quests, currentX, y);
         currentX += stats.imageWidth;
-        drawImage(inventory, currentX, y);
+        rasterizerTemp.drawImage(inventory, currentX, y);
         currentX += stats.imageWidth;
-        drawImage(equipment, currentX, y);
+        rasterizerTemp.drawImage(equipment, currentX, y);
         currentX += stats.imageWidth;
-        drawImage(prayer, currentX, y);
+        rasterizerTemp.drawImage(prayer, currentX, y);
         currentX += stats.imageWidth;
-        drawImage(magic, currentX, y);
+        rasterizerTemp.drawImage(magic, currentX, y);
     }
 
     private static void RenderCustomTabArea(int baseX, int baseY) {

@@ -2,14 +2,13 @@ package org.runejs.client.media;
 
 import org.runejs.client.Interface3;
 
-public class Rasterizer3D extends Rasterizer {
-    /**
-     * Some kind of colour information, Dane calls this "reciprocal16"
-     */
-    public static int[] anIntArray2929 = new int[2048];
+public class Rasterizer3D {
+    public static boolean lowMemory = false;
+
+    public static Palette palette;
+    
     public static int bottomY;
     public static int center_y;
-    public static int[] hsl2rgb = new int[65536];
     public static int alpha = 0;
     /**
      * x position/size info of some kind
@@ -27,7 +26,6 @@ public class Rasterizer3D extends Rasterizer {
     public static int center_x;
     public static int[] lineOffsets;
     public static Interface3 interface3;
-    public static int[] shadowDecay = new int[512];
     /**
      * y position/size info of some kind
      *
@@ -40,43 +38,13 @@ public class Rasterizer3D extends Rasterizer {
      * TODO rename
      */
     public static int anInt2942;
-    public static int[] sinetable = new int[2048];
     /**
      * TODO (jkm) investigate and rename, don't think this is accurate
      */
     public static boolean notTextured = true;
     public static int viewportRx;
-    public static int[] cosinetable = new int[2048];
     public static boolean restrict_edges = false;
-    public static boolean lowMemory = false;
     private static boolean useLatestShadeLine = true;
-
-    static {
-        for(int i = 1; i < 512; i++) {
-            shadowDecay[i] = 32768 / i;
-        }
-        for(int i = 1; i < 2048; i++) {
-            anIntArray2929[i] = 65536 / i;
-        }
-        for(int i = 0; i < 2048; i++) {
-            // Pre-calculate sin and cos to save memory
-            //
-            // Circumference / Cuts = Cut radians
-            // Cuts defines how many angles around the circle we want to store, so in this case:
-            // PI * 2 / 2048 = 0.0030679615 radians
-            //
-            // Furthermore, 65536 * x is something we call fixed point arithmetics. It is used to store decimals as an integer instead of a double.
-            // 65536 = 2^16, so 16 is the scaling factor
-            // The original value can be restored by dividing x by (2^scalingFactor) or just bit-shifting x right by the scaling factor
-            // Note that when bit-shifting, you lose all the decimals, and only get the whole number. This is the most common
-            // practice wherever the sin and cos tables are used in the client
-            //
-            // Also, don't forget your basic maths: sin(x) = the length of the opposite side, cos(x) = the length of the adjacent side
-            // sin(x) + cos(x) = r
-            sinetable[i] = (int) (65536.0 * Math.sin((double) i * 0.0030679615));
-            cosinetable[i] = (int) (65536.0 * Math.cos((double) i * 0.0030679615));
-        }
-    }
 
     public static void drawScanLine(int[] dest, int destOffset, int color, int startX, int endX) {
         // restrict_edges indicates if there's a need to restrict the drawing operation within certain boundaries (viewport)
@@ -703,7 +671,7 @@ public class Rasterizer3D extends Rasterizer {
             } else {
                 if(end_x - start_x > 7) {
                     k3 = end_x - start_x >> 3;
-                    j3 = (gradient - shadeValue) * shadowDecay[k3] >> 6;
+                    j3 = (gradient - shadeValue) * Constants3D.shadowDecay[k3] >> 6;
                 } else {
                     k3 = 0;
                     j3 = 0;
@@ -1082,14 +1050,14 @@ public class Rasterizer3D extends Rasterizer {
             if(notTextured) {
                 loops = endX - startX >> 2;
                 if(loops > 0) {
-                    off = (grad - colorIndex) * shadowDecay[loops] >> 15;
+                    off = (grad - colorIndex) * Constants3D.shadowDecay[loops] >> 15;
                 } else {
                     off = 0;
                 }
                 if(alpha == 0) {
                     if(loops > 0) {
                         do {
-                            color = hsl2rgb[colorIndex >> 8];
+                            color = palette.hsl2rgb[colorIndex >> 8];
                             colorIndex += off;
                             dest[++dest_off] = color;
                             dest[++dest_off] = color;
@@ -1099,7 +1067,7 @@ public class Rasterizer3D extends Rasterizer {
                     }
                     loops = endX - startX & 0x3;
                     if(loops > 0) {
-                        color = hsl2rgb[colorIndex >> 8];
+                        color = palette.hsl2rgb[colorIndex >> 8];
                         do {
                             dest[++dest_off] = color;
                         } while(--loops > 0);
@@ -1109,7 +1077,7 @@ public class Rasterizer3D extends Rasterizer {
                     int dest_alpha = 256 - alpha;
                     if(loops > 0) {
                         do {
-                            color = hsl2rgb[colorIndex >> 8];
+                            color = palette.hsl2rgb[colorIndex >> 8];
                             colorIndex += off;
                             color = ((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00);
                             int i_169_ = dest[++dest_off];
@@ -1124,7 +1092,7 @@ public class Rasterizer3D extends Rasterizer {
                     }
                     loops = endX - startX & 0x3;
                     if(loops > 0) {
-                        color = hsl2rgb[colorIndex >> 8];
+                        color = palette.hsl2rgb[colorIndex >> 8];
                         color = ((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00);
                         do {
                             int i_170_ = dest[++dest_off];
@@ -1136,14 +1104,14 @@ public class Rasterizer3D extends Rasterizer {
                 loops = endX - startX;
                 if(alpha == 0) {
                     do {
-                        dest[++dest_off] = hsl2rgb[colorIndex >> 8];
+                        dest[++dest_off] = palette.hsl2rgb[colorIndex >> 8];
                         colorIndex += off;
                     } while(--loops > 0);
                 } else {
                     int i = alpha;
                     int i_171_ = 256 - alpha;
                     do {
-                        color = hsl2rgb[colorIndex >> 8];
+                        color = palette.hsl2rgb[colorIndex >> 8];
                         colorIndex += off;
                         color = ((color & 0xff00ff) * i_171_ >> 8 & 0xff00ff) + ((color & 0xff00) * i_171_ >> 8 & 0xff00);
                         int i_ = dest[++dest_off];
@@ -1219,7 +1187,7 @@ public class Rasterizer3D extends Rasterizer {
                 // Calculate the slope of the color gradient using the shadowDecay array if the line is long enough.
                 // For very short lines (length less than or equal to 0), there is no gradient and the slope is zero.
                 if(loops > 0) {
-                    color_slope = (grad - color_index) * shadowDecay[loops] >> 15;
+                    color_slope = (grad - color_index) * Constants3D.shadowDecay[loops] >> 15;
                 } else {
                     color_slope = 0;
                 }
@@ -1230,7 +1198,7 @@ public class Rasterizer3D extends Rasterizer {
                 // Repeat for each 4-pixel chunk in the line.
                 while(--loops >= 0) {
                     // Convert the color index to an RGB color.
-                    color = hsl2rgb[color_index >> 8];
+                    color = palette.hsl2rgb[color_index >> 8];
 
                     // Adjust the color index for the next iteration using the color slope.
                     color_index += color_slope;
@@ -1247,7 +1215,7 @@ public class Rasterizer3D extends Rasterizer {
 
                 // If there are remaining pixels, paint them as well.
                 if(loops > 0) {
-                    color = hsl2rgb[color_index >> 8];
+                    color = palette.hsl2rgb[color_index >> 8];
                     do {
                         dest[dest_off++] = color;
                     } while(--loops > 0);
@@ -1261,7 +1229,7 @@ public class Rasterizer3D extends Rasterizer {
                 // Repeat for the number of 4-pixel chunks in the line.
                 while(--loops >= 0) {
                     // Convert the color index to an RGB color.
-                    color = hsl2rgb[color_index >> 8];
+                    color = palette.hsl2rgb[color_index >> 8];
 
                     // Adjust the color index for the next iteration using the color slope.
                     color_index += color_slope;
@@ -1283,7 +1251,7 @@ public class Rasterizer3D extends Rasterizer {
 
                 // If there are remaining pixels, paint them as well.
                 if(loops > 0) {
-                    color = hsl2rgb[color_index >> 8];
+                    color = palette.hsl2rgb[color_index >> 8];
 
                     // Apply alpha transparency again as we just re-retrieved the color
                     color = ((color & 0xff00ff) * dest_alpha >> 8 & 0xff00ff) + ((color & 0xff00) * dest_alpha >> 8 & 0xff00);
@@ -1326,7 +1294,7 @@ public class Rasterizer3D extends Rasterizer {
                 if(alpha == 0) {
                     do {
                         // Paint the pixel with the color corresponding to the current color index.
-                        dest[dest_off++] = hsl2rgb[color_index >> 8];
+                        dest[dest_off++] = palette.hsl2rgb[color_index >> 8];
                         // Adjust the color index for the next pixel.
                         color_index += color_slope;
                     } while(--loops > 0); // Repeat for the number of pixels in the line (no chunking)
@@ -1336,7 +1304,7 @@ public class Rasterizer3D extends Rasterizer {
                     int i_44_ = 256 - alpha;
                     do {
                         // Calculate the color for the current pixel.
-                        color = hsl2rgb[color_index >> 8];
+                        color = palette.hsl2rgb[color_index >> 8];
 
                         // Adjust the color index for the next pixel.
                         color_index += color_slope;
@@ -1783,22 +1751,6 @@ public class Rasterizer3D extends Rasterizer {
         }
     }
 
-    public static int adjustBrightness(int rgb, double brightness) {
-        double r = (double) (rgb >> 16) / 256.0;
-        double g = (double) (rgb >> 8 & 0xff) / 256.0;
-        double b = (double) (rgb & 0xff) / 256.0;
-
-        r = Math.pow(r, brightness);
-        g = Math.pow(g, brightness);
-        b = Math.pow(b, brightness);
-
-        int outR = (int) (r * 256.0);
-        int outG = (int) (g * 256.0);
-        int outB = (int) (b * 256.0);
-
-        return (outR << 16) + (outG << 8) + outB;
-    }
-
     public static int[] setLineOffsets(int[] arg0) {
         return method700(Rasterizer.viewportLeft, Rasterizer.viewportTop, Rasterizer.viewportRight, Rasterizer.viewportBottom, arg0);
     }
@@ -1826,7 +1778,7 @@ public class Rasterizer3D extends Rasterizer {
     }
 
     public static void createPalette(double brightness) {
-        createPalette(brightness, 512);
+        palette = Palette.create(brightness);
     }
 
     public static void drawFlatTriangle(int a_x, int a_y, int b_x, int b_y, int c_x, int c_y, int colour) {
@@ -2171,79 +2123,5 @@ public class Rasterizer3D extends Rasterizer {
         return lineOffsets;
     }
 
-    public static void createPalette(double brightness, int const_512) {
-        brightness += Math.random() * 0.03 - 0.015;
-        int index = 0;
 
-        for(int y = 0; y < const_512; y++) {
-            double hue = (double) (y >> 3) / 64.0 + 0.0078125;
-            double lightness = (double) (y & 0x7) / 8.0 + 0.0625;
-
-            for(int x = 0; x < 128; x++) {
-                double intensity = (double) x / 128.0;
-                double red = intensity;
-                double green = intensity;
-                double blue = intensity;
-
-                if(lightness != 0.0) {
-                    double a;
-                    if(intensity < 0.5) {
-                        a = intensity * (1.0 + lightness);
-                    } else {
-                        a = intensity + lightness - intensity * lightness;
-                    }
-                    double b = 2.0 * intensity - a;
-                    double fRed = hue + 0.3333333333333333;
-                    if(fRed > 1.0) {
-                        fRed--;
-                    }
-                    double fGreen = hue;
-                    double fBlue = hue - 0.3333333333333333;
-                    if(fBlue < 0.0) {
-                        fBlue++;
-                    }
-                    if(6.0 * fRed < 1.0) {
-                        red = b + (a - b) * 6.0 * fRed;
-                    } else if(2.0 * fRed < 1.0) {
-                        red = a;
-                    } else if(3.0 * fRed < 2.0) {
-                        red = b + (a - b) * (0.6666666666666666 - fRed) * 6.0;
-                    } else {
-                        red = b;
-                    }
-                    if(6.0 * fGreen < 1.0) {
-                        green = b + (a - b) * 6.0 * fGreen;
-                    } else if(2.0 * fGreen < 1.0) {
-                        green = a;
-                    } else if(3.0 * fGreen < 2.0) {
-                        green = b + (a - b) * (0.6666666666666666 - fGreen) * 6.0;
-                    } else {
-                        green = b;
-                    }
-                    if(6.0 * fBlue < 1.0) {
-                        blue = b + (a - b) * 6.0 * fBlue;
-                    } else if(2.0 * fBlue < 1.0) {
-                        blue = a;
-                    } else if(3.0 * fBlue < 2.0) {
-                        blue = b + (a - b) * (0.6666666666666666 - fBlue) * 6.0;
-                    } else {
-                        blue = b;
-                    }
-                }
-
-                int outR = ((int) (red * 256.0) << 16);
-                int outG = ((int) (green * 256.0) << 8);
-                int outB = ((int) (blue * 256.0));
-
-                int rgb = outR | outG | outB;
-                rgb = adjustBrightness(rgb, brightness);
-
-                if(rgb == 0) {
-                    rgb = 1;
-                }
-
-                hsl2rgb[index++] = rgb;
-            }
-        }
-    }
 }

@@ -1,6 +1,7 @@
 package org.runejs.client;
 
 import org.runejs.client.media.Rasterizer;
+import org.runejs.client.media.RasterizerInstanced;
 
 import java.awt.*;
 import java.awt.image.*;
@@ -50,7 +51,7 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
         arg0.setHints(14);
     }
 
-    public void method1041(int arg0, int arg1, Component arg2, int arg3) {
+    public void method1041(int arg0, int arg1, Component arg2, int arg3, RasterizerInstanced rasterizerInstanced) {
         pixels = new int[1 + arg1 * arg3];
         width = arg1;
         height = arg3;
@@ -64,7 +65,11 @@ public class ProducingGraphicsBuffer_Sub1 extends ProducingGraphicsBuffer implem
         arg2.prepareImage(image, this);
         drawPixels();
         arg2.prepareImage(image, this);
-        this.prepareRasterizer();
+        this.prepareRasterizer(rasterizerInstanced);
+    }
+
+    public void method1041(int arg0, int arg1, Component arg2, int arg3) {
+        method1041(arg0, arg1, arg2, arg3, null);
     }
 
     public void startProduction(ImageConsumer arg0) {

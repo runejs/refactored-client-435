@@ -2,12 +2,13 @@ package org.runejs.client.frame;
 
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
-import org.runejs.client.frame.tab.TabProducer;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
+import org.runejs.client.media.Constants3D;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
+import org.runejs.client.media.RasterizerInstanced;
 import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.outbound.chat.SetChatOptionsOutboundMessage;
@@ -18,29 +19,48 @@ import java.awt.*;
 import java.text.MessageFormat;
 
 public class ScreenController {
-
-
     public static ScreenMode frameMode = null;
     public static int frameWidth = 765;
     public static int frameHeight = 540;
     public static int drawWidth = 765;
     public static int drawHeight = 540;
-    public static Minimap minimap = new Minimap();
-    public static TabProducer tabProducer = new TabProducer();
-    private static Thread drawingThread;
+    public static ProducingGraphicsBuffer drawComponent;
+    public static RasterizerInstanced rasterizer = new RasterizerInstanced(
+        null,
+        ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth,
+        ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight
+    );
+    public static Game3DRenderer gameRenderer = new Game3DRenderer(rasterizer);
+
     private static FrameRenderer renderer;
     public static boolean DebugView = false;
 
+    public static void setDrawComponent(Component component) {
+        drawComponent = MovedStatics.createGraphicsBuffer(
+            ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth,
+            ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight,
+            component
+        );
+
+        rasterizer.setGraphics(drawComponent);
+    }
 
     public static void frameMode(ScreenMode screenMode) {
         if (frameMode != screenMode) {
             frameMode = screenMode;
+
+            if (renderer != null) {
+                renderer.stop();
+            }
+
             if (screenMode == ScreenMode.FIXED) {
                 frameWidth = 765;
                 frameHeight = 503;
                 GameShell.clientFrame.setResizable(false);
                 GameShell.clientFrame.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
                 GameShell.clientFrame.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
+
+                renderer = new FixedFrameRenderer();
             } else if (screenMode == ScreenMode.RESIZABLE) {
                 frameWidth = 900;
                 frameHeight = 637;
@@ -48,10 +68,12 @@ public class ScreenController {
                 GameShell.clientFrame.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
                 GameShell.clientFrame.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
 
-
+                renderer = new ResizableFrameRenderer(rasterizer);
             } else if (screenMode == ScreenMode.FULLSCREEN) {
                 frameWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
                 frameHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+
+                renderer = new ResizableFrameRenderer(rasterizer);
             }
             GameShell.clientFrame.setSize(ScreenController.frameWidth, ScreenController.frameHeight);
             Dimension innerSize = getInnerSize(GameShell.clientFrame);
@@ -88,21 +110,24 @@ public class ScreenController {
         Dimension innerSize = getInnerSize(GameShell.clientFrame);
         drawHeight = innerSize.height;
         drawWidth = innerSize.width;
-        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 512 : drawWidth, frameMode == ScreenMode.FIXED ? 334 : drawHeight);
+
+        renderer.setDrawSize(drawWidth, drawHeight);
+
+        Rasterizer.prepare(null, frameMode == ScreenMode.FIXED ? 512 : drawWidth, frameMode == ScreenMode.FIXED ? 334 : drawHeight);
         MovedStatics.fullScreenTextureArray = Rasterizer3D.setLineOffsets(null);
-        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 479 : drawWidth, frameMode == ScreenMode.FIXED ? 96 : drawHeight);
+        Rasterizer.prepare(null, frameMode == ScreenMode.FIXED ? 479 : drawWidth, frameMode == ScreenMode.FIXED ? 96 : drawHeight);
         // TODO rethink this, maybe its way easier than this
 //        MovedStatics.chatboxLineOffsets = Rasterizer3D.setLineOffsets(null);
 //        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 190 : drawWidth, frameMode == ScreenMode.FIXED ? 261 : drawHeight);
         MovedStatics.sidebarOffsets = Rasterizer3D.setLineOffsets(null);
-        Rasterizer3D.prepare(null, frameMode == ScreenMode.FIXED ? 765 : drawWidth, frameMode == ScreenMode.FIXED ? 503 : drawHeight);
+        Rasterizer.prepare(null, frameMode == ScreenMode.FIXED ? 765 : drawWidth, frameMode == ScreenMode.FIXED ? 503 : drawHeight);
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(null);
 
         int[] is = new int[9];
         for (int i = 0; i < 9; i++) {
             int i_0_ = 15 + 32 * i + 128;
             int i_1_ = 3 * i_0_ + 600;
-            int i_2_ = Rasterizer3D.sinetable[i_0_];
+            int i_2_ = Constants3D.sinetable[i_0_];
             is[i] = i_2_ * i_1_ >> 16;
         }
 
@@ -111,7 +136,8 @@ public class ScreenController {
         Game.gameCanvas.setSize(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight);
 
         if (Game.gameStatusCode <= 35 && Game.gameStatusCode >= 30) {
-            MovedStatics.gameScreenImageProducer = MovedStatics.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, GameShell.clientFrame);
+            // set to resizable mode
+            setDrawComponent(GameShell.clientFrame);
         } else {
             Game.gameCanvas.setSize(MovedStatics.width, MovedStatics.height);
             Game.gameCanvas.setVisible(true);
@@ -124,69 +150,12 @@ public class ScreenController {
         }
     }
 
-    /**
-     * TODO (jkm) move all this to ResizableFrameRenderer
-     */
-    public static void RenderResizableUI() {
-        if (drawingThread == null) {
-            renderer = new ResizableFrameRenderer(minimap, tabProducer);
-            drawingThread = new Thread(renderer);
-            drawingThread.start();
-        }
-        minimap.drawResizableMiniMapArea(drawWidth - 210, 0);
-        RenderTabArea(drawWidth - 234, drawHeight - (337));
-        RenderChatArea(0, drawHeight - (162));
+    public static void drawFrame() {
+        // create the render thread if required, and draw the output to screen
+        int mX = MouseHandler.mouseX;
+        int mY = MouseHandler.mouseY;
 
-        tabProducer.drawResizableSideBarArea(drawWidth - 241, drawHeight - (334));
-
-        if (DebugView) {
-            int mX = MouseHandler.mouseX;
-            int mY = MouseHandler.mouseY;
-
-            int[] tabInterFaceCoords= tabProducer.getTabInterfaceCoordSize(drawWidth - 241, drawHeight - (334));
-            int[] tabInterFaceTop = tabProducer.getTopBarCoordSize(drawWidth - 241, drawHeight - (334));
-            int[] tabInterFaceBottom = tabProducer.getBottomBarCoordSize(drawWidth - 241, drawHeight - (334));
-            if (isCoordinatesIn3dScreen(mX, mY)) {
-                Rasterizer.drawFilledRectangleAlpha(0, 0, drawWidth, drawHeight, 0x00FF00, 90);
-            } else {
-                Rasterizer.drawFilledRectangleAlpha(0, 0, drawWidth, drawHeight, 0xFF00FF, 90);
-            }
-            if (isCoordinatesInExtendedTabArea(mX, mY) && !isCoordinatesInTabArea(mX, mY)) {
-                Rasterizer.drawFilledRectangleAlpha(tabInterFaceTop[0], tabInterFaceTop[1], tabInterFaceTop[2], tabInterFaceTop[3], 0x00FF00, 90);
-                Rasterizer.drawFilledRectangleAlpha(tabInterFaceBottom[0], tabInterFaceBottom[1], tabInterFaceBottom[2], tabInterFaceBottom[3], 0x00FF00, 90);
-            } else {
-                Rasterizer.drawFilledRectangleAlpha(tabInterFaceTop[0], tabInterFaceTop[1], tabInterFaceTop[2], tabInterFaceTop[3], 0x0000FF, 90);
-                Rasterizer.drawFilledRectangleAlpha(tabInterFaceBottom[0], tabInterFaceBottom[1], tabInterFaceBottom[2], tabInterFaceBottom[3], 0x0000FF, 90);
-            }
-            if (isCoordinatesInTabArea(mX, mY)) {
-                Rasterizer.drawFilledRectangleAlpha(tabInterFaceCoords[0], tabInterFaceCoords[1], MovedStatics.tabImageProducer.width, MovedStatics.tabImageProducer.height, 0x00FF00, 90);
-            } else {
-                Rasterizer.drawFilledRectangleAlpha(tabInterFaceCoords[0], tabInterFaceCoords[1], MovedStatics.tabImageProducer.width, MovedStatics.tabImageProducer.height, 0x0000FF, 90);
-            }
-            if (isCoordinatesInExtendedChatArea(mX, mY) && !isCoordinatesInChatArea(mX, mY)) {
-                Rasterizer.drawFilledRectangleAlpha(0, drawHeight - (162), 516, drawHeight, 0x00FF00, 90);
-            } else {
-                Rasterizer.drawFilledRectangleAlpha(0, drawHeight - (162), 516, drawHeight, 0x0000FF, 90);
-            }
-            if (isCoordinatesInChatArea(mX, mY)) {
-                Rasterizer.drawFilledRectangleAlpha(17, drawHeight - (162) + 16, ChatBox.chatBoxImageProducer.width, ChatBox.chatBoxImageProducer.height, 0x00FF00, 90);
-            } else {
-                Rasterizer.drawFilledRectangleAlpha(17, drawHeight - (162) + 16, ChatBox.chatBoxImageProducer.width, ChatBox.chatBoxImageProducer.height, 0x0000FF, 90);
-            }
-            if (isCoordinatesInMinimapArea(mX, mY)) {
-                Rasterizer.drawFilledRectangleAlpha(drawWidth - 210, 0, 210, 210, 0x00FF00, 90);
-            } else {
-                Rasterizer.drawFilledRectangleAlpha(drawWidth - 210, 0, 210, 210, 0x0000FF, 90);
-            }
-
-
-            Rasterizer.drawFilledRectangle(MouseHandler.mouseX - 4, MouseHandler.mouseY - 4, 4, 4, 0xFF0000);
-        }
-
-        if (MovedStatics.menuOpen) {
-            MovedStatics.drawMenu(0, 0);
-        }
-
+        renderer.draw(mX, mY, DebugView);
     }
 
 
@@ -200,100 +169,29 @@ public class ScreenController {
         return size;
     }
 
-    /**
-     * TODO (jkm) move all this to ResizableFrameRenderer
-     */
-    public static void RenderTabArea(int x, int y) {
-        // height 337
-        // width 234
-        drawFramePiece(MovedStatics.tabPieceLeft, x + 212, y + 39);
-        drawFramePieceCutout(MovedStatics.tabPieceUpperRight, x, y + 39, MovedStatics.tabPieceUpperRight.width - 15, MovedStatics.tabPieceUpperRight.height, 15, 0);
-        drawFramePieceCutout(MovedStatics.tabPieveLowerRight, x, y + 191, MovedStatics.tabPieveLowerRight.width - 35, MovedStatics.tabPieveLowerRight.height, 35, 0);
-        drawFramePieceCutout(MovedStatics.chatboxTop, x, y + 172, MovedStatics.chatboxTop.width - 531, MovedStatics.chatboxTop.height, 531, 0);
-        drawFramePieceCutout(MovedStatics.tabBottom, x, y + 300, MovedStatics.tabBottom.width - 35, MovedStatics.tabBottom.height, 35, 0);
-        drawFramePieceCutout(MovedStatics.tabTop, x, y, MovedStatics.tabTop.width - 15, MovedStatics.tabTop.height - 6, 15, 6);
-        drawFramePiece(MovedStatics.tabImageProducer, x + 22, y + 39);
-    }
-
-    /**
-     * TODO (jkm) move all this to ResizableFrameRenderer
-     */
-    public static void RenderChatArea(int x, int y) {
-        //width 516
-        //height 184
-        drawFramePiece(ChatBox.chatBoxImageProducer, x + 17, y + 16);
-        drawFramePiece(MovedStatics.chatModes, x, y + 112);
-        drawFramePieceCutout(MovedStatics.tabBottom, x + 496, y + 125, 20, MovedStatics.tabBottom.height, 0, 0);
-        drawFramePiece(MovedStatics.chatboxRight, x, y + 16);
-        drawFramePieceCutout(MovedStatics.chatboxTop, x, y, MovedStatics.chatboxTop.width - 37, MovedStatics.chatboxTop.height - 3, 0, 3);
-        //        System.out.println(Class40_Sub5_Sub1.chatboxRight.height + (Class17.chatboxTop.height-3) + HuffmanEncoding.aProducingGraphicsBuffer_1541.height);
-
-        drawFramePieceCutout(MovedStatics.tabPieveLowerRight, x + 496, y + 16, 20, MovedStatics.tabPieveLowerRight.height, 0, 0);
-    }
-
-    public static void drawFramePiece(ProducingGraphicsBuffer framePiece, int x, int y) {
-        Rasterizer.copyPixels(framePiece.pixels, framePiece.width, framePiece.height, x, y);
-    }
-
-    public static void drawFramePieceCutout(ProducingGraphicsBuffer framePiece, int x, int y, int width, int height, int offsetX, int offsetY) {
-        Rasterizer.copyPixelsCutOff(framePiece.pixels, framePiece.width, framePiece.height, x, y, width, height, offsetX, offsetY);
-    }
-
     public static boolean isCoordinatesIn3dScreen(int x, int y) {
-        if (frameMode == ScreenMode.FIXED) {
-            return x > 4 && y > 4 && x < 516 && y < 338;
-        } else {
-            return x > 0 && y > 0 && x < drawWidth && y < drawHeight && !isCoordinatesInExtendedTabArea(x, y) && !isCoordinatesInTabArea(x, y) && !isCoordinatesInMinimapArea(x, y) && !isCoordinatesInExtendedChatArea(x, y);
-
-        }
+        return renderer.isCoordinatesIn3dScreen(x, y);
     }
 
     public static boolean isCoordinatesInTabArea(int x, int y) {
-        if (frameMode == ScreenMode.FIXED) {
-            return x > 553 && y > 205 && x < 743 && y < 466;
-        } else {
-            int[] tabInterFaceCoords= tabProducer.getTabInterfaceCoordSize(drawWidth - 241, drawHeight - (334));
-
-            int minX = tabInterFaceCoords[0];
-            int minY = tabInterFaceCoords[1];
-            int maxX = minX + tabInterFaceCoords[2];
-            int maxY = minY + tabInterFaceCoords[3];
-            return x > minX && y > minY && x < maxX && y < maxY;
-        }
+        return renderer.isCoordinatesInTabArea(x, y);
     }
 
 
     public static boolean isCoordinatesInExtendedTabArea(int x, int y) {
-        int[] top = tabProducer.getTopBarCoordSize(drawWidth - 241, drawHeight - (334));
-        int[] bottom = tabProducer.getBottomBarCoordSize(drawWidth - 241, drawHeight - (334));
-        if(x > top[0] && x < top[0]+top[2] && y > top[1] && y < top[1]+top[3]) {
-            return true;
-        } else return x > bottom[0] && x < bottom[0] + bottom[2] && y > bottom[1] && y < bottom[1] + bottom[3];
+        return renderer.isCoordinatesInExtendedTabArea(x, y);
     }
 
     public static boolean isCoordinatesInExtendedChatArea(int x, int y) {
-        return x > 0 && y > drawHeight - 184 && x < 516;
+        return renderer.isCoordinatesInExtendedChatArea(x, y);
     }
 
     public static boolean isCoordinatesInChatArea(int x, int y) {
-        if (frameMode == ScreenMode.FIXED) {
-            return x > 17 && y > 357 && x < 496 && y < 453;
-        } else {
-            int minX = 17;
-            int minY = drawHeight - (162) + 16;
-            int maxX = minX + ChatBox.chatBoxImageProducer.width;
-            int maxY = minY + ChatBox.chatBoxImageProducer.height;
-            return x > minX && y > minY && x < maxX && y < maxY;
-        }
-
+        return renderer.isCoordinatesInChatArea(x, y);
     }
 
     public static boolean isCoordinatesInMinimapArea(int x, int y) {
-        if (frameMode == ScreenMode.FIXED) {
-            return x > 575 && y < 156;
-        } else {
-            return x > drawWidth - 210 && y < 210;
-        }
+        return renderer.isCoordinatesInMinimapArea(x, y);
     }
 
     public static void handleTabClick(int mouseX, int mouseY) {
@@ -304,7 +202,7 @@ public class ScreenController {
                 MovedStatics.handleInterfaceActions(GameInterfaceArea.TAB_AREA, mouseX, mouseY, 553, 205, 743, 466, Game.tabWidgetIds[Game.currentTabId]);
             }
         } else {
-            int[] tabInterFaceCoords= tabProducer.getTabInterfaceCoordSize(drawWidth - 241, drawHeight - (334));
+            int[] tabInterFaceCoords= renderer.getTabProducer().getTabInterfaceCoordSize(drawWidth - 241, drawHeight - (334));
 
             if (GameInterface.tabAreaInterfaceId != -1)
                 MovedStatics.handleInterfaceActions(GameInterfaceArea.TAB_AREA, mouseX, mouseY, tabInterFaceCoords[0], tabInterFaceCoords[1], tabInterFaceCoords[0]+tabInterFaceCoords[2],tabInterFaceCoords[1]+tabInterFaceCoords[3], GameInterface.tabAreaInterfaceId);
@@ -374,8 +272,8 @@ public class ScreenController {
                 }
             }
             int angle = 0x7ff & Game.getMinimapRotation();
-            int sin = Rasterizer3D.sinetable[angle];
-            int cos = Rasterizer3D.cosinetable[angle];
+            int sin = Constants3D.sinetable[angle];
+            int cos = Constants3D.cosinetable[angle];
 
             int zoom = 0;
 
@@ -554,7 +452,7 @@ public class ScreenController {
             }
             } else {
                 if(isCoordinatesInExtendedTabArea(x, y)) {
-                    tabProducer.clickTabButton(x,y, drawWidth - 241, drawHeight - (334));
+                    renderer.getTabProducer().clickTabButton(x,y, drawWidth - 241, drawHeight - (334));
                 }
             }
 

@@ -2,6 +2,7 @@ package org.runejs.client;
 
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.IndexedImage;
+import org.runejs.client.media.ColorUtils;
 import org.runejs.client.node.Node;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer3D;
@@ -136,7 +137,7 @@ public class Texture extends Node {
                 }
             }
             for(int i_19_ = 0; i_19_ < imgPalette.length; i_19_++)
-                imgPalette[i_19_] = Rasterizer3D.adjustBrightness(imgPalette[i_19_], arg0);
+                imgPalette[i_19_] = ColorUtils.adjustBrightness(imgPalette[i_19_], arg0);
             int i_20_;
             if(i_12_ == 0)
                 i_20_ = 0;

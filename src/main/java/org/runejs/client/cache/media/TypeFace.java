@@ -8,6 +8,7 @@ import org.runejs.client.cache.media.textUtils.TextColourQueue;
 import org.runejs.client.cache.media.textUtils.TextTagNode;
 import org.runejs.client.cache.media.textUtils.TextTagQueue;
 import org.runejs.client.media.Rasterizer;
+import org.runejs.client.media.RasterizerInstanced;
 
 import java.awt.*;
 import java.util.Random;
@@ -64,6 +65,8 @@ public class TypeFace extends Rasterizer {
     private int anInt2920;
     private TextColourQueue textcolour;
 
+    private RasterizerInstanced rasterizer;
+
     public TypeFace(int[] arg0, int[] arg1, int[] arg2, int[] arg3, byte[][] arg4) {
         characterDefaultHeight = 0;
         random = new Random();
@@ -93,6 +96,12 @@ public class TypeFace extends Rasterizer {
         anInt2920 = characterDefaultHeight - i_48_;
         anInt2919 = i_49_ - characterDefaultHeight;
     }
+
+    public void setRasterizer(RasterizerInstanced rasterizer) {
+        this.rasterizer = rasterizer;
+    }
+
+    public RasterizerInstanced getRasterizer() { return this.rasterizer; }
 
     public static TypeFace constructFont() {
         TypeFace class40_sub5_sub14_sub1 = new TypeFace(MovedStatics.anIntArray3111, MovedStatics.anIntArray456, MovedStatics.anIntArray3312, MovedStatics.anIntArray1972, MovedStatics.aByteArrayArray1370);
@@ -601,108 +610,117 @@ public class TypeFace extends Rasterizer {
 
 
     public void drawCharacter(int character, int x, int y, int width, int height, int colour) {
-        int rasterizerPixel = x + y * Rasterizer.destinationWidth;
-        int rasterizerPixelOffset = Rasterizer.destinationWidth - width;
+        int destinationWidth = getDestinationWidth();
+        int[] viewportDimensions = getViewportDimensions();
+
+        int rasterizerPixel = x + y * destinationWidth;
+        int rasterizerPixelOffset = destinationWidth - width;
         int characterPixelOffset = 0;
         int characterPixel = 0;
-        if (y < Rasterizer.viewportTop) {
-            int offsetY = Rasterizer.viewportTop - y;
+        if (y < viewportDimensions[1]) {
+            int offsetY = viewportDimensions[1] - y;
             height -= offsetY;
-            y = Rasterizer.viewportTop;
+            y = viewportDimensions[1];
             characterPixel += offsetY * width;
-            rasterizerPixel += offsetY * Rasterizer.destinationWidth;
+            rasterizerPixel += offsetY * destinationWidth;
         }
-        if (y + height > Rasterizer.viewportBottom) {
-            height -= y + height - Rasterizer.viewportBottom;
+        if (y + height > viewportDimensions[3]) {
+            height -= y + height - viewportDimensions[3];
         }
-        if (x < Rasterizer.viewportLeft) {
-            int offsetX = Rasterizer.viewportLeft - x;
+        if (x < viewportDimensions[0]) {
+            int offsetX = viewportDimensions[0] - x;
             width -= offsetX;
-            x = Rasterizer.viewportLeft;
+            x = viewportDimensions[0];
             characterPixel += offsetX;
             rasterizerPixel += offsetX;
             characterPixelOffset += offsetX;
             rasterizerPixelOffset += offsetX;
         }
-        if (x + width > Rasterizer.viewportRight) {
-            int endOffsetX = x + width - Rasterizer.viewportRight;
+        if (x + width > viewportDimensions[2]) {
+            int endOffsetX = x + width - viewportDimensions[2];
             width -= endOffsetX;
             characterPixelOffset += endOffsetX;
             rasterizerPixelOffset += endOffsetX;
         }
         if (width > 0 && height > 0) {
-            drawCharacterPixels(characterPixels[character], Rasterizer.destinationPixels, characterPixel, rasterizerPixel, characterPixelOffset, rasterizerPixelOffset, width, height, colour);
+            drawCharacterPixels(characterPixels[character], getDestinationPixels(), characterPixel, rasterizerPixel, characterPixelOffset, rasterizerPixelOffset, width, height, colour);
 
         }
     }
 
     public void drawCharacterItalics(int character, int x, int y, int width, int height, int colour) {
-        int rasterizerPixel = x + y * Rasterizer.destinationWidth;
-        int rasterizerPixelOffset = Rasterizer.destinationWidth - width;
+        int destinationWidth = getDestinationWidth();
+        int[] viewportDimensions = getViewportDimensions();
+
+        int rasterizerPixel = x + y * destinationWidth;
+        int rasterizerPixelOffset = destinationWidth - width;
         int characterPixelOffset = 0;
         int characterPixel = 0;
-        if (y < Rasterizer.viewportTop) {
-            int offsetY = Rasterizer.viewportTop - y;
+        if (y < viewportDimensions[1]) {
+            int offsetY = viewportDimensions[1] - y;
             height -= offsetY;
-            y = Rasterizer.viewportTop;
+            y = viewportDimensions[1];
             characterPixel += offsetY * width;
-            rasterizerPixel += offsetY * Rasterizer.destinationWidth;
+            rasterizerPixel += offsetY * destinationWidth;
         }
-        if (y + height > Rasterizer.viewportBottom) {
-            height -= y + height - Rasterizer.viewportBottom;
+        if (y + height > viewportDimensions[3]) {
+            height -= y + height - viewportDimensions[3];
         }
-        if (x < Rasterizer.viewportLeft) {
-            int offsetX = Rasterizer.viewportLeft - x;
+        if (x < viewportDimensions[0]) {
+            int offsetX = viewportDimensions[0] - x;
             width -= offsetX;
-            x = Rasterizer.viewportLeft;
+            x = viewportDimensions[0];
             characterPixel += offsetX;
             rasterizerPixel += offsetX;
             characterPixelOffset += offsetX;
             rasterizerPixelOffset += offsetX;
         }
-        if (x + width > Rasterizer.viewportRight) {
-            int endOffsetX = x + width - Rasterizer.viewportRight;
+        if (x + width > viewportDimensions[2]) {
+            int endOffsetX = x + width - viewportDimensions[2];
             width -= endOffsetX;
             characterPixelOffset += endOffsetX;
             rasterizerPixelOffset += endOffsetX;
         }
         if (width > 0 && height > 0) {
-            drawCharacterPixelsItalic(characterPixels[character], Rasterizer.destinationPixels, characterPixel, rasterizerPixel, characterPixelOffset, rasterizerPixelOffset, width, height, colour);
+            drawCharacterPixelsItalic(characterPixels[character], getDestinationPixels(), characterPixel, rasterizerPixel, characterPixelOffset, rasterizerPixelOffset, width, height, colour);
         }
     }
 
 
-    public void drawCharacterLegacy(byte[] pixels, int x, int y, int width, int height, int colour) {
-        int rasterizerPixel = x + y * Rasterizer.destinationWidth;
-        int remainingWidth = Rasterizer.destinationWidth - width;
+    private void drawCharacterLegacy(byte[] pixels, int x, int y, int width, int height, int colour) {
+        int destinationWidth = getDestinationWidth();
+        int[] viewportDimensions = getViewportDimensions();
+
+        int rasterizerPixel = x + y * destinationWidth;
+        int remainingWidth = destinationWidth - width;
         int characterPixelOffset = 0;
         int characterPixel = 0;
-        if (y < Rasterizer.viewportTop) {
-            int offsetY = Rasterizer.viewportTop - y;
+        if (y < viewportDimensions[1]) {
+            int offsetY = viewportDimensions[1] - y;
             height -= offsetY;
-            y = Rasterizer.viewportTop;
+            y = viewportDimensions[1];
             characterPixel += offsetY * width;
-            rasterizerPixel += offsetY * Rasterizer.destinationWidth;
+            rasterizerPixel += offsetY * destinationWidth;
         }
-        if (y + height >= Rasterizer.viewportBottom)
-            height -= y + height - Rasterizer.viewportBottom + 1;
-        if (x < Rasterizer.viewportLeft) {
-            int offsetX = Rasterizer.viewportLeft - x;
+        if (y + height > viewportDimensions[3])
+            height -= y + height - viewportDimensions[3];
+        if (x < viewportDimensions[0]) {
+            int offsetX = viewportDimensions[0] - x;
             width -= offsetX;
-            x = Rasterizer.viewportLeft;
+            x = viewportDimensions[0];
             characterPixel += offsetX;
             rasterizerPixel += offsetX;
             characterPixelOffset += offsetX;
             remainingWidth += offsetX;
         }
-        if (x + width >= Rasterizer.viewportRight) {
-            int endOffsetX = x + width - Rasterizer.viewportRight + 1;
+        if (x + width > viewportDimensions[2]) {
+            int endOffsetX = x + width - viewportDimensions[2];
             width -= endOffsetX;
             characterPixelOffset += endOffsetX;
             remainingWidth += endOffsetX;
         }
         if (width > 0 && height > 0) {
-            drawCharacterPixels(pixels, Rasterizer.destinationPixels, characterPixel, rasterizerPixel, characterPixelOffset, remainingWidth, width, height, colour);
+            drawCharacterPixels(pixels, getDestinationPixels(), characterPixel, rasterizerPixel, characterPixelOffset, remainingWidth, width, height, colour);
         }
     }
 
@@ -967,20 +985,34 @@ public class TypeFace extends Rasterizer {
                     int charWidth = characterScreenWidths[character];
                     if (strikethroughColor != -1) {
                         if (opacity > 255) {
-                            Rasterizer.drawHorizontalLine(drawX, drawY + (int) ((double) characterDefaultHeight * 0.7D), charWidth, strikethroughColor);
-                        } else {
-                            Rasterizer.drawHorizontalLineAlpha(drawX, drawY + (int) ((double) characterDefaultHeight * 0.7D), charWidth, strikethroughColor, opacity);
+                            if (rasterizer == null) {
+                                Rasterizer.drawHorizontalLine(drawX, drawY + (int) ((double) characterDefaultHeight * 0.7D), charWidth, strikethroughColor);
+                            } else {
+                                rasterizer.drawHorizontalLine(drawX, drawY + (int) ((double) characterDefaultHeight * 0.7D), charWidth, strikethroughColor);
+                            }
 
+                        } else {
+                            if (rasterizer == null) {
+                                Rasterizer.drawHorizontalLineAlpha(drawX, drawY + (int) ((double) characterDefaultHeight * 0.7D), charWidth, strikethroughColor, opacity);
+                            } else {
+                                rasterizer.drawHorizontalLineAlpha(drawX, drawY + (int) ((double) characterDefaultHeight * 0.7D), charWidth, strikethroughColor, opacity);
+                            }
                         }
                     }
 
                     if (underlineColor != -1) {
                         if (opacity > 255) {
-                            Rasterizer.drawHorizontalLine(drawX, drawY + characterDefaultHeight, charWidth, underlineColor);
-
+                            if (rasterizer == null) {
+                                Rasterizer.drawHorizontalLine(drawX, drawY + characterDefaultHeight, charWidth, underlineColor);
+                            } else {
+                                rasterizer.drawHorizontalLine(drawX, drawY + characterDefaultHeight, charWidth, underlineColor);
+                            }
                         } else {
-
-                            Rasterizer.drawHorizontalLineAlpha(drawX, drawY + characterDefaultHeight, charWidth, underlineColor, opacity);
+                            if (rasterizer == null) {
+                                Rasterizer.drawHorizontalLineAlpha(drawX, drawY + characterDefaultHeight, charWidth, underlineColor, opacity);
+                            } else {
+                                rasterizer.drawHorizontalLineAlpha(drawX, drawY + characterDefaultHeight, charWidth, underlineColor, opacity);
+                            }
                         }
                     }
 
@@ -1178,10 +1210,18 @@ public class TypeFace extends Rasterizer {
 
                     int charWidth = characterScreenWidths[c];
                     if (strikethroughColor != -1) {
-                        Rasterizer.drawHorizontalLine(x, y + (int) ((double) characterDefaultHeight * 0.7D), charWidth, strikethroughColor);
+                        if (rasterizer == null) {
+                            Rasterizer.drawHorizontalLine(x, y + (int) ((double) characterDefaultHeight * 0.7D), charWidth, strikethroughColor);
+                        } else {
+                            rasterizer.drawHorizontalLine(x, y + (int) ((double) characterDefaultHeight * 0.7D), charWidth, strikethroughColor);
+                        }
                     }
                     if (underlineColor != -1) {
-                        Rasterizer.drawHorizontalLine(x, y + characterDefaultHeight + 1, charWidth, underlineColor);
+                        if (rasterizer == null) {
+                            Rasterizer.drawHorizontalLine(x, y + characterDefaultHeight + 1, charWidth, underlineColor);
+                        } else {
+                            rasterizer.drawHorizontalLine(x, y + characterDefaultHeight + 1, charWidth, underlineColor);
+                        }
                     }
                     x += charWidth;
                     var5 = c;
@@ -1262,10 +1302,18 @@ public class TypeFace extends Rasterizer {
 
             int charWidth = characterScreenWidths[c];
             if (strikethroughColor != -1) {
-                Rasterizer.drawHorizontalLine(x, y + (int) ((double) characterDefaultHeight * 0.7D), charWidth, strikethroughColor);
+                if (rasterizer == null) {
+                    Rasterizer.drawHorizontalLine(x, y + (int) ((double) characterDefaultHeight * 0.7D), charWidth, strikethroughColor);
+                } else {
+                    rasterizer.drawHorizontalLine(x, y + (int) ((double) characterDefaultHeight * 0.7D), charWidth, strikethroughColor);
+                }
             }
             if (underlineColor != -1) {
-                Rasterizer.drawHorizontalLine(x, y + characterDefaultHeight + 1, charWidth, underlineColor);
+                if (rasterizer == null) {
+                    Rasterizer.drawHorizontalLine(x, y + characterDefaultHeight + 1, charWidth, underlineColor);
+                } else {
+                    rasterizer.drawHorizontalLine(x, y + characterDefaultHeight + 1, charWidth, underlineColor);
+                }
             }
             x += charWidth;
             var5 = c;
@@ -1284,73 +1332,106 @@ public class TypeFace extends Rasterizer {
     }
 
     public void drawAlphaCharacter(byte[] characterPixels, int x, int y, int width, int height, int colour, int alpha) {
-        int rasterizerPixel = x + y * Rasterizer.destinationWidth;
-        int rasterizerPixelOffset = Rasterizer.destinationWidth - width;
+        int destinationWidth = getDestinationWidth();
+        int[] viewportDimensions = getViewportDimensions();
+
+        int rasterizerPixel = x + y * destinationWidth;
+        int rasterizerPixelOffset = destinationWidth - width;
         int characterPixelOffset = 0;
         int characterPixel = 0;
-        if (y < Rasterizer.viewportTop) {
-            int yOffset = Rasterizer.viewportTop - y;
+        if (y < viewportDimensions[1]) {
+            int yOffset = viewportDimensions[1] - y;
             height -= yOffset;
-            y = Rasterizer.viewportTop;
+            y = viewportDimensions[1];
             characterPixel += yOffset * width;
-            rasterizerPixel += yOffset * Rasterizer.destinationWidth;
+            rasterizerPixel += yOffset * destinationWidth;
         }
-        if (y + height >= Rasterizer.viewportBottom)
-            height -= y + height - Rasterizer.viewportBottom + 1;
-        if (x < Rasterizer.viewportLeft) {
-            int xOffset = Rasterizer.viewportLeft - x;
+        if (y + height >= viewportDimensions[3])
+            height -= y + height - viewportDimensions[3] + 1;
+        if (x < viewportDimensions[0]) {
+            int xOffset = viewportDimensions[0] - x;
             width -= xOffset;
-            x = Rasterizer.viewportLeft;
+            x = viewportDimensions[0];
             characterPixel += xOffset;
             rasterizerPixel += xOffset;
             characterPixelOffset += xOffset;
             rasterizerPixelOffset += xOffset;
         }
-        if (x + width >= Rasterizer.viewportRight) {
-            int widthoffset = x + width - Rasterizer.viewportRight + 1;
+        if (x + width >= viewportDimensions[2]) {
+            int widthoffset = x + width - viewportDimensions[2] + 1;
             width -= widthoffset;
             characterPixelOffset += widthoffset;
             rasterizerPixelOffset += widthoffset;
         }
         if (width > 0 && height > 0) {
-            drawCharacterPixelsAlpha(characterPixel, rasterizerPixelOffset, characterPixelOffset, rasterizerPixel, alpha, Rasterizer.destinationPixels, colour, height, width, characterPixels);
+            drawCharacterPixelsAlpha(characterPixel, rasterizerPixelOffset, characterPixelOffset, rasterizerPixel, alpha, getDestinationPixels(), colour, height, width, characterPixels);
+        }
+    }
+
+    private int getDestinationWidth() {
+        if (rasterizer == null) {
+            return Rasterizer.destinationWidth;
+        } else {
+            return rasterizer.destinationWidth;
+        }
+    }
+
+    private int[] getViewportDimensions() {
+        int[] output = new int[4];
+
+        if (rasterizer == null) {
+            Rasterizer.getViewportDimensions(output);
+        } else {
+            rasterizer.getViewportDimensions(output);
+        }
+
+        return output;
+    }
+
+    private int[] getDestinationPixels() {
+        if (rasterizer == null) {
+            return Rasterizer.destinationPixels;
+        } else {
+            return rasterizer.destinationPixels;
         }
     }
 
     public void drawAlphaCharacterItalics(byte[] characterPixels, int x, int y, int width, int height, int colour, int alpha) {
-        int rasterizerPixel = x + y * Rasterizer.destinationWidth;
-        int rasterizerPixelOffset = Rasterizer.destinationWidth - width;
+        int destinationWidth = getDestinationWidth();
+        int[] viewportDimensions = getViewportDimensions();
+
+        int rasterizerPixel = x + y * destinationWidth;
+        int rasterizerPixelOffset = destinationWidth - width;
         int characterPixelOffset = 0;
         int characterPixel = 0;
-        if (y < Rasterizer.viewportTop) {
-            int yOffset = Rasterizer.viewportTop - y;
+        if (y < viewportDimensions[1]) {
+            int yOffset = viewportDimensions[1] - y;
             height -= yOffset;
-            y = Rasterizer.viewportTop;
+            y = viewportDimensions[1];
             characterPixel += yOffset * width;
-            rasterizerPixel += yOffset * Rasterizer.destinationWidth;
+            rasterizerPixel += yOffset * destinationWidth;
         }
-        if (y + height >= Rasterizer.viewportBottom)
-            height -= y + height - Rasterizer.viewportBottom + 1;
-        if (x < Rasterizer.viewportLeft) {
-            int xOffset = Rasterizer.viewportLeft - x;
+        if (y + height >= viewportDimensions[3])
+            height -= y + height - viewportDimensions[3] + 1;
+        if (x < viewportDimensions[0]) {
+            int xOffset = viewportDimensions[0] - x;
             width -= xOffset;
-            x = Rasterizer.viewportLeft;
+            x = viewportDimensions[0];
             characterPixel += xOffset;
             rasterizerPixel += xOffset;
             characterPixelOffset += xOffset;
             rasterizerPixelOffset += xOffset;
         }
-        if (x + width >= Rasterizer.viewportRight) {
-            int widthoffset = x + width - Rasterizer.viewportRight + 1;
+        if (x + width >= viewportDimensions[2]) {
+            int widthoffset = x + width - viewportDimensions[2] + 1;
             width -= widthoffset;
             characterPixelOffset += widthoffset;
             rasterizerPixelOffset += widthoffset;
         }
         if (width > 0 && height > 0) {
-            drawCharacterPixelsAlphaItalics(characterPixel, rasterizerPixelOffset, characterPixelOffset, rasterizerPixel, alpha, Rasterizer.destinationPixels, colour, height, width, characterPixels);
+            drawCharacterPixelsAlphaItalics(characterPixel, rasterizerPixelOffset, characterPixelOffset, rasterizerPixel, alpha, getDestinationPixels(), colour, height, width, characterPixels);
         }
     }
-
 
     public void drawCharacterPixelsAlpha(int characterPixel, int rasterizerPixelOffset, int characterPixelOffset, int rasterizerPixel, int alpha, int[] rasterizerPixels, int colour, int height, int width, byte[] characterPixels) {
         colour = ((colour & 0xff00ff) * alpha & 0xff00ff00) + ((colour & 0xff00) * alpha & 0xff0000) >> 8;

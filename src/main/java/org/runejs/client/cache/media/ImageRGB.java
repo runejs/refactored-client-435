@@ -3,12 +3,14 @@ package org.runejs.client.cache.media;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.media.Rasterizer;
+import org.runejs.client.media.RasterizerInstanced;
+import org.runejs.client.node.CachedNode;
 import org.runejs.client.util.BitUtils;
 
 import java.awt.*;
 import java.awt.image.PixelGrabber;
 
-public class ImageRGB extends Rasterizer {
+public class ImageRGB extends CachedNode {
     public int offsetY;
     public int imageHeight;
     public int imageWidth;
@@ -353,6 +355,43 @@ public class ImageRGB extends Rasterizer {
 
     public void drawImageWithTexture(int x, int y, int textureId, int arg3) {
         method722(maxWidth << 3, maxHeight << 3, x << 4, y << 4, textureId, arg3);
+    }
+
+    public void drawImage(RasterizerInstanced rasterizer, int x, int y) {
+        x += offsetX;
+        y += offsetY;
+        int dest_offset = x + y * rasterizer.destinationWidth;
+        int source_offset = 0;
+        int line_count = imageHeight;
+        int line_width = imageWidth;
+        int line_offset_dest = rasterizer.destinationWidth - line_width;
+        int line_offset_source = 0;
+        if(y < rasterizer.viewportTop) {
+            int clip_height = rasterizer.viewportTop - y;
+            line_count -= clip_height;
+            y = rasterizer.viewportTop;
+            source_offset += clip_height * line_width;
+            dest_offset += clip_height * rasterizer.destinationWidth;
+        }
+        if(y + line_count > rasterizer.viewportBottom)
+            line_count -= y + line_count - rasterizer.viewportBottom;
+        if(x < rasterizer.viewportLeft) {
+            int clip_width = rasterizer.viewportLeft - x;
+            line_width -= clip_width;
+            x = rasterizer.viewportLeft;
+            source_offset += clip_width;
+            dest_offset += clip_width;
+            line_offset_source += clip_width;
+            line_offset_dest += clip_width;
+        }
+        if(x + line_width > rasterizer.viewportRight) {
+            int clip_width = x + line_width - rasterizer.viewportRight;
+            line_width -= clip_width;
+            line_offset_source += clip_width;
+            line_offset_dest += clip_width;
+        }
+        if(line_width > 0 && line_count > 0)
+            blockCopyTrans(rasterizer.destinationPixels, pixels, 0, source_offset, dest_offset, line_width, line_count, line_offset_dest, line_offset_source);
     }
 
     public void drawImage(int x, int y) {
@@ -782,11 +821,11 @@ public class ImageRGB extends Rasterizer {
         }
     }
 
-    public void prepareRasterizer() {
-        Rasterizer.prepare(pixels, imageWidth, imageHeight);
+    public void prepareRasterizer(RasterizerInstanced rasterizer) {
+        rasterizer.prepare(pixels, imageWidth, imageHeight);
     }
 
-    public void shapeImageToPixels(int x, int y, int width, int height, int arg4, int arg5, int k1, int zoom, int[] arg8, int[] arg9) {
+    public void shapeImageToPixels(RasterizerInstanced rasterizer, int x, int y, int width, int height, int arg4, int arg5, int k1, int zoom, int[] arg8, int[] arg9) {
         try {
             int centerX = -width / 2;
             int centerY = -height / 2;
@@ -796,7 +835,7 @@ public class ImageRGB extends Rasterizer {
             cosine = cosine * zoom >> 8;
             int i_125_ = (arg4 << 16) + centerY * sine + centerX * cosine;
             int i_126_ = (arg5 << 16) + centerY * cosine - centerX * sine;
-            int destinationOffset = x + y * Rasterizer.destinationWidth;
+            int destinationOffset = x + y * rasterizer.destinationWidth;
 
             for(y = 0; y < height; y++) {
                 int i_128_ = arg8[y];
@@ -809,13 +848,13 @@ public class ImageRGB extends Rasterizer {
                     if(!(pixels.length < pixelToGet || pixelToGet < 0)){
                         colour = pixels[pixelToGet];
                     }
-                    Rasterizer.destinationPixels[i_129_++] = colour;
+                    rasterizer.destinationPixels[i_129_++] = colour;
                     i_130_ += cosine;
                     i_131_ -= sine;
                 }
                 i_125_ += sine;
                 i_126_ += cosine;
-                destinationOffset += Rasterizer.destinationWidth;
+                destinationOffset += rasterizer.destinationWidth;
             }
         } catch(Exception exception) {
             /* empty */
@@ -823,41 +862,41 @@ public class ImageRGB extends Rasterizer {
         }
     }
 
-    public void drawTo(IndexedImage indexedImage, int x, int y) {
+    public void drawTo(RasterizerInstanced rasterizer, IndexedImage indexedImage, int x, int y) {
         x += offsetX;
         y += offsetY;
-        int dest_ptr = x + y * Rasterizer.destinationWidth;
+        int dest_ptr = x + y * rasterizer.destinationWidth;
         int source_ptr = 0;
         int line_count = imageHeight;
         int line_width = imageWidth;
-        int line_offset_dest = Rasterizer.destinationWidth - line_width;
+        int line_offset_dest = rasterizer.destinationWidth - line_width;
         int line_offset_src = 0;
-        if(y < Rasterizer.viewportTop) {
-            int clip_height = Rasterizer.viewportTop - y;
+        if(y < rasterizer.viewportTop) {
+            int clip_height = rasterizer.viewportTop - y;
             line_count -= clip_height;
-            y = Rasterizer.viewportTop;
+            y = rasterizer.viewportTop;
             source_ptr += clip_height * line_width;
-            dest_ptr += clip_height * Rasterizer.destinationWidth;
+            dest_ptr += clip_height * rasterizer.destinationWidth;
         }
-        if(y + line_count > Rasterizer.viewportBottom)
-            line_count -= y + line_count - Rasterizer.viewportBottom;
-        if(x < Rasterizer.viewportLeft) {
-            int clip_width = Rasterizer.viewportLeft - x;
+        if(y + line_count > rasterizer.viewportBottom)
+            line_count -= y + line_count - rasterizer.viewportBottom;
+        if(x < rasterizer.viewportLeft) {
+            int clip_width = rasterizer.viewportLeft - x;
             line_width -= clip_width;
-            x = Rasterizer.viewportLeft;
+            x = rasterizer.viewportLeft;
             source_ptr += clip_width;
             dest_ptr += clip_width;
             line_offset_src += clip_width;
             line_offset_dest += clip_width;
         }
-        if(x + line_width > Rasterizer.viewportRight) {
-            int clip_width = x + line_width - Rasterizer.viewportRight;
+        if(x + line_width > rasterizer.viewportRight) {
+            int clip_width = x + line_width - rasterizer.viewportRight;
             line_width -= clip_width;
             line_offset_src += clip_width;
             line_offset_dest += clip_width;
         }
         if(line_width > 0 && line_count > 0)
-            blockCopyMask(Rasterizer.destinationPixels, pixels, 0, source_ptr, dest_ptr, line_width, line_count, line_offset_dest, line_offset_src, indexedImage.imgPixels);
+            blockCopyMask(rasterizer.destinationPixels, pixels, 0, source_ptr, dest_ptr, line_width, line_count, line_offset_dest, line_offset_src, indexedImage.imgPixels);
     }
 
     public void trim() {
@@ -873,6 +912,43 @@ public class ImageRGB extends Rasterizer {
             offsetX = 0;
             offsetY = 0;
         }
+    }
+
+    public void drawInverse(RasterizerInstanced rasterizer, int x, int y) {
+        x += offsetX;
+        y += offsetY;
+        int rasterizerPixel = x + y * rasterizer.destinationWidth;
+        int pixel = 0;
+        int newHeight = imageHeight;
+        int newWidth = imageWidth;
+        int rasterizerPixelOffset = rasterizer.destinationWidth - newWidth;
+        int pixelOffset = 0;
+        if(y < rasterizer.viewportTop) {
+            int yOffset = rasterizer.viewportTop - y;
+            newHeight -= yOffset;
+            y = rasterizer.viewportTop;
+            pixel += yOffset * newWidth;
+            rasterizerPixel += yOffset * rasterizer.destinationWidth;
+        }
+        if(y + newHeight > rasterizer.viewportBottom)
+            newHeight -= y + newHeight - rasterizer.viewportBottom;
+        if(x < rasterizer.viewportLeft) {
+            int xOffset = rasterizer.viewportLeft - x;
+            newWidth -= xOffset;
+            x = rasterizer.viewportLeft;
+            pixel += xOffset;
+            rasterizerPixel += xOffset;
+            pixelOffset += xOffset;
+            rasterizerPixelOffset += xOffset;
+        }
+        if(x + newWidth > rasterizer.viewportRight) {
+            int widthOffset = x + newWidth - rasterizer.viewportRight;
+            newWidth -= widthOffset;
+            pixelOffset += widthOffset;
+            rasterizerPixelOffset += widthOffset;
+        }
+        if(newWidth > 0 && newHeight > 0)
+            copyPixels(rasterizer.destinationPixels, pixels, pixel, rasterizerPixel, newWidth, newHeight, rasterizerPixelOffset, pixelOffset);
     }
 
     public void drawInverse(int x, int y) {
@@ -949,7 +1025,7 @@ public class ImageRGB extends Rasterizer {
             method730(Rasterizer.destinationPixels, pixels, 0, i_149_, i, i_151_, i_150_, i_152_, i_153_, opacity);
     }
 
-    public void drawRotated(int x, int y, int pivotX, int pivotY, int width, int height, int zoom, double angle) {
+    public void drawRotated(RasterizerInstanced rasterizer, int x, int y, int pivotX, int pivotY, int width, int height, int zoom, double angle) {
         try {
             int centerX = -width / 2;
             int centerY = -height / 2;
@@ -959,7 +1035,7 @@ public class ImageRGB extends Rasterizer {
             cosine = cosine * zoom >> 8;
             int sourceOffsetX = (pivotX << 16) + centerY * sine + centerX * cosine;
             int sourceoffsetY = (pivotY << 16) + centerY * cosine - centerX * sine;
-            int destinationOffset = x + y * Rasterizer.destinationWidth;
+            int destinationOffset = x + y * rasterizer.destinationWidth;
             for(y = 0; y < height; y++) {
                 int i = destinationOffset;
                 int offsetX = sourceOffsetX;
@@ -967,7 +1043,7 @@ public class ImageRGB extends Rasterizer {
                 for(x = -width; x < 0; x++) {
                     int i_166_ = pixels[(offsetX >> 16) + (offsetY >> 16) * imageWidth];
                     if(i_166_ != 0)
-                        Rasterizer.destinationPixels[i++] = i_166_;
+                        rasterizer.destinationPixels[i++] = i_166_;
                     else
                         i++;
                     offsetX += cosine;
@@ -975,7 +1051,7 @@ public class ImageRGB extends Rasterizer {
                 }
                 sourceOffsetX += sine;
                 sourceoffsetY += cosine;
-                destinationOffset += Rasterizer.destinationWidth;
+                destinationOffset += rasterizer.destinationWidth;
             }
         } catch(Exception exception) {
             /* empty */

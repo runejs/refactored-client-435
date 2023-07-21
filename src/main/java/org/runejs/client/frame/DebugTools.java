@@ -3,7 +3,6 @@ package org.runejs.client.frame;
 import org.runejs.client.Landscape;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.media.TypeFace;
-import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.Point2d;
 
@@ -31,7 +30,7 @@ public class DebugTools {
             Point2d nextPos = MovedStatics.getProjectedScreenPosition(0, tileY * 128 + 64, tileX * 128 + 64);
 
             if (lastTilePos != null && nextPos != null) {
-                Rasterizer.drawDiagonalLine(lastTilePos.x, lastTilePos.y, nextPos.x, nextPos.y, 0x00FFAC);
+                ScreenController.rasterizer.drawDiagonalLine(lastTilePos.x, lastTilePos.y, nextPos.x, nextPos.y, 0x00FFAC);
             }
 
             // handle final walkpath label separately to avoid clipping issues
@@ -46,13 +45,13 @@ public class DebugTools {
         }
 
         if (pathStartPos != null) {
-            Rasterizer.drawCircle(pathStartPos.x, pathStartPos.y, 2, 0xE055DE);
+            ScreenController.rasterizer.drawCircle(pathStartPos.x, pathStartPos.y, 2, 0xE055DE);
             TypeFace.fontSmall.drawStringLeft(walkpathX[0] + "," + walkpathY[0], pathStartPos.x, pathStartPos.y + 1, 0);
             TypeFace.fontSmall.drawStringLeft(walkpathX[0] + "," + walkpathY[0], pathStartPos.x, pathStartPos.y, 0x00AAFF);
         }
 
         if (pathFinishPos != null) {
-            Rasterizer.drawCircle(pathFinishPos.x, pathFinishPos.y, 4, 0xE055DE);
+            ScreenController.rasterizer.drawCircle(pathFinishPos.x, pathFinishPos.y, 4, 0xE055DE);
             TypeFace.fontSmall.drawStringLeft(walkpathX[walkpathX.length - 1] + "," + walkpathY[walkpathY.length - 1], pathFinishPos.x, pathFinishPos.y + 1, 0);
             TypeFace.fontSmall.drawStringLeft(walkpathX[walkpathX.length - 1] + "," + walkpathY[walkpathY.length - 1], pathFinishPos.x, pathFinishPos.y, 0x00AAFF);
         }
@@ -96,40 +95,40 @@ public class DebugTools {
 
                 if ((data & 0x2) == 0x2) { // north
                     if (posNE != null && posNW != null) {
-                        Rasterizer.drawDiagonalLine(posNE.x, posNE.y, posNW.x, posNW.y, blockWalkColor);
+                        ScreenController.rasterizer.drawDiagonalLine(posNE.x, posNE.y, posNW.x, posNW.y, blockWalkColor);
                     }
                 }
 
                 if ((data & 0x8) == 0x8) { // east
                     if (posSE != null && posNE != null) {
-                        Rasterizer.drawDiagonalLine(posSE.x, posSE.y, posNE.x, posNE.y, blockWalkColor);
+                        ScreenController.rasterizer.drawDiagonalLine(posSE.x, posSE.y, posNE.x, posNE.y, blockWalkColor);
                     }
                 }
 
                 if ((data & 0x20) == 0x20) { // south
                     if (posSE != null && posSW != null) {
-                        Rasterizer.drawDiagonalLine(posSE.x, posSE.y, posSW.x, posSW.y, blockWalkColor);
+                        ScreenController.rasterizer.drawDiagonalLine(posSE.x, posSE.y, posSW.x, posSW.y, blockWalkColor);
                     }
                 }
 
                 if ((data & 0x80) == 0x80) { // west
                     if (posSW != null && posNW != null) {
-                        Rasterizer.drawDiagonalLine(posSW.x, posSW.y, posNW.x, posNW.y, blockWalkColor);
+                        ScreenController.rasterizer.drawDiagonalLine(posSW.x, posSW.y, posNW.x, posNW.y, blockWalkColor);
                     }
                 }
 
                 if ((data & 0x100) == 0x100) { // total block
                     if (posNE != null && posNW != null) {
-                        Rasterizer.drawDiagonalLine(posNE.x, posNE.y, posNW.x, posNW.y, blockWalkColor);
+                        ScreenController.rasterizer.drawDiagonalLine(posNE.x, posNE.y, posNW.x, posNW.y, blockWalkColor);
                     }
                     if (posSE != null && posNE != null) {
-                        Rasterizer.drawDiagonalLine(posSE.x, posSE.y, posNE.x, posNE.y, blockWalkColor);
+                        ScreenController.rasterizer.drawDiagonalLine(posSE.x, posSE.y, posNE.x, posNE.y, blockWalkColor);
                     }
                     if (posSE != null && posSW != null) {
-                        Rasterizer.drawDiagonalLine(posSE.x, posSE.y, posSW.x, posSW.y, blockWalkColor);
+                        ScreenController.rasterizer.drawDiagonalLine(posSE.x, posSE.y, posSW.x, posSW.y, blockWalkColor);
                     }
                     if (posSW != null && posNW != null) {
-                        Rasterizer.drawDiagonalLine(posSW.x, posSW.y, posNW.x, posNW.y, blockWalkColor);
+                        ScreenController.rasterizer.drawDiagonalLine(posSW.x, posSW.y, posNW.x, posNW.y, blockWalkColor);
                     }
                 }
 
@@ -138,79 +137,79 @@ public class DebugTools {
 
                 if ((data & 0x400) == 0x400) { // north (projectile)
                     if (posNEA != null && posNWA != null) {
-                        Rasterizer.drawDiagonalLine(posNEA.x, posNEA.y, posNWA.x, posNWA.y, blockProjectileColor);
+                        ScreenController.rasterizer.drawDiagonalLine(posNEA.x, posNEA.y, posNWA.x, posNWA.y, blockProjectileColor);
 
                         if (posNE != null) {
-                            Rasterizer.drawDiagonalLine(posNE.x, posNE.y, posNEA.x, posNEA.y, blockProjectileColor);
+                            ScreenController.rasterizer.drawDiagonalLine(posNE.x, posNE.y, posNEA.x, posNEA.y, blockProjectileColor);
                         }
 
                         if (posNW != null) {
-                            Rasterizer.drawDiagonalLine(posNW.x, posNW.y, posNWA.x, posNWA.y, blockProjectileColor);
+                            ScreenController.rasterizer.drawDiagonalLine(posNW.x, posNW.y, posNWA.x, posNWA.y, blockProjectileColor);
                         }
                     }
                 }
 
                 if ((data & 0x1000) == 0x1000) { // east (projectile)
                     if (posSEA != null && posNEA != null) {
-                        Rasterizer.drawDiagonalLine(posSEA.x, posSEA.y, posNEA.x, posNEA.y, blockProjectileColor);
+                        ScreenController.rasterizer.drawDiagonalLine(posSEA.x, posSEA.y, posNEA.x, posNEA.y, blockProjectileColor);
                     }
                 }
 
                 if ((data & 0x4000) == 0x4000) { // south (projectile)
                     if (posSEA != null && posSWA != null) {
-                        Rasterizer.drawDiagonalLine(posSEA.x, posSEA.y, posSWA.x, posSWA.y, blockProjectileColor);
+                        ScreenController.rasterizer.drawDiagonalLine(posSEA.x, posSEA.y, posSWA.x, posSWA.y, blockProjectileColor);
                     }
                 }
 
                 if ((data & 0x10000) == 0x10000) { // west (projectile)
                     if (posSWA != null && posNWA != null) {
-                        Rasterizer.drawDiagonalLine(posSWA.x, posSWA.y, posNWA.x, posNWA.y, blockProjectileColor);
+                        ScreenController.rasterizer.drawDiagonalLine(posSWA.x, posSWA.y, posNWA.x, posNWA.y, blockProjectileColor);
                     }
                 }
 
                 if ((data & 0x20000) == 0x20000) { // total block (projectile)
                     if (posNEA != null && posNWA != null) {
-                        Rasterizer.drawDiagonalLine(posNEA.x, posNEA.y, posNWA.x, posNWA.y, blockProjectileColor);
+                        ScreenController.rasterizer.drawDiagonalLine(posNEA.x, posNEA.y, posNWA.x, posNWA.y, blockProjectileColor);
 
                         if (posNE != null) {
-                            Rasterizer.drawDiagonalLine(posNE.x, posNE.y, posNEA.x, posNEA.y, blockProjectileColor);
+                            ScreenController.rasterizer.drawDiagonalLine(posNE.x, posNE.y, posNEA.x, posNEA.y, blockProjectileColor);
                         }
 
                         if (posNW != null) {
-                            Rasterizer.drawDiagonalLine(posNW.x, posNW.y, posNWA.x, posNWA.y, blockProjectileColor);
+                            ScreenController.rasterizer.drawDiagonalLine(posNW.x, posNW.y, posNWA.x, posNWA.y, blockProjectileColor);
                         }
                     }
                     if (posSEA != null && posNEA != null) {
-                        Rasterizer.drawDiagonalLine(posSEA.x, posSEA.y, posNEA.x, posNEA.y, blockProjectileColor);
+                        ScreenController.rasterizer.drawDiagonalLine(posSEA.x, posSEA.y, posNEA.x, posNEA.y, blockProjectileColor);
 
                         if (posSE != null) {
-                            Rasterizer.drawDiagonalLine(posSE.x, posSE.y, posSEA.x, posSEA.y, blockProjectileColor);
+                            ScreenController.rasterizer.drawDiagonalLine(posSE.x, posSE.y, posSEA.x, posSEA.y, blockProjectileColor);
                         }
 
                         if (posNE != null) {
-                            Rasterizer.drawDiagonalLine(posNE.x, posNE.y, posNEA.x, posNEA.y, blockProjectileColor);
+                            ScreenController.rasterizer.drawDiagonalLine(posNE.x, posNE.y, posNEA.x, posNEA.y, blockProjectileColor);
                         }
                     }
                     if (posSEA != null && posSWA != null) {
-                        Rasterizer.drawDiagonalLine(posSEA.x, posSEA.y, posSWA.x, posSWA.y, blockProjectileColor);
+                        ScreenController.rasterizer.drawDiagonalLine(posSEA.x, posSEA.y, posSWA.x, posSWA.y, blockProjectileColor);
 
                         if (posSE != null) {
-                            Rasterizer.drawDiagonalLine(posSE.x, posSE.y, posSEA.x, posSEA.y, blockProjectileColor);
+                            ScreenController.rasterizer.drawDiagonalLine(posSE.x, posSE.y, posSEA.x, posSEA.y, blockProjectileColor);
                         }
 
                         if (posSW != null) {
-                            Rasterizer.drawDiagonalLine(posSW.x, posSW.y, posSWA.x, posSWA.y, blockProjectileColor);
+                            ScreenController.rasterizer.drawDiagonalLine(posSW.x, posSW.y, posSWA.x, posSWA.y, blockProjectileColor);
                         }
                     }
                     if (posSWA != null && posNWA != null) {
-                        Rasterizer.drawDiagonalLine(posSWA.x, posSWA.y, posNWA.x, posNWA.y, blockProjectileColor);
+                        ScreenController.rasterizer.drawDiagonalLine(posSWA.x, posSWA.y, posNWA.x, posNWA.y, blockProjectileColor);
 
                         if (posSW != null) {
-                            Rasterizer.drawDiagonalLine(posSW.x, posSW.y, posSWA.x, posSWA.y, blockProjectileColor);
+                            ScreenController.rasterizer.drawDiagonalLine(posSW.x, posSW.y, posSWA.x, posSWA.y, blockProjectileColor);
                         }
 
                         if (posNW != null) {
-                            Rasterizer.drawDiagonalLine(posNW.x, posNW.y, posNWA.x, posNWA.y, blockProjectileColor);
+                            ScreenController.rasterizer.drawDiagonalLine(posNW.x, posNW.y, posNWA.x, posNWA.y, blockProjectileColor);
                         }
                     }
                 }

@@ -16,6 +16,7 @@ import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.Rasterizer;
+import org.runejs.client.media.RasterizerInstanced;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.*;
@@ -123,7 +124,6 @@ public class MovedStatics {
     public static volatile int eventClickY = 0;
     public static int anInt2628 = 0;
     public static volatile boolean clearScreen = true;
-    public static ProducingGraphicsBuffer gameScreenImageProducer;
     /**
      * Bit masks for packet buffer
      */
@@ -314,7 +314,7 @@ public class MovedStatics {
     public static boolean aBoolean512;
     public static int[] anIntArray3111;
     public static Signlink signlink;
-    public static ProducingGraphicsBuffer tabPieveLowerRight;
+    public static ProducingGraphicsBuffer tabPieceLowerRight;
     public static GameSocket lostConnectionSocket;
     public static ProducingGraphicsBuffer tabPieceLeft;
     public static int anInt3048 = 1;
@@ -361,36 +361,6 @@ public class MovedStatics {
      * Something to do with item drag tracking
      */
     public static int anInt2869 = 0;
-
-    public static void method440() {
-        if (aBoolean512) {
-            Class60.anIntArray1198 = null;
-            Class60.flameRightBackground = null;
-            Class60.aProducingGraphicsBuffer_1631 = null;
-            Class60.aProducingGraphicsBuffer_1206 = null;
-            Class60.anIntArray1168 = null;
-            Class60.anIntArray3255 = null;
-            Class60.imgLoginScreenButton = null;
-            Class60.anIntArray1445 = null;
-            Class60.loginScreenBox = null;
-            Class60.anIntArray2865 = null;
-            Class60.flameLeftBackground = null;
-            Class60.aProducingGraphicsBuffer_907 = null;
-            Class60.aProducingGraphicsBuffer_2524 = null;
-            Class60.aClass40_Sub5_Sub14_Sub4_918 = null;
-            Class60.aClass40_Sub5_Sub14_Sub2Array535 = null;
-            Class60.anIntArray3248 = null;
-            Class60.loginBoxGraphics = null;
-            Class60.aClass40_Sub5_Sub14_Sub4_2043 = null;
-            Class60.anIntArray178 = null;
-            Class60.aProducingGraphicsBuffer_1285 = null;
-            Class60.aProducingGraphicsBuffer_463 = null;
-            Class60.anIntArray1013 = null;
-            MusicSystem.method405(10);
-            UpdateServer.resetUpdateServerRequests(true);
-            aBoolean512 = false;
-        }
-    }
 
     public static int[] menuActionTypes = new int[500];
     public static boolean showSidePanelRedrawnText = false;
@@ -443,7 +413,6 @@ public class MovedStatics {
         tabImageProducer.prepareRasterizer();
         if (ScreenController.frameMode == ScreenMode.FIXED) {
             inventoryBackgroundImage.drawImage(0, 0);
-
         } else {
             int currentX = 0;
             int currentY = 0;
@@ -909,18 +878,20 @@ public class MovedStatics {
             }
             if (statusCode == 0 || statusCode == 35) {
                 method344(-40);
-                method440();
+                Game.loginScreen.cleanUp();
                 if (aProducingGraphicsBuffer_2213 == null)
                     aProducingGraphicsBuffer_2213 = createGraphicsBuffer(765, 503, Game.gameCanvas);
             }
             if (statusCode == 5 || statusCode == 10 || statusCode == 20) {
                 aProducingGraphicsBuffer_2213 = null;
                 method344(-69);
-                Class60.renderLoginScreen(Game.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
+                Game.loginScreen.createLoginScreen(Game.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
             }
             if (statusCode == 25 || statusCode == 30 || statusCode == 40) {
                 aProducingGraphicsBuffer_2213 = null;
-                method440();
+                Game.loginScreen.cleanUp();
+                TypeFace.fontBold.setRasterizer(null);
+                TypeFace.fontSmall.setRasterizer(null);
                 method763(Game.gameCanvas, CacheArchive.gameImageCacheArchive);
             }
             Game.gameStatusCode = statusCode;
@@ -943,16 +914,20 @@ public class MovedStatics {
     }
 
 
-    public static ProducingGraphicsBuffer createGraphicsBuffer(int width, int height, Component component) {
+    public static ProducingGraphicsBuffer createGraphicsBuffer(int width, int height, Component component, RasterizerInstanced rasterizerInstance) {
         try {
             ProducingGraphicsBuffer producingGraphicsBuffer = new ProducingGraphicsBuffer_Sub2();
-            producingGraphicsBuffer.method1041(13, width, component, height);
+            producingGraphicsBuffer.method1041(13, width, component, height, rasterizerInstance);
             return producingGraphicsBuffer;
         } catch(Throwable throwable) {
             ProducingGraphicsBuffer_Sub1 class68_sub1 = new ProducingGraphicsBuffer_Sub1();
-            class68_sub1.method1041(44, width, component, height);
+            class68_sub1.method1041(44, width, component, height, rasterizerInstance);
             return class68_sub1;
         }
+    }
+
+    public static ProducingGraphicsBuffer createGraphicsBuffer(int width, int height, Component component) {
+        return createGraphicsBuffer(width, height, component, null);
     }
 
     /**
@@ -1447,7 +1422,6 @@ public class MovedStatics {
             tabTopBack = null;
             tabImageProducer = null;
             tabHighlightImageTopLeftEdge = null;
-            gameScreenImageProducer = null;
             tabHighlightImageBottomRightEdge = null;
             ChatBox.chatBoxImageProducer = null;
             mapBackRight = null;
@@ -1459,7 +1433,7 @@ public class MovedStatics {
                 tabHighlightImageBottomLeft = null;
                 tabHighlightImageBottomLeftEdge = null;
                 fullScreenTextureArray = null;
-                tabPieveLowerRight = null;
+                tabPieceLowerRight = null;
                 framePieceTop = null;
                 chatboxBackgroundImage = null;
             }
@@ -1515,231 +1489,6 @@ public class MovedStatics {
                         i_5_++;
                     Landscape.currentCollisionMap[arg7].addObject(arg1, i_5_, arg7, arg3, Game.currentScene,  arg4, arg0, arg2);
                 }
-            }
-        }
-    }
-
-    public static void renderSplitPrivateMessages() {
-        if(ChatBox.splitPrivateChat != 0) {
-            TypeFace class40_sub5_sub14_sub1 = fontNormal;
-            int i = 0;
-            if(systemUpdateTime != 0)
-                i = 1;
-            for(int i_0_ = 0; i_0_ < 100; i_0_++) {
-                if(ChatBox.chatMessages[i_0_] != null) {
-                    String class1 = ChatBox.chatPlayerNames[i_0_];
-                    int i_1_ = 0;
-                    int i_2_ = ChatBox.chatTypes[i_0_];
-                    if(class1 != null && class1.startsWith(Native.whiteCrown)) {
-                        class1 = class1.substring(5);
-                        i_1_ = 1;
-                    }
-                    if(class1 != null && class1.startsWith(Native.goldCrown)) {
-                        class1 = class1.substring(5);
-                        i_1_ = 2;
-                    }
-                    if((i_2_ == 3 || i_2_ == 7) && (i_2_ == 7 || ChatBox.privateChatMode == 0 || ChatBox.privateChatMode == 1 && Player.hasFriend(class1))) {
-                        int i_3_ = 329 - 13 * i;
-                        int i_4_ = 4;
-                        i++;
-                        class40_sub5_sub14_sub1.drawString(English.from, i_4_, i_3_, 0);
-                        class40_sub5_sub14_sub1.drawString(English.from, i_4_, -1 + i_3_, 65535);
-                        i_4_ += class40_sub5_sub14_sub1.getStringWidth(English.from);
-                        i_4_ += class40_sub5_sub14_sub1.method689(32);
-                        if(i_1_ == 1) {
-                            moderatorIcon[0].drawImage(i_4_, i_3_ - 12);
-                            i_4_ += 14;
-                        }
-                        if(i_1_ == 2) {
-                            moderatorIcon[1].drawImage(i_4_, -12 + i_3_);
-                            i_4_ += 14;
-                        }
-                        class40_sub5_sub14_sub1.drawString(class1 + Native.COLON_CHARACTER + ChatBox.chatMessages[i_0_], i_4_, i_3_, 0);
-                        class40_sub5_sub14_sub1.drawString(class1 + Native.COLON_CHARACTER + ChatBox.chatMessages[i_0_], i_4_, -1 + i_3_, 65535);
-                        if(i >= 5)
-                            return;
-                    }
-                    if(i_2_ == 5 && ChatBox.privateChatMode < 2) {
-                        int i_5_ = -(i * 13) + 329;
-                        i++;
-                        class40_sub5_sub14_sub1.drawString(ChatBox.chatMessages[i_0_], 4, i_5_, 0);
-                        class40_sub5_sub14_sub1.drawString(ChatBox.chatMessages[i_0_], 4, i_5_ - 1, 65535);
-                        if(i >= 5)
-                            return;
-                    }
-                    if(i_2_ == 6 && ChatBox.privateChatMode < 2) {
-                        int i_6_ = -(13 * i) + 329;
-                        i++;
-                        class40_sub5_sub14_sub1.drawString(English.to + Native.whitespace_b + class1 + Native.COLON_CHARACTER + ChatBox.chatMessages[i_0_], 4, i_6_, 0);
-                        class40_sub5_sub14_sub1.drawString(English.to + Native.whitespace_b + class1 + Native.COLON_CHARACTER + ChatBox.chatMessages[i_0_], 4, i_6_ + -1, 65535);
-                        if(i >= 5)
-                            return;
-                    }
-                }
-            }
-        }
-    }
-
-    public static void draw3dScreen() {
-        renderSplitPrivateMessages();
-        if (crossType == 1) {
-            cursorCross[crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
-        }
-        if (crossType == 2) {
-            cursorCross[4 + crossIndex / 100].drawImage(GameInterface.crossX - 8 - 4, GameInterface.crossY - 8 - 4);
-        }
-        if (GameInterface.gameScreenInterfaceId != -1 || GameInterface.walkableWidgetId != -1) {
-                int areaId = GameInterface.gameScreenInterfaceId != -1 ? 0 : 4;
-                int id = GameInterface.gameScreenInterfaceId != -1 ? GameInterface.gameScreenInterfaceId : GameInterface.walkableWidgetId;
-                GameInterface.handleSequences(id);
-                int yOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);
-                int xOffset = (ScreenController.drawWidth /2) - (512/2) - (234/3);
-                if(ScreenController.frameMode == ScreenMode.FIXED) {
-                    yOffset = 0;
-                    xOffset = 0;
-                }
-                Game.drawParentInterface(areaId, xOffset, yOffset, 512+ xOffset, 334 + yOffset, id);
-        }
-        method1018();
-        Player.setTutorialIslandFlag();
-        if (!menuOpen) {
-            processRightClick();
-            drawMenuTooltip(4);
-        } else  {
-            if(ScreenController.frameMode == ScreenMode.FIXED && menuScreenArea == 0){
-                drawMenu(4,4);
-            }
-        }
-        if (multiCombatState == 1) {
-            multiCombatIcon.drawImage(472, 296);
-        }
-        if (showFps) {
-            int y = 20;
-            int x = 507;
-            if(ScreenController.frameMode != ScreenMode.FIXED) {
-                x = ScreenController.drawWidth - 220;
-            }
-
-            int colour = 0xffff00;
-            if (GameShell.fps < 30 && VertexNormal.lowMemory) {
-                colour = 0xff0000;
-            }
-            if (GameShell.fps < 20 && !VertexNormal.lowMemory) {
-                colour = 0xff0000;
-            }
-            fontNormal.drawStringRight("Fps: " + GameShell.fps, x, y, colour);
-            colour = 0xffff00;
-            y += 15;
-            Runtime runtime = Runtime.getRuntime();
-            int memoryUsed = (int) ((runtime.totalMemory() + -runtime.freeMemory()) / 1024L);
-            if (memoryUsed > 32768 && VertexNormal.lowMemory) {
-                colour = 0xff0000;
-            }
-            if (memoryUsed < 65536 && !VertexNormal.lowMemory) {
-                colour = 0xff0000;
-            }
-            fontNormal.drawStringRight("Mem: " + memoryUsed + "k", x, y, colour);
-            y += 15;
-
-            fontNormal.drawStringRight("MouseX: " + MouseHandler.mouseX, x, y ,0xffff00);
-            y += 15;
-
-            fontNormal.drawStringRight("MouseY: " + MouseHandler.mouseY, x, y ,0xffff00);
-            y += 15;
-            fontNormal.drawStringRight("ClickX: " + MouseHandler.clickX, x, y ,0xffff00);
-            y += 15;
-
-            fontNormal.drawStringRight("ClickY: " + MouseHandler.clickY, x, y ,0xffff00);
-            y += 15;
-            if (showSidePanelRedrawnText) {
-                fontNormal.drawStringRight(English.sidePanelRedrawn, x, y, 16711680);
-                y += 15;
-                showSidePanelRedrawnText = false;
-            }
-            if (showChatPanelRedrawnText) {
-                fontNormal.drawStringRight(English.chatPanelRedrawn, x, y, 16711680);
-                y += 15;
-                showChatPanelRedrawnText = false;
-            }
-            if (showIconsRedrawnText) {
-                fontNormal.drawStringRight(English.iconsRedrawn, x, y, 16711680);
-                showIconsRedrawnText = false;
-                y += 15;
-            }
-        }
-        if (Configuration.DEBUG_WIDGETS) {
-            int y = 20;
-            int x = 507;
-            if(ScreenController.frameMode != ScreenMode.FIXED) {
-                x = ScreenController.drawWidth - 220;
-            }
-            int widgetParentId = hoveredWidgetId >> 16;
-            int widgetChildId = hoveredWidgetId & 0x7fff;
-            String typeAsString = "";
-
-            // Gather widget metadata from the cached interfaces
-            GameInterface[] parentInterface;
-            GameInterface childInterface = null;
-            if (widgetParentId >= 0 && widgetChildId < 469) {
-                parentInterface = GameInterface.cachedInterfaces[widgetParentId];
-
-                if (parentInterface != null) {
-                    childInterface = parentInterface[widgetChildId];
-                }
-
-                if (childInterface != null) {
-                    switch (childInterface.type) {
-                        case TEXT:
-                            typeAsString = "TEXT";
-                            break;
-                        case GRAPHIC:
-                            typeAsString = "GRAPHIC";
-                            break;
-                        case MODEL:
-                            typeAsString = "MODEL";
-                            break;
-                        case RECTANGLE:
-                            typeAsString = "RECTANGLE";
-                            break;
-                        case INVENTORY:
-                            typeAsString = "INVENTORY";
-                            break;
-                        case LINE:
-                            typeAsString = "LINE";
-                            break;
-                        case TEXT_INVENTORY:
-                            typeAsString = "TEXT_INVENTORY";
-                            break;
-                        case LAYER:
-                            typeAsString = "LAYER";
-                            break;
-                        case IF1_TOOLTIP:
-                            typeAsString = "IF1_TOOLTIP";
-                            break;
-                        default:
-                            typeAsString = "UNKNOWN";
-                    }
-                }
-            }
-
-            fontNormal.drawStringRight("Widget " + widgetParentId + ":" + widgetChildId, x, y, 0xffff00);
-            y+= 15;
-            if (childInterface != null) {
-                fontNormal.drawStringRight("Parent ID: " + childInterface.parentId, x, y, 0xffff00);
-                y+= 15;
-                fontNormal.drawStringRight("Type: " + typeAsString, x, y, 0xffff00);
-                y+= 15;
-            }
-
-        }
-        if (systemUpdateTime != 0) {
-            int seconds = systemUpdateTime / 50;
-            int minutes = seconds / 60;
-            seconds %= 60;
-            if (seconds < 10) {
-                fontNormal.drawString(English.systemUpdateIn + minutes + Native.prefixColonZero + seconds, 4, 329, 16776960);
-            } else {
-                fontNormal.drawString(English.systemUpdateIn + minutes + Native.colon + seconds, 4, 329, 16776960);
             }
         }
     }
@@ -1921,7 +1670,7 @@ public class MovedStatics {
                 framePieceTop.drawGraphics(0, 0, graphics);
                 mapBackRight.drawGraphics(516, 4, graphics);
                 tabPieceUpperRight.drawGraphics(516, 205, graphics);
-                tabPieveLowerRight.drawGraphics(496, 357, graphics);
+                tabPieceLowerRight.drawGraphics(496, 357, graphics);
                 chatboxTop.drawGraphics(0, 338, graphics);
             }
         } catch(Exception exception) {
@@ -1938,13 +1687,14 @@ public class MovedStatics {
             tabBottomBack = Game.method359(Native.imgBackbase2, Native.aClass1_305, arg2);
             tabTopBack = Game.method359(Native.imgBackhmid1, Native.aClass1_305, arg2);
             ChatBox.chatBoxImageProducer = createGraphicsBuffer(479, 96, arg0);
-            chatboxBackgroundImage.drawImage(0, 0);
+            ChatBox.rasterizer = new RasterizerInstanced(ChatBox.chatBoxImageProducer);
+            chatboxBackgroundImage.drawImage(ChatBox.rasterizer, 0, 0);
             Minimap.mapbackProducingGraphicsBuffer = createGraphicsBuffer(172, 156, arg0);
             Rasterizer.resetPixels();
             Minimap.minimapBackgroundImage.drawImage(0, 0);
             tabImageProducer = createGraphicsBuffer(190, 261, arg0);
             inventoryBackgroundImage.drawImage(0, 0);
-            gameScreenImageProducer = createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, arg0);
+            ScreenController.setDrawComponent(arg0);
             Rasterizer.resetPixels();
             chatModes = createGraphicsBuffer(496, 50, arg0);
             tabBottom = createGraphicsBuffer(269, 37, arg0);
@@ -1971,7 +1721,7 @@ public class MovedStatics {
             tabPieceUpperRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = method1028(arg2, Native.imgBackvmid3, Native.aClass1_305);
-            tabPieveLowerRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
+            tabPieceLowerRight = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
             image.drawInverse(0, 0);
             image = method1028(arg2, Native.imgBackhmid2, Native.aClass1_305);
             chatboxTop = createGraphicsBuffer(image.imageWidth, image.imageHeight, arg0);
@@ -2143,17 +1893,22 @@ public class MovedStatics {
         int i = 151;
         method1018();
         i -= 3;
+
+        RasterizerInstanced oldRasterizer = fontNormal.getRasterizer();
+        fontNormal.setRasterizer(ScreenController.rasterizer);
+
         fontNormal.drawStringLeft(arg1, 257, i, 0);
         fontNormal.drawStringLeft(arg1, 256, i + -1, 16777215);
         if(arg3 != null) {
             i += 15;
             if(arg2) {
                 int i_0_ = 4 + fontNormal.getStringWidth(arg3);
-                Rasterizer.drawFilledRectangle(257 - i_0_ / 2, -11 + i, i_0_, 11, 0);
+                ScreenController.rasterizer.drawFilledRectangle(257 - i_0_ / 2, -11 + i, i_0_, 11, 0);
             }
             fontNormal.drawStringLeft(arg3, 257, i, 0);
             fontNormal.drawStringLeft(arg3, 256, i - 1, 16777215);
         }
+        fontNormal.setRasterizer(oldRasterizer);
         drawGameScreenGraphics();
     }
 
@@ -2599,8 +2354,8 @@ public class MovedStatics {
                         int i_1_ = 30 * actor.remainingHitpoints / actor.maximumHitpoints;
                         if(i_1_ > 30)
                             i_1_ = 30;
-                        Rasterizer.drawFilledRectangle(-15 + screenPos.x, screenPos.y + -3, i_1_, 5, 65280);
-                        Rasterizer.drawFilledRectangle(-15 + screenPos.x + i_1_, screenPos.y + -3, 30 + -i_1_, 5, 16711680);
+                        ScreenController.rasterizer.drawFilledRectangle(-15 + screenPos.x, screenPos.y + -3, i_1_, 5, 65280);
+                        ScreenController.rasterizer.drawFilledRectangle(-15 + screenPos.x + i_1_, screenPos.y + -3, 30 + -i_1_, 5, 16711680);
                     }
                 }
                 for(int i_2_ = 0; i_2_ < 4; i_2_++) {
@@ -2955,7 +2710,7 @@ public class MovedStatics {
     }
 
     public static void method1018() {
-        gameScreenImageProducer.prepareRasterizer();
+        ScreenController.drawComponent.prepareRasterizer();
         fullScreenTextureArray = Rasterizer3D.setLineOffsets(fullScreenTextureArray);
     }
 
@@ -3064,7 +2819,7 @@ public class MovedStatics {
     public static void drawGameScreenGraphics() {
         try {
             Graphics graphics = Game.gameCanvas.getGraphics();
-            gameScreenImageProducer.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
+            ScreenController.drawComponent.drawGraphics(ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, ScreenController.frameMode == ScreenMode.FIXED ? 4 : 0, graphics);
         } catch(Exception exception) {
             Game.gameCanvas.repaint();
         }

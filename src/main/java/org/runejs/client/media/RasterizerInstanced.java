@@ -1,6 +1,7 @@
 package org.runejs.client.media;
 
 import org.runejs.client.ProducingGraphicsBuffer;
+import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.media.renderable.Model;
 
@@ -20,6 +21,13 @@ public class RasterizerInstanced extends CachedNode {
     private static final int[] tmpX = new int[64];
     private static final int[] tmpY = new int[64];
 
+    public RasterizerInstanced() {
+        this.destinationPixels = new int[0];
+        this.destinationWidth = 0;
+        this.destinationHeight = 0;
+        setBounds(0, 0, 0, 0);
+    }
+
     public RasterizerInstanced(int[] pixels, int width, int height) {
         this.destinationPixels = pixels;
         this.destinationWidth = width;
@@ -29,10 +37,28 @@ public class RasterizerInstanced extends CachedNode {
 
 
     public RasterizerInstanced(ProducingGraphicsBuffer producingGraphicsBuffer) {
+        setGraphics(producingGraphicsBuffer);
+    }
+
+    public void setGraphics(ProducingGraphicsBuffer producingGraphicsBuffer) {
         this.destinationPixels = producingGraphicsBuffer.pixels;
         this.destinationWidth = producingGraphicsBuffer.width;
         this.destinationHeight = producingGraphicsBuffer.height;
         setBounds(0, 0, producingGraphicsBuffer.height, producingGraphicsBuffer.width);
+    }
+
+    public void getViewportDimensions(int[] arg0) {
+        arg0[0] = viewportLeft;
+        arg0[1] = viewportTop;
+        arg0[2] = viewportRight;
+        arg0[3] = viewportBottom;
+    }
+
+    public void setViewportDimensions(int[] arg0) {
+        viewportLeft = arg0[0];
+        viewportTop = arg0[1];
+        viewportRight = arg0[2];
+        viewportBottom = arg0[3];
     }
 
     public void prepare(int[] pixels, int width, int height) {
@@ -135,7 +161,18 @@ public class RasterizerInstanced extends CachedNode {
         viewportBottom = arg0[3];
     }
 
-
+    /**
+     * Copies a given set of pixels into a destination array. This method takes the entire source array 
+     * and fits it into the viewport. If the source image is larger than the viewport, the image will be 
+     * cropped. If the source image starts at coordinates outside the viewport, the image will be adjusted 
+     * to start from the viewport edge.
+     *
+     * @param pixels  The source pixel array from which to copy pixels.
+     * @param width   The width of the source pixel array.
+     * @param height  The height of the source pixel array.
+     * @param paintX  The x-coordinate at which to start painting pixels in the destination.
+     * @param paintY  The y-coordinate at which to start painting pixels in the destination.
+     */
     public void copyPixels(int[] pixels, int width, int height, int paintX, int paintY) {
         int sourcePixel = 0;
         if(paintX < viewportLeft) {
@@ -153,12 +190,35 @@ public class RasterizerInstanced extends CachedNode {
         int pixelOffset = this.destinationWidth - width;
         int pixel = paintX + paintY * this.destinationWidth;
         for(int heightCounter = -height; heightCounter < 0; heightCounter++) {
-            for(int widthCounter = -width; widthCounter < 0; widthCounter++)
-                destinationPixels[pixel++] = pixels[sourcePixel++];
+            for(int widthCounter = -width; widthCounter < 0; widthCounter++) {
+                // (jkm) this check wasn't in the initial RasterizerInstanced implementation, not sure why ...
+                if(pixels[sourcePixel] != Integer.MAX_VALUE) {
+                    destinationPixels[pixel] = pixels[sourcePixel];
+                }
+                pixel++;
+                sourcePixel++;
+            }
             pixel += pixelOffset;
         }
     }
-
+    
+    /**
+     * Copies a specified region of a given set of pixels into a destination array. This method allows to define 
+     * a sub-region within the source array (offsetX, offsetY, drawWidth, drawHeight) to be copied. Similar to 
+     * the copyPixels method, this method adjusts the image position based on viewport boundaries and also crops 
+     * the image if the region is larger than the viewport. However, in contrast to copyPixels, it allows for more 
+     * flexible image manipulation by being able to define a specific region from the source image to copy.
+     *
+     * @param pixels    The source pixel array from which to copy pixels.
+     * @param srcWidth  The width of the source pixel array.
+     * @param srcHeight The height of the source pixel array.
+     * @param paintX    The x-coordinate at which to start painting pixels in the destination.
+     * @param paintY    The y-coordinate at which to start painting pixels in the destination.
+     * @param drawWidth The width of the region of the source array to be copied.
+     * @param drawHeight The height of the region of the source array to be copied.
+     * @param offsetX  The x-coordinate of the starting point of the region in the source array.
+     * @param offsetY  The y-coordinate of the starting point of the region in the source array.
+     */
     public void copyPixelsCutOff(int[] pixels, int srcWidth, int srcHeight, int paintX, int paintY, int drawWidth, int drawHeight, int offsetX, int offsetY) {
         int sourcePixel = offsetX + offsetY * srcWidth;
         if(paintX < viewportLeft) {
@@ -551,5 +611,40 @@ public class RasterizerInstanced extends CachedNode {
             destinationPixels[pixelOffset + pixel * destinationWidth] = colour;
     }
 
-
+    public void drawImage(ImageRGB image, int x, int y) {
+        x += image.offsetX;
+        y += image.offsetY;
+        int dest_offset = x + y * this.destinationWidth;
+        int source_offset = 0;
+        int line_count = image.imageHeight;
+        int line_width = image.imageWidth;
+        int line_offset_dest = this.destinationWidth - line_width;
+        int line_offset_source = 0;
+        if(y < this.viewportTop) {
+            int clip_height = this.viewportTop - y;
+            line_count -= clip_height;
+            y = this.viewportTop;
+            source_offset += clip_height * line_width;
+            dest_offset += clip_height * this.destinationWidth;
+        }
+        if(y + line_count > this.viewportBottom)
+            line_count -= y + line_count - this.viewportBottom;
+        if(x < this.viewportLeft) {
+            int clip_width = this.viewportLeft - x;
+            line_width -= clip_width;
+            x = this.viewportLeft;
+            source_offset += clip_width;
+            dest_offset += clip_width;
+            line_offset_source += clip_width;
+            line_offset_dest += clip_width;
+        }
+        if(x + line_width > this.viewportRight) {
+            int clip_width = x + line_width - this.viewportRight;
+            line_width -= clip_width;
+            line_offset_source += clip_width;
+            line_offset_dest += clip_width;
+        }
+        if(line_width > 0 && line_count > 0)
+            ImageRGB.blockCopyTrans(this.destinationPixels, image.pixels, 0, source_offset, dest_offset, line_width, line_count, line_offset_dest, line_offset_source);
+    }
 }

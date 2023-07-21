@@ -10,7 +10,7 @@ import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
-import org.runejs.client.media.Rasterizer;
+import org.runejs.client.media.RasterizerInstanced;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.net.UpdateServer;
 import org.runejs.client.sound.MusicSystem;
@@ -23,65 +23,65 @@ import java.awt.*;
 /**
  * The class that handles the login screen.
  */
-public class Class60 {
-    public static int loginScreenState = 0;
-    public static int loginScreenFocus = 0;
-    public static ProducingGraphicsBuffer muteButton;
+public class LoginScreen {
+    public int loginScreenState = 0;
+    public int loginScreenFocus = 0;
+    public ProducingGraphicsBuffer muteButton;
     /**
      * Part of login screen
      */
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1631;
+    public ProducingGraphicsBuffer aProducingGraphicsBuffer_1631;
     /**
      * Part of login screen
      */
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1206;
-    public static ProducingGraphicsBuffer flameRightBackground;
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_1285;
+    public ProducingGraphicsBuffer aProducingGraphicsBuffer_1206;
+    public ProducingGraphicsBuffer flameRightBackground;
+    public ProducingGraphicsBuffer aProducingGraphicsBuffer_1285;
     /**
      * Something to do with flames, maybe
      */
-	public static int anInt2452 = 0;
+	public int anInt2452 = 0;
     /**
      * Something to do with flames, maybe
      */
-    public static int anInt2613 = 0;
+    public int anInt2613 = 0;
     /**
      * Something to do with flames, maybe
      */
-    public static int[] anIntArray1013;
+    public int[] anIntArray1013;
     /**
      * Something to do with flames, maybe
      */
-    public static int[] anIntArray1198;
-    public static int[] anIntArray2865;
-    public static int[] anIntArray3248;
-    public static ProducingGraphicsBuffer flameLeftBackground;
+    public int[] anIntArray1198;
+    public int[] anIntArray2865;
+    public int[] anIntArray3248;
+    public ProducingGraphicsBuffer flameLeftBackground;
     /**
      * Something to do with flames, maybe
      */
-    public static ImageRGB aClass40_Sub5_Sub14_Sub4_918;
+    public ImageRGB aClass40_Sub5_Sub14_Sub4_918;
     /**
      * Something to do with flames, maybe
      */
-    public static int[] anIntArray466 = new int[256];
+    public int[] anIntArray466 = new int[256];
     /**
      * Something to do with flames, maybe
      */
-    public static int[] anIntArray178;
-    public static ImageRGB aClass40_Sub5_Sub14_Sub4_2043;
-    public static ProducingGraphicsBuffer loginBoxGraphics;
-    public static IndexedImage loginScreenBox;
-    public static IndexedImage imgLoginScreenButton;
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_907;
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_463;
-    public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2524;
-    public static int[] anIntArray3255;
-    public static int[] anIntArray1168;
-    public static int anInt1641 = 0;
-    public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array535;
-    public static int[] anIntArray1445;
+    public int[] anIntArray178;
+    public ImageRGB aClass40_Sub5_Sub14_Sub4_2043;
+    public ProducingGraphicsBuffer loginBoxGraphics;
+    public IndexedImage loginScreenBox;
+    public IndexedImage imgLoginScreenButton;
+    public ProducingGraphicsBuffer aProducingGraphicsBuffer_907;
+    public ProducingGraphicsBuffer aProducingGraphicsBuffer_463;
+    public ProducingGraphicsBuffer aProducingGraphicsBuffer_2524;
+    public int[] anIntArray3255;
+    public int[] anIntArray1168;
+    public int anInt1641 = 0;
+    public IndexedImage[] aClass40_Sub5_Sub14_Sub2Array535;
+    public int[] anIntArray1445;
 
-    public static void updateLogin() {
+    public void updateLogin() {
         method836(1);
 
         if(MouseHandler.clickType == 1 && MouseHandler.clickY >= ScreenController.drawHeight-42 && MouseHandler.clickX>=ScreenController.drawWidth-42 ){
@@ -197,22 +197,26 @@ public class Class60 {
         }
     }
 
-    public static void drawLoadingScreen(TypeFace fontBold, TypeFace fontSmall) {
-        loginBoxGraphics.prepareRasterizer();
+    public void drawLoadingScreen(TypeFace fontBold, TypeFace fontSmall) {
+        loginBoxGraphics.prepareRasterizer(rasterizer);
+
+        fontBold.setRasterizer(rasterizer);
+        fontSmall.setRasterizer(rasterizer);
+
 //            Rasterizer.drawFilledRectangle(0,0, ScreenController.frameWidth, ScreenController.frameHeight, 0);
         if (Game.gameStatusCode == 0 || Game.gameStatusCode == 5) {
             int i = 20;
             fontBold.drawStringLeft(English.gameIsLoadingPleaseWait, 180, 74 + -i, 16777215);
             int i_89_ = -i + 82;
-            Rasterizer.drawUnfilledRectangle(28, i_89_, 304, 34, 9179409);
-            Rasterizer.drawUnfilledRectangle(29, 1 + i_89_, 302, 32, 0);
-            Rasterizer.drawFilledRectangle(30, 2 + i_89_, MovedStatics.anInt1607 * 3, 30, 9179409);
-            Rasterizer.drawFilledRectangle(3 * MovedStatics.anInt1607 + 30, i_89_ + 2, -(MovedStatics.anInt1607 * 3) + 300, 30, 0);
+            rasterizer.drawUnfilledRectangle(28, i_89_, 304, 34, 9179409);
+            rasterizer.drawUnfilledRectangle(29, 1 + i_89_, 302, 32, 0);
+            rasterizer.drawFilledRectangle(30, 2 + i_89_, MovedStatics.anInt1607 * 3, 30, 9179409);
+            rasterizer.drawFilledRectangle(3 * MovedStatics.anInt1607 + 30, i_89_ + 2, -(MovedStatics.anInt1607 * 3) + 300, 30, 0);
             fontBold.drawStringLeft(Native.currentLoadingText, 180, -i + 105, 16777215);
         }
         if (Game.gameStatusCode == 20) {
             int drawY = 40;
-            loginScreenBox.drawImage(0, 0);
+            loginScreenBox.drawImage(rasterizer, 0, 0);
             fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineOne, 180, drawY, 16776960, true);
             drawY += 15;
             fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineTwo, 180, drawY, 16776960, true);
@@ -226,7 +230,7 @@ public class Class60 {
             drawY += 15;
         }
         if (Game.gameStatusCode == 10) {
-            loginScreenBox.drawImage(0, 0);
+            loginScreenBox.drawImage(rasterizer, 0, 0);
             if (loginScreenState == 0) {
                 /*fontBold.drawShadowedStringCenter(English.welcomeTo, 180, 80, 16776960, true);
                 int drawX = 100;
@@ -247,7 +251,7 @@ public class Class60 {
                     i_93_ += 15;
                 }
 
-                imgLoginScreenButton.drawImage(-73 + i, i_92_ - 20);
+                imgLoginScreenButton.drawImage(rasterizer, -73 + i, i_92_ - 20);
                 fontBold.drawShadowedStringCenter(English.login, i, 5 + i_92_, 16777215, true);
 
             } else if (loginScreenState == 2) {
@@ -277,11 +281,11 @@ public class Class60 {
                     width = fontBold.getStringWidth(English.password + starredPassword.substring(offset) + Native.justAnotherYellowBar);
                 }
                 fontBold.drawShadowedString(English.password + starredPassword.substring(offset) + (MovedStatics.pulseCycle % 40 < 20 & loginScreenFocus == 1 ? Native.justAnotherYellowBar : ""), 92, y1, true, 16777215);
-                imgLoginScreenButton.drawImage(-73 + drawX, y2 + -20);
+                imgLoginScreenButton.drawImage(rasterizer, -73 + drawX, y2 + -20);
                 y1 += 15;
                 fontBold.drawShadowedStringCenter(English.login, drawX, y2 + 5, 16777215, true);
                 drawX = 260;
-                imgLoginScreenButton.drawImage(-73 + drawX, y2 + -20);
+                imgLoginScreenButton.drawImage(rasterizer, -73 + drawX, y2 + -20);
                 fontBold.drawShadowedStringCenter(English.cancel, drawX, 5 + y2, 16777215, true);
             } else if (loginScreenState == 3) {
                 fontBold.drawShadowedStringCenter(English.createAFreeAccount, 180, 40, 16776960, true);
@@ -294,24 +298,24 @@ public class Class60 {
                     i_93_ += 15;
                 }
 
-                imgLoginScreenButton.drawImage(-73 + i, i_92_ - 20);
+                imgLoginScreenButton.drawImage(rasterizer, -73 + i, i_92_ - 20);
                 fontBold.drawShadowedStringCenter(English.cancel, i, 5 + i_92_, 16777215, true);
             }
         }
 
-        muteButton.prepareRasterizer();
+        muteButton.prepareRasterizer(rasterizer);
         ImageRGB musicIcon = TabParts.GetPart("music");
 
         if(ScreenController.frameMode == ScreenMode.RESIZABLE) {
-            Rasterizer.drawFilledRectangle(0, 0, ScreenController.drawWidth, ScreenController.drawHeight, 0);
+            rasterizer.drawFilledRectangle(0, 0, ScreenController.drawWidth, ScreenController.drawHeight, 0);
         }
 
-        Rasterizer.drawFilledRectangle(0, 0, 42, 42, 0x4d4431);
-        Rasterizer.drawUnfilledRectangle(0, 0, 42, 42, 0x242017);
-        musicIcon.drawImage(4, 3);
+        rasterizer.drawFilledRectangle(0, 0, 42, 42, 0x4d4431);
+        rasterizer.drawUnfilledRectangle(0, 0, 42, 42, 0x242017);
+        musicIcon.drawImage(rasterizer, 4, 3);
 
         if(MusicSystem.musicVolume == 0) {
-            Rasterizer.drawDiagonalLine(0,0, 42,42, 0xFF0000);
+            rasterizer.drawDiagonalLine(0,0, 42,42, 0xFF0000);
         }
 
         renderFlames();
@@ -352,7 +356,7 @@ public class Class60 {
         }
     }
 
-    public static void setLoginScreenMessage(String line1, String line2, String line3) {
+    public void setLoginScreenMessage(String line1, String line2, String line3) {
         Native.loginScreenMessageLineOne = line1;
         Native.loginScreenMessageLineTwo = line2;
         Native.loginScreenMessageLineThree = line3;
@@ -361,7 +365,7 @@ public class Class60 {
     /**
      * Login screen flames?
      */
-    private static void method836(int arg0) {
+    private void method836(int arg0) {
         int i = 256;
         for (int i_0_ = 10; i_0_ < 117; i_0_++) {
             int i_1_ = (int) (Math.random() * 100.0);
@@ -411,48 +415,54 @@ public class Class60 {
         }
     }
 
-    public static void renderLoginScreen(Component arg0, CacheArchive huffmanCacheArchive, CacheArchive gameImageCacheArchive) {
+    public ProducingGraphicsBuffer graphicsBuffer;
+    public RasterizerInstanced rasterizer;
+
+    public void createLoginScreen(Component arg0, CacheArchive huffmanCacheArchive, CacheArchive gameImageCacheArchive) {
         if (!MovedStatics.aBoolean512) {
-            flameLeftBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
-            Rasterizer.resetPixels();
-            flameRightBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0);
-            Rasterizer.resetPixels();
-            aProducingGraphicsBuffer_907 = MovedStatics.createGraphicsBuffer(509, 171, arg0);
-            Rasterizer.resetPixels();
-            aProducingGraphicsBuffer_1206 = MovedStatics.createGraphicsBuffer(360, 132, arg0);
-            Rasterizer.resetPixels();
-            loginBoxGraphics = MovedStatics.createGraphicsBuffer(360, 200, arg0);
-            Rasterizer.resetPixels();
-            aProducingGraphicsBuffer_463 = MovedStatics.createGraphicsBuffer(202, 238, arg0);
-            Rasterizer.resetPixels();
-            aProducingGraphicsBuffer_1285 = MovedStatics.createGraphicsBuffer(203, 238, arg0);
-            Rasterizer.resetPixels();
-            aProducingGraphicsBuffer_2524 = MovedStatics.createGraphicsBuffer(74, 94, arg0);
-            Rasterizer.resetPixels();
-            aProducingGraphicsBuffer_1631 = MovedStatics.createGraphicsBuffer(75, 94, arg0);
-            Rasterizer.resetPixels();
-            muteButton = MovedStatics.createGraphicsBuffer(42, 42, arg0);
-            Rasterizer.resetPixels();
+            graphicsBuffer = MovedStatics.createGraphicsBuffer(arg0.getWidth(), arg0.getHeight(), arg0);
+            rasterizer = new RasterizerInstanced(graphicsBuffer);
+
+            flameLeftBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0, rasterizer);
+            rasterizer.resetPixels();
+            flameRightBackground = MovedStatics.createGraphicsBuffer(128, 265, arg0, rasterizer);
+            rasterizer.resetPixels();
+            aProducingGraphicsBuffer_907 = MovedStatics.createGraphicsBuffer(509, 171, arg0, rasterizer);
+            rasterizer.resetPixels();
+            aProducingGraphicsBuffer_1206 = MovedStatics.createGraphicsBuffer(360, 132, arg0, rasterizer);
+            rasterizer.resetPixels();
+            loginBoxGraphics = MovedStatics.createGraphicsBuffer(360, 200, arg0, rasterizer);
+            rasterizer.resetPixels();
+            aProducingGraphicsBuffer_463 = MovedStatics.createGraphicsBuffer(202, 238, arg0, rasterizer);
+            rasterizer.resetPixels();
+            aProducingGraphicsBuffer_1285 = MovedStatics.createGraphicsBuffer(203, 238, arg0, rasterizer);
+            rasterizer.resetPixels();
+            aProducingGraphicsBuffer_2524 = MovedStatics.createGraphicsBuffer(74, 94, arg0, rasterizer);
+            rasterizer.resetPixels();
+            aProducingGraphicsBuffer_1631 = MovedStatics.createGraphicsBuffer(75, 94, arg0, rasterizer);
+            rasterizer.resetPixels();
+            muteButton = MovedStatics.createGraphicsBuffer(42, 42, arg0, rasterizer);
+            rasterizer.resetPixels();
             byte[] is = huffmanCacheArchive.method170("", Native.titleImage);
             ImageRGB titleImg = new ImageRGB(is, arg0);
-            flameLeftBackground.prepareRasterizer();
-            titleImg.drawInverse(0, 0);
-            flameRightBackground.prepareRasterizer();
-            titleImg.drawInverse(-637, 0);
-            aProducingGraphicsBuffer_907.prepareRasterizer();
-            titleImg.drawInverse(-128, 0);
-            aProducingGraphicsBuffer_1206.prepareRasterizer();
-            titleImg.drawInverse(-202, -371);
-            loginBoxGraphics.prepareRasterizer();
-            titleImg.drawInverse(-202, -171);
-            aProducingGraphicsBuffer_463.prepareRasterizer();
-            titleImg.drawInverse(0, -265);
-            aProducingGraphicsBuffer_1285.prepareRasterizer();
-            titleImg.drawInverse(-562, -265);
-            aProducingGraphicsBuffer_2524.prepareRasterizer();
-            titleImg.drawInverse(-128, -171);
-            aProducingGraphicsBuffer_1631.prepareRasterizer();
-            titleImg.drawInverse(-562, -171);
+            flameLeftBackground.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, 0, 0);
+            flameRightBackground.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, -637, 0);
+            aProducingGraphicsBuffer_907.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, -128, 0);
+            aProducingGraphicsBuffer_1206.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, -202, -371);
+            loginBoxGraphics.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, -202, -171);
+            aProducingGraphicsBuffer_463.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, 0, -265);
+            aProducingGraphicsBuffer_1285.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, -562, -265);
+            aProducingGraphicsBuffer_2524.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, -128, -171);
+            aProducingGraphicsBuffer_1631.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, -562, -171);
             int[] is_18_ = new int[titleImg.imageWidth];
             for (int i = 0; i < titleImg.imageHeight; i++) {
                 for (int i_19_ = 0; i_19_ < titleImg.imageWidth; i_19_++)
@@ -460,37 +470,37 @@ public class Class60 {
                 for (int i_20_ = 0; i_20_ < titleImg.imageWidth; i_20_++)
                     titleImg.pixels[i_20_ + titleImg.imageWidth * i] = is_18_[i_20_];
             }
-            flameLeftBackground.prepareRasterizer();
-            titleImg.drawInverse(382, 0);
-            flameRightBackground.prepareRasterizer();
-            titleImg.drawInverse(-255, 0);
-            aProducingGraphicsBuffer_907.prepareRasterizer();
-            titleImg.drawInverse(254, 0);
-            aProducingGraphicsBuffer_1206.prepareRasterizer();
-            titleImg.drawInverse(180, -371);
-            loginBoxGraphics.prepareRasterizer();
-            titleImg.drawInverse(180, -171);
-            aProducingGraphicsBuffer_463.prepareRasterizer();
-            titleImg.drawInverse(382, -265);
-            aProducingGraphicsBuffer_1285.prepareRasterizer();
-            titleImg.drawInverse(-180, -265);
-            aProducingGraphicsBuffer_2524.prepareRasterizer();
-            titleImg.drawInverse(254, -171);
-            aProducingGraphicsBuffer_1631.prepareRasterizer();
-            titleImg.drawInverse(-180, -171);
-            muteButton.prepareRasterizer();
+            flameLeftBackground.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, 382, 0);
+            flameRightBackground.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, -255, 0);
+            aProducingGraphicsBuffer_907.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, 254, 0);
+            aProducingGraphicsBuffer_1206.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, 180, -371);
+            loginBoxGraphics.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, 180, -171);
+            aProducingGraphicsBuffer_463.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, 382, -265);
+            aProducingGraphicsBuffer_1285.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, -180, -265);
+            aProducingGraphicsBuffer_2524.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, 254, -171);
+            aProducingGraphicsBuffer_1631.prepareRasterizer(rasterizer);
+            titleImg.drawInverse(rasterizer, -180, -171);
+            muteButton.prepareRasterizer(rasterizer);
             ImageRGB musicIcon = TabParts.GetPart("music");
-            Rasterizer.drawFilledRectangle(0, 0, 42, 42, 0x4d4431);
-            Rasterizer.drawUnfilledRectangle(0, 0, 42, 42, 0x242017);
-            musicIcon.drawImage(4, 3);
+            rasterizer.drawFilledRectangle(0, 0, 42, 42, 0x4d4431);
+            rasterizer.drawUnfilledRectangle(0, 0, 42, 42, 0x242017);
+            musicIcon.drawImage(rasterizer, 4, 3);
             titleImg = MovedStatics.method1028(gameImageCacheArchive, Native.logo, "");
-            aProducingGraphicsBuffer_907.prepareRasterizer();
+            aProducingGraphicsBuffer_907.prepareRasterizer(rasterizer);
             // UNCOMMENT LINE UNDER FOR LOGO
             // class40_sub5_sub14_sub4.drawImage(-128 + 382 + -(class40_sub5_sub14_sub4.imageWidth / 2), 18);
             // Comment line under to remove custom logo:
             ImageRGB logo = Images.GetPart("logo");
 
-            logo.drawImage(-128 + 382 + -(logo.imageWidth / 2), 18);
+            logo.drawImage(rasterizer, -128 + 382 + -(logo.imageWidth / 2), 18);
 
             loginScreenBox = Game.method359(Native.titleBox, "", gameImageCacheArchive);
             imgLoginScreenButton = Game.method359(Native.titleButton, "", gameImageCacheArchive);
@@ -548,7 +558,7 @@ public class Class60 {
         }
     }
 
-    public static void method879(IndexedImage arg1) {
+    public void method879(IndexedImage arg1) {
         int i = 0;
         for(/**/; i < anIntArray1168.length; i++)
             anIntArray1168[i] = 0;
@@ -583,7 +593,7 @@ public class Class60 {
         }
     }
 
-    public static void renderFlames() {
+    public void renderFlames() {
         if (anInt2452 <= 0) {
             if (anInt2613 > 0) {
                 for (int i = 0; i < 256; i++) {
@@ -656,8 +666,39 @@ public class Class60 {
         }
     }
 
-    public static int method614(int arg1, int arg2, int arg3) {
+    public int method614(int arg1, int arg2, int arg3) {
         int i_7_ = 256 + -arg3;
         return (arg3 * (0xff00 & arg2) + i_7_ * (0xff00 & arg1) & 0xff0000) + (~0xff00ff & (0xff00ff & arg1) * i_7_ + arg3 * (0xff00ff & arg2)) >> 8;
+    }
+
+
+    public void cleanUp() {
+        if (MovedStatics.aBoolean512) {
+            anIntArray1198 = null;
+            flameRightBackground = null;
+            aProducingGraphicsBuffer_1631 = null;
+            aProducingGraphicsBuffer_1206 = null;
+            anIntArray1168 = null;
+            anIntArray3255 = null;
+            imgLoginScreenButton = null;
+            anIntArray1445 = null;
+            loginScreenBox = null;
+            anIntArray2865 = null;
+            flameLeftBackground = null;
+            aProducingGraphicsBuffer_907 = null;
+            aProducingGraphicsBuffer_2524 = null;
+            aClass40_Sub5_Sub14_Sub4_918 = null;
+            aClass40_Sub5_Sub14_Sub2Array535 = null;
+            anIntArray3248 = null;
+            loginBoxGraphics = null;
+            aClass40_Sub5_Sub14_Sub4_2043 = null;
+            anIntArray178 = null;
+            aProducingGraphicsBuffer_1285 = null;
+            aProducingGraphicsBuffer_463 = null;
+            anIntArray1013 = null;
+            MusicSystem.method405(10);
+            UpdateServer.resetUpdateServerRequests(true);
+            MovedStatics.aBoolean512 = false;
+        }
     }
 }
