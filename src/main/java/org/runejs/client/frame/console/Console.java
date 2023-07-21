@@ -4,7 +4,7 @@ import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ChatBox;
-import org.runejs.client.media.Rasterizer;
+import org.runejs.client.frame.ScreenController;
 import org.runejs.client.message.outbound.console.ConsoleCommandOutboundMessage;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.frame.console.Commands.*;
@@ -84,11 +84,11 @@ public class Console {
                 GameInterface.drawScrollBar(width - 18, 0, height-21, scrollpos, getMaxScroll());
             }
             if (alpha) {
-                Rasterizer.drawFilledRectangleAlpha(0, 0, width, height, 0x513092, 97);
+                ScreenController.rasterizer.drawFilledRectangleAlpha(0, 0, width, height, 0x513092, 97);
             } else {
-                Rasterizer.drawFilledRectangle(0, 0, width, height, 0x513092);
+                ScreenController.rasterizer.drawFilledRectangle(0, 0, width, height, 0x513092);
             }
-            Rasterizer.drawHorizontalLine(1, height-19, width, 0xffffff);
+            ScreenController.rasterizer.drawHorizontalLine(1, height-19, width, 0xffffff);
             TypeFace.fontBold.setEffects(0xffffff, -1);
             TypeFace.fontBold.drawBasicString(">", 11, height-4);
             if (this.versionWidth == -1) {
