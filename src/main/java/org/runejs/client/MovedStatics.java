@@ -2354,8 +2354,8 @@ public class MovedStatics {
                         int i_1_ = 30 * actor.remainingHitpoints / actor.maximumHitpoints;
                         if(i_1_ > 30)
                             i_1_ = 30;
-                        Rasterizer.drawFilledRectangle(-15 + screenPos.x, screenPos.y + -3, i_1_, 5, 65280);
-                        Rasterizer.drawFilledRectangle(-15 + screenPos.x + i_1_, screenPos.y + -3, 30 + -i_1_, 5, 16711680);
+                        ScreenController.rasterizer.drawFilledRectangle(-15 + screenPos.x, screenPos.y + -3, i_1_, 5, 65280);
+                        ScreenController.rasterizer.drawFilledRectangle(-15 + screenPos.x + i_1_, screenPos.y + -3, 30 + -i_1_, 5, 16711680);
                     }
                 }
                 for(int i_2_ = 0; i_2_ < 4; i_2_++) {
