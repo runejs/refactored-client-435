@@ -4,12 +4,13 @@ import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.RasterizerInstanced;
+import org.runejs.client.node.CachedNode;
 import org.runejs.client.util.BitUtils;
 
 import java.awt.*;
 import java.awt.image.PixelGrabber;
 
-public class ImageRGB extends Rasterizer {
+public class ImageRGB extends CachedNode {
     public int offsetY;
     public int imageHeight;
     public int imageWidth;
