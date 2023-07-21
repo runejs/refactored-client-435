@@ -1688,7 +1688,8 @@ public class MovedStatics {
             tabBottomBack = Game.method359(Native.imgBackbase2, Native.aClass1_305, arg2);
             tabTopBack = Game.method359(Native.imgBackhmid1, Native.aClass1_305, arg2);
             ChatBox.chatBoxImageProducer = createGraphicsBuffer(479, 96, arg0);
-            chatboxBackgroundImage.drawImage(0, 0);
+            ChatBox.rasterizer = new RasterizerInstanced(ChatBox.chatBoxImageProducer);
+            chatboxBackgroundImage.drawImage(ChatBox.rasterizer, 0, 0);
             Minimap.mapbackProducingGraphicsBuffer = createGraphicsBuffer(172, 156, arg0);
             Rasterizer.resetPixels();
             Minimap.minimapBackgroundImage.drawImage(0, 0);

@@ -17,6 +17,7 @@ import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
+import org.runejs.client.media.RasterizerInstanced;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Pathfinding;
@@ -451,6 +452,25 @@ public class GameInterface extends CachedNode {
             } else
                 gameInterface.disabledText = "";
         }
+    }
+
+    public static void drawScrollBar(RasterizerInstanced rasterizer, int x, int y, int height, int scrollPosition, int scrollMaximum) {
+        int length = (-32 + height) * height / scrollMaximum;
+        MovedStatics.scrollbarArrowImages[0].drawImage(rasterizer, x, y);
+        MovedStatics.scrollbarArrowImages[1].drawImage(rasterizer, x, y - (-height + 16));
+        rasterizer.drawFilledRectangle(x, y + 16, 16, height + -32, SCROLLBAR_COLOR_BACKGROUND);
+        if(length < 8)
+            length = 8;
+        int scrollCurrent = (-32 + height - length) * scrollPosition / (-height + scrollMaximum);
+        rasterizer.drawFilledRectangle(x, 16 + y + scrollCurrent, 16, length, SCROLLBAR_COLOR_CHIP_FILL);
+        rasterizer.drawVerticalLine(x, 16 + y + scrollCurrent, length, SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
+        rasterizer.drawVerticalLine(1 + x, scrollCurrent + y + 16, length, SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
+        rasterizer.drawHorizontalLine(x, scrollCurrent + y + 16, 16, SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
+        rasterizer.drawHorizontalLine(x, 17 + y + scrollCurrent, 16, SCROLLBAR_COLOR_CHIP_EDGE_LIGHT);
+        rasterizer.drawVerticalLine(x + 15, y + 16 + scrollCurrent, length, SCROLLBAR_COLOR_CHIP_EDGE_DARK);
+        rasterizer.drawVerticalLine(x + 14, scrollCurrent + 17 + y, length - 1, SCROLLBAR_COLOR_CHIP_EDGE_DARK);
+        rasterizer.drawHorizontalLine(x, length + scrollCurrent + 15 + y, 16, SCROLLBAR_COLOR_CHIP_EDGE_DARK);
+        rasterizer.drawHorizontalLine(x + 1, 14 + y + scrollCurrent + length, 15, SCROLLBAR_COLOR_CHIP_EDGE_DARK);
     }
 
     public static void drawScrollBar(int x, int y, int height, int scrollPosition, int scrollMaximum) {

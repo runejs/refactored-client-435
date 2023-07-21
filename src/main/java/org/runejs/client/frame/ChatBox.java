@@ -7,8 +7,8 @@ import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
-import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
+import org.runejs.client.media.RasterizerInstanced;
 import org.runejs.client.media.renderable.actor.Player;
 
 import java.awt.*;
@@ -37,54 +37,75 @@ public class ChatBox {
     public static String chatboxInput = "";
     public static String chatMessage = "";
 
+    public static RasterizerInstanced rasterizer;
+
     private static char[] VALID_CHARACTERS = {' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w',
             'c', 'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8',
             '9', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '\243',
             '$', '%', '"', '[', ']', '_', '{', '}', '/', '|'};
+
     public static void renderChatbox() {
         MovedStatics.showChatPanelRedrawnText = true;
         method305();
         if(messagePromptRaised) {
-            TypeFace.fontBold.drawStringLeft(Native.enterPlayerNameHeader, 239, 40, 0);
-            TypeFace.fontBold.drawStringLeft(chatMessage + "*", 239, 60, 128);
+            TypeFace font = TypeFace.fontBold;
+            RasterizerInstanced oldRasterizer = font.getRasterizer();
+            font.setRasterizer(rasterizer);
+            font.drawStringLeft(Native.enterPlayerNameHeader, 239, 40, 0);
+            font.drawStringLeft(chatMessage + "*", 239, 60, 128);
+            font.setRasterizer(oldRasterizer);
         } else if(inputType == 1) {
-            TypeFace.fontBold.drawStringLeft(English.enterAmount, 239, 40, 0);
-            TypeFace.fontBold.drawStringLeft(inputMessage + "*", 239, 60, 128);
+            TypeFace font = TypeFace.fontBold;
+            RasterizerInstanced oldRasterizer = font.getRasterizer();
+            font.setRasterizer(rasterizer);
+            font.drawStringLeft(English.enterAmount, 239, 40, 0);
+            font.drawStringLeft(inputMessage + "*", 239, 60, 128);
+            font.setRasterizer(oldRasterizer);
         } else if(inputType == 2) {
-            TypeFace.fontBold.drawStringLeft(English.enterName, 239, 40, 0);
-            TypeFace.fontBold.drawStringLeft(inputMessage + "*", 239, 60, 128);
+            TypeFace font = TypeFace.fontBold;
+            RasterizerInstanced oldRasterizer = font.getRasterizer();
+            font.setRasterizer(rasterizer);
+            font.drawStringLeft(English.enterName, 239, 40, 0);
+            font.drawStringLeft(inputMessage + "*", 239, 60, 128);
+            font.setRasterizer(oldRasterizer);
         } else if(inputType == 3) {
             if(!inputMessage.equals(lastItemSearchInput)) {
                 itemSearch(inputMessage);
                 lastItemSearchInput = inputMessage;
             }
             TypeFace font = MovedStatics.fontNormal;
-            Rasterizer.setBounds(0, 0, 463, 77);
+            RasterizerInstanced oldRasterizer = font.getRasterizer();
+            font.setRasterizer(rasterizer);
             for(int index = 0; index < itemSearchResultCount; index++) {
                 int y = index * 14 + 18 - itemSearchScroll;
                 if(y > 0 && y < 110)
                     font.drawStringLeft(itemSearchResultNames[index], 239, y, 0);
             }
-            Rasterizer.resetBounds();
             if(itemSearchResultCount > 5)
-                GameInterface.drawScrollBar(463, 0, 77, itemSearchScroll, 7 + 14 * itemSearchResultCount);
+                GameInterface.drawScrollBar(rasterizer, 463, 0, 77, itemSearchScroll, 7 + 14 * itemSearchResultCount);
             if(inputMessage.length() != 0) {
                 if(itemSearchResultCount == 0)
                     TypeFace.fontBold.drawStringLeft(English.noMatchingObjectsFound, 239, 40, 0);
             } else
                 TypeFace.fontBold.drawStringLeft(English.enterObjectName, 239, 40, 255);
             font.drawStringLeft(inputMessage + "*", 239, 90, 0);
-            Rasterizer.drawHorizontalLine(0, 77, 479, 0);
+            rasterizer.drawHorizontalLine(0, 77, 479, 0);
+            font.setRasterizer(oldRasterizer);
         } else if(Native.clickToContinueString != null) {
-            TypeFace.fontBold.drawStringLeft(Native.clickToContinueString, 239, 40, 0);
-            TypeFace.fontBold.drawStringLeft(English.clickToContinue, 239, 60, 128);
+            TypeFace font = TypeFace.fontBold;
+            RasterizerInstanced oldRasterizer = font.getRasterizer();
+            font.setRasterizer(rasterizer);
+            font.drawStringLeft(Native.clickToContinueString, 239, 40, 0);
+            font.drawStringLeft(English.clickToContinue, 239, 60, 128);
+            font.setRasterizer(oldRasterizer);
         } else if(GameInterface.chatboxInterfaceId != -1) {
             redrawChatbox = !Game.drawParentInterface(2, 0, 0, 479, 96, GameInterface.chatboxInterfaceId);
         } else if(dialogueId == -1) {
             int line = 0;
-            TypeFace typeFace = MovedStatics.fontNormal;
-            typeFace.setRasterizer(null);
-            Rasterizer.setBounds(0, 0, 463, 77);
+            TypeFace font = MovedStatics.fontNormal;
+            RasterizerInstanced oldRasterizer = font.getRasterizer();
+            font.setRasterizer(rasterizer);
+            rasterizer.setBounds(0, 0, 77, 463);
             for(int i = 0; i < 100; i++) {
                 if(chatMessages[i] != null) {
                     int type = chatTypes[i];
@@ -102,22 +123,22 @@ public class ChatBox {
                     if(type == 0) {
                         line++;
                         if(y > 0 && y < 110)
-                            typeFace.drawString(chatMessages[i], 4, y, 0);
+                            font.drawString(chatMessages[i], 4, y, 0);
                     }
                     if((type == 1 || type == 2) && (type == 1 || publicChatMode == 0 || publicChatMode == 1 && Player.hasFriend(name))) {
                         if(y > 0 && y < 110) {
                             int x = 4;
                             if(privelege == 1) {
-                                MovedStatics.moderatorIcon[0].drawImage(x, y + -12);
+                                MovedStatics.moderatorIcon[0].drawImage(rasterizer, x, y + -12);
                                 x += 14;
                             }
                             if(privelege == 2) {
-                                MovedStatics.moderatorIcon[1].drawImage(x, y - 12);
+                                MovedStatics.moderatorIcon[1].drawImage(rasterizer, x, y - 12);
                                 x += 14;
                             }
-                            typeFace.drawString(name+ Native.colon, x, y, 0);
-                            x += 8 + typeFace.getStringWidth(name);
-                            typeFace.drawString(chatMessages[i], x, y, 255);
+                            font.drawString(name+ Native.colon, x, y, 0);
+                            x += 8 + font.getStringWidth(name);
+                            font.drawString(chatMessages[i], x, y, 255);
                         }
                         line++;
                     }
@@ -125,59 +146,60 @@ public class ChatBox {
                         line++;
                         if(y > 0 && y < 110) {
                             int i_13_ = 4;
-                            typeFace.drawString(English.from, i_13_, y, 0);
-                            i_13_ += typeFace.getStringWidth(English.from);
-                            i_13_ += typeFace.method689(32);
+                            font.drawString(English.from, i_13_, y, 0);
+                            i_13_ += font.getStringWidth(English.from);
+                            i_13_ += font.method689(32);
                             if(privelege == 1) {
-                                MovedStatics.moderatorIcon[0].drawImage(i_13_, y + -12);
+                                MovedStatics.moderatorIcon[0].drawImage(rasterizer, i_13_, y + -12);
                                 i_13_ += 14;
                             }
                             if(privelege == 2) {
-                                MovedStatics.moderatorIcon[1].drawImage(i_13_, y - 12);
+                                MovedStatics.moderatorIcon[1].drawImage(rasterizer, i_13_, y - 12);
                                 i_13_ += 14;
                             }
-                            typeFace.drawString(name + Native.colon, i_13_, y, 0);
-                            i_13_ += 8 + typeFace.getStringWidth(name);
-                            typeFace.drawString(chatMessages[i], i_13_, y, 8388608);
+                            font.drawString(name + Native.colon, i_13_, y, 0);
+                            i_13_ += 8 + font.getStringWidth(name);
+                            font.drawString(chatMessages[i], i_13_, y, 8388608);
                         }
                     }
                     if(type == 4 && (tradeMode == 0 || tradeMode == 1 && Player.hasFriend(name))) {
                         line++;
                         if(y > 0 && y < 110)
-                            typeFace.drawString(name + " " + chatMessages[i], 4, y, 8388736);
+                            font.drawString(name + " " + chatMessages[i], 4, y, 8388736);
                     }
                     if(type == 5 && splitPrivateChat == 0 && privateChatMode < 2) {
                         if(y > 0 && y < 110)
-                            typeFace.drawString(chatMessages[i], 4, y, 8388608);
+                            font.drawString(chatMessages[i], 4, y, 8388608);
                         line++;
                     }
                     if(type == 6 && splitPrivateChat == 0 && privateChatMode < 2) {
                         if(y > 0 && y < 110) {
-                            typeFace.drawString(English.to + Native.whitespace_b + name + Native.colon, 4, y, 0);
-                            typeFace.drawString(chatMessages[i], typeFace.getStringWidth(English.to + Native.whitespace_b + name) + 12, y, 8388608);
+                            font.drawString(English.to + Native.whitespace_b + name + Native.colon, 4, y, 0);
+                            font.drawString(chatMessages[i], font.getStringWidth(English.to + Native.whitespace_b + name) + 12, y, 8388608);
                         }
                         line++;
                     }
                     if(type == 8 && (tradeMode == 0 || tradeMode == 1 && Player.hasFriend(name))) {
                         line++;
                         if(y > 0 && y < 110)
-                            typeFace.drawString(name + Native.whitespace_b + chatMessages[i], 4, y, 8270336);
+                            font.drawString(name + Native.whitespace_b + chatMessages[i], 4, y, 8270336);
                     }
                 }
             }
-            Rasterizer.resetBounds();
+            rasterizer.resetBounds();
             chatboxScrollMax = line * 14 + 7;
             if(chatboxScrollMax < 78)
                 chatboxScrollMax = 78;
-            GameInterface.drawScrollBar(463, 0, 77, chatboxScrollMax - chatboxScroll - 77, chatboxScrollMax);
+            GameInterface.drawScrollBar(rasterizer, 463, 0, 77, chatboxScrollMax - chatboxScroll - 77, chatboxScrollMax);
             String name;
             if(Player.localPlayer != null && Player.localPlayer.playerName != null)
                 name = Player.localPlayer.playerName;
             else
                 name = Native.username.toString();
-            typeFace.drawString(name + Native.colon, 4, 90, 0);
-            typeFace.drawBasicStringLegacy("@blu@" + chatboxInput + Native.asterisk, typeFace.getStringWidth(name + Native.COLON_CHARACTER) + 6, 90);
-            Rasterizer.drawHorizontalLine(0, 77, 479, 0);
+            font.drawString(name + Native.colon, 4, 90, 0);
+            font.drawBasicStringLegacy("@blu@" + chatboxInput + Native.asterisk, font.getStringWidth(name + Native.COLON_CHARACTER) + 6, 90);
+            rasterizer.drawHorizontalLine(0, 77, 479, 0);
+            font.setRasterizer(oldRasterizer);
         } else {
             boolean bool = Game.drawParentInterface(3, 0, 0, 479, 96, dialogueId);
             if(!bool)
@@ -290,9 +312,9 @@ public class ChatBox {
     public static void method305() {
     //        if(ScreenController.frameMode == ScreenMode.FIXED){
 
-                chatBoxImageProducer.prepareRasterizer();
+                chatBoxImageProducer.prepareRasterizer(rasterizer);
     //        }
-            MovedStatics.chatboxBackgroundImage.drawImage(0, 0);
+            MovedStatics.chatboxBackgroundImage.drawImage(rasterizer, 0, 0);
             MovedStatics.chatboxLineOffsets = Rasterizer3D.setLineOffsets(MovedStatics.chatboxLineOffsets);
         }
 }
