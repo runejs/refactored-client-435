@@ -1893,17 +1893,22 @@ public class MovedStatics {
         int i = 151;
         method1018();
         i -= 3;
+
+        RasterizerInstanced oldRasterizer = fontNormal.getRasterizer();
+        fontNormal.setRasterizer(ScreenController.rasterizer);
+
         fontNormal.drawStringLeft(arg1, 257, i, 0);
         fontNormal.drawStringLeft(arg1, 256, i + -1, 16777215);
         if(arg3 != null) {
             i += 15;
             if(arg2) {
                 int i_0_ = 4 + fontNormal.getStringWidth(arg3);
-                Rasterizer.drawFilledRectangle(257 - i_0_ / 2, -11 + i, i_0_, 11, 0);
+                ScreenController.rasterizer.drawFilledRectangle(257 - i_0_ / 2, -11 + i, i_0_, 11, 0);
             }
             fontNormal.drawStringLeft(arg3, 257, i, 0);
             fontNormal.drawStringLeft(arg3, 256, i - 1, 16777215);
         }
+        fontNormal.setRasterizer(oldRasterizer);
         drawGameScreenGraphics();
     }
 
