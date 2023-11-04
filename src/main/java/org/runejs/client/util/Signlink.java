@@ -115,15 +115,6 @@ public class Signlink implements Runnable {
         }
     }
 
-    public SignlinkNode putMethodNode(Class[] argumentTypes, String functionName, Class functionType) {
-        return putNode(0, SignlinkNode.Type.METHOD, new Object[]{functionType, functionName, argumentTypes});
-
-    }
-
-    public SignlinkNode putDataInputStreamNode(URL url) {
-        return putNode(0, SignlinkNode.Type.DATA_INPUT_STREAM, url);
-    }
-
     public SignlinkNode putNode(int integerData, SignlinkNode.Type type, Object objectData) {
         SignlinkNode signlinkNode = new SignlinkNode();
         signlinkNode.objectData = objectData;
@@ -139,6 +130,32 @@ public class Signlink implements Runnable {
             this.notify();
         }
         return signlinkNode;
+    }
+
+    public SignlinkNode putMethodNode(Class[] argumentTypes, String functionName, Class functionType) {
+        return putNode(0, SignlinkNode.Type.METHOD, new Object[]{functionType, functionName, argumentTypes});
+
+    }
+
+    public SignlinkNode putDataInputStreamNode(URL url) {
+        return putNode(0, SignlinkNode.Type.DATA_INPUT_STREAM, url);
+    }
+
+    public SignlinkNode putFieldNode(Class variableType, String variableName) {
+        return putNode(0, SignlinkNode.Type.FIELD, new Object[]{ variableType, variableName });
+    }
+
+    // TODO this will just throw an exception, since type 3 isn't handled
+    public SignlinkNode putExceptionNode(int arg1) {
+        return putNode(arg1, SignlinkNode.Type.EXCEPTION, null);
+    }
+
+    public SignlinkNode putThreadNode(int nodeId, Runnable runnableClass) {
+        return putNode(nodeId, SignlinkNode.Type.THREAD, runnableClass);
+    }
+
+    public SignlinkNode putSocketNode(int port) {
+        return putNode(port, SignlinkNode.Type.SOCKET, null);
     }
 
     public void initializeUniqueIdentifier() {
@@ -212,23 +229,6 @@ public class Signlink implements Runnable {
             }
         }
 
-    }
-
-    public SignlinkNode putFieldNode(Class variableType, String variableName) {
-        return putNode(0, SignlinkNode.Type.FIELD, new Object[]{ variableType, variableName });
-    }
-
-    // TODO this will just throw an exception, since type 3 isn't handled
-    public SignlinkNode putExceptionNode(int arg1) {
-        return putNode(arg1, SignlinkNode.Type.EXCEPTION, null);
-    }
-
-    public SignlinkNode putThreadNode(int nodeId, Runnable runnableClass) {
-        return putNode(nodeId, SignlinkNode.Type.THREAD, runnableClass);
-    }
-
-    public SignlinkNode putSocketNode(int port) {
-        return putNode(port, SignlinkNode.Type.SOCKET, null);
     }
 
     public SignlinkNode method396(int arg0) {
