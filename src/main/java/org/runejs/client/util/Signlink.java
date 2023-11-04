@@ -116,15 +116,15 @@ public class Signlink implements Runnable {
     }
 
     public SignlinkNode method386(Class[] argumentTypes, String functionName, Class functionType) {
-        return putNode(0, 9, new Object[]{functionType, functionName, argumentTypes});
+        return putNode(0, SignlinkNode.Type.METHOD, new Object[]{functionType, functionName, argumentTypes});
 
     }
 
     public SignlinkNode addType4Node(URL url) {
-        return putNode(0, 4, url);
+        return putNode(0, SignlinkNode.Type.DATA_INPUT_STREAM, url);
     }
 
-    public SignlinkNode putNode(int integerData, int type, Object objectData) {
+    public SignlinkNode putNode(int integerData, SignlinkNode.Type type, Object objectData) {
         SignlinkNode signlinkNode = new SignlinkNode();
         signlinkNode.objectData = objectData;
         signlinkNode.integerData = integerData;
@@ -183,23 +183,23 @@ public class Signlink implements Runnable {
                 }
             }
             try {
-                int type = currentNode.type;
-                if (type == 1) {
+                SignlinkNode.Type type = currentNode.type;
+                if (type == SignlinkNode.Type.SOCKET) {
                     // Create connection
                     currentNode.value = new Socket(netAddress, currentNode.integerData);
-                } else if(type == 2) {
+                } else if(type == SignlinkNode.Type.THREAD) {
                     // Start thread
                     Thread thread = new Thread((Runnable) currentNode.objectData);
                     thread.setDaemon(true);
                     thread.start();
                     thread.setPriority(currentNode.integerData);
                     currentNode.value = thread;
-                } else if(type == 4)
+                } else if(type == SignlinkNode.Type.DATA_INPUT_STREAM)
                     currentNode.value = new DataInputStream(((URL) currentNode.objectData).openStream());
-                else if(type == 9) {
+                else if(type == SignlinkNode.Type.METHOD) {
                     Object[] objects = (Object[]) currentNode.objectData;
                     currentNode.value = ((Class) objects[0]).getDeclaredMethod((String) objects[1], (Class[]) objects[2]);
-                } else if(type == 10) {
+                } else if(type == SignlinkNode.Type.FIELD) {
                     Object[] objects = (Object[]) currentNode.objectData;
                     currentNode.value = ((Class) objects[0]).getDeclaredField((String) objects[1]);
                 } else {
@@ -215,20 +215,20 @@ public class Signlink implements Runnable {
     }
 
     public SignlinkNode createType10Node(Class variableType, String variableName) {
-        return putNode(0, 10, new Object[]{ variableType, variableName });
+        return putNode(0, SignlinkNode.Type.FIELD, new Object[]{ variableType, variableName });
     }
 
     // TODO this will just throw an exception, since type 3 isn't handled
     public SignlinkNode createExceptionNode(int arg1) {
-        return putNode(arg1, 3, null);
+        return putNode(arg1, SignlinkNode.Type.EXCEPTION, null);
     }
 
     public SignlinkNode createThreadNode(int nodeId, Runnable runnableClass) {
-        return putNode(nodeId, 2, runnableClass);
+        return putNode(nodeId, SignlinkNode.Type.THREAD, runnableClass);
     }
 
     public SignlinkNode createSocketNode(int port) {
-        return putNode(port, 1, null);
+        return putNode(port, SignlinkNode.Type.SOCKET, null);
     }
 
     public SignlinkNode method396(int arg0) {
