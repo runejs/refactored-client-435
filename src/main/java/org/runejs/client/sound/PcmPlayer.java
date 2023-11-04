@@ -129,7 +129,7 @@ public class PcmPlayer implements Runnable {
 	public void method222(Signlink arg0, int arg1) throws Exception {
 		anInt1831 = arg1;
 		method219(System.currentTimeMillis());
-		arg0.createThreadNode(10, this);
+		arg0.putThreadNode(10, this);
 	}
 
 	public void stop() {

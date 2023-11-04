@@ -492,7 +492,7 @@ public class MovedStatics {
     public static void method332(int arg0) {
         synchronized (anObject162) {
             if (anInt1987 == 0)
-                Game.signlink.createThreadNode(5, new Class44());
+                Game.signlink.putThreadNode(5, new Class44());
             anInt1987 = arg0;
         }
     }
@@ -545,7 +545,7 @@ public class MovedStatics {
                 string = string.replace('@', '_');
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
-                SignlinkNode signlinkNode = signlink.addType4Node(new URL(signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + Game.clientVersion + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
+                SignlinkNode signlinkNode = signlink.putDataInputStreamNode(new URL(signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + Game.clientVersion + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
                 while (signlinkNode.status == SignlinkNode.Status.NOT_INITIALIZED)
                     threadSleep(1L);
                 if (signlinkNode.status != SignlinkNode.Status.INITIALIZED)
@@ -3559,7 +3559,7 @@ public class MovedStatics {
             }
         } else if (loadingPercent == 110) {
             Game.mouseCapturer = new MouseCapturer();
-            Game.signlink.createThreadNode(10, Game.mouseCapturer);
+            Game.signlink.putThreadNode(10, Game.mouseCapturer);
             Native.currentLoadingText = English.loadedInputHandler;
             loadingPercent = 120;
             anInt1607 = 94;

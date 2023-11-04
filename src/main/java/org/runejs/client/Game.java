@@ -1596,7 +1596,7 @@ public class Game {
             }
             if (loginStatus == 1) { // Create connection to server, and wait for it to become available
                 if (MovedStatics.gameServerSignlinkNode == null) {
-                    MovedStatics.gameServerSignlinkNode = signlink.createSocketNode(currentPort);
+                    MovedStatics.gameServerSignlinkNode = signlink.putSocketNode(currentPort);
                 }
                 if (MovedStatics.gameServerSignlinkNode.status == SignlinkNode.Status.ERRORED) {
                     throw new IOException();
@@ -2256,7 +2256,7 @@ public class Game {
                 do {
                     try {
                         if (connectionStage == 0) {
-                            updateServerSignlinkNode = signlink.createSocketNode(currentPort);
+                            updateServerSignlinkNode = signlink.putSocketNode(currentPort);
                             connectionStage++;
                         }
                         if (connectionStage == 1) {

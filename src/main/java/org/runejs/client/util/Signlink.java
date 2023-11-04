@@ -115,12 +115,12 @@ public class Signlink implements Runnable {
         }
     }
 
-    public SignlinkNode method386(Class[] argumentTypes, String functionName, Class functionType) {
+    public SignlinkNode putMethodNode(Class[] argumentTypes, String functionName, Class functionType) {
         return putNode(0, SignlinkNode.Type.METHOD, new Object[]{functionType, functionName, argumentTypes});
 
     }
 
-    public SignlinkNode addType4Node(URL url) {
+    public SignlinkNode putDataInputStreamNode(URL url) {
         return putNode(0, SignlinkNode.Type.DATA_INPUT_STREAM, url);
     }
 
@@ -214,20 +214,20 @@ public class Signlink implements Runnable {
 
     }
 
-    public SignlinkNode createType10Node(Class variableType, String variableName) {
+    public SignlinkNode putFieldNode(Class variableType, String variableName) {
         return putNode(0, SignlinkNode.Type.FIELD, new Object[]{ variableType, variableName });
     }
 
     // TODO this will just throw an exception, since type 3 isn't handled
-    public SignlinkNode createExceptionNode(int arg1) {
+    public SignlinkNode putExceptionNode(int arg1) {
         return putNode(arg1, SignlinkNode.Type.EXCEPTION, null);
     }
 
-    public SignlinkNode createThreadNode(int nodeId, Runnable runnableClass) {
+    public SignlinkNode putThreadNode(int nodeId, Runnable runnableClass) {
         return putNode(nodeId, SignlinkNode.Type.THREAD, runnableClass);
     }
 
-    public SignlinkNode createSocketNode(int port) {
+    public SignlinkNode putSocketNode(int port) {
         return putNode(port, SignlinkNode.Type.SOCKET, null);
     }
 

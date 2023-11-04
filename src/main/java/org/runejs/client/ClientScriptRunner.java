@@ -146,7 +146,7 @@ public class ClientScriptRunner extends Node {
                     }
                     clientScriptRunner.opcodes[i] = opcode;
                     clientScriptRunner.values[i] = val;
-                    clientScriptRunner.valueNodes[i] = signlink.createType10Node(stringToType(typeString), valName);
+                    clientScriptRunner.valueNodes[i] = signlink.putFieldNode(stringToType(typeString), valName);
                 } else if(opcode == 3 || opcode == 4) {
                     String typeString = new String(buffer.getRSString().method80());
                     String functionName = new String(buffer.getRSString().method80());
@@ -169,7 +169,7 @@ public class ClientScriptRunner extends Node {
                         argTypes[j] = stringToType(argNames[j]);
                     }
 
-                    clientScriptRunner.functionNodes[i] = signlink.method386(argTypes, functionName, stringToType(typeString));
+                    clientScriptRunner.functionNodes[i] = signlink.putMethodNode(argTypes, functionName, stringToType(typeString));
                     clientScriptRunner.argumentValues[i] = argValueData;
                 }
             } catch(ClassNotFoundException classnotfoundexception) {
