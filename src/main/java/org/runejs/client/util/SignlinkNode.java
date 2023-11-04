@@ -1,6 +1,22 @@
 package org.runejs.client.util;
 
 public class SignlinkNode {
+    public enum Status {
+        NOT_INITIALIZED(0),
+        INITIALIZED(1),
+        ERRORED(2);
+
+        private final int value;
+
+        Status(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+    }
+
     public int integerData;
 
     /**
@@ -13,12 +29,7 @@ public class SignlinkNode {
      */
     public int type;
 
-    /**
-     * 0 = Not initialized
-     * 1 = Initialized
-     * 2 = Errored
-     */
-    public volatile int status = 0;
+    public volatile Status status = Status.NOT_INITIALIZED;
 
     public Object objectData;
     public SignlinkNode prev;

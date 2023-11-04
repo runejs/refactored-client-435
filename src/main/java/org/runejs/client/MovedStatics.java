@@ -546,9 +546,9 @@ public class MovedStatics {
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
                 SignlinkNode signlinkNode = signlink.addType4Node(new URL(signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + Game.clientVersion + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
-                while (signlinkNode.status == 0)
+                while (signlinkNode.status == SignlinkNode.Status.NOT_INITIALIZED)
                     threadSleep(1L);
-                if (signlinkNode.status != 1)
+                if (signlinkNode.status != SignlinkNode.Status.INITIALIZED)
                     return;
                 DataInputStream datainputstream = (DataInputStream) signlinkNode.value;
                 datainputstream.read();

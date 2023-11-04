@@ -206,9 +206,9 @@ public class Signlink implements Runnable {
                     throw new Exception();
                 }
 
-                currentNode.status = 1;
+                currentNode.status = SignlinkNode.Status.INITIALIZED;
             } catch(Exception exception) {
-                currentNode.status = 2;
+                currentNode.status = SignlinkNode.Status.ERRORED;
             }
         }
 

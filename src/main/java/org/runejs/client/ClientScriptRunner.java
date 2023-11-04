@@ -199,15 +199,15 @@ public class ClientScriptRunner extends Node {
 
             for(int i = 0; clientScriptRunner.scriptCount > i; i++) {
                 if(clientScriptRunner.valueNodes[i] != null) {
-                    if(clientScriptRunner.valueNodes[i].status == 2)
+                    if(clientScriptRunner.valueNodes[i].status == SignlinkNode.Status.ERRORED)
                         clientScriptRunner.errorCodes[i] = -5;
-                    if(clientScriptRunner.valueNodes[i].status == 0)
+                    if(clientScriptRunner.valueNodes[i].status == SignlinkNode.Status.NOT_INITIALIZED)
                         bool = true;
                 }
                 if(clientScriptRunner.functionNodes[i] != null) {
-                    if(clientScriptRunner.functionNodes[i].status == 2)
+                    if(clientScriptRunner.functionNodes[i].status == SignlinkNode.Status.ERRORED)
                         clientScriptRunner.errorCodes[i] = -6;
-                    if(clientScriptRunner.functionNodes[i].status == 0)
+                    if(clientScriptRunner.functionNodes[i].status == SignlinkNode.Status.NOT_INITIALIZED)
                         bool = true;
                 }
             }

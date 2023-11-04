@@ -1598,10 +1598,10 @@ public class Game {
                 if (MovedStatics.gameServerSignlinkNode == null) {
                     MovedStatics.gameServerSignlinkNode = signlink.createSocketNode(currentPort);
                 }
-                if (MovedStatics.gameServerSignlinkNode.status == 2) {
+                if (MovedStatics.gameServerSignlinkNode.status == SignlinkNode.Status.ERRORED) {
                     throw new IOException();
                 }
-                if (MovedStatics.gameServerSignlinkNode.status == 1) {
+                if (MovedStatics.gameServerSignlinkNode.status == SignlinkNode.Status.INITIALIZED) {
                     MovedStatics.gameServerSocket = new GameSocket((Socket) MovedStatics.gameServerSignlinkNode.value, signlink);
                     loginStatus = 2;
                     MovedStatics.gameServerSignlinkNode = null;
@@ -2260,11 +2260,11 @@ public class Game {
                             connectionStage++;
                         }
                         if (connectionStage == 1) {
-                            if (updateServerSignlinkNode.status == 2) {
+                            if (updateServerSignlinkNode.status == SignlinkNode.Status.ERRORED) {
                                 method35(-1);
                                 break;
                             }
-                            if (updateServerSignlinkNode.status == 1)
+                            if (updateServerSignlinkNode.status == SignlinkNode.Status.INITIALIZED)
                                 connectionStage++;
                         }
                         if (connectionStage == 2) {
