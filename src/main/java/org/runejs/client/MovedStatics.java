@@ -387,7 +387,7 @@ public class MovedStatics {
             Class60.aProducingGraphicsBuffer_463 = null;
             Class60.anIntArray1013 = null;
             MusicSystem.method405(10);
-            Game.updateServer.resetUpdateServerRequests(true);
+            Game.updateServer.resetRequests(true);
             aBoolean512 = false;
         }
     }

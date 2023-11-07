@@ -9,8 +9,7 @@ import org.runejs.client.node.NodeQueue;
 import java.io.IOException;
 import java.util.zip.CRC32;
 
-
-public class UpdateServer {
+public class UpdateServer implements IUpdateServer {
     public int ioExceptions = 0;
     public int crcMismatches = 0;
 
@@ -36,7 +35,9 @@ public class UpdateServer {
     private long lastUpdateInMillis;
     private CacheArchive[] cacheArchiveLoaders = new CacheArchive[256];
 
-    public void handleUpdateServerConnection(GameSocket socket, boolean arg2) {
+
+    @Override
+    public void receiveConnection(GameSocket socket, boolean isLoggedIn) {
         if(updateServerSocket != null) {
             try {
                 updateServerSocket.kill();
@@ -48,7 +49,7 @@ public class UpdateServer {
         }
 
         updateServerSocket = socket;
-        resetUpdateServerRequests(arg2);
+        resetRequests(isLoggedIn);
         fileDataBuffer.currentPosition = 0;
         inboundFile = null;
         blockOffset = 0;
@@ -100,7 +101,9 @@ public class UpdateServer {
         lastUpdateInMillis = System.currentTimeMillis();
     }
 
-    public boolean processUpdateServerResponse() {
+
+    @Override
+    public boolean poll() {
         long l = System.currentTimeMillis();
         int currentMsSinceLastUpdate = (int) (l - lastUpdateInMillis);
         lastUpdateInMillis = l;
@@ -348,12 +351,12 @@ public class UpdateServer {
         }
     }
 
-    public void getArchiveChecksum(CacheArchive cacheArchive, int arg2) {
+    public void getArchiveChecksum(CacheArchive cacheArchive, int cacheIndexId) {
         if (crcTableBuffer == null) {
             method327(true, null, 255, 255, (byte) 0, 0);
-            cacheArchiveLoaders[arg2] = cacheArchive;
+            cacheArchiveLoaders[cacheIndexId] = cacheArchive;
         } else {
-            crcTableBuffer.currentPosition = 5 + arg2 * 4;
+            crcTableBuffer.currentPosition = 5 + cacheIndexId * 4;
             int i = crcTableBuffer.getIntBE();
             cacheArchive.requestLatestVersion(i);
         }
@@ -363,7 +366,9 @@ public class UpdateServer {
         return arg0 ^ arg1;
     }
 
-    public void resetUpdateServerRequests(boolean loggedIn) {
+
+    @Override
+    public void resetRequests(boolean loggedIn) {
         if (updateServerSocket != null) {
             try {
                 Buffer buffer = new Buffer(4);
@@ -385,19 +390,22 @@ public class UpdateServer {
     
     }
 
-    public void killUpdateServerSocket() {
+    @Override
+    public void close() {
         if(updateServerSocket != null) {
             updateServerSocket.kill();
         }
     }
 
-    public int calculateDataLoaded(int arg1, int arg2) {
-        long l = (long) ((arg1 << 16) + arg2);
+    @Override
+    public int calculateDataLoaded(int volume, int file) {
+        long l = (long) ((volume << 16) + file);
         if (currentResponse == null || currentResponse.key != l)
             return 0;
         return 1 + inboundFile.currentPosition * 99 / (inboundFile.buffer.length + -currentResponse.padding);
     }
 
+    @Override
     public int getActiveCount(boolean pending, boolean immediate) {
         int total = 0;
         if (immediate) {

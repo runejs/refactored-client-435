@@ -2194,7 +2194,7 @@ public class Game {
 
     public void handleUpdateServer() {
         if (gameStatusCode != 1000) {
-            boolean bool = updateServer.processUpdateServerResponse();
+            boolean bool = updateServer.poll();
             if (!bool)
                 connectUpdateServer();
         }
@@ -2299,7 +2299,7 @@ public class Game {
                         if (connectionStage != 4)
                             break;
 
-                        updateServer.handleUpdateServerConnection(updateServerSocket, gameStatusCode > 20);
+                        updateServer.receiveConnection(updateServerSocket, gameStatusCode > 20);
 
                         updateServerSignlinkNode = null;
                         connectionStage = 0;
@@ -2340,7 +2340,7 @@ public class Game {
         method249();
         MusicSystem.syncedStop(false);
         SoundSystem.stop();
-        updateServer.killUpdateServerSocket();
+        updateServer.close();
         method947(-1);
         do {
             try {
