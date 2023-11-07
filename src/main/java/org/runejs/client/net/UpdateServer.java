@@ -35,6 +35,24 @@ public class UpdateServer implements IUpdateServer {
     private long lastUpdateInMillis;
     private CacheArchive[] cacheArchiveLoaders = new CacheArchive[256];
 
+    private enum Opcode {
+        REQUEST(0),
+        PRIORITY_REQUEST(1),
+        LOGGED_IN(2),
+        LOGGED_OUT(3),
+        NEW_ENCRYPTION(4);
+
+        private final int value;
+
+        Opcode(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+    }
+
 
     @Override
     public void receiveConnection(GameSocket socket, boolean isLoggedIn) {
@@ -81,7 +99,7 @@ public class UpdateServer implements IUpdateServer {
         if(encryption != 0) {
             try {
                 Buffer fileRequestBuffer = new Buffer(4);
-                fileRequestBuffer.putByte(4);
+                fileRequestBuffer.putByte(Opcode.NEW_ENCRYPTION.getValue());
                 fileRequestBuffer.putByte(encryption);
                 fileRequestBuffer.putShortBE(0);
                 updateServerSocket.sendDataFromBuffer(4, 0, fileRequestBuffer.buffer);
@@ -130,7 +148,7 @@ public class UpdateServer implements IUpdateServer {
                 }
                 UpdateServerNode updateServerNode = (UpdateServerNode) immediateWriteQueue.getNextNode();
                 Buffer buffer = new Buffer(4);
-                buffer.putByte(1); // immediate file request
+                buffer.putByte(Opcode.PRIORITY_REQUEST.getValue()); // immediate file request
                 buffer.putMediumBE((int) updateServerNode.key); // file index + file id
                 updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
                 activeRequests.put(updateServerNode.key, updateServerNode);
@@ -141,7 +159,7 @@ public class UpdateServer implements IUpdateServer {
             for(/**/; pendingResponses < 20 && pendingWrites > 0; pendingWrites--) {
                 UpdateServerNode updateServerNode = (UpdateServerNode) pendingWriteQueue.next();
                 Buffer buffer = new Buffer(4);
-                buffer.putByte(0); // queued file request
+                buffer.putByte(Opcode.REQUEST.getValue()); // queued file request
                 buffer.putMediumBE((int) updateServerNode.key); // file index + file id
                 updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
                 updateServerNode.clear();
@@ -372,7 +390,7 @@ public class UpdateServer implements IUpdateServer {
         if (updateServerSocket != null) {
             try {
                 Buffer buffer = new Buffer(4);
-                buffer.putByte(loggedIn ? 2 : 3);
+                buffer.putByte(loggedIn ? Opcode.LOGGED_IN.getValue() : Opcode.LOGGED_OUT.getValue());
                 buffer.putMediumBE(0);
                 updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
             } catch (java.io.IOException ioexception) {
