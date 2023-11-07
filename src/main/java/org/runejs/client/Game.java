@@ -95,7 +95,7 @@ public class Game {
     public static int modewhere = 0;
     public static long lastClickTime = 0L;
     public static int mouseInvInterfaceIndex = 0;
-    public static int anInt509 = 0;
+    public static int updateServerConnectAttemptCounter = 0;
     public static boolean aBoolean519 = true;
     public static MouseCapturer mouseCapturer;
     public static int anInt2591 = 0;
@@ -115,7 +115,7 @@ public class Game {
     public static int connectionStage = 0;
     public static int anInt292 = 0;
     public static boolean accountFlagged = false;
-    public static long aLong1841;
+    public static long updateServerHandshakeSentAtMs;
     public static int clientVersion;
     public static int playerRights = 0;
     public static Timer gameTimer;
@@ -2142,16 +2142,16 @@ public class Game {
                 if (anInt292 >= 4) {
                     if (gameStatusCode <= 5) {
                         this.openErrorPage("js5connect");
-                        anInt509 = 3000;
+                        updateServerConnectAttemptCounter = 3000;
                     } else
-                        anInt509 = 3000;
+                        updateServerConnectAttemptCounter = 3000;
                 }
             } else {
                 this.openErrorPage("js5connect_outofdate");
                 gameStatusCode = 1000;
             }
         } else if (gameStatusCode > 5)
-            anInt509 = 3000;
+            updateServerConnectAttemptCounter = 3000;
         else {
             this.openErrorPage("js5connect_full");
             gameStatusCode = 1000;
@@ -2250,14 +2250,14 @@ public class Game {
             if (updateServer.ioExceptions >= 4) {
                 if (gameStatusCode > 5) {
                     updateServer.ioExceptions = 3;
-                    anInt509 = 3000;
+                    updateServerConnectAttemptCounter = 3000;
                 } else {
                     this.openErrorPage("js5io");
                     gameStatusCode = 1000;
                     return;
                 }
             }
-            if (anInt509-- <= 0) {
+            if (updateServerConnectAttemptCounter-- <= 0) {
                 do {
                     try {
                         if (connectionStage == 0) {
@@ -2279,11 +2279,11 @@ public class Game {
                             buffer.putIntBE(435); // Cache revision
                             updateServerSocket.sendDataFromBuffer(5, 0, buffer.buffer);
                             connectionStage++;
-                            aLong1841 = System.currentTimeMillis();
+                            updateServerHandshakeSentAtMs = System.currentTimeMillis();
                         }
                         if (connectionStage == 3) {
                             if (gameStatusCode > 5 && updateServerSocket.inputStreamAvailable() <= 0) {
-                                if (System.currentTimeMillis() + -aLong1841 > 30000L) {
+                                if (System.currentTimeMillis() - updateServerHandshakeSentAtMs > 30000L) {
                                     method35(-2);
                                     break;
                                 }
