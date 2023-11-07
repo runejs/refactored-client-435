@@ -60,7 +60,7 @@ public class CacheArchive {
         aBoolean1811 = arg5;
         this.metaIndex = metaIndex;
         this.cacheIndexId = cacheIndexId;
-        UpdateServer.getArchiveChecksum(this, this.cacheIndexId);
+        Game.updateServer.getArchiveChecksum(this, this.cacheIndexId);
     }
 
     public static CacheArchive loadArchive(int cacheIndexId, boolean arg1, boolean arg2, boolean arg4) {
@@ -164,7 +164,7 @@ public class CacheArchive {
             return 100;
         if(aByteArrayArray212 != null)
             return 99;
-        int i = UpdateServer.calculateDataLoaded(255, cacheIndexId);
+        int i = Game.updateServer.calculateDataLoaded(255, cacheIndexId);
         if(i >= 100)
             i = 99;
         return i;
@@ -176,7 +176,7 @@ public class CacheArchive {
             if(aBoolean1800)
                 throw new RuntimeException();
             if(arg2 == null) {
-                UpdateServer.method327(true, this, 255, cacheIndexId, (byte) 0,
+                Game.updateServer.method327(true, this, 255, cacheIndexId, (byte) 0,
                         archiveCrcValue);
                 return;
             }
@@ -184,7 +184,7 @@ public class CacheArchive {
             crc32.update(arg2, 0, arg2.length);
             int i = (int) crc32.getValue();
             if(i != archiveCrcValue) {
-                UpdateServer.method327(true, this, 255, cacheIndexId, (byte) 0,
+                Game.updateServer.method327(true, this, 255, cacheIndexId, (byte) 0,
                         archiveCrcValue);
                 return;
             }
@@ -197,7 +197,7 @@ public class CacheArchive {
             if(arg2 == null || arg2.length <= 2) {
                 aBooleanArray1796[arg3] = false;
                 if(aBoolean1811 || arg1)
-                    UpdateServer.method327(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3]);
+                    Game.updateServer.method327(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3]);
                 return;
             }
             crc32.reset();
@@ -207,7 +207,7 @@ public class CacheArchive {
             if(i != anIntArray252[arg3] || i_0_ != anIntArray224[arg3]) {
                 aBooleanArray1796[arg3] = false;
                 if(aBoolean1811 || arg1)
-                    UpdateServer.method327(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3]);
+                    Game.updateServer.method327(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3]);
                 return;
             }
             aBooleanArray1796[arg3] = true;
@@ -220,11 +220,11 @@ public class CacheArchive {
         if(dataIndex != null && aBooleanArray1796 != null && aBooleanArray1796[arg1])
             method602(this, arg1, dataIndex);
         else
-            UpdateServer.method327(true, this, cacheIndexId, arg1, (byte) 2, anIntArray252[arg1]);
+            Game.updateServer.method327(true, this, cacheIndexId, arg1, (byte) 2, anIntArray252[arg1]);
     }
 
     public void method174(int arg0) {
-        UpdateServer.method399(cacheIndexId, arg0);
+        Game.updateServer.method399(cacheIndexId, arg0);
     }
 
     public void method199() {
@@ -249,7 +249,7 @@ public class CacheArchive {
     public void requestLatestVersion(int crcValue) {
         archiveCrcValue = crcValue;
         if(metaIndex == null)
-            UpdateServer.method327(true, this, 255, cacheIndexId, (byte) 0, archiveCrcValue);
+            Game.updateServer.method327(true, this, 255, cacheIndexId, (byte) 0, archiveCrcValue);
         else
             method602(this, cacheIndexId, metaIndex);
     }
@@ -259,7 +259,7 @@ public class CacheArchive {
             return 100;
         if(aBooleanArray1796[arg0])
             return 100;
-        return UpdateServer.calculateDataLoaded(cacheIndexId, arg0);
+        return Game.updateServer.calculateDataLoaded(cacheIndexId, arg0);
     }
 
     public int method202() {

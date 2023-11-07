@@ -76,6 +76,11 @@ public class Game {
      */
     public static final CutsceneCamera cutsceneCamera = new CutsceneCamera();
 
+    /**
+     * TODO use interface
+     */
+    public static final UpdateServer updateServer = new UpdateServer();
+
     public static FriendList friendList;
 
     public static final SocialList ignoreList = new SocialList(100);
@@ -871,7 +876,7 @@ public class Game {
         }
 
 
-        if(aBoolean519 && UpdateServer.getActiveCount(false, true) == 0) {
+        if(aBoolean519 && updateServer.getActiveCount(false, true) == 0) {
             aBoolean519 = false;
         }
         if(aBoolean519) {
@@ -2189,7 +2194,7 @@ public class Game {
 
     public void handleUpdateServer() {
         if (gameStatusCode != 1000) {
-            boolean bool = UpdateServer.processUpdateServerResponse();
+            boolean bool = updateServer.processUpdateServerResponse();
             if (!bool)
                 connectUpdateServer();
         }
@@ -2238,13 +2243,13 @@ public class Game {
     }
 
     public void connectUpdateServer() {
-        if (UpdateServer.crcMismatches >= 4) {
+        if (updateServer.crcMismatches >= 4) {
             this.openErrorPage("js5crc");
             gameStatusCode = 1000;
         } else {
-            if (UpdateServer.ioExceptions >= 4) {
+            if (updateServer.ioExceptions >= 4) {
                 if (gameStatusCode > 5) {
-                    UpdateServer.ioExceptions = 3;
+                    updateServer.ioExceptions = 3;
                     anInt509 = 3000;
                 } else {
                     this.openErrorPage("js5io");
@@ -2294,7 +2299,7 @@ public class Game {
                         if (connectionStage != 4)
                             break;
 
-                        UpdateServer.handleUpdateServerConnection(updateServerSocket, gameStatusCode > 20);
+                        updateServer.handleUpdateServerConnection(updateServerSocket, gameStatusCode > 20);
 
                         updateServerSignlinkNode = null;
                         connectionStage = 0;
@@ -2335,7 +2340,7 @@ public class Game {
         method249();
         MusicSystem.syncedStop(false);
         SoundSystem.stop();
-        UpdateServer.killUpdateServerSocket();
+        updateServer.killUpdateServerSocket();
         method947(-1);
         do {
             try {

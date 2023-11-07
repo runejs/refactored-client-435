@@ -542,7 +542,7 @@ public class Class60 {
                 MusicSystem.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", MusicSystem.musicVolume);
             else
                 MusicSystem.method405(10);
-            UpdateServer.resetUpdateServerRequests(false);
+            Game.updateServer.resetUpdateServerRequests(false);
             MovedStatics.clearScreen = true;
             MovedStatics.aBoolean512 = true;
         }
