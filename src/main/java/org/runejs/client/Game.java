@@ -76,6 +76,11 @@ public class Game {
      */
     public static final CutsceneCamera cutsceneCamera = new CutsceneCamera();
 
+    /**
+     * TODO use interface
+     */
+    public static final UpdateServer updateServer = new UpdateServer();
+
     public static FriendList friendList;
 
     public static final SocialList ignoreList = new SocialList(100);
@@ -90,7 +95,7 @@ public class Game {
     public static int modewhere = 0;
     public static long lastClickTime = 0L;
     public static int mouseInvInterfaceIndex = 0;
-    public static int anInt509 = 0;
+    public static int updateServerConnectAttemptCounter = 0;
     public static boolean aBoolean519 = true;
     public static MouseCapturer mouseCapturer;
     public static int anInt2591 = 0;
@@ -110,7 +115,7 @@ public class Game {
     public static int connectionStage = 0;
     public static int anInt292 = 0;
     public static boolean accountFlagged = false;
-    public static long aLong1841;
+    public static long updateServerHandshakeSentAtMs;
     public static int clientVersion;
     public static int playerRights = 0;
     public static Timer gameTimer;
@@ -871,7 +876,7 @@ public class Game {
         }
 
 
-        if(aBoolean519 && UpdateServer.getActiveCount(false, true) == 0) {
+        if(aBoolean519 && updateServer.getActiveTaskCount(false, true) == 0) {
             aBoolean519 = false;
         }
         if(aBoolean519) {
@@ -1596,12 +1601,12 @@ public class Game {
             }
             if (loginStatus == 1) { // Create connection to server, and wait for it to become available
                 if (MovedStatics.gameServerSignlinkNode == null) {
-                    MovedStatics.gameServerSignlinkNode = signlink.createSocketNode(currentPort);
+                    MovedStatics.gameServerSignlinkNode = signlink.putSocketNode(currentPort);
                 }
-                if (MovedStatics.gameServerSignlinkNode.status == 2) {
+                if (MovedStatics.gameServerSignlinkNode.status == SignlinkNode.Status.ERRORED) {
                     throw new IOException();
                 }
-                if (MovedStatics.gameServerSignlinkNode.status == 1) {
+                if (MovedStatics.gameServerSignlinkNode.status == SignlinkNode.Status.INITIALIZED) {
                     MovedStatics.gameServerSocket = new GameSocket((Socket) MovedStatics.gameServerSignlinkNode.value, signlink);
                     loginStatus = 2;
                     MovedStatics.gameServerSignlinkNode = null;
@@ -2137,16 +2142,16 @@ public class Game {
                 if (anInt292 >= 4) {
                     if (gameStatusCode <= 5) {
                         this.openErrorPage("js5connect");
-                        anInt509 = 3000;
+                        updateServerConnectAttemptCounter = 3000;
                     } else
-                        anInt509 = 3000;
+                        updateServerConnectAttemptCounter = 3000;
                 }
             } else {
                 this.openErrorPage("js5connect_outofdate");
                 gameStatusCode = 1000;
             }
         } else if (gameStatusCode > 5)
-            anInt509 = 3000;
+            updateServerConnectAttemptCounter = 3000;
         else {
             this.openErrorPage("js5connect_full");
             gameStatusCode = 1000;
@@ -2189,7 +2194,7 @@ public class Game {
 
     public void handleUpdateServer() {
         if (gameStatusCode != 1000) {
-            boolean bool = UpdateServer.processUpdateServerResponse();
+            boolean bool = updateServer.poll();
             if (!bool)
                 connectUpdateServer();
         }
@@ -2238,33 +2243,33 @@ public class Game {
     }
 
     public void connectUpdateServer() {
-        if (UpdateServer.crcMismatches >= 4) {
+        if (updateServer.crcMismatchesCount >= 4) {
             this.openErrorPage("js5crc");
             gameStatusCode = 1000;
         } else {
-            if (UpdateServer.ioExceptions >= 4) {
+            if (updateServer.ioExceptionsCount >= 4) {
                 if (gameStatusCode > 5) {
-                    UpdateServer.ioExceptions = 3;
-                    anInt509 = 3000;
+                    updateServer.ioExceptionsCount = 3;
+                    updateServerConnectAttemptCounter = 3000;
                 } else {
                     this.openErrorPage("js5io");
                     gameStatusCode = 1000;
                     return;
                 }
             }
-            if (anInt509-- <= 0) {
+            if (updateServerConnectAttemptCounter-- <= 0) {
                 do {
                     try {
                         if (connectionStage == 0) {
-                            updateServerSignlinkNode = signlink.createSocketNode(currentPort);
+                            updateServerSignlinkNode = signlink.putSocketNode(currentPort);
                             connectionStage++;
                         }
                         if (connectionStage == 1) {
-                            if (updateServerSignlinkNode.status == 2) {
+                            if (updateServerSignlinkNode.status == SignlinkNode.Status.ERRORED) {
                                 method35(-1);
                                 break;
                             }
-                            if (updateServerSignlinkNode.status == 1)
+                            if (updateServerSignlinkNode.status == SignlinkNode.Status.INITIALIZED)
                                 connectionStage++;
                         }
                         if (connectionStage == 2) {
@@ -2274,11 +2279,11 @@ public class Game {
                             buffer.putIntBE(435); // Cache revision
                             updateServerSocket.sendDataFromBuffer(5, 0, buffer.buffer);
                             connectionStage++;
-                            aLong1841 = System.currentTimeMillis();
+                            updateServerHandshakeSentAtMs = System.currentTimeMillis();
                         }
                         if (connectionStage == 3) {
                             if (gameStatusCode > 5 && updateServerSocket.inputStreamAvailable() <= 0) {
-                                if (System.currentTimeMillis() + -aLong1841 > 30000L) {
+                                if (System.currentTimeMillis() - updateServerHandshakeSentAtMs > 30000L) {
                                     method35(-2);
                                     break;
                                 }
@@ -2294,7 +2299,7 @@ public class Game {
                         if (connectionStage != 4)
                             break;
 
-                        UpdateServer.handleUpdateServerConnection(updateServerSocket, gameStatusCode > 20);
+                        updateServer.receiveConnection(updateServerSocket, gameStatusCode > 20);
 
                         updateServerSignlinkNode = null;
                         connectionStage = 0;
@@ -2335,7 +2340,7 @@ public class Game {
         method249();
         MusicSystem.syncedStop(false);
         SoundSystem.stop();
-        UpdateServer.killUpdateServerSocket();
+        updateServer.close();
         method947(-1);
         do {
             try {

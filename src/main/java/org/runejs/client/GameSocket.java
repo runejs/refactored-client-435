@@ -54,11 +54,11 @@ public class GameSocket implements Runnable {
             }
 
             if (signLinkNode != null) {
-                while (signLinkNode.status == 0) {
+                while (signLinkNode.status == SignlinkNode.Status.NOT_INITIALIZED) {
                     MovedStatics.threadSleep(1L);
                 }
 
-                if (signLinkNode.status == 1) {
+                if (signLinkNode.status == SignlinkNode.Status.INITIALIZED) {
                     try {
                         // Kill the signLinkNode
                         ((Thread) signLinkNode.value).join();
@@ -89,7 +89,7 @@ public class GameSocket implements Runnable {
                         throw new IOException();
                 }
                 if (signLinkNode == null)
-                    signLinkNode = signLink.createThreadNode(3, this);
+                    signLinkNode = signLink.putThreadNode(3, this);
                 this.notifyAll();
             }
         }

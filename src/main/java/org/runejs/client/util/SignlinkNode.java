@@ -1,6 +1,59 @@
 package org.runejs.client.util;
 
 public class SignlinkNode {
+    public enum Status {
+        NOT_INITIALIZED(0),
+        INITIALIZED(1),
+        ERRORED(2);
+
+        private final int value;
+
+        Status(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+    }
+
+    public enum Type {
+        /**
+         * Create connection, save the socket to value
+         */
+        SOCKET(1),
+        /**
+         * Start the thread with objectData, save the thread to value
+         */
+        THREAD(2),
+        /**
+         * Throw an Exception
+         */
+        EXCEPTION(3),
+        /**
+         * Create a data input stream, save the stream to value
+         */
+        DATA_INPUT_STREAM(4),
+        /**
+         * Get a declared method from a class
+         */
+        METHOD(9),
+        /**
+         * Get a declared field from a class
+         */
+        FIELD(10);
+
+        private final int value;
+
+        Type(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+    }
+
     public int integerData;
 
     /**
@@ -11,14 +64,9 @@ public class SignlinkNode {
      * 10 = Call a class constructor dynamically from objectData, where objectData[0] is the class and objectData[1] is a string param
      * Other values will throw an Exception.
      */
-    public int type;
+    public Type type;
 
-    /**
-     * 0 = Not initialized
-     * 1 = Initialized
-     * 2 = Errored
-     */
-    public volatile int status = 0;
+    public volatile Status status = Status.NOT_INITIALIZED;
 
     public Object objectData;
     public SignlinkNode prev;

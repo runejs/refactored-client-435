@@ -12,7 +12,6 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.VertexNormal;
-import org.runejs.client.net.UpdateServer;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.Configuration;
 import org.runejs.client.util.BitUtils;
@@ -542,7 +541,7 @@ public class Class60 {
                 MusicSystem.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", MusicSystem.musicVolume);
             else
                 MusicSystem.method405(10);
-            UpdateServer.resetUpdateServerRequests(false);
+            Game.updateServer.resetRequests(false);
             MovedStatics.clearScreen = true;
             MovedStatics.aBoolean512 = true;
         }

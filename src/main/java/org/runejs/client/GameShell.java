@@ -251,7 +251,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
             Insets insets = clientFrame.getInsets();
             clientFrame.setSize(insets.right + width + insets.left, insets.bottom + insets.top + height);
             MovedStatics.signlink = Game.signlink = new Signlink(true, null, inetAddress, fileStoreId, cacheFolder, cacheIndexes);
-            Game.signlink.createThreadNode(1, this);
+            Game.signlink.putThreadNode(1, this);
         } catch (Exception exception) {
             MovedStatics.printException(null, exception);
         }

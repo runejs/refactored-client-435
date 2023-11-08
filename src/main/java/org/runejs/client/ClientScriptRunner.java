@@ -146,7 +146,7 @@ public class ClientScriptRunner extends Node {
                     }
                     clientScriptRunner.opcodes[i] = opcode;
                     clientScriptRunner.values[i] = val;
-                    clientScriptRunner.valueNodes[i] = signlink.createType10Node(stringToType(typeString), valName);
+                    clientScriptRunner.valueNodes[i] = signlink.putFieldNode(stringToType(typeString), valName);
                 } else if(opcode == 3 || opcode == 4) {
                     String typeString = new String(buffer.getRSString().method80());
                     String functionName = new String(buffer.getRSString().method80());
@@ -169,7 +169,7 @@ public class ClientScriptRunner extends Node {
                         argTypes[j] = stringToType(argNames[j]);
                     }
 
-                    clientScriptRunner.functionNodes[i] = signlink.method386(argTypes, functionName, stringToType(typeString));
+                    clientScriptRunner.functionNodes[i] = signlink.putMethodNode(argTypes, functionName, stringToType(typeString));
                     clientScriptRunner.argumentValues[i] = argValueData;
                 }
             } catch(ClassNotFoundException classnotfoundexception) {
@@ -199,15 +199,15 @@ public class ClientScriptRunner extends Node {
 
             for(int i = 0; clientScriptRunner.scriptCount > i; i++) {
                 if(clientScriptRunner.valueNodes[i] != null) {
-                    if(clientScriptRunner.valueNodes[i].status == 2)
+                    if(clientScriptRunner.valueNodes[i].status == SignlinkNode.Status.ERRORED)
                         clientScriptRunner.errorCodes[i] = -5;
-                    if(clientScriptRunner.valueNodes[i].status == 0)
+                    if(clientScriptRunner.valueNodes[i].status == SignlinkNode.Status.NOT_INITIALIZED)
                         bool = true;
                 }
                 if(clientScriptRunner.functionNodes[i] != null) {
-                    if(clientScriptRunner.functionNodes[i].status == 2)
+                    if(clientScriptRunner.functionNodes[i].status == SignlinkNode.Status.ERRORED)
                         clientScriptRunner.errorCodes[i] = -6;
-                    if(clientScriptRunner.functionNodes[i].status == 0)
+                    if(clientScriptRunner.functionNodes[i].status == SignlinkNode.Status.NOT_INITIALIZED)
                         bool = true;
                 }
             }
