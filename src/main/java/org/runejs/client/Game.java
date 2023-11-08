@@ -876,7 +876,7 @@ public class Game {
         }
 
 
-        if(aBoolean519 && updateServer.getActiveCount(false, true) == 0) {
+        if(aBoolean519 && updateServer.getActiveTaskCount(false, true) == 0) {
             aBoolean519 = false;
         }
         if(aBoolean519) {
@@ -2243,13 +2243,13 @@ public class Game {
     }
 
     public void connectUpdateServer() {
-        if (updateServer.crcMismatches >= 4) {
+        if (updateServer.crcMismatchesCount >= 4) {
             this.openErrorPage("js5crc");
             gameStatusCode = 1000;
         } else {
-            if (updateServer.ioExceptions >= 4) {
+            if (updateServer.ioExceptionsCount >= 4) {
                 if (gameStatusCode > 5) {
-                    updateServer.ioExceptions = 3;
+                    updateServer.ioExceptionsCount = 3;
                     updateServerConnectAttemptCounter = 3000;
                 } else {
                     this.openErrorPage("js5io");

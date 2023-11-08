@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.util.zip.CRC32;
 
 public class UpdateServer implements IUpdateServer {
-    public int ioExceptions = 0;
-    public int crcMismatches = 0;
+    public int ioExceptionsCount = 0;
+    public int crcMismatchesCount = 0;
 
     private GameSocket updateServerSocket;
     private Buffer fileDataBuffer = new Buffer(8);
@@ -112,7 +112,7 @@ public class UpdateServer implements IUpdateServer {
                     /* empty */
                 }
                 updateServerSocket = null;
-                ioExceptions++;
+                ioExceptionsCount++;
             }
         }
         msSinceLastUpdate = 0;
@@ -226,12 +226,12 @@ public class UpdateServer implements IUpdateServer {
                                 }
                                 encryption = (byte) (int) (Math.random() * 255.0 + 1.0);
                                 updateServerSocket = null;
-                                crcMismatches++;
+                                crcMismatchesCount++;
                                 return false;
                             }
 
-                            ioExceptions = 0;
-                            crcMismatches = 0;
+                            ioExceptionsCount = 0;
+                            crcMismatchesCount = 0;
                             currentResponse.cacheArchive.method196((currentResponse.key & 0xff0000L) == 16711680L, (int) (currentResponse.key & 0xffffL), highPriorityRequest, inboundFile.buffer);
                         }
 
@@ -318,14 +318,14 @@ public class UpdateServer implements IUpdateServer {
                 exception.printStackTrace();
             }
 
-            ioExceptions++;
+            ioExceptionsCount++;
             updateServerSocket = null;
 
             return false;
         }
     }
 
-    public void method327(boolean isPriority, CacheArchive archive, int archiveIndexId, int fileId, byte arg4, int expectedCrc) {
+    public void enqueueFileRequest(boolean isPriority, CacheArchive archive, int archiveIndexId, int fileId, byte arg4, int expectedCrc) {
         long fileKey = fileId + ((long) archiveIndexId << 16);
         UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityWriteQueue.getNode(fileKey);
 
@@ -361,7 +361,10 @@ public class UpdateServer implements IUpdateServer {
         }
     }
 
-    public void method399(int arg0, int arg2) {
+    /**
+     * TODO suspicious name
+     */
+    public void moveRequestToPendingQueue(int arg0, int arg2) {
         long l = (arg0 << 16) + arg2;
         UpdateServerNode updateServerNode = (UpdateServerNode) standardPriorityWriteQueue.getNode(l);
         if (updateServerNode != null) {
@@ -369,9 +372,9 @@ public class UpdateServer implements IUpdateServer {
         }
     }
 
-    public void getArchiveChecksum(CacheArchive cacheArchive, int cacheIndexId) {
+    public void requestArchiveChecksum(CacheArchive cacheArchive, int cacheIndexId) {
         if (crcTableBuffer == null) {
-            method327(true, null, 255, 255, (byte) 0, 0);
+            enqueueFileRequest(true, null, 255, 255, (byte) 0, 0);
             cacheArchiveLoaders[cacheIndexId] = cacheArchive;
         } else {
             crcTableBuffer.currentPosition = 5 + cacheIndexId * 4;
@@ -402,7 +405,7 @@ public class UpdateServer implements IUpdateServer {
                     /* empty */
                 }
                 updateServerSocket = null;
-                ioExceptions++;
+                ioExceptionsCount++;
             }
         }
     
@@ -416,7 +419,7 @@ public class UpdateServer implements IUpdateServer {
     }
 
     @Override
-    public int calculateDataLoaded(int volume, int file) {
+    public int getLoadedPercentage(int volume, int file) {
         long l = (long) ((volume << 16) + file);
         if (currentResponse == null || currentResponse.key != l)
             return 0;
@@ -424,7 +427,7 @@ public class UpdateServer implements IUpdateServer {
     }
 
     @Override
-    public int getActiveCount(boolean includeStandardPriority, boolean includeHighPriority) {
+    public int getActiveTaskCount(boolean includeStandardPriority, boolean includeHighPriority) {
         int total = 0;
         if (includeHighPriority) {
             total += highPriorityResponseCount + highPriorityWriteCount;

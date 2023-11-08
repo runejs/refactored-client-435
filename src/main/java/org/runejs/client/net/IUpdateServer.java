@@ -14,7 +14,7 @@ public interface IUpdateServer {
 
     void close();
 
-    int calculateDataLoaded(int volume, int file);
+    int getLoadedPercentage(int volume, int file);
 
-    int getActiveCount(boolean pending, boolean immediate);
+    int getActiveTaskCount(boolean pending, boolean immediate);
 }
