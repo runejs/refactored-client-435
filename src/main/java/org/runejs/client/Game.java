@@ -871,7 +871,7 @@ public class Game {
         }
 
 
-        if(aBoolean519 && UpdateServer.getActiveCount(false, true) == 0) {
+        if(aBoolean519 && UpdateServer.getActiveTaskCount(false, true) == 0) {
             aBoolean519 = false;
         }
         if(aBoolean519) {
@@ -2238,13 +2238,13 @@ public class Game {
     }
 
     public void connectUpdateServer() {
-        if (UpdateServer.crcMismatches >= 4) {
+        if (UpdateServer.crcMismatchesCount >= 4) {
             this.openErrorPage("js5crc");
             gameStatusCode = 1000;
         } else {
-            if (UpdateServer.ioExceptions >= 4) {
+            if (UpdateServer.ioExceptionsCount >= 4) {
                 if (gameStatusCode > 5) {
-                    UpdateServer.ioExceptions = 3;
+                    UpdateServer.ioExceptionsCount = 3;
                     anInt509 = 3000;
                 } else {
                     this.openErrorPage("js5io");
@@ -2335,7 +2335,7 @@ public class Game {
         method249();
         MusicSystem.syncedStop(false);
         SoundSystem.stop();
-        UpdateServer.killUpdateServerSocket();
+        UpdateServer.closeUpdateServerSocket();
         method947(-1);
         do {
             try {
