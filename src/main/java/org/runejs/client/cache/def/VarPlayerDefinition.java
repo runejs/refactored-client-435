@@ -1,16 +1,21 @@
 package org.runejs.client.cache.def;
 
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.cache.def.loading.CacheDefinition;
+import org.runejs.client.cache.def.loading.DefinitionLoader;
+import org.runejs.client.cache.def.loading.rs435.VarPlayerDefinitionLoader;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.node.NodeCache;
 
-public class VarPlayerDefinition extends CachedNode {
+public class VarPlayerDefinition extends CachedNode implements CacheDefinition {
+    public static DefinitionLoader<VarPlayerDefinition> loader = new VarPlayerDefinitionLoader();
     private static NodeCache varPlayerDefinitionCache = new NodeCache(64);
     private static CacheArchive gameDefinitionsCacheArchive;
     public static int varPlayerDefinitionsSize;
     public static int[] varpCache = new int[2000];
     public int type = 0;
+    public int id;
 
     /**
      * An array of varPlayers. You can fetch a varp with a varpId to get the current value, i.e. varpValue = varPlayers[varpId]
@@ -25,8 +30,9 @@ public class VarPlayerDefinition extends CachedNode {
         }
         byte[] cacheData = gameDefinitionsCacheArchive.getFile(16, varPlayerIndex);
         definition = new VarPlayerDefinition();
+        definition.id = varPlayerIndex;
         if(cacheData != null) {
-            definition.readValues(new Buffer(cacheData));
+            loader.load(definition, new Buffer(cacheData));
         }
         varPlayerDefinitionCache.put(varPlayerIndex, definition);
         return definition;
@@ -41,13 +47,6 @@ public class VarPlayerDefinition extends CachedNode {
         varPlayerDefinitionCache.clear();
     }
 
-    public void readValues(Buffer buffer) {
-        while(true) {
-            int opcode = buffer.getUnsignedByte();
-            if(opcode == 0)
-                break;
-            if(opcode == 5)
-                type = buffer.getUnsignedShortBE();
-        }
-    }
+    @Override
+    public int getId() { return this.id; }
 }

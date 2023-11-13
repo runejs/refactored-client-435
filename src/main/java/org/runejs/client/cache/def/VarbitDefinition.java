@@ -1,12 +1,16 @@
 package org.runejs.client.cache.def;
 
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.cache.def.loading.CacheDefinition;
+import org.runejs.client.cache.def.loading.DefinitionLoader;
+import org.runejs.client.cache.def.loading.rs435.VarbitDefinitionLoader;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.node.NodeCache;
 import org.runejs.client.util.BitUtils;
 
-public class VarbitDefinition extends CachedNode {
+public class VarbitDefinition extends CachedNode implements CacheDefinition {
+    public static DefinitionLoader<VarbitDefinition> loader = new VarbitDefinitionLoader();
     private static NodeCache varbitDefinitionCache = new NodeCache(64);
     private static CacheArchive gameDefinitionsCacheArchive;
 
@@ -27,6 +31,8 @@ public class VarbitDefinition extends CachedNode {
         }
     }
 
+    public int id;
+
     public int index;
     public int leastSignificantBit;
     public int mostSignificantBit;
@@ -37,8 +43,10 @@ public class VarbitDefinition extends CachedNode {
             return varbitDefinition;
         byte[] cacheData = gameDefinitionsCacheArchive.getFile(14, varbitId);
         varbitDefinition = new VarbitDefinition();
-        if (cacheData != null)
-            varbitDefinition.readValues(new Buffer(cacheData));
+        varbitDefinition.id = varbitId;
+        if (cacheData != null) {
+            loader.load(varbitDefinition, new Buffer(cacheData));
+        }
         varbitDefinitionCache.put(varbitId, varbitDefinition);
         return varbitDefinition;
     }
@@ -78,18 +86,6 @@ public class VarbitDefinition extends CachedNode {
         varbitDefinitionCache.clear();
     }
 
-    public void readValues(Buffer buffer) {
-        while(true) {
-            int opCode = buffer.getUnsignedByte();
-            if(opCode == 0)
-                break;
-            if(opCode == 1) {
-                index = buffer.getUnsignedShortBE();
-                leastSignificantBit = buffer.getUnsignedByte();
-                mostSignificantBit = buffer.getUnsignedByte();
-            }
-        }
-    }
-
-
+    @Override
+    public int getId() { return this.id; }
 }

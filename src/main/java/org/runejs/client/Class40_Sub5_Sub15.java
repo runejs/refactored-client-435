@@ -3,6 +3,9 @@ package org.runejs.client;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.FrameDefinition;
 import org.runejs.client.cache.def.FramemapDefinition;
+import org.runejs.client.cache.def.loading.DefinitionLoader;
+import org.runejs.client.cache.def.loading.rs435.FrameDefinitionLoader;
+import org.runejs.client.cache.def.loading.rs435.FramemapDefinitionLoader;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.def.SpotAnimDefinition;
 import org.runejs.client.media.renderable.actor.Actor;
@@ -12,6 +15,9 @@ import org.runejs.client.node.CachedNode;
  * anim skeleton?
  */
 public class Class40_Sub5_Sub15 extends CachedNode {
+    public static DefinitionLoader<FramemapDefinition> framemapDefinitionLoader = new FramemapDefinitionLoader();
+    public static DefinitionLoader<FrameDefinition> frameDefinitionLoader = new FrameDefinitionLoader();
+
     public FrameDefinition[] aFrameDefinitionArray2794;
 
     public Class40_Sub5_Sub15(CacheArchive arg0, CacheArchive arg1, int arg2, boolean arg3) {
@@ -35,10 +41,14 @@ public class Class40_Sub5_Sub15 extends CachedNode {
                     is_4_ = arg1.method182(0, i_2_);
                 else
                     is_4_ = arg1.method182(i_2_, 0);
-                framemapDefinition = new FramemapDefinition(i_2_, is_4_);
+                framemapDefinition = new FramemapDefinition(i_2_, framemapDefinitionLoader, is_4_);
                 linkedList.addLast(framemapDefinition);
             }
-            aFrameDefinitionArray2794[is[i_0_]] = new FrameDefinition(is_1_, framemapDefinition);
+
+            // TODO (jkm) is this the right thing to use for id?
+            int frameDefinitionId = is[i_0_];
+
+            aFrameDefinitionArray2794[is[i_0_]] = new FrameDefinition(frameDefinitionId, frameDefinitionLoader, is_1_, framemapDefinition);
         }
     }
 

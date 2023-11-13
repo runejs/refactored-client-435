@@ -2,10 +2,11 @@ package org.runejs.client.cache.def;
 
 import org.runejs.client.*;
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.cache.def.loading.DefinitionLoader;
+import org.runejs.client.cache.def.loading.rs435.GameObjectDefinitionLoader;
 import org.runejs.client.node.NodeCache;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.io.Buffer;
-import org.runejs.client.language.English;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.node.CachedNode;
 import org.runejs.OldEngine.ObjectDecompressor;
@@ -14,6 +15,8 @@ import org.runejs.client.scene.InteractiveObjectTemporary;
 import java.io.IOException;
 
 public class GameObjectDefinition extends CachedNode implements EntityDefinition {
+    public static DefinitionLoader<GameObjectDefinition> loader = new GameObjectDefinitionLoader();
+
     public static int count;
     public static int[] OBJECT_TYPES = new int[]{0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3};
     private static boolean lowMemory = false;
@@ -140,14 +143,13 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
             try {
                 Buffer buffer = ObjectDecompressor.grabObjectDef(objectId);
                 if(buffer != null) {
-
-                    gameObjectDefinition.readValues(buffer);
+                    loader.load(gameObjectDefinition, buffer);
                 }
             } catch(IOException e) {
                 e.printStackTrace();
             }
         } else {
-            gameObjectDefinition.readValues(new Buffer(is));
+            loader.load(gameObjectDefinition, new Buffer(is));
         }
         gameObjectDefinition.method605();
         if(gameObjectDefinition.hollow) {
@@ -230,16 +232,6 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
             }
         }
         return false;
-    }
-
-    public void readValues(Buffer gameObjectDefinitionBuffer) {
-        for(; ; ) {
-            int opcode = gameObjectDefinitionBuffer.getUnsignedByte();
-            if(opcode == 0) {
-                break;
-            }
-            readValue(gameObjectDefinitionBuffer, opcode);
-        }
     }
 
     public void method605() {
@@ -391,136 +383,6 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
 
     }
 
-    public void readValue(Buffer buffer, int opcode) {
-        if(opcode == 1) {
-            int length = buffer.getUnsignedByte();
-            if(length > 0) {
-                if(objectModels == null || lowMemory) {
-                    objectTypes = new int[length];
-                    objectModels = new int[length];
-                    for(int index = 0; length > index; index++) {
-                        objectModels[index] = buffer.getUnsignedShortBE();
-                        objectTypes[index] = buffer.getUnsignedByte();
-                    }
-                } else {
-                    buffer.currentPosition += length * 3;
-                }
-            }
-        } else if(opcode == 2) {
-            name = buffer.getString();
-        } else if(opcode == 5) {
-            int length = buffer.getUnsignedByte();
-            if(length > 0) {
-                if(objectModels == null || lowMemory) {
-                    objectTypes = null;
-                    objectModels = new int[length];
-                    for(int index = 0; length > index; index++) {
-                        objectModels[index] = buffer.getUnsignedShortBE();
-                    }
-                } else {
-                    buffer.currentPosition += 2 * length;
-                }
-            }
-        } else if(opcode == 14) {
-            sizeX = buffer.getUnsignedByte();
-        } else if(opcode == 15) {
-            sizeY = buffer.getUnsignedByte();
-        } else if(opcode == 17) {
-            solid = false;
-        } else if(opcode == 18) {
-            walkable = false;
-        } else if(opcode == 19) {
-            hasActions = buffer.getUnsignedByte();
-        } else if(opcode == 21) {
-            adjustToTerrain = true;
-        } else if(opcode == 22) {
-            nonFlatShading = true;
-        } else if(opcode == 23) {
-            wall = true;
-        } else if(opcode == 24) {
-            animationId = buffer.getUnsignedShortBE();
-            if(animationId == 0xFFFF) {
-                animationId = -1;
-            }
-        } else if(opcode == 28) {
-            setDecorDisplacement = buffer.getUnsignedByte();
-        } else if(opcode == 29) {
-            ambient = buffer.getByte();
-        } else if(opcode == 39) {
-            contrast = 5 * buffer.getByte();
-        } else if(opcode >= 30 && opcode < 35) {
-            actions[opcode - 30] = buffer.getString();
-            if(actions[opcode + -30].equalsIgnoreCase(English.hidden)) {
-                actions[opcode + -30] = null;
-            }
-        } else if(opcode == 40) {
-            int length = buffer.getUnsignedByte();
-            recolorToFind = new int[length];
-            recolorToReplace = new int[length];
-            for(int index = 0; index < length; index++) {
-                recolorToFind[index] = buffer.getUnsignedShortBE();
-                recolorToReplace[index] = buffer.getUnsignedShortBE();
-            }
-        } else if(opcode == 60) {
-            icon = buffer.getUnsignedShortBE();
-        } else if(opcode == 62) {
-            rotated = true;
-        } else if(opcode == 64) {
-            castsShadow = false;
-        } else if(opcode == 65) {
-            modelSizeX = buffer.getUnsignedShortBE();
-        } else if(opcode == 66) {
-            modelSizeHeight = buffer.getUnsignedShortBE();
-        } else if(opcode == 67) {
-            modelSizeY = buffer.getUnsignedShortBE();
-        } else if(opcode == 68) {
-            mapSceneID = buffer.getUnsignedShortBE();
-        } else if(opcode == 69) {
-            blockingMask = buffer.getUnsignedByte();
-        } else if(opcode == 70) {
-            offsetX = buffer.getShortBE();
-        } else if(opcode == 71) {
-            offsetHeight = buffer.getShortBE();
-        } else if(opcode == 72) {
-            offsetY = buffer.getShortBE();
-        } else if(opcode == 73) {
-            obstructsGround = true;
-        } else if(opcode == 74) {
-            hollow = true;
-        } else if(opcode == 75) {
-            supportsItems = buffer.getUnsignedByte();
-        } else if(opcode == 77) {
-            varbitId = buffer.getUnsignedShortBE();
-            if(varbitId == 0xffff) {
-                varbitId = -1;
-            }
-            configId = buffer.getUnsignedShortBE();
-            if(configId == 0xFFFF) {
-                configId = -1;
-            }
-            int length = buffer.getUnsignedByte();
-            childIds = new int[1 + length];
-            for(int index = 0; index <= length; ++index) {
-                childIds[index] = buffer.getUnsignedShortBE();
-                if(0xFFFF == childIds[index]) {
-                    childIds[index] = -1;
-                }
-            }
-        } else if(opcode == 78) {
-            ambientSoundId = buffer.getUnsignedShortBE();
-            ambientSoundHearDistance = buffer.getUnsignedByte();
-        } else if(opcode == 79) {
-            unkn1 = buffer.getUnsignedShortBE();
-            unkn2 = buffer.getUnsignedShortBE();
-            ambientSoundHearDistance = buffer.getUnsignedByte();
-            int length = buffer.getUnsignedByte();
-            soundEffectIds = new int[length];
-            for(int index = 0; index < length; ++index) {
-                soundEffectIds[index] = buffer.getUnsignedShortBE();
-            }
-        }
-    }
-
     public boolean isTypeModelLoaded(int type) {
         if(objectTypes != null) {
             for(int i = 0; objectTypes.length > i; i++) {
@@ -569,6 +431,9 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         }
         return bool;
     }
+
+    @Override
+    public int getId() { return this.id; }
 
     @Override
     public String getName() {

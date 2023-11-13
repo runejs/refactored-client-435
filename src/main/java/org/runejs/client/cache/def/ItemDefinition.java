@@ -1,6 +1,8 @@
 package org.runejs.client.cache.def;
 
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.cache.def.loading.DefinitionLoader;
+import org.runejs.client.cache.def.loading.rs435.ItemDefinitionLoader;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
@@ -12,6 +14,8 @@ import org.runejs.client.*;
 import org.runejs.client.node.NodeCache;
 
 public class ItemDefinition extends CachedNode implements EntityDefinition {
+    public static DefinitionLoader<ItemDefinition> loader = new ItemDefinitionLoader();
+
     public static int count;
     private static CacheArchive definitionArchive;
     private static NodeCache definitionCache = new NodeCache(64);
@@ -102,7 +106,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         definition = new ItemDefinition();
         definition.id = id;
         if(is != null) {
-            definition.readValues(new Buffer(is));
+            definition = loader.load(definition, new Buffer(is));
         }
         if(definition.noteTemplateId != -1) {
             definition.itemToNote(forId(definition.noteTemplateId, 10), forId(definition.notedId, 10));
@@ -381,110 +385,6 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
 
     }
 
-    public void readValue(int opcode, Buffer buffer) {
-        if(opcode == 1) {
-            inventoryModelId = buffer.getUnsignedShortBE();
-        } else if(opcode == 2) {
-            name = buffer.getString();
-        } else if(opcode == 4) {
-            zoom2d = buffer.getUnsignedShortBE();
-        } else if(opcode == 5) {
-            xan2d = buffer.getUnsignedShortBE();
-        } else if(opcode == 6) {
-            yan2d = buffer.getUnsignedShortBE();
-        } else if(opcode == 7) {
-            xOffset2d = buffer.getUnsignedShortBE();
-            if(xOffset2d > 32767) {
-                xOffset2d -= 65536;
-            }
-        } else if(opcode == 8) {
-            yOffset2d = buffer.getUnsignedShortBE();
-            if(yOffset2d > 32767) {
-                yOffset2d -= 65536;
-            }
-        } else if(opcode == 10) {
-            buffer.getUnsignedShortBE(); // Dummy
-        } else if(opcode == 11) {
-            stackable = 1;
-        } else if(opcode == 12) {
-            cost = buffer.getIntBE();
-        } else if(opcode == 16) {
-            members = true;
-        } else if(opcode == 23) {
-            maleModel0 = buffer.getUnsignedShortBE();
-            maleOffset = buffer.getUnsignedByte();
-        } else if(opcode == 24) {
-            maleModel1 = buffer.getUnsignedShortBE();
-        } else if(opcode == 25) {
-            femaleModel0 = buffer.getUnsignedShortBE();
-            femaleOffset = buffer.getUnsignedByte();
-        } else if(opcode == 26) {
-            femaleModel1 = buffer.getUnsignedShortBE();
-        } else if(opcode >= 30 && opcode < 35) {
-            groundOptions[-30 + opcode] = buffer.getString();
-            if(groundOptions[opcode + -30].equalsIgnoreCase("Hidden")) {
-                groundOptions[opcode + -30] = null;
-            }
-        } else if(opcode >= 35 && opcode < 40) {
-            interfaceOptions[opcode + -35] = buffer.getString();
-        } else if(opcode == 40) {
-            int colorCount = buffer.getUnsignedByte();
-            destColors = new int[colorCount];
-            originalColours = new int[colorCount];
-            for(int colorIndex = 0; colorIndex < colorCount; colorIndex++) {
-                originalColours[colorIndex] = buffer.getUnsignedShortBE();
-                destColors[colorIndex] = buffer.getUnsignedShortBE();
-            }
-        } else if(opcode == 78) {
-            maleModel2 = buffer.getUnsignedShortBE();
-        } else if(opcode == 79) {
-            femaleModel2 = buffer.getUnsignedShortBE();
-        } else if(opcode == 90) {
-            primaryMaleHeadPiece = buffer.getUnsignedShortBE();
-        } else if(opcode == 91) {
-            primaryFemaleHeadPiece = buffer.getUnsignedShortBE();
-        } else if(opcode == 92) {
-            secondaryMaleHeadPiece = buffer.getUnsignedShortBE();
-        } else if(opcode == 93) {
-            secondaryFemaleHeadPiece = buffer.getUnsignedShortBE();
-        } else if(opcode == 95) {
-            zan2d = buffer.getUnsignedShortBE();
-        } else if(opcode == 97) {
-            notedId = buffer.getUnsignedShortBE();
-        } else if(opcode == 98) {
-            noteTemplateId = buffer.getUnsignedShortBE();
-        } else if(opcode >= 100 && opcode < 110) {
-            if(stackIds == null) {
-                stackableAmounts = new int[10];
-                stackIds = new int[10];
-            }
-            stackIds[-100 + opcode] = buffer.getUnsignedShortBE();
-            stackableAmounts[-100 + opcode] = buffer.getUnsignedShortBE();
-        } else if(opcode == 110) {
-            groundScaleX = buffer.getUnsignedShortBE();
-        } else if(opcode == 111) {
-            groundScaleY = buffer.getUnsignedShortBE();
-        } else if(opcode == 112) {
-            groundScaleZ = buffer.getUnsignedShortBE();
-        } else if(opcode == 113) {
-            ambient = buffer.getByte();
-        } else if(opcode == 114) {
-            contrast = buffer.getByte() * 5;
-        } else if(opcode == 115) {
-            teamIndex = buffer.getUnsignedByte();
-        }
-    }
-
-    public void readValues(Buffer itemDefinitionBuffer) {
-        while(true) {
-            int opcode = itemDefinitionBuffer.getUnsignedByte();
-            if(opcode == 0) {
-                break;
-            }
-            readValue(opcode, itemDefinitionBuffer);
-        }
-    }
-
     public void itemToNote(ItemDefinition noteTemplate, ItemDefinition note) {
         xan2d = noteTemplate.xan2d;
         xOffset2d = noteTemplate.xOffset2d;
@@ -539,7 +439,8 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
     }
 
     @Override
-    public String getName() {
-        return name;
-    }
+    public int getId() { return this.id; }
+
+    @Override
+    public String getName() { return name; }
 }

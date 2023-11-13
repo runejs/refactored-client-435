@@ -1,13 +1,17 @@
 package org.runejs.client.cache.def;
 
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.cache.def.loading.CacheDefinition;
+import org.runejs.client.cache.def.loading.DefinitionLoader;
+import org.runejs.client.cache.def.loading.rs435.SpotAnimDefinitionLoader;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.node.NodeCache;
 
-public class SpotAnimDefinition extends CachedNode {
+public class SpotAnimDefinition extends CachedNode implements CacheDefinition {
+    public static DefinitionLoader<SpotAnimDefinition> loader = new SpotAnimDefinitionLoader();
 
     private static CacheArchive definitionArchive;
     private static NodeCache definitionCache = new NodeCache(64);
@@ -39,8 +43,9 @@ public class SpotAnimDefinition extends CachedNode {
         byte[] is = definitionArchive.getFile(13, id);
         spotAnimDefinition = new SpotAnimDefinition();
         spotAnimDefinition.id = id;
-        if (is != null)
-            spotAnimDefinition.readValues(new Buffer(is));
+        if (is != null) {
+            loader.load(spotAnimDefinition, new Buffer(is));
+        }
         definitionCache.put(id, spotAnimDefinition);
         return spotAnimDefinition;
     }
@@ -53,38 +58,6 @@ public class SpotAnimDefinition extends CachedNode {
     public static void initializeSpotAnimCache(CacheArchive arg1, CacheArchive arg2) {
         modelArchive = arg1;
         definitionArchive = arg2;
-    }
-
-    public void readValues(Buffer buffer) {
-        for (; ; ) {
-            int opcode = buffer.getUnsignedByte();
-            if (opcode == 0) {
-                break;
-            }
-            readValue(opcode, buffer);
-        }
-    }
-
-    public void readValue(int opcode, Buffer buffer) {
-        if (opcode == 1) {
-            modelId = buffer.getUnsignedShortBE();
-        } else if (opcode == 2) {
-            animationId = buffer.getUnsignedShortBE();
-        } else if (opcode == 4) {
-            resizeX = buffer.getUnsignedShortBE();
-        } else if (opcode == 5) {
-            resizeY = buffer.getUnsignedShortBE();
-        } else if (opcode == 6) {
-            rotaton = buffer.getUnsignedShortBE();
-        } else if (opcode == 7) {
-            ambient = buffer.getUnsignedByte();
-        } else if (opcode == 8) {
-            contrast = buffer.getUnsignedByte();
-        } else if (opcode >= 40 && opcode < 50) {
-            recolorToFind[-40 + opcode] = buffer.getUnsignedShortBE();
-        } else if (opcode >= 50 && opcode < 60) {
-            recolorToReplace[-50 + opcode] = buffer.getUnsignedShortBE();
-        }
     }
 
     public Model getModel(int arg0) {
@@ -127,6 +100,8 @@ public class SpotAnimDefinition extends CachedNode {
             }
         }
         return class40_sub5_sub17_sub5_0_;
-
     }
+
+    @Override
+    public int getId() { return this.id; }
 }

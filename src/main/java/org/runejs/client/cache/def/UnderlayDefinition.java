@@ -1,14 +1,19 @@
 package org.runejs.client.cache.def;
 
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.cache.def.loading.CacheDefinition;
+import org.runejs.client.cache.def.loading.DefinitionLoader;
+import org.runejs.client.cache.def.loading.rs435.UnderlayDefinitionLoader;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.node.NodeCache;
 
-public class UnderlayDefinition extends CachedNode {
+public class UnderlayDefinition extends CachedNode implements CacheDefinition {
+    public static DefinitionLoader<UnderlayDefinition> loader = new UnderlayDefinitionLoader();
     private static NodeCache definitionCache = new NodeCache(64);
     private static CacheArchive definitionArchive;
 
+    public int id;
     public int lightness;
     public int hue;
     public int hueMultiplier;
@@ -25,8 +30,10 @@ public class UnderlayDefinition extends CachedNode {
             return underlayDefinition;
         byte[] is = definitionArchive.getFile(1, underlayId);
         underlayDefinition = new UnderlayDefinition();
-        if (is != null)
-            underlayDefinition.readValues(new Buffer(is));
+        underlayDefinition.id = underlayId;
+        if (is != null) {
+            loader.load(underlayDefinition, new Buffer(is));
+        }
         underlayDefinition.calculateHsl();
         definitionCache.put(underlayId, underlayDefinition);
         return underlayDefinition;
@@ -104,20 +111,6 @@ public class UnderlayDefinition extends CachedNode {
         }
     }
 
-
-    public void readValues(Buffer buffer) {
-        while(true) {
-            int opcode = buffer.getUnsignedByte();
-            if(opcode == 0) {
-                break;
-            }
-            readValue(buffer, opcode);
-        }
-    }
-
-    public void readValue(Buffer buffer, int opcode) {
-        if(opcode == 1) {
-            color = buffer.getMediumBE();
-        }
-    }
+    @Override
+    public int getId() { return this.id; }
 }
