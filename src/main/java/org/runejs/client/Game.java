@@ -141,6 +141,14 @@ public class Game {
      */
     public static boolean lastFocusTrackWasFocused = true;
     public static int currentHintIconType = 0;
+    /**
+     * Amount of mouse clicks since the last draw
+     */
+    public static int mouseClicksSinceLastDraw = 0;
+    /**
+     * Cycles between the last update and the current draw.
+     */
+    public static int deltaT = 0;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
     private static int lastClickX = 0;
@@ -313,18 +321,18 @@ public class Game {
                                                 if (parentId != -1) {
                                                     GameInterface gameInterface_16_ = interfaceCollection[parentId];
                                                     if (Rasterizer.viewportTop > i_14_ + i_11_ && gameInterface_16_.scrollPosition > 0) {
-                                                        int i_17_ = MovedStatics.anInt199 * (Rasterizer.viewportTop + -i_11_ - i_14_) / 3;
-                                                        if (10 * MovedStatics.anInt199 < i_17_)
-                                                            i_17_ = 10 * MovedStatics.anInt199;
+                                                        int i_17_ = deltaT * (Rasterizer.viewportTop + -i_11_ - i_14_) / 3;
+                                                        if (10 * deltaT < i_17_)
+                                                            i_17_ = 10 * deltaT;
                                                         if (gameInterface_16_.scrollPosition < i_17_)
                                                             i_17_ = gameInterface_16_.scrollPosition;
                                                         gameInterface_16_.scrollPosition -= i_17_;
                                                         MovedStatics.anInt2798 += i_17_;
                                                     }
                                                     if (32 + i_11_ + i_14_ > Rasterizer.viewportBottom && -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight > gameInterface_16_.scrollPosition) {
-                                                        int i_18_ = MovedStatics.anInt199 * (-Rasterizer.viewportBottom + 32 + i_11_ + i_14_) / 3;
-                                                        if (MovedStatics.anInt199 * 10 < i_18_)
-                                                            i_18_ = 10 * MovedStatics.anInt199;
+                                                        int i_18_ = deltaT * (-Rasterizer.viewportBottom + 32 + i_11_ + i_14_) / 3;
+                                                        if (deltaT * 10 < i_18_)
+                                                            i_18_ = 10 * deltaT;
                                                         if (-gameInterface_16_.scrollPosition + gameInterface_16_.scrollHeight + -gameInterface_16_.originalHeight < i_18_)
                                                             i_18_ = -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight + -gameInterface_16_.scrollPosition;
                                                         MovedStatics.anInt2798 -= i_18_;
@@ -877,7 +885,7 @@ public class Game {
         currentScene.clearInteractiveObjectCache();
         MovedStatics.draw2DActorAttachments();
         MovedStatics.drawPositionHintIcon();
-        ((Class35) Rasterizer3D.interface3).animateTextures(MovedStatics.anInt199);
+        ((Class35) Rasterizer3D.interface3).animateTextures(deltaT);
         MovedStatics.draw3dScreen();
 
         DebugTools.drawWalkPath();
@@ -1049,8 +1057,8 @@ public class Game {
                 method943(ChatBox.tradeMode, MovedStatics.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             }
 
-            SoundSystem.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
-            MovedStatics.anInt199 = 0;
+            SoundSystem.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, deltaT, Player.localPlayer.worldY);
+            deltaT = 0;
 
         } else {
             method353();
@@ -1076,17 +1084,17 @@ public class Game {
                 method943(ChatBox.tradeMode, MovedStatics.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             }
 
-            SoundSystem.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
-            MovedStatics.anInt199 = 0;
+            SoundSystem.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, deltaT, Player.localPlayer.worldY);
+            deltaT = 0;
         }
 
     }
 
-    public static void method164() {
+    public static void drawFullScreenWidget() {
         GameInterface.handleSequences(GameInterface.fullscreenInterfaceId);
         if(GameInterface.fullscreenSiblingInterfaceId != -1)
             GameInterface.handleSequences(GameInterface.fullscreenSiblingInterfaceId);
-        MovedStatics.anInt199 = 0;
+        deltaT = 0;
         MovedStatics.aProducingGraphicsBuffer_2213.prepareRasterizer();
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(Player.viewportOffsets);
         Rasterizer.resetPixels();
@@ -1369,7 +1377,7 @@ public class Game {
                                 GameInterface.atInventoryInterfaceType = 0;
                             }
                         }
-                        MovedStatics.anInt199++;
+                        deltaT++;
                         if(GameInterface.activeInterfaceType != 0) {
                             GameInterface.lastItemDragTime++;
                             if(MouseHandler.mouseX > MovedStatics.anInt2869 + 5 || MovedStatics.anInt2869 + -5 > MouseHandler.mouseX || MovedStatics.anInt2798 + 5 < MouseHandler.mouseY || MovedStatics.anInt2798 - 5 > MouseHandler.mouseY)
@@ -1459,7 +1467,7 @@ public class Game {
                         }
 
                         if(MouseHandler.currentMouseButtonPressed == 1 || MouseHandler.clickType == 1)
-                            MovedStatics.anInt3294++;
+                            mouseClicksSinceLastDraw++;
 
                         int i = 34;
                         if(GameInterface.gameScreenInterfaceId != -1)
@@ -1849,7 +1857,7 @@ public class Game {
                         if (player != null && player.worldX >= 0 && player.worldX < 13312 && player.worldY >= 0 && player.worldY < 13312)
                             projectile.trackTarget(MovedStatics.pulseCycle, 0, player.worldY, Game.currentScene.getFloorDrawHeight(projectile.anInt2981, player.worldX, player.worldY) - projectile.endHeight, player.worldX);
                     }
-                    projectile.move(MovedStatics.anInt199);
+                    projectile.move(deltaT);
                     currentScene.method134(Player.worldLevel, (int) projectile.currentX, (int) projectile.currentY, (int) projectile.currentHeight, 60, projectile, projectile.anInt3013, -1, false);
                 }
             } else
@@ -1861,7 +1869,7 @@ public class Game {
         for (SpotAnim spotAnim = (SpotAnim) MovedStatics.spotAnimQueue.peekFirst(); spotAnim != null; spotAnim = (SpotAnim) MovedStatics.spotAnimQueue.pollFirst()) {
             if (Player.worldLevel == spotAnim.plane && !spotAnim.animationFinished) {
                 if (MovedStatics.pulseCycle >= spotAnim.startCycle) {
-                    spotAnim.method834(MovedStatics.anInt199);
+                    spotAnim.method834(deltaT);
                     if (spotAnim.animationFinished)
                         spotAnim.unlink();
                     else
@@ -1947,9 +1955,9 @@ public class Game {
     }
 
     /**
-     * Sets the text that is shown in the middle of the screen depending on the current status code
+     * Draw the game screen
      */
-    public void updateStatusText() {
+    public void draw() {
         if (MovedStatics.aBoolean1575) {
             KeyFocusListener.removeListeners(gameCanvas);
             MouseHandler.removeListeners(gameCanvas);
@@ -1980,12 +1988,11 @@ public class Game {
                 MovedStatics.drawLoadingBox(English.loadingPleaseWait, null, false);
         } else if (gameStatusCode == 30) {
             drawGameScreen();
-
         } else if (gameStatusCode == 35) {
-            method164();
+            drawFullScreenWidget();
         } else if (gameStatusCode == 40)
             MovedStatics.drawLoadingBox(English.connectionLost, English.pleaseWaitAttemptingToReestablish, false);
-        MovedStatics.anInt3294 = 0;
+        mouseClicksSinceLastDraw = 0;
     }
 
     public void connectUpdateServer() {

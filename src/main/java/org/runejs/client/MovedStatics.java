@@ -75,7 +75,6 @@ public class MovedStatics {
      */
     public static int hintIconPosY = 0;
     public static int[] chatboxLineOffsets;
-    public static int anInt199 = 0;
     public static volatile boolean aBoolean1575 = false;
     public static int anInt1586 = -1;
     public static boolean reportMutePlayer = false;
@@ -317,10 +316,6 @@ public class MovedStatics {
      * Sprite heights?
      */
     public static int[] anIntArray3312;
-    /**
-     * Some kind of mouse information
-     */
-    public static int anInt3294 = 0;
     /**
      * The image used for the highlighted (selected) tab button,
      * for the furthest-left tab on the bottom.

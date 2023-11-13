@@ -78,12 +78,12 @@ public class Class35 implements Interface3 {
         clearTextures();
     }
 
-    public void animateTextures(int arg1) {
+    public void animateTextures(int deltaT) {
         int i = 0;
         for (/**/; i < textures.length; i++) {
             Texture texture = textures[i];
             if (texture != null && texture.animateDirection != 0 && texture.aBoolean2146) {
-                texture.animate(arg1);
+                texture.animate(deltaT);
                 texture.aBoolean2146 = false;
             }
         }

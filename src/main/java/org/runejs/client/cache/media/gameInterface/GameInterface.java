@@ -1670,13 +1670,13 @@ public class GameInterface extends CachedNode {
             anInt1171 = 0;
         aBoolean1444 = false;
         if(arg2 >= arg6 && arg2 < arg6 + 16 && arg1 >= arg8 && 16 + arg8 > arg1) {
-            arg5.scrollPosition -= MovedStatics.anInt3294 * 4;
+            arg5.scrollPosition -= Game.mouseClicksSinceLastDraw * 4;
             if(arg7 == 1)
                 redrawTabArea = true;
             if(arg7 == 2 || arg7 == 3)
                 ChatBox.redrawChatbox = true;
         } else if(arg6 > arg2 || arg6 + 16 <= arg2 || arg1 < arg8 + arg0 + -16 || arg1 >= arg8 + arg0) {
-            if(-anInt1171 + arg6 <= arg2 && 16 + arg6 + anInt1171 > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && MovedStatics.anInt3294 > 0) {
+            if(-anInt1171 + arg6 <= arg2 && 16 + arg6 + anInt1171 > arg2 && arg8 + 16 <= arg1 && arg1 < -16 + arg8 + arg0 && Game.mouseClicksSinceLastDraw > 0) {
                 aBoolean1444 = true;
                 int i = (-32 + arg0) * arg0 / arg3;
                 if(arg7 == 2 || arg7 == 3)
@@ -1690,7 +1690,7 @@ public class GameInterface extends CachedNode {
                 arg5.scrollPosition = (arg3 + -arg0) * i_18_ / i_17_;
             }
         } else {
-            arg5.scrollPosition += 4 * MovedStatics.anInt3294;
+            arg5.scrollPosition += 4 * Game.mouseClicksSinceLastDraw;
             if(arg7 == 2 || arg7 == 3)
                 ChatBox.redrawChatbox = true;
             if(arg7 == 1)
@@ -2282,7 +2282,7 @@ ChatBox.tradeMode
                         i_1_ = gameInterface.animation;
                     if(i_1_ != -1) {
                         AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(i_1_);
-                        gameInterface.remainingAnimationTime += MovedStatics.anInt199;
+                        gameInterface.remainingAnimationTime += Game.deltaT;
                         while(animationSequence.frameLengths[gameInterface.animationFrame] < gameInterface.remainingAnimationTime) {
                             bool = true;
                             gameInterface.remainingAnimationTime -= animationSequence.frameLengths[gameInterface.animationFrame];
@@ -2299,9 +2299,9 @@ ChatBox.tradeMode
                     bool = true;
                     int i_2_ = gameInterface.rotationSpeed >> 16;
                     int i_3_ = gameInterface.rotationSpeed << 16 >> 16;
-                    i_2_ *= MovedStatics.anInt199;
+                    i_2_ *= Game.deltaT;
                     gameInterface.rotationX = 0x7ff & i_2_ + gameInterface.rotationX;
-                    i_3_ *= MovedStatics.anInt199;
+                    i_3_ *= Game.deltaT;
                     gameInterface.rotationZ = 0x7ff & gameInterface.rotationZ + i_3_;
                 }
             }

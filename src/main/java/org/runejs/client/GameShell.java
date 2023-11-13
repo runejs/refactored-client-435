@@ -227,7 +227,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         if (MovedStatics.aBoolean1575) {
             this.setCanvas();
         }
-        this.game.updateStatusText();
+        this.game.draw();
     }
 
     public void openClientApplet(String cacheFolder, int cacheIndexes, int fileStoreId, InetAddress inetAddress, int clientVersion) {
