@@ -157,14 +157,14 @@ public class GameStartup {
                 i++;
             else
                 Minimap.minimapCompass = MovedStatics.method1028(CacheArchive.gameImageCacheArchive, Native.compass, "");
-            if (MovedStatics.minimapEdge == null)
-                MovedStatics.minimapEdge = MovedStatics.method1028(CacheArchive.gameImageCacheArchive, Native.mapEdge, "");
+            if (Minimap.minimapEdge == null)
+                Minimap.minimapEdge = MovedStatics.method1028(CacheArchive.gameImageCacheArchive, Native.mapEdge, "");
             else
                 i++;
-            if (MovedStatics.mapSceneIcons != null)
+            if (Minimap.mapSceneIcons != null)
                 i++;
             else
-                MovedStatics.mapSceneIcons = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.mapScene, "");
+                Minimap.mapSceneIcons = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.mapScene, "");
             if (Minimap.mapFunctionIcons == null)
                 Minimap.mapFunctionIcons = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
             else
@@ -213,14 +213,14 @@ public class GameStartup {
                 currentLoadingText = English.loadingSprites + (100 * i / 14) + Native.percent;
                 loadingBarPercentage = 70;
             } else {
-                MovedStatics.minimapEdge.trim();
+                Minimap.minimapEdge.trim();
                 int i_4_ = (int) (Math.random() * 21.0) - 10;
                 int i_5_ = (int) (21.0 * Math.random()) - 10;
                 int i_6_ = (int) (41.0 * Math.random()) - 20;
                 int i_7_ = -10 + (int) (21.0 * Math.random());
                 for (int i_8_ = 0; Minimap.mapFunctionIcons.length > i_8_; i_8_++)
                     Minimap.mapFunctionIcons[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
-                MovedStatics.mapSceneIcons[0].mixPalette(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
+                Minimap.mapSceneIcons[0].mixPalette(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
                 currentLoadingText = English.loadedSprites;
                 loadingBarPercentage = 70;
                 startupStage = 85;

@@ -39,6 +39,19 @@ public class Minimap extends FramePieceRenderer {
      */
     public static int[][] anIntArrayArray129 = new int[][]{new int[16], {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1}, {0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1}, {1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1}};
     public static int minimapLevel = -1;
+    public static ImageRGB minimapEdge;
+    /**
+     * Images for scenery on the minimap (e.g. trees, ladders, etc)
+     */
+    public static IndexedImage[] mapSceneIcons;
+    /**
+     * Relates to minimap
+     */
+    public static int[] anIntArray62;
+    /**
+     * Relates to minimap
+     */
+    public static int[] anIntArray66;
     private static int[] resizableMinimapOffsets1;
     private static int[] resizableMinimapOffsets2;
     private static ProducingGraphicsBuffer resizableMiniMapimage;
@@ -95,7 +108,7 @@ public class Minimap extends FramePieceRenderer {
                 if(mmBackgroundPixels[i] == 0)
                     rasterPixels[i] = 0;
             }
-            minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, MovedStatics.anIntArray62, MovedStatics.anIntArray66);
+            minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, anIntArray62, anIntArray66);
             drawMapBack();
             return;
         }
@@ -180,7 +193,7 @@ public class Minimap extends FramePieceRenderer {
             drawOnMinimap(flagY, flagX, minimapMarkers[0]);
         }
         Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
-        minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, MovedStatics.anIntArray62, MovedStatics.anIntArray66);
+        minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, anIntArray62, anIntArray66);
         minimapBackgroundImage.drawImage(0, 0);
 
         if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && MovedStatics.menuScreenArea == 1) {
@@ -209,7 +222,7 @@ public class Minimap extends FramePieceRenderer {
             double angle = Math.atan2(x, y);
             int drawX = (int) (Math.sin(angle) * 63.0);
             int drawY = (int) (57.0 * Math.cos(angle));
-            MovedStatics.minimapEdge.drawRotated(-10 + 94 + drawX + 4, 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
+            minimapEdge.drawRotated(-10 + 94 + drawX + 4, 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
         } else {
             drawOnMinimap(mapY, mapX, sprite);
         }
@@ -290,7 +303,7 @@ public class Minimap extends FramePieceRenderer {
                         }
                     }
                 } else {
-                    IndexedImage iconSprite = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
+                    IndexedImage iconSprite = mapSceneIcons[gameObjectDefinition.mapSceneID];
                     if(iconSprite != null) {
                         int offsetX = (-iconSprite.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
                         int offsetY = (gameObjectDefinition.sizeY * 4 + -iconSprite.imgHeight) / 2;
@@ -306,7 +319,7 @@ public class Minimap extends FramePieceRenderer {
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(id);
                 int type = objectInfo & 0x1f;
                 if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage iconSprite = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
+                    IndexedImage iconSprite = mapSceneIcons[gameObjectDefinition.mapSceneID];
                     if(iconSprite != null) {
                         int offsetY = (-iconSprite.imgHeight + gameObjectDefinition.sizeY * 4) / 2;
                         int offsetX = (gameObjectDefinition.sizeX * 4 + -iconSprite.imgWidth) / 2;
@@ -336,7 +349,7 @@ public class Minimap extends FramePieceRenderer {
                 int id = (hash & 0x1fffd9fb) >> 14;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(id);
                 if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage iconSprite = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
+                    IndexedImage iconSprite = mapSceneIcons[gameObjectDefinition.mapSceneID];
                     if(iconSprite != null) {
                         int i_17_ = (-iconSprite.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
                         int i_18_ = (-iconSprite.imgHeight + 4 * gameObjectDefinition.sizeY) / 2;

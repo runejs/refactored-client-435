@@ -1,7 +1,6 @@
 package org.runejs.client;
 
 import org.runejs.client.cache.CacheIndex;
-import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
@@ -11,7 +10,6 @@ import org.runejs.client.chat.ChatShapeEffect;
 import org.runejs.client.frame.Minimap;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
-import org.runejs.client.frame.console.Console;
 import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
@@ -31,7 +29,6 @@ import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.scene.*;
 import org.runejs.client.scene.camera.CameraRotation;
-import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
@@ -134,11 +131,6 @@ public class MovedStatics {
      */
     public static ImageRGB[] hintIconSprites;
     public static int anInt2581;
-    public static ImageRGB minimapEdge;
-    /**
-     * Images for scenery on the minimap (e.g. trees, ladders, etc)
-     */
-    public static IndexedImage[] mapSceneIcons;
     public static int baseX;
     public static IndexedImage[] moderatorIcon;
     public static int[] anIntArray2764 = new int[128];
@@ -294,14 +286,6 @@ public class MovedStatics {
     public static LinkedList aLinkedList_53 = new LinkedList();
     public static int anInt57;
     public static ProducingGraphicsBuffer tabBottom;
-    /**
-     * Relates to minimap
-     */
-    public static int[] anIntArray62;
-    /**
-     * Relates to minimap
-     */
-    public static int[] anIntArray66;
     public static int[] keyCodes = new int[128];
     public static int tooltipDelay = 50;
     public static int anInt2231 = 1;
@@ -1419,7 +1403,7 @@ public class MovedStatics {
         if(aBoolean2083) {
             chatboxLineOffsets = null;
             aBoolean2083 = false;
-            anIntArray66 = null;
+            Minimap.anIntArray66 = null;
             Minimap.minimapBackgroundImage = null;
             anIntArray1186 = null;
             chatboxTop = null;
@@ -1431,7 +1415,7 @@ public class MovedStatics {
             tabIcons = null;
             tabHighlightImageBottomRight = null;
             Minimap.mapbackProducingGraphicsBuffer = null;
-            anIntArray62 = null;
+            Minimap.anIntArray62 = null;
             sidebarOffsets = null;
             mapbackLeft = null;
             tabHighlightImageBottomMiddle = null;
@@ -1995,8 +1979,8 @@ public class MovedStatics {
             tabIcons = IndexedImage.getMultipleIndexedImages(arg2, Native.sideIcons, Native.aClass1_305);
             anIntArray1186 = new int[151];
             anIntArray852 = new int[151];
-            anIntArray66 = new int[33];
-            anIntArray62 = new int[33];
+            Minimap.anIntArray66 = new int[33];
+            Minimap.anIntArray62 = new int[33];
             for(int y = 0; y < 33; y++) {
                 int i_15_ = 0;
                 int i_16_ = 999;
@@ -2009,8 +1993,8 @@ public class MovedStatics {
                         break;
                     }
                 }
-                anIntArray62[y] = i_16_;
-                anIntArray66[y] = -i_16_ + i_15_;
+                Minimap.anIntArray62[y] = i_16_;
+                Minimap.anIntArray66[y] = -i_16_ + i_15_;
             }
             for(int y = 5; y < 156; y++) {
                 int maxWidth = 0;
