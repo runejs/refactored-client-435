@@ -27,6 +27,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
      * Something to do with timing.. sleep time maybe? Not sure
      */
     public static int anInt2024 = 1;
+    public static int cyclesSinceReset = 500;
     private static volatile boolean clientFocused = true;
     private final int millisPerTick = 20;
     public boolean gameShellError = false;
@@ -211,8 +212,8 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         // This means the client stores the last 32 tick times to do some other calculations
         currentTickSample = currentTickSample + 1 & 0x1f;
 
-        if (MovedStatics.anInt938++ > 50) {
-            MovedStatics.anInt938 -= 50;
+        if (cyclesSinceReset++ > 50) {
+            cyclesSinceReset -= 50;
             MovedStatics.clearScreen = true;
             Game.gameCanvas.setSize(MovedStatics.width, MovedStatics.height);
             Game.gameCanvas.setVisible(true);

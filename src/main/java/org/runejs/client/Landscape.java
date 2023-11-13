@@ -1103,7 +1103,7 @@ public class Landscape {
                         renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
                     else
                         renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                    scene.addWallDecoration(localX, localY, plane, vertexMix, i_52_ * MovedStatics.anIntArray666[face], MovedStatics.anIntArray2207[face] * i_52_, face * 512, hash, renderable, objectConfig, Scene.ROTATION_WALL_TYPE[face]);
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, i_52_ * Scene.WALL_DECORATION_ROTATION_FORWARD_X[face], Scene.WALL_DECORATION_ROTATION_FORWARD_Z[face] * i_52_, face * 512, hash, renderable, objectConfig, Scene.ROTATION_WALL_TYPE[face]);
                 } else if(type == 6) {
                     Renderable renderable;
                     if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
