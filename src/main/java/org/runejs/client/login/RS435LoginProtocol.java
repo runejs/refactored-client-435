@@ -69,34 +69,33 @@ public class RS435LoginProtocol implements LoginProtocol {
                     MovedStatics.gameServerSocket.kill();
                     MovedStatics.gameServerSocket = null;
                 }
+
                 Game.aBoolean871 = false;
                 stage = Stage.CONNECT;
                 unsuccessfulAttemptCount = 0;
                 MovedStatics.gameServerSignlinkNode = null;
             }
+
             if (stage == Stage.CONNECT) {
                 if (MovedStatics.gameServerSignlinkNode == null) {
                     MovedStatics.gameServerSignlinkNode = Game.signlink.putSocketNode(Game.currentPort);
                 }
+
                 if (MovedStatics.gameServerSignlinkNode.status == SignlinkNode.Status.ERRORED) {
                     throw new IOException();
                 }
+
                 if (MovedStatics.gameServerSignlinkNode.status == SignlinkNode.Status.INITIALIZED) {
                     MovedStatics.gameServerSocket = new GameSocket((Socket) MovedStatics.gameServerSignlinkNode.value, Game.signlink);
                     stage = Stage.HANDSHAKE;
                     MovedStatics.gameServerSignlinkNode = null;
                 }
             }
+
             if (stage == Stage.HANDSHAKE) {
-                long l = MovedStatics.localUsernameId = MovedStatics.nameToLong(Native.username.toString());
-                OutgoingPackets.buffer.currentPosition = 0;
-                OutgoingPackets.buffer.putByte(14);
-                int i = (int) (0x1fL & l >> 16);
-                OutgoingPackets.buffer.putByte(i);
-                MovedStatics.gameServerSocket.sendDataFromBuffer(2, 0, OutgoingPackets.buffer.buffer);
-                stage = Stage.HANDSHAKE_RESPONSE;
-                IncomingPackets.incomingPacketBuffer.currentPosition = 0;
+                sendLoginHandshake();
             }
+
             if (stage == Stage.HANDSHAKE_RESPONSE) {
                 int responseCode = MovedStatics.gameServerSocket.read();
                 if (responseCode != 0) {
@@ -106,87 +105,14 @@ public class RS435LoginProtocol implements LoginProtocol {
                 IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                 stage = Stage.SERVER_KEYS;
             }
+
             if (stage == Stage.SERVER_KEYS) {
-                if (IncomingPackets.incomingPacketBuffer.currentPosition < 8) {
-                    int i = MovedStatics.gameServerSocket.inputStreamAvailable();
-
-                    if (i > 8 - IncomingPackets.incomingPacketBuffer.currentPosition) {
-                        i = 8 - IncomingPackets.incomingPacketBuffer.currentPosition;
-                    }
-
-                    if (i > 0) {
-                        MovedStatics.gameServerSocket.readDataToBuffer(IncomingPackets.incomingPacketBuffer.currentPosition, i, IncomingPackets.incomingPacketBuffer.buffer);
-                        IncomingPackets.incomingPacketBuffer.currentPosition += i;
-                    }
-                }
-                if (IncomingPackets.incomingPacketBuffer.currentPosition == 8) {
-                    IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                    serverISAACKeys = IncomingPackets.incomingPacketBuffer.getLongBE();
-                    stage = Stage.LOGIN_REQUEST;
-                }
-            }
-            if (stage == Stage.LOGIN_REQUEST) { // Login request
-                int[] seeds = new int[4];
-                seeds[0] = (int) (Math.random() * 9.9999999E7);
-                seeds[1] = (int) (Math.random() * 9.9999999E7);
-                seeds[2] = (int) (serverISAACKeys >> 32);
-                seeds[3] = (int) serverISAACKeys;
-
-                LoginType connectionType =
-                        (Game.gameStatusCode == 40)
-                                ? LoginType.RECONNECTION
-                                : LoginType.NEW_CONNECTION;
-
-                RSAConfiguration rsa =
-                        (Configuration.RSA_ENABLED)
-                                ? new RSAConfiguration(Configuration.RSA_MODULUS, Configuration.RSA_PUBLIC_KEY)
-                                : null;
-
-                int[] crcs = new int[13];
-                int crcIndex = 0;
-
-                crcs[crcIndex++] = CacheArchive.skeletonCacheArchive.crc8;
-                crcs[crcIndex++] = CacheArchive.skinDefinitionCacheArchive.crc8;
-                crcs[crcIndex++] = CacheArchive.gameDefinitionsCacheArchive.crc8;
-                crcs[crcIndex++] = CacheArchive.gameInterfaceCacheArchive.crc8;
-                crcs[crcIndex++] = CacheArchive.soundEffectCacheArchive.crc8;
-                crcs[crcIndex++] = CacheArchive.gameWorldMapCacheArchive.crc8;
-                crcs[crcIndex++] = CacheArchive.musicCacheArchive.crc8;
-                crcs[crcIndex++] = CacheArchive.modelCacheArchive.crc8;
-                crcs[crcIndex++] = CacheArchive.gameImageCacheArchive.crc8;
-                crcs[crcIndex++] = CacheArchive.gameTextureCacheArchive.crc8;
-                crcs[crcIndex++] = CacheArchive.huffmanCacheArchive.crc8;
-                crcs[crcIndex++] = CacheArchive.jingleCacheArchive.crc8;
-                crcs[crcIndex++] = CacheArchive.clientScriptCacheArchive.crc8;
-
-                Buffer loginPacket = encodeRequest(
-                                new LoginRequest(
-                                        connectionType,
-                                        seeds,
-                                        Game.signlink.uid,
-                                        Native.username,
-                                        Native.password,
-                                        rsa,
-                                        435,
-                                        VertexNormal.lowMemory,
-                                        crcs
-                                )
-                        );
-
-                MovedStatics.gameServerSocket.sendDataFromBuffer(loginPacket.currentPosition, 0, loginPacket.buffer);
-
-                OutgoingPackets.buffer.initOutCipher(seeds);
-
-                // TODO (Jameskmonger) this allows the OutgoingPackets to access the ISAAC cipher. This is a hack and should be fixed.
-                OutgoingPackets.init(OutgoingPackets.buffer.outCipher);
-
-                for (int i = 0; i < 4; i++) {
-                    seeds[i] += 50;
-                }
-                IncomingPackets.incomingPacketBuffer.initInCipher(seeds);
-                stage = Stage.LOGIN_RESPONSE;
+                receiveServerISAACKeys();
             }
 
+            if (stage == Stage.LOGIN_REQUEST) {
+                sendLoginRequest();
+            }
 
             if (stage == Stage.LOGIN_RESPONSE && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) { // Login response
                 int responseCode = MovedStatics.gameServerSocket.read();
@@ -199,6 +125,7 @@ public class RS435LoginProtocol implements LoginProtocol {
                             MovedStatics.method434();
                             return;
                         }
+
                         if (responseCode == 23 && portChangeAttemptCount < 1) {
                             portChangeAttemptCount++;
                             stage = Stage.DESTROY;
@@ -211,14 +138,16 @@ public class RS435LoginProtocol implements LoginProtocol {
                     stage = Stage.PROFILE_BEING_TRANSFERRED;
                 }
             }
+
             if (stage == Stage.PROFILE_BEING_TRANSFERRED && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) { // Transferring profile
                 timeUntilProfileTransfer = 180 + MovedStatics.gameServerSocket.read() * 60;
                 stage = Stage.WAIT_FOR_PROFILE_TRANSFER;
-
             }
+
             if (stage == Stage.WAIT_FOR_PROFILE_TRANSFER) { // Wait for transfer
                 unsuccessfulAttemptCount = 0;
                 Class60.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld, English.yourProfileWillBeTransferredIn, (timeUntilProfileTransfer / 60) + English.suffixSeconds);
+
                 if (--timeUntilProfileTransfer <= 0) {
                     stage = Stage.DESTROY;
                 }
@@ -240,6 +169,7 @@ public class RS435LoginProtocol implements LoginProtocol {
                     IncomingPackets.incomingPacketSize = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                     stage = Stage.LOGIN_ACCEPTED_BODY;
                 }
+
                 if (stage == Stage.LOGIN_ACCEPTED_BODY) {
                     if (MovedStatics.gameServerSocket.inputStreamAvailable() >= IncomingPackets.incomingPacketSize) { // Login response packets
                         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
@@ -251,14 +181,17 @@ public class RS435LoginProtocol implements LoginProtocol {
                     }
                 } else {
                     unsuccessfulAttemptCount++;
+
                     if (unsuccessfulAttemptCount > 2000) {
                         if (portChangeAttemptCount < 1) {
                             portChangeAttemptCount++;
+
                             if (Game.gameServerPort == Game.currentPort) {
                                 Game.currentPort = Game.someOtherPort;
                             } else {
                                 Game.currentPort = Game.gameServerPort;
                             }
+
                             stage = Stage.DESTROY;
                         } else {
                             Game.displayMessageForResponseCode(-3);
@@ -273,11 +206,124 @@ public class RS435LoginProtocol implements LoginProtocol {
                 } else {
                     Game.currentPort = Game.gameServerPort;
                 }
+
                 portChangeAttemptCount++;
                 stage = Stage.DESTROY;
             } else {
                 Game.displayMessageForResponseCode(-2);
             }
+        }
+    }
+
+    /**
+     * Send the main login request.
+     *
+     * @throws IOException
+     */
+    private void sendLoginRequest() throws IOException {
+        int[] seeds = new int[4];
+        seeds[0] = (int) (Math.random() * 9.9999999E7);
+        seeds[1] = (int) (Math.random() * 9.9999999E7);
+        seeds[2] = (int) (serverISAACKeys >> 32);
+        seeds[3] = (int) serverISAACKeys;
+
+        LoginType connectionType =
+                (Game.gameStatusCode == 40)
+                        ? LoginType.RECONNECTION
+                        : LoginType.NEW_CONNECTION;
+
+        RSAConfiguration rsa =
+                (Configuration.RSA_ENABLED)
+                        ? new RSAConfiguration(Configuration.RSA_MODULUS, Configuration.RSA_PUBLIC_KEY)
+                        : null;
+
+        int[] crcs = new int[13];
+        int crcIndex = 0;
+
+        crcs[crcIndex++] = CacheArchive.skeletonCacheArchive.crc8;
+        crcs[crcIndex++] = CacheArchive.skinDefinitionCacheArchive.crc8;
+        crcs[crcIndex++] = CacheArchive.gameDefinitionsCacheArchive.crc8;
+        crcs[crcIndex++] = CacheArchive.gameInterfaceCacheArchive.crc8;
+        crcs[crcIndex++] = CacheArchive.soundEffectCacheArchive.crc8;
+        crcs[crcIndex++] = CacheArchive.gameWorldMapCacheArchive.crc8;
+        crcs[crcIndex++] = CacheArchive.musicCacheArchive.crc8;
+        crcs[crcIndex++] = CacheArchive.modelCacheArchive.crc8;
+        crcs[crcIndex++] = CacheArchive.gameImageCacheArchive.crc8;
+        crcs[crcIndex++] = CacheArchive.gameTextureCacheArchive.crc8;
+        crcs[crcIndex++] = CacheArchive.huffmanCacheArchive.crc8;
+        crcs[crcIndex++] = CacheArchive.jingleCacheArchive.crc8;
+        crcs[crcIndex++] = CacheArchive.clientScriptCacheArchive.crc8;
+
+        Buffer loginPacket = encodeRequest(
+                        new LoginRequest(
+                                connectionType,
+                                seeds,
+                                Game.signlink.uid,
+                                Native.username,
+                                Native.password,
+                                rsa,
+                                435,
+                                VertexNormal.lowMemory,
+                                crcs
+                        )
+                );
+
+        MovedStatics.gameServerSocket.sendDataFromBuffer(loginPacket.currentPosition, 0, loginPacket.buffer);
+
+        OutgoingPackets.buffer.initOutCipher(seeds);
+
+        // TODO (Jameskmonger) this is a hack to allow the packet logic to access the ISAAC generator. This should be reworked.
+        OutgoingPackets.init(OutgoingPackets.buffer.outCipher);
+
+        for (int i = 0; i < 4; i++) {
+            seeds[i] += 50;
+        }
+
+        IncomingPackets.incomingPacketBuffer.initInCipher(seeds);
+        stage = Stage.LOGIN_RESPONSE;
+    }
+
+    /**
+     * Send the handshake request to the server.
+     *
+     * This is believed to route the player to the correct login server based on
+     * some discriminator from their username.
+     *
+     * @throws IOException
+     */
+    private void sendLoginHandshake() throws IOException {
+        long l = MovedStatics.localUsernameId = MovedStatics.nameToLong(Native.username.toString());
+        OutgoingPackets.buffer.currentPosition = 0;
+        OutgoingPackets.buffer.putByte(14);
+        int i = (int) (0x1fL & l >> 16);
+        OutgoingPackets.buffer.putByte(i);
+        MovedStatics.gameServerSocket.sendDataFromBuffer(2, 0, OutgoingPackets.buffer.buffer);
+        stage = Stage.HANDSHAKE_RESPONSE;
+        IncomingPackets.incomingPacketBuffer.currentPosition = 0;
+    }
+
+    /**
+     * Receive the ISAAC keys from the server.
+     *
+     * @throws IOException
+     */
+    private void receiveServerISAACKeys() throws IOException {
+        if (IncomingPackets.incomingPacketBuffer.currentPosition < 8) {
+            int i = MovedStatics.gameServerSocket.inputStreamAvailable();
+
+            if (i > 8 - IncomingPackets.incomingPacketBuffer.currentPosition) {
+                i = 8 - IncomingPackets.incomingPacketBuffer.currentPosition;
+            }
+
+            if (i > 0) {
+                MovedStatics.gameServerSocket.readDataToBuffer(IncomingPackets.incomingPacketBuffer.currentPosition, i, IncomingPackets.incomingPacketBuffer.buffer);
+                IncomingPackets.incomingPacketBuffer.currentPosition += i;
+            }
+        }
+        if (IncomingPackets.incomingPacketBuffer.currentPosition == 8) {
+            IncomingPackets.incomingPacketBuffer.currentPosition = 0;
+            serverISAACKeys = IncomingPackets.incomingPacketBuffer.getLongBE();
+            stage = Stage.LOGIN_REQUEST;
         }
     }
 
