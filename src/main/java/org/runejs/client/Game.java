@@ -1657,48 +1657,47 @@ public class Game {
                 seeds[1] = (int) (Math.random() * 9.9999999E7);
                 seeds[2] = (int) (MovedStatics.aLong2858 >> 32);
                 seeds[3] = (int) MovedStatics.aLong2858;
-                OutgoingPackets.buffer.currentPosition = 0;
-                OutgoingPackets.buffer.putByte(10);
-                OutgoingPackets.buffer.putIntBE(seeds[0]);
-                OutgoingPackets.buffer.putIntBE(seeds[1]);
-                OutgoingPackets.buffer.putIntBE(seeds[2]);
-                OutgoingPackets.buffer.putIntBE(seeds[3]);
-                OutgoingPackets.buffer.putIntBE(signlink.uid);
-                OutgoingPackets.buffer.putLongBE(MovedStatics.nameToLong(Native.username.toString()));
-                OutgoingPackets.buffer.method505(Native.password);
+
+                Buffer loginHandshakeBuffer = new Buffer(140);
+                loginHandshakeBuffer.putByte(10);
+                loginHandshakeBuffer.putIntBE(seeds[0]);
+                loginHandshakeBuffer.putIntBE(seeds[1]);
+                loginHandshakeBuffer.putIntBE(seeds[2]);
+                loginHandshakeBuffer.putIntBE(seeds[3]);
+                loginHandshakeBuffer.putIntBE(signlink.uid);
+                loginHandshakeBuffer.putLongBE(MovedStatics.nameToLong(Native.username.toString()));
+                loginHandshakeBuffer.method505(Native.password);
                 if (Configuration.RSA_ENABLED) {
-                    OutgoingPackets.buffer.applyRSA(Configuration.RSA_MODULUS, Configuration.RSA_PUBLIC_KEY);
+                    loginHandshakeBuffer.applyRSA(Configuration.RSA_MODULUS, Configuration.RSA_PUBLIC_KEY);
                 }
 
-
-                // The actual login packet starts here
-
-                MovedStatics.packetBuffer.currentPosition = 0;
+                Buffer loginCacheBuffer = new Buffer(60);
                 if (gameStatusCode == 40) {
                     // Reconnecting session
-                    MovedStatics.packetBuffer.putByte(18);
+                    loginCacheBuffer.putByte(18);
                 } else {
                     // New session
-                    MovedStatics.packetBuffer.putByte(16);
+                    loginCacheBuffer.putByte(16);
                 }
-                MovedStatics.packetBuffer.putByte(57 + OutgoingPackets.buffer.currentPosition);
-                MovedStatics.packetBuffer.putIntBE(435);
-                MovedStatics.packetBuffer.putByte(VertexNormal.lowMemory ? 1 : 0);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.skeletonCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.skinDefinitionCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameDefinitionsCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameInterfaceCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.soundEffectCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameWorldMapCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.musicCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.modelCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameImageCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameTextureCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.huffmanCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.jingleCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.clientScriptCacheArchive.crc8);
-                MovedStatics.packetBuffer.putBytes(0, OutgoingPackets.buffer.currentPosition, OutgoingPackets.buffer.buffer);
-                MovedStatics.gameServerSocket.sendDataFromBuffer(MovedStatics.packetBuffer.currentPosition, 0, MovedStatics.packetBuffer.buffer);
+                loginCacheBuffer.putByte(57 + loginHandshakeBuffer.currentPosition);
+                loginCacheBuffer.putIntBE(435);
+                loginCacheBuffer.putByte(VertexNormal.lowMemory ? 1 : 0);
+                loginCacheBuffer.putIntBE(CacheArchive.skeletonCacheArchive.crc8);
+                loginCacheBuffer.putIntBE(CacheArchive.skinDefinitionCacheArchive.crc8);
+                loginCacheBuffer.putIntBE(CacheArchive.gameDefinitionsCacheArchive.crc8);
+                loginCacheBuffer.putIntBE(CacheArchive.gameInterfaceCacheArchive.crc8);
+                loginCacheBuffer.putIntBE(CacheArchive.soundEffectCacheArchive.crc8);
+                loginCacheBuffer.putIntBE(CacheArchive.gameWorldMapCacheArchive.crc8);
+                loginCacheBuffer.putIntBE(CacheArchive.musicCacheArchive.crc8);
+                loginCacheBuffer.putIntBE(CacheArchive.modelCacheArchive.crc8);
+                loginCacheBuffer.putIntBE(CacheArchive.gameImageCacheArchive.crc8);
+                loginCacheBuffer.putIntBE(CacheArchive.gameTextureCacheArchive.crc8);
+                loginCacheBuffer.putIntBE(CacheArchive.huffmanCacheArchive.crc8);
+                loginCacheBuffer.putIntBE(CacheArchive.jingleCacheArchive.crc8);
+                loginCacheBuffer.putIntBE(CacheArchive.clientScriptCacheArchive.crc8);
+
+                MovedStatics.gameServerSocket.sendDataFromBuffer(loginCacheBuffer.currentPosition, 0, loginCacheBuffer.buffer);
+                MovedStatics.gameServerSocket.sendDataFromBuffer(loginHandshakeBuffer.currentPosition, 0, loginHandshakeBuffer.buffer);
                 OutgoingPackets.buffer.initOutCipher(seeds);
 
                 // TODO (Jameskmonger) this allows the OutgoingPackets to access the ISAAC cipher. This is a hack and should be fixed.
