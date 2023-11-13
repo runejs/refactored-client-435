@@ -20,20 +20,36 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class RS435LoginProtocol implements LoginProtocol {
+    enum Stage {
+        DESTROY,
+        CONNECT,
+        HANDSHAKE,
+        HANDSHAKE_RESPONSE,
+        SERVER_KEYS,
+        LOGIN_REQUEST,
+        LOGIN_RESPONSE,
+        PROFILE_BEING_TRANSFERRED,
+        WAIT_FOR_PROFILE_TRANSFER,
+        LOGIN_ACCEPTED,
+        LOGIN_ACCEPTED_BODY
+    }
+
+    private Stage stage = Stage.DESTROY;
+
     @Override
     public void process() {
         try {
-            if (Game.loginStatus == 0) { // Initialize
+            if (stage == Stage.DESTROY) { // Destroy
                 if (MovedStatics.gameServerSocket != null) {
                     MovedStatics.gameServerSocket.kill();
                     MovedStatics.gameServerSocket = null;
                 }
                 Game.aBoolean871 = false;
-                Game.loginStatus = 1;
+                stage = Stage.CONNECT;
                 Game.anInt1756 = 0;
                 MovedStatics.gameServerSignlinkNode = null;
             }
-            if (Game.loginStatus == 1) { // Create connection to server, and wait for it to become available
+            if (stage == Stage.CONNECT) { // Connect
                 if (MovedStatics.gameServerSignlinkNode == null) {
                     MovedStatics.gameServerSignlinkNode = Game.signlink.putSocketNode(Game.currentPort);
                 }
@@ -42,11 +58,11 @@ public class RS435LoginProtocol implements LoginProtocol {
                 }
                 if (MovedStatics.gameServerSignlinkNode.status == SignlinkNode.Status.INITIALIZED) {
                     MovedStatics.gameServerSocket = new GameSocket((Socket) MovedStatics.gameServerSignlinkNode.value, Game.signlink);
-                    Game.loginStatus = 2;
+                    stage = Stage.HANDSHAKE;
                     MovedStatics.gameServerSignlinkNode = null;
                 }
             }
-            if (Game.loginStatus == 2) {
+            if (stage == Stage.HANDSHAKE) { // Handshake
                 MovedStatics.aLong853 = MovedStatics.nameToLong(Native.username.toString());
 
                 long l = MovedStatics.aLong853 = MovedStatics.nameToLong(Native.username.toString());
@@ -55,19 +71,19 @@ public class RS435LoginProtocol implements LoginProtocol {
                 int i = (int) (0x1fL & l >> 16);
                 OutgoingPackets.buffer.putByte(i);
                 MovedStatics.gameServerSocket.sendDataFromBuffer(2, 0, OutgoingPackets.buffer.buffer);
-                Game.loginStatus = 3;
+                stage = Stage.HANDSHAKE_RESPONSE;
                 IncomingPackets.incomingPacketBuffer.currentPosition = 0;
             }
-            if (Game.loginStatus == 3) {
+            if (stage == Stage.HANDSHAKE_RESPONSE) { // Handshake Response
                 int i = MovedStatics.gameServerSocket.read();
                 if (i != 0) {
                     Game.displayMessageForResponseCode(i);
                     return;
                 }
                 IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                Game.loginStatus = 4;
+                stage = Stage.SERVER_KEYS;
             }
-            if (Game.loginStatus == 4) {
+            if (stage == Stage.SERVER_KEYS) { // Server keys
 
                 if (IncomingPackets.incomingPacketBuffer.currentPosition < 8) {
                     int i = MovedStatics.gameServerSocket.inputStreamAvailable();
@@ -82,10 +98,10 @@ public class RS435LoginProtocol implements LoginProtocol {
                 if (IncomingPackets.incomingPacketBuffer.currentPosition == 8) {
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                     MovedStatics.aLong2858 = IncomingPackets.incomingPacketBuffer.getLongBE();
-                    Game.loginStatus = 5;
+                    stage = Stage.LOGIN_REQUEST;
                 }
             }
-            if (Game.loginStatus == 5) {
+            if (stage == Stage.LOGIN_REQUEST) { // Login request
                 int[] seeds = new int[4];
                 seeds[0] = (int) (Math.random() * 9.9999999E7);
                 seeds[1] = (int) (Math.random() * 9.9999999E7);
@@ -144,16 +160,16 @@ public class RS435LoginProtocol implements LoginProtocol {
                     seeds[i] += 50;
                 }
                 IncomingPackets.incomingPacketBuffer.initInCipher(seeds);
-                Game.loginStatus = 6;
+                stage = Stage.LOGIN_RESPONSE;
             }
 
 
-            if (Game.loginStatus == 6 && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) {
+            if (stage == Stage.LOGIN_RESPONSE && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) { // Login response
                 int responseCode = MovedStatics.gameServerSocket.read();
 
                 if (responseCode != 21 || Game.gameStatusCode != 20) {
                     if (responseCode == 2) {
-                        Game.loginStatus = 9;
+                        stage = Stage.LOGIN_ACCEPTED;
                     } else {
                         if (responseCode == 15 && Game.gameStatusCode == 40) {
                             MovedStatics.method434();
@@ -161,29 +177,29 @@ public class RS435LoginProtocol implements LoginProtocol {
                         }
                         if (responseCode == 23 && MovedStatics.anInt2321 < 1) {
                             MovedStatics.anInt2321++;
-                            Game.loginStatus = 0;
+                            stage = Stage.DESTROY;
                         } else {
                             Game.displayMessageForResponseCode(responseCode);
                             return;
                         }
                     }
                 } else {
-                    Game.loginStatus = 7;
+                    stage = Stage.PROFILE_BEING_TRANSFERRED;
                 }
             }
-            if (Game.loginStatus == 7 && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) {
+            if (stage == Stage.PROFILE_BEING_TRANSFERRED && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) { // Transferring profile
                 Game.anInt784 = 180 + MovedStatics.gameServerSocket.read() * 60;
-                Game.loginStatus = 8;
+                stage = Stage.WAIT_FOR_PROFILE_TRANSFER;
 
             }
-            if (Game.loginStatus == 8) {
+            if (stage == Stage.WAIT_FOR_PROFILE_TRANSFER) { // Wait for transfer
                 Game.anInt1756 = 0;
                 Class60.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld, English.yourProfileWillBeTransferredIn, (Game.anInt784 / 60) + English.suffixSeconds);
                 if (--Game.anInt784 <= 0) {
-                    Game.loginStatus = 0;
+                    stage = Stage.DESTROY;
                 }
             } else {
-                if (Game.loginStatus == 9 && MovedStatics.gameServerSocket.inputStreamAvailable() >= 8) {
+                if (stage == Stage.LOGIN_ACCEPTED && MovedStatics.gameServerSocket.inputStreamAvailable() >= 8) { // Login response
                     Configuration.USERNAME = Native.username.toString();
                     Configuration.PASSWORD = Native.password.toString();
                     Game.playerRights = MovedStatics.gameServerSocket.read();
@@ -198,10 +214,10 @@ public class RS435LoginProtocol implements LoginProtocol {
                     MovedStatics.gameServerSocket.readDataToBuffer(0, 2, IncomingPackets.incomingPacketBuffer.buffer);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                     IncomingPackets.incomingPacketSize = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
-                    Game.loginStatus = 10;
+                    stage = Stage.LOGIN_ACCEPTED_BODY;
                 }
-                if (Game.loginStatus == 10) {
-                    if (MovedStatics.gameServerSocket.inputStreamAvailable() >= IncomingPackets.incomingPacketSize) {
+                if (stage == Stage.LOGIN_ACCEPTED_BODY) {
+                    if (MovedStatics.gameServerSocket.inputStreamAvailable() >= IncomingPackets.incomingPacketSize) { // Login response packets
                         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                         MovedStatics.gameServerSocket.readDataToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
                         Game.setConfigToDefaults();
@@ -219,7 +235,7 @@ public class RS435LoginProtocol implements LoginProtocol {
                             } else {
                                 Game.currentPort = Game.gameServerPort;
                             }
-                            Game.loginStatus = 0;
+                            stage = Stage.DESTROY;
                         } else {
                             Game.displayMessageForResponseCode(-3);
                         }
@@ -234,11 +250,16 @@ public class RS435LoginProtocol implements LoginProtocol {
                     Game.currentPort = Game.gameServerPort;
                 }
                 MovedStatics.anInt2321++;
-                Game.loginStatus = 0;
+                stage = Stage.DESTROY;
             } else {
                 Game.displayMessageForResponseCode(-2);
             }
         }
+    }
+
+    @Override
+    public void reset() {
+        stage = Stage.DESTROY;
     }
 
     private Buffer encodeRequest(LoginRequest request) {
@@ -300,5 +321,9 @@ public class RS435LoginProtocol implements LoginProtocol {
         }
 
         return buffer;
+    }
+
+    private void initializeStage() {
+
     }
 }

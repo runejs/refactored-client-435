@@ -90,7 +90,6 @@ public class Game {
     public static GameSocket updateServerSocket;
     public static boolean aBoolean1735 = true;
     public static boolean aBoolean871 = false;
-    public static int loginStatus = 0;
     public static int modewhat = 0;
     public static int modewhere = 0;
     public static long lastClickTime = 0L;

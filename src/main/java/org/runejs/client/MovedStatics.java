@@ -13,6 +13,7 @@ import org.runejs.client.frame.ScreenMode;
 import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
+import org.runejs.client.login.RS435LoginProtocol;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
@@ -873,7 +874,8 @@ public class MovedStatics {
             if (statusCode == 20 || statusCode == 40) {
                 Game.anInt1756 = 0;
                 anInt2321 = 0;
-                Game.loginStatus = 0;
+
+                Game.loginProtocol.reset();
             }
             if (statusCode != 20 && statusCode != 40 && lostConnectionSocket != null) {
                 lostConnectionSocket.kill();
