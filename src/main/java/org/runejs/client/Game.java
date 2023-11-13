@@ -93,7 +93,7 @@ public class Game {
     public static long lastClickTime = 0L;
     public static int mouseInvInterfaceIndex = 0;
     public static int updateServerConnectAttemptCounter = 0;
-    public static boolean aBoolean519 = true;
+    public static boolean isLoadingUpdates = true;
     public static MouseCapturer mouseCapturer;
     public static int anInt2591 = 0;
     public static int anInt874 = 0;
@@ -724,7 +724,7 @@ public class Game {
             Player.playerActions[i] = null;
             Player.playerActionsLowPriority[i] = false;
         }
-        aBoolean519 = true;
+        isLoadingUpdates = true;
     }
 
     public Game(String[] args) {
@@ -883,10 +883,10 @@ public class Game {
         }
 
 
-        if(aBoolean519 && updateServer.getActiveTaskCount(false, true) == 0) {
-            aBoolean519 = false;
+        if(isLoadingUpdates && updateServer.getActiveTaskCount(false, true) == 0) {
+            isLoadingUpdates = false;
         }
-        if(aBoolean519) {
+        if(isLoadingUpdates) {
             MovedStatics.method1018();
             Rasterizer.resetPixels();
             MovedStatics.method940(English.loadingPleaseWait, false, null);
@@ -1212,7 +1212,7 @@ public class Game {
                     break;
             }
             if(gameStatusCode == 30 || gameStatusCode == 35) {
-                if(aBoolean519 && gameStatusCode == 30) {
+                if(isLoadingUpdates && gameStatusCode == 30) {
                     MouseHandler.currentMouseButtonPressed = 0;
                     MouseHandler.clickType = 0;
                     while(MovedStatics.method416()) {
