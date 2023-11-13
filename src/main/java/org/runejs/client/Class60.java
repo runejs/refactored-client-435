@@ -205,9 +205,9 @@ public class Class60 {
             int i_89_ = -i + 82;
             Rasterizer.drawUnfilledRectangle(28, i_89_, 304, 34, 9179409);
             Rasterizer.drawUnfilledRectangle(29, 1 + i_89_, 302, 32, 0);
-            Rasterizer.drawFilledRectangle(30, 2 + i_89_, MovedStatics.anInt1607 * 3, 30, 9179409);
-            Rasterizer.drawFilledRectangle(3 * MovedStatics.anInt1607 + 30, i_89_ + 2, -(MovedStatics.anInt1607 * 3) + 300, 30, 0);
-            fontBold.drawStringLeft(Native.currentLoadingText, 180, -i + 105, 16777215);
+            Rasterizer.drawFilledRectangle(30, 2 + i_89_, Game.gameStartup.loadingBarPercentage * 3, 30, 9179409);
+            Rasterizer.drawFilledRectangle(3 * Game.gameStartup.loadingBarPercentage + 30, i_89_ + 2, -(Game.gameStartup.loadingBarPercentage * 3) + 300, 30, 0);
+            fontBold.drawStringLeft(Game.gameStartup.currentLoadingText, 180, -i + 105, 16777215);
         }
         if (Game.gameStatusCode == 20) {
             int drawY = 40;

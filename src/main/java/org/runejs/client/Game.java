@@ -148,6 +148,8 @@ public class Game {
     public static int currentPort;
     private static int drawCount = 0;
 
+    public static GameStartup gameStartup = new GameStartup();
+
     private GameErrorHandler errorHandler;
 
     /**
@@ -2168,10 +2170,10 @@ public class Game {
         MouseHandler.method1015();
 
         if (gameStatusCode == 0) {
-            MovedStatics.startup();
+            Game.gameStartup.process();
             method992();
         } else if (gameStatusCode == 5) {
-            MovedStatics.startup();
+            Game.gameStartup.process();
             method992();
         } else if (gameStatusCode == 10) {
             Class60.updateLogin();
@@ -2212,7 +2214,7 @@ public class Game {
             MouseHandler.addListeners(gameCanvas);
         }
         if (gameStatusCode == 0)
-            renderer.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
+            renderer.drawLoadingText(gameStartup.loadingBarPercentage, null, Game.gameStartup.currentLoadingText);
         else if (gameStatusCode == 5) {
             Class60.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
         } else if (gameStatusCode == 10) {
