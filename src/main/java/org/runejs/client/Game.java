@@ -13,6 +13,7 @@ import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
+import org.runejs.client.login.*;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
@@ -47,7 +48,6 @@ import org.runejs.client.util.SignlinkNode;
 import org.runejs.client.util.Timer;
 
 import java.awt.*;
-import java.io.IOException;
 import java.net.Socket;
 
 public class Game {
@@ -123,8 +123,8 @@ public class Game {
     /**
      * Backup port if the first one fails?
      */
-    private static int someOtherPort;
-    private static int gameServerPort;
+    public static int someOtherPort;
+    public static int gameServerPort;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
     private static int lastClickX = 0;
@@ -1589,221 +1589,6 @@ public class Game {
         System.exit(1);
     }
 
-    public static void handleLoginScreenActions() {
-        try {
-            if (loginStatus == 0) { // Initialize
-                if (MovedStatics.gameServerSocket != null) {
-                    MovedStatics.gameServerSocket.kill();
-                    MovedStatics.gameServerSocket = null;
-                }
-                aBoolean871 = false;
-                loginStatus = 1;
-                anInt1756 = 0;
-                MovedStatics.gameServerSignlinkNode = null;
-            }
-            if (loginStatus == 1) { // Create connection to server, and wait for it to become available
-                if (MovedStatics.gameServerSignlinkNode == null) {
-                    MovedStatics.gameServerSignlinkNode = signlink.putSocketNode(currentPort);
-                }
-                if (MovedStatics.gameServerSignlinkNode.status == SignlinkNode.Status.ERRORED) {
-                    throw new IOException();
-                }
-                if (MovedStatics.gameServerSignlinkNode.status == SignlinkNode.Status.INITIALIZED) {
-                    MovedStatics.gameServerSocket = new GameSocket((Socket) MovedStatics.gameServerSignlinkNode.value, signlink);
-                    loginStatus = 2;
-                    MovedStatics.gameServerSignlinkNode = null;
-                }
-            }
-            if (loginStatus == 2) {
-                long l = MovedStatics.aLong853 = MovedStatics.nameToLong(Native.username.toString());
-                OutgoingPackets.buffer.currentPosition = 0;
-                OutgoingPackets.buffer.putByte(14);
-                int i = (int) (0x1fL & l >> 16);
-                OutgoingPackets.buffer.putByte(i);
-                MovedStatics.gameServerSocket.sendDataFromBuffer(2, 0, OutgoingPackets.buffer.buffer);
-                loginStatus = 3;
-                IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-            }
-            if (loginStatus == 3) {
-                int i = MovedStatics.gameServerSocket.read();
-                if (i != 0) {
-                    displayMessageForResponseCode(i);
-                    return;
-                }
-                IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                loginStatus = 4;
-            }
-            if (loginStatus == 4) {
-
-                if (IncomingPackets.incomingPacketBuffer.currentPosition < 8) {
-                    int i = MovedStatics.gameServerSocket.inputStreamAvailable();
-                    if (i > -IncomingPackets.incomingPacketBuffer.currentPosition + 8) {
-                        i = -IncomingPackets.incomingPacketBuffer.currentPosition + 8;
-                    }
-                    if (i > 0) {
-                        MovedStatics.gameServerSocket.readDataToBuffer(IncomingPackets.incomingPacketBuffer.currentPosition, i, IncomingPackets.incomingPacketBuffer.buffer);
-                        IncomingPackets.incomingPacketBuffer.currentPosition += i;
-                    }
-                }
-                if (IncomingPackets.incomingPacketBuffer.currentPosition == 8) {
-                    IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                    MovedStatics.aLong2858 = IncomingPackets.incomingPacketBuffer.getLongBE();
-                    loginStatus = 5;
-                }
-            }
-            if (loginStatus == 5) {
-                int[] seeds = new int[4];
-                seeds[0] = (int) (Math.random() * 9.9999999E7);
-                seeds[1] = (int) (Math.random() * 9.9999999E7);
-                seeds[2] = (int) (MovedStatics.aLong2858 >> 32);
-                seeds[3] = (int) MovedStatics.aLong2858;
-
-                Buffer loginHandshakeBuffer = new Buffer(140);
-                loginHandshakeBuffer.putByte(10);
-                loginHandshakeBuffer.putIntBE(seeds[0]);
-                loginHandshakeBuffer.putIntBE(seeds[1]);
-                loginHandshakeBuffer.putIntBE(seeds[2]);
-                loginHandshakeBuffer.putIntBE(seeds[3]);
-                loginHandshakeBuffer.putIntBE(signlink.uid);
-                loginHandshakeBuffer.putLongBE(MovedStatics.nameToLong(Native.username.toString()));
-                loginHandshakeBuffer.method505(Native.password);
-                if (Configuration.RSA_ENABLED) {
-                    loginHandshakeBuffer.applyRSA(Configuration.RSA_MODULUS, Configuration.RSA_PUBLIC_KEY);
-                }
-
-                Buffer loginCacheBuffer = new Buffer(60);
-                if (gameStatusCode == 40) {
-                    // Reconnecting session
-                    loginCacheBuffer.putByte(18);
-                } else {
-                    // New session
-                    loginCacheBuffer.putByte(16);
-                }
-                loginCacheBuffer.putByte(57 + loginHandshakeBuffer.currentPosition);
-                loginCacheBuffer.putIntBE(435);
-                loginCacheBuffer.putByte(VertexNormal.lowMemory ? 1 : 0);
-                loginCacheBuffer.putIntBE(CacheArchive.skeletonCacheArchive.crc8);
-                loginCacheBuffer.putIntBE(CacheArchive.skinDefinitionCacheArchive.crc8);
-                loginCacheBuffer.putIntBE(CacheArchive.gameDefinitionsCacheArchive.crc8);
-                loginCacheBuffer.putIntBE(CacheArchive.gameInterfaceCacheArchive.crc8);
-                loginCacheBuffer.putIntBE(CacheArchive.soundEffectCacheArchive.crc8);
-                loginCacheBuffer.putIntBE(CacheArchive.gameWorldMapCacheArchive.crc8);
-                loginCacheBuffer.putIntBE(CacheArchive.musicCacheArchive.crc8);
-                loginCacheBuffer.putIntBE(CacheArchive.modelCacheArchive.crc8);
-                loginCacheBuffer.putIntBE(CacheArchive.gameImageCacheArchive.crc8);
-                loginCacheBuffer.putIntBE(CacheArchive.gameTextureCacheArchive.crc8);
-                loginCacheBuffer.putIntBE(CacheArchive.huffmanCacheArchive.crc8);
-                loginCacheBuffer.putIntBE(CacheArchive.jingleCacheArchive.crc8);
-                loginCacheBuffer.putIntBE(CacheArchive.clientScriptCacheArchive.crc8);
-
-                MovedStatics.gameServerSocket.sendDataFromBuffer(loginCacheBuffer.currentPosition, 0, loginCacheBuffer.buffer);
-                MovedStatics.gameServerSocket.sendDataFromBuffer(loginHandshakeBuffer.currentPosition, 0, loginHandshakeBuffer.buffer);
-                OutgoingPackets.buffer.initOutCipher(seeds);
-
-                // TODO (Jameskmonger) this allows the OutgoingPackets to access the ISAAC cipher. This is a hack and should be fixed.
-                OutgoingPackets.init(OutgoingPackets.buffer.outCipher);
-
-                for (int i = 0; i < 4; i++) {
-                    seeds[i] += 50;
-                }
-                IncomingPackets.incomingPacketBuffer.initInCipher(seeds);
-                loginStatus = 6;
-            }
-
-
-
-            if (loginStatus == 6 && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) {
-                int responseCode = MovedStatics.gameServerSocket.read();
-                if (responseCode != 21 || gameStatusCode != 20) {
-                    if (responseCode == 2) {
-                        loginStatus = 9;
-                    } else {
-                        if (responseCode == 15 && gameStatusCode == 40) {
-                            MovedStatics.method434();
-                            return;
-                        }
-                        if (responseCode == 23 && MovedStatics.anInt2321 < 1) {
-                            MovedStatics.anInt2321++;
-                            loginStatus = 0;
-                        } else {
-                            displayMessageForResponseCode(responseCode);
-                            return;
-                        }
-                    }
-                } else {
-                    loginStatus = 7;
-                }
-            }
-            if (loginStatus == 7 && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) {
-                anInt784 = 180 + MovedStatics.gameServerSocket.read() * 60;
-                loginStatus = 8;
-
-            }
-            if (loginStatus == 8) {
-                anInt1756 = 0;
-                Class60.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld, English.yourProfileWillBeTransferredIn, (anInt784 / 60) + English.suffixSeconds);
-                if (--anInt784 <= 0) {
-                    loginStatus = 0;
-                }
-            } else {
-                if (loginStatus == 9 && MovedStatics.gameServerSocket.inputStreamAvailable() >= 8) {
-                    Configuration.USERNAME = Native.username.toString();
-                    Configuration.PASSWORD = Native.password.toString();
-                    playerRights = MovedStatics.gameServerSocket.read();
-                    accountFlagged = MovedStatics.gameServerSocket.read() == 1;
-                    Player.localPlayerId = MovedStatics.gameServerSocket.read();
-                    Player.localPlayerId <<= 8;
-                    Player.localPlayerId += MovedStatics.gameServerSocket.read();
-                    MovedStatics.anInt1049 = MovedStatics.gameServerSocket.read();
-                    MovedStatics.gameServerSocket.readDataToBuffer(0, 1, IncomingPackets.incomingPacketBuffer.buffer);
-                    IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                    IncomingPackets.opcode = IncomingPackets.incomingPacketBuffer.getPacket();
-                    MovedStatics.gameServerSocket.readDataToBuffer(0, 2, IncomingPackets.incomingPacketBuffer.buffer);
-                    IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                    IncomingPackets.incomingPacketSize = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
-                    loginStatus = 10;
-                }
-                if (loginStatus == 10) {
-                    if (MovedStatics.gameServerSocket.inputStreamAvailable() >= IncomingPackets.incomingPacketSize) {
-                        IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                        MovedStatics.gameServerSocket.readDataToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
-                        setConfigToDefaults();
-                        MovedStatics.regionX = -1;
-                        currentScene.landscape.constructMapRegion(false);
-                        IncomingPackets.opcode = -1;
-                    }
-                } else {
-                    anInt1756++;
-                    if (anInt1756 > 2000) {
-                        if (MovedStatics.anInt2321 < 1) {
-                            MovedStatics.anInt2321++;
-                            if (gameServerPort == currentPort) {
-                                currentPort = someOtherPort;
-                            } else {
-                                currentPort = gameServerPort;
-                            }
-                            loginStatus = 0;
-                        } else {
-                            displayMessageForResponseCode(-3);
-                        }
-                    }
-                }
-            }
-        } catch (IOException ioexception) {
-            if (MovedStatics.anInt2321 < 1) {
-                if (currentPort == gameServerPort) {
-                    currentPort = someOtherPort;
-                } else {
-                    currentPort = gameServerPort;
-                }
-                MovedStatics.anInt2321++;
-                loginStatus = 0;
-            } else {
-                displayMessageForResponseCode(-2);
-            }
-        }
-    }
-
     private static void method947(int arg0) {
         synchronized(MovedStatics.anObject162) {
             if((MovedStatics.anInt1987 ^ 0xffffffff) != arg0) {
@@ -2159,6 +1944,8 @@ public class Game {
         }
     }
 
+    public static LoginProtocol loginProtocol = new RS435LoginProtocol();
+
     public void processGameLoop() {
         MovedStatics.pulseCycle++;
         handleUpdateServer();
@@ -2178,7 +1965,7 @@ public class Game {
             Class60.updateLogin();
         } else if (gameStatusCode == 20) {
             Class60.updateLogin();
-            handleLoginScreenActions();
+            loginProtocol.process();
         } else if (gameStatusCode == 25)
             currentScene.landscape.loadRegion();
         if (gameStatusCode == 30) {
@@ -2189,7 +1976,7 @@ public class Game {
             updateGame();
         } else if (gameStatusCode == 40) {
             // Connection lost
-            handleLoginScreenActions();
+            loginProtocol.process();
         }
     }
 

@@ -63,7 +63,6 @@ public class PacketBuffer extends Buffer {
     }
 
     public void putPacket(int packetId) {
-        //System.out.println("putPacket: " + packetId);
         buffer[currentPosition++] = (byte) (packetId + outCipher.nextInt() & 0xff);
     }
 
