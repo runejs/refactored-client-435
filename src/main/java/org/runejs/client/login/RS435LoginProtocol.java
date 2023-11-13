@@ -11,8 +11,12 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.actor.Player;
+import org.runejs.client.message.handler.MessageHandler;
+import org.runejs.client.message.inbound.region.LoadStandardRegionInboundMessage;
 import org.runejs.client.net.IncomingPackets;
 import org.runejs.client.net.OutgoingPackets;
+import org.runejs.client.net.codec.MessageDecoder;
+import org.runejs.client.net.codec.runejs435.decoder.region.LoadStandardRegionMessageDecoder;
 import org.runejs.client.util.RSAConfiguration;
 import org.runejs.client.util.SignlinkNode;
 
@@ -161,6 +165,14 @@ public class RS435LoginProtocol implements LoginProtocol {
                     Player.localPlayerId <<= 8;
                     Player.localPlayerId += MovedStatics.gameServerSocket.read();
                     MovedStatics.isLocalPlayerMember = MovedStatics.gameServerSocket.read();
+
+                    /**
+                     * read the header for a map region packet
+                     *
+                     * the opcode doesn't actually seem to be used here, it was always constructing
+                     * a "standard" scene
+                     */
+
                     MovedStatics.gameServerSocket.readDataToBuffer(0, 1, IncomingPackets.incomingPacketBuffer.buffer);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                     IncomingPackets.opcode = IncomingPackets.incomingPacketBuffer.getPacket();
@@ -176,7 +188,18 @@ public class RS435LoginProtocol implements LoginProtocol {
                         MovedStatics.gameServerSocket.readDataToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
                         Game.setConfigToDefaults();
                         MovedStatics.regionX = -1;
-                        Game.currentScene.landscape.constructMapRegion(false);
+
+                        MessageDecoder<LoadStandardRegionInboundMessage> decoder = new LoadStandardRegionMessageDecoder();
+
+                        LoadStandardRegionInboundMessage message = decoder.decode(IncomingPackets.incomingPacketBuffer);
+
+                        MessageHandler handler = Game.handlerRegistry.getMessageHandler(LoadStandardRegionInboundMessage.class);
+
+                        if (handler == null)
+                            throw new RuntimeException("No handler for message: " + message.getClass().getName());
+
+                        handler.handle(message);
+
                         IncomingPackets.opcode = -1;
                     }
                 } else {
