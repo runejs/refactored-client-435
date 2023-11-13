@@ -95,8 +95,18 @@ public class Game {
     public static int updateServerConnectAttemptCounter = 0;
     public static boolean isLoadingUpdates = true;
     public static MouseCapturer mouseCapturer;
-    public static int anInt2591 = 0;
-    public static int anInt874 = 0;
+    /**
+     * Region loading type:
+     *
+     * - 0: ???
+     * - 1: landscape files
+     * - 2: game object definitions
+     */
+    public static int regionLoadingType = 0;
+    public static int missingGameObjectFiles = 0;
+    public static int totalMissingGameObjectFiles = 1;
+    public static int missingLandscapeFiles = 0;
+    public static int totalMissingLandscapeFiles = 1;
     public static int destinationY = 0;
     public static SceneRenderer sceneRenderer;
     public static Scene currentScene;
@@ -889,7 +899,7 @@ public class Game {
         if(isLoadingUpdates) {
             MovedStatics.method1018();
             Rasterizer.resetPixels();
-            MovedStatics.method940(English.loadingPleaseWait, false, null);
+            MovedStatics.drawLoadingBox(English.loadingPleaseWait, null, false);
         }
 
         MovedStatics.drawGameScreenGraphics();
@@ -1956,25 +1966,25 @@ public class Game {
         } else if (gameStatusCode == 20) {
             LoginScreen.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
         } else if (gameStatusCode == 25) {
-            if (MovedStatics.anInt1634 == 1) {
-                if (anInt874 > MovedStatics.anInt2231)
-                    MovedStatics.anInt2231 = anInt874;
-                int i = (-anInt874 + MovedStatics.anInt2231) * 50 / MovedStatics.anInt2231;
-                MovedStatics.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.percent_b);
-            } else if (MovedStatics.anInt1634 == 2) {
-                if (anInt2591 > MovedStatics.anInt3048)
-                    MovedStatics.anInt3048 = anInt2591;
-                int i = 50 * (-anInt2591 + MovedStatics.anInt3048) / MovedStatics.anInt3048 + 50;
-                MovedStatics.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.percent_b);
+            if (regionLoadingType == 1) {
+                if (missingLandscapeFiles > totalMissingLandscapeFiles)
+                    totalMissingLandscapeFiles = missingLandscapeFiles;
+                int i = (-missingLandscapeFiles + totalMissingLandscapeFiles) * 50 / totalMissingLandscapeFiles;
+                MovedStatics.drawLoadingBox(English.loadingPleaseWait, Native.leftParenthesis + i + Native.percent_b, true);
+            } else if (regionLoadingType == 2) {
+                if (missingGameObjectFiles > totalMissingGameObjectFiles)
+                    totalMissingGameObjectFiles = missingGameObjectFiles;
+                int i = 50 * (-missingGameObjectFiles + totalMissingGameObjectFiles) / totalMissingGameObjectFiles + 50;
+                MovedStatics.drawLoadingBox(English.loadingPleaseWait, Native.leftParenthesis + i + Native.percent_b, true);
             } else
-                MovedStatics.method940(English.loadingPleaseWait, false, null);
+                MovedStatics.drawLoadingBox(English.loadingPleaseWait, null, false);
         } else if (gameStatusCode == 30) {
             drawGameScreen();
 
         } else if (gameStatusCode == 35) {
             method164();
         } else if (gameStatusCode == 40)
-            MovedStatics.method940(English.connectionLost, false, English.pleaseWaitAttemptingToReestablish);
+            MovedStatics.drawLoadingBox(English.connectionLost, English.pleaseWaitAttemptingToReestablish, false);
         MovedStatics.anInt3294 = 0;
     }
 

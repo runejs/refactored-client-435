@@ -13,7 +13,6 @@ import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.net.IncomingPackets;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.scene.InteractiveObjectTemporary;
 import org.runejs.client.scene.Scene;
@@ -60,27 +59,27 @@ public class Landscape {
 
     public void loadRegion() {
         method364(false);
-        Game.anInt874 = 0;
+        Game.missingLandscapeFiles = 0;
         boolean bool = true;
         for(int i = 0; i < terrainData.length; i++) {
             if(terrainDataIds[i] != -1 && terrainData[i] == null) {
                 terrainData[i] = CacheArchive.gameWorldMapCacheArchive.getFile(terrainDataIds[i], 0);
                 if(terrainData[i] == null) {
-                    Game.anInt874++;
+                    Game.missingLandscapeFiles++;
                     bool = false;
                 }
             }
             if(objectDataIds[i] != -1 && objectData[i] == null) {
                 objectData[i] = CacheArchive.gameWorldMapCacheArchive.method176(objectDataIds[i], 0, xteaKeys[i]);
                 if(objectData[i] == null) {
-                    Game.anInt874++;
+                    Game.missingLandscapeFiles++;
                     bool = false;
                 }
             }
         }
         if(bool) {
             bool = true;
-            Game.anInt2591 = 0;
+            Game.missingGameObjectFiles = 0;
             for(int i = 0; terrainData.length > i; i++) {
                 byte[] is = objectData[i];
                 if(is != null) {
@@ -94,8 +93,8 @@ public class Landscape {
                 }
             }
             if(bool) {
-                if(MovedStatics.anInt1634 != 0)
-                    MovedStatics.method940(English.loadingPleaseWait, true, Native.percent100Parentheses);
+                if(Game.regionLoadingType != 0)
+                    MovedStatics.drawLoadingBox(English.loadingPleaseWait, Native.percent100Parentheses, true);
                 Game.clearCaches();
                 this.scene.initToNull();
                 System.gc();
@@ -254,9 +253,9 @@ public class Landscape {
                 OutgoingPackets.buffer.putPacket(178);
                 MovedStatics.method1057();
             } else
-                MovedStatics.anInt1634 = 2;
+                Game.regionLoadingType = 2;
         } else
-            MovedStatics.anInt1634 = 1;
+            Game.regionLoadingType = 1;
 
     }
 
@@ -1165,7 +1164,7 @@ public class Landscape {
                             bool_2_ = true;
                             if(!gameObjectDefinition.method612()) {
                                 bool = false;
-                                Game.anInt2591++;
+                                Game.missingGameObjectFiles++;
                             }
                         }
                     }

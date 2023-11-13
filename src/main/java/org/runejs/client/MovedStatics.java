@@ -264,10 +264,6 @@ public class MovedStatics {
      */
     public static int[] anIntArray1186;
     /**
-     * Loading state? maybe
-     */
-    public static int anInt1634 = 0;
-    /**
      * Overhead icon sprites, e.g. overhead prayers
      */
     public static ImageRGB[] headIconSprites;
@@ -284,7 +280,6 @@ public class MovedStatics {
     public static ProducingGraphicsBuffer tabBottom;
     public static int[] keyCodes = new int[128];
     public static int tooltipDelay = 50;
-    public static int anInt2231 = 1;
     /**
      * The image used for the highlighted (selected) tab button,
      * for the furthest-right tab on the bottom.
@@ -296,7 +291,6 @@ public class MovedStatics {
     public static ProducingGraphicsBuffer tabPieveLowerRight;
     public static GameSocket lostConnectionSocket;
     public static ProducingGraphicsBuffer tabPieceLeft;
-    public static int anInt3048 = 1;
     public static boolean[] obfuscatedKeyStatus = new boolean[112];
     public static int[] crc8LookupTable = new int[256];
     public static int currentTickSample;
@@ -874,11 +868,11 @@ public class MovedStatics {
                 Rasterizer.resetPixels();
             }
             if (Game.gameStatusCode == 25) {
-                Game.anInt874 = 0;
-                anInt2231 = 1;
-                Game.anInt2591 = 0;
-                anInt3048 = 1;
-                anInt1634 = 0;
+                Game.missingLandscapeFiles = 0;
+                Game.totalMissingLandscapeFiles = 1;
+                Game.missingGameObjectFiles = 0;
+                Game.totalMissingGameObjectFiles = 1;
+                Game.regionLoadingType = 0;
             }
             if (statusCode == 0 || statusCode == 35) {
                 method344(-40);
@@ -2098,7 +2092,7 @@ public class MovedStatics {
 
     }
 
-    public static void method940(String arg1, boolean arg2, String arg3) {
+    public static void drawLoadingBox(String topLine, String bottomLine, boolean blackBackground) {
         if(clearScreen) {
             clearScreen = false;
             drawWelcomeScreenGraphics();
@@ -2111,20 +2105,25 @@ public class MovedStatics {
             showIconsRedrawnText = true;
             showChatPanelRedrawnText = true;
         }
-        int i = 151;
+
+        int y = 151;
         method1018();
-        i -= 3;
-        fontNormal.drawStringLeft(arg1, 257, i, 0);
-        fontNormal.drawStringLeft(arg1, 256, i + -1, 16777215);
-        if(arg3 != null) {
-            i += 15;
-            if(arg2) {
-                int i_0_ = 4 + fontNormal.getStringWidth(arg3);
-                Rasterizer.drawFilledRectangle(257 - i_0_ / 2, -11 + i, i_0_, 11, 0);
+        y -= 3;
+        fontNormal.drawStringLeft(topLine, 257, y, 0);
+        fontNormal.drawStringLeft(topLine, 256, y + -1, 16777215);
+
+        if(bottomLine != null) {
+            y += 15;
+
+            if(blackBackground) {
+                int bottomWidth = 4 + fontNormal.getStringWidth(bottomLine);
+                Rasterizer.drawFilledRectangle(257 - bottomWidth / 2, -11 + y, bottomWidth, 11, 0);
             }
-            fontNormal.drawStringLeft(arg3, 257, i, 0);
-            fontNormal.drawStringLeft(arg3, 256, i - 1, 16777215);
+
+            fontNormal.drawStringLeft(bottomLine, 257, y, 0);
+            fontNormal.drawStringLeft(bottomLine, 256, y - 1, 16777215);
         }
+
         drawGameScreenGraphics();
     }
 
@@ -3330,7 +3329,7 @@ public class MovedStatics {
                 onBuildTimePlane = 0;
             regionY = chunkY;
             processGameStatus(25);
-            method940(English.loadingPleaseWait, false, null);
+            drawLoadingBox(English.loadingPleaseWait, null, false);
             int i = baseY;
             int i_33_ = baseX;
             baseX = (chunkX - 6) * 8;
