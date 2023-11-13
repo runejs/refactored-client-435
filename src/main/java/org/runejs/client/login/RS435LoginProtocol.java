@@ -114,7 +114,7 @@ public class RS435LoginProtocol implements LoginProtocol {
                 sendLoginRequest();
             }
 
-            if (stage == Stage.LOGIN_RESPONSE && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) { // Login response
+            if (stage == Stage.LOGIN_RESPONSE && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) {
                 int responseCode = MovedStatics.gameServerSocket.read();
 
                 if (responseCode != 21 || Game.gameStatusCode != 20) {
@@ -139,12 +139,12 @@ public class RS435LoginProtocol implements LoginProtocol {
                 }
             }
 
-            if (stage == Stage.PROFILE_BEING_TRANSFERRED && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) { // Transferring profile
+            if (stage == Stage.PROFILE_BEING_TRANSFERRED && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) {
                 timeUntilProfileTransfer = 180 + MovedStatics.gameServerSocket.read() * 60;
                 stage = Stage.WAIT_FOR_PROFILE_TRANSFER;
             }
 
-            if (stage == Stage.WAIT_FOR_PROFILE_TRANSFER) { // Wait for transfer
+            if (stage == Stage.WAIT_FOR_PROFILE_TRANSFER) {
                 unsuccessfulAttemptCount = 0;
                 LoginScreen.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld, English.yourProfileWillBeTransferredIn, (timeUntilProfileTransfer / 60) + English.suffixSeconds);
 
@@ -152,7 +152,7 @@ public class RS435LoginProtocol implements LoginProtocol {
                     stage = Stage.DESTROY;
                 }
             } else {
-                if (stage == Stage.LOGIN_ACCEPTED && MovedStatics.gameServerSocket.inputStreamAvailable() >= 8) { // Login response
+                if (stage == Stage.LOGIN_ACCEPTED && MovedStatics.gameServerSocket.inputStreamAvailable() >= 8) {
                     Configuration.USERNAME = Native.username.toString();
                     Configuration.PASSWORD = Native.password.toString();
                     Game.playerRights = MovedStatics.gameServerSocket.read();
@@ -171,7 +171,7 @@ public class RS435LoginProtocol implements LoginProtocol {
                 }
 
                 if (stage == Stage.LOGIN_ACCEPTED_BODY) {
-                    if (MovedStatics.gameServerSocket.inputStreamAvailable() >= IncomingPackets.incomingPacketSize) { // Login response packets
+                    if (MovedStatics.gameServerSocket.inputStreamAvailable() >= IncomingPackets.incomingPacketSize) {
                         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                         MovedStatics.gameServerSocket.readDataToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
                         Game.setConfigToDefaults();
