@@ -1,7 +1,7 @@
 package org.runejs.client.login;
 
 import org.runejs.Configuration;
-import org.runejs.client.Class60;
+import org.runejs.client.LoginScreen;
 import org.runejs.client.Game;
 import org.runejs.client.GameSocket;
 import org.runejs.client.MovedStatics;
@@ -99,7 +99,7 @@ public class RS435LoginProtocol implements LoginProtocol {
             if (stage == Stage.HANDSHAKE_RESPONSE) {
                 int responseCode = MovedStatics.gameServerSocket.read();
                 if (responseCode != 0) {
-                    Game.displayMessageForResponseCode(responseCode);
+                    LoginScreen.displayMessageForResponseCode(responseCode);
                     return;
                 }
                 IncomingPackets.incomingPacketBuffer.currentPosition = 0;
@@ -130,7 +130,7 @@ public class RS435LoginProtocol implements LoginProtocol {
                             portChangeAttemptCount++;
                             stage = Stage.DESTROY;
                         } else {
-                            Game.displayMessageForResponseCode(responseCode);
+                            LoginScreen.displayMessageForResponseCode(responseCode);
                             return;
                         }
                     }
@@ -146,7 +146,7 @@ public class RS435LoginProtocol implements LoginProtocol {
 
             if (stage == Stage.WAIT_FOR_PROFILE_TRANSFER) { // Wait for transfer
                 unsuccessfulAttemptCount = 0;
-                Class60.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld, English.yourProfileWillBeTransferredIn, (timeUntilProfileTransfer / 60) + English.suffixSeconds);
+                LoginScreen.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld, English.yourProfileWillBeTransferredIn, (timeUntilProfileTransfer / 60) + English.suffixSeconds);
 
                 if (--timeUntilProfileTransfer <= 0) {
                     stage = Stage.DESTROY;
@@ -194,7 +194,7 @@ public class RS435LoginProtocol implements LoginProtocol {
 
                             stage = Stage.DESTROY;
                         } else {
-                            Game.displayMessageForResponseCode(-3);
+                            LoginScreen.displayMessageForResponseCode(-3);
                         }
                     }
                 }
@@ -210,7 +210,7 @@ public class RS435LoginProtocol implements LoginProtocol {
                 portChangeAttemptCount++;
                 stage = Stage.DESTROY;
             } else {
-                Game.displayMessageForResponseCode(-2);
+                LoginScreen.displayMessageForResponseCode(-2);
             }
         }
     }
