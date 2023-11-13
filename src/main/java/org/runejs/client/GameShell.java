@@ -2,8 +2,6 @@ package org.runejs.client;
 
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
-import org.runejs.client.language.Native;
-import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.renderer.SoftwareRenderer;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.Timer;
@@ -96,7 +94,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
                 MovedStatics.currentTickSample = 0x1f & MovedStatics.currentTickSample + 1;
 
                 synchronized (this) {
-                    MovedStatics.aBoolean571 = clientFocused;
+                    Game.isClientFocused = clientFocused;
                 }
 
                 this.game.processGameLoop();

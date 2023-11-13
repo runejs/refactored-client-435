@@ -66,7 +66,6 @@ public class MovedStatics {
      */
     public static IndexedImage tabHighlightImageBottomLeft;
     public static boolean aBoolean565 = false;
-    public static boolean aBoolean571;
     public static int anInt573 = -1;
     public static boolean menuOpen = false;
     public static volatile long aLong174 = 0L;

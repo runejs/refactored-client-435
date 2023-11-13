@@ -87,7 +87,6 @@ public class Game {
 
     public static GameInterface chatboxInterface;
     public static GameSocket updateServerSocket;
-    public static boolean aBoolean1735 = true;
     public static boolean aBoolean871 = false;
     public static int modewhat = 0;
     public static int modewhere = 0;
@@ -123,6 +122,14 @@ public class Game {
      */
     public static int someOtherPort;
     public static int gameServerPort;
+    /**
+     * Was the client focused last cycle?
+     */
+    public static boolean isClientFocused;
+    /**
+     * When the last 'focus' packet was sent, was the client focused?
+     */
+    public static boolean lastFocusTrackWasFocused = true;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
     private static int lastClickX = 0;
@@ -638,8 +645,8 @@ public class Game {
         lastClickTime = 0L;
         mouseCapturer.coord = 0;
         duplicateClickCount = 0;
-        aBoolean1735 = true;
-        MovedStatics.aBoolean571 = true;
+        lastFocusTrackWasFocused = true;
+        isClientFocused = true;
         ClientScriptRunner.clearClientScriptRunnerCache();
         IncomingPackets.secondLastOpcode = -1;
         MovedStatics.menuOpen = false;
@@ -1314,13 +1321,13 @@ public class Game {
                     OutgoingPackets.buffer.putShortBE(Game.playerCamera.getYaw());
                     OutgoingPackets.buffer.putShortBE(Game.playerCamera.getPitch());
                 }
-                if(MovedStatics.aBoolean571 && !aBoolean1735) {
-                    aBoolean1735 = true;
+                if(isClientFocused && !lastFocusTrackWasFocused) {
+                    lastFocusTrackWasFocused = true;
                     OutgoingPackets.buffer.putPacket(160);
                     OutgoingPackets.buffer.putByte(1);
                 }
-                if(!MovedStatics.aBoolean571 && aBoolean1735) {
-                    aBoolean1735 = false;
+                if(!isClientFocused && lastFocusTrackWasFocused) {
+                    lastFocusTrackWasFocused = false;
                     OutgoingPackets.buffer.putPacket(160);
                     OutgoingPackets.buffer.putByte(0);
                 }
