@@ -115,7 +115,7 @@ public class MovedStatics {
     public static HashTable aClass23_805;
     public static int anInt848 = 0;
     public static int[] anIntArray852;
-    public static long aLong853;
+    public static long localUsernameId;
     public static int anInt2621 = 0;
     public static volatile int eventClickY = 0;
     public static int anInt2628 = 0;
@@ -165,10 +165,6 @@ public class MovedStatics {
     public static int anInt2854;
     public static int placementY;
     public static int crossIndex = 0;
-    /**
-     * Related to login errors
-     */
-    public static int anInt2321 = 0;
     public static byte[][][] tile_flags = new byte[4][104][104];
     public static int hoveredWidgetChildId = -1;
     public static int[] directions = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
@@ -250,9 +246,10 @@ public class MovedStatics {
     public static ProducingGraphicsBuffer mapBackRight;
     public static IndexedImage chatboxBackgroundImage;
     /**
-     * Membership status?
+     * Local player's membership status, used to allow for
+     * increased friend limit sizes in non-member worlds.
      */
-    public static int anInt1049 = 0;
+    public static int isLocalPlayerMember = 0;
     public static int regionX;
     /**
      * Last pressed key? maybe
@@ -332,10 +329,6 @@ public class MovedStatics {
      * Some kind of mouse information
      */
     public static int anInt3294 = 0;
-    /**
-     * ISAAC key?
-     */
-    public static long aLong2858 = 0L;
     /**
      * The image used for the highlighted (selected) tab button,
      * for the furthest-left tab on the bottom.
@@ -529,7 +522,7 @@ public class MovedStatics {
                 string = string.replace('@', '_');
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
-                SignlinkNode signlinkNode = signlink.putDataInputStreamNode(new URL(signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + Game.clientVersion + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
+                SignlinkNode signlinkNode = signlink.putDataInputStreamNode(new URL(signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + Game.clientVersion + "&u=" + localUsernameId + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
                 while (signlinkNode.status == SignlinkNode.Status.NOT_INITIALIZED)
                     threadSleep(1L);
                 if (signlinkNode.status != SignlinkNode.Status.INITIALIZED)
@@ -872,9 +865,6 @@ public class MovedStatics {
             if (Game.gameStatusCode == 0)
                 Game.renderer.disposeLoadingText();
             if (statusCode == 20 || statusCode == 40) {
-                Game.anInt1756 = 0;
-                anInt2321 = 0;
-
                 Game.loginProtocol.reset();
             }
             if (statusCode != 20 && statusCode != 40 && lostConnectionSocket != null) {

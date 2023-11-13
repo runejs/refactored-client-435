@@ -85,7 +85,6 @@ public class Game {
 
     public static final SocialList ignoreList = new SocialList(100);
 
-    public static int anInt784 = 0;
     public static GameInterface chatboxInterface;
     public static GameSocket updateServerSocket;
     public static boolean aBoolean1735 = true;
@@ -135,7 +134,6 @@ public class Game {
         return playerCamera.getRotation().yaw;
     }
 
-    public static int anInt1756 = 0;
     public static int menuOffsetY;
     public static int anInt1769 = -1;
     public static int widgetSelected = 0;
@@ -687,7 +685,7 @@ public class Game {
         MovedStatics.interactiveObjectTemporaryNodeCache = new LinkedList();
 
         // friends list size depends on membership status
-        int friendsListSize = MovedStatics.anInt1049 == 1 ? 200 : 100;
+        int friendsListSize = MovedStatics.isLocalPlayerMember == 1 ? 200 : 100;
         Game.friendList = new FriendList(200, friendsListSize);
 
         Player.friendListStatus = 0;
