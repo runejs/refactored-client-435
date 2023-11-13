@@ -164,8 +164,8 @@ public class Minimap extends FramePieceRenderer {
                     drawOnMinimap(playerY, playerX, mapDots[2]);
             }
         }
-        if(Player.headIconDrawType != 0 && MovedStatics.pulseCycle % 20 < 10) {
-            if(Player.headIconDrawType == 1 && MovedStatics.hintIconNpcTarget >= 0 && Player.npcs.length > MovedStatics.hintIconNpcTarget) {
+        if(Game.currentHintIconType != 0 && MovedStatics.pulseCycle % 20 < 10) {
+            if(Game.currentHintIconType == 1 && MovedStatics.hintIconNpcTarget >= 0 && Player.npcs.length > MovedStatics.hintIconNpcTarget) {
                 Npc npc = Player.npcs[MovedStatics.hintIconNpcTarget];
                 if(npc != null) {
                     int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
@@ -173,12 +173,12 @@ public class Minimap extends FramePieceRenderer {
                     drawMinimapIcon(minimapMarkers[1], npcX, npcY);
                 }
             }
-            if(Player.headIconDrawType == 2) {
+            if(Game.currentHintIconType == 2) {
                 int hintX = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-MovedStatics.baseY + MovedStatics.hintIconPosY);
                 int hintY = 4 * (MovedStatics.hintIconPosX - MovedStatics.baseX) - (-2 + Player.localPlayer.worldX / 32);
                 drawMinimapIcon(minimapMarkers[1], hintY, hintX);
             }
-            if(Player.headIconDrawType == 10 && MovedStatics.hintIconPlayerTarget >= 0 && Player.trackedPlayers.length > MovedStatics.hintIconPlayerTarget) {
+            if(Game.currentHintIconType == 10 && MovedStatics.hintIconPlayerTarget >= 0 && Player.trackedPlayers.length > MovedStatics.hintIconPlayerTarget) {
                 Player player = Player.trackedPlayers[MovedStatics.hintIconPlayerTarget];
                 if(player != null) {
                     int playerX = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
@@ -559,8 +559,8 @@ public class Minimap extends FramePieceRenderer {
                     drawOnResizableMinimap(playerX, playerY, mapDots[2]);
             }
         }
-        if(Player.headIconDrawType != 0 && MovedStatics.pulseCycle % 20 < 10) {
-            if(Player.headIconDrawType == 1 && MovedStatics.hintIconNpcTarget >= 0 && Player.npcs.length > MovedStatics.hintIconNpcTarget) {
+        if(Game.currentHintIconType != 0 && MovedStatics.pulseCycle % 20 < 10) {
+            if(Game.currentHintIconType == 1 && MovedStatics.hintIconNpcTarget >= 0 && Player.npcs.length > MovedStatics.hintIconNpcTarget) {
                 Npc npc = Player.npcs[MovedStatics.hintIconNpcTarget];
                 if(npc != null) {
                     int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
@@ -568,12 +568,12 @@ public class Minimap extends FramePieceRenderer {
                     drawMinimapMark(minimapMarkers[1], npcX, npcY);
                 }
             }
-            if(Player.headIconDrawType == 2) {
+            if(Game.currentHintIconType == 2) {
                 int hintY = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-MovedStatics.baseY + MovedStatics.hintIconPosY);
                 int hintX = 4 * (MovedStatics.hintIconPosX - MovedStatics.baseX) - (-2 + Player.localPlayer.worldX / 32);
                 drawMinimapMark(minimapMarkers[1], hintX, hintY);
             }
-            if(Player.headIconDrawType == 10 && MovedStatics.hintIconPlayerTarget >= 0 && Player.trackedPlayers.length > MovedStatics.hintIconPlayerTarget) {
+            if(Game.currentHintIconType == 10 && MovedStatics.hintIconPlayerTarget >= 0 && Player.trackedPlayers.length > MovedStatics.hintIconPlayerTarget) {
                 Player player = Player.trackedPlayers[MovedStatics.hintIconPlayerTarget];
                 if(player != null) {
                     int playerY = -(Player.localPlayer.worldY / 32) + player.worldY / 32;

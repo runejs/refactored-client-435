@@ -1,8 +1,6 @@
 package org.runejs.client.net.codec.runejs435.decoder.misc;
 
-import org.runejs.client.*;
-import org.runejs.client.cache.def.ActorDefinition;
-import org.runejs.client.media.renderable.actor.Player;
+import org.runejs.client.Game;
 import org.runejs.client.message.inbound.misc.SetHintIconInboundMessage;
 import org.runejs.client.net.PacketBuffer;
 import org.runejs.client.net.codec.MessageDecoder;
@@ -20,7 +18,7 @@ public class SetHintIconMessageDecoder implements MessageDecoder<SetHintIconInbo
                 new SetHintIconInboundMessage.ActorHintIcon(npcId)
             );
         }
-        if(headIconDrawType >= 2 && Player.headIconDrawType <= 6) {
+        if(headIconDrawType >= 2 && Game.currentHintIconType <= 6) {
             int drawX = 64;
             int drawY = 64;
             

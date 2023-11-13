@@ -1329,7 +1329,7 @@ public class MovedStatics {
      * Draws the 2d yellow arrow hint icon in the world.
      */
     public static void drawPositionHintIcon() {
-        if (Player.headIconDrawType != 2) {
+        if (Game.currentHintIconType != 2) {
             return;
         }
 
@@ -2518,7 +2518,7 @@ public class MovedStatics {
                         if(screenPos != null)
                             headIconSprites[npcDefinition.headIcon].drawImage(-12 + screenPos.x, screenPos.y + -30);
                     }
-                    if(Player.headIconDrawType == 1 && hintIconNpcTarget == Player.npcIds[-Player.localPlayerCount + i] && pulseCycle % 20 < 10) {
+                    if(Game.currentHintIconType == 1 && hintIconNpcTarget == Player.npcIds[-Player.localPlayerCount + i] && pulseCycle % 20 < 10) {
                         Point2d screenPos = getProjectedScreenPosition(actor.anInt3117 + 15, actor.worldY, actor.worldX);
                         if(screenPos != null)
                             hintIconSprites[0].drawImage(screenPos.x + -12, screenPos.y + -28);
@@ -2540,7 +2540,7 @@ public class MovedStatics {
                             }
                         }
                     }
-                    if(i >= 0 && Player.headIconDrawType == 10 && hintIconPlayerTarget == Player.trackedPlayerIndices[i]) {
+                    if(i >= 0 && Game.currentHintIconType == 10 && hintIconPlayerTarget == Player.trackedPlayerIndices[i]) {
                         Point2d screenPos = getProjectedScreenPosition(actor.anInt3117 + 15, actor.worldY, actor.worldX);
 
                         if (screenPos != null) {

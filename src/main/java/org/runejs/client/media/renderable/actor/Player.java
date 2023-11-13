@@ -16,7 +16,6 @@ public class Player extends Actor {
 
     public static int worldLevel;
     public static int[] viewportOffsets;
-    public static int headIconDrawType = 0;
     public static Player localPlayer;
     public static int[] actorUpdatingIndices = new int[2048];
     public static Buffer[] trackedPlayerAppearanceCache = new Buffer[2048];

@@ -130,6 +130,7 @@ public class Game {
      * When the last 'focus' packet was sent, was the client focused?
      */
     public static boolean lastFocusTrackWasFocused = true;
+    public static int currentHintIconType = 0;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
     private static int lastClickX = 0;
@@ -654,7 +655,7 @@ public class Game {
         IncomingPackets.opcode = -1;
         MovedStatics.systemUpdateTime = 0;
         IncomingPackets.cyclesSinceLastPacket = 0;
-        Player.headIconDrawType = 0;
+        currentHintIconType = 0;
         OutgoingPackets.buffer.currentPosition = 0;
         idleLogout = 0;
         IncomingPackets.thirdLastOpcode = -1;
