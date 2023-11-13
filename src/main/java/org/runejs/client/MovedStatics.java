@@ -3036,7 +3036,7 @@ public class MovedStatics {
         return arg1 < 129 || arg1 > 159;
     }
 
-    public static IndexedImage method769(int arg0, CacheArchive imageArchive, int arg2) {
+    public static IndexedImage method769(CacheArchive imageArchive, int arg2) {
         if(!method472(imageArchive, arg2))
             return null;
         return method538();

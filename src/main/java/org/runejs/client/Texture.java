@@ -111,15 +111,15 @@ public class Texture extends Node {
         animationPixels = tmp;
     }
 
-    public boolean method869(double arg0, int textureSize, CacheArchive imageArchive) {
+    public boolean method869(double brightness, int textureSize, CacheArchive imageArchive) {
         for(int i = 0; i < spriteIds.length; i++) {
             if(imageArchive.method193(spriteIds[i]) == null)
                 return false;
         }
-        int i = textureSize * textureSize;
-        pixels = new int[i * 4];
+        int textureSizeArea = textureSize * textureSize;
+        pixels = new int[textureSizeArea * 4];
         for(int i_12_ = 0; i_12_ < spriteIds.length; i_12_++) {
-            IndexedImage image = MovedStatics.method769(2, imageArchive, spriteIds[i_12_]);
+            IndexedImage image = MovedStatics.method769(imageArchive, spriteIds[i_12_]);
             image.resizeToLibSize();
             byte[] imgPixels = image.imgPixels;
             int[] imgPalette = image.palette;
@@ -136,7 +136,7 @@ public class Texture extends Node {
                 }
             }
             for(int i_19_ = 0; i_19_ < imgPalette.length; i_19_++)
-                imgPalette[i_19_] = Rasterizer3D.adjustBrightness(imgPalette[i_19_], arg0);
+                imgPalette[i_19_] = Rasterizer3D.adjustBrightness(imgPalette[i_19_], brightness);
             int i_20_;
             if(i_12_ == 0)
                 i_20_ = 0;
@@ -144,7 +144,7 @@ public class Texture extends Node {
                 i_20_ = anIntArray2140[i_12_ - 1];
             if(i_20_ == 0) {
                 if(image.imgWidth == textureSize) {
-                    for(int i_21_ = 0; i_21_ < i; i_21_++)
+                    for(int i_21_ = 0; i_21_ < textureSizeArea; i_21_++)
                         pixels[i_21_] = imgPalette[imgPixels[i_21_] & 0xff];
                 } else if(image.imgWidth == 64 && textureSize == 128) {
                     int i_22_ = 0;
@@ -162,12 +162,12 @@ public class Texture extends Node {
                     throw new RuntimeException();
             }
         }
-        for(int pixelIndex = 0; pixelIndex < i; pixelIndex++) {
+        for(int pixelIndex = 0; pixelIndex < textureSizeArea; pixelIndex++) {
             pixels[pixelIndex] &= 0xf8f8ff;
             int pixel = pixels[pixelIndex];
-            pixels[pixelIndex + i] = pixel - (pixel >>> 3) & 0xf8f8ff;
-            pixels[pixelIndex + i + i] = pixel - (pixel >>> 2) & 0xf8f8ff;
-            pixels[pixelIndex + i + i + i] = pixel - (pixel >>> 2) - (pixel >>> 3) & 0xf8f8ff;
+            pixels[pixelIndex + textureSizeArea] = pixel - (pixel >>> 3) & 0xf8f8ff;
+            pixels[pixelIndex + textureSizeArea + textureSizeArea] = pixel - (pixel >>> 2) & 0xf8f8ff;
+            pixels[pixelIndex + textureSizeArea + textureSizeArea + textureSizeArea] = pixel - (pixel >>> 2) - (pixel >>> 3) & 0xf8f8ff;
         }
         return true;
     }
