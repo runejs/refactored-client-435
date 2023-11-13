@@ -11,6 +11,7 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.actor.Player;
+import org.runejs.client.message.InboundMessage;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.region.LoadStandardRegionInboundMessage;
 import org.runejs.client.net.IncomingPackets;
@@ -64,6 +65,20 @@ public class RS435LoginProtocol implements LoginProtocol {
      * login failures
      */
     private int portChangeAttemptCount = 0;
+
+    /**
+     * The opcode of the packet to be handled immediately after login.
+     *
+     * Used to load the initial map.
+     */
+    private int postLoginPacketOpcode;
+
+    /**
+     * The size, in bytes, of the packet to be handled immediately after login.
+     *
+     * Used to load the initial map.
+     */
+    private int postLoginPacketSize;
 
     @Override
     public void process() {
@@ -167,40 +182,41 @@ public class RS435LoginProtocol implements LoginProtocol {
                     MovedStatics.isLocalPlayerMember = MovedStatics.gameServerSocket.read();
 
                     /**
-                     * read the header for a map region packet
-                     *
-                     * the opcode doesn't actually seem to be used here, it was always constructing
-                     * a "standard" scene
+                     * read the header for a map region packet, to be used in the next stage
                      */
 
                     MovedStatics.gameServerSocket.readDataToBuffer(0, 1, IncomingPackets.incomingPacketBuffer.buffer);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                    IncomingPackets.opcode = IncomingPackets.incomingPacketBuffer.getPacket();
+                    postLoginPacketOpcode = IncomingPackets.incomingPacketBuffer.getPacket();
+
                     MovedStatics.gameServerSocket.readDataToBuffer(0, 2, IncomingPackets.incomingPacketBuffer.buffer);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                    IncomingPackets.incomingPacketSize = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
+                    postLoginPacketSize = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                     stage = Stage.LOGIN_ACCEPTED_BODY;
                 }
 
                 if (stage == Stage.LOGIN_ACCEPTED_BODY) {
-                    if (MovedStatics.gameServerSocket.inputStreamAvailable() >= IncomingPackets.incomingPacketSize) {
+                    if (MovedStatics.gameServerSocket.inputStreamAvailable() >= postLoginPacketSize) {
                         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                        MovedStatics.gameServerSocket.readDataToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
+                        MovedStatics.gameServerSocket.readDataToBuffer(0, postLoginPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
                         Game.setConfigToDefaults();
                         MovedStatics.regionX = -1;
 
-                        MessageDecoder<LoadStandardRegionInboundMessage> decoder = new LoadStandardRegionMessageDecoder();
+                        MessageDecoder decoder = Game.packetCodec.getMessageDecoder(postLoginPacketOpcode);
 
-                        LoadStandardRegionInboundMessage message = decoder.decode(IncomingPackets.incomingPacketBuffer);
+                        if (decoder == null) {
+                            throw new RuntimeException("No MessageDecoder for post-login opcode: " + postLoginPacketOpcode);
+                        }
 
-                        MessageHandler handler = Game.handlerRegistry.getMessageHandler(LoadStandardRegionInboundMessage.class);
+                        InboundMessage message = decoder.decode(IncomingPackets.incomingPacketBuffer);
 
-                        if (handler == null)
+                        MessageHandler handler = Game.handlerRegistry.getMessageHandler(message.getClass());
+
+                        if (handler == null) {
                             throw new RuntimeException("No handler for message: " + message.getClass().getName());
+                        }
 
                         handler.handle(message);
-
-                        IncomingPackets.opcode = -1;
                     }
                 } else {
                     unsuccessfulAttemptCount++;
