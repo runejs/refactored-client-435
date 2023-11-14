@@ -17,7 +17,13 @@ public class MusicSystem {
 	private static int anInt2110;
 	private static int volume3;
 	private static int anInt255;
+	/**
+	 * TODO (jkm) rename to match correct archive naming
+	 */
 	private static int fileId;
+	/**
+	 * TODO (jkm) rename to match correct archive naming
+	 */
 	private static int childId;
 	private static byte[] data_;
 	private static boolean fetchMusic = false;
@@ -82,11 +88,12 @@ public class MusicSystem {
 		stop_();
 	}
 
-	public static synchronized void method412(boolean arg0, CacheArchive arg1, int arg2, String arg4, int arg5, String arg6, int arg7) {
+	public static synchronized void playLoginScreenMusic(boolean always_false, CacheArchive archive, int always_zero, String songName, int always_ten, String always_empty, int volume) {
 		if (musicIsntNull()) {
-			int i = arg1.getHash(arg4);
-			int i_16_ = arg1.method179(i, arg6);
-			method403(arg7, true, arg5, i, arg1, i_16_, arg2, arg0);
+			int groupId = archive.getGroupIdByName(songName);
+			int fileId = archive.getFileIdByName(groupId, always_empty);
+
+			method403(volume, true, always_ten, groupId, archive, fileId, always_zero, always_false);
 		}
 	}
 
@@ -173,17 +180,17 @@ public class MusicSystem {
 		return (int) (0.5 + Math.log(0.00390625 * arg1) * 868.5889638065036);
 	}
 
-	private static synchronized void method403(int arg0, boolean arg1, int arg2, int songId, CacheArchive cacheArchive, int arg5, int arg6, boolean arg7) {
+	private static synchronized void method403(int volume, boolean always_true, int always_ten, int cacheGroupId, CacheArchive archive, int cacheFileId, int always_zero, boolean always_false) {
 		if (musicIsntNull()) {
-			MusicSystem.aBoolean1790 = arg7;
-			MusicSystem.anInt255 = arg2;
-			MusicSystem.childId = arg5;
-			MusicSystem.fetchMusic = arg1;
-			MusicSystem.musicFetcher = cacheArchive;
+			MusicSystem.aBoolean1790 = always_false;
+			MusicSystem.anInt255 = always_ten;
+			MusicSystem.childId = cacheFileId;
+			MusicSystem.fetchMusic = always_true;
+			MusicSystem.musicFetcher = archive;
 			MusicSystem.anInt1806 = -1;
-			MusicSystem.volume3 = arg0;
-			MusicSystem.anInt2110 = arg6;
-			MusicSystem.fileId = songId;
+			MusicSystem.volume3 = volume;
+			MusicSystem.anInt2110 = always_zero;
+			MusicSystem.fileId = cacheGroupId;
 		}
 	}
 

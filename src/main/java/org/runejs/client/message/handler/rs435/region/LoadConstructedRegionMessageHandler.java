@@ -48,8 +48,8 @@ public class LoadConstructedRegionMessageHandler implements MessageHandler<LoadC
                             Landscape.mapCoordinates[regionCount] = i_17_;
                             int i_19_ = i_17_ & 0xff;
                             int i_20_ = (0xffbe & i_17_) >> 8;
-                            Landscape.terrainDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.MAP_NAME_PREFIX_M +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
-                            Landscape.objectDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.MAP_NAME_PREFIX_L +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
+                            Landscape.terrainDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getGroupIdByName(Native.MAP_NAME_PREFIX_M +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
+                            Landscape.objectDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getGroupIdByName(Native.MAP_NAME_PREFIX_L +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
                             regionCount++;
                         }
                     }

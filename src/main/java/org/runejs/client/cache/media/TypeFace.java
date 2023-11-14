@@ -106,10 +106,10 @@ public class TypeFace extends Rasterizer {
         return constructFont();
     }
 
-    public static TypeFace loadTypeFace(CacheArchive arg0, String arg2, String arg3) {
-        int i = arg0.getHash(arg3);
-        int i_50_ = arg0.method179(i, arg2);
-        return getFont(arg0, i_50_, i);
+    public static TypeFace loadTypeFace(CacheArchive imageArchive, String always_empty, String fontName) {
+        int fontImageId = imageArchive.getGroupIdByName(fontName);
+        int fontFileId = imageArchive.getFileIdByName(fontImageId, always_empty);
+        return getFont(imageArchive, fontFileId, fontImageId);
     }
 
 

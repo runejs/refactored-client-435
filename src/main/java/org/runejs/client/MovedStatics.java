@@ -1795,9 +1795,9 @@ public class MovedStatics {
         }
     }
 
-    public static ImageRGB method1028(CacheArchive arg0, String arg1, String arg3) {
-        int i = arg0.getHash(arg1);
-        int i_13_ = arg0.method179(i, arg3);
+    public static ImageRGB method1028(CacheArchive arg0, String arg1, String always_empty) {
+        int i = arg0.getGroupIdByName(arg1);
+        int i_13_ = arg0.getFileIdByName(i, always_empty);
         return method927(i_13_, arg0, i);
     }
 

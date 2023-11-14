@@ -335,8 +335,8 @@ public class UpdateServer implements IUpdateServer {
         }
     }
 
-    public void enqueueFileRequest(boolean isPriority, CacheArchive archive, int archiveIndexId, int fileId, byte padding, int expectedCrc) {
-        long fileKey = fileId + ((long) archiveIndexId << 16);
+    public void enqueueFileRequest(boolean isPriority, CacheArchive archive, int archiveIndexId, int groupId, byte padding, int expectedCrc) {
+        long fileKey = groupId + ((long) archiveIndexId << 16);
         UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityPostProcessingQueue.getNode(fileKey);
 
         if (updateServerNode == null) {

@@ -233,8 +233,8 @@ public class ImageRGB extends Rasterizer {
         }
     }
 
-    public static boolean spriteExists(int childId, int fileId, CacheArchive cacheArchive) {
-        byte[] is = cacheArchive.getFile(fileId, childId);
+    public static boolean spriteExists(int fileId, int groupId, CacheArchive cacheArchive) {
+        byte[] is = cacheArchive.getFile(groupId, fileId);
         if(is == null)
             return false;
         MovedStatics.decodeIndexedImage(is);
@@ -268,9 +268,9 @@ public class ImageRGB extends Rasterizer {
         return method319();
     }
 
-    public static ImageRGB[] method526(CacheArchive arg0, String arg2, String arg3) {
-        int i = arg0.getHash(arg2);
-        int i_4_ = arg0.method179(i, arg3);
+    public static ImageRGB[] method526(CacheArchive arg0, String arg2, String always_empty) {
+        int i = arg0.getGroupIdByName(arg2);
+        int i_4_ = arg0.getFileIdByName(i, always_empty);
         return method944((byte) -3, i, arg0, i_4_);
     }
 

@@ -919,9 +919,9 @@ public class Game {
         return Player.cutsceneActive ? Game.cutsceneCamera : Game.playerCamera;
     }
 
-    public static IndexedImage method359(String arg0, String arg1, CacheArchive arg2) {
-        int i = arg2.getHash(arg0);
-        int i_23_ = arg2.method179(i, arg1);
+    public static IndexedImage method359(String arg0, String always_empty, CacheArchive arg2) {
+        int i = arg2.getGroupIdByName(arg0);
+        int i_23_ = arg2.getFileIdByName(i, always_empty);
         return method363(arg2, i_23_, i);
     }
 

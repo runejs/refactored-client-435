@@ -26,14 +26,14 @@ public class IndexedImage extends Rasterizer {
         palette = new int[arg2];
     }
 
-    public static IndexedImage[] getMultipleIndexedImages(CacheArchive archive, String arg2, String arg3) {
-        int i = archive.getHash(arg2);
-        int i_1_ = archive.method179(i, arg3);
-        return method337(archive, i_1_, i);
+    public static IndexedImage[] getMultipleIndexedImages(CacheArchive archive, String groupName, String always_empty) {
+        int groupId = archive.getGroupIdByName(groupName);
+        int fileId = archive.getFileIdByName(groupId, always_empty);
+        return method337(archive, fileId, groupId);
     }
 
-    private static IndexedImage[] method337(CacheArchive arg1, int arg2, int arg3) {
-        if(!ImageRGB.spriteExists(arg2, arg3, arg1))
+    private static IndexedImage[] method337(CacheArchive archive, int fileId, int groupId) {
+        if(!ImageRGB.spriteExists(fileId, groupId, archive))
             return null;
         return method315();
     }

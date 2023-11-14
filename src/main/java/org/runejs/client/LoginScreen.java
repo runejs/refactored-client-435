@@ -94,7 +94,7 @@ public class LoginScreen {
                     MusicSystem.method402(false);
                     MusicSystem.songTimeout = 0;
                 } else {
-                    MusicSystem.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", MusicSystem.musicVolume);
+                    MusicSystem.playLoginScreenMusic(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", MusicSystem.musicVolume);
                     MusicSystem.method456(newVolume);
                 }
             } else {
@@ -538,7 +538,7 @@ public class LoginScreen {
             anIntArray178 = new int[32768];
             loginScreenState = 0;
             if (MusicSystem.musicVolume != 0 && !VertexNormal.lowMemory)
-                MusicSystem.method412(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", MusicSystem.musicVolume);
+                MusicSystem.playLoginScreenMusic(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", MusicSystem.musicVolume);
             else
                 MusicSystem.method405(10);
             Game.updateServer.resetRequests(false);

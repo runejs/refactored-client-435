@@ -1,38 +1,70 @@
 package org.runejs.client.cache;
 
+/**
+ * Represents a mapping between a list of file ids and their corresponding hash.
+ *
+ * These are stored as a list of pairs, that is:
+ *  - element `0`: hashed file #1 name
+ *  - element `1`: file #1 id
+ *  - element `2`: hashed file #2 name
+ *  - element `3`: file #2 id
+ */
 public class NameHashCollection {
-    public int[] anIntArray996;
+    private static final int NOT_FOUND = -1;
+
+    private int[] hashTable;
 
     public NameHashCollection(int[] nameHashes) {
-        int i;
-        for(i = 1; (nameHashes.length >> 1) + nameHashes.length >= i; i <<= 1) {
-            /* empty */
-        }
-        anIntArray996 = new int[i + i];
-        for(int i_8_ = 0; i + i > i_8_; i_8_++)
-            anIntArray996[i_8_] = -1;
-        for(int i_9_ = 0; nameHashes.length > i_9_; i_9_++) {
-            int i_10_;
-            for(i_10_ = nameHashes[i_9_] & i - 1; anIntArray996[i_10_ + i_10_ + 1] != -1; i_10_ = i_10_ + 1 & -1 + i) {
-                /* empty */
-            }
-            anIntArray996[i_10_ + i_10_] = nameHashes[i_9_];
-            anIntArray996[1 + i_10_ + i_10_] = i_9_;
-        }
+        int size = calculateInitialSize(nameHashes.length);
+        hashTable = new int[size * 2];
 
+        // initialise the table with empty values
+        for(int i = 0; hashTable.length > i; i++)
+            hashTable[i] = -1;
+
+        populateHashTable(size, nameHashes);
     }
 
+    public int getIdByName(int nameHash) {
+        int size = hashTable.length - 2;
+        int current = nameHash << 1 & size;
 
-    public int method882(int arg0) {
-        int i = -2 + anIntArray996.length;
-        int i_0_ = arg0 << 1 & i;
-        for(; ; ) {
-            int i_1_ = anIntArray996[i_0_];
-            if(i_1_ == arg0)
-                return anIntArray996[i_0_ + 1];
-            if(i_1_ == -1)
-                return -1;
-            i_0_ = i_0_ + 2 & i;
+        while (hashTable[current] != NOT_FOUND) {
+            if (hashTable[current] == nameHash) {
+                return hashTable[current + 1];
+            }
+
+            current = (current + 2) & size;
         }
+
+        return NOT_FOUND;
+    }
+
+    private void populateHashTable(int size, int[] nameHashes) {
+        for(int nameHashIndex = 0; nameHashes.length > nameHashIndex; nameHashIndex++) {
+            int firstEmptySlot = findNextAvailableSlot(size, nameHashes[nameHashIndex]);
+            hashTable[firstEmptySlot + firstEmptySlot] = nameHashes[nameHashIndex];
+            hashTable[1 + firstEmptySlot + firstEmptySlot] = nameHashIndex;
+        }
+    }
+
+    private int findNextAvailableSlot(int size, int start) {
+        int current = start & size - 1;
+
+        while (hashTable[current * 2 + 1] != NOT_FOUND) {
+            current = current + 1 & -1 + size;
+        }
+
+        return current;
+    }
+
+    private int calculateInitialSize(int length) {
+        int size = 1;
+
+        while((length >> 1) + length >= size) {
+            size <<= 1;
+        }
+
+        return size;
     }
 }
