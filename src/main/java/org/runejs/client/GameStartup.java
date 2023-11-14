@@ -68,19 +68,19 @@ public class GameStartup {
             loadingBarPercentage = 20;
         } else if (startupStage == 40) {
             int i = 0;
-            i += CacheArchive.skeletonCacheArchive.getPercentLoaded() * 5 / 100;
-            i += 5 * CacheArchive.skinDefinitionCacheArchive.getPercentLoaded() / 100;
-            i += 5 * CacheArchive.gameDefinitionsCacheArchive.getPercentLoaded() / 100;
-            i += 5 * CacheArchive.gameInterfaceCacheArchive.getPercentLoaded() / 100;
-            i += 5 * CacheArchive.soundEffectCacheArchive.getPercentLoaded() / 100;
-            i += 5 * CacheArchive.gameWorldMapCacheArchive.getPercentLoaded() / 100;
-            i += CacheArchive.musicCacheArchive.getPercentLoaded() * 5 / 100;
-            i += 40 * CacheArchive.modelCacheArchive.getPercentLoaded() / 100;
-            i += CacheArchive.gameImageCacheArchive.getPercentLoaded() * 5 / 100;
-            i += CacheArchive.gameTextureCacheArchive.getPercentLoaded() * 5 / 100;
-            i += 5 * CacheArchive.huffmanCacheArchive.getPercentLoaded() / 100;
-            i += 5 * CacheArchive.jingleCacheArchive.getPercentLoaded() / 100;
-            i += 5 * CacheArchive.clientScriptCacheArchive.getPercentLoaded() / 100;
+            i += CacheArchive.skeletonCacheArchive.getIndexLoadedPercentage() * 5 / 100;
+            i += 5 * CacheArchive.skinDefinitionCacheArchive.getIndexLoadedPercentage() / 100;
+            i += 5 * CacheArchive.gameDefinitionsCacheArchive.getIndexLoadedPercentage() / 100;
+            i += 5 * CacheArchive.gameInterfaceCacheArchive.getIndexLoadedPercentage() / 100;
+            i += 5 * CacheArchive.soundEffectCacheArchive.getIndexLoadedPercentage() / 100;
+            i += 5 * CacheArchive.gameWorldMapCacheArchive.getIndexLoadedPercentage() / 100;
+            i += CacheArchive.musicCacheArchive.getIndexLoadedPercentage() * 5 / 100;
+            i += 40 * CacheArchive.modelCacheArchive.getIndexLoadedPercentage() / 100;
+            i += CacheArchive.gameImageCacheArchive.getIndexLoadedPercentage() * 5 / 100;
+            i += CacheArchive.gameTextureCacheArchive.getIndexLoadedPercentage() * 5 / 100;
+            i += 5 * CacheArchive.huffmanCacheArchive.getIndexLoadedPercentage() / 100;
+            i += 5 * CacheArchive.jingleCacheArchive.getIndexLoadedPercentage() / 100;
+            i += 5 * CacheArchive.clientScriptCacheArchive.getIndexLoadedPercentage() / 100;
             if (i == 100) {
                 startupStage = 45;
                 currentLoadingText = English.loadedUpdateList;
@@ -132,7 +132,7 @@ public class GameStartup {
                 startupStage = 70;
             }
         } else if (startupStage == 70) {
-            if (CacheArchive.gameDefinitionsCacheArchive.method185()) {
+            if (CacheArchive.gameDefinitionsCacheArchive.areAllGroupsLoaded()) {
                 OverlayDefinition.initializeOverlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 UnderlayDefinition.initializeUnderlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
                 IdentityKit.initializeIdentityKitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
@@ -148,7 +148,7 @@ public class GameStartup {
                 loadingBarPercentage = 60;
                 currentLoadingText = English.loadedConfig;
             } else {
-                currentLoadingText = English.loadingConfig + CacheArchive.gameDefinitionsCacheArchive.method202() + Native.percent;
+                currentLoadingText = English.loadingConfig + CacheArchive.gameDefinitionsCacheArchive.getGroupsLoadedPercentage() + Native.percent;
                 loadingBarPercentage = 60;
             }
         } else if (startupStage == 80) {
@@ -236,7 +236,7 @@ public class GameStartup {
                 loadingBarPercentage = 80;
             }
         } else if (startupStage == 90) {
-            if (CacheArchive.gameTextureCacheArchive.method185()) {
+            if (CacheArchive.gameTextureCacheArchive.areAllGroupsLoaded()) {
                 Class35 class35 = new Class35(CacheArchive.gameTextureCacheArchive, CacheArchive.gameImageCacheArchive, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
                 Rasterizer3D.method703(class35);
                 Rasterizer3D.createPalette(0.8);
@@ -244,7 +244,7 @@ public class GameStartup {
                 loadingBarPercentage = 90;
                 currentLoadingText = English.loadedTextures;
             } else {
-                currentLoadingText = English.loadingTextures + CacheArchive.gameTextureCacheArchive.method202() + Native.percent;
+                currentLoadingText = English.loadingTextures + CacheArchive.gameTextureCacheArchive.getGroupsLoadedPercentage() + Native.percent;
                 loadingBarPercentage = 90;
             }
         } else if (startupStage == 110) {
@@ -255,7 +255,7 @@ public class GameStartup {
             loadingBarPercentage = 94;
         } else if (startupStage == 120) {
             if (CacheArchive.huffmanCacheArchive.loaded(Native.huffman, "")) {
-                HuffmanEncoding huffmanEncoding = new HuffmanEncoding(CacheArchive.huffmanCacheArchive.method170(Native.huffman, ""));
+                HuffmanEncoding huffmanEncoding = new HuffmanEncoding(CacheArchive.huffmanCacheArchive.getFileByName(Native.huffman, ""));
                 MovedStatics.method778(huffmanEncoding);
                 startupStage = 130;
                 currentLoadingText = English.loadedWordpack;
@@ -265,15 +265,15 @@ public class GameStartup {
                 loadingBarPercentage = 96;
             }
         } else if (startupStage == 130) {
-            if (!CacheArchive.gameInterfaceCacheArchive.method185()) {
-                currentLoadingText = English.loadingInterfaces + (4 * CacheArchive.gameInterfaceCacheArchive.method202() / 5) + Native.percent;
+            if (!CacheArchive.gameInterfaceCacheArchive.areAllGroupsLoaded()) {
+                currentLoadingText = English.loadingInterfaces + (4 * CacheArchive.gameInterfaceCacheArchive.getGroupsLoadedPercentage() / 5) + Native.percent;
                 loadingBarPercentage = 100;
-            } else if (CacheArchive.clientScriptCacheArchive.method185()) {
+            } else if (CacheArchive.clientScriptCacheArchive.areAllGroupsLoaded()) {
                 currentLoadingText = English.loadedInterfaces;
                 startupStage = 140;
                 loadingBarPercentage = 100;
             } else {
-                currentLoadingText = English.loadingInterfaces + (80 + CacheArchive.clientScriptCacheArchive.method202() / 5) + Native.percent;
+                currentLoadingText = English.loadingInterfaces + (80 + CacheArchive.clientScriptCacheArchive.getGroupsLoadedPercentage() / 5) + Native.percent;
                 loadingBarPercentage = 100;
             }
         } else {

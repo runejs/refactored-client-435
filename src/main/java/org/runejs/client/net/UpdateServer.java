@@ -295,7 +295,7 @@ public class UpdateServer implements IUpdateServer {
 
                             ioExceptionsCount = 0;
                             crcMismatchesCount = 0;
-                            currentResponse.cacheArchive.method196((currentResponse.key & 0xff0000L) == 16711680L, (int) (currentResponse.key & 0xffffL), highPriorityRequest, js5ResponseData.buffer);
+                            currentResponse.cacheArchive.receiveContent((currentResponse.key & 0xff0000L) == 16711680L, (int) (currentResponse.key & 0xffffL), highPriorityRequest, js5ResponseData.buffer);
                         }
 
                         currentResponse.unlink();
@@ -429,8 +429,8 @@ public class UpdateServer implements IUpdateServer {
     }
 
     @Override
-    public int getLoadedPercentage(int volume, int file) {
-        long l = (long) ((volume << 16) + file);
+    public int getLoadedPercentage(int groupId, int fileId) {
+        long l = (long) ((groupId << 16) + fileId);
         if (currentResponse == null || currentResponse.key != l)
             return 0;
         return 1 + js5ResponseData.currentPosition * 99 / (js5ResponseData.buffer.length + -currentResponse.padding);

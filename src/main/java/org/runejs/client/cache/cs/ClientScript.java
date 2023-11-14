@@ -48,7 +48,7 @@ public class ClientScript extends CachedNode {
             return clientScript;
         }
 
-        Buffer buffer = new Buffer(CacheArchive.clientScriptCacheArchive.method170(arg1 + Native.comma + arg0, Native.emptyString));
+        Buffer buffer = new Buffer(CacheArchive.clientScriptCacheArchive.getFileByName(arg1 + Native.comma + arg0, Native.emptyString));
         clientScript = new ClientScript();
         buffer.currentPosition = buffer.buffer.length - 12;
         int opcodeCount = buffer.getIntBE();

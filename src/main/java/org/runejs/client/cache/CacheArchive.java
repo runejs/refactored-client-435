@@ -144,16 +144,19 @@ public class CacheArchive {
         }
     }
 
-    public int getPercentLoaded() {
-        if(finishedReceiving)
+    public int getIndexLoadedPercentage() {
+        if(finishedReceiving) {
             return 100;
-        if(groupContentCache != null)
-            return 99;
-        int i = Game.updateServer.getLoadedPercentage(255, cacheIndexId);
-        if(i >= 100)
-            i = 99;
-        return i;
+        }
 
+        if(groupContentCache != null) {
+            return 99;
+        }
+
+        return Math.min(
+                99,
+                Game.updateServer.getLoadedPercentage(255, cacheIndexId)
+        );
     }
 
     public void attemptDecodeData(boolean highPriority, byte[] data, int key, CacheIndex cacheIndex) {
@@ -212,10 +215,11 @@ public class CacheArchive {
     }
 
     public void requestGroup(int groupId) {
-        if(dataIndex != null && hasValidContents != null && hasValidContents[groupId])
+        if(dataIndex != null && hasValidContents != null && hasValidContents[groupId]) {
             prioritiseDecodeGroup(dataIndex, groupId);
-        else
+        } else {
             Game.updateServer.enqueueFileRequest(true, this, cacheIndexId, groupId, (byte) 2, groupChecksums[groupId]);
+        }
     }
 
     /**
@@ -246,23 +250,27 @@ public class CacheArchive {
         }
     }
 
-    public void method196(boolean arg0, int groupId, boolean highPriority, byte[] data) {
-        if(arg0) {
+    public void receiveContent(boolean isIndex, int groupId, boolean highPriority, byte[] data) {
+        if(isIndex) {
             if(finishedReceiving) {
                 throw new RuntimeException();
             }
+
             if(metaIndex != null) {
                 OnDemandRequest.createByteArrayOnDemandRequest(data, metaIndex, cacheIndexId);
             }
+
             decodeIndex(data);
             postDecodeIndex();
         } else {
             data[data.length - 2] = (byte) (groupVersions[groupId] >> 8);
             data[data.length - 1] = (byte) groupVersions[groupId];
+
             if(dataIndex != null) {
                 OnDemandRequest.createByteArrayOnDemandRequest(data, dataIndex, groupId);
                 hasValidContents[groupId] = true;
             }
+
             if(highPriority) {
                 groupContentCache[groupId] = data;
             }
@@ -278,35 +286,30 @@ public class CacheArchive {
         }
     }
 
-    public int method201(int arg0) {
-        if(groupContentCache[arg0] != null)
+    public int getGroupLoadedPercentage(int groupId) {
+        if(groupContentCache[groupId] != null)
             return 100;
-        if(hasValidContents[arg0])
+        if(hasValidContents[groupId])
             return 100;
-        return Game.updateServer.getLoadedPercentage(cacheIndexId, arg0);
+        return Game.updateServer.getLoadedPercentage(cacheIndexId, groupId);
     }
 
-    public int method202() {
-        int i = 0;
-        int i_3_ = 0;
-        for(int i_4_ = 0; i_4_ < groupContentCache.length; i_4_++) {
-            if(groupSizes[i_4_] > 0) {
-                i += 100;
-                i_3_ += method201(i_4_);
+    public int getGroupsLoadedPercentage() {
+        int totalAvailablePercentage = 0;
+        int totalPercentage = 0;
+
+        for(int i = 0; i < groupContentCache.length; i++) {
+            if(groupSizes[i] > 0) {
+                totalAvailablePercentage += 100;
+                totalPercentage += getGroupLoadedPercentage(i);
             }
         }
-        if(i == 0)
+
+        if(totalAvailablePercentage == 0) {
             return 100;
-        return i_3_ * 100 / i;
-    }
+        }
 
-    public byte[] method170(String groupName, String fileName) {
-        groupName = groupName.toLowerCase();
-        fileName = fileName.toLowerCase();
-        int groupId = groupNames.getIdByName(RSString.stringHash(groupName));
-        int fileId = fileNames[groupId].getIdByName(RSString.stringHash(fileName));
-
-        return getFile(groupId, fileId);
+        return totalPercentage * 100 / totalAvailablePercentage;
     }
 
     /**
@@ -331,6 +334,15 @@ public class CacheArchive {
         if(fileContentCache[fileId].length == 1)
             return getFile(fileId, 0);
         throw new RuntimeException();
+    }
+
+    public byte[] getFileByName(String groupName, String fileName) {
+        groupName = groupName.toLowerCase();
+        fileName = fileName.toLowerCase();
+        int groupId = groupNames.getIdByName(RSString.stringHash(groupName));
+        int fileId = fileNames[groupId].getIdByName(RSString.stringHash(fileName));
+
+        return getFile(groupId, fileId);
     }
 
     public boolean loaded(int groupId, int fileId) {
@@ -567,6 +579,16 @@ public class CacheArchive {
         return data;
     }
 
+    /**
+     * Gets the contents for a single file.
+     *
+     * If the file contents are not immediately available, this method
+     * will attempt to decode the file from the group cache.
+     *
+     * @param groupId
+     * @param fileId
+     * @return
+     */
     public byte[] getFileContents(int groupId, int fileId) {
         if(groupId < 0 || groupId >= fileContentCache.length || fileContentCache[groupId] == null || fileId < 0 || fileId >= fileContentCache[groupId].length)
             return null;
@@ -605,7 +627,7 @@ public class CacheArchive {
         return groupNames.getIdByName(RSString.stringHash(name));
     }
 
-    public boolean method185() {
+    public boolean areAllGroupsLoaded() {
         boolean bool = true;
         for(int i = 0; i < groupIds.length; i++) {
             int groupId = groupIds[i];
@@ -632,10 +654,10 @@ public class CacheArchive {
     }
 
     public void clearFileContentCache() {
-        for(int i = 0; i < fileContentCache.length; i++) {
-            if(fileContentCache[i] != null) {
-                for(int i_48_ = 0; i_48_ < fileContentCache[i].length; i_48_++)
-                    fileContentCache[i][i_48_] = null;
+        for(int group = 0; group < fileContentCache.length; group++) {
+            if(fileContentCache[group] != null) {
+                for(int file = 0; file < fileContentCache[group].length; file++)
+                    fileContentCache[group][file] = null;
             }
         }
     }

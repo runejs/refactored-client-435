@@ -432,7 +432,7 @@ public class LoginScreen {
             Rasterizer.resetPixels();
             muteButton = MovedStatics.createGraphicsBuffer(42, 42, arg0);
             Rasterizer.resetPixels();
-            byte[] is = huffmanCacheArchive.method170(Native.titleImage, "");
+            byte[] is = huffmanCacheArchive.getFileByName(Native.titleImage, "");
             ImageRGB titleImg = new ImageRGB(is, arg0);
             flameLeftBackground.prepareRasterizer();
             titleImg.drawInverse(0, 0);
