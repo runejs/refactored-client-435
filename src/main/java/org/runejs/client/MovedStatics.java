@@ -162,7 +162,6 @@ public class MovedStatics {
     public static int[] directions = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
     public static int menuScreenArea;
     public static ProducingGraphicsBuffer framePieceTop;
-    public static int[] anIntArray3253;
     public static TypeFace fontNormal;
     /**
      * The image used for the highlighted (selected) tab button,

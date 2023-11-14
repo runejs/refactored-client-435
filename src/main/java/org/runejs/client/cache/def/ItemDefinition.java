@@ -17,6 +17,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
     public static DefinitionLoader<ItemDefinition> loader = new ItemDefinitionLoader();
 
     public static int count;
+    public static int[] lineOffsets;
     private static CacheArchive definitionArchive;
     private static NodeCache definitionCache = new NodeCache(64);
     private static NodeCache modelCache = new NodeCache(50);
@@ -164,7 +165,7 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
         int i_9_ = Rasterizer3D.viewportRx;
         ImageRGB rendered = new ImageRGB(32, 32);
         Rasterizer.prepare(rendered.pixels, 32, 32);
-        MovedStatics.anIntArray3253 = Rasterizer3D.setLineOffsets(MovedStatics.anIntArray3253);
+        ItemDefinition.lineOffsets = Rasterizer3D.setLineOffsets(ItemDefinition.lineOffsets);
         Rasterizer.drawFilledRectangle(0, 0, 32, 32, 0);
         int i_11_ = definition.zoom2d;
         if(backColour == -1)
