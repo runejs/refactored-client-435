@@ -66,7 +66,7 @@ public class RSString {
     }
 
     public int method51(int arg0, int arg1, byte[] buffer, int arg3) {
-        MovedStatics.method278(chars, arg0, buffer, arg3, arg1 - arg0);
+        MovedStatics.copyBytes(chars, arg0, buffer, arg3, arg1 - arg0);
         return -arg0 + arg1;
     }
 
@@ -261,7 +261,7 @@ public class RSString {
         RSString class1 = new RSString();
         class1.chars = new byte[arg2 - arg1];
         class1.length = -arg1 + arg2;
-        MovedStatics.method278(chars, arg1, class1.chars, 0, class1.length);
+        MovedStatics.copyBytes(chars, arg1, class1.chars, 0, class1.length);
         return class1;
     }
 
@@ -277,10 +277,10 @@ public class RSString {
                 /* empty */
             }
             byte[] is = new byte[i];
-            MovedStatics.method278(chars, 0, is, 0, length);
+            MovedStatics.copyBytes(chars, 0, is, 0, length);
             chars = is;
         }
-        MovedStatics.method278(arg0.chars, 0, chars, arg2, arg0.length);
+        MovedStatics.copyBytes(arg0.chars, 0, chars, arg2, arg0.length);
         if(length < arg2 + arg0.length)
             length = arg0.length + arg2;
         return this;
@@ -297,10 +297,10 @@ public class RSString {
                 /* empty */
             }
             byte[] is = new byte[i];
-            MovedStatics.method278(sourceba, 0, is, 0, arg0.length());
+            MovedStatics.copyBytes(sourceba, 0, is, 0, arg0.length());
             sourceba = is;
         }
-        MovedStatics.method278(arg0ba, 0, sourceba, arg2, arg0.length());
+        MovedStatics.copyBytes(arg0ba, 0, sourceba, arg2, arg0.length());
         return new String(sourceba);
     }
 
@@ -310,7 +310,7 @@ public class RSString {
         RSString class1 = new RSString();
         class1.chars = new byte[length + 1];
         class1.length = length + 1;
-        MovedStatics.method278(chars, 0, class1.chars, 0, length);
+        MovedStatics.copyBytes(chars, 0, class1.chars, 0, length);
         class1.chars[length] = (byte) arg0;
         return class1;
     }
@@ -326,10 +326,10 @@ public class RSString {
                 i += i;
             }
             byte[] newChars = new byte[i];
-            MovedStatics.method278(chars, 0, newChars, 0, length);
+            MovedStatics.copyBytes(chars, 0, newChars, 0, length);
             chars = newChars;
         }
-        MovedStatics.method278(arg0.chars, 0, chars, length, arg0.length);
+        MovedStatics.copyBytes(arg0.chars, 0, chars, length, arg0.length);
         length += arg0.length;
         return this;
     }
@@ -374,7 +374,7 @@ public class RSString {
         anInt1696 = 0;
         if(length != chars.length) {
             byte[] is = new byte[length];
-            MovedStatics.method278(chars, 0, is, 0, length);
+            MovedStatics.copyBytes(chars, 0, is, 0, length);
             chars = is;
         }
         return this;
@@ -392,7 +392,7 @@ public class RSString {
                 /* empty */
             }
             byte[] is = new byte[i];
-            MovedStatics.method278(chars, 0, is, 0, length);
+            MovedStatics.copyBytes(chars, 0, is, 0, length);
             chars = is;
         }
         chars[length++] = (byte) arg1;
@@ -414,7 +414,7 @@ public class RSString {
 
     public byte[] method80() {
         byte[] is = new byte[length];
-        MovedStatics.method278(chars, 0, is, 0, length);
+        MovedStatics.copyBytes(chars, 0, is, 0, length);
         return is;
     }
 

@@ -8,31 +8,31 @@ import java.io.IOException;
 
 public class CacheFileChannel {
 
-    public long readIndex;
+    public long readPointer;
     public long writeIndex;
-    public byte[] aByteArray1583;
-    public int anInt1589;
-    public byte[] aByteArray1592;
-    public long aLong1593;
-    public int anInt1595 = 0;
+    public byte[] readPayload;
+    public int readPayloadLength;
+    public byte[] writePayload;
+    public long writePointer;
+    public int writePayloadLength = 0;
     public long aLong1596;
-    public long dataRead;
+    public long accessFilePointer;
     public long size;
     public SizedAccessFile accessFile;
 
     public CacheFileChannel(SizedAccessFile accessFile, int bufferSize) throws IOException {
-        aLong1593 = -1L;
+        writePointer = -1L;
         aLong1596 = -1L;
         this.accessFile = accessFile;
         size = writeIndex = accessFile.length();
-        aByteArray1592 = new byte[0];
-        aByteArray1583 = new byte[bufferSize];
-        readIndex = 0L;
+        writePayload = new byte[0];
+        readPayload = new byte[bufferSize];
+        readPointer = 0L;
     }
 
-    public void setReadIndex(long index) {
-        if(index >= 0) {
-            readIndex = index;
+    public void seek(long pointer) {
+        if(pointer >= 0) {
+            this.readPointer = pointer;
         }
     }
 
@@ -40,142 +40,142 @@ public class CacheFileChannel {
         return size;
     }
 
-    public void method1033(int arg0, int arg2, byte[] arg3) throws IOException {
+    public void write(byte[] b, int offset, int length) throws IOException {
         try {
-            if(size < (long) arg2 + readIndex) {
-                size = (long) arg2 + readIndex;
+            if(size < (long) length + readPointer) {
+                size = (long) length + readPointer;
             }
 
-            if(aLong1593 != -1 && (readIndex < aLong1593 || aLong1593 + (long) anInt1595 < readIndex)) {
+            if(writePointer != -1 && (readPointer < writePointer || writePointer + (long) writePayloadLength < readPointer)) {
                 save();
             }
 
-            if(aLong1593 != -1L && aLong1593 + (long) aByteArray1592.length < (long) arg2 + readIndex) {
-                int i = (int) (aLong1593 - (readIndex - (long) aByteArray1592.length));
-                arg2 -= i;
-                MovedStatics.method278(arg3, arg0, aByteArray1592, (int) (-aLong1593 + readIndex), i);
-                readIndex += (long) i;
-                anInt1595 = aByteArray1592.length;
-                arg0 += i;
+            if(writePointer != -1L && writePointer + (long) writePayload.length < (long) length + readPointer) {
+                int i = (int) (writePointer - (readPointer - (long) writePayload.length));
+                length -= i;
+                MovedStatics.copyBytes(b, offset, writePayload, (int) (readPointer - writePointer), i);
+                readPointer += (long) i;
+                writePayloadLength = writePayload.length;
+                offset += i;
                 save();
             }
 
-            if(arg2 > aByteArray1592.length) {
-                if(dataRead != readIndex) {
-                    accessFile.seek(readIndex);
-                    dataRead = readIndex;
+            if(length > writePayload.length) {
+                if(accessFilePointer != readPointer) {
+                    accessFile.seek(readPointer);
+                    accessFilePointer = readPointer;
                 }
-                accessFile.write(arg3, arg0, arg2);
-                dataRead += (long) arg2;
-                if(dataRead > writeIndex)
-                    writeIndex = dataRead;
+                accessFile.write(b, offset, length);
+                accessFilePointer += (long) length;
+                if(accessFilePointer > writeIndex)
+                    writeIndex = accessFilePointer;
                 long l = -1L;
                 long l_0_ = -1L;
-                if(readIndex >= aLong1596 && readIndex < (long) anInt1589 + aLong1596)
-                    l_0_ = readIndex;
-                else if(readIndex <= aLong1596 && aLong1596 < readIndex + (long) arg2)
+                if(readPointer >= aLong1596 && readPointer < (long) readPayloadLength + aLong1596)
+                    l_0_ = readPointer;
+                else if(readPointer <= aLong1596 && aLong1596 < readPointer + (long) length)
                     l_0_ = aLong1596;
-                if(aLong1596 < readIndex + (long) arg2 && aLong1596 + (long) anInt1589 >= (long) arg2 + readIndex)
-                    l = (long) arg2 + readIndex;
-                else if(aLong1596 + (long) anInt1589 > readIndex && (long) arg2 + readIndex >= (long) anInt1589 + aLong1596)
-                    l = (long) anInt1589 + aLong1596;
+                if(aLong1596 < readPointer + (long) length && aLong1596 + (long) readPayloadLength >= (long) length + readPointer)
+                    l = (long) length + readPointer;
+                else if(aLong1596 + (long) readPayloadLength > readPointer && (long) length + readPointer >= (long) readPayloadLength + aLong1596)
+                    l = (long) readPayloadLength + aLong1596;
                 if(l_0_ > -1 && l_0_ < l) {
                     int i = (int) (l - l_0_);
-                    MovedStatics.method278(arg3, (int) ((long) arg0 + l_0_ - readIndex), aByteArray1583, (int) (l_0_ + -aLong1596), i);
+                    MovedStatics.copyBytes(b, (int) ((long) offset + l_0_ - readPointer), readPayload, (int) (l_0_ + -aLong1596), i);
                 }
-                readIndex += (long) arg2;
-            } else if(arg2 > 0) {
-                if(aLong1593 == -1)
-                    aLong1593 = readIndex;
-                MovedStatics.method278(arg3, arg0, aByteArray1592, (int) (readIndex + -aLong1593), arg2);
-                readIndex += (long) arg2;
-                if((long) anInt1595 < -aLong1593 + readIndex)
-                    anInt1595 = (int) (-aLong1593 + readIndex);
+                readPointer += (long) length;
+            } else if(length > 0) {
+                if(writePointer == -1)
+                    writePointer = readPointer;
+                MovedStatics.copyBytes(b, offset, writePayload, (int) (readPointer - writePointer), length);
+                readPointer += (long) length;
+                if((long) writePayloadLength < (readPointer - writePointer))
+                    writePayloadLength = (int) (readPointer - writePointer);
             }
         } catch(IOException ioexception) {
-            dataRead = -1L;
+            accessFilePointer = -1L;
             throw ioexception;
         }
     }
 
-    public void method1035(byte[] b, int length, int offset) throws IOException {
+    public void read(byte[] b, int offset, int length) throws IOException {
         try {
             if(offset + length > b.length)
                 throw new ArrayIndexOutOfBoundsException(length + offset - b.length);
-            if(aLong1593 != -1 && aLong1593 <= readIndex && (long) length + readIndex <= (long) anInt1595 + aLong1593) {
-                MovedStatics.method278(aByteArray1592, (int) (readIndex - aLong1593), b, offset, length);
-                readIndex += (long) length;
+            if(writePointer != -1 && writePointer <= readPointer && (long) length + readPointer <= (long) writePayloadLength + writePointer) {
+                MovedStatics.copyBytes(writePayload, (int) (readPointer - writePointer), b, offset, length);
+                readPointer += (long) length;
                 return;
             }
             int i = length;
-            long l = readIndex;
+            long l = readPointer;
             int i_2_ = offset;
-            if(readIndex >= aLong1596 && (long) anInt1589 + aLong1596 > readIndex) {
-                int i_3_ = (int) ((long) anInt1589 + -readIndex + aLong1596);
+            if(readPointer >= aLong1596 && (long) readPayloadLength + aLong1596 > readPointer) {
+                int i_3_ = (int) ((long) readPayloadLength + -readPointer + aLong1596);
                 if(i_3_ > length)
                     i_3_ = length;
-                MovedStatics.method278(aByteArray1583, (int) (-aLong1596 + readIndex), b, offset, i_3_);
+                MovedStatics.copyBytes(readPayload, (int) (-aLong1596 + readPointer), b, offset, i_3_);
                 offset += i_3_;
-                readIndex += (long) i_3_;
+                readPointer += (long) i_3_;
                 length -= i_3_;
             }
-            if(length <= aByteArray1583.length) {
+            if(length <= readPayload.length) {
                 if(length > 0) {
                     int i_4_ = length;
                     readRemaining();
-                    if(i_4_ > anInt1589)
-                        i_4_ = anInt1589;
-                    MovedStatics.method278(aByteArray1583, 0, b, offset, i_4_);
-                    readIndex += (long) i_4_;
+                    if(i_4_ > readPayloadLength)
+                        i_4_ = readPayloadLength;
+                    MovedStatics.copyBytes(readPayload, 0, b, offset, i_4_);
+                    readPointer += (long) i_4_;
                     offset += i_4_;
                     length -= i_4_;
                 }
             } else {
-                accessFile.seek(readIndex);
-                dataRead = readIndex;
+                accessFile.seek(readPointer);
+                accessFilePointer = readPointer;
                 int i_5_;
                 for(/**/; length > 0; length -= i_5_) {
                     i_5_ = accessFile.read(b, length, offset);
                     if(i_5_ == -1)
                         break;
-                    readIndex += (long) i_5_;
-                    dataRead += (long) i_5_;
+                    readPointer += (long) i_5_;
+                    accessFilePointer += (long) i_5_;
                     offset += i_5_;
                 }
             }
-            if(aLong1593 != -1L) {
-                if(aLong1593 > readIndex && length > 0) {
-                    int i_6_ = (int) (-readIndex + aLong1593) + offset;
+            if(writePointer != -1L) {
+                if(writePointer > readPointer && length > 0) {
+                    int i_6_ = (int) (-readPointer + writePointer) + offset;
                     if(i_6_ > offset + length)
                         i_6_ = offset + length;
                     while(offset < i_6_) {
                         length--;
                         b[offset++] = (byte) 0;
-                        readIndex++;
+                        readPointer++;
                     }
                 }
                 long l_7_ = -1L;
-                if(l < aLong1593 + (long) anInt1595 && aLong1593 + (long) anInt1595 <= (long) i + l)
-                    l_7_ = (long) anInt1595 + aLong1593;
-                else if(l + (long) i > aLong1593 && l + (long) i <= (long) anInt1595 + aLong1593)
+                if(l < writePointer + (long) writePayloadLength && writePointer + (long) writePayloadLength <= (long) i + l)
+                    l_7_ = (long) writePayloadLength + writePointer;
+                else if(l + (long) i > writePointer && l + (long) i <= (long) writePayloadLength + writePointer)
                     l_7_ = (long) i + l;
                 long l_8_ = -1L;
-                if(aLong1593 < l || aLong1593 >= (long) i + l) {
-                    if(aLong1593 <= l && l < aLong1593 + (long) anInt1595)
+                if(writePointer < l || writePointer >= (long) i + l) {
+                    if(writePointer <= l && l < writePointer + (long) writePayloadLength)
                         l_8_ = l;
                 } else
-                    l_8_ = aLong1593;
+                    l_8_ = writePointer;
                 if(l_8_ > -1L && l_7_ > l_8_) {
                     int i_9_ = (int) (-l_8_ + l_7_);
-                    MovedStatics.method278(aByteArray1592, (int) (l_8_ - aLong1593), b, (int) (-l + l_8_) + i_2_, i_9_);
-                    if(readIndex < l_7_) {
-                        length -= l_7_ - readIndex;
-                        readIndex = l_7_;
+                    MovedStatics.copyBytes(writePayload, (int) (l_8_ - writePointer), b, (int) (-l + l_8_) + i_2_, i_9_);
+                    if(readPointer < l_7_) {
+                        length -= l_7_ - readPointer;
+                        readPointer = l_7_;
                     }
                 }
             }
         } catch(IOException ioexception) {
-            dataRead = -1L;
+            accessFilePointer = -1L;
             throw ioexception;
         }
 
@@ -190,61 +190,61 @@ public class CacheFileChannel {
     }
 
     public void readRemaining() throws IOException {
-        anInt1589 = 0;
-        if(readIndex != dataRead) {
-            accessFile.seek(readIndex);
-            dataRead = readIndex;
+        readPayloadLength = 0;
+        if(readPointer != accessFilePointer) {
+            accessFile.seek(readPointer);
+            accessFilePointer = readPointer;
         }
-        aLong1596 = readIndex;
+        aLong1596 = readPointer;
         int read;
-        for(/**/; anInt1589 < aByteArray1583.length; anInt1589 += read) {
-            read = accessFile.read(aByteArray1583, aByteArray1583.length - anInt1589, anInt1589);
+        for(/**/; readPayloadLength < readPayload.length; readPayloadLength += read) {
+            read = accessFile.read(readPayload, readPayload.length - readPayloadLength, readPayloadLength);
             if(read == -1)
                 break;
-            dataRead += read;
+            accessFilePointer += read;
         }
     }
 
     public void save() throws IOException {
-        if(aLong1593 != -1) {
-            if(aLong1593 != dataRead) {
-                accessFile.seek(aLong1593);
-                dataRead = aLong1593;
+        if(writePointer != -1) {
+            if(writePointer != accessFilePointer) {
+                accessFile.seek(writePointer);
+                accessFilePointer = writePointer;
             }
 
-            accessFile.write(aByteArray1592, 0, anInt1595);
-            dataRead += anInt1595;
+            accessFile.write(writePayload, 0, writePayloadLength);
+            accessFilePointer += writePayloadLength;
 
-            if(dataRead > writeIndex) {
-                writeIndex = dataRead;
+            if(accessFilePointer > writeIndex) {
+                writeIndex = accessFilePointer;
             }
 
             long l = -1L;
 
-            if(aLong1596 > aLong1593 || aLong1596 + (long) anInt1589 <= aLong1593) {
-                if(aLong1593 <= aLong1596 && aLong1593 + (long) anInt1595 > aLong1596)
+            if(aLong1596 > writePointer || aLong1596 + (long) readPayloadLength <= writePointer) {
+                if(writePointer <= aLong1596 && writePointer + (long) writePayloadLength > aLong1596)
                     l = aLong1596;
             } else {
-                l = aLong1593;
+                l = writePointer;
             }
 
             long l_10_ = -1L;
 
-            if((long) anInt1595 + aLong1593 <= aLong1596 || (long) anInt1589 + aLong1596 < aLong1593 + (long) anInt1595) {
-                if(aLong1593 < (long) anInt1589 + aLong1596 && aLong1596 + (long) anInt1589 <= (long) anInt1595 + aLong1593) {
-                    l_10_ = (long) anInt1589 + aLong1596;
+            if((long) writePayloadLength + writePointer <= aLong1596 || (long) readPayloadLength + aLong1596 < writePointer + (long) writePayloadLength) {
+                if(writePointer < (long) readPayloadLength + aLong1596 && aLong1596 + (long) readPayloadLength <= (long) writePayloadLength + writePointer) {
+                    l_10_ = (long) readPayloadLength + aLong1596;
                 }
             } else {
-                l_10_ = aLong1593 + (long) anInt1595;
+                l_10_ = writePointer + (long) writePayloadLength;
             }
 
             if(l > -1L && l < l_10_) {
                 int i = (int) (-l + l_10_);
-                MovedStatics.method278(aByteArray1592, (int) (-aLong1593 + l), aByteArray1583, (int) (l - aLong1596), i);
+                MovedStatics.copyBytes(writePayload, (int) (l - writePointer), readPayload, (int) (l - aLong1596), i);
             }
 
-            anInt1595 = 0;
-            aLong1593 = -1L;
+            writePayloadLength = 0;
+            writePointer = -1L;
         }
     }
 }

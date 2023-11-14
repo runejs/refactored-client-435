@@ -65,13 +65,13 @@ public class OnDemandRequestProcessor implements Runnable {
                         anInt1987--;
                     }
                 } else {
-                    if(onDemandRequest.type == 0) {
-                        onDemandRequest.cacheIndex.put(onDemandRequest.data, onDemandRequest.data.length, (int) onDemandRequest.key);
+                    if(onDemandRequest.type == 0) { // byte array data
+                        onDemandRequest.cacheIndex.write(onDemandRequest.data, (int) onDemandRequest.key, onDemandRequest.data.length);
                         synchronized(aLinkedList_53) {
                             onDemandRequest.unlink();
                         }
-                    } else if(onDemandRequest.type == 1) {
-                        onDemandRequest.data = onDemandRequest.cacheIndex.get((int) onDemandRequest.key);
+                    } else if(onDemandRequest.type == 1) { // CacheArchive data
+                        onDemandRequest.data = onDemandRequest.cacheIndex.read((int) onDemandRequest.key);
                         synchronized(aLinkedList_53) {
                             aLinkedList_2604.addLast(onDemandRequest);
                         }

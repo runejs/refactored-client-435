@@ -2398,47 +2398,47 @@ public class MovedStatics {
         }
     }
 
-    public static void method278(byte[] arg0, int arg1, byte[] buffer, int arg3, int arg4) {
-        if(arg0 == buffer) {
-            if(arg1 == arg3)
+    public static void copyBytes(byte[] source, int sourceStart, byte[] destination, int destinationStart, int numBytes) {
+        if(source == destination) {
+            if(sourceStart == destinationStart)
                 return;
-            if(arg3 > arg1 && arg3 < arg1 + arg4) {
-                arg4--;
-                arg1 += arg4;
-                arg3 += arg4;
-                arg4 = arg1 - arg4;
-                arg4 += 7;
-                while(arg1 >= arg4) {
-                    buffer[arg3--] = arg0[arg1--];
-                    buffer[arg3--] = arg0[arg1--];
-                    buffer[arg3--] = arg0[arg1--];
-                    buffer[arg3--] = arg0[arg1--];
-                    buffer[arg3--] = arg0[arg1--];
-                    buffer[arg3--] = arg0[arg1--];
-                    buffer[arg3--] = arg0[arg1--];
-                    buffer[arg3--] = arg0[arg1--];
+            if(destinationStart > sourceStart && destinationStart < sourceStart + numBytes) {
+                numBytes--;
+                sourceStart += numBytes;
+                destinationStart += numBytes;
+                numBytes = sourceStart - numBytes;
+                numBytes += 7;
+                while(sourceStart >= numBytes) {
+                    destination[destinationStart--] = source[sourceStart--];
+                    destination[destinationStart--] = source[sourceStart--];
+                    destination[destinationStart--] = source[sourceStart--];
+                    destination[destinationStart--] = source[sourceStart--];
+                    destination[destinationStart--] = source[sourceStart--];
+                    destination[destinationStart--] = source[sourceStart--];
+                    destination[destinationStart--] = source[sourceStart--];
+                    destination[destinationStart--] = source[sourceStart--];
                 }
-                arg4 -= 7;
-                while(arg1 >= arg4)
-                    buffer[arg3--] = arg0[arg1--];
+                numBytes -= 7;
+                while(sourceStart >= numBytes)
+                    destination[destinationStart--] = source[sourceStart--];
                 return;
             }
         }
-        arg4 += arg1;
-        arg4 -= 7;
-        while(arg1 < arg4) {
-            buffer[arg3++] = arg0[arg1++];
-            buffer[arg3++] = arg0[arg1++];
-            buffer[arg3++] = arg0[arg1++];
-            buffer[arg3++] = arg0[arg1++];
-            buffer[arg3++] = arg0[arg1++];
-            buffer[arg3++] = arg0[arg1++];
-            buffer[arg3++] = arg0[arg1++];
-            buffer[arg3++] = arg0[arg1++];
+        numBytes += sourceStart;
+        numBytes -= 7;
+        while(sourceStart < numBytes) {
+            destination[destinationStart++] = source[sourceStart++];
+            destination[destinationStart++] = source[sourceStart++];
+            destination[destinationStart++] = source[sourceStart++];
+            destination[destinationStart++] = source[sourceStart++];
+            destination[destinationStart++] = source[sourceStart++];
+            destination[destinationStart++] = source[sourceStart++];
+            destination[destinationStart++] = source[sourceStart++];
+            destination[destinationStart++] = source[sourceStart++];
         }
-        arg4 += 7;
-        while(arg1 < arg4)
-            buffer[arg3++] = arg0[arg1++];
+        numBytes += 7;
+        while(sourceStart < numBytes)
+            destination[destinationStart++] = source[sourceStart++];
     }
 
     public static boolean menuHasAddFriend(int arg1) {
