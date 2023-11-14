@@ -233,29 +233,29 @@ public class ImageRGB extends Rasterizer {
         }
     }
 
-    public static boolean spriteExists(int arg0, int arg1, CacheArchive cacheArchive) {
-        byte[] is = cacheArchive.getFile(arg1, arg0);
+    public static boolean spriteExists(int childId, int fileId, CacheArchive cacheArchive) {
+        byte[] is = cacheArchive.getFile(fileId, childId);
         if(is == null)
             return false;
-        MovedStatics.method184(is, 0);
+        MovedStatics.decodeIndexedImage(is);
         return true;
     }
 
     public static ImageRGB[] method319() {
-	    ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[MovedStatics.anInt2581];
-	    for(int i = 0; i < MovedStatics.anInt2581; i++) {
+	    ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[MovedStatics.childCount];
+	    for(int i = 0; i < MovedStatics.childCount; i++) {
 	        ImageRGB class40_sub5_sub14_sub4 = class40_sub5_sub14_sub4s[i] = new ImageRGB();
 	        class40_sub5_sub14_sub4.maxWidth = MovedStatics.imageMaxWidth;
 	        class40_sub5_sub14_sub4.maxHeight = MovedStatics.imageMaxHeight;
-	        class40_sub5_sub14_sub4.offsetX = MovedStatics.anIntArray1347[i];
-	        class40_sub5_sub14_sub4.offsetY = MovedStatics.anIntArray3111[i];
-	        class40_sub5_sub14_sub4.imageWidth = MovedStatics.anIntArray456[i];
-	        class40_sub5_sub14_sub4.imageHeight = MovedStatics.anIntArray3312[i];
+	        class40_sub5_sub14_sub4.offsetX = MovedStatics.spriteOffsetX[i];
+	        class40_sub5_sub14_sub4.offsetY = MovedStatics.spriteOffsetY[i];
+	        class40_sub5_sub14_sub4.imageWidth = MovedStatics.spriteWidth[i];
+	        class40_sub5_sub14_sub4.imageHeight = MovedStatics.spriteHeight[i];
 	        byte[] is = MovedStatics.aByteArrayArray1370[i];
 	        int i_4_ = class40_sub5_sub14_sub4.imageHeight * class40_sub5_sub14_sub4.imageWidth;
 	        class40_sub5_sub14_sub4.pixels = new int[i_4_];
 	        for(int i_5_ = 0; i_5_ < i_4_; i_5_++)
-	            class40_sub5_sub14_sub4.pixels[i_5_] = MovedStatics.anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
+	            class40_sub5_sub14_sub4.pixels[i_5_] = MovedStatics.spritePalette[BitUtils.bitWiseAND(255, is[i_5_])];
 	    }
 	    MovedStatics.method569();
 	    return class40_sub5_sub14_sub4s;

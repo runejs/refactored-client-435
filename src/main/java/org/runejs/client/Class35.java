@@ -65,7 +65,7 @@ public class Class35 implements Interface3 {
 
     public int getAverageTextureColour(int arg1) {
         if(textures[arg1] != null)
-            return textures[arg1].anInt2137;
+            return textures[arg1].averageColour;
         return 0;
     }
 

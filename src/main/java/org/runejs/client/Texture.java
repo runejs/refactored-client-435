@@ -20,7 +20,7 @@ public class Texture extends Node {
      * 4: right
      */
     public int animateDirection;
-    public int anInt2137;
+    public int averageColour;
     public int[] anIntArray2138;
     public int[] pixels;
     public int[] anIntArray2140;
@@ -31,27 +31,31 @@ public class Texture extends Node {
     public boolean aBoolean2146 = false;
 
     public Texture(Buffer textureBuffer) {
-        anInt2137 = textureBuffer.getUnsignedShortBE();
+        averageColour = textureBuffer.getUnsignedShortBE();
         opaque = textureBuffer.getUnsignedByte() == 1;
-        int i = textureBuffer.getUnsignedByte();
-        if(i < 1 || i > 4)
+
+        int spriteCount = textureBuffer.getUnsignedByte();
+        if(spriteCount < 1 || spriteCount > 4)
             throw new RuntimeException();
-        spriteIds = new int[i];
-        for(int i_30_ = 0; i_30_ < i; i_30_++)
-            spriteIds[i_30_] = textureBuffer.getUnsignedShortBE();
-        if(i > 1) {
-            anIntArray2140 = new int[i - 1];
-            for(int i_31_ = 0; i_31_ < i - 1; i_31_++)
-                anIntArray2140[i_31_] = textureBuffer.getUnsignedByte();
+
+        spriteIds = new int[spriteCount];
+        for(int i = 0; i < spriteCount; i++)
+            spriteIds[i] = textureBuffer.getUnsignedShortBE();
+
+        if(spriteCount > 1) {
+            anIntArray2140 = new int[spriteCount - 1];
+            for(int i = 0; i < spriteCount - 1; i++)
+                anIntArray2140[i] = textureBuffer.getUnsignedByte();
+
+            anIntArray2138 = new int[spriteCount - 1];
+            for(int i = 0; i < spriteCount - 1; i++)
+                anIntArray2138[i] = textureBuffer.getUnsignedByte();
         }
-        if(i > 1) {
-            anIntArray2138 = new int[i - 1];
-            for(int i_32_ = 0; i_32_ < i - 1; i_32_++)
-                anIntArray2138[i_32_] = textureBuffer.getUnsignedByte();
-        }
-        colors = new int[i];
-        for(int i_33_ = 0; i_33_ < i; i_33_++)
-            colors[i_33_] = textureBuffer.getIntBE();
+
+        colors = new int[spriteCount];
+        for(int i = 0; i < spriteCount; i++)
+            colors[i] = textureBuffer.getIntBE();
+
         animateDirection = textureBuffer.getUnsignedByte();
         animateSpeed = textureBuffer.getUnsignedByte();
         pixels = null;

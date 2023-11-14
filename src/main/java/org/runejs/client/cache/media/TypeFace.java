@@ -95,7 +95,7 @@ public class TypeFace extends Rasterizer {
     }
 
     public static TypeFace constructFont() {
-        TypeFace class40_sub5_sub14_sub1 = new TypeFace(MovedStatics.anIntArray3111, MovedStatics.anIntArray456, MovedStatics.anIntArray3312, MovedStatics.anIntArray1972, MovedStatics.aByteArrayArray1370);
+        TypeFace class40_sub5_sub14_sub1 = new TypeFace(MovedStatics.spriteOffsetY, MovedStatics.spriteWidth, MovedStatics.spriteHeight, MovedStatics.spritePalette, MovedStatics.aByteArrayArray1370);
         MovedStatics.method569();
         return class40_sub5_sub14_sub1;
     }

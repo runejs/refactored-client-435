@@ -124,7 +124,7 @@ public class MovedStatics {
      * The hint (arrow) icon sprites.
      */
     public static ImageRGB[] hintIconSprites;
-    public static int anInt2581;
+    public static int childCount;
     public static int baseX;
     public static IndexedImage[] moderatorIcon;
     public static int[] anIntArray2764 = new int[128];
@@ -171,7 +171,7 @@ public class MovedStatics {
     public static IndexedImage tabHighlightImageTopRight;
     public static int durationHoveredOverWidget = 0;
     public static IndexedImage bottomChatBack;
-    public static int[] anIntArray1347;
+    public static int[] spriteOffsetX;
     public static LinkedList spotAnimQueue = new LinkedList();
     public static int carryWeight = 0;
     public static int anInt1214 = 0;
@@ -218,7 +218,7 @@ public class MovedStatics {
     public static IndexedImage tabHighlightImageBottomRight;
     public static ProducingGraphicsBuffer chatboxTop;
     public static int deregisterActorCount = 0;
-    public static int[] anIntArray456;
+    public static int[] spriteWidth;
     public static int regionY;
     public static int[] fullScreenTextureArray;
     public static Image loadingBoxImage;
@@ -271,7 +271,7 @@ public class MovedStatics {
      */
     public static IndexedImage tabHighlightImageBottomRightEdge;
     public static boolean aBoolean512;
-    public static int[] anIntArray3111;
+    public static int[] spriteOffsetY;
     public static Signlink signlink;
     public static ProducingGraphicsBuffer tabPieveLowerRight;
     public static GameSocket lostConnectionSocket;
@@ -295,11 +295,11 @@ public class MovedStatics {
     /**
      * Some kind of colour palette
      */
-    public static int[] anIntArray1972;
+    public static int[] spritePalette;
     /**
      * Sprite heights?
      */
-    public static int[] anIntArray3312;
+    public static int[] spriteHeight;
     /**
      * The image used for the highlighted (selected) tab button,
      * for the furthest-left tab on the bottom.
@@ -424,17 +424,17 @@ public class MovedStatics {
     }
 
     public static IndexedImage method538() {
-        IndexedImage class40_sub5_sub14_sub2 = new IndexedImage();
-        class40_sub5_sub14_sub2.maxWidth = imageMaxWidth;
-        class40_sub5_sub14_sub2.maxHeight = imageMaxHeight;
-        class40_sub5_sub14_sub2.xDrawOffset = anIntArray1347[0];
-        class40_sub5_sub14_sub2.yDrawOffset = anIntArray3111[0];
-        class40_sub5_sub14_sub2.imgWidth = anIntArray456[0];
-        class40_sub5_sub14_sub2.imgHeight = anIntArray3312[0];
-        class40_sub5_sub14_sub2.palette = anIntArray1972;
-        class40_sub5_sub14_sub2.imgPixels = aByteArrayArray1370[0];
+        IndexedImage image = new IndexedImage();
+        image.maxWidth = imageMaxWidth;
+        image.maxHeight = imageMaxHeight;
+        image.xDrawOffset = spriteOffsetX[0];
+        image.yDrawOffset = spriteOffsetY[0];
+        image.imgWidth = spriteWidth[0];
+        image.imgHeight = spriteHeight[0];
+        image.palette = spritePalette;
+        image.imgPixels = aByteArrayArray1370[0];
         method569();
-        return class40_sub5_sub14_sub2;
+        return image;
     }
 
     public static RSString intToStr(int arg0) {
@@ -496,51 +496,53 @@ public class MovedStatics {
             } catch (Exception ignored) { }
     }
 
-    public static void method184(byte[] data, int arg1) {
+    public static void decodeIndexedImage(byte[] data) {
         Buffer buffer = new Buffer(data);
         buffer.currentPosition = -2 + data.length;
-        anInt2581 = buffer.getUnsignedShortBE();
-        anIntArray3111 = new int[anInt2581];
-        aByteArrayArray1370 = new byte[anInt2581][];
-        anIntArray456 = new int[anInt2581];
-        anIntArray3312 = new int[anInt2581];
-        anIntArray1347 = new int[anInt2581];
+        childCount = buffer.getUnsignedShortBE();
+        spriteOffsetY = new int[childCount];
+        aByteArrayArray1370 = new byte[childCount][];
+        spriteWidth = new int[childCount];
+        spriteHeight = new int[childCount];
+        spriteOffsetX = new int[childCount];
 
-        buffer.currentPosition = data.length + -7 + -(anInt2581 * 8);
+        buffer.currentPosition = data.length - 7 - (childCount * 8);
         imageMaxWidth = buffer.getUnsignedShortBE();
         imageMaxHeight = buffer.getUnsignedShortBE();
-        int i = 1 + (buffer.getUnsignedByte() & 0xff);
-        for (int i_34_ = 0; i_34_ < anInt2581; i_34_++)
-            anIntArray1347[i_34_] = buffer.getUnsignedShortBE();
-        for (int i_35_ = arg1; i_35_ < anInt2581; i_35_++)
-            anIntArray3111[i_35_] = buffer.getUnsignedShortBE();
-        for (int i_36_ = 0; i_36_ < anInt2581; i_36_++)
-            anIntArray456[i_36_] = buffer.getUnsignedShortBE();
-        for (int i_37_ = 0; anInt2581 > i_37_; i_37_++)
-            anIntArray3312[i_37_] = buffer.getUnsignedShortBE();
+        int paletteSize = 1 + (buffer.getUnsignedByte() & 0xff);
+        for (int c = 0; c < childCount; c++)
+            spriteOffsetX[c] = buffer.getUnsignedShortBE();
+        for (int c = 0; c < childCount; c++)
+            spriteOffsetY[c] = buffer.getUnsignedShortBE();
+        for (int c = 0; c < childCount; c++)
+            spriteWidth[c] = buffer.getUnsignedShortBE();
+        for (int c = 0; childCount > c; c++)
+            spriteHeight[c] = buffer.getUnsignedShortBE();
 
-        buffer.currentPosition = data.length - (7 + anInt2581 * 8 + -3 + i * 3);
-        anIntArray1972 = new int[i];
-        for (int i_38_ = 1; i > i_38_; i_38_++) {
-            anIntArray1972[i_38_] = buffer.getMediumBE();
-            if (anIntArray1972[i_38_] == 0)
-                anIntArray1972[i_38_] = 1;
+        buffer.currentPosition = data.length - (7 + childCount * 8 + -3 + paletteSize * 3);
+        spritePalette = new int[paletteSize];
+        for (int p = 1; paletteSize > p; p++) {
+            spritePalette[p] = buffer.getMediumBE();
+            if (spritePalette[p] == 0)
+                spritePalette[p] = 1;
         }
         buffer.currentPosition = 0;
-        for (int i_39_ = 0; anInt2581 > i_39_; i_39_++) {
-            int i_40_ = anIntArray3312[i_39_];
-            int i_41_ = anIntArray456[i_39_];
-            int i_42_ = i_40_ * i_41_;
-            byte[] is = new byte[i_42_];
-            aByteArrayArray1370[i_39_] = is;
-            int i_43_ = buffer.getUnsignedByte();
-            if (i_43_ == 0) {
-                for (int i_46_ = 0; i_42_ > i_46_; i_46_++)
-                    is[i_46_] = buffer.getByte();
-            } else if (i_43_ == 1) {
-                for (int i_44_ = 0; i_41_ > i_44_; i_44_++) {
-                    for (int i_45_ = 0; i_40_ > i_45_; i_45_++)
-                        is[i_41_ * i_45_ + i_44_] = buffer.getByte();
+        for (int c = 0; childCount > c; c++) {
+            int h = spriteHeight[c];
+            int w = spriteWidth[c];
+            int area = h * w;
+            byte[] pixels = new byte[area];
+            aByteArrayArray1370[c] = pixels;
+            int pixelOrder = buffer.getUnsignedByte();
+            if (pixelOrder == 0) {
+                for (int p = 0; area > p; p++) {
+                    pixels[p] = buffer.getByte();
+                }
+            } else if (pixelOrder == 1) {
+                for (int x = 0; w > x; x++) {
+                    for (int y = 0; h > y; y++) {
+                        pixels[w * y + x] = buffer.getByte();
+                    }
                 }
             }
         }
@@ -2997,8 +2999,8 @@ public class MovedStatics {
         return arg1 < 129 || arg1 > 159;
     }
 
-    public static IndexedImage method769(CacheArchive imageArchive, int arg2) {
-        if(!method472(imageArchive, arg2))
+    public static IndexedImage method769(CacheArchive imageArchive, int id) {
+        if(!method472(imageArchive, id))
             return null;
         return method538();
     }
@@ -3194,27 +3196,27 @@ public class MovedStatics {
         ImageRGB class40_sub5_sub14_sub4 = new ImageRGB();
         class40_sub5_sub14_sub4.maxWidth = imageMaxWidth;
         class40_sub5_sub14_sub4.maxHeight = imageMaxHeight;
-        class40_sub5_sub14_sub4.offsetX = anIntArray1347[0];
-        class40_sub5_sub14_sub4.offsetY = anIntArray3111[0];
-        class40_sub5_sub14_sub4.imageWidth = anIntArray456[0];
-        class40_sub5_sub14_sub4.imageHeight = anIntArray3312[0];
+        class40_sub5_sub14_sub4.offsetX = spriteOffsetX[0];
+        class40_sub5_sub14_sub4.offsetY = spriteOffsetY[0];
+        class40_sub5_sub14_sub4.imageWidth = spriteWidth[0];
+        class40_sub5_sub14_sub4.imageHeight = spriteHeight[0];
         byte[] is = aByteArrayArray1370[0];
         int i = class40_sub5_sub14_sub4.imageWidth * class40_sub5_sub14_sub4.imageHeight;
         class40_sub5_sub14_sub4.pixels = new int[i];
         for(int i_5_ = 0; i_5_ < i; i_5_++) {
-            class40_sub5_sub14_sub4.pixels[i_5_] = anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
+            class40_sub5_sub14_sub4.pixels[i_5_] = spritePalette[BitUtils.bitWiseAND(255, is[i_5_])];
         }
         method569();
         return class40_sub5_sub14_sub4;
     }
 
     public static void method569() {
-        anIntArray456 = null;
+        spriteWidth = null;
         aByteArrayArray1370 = null;
-        anIntArray3312 = null;
-        anIntArray3111 = null;
-        anIntArray1972 = null;
-        anIntArray1347 = null;
+        spriteHeight = null;
+        spriteOffsetY = null;
+        spritePalette = null;
+        spriteOffsetX = null;
     }
 
     /**
@@ -3257,12 +3259,12 @@ public class MovedStatics {
      *
      * TODO what is this? sprites?
      */
-    public static boolean method472(CacheArchive imageArchive, int arg2) {
-        byte[] is = imageArchive.method187(arg2);
+    public static boolean method472(CacheArchive imageArchive, int id) {
+        byte[] is = imageArchive.method187(id);
         if(is == null) {
             return false;
         }
-        method184(is, 0);
+        decodeIndexedImage(is);
         return true;
 
     }
