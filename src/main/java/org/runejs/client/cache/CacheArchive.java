@@ -3,7 +3,7 @@ package org.runejs.client.cache;
 import org.runejs.client.*;
 import org.runejs.client.cache.bzip.BZip;
 import org.runejs.client.io.Buffer;
-import org.runejs.client.node.Class40_Sub6;
+import org.runejs.client.node.OnDemandRequest;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
@@ -117,31 +117,31 @@ public class CacheArchive {
         return MovedStatics.calculateCrc8(0, size, data);
     }
 
-    private static void method602(CacheArchive arg0, int arg1, CacheIndex arg2) {
+    private static void method602(CacheArchive arg0, int indexId, CacheIndex meta) {
         byte[] is = null;
-        synchronized(MovedStatics.aLinkedList_53) {
-            for(Class40_Sub6 class40_sub6 = (Class40_Sub6) MovedStatics.aLinkedList_53.peekFirst(); class40_sub6 != null; class40_sub6 = (Class40_Sub6) MovedStatics.aLinkedList_53.pollFirst()) {
-                if((long) arg1 == class40_sub6.key && arg2 == class40_sub6.cacheIndex && class40_sub6.anInt2112 == 0) {
-                    is = class40_sub6.aByteArray2102;
+        synchronized(OnDemandRequestProcessor.aLinkedList_53) {
+            for(OnDemandRequest onDemandRequest = (OnDemandRequest) OnDemandRequestProcessor.aLinkedList_53.peekFirst(); onDemandRequest != null; onDemandRequest = (OnDemandRequest) OnDemandRequestProcessor.aLinkedList_53.pollFirst()) {
+                if((long) indexId == onDemandRequest.key && meta == onDemandRequest.cacheIndex && onDemandRequest.type == 0) {
+                    is = onDemandRequest.data;
                     break;
                 }
             }
         }
         if(is == null) {
-            byte[] is_6_ = arg2.get(arg1);
-            arg0.method198(true, is_6_, arg1, arg2);
+            byte[] is_6_ = meta.get(indexId);
+            arg0.method198(true, is_6_, indexId, meta);
         } else {
-            arg0.method198(true, is, arg1, arg2);
+            arg0.method198(true, is, indexId, meta);
         }
     }
 
-    public void method196(boolean arg0, int arg2, boolean arg3, byte[] data) {
+    public void method196(boolean arg0, int arg2, boolean highPriority, byte[] data) {
         if(arg0) {
             if(aBoolean1800) {
                 throw new RuntimeException();
             }
             if(metaIndex != null) {
-                Class40_Sub6.method1055(data, metaIndex, cacheIndexId);
+                OnDemandRequest.createByteArrayOnDemandRequest(data, metaIndex, cacheIndexId);
             }
             decodeArchive(data);
             method199();
@@ -149,10 +149,10 @@ public class CacheArchive {
             data[data.length - 2] = (byte) (anIntArray224[arg2] >> 8);
             data[data.length + -1] = (byte) anIntArray224[arg2];
             if(dataIndex != null) {
-                Class40_Sub6.method1055(data, dataIndex, arg2);
+                OnDemandRequest.createByteArrayOnDemandRequest(data, dataIndex, arg2);
                 aBooleanArray1796[arg2] = true;
             }
-            if(arg3) {
+            if(highPriority) {
                 aByteArrayArray212[arg2] = data;
             }
         }
@@ -170,17 +170,17 @@ public class CacheArchive {
 
     }
 
-    public void method198(boolean arg1, byte[] arg2, int arg3, CacheIndex arg4) {
-        if(metaIndex == arg4) {
+    public void method198(boolean highPriority, byte[] data, int key, CacheIndex cacheIndex) {
+        if(metaIndex == cacheIndex) {
             if(aBoolean1800)
                 throw new RuntimeException();
-            if(arg2 == null) {
+            if(data == null) {
                 Game.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0,
                         archiveCrcValue);
                 return;
             }
             crc32.reset();
-            crc32.update(arg2, 0, arg2.length);
+            crc32.update(data, 0, data.length);
             int i = (int) crc32.getValue();
             if(i != archiveCrcValue) {
                 Game.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0,
@@ -188,30 +188,30 @@ public class CacheArchive {
                 return;
             }
 
-            decodeArchive(arg2);
+            decodeArchive(data);
             method199();
         } else {
-            if(!arg1 && anInt1797 == arg3)
+            if(!highPriority && anInt1797 == key)
                 aBoolean1800 = true;
-            if(arg2 == null || arg2.length <= 2) {
-                aBooleanArray1796[arg3] = false;
-                if(aBoolean1811 || arg1)
-                    Game.updateServer.enqueueFileRequest(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3]);
+            if(data == null || data.length <= 2) {
+                aBooleanArray1796[key] = false;
+                if(aBoolean1811 || highPriority)
+                    Game.updateServer.enqueueFileRequest(highPriority, this, cacheIndexId, key, (byte) 2, anIntArray252[key]);
                 return;
             }
             crc32.reset();
-            crc32.update(arg2, 0, arg2.length - 2);
+            crc32.update(data, 0, data.length - 2);
             int i = (int) crc32.getValue();
-            int i_0_ = ((arg2[-2 + arg2.length] & 0xff) << 8) + (0xff & arg2[arg2.length + -1]);
-            if(i != anIntArray252[arg3] || i_0_ != anIntArray224[arg3]) {
-                aBooleanArray1796[arg3] = false;
-                if(aBoolean1811 || arg1)
-                    Game.updateServer.enqueueFileRequest(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3]);
+            int i_0_ = ((data[-2 + data.length] & 0xff) << 8) + (0xff & data[data.length + -1]);
+            if(i != anIntArray252[key] || i_0_ != anIntArray224[key]) {
+                aBooleanArray1796[key] = false;
+                if(aBoolean1811 || highPriority)
+                    Game.updateServer.enqueueFileRequest(highPriority, this, cacheIndexId, key, (byte) 2, anIntArray252[key]);
                 return;
             }
-            aBooleanArray1796[arg3] = true;
-            if(arg1)
-                aByteArrayArray212[arg3] = arg2;
+            aBooleanArray1796[key] = true;
+            if(highPriority)
+                aByteArrayArray212[key] = data;
         }
     }
 
@@ -236,7 +236,7 @@ public class CacheArchive {
             anInt1797 = -1;
             for(int i_2_ = 0; aBooleanArray1796.length > i_2_; i_2_++) {
                 if(anIntArray261[i_2_] > 0) {
-                    MovedStatics.method513(i_2_, this, dataIndex, (byte) -28);
+                    OnDemandRequest.createCacheArchiveOnDemandRequest(i_2_, this, dataIndex);
                     anInt1797 = i_2_;
                 }
             }
@@ -510,11 +510,11 @@ public class CacheArchive {
         return false;
     }
 
-    public byte[] method187(int arg0) {
+    public byte[] method187(int fileId) {
         if(inMemoryCacheBuffer.length == 1)
-            return getFile(0, arg0);
-        if(inMemoryCacheBuffer[arg0].length == 1)
-            return getFile(arg0, 0);
+            return getFile(0, fileId);
+        if(inMemoryCacheBuffer[fileId].length == 1)
+            return getFile(fileId, 0);
         throw new RuntimeException();
     }
 

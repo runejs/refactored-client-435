@@ -1555,19 +1555,6 @@ public class Game {
         System.exit(1);
     }
 
-    private static void method947(int arg0) {
-        synchronized(MovedStatics.anObject162) {
-            if((MovedStatics.anInt1987 ^ 0xffffffff) != arg0) {
-                MovedStatics.anInt1987 = 1;
-                try {
-                    MovedStatics.anObject162.wait();
-                } catch(InterruptedException interruptedexception) {
-                    /* empty */
-                }
-            }
-        }
-    }
-
     private static void renderNPCs(boolean arg0) {
         for(int i = 0; Player.npcCount > i; i++) {
             Npc npc = Player.npcs[Player.npcIds[i]];
@@ -1915,7 +1902,7 @@ public class Game {
     public void processGameLoop() {
         MovedStatics.pulseCycle++;
         handleUpdateServer();
-        MovedStatics.handleRequests();
+        OnDemandRequestProcessor.handleRequests();
         MusicSystem.handleMusic();
         SoundSystem.handleSounds();
         GameInterface.method639();
@@ -2094,7 +2081,7 @@ public class Game {
         MusicSystem.syncedStop(false);
         SoundSystem.stop();
         updateServer.close();
-        method947(-1);
+        OnDemandRequestProcessor.wait(-1);
         do {
             try {
                 if (dataChannel != null)

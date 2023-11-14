@@ -172,18 +172,18 @@ public class CacheIndex {
         }
     }
 
-    public boolean put(byte[] arg0, int arg2, int arg3) {
+    public boolean put(byte[] data, int length, int index) {
         synchronized(dataChannel) {
-            if(arg2 < 0 || arg2 > maxLength) {
+            if(length < 0 || length > maxLength) {
                 throw new IllegalArgumentException();
             }
 
-            boolean bool = put(arg0, arg3, true, arg2);
-            if(!bool) {
-                bool = put(arg0, arg3, false, arg2);
+            boolean success = put(data, index, true, length);
+            if(!success) {
+                success = put(data, index, false, length);
             }
 
-            return bool;
+            return success;
         }
     }
 }

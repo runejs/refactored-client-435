@@ -1,6 +1,5 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.CacheIndex;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
@@ -17,7 +16,6 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.*;
-import org.runejs.client.node.Class40_Sub6;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.IndexedImage;
@@ -141,7 +139,6 @@ public class MovedStatics {
     public static boolean membersServer;
     public static HuffmanEncoding aHuffmanEncoding_2590;
     public static int anInt2598 = 0;
-    public static LinkedList aLinkedList_2604 = new LinkedList();
     public static int height;
     public static int anInt2798 = 0;
     public static int selectedMask;
@@ -261,10 +258,6 @@ public class MovedStatics {
      */
     public static ImageRGB[] headIconSprites;
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2213;
-    /**
-     * Cache archive cache?
-     */
-    public static LinkedList aLinkedList_53 = new LinkedList();
     public static int anInt57;
     public static ProducingGraphicsBuffer tabBottom;
     public static int[] keyCodes = new int[128];
@@ -290,13 +283,11 @@ public class MovedStatics {
      */
     public static ProducingGraphicsBuffer tabTop;
     public static byte[][] aByteArrayArray1370;
-    public static Object anObject162 = new Object();
     /**
      * Last varp handle cycle?
      */
     public static int anInt2480 = 0;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
-    public static int anInt1987 = 0;
     public static IndexedImage tabTopBack;
     /**
      * Some kind of colour palette
@@ -441,14 +432,6 @@ public class MovedStatics {
         class40_sub5_sub14_sub2.imgPixels = aByteArrayArray1370[0];
         method569();
         return class40_sub5_sub14_sub2;
-    }
-
-    public static void method332(int arg0) {
-        synchronized (anObject162) {
-            if (anInt1987 == 0)
-                Game.signlink.putThreadNode(5, new Class44());
-            anInt1987 = arg0;
-        }
     }
 
     public static RSString intToStr(int arg0) {
@@ -2396,18 +2379,6 @@ public class MovedStatics {
         }
     }
 
-    public static void handleRequests() {
-        for(; ; ) {
-            Class40_Sub6 class40_sub6;
-            synchronized(aLinkedList_53) {
-                class40_sub6 = (Class40_Sub6) aLinkedList_2604.removeFirst();
-            }
-            if(class40_sub6 == null)
-                break;
-            class40_sub6.cacheArchive.method198(false, class40_sub6.aByteArray2102, (int) class40_sub6.key, class40_sub6.cacheIndex);
-        }
-    }
-
     public static void animatePlayers(int playerIndex) {
         for(int currentPlayerIndex = playerIndex; Player.localPlayerCount > currentPlayerIndex; currentPlayerIndex++) {
             int actualIndex;
@@ -2970,20 +2941,6 @@ public class MovedStatics {
         return l;
     }
 
-    public static void method513(int arg0, CacheArchive arg1, CacheIndex arg2, byte arg3) {
-        Class40_Sub6 class40_sub6 = new Class40_Sub6();
-        class40_sub6.anInt2112 = 1;
-        class40_sub6.key = (long) arg0;
-        class40_sub6.cacheIndex = arg2;
-        class40_sub6.cacheArchive = arg1;
-        synchronized(aLinkedList_53) {
-            if(arg3 != -28)
-                method521(false, -84, -120);
-            aLinkedList_53.addLast(class40_sub6);
-        }
-        method332(600);
-    }
-
     public static RSString method521(boolean arg0, int arg2, int arg3) {
         if(arg2 < 1 || arg2 > 36)
             arg2 = 10;
@@ -3296,8 +3253,8 @@ public class MovedStatics {
      *
      * TODO what is this? sprites?
      */
-    public static boolean method472(CacheArchive arg1, int arg2) {
-        byte[] is = arg1.method187(arg2);
+    public static boolean method472(CacheArchive imageArchive, int arg2) {
+        byte[] is = imageArchive.method187(arg2);
         if(is == null) {
             return false;
         }
