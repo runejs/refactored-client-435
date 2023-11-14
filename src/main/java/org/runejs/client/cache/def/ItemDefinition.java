@@ -98,16 +98,16 @@ public class ItemDefinition extends CachedNode implements EntityDefinition {
     }
 
 
-    public static ItemDefinition forId(int id, int arg1) {
+    public static ItemDefinition forId(int id, int archiveGroupId) {
         ItemDefinition definition = (ItemDefinition) definitionCache.get(id);
         if(definition != null) {
             return definition;
         }
-        byte[] is = definitionArchive.getFile(arg1, id);
+        byte[] data = definitionArchive.getFile(archiveGroupId, id);
         definition = new ItemDefinition();
         definition.id = id;
-        if(is != null) {
-            definition = loader.load(definition, new Buffer(is));
+        if(data != null) {
+            definition = loader.load(definition, new Buffer(data));
         }
         if(definition.noteTemplateId != -1) {
             definition.itemToNote(forId(definition.noteTemplateId, 10), forId(definition.notedId, 10));

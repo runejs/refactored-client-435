@@ -164,12 +164,12 @@ public class MusicSystem {
 			if (data != null)
 				return data.data;
 		}
-		byte[] is = musicArchive.getFile(fileId, childId);
-		if (is == null)
+		byte[] data = musicArchive.getFile(fileId, childId);
+		if (data == null)
 			return null;
 		if (MusicSystem.musicCache != null)
-			MusicSystem.musicCache.put(hash, new MusicData(is));
-		return is;
+			MusicSystem.musicCache.put(hash, new MusicData(data));
+		return data;
 	}
 
 	private static void method308() {

@@ -32,15 +32,15 @@ public class OverlayDefinition extends CachedNode implements CacheDefinition {
         color = 0;
     }
 
-    public static OverlayDefinition getDefinition(int id, int archiveId) {
+    public static OverlayDefinition getDefinition(int id, int archiveGroupId) {
         OverlayDefinition overlayDefinition = (OverlayDefinition) definitionCache.get(id);
         if(overlayDefinition != null)
             return overlayDefinition;
-        byte[] is = definitionArchive.getFile(archiveId, id);
+        byte[] data = definitionArchive.getFile(archiveGroupId, id);
         overlayDefinition = new OverlayDefinition();
         overlayDefinition.id = id;
-        if(is != null) {
-            loader.load(overlayDefinition, new Buffer(is));
+        if(data != null) {
+            loader.load(overlayDefinition, new Buffer(data));
         }
         overlayDefinition.calculateHsl();
         definitionCache.put(id, overlayDefinition);

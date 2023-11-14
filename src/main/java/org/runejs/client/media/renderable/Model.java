@@ -683,16 +683,16 @@ public class Model extends Renderable {
         return (arg0 & 0xff80) + arg1;
     }
 
-    public static Model getModel(CacheArchive cache, int modelId) {
+    public static Model getModel(CacheArchive cache, int id) {
         try {
             if(ModelLoader.models == null) {
                 new ModelLoader();
             }
 
-            byte[] modelData = cache.getFile(modelId, 0);
+            byte[] modelData = cache.getFile(id, 0);
             if(modelData == null) {
                 for(int modelStored : ModelLoader.models) {
-                    if(modelStored == modelId) {
+                    if(modelStored == id) {
                         return new Model(ModelLoader.loadNewModel(modelStored));
                     }
                 }

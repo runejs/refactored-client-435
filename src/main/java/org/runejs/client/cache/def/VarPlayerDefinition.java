@@ -23,18 +23,18 @@ public class VarPlayerDefinition extends CachedNode implements CacheDefinition {
      */
     public static int[] varPlayers = new int[2000]; // TODO find a better place for this, as it does not belong in the definition
 
-    public static VarPlayerDefinition getDefinition(int varPlayerIndex) {
-        VarPlayerDefinition definition = (VarPlayerDefinition) varPlayerDefinitionCache.get(varPlayerIndex);
+    public static VarPlayerDefinition getDefinition(int id) {
+        VarPlayerDefinition definition = (VarPlayerDefinition) varPlayerDefinitionCache.get(id);
         if (definition != null) {
             return definition;
         }
-        byte[] cacheData = gameDefinitionsCacheArchive.getFile(16, varPlayerIndex);
+        byte[] data = gameDefinitionsCacheArchive.getFile(16, id);
         definition = new VarPlayerDefinition();
-        definition.id = varPlayerIndex;
-        if(cacheData != null) {
-            loader.load(definition, new Buffer(cacheData));
+        definition.id = id;
+        if(data != null) {
+            loader.load(definition, new Buffer(data));
         }
-        varPlayerDefinitionCache.put(varPlayerIndex, definition);
+        varPlayerDefinitionCache.put(id, definition);
         return definition;
     }
 

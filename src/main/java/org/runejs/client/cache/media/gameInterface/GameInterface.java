@@ -493,17 +493,17 @@ public class GameInterface extends CachedNode {
             cachedInterfaces[interfaceId] = new GameInterface[gameInterfaceCount];
         }
 
-        for(int i = 0; i < gameInterfaceCount; i++) {
-            if(cachedInterfaces[interfaceId][i] == null) {
-                byte[] interfaceFileData = CacheArchive.gameInterfaceCacheArchive.getFile(interfaceId, i);
+        for(int childId = 0; childId < gameInterfaceCount; childId++) {
+            if(cachedInterfaces[interfaceId][childId] == null) {
+                byte[] data = CacheArchive.gameInterfaceCacheArchive.getFile(interfaceId, childId);
 
-                if(interfaceFileData != null) {
-                    cachedInterfaces[interfaceId][i] = new GameInterface();
-                    cachedInterfaces[interfaceId][i].id = (interfaceId << 16) + i;
-                    if(interfaceFileData[0] == -1) {
-                        cachedInterfaces[interfaceId][i].decodeIf3(new Buffer(interfaceFileData));
+                if(data != null) {
+                    cachedInterfaces[interfaceId][childId] = new GameInterface();
+                    cachedInterfaces[interfaceId][childId].id = (interfaceId << 16) + childId;
+                    if(data[0] == -1) {
+                        cachedInterfaces[interfaceId][childId].decodeIf3(new Buffer(data));
                     } else {
-                        cachedInterfaces[interfaceId][i].decodeIf1(new Buffer(interfaceFileData));
+                        cachedInterfaces[interfaceId][childId].decodeIf1(new Buffer(data));
                     }
                 }
             }
@@ -2510,7 +2510,7 @@ ChatBox.tradeMode
         if(class40_sub5_sub14_sub4 != null) {
             return class40_sub5_sub14_sub4;
         }
-        class40_sub5_sub14_sub4 = MovedStatics.method927(0, CacheArchive.gameImageCacheArchive, i);
+        class40_sub5_sub14_sub4 = MovedStatics.method927(CacheArchive.gameImageCacheArchive, i, 0);
         if(class40_sub5_sub14_sub4 == null) {
             aBoolean2177 = true;
         } else {
@@ -2553,7 +2553,7 @@ ChatBox.tradeMode
         if(imageRGB != null) {
             return imageRGB;
         }
-        imageRGB = MovedStatics.method927(0, CacheArchive.gameImageCacheArchive, i);
+        imageRGB = MovedStatics.method927(CacheArchive.gameImageCacheArchive, i, 0);
         if(imageRGB == null) {
             aBoolean2177 = true;
         } else {
@@ -2745,7 +2745,7 @@ ChatBox.tradeMode
             return typeFace;
         }
 
-        typeFace = TypeFace.getFont(CacheArchive.gameImageCacheArchive, 0, fontId);
+        typeFace = TypeFace.getFont(CacheArchive.gameImageCacheArchive, fontId, 0);
 
         if(typeFace == null) {
             aBoolean2177 = true;

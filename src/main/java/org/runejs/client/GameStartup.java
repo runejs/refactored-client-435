@@ -101,15 +101,15 @@ public class GameStartup {
             if (TypeFace.fontSmall != null)
                 i++;
             else
-                TypeFace.fontSmall = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontP11Full);
+                TypeFace.fontSmall = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, Native.fontP11Full, "");
             if (MovedStatics.fontNormal != null)
                 i++;
             else
-                MovedStatics.fontNormal = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontP12Full);
+                MovedStatics.fontNormal = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, Native.fontP12Full, "");
             if (TypeFace.fontBold != null)
                 i++;
             else
-                TypeFace.fontBold = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontB12Full);
+                TypeFace.fontBold = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, Native.fontB12Full, "");
             if (i < 3) {
                 currentLoadingText = English.loadingFonts + (i * 100 / 3) + Native.percent;
                 loadingBarPercentage = 40;
@@ -255,7 +255,7 @@ public class GameStartup {
             loadingBarPercentage = 94;
         } else if (startupStage == 120) {
             if (CacheArchive.huffmanCacheArchive.method194(Native.huffman, "")) {
-                HuffmanEncoding huffmanEncoding = new HuffmanEncoding(CacheArchive.huffmanCacheArchive.method170("", Native.huffman));
+                HuffmanEncoding huffmanEncoding = new HuffmanEncoding(CacheArchive.huffmanCacheArchive.method170(Native.huffman, ""));
                 MovedStatics.method778(huffmanEncoding);
                 startupStage = 130;
                 currentLoadingText = English.loadedWordpack;

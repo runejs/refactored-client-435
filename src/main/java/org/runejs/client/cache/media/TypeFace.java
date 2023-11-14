@@ -100,16 +100,16 @@ public class TypeFace extends Rasterizer {
         return class40_sub5_sub14_sub1;
     }
 
-    public static TypeFace getFont(CacheArchive cacheArchive, int arg0, int fontId) {
-        if (!ImageRGB.spriteExists(arg0, fontId, cacheArchive))
+    public static TypeFace getFont(CacheArchive archive, int groupId, int fileId) {
+        if (!ImageRGB.spriteExists(archive, groupId, fileId))
             return null;
         return constructFont();
     }
 
-    public static TypeFace loadTypeFace(CacheArchive imageArchive, String always_empty, String fontName) {
+    public static TypeFace loadTypeFace(CacheArchive imageArchive, String fontName, String always_empty) {
         int fontImageId = imageArchive.getGroupIdByName(fontName);
         int fontFileId = imageArchive.getFileIdByName(fontImageId, always_empty);
-        return getFont(imageArchive, fontFileId, fontImageId);
+        return getFont(imageArchive, fontImageId, fontFileId);
     }
 
 

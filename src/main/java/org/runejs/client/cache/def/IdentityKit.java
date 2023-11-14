@@ -29,18 +29,18 @@ public class IdentityKit extends CachedNode implements CacheDefinition {
     }
 
     // ???
-    public static IdentityKit cache(int arg1) {
-        IdentityKit identityKit = (IdentityKit) identityKitCache.get(arg1);
+    public static IdentityKit cache(int id) {
+        IdentityKit identityKit = (IdentityKit) identityKitCache.get(id);
         if(identityKit != null) {
             return identityKit;
         }
-        byte[] is = identityKitArchive.getFile(3, arg1);
+        byte[] data = identityKitArchive.getFile(3, id);
         identityKit = new IdentityKit();
-        identityKit.id = arg1;
-        if(is != null) {
-            loader.load(identityKit, new Buffer(is));
+        identityKit.id = id;
+        if(data != null) {
+            loader.load(identityKit, new Buffer(data));
         }
-        identityKitCache.put(arg1, identityKit);
+        identityKitCache.put(id, identityKit);
         return identityKit;
     }
 

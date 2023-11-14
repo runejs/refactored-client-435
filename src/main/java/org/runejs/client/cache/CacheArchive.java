@@ -298,13 +298,13 @@ public class CacheArchive {
         return i_3_ * 100 / i;
     }
 
-    public byte[] method170(String arg0, String arg1) {
-        arg1 = arg1.toLowerCase();
-        arg0 = arg0.toLowerCase();
-        int i = groupNames.getIdByName(RSString.stringHash(arg1));
-        int i_0_ = fileNames[i].getIdByName(RSString.stringHash(arg0));
+    public byte[] method170(String groupName, String fileName) {
+        groupName = groupName.toLowerCase();
+        fileName = fileName.toLowerCase();
+        int groupId = groupNames.getIdByName(RSString.stringHash(groupName));
+        int fileId = fileNames[groupId].getIdByName(RSString.stringHash(fileName));
 
-        return getFile(i, i_0_);
+        return getFile(groupId, fileId);
     }
 
     /**
@@ -526,9 +526,10 @@ public class CacheArchive {
         return true;
     }
 
-    public byte[] method182(int fileId, int groupId) {
+    public byte[] method182(int groupId, int fileId) {
         if(groupId < 0 || groupId >= fileData.length || fileData[groupId] == null || fileId < 0 || fileData[groupId].length <= fileId)
             return null;
+
         if(fileData[groupId][fileId] == null) {
             boolean bool = method181(groupId, null);
             if(!bool) {
@@ -538,8 +539,8 @@ public class CacheArchive {
                     return null;
             }
         }
-        byte[] is = fileData[groupId][fileId];
-        return is;
+
+        return fileData[groupId][fileId];
     }
 
     public int getGroupIdByName(String name) {
@@ -590,17 +591,17 @@ public class CacheArchive {
         }
     }
 
-    public int[] method192(int arg0, boolean arg1) {
-        if(!arg1)
+    public int[] getFileIds(int groupId, boolean always_true) {
+        if(!always_true)
             return null;
-        return fileIds[arg0];
+        return fileIds[groupId];
     }
 
     public byte[] method193(int arg1) {
         if(fileData.length == 1)
-            return method182(arg1, 0);
-        if(fileData[arg1].length == 1)
             return method182(0, arg1);
+        if(fileData[arg1].length == 1)
+            return method182(arg1, 0);
         throw new RuntimeException();
     }
 

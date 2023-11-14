@@ -233,11 +233,11 @@ public class ImageRGB extends Rasterizer {
         }
     }
 
-    public static boolean spriteExists(int fileId, int groupId, CacheArchive cacheArchive) {
-        byte[] is = cacheArchive.getFile(groupId, fileId);
-        if(is == null)
+    public static boolean spriteExists(CacheArchive cacheArchive, int groupId, int fileId) {
+        byte[] data = cacheArchive.getFile(groupId, fileId);
+        if(data == null)
             return false;
-        MovedStatics.decodeIndexedImage(is);
+        MovedStatics.decodeIndexedImage(data);
         return true;
     }
 
@@ -261,8 +261,8 @@ public class ImageRGB extends Rasterizer {
 	    return class40_sub5_sub14_sub4s;
 	}
 
-    public static ImageRGB[] method944(byte arg0, int arg1, CacheArchive arg2, int arg3) {
-        if(!spriteExists(arg3, arg1, arg2))
+    public static ImageRGB[] method944(CacheArchive archive, int groupId, int fileId, byte arg0) {
+        if(!spriteExists(archive, groupId, fileId))
             return null;
         int i = -59 % ((-60 - arg0) / 34);
         return method319();
@@ -271,7 +271,7 @@ public class ImageRGB extends Rasterizer {
     public static ImageRGB[] method526(CacheArchive arg0, String arg2, String always_empty) {
         int i = arg0.getGroupIdByName(arg2);
         int i_4_ = arg0.getFileIdByName(i, always_empty);
-        return method944((byte) -3, i, arg0, i_4_);
+        return method944(arg0, i, i_4_, (byte) -3);
     }
 
     public void method716(int arg0, int arg1, int arg2, int arg3, int arg4) {

@@ -922,11 +922,11 @@ public class Game {
     public static IndexedImage method359(String arg0, String always_empty, CacheArchive arg2) {
         int i = arg2.getGroupIdByName(arg0);
         int i_23_ = arg2.getFileIdByName(i, always_empty);
-        return method363(arg2, i_23_, i);
+        return method363(arg2, i, i_23_);
     }
 
-    public static IndexedImage method363(CacheArchive arg0, int arg2, int arg3) {
-        if(!ImageRGB.spriteExists(arg2, arg3, arg0)) {
+    public static IndexedImage method363(CacheArchive archive, int groupId, int fileId) {
+        if(!ImageRGB.spriteExists(archive, groupId, fileId)) {
             return null;
         }
         return MovedStatics.method538();

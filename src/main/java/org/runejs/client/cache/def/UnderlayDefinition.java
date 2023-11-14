@@ -28,11 +28,11 @@ public class UnderlayDefinition extends CachedNode implements CacheDefinition {
         UnderlayDefinition underlayDefinition = (UnderlayDefinition) definitionCache.get(underlayId);
         if (underlayDefinition != null)
             return underlayDefinition;
-        byte[] is = definitionArchive.getFile(1, underlayId);
+        byte[] data = definitionArchive.getFile(1, underlayId);
         underlayDefinition = new UnderlayDefinition();
         underlayDefinition.id = underlayId;
-        if (is != null) {
-            loader.load(underlayDefinition, new Buffer(is));
+        if (data != null) {
+            loader.load(underlayDefinition, new Buffer(data));
         }
         underlayDefinition.calculateHsl();
         definitionCache.put(underlayId, underlayDefinition);

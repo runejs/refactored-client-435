@@ -33,7 +33,7 @@ public class IndexedImage extends Rasterizer {
     }
 
     private static IndexedImage[] method337(CacheArchive archive, int fileId, int groupId) {
-        if(!ImageRGB.spriteExists(fileId, groupId, archive))
+        if(!ImageRGB.spriteExists(archive, groupId, fileId))
             return null;
         return method315();
     }

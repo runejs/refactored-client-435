@@ -131,17 +131,17 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
         obj.type = type;
     }
 
-    public static GameObjectDefinition getDefinition(int objectId) {
-        GameObjectDefinition gameObjectDefinition = (GameObjectDefinition) definitionCache.get(objectId);
+    public static GameObjectDefinition getDefinition(int id) {
+        GameObjectDefinition gameObjectDefinition = (GameObjectDefinition) definitionCache.get(id);
         if(gameObjectDefinition != null) {
             return gameObjectDefinition;
         }
-        byte[] is = definitionArchive.getFile(6, objectId);
+        byte[] data = definitionArchive.getFile(6, id);
         gameObjectDefinition = new GameObjectDefinition();
-        gameObjectDefinition.id = objectId;
-        if(is == null) {
+        gameObjectDefinition.id = id;
+        if(data == null) {
             try {
-                Buffer buffer = ObjectDecompressor.grabObjectDef(objectId);
+                Buffer buffer = ObjectDecompressor.grabObjectDef(id);
                 if(buffer != null) {
                     loader.load(gameObjectDefinition, buffer);
                 }
@@ -149,14 +149,14 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
                 e.printStackTrace();
             }
         } else {
-            loader.load(gameObjectDefinition, new Buffer(is));
+            loader.load(gameObjectDefinition, new Buffer(data));
         }
         gameObjectDefinition.method605();
         if(gameObjectDefinition.hollow) {
             gameObjectDefinition.solid = false;
             gameObjectDefinition.walkable = false;
         }
-        definitionCache.put(objectId, gameObjectDefinition);
+        definitionCache.put(id, gameObjectDefinition);
         return gameObjectDefinition;
     }
 

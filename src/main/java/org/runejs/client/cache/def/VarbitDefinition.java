@@ -37,17 +37,17 @@ public class VarbitDefinition extends CachedNode implements CacheDefinition {
     public int leastSignificantBit;
     public int mostSignificantBit;
 
-    public static VarbitDefinition getDefinition(int varbitId) {
-        VarbitDefinition varbitDefinition = (VarbitDefinition) varbitDefinitionCache.get(varbitId);
+    public static VarbitDefinition getDefinition(int id) {
+        VarbitDefinition varbitDefinition = (VarbitDefinition) varbitDefinitionCache.get(id);
         if (varbitDefinition != null)
             return varbitDefinition;
-        byte[] cacheData = gameDefinitionsCacheArchive.getFile(14, varbitId);
+        byte[] data = gameDefinitionsCacheArchive.getFile(14, id);
         varbitDefinition = new VarbitDefinition();
-        varbitDefinition.id = varbitId;
-        if (cacheData != null) {
-            loader.load(varbitDefinition, new Buffer(cacheData));
+        varbitDefinition.id = id;
+        if (data != null) {
+            loader.load(varbitDefinition, new Buffer(data));
         }
-        varbitDefinitionCache.put(varbitId, varbitDefinition);
+        varbitDefinitionCache.put(id, varbitDefinition);
         return varbitDefinition;
     }
 

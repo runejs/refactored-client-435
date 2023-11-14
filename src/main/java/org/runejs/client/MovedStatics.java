@@ -922,8 +922,8 @@ public class MovedStatics {
         }
     }
 
-    public static ImageRGB method927(int arg0, CacheArchive arg1, int arg3) {
-	    if(!ImageRGB.spriteExists(arg0, arg3, arg1))
+    public static ImageRGB method927(CacheArchive archive, int groupId, int fileId) {
+	    if(!ImageRGB.spriteExists(archive, groupId, fileId))
 	        return null;
 	    return method578();
 	}
@@ -1798,7 +1798,7 @@ public class MovedStatics {
     public static ImageRGB method1028(CacheArchive arg0, String arg1, String always_empty) {
         int i = arg0.getGroupIdByName(arg1);
         int i_13_ = arg0.getFileIdByName(i, always_empty);
-        return method927(i_13_, arg0, i);
+        return method927(arg0, i, i_13_);
     }
 
     public static void spawnGroundItem(int arg1, int arg2) {

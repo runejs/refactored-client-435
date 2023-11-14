@@ -40,11 +40,11 @@ public class SpotAnimDefinition extends CachedNode implements CacheDefinition {
         SpotAnimDefinition spotAnimDefinition = (SpotAnimDefinition) definitionCache.get(id);
         if (spotAnimDefinition != null)
             return spotAnimDefinition;
-        byte[] is = definitionArchive.getFile(13, id);
+        byte[] data = definitionArchive.getFile(13, id);
         spotAnimDefinition = new SpotAnimDefinition();
         spotAnimDefinition.id = id;
-        if (is != null) {
-            loader.load(spotAnimDefinition, new Buffer(is));
+        if (data != null) {
+            loader.load(spotAnimDefinition, new Buffer(data));
         }
         definitionCache.put(id, spotAnimDefinition);
         return spotAnimDefinition;
