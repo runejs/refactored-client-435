@@ -28,7 +28,7 @@ public class CacheArchive {
     public static CacheArchive jingleCacheArchive;
     public static CacheArchive clientScriptCacheArchive;
 
-    public byte[][] highPriorityData_todo;
+    public byte[][] highPriorityContents;
     public int crc8;
     public NameHashCollection[] fileNames;
     /**
@@ -53,36 +53,36 @@ public class CacheArchive {
     public int[] groupChecksums;
     public NameHashCollection groupNames;
     public int[] groupSizes;
-    public volatile boolean[] aBooleanArray1796;
-    public int anInt1797 = -1;
-    public volatile boolean aBoolean1800 = false;
+    public volatile boolean[] hasValidContents;
+    public int lastReceivedGroupRequest = -1;
+    public volatile boolean finishedReceiving = false;
     public CacheIndex metaIndex;
     public int cacheIndexId;
     public int archiveCrcValue;
     /**
      * false for music (6), true otherwise
      *
-     * treats some requests for this archive as high priority?
+     * treats some requests for this archive as high priority
      */
-    public boolean aBoolean2;
+    public boolean forceHighPriority;
     public CacheIndex dataIndex;
 
-    public CacheArchive(CacheIndex dataIndex, CacheIndex metaIndex, int cacheIndexId, boolean aBoolean1, boolean aBoolean3, boolean aBoolean2) {
+    public CacheArchive(CacheIndex dataIndex, CacheIndex metaIndex, int cacheIndexId, boolean aBoolean1, boolean aBoolean3, boolean forceHighPriority) {
         this.aBoolean3 = aBoolean3;
         this.aBoolean1 = aBoolean1;
         this.dataIndex = dataIndex;
-        this.aBoolean2 = aBoolean2;
+        this.forceHighPriority = forceHighPriority;
         this.metaIndex = metaIndex;
         this.cacheIndexId = cacheIndexId;
         Game.updateServer.requestArchiveChecksum(this, this.cacheIndexId);
     }
 
-    public static CacheArchive loadArchive(int cacheIndexId, boolean aBoolean1, boolean aBoolean2, boolean aBoolean3) {
+    public static CacheArchive loadArchive(int cacheIndexId, boolean aBoolean1, boolean aBoolean2, boolean forceHighPriority) {
         CacheIndex dataIndex = null;
         if(Game.dataChannel != null) {
             dataIndex = new CacheIndex(cacheIndexId, Game.dataChannel, Game.indexChannels[cacheIndexId], 1000000);
         }
-        return new CacheArchive(dataIndex, Game.metaIndex, cacheIndexId, aBoolean1, aBoolean2, aBoolean3);
+        return new CacheArchive(dataIndex, Game.metaIndex, cacheIndexId, aBoolean1, aBoolean2, forceHighPriority);
     }
 
     public static byte[] decompress(byte[] cacheData) {
@@ -153,9 +153,9 @@ public class CacheArchive {
     }
 
     public int getPercentLoaded() {
-        if(aBoolean1800)
+        if(finishedReceiving)
             return 100;
-        if(highPriorityData_todo != null)
+        if(highPriorityContents != null)
             return 99;
         int i = Game.updateServer.getLoadedPercentage(255, cacheIndexId);
         if(i >= 100)
@@ -166,13 +166,16 @@ public class CacheArchive {
 
     public void method198(boolean highPriority, byte[] data, int key, CacheIndex cacheIndex) {
         if(metaIndex == cacheIndex) {
-            if(aBoolean1800)
+            if(finishedReceiving) {
                 throw new RuntimeException();
+            }
+
             if(data == null) {
                 Game.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0,
                         archiveCrcValue);
                 return;
             }
+
             crc32.reset();
             crc32.update(data, 0, data.length);
 
@@ -186,67 +189,74 @@ public class CacheArchive {
             decodeIndex(data);
             postDecodeIndex();
         } else {
-            if(!highPriority && anInt1797 == key)
-                aBoolean1800 = true;
+            if(!highPriority && lastReceivedGroupRequest == key) {
+                finishedReceiving = true;
+            }
+
             if(data == null || data.length <= 2) {
-                aBooleanArray1796[key] = false;
-                if(aBoolean2 || highPriority)
+                hasValidContents[key] = false;
+                if(forceHighPriority || highPriority)
                     Game.updateServer.enqueueFileRequest(highPriority, this, cacheIndexId, key, (byte) 2, groupChecksums[key]);
                 return;
             }
+
             crc32.reset();
             crc32.update(data, 0, data.length - 2);
             int actualChecksum = (int) crc32.getValue();
-            int actualVersion = ((data[-2 + data.length] & 0xff) << 8) + (0xff & data[data.length + -1]);
+            int actualVersion = ((data[data.length - 2] & 0xff) << 8) + (0xff & data[data.length - 1]);
             if(actualChecksum != groupChecksums[key] || actualVersion != groupVersions[key]) {
-                aBooleanArray1796[key] = false;
-                if(aBoolean2 || highPriority)
+                hasValidContents[key] = false;
+                if(forceHighPriority || highPriority)
                     Game.updateServer.enqueueFileRequest(highPriority, this, cacheIndexId, key, (byte) 2, groupChecksums[key]);
                 return;
             }
-            aBooleanArray1796[key] = true;
+
+            hasValidContents[key] = true;
+
             if(highPriority) {
-                highPriorityData_todo[key] = data;
+                highPriorityContents[key] = data;
             }
         }
     }
 
     public void method177(int groupId) {
-        if(dataIndex != null && aBooleanArray1796 != null && aBooleanArray1796[groupId])
+        if(dataIndex != null && hasValidContents != null && hasValidContents[groupId])
             method602(groupId, dataIndex);
         else
             Game.updateServer.enqueueFileRequest(true, this, cacheIndexId, groupId, (byte) 2, groupChecksums[groupId]);
-    }
-
-    public void method174(int arg0) {
-        Game.updateServer.moveRequestToPendingQueue(cacheIndexId, arg0);
     }
 
     /**
      * what is this doing?
      */
     public void postDecodeIndex() {
-        aBooleanArray1796 = new boolean[highPriorityData_todo.length];
-        for(int i_1_ = 0; i_1_ < aBooleanArray1796.length; i_1_++)
-            aBooleanArray1796[i_1_] = false;
-        if(dataIndex == null)
-            aBoolean1800 = true;
-        else {
-            anInt1797 = -1;
-            for(int i_2_ = 0; aBooleanArray1796.length > i_2_; i_2_++) {
-                if(groupSizes[i_2_] > 0) {
-                    OnDemandRequest.createCacheArchiveOnDemandRequest(i_2_, this, dataIndex);
-                    anInt1797 = i_2_;
+        hasValidContents = new boolean[highPriorityContents.length];
+
+        for(int i = 0; i < hasValidContents.length; i++) {
+            hasValidContents[i] = false;
+        }
+
+        if(dataIndex == null) {
+            finishedReceiving = true;
+        } else {
+            lastReceivedGroupRequest = -1;
+
+            for(int i = 0; hasValidContents.length > i; i++) {
+                if(groupSizes[i] > 0) {
+                    OnDemandRequest.createCacheArchiveOnDemandRequest(i, this, dataIndex);
+                    lastReceivedGroupRequest = i;
                 }
             }
-            if(anInt1797 == -1)
-                aBoolean1800 = true;
+
+            if(lastReceivedGroupRequest == -1) {
+                finishedReceiving = true;
+            }
         }
     }
 
     public void method196(boolean arg0, int groupId, boolean highPriority, byte[] data) {
         if(arg0) {
-            if(aBoolean1800) {
+            if(finishedReceiving) {
                 throw new RuntimeException();
             }
             if(metaIndex != null) {
@@ -259,10 +269,10 @@ public class CacheArchive {
             data[data.length - 1] = (byte) groupVersions[groupId];
             if(dataIndex != null) {
                 OnDemandRequest.createByteArrayOnDemandRequest(data, dataIndex, groupId);
-                aBooleanArray1796[groupId] = true;
+                hasValidContents[groupId] = true;
             }
             if(highPriority) {
-                highPriorityData_todo[groupId] = data;
+                highPriorityContents[groupId] = data;
             }
         }
     }
@@ -277,9 +287,9 @@ public class CacheArchive {
     }
 
     public int method201(int arg0) {
-        if(highPriorityData_todo[arg0] != null)
+        if(highPriorityContents[arg0] != null)
             return 100;
-        if(aBooleanArray1796[arg0])
+        if(hasValidContents[arg0])
             return 100;
         return Game.updateServer.getLoadedPercentage(cacheIndexId, arg0);
     }
@@ -287,7 +297,7 @@ public class CacheArchive {
     public int method202() {
         int i = 0;
         int i_3_ = 0;
-        for(int i_4_ = 0; i_4_ < highPriorityData_todo.length; i_4_++) {
+        for(int i_4_ = 0; i_4_ < highPriorityContents.length; i_4_++) {
             if(groupSizes[i_4_] > 0) {
                 i += 100;
                 i_3_ += method201(i_4_);
@@ -323,15 +333,15 @@ public class CacheArchive {
         return method176(groupId, fileId, null);
     }
 
-    public boolean loaded(int arg0, int arg2) {
-        if(arg0 < 0 || arg0 >= fileData.length || fileData[arg0] == null || arg2 < 0 || arg2 >= fileData[arg0].length)
+    public boolean loaded(int groupId, int fileId) {
+        if(groupId < 0 || groupId >= fileData.length || fileData[groupId] == null || fileId < 0 || fileId >= fileData[groupId].length)
             return false;
-        if(fileData[arg0][arg2] != null)
+        if(fileData[groupId][fileId] != null)
             return true;
-        if(highPriorityData_todo[arg0] != null)
+        if(highPriorityContents[groupId] != null)
             return true;
-        method177(arg0);
-        return highPriorityData_todo[arg0] != null;
+        method177(groupId);
+        return highPriorityContents[groupId] != null;
     }
 
     public int getLength() {
@@ -396,8 +406,9 @@ public class CacheArchive {
             groupChecksums = new int[highestGroupId + 1];
             groupSizes = new int[highestGroupId + 1];
             fileIds = new int[highestGroupId + 1][];
-            highPriorityData_todo = new byte[highestGroupId + 1][];
             fileData = new byte[highestGroupId + 1][][];
+
+            highPriorityContents = new byte[highestGroupId + 1][];
 
             if(hasNames != 0) {
                 nameHashes = new int[highestGroupId + 1];
@@ -461,7 +472,7 @@ public class CacheArchive {
     }
 
     public boolean maybe_decode(int groupId, int[] xteaKeys) {
-        if(highPriorityData_todo[groupId] == null)
+        if(highPriorityContents[groupId] == null)
             return false;
 
         int groupSize = groupSizes[groupId];
@@ -482,10 +493,10 @@ public class CacheArchive {
 
         byte[] compressedData;
         if(xteaKeys == null || xteaKeys[0] == 0 && xteaKeys[1] == 0 && xteaKeys[2] == 0 && xteaKeys[3] == 0)
-            compressedData = highPriorityData_todo[groupId];
+            compressedData = highPriorityContents[groupId];
         else {
-            compressedData = new byte[highPriorityData_todo[groupId].length];
-            MovedStatics.copyBytes(highPriorityData_todo[groupId], 0, compressedData, 0, compressedData.length);
+            compressedData = new byte[highPriorityContents[groupId].length];
+            MovedStatics.copyBytes(highPriorityContents[groupId], 0, compressedData, 0, compressedData.length);
             Buffer buffer = new Buffer(compressedData);
             buffer.decryptXTEA(xteaKeys, 5, buffer.buffer.length);
         }
@@ -493,7 +504,7 @@ public class CacheArchive {
         byte[] decompressedData = decompress(compressedData);
 
         if(aBoolean1)
-            highPriorityData_todo[groupId] = null;
+            highPriorityContents[groupId] = null;
 
         if(groupSize > 1) {
             int dataLength = decompressedData.length;
@@ -568,9 +579,9 @@ public class CacheArchive {
         boolean bool = true;
         for(int i = 0; i < groupIds.length; i++) {
             int i_47_ = groupIds[i];
-            if(highPriorityData_todo[i_47_] == null) {
+            if(highPriorityContents[i_47_] == null) {
                 method177(i_47_);
-                if(highPriorityData_todo[i_47_] == null)
+                if(highPriorityContents[i_47_] == null)
                     bool = false;
             }
         }
@@ -578,10 +589,10 @@ public class CacheArchive {
     }
 
     public boolean fileExists(int arg1) {
-        if(highPriorityData_todo[arg1] != null)
+        if(highPriorityContents[arg1] != null)
             return true;
         method177(arg1);
-        if(highPriorityData_todo[arg1] != null)
+        if(highPriorityContents[arg1] != null)
             return true;
         return false;
     }
@@ -621,18 +632,23 @@ public class CacheArchive {
         throw new RuntimeException();
     }
 
-    public boolean method194(String arg0, String arg1) {
-        arg0 = arg0.toLowerCase();
-        arg1 = arg1.toLowerCase();
-        int i = groupNames.getIdByName(RSString.stringHash(arg0));
-        int i_49_ = fileNames[i].getIdByName(RSString.stringHash(arg1));
-        return loaded(i, i_49_);
+    public boolean method194(String groupName, String fileName) {
+        groupName = groupName.toLowerCase();
+        fileName = fileName.toLowerCase();
+        int groupId = groupNames.getIdByName(RSString.stringHash(groupName));
+        int fileId = fileNames[groupId].getIdByName(RSString.stringHash(fileName));
+        return loaded(groupId, fileId);
     }
 
-    public void method195(String fileName) {
+    public void prioritiseByName(String fileName) {
         fileName = fileName.toLowerCase();
-        int i = groupNames.getIdByName(RSString.stringHash(fileName));
-        if(i >= 0)
-            method174(i);
+        int groupId = groupNames.getIdByName(RSString.stringHash(fileName));
+        if(groupId >= 0) {
+            prioritiseRequest(groupId);
+        }
+    }
+
+    private void prioritiseRequest(int groupId) {
+        Game.updateServer.moveRequestToPendingQueue(cacheIndexId, groupId);
     }
 }

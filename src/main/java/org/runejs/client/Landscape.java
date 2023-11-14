@@ -232,15 +232,15 @@ public class Landscape {
                     OutgoingPackets.buffer.putIntBE(1057001181);
                 }
                 if(!loadGeneratedMap) {
-                    int i_42_ = (-6 + MovedStatics.regionX) / 8;
-                    int i_43_ = (MovedStatics.regionY - 6) / 8;
-                    int i_44_ = (6 + MovedStatics.regionY) / 8;
-                    int i_45_ = (MovedStatics.regionX + 6) / 8;
-                    for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
-                        for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {
-                            if(i_42_ > i_46_ || i_46_ > i_45_ || i_47_ < i_43_ || i_47_ > i_44_) {
-                                CacheArchive.gameWorldMapCacheArchive.method195(Native.MAP_NAME_PREFIX_M +i_46_+ Native.MAP_NAME_UNDERSCORE +i_47_);
-                                CacheArchive.gameWorldMapCacheArchive.method195(Native.MAP_NAME_PREFIX_L +i_46_+ Native.MAP_NAME_UNDERSCORE +i_47_);
+                    int minX = (MovedStatics.regionX - 6) / 8;
+                    int minY = (MovedStatics.regionY - 6) / 8;
+                    int maxY = (MovedStatics.regionY + 6) / 8;
+                    int maxX = (MovedStatics.regionX + 6) / 8;
+                    for(int x = minX - 1; x <= maxX + 1; x++) {
+                        for(int y = minY - 1; y <= maxY + 1; y++) {
+                            if(minX > x || x > maxX || y < minY || y > maxY) {
+                                CacheArchive.gameWorldMapCacheArchive.prioritiseByName(Native.MAP_NAME_PREFIX_M + x + Native.MAP_NAME_UNDERSCORE + y);
+                                CacheArchive.gameWorldMapCacheArchive.prioritiseByName(Native.MAP_NAME_PREFIX_L + x + Native.MAP_NAME_UNDERSCORE + y);
                             }
                         }
                     }
