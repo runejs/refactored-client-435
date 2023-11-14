@@ -99,6 +99,8 @@ public class GameInterface extends CachedNode {
      */
     public static int anInt1651 = 0;
     public static int lastItemDragTime = 0;
+    public static int maleGenderButtonSpriteId = -1;
+    public static int femaleGenderButtonSpriteId = -1;
     /**
      * The lightened edge (top and left) color of the scroll indicator chip.
      */
@@ -410,23 +412,23 @@ public class GameInterface extends CachedNode {
             if(gameInterface.scrollHeight <= gameInterface.originalHeight)
                 gameInterface.scrollHeight = gameInterface.originalHeight + 1;
         } else if(type == 324) {
-            if(MovedStatics.anInt1511 == -1) {
-                MovedStatics.anInt1511 = gameInterface.spriteId;
-                Game.anInt1769 = gameInterface.alternateSpriteId;
+            if(maleGenderButtonSpriteId == -1) {
+                maleGenderButtonSpriteId = gameInterface.spriteId;
+                femaleGenderButtonSpriteId = gameInterface.alternateSpriteId;
             }
-            if(!Player.activePlayerAppearance.gender)
-                gameInterface.spriteId = Game.anInt1769;
+            if(!Player.activePlayerAppearance.isFemale)
+                gameInterface.spriteId = femaleGenderButtonSpriteId;
             else
-                gameInterface.spriteId = MovedStatics.anInt1511;
+                gameInterface.spriteId = maleGenderButtonSpriteId;
         } else if(type == 325) {
-            if(MovedStatics.anInt1511 == -1) {
-                Game.anInt1769 = gameInterface.alternateSpriteId;
-                MovedStatics.anInt1511 = gameInterface.spriteId;
+            if(maleGenderButtonSpriteId == -1) {
+                femaleGenderButtonSpriteId = gameInterface.alternateSpriteId;
+                maleGenderButtonSpriteId = gameInterface.spriteId;
             }
-            if(Player.activePlayerAppearance.gender)
-                gameInterface.spriteId = Game.anInt1769;
+            if(Player.activePlayerAppearance.isFemale)
+                gameInterface.spriteId = femaleGenderButtonSpriteId;
             else
-                gameInterface.spriteId = MovedStatics.anInt1511;
+                gameInterface.spriteId = maleGenderButtonSpriteId;
         } else if(type == 327) {
             gameInterface.rotationX = 150;
             gameInterface.rotationZ = 0x7ff & (int) (256.0 * Math.sin((double) MovedStatics.pulseCycle / 40.0));
@@ -1749,9 +1751,9 @@ public class GameInterface extends CachedNode {
             Player.activePlayerAppearance.updateAppearanceColors(i_16_ == 1, i_15_);
         }
         if(i == 324)
-            Player.activePlayerAppearance.setGender(false);
+            Player.activePlayerAppearance.setFemale(false);
         if(i == 325)
-            Player.activePlayerAppearance.setGender(true);
+            Player.activePlayerAppearance.setFemale(true);
         if(i == 326) {
             OutgoingPackets.sendMessage(new SubmitAppearanceOutboundMessage(Player.activePlayerAppearance));
 

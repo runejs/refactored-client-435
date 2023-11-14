@@ -15,7 +15,7 @@ public class PlayerAppearance {
     public static int[] APPEARANCE_INDICES = {8, 11, 4, 6, 9, 7, 10};
     public static NodeCache playerModelCache = new NodeCache(260);
 
-    public boolean gender;
+    public boolean isFemale;
     public int[] appearance;
     public int transformationNpcId;
     public int[] appearanceColors;
@@ -34,7 +34,7 @@ public class PlayerAppearance {
     }
 
     public void sendAppearanceData(int startIndex, Buffer buffer) {
-        buffer.putByte(gender ? 1 : 0);
+        buffer.putByte(isFemale ? 1 : 0);
         for(int i = startIndex; i < 7; i++) {
             int i_0_ = appearance[APPEARANCE_INDICES[i]];
             if(i_0_ != 0)
@@ -74,7 +74,7 @@ public class PlayerAppearance {
                 int appearanceModel = appearance[bodyPart];
                 if(appearanceModel >= 256 && appearanceModel < 512 && !IdentityKit.cache(-256 + appearanceModel).isBodyModelCached())
                     invalid = true;
-                if(appearanceModel >= 512 && !ItemDefinition.forId(appearanceModel + -512, 10).equipmentReady(gender))
+                if(appearanceModel >= 512 && !ItemDefinition.forId(appearanceModel + -512, 10).equipmentReady(isFemale))
                     invalid = true;
             }
             if(invalid) {
@@ -94,7 +94,7 @@ public class PlayerAppearance {
                             models[count++] = bodyModel;
                     }
                     if(part >= 512) {
-                        Model equipment = ItemDefinition.forId(part - 512, 10).asEquipment(gender);
+                        Model equipment = ItemDefinition.forId(part - 512, 10).asEquipment(isFemale);
                         if(equipment != null)
                             models[count++] = equipment;
                     }
@@ -157,7 +157,7 @@ public class PlayerAppearance {
         }
 
         appearanceHash <<= 1;
-        this.appearanceHash = this.appearanceHash + (gender ? 1 : 0);
+        this.appearanceHash = this.appearanceHash + (isFemale ? 1 : 0);
         appearance[5] = appearance5;
         appearance[9] = appearance9;
 
@@ -177,7 +177,7 @@ public class PlayerAppearance {
             if(appearanceId >= 256 && appearanceId < 512 && !IdentityKit.cache(appearanceId - 256).method624()) {
                 bool = true;
             }
-            if(appearanceId >= 512 && !ItemDefinition.forId(-512 + appearanceId, 10).headPieceReady(gender)) {
+            if(appearanceId >= 512 && !ItemDefinition.forId(-512 + appearanceId, 10).headPieceReady(isFemale)) {
                 bool = true;
             }
         }
@@ -197,7 +197,7 @@ public class PlayerAppearance {
                     models[i++] = model;
             }
             if(slotAppearance >= 512) {
-                Model model = ItemDefinition.forId(slotAppearance - 512, 10).asHeadPiece(gender);
+                Model model = ItemDefinition.forId(slotAppearance - 512, 10).asHeadPiece(isFemale);
                 if(model != null)
                     models[i++] = model;
             }
@@ -230,7 +230,7 @@ public class PlayerAppearance {
         }
 
         this.transformationNpcId = transformationNpcId;
-        this.gender = gender;
+        this.isFemale = gender;
         this.appearance = appearance;
         this.appearanceColors = appearanceColors;
 
@@ -238,7 +238,7 @@ public class PlayerAppearance {
     }
 
     public void loadCachedAppearance(int unknown1, boolean unknown2) {
-        if(unknown1 != 1 || !gender) {
+        if(unknown1 != 1 || !isFemale) {
             int i = appearance[APPEARANCE_INDICES[unknown1]];
             if(i != 0) {
                 i -= 256;
@@ -251,16 +251,16 @@ public class PlayerAppearance {
                     } else if(--i < 0)
                         i = -1 + IdentityKit.count;
                     identityKit = IdentityKit.cache(i);
-                } while(identityKit == null || identityKit.nonSelectable || identityKit.bodyPartId != unknown1 + (!gender ? 0 : 7));
+                } while(identityKit == null || identityKit.nonSelectable || identityKit.bodyPartId != unknown1 + (!isFemale ? 0 : 7));
                 appearance[APPEARANCE_INDICES[unknown1]] = i + 256;
                 updateAppearanceCache();
             }
         }
     }
 
-    public void setGender(boolean gender) {
-        if(this.gender == !gender) {
-            setPlayerAppearance(null, gender, appearanceColors, -1);
+    public void setFemale(boolean female) {
+        if(this.isFemale == !female) {
+            setPlayerAppearance(null, female, appearanceColors, -1);
         }
     }
 

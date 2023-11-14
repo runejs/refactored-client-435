@@ -896,7 +896,7 @@ public class ClientScriptRunner extends Node {
                                                 stringValueIndex -= 2;
                                                 String class1 = scriptStringValues[stringValueIndex];
                                                 String class1_82_ = scriptStringValues[stringValueIndex + 1];
-                                                if(Player.localPlayer.playerAppearance == null || !Player.localPlayer.playerAppearance.gender) {
+                                                if(Player.localPlayer.playerAppearance == null || !Player.localPlayer.playerAppearance.isFemale) {
                                                     scriptStringValues[stringValueIndex++] = class1;
                                                 } else {
                                                     scriptStringValues[stringValueIndex++] = class1_82_;

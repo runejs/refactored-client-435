@@ -11,7 +11,7 @@ public class SubmitAppearanceMessageEncoder implements MessageEncoder<SubmitAppe
     public PacketBuffer encode(SubmitAppearanceOutboundMessage message) {
         PacketBuffer buffer = OutgoingPackets.openFixedSizePacket(13, 231);
 
-        buffer.putByte(message.appearance.gender ? 1 : 0);
+        buffer.putByte(message.appearance.isFemale ? 1 : 0);
         for(int i = 0; i < 7; i++) {
             int i_0_ = message.appearance.appearance[PlayerAppearance.APPEARANCE_INDICES[i]];
             if(i_0_ != 0)

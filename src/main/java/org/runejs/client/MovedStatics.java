@@ -120,7 +120,6 @@ public class MovedStatics {
     public static volatile boolean clearScreen = true;
     public static ProducingGraphicsBuffer gameScreenImageProducer;
     public static int destinationX = 0;
-    public static int anInt1511 = -1;
     /**
      * The hint (arrow) icon sprites.
      */

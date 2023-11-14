@@ -161,7 +161,6 @@ public class Game {
     }
 
     public static int menuOffsetY;
-    public static int anInt1769 = -1;
     public static int widgetSelected = 0;
     public static Signlink signlink;
     public static CacheIndex metaIndex;
