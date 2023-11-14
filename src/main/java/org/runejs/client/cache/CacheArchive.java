@@ -244,7 +244,7 @@ public class CacheArchive {
         }
     }
 
-    public void method196(boolean arg0, int arg2, boolean highPriority, byte[] data) {
+    public void method196(boolean arg0, int groupId, boolean highPriority, byte[] data) {
         if(arg0) {
             if(aBoolean1800) {
                 throw new RuntimeException();
@@ -255,14 +255,14 @@ public class CacheArchive {
             decodeIndex(data);
             postDecodeIndex();
         } else {
-            data[data.length - 2] = (byte) (groupVersions[arg2] >> 8);
-            data[data.length + -1] = (byte) groupVersions[arg2];
+            data[data.length - 2] = (byte) (groupVersions[groupId] >> 8);
+            data[data.length - 1] = (byte) groupVersions[groupId];
             if(dataIndex != null) {
-                OnDemandRequest.createByteArrayOnDemandRequest(data, dataIndex, arg2);
-                aBooleanArray1796[arg2] = true;
+                OnDemandRequest.createByteArrayOnDemandRequest(data, dataIndex, groupId);
+                aBooleanArray1796[groupId] = true;
             }
             if(highPriority) {
-                highPriorityData_todo[arg2] = data;
+                highPriorityData_todo[groupId] = data;
             }
         }
     }
@@ -308,16 +308,13 @@ public class CacheArchive {
     }
 
     /**
-     * Unloads a cache file to free up it's memory
-     * @param arg0
-     * @param arg1
+     * Unloads a cache group to free up its memory
+     *
+     * @param groupId
      */
-    public void unloadFile(int arg0, int arg1) {
-        int i = 0;
-        if(arg0 == 1) {
-            for(/**/; i < fileData[arg1].length; i++)
-                fileData[arg1][i] = null;
-        }
+    public void unloadGroup(int groupId) {
+        for(int i = 0; i < fileData[groupId].length; i++)
+            fileData[groupId][i] = null;
     }
 
     public byte[] getFile(int groupId, int fileId) {
@@ -341,14 +338,14 @@ public class CacheArchive {
         return fileData.length;
     }
 
-    public byte[] method176(int groupId, int fileId, int[] arg2) {
+    public byte[] method176(int groupId, int fileId, int[] xteaKeys) {
         if(groupId < 0 || groupId >= fileData.length || fileData[groupId] == null || fileId < 0 || fileId >= fileData[groupId].length)
             return null;
         if(fileData[groupId][fileId] == null) {
-            boolean bool = method181(groupId, arg2);
+            boolean bool = maybe_decode(groupId, xteaKeys);
             if(!bool) {
                 method177(groupId);
-                bool = method181(groupId, arg2);
+                bool = maybe_decode(groupId, xteaKeys);
                 if(!bool)
                     return null;
             }
@@ -463,66 +460,85 @@ public class CacheArchive {
         return fileNames[groupId].getIdByName(RSString.stringHash(fileName));
     }
 
-    public boolean method181(int groupId, int[] arg2) {
+    public boolean maybe_decode(int groupId, int[] xteaKeys) {
         if(highPriorityData_todo[groupId] == null)
             return false;
-        int i = groupSizes[groupId];
-        byte[][] is = fileData[groupId];
-        int[] is_19_ = fileIds[groupId];
-        boolean bool = true;
-        for(int i_20_ = 0; i_20_ < i; i_20_++) {
-            if(is[is_19_[i_20_]] == null) {
-                bool = false;
+
+        int groupSize = groupSizes[groupId];
+        byte[][] groupFileData = fileData[groupId];
+        int[] groupFileIds = fileIds[groupId];
+
+        boolean allFilesPresent = true;
+
+        for(int i = 0; i < groupSize; i++) {
+            if(groupFileData[groupFileIds[i]] == null) {
+                allFilesPresent = false;
                 break;
             }
         }
-        if(bool)
+
+        if(allFilesPresent)
             return true;
-        byte[] is_21_;
-        if(arg2 == null || arg2[0] == 0 && arg2[1] == 0 && arg2[2] == 0 && arg2[3] == 0)
-            is_21_ = highPriorityData_todo[groupId];
+
+        byte[] compressedData;
+        if(xteaKeys == null || xteaKeys[0] == 0 && xteaKeys[1] == 0 && xteaKeys[2] == 0 && xteaKeys[3] == 0)
+            compressedData = highPriorityData_todo[groupId];
         else {
-            is_21_ = new byte[highPriorityData_todo[groupId].length];
-            MovedStatics.copyBytes(highPriorityData_todo[groupId], 0, is_21_, 0, is_21_.length);
-            Buffer class40_sub1 = new Buffer(is_21_);
-            class40_sub1.method483(arg2, class40_sub1.buffer.length, 5);
+            compressedData = new byte[highPriorityData_todo[groupId].length];
+            MovedStatics.copyBytes(highPriorityData_todo[groupId], 0, compressedData, 0, compressedData.length);
+            Buffer buffer = new Buffer(compressedData);
+            buffer.decryptXTEA(xteaKeys, 5, buffer.buffer.length);
         }
-        byte[] is_22_;
-        is_22_ = decompress(is_21_);
+
+        byte[] decompressedData = decompress(compressedData);
+
         if(aBoolean1)
             highPriorityData_todo[groupId] = null;
-        if(i > 1) {
-            int i_23_ = is_22_.length;
-            int i_24_ = is_22_[--i_23_] & 0xff;
-            Buffer class40_sub1 = new Buffer(is_22_);
-            i_23_ -= 4 * i_24_ * i;
-            class40_sub1.currentPosition = i_23_;
-            int[] is_25_ = new int[i];
-            for(int i_26_ = 0; i_24_ > i_26_; i_26_++) {
-                int i_27_ = 0;
-                for(int i_28_ = 0; i_28_ < i; i_28_++) {
-                    i_27_ += class40_sub1.getIntBE();
-                    is_25_[i_28_] += i_27_;
+
+        if(groupSize > 1) {
+            int dataLength = decompressedData.length;
+            int stripeCount = decompressedData[--dataLength] & 0xff;
+            Buffer buffer = new Buffer(decompressedData);
+            dataLength -= 4 * stripeCount * groupSize;
+            buffer.currentPosition = dataLength;
+
+            int[] fileSizes = new int[groupSize];
+            for(int stripe = 0; stripeCount > stripe; stripe++) {
+                int currentLength = 0;
+                for(int f = 0; f < groupSize; f++) {
+                    int delta = buffer.getIntBE();
+
+                    currentLength += delta;
+                    fileSizes[f] += currentLength;
                 }
             }
-            for(int i_29_ = 0; i_29_ < i; i_29_++) {
-                if(is[is_19_[i_29_]] == null)
-                    is[is_19_[i_29_]] = new byte[is_25_[i_29_]];
-                is_25_[i_29_] = 0;
+
+            for(int f = 0; f < groupSize; f++) {
+                if(groupFileData[groupFileIds[f]] == null)
+                    groupFileData[groupFileIds[f]] = new byte[fileSizes[f]];
+
+                fileSizes[f] = 0;
             }
-            class40_sub1.currentPosition = i_23_;
-            int i_30_ = 0;
-            for(int i_31_ = 0; i_24_ > i_31_; i_31_++) {
-                int i_32_ = 0;
-                for(int i_33_ = 0; i_33_ < i; i_33_++) {
-                    i_32_ += class40_sub1.getIntBE();
-                    MovedStatics.copyBytes(is_22_, i_30_, is[is_19_[i_33_]], is_25_[i_33_], i_32_);
-                    is_25_[i_33_] += i_32_;
-                    i_30_ += i_32_;
+
+            buffer.currentPosition = dataLength;
+            int decompressedDataPointer = 0;
+            for(int stripe = 0; stripeCount > stripe; stripe++) {
+                int size = 0;
+                for(int f = 0; f < groupSize; f++) {
+                    int stripeLength = fileSizes[f];
+
+                    int delta = buffer.getIntBE();
+                    size += delta;
+
+                    MovedStatics.copyBytes(decompressedData, decompressedDataPointer, groupFileData[groupFileIds[f]], stripeLength, size);
+                    fileSizes[f] += size;
+                    decompressedDataPointer += size;
                 }
             }
-        } else
-            is[is_19_[0]] = is_22_;
+        } else {
+            groupFileData[groupFileIds[0]] = decompressedData;
+        }
+
         return true;
     }
 
@@ -531,10 +547,10 @@ public class CacheArchive {
             return null;
 
         if(fileData[groupId][fileId] == null) {
-            boolean bool = method181(groupId, null);
+            boolean bool = maybe_decode(groupId, null);
             if(!bool) {
                 method177(groupId);
-                bool = method181(groupId, null);
+                bool = maybe_decode(groupId, null);
                 if(!bool)
                     return null;
             }

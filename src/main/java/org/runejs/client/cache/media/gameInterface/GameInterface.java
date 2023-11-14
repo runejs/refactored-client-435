@@ -530,7 +530,7 @@ public class GameInterface extends CachedNode {
             return;
         }
 
-        CacheArchive.gameInterfaceCacheArchive.unloadFile(1, interfaceId);
+        CacheArchive.gameInterfaceCacheArchive.unloadGroup(interfaceId);
 
         if(cachedInterfaces[interfaceId] != null) {
             boolean deleteFromCache = true;
