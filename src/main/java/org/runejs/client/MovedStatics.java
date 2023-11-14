@@ -2873,15 +2873,15 @@ public class MovedStatics {
 
     public static int method988(CacheArchive arg0, CacheArchive arg1) {
         int i = 0;
-        if(arg0.method194(Native.titleImage, ""))
+        if(arg0.loaded(Native.titleImage, ""))
             i++;
-        if(arg1.method194(Native.logo, ""))
+        if(arg1.loaded(Native.logo, ""))
             i++;
-        if(arg1.method194(Native.titleBox, ""))
+        if(arg1.loaded(Native.titleBox, ""))
             i++;
-        if(arg1.method194(Native.titleButton, ""))
+        if(arg1.loaded(Native.titleButton, ""))
             i++;
-        if(arg1.method194(Native.runes, ""))
+        if(arg1.loaded(Native.runes, ""))
             i++;
         return i;
     }
@@ -3012,61 +3012,61 @@ public class MovedStatics {
 
     public static int method955(CacheArchive arg0) {
         int i = 0;
-        if (arg0.method194(Native.invback, Native.aClass1_305)) {
+        if (arg0.loaded(Native.invback, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.chatback, Native.aClass1_305)) {
+        if (arg0.loaded(Native.chatback, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.mapBack, Native.aClass1_305)) {
+        if (arg0.loaded(Native.mapBack, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackbase1, Native.aClass1_305)) {
+        if (arg0.loaded(Native.imgBackbase1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackbase2, Native.aClass1_305)) {
+        if (arg0.loaded(Native.imgBackbase2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackhmid1, Native.aClass1_305)) {
+        if (arg0.loaded(Native.imgBackhmid1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackleft1, Native.aClass1_305)) {
+        if (arg0.loaded(Native.imgBackleft1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackleft2, Native.aClass1_305)) {
+        if (arg0.loaded(Native.imgBackleft2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackright1, Native.aClass1_305)) {
+        if (arg0.loaded(Native.imgBackright1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackright2, Native.aClass1_305)) {
+        if (arg0.loaded(Native.imgBackright2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBacktop1, Native.aClass1_305)) {
+        if (arg0.loaded(Native.imgBacktop1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackvmid1, Native.aClass1_305)) {
+        if (arg0.loaded(Native.imgBackvmid1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackvmid2, Native.aClass1_305)) {
+        if (arg0.loaded(Native.imgBackvmid2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackvmid3, Native.aClass1_305)) {
+        if (arg0.loaded(Native.imgBackvmid3, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackhmid2, Native.aClass1_305)) {
+        if (arg0.loaded(Native.imgBackhmid2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.redstone1, Native.aClass1_305)) {
+        if (arg0.loaded(Native.redstone1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.redstone2, Native.aClass1_305)) {
+        if (arg0.loaded(Native.redstone2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.redstone3, Native.aClass1_305)) {
+        if (arg0.loaded(Native.redstone3, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.sideIcons, Native.aClass1_305)) {
+        if (arg0.loaded(Native.sideIcons, Native.aClass1_305)) {
             i++;
         }
         return i;

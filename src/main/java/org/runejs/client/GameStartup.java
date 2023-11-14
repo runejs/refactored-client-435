@@ -254,7 +254,7 @@ public class GameStartup {
             startupStage = 120;
             loadingBarPercentage = 94;
         } else if (startupStage == 120) {
-            if (CacheArchive.huffmanCacheArchive.method194(Native.huffman, "")) {
+            if (CacheArchive.huffmanCacheArchive.loaded(Native.huffman, "")) {
                 HuffmanEncoding huffmanEncoding = new HuffmanEncoding(CacheArchive.huffmanCacheArchive.method170(Native.huffman, ""));
                 MovedStatics.method778(huffmanEncoding);
                 startupStage = 130;

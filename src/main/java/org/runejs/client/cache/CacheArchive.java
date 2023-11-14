@@ -344,6 +344,14 @@ public class CacheArchive {
         return highPriorityContents[groupId] != null;
     }
 
+    public boolean loaded(String groupName, String fileName) {
+        groupName = groupName.toLowerCase();
+        fileName = fileName.toLowerCase();
+        int groupId = groupNames.getIdByName(RSString.stringHash(groupName));
+        int fileId = fileNames[groupId].getIdByName(RSString.stringHash(fileName));
+        return loaded(groupId, fileId);
+    }
+
     public int getLength() {
         return fileData.length;
     }
@@ -630,14 +638,6 @@ public class CacheArchive {
         if(fileData[arg1].length == 1)
             return method182(arg1, 0);
         throw new RuntimeException();
-    }
-
-    public boolean method194(String groupName, String fileName) {
-        groupName = groupName.toLowerCase();
-        fileName = fileName.toLowerCase();
-        int groupId = groupNames.getIdByName(RSString.stringHash(groupName));
-        int fileId = fileNames[groupId].getIdByName(RSString.stringHash(fileName));
-        return loaded(groupId, fileId);
     }
 
     public void prioritiseByName(String fileName) {
