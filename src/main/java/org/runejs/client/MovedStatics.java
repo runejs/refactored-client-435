@@ -106,7 +106,12 @@ public class MovedStatics {
     public static int onBuildTimePlane = 0;
     public static int anInt1996 = 0;
     public static HashTable aClass23_805;
-    public static int anInt848 = 0;
+    /**
+     * Whether to draw the right-click menu with item name separated
+     *
+     * TODO (jkm) what is this? it's never modified in code
+     */
+    public static int drawMenuSeparateName = 0;
     public static int[] anIntArray852;
     public static long localUsernameId;
     public static int anInt2621 = 0;
@@ -2181,17 +2186,6 @@ public class MovedStatics {
         return string;
     }
 
-    public static String method903(int arg0) {
-        String class1 = Integer.toString(arg0);
-        for(int i = -3 + class1.length(); i > 0; i -= 3)
-            class1 = class1.substring(0, i) + Native.comma_b + class1.substring(i);
-        if(class1.length() > 8)
-            class1 = Native.green + class1.substring(0, -8 + class1.length()) + English.suffixMillion + Native.whiteOpeningParenthesis + class1 + Native.rightParenthesis;
-        else if(class1.length() > 4)
-            class1 = Native.cyan + class1.substring(0, class1.length() + -4) + Native.suffixK + Native.whiteOpeningParenthesis + class1 + Native.rightParenthesis;
-        return Native.whitespace_b + class1;
-    }
-
     public static void threadSleep(long ms) {
         if (ms <= 0L) {
             return;
@@ -2217,8 +2211,8 @@ public class MovedStatics {
                 GameInterface.redrawTabArea = true;
         }
         if(menuOpen && menuScreenArea == 1) {
-            if(anInt848 == 1)
-                method398();
+            if(drawMenuSeparateName == 1)
+                drawMenuItemSeparateName();
             else if(ScreenController.frameMode == ScreenMode.FIXED)
                 drawMenu(0,0);
         }
@@ -2319,56 +2313,68 @@ public class MovedStatics {
         }
     }
 
-    public static void method398() {
-        String class1 = null;
+    public static void drawMenuItemSeparateName() {
+        String itemName = null;
+
+        // find the item name by looking for coloured text within the options
         for(int i = 0; menuActionRow > i; i++) {
             if(menuActionTexts[i].contains(Native.lightRed)) {
-                class1 = menuActionTexts[i].substring(menuActionTexts[i].indexOf(Native.lightRed));
+                itemName = menuActionTexts[i].substring(menuActionTexts[i].indexOf(Native.lightRed));
                 break;
             }
         }
-        if(class1 == null)
+
+        // if no name then draw the standard menu
+        if(itemName == null)
             drawMenu(0,0);
         else {
-            int i = menuWidth;
-            int i_0_ = menuOffsetX;
-            if(i > 190)
-                i = 190;
-            int i_1_ = menuHeight;
-            int i_2_ = Game.menuOffsetY;
-            if(i_0_ < 0)
-                i_0_ = 0;
-            int i_3_ = 6116423;
-            Rasterizer.drawFilledRectangle(i_0_, i_2_, i, i_1_, i_3_);
-            Rasterizer.drawFilledRectangle(i_0_ + 1, i_2_ + 1, -2 + i, 16, 0);
-            Rasterizer.drawUnfilledRectangle(i_0_ + 1, 18 + i_2_, -2 + i, i_1_ + -19, 0);
-            TypeFace.fontBold.drawShadowedString(class1, 3 + i_0_, 14 + i_2_, false, i_3_);
-            int i_4_ = MouseHandler.mouseX;
-            int i_5_ = MouseHandler.mouseY;
+            int width = menuWidth;
+            int x = menuOffsetX;
+            if(width > 190)
+                width = 190;
+            int height = menuHeight;
+            int y = Game.menuOffsetY;
+            if(x < 0)
+                x = 0;
+
+            int background = 0x5D5447;
+
+            Rasterizer.drawFilledRectangle(x, y, width, height, background);
+            Rasterizer.drawFilledRectangle(x + 1, y + 1, -2 + width, 16, 0);
+            Rasterizer.drawUnfilledRectangle(x + 1, 18 + y, -2 + width, height + -19, 0);
+            TypeFace.fontBold.drawShadowedString(itemName, 3 + x, 14 + y, false, background);
+
+            int mouseX = MouseHandler.mouseX;
+            int mouseY = MouseHandler.mouseY;
+
             if(menuScreenArea == 0) {
-                i_4_ -= 4;
-                i_5_ -= 4;
+                mouseX -= 4;
+                mouseY -= 4;
             }
             if(menuScreenArea == 1) {
-                i_4_ -= 553;
-                i_5_ -= 205;
+                mouseX -= 553;
+                mouseY -= 205;
             }
             if(menuScreenArea == 2) {
-                i_5_ -= 357;
-                i_4_ -= 17;
+                mouseY -= 357;
+                mouseX -= 17;
             }
-            for(int i_6_ = 0; i_6_ < menuActionRow; i_6_++) {
-                int i_7_ = 31 + i_2_ + (menuActionRow + -1 + -i_6_) * 15;
-                String class1_8_ = menuActionTexts[i_6_];
-                int i_9_ = 16777215;
-                if(class1_8_.endsWith(class1)) {
-                    class1_8_ = class1_8_.substring(0, class1_8_.length() - class1.length());
-                    if(class1_8_.endsWith(Native.whitespace))
-                        class1_8_ = class1_8_.substring(0, class1_8_.length() + -Native.whitespace.length());
+
+            for(int row = 0; row < menuActionRow; row++) {
+                int rowY = 31 + y + (menuActionRow - row - 1) * 15;
+                String rowText = menuActionTexts[row];
+                int rowBackground = 0xFFFFFF;
+
+                if(rowText.endsWith(itemName)) {
+                    rowText = rowText.substring(0, rowText.length() - itemName.length());
+                    if(rowText.endsWith(Native.whitespace))
+                        rowText = rowText.substring(0, rowText.length() + -Native.whitespace.length());
                 }
-                if(i_0_ < i_4_ && i_4_ < i_0_ + i && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)
-                    i_9_ = 16776960;
-                TypeFace.fontBold.drawShadowedString(class1_8_, 3 + i_0_, i_7_, true, i_9_);
+
+                if(x < mouseX && mouseX < x + width && -13 + rowY < mouseY && 3 + rowY > mouseY)
+                    rowBackground = 0xFFFF00;
+
+                TypeFace.fontBold.drawShadowedString(rowText, 3 + x, rowY, true, rowBackground);
             }
         }
     }

@@ -399,7 +399,7 @@ public class Game {
                                 if (text == null)
                                     text = "null";
                                 if (itemDefinition.stackable == 1 || gameInterface.itemAmount != 1)
-                                    text = text + Native.amountPrefixX + MovedStatics.method903(gameInterface.itemAmount);
+                                    text = text + Native.amountPrefixX + formatAmountString(gameInterface.itemAmount);
                             }
                             if (gameInterface.actionType == 6 && MovedStatics.lastContinueTextWidgetId == gameInterface.id) {
                                 textColor = gameInterface.textColor;
@@ -579,7 +579,7 @@ public class Game {
                                         if (itemName == null)
                                             itemName = "null";
                                         if (itemDefinition.stackable == 1 || gameInterface.itemAmounts[itemSlot] != 1)
-                                            itemName = itemName + Native.amountPrefixX + MovedStatics.method903(gameInterface.itemAmounts[itemSlot]);
+                                            itemName = itemName + Native.amountPrefixX + formatAmountString(gameInterface.itemAmounts[itemSlot]);
                                         int itemX = col * (gameInterface.itemSpritePadsX + 115) + absoluteX;
                                         int itemY = row * (gameInterface.itemSpritePadsY + 12) + absoluteY;
                                         if (gameInterface.xTextAlignment == 0)
@@ -1865,6 +1865,17 @@ public class Game {
             } else
                 spotAnim.unlink();
         }
+    }
+
+    public static String formatAmountString(int amount) {
+        String amountString = Integer.toString(amount);
+        for(int i = -3 + amountString.length(); i > 0; i -= 3)
+            amountString = amountString.substring(0, i) + Native.comma_b + amountString.substring(i);
+        if(amountString.length() > 8)
+            amountString = Native.green + amountString.substring(0, -8 + amountString.length()) + English.suffixMillion + Native.whiteOpeningParenthesis + amountString + Native.rightParenthesis;
+        else if(amountString.length() > 4)
+            amountString = Native.cyan + amountString.substring(0, amountString.length() + -4) + Native.suffixK + Native.whiteOpeningParenthesis + amountString + Native.rightParenthesis;
+        return Native.whitespace_b + amountString;
     }
 
     public void method35(int arg1) {
