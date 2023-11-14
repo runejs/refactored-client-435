@@ -117,7 +117,7 @@ public class Texture extends Node {
 
     public boolean method869(double brightness, int textureSize, CacheArchive imageArchive) {
         for(int i = 0; i < spriteIds.length; i++) {
-            if(imageArchive.method193(spriteIds[i]) == null)
+            if(imageArchive.getFileContents(spriteIds[i]) == null)
                 return false;
         }
         int textureSizeArea = textureSize * textureSize;

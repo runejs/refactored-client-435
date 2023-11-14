@@ -1809,18 +1809,18 @@ public class Game {
         GameInterface.clearInterfaceCaches();
         ((Class35) Rasterizer3D.interface3).clearTextures();
         ClientScript.clearClientScriptCache();
-        CacheArchive.skeletonCacheArchive.clearCache();
-        CacheArchive.skinDefinitionCacheArchive.clearCache();
-        CacheArchive.gameInterfaceCacheArchive.clearCache();
-        CacheArchive.soundEffectCacheArchive.clearCache();
-        CacheArchive.gameWorldMapCacheArchive.clearCache();
-        CacheArchive.musicCacheArchive.clearCache();
-        CacheArchive.modelCacheArchive.clearCache();
-        CacheArchive.gameImageCacheArchive.clearCache();
-        CacheArchive.gameTextureCacheArchive.clearCache();
-        CacheArchive.huffmanCacheArchive.clearCache();
-        CacheArchive.jingleCacheArchive.clearCache();
-        CacheArchive.clientScriptCacheArchive.clearCache();
+        CacheArchive.skeletonCacheArchive.clearFileContentCache();
+        CacheArchive.skinDefinitionCacheArchive.clearFileContentCache();
+        CacheArchive.gameInterfaceCacheArchive.clearFileContentCache();
+        CacheArchive.soundEffectCacheArchive.clearFileContentCache();
+        CacheArchive.gameWorldMapCacheArchive.clearFileContentCache();
+        CacheArchive.musicCacheArchive.clearFileContentCache();
+        CacheArchive.modelCacheArchive.clearFileContentCache();
+        CacheArchive.gameImageCacheArchive.clearFileContentCache();
+        CacheArchive.gameTextureCacheArchive.clearFileContentCache();
+        CacheArchive.huffmanCacheArchive.clearFileContentCache();
+        CacheArchive.jingleCacheArchive.clearFileContentCache();
+        CacheArchive.clientScriptCacheArchive.clearFileContentCache();
     }
 
     public static void renderProjectiles() {

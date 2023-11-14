@@ -479,7 +479,7 @@ public class GameInterface extends CachedNode {
             return true;
         }
 
-        if(!CacheArchive.gameInterfaceCacheArchive.fileExists(interfaceId)) {
+        if(!CacheArchive.gameInterfaceCacheArchive.groupExists(interfaceId)) {
             return false;
         }
 

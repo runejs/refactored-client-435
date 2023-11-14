@@ -70,7 +70,7 @@ public class Landscape {
                 }
             }
             if(objectDataIds[i] != -1 && objectData[i] == null) {
-                objectData[i] = CacheArchive.gameWorldMapCacheArchive.method176(objectDataIds[i], 0, xteaKeys[i]);
+                objectData[i] = CacheArchive.gameWorldMapCacheArchive.getEncryptableFileContents(objectDataIds[i], 0, xteaKeys[i]);
                 if(objectData[i] == null) {
                     Game.missingLandscapeFiles++;
                     bool = false;

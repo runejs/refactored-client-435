@@ -7,7 +7,7 @@ public class OnDemandRequestProcessor implements Runnable {
 
     private static int anInt1987 = 0;
 
-    private static LinkedList aLinkedList_2604 = new LinkedList();
+    private static LinkedList receivedResponses = new LinkedList();
 
     private static Object lock = new Object();
 
@@ -36,11 +36,11 @@ public class OnDemandRequestProcessor implements Runnable {
         for(; ; ) {
             OnDemandRequest onDemandRequest;
             synchronized(queue) {
-                onDemandRequest = (OnDemandRequest) aLinkedList_2604.removeFirst();
+                onDemandRequest = (OnDemandRequest) receivedResponses.removeFirst();
             }
             if(onDemandRequest == null)
                 break;
-            onDemandRequest.cacheArchive.method198(false, onDemandRequest.data, (int) onDemandRequest.key, onDemandRequest.cacheIndex);
+            onDemandRequest.cacheArchive.attemptDecodeData(false, onDemandRequest.data, (int) onDemandRequest.key, onDemandRequest.cacheIndex);
         }
     }
 
@@ -70,7 +70,7 @@ public class OnDemandRequestProcessor implements Runnable {
                     } else if(onDemandRequest.type == 1) { // CacheArchive data
                         onDemandRequest.data = onDemandRequest.cacheIndex.read((int) onDemandRequest.key);
                         synchronized(queue) {
-                            aLinkedList_2604.addLast(onDemandRequest);
+                            receivedResponses.addLast(onDemandRequest);
                         }
                     }
                     synchronized(lock) {

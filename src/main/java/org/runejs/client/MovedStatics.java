@@ -3260,7 +3260,7 @@ public class MovedStatics {
      * TODO what is this? sprites?
      */
     public static boolean method472(CacheArchive imageArchive, int id) {
-        byte[] is = imageArchive.method187(id);
+        byte[] is = imageArchive.getFile(id);
         if(is == null) {
             return false;
         }

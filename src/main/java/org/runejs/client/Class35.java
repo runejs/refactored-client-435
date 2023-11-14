@@ -20,7 +20,7 @@ public class Class35 implements Interface3 {
         brightness = arg3;
         textureSize = arg4;
         anInt1753 = anInt1752;
-        int[] cacheTextures = gameTextureCacheArchive.getFileIds(0, true);
+        int[] cacheTextures = gameTextureCacheArchive.getFileIds(0);
         int textureCount = cacheTextures.length;
         textures = new Texture[gameTextureCacheArchive.fileLength(0)];
         for(int texturePointer = 0; textureCount > texturePointer; texturePointer++) {

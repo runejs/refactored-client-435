@@ -24,7 +24,7 @@ public class Class40_Sub5_Sub15 extends CachedNode {
         LinkedList linkedList = new LinkedList();
         int i = skeletonArchive.fileLength(groupId);
         aFrameDefinitionArray2794 = new FrameDefinition[i];
-        int[] skeletonFileIds = skeletonArchive.getFileIds(groupId, true);
+        int[] skeletonFileIds = skeletonArchive.getFileIds(groupId);
         for(int i_0_ = 0; skeletonFileIds.length > i_0_; i_0_++) {
             byte[] skeleton = skeletonArchive.getFile(groupId, skeletonFileIds[i_0_]);
             FramemapDefinition framemapDefinition = null;
@@ -38,9 +38,9 @@ public class Class40_Sub5_Sub15 extends CachedNode {
             if(framemapDefinition == null) {
                 byte[] framemapData;
                 if(!arg3)
-                    framemapData = skinArchive.method182(i_2_, 0);
+                    framemapData = skinArchive.getFileContents(i_2_, 0);
                 else
-                    framemapData = skinArchive.method182(0, i_2_);
+                    framemapData = skinArchive.getFileContents(0, i_2_);
                 framemapDefinition = new FramemapDefinition(i_2_, framemapDefinitionLoader, framemapData);
                 linkedList.addLast(framemapDefinition);
             }
