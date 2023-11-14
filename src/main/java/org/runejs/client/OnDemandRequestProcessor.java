@@ -3,10 +3,7 @@ package org.runejs.client;
 import org.runejs.client.node.OnDemandRequest;
 
 public class OnDemandRequestProcessor implements Runnable {
-    /**
-     * Cache archive cache?
-     */
-    public static LinkedList aLinkedList_53 = new LinkedList();
+    public static LinkedList queue = new LinkedList();
 
     private static int anInt1987 = 0;
 
@@ -38,7 +35,7 @@ public class OnDemandRequestProcessor implements Runnable {
     public static void handleRequests() {
         for(; ; ) {
             OnDemandRequest onDemandRequest;
-            synchronized(aLinkedList_53) {
+            synchronized(queue) {
                 onDemandRequest = (OnDemandRequest) aLinkedList_2604.removeFirst();
             }
             if(onDemandRequest == null)
@@ -51,8 +48,8 @@ public class OnDemandRequestProcessor implements Runnable {
         try {
             for(; ; ) {
                 OnDemandRequest onDemandRequest;
-                synchronized(aLinkedList_53) {
-                    onDemandRequest = (OnDemandRequest) aLinkedList_53.peekFirst();
+                synchronized(queue) {
+                    onDemandRequest = (OnDemandRequest) queue.peekFirst();
                 }
                 if(onDemandRequest == null) {
                     MovedStatics.threadSleep(100L);
@@ -67,12 +64,12 @@ public class OnDemandRequestProcessor implements Runnable {
                 } else {
                     if(onDemandRequest.type == 0) { // byte array data
                         onDemandRequest.cacheIndex.write(onDemandRequest.data, (int) onDemandRequest.key, onDemandRequest.data.length);
-                        synchronized(aLinkedList_53) {
+                        synchronized(queue) {
                             onDemandRequest.unlink();
                         }
                     } else if(onDemandRequest.type == 1) { // CacheArchive data
                         onDemandRequest.data = onDemandRequest.cacheIndex.read((int) onDemandRequest.key);
-                        synchronized(aLinkedList_53) {
+                        synchronized(queue) {
                             aLinkedList_2604.addLast(onDemandRequest);
                         }
                     }

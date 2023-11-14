@@ -117,21 +117,23 @@ public class CacheArchive {
         return MovedStatics.calculateCrc8(0, size, data);
     }
 
-    private static void method602(CacheArchive arg0, int indexId, CacheIndex meta) {
-        byte[] is = null;
-        synchronized(OnDemandRequestProcessor.aLinkedList_53) {
-            for(OnDemandRequest onDemandRequest = (OnDemandRequest) OnDemandRequestProcessor.aLinkedList_53.peekFirst(); onDemandRequest != null; onDemandRequest = (OnDemandRequest) OnDemandRequestProcessor.aLinkedList_53.pollFirst()) {
-                if((long) indexId == onDemandRequest.key && meta == onDemandRequest.cacheIndex && onDemandRequest.type == 0) {
-                    is = onDemandRequest.data;
+    private void method602(int fileId, CacheIndex index) {
+        byte[] dataFromQueue = null;
+
+        synchronized(OnDemandRequestProcessor.queue) {
+            for(OnDemandRequest onDemandRequest = (OnDemandRequest) OnDemandRequestProcessor.queue.peekFirst(); onDemandRequest != null; onDemandRequest = (OnDemandRequest) OnDemandRequestProcessor.queue.pollFirst()) {
+                if((long) fileId == onDemandRequest.key && index == onDemandRequest.cacheIndex && onDemandRequest.type == 0) {
+                    dataFromQueue = onDemandRequest.data;
                     break;
                 }
             }
         }
-        if(is == null) {
-            byte[] is_6_ = meta.read(indexId);
-            arg0.method198(true, is_6_, indexId, meta);
+
+        if(dataFromQueue == null) {
+            byte[] dataFromIndex = index.read(fileId);
+            this.method198(true, dataFromIndex, fileId, index);
         } else {
-            arg0.method198(true, is, indexId, meta);
+            this.method198(true, dataFromQueue, fileId, index);
         }
     }
 
@@ -158,6 +160,7 @@ public class CacheArchive {
             }
             crc32.reset();
             crc32.update(data, 0, data.length);
+
             int actualChecksum = (int) crc32.getValue();
             if(actualChecksum != archiveCrcValue) {
                 Game.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0,
@@ -194,7 +197,7 @@ public class CacheArchive {
 
     public void method177(int fileId) {
         if(dataIndex != null && aBooleanArray1796 != null && aBooleanArray1796[fileId])
-            method602(this, fileId, dataIndex);
+            method602(fileId, dataIndex);
         else
             Game.updateServer.enqueueFileRequest(true, this, cacheIndexId, fileId, (byte) 2, checksums[fileId]);
     }
@@ -247,10 +250,11 @@ public class CacheArchive {
 
     public void requestLatestVersion(int crcValue) {
         archiveCrcValue = crcValue;
-        if(metaIndex == null)
+        if(metaIndex == null) {
             Game.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0, archiveCrcValue);
-        else
-            method602(this, cacheIndexId, metaIndex);
+        } else {
+            method602(cacheIndexId, metaIndex);
+        }
     }
 
     public int method201(int arg0) {

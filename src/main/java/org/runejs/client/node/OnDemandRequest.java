@@ -21,8 +21,8 @@ public class OnDemandRequest extends Node {
         onDemandRequest.key = cacheIndexId;
         onDemandRequest.cacheIndex = cacheIndex;
         onDemandRequest.data = data;
-        synchronized(OnDemandRequestProcessor.aLinkedList_53) {
-            OnDemandRequestProcessor.aLinkedList_53.addLast(onDemandRequest);
+        synchronized(OnDemandRequestProcessor.queue) {
+            OnDemandRequestProcessor.queue.addLast(onDemandRequest);
         }
         OnDemandRequestProcessor.create(600);
     }
@@ -33,8 +33,8 @@ public class OnDemandRequest extends Node {
         onDemandRequest.key = (long) key;
         onDemandRequest.cacheIndex = index;
         onDemandRequest.cacheArchive = archive;
-        synchronized(OnDemandRequestProcessor.aLinkedList_53) {
-            OnDemandRequestProcessor.aLinkedList_53.addLast(onDemandRequest);
+        synchronized(OnDemandRequestProcessor.queue) {
+            OnDemandRequestProcessor.queue.addLast(onDemandRequest);
         }
         OnDemandRequestProcessor.create(600);
     }

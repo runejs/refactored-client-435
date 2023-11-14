@@ -13,11 +13,9 @@ import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.InboundMessage;
 import org.runejs.client.message.handler.MessageHandler;
-import org.runejs.client.message.inbound.region.LoadStandardRegionInboundMessage;
 import org.runejs.client.net.IncomingPackets;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.codec.MessageDecoder;
-import org.runejs.client.net.codec.runejs435.decoder.region.LoadStandardRegionMessageDecoder;
 import org.runejs.client.util.RSAConfiguration;
 import org.runejs.client.util.SignlinkNode;
 
@@ -185,11 +183,11 @@ public class RS435LoginProtocol implements LoginProtocol {
                      * read the header for a map region packet, to be used in the next stage
                      */
 
-                    MovedStatics.gameServerSocket.readDataToBuffer(0, 1, IncomingPackets.incomingPacketBuffer.buffer);
+                    MovedStatics.gameServerSocket.readDataToBuffer(IncomingPackets.incomingPacketBuffer.buffer, 0, 1);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                     postLoginPacketOpcode = IncomingPackets.incomingPacketBuffer.getPacket();
 
-                    MovedStatics.gameServerSocket.readDataToBuffer(0, 2, IncomingPackets.incomingPacketBuffer.buffer);
+                    MovedStatics.gameServerSocket.readDataToBuffer(IncomingPackets.incomingPacketBuffer.buffer, 0, 2);
                     IncomingPackets.incomingPacketBuffer.currentPosition = 0;
                     postLoginPacketSize = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
                     stage = Stage.LOGIN_ACCEPTED_BODY;
@@ -198,7 +196,7 @@ public class RS435LoginProtocol implements LoginProtocol {
                 if (stage == Stage.LOGIN_ACCEPTED_BODY) {
                     if (MovedStatics.gameServerSocket.inputStreamAvailable() >= postLoginPacketSize) {
                         IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                        MovedStatics.gameServerSocket.readDataToBuffer(0, postLoginPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
+                        MovedStatics.gameServerSocket.readDataToBuffer(IncomingPackets.incomingPacketBuffer.buffer, 0, postLoginPacketSize);
                         Game.setConfigToDefaults();
                         MovedStatics.regionX = -1;
 
@@ -355,7 +353,7 @@ public class RS435LoginProtocol implements LoginProtocol {
             }
 
             if (i > 0) {
-                MovedStatics.gameServerSocket.readDataToBuffer(IncomingPackets.incomingPacketBuffer.currentPosition, i, IncomingPackets.incomingPacketBuffer.buffer);
+                MovedStatics.gameServerSocket.readDataToBuffer(IncomingPackets.incomingPacketBuffer.buffer, IncomingPackets.incomingPacketBuffer.currentPosition, i);
                 IncomingPackets.incomingPacketBuffer.currentPosition += i;
             }
         }
