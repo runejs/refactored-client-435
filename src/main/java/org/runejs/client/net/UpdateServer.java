@@ -20,24 +20,40 @@ public class UpdateServer implements IUpdateServer {
     private Buffer fileDataBuffer = new Buffer(8);
     private Buffer js5ResponseData;
     private Buffer crcTableBuffer;
-    private HashTable highPriorityPostProcessingQueue = new HashTable(4096);
-    private HashTable highPriorityPreProcessingQueue = new HashTable(32);
-    private HashTable standardPriorityPreProcessingQueue = new HashTable(4096);
-    private HashTable standardPriorityPostProcessingQueue = new HashTable(4096);
+    private HashTable highPriorityRequestQueue = new HashTable(4096);
+    private HashTable highPriorityInFlightRequests = new HashTable(32);
+    private HashTable standardPriorityInFlightRequests = new HashTable(4096);
+    private HashTable standardPriorityBackgroundRequestQueue = new HashTable(4096);
     private UpdateServerNode currentResponse;
     private CRC32 crc32 = new CRC32();
     private byte encryption = (byte) 0;
-    private int highPriorityResponseCount = 0;
-    private int standardPriorityWriteCount = 0;
-    private int highPriorityWriteCount = 0;
-    private int standardPriorityResponseCount = 0;
+
+    /**
+     * How many high priority requests have been sent and are awaiting a response?
+     */
+    private int highPriorityInFlightRequestCount = 0;
+
+    /**
+     * How many standard priority requests are waiting to be sent to the update server?
+     */
+    private int standardPriorityPendingRequestCount = 0;
+
+    /**
+     * How many high priority requests are waiting to be sent to the update server?
+     */
+    private int highPriorityPendingRequestCount = 0;
+
+    /**
+     * How many standard priority requests have been sent and are awaiting a response?
+     */
+    private int standardPriorityInFlightRequestCount = 0;
     private boolean highPriorityRequest;
     /**
-     * A NodeQueue used for the standard queue
+     * A queue of standard priority requests to be sent to the update server.
      *
-     * TODO investigate and give more descriptive name
+     * TODO (jkm) confirm
      */
-    private NodeQueue todo_standardprio_nodequeue = new NodeQueue();
+    private NodeQueue standardPriorityRequestQueue = new NodeQueue();
     private int blockOffset = 0;
     private int msSinceLastUpdate = 0;
     private long lastUpdateInMillis;
@@ -82,26 +98,26 @@ public class UpdateServer implements IUpdateServer {
         currentResponse = null;
 
         for(; ; ) {
-            UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityPreProcessingQueue.getNextNode();
+            UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityInFlightRequests.getNextNode();
             if(updateServerNode == null) {
                 break;
             }
 
-            highPriorityPostProcessingQueue.put(updateServerNode.key, updateServerNode);
-            highPriorityResponseCount--;
-            highPriorityWriteCount++;
+            highPriorityRequestQueue.put(updateServerNode.key, updateServerNode);
+            highPriorityInFlightRequestCount--;
+            highPriorityPendingRequestCount++;
         }
 
         for(; ; ) {
-            UpdateServerNode updateServerNode = (UpdateServerNode) standardPriorityPreProcessingQueue.getNextNode();
+            UpdateServerNode updateServerNode = (UpdateServerNode) standardPriorityInFlightRequests.getNextNode();
             if(updateServerNode == null) {
                 break;
             }
 
-            todo_standardprio_nodequeue.unshift(updateServerNode);
-            standardPriorityPostProcessingQueue.put(updateServerNode.key, updateServerNode);
-            standardPriorityResponseCount--;
-            standardPriorityWriteCount++;
+            standardPriorityRequestQueue.unshift(updateServerNode);
+            standardPriorityBackgroundRequestQueue.put(updateServerNode.key, updateServerNode);
+            standardPriorityInFlightRequestCount--;
+            standardPriorityPendingRequestCount++;
         }
 
         if(encryption != 0) {
@@ -137,7 +153,7 @@ public class UpdateServer implements IUpdateServer {
             currentMsSinceLastUpdate = 200;
         }
         msSinceLastUpdate += currentMsSinceLastUpdate;
-        if(standardPriorityResponseCount == 0 && highPriorityResponseCount == 0 && standardPriorityWriteCount == 0 && highPriorityWriteCount == 0) {
+        if(standardPriorityInFlightRequestCount == 0 && highPriorityInFlightRequestCount == 0 && standardPriorityPendingRequestCount == 0 && highPriorityPendingRequestCount == 0) {
             return true;
         }
         if(updateServerSocket == null) {
@@ -150,29 +166,29 @@ public class UpdateServer implements IUpdateServer {
             }
 
             // Immediate file requests
-            for(/**/; highPriorityResponseCount < 20; highPriorityResponseCount++) {
-                if(highPriorityWriteCount <= 0) {
+            for(/**/; highPriorityInFlightRequestCount < 20; highPriorityInFlightRequestCount++) {
+                if(highPriorityPendingRequestCount <= 0) {
                     break;
                 }
-                UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityPostProcessingQueue.getNextNode();
+                UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityRequestQueue.getNextNode();
                 Buffer buffer = new Buffer(4);
                 buffer.putByte(Opcode.PRIORITY_REQUEST.getValue()); // immediate file request
                 buffer.putMediumBE((int) updateServerNode.key); // file index + file id
                 updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
-                highPriorityPreProcessingQueue.put(updateServerNode.key, updateServerNode);
-                highPriorityWriteCount--;
+                highPriorityInFlightRequests.put(updateServerNode.key, updateServerNode);
+                highPriorityPendingRequestCount--;
             }
 
             // Queuable file requests
-            for(/**/; standardPriorityResponseCount < 20 && standardPriorityWriteCount > 0; standardPriorityWriteCount--) {
-                UpdateServerNode updateServerNode = (UpdateServerNode) todo_standardprio_nodequeue.next();
+            for(/**/; standardPriorityInFlightRequestCount < 20 && standardPriorityPendingRequestCount > 0; standardPriorityPendingRequestCount--) {
+                UpdateServerNode updateServerNode = (UpdateServerNode) standardPriorityRequestQueue.next();
                 Buffer buffer = new Buffer(4);
                 buffer.putByte(Opcode.REQUEST.getValue()); // queued file request
                 buffer.putMediumBE((int) updateServerNode.key); // file index + file id
                 updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
                 updateServerNode.clear();
-                standardPriorityPreProcessingQueue.put(updateServerNode.key, updateServerNode);
-                standardPriorityResponseCount++;
+                standardPriorityInFlightRequests.put(updateServerNode.key, updateServerNode);
+                standardPriorityInFlightRequestCount++;
             }
 
             for(int i1 = 0; i1 < 100; i1++) {
@@ -215,11 +231,11 @@ public class UpdateServer implements IUpdateServer {
                         int type = fileDataBuffer.getUnsignedByte();
                         int length = fileDataBuffer.getIntBE();
                         long fileKey = ((long) archiveId << 16) + groupId;
-                        UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityPreProcessingQueue.getNode(fileKey);
+                        UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityInFlightRequests.getNode(fileKey);
                         highPriorityRequest = true;
 
                         if(updateServerNode == null) {
-                            updateServerNode = (UpdateServerNode) standardPriorityPreProcessingQueue.getNode(fileKey);
+                            updateServerNode = (UpdateServerNode) standardPriorityInFlightRequests.getNode(fileKey);
                             highPriorityRequest = false;
                         }
 
@@ -304,9 +320,9 @@ public class UpdateServer implements IUpdateServer {
                         blockOffset = 0;
 
                         if(highPriorityRequest) {
-                            highPriorityResponseCount--;
+                            highPriorityInFlightRequestCount--;
                         } else {
-                            standardPriorityResponseCount--;
+                            standardPriorityInFlightRequestCount--;
                         }
                     } else {
                         if(blockOffset != 512) {
@@ -337,15 +353,15 @@ public class UpdateServer implements IUpdateServer {
 
     public void enqueueFileRequest(boolean isPriority, CacheArchive archive, int archiveIndexId, int groupId, byte padding, int expectedCrc) {
         long fileKey = groupId + ((long) archiveIndexId << 16);
-        UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityPostProcessingQueue.getNode(fileKey);
+        UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityRequestQueue.getNode(fileKey);
 
         if (updateServerNode == null) {
-            updateServerNode = (UpdateServerNode) highPriorityPreProcessingQueue.getNode(fileKey);
+            updateServerNode = (UpdateServerNode) highPriorityInFlightRequests.getNode(fileKey);
             if (updateServerNode == null) {
-                updateServerNode = (UpdateServerNode) standardPriorityPostProcessingQueue.getNode(fileKey);
+                updateServerNode = (UpdateServerNode) standardPriorityBackgroundRequestQueue.getNode(fileKey);
                 if (updateServerNode == null) {
                     if (!isPriority) {
-                        updateServerNode = (UpdateServerNode) standardPriorityPreProcessingQueue.getNode(fileKey);
+                        updateServerNode = (UpdateServerNode) standardPriorityInFlightRequests.getNode(fileKey);
                         if (updateServerNode != null)
                             return;
                     }
@@ -354,18 +370,18 @@ public class UpdateServer implements IUpdateServer {
                     updateServerNode.padding = padding;
                     updateServerNode.cacheArchive = archive;
                     if (isPriority) {
-                        highPriorityPostProcessingQueue.put(fileKey, updateServerNode);
-                        highPriorityWriteCount++;
+                        highPriorityRequestQueue.put(fileKey, updateServerNode);
+                        highPriorityPendingRequestCount++;
                     } else {
-                        todo_standardprio_nodequeue.push(updateServerNode);
-                        standardPriorityPostProcessingQueue.put(fileKey, updateServerNode);
-                        standardPriorityWriteCount++;
+                        standardPriorityRequestQueue.push(updateServerNode);
+                        standardPriorityBackgroundRequestQueue.put(fileKey, updateServerNode);
+                        standardPriorityPendingRequestCount++;
                     }
                 } else if (isPriority) {
                     updateServerNode.clear();
-                    highPriorityPostProcessingQueue.put(fileKey, updateServerNode);
-                    standardPriorityWriteCount--;
-                    highPriorityWriteCount++;
+                    highPriorityRequestQueue.put(fileKey, updateServerNode);
+                    standardPriorityPendingRequestCount--;
+                    highPriorityPendingRequestCount++;
                 }
             }
         }
@@ -376,9 +392,9 @@ public class UpdateServer implements IUpdateServer {
      */
     public void moveRequestToPendingQueue(int arg0, int arg2) {
         long l = (arg0 << 16) + arg2;
-        UpdateServerNode updateServerNode = (UpdateServerNode) standardPriorityPostProcessingQueue.getNode(l);
+        UpdateServerNode updateServerNode = (UpdateServerNode) standardPriorityBackgroundRequestQueue.getNode(l);
         if (updateServerNode != null) {
-            todo_standardprio_nodequeue.unshift(updateServerNode);
+            standardPriorityRequestQueue.unshift(updateServerNode);
         }
     }
 
@@ -440,10 +456,10 @@ public class UpdateServer implements IUpdateServer {
     public int getActiveTaskCount(boolean includeStandardPriority, boolean includeHighPriority) {
         int total = 0;
         if (includeHighPriority) {
-            total += highPriorityResponseCount + highPriorityWriteCount;
+            total += highPriorityInFlightRequestCount + highPriorityPendingRequestCount;
         }
         if (includeStandardPriority) {
-            total += standardPriorityResponseCount + standardPriorityWriteCount;
+            total += standardPriorityInFlightRequestCount + standardPriorityPendingRequestCount;
         }
         return total;
     }
