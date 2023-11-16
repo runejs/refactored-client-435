@@ -1904,11 +1904,11 @@ public class GameInterface extends CachedNode {
                     ChatBox.messagePromptRaised = false;
                     ChatBox.redrawChatbox = true;
                     if(anInt876 == 1) {
-                        long l = MovedStatics.nameToLong(ChatBox.chatMessage);
+                        long l = TextUtils.nameToLong(ChatBox.chatMessage);
                         addFriend(l);
                     }
                     if(anInt876 == 2 && !Game.friendList.isEmpty()) {
-                        long l = MovedStatics.nameToLong(ChatBox.chatMessage);
+                        long l = TextUtils.nameToLong(ChatBox.chatMessage);
                         removeFriend(l);
                     }
                     if(anInt876 == 3 && ChatBox.chatMessage.length() > 0) {
@@ -1929,11 +1929,11 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(anInt876 == 4 && !Game.ignoreList.isFull()) {
-                        long l = MovedStatics.nameToLong(ChatBox.chatMessage);
+                        long l = TextUtils.nameToLong(ChatBox.chatMessage);
                         addIgnore(l);
                     }
                     if(anInt876 == 5 && !Game.ignoreList.isEmpty()) {
-                        long l = MovedStatics.nameToLong(ChatBox.chatMessage);
+                        long l = TextUtils.nameToLong(ChatBox.chatMessage);
                         removeIgnore(l);
                     }
                 }
@@ -1971,7 +1971,7 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNumericInputOutboundMessage(i
                 }
                 if(MovedStatics.anInt2854 == 84) {
                     if(ChatBox.inputMessage.length() > 0) {
-long name = MovedStatics.nameToLong(ChatBox.inputMessage);
+long name = TextUtils.nameToLong(ChatBox.inputMessage);
 
 OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name));
                     }

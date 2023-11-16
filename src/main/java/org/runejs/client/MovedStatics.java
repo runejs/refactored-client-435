@@ -2927,26 +2927,6 @@ public class MovedStatics {
 
     }
 
-    public static long nameToLong(String arg0) {
-        long l = 0L;
-        for(int i = 0; i < arg0.length(); i++) {
-            if(i >= 12)
-                break;
-            l *= 37L;
-            int i_1_ = arg0.charAt(i);
-            if(i_1_ >= 65 && i_1_ <= 90)
-                l += (long) (i_1_ + 1 + -65);
-            else if(i_1_ >= 97 && i_1_ <= 122)
-                l += (long) (1 + i_1_ + -97);
-            else if(i_1_ >= 48 && i_1_ <= 57)
-                l += (long) (27 - (-i_1_ + 48));
-        }
-        for(/**/; l % 37L == 0 && l != 0; l /= 37L) {
-            /* empty */
-        }
-        return l;
-    }
-
     public static void drawGameScreenGraphics() {
         try {
             Graphics graphics = Game.gameCanvas.getGraphics();

@@ -11,6 +11,7 @@ import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.PacketBuffer;
+import org.runejs.client.util.TextUtils;
 
 public class Player extends Actor {
 
@@ -133,7 +134,7 @@ public class Player extends Actor {
             int messageLength = appearanceBuffer.getUnsignedByte();
             int bufferPosition = appearanceBuffer.currentPosition;
             if(player.playerName != null && player.playerAppearance != null) {
-                long l = MovedStatics.nameToLong(player.playerName);
+                long l = TextUtils.nameToLong(player.playerName);
                 boolean bool = (playerRights <= 1) && Game.ignoreList.containsPlayer(l);
                 if(!bool && !inTutorialIsland) {
                     chatBuffer.currentPosition = 0;

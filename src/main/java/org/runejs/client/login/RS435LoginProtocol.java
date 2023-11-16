@@ -18,6 +18,7 @@ import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.net.codec.MessageDecoder;
 import org.runejs.client.util.RSAConfiguration;
 import org.runejs.client.util.SignlinkNode;
+import org.runejs.client.util.TextUtils;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -329,7 +330,7 @@ public class RS435LoginProtocol implements LoginProtocol {
      * @throws IOException
      */
     private void sendLoginHandshake() throws IOException {
-        long l = MovedStatics.localUsernameId = MovedStatics.nameToLong(Native.username.toString());
+        long l = MovedStatics.localUsernameId = TextUtils.nameToLong(Native.username.toString());
         OutgoingPackets.buffer.currentPosition = 0;
         OutgoingPackets.buffer.putByte(14);
         int i = (int) (0x1fL & l >> 16);
@@ -429,7 +430,7 @@ public class RS435LoginProtocol implements LoginProtocol {
         buffer.putIntBE(message.seeds[2]);
         buffer.putIntBE(message.seeds[3]);
         buffer.putIntBE(message.uid);
-        buffer.putLongBE(MovedStatics.nameToLong(message.username.toString()));
+        buffer.putLongBE(TextUtils.nameToLong(message.username.toString()));
         buffer.method505(message.password);
 
         if (message.rsa != null) {
