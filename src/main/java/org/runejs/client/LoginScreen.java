@@ -541,7 +541,7 @@ public class LoginScreen {
                 MusicSystem.playLoginScreenMusic(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", MusicSystem.musicVolume);
             else
                 MusicSystem.method405(10);
-            Game.updateServer.resetRequests(false);
+            Game.updateServerConnectionManager.updateServer.resetRequests(false);
             MovedStatics.clearScreen = true;
             MovedStatics.aBoolean512 = true;
         }

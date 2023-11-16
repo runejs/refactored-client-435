@@ -10,7 +10,6 @@ import org.runejs.client.frame.*;
 import org.runejs.client.frame.console.Console;
 import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.input.MouseHandler;
-import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
 import org.runejs.client.login.*;
@@ -26,6 +25,8 @@ import org.runejs.client.message.outbound.widget.container.DragWidgetItemOutboun
 import org.runejs.client.net.*;
 import org.runejs.client.net.codec.MessagePacketCodec;
 import org.runejs.client.net.codec.runejs435.RuneJS435PacketCodec;
+import org.runejs.client.ondemand.js5.JS5UpdateServerConnectionManager;
+import org.runejs.client.ondemand.js5.exceptions.*;
 import org.runejs.client.renderer.ScreenRenderer;
 import org.runejs.client.scene.*;
 import org.runejs.client.scene.camera.Camera;
@@ -44,11 +45,9 @@ import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
 import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
 import org.runejs.Configuration;
-import org.runejs.client.util.SignlinkNode;
 import org.runejs.client.util.Timer;
 
 import java.awt.*;
-import java.net.Socket;
 
 public class Game {
 
@@ -76,23 +75,18 @@ public class Game {
      */
     public static final CutsceneCamera cutsceneCamera = new CutsceneCamera();
 
-    /**
-     * TODO use interface
-     */
-    public static final UpdateServer updateServer = new UpdateServer();
-
     public static FriendList friendList;
 
     public static final SocialList ignoreList = new SocialList(100);
 
     public static GameInterface chatboxInterface;
-    public static GameSocket updateServerSocket;
+    public static GameSocket old_updateServerSocket;
     public static boolean aBoolean871 = false;
     public static int modewhat = 0;
     public static int modewhere = 0;
     public static long lastClickTime = 0L;
     public static int mouseInvInterfaceIndex = 0;
-    public static int updateServerConnectAttemptCounter = 0;
+    public static int old_updateServerConnectAttemptCounter = 0;
     public static boolean isLoadingUpdates = true;
     public static MouseCapturer mouseCapturer;
     /**
@@ -112,17 +106,13 @@ public class Game {
     public static Scene currentScene;
     public static int gameStatusCode = 0;
     public static KeyFocusListener keyFocusListener = new KeyFocusListener();
-    public static SignlinkNode updateServerSignlinkNode;
     public static int oneMouseButton = 0;
     public static int currentTabId = 3;
     public static int[] tabWidgetIds = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     public static int flashingTabId = -1;
     public static MouseHandler mouseHandler = new MouseHandler();
     public static Canvas gameCanvas;
-    public static int connectionStage = 0;
-    public static int anInt292 = 0;
     public static boolean accountFlagged = false;
-    public static long updateServerHandshakeSentAtMs;
     public static int clientVersion;
     public static int playerRights = 0;
     public static Timer gameTimer;
@@ -900,7 +890,7 @@ public class Game {
         }
 
 
-        if(isLoadingUpdates && updateServer.getActiveTaskCount(false, true) == 0) {
+        if(isLoadingUpdates && updateServerConnectionManager.updateServer.getActiveTaskCount(false, true) == 0) {
             isLoadingUpdates = false;
         }
         if(isLoadingUpdates) {
@@ -1877,41 +1867,16 @@ public class Game {
         return Native.whitespace_b + amountString;
     }
 
-    public void method35(int arg1) {
-        if (currentPort != gameServerPort)
-            currentPort = gameServerPort;
-        else
-            currentPort = someOtherPort;
-        updateServerSocket = null;
-        updateServerSignlinkNode = null;
-        anInt292++;
-        connectionStage = 0;
-        if (anInt292 < 2 || arg1 != 7 && arg1 != 9) {
-            if (anInt292 < 2 || arg1 != 6) {
-                if (anInt292 >= 4) {
-                    if (gameStatusCode <= 5) {
-                        this.openErrorPage("js5connect");
-                        updateServerConnectAttemptCounter = 3000;
-                    } else
-                        updateServerConnectAttemptCounter = 3000;
-                }
-            } else {
-                this.openErrorPage("js5connect_outofdate");
-                gameStatusCode = 1000;
-            }
-        } else if (gameStatusCode > 5)
-            updateServerConnectAttemptCounter = 3000;
-        else {
-            this.openErrorPage("js5connect_full");
-            gameStatusCode = 1000;
-        }
-    }
-
     public static LoginProtocol loginProtocol = new RS435LoginProtocol();
+    public static JS5UpdateServerConnectionManager updateServerConnectionManager;
 
     public void processGameLoop() {
         MovedStatics.pulseCycle++;
-        handleUpdateServer();
+
+        if (gameStatusCode != 1000) {
+            processJS5Connection(updateServerConnectionManager);
+        }
+
         OnDemandRequestProcessor.handleRequests();
         MusicSystem.handleMusic();
         SoundSystem.handleSounds();
@@ -1940,14 +1905,6 @@ public class Game {
         } else if (gameStatusCode == 40) {
             // Connection lost
             loginProtocol.process();
-        }
-    }
-
-    public void handleUpdateServer() {
-        if (gameStatusCode != 1000) {
-            boolean bool = updateServer.poll();
-            if (!bool)
-                connectUpdateServer();
         }
     }
 
@@ -1992,77 +1949,33 @@ public class Game {
         mouseClicksSinceLastDraw = 0;
     }
 
-    public void connectUpdateServer() {
-        if (updateServer.crcMismatchesCount >= 4) {
+    /**
+     * Processes the JS5 connection by deferring to the manager,
+     * this method is responsible for changing the game state based on errors.
+     *
+     * TODO (jkm) get this further away from the Game class so we can support non-JS5
+     *            update servers more easily
+     */
+    private void processJS5Connection(JS5UpdateServerConnectionManager manager) {
+        try {
+            manager.process(gameStatusCode);
+        } catch (JS5CRCException e) {
             this.openErrorPage("js5crc");
             gameStatusCode = 1000;
-        } else {
-            if (updateServer.ioExceptionsCount >= 4) {
-                if (gameStatusCode > 5) {
-                    updateServer.ioExceptionsCount = 3;
-                    updateServerConnectAttemptCounter = 3000;
-                } else {
-                    this.openErrorPage("js5io");
-                    gameStatusCode = 1000;
-                    return;
-                }
-            }
-            if (updateServerConnectAttemptCounter-- <= 0) {
-                do {
-                    try {
-                        if (connectionStage == 0) {
-                            updateServerSignlinkNode = signlink.putSocketNode(currentPort);
-                            connectionStage++;
-                        }
-                        if (connectionStage == 1) {
-                            if (updateServerSignlinkNode.status == SignlinkNode.Status.ERRORED) {
-                                method35(-1);
-                                break;
-                            }
-                            if (updateServerSignlinkNode.status == SignlinkNode.Status.INITIALIZED)
-                                connectionStage++;
-                        }
-                        if (connectionStage == 2) {
-                            updateServerSocket = new GameSocket((Socket) updateServerSignlinkNode.value, signlink);
-                            Buffer buffer = new Buffer(5);
-                            buffer.putByte(15);
-                            buffer.putIntBE(435); // Cache revision
-                            updateServerSocket.sendDataFromBuffer(5, 0, buffer.buffer);
-                            connectionStage++;
-                            updateServerHandshakeSentAtMs = System.currentTimeMillis();
-                        }
-                        if (connectionStage == 3) {
-                            if (gameStatusCode > 5 && updateServerSocket.inputStreamAvailable() <= 0) {
-                                if (System.currentTimeMillis() - updateServerHandshakeSentAtMs > 30000L) {
-                                    method35(-2);
-                                    break;
-                                }
-                            } else {
-                                int i = updateServerSocket.read();
-                                if (i != 0) {
-                                    method35(i);
-                                    break;
-                                }
-                                connectionStage++;
-                            }
-                        }
-                        if (connectionStage != 4)
-                            break;
-
-                        updateServer.receiveConnection(updateServerSocket, gameStatusCode > 20);
-
-                        updateServerSignlinkNode = null;
-                        connectionStage = 0;
-                        updateServerSocket = null;
-                        anInt292 = 0;
-                    } catch (java.io.IOException ioexception) {
-                        ioexception.printStackTrace();
-                        method35(-3);
-                        break;
-                    }
-                    break;
-                } while (false);
-            }
+        } catch (JS5IOException e) {
+            this.openErrorPage("js5io");
+            gameStatusCode = 1000;
+        } catch (JS5ConnectException e) {
+            // we don't set game to error state for this one
+            this.openErrorPage("js5connect");
+        } catch (JS5ConnectOutOfDateException e) {
+            this.openErrorPage("js5connect_outofdate");
+            gameStatusCode = 1000;
+        } catch (JS5ConnectFullException e) {
+            this.openErrorPage("js5connect_full");
+            gameStatusCode = 1000;
+        } catch (Exception e) {
+            throw new RuntimeException("Unrecognised exception within JS5 connection", e);
         }
     }
 
@@ -2090,7 +2003,7 @@ public class Game {
         method249();
         MusicSystem.syncedStop(false);
         SoundSystem.stop();
-        updateServer.close();
+        updateServerConnectionManager.close();
         OnDemandRequestProcessor.wait(-1);
         do {
             try {
@@ -2116,8 +2029,14 @@ public class Game {
     public void startup() {
         // Define ports
         someOtherPort = modewhere == 0 ? 443 : 50000 + Player.worldId;
-        gameServerPort = modewhere != 0 ? Player.worldId + 40000 : Configuration.GAME_PORT;
+        gameServerPort = modewhere == 0 ? Configuration.GAME_PORT : Player.worldId + 40000;
         currentPort = gameServerPort;
+
+        updateServerConnectionManager = new JS5UpdateServerConnectionManager(
+                signlink,
+                gameServerPort,
+                someOtherPort
+        );
 
         KeyFocusListener.method997();
         KeyFocusListener.addListeners(gameCanvas);

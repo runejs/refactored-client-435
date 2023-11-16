@@ -335,7 +335,7 @@ public class MovedStatics {
             LoginScreen.aProducingGraphicsBuffer_463 = null;
             LoginScreen.anIntArray1013 = null;
             MusicSystem.method405(10);
-            Game.updateServer.resetRequests(true);
+            Game.updateServerConnectionManager.updateServer.resetRequests(true);
             aBoolean512 = false;
         }
     }

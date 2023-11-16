@@ -70,7 +70,7 @@ public class CacheArchive {
         this.forceHighPriority = forceHighPriority;
         this.metaIndex = metaIndex;
         this.cacheIndexId = cacheIndexId;
-        Game.updateServer.requestArchiveChecksum(this, this.cacheIndexId);
+        Game.updateServerConnectionManager.updateServer.requestArchiveChecksum(this, this.cacheIndexId);
     }
 
     public static CacheArchive loadArchive(int cacheIndexId, boolean clearGroupContentCache, boolean clearFileContentCache, boolean forceHighPriority) {
@@ -155,7 +155,7 @@ public class CacheArchive {
 
         return Math.min(
                 99,
-                Game.updateServer.getLoadedPercentage(255, cacheIndexId)
+                Game.updateServerConnectionManager.updateServer.getLoadedPercentage(255, cacheIndexId)
         );
     }
 
@@ -166,7 +166,7 @@ public class CacheArchive {
             }
 
             if(data == null) {
-                Game.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0,
+                Game.updateServerConnectionManager.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0,
                         archiveCrcValue);
                 return;
             }
@@ -176,7 +176,7 @@ public class CacheArchive {
 
             int actualChecksum = (int) crc32.getValue();
             if(actualChecksum != archiveCrcValue) {
-                Game.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0,
+                Game.updateServerConnectionManager.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0,
                         archiveCrcValue);
                 return;
             }
@@ -191,7 +191,7 @@ public class CacheArchive {
             if(data == null || data.length <= 2) {
                 hasValidContents[key] = false;
                 if(forceHighPriority || highPriority)
-                    Game.updateServer.enqueueFileRequest(highPriority, this, cacheIndexId, key, (byte) 2, groupChecksums[key]);
+                    Game.updateServerConnectionManager.updateServer.enqueueFileRequest(highPriority, this, cacheIndexId, key, (byte) 2, groupChecksums[key]);
                 return;
             }
 
@@ -202,7 +202,7 @@ public class CacheArchive {
             if(actualChecksum != groupChecksums[key] || actualVersion != groupVersions[key]) {
                 hasValidContents[key] = false;
                 if(forceHighPriority || highPriority)
-                    Game.updateServer.enqueueFileRequest(highPriority, this, cacheIndexId, key, (byte) 2, groupChecksums[key]);
+                    Game.updateServerConnectionManager.updateServer.enqueueFileRequest(highPriority, this, cacheIndexId, key, (byte) 2, groupChecksums[key]);
                 return;
             }
 
@@ -218,7 +218,7 @@ public class CacheArchive {
         if(dataIndex != null && hasValidContents != null && hasValidContents[groupId]) {
             prioritiseDecodeGroup(dataIndex, groupId);
         } else {
-            Game.updateServer.enqueueFileRequest(true, this, cacheIndexId, groupId, (byte) 2, groupChecksums[groupId]);
+            Game.updateServerConnectionManager.updateServer.enqueueFileRequest(true, this, cacheIndexId, groupId, (byte) 2, groupChecksums[groupId]);
         }
     }
 
@@ -280,7 +280,7 @@ public class CacheArchive {
     public void requestLatestVersion(int crcValue) {
         archiveCrcValue = crcValue;
         if(metaIndex == null) {
-            Game.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0, archiveCrcValue);
+            Game.updateServerConnectionManager.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0, archiveCrcValue);
         } else {
             prioritiseDecodeGroup(metaIndex, cacheIndexId);
         }
@@ -291,7 +291,7 @@ public class CacheArchive {
             return 100;
         if(hasValidContents[groupId])
             return 100;
-        return Game.updateServer.getLoadedPercentage(cacheIndexId, groupId);
+        return Game.updateServerConnectionManager.updateServer.getLoadedPercentage(cacheIndexId, groupId);
     }
 
     public int getGroupsLoadedPercentage() {
@@ -675,6 +675,6 @@ public class CacheArchive {
     }
 
     private void prioritiseRequest(int groupId) {
-        Game.updateServer.moveRequestToPendingQueue(cacheIndexId, groupId);
+        Game.updateServerConnectionManager.updateServer.moveRequestToPendingQueue(cacheIndexId, groupId);
     }
 }
