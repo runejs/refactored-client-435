@@ -121,7 +121,7 @@ public class GameObjectDefinition extends CachedNode implements EntityDefinition
             obj.typeKey = typeKey;
             obj.plane = plane;
             obj.y = y;
-            MovedStatics.storeTemporaryObject(obj);
+            InteractiveObjectTemporary.setPrevousObjectDetails(obj);
             MovedStatics.interactiveObjectTemporaryNodeCache.addLast(obj);
         }
         obj.id = objectId;

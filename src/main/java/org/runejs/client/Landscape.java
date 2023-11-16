@@ -711,7 +711,7 @@ public class Landscape {
         for(InteractiveObjectTemporary interactiveObjectTemporary = (InteractiveObjectTemporary) MovedStatics.interactiveObjectTemporaryNodeCache.peekFirst(); interactiveObjectTemporary != null; interactiveObjectTemporary = (InteractiveObjectTemporary) MovedStatics.interactiveObjectTemporaryNodeCache.pollFirst()) {
             if(interactiveObjectTemporary.duration == -1) {
                 interactiveObjectTemporary.delay = 0;
-                MovedStatics.storeTemporaryObject(interactiveObjectTemporary);
+                InteractiveObjectTemporary.setPrevousObjectDetails(interactiveObjectTemporary);
             } else
                 interactiveObjectTemporary.unlink();
         }
