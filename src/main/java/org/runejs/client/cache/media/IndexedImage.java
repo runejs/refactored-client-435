@@ -33,7 +33,7 @@ public class IndexedImage extends Rasterizer {
     }
 
     private static IndexedImage[] method337(CacheArchive archive, int fileId, int groupId) {
-        if(!ImageRGB.spriteExists(archive, groupId, fileId))
+        if(!MovedStatics.decodeImageFromArchive(archive, groupId, fileId))
             return null;
         return method315();
     }
@@ -49,9 +49,9 @@ public class IndexedImage extends Rasterizer {
             class40_sub5_sub14_sub2.imgWidth = MovedStatics.spriteWidth[i];
             class40_sub5_sub14_sub2.imgHeight = MovedStatics.spriteHeight[i];
             class40_sub5_sub14_sub2.palette = MovedStatics.spritePalette;
-            class40_sub5_sub14_sub2.imgPixels = MovedStatics.aByteArrayArray1370[i];
+            class40_sub5_sub14_sub2.imgPixels = MovedStatics.spritePixels[i];
         }
-        MovedStatics.method569();
+        MovedStatics.clearDecodedSpriteData();
         return class40_sub5_sub14_sub2s;
     }
 

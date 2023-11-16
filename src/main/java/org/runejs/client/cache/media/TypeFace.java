@@ -95,13 +95,13 @@ public class TypeFace extends Rasterizer {
     }
 
     public static TypeFace constructFont() {
-        TypeFace class40_sub5_sub14_sub1 = new TypeFace(MovedStatics.spriteOffsetY, MovedStatics.spriteWidth, MovedStatics.spriteHeight, MovedStatics.spritePalette, MovedStatics.aByteArrayArray1370);
-        MovedStatics.method569();
+        TypeFace class40_sub5_sub14_sub1 = new TypeFace(MovedStatics.spriteOffsetY, MovedStatics.spriteWidth, MovedStatics.spriteHeight, MovedStatics.spritePalette, MovedStatics.spritePixels);
+        MovedStatics.clearDecodedSpriteData();
         return class40_sub5_sub14_sub1;
     }
 
     public static TypeFace getFont(CacheArchive archive, int groupId, int fileId) {
-        if (!ImageRGB.spriteExists(archive, groupId, fileId))
+        if (!MovedStatics.decodeImageFromArchive(archive, groupId, fileId))
             return null;
         return constructFont();
     }

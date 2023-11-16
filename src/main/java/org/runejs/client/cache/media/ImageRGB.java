@@ -233,14 +233,6 @@ public class ImageRGB extends Rasterizer {
         }
     }
 
-    public static boolean spriteExists(CacheArchive cacheArchive, int groupId, int fileId) {
-        byte[] data = cacheArchive.getFile(groupId, fileId);
-        if(data == null)
-            return false;
-        MovedStatics.decodeIndexedImage(data);
-        return true;
-    }
-
     public static ImageRGB[] method319() {
 	    ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[MovedStatics.childCount];
 	    for(int i = 0; i < MovedStatics.childCount; i++) {
@@ -251,18 +243,18 @@ public class ImageRGB extends Rasterizer {
 	        class40_sub5_sub14_sub4.offsetY = MovedStatics.spriteOffsetY[i];
 	        class40_sub5_sub14_sub4.imageWidth = MovedStatics.spriteWidth[i];
 	        class40_sub5_sub14_sub4.imageHeight = MovedStatics.spriteHeight[i];
-	        byte[] is = MovedStatics.aByteArrayArray1370[i];
+	        byte[] is = MovedStatics.spritePixels[i];
 	        int i_4_ = class40_sub5_sub14_sub4.imageHeight * class40_sub5_sub14_sub4.imageWidth;
 	        class40_sub5_sub14_sub4.pixels = new int[i_4_];
 	        for(int i_5_ = 0; i_5_ < i_4_; i_5_++)
 	            class40_sub5_sub14_sub4.pixels[i_5_] = MovedStatics.spritePalette[BitUtils.bitWiseAND(255, is[i_5_])];
 	    }
-	    MovedStatics.method569();
+	    MovedStatics.clearDecodedSpriteData();
 	    return class40_sub5_sub14_sub4s;
 	}
 
     public static ImageRGB[] method944(CacheArchive archive, int groupId, int fileId, byte arg0) {
-        if(!spriteExists(archive, groupId, fileId))
+        if(!MovedStatics.decodeImageFromArchive(archive, groupId, fileId))
             return null;
         int i = -59 % ((-60 - arg0) / 34);
         return method319();

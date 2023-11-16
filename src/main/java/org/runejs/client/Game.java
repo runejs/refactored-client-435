@@ -917,10 +917,10 @@ public class Game {
     }
 
     public static IndexedImage method363(CacheArchive archive, int groupId, int fileId) {
-        if(!ImageRGB.spriteExists(archive, groupId, fileId)) {
+        if(!MovedStatics.decodeImageFromArchive(archive, groupId, fileId)) {
             return null;
         }
-        return MovedStatics.method538();
+        return MovedStatics.createIndexedImageFromDecodedData();
 
     }
 

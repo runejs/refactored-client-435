@@ -123,7 +123,7 @@ public class Texture extends Node {
         int textureSizeArea = textureSize * textureSize;
         pixels = new int[textureSizeArea * 4];
         for(int i_12_ = 0; i_12_ < spriteIds.length; i_12_++) {
-            IndexedImage image = MovedStatics.method769(imageArchive, spriteIds[i_12_]);
+            IndexedImage image = MovedStatics.loadIndexedImageFromArchive(imageArchive, spriteIds[i_12_]);
             image.resizeToLibSize();
             byte[] imgPixels = image.imgPixels;
             int[] imgPalette = image.palette;

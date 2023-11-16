@@ -285,7 +285,7 @@ public class MovedStatics {
      * Top row of sideicon tabs
      */
     public static ProducingGraphicsBuffer tabTop;
-    public static byte[][] aByteArrayArray1370;
+    public static byte[][] spritePixels;
     /**
      * Last varp handle cycle?
      */
@@ -423,7 +423,7 @@ public class MovedStatics {
         return 3;
     }
 
-    public static IndexedImage method538() {
+    public static IndexedImage createIndexedImageFromDecodedData() {
         IndexedImage image = new IndexedImage();
         image.maxWidth = imageMaxWidth;
         image.maxHeight = imageMaxHeight;
@@ -432,8 +432,8 @@ public class MovedStatics {
         image.imgWidth = spriteWidth[0];
         image.imgHeight = spriteHeight[0];
         image.palette = spritePalette;
-        image.imgPixels = aByteArrayArray1370[0];
-        method569();
+        image.imgPixels = spritePixels[0];
+        clearDecodedSpriteData();
         return image;
     }
 
@@ -496,12 +496,12 @@ public class MovedStatics {
             } catch (Exception ignored) { }
     }
 
-    public static void decodeIndexedImage(byte[] data) {
+    public static void decodeImageData(byte[] data) {
         Buffer buffer = new Buffer(data);
         buffer.currentPosition = -2 + data.length;
         childCount = buffer.getUnsignedShortBE();
         spriteOffsetY = new int[childCount];
-        aByteArrayArray1370 = new byte[childCount][];
+        spritePixels = new byte[childCount][];
         spriteWidth = new int[childCount];
         spriteHeight = new int[childCount];
         spriteOffsetX = new int[childCount];
@@ -532,7 +532,7 @@ public class MovedStatics {
             int w = spriteWidth[c];
             int area = h * w;
             byte[] pixels = new byte[area];
-            aByteArrayArray1370[c] = pixels;
+            spritePixels[c] = pixels;
             int pixelOrder = buffer.getUnsignedByte();
             if (pixelOrder == 0) {
                 for (int p = 0; area > p; p++) {
@@ -923,9 +923,9 @@ public class MovedStatics {
     }
 
     public static ImageRGB method927(CacheArchive archive, int groupId, int fileId) {
-	    if(!ImageRGB.spriteExists(archive, groupId, fileId))
+	    if(!decodeImageFromArchive(archive, groupId, fileId))
 	        return null;
-	    return method578();
+	    return createImageRGBFromDecodedData();
 	}
 
     public static void handleInterfaceActions(GameInterfaceArea area, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, GameInterface[] gameInterfaces, int parentId, int scrollPosition, int scrollWidth) {
@@ -2999,10 +2999,10 @@ public class MovedStatics {
         return arg1 < 129 || arg1 > 159;
     }
 
-    public static IndexedImage method769(CacheArchive imageArchive, int id) {
-        if(!method472(imageArchive, id))
+    public static IndexedImage loadIndexedImageFromArchive(CacheArchive imageArchive, int id) {
+        if(!decodeImageFromArchive(imageArchive, id))
             return null;
-        return method538();
+        return createIndexedImageFromDecodedData();
     }
 
 
@@ -3010,63 +3010,63 @@ public class MovedStatics {
         aHuffmanEncoding_2590 = arg1;
     }
 
-    public static int method955(CacheArchive arg0) {
+    public static int getLoadedFrameImageCount(CacheArchive archive) {
         int i = 0;
-        if (arg0.loaded(Native.invback, Native.aClass1_305)) {
+        if (archive.loaded(Native.invback, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.chatback, Native.aClass1_305)) {
+        if (archive.loaded(Native.chatback, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.mapBack, Native.aClass1_305)) {
+        if (archive.loaded(Native.mapBack, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.imgBackbase1, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackbase1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.imgBackbase2, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackbase2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.imgBackhmid1, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackhmid1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.imgBackleft1, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackleft1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.imgBackleft2, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackleft2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.imgBackright1, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackright1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.imgBackright2, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackright2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.imgBacktop1, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBacktop1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.imgBackvmid1, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackvmid1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.imgBackvmid2, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackvmid2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.imgBackvmid3, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackvmid3, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.imgBackhmid2, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackhmid2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.redstone1, Native.aClass1_305)) {
+        if (archive.loaded(Native.redstone1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.redstone2, Native.aClass1_305)) {
+        if (archive.loaded(Native.redstone2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.redstone3, Native.aClass1_305)) {
+        if (archive.loaded(Native.redstone3, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.loaded(Native.sideIcons, Native.aClass1_305)) {
+        if (archive.loaded(Native.sideIcons, Native.aClass1_305)) {
             i++;
         }
         return i;
@@ -3192,27 +3192,27 @@ public class MovedStatics {
 
 
 
-    public static ImageRGB method578() {
-        ImageRGB class40_sub5_sub14_sub4 = new ImageRGB();
-        class40_sub5_sub14_sub4.maxWidth = imageMaxWidth;
-        class40_sub5_sub14_sub4.maxHeight = imageMaxHeight;
-        class40_sub5_sub14_sub4.offsetX = spriteOffsetX[0];
-        class40_sub5_sub14_sub4.offsetY = spriteOffsetY[0];
-        class40_sub5_sub14_sub4.imageWidth = spriteWidth[0];
-        class40_sub5_sub14_sub4.imageHeight = spriteHeight[0];
-        byte[] is = aByteArrayArray1370[0];
-        int i = class40_sub5_sub14_sub4.imageWidth * class40_sub5_sub14_sub4.imageHeight;
-        class40_sub5_sub14_sub4.pixels = new int[i];
+    public static ImageRGB createImageRGBFromDecodedData() {
+        ImageRGB image = new ImageRGB();
+        image.maxWidth = imageMaxWidth;
+        image.maxHeight = imageMaxHeight;
+        image.offsetX = spriteOffsetX[0];
+        image.offsetY = spriteOffsetY[0];
+        image.imageWidth = spriteWidth[0];
+        image.imageHeight = spriteHeight[0];
+        byte[] is = spritePixels[0];
+        int i = image.imageWidth * image.imageHeight;
+        image.pixels = new int[i];
         for(int i_5_ = 0; i_5_ < i; i_5_++) {
-            class40_sub5_sub14_sub4.pixels[i_5_] = spritePalette[BitUtils.bitWiseAND(255, is[i_5_])];
+            image.pixels[i_5_] = spritePalette[BitUtils.bitWiseAND(255, is[i_5_])];
         }
-        method569();
-        return class40_sub5_sub14_sub4;
+        clearDecodedSpriteData();
+        return image;
     }
 
-    public static void method569() {
+    public static void clearDecodedSpriteData() {
         spriteWidth = null;
-        aByteArrayArray1370 = null;
+        spritePixels = null;
         spriteHeight = null;
         spriteOffsetY = null;
         spritePalette = null;
@@ -3254,19 +3254,21 @@ public class MovedStatics {
         return true;
     }
 
-    /**
-     * Reading some kind of cache
-     *
-     * TODO what is this? sprites?
-     */
-    public static boolean method472(CacheArchive imageArchive, int id) {
-        byte[] is = imageArchive.getFile(id);
-        if(is == null) {
+    public static boolean decodeImageFromArchive(CacheArchive cacheArchive, int groupId, int fileId) {
+        byte[] imageData = cacheArchive.getFile(groupId, fileId);
+        if(imageData == null)
+            return false;
+        decodeImageData(imageData);
+        return true;
+    }
+
+    public static boolean decodeImageFromArchive(CacheArchive imageArchive, int id) {
+        byte[] imageData = imageArchive.getFile(id);
+        if(imageData == null) {
             return false;
         }
-        decodeIndexedImage(is);
+        decodeImageData(imageData);
         return true;
-
     }
 
     public static void method789(int chunkLocalX, int chunkY, int chunkX, int chunkLocalY, int level) {

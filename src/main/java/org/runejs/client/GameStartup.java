@@ -226,7 +226,7 @@ public class GameStartup {
                 startupStage = 85;
             }
         } else if (startupStage == 85) {
-            int i = MovedStatics.method955(CacheArchive.gameImageCacheArchive);
+            int i = MovedStatics.getLoadedFrameImageCount(CacheArchive.gameImageCacheArchive);
             if (i < 19) {
                 currentLoadingText = English.loadingGameScreen + (i * 100 / 19) + Native.percent;
                 loadingBarPercentage = 80;
