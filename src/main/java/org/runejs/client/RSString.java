@@ -60,6 +60,38 @@ public class RSString {
         return class1;
     }
 
+    public static RSString method521(boolean arg0, int arg2, int arg3) {
+        if(arg2 < 1 || arg2 > 36)
+            arg2 = 10;
+        int i = 1;
+        int i_2_ = arg3 / arg2;
+        while(i_2_ != 0) {
+            i_2_ /= arg2;
+            i++;
+        }
+        int i_3_ = i;
+        if(arg3 < 0 || arg0)
+            i_3_++;
+        byte[] is = new byte[i_3_];
+        if(arg3 < 0)
+            is[0] = (byte) 45;
+        else if(arg0)
+            is[0] = (byte) 43;
+        for(int i_4_ = 0; i > i_4_; i_4_++) {
+            int i_5_ = arg3 % arg2;
+            arg3 /= arg2;
+            if(i_5_ < 0)
+                i_5_ = -i_5_;
+            if(i_5_ > 9)
+                i_5_ += 39;
+            is[-1 + i_3_ - i_4_] = (byte) (48 + i_5_);
+        }
+        RSString class1 = new RSString();
+        class1.chars = is;
+        class1.length = i_3_;
+        return class1;
+    }
+
 
     public RSString substring(int arg1) {
         return substring(arg1, length);

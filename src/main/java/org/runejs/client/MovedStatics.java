@@ -438,7 +438,7 @@ public class MovedStatics {
     }
 
     public static RSString intToStr(int arg0) {
-        return method521(false, 10, arg0);
+        return RSString.method521(false, 10, arg0);
     }
 
     public static int calculateCrc8(int offset, int size, byte[] data) {
@@ -2947,38 +2947,6 @@ public class MovedStatics {
         return l;
     }
 
-    public static RSString method521(boolean arg0, int arg2, int arg3) {
-        if(arg2 < 1 || arg2 > 36)
-            arg2 = 10;
-        int i = 1;
-        int i_2_ = arg3 / arg2;
-        while(i_2_ != 0) {
-            i_2_ /= arg2;
-            i++;
-        }
-        int i_3_ = i;
-        if(arg3 < 0 || arg0)
-            i_3_++;
-        byte[] is = new byte[i_3_];
-        if(arg3 < 0)
-            is[0] = (byte) 45;
-        else if(arg0)
-            is[0] = (byte) 43;
-        for(int i_4_ = 0; i > i_4_; i_4_++) {
-            int i_5_ = arg3 % arg2;
-            arg3 /= arg2;
-            if(i_5_ < 0)
-                i_5_ = -i_5_;
-            if(i_5_ > 9)
-                i_5_ += 39;
-            is[-1 + i_3_ - i_4_] = (byte) (48 + i_5_);
-        }
-        RSString class1 = new RSString();
-        class1.chars = is;
-        class1.length = i_3_;
-        return class1;
-    }
-
     public static void drawGameScreenGraphics() {
         try {
             Graphics graphics = Game.gameCanvas.getGraphics();
@@ -2989,9 +2957,13 @@ public class MovedStatics {
     }
 
     /**
-     * something to do with checking for valid (typable?) keycodes
+     * Something to do with checking validity of input characters,
+     * if this returns false then chat/console/interface input is not accepted
+     *
+     * TODO (jkm) assign a better name to `arg1` when we understand the
+     *            keypress obfuscation/mapping thing
      */
-    public static boolean method793(int arg1) {
+    public static boolean isValidInputCharacter(int arg1) {
         if(arg1 < 32)
             return false;
         if(arg1 == 127)
@@ -3190,8 +3162,6 @@ public class MovedStatics {
         ticksPerLoop = 0;
     }
 
-
-
     public static ImageRGB createImageRGBFromDecodedData() {
         ImageRGB image = new ImageRGB();
         image.maxWidth = imageMaxWidth;
@@ -3219,38 +3189,42 @@ public class MovedStatics {
         spriteOffsetX = null;
     }
 
-    /**
-     * walk to object
-     */
-    public static boolean method596(int arg0, int arg1, byte junk, int arg3) {
-        int i = 0x7fff & arg1 >> 14;
-        int i_14_ = Game.currentScene.getArrangement(Player.worldLevel, arg0, arg3, arg1);
-        if(i_14_ == -1)
+    public static boolean walkToObject(int offsetX, int offsetY, int objectInfo) {
+        int objectId = 0x7fff & objectInfo >> 14;
+
+        int arrangement = Game.currentScene.getArrangement(Player.worldLevel, offsetX, offsetY, objectInfo);
+        if(arrangement == -1) {
             return false;
-        int orientation = 0x3 & i_14_ >> 6;
-        int type = 0x1f & i_14_;
-        if(type != 10 && type != 11 && type != 22)
-            Pathfinding.doObjectWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], arg0, arg3, 0, 0, 0, 1 + type, orientation);
-        else {
-            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
-            int i_17_ = gameObjectDefinition.blockingMask;
-            if(orientation != 0)
-                i_17_ = (i_17_ >> 4 + -orientation) + (0xf & i_17_ << orientation);
-            int i_18_;
-            int i_19_;
-            if(orientation == 0 || orientation == 2) {
-                i_19_ = gameObjectDefinition.sizeY;
-                i_18_ = gameObjectDefinition.sizeX;
-            } else {
-                i_18_ = gameObjectDefinition.sizeY;
-                i_19_ = gameObjectDefinition.sizeX;
-            }
-            Pathfinding.doObjectWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], arg0, arg3, i_18_, i_19_, i_17_, 0, 0);
         }
+
+        int orientation = 0x3 & arrangement >> 6;
+        int type = 0x1f & arrangement;
+
+        if(type != 10 && type != 11 && type != 22) {
+            Pathfinding.doObjectWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], offsetX, offsetY, 0, 0, 0, 1 + type, orientation);
+        } else {
+            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(objectId);
+            int blockingMask = gameObjectDefinition.blockingMask;
+            if(orientation != 0)
+                blockingMask = (blockingMask >> 4 + -orientation) + (0xf & blockingMask << orientation);
+            int sizeX;
+            int sizeY;
+            if(orientation == 0 || orientation == 2) {
+                sizeY = gameObjectDefinition.sizeY;
+                sizeX = gameObjectDefinition.sizeX;
+            } else {
+                sizeX = gameObjectDefinition.sizeY;
+                sizeY = gameObjectDefinition.sizeX;
+            }
+            Pathfinding.doObjectWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], offsetX, offsetY, sizeX, sizeY, blockingMask, 0, 0);
+        }
+
         GameInterface.crossX = MouseHandler.clickX;
-        crossType = 2;
         GameInterface.crossY = MouseHandler.clickY;
+
+        crossType = 2;
         crossIndex = 0;
+
         return true;
     }
 

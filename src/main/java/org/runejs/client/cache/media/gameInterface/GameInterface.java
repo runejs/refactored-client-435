@@ -654,7 +654,7 @@ public class GameInterface extends CachedNode {
                 OutgoingPackets.sendMessage(new ExamineObjectOutboundMessage(objectId));
             }
             if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_4.getId()) {
-                MovedStatics.method596(i, npcIdx, (byte) -79, i_10_);
+                MovedStatics.walkToObject(i, i_10_, npcIdx);
 
                 int objectX = MovedStatics.baseX + i;
                 int objectId = (0x1ffffd20 & npcIdx) >> 14;
@@ -975,7 +975,7 @@ public class GameInterface extends CachedNode {
                     OutgoingPackets.sendMessage(new ExamineItemOutboundMessage(npcIdx));
                 }
                 if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_5.getId()) {
-                    MovedStatics.method596(i, npcIdx, (byte) -11, i_10_);
+                    MovedStatics.walkToObject(i, i_10_, npcIdx);
 
                     int objectId = (0x1ffffd20 & npcIdx) >> 14;
                     int objectY = i_10_ + MovedStatics.baseY;
@@ -1026,7 +1026,7 @@ public class GameInterface extends CachedNode {
                     }
                 }
                 if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_2.getId()) {
-                    MovedStatics.method596(i, npcIdx, (byte) -77, i_10_);
+                    MovedStatics.walkToObject(i, i_10_, npcIdx);
 
                     int objectX = i + MovedStatics.baseX;
                     int objectY = i_10_ + MovedStatics.baseY;
@@ -1041,7 +1041,7 @@ public class GameInterface extends CachedNode {
                         )
                     );
                 }
-                if(action == ActionRowType.USE_ITEM_ON_OBJECT.getId() && MovedStatics.method596(i, npcIdx, (byte) -104, i_10_)) {
+                if(action == ActionRowType.USE_ITEM_ON_OBJECT.getId() && MovedStatics.walkToObject(i, i_10_, npcIdx)) {
                     int widgetId = (itemSelectedWidgetId >> 16) & 0xFFFF;
                     int containerId = itemSelectedWidgetId & 0xFFFF;
 
@@ -1282,7 +1282,7 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_3.getId()) {
-                        MovedStatics.method596(i, npcIdx, (byte) -104, i_10_);
+                        MovedStatics.walkToObject(i, i_10_, npcIdx);
 
                         int objectY = i_10_ + MovedStatics.baseY;
                         int objectId = npcIdx >> 14 & 0x7fff;
@@ -1305,7 +1305,7 @@ public class GameInterface extends CachedNode {
                         ChatBox.dialogueId = -1;
                         ChatBox.redrawChatbox = true;
                     }
-                    if(action == ActionRowType.CAST_MAGIC_ON_OBJECT.getId() && MovedStatics.method596(i, npcIdx, (byte) -27, i_10_)) {
+                    if(action == ActionRowType.CAST_MAGIC_ON_OBJECT.getId() && MovedStatics.walkToObject(i, i_10_, npcIdx)) {
                         OutgoingPackets.sendMessage(
                             new CastMagicOnObjectOutboundMessage(
                                 selectedSpell,
@@ -1492,7 +1492,7 @@ public class GameInterface extends CachedNode {
                         }
                     }
                     if(action == ActionRowType.INTERACT_WITH_OBJECT_OPTION_1.getId()) {
-                        MovedStatics.method596(i, npcIdx, (byte) -47, i_10_);
+                        MovedStatics.walkToObject(i, i_10_, npcIdx);
                         int objectId = 0x7fff & npcIdx >> 14;
                         int objectX = i + MovedStatics.baseX;
                         int objectY = i_10_ + MovedStatics.baseY;
@@ -1896,7 +1896,7 @@ public class GameInterface extends CachedNode {
                     ChatBox.chatMessage = ChatBox.chatMessage.substring(0, -1 + ChatBox.chatMessage.length());
                     ChatBox.redrawChatbox = true;
                 }
-                if(MovedStatics.method793(MovedStatics.anInt1388) && ChatBox.chatMessage.length() < 80) {
+                if(MovedStatics.isValidInputCharacter(MovedStatics.anInt1388) && ChatBox.chatMessage.length() < 80) {
                     ChatBox.chatMessage = ChatBox.chatMessage + (char) MovedStatics.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
@@ -1983,7 +1983,7 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name
                     ChatBox.inputMessage = ChatBox.inputMessage.substring(0, ChatBox.inputMessage.length() - 10);
                     ChatBox.redrawChatbox = true;
                 }
-                if(MovedStatics.method793(MovedStatics.anInt1388) && ChatBox.inputMessage.length() < 40) {
+                if(MovedStatics.isValidInputCharacter(MovedStatics.anInt1388) && ChatBox.inputMessage.length() < 40) {
                     ChatBox.inputMessage = ChatBox.inputMessage + (char) MovedStatics.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }
@@ -1992,7 +1992,7 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name
                     ChatBox.chatboxInput = ChatBox.chatboxInput.substring(0, ChatBox.chatboxInput.length() - 1);
                     ChatBox.redrawChatbox = true;
                 }
-                if(MovedStatics.method793(MovedStatics.anInt1388) && ChatBox.chatboxInput.length() < 80) {
+                if(MovedStatics.isValidInputCharacter(MovedStatics.anInt1388) && ChatBox.chatboxInput.length() < 80) {
                     ChatBox.chatboxInput = ChatBox.chatboxInput + (char) MovedStatics.anInt1388;
                     ChatBox.redrawChatbox = true;
                 }

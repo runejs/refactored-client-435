@@ -268,7 +268,7 @@ public class Console {
             consoleInput = consoleInput.substring(0, currentChatIndex - 1) + consoleInput.substring(currentChatIndex);
             currentChatIndex--;
         }
-        if (MovedStatics.method793(MovedStatics.anInt1388) && consoleInput.length() < 80) { // any character
+        if (MovedStatics.isValidInputCharacter(MovedStatics.anInt1388) && consoleInput.length() < 80) { // any character
             consoleInput = consoleInput.substring(0, currentChatIndex) + (char) MovedStatics.anInt1388 + consoleInput.substring(currentChatIndex);
             currentChatIndex++;
         }

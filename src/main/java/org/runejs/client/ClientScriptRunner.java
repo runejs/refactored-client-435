@@ -1102,7 +1102,7 @@ public class ClientScriptRunner extends Node {
     }
 
     private static RSString method1024(boolean arg0, int arg2) {
-        return MovedStatics.method521(arg0, 10, arg2);
+        return RSString.method521(arg0, 10, arg2);
     }
 
     public static void method406(int arg0, int arg1, int arg2) {
