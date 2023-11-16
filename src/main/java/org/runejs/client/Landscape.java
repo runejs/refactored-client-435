@@ -471,7 +471,7 @@ public class Landscape {
                             hueMultiplier -= blendedHueMultiplier[negativeY];
                             hue -= blendedHue[negativeY];
                         }
-                        if(y >= 1 && y < 103 && (!VertexNormal.lowMemory || (0x2 & MovedStatics.tile_flags[0][x][y]) != 0 || (0x10 & MovedStatics.tile_flags[_plane][x][y]) == 0 && MovedStatics.onBuildTimePlane == MovedStatics.getVisibilityPlaneFor(_plane, y, 0, x))) {
+                        if(y >= 1 && y < 103 && (!VertexNormal.lowMemory || (0x2 & MovedStatics.tile_flags[0][x][y]) != 0 || (0x10 & MovedStatics.tile_flags[_plane][x][y]) == 0 && MovedStatics.onBuildTimePlane == MovedStatics.getVisibilityPlaneFor(_plane, y, x))) {
                             if(lowestPlane > _plane)
                                 lowestPlane = _plane;
                             int underlayId = tile_underlayids[_plane][x][y] & 0xff;
@@ -561,7 +561,7 @@ public class Landscape {
             }
             for(int i_56_ = 1; i_56_ < 103; i_56_++) {
                 for(int i_57_ = 1; i_57_ < 103; i_57_++)
-                    this.scene.setDrawLevel(_plane, i_57_, i_56_, MovedStatics.getVisibilityPlaneFor(_plane, i_56_, 0, i_57_));
+                    this.scene.setDrawLevel(_plane, i_57_, i_56_, MovedStatics.getVisibilityPlaneFor(_plane, i_56_, i_57_));
             }
             tile_underlayids[_plane] = null;
             tile_overlayids[_plane] = null;
@@ -865,7 +865,7 @@ public class Landscape {
     }
 
     public void addObject(int objectId, int localX, int localY, int plane, int face, int type, CollisionMap collisionMap) {
-        if(!VertexNormal.lowMemory || (0x2 & MovedStatics.tile_flags[0][localX][localY]) != 0 || (0x10 & MovedStatics.tile_flags[plane][localX][localY]) == 0 && MovedStatics.onBuildTimePlane == MovedStatics.getVisibilityPlaneFor(plane, localY, 0, localX)) {
+        if(!VertexNormal.lowMemory || (0x2 & MovedStatics.tile_flags[0][localX][localY]) != 0 || (0x10 & MovedStatics.tile_flags[plane][localX][localY]) == 0 && MovedStatics.onBuildTimePlane == MovedStatics.getVisibilityPlaneFor(plane, localY, localX)) {
             if(lowestPlane > plane)
                 lowestPlane = plane;
             int vertexHeight = tile_height[plane][localX][localY];

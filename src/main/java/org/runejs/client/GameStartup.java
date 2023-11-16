@@ -119,7 +119,7 @@ public class GameStartup {
                 currentLoadingText = English.loadedFonts;
             }
         } else if (startupStage == 60) {
-            int i = MovedStatics.method988(CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
+            int i = MovedStatics.getLoadedTitleImageCount(CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
             int i_3_ = 5;
             if (i < 5) {
                 currentLoadingText = English.loadingTitleScreen + (100 * i / 5) + Native.percent;

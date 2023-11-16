@@ -2732,14 +2732,12 @@ public class MovedStatics {
         return false;
     }
 
-    public static int getVisibilityPlaneFor(int arg0, int arg1, int arg2, int arg3) {
-        if(arg2 != 0)
-            getVisibilityPlaneFor(-73, 123, 115, 98);
-        if((tile_flags[arg0][arg3][arg1] & 0x8) != 0)
+    public static int getVisibilityPlaneFor(int plane, int y, int x) {
+        if((tile_flags[plane][x][y] & 0x8) != 0)
             return 0;
-        if(arg0 > 0 && (tile_flags[1][arg3][arg1] & 0x2) != 0)
-            return -1 + arg0;
-        return arg0;
+        if(plane > 0 && (tile_flags[1][x][y] & 0x2) != 0)
+            return plane - 1;
+        return plane;
     }
 
     public static void determineMenuSize() {
@@ -2871,17 +2869,17 @@ public class MovedStatics {
 //        }
     }
 
-    public static int method988(CacheArchive arg0, CacheArchive arg1) {
+    public static int getLoadedTitleImageCount(CacheArchive huffmanArchive, CacheArchive imageArchive) {
         int i = 0;
-        if(arg0.loaded(Native.titleImage, ""))
+        if(huffmanArchive.loaded(Native.titleImage, ""))
             i++;
-        if(arg1.loaded(Native.logo, ""))
+        if(imageArchive.loaded(Native.logo, ""))
             i++;
-        if(arg1.loaded(Native.titleBox, ""))
+        if(imageArchive.loaded(Native.titleBox, ""))
             i++;
-        if(arg1.loaded(Native.titleButton, ""))
+        if(imageArchive.loaded(Native.titleButton, ""))
             i++;
-        if(arg1.loaded(Native.runes, ""))
+        if(imageArchive.loaded(Native.runes, ""))
             i++;
         return i;
     }
