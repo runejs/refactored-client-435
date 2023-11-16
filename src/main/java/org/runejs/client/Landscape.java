@@ -251,7 +251,7 @@ public class Landscape {
                     MovedStatics.processGameStatus(30);
                 method973();
                 OutgoingPackets.buffer.putPacket(178);
-                MovedStatics.method1057();
+                MovedStatics.resetGameTimer();
             } else
                 Game.regionLoadingType = 2;
         } else

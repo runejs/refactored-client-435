@@ -3181,7 +3181,7 @@ public class MovedStatics {
         }
     }
 
-    public static void method1057() {
+    public static void resetGameTimer() {
         Game.gameTimer.reset();
         for(int i = 0; i < 32; i++)
             GameShell.tickSamples[i] = 0L;
