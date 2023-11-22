@@ -230,37 +230,37 @@ public class Game {
                 if (gameInterface == GameInterface.aGameInterface_353) {
                     opacity = 128;
                     GameInterface gameInterface_3_ = GameInterface.method878(gameInterface);
-                    int[] is = GameInterface.method247(gameInterface_3_);
-                    int[] is_4_ = GameInterface.method247(gameInterface);
-                    int i_5_ = MouseHandler.mouseY + -MovedStatics.anInt2621 + is_4_[1] - is[1];
+                    int[] positionB = GameInterface.getAdjustedPosition(gameInterface_3_);
+                    int[] positionA = GameInterface.getAdjustedPosition(gameInterface);
+                    int i_5_ = MouseHandler.mouseY + -MovedStatics.anInt2621 + positionA[1] - positionB[1];
                     if (i_5_ < 0)
                         i_5_ = 0;
                     if (i_5_ + gameInterface.originalHeight > gameInterface_3_.originalHeight)
                         i_5_ = gameInterface_3_.originalHeight + -gameInterface.originalHeight;
-                    absoluteY = i_5_ + is[1];
-                    int i_6_ = MouseHandler.mouseX + -MovedStatics.anInt1996 + -is[0] + is_4_[0];
+                    absoluteY = i_5_ + positionB[1];
+                    int i_6_ = MouseHandler.mouseX + -MovedStatics.anInt1996 + -positionB[0] + positionA[0];
                     if (i_6_ < 0)
                         i_6_ = 0;
                     if (i_6_ + gameInterface.originalWidth > gameInterface_3_.originalWidth)
                         i_6_ = -gameInterface.originalWidth + gameInterface_3_.originalWidth;
-                    absoluteX = is[0] + i_6_;
+                    absoluteX = positionB[0] + i_6_;
                 }
                 if (!gameInterface.isNewInterfaceFormat || Rasterizer.viewportRight >= absoluteX && Rasterizer.viewportBottom >= absoluteY && Rasterizer.viewportLeft <= absoluteX + gameInterface.originalWidth && absoluteY + gameInterface.originalHeight >= Rasterizer.viewportTop) {
                     if (gameInterface.type == GameInterfaceType.LAYER) {
                         if (gameInterface.isHidden && !GameInterface.isHovering(areaId, i))
                             continue;
                         if (!gameInterface.isNewInterfaceFormat) {
-                            if (-gameInterface.originalHeight + gameInterface.scrollHeight < gameInterface.scrollPosition)
-                                gameInterface.scrollPosition = -gameInterface.originalHeight + gameInterface.scrollHeight;
-                            if (gameInterface.scrollPosition < 0)
-                                gameInterface.scrollPosition = 0;
+                            if (-gameInterface.originalHeight + gameInterface.scrollHeight < gameInterface.scrollDepth)
+                                gameInterface.scrollDepth = -gameInterface.originalHeight + gameInterface.scrollHeight;
+                            if (gameInterface.scrollDepth < 0)
+                                gameInterface.scrollDepth = 0;
                         }
-                        result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, gameInterface.originalHeight + absoluteY, gameInterface.scrollPosition, gameInterface.scrollWidth, interfaceCollection, i, drawSuccess);
+                        result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, gameInterface.originalHeight + absoluteY, gameInterface.scrollDepth, gameInterface.scrollWidth, interfaceCollection, i, drawSuccess);
                         if (gameInterface.children != null)
-                            result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, absoluteY + gameInterface.originalHeight, gameInterface.scrollPosition, gameInterface.scrollWidth, gameInterface.children, gameInterface.id, true);
+                            result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, absoluteY + gameInterface.originalHeight, gameInterface.scrollDepth, gameInterface.scrollWidth, gameInterface.children, gameInterface.id, true);
                         Rasterizer.setBounds(minX, minY, maxX, maxY);
                         if (gameInterface.originalHeight < gameInterface.scrollHeight)
-                            GameInterface.drawScrollBar(absoluteX + gameInterface.originalWidth, absoluteY, gameInterface.originalHeight, gameInterface.scrollPosition, gameInterface.scrollHeight);
+                            GameInterface.drawScrollBar(absoluteX + gameInterface.originalWidth, absoluteY, gameInterface.originalHeight, gameInterface.scrollDepth, gameInterface.scrollHeight);
                     }
                     if (gameInterface.type == GameInterfaceType.UNKNOWN) {
                         continue;
@@ -310,23 +310,23 @@ public class Game {
                                                 imageRGB.drawImageWithOpacity(i_12_ + i_10_, i_11_ + i_14_, 128);
                                                 if (parentId != -1) {
                                                     GameInterface gameInterface_16_ = interfaceCollection[parentId];
-                                                    if (Rasterizer.viewportTop > i_14_ + i_11_ && gameInterface_16_.scrollPosition > 0) {
+                                                    if (Rasterizer.viewportTop > i_14_ + i_11_ && gameInterface_16_.scrollDepth > 0) {
                                                         int i_17_ = deltaT * (Rasterizer.viewportTop + -i_11_ - i_14_) / 3;
                                                         if (10 * deltaT < i_17_)
                                                             i_17_ = 10 * deltaT;
-                                                        if (gameInterface_16_.scrollPosition < i_17_)
-                                                            i_17_ = gameInterface_16_.scrollPosition;
-                                                        gameInterface_16_.scrollPosition -= i_17_;
+                                                        if (gameInterface_16_.scrollDepth < i_17_)
+                                                            i_17_ = gameInterface_16_.scrollDepth;
+                                                        gameInterface_16_.scrollDepth -= i_17_;
                                                         MovedStatics.anInt2798 += i_17_;
                                                     }
-                                                    if (32 + i_11_ + i_14_ > Rasterizer.viewportBottom && -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight > gameInterface_16_.scrollPosition) {
+                                                    if (32 + i_11_ + i_14_ > Rasterizer.viewportBottom && -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight > gameInterface_16_.scrollDepth) {
                                                         int i_18_ = deltaT * (-Rasterizer.viewportBottom + 32 + i_11_ + i_14_) / 3;
                                                         if (deltaT * 10 < i_18_)
                                                             i_18_ = 10 * deltaT;
-                                                        if (-gameInterface_16_.scrollPosition + gameInterface_16_.scrollHeight + -gameInterface_16_.originalHeight < i_18_)
-                                                            i_18_ = -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight + -gameInterface_16_.scrollPosition;
+                                                        if (-gameInterface_16_.scrollDepth + gameInterface_16_.scrollHeight + -gameInterface_16_.originalHeight < i_18_)
+                                                            i_18_ = -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight + -gameInterface_16_.scrollDepth;
                                                         MovedStatics.anInt2798 -= i_18_;
-                                                        gameInterface_16_.scrollPosition += i_18_;
+                                                        gameInterface_16_.scrollDepth += i_18_;
                                                     }
                                                 }
                                             } else if (GameInterface.atInventoryInterfaceType == 0 || GameInterface.anInt1233 != i_7_ || gameInterface.id != GameInterface.anInt704)
@@ -937,11 +937,11 @@ public class Game {
             MovedStatics.method763(gameCanvas, CacheArchive.gameImageCacheArchive);
         }
         if(GameInterface.chatboxInterfaceId == -1) {
-            chatboxInterface.scrollPosition = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
+            chatboxInterface.scrollDepth = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
             if(MouseHandler.mouseX > 448 && MouseHandler.mouseX < 560 && MouseHandler.mouseY > 332) {
                 GameInterface.scrollInterface(77, MouseHandler.mouseY + -357, -17 + MouseHandler.mouseX, ChatBox.chatboxScrollMax, chatboxInterface, 463, -1, 0);
             }
-            int currentScroll = ChatBox.chatboxScrollMax - 77 - chatboxInterface.scrollPosition;
+            int currentScroll = ChatBox.chatboxScrollMax - 77 - chatboxInterface.scrollDepth;
             if(currentScroll < 0) {
                 currentScroll = 0;
             }
@@ -954,12 +954,12 @@ public class Game {
             }
         }
         if(GameInterface.chatboxInterfaceId == -1 && ChatBox.inputType == 3) {
-            chatboxInterface.scrollPosition = ChatBox.itemSearchScroll;
+            chatboxInterface.scrollDepth = ChatBox.itemSearchScroll;
             int scrollMax = 14 * ChatBox.itemSearchResultCount + 7;
             if(MouseHandler.mouseX > 448 && MouseHandler.mouseX < 560 && MouseHandler.mouseY > 332) {
                 GameInterface.scrollInterface(77, MouseHandler.mouseY - 357, -17 + MouseHandler.mouseX, scrollMax, chatboxInterface, 463, -1, 0);
             }
-            int currentScroll = chatboxInterface.scrollPosition;
+            int currentScroll = chatboxInterface.scrollDepth;
             if(currentScroll < 0) {
                 currentScroll = 0;
             }
@@ -1489,13 +1489,13 @@ public class Game {
                             GameInterface.runClientScriptsForParentInterface(496, i ^ 0xffffffff, 453, ChatBox.dialogueId, 357, 17);
 
                         // If hovering over a widget
-                        if(MovedStatics.anInt1586 != -1 || MovedStatics.anInt614 != -1 || MovedStatics.anInt573 != -1) {
+                        if(MovedStatics.anInt1586 != -1 || MovedStatics.openTabWidgetChildTooltipId != -1 || MovedStatics.openWidgetChildTooltipId != -1) {
                             if(MovedStatics.tooltipDelay > MovedStatics.durationHoveredOverWidget) {
                                 MovedStatics.durationHoveredOverWidget++;
                                 if(MovedStatics.tooltipDelay == MovedStatics.durationHoveredOverWidget) {
                                     if(MovedStatics.anInt1586 != -1)
                                         ChatBox.redrawChatbox = true;
-                                    if(MovedStatics.anInt614 != -1)
+                                    if(MovedStatics.openTabWidgetChildTooltipId != -1)
                                         GameInterface.redrawTabArea = true;
                                 }
                             }

@@ -193,7 +193,7 @@ public class GameInterface extends CachedNode {
     public boolean isInventory;
     public int modelZoom;
     public boolean aBoolean2730;
-    public int scrollPosition;
+    public int scrollDepth;
     public int lineHeight;
     public int xTextAlignment;
     public int itemAmount;
@@ -270,7 +270,7 @@ public class GameInterface extends CachedNode {
         isHidden = false;
         alternateTextColor = 0;
         scrollHeight = 0;
-        scrollPosition = 0;
+        scrollDepth = 0;
         anInt2736 = 0;
         itemId = -1;
         itemSpritePadsX = 0;
@@ -1410,7 +1410,7 @@ public class GameInterface extends CachedNode {
                         closeAllWidgets();
                     }
                     if(action == 54 && MovedStatics.lastContinueTextWidgetId == -1) { // Click to continue
-                        method517(0, i_10_);
+                        sendPleaseWaitOptionClick(0, i_10_);
                         MovedStatics.lastContinueTextWidgetId = i_10_;
                     }
                     if(action == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_4.getId()) {
@@ -1601,28 +1601,28 @@ public class GameInterface extends CachedNode {
             GameInterface gameInterface = aGameInterface_353;
             GameInterface gameInterface_24_ = method878(gameInterface);
             if(gameInterface_24_ != null) {
-                int[] is = method247(gameInterface_24_);
-                int[] is_25_ = method247(gameInterface);
-                int i = is_25_[1] - is[1] + -MovedStatics.anInt2621 + MouseHandler.mouseY;
-                int i_26_ = -is[0] + is_25_[0] + MouseHandler.mouseX + -MovedStatics.anInt1996;
-                if(i < 0) {
-                    i = 0;
+                int[] positionA = getAdjustedPosition(gameInterface_24_);
+                int[] positionB = getAdjustedPosition(gameInterface);
+                int y = positionB[1] - positionA[1] + -MovedStatics.anInt2621 + MouseHandler.mouseY;
+                int x = -positionA[0] + positionB[0] + MouseHandler.mouseX + -MovedStatics.anInt1996;
+                if(y < 0) {
+                    y = 0;
                 }
-                if(gameInterface_24_.originalHeight < i + gameInterface.originalHeight) {
-                    i = -gameInterface.originalHeight + gameInterface_24_.originalHeight;
+                if(gameInterface_24_.originalHeight < y + gameInterface.originalHeight) {
+                    y = -gameInterface.originalHeight + gameInterface_24_.originalHeight;
                 }
-                if(i_26_ < 0) {
-                    i_26_ = 0;
+                if(x < 0) {
+                    x = 0;
                 }
-                if(gameInterface_24_.originalWidth < gameInterface.originalWidth + i_26_) {
-                    i_26_ = gameInterface_24_.originalWidth - gameInterface.originalWidth;
+                if(gameInterface_24_.originalWidth < gameInterface.originalWidth + x) {
+                    x = gameInterface_24_.originalWidth - gameInterface.originalWidth;
                 }
                 if(aGameInterface_353.anObjectArray2669 != null && (arg2 & 0x200) != 0) {
-                    ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2669, 0, i, gameInterface, i_26_);
+                    ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2669, 0, y, gameInterface, x);
                 }
                 if(MouseHandler.currentMouseButtonPressed == 0 && (arg2 & 0x400) != 0) {
                     if(aGameInterface_353.anObjectArray2695 != null) {
-                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2695, 0, i, gameInterface, i_26_);
+                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2695, 0, y, gameInterface, x);
                     }
                     aGameInterface_353 = null;
                 }
@@ -1645,12 +1645,12 @@ public class GameInterface extends CachedNode {
                         gameInterface = gameInterface_27_;
                     }
                     if(gameInterface_27_.type == GameInterfaceType.LAYER) {
-                        GameInterface gameInterface_30_ = method361(arg0, arg1, arg2, -gameInterface_27_.scrollPosition + gameInterface_27_.currentY, i, gameInterface_27_.currentX - gameInterface_27_.scrollWidth, arg6, 398);
+                        GameInterface gameInterface_30_ = method361(arg0, arg1, arg2, -gameInterface_27_.scrollDepth + gameInterface_27_.currentY, i, gameInterface_27_.currentX - gameInterface_27_.scrollWidth, arg6, 398);
                         if(gameInterface_30_ != null) {
                             gameInterface = gameInterface_30_;
                         }
                         if(arg2 && gameInterface_27_.children != null) {
-                            GameInterface gameInterface_31_ = method361(gameInterface_27_.children, arg1, arg2, gameInterface_27_.currentY + -gameInterface_27_.scrollPosition, gameInterface_27_.id, gameInterface_27_.currentX - gameInterface_27_.scrollWidth, arg6, 398);
+                            GameInterface gameInterface_31_ = method361(gameInterface_27_.children, arg1, arg2, gameInterface_27_.currentY + -gameInterface_27_.scrollDepth, gameInterface_27_.id, gameInterface_27_.currentX - gameInterface_27_.scrollWidth, arg6, 398);
                             if(gameInterface_31_ != null) {
                                 gameInterface = gameInterface_31_;
                             }
@@ -1672,7 +1672,7 @@ public class GameInterface extends CachedNode {
             anInt1171 = 0;
         aBoolean1444 = false;
         if(arg2 >= arg6 && arg2 < arg6 + 16 && arg1 >= arg8 && 16 + arg8 > arg1) {
-            arg5.scrollPosition -= Game.mouseClicksSinceLastDraw * 4;
+            arg5.scrollDepth -= Game.mouseClicksSinceLastDraw * 4;
             if(arg7 == 1)
                 redrawTabArea = true;
             if(arg7 == 2 || arg7 == 3)
@@ -1689,10 +1689,10 @@ public class GameInterface extends CachedNode {
                     i = 8;
                 int i_17_ = -i + arg0 + -32;
                 int i_18_ = -(i / 2) + -arg8 + arg1 + -16;
-                arg5.scrollPosition = (arg3 + -arg0) * i_18_ / i_17_;
+                arg5.scrollDepth = (arg3 + -arg0) * i_18_ / i_17_;
             }
         } else {
-            arg5.scrollPosition += 4 * Game.mouseClicksSinceLastDraw;
+            arg5.scrollDepth += 4 * Game.mouseClicksSinceLastDraw;
             if(arg7 == 2 || arg7 == 3)
                 ChatBox.redrawChatbox = true;
             if(arg7 == 1)
@@ -1793,9 +1793,9 @@ public class GameInterface extends CachedNode {
                 int i_7_ = Math.min(arg1, bottomLeftY);
                 int i_8_ = Math.min(topRightX, arg8);
                 if (gameInterface.type == GameInterfaceType.LAYER) {
-                    runClientScriptsForInterface(i_4_, i_7_, gameInterface.scrollWidth, arg3, i_6_, i, interfaceCollection, i_8_, gameInterface.scrollPosition);
+                    runClientScriptsForInterface(i_4_, i_7_, gameInterface.scrollWidth, arg3, i_6_, i, interfaceCollection, i_8_, gameInterface.scrollDepth);
                     if (gameInterface.children != null)
-                        runClientScriptsForInterface(i_4_, i_7_, gameInterface.scrollWidth, arg3, i_6_, gameInterface.id, gameInterface.children, i_8_, gameInterface.scrollPosition);
+                        runClientScriptsForInterface(i_4_, i_7_, gameInterface.scrollWidth, arg3, i_6_, gameInterface.id, gameInterface.children, i_8_, gameInterface.scrollDepth);
                 }
                 if (gameInterface.hasListeners) {
                     boolean bool;
@@ -1865,7 +1865,7 @@ public class GameInterface extends CachedNode {
     }
 
     public static boolean isHovering(int areaId, int widgetChildId) {
-        if(areaId == 0 && MovedStatics.anInt2850 == widgetChildId)
+        if(areaId == 0 && MovedStatics.hoveredWidgetChildId == widgetChildId)
             return true;
 
         if(areaId == 1 && widgetChildId == MovedStatics.currentHoveredWidgetChildId)
@@ -1955,7 +1955,7 @@ public class GameInterface extends CachedNode {
                             /* empty */
                         }
 
-OutgoingPackets.sendMessage(new SubmitChatboxWidgetNumericInputOutboundMessage(inputValue));
+                        OutgoingPackets.sendMessage(new SubmitChatboxWidgetNumericInputOutboundMessage(inputValue));
                     }
                     ChatBox.redrawChatbox = true;
                     ChatBox.inputType = 0;
@@ -1971,9 +1971,9 @@ OutgoingPackets.sendMessage(new SubmitChatboxWidgetNumericInputOutboundMessage(i
                 }
                 if(MovedStatics.anInt2854 == 84) {
                     if(ChatBox.inputMessage.length() > 0) {
-long name = TextUtils.nameToLong(ChatBox.inputMessage);
+                        long name = TextUtils.nameToLong(ChatBox.inputMessage);
 
-OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name));
+                        OutgoingPackets.sendMessage(new SubmitChatboxWidgetNameInputOutboundMessage(name));
                     }
                     ChatBox.inputType = 0;
                     ChatBox.redrawChatbox = true;
@@ -2150,16 +2150,23 @@ ChatBox.tradeMode
     }
 
     public static GameInterface method878(GameInterface arg1) {
-        int i;
-        if(arg1.id < 0)
-            i = arg1.parentId >> 16;
-        else
-            i = arg1.id >> 16;
-        if(!decodeGameInterface(i))
+        int id;
+
+        if(arg1.id < 0) {
+            id = arg1.parentId >> 16;
+        } else {
+            id = arg1.id >> 16;
+        }
+
+        if(!decodeGameInterface(id)) {
             return null;
-        if(arg1.anInt2738 >= 0)
-            return cachedInterfaces[i][0xffff & arg1.anInt2738];
-        GameInterface gameInterface = cachedInterfaces[i][(0x7fff99d9 & arg1.anInt2738) >> 15];
+        }
+
+        if(arg1.anInt2738 >= 0) {
+            return cachedInterfaces[id][0xffff & arg1.anInt2738];
+        }
+
+        GameInterface gameInterface = cachedInterfaces[id][(0x7fff99d9 & arg1.anInt2738) >> 15];
         return gameInterface.children[arg1.anInt2738 & 0x7fff];
     }
 
@@ -2189,31 +2196,45 @@ ChatBox.tradeMode
         return true;
     }
 
-    public static int[] method247(GameInterface arg0) {
-        int i;
-        if(arg0.id < 0)
-            i = arg0.parentId >> 16;
-        else
-            i = arg0.id >> 16;
-        if(!decodeGameInterface(i))
-            return null;
-        int i_11_ = arg0.currentX;
-        int i_12_ = arg0.currentY;
-        int i_13_ = arg0.parentId;
-        while(i_13_ != -1) {
-            GameInterface gameInterface = cachedInterfaces[i][i_13_ & 0xffff];
-            i_11_ += gameInterface.currentX;
-            if(!arg0.lockScroll)
-                i_11_ -= gameInterface.scrollWidth;
-            i_12_ += gameInterface.currentY;
-            i_13_ = gameInterface.parentId;
-            if(!arg0.lockScroll)
-                i_12_ -= gameInterface.scrollPosition;
+    /**
+     * Get the overall position for an interface, adjusting for all parent interfaces and their scroll positions.
+     *
+     * TODO (jkm) make non-static
+     */
+    public static int[] getAdjustedPosition(GameInterface gameInterface) {
+        int id;
+        if(gameInterface.id < 0) {
+            id = gameInterface.parentId >> 16;
+        } else {
+            id = gameInterface.id >> 16;
         }
-        int[] is = new int[2];
-        is[0] = i_11_;
-        is[1] = i_12_;
-        return is;
+
+        if(!decodeGameInterface(id)) {
+            return null;
+        }
+
+        int totalX = gameInterface.currentX;
+        int totalY = gameInterface.currentY;
+        int parentId = gameInterface.parentId;
+        while(parentId != -1) {
+            GameInterface parentInterface = cachedInterfaces[id][parentId & 0xffff];
+            totalX += parentInterface.currentX;
+            if(!gameInterface.lockScroll) {
+                totalX -= parentInterface.scrollWidth;
+            }
+
+            totalY += parentInterface.currentY;
+            if(!gameInterface.lockScroll) {
+                totalY -= parentInterface.scrollDepth;
+            }
+
+            parentId = parentInterface.parentId;
+        }
+
+        return new int[] {
+          totalX,
+          totalY
+        };
     }
 
     public static void closeAllWidgets() {
@@ -2248,7 +2269,7 @@ ChatBox.tradeMode
         }
     }
 
-    public static void method517(int option, int interfaceData) {
+    public static void sendPleaseWaitOptionClick(int option, int interfaceData) {
         int widgetId = (interfaceData >> 16) & 0xFFFF;
         int childId = interfaceData & 0xFFFF;
 
@@ -2267,23 +2288,23 @@ ChatBox.tradeMode
         interfaceTypefaceCache.clear();
     }
 
-    public static boolean handleSequences(int arg1) {
-        if(!decodeGameInterface(arg1))
+    public static boolean handleSequences(int interfaceId) {
+        if(!decodeGameInterface(interfaceId))
             return false;
-        GameInterface[] gameInterfaces = cachedInterfaces[arg1];
+        GameInterface[] gameInterfaces = cachedInterfaces[interfaceId];
         boolean bool = false;
         for(int i = 0; gameInterfaces.length > i; i++) {
             GameInterface gameInterface = gameInterfaces[i];
             if(gameInterface != null && gameInterface.type == GameInterfaceType.MODEL) {
                 if(gameInterface.animation != -1 || gameInterface.alternateAnimation != -1) {
-                    boolean bool_0_ = checkForAlternateAction(gameInterface);
-                    int i_1_;
-                    if(bool_0_)
-                        i_1_ = gameInterface.alternateAnimation;
+                    boolean isAlternative = checkForAlternateAction(gameInterface);
+                    int animationId;
+                    if(isAlternative)
+                        animationId = gameInterface.alternateAnimation;
                     else
-                        i_1_ = gameInterface.animation;
-                    if(i_1_ != -1) {
-                        AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(i_1_);
+                        animationId = gameInterface.animation;
+                    if(animationId != -1) {
+                        AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(animationId);
                         gameInterface.remainingAnimationTime += Game.deltaT;
                         while(animationSequence.frameLengths[gameInterface.animationFrame] < gameInterface.remainingAnimationTime) {
                             bool = true;
@@ -2583,7 +2604,7 @@ ChatBox.tradeMode
         hasListeners = buffer.getUnsignedByte() == 1;
         if(type == GameInterfaceType.LAYER) {
             scrollWidth = buffer.getUnsignedShortBE();
-            scrollPosition = buffer.getUnsignedShortBE();
+            scrollDepth = buffer.getUnsignedShortBE();
         }
         if(type == GameInterfaceType.GRAPHIC) {
             spriteId = buffer.getIntBE();
