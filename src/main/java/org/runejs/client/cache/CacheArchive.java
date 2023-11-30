@@ -52,7 +52,7 @@ public class CacheArchive {
     public volatile boolean[] hasValidContents;
     public int lastReceivedGroupRequest = -1;
     public volatile boolean finishedReceiving = false;
-    public CacheIndex metaIndex;
+    public CacheIndex idx255;
     public int cacheIndexId;
     public int archiveCrcValue;
     /**
@@ -63,22 +63,14 @@ public class CacheArchive {
     public boolean forceHighPriority;
     public CacheIndex dataIndex;
 
-    public CacheArchive(CacheIndex dataIndex, CacheIndex metaIndex, int cacheIndexId, boolean clearGroupContentCache, boolean clearEncryptableContent, boolean forceHighPriority) {
+    public CacheArchive(int cacheIndexId, CacheIndex idx255, CacheIndex dataIndex, boolean clearGroupContentCache, boolean clearEncryptableContent, boolean forceHighPriority) {
         this.clearEncryptableContent = clearEncryptableContent;
         this.clearGroupContentCache = clearGroupContentCache;
         this.dataIndex = dataIndex;
         this.forceHighPriority = forceHighPriority;
-        this.metaIndex = metaIndex;
+        this.idx255 = idx255;
         this.cacheIndexId = cacheIndexId;
         Game.updateServerConnectionManager.updateServer.requestArchiveChecksum(this, this.cacheIndexId);
-    }
-
-    public static CacheArchive loadArchive(int cacheIndexId, boolean clearGroupContentCache, boolean clearFileContentCache, boolean forceHighPriority) {
-        CacheIndex dataIndex = null;
-        if(Game.dataChannel != null) {
-            dataIndex = new CacheIndex(cacheIndexId, Game.dataChannel, Game.indexChannels[cacheIndexId], 1000000);
-        }
-        return new CacheArchive(dataIndex, Game.metaIndex, cacheIndexId, clearGroupContentCache, clearFileContentCache, forceHighPriority);
     }
 
     public static byte[] decompress(byte[] cacheData) {
@@ -137,6 +129,8 @@ public class CacheArchive {
         }
 
         if(dataFromQueue == null) {
+            // `index.read` is a bit of a misleading name, this actually
+            // uses the index to read the file data from the .dat2 file
             byte[] dataFromIndex = index.read(groupId);
             this.attemptDecodeData(true, dataFromIndex, groupId, index);
         } else {
@@ -160,14 +154,15 @@ public class CacheArchive {
     }
 
     public void attemptDecodeData(boolean highPriority, byte[] data, int key, CacheIndex cacheIndex) {
-        if(metaIndex == cacheIndex) {
+        // we are trying to decode the current index for this archive
+        if (cacheIndex == idx255) {
             if(finishedReceiving) {
                 throw new RuntimeException();
             }
 
             if(data == null) {
-                Game.updateServerConnectionManager.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0,
-                        archiveCrcValue);
+                Game.updateServerConnectionManager.updateServer.enqueueFileRequest(this, 255, cacheIndexId, (byte) 0, archiveCrcValue, true
+                );
                 return;
             }
 
@@ -176,41 +171,43 @@ public class CacheArchive {
 
             int actualChecksum = (int) crc32.getValue();
             if(actualChecksum != archiveCrcValue) {
-                Game.updateServerConnectionManager.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0,
-                        archiveCrcValue);
+                Game.updateServerConnectionManager.updateServer.enqueueFileRequest(this, 255, cacheIndexId, (byte) 0, archiveCrcValue, true
+                );
                 return;
             }
 
             decodeIndex(data);
             postDecodeIndex();
-        } else {
-            if(!highPriority && lastReceivedGroupRequest == key) {
-                finishedReceiving = true;
-            }
 
-            if(data == null || data.length <= 2) {
-                hasValidContents[key] = false;
-                if(forceHighPriority || highPriority)
-                    Game.updateServerConnectionManager.updateServer.enqueueFileRequest(highPriority, this, cacheIndexId, key, (byte) 2, groupChecksums[key]);
-                return;
-            }
+            return;
+        }
 
-            crc32.reset();
-            crc32.update(data, 0, data.length - 2);
-            int actualChecksum = (int) crc32.getValue();
-            int actualVersion = ((data[data.length - 2] & 0xff) << 8) + (0xff & data[data.length - 1]);
-            if(actualChecksum != groupChecksums[key] || actualVersion != groupVersions[key]) {
-                hasValidContents[key] = false;
-                if(forceHighPriority || highPriority)
-                    Game.updateServerConnectionManager.updateServer.enqueueFileRequest(highPriority, this, cacheIndexId, key, (byte) 2, groupChecksums[key]);
-                return;
-            }
+        if (!highPriority && lastReceivedGroupRequest == key) {
+            finishedReceiving = true;
+        }
 
-            hasValidContents[key] = true;
+        if (data == null || data.length <= 2) {
+            hasValidContents[key] = false;
+            if (forceHighPriority || highPriority)
+                Game.updateServerConnectionManager.updateServer.enqueueFileRequest(this, cacheIndexId, key, (byte) 2, groupChecksums[key], highPriority);
+            return;
+        }
 
-            if(highPriority) {
-                groupContentCache[key] = data;
-            }
+        crc32.reset();
+        crc32.update(data, 0, data.length - 2);
+        int actualChecksum = (int) crc32.getValue();
+        int actualVersion = ((data[data.length - 2] & 0xff) << 8) + (0xff & data[data.length - 1]);
+        if (actualChecksum != groupChecksums[key] || actualVersion != groupVersions[key]) {
+            hasValidContents[key] = false;
+            if (forceHighPriority || highPriority)
+                Game.updateServerConnectionManager.updateServer.enqueueFileRequest(this, cacheIndexId, key, (byte) 2, groupChecksums[key], highPriority);
+            return;
+        }
+
+        hasValidContents[key] = true;
+
+        if (highPriority) {
+            groupContentCache[key] = data;
         }
     }
 
@@ -218,7 +215,7 @@ public class CacheArchive {
         if(dataIndex != null && hasValidContents != null && hasValidContents[groupId]) {
             prioritiseDecodeGroup(dataIndex, groupId);
         } else {
-            Game.updateServerConnectionManager.updateServer.enqueueFileRequest(true, this, cacheIndexId, groupId, (byte) 2, groupChecksums[groupId]);
+            Game.updateServerConnectionManager.updateServer.enqueueFileRequest(this, cacheIndexId, groupId, (byte) 2, groupChecksums[groupId], true);
         }
     }
 
@@ -256,8 +253,8 @@ public class CacheArchive {
                 throw new RuntimeException();
             }
 
-            if(metaIndex != null) {
-                OnDemandRequest.createByteArrayOnDemandRequest(data, metaIndex, cacheIndexId);
+            if(idx255 != null) {
+                OnDemandRequest.createByteArrayOnDemandRequest(data, idx255, cacheIndexId);
             }
 
             decodeIndex(data);
@@ -279,11 +276,19 @@ public class CacheArchive {
 
     public void requestLatestVersion(int crcValue) {
         archiveCrcValue = crcValue;
-        if(metaIndex == null) {
-            Game.updateServerConnectionManager.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0, archiveCrcValue);
-        } else {
-            prioritiseDecodeGroup(metaIndex, cacheIndexId);
+
+        /**
+         * some exception occured while loading cache files...
+         *
+         * this shouldn't really occur, only if an IOException happened in Signlink
+         */
+        if(idx255 == null) {
+            Game.updateServerConnectionManager.updateServer.enqueueFileRequest(this, 255, cacheIndexId, (byte) 0, archiveCrcValue, true);
+
+            return;
         }
+
+        prioritiseDecodeGroup(idx255, cacheIndexId);
     }
 
     public int getGroupLoadedPercentage(int groupId) {

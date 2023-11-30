@@ -10,7 +10,7 @@ public class CacheIndex {
     public int maxLength;
     public int store;
 
-    public CacheIndex(int store, CacheFileChannel dataChannel, CacheFileChannel metaChannel, int maxLength) {
+    public CacheIndex(int store, CacheFileChannel metaChannel, CacheFileChannel dataChannel, int maxLength) {
         this.maxLength = maxLength;
         this.metaChannel = metaChannel;
         this.dataChannel = dataChannel;

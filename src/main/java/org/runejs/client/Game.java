@@ -1860,6 +1860,14 @@ public class Game {
     public static LoginProtocol loginProtocol = new RS435LoginProtocol();
     public static JS5UpdateServerConnectionManager updateServerConnectionManager;
 
+    public static CacheArchive loadArchive(int cacheIndexId, boolean clearGroupContentCache, boolean clearFileContentCache, boolean forceHighPriority) {
+        CacheIndex dataIndex = null;
+        if(dataChannel != null) {
+            dataIndex = new CacheIndex(cacheIndexId, indexChannels[cacheIndexId], dataChannel, 1000000);
+        }
+        return new CacheArchive(cacheIndexId, metaIndex, dataIndex, clearGroupContentCache, clearFileContentCache, forceHighPriority);
+    }
+
     public void processGameLoop() {
         MovedStatics.pulseCycle++;
 
@@ -2038,7 +2046,7 @@ public class Game {
                 for (int i = 0; i < 13; i++)
                     indexChannels[i] = new CacheFileChannel(signlink.dataIndexAccessFiles[i], 6000);
                 metaChannel = new CacheFileChannel(signlink.metaIndexAccessFile, 6000);
-                metaIndex = new CacheIndex(255, dataChannel, metaChannel, 500000);
+                metaIndex = new CacheIndex(255, metaChannel, dataChannel, 500000);
                 signlink.dataIndexAccessFiles = null;
                 signlink.metaIndexAccessFile = null;
                 signlink.cacheDataAccessFile = null;

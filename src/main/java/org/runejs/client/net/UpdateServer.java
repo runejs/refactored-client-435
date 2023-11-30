@@ -19,6 +19,9 @@ public class UpdateServer implements IUpdateServer {
     private GameSocket updateServerSocket;
     private Buffer fileDataBuffer = new Buffer(8);
     private Buffer js5ResponseData;
+    /***
+     * The CRC table received from the JS5 server in Buffer form
+     */
     private Buffer crcTableBuffer;
     private HashTable highPriorityRequestQueue = new HashTable(4096);
     private HashTable highPriorityInFlightRequests = new HashTable(32);
@@ -57,6 +60,9 @@ public class UpdateServer implements IUpdateServer {
     private int blockOffset = 0;
     private int msSinceLastUpdate = 0;
     private long lastUpdateInMillis;
+    /**
+     * TODO (jkm) suspicious name, I think it's actually just the set of loaded CacheArchives
+     */
     private CacheArchive[] cacheArchiveLoaders = new CacheArchive[256];
 
     private enum Opcode {
@@ -143,6 +149,104 @@ public class UpdateServer implements IUpdateServer {
         lastUpdateInMillis = System.currentTimeMillis();
     }
 
+    private void sendHighPriorityRequests() throws IOException {
+        // Immediate file requests
+        for(/**/; highPriorityInFlightRequestCount < 20; highPriorityInFlightRequestCount++) {
+            if(highPriorityPendingRequestCount <= 0) {
+                break;
+            }
+            UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityRequestQueue.getNextNode();
+            Buffer buffer = new Buffer(4);
+            buffer.putByte(Opcode.PRIORITY_REQUEST.getValue()); // immediate file request
+            buffer.putMediumBE((int) updateServerNode.key); // file index + file id
+            updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
+            highPriorityInFlightRequests.put(updateServerNode.key, updateServerNode);
+            highPriorityPendingRequestCount--;
+        }
+    }
+
+    private void sendStandardPriorityRequests() throws IOException {
+        for(/**/; standardPriorityInFlightRequestCount < 20 && standardPriorityPendingRequestCount > 0; standardPriorityPendingRequestCount--) {
+            UpdateServerNode updateServerNode = (UpdateServerNode) standardPriorityRequestQueue.next();
+            Buffer buffer = new Buffer(4);
+            buffer.putByte(Opcode.REQUEST.getValue()); // queued file request
+            buffer.putMediumBE((int) updateServerNode.key); // file index + file id
+            updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
+            updateServerNode.clear();
+            standardPriorityInFlightRequests.put(updateServerNode.key, updateServerNode);
+            standardPriorityInFlightRequestCount++;
+        }
+    }
+
+    private void readJS5ResponseHeader(Buffer buffer) throws IOException {
+        buffer.currentPosition = 0;
+        int archiveId = buffer.getUnsignedByte();
+        int groupId = buffer.getUnsignedShortBE();
+        int type = buffer.getUnsignedByte();
+        int length = buffer.getIntBE();
+        long fileKey = ((long) archiveId << 16) + groupId;
+        UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityInFlightRequests.getNode(fileKey);
+        highPriorityRequest = true;
+
+        if(updateServerNode == null) {
+            updateServerNode = (UpdateServerNode) standardPriorityInFlightRequests.getNode(fileKey);
+            highPriorityRequest = false;
+        }
+
+        if(updateServerNode == null) {
+            throw new IOException();
+        }
+
+        currentResponse = updateServerNode;
+
+        int compressionSizeOffset = type == 0 ? 5 : 9;
+        js5ResponseData = new Buffer(currentResponse.padding + compressionSizeOffset + length);
+        js5ResponseData.putByte(type);
+        js5ResponseData.putIntBE(length);
+
+        blockOffset = 8;
+        buffer.currentPosition = 0;
+    }
+
+    private void readJS5CRCTableResponse(Buffer buffer) {
+        crcTableBuffer = buffer;
+
+        for (int i = 0; i < 256; i++) {
+            CacheArchive archive = cacheArchiveLoaders[i];
+
+            if (archive == null) {
+                continue;
+            }
+
+            // TODO (jkm) why is this +5?
+            int targetPosition = (i * 4) + 5;
+            crcTableBuffer.currentPosition = targetPosition;
+
+            int indexCrcValue = crcTableBuffer.getIntBE();
+            archive.requestLatestVersion(indexCrcValue);
+        }
+    }
+
+    private boolean readJS5ArchiveFileResponse(Buffer buffer, int inboundFileLength) {
+        crc32.reset();
+        crc32.update(buffer.buffer, 0, inboundFileLength);
+        int fileRealCrcValue = (int) crc32.getValue();
+        if (~currentResponse.crc != ~fileRealCrcValue) {
+            try {
+                updateServerSocket.kill();
+            } catch (Exception exception) {
+            }
+            encryption = (byte) (int) (Math.random() * 255.0 + 1.0);
+            updateServerSocket = null;
+            crcMismatchesCount++;
+            return false;
+        }
+
+        ioExceptionsCount = 0;
+        crcMismatchesCount = 0;
+        currentResponse.cacheArchive.receiveContent((currentResponse.key & 0xff0000L) == 16711680L, (int) (currentResponse.key & 0xffffL), highPriorityRequest, buffer.buffer);
+        return true;
+    }
 
     @Override
     public boolean poll() {
@@ -165,37 +269,17 @@ public class UpdateServer implements IUpdateServer {
                 throw new IOException();
             }
 
-            // Immediate file requests
-            for(/**/; highPriorityInFlightRequestCount < 20; highPriorityInFlightRequestCount++) {
-                if(highPriorityPendingRequestCount <= 0) {
-                    break;
-                }
-                UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityRequestQueue.getNextNode();
-                Buffer buffer = new Buffer(4);
-                buffer.putByte(Opcode.PRIORITY_REQUEST.getValue()); // immediate file request
-                buffer.putMediumBE((int) updateServerNode.key); // file index + file id
-                updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
-                highPriorityInFlightRequests.put(updateServerNode.key, updateServerNode);
-                highPriorityPendingRequestCount--;
-            }
+            this.sendHighPriorityRequests();
 
-            // Queuable file requests
-            for(/**/; standardPriorityInFlightRequestCount < 20 && standardPriorityPendingRequestCount > 0; standardPriorityPendingRequestCount--) {
-                UpdateServerNode updateServerNode = (UpdateServerNode) standardPriorityRequestQueue.next();
-                Buffer buffer = new Buffer(4);
-                buffer.putByte(Opcode.REQUEST.getValue()); // queued file request
-                buffer.putMediumBE((int) updateServerNode.key); // file index + file id
-                updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
-                updateServerNode.clear();
-                standardPriorityInFlightRequests.put(updateServerNode.key, updateServerNode);
-                standardPriorityInFlightRequestCount++;
-            }
+            this.sendStandardPriorityRequests();
 
             for(int i1 = 0; i1 < 100; i1++) {
                 int dataAvailable = updateServerSocket.inputStreamAvailable();
+
                 if(dataAvailable < 0) {
                     throw new IOException();
                 }
+
                 if(dataAvailable == 0) {
                     break;
                 }
@@ -225,33 +309,7 @@ public class UpdateServer implements IUpdateServer {
                     }
 
                     if(currentResponse == null) {
-                        fileDataBuffer.currentPosition = 0;
-                        int archiveId = fileDataBuffer.getUnsignedByte();
-                        int groupId = fileDataBuffer.getUnsignedShortBE();
-                        int type = fileDataBuffer.getUnsignedByte();
-                        int length = fileDataBuffer.getIntBE();
-                        long fileKey = ((long) archiveId << 16) + groupId;
-                        UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityInFlightRequests.getNode(fileKey);
-                        highPriorityRequest = true;
-
-                        if(updateServerNode == null) {
-                            updateServerNode = (UpdateServerNode) standardPriorityInFlightRequests.getNode(fileKey);
-                            highPriorityRequest = false;
-                        }
-
-                        if(updateServerNode == null) {
-                            throw new IOException();
-                        }
-
-                        currentResponse = updateServerNode;
-
-                        int compressionSizeOffset = type == 0 ? 5 : 9;
-                        js5ResponseData = new Buffer(currentResponse.padding + compressionSizeOffset + length);
-                        js5ResponseData.putByte(type);
-                        js5ResponseData.putIntBE(length);
-
-                        blockOffset = 8;
-                        fileDataBuffer.currentPosition = 0;
+                        this.readJS5ResponseHeader(fileDataBuffer);
                     } else if(blockOffset == 0) {
                         if(fileDataBuffer.buffer[0] == -1) {
                             fileDataBuffer.currentPosition = 0;
@@ -283,53 +341,30 @@ public class UpdateServer implements IUpdateServer {
                     js5ResponseData.currentPosition += amountToRead;
                     blockOffset += amountToRead;
 
-                    if(inboundFileLength == js5ResponseData.currentPosition) {
-                        if(currentResponse.key == 16711935) { // crc table file key
-                            crcTableBuffer = js5ResponseData;
-                            for(int i = 0; i < 256; i++) {
-                                CacheArchive archive = cacheArchiveLoaders[i];
-                                if(archive != null) {
-                                    crcTableBuffer.currentPosition = 4 * i + 5;
-                                    int indexCrcValue = crcTableBuffer.getIntBE();
-                                    archive.requestLatestVersion(indexCrcValue);
-                                }
-                            }
-                        } else {
-                            crc32.reset();
-                            crc32.update(js5ResponseData.buffer, 0, inboundFileLength);
-                            int fileRealCrcValue = (int) crc32.getValue();
-                            if(~currentResponse.crc != ~fileRealCrcValue) {
-                                try {
-                                    updateServerSocket.kill();
-                                } catch(Exception exception) {
-                                }
-                                encryption = (byte) (int) (Math.random() * 255.0 + 1.0);
-                                updateServerSocket = null;
-                                crcMismatchesCount++;
-                                return false;
-                            }
-
-                            ioExceptionsCount = 0;
-                            crcMismatchesCount = 0;
-                            currentResponse.cacheArchive.receiveContent((currentResponse.key & 0xff0000L) == 16711680L, (int) (currentResponse.key & 0xffffL), highPriorityRequest, js5ResponseData.buffer);
-                        }
-
-                        currentResponse.unlink();
-                        currentResponse = null;
-                        js5ResponseData = null;
-                        blockOffset = 0;
-
-                        if(highPriorityRequest) {
-                            highPriorityInFlightRequestCount--;
-                        } else {
-                            standardPriorityInFlightRequestCount--;
-                        }
-                    } else {
+                    if (inboundFileLength != js5ResponseData.currentPosition) {
                         if(blockOffset != 512) {
                             break;
                         }
 
                         blockOffset = 0;
+                        continue;
+                    }
+
+                    if (currentResponse.key == 16711935) {
+                        this.readJS5CRCTableResponse(js5ResponseData);
+                    } else {
+                        this.readJS5ArchiveFileResponse(js5ResponseData, inboundFileLength);
+                    }
+
+                    currentResponse.unlink();
+                    currentResponse = null;
+                    js5ResponseData = null;
+                    blockOffset = 0;
+
+                    if (highPriorityRequest) {
+                        highPriorityInFlightRequestCount--;
+                    } else {
+                        standardPriorityInFlightRequestCount--;
                     }
                 }
             }
@@ -351,8 +386,8 @@ public class UpdateServer implements IUpdateServer {
         }
     }
 
-    public void enqueueFileRequest(boolean isPriority, CacheArchive archive, int archiveIndexId, int groupId, byte padding, int expectedCrc) {
-        long fileKey = groupId + ((long) archiveIndexId << 16);
+    public void enqueueFileRequest(CacheArchive archive, int archiveId, int groupId, byte padding, int expectedCrc, boolean isPriority) {
+        long fileKey = ((long) archiveId << 16) + groupId;
         UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityRequestQueue.getNode(fileKey);
 
         if (updateServerNode == null) {
@@ -400,7 +435,7 @@ public class UpdateServer implements IUpdateServer {
 
     public void requestArchiveChecksum(CacheArchive cacheArchive, int cacheIndexId) {
         if (crcTableBuffer == null) {
-            enqueueFileRequest(true, null, 255, 255, (byte) 0, 0);
+            enqueueFileRequest(null, 255, 255, (byte) 0, 0, true);
             cacheArchiveLoaders[cacheIndexId] = cacheArchive;
         } else {
             crcTableBuffer.currentPosition = 5 + cacheIndexId * 4;

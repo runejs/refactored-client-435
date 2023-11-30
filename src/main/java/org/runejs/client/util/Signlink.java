@@ -27,7 +27,6 @@ public class Signlink implements Runnable {
     public InetAddress netAddress;
     public SignlinkNode next = null;
     public Thread signLinkThread;
-    public String cachePath = null;
     public SizedAccessFile cacheDataAccessFile;
     public GameShell gameShell;
 
@@ -66,13 +65,13 @@ public class Signlink implements Runnable {
             /* empty */
         }
         if(loadCache) {
-            cachePath = cacheLocator.getCachePath(homeDirectory);
+            String cachePath = cacheLocator.getCachePath(homeDirectory);
             cacheDataAccessFile = new SizedAccessFile(new File(cachePath + "main_file_cache.dat2"), "rw", 52428800L);
             dataIndexAccessFiles = new SizedAccessFile[cacheIndexes];
             for(int currentIndex = 0; currentIndex < cacheIndexes; currentIndex++)
                 dataIndexAccessFiles[currentIndex] = new SizedAccessFile(new File(cachePath + "main_file_cache.idx" + currentIndex), "rw", 1048576L);
             metaIndexAccessFile = new SizedAccessFile(new File(cachePath + "main_file_cache.idx255"), "rw", 1048576L);
-            initializeUniqueIdentifier();
+            initializeUniqueIdentifier(cachePath);
         }
         killed = false;
         signLinkThread = new Thread(this);
@@ -162,7 +161,7 @@ public class Signlink implements Runnable {
         return putNode(port, SignlinkNode.Type.SOCKET, null);
     }
 
-    public void initializeUniqueIdentifier() {
+    public void initializeUniqueIdentifier(String cachePath) {
         try {
             File file = new File(cachePath + "uid.dat");
             if(!file.exists() || file.length() < 4) {
