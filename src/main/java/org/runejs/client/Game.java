@@ -81,13 +81,11 @@ public class Game {
     public static final SocialList ignoreList = new SocialList(100);
 
     public static GameInterface chatboxInterface;
-    public static GameSocket old_updateServerSocket;
     public static boolean aBoolean871 = false;
     public static int modewhat = 0;
     public static int modewhere = 0;
     public static long lastClickTime = 0L;
     public static int mouseInvInterfaceIndex = 0;
-    public static int old_updateServerConnectAttemptCounter = 0;
     public static boolean isLoadingUpdates = true;
     public static MouseCapturer mouseCapturer;
     /**
