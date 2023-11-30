@@ -680,6 +680,6 @@ public class CacheArchive {
     }
 
     private void prioritiseRequest(int groupId) {
-        Game.updateServerConnectionManager.updateServer.moveRequestToPendingQueue(cacheIndexId, groupId);
+        Game.updateServerConnectionManager.updateServer.prioritisePrefetchRequest(cacheIndexId, groupId);
     }
 }
