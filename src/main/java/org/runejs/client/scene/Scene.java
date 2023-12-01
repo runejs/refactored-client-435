@@ -1,26 +1,24 @@
 package org.runejs.client.scene;
 
 import org.runejs.client.Landscape;
-import org.runejs.client.LinkedList;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.frame.Minimap;
-import org.runejs.client.input.MouseHandler;
-import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.scene.camera.Camera;
-import org.runejs.client.scene.camera.CameraRotation;
 import org.runejs.client.scene.tile.*;
 
 import java.util.Arrays;
 
 public class Scene {
 
-    public static int[] ROTATION_WALL_TYPE = {1, 2, 4, 8};
+    public static int[] ROTATION_WALL_TYPE = new int[]{1, 2, 4, 8};
     public static int[] ROTATION_WALL_CORNER_TYPE = new int[]{16, 32, 64, 128};
 
     public static boolean lowMemory = true;
+    public static int[] WALL_DECORATION_ROTATION_FORWARD_X = new int[]{1, 0, -1, 0};
+    public static int[] WALL_DECORATION_ROTATION_FORWARD_Z = new int[]{0, -1, 0, 1};
 
     public final Landscape landscape;
 
@@ -186,8 +184,8 @@ public class Scene {
                     int rotation = complexTile.rotation;
                     int underlayColor = complexTile.underlayRGB;
                     int overlayColor = complexTile.overlayRGB;
-                    int[] is = Minimap.anIntArrayArray129[shape];
-                    int[] is_19_ = Minimap.anIntArrayArray121[rotation];
+                    int[] is = Minimap.MINIMAP_TILE_MASK[shape];
+                    int[] is_19_ = Minimap.MINIMAP_TILE_ROTATION_MAP[rotation];
                     int pointer = 0;
                     if (underlayColor == 0) {
                         for (int i_22_ = 0; i_22_ < 4; i_22_++) {

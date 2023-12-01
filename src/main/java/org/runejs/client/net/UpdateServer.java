@@ -9,35 +9,63 @@ import org.runejs.client.node.NodeQueue;
 import java.io.IOException;
 import java.util.zip.CRC32;
 
+/**
+ * Handles the (JS5) connection to the game's update servers.
+ */
 public class UpdateServer implements IUpdateServer {
     public int ioExceptionsCount = 0;
     public int crcMismatchesCount = 0;
 
     private GameSocket updateServerSocket;
     private Buffer fileDataBuffer = new Buffer(8);
-    private Buffer inboundFile;
+    private Buffer js5ResponseData;
+    /***
+     * The CRC table received from the JS5 server in Buffer form
+     */
     private Buffer crcTableBuffer;
-    private HashTable highPriorityWriteQueue = new HashTable(4096);
-    private HashTable highPriorityOutgoingRequests = new HashTable(32);
-    private HashTable standardPriorityOutgoingRequests = new HashTable(4096);
-    private HashTable standardPriorityWriteQueue = new HashTable(4096);
+    private HashTable urgentRequestTable = new HashTable(4096);
+    private HashTable urgentInFlightRequests = new HashTable(32);
+    private HashTable prefetchInFlightRequests = new HashTable(4096);
+    private HashTable prefetchRequestTable = new HashTable(4096);
     private UpdateServerNode currentResponse;
     private CRC32 crc32 = new CRC32();
     private byte encryption = (byte) 0;
-    private int highPriorityResponseCount = 0;
-    private int standardPriorityWriteCount = 0;
-    private int highPriorityWriteCount = 0;
-    private int standardPriorityResponseCount = 0;
-    private boolean highPriorityRequest;
-    private NodeQueue pendingWriteQueue = new NodeQueue();
+
+    /**
+     * How many urgent requests have been sent and are awaiting a response?
+     */
+    private int urgentInFlightRequestCount = 0;
+
+    /**
+     * How many prefetch requests are waiting to be sent to the update server?
+     */
+    private int prefetchPendingRequestCount = 0;
+
+    /**
+     * How many urgent requests are waiting to be sent to the update server?
+     */
+    private int urgentPendingRequestCount = 0;
+
+    /**
+     * How many prefetch requests have been sent and are awaiting a response?
+     */
+    private int prefetchInFlightRequestCount = 0;
+    private boolean urgentRequest;
+    /**
+     * A queue of prefetch requests to be sent to the update server.
+     */
+    private NodeQueue prefetchRequestQueue = new NodeQueue();
     private int blockOffset = 0;
     private int msSinceLastUpdate = 0;
     private long lastUpdateInMillis;
+    /**
+     * TODO (jkm) suspicious name, I think it's actually just the set of loaded CacheArchives
+     */
     private CacheArchive[] cacheArchiveLoaders = new CacheArchive[256];
 
     private enum Opcode {
-        REQUEST(0),
-        PRIORITY_REQUEST(1),
+        PREFETCH_REQUEST(0),
+        URGENT_REQUEST(1),
         LOGGED_IN(2),
         LOGGED_OUT(3),
         NEW_ENCRYPTION(4);
@@ -69,31 +97,31 @@ public class UpdateServer implements IUpdateServer {
         updateServerSocket = socket;
         resetRequests(isLoggedIn);
         fileDataBuffer.currentPosition = 0;
-        inboundFile = null;
+        js5ResponseData = null;
         blockOffset = 0;
         currentResponse = null;
 
         for(; ; ) {
-            UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityOutgoingRequests.getNextNode();
+            UpdateServerNode updateServerNode = (UpdateServerNode) urgentInFlightRequests.getNextNode();
             if(updateServerNode == null) {
                 break;
             }
 
-            highPriorityWriteQueue.put(updateServerNode.key, updateServerNode);
-            highPriorityResponseCount--;
-            highPriorityWriteCount++;
+            urgentRequestTable.put(updateServerNode.key, updateServerNode);
+            urgentInFlightRequestCount--;
+            urgentPendingRequestCount++;
         }
 
         for(; ; ) {
-            UpdateServerNode updateServerNode = (UpdateServerNode) standardPriorityOutgoingRequests.getNextNode();
+            UpdateServerNode updateServerNode = (UpdateServerNode) prefetchInFlightRequests.getNextNode();
             if(updateServerNode == null) {
                 break;
             }
 
-            pendingWriteQueue.unshift(updateServerNode);
-            standardPriorityWriteQueue.put(updateServerNode.key, updateServerNode);
-            standardPriorityResponseCount--;
-            standardPriorityWriteCount++;
+            prefetchRequestQueue.unshift(updateServerNode);
+            prefetchRequestTable.put(updateServerNode.key, updateServerNode);
+            prefetchInFlightRequestCount--;
+            prefetchPendingRequestCount++;
         }
 
         if(encryption != 0) {
@@ -119,6 +147,103 @@ public class UpdateServer implements IUpdateServer {
         lastUpdateInMillis = System.currentTimeMillis();
     }
 
+    private void sendPendingUrgentRequests() throws IOException {
+        for(/**/; urgentInFlightRequestCount < 20; urgentInFlightRequestCount++) {
+            if(urgentPendingRequestCount <= 0) {
+                break;
+            }
+            UpdateServerNode updateServerNode = (UpdateServerNode) urgentRequestTable.getNextNode();
+            Buffer buffer = new Buffer(4);
+            buffer.putByte(Opcode.URGENT_REQUEST.getValue()); // immediate file request
+            buffer.putMediumBE((int) updateServerNode.key); // file index + file id
+            updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
+            urgentInFlightRequests.put(updateServerNode.key, updateServerNode);
+            urgentPendingRequestCount--;
+        }
+    }
+
+    private void sendPendingPrefetchRequests() throws IOException {
+        for(/**/; prefetchInFlightRequestCount < 20 && prefetchPendingRequestCount > 0; prefetchPendingRequestCount--) {
+            UpdateServerNode updateServerNode = (UpdateServerNode) prefetchRequestQueue.next();
+            Buffer buffer = new Buffer(4);
+            buffer.putByte(Opcode.PREFETCH_REQUEST.getValue()); // queued file request
+            buffer.putMediumBE((int) updateServerNode.key); // file index + file id
+            updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
+            updateServerNode.clear();
+            prefetchInFlightRequests.put(updateServerNode.key, updateServerNode);
+            prefetchInFlightRequestCount++;
+        }
+    }
+
+    private void readJS5ResponseHeader(Buffer buffer) throws IOException {
+        buffer.currentPosition = 0;
+        int archiveId = buffer.getUnsignedByte();
+        int groupId = buffer.getUnsignedShortBE();
+        int type = buffer.getUnsignedByte();
+        int length = buffer.getIntBE();
+        long fileKey = ((long) archiveId << 16) + groupId;
+        UpdateServerNode updateServerNode = (UpdateServerNode) urgentInFlightRequests.getNode(fileKey);
+        urgentRequest = true;
+
+        if(updateServerNode == null) {
+            updateServerNode = (UpdateServerNode) prefetchInFlightRequests.getNode(fileKey);
+            urgentRequest = false;
+        }
+
+        if(updateServerNode == null) {
+            throw new IOException();
+        }
+
+        currentResponse = updateServerNode;
+
+        int compressionSizeOffset = type == 0 ? 5 : 9;
+        js5ResponseData = new Buffer(currentResponse.padding + compressionSizeOffset + length);
+        js5ResponseData.putByte(type);
+        js5ResponseData.putIntBE(length);
+
+        blockOffset = 8;
+        buffer.currentPosition = 0;
+    }
+
+    private void readJS5CRCTableResponse(Buffer buffer) {
+        crcTableBuffer = buffer;
+
+        for (int i = 0; i < 256; i++) {
+            CacheArchive archive = cacheArchiveLoaders[i];
+
+            if (archive == null) {
+                continue;
+            }
+
+            // TODO (jkm) why is this +5?
+            int targetPosition = (i * 4) + 5;
+            crcTableBuffer.currentPosition = targetPosition;
+
+            int indexCrcValue = crcTableBuffer.getIntBE();
+            archive.requestLatestVersion(indexCrcValue);
+        }
+    }
+
+    private boolean readJS5ArchiveFileResponse(Buffer buffer, int inboundFileLength) {
+        crc32.reset();
+        crc32.update(buffer.buffer, 0, inboundFileLength);
+        int fileRealCrcValue = (int) crc32.getValue();
+        if (~currentResponse.crc != ~fileRealCrcValue) {
+            try {
+                updateServerSocket.kill();
+            } catch (Exception exception) {
+            }
+            encryption = (byte) (int) (Math.random() * 255.0 + 1.0);
+            updateServerSocket = null;
+            crcMismatchesCount++;
+            return false;
+        }
+
+        ioExceptionsCount = 0;
+        crcMismatchesCount = 0;
+        currentResponse.cacheArchive.receiveContent((currentResponse.key & 0xff0000L) == 16711680L, (int) (currentResponse.key & 0xffffL), urgentRequest, buffer.buffer);
+        return true;
+    }
 
     @Override
     public boolean poll() {
@@ -129,7 +254,7 @@ public class UpdateServer implements IUpdateServer {
             currentMsSinceLastUpdate = 200;
         }
         msSinceLastUpdate += currentMsSinceLastUpdate;
-        if(standardPriorityResponseCount == 0 && highPriorityResponseCount == 0 && standardPriorityWriteCount == 0 && highPriorityWriteCount == 0) {
+        if(prefetchInFlightRequestCount == 0 && urgentInFlightRequestCount == 0 && prefetchPendingRequestCount == 0 && urgentPendingRequestCount == 0) {
             return true;
         }
         if(updateServerSocket == null) {
@@ -141,162 +266,47 @@ public class UpdateServer implements IUpdateServer {
                 throw new IOException();
             }
 
-            // Immediate file requests
-            for(/**/; highPriorityResponseCount < 20; highPriorityResponseCount++) {
-                if(highPriorityWriteCount <= 0) {
-                    break;
-                }
-                UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityWriteQueue.getNextNode();
-                Buffer buffer = new Buffer(4);
-                buffer.putByte(Opcode.PRIORITY_REQUEST.getValue()); // immediate file request
-                buffer.putMediumBE((int) updateServerNode.key); // file index + file id
-                updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
-                highPriorityOutgoingRequests.put(updateServerNode.key, updateServerNode);
-                highPriorityWriteCount--;
-            }
+            this.sendPendingUrgentRequests();
 
-            // Queuable file requests
-            for(/**/; standardPriorityResponseCount < 20 && standardPriorityWriteCount > 0; standardPriorityWriteCount--) {
-                UpdateServerNode updateServerNode = (UpdateServerNode) pendingWriteQueue.next();
-                Buffer buffer = new Buffer(4);
-                buffer.putByte(Opcode.REQUEST.getValue()); // queued file request
-                buffer.putMediumBE((int) updateServerNode.key); // file index + file id
-                updateServerSocket.sendDataFromBuffer(4, 0, buffer.buffer);
-                updateServerNode.clear();
-                standardPriorityOutgoingRequests.put(updateServerNode.key, updateServerNode);
-                standardPriorityResponseCount++;
-            }
+            this.sendPendingPrefetchRequests();
 
             for(int i1 = 0; i1 < 100; i1++) {
                 int dataAvailable = updateServerSocket.inputStreamAvailable();
+
                 if(dataAvailable < 0) {
                     throw new IOException();
                 }
+
                 if(dataAvailable == 0) {
                     break;
                 }
 
                 msSinceLastUpdate = 0;
 
-                int read = 0;
-                if(currentResponse == null) {
-                    read = 8;
-                } else if(blockOffset == 0) {
-                    read = 1;
-                }
+                if (currentResponse == null || blockOffset == 0) {
+                    int read = currentResponse == null ? 8 : 1;
 
-                if(read <= 0) {
-                    int inboundFileLength = inboundFile.buffer.length + -currentResponse.padding;
-                    int i_37_ = -blockOffset + 512;
-                    if(-inboundFile.currentPosition + inboundFileLength < i_37_) {
-                        i_37_ = inboundFileLength - inboundFile.currentPosition;
-                    }
-                    if(i_37_ > dataAvailable) {
-                        i_37_ = dataAvailable;
-                    }
-                    updateServerSocket.readDataToBuffer(inboundFile.currentPosition, i_37_, inboundFile.buffer);
-                    if(encryption != 0) {
-                        for(int i_38_ = 0; i_37_ > i_38_; i_38_++) {
-                            inboundFile.buffer[inboundFile.currentPosition + i_38_] = (byte) UpdateServer.xor(inboundFile.buffer[inboundFile.currentPosition + i_38_], encryption);
-                        }
+                    int amountToRead = read - fileDataBuffer.currentPosition;
+                    if(amountToRead > dataAvailable) {
+                        amountToRead = dataAvailable;
                     }
 
-                    inboundFile.currentPosition += i_37_;
-                    blockOffset += i_37_;
-
-                    if(inboundFileLength == inboundFile.currentPosition) {
-                        if(currentResponse.key == 16711935) { // crc table file key
-                            crcTableBuffer = inboundFile;
-                            for(int i = 0; i < 256; i++) {
-                                CacheArchive archive = cacheArchiveLoaders[i];
-                                if(archive != null) {
-                                    crcTableBuffer.currentPosition = 4 * i + 5;
-                                    int indexCrcValue = crcTableBuffer.getIntBE();
-                                    archive.requestLatestVersion(indexCrcValue);
-                                }
-                            }
-                        } else {
-                            crc32.reset();
-                            crc32.update(inboundFile.buffer, 0, inboundFileLength);
-                            int fileRealCrcValue = (int) crc32.getValue();
-                            if(~currentResponse.crc != ~fileRealCrcValue) {
-                                try {
-                                    updateServerSocket.kill();
-                                } catch(Exception exception) {
-                                }
-                                encryption = (byte) (int) (Math.random() * 255.0 + 1.0);
-                                updateServerSocket = null;
-                                crcMismatchesCount++;
-                                return false;
-                            }
-
-                            ioExceptionsCount = 0;
-                            crcMismatchesCount = 0;
-                            currentResponse.cacheArchive.method196((currentResponse.key & 0xff0000L) == 16711680L, (int) (currentResponse.key & 0xffffL), highPriorityRequest, inboundFile.buffer);
-                        }
-
-                        currentResponse.unlink();
-                        currentResponse = null;
-                        inboundFile = null;
-                        blockOffset = 0;
-
-                        if(!highPriorityRequest) {
-                            standardPriorityResponseCount--;
-                        } else {
-                            highPriorityResponseCount--;
-                        }
-                    } else {
-                        if(blockOffset != 512) {
-                            break;
-                        }
-                        blockOffset = 0;
-                    }
-                } else {
-                    int pos = -fileDataBuffer.currentPosition + read;
-                    if(pos > dataAvailable) {
-                        pos = dataAvailable;
-                    }
-
-                    updateServerSocket.readDataToBuffer(fileDataBuffer.currentPosition, pos, fileDataBuffer.buffer);
+                    updateServerSocket.readDataToBuffer(fileDataBuffer.buffer, fileDataBuffer.currentPosition, amountToRead);
 
                     if(encryption != 0) {
-                        for(int i = 0; pos > i; i++) {
+                        for(int i = 0; amountToRead > i; i++) {
                             fileDataBuffer.buffer[fileDataBuffer.currentPosition + i] =
                                     (byte) xor(fileDataBuffer.buffer[fileDataBuffer.currentPosition + i], encryption);
                         }
                     }
 
-                    fileDataBuffer.currentPosition += pos;
+                    fileDataBuffer.currentPosition += amountToRead;
                     if(read > fileDataBuffer.currentPosition) {
                         break;
                     }
 
                     if(currentResponse == null) {
-                        fileDataBuffer.currentPosition = 0;
-                        int fileIndexId = fileDataBuffer.getUnsignedByte();
-                        int fileId = fileDataBuffer.getUnsignedShortBE();
-                        int fileCompression = fileDataBuffer.getUnsignedByte();
-                        int fileSize = fileDataBuffer.getIntBE();
-                        long fileKey = ((long) fileIndexId << 16) + fileId;
-                        UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityOutgoingRequests.getNode(fileKey);
-                        highPriorityRequest = true;
-
-                        if(updateServerNode == null) {
-                            updateServerNode = (UpdateServerNode) standardPriorityOutgoingRequests.getNode(fileKey);
-                            highPriorityRequest = false;
-                        }
-
-                        if(updateServerNode == null) {
-                            throw new IOException();
-                        }
-
-                        currentResponse = updateServerNode;
-                        int compressionSizeOffset = fileCompression == 0 ? 5 : 9;
-                        inboundFile = new Buffer(currentResponse.padding + compressionSizeOffset + fileSize);
-                        inboundFile.putByte(fileCompression);
-                        inboundFile.putIntBE(fileSize);
-                        blockOffset = 8;
-                        fileDataBuffer.currentPosition = 0;
+                        this.readJS5ResponseHeader(fileDataBuffer);
                     } else if(blockOffset == 0) {
                         if(fileDataBuffer.buffer[0] == -1) {
                             fileDataBuffer.currentPosition = 0;
@@ -304,6 +314,54 @@ public class UpdateServer implements IUpdateServer {
                         } else {
                             currentResponse = null;
                         }
+                    }
+                } else {
+                    int inboundFileLength = js5ResponseData.buffer.length - currentResponse.padding;
+                    int amountToRead = 512 - blockOffset;
+
+                    if(amountToRead > inboundFileLength - js5ResponseData.currentPosition) {
+                        amountToRead = inboundFileLength - js5ResponseData.currentPosition;
+                    }
+
+                    if(amountToRead > dataAvailable) {
+                        amountToRead = dataAvailable;
+                    }
+
+                    updateServerSocket.readDataToBuffer(js5ResponseData.buffer, js5ResponseData.currentPosition, amountToRead);
+
+                    if(encryption != 0) {
+                        for(int i = 0; amountToRead > i; i++) {
+                            js5ResponseData.buffer[js5ResponseData.currentPosition + i] = (byte) UpdateServer.xor(js5ResponseData.buffer[js5ResponseData.currentPosition + i], encryption);
+                        }
+                    }
+
+                    js5ResponseData.currentPosition += amountToRead;
+                    blockOffset += amountToRead;
+
+                    if (inboundFileLength != js5ResponseData.currentPosition) {
+                        if(blockOffset != 512) {
+                            break;
+                        }
+
+                        blockOffset = 0;
+                        continue;
+                    }
+
+                    if (currentResponse.key == 16711935) {
+                        this.readJS5CRCTableResponse(js5ResponseData);
+                    } else {
+                        this.readJS5ArchiveFileResponse(js5ResponseData, inboundFileLength);
+                    }
+
+                    currentResponse.unlink();
+                    currentResponse = null;
+                    js5ResponseData = null;
+                    blockOffset = 0;
+
+                    if (urgentRequest) {
+                        urgentInFlightRequestCount--;
+                    } else {
+                        prefetchInFlightRequestCount--;
                     }
                 }
             }
@@ -325,56 +383,53 @@ public class UpdateServer implements IUpdateServer {
         }
     }
 
-    public void enqueueFileRequest(boolean isPriority, CacheArchive archive, int archiveIndexId, int fileId, byte arg4, int expectedCrc) {
-        long fileKey = fileId + ((long) archiveIndexId << 16);
-        UpdateServerNode updateServerNode = (UpdateServerNode) highPriorityWriteQueue.getNode(fileKey);
+    public void enqueueFileRequest(CacheArchive archive, int archiveId, int groupId, byte padding, int expectedCrc, boolean urgent) {
+        long fileKey = ((long) archiveId << 16) + groupId;
+        UpdateServerNode updateServerNode = (UpdateServerNode) urgentRequestTable.getNode(fileKey);
 
         if (updateServerNode == null) {
-            updateServerNode = (UpdateServerNode) highPriorityOutgoingRequests.getNode(fileKey);
+            updateServerNode = (UpdateServerNode) urgentInFlightRequests.getNode(fileKey);
             if (updateServerNode == null) {
-                updateServerNode = (UpdateServerNode) standardPriorityWriteQueue.getNode(fileKey);
+                updateServerNode = (UpdateServerNode) prefetchRequestTable.getNode(fileKey);
                 if (updateServerNode == null) {
-                    if (!isPriority) {
-                        updateServerNode = (UpdateServerNode) standardPriorityOutgoingRequests.getNode(fileKey);
+                    if (!urgent) {
+                        updateServerNode = (UpdateServerNode) prefetchInFlightRequests.getNode(fileKey);
                         if (updateServerNode != null)
                             return;
                     }
                     updateServerNode = new UpdateServerNode();
                     updateServerNode.crc = expectedCrc;
-                    updateServerNode.padding = arg4;
+                    updateServerNode.padding = padding;
                     updateServerNode.cacheArchive = archive;
-                    if (isPriority) {
-                        highPriorityWriteQueue.put(fileKey, updateServerNode);
-                        highPriorityWriteCount++;
+                    if (urgent) {
+                        urgentRequestTable.put(fileKey, updateServerNode);
+                        urgentPendingRequestCount++;
                     } else {
-                        pendingWriteQueue.push(updateServerNode);
-                        standardPriorityWriteQueue.put(fileKey, updateServerNode);
-                        standardPriorityWriteCount++;
+                        prefetchRequestQueue.push(updateServerNode);
+                        prefetchRequestTable.put(fileKey, updateServerNode);
+                        prefetchPendingRequestCount++;
                     }
-                } else if (isPriority) {
+                } else if (urgent) {
                     updateServerNode.clear();
-                    highPriorityWriteQueue.put(fileKey, updateServerNode);
-                    standardPriorityWriteCount--;
-                    highPriorityWriteCount++;
+                    urgentRequestTable.put(fileKey, updateServerNode);
+                    prefetchPendingRequestCount--;
+                    urgentPendingRequestCount++;
                 }
             }
         }
     }
 
-    /**
-     * TODO suspicious name
-     */
-    public void moveRequestToPendingQueue(int arg0, int arg2) {
-        long l = (arg0 << 16) + arg2;
-        UpdateServerNode updateServerNode = (UpdateServerNode) standardPriorityWriteQueue.getNode(l);
+    public void prioritisePrefetchRequest(int archiveId, int groupId) {
+        long fileKey = (archiveId << 16) + groupId;
+        UpdateServerNode updateServerNode = (UpdateServerNode) prefetchRequestTable.getNode(fileKey);
         if (updateServerNode != null) {
-            pendingWriteQueue.unshift(updateServerNode);
+            prefetchRequestQueue.unshift(updateServerNode);
         }
     }
 
     public void requestArchiveChecksum(CacheArchive cacheArchive, int cacheIndexId) {
         if (crcTableBuffer == null) {
-            enqueueFileRequest(true, null, 255, 255, (byte) 0, 0);
+            enqueueFileRequest(null, 255, 255, (byte) 0, 0, true);
             cacheArchiveLoaders[cacheIndexId] = cacheArchive;
         } else {
             crcTableBuffer.currentPosition = 5 + cacheIndexId * 4;
@@ -419,21 +474,21 @@ public class UpdateServer implements IUpdateServer {
     }
 
     @Override
-    public int getLoadedPercentage(int volume, int file) {
-        long l = (long) ((volume << 16) + file);
+    public int getLoadedPercentage(int groupId, int fileId) {
+        long l = (long) ((groupId << 16) + fileId);
         if (currentResponse == null || currentResponse.key != l)
             return 0;
-        return 1 + inboundFile.currentPosition * 99 / (inboundFile.buffer.length + -currentResponse.padding);
+        return 1 + js5ResponseData.currentPosition * 99 / (js5ResponseData.buffer.length + -currentResponse.padding);
     }
 
     @Override
-    public int getActiveTaskCount(boolean includeStandardPriority, boolean includeHighPriority) {
+    public int getActiveTaskCount(boolean includePrefetch, boolean includeUrgent) {
         int total = 0;
-        if (includeHighPriority) {
-            total += highPriorityResponseCount + highPriorityWriteCount;
+        if (includeUrgent) {
+            total += urgentInFlightRequestCount + urgentPendingRequestCount;
         }
-        if (includeStandardPriority) {
-            total += standardPriorityResponseCount + standardPriorityWriteCount;
+        if (includePrefetch) {
+            total += prefetchInFlightRequestCount + prefetchPendingRequestCount;
         }
         return total;
     }

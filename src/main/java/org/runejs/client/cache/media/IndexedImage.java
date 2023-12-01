@@ -26,32 +26,32 @@ public class IndexedImage extends Rasterizer {
         palette = new int[arg2];
     }
 
-    public static IndexedImage[] getMultipleIndexedImages(CacheArchive arg0, String arg2, String arg3) {
-        int i = arg0.getHash(arg2);
-        int i_1_ = arg0.method179(i, arg3);
-        return method337(arg0, i_1_, i);
+    public static IndexedImage[] getMultipleIndexedImages(CacheArchive archive, String groupName, String always_empty) {
+        int groupId = archive.getGroupIdByName(groupName);
+        int fileId = archive.getFileIdByName(groupId, always_empty);
+        return method337(archive, fileId, groupId);
     }
 
-    private static IndexedImage[] method337(CacheArchive arg1, int arg2, int arg3) {
-        if(!ImageRGB.spriteExists(arg2, arg3, arg1))
+    private static IndexedImage[] method337(CacheArchive archive, int fileId, int groupId) {
+        if(!MovedStatics.decodeImageFromArchive(archive, groupId, fileId))
             return null;
         return method315();
     }
 
     public static IndexedImage[] method315() {
-        IndexedImage[] class40_sub5_sub14_sub2s = new IndexedImage[MovedStatics.anInt2581];
-        for(int i = 0; MovedStatics.anInt2581 > i; i++) {
+        IndexedImage[] class40_sub5_sub14_sub2s = new IndexedImage[MovedStatics.childCount];
+        for(int i = 0; MovedStatics.childCount > i; i++) {
             IndexedImage class40_sub5_sub14_sub2 = class40_sub5_sub14_sub2s[i] = new IndexedImage();
             class40_sub5_sub14_sub2.maxWidth = MovedStatics.imageMaxWidth;
             class40_sub5_sub14_sub2.maxHeight = MovedStatics.imageMaxHeight;
-            class40_sub5_sub14_sub2.xDrawOffset = MovedStatics.anIntArray1347[i];
-            class40_sub5_sub14_sub2.yDrawOffset = MovedStatics.anIntArray3111[i];
-            class40_sub5_sub14_sub2.imgWidth = MovedStatics.anIntArray456[i];
-            class40_sub5_sub14_sub2.imgHeight = MovedStatics.anIntArray3312[i];
-            class40_sub5_sub14_sub2.palette = MovedStatics.anIntArray1972;
-            class40_sub5_sub14_sub2.imgPixels = MovedStatics.aByteArrayArray1370[i];
+            class40_sub5_sub14_sub2.xDrawOffset = MovedStatics.spriteOffsetX[i];
+            class40_sub5_sub14_sub2.yDrawOffset = MovedStatics.spriteOffsetY[i];
+            class40_sub5_sub14_sub2.imgWidth = MovedStatics.spriteWidth[i];
+            class40_sub5_sub14_sub2.imgHeight = MovedStatics.spriteHeight[i];
+            class40_sub5_sub14_sub2.palette = MovedStatics.spritePalette;
+            class40_sub5_sub14_sub2.imgPixels = MovedStatics.spritePixels[i];
         }
-        MovedStatics.method569();
+        MovedStatics.clearDecodedSpriteData();
         return class40_sub5_sub14_sub2s;
     }
 

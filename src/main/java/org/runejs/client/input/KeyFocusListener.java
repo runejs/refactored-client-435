@@ -12,8 +12,8 @@ import java.awt.event.KeyListener;
 import java.lang.reflect.Method;
 
 public class KeyFocusListener implements KeyListener, FocusListener {
-    public static volatile int framesSinceKeyboardInput = 0;
-    public static int[] anIntArray1564 = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, 85, 80, 84, -1, 91, -1, -1, -1, 81, 82, 86, -1, -1, -1, -1, -1, -1, -1, -1, 0, -1, -1, -1, -1, 83, 104, 105, 103, 102, 96, 98, 97, 99, -1, -1, -1, -1, -1, -1, -1, 25, 16, 17, 18, 19, 20, 21, 22, 23, 24, -1, -1, -1, -1, -1, -1, -1, 48, 68, 66, 50, 34, 51, 52, 53, 39, 54, 55, 56, 70, 69, 40, 41, 32, 35, 49, 36, 38, 67, 33, 65, 37, 64, -1, -1, -1, -1, -1, 228, 231, 227, 233, 224, 219, 225, 230, 226, 232, 89, 87, -1, 88, 229, 90, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, -1, -1, -1, 101, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+    private static volatile int framesSinceKeyboardInput = 0;
+    private static int[] OBFUSCATED_KEY_CODES = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, 85, 80, 84, -1, 91, -1, -1, -1, 81, 82, 86, -1, -1, -1, -1, -1, -1, -1, -1, 0, -1, -1, -1, -1, 83, 104, 105, 103, 102, 96, 98, 97, 99, -1, -1, -1, -1, -1, -1, -1, 25, 16, 17, 18, 19, 20, 21, 22, 23, 24, -1, -1, -1, -1, -1, -1, -1, 48, 68, 66, 50, 34, 51, 52, 53, 39, 54, 55, 56, 70, 69, 40, 41, 32, 35, 49, 36, 38, 67, 33, 65, 37, 64, -1, -1, -1, -1, -1, 228, 231, 227, 233, 224, 219, 225, 230, 226, 232, 89, 87, -1, 88, 229, 90, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, -1, -1, -1, 101, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     public static int anInt2543 = 0;
 
     static {
@@ -62,36 +62,36 @@ public class KeyFocusListener implements KeyListener, FocusListener {
     public static void method997() {
         // (Jameskmonger) I think this is something to do with keycode remapping, though Im not sure
         if (Signlink.javaVendor.toLowerCase().indexOf("microsoft") == -1) {
-            anIntArray1564[44] = 71;
-            anIntArray1564[45] = 26;
-            anIntArray1564[46] = 72;
-            anIntArray1564[47] = 73;
-            anIntArray1564[59] = 57;
-            anIntArray1564[61] = 27;
-            anIntArray1564[91] = 42;
-            anIntArray1564[92] = 74;
-            anIntArray1564[93] = 43;
+            OBFUSCATED_KEY_CODES[44] = 71;
+            OBFUSCATED_KEY_CODES[45] = 26;
+            OBFUSCATED_KEY_CODES[46] = 72;
+            OBFUSCATED_KEY_CODES[47] = 73;
+            OBFUSCATED_KEY_CODES[59] = 57;
+            OBFUSCATED_KEY_CODES[61] = 27;
+            OBFUSCATED_KEY_CODES[91] = 42;
+            OBFUSCATED_KEY_CODES[92] = 74;
+            OBFUSCATED_KEY_CODES[93] = 43;
             if (Signlink.setFocusTraversalKeysEnabled == null) {
-                anIntArray1564[192] = 58;
-                anIntArray1564[222] = 59;
+                OBFUSCATED_KEY_CODES[192] = 58;
+                OBFUSCATED_KEY_CODES[222] = 59;
             } else {
-                anIntArray1564[192] = 28;
-                anIntArray1564[222] = 58;
-                anIntArray1564[520] = 59;
+                OBFUSCATED_KEY_CODES[192] = 28;
+                OBFUSCATED_KEY_CODES[222] = 58;
+                OBFUSCATED_KEY_CODES[520] = 59;
             }
         } else {
-            anIntArray1564[186] = 57;
-            anIntArray1564[187] = 27;
-            anIntArray1564[188] = 71;
-            anIntArray1564[189] = 26;
-            anIntArray1564[190] = 72;
-            anIntArray1564[191] = 73;
-            anIntArray1564[192] = 58;
-            anIntArray1564[219] = 42;
-            anIntArray1564[220] = 74;
-            anIntArray1564[221] = 43;
-            anIntArray1564[222] = 59;
-            anIntArray1564[223] = 28;
+            OBFUSCATED_KEY_CODES[186] = 57;
+            OBFUSCATED_KEY_CODES[187] = 27;
+            OBFUSCATED_KEY_CODES[188] = 71;
+            OBFUSCATED_KEY_CODES[189] = 26;
+            OBFUSCATED_KEY_CODES[190] = 72;
+            OBFUSCATED_KEY_CODES[191] = 73;
+            OBFUSCATED_KEY_CODES[192] = 58;
+            OBFUSCATED_KEY_CODES[219] = 42;
+            OBFUSCATED_KEY_CODES[220] = 74;
+            OBFUSCATED_KEY_CODES[221] = 43;
+            OBFUSCATED_KEY_CODES[222] = 59;
+            OBFUSCATED_KEY_CODES[223] = 28;
         }
 
     }
@@ -114,8 +114,8 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             framesSinceKeyboardInput = 0;
             int obfuscatedKeyCode = keyEvent.getKeyCode();
             int eventKeyCode = keyEvent.getKeyCode();
-            if (obfuscatedKeyCode >= 0 && anIntArray1564.length > obfuscatedKeyCode) {
-                obfuscatedKeyCode = anIntArray1564[obfuscatedKeyCode];
+            if (obfuscatedKeyCode >= 0 && OBFUSCATED_KEY_CODES.length > obfuscatedKeyCode) {
+                obfuscatedKeyCode = OBFUSCATED_KEY_CODES[obfuscatedKeyCode];
                 if ((0x80 & obfuscatedKeyCode) != 0) {
                     obfuscatedKeyCode = -1;
                 }
@@ -159,10 +159,10 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             framesSinceKeyboardInput = 0;
             int i = arg0.getKeyCode();
 
-            if (i < 0 || anIntArray1564.length <= i) {
+            if (i < 0 || OBFUSCATED_KEY_CODES.length <= i) {
                 i = -1;
             } else {
-                i = ~0x80 & anIntArray1564[i];
+                i = ~0x80 & OBFUSCATED_KEY_CODES[i];
             }
             if (anInt2543 >= 0 && i >= 0) {
                 MovedStatics.keyCodes[anInt2543] = i ^ 0xffffffff;

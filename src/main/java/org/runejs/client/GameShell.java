@@ -2,8 +2,6 @@ package org.runejs.client;
 
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
-import org.runejs.client.language.Native;
-import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.renderer.SoftwareRenderer;
 import org.runejs.client.util.Signlink;
 import org.runejs.client.util.Timer;
@@ -29,6 +27,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
      * Something to do with timing.. sleep time maybe? Not sure
      */
     public static int anInt2024 = 1;
+    public static int cyclesSinceReset = 500;
     private static volatile boolean clientFocused = true;
     private final int millisPerTick = 20;
     public boolean gameShellError = false;
@@ -96,7 +95,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
                 MovedStatics.currentTickSample = 0x1f & MovedStatics.currentTickSample + 1;
 
                 synchronized (this) {
-                    MovedStatics.aBoolean571 = clientFocused;
+                    Game.isClientFocused = clientFocused;
                 }
 
                 this.game.processGameLoop();
@@ -213,8 +212,8 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         // This means the client stores the last 32 tick times to do some other calculations
         currentTickSample = currentTickSample + 1 & 0x1f;
 
-        if (MovedStatics.anInt938++ > 50) {
-            MovedStatics.anInt938 -= 50;
+        if (cyclesSinceReset++ > 50) {
+            cyclesSinceReset -= 50;
             MovedStatics.clearScreen = true;
             Game.gameCanvas.setSize(MovedStatics.width, MovedStatics.height);
             Game.gameCanvas.setVisible(true);
@@ -229,7 +228,7 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         if (MovedStatics.aBoolean1575) {
             this.setCanvas();
         }
-        this.game.updateStatusText();
+        this.game.draw();
     }
 
     public void openClientApplet(String cacheFolder, int cacheIndexes, int fileStoreId, InetAddress inetAddress, int clientVersion) {

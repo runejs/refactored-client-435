@@ -1,12 +1,18 @@
 package org.runejs.client.cache.def;
 
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.cache.def.loading.CacheDefinition;
+import org.runejs.client.cache.def.loading.DefinitionLoader;
+import org.runejs.client.cache.def.loading.rs435.IdentityKitDefinitionLoader;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.node.NodeCache;
 
-public class IdentityKit extends CachedNode {
+public class IdentityKit extends CachedNode implements CacheDefinition {
+    public static DefinitionLoader<IdentityKit> loader = new IdentityKitDefinitionLoader();
+
+    public int id;
     private static CacheArchive identityKitArchive;
     private static NodeCache identityKitCache = new NodeCache(64);
     public static int count;
@@ -23,17 +29,18 @@ public class IdentityKit extends CachedNode {
     }
 
     // ???
-    public static IdentityKit cache(int arg1) {
-        IdentityKit identityKit = (IdentityKit) identityKitCache.get(arg1);
+    public static IdentityKit cache(int id) {
+        IdentityKit identityKit = (IdentityKit) identityKitCache.get(id);
         if(identityKit != null) {
             return identityKit;
         }
-        byte[] is = identityKitArchive.getFile(3, arg1);
+        byte[] data = identityKitArchive.getFile(3, id);
         identityKit = new IdentityKit();
-        if(is != null) {
-            identityKit.readValues(new Buffer(is));
+        identityKit.id = id;
+        if(data != null) {
+            loader.load(identityKit, new Buffer(data));
         }
-        identityKitCache.put(arg1, identityKit);
+        identityKitCache.put(id, identityKit);
         return identityKit;
     }
 
@@ -45,16 +52,6 @@ public class IdentityKit extends CachedNode {
         modelArchive = arg2;
         identityKitArchive = definitionCache;
         count = identityKitArchive.fileLength(3);
-    }
-
-    public void readValues(Buffer buffer) {
-        while(true) {
-            int opcode = buffer.getUnsignedByte();
-            if(opcode == 0) {
-                break;
-            }
-            readValue(buffer, opcode);
-        }
     }
 
     public boolean isBodyModelCached() {
@@ -79,26 +76,6 @@ public class IdentityKit extends CachedNode {
             }
         }
         return bool;
-    }
-
-    public void readValue(Buffer buffer, int opcode) {
-        if(opcode == 1) {
-            bodyPartId = buffer.getUnsignedByte();
-        } else if(opcode == 2) {
-            int modelCount = buffer.getUnsignedByte();
-            modelId = new int[modelCount];
-            for(int model = 0; model < modelCount; model++) {
-                modelId[model] = buffer.getUnsignedShortBE();
-            }
-        } else if(opcode == 3) {
-            nonSelectable = true;
-        } else if(opcode >= 40 && opcode < 50) {
-            recolorToFind[opcode + -40] = buffer.getUnsignedShortBE();
-        } else if(opcode >= 50 && opcode < 60) {
-            recolorToReplace[-50 + opcode] = buffer.getUnsignedShortBE();
-        } else if(opcode >= 60 && opcode < 70) {
-            models[-60 + opcode] = buffer.getUnsignedShortBE();
-        }
     }
 
     public Model method629() {
@@ -140,5 +117,10 @@ public class IdentityKit extends CachedNode {
             model.replaceColor(recolorToFind[i], recolorToReplace[i]);
         }
         return model;
+    }
+
+    @Override
+    public int getId() {
+        return this.id;
     }
 }

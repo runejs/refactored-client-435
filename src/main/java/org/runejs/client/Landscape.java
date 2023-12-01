@@ -13,7 +13,6 @@ import org.runejs.client.media.renderable.GameObject;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.media.renderable.actor.Player;
-import org.runejs.client.net.IncomingPackets;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.scene.InteractiveObjectTemporary;
 import org.runejs.client.scene.Scene;
@@ -60,27 +59,27 @@ public class Landscape {
 
     public void loadRegion() {
         method364(false);
-        Game.anInt874 = 0;
+        Game.missingLandscapeFiles = 0;
         boolean bool = true;
         for(int i = 0; i < terrainData.length; i++) {
             if(terrainDataIds[i] != -1 && terrainData[i] == null) {
                 terrainData[i] = CacheArchive.gameWorldMapCacheArchive.getFile(terrainDataIds[i], 0);
                 if(terrainData[i] == null) {
-                    Game.anInt874++;
+                    Game.missingLandscapeFiles++;
                     bool = false;
                 }
             }
             if(objectDataIds[i] != -1 && objectData[i] == null) {
-                objectData[i] = CacheArchive.gameWorldMapCacheArchive.method176(objectDataIds[i], 0, xteaKeys[i]);
+                objectData[i] = CacheArchive.gameWorldMapCacheArchive.getEncryptableFileContents(objectDataIds[i], 0, xteaKeys[i]);
                 if(objectData[i] == null) {
-                    Game.anInt874++;
+                    Game.missingLandscapeFiles++;
                     bool = false;
                 }
             }
         }
         if(bool) {
             bool = true;
-            Game.anInt2591 = 0;
+            Game.missingGameObjectFiles = 0;
             for(int i = 0; terrainData.length > i; i++) {
                 byte[] is = objectData[i];
                 if(is != null) {
@@ -94,8 +93,8 @@ public class Landscape {
                 }
             }
             if(bool) {
-                if(MovedStatics.anInt1634 != 0)
-                    MovedStatics.method940(English.loadingPleaseWait, true, Native.percent100Parentheses);
+                if(Game.regionLoadingType != 0)
+                    MovedStatics.drawLoadingBox(English.loadingPleaseWait, Native.percent100Parentheses, true);
                 Game.clearCaches();
                 this.scene.initToNull();
                 System.gc();
@@ -233,15 +232,15 @@ public class Landscape {
                     OutgoingPackets.buffer.putIntBE(1057001181);
                 }
                 if(!loadGeneratedMap) {
-                    int i_42_ = (-6 + MovedStatics.regionX) / 8;
-                    int i_43_ = (MovedStatics.regionY - 6) / 8;
-                    int i_44_ = (6 + MovedStatics.regionY) / 8;
-                    int i_45_ = (MovedStatics.regionX + 6) / 8;
-                    for(int i_46_ = -1 + i_42_; i_46_ <= 1 + i_45_; i_46_++) {
-                        for(int i_47_ = -1 + i_43_; i_47_ <= i_44_ + 1; i_47_++) {
-                            if(i_42_ > i_46_ || i_46_ > i_45_ || i_47_ < i_43_ || i_47_ > i_44_) {
-                                CacheArchive.gameWorldMapCacheArchive.method195(0, Native.MAP_NAME_PREFIX_M +i_46_+ Native.MAP_NAME_UNDERSCORE +i_47_);
-                                CacheArchive.gameWorldMapCacheArchive.method195(0, Native.MAP_NAME_PREFIX_L +i_46_+ Native.MAP_NAME_UNDERSCORE +i_47_);
+                    int minX = (MovedStatics.regionX - 6) / 8;
+                    int minY = (MovedStatics.regionY - 6) / 8;
+                    int maxY = (MovedStatics.regionY + 6) / 8;
+                    int maxX = (MovedStatics.regionX + 6) / 8;
+                    for(int x = minX - 1; x <= maxX + 1; x++) {
+                        for(int y = minY - 1; y <= maxY + 1; y++) {
+                            if(minX > x || x > maxX || y < minY || y > maxY) {
+                                CacheArchive.gameWorldMapCacheArchive.prioritiseByName(Native.MAP_NAME_PREFIX_M + x + Native.MAP_NAME_UNDERSCORE + y);
+                                CacheArchive.gameWorldMapCacheArchive.prioritiseByName(Native.MAP_NAME_PREFIX_L + x + Native.MAP_NAME_UNDERSCORE + y);
                             }
                         }
                     }
@@ -252,11 +251,11 @@ public class Landscape {
                     MovedStatics.processGameStatus(30);
                 method973();
                 OutgoingPackets.buffer.putPacket(178);
-                MovedStatics.method1057();
+                MovedStatics.resetGameTimer();
             } else
-                MovedStatics.anInt1634 = 2;
+                Game.regionLoadingType = 2;
         } else
-            MovedStatics.anInt1634 = 1;
+            Game.regionLoadingType = 1;
 
     }
 
@@ -472,7 +471,7 @@ public class Landscape {
                             hueMultiplier -= blendedHueMultiplier[negativeY];
                             hue -= blendedHue[negativeY];
                         }
-                        if(y >= 1 && y < 103 && (!VertexNormal.lowMemory || (0x2 & MovedStatics.tile_flags[0][x][y]) != 0 || (0x10 & MovedStatics.tile_flags[_plane][x][y]) == 0 && MovedStatics.onBuildTimePlane == MovedStatics.getVisibilityPlaneFor(_plane, y, 0, x))) {
+                        if(y >= 1 && y < 103 && (!VertexNormal.lowMemory || (0x2 & MovedStatics.tile_flags[0][x][y]) != 0 || (0x10 & MovedStatics.tile_flags[_plane][x][y]) == 0 && MovedStatics.onBuildTimePlane == MovedStatics.getVisibilityPlaneFor(_plane, y, x))) {
                             if(lowestPlane > _plane)
                                 lowestPlane = _plane;
                             int underlayId = tile_underlayids[_plane][x][y] & 0xff;
@@ -562,7 +561,7 @@ public class Landscape {
             }
             for(int i_56_ = 1; i_56_ < 103; i_56_++) {
                 for(int i_57_ = 1; i_57_ < 103; i_57_++)
-                    this.scene.setDrawLevel(_plane, i_57_, i_56_, MovedStatics.getVisibilityPlaneFor(_plane, i_56_, 0, i_57_));
+                    this.scene.setDrawLevel(_plane, i_57_, i_56_, MovedStatics.getVisibilityPlaneFor(_plane, i_56_, i_57_));
             }
             tile_underlayids[_plane] = null;
             tile_overlayids[_plane] = null;
@@ -712,7 +711,7 @@ public class Landscape {
         for(InteractiveObjectTemporary interactiveObjectTemporary = (InteractiveObjectTemporary) MovedStatics.interactiveObjectTemporaryNodeCache.peekFirst(); interactiveObjectTemporary != null; interactiveObjectTemporary = (InteractiveObjectTemporary) MovedStatics.interactiveObjectTemporaryNodeCache.pollFirst()) {
             if(interactiveObjectTemporary.duration == -1) {
                 interactiveObjectTemporary.delay = 0;
-                MovedStatics.storeTemporaryObject(interactiveObjectTemporary);
+                InteractiveObjectTemporary.setPrevousObjectDetails(interactiveObjectTemporary);
             } else
                 interactiveObjectTemporary.unlink();
         }
@@ -817,117 +816,6 @@ public class Landscape {
         }
     }
 
-    public void constructMapRegion(boolean generatedMap) {
-        loadGeneratedMap = generatedMap;
-        if(loadGeneratedMap) {
-            int chunkLocalY = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
-            int chunkLocalX = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
-            int chunkX = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
-            int level = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            int chunkY = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
-            IncomingPackets.incomingPacketBuffer.initBitAccess();
-            for(int _level = 0; _level < 4; _level++) {
-                for(int _x = 0; _x < 13; _x++) {
-                    for(int _y = 0; _y < 13; _y++) {
-                        int isConstructedChunk = IncomingPackets.incomingPacketBuffer.getBits(1);
-                        if(isConstructedChunk != 1) {
-                            constructMapTiles[_level][_x][_y] = -1;
-                        } else {
-                            constructMapTiles[_level][_x][_y] = IncomingPackets.incomingPacketBuffer.getBits(26);
-                        }
-                    }
-                }
-            }
-            IncomingPackets.incomingPacketBuffer.finishBitAccess();
-            int i_8_ = (-IncomingPackets.incomingPacketBuffer.currentPosition + IncomingPackets.incomingPacketSize) / 16;
-            xteaKeys = new int[i_8_][4];
-            for(int i_9_ = 0; i_8_ > i_9_; i_9_++) {
-                for(int i_10_ = 0; i_10_ < 4; i_10_++) {
-                    xteaKeys[i_9_][i_10_] = IncomingPackets.incomingPacketBuffer.getIntBE();
-                }
-
-            }
-
-            terrainDataIds = new int[i_8_];
-            terrainData = new byte[i_8_][];
-            objectDataIds = new int[i_8_];
-            objectData = new byte[i_8_][];
-            mapCoordinates = new int[i_8_];
-            i_8_ = 0;
-            for(int i_11_ = 0; i_11_ < 4; i_11_++) {
-                for(int i_12_ = 0; i_12_ < 13; i_12_++) {
-                    for(int i_13_ = 0; i_13_ < 13; i_13_++) {
-                        int i_14_ = constructMapTiles[i_11_][i_12_][i_13_];
-                        if(i_14_ != -1) {
-                            int i_15_ = i_14_ >> 14 & 0x3ff;
-                            int i_16_ = i_14_ >> 3 & 0x7ff;
-                            int i_17_ = i_16_ / 8 + (i_15_ / 8 << 8);
-                            for(int i_18_ = 0; i_8_ > i_18_; i_18_++) {
-                                if(mapCoordinates[i_18_] == i_17_) {
-                                    i_17_ = -1;
-                                    break;
-                                }
-                            }
-                            if(i_17_ != -1) {
-                                mapCoordinates[i_8_] = i_17_;
-                                int i_19_ = i_17_ & 0xff;
-                                int i_20_ = (0xffbe & i_17_) >> 8;
-                                terrainDataIds[i_8_] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.MAP_NAME_PREFIX_M +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
-                                objectDataIds[i_8_] = CacheArchive.gameWorldMapCacheArchive.getHash(Native.MAP_NAME_PREFIX_L +i_20_+ Native.MAP_NAME_UNDERSCORE +i_19_);
-                                i_8_++;
-                            }
-                        }
-                    }
-                }
-            }
-            MovedStatics.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
-        } else {
-            int chunkLocalY = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
-            int chunkX = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
-            int chunkLocalX = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
-            int chunkY = IncomingPackets.incomingPacketBuffer.getUnsignedShortLE();
-            int level = IncomingPackets.incomingPacketBuffer.getUnsignedByte();
-            int regionCount = (IncomingPackets.incomingPacketSize - IncomingPackets.incomingPacketBuffer.currentPosition) / 16;
-            xteaKeys = new int[regionCount][4];
-            for(int r = 0; regionCount > r; r++) {
-                for(int seed = 0; seed < 4; seed++) {
-                    xteaKeys[r][seed] = IncomingPackets.incomingPacketBuffer.getIntBE();
-                }
-            }
-            mapCoordinates = new int[regionCount];
-            terrainData = new byte[regionCount][];
-            boolean inTutorialIsland_maybe = false;
-            objectData = new byte[regionCount][];
-            if((chunkX / 8 == 48 || chunkX / 8 == 49) && chunkY / 8 == 48) {
-                inTutorialIsland_maybe = true;
-            }
-            terrainDataIds = new int[regionCount];
-            if(chunkX / 8 == 48 && chunkY / 8 == 148) {
-                inTutorialIsland_maybe = true;
-            }
-            objectDataIds = new int[regionCount];
-            regionCount = 0;
-            for(int x = (-6 + chunkX) / 8; x <= (6 + chunkX) / 8; x++) {
-                for(int y = (-6 + chunkY) / 8; (6 + chunkY) / 8 >= y; y++) {
-                    int coords = y + (x << 8);
-                    if(!inTutorialIsland_maybe || y != 49 && y != 149 && y != 147 && x != 50 && (x != 49 || y != 47)) {
-                        mapCoordinates[regionCount] = coords;
-
-                        String mapKey = x + Native.MAP_NAME_UNDERSCORE + y;
-                        String mapKeyM = Native.MAP_NAME_PREFIX_M + mapKey;
-                        String mapKeyL = Native.MAP_NAME_PREFIX_L + mapKey;
-
-                        terrainDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(mapKeyM);
-                        objectDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(mapKeyL);
-                        regionCount++;
-                    }
-                }
-            }
-
-            MovedStatics.method789(chunkLocalX, chunkY, chunkX, chunkLocalY, level);
-        }
-    }
-
     private static int mixLightness(int hsl, int lightness) {
         if(hsl == -1)
             return 12345678;
@@ -977,7 +865,7 @@ public class Landscape {
     }
 
     public void addObject(int objectId, int localX, int localY, int plane, int face, int type, CollisionMap collisionMap) {
-        if(!VertexNormal.lowMemory || (0x2 & MovedStatics.tile_flags[0][localX][localY]) != 0 || (0x10 & MovedStatics.tile_flags[plane][localX][localY]) == 0 && MovedStatics.onBuildTimePlane == MovedStatics.getVisibilityPlaneFor(plane, localY, 0, localX)) {
+        if(!VertexNormal.lowMemory || (0x2 & MovedStatics.tile_flags[0][localX][localY]) != 0 || (0x10 & MovedStatics.tile_flags[plane][localX][localY]) == 0 && MovedStatics.onBuildTimePlane == MovedStatics.getVisibilityPlaneFor(plane, localY, localX)) {
             if(lowestPlane > plane)
                 lowestPlane = plane;
             int vertexHeight = tile_height[plane][localX][localY];
@@ -1215,7 +1103,7 @@ public class Landscape {
                         renderable = gameObjectDefinition.createTerrainObjectModel(vertexHeightTopRight, vertexHeightTop, 0, vertexHeight, 4, vertexHeightRight);
                     else
                         renderable = new GameObject(objectId, 4, 0, vertexHeight, vertexHeightRight, vertexHeightTopRight, vertexHeightTop, gameObjectDefinition.animationId, true);
-                    scene.addWallDecoration(localX, localY, plane, vertexMix, i_52_ * MovedStatics.anIntArray666[face], MovedStatics.anIntArray2207[face] * i_52_, face * 512, hash, renderable, objectConfig, Scene.ROTATION_WALL_TYPE[face]);
+                    scene.addWallDecoration(localX, localY, plane, vertexMix, i_52_ * Scene.WALL_DECORATION_ROTATION_FORWARD_X[face], Scene.WALL_DECORATION_ROTATION_FORWARD_Z[face] * i_52_, face * 512, hash, renderable, objectConfig, Scene.ROTATION_WALL_TYPE[face]);
                 } else if(type == 6) {
                     Renderable renderable;
                     if(gameObjectDefinition.animationId == -1 && gameObjectDefinition.childIds == null)
@@ -1276,7 +1164,7 @@ public class Landscape {
                             bool_2_ = true;
                             if(!gameObjectDefinition.method612()) {
                                 bool = false;
-                                Game.anInt2591++;
+                                Game.missingGameObjectFiles++;
                             }
                         }
                     }

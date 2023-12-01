@@ -31,14 +31,27 @@ public class Minimap extends FramePieceRenderer {
      */
 	public static ImageRGB[] mapFunctionIcons;
     /**
-     * Minimap tile rotations (move to Minimap class)
+     * Minimap tile rotations
      */
-    public static int[][] anIntArrayArray121 = new int[][]{{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, {12, 8, 4, 0, 13, 9, 5, 1, 14, 10, 6, 2, 15, 11, 7, 3}, {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0}, {3, 7, 11, 15, 2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12}};
+    public static int[][] MINIMAP_TILE_ROTATION_MAP = new int[][]{{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, {12, 8, 4, 0, 13, 9, 5, 1, 14, 10, 6, 2, 15, 11, 7, 3}, {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0}, {3, 7, 11, 15, 2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12}};
     /**
-     * Minimap tile masks (move to Minimap class)
+     * Minimap tile masks
      */
-    public static int[][] anIntArrayArray129 = new int[][]{new int[16], {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1}, {0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1}, {1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1}};
+    public static int[][] MINIMAP_TILE_MASK = new int[][]{new int[16], {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1}, {0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1}, {1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1}};
     public static int minimapLevel = -1;
+    public static ImageRGB minimapEdge;
+    /**
+     * Images for scenery on the minimap (e.g. trees, ladders, etc)
+     */
+    public static IndexedImage[] mapSceneIcons;
+    /**
+     * Relates to minimap
+     */
+    public static int[] anIntArray62;
+    /**
+     * Relates to minimap
+     */
+    public static int[] anIntArray66;
     private static int[] resizableMinimapOffsets1;
     private static int[] resizableMinimapOffsets2;
     private static ProducingGraphicsBuffer resizableMiniMapimage;
@@ -95,7 +108,7 @@ public class Minimap extends FramePieceRenderer {
                 if(mmBackgroundPixels[i] == 0)
                     rasterPixels[i] = 0;
             }
-            minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, MovedStatics.anIntArray62, MovedStatics.anIntArray66);
+            minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, anIntArray62, anIntArray66);
             drawMapBack();
             return;
         }
@@ -151,8 +164,8 @@ public class Minimap extends FramePieceRenderer {
                     drawOnMinimap(playerY, playerX, mapDots[2]);
             }
         }
-        if(Player.headIconDrawType != 0 && MovedStatics.pulseCycle % 20 < 10) {
-            if(Player.headIconDrawType == 1 && MovedStatics.hintIconNpcTarget >= 0 && Player.npcs.length > MovedStatics.hintIconNpcTarget) {
+        if(Game.currentHintIconType != 0 && MovedStatics.pulseCycle % 20 < 10) {
+            if(Game.currentHintIconType == 1 && MovedStatics.hintIconNpcTarget >= 0 && Player.npcs.length > MovedStatics.hintIconNpcTarget) {
                 Npc npc = Player.npcs[MovedStatics.hintIconNpcTarget];
                 if(npc != null) {
                     int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
@@ -160,12 +173,12 @@ public class Minimap extends FramePieceRenderer {
                     drawMinimapIcon(minimapMarkers[1], npcX, npcY);
                 }
             }
-            if(Player.headIconDrawType == 2) {
+            if(Game.currentHintIconType == 2) {
                 int hintX = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-MovedStatics.baseY + MovedStatics.hintIconPosY);
                 int hintY = 4 * (MovedStatics.hintIconPosX - MovedStatics.baseX) - (-2 + Player.localPlayer.worldX / 32);
                 drawMinimapIcon(minimapMarkers[1], hintY, hintX);
             }
-            if(Player.headIconDrawType == 10 && MovedStatics.hintIconPlayerTarget >= 0 && Player.trackedPlayers.length > MovedStatics.hintIconPlayerTarget) {
+            if(Game.currentHintIconType == 10 && MovedStatics.hintIconPlayerTarget >= 0 && Player.trackedPlayers.length > MovedStatics.hintIconPlayerTarget) {
                 Player player = Player.trackedPlayers[MovedStatics.hintIconPlayerTarget];
                 if(player != null) {
                     int playerX = -(Player.localPlayer.worldY / 32) + player.worldY / 32;
@@ -180,7 +193,7 @@ public class Minimap extends FramePieceRenderer {
             drawOnMinimap(flagY, flagX, minimapMarkers[0]);
         }
         Rasterizer.drawFilledRectangle(97, 78, 3, 3, 16777215);
-        minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, MovedStatics.anIntArray62, MovedStatics.anIntArray66);
+        minimapCompass.shapeImageToPixels(0, 0, 33, 33, 25, 25, Game.getMinimapRotation(), 256, anIntArray62, anIntArray66);
         minimapBackgroundImage.drawImage(0, 0);
 
         if(MovedStatics.menuOpen && ScreenController.frameMode == ScreenMode.FIXED && MovedStatics.menuScreenArea == 1) {
@@ -209,7 +222,7 @@ public class Minimap extends FramePieceRenderer {
             double angle = Math.atan2(x, y);
             int drawX = (int) (Math.sin(angle) * 63.0);
             int drawY = (int) (57.0 * Math.cos(angle));
-            MovedStatics.minimapEdge.drawRotated(-10 + 94 + drawX + 4, 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
+            minimapEdge.drawRotated(-10 + 94 + drawX + 4, 83 + -drawY + -20, 15, 15, 20, 20, 256, angle);
         } else {
             drawOnMinimap(mapY, mapX, sprite);
         }
@@ -290,7 +303,7 @@ public class Minimap extends FramePieceRenderer {
                         }
                     }
                 } else {
-                    IndexedImage iconSprite = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
+                    IndexedImage iconSprite = mapSceneIcons[gameObjectDefinition.mapSceneID];
                     if(iconSprite != null) {
                         int offsetX = (-iconSprite.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
                         int offsetY = (gameObjectDefinition.sizeY * 4 + -iconSprite.imgHeight) / 2;
@@ -306,7 +319,7 @@ public class Minimap extends FramePieceRenderer {
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(id);
                 int type = objectInfo & 0x1f;
                 if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage iconSprite = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
+                    IndexedImage iconSprite = mapSceneIcons[gameObjectDefinition.mapSceneID];
                     if(iconSprite != null) {
                         int offsetY = (-iconSprite.imgHeight + gameObjectDefinition.sizeY * 4) / 2;
                         int offsetX = (gameObjectDefinition.sizeX * 4 + -iconSprite.imgWidth) / 2;
@@ -336,7 +349,7 @@ public class Minimap extends FramePieceRenderer {
                 int id = (hash & 0x1fffd9fb) >> 14;
                 GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(id);
                 if(gameObjectDefinition.mapSceneID != -1) {
-                    IndexedImage iconSprite = MovedStatics.mapSceneIcons[gameObjectDefinition.mapSceneID];
+                    IndexedImage iconSprite = mapSceneIcons[gameObjectDefinition.mapSceneID];
                     if(iconSprite != null) {
                         int i_17_ = (-iconSprite.imgWidth + gameObjectDefinition.sizeX * 4) / 2;
                         int i_18_ = (-iconSprite.imgHeight + 4 * gameObjectDefinition.sizeY) / 2;
@@ -546,8 +559,8 @@ public class Minimap extends FramePieceRenderer {
                     drawOnResizableMinimap(playerX, playerY, mapDots[2]);
             }
         }
-        if(Player.headIconDrawType != 0 && MovedStatics.pulseCycle % 20 < 10) {
-            if(Player.headIconDrawType == 1 && MovedStatics.hintIconNpcTarget >= 0 && Player.npcs.length > MovedStatics.hintIconNpcTarget) {
+        if(Game.currentHintIconType != 0 && MovedStatics.pulseCycle % 20 < 10) {
+            if(Game.currentHintIconType == 1 && MovedStatics.hintIconNpcTarget >= 0 && Player.npcs.length > MovedStatics.hintIconNpcTarget) {
                 Npc npc = Player.npcs[MovedStatics.hintIconNpcTarget];
                 if(npc != null) {
                     int npcX = -(Player.localPlayer.worldX / 32) + npc.worldX / 32;
@@ -555,12 +568,12 @@ public class Minimap extends FramePieceRenderer {
                     drawMinimapMark(minimapMarkers[1], npcX, npcY);
                 }
             }
-            if(Player.headIconDrawType == 2) {
+            if(Game.currentHintIconType == 2) {
                 int hintY = -(Player.localPlayer.worldY / 32) + 2 + 4 * (-MovedStatics.baseY + MovedStatics.hintIconPosY);
                 int hintX = 4 * (MovedStatics.hintIconPosX - MovedStatics.baseX) - (-2 + Player.localPlayer.worldX / 32);
                 drawMinimapMark(minimapMarkers[1], hintX, hintY);
             }
-            if(Player.headIconDrawType == 10 && MovedStatics.hintIconPlayerTarget >= 0 && Player.trackedPlayers.length > MovedStatics.hintIconPlayerTarget) {
+            if(Game.currentHintIconType == 10 && MovedStatics.hintIconPlayerTarget >= 0 && Player.trackedPlayers.length > MovedStatics.hintIconPlayerTarget) {
                 Player player = Player.trackedPlayers[MovedStatics.hintIconPlayerTarget];
                 if(player != null) {
                     int playerY = -(Player.localPlayer.worldY / 32) + player.worldY / 32;

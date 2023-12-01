@@ -1,7 +1,6 @@
 package org.runejs.client.message.handler.rs435.misc;
 
 import org.runejs.client.*;
-import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.message.handler.MessageHandler;
 import org.runejs.client.message.inbound.misc.SetHintIconInboundMessage;
 
@@ -27,11 +26,11 @@ public class SetHintIconMessageHandler implements MessageHandler<SetHintIconInbo
     }
 
     private void handleNoneType(SetHintIconInboundMessage message) {
-        Player.headIconDrawType = 0;
+        Game.currentHintIconType = 0;
     }
 
     private void handlePositionType(SetHintIconInboundMessage message) {
-        Player.headIconDrawType = 2;
+        Game.currentHintIconType = 2;
         MovedStatics.hintIconPosX = message.positionInfo.x;
         MovedStatics.hintIconPosY = message.positionInfo.y;
         MovedStatics.hintIconPosZ = message.positionInfo.drawHeight;
@@ -40,12 +39,12 @@ public class SetHintIconMessageHandler implements MessageHandler<SetHintIconInbo
     }
 
     private void handleNPCType(SetHintIconInboundMessage message) {
-        Player.headIconDrawType = 1;
+        Game.currentHintIconType = 1;
         MovedStatics.hintIconNpcTarget = message.actorInfo.id;
     }
 
     private void handlePlayerType(SetHintIconInboundMessage message) {
-        Player.headIconDrawType = 10;
+        Game.currentHintIconType = 10;
         MovedStatics.hintIconPlayerTarget = message.actorInfo.id;
     }
 }

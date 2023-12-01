@@ -1,14 +1,16 @@
 package org.runejs.client.cache.def;
 
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.cache.def.loading.DefinitionLoader;
+import org.runejs.client.cache.def.loading.rs435.ActorDefinitionLoader;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.io.Buffer;
-import org.runejs.client.language.English;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.node.NodeCache;
 
 public class ActorDefinition extends CachedNode implements EntityDefinition {
+    private static DefinitionLoader<ActorDefinition> loader = new ActorDefinitionLoader();
 
     public static int count;
     private static NodeCache actorDefinitionCache = new NodeCache(64);
@@ -52,8 +54,9 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         byte[] data = actorDefinitionArchive.getFile(9, id);
         definition = new ActorDefinition();
         definition.id = id;
-        if(data != null)
-            definition.readValues(new Buffer(data));
+        if(data != null) {
+            loader.load(definition, new Buffer(data));
+        }
         actorDefinitionCache.put(id, definition);
         return definition;
     }
@@ -139,99 +142,6 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
         return index >= 0 && childIds.length > index && childIds[index] != -1;
     }
 
-    public void readValue(Buffer buffer, int opcode) {
-        if(opcode == 1) {
-            int length = buffer.getUnsignedByte();
-            models = new int[length];
-            for(int idx = 0; idx < length; ++idx) {
-                models[idx] = buffer.getUnsignedShortBE();
-            }
-        } else if(opcode == 2) {
-            name = buffer.getString();
-        } else if(opcode == 12) {
-            boundaryDimension = buffer.getUnsignedByte();
-        } else if(opcode == 13) {
-            stanceAnimation = buffer.getUnsignedShortBE();
-        } else if(opcode == 14) {
-            walkAnimation = buffer.getUnsignedShortBE();
-        } else if(opcode == 15) {
-            rotateLeftAnimation = buffer.getUnsignedShortBE();
-        } else if(opcode == 16) {
-            rotateRightAnimation = buffer.getUnsignedShortBE();
-        } else if(opcode == 17) {
-            walkAnimation = buffer.getUnsignedShortBE();
-            rotate180Animation = buffer.getUnsignedShortBE();
-            rotate90RightAnimation = buffer.getUnsignedShortBE();
-            rotate90LeftAnimation = buffer.getUnsignedShortBE();
-        } else if(opcode >= 30 && opcode < 35) {
-            options[opcode - 30] = buffer.getString();
-            if(options[opcode - 30].equalsIgnoreCase(English.hidden)) {
-                options[-30 + opcode] = null;
-            }
-        } else if(opcode == 40) {
-            int length = buffer.getUnsignedByte();
-            originalModelColors = new int[length];
-            modifiedModelColors = new int[length];
-            for(int i_2_ = 0; i_2_ < length; i_2_++) {
-                modifiedModelColors[i_2_] = buffer.getUnsignedShortBE();
-                originalModelColors[i_2_] = buffer.getUnsignedShortBE();
-            }
-        } else if(opcode == 60) {
-            int length = buffer.getUnsignedByte();
-            headModelIndexes = new int[length];
-            for(int i_4_ = 0; length > i_4_; i_4_++) {
-                headModelIndexes[i_4_] = buffer.getUnsignedShortBE();
-            }
-        } else if(opcode == 93) {
-            renderOnMinimap = false;
-        } else if(opcode == 95) {
-            combatLevel = buffer.getUnsignedShortBE();
-        } else if(opcode == 97) {
-            resizeX = buffer.getUnsignedShortBE();
-        } else if(opcode == 98) {
-            resizeY = buffer.getUnsignedShortBE();
-        } else if(opcode == 99) {
-            hasRenderPriority = true;
-        } else if(opcode == 100) {
-            ambient = buffer.getByte();
-        } else if(opcode == 101) {
-            contrast = buffer.getByte() * 5;
-        } else if(opcode == 102) {
-            headIcon = buffer.getUnsignedShortBE();
-        } else if(opcode == 103) {
-            degreesToTurn = buffer.getUnsignedShortBE();
-        } else if(opcode == 106) {
-            varbitId = buffer.getUnsignedShortBE();
-            if(varbitId == 65535) {
-                varbitId = -1;
-            }
-            varPlayerIndex = buffer.getUnsignedShortBE();
-            if(varPlayerIndex == 65535) {
-                varPlayerIndex = -1;
-            }
-            int childrenCount = buffer.getUnsignedByte();
-            childIds = new int[childrenCount + 1];
-            for(int idx = 0; childrenCount >= idx; idx++) {
-                childIds[idx] = buffer.getUnsignedShortBE();
-                if(childIds[idx] == 0xFFFF) {
-                    childIds[idx] = -1;
-                }
-            }
-        } else if(opcode == 107) {
-            isClickable = false;
-        }
-    }
-
-    public void readValues(Buffer npcDefinitionBuffer) {
-        while(true) {
-            int opcode = npcDefinitionBuffer.getUnsignedByte();
-            if(opcode == 0) {
-                break;
-            }
-            readValue(npcDefinitionBuffer, opcode);
-        }
-    }
-
     public Model getHeadModel() {
         if(childIds != null) {
             ActorDefinition definition = getChildDefinition();
@@ -285,7 +195,8 @@ public class ActorDefinition extends CachedNode implements EntityDefinition {
     }
 
     @Override
-    public String getName() {
-        return name;
-    }
+    public int getId() { return this.id; }
+
+    @Override
+    public String getName() { return this.name; }
 }

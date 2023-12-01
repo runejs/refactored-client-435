@@ -1,5 +1,8 @@
 package org.runejs.client.util;
 
+import org.runejs.client.language.English;
+import org.runejs.client.language.Native;
+
 public class TextUtils {
 
 	private static char[] message = new char[100];
@@ -85,4 +88,14 @@ public class TextUtils {
 	}
 
 
+	public static String formatAmountString(int amount) {
+		String amountString = Integer.toString(amount);
+		for(int i = -3 + amountString.length(); i > 0; i -= 3)
+			amountString = amountString.substring(0, i) + Native.comma_b + amountString.substring(i);
+		if(amountString.length() > 8)
+			amountString = Native.green + amountString.substring(0, -8 + amountString.length()) + English.suffixMillion + Native.whiteOpeningParenthesis + amountString + Native.rightParenthesis;
+		else if(amountString.length() > 4)
+			amountString = Native.cyan + amountString.substring(0, amountString.length() + -4) + Native.suffixK + Native.whiteOpeningParenthesis + amountString + Native.rightParenthesis;
+		return Native.whitespace_b + amountString;
+	}
 }

@@ -95,21 +95,21 @@ public class TypeFace extends Rasterizer {
     }
 
     public static TypeFace constructFont() {
-        TypeFace class40_sub5_sub14_sub1 = new TypeFace(MovedStatics.anIntArray3111, MovedStatics.anIntArray456, MovedStatics.anIntArray3312, MovedStatics.anIntArray1972, MovedStatics.aByteArrayArray1370);
-        MovedStatics.method569();
+        TypeFace class40_sub5_sub14_sub1 = new TypeFace(MovedStatics.spriteOffsetY, MovedStatics.spriteWidth, MovedStatics.spriteHeight, MovedStatics.spritePalette, MovedStatics.spritePixels);
+        MovedStatics.clearDecodedSpriteData();
         return class40_sub5_sub14_sub1;
     }
 
-    public static TypeFace getFont(CacheArchive cacheArchive, int arg0, int fontId) {
-        if (!ImageRGB.spriteExists(arg0, fontId, cacheArchive))
+    public static TypeFace getFont(CacheArchive archive, int groupId, int fileId) {
+        if (!MovedStatics.decodeImageFromArchive(archive, groupId, fileId))
             return null;
         return constructFont();
     }
 
-    public static TypeFace loadTypeFace(CacheArchive arg0, String arg2, String arg3) {
-        int i = arg0.getHash(arg3);
-        int i_50_ = arg0.method179(i, arg2);
-        return getFont(arg0, i_50_, i);
+    public static TypeFace loadTypeFace(CacheArchive imageArchive, String fontName, String always_empty) {
+        int fontImageId = imageArchive.getGroupIdByName(fontName);
+        int fontFileId = imageArchive.getFileIdByName(fontImageId, always_empty);
+        return getFont(imageArchive, fontImageId, fontFileId);
     }
 
 

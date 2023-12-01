@@ -3,7 +3,7 @@ package org.runejs.client.cache;
 import org.runejs.client.*;
 import org.runejs.client.cache.bzip.BZip;
 import org.runejs.client.io.Buffer;
-import org.runejs.client.node.Class40_Sub6;
+import org.runejs.client.node.OnDemandRequest;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
@@ -28,46 +28,49 @@ public class CacheArchive {
     public static CacheArchive jingleCacheArchive;
     public static CacheArchive clientScriptCacheArchive;
 
-    public byte[][] aByteArrayArray212;
+    public byte[][] groupContentCache;
     public int crc8;
-    public NameHashCollection[] aNameHashCollectionArray217;
-    public boolean aBoolean220;
-    public int fileCount;
-    public int[] anIntArray224;
-    public int[] fileIds;
-    public boolean aBoolean233;
-    public int[][] anIntArrayArray236;
+    public NameHashCollection[] fileNames;
+    /**
+     * false for gameDefinitions (2), otherwise true
+     */
+    public boolean clearEncryptableContent;
+    public int size;
+    public int[] groupVersions;
+    public int[] groupIds;
+    /**
+     * true for gameDefinitions (2), music (6), otherwise false
+     */
+    public boolean clearGroupContentCache;
+    public int[][] fileNameHashes;
     public int[] nameHashes;
-    public int[][] anIntArrayArray243;
-    public byte[][][] inMemoryCacheBuffer;
-    public int[] anIntArray252;
-    public NameHashCollection nameHashCollection;
-    public int[] anIntArray261;
-    public volatile boolean[] aBooleanArray1796;
-    public int anInt1797 = -1;
-    public volatile boolean aBoolean1800 = false;
-    public CacheIndex metaIndex;
+    public int[][] fileIds;
+    public byte[][][] fileContentCache;
+    public int[] groupChecksums;
+    public NameHashCollection groupNames;
+    public int[] groupSizes;
+    public volatile boolean[] hasValidContents;
+    public int lastReceivedGroupRequest = -1;
+    public volatile boolean finishedReceiving = false;
+    public CacheIndex idx255;
     public int cacheIndexId;
     public int archiveCrcValue;
-    public boolean aBoolean1811;
+    /**
+     * false for music (6), true otherwise
+     *
+     * treats some requests for this archive as high priority
+     */
+    public boolean forceHighPriority;
     public CacheIndex dataIndex;
 
-    public CacheArchive(CacheIndex dataIndex, CacheIndex metaIndex, int cacheIndexId, boolean arg3, boolean arg4, boolean arg5) {
-        aBoolean220 = arg4;
-        aBoolean233 = arg3;
+    public CacheArchive(int cacheIndexId, CacheIndex idx255, CacheIndex dataIndex, boolean clearGroupContentCache, boolean clearEncryptableContent, boolean forceHighPriority) {
+        this.clearEncryptableContent = clearEncryptableContent;
+        this.clearGroupContentCache = clearGroupContentCache;
         this.dataIndex = dataIndex;
-        aBoolean1811 = arg5;
-        this.metaIndex = metaIndex;
+        this.forceHighPriority = forceHighPriority;
+        this.idx255 = idx255;
         this.cacheIndexId = cacheIndexId;
-        Game.updateServer.requestArchiveChecksum(this, this.cacheIndexId);
-    }
-
-    public static CacheArchive loadArchive(int cacheIndexId, boolean arg1, boolean arg2, boolean arg4) {
-        CacheIndex dataIndex = null;
-        if(Game.dataChannel != null) {
-            dataIndex = new CacheIndex(cacheIndexId, Game.dataChannel, Game.indexChannels[cacheIndexId], 1000000);
-        }
-        return new CacheArchive(dataIndex, Game.metaIndex, cacheIndexId, arg2, arg4, arg1);
+        Game.updateServerConnectionManager.updateServer.requestArchiveChecksum(this, this.cacheIndexId);
     }
 
     public static byte[] decompress(byte[] cacheData) {
@@ -113,450 +116,570 @@ public class CacheArchive {
         return decompressed;
     }
 
-    public static int calculateFullCrc8(byte[] data, int size) {
-        return MovedStatics.calculateCrc8(0, size, data);
-    }
+    private void prioritiseDecodeGroup(CacheIndex index, int groupId) {
+        byte[] dataFromQueue = null;
 
-    private static void method602(CacheArchive arg0, int arg1, CacheIndex arg2) {
-        byte[] is = null;
-        synchronized(MovedStatics.aLinkedList_53) {
-            for(Class40_Sub6 class40_sub6 = (Class40_Sub6) MovedStatics.aLinkedList_53.peekFirst(); class40_sub6 != null; class40_sub6 = (Class40_Sub6) MovedStatics.aLinkedList_53.pollFirst()) {
-                if((long) arg1 == class40_sub6.key && arg2 == class40_sub6.cacheIndex && class40_sub6.anInt2112 == 0) {
-                    is = class40_sub6.aByteArray2102;
+        synchronized(OnDemandRequestProcessor.queue) {
+            for(OnDemandRequest onDemandRequest = (OnDemandRequest) OnDemandRequestProcessor.queue.peekFirst(); onDemandRequest != null; onDemandRequest = (OnDemandRequest) OnDemandRequestProcessor.queue.pollFirst()) {
+                if((long) groupId == onDemandRequest.key && index == onDemandRequest.cacheIndex && onDemandRequest.type == 0) {
+                    dataFromQueue = onDemandRequest.data;
                     break;
                 }
             }
         }
-        if(is == null) {
-            byte[] is_6_ = arg2.get(arg1);
-            arg0.method198(true, is_6_, arg1, arg2);
+
+        if(dataFromQueue == null) {
+            // `index.read` is a bit of a misleading name, this actually
+            // uses the index to read the file data from the .dat2 file
+            byte[] dataFromIndex = index.read(groupId);
+            this.attemptDecodeData(true, dataFromIndex, groupId, index);
         } else {
-            arg0.method198(true, is, arg1, arg2);
+            this.attemptDecodeData(true, dataFromQueue, groupId, index);
         }
     }
 
-    public void method196(boolean arg0, int arg2, boolean arg3, byte[] data) {
-        if(arg0) {
-            if(aBoolean1800) {
-                throw new RuntimeException();
-            }
-            if(metaIndex != null) {
-                Class40_Sub6.method1055(data, metaIndex, cacheIndexId);
-            }
-            decodeArchive(data);
-            method199();
-        } else {
-            data[data.length - 2] = (byte) (anIntArray224[arg2] >> 8);
-            data[data.length + -1] = (byte) anIntArray224[arg2];
-            if(dataIndex != null) {
-                Class40_Sub6.method1055(data, dataIndex, arg2);
-                aBooleanArray1796[arg2] = true;
-            }
-            if(arg3) {
-                aByteArrayArray212[arg2] = data;
-            }
-        }
-    }
-
-    public int getPercentLoaded() {
-        if(aBoolean1800)
+    public int getIndexLoadedPercentage() {
+        if(finishedReceiving) {
             return 100;
-        if(aByteArrayArray212 != null)
-            return 99;
-        int i = Game.updateServer.getLoadedPercentage(255, cacheIndexId);
-        if(i >= 100)
-            i = 99;
-        return i;
+        }
 
+        if(groupContentCache != null) {
+            return 99;
+        }
+
+        return Math.min(
+                99,
+                Game.updateServerConnectionManager.updateServer.getLoadedPercentage(255, cacheIndexId)
+        );
     }
 
-    public void method198(boolean arg1, byte[] arg2, int arg3, CacheIndex arg4) {
-        if(metaIndex == arg4) {
-            if(aBoolean1800)
+    public void attemptDecodeData(boolean highPriority, byte[] data, int key, CacheIndex cacheIndex) {
+        // we are trying to decode the current index for this archive
+        if (cacheIndex == idx255) {
+            if(finishedReceiving) {
                 throw new RuntimeException();
-            if(arg2 == null) {
-                Game.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0,
-                        archiveCrcValue);
-                return;
             }
-            crc32.reset();
-            crc32.update(arg2, 0, arg2.length);
-            int i = (int) crc32.getValue();
-            if(i != archiveCrcValue) {
-                Game.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0,
-                        archiveCrcValue);
+
+            if(data == null) {
+                Game.updateServerConnectionManager.updateServer.enqueueFileRequest(this, 255, cacheIndexId, (byte) 0, archiveCrcValue, true
+                );
                 return;
             }
 
-            decodeArchive(arg2);
-            method199();
-        } else {
-            if(!arg1 && anInt1797 == arg3)
-                aBoolean1800 = true;
-            if(arg2 == null || arg2.length <= 2) {
-                aBooleanArray1796[arg3] = false;
-                if(aBoolean1811 || arg1)
-                    Game.updateServer.enqueueFileRequest(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3]);
-                return;
-            }
             crc32.reset();
-            crc32.update(arg2, 0, arg2.length - 2);
-            int i = (int) crc32.getValue();
-            int i_0_ = ((arg2[-2 + arg2.length] & 0xff) << 8) + (0xff & arg2[arg2.length + -1]);
-            if(i != anIntArray252[arg3] || i_0_ != anIntArray224[arg3]) {
-                aBooleanArray1796[arg3] = false;
-                if(aBoolean1811 || arg1)
-                    Game.updateServer.enqueueFileRequest(arg1, this, cacheIndexId, arg3, (byte) 2, anIntArray252[arg3]);
+            crc32.update(data, 0, data.length);
+
+            int actualChecksum = (int) crc32.getValue();
+            if(actualChecksum != archiveCrcValue) {
+                Game.updateServerConnectionManager.updateServer.enqueueFileRequest(this, 255, cacheIndexId, (byte) 0, archiveCrcValue, true
+                );
                 return;
             }
-            aBooleanArray1796[arg3] = true;
-            if(arg1)
-                aByteArrayArray212[arg3] = arg2;
+
+            decodeIndex(data);
+            postDecodeIndex();
+
+            return;
+        }
+
+        if (!highPriority && lastReceivedGroupRequest == key) {
+            finishedReceiving = true;
+        }
+
+        if (data == null || data.length <= 2) {
+            hasValidContents[key] = false;
+            if (forceHighPriority || highPriority)
+                Game.updateServerConnectionManager.updateServer.enqueueFileRequest(this, cacheIndexId, key, (byte) 2, groupChecksums[key], highPriority);
+            return;
+        }
+
+        crc32.reset();
+        crc32.update(data, 0, data.length - 2);
+        int actualChecksum = (int) crc32.getValue();
+        int actualVersion = ((data[data.length - 2] & 0xff) << 8) + (0xff & data[data.length - 1]);
+        if (actualChecksum != groupChecksums[key] || actualVersion != groupVersions[key]) {
+            hasValidContents[key] = false;
+            if (forceHighPriority || highPriority)
+                Game.updateServerConnectionManager.updateServer.enqueueFileRequest(this, cacheIndexId, key, (byte) 2, groupChecksums[key], highPriority);
+            return;
+        }
+
+        hasValidContents[key] = true;
+
+        if (highPriority) {
+            groupContentCache[key] = data;
         }
     }
 
-    public void method177(int arg1) {
-        if(dataIndex != null && aBooleanArray1796 != null && aBooleanArray1796[arg1])
-            method602(this, arg1, dataIndex);
-        else
-            Game.updateServer.enqueueFileRequest(true, this, cacheIndexId, arg1, (byte) 2, anIntArray252[arg1]);
+    public void requestGroup(int groupId) {
+        if(dataIndex != null && hasValidContents != null && hasValidContents[groupId]) {
+            prioritiseDecodeGroup(dataIndex, groupId);
+        } else {
+            Game.updateServerConnectionManager.updateServer.enqueueFileRequest(this, cacheIndexId, groupId, (byte) 2, groupChecksums[groupId], true);
+        }
     }
 
-    public void method174(int arg0) {
-        Game.updateServer.moveRequestToPendingQueue(cacheIndexId, arg0);
-    }
+    /**
+     * what is this doing?
+     */
+    public void postDecodeIndex() {
+        hasValidContents = new boolean[groupContentCache.length];
 
-    public void method199() {
-        aBooleanArray1796 = new boolean[aByteArrayArray212.length];
-        for(int i_1_ = 0; i_1_ < aBooleanArray1796.length; i_1_++)
-            aBooleanArray1796[i_1_] = false;
-        if(dataIndex == null)
-            aBoolean1800 = true;
-        else {
-            anInt1797 = -1;
-            for(int i_2_ = 0; aBooleanArray1796.length > i_2_; i_2_++) {
-                if(anIntArray261[i_2_] > 0) {
-                    MovedStatics.method513(i_2_, this, dataIndex, (byte) -28);
-                    anInt1797 = i_2_;
+        for(int i = 0; i < hasValidContents.length; i++) {
+            hasValidContents[i] = false;
+        }
+
+        if(dataIndex == null) {
+            finishedReceiving = true;
+        } else {
+            lastReceivedGroupRequest = -1;
+
+            for(int i = 0; hasValidContents.length > i; i++) {
+                if(groupSizes[i] > 0) {
+                    OnDemandRequest.createCacheArchiveOnDemandRequest(i, this, dataIndex);
+                    lastReceivedGroupRequest = i;
                 }
             }
-            if(anInt1797 == -1)
-                aBoolean1800 = true;
+
+            if(lastReceivedGroupRequest == -1) {
+                finishedReceiving = true;
+            }
+        }
+    }
+
+    public void receiveContent(boolean isIndex, int groupId, boolean highPriority, byte[] data) {
+        if(isIndex) {
+            if(finishedReceiving) {
+                throw new RuntimeException();
+            }
+
+            if(idx255 != null) {
+                OnDemandRequest.createByteArrayOnDemandRequest(data, idx255, cacheIndexId);
+            }
+
+            decodeIndex(data);
+            postDecodeIndex();
+        } else {
+            data[data.length - 2] = (byte) (groupVersions[groupId] >> 8);
+            data[data.length - 1] = (byte) groupVersions[groupId];
+
+            if(dataIndex != null) {
+                OnDemandRequest.createByteArrayOnDemandRequest(data, dataIndex, groupId);
+                hasValidContents[groupId] = true;
+            }
+
+            if(highPriority) {
+                groupContentCache[groupId] = data;
+            }
         }
     }
 
     public void requestLatestVersion(int crcValue) {
         archiveCrcValue = crcValue;
-        if(metaIndex == null)
-            Game.updateServer.enqueueFileRequest(true, this, 255, cacheIndexId, (byte) 0, archiveCrcValue);
-        else
-            method602(this, cacheIndexId, metaIndex);
+
+        /**
+         * some exception occured while loading cache files...
+         *
+         * this shouldn't really occur, only if an IOException happened in Signlink
+         */
+        if(idx255 == null) {
+            Game.updateServerConnectionManager.updateServer.enqueueFileRequest(this, 255, cacheIndexId, (byte) 0, archiveCrcValue, true);
+
+            return;
+        }
+
+        prioritiseDecodeGroup(idx255, cacheIndexId);
     }
 
-    public int method201(int arg0) {
-        if(aByteArrayArray212[arg0] != null)
+    public int getGroupLoadedPercentage(int groupId) {
+        if(groupContentCache[groupId] != null)
             return 100;
-        if(aBooleanArray1796[arg0])
+        if(hasValidContents[groupId])
             return 100;
-        return Game.updateServer.getLoadedPercentage(cacheIndexId, arg0);
+        return Game.updateServerConnectionManager.updateServer.getLoadedPercentage(cacheIndexId, groupId);
     }
 
-    public int method202() {
-        int i = 0;
-        int i_3_ = 0;
-        for(int i_4_ = 0; i_4_ < aByteArrayArray212.length; i_4_++) {
-            if(anIntArray261[i_4_] > 0) {
-                i += 100;
-                i_3_ += method201(i_4_);
+    public int getGroupsLoadedPercentage() {
+        int totalAvailablePercentage = 0;
+        int totalPercentage = 0;
+
+        for(int i = 0; i < groupContentCache.length; i++) {
+            if(groupSizes[i] > 0) {
+                totalAvailablePercentage += 100;
+                totalPercentage += getGroupLoadedPercentage(i);
             }
         }
-        if(i == 0)
+
+        if(totalAvailablePercentage == 0) {
             return 100;
-        return i_3_ * 100 / i;
-    }
+        }
 
-    public byte[] method170(String arg0, String arg1) {
-        arg1 = arg1.toLowerCase();
-        arg0 = arg0.toLowerCase();
-        int i = nameHashCollection.method882(RSString.stringHash(arg1));
-        int i_0_ = aNameHashCollectionArray217[i].method882(RSString.stringHash(arg0));
-
-        return getFile(i, i_0_);
+        return totalPercentage * 100 / totalAvailablePercentage;
     }
 
     /**
-     * Unloads a cache file to free up it's memory
-     * @param arg0
-     * @param arg1
+     * Unloads a cache group to free up its memory
+     *
+     * @param groupId
      */
-    public void unloadFile(int arg0, int arg1) {
-        int i = 0;
-        if(arg0 == 1) {
-            for(/**/; i < inMemoryCacheBuffer[arg1].length; i++)
-                inMemoryCacheBuffer[arg1][i] = null;
-        }
+    public void unloadGroup(int groupId) {
+        for(int i = 0; i < fileContentCache[groupId].length; i++)
+            fileContentCache[groupId][i] = null;
     }
 
-    public byte[] getFile(int fileId, int childId) {
+    public byte[] getFile(int groupId, int fileId) {
         //if(this instanceof CacheIndex)
         //    System.out.printf("Request cache arch: %d index: %d, file: %d\n", this.anInt1807, arg0, arg2);
-        return method176(fileId, childId, null);
+        return getEncryptableFileContents(groupId, fileId, null);
     }
 
-    public boolean loaded(int arg0, int arg2) {
-        if(arg0 < 0 || arg0 >= inMemoryCacheBuffer.length || inMemoryCacheBuffer[arg0] == null || arg2 < 0 || arg2 >= inMemoryCacheBuffer[arg0].length)
+    public byte[] getFile(int fileId) {
+        if(fileContentCache.length == 1)
+            return getFile(0, fileId);
+        if(fileContentCache[fileId].length == 1)
+            return getFile(fileId, 0);
+        throw new RuntimeException();
+    }
+
+    public byte[] getFileByName(String groupName, String fileName) {
+        groupName = groupName.toLowerCase();
+        fileName = fileName.toLowerCase();
+        int groupId = groupNames.getIdByName(RSString.stringHash(groupName));
+        int fileId = fileNames[groupId].getIdByName(RSString.stringHash(fileName));
+
+        return getFile(groupId, fileId);
+    }
+
+    public boolean loaded(int groupId, int fileId) {
+        if(groupId < 0 || groupId >= fileContentCache.length || fileContentCache[groupId] == null || fileId < 0 || fileId >= fileContentCache[groupId].length)
             return false;
-        if(inMemoryCacheBuffer[arg0][arg2] != null)
+        if(fileContentCache[groupId][fileId] != null)
             return true;
-        if(aByteArrayArray212[arg0] != null)
+        if(groupContentCache[groupId] != null)
             return true;
-        method177(arg0);
-        return aByteArrayArray212[arg0] != null;
+        requestGroup(groupId);
+        return groupContentCache[groupId] != null;
+    }
+
+    public boolean loaded(String groupName, String fileName) {
+        groupName = groupName.toLowerCase();
+        fileName = fileName.toLowerCase();
+        int groupId = groupNames.getIdByName(RSString.stringHash(groupName));
+        int fileId = fileNames[groupId].getIdByName(RSString.stringHash(fileName));
+        return loaded(groupId, fileId);
     }
 
     public int getLength() {
-        return inMemoryCacheBuffer.length;
+        return fileContentCache.length;
     }
 
-    public byte[] method176(int fileId, int childId, int[] arg2) {
-        if(fileId < 0 || fileId >= inMemoryCacheBuffer.length || inMemoryCacheBuffer[fileId] == null || childId < 0 || childId >= inMemoryCacheBuffer[fileId].length)
-            return null;
-        if(inMemoryCacheBuffer[fileId][childId] == null) {
-            boolean bool = method181(fileId, arg2);
-            if(!bool) {
-                method177(fileId);
-                bool = method181(fileId, arg2);
-                if(!bool)
-                    return null;
-            }
-        }
-        byte[] is = inMemoryCacheBuffer[fileId][childId];
-        if(aBoolean220)
-            inMemoryCacheBuffer[fileId][childId] = null;
-        return is;
-    }
-
-    public void decodeArchive(byte[] data) {
-        crc8 = calculateFullCrc8(data, data.length);
+    public void decodeIndex(byte[] data) {
+        crc8 = MovedStatics.calculateCrc8(0, data.length, data);
         Buffer buffer = new Buffer(decompress(data));
-        int format = buffer.getUnsignedByte();
-        if(format == 5) {
-            int accumulator = 0;
-            int settings = buffer.getUnsignedByte();
-            fileCount = buffer.getUnsignedShortBE();
-            fileIds = new int[fileCount];
-            int size = -1;
-            for(int index = 0; fileCount > index; index++) {
-                fileIds[index] = accumulator += buffer.getUnsignedShortBE();
-                if(fileIds[index] > size)
-                    size = fileIds[index];
+
+        /**
+         * 5 = original
+         * 6 = versioned
+         * 7 = smart
+         *
+         * Only protocol 5 is supported in our revision, others come later
+         *
+         * (see https://github.com/openrs2/openrs2/blob/master/cache/src/main/kotlin/org/openrs2/cache/Js5Index.kt#L286)
+         */
+        int protocol = buffer.getUnsignedByte();
+
+        if(protocol == 5) {
+
+            /**
+             * The following have names:
+             * - maps (5), music (6), images (8), huffman (10), clientscript (12)
+             *
+             * in later revisions this value contains other settings (digests, lengths, uncompressed checksums)
+             */
+            int hasNames = buffer.getUnsignedByte();
+
+            size = buffer.getUnsignedShortBE();
+            groupIds = new int[size];
+
+            int previousGroupId = 0;
+            int highestGroupId = -1;
+            for(int index = 0; size > index; index++) {
+                groupIds[index] = previousGroupId += buffer.getUnsignedShortBE();
+                if(groupIds[index] > highestGroupId)
+                    highestGroupId = groupIds[index];
             }
 
-            anIntArrayArray243 = new int[size + 1][];
-            anIntArray224 = new int[1 + size];
-            anIntArray252 = new int[size + 1];
-            inMemoryCacheBuffer = new byte[1 + size][][];
-            anIntArray261 = new int[1 + size];
-            aByteArrayArray212 = new byte[size + 1][];
+            groupVersions = new int[highestGroupId + 1];
+            groupChecksums = new int[highestGroupId + 1];
+            groupSizes = new int[highestGroupId + 1];
+            fileIds = new int[highestGroupId + 1][];
+            fileContentCache = new byte[highestGroupId + 1][][];
 
-            if(settings != 0) {
-                nameHashes = new int[size + 1];
-                for(int i_5_ = 0; fileCount > i_5_; i_5_++)
-                    nameHashes[fileIds[i_5_]] = buffer.getIntBE();
-                nameHashCollection = new NameHashCollection(nameHashes);
-            }
-            for(int i_6_ = 0; i_6_ < fileCount; i_6_++)
-                anIntArray252[fileIds[i_6_]] = buffer.getIntBE();
-            for(int i_7_ = 0; i_7_ < fileCount; i_7_++)
-                anIntArray224[fileIds[i_7_]] = buffer.getIntBE();
-            for(int i_8_ = 0; fileCount > i_8_; i_8_++)
-                anIntArray261[fileIds[i_8_]] = buffer.getUnsignedShortBE();
-            for(int i_9_ = 0; i_9_ < fileCount; i_9_++) {
-                accumulator = 0;
-                int i_10_ = fileIds[i_9_];
-                int i_11_ = -1;
-                int i_12_ = anIntArray261[i_10_];
-                anIntArrayArray243[i_10_] = new int[i_12_];
-                for(int i_13_ = 0; i_12_ > i_13_; i_13_++) {
-                    int i_14_ = anIntArrayArray243[i_10_][i_13_] = accumulator += buffer.getUnsignedShortBE();
-                    if(i_14_ > i_11_)
-                        i_11_ = i_14_;
+            groupContentCache = new byte[highestGroupId + 1][];
+
+            if(hasNames != 0) {
+                nameHashes = new int[highestGroupId + 1];
+
+                for(int i = 0; size > i; i++) {
+                    int groupId = groupIds[i];
+                    nameHashes[groupId] = buffer.getIntBE();
                 }
-                inMemoryCacheBuffer[i_10_] = new byte[i_11_ + 1][];
+
+                groupNames = new NameHashCollection(nameHashes);
             }
-            if(settings != 0) {
-                aNameHashCollectionArray217 = new NameHashCollection[size + 1];
-                anIntArrayArray236 = new int[1 + size][];
-                for(int i_15_ = 0; fileCount > i_15_; i_15_++) {
-                    int i_16_ = fileIds[i_15_];
-                    int i_17_ = anIntArray261[i_16_];
-                    anIntArrayArray236[i_16_] = new int[inMemoryCacheBuffer[i_16_].length];
-                    for(int i_18_ = 0; i_17_ > i_18_; i_18_++)
-                        anIntArrayArray236[i_16_][anIntArrayArray243[i_16_][i_18_]] = buffer.getIntBE();
-                    aNameHashCollectionArray217[i_16_] = new NameHashCollection(anIntArrayArray236[i_16_]);
+
+            for(int i = 0; i < size; i++)
+                groupChecksums[groupIds[i]] = buffer.getIntBE();
+
+            for(int i = 0; i < size; i++)
+                groupVersions[groupIds[i]] = buffer.getIntBE();
+
+            for(int i = 0; size > i; i++)
+                groupSizes[groupIds[i]] = buffer.getUnsignedShortBE();
+
+            for(int i = 0; i < size; i++) {
+                int groupId = groupIds[i];
+                int groupSize = groupSizes[groupId];
+                fileIds[groupId] = new int[groupSize];
+
+                int previousFileId = 0;
+                int highestFileId = -1;
+
+                for(int fileId = 0; groupSize > fileId; fileId++) {
+                    fileIds[groupId][fileId] = previousFileId += buffer.getUnsignedShortBE();
+
+                    if(fileIds[groupId][fileId] > highestFileId)
+                        highestFileId = fileIds[groupId][fileId];
+                }
+
+                fileContentCache[groupId] = new byte[highestFileId + 1][];
+            }
+
+            if(hasNames != 0) {
+                fileNames = new NameHashCollection[highestGroupId + 1];
+                fileNameHashes = new int[1 + highestGroupId][];
+
+                for(int i = 0; size > i; i++) {
+                    int groupId = groupIds[i];
+                    int groupSize = groupSizes[groupId];
+                    fileNameHashes[groupId] = new int[fileContentCache[groupId].length];
+
+                    for(int fileId = 0; groupSize > fileId; fileId++)
+                        fileNameHashes[groupId][fileIds[groupId][fileId]] = buffer.getIntBE();
+
+                    fileNames[groupId] = new NameHashCollection(fileNameHashes[groupId]);
                 }
             }
         }
     }
 
-    public int method179(int arg1, String arg2) {
-        arg2 = arg2.toLowerCase();
-        return aNameHashCollectionArray217[arg1].method882(RSString.stringHash(arg2));
+    public int getFileIdByName(int groupId, String fileName) {
+        fileName = fileName.toLowerCase();
+        return fileNames[groupId].getIdByName(RSString.stringHash(fileName));
     }
 
-    public boolean method181(int arg0, int[] arg2) {
-        if(aByteArrayArray212[arg0] == null)
+    public boolean decodeGroup(int groupId, int[] xteaKeys) {
+        if(groupContentCache[groupId] == null)
             return false;
-        int i = anIntArray261[arg0];
-        byte[][] is = inMemoryCacheBuffer[arg0];
-        int[] is_19_ = anIntArrayArray243[arg0];
-        boolean bool = true;
-        for(int i_20_ = 0; i_20_ < i; i_20_++) {
-            if(is[is_19_[i_20_]] == null) {
-                bool = false;
+
+        int groupSize = groupSizes[groupId];
+        byte[][] groupFileData = fileContentCache[groupId];
+        int[] groupFileIds = fileIds[groupId];
+
+        boolean allFilesPresent = true;
+
+        for(int i = 0; i < groupSize; i++) {
+            if(groupFileData[groupFileIds[i]] == null) {
+                allFilesPresent = false;
                 break;
             }
         }
-        if(bool)
+
+        if(allFilesPresent)
             return true;
-        byte[] is_21_;
-        if(arg2 == null || arg2[0] == 0 && arg2[1] == 0 && arg2[2] == 0 && arg2[3] == 0)
-            is_21_ = aByteArrayArray212[arg0];
+
+        byte[] compressedData;
+        if(xteaKeys == null || xteaKeys[0] == 0 && xteaKeys[1] == 0 && xteaKeys[2] == 0 && xteaKeys[3] == 0)
+            compressedData = groupContentCache[groupId];
         else {
-            is_21_ = new byte[aByteArrayArray212[arg0].length];
-            MovedStatics.method278(aByteArrayArray212[arg0], 0, is_21_, 0, is_21_.length);
-            Buffer class40_sub1 = new Buffer(is_21_);
-            class40_sub1.method483(arg2, class40_sub1.buffer.length, 5);
+            compressedData = new byte[groupContentCache[groupId].length];
+            MovedStatics.copyBytes(groupContentCache[groupId], 0, compressedData, 0, compressedData.length);
+            Buffer buffer = new Buffer(compressedData);
+            buffer.decryptXTEA(xteaKeys, 5, buffer.buffer.length);
         }
-        byte[] is_22_;
-        is_22_ = decompress(is_21_);
-        if(aBoolean233)
-            aByteArrayArray212[arg0] = null;
-        if(i > 1) {
-            int i_23_ = is_22_.length;
-            int i_24_ = is_22_[--i_23_] & 0xff;
-            Buffer class40_sub1 = new Buffer(is_22_);
-            i_23_ -= 4 * i_24_ * i;
-            class40_sub1.currentPosition = i_23_;
-            int[] is_25_ = new int[i];
-            for(int i_26_ = 0; i_24_ > i_26_; i_26_++) {
-                int i_27_ = 0;
-                for(int i_28_ = 0; i_28_ < i; i_28_++) {
-                    i_27_ += class40_sub1.getIntBE();
-                    is_25_[i_28_] += i_27_;
+
+        byte[] decompressedData = decompress(compressedData);
+
+        if(clearGroupContentCache)
+            groupContentCache[groupId] = null;
+
+        if(groupSize > 1) {
+            int dataLength = decompressedData.length;
+            int stripeCount = decompressedData[--dataLength] & 0xff;
+            Buffer buffer = new Buffer(decompressedData);
+            dataLength -= 4 * stripeCount * groupSize;
+            buffer.currentPosition = dataLength;
+
+            int[] fileSizes = new int[groupSize];
+            for(int stripe = 0; stripeCount > stripe; stripe++) {
+                int currentLength = 0;
+                for(int f = 0; f < groupSize; f++) {
+                    int delta = buffer.getIntBE();
+
+                    currentLength += delta;
+                    fileSizes[f] += currentLength;
                 }
             }
-            for(int i_29_ = 0; i_29_ < i; i_29_++) {
-                if(is[is_19_[i_29_]] == null)
-                    is[is_19_[i_29_]] = new byte[is_25_[i_29_]];
-                is_25_[i_29_] = 0;
+
+            for(int f = 0; f < groupSize; f++) {
+                if(groupFileData[groupFileIds[f]] == null)
+                    groupFileData[groupFileIds[f]] = new byte[fileSizes[f]];
+
+                fileSizes[f] = 0;
             }
-            class40_sub1.currentPosition = i_23_;
-            int i_30_ = 0;
-            for(int i_31_ = 0; i_24_ > i_31_; i_31_++) {
-                int i_32_ = 0;
-                for(int i_33_ = 0; i_33_ < i; i_33_++) {
-                    i_32_ += class40_sub1.getIntBE();
-                    MovedStatics.method278(is_22_, i_30_, is[is_19_[i_33_]], is_25_[i_33_], i_32_);
-                    is_25_[i_33_] += i_32_;
-                    i_30_ += i_32_;
+
+            buffer.currentPosition = dataLength;
+            int decompressedDataPointer = 0;
+            for(int stripe = 0; stripeCount > stripe; stripe++) {
+                int size = 0;
+                for(int f = 0; f < groupSize; f++) {
+                    int stripeLength = fileSizes[f];
+
+                    int delta = buffer.getIntBE();
+                    size += delta;
+
+                    MovedStatics.copyBytes(decompressedData, decompressedDataPointer, groupFileData[groupFileIds[f]], stripeLength, size);
+                    fileSizes[f] += size;
+                    decompressedDataPointer += size;
                 }
             }
-        } else
-            is[is_19_[0]] = is_22_;
+        } else {
+            groupFileData[groupFileIds[0]] = decompressedData;
+        }
+
         return true;
     }
 
-    public byte[] method182(int arg0, int arg2) {
-        if(arg2 < 0 || arg2 >= inMemoryCacheBuffer.length || inMemoryCacheBuffer[arg2] == null || arg0 < 0 || inMemoryCacheBuffer[arg2].length <= arg0)
+    public byte[] getEncryptableFileContents(int groupId, int fileId, int[] xteaKeys) {
+        if(groupId < 0 || groupId >= fileContentCache.length || fileContentCache[groupId] == null || fileId < 0 || fileId >= fileContentCache[groupId].length) {
             return null;
-        if(inMemoryCacheBuffer[arg2][arg0] == null) {
-            boolean bool = method181(arg2, null);
+        }
+
+        if(fileContentCache[groupId][fileId] == null) {
+            boolean loaded = decodeGroup(groupId, xteaKeys);
+            if(!loaded) {
+                requestGroup(groupId);
+                loaded = decodeGroup(groupId, xteaKeys);
+                if(!loaded)
+                    return null;
+            }
+        }
+
+        byte[] data = fileContentCache[groupId][fileId];
+
+        if(clearEncryptableContent) {
+            fileContentCache[groupId][fileId] = null;
+        }
+
+        return data;
+    }
+
+    /**
+     * Gets the contents for a single file.
+     *
+     * If the file contents are not immediately available, this method
+     * will attempt to decode the file from the group cache.
+     *
+     * @param groupId
+     * @param fileId
+     * @return
+     */
+    public byte[] getFileContents(int groupId, int fileId) {
+        if(groupId < 0 || groupId >= fileContentCache.length || fileContentCache[groupId] == null || fileId < 0 || fileId >= fileContentCache[groupId].length)
+            return null;
+
+        if(fileContentCache[groupId][fileId] == null) {
+            boolean bool = decodeGroup(groupId, null);
             if(!bool) {
-                method177(arg2);
-                bool = method181(arg2, null);
+                requestGroup(groupId);
+                bool = decodeGroup(groupId, null);
                 if(!bool)
                     return null;
             }
         }
-        byte[] is = inMemoryCacheBuffer[arg2][arg0];
-        return is;
+
+        return fileContentCache[groupId][fileId];
     }
 
-    public int getHash(String arg1) {
-        arg1 = arg1.toLowerCase();
-        return nameHashCollection.method882(RSString.stringHash(arg1));
+    /**
+     * Get the contents for a file in a one-dimensional cache archive,
+     * that is, an archive with either one group containing many files,
+     * or many groups each containing one file.
+     *
+     * @param fileId The file or group id
+     * @return The file byte contents
+     */
+    public byte[] getFileContents(int fileId) {
+        if(fileContentCache.length == 1)
+            return getFileContents(0, fileId);
+        if(fileContentCache[fileId].length == 1)
+            return getFileContents(fileId, 0);
+        throw new RuntimeException();
     }
 
-    public boolean method185() {
+    public int getGroupIdByName(String name) {
+        name = name.toLowerCase();
+        return groupNames.getIdByName(RSString.stringHash(name));
+    }
+
+    public boolean areAllGroupsLoaded() {
         boolean bool = true;
-        for(int i = 0; i < fileIds.length; i++) {
-            int i_47_ = fileIds[i];
-            if(aByteArrayArray212[i_47_] == null) {
-                method177(i_47_);
-                if(aByteArrayArray212[i_47_] == null)
+        for(int i = 0; i < groupIds.length; i++) {
+            int groupId = groupIds[i];
+            if(groupContentCache[groupId] == null) {
+                requestGroup(groupId);
+                if(groupContentCache[groupId] == null)
                     bool = false;
             }
         }
         return bool;
     }
 
-    public boolean fileExists(int arg1) {
-        if(aByteArrayArray212[arg1] != null)
+    public boolean groupExists(int groupId) {
+        if(groupContentCache[groupId] != null)
             return true;
-        method177(arg1);
-        if(aByteArrayArray212[arg1] != null)
+        requestGroup(groupId);
+        if(groupContentCache[groupId] != null)
             return true;
         return false;
     }
 
-    public byte[] method187(int arg0) {
-        if(inMemoryCacheBuffer.length == 1)
-            return getFile(0, arg0);
-        if(inMemoryCacheBuffer[arg0].length == 1)
-            return getFile(arg0, 0);
-        throw new RuntimeException();
-    }
-
     public int fileLength(int fileId) {
-        return inMemoryCacheBuffer[fileId].length;
+        return fileContentCache[fileId].length;
     }
 
-    public void clearCache() {
-        for(int i = 0; i < inMemoryCacheBuffer.length; i++) {
-            if(inMemoryCacheBuffer[i] != null) {
-                for(int i_48_ = 0; i_48_ < inMemoryCacheBuffer[i].length; i_48_++)
-                    inMemoryCacheBuffer[i][i_48_] = null;
+    public void clearFileContentCache() {
+        for(int group = 0; group < fileContentCache.length; group++) {
+            if(fileContentCache[group] != null) {
+                for(int file = 0; file < fileContentCache[group].length; file++)
+                    fileContentCache[group][file] = null;
             }
         }
     }
 
-    public int[] method192(int arg0, boolean arg1) {
-        if(!arg1)
-            return null;
-        return anIntArrayArray243[arg0];
+    public int[] getFileIds(int groupId) {
+        return fileIds[groupId];
     }
 
-    public byte[] method193(int arg1) {
-        if(inMemoryCacheBuffer.length == 1)
-            return method182(arg1, 0);
-        if(inMemoryCacheBuffer[arg1].length == 1)
-            return method182(0, arg1);
-        throw new RuntimeException();
+    public void prioritiseByName(String fileName) {
+        fileName = fileName.toLowerCase();
+        int groupId = groupNames.getIdByName(RSString.stringHash(fileName));
+        if(groupId >= 0) {
+            prioritiseRequest(groupId);
+        }
     }
 
-    public boolean method194(String arg0, String arg1) {
-        arg0 = arg0.toLowerCase();
-        arg1 = arg1.toLowerCase();
-        int i = nameHashCollection.method882(RSString.stringHash(arg0));
-        int i_49_ = aNameHashCollectionArray217[i].method882(RSString.stringHash(arg1));
-        return loaded(i, i_49_);
-    }
-
-    public void method195(int arg0, String arg1) {
-        arg1 = arg1.toLowerCase();
-        int i = nameHashCollection.method882(RSString.stringHash(arg1));
-        if(arg0 == 0 && i >= 0)
-            method174(i);
+    private void prioritiseRequest(int groupId) {
+        Game.updateServerConnectionManager.updateServer.prioritisePrefetchRequest(cacheIndexId, groupId);
     }
 }

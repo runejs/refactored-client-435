@@ -1,11 +1,15 @@
 package org.runejs.client.cache.def;
 
 import org.runejs.client.cache.CacheArchive;
+import org.runejs.client.cache.def.loading.CacheDefinition;
+import org.runejs.client.cache.def.loading.DefinitionLoader;
+import org.runejs.client.cache.def.loading.rs435.OverlayDefinitionLoader;
 import org.runejs.client.io.Buffer;
 import org.runejs.client.node.CachedNode;
 import org.runejs.client.node.NodeCache;
 
-public class OverlayDefinition extends CachedNode {
+public class OverlayDefinition extends CachedNode implements CacheDefinition {
+    public static DefinitionLoader<OverlayDefinition> loader = new OverlayDefinitionLoader();
 
     private static NodeCache definitionCache = new NodeCache(64);
     private static CacheArchive definitionArchive;
@@ -20,6 +24,7 @@ public class OverlayDefinition extends CachedNode {
     public boolean hideOverlay = true;
     public int color;
     public int otherLightness;
+    public int id;
 
     public OverlayDefinition() {
         texture = -1;
@@ -27,16 +32,18 @@ public class OverlayDefinition extends CachedNode {
         color = 0;
     }
 
-    public static OverlayDefinition getDefinition(int arg0, int arg1) {
-        OverlayDefinition overlayDefinition = (OverlayDefinition) definitionCache.get(arg0);
+    public static OverlayDefinition getDefinition(int id, int archiveGroupId) {
+        OverlayDefinition overlayDefinition = (OverlayDefinition) definitionCache.get(id);
         if(overlayDefinition != null)
             return overlayDefinition;
-        byte[] is = definitionArchive.getFile(arg1, arg0);
+        byte[] data = definitionArchive.getFile(archiveGroupId, id);
         overlayDefinition = new OverlayDefinition();
-        if(is != null)
-            overlayDefinition.readValues(new Buffer(is));
+        overlayDefinition.id = id;
+        if(data != null) {
+            loader.load(overlayDefinition, new Buffer(data));
+        }
         overlayDefinition.calculateHsl();
-        definitionCache.put(arg0, overlayDefinition);
+        definitionCache.put(id, overlayDefinition);
         return overlayDefinition;
     }
 
@@ -46,27 +53,6 @@ public class OverlayDefinition extends CachedNode {
 
     public static void clearOverlayDefinitionCache() {
         definitionCache.clear();
-    }
-
-    public void readValues(Buffer buffer) {
-        while (true) {
-            int opcode = buffer.getUnsignedByte();
-            if (opcode == 0)
-                break;
-            handleOpCode(buffer, opcode);
-        }
-    }
-
-    public void handleOpCode(Buffer buffer, int opcode) {
-        if (opcode == 1) {
-            color = buffer.getMediumBE();
-        } else if (opcode == 2) {
-            texture = buffer.getUnsignedByte();
-        } else if (opcode == 5) {
-            hideOverlay = false;
-        } else if (opcode == 7) {
-            secondaryColor = buffer.getMediumBE();
-        }
     }
 
     public void calculateHsl() {
@@ -122,4 +108,7 @@ public class OverlayDefinition extends CachedNode {
         else if (saturation > 255)
             saturation = 255;
     }
+
+    @Override
+    public int getId() { return this.id; }
 }

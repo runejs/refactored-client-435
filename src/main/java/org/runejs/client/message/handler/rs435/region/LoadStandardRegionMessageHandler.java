@@ -44,8 +44,8 @@ public class LoadStandardRegionMessageHandler implements MessageHandler<LoadStan
                     String mapKeyM = Native.MAP_NAME_PREFIX_M + mapKey;
                     String mapKeyL = Native.MAP_NAME_PREFIX_L + mapKey;
 
-                    Landscape.terrainDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(mapKeyM);
-                    Landscape.objectDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getHash(mapKeyL);
+                    Landscape.terrainDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getGroupIdByName(mapKeyM);
+                    Landscape.objectDataIds[regionCount] = CacheArchive.gameWorldMapCacheArchive.getGroupIdByName(mapKeyL);
                     regionCount++;
                 }
             }

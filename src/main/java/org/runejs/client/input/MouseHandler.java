@@ -169,7 +169,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
         int mouseY = eventMouseY;
         if(ScreenController.isCoordinatesInExtendedChatArea(mouseX, mouseY) && GameInterface.chatboxInterfaceId == -1) {
             if(rotation < 0) {
-                if(Game.chatboxInterface.scrollPosition >= 1) {
+                if(Game.chatboxInterface.scrollDepth >= 1) {
 
                     if(ChatBox.inputType == 3) {
                         ChatBox.itemSearchScroll = ChatBox.itemSearchScroll - 30;
@@ -219,7 +219,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     }
                 }
                 if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
-                    GameInterface.cachedInterfaces[tabInterfaceID][childID].scrollPosition += rotation * 30;
+                    GameInterface.cachedInterfaces[tabInterfaceID][childID].scrollDepth += rotation * 30;
                     //				client.tabAreaAltered = true;
                     GameInterface.redrawTabArea = true;
                     return true;
@@ -249,7 +249,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
                     height+= yScreenOffset;
                 }
                 if(mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
-                    GameInterface.cachedInterfaces[widgetid][childID].scrollPosition += rotation * 30;
+                    GameInterface.cachedInterfaces[widgetid][childID].scrollDepth += rotation * 30;
                     return true;
                 }
 
